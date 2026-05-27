@@ -14,8 +14,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Tailwind CSS`: CJK `font-family` `:lang()` selectors are available in the theme by default to auto-detect Simplified
+  Chinese, Traditional Chinese, Japanese, and Korean content
+  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `SCSS` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
+  - `$font-porsche-next-zh-hans`, `$font-porsche-next-zh-hant`, `$font-porsche-next-ja`, `$font-porsche-next-ko`: CJK
+    `font-family` tokens
+  - `cjk-font-family()`: mixin that emits `:lang()` selectors to auto-detect CJK content
+- `Emotion`, `Vanilla Extract` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
+  - `fontPorscheNextZhHans`, `fontPorscheNextZhHant`, `fontPorscheNextJa`, `fontPorscheNextKo`: CJK `font-family` tokens
+  - `getCJKFontFamilyStyle()`: returns `:lang()` selectors to auto-detect CJK content
+
 ### Changed
 
+- Improved CJK `font-family` support with dedicated, OS-specific stacks per language
+  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
+  - **Simplified Chinese:** PingFang SC (macOS), Microsoft YaHei (Windows), Noto Sans SC (Android, Linux, ChromeOS)
+  - **Traditional Chinese:** PingFang TC (macOS), Microsoft JhengHei (Windows), Noto Sans TC (Android, Linux, ChromeOS)
+  - **Japanese:** Hiragino Sans (macOS), Yu Gothic (Windows), Noto Sans JP (Android, Linux, ChromeOS)
+  - **Korean:** Apple SD Gothic Neo (macOS), Malgun Gothic (Windows), Noto Sans KR (Android, Linux, ChromeOS)
+- Text-rendering components now switch to language-specific CJK font stacks via `:lang()` selectors when a matching
+  `lang` attribute is set ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `Tailwind CSS` — `.font-porsche-next`, `.prose-heading-*`, `.prose-text-*` now apply `:lang()` selectors to
+  auto-detect CJK content ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `SCSS` — `prose-heading-*()`, `prose-text-*()` now apply `:lang()` selectors to auto-detect CJK content
+  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `Emotion`, `Vanilla Extract` — `proseHeading*`, `proseText*` now apply `:lang()` selectors to auto-detect CJK content
+  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 - `Input Text`: the global `inputmode` attribute is now passed through to the underlying native `input` element
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Input Text`, `Input Number`: extended types of `value` prop to allow `string | number | null`
@@ -32,14 +59,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
+- `Tailwind CSS`: Prefixing support ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 - `Inline Notification`: The action label expands when the heading or content section becomes multiline
   ([#4418](https://github.com/porsche-design-system/porsche-design-system/pull/4418))
 - `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
   `Input Time`, `Input Url`, `Textarea`: form value, validity and `disabled`/`readOnly` state now stay in sync with the
   internal native control, so native form submission, reset and validation behave correctly when these props change
   dynamically ([4446](https://github.com/porsche-design-system/porsche-design-system/pull/4446))
-- `Accordion`: not causing scrollbar on outer scroll container (e.g. flyout) when closed with position:absolute slotted content
-  ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
+- `Accordion`: not causing scrollbar on outer scroll container (e.g. flyout) when closed with position:absolute slotted
+  content ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
+- Added `semibold` alias for Arabic Porsche Next, mapped to `bold` as a fallback since the font only provides `regular`
+  and `bold` weights. ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 
 ## [4.2.0-rc.1] - 2026-05-18
 
@@ -49,42 +79,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   and developer experience ([#4403](https://github.com/porsche-design-system/porsche-design-system/pull/4403))
 
 ## [4.2.0-rc.0] - 2026-05-12
-
-### Added
-
-- `Tailwind CSS`: CJK `font-family` `:lang()` selectors are available in the theme by default to auto-detect Simplified
-  Chinese, Traditional Chinese, Japanese, and Korean content
-  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
-- `SCSS` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
-  - `$font-porsche-next-zh-hans`, `$font-porsche-next-zh-hant`, `$font-porsche-next-ja`, `$font-porsche-next-ko`: CJK
-    `font-family` tokens
-  - `cjk-font-family()`: mixin that emits `:lang()` selectors to auto-detect CJK content
-- `Emotion`, `Vanilla Extract` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
-  - `fontPorscheNextZhHans`, `fontPorscheNextZhHant`, `fontPorscheNextJa`, `fontPorscheNextKo`: CJK `font-family` tokens
-  - `getCJKFontFamilyStyle()`: returns `:lang()` selectors to auto-detect CJK content
-- Added `semibold` alias for Arabic Porsche Next, mapped to `bold` as a fallback since the font only provides `regular`
-  and `bold` weights. ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
-
-### Changed
-
-- Improved CJK `font-family` support with dedicated, OS-specific stacks per language
-  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
-  - **Simplified Chinese:** PingFang SC (macOS), Microsoft YaHei (Windows), Noto Sans SC (Android, Linux, ChromeOS)
-  - **Traditional Chinese:** PingFang TC (macOS), Microsoft JhengHei (Windows), Noto Sans TC (Android, Linux, ChromeOS)
-  - **Japanese:** Hiragino Sans (macOS), Yu Gothic (Windows), Noto Sans JP (Android, Linux, ChromeOS)
-  - **Korean:** Apple SD Gothic Neo (macOS), Malgun Gothic (Windows), Noto Sans KR (Android, Linux, ChromeOS)
-- Text-rendering components now switch to language-specific CJK font stacks via `:lang()` selectors when a matching
-  `lang` attribute is set ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
-- `Tailwind CSS` — `.font-porsche-next`, `.font-sans`, `.prose-heading-*`, `.prose-text-*` now apply `:lang()` selectors
-  to auto-detect CJK content ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
-- `SCSS` — `prose-heading-*()`, `prose-text-*()` now apply `:lang()` selectors to auto-detect CJK content
-  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
-- `Emotion`, `Vanilla Extract` — `proseHeading*`, `proseText*` now apply `:lang()` selectors to auto-detect CJK content
-  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
-
-### Fixed
-
-- `Tailwind CSS`: Prefixing support ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 
 ### Added
 
