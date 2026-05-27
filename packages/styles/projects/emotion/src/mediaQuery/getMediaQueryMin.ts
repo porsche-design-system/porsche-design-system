@@ -2,7 +2,10 @@ import { breakpoint } from './breakpoint';
 import type { Breakpoint } from './breakpointShared';
 import type { BKey } from './mediaQueryShared';
 
-/** Returns a **min-width** media query string for the specified breakpoint. */
+/**
+ * Returns a **min-width** media query string for the specified breakpoint.
+ * @signature getMediaQueryMin('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')
+ */
 export function getMediaQueryMin(min: BKey<'base'>): '@media(min-width:0px)';
 export function getMediaQueryMin(min: BKey<'xs'>): '@media(min-width:480px)';
 export function getMediaQueryMin(min: BKey<'s'>): '@media(min-width:760px)';

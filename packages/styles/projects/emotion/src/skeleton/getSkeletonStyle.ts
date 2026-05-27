@@ -3,8 +3,7 @@ import { colorFrosted, colorFrostedStrong } from '../color';
 import { durationXl, easeInOut } from '../motion';
 
 /**
- * Applies skeleton loading styles with a background animation.
- * Uses the CSS `light-dark()` color function for automatic theme adaptation.
+ * Applies a skeleton placeholder style to indicate loading state.
  */
 export const getSkeletonStyle = () => {
   return {
