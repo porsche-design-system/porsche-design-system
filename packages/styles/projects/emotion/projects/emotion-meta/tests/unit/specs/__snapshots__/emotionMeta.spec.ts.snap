@@ -1111,8 +1111,7 @@ exports[`should match snapshot 1`] = `
   },
   "skeleton": {
     "getSkeletonStyle": {
-      "description": "Applies skeleton loading styles with a background animation.
-Uses the CSS \`light-dark()\` color function for automatic theme adaptation.",
+      "description": "Applies a skeleton placeholder style to indicate loading state.",
       "name": "getSkeletonStyle",
     },
   },
