@@ -156,6 +156,7 @@ const generateComponentMeta = (): void => {
         ([, tagName]) => kebabCase(tagName) as TagName
       ),
       ...(source.match(/<StateMessage/) ? ['p-icon' as TagName] : []),
+      ...(source.match(/<DialogBase/) ? ['p-button' as TagName] : []),
     ].filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
 
     // props
@@ -364,6 +365,13 @@ const generateComponentMeta = (): void => {
                     }
                   } else if (!variable) {
                     // must be array of inline values
+                    if (values.includes('AllowedTypes.')) {
+                      throw new Error(
+                        `oneOf in "${tagName}" "${propName}" contains validator-function references but is missing the explicit \`<ValidatorFunction>\` generic. ` +
+                          `Change \`AllowedTypes.oneOf([...])\` to \`AllowedTypes.oneOf<ValidatorFunction>([...])\` so generateComponentMeta can process it correctly. ` +
+                          `Got: ${propType}`
+                      );
+                    }
                     result[propName] = eval(`(${values})`);
                   } else {
                     throw new Error(

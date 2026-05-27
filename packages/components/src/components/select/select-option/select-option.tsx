@@ -1,5 +1,5 @@
 import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../types';
+import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -13,7 +13,7 @@ import { getComponentCss } from './select-option-styles';
 import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
 const propTypes: PropTypes<typeof SelectOption> = {
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   disabled: AllowedTypes.boolean,
 };
 
@@ -27,8 +27,8 @@ const propTypes: PropTypes<typeof SelectOption> = {
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
 
-  /** The option value. */
-  @Prop() public value?: string;
+  /** The option value. Selected when it strictly matches the p-select value (same type and value). */
+  @Prop() public value?: string | number | null;
 
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
@@ -49,7 +49,7 @@ export class SelectOption {
       <Host
         onClick={!isDisabled && this.onClick}
         role="option"
-        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, !!this.value)}
+        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, this.value !== undefined && this.value !== null)}
       >
         <div
           class={{

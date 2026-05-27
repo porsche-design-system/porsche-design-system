@@ -54,12 +54,12 @@ describe('formStateRestoreCallback', () => {
     expect(component.value).toBe(restoredValue);
   });
 });
-describe('componentDidLoad', () => {
+describe('componentDidRender (setFormValue)', () => {
   it('should call setFormValue with current value', () => {
     const component = initComponent();
     component.value = 'test';
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
@@ -171,5 +171,167 @@ describe('componentWillLoad', () => {
     component.loading = false;
     component.componentWillLoad();
     expect(component['initialLoading']).toBe(false);
+  });
+
+  it('should not mutate value when null is passed, and should preserve null as defaultValue', () => {
+    const component = initComponent();
+    component.value = null;
+    component.componentWillLoad();
+
+    expect(component.value).toBeNull();
+    expect(component['defaultValue']).toBeNull();
+  });
+
+  it('should preserve a number value as-is in defaultValue (no coercion at load time)', () => {
+    const component = initComponent();
+    component.value = 42;
+    component.componentWillLoad();
+
+    expect(component.value).toBe(42);
+    expect(component['defaultValue']).toBe(42);
+  });
+
+  it('should keep an existing string value untouched and store it as defaultValue', () => {
+    const component = initComponent();
+    component.value = 'hello';
+    component.componentWillLoad();
+
+    expect(component.value).toBe('hello');
+    expect(component['defaultValue']).toBe('hello');
+  });
+});
+
+describe('onValueChange (coercion to string)', () => {
+  it("should call setFormValue('') (never null) when value is null", () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = null;
+    component.onValueChange();
+    component.componentDidRender();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
+  });
+
+  it("should call setFormValue('') (never undefined) when value is undefined", () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = undefined;
+    component.onValueChange();
+    component.componentDidRender();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(undefined);
+  });
+
+  it('should sync inputElement.value with empty string when value is undefined', () => {
+    const component = initComponent();
+    component['inputElement'].value = 'old';
+
+    component.value = undefined;
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('');
+  });
+
+  it('should call setFormValue with String(value) when value is a number', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = 42;
+    component.onValueChange();
+    component.componentDidRender();
+
+    expect(setFormValueSpy).toHaveBeenCalledWith('42');
+  });
+
+  it('should sync inputElement.value with the coerced string', () => {
+    const component = initComponent();
+    component['inputElement'].value = 'old';
+
+    component.value = 'new';
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('new');
+
+    component.value = null;
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('');
+
+    component.value = 7;
+    component.onValueChange();
+    expect(component['inputElement'].value).toBe('7');
+  });
+
+  it('should not write inputElement.value when it already matches the coerced string', () => {
+    const component = initComponent();
+    const descriptor = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value');
+    const setterSpy = vi.fn();
+    Object.defineProperty(component['inputElement'], 'value', {
+      configurable: true,
+      get: () => 'same',
+      set: setterSpy,
+    });
+
+    component.value = 'same';
+    component.onValueChange();
+    expect(setterSpy).not.toHaveBeenCalled();
+
+    // restore to avoid leaking into other tests
+    if (descriptor) Object.defineProperty(component['inputElement'], 'value', descriptor);
+  });
+
+  it('should call setFormValue with the new string value', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.value = 'updated';
+    component.onValueChange();
+    component.componentDidRender();
+    expect(setFormValueSpy).toHaveBeenCalledWith('updated');
+  });
+});
+
+describe('formResetCallback (with null history)', () => {
+  it('should restore null when null was the original value', () => {
+    const component = initComponent();
+    component.value = null;
+    component.componentWillLoad(); // captures defaultValue = null
+    component.value = 'user typed';
+
+    component.formResetCallback();
+    expect(component.value).toBeNull();
+  });
+
+  it('should restore the original number value after reset', () => {
+    const component = initComponent();
+    component.value = 42;
+    component.componentWillLoad();
+    component.value = 'user typed';
+
+    component.formResetCallback();
+    expect(component.value).toBe(42);
+  });
+});
+
+describe('formStateRestoreCallback (with null state)', () => {
+  it('should accept null and let the watcher coerce it to an empty string in the DOM', () => {
+    const component = initComponent();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.value = 'something';
+    component.formStateRestoreCallback(null);
+
+    // value can be null (consumer-facing), but DOM/FormData see ''
+    expect(component.value).toBeNull();
+    component.onValueChange();
+    component.componentDidRender();
+    expect(setFormValueSpy).toHaveBeenCalledWith('');
+    expect(setFormValueSpy).not.toHaveBeenCalledWith(null);
+  });
+
+  it('should restore the provided string state as-is', () => {
+    const component = initComponent();
+    component.formStateRestoreCallback('persisted');
+    expect(component.value).toBe('persisted');
   });
 });

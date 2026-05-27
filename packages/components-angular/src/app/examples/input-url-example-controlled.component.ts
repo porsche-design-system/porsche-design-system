@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { type InputUrlInputEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  type InputUrlInputEventDetail,
+  type PInputUrlProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-url-example-controlled',
@@ -13,7 +17,7 @@ import { type InputUrlInputEventDetail, PorscheDesignSystemModule } from '@porsc
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputUrlExampleControlledComponent {
-  value: string = '';
+  value: PInputUrlProps['value'] = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }

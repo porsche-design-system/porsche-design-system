@@ -13,6 +13,13 @@ exports[`should call validateProps() with correct parameters via render for p-ac
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-ai-tag > propTypes with ValidatorFunctions 1`] = `
+{
+  "locale": "oneOf",
+  "variant": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-banner > propTypes with ValidatorFunctions 1`] = `
 {
   "description": "string",
@@ -267,7 +274,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -292,7 +299,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -314,7 +321,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -338,7 +345,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -361,7 +368,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "toggle": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -386,7 +393,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -410,7 +417,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -434,7 +441,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "spellCheck": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -456,7 +463,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -480,7 +487,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -502,7 +509,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -609,7 +616,7 @@ exports[`should call validateProps() with correct parameters via render for p-mu
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "value": "array",
+  "value": "oneOf",
 }
 `;
 
@@ -745,14 +752,14 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-select-option > propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -904,7 +911,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "rows": "number",
   "spellCheck": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
   "wrap": "oneOf",
 }
 `;

@@ -3,18 +3,19 @@ import {
   type MultiSelectChangeEventDetail,
   PMultiSelect,
   PMultiSelectOption,
+  type PMultiSelectProps,
   PText,
 } from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
-const selectedValues = ref<string[]>([]);
+const selectedValues = ref<PMultiSelectProps['value']>([]);
 
 const onChange = (e: CustomEvent<MultiSelectChangeEventDetail>) => {
   selectedValues.value = e.detail.value;
 };
 
 const debugText = computed(() => {
-  return `Selected values: ${selectedValues.value.join(', ') || 'none'}`;
+  return `Selected values: ${selectedValues.value?.join(', ') || 'none'}`;
 });
 </script>
 

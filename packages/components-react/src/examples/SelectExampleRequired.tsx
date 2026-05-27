@@ -1,5 +1,5 @@
 import { PButton, PCheckbox, PSelect, PSelectOption, PText } from '@porsche-design-system/components-react';
-import { type FormEvent, useState } from 'react';
+import { type SubmitEvent, useState } from 'react';
 
 export const SelectExampleRequiredPage = () => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
@@ -14,7 +14,7 @@ export const SelectExampleRequiredPage = () => {
     setHasDeselection((prev) => !prev);
   };
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     setLastSubmittedData(formData.get('options')?.toString() || 'none');
@@ -22,10 +22,16 @@ export const SelectExampleRequiredPage = () => {
 
   return (
     <>
-      <PCheckbox label="Required" name="required" checked={isRequired} onChange={onChangeRequired} />
-      <PCheckbox label="Allow deselection" name="deselection" checked={hasDeselection} onChange={onChangeDeselection} />
-
-      <form onSubmit={onSubmit}>
+      <div className="flex flex-col gap-static-sm">
+        <PCheckbox label="Required" name="required" checked={isRequired} onChange={onChangeRequired} />
+        <PCheckbox
+          label="Allow deselection"
+          name="deselection"
+          checked={hasDeselection}
+          onChange={onChangeDeselection}
+        />
+      </div>
+      <form onSubmit={onSubmit} className="flex flex-col gap-fluid-sm mt-fluid-sm">
         <PSelect name="options" label="Some Label" required={isRequired}>
           {hasDeselection && <PSelectOption></PSelectOption>}
           <PSelectOption value="1">Option 1</PSelectOption>

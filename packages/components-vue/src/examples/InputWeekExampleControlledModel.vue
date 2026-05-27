@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-  import { PInputWeek } from '@porsche-design-system/components-vue';
+  import { PInputWeek, type PInputWeekProps } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
-  const myInputWeek = ref('');
+  const myInputWeek = ref<PInputWeekProps['value']>('');
 
   const resetValue = () => {
     myInputWeek.value = '';

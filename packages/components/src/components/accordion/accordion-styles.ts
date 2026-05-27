@@ -112,6 +112,8 @@ export const getComponentCss = (
           display: 'block',
           // as soon as all browsers support calc-size(auto) to be transitionable, we can remove the overflow rule and animation
           overflow: 'hidden',
+          // adds new containing block to enclose/trap slotted elements with position:absolute
+          transform: 'translate3d(0,0,0)',
           'details[open] &': {
             overflow: 'visible',
             // fix potential overflow issues

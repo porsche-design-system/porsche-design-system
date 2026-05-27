@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { type InputSearchInputEventDetail, PInputSearch, PText } from '@porsche-design-system/components-vue';
+import {
+  type InputSearchInputEventDetail,
+  PInputSearch,
+  type PInputSearchProps,
+  PText,
+} from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
-const value = ref<string>('');
+const value = ref<PInputSearchProps['value']>('');
 
 const onInput = (e: CustomEvent<InputSearchInputEventDetail>) => {
   value.value = (e.target as HTMLInputElement).value;

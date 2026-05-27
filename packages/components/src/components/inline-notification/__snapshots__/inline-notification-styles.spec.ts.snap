@@ -200,6 +200,7 @@ slot:not([name]),slot[name="description"],p {
 .action {
   grid-area: 3/1/auto/-1;
   margin-top: var(--p-spacing-static-md);
+  align-self: flex-start;
 }
 @media(min-width:760px) {
   .notification::before {
@@ -270,6 +271,7 @@ slot:not([name]),slot[name="description"],p {
 .action {
   grid-area: 3/1/auto/-1;
   margin-top: var(--p-spacing-static-md);
+  align-self: flex-start;
 }
 @media(min-width:760px) {
   .notification::before {
@@ -346,6 +348,7 @@ slot:not([name]),slot[name="description"],p {
 .action {
   grid-area: 3/1/auto/-1;
   margin-top: var(--p-spacing-static-md);
+  align-self: flex-start;
 }
 @media(min-width:760px) {
   .notification::before {

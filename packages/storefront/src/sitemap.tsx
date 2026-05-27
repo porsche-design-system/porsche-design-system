@@ -571,11 +571,6 @@ export const sitemap: Routes = {
           },
         },
       },
-      'ai-tag': {
-        name: 'AI Tag',
-        path: '/patterns/ai-tag',
-        type: 'PAGE',
-      },
     },
   },
   templates: {

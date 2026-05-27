@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PInlineNotification } from '@porsche-design-system/components-vue';
+import { PButton, PInlineNotification } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const isLoading = ref(false);
@@ -18,5 +18,5 @@ const onAction = (): void => {
     :actionLoading="isLoading"
     @action="onAction"
   ></PInlineNotification>
-  <button type="button" @click="onAction">Reset `actionLoading`</button>
+  <PButton :type="'button'" :compact="true" @click="onAction">Reset `actionLoading`</PButton>
 </template>

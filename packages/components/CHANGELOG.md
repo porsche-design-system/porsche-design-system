@@ -14,6 +14,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Input Text`: the global `inputmode` attribute is now passed through to the underlying native `input` element
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Input Text`, `Input Number`: extended types of `value` prop to allow `string | number | null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Input Date`, `Input Email`, `Input Password`, `Input Search`, `Input Tel`, `Input Time`, `Input Url`, `Textarea`:
+  extended types of `value` prop to allow `string | null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Select`, `Select Option`: extended types of `value` prop to allow `string | number | null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Multi Select`: extended types of `value` prop to allow `string[] | number[] | null`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Multi Select Option`: extended types of `value` prop to allow `string | number`
+  ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+
+### Fixed
+
+- `Inline Notification`: The action label expands when the heading or content section becomes multiline
+  ([#4418](https://github.com/porsche-design-system/porsche-design-system/pull/4418))
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: form value, validity and `disabled`/`readOnly` state now stay in sync with the
+  internal native control, so native form submission, reset and validation behave correctly when these props change
+  dynamically ([4446](https://github.com/porsche-design-system/porsche-design-system/pull/4446))
+- `Accordion`: not causing scrollbar on outer scroll container (e.g. flyout) when closed with position:absolute slotted content
+  ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
+
+## [4.2.0-rc.1] - 2026-05-18
+
+### Added
+
+- `Angular`, `Vue`: expose typings for component props (e.g. `PButtonProps`, `PInputProps`, etc.) for better type safety
+  and developer experience ([#4403](https://github.com/porsche-design-system/porsche-design-system/pull/4403))
+
+## [4.2.0-rc.0] - 2026-05-12
+
 ### Added
 
 - `Tailwind CSS`: CJK `font-family` `:lang()` selectors are available in the theme by default to auto-detect Simplified
@@ -55,6 +91,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `AG Grid`:
   - custom compact theme ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
   - minor style adjustments ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+- `Ai Tag`: New component to mark AI-generated/AI-modified content
+  ([#4400](https://github.com/porsche-design-system/porsche-design-system/pull/4400))
 
 ## [4.1.0] - 2026-05-06
 
@@ -1103,6 +1141,20 @@ and migration steps.
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+## [3.35.0] - 2026-05-06
+
+## [3.35.0-rc.0] - 2026-05-05
+
+### Added
+
+- `AI-Tag`: New component to mark AI-generated/AI-modified content
+  ([#4236](https://github.com/porsche-design-system/porsche-design-system/pull/4236))
+
+### Fixed
+
+- `Multi Select`, `Select`: not correctly updating when options within `p-optgroup` change dynamically
+  ([#4278](https://github.com/porsche-design-system/porsche-design-system/pull/4279))
 
 ## [3.34.0] - 2026-04-09
 

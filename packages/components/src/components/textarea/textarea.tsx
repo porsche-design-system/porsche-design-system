@@ -10,7 +10,7 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -19,6 +19,7 @@ import {
   hasMessage,
   hasPropValueChanged,
   setAriaIDREF,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
@@ -40,7 +41,7 @@ const propTypes: PropTypes<typeof Textarea> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.null]),
   state: AllowedTypes.oneOf<TextareaState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -89,7 +90,7 @@ export class Textarea {
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** The textarea value. */
-  @Prop({ mutable: true }) public value?: string = '';
+  @Prop({ mutable: true }) public value?: string | null = '';
 
   /** Indicates the validation or overall status of the textarea component. */
   @Prop() public state?: TextareaState = 'none';
@@ -150,24 +151,27 @@ export class Textarea {
 
   @AttachInternals() private internals: ElementInternals;
 
-  private defaultValue: string;
+  private defaultValue: string | null;
   private textAreaElement: HTMLTextAreaElement;
 
+  // Native input.value is always a string; coerce null/undefined to mirror native behavior.
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
+
   @Watch('value')
-  public onValueChange(newValue: string): void {
-    if (this.textAreaElement && this.textAreaElement.value !== newValue) {
-      this.textAreaElement.value = newValue;
+  public onValueChange(): void {
+    if (this.textAreaElement && this.textAreaElement.value !== this.parsedValue) {
+      this.textAreaElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(newValue);
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.value;
+    this.defaultValue = this.value; // preserve original type so reset can restore the consumer's exact input
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher
   }
 
   public formDisabledCallback(disabled: boolean): void {
@@ -175,25 +179,19 @@ export class Textarea {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: string): void {
+  public formStateRestoreCallback(state: string | null): void {
     this.value = state;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
-  public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
-  }
-
   public componentDidRender(): void {
-    if (!this.disabled && !this.readOnly) {
-      this.internals?.setValidity(
-        this.textAreaElement.validity,
-        this.textAreaElement.validationMessage || ' ',
-        this.textAreaElement
-      );
-    }
+    syncFormState(this.internals, this.textAreaElement, {
+      disabled: this.disabled,
+      readOnly: this.readOnly,
+      value: this.parsedValue,
+    });
   }
 
   public render(): JSX.Element {
@@ -235,7 +233,7 @@ export class Textarea {
             onChange={this.onChange}
             onBlur={this.onBlur}
             name={this.name}
-            value={this.value}
+            value={this.parsedValue}
             form={this.form}
             disabled={this.disabled}
             required={this.required}
@@ -252,11 +250,11 @@ export class Textarea {
             <Fragment>
               <span class="sr-only" aria-live="polite">
                 {this.maxLength
-                  ? `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`
-                  : `${this.value.length} characters entered`}
+                  ? `You have ${this.maxLength - this.parsedValue.length} out of ${this.maxLength} characters left`
+                  : `${this.parsedValue.length} characters entered`}
               </span>
               <span class="counter" aria-hidden="true">
-                {this.maxLength ? `${this.value.length}/${this.maxLength}` : `${this.value.length}`}
+                {this.maxLength ? `${this.parsedValue.length}/${this.maxLength}` : `${this.parsedValue.length}`}
               </span>
             </Fragment>
           )}

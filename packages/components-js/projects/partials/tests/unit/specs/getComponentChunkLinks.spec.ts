@@ -20,7 +20,7 @@ describe('validation', () => {
         some-invalid-component
 
       Please use only valid component chunk names:
-        accordion, banner, button-pure, button-tile, button, canvas, carousel, checkbox, crest, display, divider, drilldown, fieldset, flag, flyout, heading, icon, inline-notification, input-date, input-email, input-month, input-number, input-password, input-search, input-tel, input-text, input-time, input-url, input-week, link-pure, link-tile-product, link-tile, link, modal, model-signature, multi-select, optgroup, pagination, pin-code, popover, radio-group, scroller, segmented-control, select, sheet, spinner, stepper-horizontal, switch, table, tabs-bar, tabs, tag-dismissible, tag, text-list, text, textarea, toast, wordmark]
+        accordion, ai-tag, banner, button-pure, button-tile, button, canvas, carousel, checkbox, crest, display, divider, drilldown, fieldset, flag, flyout, heading, icon, inline-notification, input-date, input-email, input-month, input-number, input-password, input-search, input-tel, input-text, input-time, input-url, input-week, link-pure, link-tile-product, link-tile, link, modal, model-signature, multi-select, optgroup, pagination, pin-code, popover, radio-group, scroller, segmented-control, select, sheet, spinner, stepper-horizontal, switch, table, tabs-bar, tabs, tag-dismissible, tag, text-list, text, textarea, toast, wordmark]
     `);
   });
 });

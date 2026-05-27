@@ -13,9 +13,9 @@ const handleSubmit = (e: Event) => {
   <form @submit.prevent="handleSubmit" id="some-form">
     <PTextarea :name="'some-name'" :label="'Some Label'" />
   </form>
-
-  <PButton type="submit" form="some-form">Submit</PButton>
-  <PButton type="reset" form="some-form">Reset</PButton>
-
+  <div class="flex gap-fluid-sm mt-fluid-sm">
+    <PButton type="submit" form="some-form">Submit</PButton>
+    <PButton type="reset" form="some-form">Reset</PButton>
+  </div>
   <PText>Last submitted data: {{ lastSubmittedData }}</PText>
 </template>

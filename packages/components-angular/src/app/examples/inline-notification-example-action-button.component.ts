@@ -13,7 +13,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
       [actionLoading]="isLoading"
       (action)="onAction()"
     ></p-inline-notification>
-    <button type="button" (click)="onAction()">Reset \`actionLoading\`</button>
+    <p-button [type]="'button'" [compact]="true" (click)="onAction()">Reset \`actionLoading\`</p-button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

@@ -1,7 +1,7 @@
 import type { PropMeta } from '@porsche-design-system/component-meta';
 
 export const isAllowedValue = (allowedValues: PropMeta['allowedValues'], value: 'number'): boolean => {
-  if (Array.isArray(allowedValues) && allowedValues.includes(value)) {
+  if (Array.isArray(allowedValues) && (allowedValues as readonly (string | number)[]).includes(value)) {
     return true;
   }
   if (allowedValues === 'number' && value === 'number') {

@@ -13,6 +13,7 @@ export type BaseProps = Omit<DOMAttributes<{}>, 'onChange' | 'onInput' | 'onTogg
     | 'hidden'
     | 'id'
     | 'inert'
+    | 'inputMode'
     | 'lang'
     | 'slot'
     | 'style'

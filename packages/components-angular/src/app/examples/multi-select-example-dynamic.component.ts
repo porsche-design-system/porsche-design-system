@@ -1,9 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import {
+  MultiSelectChangeEventDetail,
+  type PMultiSelectProps,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-dynamic',
   template: `
+  <div class="flex flex-col gap-fluid-sm">
     <p-input-text
       label="Value:"
       name="input-value"
@@ -12,9 +17,10 @@ import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsch
       (input)="onChangeInput($event)"
       placeholder="e.g. 1,2"
     ></p-input-text>
-    <p-button type="button" (click)="onSetValue()" [compact]="true">Set Value</p-button>
-    <p-button type="button" (click)="onResetValue()" [compact]="true">Reset value</p-button>
-
+    <div class="flex gap-fluid-sm">
+      <p-button type="button" (click)="onSetValue()" [compact]="true">Set Value</p-button>
+      <p-button type="button" (click)="onResetValue()" [compact]="true">Reset value</p-button>
+    </div>
     <p-multi-select name="options" label="Some Label" [value]="selectedValues" (change)="onChange($event)">
       @for (idx of optionIndices; track idx) {
         <p-multi-select-option [value]="(idx + 1).toString()"
@@ -22,16 +28,18 @@ import { MultiSelectChangeEventDetail, PorscheDesignSystemModule } from '@porsch
           >
         }
       </p-multi-select>
-
-      <p-button type="button" (click)="onAddOption()" [compact]="true">Add option</p-button>
-      <p-button type="button" (click)="onRemoveOption()" [compact]="true">Remove last option</p-button>
+      <div class="flex gap-fluid-sm">  
+        <p-button type="button" (click)="onAddOption()" [compact]="true">Add option</p-button>
+        <p-button type="button" (click)="onRemoveOption()" [compact]="true">Remove last option</p-button>
+      </div>
+    </div>
     `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleDynamicComponent {
-  selectedValues: string[] = [];
+  selectedValues: PMultiSelectProps['value'] = [];
   inputValue: string = '';
   optionCount: number = 3;
 

@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { PInputEmail } from '@porsche-design-system/components-vue';
+import { PInputEmail, type PInputEmailProps } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const myInputEmail = ref('');
+const myInputEmail = ref<PInputEmailProps['value']>('');
 
 const resetValue = () => {
   myInputEmail.value = '';

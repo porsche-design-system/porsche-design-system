@@ -1,6 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import { shadowMd, shadowLg, shadowSm } from '@porsche-design-system/tokens';
+import { TokensTable } from '@/components/common/TokensTable';
+import { tokensMeta } from '@porsche-design-system/tokens-meta';
 
 export const metadata = {
   title: 'Tokens: Shadow - Porsche Design System',
@@ -13,8 +13,4 @@ export const metadata = {
 
 ## Tokens
 
-| Token      | Description                      | Value      |
-| ---------- | -------------------------------- | ---------- |
-| <Code variant="nowrap">shadowLg</Code> | Holds a **high** `box-shadow`.   | <Code variant="value">{shadowLg}</Code> |
-| <Code variant="nowrap">shadowMd</Code> | Holds a **medium** `box-shadow`. | <Code variant="value">{shadowMd}</Code> |
-| <Code variant="nowrap">shadowSm</Code> | Holds a **low** `box-shadow`.    | <Code variant="value">{shadowSm}</Code> |
+<TokensTable meta={tokensMeta.shadow} />
