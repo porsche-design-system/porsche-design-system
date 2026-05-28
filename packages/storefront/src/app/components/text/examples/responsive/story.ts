@@ -2,11 +2,10 @@
 
 import type { Story } from '@/models/story';
 
-export const textStorySize: Story<'p-text'> = {
+export const textStorySizeResponsive: Story<'p-text'> = {
   state: {
     properties: {
-      className: 'text-[3rem]',
-      size: 'inherit',
+      size: { base: 'sm', l: '2xl' },
     },
   },
   generator: ({ properties } = {}) => [
@@ -17,5 +16,4 @@ export const textStorySize: Story<'p-text'> = {
     },
   ],
 };
-
 

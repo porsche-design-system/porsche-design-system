@@ -4,8 +4,10 @@ import IntroductionDescription from '@/app/components/text/configurator/introduc
 import { textStory } from '@/app/components/text/configurator/story';
 import SemanticsDescription from '@/app/components/text/examples/semantics/example.mdx';
 import { textStorySemantics } from '@/app/components/text/examples/semantics/story';
+import ResponsiveDescription from '@/app/components/text/examples/responsive/example.mdx';
+import { textStorySizeResponsive } from '@/app/components/text/examples/responsive/story';
 import SizeDescription from '@/app/components/text/examples/size/example.mdx';
-import { textStorySize, textStorySizeResponsive } from '@/app/components/text/examples/size/story';
+import { textStorySize } from '@/app/components/text/examples/size/story';
 import Usage from '@/app/components/text/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 
@@ -17,13 +19,14 @@ export const textMeta = {
   examples: {
     size: {
       kind: 'story',
-      name: 'Size',
+      name: 'Static Size',
       description: SizeDescription,
       story: textStorySize,
     },
     sizeResponsive: {
       kind: 'story',
-      name: 'Responsive',
+      name: 'Responsive Size',
+      description: ResponsiveDescription,
       story: textStorySizeResponsive,
     },
     semantics: {
