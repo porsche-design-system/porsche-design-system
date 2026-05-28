@@ -12,21 +12,23 @@ export const metadata = {
 # Table <ComponentStatus tagName="p-table"></ComponentStatus>
 
 <TableOfContents
-  headings={['Caption', tableMeta.examples.layoutFixed.name, 'Column Headers', tableMeta.examples.advanced.name]}
+  headings={[
+    tableMeta.examples.captionProperty.name,
+    tableMeta.examples.captionSlot.name,
+    tableMeta.examples.layoutFixed.name,
+    tableMeta.examples.sorting.name,
+    tableMeta.examples.hideLabel.name,
+    tableMeta.examples.advanced.name,
+  ]}
 />
 
-## Caption
-
-A caption that describes the content of the table can be set in two ways. It's mandatory to define a descriptive caption
-to fulfill accessibility criteria.
-
-### {tableMeta.examples.captionProperty.name}
+## {tableMeta.examples.captionProperty.name}
 
 <tableMeta.examples.captionProperty.description />
 
 <ComponentStory story={tableMeta.examples.captionProperty.story} />
 
-### {tableMeta.examples.captionSlot.name}
+## {tableMeta.examples.captionSlot.name}
 
 <tableMeta.examples.captionSlot.description />
 
@@ -38,17 +40,13 @@ to fulfill accessibility criteria.
 
 <ComponentStory story={tableMeta.examples.layoutFixed.story} />
 
-## Column Headers
-
-The `p-table`'s head can be configured by setting one or more of the following properties on each `p-table-head-cell`.
-
-### {tableMeta.examples.sorting.name}
+## {tableMeta.examples.sorting.name}
 
 <tableMeta.examples.sorting.description />
 
 <ComponentExample codeSample={tableMeta.examples.sorting.example} />
 
-### {tableMeta.examples.hideLabel.name}
+## {tableMeta.examples.hideLabel.name}
 
 <tableMeta.examples.hideLabel.description />
 

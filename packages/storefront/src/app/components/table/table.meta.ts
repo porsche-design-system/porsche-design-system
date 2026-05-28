@@ -24,13 +24,13 @@ export const tableMeta = {
   examples: {
     captionProperty: {
       kind: 'story',
-      name: 'Via property',
+      name: 'Caption via Property',
       description: CaptionPropertyDescription,
       story: tableStoryCaptionProperty,
     },
     captionSlot: {
       kind: 'story',
-      name: 'Via slot',
+      name: 'Caption via Slot',
       description: CaptionSlotDescription,
       story: tableStoryCaptionSlot,
     },
@@ -42,13 +42,13 @@ export const tableMeta = {
     },
     sorting: {
       kind: 'example',
-      name: 'Sorting',
+      name: 'Sortable Columns',
       description: SortingDescription,
       example: tableExampleSorting,
     },
     hideLabel: {
       kind: 'story',
-      name: 'Hide Label',
+      name: 'Hide Column Label',
       description: HideLabelDescription,
       story: tableStoryHideLabel,
     },
