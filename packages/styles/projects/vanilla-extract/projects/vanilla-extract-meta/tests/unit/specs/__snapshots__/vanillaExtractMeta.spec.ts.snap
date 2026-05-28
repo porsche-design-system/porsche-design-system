@@ -500,9 +500,11 @@ exports[`should match snapshot 1`] = `
         "name": "getFocusStyle",
       },
     },
-    "getFocusVisibleStyle": {
-      "description": "Applies a **focus-visible** outline style with configurable \`offset\`.",
-      "name": "getFocusVisibleStyle({ offset: string = '2px' })",
+    "helpers": {
+      "getFocusVisibleStyle": {
+        "description": "Applies a **focus-visible** outline style with configurable \`offset\`.",
+        "name": "getFocusVisibleStyle({ offset: string = '2px' })",
+      },
     },
   },
   "font": {
@@ -1010,17 +1012,19 @@ exports[`should match snapshot 1`] = `
       "name": "breakpoints",
       "value": "["base","xs","s","m","l","xl","xxl"]",
     },
-    "getMediaQueryMax": {
-      "description": "Returns a **max-width** media query string for the specified breakpoint.",
-      "name": "getMediaQueryMax('xs'|'s'|'m'|'l'|'xl'|'xxl')",
-    },
-    "getMediaQueryMin": {
-      "description": "Returns a **min-width** media query string for the specified breakpoint.",
-      "name": "getMediaQueryMin('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')",
-    },
-    "getMediaQueryMinMax": {
-      "description": "Returns a **min-width and max-width** media query string for the specified breakpoints.",
-      "name": "getMediaQueryMinMax('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')",
+    "helpers": {
+      "getMediaQueryMax": {
+        "description": "Returns a **max-width** media query string for the specified breakpoint.",
+        "name": "getMediaQueryMax('xs'|'s'|'m'|'l'|'xl'|'xxl')",
+      },
+      "getMediaQueryMin": {
+        "description": "Returns a **min-width** media query string for the specified breakpoint.",
+        "name": "getMediaQueryMin('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')",
+      },
+      "getMediaQueryMinMax": {
+        "description": "Returns a **min-width and max-width** media query string for the specified breakpoints.",
+        "name": "getMediaQueryMinMax('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')",
+      },
     },
   },
   "motion": {
@@ -1136,9 +1140,11 @@ exports[`should match snapshot 1`] = `
     },
   },
   "skeleton": {
-    "getSkeletonStyle": {
-      "description": "Applies a skeleton placeholder style to indicate loading state.",
-      "name": "getSkeletonStyle(animationName: string)",
+    "helpers": {
+      "getSkeletonStyle": {
+        "description": "Applies a skeleton placeholder style to indicate loading state.",
+        "name": "getSkeletonStyle(animationName: string)",
+      },
     },
     "skeletonKeyframes": {
       "description": "Holds the **keyframes** to be used with the \`keyframes\` vanilla-extract function.",
