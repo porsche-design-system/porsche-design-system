@@ -3,7 +3,7 @@ import Accessibility from '@/app/components/fieldset/accessibility/page.mdx';
 import IntroductionDescription from '@/app/components/fieldset/configurator/introduction.mdx';
 import { fieldsetSlotStories, fieldsetStory } from '@/app/components/fieldset/configurator/story';
 import RequiredDescription from '@/app/components/fieldset/examples/required/example.mdx';
-import { fieldsetStoryRequired, fieldsetStoryRequiredRadio } from '@/app/components/fieldset/examples/required/story';
+import { fieldsetStoryRequired } from '@/app/components/fieldset/examples/required/story';
 import SlottedLabelDescription from '@/app/components/fieldset/examples/slotted-label/example.mdx';
 import { fieldsetStorySlottedLabel } from '@/app/components/fieldset/examples/slotted-label/story';
 import SlottedMessageDescription from '@/app/components/fieldset/examples/slotted-message/example.mdx';
@@ -34,11 +34,6 @@ export const fieldsetMeta = {
       kind: 'story',
       name: 'Required',
       description: RequiredDescription,
-      story: fieldsetStoryRequiredRadio,
-    },
-    requiredInputs: {
-      kind: 'story',
-      name: 'Required fieldset with input fields',
       story: fieldsetStoryRequired,
     },
   },
@@ -46,4 +41,3 @@ export const fieldsetMeta = {
   accessibility: Accessibility,
   api: componentMeta['p-fieldset'],
 } satisfies ComponentDocsMeta<'p-fieldset'>;
-
