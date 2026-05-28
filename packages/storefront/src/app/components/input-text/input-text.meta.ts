@@ -1,8 +1,9 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { inputTextExampleForm } from '@porsche-design-system/shared/examples';
+import { inputTextExampleControlled, inputTextExampleForm } from '@porsche-design-system/shared/examples';
 import Accessibility from '@/app/components/input-text/accessibility/page.mdx';
 import IntroductionDescription from '@/app/components/input-text/configurator/introduction.mdx';
 import { inputTextSlotStories, inputTextStory } from '@/app/components/input-text/configurator/story';
+import ControlledDescription from '@/app/components/input-text/examples/controlled/example.mdx';
 import FormDescription from '@/app/components/input-text/examples/form/example.mdx';
 import SlotsDescription from '@/app/components/input-text/examples/slots/example.mdx';
 import { inputTextStorySlots } from '@/app/components/input-text/examples/slots/story';
@@ -21,6 +22,12 @@ export const inputTextMeta = {
       name: 'Form',
       description: FormDescription,
       example: inputTextExampleForm,
+    },
+    controlled: {
+      kind: 'example',
+      name: 'Controlled Input (Preventing User Input)',
+      description: ControlledDescription,
+      example: inputTextExampleControlled,
     },
     slots: {
       kind: 'story',
