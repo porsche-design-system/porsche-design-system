@@ -14,8 +14,8 @@ export const metadata = {
 
 ## JS Functions
 
-<StylesTable meta={filterMeta(vanillaExtractMeta.mediaQuery, (k) => k.startsWith('get'))} columnLabel="JS Function" />
+<StylesTable meta={vanillaExtractMeta.mediaQuery.helpers} columnLabel="JS Function" />
 
 ## JS
 
-<StylesTable meta={filterMeta(vanillaExtractMeta.mediaQuery, (k) => !k.startsWith('get'))} columnLabel="JS" />
+<StylesTable meta={filterMeta(vanillaExtractMeta.mediaQuery, (k) => k !== 'helpers')} columnLabel="JS" />

@@ -1,5 +1,4 @@
 import { StylesTable } from '@/components/common/StylesTable';
-import { withoutDeprecated } from '@/lib/withoutDeprecated';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract-meta';
 
@@ -14,4 +13,4 @@ export const metadata = {
 
 ## JS Functions
 
-<StylesTable meta={withoutDeprecated(vanillaExtractMeta.focus)} columnLabel="JS Function" />
+<StylesTable meta={vanillaExtractMeta.focus.helpers} columnLabel="JS Function" />
