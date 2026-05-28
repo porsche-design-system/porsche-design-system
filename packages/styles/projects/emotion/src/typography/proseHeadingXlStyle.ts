@@ -1,8 +1,9 @@
 import { colorPrimary } from '../color';
-import { fontPorscheNext, fontWeightNormal, leadingNormal, typescaleXl } from '../font';
+import { fontPorscheNext, fontWeightNormal, getCJKFontFamilyStyle, leadingNormal, typescaleXl } from '../font';
 
 /** Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. */
 export const proseHeadingXlStyle = {
+  ...getCJKFontFamilyStyle(),
   font: `${fontWeightNormal} ${typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
   color: colorPrimary,
 };

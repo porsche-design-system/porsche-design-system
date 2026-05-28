@@ -1,6 +1,11 @@
 export * from './deprecated';
-export { fontHyphenationStyle } from './fontHyphenationStyle';
 export * from './family';
+export { fontHyphenationStyle } from './fontHyphenationStyle';
+export { fontPorscheNextJa } from './fontPorscheNextJa';
+export { fontPorscheNextKo } from './fontPorscheNextKo';
+export { fontPorscheNextZhHans } from './fontPorscheNextZhHans';
+export { fontPorscheNextZhHant } from './fontPorscheNextZhHant';
+export { getCJKFontFamilyStyle } from './getCJKFontFamilyStyle';
 export * from './lineHeight';
 export * from './size';
 export * from './weight';
