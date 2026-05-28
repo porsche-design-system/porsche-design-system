@@ -1,14 +1,9 @@
 <div class="root">
   <div class="wrapper">
-    <input
-      id="radio-group-option"
-      type="radio"
-      tabindex="-1"
-      aria-hidden="true"
-    />
+    <span class="radio" aria-hidden="true"> </span>
   </div>
   <div class="label-wrapper">
-    <label class="label" id="label" for="radio-group-option"> Some label</label>
+    <label class="label" id="label"> Some label</label>
     <slot name="label-after"> </slot>
   </div>
   <span id="loading" class="loading" role="status"> </span>

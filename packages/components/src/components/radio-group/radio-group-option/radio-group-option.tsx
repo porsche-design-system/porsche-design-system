@@ -1,8 +1,9 @@
-import { AttachInternals, Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  getNamedSlot,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -11,7 +12,7 @@ import { Label } from '../../common/label/label';
 import { LoadingMessage } from '../../common/loading-message/loading-message';
 import type { RadioGroupChangeEventDetail } from '../radio-group/radio-group-utils';
 import { getComponentCss } from './radio-group-option-styles';
-import type { RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
+import { getRadioGroupOptionAriaAttributes, type RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
 
 const propTypes: PropTypes<typeof RadioGroupOption> = {
   value: AllowedTypes.string,
@@ -33,7 +34,7 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
 export class RadioGroupOption {
   @Element() public host!: HTMLElement & RadioGroupOptionInternalHTMLProps;
 
-  /** The value for the input. */
+  /** The value for the option. */
   @Prop() public value?: string;
 
   /** Text content for a user-facing label. */
@@ -45,10 +46,7 @@ export class RadioGroupOption {
   /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  @AttachInternals() private internals: ElementInternals;
-
   private initialLoading: boolean = false;
-  private inputElement!: HTMLInputElement;
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-radio-group']);
@@ -67,60 +65,35 @@ export class RadioGroupOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { selected: isSelected, name, state } = this.host;
+    const { selected: isSelected, state } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
     const isOptionLoading = this.loading && !isSelected;
     const isLoading = isOptionLoading || this.host.loadingParent;
 
     attachComponentCss(this.host, getComponentCss, isDisabled, isLoading, state);
 
-    const id = 'radio-group-option';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    // Workaround to get correct number and index of items announced by screen readers (e.g. "1 of 3")
-    // Internals is used instead of sprouting aria role/attributes to the host element to not expose axe-core violations of nested ui elements
-    const internals = this.internals;
-    if (internals) {
-      internals.role = 'radio';
-      internals.ariaChecked = isSelected ? 'true' : 'false';
-      internals.ariaDisabled = isDisabled || isLoading ? 'true' : null;
-      internals.ariaInvalid = state === 'error' ? 'true' : null;
-    }
-
     return (
-      <Host onClick={!isDisabled && !isLoading && this.onHostClick} onBlur={this.onBlur}>
+      <Host
+        onClick={!isDisabled && !isLoading && this.onHostClick}
+        onBlur={this.onBlur}
+        {...getRadioGroupOptionAriaAttributes(isSelected, isDisabled, isLoading, state)}
+      >
         <div class="root">
           <div class="wrapper">
-            <input
-              id={id}
-              type="radio"
-              name={name}
-              checked={isSelected}
-              disabled={isDisabled || isLoading}
-              value={this.value}
-              tabIndex={-1}
-              aria-hidden="true"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-                this.host.focus();
+            <span
+              class={{
+                radio: true,
+                'radio--checked': isSelected,
               }}
-              onChange={this.onChange}
-              ref={(el) => (this.inputElement = el)}
+              aria-hidden="true"
             />
-            {/* true if this option should show its own loading state (option loading, NOT selected, parent NOT loading) */}
             {isOptionLoading && !this.host.loadingParent && (
               <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />
             )}
           </div>
-          <Label
-            host={this.host}
-            label={this.label}
-            htmlFor={id}
-            isDisabled={isDisabled}
-            isLoading={isLoading}
-            stopClickPropagation={true}
-          />
+          <Label host={this.host} label={this.label} isDisabled={isDisabled} isLoading={isLoading} />
           {!this.host.loadingParent && (
             <LoadingMessage loading={isOptionLoading} initialLoading={this.initialLoading} />
           )}
@@ -129,13 +102,20 @@ export class RadioGroupOption {
     );
   }
 
-  private onChange = (e: RadioGroupChangeEventDetail): void => {
-    e.stopPropagation();
-    e.stopImmediatePropagation();
+  private onHostClick = (e: MouseEvent): void => {
+    if (this.host.selected || e.target === getNamedSlot(this.host, 'label-after')) {
+      return;
+    }
+    this.emitSelectionChange(e);
+  };
+
+  private emitSelectionChange = (originalEvent: RadioGroupChangeEventDetail): void => {
+    originalEvent.stopPropagation();
+    originalEvent.stopImmediatePropagation();
     this.host.dispatchEvent(
       new CustomEvent('internalRadioGroupOptionChange', {
         bubbles: true,
-        detail: e, // forward native input change event
+        detail: originalEvent,
       })
     );
   };
@@ -148,10 +128,5 @@ export class RadioGroupOption {
         bubbles: true,
       })
     );
-  };
-
-  private onHostClick = (): void => {
-    this.host.focus();
-    this.inputElement.click();
   };
 }

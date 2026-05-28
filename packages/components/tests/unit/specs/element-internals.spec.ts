@@ -5,7 +5,7 @@ import { TAG_NAMES } from '@porsche-design-system/shared';
  * Reflecting 'form' and 'name' as an attribute ensures it is properly handled in the form submission process when using ElementInternals API.
  */
 describe('Element Internals', () => {
-  const amountOfComponentsUsingElementInternalsApi = 21;
+  const amountOfComponentsUsingElementInternalsApi = 20;
   const componentsWithElementInternals = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasElementInternals);
 
   it('should have certain amount of components', () => {
@@ -13,8 +13,8 @@ describe('Element Internals', () => {
   });
 
   componentsWithElementInternals
-    // filter out select/multiselect-option/radio-group-option because ElementInternals is used to expose the AOM (ARIA) on the element
-    .filter((tagName) => !['p-select-option', 'p-multi-select-option', 'p-radio-group-option'].includes(tagName))
+    // filter out select/multiselect-option because ElementInternals is used to expose the AOM (ARIA) on the element
+    .filter((tagName) => !['p-select-option', 'p-multi-select-option'].includes(tagName))
     .forEach((tagName) => {
       const componentMeta = getComponentMeta(tagName);
       console.log(tagName);

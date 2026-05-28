@@ -2468,7 +2468,7 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * The value for the input.
+          * The value for the option.
          */
         "value"?: string;
     }
@@ -6841,7 +6841,7 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * The value for the input.
+          * The value for the option.
          */
         "value"?: string;
     }

@@ -10,7 +10,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -24,7 +24,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -37,34 +37,34 @@ input {
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-error);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
 
 @media(hover:hover) {
-  input:hover {
+  .radio:hover {
     border-color: var(--p-color-error);
   }
 }
@@ -147,7 +147,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -161,7 +161,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -174,34 +174,34 @@ input {
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-error);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
 
 @media(hover:hover) {
-  input:hover {
+  .radio:hover {
     border-color: var(--p-color-error);
   }
 }
@@ -284,7 +284,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -298,7 +298,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -311,34 +311,34 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-primary);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
 
 @media(hover:hover) {
-  input:hover {
+  .radio:hover {
     border-color: var(--p-color-primary);
   }
 }
@@ -421,7 +421,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -435,7 +435,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -448,34 +448,34 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-primary);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
 
 @media(hover:hover) {
-  input:hover {
+  .radio:hover {
     border-color: var(--p-color-primary);
   }
 }
@@ -558,7 +558,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -572,7 +572,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -585,34 +585,34 @@ input {
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-success);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
 
 @media(hover:hover) {
-  input:hover {
+  .radio:hover {
     border-color: var(--p-color-success);
   }
 }
@@ -695,7 +695,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -709,7 +709,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -722,34 +722,34 @@ input {
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-success);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
 
 @media(hover:hover) {
-  input:hover {
+  .radio:hover {
     border-color: var(--p-color-success);
   }
 }
@@ -832,7 +832,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -846,7 +846,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -858,33 +858,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-error);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -975,7 +974,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -989,7 +988,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -1001,33 +1000,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-error);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -1118,7 +1116,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -1132,7 +1130,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -1144,33 +1142,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-primary);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -1261,7 +1258,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -1275,7 +1272,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -1287,33 +1284,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-primary);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -1404,7 +1400,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -1418,7 +1414,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -1430,33 +1426,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-success);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -1547,7 +1542,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -1561,7 +1556,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -1573,33 +1568,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-success);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -1690,7 +1684,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -1704,7 +1698,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -1716,33 +1710,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-error);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -1839,7 +1832,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -1853,7 +1846,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -1865,33 +1858,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-error);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -1988,7 +1980,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -2002,7 +1994,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -2014,33 +2006,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-primary);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -2137,7 +2128,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -2151,7 +2142,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -2163,33 +2154,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-primary);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -2286,7 +2276,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -2300,7 +2290,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -2312,33 +2302,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-success);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -2435,7 +2424,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -2449,7 +2438,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -2461,33 +2450,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-success);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -2584,7 +2572,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -2598,7 +2586,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -2610,33 +2598,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-error);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -2740,7 +2727,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -2754,7 +2741,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -2766,33 +2753,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-error);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -2896,7 +2882,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -2910,7 +2896,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -2922,33 +2908,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-primary);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -3052,7 +3037,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -3066,7 +3051,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -3078,33 +3063,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-primary);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -3208,7 +3192,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -3222,7 +3206,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -3234,33 +3218,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-success);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }
@@ -3364,7 +3347,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
 :host([hidden]) {
   display: none !important;
 }
-:host(:focus-visible) input {
+:host(:focus-visible) .radio {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
@@ -3378,7 +3361,7 @@ slot[name="label-after"]::slotted(*) {
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-input {
+.radio {
   all: unset;
   display: grid;
   width: calc(var(--_p-radio-group-option-a) * 1.75rem);
@@ -3390,33 +3373,32 @@ input {
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-full);
-  pointer-events: none;
 }
-input:checked {
+.radio--checked {
   background: var(--p-color-success);
 }
-input::before {
+.radio::before {
   content: "";
   grid-area: 1/1;
 }
-input::after {
+.radio::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
+.radio--checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>') center/contain no-repeat;
   background-color: var(--p-color-canvas);
 }
 @media(forced-colors:active) {
-  :host(:focus-visible) input {
+  :host(:focus-visible) .radio {
     outline-color: Highlight;
   }
-  input {
+  .radio {
     border-color: GrayText;
   }
-  input:checked::before {
+  .radio--checked::before {
     background: CanvasText;
   }
 }

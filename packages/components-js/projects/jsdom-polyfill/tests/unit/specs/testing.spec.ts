@@ -90,6 +90,19 @@ describe('getByTextShadowed()', () => {
   });
 });
 
+describe('getByRoleShadowed() for p-radio-group-option', () => {
+  it('should find radio options by role and accessible name', async () => {
+    document.body.innerHTML = `<p-radio-group label="Radio Button" name="some-name">
+  <p-radio-group-option value="a" label="Radio Option A"></p-radio-group-option>
+  <p-radio-group-option value="b" label="Radio Option B"></p-radio-group-option>
+</p-radio-group>`;
+    await componentsReady();
+
+    expect(getByRoleShadowed('radio', { name: 'Radio Option A' })).toBeInTheDocument();
+    expect(getByRoleShadowed('radio', { name: 'Radio Option B' })).toBeInTheDocument();
+  });
+});
+
 describe('getByRoleShadowed()', () => {
   it('should be supported for form components', async () => {
     document.body.innerHTML = `

@@ -319,7 +319,8 @@ describe('updateTabStops', () => {
 describe('onKeyDown', () => {
   const createOption = () => {
     const click = vi.fn();
-    return { click } as unknown as RadioGroupOption;
+    const focus = vi.fn();
+    return { click, focus } as unknown as RadioGroupOption;
   };
 
   beforeEach(() => {
@@ -363,5 +364,22 @@ describe('onKeyDown', () => {
 
     expect(preventDefault).not.toHaveBeenCalled();
     expect(opt.click).not.toHaveBeenCalled();
+  });
+
+  it('should focus the activated option on ArrowDown', () => {
+    const component = initComponent();
+    const opt1 = createOption();
+    const opt2 = createOption();
+    (component as any).radioGroupOptions = [opt1, opt2];
+    vi.spyOn(radioGroupUtils, 'getActiveOptionIndex').mockReturnValue(0);
+    vi.spyOn(radioGroupUtils, 'findNextEnabledIndex').mockReturnValue(1);
+    vi.spyOn(radioGroupUtils, 'isRadioGroupOptionFocusable').mockReturnValue(true);
+
+    const event = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true });
+    (component as any).onKeyDown(event);
+
+    expect(opt2.click).toHaveBeenCalled();
+    expect(opt2.focus).toHaveBeenCalled();
+    expect(opt1.focus).not.toHaveBeenCalled();
   });
 });

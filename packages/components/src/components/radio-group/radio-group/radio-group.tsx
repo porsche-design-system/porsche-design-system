@@ -239,12 +239,14 @@ export class RadioGroup {
     const inputMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
 
     return (
+      // biome-ignore lint/a11y/useAriaPropsSupportedByRole: the role radiogroup which supports the aria-orientation attribute is in the getFieldsetAriaAttributes function
       <fieldset
         class="root"
         disabled={this.disabled}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error', { role: 'radiogroup' })}
         aria-describedby={setAriaIDREF(this.loading && loadingId, inputMessageId, inputDescriptionId)}
         aria-labelledby={hasLabel(this.host, this.label) ? labelId : null}
+        aria-orientation={this.direction === 'column' ? 'vertical' : 'horizontal'}
         onKeyDown={this.onKeyDown}
       >
         <Label
@@ -256,7 +258,7 @@ export class RadioGroup {
           isLoading={this.loading}
           isDisabled={this.disabled}
         />
-        <div class="wrapper">
+        <div class="wrapper" role="presentation">
           <slot onSlotchange={this.onSlotChange} />
           {this.loading && <PrefixedTagNames.pSpinner class="spinner" aria-hidden="true" />}
         </div>
@@ -266,7 +268,7 @@ export class RadioGroup {
     );
   }
 
-  private activateOption(index: number): void {
+  private activateOption(index: number, moveFocus = false): void {
     const option = this.radioGroupOptions[index];
     if (option && isRadioGroupOptionFocusable(option)) {
       /*
@@ -274,7 +276,12 @@ export class RadioGroup {
       the focus could land on the wrong (non-selected) option. Deferring the click
       with requestAnimationFrame ensures previous blur/focus events are processed first.
       */
-      requestAnimationFrame(() => option.click());
+      requestAnimationFrame(() => {
+        option.click();
+        if (moveFocus) {
+          option.focus();
+        }
+      });
     }
   }
 
@@ -300,16 +307,14 @@ export class RadioGroup {
       case 'ArrowDown': {
         event.preventDefault();
         const nextIndex = findNextEnabledIndex(this.radioGroupOptions, currentIndex, +1);
-        this.activateOption(nextIndex);
-        this.updateTabStops();
+        this.activateOption(nextIndex, true);
         return;
       }
       case 'ArrowLeft':
       case 'ArrowUp': {
         event.preventDefault();
         const nextIndex = findNextEnabledIndex(this.radioGroupOptions, currentIndex, -1);
-        this.activateOption(nextIndex);
-        this.updateTabStops();
+        this.activateOption(nextIndex, true);
         return;
       }
       default:

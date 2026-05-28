@@ -52,11 +52,11 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           },
           ...hostHiddenStyles,
         }),
-        '&(:focus-visible) input': getFocusBaseStyles(),
+        '&(:focus-visible) .radio': getFocusBaseStyles(),
       },
       ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
-      input: {
+      '.radio': {
         all: 'unset',
         display: 'grid', // ensures the pseudo-element can be positioned correctly
         width: radioDimension,
@@ -69,7 +69,6 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         border: `${radioBorderWidth} solid ${formStateBorderColor}`,
         borderRadius: radiusFull,
         ...(disabledOrLoading && {
-          pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
           ...forcedColorsMediaQuery({
             borderColor: 'GrayText',
           }),
@@ -80,7 +79,7 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
               borderColor: formStateBorderHoverColor,
             },
           })),
-        '&:checked': {
+        '&--checked': {
           background: state === 'none' ? colorPrimary : formStateBorderColor,
           '&::before': {
             WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
@@ -97,8 +96,8 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           gridArea: '1/1',
         },
         '&::after': {
-          // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
-          // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
+          // Ensures the touch target is at least 24px, even if the radio is smaller than the minimum touch target size.
+          // This pseudo-element expands the clickable area without affecting the visual size of the radio itself.
           content: '""',
           margin: radioTouchInset,
           gridArea: '1/1',
