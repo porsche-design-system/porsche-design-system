@@ -187,6 +187,8 @@ const comparePathSegment = (a: string, b: string, depth: number): number => {
   if (a === b) return 0;
   if (a === 'deprecated') return 1;
   if (b === 'deprecated') return -1;
+  if (a === 'helpers') return 1;
+  if (b === 'helpers') return -1;
   return depth === 0
     ? compareByOrder(CATEGORY_ORDER, camelCase(a), camelCase(b)) || a.localeCompare(b)
     : a.localeCompare(b);
