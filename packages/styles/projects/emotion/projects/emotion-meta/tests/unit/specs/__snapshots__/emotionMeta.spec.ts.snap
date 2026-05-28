@@ -634,6 +634,32 @@ exports[`should match snapshot 1`] = `
         "name": "fontPorscheNext",
         "value": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
       },
+      "fontPorscheNextJa": {
+        "description": "Holds the **Porsche Next** font family (Japanese) along with fallback fonts.",
+        "name": "fontPorscheNextJa",
+        "value": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+      },
+      "fontPorscheNextKo": {
+        "description": "Holds the **Porsche Next** font family (Korean) along with fallback fonts.",
+        "name": "fontPorscheNextKo",
+        "value": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+      },
+      "fontPorscheNextZhHans": {
+        "description": "Holds the **Porsche Next** font family (Simplified Chinese) along with fallback fonts.",
+        "name": "fontPorscheNextZhHans",
+        "value": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+      },
+      "fontPorscheNextZhHant": {
+        "description": "Holds the **Porsche Next** font family (Traditional Chinese) along with fallback fonts.",
+        "name": "fontPorscheNextZhHant",
+        "value": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+      },
+    },
+    "helpers": {
+      "getCJKFontFamilyStyle": {
+        "description": "Applies locale-specific **Porsche Next** font stacks for **CJK** languages (Simplified Chinese, Traditional Chinese, Japanese, Korean) based on the element's \`lang\` attribute.",
+        "name": "getCJKFontFamilyStyle()",
+      },
     },
     "lineHeight": {
       "leadingNormal": {
