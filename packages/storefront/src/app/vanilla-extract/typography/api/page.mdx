@@ -2,6 +2,10 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 import { Code } from '@/components/common/Code';
 import {
   fontPorscheNext,
+  fontPorscheNextZhHant,
+  fontPorscheNextZhHans,
+  fontPorscheNextJa,
+  fontPorscheNextKo,
   fontWeightNormal,
   fontWeightSemibold,
   fontWeightBold,
@@ -25,7 +29,7 @@ export const metadata = {
 
 # Typography
 
-<TableOfContents headings={['JS Objects', 'JS Variables']} />
+<TableOfContents headings={['JS Objects', 'JS Variables', 'CJK auto-detection']} />
 
 ## JS Objects
 
@@ -61,20 +65,51 @@ export const metadata = {
 
 ## JS Variables
 
-| JS                                               | Description                                                                               | Value                                             |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| <Code variant="nowrap">fontPorscheNext</Code>    | Holds the **Porsche Next** font family along with fallback fonts.                         | <Code variant="value">{fontPorscheNext}</Code>    |
-| <Code variant="nowrap">fontWeightNormal</Code>   | Holds the **normal** font weight optimized for the Porsche Next typeface.                 | <Code variant="value">{fontWeightNormal}</Code>   |
-| <Code variant="nowrap">fontWeightSemibold</Code> | Holds the **semibold** font weight optimized for the Porsche Next typeface.               | <Code variant="value">{fontWeightSemibold}</Code> |
-| <Code variant="nowrap">fontWeightBold</Code>     | Holds the **bold** font weight optimized for the Porsche Next typeface.                   | <Code variant="value">{fontWeightBold}</Code>     |
-| <Code variant="nowrap">leadingNormal</Code>      | Holds a dynamic default line height specifically optimized for the Porsche Next typeface. | <Code variant="value">{leadingNormal}</Code>      |
-| <Code variant="nowrap">typescale2Xs</Code>       | Holds the **2x-small** font size optimized for the Porsche Next typeface.                 | <Code variant="value">{typescale2Xs}</Code>       |
-| <Code variant="nowrap">typescaleXs</Code>        | Holds the **x-small** font size optimized for the Porsche Next typeface.                  | <Code variant="value">{typescaleXs}</Code>        |
-| <Code variant="nowrap">typescaleSm</Code>        | Holds the **small** font size optimized for the Porsche Next typeface.                    | <Code variant="value">{typescaleSm}</Code>        |
-| <Code variant="nowrap">typescaleMd</Code>        | Holds the **medium** font size optimized for the Porsche Next typeface.                   | <Code variant="value">{typescaleMd}</Code>        |
-| <Code variant="nowrap">typescaleLg</Code>        | Holds the **large** font size optimized for the Porsche Next typeface.                    | <Code variant="value">{typescaleLg}</Code>        |
-| <Code variant="nowrap">typescaleXl</Code>        | Holds the **x-large** font size optimized for the Porsche Next typeface.                  | <Code variant="value">{typescaleXl}</Code>        |
-| <Code variant="nowrap">typescale2Xl</Code>       | Holds the **2x-large** font size optimized for the Porsche Next typeface.                 | <Code variant="value">{typescale2Xl}</Code>       |
-| <Code variant="nowrap">typescale3Xl</Code>       | Holds the **3x-large** font size optimized for the Porsche Next typeface.                 | <Code variant="value">{typescale3Xl}</Code>       |
-| <Code variant="nowrap">typescale4Xl</Code>       | Holds the **4x-large** font size optimized for the Porsche Next typeface.                 | <Code variant="value">{typescale4Xl}</Code>       |
-| <Code variant="nowrap">typescale5Xl</Code>       | Holds the **5x-large** font size optimized for the Porsche Next typeface.                 | <Code variant="value">{typescale5Xl}</Code>       |
+| JS                                                  | Description                                                                                   | Value                                                |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| <Code variant="nowrap">fontPorscheNext</Code>       | Holds the **Porsche Next** font family along with fallback fonts.                             | <Code variant="value">{fontPorscheNext}</Code>       |
+| <Code variant="nowrap">fontPorscheNextZhHans</Code> | Holds the **Porsche Next** font family along with fallback fonts for **Simplified Chinese**.  | <Code variant="value">{fontPorscheNextZhHans}</Code> |
+| <Code variant="nowrap">fontPorscheNextZhHant</Code> | Holds the **Porsche Next** font family along with fallback fonts for **Traditional Chinese**. | <Code variant="value">{fontPorscheNextZhHant}</Code> |
+| <Code variant="nowrap">fontPorscheNextJa</Code>     | Holds the **Porsche Next** font family along with fallback fonts for **Japanese**.            | <Code variant="value">{fontPorscheNextJa}</Code>     |
+| <Code variant="nowrap">fontPorscheNextKo</Code>     | Holds the **Porsche Next** font family along with fallback fonts for **Korean**.              | <Code variant="value">{fontPorscheNextKo}</Code>     |
+| <Code variant="nowrap">fontWeightNormal</Code>      | Holds the **normal** font weight optimized for the Porsche Next typeface.                     | <Code variant="value">{fontWeightNormal}</Code>      |
+| <Code variant="nowrap">fontWeightSemibold</Code>    | Holds the **semibold** font weight optimized for the Porsche Next typeface.                   | <Code variant="value">{fontWeightSemibold}</Code>    |
+| <Code variant="nowrap">fontWeightBold</Code>        | Holds the **bold** font weight optimized for the Porsche Next typeface.                       | <Code variant="value">{fontWeightBold}</Code>        |
+| <Code variant="nowrap">leadingNormal</Code>         | Holds a dynamic default line height specifically optimized for the Porsche Next typeface.     | <Code variant="value">{leadingNormal}</Code>         |
+| <Code variant="nowrap">typescale2Xs</Code>          | Holds the **2x-small** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale2Xs}</Code>          |
+| <Code variant="nowrap">typescaleXs</Code>           | Holds the **x-small** font size optimized for the Porsche Next typeface.                      | <Code variant="value">{typescaleXs}</Code>           |
+| <Code variant="nowrap">typescaleSm</Code>           | Holds the **small** font size optimized for the Porsche Next typeface.                        | <Code variant="value">{typescaleSm}</Code>           |
+| <Code variant="nowrap">typescaleMd</Code>           | Holds the **medium** font size optimized for the Porsche Next typeface.                       | <Code variant="value">{typescaleMd}</Code>           |
+| <Code variant="nowrap">typescaleLg</Code>           | Holds the **large** font size optimized for the Porsche Next typeface.                        | <Code variant="value">{typescaleLg}</Code>           |
+| <Code variant="nowrap">typescaleXl</Code>           | Holds the **x-large** font size optimized for the Porsche Next typeface.                      | <Code variant="value">{typescaleXl}</Code>           |
+| <Code variant="nowrap">typescale2Xl</Code>          | Holds the **2x-large** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale2Xl}</Code>          |
+| <Code variant="nowrap">typescale3Xl</Code>          | Holds the **3x-large** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale3Xl}</Code>          |
+| <Code variant="nowrap">typescale4Xl</Code>          | Holds the **4x-large** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale4Xl}</Code>          |
+| <Code variant="nowrap">typescale5Xl</Code>          | Holds the **5x-large** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale5Xl}</Code>          |
+
+## CJK auto-detection
+
+Use the `getCJKFontFamilyStyle()` helper on any style object that sets `fontFamily` to automatically swap to the
+locale-specific **Porsche Next** font stack for **Simplified Chinese**, **Traditional Chinese**, **Japanese** or
+**Korean** based on the nearest `lang` attribute (typically set on `<html>`).
+
+| JS Function                                           | Description                                                                                                                                                                     |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <Code variant="nowrap">getCJKFontFamilyStyle()</Code> | Applies locale-specific **Porsche Next** font stacks for **CJK** languages (Simplified Chinese, Traditional Chinese, Japanese, Korean) based on the element's `lang` attribute. |
+
+```ts
+import { style } from '@vanilla-extract/css';
+import {
+  fontPorscheNext,
+  getCJKFontFamilyStyle,
+} from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+
+export const headline = style({
+  fontFamily: fontPorscheNext,
+  ...getCJKFontFamilyStyle(),
+});
+```
+
+The `proseHeading*` and `proseText*` style objects already include this `:lang()` logic, so when you compose styles with
+them you can skip the spread. Reach for the per-language tokens (`fontPorscheNextZhHans`, …) only when you intentionally
+need to pin a specific CJK family regardless of the document's language.

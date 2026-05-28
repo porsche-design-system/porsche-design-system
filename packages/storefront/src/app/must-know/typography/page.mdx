@@ -1,0 +1,147 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Pangram } from '@/components/common/Pangram';
+import { PFlag } from '@porsche-design-system/components-react/ssr';
+import { Notification } from '@/components/common/Notification';
+
+export const metadata = {
+  title: 'Typography - Porsche Design System',
+  description:
+    'Porsche Next typeface and system font fallbacks for Latin, CJK, Thai, Arabic and more — selected automatically per language.',
+};
+
+# Typography
+
+The Porsche Design System ships **Porsche Next** as the global brand typeface. It covers most Western and Middle Eastern
+scripts (Latin, Greek, Cyrillic, Arabic, Vietnamese) in three weights: `normal`, `semibold`, and `bold`.
+
+For scripts not included in Porsche Next — primarily **CJK** (Chinese, Japanese, Korean) — the design system relies on
+high-quality **system fallback fonts** that ship with each operating system. This keeps page weight low and rendering
+fast, while still respecting native typographic conventions for each script.
+
+The samples below use canonical **pangrams** — short texts that exercise the full character set of a script — to make
+font coverage and rendering quality easy to compare across browsers and platforms.
+
+> **Why no custom CJK font?** A complete Chinese font weighs **5–10 MB per weight**. Loading it on every page would add
+> 15–30 MB of font data, severely impacting Core Web Vitals (LCP, FCP) and mobile data usage. System fonts like
+> _PingFang SC_, _Microsoft YaHei_, or _Noto Sans CJK_ are excellent and pre-installed — using them is the right
+> trade-off for a global, performance-conscious design system.
+
+Language-aware typography relies on the standard `lang` attribute. Set it once on `<html>` (and override on a subtree
+only when the language actually changes) so the `:lang()` selectors can pick the right CJK font stack — this also
+satisfies WCAG 3.1.1 (_Language of Page_) for assistive technologies.
+
+```html
+<html lang="zh-Hans">
+  <!-- … -->
+</html>
+```
+
+<TableOfContents headings={['Why per-flavor APIs differ', 'Porsche Next', 'System fallback']} />
+
+## Why per-flavor APIs differ
+
+Porsche Next is exposed slightly differently across the style flavors the design system ships. This is intentional — it
+reflects a real difference in how each flavor is consumed, not an inconsistency to be normalized away.
+
+| Flavor                                                                                  | Distribution model                                                                                          | CJK strategy                                                                                                                                                                              |
+| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Stylesheets](/stylesheets/css-variables/api)                                           | One global stylesheet (used by PDS components, also consumable standalone) → cascades to the whole document | Automatic `:lang()` swap on `--p-font-porsche-next`                                                                                                                                       |
+| [Tailwind CSS](/tailwindcss/typography/api)                                             | One global `@theme` block → cascades to the whole document                                                  | Automatic `:lang()` swap on `--font-porsche-next`                                                                                                                                         |
+| [SCSS](/scss/typography/api)                                                            | Per-component mixins → only affect rules they're included in                                                | Explicit per-language tokens + optional `cjk-font-family` mixin; the `prose-heading-*()` and `prose-text-*()` mixins already apply `:lang()` selectors to auto-detect CJK content         |
+| [Emotion](/emotion/typography/api) / [Vanilla Extract](/vanilla-extract/typography/api) | Per-component runtime style objects → only affect one element                                               | Explicit per-language tokens + optional `getCJKFontFamilyStyle()` helper; the `proseHeading*` and `proseText*` style objects already apply `:lang()` selectors to auto-detect CJK content |
+
+**Global flavors** (Stylesheets, Tailwind) ship a single stylesheet that reaches every element on the page. A `:lang()`
+rule placed once at the document root is enough to switch the font for the entire app — so these flavors expose **one
+logical font variable** and handle CJK automatically. The PDS Stylesheets are loaded automatically by the PDS
+components, but they're also a fully supported standalone option: you can use `--p-font-porsche-next` and the other
+`--p-*` design tokens in any project, with or without the web components.
+
+**Local flavors** (SCSS, Emotion, Vanilla Extract) are composed per component. A mixin or style helper only affects the
+element it's applied to. Forcing language switching into a single helper here would require every component author to
+remember to call it on every `font-family` rule — easy to forget, impossible to enforce at build time, and unable to
+express legitimate cases like a Japanese pull-quote inside an English document. These flavors therefore expose the
+**four CJK families as first-class tokens** (`fontPorscheNextZhHans`, `fontPorscheNextZhHant`, `fontPorscheNextJa`,
+`fontPorscheNextKo`) and provide an opt-in `:lang()` helper for the common case.
+
+**Recommendation:**
+
+- If your project already uses the **PDS Stylesheets** (directly, or transitively via PDS components) or the **Tailwind
+  theme**, you get language-aware typography for free — just set `lang` on `<html>` and use `--p-font-porsche-next`,
+  `.font-porsche-next`, `<p-text>` and/or `<p-heading>`.
+- If you compose styles with **SCSS**, **Emotion** or **Vanilla Extract**, prefer the provided `cjk-font-family` mixin /
+  `getCJKFontFamilyStyle()` helper on any rule that sets `font-family`. Reach for the per-language tokens only when you
+  intentionally need to pin a specific CJK family regardless of the document's language. If you're using the
+  `prose-heading-*()` / `prose-text-*()` mixins or the `proseHeading*` / `proseText*` helpers, you can skip this step —
+  they already include the `:lang()` logic to auto-detect CJK content and apply the right font.
+
+## Porsche Next
+
+<Notification heading="Known limitations">
+  – **Arabic Porsche Next** has no dedicated `semibold` weight — it is aliased to `bold`.
+  <br />– **Simplified & Traditional Chinese** system fonts on macOS (`PingFang SC` / `PingFang TC`) have no dedicated
+  `semibold` weight — they are aliased to `bold`.
+  <br />– **Thai Porsche Next** (`DB Heavent`) is not perfectly aligned with the Latin version in terms of geometry (cap
+  height, x-height, vertical metrics).
+</Notification>
+
+### <PFlag className="me-static-sm" name="gb" size="inherit" /> Latin
+
+> **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
+
+<Pangram lang="en" />
+
+### <PFlag className="me-static-sm" name="vn" size="inherit" /> Vietnamese
+
+> **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
+
+<Pangram lang="vi" />
+
+### <PFlag className="me-static-sm" name="gr" size="inherit" /> Greek & Coptic
+
+> **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
+
+<Pangram lang="el" />
+
+### <PFlag className="me-static-sm" name="ru" size="inherit" /> Cyrillic
+
+> **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
+
+<Pangram lang="ru" />
+
+### <PFlag className="me-static-sm" name="sa" size="inherit" /> Arabic
+
+> **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next`
+
+<Pangram lang="ar" />
+
+## System fallback
+
+### <PFlag className="me-static-sm" name="cn" size="inherit" /> Simplified Chinese
+
+> **macOS/iOS:** `PingFang SC`, **Windows:** `Microsoft YaHei`, **Linux/Android/ChromeOS:** `Noto Sans SC`
+
+<Pangram lang="zh-Hans" />
+
+### <PFlag className="me-static-sm" name="tw" size="inherit" /> Traditional Chinese
+
+> **macOS/iOS:** `PingFang TC`, **Windows:** `Microsoft JhengHei`, **Linux/Android/ChromeOS:** `Noto Sans TC`
+
+<Pangram lang="zh-Hant" />
+
+### <PFlag className="me-static-sm" name="jp" size="inherit" /> Japanese
+
+> **macOS/iOS:** `Hiragino Sans`, **Windows:** `Yu Gothic`, **Linux/Android/ChromeOS:** `Noto Sans JP`
+
+<Pangram lang="ja" />
+
+### <PFlag className="me-static-sm" name="kr" size="inherit" /> Korean
+
+> **macOS/iOS:** `Apple SD Gothic Neo`, **Windows:** `Malgun Gothic`, **Linux/Android/ChromeOS:** `Noto Sans KR`
+
+<Pangram lang="ko" />
+
+### <PFlag className="me-static-sm" name="th" size="inherit" /> Thai
+
+> **macOS/iOS**, **Windows**, **Linux/Android/ChromeOS**: `Porsche Next (DB Heavent)`
+
+<Pangram lang="th" />

@@ -7,14 +7,14 @@ import * as prettier from 'prettier';
 export const normalizeStyles = `html, body {
   margin: 0;
   padding: 0;
-  font-family: ${fontPorscheNext};
-  line-height: ${leadingNormal};
+  font-family: var(--p-font-porsche-next, ${fontPorscheNext});
+  line-height: var(--p-leading-normal, ${leadingNormal});
   letter-spacing: normal;
   text-size-adjust: none;
   -webkit-text-size-adjust: none;
 }`;
 
-export const buildNormalizeCss = async () => {
+export const buildNormalizeCss = async (): Promise<void> => {
   const targetPath = './dist';
   const targetFile = 'normalize.css';
   const normalize = await prettier.format(normalizeStyles, { parser: 'css' });
@@ -25,4 +25,6 @@ export const buildNormalizeCss = async () => {
   console.log(`Built Normalize CSS`);
 };
 
-buildNormalizeCss();
+(async () => {
+  await buildNormalizeCss();
+})();

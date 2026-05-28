@@ -1,5 +1,9 @@
 import {
   fontPorscheNext,
+  fontPorscheNextJa,
+  fontPorscheNextKo,
+  fontPorscheNextZhHans,
+  fontPorscheNextZhHant,
   fontWeightBold,
   fontWeightNormal,
   fontWeightSemibold,
@@ -19,6 +23,37 @@ import {
 export const getFontScss = () => {
   return `
     $font-porsche-next: ${fontPorscheNext};
+    $font-porsche-next-zh-hans: ${fontPorscheNextZhHans};
+    $font-porsche-next-zh-hant: ${fontPorscheNextZhHant};
+    $font-porsche-next-ja: ${fontPorscheNextJa};
+    $font-porsche-next-ko: ${fontPorscheNextKo};
+
+    @mixin cjk-font-family {
+      /* Simplified Chinese */
+      &:lang(zh-Hans),
+      &:lang(zh-CN),
+      &:lang(zh-SG) {
+        font-family: $font-porsche-next-zh-hans;
+      }
+
+      /* Traditional Chinese */
+      &:lang(zh-Hant),
+      &:lang(zh-TW),
+      &:lang(zh-HK),
+      &:lang(zh-MO) {
+        font-family: $font-porsche-next-zh-hant;
+      }
+
+      /* Japanese */
+      &:lang(ja) {
+        font-family: $font-porsche-next-ja;
+      }
+
+      /* Korean */
+      &:lang(ko) {
+        font-family: $font-porsche-next-ko;
+      }
+    }
 
     $leading-normal: ${leadingNormal};
 
