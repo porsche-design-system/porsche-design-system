@@ -47,5 +47,15 @@ export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
   examples: Record<string, ExampleMeta<Tag>>;
   usage: ComponentType;
   accessibility: ComponentType;
+  /**
+   * Optional technical notes rendered on the examples page.
+   *
+   * Lives on the meta object (rather than inline in MDX) so it can be consumed by
+   * automated tooling (e.g. LLM context generation) alongside the rest of the docs.
+   *
+   * Keyed like `examples` so individual notes can be referenced directly
+   * (e.g. `spinnerMeta.notes.disableAnimation`) with autocomplete and typo safety.
+   */
+  notes?: Record<string, { name: string; description: ComponentType }>;
   api: ComponentMeta;
 };

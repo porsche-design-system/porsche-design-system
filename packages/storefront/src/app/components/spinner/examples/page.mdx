@@ -17,7 +17,7 @@ export const metadata = {
     spinnerMeta.examples.responsiveSize.name,
     spinnerMeta.examples.color.name,
     spinnerMeta.examples.colorCssVar.name,
-    'Technical notes',
+    spinnerMeta.notes.disableAnimation.name,
   ]}
 />
 
@@ -51,12 +51,6 @@ export const metadata = {
 
 <ComponentStory story={spinnerMeta.examples.colorCssVar.story} />
 
-## Technical notes
+## {spinnerMeta.notes.disableAnimation.name}
 
-For automated visual regression tests, the spinner animation can be disabled by setting a global CSS variable:
-
-```
-:root {
-  --p-animation-duration: 0s !important;
-}
-```
+<spinnerMeta.notes.disableAnimation.description />

@@ -12,6 +12,7 @@ import SizeCssVarDescription from '@/app/components/spinner/examples/size-css-va
 import { spinnerStorySizeCSSVar } from '@/app/components/spinner/examples/size-css-var/story';
 import SizeDescription from '@/app/components/spinner/examples/size/example.mdx';
 import { spinnerStorySize } from '@/app/components/spinner/examples/size/story';
+import NotesDisableAnimationDescription from '@/app/components/spinner/notes/disable-animation/note.mdx';
 import Usage from '@/app/components/spinner/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 
@@ -23,7 +24,7 @@ export const spinnerMeta = {
   examples: {
     size: {
       kind: 'story',
-      name: 'Size',
+      name: 'Size via Prop',
       description: SizeDescription,
       story: spinnerStorySize,
     },
@@ -41,7 +42,7 @@ export const spinnerMeta = {
     },
     color: {
       kind: 'story',
-      name: 'Color',
+      name: 'Color via Prop',
       description: ColorDescription,
       story: spinnerStoryColor,
     },
@@ -54,6 +55,12 @@ export const spinnerMeta = {
   },
   usage: Usage,
   accessibility: Accessibility,
+  notes: {
+    disableAnimation: {
+      name: 'Disable animation',
+      description: NotesDisableAnimationDescription,
+    },
+  },
   api: componentMeta['p-spinner'],
 } satisfies ComponentDocsMeta<'p-spinner'>;
 
