@@ -1,8 +1,12 @@
-import { fontPorscheNextJa } from './fontPorscheNextJa';
-import { fontPorscheNextKo } from './fontPorscheNextKo';
-import { fontPorscheNextZhHans } from './fontPorscheNextZhHans';
-import { fontPorscheNextZhHant } from './fontPorscheNextZhHant';
+import { fontPorscheNextJa } from './family/fontPorscheNextJa';
+import { fontPorscheNextKo } from './family/fontPorscheNextKo';
+import { fontPorscheNextZhHans } from './family/fontPorscheNextZhHans';
+import { fontPorscheNextZhHant } from './family/fontPorscheNextZhHant';
 
+/**
+ * Applies locale-specific **Porsche Next** font stacks for **CJK** languages (Simplified Chinese, Traditional Chinese, Japanese, Korean) based on the element's `lang` attribute.
+ * @signature getCJKFontFamilyStyle()
+ */
 export const getCJKFontFamilyStyle = () => {
   return {
     selectors: {
