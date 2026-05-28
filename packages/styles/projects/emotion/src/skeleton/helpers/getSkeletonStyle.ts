@@ -1,6 +1,6 @@
-import { radiusSm } from '../border';
-import { colorFrosted, colorFrostedStrong } from '../color';
-import { durationXl, easeInOut } from '../motion';
+import { radiusSm } from '../../border';
+import { colorFrosted, colorFrostedStrong } from '../../color';
+import { durationXl, easeInOut } from '../../motion';
 
 /**
  * Applies a skeleton placeholder style to indicate loading state.

@@ -1,6 +1,6 @@
-import { breakpoint } from './breakpoint';
-import type { Breakpoint } from './breakpointShared';
-import type { BKey } from './mediaQueryShared';
+import { breakpoint } from '../breakpoint';
+import type { Breakpoint } from '../breakpointShared';
+import type { BKey } from '../mediaQueryShared';
 
 /**
  * Returns a **min-width and max-width** media query string for the specified breakpoints.

@@ -1,2 +1,2 @@
-export { getSkeletonStyle } from './getSkeletonStyle';
+export * from './helpers';
 export { skeletonKeyframes } from './skeletonKeyframes';

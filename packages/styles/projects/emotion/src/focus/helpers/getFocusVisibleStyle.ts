@@ -1,4 +1,4 @@
-import { colorFocus } from '../color';
+import { colorFocus } from '../../color';
 
 export type Options = {
   offset?: string;
