@@ -46,23 +46,21 @@ export type ExampleMeta<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> =
  * consumers like `accordionMeta.examples.stickySummary`).
  */
 export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
+  // MDX document introducing the component's purpose and primary use cases.
   introduction: ComponentType;
+  // Story (and optional slot stories) powering the interactive configurator playground.
   configurator: {
     story: Story<Tag>;
     slotStories?: SlotStories<Tag>;
   };
+  // Curated examples shown on the examples page — either generated stories or hand-authored code samples.
   examples: Record<string, ExampleMeta<Tag>>;
+  // Guidance on when and how to use the component, including Dos and Don'ts.
   usage: ComponentType;
+  // Accessibility considerations specific to this component.
   accessibility: ComponentType;
-  /**
-   * Optional technical notes rendered on the examples page.
-   *
-   * Lives on the meta object (rather than inline in MDX) so it can be consumed by
-   * automated tooling (e.g. LLM context generation) alongside the rest of the docs.
-   *
-   * Keyed like `examples` so individual notes can be referenced directly
-   * (e.g. `spinnerMeta.notes.disableAnimation`) with autocomplete and typo safety.
-   */
+  // Optional supplementary notes (e.g. migration hints, edge cases).
   notes?: Record<string, { name: string; description: ComponentType }>;
+  // Full API reference: props, slots, events and CSS variables.
   api: ComponentMeta;
 };
