@@ -1,9 +1,14 @@
 export * from './deprecated';
 export { fontHyphenationStyle } from './fontHyphenationStyle';
 export { fontPorscheNext } from './fontPorscheNext';
+export { fontPorscheNextJa } from './fontPorscheNextJa';
+export { fontPorscheNextKo } from './fontPorscheNextKo';
+export { fontPorscheNextZhHans } from './fontPorscheNextZhHans';
+export { fontPorscheNextZhHant } from './fontPorscheNextZhHant';
 export { fontWeightBold } from './fontWeightBold';
 export { fontWeightNormal } from './fontWeightNormal';
 export { fontWeightSemibold } from './fontWeightSemibold';
+export { getCJKFontFamilyStyle } from './getCJKFontFamilyStyle';
 export { leadingNormal } from './leadingNormal';
 export { typescale2Xl } from './typescale2Xl';
 export { typescale2Xs } from './typescale2Xs';

@@ -40,6 +40,7 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
+    "@types/node": "*",
     "vitest": "*",
     "tsx": "*",
     "typescript": "*"

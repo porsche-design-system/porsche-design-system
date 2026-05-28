@@ -139,7 +139,7 @@ export const fieldsetStoryRequired: Story<'p-fieldset'> = {
         },
         {
           tag: 'p-input-text',
-          properties: { label: 'Some label', name: 'some-name-2', required: true },
+          properties: { label: 'Some label', name: 'some-name-2', required: true, className: 'mt-fluid-sm' },
         },
       ],
     },
