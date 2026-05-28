@@ -4,8 +4,15 @@ Porsche [crest](/components/crest/) or [wordmark](/components/wordmark/) remains
 Since the modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will
 act like a safe zone.
 
-In addition, it is possible to make containers or elements (e.g. `div`, `img`, etc.) stretch into the padding safe zone
-by adding the <code v-text="stretchClassName"></code> CSS class.
+In addition, the modal exposes its internally used padding as readonly CSS variables. These can be used on slotted
+elements (e.g. a media container) to stretch them into the padding safe zone, as demonstrated in the example below.
+
+```scss
+// readonly CSS variables exposed by the modal to stretch slotted content into the padding safe zone
+--ref-p-modal-pt; // internally used padding-top
+--ref-p-modal-pb; // internally used padding-bottom
+--ref-p-modal-px; // internally used padding-inline
+```
 
 ```scss
 // the modal comes with predefined margin / safe-zone which needs to be considered when a custom width is defined
