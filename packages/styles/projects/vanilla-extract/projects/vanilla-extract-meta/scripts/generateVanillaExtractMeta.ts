@@ -27,17 +27,12 @@ for (const file of sortedTokenFiles) {
   const info = extractTokenInfo(file);
   if (!info) continue;
 
-  // Use path.relative + normalize to forward slashes so this works on Windows too.
-  // e.g. "color/light-dark/background/colorBackdrop.ts" -> ["color", "lightDark", "background"]
   const relativePath = path.relative(sourceDirectory, file).replace(/\\/g, '/');
   const parts = relativePath.split('/');
-  // Drop the filename (last segment); camelCase each directory name so "light-dark" -> "lightDark"
   const segments = parts.slice(0, -1).map((p) => camelCase(p));
 
-  // Resolve the runtime value from the built vanilla-extract package by the JS identifier (not the display name).
   const resolvedValue = (vanillaExtract as Record<string, unknown>)[info.identifier];
   if (resolvedValue === undefined) continue;
-  // Some top-level directories (e.g. typography) omit the value — their CSS-in-JS objects are too verbose for the storefront table.
   let value: string | number | undefined;
   if (SEGMENTS_WITHOUT_VALUE.includes(segments[0])) {
     value = undefined;
@@ -46,8 +41,6 @@ for (const file of sortedTokenFiles) {
     if (info.name !== info.identifier) {
       value = undefined;
     } else {
-      // Call zero-arg functions (e.g. getFocusVisibleStyle) to capture their
-      // default CSS-in-JS output as the value. Functions that require arguments are skipped.
       try {
         const result = (resolvedValue as () => unknown)();
         if (result === undefined || typeof result === 'function') {
@@ -72,7 +65,6 @@ for (const file of sortedTokenFiles) {
     node = node[seg] as TokenTree;
   }
 
-  // Use identifier as the tree key (JS-friendly); name may differ if @signature overrides the display name.
   node[info.identifier] = {
     name: info.name,
     ...(value !== undefined && { value }),

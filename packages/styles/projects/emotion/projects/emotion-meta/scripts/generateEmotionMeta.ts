@@ -27,17 +27,12 @@ for (const file of sortedTokenFiles) {
   const info = extractTokenInfo(file);
   if (!info) continue;
 
-  // Use path.relative + normalize to forward slashes so this works on Windows too.
-  // e.g. "color/light-dark/background/colorBackdrop.ts" -> ["color", "lightDark", "background"]
   const relativePath = path.relative(sourceDirectory, file).replace(/\\/g, '/');
   const parts = relativePath.split('/');
-  // Drop the filename (last segment); camelCase each directory name so "light-dark" -> "lightDark"
   const segments = parts.slice(0, -1).map((p) => camelCase(p));
 
-  // Resolve the runtime value from the built emotion package by the JS identifier (not the display name).
   const resolvedValue = (emotion as Record<string, unknown>)[info.identifier];
   if (resolvedValue === undefined) continue;
-  // Some top-level directories (e.g. typography) and functions (e.g. getFocusVisibleStyle) omit the value.
   let value: string | number | undefined;
   if (SEGMENTS_WITHOUT_VALUE.includes(segments[0]) || typeof resolvedValue === 'function') {
     value = undefined;
@@ -53,7 +48,6 @@ for (const file of sortedTokenFiles) {
     node = node[seg] as TokenTree;
   }
 
-  // Use identifier as the tree key (JS-friendly); name may differ if @signature overrides the display name.
   node[info.identifier] = {
     name: info.name,
     ...(value !== undefined && { value }),

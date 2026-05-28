@@ -2,11 +2,9 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import ts from 'typescript';
 
-// TokenLeaf is a resolved design token; TokenTree is any intermediate folder level.
 export type TokenLeaf = { name: string; value?: string | number; description: string };
 export type TokenTree = { [key: string]: TokenTree | TokenLeaf };
 
-// Top-level directories whose entries should omit the value (too verbose or not useful for the storefront table).
 export const SEGMENTS_WITHOUT_VALUE = ['typography', 'focus'];
 
 // Order matches the storefront color page sections: Background → Foreground → Semantic → A11y.
@@ -26,30 +24,24 @@ export const COLOR_FAMILY_ORDER = [
 // '' -> accounts for cases such as "colorInfo", "colorWarning".... and puts it on top
 export const COLOR_VARIANT_ORDER = ['', 'Higher', 'High', 'Medium', 'Low', 'Lower', 'Frosted', 'FrostedSoft'];
 
-// Typography size order: largest first so the storefront table displays largest-to-smallest.
 export const TYPOGRAPHY_SIZE_ORDER = ['5Xl', '4Xl', '3Xl', '2Xl', 'Xl', 'Lg', 'Md', 'Sm', 'Xs', '2Xs'];
 
-// Returns the position of item in order, or order.length when not found (sends unknowns to end).
 export const orderIndex = (order: readonly string[], item: string): number => {
   const idx = order.indexOf(item);
   return idx === -1 ? order.length : idx;
 };
 
-// Extracts the first camelCase segment after "color", e.g. colorErrorFrostedSoft → "error".
 export const extractColorFamily = (name: string): string =>
   name.match(/^color([A-Z][a-z]+)/)?.[1].toLowerCase() ?? name;
 
-// Extracts everything after the family segment, e.g. colorErrorFrostedSoft → "FrostedSoft".
 export const extractColorVariant = (name: string): string => {
   const match = name.match(/^color[A-Z][a-z]+((?:[A-Z][a-z]*)+)?$/);
   return match?.[1] ?? '';
 };
 
-// Extracts the size suffix from a typography file name, e.g. proseText5XlStyle → "5Xl", proseHeading2XsStyle → "2Xs".
 export const extractTypographySize = (name: string): string =>
   name.match(/(?:Text|Heading)([A-Z0-9][a-zA-Z0-9]*)Style$/)?.[1] ?? '';
 
-// Extracts a numeric sort key from a token value (clamp, rem, px, or plain number).
 // rem is checked before px so that typography styles with a fixed font-size (e.g. ".875rem / calc(6px...)")
 // sort by font-size rather than by the stray 6px embedded in the shared line-height calc.
 export const toSortNum = (value: string | number | undefined): number => {
@@ -87,7 +79,6 @@ export const sortLeaves = (leaves: TokenLeaf[]): TokenLeaf[] => {
   return [...nonNumeric, ...sortedNumeric];
 };
 
-// Sort subtrees alphabetically; 'deprecated' is always placed last.
 export const sortSubtrees = (subtrees: [string, TokenTree][]): [string, TokenTree][] =>
   [...subtrees].sort(([a], [b]) => {
     if (a === 'deprecated') return 1;
@@ -95,7 +86,6 @@ export const sortSubtrees = (subtrees: [string, TokenTree][]): [string, TokenTre
     return a.localeCompare(b);
   });
 
-// Recursively sorts leaves at each level of the tree; subtrees are sorted alphabetically.
 export const sortTree = (obj: TokenTree): TokenTree => {
   const leaves: TokenLeaf[] = [];
   const subtrees: [string, TokenTree][] = [];
@@ -141,7 +131,6 @@ export function extractTokenInfo(filePath: string): { identifier: string; name: 
 
     for (const node of jsDocs) {
       if (!ts.isJSDoc(node)) continue;
-      // Extract the main comment as description (first non-empty one wins).
       if (node.comment && !description) {
         description =
           typeof node.comment === 'string'
