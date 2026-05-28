@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { carouselMeta } from '@/app/components/carousel/carousel.meta';
 
 export const metadata = {
   title: 'Carousel - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Carousel <ComponentStatus tagName="p-carousel"></ComponentStatus>
 
-<ComponentApi tagName="p-carousel" />
+<ComponentApi api={carouselMeta.api} />
