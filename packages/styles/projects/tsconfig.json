@@ -1,8 +1,0 @@
-{
-  "extends": "@porsche-design-system/shared/tsconfig.json",
-  "compilerOptions": {
-    "types": ["node"]
-  },
-  "files": ["meta-shared.mts"],
-  "exclude": []
-}
