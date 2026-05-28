@@ -41,7 +41,7 @@ export type ExampleMeta<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> =
  * `Tag` is the primary component tag and pins the configurator's typing. Example entries
  * use the broader `ExampleMeta` default so cross-component examples are still typable.
  *
- * Authors should declare the value with `satisfies ComponentExampleMeta<'p-xxx'>` to
+ * Authors should declare the value with `satisfies ComponentDocsMeta<'p-xxx'>` to
  * preserve narrow literal keys in `examples` (enabling autocomplete and typo safety on
  * consumers like `accordionMeta.examples.stickySummary`).
  */
