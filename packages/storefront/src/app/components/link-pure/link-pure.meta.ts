@@ -6,6 +6,7 @@ import CustomClickableAreaDescription from '@/app/components/link-pure/examples/
 import { linkPureCustomPadding } from '@/app/components/link-pure/examples/custom-clickable-area/story';
 import FrameworkRoutingDescription from '@/app/components/link-pure/examples/framework-routing/example.mdx';
 import { linkPureStoryFrameworkRouting } from '@/app/components/link-pure/examples/framework-routing/story';
+import FrameworkRoutingActiveStateDescription from '@/app/components/link-pure/examples/framework-routing-active-state/example.mdx';
 import IconDescription from '@/app/components/link-pure/examples/icon/example.mdx';
 import { linkPureStoryIcon } from '@/app/components/link-pure/examples/icon/story';
 import Usage from '@/app/components/link-pure/usage/page.mdx';
@@ -28,6 +29,11 @@ export const linkPureMeta = {
       name: 'Framework routing (anchor nesting)',
       description: FrameworkRoutingDescription,
       story: linkPureStoryFrameworkRouting,
+    },
+    frameworkRoutingActiveState: {
+      kind: 'description',
+      name: 'Framework specific router with "active state" support',
+      description: FrameworkRoutingActiveStateDescription,
     },
     customClickableArea: {
       kind: 'story',

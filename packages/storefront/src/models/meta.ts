@@ -7,9 +7,11 @@ import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 /**
  * Meta describing a single example on a component's `examples` page.
  *
- * Discriminated by `kind` so that exactly one of `story` / `example` is required:
- *  - `kind: 'story'`   → rendered through the storefront `Story` generator pipeline.
- *  - `kind: 'example'` → rendered from a manually authored cross-framework `CodeSample`.
+ * Discriminated by `kind`:
+ *  - `kind: 'story'`       → rendered through the storefront `Story` generator pipeline.
+ *  - `kind: 'example'`     → rendered from a manually authored cross-framework `CodeSample`.
+ *  - `kind: 'description'` → description-only entry without a runnable story or code sample
+ *                            (e.g. framework-specific guidance with inline code snippets in MDX).
  *
  * `Tag` defaults to `HTMLTagOrComponent` so that example entries on a component page
  * may render cross-component demos that don't share the page's primary tag.
@@ -26,6 +28,11 @@ export type ExampleMeta<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> =
       name: string;
       description?: ComponentType;
       example: CodeSample;
+    }
+  | {
+      kind: 'description';
+      name: string;
+      description: ComponentType;
     };
 
 /**
