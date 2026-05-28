@@ -26,35 +26,4 @@ export const iconStorySize: Story<'p-icon'> = {
   ],
 };
 
-export const iconStorySizeCSSVar: Story<'p-icon'> = {
-  state: {
-    properties: {
-      className: '[--p-icon-size:48px]',
-      name: 'highway',
-      aria: { 'aria-label': 'Highway icon' },
-    },
-  },
-  generator: ({ properties } = {}) => [
-    {
-      tag: 'p-icon',
-      properties,
-    },
-  ],
-};
-
-export const iconStoryResponsiveSize: Story<'p-icon'> = {
-  state: {
-    properties: {
-      size: { base: 'sm', l: '2xl' },
-      name: 'highway',
-      aria: { 'aria-label': 'Highway icon' },
-    },
-  },
-  generator: ({ properties } = {}) => [
-    {
-      tag: 'p-icon',
-      properties,
-    },
-  ],
-};
 
