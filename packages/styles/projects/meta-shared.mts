@@ -274,7 +274,7 @@ export async function generateMeta({
 
   for (const file of sortTokenFiles(tokenFiles, sourceDirectory)) {
     const info = extractTokenInfo(file);
-    if (!info) continue;
+    if (!info) continue; // no JSDoc → intentionally not exported to meta
 
     const relativePath = path.relative(sourceDirectory, file).replace(/\\/g, '/');
     const segments = relativePath
@@ -282,10 +282,22 @@ export async function generateMeta({
       .slice(0, -1)
       .map((p) => camelCase(p));
     const resolvedValue = packageExports[info.identifier];
-    if (resolvedValue === undefined) continue;
+    if (resolvedValue === undefined) {
+      console.warn(
+        `[meta] SKIP "${info.identifier}" in ${relativePath}: not found in package exports.\n` +
+          `  → Is it missing from the package's index.ts?`,
+      );
+      continue;
+    }
 
     const value = resolveTokenValue({ ...info, resolvedValue, segments });
-    if (value === null) continue;
+    if (value === null) {
+      console.warn(
+        `[meta] SKIP "${info.identifier}" in ${relativePath}: resolver returned null.\n` +
+          `  → Token found in exports but excluded by the resolver.`,
+      );
+      continue;
+    }
 
     let node = tree;
     for (const seg of segments) {
