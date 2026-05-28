@@ -19,7 +19,7 @@ export const flagMeta = {
   examples: {
     size: {
       kind: 'story',
-      name: 'Size',
+      name: 'Size via Prop',
       description: SizeDescription,
       story: flagStorySize,
     },
