@@ -14,7 +14,7 @@
     "build:vanilla-extract-meta": "npm run build --workspace=@porsche-design-system/vanilla-extract-meta",
     "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.mjs --bundleConfigAsCjs",
     "test": "npm run test:unit",
-    "test:unit": "npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
+    "test:unit": "npm run build:generateVanillaExtractMeta --workspace=@porsche-design-system/vanilla-extract-meta && npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "exports": {
