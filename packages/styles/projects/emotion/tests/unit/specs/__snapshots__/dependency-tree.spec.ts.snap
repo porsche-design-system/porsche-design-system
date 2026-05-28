@@ -396,7 +396,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "border/deprecated/borderWidthBase.cjs",
     "color/deprecated/themeLightStateFocus.cjs",
   ],
-  "focus/getFocusVisibleStyle.cjs": [
+  "focus/helpers/getFocusVisibleStyle.cjs": [
     "color/light-dark/colorFocus.cjs",
   ],
   "font/deprecated/fontFamily.cjs": [
@@ -484,24 +484,24 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "font/family/fontPorscheNext.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.cjs",
   ],
-  "font/fontHyphenationStyle.cjs": [],
-  "font/fontPorscheNextJa.cjs": [
+  "font/family/fontPorscheNextJa.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNextJa.cjs",
   ],
-  "font/fontPorscheNextKo.cjs": [
+  "font/family/fontPorscheNextKo.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNextKo.cjs",
   ],
-  "font/fontPorscheNextZhHans.cjs": [
+  "font/family/fontPorscheNextZhHans.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNextZhHans.cjs",
   ],
-  "font/fontPorscheNextZhHant.cjs": [
+  "font/family/fontPorscheNextZhHant.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNextZhHant.cjs",
   ],
-  "font/getCJKFontFamilyStyle.cjs": [
-    "font/fontPorscheNextJa.cjs",
-    "font/fontPorscheNextKo.cjs",
-    "font/fontPorscheNextZhHans.cjs",
-    "font/fontPorscheNextZhHant.cjs",
+  "font/fontHyphenationStyle.cjs": [],
+  "font/helpers/getCJKFontFamilyStyle.cjs": [
+    "font/family/fontPorscheNextJa.cjs",
+    "font/family/fontPorscheNextKo.cjs",
+    "font/family/fontPorscheNextZhHans.cjs",
+    "font/family/fontPorscheNextZhHant.cjs",
   ],
   "font/lineHeight/leadingNormal.cjs": [
     "tokens/dist/esm/font/lineHeight/leadingNormal.cjs",
@@ -670,7 +670,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "grid/gridShared.cjs",
     "grid/gridWideColumnEnd.cjs",
     "grid/gridWideColumnStart.cjs",
-    "mediaQuery/getMediaQueryMin.cjs",
+    "mediaQuery/helpers/getMediaQueryMin.cjs",
   ],
   "grid/gridWide.cjs": [
     "grid/gridWideColumnEnd.cjs",
@@ -791,7 +791,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/light-dark/colorWarningLow.cjs",
     "color/light-dark/colorWarningMedium.cjs",
     "focus/deprecated/getFocusStyle.cjs",
-    "focus/getFocusVisibleStyle.cjs",
+    "focus/helpers/getFocusVisibleStyle.cjs",
     "font/deprecated/fontFamily.cjs",
     "font/deprecated/fontLineHeight.cjs",
     "font/deprecated/fontSize.cjs",
@@ -817,12 +817,12 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "font/deprecated/fontWeightRegular.cjs",
     "font/deprecated/fontWeightSemiBold.cjs",
     "font/family/fontPorscheNext.cjs",
+    "font/family/fontPorscheNextJa.cjs",
+    "font/family/fontPorscheNextKo.cjs",
+    "font/family/fontPorscheNextZhHans.cjs",
+    "font/family/fontPorscheNextZhHant.cjs",
     "font/fontHyphenationStyle.cjs",
-    "font/fontPorscheNextJa.cjs",
-    "font/fontPorscheNextKo.cjs",
-    "font/fontPorscheNextZhHans.cjs",
-    "font/fontPorscheNextZhHant.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale2Xl.cjs",
     "font/size/typescale2Xs.cjs",
@@ -890,9 +890,9 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "mediaQuery/breakpointXL.cjs",
     "mediaQuery/breakpointXS.cjs",
     "mediaQuery/breakpointXXL.cjs",
-    "mediaQuery/getMediaQueryMax.cjs",
-    "mediaQuery/getMediaQueryMin.cjs",
-    "mediaQuery/getMediaQueryMinMax.cjs",
+    "mediaQuery/helpers/getMediaQueryMax.cjs",
+    "mediaQuery/helpers/getMediaQueryMin.cjs",
+    "mediaQuery/helpers/getMediaQueryMinMax.cjs",
     "motion/deprecated/motionDurationLong.cjs",
     "motion/deprecated/motionDurationModerate.cjs",
     "motion/deprecated/motionDurationShort.cjs",
@@ -913,7 +913,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "shadow/shadowLg.cjs",
     "shadow/shadowMd.cjs",
     "shadow/shadowSm.cjs",
-    "skeleton/getSkeletonStyle.cjs",
+    "skeleton/helpers/getSkeletonStyle.cjs",
     "spacing/deprecated/spacing.cjs",
     "spacing/deprecated/spacingFluid.cjs",
     "spacing/deprecated/spacingFluidLarge.cjs",
@@ -1006,13 +1006,13 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "mediaQuery/breakpointXXL.cjs": [
     "tokens/dist/esm/breakpoint/breakpoint2Xl.cjs",
   ],
-  "mediaQuery/getMediaQueryMax.cjs": [
+  "mediaQuery/helpers/getMediaQueryMax.cjs": [
     "mediaQuery/breakpoint.cjs",
   ],
-  "mediaQuery/getMediaQueryMin.cjs": [
+  "mediaQuery/helpers/getMediaQueryMin.cjs": [
     "mediaQuery/breakpoint.cjs",
   ],
-  "mediaQuery/getMediaQueryMinMax.cjs": [
+  "mediaQuery/helpers/getMediaQueryMinMax.cjs": [
     "mediaQuery/breakpoint.cjs",
   ],
   "motion/deprecated/motionDurationLong.cjs": [
@@ -1075,7 +1075,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "shadow/shadowSm.cjs": [
     "tokens/dist/esm/shadow/shadowSm.cjs",
   ],
-  "skeleton/getSkeletonStyle.cjs": [
+  "skeleton/helpers/getSkeletonStyle.cjs": [
     "border/radius/radiusSm.cjs",
     "color/light-dark/colorFrosted.cjs",
     "color/light-dark/colorFrostedStrong.cjs",
@@ -1609,7 +1609,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeading2XlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale2Xl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1617,7 +1617,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeading2XsStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale2Xs.cjs",
     "font/weight/fontWeightSemibold.cjs",
@@ -1625,7 +1625,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeading3XlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale3Xl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1633,7 +1633,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeading4XlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale4Xl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1641,7 +1641,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeading5XlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale5Xl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1649,7 +1649,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeadingLgStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleLg.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1657,7 +1657,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeadingMdStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleMd.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1665,7 +1665,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeadingSmStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleSm.cjs",
     "font/weight/fontWeightSemibold.cjs",
@@ -1673,7 +1673,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeadingXlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleXl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1681,7 +1681,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseHeadingXsStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleXs.cjs",
     "font/weight/fontWeightSemibold.cjs",
@@ -1689,7 +1689,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseText2XlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale2Xl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1697,7 +1697,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseText2XsStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale2Xs.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1705,7 +1705,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseText3XlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale3Xl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1713,7 +1713,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseText4XlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale4Xl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1721,7 +1721,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseText5XlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescale5Xl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1729,7 +1729,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseTextLgStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleLg.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1737,7 +1737,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseTextMdStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleMd.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1745,7 +1745,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseTextSmStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleSm.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1753,7 +1753,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseTextXlStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleXl.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -1761,7 +1761,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "typography/proseTextXsStyle.cjs": [
     "color/light-dark/colorPrimary.cjs",
     "font/family/fontPorscheNext.cjs",
-    "font/getCJKFontFamilyStyle.cjs",
+    "font/helpers/getCJKFontFamilyStyle.cjs",
     "font/lineHeight/leadingNormal.cjs",
     "font/size/typescaleXs.cjs",
     "font/weight/fontWeightNormal.cjs",
@@ -2165,7 +2165,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "border/deprecated/borderWidthBase.mjs",
     "color/deprecated/themeLightStateFocus.mjs",
   ],
-  "focus/getFocusVisibleStyle.mjs": [
+  "focus/helpers/getFocusVisibleStyle.mjs": [
     "color/light-dark/colorFocus.mjs",
   ],
   "font/deprecated/fontFamily.mjs": [
@@ -2253,24 +2253,24 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "font/family/fontPorscheNext.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.mjs",
   ],
-  "font/fontHyphenationStyle.mjs": [],
-  "font/fontPorscheNextJa.mjs": [
+  "font/family/fontPorscheNextJa.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNextJa.mjs",
   ],
-  "font/fontPorscheNextKo.mjs": [
+  "font/family/fontPorscheNextKo.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNextKo.mjs",
   ],
-  "font/fontPorscheNextZhHans.mjs": [
+  "font/family/fontPorscheNextZhHans.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNextZhHans.mjs",
   ],
-  "font/fontPorscheNextZhHant.mjs": [
+  "font/family/fontPorscheNextZhHant.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNextZhHant.mjs",
   ],
-  "font/getCJKFontFamilyStyle.mjs": [
-    "font/fontPorscheNextJa.mjs",
-    "font/fontPorscheNextKo.mjs",
-    "font/fontPorscheNextZhHans.mjs",
-    "font/fontPorscheNextZhHant.mjs",
+  "font/fontHyphenationStyle.mjs": [],
+  "font/helpers/getCJKFontFamilyStyle.mjs": [
+    "font/family/fontPorscheNextJa.mjs",
+    "font/family/fontPorscheNextKo.mjs",
+    "font/family/fontPorscheNextZhHans.mjs",
+    "font/family/fontPorscheNextZhHant.mjs",
   ],
   "font/lineHeight/leadingNormal.mjs": [
     "tokens/dist/esm/font/lineHeight/leadingNormal.mjs",
@@ -2439,7 +2439,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "grid/gridShared.mjs",
     "grid/gridWideColumnEnd.mjs",
     "grid/gridWideColumnStart.mjs",
-    "mediaQuery/getMediaQueryMin.mjs",
+    "mediaQuery/helpers/getMediaQueryMin.mjs",
   ],
   "grid/gridWide.mjs": [
     "grid/gridWideColumnEnd.mjs",
@@ -2560,7 +2560,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/light-dark/colorWarningLow.mjs",
     "color/light-dark/colorWarningMedium.mjs",
     "focus/deprecated/getFocusStyle.mjs",
-    "focus/getFocusVisibleStyle.mjs",
+    "focus/helpers/getFocusVisibleStyle.mjs",
     "font/deprecated/fontFamily.mjs",
     "font/deprecated/fontLineHeight.mjs",
     "font/deprecated/fontSize.mjs",
@@ -2586,12 +2586,12 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "font/deprecated/fontWeightRegular.mjs",
     "font/deprecated/fontWeightSemiBold.mjs",
     "font/family/fontPorscheNext.mjs",
+    "font/family/fontPorscheNextJa.mjs",
+    "font/family/fontPorscheNextKo.mjs",
+    "font/family/fontPorscheNextZhHans.mjs",
+    "font/family/fontPorscheNextZhHant.mjs",
     "font/fontHyphenationStyle.mjs",
-    "font/fontPorscheNextJa.mjs",
-    "font/fontPorscheNextKo.mjs",
-    "font/fontPorscheNextZhHans.mjs",
-    "font/fontPorscheNextZhHant.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale2Xl.mjs",
     "font/size/typescale2Xs.mjs",
@@ -2659,9 +2659,9 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "mediaQuery/breakpointXL.mjs",
     "mediaQuery/breakpointXS.mjs",
     "mediaQuery/breakpointXXL.mjs",
-    "mediaQuery/getMediaQueryMax.mjs",
-    "mediaQuery/getMediaQueryMin.mjs",
-    "mediaQuery/getMediaQueryMinMax.mjs",
+    "mediaQuery/helpers/getMediaQueryMax.mjs",
+    "mediaQuery/helpers/getMediaQueryMin.mjs",
+    "mediaQuery/helpers/getMediaQueryMinMax.mjs",
     "motion/deprecated/motionDurationLong.mjs",
     "motion/deprecated/motionDurationModerate.mjs",
     "motion/deprecated/motionDurationShort.mjs",
@@ -2682,7 +2682,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "shadow/shadowLg.mjs",
     "shadow/shadowMd.mjs",
     "shadow/shadowSm.mjs",
-    "skeleton/getSkeletonStyle.mjs",
+    "skeleton/helpers/getSkeletonStyle.mjs",
     "spacing/deprecated/spacing.mjs",
     "spacing/deprecated/spacingFluid.mjs",
     "spacing/deprecated/spacingFluidLarge.mjs",
@@ -2775,13 +2775,13 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "mediaQuery/breakpointXXL.mjs": [
     "tokens/dist/esm/breakpoint/breakpoint2Xl.mjs",
   ],
-  "mediaQuery/getMediaQueryMax.mjs": [
+  "mediaQuery/helpers/getMediaQueryMax.mjs": [
     "mediaQuery/breakpoint.mjs",
   ],
-  "mediaQuery/getMediaQueryMin.mjs": [
+  "mediaQuery/helpers/getMediaQueryMin.mjs": [
     "mediaQuery/breakpoint.mjs",
   ],
-  "mediaQuery/getMediaQueryMinMax.mjs": [
+  "mediaQuery/helpers/getMediaQueryMinMax.mjs": [
     "mediaQuery/breakpoint.mjs",
   ],
   "motion/deprecated/motionDurationLong.mjs": [
@@ -2844,7 +2844,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "shadow/shadowSm.mjs": [
     "tokens/dist/esm/shadow/shadowSm.mjs",
   ],
-  "skeleton/getSkeletonStyle.mjs": [
+  "skeleton/helpers/getSkeletonStyle.mjs": [
     "border/radius/radiusSm.mjs",
     "color/light-dark/colorFrosted.mjs",
     "color/light-dark/colorFrostedStrong.mjs",
@@ -3378,7 +3378,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeading2XlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale2Xl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3386,7 +3386,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeading2XsStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale2Xs.mjs",
     "font/weight/fontWeightSemibold.mjs",
@@ -3394,7 +3394,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeading3XlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale3Xl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3402,7 +3402,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeading4XlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale4Xl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3410,7 +3410,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeading5XlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale5Xl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3418,7 +3418,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeadingLgStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleLg.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3426,7 +3426,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeadingMdStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleMd.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3434,7 +3434,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeadingSmStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleSm.mjs",
     "font/weight/fontWeightSemibold.mjs",
@@ -3442,7 +3442,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeadingXlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleXl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3450,7 +3450,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseHeadingXsStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleXs.mjs",
     "font/weight/fontWeightSemibold.mjs",
@@ -3458,7 +3458,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseText2XlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale2Xl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3466,7 +3466,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseText2XsStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale2Xs.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3474,7 +3474,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseText3XlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale3Xl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3482,7 +3482,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseText4XlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale4Xl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3490,7 +3490,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseText5XlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescale5Xl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3498,7 +3498,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseTextLgStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleLg.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3506,7 +3506,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseTextMdStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleMd.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3514,7 +3514,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseTextSmStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleSm.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3522,7 +3522,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseTextXlStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleXl.mjs",
     "font/weight/fontWeightNormal.mjs",
@@ -3530,7 +3530,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "typography/proseTextXsStyle.mjs": [
     "color/light-dark/colorPrimary.mjs",
     "font/family/fontPorscheNext.mjs",
-    "font/getCJKFontFamilyStyle.mjs",
+    "font/helpers/getCJKFontFamilyStyle.mjs",
     "font/lineHeight/leadingNormal.mjs",
     "font/size/typescaleXs.mjs",
     "font/weight/fontWeightNormal.mjs",
