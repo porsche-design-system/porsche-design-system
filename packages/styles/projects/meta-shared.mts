@@ -1,9 +1,18 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { camelCase } from 'change-case';
+import fg from 'fast-glob';
 import ts from 'typescript';
 
 export type TokenLeaf = { name: string; value?: string | number; description: string };
 export type TokenTree = { [key: string]: TokenTree | TokenLeaf };
+export type TokenValue = string | number | undefined;
+export type TokenValueResolver = (params: {
+  identifier: string;
+  name: string;
+  resolvedValue: unknown;
+  segments: string[];
+}) => TokenValue | null;
 
 export const SEGMENTS_WITHOUT_VALUE = ['typography', 'focus'];
 
@@ -25,6 +34,37 @@ export const COLOR_FAMILY_ORDER = [
 export const COLOR_VARIANT_ORDER = ['', 'Higher', 'High', 'Medium', 'Low', 'Lower', 'Frosted', 'FrostedSoft'];
 
 export const TYPOGRAPHY_SIZE_ORDER = ['5Xl', '4Xl', '3Xl', '2Xl', 'Xl', 'Lg', 'Md', 'Sm', 'Xs', '2Xs'];
+export const SIZE_ORDER = ['2Xs', 'Xs', 'Sm', 'Md', 'Lg', 'Xl', '2Xl', '3Xl', '4Xl', '5Xl', 'Full'];
+export const CATEGORY_ORDER = [
+  'blur',
+  'border',
+  'color',
+  'focus',
+  'font',
+  'gradient',
+  'grid',
+  'mediaQuery',
+  'motion',
+  'shadow',
+  'skeleton',
+  'spacing',
+  'typography',
+];
+export const MEDIA_QUERY_ORDER = [
+  'breakpoint',
+  'breakpointShared',
+  'getMediaQueryMax',
+  'getMediaQueryMin',
+  'getMediaQueryMinMax',
+  'breakpointBase',
+  'breakpointXS',
+  'breakpointS',
+  'breakpointM',
+  'breakpointL',
+  'breakpointXL',
+  'breakpointXXL',
+];
+export const FONT_WEIGHT_ORDER = ['fontWeightNormal', 'fontWeightSemibold', 'fontWeightBold'];
 
 export const orderIndex = (order: readonly string[], item: string): number => {
   const idx = order.indexOf(item);
@@ -39,70 +79,8 @@ export const extractColorVariant = (name: string): string => {
   return match?.[1] ?? '';
 };
 
-export const extractTypographySize = (name: string): string =>
-  name.match(/(?:Text|Heading)([A-Z0-9][a-zA-Z0-9]*)Style$/)?.[1] ?? '';
-
-// rem is checked before px so that typography styles with a fixed font-size (e.g. ".875rem / calc(6px...)")
-// sort by font-size rather than by the stray 6px embedded in the shared line-height calc.
-export const toSortNum = (value: string | number | undefined): number => {
-  if (value === undefined) return NaN;
-  if (typeof value === 'number') return value;
-  if (value.includes('infinity')) return Infinity;
-  const clampMatch = value.match(/clamp\(\s*([\d.]+)/);
-  if (clampMatch) return parseFloat(clampMatch[1]);
-  const remValues = Array.from(value.matchAll(/([\d.]+)rem/g), (m) => parseFloat(m[1]));
-  if (remValues.length > 0) return Math.max(...remValues);
-  const pxValues = Array.from(value.matchAll(/([\d.]+)px/g), (m) => parseFloat(m[1]));
-  if (pxValues.length > 0) return Math.max(...pxValues);
-  return parseFloat(value);
-};
-
-export const sortLeaves = (leaves: TokenLeaf[]): TokenLeaf[] => {
-  // Keyed by object reference (not t.name) — display names may collide when @signature overrides produce
-  // identical text for different tokens, which would corrupt the sort values.
-  const nums = new Map(leaves.map((t) => [t, toSortNum(t.value)]));
-  const allNumeric = [...nums.values()].every((n) => !Number.isNaN(n));
-
-  if (allNumeric) {
-    const sorted = [...leaves].sort((a, b) => (nums.get(a) ?? 0) - (nums.get(b) ?? 0));
-    // Typography style objects (JSON objects sorted by clamp font-size) are displayed
-    // largest-to-smallest — reverse the ascending sort for all-JSON-object groups.
-    const allJsonObjects = leaves.every((l) => l.value !== undefined && String(l.value).trimStart().startsWith('{'));
-    return allJsonObjects ? sorted.reverse() : sorted;
-  }
-
-  // Mixed types: non-numeric items first (e.g. compound breakpoint objects before px values),
-  // then numeric items sorted ascending.
-  const nonNumeric = leaves.filter((l) => Number.isNaN(nums.get(l)));
-  const numeric = leaves.filter((l) => !Number.isNaN(nums.get(l)));
-  const sortedNumeric = [...numeric].sort((a, b) => (nums.get(a) ?? 0) - (nums.get(b) ?? 0));
-  return [...nonNumeric, ...sortedNumeric];
-};
-
-export const sortSubtrees = (subtrees: [string, TokenTree][]): [string, TokenTree][] =>
-  [...subtrees].sort(([a], [b]) => {
-    if (a === 'deprecated') return 1;
-    if (b === 'deprecated') return -1;
-    return a.localeCompare(b);
-  });
-
-export const sortTree = (obj: TokenTree): TokenTree => {
-  const leaves: TokenLeaf[] = [];
-  const subtrees: [string, TokenTree][] = [];
-  // Track the original tree key (JS identifier) per leaf — name may differ when @signature overrides it.
-  const keyByLeaf = new Map<TokenLeaf, string>();
-  for (const [k, v] of Object.entries(obj)) {
-    if (typeof (v as TokenLeaf).name === 'string') {
-      const leaf = v as TokenLeaf;
-      leaves.push(leaf);
-      keyByLeaf.set(leaf, k);
-    } else subtrees.push([k, sortTree(v as TokenTree)]);
-  }
-  const sorted = sortLeaves(leaves);
-  const sortedSubtrees = sortSubtrees(subtrees);
-  if (leaves.length === 0) return Object.fromEntries(sortedSubtrees);
-  return Object.fromEntries([...sorted.map((l) => [keyByLeaf.get(l)!, l] as [string, TokenLeaf]), ...sortedSubtrees]);
-};
+export const stringifyMetaValue = (value: unknown): TokenValue =>
+  typeof value === 'string' || typeof value === 'number' ? value : JSON.stringify(value);
 
 export function extractTokenInfo(filePath: string): { identifier: string; name: string; description: string } | null {
   const source = ts.createSourceFile(filePath, fs.readFileSync(filePath, 'utf-8'), ts.ScriptTarget.Latest, true);
@@ -170,25 +148,167 @@ export function serializeTree(obj: TokenTree | TokenLeaf, pad = ''): string {
   return `{\n${entries},\n${pad}}`;
 }
 
-// Sort files within each directory so tokens arrive in the correct display order.
-// JS object insertion order is preserved, so the tree inherits this ordering without any post-sort.
-export const sortTokenFiles = (tokenFiles: string[]): string[] =>
+const legacySizeAliases = {
+  XXSmall: '2Xs',
+  XSmall: 'Xs',
+  Small: 'Sm',
+  Medium: 'Md',
+  Large: 'Lg',
+  XLarge: 'Xl',
+  XXLarge: '2Xl',
+  Short: 'Sm',
+  Moderate: 'Md',
+  Long: 'Lg',
+  VeryLong: 'Xl',
+} as const;
+const sizeMatchOrder = [...SIZE_ORDER].sort((a, b) => b.length - a.length);
+const legacySizeMatchOrder = Object.keys(legacySizeAliases).sort((a, b) => b.length - a.length);
+
+const extractSize = (name: string): string => {
+  for (const size of sizeMatchOrder) {
+    if (name.endsWith(size) || name.endsWith(`${size}Style`)) return size;
+  }
+  for (const legacySize of legacySizeMatchOrder) {
+    if (name.endsWith(legacySize) || name.endsWith(`${legacySize}Style`)) {
+      return legacySizeAliases[legacySize as keyof typeof legacySizeAliases];
+    }
+  }
+  return '';
+};
+
+const compareByOrder = (order: readonly string[], a: string, b: string): number => {
+  const idxA = order.indexOf(a);
+  const idxB = order.indexOf(b);
+  if (idxA === -1 && idxB === -1) return 0;
+  return orderIndex(order, a) - orderIndex(order, b);
+};
+
+const comparePathSegment = (a: string, b: string, depth: number): number => {
+  if (a === b) return 0;
+  if (a === 'deprecated') return 1;
+  if (b === 'deprecated') return -1;
+  return depth === 0
+    ? compareByOrder(CATEGORY_ORDER, camelCase(a), camelCase(b)) || a.localeCompare(b)
+    : a.localeCompare(b);
+};
+
+const compareTokenNames = (a: string, b: string, segments: string[]): number => {
+  const category = camelCase(segments[0] ?? '');
+
+  if (category === 'mediaQuery') {
+    const mediaQueryCmp = compareByOrder(MEDIA_QUERY_ORDER, a, b);
+    if (mediaQueryCmp !== 0) return mediaQueryCmp;
+  }
+
+  const fontWeightCmp = compareByOrder(FONT_WEIGHT_ORDER, a, b);
+  if (fontWeightCmp !== 0) return fontWeightCmp;
+
+  if (category === 'color') {
+    const famA = extractColorFamily(a);
+    const famB = extractColorFamily(b);
+    const familyCmp = compareByOrder(COLOR_FAMILY_ORDER, famA, famB) || famA.localeCompare(famB);
+    if (familyCmp !== 0) return familyCmp;
+    const variantCmp = compareByOrder(COLOR_VARIANT_ORDER, extractColorVariant(a), extractColorVariant(b));
+    if (variantCmp !== 0) return variantCmp;
+  }
+
+  const sizeOrder = category === 'typography' ? TYPOGRAPHY_SIZE_ORDER : SIZE_ORDER;
+  const sizeCmp = compareByOrder(sizeOrder, extractSize(a), extractSize(b));
+  if (sizeCmp !== 0) return sizeCmp;
+
+  if (category === 'typography') {
+    const kindCmp = Number(a.includes('Text')) - Number(b.includes('Text'));
+    if (kindCmp !== 0) return kindCmp;
+  }
+
+  return a.localeCompare(b);
+};
+
+// Sort files before building the tree. JS object insertion order is preserved,
+// so the generated meta output follows this one ordering path without post-sorting.
+export const sortTokenFiles = (tokenFiles: string[], sourceDirectory: string): string[] =>
   [...tokenFiles].sort((a, b) => {
-    if (path.dirname(a) !== path.dirname(b)) return 0; // cross-directory: stable sort preserves relative order
+    const relativeA = path.relative(sourceDirectory, a).replace(/\\/g, '/');
+    const relativeB = path.relative(sourceDirectory, b).replace(/\\/g, '/');
+    const segmentsA = relativeA.split('/');
+    const segmentsB = relativeB.split('/');
+    const dirA = segmentsA.slice(0, -1);
+    const dirB = segmentsB.slice(0, -1);
+
+    for (let i = 0; i < Math.max(dirA.length, dirB.length); i++) {
+      const segmentA = dirA[i];
+      const segmentB = dirB[i];
+      if (segmentA === undefined) return -1;
+      if (segmentB === undefined) return 1;
+      const segmentCmp = comparePathSegment(segmentA, segmentB, i);
+      if (segmentCmp !== 0) return segmentCmp;
+    }
+
     const nameA = path.basename(a, '.ts');
     const nameB = path.basename(b, '.ts');
-    // Typography: largest-to-smallest (5Xl → 2Xs).
-    const sizeA = extractTypographySize(nameA);
-    const sizeB = extractTypographySize(nameB);
-    if (sizeA || sizeB) return orderIndex(TYPOGRAPHY_SIZE_ORDER, sizeA) - orderIndex(TYPOGRAPHY_SIZE_ORDER, sizeB);
-    // Color: family order, then variant order within each family.
-    const famA = extractColorFamily(nameA);
-    const famB = extractColorFamily(nameB);
-    const familyCmp =
-      orderIndex(COLOR_FAMILY_ORDER, famA) - orderIndex(COLOR_FAMILY_ORDER, famB) || famA.localeCompare(famB);
-    if (familyCmp !== 0) return familyCmp;
-    return (
-      orderIndex(COLOR_VARIANT_ORDER, extractColorVariant(nameA)) -
-      orderIndex(COLOR_VARIANT_ORDER, extractColorVariant(nameB))
-    );
+    return compareTokenNames(nameA, nameB, dirA);
   });
+
+export async function generateMeta({
+  sourceDirectory,
+  outputFile,
+  packageExports,
+  typeImport,
+  typeImportPath,
+  treeTypeName,
+  exportName,
+  resolveTokenValue,
+}: {
+  sourceDirectory: string;
+  outputFile: string;
+  packageExports: Record<string, unknown>;
+  typeImport: string;
+  typeImportPath: string;
+  treeTypeName: string;
+  exportName: string;
+  resolveTokenValue: TokenValueResolver;
+}): Promise<void> {
+  const files = await fg(`${sourceDirectory}/**/*.ts`);
+  const tokenFiles = files.filter((f) => !f.endsWith('index.ts') && !f.endsWith('.spec.ts'));
+  const tree: TokenTree = {};
+
+  for (const file of sortTokenFiles(tokenFiles, sourceDirectory)) {
+    const info = extractTokenInfo(file);
+    if (!info) continue;
+
+    const relativePath = path.relative(sourceDirectory, file).replace(/\\/g, '/');
+    const segments = relativePath
+      .split('/')
+      .slice(0, -1)
+      .map((p) => camelCase(p));
+    const resolvedValue = packageExports[info.identifier];
+    if (resolvedValue === undefined) continue;
+
+    const value = resolveTokenValue({ ...info, resolvedValue, segments });
+    if (value === null) continue;
+
+    let node = tree;
+    for (const seg of segments) {
+      if (!node[seg]) node[seg] = {};
+      node = node[seg] as TokenTree;
+    }
+
+    node[info.identifier] = {
+      name: info.name,
+      ...(value !== undefined && { value }),
+      description: info.description,
+    } satisfies TokenLeaf;
+  }
+
+  const output = [
+    `import type { ${typeImport} } from '../types/${typeImportPath}';`,
+    ``,
+    `export type ${treeTypeName} = { [key: string]: ${treeTypeName} | ${typeImport} };`,
+    ``,
+    `export const ${exportName} = ${serializeTree(tree)} satisfies ${treeTypeName};`,
+    ``,
+  ].join('\n');
+
+  fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+  fs.writeFileSync(outputFile, output);
+}

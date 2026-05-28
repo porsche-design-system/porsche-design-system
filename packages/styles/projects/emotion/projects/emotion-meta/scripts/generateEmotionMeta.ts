@@ -1,70 +1,24 @@
-import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as emotion from '@porsche-design-system/emotion';
-import { camelCase } from 'change-case';
-import fg from 'fast-glob';
-import {
-  extractTokenInfo,
-  SEGMENTS_WITHOUT_VALUE,
-  serializeTree,
-  sortTokenFiles,
-  sortTree,
-  type TokenLeaf,
-  type TokenTree,
-} from '../../../../meta-shared.mts';
+import { generateMeta, SEGMENTS_WITHOUT_VALUE, stringifyMetaValue } from '../../../../meta-shared.mts';
 
 const startTime = performance.now();
 const sourceDirectory = path.resolve('../../src/');
 const outputFile = path.resolve('./src/lib/emotionMeta.ts');
 
-const files = await fg(`${sourceDirectory}/**/*.ts`);
-const tokenFiles = files.filter((f) => !f.endsWith('index.ts') && !f.endsWith('.spec.ts'));
-const sortedTokenFiles = sortTokenFiles(tokenFiles);
+await generateMeta({
+  sourceDirectory,
+  outputFile,
+  packageExports: emotion,
+  typeImport: 'EmotionMeta',
+  typeImportPath: 'emotion-meta',
+  treeTypeName: 'EmotionMetaTree',
+  exportName: 'emotionMeta',
+  resolveTokenValue: ({ resolvedValue, segments }) =>
+    SEGMENTS_WITHOUT_VALUE.includes(segments[0]) || typeof resolvedValue === 'function'
+      ? undefined
+      : stringifyMetaValue(resolvedValue),
+});
 
-const tree: TokenTree = {};
-
-for (const file of sortedTokenFiles) {
-  const info = extractTokenInfo(file);
-  if (!info) continue;
-
-  const relativePath = path.relative(sourceDirectory, file).replace(/\\/g, '/');
-  const parts = relativePath.split('/');
-  const segments = parts.slice(0, -1).map((p) => camelCase(p));
-
-  const resolvedValue = (emotion as Record<string, unknown>)[info.identifier];
-  if (resolvedValue === undefined) continue;
-  let value: string | number | undefined;
-  if (SEGMENTS_WITHOUT_VALUE.includes(segments[0]) || typeof resolvedValue === 'function') {
-    value = undefined;
-  } else if (typeof resolvedValue === 'string' || typeof resolvedValue === 'number') {
-    value = resolvedValue;
-  } else {
-    value = JSON.stringify(resolvedValue);
-  }
-
-  let node = tree;
-  for (const seg of segments) {
-    if (!node[seg]) node[seg] = {};
-    node = node[seg] as TokenTree;
-  }
-
-  node[info.identifier] = {
-    name: info.name,
-    ...(value !== undefined && { value }),
-    description: info.description,
-  } satisfies TokenLeaf;
-}
-
-const output = [
-  `import type { EmotionMeta } from '../types/emotion-meta';`,
-  ``,
-  `export type EmotionMetaTree = { [key: string]: EmotionMetaTree | EmotionMeta };`,
-  ``,
-  `export const emotionMeta = ${serializeTree(sortTree(tree))} satisfies EmotionMetaTree;`,
-  ``,
-].join('\n');
-
-fs.mkdirSync(path.dirname(outputFile), { recursive: true });
-fs.writeFileSync(outputFile, output);
 const endTime = performance.now();
 console.log(`Generated ${outputFile} in ${endTime - startTime}ms`);
