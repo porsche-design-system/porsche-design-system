@@ -6,7 +6,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   template: `
     <p-inline-notification
       [heading]="'Some heading'"
-      [headingTag]="'h4'"
+      [headingTag]="'h3'"
       [description]="'Some description.'"
       [actionLabel]="'Retry'"
       [actionIcon]="'reset'"
