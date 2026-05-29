@@ -5,5 +5,5 @@
     "ignoreDeprecations": "6.0",
     "jsx": "react-jsx"
   },
-  "include": ["./src", "./tests"]
+  "include": ["./src", "./scripts", "./tests"]
 }

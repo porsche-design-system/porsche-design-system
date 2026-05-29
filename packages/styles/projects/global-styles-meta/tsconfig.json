@@ -1,0 +1,5 @@
+{
+  "extends": "@porsche-design-system/shared/tsconfig.json",
+  "exclude": ["scripts"]
+}
+
