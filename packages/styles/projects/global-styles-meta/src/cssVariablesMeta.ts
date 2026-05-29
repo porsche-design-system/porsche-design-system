@@ -161,7 +161,6 @@ export const cssVariablesMeta = {
   color: {
     background: {
       canvas: {
-        name: 'canvas',
         type: 'color',
         property: '--p-color-canvas',
         description: 'Applies the **canvas** color, typically used for surfaces.',
@@ -170,7 +169,6 @@ export const cssVariablesMeta = {
         valueDark: colorCanvasDark,
       },
       surface: {
-        name: 'surface',
         type: 'color',
         property: '--p-color-surface',
         description: 'Applies the **surface** color, typically used for surfaces.',
@@ -179,7 +177,6 @@ export const cssVariablesMeta = {
         valueDark: colorSurfaceDark,
       },
       frosted: {
-        name: 'frosted',
         type: 'color',
         property: '--p-color-frosted',
         description: 'Applies the **frosted** color, typically used as a background in combination with a blur effect.',
@@ -188,7 +185,6 @@ export const cssVariablesMeta = {
         valueDark: colorFrostedDark,
       },
       frostedSoft: {
-        name: 'frostedSoft',
         type: 'color',
         property: '--p-color-frosted-soft',
         description: 'Applies the **frosted** color, typically used as a background `:hover`.',
@@ -197,7 +193,6 @@ export const cssVariablesMeta = {
         valueDark: colorFrostedSoftDark,
       },
       frostedStrong: {
-        name: 'frostedStrong',
         type: 'color',
         property: '--p-color-frosted-strong',
         description:
@@ -207,7 +202,6 @@ export const cssVariablesMeta = {
         valueDark: colorFrostedStrongDark,
       },
       backdrop: {
-        name: 'backdrop',
         type: 'color',
         property: '--p-color-backdrop',
         description: 'Applies the **backdrop** color, typically used for backdrops.',
@@ -218,7 +212,6 @@ export const cssVariablesMeta = {
     },
     foreground: {
       primary: {
-        name: 'primary',
         type: 'color',
         property: '--p-color-primary',
         description: 'Applies the **primary** color, typically used for text.',
@@ -227,7 +220,6 @@ export const cssVariablesMeta = {
         valueDark: colorPrimaryDark,
       },
       contrastHigher: {
-        name: 'contrastHigher',
         type: 'color',
         property: '--p-color-contrast-higher',
         description: 'Applies the **contrast-higher** color, typically used for text.',
@@ -236,7 +228,6 @@ export const cssVariablesMeta = {
         valueDark: colorContrastHigherDark,
       },
       contrastHigh: {
-        name: 'contrastHigh',
         type: 'color',
         property: '--p-color-contrast-high',
         description: 'Applies the **contrast-high** color, typically used for text.',
@@ -245,7 +236,6 @@ export const cssVariablesMeta = {
         valueDark: colorContrastHighDark,
       },
       contrastMedium: {
-        name: 'contrastMedium',
         type: 'color',
         property: '--p-color-contrast-medium',
         description: 'Applies the **contrast-medium** color, typically used for text.',
@@ -254,7 +244,6 @@ export const cssVariablesMeta = {
         valueDark: colorContrastMediumDark,
       },
       contrastLow: {
-        name: 'contrastLow',
         type: 'color',
         property: '--p-color-contrast-low',
         description:
@@ -264,7 +253,6 @@ export const cssVariablesMeta = {
         valueDark: colorContrastLowDark,
       },
       contrastLower: {
-        name: 'contrastLower',
         type: 'color',
         property: '--p-color-contrast-lower',
         description:
@@ -276,7 +264,6 @@ export const cssVariablesMeta = {
     },
     semantic: {
       info: {
-        name: 'info',
         type: 'color',
         property: '--p-color-info',
         description: 'Applies the **info** color, typically used for text.',
@@ -285,7 +272,6 @@ export const cssVariablesMeta = {
         valueDark: colorInfoDark,
       },
       infoMedium: {
-        name: 'infoMedium',
         type: 'color',
         property: '--p-color-info-medium',
         description: 'Applies the **info** color, typically used for text or border.',
@@ -294,7 +280,6 @@ export const cssVariablesMeta = {
         valueDark: colorInfoMediumDark,
       },
       infoLow: {
-        name: 'infoLow',
         type: 'color',
         property: '--p-color-info-low',
         description: 'Applies the **info** color, typically used for text or border.',
@@ -303,7 +288,6 @@ export const cssVariablesMeta = {
         valueDark: colorInfoLowDark,
       },
       infoFrosted: {
-        name: 'infoFrosted',
         type: 'color',
         property: '--p-color-info-frosted',
         description:
@@ -313,7 +297,6 @@ export const cssVariablesMeta = {
         valueDark: colorInfoFrostedDark,
       },
       infoFrostedSoft: {
-        name: 'infoFrostedSoft',
         type: 'color',
         property: '--p-color-info-frosted-soft',
         description: 'Applies the **info-frosted-soft** color, typically used as background `:hover`.',
@@ -322,7 +305,6 @@ export const cssVariablesMeta = {
         valueDark: colorInfoFrostedSoftDark,
       },
       success: {
-        name: 'success',
         type: 'color',
         property: '--p-color-success',
         description: 'Applies the **success** color, typically used for text.',
@@ -331,7 +313,6 @@ export const cssVariablesMeta = {
         valueDark: colorSuccessDark,
       },
       successMedium: {
-        name: 'successMedium',
         type: 'color',
         property: '--p-color-success-medium',
         description: 'Applies the **success** color, typically used for text or border.',
@@ -340,7 +321,6 @@ export const cssVariablesMeta = {
         valueDark: colorSuccessMediumDark,
       },
       successLow: {
-        name: 'successLow',
         type: 'color',
         property: '--p-color-success-low',
         description: 'Applies the **success** color, typically used for text or border.',
@@ -349,7 +329,6 @@ export const cssVariablesMeta = {
         valueDark: colorSuccessLowDark,
       },
       successFrosted: {
-        name: 'successFrosted',
         type: 'color',
         property: '--p-color-success-frosted',
         description:
@@ -359,7 +338,6 @@ export const cssVariablesMeta = {
         valueDark: colorSuccessFrostedDark,
       },
       successFrostedSoft: {
-        name: 'successFrostedSoft',
         type: 'color',
         property: '--p-color-success-frosted-soft',
         description: 'Applies the **success-frosted-soft** color, typically used as background `:hover`.',
@@ -368,7 +346,6 @@ export const cssVariablesMeta = {
         valueDark: colorSuccessFrostedSoftDark,
       },
       warning: {
-        name: 'warning',
         type: 'color',
         property: '--p-color-warning',
         description: 'Applies the **warning** color, typically used for text.',
@@ -377,7 +354,6 @@ export const cssVariablesMeta = {
         valueDark: colorWarningDark,
       },
       warningMedium: {
-        name: 'warningMedium',
         type: 'color',
         property: '--p-color-warning-medium',
         description: 'Applies the **warning** color, typically used for text or border.',
@@ -386,7 +362,6 @@ export const cssVariablesMeta = {
         valueDark: colorWarningMediumDark,
       },
       warningLow: {
-        name: 'warningLow',
         type: 'color',
         property: '--p-color-warning-low',
         description: 'Applies the **warning** color, typically used for text or border.',
@@ -395,7 +370,6 @@ export const cssVariablesMeta = {
         valueDark: colorWarningLowDark,
       },
       warningFrosted: {
-        name: 'warningFrosted',
         type: 'color',
         property: '--p-color-warning-frosted',
         description:
@@ -405,7 +379,6 @@ export const cssVariablesMeta = {
         valueDark: colorWarningFrostedDark,
       },
       warningFrostedSoft: {
-        name: 'warningFrostedSoft',
         type: 'color',
         property: '--p-color-warning-frosted-soft',
         description: 'Applies the **warning-frosted-soft** color, typically used as background `:hover`.',
@@ -414,7 +387,6 @@ export const cssVariablesMeta = {
         valueDark: colorWarningFrostedSoftDark,
       },
       error: {
-        name: 'error',
         type: 'color',
         property: '--p-color-error',
         description: 'Applies the **error** color, typically used for text.',
@@ -423,7 +395,6 @@ export const cssVariablesMeta = {
         valueDark: colorErrorDark,
       },
       errorMedium: {
-        name: 'errorMedium',
         type: 'color',
         property: '--p-color-error-medium',
         description: 'Applies the **error** color, typically used for text or border.',
@@ -432,7 +403,6 @@ export const cssVariablesMeta = {
         valueDark: colorErrorMediumDark,
       },
       errorLow: {
-        name: 'errorLow',
         type: 'color',
         property: '--p-color-error-low',
         description: 'Applies the **error** color, typically used for text or border.',
@@ -441,7 +411,6 @@ export const cssVariablesMeta = {
         valueDark: colorErrorLowDark,
       },
       errorFrosted: {
-        name: 'errorFrosted',
         type: 'color',
         property: '--p-color-error-frosted',
         description:
@@ -451,7 +420,6 @@ export const cssVariablesMeta = {
         valueDark: colorErrorFrostedDark,
       },
       errorFrostedSoft: {
-        name: 'errorFrostedSoft',
         type: 'color',
         property: '--p-color-error-frosted-soft',
         description: 'Applies the **error-frosted-soft** color, typically used as background `:hover`.',
@@ -462,7 +430,6 @@ export const cssVariablesMeta = {
     },
     a11y: {
       focus: {
-        name: 'focus',
         type: 'color',
         property: '--p-color-focus',
         description: 'Applies the **focus** color, typically used as the outline for `:focus-visible` states.',
@@ -475,7 +442,6 @@ export const cssVariablesMeta = {
   typography: {
     family: {
       porscheNext: {
-        name: 'porscheNext',
         type: 'typography',
         property: '--p-font-porsche-next',
         description:
@@ -483,7 +449,6 @@ export const cssVariablesMeta = {
         value: fontPorscheNext,
       },
       sans: {
-        name: 'sans',
         type: 'typography',
         property: '--p-font-sans',
         description: 'Alias for `--p-font-porsche-next`, provided for Tailwind-style `font-sans` usage.',
@@ -492,21 +457,18 @@ export const cssVariablesMeta = {
     },
     weight: {
       normal: {
-        name: 'normal',
         type: 'typography',
         property: '--p-font-weight-normal',
         description: 'Applies the **regular** font weight optimized for the Porsche Next typeface.',
         value: fontWeightNormal,
       },
       semibold: {
-        name: 'semibold',
         type: 'typography',
         property: '--p-font-weight-semibold',
         description: 'Applies the **semi-bold** font weight optimized for the Porsche Next typeface.',
         value: fontWeightSemibold,
       },
       bold: {
-        name: 'bold',
         type: 'typography',
         property: '--p-font-weight-bold',
         description: 'Applies the **bold** font weight optimized for the Porsche Next typeface.',
@@ -515,7 +477,6 @@ export const cssVariablesMeta = {
     },
     lineHeight: {
       normal: {
-        name: 'normal',
         type: 'typography',
         property: '--p-leading-normal',
         description: 'Applies a dynamic default line height specifically optimized for the Porsche Next typeface.',
@@ -524,70 +485,60 @@ export const cssVariablesMeta = {
     },
     typescale: {
       '2xs': {
-        name: '2xs',
         type: 'typography',
         property: '--p-typescale-2xs',
         description: 'Applies the **2x-small** font size for the Porsche Next typeface.',
         value: typescale2Xs,
       },
       xs: {
-        name: 'xs',
         type: 'typography',
         property: '--p-typescale-xs',
         description: 'Applies the **x-small** font size for the Porsche Next typeface.',
         value: typescaleXs,
       },
       sm: {
-        name: 'sm',
         type: 'typography',
         property: '--p-typescale-sm',
         description: 'Applies the **small** font size for the Porsche Next typeface.',
         value: typescaleSm,
       },
       md: {
-        name: 'md',
         type: 'typography',
         property: '--p-typescale-md',
         description: 'Applies the **medium** font size for the Porsche Next typeface.',
         value: typescaleMd,
       },
       lg: {
-        name: 'lg',
         type: 'typography',
         property: '--p-typescale-lg',
         description: 'Applies the **large** font size for the Porsche Next typeface.',
         value: typescaleLg,
       },
       xl: {
-        name: 'xl',
         type: 'typography',
         property: '--p-typescale-xl',
         description: 'Applies the **x-large** font size for the Porsche Next typeface.',
         value: typescaleXl,
       },
       '2xl': {
-        name: '2xl',
         type: 'typography',
         property: '--p-typescale-2xl',
         description: 'Applies the **2x-large** font size for the Porsche Next typeface.',
         value: typescale2Xl,
       },
       '3xl': {
-        name: '3xl',
         type: 'typography',
         property: '--p-typescale-3xl',
         description: 'Applies the **3x-large** font size for the Porsche Next typeface.',
         value: typescale3Xl,
       },
       '4xl': {
-        name: '4xl',
         type: 'typography',
         property: '--p-typescale-4xl',
         description: 'Applies the **4x-large** font size for the Porsche Next typeface.',
         value: typescale4Xl,
       },
       '5xl': {
-        name: '5xl',
         type: 'typography',
         property: '--p-typescale-5xl',
         description: 'Applies the **5x-large** font size for the Porsche Next typeface.',
@@ -598,42 +549,36 @@ export const cssVariablesMeta = {
   spacing: {
     fluid: {
       xs: {
-        name: 'xs',
         type: 'spacing',
         property: '--p-spacing-fluid-xs',
         description: 'Applies the **x-small** fluid spacing.',
         value: spacingFluidXs,
       },
       sm: {
-        name: 'sm',
         type: 'spacing',
         property: '--p-spacing-fluid-sm',
         description: 'Applies the **small** fluid spacing.',
         value: spacingFluidSm,
       },
       md: {
-        name: 'md',
         type: 'spacing',
         property: '--p-spacing-fluid-md',
         description: 'Applies the **medium** fluid spacing.',
         value: spacingFluidMd,
       },
       lg: {
-        name: 'lg',
         type: 'spacing',
         property: '--p-spacing-fluid-lg',
         description: 'Applies the **large** fluid spacing.',
         value: spacingFluidLg,
       },
       xl: {
-        name: 'xl',
         type: 'spacing',
         property: '--p-spacing-fluid-xl',
         description: 'Applies the **x-large** fluid spacing.',
         value: spacingFluidXl,
       },
       '2xl': {
-        name: '2xl',
         type: 'spacing',
         property: '--p-spacing-fluid-2xl',
         description: 'Applies the **2x-large** fluid spacing.',
@@ -642,49 +587,42 @@ export const cssVariablesMeta = {
     },
     static: {
       '2xs': {
-        name: '2xs',
         type: 'spacing',
         property: '--p-spacing-static-2xs',
         description: 'Applies the **2x-small** static spacing.',
         value: spacingStatic2Xs,
       },
       xs: {
-        name: 'xs',
         type: 'spacing',
         property: '--p-spacing-static-xs',
         description: 'Applies the **x-small** static spacing.',
         value: spacingStaticXs,
       },
       sm: {
-        name: 'sm',
         type: 'spacing',
         property: '--p-spacing-static-sm',
         description: 'Applies the **small** static spacing.',
         value: spacingStaticSm,
       },
       md: {
-        name: 'md',
         type: 'spacing',
         property: '--p-spacing-static-md',
         description: 'Applies the **medium** static spacing.',
         value: spacingStaticMd,
       },
       lg: {
-        name: 'lg',
         type: 'spacing',
         property: '--p-spacing-static-lg',
         description: 'Applies the **large** static spacing.',
         value: spacingStaticLg,
       },
       xl: {
-        name: 'xl',
         type: 'spacing',
         property: '--p-spacing-static-xl',
         description: 'Applies the **x-large** static spacing.',
         value: spacingStaticXl,
       },
       '2xl': {
-        name: '2xl',
         type: 'spacing',
         property: '--p-spacing-static-2xl',
         description: 'Applies the **2x-large** static spacing.',
@@ -694,63 +632,54 @@ export const cssVariablesMeta = {
   },
   radius: {
     xs: {
-      name: 'xs',
       type: 'radius',
       property: '--p-radius-xs',
       description: 'Applies a **x-small** `border-radius`.',
       value: radiusXs,
     },
     sm: {
-      name: 'sm',
       type: 'radius',
       property: '--p-radius-sm',
       description: 'Applies a **small** `border-radius`.',
       value: radiusSm,
     },
     md: {
-      name: 'md',
       type: 'radius',
       property: '--p-radius-md',
       description: 'Applies a **medium** `border-radius`.',
       value: radiusMd,
     },
     lg: {
-      name: 'lg',
       type: 'radius',
       property: '--p-radius-lg',
       description: 'Applies a **large** `border-radius`.',
       value: radiusLg,
     },
     xl: {
-      name: 'xl',
       type: 'radius',
       property: '--p-radius-xl',
       description: 'Applies a **x-large** `border-radius`.',
       value: radiusXl,
     },
     '2xl': {
-      name: '2xl',
       type: 'radius',
       property: '--p-radius-2xl',
       description: 'Applies a **2x-large** `border-radius`.',
       value: radius2Xl,
     },
     '3xl': {
-      name: '3xl',
       type: 'radius',
       property: '--p-radius-3xl',
       description: 'Applies a **3x-large** `border-radius`.',
       value: radius3Xl,
     },
     '4xl': {
-      name: '4xl',
       type: 'radius',
       property: '--p-radius-4xl',
       description: 'Applies a **4x-large** `border-radius`.',
       value: radius4Xl,
     },
     full: {
-      name: 'full',
       type: 'radius',
       property: '--p-radius-full',
       description: 'Applies a **fully** rounded `border-radius`.',
@@ -759,7 +688,6 @@ export const cssVariablesMeta = {
   },
   blur: {
     frosted: {
-      name: 'frosted',
       type: 'blur',
       property: '--p-blur-frosted',
       description:
@@ -769,21 +697,18 @@ export const cssVariablesMeta = {
   },
   shadow: {
     sm: {
-      name: 'sm',
       type: 'shadow',
       property: '--p-shadow-sm',
       description: 'Applies a **small** `box-shadow`.',
       value: shadowSm,
     },
     md: {
-      name: 'md',
       type: 'shadow',
       property: '--p-shadow-md',
       description: 'Applies a **medium** `box-shadow`.',
       value: shadowMd,
     },
     lg: {
-      name: 'lg',
       type: 'shadow',
       property: '--p-shadow-lg',
       description: 'Applies a **large** `box-shadow`.',
@@ -793,28 +718,24 @@ export const cssVariablesMeta = {
   motion: {
     duration: {
       sm: {
-        name: 'sm',
         type: 'motion',
         property: '--p-duration-sm',
         description: 'Applies a **short** `transition-duration`.',
         value: durationSm,
       },
       md: {
-        name: 'md',
         type: 'motion',
         property: '--p-duration-md',
         description: 'Applies a **moderate** `transition-duration`.',
         value: durationMd,
       },
       lg: {
-        name: 'lg',
         type: 'motion',
         property: '--p-duration-lg',
         description: 'Applies a **long** `transition-duration`.',
         value: durationLg,
       },
       xl: {
-        name: 'xl',
         type: 'motion',
         property: '--p-duration-xl',
         description: 'Applies a **very long** `transition-duration`.',
@@ -823,21 +744,18 @@ export const cssVariablesMeta = {
     },
     easing: {
       inOut: {
-        name: 'inOut',
         type: 'motion',
         property: '--p-ease-in-out',
         description: 'Applies an **in-out** `transition-timing-function`.',
         value: easeInOut,
       },
       in: {
-        name: 'in',
         type: 'motion',
         property: '--p-ease-in',
         description: 'Applies an **in** `transition-timing-function`.',
         value: easeIn,
       },
       out: {
-        name: 'out',
         type: 'motion',
         property: '--p-ease-out',
         description: 'Applies an **out** `transition-timing-function`.',
@@ -862,22 +780,22 @@ export const variablesCss: CssNode[] = [
   },
   {
     comment: 'Simplified Chinese',
-    selector: [':lang(zh-Hans)', ':lang(zh-CN)', ':lang(zh-SG)'].join(',\n'),
+    selector: ':lang(zh-Hans), :lang(zh-CN), :lang(zh-SG)',
     declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextZhHans }],
   },
   {
     comment: 'Traditional Chinese',
-    selector: [':lang(zh-Hant)', ':lang(zh-TW)', ':lang(zh-HK)', ':lang(zh-MO)'].join(',\n'),
+    selector: ':lang(zh-Hant), :lang(zh-TW), :lang(zh-HK), :lang(zh-MO)',
     declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextZhHant }],
   },
   {
     comment: 'Japanese',
-    selector: [':lang(ja)'].join(',\n'),
+    selector: ':lang(ja)',
     declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextJa }],
   },
   {
     comment: 'Korean',
-    selector: [':lang(ko)'].join(',\n'),
+    selector: ':lang(ko)',
     declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextKo }],
   },
 ];

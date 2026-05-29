@@ -35,12 +35,11 @@ it('should expose granular metas independently of globalStylesMeta', () => {
   expect(legacyRadiusMeta.length).toBeGreaterThan(0);
 });
 
-it('every css variable leaf should have name, property, description and value', () => {
+it('every css variable leaf should have property, description and value', () => {
   for (const leaf of allCssVariables) {
-    expect(leaf.name, 'missing name').toBeTruthy();
-    expect(leaf.property, `${leaf.name}: missing property`).toMatch(/^--/);
-    expect(leaf.description, `${leaf.name}: missing description`).toBeTruthy();
-    expect(leaf.value, `${leaf.name}: missing value`).toBeTruthy();
+    expect(leaf.property, 'missing property').toMatch(/^--/);
+    expect(leaf.description, `${leaf.property}: missing description`).toBeTruthy();
+    expect(leaf.value, `${leaf.property}: missing value`).toBeTruthy();
   }
 });
 

@@ -34,8 +34,6 @@ export type CssVariableMeta = CssVariableMetaBase &
 
 /** Properties shared by every CSS variable, regardless of its `type`. */
 type CssVariableMetaBase = CssDeclaration & {
-  /** Short, human-readable name within its group, e.g. `canvas`. */
-  name: string;
   /** Markdown-enabled description (supports `**bold**` and `` `code` ``). */
   description: string;
   /** The category this variable belongs to; also acts as the union discriminant. */

@@ -254,7 +254,7 @@ exports[`renderCss should serialize the resolution of every generated stylesheet
 margin: 0;
 padding: 0;
 font-family: var(--p-font-porsche-next, 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif);
-line-height: var([object Object], calc(6px + 2.125ex));
+line-height: var(--p-leading-normal, calc(6px + 2.125ex));
 letter-spacing: normal;
 text-size-adjust: none;
 -webkit-text-size-adjust: none;
@@ -283,7 +283,6 @@ exports[`should match snapshot 1`] = `
           },
         ],
         "description": "Sets \`color-scheme: normal\`. The element isn't rendered with any color scheme at all — the browser default applies.",
-        "name": "schemeNormal",
         "selector": ".scheme-normal",
         "usage": "Set class="scheme-normal" on the html element or any container.",
       },
@@ -295,7 +294,6 @@ exports[`should match snapshot 1`] = `
           },
         ],
         "description": "Sets \`color-scheme: dark\`. Indicates the element supports only the dark color scheme.",
-        "name": "schemeDark",
         "selector": ".scheme-dark",
         "usage": "Set class="scheme-dark" on the html element or any container.",
       },
@@ -307,7 +305,6 @@ exports[`should match snapshot 1`] = `
           },
         ],
         "description": "Sets \`color-scheme: light\`. Indicates the element supports only the light color scheme.",
-        "name": "schemeLight",
         "selector": ".scheme-light",
         "usage": "Set class="scheme-light" on the html element or any container.",
       },
@@ -319,7 +316,6 @@ exports[`should match snapshot 1`] = `
           },
         ],
         "description": "Sets \`color-scheme: light dark\`. Indicates the element supports both light and dark, chosen by user preference.",
-        "name": "schemeLightDark",
         "selector": ".scheme-light-dark",
         "usage": "Set class="scheme-light-dark" on the html element or any container.",
       },
@@ -331,7 +327,6 @@ exports[`should match snapshot 1`] = `
           },
         ],
         "description": "Sets \`color-scheme: only dark\`. Forces the dark color scheme and prevents the browser from overriding it.",
-        "name": "schemeOnlyDark",
         "selector": ".scheme-only-dark",
         "usage": "Set class="scheme-only-dark" on the html element or any container.",
       },
@@ -343,7 +338,6 @@ exports[`should match snapshot 1`] = `
           },
         ],
         "description": "Sets \`color-scheme: only light\`. Forces the light color scheme and prevents the browser from overriding it.",
-        "name": "schemeOnlyLight",
         "selector": ".scheme-only-light",
         "usage": "Set class="scheme-only-light" on the html element or any container.",
       },
@@ -782,7 +776,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **canvas** color, typically used for surfaces.",
-            "name": "canvas",
             "property": "--p-color-canvas",
             "type": "color",
             "value": "light-dark(#fff,hsl(225 66.7% 1.2%))",
@@ -791,7 +784,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **surface** color, typically used for surfaces.",
-            "name": "surface",
             "property": "--p-color-surface",
             "type": "color",
             "value": "light-dark(hsl(240 10% 95%),hsl(240 2% 10%))",
@@ -800,7 +792,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **frosted** color, typically used as a background in combination with a blur effect.",
-            "name": "frosted",
             "property": "--p-color-frosted",
             "type": "color",
             "value": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
@@ -809,7 +800,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **frosted** color, typically used as a background \`:hover\`.",
-            "name": "frostedSoft",
             "property": "--p-color-frosted-soft",
             "type": "color",
             "value": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
@@ -818,7 +808,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **frosted-strong** color, typically used as a background in combination with a blur effect.",
-            "name": "frostedStrong",
             "property": "--p-color-frosted-strong",
             "type": "color",
             "value": "light-dark(hsl(236 6.5% 42% / 0.236),hsl(240 1.5% 61.8% / 0.302))",
@@ -827,7 +816,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **backdrop** color, typically used for backdrops.",
-            "name": "backdrop",
             "property": "--p-color-backdrop",
             "type": "color",
             "value": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 5.3% 14.9% / 0.5))",
@@ -836,7 +824,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **primary** color, typically used for text.",
-            "name": "primary",
             "property": "--p-color-primary",
             "type": "color",
             "value": "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
@@ -845,7 +832,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **contrast-higher** color, typically used for text.",
-            "name": "contrastHigher",
             "property": "--p-color-contrast-higher",
             "type": "color",
             "value": "light-dark(hsl(240 8.7% 9% / 0.8),hsl(240 12.5% 96.9% / 0.78))",
@@ -854,7 +840,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **contrast-high** color, typically used for text.",
-            "name": "contrastHigh",
             "property": "--p-color-contrast-high",
             "type": "color",
             "value": "light-dark(hsl(240 7.1% 11% / 0.7),hsl(240 12.5% 96.9% / 0.67))",
@@ -863,7 +848,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **contrast-medium** color, typically used for text.",
-            "name": "contrastMedium",
             "property": "--p-color-contrast-medium",
             "type": "color",
             "value": "light-dark(hsl(240 6.1% 7% / 0.6),hsl(240 12.5% 96.9% / 0.56))",
@@ -872,7 +856,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.",
-            "name": "contrastLow",
             "property": "--p-color-contrast-low",
             "type": "color",
             "value": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))",
@@ -881,7 +864,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant.",
-            "name": "contrastLower",
             "property": "--p-color-contrast-lower",
             "type": "color",
             "value": "light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))",
@@ -890,7 +872,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **info** color, typically used for text.",
-            "name": "info",
             "property": "--p-color-info",
             "type": "color",
             "value": "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))",
@@ -899,7 +880,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **info** color, typically used for text or border.",
-            "name": "infoMedium",
             "property": "--p-color-info-medium",
             "type": "color",
             "value": "light-dark(hsl(228 83.2% 51% / 0.6),hsl(210 100% 54.5% / 0.6))",
@@ -908,7 +888,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **info** color, typically used for text or border.",
-            "name": "infoLow",
             "property": "--p-color-info-low",
             "type": "color",
             "value": "light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18))",
@@ -917,7 +896,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **info-frosted** color, typically used as background in combination with a blur effect.",
-            "name": "infoFrosted",
             "property": "--p-color-info-frosted",
             "type": "color",
             "value": "light-dark(hsl(211 100% 90% / 0.55),hsl(210 79% 20% / 0.66))",
@@ -926,7 +904,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **info-frosted-soft** color, typically used as background \`:hover\`.",
-            "name": "infoFrostedSoft",
             "property": "--p-color-info-frosted-soft",
             "type": "color",
             "value": "light-dark(hsl(211 80% 95% / 0.55),hsl(210 59% 15% / 0.66))",
@@ -935,7 +912,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **success** color, typically used for text.",
-            "name": "success",
             "property": "--p-color-success",
             "type": "color",
             "value": "light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%))",
@@ -944,7 +920,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **success** color, typically used for text or border.",
-            "name": "successMedium",
             "property": "--p-color-success-medium",
             "type": "color",
             "value": "light-dark(hsl(115 77.5% 27.8% / 0.6),hsl(157 84.9% 41.6% / 0.6))",
@@ -953,7 +928,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **success** color, typically used for text or border.",
-            "name": "successLow",
             "property": "--p-color-success-low",
             "type": "color",
             "value": "light-dark(hsl(115 77.5% 27.8% / 0.18),hsl(157 84.9% 41.6% / 0.18))",
@@ -962,7 +936,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **success-frosted** color, typically used as background in combination with a blur effect.",
-            "name": "successFrosted",
             "property": "--p-color-success-frosted",
             "type": "color",
             "value": "light-dark(hsl(109 100% 90% / 0.55),hsl(157 79% 20% / 0.66))",
@@ -971,7 +944,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **success-frosted-soft** color, typically used as background \`:hover\`.",
-            "name": "successFrostedSoft",
             "property": "--p-color-success-frosted-soft",
             "type": "color",
             "value": "light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66))",
@@ -980,7 +952,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **warning** color, typically used for text.",
-            "name": "warning",
             "property": "--p-color-warning",
             "type": "color",
             "value": "light-dark(hsl(28 97.7% 34.1%),hsl(28 90.2% 56.1%))",
@@ -989,7 +960,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **warning** color, typically used for text or border.",
-            "name": "warningMedium",
             "property": "--p-color-warning-medium",
             "type": "color",
             "value": "light-dark(hsl(28 97.7% 34.1% / 0.6),hsl(28 90.2% 56.1% / 0.6))",
@@ -998,7 +968,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **warning** color, typically used for text or border.",
-            "name": "warningLow",
             "property": "--p-color-warning-low",
             "type": "color",
             "value": "light-dark(hsl(28 97.7% 34.1% / 0.18),hsl(28 90.2% 56.1% / 0.18))",
@@ -1007,7 +976,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **warning-frosted** color, typically used as background in combination with a blur effect.",
-            "name": "warningFrosted",
             "property": "--p-color-warning-frosted",
             "type": "color",
             "value": "light-dark(hsl(40 100% 90% / 0.55),hsl(52 79% 20% / 0.66))",
@@ -1016,7 +984,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **warning-frosted-soft** color, typically used as background \`:hover\`.",
-            "name": "warningFrostedSoft",
             "property": "--p-color-warning-frosted-soft",
             "type": "color",
             "value": "light-dark(hsl(40 80% 95% / 0.55),hsl(52 59% 15% / 0.66))",
@@ -1025,7 +992,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **error** color, typically used for text.",
-            "name": "error",
             "property": "--p-color-error",
             "type": "color",
             "value": "light-dark(hsl(357 78% 41%),hsl(0 96.9% 62%))",
@@ -1034,7 +1000,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **error** color, typically used for text or border.",
-            "name": "errorMedium",
             "property": "--p-color-error-medium",
             "type": "color",
             "value": "light-dark(hsl(357 78% 41% / 0.6),hsl(0 96.9% 62% / 0.6))",
@@ -1043,7 +1008,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **error** color, typically used for text or border.",
-            "name": "errorLow",
             "property": "--p-color-error-low",
             "type": "color",
             "value": "light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18))",
@@ -1052,7 +1016,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **error-frosted** color, typically used as background in combination with a blur effect.",
-            "name": "errorFrosted",
             "property": "--p-color-error-frosted",
             "type": "color",
             "value": "light-dark(hsl(0 100% 90% / 0.55),hsl(0 79% 20% / 0.66))",
@@ -1061,7 +1024,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **error-frosted-soft** color, typically used as background \`:hover\`.",
-            "name": "errorFrostedSoft",
             "property": "--p-color-error-frosted-soft",
             "type": "color",
             "value": "light-dark(hsl(0 80% 95% / 0.55),hsl(0 59% 15% / 0.66))",
@@ -1070,7 +1032,6 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **focus** color, typically used as the outline for \`:focus-visible\` states.",
-            "name": "focus",
             "property": "--p-color-focus",
             "type": "color",
             "value": "light-dark(#1A44EA,#1A44EA)",
@@ -1079,343 +1040,294 @@ exports[`should match snapshot 1`] = `
           },
           {
             "description": "Applies the **Porsche Next** font family along with fallback fonts. Automatically swaps to the locale-specific CJK stack (Simplified Chinese, Traditional Chinese, Japanese, Korean) via \`:lang()\` based on the nearest \`lang\` attribute.",
-            "name": "porscheNext",
             "property": "--p-font-porsche-next",
             "type": "typography",
             "value": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
           },
           {
             "description": "Alias for \`--p-font-porsche-next\`, provided for Tailwind-style \`font-sans\` usage.",
-            "name": "sans",
             "property": "--p-font-sans",
             "type": "typography",
             "value": "var(--p-font-porsche-next)",
           },
           {
             "description": "Applies the **regular** font weight optimized for the Porsche Next typeface.",
-            "name": "normal",
             "property": "--p-font-weight-normal",
             "type": "typography",
             "value": 400,
           },
           {
             "description": "Applies the **semi-bold** font weight optimized for the Porsche Next typeface.",
-            "name": "semibold",
             "property": "--p-font-weight-semibold",
             "type": "typography",
             "value": 600,
           },
           {
             "description": "Applies the **bold** font weight optimized for the Porsche Next typeface.",
-            "name": "bold",
             "property": "--p-font-weight-bold",
             "type": "typography",
             "value": 700,
           },
           {
             "description": "Applies a dynamic default line height specifically optimized for the Porsche Next typeface.",
-            "name": "normal",
             "property": "--p-leading-normal",
             "type": "typography",
             "value": "calc(6px + 2.125ex)",
           },
           {
             "description": "Applies the **2x-small** font size for the Porsche Next typeface.",
-            "name": "2xs",
             "property": "--p-typescale-2xs",
             "type": "typography",
             "value": ".75rem",
           },
           {
             "description": "Applies the **x-small** font size for the Porsche Next typeface.",
-            "name": "xs",
             "property": "--p-typescale-xs",
             "type": "typography",
             "value": ".875rem",
           },
           {
             "description": "Applies the **small** font size for the Porsche Next typeface.",
-            "name": "sm",
             "property": "--p-typescale-sm",
             "type": "typography",
             "value": "1rem",
           },
           {
             "description": "Applies the **medium** font size for the Porsche Next typeface.",
-            "name": "md",
             "property": "--p-typescale-md",
             "type": "typography",
             "value": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
           },
           {
             "description": "Applies the **large** font size for the Porsche Next typeface.",
-            "name": "lg",
             "property": "--p-typescale-lg",
             "type": "typography",
             "value": "clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)",
           },
           {
             "description": "Applies the **x-large** font size for the Porsche Next typeface.",
-            "name": "xl",
             "property": "--p-typescale-xl",
             "type": "typography",
             "value": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
           },
           {
             "description": "Applies the **2x-large** font size for the Porsche Next typeface.",
-            "name": "2xl",
             "property": "--p-typescale-2xl",
             "type": "typography",
             "value": "clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)",
           },
           {
             "description": "Applies the **3x-large** font size for the Porsche Next typeface.",
-            "name": "3xl",
             "property": "--p-typescale-3xl",
             "type": "typography",
             "value": "clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)",
           },
           {
             "description": "Applies the **4x-large** font size for the Porsche Next typeface.",
-            "name": "4xl",
             "property": "--p-typescale-4xl",
             "type": "typography",
             "value": "clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)",
           },
           {
             "description": "Applies the **5x-large** font size for the Porsche Next typeface.",
-            "name": "5xl",
             "property": "--p-typescale-5xl",
             "type": "typography",
             "value": "clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)",
           },
           {
             "description": "Applies the **x-small** fluid spacing.",
-            "name": "xs",
             "property": "--p-spacing-fluid-xs",
             "type": "spacing",
             "value": "clamp(4px, 0.25vw + 3px, 8px)",
           },
           {
             "description": "Applies the **small** fluid spacing.",
-            "name": "sm",
             "property": "--p-spacing-fluid-sm",
             "type": "spacing",
             "value": "clamp(8px, 0.5vw + 6px, 16px)",
           },
           {
             "description": "Applies the **medium** fluid spacing.",
-            "name": "md",
             "property": "--p-spacing-fluid-md",
             "type": "spacing",
             "value": "clamp(16px, 1.25vw + 12px, 36px)",
           },
           {
             "description": "Applies the **large** fluid spacing.",
-            "name": "lg",
             "property": "--p-spacing-fluid-lg",
             "type": "spacing",
             "value": "clamp(32px, 2.75vw + 23px, 76px)",
           },
           {
             "description": "Applies the **x-large** fluid spacing.",
-            "name": "xl",
             "property": "--p-spacing-fluid-xl",
             "type": "spacing",
             "value": "clamp(48px, 3vw + 38px, 96px)",
           },
           {
             "description": "Applies the **2x-large** fluid spacing.",
-            "name": "2xl",
             "property": "--p-spacing-fluid-2xl",
             "type": "spacing",
             "value": "clamp(80px, 7.5vw + 56px, 200px)",
           },
           {
             "description": "Applies the **2x-small** static spacing.",
-            "name": "2xs",
             "property": "--p-spacing-static-2xs",
             "type": "spacing",
             "value": "1px",
           },
           {
             "description": "Applies the **x-small** static spacing.",
-            "name": "xs",
             "property": "--p-spacing-static-xs",
             "type": "spacing",
             "value": "4px",
           },
           {
             "description": "Applies the **small** static spacing.",
-            "name": "sm",
             "property": "--p-spacing-static-sm",
             "type": "spacing",
             "value": "8px",
           },
           {
             "description": "Applies the **medium** static spacing.",
-            "name": "md",
             "property": "--p-spacing-static-md",
             "type": "spacing",
             "value": "16px",
           },
           {
             "description": "Applies the **large** static spacing.",
-            "name": "lg",
             "property": "--p-spacing-static-lg",
             "type": "spacing",
             "value": "32px",
           },
           {
             "description": "Applies the **x-large** static spacing.",
-            "name": "xl",
             "property": "--p-spacing-static-xl",
             "type": "spacing",
             "value": "48px",
           },
           {
             "description": "Applies the **2x-large** static spacing.",
-            "name": "2xl",
             "property": "--p-spacing-static-2xl",
             "type": "spacing",
             "value": "80px",
           },
           {
             "description": "Applies a **x-small** \`border-radius\`.",
-            "name": "xs",
             "property": "--p-radius-xs",
             "type": "radius",
             "value": "2px",
           },
           {
             "description": "Applies a **small** \`border-radius\`.",
-            "name": "sm",
             "property": "--p-radius-sm",
             "type": "radius",
             "value": "4px",
           },
           {
             "description": "Applies a **medium** \`border-radius\`.",
-            "name": "md",
             "property": "--p-radius-md",
             "type": "radius",
             "value": "6px",
           },
           {
             "description": "Applies a **large** \`border-radius\`.",
-            "name": "lg",
             "property": "--p-radius-lg",
             "type": "radius",
             "value": "8px",
           },
           {
             "description": "Applies a **x-large** \`border-radius\`.",
-            "name": "xl",
             "property": "--p-radius-xl",
             "type": "radius",
             "value": "12px",
           },
           {
             "description": "Applies a **2x-large** \`border-radius\`.",
-            "name": "2xl",
             "property": "--p-radius-2xl",
             "type": "radius",
             "value": "16px",
           },
           {
             "description": "Applies a **3x-large** \`border-radius\`.",
-            "name": "3xl",
             "property": "--p-radius-3xl",
             "type": "radius",
             "value": "24px",
           },
           {
             "description": "Applies a **4x-large** \`border-radius\`.",
-            "name": "4xl",
             "property": "--p-radius-4xl",
             "type": "radius",
             "value": "32px",
           },
           {
             "description": "Applies a **fully** rounded \`border-radius\`.",
-            "name": "full",
             "property": "--p-radius-full",
             "type": "radius",
             "value": "calc(infinity * 1px)",
           },
           {
             "description": "Applies a **frosted** effect when used with \`backdrop-filter\` or \`filter: blur()\` when combined with a semi-transparent color.",
-            "name": "frosted",
             "property": "--p-blur-frosted",
             "type": "blur",
             "value": "blur(32px)",
           },
           {
             "description": "Applies a **small** \`box-shadow\`.",
-            "name": "sm",
             "property": "--p-shadow-sm",
             "type": "shadow",
             "value": "0px 3px 8px rgba(0,0,0,.16)",
           },
           {
             "description": "Applies a **medium** \`box-shadow\`.",
-            "name": "md",
             "property": "--p-shadow-md",
             "type": "shadow",
             "value": "0px 4px 16px rgba(0,0,0,.16)",
           },
           {
             "description": "Applies a **large** \`box-shadow\`.",
-            "name": "lg",
             "property": "--p-shadow-lg",
             "type": "shadow",
             "value": "0px 8px 40px rgba(0,0,0,.16)",
           },
           {
             "description": "Applies a **short** \`transition-duration\`.",
-            "name": "sm",
             "property": "--p-duration-sm",
             "type": "motion",
             "value": ".25s",
           },
           {
             "description": "Applies a **moderate** \`transition-duration\`.",
-            "name": "md",
             "property": "--p-duration-md",
             "type": "motion",
             "value": ".4s",
           },
           {
             "description": "Applies a **long** \`transition-duration\`.",
-            "name": "lg",
             "property": "--p-duration-lg",
             "type": "motion",
             "value": ".6s",
           },
           {
             "description": "Applies a **very long** \`transition-duration\`.",
-            "name": "xl",
             "property": "--p-duration-xl",
             "type": "motion",
             "value": "1.2s",
           },
           {
             "description": "Applies an **in-out** \`transition-timing-function\`.",
-            "name": "inOut",
             "property": "--p-ease-in-out",
             "type": "motion",
             "value": "cubic-bezier(.25,.1,.25,1)",
           },
           {
             "description": "Applies an **in** \`transition-timing-function\`.",
-            "name": "in",
             "property": "--p-ease-in",
             "type": "motion",
             "value": "cubic-bezier(0,0,.2,1)",
           },
           {
             "description": "Applies an **out** \`transition-timing-function\`.",
-            "name": "out",
             "property": "--p-ease-out",
             "type": "motion",
             "value": "cubic-bezier(.4,0,.5,1)",
@@ -1522,7 +1434,7 @@ exports[`should match snapshot 1`] = `
           },
           {
             "property": "line-height",
-            "value": "var([object Object], calc(6px + 2.125ex))",
+            "value": "var(--p-leading-normal, calc(6px + 2.125ex))",
           },
           {
             "property": "letter-spacing",
