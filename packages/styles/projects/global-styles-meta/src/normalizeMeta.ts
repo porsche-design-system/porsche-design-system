@@ -16,7 +16,7 @@ export const normalizeCss: CssNode[] = [
       },
       {
         property: 'line-height',
-        value: `var(${cssVariablesMeta.typography.lineHeight.normal}, ${cssVariablesMeta.typography.lineHeight.normal.value})`,
+        value: `var(${cssVariablesMeta.typography.lineHeight.normal.property}, ${cssVariablesMeta.typography.lineHeight.normal.value})`,
       },
       { property: 'letter-spacing', value: 'normal' },
       { property: 'text-size-adjust', value: 'none' },
@@ -24,4 +24,3 @@ export const normalizeCss: CssNode[] = [
     ],
   },
 ];
-
