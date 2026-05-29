@@ -7,7 +7,6 @@ import type { ColorCssVariableMeta, ColorSchemeClassMeta, CssDeclaration, CssNod
 // from the color variables in `cssVariablesMeta`.
 export const colorSchemeClassesMeta = [
   {
-    name: 'schemeNormal',
     selector: '.scheme-normal',
     declarations: [{ property: 'color-scheme', value: 'normal' }],
     usage: 'Set class="scheme-normal" on the html element or any container.',
@@ -15,21 +14,18 @@ export const colorSchemeClassesMeta = [
       "Sets `color-scheme: normal`. The element isn't rendered with any color scheme at all — the browser default applies.",
   },
   {
-    name: 'schemeDark',
     selector: '.scheme-dark',
     declarations: [{ property: 'color-scheme', value: 'dark' }],
     usage: 'Set class="scheme-dark" on the html element or any container.',
     description: 'Sets `color-scheme: dark`. Indicates the element supports only the dark color scheme.',
   },
   {
-    name: 'schemeLight',
     selector: '.scheme-light',
     declarations: [{ property: 'color-scheme', value: 'light' }],
     usage: 'Set class="scheme-light" on the html element or any container.',
     description: 'Sets `color-scheme: light`. Indicates the element supports only the light color scheme.',
   },
   {
-    name: 'schemeLightDark',
     selector: '.scheme-light-dark',
     declarations: [{ property: 'color-scheme', value: 'light dark' }],
     usage: 'Set class="scheme-light-dark" on the html element or any container.',
@@ -37,7 +33,6 @@ export const colorSchemeClassesMeta = [
       'Sets `color-scheme: light dark`. Indicates the element supports both light and dark, chosen by user preference.',
   },
   {
-    name: 'schemeOnlyDark',
     selector: '.scheme-only-dark',
     declarations: [{ property: 'color-scheme', value: 'only dark' }],
     usage: 'Set class="scheme-only-dark" on the html element or any container.',
@@ -45,7 +40,6 @@ export const colorSchemeClassesMeta = [
       'Sets `color-scheme: only dark`. Forces the dark color scheme and prevents the browser from overriding it.',
   },
   {
-    name: 'schemeOnlyLight',
     selector: '.scheme-only-light',
     declarations: [{ property: 'color-scheme', value: 'only light' }],
     usage: 'Set class="scheme-only-light" on the html element or any container.',

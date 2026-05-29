@@ -27,9 +27,8 @@ src/
 ├── colorSchemeMeta.ts              # .scheme-* utility classes + light-dark() polyfill rule + resolved color-scheme.css
 ├── normalizeMeta.ts                # Resolved normalize.css
 ├── legacyRadiusMeta.ts             # Private --_p-legacy-radius-* variables + resolved legacy-radius.css
-├── stylesheetsMeta.ts              # Raw stylesheets (normalize, font-face)
 ├── helpers.ts                      # Tree flatten/group helpers + renderCss serializer
-└── index.ts                        # Assembles `globalStylesMeta` + `globalStylesCss`
+└── index.ts                        # Assembles per-stylesheet `globalStylesMeta` + independent granular exports
 ```
 
 ## How the meta resolves into CSS
@@ -39,15 +38,22 @@ CSS. Variable leaves are themselves `CssDeclaration`s (they carry `property` +
 `value`, enriched with `name`/`description`/`type` and, for colors, `valueLight`/
 `valueDark`), so they can be emitted into CSS directly. Each topic file exposes a
 resolved `CssNode` tree (e.g. `variablesCss`, `colorSchemeCss`, `normalizeCss`,
-`legacyRadiusCss`), and `index.ts` aggregates them into `globalStylesCss` (keyed
-by output file name).
-The `global-styles` build scripts only call `renderCss(globalStylesCss['<file>'])`
-and run the result through Prettier — they contain no CSS structure of their own.
+`legacyRadiusCss`), and `index.ts` aggregates them into `globalStylesMeta`, a
+single object keyed by stylesheet (`cssVariables`, `colorScheme`, `normalize`,
+`legacyRadius`) where each entry carries its published `file` name, a
+markdown-enabled `description` and the resolved `meta` (`CssNode` tree).
+The `global-styles` build scripts only iterate `globalStylesMeta`, call
+`renderCss(entry.meta)` and write the result to `entry.file` through Prettier —
+they contain no CSS structure of their own.
 
 - variable leaves (in `cssVariablesMeta`) & `legacyRadiusMeta` entries → emitted directly as `--p-…: value` declarations
 - `colorSchemeClassesMeta` entries are structurally `CssRule`s (`.scheme-* { color-scheme: … }`) → emitted directly
-- `cssVariableLangOverridesMeta` entries are structurally `CssRule`s (a `:lang()` rule with the locale label as comment) → emitted directly
 - `colorSchemePolyfillCssRule()` → the `@supports not (color: light-dark(…))` polyfill rule
+
+For component and docs access, the granular metas are exported independently of
+`globalStylesMeta` (`cssVariablesMeta`, `colorSchemeClassesMeta`,
+`legacyRadiusMeta`, plus `reference()` and the flatten/render helpers), so single
+entries (e.g. `cssVariablesMeta.color.background.canvas`) can be read directly.
 
 For component and docs access, keep using the tree (`cssVariablesMeta`), the
 arrays (`colorSchemeClassesMeta`, …) and `reference(leaf)` for `var(--…)`.

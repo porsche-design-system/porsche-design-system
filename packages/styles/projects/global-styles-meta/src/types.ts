@@ -57,21 +57,9 @@ export type CssVariablesMetaTree = { [key: string]: CssVariablesMetaTree | CssVa
  * transform.
  */
 export type ColorSchemeClassMeta = CssRule & {
-  /** Short identifier, e.g. `schemeNormal`. */
-  name: string;
   /** Example usage snippet. */
   usage: string;
   /** Markdown-enabled description. */
-  description: string;
-};
-
-/** A raw global stylesheet shipped as part of the global styles. */
-export type StylesheetMeta = {
-  /** Short identifier, e.g. `normalize`. */
-  name: string;
-  /** The published file name, e.g. `normalize.css`. */
-  file: string;
-  /** Markdown-enabled description of the stylesheet's purpose. */
   description: string;
 };
 
@@ -111,16 +99,11 @@ export type CssRule = {
 /** Either a plain declaration or a (possibly nested) rule. */
 export type CssNode = CssRule | CssDeclaration;
 
-/** The complete meta describing every part of the global styles. */
-export type GlobalStylesMeta = {
-  /** Grouped CSS custom properties emitted into `variables.css` `:root`. */
-  cssVariables: CssVariablesMetaTree;
-  /** Locale-specific `:lang()` overrides emitted into `variables.css`. */
-  cssVariableLangOverrides: CssRule[];
-  /** `.scheme-*` utility classes emitted into `color-scheme.css`. */
-  colorSchemeClasses: ColorSchemeClassMeta[];
-  /** Private legacy radius variables emitted into `legacy-radius.css`. */
-  legacyRadius: CssVariableMeta[];
-  /** Raw stylesheets (`normalize.css`, `font-face.css`). */
-  stylesheets: StylesheetMeta[];
+export type GlobalStyleMeta = {
+  file: string;
+  description: string;
+  meta: CssNode[];
 };
+
+/** The complete meta describing every part of the global styles. */
+export type GlobalStylesMeta = { [key: string]: GlobalStyleMeta };
