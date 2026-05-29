@@ -152,7 +152,7 @@ import {
   typescaleXs,
 } from '@porsche-design-system/tokens';
 import { flattenCssVariables } from './helpers';
-import type { CssNode, CssVariableLangOverrideMeta, CssVariableMeta, CssVariablesMetaTree } from './types';
+import type { CssNode, CssVariableMeta, CssVariablesMetaTree } from './types';
 
 /** Returns a `var(--…)` reference for the given CSS variable, for use in component and docs styles. */
 export const reference = ({ property }: CssVariableMeta): string => `var(${property})`;
@@ -849,40 +849,6 @@ export const cssVariablesMeta = {
 
 const fontPorscheNextProperty = cssVariablesMeta.typography.family.porscheNext.property;
 
-// Locale-specific overrides of `--p-font-porsche-next`, applied via `:lang()` in
-// `variables.css` based on the nearest `lang` attribute. Each entry is structurally
-// a `CssRule` (with the locale label as comment), so it is emitted directly.
-export const cssVariableLangOverridesMeta = [
-  {
-    name: 'simplifiedChinese',
-    label: 'Simplified Chinese',
-    comment: 'Simplified Chinese',
-    selector: [':lang(zh-Hans)', ':lang(zh-CN)', ':lang(zh-SG)'].join(',\n'),
-    declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextZhHans }],
-  },
-  {
-    name: 'traditionalChinese',
-    label: 'Traditional Chinese',
-    comment: 'Traditional Chinese',
-    selector: [':lang(zh-Hant)', ':lang(zh-TW)', ':lang(zh-HK)', ':lang(zh-MO)'].join(',\n'),
-    declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextZhHant }],
-  },
-  {
-    name: 'japanese',
-    label: 'Japanese',
-    comment: 'Japanese',
-    selector: [':lang(ja)'].join(',\n'),
-    declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextJa }],
-  },
-  {
-    name: 'korean',
-    label: 'Korean',
-    comment: 'Korean',
-    selector: [':lang(ko)'].join(',\n'),
-    declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextKo }],
-  },
-] satisfies CssVariableLangOverrideMeta[];
-
 // The fully resolved CSS for `variables.css`, expressed as `CssNode` trees. The
 // build scripts only have to `renderCss()` these nodes and format the result.
 export const variablesCss: CssNode[] = [
@@ -894,6 +860,24 @@ export const variablesCss: CssNode[] = [
       ...flattenCssVariables(cssVariablesMeta),
     ],
   },
-  ...cssVariableLangOverridesMeta,
+  {
+    comment: 'Simplified Chinese',
+    selector: [':lang(zh-Hans)', ':lang(zh-CN)', ':lang(zh-SG)'].join(',\n'),
+    declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextZhHans }],
+  },
+  {
+    comment: 'Traditional Chinese',
+    selector: [':lang(zh-Hant)', ':lang(zh-TW)', ':lang(zh-HK)', ':lang(zh-MO)'].join(',\n'),
+    declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextZhHant }],
+  },
+  {
+    comment: 'Japanese',
+    selector: [':lang(ja)'].join(',\n'),
+    declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextJa }],
+  },
+  {
+    comment: 'Korean',
+    selector: [':lang(ko)'].join(',\n'),
+    declarations: [{ property: fontPorscheNextProperty, value: fontPorscheNextKo }],
+  },
 ];
-

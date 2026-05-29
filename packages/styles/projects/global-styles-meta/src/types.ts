@@ -49,21 +49,6 @@ export type ColorCssVariableMeta = Extract<CssVariableMeta, { type: 'color' }>;
 export type CssVariablesMetaTree = { [key: string]: CssVariablesMetaTree | CssVariableMeta };
 
 /**
- * A locale-specific CSS variable override applied via `:lang()` selectors.
- *
- * A lang override is structurally a {@link CssRule} (`selector` + `declarations`,
- * with the locale label as `comment`) enriched with documentation metadata, so it
- * can be emitted into CSS directly (via the `renderCss` helper) without an
- * intermediate transform.
- */
-export type CssVariableLangOverrideMeta = CssRule & {
-  /** Short identifier, e.g. `simplifiedChinese`. */
-  name: string;
-  /** Human-readable label, e.g. `Simplified Chinese`. */
-  label: string;
-};
-
-/**
  * A `.scheme-*` utility class controlling the CSS `color-scheme` property.
  *
  * A color-scheme class is structurally a {@link CssRule} (`selector` +
@@ -131,7 +116,7 @@ export type GlobalStylesMeta = {
   /** Grouped CSS custom properties emitted into `variables.css` `:root`. */
   cssVariables: CssVariablesMetaTree;
   /** Locale-specific `:lang()` overrides emitted into `variables.css`. */
-  cssVariableLangOverrides: CssVariableLangOverrideMeta[];
+  cssVariableLangOverrides: CssRule[];
   /** `.scheme-*` utility classes emitted into `color-scheme.css`. */
   colorSchemeClasses: ColorSchemeClassMeta[];
   /** Private legacy radius variables emitted into `legacy-radius.css`. */
