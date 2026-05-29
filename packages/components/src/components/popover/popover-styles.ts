@@ -30,6 +30,11 @@ import {
 import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
+/**
+ * @css-variable {"name": "--p-max-content-width", "description": "Defines the max content width. Overrides the `maxWidth` property when set.", "defaultValue": ""}
+ */
+const cssMaxWidth = '--p-popover-max-width';
+
 export const getComponentCss = (): string => {
   const shadowColor = 'rgba(0,0,0,0.3)';
 
@@ -105,7 +110,7 @@ export const getComponentCss = (): string => {
       }),
     },
     content: {
-      maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
+      maxWidth: `var(${cssMaxWidth}, min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch))`,
       width: 'max-content', // ensures in older browsers correct width
       boxSizing: 'border-box',
       padding: `${spacingStaticSm} ${spacingStaticMd}`,
