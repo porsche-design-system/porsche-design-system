@@ -1,14 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import {
-  linkTileStoryLayout,
-  linkTileStoryVideo,
-  linkTileStoryFooterSlot,
-} from '@/app/components/link-tile/link-tile.stories';
-import { Notification } from '@/components/common/Notification';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { linkTileExampleHyphens } from '@porsche-design-system/shared/examples';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { linkTileMeta } from '@/app/components/link-tile/link-tile.meta';
 
 export const metadata = {
   title: 'Link Tile - Porsche Design System',
@@ -17,38 +11,33 @@ export const metadata = {
 
 # Link Tile <ComponentStatus tagName="p-link-tile"></ComponentStatus>
 
-<TableOfContents headings={['With video', 'UI behaviour', 'Hyphens', 'Footer slot']} />
+<TableOfContents
+  headings={[
+    linkTileMeta.examples.withVideo.name,
+    linkTileMeta.examples.uiBehaviour.name,
+    linkTileMeta.examples.hyphens.name,
+    linkTileMeta.examples.footerSlot.name,
+  ]}
+/>
 
-## With video
+## {linkTileMeta.examples.withVideo.name}
 
-<ComponentStory story={linkTileStoryVideo} />
+<ComponentStory story={linkTileMeta.examples.withVideo.story} />
 
-## UI behaviour
+## {linkTileMeta.examples.uiBehaviour.name}
 
-The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see
-first row in example).
+<linkTileMeta.examples.uiBehaviour.description />
 
-Additionally, the component is able to align to the highest CSS Grid child independent of the aspect ratio when used in
-CSS Grid context (see second row in example).
+<ComponentStory story={linkTileMeta.examples.uiBehaviour.story} />
 
-<ComponentStory story={linkTileStoryLayout} />
+## {linkTileMeta.examples.hyphens.name}
 
-## Hyphens
+<linkTileMeta.examples.hyphens.description />
 
-It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. However, please note that
-hyphenation behavior can vary depending on the browser and the language of the text. In some cases, it may be necessary
-to set the appropriate lang attribute on your HTML element to ensure that hyphenation works correctly for the desired
-language.
+<ComponentExample codeSample={linkTileMeta.examples.hyphens.example} />
 
-<ComponentExample codeSample={linkTileExampleHyphens} />
+## {linkTileMeta.examples.footerSlot.name}
 
-## Footer slot
+<linkTileMeta.examples.footerSlot.description />
 
-You can also use a `footer` slot to display additional text below the description, providing more flexibility for custom
-content. The footer slot is intended for **non-interactive content only**, meaning it should not contain links, buttons,
-or other interactive elements. It is designed to handle plain text, making it ideal for supplementary or secondary
-information.
-
-We recommend using short and concise text to avoid visual clutter.
-
-<ComponentStory story={linkTileStoryFooterSlot} />
+<ComponentStory story={linkTileMeta.examples.footerSlot.story} />

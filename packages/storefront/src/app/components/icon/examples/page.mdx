@@ -1,17 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Configurator } from '@/components/playground/Configurator';
-import {
-  iconStory,
-  iconStoryColor,
-  iconStoryColorCSSVar,
-  iconStoryCustom,
-  iconStoryOverview,
-  iconStoryResponsiveSize,
-  iconStorySize,
-  iconStorySizeCSSVar,
-} from '@/app/components/icon/icon.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { iconMeta } from '@/app/components/icon/icon.meta';
 
 export const metadata = {
   title: 'Icon - Porsche Design System',
@@ -20,54 +10,56 @@ export const metadata = {
 
 # Icon <ComponentStatus tagName="p-icon"></ComponentStatus>
 
-<TableOfContents headings={['Overview', 'Size', 'Color', 'Custom icon']} />
+<TableOfContents
+  headings={[
+    iconMeta.examples.overview.name,
+    iconMeta.examples.size.name,
+    iconMeta.examples.sizeCssVar.name,
+    iconMeta.examples.responsiveSize.name,
+    iconMeta.examples.color.name,
+    iconMeta.examples.colorCssVar.name,
+    iconMeta.examples.custom.name,
+  ]}
+/>
 
-## Overview
+## {iconMeta.examples.overview.name}
 
-For more information and a complete overview of all available Porsche icons, head over to Porsche Icons
-([Porsche Icons](https://icons.porsche.com)). To reference an icon just use the `name` property with a predefined icon
-id.
+<iconMeta.examples.overview.description />
 
-<ComponentStory story={iconStoryOverview} />
+<ComponentStory story={iconMeta.examples.overview.story} />
 
-## Size
+## {iconMeta.examples.size.name}
 
-There are predefined sizes for the component available which should cover most use cases. If a specific size is needed,
-the `size` property can be set to `inherit` to derive the icon's dimensions from the font-size of a parent element (e.g.
-a `p-text`). The internal calculation is based on the `ex`-unit relative to the inherited font-size and the global
-line-height, ensuring the icon stays visually consistent with surrounding typographic-scale-based components.
+<iconMeta.examples.size.description />
 
-<ComponentStory story={iconStorySize} />
+<ComponentStory story={iconMeta.examples.size.story} />
 
-Alternatively, the size can be controlled via the custom CSS variable `--p-icon-size`, which accepts any valid CSS
-length value. This approach is particularly useful when the icon is placed independently of typographic-scale-based
-components and a precise, fixed size is required.
+## {iconMeta.examples.sizeCssVar.name}
 
-<ComponentStory story={iconStorySizeCSSVar} />
+<iconMeta.examples.sizeCssVar.description />
 
-The `size` property supports `BreakpointCustomizable` values, allowing you to define different sizes for each major
-breakpoint (`xs`, `s`, `m`, `l`, `xl`). This makes it easy to adapt the icon's appearance responsively without
-additional CSS.
+<ComponentStory story={iconMeta.examples.sizeCssVar.story} />
 
-<ComponentStory story={iconStoryResponsiveSize} />
+## {iconMeta.examples.responsiveSize.name}
 
-## Color
+<iconMeta.examples.responsiveSize.description />
 
-The `color` property can be set to `inherit` to derive the icon's color from the `currentcolor` of a parent element
-(e.g. a `p-text`). This ensures the icon matches the surrounding text color automatically.
+<ComponentStory story={iconMeta.examples.responsiveSize.story} />
 
-<ComponentStory story={iconStoryColor} />
+## {iconMeta.examples.color.name}
 
-Alternatively, the color can be controlled via the custom CSS variable `--p-icon-color`, which accepts any valid CSS
-color value. This allows full control over the icon's color independently.
+<iconMeta.examples.color.description />
 
-<ComponentStory story={iconStoryColorCSSVar} />
+<ComponentStory story={iconMeta.examples.color.story} />
 
-## Custom icon
+## {iconMeta.examples.colorCssVar.name}
 
-The whole Porsche icon set is hosted on the Porsche Design System CDN. If there is need to show a custom icon which
-doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be
-sure that the custom icon serves the specific needs like size and viewbox which are described in the
-[usage documentation](/components/icon/usage/).
+<iconMeta.examples.colorCssVar.description />
 
-<ComponentStory story={iconStoryCustom} />
+<ComponentStory story={iconMeta.examples.colorCssVar.story} />
+
+## {iconMeta.examples.custom.name}
+
+<iconMeta.examples.custom.description />
+
+<ComponentStory story={iconMeta.examples.custom.story} />

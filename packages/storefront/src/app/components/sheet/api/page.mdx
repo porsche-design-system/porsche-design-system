@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from '@/components/components/ComponentApi';
+import { sheetMeta } from '@/app/components/sheet/sheet.meta';
 
 export const metadata = {
   title: 'Sheet - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Sheet <ComponentStatus tagName="p-sheet"></ComponentStatus>
 
-<ComponentApi tagName="p-sheet" />
+<ComponentApi api={sheetMeta.api} />

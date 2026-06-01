@@ -1,0 +1,11 @@
+Setting `required="true"` on `p-fieldset` only renders the asterisk on the legend and sets `aria-required` on the
+underlying `<fieldset>` element. To avoid duplicate asterisks, PDS form components whose direct parent is a required
+`p-fieldset` automatically suppress their own asterisk, so the legend acts as the single visual required indicator for
+the whole group.
+
+This is purely a visual convention. Native HTML has no `required` attribute on `<fieldset>` at all, and `p-fieldset` is
+not a form-associated element, so it has **no** effect on native form constraint validation and does **not** propagate
+the required state to its children.
+
+To make the form actually enforce a value (e.g. block implicit submission via Enter or a submit button), you must still
+set `required="true"` on **each individual form control** inside the fieldset.

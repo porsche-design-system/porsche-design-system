@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { paginationMeta } from '@/app/components/pagination/pagination.meta';
 
 export const metadata = {
   title: 'Pagination - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Pagination <ComponentStatus tagName="p-pagination"></ComponentStatus>
 
-<ComponentApi tagName="p-pagination" />
+<ComponentApi api={paginationMeta.api} />

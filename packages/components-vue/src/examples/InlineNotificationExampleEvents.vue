@@ -16,7 +16,7 @@ const onDismiss = (): void => {
   <PInlineNotification
     v-if="isActive"
     :heading="'Some heading'"
-    :headingTag="'h4'"
+    :headingTag="'h3'"
     :description="'Some description.'"
     @dismiss="onDismiss"
   ></PInlineNotification>

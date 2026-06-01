@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { switchMeta } from '@/app/components/switch/switch.meta';
 
 export const metadata = {
   title: 'Switch - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Switch <ComponentStatus tagName="p-switch"></ComponentStatus>
 
-<ComponentApi tagName="p-switch" />
+<ComponentApi api={switchMeta.api} />
