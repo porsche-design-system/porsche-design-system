@@ -1,8 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { textareaStory, textareaSlotStories } from '@/app/components/textarea/textarea.stories';
-import { Notification } from '@/components/common/Notification';
+import { textareaMeta } from '@/app/components/textarea/textarea.meta';
 
 export const metadata = {
   title: 'Textarea - Porsche Design System',
@@ -12,18 +10,6 @@ export const metadata = {
 
 # Textarea <ComponentStatus tagName="p-textarea"></ComponentStatus>
 
-The `p-textarea` component is a multi-line text input control. Don't use a Textarea component if you want to allow users
-to enter shorter responses that are no longer than a single line, such as a phone number or name. In this case, you
-should use one of the input components.
+<textareaMeta.introduction />
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The `p-textarea`
-component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
-whenever possible. When used without a label, it's mandatory to provide a descriptive label text for screen readers.
-
-While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
-give the user visual cues to fill out the form.
-
-Instead of relying on slotted content, the `p-textarea` component offers a `value` attribute and property that remain
-synchronized with user input.
-
-<Configurator tagName="p-textarea" story={textareaStory} slotStories={textareaSlotStories} />
+<Configurator tagName="p-textarea" story={textareaMeta.configurator.story} slotStories={textareaMeta.configurator.slotStories} />

@@ -43,7 +43,7 @@ export const MultiSelectExampleDynamicPage = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-fluid-sm">
       <PInputText
         name="input-value"
         label="Value:"
@@ -51,13 +51,14 @@ export const MultiSelectExampleDynamicPage = () => {
         value={inputValue}
         onInput={(e) => onChangeInput(e as CustomEvent<InputTextInputEventDetail>)}
       />
-      <PButton type="button" onClick={onSetValue} compact={true}>
-        Set Value
-      </PButton>
-      <PButton type="button" onClick={onResetValue} compact={true}>
-        Reset value
-      </PButton>
-
+      <div className="flex gap-fluid-sm">
+        <PButton type="button" onClick={onSetValue} compact={true}>
+          Set Value
+        </PButton>
+        <PButton type="button" onClick={onResetValue} compact={true}>
+          Reset value
+        </PButton>
+      </div>
       <PMultiSelect name="options" label="Some Label" value={selectedValues} onChange={onChange}>
         {[...Array(optionCount).keys()].map((idx) => (
           <PMultiSelectOption key={idx} value={`${idx + 1}`}>
@@ -65,13 +66,14 @@ export const MultiSelectExampleDynamicPage = () => {
           </PMultiSelectOption>
         ))}
       </PMultiSelect>
-
-      <PButton type="button" onClick={onAddOption} compact={true}>
-        Add option
-      </PButton>
-      <PButton type="button" onClick={onRemoveOption} compact={true}>
-        Remove last option
-      </PButton>
-    </>
+      <div className="flex gap-fluid-sm">
+        <PButton type="button" onClick={onAddOption} compact={true}>
+          Add option
+        </PButton>
+        <PButton type="button" onClick={onRemoveOption} compact={true}>
+          Remove last option
+        </PButton>
+      </div>
+    </div>
   );
 };

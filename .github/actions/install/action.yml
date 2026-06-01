@@ -40,5 +40,6 @@ runs:
     - name: 'Install rclone'
       if: inputs.rclone == 'true'
       run: |
+        sudo apt-get -yq update
         sudo apt-get -yq --no-install-suggests --no-install-recommends install rclone
       shell: bash
