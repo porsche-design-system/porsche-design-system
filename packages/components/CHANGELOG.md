@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Emotion`, `Vanilla Extract` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
   - `fontPorscheNextZhHans`, `fontPorscheNextZhHant`, `fontPorscheNextJa`, `fontPorscheNextKo`: CJK `font-family` tokens
   - `getCJKFontFamilyStyle()`: returns `:lang()` selectors to auto-detect CJK content
+- `Accordion`: `indention` prop to indent the slotted content to be vertically aligned with the text of the summary section
+  ([#4478](https://github.com/porsche-design-system/porsche-design-system/pull/4478))
 
 ### Changed
 
