@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Radio Group`: Prevent clicks on `label-after` slot from bubbling to the
+  host element ([#4477](https://github.com/porsche-design-system/porsche-design-system/pull/4477))
+
 ## [4.2.0-rc.3] - 2026-06-09
 
 ### Fixed
