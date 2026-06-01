@@ -15,15 +15,21 @@ import type { BreakpointCustomizable } from '../../../utils/breakpoint-customiza
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
 export const getFunctionalComponentLabelAfterStyles = (): Styles => {
+  const labelAfterStyles: JssStyle = {
+    display: 'inline-block',
+    verticalAlign: 'top',
+    '&::slotted(*)': {
+      ...addImportantToEachRule({
+        marginInlineStart: spacingStaticXs,
+      }),
+    },
+  };
+
   return {
-    'slot[name="label-after"]': {
-      display: 'inline-block',
-      verticalAlign: 'top',
-      '&::slotted(*)': {
-        ...addImportantToEachRule({
-          marginInlineStart: spacingStaticXs,
-        }),
-      },
+    'slot[name="label-after"]': labelAfterStyles,
+    '.label-after': {
+      display: labelAfterStyles.display,
+      verticalAlign: labelAfterStyles.verticalAlign,
     },
   };
 };
