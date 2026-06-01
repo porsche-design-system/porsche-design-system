@@ -1,7 +1,8 @@
 import { colorPrimary } from '../color';
-import { fontPorscheNext, fontWeightSemibold, leadingNormal, typescaleSm } from '../font';
+import { fontPorscheNext, fontWeightSemibold, getCJKFontFamilyStyle, leadingNormal, typescaleSm } from '../font';
 
 export const proseHeadingSmStyle = {
+  ...getCJKFontFamilyStyle(),
   font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
   color: colorPrimary,
 };

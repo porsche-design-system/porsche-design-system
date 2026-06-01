@@ -33,6 +33,7 @@
   },
   "peerDependencies": {
     "@rollup/plugin-typescript": "*",
+    "@types/node": "*",
     "rollup": "*",
     "typescript": "*",
     "vitest": "*"

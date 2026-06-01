@@ -16,12 +16,14 @@ export const ButtonPureExampleFormAttributePage = () => {
         <PTextarea name="some-name" label="Some Label"></PTextarea>
       </form>
 
-      <PButtonPure type="submit" form="some-form">
-        Submit
-      </PButtonPure>
-      <PButtonPure type="reset" form="some-form">
-        Reset
-      </PButtonPure>
+      <div className="flex gap-fluid-sm mt-fluid-sm">
+        <PButtonPure type="submit" form="some-form">
+          Submit
+        </PButtonPure>
+        <PButtonPure type="reset" form="some-form">
+          Reset
+        </PButtonPure>
+      </div>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>
     </>

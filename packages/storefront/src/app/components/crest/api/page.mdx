@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { crestMeta } from '@/app/components/crest/crest.meta';
 
 export const metadata = {
   title: 'Crest - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Crest <ComponentStatus tagName="p-crest"></ComponentStatus>
 
-<ComponentApi tagName="p-crest" />
+<ComponentApi api={crestMeta.api} />

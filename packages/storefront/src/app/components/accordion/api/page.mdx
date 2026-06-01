@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
 import { TableOfContents } from "@/components/common/TableOfContents";
+import { accordionMeta } from '@/app/components/accordion/accordion.meta';
 
 export const metadata = {
   title: 'Accordion - Porsche Design System',
@@ -9,4 +10,4 @@ export const metadata = {
 
 # Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
 
-<ComponentApi tagName='p-accordion' />
+<ComponentApi api={accordionMeta.api} />

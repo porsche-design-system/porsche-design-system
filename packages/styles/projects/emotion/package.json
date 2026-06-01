@@ -24,6 +24,7 @@
   },
   "peerDependencies": {
     "@types/madge": "*",
+    "@types/node": "*",
     "prettier": "*",
     "madge": "*",
     "typescript": "*",

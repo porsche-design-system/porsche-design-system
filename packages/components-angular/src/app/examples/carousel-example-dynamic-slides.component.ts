@@ -9,11 +9,12 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
         <div>Slide {{ i + 1 }}</div>
       }
     </p-carousel>
-
-    <p-button type="button" (click)="amountOfSlides = amountOfSlides + 1">Add slide</p-button>
-    <p-button type="button" (click)="amountOfSlides = amountOfSlides === 0 ? 0 : amountOfSlides - 1">
-      Remove last slide
-    </p-button>
+    <div class="flex gap-fluid-sm mt-fluid-sm">
+      <p-button type="button" (click)="amountOfSlides = amountOfSlides + 1">Add slide</p-button>
+      <p-button type="button" (click)="amountOfSlides = amountOfSlides === 0 ? 0 : amountOfSlides - 1">
+        Remove last slide
+      </p-button>
+    </div>
     `,
   styles: `
     @use '@porsche-design-system/components-angular/scss' as *;

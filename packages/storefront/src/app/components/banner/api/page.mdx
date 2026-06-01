@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { bannerMeta } from '@/app/components/banner/banner.meta';
 
 export const metadata = {
   title: 'Banner - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
 
-<ComponentApi tagName="p-banner" />
+<ComponentApi api={bannerMeta.api} />

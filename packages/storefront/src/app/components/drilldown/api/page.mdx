@@ -1,6 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from '@/components/components/ComponentApi';
+import { componentMeta } from '@porsche-design-system/component-meta';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { drilldownMeta } from '@/app/components/drilldown/drilldown.meta';
 
 export const metadata = {
   title: 'Drilldown - Porsche Design System',
@@ -14,12 +16,12 @@ export const metadata = {
 
 ## Drilldown
 
-<ComponentApi tagName="p-drilldown" showTableOfContents={false} />
+<ComponentApi api={drilldownMeta.api} showTableOfContents={false} />
 
 ## Drilldown Item
 
-<ComponentApi tagName="p-drilldown-item" showTableOfContents={false} />
+<ComponentApi api={componentMeta['p-drilldown-item']} showTableOfContents={false} />
 
 ## Drilldown Link
 
-<ComponentApi tagName="p-drilldown-link" showTableOfContents={false} />
+<ComponentApi api={componentMeta['p-drilldown-link']} showTableOfContents={false} />

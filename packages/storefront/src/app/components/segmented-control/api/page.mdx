@@ -1,6 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from '@/components/components/ComponentApi';
+import { componentMeta } from '@porsche-design-system/component-meta';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { segmentedControlMeta } from '@/app/components/segmented-control/segmented-control.meta';
 
 export const metadata = {
   title: 'Segmented Control - Porsche Design System',
@@ -14,8 +16,8 @@ export const metadata = {
 
 ## Segmented Control
 
-<ComponentApi tagName="p-segmented-control" showTableOfContents={false} />
+<ComponentApi api={segmentedControlMeta.api} showTableOfContents={false} />
 
 ## Segmented Control Item
 
-<ComponentApi tagName="p-segmented-control-item" showTableOfContents={false} />
+<ComponentApi api={componentMeta['p-segmented-control-item']} showTableOfContents={false} />

@@ -23,6 +23,7 @@ const onUpdate = (e: CustomEvent<SelectChangeEventDetail>) => {
     :compact="true"
     size="inherit"
     :style="{ maxWidth: '400px', fontSize: '45px', hyphens: selectedValue }"
+    class="mt-fluid-sm"
   >
   <img src="http://localhost:3002/lights.jpg" alt="Some image description" />
   </PLinkTile>

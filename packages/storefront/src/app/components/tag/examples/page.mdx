@@ -1,13 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Configurator } from '@/components/playground/Configurator';
-import {
-  tagStory,
-  tagStoryMultiline,
-  tagStorySlottedButton,
-  tagStorySlottedLink,
-} from '@/app/components/tag/tag.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { tagMeta } from '@/app/components/tag/tag.meta';
 
 export const metadata = {
   title: 'Tag - Porsche Design System',
@@ -16,25 +10,24 @@ export const metadata = {
 
 # Tag <ComponentStatus tagName="p-tag"></ComponentStatus>
 
-<TableOfContents headings={['With slotted button', 'With slotted link', 'Multiline']} />
+<TableOfContents
+  headings={[tagMeta.examples.slottedButton.name, tagMeta.examples.slottedLink.name, tagMeta.examples.multiline.name]}
+/>
 
-## With slotted button
+## {tagMeta.examples.slottedButton.name}
 
-It is possible to add a `<button>` tag into the `p-tag` component. If you do this, the entire component becomes
-clickable and no other content outside the button or link is allowed.
+<tagMeta.examples.slottedButton.description />
 
-<ComponentStory story={tagStorySlottedButton} />
+<ComponentStory story={tagMeta.examples.slottedButton.story} />
 
-## With slotted link
+## {tagMeta.examples.slottedLink.name}
 
-It is possible to add an `<a>` tag to the `p-tag` component. If you do this, the entire component becomes clickable and
-no other content outside the button or link is allowed.
+<tagMeta.examples.slottedLink.description />
 
-<ComponentStory story={tagStorySlottedLink} />
+<ComponentStory story={tagMeta.examples.slottedLink.story} />
 
-## Multiline
+## {tagMeta.examples.multiline.name}
 
-The contents of the `p-tag` component are rendered with `white-space: nowrap` by default. If multiline rendering is
-needed (e.g. due to limited space), the default behavior can be overridden with external CSS.
+<tagMeta.examples.multiline.description />
 
-<ComponentStory story={tagStoryMultiline} />
+<ComponentStory story={tagMeta.examples.multiline.story} />

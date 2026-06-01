@@ -1,15 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
-import {
-  aiTagStoryWithCheckbox,
-  aiTagStoryWithRadioButton,
-  aiTagStoryWithText,
-  aiTagStoryWithSelect,
-  aiTagStoryWithInputSearch,
-  aiTagStoryWithImage,
-  aiTagStoryWithTable,
-} from '@/app/components/ai-tag/ai-tag.stories';
+import { aiTagMeta } from '@/app/components/ai-tag/ai-tag.meta';
 
 export const metadata = {
   title: 'AI Tag - Porsche Design System',
@@ -20,59 +12,54 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    'Within Checkbox',
-    'Within Radio Group',
-    'Within Form Label',
-    'Within Input Search',
-    'Within Text',
-    'Within Image',
-    'Within Table',
+    aiTagMeta.examples.withinCheckbox.name,
+    aiTagMeta.examples.withinRadioGroup.name,
+    aiTagMeta.examples.withinFormLabel.name,
+    aiTagMeta.examples.withinInputSearch.name,
+    aiTagMeta.examples.withinText.name,
+    aiTagMeta.examples.withinImage.name,
+    aiTagMeta.examples.withinTable.name,
   ]}
 />
 
-## Within Checkbox
+## {aiTagMeta.examples.withinCheckbox.name}
 
-The `p-ai-tag` can be used inline with other form components. In this example, it is placed within the slotted label of
-a `p-checkbox` to indicate AI-generated or AI-related content for individual options.
+<aiTagMeta.examples.withinCheckbox.description />
 
-<ComponentStory story={aiTagStoryWithCheckbox} />
+<ComponentStory story={aiTagMeta.examples.withinCheckbox.story} />
 
-## Within Radio Group
+## {aiTagMeta.examples.withinRadioGroup.name}
 
-The `p-ai-tag` can also be placed within the slotted label of a `p-radio-button-wrapper` to indicate AI-related content
-for individual radio options.
+<aiTagMeta.examples.withinRadioGroup.description />
 
-<ComponentStory story={aiTagStoryWithRadioButton} />
+<ComponentStory story={aiTagMeta.examples.withinRadioGroup.story} />
 
-## Within Form Label
+## {aiTagMeta.examples.withinFormLabel.name}
 
-The `p-ai-tag` can be placed within a `label` of a `p-select` (or any other form component) to indicate AI-related
-content for selected options.
+<aiTagMeta.examples.withinFormLabel.description />
 
-<ComponentStory story={aiTagStoryWithSelect} />
+<ComponentStory story={aiTagMeta.examples.withinFormLabel.story} />
 
-## Within Input Search
+## {aiTagMeta.examples.withinInputSearch.name}
 
-The `p-ai-tag` can be placed in the `end` slot of a `p-input-search` to indicate that the search results are AI-powered.
+<aiTagMeta.examples.withinInputSearch.description />
 
-<ComponentStory story={aiTagStoryWithInputSearch} />
+<ComponentStory story={aiTagMeta.examples.withinInputSearch.story} />
 
-## Within Text
+## {aiTagMeta.examples.withinText.name}
 
-The `p-ai-tag` can be placed inline within a `p-text` to indicate that the surrounding text content is AI-related.
+<aiTagMeta.examples.withinText.description />
 
-<ComponentStory story={aiTagStoryWithText} />
+<ComponentStory story={aiTagMeta.examples.withinText.story} />
 
-## Within Image
+## {aiTagMeta.examples.withinImage.name}
 
-The `p-ai-tag` can be positioned as an overlay on images to indicate that the image content has been generated or
-modified by AI.
+<aiTagMeta.examples.withinImage.description />
 
-<ComponentStory story={aiTagStoryWithImage} />
+<ComponentStory story={aiTagMeta.examples.withinImage.story} />
 
-## Within Table
+## {aiTagMeta.examples.withinTable.name}
 
-The `p-ai-tag` can sit inline in a `p-table-head-cell` next to the column title — for example on a **Status** column
-when that data is AI-assisted.
+<aiTagMeta.examples.withinTable.description />
 
-<ComponentStory story={aiTagStoryWithTable} />
+<ComponentStory story={aiTagMeta.examples.withinTable.story} />

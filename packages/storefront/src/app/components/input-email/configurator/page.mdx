@@ -1,7 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
-import { inputEmailStory, inputEmailSlotStories } from '@/app/components/input-email/input-email.stories';
-import { FrameworkNotification } from '@/components/common/FrameworkNotification';
+import { inputEmailMeta } from '@/app/components/input-email/input-email.meta';
 
 export const metadata = {
   title: 'Input Email - Porsche Design System',
@@ -11,22 +10,10 @@ export const metadata = {
 
 # Input Email <ComponentStatus tagName="p-input-email"></ComponentStatus>
 
-The `p-input-email` component provides a user-friendly, accessible interface for entering valid email addresses. It
-leverages native HTML5 email validation and ensures appropriate keyboard behavior on mobile devices. It includes `start`
-and `end` slots to flexibly incorporate icons, buttons, or other elements within the input field.
+<inputEmailMeta.introduction />
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The
-`p-input-email` component can be used with or without a label, but it's recommended to keep the label visible for better
-accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text for
-screen readers.
-
-While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
-give the user visual cues to fill out the form.
-
-<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
-  React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
-  standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
-  keystroke, use `onInput` instead.
-</FrameworkNotification>
-
-<Configurator tagName="p-input-email" story={inputEmailStory} slotStories={inputEmailSlotStories} />
+<Configurator
+  tagName="p-input-email"
+  story={inputEmailMeta.configurator.story}
+  slotStories={inputEmailMeta.configurator.slotStories}
+/>

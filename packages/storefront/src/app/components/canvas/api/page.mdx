@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { canvasMeta } from '@/app/components/canvas/canvas.meta';
 
 export const metadata = {
   title: 'Canvas - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Canvas <ComponentStatus tagName="p-canvas"></ComponentStatus>
 
-<ComponentApi tagName="p-canvas" />
+<ComponentApi api={canvasMeta.api} />

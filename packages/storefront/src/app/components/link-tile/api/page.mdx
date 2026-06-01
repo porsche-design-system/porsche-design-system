@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { linkTileMeta } from '@/app/components/link-tile/link-tile.meta';
 
 export const metadata = {
   title: 'Link Tile - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Link Tile <ComponentStatus tagName="p-link-tile"></ComponentStatus>
 
-<ComponentApi tagName="p-link-tile" />
+<ComponentApi api={linkTileMeta.api} />

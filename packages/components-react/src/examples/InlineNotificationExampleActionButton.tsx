@@ -1,4 +1,4 @@
-import { PInlineNotification } from '@porsche-design-system/components-react';
+import { PButton, PInlineNotification } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
 export const InlineNotificationExampleActionButtonPage = () => {
@@ -9,16 +9,16 @@ export const InlineNotificationExampleActionButtonPage = () => {
     <>
       <PInlineNotification
         heading="Some heading"
-        headingTag="h4"
+        headingTag="h3"
         description="Some description."
         actionLabel="Retry"
         actionIcon="reset"
         actionLoading={isLoading}
         onAction={onAction}
       />
-      <button type="button" onClick={onAction}>
+      <PButton type="button" compact={true} onClick={onAction}>
         Reset `actionLoading`
-      </button>
+      </PButton>
     </>
   );
 };

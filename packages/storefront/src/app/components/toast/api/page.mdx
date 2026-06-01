@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { toastMeta } from '@/app/components/toast/toast.meta';
 
 export const metadata = {
   title: 'Toast - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Toast <ComponentStatus tagName="p-toast"></ComponentStatus>
 
-<ComponentApi tagName="p-toast" />
+<ComponentApi api={toastMeta.api} />
