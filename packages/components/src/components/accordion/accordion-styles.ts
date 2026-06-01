@@ -80,7 +80,7 @@ export const getComponentCss = (
   const isIconAlignedStart = alignMarker === 'start';
 
   // grid column where the summary text starts, used to indent the slotted content to be vertically aligned with it
-  const summaryColumnStart = hasSummaryBefore && isIconAlignedStart ? 3 : hasSummaryBefore || isIconAlignedStart ? 2 : 1;
+  const summaryColumnStart = hasSummaryBefore || isIconAlignedStart ? 2 : 1;
 
   return getCss({
     '@global': {
