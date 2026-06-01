@@ -1,0 +1,18 @@
+import { Notification } from '@/components/common/Notification';
+
+By setting `layout` to `fixed`, you can take full control over each column width, which would otherwise be controlled by
+its content. Identical `width`, `min-width` and/or `max-width` values, depending on what you want to achieve, must be
+specified on **every** `p-table-head-cell` and `p-table-cell` within the **same column**.
+
+While it is possible to use relative `width` units like `50%` or `50vw`, these may lead to unexpected results when the
+table is scrollable especially on smaller screens or when combined with absolute (e.g. `50px`) or default auto values
+(based on content).
+
+If there is more content than available space, it will overflow, which you need to handle, e.g. by using
+`<p-text ellipsis>Some content</p-text>`.
+
+<Notification heading="Note" heading-tag="h3" state="warning">
+  Since truncated content cannot be fully read, it is important to provide an alternative like a <code>title</code>{' '}
+  attribute or custom tooltip.
+</Notification>
+

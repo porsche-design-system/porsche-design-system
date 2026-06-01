@@ -1,10 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Notification } from '@/components/common/Notification';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import { buttonTileStoryGrid, buttonTileStoryFooterSlot } from '@/app/components/button-tile/button-tile.stories';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { buttonTileExampleHyphens } from '@porsche-design-system/shared/examples';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { buttonTileMeta } from '@/app/components/button-tile/button-tile.meta';
 
 export const metadata = {
   title: 'Button Tile - Porsche Design System',
@@ -13,34 +11,28 @@ export const metadata = {
 
 # Button Tile <ComponentStatus tagName="p-button-tile"></ComponentStatus>
 
-<TableOfContents headings={['UI behaviour', 'Hyphens', 'Footer slot']} />
+<TableOfContents
+  headings={[
+    buttonTileMeta.examples.uiBehaviour.name,
+    buttonTileMeta.examples.hyphens.name,
+    buttonTileMeta.examples.footerSlot.name,
+  ]}
+/>
 
-## UI behaviour
+## {buttonTileMeta.examples.uiBehaviour.name}
 
-The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see
-first row in example).
+<buttonTileMeta.examples.uiBehaviour.description />
 
-Additionally, the component is able to align to the highest CSS Grid child independent of the aspect ratio when used in
-CSS Grid context (see second row in example).
+<ComponentStory story={buttonTileMeta.examples.uiBehaviour.story} />
 
-<ComponentStory story={buttonTileStoryGrid} />
+## {buttonTileMeta.examples.hyphens.name}
 
-## Hyphens
+<buttonTileMeta.examples.hyphens.description />
 
-It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. However, please note that
-hyphenation behavior can vary depending on the browser and the language of the text. In some cases, it may be necessary
-to set the appropriate lang attribute on your HTML element to ensure that hyphenation works correctly for the desired
-language.
+<ComponentExample codeSample={buttonTileMeta.examples.hyphens.example} />
 
-<ComponentExample codeSample={buttonTileExampleHyphens} />
+## {buttonTileMeta.examples.footerSlot.name}
 
-## Footer slot
+<buttonTileMeta.examples.footerSlot.description />
 
-You can also use a `footer` slot to display additional text below the description, providing more flexibility for custom
-content. The footer slot is intended for **non-interactive content only**, meaning it should not contain links, buttons,
-or other interactive elements. It is designed to handle plain text, making it ideal for supplementary or secondary
-information.
-
-We recommend using short and concise text to avoid visual clutter.
-
-<ComponentStory story={buttonTileStoryFooterSlot} />
+<ComponentStory story={buttonTileMeta.examples.footerSlot.story} />

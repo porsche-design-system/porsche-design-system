@@ -1,20 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Configurator } from '@/components/playground/Configurator';
-import {
-  multiSelectStory,
-  multiSelectStoryOptgroup,
-  multiSelectStorySlots,
-} from '@/app/components/multi-select/multi-select.stories';
-import { Notification } from '@/components/common/Notification';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import {
-  multiSelectExampleForm,
-  multiSelectExampleDynamic,
-  multiSelectExampleAsyncFilter,
-  multiSelectExampleSelectedSlot,
-} from '@porsche-design-system/shared/examples';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { multiSelectMeta } from '@/app/components/multi-select/multi-select.meta';
 
 export const metadata = {
   title: 'Multi Select - Porsche Design System',
@@ -25,92 +13,45 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    'Form',
-    'Slots',
-    'Set Value',
-    'With optgroups',
-    'Custom asynchronous filtering',
-    'Custom option rendering',
+    multiSelectMeta.examples.form.name,
+    multiSelectMeta.examples.slots.name,
+    multiSelectMeta.examples.setValue.name,
+    multiSelectMeta.examples.optgroups.name,
+    multiSelectMeta.examples.asyncFilter.name,
+    multiSelectMeta.examples.selectedSlot.name,
   ]}
 />
 
-## Form
+## {multiSelectMeta.examples.form.name}
 
-The `p-multi-select` can be integrated into a form in two ways: **controlled** or **uncontrolled**, depending on your
-needs.
+<multiSelectMeta.examples.form.description />
 
-In the **controlled** approach, the select state is externally managed using the `value` property and `change` event to
-keep it in sync with your application logic. This approach is ideal for complex forms or when using a form library. Note
-that the component will still always update its internal value automatically when interacted with.
+<ComponentExample codeSample={multiSelectMeta.examples.form.example} />
 
-In the **uncontrolled** approach, the select behaves similarly to a native `<select multiple>`, automatically managing
-its own state and including its value in form submissions through the
-[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API. This is convenient for
-smaller forms or simple submissions.
+## {multiSelectMeta.examples.slots.name}
 
-<Notification heading="Attention" heading-tag="h2" state="warning">
-  <code>p-multi-select</code> does not use a native select internally. As a result, it lacks access to native{' '}
-  <code>ValidityState</code>
-  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means
-  validation behavior and error display will need to be implemented separately if required.
-</Notification>
+<multiSelectMeta.examples.slots.description />
 
-For more details on form integration, refer to the `Form` section in the
-[developing documentation](/developing/introduction) for your framework of choice, or find a full form integration
-example in our [examples repository](https://github.com/porsche-design-system/examples/tree/v3/frameworks).
+<ComponentStory story={multiSelectMeta.examples.slots.story} />
 
-<ComponentExample codeSample={multiSelectExampleForm} />
+## {multiSelectMeta.examples.setValue.name}
 
-## Slots
+<multiSelectMeta.examples.setValue.description />
 
-Use named slots when `label`, `description` or `message` need markup such as a link. Do **not** set the corresponding
-host property at the same time, because properties take precedence. Named slots only accept
-[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content).
+<ComponentExample codeSample={multiSelectMeta.examples.setValue.example} />
 
-Alongside `label`, `description` and `message`, you can also use `label-after` for content that should appear after the
-label but is not part of the label itself, such as an external link or `popover`.
+## {multiSelectMeta.examples.optgroups.name}
 
-<Notification heading="Attention" heading-tag="h3" state="warning">
-  In <code>disabled/loading</code> state, slotted focusable UI elements (e.g. <code>a</code>) will still receive keyboard focus. Add <code>tabindex="-1"</code> to those UI elements.
+<ComponentStory story={multiSelectMeta.examples.optgroups.story} />
 
-The <code>label-after</code> slot is not affected by a <code>disabled/loading</code> state at all.
+## {multiSelectMeta.examples.asyncFilter.name}
 
-</Notification>
+<multiSelectMeta.examples.asyncFilter.description />
 
-<ComponentStory story={multiSelectStorySlots} />
+<ComponentExample codeSample={multiSelectMeta.examples.asyncFilter.example} />
 
-## Set Value
+## {multiSelectMeta.examples.selectedSlot.name}
 
-The `p-multi-select` component behaves like regular form elements. It updates its value automatically based on user
-choices, but it can also be changed manually by using the `value` property. This property takes an array of strings that
-represent the selected option values.
+<multiSelectMeta.examples.selectedSlot.description />
 
-<ComponentExample codeSample={multiSelectExampleDynamic} />
-
-## With optgroups
-
-<ComponentStory story={multiSelectStoryOptgroup} />
-
-## Custom asynchronous filtering
-
-The `p-multi-select` component automatically filters options based on user input. However, if you have a large dataset
-or need custom filtering logic (for example, server-side filtering), you can override this behavior using the `filter`
-slot.
-
-To do so, place a `p-input-search` inside the `filter` slot and bind it as shown in the example. Handle user input and
-option fetching manually to control filtering behavior. Be sure to include custom loading, no results, and error states,
-as these are not provided automatically when using the controlled filtering approach.
-
-<ComponentExample codeSample={multiSelectExampleAsyncFilter} />
-
-## Custom option rendering
-
-By default, `p-multi-select-option` only allows `#text` nodes. To customize option rendering further, implement a custom
-selection renderer using the `selected` slot. This allows you to render different content in the selected area versus
-the dropdown options, enabling more complex option layouts.
-
-The default filter behavior filters against all `textContent` within the options. For more granular control over
-filtering, implement custom filtering logic as shown in the
-[previous example](/components/multi-select/examples#custom-asynchronous-filtering).
-
-<ComponentExample codeSample={multiSelectExampleSelectedSlot} />
+<ComponentExample codeSample={multiSelectMeta.examples.selectedSlot.example} />

@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { modalMeta } from '@/app/components/modal/modal.meta';
 
 export const metadata = {
   title: 'Modal - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Modal <ComponentStatus tagName="p-modal"></ComponentStatus>
 
-<ComponentApi tagName="p-modal" />
+<ComponentApi api={modalMeta.api} />

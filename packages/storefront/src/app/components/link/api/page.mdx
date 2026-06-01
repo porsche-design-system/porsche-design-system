@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { linkMeta } from '@/app/components/link/link.meta';
 
 export const metadata = {
   title: 'Link - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Link <ComponentStatus tagName="p-link"></ComponentStatus>
 
-<ComponentApi tagName="p-link" />
+<ComponentApi api={linkMeta.api} />
