@@ -88,7 +88,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
     background: var(--p-color-canvas);
   }
   .content {
-    max-width: min(calc(100dvw - 16px), 48ch);
+    max-width: var(--p-popover-max-w, min(calc(100dvw - 16px), 48ch));
     width: max-content;
     box-sizing: border-box;
     padding: var(--p-spacing-static-sm) var(--p-spacing-static-md);
