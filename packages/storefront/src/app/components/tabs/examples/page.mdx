@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { tabsStoryActiveTabIndex, tabsStoryGradient } from '@/app/components/tabs/tabs.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { tabsMeta } from '@/app/components/tabs/tabs.meta';
 
 export const metadata = {
   title: 'Tabs - Porsche Design System',
@@ -10,18 +10,16 @@ export const metadata = {
 
 # Tabs <ComponentStatus tagName="p-tabs"></ComponentStatus>
 
-<TableOfContents headings={['Gradient color', 'Active Tab']} />
+<TableOfContents headings={[tabsMeta.examples.gradient.name, tabsMeta.examples.activeTab.name]} />
 
-## Gradient color
+## {tabsMeta.examples.gradient.name}
 
-If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
-background and gradient has to align to your chosen background.
+<tabsMeta.examples.gradient.description />
 
-<ComponentStory story={tabsStoryGradient} backgroundColor="surface" />
+<ComponentStory story={tabsMeta.examples.gradient.story} backgroundColor="surface" />
 
-## Active Tab
+## {tabsMeta.examples.activeTab.name}
 
-You may need to change the initial active tab. To do so, set the `active-tab-index` attribute of `p-tabs`. Make sure to
-update the `activeTabIndex` when adding or removing elements.
+<tabsMeta.examples.activeTab.description />
 
-<ComponentStory story={tabsStoryActiveTabIndex} />
+<ComponentStory story={tabsMeta.examples.activeTab.story} />

@@ -1,6 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from '@/components/components/ComponentApi';
+import { componentMeta } from '@porsche-design-system/component-meta';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { tableMeta } from '@/app/components/table/table.meta';
 
 export const metadata = {
   title: 'Table - Porsche Design System',
@@ -16,28 +18,28 @@ export const metadata = {
 
 ## Table
 
-<ComponentApi tagName="p-table" showTableOfContents={false} />
+<ComponentApi api={tableMeta.api} showTableOfContents={false} />
 
 ## Table Head
 
-<ComponentApi tagName="p-table-head" showTableOfContents={false} />
+<ComponentApi api={componentMeta['p-table-head']} showTableOfContents={false} />
 
 ## Table Head Row
 
-<ComponentApi tagName="p-table-head-row" showTableOfContents={false} />
+<ComponentApi api={componentMeta['p-table-head-row']} showTableOfContents={false} />
 
 ## Table Head Cell
 
-<ComponentApi tagName="p-table-head-cell" showTableOfContents={false} />
+<ComponentApi api={componentMeta['p-table-head-cell']} showTableOfContents={false} />
 
 ## Table Body
 
-<ComponentApi tagName="p-table-body" showTableOfContents={false} />
+<ComponentApi api={componentMeta['p-table-body']} showTableOfContents={false} />
 
 ## Table Row
 
-<ComponentApi tagName="p-table-row" showTableOfContents={false} />
+<ComponentApi api={componentMeta['p-table-row']} showTableOfContents={false} />
 
 ## Table Cell
 
-<ComponentApi tagName="p-table-cell" showTableOfContents={false} />
+<ComponentApi api={componentMeta['p-table-cell']} showTableOfContents={false} />
