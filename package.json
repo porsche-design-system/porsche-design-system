@@ -79,6 +79,7 @@
     "build:component-meta": "npm run build --workspace=@porsche-design-system/component-meta",
     "build:components:stylesheets": "npm run build --workspace=@porsche-design-system/stylesheets",
     "build:components": "npm run build --workspace=@porsche-design-system/components",
+    "build:components-prod": "npm run build-prod --workspace=@porsche-design-system/components",
     "build:components-js": "npm run build --workspace=@porsche-design-system/js && npm run build:assetsCopyComponentsOnly",
     "build:components-js-prod": "npm run build-prod --workspace=@porsche-design-system/js && npm run build:assetsCopyComponentsOnly",
     "build:components-angular": "npm run build --workspace=@porsche-design-system/angular",
