@@ -34,6 +34,10 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   slot[name="label-after"]::slotted(*) {
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
+  .label-after {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -337,6 +341,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1386,6 +1394,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -1565,6 +1577,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -5004,6 +5020,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -7308,6 +7328,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -7493,6 +7517,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -7666,6 +7694,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -7850,6 +7882,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8029,6 +8065,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8202,6 +8242,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -8383,6 +8427,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8557,6 +8605,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -8730,6 +8782,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -8916,6 +8972,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -9089,6 +9149,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -10460,6 +10524,10 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   slot[name="label-after"]::slotted(*) {
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
+  .label-after {
+    display: inline-block;
+    vertical-align: top;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
@@ -10763,6 +10831,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -11606,6 +11678,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -11968,6 +12044,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -12104,6 +12184,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -12407,6 +12491,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -12587,6 +12675,10 @@ exports[`should render dsr component for PSelect 1`] = `
   }
   slot[name="label-after"]::slotted(*) {
     margin-inline-start: var(--p-spacing-static-xs) !important;
+  }
+  .label-after {
+    display: inline-block;
+    vertical-align: top;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -15116,6 +15208,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
