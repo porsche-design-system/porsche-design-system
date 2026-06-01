@@ -4,7 +4,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 @Component({
   selector: 'page-button-example-form',
   template: `
-    <form (submit)="handleSubmit($event)">
+    <form (submit)="handleSubmit($event)" class="flex gap-fluid-sm">
       <p-button name="option" value="A" type="submit">Button A</p-button>
       <p-button name="option" value="B" type="submit">Button B</p-button>
     </form>

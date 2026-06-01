@@ -1,7 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
-import { inputMonthStory, inputMonthSlotStories } from '@/app/components/input-month/input-month.stories';
-import { FrameworkNotification } from '@/components/common/FrameworkNotification';
+import { inputMonthMeta } from '@/app/components/input-month/input-month.meta';
 
 export const metadata = {
   title: 'Input Month - Porsche Design System',
@@ -11,19 +10,10 @@ export const metadata = {
 
 # Input Month <ComponentStatus tagName="p-input-month"></ComponentStatus>
 
-The `p-input-month` component provides a versatile, user‑friendly interface for entering month values. It supports
-direct keyboard input, including arrow-key adjustments for precise changes. It has a start and end slot in order to
-support flexible slotted content.
+<inputMonthMeta.introduction />
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The
-`p-input-month` component can be used with or without a label, but it's recommended to keep the label visible for better
-accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text for
-screen readers.
-
-<FrameworkNotification showForFrameworks={['react']} heading="Input Event Handling">
-  React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow
-  standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each
-  keystroke, use `onInput` instead.
-</FrameworkNotification>
-
-<Configurator tagName="p-input-month" story={inputMonthStory} slotStories={inputMonthSlotStories} />
+<Configurator
+  tagName="p-input-month"
+  story={inputMonthMeta.configurator.story}
+  slotStories={inputMonthMeta.configurator.slotStories}
+/>

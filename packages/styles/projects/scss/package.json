@@ -29,6 +29,7 @@
   },
   "peerDependencies": {
     "@biomejs/biome": "*",
+    "@types/node": "*",
     "vitest": "*",
     "tsx": "*",
     "typescript": "*",

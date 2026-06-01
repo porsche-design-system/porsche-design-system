@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from '@/components/components/ComponentApi';
+import { aiTagMeta } from '@/app/components/ai-tag/ai-tag.meta';
 
 export const metadata = {
   title: 'AI Tag - Porsche Design System',
@@ -9,4 +10,4 @@ export const metadata = {
 
 # AI Tag <ComponentStatus tagName="p-ai-tag"></ComponentStatus>
 
-<ComponentApi tagName="p-ai-tag" />
+<ComponentApi api={aiTagMeta.api} />

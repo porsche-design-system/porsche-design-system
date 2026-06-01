@@ -1,0 +1,29 @@
+import { Notification } from '@/components/common/Notification';
+import Link from 'next/link';
+
+The `p-carousel` component allows related or similar content to be consumed on a step by step basis with a better
+overview than just showing them in a grid or as a list. The reason for this is, that only a certain amount of slides is
+visible at the same time.
+
+Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides. The amount of slides visible can
+be specified on a per-breakpoint basis.
+
+<Notification heading="Layout hint" heading-tag="h2" state="warning">
+  When using the <code>width</code> prop to align with the **[Porsche Grid](/tailwindcss/grid/examples/)**, the component must span the full viewport width.
+
+When using the <code>--p-carousel-px</code> CSS variable, the component can be placed within any container, allowing you
+to customize the horizontal padding that reveals parts of the next/previous slide.
+
+When using the <code>--p-carousel-ps</code> and <code>--p-carousel-pe</code> CSS variables, the component can be placed
+within any container, allowing you to customize the horizontal padding asymmetric that reveals parts of the
+next/previous slide.
+
+</Notification>
+
+<Notification heading="Dynamic changes" heading-tag="h2" state="warning">
+  This component has limited support for dynamic property changes due to the way it is implemented. <br />
+  <br />
+  If you need to use a specific property dynamically, please open a{' '}
+  <Link href="/help/feature-request/">feature request</Link>.
+</Notification>
+

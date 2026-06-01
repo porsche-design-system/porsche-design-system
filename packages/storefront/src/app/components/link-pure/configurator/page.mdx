@@ -1,21 +1,15 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { Configurator } from "@/components/playground/Configurator";
-import { linkPureStory } from "@/app/components/link-pure/link-pure.stories";
+import { Configurator } from '@/components/playground/Configurator';
+import { linkPureMeta } from '@/app/components/link-pure/link-pure.meta';
 
 export const metadata = {
   title: 'Link Pure - Porsche Design System',
-  description: 'Learn how to use the Porsche Design System\'s Link Pure component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
-}
+  description:
+    "Learn how to use the Porsche Design System's Link Pure component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
 
 # Link Pure <ComponentStatus tagName="p-link-pure"></ComponentStatus>
 
-The `p-link-pure` component is essential for performing changes in **page routes**. A Link Pure can be used with or
-without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When
-used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
+<linkPureMeta.introduction />
 
-In case you want the user to execute an action, you should select the [Button](/components/button/) or
-[Button Pure](/components/button-pure/) component instead.
-
-You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-link-pure`.
-
-<Configurator tagName="p-link-pure" story={linkPureStory} />
+<Configurator tagName="p-link-pure" story={linkPureMeta.configurator.story} />

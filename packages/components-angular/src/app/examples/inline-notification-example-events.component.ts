@@ -4,11 +4,11 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 @Component({
   selector: 'page-inline-notification-example-events',
   template: `
-    <button type="button" (click)="onShow()">Show Inline Notification</button>
+    <p-button [type]="'button'" [compact]="true" (click)="onShow()">Show Inline Notification</p-button>
     @if (isActive) {
       <p-inline-notification
         [heading]="'Some heading'"
-        [headingTag]="'h4'"
+        [headingTag]="'h3'"
         [description]="'Some description.'"
         (dismiss)="onDismiss()"
       ></p-inline-notification>

@@ -13,16 +13,32 @@ const getMdxFiles = async (dir: string): Promise<string[]> => {
   }
 };
 
-const extractHeadings = (content: string): string[] => {
-  const headings: string[] = [];
+type Heading = { type: 'string'; value: string } | { type: 'expression'; value: string };
+
+const extractHeadings = (content: string): Heading[] => {
+  const headings: Heading[] = [];
   const headingRegex = /^## (.*)$/gm;
   let match: RegExpExecArray | null;
 
   while ((match = headingRegex.exec(content)) !== null) {
-    headings.push(match[1].trim());
+    const raw = match[1].trim();
+    // Detect MDX expression headings like `## {someMeta.examples.foo.name}`
+    const expressionMatch = raw.match(/^\{(.+)\}$/);
+    if (expressionMatch) {
+      headings.push({ type: 'expression', value: expressionMatch[1].trim() });
+    } else {
+      headings.push({ type: 'string', value: raw });
+    }
   }
 
   return headings;
+};
+
+const serializeHeadings = (headings: Heading[]): string => {
+  const items = headings.map((heading) =>
+    heading.type === 'expression' ? heading.value : `'${heading.value.replace(/'/g, "\\'")}'`
+  );
+  return `[${items.join(', ')}]`;
 };
 
 const processFile = async (filePath: string): Promise<void> => {
@@ -33,7 +49,7 @@ const processFile = async (filePath: string): Promise<void> => {
     if (headings.length > 1) {
       const updatedContent = content.replace(
         tableOfContentsRegex,
-        `<TableOfContents headings={${JSON.stringify(headings).replace(/'/g, "\\'").replace(/"/g, "'")}} />`
+        `<TableOfContents headings={${serializeHeadings(headings)}} />`
       );
       const prettierConfig = await prettier.resolveConfig(process.cwd());
       const formattedContent = await prettier.format(updatedContent, {
