@@ -34,7 +34,7 @@
     "build:tailwindcss": "TARGET=./dist/components-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:scss": "TARGET=./dist/components-wrapper/scss && rm -rf $TARGET && cp -r ../styles/projects/scss/dist $TARGET",
     "build:vanilla-extract": "TARGET=./dist/components-wrapper/vanilla-extract && rm -rf $TARGET && cp -r ../styles/projects/vanilla-extract/dist $TARGET",
-    "build:stylesheets": "TARGET=./dist/components-wrapper/stylesheets && rm -rf $TARGET && cp -r ../components/projects/stylesheets/dist $TARGET",
+    "build:stylesheets": "TARGET=./dist/components-wrapper/stylesheets && SOURCE=../components/projects/stylesheets/dist && rm -rf $TARGET && mkdir -p $TARGET/cn && cp $SOURCE/*.css $TARGET/ && cp $SOURCE/cn/*.css $TARGET/cn/",
     "generateVRTPages": "tsx scripts/generateVRTPages.ts",
     "test": "npm run test:unit && npm run test:e2e && npm run test:vrt && npm run test:smoke",
     "test:unit": "npm run test:unit:components-manager-cli && npm run test:unit:components-manager-core && npm run test:unit:components-js && npm run test:unit:jsdom-polyfill && npm run test:unit:partials",

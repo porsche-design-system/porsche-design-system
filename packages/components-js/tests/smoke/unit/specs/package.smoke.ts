@@ -98,6 +98,18 @@ describe('package content', () => {
   }
 });
 
+describe('stylesheets folder content', () => {
+  const componentsJsFilePath = nodeRequire.resolve('@porsche-design-system/components-js');
+  const componentsJsPackageDir = path.resolve(componentsJsFilePath, '../..');
+  const stylesheetsDir = path.resolve(componentsJsPackageDir, 'stylesheets');
+  const stylesheetsFiles = globbySync(`${stylesheetsDir}/**/*`);
+
+  test('should only expose .css files and no internal meta (js/cjs/mjs/d.ts) or package.json', () => {
+    const nonCssFiles = stylesheetsFiles.filter((filePath) => !filePath.endsWith('.css'));
+    expect(nonCssFiles).toEqual([]);
+  });
+});
+
 describe('package.json files', () => {
   const packageNames = [
     '@porsche-design-system/components-js',
