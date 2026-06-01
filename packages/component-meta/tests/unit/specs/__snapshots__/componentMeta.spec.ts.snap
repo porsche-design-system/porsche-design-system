@@ -7671,6 +7671,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
+    "cssVariablesMeta": {
+      "--p-popover-max-w": {
+        "defaultValue": "",
+        "description": "Defines the max content width. Overrides the \`maxWidth\` property when set.",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
