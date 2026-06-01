@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { wordmarkMeta } from '@/app/components/wordmark/wordmark.meta';
 
 export const metadata = {
   title: 'Wordmark - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Wordmark <ComponentStatus tagName="p-wordmark"></ComponentStatus>
 
-<ComponentApi tagName="p-wordmark" />
+<ComponentApi api={wordmarkMeta.api} />

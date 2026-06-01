@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { inputUrlMeta } from '@/app/components/input-url/input-url.meta';
 
 export const metadata = {
   title: 'Input URL - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Input URL <ComponentStatus tagName="p-input-url"></ComponentStatus>
 
-<ComponentApi tagName="p-input-url" />
+<ComponentApi api={inputUrlMeta.api} />

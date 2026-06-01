@@ -1,15 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Configurator } from '@/components/playground/Configurator';
-import {
-  spinnerStory,
-  spinnerStoryColor,
-  spinnerStoryColorCSSVar,
-  spinnerStoryResponsiveSize,
-  spinnerStorySize,
-  spinnerStorySizeCSSVar,
-} from '@/app/components/spinner/spinner.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { spinnerMeta } from '@/app/components/spinner/spinner.meta';
 
 export const metadata = {
   title: 'Spinner - Porsche Design System',
@@ -18,48 +10,47 @@ export const metadata = {
 
 # Spinner <ComponentStatus tagName="p-spinner"></ComponentStatus>
 
-<TableOfContents headings={['Size', 'Color', 'Technical notes']} />
+<TableOfContents
+  headings={[
+    spinnerMeta.examples.size.name,
+    spinnerMeta.examples.sizeCssVar.name,
+    spinnerMeta.examples.responsiveSize.name,
+    spinnerMeta.examples.color.name,
+    spinnerMeta.examples.colorCssVar.name,
+    spinnerMeta.notes.disableAnimation.name,
+  ]}
+/>
 
-## Size
+## {spinnerMeta.examples.size.name}
 
-There are predefined sizes for the component available which should cover most use cases. If a specific size is needed,
-the `size` property can be set to `inherit` to derive the spinner's dimensions from the font-size of a parent element
-(e.g. a `p-text`). The internal calculation is based on the `ex`-unit relative to the inherited font-size and the global
-line-height, ensuring the spinner stays visually consistent with surrounding typographic-scale-based components.
+<spinnerMeta.examples.size.description />
 
-<ComponentStory story={spinnerStorySize} />
+<ComponentStory story={spinnerMeta.examples.size.story} />
 
-Alternatively, the size can be controlled via the custom CSS variable `--p-spinner-size`, which accepts any valid CSS
-length value. This approach is particularly useful when the spinner is placed independently of typographic-scale-based
-components and a precise, fixed size is required.
+## {spinnerMeta.examples.sizeCssVar.name}
 
-<ComponentStory story={spinnerStorySizeCSSVar} />
+<spinnerMeta.examples.sizeCssVar.description />
 
-The `size` property supports `BreakpointCustomizable` values, allowing you to define different sizes for each major
-breakpoint (`xs`, `s`, `m`, `l`, `xl`). This makes it easy to adapt the spinner's appearance responsively without
-additional CSS.
+<ComponentStory story={spinnerMeta.examples.sizeCssVar.story} />
 
-<ComponentStory story={spinnerStoryResponsiveSize} />
+## {spinnerMeta.examples.responsiveSize.name}
 
-## Color
+<spinnerMeta.examples.responsiveSize.description />
 
-The `color` property can be set to `inherit` to derive the spinner's color from the `currentcolor` of a parent element
-(e.g. a `p-text`). This ensures the spinner matches the surrounding text color automatically.
+<ComponentStory story={spinnerMeta.examples.responsiveSize.story} />
 
-<ComponentStory story={spinnerStoryColor} />
+## {spinnerMeta.examples.color.name}
 
-Alternatively, the colors can be controlled via the custom CSS variables `--p-spinner-color` and
-`--p-spinner-track-color`, which accept any valid CSS color value. This allows full control over both the foreground and
-track color independently.
+<spinnerMeta.examples.color.description />
 
-<ComponentStory story={spinnerStoryColorCSSVar} />
+<ComponentStory story={spinnerMeta.examples.color.story} />
 
-## Technical notes
+## {spinnerMeta.examples.colorCssVar.name}
 
-For automated visual regression tests, the spinner animation can be disabled by setting a global CSS variable:
+<spinnerMeta.examples.colorCssVar.description />
 
-```
-:root {
-  --p-animation-duration: 0s !important;
-}
-```
+<ComponentStory story={spinnerMeta.examples.colorCssVar.story} />
+
+## {spinnerMeta.notes.disableAnimation.name}
+
+<spinnerMeta.notes.disableAnimation.description />

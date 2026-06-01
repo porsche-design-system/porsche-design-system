@@ -1,0 +1,11 @@
+By default, only one input can be changed at a time. The `p-pin-code` component also supports copying and pasting a
+value and OTP auto-suggestion on mobile.
+
+The `p-pin-code` component performs basic validation of the pasted value:
+
+- If the pasted string is too long, `p-pin-code` attempts to fill the other inputs.
+- If the pasted value contains whitespace, it will be removed.
+- If the value contains characters other than digits, it cannot be pasted.
+
+Try copying and pasting `1234` into any of the inputs in the example below.
+

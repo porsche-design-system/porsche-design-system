@@ -1,0 +1,8 @@
+You can pass an `aria` property to expose extra semantics on the **native input** (see
+[accessibility](/components/input-search/accessibility)). The story below is intentionally incomplete: it sets common
+combobox-related `aria` values and shows a **non-interactive** listbox-shaped panel (Tailwind only) for visual context.
+If you use `aria-controls` to reference a light-DOM listbox from the native input inside Shadow DOM, be aware that
+assistive technologies may not reliably honor that cross-shadow relationship. This issue is known and will be resolved
+if browsers add support for it. A real implementation still needs your logic, keyboard handling, and relationship
+attributes that work for your setup per the [ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
+

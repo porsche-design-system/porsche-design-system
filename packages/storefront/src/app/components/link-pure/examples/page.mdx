@@ -1,13 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Configurator } from '@/components/playground/Configurator';
-import {
-  linkPureCustomPadding,
-  linkPureStory,
-  linkPureStoryFrameworkRouting,
-  linkPureStoryIcon,
-} from '@/app/components/link-pure/link-pure.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { linkPureMeta } from '@/app/components/link-pure/link-pure.meta';
 
 export const metadata = {
   title: 'Link Pure - Porsche Design System',
@@ -18,57 +12,31 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    'Link with specific icon',
-    'Framework routing (anchor nesting)',
-    "Examples how to use with Framework specific router and 'active state' support",
-    'Link Pure with custom clickable/focusable area',
+    linkPureMeta.examples.icon.name,
+    linkPureMeta.examples.frameworkRouting.name,
+    linkPureMeta.examples.frameworkRoutingActiveState.name,
+    linkPureMeta.examples.customClickableArea.name,
   ]}
 />
 
-## Link with specific icon
+## {linkPureMeta.examples.icon.name}
 
-If another icon needs to be implemented, just replace the default icon with another predefined icon. Per default, all
-icons are fetched from the Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to
-link to another icon hosted somewhere else, just set the whole icon path to the `iconSource` prop.
+<linkPureMeta.examples.icon.description />
 
-<ComponentStory story={linkPureStoryIcon} />
+<ComponentStory story={linkPureMeta.examples.icon.story} />
 
-## Framework routing (anchor nesting)
+## {linkPureMeta.examples.frameworkRouting.name}
 
-To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element**
-(recommended) of the component.
+<linkPureMeta.examples.frameworkRouting.description />
 
-<ComponentStory story={linkPureStoryFrameworkRouting} />
+<ComponentStory story={linkPureMeta.examples.frameworkRouting.story} />
 
-## Examples how to use with Framework specific router and "active state" support
+## {linkPureMeta.examples.frameworkRoutingActiveState.name}
 
-### Angular
+<linkPureMeta.examples.frameworkRoutingActiveState.description />
 
-```html
-<p-link-pure [active]="rla.isActive">
-  <a routerLink="/path/to/heaven" routerLinkActive #rla="routerLinkActive"></a>
-</p-link-pure>
-```
+## {linkPureMeta.examples.customClickableArea.name}
 
-### React
+<linkPureMeta.examples.customClickableArea.description />
 
-```typescript
-<PLinkPure active={isActive}>
-  <Link to="/path/to/heaven">Some label</Link>
-</PLinkPure>
-```
-
-### VueJs
-
-```typescript
-<router-link :to="/path/to/heaven" v-slot="{ href, navigate, isActive }">
-  <p-link-pure :href="href" @click="navigate" :active="isActive">Some label</p-link-pure>
-</router-link>
-```
-
-## Link Pure with custom clickable/focusable area
-
-Sometimes it might be useful to enlarge the clickable/focusable area of a link to fulfill accessibility guidelines.
-Therefore a custom padding can be set on the host element.
-
-<ComponentStory story={linkPureCustomPadding} />
+<ComponentStory story={linkPureMeta.examples.customClickableArea.story} />
