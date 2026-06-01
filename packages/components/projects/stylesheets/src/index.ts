@@ -9,10 +9,17 @@ import type { GlobalStylesMeta } from './types';
 // metas, the legacy radius variables) so consumers can read single entries
 // (e.g. `cssVariablesMeta.color.background.canvas`) without going through the
 // per-stylesheet aggregation below.
-export { cssVariablesMeta, reference } from './cssVariablesMeta';
+export { cssVariablesMeta } from './cssVariablesMeta';
 export { colorSchemeClassesMeta } from './colorSchemeMeta';
 export { legacyRadiusMeta } from './legacyRadiusMeta';
 export { flattenColorVariables, flattenCssVariables, renderCss, renderCssNode } from './helpers';
+// Individual, tree-shakeable CSS custom property *name* consts (e.g. `colorCanvas =
+// '--p-color-canvas'`) plus the `ref()` helper that wraps a name into `var(...)`. The
+// consts are a DERIVED build artifact generated from `cssVariablesMeta` (the single source
+// of truth) into the gitignored `src/generated/` folder by `scripts/buildCssVariableConstants.ts`;
+// `ref` is hand-written. Components consume these directly in their JSS styles.
+export * from './generated/cssVariables';
+export { ref } from './ref';
 export type * from './types';
 
 // The complete, per-stylesheet meta describing every generated global stylesheet.

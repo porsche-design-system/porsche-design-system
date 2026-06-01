@@ -152,10 +152,7 @@ import {
   typescaleXs,
 } from '@porsche-design-system/tokens';
 import { flattenCssVariables } from './helpers';
-import type { CssNode, CssVariableMeta, CssVariablesMetaTree } from './types';
-
-/** Returns a `var(--…)` reference for the given CSS variable, for use in component and docs styles. */
-export const reference = ({ property }: CssVariableMeta): string => `var(${property})`;
+import type { CssNode, CssVariablesMetaTree } from './types';
 
 export const cssVariablesMeta = {
   color: {

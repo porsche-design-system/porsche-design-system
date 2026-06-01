@@ -25,16 +25,51 @@ previously lived in two separate packages (a meta package and a CSS build packag
 ```text
 src/
 ├── types.ts                        # Meta type definitions + CSS resolution model (CssDeclaration/CssRule/CssNode)
-├── cssVariablesMeta.ts             # Grouped :root CSS custom properties tree + :lang() font overrides + resolved variables.css
+├── cssVariablesMeta.ts             # SOURCE OF TRUTH: grouped :root CSS custom properties tree (authored `property` literals) + :lang() font overrides + resolved variables.css
+├── ref.ts                          # Hand-written `ref(name, fallback?)` helper wrapping a name into `var(...)`
+├── generated/                      # GITIGNORED build artifact (regenerated from cssVariablesMeta)
+│   └── cssVariables/               #   one tree-shakeable const per variable, e.g. color/background/colorCanvas.ts
+│       ├── legacyRadius/           #   private --_p-legacy-radius-* names (kept separate)
+│       └── index.ts                #   generated barrels (re-export every name const)
 ├── colorSchemeMeta.ts              # .scheme-* utility classes + light-dark() polyfill rule + resolved color-scheme.css
 ├── normalizeMeta.ts                # Resolved normalize.css
 ├── legacyRadiusMeta.ts             # Private --_p-legacy-radius-* variables + resolved legacy-radius.css
 ├── helpers.ts                      # Tree flatten/group helpers + renderCss serializer
-└── index.ts                        # Assembles per-stylesheet `globalStylesMeta` + independent granular exports
+└── index.ts                        # Assembles per-stylesheet `globalStylesMeta` + independent granular exports (incl. generated name consts + `ref`)
 scripts/
+├── buildCssVariableConstants.ts    # Generates src/generated/cssVariables/** (one plain-literal const per variable) from the meta
 ├── buildGlobalStylesCss.ts         # Renders every `globalStylesMeta` entry to its CSS file via renderCss + Prettier
 └── buildFontFaceCss.ts             # Builds font-face.css (com + cn) from @porsche-design-system/font-face
 ```
+
+## CSS variable names: source of truth + generated consts + `ref()`
+
+`cssVariablesMeta` is the **single source of truth**: it carries the authored `property` literals
+(e.g. `property: '--p-color-canvas'`) plus the grouping, descriptions and (for colors) light/dark values.
+
+From it, `scripts/buildCssVariableConstants.ts` **generates** one individual, plain-literal const per
+variable so bundlers (Stencil/Rollup) can tree-shake a single variable into a component **without**
+dragging the whole `cssVariablesMeta` object along:
+
+```ts
+// src/generated/cssVariables/color/background/colorCanvas.ts (generated, gitignored)
+export const colorCanvas = '--p-color-canvas';
+```
+
+- The generated consts are a **derived build artifact** living in the gitignored `src/generated/` folder.
+  They are (re)built by `build:constants` (part of `npm run build`) and by the unit-test global setup, so a
+  fresh checkout never needs them committed. Never edit them by hand, and never make the meta import them
+  (the meta stays the source — keeping it independent avoids any circular/bootstrap coupling).
+- They are emitted as standalone literals (not derived from the meta object at runtime), which is what makes
+  the per-variable tree-shaking work.
+- The grouped directory structure mirrors `cssVariablesMeta` (e.g. `color/background/`) to preserve the
+  categorization used by the docs/LLM context.
+- Wrap a name into a CSS `var(...)` reference with the hand-written `ref(name, fallback?)` helper
+  (`src/ref.ts`), e.g. in component JSS: `background: ref(colorCanvas)`.
+- Private `--_p-legacy-radius-*` names are **not** generated as consts; they remain hand-written under `src/styles/css-variables/` and `legacyRadiusMeta` only feeds the resolved `legacy-radius.css`.
+- `tests/unit/specs/cssVariables.spec.ts` guards that every meta `property` has a matching generated const.
+
+
 
 ## How the meta resolves into CSS
 
@@ -50,8 +85,9 @@ structure of its own. `font-face.css` is intentionally **not** modeled in the me
 from the font-face package.
 
 For component and docs access, the granular metas are exported independently of `globalStylesMeta`
-(`cssVariablesMeta`, `colorSchemeClassesMeta`, `legacyRadiusMeta`, plus `reference()` and the flatten/render
-helpers), so single entries (e.g. `cssVariablesMeta.color.background.canvas`) can be read directly.
+(`cssVariablesMeta`, `colorSchemeClassesMeta`, `legacyRadiusMeta`, the individual CSS variable name consts plus
+the `ref()` helper, and the flatten/render helpers), so single entries (e.g.
+`cssVariablesMeta.color.background.canvas`) can be read directly.
 
 ## Working Guidelines
 
