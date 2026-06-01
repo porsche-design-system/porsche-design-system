@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { crestStory, crestStoryCustomPadding, crestStoryLink } from '@/app/components/crest/crest.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { crestMeta } from '@/app/components/crest/crest.meta';
 
 export const metadata = {
   title: 'Crest - Porsche Design System',
@@ -10,17 +10,16 @@ export const metadata = {
 
 # Crest <ComponentStatus tagName="p-crest"></ComponentStatus>
 
-<TableOfContents headings={['Link', 'Custom clickable/focusable area']} />
+<TableOfContents headings={[crestMeta.examples.link.name, crestMeta.examples.customClickableArea.name]} />
 
-## Link
+## {crestMeta.examples.link.name}
 
-The Porsche Crest will be rendered as `<a>`-tag as soon as an `href` is provided.
+<crestMeta.examples.link.description />
 
-<ComponentStory story={crestStoryLink} />
+<ComponentStory story={crestMeta.examples.link.story} />
 
-## Custom clickable/focusable area
+## {crestMeta.examples.customClickableArea.name}
 
-Sometimes it may be useful to enlarge the clickable/focusable area of the Porsche Crest. Therefore, custom padding can
-be set on the host element.
+<crestMeta.examples.customClickableArea.description />
 
-<ComponentStory story={crestStoryCustomPadding} />
+<ComponentStory story={crestMeta.examples.customClickableArea.story} />

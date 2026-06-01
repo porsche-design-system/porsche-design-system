@@ -9,7 +9,7 @@ export const InlineNotificationExampleActionButtonPage = () => {
     <>
       <PInlineNotification
         heading="Some heading"
-        headingTag="h4"
+        headingTag="h3"
         description="Some description."
         actionLabel="Retry"
         actionIcon="reset"

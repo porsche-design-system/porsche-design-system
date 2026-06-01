@@ -1,73 +1,51 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import {
-  modelSignatureStoryCustomStyling,
-  modelSignatureStoryMaskBlendMode,
-  modelSignatureStoryMaskImage,
-  modelSignatureStoryMaskVideo,
-  modelSignatureStorySafeZone,
-} from '@/app/components/model-signature/model-signature.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
-import { componentMeta } from '@porsche-design-system/component-meta';
-import { Notification } from '@/components/common/Notification';
+import { modelSignatureMeta } from '@/app/components/model-signature/model-signature.meta';
 
 export const metadata = {
   title: 'Model Signature - Porsche Design System',
   description: 'Discover detailed examples and insights of the Model Signature component.',
 };
 
-export const modelSignatureSafeZoneDefault = JSON.stringify(
-  componentMeta['p-model-signature'].propsMeta.safeZone.defaultValue
-);
-
 # Model Signature <ComponentStatus tagName="p-model-signature"></ComponentStatus>
 
-<TableOfContents headings={['Safe Zone', 'Mask: Blend Mode', 'Mask: Image', 'Mask: Video', 'Custom styling']} />
+<TableOfContents
+  headings={[
+    modelSignatureMeta.examples.safeZone.name,
+    modelSignatureMeta.examples.maskBlendMode.name,
+    modelSignatureMeta.examples.maskImage.name,
+    modelSignatureMeta.examples.maskVideo.name,
+    modelSignatureMeta.examples.customStyling.name,
+  ]}
+/>
 
-## Safe Zone
+## {modelSignatureMeta.examples.safeZone.name}
 
-The `safe-zone` prop's default is <code>{modelSignatureSafeZoneDefault}</code>, which ensures a visual balance across
-all model signatures. This is most likely the best option when the model signatures are used in combination or within
-tiles next to each other. When `false` is set as value, the model signatures come without any safe zone which is
-probably preferred when the element is positioned independently.
+<modelSignatureMeta.examples.safeZone.description />
 
-<ComponentStory story={modelSignatureStorySafeZone} />
+<ComponentStory story={modelSignatureMeta.examples.safeZone.story} />
 
-## Mask: Blend Mode
+## {modelSignatureMeta.examples.maskBlendMode.name}
 
-If `p-model-signature` should be blended with its background, the CSS property
-[mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`{{ blendMode }}` will
-produce the best results). Depending on the use case, it may be important to use it together with the CSS property
-[isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) to create a new stacking context. It is also
-important to note that `p-model-signature` must be used with the `contrast-{high|medium}` color for proper blend mode
-results.
+<modelSignatureMeta.examples.maskBlendMode.description />
 
-<ComponentStory story={modelSignatureStoryMaskBlendMode} />
+<ComponentStory story={modelSignatureMeta.examples.maskBlendMode.story} />
 
-## Mask: Image
+## {modelSignatureMeta.examples.maskImage.name}
 
-<Notification heading="Experimental" heading-tag="h3" state="warning">
-  The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
-</Notification>
+<modelSignatureMeta.examples.maskImage.description />
 
-<ComponentStory story={modelSignatureStoryMaskImage} />
+<ComponentStory story={modelSignatureMeta.examples.maskImage.story} />
 
-## Mask: Video
+## {modelSignatureMeta.examples.maskVideo.name}
 
-<Notification heading="Experimental" heading-tag="h3" state="warning">
-  The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
-</Notification>
+<modelSignatureMeta.examples.maskVideo.description />
 
-<ComponentStory story={modelSignatureStoryMaskVideo} />
+<ComponentStory story={modelSignatureMeta.examples.maskVideo.story} />
 
-## Custom styling
+## {modelSignatureMeta.examples.customStyling.name}
 
-The `p-model-signature` color can be changed by setting the `color` prop to `inherit` and applying some CSS `color`.
-Additionally, the component has some values that can be overridden via CSS custom properties (aka CSS variables):
+<modelSignatureMeta.examples.customStyling.description />
 
-```scss
---p-model-signature-width
---p-model-signature-height
-```
-
-<ComponentStory story={modelSignatureStoryCustomStyling} />
+<ComponentStory story={modelSignatureMeta.examples.customStyling.story} />

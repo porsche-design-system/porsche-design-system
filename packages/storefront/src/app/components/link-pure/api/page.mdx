@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { linkPureMeta } from '@/app/components/link-pure/link-pure.meta';
 
 export const metadata = {
   title: 'Link Pure - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Link Pure <ComponentStatus tagName="p-link-pure"></ComponentStatus>
 
-<ComponentApi tagName="p-link-pure" />
+<ComponentApi api={linkPureMeta.api} />

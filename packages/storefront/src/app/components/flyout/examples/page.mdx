@@ -1,13 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentStory } from '@/components/playground/ComponentStory';
-import {
-  flyoutStoryGrid,
-  flyoutStoryStickyTop,
-  flyoutStoryCustomStyling,
-} from '@/app/components/flyout/flyout.stories';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import { flyoutExampleForm } from '@porsche-design-system/shared/examples';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { flyoutMeta } from '@/app/components/flyout/flyout.meta';
 
 export const metadata = {
   title: 'Flyout - Porsche Design System',
@@ -17,26 +12,23 @@ export const metadata = {
 # Flyout <ComponentStatus tagName="p-flyout"></ComponentStatus>
 
 <TableOfContents
-  headings={['Sticky content with Custom CSS Property (Experimental)', 'Flyout Form', 'Custom Styling']}
+  headings={[flyoutMeta.examples.stickyTop.name, flyoutMeta.examples.form.name, flyoutMeta.examples.customStyling.name]}
 />
 
-## Sticky content with Custom CSS Property (Experimental)
+## {flyoutMeta.examples.stickyTop.name}
 
-In order to display some sticky element within the flyout content you can use the experimental `--p-flyout-sticky-top`
-CSS custom property to account for the height of the header.
+<flyoutMeta.examples.stickyTop.description />
 
-<ComponentStory story={flyoutStoryStickyTop} />
+<ComponentStory story={flyoutMeta.examples.stickyTop.story} />
 
-## Flyout Form
+## {flyoutMeta.examples.form.name}
 
-The following example demonstrates how a form can be used within a flyout component:
+<flyoutMeta.examples.form.description />
 
-<ComponentExample codeSample={flyoutExampleForm} />
+<ComponentExample codeSample={flyoutMeta.examples.form.example} />
 
-## Custom Styling
+## {flyoutMeta.examples.customStyling.name}
 
-The Flyout exposes read-only CSS Variables (prefixed with `--ref-`). Additionally, some predefined CSS variables can be
-overwritten. This can be useful for positioning a media element to the edge of the Flyout, or for fully controlling the
-Flyout's width.
+<flyoutMeta.examples.customStyling.description />
 
-<ComponentStory story={flyoutStoryCustomStyling} />
+<ComponentStory story={flyoutMeta.examples.customStyling.story} />

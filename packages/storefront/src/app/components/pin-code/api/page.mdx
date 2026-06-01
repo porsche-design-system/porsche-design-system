@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { pinCodeMeta } from '@/app/components/pin-code/pin-code.meta';
 
 export const metadata = {
   title: 'Pin Code - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
 
-<ComponentApi tagName="p-pin-code" />
+<ComponentApi api={pinCodeMeta.api} />

@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
-import { linkStoryFrameworkRouting, linkStoryIcon } from '@/app/components/link/link.stories';
+import { linkMeta } from '@/app/components/link/link.meta';
 
 export const metadata = {
   title: 'Link - Porsche Design System',
@@ -10,19 +10,16 @@ export const metadata = {
 
 # Link <ComponentStatus tagName="p-link"></ComponentStatus>
 
-<TableOfContents headings={['Framework routing (anchor nesting)', 'Link with specific icon']} />
+<TableOfContents headings={[linkMeta.examples.frameworkRouting.name, linkMeta.examples.icon.name]} />
 
-## Framework routing (anchor nesting)
+## {linkMeta.examples.frameworkRouting.name}
 
-To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the
-component.
+<linkMeta.examples.frameworkRouting.description />
 
-<ComponentStory story={linkStoryFrameworkRouting} />
+<ComponentStory story={linkMeta.examples.frameworkRouting.story} />
 
-## Link with specific icon
+## {linkMeta.examples.icon.name}
 
-If an icon needs to be implemented, just set another predefined icon. Per default, all icons are fetched from the
-Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted
-somewhere else, just set the whole icon path to the `iconSource` prop.
+<linkMeta.examples.icon.description />
 
-<ComponentStory story={linkStoryIcon} />
+<ComponentStory story={linkMeta.examples.icon.story} />

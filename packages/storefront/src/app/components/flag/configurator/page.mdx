@@ -1,6 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from '@/components/playground/Configurator';
-import { flagStory } from '@/app/components/flag/flag.stories';
+import { flagMeta } from '@/app/components/flag/flag.meta';
 
 export const metadata = {
   title: 'Flag - Porsche Design System',
@@ -10,7 +10,6 @@ export const metadata = {
 
 # Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
 
-Alongside icons, colors and typography, are flags a fundamental part of the Porsche design language. As universally
-understood symbols, they enable rapid visual communication and a seamless user experience.
+<flagMeta.introduction />
 
-<Configurator tagName="p-flag" story={flagStory} />
+<Configurator tagName="p-flag" story={flagMeta.configurator.story} />
