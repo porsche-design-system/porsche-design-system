@@ -33,7 +33,7 @@ import { POPOVER_SAFE_ZONE } from './popover-utils';
 /**
  * @css-variable {"name": "--p-popover-max-w", "description": "Defines the max content width. Overrides the `maxWidth` property when set.", "defaultValue": ""}
  */
-const cssMaxWidth = '--p-popover-max-width';
+const cssMaxWidth = '--p-popover-max-w';
 
 export const getComponentCss = (): string => {
   const shadowColor = 'rgba(0,0,0,0.3)';
