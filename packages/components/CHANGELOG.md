@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Emotion`, `Vanilla Extract` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
   - `fontPorscheNextZhHans`, `fontPorscheNextZhHant`, `fontPorscheNextJa`, `fontPorscheNextKo`: CJK `font-family` tokens
   - `getCJKFontFamilyStyle()`: returns `:lang()` selectors to auto-detect CJK content
+- `Popover`: added `--p-popover-max-w` CSS variable to allow customizing the maximum width of the popover content
 
 ### Changed
 
