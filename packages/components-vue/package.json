@@ -13,7 +13,7 @@
     "build:subPackages:lib": "npx rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
     "build:subPackages:tailwindcss": "TARGET=./dist/vue-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:subPackages:vanilla-extract": "TARGET=./dist/vue-wrapper/vanilla-extract && rm -rf $TARGET && cp -r ../styles/projects/vanilla-extract/dist $TARGET",
-    "build:subPackages:stylesheets": "TARGET=./dist/vue-wrapper/stylesheets && rm -rf $TARGET && cp -r ../styles/projects/stylesheets/dist $TARGET",
+    "build:subPackages:stylesheets": "TARGET=./dist/vue-wrapper/stylesheets && rm -rf $TARGET && cp -r ../components/projects/stylesheets/dist $TARGET",
     "build:subPackages:typings": "npm run build:subPackages:typings:jsdom-polyfill && npm run build:subPackages:typings:partials && npm run build:subPackages:typings:testing && npm run build:subPackages:typings:tokens && npm run build:subPackages:typings:emotion && npm run build:subPackages:typings:vanilla-extract && npm run build:subPackages:typings:ag-grid && npm run build:subPackages:typings:meta",
     "build:subPackages:typings:jsdom-polyfill": "tsc projects/vue-wrapper/src/jsdom-polyfill/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/jsdom-polyfill --types node --ignoreConfig",
     "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials/esm --types node --skipLibCheck true --ignoreConfig",

@@ -1,9 +1,9 @@
 # AGENTS.md — Stylesheets Package
 
 > This file provides context for AI coding assistants working in
-> `packages/styles/projects/stylesheets/`.
+> `packages/components/projects/stylesheets/`.
 > See the root [`AGENTS.md`](../../../../AGENTS.md) and the
-> [styles AGENTS.md](../../AGENTS.md) for broader guidance.
+> [components AGENTS.md](../../AGENTS.md) for broader guidance.
 
 ## Overview
 

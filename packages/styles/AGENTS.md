@@ -11,7 +11,6 @@ This package contains the publishable PDS style libraries and the local demo app
 
 ```text
 packages/styles/
-├── projects/stylesheets/      # Global styles: meta (single source of truth) + generated global CSS
 ├── projects/tailwindcss/      # Tailwind package
 ├── projects/scss/             # SCSS package
 ├── projects/emotion/          # Emotion package
@@ -40,7 +39,7 @@ npm run test:vrt:styles
 - Do not edit generated `dist/` output.
 - When possible, make changes in the relevant style target package rather than patching the demo only.
 - Keep naming and token usage aligned across style targets unless a package intentionally exposes a target-specific API.
-- Treat `projects/stylesheets` as the single source of truth for the global styles: its meta (`src/`) is authored by hand, the build scripts (`scripts/`) generate `variables.css`, `color-scheme.css`, `normalize.css`, `legacy-radius.css` and `font-face.css` from this meta, and the storefront renders the CSS variable / color-scheme docs from it. Add or change CSS variables in the meta, not directly in the build scripts.
+- The global styles (single source of truth for `variables.css`, `color-scheme.css`, `normalize.css`, `legacy-radius.css` and `font-face.css`) now live in [`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). Add or change CSS variables in that package's meta, not directly in the build scripts.
 
 ## Testing Expectations
 
