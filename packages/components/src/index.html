@@ -1484,35 +1484,38 @@
         <p-pin-code class="w-full" label="Some label" disabled="true"></p-pin-code>
       </div>
       <div data-card="radio-group">
-        <p-radio-group class="self-start" name="options" value="b" label="Some label">
+        <p-radio-group class="self-start" name="options1" value="b" label="Some label">
+          <p-popover slot="label-after">Some label</p-popover>
+          <p-radio-group-option value="a" label="Option A">
+            <p-popover slot="label-after">Some label</p-popover>
+          </p-radio-group-option>
+          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
+          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
+        </p-radio-group>
+        <p-radio-group class="self-start" name="options2" value="b" label="Some label" loading="true">
           <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
           <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
           <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
           <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
           <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
         </p-radio-group>
-        <p-radio-group class="self-start" name="options" value="b" label="Some label" loading="true">
+        <p-radio-group class="self-start" name="options3" value="b" label="Some label" state="success" message="Some message.">
           <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
           <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
           <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
           <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
           <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
         </p-radio-group>
-        <p-radio-group class="self-start" name="options" value="b" label="Some label" state="success" message="Some message.">
+        <p-radio-group class="self-start" name="options4" value="b" label="Some label" state="error" message="Some error.">
           <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
           <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
           <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
           <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
           <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
         </p-radio-group>
-        <p-radio-group class="self-start" name="options" value="b" label="Some label" state="error" message="Some error.">
-          <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
-          <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
-          <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
-          <p-radio-group-option value="d" label="Option D" loading="true"></p-radio-group-option>
-          <p-radio-group-option value="e" label="Option E" disabled="true"></p-radio-group-option>
-        </p-radio-group>
-        <p-radio-group class="self-start" name="options" value="b" label="Some label" disabled="true">
+        <p-radio-group class="self-start" name="options5" value="b" label="Some label" disabled="true">
           <p-radio-group-option value="a" label="Option A"></p-radio-group-option>
           <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
           <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
