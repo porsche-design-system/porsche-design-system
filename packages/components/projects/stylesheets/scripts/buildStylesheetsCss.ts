@@ -6,7 +6,7 @@ import { globalStylesMeta, renderCss } from '../src/index';
 // Each entry provides the published `file` name and the `meta` (`CssNode` tree)
 // to render, so a single loop replaces the previously duplicated per-file scripts.
 // Note: `font-face.css` is intentionally not handled here (see buildFontFaceCss.ts).
-export const buildGlobalStylesCss = async (): Promise<void> => {
+export const buildStylesheetsCss = async (): Promise<void> => {
   const targetPath = './dist';
   fs.mkdirSync(targetPath, { recursive: true });
 
@@ -21,5 +21,5 @@ export const buildGlobalStylesCss = async (): Promise<void> => {
 };
 
 (async () => {
-  await buildGlobalStylesCss();
+  await buildStylesheetsCss();
 })();
