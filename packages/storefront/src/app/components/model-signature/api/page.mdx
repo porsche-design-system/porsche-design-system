@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { modelSignatureMeta } from '@/app/components/model-signature/model-signature.meta';
 
 export const metadata = {
   title: 'Model Signature - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Model Signature <ComponentStatus tagName="p-model-signature"></ComponentStatus>
 
-<ComponentApi tagName="p-model-signature" />
+<ComponentApi api={modelSignatureMeta.api} />

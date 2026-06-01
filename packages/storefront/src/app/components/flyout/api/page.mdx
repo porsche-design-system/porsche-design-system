@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { flyoutMeta } from '@/app/components/flyout/flyout.meta';
 
 export const metadata = {
   title: 'Flyout - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Flyout <ComponentStatus tagName="p-flyout"></ComponentStatus>
 
-<ComponentApi tagName="p-flyout" />
+<ComponentApi api={flyoutMeta.api} />

@@ -11,7 +11,7 @@ import { AccordionUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-
     <p-accordion [open]="isOpen2" (update)="onUpdate2($event)">
       <p-heading slot="summary" tag="h3" size="small">{{ summary }}</p-heading>
       <p-text>{{ content }}</p-text>
-    </p-accordion>
+    </p-accordion> 
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

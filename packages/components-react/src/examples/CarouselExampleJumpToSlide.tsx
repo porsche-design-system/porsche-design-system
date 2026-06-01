@@ -29,11 +29,13 @@ export const CarouselExampleJumpToSlidePage = () => {
         <div style={slideStyle}>Slide 3</div>
       </PCarousel>
 
-      {Array.from(Array(3)).map((_, i) => (
-        <PButton key={i} type="button" onClick={onButtonClick} disabled={activeSlideIndex === i}>
-          {i + 1}
-        </PButton>
-      ))}
+      <div className="flex gap-fluid-sm mt-fluid-sm">
+        {Array.from(Array(3)).map((_, i) => (
+          <PButton key={i} type="button" onClick={onButtonClick} disabled={activeSlideIndex === i}>
+            {i + 1}
+          </PButton>
+        ))}
+      </div>
     </>
   );
 };

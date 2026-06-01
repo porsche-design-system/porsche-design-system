@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { iconMeta } from '@/app/components/icon/icon.meta';
 
 export const metadata = {
   title: 'Icon - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Icon <ComponentStatus tagName="p-icon"></ComponentStatus>
 
-<ComponentApi tagName="p-icon" />
+<ComponentApi api={iconMeta.api} />

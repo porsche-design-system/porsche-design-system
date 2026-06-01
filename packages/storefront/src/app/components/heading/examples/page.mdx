@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { headingStoryCustomColor, headingStorySemantics } from '@/app/components/heading/heading.stories';
 import { ComponentStory } from '@/components/playground/ComponentStory';
+import { headingMeta } from '@/app/components/heading/heading.meta';
 
 export const metadata = {
   title: 'Heading - Porsche Design System',
@@ -10,16 +10,16 @@ export const metadata = {
 
 # Heading <ComponentStatus tagName="p-heading"></ComponentStatus>
 
-<TableOfContents headings={['Semantics', 'Color']} />
+<TableOfContents headings={[headingMeta.examples.semantics.name, headingMeta.examples.color.name]} />
 
-## Semantics
+## {headingMeta.examples.semantics.name}
 
-To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+<headingMeta.examples.semantics.description />
 
-<ComponentStory story={headingStorySemantics} />
+<ComponentStory story={headingMeta.examples.semantics.story} />
 
-## Color
+## {headingMeta.examples.color.name}
 
-Predefined theme-based colors are available, but `inherit` can also be used to define a custom color.
+<headingMeta.examples.color.description />
 
-<ComponentStory story={headingStoryCustomColor} />
+<ComponentStory story={headingMeta.examples.color.story} />

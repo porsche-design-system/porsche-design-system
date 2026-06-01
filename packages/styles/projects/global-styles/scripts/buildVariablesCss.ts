@@ -42,6 +42,10 @@ import {
   easeInOut,
   easeOut,
   fontPorscheNext,
+  fontPorscheNextJa,
+  fontPorscheNextKo,
+  fontPorscheNextZhHans,
+  fontPorscheNextZhHant,
   fontWeightBold,
   fontWeightNormal,
   fontWeightSemibold,
@@ -123,6 +127,7 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-color-info-frosted-soft: ${colorInfoFrostedSoft};
 
   --p-font-porsche-next: ${fontPorscheNext};
+  --p-font-sans: var(--p-font-porsche-next);
 
   --p-font-weight-normal: ${fontWeightNormal};
   --p-font-weight-semibold: ${fontWeightSemibold};
@@ -180,6 +185,31 @@ export const buildVariablesCss = async (): Promise<void> => {
   --p-duration-md: ${durationMd};
   --p-duration-lg: ${durationLg};
   --p-duration-xl: ${durationXl};
+}
+
+/* Simplified Chinese */
+:lang(zh-Hans),
+:lang(zh-CN),
+:lang(zh-SG) {
+  --p-font-porsche-next: ${fontPorscheNextZhHans};
+}
+
+/* Traditional Chinese */
+:lang(zh-Hant),
+:lang(zh-TW),
+:lang(zh-HK),
+:lang(zh-MO) {
+  --p-font-porsche-next: ${fontPorscheNextZhHant};
+}
+
+/* Japanese */
+:lang(ja) {
+  --p-font-porsche-next: ${fontPorscheNextJa};
+}
+
+/* Korean */
+:lang(ko) {
+  --p-font-porsche-next: ${fontPorscheNextKo};
 }`;
 
   const targetPath = './dist';

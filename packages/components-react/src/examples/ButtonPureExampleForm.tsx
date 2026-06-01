@@ -12,7 +12,7 @@ export const ButtonPureExampleFormPage = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex gap-fluid-sm">
         <PButtonPure name="option" value="A" type="submit">
           Button A
         </PButtonPure>

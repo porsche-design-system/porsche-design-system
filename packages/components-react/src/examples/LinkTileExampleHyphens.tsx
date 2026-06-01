@@ -24,6 +24,7 @@ export const LinkTileExampleHyphensPage = () => {
         compact={true}
         size="inherit"
         style={{ colorScheme: 'dark', maxWidth: '400px', fontSize: '45px', hyphens }}
+        className="mt-fluid-sm"
       >
         <img src="http://localhost:3002/lights.jpg" alt="Some image description" />
       </PLinkTile>

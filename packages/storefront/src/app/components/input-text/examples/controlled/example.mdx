@@ -1,0 +1,19 @@
+import { Notification } from '@/components/common/Notification';
+
+In some cases you may want to fully control the input value (for example to limit or validate user input). In frameworks
+like React, native `<input />` elements behave as controlled components when a `value` is provided. The browser does not
+update the displayed value directly, it only changes when the framework state changes.
+
+Our `p-input-*` components currently do not block user-driven updates of the underlying native `<input>`. Therefore,
+when using them in a controlled setup, you must manually overwrite the host’s value inside the `input` event handler to
+keep it in sync with your state.
+
+We are aware of this limitation and may improve the framework integration in the future. You can find a detailed
+explanation here: [#4202](https://github.com/porsche-design-system/porsche-design-system/issues/4202)
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  We strongly discourage preventing user input. This can feel broken and lead to confusion or frustration. Instead,
+  validate on `input` and provide clear feedback. Use the `state` and `message` props to explain what is allowed and why
+  a value is invalid.
+</Notification>
+

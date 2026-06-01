@@ -2,6 +2,7 @@
 @use 'color';
 
 @mixin -prose-heading($size, $weight) {
+  @include font.cjk-font-family;
   font: $weight $size / font.$leading-normal font.$font-porsche-next;
   color: color.$color-primary;
 }

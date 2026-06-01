@@ -1,12 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
-import {
-  displayStoryColorInherit,
-  displayStorySemantics,
-  displayStorySizeInherit,
-  displayStorySizeResponsive,
-} from '@/app/components/display/display.stories';
+import { displayMeta } from '@/app/components/display/display.meta';
 
 export const metadata = {
   title: 'Display - Porsche Design System',
@@ -15,27 +10,28 @@ export const metadata = {
 
 # Display <ComponentStatus tagName="p-display"></ComponentStatus>
 
-<TableOfContents headings={['Size', 'Semantics', 'Color']} />
+<TableOfContents
+  headings={[displayMeta.examples.size.name, displayMeta.examples.semantics.name, displayMeta.examples.color.name]}
+/>
 
-## Size
+## {displayMeta.examples.size.name}
 
-There are predefined fluid text sizes for the component which should cover most use cases. If a specific text size is
-needed, the size can be set to `inherit` to specify the text size from outside.
+<displayMeta.examples.size.description />
 
-<ComponentStory story={displayStorySizeInherit} />
+<ComponentStory story={displayMeta.examples.size.story} />
 
-### Responsive
+### {displayMeta.examples.sizeResponsive.name}
 
-<ComponentStory story={displayStorySizeResponsive} />
+<ComponentStory story={displayMeta.examples.sizeResponsive.story} />
 
-## Semantics
+## {displayMeta.examples.semantics.name}
 
-To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+<displayMeta.examples.semantics.description />
 
-<ComponentStory story={displayStorySemantics} />
+<ComponentStory story={displayMeta.examples.semantics.story} />
 
-## Color
+## {displayMeta.examples.color.name}
 
-Predefined theme-based colors are available, but `inherit` can also be used to define a custom color.
+<displayMeta.examples.color.description />
 
-<ComponentStory story={displayStoryColorInherit} />
+<ComponentStory story={displayMeta.examples.color.story} />

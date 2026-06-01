@@ -6,14 +6,14 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   template: `
     <p-inline-notification
       [heading]="'Some heading'"
-      [headingTag]="'h4'"
+      [headingTag]="'h3'"
       [description]="'Some description.'"
       [actionLabel]="'Retry'"
       [actionIcon]="'reset'"
       [actionLoading]="isLoading"
       (action)="onAction()"
     ></p-inline-notification>
-    <button type="button" (click)="onAction()">Reset \`actionLoading\`</button>
+    <p-button [type]="'button'" [compact]="true" (click)="onAction()">Reset \`actionLoading\`</p-button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

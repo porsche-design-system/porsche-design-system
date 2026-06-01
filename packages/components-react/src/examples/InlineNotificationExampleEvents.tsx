@@ -1,4 +1,4 @@
-import { PInlineNotification } from '@porsche-design-system/components-react';
+import { PButton, PInlineNotification } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
 export const InlineNotificationExampleEventsPage = () => {
@@ -8,13 +8,13 @@ export const InlineNotificationExampleEventsPage = () => {
 
   return (
     <>
-      <button type="button" onClick={onShow}>
+      <PButton type="button" compact={true} onClick={onShow}>
         Show Inline Notification
-      </button>
+      </PButton>
       {isActive && (
         <PInlineNotification
           heading="Some heading"
-          headingTag="h4"
+          headingTag="h3"
           description="Some description."
           onDismiss={onDismiss}
         />

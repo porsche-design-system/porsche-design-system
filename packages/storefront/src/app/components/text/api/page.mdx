@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { textMeta } from '@/app/components/text/text.meta';
 
 export const metadata = {
   title: 'Text - Porsche Design System',
@@ -8,4 +9,4 @@ export const metadata = {
 
 # Text <ComponentStatus tagName="p-text"></ComponentStatus>
 
-<ComponentApi tagName="p-text" />
+<ComponentApi api={textMeta.api} />

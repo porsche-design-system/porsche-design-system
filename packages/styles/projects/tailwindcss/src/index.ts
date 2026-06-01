@@ -113,6 +113,10 @@ import {
   easeInOut,
   easeOut,
   fontPorscheNext,
+  fontPorscheNextJa,
+  fontPorscheNextKo,
+  fontPorscheNextZhHans,
+  fontPorscheNextZhHant,
   fontWeightBold,
   fontWeightNormal,
   fontWeightSemibold,
@@ -156,6 +160,77 @@ import {
 } from '@porsche-design-system/tokens';
 
 export const getTailwindcssTheme = () => {
+  // Fallback variable assignments for browsers without `light-dark()` support.
+  // Used both for the `:root` default and inside `@utility scheme-*` blocks so
+  // that Tailwind applies its configured prefix (e.g. `tw:scheme-dark`).
+  const colorLightVars = `--_color-focus-dynamic: ${colorFocusLight};
+--_color-canvas-dynamic: ${colorCanvasLight};
+--_color-surface-dynamic: ${colorSurfaceLight};
+--_color-frosted-dynamic: ${colorFrostedLight};
+--_color-frosted-soft-dynamic: ${colorFrostedSoftLight};
+--_color-frosted-strong-dynamic: ${colorFrostedStrongLight};
+--_color-backdrop-dynamic: ${colorBackdropLight};
+--_color-contrast-lower-dynamic: ${colorContrastLowerLight};
+--_color-contrast-low-dynamic: ${colorContrastLowLight};
+--_color-contrast-medium-dynamic: ${colorContrastMediumLight};
+--_color-contrast-high-dynamic: ${colorContrastHighLight};
+--_color-contrast-higher-dynamic: ${colorContrastHigherLight};
+--_color-primary-dynamic: ${colorPrimaryLight};
+--_color-success-dynamic: ${colorSuccessLight};
+--_color-success-low-dynamic: ${colorSuccessLowLight};
+--_color-success-medium-dynamic: ${colorSuccessMediumLight};
+--_color-success-frosted-dynamic: ${colorSuccessFrostedLight};
+--_color-success-frosted-soft-dynamic: ${colorSuccessFrostedSoftLight};
+--_color-warning-dynamic: ${colorWarningLight};
+--_color-warning-low-dynamic: ${colorWarningLowLight};
+--_color-warning-medium-dynamic: ${colorWarningMediumLight};
+--_color-warning-frosted-dynamic: ${colorWarningFrostedLight};
+--_color-warning-frosted-soft-dynamic: ${colorWarningFrostedSoftLight};
+--_color-error-dynamic: ${colorErrorLight};
+--_color-error-low-dynamic: ${colorErrorLowLight};
+--_color-error-medium-dynamic: ${colorErrorMediumLight};
+--_color-error-frosted-dynamic: ${colorErrorFrostedLight};
+--_color-error-frosted-soft-dynamic: ${colorErrorFrostedSoftLight};
+--_color-info-dynamic: ${colorInfoLight};
+--_color-info-low-dynamic: ${colorInfoLowLight};
+--_color-info-medium-dynamic: ${colorInfoMediumLight};
+--_color-info-frosted-dynamic: ${colorInfoFrostedLight};
+--_color-info-frosted-soft-dynamic: ${colorInfoFrostedSoftLight};`;
+
+  const colorDarkVars = `--_color-focus-dynamic: ${colorFocusDark};
+--_color-canvas-dynamic: ${colorCanvasDark};
+--_color-surface-dynamic: ${colorSurfaceDark};
+--_color-frosted-dynamic: ${colorFrostedDark};
+--_color-frosted-soft-dynamic: ${colorFrostedSoftDark};
+--_color-frosted-strong-dynamic: ${colorFrostedStrongDark};
+--_color-backdrop-dynamic: ${colorBackdropDark};
+--_color-contrast-lower-dynamic: ${colorContrastLowerDark};
+--_color-contrast-low-dynamic: ${colorContrastLowDark};
+--_color-contrast-medium-dynamic: ${colorContrastMediumDark};
+--_color-contrast-high-dynamic: ${colorContrastHighDark};
+--_color-contrast-higher-dynamic: ${colorContrastHigherDark};
+--_color-primary-dynamic: ${colorPrimaryDark};
+--_color-success-dynamic: ${colorSuccessDark};
+--_color-success-low-dynamic: ${colorSuccessLowDark};
+--_color-success-medium-dynamic: ${colorSuccessMediumDark};
+--_color-success-frosted-dynamic: ${colorSuccessFrostedDark};
+--_color-success-frosted-soft-dynamic: ${colorSuccessFrostedSoftDark};
+--_color-warning-dynamic: ${colorWarningDark};
+--_color-warning-low-dynamic: ${colorWarningLowDark};
+--_color-warning-medium-dynamic: ${colorWarningMediumDark};
+--_color-warning-frosted-dynamic: ${colorWarningFrostedDark};
+--_color-warning-frosted-soft-dynamic: ${colorWarningFrostedSoftDark};
+--_color-error-dynamic: ${colorErrorDark};
+--_color-error-low-dynamic: ${colorErrorLowDark};
+--_color-error-medium-dynamic: ${colorErrorMediumDark};
+--_color-error-frosted-dynamic: ${colorErrorFrostedDark};
+--_color-error-frosted-soft-dynamic: ${colorErrorFrostedSoftDark};
+--_color-info-dynamic: ${colorInfoDark};
+--_color-info-low-dynamic: ${colorInfoLowDark};
+--_color-info-medium-dynamic: ${colorInfoMediumDark};
+--_color-info-frosted-dynamic: ${colorInfoFrostedDark};
+--_color-info-frosted-soft-dynamic: ${colorInfoFrostedSoftDark};`;
+
   return `@theme {
   /* Reset */
   --breakpoint-*: initial;
@@ -168,43 +243,48 @@ export const getTailwindcssTheme = () => {
   --color-black: #000;
   --color-white: #fff;
 
-  --color-focus: ${colorFocus};
-  --color-canvas: ${colorCanvas};
-  --color-surface: ${colorSurface};
-  --color-frosted: ${colorFrosted};
-  --color-frosted-soft: ${colorFrostedSoft};
-  --color-frosted-strong: ${colorFrostedStrong};
-  --color-backdrop: ${colorBackdrop};
-  --color-contrast-lower: ${colorContrastLower};
-  --color-contrast-low: ${colorContrastLow};
-  --color-contrast-medium: ${colorContrastMedium};
-  --color-contrast-high: ${colorContrastHigh};
-  --color-contrast-higher: ${colorContrastHigher};
-  --color-primary: ${colorPrimary};
-  --color-success: ${colorSuccess};
-  --color-success-low: ${colorSuccessLow};
-  --color-success-medium: ${colorSuccessMedium};
-  --color-success-frosted: ${colorSuccessFrosted};
-  --color-success-frosted-soft: ${colorSuccessFrostedSoft};
-  --color-warning: ${colorWarning};
-  --color-warning-low: ${colorWarningLow};
-  --color-warning-medium: ${colorWarningMedium};
-  --color-warning-frosted: ${colorWarningFrosted};
-  --color-warning-frosted-soft: ${colorWarningFrostedSoft};
-  --color-error: ${colorError};
-  --color-error-low: ${colorErrorLow};
-  --color-error-medium: ${colorErrorMedium};
-  --color-error-frosted: ${colorErrorFrosted};
-  --color-error-frosted-soft: ${colorErrorFrostedSoft};
-  --color-info: ${colorInfo};
-  --color-info-low: ${colorInfoLow};
-  --color-info-medium: ${colorInfoMedium};
-  --color-info-frosted: ${colorInfoFrosted};
-  --color-info-frosted-soft: ${colorInfoFrostedSoft};
+  --color-focus: var(--_color-focus-dynamic, ${colorFocus});
+  --color-canvas: var(--_color-canvas-dynamic, ${colorCanvas});
+  --color-surface: var(--_color-surface-dynamic, ${colorSurface});
+  --color-frosted: var(--_color-frosted-dynamic, ${colorFrosted});
+  --color-frosted-soft: var(--_color-frosted-soft-dynamic, ${colorFrostedSoft});
+  --color-frosted-strong: var(--_color-frosted-strong-dynamic, ${colorFrostedStrong});
+  --color-backdrop: var(--_color-backdrop-dynamic, ${colorBackdrop});
+  --color-contrast-lower: var(--_color-contrast-lower-dynamic, ${colorContrastLower});
+  --color-contrast-low: var(--_color-contrast-low-dynamic, ${colorContrastLow});
+  --color-contrast-medium: var(--_color-contrast-medium-dynamic, ${colorContrastMedium});
+  --color-contrast-high: var(--_color-contrast-high-dynamic, ${colorContrastHigh});
+  --color-contrast-higher: var(--_color-contrast-higher-dynamic, ${colorContrastHigher});
+  --color-primary: var(--_color-primary-dynamic, ${colorPrimary});
+  --color-success: var(--_color-success-dynamic, ${colorSuccess});
+  --color-success-low: var(--_color-success-low-dynamic, ${colorSuccessLow});
+  --color-success-medium: var(--_color-success-medium-dynamic, ${colorSuccessMedium});
+  --color-success-frosted: var(--_color-success-frosted-dynamic, ${colorSuccessFrosted});
+  --color-success-frosted-soft: var(--_color-success-frosted-soft-dynamic, ${colorSuccessFrostedSoft});
+  --color-warning: var(--_color-warning-dynamic, ${colorWarning});
+  --color-warning-low: var(--_color-warning-low-dynamic, ${colorWarningLow});
+  --color-warning-medium: var(--_color-warning-medium-dynamic, ${colorWarningMedium});
+  --color-warning-frosted: var(--_color-warning-frosted-dynamic, ${colorWarningFrosted});
+  --color-warning-frosted-soft: var(--_color-warning-frosted-soft-dynamic, ${colorWarningFrostedSoft});
+  --color-error: var(--_color-error-dynamic, ${colorError});
+  --color-error-low: var(--_color-error-low-dynamic, ${colorErrorLow});
+  --color-error-medium: var(--_color-error-medium-dynamic, ${colorErrorMedium});
+  --color-error-frosted: var(--_color-error-frosted-dynamic, ${colorErrorFrosted});
+  --color-error-frosted-soft: var(--_color-error-frosted-soft-dynamic, ${colorErrorFrostedSoft});
+  --color-info: var(--_color-info-dynamic, ${colorInfo});
+  --color-info-low: var(--_color-info-low-dynamic, ${colorInfoLow});
+  --color-info-medium: var(--_color-info-medium-dynamic, ${colorInfoMedium});
+  --color-info-frosted: var(--_color-info-frosted-dynamic, ${colorInfoFrosted});
+  --color-info-frosted-soft: var(--_color-info-frosted-soft-dynamic, ${colorInfoFrostedSoft});
 
   /* Typography */
-  --font-porsche-next: ${fontPorscheNext};
-  --font-sans: var(--font-porsche-next);
+
+  /*
+    This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next).
+    By pointing it to our dynamic variable, we create a stable link.
+  */
+  --font-porsche-next: var(--_font-porsche-next-dynamic);
+  --font-sans: --theme(--font-porsche-next);
 
   --font-weight-normal: ${fontWeightNormal};
   --font-weight-semibold: ${fontWeightSemibold};
@@ -279,11 +359,11 @@ export const getTailwindcssTheme = () => {
 
   /* Shadow */
   --shadow-sm: ${shadowSm};
-  --shadow-low: var(--shadow-sm); /* alias (deprecated) */
+  --shadow-low: --theme(--shadow-sm); /* alias (deprecated) */
   --shadow-md: ${shadowMd};
-  --shadow-medium: var(--shadow-md); /* alias (deprecated) */
+  --shadow-medium: --theme(--shadow-md); /* alias (deprecated) */
   --shadow-lg: ${shadowLg};
-  --shadow-high: var(--shadow-lg); /* alias (deprecated) */
+  --shadow-high: --theme(--shadow-lg); /* alias (deprecated) */
 
   /* Outline */
   --default-outline-width: 2px;
@@ -296,16 +376,16 @@ export const getTailwindcssTheme = () => {
 
   --default-transition-duration: ${durationSm};
   --transition-duration-sm: ${durationSm};
-  --transition-duration-short: var(--transition-duration-sm); /* alias (deprecated) */
+  --transition-duration-short: --theme(--transition-duration-sm); /* alias (deprecated) */
   --transition-duration-md: ${durationMd};
-  --transition-duration-moderate: var(--transition-duration-md); /* alias (deprecated) */
+  --transition-duration-moderate: --theme(--transition-duration-md); /* alias (deprecated) */
   --transition-duration-lg: ${durationLg};
-  --transition-duration-long: var(--transition-duration-lg); /* alias (deprecated) */
+  --transition-duration-long: --theme(--transition-duration-lg); /* alias (deprecated) */
   --transition-duration-xl: ${durationXl};
-  --transition-duration-very-long: var(--transition-duration-xl); /* alias (deprecated) */
+  --transition-duration-very-long: --theme(--transition-duration-xl); /* alias (deprecated) */
 
   /* Animation */
-  --animate-skeleton: skeleton var(--transition-duration-xl) var(--ease-in-out) infinite;
+  --animate-skeleton: skeleton --theme(--transition-duration-xl) --theme(--ease-in-out) infinite;
 
   @keyframes skeleton {
     from {
@@ -317,116 +397,94 @@ export const getTailwindcssTheme = () => {
   }
 }
 
-@layer theme {
+@layer base {
+  /*
+     Tailwind v4 won't add a prefix to variables defined outside the @theme block.
+     We override the "Bridge Variable". Since the Tailwind theme variable
+     points here, the font will update even if the utility class is prefixed.
+  */
+
+  :root, :host {
+    --_font-porsche-next-dynamic: ${fontPorscheNext};
+  }
+
+  /* Simplified Chinese */
+  :lang(zh-Hans),
+  :lang(zh-CN),
+  :lang(zh-SG) {
+    --_font-porsche-next-dynamic: ${fontPorscheNextZhHans};
+  }
+
+  /* Traditional Chinese */
+  :lang(zh-Hant),
+  :lang(zh-TW),
+  :lang(zh-HK),
+  :lang(zh-MO) {
+    --_font-porsche-next-dynamic: ${fontPorscheNextZhHant};
+  }
+
+  /* Japanese */
+  :lang(ja) {
+    --_font-porsche-next-dynamic: ${fontPorscheNextJa};
+  }
+
+  /* Korean */
+  :lang(ko) {
+    --_font-porsche-next-dynamic: ${fontPorscheNextKo};
+  }
+}
+
+@layer base {
+  /*
+    Fallback for browsers without light-dark() support.
+    The :root rule provides defaults; the @utility scheme-* blocks below
+    handle per-scheme overrides via class selectors. Defining them as utilities
+    (instead of plain class selectors) ensures Tailwind applies its configured
+    prefix (e.g. tw:scheme-dark).
+  */
+
   @supports not (color: light-dark(white, black)) {
-    :root, .scheme-light, .scheme-only-light, .scheme-normal, .scheme-light-dark {
-      --color-focus: ${colorFocusLight};
-      --color-canvas: ${colorCanvasLight};
-      --color-surface: ${colorSurfaceLight};
-      --color-frosted: ${colorFrostedLight};
-      --color-frosted-soft: ${colorFrostedSoftLight};
-      --color-frosted-strong: ${colorFrostedStrongLight};
-      --color-backdrop: ${colorBackdropLight};
-      --color-contrast-lower: ${colorContrastLowerLight};
-      --color-contrast-low: ${colorContrastLowLight};
-      --color-contrast-medium: ${colorContrastMediumLight};
-      --color-contrast-high: ${colorContrastHighLight};
-      --color-contrast-higher: ${colorContrastHigherLight};
-      --color-primary: ${colorPrimaryLight};
-      --color-success: ${colorSuccessLight};
-      --color-success-low: ${colorSuccessLowLight};
-      --color-success-medium: ${colorSuccessMediumLight};
-      --color-success-frosted: ${colorSuccessFrostedLight};
-      --color-success-frosted-soft: ${colorSuccessFrostedSoftLight};
-      --color-warning: ${colorWarningLight};
-      --color-warning-low: ${colorWarningLowLight};
-      --color-warning-medium: ${colorWarningMediumLight};
-      --color-warning-frosted: ${colorWarningFrostedLight};
-      --color-warning-frosted-soft: ${colorWarningFrostedSoftLight};
-      --color-error: ${colorErrorLight};
-      --color-error-low: ${colorErrorLowLight};
-      --color-error-medium: ${colorErrorMediumLight};
-      --color-error-frosted: ${colorErrorFrostedLight};
-      --color-error-frosted-soft: ${colorErrorFrostedSoftLight};
-      --color-info: ${colorInfoLight};
-      --color-info-low: ${colorInfoLowLight};
-      --color-info-medium: ${colorInfoMediumLight};
-      --color-info-frosted: ${colorInfoFrostedLight};
-      --color-info-frosted-soft: ${colorInfoFrostedSoftLight};
+    :root, :host {
+      ${colorLightVars}
     }
+  }
+}
 
-    .scheme-dark, .scheme-only-dark {
-      --color-focus: ${colorFocusDark};
-      --color-canvas: ${colorCanvasDark};
-      --color-surface: ${colorSurfaceDark};
-      --color-frosted: ${colorFrostedDark};
-      --color-frosted-soft: ${colorFrostedSoftDark};
-      --color-frosted-strong: ${colorFrostedStrongDark};
-      --color-backdrop: ${colorBackdropDark};
-      --color-contrast-lower: ${colorContrastLowerDark};
-      --color-contrast-low: ${colorContrastLowDark};
-      --color-contrast-medium: ${colorContrastMediumDark};
-      --color-contrast-high: ${colorContrastHighDark};
-      --color-contrast-higher: ${colorContrastHigherDark};
-      --color-primary: ${colorPrimaryDark};
-      --color-success: ${colorSuccessDark};
-      --color-success-low: ${colorSuccessLowDark};
-      --color-success-medium: ${colorSuccessMediumDark};
-      --color-success-frosted: ${colorSuccessFrostedDark};
-      --color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
-      --color-warning: ${colorWarningDark};
-      --color-warning-low: ${colorWarningLowDark};
-      --color-warning-medium: ${colorWarningMediumDark};
-      --color-warning-frosted: ${colorWarningFrostedDark};
-      --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
-      --color-error: ${colorErrorDark};
-      --color-error-low: ${colorErrorLowDark};
-      --color-error-medium: ${colorErrorMediumDark};
-      --color-error-frosted: ${colorErrorFrostedDark};
-      --color-error-frosted-soft: ${colorErrorFrostedSoftDark};
-      --color-info: ${colorInfoDark};
-      --color-info-low: ${colorInfoLowDark};
-      --color-info-medium: ${colorInfoMediumDark};
-      --color-info-frosted: ${colorInfoFrostedDark};
-      --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
-    }
+@utility scheme-light {
+  @supports not (color: light-dark(white, black)) {
+    ${colorLightVars}
+  }
+}
 
+@utility scheme-only-light {
+  @supports not (color: light-dark(white, black)) {
+    ${colorLightVars}
+  }
+}
+
+@utility scheme-normal {
+  @supports not (color: light-dark(white, black)) {
+    ${colorLightVars}
+  }
+}
+
+@utility scheme-dark {
+  @supports not (color: light-dark(white, black)) {
+    ${colorDarkVars}
+  }
+}
+
+@utility scheme-only-dark {
+  @supports not (color: light-dark(white, black)) {
+    ${colorDarkVars}
+  }
+}
+
+@utility scheme-light-dark {
+  @supports not (color: light-dark(white, black)) {
+    ${colorLightVars}
     @media (prefers-color-scheme: dark) {
-      .scheme-light-dark {
-        --color-focus: ${colorFocusDark};
-        --color-canvas: ${colorCanvasDark};
-        --color-surface: ${colorSurfaceDark};
-        --color-frosted: ${colorFrostedDark};
-        --color-frosted-soft: ${colorFrostedSoftDark};
-        --color-frosted-strong: ${colorFrostedStrongDark};
-        --color-backdrop: ${colorBackdropDark};
-        --color-contrast-lower: ${colorContrastLowerDark};
-        --color-contrast-low: ${colorContrastLowDark};
-        --color-contrast-medium: ${colorContrastMediumDark};
-        --color-contrast-high: ${colorContrastHighDark};
-        --color-contrast-higher: ${colorContrastHigherDark};
-        --color-primary: ${colorPrimaryDark};
-        --color-success: ${colorSuccessDark};
-        --color-success-low: ${colorSuccessLowDark};
-        --color-success-medium: ${colorSuccessMediumDark};
-        --color-success-frosted: ${colorSuccessFrostedDark};
-        --color-success-frosted-soft: ${colorSuccessFrostedSoftDark};
-        --color-warning: ${colorWarningDark};
-        --color-warning-low: ${colorWarningLowDark};
-        --color-warning-medium: ${colorWarningMediumDark};
-        --color-warning-frosted: ${colorWarningFrostedDark};
-        --color-warning-frosted-soft: ${colorWarningFrostedSoftDark};
-        --color-error: ${colorErrorDark};
-        --color-error-low: ${colorErrorLowDark};
-        --color-error-medium: ${colorErrorMediumDark};
-        --color-error-frosted: ${colorErrorFrostedDark};
-        --color-error-frosted-soft: ${colorErrorFrostedSoftDark};
-        --color-info: ${colorInfoDark};
-        --color-info-low: ${colorInfoLowDark};
-        --color-info-medium: ${colorInfoMediumDark};
-        --color-info-frosted: ${colorInfoFrostedDark};
-        --color-info-frosted-soft: ${colorInfoFrostedSoftDark};
-      }
+      ${colorDarkVars}
     }
   }
 }
@@ -451,10 +509,10 @@ export const getTailwindcssTheme = () => {
 /* Grid */
 @utility grid-template {
   --pds-internal-grid-safe-zone: max(22px, 10.625vw - 12px);
-  --_pds-grid-col: minmax(0, var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - var(--spacing-fluid-md))));
+  --_pds-grid-col: minmax(0, var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - --theme(--spacing-fluid-md))));
   display: grid;
   grid-template-columns: [full-start] var(--_pds-grid-col) [wide-start extended-start basic-start narrow-start] repeat(6, minmax(0, 1fr)) [narrow-end basic-end extended-end wide-end] var(--_pds-grid-col) [full-end];
-  gap: var(--spacing-fluid-md);
+  gap: --theme(--spacing-fluid-md);
   min-width: var(--pds-internal-grid-width-min, 320px);
   max-width: var(--pds-internal-grid-width-max, 2560px);
   box-sizing: content-box;
@@ -623,110 +681,110 @@ export const getTailwindcssTheme = () => {
 
 /* Skeleton */
 @utility skeleton {
-  animation: var(--animate-skeleton);
+  animation: --theme(--animate-skeleton);
   display: block;
-  border-radius: var(--radius-sm);
+  border-radius: --theme(--radius-sm);
   background-color: transparent;
-  background-image: linear-gradient(to right, var(--color-frosted) 0%, var(--color-frosted-strong) 50%, var(--color-frosted) 100%);
+  background-image: linear-gradient(to right, --theme(--color-frosted) 0%, --theme(--color-frosted-strong) 50%, --theme(--color-frosted) 100%);
   background-position: 0 0;
   background-size: 200% 100%;
 }
 
 /* Typography: Text */
 @utility prose-text-2xs {
-  font: var(--font-weight-normal) var(--text-2xs) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-2xs) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-xs {
-  font: var(--font-weight-normal) var(--text-xs) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-xs) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-sm {
-  font: var(--font-weight-normal) var(--text-sm) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-sm) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-md {
-  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-md) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-lg {
-  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-lg) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-xl {
-  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-2xl {
-  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-2xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-3xl {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-3xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-4xl {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-4xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-text-5xl {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-5xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 
 /* Typography: Heading */
 @utility prose-heading-2xs {
-  font: var(--font-weight-semibold) var(--text-2xs) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-semibold) --theme(--text-2xs) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-xs {
-  font: var(--font-weight-semibold) var(--text-xs) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-semibold) --theme(--text-xs) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-sm {
-  font: var(--font-weight-semibold) var(--text-sm) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-semibold) --theme(--text-sm) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-md {
-  font: var(--font-weight-normal) var(--text-md) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-md) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-lg {
-  font: var(--font-weight-normal) var(--text-lg) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-lg) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-xl {
-  font: var(--font-weight-normal) var(--text-xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-2xl {
-  font: var(--font-weight-normal) var(--text-2xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-2xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-3xl {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-3xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-4xl {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-4xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-heading-5xl {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-5xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 
 /* Typography: Display */
 @utility prose-display-sm {
-  font: var(--font-weight-normal) var(--text-3xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-3xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-display-md {
-  font: var(--font-weight-normal) var(--text-4xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-4xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }
 @utility prose-display-lg {
-  font: var(--font-weight-normal) var(--text-5xl) / var(--leading-normal) var(--font-porsche-next);
-  color: var(--color-primary);
+  font: --theme(--font-weight-normal) --theme(--text-5xl) / --theme(--leading-normal) --theme(--font-porsche-next);
+  color: --theme(--color-primary);
 }`;
 };
