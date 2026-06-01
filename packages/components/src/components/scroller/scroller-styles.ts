@@ -30,6 +30,9 @@ const cssVarIndicatorTop = '--p-scroller-indicator-top';
  */
 const cssVarIndicatorBottom = '--p-scroller-indicator-bottom';
 
+// internal css variables
+const cssVarFocusRingRadius = '--_p-scroller-focus-ring-radius';
+
 const iconPrev = getInlineSVGBackgroundImage(
   `<path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/>`
 );
@@ -137,7 +140,7 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: `auto minmax(0,1fr) auto`,
       alignItems: 'center',
-      borderRadius: 'inherit',
+      borderRadius: `var(${cssVarFocusRingRadius}, inherit)`,
       '&:has(.scroll:focus-visible)': getFocusBaseStyles(), // delegating the focus ensures mask does not cut off the focus ring
     },
     scroll: {

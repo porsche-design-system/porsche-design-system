@@ -52,7 +52,6 @@ export const getComponentCss = (
   const hasActiveTab = activeTabIndex !== undefined;
   const nthActiveTab = hasActiveTab ? activeTabIndex + 1 : 0; // :nth-child is 1-based
 
-  const radiusRail = hasBackground ? (isCompact ? radiusLg : radiusXl) : isCompact ? radiusLg : radiusXl;
   const radiusButton = hasBackground ? (isCompact ? radiusMd : radiusLg) : isCompact ? radiusLg : radiusXl;
 
   return getCss({
@@ -128,11 +127,12 @@ export const getComponentCss = (
       }),
     },
     scroller: {
+      '--_p-scroller-focus-ring-radius': radiusButton,
       placeSelf: 'flex-start', // ensures scroller doesn't get stretched in x- or y-axis in case the tabs-bar is taller than the scroller (e.g. when placed in flex or grid context)
-      borderRadius: radiusRail,
       ...(hasBackground && {
         background: backgroundMap[background],
         padding: spacingStaticXs,
+        borderRadius: isCompact ? radiusLg : radiusXl, // radius for rail
         ...forcedColorsMediaQuery({
           forcedColorAdjust: 'none',
           outline: '1px solid CanvasText',
