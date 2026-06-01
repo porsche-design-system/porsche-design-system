@@ -31,7 +31,7 @@ import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
 /**
- * @css-variable {"name": "--p-max-content-width", "description": "Defines the max content width. Overrides the `maxWidth` property when set.", "defaultValue": ""}
+ * @css-variable {"name": "--p-popover-max-w", "description": "Defines the max content width. Overrides the `maxWidth` property when set.", "defaultValue": ""}
  */
 const cssMaxWidth = '--p-popover-max-width';
 
