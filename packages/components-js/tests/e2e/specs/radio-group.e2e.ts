@@ -370,6 +370,39 @@ test.describe('keyboard behavior', () => {
   });
 });
 
+test.describe('label-after slot', () => {
+  test('should not select the option when label-after content is clicked', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-radio-group name="options" value="b">
+        <p-radio-group-option value="a" label="Option A">
+          <button type="button" slot="label-after" id="label-after-btn">More info</button>
+        </p-radio-group-option>
+        <p-radio-group-option value="b" label="Option B"></p-radio-group-option>
+        <p-radio-group-option value="c" label="Option C"></p-radio-group-option>
+      </p-radio-group>`
+    );
+    await waitForStencilLifecycle(page);
+
+    const host = getHost(page);
+    await addEventListener(host, 'change');
+
+    await page.locator('#label-after-btn').click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after label-after click').toBe(0);
+    expect(await getRadioGroupValue(page)).toBe('b');
+
+    await getRadioGroupOption(page, 1).evaluate((option) => {
+      option.shadowRoot?.querySelector('label')?.click();
+    });
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'change')).counter, 'after label click').toBe(1);
+    expect(await getRadioGroupValue(page)).toBe('a');
+  });
+});
+
 test.describe('click events', () => {
   test.describe('disabled', () => {
     skipInBrowsers(['webkit'], () => {
