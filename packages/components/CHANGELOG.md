@@ -70,6 +70,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   content ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
 - Added `semibold` alias for Arabic Porsche Next, mapped to `bold` as a fallback since the font only provides `regular`
   and `bold` weights. ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `Radio Group`: Prevent clicks on `label-after` slot from bubbling to the
+  host element ([#4477](https://github.com/porsche-design-system/porsche-design-system/pull/4477))
 
 ## [4.2.0-rc.1] - 2026-05-18
 
