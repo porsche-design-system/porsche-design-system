@@ -88,17 +88,12 @@ color-scheme: light;
 }
 
 /* Simplified Chinese */
-:lang(zh-Hans),
-:lang(zh-CN),
-:lang(zh-SG) {
+:lang(zh-Hans), :lang(zh-CN), :lang(zh-SG) {
 --p-font-porsche-next: 'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* Traditional Chinese */
-:lang(zh-Hant),
-:lang(zh-TW),
-:lang(zh-HK),
-:lang(zh-MO) {
+:lang(zh-Hant), :lang(zh-TW), :lang(zh-HK), :lang(zh-MO) {
 --p-font-porsche-next: 'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -1343,9 +1338,7 @@ exports[`should match snapshot 1`] = `
             "value": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
           },
         ],
-        "selector": ":lang(zh-Hans),
-:lang(zh-CN),
-:lang(zh-SG)",
+        "selector": ":lang(zh-Hans), :lang(zh-CN), :lang(zh-SG)",
       },
       {
         "comment": "Traditional Chinese",
@@ -1355,10 +1348,7 @@ exports[`should match snapshot 1`] = `
             "value": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
           },
         ],
-        "selector": ":lang(zh-Hant),
-:lang(zh-TW),
-:lang(zh-HK),
-:lang(zh-MO)",
+        "selector": ":lang(zh-Hant), :lang(zh-TW), :lang(zh-HK), :lang(zh-MO)",
       },
       {
         "comment": "Japanese",
@@ -1390,21 +1380,18 @@ exports[`should match snapshot 1`] = `
         "declarations": [
           {
             "description": "Private **small** legacy \`border-radius\` for backwards compatibility.",
-            "name": "small",
             "property": "--_p-legacy-radius-small",
             "type": "radius",
             "value": "4px",
           },
           {
             "description": "Private **medium** legacy \`border-radius\` for backwards compatibility.",
-            "name": "medium",
             "property": "--_p-legacy-radius-medium",
             "type": "radius",
             "value": "8px",
           },
           {
             "description": "Private **large** legacy \`border-radius\` for backwards compatibility.",
-            "name": "large",
             "property": "--_p-legacy-radius-large",
             "type": "radius",
             "value": "12px",

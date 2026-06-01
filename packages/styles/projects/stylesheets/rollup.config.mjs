@@ -33,6 +33,7 @@ export default [
           main: 'cjs/index.cjs',
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
+          style: 'index.css',
           sideEffects: false,
           exports: {
             // Default export (JS)
@@ -41,10 +42,11 @@ export default [
               import: './esm/index.mjs',
               default: './cjs/index.cjs',
             },
+            // Granular stylesheet access (e.g. ./index.css, ./variables.css, ./normalize.css)
+            './*': './*',
           },
         },
       }),
     ],
   },
 ];
-

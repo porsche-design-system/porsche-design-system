@@ -6,7 +6,7 @@ import {
   PTableHeadCell,
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
-import type { ColorSchemeClassMeta } from '@porsche-design-system/global-styles-meta';
+import type { ColorSchemeClassMeta } from '@porsche-design-system/stylesheets';
 import type { ReactNode } from 'react';
 import { Code } from '@/components/common/Code';
 

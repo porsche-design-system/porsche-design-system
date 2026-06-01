@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
-import { globalStylesMeta, renderCss } from '@porsche-design-system/global-styles-meta';
 import * as prettier from 'prettier';
+import { globalStylesMeta, renderCss } from '../src/index';
 
 // Generic build step for every stylesheet modeled in `globalStylesMeta`.
 // Each entry provides the published `file` name and the `meta` (`CssNode` tree)
@@ -23,4 +23,3 @@ export const buildGlobalStylesCss = async (): Promise<void> => {
 (async () => {
   await buildGlobalStylesCss();
 })();
-

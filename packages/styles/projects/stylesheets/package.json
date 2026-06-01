@@ -1,25 +1,31 @@
 {
-  "name": "@porsche-design-system/global-styles",
-  "version": "0.0.0",
+  "name": "@porsche-design-system/stylesheets",
   "private": true,
+  "version": "0.0.0",
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
   "style": "./dist/index.css",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "style": "./dist/index.css"
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
     },
     "./*": "./dist/*"
   },
-  "sideEffects": false,
   "files": [
     "./dist/"
   ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "npm run clean:build && npm run build:css && npm run build:font-face && npm run build:index",
-    "build-prod": "npm run clean:build && npm run build:css && npm run build-prod:font-face && npm run build:index",
+    "build": "npm run clean:build && npm run build:package && npm run build:css && npm run build:font-face && npm run build:index",
+    "build-prod": "npm run clean:build && npm run build:package && npm run build:css && npm run build-prod:font-face && npm run build:index",
+    "build:package": "rollup -c rollup.config.mjs",
     "build:css": "tsx scripts/buildGlobalStylesCss.ts",
     "build:font-face": "NODE_ENV=development tsx scripts/buildFontFaceCss.ts",
     "build-prod:font-face": "tsx scripts/buildFontFaceCss.ts",
@@ -31,7 +37,6 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/global-styles-meta": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0",
     "@porsche-design-system/font-face": "0.0.0"
   },
@@ -39,10 +44,12 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
+    "@rollup/plugin-typescript": "*",
     "@types/node": "*",
-    "vitest": "*",
+    "rollup": "*",
+    "typescript": "*",
     "tsx": "*",
-    "typescript": "*"
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

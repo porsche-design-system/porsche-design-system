@@ -35,7 +35,7 @@ const KNOWN_FALSE_POSITIVES: Array<(e: W3CValidationMessage) => boolean> = [
 const filterFalsePositives = (errors: W3CValidationMessage[]): W3CValidationMessage[] =>
   errors.filter((e) => !KNOWN_FALSE_POSITIVES.some((fn) => fn(e)));
 
-describe('W3C CSS validation (global-styles)', () => {
+describe('W3C CSS validation (stylesheets)', () => {
   it.each(cssFiles)(
     '%s should be valid CSS per W3C CSS validator',
     async (file) => {

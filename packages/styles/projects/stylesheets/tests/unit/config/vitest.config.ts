@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     root: resolve(__dirname, '../../../'),
-    include: ['**/*.spec.ts'],
+    include: ['**/tests/unit/specs/**/*.spec.ts'],
     globals: true,
     environment: 'jsdom',
     typecheck: {

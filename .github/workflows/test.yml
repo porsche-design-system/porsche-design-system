@@ -49,7 +49,7 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: npm run test:unit:styles:global-styles
+      - run: npm run test:unit:styles:stylesheets
       - run: npm run test:unit:styles:tailwindcss
       - run: npm run test:unit:styles:scss
       - run: npm run test:unit:styles:emotion
