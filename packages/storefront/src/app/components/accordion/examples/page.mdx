@@ -1,10 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
-import {
-  accordionStoryStickySummary,
-  accordionStoryInteractiveSummary,
-} from '@/app/components/accordion/accordion.stories';
+import { accordionMeta } from '@/app/components/accordion/accordion.meta';
 
 export const metadata = {
   title: 'Accordion - Porsche Design System',
@@ -13,17 +10,18 @@ export const metadata = {
 
 # Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
 
-<TableOfContents headings={['Sticky summary', 'Interactive elements in summary']} />
+<TableOfContents
+  headings={[accordionMeta.examples.stickySummary.name, accordionMeta.examples.interactiveElementsInSummary.name]}
+/>
 
-## Sticky summary
+## {accordionMeta.examples.stickySummary.name}
 
-The summary can be made sticky by adding the experimental property `sticky` to the `p-accordion` tag. The position `top`
-value (default: `0px`) can be overwritten by using the CSS Custom Property `--p-accordion-summary-top`.
+<accordionMeta.examples.stickySummary.description />
 
-<ComponentStory story={accordionStoryStickySummary} />
+<ComponentStory story={accordionMeta.examples.stickySummary.story} />
 
-## Interactive elements in summary
+## {accordionMeta.examples.interactiveElementsInSummary.name}
 
-The summary section supports interactive elements via the `slot="summary-before"` and `slot="summary-after"` attributes.
+<accordionMeta.examples.interactiveElementsInSummary.description />
 
-<ComponentStory story={accordionStoryInteractiveSummary} />
+<ComponentStory story={accordionMeta.examples.interactiveElementsInSummary.story} />

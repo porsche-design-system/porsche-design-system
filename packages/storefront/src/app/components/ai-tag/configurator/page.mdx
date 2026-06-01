@@ -1,7 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { aiTagStory } from '@/app/components/ai-tag/ai-tag.stories';
+import { aiTagMeta } from '@/app/components/ai-tag/ai-tag.meta';
 
 export const metadata = {
   title: 'AI Tag - Porsche Design System',
@@ -11,7 +10,6 @@ export const metadata = {
 
 # AI Tag <ComponentStatus tagName="p-ai-tag"></ComponentStatus>
 
-`p-ai-tag` is used to indicate AI-generated or AI-modified content. It displays a localized and legally compliant AI
-label text (abbreviated or as long-form) combined with an icon.
+<aiTagMeta.introduction />
 
-<Configurator tagName="p-ai-tag" story={aiTagStory} />
+<Configurator tagName="p-ai-tag" story={aiTagMeta.configurator.story} />

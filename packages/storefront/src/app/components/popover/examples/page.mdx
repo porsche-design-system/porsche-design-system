@@ -1,8 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
-import { Notification } from '@/components/common/Notification';
-import { popoverSlottedButtonStory } from '@/app/components/popover/popover.stories';
+import { popoverMeta } from '@/app/components/popover/popover.meta';
 
 export const metadata = {
   title: 'Popover - Porsche Design System',
@@ -11,11 +9,8 @@ export const metadata = {
 
 # Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
 
-<TableOfContents headings={['Slotted button']} />
+## {popoverMeta.examples.slottedButton.name}
 
-## Slotted button
+<popoverMeta.examples.slottedButton.description />
 
-The `p-popover` component can also be used with a **slotted button** via the `button` slot, allowing you to provide a
-custom button element.
-
-<ComponentStory story={popoverSlottedButtonStory} />
+<ComponentStory story={popoverMeta.examples.slottedButton.story} />

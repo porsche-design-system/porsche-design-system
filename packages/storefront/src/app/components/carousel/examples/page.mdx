@@ -1,14 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Notification } from '@/components/common/Notification';
 import { ComponentStory } from '@/components/playground/ComponentStory';
-import { carouselStoryFlexibleWidths, carouselStoryIntl } from '@/app/components/carousel/carousel.stories';
 import { ComponentExample } from '@/components/playground/ComponentExample';
-import {
-  carouselExampleDynamicSlides,
-  carouselExampleFocusOnCenterSlide,
-  carouselExampleJumpToSlide,
-} from '@porsche-design-system/shared/examples';
+import { carouselMeta } from '@/app/components/carousel/carousel.meta';
 
 export const metadata = {
   title: 'Carousel - Porsche Design System',
@@ -19,60 +13,40 @@ export const metadata = {
 
 <TableOfContents
   headings={[
-    'Slides with flexible widths',
-    'Jump to slide (activeSlideIndex)',
-    'Add/remove slides',
-    'Centered Slide and Gradient Customization',
-    'Internationalization (i18n)',
+    carouselMeta.examples.flexibleWidths.name,
+    carouselMeta.examples.jumpToSlide.name,
+    carouselMeta.examples.dynamicSlides.name,
+    carouselMeta.examples.focusOnCenterSlide.name,
+    carouselMeta.examples.intl.name,
   ]}
 />
 
-## Slides with flexible widths
+## {carouselMeta.examples.flexibleWidths.name}
 
-In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
+<carouselMeta.examples.flexibleWidths.description />
 
-<Notification heading="Attention" heading-tag="h3" state="warning">
-  It is <strong>crucial</strong> that each slide has explicit dimensions by specifying their width via CSS.
-</Notification>
+<ComponentStory story={carouselMeta.examples.flexibleWidths.story} />
 
-<ComponentStory story={carouselStoryFlexibleWidths} />
+## {carouselMeta.examples.jumpToSlide.name}
 
-## Jump to slide (activeSlideIndex)
+<carouselMeta.examples.jumpToSlide.description />
 
-To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
+<ComponentExample codeSample={carouselMeta.examples.jumpToSlide.example} />
 
-<ComponentExample codeSample={carouselExampleJumpToSlide} />
+## {carouselMeta.examples.dynamicSlides.name}
 
-## Add/remove slides
+<carouselMeta.examples.dynamicSlides.description />
 
-Slides can be added and removed dynamically.
+<ComponentExample codeSample={carouselMeta.examples.dynamicSlides.example} />
 
-<ComponentExample codeSample={carouselExampleDynamicSlides} />
+## {carouselMeta.examples.focusOnCenterSlide.name}
 
-## Centered Slide and Gradient Customization
+<carouselMeta.examples.focusOnCenterSlide.description />
 
-The carousel centers the active slide and loops through slides individually rather than by page when multiple slides are
-visible. You can control its behavior with the `focusOnCenterSlide` prop to keep the active slide centered, and the
-`trimSpace` prop to manage spacing around the carousel. The `gradientColor` prop allows you to customize the background
-gradient, while the `--p-gradient-color-width` CSS variable gives you precise control over the gradient’s width,
-ensuring a consistent and visually polished design.
+<ComponentExample codeSample={carouselMeta.examples.focusOnCenterSlide.example} />
 
-<ComponentExample codeSample={carouselExampleFocusOnCenterSlide} />
+## {carouselMeta.examples.intl.name}
 
-## Internationalization (i18n)
+<carouselMeta.examples.intl.description />
 
-Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property. It has
-the following defaults:
-
-```ts
-type CarouselInternationalization = {
-  prev: 'Previous slide'; // aria-label of prev button
-  next: 'Next slide'; // aria-label of next button
-  first: 'Go to first slide'; // aria-label of next button when on last slide
-  last: 'Go to last slide'; // aria-label of prev button when on first slide
-  slideLabel: '%s of %s'; // aria-label of each slide as "1 of 6"
-  slide: 'slide'; // aria-roledescription of each slide
-};
-```
-
-<ComponentStory story={carouselStoryIntl} />
+<ComponentStory story={carouselMeta.examples.intl.story} />

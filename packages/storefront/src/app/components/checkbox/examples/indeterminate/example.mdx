@@ -1,0 +1,8 @@
+Mask the visual appearance of a checkbox which has a state in-between checked and unchecked. This is especially useful
+for a checkbox that is used to set the state of a group of checkboxes at once. However, this group might have a mixed
+state. In this case we recommend to use `checked=false` and `indeterminate=true`.
+
+**Note: The `indeterminate` attribute only affects how the checkbox is shown. The current value is hidden from the user,
+but the checkbox still keeps its `checked` state. You can find more details in
+[the specification](https://w3.org/TR/html52/sec-forms.html#dom-htmlinputelement-indeterminate).**
+
