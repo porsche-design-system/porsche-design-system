@@ -1941,7 +1941,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
 @media(min-width:1000px) {
     details > div {
-      grid-column-start: 2;
+      grid-column-start: 3;
     }
 }
 
@@ -2182,7 +2182,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
   }
   details > div {
     grid-area: 2/1/auto/-1;
-    grid-column-start: 2;
+    grid-column-start: 3;
     z-index: 0;
     display: grid;
     opacity: 0;
