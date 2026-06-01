@@ -4,7 +4,9 @@
   </div>
   <div class="label-wrapper">
     <label class="label" id="label" for="radio-group-option"> Some label</label>
-    <slot name="label-after"> </slot>
+    <span class="label-after">
+      <slot name="label-after"> </slot>
+    </span>
   </div>
   <span id="loading" class="loading" role="status"> </span>
 </div>
