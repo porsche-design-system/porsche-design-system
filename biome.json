@@ -120,6 +120,14 @@
   },
   "overrides": [
     {
+      "includes": [
+        "packages/components/src/**",
+        "!packages/components/src/**/*.spec.ts",
+        "!packages/components/src/**/*.spec.tsx"
+      ],
+      "plugins": ["./packages/components/biome-plugins/use-ref-instead-of-var.grit"]
+    },
+    {
       "includes": ["**/*.css", "**/*.scss"],
       "javascript": {
         "formatter": {
