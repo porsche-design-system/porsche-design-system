@@ -23,62 +23,62 @@ export const motionMeta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationSm instead. */
-export const deprecatedMotionDurationShortMeta = {
+export const depreactedMotionDurationShortMeta = {
   name: 'motionDurationShort',
   value: durationSm,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationSm instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationMd instead. */
-export const deprecatedMotionDurationModerateMeta = {
+export const depreactedMotionDurationModerateMeta = {
   name: 'motionDurationModerate',
   value: durationMd,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationMd instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationLg instead. */
-export const deprecatedMotionDurationLongMeta = {
+export const depreactedMotionDurationLongMeta = {
   name: 'motionDurationLong',
   value: durationLg,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationLg instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationXl instead. */
-export const deprecatedMotionDurationVeryLongMeta = {
+export const depreactedMotionDurationVeryLongMeta = {
   name: 'motionDurationVeryLong',
   value: durationXl,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationXl instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead. */
-export const deprecatedMotionEasingBaseMeta = {
+export const depreactedMotionEasingBaseMeta = {
   name: 'motionEasingBase',
   value: easeInOut,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use easeIn instead. */
-export const deprecatedMotionEasingInMeta = {
+export const depreactedMotionEasingInMeta = {
   name: 'motionEasingIn',
   value: easeIn,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use easeIn instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use easeOut instead. */
-export const deprecatedMotionEasingOutMeta = {
+export const depreactedMotionEasingOutMeta = {
   name: 'motionEasingOut',
   value: easeOut,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use easeOut instead.',
 };
 
 export const deprecatedMotionMeta = {
-  motionDurationShort: deprecatedMotionDurationShortMeta,
-  motionDurationModerate: deprecatedMotionDurationModerateMeta,
-  motionDurationLong: deprecatedMotionDurationLongMeta,
-  motionDurationVeryLong: deprecatedMotionDurationVeryLongMeta,
-  motionEasingBase: deprecatedMotionEasingBaseMeta,
-  motionEasingIn: deprecatedMotionEasingInMeta,
-  motionEasingOut: deprecatedMotionEasingOutMeta,
+  motionDurationShort: depreactedMotionDurationShortMeta,
+  motionDurationModerate: depreactedMotionDurationModerateMeta,
+  motionDurationLong: depreactedMotionDurationLongMeta,
+  motionDurationVeryLong: depreactedMotionDurationVeryLongMeta,
+  motionEasingBase: depreactedMotionEasingBaseMeta,
+  motionEasingIn: depreactedMotionEasingInMeta,
+  motionEasingOut: depreactedMotionEasingOutMeta,
 } as const;
 
 // export const deprecatedMotionMeta = [
