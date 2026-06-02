@@ -1,13 +1,14 @@
-import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import {
   colorPrimary,
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
+  ref,
   spacingStaticMd,
   spacingStaticXs,
   typescaleSm,
-} from '../../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import { isListTypeNumbered, isListTypeOrdered, type TextListType } from './text-list-utils';
 
@@ -33,30 +34,30 @@ export const getComponentCss = (type: TextListType): string => {
         }),
       },
       'ol,ul': {
-        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         margin: 0,
-        padding: `var(${cssVariablePaddingTop},0) 0 var(${cssVariablePaddingBottom},0) 0`,
+        padding: `${ref(cssVariablePaddingTop, '0')} 0 ${ref(cssVariablePaddingBottom, '0')} 0`,
         listStyleType: 'none',
-        color: colorPrimary,
+        color: ref(colorPrimary),
       },
       // css selector for text-list-item
       '::slotted(*)': addImportantToEachRule({
-        [cssVariablePaddingTop]: spacingStaticXs, // padding top for nested list
-        [cssVariablePaddingBottom]: spacingStaticMd, // padding bottom for nested list, TODO: in case it's last root list item with a nested list it would result in outer spacing which is not desired
+        [cssVariablePaddingTop]: ref(spacingStaticXs), // padding top for nested list
+        [cssVariablePaddingBottom]: ref(spacingStaticMd), // padding bottom for nested list, TODO: in case it's last root list item with a nested list it would result in outer spacing which is not desired
         [cssVariablePseudoSpace]: isOrderedList
-          ? `var(${cssVariableOrderedGridColumn},1.5rem)`
-          : `var(${cssVariableUnorderedGridColumn},.375rem)`,
+          ? ref(cssVariableOrderedGridColumn, '1.5rem')
+          : ref(cssVariableUnorderedGridColumn, '.375rem'),
         '&::before': isOrderedList
           ? {
               content: `counters(${counter},'.',${
                 isListTypeNumbered(type) ? 'decimal' : 'lower-latin'
-              }) var(${cssVariableOrderedPseudoSuffix},'.')`,
+              }) ${ref(cssVariableOrderedPseudoSuffix, "'.'")}`,
               counterIncrement: counter,
               justifySelf: 'flex-end',
               whiteSpace: 'nowrap',
             }
           : {
-              content: `var(${cssVariableUnorderedPseudoContent},'•')`,
+              content: ref(cssVariableUnorderedPseudoContent, "'•'"),
             },
       }),
     },

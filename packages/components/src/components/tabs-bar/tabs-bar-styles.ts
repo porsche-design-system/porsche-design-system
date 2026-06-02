@@ -1,13 +1,4 @@
 import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  getFocusBaseStyles,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
-import {
   blurFrosted,
   colorCanvas,
   colorFrosted,
@@ -19,25 +10,35 @@ import {
   leadingNormal,
   legacyRadiusSmall,
   radiusFull,
+  ref,
   spacingStaticMd,
   spacingStaticSm,
   spacingStaticXs,
   typescaleMd,
   typescaleSm,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import {
+  addImportantToEachRule,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { animatingAttribute, type TabsBarBackground, type TabsBarSize } from './tabs-bar-utils';
 
 const backgroundMap: Record<Exclude<TabsBarBackground, 'none'>, string> = {
-  canvas: colorCanvas,
-  surface: colorSurface,
-  frosted: colorFrosted,
+  canvas: ref(colorCanvas),
+  surface: ref(colorSurface),
+  frosted: ref(colorFrosted),
 };
 
 const fontSizeText = {
-  small: typescaleSm,
-  medium: typescaleMd,
+  small: ref(typescaleSm),
+  medium: ref(typescaleMd),
 };
 
 export const getComponentCss = (
@@ -68,39 +69,39 @@ export const getComponentCss = (
         '::slotted': {
           '&(a),&(button)': {
             all: 'unset',
-            padding: isCompact ? `2px ${spacingStaticSm}` : `12px ${spacingStaticMd}`,
+            padding: isCompact ? `2px ${ref(spacingStaticSm)}` : `12px ${ref(spacingStaticMd)}`,
             whiteSpace: 'nowrap',
             cursor: 'pointer',
-            borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+            borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
             ...(background === 'none' && {
-              background: colorFrosted,
+              background: ref(colorFrosted),
             }),
-            font: `${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+            font: `${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
             ...buildResponsiveStyles(size, (sizeValue: TabsBarSize) => ({
               fontSize: fontSizeText[sizeValue],
             })),
-            color: colorPrimary,
+            color: ref(colorPrimary),
           },
           '&(a:focus-visible),&(button:focus-visible)': getFocusBaseStyles(),
           ...hoverMediaQuery({
             [notActiveHoverSelector]: {
               // Only applied on hover since applying it globally causes the active tab to visually flash when navigating in SPAs (where the tabs-bar persist across routes but the children tabs change).
               transition: `${getTransition('color', 'moderate')}, ${getTransition('background-color')}`,
-              background: colorFrostedStrong,
+              background: ref(colorFrostedStrong),
             },
           }),
           ...(hasActive && {
             [activeSelector]: {
-              color: colorCanvas,
+              color: ref(colorCanvas),
             },
             // Transition color and background when animation is playing
             [`&(a:nth-child(${nth})[${animatingAttribute}]),&(button:nth-child(${nth})[${animatingAttribute}])`]: {
-              transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${durationMd}`,
+              transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${ref(durationMd)}`,
             },
             // Apply background only when no active animation is playing
             [`&(a:nth-child(${nth}):not([${animatingAttribute}])),&(button:nth-child(${nth}):not([${animatingAttribute}]))`]:
               {
-                background: colorPrimary,
+                background: ref(colorPrimary),
               },
           }),
           ...forcedColorsMediaQuery({
@@ -127,18 +128,18 @@ export const getComponentCss = (
     },
     scroller: {
       placeSelf: 'flex-start', // ensures scroller doesn't get stretched in x- or y-axis in case the tabs-bar is taller than the scroller (e.g. when placed in flex or grid context)
-      borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+      borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
       ...(background !== 'none' && {
         background: backgroundMap[background],
-        padding: spacingStaticXs,
+        padding: ref(spacingStaticXs),
         ...forcedColorsMediaQuery({
           forcedColorAdjust: 'none',
           outline: '1px solid CanvasText',
         }),
       }),
       ...(background === 'frosted' && {
-        WebkitBackdropFilter: blurFrosted,
-        backdropFilter: blurFrosted,
+        WebkitBackdropFilter: ref(blurFrosted),
+        backdropFilter: ref(blurFrosted),
       }),
     },
     bar: {
@@ -148,8 +149,8 @@ export const getComponentCss = (
       height: '100%',
       zIndex: -1,
       pointerEvents: 'none',
-      borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
-      background: colorPrimary,
+      borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
+      background: ref(colorPrimary),
     },
   });
 };

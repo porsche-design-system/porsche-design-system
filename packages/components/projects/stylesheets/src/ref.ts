@@ -10,10 +10,10 @@
  * @example
  * import { colorCanvas, ref } from '@porsche-design-system/stylesheets';
  * const styles = { background: ref(colorCanvas) }; // -> 'var(--p-color-canvas)'
- * const styles = { color: ref(colorPrimary, '#000') }; // -> 'var(--p-color-primary, #000)'
+ * const styles = { color: ref(colorPrimary, '#000') }; // -> 'var(--p-color-primary,#000)'
  *
  * @param name The bare CSS custom property name, e.g. `--p-color-canvas`.
  * @param fallback Optional fallback value used when the variable is not defined.
  */
 export const ref = (name: string, fallback?: string | number): string =>
-  `var(${name}${fallback === undefined ? '' : `, ${fallback}`})`;
+  `var(${name}${fallback === undefined ? '' : `,${fallback}`})`;

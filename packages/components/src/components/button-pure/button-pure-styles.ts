@@ -1,4 +1,4 @@
-import { colorContrastLow, leadingNormal } from '../../styles/css-variables';
+import { colorContrastLow, leadingNormal, ref } from '@porsche-design-system/stylesheets';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
@@ -39,7 +39,7 @@ export const getComponentCss = (
       {
         root: {
           ...(isDisabled && {
-            color: colorContrastLow,
+            color: ref(colorContrastLow),
           }),
           ...(isDisabledOrLoading && {
             cursor: 'not-allowed',
@@ -53,7 +53,7 @@ export const getComponentCss = (
             icon: {
               position: 'absolute',
               top: 0,
-              left: `calc(50% - ${leadingNormal} / 2)`,
+              left: `calc(50% - ${ref(leadingNormal)} / 2)`,
             },
           }),
         // .loading
