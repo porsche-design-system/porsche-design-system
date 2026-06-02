@@ -1,4 +1,4 @@
-import { PText } from '@porsche-design-system/components-react/ssr';
+import { PHeading, PText } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -23,26 +23,31 @@ export const SearchRecommendations = ({ onRecommendationClick }: SearchRecommend
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-fluid-sm">
-      {recommendations.map(({ name, href }, index) => (
-        <Link
-          key={index}
-          href={href}
-          className="py-4 px-6 bg-surface rounded-md flex items-center gap-4"
-          onClick={onRecommendationClick}
-        >
-          {/*<div className="relative w-18 h-18">*/}
-          {/*<Image*/}
-          {/*  src={imageSrc}*/}
-          {/*  layout="fill"*/}
-          {/*  objectFit="contain"*/}
-          {/*  alt={`${name} Image`}*/}
-          {/*  className="transition-transform duration-300 ease-in-out"*/}
-          {/*/>*/}
-          {/*</div>*/}
-          <PText size="medium">{name}</PText>
-        </Link>
-      ))}
+    <div className="flex flex-col gap-fluid-xs">
+      <PHeading size="small" tag="h3">
+        Recommended links
+      </PHeading>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {recommendations.map(({ name, href }, index) => (
+          <Link
+            key={index}
+            href={href}
+            className="py-4 px-6 bg-surface rounded-md flex items-center gap-4"
+            onClick={onRecommendationClick}
+          >
+            {/*<div className="relative w-18 h-18">*/}
+            {/*<Image*/}
+            {/*  src={imageSrc}*/}
+            {/*  layout="fill"*/}
+            {/*  objectFit="contain"*/}
+            {/*  alt={`${name} Image`}*/}
+            {/*  className="transition-transform duration-300 ease-in-out"*/}
+            {/*/>*/}
+            {/*</div>*/}
+            <PText size="medium">{name}</PText>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

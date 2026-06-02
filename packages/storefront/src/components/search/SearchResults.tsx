@@ -40,8 +40,9 @@ export const SearchResults = ({
                   href={hit.url}
                   onClick={onResultClick}
                   className="block py-fluid-sm px-fluid-md bg-surface rounded-md"
+                  aria-labelledby={`search-result-${hit.url}`}
                 >
-                  <p className="text-sm">
+                  <p id={`search-result-${hit.url}`} className="text-sm">
                     {hit.page} {hit.tab ? ` - ${hit.tab}` : ''}
                   </p>
                   <p className="text-sm text-contrast-high">{hit.url.includes('#') ? `# ${hit.name}` : hit.name}</p>
