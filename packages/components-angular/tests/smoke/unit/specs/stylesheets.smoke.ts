@@ -75,7 +75,7 @@ const groupsToCheck = [
   },
 ];
 
-describe('global styles package content', () => {
+describe('stylesheets package content', () => {
   for (const group of groupsToCheck) {
     test(`all paths in "${group.name}" should export the same content`, () => {
       const basePath = requireNode.resolve(group.paths[0]);

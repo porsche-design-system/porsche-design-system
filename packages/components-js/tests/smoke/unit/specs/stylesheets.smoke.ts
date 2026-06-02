@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import { describe, expect, test } from 'vitest';
-import { CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
+import { CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../../cdn.config';
 
 const requireNode = createRequire(import.meta.url);
 
@@ -10,9 +10,7 @@ const groupsToCheck = [
   {
     name: '/',
     paths: [
-      // TODO: How to test against '@porsche-design-system/components-react'?
-      '@porsche-design-system/components-react/index.css',
-      '@porsche-design-system/components-react/index',
+      // TODO: How to test against '@porsche-design-system/components-js'?
       '@porsche-design-system/components-js/index.css',
       '@porsche-design-system/components-js/index',
     ],
@@ -20,45 +18,25 @@ const groupsToCheck = [
   {
     name: '/color-scheme',
     paths: [
-      '@porsche-design-system/components-react/color-scheme.css',
-      '@porsche-design-system/components-react/color-scheme',
       '@porsche-design-system/components-js/color-scheme.css',
       '@porsche-design-system/components-js/color-scheme',
     ],
   },
   {
     name: '/font-face',
-    paths: [
-      '@porsche-design-system/components-react/font-face.css',
-      '@porsche-design-system/components-react/font-face',
-      '@porsche-design-system/components-js/font-face.css',
-      '@porsche-design-system/components-js/font-face',
-    ],
+    paths: ['@porsche-design-system/components-js/font-face.css', '@porsche-design-system/components-js/font-face'],
   },
   {
     name: '/normalize',
-    paths: [
-      '@porsche-design-system/components-react/normalize.css',
-      '@porsche-design-system/components-react/normalize',
-      '@porsche-design-system/components-js/normalize.css',
-      '@porsche-design-system/components-js/normalize',
-    ],
+    paths: ['@porsche-design-system/components-js/normalize.css', '@porsche-design-system/components-js/normalize'],
   },
   {
     name: '/variables',
-    paths: [
-      '@porsche-design-system/components-react/variables.css',
-      '@porsche-design-system/components-react/variables',
-      '@porsche-design-system/components-js/variables.css',
-      '@porsche-design-system/components-js/variables',
-    ],
+    paths: ['@porsche-design-system/components-js/variables.css', '@porsche-design-system/components-js/variables'],
   },
   {
     name: '/cn',
     paths: [
-      '@porsche-design-system/components-react/cn',
-      '@porsche-design-system/components-react/cn/index.css',
-      '@porsche-design-system/components-react/cn/index',
       '@porsche-design-system/components-js/cn',
       '@porsche-design-system/components-js/cn/index.css',
       '@porsche-design-system/components-js/cn/index',
@@ -67,15 +45,13 @@ const groupsToCheck = [
   {
     name: '/cn/font-face',
     paths: [
-      '@porsche-design-system/components-react/cn/font-face.css',
-      '@porsche-design-system/components-react/cn/font-face',
       '@porsche-design-system/components-js/cn/font-face.css',
       '@porsche-design-system/components-js/cn/font-face',
     ],
   },
 ];
 
-describe('global styles package content', () => {
+describe('stylesheets package content', () => {
   for (const group of groupsToCheck) {
     test(`all paths in "${group.name}" should export the same content`, () => {
       const basePath = requireNode.resolve(group.paths[0]);
@@ -96,18 +72,18 @@ describe('global styles package content', () => {
   }
 
   test('index files contain all individual parts', () => {
-    const mainIndexPath = requireNode.resolve('@porsche-design-system/components-react/index.css');
+    const mainIndexPath = requireNode.resolve('@porsche-design-system/components-js/index.css');
     const mainIndexContent = fs.readFileSync(mainIndexPath, 'utf8');
 
-    const cnIndexPath = requireNode.resolve('@porsche-design-system/components-react/cn/index.css');
+    const cnIndexPath = requireNode.resolve('@porsche-design-system/components-js/cn/index.css');
     const cnIndexContent = fs.readFileSync(cnIndexPath, 'utf8');
 
     // Check / index
     [
-      '@porsche-design-system/components-react/color-scheme.css',
-      '@porsche-design-system/components-react/font-face.css',
-      '@porsche-design-system/components-react/normalize.css',
-      '@porsche-design-system/components-react/variables.css',
+      '@porsche-design-system/components-js/color-scheme.css',
+      '@porsche-design-system/components-js/font-face.css',
+      '@porsche-design-system/components-js/normalize.css',
+      '@porsche-design-system/components-js/variables.css',
     ].forEach((path) => {
       const resolved = requireNode.resolve(path);
       const content = fs.readFileSync(resolved, 'utf8');
@@ -118,10 +94,10 @@ describe('global styles package content', () => {
 
     // Check /cn index
     [
-      '@porsche-design-system/components-react/color-scheme.css',
-      '@porsche-design-system/components-react/cn/font-face.css',
-      '@porsche-design-system/components-react/normalize.css',
-      '@porsche-design-system/components-react/variables.css',
+      '@porsche-design-system/components-js/color-scheme.css',
+      '@porsche-design-system/components-js/cn/font-face.css',
+      '@porsche-design-system/components-js/normalize.css',
+      '@porsche-design-system/components-js/variables.css',
     ].forEach((path) => {
       const resolved = requireNode.resolve(path);
       const content = fs.readFileSync(resolved, 'utf8');
