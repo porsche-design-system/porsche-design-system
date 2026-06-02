@@ -47,8 +47,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <PHeading
           tag="h2"
           size="xl"
-          className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14"
+          className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14 focus-visible:outline outline-focus outline-offset-2 rounded-lg"
           id={id}
+          tabIndex={-1}
         >
           {children as React.ReactNode}
           <PLinkPure
