@@ -72,7 +72,7 @@ export const getComponentCss = (
             // padding by the same amount so the overall hit area / visual height stays stable.
             padding: hasBackground
               ? isCompact
-                ? `calc(6 * ${spacingStatic2Xs} - ${spacingStaticXs}) calc(${spacingStaticMd} - ${spacingStaticXs})`
+                ? `calc(7 * ${spacingStatic2Xs} - ${spacingStaticXs}) calc(${spacingStaticMd} - ${spacingStaticXs})`
                 : `calc(${spacingStaticMd} - ${spacingStaticXs}) calc(28 * ${spacingStatic2Xs} - ${spacingStaticXs})`
               : isCompact
                 ? `calc(6 * ${spacingStatic2Xs}) ${spacingStaticMd}`
@@ -131,7 +131,7 @@ export const getComponentCss = (
       placeSelf: 'flex-start', // ensures scroller doesn't get stretched in x- or y-axis in case the tabs-bar is taller than the scroller (e.g. when placed in flex or grid context)
       ...(hasBackground && {
         background: backgroundMap[background],
-        padding: spacingStaticXs,
+        padding: isCompact ? `calc(3 * ${spacingStatic2Xs})` : spacingStaticXs,
         borderRadius: isCompact ? radiusLg : radiusXl, // radius for rail
         ...forcedColorsMediaQuery({
           forcedColorAdjust: 'none',

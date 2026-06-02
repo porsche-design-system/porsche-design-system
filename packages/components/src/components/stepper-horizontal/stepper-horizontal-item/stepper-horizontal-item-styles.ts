@@ -19,7 +19,7 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  radiusFull,
+  radiusXl,
 } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
@@ -63,7 +63,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         width: 'max-content',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
         font: `${fontWeightNormal} inherit / ${leadingNormal} ${fontPorscheNext}`,
-        borderRadius: radiusFull,
+        borderRadius: radiusXl,
         ...(isStateCurrent && {
           WebkitBackdropFilter: blurFrosted,
           backdropFilter: blurFrosted,
