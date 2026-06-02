@@ -94,7 +94,9 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                         onClick={() => onNavigate()}
                         className={'w-full ps-static-sm'}
                       >
-                        <Link href={link}>{page.name}</Link>
+                        <Link href={link} aria-current={pathname?.includes(`${page.path}/`) ? 'page' : undefined}>
+                          {page.name}
+                        </Link>
                       </PLinkPure>
                     );
                   })}
