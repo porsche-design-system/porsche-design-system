@@ -8,6 +8,7 @@ import {
   PCanvas,
   PHeading,
   PLink,
+  PLinkPure,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointMd, breakpointSm } from '@porsche-design-system/tokens';
 import Link from 'next/link';
@@ -96,6 +97,9 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       onSidebarStartUpdate={onSidebarStartUpdate}
       onSidebarEndDismiss={onSidebarEndDismiss}
     >
+      <PLinkPure slot="header-start" icon="arrow-down" className="sr-only focus-within:not-sr-only">
+        <Link href="#main-content">Skip to content</Link>
+      </PLinkPure>
       <Link slot="title" href="/">
         Porsche Design System
       </Link>
