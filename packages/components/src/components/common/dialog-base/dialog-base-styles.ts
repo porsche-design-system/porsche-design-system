@@ -13,6 +13,7 @@ import {
   spacingFluidLg,
   spacingFluidMd,
   spacingFluidSm,
+  spacingStatic2Xs,
   spacingStaticMd,
 } from '../../../styles/css-variables';
 
@@ -127,7 +128,7 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
 
 export const dialogBorderRadius = radius3Xl;
 export const dialogPaddingTop = spacingFluidMd;
-export const dialogPaddingBottom = `calc(${spacingFluidSm} + ${spacingFluidMd})`;
+export const dialogPaddingBottom = `calc(${dialogBorderRadius} + ${spacingFluidMd})`;
 export const dialogPaddingInline = spacingFluidLg;
 
 export const dialogGridJssStyle = (): JssStyle => {
@@ -139,6 +140,7 @@ export const dialogGridJssStyle = (): JssStyle => {
     paddingTop: dialogPaddingTop,
     paddingBottom: dialogPaddingBottom,
     alignContent: 'flex-start',
+    overflow: 'clip',
   };
 };
 
@@ -181,7 +183,7 @@ export const getDialogDismissButtonJssStyle = (): JssStyle => {
     marginTop: `calc(-1 * ${dialogPaddingTop} + ${spacingFluidSm})`,
     marginInlineEnd: spacingFluidSm,
     placeSelf: 'flex-start flex-end',
-    boxShadow: `0px 0px 30px hsla(from var(${cssVarBackgroundColor}) h s l / 0.35)`,
+    filter: 'invert(1) brightness(1.02)',
   };
 };
 
@@ -218,7 +220,7 @@ export const getSlotMainJssStyle = (): JssStyle => {
 
 export const getSlotFooterJssStyle = (): JssStyle => {
   const paddingBlock = `calc(${dialogPaddingBottom} - ${dialogBorderRadius})`;
-  const offset = `calc(${paddingBlock} / 2)`;
+  const offset = `12 * ${spacingStatic2Xs}`;
 
   return {
     gridColumn: '1/-1',
