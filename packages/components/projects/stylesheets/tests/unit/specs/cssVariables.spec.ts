@@ -14,7 +14,7 @@ const toConstName = (property: string): string =>
     })
     .join('');
 
-const allLeaves = flattenCssVariables(cssVariablesMeta);
+const allLeaves = [...flattenCssVariables(cssVariablesMeta), ...legacyRadiusMeta];
 
 it.each(allLeaves.map((leaf) => [toConstName(leaf.property), leaf.property] as const))(
   'should expose a tree-shakeable name const `%s` equal to its property `%s`',

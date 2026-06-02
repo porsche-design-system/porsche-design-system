@@ -66,7 +66,7 @@ export const colorCanvas = '--p-color-canvas';
   categorization used by the docs/LLM context.
 - Wrap a name into a CSS `var(...)` reference with the hand-written `ref(name, fallback?)` helper
   (`src/ref.ts`), e.g. in component JSS: `background: ref(colorCanvas)`.
-- Private `--_p-legacy-radius-*` names are **not** generated as consts; they remain hand-written under `src/styles/css-variables/` and `legacyRadiusMeta` only feeds the resolved `legacy-radius.css`.
+- Private `--_p-legacy-radius-*` names are generated separately under `generated/cssVariables/legacyRadius/`.
 - `tests/unit/specs/cssVariables.spec.ts` guards that every meta `property` has a matching generated const.
 
 

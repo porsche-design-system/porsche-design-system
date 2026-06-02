@@ -3,7 +3,7 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "ignoreDeprecations": "6.0",
-    "jsx": "react-jsx"
-  },
-  "exclude": ["scripts"]
+    "jsx": "react-jsx",
+    "types": ["node"]
+  }
 }
