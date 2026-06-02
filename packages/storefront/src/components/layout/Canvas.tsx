@@ -114,7 +114,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         compact={true}
         hideLabel={true}
         onClick={onOpenSearch}
-        aria={{ 'aria-label': 'Search' }}
+        aria={{ 'aria-haspopup': 'dialog' }}
       >
         Search
       </PButton>
@@ -126,8 +126,9 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         hideLabel={true}
         href="https://github.com/porsche-design-system/porsche-design-system"
         target="_blank"
+        aria={{ 'aria-description': 'External link, opens in new tab' }}
       >
-        Navigate to GitHub repository of Porsche Design System
+        GitHub repository of Porsche Design System
       </PLink>
       <PButton
         slot="header-end"
@@ -137,7 +138,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         hideLabel={true}
         onClick={onSidebarEndOpen}
       >
-        Open sidebar
+        Open settings sidebar
       </PButton>
 
       <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md">

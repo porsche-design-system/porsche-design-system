@@ -80,10 +80,9 @@ export const Home = () => {
               </span>
             </div>
             <PLink hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-              <Link
-                href={`news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
-                aria-label={`Release Note: Checkout the release ${localPorscheDesignSystemVersion}`}
-              />
+              <Link href={`news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}>
+                Release Note: Checkout the release {localPorscheDesignSystemVersion}
+              </Link>
             </PLink>
           </div>
         </div>
@@ -122,7 +121,7 @@ export const Home = () => {
                 Start Designing
               </PHeading>
               <PLink className="shrink-0" hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-                <Link href="/designing/introduction/" aria-label="Start Designing" />
+                <Link href="/designing/introduction/">Start Designing</Link>
               </PLink>
             </div>
           </AppearAnimation>
@@ -141,7 +140,7 @@ export const Home = () => {
                 Start Coding
               </PHeading>
               <PLink className="shrink-0" hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-                <Link href="/developing/introduction/" aria-label="Start Coding" />
+                <Link href="/developing/introduction/">Start Coding</Link>
               </PLink>
             </div>
           </AppearAnimation>
