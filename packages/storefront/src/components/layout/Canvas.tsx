@@ -21,6 +21,7 @@ import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { Search } from '@/components/search/Search';
 import { useDirection } from '@/hooks/useDirection';
+import { useFocusMainContentOnRouteChange } from '@/hooks/useFocusMainContentOnRouteChange';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontVersion } from '@/hooks/useStorefrontVersion';
 import { useTextZoom } from '@/hooks/useTextZoom';
@@ -44,6 +45,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
   const pathname = usePathname();
+  useFocusMainContentOnRouteChange();
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(false);
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
@@ -143,8 +145,15 @@ export const Canvas = ({ children }: PropsWithChildren) => {
 
       <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md">
         <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
-        <Tabs />
-        {children}
+        <section
+          id="main-content"
+          aria-labelledby="main-heading"
+          className="col-[wide] focus-visible:outline outline-focus outline-offset-2 rounded-xl"
+          tabIndex={-1}
+        >
+          <Tabs />
+          {children}
+        </section>
       </div>
 
       <div slot="sidebar-start">
