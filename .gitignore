@@ -112,6 +112,10 @@ packages/storefront-old/src/pages/changelog.md
 packages/storefront-old/public/porsche-design-system
 packages/storefront/public/porsche-design-system
 
+# MCP Server
+packages/mcp-server/context-snapshots/
+packages/mcp-server/v*/
+
 # Lib
 packages/shared/src/lib/*
 packages/components-js/projects/jsdom-polyfill/src/lib/*

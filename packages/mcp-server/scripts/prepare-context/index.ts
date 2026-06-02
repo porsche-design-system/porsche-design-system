@@ -1,0 +1,313 @@
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
+import {
+  type BedrockMetadataAttribute,
+  CATEGORIES,
+  CHANGELOG_MAX_VERSIONS,
+  changelogSourcePath,
+  FRAMEWORKS,
+  MIN_PAGE_CONTENT_CHARS,
+  outputDir,
+  rawExamplesContent,
+  rawStoriesContent,
+  SKIP_DIRECTORIES,
+  sourceDir,
+  VERSION,
+} from './config.ts';
+import { loadComponentMeta, processContent } from './transform.ts';
+
+// Step 1 — Walk source and copy page.mdx files
+
+const walkAndCopy = async (dir: string, relative: string = '') => {
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    const newRelativePath = relative ? path.join(relative, entry.name) : entry.name;
+
+    if (entry.isDirectory()) {
+      if (SKIP_DIRECTORIES.includes(entry.name)) {
+        console.log(`  skip: ${newRelativePath}/`);
+        continue;
+      }
+
+      if (entry.name === 'configurator') {
+        const introRelativePath = relative ? path.join(relative, 'introduction') : 'introduction';
+        await walkAndCopy(fullPath, introRelativePath);
+        continue;
+      }
+
+      await walkAndCopy(fullPath, newRelativePath);
+    } else if (entry.isFile() && entry.name === 'page.mdx') {
+      const targetDir = path.join(outputDir, relative);
+      const targetFile = path.join(outputDir, newRelativePath);
+
+      await fs.mkdir(targetDir, { recursive: true });
+      await fs.copyFile(fullPath, targetFile);
+
+      const fileContent = await fs.readFile(fullPath, 'utf-8');
+
+      if (relative.endsWith('examples')) {
+        rawExamplesContent[targetFile] = fileContent;
+      }
+
+      if (fileContent.includes('<ComponentStory')) {
+        rawStoriesContent[targetFile] = fileContent;
+      }
+
+      console.log(`  copy: ${newRelativePath}`);
+    }
+  }
+};
+
+// Step 1.5 — Generate static categories JSON for src/index.ts consumption
+
+const generateCategoriesJson = async () => {
+  const generatedDir = path.resolve(path.dirname(outputDir), 'src', 'generated');
+  await fs.mkdir(generatedDir, { recursive: true });
+  await fs.writeFile(path.join(generatedDir, 'categories.json'), JSON.stringify(CATEGORIES, null, 2) + '\n', 'utf-8');
+  console.log(`  gen: src/generated/categories.json (${CATEGORIES.length} categories)`);
+};
+
+// Step 2 — Process non-framework MDX pages (framework is irrelevant for these)
+
+const processNonFrameworkPages = async () => {
+  const walk = async (dir: string) => {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        await walk(fullPath);
+      } else if (entry.isFile() && entry.name === 'page.mdx') {
+        // Skip pages with examples/stories — they're handled in Step 3
+        if (rawExamplesContent[fullPath] || rawStoriesContent[fullPath]) continue;
+
+        const rawContent = await fs.readFile(fullPath, 'utf-8');
+        const processed = await processContent(rawContent, 'vanilla-js');
+        await fs.writeFile(fullPath, processed, 'utf-8');
+        console.log(`  parse: ${path.relative(outputDir, fullPath)}`);
+      }
+    }
+  };
+
+  await walk(outputDir);
+};
+
+// Step 3 — Generate per-framework pages (examples & stories, all frameworks)
+
+const generateFrameworkPages = async () => {
+  // Merge example and story pages (examples take priority for duplicates)
+  const frameworkPages = new Map<string, string>();
+  for (const [filePath, rawContent] of Object.entries(rawStoriesContent)) {
+    frameworkPages.set(filePath, rawContent);
+  }
+  for (const [filePath, rawContent] of Object.entries(rawExamplesContent)) {
+    frameworkPages.set(filePath, rawContent);
+  }
+
+  for (const [filePath, rawContent] of Array.from(frameworkPages.entries())) {
+    const pageDir = path.dirname(filePath);
+    const parentDir = path.dirname(pageDir);
+    const dirName = path.basename(pageDir);
+
+    for (const framework of FRAMEWORKS) {
+      const processed = await processContent(rawContent, framework, rawContent);
+
+      if (framework === 'vanilla-js') {
+        // Overwrite the raw copy from Step 1 with processed vanilla-js content
+        await fs.writeFile(filePath, processed, 'utf-8');
+        console.log(`  gen: ${path.relative(outputDir, filePath)} (${framework})`);
+      } else {
+        if (processed.replace(/^#.*$/gm, '').trim().length > MIN_PAGE_CONTENT_CHARS) {
+          const fwDir = path.join(parentDir, `${dirName}-${framework}`);
+          const fwFile = path.join(fwDir, 'page.mdx');
+          await fs.mkdir(fwDir, { recursive: true });
+          await fs.writeFile(fwFile, processed, 'utf-8');
+          console.log(`  gen: ${path.relative(outputDir, fwFile)}`);
+        }
+      }
+    }
+  }
+};
+
+// Step 4 — Truncate changelog to keep only the N most recent versions
+
+const truncateChangelog = async () => {
+  let content: string;
+  try {
+    content = await fs.readFile(changelogSourcePath, 'utf-8');
+  } catch {
+    console.log('  skip: CHANGELOG.md not found');
+    return;
+  }
+
+  const lines = content.split('\n');
+
+  // Find release version headers — skip RCs, alphas, betas, and [Unreleased]
+  const releaseStarts: number[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (/^## \[\d+\.\d+\.\d+\]/.test(lines[i])) {
+      releaseStarts.push(i);
+    }
+  }
+
+  if (releaseStarts.length <= CHANGELOG_MAX_VERSIONS) {
+    console.log(`  keep: changelog has ${releaseStarts.length} release(s), no truncation needed`);
+  } else {
+    const cutoffLine = releaseStarts[CHANGELOG_MAX_VERSIONS];
+    lines.length = cutoffLine;
+    console.log(`  truncate: kept ${CHANGELOG_MAX_VERSIONS} of ${releaseStarts.length} releases`);
+  }
+
+  const changelogDir = path.join(outputDir, 'news', 'changelog');
+  await fs.mkdir(changelogDir, { recursive: true });
+  await fs.writeFile(path.join(changelogDir, 'page.mdx'), lines.join('\n').trimEnd() + '\n', 'utf-8');
+};
+
+// Step 5 — Generate shared reference pages (icon names, flag names)
+
+const generateSharedReferences = async () => {
+  const componentMeta = await loadComponentMeta();
+  const sharedDir = path.join(outputDir, 'components', '_shared');
+
+  // Collect icon names from p-icon's `name` prop
+  const iconMeta = componentMeta['p-icon'];
+  if (iconMeta?.propsMeta?.name?.allowedValues && Array.isArray(iconMeta.propsMeta.name.allowedValues)) {
+    const iconNames: string[] = iconMeta.propsMeta.name.allowedValues;
+    const sorted = [...iconNames].sort();
+    const iconDir = path.join(sharedDir, 'icon-names');
+    await fs.mkdir(iconDir, { recursive: true });
+    await fs.writeFile(
+      path.join(iconDir, 'page.mdx'),
+      `# Available Icon Names\n\n${sorted.length} icons available for any \`IconName\` prop (e.g. \`icon\` on p-button, \`name\` on p-icon).\n\n${sorted.join(', ')}\n`,
+      'utf-8'
+    );
+    console.log(`  gen: components/_shared/icon-names (${sorted.length} icons)`);
+  }
+
+  // Collect flag names from p-flag's `name` prop
+  const flagMeta = componentMeta['p-flag'];
+  if (flagMeta?.propsMeta?.name?.allowedValues && Array.isArray(flagMeta.propsMeta.name.allowedValues)) {
+    const flagNames: string[] = flagMeta.propsMeta.name.allowedValues;
+    const sorted = [...flagNames].sort();
+    const flagDir = path.join(sharedDir, 'flag-names');
+    await fs.mkdir(flagDir, { recursive: true });
+    await fs.writeFile(
+      path.join(flagDir, 'page.mdx'),
+      `# Available Flag Names\n\n${sorted.length} country flags available for the \`name\` prop on p-flag.\n\n${sorted.join(', ')}\n`,
+      'utf-8'
+    );
+    console.log(`  gen: components/_shared/flag-names (${sorted.length} flags)`);
+  }
+};
+
+// Step 6 — Generate AWS Bedrock Knowledge Base metadata sidecar files
+
+const stringAttr = (value: string, includeForEmbedding = true): BedrockMetadataAttribute => {
+  return { value: { type: 'STRING', stringValue: value }, includeForEmbedding };
+};
+
+const deriveMetadataAttributes = (relativePath: string): Record<string, BedrockMetadataAttribute> => {
+  const segments = relativePath.replace(/\/page\.mdx$/, '').split('/');
+
+  const category = segments[0] ?? 'unknown';
+  const attrs: Record<string, BedrockMetadataAttribute> = {
+    category: stringAttr(category),
+    version: stringAttr(VERSION),
+  };
+
+  if (category === 'components' && segments.length >= 2 && !segments[1].startsWith('_')) {
+    attrs.component = stringAttr(segments[1]);
+  }
+
+  // Detect section & optional framework from the last meaningful segment
+  // e.g. "examples-react" → section="examples", framework="react"
+  const lastSegment = segments[segments.length - 1];
+  if (lastSegment) {
+    const fwMatch = FRAMEWORKS.find((fw) => lastSegment.endsWith(`-${fw}`));
+    if (fwMatch) {
+      attrs.framework = stringAttr(fwMatch);
+      attrs.section = stringAttr(lastSegment.slice(0, -(fwMatch.length + 1))); // strip "-react" etc.
+    } else {
+      attrs.section = stringAttr(lastSegment);
+    }
+  }
+
+  return attrs;
+};
+
+const generateBedrockMetadata = async () => {
+  let count = 0;
+
+  // Collect relative paths of base pages that contain vanilla-js framework-specific content
+  const vanillaJsRelativePaths = new Set<string>(
+    [...Object.keys(rawExamplesContent), ...Object.keys(rawStoriesContent)].map((filePath) =>
+      path.relative(outputDir, filePath)
+    )
+  );
+
+  const walk = async (dir: string) => {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+
+      if (entry.isDirectory()) {
+        await walk(fullPath);
+      } else if (entry.isFile() && entry.name === 'page.mdx') {
+        const relativePath = path.relative(outputDir, fullPath);
+        const attributes = deriveMetadataAttributes(relativePath);
+
+        // Tag base example/story pages with vanilla-js framework
+        if (!attributes.framework && vanillaJsRelativePaths.has(relativePath)) {
+          attributes.framework = stringAttr('vanilla-js');
+        }
+
+        const metadataFile = `${fullPath}.metadata.json`;
+
+        await fs.writeFile(metadataFile, JSON.stringify({ metadataAttributes: attributes }, null, 2) + '\n', 'utf-8');
+
+        count++;
+        console.log(`  meta: ${relativePath}`);
+      }
+    }
+  };
+
+  await walk(outputDir);
+  console.log(`  total: ${count} metadata files created`);
+};
+
+const prepareContextSnapshots = async () => {
+  console.log(`Preparing context snapshots from: ${sourceDir}\n`);
+
+  await fs.rm(outputDir, { recursive: true, force: true });
+  await fs.mkdir(outputDir, { recursive: true });
+
+  console.log('Step 1/7: Copying source files...');
+  await walkAndCopy(sourceDir, '');
+
+  console.log('\nStep 2/7: Generating categories JSON...');
+  await generateCategoriesJson();
+
+  console.log('\nStep 3/7: Processing non-framework MDX → Markdown...');
+  await processNonFrameworkPages();
+
+  console.log('\nStep 4/7: Generating per-framework pages (examples & stories)...');
+  await generateFrameworkPages();
+
+  console.log('\nStep 5/7: Truncating changelog...');
+  await truncateChangelog();
+
+  console.log('\nStep 6/7: Generating shared reference pages...');
+  await generateSharedReferences();
+
+  console.log('\nStep 7/7: Generating AWS Bedrock Knowledge Base metadata...');
+  await generateBedrockMetadata();
+
+  console.log('\nDone! Context snapshots ready.');
+};
+
+prepareContextSnapshots().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

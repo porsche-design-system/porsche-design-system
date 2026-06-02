@@ -1,0 +1,81 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+# Introduction
+
+<TableOfContents
+  headings={[
+    'The Problem',
+    'The Solution',
+    'Available Tools',
+    'Query Filters',
+    'Example Prompts',
+  ]}
+/>
+
+The **Porsche Design System MCP** server connects your AI coding assistant to the complete Porsche Design System
+documentation. Instead of copy-pasting docs or hoping your LLM remembers component APIs correctly, you give it direct,
+structured access to the source of truth.
+
+Built on the [Model Context Protocol](https://modelcontextprotocol.io), it works with any MCP-compatible client — Claude
+Code, Cursor, Windsurf, VS Code, and more.
+
+## The Problem
+
+AI assistants generate Porsche Design System code based on stale training data. Component APIs change between versions.
+Props get renamed, deprecated, or added. The result: hallucinated attributes, outdated patterns, and code that doesn't
+match your project's PDS version.
+
+## The Solution
+
+This MCP server gives your assistant **live, version-aware access** to PDS documentation at query time. When it needs to
+use a `p-button`, it looks up the actual API.
+
+```
+You:    "Create a form with PDS components for collecting a shipping address."
+
+Agent:  [calls list-components]
+        [calls query → "form input address"]
+        [calls query → "text-field-wrapper usage" with component filter]
+
+        → Generates code with correct props, valid variants, and current API
+```
+
+## Available Tools
+
+The server exposes two tools optimized for token efficiency:
+
+| Tool              | Purpose                                                                                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `list-components` | Returns the full list of available PDS component names. Use this to discover what components exist.                                                                                                     |
+| `query`           | Semantic search over all PDS documentation. Accepts a natural-language query and optional filters for category, component, framework, and version. Returns the most relevant pages ranked by relevance. |
+
+### Query Filters
+
+The `query` tool supports the following optional filters to narrow results:
+
+| Filter      | Description                                                  | Examples                                |
+| ----------- | ------------------------------------------------------------ | --------------------------------------- |
+| `category`  | Filter by top-level documentation category.                  | `components`, `styles`, `tokens`        |
+| `component` | Filter by component name (within the "components" category). | `button`, `modal`, `tabs-bar`           |
+| `framework` | Filter for framework-specific documentation.                 | `react`, `angular`, `vue`, `vanilla-js` |
+| `version`   | Filter for a specific PDS documentation version.             | `"4.0.0"`, `"3.35.0"`                   |
+
+## Example Prompts
+
+<Notification heading="Attention" heading-tag="h3" state="info">
+  If you have multiple MCP servers connected, specify the `pds-mcp` namespace in your queries. For example:
+  <br />
+  _"Build a responsive navigation bar using PDS components, use pds-mcp"_
+</Notification>
+
+Once connected, try asking your AI assistant:
+
+- _"Build a responsive navigation bar using PDS components"_
+- _"What props does `p-tabs-bar` accept?"_
+- _"Show me how to set up PDS in a Next.js project"_
+- _"Create an accessible form with validation using PDS"_
+- _"What's the correct way to handle dark theme with PDS?"_
+
+The assistant will call the appropriate MCP tools behind the scenes and generate code grounded in the actual
+documentation.

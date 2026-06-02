@@ -1,0 +1,75 @@
+# Getting Started
+
+The MCP server is distributed as part of the `@porsche-design-system/components-js` package. Add it to your MCP client
+configuration and your AI assistant will have access to PDS documentation immediately.
+
+## Cursor / VS Code
+
+Add to your `.mcp.json` or project-level MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "pds-docs": {
+      "command": "npx",
+      "args": ["-y", "-p", "@porsche-design-system/components-js@4.2.0", "pds-mcp-server"]
+    }
+  }
+}
+```
+
+## GitHub Copilot CLI
+
+Add to your `~/.copilot/mcp-config.json`:
+
+```json
+{
+  "mcpServers": {
+    "pds-docs": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "-p", "@porsche-design-system/components-js@4.2.0", "pds-mcp-server"],
+      "env": {},
+      "tools": ["*"]
+    }
+  }
+}
+```
+
+Or use the interactive command within Copilot CLI:
+
+1. Enter `/mcp add`
+2. Set **Server Name** to `porsche-design-system`
+3. Set **Server Type** to `STDIO`
+4. Set **Command** to `npx -y -p @porsche-design-system/components-js@4.2.0 pds-mcp-server`
+5. Press `Ctrl+S` to save
+
+## Claude Desktop
+
+Add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "pds-docs": {
+      "command": "npx",
+      "args": ["-y", "-p", "@porsche-design-system/components-js@4.2.0", "pds-mcp-server"]
+    }
+  }
+}
+```
+
+## Windsurf
+
+Add to your MCP configuration file:
+
+```json
+{
+  "mcpServers": {
+    "pds-docs": {
+      "command": "npx",
+      "args": ["-y", "-p", "@porsche-design-system/components-js@4.2.0", "pds-mcp-server"]
+    }
+  }
+}
+```

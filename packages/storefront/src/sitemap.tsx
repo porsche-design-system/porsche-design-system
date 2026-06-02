@@ -1758,6 +1758,28 @@ export const sitemap: Routes = {
       },
     },
   },
+  // mcp: {
+  //   name: 'MCP',
+  //   path: '/mcp',
+  //   type: 'CATEGORY',
+  //   subPaths: {
+  //     introduction: {
+  //       name: 'Introduction',
+  //       path: '/mcp/introduction',
+  //       type: 'PAGE',
+  //     },
+  //     'getting-started': {
+  //       name: 'Getting Started',
+  //       path: '/mcp/getting-started',
+  //       type: 'PAGE',
+  //     },
+  //     connectivity: {
+  //       name: 'Connectivity',
+  //       path: '/mcp/connectivity',
+  //       type: 'PAGE',
+  //     },
+  //   },
+  // },
   'must-know': {
     name: 'Must Know',
     path: '/must-know',

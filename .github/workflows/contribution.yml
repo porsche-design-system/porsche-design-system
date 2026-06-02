@@ -96,7 +96,6 @@ jobs:
       storefront-algolia: ${{ needs.context.outputs.storefront-algolia }}
     needs:
       - context
-      - test
       - build
     secrets:
       linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
@@ -104,6 +103,11 @@ jobs:
       gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
+      aws-access-key-id-mcp: ${{ secrets.AWS_ACCESS_KEY_ID_MCP }}
+      aws-secret-access-key-mcp: ${{ secrets.AWS_SECRET_ACCESS_KEY_MCP }}
+      mcp-s3-bucket-name: ${{ secrets.MCP_S3_BUCKET_NAME }}
+      mcp-knowledge-base-id: ${{ secrets.MCP_KNOWLEDGE_BASE_ID }}
+      mcp-data-source-id: ${{ secrets.MCP_DATA_SOURCE_ID }}
   release:
     name: 'Release'
     # Only on direct pushes to release branches — never on pull_request events.

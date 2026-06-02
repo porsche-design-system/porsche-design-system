@@ -1,0 +1,12 @@
+{
+  "extends": "@porsche-design-system/shared/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": ["src", "scripts"],
+  "exclude": ["node_modules", "dist"]
+}

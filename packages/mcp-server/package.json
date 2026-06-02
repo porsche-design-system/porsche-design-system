@@ -1,0 +1,44 @@
+{
+  "name": "@porsche-design-system/mcp-server",
+  "version": "0.0.0",
+  "private": false,
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://designsystem.porsche.com",
+  "keywords": [
+    "porsche",
+    "design",
+    "system",
+    "mcp",
+    "server",
+    "model",
+    "context",
+    "protocol"
+  ],
+  "bin": {
+    "pds-mcp-server": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "npm run build:mcp && npm run build:copyToComponentsJs",
+    "build:mcp": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "dev": "tsx src/index.ts",
+    "prepare-context": "TSX_TSCONFIG_PATH=../storefront/tsconfig.json tsx scripts/prepare-context/index.ts",
+    "build:copyToComponentsJs": "TARGET=../components-js/dist/components-wrapper/mcp-server && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "@porsche-design-system/shared": "*",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@porsche-design-system/tokens-meta": "0.0.0",
+    "@types/node": "^24.7.2",
+    "tsx": "^4.20.6",
+    "typescript": "~5.9.3"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
