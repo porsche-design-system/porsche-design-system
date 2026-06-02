@@ -26,7 +26,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -52,7 +52,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -109,7 +109,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -135,7 +135,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -210,7 +210,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -236,7 +236,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   pointer-events: none;
   flex-shrink: 0;
 }
@@ -305,7 +305,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -331,7 +331,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   pointer-events: none;
   flex-shrink: 0;
 }

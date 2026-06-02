@@ -4,7 +4,7 @@ exports[`getComponentCss() > should return correct css for open: false, backgrou
 ":host {
   display: contents;
   --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-sheet-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-sheet-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-sheet-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -75,8 +75,9 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
@@ -85,8 +86,8 @@ dialog::backdrop {
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
-  border-top-left-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
-  border-top-right-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-top-left-radius: var(--p-radius-3xl);
+  border-top-right-radius: var(--p-radius-3xl);
 }
 .sheet:dir(rtl) {
   transform: translateY(25vh);
@@ -103,7 +104,7 @@ exports[`getComponentCss() > should return correct css for open: false, backgrou
 ":host {
   display: contents;
   --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-sheet-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-sheet-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-sheet-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -174,8 +175,9 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
@@ -184,8 +186,8 @@ dialog::backdrop {
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
-  border-top-left-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
-  border-top-right-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-top-left-radius: var(--p-radius-3xl);
+  border-top-right-radius: var(--p-radius-3xl);
 }
 .sheet:dir(rtl) {
   transform: translateY(25vh);
@@ -198,7 +200,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .sheet {
@@ -212,7 +214,7 @@ exports[`getComponentCss() > should return correct css for open: true, backgroun
 ":host {
   display: contents;
   --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-sheet-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-sheet-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-sheet-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -283,8 +285,9 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
@@ -293,8 +296,8 @@ dialog::backdrop {
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
-  border-top-left-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
-  border-top-right-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-top-left-radius: var(--p-radius-3xl);
+  border-top-right-radius: var(--p-radius-3xl);
 }
 .dismiss {
   grid-area: 1/3;
@@ -304,7 +307,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .sheet {
@@ -318,7 +321,7 @@ exports[`getComponentCss() > should return correct css for open: true, backgroun
 ":host {
   display: contents;
   --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-sheet-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-sheet-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-sheet-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -389,8 +392,9 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
@@ -399,8 +403,8 @@ dialog::backdrop {
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
-  border-top-left-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
-  border-top-right-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-top-left-radius: var(--p-radius-3xl);
+  border-top-right-radius: var(--p-radius-3xl);
 }
 .dismiss {
   grid-area: 1/3;
@@ -410,7 +414,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .sheet {

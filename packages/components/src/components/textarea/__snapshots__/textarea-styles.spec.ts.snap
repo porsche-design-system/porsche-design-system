@@ -29,7 +29,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -256,7 +256,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -483,7 +483,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -591,7 +591,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -699,7 +699,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -830,7 +830,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -961,7 +961,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-success);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -1069,7 +1069,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-success);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -1201,7 +1201,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -1308,7 +1308,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -1415,7 +1415,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -1545,7 +1545,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -1675,7 +1675,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-success);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -1782,7 +1782,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-success);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;
@@ -1889,7 +1889,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-contrast-medium);
   box-sizing: border-box;
@@ -2015,7 +2015,7 @@ textarea {
   min-height: var(--p-textarea-min-height, calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height, unset);
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   box-sizing: border-box;

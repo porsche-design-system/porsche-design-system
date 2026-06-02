@@ -70,7 +70,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -98,7 +98,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-lg);
   }
   .label {
     white-space: inherit;
@@ -118,7 +118,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -2px;
     left: -2px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+    border-radius: var(--p-radius-full);
   }
   .label {
     white-space: nowrap;
@@ -138,7 +138,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-lg);
   }
   .label {
     white-space: inherit;
@@ -158,7 +158,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -2px;
     left: -2px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+    border-radius: var(--p-radius-full);
   }
   .label {
     white-space: nowrap;
@@ -178,7 +178,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-lg);
   }
   .label {
     white-space: inherit;
@@ -243,7 +243,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -268,7 +268,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-lg);
   }
   .label {
     white-space: inherit;
@@ -284,7 +284,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -2px;
     left: -2px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+    border-radius: var(--p-radius-full);
   }
   .label {
     white-space: nowrap;
@@ -300,7 +300,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-lg);
   }
   .label {
     white-space: inherit;
@@ -316,7 +316,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -2px;
     left: -2px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+    border-radius: var(--p-radius-full);
   }
   .label {
     white-space: nowrap;
@@ -332,7 +332,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-lg);
   }
   .label {
     white-space: inherit;
@@ -396,7 +396,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -469,7 +469,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -530,7 +530,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   position: fixed !important;
   inset-block: -2px !important;
   inset-inline: -4px !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg)) !important;
+  border-radius: var(--p-radius-lg) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -562,7 +562,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .icon {
@@ -628,7 +628,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -701,7 +701,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -774,7 +774,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -847,7 +847,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -920,7 +920,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -981,7 +981,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   position: fixed !important;
   inset-block: -2px !important;
   inset-inline: -2px !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -1013,7 +1013,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .icon {
@@ -1078,7 +1078,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1153,7 +1153,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1229,7 +1229,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -1294,7 +1294,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {

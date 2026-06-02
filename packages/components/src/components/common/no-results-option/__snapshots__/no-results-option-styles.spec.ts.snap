@@ -13,7 +13,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
@@ -67,7 +67,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
@@ -121,7 +121,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
@@ -175,7 +175,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {

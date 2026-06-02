@@ -93,7 +93,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
     box-sizing: border-box;
     padding: var(--p-spacing-static-sm) var(--p-spacing-static-md);
     pointer-events: auto;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-xl);
     background: var(--p-color-canvas);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);

@@ -19,7 +19,7 @@ button {
   align-items: center;
   gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   padding: calc(28px * (var(--_p-tag-dismissible-a) - 0.64285714) + 6px) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   cursor: pointer;
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
@@ -50,7 +50,7 @@ button:focus-visible {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
 }
 .sr-only {
   position: absolute;
@@ -83,7 +83,7 @@ button {
   align-items: center;
   gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   padding: calc(28px * (var(--_p-tag-dismissible-a) - 0.64285714) + 6px) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   cursor: pointer;
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
@@ -114,7 +114,7 @@ button:focus-visible {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
 }
 .sr-only {
   position: absolute;
@@ -147,7 +147,7 @@ button {
   align-items: center;
   gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   cursor: pointer;
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
@@ -184,7 +184,7 @@ button:focus-visible {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
 }
 .sr-only {
   position: absolute;
@@ -217,7 +217,7 @@ button {
   align-items: center;
   gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   cursor: pointer;
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
@@ -254,7 +254,7 @@ button:focus-visible {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
 }
 .sr-only {
   position: absolute;
@@ -287,7 +287,7 @@ button {
   align-items: center;
   gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   cursor: pointer;
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
@@ -324,7 +324,7 @@ button:focus-visible {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
 }
 .sr-only {
   position: absolute;
@@ -357,7 +357,7 @@ button {
   align-items: center;
   gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   cursor: pointer;
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
@@ -394,7 +394,7 @@ button:focus-visible {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
 }
 .sr-only {
   position: absolute;

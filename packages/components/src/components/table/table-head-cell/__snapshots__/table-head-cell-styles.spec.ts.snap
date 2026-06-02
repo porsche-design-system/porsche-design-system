@@ -38,7 +38,7 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   z-index: -1;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -109,7 +109,7 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   z-index: -1;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -180,7 +180,7 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   z-index: -1;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -251,7 +251,7 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   z-index: -1;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
@@ -322,7 +322,7 @@ button::before {
   content: "";
   position: absolute;
   inset: -2px -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   z-index: -1;
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }

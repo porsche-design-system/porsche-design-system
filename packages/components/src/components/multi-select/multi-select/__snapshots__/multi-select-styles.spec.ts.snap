@@ -38,7 +38,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -72,7 +72,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -139,7 +139,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -269,7 +269,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -303,7 +303,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -370,7 +370,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -501,7 +501,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -535,7 +535,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -602,7 +602,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -732,7 +732,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -766,7 +766,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -833,7 +833,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -963,7 +963,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -994,7 +994,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -1056,7 +1056,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -1193,7 +1193,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -1224,7 +1224,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -1286,7 +1286,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -1422,7 +1422,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -1453,7 +1453,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -1515,7 +1515,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -1651,7 +1651,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-lg);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -1682,7 +1682,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -1744,7 +1744,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -1880,7 +1880,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -1911,7 +1911,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -1973,7 +1973,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -2110,7 +2110,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -2141,7 +2141,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -2203,7 +2203,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -2339,7 +2339,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-contrast-lower));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -2370,7 +2370,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -2432,7 +2432,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -2567,7 +2567,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -2598,7 +2598,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -2660,7 +2660,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -2796,7 +2796,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -2830,7 +2830,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -2897,7 +2897,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -3028,7 +3028,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -3062,7 +3062,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -3129,7 +3129,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -3259,7 +3259,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -3293,7 +3293,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -3360,7 +3360,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -3490,7 +3490,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -3524,7 +3524,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -3591,7 +3591,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -3721,7 +3721,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -3755,7 +3755,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -3822,7 +3822,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -3952,7 +3952,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -3986,7 +3986,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -4053,7 +4053,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -4182,7 +4182,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -4216,7 +4216,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -4283,7 +4283,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -4413,7 +4413,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -4447,7 +4447,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -4514,7 +4514,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -4644,7 +4644,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -4675,7 +4675,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -4737,7 +4737,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -4874,7 +4874,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -4905,7 +4905,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -4967,7 +4967,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -5103,7 +5103,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -5134,7 +5134,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -5196,7 +5196,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -5333,7 +5333,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-success));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-lg);
     background: var(--p-multi-select-background-color, var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -5364,7 +5364,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -5426,7 +5426,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -5563,7 +5563,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-error));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -5594,7 +5594,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -5656,7 +5656,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -5792,7 +5792,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color, var(--p-color-primary));
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color, var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color, var(--p-color-primary));
@@ -5823,7 +5823,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium, var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -5885,7 +5885,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {

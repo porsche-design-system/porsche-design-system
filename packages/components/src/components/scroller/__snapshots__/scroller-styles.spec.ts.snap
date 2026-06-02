@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css for isIndicatorPrevVisible: false, isIndicatorNextVisible: false, isSticky: false, hasScrollbar: false, isCompact: false 1`] = `
 ":host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -18,7 +18,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -119,7 +119,7 @@ slot {
 exports[`getComponentCss() > should return correct css for isIndicatorPrevVisible: false, isIndicatorNextVisible: true, isSticky: false, hasScrollbar: false, isCompact: false 1`] = `
 ":host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -134,7 +134,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -237,7 +237,7 @@ slot {
 exports[`getComponentCss() > should return correct css for isIndicatorPrevVisible: true, isIndicatorNextVisible: false, isSticky: false, hasScrollbar: false, isCompact: false 1`] = `
 ":host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -252,7 +252,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -355,7 +355,7 @@ slot {
 exports[`getComponentCss() > should return correct css for isIndicatorPrevVisible: true, isIndicatorNextVisible: true, isSticky: false, hasScrollbar: false, isCompact: false 1`] = `
 ":host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -370,7 +370,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -473,7 +473,7 @@ slot {
 exports[`getComponentCss() > should return correct css for isIndicatorPrevVisible: true, isIndicatorNextVisible: true, isSticky: true, hasScrollbar: false, isCompact: false 1`] = `
 ":host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -488,7 +488,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -597,7 +597,7 @@ slot {
 exports[`getComponentCss() > should return correct css for isIndicatorPrevVisible: true, isIndicatorNextVisible: true, isSticky: true, hasScrollbar: true, isCompact: false 1`] = `
 ":host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -612,7 +612,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -736,7 +736,7 @@ slot {
 exports[`getComponentCss() > should return correct css for isIndicatorPrevVisible: true, isIndicatorNextVisible: true, isSticky: true, hasScrollbar: true, isCompact: true 1`] = `
 ":host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -751,7 +751,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -873,7 +873,7 @@ slot {
 exports[`getComponentCss() > should return correct css for isIndicatorPrevVisible: undefined, isIndicatorNextVisible: undefined, isSticky: false, hasScrollbar: false, isCompact: false 1`] = `
 ":host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -888,7 +888,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);

@@ -46,7 +46,7 @@ p {
   all: unset;
   z-index: 3;
   max-width: 34.375rem;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   hyphens: inherit;
   font-size: var(--p-typescale-md);
@@ -62,7 +62,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 4/3;
   cursor: pointer;
 }
@@ -161,7 +161,7 @@ p {
   all: unset;
   z-index: 3;
   max-width: 34.375rem;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   hyphens: inherit;
   font-size: var(--p-typescale-md);
@@ -177,7 +177,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 9/16;
   cursor: pointer;
 }
@@ -267,7 +267,7 @@ p {
   all: unset;
   z-index: 3;
   max-width: 34.375rem;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   hyphens: inherit;
   font-size: inherit;
@@ -283,7 +283,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 16/9;
   cursor: pointer;
 }
@@ -373,7 +373,7 @@ p {
   all: unset;
   z-index: 3;
   max-width: 34.375rem;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   hyphens: inherit;
   font-size: inherit;
@@ -424,7 +424,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 1/1;
   cursor: pointer;
 }
@@ -608,7 +608,7 @@ p {
   all: unset;
   z-index: 3;
   max-width: 34.375rem;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   hyphens: inherit;
   font-size: inherit;
@@ -624,7 +624,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 1/1;
   cursor: not-allowed;
 }
@@ -723,7 +723,7 @@ p {
   all: unset;
   z-index: 3;
   max-width: 34.375rem;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   hyphens: inherit;
   font-size: var(--p-typescale-lg);
@@ -739,7 +739,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 3/4;
   cursor: not-allowed;
 }

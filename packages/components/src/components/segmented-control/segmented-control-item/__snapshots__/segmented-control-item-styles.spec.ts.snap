@@ -19,7 +19,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -71,7 +71,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -123,7 +123,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -179,7 +179,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -235,7 +235,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px) max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1));
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -292,7 +292,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -339,7 +339,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -382,7 +382,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -429,7 +429,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px) max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1));
   border: 1px solid var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -477,7 +477,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-success);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -525,7 +525,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -580,7 +580,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 1)) + 4px);
   border: 1px solid var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -638,7 +638,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 0.5) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) + 4px);
   border: 1px solid var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -681,7 +681,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 0.5) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) + 4px);
   border: 1px solid var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -729,7 +729,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 0.5) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) + 4px);
   border: 1px solid var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -784,7 +784,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a, 0.5) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a, 0.5)) + 4px);
   border: 1px solid var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

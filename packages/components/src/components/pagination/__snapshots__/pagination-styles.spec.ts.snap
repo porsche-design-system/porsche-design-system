@@ -39,7 +39,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -142,7 +142,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -245,7 +245,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -348,7 +348,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -457,7 +457,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -566,7 +566,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -675,7 +675,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -784,7 +784,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -893,7 +893,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1002,7 +1002,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1111,7 +1111,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1220,7 +1220,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1329,7 +1329,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1438,7 +1438,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1544,7 +1544,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1653,7 +1653,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1759,7 +1759,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1868,7 +1868,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1980,7 +1980,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -2092,7 +2092,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }

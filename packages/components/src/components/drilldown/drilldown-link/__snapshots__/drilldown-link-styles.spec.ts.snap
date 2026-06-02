@@ -14,7 +14,7 @@ a {
   all: unset;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
@@ -54,7 +54,7 @@ a {
   all: unset;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
@@ -94,7 +94,7 @@ a {
   all: unset;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
@@ -134,7 +134,7 @@ a {
   all: unset;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
@@ -174,7 +174,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--p-radius-sm) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
@@ -214,7 +214,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--p-radius-sm) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
@@ -254,7 +254,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--p-radius-sm) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
@@ -294,7 +294,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--p-radius-sm) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;

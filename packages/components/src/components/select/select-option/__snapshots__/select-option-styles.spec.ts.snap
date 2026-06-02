@@ -12,7 +12,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
   font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   width: auto !important;
   height: var(--p-leading-normal) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--p-radius-sm) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -29,7 +29,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -73,7 +73,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
   font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   width: auto !important;
   height: var(--p-leading-normal) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--p-radius-sm) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -97,7 +97,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {

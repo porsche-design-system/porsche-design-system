@@ -24,7 +24,7 @@ slot[name="header"] {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
+  border-radius: var(--p-radius-2xl) !important;
   overflow: hidden !important;
 }
 .root {
@@ -33,7 +33,7 @@ slot[name="header"] {
   aspect-ratio: 9/16;
   overflow: hidden;
   box-sizing: border-box;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   padding: var(--p-spacing-fluid-sm);
   color: var(--p-color-primary);
   background-color: var(--p-color-surface);
@@ -42,7 +42,7 @@ slot[name="header"] {
   position: absolute;
   inset: 0;
   z-index: 1;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
 }
 .anchor:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -126,7 +126,7 @@ slot[name="header"] {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
+  border-radius: var(--p-radius-2xl) !important;
   overflow: hidden !important;
 }
 .root {
@@ -135,7 +135,7 @@ slot[name="header"] {
   aspect-ratio: 3/4;
   overflow: hidden;
   box-sizing: border-box;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   padding: var(--p-spacing-fluid-sm);
   color: var(--p-color-primary);
   background-color: var(--p-color-surface);
@@ -144,7 +144,7 @@ slot[name="header"] {
   position: absolute;
   inset: 0;
   z-index: 1;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
 }
 .anchor:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -232,7 +232,7 @@ slot[name="header"] {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
+  border-radius: var(--p-radius-2xl) !important;
   overflow: hidden !important;
 }
 .root {
@@ -241,7 +241,7 @@ slot[name="header"] {
   aspect-ratio: 3/4;
   overflow: hidden;
   box-sizing: border-box;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   padding: var(--p-spacing-fluid-sm);
   color: var(--p-color-primary);
   background-color: var(--p-color-surface);
@@ -250,7 +250,7 @@ slot[name="header"] {
   position: absolute;
   inset: 0;
   z-index: 1;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
 }
 .anchor:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -338,7 +338,7 @@ slot[name="header"] {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
+  border-radius: var(--p-radius-2xl) !important;
   overflow: hidden !important;
 }
 .root {
@@ -347,7 +347,7 @@ slot[name="header"] {
   aspect-ratio: 3/4;
   overflow: hidden;
   box-sizing: border-box;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   padding: var(--p-spacing-fluid-sm);
   color: var(--p-color-primary);
   background-color: var(--p-color-surface);
@@ -356,7 +356,7 @@ slot[name="header"] {
   position: absolute;
   inset: 0;
   z-index: 1;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
 }
 .anchor:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -444,7 +444,7 @@ slot[name="header"] {
   position: absolute !important;
   inset: 0 !important;
   z-index: 1 !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl)) !important;
+  border-radius: var(--p-radius-3xl) !important;
   text-indent: -999999px !important;
 }
 ::slotted(a[slot='anchor']:focus-visible) {
@@ -461,7 +461,7 @@ slot[name="header"] {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
+  border-radius: var(--p-radius-2xl) !important;
   overflow: hidden !important;
 }
 @media(forced-colors:active) {
@@ -480,7 +480,7 @@ slot[name="header"] {
   aspect-ratio: 3/4;
   overflow: hidden;
   box-sizing: border-box;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   padding: var(--p-spacing-fluid-sm);
   color: var(--p-color-primary);
   background-color: var(--p-color-surface);
@@ -551,7 +551,7 @@ slot[name="header"] {
   position: absolute !important;
   inset: 0 !important;
   z-index: 1 !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl)) !important;
+  border-radius: var(--p-radius-3xl) !important;
   text-indent: -999999px !important;
 }
 ::slotted(a[slot='anchor']:focus-visible) {
@@ -568,7 +568,7 @@ slot[name="header"] {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
+  border-radius: var(--p-radius-2xl) !important;
   overflow: hidden !important;
 }
 s {
@@ -590,7 +590,7 @@ s {
   aspect-ratio: 3/4;
   overflow: hidden;
   box-sizing: border-box;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   padding: var(--p-spacing-fluid-sm);
   color: var(--p-color-primary);
   background-color: var(--p-color-surface);
@@ -675,7 +675,7 @@ slot[name="header"] {
   position: absolute !important;
   inset: 0 !important;
   z-index: 1 !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl)) !important;
+  border-radius: var(--p-radius-3xl) !important;
   text-indent: -999999px !important;
 }
 ::slotted(a[slot='anchor']:focus-visible) {
@@ -692,7 +692,7 @@ slot[name="header"] {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-2xl)) !important;
+  border-radius: var(--p-radius-2xl) !important;
   overflow: hidden !important;
 }
 s {
@@ -714,7 +714,7 @@ s {
   aspect-ratio: 3/4;
   overflow: hidden;
   box-sizing: border-box;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   padding: var(--p-spacing-fluid-sm);
   color: var(--p-color-primary);
   background-color: var(--p-color-surface);

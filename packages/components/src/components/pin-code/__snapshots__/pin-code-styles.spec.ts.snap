@@ -28,7 +28,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-success);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-success-frosted-soft);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -270,7 +270,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -391,7 +391,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -512,7 +512,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -633,7 +633,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -754,7 +754,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -875,7 +875,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -996,7 +996,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -1127,7 +1127,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -1259,7 +1259,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -1391,7 +1391,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -1523,7 +1523,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -1655,7 +1655,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -1787,7 +1787,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -1919,7 +1919,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-error-frosted-soft);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);

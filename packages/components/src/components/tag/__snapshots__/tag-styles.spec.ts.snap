@@ -17,7 +17,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
-  border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(4px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-error);
@@ -34,7 +34,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -83,7 +83,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
-  border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(4px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -102,7 +102,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -151,7 +151,7 @@ span {
   display: flex;
   gap: 2px;
   padding: var(--p-spacing-static-2xs) var(--p-spacing-static-sm);
-  border-radius: var(--_p-legacy-radius-small, calc(1px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(1px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-info);
@@ -168,7 +168,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -211,7 +211,7 @@ span {
   display: flex;
   gap: 2px;
   padding: var(--p-spacing-static-2xs) var(--p-spacing-static-sm);
-  border-radius: var(--_p-legacy-radius-small, calc(1px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(1px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -230,7 +230,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -273,7 +273,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
-  border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(4px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-primary);
@@ -290,7 +290,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -339,7 +339,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
-  border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(4px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -358,7 +358,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -401,7 +401,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
-  border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(4px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-success);
@@ -418,7 +418,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -467,7 +467,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
-  border-radius: var(--_p-legacy-radius-small, calc(4px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(4px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -486,7 +486,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -535,7 +535,7 @@ span {
   display: flex;
   gap: 2px;
   padding: var(--p-spacing-static-2xs) var(--p-spacing-static-sm);
-  border-radius: var(--_p-legacy-radius-small, calc(1px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(1px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-warning);
@@ -552,7 +552,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -592,7 +592,7 @@ span {
   display: flex;
   gap: 2px;
   padding: var(--p-spacing-static-2xs) var(--p-spacing-static-sm);
-  border-radius: var(--_p-legacy-radius-small, calc(1px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(1px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -611,7 +611,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
