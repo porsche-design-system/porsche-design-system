@@ -4,24 +4,24 @@ import {
   cssVariablesMeta,
   flattenColorVariables,
   flattenCssVariables,
-  globalStylesMeta,
   legacyRadiusMeta,
   renderCss,
   renderCssNode,
+  stylesheetsMeta,
 } from '../../../src';
 
 const allCssVariables = flattenCssVariables(cssVariablesMeta);
 
 it('should match snapshot', () => {
-  expect(globalStylesMeta).toMatchSnapshot();
+  expect(stylesheetsMeta).toMatchSnapshot();
 });
 
 it('should contain all expected stylesheets', () => {
-  expect(Object.keys(globalStylesMeta)).toEqual(['cssVariables', 'colorScheme', 'normalize', 'legacyRadius']);
+  expect(Object.keys(stylesheetsMeta)).toEqual(['cssVariables', 'colorScheme', 'normalize', 'legacyRadius']);
 });
 
 it('every stylesheet entry should expose file, description and meta', () => {
-  for (const [key, entry] of Object.entries(globalStylesMeta)) {
+  for (const [key, entry] of Object.entries(stylesheetsMeta)) {
     expect(entry.file, `${key}: missing file`).toMatch(/\.css$/);
     expect(entry.description, `${key}: missing description`).toBeTruthy();
     expect(Array.isArray(entry.meta), `${key}: meta must be a CssNode array`).toBe(true);
@@ -60,7 +60,6 @@ it('every color variable should provide light and dark values for the polyfill',
   }
 });
 
-
 it('renderCssNode should serialize a declaration', () => {
   expect(renderCssNode({ property: '--p-color-canvas', value: '#fff' })).toBe('--p-color-canvas: #fff;');
 });
@@ -76,7 +75,7 @@ it('renderCssNode should serialize a nested rule with an optional comment', () =
 });
 
 it('renderCss should serialize the resolution of every generated stylesheet to a snapshot', () => {
-  for (const [key, { meta }] of Object.entries(globalStylesMeta)) {
+  for (const [key, { meta }] of Object.entries(stylesheetsMeta)) {
     expect(renderCss(meta), key).toMatchSnapshot();
   }
 });
