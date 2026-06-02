@@ -16,10 +16,10 @@ export const SearchRecommendations = ({ onRecommendationClick }: SearchRecommend
     { name: 'Start Designing', imageSrc: 'assets/design.png', href: '/designing/introduction/#start-designing' },
     { name: 'Components', imageSrc: 'assets/components.png', href: '/components/introduction/' },
     { name: 'Tokens', imageSrc: 'assets/styles-tokens.png', href: '/tokens/introduction/' },
-    { name: 'Assets', imageSrc: 'assets/assets.png', href: '' },
-    { name: 'Templates', imageSrc: 'assets/templates.png', href: '' },
+    { name: 'Stylesheets', imageSrc: 'assets/assets.png', href: '/stylesheets/introduction/' },
+    { name: 'Templates', imageSrc: 'assets/templates.png', href: '/templates/landing-page/' },
     { name: 'Release Notes', imageSrc: 'assets/release-notes.png', href: '/news/changelog/' },
-    { name: 'Feedback & Requests', imageSrc: 'assets/feedback.png', href: '' },
+    { name: 'Help', imageSrc: 'assets/feedback.png', href: '/help/support/' },
   ];
 
   return (
