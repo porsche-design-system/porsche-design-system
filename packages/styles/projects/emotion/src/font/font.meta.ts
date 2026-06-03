@@ -292,21 +292,21 @@ const deprecatedFontStyle = {
 /** @deprecated since v4.0.0, will be removed with next major release. Use 'italic' instead. */
 const deprecatedFontStyleItalic = {
   name: 'fontStyleItalic',
-  value: 'italic' as const,
+  value: 'italic',
   description: "since v4.0.0, will be removed with next major release. Use 'italic' instead.",
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use 'normal' instead. */
 const deprecatedFontStyleNormal = {
   name: 'fontStyleNormal',
-  value: 'normal' as const,
+  value: 'normal',
   description: "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use 'normal' instead. */
 const deprecatedFontVariant = {
   name: 'fontVariant',
-  value: 'normal' as const,
+  value: 'normal',
   description: "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
 };
 

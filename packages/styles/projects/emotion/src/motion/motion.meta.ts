@@ -10,14 +10,34 @@ import {
 
 export const motionMeta = {
   duration: {
-    durationSm: { name: 'durationSm', value: durationSm, description: 'Holds a **short** `transition-duration` / `animation-duration`.' },
-    durationMd: { name: 'durationMd', value: durationMd, description: 'Holds a **moderate** `transition-duration` / `animation-duration`.' },
-    durationLg: { name: 'durationLg', value: durationLg, description: 'Holds a **long** `transition-duration` / `animation-duration`.' },
-    durationXl: { name: 'durationXl', value: durationXl, description: 'Holds a **very long** `transition-duration` / `animation-duration`.' },
+    durationSm: {
+      name: 'durationSm',
+      value: durationSm,
+      description: 'Holds a **short** `transition-duration` / `animation-duration`.',
+    },
+    durationMd: {
+      name: 'durationMd',
+      value: durationMd,
+      description: 'Holds a **moderate** `transition-duration` / `animation-duration`.',
+    },
+    durationLg: {
+      name: 'durationLg',
+      value: durationLg,
+      description: 'Holds a **long** `transition-duration` / `animation-duration`.',
+    },
+    durationXl: {
+      name: 'durationXl',
+      value: durationXl,
+      description: 'Holds a **very long** `transition-duration` / `animation-duration`.',
+    },
   },
   ease: {
     easeIn: { name: 'easeIn', value: easeIn, description: 'Holds an **in** `transition-timing-function`.' },
-    easeInOut: { name: 'easeInOut', value: easeInOut, description: 'Holds an **in-out** `transition-timing-function`.' },
+    easeInOut: {
+      name: 'easeInOut',
+      value: easeInOut,
+      description: 'Holds an **in-out** `transition-timing-function`.',
+    },
     easeOut: { name: 'easeOut', value: easeOut, description: 'Holds an **out** `transition-timing-function`.' },
   },
 } as const;

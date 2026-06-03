@@ -502,7 +502,8 @@ const deprecatedThemeLightContrastLow = {
 const deprecatedThemeLightContrastMedium = {
   name: 'themeLightContrastMedium',
   value: colorContrastMediumLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead.',
+  description:
+    'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorLight instead. */
@@ -544,7 +545,8 @@ const deprecatedThemeLightNotificationSuccess = {
 const deprecatedThemeLightNotificationSuccessSoft = {
   name: 'themeLightNotificationSuccessSoft',
   value: colorSuccessFrostedLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead.',
+  description:
+    'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningLight instead. */
@@ -558,7 +560,8 @@ const deprecatedThemeLightNotificationWarning = {
 const deprecatedThemeLightNotificationWarningSoft = {
   name: 'themeLightNotificationWarningSoft',
   value: colorWarningFrostedLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead.',
+  description:
+    'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead. */

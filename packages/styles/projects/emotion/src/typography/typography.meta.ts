@@ -6,7 +6,8 @@ export const typographyMeta = {
   },
   proseText5XlStyle: {
     name: 'proseText5XlStyle',
-    description: 'Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
   proseHeading4XlStyle: {
     name: 'proseHeading4XlStyle',
@@ -15,7 +16,8 @@ export const typographyMeta = {
   },
   proseText4XlStyle: {
     name: 'proseText4XlStyle',
-    description: 'Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
   proseHeading3XlStyle: {
     name: 'proseHeading3XlStyle',
@@ -24,7 +26,8 @@ export const typographyMeta = {
   },
   proseText3XlStyle: {
     name: 'proseText3XlStyle',
-    description: 'Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
   proseHeading2XlStyle: {
     name: 'proseHeading2XlStyle',
@@ -33,7 +36,8 @@ export const typographyMeta = {
   },
   proseText2XlStyle: {
     name: 'proseText2XlStyle',
-    description: 'Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
   proseHeadingXlStyle: {
     name: 'proseHeadingXlStyle',
@@ -42,7 +46,8 @@ export const typographyMeta = {
   },
   proseTextXlStyle: {
     name: 'proseTextXlStyle',
-    description: 'Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
   proseHeadingLgStyle: {
     name: 'proseHeadingLgStyle',
@@ -51,7 +56,8 @@ export const typographyMeta = {
   },
   proseTextLgStyle: {
     name: 'proseTextLgStyle',
-    description: 'Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
   proseHeadingMdStyle: {
     name: 'proseHeadingMdStyle',
@@ -60,7 +66,8 @@ export const typographyMeta = {
   },
   proseTextMdStyle: {
     name: 'proseTextMdStyle',
-    description: 'Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
   proseHeadingSmStyle: {
     name: 'proseHeadingSmStyle',
@@ -69,7 +76,8 @@ export const typographyMeta = {
   },
   proseTextSmStyle: {
     name: 'proseTextSmStyle',
-    description: 'Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
   proseHeadingXsStyle: {
     name: 'proseHeadingXsStyle',
@@ -78,7 +86,8 @@ export const typographyMeta = {
   },
   proseTextXsStyle: {
     name: 'proseTextXsStyle',
-    description: 'Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
   proseHeading2XsStyle: {
     name: 'proseHeading2XsStyle',
@@ -87,7 +96,8 @@ export const typographyMeta = {
   },
   proseText2XsStyle: {
     name: 'proseText2XsStyle',
-    description: 'Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
   },
 } as const;
 
