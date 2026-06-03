@@ -16,6 +16,7 @@ type MetaFileContext = {
   sourceFile: ts.SourceFile;
   categoryDir: string;
   importMap: Map<string, string>;
+  aliasMap: Map<string, string>;
   localScalarMap: Map<string, string>;
   varMap: Map<string, ts.ObjectLiteralExpression>;
 };
@@ -86,6 +87,23 @@ function buildImportMap(sourceFile: ts.SourceFile): Map<string, string> {
   return map;
 }
 
+// Maps local alias → original export name for aliased imports (e.g. `colorCanvas as _colorCanvas`).
+function buildAliasMap(sourceFile: ts.SourceFile): Map<string, string> {
+  const map = new Map<string, string>();
+  ts.forEachChild(sourceFile, (node) => {
+    if (!ts.isImportDeclaration(node)) return;
+    const bindings = node.importClause?.namedBindings;
+    if (bindings && ts.isNamedImports(bindings)) {
+      for (const el of bindings.elements) {
+        if (el.propertyName) {
+          map.set(el.name.text, el.propertyName.text);
+        }
+      }
+    }
+  });
+  return map;
+}
+
 function getPropertyAssignment(node: ts.ObjectLiteralExpression, key: string): ts.PropertyAssignment | undefined {
   return node.properties.find(
     (prop): prop is ts.PropertyAssignment =>
@@ -122,11 +140,40 @@ function resolveEntryObject(
   return undefined;
 }
 
+function getDescriptionText(
+  node: ts.ObjectLiteralExpression,
+  sourceFile: ts.SourceFile,
+  localScalarMap: Map<string, string>
+): string | undefined {
+  const prop = getPropertyAssignment(node, 'description');
+  if (!prop) return undefined;
+  const init = prop.initializer;
+  if (ts.isStringLiteral(init)) return init.text;
+  if (ts.isNoSubstitutionTemplateLiteral(init)) return init.text;
+  if (ts.isTemplateExpression(init)) {
+    let result = init.head.text;
+    for (const span of init.templateSpans) {
+      if (ts.isIdentifier(span.expression)) {
+        const raw = localScalarMap.get(span.expression.text);
+        // raw is the source text of the scalar (e.g. "'[light-dark()](...)'"); strip surrounding quotes
+        result += raw ? (raw.match(/^['"`]([\s\S]*)['"`]$/)?.[1] ?? raw) : `\${${span.expression.text}}`;
+      } else {
+        result += `\${...}`;
+      }
+      result += span.literal.text;
+    }
+    return result;
+  }
+  return undefined;
+}
+
 function extractEntries(
   metaObj: ts.ObjectLiteralExpression,
   varMap: Map<string, ts.ObjectLiteralExpression>,
   isDeprecated: boolean,
-  groupKey?: string
+  groupKey?: string,
+  sourceFile?: ts.SourceFile,
+  localScalarMap?: Map<string, string>
 ): Entry[] {
   const entries: Entry[] = [];
 
@@ -139,7 +186,10 @@ function extractEntries(
 
     if (isLeafEntry(entryObj)) {
       const exportName = getStringProp(entryObj, 'name');
-      const description = getStringProp(entryObj, 'description');
+      const description =
+        sourceFile && localScalarMap
+          ? getDescriptionText(entryObj, sourceFile, localScalarMap)
+          : getStringProp(entryObj, 'description');
       const valueNode = getValueNode(entryObj);
       if (exportName && description && valueNode) {
         entries.push({ exportName, valueNode, description, groupKey, isDeprecated });
@@ -147,7 +197,7 @@ function extractEntries(
     } else {
       const key = ts.isIdentifier(prop.name) ? prop.name.text : undefined;
       if (key) {
-        entries.push(...extractEntries(entryObj, varMap, isDeprecated, key));
+        entries.push(...extractEntries(entryObj, varMap, isDeprecated, key, sourceFile, localScalarMap));
       }
     }
   }
@@ -157,7 +207,8 @@ function extractEntries(
 
 function findMetaExports(
   sourceFile: ts.SourceFile,
-  varMap: Map<string, ts.ObjectLiteralExpression>
+  varMap: Map<string, ts.ObjectLiteralExpression>,
+  localScalarMap: Map<string, string>
 ): { regular: Entry[]; deprecated: Entry[] } {
   const regular: Entry[] = [];
   const deprecated: Entry[] = [];
@@ -174,7 +225,7 @@ function findMetaExports(
       if (!metaObj) continue;
 
       const isDeprecated = /^deprecated/i.test(varName);
-      const entries = extractEntries(metaObj, varMap, isDeprecated);
+      const entries = extractEntries(metaObj, varMap, isDeprecated, undefined, sourceFile, localScalarMap);
       (isDeprecated ? deprecated : regular).push(...entries);
     }
   });
@@ -353,7 +404,11 @@ function generateStyleFile(entry: Entry, outputDir: string, context: GenerationC
     .map(([mod, ids]) => {
       const specifiers = ids
         .sort()
-        .map((id) => (id === entry.exportName ? `${id} as _${id}` : id))
+        .map((id) => {
+          if (id === entry.exportName) return `${id} as _${id}`;
+          const originalName = context.aliasMap.get(id);
+          return originalName ? `${originalName} as ${id}` : id;
+        })
         .join(', ');
       return `import { ${specifiers} } from '${mod}';`;
     })
@@ -392,6 +447,11 @@ function generateRootIndex(regular: Entry[], deprecated: Entry[]): string {
     if (deprecated.length > 0) lines.push(`export * from './deprecated';`);
     const groups = [...new Set(regular.map((e) => e.groupKey).filter(Boolean) as string[])].sort();
     for (const g of groups) lines.push(`export * from './${g}';`);
+    // Also include non-grouped entries that live directly in generated/
+    const ungrouped = [...regular.filter((e) => !e.groupKey)].sort((a, b) =>
+      a.exportName.localeCompare(b.exportName)
+    );
+    for (const e of ungrouped) lines.push(`export { ${e.exportName} } from './${e.exportName}';`);
   } else {
     const sorted = [...regular].sort((a, b) => a.exportName.localeCompare(b.exportName));
     for (const e of sorted) lines.push(`export { ${e.exportName} } from './${e.exportName}';`);
@@ -436,10 +496,11 @@ function parseMetaFile(metaFilePath: string): MetaFileContext & { regular: Entry
 
   const varMap = buildVariableMap(sourceFile);
   const importMap = buildImportMap(sourceFile);
+  const aliasMap = buildAliasMap(sourceFile);
   const localScalarMap = buildLocalScalarMap(sourceFile, importMap, varMap);
-  const { regular, deprecated } = findMetaExports(sourceFile, varMap);
+  const { regular, deprecated } = findMetaExports(sourceFile, varMap, localScalarMap);
 
-  return { sourceFile, categoryDir, importMap, localScalarMap, varMap, regular, deprecated };
+  return { sourceFile, categoryDir, importMap, aliasMap, localScalarMap, varMap, regular, deprecated };
 }
 
 function buildEntryLocationMap(categoryDir: string, entries: Entry[]): Map<string, string> {
@@ -450,12 +511,23 @@ function buildEntryLocationMap(categoryDir: string, entries: Entry[]): Map<strin
   return map;
 }
 
-function writeEntries(entries: Entry[], context: GenerationContext): void {
+function writeEntries(entries: Entry[], context: GenerationContext): Set<string> {
+  const pending = new Map<string, { filePath: string; content: string }>();
   for (const entry of entries) {
     const outputDir = getOutputDir(context.categoryDir, entry);
     const content = generateStyleFile(entry, outputDir, context);
-    if (content !== null) writeFile(path.join(outputDir, `${entry.exportName}.ts`), content);
+    if (content !== null) {
+      const filePath = path.join(outputDir, `${entry.exportName}.ts`);
+      writeFile(filePath, content);
+      pending.set(entry.exportName, { filePath, content });
+    }
   }
+  // Verify after all writes: on case-insensitive filesystems a later sibling may overwrite an earlier file.
+  const written = new Set<string>();
+  for (const [name, { filePath, content }] of pending) {
+    if (fs.readFileSync(filePath, 'utf-8') === content) written.add(name);
+  }
+  return written;
 }
 
 function writeIndexes(categoryDir: string, regular: Entry[], deprecated: Entry[]): void {
@@ -467,14 +539,14 @@ function writeIndexes(categoryDir: string, regular: Entry[], deprecated: Entry[]
   }
 
   for (const [groupKey, entries] of byGroup) {
-    writeIndexSafely(path.join(generatedDir, groupKey, 'index.ts'), generateNamedExportsIndex(entries));
+    writeFile(path.join(generatedDir, groupKey, 'index.ts'), generateNamedExportsIndex(entries));
   }
 
   if (deprecated.length > 0) {
-    writeIndexSafely(path.join(generatedDir, 'deprecated', 'index.ts'), generateNamedExportsIndex(deprecated));
+    writeFile(path.join(generatedDir, 'deprecated', 'index.ts'), generateNamedExportsIndex(deprecated));
   }
 
-  writeIndexSafely(path.join(generatedDir, 'index.ts'), generateRootIndex(regular, deprecated));
+  writeFile(path.join(generatedDir, 'index.ts'), generateRootIndex(regular, deprecated));
 }
 
 function processMetaFile(metaFilePath: string): void {
@@ -484,9 +556,13 @@ function processMetaFile(metaFilePath: string): void {
     entryLocationMap: buildEntryLocationMap(context.categoryDir, [...regular, ...deprecated]),
   };
 
-  writeEntries(regular, generationContext);
-  writeEntries(deprecated, generationContext);
-  writeIndexes(context.categoryDir, regular, deprecated);
+  const writtenRegular = writeEntries(regular, generationContext);
+  const writtenDeprecated = writeEntries(deprecated, generationContext);
+  writeIndexes(
+    context.categoryDir,
+    regular.filter((e) => writtenRegular.has(e.exportName)),
+    deprecated.filter((e) => writtenDeprecated.has(e.exportName))
+  );
 }
 
 const startTime = performance.now();
