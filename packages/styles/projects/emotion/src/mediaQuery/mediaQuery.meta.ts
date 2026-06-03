@@ -8,6 +8,14 @@ import {
 } from '@porsche-design-system/tokens';
 import { getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from './helpers';
 
+type Breakpoint = 'base' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
+type MaxBreakpoint = Exclude<Breakpoint, 'base'>;
+type MinMaxBreakpoint = Exclude<Breakpoint, 'xxl'>;
+
+type GetMediaQueryMaxValue = (max: MaxBreakpoint) => string;
+type GetMediaQueryMinValue = (min: Breakpoint) => string;
+type GetMediaQueryMinMaxValue = (min: MinMaxBreakpoint, max: MaxBreakpoint) => string;
+
 export const mediaQueryMeta = {
   breakpoint: {
     name: 'breakpoint',
@@ -37,16 +45,16 @@ export const mediaQueryMeta = {
   getMediaQueryMax: {
     name: 'getMediaQueryMax',
     description: 'Returns a **max-width** media query string for the specified breakpoint.',
-    value: getMediaQueryMax,
+    value: getMediaQueryMax as GetMediaQueryMaxValue,
   },
   getMediaQueryMin: {
     name: 'getMediaQueryMin',
     description: 'Returns a **min-width** media query string for the specified breakpoint.',
-    value: getMediaQueryMin,
+    value: getMediaQueryMin as GetMediaQueryMinValue,
   },
   getMediaQueryMinMax: {
     name: 'getMediaQueryMinMax',
     description: 'Returns a **min-width and max-width** media query string for the specified breakpoints.',
-    value: getMediaQueryMinMax,
+    value: getMediaQueryMinMax as GetMediaQueryMinMaxValue,
   },
 } as const;
