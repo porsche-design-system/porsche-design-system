@@ -1,6 +1,6 @@
+import { colorPrimary, ref } from '@porsche-design-system/stylesheets';
 import type { Styles } from 'jss';
 import { addImportantToEachRule, forcedColorsMediaQuery, getFocusBaseStyles, hostHiddenStyles } from '../../styles';
-import { colorPrimary } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import type { WordmarkSize } from './wordmark-utils';
 
@@ -46,7 +46,7 @@ export const getComponentCss = (size: WordmarkSize): string => {
       },
       svg: {
         ...sizingStyles,
-        fill: colorPrimary,
+        fill: ref(colorPrimary),
         ...forcedColorsMediaQuery({
           fill: 'CanvasText',
         }),

@@ -1,6 +1,3 @@
-import type { JssStyle } from 'jss';
-import type { FormState } from '../../utils/form/form-state';
-import { getDisabledBaseStyles, getFocusBaseStyles, getTransition } from '../common-styles';
 import {
   colorPrimary,
   fontPorscheNext,
@@ -9,8 +6,12 @@ import {
   legacyRadiusSmall,
   radiusLg,
   radiusXl,
+  ref,
   typescaleSm,
-} from '../css-variables';
+} from '@porsche-design-system/stylesheets';
+import type { JssStyle } from 'jss';
+import type { FormState } from '../../utils/form/form-state';
+import { getDisabledBaseStyles, getFocusBaseStyles, getTransition } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
 
@@ -29,9 +30,9 @@ export const getButtonJssStyle = (
   const { formStateBorderColor, formStateBorderHoverColor, formStateBackgroundColor } = getThemedFormStateColors(state);
 
   const borderWidth = '1px';
-  const height = `calc(var(${cssVarScalingName}) * 3.5rem)`;
-  const paddingInline = `calc(22.4px * (var(${cssVarScalingName}) - 0.64285714) + 8px)`;
-  const gap = `calc(22.4px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
+  const height = `calc(${ref(cssVarScalingName)} * 3.5rem)`;
+  const paddingInline = `calc(22.4px * (${ref(cssVarScalingName)} - 0.64285714) + 8px)`;
+  const gap = `calc(22.4px * (${ref(cssVarScalingName)} - 0.64285714) + 4px)`;
 
   return {
     all: 'unset',
@@ -42,18 +43,18 @@ export const getButtonJssStyle = (
     boxSizing: 'border-box',
     minWidth: 0,
     paddingInline,
-    border: `${borderWidth} solid var(${cssVarBorderColor}, ${isOpen ? formStateBorderHoverColor : formStateBorderColor})`,
-    borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
-    background: `var(${cssVarBackgroundColor}, ${formStateBackgroundColor})`,
-    font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
-    color: `var(${cssVarTextColor}, ${colorPrimary})`,
+    border: `${borderWidth} solid ${ref(cssVarBorderColor, isOpen ? formStateBorderHoverColor : formStateBorderColor)}`,
+    borderRadius: ref(legacyRadiusSmall, isCompact ? ref(radiusLg) : ref(radiusXl)),
+    background: ref(cssVarBackgroundColor, formStateBackgroundColor),
+    font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+    color: ref(cssVarTextColor, ref(colorPrimary)),
     cursor: isDisabled ? 'not-allowed' : 'pointer',
     ...(isDisabled && getDisabledBaseStyles()),
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
     ...(!isDisabled && {
       ...hoverMediaQuery({
         '&:hover,label:hover~&': {
-          borderColor: `var(${cssVarBorderColor}, ${formStateBorderHoverColor})`,
+          borderColor: ref(cssVarBorderColor, formStateBorderHoverColor),
         },
       }),
       '&:focus-visible': getFocusBaseStyles(),

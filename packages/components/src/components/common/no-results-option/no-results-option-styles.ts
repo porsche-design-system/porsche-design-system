@@ -1,6 +1,6 @@
+import { colorContrastMedium, ref } from '@porsche-design-system/stylesheets';
 import type { Styles } from 'jss';
 import { getHiddenTextJssStyle } from '../../../styles';
-import { colorContrastMedium } from '../../../styles/css-variables';
 import { getOptionJssStyle } from '../../../styles/select';
 
 export const getFunctionalComponentNoResultsOptionStyles = (
@@ -13,7 +13,7 @@ export const getFunctionalComponentNoResultsOptionStyles = (
       '&[role=option]': {
         cursor: 'not-allowed',
       },
-      color: colorContrastMedium,
+      color: ref(colorContrastMedium),
     },
     'sr-only': getHiddenTextJssStyle(),
   };

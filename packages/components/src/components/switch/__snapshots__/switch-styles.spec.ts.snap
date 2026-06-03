@@ -32,7 +32,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -80,7 +80,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -136,7 +136,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -184,7 +184,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -241,7 +241,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -293,7 +293,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -348,7 +348,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -396,7 +396,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -451,7 +451,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -499,7 +499,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: transparent;
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -558,7 +558,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -610,7 +610,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: transparent;
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -669,7 +669,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -721,7 +721,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: transparent;
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -779,7 +779,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-success-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -827,7 +827,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-success);
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(calc(var(--_p-switch-a) * 3rem) - 1px * 2 - 100% - calc(var(--_p-switch-a) * .1875rem)), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -883,7 +883,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -931,7 +931,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -987,7 +987,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1035,7 +1035,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -1091,7 +1091,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1138,7 +1138,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {
@@ -1194,7 +1194,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1336,7 +1336,7 @@ label {
   height: calc(var(--_p-switch-a) * 1.25rem);
   border-radius: var(--p-radius-full);
   background: var(--p-color-primary);
-  transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   transform: translate3d(calc(var(--_p-switch-a) * .1875rem), 0, 0);
 }
 .toggle:dir(rtl) {

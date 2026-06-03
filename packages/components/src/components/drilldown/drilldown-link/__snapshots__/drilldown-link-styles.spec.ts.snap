@@ -14,13 +14,13 @@ a {
   all: unset;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: transparent;
   cursor: pointer;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 a:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -54,13 +54,13 @@ a {
   all: unset;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 a:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -94,13 +94,13 @@ a {
   all: unset;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 a:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -134,13 +134,13 @@ a {
   all: unset;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 a:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -174,13 +174,13 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm)) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
   cursor: pointer !important;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -214,13 +214,13 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm)) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -254,13 +254,13 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm)) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -294,13 +294,13 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   all: unset !important;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm)) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;

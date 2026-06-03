@@ -33,8 +33,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -116,8 +116,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -199,8 +199,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -282,8 +282,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -357,8 +357,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -432,8 +432,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   background-color: var(--p-color-frosted);
@@ -510,8 +510,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -592,8 +592,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   background-color: var(--p-color-frosted);
@@ -677,8 +677,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   background-color: var(--p-color-frosted);
@@ -763,8 +763,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -846,8 +846,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -929,8 +929,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -964,7 +964,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -980,7 +980,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -2px;
     left: -2px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -996,7 +996,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -1012,7 +1012,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -2px;
     left: -2px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -1028,7 +1028,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -1129,8 +1129,8 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -1167,7 +1167,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -1187,7 +1187,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -2px;
     left: -2px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -1207,7 +1207,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -1227,7 +1227,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -2px;
     left: -2px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   }
   .label {
     white-space: nowrap;
@@ -1247,7 +1247,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
   }
   .label {
     white-space: inherit;
@@ -1312,8 +1312,8 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -1385,8 +1385,8 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -1460,8 +1460,8 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -1535,8 +1535,8 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);

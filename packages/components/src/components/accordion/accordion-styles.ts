@@ -1,14 +1,4 @@
 import {
-  addImportantToEachRule,
-  cssVariableTransitionDuration,
-  forcedColorsMediaQuery,
-  getFocusBaseStyles,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  motionDurationMap,
-} from '../../styles';
-import {
   blurFrosted,
   colorCanvas,
   colorFrosted,
@@ -20,9 +10,20 @@ import {
   legacyRadiusSmall,
   radiusFull,
   radiusXl,
+  ref,
   typescaleMd,
   typescaleSm,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import {
+  addImportantToEachRule,
+  cssVariableTransitionDuration,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  motionDurationMap,
+} from '../../styles';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
@@ -49,9 +50,9 @@ const iconMarker = getInlineSVGBackgroundImage(
 );
 
 const backgroundMap: Record<AccordionBackground, string> = {
-  canvas: colorCanvas,
-  surface: colorSurface,
-  frosted: colorFrosted,
+  canvas: ref(colorCanvas),
+  surface: ref(colorSurface),
+  frosted: ref(colorFrosted),
   none: 'transparent',
 };
 
@@ -117,7 +118,7 @@ export const getComponentCss = (
           'details[open] &': {
             overflow: 'visible',
             // fix potential overflow issues
-            animation: `overflow-hidden var(${cssVariableTransitionDuration},${motionDurationMap[duration]})`,
+            animation: `overflow-hidden ${ref(cssVariableTransitionDuration, motionDurationMap[duration])}`,
           },
         },
       },
@@ -125,30 +126,30 @@ export const getComponentCss = (
         all: 'unset',
         gridArea: `1/${hasSummaryBefore && isIconAlignedStart ? '3' : hasSummaryBefore || isIconAlignedStart ? '2' : '1'}`,
         font: 'inherit',
-        fontWeight: fontWeightSemibold,
+        fontWeight: ref(fontWeightSemibold),
         ...buildResponsiveStyles(size, (sizeValue: AccordionSize) => ({
-          fontSize: sizeValue === 'medium' ? typescaleMd : typescaleSm,
+          fontSize: sizeValue === 'medium' ? ref(typescaleMd) : ref(typescaleSm),
         })),
       },
       details: {
         all: 'unset',
-        font: `${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`, // enables font inheritance for slotted content
-        color: colorPrimary, // enables color inheritance for slotted content
+        font: `${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`, // enables font inheritance for slotted content
+        color: ref(colorPrimary), // enables color inheritance for slotted content
         display: 'grid',
         gridTemplate: `repeat(2, auto) / ${hasSummaryBefore ? 'auto ' : ''}${isIconAlignedStart ? 'auto minmax(0, 1fr)' : 'minmax(0, 1fr) auto'}${hasSummaryAfter ? ' auto ' : ''}`,
         columnGap: gap,
         alignItems: 'center',
-        padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
+        padding: `${ref(cssVarPaddingBlock, background === 'none' ? '0' : paddingBlock)} ${ref(cssVarPaddingInline, background === 'none' ? '0' : paddingInline)}`,
         background: backgroundMap[background],
         ...(background === 'frosted' && {
-          WebkitBackdropFilter: blurFrosted,
-          backdropFilter: blurFrosted,
+          WebkitBackdropFilter: ref(blurFrosted),
+          backdropFilter: ref(blurFrosted),
         }),
-        borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
+        borderRadius: ref(legacyRadiusSmall, ref(radiusXl)),
         ...forcedColorsMediaQuery({
           outline: '1px solid CanvasText',
           outlineOffset: background === 'none' ? '0' : '-1px',
-          padding: `var(${cssVarPaddingBlock}, ${paddingBlock}) var(${cssVarPaddingInline}, ${paddingInline})`,
+          padding: `${ref(cssVarPaddingBlock, paddingBlock)} ${ref(cssVarPaddingInline, paddingInline)}`,
         }),
         '&::details-content': addImportantToEachRule({
           display: 'contents', // allows <details> to be used as grid layout
@@ -163,15 +164,15 @@ export const getComponentCss = (
           gridTemplateRows: '0fr',
           visibility: 'hidden', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
           // as soon as all browsers are supporting `allow-discrete` reliable, visibility transition shouldn't be necessary anymore
-          transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}), ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('padding-top', duration, easing)}, ${getTransition('opacity', duration, easing)}`,
+          transition: `visibility 0s linear ${ref(cssVariableTransitionDuration, motionDurationMap[duration])}, ${getTransition('grid-template-rows', duration, easing)}, ${getTransition('padding-top', duration, easing)}, ${getTransition('opacity', duration, easing)}`,
         },
         '&[open]': {
           '& > div': {
             opacity: 1,
             paddingTop,
             zIndex: 2, // Ensure details are above summary when using custom padding
-            paddingInline: `var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
-            marginInline: `calc(-1 * var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline}))`,
+            paddingInline: `${ref(cssVarPaddingInline, background === 'none' ? '0' : paddingInline)}`,
+            marginInline: `calc(-1 * ${ref(cssVarPaddingInline, background === 'none' ? '0' : paddingInline)})`,
             // as soon as all browsers support calc-size(auto) to be transitionable, we can remove the grid-template-rows rule and animation
             gridTemplateRows: '1fr',
             visibility: 'inherit', // since `::details-content` and `allow-discrete` transition doesn't work in Safari we need to take care ourselves for visibility state to be a11y compliant
@@ -188,19 +189,19 @@ export const getComponentCss = (
         gridTemplateColumns: 'subgrid',
         alignItems: 'center',
         cursor: 'pointer',
-        padding: `var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock}) var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline})`,
-        margin: `calc(-1 * var(${cssVarPaddingBlock}, ${background === 'none' ? '0' : paddingBlock})) calc(-1 * var(${cssVarPaddingInline}, ${background === 'none' ? '0' : paddingInline}))`,
+        padding: `${ref(cssVarPaddingBlock, background === 'none' ? '0' : paddingBlock)} ${ref(cssVarPaddingInline, background === 'none' ? '0' : paddingInline)}`,
+        margin: `calc(-1 * ${ref(cssVarPaddingBlock, background === 'none' ? '0' : paddingBlock)}) calc(-1 * ${ref(cssVarPaddingInline, background === 'none' ? '0' : paddingInline)})`,
         ...(isSticky &&
           (background === 'canvas' || background === 'surface') && {
             position: 'sticky',
-            top: `var(${cssVarSummaryTop}, var(${cssVarSummaryTopDeprecated}, 0px))`,
+            top: ref(cssVarSummaryTop, ref(cssVarSummaryTopDeprecated, '0px')),
             background: `linear-gradient(180deg,${backgroundMap[background]} 0%,${backgroundMap[background]} 90%,transparent 100%)`,
-            borderRadius: `var(${legacyRadiusSmall}, ${radiusXl})`,
+            borderRadius: ref(legacyRadiusSmall, ref(radiusXl)),
           }),
         '&:focus-visible::before': getFocusBaseStyles(),
         ...hoverMediaQuery({
           '&:hover::before': {
-            background: colorFrosted,
+            background: ref(colorFrosted),
           },
         }),
         '&::before': {
@@ -210,7 +211,7 @@ export const getComponentCss = (
           width: '1.5rem',
           height: '1.5rem',
           pointerEvents: 'none',
-          borderRadius: radiusFull,
+          borderRadius: ref(radiusFull),
           background: 'transparent',
           transition: getTransition('background-color'),
         },
@@ -223,7 +224,7 @@ export const getComponentCss = (
           pointerEvents: 'none',
           WebkitMask: `${iconMarker} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${iconMarker} center/contain no-repeat`,
-          background: colorPrimary,
+          background: ref(colorPrimary),
           transform: 'rotate3d(0)',
           transition: getTransition('transform', duration, easing),
           ...forcedColorsMediaQuery({

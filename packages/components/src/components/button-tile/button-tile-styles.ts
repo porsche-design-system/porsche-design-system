@@ -1,12 +1,5 @@
 import { gradientToBottomStyle, gradientToTopStyle } from '@porsche-design-system/emotion';
 import {
-  addImportantToEachRule,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
-import {
   colorCanvas,
   colorPrimary,
   fontPorscheNext,
@@ -14,11 +7,19 @@ import {
   leadingNormal,
   legacyRadiusLarge,
   radius4Xl,
+  ref,
   spacingFluidLg,
   spacingFluidMd,
   spacingStaticMd,
   typescaleMd,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import {
+  addImportantToEachRule,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { sizeMap, weightMap } from '../../styles/maps';
 import {
   buildResponsiveStyles,
@@ -93,8 +94,8 @@ export const getComponentCss = (
         all: 'unset',
         zIndex: 3,
         maxWidth: '34.375rem',
-        font: `${fontWeightNormal} ${typescaleMd} / ${leadingNormal} ${fontPorscheNext}`,
-        color: colorPrimary,
+        font: `${ref(fontWeightNormal)} ${ref(typescaleMd)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+        color: ref(colorPrimary),
         hyphens: 'inherit',
         ...mergeDeep(
           buildResponsiveStyles(size, (v: TileSize) => ({
@@ -108,13 +109,13 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gridTemplate: `${spacingFluidMd} auto minmax(0px, 1fr) auto ${spacingFluidMd}/${spacingFluidMd} minmax(0px, 1fr) ${spacingFluidMd}`,
+      gridTemplate: `${ref(spacingFluidMd)} auto minmax(0px, 1fr) auto ${ref(spacingFluidMd)}/${ref(spacingFluidMd)} minmax(0px, 1fr) ${ref(spacingFluidMd)}`,
       width: '100%', // necessary in case tile content overflows in grid or flex context
       // Safari workaround to scale the tile properly
       '@supports (-webkit-hyphens: auto)': {
         height: '100%',
       },
-      borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
+      borderRadius: ref(legacyRadiusLarge, ref(radius4Xl)),
       ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) => ({
         aspectRatio: aspectRatioValue,
       })),
@@ -126,15 +127,15 @@ export const getComponentCss = (
           ...(isTopAligned
             ? {
                 gridArea: '1/1/3/-1',
-                background: gradientToBottomStyle.background.replaceAll('0,0%,0%,', `from ${colorCanvas} h s l / `),
-                marginBottom: `calc(${spacingFluidLg} * -1)`, // to increase the gradient area without reserving additional layout space
+                background: gradientToBottomStyle.background.replaceAll('0,0%,0%,', `from ${ref(colorCanvas)} h s l / `),
+                marginBottom: `calc(${ref(spacingFluidLg)} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderStartStartRadius: 'inherit',
                 borderStartEndRadius: 'inherit',
               }
             : {
                 gridArea: '4/1/6/-1',
-                background: gradientToTopStyle.background.replaceAll('0,0%,0%,', `from ${colorCanvas} h s l / `),
-                marginTop: `calc(${spacingFluidLg} * -1)`, // to increase the gradient area without reserving additional layout space
+                background: gradientToTopStyle.background.replaceAll('0,0%,0%,', `from ${ref(colorCanvas)} h s l / `),
+                marginTop: `calc(${ref(spacingFluidLg)} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderEndStartRadius: 'inherit',
                 borderEndEndRadius: 'inherit',
               }),
@@ -161,7 +162,7 @@ export const getComponentCss = (
           ? {
               display: 'grid',
               gridTemplateColumns: 'minmax(0,1fr) auto',
-              columnGap: spacingStaticMd,
+              columnGap: ref(spacingStaticMd),
             }
           : {
               display: 'flex',
@@ -182,7 +183,7 @@ export const getComponentCss = (
     'link-or-button': {
       minHeight: '54px', // prevent content shift
       zIndex: 5,
-      marginTop: spacingStaticMd,
+      marginTop: ref(spacingStaticMd),
       ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
         display: compactValue ? 'none' : 'inline-block',
       })),

@@ -1,3 +1,13 @@
+import {
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusSm,
+  ref,
+  spacingFluidSm,
+  typescaleMd,
+} from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -7,15 +17,6 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusSm,
-  spacingFluidSm,
-  typescaleMd,
-} from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import { cssVarColorPrimary } from '../drilldown/drilldown-styles';
 
@@ -26,11 +27,11 @@ const anchorHoverJssStyle: JssStyle = {
 export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): string => {
   const anchorJssStyle: JssStyle = {
     all: 'unset',
-    padding: `calc(${spacingFluidSm} + 2px) calc(${spacingFluidSm} + 4px)`, // aligned with link-pure
-    margin: `-2px calc(${spacingFluidSm} * -1 - 4px)`, // aligned with link-pure
-    borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`, // needed for focus outline
-    font: `${fontWeightNormal} ${typescaleMd} / ${leadingNormal} ${fontPorscheNext}`,
-    color: `var(${cssVarColorPrimary})`,
+    padding: `calc(${ref(spacingFluidSm)} + 2px) calc(${ref(spacingFluidSm)} + 4px)`, // aligned with link-pure
+    margin: `-2px calc(${ref(spacingFluidSm)} * -1 - 4px)`, // aligned with link-pure
+    borderRadius: ref(legacyRadiusSmall, ref(radiusSm)), // needed for focus outline
+    font: `${ref(fontWeightNormal)} ${ref(typescaleMd)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+    color: ref(cssVarColorPrimary),
     textDecoration: 'underline',
     textDecorationColor: isActive ? 'inherit' : 'transparent',
     cursor: isActive ? 'default' : 'pointer',

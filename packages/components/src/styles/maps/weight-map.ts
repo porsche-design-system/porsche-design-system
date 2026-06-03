@@ -1,9 +1,9 @@
-import { fontWeightBold, fontWeightNormal, fontWeightSemibold } from '../css-variables';
+import { fontWeightBold, fontWeightNormal, fontWeightSemibold, ref } from '@porsche-design-system/stylesheets';
 
 export const weightMap = {
-  regular: fontWeightNormal, // deprecated
-  'semi-bold': fontWeightSemibold, // deprecated
-  normal: fontWeightNormal,
-  semibold: fontWeightSemibold,
-  bold: fontWeightBold,
+  regular: ref(fontWeightNormal), // deprecated
+  'semi-bold': ref(fontWeightSemibold), // deprecated
+  normal: ref(fontWeightNormal),
+  semibold: ref(fontWeightSemibold),
+  bold: ref(fontWeightBold),
 } as const;

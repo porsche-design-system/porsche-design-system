@@ -1,12 +1,4 @@
 import { breakpointS, getMediaQueryMax, getMediaQueryMin, gridGap } from '@porsche-design-system/emotion';
-import { spacingStaticXs } from '@porsche-design-system/tokens';
-import {
-  addImportantToEachRule,
-  getFocusBaseStyles,
-  getTransition,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   colorCanvas,
   colorContrastLower,
@@ -18,10 +10,19 @@ import {
   legacyRadiusSmall,
   radius3Xl,
   radiusSm,
+  ref,
   spacingFluidSm,
   spacingStaticSm,
   typescaleXs,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import { spacingStaticXs } from '@porsche-design-system/tokens';
+import {
+  addImportantToEachRule,
+  getFocusBaseStyles,
+  getTransition,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { getCss } from '../../utils';
 import type { CanvasBackground } from './canvas-utils';
 
@@ -39,10 +40,10 @@ const cssClassGrid = '-p-canvas-grid';
 
 // default values for public css variables
 const minWidth = '320px';
-const sidebarStartWidthMobile = `min(100vw,var(${cssVarSidebarStartWidth},${minWidth}))`;
-const sidebarEndWidthMobile = `min(100vw,var(${cssVarSidebarEndWidth},${minWidth}))`;
-const sidebarStartWidthDesktop = `min(calc(100vw - ${minWidth}),var(${cssVarSidebarStartWidth},${minWidth}))`;
-const sidebarEndWidthDesktop = `min(calc(100vw - ${minWidth}),var(${cssVarSidebarEndWidth},${minWidth}))`;
+const sidebarStartWidthMobile = `min(100vw,${ref(cssVarSidebarStartWidth, minWidth)})`;
+const sidebarEndWidthMobile = `min(100vw,${ref(cssVarSidebarEndWidth, minWidth)})`;
+const sidebarStartWidthDesktop = `min(calc(100vw - ${minWidth}),${ref(cssVarSidebarStartWidth, minWidth)})`;
+const sidebarEndWidthDesktop = `min(calc(100vw - ${minWidth}),${ref(cssVarSidebarEndWidth, minWidth)})`;
 
 // media queries
 const mediaQueryMinM = getMediaQueryMin('m');
@@ -57,8 +58,8 @@ export const getComponentCss = (
   background: CanvasBackground
 ): string => {
   const isBackgroundSurface = background === 'surface';
-  const primaryBackgroundColor = isBackgroundSurface ? colorSurface : colorCanvas;
-  const secondaryBackgroundColor = isBackgroundSurface ? colorCanvas : colorSurface;
+  const primaryBackgroundColor = isBackgroundSurface ? ref(colorSurface) : ref(colorCanvas);
+  const secondaryBackgroundColor = isBackgroundSurface ? ref(colorCanvas) : ref(colorSurface);
 
   return getCss({
     '@global': {
@@ -106,7 +107,7 @@ export const getComponentCss = (
             all: 'unset',
             cursor: 'pointer',
             color: 'inherit',
-            borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
+            borderRadius: ref(legacyRadiusSmall, ref(radiusSm)),
           },
           '&(a:focus-visible)': getFocusBaseStyles(),
         }),
@@ -114,8 +115,8 @@ export const getComponentCss = (
       h2: {
         all: 'unset',
         padding: spacingStaticXs, // preserve enough spacing for focus state
-        font: `${fontWeightNormal} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
-        color: colorPrimary,
+        font: `${ref(fontWeightNormal)} ${ref(typescaleXs)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+        color: ref(colorPrimary),
         textOverflow: 'ellipsis',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
@@ -146,7 +147,7 @@ export const getComponentCss = (
         gridArea: '1/2/-1/3',
         background: primaryBackgroundColor,
         pointerEvents: 'none',
-        borderEndStartRadius: isSidebarStartOpen ? radius3Xl : 0,
+        borderEndStartRadius: isSidebarStartOpen ? ref(radius3Xl) : 0,
         transition: getTransition('border-radius'),
       },
     },
@@ -162,13 +163,13 @@ export const getComponentCss = (
       gridTemplateColumns: 'minmax(0,1fr) auto minmax(0,1fr)',
       gap: spacingBase,
       alignItems: 'center',
-      padding: `${spacingStaticSm} ${spacingBase}`,
+      padding: `${ref(spacingStaticSm)} ${spacingBase}`,
       '&:focus-visible': {
         outline: 'none',
       },
       '&__area': {
         display: 'flex',
-        gap: spacingStaticSm,
+        gap: ref(spacingStaticSm),
         alignItems: 'center',
         '&--start': {
           justifyContent: 'flex-start',
@@ -263,10 +264,10 @@ export const getComponentCss = (
         position: 'absolute',
         top: 0,
         insetInlineStart: 0,
-        width: radius3Xl,
-        height: `calc(2 * ${radius3Xl})`,
-        borderStartStartRadius: isSidebarStartOpen ? radius3Xl : 0,
-        boxShadow: `0 calc(-1 * ${radius3Xl}) 0 0 ${secondaryBackgroundColor}`,
+        width: ref(radius3Xl),
+        height: `calc(2 * ${ref(radius3Xl)})`,
+        borderStartStartRadius: isSidebarStartOpen ? ref(radius3Xl) : 0,
+        boxShadow: `0 calc(-1 * ${ref(radius3Xl)}) 0 0 ${secondaryBackgroundColor}`,
         transition: getTransition('border-radius'),
       },
     },
@@ -278,7 +279,7 @@ export const getComponentCss = (
     footer: {
       zIndex: 5,
       gridArea: 'footer',
-      padding: `${spacingBase} ${spacingBase} ${spacingFluidSm}`,
+      padding: `${spacingBase} ${spacingBase} ${ref(spacingFluidSm)}`,
       position: 'sticky',
       bottom: 0,
       '&::before': {
@@ -288,7 +289,7 @@ export const getComponentCss = (
         inset: '-140px 0 0',
         pointerEvents: 'none',
         background: `linear-gradient(to bottom,hsl(from ${primaryBackgroundColor} h s l / 0) 0%,hsl(from ${primaryBackgroundColor} h s l / 0.013) 8.1%,hsl(from ${primaryBackgroundColor} h s l / 0.049) 15.5%,hsl(from ${primaryBackgroundColor} h s l / 0.104) 22.5%,hsl(from ${primaryBackgroundColor} h s l / 0.175) 29%,hsl(from ${primaryBackgroundColor} h s l / 0.259) 35.3%,hsl(from ${primaryBackgroundColor} h s l / 0.352) 41.2%,hsl(from ${primaryBackgroundColor} h s l / 0.45) 47.1%,hsl(from ${primaryBackgroundColor} h s l / 0.55) 52.9%,hsl(from ${primaryBackgroundColor} h s l / 0.648) 58.8%,hsl(from ${primaryBackgroundColor} h s l / 0.741) 64.7%,hsl(from ${primaryBackgroundColor} h s l / 0.825) 71%,hsl(from ${primaryBackgroundColor} h s l / 0.896) 77.5%,hsl(from ${primaryBackgroundColor} h s l / 0.951) 84.5%,hsl(from ${primaryBackgroundColor} h s l / 0.987) 91.9%,${primaryBackgroundColor} 100%)`,
-        borderEndStartRadius: isSidebarStartOpen ? radius3Xl : 0,
+        borderEndStartRadius: isSidebarStartOpen ? ref(radius3Xl) : 0,
         transition: getTransition('border-radius'),
       },
     },
@@ -316,7 +317,7 @@ export const getComponentCss = (
       '&--end': {
         gridArea: 'sidebar-end',
         justifySelf: 'flex-start',
-        borderInlineStart: `1px solid ${colorContrastLower}`,
+        borderInlineStart: `1px solid ${ref(colorContrastLower)}`,
         background: primaryBackgroundColor,
         width: sidebarEndWidthMobile,
         [mediaQueryMinM]: {
@@ -326,12 +327,12 @@ export const getComponentCss = (
       '&__header': {
         zIndex: 9999999,
         display: 'flex',
-        gap: spacingStaticSm,
+        gap: ref(spacingStaticSm),
         alignItems: 'center',
         position: 'sticky',
         top: `calc(-1 * ${spacingBase})`,
         margin: `calc(-1 * ${spacingBase}) calc(-1 * ${spacingBase}) ${spacingBase}`,
-        padding: `${spacingStaticSm} ${spacingBase}`,
+        padding: `${ref(spacingStaticSm)} ${spacingBase}`,
         minHeight: '56px',
         boxSizing: 'border-box',
         '&--start': {

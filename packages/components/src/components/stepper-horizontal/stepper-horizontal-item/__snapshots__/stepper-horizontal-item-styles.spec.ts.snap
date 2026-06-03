@@ -21,7 +21,7 @@ button {
   width: max-content;
   cursor: pointer;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -35,7 +35,7 @@ button:focus-visible {
 
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:hover {
     -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -84,7 +84,7 @@ button {
   width: max-content;
   cursor: not-allowed;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -143,7 +143,7 @@ button {
   width: max-content;
   cursor: pointer;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   background: var(--p-color-frosted);
@@ -163,7 +163,7 @@ button:focus-visible {
 
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:hover {
     -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -262,7 +262,7 @@ button {
   width: max-content;
   cursor: not-allowed;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   background: var(--p-color-frosted);
@@ -382,7 +382,7 @@ button {
   width: max-content;
   cursor: not-allowed;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -498,7 +498,7 @@ button {
   width: max-content;
   cursor: not-allowed;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -613,7 +613,7 @@ button {
   width: max-content;
   cursor: pointer;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -627,7 +627,7 @@ button:focus-visible {
 
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:hover {
     -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -676,7 +676,7 @@ button {
   width: max-content;
   cursor: not-allowed;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
