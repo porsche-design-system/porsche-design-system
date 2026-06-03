@@ -3,8 +3,9 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "ignoreDeprecations": "6.0",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["node"]
   },
-  "include": ["./src"],
+  "include": ["./src", "./scripts"],
   "exclude": ["**/*.spec.ts"]
 }
