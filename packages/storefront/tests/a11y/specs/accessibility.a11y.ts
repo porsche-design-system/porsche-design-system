@@ -73,7 +73,7 @@ test.describe('storefront pages', () => {
         await gotoUrl(page, url);
 
         if (scheme === 'dark') {
-          await page.getByText('Open sidebar').click();
+          await page.getByText('Open settings sidebar').click();
           const themeSelect = page.locator('p-select[name="theme"]').first();
           await enableDarkMode(page, themeSelect);
         }
