@@ -209,7 +209,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     align-items: center;
     padding: var(--p-accordion-py,0) var(--p-accordion-px,0);
     background: transparent;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -1870,7 +1870,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py,0) var(--p-accordion-px,0);
     background: transparent;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -2174,7 +2174,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py,0) var(--p-accordion-px,0);
     background: transparent;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
