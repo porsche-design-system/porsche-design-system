@@ -382,16 +382,16 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "color/generated/light-dark/colorWarningMedium.cjs": [
     "tokens/dist/esm/color/light-dark/semantic/colorWarningMedium.cjs",
   ],
-  "focus/deprecated/getFocusStyle.cjs": [
-    "border/generated/deprecated/borderRadiusMedium.cjs",
-    "border/generated/deprecated/borderRadiusSmall.cjs",
-    "color/generated/deprecated/themeLightStateFocus.cjs",
-  ],
   "focus/generated/deprecated/getFocusStyle.cjs": [
-    "focus/deprecated/getFocusStyle.cjs",
+    "focus/getFocusStyle.cjs",
   ],
   "focus/generated/getFocusVisibleStyle.cjs": [
     "focus/helpers/getFocusVisibleStyle.cjs",
+  ],
+  "focus/getFocusStyle.cjs": [
+    "border/generated/deprecated/borderRadiusMedium.cjs",
+    "border/generated/deprecated/borderRadiusSmall.cjs",
+    "color/generated/deprecated/themeLightStateFocus.cjs",
   ],
   "focus/helpers/getFocusVisibleStyle.cjs": [
     "color/generated/light-dark/colorFocus.cjs",
@@ -2192,16 +2192,16 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "color/generated/light-dark/colorWarningMedium.cjs": [
     "tokens/dist/esm/color/light-dark/semantic/colorWarningMedium.cjs",
   ],
-  "focus/deprecated/getFocusStyle.cjs": [
-    "border/generated/deprecated/borderRadiusMedium.cjs",
-    "border/generated/deprecated/borderRadiusSmall.cjs",
-    "color/generated/deprecated/themeLightStateFocus.cjs",
-  ],
   "focus/generated/deprecated/getFocusStyle.cjs": [
-    "focus/deprecated/getFocusStyle.cjs",
+    "focus/getFocusStyle.cjs",
   ],
   "focus/generated/getFocusVisibleStyle.cjs": [
     "focus/helpers/getFocusVisibleStyle.cjs",
+  ],
+  "focus/getFocusStyle.cjs": [
+    "border/generated/deprecated/borderRadiusMedium.cjs",
+    "border/generated/deprecated/borderRadiusSmall.cjs",
+    "color/generated/deprecated/themeLightStateFocus.cjs",
   ],
   "focus/helpers/getFocusVisibleStyle.cjs": [
     "color/generated/light-dark/colorFocus.cjs",
