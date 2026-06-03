@@ -9,7 +9,7 @@ This package contains the **Porsche Design System Web Components** built with St
 
 ## Subpackages
 
-- [`projects/stylesheets`](projects/stylesheets/AGENTS.md) — `@porsche-design-system/stylesheets`, the single source of truth for the global styles (meta + generated `variables.css`, `color-scheme.css`, `normalize.css`, `legacy-radius.css`, `font-face.css` and the combined `index.css`). Built as part of `build:components` and copied into the framework wrappers.
+- [`projects/stylesheets`](projects/stylesheets/AGENTS.md) — `@porsche-design-system/stylesheets`, the single source of truth for the global styles (meta + generated `variables.css`, `color-scheme.css`, `normalize.css`, `font-face.css` and the combined `index.css`). Built as part of `build:components` and copied into the framework wrappers.
 
 ## File Structure (per component)
 

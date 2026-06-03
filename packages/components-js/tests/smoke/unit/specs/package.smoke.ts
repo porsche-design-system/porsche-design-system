@@ -194,7 +194,6 @@ describe('package.json files', () => {
                 prob.entrypoint.includes('color-scheme') ||
                 prob.entrypoint.includes('font-face') ||
                 prob.entrypoint.includes('normalize') ||
-                prob.entrypoint.includes('legacy-radius') ||
                 prob.entrypoint.includes('variables') ||
                 prob.entrypoint.includes('cn') ||
                 prob.entrypoint.includes('index')))
