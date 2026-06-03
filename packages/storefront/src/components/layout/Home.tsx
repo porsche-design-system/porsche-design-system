@@ -37,6 +37,8 @@ export const Home = () => {
       <section
         className="col-[full] relative grid grid-cols-subgrid gap-y-fluid-xl"
         aria-label="Porsche Design System v4"
+        id="main-content"
+        tabIndex={-1}
       >
         {/* ── intro ── */}
         <div className="col-[wide] @container grid h-[max(580px,80vh)]">
@@ -485,7 +487,9 @@ export const Home = () => {
         aria-label="Resources"
       >
         <AppearAnimation animation="fade-in-up">
-          <PHeading size="xl">Resources</PHeading>
+          <PHeading size="xl" tag="h2">
+            Resources
+          </PHeading>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
           <div className="flex flex-col gap-fluid-md items-start">

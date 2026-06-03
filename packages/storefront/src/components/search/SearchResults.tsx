@@ -34,9 +34,8 @@ export const SearchResults = ({
           </PHeading>
           <ol className="flex flex-col gap-fluid-sm">
             {hits.map((hit) => (
-              <li className="hit">
+              <li className="hit" key={hit.url}>
                 <Link
-                  key={hit.url}
                   href={hit.url}
                   onClick={onResultClick}
                   className="block py-fluid-sm px-fluid-md bg-surface rounded-md"
