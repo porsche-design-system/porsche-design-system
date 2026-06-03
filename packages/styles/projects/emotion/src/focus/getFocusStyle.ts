@@ -1,5 +1,5 @@
-import { borderRadiusMedium, borderRadiusSmall } from '../../border/generated/deprecated';
-import { themeLightStateFocus } from '../../color/generated/deprecated';
+import { borderRadiusMedium, borderRadiusSmall } from '../border/generated/deprecated';
+import { themeLightStateFocus } from '../color/generated/deprecated';
 
 export type Options = {
   offset?: 'small' | 'none' | string;

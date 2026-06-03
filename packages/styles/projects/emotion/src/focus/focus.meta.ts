@@ -1,4 +1,4 @@
-import { getFocusStyle } from './deprecated';
+import { getFocusStyle } from './getFocusStyle';
 import { getFocusVisibleStyle } from './helpers';
 
 type FocusVisibleStyleValue = (opts?: { offset?: string }) => {
