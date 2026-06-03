@@ -47,6 +47,10 @@ test.describe('storefront pages', () => {
   const internalUrls = getInternalUrls().filter(
     (url) =>
       !url.match(/^\/assets\/.*\.\w{3,4}$/) &&
+      // Bare component landing pages (e.g. /components/button/) only client-side redirect to their
+      // default tab (e.g. /components/button/configurator/, already covered). The pre-redirect page has
+      // no level-one heading, so scanning it races the redirect and flakily triggers `page-has-heading-one`.
+      !url.match(/^\/components\/[^/]+\/$/) &&
       !url.includes('/ag-grid/theme') &&
       // Changelog has wrong heading order
       !url.includes('/news/changelog/') &&
@@ -77,6 +81,12 @@ test.describe('storefront pages', () => {
           const themeSelect = page.locator('p-select[name="theme"]').first();
           await enableDarkMode(page, themeSelect);
         }
+
+        await page.evaluate(() => (document as any).fonts?.ready); // fonts swapped
+        await page.locator('p-canvas').evaluate((canvas) => {
+          const sb = canvas.shadowRoot?.querySelector('.sidebar--start') as HTMLElement | null;
+          if (sb) sb.scrollTop = 0; // no link tucked under the sticky title
+        });
 
         const accessibilityScanResults = await makeAxeBuilder().analyze();
 
