@@ -1,3 +1,4 @@
+import { colorContrastLower, durationXl, fontPorscheNext, leadingNormal, ref } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -6,7 +7,6 @@ import {
   getHiddenTextJssStyle,
   hostHiddenStyles,
 } from '../../styles';
-import { colorContrastLower, durationXl, fontPorscheNext, leadingNormal } from '../../styles/css-variables';
 import { colorMap, sizeMap } from '../../styles/maps';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
@@ -28,10 +28,10 @@ const cssVarColor = '--p-spinner-color';
 const cssVarTrackColor = '--p-spinner-track-color';
 
 export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizable<SpinnerSize>): string => {
-  const dimension = `var(${cssVarSize},${leadingNormal})`;
+  const dimension = ref(cssVarSize, ref(leadingNormal));
   const strokeDasharray = '69'; // C = 2πR
-  const animationDuration = `var(${cssVariableAnimationDuration}, ${durationXl})`;
-  const strokeDasharrayVar = `var(--p-temporary-spinner-stroke-dasharray, ${strokeDasharray})`; // override needed for VRT to visualize both circles
+  const animationDuration = ref(cssVariableAnimationDuration, ref(durationXl));
+  const strokeDasharrayVar = ref('--p-temporary-spinner-stroke-dasharray', strokeDasharray); // override needed for VRT to visualize both circles
 
   return getCss({
     '@global': {
@@ -67,7 +67,7 @@ export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizabl
       div: {
         width: dimension,
         height: dimension,
-        fontFamily: fontPorscheNext, // needed for correct width/height definition based on ex-unit
+        fontFamily: ref(fontPorscheNext), // needed for correct width/height definition based on ex-unit
         ...buildResponsiveStyles(size, (s: SpinnerSize) => ({
           fontSize: sizeMap[s], // needed for correct width/height definition based on ex-unit
         })),
@@ -80,16 +80,16 @@ export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizabl
       },
       circle: {
         '&:first-child': {
-          stroke: `var(${cssVarTrackColor},${colorContrastLower})`,
+          stroke: ref(cssVarTrackColor, ref(colorContrastLower)),
           '@supports (color: oklch(from red l c h))': {
-            stroke: `var(${cssVarTrackColor},oklch(from var(${cssVarColor},${colorMap[color]}) l c h/.2))`,
+            stroke: ref(cssVarTrackColor, `oklch(from ${ref(cssVarColor, colorMap[color])} l c h/.2)`),
           },
           ...forcedColorsMediaQuery({
             stroke: addImportantToRule('none'),
           }),
         },
         '&:last-child': {
-          stroke: `var(${cssVarColor},${colorMap[color]})`,
+          stroke: ref(cssVarColor, colorMap[color]),
           ...forcedColorsMediaQuery({
             stroke: 'CanvasText',
           }),

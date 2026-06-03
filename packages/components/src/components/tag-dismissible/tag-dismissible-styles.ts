@@ -18,20 +18,21 @@ import {
   radiusFull,
   radiusLg,
   radiusXl,
+  ref,
   typescaleSm,
   typescaleXs,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
 import { getCss } from '../../utils';
 
 export const cssVarInternalTagDismissibleScaling = '--_p-tag-dismissible-a';
 
 export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string => {
   const buttonPaddingBlock = hasLabel
-    ? `calc(16.8px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714))`
-    : `calc(28px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 6px)`;
-  const buttonPaddingInline = `calc(22.4px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 4px)`;
-  const buttonGap = `calc(22.4px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714) + 4px)`;
-  const iconPadding = `calc(11.2px * (var(${cssVarInternalTagDismissibleScaling}) - 0.64285714))`;
+    ? `calc(16.8px * (${ref(cssVarInternalTagDismissibleScaling)} - 0.64285714))`
+    : `calc(28px * (${ref(cssVarInternalTagDismissibleScaling)} - 0.64285714) + 6px)`;
+  const buttonPaddingInline = `calc(22.4px * (${ref(cssVarInternalTagDismissibleScaling)} - 0.64285714) + 4px)`;
+  const buttonGap = `calc(22.4px * (${ref(cssVarInternalTagDismissibleScaling)} - 0.64285714) + 4px)`;
+  const iconPadding = `calc(11.2px * (${ref(cssVarInternalTagDismissibleScaling)} - 0.64285714))`;
   const iconMargin = `calc(-1 * ${iconPadding})`;
 
   return getCss({
@@ -52,15 +53,15 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         alignItems: 'center',
         gap: buttonGap,
         padding: `${buttonPaddingBlock} ${buttonPaddingInline}`,
-        borderRadius: isCompact ? radiusLg : radiusXl,
+        borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
         cursor: 'pointer',
-        background: colorFrosted,
-        color: colorPrimary,
+        background: ref(colorFrosted),
+        color: ref(colorPrimary),
         textAlign: 'start',
-        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         ...hoverMediaQuery({
           '&:hover > .icon': {
-            backgroundColor: colorFrosted,
+            backgroundColor: ref(colorFrosted),
           },
         }),
         ...forcedColorsMediaQuery({
@@ -74,15 +75,15 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
       label: {
         display: 'block',
         marginBottom: '-4px',
-        color: colorContrastHigh,
-        fontSize: typescaleXs,
+        color: ref(colorContrastHigh),
+        fontSize: ref(typescaleXs),
       },
     }),
     icon: {
       padding: iconPadding,
       margin: iconMargin,
       transition: getTransition('background-color'),
-      borderRadius: radiusFull,
+      borderRadius: ref(radiusFull),
     },
     'sr-only': getHiddenTextJssStyle(),
   });

@@ -19,10 +19,11 @@ import {
   fontWeightNormal,
   leadingNormal,
   radiusFull,
+  ref,
   spacingStaticSm,
   spacingStaticXs,
   typescaleSm,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
 import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
@@ -52,11 +53,11 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
       },
       ul: {
         display: 'flex',
-        gap: spacingStaticXs,
+        gap: ref(spacingStaticXs),
         margin: 0,
         padding: 0,
         [mediaQueryMinS]: {
-          gap: spacingStaticSm,
+          gap: ref(spacingStaticSm),
         },
       },
       li: {
@@ -107,19 +108,19 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         minWidth: '2.25rem',
         height: '2.25rem',
         boxSizing: 'border-box',
-        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         backgroundColor: 'transparent',
-        color: colorPrimary,
-        borderRadius: radiusFull,
+        color: ref(colorPrimary),
+        borderRadius: ref(radiusFull),
         borderColor: 'transparent', // default value is needed for smooth transition
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...hoverMediaQuery({
           '&:not([aria-disabled]):not(.ellipsis):hover': {
-            WebkitBackdropFilter: blurFrosted,
-            backdropFilter: blurFrosted,
-            background: colorFrosted,
+            WebkitBackdropFilter: ref(blurFrosted),
+            backdropFilter: ref(blurFrosted),
+            background: ref(colorFrosted),
             ...forcedColorsMediaQuery({
               outline: '2px solid CanvasText',
               outlineOffset: '-2px',
@@ -128,7 +129,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         }),
         '&[aria-current]': {
           ...disabledCursorStyle,
-          backgroundColor: colorFrostedStrong,
+          backgroundColor: ref(colorFrostedStrong),
           ...forcedColorsMediaQuery({
             border: '2px solid CanvasText',
           }),

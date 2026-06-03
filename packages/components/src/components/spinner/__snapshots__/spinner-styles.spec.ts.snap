@@ -40,7 +40,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 1`] =
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -49,7 +49,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 1`] =
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
     circle:last-child {
@@ -118,7 +118,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 2`] =
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -127,7 +127,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 2`] =
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
     circle:last-child {
@@ -196,7 +196,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 3`] =
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -205,7 +205,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 3`] =
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
     circle:last-child {
@@ -274,7 +274,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 4`] =
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -283,7 +283,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 4`] =
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
     circle:last-child {
@@ -352,7 +352,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 5`] =
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -361,7 +361,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 5`] =
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(min-width:480px) {
     div {
@@ -460,7 +460,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 6`] =
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -469,7 +469,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 6`] =
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
     circle:last-child {
@@ -538,7 +538,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 7`] =
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -547,7 +547,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 7`] =
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
     circle:last-child {
@@ -616,7 +616,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 8`] =
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -625,7 +625,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 8`] =
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
     circle:last-child {
@@ -694,7 +694,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 9`] =
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -703,7 +703,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 9`] =
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
     circle:last-child {
@@ -772,7 +772,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 10`] 
     display: block;
     fill: none;
     stroke-width: 1.5;
-    animation: rotate var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: rotate var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
   circle:first-child {
     stroke: var(--p-spinner-track-color,var(--p-color-contrast-lower));
@@ -781,7 +781,7 @@ exports[`getComponentCss() > should return correct css for size: "primary" 10`] 
     stroke: var(--p-spinner-color,var(--p-color-primary));
     stroke-dasharray: 69;
     stroke-linecap: round;
-    animation: dash var(--p-animation-duration, var(--p-duration-xl)) steps(50) infinite;
+    animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(min-width:480px) {
     div {

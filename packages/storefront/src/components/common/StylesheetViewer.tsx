@@ -9,7 +9,7 @@ type StylesheetViewerProps = {
 };
 
 // TODO: it would be better to resolve the path from npm package entrypoint
-const filePath = path.resolve(process.cwd(), '../components-react/dist/react-wrapper/global-styles');
+const filePath = path.resolve(process.cwd(), '../components-react/dist/react-wrapper/stylesheets');
 
 export const StylesheetViewer = async ({ file }: StylesheetViewerProps) => {
   const rawCss = fs.readFileSync(path.resolve(`${filePath}/${file}`), 'utf8');

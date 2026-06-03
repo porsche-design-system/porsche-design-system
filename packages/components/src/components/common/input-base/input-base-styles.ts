@@ -17,9 +17,10 @@ import {
   leadingNormal,
   radiusLg,
   radiusXl,
+  ref,
   spacingStaticXs,
   typescaleSm,
-} from '../../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { mergeDeep } from '../../../utils';
@@ -50,10 +51,10 @@ export const getFunctionalComponentInputBaseStyles = (
   additionalHostJssStyle?: JssStyle
 ): Styles => {
   const wrapperBorderWidth = '1px';
-  const wrapperHeight = `calc(var(${cssVarInternalInputBaseScaling}) * 3.5rem)`;
-  const wrapperPaddingInline = `calc(22.4px * (var(${cssVarInternalInputBaseScaling}) - 0.64285714) + 8px)`;
-  const wrapperGap = `calc(22.4px * (var(${cssVarInternalInputBaseScaling}) - 0.64285714) + 4px)`;
-  const buttonPadding = `calc(11.2px * (var(${cssVarInternalInputBaseScaling}) - 0.64285714))`;
+  const wrapperHeight = `calc(${ref(cssVarInternalInputBaseScaling)} * 3.5rem)`;
+  const wrapperPaddingInline = `calc(22.4px * (${ref(cssVarInternalInputBaseScaling)} - 0.64285714) + 8px)`;
+  const wrapperGap = `calc(22.4px * (${ref(cssVarInternalInputBaseScaling)} - 0.64285714) + 4px)`;
+  const buttonPadding = `calc(11.2px * (${ref(cssVarInternalInputBaseScaling)} - 0.64285714))`;
   const buttonMargin = `calc(-1 * ${buttonPadding})`;
 
   const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
@@ -84,14 +85,14 @@ export const getFunctionalComponentInputBaseStyles = (
         alignItems: 'center',
         width: 'max(100%, 2ch)', // show at least 2 characters in very narrow containers
         height: '100%',
-        font: `${fontWeightNormal} ${typescaleSm} / calc(${leadingNormal} + 6px) ${fontPorscheNext}`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / calc(${ref(leadingNormal)} + 6px) ${ref(fontPorscheNext)}`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         textOverflow: 'ellipsis',
         ...additionalInputJssStyle,
       },
     },
     root: {
       display: 'grid',
-      gap: spacingStaticXs,
+      gap: ref(spacingStaticXs),
     },
     wrapper: {
       display: 'flex',
@@ -101,15 +102,15 @@ export const getFunctionalComponentInputBaseStyles = (
       boxSizing: 'border-box',
       paddingInline: wrapperPaddingInline,
       border: `${wrapperBorderWidth} solid ${formStateBorderColor}`,
-      borderRadius: isCompact ? radiusLg : radiusXl,
+      borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
       background: formStateBackgroundColor,
-      color: colorPrimary,
+      color: ref(colorPrimary),
       cursor: isDisabled ? 'not-allowed' : 'text',
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
       ...(readOnly && {
         borderColor: 'transparent',
-        background: colorFrosted,
-        color: colorContrastMedium,
+        background: ref(colorFrosted),
+        color: ref(colorContrastMedium),
       }),
       '&:not(:has(input:disabled)):focus-within': {
         borderColor: formStateBorderHoverColor,

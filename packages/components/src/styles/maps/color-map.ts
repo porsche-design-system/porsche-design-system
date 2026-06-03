@@ -9,18 +9,19 @@ import {
   colorPrimary,
   colorSuccess,
   colorWarning,
-} from '../css-variables';
+  ref,
+} from '@porsche-design-system/stylesheets';
 
 export const colorMap = {
-  primary: colorPrimary,
-  'contrast-higher': colorContrastHigher,
-  'contrast-high': colorContrastHigh,
-  'contrast-medium': colorContrastMedium,
-  'contrast-low': colorContrastLow,
-  'contrast-lower': colorContrastLower,
-  success: colorSuccess,
-  warning: colorWarning,
-  error: colorError,
-  info: colorInfo,
+  primary: ref(colorPrimary),
+  'contrast-higher': ref(colorContrastHigher),
+  'contrast-high': ref(colorContrastHigh),
+  'contrast-medium': ref(colorContrastMedium),
+  'contrast-low': ref(colorContrastLow),
+  'contrast-lower': ref(colorContrastLower),
+  success: ref(colorSuccess),
+  warning: ref(colorWarning),
+  error: ref(colorError),
+  info: ref(colorInfo),
   inherit: 'currentcolor',
 } as const;

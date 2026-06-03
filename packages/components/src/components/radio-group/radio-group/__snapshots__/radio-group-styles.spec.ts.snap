@@ -47,7 +47,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -78,7 +78,7 @@ slot[name="label-after"]::slotted(*) {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -153,7 +153,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -184,7 +184,7 @@ slot[name="label-after"]::slotted(*) {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -259,7 +259,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -289,7 +289,7 @@ slot[name="label-after"]::slotted(*) {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -364,7 +364,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -394,7 +394,7 @@ slot[name="label-after"]::slotted(*) {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -469,7 +469,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -499,7 +499,7 @@ slot[name="label-after"]::slotted(*) {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -574,7 +574,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -605,7 +605,7 @@ slot[name="label-after"]::slotted(*) {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -680,7 +680,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -711,7 +711,7 @@ slot[name="label-after"]::slotted(*) {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -785,7 +785,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -816,7 +816,7 @@ slot[name="label-after"]::slotted(*) {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -890,7 +890,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -921,7 +921,7 @@ slot[name="label-after"]::slotted(*) {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -995,7 +995,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1025,7 +1025,7 @@ slot[name="label-after"]::slotted(*) {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1099,7 +1099,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1129,7 +1129,7 @@ slot[name="label-after"]::slotted(*) {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1203,7 +1203,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1234,7 +1234,7 @@ slot[name="label-after"]::slotted(*) {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1308,7 +1308,7 @@ slot[name="label-after"]::slotted(*) {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1339,7 +1339,7 @@ slot[name="label-after"]::slotted(*) {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1431,7 +1431,7 @@ slot[name="label-after"]::slotted(*) {
   cursor: inherit;
   color: var(--p-color-primary);
   pointer-events: none;
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1461,7 +1461,7 @@ slot[name="label-after"]::slotted(*) {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1658,7 +1658,7 @@ slot[name="label-after"]::slotted(*) {
   color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1688,7 +1688,7 @@ slot[name="label-after"]::slotted(*) {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1909,7 +1909,7 @@ slot[name="label-after"]::slotted(*) {
   color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1940,7 +1940,7 @@ slot[name="label-after"]::slotted(*) {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;

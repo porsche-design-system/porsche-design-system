@@ -1,5 +1,4 @@
 import type { JssStyle } from 'jss';
-import { getTransition } from '../common-styles';
 import {
   colorContrastHigh,
   colorFrosted,
@@ -8,34 +7,36 @@ import {
   fontWeightNormal,
   leadingNormal,
   radiusSm,
+  ref,
   typescaleSm,
-} from '../css-variables';
+} from '@porsche-design-system/stylesheets';
+import { getTransition } from '../common-styles';
 import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
 export const getOptionJssStyle = (
   componentName: 'select-option' | 'multi-select-option',
   cssVarScalingName: string
 ): JssStyle => {
-  const gap = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
-  const paddingBlock = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
-  const paddingInline = `var(--_p-${componentName}-b, calc(16.8px * (var(${cssVarScalingName}) - 0.64285714) + 6px)) calc(16.8px * (var(${cssVarScalingName}) - 0.64285714) + 6px)`;
+  const gap = `calc(11.2px * (${ref(cssVarScalingName)} - 0.64285714) + 4px)`;
+  const paddingBlock = `calc(11.2px * (${ref(cssVarScalingName)} - 0.64285714) + 4px)`;
+  const paddingInline = `${ref(`--_p-${componentName}-b`, `calc(16.8px * (${ref(cssVarScalingName)} - 0.64285714) + 6px)`)} calc(16.8px * (${ref(cssVarScalingName)} - 0.64285714) + 6px)`;
 
   return {
     display: 'flex',
     gap,
     paddingBlock,
     paddingInline,
-    minHeight: leadingNormal, // preserves height for empty option
-    font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
-    color: colorContrastHigh,
+    minHeight: ref(leadingNormal), // preserves height for empty option
+    font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+    color: ref(colorContrastHigh),
     cursor: 'pointer',
     textAlign: 'start',
     wordBreak: 'break-word',
     boxSizing: 'content-box',
-    borderRadius: radiusSm,
+    borderRadius: ref(radiusSm),
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
-      background: colorFrosted,
+      background: ref(colorFrosted),
       ...forcedColorsMediaQuery({
         forcedColorAdjust: 'none',
         outline: '2px solid Highlight',
@@ -43,7 +44,7 @@ export const getOptionJssStyle = (
       }),
     },
     '&--highlighted, &--selected': {
-      color: colorPrimary,
+      color: ref(colorPrimary),
     },
     '&--disabled': {
       cursor: 'not-allowed',

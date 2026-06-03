@@ -21,13 +21,14 @@ import {
   leadingNormal,
   radius2Xl,
   radius3Xl,
+  ref,
   spacingFluidMd,
   spacingFluidSm,
   spacingFluidXs,
   typescale2Xs,
   typescaleSm,
   typescaleXs,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
@@ -138,11 +139,11 @@ export const getComponentCss = (
     }),
     image: {
       aspectRatio: '8/9',
-      margin: `${spacingFluidSm} auto ${spacingFluidXs}`,
+      margin: `${ref(spacingFluidSm)} auto ${ref(spacingFluidXs)}`,
       overflow: 'hidden',
       transition: getTransition('transform', 'moderate'),
       [getMediaQueryMin('s')]: {
-        padding: `0 ${spacingFluidMd}`, // ensures image is not getting to large
+        padding: `0 ${ref(spacingFluidMd)}`, // ensures image is not getting to large
       },
       ...hoverMediaQuery({
         '.root:hover &': {
@@ -158,24 +159,24 @@ export const getComponentCss = (
     },
     heading: {
       margin: '0 0 2px', // ua-style reset
-      font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+      font: `${ref(fontWeightSemibold)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       ...getMultilineEllipsis(3),
     },
     price: {
       margin: 0, // ua-style reset
-      font: `${fontWeightNormal} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
+      font: `${ref(fontWeightNormal)} ${ref(typescaleXs)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       ...(hasPriceOriginal && {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        columnGap: spacingFluidXs,
+        columnGap: ref(spacingFluidXs),
       }),
     },
     ...(hasDescription && {
       description: {
         margin: 0, // ua-style reset
-        font: `${fontWeightNormal} ${typescale2Xs} / ${leadingNormal} ${fontPorscheNext}`,
-        color: colorContrastHigh,
+        font: `${ref(fontWeightNormal)} ${ref(typescale2Xs)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+        color: ref(colorContrastHigh),
         ...getMultilineEllipsis(2),
       },
     }),
