@@ -1,4 +1,6 @@
-import { getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from './helpers';
+import { getMediaQueryMax } from './getMediaQueryMax';
+import { getMediaQueryMin } from './getMediaQueryMin';
+import { getMediaQueryMinMax } from './getMediaQueryMinMax';
 
 export const mediaQueryMeta = {
   breakpoint: {

@@ -1,5 +1,5 @@
 import { getFocusStyle } from './deprecated';
-import { getFocusVisibleStyle } from './helpers';
+import { getFocusVisibleStyle } from './getFocusVisibleStyle';
 
 export const focusMeta = {
   getFocusVisibleStyle: {

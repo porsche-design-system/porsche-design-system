@@ -1,5 +1,4 @@
-import { getSkeletonStyle } from './helpers';
-import { skeletonKeyframes } from './skeletonKeyframes';
+import { getSkeletonStyle, skeletonKeyframes } from './getSkeletonStyle';
 
 export const skeletonMeta = {
   skeletonKeyframes: {
