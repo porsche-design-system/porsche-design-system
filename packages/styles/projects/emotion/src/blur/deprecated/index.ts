@@ -1,1 +1,1 @@
-export { frostedGlassStyle } from './frostedGlassStyle';
+export * from '../generated/deprecated';

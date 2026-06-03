@@ -1,4 +1,4 @@
-import { breakpoint } from '../breakpoint';
+import { breakpoint } from '../generated/breakpoint';
 import type { Breakpoint } from '../breakpointShared';
 import type { BKey } from '../mediaQueryShared';
 

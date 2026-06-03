@@ -1,15 +1,17 @@
 import { getMediaQueryMin } from '../mediaQuery';
-import { gridGap } from './gridGap';
-import { gridFullColumnStart } from './gridFullColumnStart';
-import { gridWideColumnStart } from './gridWideColumnStart';
-import { gridExtendedColumnStart } from './gridExtendedColumnStart';
-import { gridBasicColumnStart } from './gridBasicColumnStart';
-import { gridNarrowColumnStart } from './gridNarrowColumnStart';
-import { gridNarrowColumnEnd } from './gridNarrowColumnEnd';
-import { gridBasicColumnEnd } from './gridBasicColumnEnd';
-import { gridExtendedColumnEnd } from './gridExtendedColumnEnd';
-import { gridWideColumnEnd } from './gridWideColumnEnd';
-import { gridFullColumnEnd } from './gridFullColumnEnd';
+import {
+  gridBasicColumnEnd,
+  gridBasicColumnStart,
+  gridExtendedColumnEnd,
+  gridExtendedColumnStart,
+  gridFullColumnEnd,
+  gridFullColumnStart,
+  gridGap,
+  gridNarrowColumnEnd,
+  gridNarrowColumnStart,
+  gridWideColumnEnd,
+  gridWideColumnStart,
+} from './generated';
 import {
   _cssVariableGridBasicSpanOneHalf,
   _cssVariableGridBasicSpanOneThird,

@@ -1,7 +1,4 @@
-import { fontPorscheNextJa } from '../family/fontPorscheNextJa';
-import { fontPorscheNextKo } from '../family/fontPorscheNextKo';
-import { fontPorscheNextZhHans } from '../family/fontPorscheNextZhHans';
-import { fontPorscheNextZhHant } from '../family/fontPorscheNextZhHant';
+import { fontPorscheNextJa, fontPorscheNextKo, fontPorscheNextZhHans, fontPorscheNextZhHant } from '@porsche-design-system/tokens';
 
 /**
  * Applies locale-specific **Porsche Next** font stacks for **CJK** languages (Simplified Chinese, Traditional Chinese, Japanese, Korean) based on the element's `lang` attribute.

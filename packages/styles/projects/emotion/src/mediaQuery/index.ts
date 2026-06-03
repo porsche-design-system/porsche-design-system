@@ -1,13 +1,3 @@
-export { breakpoint } from './breakpoint';
-export { breakpoints } from './breakpointShared';
 export type { Breakpoint } from './breakpointShared';
-export { breakpointBase } from './generated/breakpointBase';
-export { breakpointL } from './generated/breakpointL';
-export { breakpointM } from './generated/breakpointM';
-export { breakpointS } from './generated/breakpointS';
-export { breakpointXL } from './generated/breakpointXL';
-export { breakpointXS } from './generated/breakpointXS';
-export { breakpointXXL } from './generated/breakpointXXL';
-export { getMediaQueryMax } from './generated/getMediaQueryMax';
-export { getMediaQueryMin } from './generated/getMediaQueryMin';
-export { getMediaQueryMinMax } from './generated/getMediaQueryMinMax';
+export { breakpoints } from './breakpointShared';
+export * from './generated';
