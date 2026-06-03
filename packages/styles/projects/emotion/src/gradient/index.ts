@@ -1,2 +1,2 @@
+export * from './generated';
 export * from './deprecated';
-export { gradientStopsFadeDark } from './gradientStopsFadeDark';

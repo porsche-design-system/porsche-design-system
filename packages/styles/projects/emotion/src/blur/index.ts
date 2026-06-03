@@ -1,2 +1,2 @@
-export { blurFrosted } from './blurFrosted';
+export * from './generated';
 export * from './deprecated';

@@ -1,2 +1,1 @@
-export * from './deprecated';
-export * from './radius';
+export * from './generated';

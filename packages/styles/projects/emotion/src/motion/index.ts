@@ -1,3 +1,1 @@
-export * from './deprecated';
-export * from './duration';
-export * from './ease';
+export * from './generated';

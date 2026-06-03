@@ -1,2 +1,1 @@
-export * from './deprecated';
-export * from './helpers';
+export * from './generated';
