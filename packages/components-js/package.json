@@ -28,7 +28,7 @@
     "build:jsdom-polyfill": "npm run build --workspace=@porsche-design-system/jsdom-polyfill",
     "build:partials": "npm run build --workspace=@porsche-design-system/partials",
     "build:tokens": "TARGET=./dist/components-wrapper/tokens && rm -rf $TARGET && cp -r ../tokens/dist $TARGET",
-    "build:emotion": "TARGET=./dist/components-wrapper/emotion && rm -rf $TARGET && cp -r ../styles/projects/emotion/dist $TARGET",
+    "build:emotion": "TARGET=./dist/components-wrapper/emotion && rm -rf $TARGET && mkdir -p $TARGET && cp -r ../styles/projects/emotion/dist/styles/. $TARGET",
     "build:component-meta": "TARGET=./dist/components-wrapper/meta && rm -rf $TARGET && cp -r ../component-meta/dist $TARGET && rm -rf $TARGET/cjs/utils $TARGET/esm/utils",
     "build:ag-grid": "TARGET=./dist/components-wrapper/ag-grid && rm -rf $TARGET && cp -r ../utilities/projects/ag-grid/dist $TARGET",
     "build:tailwindcss": "TARGET=./dist/components-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",

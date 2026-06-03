@@ -140,11 +140,7 @@ function resolveEntryObject(
   return undefined;
 }
 
-function getDescriptionText(
-  node: ts.ObjectLiteralExpression,
-  sourceFile: ts.SourceFile,
-  localScalarMap: Map<string, string>
-): string | undefined {
+function getDescriptionText(node: ts.ObjectLiteralExpression, localScalarMap: Map<string, string>): string | undefined {
   const prop = getPropertyAssignment(node, 'description');
   if (!prop) return undefined;
   const init = prop.initializer;
@@ -188,7 +184,7 @@ function extractEntries(
       const exportName = getStringProp(entryObj, 'name');
       const description =
         sourceFile && localScalarMap
-          ? getDescriptionText(entryObj, sourceFile, localScalarMap)
+          ? getDescriptionText(entryObj, localScalarMap)
           : getStringProp(entryObj, 'description');
       const valueNode = getValueNode(entryObj);
       if (exportName && description && valueNode) {
@@ -283,11 +279,23 @@ function addToMapArray<K, V>(map: Map<K, V[]>, key: K, value: V): void {
   }
 }
 
+function isReferenceIdentifier(node: ts.Identifier): boolean {
+  const parent = node.parent;
+  return !(
+    parent &&
+    ((ts.isPropertyAssignment(parent) && parent.name === node) ||
+      (ts.isPropertyAccessExpression(parent) && parent.name === node) ||
+      (ts.isVariableDeclaration(parent) && parent.name === node) ||
+      (ts.isImportSpecifier(parent) && (parent.name === node || parent.propertyName === node)))
+  );
+}
+
 function collectIdentifiers(node: ts.Node, predicate?: (name: string) => boolean): string[] {
   const seen = new Set<string>();
 
   const walk = (n: ts.Node) => {
-    if (ts.isIdentifier(n) && (!predicate || predicate(n.text))) seen.add(n.text);
+    if (ts.isTypeNode(n)) return;
+    if (ts.isIdentifier(n) && isReferenceIdentifier(n) && (!predicate || predicate(n.text))) seen.add(n.text);
     ts.forEachChild(n, walk);
   };
 
@@ -316,10 +324,44 @@ function substituteLocalScalars(text: string, localScalarMap: Map<string, string
   return result;
 }
 
+function toKebabCase(value: string): string {
+  return value.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+function getGroupDirName(groupKey: string): string {
+  return toKebabCase(groupKey);
+}
+
 function getOutputDir(categoryDir: string, entry: Entry): string {
   const generatedDir = path.join(categoryDir, 'generated');
   if (entry.isDeprecated) return path.join(generatedDir, 'deprecated');
-  return entry.groupKey ? path.join(generatedDir, entry.groupKey) : generatedDir;
+  return entry.groupKey ? path.join(generatedDir, getGroupDirName(entry.groupKey)) : generatedDir;
+}
+
+function getResolvedValueNode(entry: Entry, varMap: Map<string, ts.ObjectLiteralExpression>): ts.Node {
+  if (ts.isIdentifier(entry.valueNode) && entry.valueNode.text === entry.exportName) {
+    return varMap.get(entry.valueNode.text) ?? entry.valueNode;
+  }
+
+  return entry.valueNode;
+}
+
+function isConstAssertion(node: ts.AsExpression): boolean {
+  return (
+    ts.isTypeReferenceNode(node.type) && ts.isIdentifier(node.type.typeName) && node.type.typeName.text === 'const'
+  );
+}
+
+function getRuntimeValueNode(node: ts.Node): ts.Node {
+  if (ts.isAsExpression(node)) {
+    return isConstAssertion(node) ? node : getRuntimeValueNode(node.expression);
+  }
+
+  if (ts.isTypeAssertionExpression(node)) {
+    return getRuntimeValueNode(node.expression);
+  }
+
+  return node;
 }
 
 function collectImportedIdentifiers(
@@ -375,9 +417,12 @@ function hasUnresolvableIdentifiers(
 // Returns null when any import would be circular (import resolves to the output directory itself),
 // which means an existing hand-written implementation lives there and must not be overwritten.
 function generateStyleFile(entry: Entry, outputDir: string, context: GenerationContext): string | null {
-  if (hasUnresolvableIdentifiers(entry.valueNode, context)) return null;
+  const valueNode = getResolvedValueNode(entry, context.varMap);
+  const runtimeValueNode = getRuntimeValueNode(valueNode);
 
-  const identifiers = collectImportedIdentifiers(entry.valueNode, context);
+  if (hasUnresolvableIdentifiers(runtimeValueNode, context)) return null;
+
+  const identifiers = collectImportedIdentifiers(runtimeValueNode, context);
 
   const byModule = new Map<string, string[]>();
 
@@ -390,7 +435,7 @@ function generateStyleFile(entry: Entry, outputDir: string, context: GenerationC
   }
 
   // Local object consts (varMap entries that are also meta entries) become sibling file imports.
-  for (const id of collectVarMapIdentifiers(entry.valueNode, context.varMap)) {
+  for (const id of collectVarMapIdentifiers(runtimeValueNode, context.varMap)) {
     const siblingDir = context.entryLocationMap.get(id);
     if (!siblingDir) continue;
     // Self-reference: this entry IS the generated file. Preserve the existing implementation.
@@ -414,13 +459,13 @@ function generateStyleFile(entry: Entry, outputDir: string, context: GenerationC
     })
     .join('\n');
 
-  let valueText = substituteLocalScalars(getNodeText(entry.valueNode, context.sourceFile), context.localScalarMap);
+  let valueText = substituteLocalScalars(getNodeText(runtimeValueNode, context.sourceFile), context.localScalarMap);
 
   // Alias only when the original value is a directly imported identifier with the same name as the export.
   if (
-    ts.isIdentifier(entry.valueNode) &&
-    entry.valueNode.text === entry.exportName &&
-    context.importMap.has(entry.valueNode.text)
+    ts.isIdentifier(runtimeValueNode) &&
+    runtimeValueNode.text === entry.exportName &&
+    context.importMap.has(runtimeValueNode.text)
   ) {
     valueText = `_${entry.exportName}`;
   }
@@ -446,11 +491,9 @@ function generateRootIndex(regular: Entry[], deprecated: Entry[]): string {
   if (hasGroups) {
     if (deprecated.length > 0) lines.push(`export * from './deprecated';`);
     const groups = [...new Set(regular.map((e) => e.groupKey).filter(Boolean) as string[])].sort();
-    for (const g of groups) lines.push(`export * from './${g}';`);
+    for (const g of groups) lines.push(`export * from './${getGroupDirName(g)}';`);
     // Also include non-grouped entries that live directly in generated/
-    const ungrouped = [...regular.filter((e) => !e.groupKey)].sort((a, b) =>
-      a.exportName.localeCompare(b.exportName)
-    );
+    const ungrouped = [...regular.filter((e) => !e.groupKey)].sort((a, b) => a.exportName.localeCompare(b.exportName));
     for (const e of ungrouped) lines.push(`export { ${e.exportName} } from './${e.exportName}';`);
   } else {
     const sorted = [...regular].sort((a, b) => a.exportName.localeCompare(b.exportName));
@@ -464,29 +507,6 @@ function generateRootIndex(regular: Entry[], deprecated: Entry[]): string {
 function writeFile(filePath: string, content: string): void {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, content, 'utf-8');
-}
-
-function getExportLines(content: string): Set<string> {
-  return new Set(
-    content
-      .split('\n')
-      .map((line) => line.trim())
-      .filter((line) => line.startsWith('export'))
-  );
-}
-
-// Don't overwrite an existing index if the generated content would remove any of its export lines.
-// This preserves manually-maintained exports in categories where the meta is not yet complete.
-function writeIndexSafely(filePath: string, content: string): void {
-  if (fs.existsSync(filePath)) {
-    const existing = fs.readFileSync(filePath, 'utf-8');
-    const existingExports = getExportLines(existing);
-    const generatedExports = getExportLines(content);
-    for (const line of existingExports) {
-      if (!generatedExports.has(line)) return;
-    }
-  }
-  writeFile(filePath, content);
 }
 
 function parseMetaFile(metaFilePath: string): MetaFileContext & { regular: Entry[]; deprecated: Entry[] } {
@@ -539,7 +559,7 @@ function writeIndexes(categoryDir: string, regular: Entry[], deprecated: Entry[]
   }
 
   for (const [groupKey, entries] of byGroup) {
-    writeFile(path.join(generatedDir, groupKey, 'index.ts'), generateNamedExportsIndex(entries));
+    writeFile(path.join(generatedDir, getGroupDirName(groupKey), 'index.ts'), generateNamedExportsIndex(entries));
   }
 
   if (deprecated.length > 0) {
