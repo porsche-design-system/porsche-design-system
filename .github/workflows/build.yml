@@ -39,6 +39,7 @@ jobs:
       - run: npm run build:assets
       - run: npm run build:styles
       - run: npm run build:utilities
+      - run: npm run build:stylesheets
       - run: npm run build:component-meta
       - run: npm run build:components
       - run: npm run build:components-js
@@ -118,6 +119,7 @@ jobs:
       - run: npm run build:assets
       - run: npm run build:styles-prod
       - run: npm run build:utilities
+      - run: npm run build:stylesheets-prod
       - run: npm run build:component-meta
       - run: npm run build:components-prod
       - run: npm run build:components-js-prod
