@@ -1,4 +1,4 @@
-import type * as fromMotionType from '@porsche-design-system/emotion/dist/esm/motion';
+import type * as fromMotionType from '@porsche-design-system/emotion';
 import type { PropertiesHyphen } from 'csstype';
 import type { JssStyle } from 'jss';
 import { alphaDisabled } from './alpha-disabled';
