@@ -99,6 +99,25 @@ function pruneMetaDeclarationsPlugin(outputDir) {
   };
 }
 
+function removeStylesMetaDeclarations(outputDir) {
+  for (const filePath of collectFiles(outputDir)) {
+    if (filePath.endsWith('.meta.d.ts')) {
+      fs.rmSync(filePath, { force: true });
+    }
+  }
+
+  removeEmptyDirs(outputDir);
+}
+
+function removeStylesMetaDeclarationsPlugin(outputDir) {
+  return {
+    name: 'remove-styles-meta-declarations',
+    writeBundle: () => {
+      removeStylesMetaDeclarations(outputDir);
+    },
+  };
+}
+
 const stylesBuilds = [
   // Styles - CJS
   {
@@ -146,6 +165,7 @@ const stylesBuilds = [
           },
         },
       }),
+      removeStylesMetaDeclarationsPlugin(path.resolve(stylesDir, 'esm')),
     ],
   },
 ];
