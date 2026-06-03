@@ -65,23 +65,23 @@ const packageJsonExports = {
   './tailwindcss': './tailwindcss/index.css',
   './tailwindcss/index.css': './tailwindcss/index.css',
   './tailwindcss/index': './tailwindcss/index.css',
-  './index.css': './global-styles/index.css',
-  './index': './global-styles/index.css',
-  './color-scheme.css': './global-styles/color-scheme.css',
-  './color-scheme': './global-styles/color-scheme.css',
-  './font-face.css': './global-styles/font-face.css',
-  './font-face': './global-styles/font-face.css',
-  './normalize.css': './global-styles/normalize.css',
-  './normalize': './global-styles/normalize.css',
-  './variables.css': './global-styles/variables.css',
-  './variables': './global-styles/variables.css',
-  './cn': './global-styles/cn/index.css',
-  './cn/index.css': './global-styles/cn/index.css',
-  './cn/index': './global-styles/cn/index.css',
-  './cn/font-face.css': './global-styles/cn/font-face.css',
-  './cn/font-face': './global-styles/cn/font-face.css',
-  './legacy-radius.css': './global-styles/legacy-radius.css',
-  './legacy-radius': './global-styles/legacy-radius.css',
+  './index.css': './stylesheets/index.css',
+  './index': './stylesheets/index.css',
+  './color-scheme.css': './stylesheets/color-scheme.css',
+  './color-scheme': './stylesheets/color-scheme.css',
+  './font-face.css': './stylesheets/font-face.css',
+  './font-face': './stylesheets/font-face.css',
+  './normalize.css': './stylesheets/normalize.css',
+  './normalize': './stylesheets/normalize.css',
+  './variables.css': './stylesheets/variables.css',
+  './variables': './stylesheets/variables.css',
+  './cn': './stylesheets/cn/index.css',
+  './cn/index.css': './stylesheets/cn/index.css',
+  './cn/index': './stylesheets/cn/index.css',
+  './cn/font-face.css': './stylesheets/cn/font-face.css',
+  './cn/font-face': './stylesheets/cn/font-face.css',
+  './legacy-radius.css': './stylesheets/legacy-radius.css',
+  './legacy-radius': './stylesheets/legacy-radius.css',
 };
 
 describe('package content', () => {
@@ -96,6 +96,18 @@ describe('package content', () => {
       expect(fileContent).not.toContain('localhost');
     });
   }
+});
+
+describe('stylesheets folder content', () => {
+  const componentsJsFilePath = nodeRequire.resolve('@porsche-design-system/components-js');
+  const componentsJsPackageDir = path.resolve(componentsJsFilePath, '../..');
+  const stylesheetsDir = path.resolve(componentsJsPackageDir, 'stylesheets');
+  const stylesheetsFiles = globbySync(`${stylesheetsDir}/**/*`);
+
+  test('should only expose .css files and no internal meta (js/cjs/mjs/d.ts) or package.json', () => {
+    const nonCssFiles = stylesheetsFiles.filter((filePath) => !filePath.endsWith('.css'));
+    expect(nonCssFiles).toEqual([]);
+  });
 });
 
 describe('package.json files', () => {
@@ -139,7 +151,7 @@ describe('package.json files', () => {
         expect(pkgJson.exports).toEqual({
           './package.json': './package.json',
           '.': {
-            style: './global-styles/index.css',
+            style: './stylesheets/index.css',
             types: './esm/index.d.ts',
             import: './esm/index.mjs',
             default: './cjs/index.cjs',

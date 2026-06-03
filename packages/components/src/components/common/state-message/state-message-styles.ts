@@ -1,12 +1,13 @@
-import type { JssStyle, Styles } from 'jss';
-import { getTransition } from '../../../styles';
 import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
+  ref,
   spacingStaticXs,
   typescaleSm,
-} from '../../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import type { JssStyle, Styles } from 'jss';
+import { getTransition } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';
 
@@ -17,8 +18,8 @@ export const getFunctionalComponentStateMessageStyles = (
   return {
     message: {
       display: 'flex',
-      gap: spacingStaticXs,
-      font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+      gap: ref(spacingStaticXs),
+      font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       color: getThemedFormStateColors(state).formStateColor,
       transition: `${getTransition('color')}, ${getTransition('opacity')}`,
       ...additionalDefaultJssStyle,

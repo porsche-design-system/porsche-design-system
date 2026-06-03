@@ -1,3 +1,4 @@
+import { ref, spacingStaticXs } from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -6,7 +7,6 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { spacingStaticXs } from '../../../styles/css-variables';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
@@ -44,8 +44,8 @@ export const getComponentCss = (
   isCompact: boolean,
   direction: BreakpointCustomizable<GroupDirection>
 ): string => {
-  const columnGap = `calc(22.4px * (var(${cssVarInternalRadioGroupScaling}) - 0.64285714) + 8px)`;
-  const rowGap = `calc(11.2px * (var(${cssVarInternalRadioGroupScaling}) - 0.64285714) + 4px)`;
+  const columnGap = `calc(22.4px * (${ref(cssVarInternalRadioGroupScaling)} - 0.64285714) + 8px)`;
+  const rowGap = `calc(11.2px * (${ref(cssVarInternalRadioGroupScaling)} - 0.64285714) + 4px)`;
 
   return getCss({
     '@global': {
@@ -68,7 +68,7 @@ export const getComponentCss = (
       all: 'unset',
       display: 'grid',
       justifySelf: 'flex-start',
-      rowGap: spacingStaticXs,
+      rowGap: ref(spacingStaticXs),
     },
     wrapper: {
       alignItems: 'start',

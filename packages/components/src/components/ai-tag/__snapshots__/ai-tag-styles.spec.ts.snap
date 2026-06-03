@@ -18,13 +18,13 @@ div {
   align-items: center;
   gap: 2px;
   padding: 0 var(--p-spacing-static-sm) 0 var(--p-spacing-static-xs);
-  border-radius: var(--_p-legacy-radius-small, calc(var(--p-spacing-static-xs) + (var(--p-leading-normal) / 2)));
+  border-radius: var(--_p-legacy-radius-small,calc(var(--p-spacing-static-xs) + (var(--p-leading-normal) / 2)));
   font-size: var(--p-typescale-2xs);
   color: var(--p-color-contrast-high);
   background: var(--p-color-frosted-strong);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 div::before {
   content: "";

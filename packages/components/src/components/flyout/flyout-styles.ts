@@ -1,3 +1,4 @@
+import { ref } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -105,7 +106,7 @@ export const getComponentCss = (
     flyout: {
       ...dialogGridJssStyle(),
       ...getDialogColorJssStyle(),
-      width: `var(${cssVariableWidth},auto)`,
+      width: ref(cssVariableWidth, 'auto'),
       minWidth: '320px',
       maxWidth: '100vw',
       ...(isPositionStart

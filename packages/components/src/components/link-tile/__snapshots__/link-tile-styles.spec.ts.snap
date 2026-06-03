@@ -19,7 +19,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 2/2;
@@ -62,7 +62,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
   aspect-ratio: 1/1;
 }
 .root::after {
@@ -133,7 +133,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 4/2;
@@ -176,7 +176,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
   aspect-ratio: 3/4;
 }
 .root::after {
@@ -247,7 +247,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 2/2;
@@ -290,7 +290,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
   aspect-ratio: 4/3;
 }
 .root::after {
@@ -361,7 +361,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 2/2;
@@ -404,7 +404,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
   aspect-ratio: 9/16;
 }
 .media {
@@ -466,7 +466,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 4/2;
@@ -509,7 +509,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
   aspect-ratio: 16/9;
 }
 .media {
@@ -571,7 +571,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 4/2;
@@ -649,7 +649,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-4xl));
+  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
   aspect-ratio: 1/1;
 }
 .root::after {

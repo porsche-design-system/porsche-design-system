@@ -1,4 +1,14 @@
 import {
+  colorCanvas,
+  colorPrimary,
+  fontPorscheNext,
+  leadingNormal,
+  radiusFull,
+  ref,
+  spacingStaticXs,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
+import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getDisabledBaseStyles,
@@ -8,15 +18,6 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  colorCanvas,
-  colorPrimary,
-  fontPorscheNext,
-  leadingNormal,
-  radiusFull,
-  spacingStaticXs,
-  typescaleSm,
-} from '../../../styles/css-variables';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getCss, isDisabledOrLoading } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
@@ -36,11 +37,11 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
 
   const radioBorderWidth = '1px';
-  const radioDimension = `calc(var(${cssVarInternalRadioGroupOptionScaling}) * 1.75rem)`;
-  const radioMarginBlock = `max(0px, calc((${leadingNormal} - ${radioDimension}) / 2))`;
+  const radioDimension = `calc(${ref(cssVarInternalRadioGroupOptionScaling)} * 1.75rem)`;
+  const radioMarginBlock = `max(0px, calc((${ref(leadingNormal)} - ${radioDimension}) / 2))`;
   const radioTouchInset = `calc(-${radioBorderWidth} - max(0px, calc(24px - ${radioDimension}) / 2))`;
-  const labelPaddingTop = `max(0px, calc((${radioDimension} - ${leadingNormal}) / 2))`;
-  const labelPaddingInlineStart = `calc(11.2px * (var(${cssVarInternalRadioGroupOptionScaling}) - 0.64285714) + 4px)`;
+  const labelPaddingTop = `max(0px, calc((${radioDimension} - ${ref(leadingNormal)}) / 2))`;
+  const labelPaddingInlineStart = `calc(11.2px * (${ref(cssVarInternalRadioGroupOptionScaling)} - 0.64285714) + 4px)`;
 
   return getCss({
     '@global': {
@@ -59,11 +60,11 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
         height: radioDimension,
         marginBlock: radioMarginBlock,
         boxSizing: 'border-box',
-        font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct width and height definition based on ex-unit
+        font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width and height definition based on ex-unit
         background: formStateBackgroundColor,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         border: `${radioBorderWidth} solid ${formStateBorderColor}`,
-        borderRadius: radiusFull,
+        borderRadius: ref(radiusFull),
         ...(disabledOrLoading && {
           pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
           ...forcedColorsMediaQuery({
@@ -78,11 +79,11 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
           })),
         '&:focus-visible': getFocusBaseStyles(),
         '&:checked': {
-          background: state === 'none' ? colorPrimary : formStateBorderColor,
+          background: state === 'none' ? ref(colorPrimary) : formStateBorderColor,
           '&::before': {
             WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
             mask: `${checkedIcon} center/contain no-repeat`,
-            backgroundColor: colorCanvas,
+            backgroundColor: ref(colorCanvas),
             ...forcedColorsMediaQuery({
               background: 'CanvasText',
             }),
@@ -105,14 +106,14 @@ export const getComponentCss = (disabled: boolean, loading: boolean, state: Radi
     root: {
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
-      rowGap: spacingStaticXs,
+      rowGap: ref(spacingStaticXs),
     },
     wrapper: {
       position: 'relative',
       display: 'flex',
       alignItems: 'center',
       alignSelf: 'flex-start',
-      minHeight: leadingNormal, // necessary for compact mode
+      minHeight: ref(leadingNormal), // necessary for compact mode
       cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
       ...(disabled && getDisabledBaseStyles()),
     },

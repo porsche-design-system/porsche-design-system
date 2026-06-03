@@ -1,9 +1,16 @@
+import {
+  fontPorscheNext,
+  leadingNormal,
+  legacyRadiusSmall,
+  radiusSm,
+  ref,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
-import { fontPorscheNext, leadingNormal, legacyRadiusSmall, radiusSm, typescaleSm } from '../css-variables';
 
 export const getButtonImageJssStyle: JssStyle = {
-  font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct calculations based on ex-unit
+  font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct calculations based on ex-unit
   width: 'auto',
-  height: leadingNormal,
-  borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
+  height: ref(leadingNormal),
+  borderRadius: ref(legacyRadiusSmall, ref(radiusSm)),
 };

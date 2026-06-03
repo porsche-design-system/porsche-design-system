@@ -16,7 +16,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
@@ -29,7 +29,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   color: var(--p-color-canvas) !important;
 }
 ::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
@@ -57,14 +57,14 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
-    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-canvas);
   padding: var(--p-spacing-static-xs);
 }
@@ -75,7 +75,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-primary);
 }
 @media(forced-colors:active) {
@@ -103,7 +103,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-md) !important;
   color: var(--p-color-primary) !important;
@@ -116,7 +116,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   color: var(--p-color-canvas) !important;
 }
 ::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
@@ -144,14 +144,14 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
-    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-frosted);
   padding: var(--p-spacing-static-xs);
   -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -164,7 +164,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-primary);
 }
 @media(forced-colors:active) {
@@ -192,7 +192,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   padding: 2px var(--p-spacing-static-sm) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-md) !important;
   color: var(--p-color-primary) !important;
@@ -205,7 +205,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   color: var(--p-color-canvas) !important;
 }
 ::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
@@ -233,14 +233,14 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
-    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-frosted);
   padding: var(--p-spacing-static-xs);
   -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -253,7 +253,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-primary);
 }
 @media(forced-colors:active) {
@@ -281,7 +281,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
@@ -294,7 +294,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   color: var(--p-color-canvas) !important;
 }
 ::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
@@ -322,14 +322,14 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
-    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-frosted);
   padding: var(--p-spacing-static-xs);
   -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -342,7 +342,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-primary);
 }
 @media(forced-colors:active) {
@@ -370,7 +370,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
   background: var(--p-color-frosted) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
@@ -384,7 +384,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   color: var(--p-color-canvas) !important;
 }
 ::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
@@ -412,14 +412,14 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
-    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 .bar {
   position: absolute;
@@ -428,7 +428,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-primary);
 }"
 `;
@@ -449,7 +449,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
   background: var(--p-color-frosted) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
@@ -463,7 +463,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   color: var(--p-color-canvas) !important;
 }
 ::slotted(a:nth-child(3)[data-animating]), ::slotted(button:nth-child(3)[data-animating]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a:nth-child(3):not([data-animating])), ::slotted(button:nth-child(3):not([data-animating])) {
   background: var(--p-color-primary) !important;
@@ -491,14 +491,14 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(3)):hover), ::slotted(button:not(:nth-child(3)):hover) {
-    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 .bar {
   position: absolute;
@@ -507,7 +507,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-primary);
 }"
 `;
@@ -528,7 +528,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
   background: var(--p-color-frosted) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
@@ -558,14 +558,14 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 
 @media(hover:hover) {
   ::slotted(a:hover), ::slotted(button:hover) {
-    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 .bar {
   position: absolute;
@@ -574,7 +574,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-primary);
 }"
 `;
@@ -595,7 +595,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
   background: var(--p-color-frosted) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
@@ -609,7 +609,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   color: var(--p-color-canvas) !important;
 }
 ::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
@@ -667,14 +667,14 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
-    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 .bar {
   position: absolute;
@@ -683,7 +683,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-primary);
 }"
 `;
@@ -704,7 +704,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full)) !important;
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
@@ -717,7 +717,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   color: var(--p-color-canvas) !important;
 }
 ::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
-  transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
+  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
 }
 ::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
   background: var(--p-color-primary) !important;
@@ -745,14 +745,14 @@ exports[`getComponentCss() > should return correct css for background: surface, 
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
-    transition: color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
     background: var(--p-color-frosted-strong) !important;
   }
 }
 
 .scroller {
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-surface);
   padding: var(--p-spacing-static-xs);
 }
@@ -763,7 +763,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
   background: var(--p-color-primary);
 }
 @media(forced-colors:active) {

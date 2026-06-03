@@ -1,1 +1,0 @@
-export { leadingNormal } from './leadingNormal';

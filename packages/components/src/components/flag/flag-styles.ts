@@ -1,5 +1,5 @@
+import { fontPorscheNext, leadingNormal, ref } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import { fontPorscheNext, leadingNormal } from '../../styles/css-variables';
 import { sizeMap } from '../../styles/maps';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
@@ -11,7 +11,7 @@ import type { FlagSize } from './flag-utils';
 const cssVarSize = '--p-flag-size';
 
 export const getComponentCss = (size: BreakpointCustomizable<FlagSize>): string => {
-  const dimension = `var(${cssVarSize},${leadingNormal})`;
+  const dimension = ref(cssVarSize, ref(leadingNormal));
 
   return getCss({
     '@global': {
@@ -33,7 +33,7 @@ export const getComponentCss = (size: BreakpointCustomizable<FlagSize>): string 
         pointerEvents: 'none', // disable dragging/ghosting of images
         width: dimension,
         height: dimension,
-        fontFamily: fontPorscheNext, // needed for correct width/height definition based on ex-unit
+        fontFamily: ref(fontPorscheNext), // needed for correct width/height definition based on ex-unit
         ...buildResponsiveStyles(size, (s: FlagSize) => ({
           fontSize: sizeMap[s], // needed for correct width/height definition based on ex-unit
         })),
