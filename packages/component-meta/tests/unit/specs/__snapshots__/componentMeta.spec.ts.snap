@@ -89,7 +89,7 @@ exports[`should match snapshot 1`] = `
         "isDeprecated": true,
         "type": "AccordionHeadingTag",
       },
-      "indention": {
+      "indent": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Indents the slotted content to be vertically aligned with the text of the summary section.",

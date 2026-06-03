@@ -27,7 +27,7 @@ const propTypes: PropTypes<typeof Accordion> = {
   alignMarker: AllowedTypes.oneOf<AccordionAlignMarker>(ACCORDION_ALIGN_MARKERS),
   background: AllowedTypes.oneOf<AccordionBackground>(ACCORDIONS_BACKGROUNDS),
   compact: AllowedTypes.boolean,
-  indention: AllowedTypes.breakpoint('boolean'),
+  indent: AllowedTypes.breakpoint('boolean'),
   sticky: AllowedTypes.boolean,
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
   heading: AllowedTypes.string,
@@ -63,7 +63,7 @@ export class Accordion {
   @Prop() public compact?: boolean;
 
   /** Indents the slotted content to be vertically aligned with the text of the summary section. */
-  @Prop() public indention?: BreakpointCustomizable<boolean> = false;
+  @Prop() public indent?: BreakpointCustomizable<boolean> = false;
 
   /**
    * @deprecated Will be removed in the next major release. Use the `summary` slot instead.
@@ -126,7 +126,7 @@ export class Accordion {
       this.alignMarker,
       this.background,
       this.compact,
-      this.indention,
+      this.indent,
       this.open,
       this.sticky,
       this.hasSummaryBefore,
