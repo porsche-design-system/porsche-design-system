@@ -1,14 +1,6 @@
-import {
-  colorCanvas,
-  colorContrastLow,
-  durationSm,
-  easeInOut,
-  legacyRadiusMedium,
-  radiusXl,
-  ref,
-} from '@porsche-design-system/stylesheets';
 import type { JssStyle, Styles } from 'jss';
 import { OPTION_LIST_SAFE_ZONE } from '../../utils';
+import { colorCanvas, colorContrastLow, durationSm, easeInOut, radiusXl, ref } from '@porsche-design-system/stylesheets';
 import { cssVariableAnimationDuration } from '../common-styles';
 
 const keyframesName = 'fade-in';
@@ -47,7 +39,7 @@ export const getPopoverJssStyle = (isOpen: boolean, cssVarScalingName: string, o
     filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.15))',
     background: ref(colorCanvas),
     border: `1px solid ${ref(colorContrastLow)}`,
-    borderRadius: ref(legacyRadiusMedium, ref(radiusXl)),
+    borderRadius: ref(radiusXl),
     '&:not(:popover-open)': {
       display: 'none',
     },

@@ -1,7 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { cssVariablesMeta } from '../src/cssVariablesMeta';
-import { legacyRadiusMeta } from '../src/legacyRadiusMeta';
 import type { CssVariableMeta, CssVariablesMetaTree } from '../src/types';
 
 // Generates one plain-literal module per CSS custom property *name* under
@@ -83,13 +82,6 @@ export const buildCssVariableConstants = (): void => {
   const root = createDir();
   collect(cssVariablesMeta, root);
 
-  // Legacy radius variables are kept in their own separate `legacyRadius/` group.
-  const legacyDir = createDir();
-  for (const leaf of legacyRadiusMeta) {
-    legacyDir.leaves.push({ constName: toConstName(leaf.property), property: leaf.property });
-  }
-  root.dirs.set('legacyRadius', legacyDir);
-
   writeDir(root, generatedDir);
 
   console.log(`Built CSS variable constants under ${generatedDir}`);
@@ -100,9 +92,3 @@ export const buildCssVariableConstants = (): void => {
 if (process.argv[1]?.endsWith('buildCssVariableConstants.ts')) {
   buildCssVariableConstants();
 }
-
-
-
-
-
-

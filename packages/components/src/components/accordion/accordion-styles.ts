@@ -7,7 +7,7 @@ import {
   fontPorscheNext,
   fontWeightSemibold,
   leadingNormal,
-  legacyRadiusSmall,
+  radius2Xl,
   radiusFull,
   radiusXl,
   ref,
@@ -79,6 +79,8 @@ export const getComponentCss = (
 
   const isIconAlignedStart = alignMarker === 'start';
 
+  const radius = ref(isCompact ? radiusXl : radius2Xl);
+
   return getCss({
     '@global': {
       '@keyframes overflow-hidden': {
@@ -145,7 +147,7 @@ export const getComponentCss = (
           WebkitBackdropFilter: ref(blurFrosted),
           backdropFilter: ref(blurFrosted),
         }),
-        borderRadius: ref(legacyRadiusSmall, ref(radiusXl)),
+        borderRadius: radius,
         ...forcedColorsMediaQuery({
           outline: '1px solid CanvasText',
           outlineOffset: background === 'none' ? '0' : '-1px',
@@ -196,7 +198,7 @@ export const getComponentCss = (
             position: 'sticky',
             top: ref(cssVarSummaryTop, ref(cssVarSummaryTopDeprecated, '0px')),
             background: `linear-gradient(180deg,${backgroundMap[background]} 0%,${backgroundMap[background]} 90%,transparent 100%)`,
-            borderRadius: ref(legacyRadiusSmall, ref(radiusXl)),
+            borderRadius: radius,
           }),
         '&:focus-visible::before': getFocusBaseStyles(),
         ...hoverMediaQuery({

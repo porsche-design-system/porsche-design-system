@@ -1,13 +1,4 @@
 import {
-  blurFrosted,
-  colorFrosted,
-  legacyRadiusSmall,
-  radiusSm,
-  ref,
-  spacingFluidSm,
-  spacingStaticXs,
-} from '@porsche-design-system/stylesheets';
-import {
   addImportantToEachRule,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
@@ -16,6 +7,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { blurFrosted, colorFrosted, radiusSm, ref, spacingFluidSm, spacingStaticXs } from '@porsche-design-system/stylesheets';
 import { getCss } from '../../../utils';
 import { cssVariableTablePadding } from '../table/table-styles';
 import type { Direction } from '../table/table-utils';
@@ -71,7 +63,7 @@ export const getComponentCss = (
                 content: '""',
                 position: 'absolute',
                 inset: `${buttonBeforeOffsetVertical} ${buttonBeforeOffsetHorizontal}`,
-                borderRadius: ref(legacyRadiusSmall, ref(radiusSm)),
+                borderRadius: ref(radiusSm),
                 zIndex: -1, // needed so that text behind element is selectable and/or visible
                 transition: getTransition('background-color'),
               },

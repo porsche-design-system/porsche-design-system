@@ -1,23 +1,4 @@
 import {
-  blurFrosted,
-  colorCanvas,
-  colorFrosted,
-  colorFrostedSoft,
-  colorPrimary,
-  durationSm,
-  easeInOut,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusFull,
-  radiusLg,
-  ref,
-  spacingStaticMd,
-  spacingStaticSm,
-  typescaleSm,
-} from '@porsche-design-system/stylesheets';
-import {
   addImportantToEachRule,
   cssVariableAnimationDuration,
   forcedColorsMediaQuery,
@@ -28,6 +9,24 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import {
+  blurFrosted,
+  colorCanvas,
+  colorFrosted,
+  colorFrostedSoft,
+  colorPrimary,
+  durationSm,
+  easeInOut,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusFull,
+  radiusXl,
+  ref,
+  spacingStaticMd,
+  spacingStaticSm,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
@@ -111,7 +110,7 @@ export const getComponentCss = (): string => {
       boxSizing: 'border-box',
       padding: `${ref(spacingStaticSm)} ${ref(spacingStaticMd)}`,
       pointerEvents: 'auto',
-      borderRadius: ref(legacyRadiusSmall, ref(radiusLg)),
+      borderRadius: ref(radiusXl),
       background: ref(colorCanvas),
       font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       color: ref(colorPrimary),

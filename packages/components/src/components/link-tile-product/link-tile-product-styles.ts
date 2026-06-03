@@ -8,9 +8,8 @@ import {
   fontWeightNormal,
   fontWeightSemibold,
   leadingNormal,
-  legacyRadiusLarge,
   radius2Xl,
-  radius4Xl,
+  radius3Xl,
   ref,
   spacingFluidMd,
   spacingFluidSm,
@@ -40,7 +39,7 @@ const anchorJssStyle: JssStyle = {
   position: 'absolute',
   inset: 0,
   zIndex: 1, // necessary to be on top of img
-  borderRadius: ref(legacyRadiusLarge, ref(radius4Xl)),
+  borderRadius: ref(radius3Xl),
   ...forcedColorsMediaQuery({
     forcedColorAdjust: 'none',
     boxShadow: 'inset 0 0 0 2px LinkText',
@@ -96,7 +95,7 @@ export const getComponentCss = (
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          borderRadius: ref(legacyRadiusLarge, ref(radius2Xl)),
+          borderRadius: ref(radius2Xl),
           overflow: 'hidden', // needed for picture > img to have correct border-radius
         },
       }),
@@ -112,7 +111,7 @@ export const getComponentCss = (
       aspectRatio: '3/4',
       overflow: 'hidden', // TODO: discussable if we should prevent text to overflow .root, – e.g. it also prevents a popover from being shown correctly
       boxSizing: 'border-box',
-      borderRadius: ref(legacyRadiusLarge, ref(radius4Xl)),
+      borderRadius: ref(radius3Xl),
       padding: ref(spacingFluidSm),
       color: ref(colorPrimary),
       backgroundColor: ref(colorSurface),

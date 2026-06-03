@@ -1,19 +1,4 @@
 import {
-  colorContrastHigh,
-  colorFrosted,
-  colorPrimary,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusFull,
-  radiusLg,
-  radiusXl,
-  ref,
-  typescaleSm,
-  typescaleXs,
-} from '@porsche-design-system/stylesheets';
-import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
@@ -23,6 +8,20 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import {
+  colorContrastHigh,
+  colorFrosted,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusFull,
+  radiusLg,
+  radiusXl,
+  ref,
+  typescaleSm,
+  typescaleXs,
+} from '@porsche-design-system/stylesheets';
 import { getCss } from '../../utils';
 
 export const cssVarInternalTagDismissibleScaling = '--_p-tag-dismissible-a';
@@ -54,7 +53,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
         alignItems: 'center',
         gap: buttonGap,
         padding: `${buttonPaddingBlock} ${buttonPaddingInline}`,
-        borderRadius: ref(legacyRadiusSmall, isCompact ? ref(radiusLg) : ref(radiusXl)),
+        borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
         cursor: 'pointer',
         background: ref(colorFrosted),
         color: ref(colorPrimary),
@@ -84,7 +83,7 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
       padding: iconPadding,
       margin: iconMargin,
       transition: getTransition('background-color'),
-      borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
+      borderRadius: ref(radiusFull),
     },
     'sr-only': getHiddenTextJssStyle(),
   });

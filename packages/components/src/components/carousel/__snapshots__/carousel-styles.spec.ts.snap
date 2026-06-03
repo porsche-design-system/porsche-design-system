@@ -14,7 +14,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -64,7 +64,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -198,7 +198,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -246,7 +246,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -374,7 +374,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -424,7 +424,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -582,7 +582,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -630,7 +630,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -705,7 +705,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -762,7 +762,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -837,7 +837,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -896,7 +896,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -1081,7 +1081,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -1131,7 +1131,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -1206,7 +1206,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -1258,7 +1258,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -1339,7 +1339,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -1393,7 +1393,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -1521,7 +1521,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -1582,7 +1582,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -1663,7 +1663,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -1722,7 +1722,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -1874,7 +1874,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -1933,7 +1933,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -2088,7 +2088,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -2147,7 +2147,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -2274,7 +2274,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
@@ -2335,7 +2335,7 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;

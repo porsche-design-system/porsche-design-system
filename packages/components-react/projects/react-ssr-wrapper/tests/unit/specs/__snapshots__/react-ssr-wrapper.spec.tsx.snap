@@ -47,7 +47,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color,var(--p-color-contrast-lower));
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color,var(--p-color-primary));
@@ -81,7 +81,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -148,7 +148,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -366,7 +366,7 @@ input::-webkit-search-cancel-button {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -577,7 +577,7 @@ img {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -780,7 +780,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -806,7 +806,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -882,7 +882,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -908,7 +908,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -984,7 +984,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -1010,7 +1010,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -1086,7 +1086,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -1112,7 +1112,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -1188,7 +1188,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -1214,7 +1214,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -1290,7 +1290,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -1316,7 +1316,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -1399,7 +1399,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -1670,7 +1670,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a,1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) + 4px);
   border: 1px solid undefined;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   cursor: pointer;
@@ -1728,7 +1728,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a,1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) + 4px);
   border: 1px solid undefined;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   cursor: pointer;
@@ -1803,7 +1803,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
         <style>
           :host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -1818,7 +1818,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -1972,7 +1972,7 @@ button {
   width: max-content;
   cursor: not-allowed;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -2109,7 +2109,7 @@ button {
   width: max-content;
   cursor: not-allowed;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -2229,7 +2229,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
     <style>
       :host {
   display: grid;
-  position: relative !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2239,27 +2238,24 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
-  padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
-  background: var(--p-color-frosted) !important;
+  border-radius: var(--p-radius-xl) !important;
+  padding: var(--p-spacing-static-md) calc(28 * var(--p-spacing-static-2xs)) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
+  background: 0 0 / 0% 100% no-repeat !important;
+  transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
 ::slotted(a:nth-child(2)), ::slotted(button:nth-child(2)) {
-  color: var(--p-color-canvas) !important;
-}
-::slotted(a:nth-child(2)[data-animating]), ::slotted(button:nth-child(2)[data-animating]) {
-  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
-::slotted(a:nth-child(2):not([data-animating])), ::slotted(button:nth-child(2):not([data-animating])) {
-  background: var(--p-color-primary) !important;
+  background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
+  background-size: 100% 100% !important;
+  transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -2274,9 +2270,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a:nth-child(2)), ::slotted(button:nth-child(2)) {
-    transition: unset !important;
-  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -2284,14 +2277,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(2)):hover), ::slotted(button:not(:nth-child(2)):hover) {
-    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
-    background: var(--p-color-frosted-strong) !important;
+    background-color: var(--p-color-frosted) !important;
   }
 }
 
 .scroller {
+  --_p-scroller-focus-ring-radius: var(--p-radius-xl);
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 .bar {
   position: absolute;
@@ -2300,9 +2292,15 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
-  background: var(--p-color-primary);
+  border-radius: var(--p-radius-xl);
+  background: var(--p-color-frosted-strong);
 }
+@media(forced-colors:active) {
+  .bar {
+    display: none;
+  }
+}
+
     </style>
     <p-scroller
       class="scroller"
@@ -2315,7 +2313,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
         <style>
           :host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -2330,7 +2328,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -2501,7 +2499,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
         <style>
           :host {
   display: grid;
-  position: relative !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -2511,27 +2508,24 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
-  padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
-  background: var(--p-color-frosted) !important;
+  border-radius: var(--p-radius-xl) !important;
+  padding: var(--p-spacing-static-md) calc(28 * var(--p-spacing-static-2xs)) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
+  background: 0 0 / 0% 100% no-repeat !important;
+  transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
 ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
-  color: var(--p-color-canvas) !important;
-}
-::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
-  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
-::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
-  background: var(--p-color-primary) !important;
+  background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
+  background-size: 100% 100% !important;
+  transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -2546,9 +2540,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
-    transition: unset !important;
-  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -2556,14 +2547,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
-    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
-    background: var(--p-color-frosted-strong) !important;
+    background-color: var(--p-color-frosted) !important;
   }
 }
 
 .scroller {
+  --_p-scroller-focus-ring-radius: var(--p-radius-xl);
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 .bar {
   position: absolute;
@@ -2572,9 +2562,15 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
-  background: var(--p-color-primary);
+  border-radius: var(--p-radius-xl);
+  background: var(--p-color-frosted-strong);
 }
+@media(forced-colors:active) {
+  .bar {
+    display: none;
+  }
+}
+
         </style>
         <p-scroller
           class="scroller"
@@ -2587,7 +2583,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
             <style>
               :host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -2602,7 +2598,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -2985,7 +2981,7 @@ exports[`should render dsr component for PAccordion 1`] = `
     align-items: center;
     padding: var(--p-accordion-py,0) var(--p-accordion-px,0);
     background: transparent;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -3117,7 +3113,7 @@ div {
   align-items: center;
   gap: 2px;
   padding: 0 var(--p-spacing-static-sm) 0 var(--p-spacing-static-xs);
-  border-radius: var(--_p-legacy-radius-small,calc(var(--p-spacing-static-xs) + (var(--p-leading-normal) / 2)));
+  border-radius: calc(var(--p-spacing-static-xs) + (var(--p-leading-normal) / 2));
   font-size: var(--p-typescale-2xs);
   color: var(--p-color-contrast-high);
   background: var(--p-color-frosted-strong);
@@ -3213,7 +3209,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -3277,7 +3273,7 @@ slot:not([name]),slot[name="description"],p {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3455,7 +3451,7 @@ exports[`should render dsr component for PButton 1`] = `
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3601,7 +3597,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -3778,7 +3774,7 @@ p {
   all: unset;
   z-index: 3;
   max-width: 34.375rem;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   hyphens: inherit;
   font-size: var(--p-typescale-md);
@@ -3794,7 +3790,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 4/3;
   cursor: pointer;
 }
@@ -3870,7 +3866,7 @@ p {
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4015,7 +4011,7 @@ slot[name="title"]::slotted(a) {
   all: unset !important;
   cursor: pointer !important;
   color: inherit !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm)) !important;
+  border-radius: var(--p-radius-sm) !important;
 }
 slot[name="title"]::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -4317,7 +4313,7 @@ h2 {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4654,7 +4650,7 @@ svg {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -4850,7 +4846,7 @@ exports[`should render dsr component for PCarousel 1`] = `
   visibility: hidden;
 }
 ::slotted(*) {
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl))) !important;
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl)) !important;
 }
 .header {
   display: grid;
@@ -4889,7 +4885,7 @@ exports[`should render dsr component for PCarousel 1`] = `
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
-  border-radius: var(--p-carousel-border-radius,var(--_p-legacy-radius-large,var(--p-radius-4xl)));
+  border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
 .splide__sr {
   position: absolute;
@@ -5021,7 +5017,7 @@ input {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 input::before {
   content: "";
@@ -5568,7 +5564,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -5703,7 +5699,7 @@ img:dir(rtl) {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5874,7 +5870,7 @@ img {
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -6170,7 +6166,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -6331,7 +6327,7 @@ img:dir(rtl) {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -6366,7 +6362,7 @@ img:dir(rtl) {
   .root::before {
     right: -4px;
     left: -4px;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+    border-radius: var(--p-radius-lg);
   }
   .label {
     white-space: inherit;
@@ -6504,7 +6500,7 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
   all: unset !important;
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm)) !important;
+  border-radius: var(--p-radius-sm) !important;
   font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
@@ -6639,7 +6635,7 @@ exports[`should render dsr component for PFlyout 1`] = `
       :host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-flyout-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-flyout-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-flyout-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -6716,15 +6712,16 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
-  border-start-start-radius: var(--_p-legacy-radius-large,var(--p-radius-xl));
-  border-end-start-radius: var(--_p-legacy-radius-large,var(--p-radius-xl));
+  border-start-start-radius: var(--p-radius-3xl);
+  border-end-start-radius: var(--p-radius-3xl);
 }
 .dismiss {
   grid-area: 1/3;
@@ -6734,7 +6731,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .flyout {
@@ -6769,7 +6766,7 @@ dialog::backdrop {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -6789,8 +6786,8 @@ dialog::backdrop {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
@@ -6846,7 +6843,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-contrast-high);
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -7055,7 +7052,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -7115,7 +7112,7 @@ slot:not([name]),slot[name="description"],p {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -7335,7 +7332,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -7517,7 +7514,7 @@ input {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -7695,7 +7692,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -7878,7 +7875,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -8053,7 +8050,7 @@ input {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -8230,7 +8227,7 @@ input::-webkit-search-cancel-button {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -8407,7 +8404,7 @@ input {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -8581,7 +8578,7 @@ input {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -8758,7 +8755,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -8940,7 +8937,7 @@ input {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -9118,7 +9115,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -9257,7 +9254,7 @@ exports[`should render dsr component for PLink 1`] = `
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -9272,7 +9269,7 @@ exports[`should render dsr component for PLink 1`] = `
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl)) !important;
+  border-radius: var(--p-radius-xl) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -9383,7 +9380,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   position: fixed !important;
   inset-block: -2px !important;
   inset-inline: -4px !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg)) !important;
+  border-radius: var(--p-radius-lg) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -9415,7 +9412,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   bottom: -2px;
   right: -4px;
   left: -4px;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .icon {
@@ -9585,7 +9582,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 4/3;
 }
 .media {
@@ -9665,7 +9662,7 @@ p {
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -9680,7 +9677,7 @@ p {
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl)) !important;
+  border-radius: var(--p-radius-xl) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -9792,7 +9789,7 @@ slot[name="header"] {
   position: absolute !important;
   inset: 0 !important;
   z-index: 1 !important;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl)) !important;
+  border-radius: var(--p-radius-3xl) !important;
   text-indent: -999999px !important;
 }
 ::slotted(a[slot='anchor']:focus-visible) {
@@ -9809,7 +9806,7 @@ slot[name="header"] {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-2xl)) !important;
+  border-radius: var(--p-radius-2xl) !important;
   overflow: hidden !important;
 }
 @media(forced-colors:active) {
@@ -9828,7 +9825,7 @@ slot[name="header"] {
   aspect-ratio: 3/4;
   overflow: hidden;
   box-sizing: border-box;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   padding: var(--p-spacing-fluid-sm);
   color: var(--p-color-primary);
   background-color: var(--p-color-surface);
@@ -9935,7 +9932,7 @@ slot[name="header"] {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -10079,7 +10076,7 @@ exports[`should render dsr component for PModal 1`] = `
       :host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -10146,8 +10143,9 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
@@ -10158,7 +10156,7 @@ dialog::backdrop {
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 .modal:dir(rtl) {
   transform: translateY(25vh);
@@ -10171,7 +10169,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .modal {
@@ -10207,7 +10205,7 @@ dialog::backdrop {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -10227,8 +10225,8 @@ dialog::backdrop {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
@@ -10284,7 +10282,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-contrast-high);
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -10471,7 +10469,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-multi-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-multi-select-border-color,var(--p-color-contrast-lower));
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color,var(--p-color-primary));
@@ -10505,7 +10503,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -10572,7 +10570,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -10790,7 +10788,7 @@ input::-webkit-search-cancel-button {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -11001,7 +10999,7 @@ img {
   bottom: -2px;
   right: -2px;
   left: -2px;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
@@ -11209,7 +11207,7 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -11235,7 +11233,7 @@ slot {
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -11371,7 +11369,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -11617,7 +11615,7 @@ input {
   padding: calc(11.2px * (var(--_p-pin-code-a) - 0.64285714) + 4px);
   box-sizing: border-box;
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
@@ -11863,7 +11861,7 @@ exports[`should render dsr component for PPopover 1`] = `
     box-sizing: border-box;
     padding: var(--p-spacing-static-sm) var(--p-spacing-static-md);
     pointer-events: auto;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+    border-radius: var(--p-radius-xl);
     background: var(--p-color-canvas);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
@@ -12248,7 +12246,7 @@ exports[`should render dsr component for PScroller 1`] = `
     <style>
       :host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -12263,7 +12261,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -12514,7 +12512,7 @@ button {
   min-width: calc(max(var(--p-leading-normal), var(--_p-segmented-control-a,1) * (var(--p-leading-normal) + 10px)) + (max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) + 1px) * 2);
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) + 4px);
   border: 1px solid undefined;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   cursor: pointer;
@@ -12599,7 +12597,7 @@ exports[`should render dsr component for PSelect 1`] = `
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
     border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
@@ -12614,7 +12612,7 @@ exports[`should render dsr component for PSelect 1`] = `
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
     width: auto;
     height: var(--p-leading-normal);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
   }
   button span {
     flex-grow: 1;
@@ -12639,7 +12637,7 @@ exports[`should render dsr component for PSelect 1`] = `
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
-    border-radius: var(--_p-legacy-radius-medium,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -12706,7 +12704,7 @@ exports[`should render dsr component for PSelect 1`] = `
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+    border-radius: var(--p-radius-sm);
     transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
@@ -12912,7 +12910,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
   font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
   width: auto !important;
   height: var(--p-leading-normal) !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm)) !important;
+  border-radius: var(--p-radius-sm) !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -12929,7 +12927,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-sm));
+  border-radius: var(--p-radius-sm);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
@@ -12982,7 +12980,7 @@ exports[`should render dsr component for PSheet 1`] = `
       :host {
   display: contents;
   --ref-p-sheet-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-sheet-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-sheet-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-sheet-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -13053,8 +13051,9 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
@@ -13063,8 +13062,8 @@ dialog::backdrop {
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
-  border-top-left-radius: var(--_p-legacy-radius-large,var(--p-radius-xl));
-  border-top-right-radius: var(--_p-legacy-radius-large,var(--p-radius-xl));
+  border-top-left-radius: var(--p-radius-3xl);
+  border-top-right-radius: var(--p-radius-3xl);
 }
 .sheet:dir(rtl) {
   transform: translateY(25vh);
@@ -13077,7 +13076,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .sheet {
@@ -13112,7 +13111,7 @@ dialog::backdrop {
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -13132,8 +13131,8 @@ dialog::backdrop {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
@@ -13189,7 +13188,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .root:hover {
-    background-color: var(--p-color-frosted);
+    background-color: var(--p-color-contrast-high);
   }
 @media(forced-colors:active) {
     .root:hover {
@@ -13425,7 +13424,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
         <style>
           :host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -13440,7 +13439,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -13599,7 +13598,7 @@ button {
   width: max-content;
   cursor: not-allowed;
   font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -13893,7 +13892,7 @@ exports[`should render dsr component for PTable 1`] = `
         <style>
           :host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -13908,7 +13907,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -14251,7 +14250,6 @@ exports[`should render dsr component for PTabs 1`] = `
         <style>
           :host {
   display: grid;
-  position: relative !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -14261,27 +14259,24 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
-  padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
-  background: var(--p-color-frosted) !important;
+  border-radius: var(--p-radius-xl) !important;
+  padding: var(--p-spacing-static-md) calc(28 * var(--p-spacing-static-2xs)) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
+  background: 0 0 / 0% 100% no-repeat !important;
+  transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
 ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
-  color: var(--p-color-canvas) !important;
-}
-::slotted(a:nth-child(1)[data-animating]), ::slotted(button:nth-child(1)[data-animating]) {
-  transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color 0s linear var(--p-duration-md) !important;
-}
-::slotted(a:nth-child(1):not([data-animating])), ::slotted(button:nth-child(1):not([data-animating])) {
-  background: var(--p-color-primary) !important;
+  background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
+  background-size: 100% 100% !important;
+  transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
   ::slotted(a), ::slotted(button) {
@@ -14296,9 +14291,6 @@ exports[`should render dsr component for PTabs 1`] = `
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
   }
-  ::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
-    transition: unset !important;
-  }
   ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
@@ -14306,14 +14298,13 @@ exports[`should render dsr component for PTabs 1`] = `
 
 @media(hover:hover) {
   ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
-    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
-    background: var(--p-color-frosted-strong) !important;
+    background-color: var(--p-color-frosted) !important;
   }
 }
 
 .scroller {
+  --_p-scroller-focus-ring-radius: var(--p-radius-xl);
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 .bar {
   position: absolute;
@@ -14322,9 +14313,15 @@ exports[`should render dsr component for PTabs 1`] = `
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
-  background: var(--p-color-primary);
+  border-radius: var(--p-radius-xl);
+  background: var(--p-color-frosted-strong);
 }
+@media(forced-colors:active) {
+  .bar {
+    display: none;
+  }
+}
+
         </style>
         <p-scroller
           class="scroller"
@@ -14337,7 +14334,7 @@ exports[`should render dsr component for PTabs 1`] = `
             <style>
               :host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -14352,7 +14349,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -14502,7 +14499,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
     <style>
       :host {
   display: grid;
-  position: relative !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -14512,14 +14508,15 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
-  padding: 12px var(--p-spacing-static-md) !important;
   white-space: nowrap !important;
   cursor: pointer !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
-  background: var(--p-color-frosted) !important;
+  border-radius: var(--p-radius-xl) !important;
+  padding: var(--p-spacing-static-md) calc(28 * var(--p-spacing-static-2xs)) !important;
   font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
+  background: 0 0 / 0% 100% no-repeat !important;
+  transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -14545,14 +14542,13 @@ exports[`should render dsr component for PTabsBar 1`] = `
 
 @media(hover:hover) {
   ::slotted(a:hover), ::slotted(button:hover) {
-    transition: color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
-    background: var(--p-color-frosted-strong) !important;
+    background-color: var(--p-color-frosted) !important;
   }
 }
 
 .scroller {
+  --_p-scroller-focus-ring-radius: var(--p-radius-xl);
   place-self: flex-start;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
 }
 .bar {
   position: absolute;
@@ -14561,9 +14557,15 @@ exports[`should render dsr component for PTabsBar 1`] = `
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
-  background: var(--p-color-primary);
+  border-radius: var(--p-radius-xl);
+  background: var(--p-color-frosted-strong);
 }
+@media(forced-colors:active) {
+  .bar {
+    display: none;
+  }
+}
+
     </style>
     <p-scroller
       class="scroller"
@@ -14576,7 +14578,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
         <style>
           :host {
   display: block;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
 }
 :host([hidden]) {
   display: none !important;
@@ -14591,7 +14593,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: inherit;
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -14779,7 +14781,7 @@ span {
   display: flex;
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
-  border-radius: var(--_p-legacy-radius-small,calc(4px + (var(--p-leading-normal) / 2)));
+  border-radius: calc(4px + (var(--p-leading-normal) / 2));
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -14798,7 +14800,7 @@ span {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -14856,7 +14858,7 @@ button {
   align-items: center;
   gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
   padding: calc(28px * (var(--_p-tag-dismissible-a) - 0.64285714) + 6px) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   cursor: pointer;
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
@@ -14887,7 +14889,7 @@ button:focus-visible {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full));
+  border-radius: var(--p-radius-full);
 }
 .sr-only {
   position: absolute;
@@ -15125,7 +15127,7 @@ textarea {
   min-height: var(--p-textarea-min-height,calc(var(--_p-textarea-a) * 3.5rem));
   max-height: var(--p-textarea-max-height,unset);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;

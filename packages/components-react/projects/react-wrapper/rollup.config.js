@@ -174,8 +174,6 @@ export default [
             './cn/index': './stylesheets/cn/index.css',
             './cn/font-face.css': './stylesheets/cn/font-face.css',
             './cn/font-face': './stylesheets/cn/font-face.css',
-            './legacy-radius.css': './stylesheets/legacy-radius.css',
-            './legacy-radius': './stylesheets/legacy-radius.css',
           },
           style: './stylesheets/index.css',
         }),

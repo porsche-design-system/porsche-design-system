@@ -1,4 +1,6 @@
 import { gridGap } from '@porsche-design-system/emotion';
+import type { JssStyle, Styles } from 'jss';
+import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import {
   blurFrosted,
   colorBackdrop,
@@ -6,17 +8,15 @@ import {
   colorFrosted,
   colorPrimary,
   colorSurface,
-  legacyRadiusLarge,
+  radius2Xl,
   radius3Xl,
-  radiusXl,
   ref,
   spacingFluidLg,
   spacingFluidMd,
   spacingFluidSm,
+  spacingStatic2Xs,
   spacingStaticMd,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle, Styles } from 'jss';
-import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -127,9 +127,9 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
   };
 };
 
-export const dialogBorderRadius = ref(legacyRadiusLarge, ref(radiusXl));
+export const dialogBorderRadius = ref(radius3Xl);
 export const dialogPaddingTop = ref(spacingFluidMd);
-export const dialogPaddingBottom = `calc(${ref(spacingFluidSm)} + ${ref(spacingFluidMd)})`;
+export const dialogPaddingBottom = `calc(${dialogBorderRadius} + ${ref(spacingFluidMd)})`;
 export const dialogPaddingInline = ref(spacingFluidLg);
 
 export const dialogGridJssStyle = (): JssStyle => {
@@ -141,6 +141,7 @@ export const dialogGridJssStyle = (): JssStyle => {
     paddingTop: dialogPaddingTop,
     paddingBottom: dialogPaddingBottom,
     alignContent: 'flex-start',
+    overflow: 'clip',
   };
 };
 
@@ -183,7 +184,7 @@ export const getDialogDismissButtonJssStyle = (): JssStyle => {
     marginTop: `calc(-1 * ${dialogPaddingTop} + ${ref(spacingFluidSm)})`,
     marginInlineEnd: ref(spacingFluidSm),
     placeSelf: 'flex-start flex-end',
-    boxShadow: `0px 0px 30px hsla(from ${ref(cssVarBackgroundColor)} h s l / 0.35)`,
+    filter: 'invert(1) brightness(1.02)',
   };
 };
 
@@ -220,7 +221,7 @@ export const getSlotMainJssStyle = (): JssStyle => {
 
 export const getSlotFooterJssStyle = (): JssStyle => {
   const paddingBlock = `calc(${dialogPaddingBottom} - ${dialogBorderRadius})`;
-  const offset = `calc(${paddingBlock} / 2)`;
+  const offset = `12 * ${ref(spacingStatic2Xs)}`;
 
   return {
     gridColumn: '1/-1',
@@ -236,7 +237,7 @@ export const getSlotFooterJssStyle = (): JssStyle => {
       position: 'absolute',
       inset: `calc(${paddingBlock} - ${offset}) calc(${dialogPaddingInline} - ${offset})`,
       background: ref(colorFrosted),
-      borderRadius: ref(radius3Xl),
+      borderRadius: ref(radius2Xl),
       WebkitBackdropFilter: ref(blurFrosted),
       backdropFilter: ref(blurFrosted),
     },

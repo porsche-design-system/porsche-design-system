@@ -14,7 +14,7 @@ lived in two separate packages (a meta package and a CSS build package):
    fields (avoiding duplicated literals). This is exported as the package's default (JS) entry (`.`) and is consumed by
    the storefront to render the CSS variable / color-scheme documentation.
 2. **CSS build** — `scripts/` generates the published stylesheets (`variables.css`, `color-scheme.css`, `normalize.css`,
-   `legacy-radius.css`, `font-face.css` and the combined `index.css`) from the meta. These CSS files are exported via
+   `font-face.css` and the combined `index.css`) from the meta. These CSS files are exported via
    subpath exports (e.g. `@porsche-design-system/stylesheets/index.css`) and copied into the framework wrappers.
 
 ## Structure
@@ -26,11 +26,9 @@ src/
 ├── ref.ts                          # Hand-written `ref(name, fallback?)` helper wrapping a name into `var(...)`
 ├── generated/                      # GITIGNORED build artifact (regenerated from cssVariablesMeta)
 │   └── cssVariables/               #   one tree-shakeable const per variable, e.g. color/background/colorCanvas.ts
-│       ├── legacyRadius/           #   private --_p-legacy-radius-* names (kept separate)
 │       └── index.ts                #   generated barrels (re-export every name const)
 ├── colorSchemeMeta.ts              # .scheme-* utility classes + light-dark() polyfill rule + resolved color-scheme.css
 ├── normalizeMeta.ts                # Resolved normalize.css
-├── legacyRadiusMeta.ts             # Private --_p-legacy-radius-* variables + resolved legacy-radius.css
 ├── helpers.ts                      # Tree flatten/group helpers + renderCss serializer
 └── index.ts                        # Assembles per-stylesheet `stylesheetsMeta` + independent granular exports (incl. generated name consts + `ref`)
 scripts/
@@ -63,7 +61,6 @@ export const colorCanvas = '--p-color-canvas';
   used by the docs/LLM context.
 - Wrap a name into a CSS `var(...)` reference with the hand-written `ref(name, fallback?)` helper (`src/ref.ts`), e.g.
   in component JSS: `background: ref(colorCanvas)`.
-- Private `--_p-legacy-radius-*` names are generated separately under `generated/cssVariables/legacyRadius/`.
 - `tests/unit/specs/cssVariables.spec.ts` guards that every meta `property` has a matching generated const.
 
 ## How the meta resolves into CSS
@@ -71,15 +68,15 @@ export const colorCanvas = '--p-color-canvas';
 The meta is not only descriptive data; it also gives away exactly how it becomes CSS. Variable leaves are themselves
 `CssDeclaration`s (they carry `property` + `value`, enriched with `name`/`description`/`type` and, for colors,
 `valueLight`/`valueDark`), so they can be emitted into CSS directly. Each topic file exposes a resolved `CssNode` tree
-(e.g. `variablesCss`, `colorSchemeCss`, `normalizeCss`, `legacyRadiusCss`), and `index.ts` aggregates them into
-`stylesheetsMeta`, a single object keyed by stylesheet (`cssVariables`, `colorScheme`, `normalize`, `legacyRadius`)
+(e.g. `variablesCss`, `colorSchemeCss`, `normalizeCss`), and `index.ts` aggregates them into
+`stylesheetsMeta`, a single object keyed by stylesheet (`cssVariables`, `colorScheme`, `normalize`)
 where each entry carries its published `file` name, a markdown-enabled `description` and the resolved `meta` (`CssNode`
 tree). The `buildStylesheetsCss.ts` script only iterates `stylesheetsMeta`, calls `renderCss(entry.meta)` and writes the
 result to `entry.file` through Prettier — it contains no CSS structure of its own. `font-face.css` is intentionally
 **not** modeled in the meta; it is a raw stylesheet built from the font-face package.
 
 For component and docs access, the granular metas are exported independently of `stylesheetsMeta` (`cssVariablesMeta`,
-`colorSchemeClassesMeta`, `legacyRadiusMeta`, the individual CSS variable name consts plus the `ref()` helper, and the
+`colorSchemeClassesMeta`, the individual CSS variable name consts plus the `ref()` helper, and the
 flatten/render helpers), so single entries (e.g. `cssVariablesMeta.color.background.canvas`) can be read directly.
 
 ## Working Guidelines

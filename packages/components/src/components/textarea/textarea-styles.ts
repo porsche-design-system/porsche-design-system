@@ -1,18 +1,4 @@
 import {
-  colorContrastMedium,
-  colorFrosted,
-  colorPrimary,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusLg,
-  radiusXl,
-  ref,
-  spacingStaticXs,
-  typescaleSm,
-} from '@porsche-design-system/stylesheets';
-import {
   addImportantToEachRule,
   getDisabledBaseStyles,
   getHiddenTextJssStyle,
@@ -21,6 +7,19 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import {
+  colorContrastMedium,
+  colorFrosted,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusLg,
+  radiusXl,
+  ref,
+  spacingStaticXs,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import { getUnitCounterJssStyle } from '../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../types';
@@ -82,7 +81,7 @@ export const getComponentCss = (
         minHeight: ref('--p-textarea-min-height', textareaMinHeight),
         maxHeight: ref('--p-textarea-max-height', 'unset'),
         border: `1px solid ${formStateBorderColor}`,
-        borderRadius: ref(legacyRadiusSmall, isCompact ? ref(radiusLg) : ref(radiusXl)),
+        borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
         background: formStateBackgroundColor,
         color: ref(colorPrimary),
         // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.

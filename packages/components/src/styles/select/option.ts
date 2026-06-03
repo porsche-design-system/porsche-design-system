@@ -1,3 +1,4 @@
+import type { JssStyle } from 'jss';
 import {
   colorContrastHigh,
   colorFrosted,
@@ -5,12 +6,10 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusSm,
   ref,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from 'jss';
 import { getTransition } from '../common-styles';
 import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
@@ -34,7 +33,7 @@ export const getOptionJssStyle = (
     textAlign: 'start',
     wordBreak: 'break-word',
     boxSizing: 'content-box',
-    borderRadius: ref(legacyRadiusSmall, ref(radiusSm)),
+    borderRadius: ref(radiusSm),
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
     '&--highlighted': {
       background: ref(colorFrosted),

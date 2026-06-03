@@ -1,4 +1,6 @@
 import { getMediaQueryMin } from '@porsche-design-system/emotion';
+import type { Styles } from 'jss';
+import { forcedColorsMediaQuery } from '../../../styles';
 import {
   blurFrosted,
   colorPrimary,
@@ -6,7 +8,6 @@ import {
   fontWeightNormal,
   fontWeightSemibold,
   leadingNormal,
-  legacyRadiusMedium,
   radius2Xl,
   ref,
   spacingFluidSm,
@@ -16,8 +17,6 @@ import {
   spacingStaticXs,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
-import type { Styles } from 'jss';
-import { forcedColorsMediaQuery } from '../../../styles';
 import { notificationBackgroundMap, notificationColorMap, notificationIconMap } from '../../../styles/maps';
 
 export const getFunctionalComponentNotificationBaseStyles = (
@@ -48,7 +47,7 @@ export const getFunctionalComponentNotificationBaseStyles = (
       display: 'grid',
       gridTemplate: `repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto)`,
       padding: `calc(${ref(spacingStaticSm)} + ${ref(spacingFluidSm)})`,
-      borderRadius: ref(legacyRadiusMedium, ref(radius2Xl)),
+      borderRadius: ref(radius2Xl),
       background: notificationBackgroundMap[state],
       WebkitBackdropFilter: ref(blurFrosted),
       backdropFilter: ref(blurFrosted),

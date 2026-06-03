@@ -21,7 +21,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-error-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -76,7 +76,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -131,7 +131,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -192,7 +192,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -257,7 +257,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -334,7 +334,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -405,7 +405,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-success-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -460,7 +460,7 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium,var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-warning-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);

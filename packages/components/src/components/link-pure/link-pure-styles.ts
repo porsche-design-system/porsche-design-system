@@ -1,5 +1,5 @@
-import { legacyRadiusSmall, radiusFull, radiusLg, ref } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, getFocusBaseStyles } from '../../styles';
+import { radiusFull, radiusLg, ref } from '@porsche-design-system/stylesheets';
 import { getLinkButtonPureStyles, offsetHorizontal, offsetVertical } from '../../styles/link-button-pure-styles';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
@@ -44,7 +44,7 @@ export const getComponentCss = (
               insetBlock: offsetVertical,
               ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
                 insetInline: hideLabelValue ? offsetVertical : offsetHorizontal,
-                borderRadius: ref(legacyRadiusSmall, hideLabelValue ? ref(radiusFull) : ref(radiusLg)),
+                borderRadius: hideLabelValue ? ref(radiusFull) : ref(radiusLg),
               })),
             },
             '&(a:focus-visible)::before': getFocusBaseStyles(),

@@ -6,7 +6,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -16,31 +16,31 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(min-width:480px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+    border-radius: var(--_p-link-button-a) !important;
   }
 }
 
 @media(min-width:760px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+    border-radius: var(--p-radius-full) !important;
   }
 }
 
 @media(min-width:1000px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+    border-radius: var(--_p-link-button-a) !important;
   }
 }
 
 @media(min-width:1300px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+    border-radius: var(--p-radius-full) !important;
   }
 }
 
 @media(min-width:1760px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+    border-radius: var(--_p-link-button-a) !important;
   }
 }
 
@@ -234,7 +234,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -329,7 +329,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -424,7 +424,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -519,7 +519,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -614,7 +614,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -709,7 +709,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -804,7 +804,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -896,7 +896,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -994,7 +994,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1089,7 +1089,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1184,7 +1184,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1279,7 +1279,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1374,7 +1374,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-button-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1469,7 +1469,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   vertical-align: top;
   --_p-button-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;

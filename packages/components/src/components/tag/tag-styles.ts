@@ -1,3 +1,13 @@
+import { spacingStaticXs } from '@porsche-design-system/tokens';
+import {
+  addImportantToEachRule,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import {
   blurFrosted,
   colorCanvas,
@@ -24,23 +34,12 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
   ref,
   spacingStatic2Xs,
   spacingStaticSm,
   typescaleXs,
 } from '@porsche-design-system/stylesheets';
-import { spacingStaticXs } from '@porsche-design-system/tokens';
-import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  getFocusBaseStyles,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import { getCss } from '../../utils';
 import type { TagVariant } from './tag-utils';
 
@@ -123,7 +122,7 @@ export const getComponentCss = (
         padding: compact
           ? `${ref(spacingStatic2Xs)} ${ref(spacingStaticSm)}`
           : `${spacingStaticXs} calc(12 * ${ref(spacingStatic2Xs)})`,
-        borderRadius: ref(legacyRadiusSmall, `calc(${compact ? '1px' : spacingStaticXs} + (${ref(leadingNormal)} / 2))`), // ensures pill shape has a maximum border radius to support multiline.
+        borderRadius: `calc(${compact ? '1px' : spacingStaticXs} + (${ref(leadingNormal)} / 2))`, // ensures pill shape has a maximum border radius to support multiline.
         font: `${ref(fontWeightNormal)} ${ref(typescaleXs)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         ...((variant === 'secondary' ||
           variant === 'info-frosted' ||
@@ -161,7 +160,7 @@ export const getComponentCss = (
           content: '""',
           position: 'absolute',
           inset: 0,
-          borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
+          borderRadius: ref(radiusFull),
         },
         '&(a:focus-visible)::before,&(button:focus-visible)::before': getFocusBaseStyles(),
         '&(br)': {

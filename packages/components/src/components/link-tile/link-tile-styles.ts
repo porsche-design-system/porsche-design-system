@@ -12,8 +12,7 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusLarge,
-  radius4Xl,
+  radius3Xl,
   ref,
   spacingFluidLg,
   spacingFluidMd,
@@ -114,7 +113,7 @@ export const getComponentCss = (
       '@supports (-webkit-hyphens: auto)': {
         height: '100%',
       },
-      borderRadius: ref(legacyRadiusLarge, ref(radius4Xl)),
+      borderRadius: ref(radius3Xl),
       ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) => ({
         aspectRatio: aspectRatioValue,
       })),

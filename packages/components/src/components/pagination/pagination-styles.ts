@@ -1,19 +1,4 @@
 import { getMediaQueryMax, getMediaQueryMin } from '@porsche-design-system/emotion';
-import {
-  blurFrosted,
-  colorFrosted,
-  colorFrostedStrong,
-  colorPrimary,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusFull,
-  ref,
-  spacingStaticSm,
-  spacingStaticXs,
-  typescaleSm,
-} from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -25,6 +10,20 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import {
+  blurFrosted,
+  colorFrosted,
+  colorFrostedStrong,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusFull,
+  ref,
+  spacingStaticSm,
+  spacingStaticXs,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 import { getCss } from '../../utils';
 
 const mediaQueryMinS = getMediaQueryMin('s');
@@ -114,7 +113,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         cursor: 'pointer',
         backgroundColor: 'transparent',
         color: ref(colorPrimary),
-        borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
+        borderRadius: ref(radiusFull),
         borderColor: 'transparent', // default value is needed for smooth transition
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...hoverMediaQuery({

@@ -50,7 +50,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
@@ -190,7 +190,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -329,7 +329,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -468,7 +468,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-success);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
@@ -608,7 +608,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
@@ -747,7 +747,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -885,7 +885,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-success);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg));
+  border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
   color: var(--p-color-contrast-medium);
   cursor: text;
@@ -1019,7 +1019,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
@@ -1273,7 +1273,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-contrast-lower);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: not-allowed;
@@ -1545,7 +1545,7 @@ input::-webkit-calendar-picker-indicator {
   box-sizing: border-box;
   padding-inline: calc(22.4px * (var(--_p-input-base-a) - 0.64285714) + 8px);
   border: 1px solid var(--p-color-error);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+  border-radius: var(--p-radius-xl);
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   cursor: not-allowed;

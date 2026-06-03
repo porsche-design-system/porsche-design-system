@@ -80,8 +80,6 @@ const packageJsonExports = {
   './cn/index': './stylesheets/cn/index.css',
   './cn/font-face.css': './stylesheets/cn/font-face.css',
   './cn/font-face': './stylesheets/cn/font-face.css',
-  './legacy-radius.css': './stylesheets/legacy-radius.css',
-  './legacy-radius': './stylesheets/legacy-radius.css',
 };
 
 describe('package content', () => {
@@ -196,7 +194,6 @@ describe('package.json files', () => {
                 prob.entrypoint.includes('color-scheme') ||
                 prob.entrypoint.includes('font-face') ||
                 prob.entrypoint.includes('normalize') ||
-                prob.entrypoint.includes('legacy-radius') ||
                 prob.entrypoint.includes('variables') ||
                 prob.entrypoint.includes('cn') ||
                 prob.entrypoint.includes('index')))

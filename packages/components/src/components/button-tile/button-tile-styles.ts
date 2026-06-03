@@ -5,13 +5,12 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusLarge,
-  radius4Xl,
+  radius3Xl,
   ref,
   spacingFluidLg,
   spacingFluidMd,
   spacingStaticMd,
-  typescaleMd,
+  typescaleSm,
 } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
@@ -94,7 +93,7 @@ export const getComponentCss = (
         all: 'unset',
         zIndex: 3,
         maxWidth: '34.375rem',
-        font: `${ref(fontWeightNormal)} ${ref(typescaleMd)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         color: ref(colorPrimary),
         hyphens: 'inherit',
         ...mergeDeep(
@@ -115,7 +114,7 @@ export const getComponentCss = (
       '@supports (-webkit-hyphens: auto)': {
         height: '100%',
       },
-      borderRadius: ref(legacyRadiusLarge, ref(radius4Xl)),
+      borderRadius: ref(radius3Xl),
       ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) => ({
         aspectRatio: aspectRatioValue,
       })),
@@ -127,7 +126,10 @@ export const getComponentCss = (
           ...(isTopAligned
             ? {
                 gridArea: '1/1/3/-1',
-                background: gradientToBottomStyle.background.replaceAll('0,0%,0%,', `from ${ref(colorCanvas)} h s l / `),
+                background: gradientToBottomStyle.background.replaceAll(
+                  '0,0%,0%,',
+                  `from ${ref(colorCanvas)} h s l / `
+                ),
                 marginBottom: `calc(${ref(spacingFluidLg)} * -1)`, // to increase the gradient area without reserving additional layout space
                 borderStartStartRadius: 'inherit',
                 borderStartEndRadius: 'inherit',

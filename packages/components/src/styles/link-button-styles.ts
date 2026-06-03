@@ -1,20 +1,3 @@
-import {
-  blurFrosted,
-  colorCanvas,
-  colorContrastHigh,
-  colorFrosted,
-  colorFrostedStrong,
-  colorPrimary,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusFull,
-  radiusLg,
-  radiusXl,
-  ref,
-  typescaleSm,
-} from '@porsche-design-system/stylesheets';
 import type { Styles } from 'jss';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant } from '../types';
 import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
@@ -29,6 +12,22 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
+import {
+  blurFrosted,
+  colorCanvas,
+  colorContrastHigh,
+  colorFrosted,
+  colorFrostedStrong,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusFull,
+  radiusLg,
+  radiusXl,
+  ref,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 
 type Colors = {
   textColor: string;
@@ -85,9 +84,7 @@ export const getLinkButtonStyles = (
             '--_p-link-button-a': compactValue ? ref(radiusLg) : ref(radiusXl),
           })),
           buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-            borderRadius: addImportantToRule(
-              ref(legacyRadiusSmall, hideLabelValue ? ref(radiusFull) : ref('--_p-link-button-a'))
-            ),
+            borderRadius: addImportantToRule(hideLabelValue ? ref(radiusFull) : ref('--_p-link-button-a')),
           }))
         ),
         ...addImportantToEachRule({

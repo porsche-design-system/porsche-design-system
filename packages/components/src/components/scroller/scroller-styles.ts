@@ -1,14 +1,5 @@
 import type { JssStyle } from 'jss';
 import {
-  colorPrimary,
-  durationSm,
-  legacyRadiusSmall,
-  radiusLg,
-  ref,
-  spacingStaticSm,
-  spacingStaticXs,
-} from '@porsche-design-system/stylesheets';
-import {
   addImportantToEachRule,
   cssVariableTransitionDuration,
   forcedColorsMediaQuery,
@@ -18,6 +9,7 @@ import {
   hoverMediaQuery,
   pointerCoarseMediaQuery,
 } from '../../styles';
+import { colorPrimary, durationSm, radiusLg, ref, spacingStaticSm, spacingStaticXs } from '@porsche-design-system/stylesheets';
 import { getSmoothMask } from '../../styles/mask';
 import { getCss } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
@@ -37,6 +29,9 @@ const cssVarIndicatorTop = '--p-scroller-indicator-top';
  * @css-variable {"name": "--p-scroller-indicator-bottom", "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and `sticky` is enabled.", "defaultValue": "0px"}
  */
 const cssVarIndicatorBottom = '--p-scroller-indicator-bottom';
+
+// internal css variables
+const cssVarFocusRingRadius = '--_p-scroller-focus-ring-radius';
 
 const iconPrev = getInlineSVGBackgroundImage(
   `<path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/>`
@@ -129,7 +124,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        borderRadius: ref(legacyRadiusSmall, ref(radiusLg)), // needs to be overwritable by tabs-bar to improve focus appearance
+        borderRadius: ref(radiusLg), // needs to be overwritable by tabs-bar to improve focus appearance
         ...addImportantToEachRule({
           ...hostHiddenStyles,
         }),
@@ -145,7 +140,7 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: `auto minmax(0,1fr) auto`,
       alignItems: 'center',
-      borderRadius: 'inherit',
+      borderRadius: ref(cssVarFocusRingRadius, 'inherit'),
       '&:has(.scroll:focus-visible)': getFocusBaseStyles(), // delegating the focus ensures mask does not cut off the focus ring
     },
     scroll: {
