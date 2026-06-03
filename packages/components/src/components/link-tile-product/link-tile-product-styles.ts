@@ -1,15 +1,4 @@
 import { getMediaQueryMin } from '@porsche-design-system/emotion';
-import type { JssStyle } from 'jss';
-import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  getFocusBaseStyles,
-  getHiddenTextJssStyle,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   colorContrastHigh,
   colorContrastMedium,
@@ -29,6 +18,17 @@ import {
   typescaleSm,
   typescaleXs,
 } from '@porsche-design-system/stylesheets';
+import type { JssStyle } from 'jss';
+import {
+  addImportantToEachRule,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
+  getHiddenTextJssStyle,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
@@ -39,7 +39,7 @@ const anchorJssStyle: JssStyle = {
   position: 'absolute',
   inset: 0,
   zIndex: 1, // necessary to be on top of img
-  borderRadius: radius3Xl,
+  borderRadius: ref(radius3Xl),
   ...forcedColorsMediaQuery({
     forcedColorAdjust: 'none',
     boxShadow: 'inset 0 0 0 2px LinkText',
@@ -87,7 +87,7 @@ export const getComponentCss = (
           [`&([slot="${headerSlot}"])`]: {
             display: 'flex',
             flexWrap: 'wrap',
-            gap: spacingFluidXs,
+            gap: ref(spacingFluidXs),
           },
         },
         '::slotted(:is(img,picture))': {
@@ -95,13 +95,13 @@ export const getComponentCss = (
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          borderRadius: radius2Xl,
+          borderRadius: ref(radius2Xl),
           overflow: 'hidden', // needed for picture > img to have correct border-radius
         },
       }),
       ...(hasPriceOriginal && {
         s: {
-          color: colorContrastMedium,
+          color: ref(colorContrastMedium),
         },
       }),
     },
@@ -111,10 +111,10 @@ export const getComponentCss = (
       aspectRatio: '3/4',
       overflow: 'hidden', // TODO: discussable if we should prevent text to overflow .root, – e.g. it also prevents a popover from being shown correctly
       boxSizing: 'border-box',
-      borderRadius: radius3Xl,
-      padding: spacingFluidSm,
-      color: colorPrimary,
-      backgroundColor: colorSurface,
+      borderRadius: ref(radius3Xl),
+      padding: ref(spacingFluidSm),
+      color: ref(colorPrimary),
+      backgroundColor: ref(colorSurface),
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
         aspectRatio: ratio,
       })),
@@ -127,7 +127,7 @@ export const getComponentCss = (
     }),
     header: {
       display: 'flex',
-      gap: spacingFluidSm,
+      gap: ref(spacingFluidSm),
       justifyContent: 'space-between',
       alignItems: 'flex-start',
     },
