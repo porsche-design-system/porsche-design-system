@@ -16,12 +16,11 @@ const toConstName = (property: string): string =>
 
 const allLeaves = [...flattenCssVariables(cssVariablesMeta), ...legacyRadiusMeta];
 
-it.each(allLeaves.map((leaf) => [toConstName(leaf.property), leaf.property] as const))(
-  'should expose a tree-shakeable name const `%s` equal to its property `%s`',
-  (constName, property) => {
-    expect((cssVariables as Record<string, string>)[constName]).toBe(property);
-  }
-);
+it.each(
+  allLeaves.map((leaf) => [toConstName(leaf.property), leaf.property] as const)
+)('should expose a tree-shakeable name const `%s` equal to its property `%s`', (constName, property) => {
+  expect((cssVariables as Record<string, string>)[constName]).toBe(property);
+});
 
 it('should reference the name consts from the meta `property` fields (single source of truth)', () => {
   for (const leaf of flattenCssVariables(cssVariablesMeta)) {
@@ -43,9 +42,6 @@ it('`ref()` should wrap a name const into a `var()` reference', () => {
 });
 
 it('`ref()` should support an optional fallback', () => {
-  expect(ref(cssVariables.colorCanvas, '#fff')).toBe('var(--p-color-canvas, #fff)');
-  expect(ref(cssVariables.spacingFluidMd, 0)).toBe('var(--p-spacing-fluid-md, 0)');
+  expect(ref(cssVariables.colorCanvas, '#fff')).toBe('var(--p-color-canvas,#fff)');
+  expect(ref(cssVariables.spacingFluidMd, 0)).toBe('var(--p-spacing-fluid-md,0)');
 });
-
-
-
