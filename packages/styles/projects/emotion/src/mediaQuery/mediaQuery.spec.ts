@@ -1,30 +1,37 @@
 import { describe, expect, it } from 'vitest';
 import * as fromMediaQuery from './';
+import { getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from './';
 import type { Breakpoint } from './breakpointShared';
-import { getMediaQueryMax } from './getMediaQueryMax';
-import { getMediaQueryMin } from './getMediaQueryMin';
-import { getMediaQueryMinMax } from './getMediaQueryMinMax';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromMediaQuery).length).toBe(12);
 });
 
 describe('mediaQueryMin()', () => {
-  it.each<Breakpoint>(['base', 'xs', 's', 'm', 'l', 'xl', 'xxl'])(
-    'should return correct css for breakpoint: %s',
-    (min) => {
-      expect(getMediaQueryMin(min as any)).toMatchSnapshot();
-    }
-  );
+  it.each<Breakpoint>([
+    'base',
+    'xs',
+    's',
+    'm',
+    'l',
+    'xl',
+    'xxl',
+  ])('should return correct css for breakpoint: %s', (min) => {
+    expect(getMediaQueryMin(min as any)).toMatchSnapshot();
+  });
 });
 
 describe('mediaQueryMax()', () => {
-  it.each<Exclude<Breakpoint, 'base'>>(['xs', 's', 'm', 'l', 'xl', 'xxl'])(
-    'should return correct css for breakpoint: %s',
-    (max) => {
-      expect(getMediaQueryMax(max as any)).toMatchSnapshot();
-    }
-  );
+  it.each<Exclude<Breakpoint, 'base'>>([
+    'xs',
+    's',
+    'm',
+    'l',
+    'xl',
+    'xxl',
+  ])('should return correct css for breakpoint: %s', (max) => {
+    expect(getMediaQueryMax(max as any)).toMatchSnapshot();
+  });
 });
 
 describe('mediaQueryMinMax()', () => {
