@@ -43,14 +43,17 @@ test('should have successfully extracted :root styles', () => {
 });
 
 test.describe('storefront pages', () => {
+  const allUrls = getInternalUrls();
   // filter out files from public/assets directory and ag-grid
-  const internalUrls = getInternalUrls().filter(
+  const internalUrls = allUrls.filter(
     (url) =>
       !url.match(/^\/assets\/.*\.\w{3,4}$/) &&
-      // Bare component landing pages (e.g. /components/button/) only client-side redirect to their
-      // default tab (e.g. /components/button/configurator/, already covered). The pre-redirect page has
-      // no level-one heading, so scanning it races the redirect and flakily triggers `page-has-heading-one`.
-      !url.match(/^\/components\/[^/]+\/$/) &&
+      // Skip redirect "base" pages: category/page routes that have no own content and client-side redirect
+      // to their first child (e.g. /components/button/ -> /components/button/configurator/, /developing/vue/
+      // -> /developing/vue/getting-started/). The pre-redirect page has no level-one heading, so scanning it
+      // races the redirect and flakily triggers `page-has-heading-one`. The redirect targets are covered as
+      // their own URLs. A base page is any url (except home) that is a strict prefix of another internal url.
+      !(url !== '/' && allUrls.some((other) => other !== url && other.startsWith(url))) &&
       !url.includes('/ag-grid/theme') &&
       // Changelog has wrong heading order
       !url.includes('/news/changelog/') &&
