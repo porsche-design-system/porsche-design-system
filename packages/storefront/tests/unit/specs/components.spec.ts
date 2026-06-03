@@ -3,7 +3,7 @@ import path from 'node:path';
 import { describe, it } from 'vitest';
 import { COMPONENT_ROUTES } from '@/sitemap';
 
-const componentsBasePath = path.resolve(__dirname, '../../../src/app/components');
+const componentsBasePath = path.resolve(__dirname, '../../../src/app/(main)/components');
 const requiredSubpages = ['accessibility', 'api', 'configurator', 'examples', 'usage'];
 
 // Exceptions: Following components don't have an example page

@@ -1,0 +1,16 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { spinnerMeta } from '@/app/(main)/components/spinner/spinner.meta';
+
+export const metadata = {
+  title: 'Spinner - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Spinner component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Spinner <ComponentStatus tagName="p-spinner"></ComponentStatus>
+
+<spinnerMeta.introduction />
+
+<Configurator tagName="p-spinner" story={spinnerMeta.configurator.story} />
+

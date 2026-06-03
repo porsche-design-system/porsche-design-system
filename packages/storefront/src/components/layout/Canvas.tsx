@@ -17,7 +17,6 @@ import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { DirectionSelect } from '@/components/common/DirectionSelect';
 import { Navigation } from '@/components/common/Navigation';
-import Tabs from '@/components/common/Tabs';
 import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { Search } from '@/components/search/Search';
@@ -149,15 +148,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
 
       <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md">
         <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
-        <section
-          id="main-content"
-          aria-labelledby="main-heading"
-          className="col-[wide] focus-visible:outline outline-focus outline-offset-2 rounded-xl"
-          tabIndex={-1}
-        >
-          <Tabs />
-          {children}
-        </section>
+        {children}
       </div>
 
       <div slot="sidebar-start">

@@ -1,0 +1,38 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { inputTextMeta } from '@/app/(main)/components/input-text/input-text.meta';
+
+export const metadata = {
+  title: 'Input Text - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Input Text component.',
+};
+
+# Input Text <ComponentStatus tagName="p-input-text"></ComponentStatus>
+
+<TableOfContents
+  headings={[
+    inputTextMeta.examples.form.name,
+    inputTextMeta.examples.controlled.name,
+    inputTextMeta.examples.slots.name,
+  ]}
+/>
+
+## {inputTextMeta.examples.form.name}
+
+<inputTextMeta.examples.form.description />
+
+<ComponentExample codeSample={inputTextMeta.examples.form.example} />
+
+## {inputTextMeta.examples.controlled.name}
+
+<inputTextMeta.examples.controlled.description />
+
+<ComponentExample codeSample={inputTextMeta.examples.controlled.example} />
+
+## {inputTextMeta.examples.slots.name}
+
+<inputTextMeta.examples.slots.description />
+
+<ComponentStory story={inputTextMeta.examples.slots.story} />
