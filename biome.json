@@ -121,7 +121,7 @@
   "overrides": [
     {
       "includes": [
-        "packages/components/src/**",
+        "packages/components/src/**/*.{js,ts,tsx}",
         "!packages/components/src/**/*.spec.ts",
         "!packages/components/src/**/*.spec.tsx"
       ],
