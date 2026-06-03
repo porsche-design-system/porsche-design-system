@@ -8,13 +8,21 @@ import {
 } from '@porsche-design-system/emotion';
 import type { JssStyle } from 'jss';
 import {
+  addImportantToEachRule,
+  addImportantToRule,
+  getFocusBaseStyles,
+  getHiddenTextJssStyle,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import {
   colorContrastMedium,
   colorPrimary,
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusLarge,
-  radius4Xl,
+  radius3Xl,
   radiusFull,
   ref,
   spacingFluidMd,
@@ -26,15 +34,6 @@ import {
   typescaleSm,
   typescaleXl,
 } from '@porsche-design-system/stylesheets';
-import {
-  addImportantToEachRule,
-  addImportantToRule,
-  getFocusBaseStyles,
-  getHiddenTextJssStyle,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { CarouselAlignControls, CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
@@ -150,7 +149,7 @@ export const getComponentCss = (
       ...addImportantToEachRule({
         '::slotted': {
           '&(*)': {
-            borderRadius: ref('--p-carousel-border-radius', ref(legacyRadiusLarge, ref(radius4Xl))),
+            borderRadius: ref('--p-carousel-border-radius', ref(radius3Xl)),
           },
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
@@ -261,7 +260,7 @@ export const getComponentCss = (
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
-        borderRadius: ref('--p-carousel-border-radius', ref(legacyRadiusLarge, ref(radius4Xl))),
+        borderRadius: ref('--p-carousel-border-radius', ref(radius3Xl)),
         '&:focus-visible': getFocusBaseStyles(),
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding

@@ -1,17 +1,3 @@
-import {
-  blurFrosted,
-  colorFrosted,
-  colorFrostedStrong,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusFull,
-  radiusLg,
-  ref,
-  spacingStaticXs,
-  typescaleSm,
-} from '@porsche-design-system/stylesheets';
 import type { JssStyle, Styles } from 'jss';
 import type { ButtonPureColor, ButtonPureSize } from '../components/button-pure/button-pure-utils';
 import type { LinkPureColor, LinkPureSize } from '../components/link-pure/link-pure-utils';
@@ -26,6 +12,19 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from './';
+import {
+  blurFrosted,
+  colorFrosted,
+  colorFrostedStrong,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusFull,
+  radiusLg,
+  ref,
+  spacingStaticXs,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 import { colorMap, sizeMap } from './maps';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -110,7 +109,7 @@ export const getLinkButtonPureStyles = (
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           right: hideLabelValue ? offsetVertical : offsetHorizontal,
           left: hideLabelValue ? offsetVertical : offsetHorizontal,
-          borderRadius: ref(legacyRadiusSmall, hideLabelValue ? ref(radiusFull) : ref(radiusLg)),
+          borderRadius: hideLabelValue ? ref(radiusFull) : ref(radiusLg),
         })),
         transition: getTransition('background-color'),
         ...(active && {

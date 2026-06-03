@@ -1,17 +1,3 @@
-import {
-  colorContrastMedium,
-  colorFrosted,
-  colorPrimary,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusLg,
-  radiusXl,
-  ref,
-  spacingStaticXs,
-  typescaleSm,
-} from '@porsche-design-system/stylesheets';
 import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
@@ -22,6 +8,19 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import {
+  colorContrastMedium,
+  colorFrosted,
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusLg,
+  radiusXl,
+  ref,
+  spacingStaticXs,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { mergeDeep } from '../../../utils';
@@ -103,7 +102,7 @@ export const getFunctionalComponentInputBaseStyles = (
       boxSizing: 'border-box',
       paddingInline: wrapperPaddingInline,
       border: `${wrapperBorderWidth} solid ${formStateBorderColor}`,
-      borderRadius: ref(legacyRadiusSmall, isCompact ? ref(radiusLg) : ref(radiusXl)),
+      borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
       background: formStateBackgroundColor,
       color: ref(colorPrimary),
       cursor: isDisabled ? 'not-allowed' : 'text',

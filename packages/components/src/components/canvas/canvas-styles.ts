@@ -1,20 +1,4 @@
 import { breakpointS, getMediaQueryMax, getMediaQueryMin, gridGap } from '@porsche-design-system/emotion';
-import {
-  colorCanvas,
-  colorContrastLower,
-  colorPrimary,
-  colorSurface,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radius3Xl,
-  radiusSm,
-  ref,
-  spacingFluidSm,
-  spacingStaticSm,
-  typescaleXs,
-} from '@porsche-design-system/stylesheets';
 import { spacingStaticXs } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
@@ -23,6 +7,21 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import {
+  colorCanvas,
+  colorContrastLower,
+  colorPrimary,
+  colorSurface,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radius3Xl,
+  radiusSm,
+  ref,
+  spacingFluidSm,
+  spacingStaticSm,
+  typescaleXs,
+} from '@porsche-design-system/stylesheets';
 import { getCss } from '../../utils';
 import type { CanvasBackground } from './canvas-utils';
 
@@ -107,7 +106,7 @@ export const getComponentCss = (
             all: 'unset',
             cursor: 'pointer',
             color: 'inherit',
-            borderRadius: ref(legacyRadiusSmall, ref(radiusSm)),
+            borderRadius: ref(radiusSm),
           },
           '&(a:focus-visible)': getFocusBaseStyles(),
         }),
@@ -162,15 +161,15 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: 'minmax(0,1fr) auto minmax(0,1fr)',
       gap: spacingBase,
-      alignItems: 'center',
-      padding: `${ref(spacingStaticSm)} ${spacingBase}`,
-      '&:focus-visible': {
-        outline: 'none',
-      },
-      '&__area': {
-        display: 'flex',
-        gap: ref(spacingStaticSm),
         alignItems: 'center',
+        padding: `${ref(spacingStaticSm)} ${spacingBase}`,
+        '&:focus-visible': {
+          outline: 'none',
+        },
+        '&__area': {
+          display: 'flex',
+          gap: ref(spacingStaticSm),
+          alignItems: 'center',
         '&--start': {
           justifyContent: 'flex-start',
         },

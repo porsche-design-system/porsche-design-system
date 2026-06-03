@@ -1,4 +1,12 @@
 import {
+  addImportantToEachRule,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import {
   blurFrosted,
   colorCanvas,
   colorFrosted,
@@ -6,29 +14,23 @@ import {
   colorPrimary,
   colorSurface,
   durationMd,
+  durationSm,
+  easeInOut,
   fontPorscheNext,
   leadingNormal,
-  legacyRadiusSmall,
-  radiusFull,
+  radiusLg,
+  radiusMd,
+  radiusXl,
   ref,
+  spacingStatic2Xs,
   spacingStaticMd,
-  spacingStaticSm,
   spacingStaticXs,
   typescaleMd,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
-import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  getFocusBaseStyles,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { animatingAttribute, type TabsBarBackground, type TabsBarSize } from './tabs-bar-utils';
+import type { TabsBarBackground, TabsBarSize } from './tabs-bar-utils';
 
 const backgroundMap: Record<Exclude<TabsBarBackground, 'none'>, string> = {
   canvas: ref(colorCanvas),
@@ -36,7 +38,7 @@ const backgroundMap: Record<Exclude<TabsBarBackground, 'none'>, string> = {
   frosted: ref(colorFrosted),
 };
 
-const fontSizeText = {
+const sizeMap: Record<TabsBarSize, string> = {
   small: ref(typescaleSm),
   medium: ref(typescaleMd),
 };
@@ -47,62 +49,66 @@ export const getComponentCss = (
   isCompact: boolean,
   activeTabIndex: number | undefined
 ): string => {
-  const hasActive = activeTabIndex !== undefined;
-  // :nth-child is 1-based
-  const nth = hasActive ? activeTabIndex + 1 : 0;
-  const activeSelector = `&(a:nth-child(${nth})),&(button:nth-child(${nth}))`;
-  const notActiveHoverSelector = hasActive
-    ? `&(a:not(:nth-child(${nth})):hover),&(button:not(:nth-child(${nth})):hover)`
-    : '&(a:hover),&(button:hover)';
+  const hasBackground = background !== 'none';
+  const hasActiveTab = activeTabIndex !== undefined;
+  const nthActiveTab = hasActiveTab ? activeTabIndex + 1 : 0; // :nth-child is 1-based
+
+  const radiusButton = hasBackground ? (isCompact ? ref(radiusMd) : ref(radiusLg)) : isCompact ? ref(radiusLg) : ref(radiusXl);
 
   return getCss({
     '@global': {
       ':host': {
         display: 'grid',
-        ...addImportantToEachRule({
-          position: 'relative', // necessary for the bar animation to calculate the tab items position correctly
-          ...hostHiddenStyles,
-        }),
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       ...preventFoucOfNestedElementsStyles,
       ...addImportantToEachRule({
         '::slotted': {
           '&(a),&(button)': {
             all: 'unset',
-            padding: isCompact ? `2px ${ref(spacingStaticSm)}` : `12px ${ref(spacingStaticMd)}`,
             whiteSpace: 'nowrap',
             cursor: 'pointer',
-            borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
-            ...(background === 'none' && {
-              background: ref(colorFrosted),
-            }),
+            borderRadius: radiusButton,
+            // When the scroller has its own inset padding (hasBackground), shrink the tab
+            // padding by the same amount so the overall hit area / visual height stays stable.
+            padding: hasBackground
+              ? isCompact
+                ? `calc(7 * ${ref(spacingStatic2Xs)} - ${ref(spacingStaticXs)}) calc(${ref(spacingStaticMd)} - ${ref(spacingStaticXs)})`
+                : `calc(${ref(spacingStaticMd)} - ${ref(spacingStaticXs)}) calc(28 * ${ref(spacingStatic2Xs)} - ${ref(spacingStaticXs)})`
+              : isCompact
+                ? `calc(6 * ${ref(spacingStatic2Xs)}) ${ref(spacingStaticMd)}`
+                : `${ref(spacingStaticMd)} calc(28 * ${ref(spacingStatic2Xs)})`,
             font: `${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
             ...buildResponsiveStyles(size, (sizeValue: TabsBarSize) => ({
-              fontSize: fontSizeText[sizeValue],
+              fontSize: sizeMap[sizeValue],
             })),
             color: ref(colorPrimary),
+            // The :hover and active states must be animated on different background longhands so they can transition
+            // independently of each other:
+            //   - :hover  -> animates `background-color` (instant fade in/out on pointer move)
+            //   - active  -> animates `background-size` from 0% to 100% (delayed reveal of a gradient image)
+            // This shorthand seeds the defaults required for the active-state size transition (position `0 0`,
+            // size `0% 100%`, `no-repeat`) without setting a `background-image` or `background-color`, leaving both
+            // longhands free for the hover and active rules below.
+            background: '0 0 / 0% 100% no-repeat',
+            transition: `background-color ${ref(durationSm)} ${ref(easeInOut)}`,
           },
           '&(a:focus-visible),&(button:focus-visible)': getFocusBaseStyles(),
           ...hoverMediaQuery({
-            [notActiveHoverSelector]: {
-              // Only applied on hover since applying it globally causes the active tab to visually flash when navigating in SPAs (where the tabs-bar persist across routes but the children tabs change).
-              transition: `${getTransition('color', 'moderate')}, ${getTransition('background-color')}`,
-              background: ref(colorFrostedStrong),
+            [hasActiveTab
+              ? `&(a:not(:nth-child(${nthActiveTab})):hover),&(button:not(:nth-child(${nthActiveTab})):hover)`
+              : '&(a:hover),&(button:hover)']: {
+              // `background-color` (not `background-image`) so hover transitions independently of the active state
+              backgroundColor: ref(colorFrosted),
             },
           }),
-          ...(hasActive && {
-            [activeSelector]: {
-              color: ref(colorCanvas),
+          ...(hasActiveTab && {
+            [`&(a:nth-child(${nthActiveTab})),&(button:nth-child(${nthActiveTab}))`]: {
+              // `background-image` (not `background-color`) so the active state transitions independently of :hover
+              backgroundImage: `linear-gradient(${ref(colorFrostedStrong)}, ${ref(colorFrostedStrong)})`,
+              backgroundSize: '100% 100%',
+              transition: `background-size 0s linear ${ref(durationMd)}`,
             },
-            // Transition color and background when animation is playing
-            [`&(a:nth-child(${nth})[${animatingAttribute}]),&(button:nth-child(${nth})[${animatingAttribute}])`]: {
-              transition: `${getTransition('color', 'moderate')}, background-color 0s linear ${ref(durationMd)}`,
-            },
-            // Apply background only when no active animation is playing
-            [`&(a:nth-child(${nth}):not([${animatingAttribute}])),&(button:nth-child(${nth}):not([${animatingAttribute}]))`]:
-              {
-                background: ref(colorPrimary),
-              },
           }),
           ...forcedColorsMediaQuery({
             '&(a),&(button)': {
@@ -117,21 +123,17 @@ export const getComponentCss = (
               color: 'ButtonText',
               boxShadow: 'inset 0 0 0 2px ButtonBorder',
             },
-            ...(hasActive && {
-              [activeSelector]: {
-                transition: 'unset',
-              },
-            }),
           }),
         },
       }),
     },
     scroller: {
+      '--_p-scroller-focus-ring-radius': radiusButton,
       placeSelf: 'flex-start', // ensures scroller doesn't get stretched in x- or y-axis in case the tabs-bar is taller than the scroller (e.g. when placed in flex or grid context)
-      borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
-      ...(background !== 'none' && {
+      ...(hasBackground && {
         background: backgroundMap[background],
-        padding: ref(spacingStaticXs),
+        padding: isCompact ? `calc(3 * ${ref(spacingStatic2Xs)})` : ref(spacingStaticXs),
+        borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl), // radius for rail
         ...forcedColorsMediaQuery({
           forcedColorAdjust: 'none',
           outline: '1px solid CanvasText',
@@ -149,8 +151,11 @@ export const getComponentCss = (
       height: '100%',
       zIndex: -1,
       pointerEvents: 'none',
-      borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
-      background: ref(colorPrimary),
+      borderRadius: radiusButton,
+      background: ref(colorFrostedStrong),
+      ...forcedColorsMediaQuery({
+        display: 'none',
+      }),
     },
   });
 };

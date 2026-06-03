@@ -1,5 +1,5 @@
-import { legacyRadiusSmall, radiusFull, radiusLg, radiusXl, ref } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, addImportantToRule, getFocusBaseStyles } from '../../styles';
+import { radiusFull, radiusLg, radiusXl, ref } from '@porsche-design-system/stylesheets';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
@@ -43,11 +43,11 @@ export const getComponentCss = (
               inset: 0,
               ...mergeDeep(
                 buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
-                  borderRadius: ref(legacyRadiusSmall, compactValue ? ref(radiusLg) : ref(radiusXl)),
+                  borderRadius: compactValue ? ref(radiusLg) : ref(radiusXl),
                 })),
                 buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
                   ...(hideLabelValue && {
-                    borderRadius: ref(legacyRadiusSmall, ref(radiusFull)),
+                    borderRadius: ref(radiusFull),
                   }),
                 }))
               ),

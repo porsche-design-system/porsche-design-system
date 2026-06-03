@@ -1,14 +1,5 @@
 import { textSmallStyle, textXSmallStyle } from '@porsche-design-system/emotion';
 import {
-  colorContrastMedium,
-  colorPrimary,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusLg,
-  radiusXl,
-  ref,
-} from '@porsche-design-system/stylesheets';
-import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getDisabledBaseStyles,
@@ -18,6 +9,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { colorContrastMedium, colorPrimary, leadingNormal, radiusLg, radiusXl, ref } from '@porsche-design-system/stylesheets';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingVertical } from '../../../styles/form-styles';
 import { getCss } from '../../../utils';
@@ -83,7 +75,7 @@ export const getComponentCss = (
         minWidth: dimension,
         padding: padding,
         border: `1px solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
-        borderRadius: ref(legacyRadiusSmall, isCompact ? ref(radiusLg) : ref(radiusXl)),
+        borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
         background: formStateBackgroundColor,
         color: ref(colorPrimary),
         ...textSmallStyle,

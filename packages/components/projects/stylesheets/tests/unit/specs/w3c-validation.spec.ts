@@ -1,11 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { describe, expect, it } from 'vitest';
 import {
-  type W3CValidationMessage,
   formatW3CMessages,
   validateCssWithW3C,
+  type W3CValidationMessage,
 } from '@porsche-design-system/shared/testing';
+import { describe, expect, it } from 'vitest';
 
 const distDir = path.resolve(__dirname, '../../../dist');
 
@@ -15,7 +15,6 @@ const cssFiles = [
   'variables.css',
   'color-scheme.css',
   'font-face.css',
-  'legacy-radius.css',
   'cn/index.css',
   'cn/font-face.css',
 ];
@@ -28,8 +27,12 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const KNOWN_FALSE_POSITIVES: Array<(e: W3CValidationMessage) => boolean> = [
   // `color-scheme: only dark|light` is valid per CSS Color Adjustment Module Level 1,
   // but the W3C validator does not support the `only` keyword yet.
-  (e) => e.message.includes('Too many values or values are not recognized') && (e.context?.includes('scheme-only-dark') ?? false),
-  (e) => e.message.includes('Too many values or values are not recognized') && (e.context?.includes('scheme-only-light') ?? false),
+  (e) =>
+    e.message.includes('Too many values or values are not recognized') &&
+    (e.context?.includes('scheme-only-dark') ?? false),
+  (e) =>
+    e.message.includes('Too many values or values are not recognized') &&
+    (e.context?.includes('scheme-only-light') ?? false),
 ];
 
 const filterFalsePositives = (errors: W3CValidationMessage[]): W3CValidationMessage[] =>
@@ -52,4 +55,3 @@ describe('W3C CSS validation (stylesheets)', () => {
     60_000
   );
 });
-

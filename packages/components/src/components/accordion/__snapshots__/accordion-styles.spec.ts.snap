@@ -60,7 +60,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   details::details-content {
     display: contents !important;
@@ -358,7 +358,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-canvas);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -507,7 +507,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-canvas);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -547,7 +547,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     position: sticky;
     top: var(--p-accordion-summary-top,var(--p-accordion-position-sticky-top,0px));
     background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 90%,transparent 100%);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -660,7 +660,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-canvas);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -700,7 +700,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     position: sticky;
     top: var(--p-accordion-summary-top,var(--p-accordion-position-sticky-top,0px));
     background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 90%,transparent 100%);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -815,7 +815,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -966,7 +966,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -1117,7 +1117,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   details::details-content {
     display: contents !important;
@@ -1268,7 +1268,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   details::details-content {
     display: contents !important;
@@ -1419,7 +1419,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   details::details-content {
     display: contents !important;
@@ -1570,7 +1570,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   details::details-content {
     display: contents !important;
@@ -1721,7 +1721,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-xl);
   }
   details::details-content {
     display: contents !important;
@@ -2025,7 +2025,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py,0) var(--p-accordion-px,0);
     background: transparent;
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -2323,7 +2323,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     align-items: center;
     padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-surface);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   details::details-content {
     display: contents !important;
@@ -2363,7 +2363,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     position: sticky;
     top: var(--p-accordion-summary-top,var(--p-accordion-position-sticky-top,0px));
     background: linear-gradient(180deg,var(--p-color-surface) 0%,var(--p-color-surface) 90%,transparent 100%);
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl));
+    border-radius: var(--p-radius-2xl);
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);

@@ -1,13 +1,12 @@
 import { colorSchemeCss } from './colorSchemeMeta';
 import { variablesCss } from './cssVariablesMeta';
-import { legacyRadiusCss } from './legacyRadiusMeta';
 import { normalizeCss } from './normalizeMeta';
 import type { GlobalStylesMeta } from './types';
 
 export { colorSchemeClassesMeta } from './colorSchemeMeta';
 // Independent, granular exports for component and docs access. These expose the
 // authored meta directly (the grouped CSS variable tree, the `.scheme-*` class
-// metas, the legacy radius variables) so consumers can read single entries
+// metas) so consumers can read single entries
 // (e.g. `cssVariablesMeta.color.background.canvas`) without going through the
 // per-stylesheet aggregation below.
 export { cssVariablesMeta } from './cssVariablesMeta';
@@ -18,7 +17,6 @@ export { cssVariablesMeta } from './cssVariablesMeta';
 // `ref` is hand-written. Components consume these directly in their JSS styles.
 export * from './generated/cssVariables';
 export { flattenColorVariables, flattenCssVariables, renderCss, renderCssNode } from './helpers';
-export { legacyRadiusMeta } from './legacyRadiusMeta';
 export { ref } from './ref';
 export type * from './types';
 
@@ -48,10 +46,5 @@ export const stylesheetsMeta = {
     description:
       'Recommended **normalize** styles including CSS reset rules and base typography (font family and line height) for `html` and `body`.',
     meta: normalizeCss,
-  },
-  legacyRadius: {
-    file: 'legacy-radius.css',
-    description: 'Private `--_p-legacy-radius-*` variables preserving backwards-compatible radii for legacy consumers.',
-    meta: legacyRadiusCss,
   },
 } satisfies GlobalStylesMeta;

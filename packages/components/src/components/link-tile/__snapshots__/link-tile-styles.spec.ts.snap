@@ -62,7 +62,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 1/1;
 }
 .root::after {
@@ -176,7 +176,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 3/4;
 }
 .root::after {
@@ -290,7 +290,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 4/3;
 }
 .root::after {
@@ -404,7 +404,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 9/16;
 }
 .media {
@@ -509,7 +509,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 16/9;
 }
 .media {
@@ -649,7 +649,7 @@ p {
   display: grid;
   grid-template: var(--p-spacing-fluid-md) auto minmax(0px, 1fr) auto var(--p-spacing-fluid-md)/var(--p-spacing-fluid-md) minmax(0px, 1fr) var(--p-spacing-fluid-md);
   width: 100%;
-  border-radius: var(--_p-legacy-radius-large,var(--p-radius-4xl));
+  border-radius: var(--p-radius-3xl);
   aspect-ratio: 1/1;
 }
 .root::after {

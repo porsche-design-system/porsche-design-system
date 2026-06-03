@@ -1,13 +1,5 @@
-import {
-  fontPorscheNext,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusLg,
-  radiusMd,
-  ref,
-  typescaleSm,
-} from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
+import { fontPorscheNext, leadingNormal, radiusLg, radiusMd, ref, typescaleSm } from '@porsche-design-system/stylesheets';
 import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getTransition } from '../common-styles';
@@ -50,7 +42,7 @@ export const getCheckboxBaseStyles = (
       forcedColorsMediaQuery({
         borderColor: 'GrayText',
       })),
-    borderRadius: ref(legacyRadiusSmall, isCompact ? ref(radiusMd) : ref(radiusLg)),
+    borderRadius: isCompact ? ref(radiusMd) : ref(radiusLg),
     ...(disabledOrLoading && {
       pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
     }),

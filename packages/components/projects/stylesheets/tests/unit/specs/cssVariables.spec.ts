@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { cssVariablesMeta, flattenCssVariables, legacyRadiusMeta, ref } from '../../../src';
+import { cssVariablesMeta, flattenCssVariables, ref } from '../../../src';
 import * as cssVariables from '../../../src/generated/cssVariables';
 
 // Derives the const name from a CSS custom property, mirroring the generator
@@ -14,7 +14,7 @@ const toConstName = (property: string): string =>
     })
     .join('');
 
-const allLeaves = [...flattenCssVariables(cssVariablesMeta), ...legacyRadiusMeta];
+const allLeaves = [...flattenCssVariables(cssVariablesMeta)];
 
 it.each(
   allLeaves.map((leaf) => [toConstName(leaf.property), leaf.property] as const)

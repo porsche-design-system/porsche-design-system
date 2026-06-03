@@ -18,7 +18,7 @@ div {
   align-items: center;
   gap: 2px;
   padding: 0 var(--p-spacing-static-sm) 0 var(--p-spacing-static-xs);
-  border-radius: var(--_p-legacy-radius-small,calc(var(--p-spacing-static-xs) + (var(--p-leading-normal) / 2)));
+  border-radius: calc(var(--p-spacing-static-xs) + (var(--p-leading-normal) / 2));
   font-size: var(--p-typescale-2xs);
   color: var(--p-color-contrast-high);
   background: var(--p-color-frosted-strong);

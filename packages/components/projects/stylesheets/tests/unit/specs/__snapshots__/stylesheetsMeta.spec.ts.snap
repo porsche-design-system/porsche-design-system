@@ -256,14 +256,6 @@ text-size-adjust: none;
 }"
 `;
 
-exports[`renderCss should serialize the resolution of every generated stylesheet to a snapshot 4`] = `
-":root {
---_p-legacy-radius-small: 4px;
---_p-legacy-radius-medium: 8px;
---_p-legacy-radius-large: 12px;
-}"
-`;
-
 exports[`should match snapshot 1`] = `
 {
   "colorScheme": {
@@ -1369,35 +1361,6 @@ exports[`should match snapshot 1`] = `
           },
         ],
         "selector": ":lang(ko)",
-      },
-    ],
-  },
-  "legacyRadius": {
-    "description": "Private \`--_p-legacy-radius-*\` variables preserving backwards-compatible radii for legacy consumers.",
-    "file": "legacy-radius.css",
-    "meta": [
-      {
-        "declarations": [
-          {
-            "description": "Private **small** legacy \`border-radius\` for backwards compatibility.",
-            "property": "--_p-legacy-radius-small",
-            "type": "radius",
-            "value": "4px",
-          },
-          {
-            "description": "Private **medium** legacy \`border-radius\` for backwards compatibility.",
-            "property": "--_p-legacy-radius-medium",
-            "type": "radius",
-            "value": "8px",
-          },
-          {
-            "description": "Private **large** legacy \`border-radius\` for backwards compatibility.",
-            "property": "--_p-legacy-radius-large",
-            "type": "radius",
-            "value": "12px",
-          },
-        ],
-        "selector": ":root",
       },
     ],
   },

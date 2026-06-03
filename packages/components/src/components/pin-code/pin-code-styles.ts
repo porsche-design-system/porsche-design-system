@@ -1,16 +1,4 @@
 import {
-  colorPrimary,
-  fontPorscheNext,
-  fontWeightNormal,
-  leadingNormal,
-  legacyRadiusSmall,
-  radiusLg,
-  radiusXl,
-  ref,
-  spacingStaticXs,
-  typescaleSm,
-} from '@porsche-design-system/stylesheets';
-import {
   addImportantToEachRule,
   getDisabledBaseStyles,
   getTransition,
@@ -18,6 +6,17 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import {
+  colorPrimary,
+  fontPorscheNext,
+  fontWeightNormal,
+  leadingNormal,
+  radiusLg,
+  radiusXl,
+  ref,
+  spacingStaticXs,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
@@ -69,7 +68,7 @@ export const getComponentCss = (
         padding: inputPadding,
         boxSizing: 'border-box',
         border: `${inputBorderWidth} solid ${formStateBorderColor}`,
-        borderRadius: ref(legacyRadiusSmall, isCompact ? ref(radiusLg) : ref(radiusXl)),
+        borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
         background: formStateBackgroundColor,
         font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / calc(${ref(leadingNormal)} + 6px) ${ref(fontPorscheNext)}`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         color: ref(colorPrimary),

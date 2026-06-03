@@ -4,7 +4,6 @@ import {
   cssVariablesMeta,
   flattenColorVariables,
   flattenCssVariables,
-  legacyRadiusMeta,
   renderCss,
   renderCssNode,
   stylesheetsMeta,
@@ -17,7 +16,7 @@ it('should match snapshot', () => {
 });
 
 it('should contain all expected stylesheets', () => {
-  expect(Object.keys(stylesheetsMeta)).toEqual(['cssVariables', 'colorScheme', 'normalize', 'legacyRadius']);
+  expect(Object.keys(stylesheetsMeta)).toEqual(['cssVariables', 'colorScheme', 'normalize']);
 });
 
 it('every stylesheet entry should expose file, description and meta', () => {
@@ -32,7 +31,6 @@ it('every stylesheet entry should expose file, description and meta', () => {
 it('should expose granular metas independently of globalStylesMeta', () => {
   expect(cssVariablesMeta).toBeTruthy();
   expect(colorSchemeClassesMeta.length).toBeGreaterThan(0);
-  expect(legacyRadiusMeta.length).toBeGreaterThan(0);
 });
 
 it('every css variable leaf should have property, description and value', () => {

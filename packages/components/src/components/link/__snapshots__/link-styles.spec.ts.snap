@@ -6,7 +6,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+  border-radius: var(--p-radius-full) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -16,31 +16,31 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
 }
 @media(min-width:480px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+    border-radius: var(--_p-link-button-a) !important;
   }
 }
 
 @media(min-width:760px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+    border-radius: var(--p-radius-full) !important;
   }
 }
 
 @media(min-width:1000px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+    border-radius: var(--_p-link-button-a) !important;
   }
 }
 
 @media(min-width:1300px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--p-radius-full)) !important;
+    border-radius: var(--p-radius-full) !important;
   }
 }
 
 @media(min-width:1760px) {
   :host {
-    border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+    border-radius: var(--_p-link-button-a) !important;
   }
 }
 
@@ -219,7 +219,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -302,7 +302,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -317,7 +317,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl)) !important;
+  border-radius: var(--p-radius-xl) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -397,7 +397,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -412,7 +412,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl)) !important;
+  border-radius: var(--p-radius-xl) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -492,7 +492,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-link-a: 0.64285714;
   --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -507,7 +507,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-lg)) !important;
+  border-radius: var(--p-radius-lg) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -587,7 +587,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -602,7 +602,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl)) !important;
+  border-radius: var(--p-radius-xl) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -682,7 +682,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -697,7 +697,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl)) !important;
+  border-radius: var(--p-radius-xl) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
@@ -777,7 +777,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   vertical-align: top;
   --_p-link-a: 1;
   --_p-link-button-a: var(--p-radius-xl);
-  border-radius: var(--_p-legacy-radius-small,var(--_p-link-button-a)) !important;
+  border-radius: var(--_p-link-button-a) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -792,7 +792,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   content: "" !important;
   position: fixed !important;
   inset: 0 !important;
-  border-radius: var(--_p-legacy-radius-small,var(--p-radius-xl)) !important;
+  border-radius: var(--p-radius-xl) !important;
 }
 ::slotted(a:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
