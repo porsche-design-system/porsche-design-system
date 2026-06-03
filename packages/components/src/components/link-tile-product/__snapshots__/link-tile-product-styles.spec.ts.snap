@@ -58,7 +58,7 @@ slot[name="header"] {
   aspect-ratio: 8/9;
   margin: var(--p-spacing-fluid-sm) auto var(--p-spacing-fluid-xs);
   overflow: hidden;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 .wrapper {
   display: flex;
@@ -164,7 +164,7 @@ slot[name="header"] {
   aspect-ratio: 8/9;
   margin: var(--p-spacing-fluid-sm) auto var(--p-spacing-fluid-xs);
   overflow: hidden;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 .wrapper {
   display: flex;
@@ -270,7 +270,7 @@ slot[name="header"] {
   aspect-ratio: 8/9;
   margin: var(--p-spacing-fluid-sm) auto var(--p-spacing-fluid-xs);
   overflow: hidden;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 .wrapper {
   display: flex;
@@ -376,7 +376,7 @@ slot[name="header"] {
   aspect-ratio: 8/9;
   margin: var(--p-spacing-fluid-sm) auto var(--p-spacing-fluid-xs);
   overflow: hidden;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 .wrapper {
   display: flex;
@@ -499,7 +499,7 @@ slot[name="header"] {
   aspect-ratio: 8/9;
   margin: var(--p-spacing-fluid-sm) auto var(--p-spacing-fluid-xs);
   overflow: hidden;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 .wrapper {
   display: flex;
@@ -609,7 +609,7 @@ s {
   aspect-ratio: 8/9;
   margin: var(--p-spacing-fluid-sm) auto var(--p-spacing-fluid-xs);
   overflow: hidden;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 .wrapper {
   display: flex;
@@ -733,7 +733,7 @@ s {
   aspect-ratio: 8/9;
   margin: var(--p-spacing-fluid-sm) auto var(--p-spacing-fluid-xs);
   overflow: hidden;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 .wrapper {
   display: flex;

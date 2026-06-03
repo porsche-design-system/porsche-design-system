@@ -19,7 +19,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 2/2;
@@ -133,7 +133,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 4/2;
@@ -247,7 +247,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 2/2;
@@ -361,7 +361,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 2/2;
@@ -466,7 +466,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 4/2;
@@ -571,7 +571,7 @@ slot {
 slot:not([name]) {
   width: 100%;
   height: 100%;
-  transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in-out);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in-out);
 }
 slot[name="header"] {
   grid-area: 4/2;

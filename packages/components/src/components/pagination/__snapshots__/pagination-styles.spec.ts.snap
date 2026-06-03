@@ -28,7 +28,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -131,7 +131,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -234,7 +234,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -337,7 +337,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -446,7 +446,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -555,7 +555,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -664,7 +664,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -773,7 +773,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -882,7 +882,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -991,7 +991,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1100,7 +1100,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1209,7 +1209,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1318,7 +1318,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1427,7 +1427,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1533,7 +1533,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1642,7 +1642,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1748,7 +1748,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1857,7 +1857,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1969,7 +1969,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -2081,7 +2081,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;

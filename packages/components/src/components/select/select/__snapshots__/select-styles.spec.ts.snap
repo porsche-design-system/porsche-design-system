@@ -37,13 +37,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
+    border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -74,7 +74,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -105,7 +105,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-primary));
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
@@ -131,13 +131,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -146,7 +146,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -188,7 +188,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -218,7 +218,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -274,13 +274,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-success));
+    border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -311,7 +311,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -342,7 +342,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-success));
+      border-color: var(--p-select-border-color,var(--p-color-success));
     }
 }
 
@@ -368,13 +368,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -383,7 +383,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -425,7 +425,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -456,7 +456,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -512,13 +512,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-error));
+    border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -549,7 +549,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -580,7 +580,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-error));
+      border-color: var(--p-select-border-color,var(--p-color-error));
     }
 }
 
@@ -606,13 +606,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -621,7 +621,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -662,7 +662,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -693,7 +693,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -749,13 +749,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-success));
+    border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -786,7 +786,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -817,7 +817,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-success));
+      border-color: var(--p-select-border-color,var(--p-color-success));
     }
 }
 
@@ -843,13 +843,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -858,7 +858,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -899,7 +899,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -930,7 +930,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -986,14 +986,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-error));
+    border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -1020,7 +1020,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -1072,13 +1072,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -1087,7 +1087,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -1131,7 +1131,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -1162,7 +1162,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -1222,14 +1222,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
+    border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -1256,7 +1256,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -1308,13 +1308,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -1323,7 +1323,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -1367,7 +1367,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -1397,7 +1397,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -1457,14 +1457,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
+    border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -1491,7 +1491,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -1543,13 +1543,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -1558,7 +1558,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -1602,7 +1602,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -1632,7 +1632,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -1692,14 +1692,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
+    border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-lg);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -1726,7 +1726,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -1778,13 +1778,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -1793,7 +1793,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -1837,7 +1837,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -1867,7 +1867,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -1927,14 +1927,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-success));
+    border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -1961,7 +1961,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -2013,13 +2013,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -2028,7 +2028,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -2072,7 +2072,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -2103,7 +2103,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -2163,14 +2163,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-error));
+    border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -2197,7 +2197,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -2249,13 +2249,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -2264,7 +2264,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -2307,7 +2307,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -2338,7 +2338,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -2398,14 +2398,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-contrast-lower));
+    border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -2432,7 +2432,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -2484,13 +2484,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -2499,7 +2499,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -2542,7 +2542,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -2572,7 +2572,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -2632,14 +2632,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-success));
+    border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -2666,7 +2666,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -2718,13 +2718,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -2733,7 +2733,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -2776,7 +2776,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -2807,7 +2807,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -2867,13 +2867,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-error));
+    border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -2904,7 +2904,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -2935,7 +2935,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-error));
+      border-color: var(--p-select-border-color,var(--p-color-error));
     }
 }
 
@@ -2961,13 +2961,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -2976,7 +2976,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -3018,7 +3018,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -3049,7 +3049,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -3105,13 +3105,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-primary));
+    border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -3142,7 +3142,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -3173,7 +3173,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-primary));
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
@@ -3199,13 +3199,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -3214,7 +3214,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -3256,7 +3256,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -3286,7 +3286,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -3342,13 +3342,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-primary));
+    border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -3379,7 +3379,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -3410,7 +3410,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-primary));
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
@@ -3436,13 +3436,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -3451,7 +3451,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -3493,7 +3493,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -3523,7 +3523,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -3579,13 +3579,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-primary));
+    border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -3616,7 +3616,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -3647,7 +3647,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-primary));
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
@@ -3673,13 +3673,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -3688,7 +3688,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -3730,7 +3730,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -3760,7 +3760,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -3816,13 +3816,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-error));
+    border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -3853,7 +3853,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -3884,7 +3884,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-error));
+      border-color: var(--p-select-border-color,var(--p-color-error));
     }
 }
 
@@ -3910,13 +3910,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -3925,7 +3925,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -3966,7 +3966,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -3997,7 +3997,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -4053,13 +4053,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-primary));
+    border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -4090,7 +4090,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -4121,7 +4121,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-primary));
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
@@ -4147,13 +4147,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -4162,7 +4162,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -4203,7 +4203,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -4233,7 +4233,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -4289,13 +4289,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-success));
+    border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -4326,7 +4326,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -4357,7 +4357,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-success));
+      border-color: var(--p-select-border-color,var(--p-color-success));
     }
 }
 
@@ -4383,13 +4383,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -4398,7 +4398,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -4439,7 +4439,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -4470,7 +4470,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -4526,13 +4526,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-success));
+    border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -4563,7 +4563,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -4594,7 +4594,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
 
 @media(hover:hover) {
     button:hover, label:hover~button {
-      border-color: var(--p-select-border-color, var(--p-color-success));
+      border-color: var(--p-select-border-color,var(--p-color-success));
     }
 }
 
@@ -4620,13 +4620,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -4635,7 +4635,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -4676,7 +4676,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -4707,7 +4707,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -4763,14 +4763,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-error));
+    border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -4797,7 +4797,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -4849,13 +4849,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -4864,7 +4864,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -4908,7 +4908,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -4939,7 +4939,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -4999,14 +4999,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-primary));
+    border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -5033,7 +5033,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -5085,13 +5085,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -5100,7 +5100,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -5144,7 +5144,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -5174,7 +5174,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -5234,14 +5234,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-success));
+    border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -5268,7 +5268,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -5320,13 +5320,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -5335,7 +5335,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -5379,7 +5379,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -5410,7 +5410,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -5470,14 +5470,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-success));
+    border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-lg);
-    background: var(--p-select-background-color, var(--p-color-success-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -5504,7 +5504,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -5556,13 +5556,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -5571,7 +5571,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -5615,7 +5615,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -5646,7 +5646,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -5706,14 +5706,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-error));
+    border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-error-frosted-soft));
+    background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -5740,7 +5740,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -5792,13 +5792,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -5807,7 +5807,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -5850,7 +5850,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -5881,7 +5881,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
@@ -5941,14 +5941,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     box-sizing: border-box;
     min-width: 0;
     padding-inline: calc(22.4px * (var(--_p-select-a) - 0.64285714) + 8px);
-    border: 1px solid var(--p-select-border-color, var(--p-color-primary));
+    border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
-    background: var(--p-select-background-color, var(--p-color-frosted));
+    background: var(--p-select-background-color,var(--p-color-frosted));
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-select-text-color, var(--p-color-primary));
+    color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -5975,7 +5975,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: var(--p-color-canvas);
     border: 1px solid var(--p-color-contrast-low);
@@ -6027,13 +6027,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     margin-inline-end: -3px;
     pointer-events: none;
     transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results {
     display: flex;
     gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
-    padding-inline: var(--_p-select-option-b, calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
+    padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
@@ -6042,7 +6042,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -6085,7 +6085,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     color: var(--p-color-primary);
     pointer-events: none;
     opacity: 0.4;
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     display: inline;
   }
   .label:empty {
@@ -6115,7 +6115,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     display: flex;
     gap: var(--p-spacing-static-xs);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;

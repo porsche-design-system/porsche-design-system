@@ -21,7 +21,7 @@ span {
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-error);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -89,7 +89,7 @@ span {
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-error-frosted);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -155,7 +155,7 @@ span {
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-info);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -217,7 +217,7 @@ span {
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-info-frosted);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -277,7 +277,7 @@ span {
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -345,7 +345,7 @@ span {
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-frosted-strong);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -405,7 +405,7 @@ span {
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-success);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -473,7 +473,7 @@ span {
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-success-frosted);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -539,7 +539,7 @@ span {
   font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-warning);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -598,7 +598,7 @@ span {
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-warning-frosted);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;

@@ -18,7 +18,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -134,7 +134,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -252,7 +252,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -370,7 +370,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -488,7 +488,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -612,7 +612,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -751,7 +751,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);
@@ -888,7 +888,7 @@ slot {
   display: grid;
   grid-template-columns: auto minmax(0,1fr) auto;
   align-items: center;
-  border-radius: var(--_p-scroller-focus-ring-radius, inherit);
+  border-radius: var(--_p-scroller-focus-ring-radius,inherit);
 }
 .root:has(.scroll:focus-visible) {
   outline: 2px solid var(--p-color-focus);

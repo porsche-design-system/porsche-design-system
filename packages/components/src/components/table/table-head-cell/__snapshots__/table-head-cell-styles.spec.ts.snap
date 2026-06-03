@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css for active: false, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm)) var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  padding: 2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -40,7 +40,7 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--p-radius-sm);
   z-index: -1;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -64,7 +64,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 0;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
@@ -74,7 +74,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: false, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm)) var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  padding: 2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -111,7 +111,7 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--p-radius-sm);
   z-index: -1;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -135,7 +135,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 0;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
@@ -145,7 +145,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: true, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm)) var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  padding: 2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -182,7 +182,7 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--p-radius-sm);
   z-index: -1;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -206,7 +206,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 1;
   transform: rotate3d(0,0,1,0deg);
   transform-origin: 50% 50%;
@@ -216,7 +216,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm)) var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  padding: 2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -253,7 +253,7 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--p-radius-sm);
   z-index: -1;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -277,7 +277,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
@@ -287,7 +287,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: true 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm)) var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  padding: 2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: normal !important;
 }
@@ -324,7 +324,7 @@ button::before {
   inset: -2px -4px;
   border-radius: var(--p-radius-sm);
   z-index: -1;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -348,7 +348,7 @@ button:focus-visible::before {
 }
 
 .icon {
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 1;
   transform: rotate3d(0,0,1,180deg);
   transform-origin: 50% 50%;
@@ -358,7 +358,7 @@ button:focus-visible::before {
 exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm)) var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  padding: 2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -373,7 +373,7 @@ exports[`getComponentCss() > should return correct css for active: undefined, di
 exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: true and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm)) var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  padding: 2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }

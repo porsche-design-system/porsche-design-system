@@ -24,7 +24,7 @@ div {
   background: var(--p-color-frosted-strong);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 div::before {
   content: "";

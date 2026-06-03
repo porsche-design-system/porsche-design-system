@@ -35,7 +35,7 @@ button:focus-visible {
 
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:hover {
     -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -163,7 +163,7 @@ button:focus-visible {
 
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:hover {
     -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -627,7 +627,7 @@ button:focus-visible {
 
 @media(hover:hover) {
   button {
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:hover {
     -webkit-backdrop-filter: var(--p-blur-frosted);

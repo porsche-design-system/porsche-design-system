@@ -53,7 +53,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
@@ -73,7 +73,7 @@ input::-webkit-calendar-picker-indicator {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -104,7 +104,7 @@ input::-webkit-calendar-picker-indicator {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -192,7 +192,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -212,7 +212,7 @@ input::-webkit-calendar-picker-indicator {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -242,7 +242,7 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -330,7 +330,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -350,7 +350,7 @@ input::-webkit-calendar-picker-indicator {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -380,7 +380,7 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -468,7 +468,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
@@ -488,7 +488,7 @@ input::-webkit-calendar-picker-indicator {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -519,7 +519,7 @@ input::-webkit-calendar-picker-indicator {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -607,7 +607,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
@@ -626,7 +626,7 @@ input::-webkit-calendar-picker-indicator {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -657,7 +657,7 @@ input::-webkit-calendar-picker-indicator {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -745,7 +745,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -764,7 +764,7 @@ input::-webkit-calendar-picker-indicator {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -794,7 +794,7 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -882,7 +882,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-contrast-medium);
   cursor: text;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border-color: transparent;
 }
 .wrapper:not(:has(input:disabled)):focus-within {
@@ -902,7 +902,7 @@ input::-webkit-calendar-picker-indicator {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -933,7 +933,7 @@ input::-webkit-calendar-picker-indicator {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1015,7 +1015,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -1035,7 +1035,7 @@ input::-webkit-calendar-picker-indicator {
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1065,7 +1065,7 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1268,7 +1268,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 0.4;
 }
 .wrapper:not(:has(input:disabled)):focus-within {
@@ -1293,7 +1293,7 @@ input::-webkit-calendar-picker-indicator {
   color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1323,7 +1323,7 @@ input::-webkit-calendar-picker-indicator {
   display: flex;
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1539,7 +1539,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 0.4;
 }
 .wrapper:not(:has(input:disabled)):focus-within {
@@ -1564,7 +1564,7 @@ input::-webkit-calendar-picker-indicator {
   color: var(--p-color-primary);
   pointer-events: none;
   opacity: 0.4;
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   display: inline;
 }
 .label:empty {
@@ -1595,7 +1595,7 @@ input::-webkit-calendar-picker-indicator {
   gap: var(--p-spacing-static-xs);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;

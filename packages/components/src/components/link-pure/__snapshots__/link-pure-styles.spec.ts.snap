@@ -71,7 +71,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -2px;
   left: -2px;
   border-radius: var(--p-radius-full);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -244,7 +244,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -2px;
   left: -2px;
   border-radius: var(--p-radius-full);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -397,7 +397,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -470,7 +470,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -563,7 +563,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .icon {
   position: relative;
@@ -629,7 +629,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -702,7 +702,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -775,7 +775,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -848,7 +848,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -2px;
   left: -2px;
   border-radius: var(--p-radius-full);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -921,7 +921,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -2px;
   left: -2px;
   border-radius: var(--p-radius-full);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -1014,7 +1014,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -2px;
   left: -2px;
   border-radius: var(--p-radius-full);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .icon {
   position: relative;
@@ -1079,7 +1079,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   background-color: var(--p-color-frosted);
@@ -1154,7 +1154,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-head-righ
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   background-color: var(--p-color-frosted);
@@ -1230,7 +1230,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
@@ -1295,7 +1295,7 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   right: -4px;
   left: -4px;
   border-radius: var(--p-radius-lg);
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .root:focus-visible::before {
   outline: 2px solid var(--p-color-focus);

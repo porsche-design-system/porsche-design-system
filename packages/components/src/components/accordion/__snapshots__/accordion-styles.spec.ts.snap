@@ -56,7 +56,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     grid-template: repeat(2, auto) / minmax(0, 1fr) auto;
     column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
@@ -74,17 +74,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -94,8 +94,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -110,7 +110,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/2;
@@ -123,7 +123,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -132,7 +132,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -206,7 +206,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-canvas);
     border-radius: var(--p-radius-2xl);
   }
@@ -222,17 +222,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)), grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -242,8 +242,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -258,7 +258,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -271,7 +271,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -280,7 +280,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -354,7 +354,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-canvas);
     border-radius: var(--p-radius-2xl);
   }
@@ -370,17 +370,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)), grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -390,10 +390,10 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
     position: sticky;
-    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
+    top: var(--p-accordion-summary-top,var(--p-accordion-position-sticky-top,0px));
     background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 90%,transparent 100%);
     border-radius: var(--p-radius-2xl);
   }
@@ -410,7 +410,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -423,7 +423,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -432,7 +432,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -506,7 +506,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-canvas);
     border-radius: var(--p-radius-2xl);
   }
@@ -522,17 +522,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -542,10 +542,10 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
     position: sticky;
-    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
+    top: var(--p-accordion-summary-top,var(--p-accordion-position-sticky-top,0px));
     background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 90%,transparent 100%);
     border-radius: var(--p-radius-2xl);
   }
@@ -562,7 +562,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -575,7 +575,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -584,7 +584,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -658,7 +658,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
@@ -676,17 +676,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)), grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -696,8 +696,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -712,7 +712,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -725,7 +725,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -734,7 +734,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -808,7 +808,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
@@ -826,17 +826,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)), grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -846,8 +846,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -862,7 +862,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -875,7 +875,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -884,7 +884,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -958,7 +958,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
@@ -976,17 +976,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)), grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -996,8 +996,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -1012,7 +1012,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1025,7 +1025,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1034,7 +1034,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -1108,7 +1108,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
@@ -1126,17 +1126,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1146,8 +1146,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -1162,7 +1162,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1175,7 +1175,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1184,7 +1184,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -1258,7 +1258,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
@@ -1276,17 +1276,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1296,8 +1296,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -1312,7 +1312,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1325,7 +1325,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1334,7 +1334,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -1408,7 +1408,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto auto minmax(0, 1fr);
     column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
@@ -1426,17 +1426,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1446,8 +1446,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -1462,7 +1462,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1475,7 +1475,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1484,7 +1484,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -1558,7 +1558,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto auto minmax(0, 1fr) auto ;
     column-gap: calc(11.2px * (0.64285714 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     background: var(--p-color-frosted);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
@@ -1576,17 +1576,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (0.64285714 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1596,8 +1596,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px)));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -1612,7 +1612,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1625,7 +1625,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1634,7 +1634,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (0.64285714 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (0.64285714 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (0.64285714 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -1708,7 +1708,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, 0) var(--p-accordion-px, 0);
+    padding: var(--p-accordion-py,0) var(--p-accordion-px,0);
     background: transparent;
     border-radius: var(--p-radius-2xl);
   }
@@ -1724,17 +1724,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-sm)), grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)), grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, 0);
-    margin-inline: calc(-1 * var(--p-accordion-px, 0));
+    padding-inline: var(--p-accordion-px,0);
+    margin-inline: calc(-1 * var(--p-accordion-px,0));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -1744,8 +1744,8 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, 0) var(--p-accordion-px, 0);
-    margin: calc(-1 * var(--p-accordion-py, 0)) calc(-1 * var(--p-accordion-px, 0));
+    padding: var(--p-accordion-py,0) var(--p-accordion-px,0);
+    margin: calc(-1 * var(--p-accordion-py,0)) calc(-1 * var(--p-accordion-px,0));
   }
   summary:focus-visible::before {
     outline: 2px solid var(--p-color-focus);
@@ -1760,7 +1760,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1773,7 +1773,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1782,7 +1782,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: 0;
-      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;
@@ -1856,7 +1856,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template: repeat(2, auto) / auto minmax(0, 1fr);
     column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
     align-items: center;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     background: var(--p-color-surface);
     border-radius: var(--p-radius-2xl);
   }
@@ -1872,17 +1872,17 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), padding-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] > div {
     opacity: 1;
     padding-top: calc(28px * (1 - 0.64285714) + 6px);
     z-index: 2;
-    padding-inline: var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin-inline: calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding-inline: var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin-inline: calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), margin-top var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   summary {
     all: unset;
@@ -1892,10 +1892,10 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     grid-template-columns: subgrid;
     align-items: center;
     cursor: pointer;
-    padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
-    margin: calc(-1 * var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px)));
+    padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
+    margin: calc(-1 * var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px))) calc(-1 * var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px)));
     position: sticky;
-    top: var(--p-accordion-summary-top, var(--p-accordion-position-sticky-top, 0px));
+    top: var(--p-accordion-summary-top,var(--p-accordion-position-sticky-top,0px));
     background: linear-gradient(180deg,var(--p-color-surface) 0%,var(--p-color-surface) 90%,transparent 100%);
     border-radius: var(--p-radius-2xl);
   }
@@ -1912,7 +1912,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     pointer-events: none;
     border-radius: var(--p-radius-full);
     background: transparent;
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   summary::after {
     grid-area: 1/1;
@@ -1925,7 +1925,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
     transform: rotate3d(0);
-    transition: transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+    transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
     transform: rotate3d(0,0,1,180deg);
@@ -1934,7 +1934,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     details {
       outline: 1px solid CanvasText;
       outline-offset: -1px;
-      padding: var(--p-accordion-py, calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px, calc(11.2px * (1 - 0.64285714) + 12px));
+      padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     }
     summary::after {
       background-color: LinkText;

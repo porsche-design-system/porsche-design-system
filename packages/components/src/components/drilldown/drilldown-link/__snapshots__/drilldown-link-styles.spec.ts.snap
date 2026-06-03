@@ -20,7 +20,7 @@ a {
   text-decoration: underline;
   text-decoration-color: transparent;
   cursor: pointer;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 a:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -60,7 +60,7 @@ a {
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 a:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -100,7 +100,7 @@ a {
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 a:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -140,7 +140,7 @@ a {
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 a:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -180,7 +180,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
   cursor: pointer !important;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -220,7 +220,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -260,7 +260,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
@@ -300,7 +300,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
-  transition: text-decoration-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out) !important;
+  transition: text-decoration-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;

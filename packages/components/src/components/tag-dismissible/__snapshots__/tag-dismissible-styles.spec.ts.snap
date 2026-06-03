@@ -49,7 +49,7 @@ button:focus-visible {
 .icon {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--p-radius-full);
 }
 .sr-only {
@@ -113,7 +113,7 @@ button:focus-visible {
 .icon {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--p-radius-full);
 }
 .sr-only {
@@ -183,7 +183,7 @@ button:focus-visible {
 .icon {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--p-radius-full);
 }
 .sr-only {
@@ -253,7 +253,7 @@ button:focus-visible {
 .icon {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--p-radius-full);
 }
 .sr-only {
@@ -323,7 +323,7 @@ button:focus-visible {
 .icon {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--p-radius-full);
 }
 .sr-only {
@@ -393,7 +393,7 @@ button:focus-visible {
 .icon {
   padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
   margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border-radius: var(--p-radius-full);
 }
 .sr-only {
