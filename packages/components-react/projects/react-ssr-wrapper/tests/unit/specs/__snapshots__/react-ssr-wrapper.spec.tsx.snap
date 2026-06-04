@@ -2989,6 +2989,7 @@ exports[`should render dsr component for PAccordion 1`] = `
   }
   details &gt; div {
     grid-area: 2/1/auto/-1;
+    grid-column-start: 1;
     z-index: 0;
     display: grid;
     opacity: 0;

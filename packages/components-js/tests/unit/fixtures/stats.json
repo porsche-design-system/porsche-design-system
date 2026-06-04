@@ -1,8 +1,8 @@
 [
   {
     "chunkShortName": "accordion",
-    "size": 8736,
-    "gzipSize": 3496
+    "size": 8861,
+    "gzipSize": 3553
   },
   {
     "chunkShortName": "ai-tag",
@@ -166,13 +166,13 @@
   },
   {
     "chunkShortName": "link-tile-product",
-    "size": 8309,
-    "gzipSize": 3575
+    "size": 8390,
+    "gzipSize": 3586
   },
   {
     "chunkShortName": "main",
-    "size": 82201,
-    "gzipSize": 25679
+    "size": 82214,
+    "gzipSize": 25681
   },
   {
     "chunkShortName": "modal",
