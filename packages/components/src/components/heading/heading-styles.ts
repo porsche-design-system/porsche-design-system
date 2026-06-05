@@ -1,5 +1,5 @@
+import { fontPorscheNext, leadingNormal, ref, typescale2Xl } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
-import { fontPorscheNext, leadingNormal, typescale2Xl } from '../../styles/css-variables';
 import { colorMap, sizeMap, weightMap } from '../../styles/maps';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
@@ -35,7 +35,7 @@ export const getComponentCss = (
     root: {
       all: 'unset',
       display: 'block',
-      font: `${weightMap[weight]} ${typescale2Xl}/${leadingNormal} ${fontPorscheNext}`,
+      font: `${weightMap[weight]} ${ref(typescale2Xl)}/${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       ...buildResponsiveStyles(size, (v: HeadingSize) => ({
         fontSize: sizeMap[v],
       })),

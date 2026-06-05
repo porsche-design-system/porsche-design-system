@@ -1,8 +1,8 @@
+import { colorCanvas, ref } from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
-import { colorCanvas } from '../css-variables';
 
 export const getFilterJssStyle = (scalingVarName: string): JssStyle => {
-  const padding = `calc(11.2px * (var(${scalingVarName}) - 0.64285714) + 4px)`;
+  const padding = `calc(11.2px * (${ref(scalingVarName)} - 0.64285714) + 4px)`;
   const margin = `calc(${padding} * -1)`;
   const top = margin;
 
@@ -11,7 +11,7 @@ export const getFilterJssStyle = (scalingVarName: string): JssStyle => {
     top,
     padding,
     margin,
-    background: colorCanvas,
+    background: ref(colorCanvas),
     zIndex: 1,
   };
 };

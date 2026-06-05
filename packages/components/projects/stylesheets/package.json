@@ -1,0 +1,58 @@
+{
+  "name": "@porsche-design-system/stylesheets",
+  "private": true,
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
+  "style": "./dist/index.css",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./*": "./dist/*"
+  },
+  "files": [
+    "./dist/"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build:font-face && npm run build:index",
+    "build-prod": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build-prod:font-face && npm run build:index",
+    "build:constants": "tsx scripts/buildCssVariableConstants.ts",
+    "build:package": "rollup -c rollup.config.mjs",
+    "build:css": "tsx scripts/buildStylesheetsCss.ts",
+    "build:font-face": "NODE_ENV=development tsx scripts/buildFontFaceCss.ts",
+    "build-prod:font-face": "tsx scripts/buildFontFaceCss.ts",
+    "build:index": "npm run build:index:default && npm run build:index:cdn",
+    "build:index:default": "cat dist/normalize.css dist/variables.css dist/color-scheme.css dist/font-face.css > dist/index.css",
+    "build:index:cdn": "mkdir -p dist/cn && cat dist/normalize.css dist/variables.css dist/color-scheme.css dist/cn/font-face.css > dist/cn/index.css",
+    "test": "npm run test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "@porsche-design-system/tokens": "0.0.0",
+    "@porsche-design-system/font-face": "0.0.0"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "@rollup/plugin-typescript": "*",
+    "@types/node": "*",
+    "rollup": "*",
+    "typescript": "*",
+    "tsx": "*",
+    "vitest": "*"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

@@ -1,6 +1,6 @@
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
+import { colorContrastHigh, colorContrastLow, colorContrastMedium, colorPrimary, ref } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
-import { colorContrastHigh, colorContrastLow, colorContrastMedium, colorPrimary } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import {
   getSvgUrl,
@@ -14,10 +14,10 @@ const cssVariableHeight = '--p-model-signature-height';
 const cssVariableColor = '--p-model-signature-color';
 
 const colorMap: Record<ModelSignatureColor, string> = {
-  primary: colorPrimary,
-  'contrast-low': colorContrastLow,
-  'contrast-medium': colorContrastMedium,
-  'contrast-high': colorContrastHigh,
+  primary: ref(colorPrimary),
+  'contrast-low': ref(colorContrastLow),
+  'contrast-medium': ref(colorContrastMedium),
+  'contrast-high': ref(colorContrastHigh),
   inherit: 'currentcolor',
 };
 
@@ -38,12 +38,12 @@ export const getComponentCss = (
         maxWidth: '100%',
         maxHeight: '100%',
         // width + height style can't be !important atm to be backwards compatible with e.g. `<p-model-signature size="inherit" style="height: 50px"/>`
-        width: `var(${cssVariableWidth},${isSizeInherit ? 'auto' : `${width}px`})`,
-        height: `var(${cssVariableHeight},auto)`,
+        width: ref(cssVariableWidth, isSizeInherit ? 'auto' : `${width}px`),
+        height: ref(cssVariableHeight, 'auto'),
         ...addImportantToEachRule({
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
           aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
-          background: `var(${cssVariableColor},${colorMap[color]})`, // color="inherit" will use currentcolor for inheritance
+          background: ref(cssVariableColor, colorMap[color]), // color="inherit" will use currentcolor for inheritance
           ...forcedColorsMediaQuery({
             background: 'CanvasText',
           }),

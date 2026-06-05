@@ -1,4 +1,17 @@
 import { getMediaQueryMax, getMediaQueryMin } from '@porsche-design-system/emotion';
+import {
+  blurFrosted,
+  colorBackdrop,
+  colorCanvas,
+  colorPrimary,
+  colorSurface,
+  ref,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingFluidXs,
+  spacingStaticSm,
+} from '@porsche-design-system/stylesheets';
 import { colorFrostedDark, colorFrostedSoftDark, colorPrimaryDark } from '@porsche-design-system/tokens';
 import {
   addImportantToEachRule,
@@ -9,18 +22,6 @@ import {
   motionDurationMap,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  blurFrosted,
-  colorBackdrop,
-  colorCanvas,
-  colorPrimary,
-  colorSurface,
-  spacingFluidLg,
-  spacingFluidMd,
-  spacingFluidSm,
-  spacingFluidXs,
-  spacingStaticSm,
-} from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 
 // public css variables
@@ -49,23 +50,23 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
   return getCss({
     '@global': {
       '@keyframes slide-up-mobile': {
-        from: { transform: `translate3d(0,${spacingFluidMd},0)` },
+        from: { transform: `translate3d(0,${ref(spacingFluidMd)},0)` },
         to: { transform: 'translate3d(0,0,0)' },
       },
       // unfortunately, it's not possible to use transform animation like in mobile view
       // because then a new stacking context within scroll container would be initialized
       // causing the slotted scroll container to become invisible
       '@keyframes slide-up-desktop': {
-        from: { marginBlockStart: spacingFluidMd },
+        from: { marginBlockStart: ref(spacingFluidMd) },
         to: { marginBlockStart: '0px' },
       },
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          [cssVarColorPrimary]: colorPrimary,
-          [cssVarColorBackgroundBase]: colorCanvas,
-          [cssVarColorBackgroundSurface]: colorSurface,
-          [cssVarColorBackgroundShading]: colorBackdrop,
+          [cssVarColorPrimary]: ref(colorPrimary),
+          [cssVarColorBackgroundBase]: ref(colorCanvas),
+          [cssVarColorBackgroundSurface]: ref(colorSurface),
+          [cssVarColorBackgroundShading]: ref(colorBackdrop),
           // [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           [cssVarColorBackgroundScroller]: 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           ...hostHiddenStyles,
@@ -74,7 +75,7 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
       ...preventFoucOfNestedElementsStyles,
       '::slotted(*)': {
         [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
-        [cssVariableGap]: spacingFluidXs, // reset css variable to prevent inheritance
+        [cssVariableGap]: ref(spacingFluidXs), // reset css variable to prevent inheritance
       },
       dialog: {
         all: 'unset',
@@ -85,14 +86,14 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
         ...(isOpen
           ? {
               visibility: 'inherit',
-              WebkitBackdropFilter: blurFrosted,
-              backdropFilter: blurFrosted,
-              background: `var(${cssVarColorBackgroundShading})`,
+              WebkitBackdropFilter: ref(blurFrosted),
+              backdropFilter: ref(blurFrosted),
+              background: ref(cssVarColorBackgroundShading),
               transition: `${getTransition('background', backdropDurationOpen, easingOpen)}, ${getTransition('backdrop-filter', backdropDurationOpen, easingOpen)}, ${getTransition('-webkit-backdrop-filter', backdropDurationOpen, easingOpen)}`,
             }
           : {
               visibility: 'hidden',
-              transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[backdropDurationClose]}), ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('background', backdropDurationClose, easingClose)}, ${getTransition('backdrop-filter', backdropDurationClose, easingClose)}, ${getTransition('-webkit-backdrop-filter', backdropDurationClose, easingClose)}`,
+              transition: `visibility 0s linear ${ref(cssVariableTransitionDuration, motionDurationMap[backdropDurationClose])}, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('background', backdropDurationClose, easingClose)}, ${getTransition('backdrop-filter', backdropDurationClose, easingClose)}, ${getTransition('-webkit-backdrop-filter', backdropDurationClose, easingClose)}`,
             }),
         '&::backdrop': {
           display: 'none',
@@ -105,14 +106,14 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
             gridArea: '4/2/auto/-2',
             zIndex: 0,
             display: 'grid',
-            gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
-            gap: `var(${cssVariableGap},${spacingFluidXs})`,
+            gridTemplate: ref(cssVariableGridTemplate, 'auto/auto'),
+            gap: ref(cssVariableGap, ref(spacingFluidXs)),
             alignContent: 'start',
             alignItems: 'start',
             boxSizing: 'border-box',
             minHeight: '100%',
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            paddingBlockEnd: spacingFluidLg,
+            paddingBlockEnd: ref(spacingFluidLg),
             ...(isPrimary && {
               animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
             }),
@@ -122,14 +123,14 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
           ...(isPrimary && {
             gridArea: '3/2/auto/-2',
             display: 'grid',
-            gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
-            gap: `var(${cssVariableGap},${isPrimary ? spacingFluidXs : spacingFluidMd})`,
+            gridTemplate: ref(cssVariableGridTemplate, 'auto/auto'),
+            gap: ref(cssVariableGap, isPrimary ? ref(spacingFluidXs) : ref(spacingFluidMd)),
             alignContent: 'start',
             alignItems: 'start',
             boxSizing: 'border-box',
             minHeight: '100%',
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            paddingBlockEnd: spacingFluidLg,
+            paddingBlockEnd: ref(spacingFluidLg),
             animation: getAnimation('slide-up-desktop', 'moderate', 'base'),
           }),
         },
@@ -168,17 +169,17 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
             },
           }),
       [mediaQueryMobile]: {
-        gridTemplate: `${spacingFluidMd} auto ${spacingFluidLg} minmax(0, 1fr)/${spacingFluidLg} auto minmax(0, 1fr) auto ${spacingFluidLg}`,
-        background: `var(${cssVarColorBackgroundBase})`,
+        gridTemplate: `${ref(spacingFluidMd)} auto ${ref(spacingFluidLg)} minmax(0, 1fr)/${ref(spacingFluidLg)} auto minmax(0, 1fr) auto ${ref(spacingFluidLg)}`,
+        background: ref(cssVarColorBackgroundBase),
       },
       [mediaQueryDesktop]: {
         width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
-        gridTemplate: `${spacingFluidMd} auto minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLg} minmax(0, 1fr) ${spacingFluidLg})`,
-        background: `var(${cssVarColorBackgroundBase})`,
+        gridTemplate: `${ref(spacingFluidMd)} auto minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${ref(spacingFluidLg)} minmax(0, 1fr) ${ref(spacingFluidLg)})`,
+        background: ref(cssVarColorBackgroundBase),
         ...(isSecondaryScrollerVisible && {
-          background: `linear-gradient(90deg,var(${cssVarColorBackgroundBase}) 0%,var(${cssVarColorBackgroundBase}) 50%,var(${cssVarColorBackgroundSurface}) 50%,var(${cssVarColorBackgroundSurface}) 100%)`,
+          background: `linear-gradient(90deg,${ref(cssVarColorBackgroundBase)} 0%,${ref(cssVarColorBackgroundBase)} 50%,${ref(cssVarColorBackgroundSurface)} 50%,${ref(cssVarColorBackgroundSurface)} 100%)`,
           '&:dir(rtl)': {
-            background: `linear-gradient(90deg,var(${cssVarColorBackgroundSurface}) 0%,var(${cssVarColorBackgroundSurface}) 50%,var(${cssVarColorBackgroundBase}) 50%,var(${cssVarColorBackgroundBase}) 100%)`,
+            background: `linear-gradient(90deg,${ref(cssVarColorBackgroundSurface)} 0%,${ref(cssVarColorBackgroundSurface)} 50%,${ref(cssVarColorBackgroundBase)} 50%,${ref(cssVarColorBackgroundBase)} 100%)`,
           },
         }),
       },
@@ -192,21 +193,21 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
       '&::before': {
         [mediaQueryMobile]: {
           gridArea: '1/1/-1/-1',
-          background: `var(${cssVarColorBackgroundBase})`,
+          background: ref(cssVarColorBackgroundBase),
         },
         [mediaQueryDesktop]: {
           gridArea: '1/1/-1/4',
-          background: `var(${cssVarColorBackgroundBase})`,
+          background: ref(cssVarColorBackgroundBase),
         },
       },
       '&::after': {
         [mediaQueryMobile]: {
           gridArea: '1/1/-1/-1',
-          background: `var(${cssVarColorBackgroundBase})`,
+          background: ref(cssVarColorBackgroundBase),
         },
         [mediaQueryDesktop]: {
           gridArea: '1/4/-1/-1',
-          background: `var(${cssVarColorBackgroundSurface})`,
+          background: ref(cssVarColorBackgroundSurface),
         },
       },
     },
@@ -216,7 +217,7 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
       // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
       // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
       // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
-      background: `var(${cssVarColorBackgroundScroller})`,
+      background: ref(cssVarColorBackgroundScroller),
       [mediaQueryMobile]: {
         ...(!isSecondaryScrollerVisible && {
           gridArea: '1/1/-1/-1',
@@ -229,7 +230,7 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
             top: 0,
             gridArea: '1/1/4/-1',
             zIndex: 1,
-            background: `linear-gradient(180deg,var(${cssVarColorBackgroundBase}) 0%,var(${cssVarColorBackgroundBase}) 65%,transparent 100%)`,
+            background: `linear-gradient(180deg,${ref(cssVarColorBackgroundBase)} 0%,${ref(cssVarColorBackgroundBase)} 65%,transparent 100%)`,
           },
         }),
       },
@@ -263,9 +264,9 @@ export const getComponentCss = (isOpen: boolean, isPrimary: boolean, isSecondary
         '--p-color-frosted': colorFrostedDark,
         '--p-color-frosted-soft': colorFrostedSoftDark,
         position: 'absolute',
-        insetInlineStart: `calc(100% + ${spacingFluidSm})`,
-        insetBlockStart: spacingFluidSm,
-        padding: spacingStaticSm,
+        insetInlineStart: `calc(100% + ${ref(spacingFluidSm)})`,
+        insetBlockStart: ref(spacingFluidSm),
+        padding: ref(spacingStaticSm),
       },
     },
     back: {

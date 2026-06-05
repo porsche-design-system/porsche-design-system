@@ -1,15 +1,16 @@
-import type { JssStyle, Styles } from 'jss';
-import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
 import {
   colorContrastHigh,
   colorPrimary,
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
+  ref,
   spacingStaticXs,
   typescaleSm,
   typescaleXs,
-} from '../../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import type { JssStyle, Styles } from 'jss';
+import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
 import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
@@ -20,7 +21,7 @@ export const getFunctionalComponentLabelAfterStyles = (): Styles => {
     verticalAlign: 'top',
     '&::slotted(*)': {
       ...addImportantToEachRule({
-        marginInlineStart: spacingStaticXs,
+        marginInlineStart: ref(spacingStaticXs),
       }),
     },
   };
@@ -52,9 +53,9 @@ export const getFunctionalComponentLabelStyles = (
       ...additionalLabelWrapperJssStyle,
     },
     label: {
-      font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+      font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       cursor: isDisabledOrLoading ? 'not-allowed' : 'pointer',
-      color: colorPrimary,
+      color: ref(colorPrimary),
       ...(isDisabledOrLoading && {
         pointerEvents: 'none', // prevents label interaction when disabled or loading
       }),
@@ -69,12 +70,12 @@ export const getFunctionalComponentLabelStyles = (
       // styling for the description
       '&:is(span)': {
         cursor: 'unset',
-        fontSize: typescaleXs,
-        color: colorContrastHigh,
+        fontSize: ref(typescaleXs),
+        color: ref(colorContrastHigh),
         ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, { marginTop: `calc(-1 * ${spacingStaticXs})` })
+          getHiddenTextJssStyle(isHidden, { marginTop: `calc(-1 * ${ref(spacingStaticXs)})` })
         ),
-        marginTop: `calc(-1 * ${spacingStaticXs})`,
+        marginTop: `calc(-1 * ${ref(spacingStaticXs)})`,
       },
       '& > slot[name="label"]::slotted(*)': {
         ...addImportantToEachRule({

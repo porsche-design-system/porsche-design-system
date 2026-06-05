@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Radio Group`: Prevent clicks on `label-after` slot from bubbling to the
+  host element ([#4477](https://github.com/porsche-design-system/porsche-design-system/pull/4477))
+
+## [4.2.0-rc.2] - 2026-06-04
+
 ### Added
 
 - `Tailwind CSS`: CJK `font-family` `:lang()` selectors are available in the theme by default to auto-detect Simplified
@@ -26,6 +33,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Emotion`, `Vanilla Extract` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
   - `fontPorscheNextZhHans`, `fontPorscheNextZhHant`, `fontPorscheNextJa`, `fontPorscheNextKo`: CJK `font-family` tokens
   - `getCJKFontFamilyStyle()`: returns `:lang()` selectors to auto-detect CJK content
+- `Accordion`: `indent` prop to indent the slotted content to be vertically aligned with the text of the summary section
+  ([#4478](https://github.com/porsche-design-system/porsche-design-system/pull/4478))
 
 ### Changed
 
@@ -56,6 +65,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Multi Select Option`: extended types of `value` prop to allow `string | number`
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
+- `Tabs`, `Tabs Bar`, `Link Tile`, `Link Tile Product`, `Button Tile`, `Stepper Horizontal`, `Accordion`, `Popover`,
+  `Flyout`, `Modal`, `Sheet`: aligned `border-radius` with the app and car design system for improved visual coherence
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+- `Tabs Bar`: refined active tab background color to improve visual coherence with the app and vehicle design system
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+- `Tabs`, `Tabs Bar`: height now matches `p-button` and `p-link` when `background="none"` is used, so the visual height
+  stays stable when combined with buttons or links
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
 
 ### Fixed
 
@@ -70,8 +87,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   content ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
 - Added `semibold` alias for Arabic Porsche Next, mapped to `bold` as a fallback since the font only provides `regular`
   and `bold` weights. ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
-- `Radio Group`: Prevent clicks on `label-after` slot from bubbling to the
-  host element ([#4477](https://github.com/porsche-design-system/porsche-design-system/pull/4477))
+- `Flyout`, `Modal`, `Sheet`: the dismiss button now has a solid background to ensure sufficient contrast and a11y
+  compliance when placed above content such as media elements
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+- `Flyout`, `Modal`, `Sheet`: the dialog's rounded corners now clip slotted content (e.g. media elements) so it no
+  longer overflows the dialog's `border-radius`
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+
+### Removed
+
+- Legacy border-radius stylesheet `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`, since
+  visual coherence between web, app and car design system is now achieved
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
 
 ## [4.2.0-rc.1] - 2026-05-18
 

@@ -1,5 +1,5 @@
+import { fontPorscheNext, fontWeightNormal, leadingNormal, ref, typescaleSm } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
-import { fontPorscheNext, fontWeightNormal, leadingNormal, typescaleSm } from '../../../styles/css-variables';
 import { sizeMap } from '../../../styles/maps';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
@@ -18,7 +18,7 @@ export const getComponentCss = (size: BreakpointCustomizable<StepperHorizontalSi
     },
     scroller: {
       placeSelf: 'flex-start', // ensures scroller doesn't get stretched in x- or y-axis in case the stepper-horizontal is taller than the scroller (e.g. when placed in flex or grid context)
-      font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+      font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       ...buildResponsiveStyles(size, (s: StepperHorizontalSize) => ({ fontSize: sizeMap[s] })),
     },
   });
