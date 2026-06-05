@@ -390,16 +390,19 @@ test.describe('label-after slot', () => {
     await page.locator('#label-after-btn').click();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'change')).counter, 'after label-after click').toBe(0);
-    expect(await getRadioGroupValue(page)).toBe('b');
+    await expect
+      .poll(async () => (await getEventSummary(host, 'change')).counter, { message: 'after label-after click' })
+      .toBe(0);
+    await expect(host).toHaveJSProperty('value', 'b');
 
     await getRadioGroupOption(page, 1).evaluate((option) => {
       option.shadowRoot?.querySelector('label')?.click();
     });
-    await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'change')).counter, 'after label click').toBe(1);
-    expect(await getRadioGroupValue(page)).toBe('a');
+    await expect
+      .poll(async () => (await getEventSummary(host, 'change')).counter, { message: 'after label click' })
+      .toBe(1);
+    await expect(host).toHaveJSProperty('value', 'a');
   });
 });
 
