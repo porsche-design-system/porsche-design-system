@@ -7,7 +7,8 @@ import type { CssNode } from './types';
  */
 export const renderNode = (node: CssNode): string => {
   if ('property' in node) {
-    return `${node.property}: ${node.value};`;
+    const comment = 'comment' in node && node.comment ? `/* ${node.comment} */\n` : '';
+    return `${comment}${node.property}: ${node.value};`;
   }
   if ('selector' in node) {
     const body = node.raw !== undefined ? node.raw : (node.declarations ?? []).map(renderNode).join('\n');
@@ -15,4 +16,3 @@ export const renderNode = (node: CssNode): string => {
   }
   return node.raw;
 };
-

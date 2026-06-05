@@ -10,7 +10,7 @@ import { schemeRootFallback, schemeUtilities } from './scheme';
 import { shadowThemeVariables } from './shadow';
 import { spacingFluidThemeVariables, spacingStaticThemeVariables } from './spacing';
 import type { TailwindCssMeta } from './types';
-import { fontFamilyThemeVariables, fontWeightThemeVariables, leadingThemeVariables, textSizeNodes } from './typography';
+import { typographyThemeVariables } from './typography';
 import { tailwindUtilities } from './utilities';
 
 export * from './blur';
@@ -43,28 +43,23 @@ export const tailwindCssMeta: TailwindCssMeta = {
     {
       selector: '@theme',
       declarations: [
-        { raw: '/* Reset */' },
-        { raw: '--breakpoint-*: initial;' },
-        { raw: '--color-*: initial;' },
-        { raw: '--radius-*: initial;' },
-        { raw: '--shadow-*: initial;' },
-        { raw: '--text-*: initial;' },
-        { raw: '/* Color */' },
-        { raw: '--color-black: #000;' },
-        { raw: '--color-white: #fff;' },
+        {
+          raw: `
+  /* Reset */
+  --breakpoint-*: initial;
+  --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --text-*: initial;
+
+  /* Color */
+  --color-black: #000;
+  --color-white: #fff;
+          `,
+        },
         ...colorThemeVariables,
         { raw: '/* Typography */' },
-        {
-          raw: `/*
-    This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next).
-    By pointing it to our dynamic variable, we create a stable link.
-  */`,
-        },
-        ...fontFamilyThemeVariables,
-        { raw: '--font-sans: --theme(--font-porsche-next);' },
-        ...fontWeightThemeVariables,
-        ...leadingThemeVariables,
-        ...textSizeNodes,
+        ...typographyThemeVariables,
         { raw: '/* Breakpoint */' },
         ...breakpointThemeVariables,
         { raw: '/* Spacing */' },
