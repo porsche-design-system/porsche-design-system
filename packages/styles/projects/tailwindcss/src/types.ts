@@ -71,7 +71,7 @@ export type TailwindThemeVariableGroup =
  */
 export type TailwindThemeVariable = CssDeclaration & {
   /** The Tailwind utility classes generated from this variable, e.g. `.bg-canvas`. */
-  classes: string[];
+  classes?: string[];
   /** Human readable description rendered in the docs and LLM context. */
   description: string;
   /** Grouping used to organize the documentation tables. */

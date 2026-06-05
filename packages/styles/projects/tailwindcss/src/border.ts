@@ -9,6 +9,7 @@ import {
   radiusXl,
   radiusXs,
 } from '@porsche-design-system/tokens';
+import { blurThemeVariables } from './blur';
 import { sizeLabel } from './shared';
 import type { TailwindThemeVariable } from './types';
 
@@ -36,3 +37,29 @@ export const radiusThemeVariables: TailwindThemeVariable[] = (
       : `Applies a **${sizeLabel[size]}** \`border-radius\`.`,
   group: 'border',
 }));
+
+// Border — width.
+export const borderWidthThemeVariables: TailwindThemeVariable[] = [
+  {
+    property: '--default-border-width',
+    value: '1px',
+    description: 'Default border width applied globally via the Tailwind `@theme` block.',
+    group: 'border',
+  },
+  {
+    property: '--border-width-regular',
+    value: '2px',
+    comment: 'alias (deprecated)',
+    description: 'Alias for the regular (2 px) border width. **Deprecated** — prefer `--default-border-width`.',
+    group: 'border',
+  },
+  {
+    property: '--border-width-thin',
+    value: '1px',
+    comment: 'alias (deprecated)',
+    description: 'Alias for the thin (1 px) border width. **Deprecated** — prefer `--default-border-width`.',
+    group: 'border',
+  },
+];
+
+export const borderThemeVariables: TailwindThemeVariable[] = [...radiusThemeVariables, ...borderWidthThemeVariables];

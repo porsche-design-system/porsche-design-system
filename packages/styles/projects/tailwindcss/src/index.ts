@@ -1,6 +1,6 @@
 import { durationSm, easeInOut } from '@porsche-design-system/tokens';
 import { blurThemeVariables } from './blur';
-import { radiusThemeVariables } from './border';
+import { borderThemeVariables } from './border';
 import { breakpointThemeVariables } from './breakpoint';
 import { colorThemeVariables } from './color';
 import { fontBaseLayer } from './font';
@@ -8,7 +8,7 @@ import { durationThemeVariables, easeThemeVariables } from './motion';
 import { renderNode } from './render';
 import { schemeRootFallback, schemeUtilities } from './scheme';
 import { shadowThemeVariables } from './shadow';
-import { spacingFluidThemeVariables, spacingStaticThemeVariables } from './spacing';
+import { spacingThemeVariables } from './spacing';
 import type { TailwindCssMeta } from './types';
 import { typographyThemeVariables } from './typography';
 import { tailwindUtilities } from './utilities';
@@ -63,13 +63,9 @@ export const tailwindCssMeta: TailwindCssMeta = {
         { raw: '/* Breakpoint */' },
         ...breakpointThemeVariables,
         { raw: '/* Spacing */' },
-        ...spacingFluidThemeVariables,
-        ...spacingStaticThemeVariables,
+        ...spacingThemeVariables,
         { raw: '/* Border */' },
-        ...radiusThemeVariables,
-        { raw: '--default-border-width: 1px;' },
-        { raw: '--border-width-regular: 2px; /* alias (deprecated) */' },
-        { raw: '--border-width-thin: 1px; /* alias (deprecated) */' },
+        ...borderThemeVariables,
         { raw: '/* Blur */' },
         ...blurThemeVariables,
         { raw: '/* Shadow */' },

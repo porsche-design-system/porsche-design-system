@@ -54,3 +54,8 @@ export const spacingStaticThemeVariables: TailwindThemeVariable[] = (
   description: `Applies the **${sizeLabel[size]} static** spacing.`,
   group: 'static',
 }));
+
+export const spacingThemeVariables: TailwindThemeVariable[] = [
+  ...spacingFluidThemeVariables,
+  ...spacingStaticThemeVariables,
+];
