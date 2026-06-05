@@ -1,790 +1,119 @@
-import {
-  blurFrosted,
-  breakpoint2Xl,
-  breakpointLg,
-  breakpointMd,
-  breakpointSm,
-  breakpointXl,
-  breakpointXs,
-  colorBackdrop,
-  colorBackdropDark,
-  colorBackdropLight,
-  colorCanvas,
-  colorCanvasDark,
-  colorCanvasLight,
-  colorContrastHigh,
-  colorContrastHighDark,
-  colorContrastHigher,
-  colorContrastHigherDark,
-  colorContrastHigherLight,
-  colorContrastHighLight,
-  colorContrastLow,
-  colorContrastLowDark,
-  colorContrastLower,
-  colorContrastLowerDark,
-  colorContrastLowerLight,
-  colorContrastLowLight,
-  colorContrastMedium,
-  colorContrastMediumDark,
-  colorContrastMediumLight,
-  colorError,
-  colorErrorDark,
-  colorErrorFrosted,
-  colorErrorFrostedDark,
-  colorErrorFrostedLight,
-  colorErrorFrostedSoft,
-  colorErrorFrostedSoftDark,
-  colorErrorFrostedSoftLight,
-  colorErrorLight,
-  colorErrorLow,
-  colorErrorLowDark,
-  colorErrorLowLight,
-  colorErrorMedium,
-  colorErrorMediumDark,
-  colorErrorMediumLight,
-  colorFocus,
-  colorFocusDark,
-  colorFocusLight,
-  colorFrosted,
-  colorFrostedDark,
-  colorFrostedLight,
-  colorFrostedSoft,
-  colorFrostedSoftDark,
-  colorFrostedSoftLight,
-  colorFrostedStrong,
-  colorFrostedStrongDark,
-  colorFrostedStrongLight,
-  colorInfo,
-  colorInfoDark,
-  colorInfoFrosted,
-  colorInfoFrostedDark,
-  colorInfoFrostedLight,
-  colorInfoFrostedSoft,
-  colorInfoFrostedSoftDark,
-  colorInfoFrostedSoftLight,
-  colorInfoLight,
-  colorInfoLow,
-  colorInfoLowDark,
-  colorInfoLowLight,
-  colorInfoMedium,
-  colorInfoMediumDark,
-  colorInfoMediumLight,
-  colorPrimary,
-  colorPrimaryDark,
-  colorPrimaryLight,
-  colorSuccess,
-  colorSuccessDark,
-  colorSuccessFrosted,
-  colorSuccessFrostedDark,
-  colorSuccessFrostedLight,
-  colorSuccessFrostedSoft,
-  colorSuccessFrostedSoftDark,
-  colorSuccessFrostedSoftLight,
-  colorSuccessLight,
-  colorSuccessLow,
-  colorSuccessLowDark,
-  colorSuccessLowLight,
-  colorSuccessMedium,
-  colorSuccessMediumDark,
-  colorSuccessMediumLight,
-  colorSurface,
-  colorSurfaceDark,
-  colorSurfaceLight,
-  colorWarning,
-  colorWarningDark,
-  colorWarningFrosted,
-  colorWarningFrostedDark,
-  colorWarningFrostedLight,
-  colorWarningFrostedSoft,
-  colorWarningFrostedSoftDark,
-  colorWarningFrostedSoftLight,
-  colorWarningLight,
-  colorWarningLow,
-  colorWarningLowDark,
-  colorWarningLowLight,
-  colorWarningMedium,
-  colorWarningMediumDark,
-  colorWarningMediumLight,
-  durationLg,
-  durationMd,
-  durationSm,
-  durationXl,
-  easeIn,
-  easeInOut,
-  easeOut,
-  fontPorscheNext,
-  fontPorscheNextJa,
-  fontPorscheNextKo,
-  fontPorscheNextZhHans,
-  fontPorscheNextZhHant,
-  fontWeightBold,
-  fontWeightNormal,
-  fontWeightSemibold,
-  gradientStopsFadeDark,
-  leadingNormal,
-  radius2Xl,
-  radius3Xl,
-  radius4Xl,
-  radiusFull,
-  radiusLg,
-  radiusMd,
-  radiusSm,
-  radiusXl,
-  radiusXs,
-  shadowLg,
-  shadowMd,
-  shadowSm,
-  spacingFluid2Xl,
-  spacingFluidLg,
-  spacingFluidMd,
-  spacingFluidSm,
-  spacingFluidXl,
-  spacingFluidXs,
-  spacingStatic2Xl,
-  spacingStatic2Xs,
-  spacingStaticLg,
-  spacingStaticMd,
-  spacingStaticSm,
-  spacingStaticXl,
-  spacingStaticXs,
-  typescale2Xl,
-  typescale2Xs,
-  typescale3Xl,
-  typescale4Xl,
-  typescale5Xl,
-  typescaleLg,
-  typescaleMd,
-  typescaleSm,
-  typescaleXl,
-  typescaleXs,
-} from '@porsche-design-system/tokens';
+import { durationSm, easeInOut } from '@porsche-design-system/tokens';
+import { blurThemeVariables } from './blur';
+import { radiusThemeVariables } from './border';
+import { breakpointThemeVariables } from './breakpoint';
+import { colorThemeVariables } from './color';
+import { fontBaseLayer } from './font';
+import { durationThemeVariables, easeThemeVariables } from './motion';
+import { renderNode } from './render';
+import { schemeRootFallback, schemeUtilities } from './scheme';
+import { shadowThemeVariables } from './shadow';
+import { spacingFluidThemeVariables, spacingStaticThemeVariables } from './spacing';
+import type { TailwindCssMeta } from './types';
+import { fontFamilyThemeVariables, fontWeightThemeVariables, leadingThemeVariables, textSizeNodes } from './typography';
+import { tailwindUtilities } from './utilities';
 
-export const getTailwindcssTheme = () => {
-  // Fallback variable assignments for browsers without `light-dark()` support.
-  // Used both for the `:root` default and inside `@utility scheme-*` blocks so
-  // that Tailwind applies its configured prefix (e.g. `tw:scheme-dark`).
-  const colorLightVars = `--_color-focus-dynamic: ${colorFocusLight};
---_color-canvas-dynamic: ${colorCanvasLight};
---_color-surface-dynamic: ${colorSurfaceLight};
---_color-frosted-dynamic: ${colorFrostedLight};
---_color-frosted-soft-dynamic: ${colorFrostedSoftLight};
---_color-frosted-strong-dynamic: ${colorFrostedStrongLight};
---_color-backdrop-dynamic: ${colorBackdropLight};
---_color-contrast-lower-dynamic: ${colorContrastLowerLight};
---_color-contrast-low-dynamic: ${colorContrastLowLight};
---_color-contrast-medium-dynamic: ${colorContrastMediumLight};
---_color-contrast-high-dynamic: ${colorContrastHighLight};
---_color-contrast-higher-dynamic: ${colorContrastHigherLight};
---_color-primary-dynamic: ${colorPrimaryLight};
---_color-success-dynamic: ${colorSuccessLight};
---_color-success-low-dynamic: ${colorSuccessLowLight};
---_color-success-medium-dynamic: ${colorSuccessMediumLight};
---_color-success-frosted-dynamic: ${colorSuccessFrostedLight};
---_color-success-frosted-soft-dynamic: ${colorSuccessFrostedSoftLight};
---_color-warning-dynamic: ${colorWarningLight};
---_color-warning-low-dynamic: ${colorWarningLowLight};
---_color-warning-medium-dynamic: ${colorWarningMediumLight};
---_color-warning-frosted-dynamic: ${colorWarningFrostedLight};
---_color-warning-frosted-soft-dynamic: ${colorWarningFrostedSoftLight};
---_color-error-dynamic: ${colorErrorLight};
---_color-error-low-dynamic: ${colorErrorLowLight};
---_color-error-medium-dynamic: ${colorErrorMediumLight};
---_color-error-frosted-dynamic: ${colorErrorFrostedLight};
---_color-error-frosted-soft-dynamic: ${colorErrorFrostedSoftLight};
---_color-info-dynamic: ${colorInfoLight};
---_color-info-low-dynamic: ${colorInfoLowLight};
---_color-info-medium-dynamic: ${colorInfoMediumLight};
---_color-info-frosted-dynamic: ${colorInfoFrostedLight};
---_color-info-frosted-soft-dynamic: ${colorInfoFrostedSoftLight};`;
+export * from './blur';
+export * from './border';
+export * from './breakpoint';
+export * from './color';
+export * from './font';
+export * from './motion';
+export * from './render';
+export * from './scheme';
+export * from './shadow';
+export * from './spacing';
+// Public API — types and the documented theme variables / utilities (single
+// source for the generated CSS, the storefront docs and the LLM context).
+export * from './types';
+export * from './typography';
+export * from './utilities';
 
-  const colorDarkVars = `--_color-focus-dynamic: ${colorFocusDark};
---_color-canvas-dynamic: ${colorCanvasDark};
---_color-surface-dynamic: ${colorSurfaceDark};
---_color-frosted-dynamic: ${colorFrostedDark};
---_color-frosted-soft-dynamic: ${colorFrostedSoftDark};
---_color-frosted-strong-dynamic: ${colorFrostedStrongDark};
---_color-backdrop-dynamic: ${colorBackdropDark};
---_color-contrast-lower-dynamic: ${colorContrastLowerDark};
---_color-contrast-low-dynamic: ${colorContrastLowDark};
---_color-contrast-medium-dynamic: ${colorContrastMediumDark};
---_color-contrast-high-dynamic: ${colorContrastHighDark};
---_color-contrast-higher-dynamic: ${colorContrastHigherDark};
---_color-primary-dynamic: ${colorPrimaryDark};
---_color-success-dynamic: ${colorSuccessDark};
---_color-success-low-dynamic: ${colorSuccessLowDark};
---_color-success-medium-dynamic: ${colorSuccessMediumDark};
---_color-success-frosted-dynamic: ${colorSuccessFrostedDark};
---_color-success-frosted-soft-dynamic: ${colorSuccessFrostedSoftDark};
---_color-warning-dynamic: ${colorWarningDark};
---_color-warning-low-dynamic: ${colorWarningLowDark};
---_color-warning-medium-dynamic: ${colorWarningMediumDark};
---_color-warning-frosted-dynamic: ${colorWarningFrostedDark};
---_color-warning-frosted-soft-dynamic: ${colorWarningFrostedSoftDark};
---_color-error-dynamic: ${colorErrorDark};
---_color-error-low-dynamic: ${colorErrorLowDark};
---_color-error-medium-dynamic: ${colorErrorMediumDark};
---_color-error-frosted-dynamic: ${colorErrorFrostedDark};
---_color-error-frosted-soft-dynamic: ${colorErrorFrostedSoftDark};
---_color-info-dynamic: ${colorInfoDark};
---_color-info-low-dynamic: ${colorInfoLowDark};
---_color-info-medium-dynamic: ${colorInfoMediumDark};
---_color-info-frosted-dynamic: ${colorInfoFrostedDark};
---_color-info-frosted-soft-dynamic: ${colorInfoFrostedSoftDark};`;
-
-  return `@theme {
-  /* Reset */
-  --breakpoint-*: initial;
-  --color-*: initial;
-  --radius-*: initial;
-  --shadow-*: initial;
-  --text-*: initial;
-
-  /* Color */
-  --color-black: #000;
-  --color-white: #fff;
-
-  --color-focus: var(--_color-focus-dynamic, ${colorFocus});
-  --color-canvas: var(--_color-canvas-dynamic, ${colorCanvas});
-  --color-surface: var(--_color-surface-dynamic, ${colorSurface});
-  --color-frosted: var(--_color-frosted-dynamic, ${colorFrosted});
-  --color-frosted-soft: var(--_color-frosted-soft-dynamic, ${colorFrostedSoft});
-  --color-frosted-strong: var(--_color-frosted-strong-dynamic, ${colorFrostedStrong});
-  --color-backdrop: var(--_color-backdrop-dynamic, ${colorBackdrop});
-  --color-contrast-lower: var(--_color-contrast-lower-dynamic, ${colorContrastLower});
-  --color-contrast-low: var(--_color-contrast-low-dynamic, ${colorContrastLow});
-  --color-contrast-medium: var(--_color-contrast-medium-dynamic, ${colorContrastMedium});
-  --color-contrast-high: var(--_color-contrast-high-dynamic, ${colorContrastHigh});
-  --color-contrast-higher: var(--_color-contrast-higher-dynamic, ${colorContrastHigher});
-  --color-primary: var(--_color-primary-dynamic, ${colorPrimary});
-  --color-success: var(--_color-success-dynamic, ${colorSuccess});
-  --color-success-low: var(--_color-success-low-dynamic, ${colorSuccessLow});
-  --color-success-medium: var(--_color-success-medium-dynamic, ${colorSuccessMedium});
-  --color-success-frosted: var(--_color-success-frosted-dynamic, ${colorSuccessFrosted});
-  --color-success-frosted-soft: var(--_color-success-frosted-soft-dynamic, ${colorSuccessFrostedSoft});
-  --color-warning: var(--_color-warning-dynamic, ${colorWarning});
-  --color-warning-low: var(--_color-warning-low-dynamic, ${colorWarningLow});
-  --color-warning-medium: var(--_color-warning-medium-dynamic, ${colorWarningMedium});
-  --color-warning-frosted: var(--_color-warning-frosted-dynamic, ${colorWarningFrosted});
-  --color-warning-frosted-soft: var(--_color-warning-frosted-soft-dynamic, ${colorWarningFrostedSoft});
-  --color-error: var(--_color-error-dynamic, ${colorError});
-  --color-error-low: var(--_color-error-low-dynamic, ${colorErrorLow});
-  --color-error-medium: var(--_color-error-medium-dynamic, ${colorErrorMedium});
-  --color-error-frosted: var(--_color-error-frosted-dynamic, ${colorErrorFrosted});
-  --color-error-frosted-soft: var(--_color-error-frosted-soft-dynamic, ${colorErrorFrostedSoft});
-  --color-info: var(--_color-info-dynamic, ${colorInfo});
-  --color-info-low: var(--_color-info-low-dynamic, ${colorInfoLow});
-  --color-info-medium: var(--_color-info-medium-dynamic, ${colorInfoMedium});
-  --color-info-frosted: var(--_color-info-frosted-dynamic, ${colorInfoFrosted});
-  --color-info-frosted-soft: var(--_color-info-frosted-soft-dynamic, ${colorInfoFrostedSoft});
-
-  /* Typography */
-
-  /*
+// The complete Tailwind CSS theme described as data. `meta` is a single CssNode
+// tree where everything comes together: the `@theme` block (documented theme
+// variables interleaved with the non-documented infrastructure — resets, aliases,
+// companions, keyframes — via `raw` nodes), the font base layer, the scheme
+// fallback + `@utility` blocks and the documented utilities. Prettier normalizes
+// spacing afterwards, so no manual blank-line separators are needed.
+export const tailwindCssMeta: TailwindCssMeta = {
+  file: 'index.css',
+  description:
+    'The complete Tailwind CSS theme: the `@theme` block of design tokens, the locale-aware font base layer, the color-scheme fallback with its `scheme-*` utilities and the documented Porsche Design System utilities.',
+  meta: [
+    {
+      selector: '@theme',
+      declarations: [
+        { raw: '/* Reset */' },
+        { raw: '--breakpoint-*: initial;' },
+        { raw: '--color-*: initial;' },
+        { raw: '--radius-*: initial;' },
+        { raw: '--shadow-*: initial;' },
+        { raw: '--text-*: initial;' },
+        { raw: '/* Color */' },
+        { raw: '--color-black: #000;' },
+        { raw: '--color-white: #fff;' },
+        ...colorThemeVariables,
+        { raw: '/* Typography */' },
+        {
+          raw: `/*
     This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next).
     By pointing it to our dynamic variable, we create a stable link.
-  */
-  --font-porsche-next: var(--_font-porsche-next-dynamic);
-  --font-sans: --theme(--font-porsche-next);
-
-  --font-weight-normal: ${fontWeightNormal};
-  --font-weight-semibold: ${fontWeightSemibold};
-  --font-weight-bold: ${fontWeightBold};
-
-  --leading-normal: ${leadingNormal};
-
-  --text-2xs: ${typescale2Xs};
-  --text-2xs--line-height: ${leadingNormal};
-  --text-xs: ${typescaleXs};
-  --text-xs--line-height: ${leadingNormal};
-  --text-base: ${typescaleSm};
-  --text-base--line-height: ${leadingNormal};
-  --text-sm: ${typescaleSm};
-  --text-sm--line-height: ${leadingNormal};
-  --text-md: ${typescaleMd};
-  --text-md--line-height: ${leadingNormal};
-  --text-lg: ${typescaleLg};
-  --text-lg--line-height: ${leadingNormal};
-  --text-xl: ${typescaleXl};
-  --text-xl--line-height: ${leadingNormal};
-  --text-2xl: ${typescale2Xl};
-  --text-2xl--line-height: ${leadingNormal};
-  --text-3xl: ${typescale3Xl};
-  --text-3xl--line-height: ${leadingNormal};
-  --text-4xl: ${typescale4Xl};
-  --text-4xl--line-height: ${leadingNormal};
-  --text-5xl: ${typescale5Xl};
-  --text-5xl--line-height: ${leadingNormal};
-
-  /* Breakpoint */
-  --breakpoint-xs: ${breakpointXs}px;
-  --breakpoint-sm: ${breakpointSm}px;
-  --breakpoint-md: ${breakpointMd}px;
-  --breakpoint-lg: ${breakpointLg}px;
-  --breakpoint-xl: ${breakpointXl}px;
-  --breakpoint-2xl: ${breakpoint2Xl}px;
-
-  /* Spacing */
-  --spacing-fluid-xs: ${spacingFluidXs};
-  --spacing-fluid-sm: ${spacingFluidSm};
-  --spacing-fluid-md: ${spacingFluidMd};
-  --spacing-fluid-lg: ${spacingFluidLg};
-  --spacing-fluid-xl: ${spacingFluidXl};
-  --spacing-fluid-2xl: ${spacingFluid2Xl};
-
-  --spacing-static-2xs: ${spacingStatic2Xs};
-  --spacing-static-xs: ${spacingStaticXs};
-  --spacing-static-sm: ${spacingStaticSm};
-  --spacing-static-md: ${spacingStaticMd};
-  --spacing-static-lg: ${spacingStaticLg};
-  --spacing-static-xl: ${spacingStaticXl};
-  --spacing-static-2xl: ${spacingStatic2Xl};
-
-  /* Border */
-  --radius-xs: ${radiusXs};
-  --radius-sm: ${radiusSm};
-  --radius-md: ${radiusMd};
-  --radius-lg: ${radiusLg};
-  --radius-xl: ${radiusXl};
-  --radius-2xl: ${radius2Xl};
-  --radius-3xl: ${radius3Xl};
-  --radius-4xl: ${radius4Xl};
-  --radius-full: ${radiusFull};
-
-  --default-border-width: 1px;
-  --border-width-regular: 2px; /* alias (deprecated) */
-  --border-width-thin: 1px; /* alias (deprecated) */
-
-  /* Blur */
-  --blur-frosted: ${blurFrosted.replace(/blur\((.*)\)/, '$1')};
-
-  /* Shadow */
-  --shadow-sm: ${shadowSm};
-  --shadow-low: --theme(--shadow-sm); /* alias (deprecated) */
-  --shadow-md: ${shadowMd};
-  --shadow-medium: --theme(--shadow-md); /* alias (deprecated) */
-  --shadow-lg: ${shadowLg};
-  --shadow-high: --theme(--shadow-lg); /* alias (deprecated) */
-
-  /* Outline */
-  --default-outline-width: 2px;
-
-  /* Motion */
-  --default-transition-timing-function: ${easeInOut};
-  --ease-in-out: ${easeInOut};
-  --ease-in: ${easeIn};
-  --ease-out: ${easeOut};
-
-  --default-transition-duration: ${durationSm};
-  --transition-duration-sm: ${durationSm};
-  --transition-duration-short: --theme(--transition-duration-sm); /* alias (deprecated) */
-  --transition-duration-md: ${durationMd};
-  --transition-duration-moderate: --theme(--transition-duration-md); /* alias (deprecated) */
-  --transition-duration-lg: ${durationLg};
-  --transition-duration-long: --theme(--transition-duration-lg); /* alias (deprecated) */
-  --transition-duration-xl: ${durationXl};
-  --transition-duration-very-long: --theme(--transition-duration-xl); /* alias (deprecated) */
-
-  /* Animation */
-  --animate-skeleton: skeleton --theme(--transition-duration-xl) --theme(--ease-in-out) infinite;
-
-  @keyframes skeleton {
-    from {
-      background-position-x: 100%;
-    }
-    to {
-      background-position-x: -100%;
-    }
+  */`,
+        },
+        ...fontFamilyThemeVariables,
+        { raw: '--font-sans: --theme(--font-porsche-next);' },
+        ...fontWeightThemeVariables,
+        ...leadingThemeVariables,
+        ...textSizeNodes,
+        { raw: '/* Breakpoint */' },
+        ...breakpointThemeVariables,
+        { raw: '/* Spacing */' },
+        ...spacingFluidThemeVariables,
+        ...spacingStaticThemeVariables,
+        { raw: '/* Border */' },
+        ...radiusThemeVariables,
+        { raw: '--default-border-width: 1px;' },
+        { raw: '--border-width-regular: 2px; /* alias (deprecated) */' },
+        { raw: '--border-width-thin: 1px; /* alias (deprecated) */' },
+        { raw: '/* Blur */' },
+        ...blurThemeVariables,
+        { raw: '/* Shadow */' },
+        ...shadowThemeVariables,
+        { raw: '--shadow-low: --theme(--shadow-sm); /* alias (deprecated) */' },
+        { raw: '--shadow-medium: --theme(--shadow-md); /* alias (deprecated) */' },
+        { raw: '--shadow-high: --theme(--shadow-lg); /* alias (deprecated) */' },
+        { raw: '/* Outline */' },
+        { raw: '--default-outline-width: 2px;' },
+        { raw: '/* Motion */' },
+        { raw: `--default-transition-timing-function: ${easeInOut};` },
+        ...easeThemeVariables,
+        { raw: `--default-transition-duration: ${durationSm};` },
+        ...durationThemeVariables,
+        { raw: '--transition-duration-short: --theme(--transition-duration-sm); /* alias (deprecated) */' },
+        { raw: '--transition-duration-moderate: --theme(--transition-duration-md); /* alias (deprecated) */' },
+        { raw: '--transition-duration-long: --theme(--transition-duration-lg); /* alias (deprecated) */' },
+        { raw: '--transition-duration-very-long: --theme(--transition-duration-xl); /* alias (deprecated) */' },
+        { raw: '/* Animation */' },
+        { raw: '--animate-skeleton: skeleton --theme(--transition-duration-xl) --theme(--ease-in-out) infinite;' },
+        {
+          raw: `@keyframes skeleton {
+  from {
+    background-position-x: 100%;
   }
-}
-
-@layer base {
-  /*
-     Tailwind v4 won't add a prefix to variables defined outside the @theme block.
-     We override the "Bridge Variable". Since the Tailwind theme variable
-     points here, the font will update even if the utility class is prefixed.
-  */
-
-  :root, :host {
-    --_font-porsche-next-dynamic: ${fontPorscheNext};
+  to {
+    background-position-x: -100%;
   }
-
-  /* Simplified Chinese */
-  :lang(zh-Hans),
-  :lang(zh-CN),
-  :lang(zh-SG) {
-    --_font-porsche-next-dynamic: ${fontPorscheNextZhHans};
-  }
-
-  /* Traditional Chinese */
-  :lang(zh-Hant),
-  :lang(zh-TW),
-  :lang(zh-HK),
-  :lang(zh-MO) {
-    --_font-porsche-next-dynamic: ${fontPorscheNextZhHant};
-  }
-
-  /* Japanese */
-  :lang(ja) {
-    --_font-porsche-next-dynamic: ${fontPorscheNextJa};
-  }
-
-  /* Korean */
-  :lang(ko) {
-    --_font-porsche-next-dynamic: ${fontPorscheNextKo};
-  }
-}
-
-@layer base {
-  /*
-    Fallback for browsers without light-dark() support.
-    The :root rule provides defaults; the @utility scheme-* blocks below
-    handle per-scheme overrides via class selectors. Defining them as utilities
-    (instead of plain class selectors) ensures Tailwind applies its configured
-    prefix (e.g. tw:scheme-dark).
-  */
-
-  @supports not (color: light-dark(white, black)) {
-    :root, :host {
-      ${colorLightVars}
-    }
-  }
-}
-
-@utility scheme-light {
-  @supports not (color: light-dark(white, black)) {
-    ${colorLightVars}
-  }
-}
-
-@utility scheme-only-light {
-  @supports not (color: light-dark(white, black)) {
-    ${colorLightVars}
-  }
-}
-
-@utility scheme-normal {
-  @supports not (color: light-dark(white, black)) {
-    ${colorLightVars}
-  }
-}
-
-@utility scheme-dark {
-  @supports not (color: light-dark(white, black)) {
-    ${colorDarkVars}
-  }
-}
-
-@utility scheme-only-dark {
-  @supports not (color: light-dark(white, black)) {
-    ${colorDarkVars}
-  }
-}
-
-@utility scheme-light-dark {
-  @supports not (color: light-dark(white, black)) {
-    ${colorLightVars}
-    @media (prefers-color-scheme: dark) {
-      ${colorDarkVars}
-    }
-  }
-}
-
-/* Gradient */
-@utility bg-fade-to-t {
-  background-image: linear-gradient(to top, ${gradientStopsFadeDark});
-}
-
-@utility bg-fade-to-r {
-  background-image: linear-gradient(to right, ${gradientStopsFadeDark});
-}
-
-@utility bg-fade-to-b {
-  background-image: linear-gradient(to bottom, ${gradientStopsFadeDark});
-}
-
-@utility bg-fade-to-l {
-  background-image: linear-gradient(to left, ${gradientStopsFadeDark});
-}
-
-/* Grid */
-@utility grid-template {
-  --pds-internal-grid-safe-zone: max(22px, 10.625vw - 12px);
-  --_pds-grid-col: minmax(0, var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - --theme(--spacing-fluid-md))));
-  display: grid;
-  grid-template-columns: [full-start] var(--_pds-grid-col) [wide-start extended-start basic-start narrow-start] repeat(6, minmax(0, 1fr)) [narrow-end basic-end extended-end wide-end] var(--_pds-grid-col) [full-end];
-  gap: --theme(--spacing-fluid-md);
-  min-width: var(--pds-internal-grid-width-min, 320px);
-  max-width: var(--pds-internal-grid-width-max, 2560px);
-  box-sizing: content-box;
-  margin-inline: var(--pds-internal-grid-margin, 0);
-  padding-inline: calc(50% - var(--pds-internal-grid-margin, 0px) - 2560px / 2);
-
-  @media (width >= ${breakpointSm}px) {
-    --pds-internal-grid-safe-zone: calc(5vw - 16px);
-    grid-template-columns: [full-start] var(--_pds-grid-col) [wide-start] minmax(0, 1fr) [extended-start] minmax(0, 1fr) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(8, minmax(0, 1fr)) [narrow-end] repeat(2, minmax(0, 1fr)) [basic-end] minmax(0, 1fr) [extended-end] minmax(0, 1fr) [wide-end] var(--_pds-grid-col) [full-end];
-  }
-
-  @media (width >= ${breakpoint2Xl}px) {
-    --pds-internal-grid-safe-zone: min(50vw - 880px, 400px);
-  }
-}
-
-/* Grid: Area Narrow */
-@utility col-narrow {
-  --_pds-grid-one-half: 3;
-  grid-column: narrow;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 4;
-  }
-}
-
-@utility col-start-narrow {
-  --_pds-grid-one-half: 3;
-  grid-column-start: narrow-start;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 4;
-  }
-}
-
-@utility col-end-narrow {
-  --_pds-grid-one-half: 3;
-  grid-column-end: narrow-end;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 4;
-  }
-}
-
-/* Grid: Area Basic */
-@utility col-basic {
-  --_pds-grid-one-half: 3;
-  --_pds-grid-one-third: 2;
-  --_pds-grid-two-thirds: 4;
-  grid-column: basic;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 6;
-    --_pds-grid-one-third: 4;
-    --_pds-grid-two-thirds: 8;
-  }
-}
-
-@utility col-start-basic {
-  --_pds-grid-one-half: 3;
-  --_pds-grid-one-third: 2;
-  --_pds-grid-two-thirds: 4;
-  grid-column-start: basic-start;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 6;
-    --_pds-grid-one-third: 4;
-    --_pds-grid-two-thirds: 8;
-  }
-}
-
-@utility col-end-basic {
-  --_pds-grid-one-half: 3;
-  --_pds-grid-one-third: 2;
-  --_pds-grid-two-thirds: 4;
-  grid-column-end: basic-end;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 6;
-    --_pds-grid-one-third: 4;
-    --_pds-grid-two-thirds: 8;
-  }
-}
-
-/* Grid: Area Extended */
-@utility col-extended {
-  --_pds-grid-one-half: 3;
-  grid-column: extended;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 7;
-  }
-}
-
-@utility col-start-extended {
-  --_pds-grid-one-half: 3;
-  grid-column-start: extended-start;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 7;
-  }
-}
-
-@utility col-end-extended {
-  --_pds-grid-one-half: 3;
-  grid-column-end: extended-end;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 7;
-  }
-}
-
-/* Grid: Area Wide */
-@utility col-wide {
-  --_pds-grid-one-half: 3;
-  grid-column: wide;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 8;
-  }
-}
-
-@utility col-start-wide {
-  --_pds-grid-one-half: 3;
-  grid-column-start: wide-start;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 8;
-  }
-}
-
-@utility col-end-wide {
-  --_pds-grid-one-half: 3;
-  grid-column-end: wide-end;
-
-  @media (width >= ${breakpointSm}px) {
-    --_pds-grid-one-half: 8;
-  }
-}
-
-/* Grid: Area Full */
-@utility col-full {
-  grid-column: full;
-}
-
-@utility col-start-full {
-  grid-column-start: full-start;
-}
-
-@utility col-end-full {
-  grid-column-end: full-end;
-}
-
-/* Grid: Division */
-@utility col-span-one-half {
-  grid-column: span var(--_pds-grid-one-half, 1) / span var(--_pds-grid-one-half, 1);
-}
-
-@utility col-span-one-third {
-  grid-column: span var(--_pds-grid-one-third, 1) / span var(--_pds-grid-one-third, 1);
-}
-
-@utility col-span-two-thirds {
-  grid-column: span var(--_pds-grid-two-thirds, 1) / span var(--_pds-grid-two-thirds, 1);
-}
-
-/* Skeleton */
-@utility skeleton {
-  animation: --theme(--animate-skeleton);
-  display: block;
-  border-radius: --theme(--radius-sm);
-  background-color: transparent;
-  background-image: linear-gradient(to right, --theme(--color-frosted) 0%, --theme(--color-frosted-strong) 50%, --theme(--color-frosted) 100%);
-  background-position: 0 0;
-  background-size: 200% 100%;
-}
-
-/* Typography: Text */
-@utility prose-text-2xs {
-  font: --theme(--font-weight-normal) --theme(--text-2xs) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-text-xs {
-  font: --theme(--font-weight-normal) --theme(--text-xs) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-text-sm {
-  font: --theme(--font-weight-normal) --theme(--text-sm) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-text-md {
-  font: --theme(--font-weight-normal) --theme(--text-md) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-text-lg {
-  font: --theme(--font-weight-normal) --theme(--text-lg) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-text-xl {
-  font: --theme(--font-weight-normal) --theme(--text-xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-text-2xl {
-  font: --theme(--font-weight-normal) --theme(--text-2xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-text-3xl {
-  font: --theme(--font-weight-normal) --theme(--text-3xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-text-4xl {
-  font: --theme(--font-weight-normal) --theme(--text-4xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-text-5xl {
-  font: --theme(--font-weight-normal) --theme(--text-5xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-
-/* Typography: Heading */
-@utility prose-heading-2xs {
-  font: --theme(--font-weight-semibold) --theme(--text-2xs) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-heading-xs {
-  font: --theme(--font-weight-semibold) --theme(--text-xs) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-heading-sm {
-  font: --theme(--font-weight-semibold) --theme(--text-sm) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-heading-md {
-  font: --theme(--font-weight-normal) --theme(--text-md) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-heading-lg {
-  font: --theme(--font-weight-normal) --theme(--text-lg) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-heading-xl {
-  font: --theme(--font-weight-normal) --theme(--text-xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-heading-2xl {
-  font: --theme(--font-weight-normal) --theme(--text-2xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-heading-3xl {
-  font: --theme(--font-weight-normal) --theme(--text-3xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-heading-4xl {
-  font: --theme(--font-weight-normal) --theme(--text-4xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-heading-5xl {
-  font: --theme(--font-weight-normal) --theme(--text-5xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-
-/* Typography: Display */
-@utility prose-display-sm {
-  font: --theme(--font-weight-normal) --theme(--text-3xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-display-md {
-  font: --theme(--font-weight-normal) --theme(--text-4xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}
-@utility prose-display-lg {
-  font: --theme(--font-weight-normal) --theme(--text-5xl) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);
-}`;
+}`,
+        },
+      ],
+    },
+    fontBaseLayer,
+    schemeRootFallback,
+    ...schemeUtilities,
+    // The documented utilities reduced to their renderable shape (the `class` /
+    // `description` metadata is only consumed by the docs + LLM context).
+    ...tailwindUtilities.map(({ comment, selector, raw }) => ({ comment, selector, raw })),
+  ],
 };
+
+export const getTailwindcssTheme = () => tailwindCssMeta.meta.map(renderNode).join('\n\n');
