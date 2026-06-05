@@ -105,8 +105,8 @@ import type { CssNode, TailwindThemeVariable, TailwindThemeVariableGroup } from 
  * Full description of a single color — the single source of truth from which the
  * `@theme` variable ({@link colorThemeVariables}) and the per-scheme fallback
  * assignments ({@link colorLightVars} / {@link colorDarkVars}) are all derived.
- * Keeping everything for one color colocated means there is exactly one place to
- * add, remove or reorder a color, and the derived arrays can never drift apart.
+ * The `group` is intentionally omitted: it is encoded by the nesting key inside
+ * {@link color}, mirroring the structure of the storefront `cssVariablesMeta`.
  */
 type ColorConfig = {
   /** The public `@theme` custom property, e.g. `--color-focus`. */
@@ -126,376 +126,364 @@ type ColorConfig = {
   classes: string[];
   /** Human readable description rendered in the docs and LLM context. */
   description: string;
-  /** Grouping used to organize the documentation tables. */
-  group: TailwindThemeVariableGroup;
 };
 
-// Single source of truth — one entry fully describes one color.
-// Order matches the generated `@theme` block; the docs reorder by `group`.
-const colors: ColorConfig[] = [
-  {
-    property: '--color-focus',
-    dynamicProperty: '--_color-focus-dynamic',
-    base: colorFocus,
-    light: colorFocusLight,
-    dark: colorFocusDark,
-    classes: ['.outline-focus'],
-    description: 'Applies the focus color, typically used as the outline for `:focus-visible` states.',
-    group: 'a11y',
+/** The color groups that exist in {@link color} (mirrors the storefront API tables). */
+type ColorGroup = Extract<TailwindThemeVariableGroup, 'background' | 'foreground' | 'semantic' | 'a11y'>;
+
+/**
+ * Nested single source of truth for every color, grouped exactly like the
+ * storefront API tables / `cssVariablesMeta` (a11y / background / foreground /
+ * semantic). Access a single color via its path, e.g. `color.background.frosted`,
+ * to read e.g. `color.background.frosted.property`. The derived `@theme` variables
+ * ({@link colorThemeVariables}) and the per-scheme fallbacks ({@link colorLightVars}
+ * / {@link colorDarkVars}) are produced by flat-mapping the groups, so there is
+ * exactly one place to add, remove or reorder a color. The group/key order is
+ * preserved in the generated `@theme` block; the docs reorder by group.
+ */
+export const color = {
+  a11y: {
+    focus: {
+      property: '--color-focus',
+      dynamicProperty: '--_color-focus-dynamic',
+      base: colorFocus,
+      light: colorFocusLight,
+      dark: colorFocusDark,
+      classes: ['.outline-focus'],
+      description: 'Applies the focus color, typically used as the outline for `:focus-visible` states.',
+    },
   },
-  {
-    property: '--color-canvas',
-    dynamicProperty: '--_color-canvas-dynamic',
-    base: colorCanvas,
-    light: colorCanvasLight,
-    dark: colorCanvasDark,
-    classes: ['.bg-canvas'],
-    description: 'Applies the canvas color, typically used for surfaces.',
-    group: 'background',
+  background: {
+    canvas: {
+      property: '--color-canvas',
+      dynamicProperty: '--_color-canvas-dynamic',
+      base: colorCanvas,
+      light: colorCanvasLight,
+      dark: colorCanvasDark,
+      classes: ['.bg-canvas'],
+      description: 'Applies the canvas color, typically used for surfaces.',
+    },
+    surface: {
+      property: '--color-surface',
+      dynamicProperty: '--_color-surface-dynamic',
+      base: colorSurface,
+      light: colorSurfaceLight,
+      dark: colorSurfaceDark,
+      classes: ['.bg-surface'],
+      description: 'Applies the surface color, typically used for surfaces.',
+    },
+    frosted: {
+      property: '--color-frosted',
+      dynamicProperty: '--_color-frosted-dynamic',
+      base: colorFrosted,
+      light: colorFrostedLight,
+      dark: colorFrostedDark,
+      classes: ['.bg-frosted'],
+      description:
+        'Applies the frosted color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`.',
+    },
+    frostedSoft: {
+      property: '--color-frosted-soft',
+      dynamicProperty: '--_color-frosted-soft-dynamic',
+      base: colorFrostedSoft,
+      light: colorFrostedSoftLight,
+      dark: colorFrostedSoftDark,
+      classes: ['.bg-frosted-soft'],
+      description: 'Applies the frosted color, typically used as a background `:hover`.',
+    },
+    frostedStrong: {
+      property: '--color-frosted-strong',
+      dynamicProperty: '--_color-frosted-strong-dynamic',
+      base: colorFrostedStrong,
+      light: colorFrostedStrongLight,
+      dark: colorFrostedStrongDark,
+      classes: ['.bg-frosted-strong'],
+      description:
+        'Applies the frosted color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`.',
+    },
+    backdrop: {
+      property: '--color-backdrop',
+      dynamicProperty: '--_color-backdrop-dynamic',
+      base: colorBackdrop,
+      light: colorBackdropLight,
+      dark: colorBackdropDark,
+      classes: ['.bg-backdrop'],
+      description: 'Applies the backdrop color, typically used for backdrops.',
+    },
   },
-  {
-    property: '--color-surface',
-    dynamicProperty: '--_color-surface-dynamic',
-    base: colorSurface,
-    light: colorSurfaceLight,
-    dark: colorSurfaceDark,
-    classes: ['.bg-surface'],
-    description: 'Applies the surface color, typically used for surfaces.',
-    group: 'background',
+  foreground: {
+    contrastLower: {
+      property: '--color-contrast-lower',
+      dynamicProperty: '--_color-contrast-lower-dynamic',
+      base: colorContrastLower,
+      light: colorContrastLowerLight,
+      dark: colorContrastLowerDark,
+      classes: ['.border-contrast-lower'],
+      description:
+        'Applies the contrast-lower color, intended only for decorative elements, as it is not accessibility-compliant.',
+    },
+    contrastLow: {
+      property: '--color-contrast-low',
+      dynamicProperty: '--_color-contrast-low-dynamic',
+      base: colorContrastLow,
+      light: colorContrastLowLight,
+      dark: colorContrastLowDark,
+      classes: ['.border-contrast-low'],
+      description:
+        'Applies the contrast-low color, intended only for decorative elements, as it is not accessibility-compliant.',
+    },
+    contrastMedium: {
+      property: '--color-contrast-medium',
+      dynamicProperty: '--_color-contrast-medium-dynamic',
+      base: colorContrastMedium,
+      light: colorContrastMediumLight,
+      dark: colorContrastMediumDark,
+      classes: ['.text-contrast-medium'],
+      description: 'Applies the contrast-medium color, typically used for text.',
+    },
+    contrastHigh: {
+      property: '--color-contrast-high',
+      dynamicProperty: '--_color-contrast-high-dynamic',
+      base: colorContrastHigh,
+      light: colorContrastHighLight,
+      dark: colorContrastHighDark,
+      classes: ['.text-contrast-high'],
+      description: 'Applies the contrast-high color, typically used for text.',
+    },
+    contrastHigher: {
+      property: '--color-contrast-higher',
+      dynamicProperty: '--_color-contrast-higher-dynamic',
+      base: colorContrastHigher,
+      light: colorContrastHigherLight,
+      dark: colorContrastHigherDark,
+      classes: ['.text-contrast-higher'],
+      description: 'Applies the contrast-higher color, typically used for text.',
+    },
+    primary: {
+      property: '--color-primary',
+      dynamicProperty: '--_color-primary-dynamic',
+      base: colorPrimary,
+      light: colorPrimaryLight,
+      dark: colorPrimaryDark,
+      classes: ['.text-primary'],
+      description: 'Applies the primary color, typically used for text.',
+    },
   },
-  {
-    property: '--color-frosted',
-    dynamicProperty: '--_color-frosted-dynamic',
-    base: colorFrosted,
-    light: colorFrostedLight,
-    dark: colorFrostedDark,
-    classes: ['.bg-frosted'],
-    description:
-      'Applies the frosted color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`.',
-    group: 'background',
+  semantic: {
+    success: {
+      property: '--color-success',
+      dynamicProperty: '--_color-success-dynamic',
+      base: colorSuccess,
+      light: colorSuccessLight,
+      dark: colorSuccessDark,
+      classes: ['.text-success'],
+      description: 'Applies the success color, typically used for text.',
+    },
+    successLow: {
+      property: '--color-success-low',
+      dynamicProperty: '--_color-success-low-dynamic',
+      base: colorSuccessLow,
+      light: colorSuccessLowLight,
+      dark: colorSuccessLowDark,
+      classes: ['.text-success', '.border-success'],
+      description: 'Applies the success color, typically used for text or border.',
+    },
+    successMedium: {
+      property: '--color-success-medium',
+      dynamicProperty: '--_color-success-medium-dynamic',
+      base: colorSuccessMedium,
+      light: colorSuccessMediumLight,
+      dark: colorSuccessMediumDark,
+      classes: ['.text-success', '.border-success'],
+      description: 'Applies the success color, typically used for text or border.',
+    },
+    successFrosted: {
+      property: '--color-success-frosted',
+      dynamicProperty: '--_color-success-frosted-dynamic',
+      base: colorSuccessFrosted,
+      light: colorSuccessFrostedLight,
+      dark: colorSuccessFrostedDark,
+      classes: ['.bg-success-frosted'],
+      description:
+        'Applies the success-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.',
+    },
+    successFrostedSoft: {
+      property: '--color-success-frosted-soft',
+      dynamicProperty: '--_color-success-frosted-soft-dynamic',
+      base: colorSuccessFrostedSoft,
+      light: colorSuccessFrostedSoftLight,
+      dark: colorSuccessFrostedSoftDark,
+      classes: ['.bg-success-frosted-soft'],
+      description: 'Applies the success-frosted-soft color, typically used as background `:hover`.',
+    },
+    warning: {
+      property: '--color-warning',
+      dynamicProperty: '--_color-warning-dynamic',
+      base: colorWarning,
+      light: colorWarningLight,
+      dark: colorWarningDark,
+      classes: ['.text-warning'],
+      description: 'Applies the warning color, typically used for text.',
+    },
+    warningLow: {
+      property: '--color-warning-low',
+      dynamicProperty: '--_color-warning-low-dynamic',
+      base: colorWarningLow,
+      light: colorWarningLowLight,
+      dark: colorWarningLowDark,
+      classes: ['.text-warning', '.border-warning'],
+      description: 'Applies the warning color, typically used for text or border.',
+    },
+    warningMedium: {
+      property: '--color-warning-medium',
+      dynamicProperty: '--_color-warning-medium-dynamic',
+      base: colorWarningMedium,
+      light: colorWarningMediumLight,
+      dark: colorWarningMediumDark,
+      classes: ['.text-warning', '.border-warning'],
+      description: 'Applies the warning color, typically used for text or border.',
+    },
+    warningFrosted: {
+      property: '--color-warning-frosted',
+      dynamicProperty: '--_color-warning-frosted-dynamic',
+      base: colorWarningFrosted,
+      light: colorWarningFrostedLight,
+      dark: colorWarningFrostedDark,
+      classes: ['.bg-warning-frosted'],
+      description:
+        'Applies the warning-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.',
+    },
+    warningFrostedSoft: {
+      property: '--color-warning-frosted-soft',
+      dynamicProperty: '--_color-warning-frosted-soft-dynamic',
+      base: colorWarningFrostedSoft,
+      light: colorWarningFrostedSoftLight,
+      dark: colorWarningFrostedSoftDark,
+      classes: ['.bg-warning-frosted-soft'],
+      description: 'Applies the warning-frosted-soft color, typically used as background `:hover`.',
+    },
+    error: {
+      property: '--color-error',
+      dynamicProperty: '--_color-error-dynamic',
+      base: colorError,
+      light: colorErrorLight,
+      dark: colorErrorDark,
+      classes: ['.text-error'],
+      description: 'Applies the error color, typically used for text.',
+    },
+    errorLow: {
+      property: '--color-error-low',
+      dynamicProperty: '--_color-error-low-dynamic',
+      base: colorErrorLow,
+      light: colorErrorLowLight,
+      dark: colorErrorLowDark,
+      classes: ['.text-error', '.border-error'],
+      description: 'Applies the error color, typically used for text or border.',
+    },
+    errorMedium: {
+      property: '--color-error-medium',
+      dynamicProperty: '--_color-error-medium-dynamic',
+      base: colorErrorMedium,
+      light: colorErrorMediumLight,
+      dark: colorErrorMediumDark,
+      classes: ['.text-error', '.border-error'],
+      description: 'Applies the error color, typically used for text or border.',
+    },
+    errorFrosted: {
+      property: '--color-error-frosted',
+      dynamicProperty: '--_color-error-frosted-dynamic',
+      base: colorErrorFrosted,
+      light: colorErrorFrostedLight,
+      dark: colorErrorFrostedDark,
+      classes: ['.bg-error-frosted'],
+      description:
+        'Applies the error-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.',
+    },
+    errorFrostedSoft: {
+      property: '--color-error-frosted-soft',
+      dynamicProperty: '--_color-error-frosted-soft-dynamic',
+      base: colorErrorFrostedSoft,
+      light: colorErrorFrostedSoftLight,
+      dark: colorErrorFrostedSoftDark,
+      classes: ['.bg-error-frosted-soft'],
+      description: 'Applies the error-frosted-soft color, typically used as background `:hover`.',
+    },
+    info: {
+      property: '--color-info',
+      dynamicProperty: '--_color-info-dynamic',
+      base: colorInfo,
+      light: colorInfoLight,
+      dark: colorInfoDark,
+      classes: ['.text-info'],
+      description: 'Applies the info color, typically used for text.',
+    },
+    infoLow: {
+      property: '--color-info-low',
+      dynamicProperty: '--_color-info-low-dynamic',
+      base: colorInfoLow,
+      light: colorInfoLowLight,
+      dark: colorInfoLowDark,
+      classes: ['.text-info', '.border-info'],
+      description: 'Applies the info color, typically used for text or border.',
+    },
+    infoMedium: {
+      property: '--color-info-medium',
+      dynamicProperty: '--_color-info-medium-dynamic',
+      base: colorInfoMedium,
+      light: colorInfoMediumLight,
+      dark: colorInfoMediumDark,
+      classes: ['.text-info', '.border-info'],
+      description: 'Applies the info color, typically used for text or border.',
+    },
+    infoFrosted: {
+      property: '--color-info-frosted',
+      dynamicProperty: '--_color-info-frosted-dynamic',
+      base: colorInfoFrosted,
+      light: colorInfoFrostedLight,
+      dark: colorInfoFrostedDark,
+      classes: ['.bg-info-frosted'],
+      description:
+        'Applies the info-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.',
+    },
+    infoFrostedSoft: {
+      property: '--color-info-frosted-soft',
+      dynamicProperty: '--_color-info-frosted-soft-dynamic',
+      base: colorInfoFrostedSoft,
+      light: colorInfoFrostedSoftLight,
+      dark: colorInfoFrostedSoftDark,
+      classes: ['.bg-info-frosted-soft'],
+      description: 'Applies the info-frosted-soft color, typically used as background `:hover`.',
+    },
   },
-  {
-    property: '--color-frosted-soft',
-    dynamicProperty: '--_color-frosted-soft-dynamic',
-    base: colorFrostedSoft,
-    light: colorFrostedSoftLight,
-    dark: colorFrostedSoftDark,
-    classes: ['.bg-frosted-soft'],
-    description: 'Applies the frosted color, typically used as a background `:hover`.',
-    group: 'background',
-  },
-  {
-    property: '--color-frosted-strong',
-    dynamicProperty: '--_color-frosted-strong-dynamic',
-    base: colorFrostedStrong,
-    light: colorFrostedStrongLight,
-    dark: colorFrostedStrongDark,
-    classes: ['.bg-frosted-strong'],
-    description:
-      'Applies the frosted color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`.',
-    group: 'background',
-  },
-  {
-    property: '--color-backdrop',
-    dynamicProperty: '--_color-backdrop-dynamic',
-    base: colorBackdrop,
-    light: colorBackdropLight,
-    dark: colorBackdropDark,
-    classes: ['.bg-backdrop'],
-    description: 'Applies the backdrop color, typically used for backdrops.',
-    group: 'background',
-  },
-  {
-    property: '--color-contrast-lower',
-    dynamicProperty: '--_color-contrast-lower-dynamic',
-    base: colorContrastLower,
-    light: colorContrastLowerLight,
-    dark: colorContrastLowerDark,
-    classes: ['.border-contrast-lower'],
-    description:
-      'Applies the contrast-lower color, intended only for decorative elements, as it is not accessibility-compliant.',
-    group: 'foreground',
-  },
-  {
-    property: '--color-contrast-low',
-    dynamicProperty: '--_color-contrast-low-dynamic',
-    base: colorContrastLow,
-    light: colorContrastLowLight,
-    dark: colorContrastLowDark,
-    classes: ['.border-contrast-low'],
-    description:
-      'Applies the contrast-low color, intended only for decorative elements, as it is not accessibility-compliant.',
-    group: 'foreground',
-  },
-  {
-    property: '--color-contrast-medium',
-    dynamicProperty: '--_color-contrast-medium-dynamic',
-    base: colorContrastMedium,
-    light: colorContrastMediumLight,
-    dark: colorContrastMediumDark,
-    classes: ['.text-contrast-medium'],
-    description: 'Applies the contrast-medium color, typically used for text.',
-    group: 'foreground',
-  },
-  {
-    property: '--color-contrast-high',
-    dynamicProperty: '--_color-contrast-high-dynamic',
-    base: colorContrastHigh,
-    light: colorContrastHighLight,
-    dark: colorContrastHighDark,
-    classes: ['.text-contrast-high'],
-    description: 'Applies the contrast-high color, typically used for text.',
-    group: 'foreground',
-  },
-  {
-    property: '--color-contrast-higher',
-    dynamicProperty: '--_color-contrast-higher-dynamic',
-    base: colorContrastHigher,
-    light: colorContrastHigherLight,
-    dark: colorContrastHigherDark,
-    classes: ['.text-contrast-higher'],
-    description: 'Applies the contrast-higher color, typically used for text.',
-    group: 'foreground',
-  },
-  {
-    property: '--color-primary',
-    dynamicProperty: '--_color-primary-dynamic',
-    base: colorPrimary,
-    light: colorPrimaryLight,
-    dark: colorPrimaryDark,
-    classes: ['.text-primary'],
-    description: 'Applies the primary color, typically used for text.',
-    group: 'foreground',
-  },
-  {
-    property: '--color-success',
-    dynamicProperty: '--_color-success-dynamic',
-    base: colorSuccess,
-    light: colorSuccessLight,
-    dark: colorSuccessDark,
-    classes: ['.text-success'],
-    description: 'Applies the success color, typically used for text.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-success-low',
-    dynamicProperty: '--_color-success-low-dynamic',
-    base: colorSuccessLow,
-    light: colorSuccessLowLight,
-    dark: colorSuccessLowDark,
-    classes: ['.text-success', '.border-success'],
-    description: 'Applies the success color, typically used for text or border.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-success-medium',
-    dynamicProperty: '--_color-success-medium-dynamic',
-    base: colorSuccessMedium,
-    light: colorSuccessMediumLight,
-    dark: colorSuccessMediumDark,
-    classes: ['.text-success', '.border-success'],
-    description: 'Applies the success color, typically used for text or border.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-success-frosted',
-    dynamicProperty: '--_color-success-frosted-dynamic',
-    base: colorSuccessFrosted,
-    light: colorSuccessFrostedLight,
-    dark: colorSuccessFrostedDark,
-    classes: ['.bg-success-frosted'],
-    description:
-      'Applies the success-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-success-frosted-soft',
-    dynamicProperty: '--_color-success-frosted-soft-dynamic',
-    base: colorSuccessFrostedSoft,
-    light: colorSuccessFrostedSoftLight,
-    dark: colorSuccessFrostedSoftDark,
-    classes: ['.bg-success-frosted-soft'],
-    description: 'Applies the success-frosted-soft color, typically used as background `:hover`.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-warning',
-    dynamicProperty: '--_color-warning-dynamic',
-    base: colorWarning,
-    light: colorWarningLight,
-    dark: colorWarningDark,
-    classes: ['.text-warning'],
-    description: 'Applies the warning color, typically used for text.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-warning-low',
-    dynamicProperty: '--_color-warning-low-dynamic',
-    base: colorWarningLow,
-    light: colorWarningLowLight,
-    dark: colorWarningLowDark,
-    classes: ['.text-warning', '.border-warning'],
-    description: 'Applies the warning color, typically used for text or border.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-warning-medium',
-    dynamicProperty: '--_color-warning-medium-dynamic',
-    base: colorWarningMedium,
-    light: colorWarningMediumLight,
-    dark: colorWarningMediumDark,
-    classes: ['.text-warning', '.border-warning'],
-    description: 'Applies the warning color, typically used for text or border.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-warning-frosted',
-    dynamicProperty: '--_color-warning-frosted-dynamic',
-    base: colorWarningFrosted,
-    light: colorWarningFrostedLight,
-    dark: colorWarningFrostedDark,
-    classes: ['.bg-warning-frosted'],
-    description:
-      'Applies the warning-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-warning-frosted-soft',
-    dynamicProperty: '--_color-warning-frosted-soft-dynamic',
-    base: colorWarningFrostedSoft,
-    light: colorWarningFrostedSoftLight,
-    dark: colorWarningFrostedSoftDark,
-    classes: ['.bg-warning-frosted-soft'],
-    description: 'Applies the warning-frosted-soft color, typically used as background `:hover`.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-error',
-    dynamicProperty: '--_color-error-dynamic',
-    base: colorError,
-    light: colorErrorLight,
-    dark: colorErrorDark,
-    classes: ['.text-error'],
-    description: 'Applies the error color, typically used for text.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-error-low',
-    dynamicProperty: '--_color-error-low-dynamic',
-    base: colorErrorLow,
-    light: colorErrorLowLight,
-    dark: colorErrorLowDark,
-    classes: ['.text-error', '.border-error'],
-    description: 'Applies the error color, typically used for text or border.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-error-medium',
-    dynamicProperty: '--_color-error-medium-dynamic',
-    base: colorErrorMedium,
-    light: colorErrorMediumLight,
-    dark: colorErrorMediumDark,
-    classes: ['.text-error', '.border-error'],
-    description: 'Applies the error color, typically used for text or border.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-error-frosted',
-    dynamicProperty: '--_color-error-frosted-dynamic',
-    base: colorErrorFrosted,
-    light: colorErrorFrostedLight,
-    dark: colorErrorFrostedDark,
-    classes: ['.bg-error-frosted'],
-    description:
-      'Applies the error-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-error-frosted-soft',
-    dynamicProperty: '--_color-error-frosted-soft-dynamic',
-    base: colorErrorFrostedSoft,
-    light: colorErrorFrostedSoftLight,
-    dark: colorErrorFrostedSoftDark,
-    classes: ['.bg-error-frosted-soft'],
-    description: 'Applies the error-frosted-soft color, typically used as background `:hover`.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-info',
-    dynamicProperty: '--_color-info-dynamic',
-    base: colorInfo,
-    light: colorInfoLight,
-    dark: colorInfoDark,
-    classes: ['.text-info'],
-    description: 'Applies the info color, typically used for text.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-info-low',
-    dynamicProperty: '--_color-info-low-dynamic',
-    base: colorInfoLow,
-    light: colorInfoLowLight,
-    dark: colorInfoLowDark,
-    classes: ['.text-info', '.border-info'],
-    description: 'Applies the info color, typically used for text or border.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-info-medium',
-    dynamicProperty: '--_color-info-medium-dynamic',
-    base: colorInfoMedium,
-    light: colorInfoMediumLight,
-    dark: colorInfoMediumDark,
-    classes: ['.text-info', '.border-info'],
-    description: 'Applies the info color, typically used for text or border.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-info-frosted',
-    dynamicProperty: '--_color-info-frosted-dynamic',
-    base: colorInfoFrosted,
-    light: colorInfoFrostedLight,
-    dark: colorInfoFrostedDark,
-    classes: ['.bg-info-frosted'],
-    description:
-      'Applies the info-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.',
-    group: 'semantic',
-  },
-  {
-    property: '--color-info-frosted-soft',
-    dynamicProperty: '--_color-info-frosted-soft-dynamic',
-    base: colorInfoFrostedSoft,
-    light: colorInfoFrostedSoftLight,
-    dark: colorInfoFrostedSoftDark,
-    classes: ['.bg-info-frosted-soft'],
-    description: 'Applies the info-frosted-soft color, typically used as background `:hover`.',
-    group: 'semantic',
-  },
-];
+} satisfies Record<ColorGroup, Record<string, ColorConfig>>;
+
+// Flat list of every color config in document order — the shared basis for the
+// per-scheme fallback assignments below.
+const colorConfigs: ColorConfig[] = Object.values(color).flatMap((group) => Object.values(group));
 
 // Color theme variables — single source for the `@theme` color section and the
 // color docs. Each variable reads its dynamic property and falls back to the
 // `base` token. Order matches the generated `@theme` block; the docs reorder by `group`.
-export const colorThemeVariables: TailwindThemeVariable[] = colors.map(
-  ({ property, dynamicProperty, base, classes, description, group }) => ({
+export const colorThemeVariables: TailwindThemeVariable[] = Object.entries(color).flatMap(([group, colors]) =>
+  Object.values(colors).map(({ property, dynamicProperty, base, classes, description }) => ({
     property,
     value: `var(${dynamicProperty}, ${base})`,
     classes,
     description,
-    group,
-  })
+    group: group as ColorGroup,
+  }))
 );
 
 // Fallback variable assignments for browsers without `light-dark()` support.
 // Used both for the `:root` default and inside `@utility scheme-*` blocks so
 // that Tailwind applies its configured prefix (e.g. `tw:scheme-dark`). They
 // assign the same dynamic properties read by `colorThemeVariables`.
-export const colorLightVars: CssNode[] = colors.map(({ dynamicProperty, light }) => ({
+export const colorLightVars: CssNode[] = colorConfigs.map(({ dynamicProperty, light }) => ({
   property: dynamicProperty,
   value: light,
 }));
 
-export const colorDarkVars: CssNode[] = colors.map(({ dynamicProperty, dark }) => ({
+export const colorDarkVars: CssNode[] = colorConfigs.map(({ dynamicProperty, dark }) => ({
   property: dynamicProperty,
   value: dark,
 }));

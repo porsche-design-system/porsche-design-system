@@ -75,7 +75,7 @@ export type TailwindThemeVariable = CssDeclaration & {
   /** Human readable description rendered in the docs and LLM context. */
   description: string;
   /** Grouping used to organize the documentation tables. */
-  group: TailwindThemeVariableGroup;
+  group?: TailwindThemeVariableGroup;
   /** Optional leading comment rendered above the declaration in the `@theme` block. */
   comment?: string;
 };

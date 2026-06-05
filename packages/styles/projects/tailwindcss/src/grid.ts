@@ -1,43 +1,21 @@
-import { breakpoint2Xl, breakpointSm, gradientStopsFadeDark } from '@porsche-design-system/tokens';
+import { breakpoint2Xl, breakpointSm } from '@porsche-design-system/tokens';
+import { prefix } from './shared';
+import { spacing } from './spacing';
 import type { TailwindUtility } from './types';
 
-// Documented Tailwind utilities — single source for the `@utility` blocks and the utility docs.
-export const tailwindUtilities: TailwindUtility[] = [
-  {
-    comment: 'Gradient',
-    selector: '@utility bg-fade-to-t',
-    class: '.bg-fade-to-t',
-    description: 'Applies a fade gradient towards the top.',
-    raw: `  background-image: linear-gradient(to top, ${gradientStopsFadeDark});`,
-  },
-  {
-    selector: '@utility bg-fade-to-r',
-    class: '.bg-fade-to-r',
-    description: 'Applies a fade gradient towards the right.',
-    raw: `  background-image: linear-gradient(to right, ${gradientStopsFadeDark});`,
-  },
-  {
-    selector: '@utility bg-fade-to-b',
-    class: '.bg-fade-to-b',
-    description: 'Applies a fade gradient towards the bottom.',
-    raw: `  background-image: linear-gradient(to bottom, ${gradientStopsFadeDark});`,
-  },
-  {
-    selector: '@utility bg-fade-to-l',
-    class: '.bg-fade-to-l',
-    description: 'Applies a fade gradient towards the left.',
-    raw: `  background-image: linear-gradient(to left, ${gradientStopsFadeDark});`,
-  },
+// Documented Tailwind grid utilities — the responsive Porsche Grid template
+// together with its named area, position, and division helpers.
+export const gridUtilities: TailwindUtility[] = [
   {
     comment: 'Grid',
     selector: '@utility grid-template',
     class: '.grid-template',
     description: 'Applies the responsive Porsche Grid template with named column areas.',
     raw: `  --pds-internal-grid-safe-zone: max(22px, 10.625vw - 12px);
-  --_pds-grid-col: minmax(0, var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - --theme(--spacing-fluid-md))));
+  --_pds-grid-col: minmax(0, var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - ${prefix(spacing.fluid.md.property)})));
   display: grid;
   grid-template-columns: [full-start] var(--_pds-grid-col) [wide-start extended-start basic-start narrow-start] repeat(6, minmax(0, 1fr)) [narrow-end basic-end extended-end wide-end] var(--_pds-grid-col) [full-end];
-  gap: --theme(--spacing-fluid-md);
+  gap: ${prefix(spacing.fluid.md.property)};
   min-width: var(--pds-internal-grid-width-min, 320px);
   max-width: var(--pds-internal-grid-width-max, 2560px);
   box-sizing: content-box;
@@ -239,48 +217,4 @@ export const tailwindUtilities: TailwindUtility[] = [
     description: 'Spans content across two thirds of the current Porsche Grid area.',
     raw: '  grid-column: span var(--_pds-grid-two-thirds, 1) / span var(--_pds-grid-two-thirds, 1);',
   },
-  {
-    comment: 'Skeleton',
-    selector: '@utility skeleton',
-    class: '.skeleton',
-    description: 'Applies a skeleton placeholder style to indicate loading state.',
-    raw: `  animation: --theme(--animate-skeleton);
-  display: block;
-  border-radius: --theme(--radius-sm);
-  background-color: transparent;
-  background-image: linear-gradient(to right, --theme(--color-frosted) 0%, --theme(--color-frosted-strong) 50%, --theme(--color-frosted) 100%);
-  background-position: 0 0;
-  background-size: 200% 100%;`,
-  },
-  ...['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl'].map<TailwindUtility>((size, index) => ({
-    ...(index === 0 ? { comment: 'Typography: Text' } : {}),
-    selector: `@utility prose-text-${size}`,
-    class: `.prose-text-${size}`,
-    description: `Applies the text style in size ${size}.`,
-    raw: `  font: --theme(--font-weight-normal) --theme(--text-${size}) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);`,
-  })),
-  ...['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl'].map<TailwindUtility>((size, index) => ({
-    ...(index === 0 ? { comment: 'Typography: Heading' } : {}),
-    selector: `@utility prose-heading-${size}`,
-    class: `.prose-heading-${size}`,
-    description: `Applies the heading style in size ${size}.`,
-    // Heading sizes 2xs/xs/sm use the semibold weight, the larger sizes use the normal weight.
-    raw: `  font: --theme(--font-weight-${['2xs', 'xs', 'sm'].includes(size) ? 'semibold' : 'normal'}) --theme(--text-${size}) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);`,
-  })),
-  ...(
-    [
-      ['sm', '3xl'],
-      ['md', '4xl'],
-      ['lg', '5xl'],
-    ] as const
-  ).map<TailwindUtility>(([size, scale], index) => ({
-    ...(index === 0 ? { comment: 'Typography: Display' } : {}),
-    selector: `@utility prose-display-${size}`,
-    class: `.prose-display-${size}`,
-    description: `Applies the display style in size ${size}.`,
-    raw: `  font: --theme(--font-weight-normal) --theme(--text-${scale}) / --theme(--leading-normal) --theme(--font-porsche-next);
-  color: --theme(--color-primary);`,
-  })),
 ];

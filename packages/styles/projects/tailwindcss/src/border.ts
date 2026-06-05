@@ -9,34 +9,38 @@ import {
   radiusXl,
   radiusXs,
 } from '@porsche-design-system/tokens';
-import { blurThemeVariables } from './blur';
 import { sizeLabel } from './shared';
 import type { TailwindThemeVariable } from './types';
 
-// Border — radius.
-const radiusValues: Record<string, string | number> = {
-  xs: radiusXs,
-  sm: radiusSm,
-  md: radiusMd,
-  lg: radiusLg,
-  xl: radiusXl,
-  '2xl': radius2Xl,
-  '3xl': radius3Xl,
-  '4xl': radius4Xl,
-  full: radiusFull,
-};
-export const radiusThemeVariables: TailwindThemeVariable[] = (
-  ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', 'full'] as const
-).map((size) => ({
+/** A single radius entry without its `group` (always `border`). */
+type RadiusConfig = Omit<TailwindThemeVariable, 'group'>;
+
+const makeRadius = (size: string, value: string | number): RadiusConfig => ({
   property: `--radius-${size}`,
-  value: radiusValues[size],
+  value,
   classes: [`.rounded-${size}`],
   description:
     size === 'full'
       ? 'Applies a **fully** rounded `border-radius`.'
       : `Applies a **${sizeLabel[size]}** \`border-radius\`.`,
-  group: 'border',
-}));
+});
+
+/**
+ * Nested single source of truth for border radii, grouped like `cssVariablesMeta`
+ * (`radius`). Access a single radius via its path, e.g. `radius.sm`, to read e.g.
+ * `radius.sm.property`. The `@theme` variables are produced by mapping the entries.
+ */
+export const radius = {
+  xs: makeRadius('xs', radiusXs),
+  sm: makeRadius('sm', radiusSm),
+  md: makeRadius('md', radiusMd),
+  lg: makeRadius('lg', radiusLg),
+  xl: makeRadius('xl', radiusXl),
+  '2xl': makeRadius('2xl', radius2Xl),
+  '3xl': makeRadius('3xl', radius3Xl),
+  '4xl': makeRadius('4xl', radius4Xl),
+  full: makeRadius('full', radiusFull),
+};
 
 // Border — width.
 export const borderWidthThemeVariables: TailwindThemeVariable[] = [
@@ -62,4 +66,9 @@ export const borderWidthThemeVariables: TailwindThemeVariable[] = [
   },
 ];
 
-export const borderThemeVariables: TailwindThemeVariable[] = [...radiusThemeVariables, ...borderWidthThemeVariables];
+// All border theme variables consumed by the `@theme` block: the radii (mapped
+// from the nested `radius` object) followed by the border widths.
+export const borderThemeVariables: TailwindThemeVariable[] = [
+  ...Object.values(radius).map((config) => ({ ...config, group: 'border' as const })),
+  ...borderWidthThemeVariables,
+];

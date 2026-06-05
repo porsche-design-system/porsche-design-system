@@ -1,33 +1,42 @@
-import { durationSm, easeInOut } from '@porsche-design-system/tokens';
 import { blurThemeVariables } from './blur';
 import { borderThemeVariables } from './border';
 import { breakpointThemeVariables } from './breakpoint';
 import { colorThemeVariables } from './color';
+import { displayUtilities } from './display';
 import { fontBaseLayer } from './font';
-import { durationThemeVariables, easeThemeVariables } from './motion';
+import { gradientUtilities } from './gradient';
+import { gridUtilities } from './grid';
+import { headingUtilities } from './heading';
+import { allMotionThemeVariables } from './motion';
 import { renderNode } from './render';
 import { schemeRootFallback, schemeUtilities } from './scheme';
-import { shadowThemeVariables } from './shadow';
+import { allShadowThemeVariables } from './shadow';
+import { allAnimationThemeDeclarations, skeletonUtilities } from './skeleton';
 import { spacingThemeVariables } from './spacing';
+import { textUtilities } from './text';
 import type { TailwindCssMeta } from './types';
 import { typographyThemeVariables } from './typography';
-import { tailwindUtilities } from './utilities';
 
 export * from './blur';
 export * from './border';
 export * from './breakpoint';
 export * from './color';
+export * from './display';
 export * from './font';
+export * from './gradient';
+export * from './grid';
+export * from './heading';
 export * from './motion';
 export * from './render';
 export * from './scheme';
 export * from './shadow';
+export * from './skeleton';
 export * from './spacing';
+export * from './text';
 // Public API — types and the documented theme variables / utilities (single
 // source for the generated CSS, the storefront docs and the LLM context).
 export * from './types';
 export * from './typography';
-export * from './utilities';
 
 // The complete Tailwind CSS theme described as data. `meta` is a single CssNode
 // tree where everything comes together: the `@theme` block (documented theme
@@ -69,41 +78,24 @@ export const tailwindCssMeta: TailwindCssMeta = {
         { raw: '/* Blur */' },
         ...blurThemeVariables,
         { raw: '/* Shadow */' },
-        ...shadowThemeVariables,
-        { raw: '--shadow-low: --theme(--shadow-sm); /* alias (deprecated) */' },
-        { raw: '--shadow-medium: --theme(--shadow-md); /* alias (deprecated) */' },
-        { raw: '--shadow-high: --theme(--shadow-lg); /* alias (deprecated) */' },
+        ...allShadowThemeVariables,
         { raw: '/* Outline */' },
         { raw: '--default-outline-width: 2px;' },
         { raw: '/* Motion */' },
-        { raw: `--default-transition-timing-function: ${easeInOut};` },
-        ...easeThemeVariables,
-        { raw: `--default-transition-duration: ${durationSm};` },
-        ...durationThemeVariables,
-        { raw: '--transition-duration-short: --theme(--transition-duration-sm); /* alias (deprecated) */' },
-        { raw: '--transition-duration-moderate: --theme(--transition-duration-md); /* alias (deprecated) */' },
-        { raw: '--transition-duration-long: --theme(--transition-duration-lg); /* alias (deprecated) */' },
-        { raw: '--transition-duration-very-long: --theme(--transition-duration-xl); /* alias (deprecated) */' },
+        ...allMotionThemeVariables,
         { raw: '/* Animation */' },
-        { raw: '--animate-skeleton: skeleton --theme(--transition-duration-xl) --theme(--ease-in-out) infinite;' },
-        {
-          raw: `@keyframes skeleton {
-  from {
-    background-position-x: 100%;
-  }
-  to {
-    background-position-x: -100%;
-  }
-}`,
-        },
+        ...allAnimationThemeDeclarations,
       ],
     },
     fontBaseLayer,
     schemeRootFallback,
     ...schemeUtilities,
-    // The documented utilities reduced to their renderable shape (the `class` /
-    // `description` metadata is only consumed by the docs + LLM context).
-    ...tailwindUtilities.map(({ comment, selector, raw }) => ({ comment, selector, raw })),
+    ...gradientUtilities,
+    ...gridUtilities,
+    ...skeletonUtilities,
+    ...textUtilities,
+    ...headingUtilities,
+    ...displayUtilities,
   ],
 };
 
