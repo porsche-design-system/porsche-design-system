@@ -20,7 +20,7 @@ exports[`getComponentCss() > should return correct css for open: false, position
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: hidden;
   pointer-events: none;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 [popover]:popover-open {
   overlay: auto;
@@ -43,18 +43,18 @@ slot:not([name]),slot[name="description"],p {
 }
 @supports (transition-behavior: allow-discrete) {
   [popover] {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
 .notification {
   box-shadow: var(--p-shadow-lg);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-error-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -114,7 +114,7 @@ exports[`getComponentCss() > should return correct css for open: false, position
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: hidden;
   pointer-events: none;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 [popover]:popover-open {
   overlay: auto;
@@ -131,18 +131,18 @@ slot:not([name]),slot[name="description"],p {
 }
 @supports (transition-behavior: allow-discrete) {
   [popover] {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
 .notification {
   box-shadow: var(--p-shadow-lg);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-success-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -196,7 +196,7 @@ exports[`getComponentCss() > should return correct css for open: false, position
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
   visibility: hidden;
   pointer-events: none;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 [popover]:popover-open {
   overlay: auto;
@@ -213,18 +213,18 @@ slot:not([name]),slot[name="description"],p {
 }
 @supports (transition-behavior: allow-discrete) {
   [popover] {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
 .notification {
   box-shadow: var(--p-shadow-lg);
   opacity: 0;
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-warning-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -284,7 +284,7 @@ exports[`getComponentCss() > should return correct css for open: true, position:
   visibility: inherit;
   pointer-events: inherit;
   transform: translate3d(-50%,0,0);
-  transition: visibility 0s linear var(--p-transition-duration,0s),transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 [popover]:popover-open {
   overlay: auto;
@@ -301,18 +301,18 @@ slot:not([name]),slot[name="description"],p {
 }
 @supports (transition-behavior: allow-discrete) {
   [popover] {
-    transition: visibility 0s linear var(--p-transition-duration,0s),transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in),overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in) allow-discrete;
   }
 }
 
 .notification {
   box-shadow: var(--p-shadow-lg);
   opacity: 1;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);

@@ -56,7 +56,6 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
           {dismissable && (
             <PrefixedTagNames.pButton
               class="dismiss"
-              variant="secondary"
               compact={true}
               type="button"
               hideLabel={true}

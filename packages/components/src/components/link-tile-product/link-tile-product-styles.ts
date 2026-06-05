@@ -1,4 +1,23 @@
 import { getMediaQueryMin } from '@porsche-design-system/emotion';
+import {
+  colorContrastHigh,
+  colorContrastMedium,
+  colorPrimary,
+  colorSurface,
+  fontPorscheNext,
+  fontWeightNormal,
+  fontWeightSemibold,
+  leadingNormal,
+  radius2Xl,
+  radius3Xl,
+  ref,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingFluidXs,
+  typescale2Xs,
+  typescaleSm,
+  typescaleXs,
+} from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
@@ -10,25 +29,6 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import {
-  colorContrastHigh,
-  colorContrastMedium,
-  colorPrimary,
-  colorSurface,
-  fontPorscheNext,
-  fontWeightNormal,
-  fontWeightSemibold,
-  leadingNormal,
-  legacyRadiusLarge,
-  radius2Xl,
-  radius4Xl,
-  spacingFluidMd,
-  spacingFluidSm,
-  spacingFluidXs,
-  typescale2Xs,
-  typescaleSm,
-  typescaleXs,
-} from '../../styles/css-variables';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
@@ -39,7 +39,7 @@ const anchorJssStyle: JssStyle = {
   position: 'absolute',
   inset: 0,
   zIndex: 1, // necessary to be on top of img
-  borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
+  borderRadius: ref(radius3Xl),
   ...forcedColorsMediaQuery({
     forcedColorAdjust: 'none',
     boxShadow: 'inset 0 0 0 2px LinkText',
@@ -87,7 +87,7 @@ export const getComponentCss = (
           [`&([slot="${headerSlot}"])`]: {
             display: 'flex',
             flexWrap: 'wrap',
-            gap: spacingFluidXs,
+            gap: ref(spacingFluidXs),
           },
         },
         '::slotted(:is(img,picture))': {
@@ -95,13 +95,13 @@ export const getComponentCss = (
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          borderRadius: `var(${legacyRadiusLarge}, ${radius2Xl})`,
+          borderRadius: ref(radius2Xl),
           overflow: 'hidden', // needed for picture > img to have correct border-radius
         },
       }),
       ...(hasPriceOriginal && {
         s: {
-          color: colorContrastMedium,
+          color: ref(colorContrastMedium),
         },
       }),
     },
@@ -111,10 +111,10 @@ export const getComponentCss = (
       aspectRatio: '3/4',
       overflow: 'hidden', // TODO: discussable if we should prevent text to overflow .root, – e.g. it also prevents a popover from being shown correctly
       boxSizing: 'border-box',
-      borderRadius: `var(${legacyRadiusLarge}, ${radius4Xl})`,
-      padding: spacingFluidSm,
-      color: colorPrimary,
-      backgroundColor: colorSurface,
+      borderRadius: ref(radius3Xl),
+      padding: ref(spacingFluidSm),
+      color: ref(colorPrimary),
+      backgroundColor: ref(colorSurface),
       ...buildResponsiveStyles(aspectRatio, (ratio: LinkTileProductAspectRatio) => ({
         aspectRatio: ratio,
       })),
@@ -127,7 +127,7 @@ export const getComponentCss = (
     }),
     header: {
       display: 'flex',
-      gap: spacingFluidSm,
+      gap: ref(spacingFluidSm),
       justifyContent: 'space-between',
       alignItems: 'flex-start',
     },
@@ -139,11 +139,11 @@ export const getComponentCss = (
     }),
     image: {
       aspectRatio: '8/9',
-      margin: `${spacingFluidSm} auto ${spacingFluidXs}`,
+      margin: `${ref(spacingFluidSm)} auto ${ref(spacingFluidXs)}`,
       overflow: 'hidden',
       transition: getTransition('transform', 'moderate'),
       [getMediaQueryMin('s')]: {
-        padding: `0 ${spacingFluidMd}`, // ensures image is not getting to large
+        padding: `0 ${ref(spacingFluidMd)}`, // ensures image is not getting to large
       },
       ...hoverMediaQuery({
         '.root:hover &': {
@@ -159,24 +159,24 @@ export const getComponentCss = (
     },
     heading: {
       margin: '0 0 2px', // ua-style reset
-      font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+      font: `${ref(fontWeightSemibold)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       ...getMultilineEllipsis(3),
     },
     price: {
       margin: 0, // ua-style reset
-      font: `${fontWeightNormal} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
+      font: `${ref(fontWeightNormal)} ${ref(typescaleXs)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       ...(hasPriceOriginal && {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        columnGap: spacingFluidXs,
+        columnGap: ref(spacingFluidXs),
       }),
     },
     ...(hasDescription && {
       description: {
         margin: 0, // ua-style reset
-        font: `${fontWeightNormal} ${typescale2Xs} / ${leadingNormal} ${fontPorscheNext}`,
-        color: colorContrastHigh,
+        font: `${ref(fontWeightNormal)} ${ref(typescale2Xs)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+        color: ref(colorContrastHigh),
         ...getMultilineEllipsis(2),
       },
     }),

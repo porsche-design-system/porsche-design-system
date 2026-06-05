@@ -9,14 +9,7 @@ import {
   hoverMediaQuery,
   pointerCoarseMediaQuery,
 } from '../../styles';
-import {
-  colorPrimary,
-  durationSm,
-  legacyRadiusSmall,
-  radiusLg,
-  spacingStaticSm,
-  spacingStaticXs,
-} from '../../styles/css-variables';
+import { colorPrimary, durationSm, radiusLg, ref, spacingStaticSm, spacingStaticXs } from '@porsche-design-system/stylesheets';
 import { getSmoothMask } from '../../styles/mask';
 import { getCss } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
@@ -36,6 +29,9 @@ const cssVarIndicatorTop = '--p-scroller-indicator-top';
  * @css-variable {"name": "--p-scroller-indicator-bottom", "description": "Defines the distance from the bottom of the viewport at which the indicator sticks when scrolling up and `sticky` is enabled.", "defaultValue": "0px"}
  */
 const cssVarIndicatorBottom = '--p-scroller-indicator-bottom';
+
+// internal css variables
+const cssVarFocusRingRadius = '--_p-scroller-focus-ring-radius';
 
 const iconPrev = getInlineSVGBackgroundImage(
   `<path d="m8.875 12v-.001l.006-.005 5.476-6.494.768.642-4.94 5.858 4.939 5.858-.768.642-5.477-6.497z"/>`
@@ -61,8 +57,8 @@ const getScrollIndicatorStyles = (
     zIndex: 1, // ensure that indicators are above the scroll area
     ...(isSticky && {
       position: 'sticky',
-      top: `var(${cssVarIndicatorTop},0px)`,
-      bottom: `var(${cssVarIndicatorBottom},0px)`,
+      top: ref(cssVarIndicatorTop, '0px'),
+      bottom: ref(cssVarIndicatorBottom, '0px'),
     }),
     ...(hasScrollbar && {
       marginTop: `calc(-1 * ${scrollbarWidth})`,
@@ -76,27 +72,27 @@ const getScrollIndicatorStyles = (
     width: '1.5rem',
     height: '1.5rem',
     ...(!isCompact && {
-      padding: spacingStaticXs,
+      padding: ref(spacingStaticXs),
     }),
     cursor: 'pointer',
     opacity: isVisible ? 1 : 0,
     visibility: isVisible ? 'inherit' : 'hidden',
-    transform: `translate3d(${isVisible ? '0' : `${isPrev ? `calc(-1 * ${spacingStaticSm})` : spacingStaticSm}`},0,0)`,
-    transition: `${getTransition('transform')},${getTransition('opacity')},visibility 0s linear ${isVisible ? '0s' : `var(${cssVariableTransitionDuration},${durationSm})`}`,
+    transform: `translate3d(${isVisible ? '0' : `${isPrev ? `calc(-1 * ${ref(spacingStaticSm)})` : ref(spacingStaticSm)}`},0,0)`,
+    transition: `${getTransition('transform')},${getTransition('opacity')},visibility 0s linear ${isVisible ? '0s' : ref(cssVariableTransitionDuration, ref(durationSm))}`,
     '&:dir(rtl)': {
       gridArea: isPrev ? '1/3' : '1/1',
     },
     ...hoverMediaQuery({
       '&:hover::after': {
         // do the transform on the pseudo-element to prevent the click area from moving when hovered
-        transform: `translate3d(${isPrev ? `calc(-1 * ${spacingStaticXs})` : spacingStaticXs},0,0)`,
+        transform: `translate3d(${isPrev ? `calc(-1 * ${ref(spacingStaticXs)})` : ref(spacingStaticXs)},0,0)`,
       },
     }),
     '&::after': {
       content: '""',
       WebkitMask: iconMask, // necessary for Sogou browser support :-)
       mask: iconMask,
-      background: colorPrimary,
+      background: ref(colorPrimary),
       transition: getTransition('transform'),
       ...forcedColorsMediaQuery({
         background: 'CanvasText',
@@ -128,7 +124,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        borderRadius: `var(${legacyRadiusSmall},${radiusLg})`, // needs to be overwritable by tabs-bar to improve focus appearance
+        borderRadius: ref(radiusLg), // needs to be overwritable by tabs-bar to improve focus appearance
         ...addImportantToEachRule({
           ...hostHiddenStyles,
         }),
@@ -137,14 +133,14 @@ export const getComponentCss = (
         gridArea: '1/2',
         position: 'relative', // necessary for tabs bar animation
         display: 'inline-flex',
-        gap: `var(${cssVarGap},${isCompact ? spacingStaticXs : spacingStaticSm})`,
+        gap: ref(cssVarGap, isCompact ? ref(spacingStaticXs) : ref(spacingStaticSm)),
       },
     },
     root: {
       display: 'grid',
       gridTemplateColumns: `auto minmax(0,1fr) auto`,
       alignItems: 'center',
-      borderRadius: 'inherit',
+      borderRadius: ref(cssVarFocusRingRadius, 'inherit'),
       '&:has(.scroll:focus-visible)': getFocusBaseStyles(), // delegating the focus ensures mask does not cut off the focus ring
     },
     scroll: {

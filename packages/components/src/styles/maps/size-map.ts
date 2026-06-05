@@ -1,4 +1,5 @@
 import {
+  ref,
   typescale2Xl,
   typescale2Xs,
   typescale3Xl,
@@ -9,25 +10,25 @@ import {
   typescaleSm,
   typescaleXl,
   typescaleXs,
-} from '../css-variables';
+} from '@porsche-design-system/stylesheets';
 
 export const sizeMap = {
-  'xx-small': typescale2Xs, // deprecated (alias)
-  'x-small': typescaleXs, // deprecated (alias)
-  small: typescaleSm, // deprecated (alias)
-  medium: typescaleMd, // deprecated (alias)
-  large: typescaleLg, // deprecated (alias)
-  'x-large': typescaleXl, // deprecated (alias)
-  'xx-large': typescale2Xl, // deprecated (alias)
-  '2xs': typescale2Xs,
-  xs: typescaleXs,
-  sm: typescaleSm,
-  md: typescaleMd,
-  lg: typescaleLg,
-  xl: typescaleXl,
-  '2xl': typescale2Xl,
-  '3xl': typescale3Xl,
-  '4xl': typescale4Xl,
-  '5xl': typescale5Xl,
+  'xx-small': ref(typescale2Xs), // deprecated (alias)
+  'x-small': ref(typescaleXs), // deprecated (alias)
+  small: ref(typescaleSm), // deprecated (alias)
+  medium: ref(typescaleMd), // deprecated (alias)
+  large: ref(typescaleLg), // deprecated (alias)
+  'x-large': ref(typescaleXl), // deprecated (alias)
+  'xx-large': ref(typescale2Xl), // deprecated (alias)
+  '2xs': ref(typescale2Xs),
+  xs: ref(typescaleXs),
+  sm: ref(typescaleSm),
+  md: ref(typescaleMd),
+  lg: ref(typescaleLg),
+  xl: ref(typescaleXl),
+  '2xl': ref(typescale2Xl),
+  '3xl': ref(typescale3Xl),
+  '4xl': ref(typescale4Xl),
+  '5xl': ref(typescale5Xl),
   inherit: 'inherit',
 } as const;

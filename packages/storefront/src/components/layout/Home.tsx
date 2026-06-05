@@ -68,7 +68,7 @@ export const Home = () => {
               fill="url(#v4-gradient)"
             />
           </svg>
-          <div className="[grid-area:1/1] [place-self:end_start] max-w-[22rem] relative p-fluid-md rounded-4xl flex justify-between items-center gap-static-md bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
+          <div className="[grid-area:1/1] [place-self:end_start] max-w-[22rem] relative p-fluid-md rounded-3xl flex justify-between items-center gap-static-md bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
             <Link
               href={`news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
               className="absolute inset-0"
@@ -109,7 +109,7 @@ export const Home = () => {
         {/* ── getting started ── */}
         <div className="col-[wide] @md:col-[extended] grid @3xl:grid-cols-2 gap-fluid-md">
           <AppearAnimation animation="fade-in-up">
-            <div className="relative p-fluid-md flex items-center gap-static-md rounded-4xl bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
+            <div className="relative p-fluid-md flex items-center gap-static-md rounded-3xl bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
               <Link href="/designing/introduction/" className="absolute inset-0" tabIndex={-1} aria-hidden="true" />
               <Image
                 src={isDark ? 'assets/design_dark.webp' : 'assets/design_light.webp'}
@@ -128,7 +128,7 @@ export const Home = () => {
             </div>
           </AppearAnimation>
           <AppearAnimation animation="fade-in-up">
-            <div className="relative p-fluid-md flex items-center gap-static-md rounded-4xl bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
+            <div className="relative p-fluid-md flex items-center gap-static-md rounded-3xl bg-frosted backdrop-blur-frosted transition-colors hover:bg-frosted-soft">
               <Link href="/developing/introduction/" className="absolute inset-0" tabIndex={-1} aria-hidden="true" />
               <Image
                 src={isDark ? 'assets/coding_dark.webp' : 'assets/coding_light.webp'}
@@ -153,7 +153,7 @@ export const Home = () => {
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
-              className="bg-frosted backdrop-blur-frosted rounded-4xl"
+              className="bg-frosted backdrop-blur-frosted rounded-3xl"
               href="components/introduction/"
               label="Coded component library"
               description="Components"
@@ -177,7 +177,7 @@ export const Home = () => {
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
-              className="bg-frosted backdrop-blur-frosted rounded-4xl"
+              className="bg-frosted backdrop-blur-frosted rounded-3xl"
               href="tokens/introduction/"
               label="Overview of tokens"
               description="Tokens"
@@ -201,7 +201,7 @@ export const Home = () => {
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
-              className="bg-frosted backdrop-blur-frosted rounded-4xl"
+              className="bg-frosted backdrop-blur-frosted rounded-3xl"
               href="patterns/"
               label="Overview of patterns"
               description="Patterns"
@@ -225,7 +225,7 @@ export const Home = () => {
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
-              className="bg-frosted backdrop-blur-frosted rounded-4xl"
+              className="bg-frosted backdrop-blur-frosted rounded-3xl"
               href="templates/"
               label="Overview of templates"
               description="Templates"
@@ -249,7 +249,7 @@ export const Home = () => {
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
-              className="bg-frosted backdrop-blur-frosted rounded-4xl"
+              className="bg-frosted backdrop-blur-frosted rounded-3xl"
               href="news/changelog/"
               label="Find latest release notes"
               description="Release Notes"
@@ -273,7 +273,7 @@ export const Home = () => {
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
-              className="bg-frosted backdrop-blur-frosted rounded-4xl"
+              className="bg-frosted backdrop-blur-frosted rounded-3xl"
               href="help/support/"
               label="How to provide feedback and make requests"
               description="Feedback & Requests"
@@ -301,7 +301,7 @@ export const Home = () => {
           <AppearAnimation animation="fade-in-up">
             <PLinkTile
               style={{ colorScheme: 'inherit' }}
-              className="bg-frosted backdrop-blur-frosted rounded-4xl"
+              className="bg-frosted backdrop-blur-frosted rounded-3xl"
               href="must-know/accessibility/introduction/"
               label="How the Porsche Design System respects accessibility"
               description="Accessibility"
@@ -378,7 +378,7 @@ export const Home = () => {
       </div>
 
       {/* ── benefits ── */}
-      <section className="col-[full] mt-fluid-2xl grid grid-cols-subgrid bg-canvas rounded-4xl" aria-label="Benefits">
+      <section className="col-[full] mt-fluid-2xl grid grid-cols-subgrid bg-canvas rounded-3xl" aria-label="Benefits">
         <div className="col-[wide] justify-self-center my-fluid-xl max-w-[60ch] grid gap-fluid-md">
           <PHeading tag="h2" size="3xl" align="center">
             Benefits

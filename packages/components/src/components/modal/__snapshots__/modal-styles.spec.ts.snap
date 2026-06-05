@@ -4,7 +4,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -45,14 +45,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -71,19 +71,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 .modal:dir(rtl) {
   transform: translateY(25vh);
@@ -96,7 +97,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .modal {
@@ -111,7 +112,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -152,14 +153,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -178,13 +179,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -203,7 +205,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }"
 `;
 
@@ -211,7 +213,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -252,14 +254,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -278,13 +280,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -303,7 +306,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }"
 `;
 
@@ -311,7 +314,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -352,14 +355,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -378,19 +381,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 .modal:dir(rtl) {
   transform: translateY(25vh);
@@ -403,7 +407,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .modal {
@@ -418,7 +422,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -459,14 +463,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -485,13 +489,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -510,7 +515,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }"
 `;
 
@@ -518,7 +523,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -559,14 +564,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -585,13 +590,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -610,7 +616,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }"
 `;
 
@@ -618,7 +624,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -663,14 +669,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -689,19 +695,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 .modal:dir(rtl) {
   transform: translateY(25vh);
@@ -719,7 +726,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -764,14 +771,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -790,19 +797,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 .modal:dir(rtl) {
   transform: translateY(25vh);
@@ -815,7 +823,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .modal {
@@ -830,7 +838,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -871,14 +879,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -897,13 +905,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -920,7 +929,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -965,14 +974,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -991,13 +1000,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1014,7 +1024,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1059,14 +1069,14 @@ dialog {
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -1085,13 +1095,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1110,7 +1121,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }"
 `;
 
@@ -1118,7 +1129,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1165,14 +1176,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1191,19 +1202,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 @media(forced-colors:active) {
   .modal {
@@ -1218,7 +1230,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1261,14 +1273,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1287,19 +1299,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 .dismiss {
   grid-area: 1/3;
@@ -1309,7 +1322,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .modal {
@@ -1324,7 +1337,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1367,14 +1380,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1393,13 +1406,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1413,7 +1427,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1460,14 +1474,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1486,13 +1500,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1506,7 +1521,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1549,14 +1564,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1575,13 +1590,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1597,7 +1613,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }"
 `;
 
@@ -1605,7 +1621,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1648,14 +1664,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1674,13 +1690,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1696,7 +1713,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(min-width:480px) {
   .modal {
@@ -1705,7 +1722,7 @@ dialog::backdrop {
     max-width: 1535.5px;
     place-self: center;
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-    border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+    border-radius: var(--p-radius-3xl);
   }
 @media(forced-colors:active) {
     .modal {
@@ -1734,7 +1751,7 @@ dialog::backdrop {
     max-width: 1535.5px;
     place-self: center;
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-    border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+    border-radius: var(--p-radius-3xl);
   }
 @media(forced-colors:active) {
     .modal {
@@ -1763,7 +1780,7 @@ dialog::backdrop {
     max-width: 1535.5px;
     place-self: center;
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-    border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+    border-radius: var(--p-radius-3xl);
   }
 @media(forced-colors:active) {
     .modal {
@@ -1780,7 +1797,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1809,17 +1826,17 @@ slot[name=footer] {
   z-index: 2;
   position: sticky;
   bottom: -.1px;
-  margin-block: calc(-1 * calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))));
-  padding: calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) var(--p-spacing-fluid-lg);
+  margin-block: calc(-1 * calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)));
+  padding: calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) var(--p-spacing-fluid-lg);
   background: linear-gradient(0deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 20%,transparent 80%);
 }
 slot[name=footer][data-stuck]::after {
   content: "";
   z-index: -1;
   position: absolute;
-  inset: calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) - calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2)) calc(var(--p-spacing-fluid-lg) - calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2));
+  inset: calc(calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) - 12 * var(--p-spacing-static-2xs)) calc(var(--p-spacing-fluid-lg) - 12 * var(--p-spacing-static-2xs));
   background: var(--p-color-frosted);
-  border-radius: var(--p-radius-3xl);
+  border-radius: var(--p-radius-2xl);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
@@ -1842,14 +1859,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1868,19 +1885,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 @media(forced-colors:active) {
   .modal {
@@ -1895,7 +1913,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1928,17 +1946,17 @@ slot[name=footer] {
   z-index: 2;
   position: sticky;
   bottom: -.1px;
-  margin-block: calc(-1 * calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))));
-  padding: calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) var(--p-spacing-fluid-lg);
+  margin-block: calc(-1 * calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)));
+  padding: calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) var(--p-spacing-fluid-lg);
   background: linear-gradient(0deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 20%,transparent 80%);
 }
 slot[name=footer][data-stuck]::after {
   content: "";
   z-index: -1;
   position: absolute;
-  inset: calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) - calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2)) calc(var(--p-spacing-fluid-lg) - calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2));
+  inset: calc(calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) - 12 * var(--p-spacing-static-2xs)) calc(var(--p-spacing-fluid-lg) - 12 * var(--p-spacing-static-2xs));
   background: var(--p-color-frosted);
-  border-radius: var(--p-radius-3xl);
+  border-radius: var(--p-radius-2xl);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
@@ -1961,14 +1979,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1987,19 +2005,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 @media(forced-colors:active) {
   .modal {
@@ -2014,7 +2033,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -2061,14 +2080,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -2087,19 +2106,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
 }
 .dismiss {
   grid-area: 1/3;
@@ -2109,7 +2129,7 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }
 @media(forced-colors:active) {
   .modal {
@@ -2124,7 +2144,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -2171,14 +2191,14 @@ dialog {
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -2197,13 +2217,14 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  overflow: clip;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -2219,6 +2240,6 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+  filter: invert(1) brightness(1.02);
 }"
 `;

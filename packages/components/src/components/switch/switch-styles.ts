@@ -1,15 +1,4 @@
 import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  getDisabledBaseStyles,
-  getFocusBaseStyles,
-  getHiddenTextJssStyle,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
-import {
   colorContrastLow,
   colorFrostedSoft,
   colorPrimary,
@@ -20,8 +9,20 @@ import {
   fontWeightNormal,
   leadingNormal,
   radiusFull,
+  ref,
   typescaleSm,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import {
+  addImportantToEachRule,
+  forcedColorsMediaQuery,
+  getDisabledBaseStyles,
+  getFocusBaseStyles,
+  getHiddenTextJssStyle,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import type { AlignLabel, BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
@@ -39,11 +40,11 @@ const getColors = (
   textColor: string;
 } => {
   return {
-    buttonBorderColor: checked ? colorSuccessLow : colorContrastLow,
-    buttonBorderColorHover: checked ? colorSuccess : colorPrimary,
-    buttonBackgroundColor: checked ? colorSuccessFrostedSoft : colorFrostedSoft,
-    toggleBackgroundColor: loading ? 'transparent' : checked ? colorSuccess : colorPrimary,
-    textColor: colorPrimary,
+    buttonBorderColor: checked ? ref(colorSuccessLow) : ref(colorContrastLow),
+    buttonBorderColorHover: checked ? ref(colorSuccess) : ref(colorPrimary),
+    buttonBackgroundColor: checked ? ref(colorSuccessFrostedSoft) : ref(colorFrostedSoft),
+    toggleBackgroundColor: loading ? 'transparent' : checked ? ref(colorSuccess) : ref(colorPrimary),
+    textColor: ref(colorPrimary),
   };
 };
 
@@ -59,15 +60,15 @@ export const getComponentCss = (
   const { buttonBorderColor, buttonBorderColorHover, buttonBackgroundColor, toggleBackgroundColor, textColor } =
     getColors(isChecked, isLoading);
   const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
-  const gap = `calc(11.2px * (var(${cssVarInternalSwitchScaling}) - 0.64285714) + 4px)`;
+  const gap = `calc(11.2px * (${ref(cssVarInternalSwitchScaling)} - 0.64285714) + 4px)`;
   const buttonBorderWidth = '1px';
-  const buttonWidth = `calc(var(${cssVarInternalSwitchScaling}) * 3rem)`;
-  const buttonHeight = `calc(var(${cssVarInternalSwitchScaling}) * 1.75rem)`;
-  const buttonMarginBlock = `max(0px, calc((${leadingNormal} - ${buttonHeight}) / 2))`; // Vertically centers the switch label relative to the switch size (depending on which is smaller).
+  const buttonWidth = `calc(${ref(cssVarInternalSwitchScaling)} * 3rem)`;
+  const buttonHeight = `calc(${ref(cssVarInternalSwitchScaling)} * 1.75rem)`;
+  const buttonMarginBlock = `max(0px, calc((${ref(leadingNormal)} - ${buttonHeight}) / 2))`; // Vertically centers the switch label relative to the switch size (depending on which is smaller).
   const buttonTouchInset = `calc(-${buttonBorderWidth} - max(0px, calc(24px - ${buttonHeight}) / 2))`; // Positions the switch ::before pseudo-element with a negative offset to align it with the touch target.
-  const labelPaddingTop = `max(0px, calc((${buttonHeight} - ${leadingNormal}) / 2))`; // Vertically centers the switch label relative to the switch size (depending on which is smaller).
-  const toggleDimension = `calc(var(${cssVarInternalSwitchScaling}) * 1.25rem)`;
-  const toggleTranslateX = `calc(var(${cssVarInternalSwitchScaling}) * .1875rem)`;
+  const labelPaddingTop = `max(0px, calc((${buttonHeight} - ${ref(leadingNormal)}) / 2))`; // Vertically centers the switch label relative to the switch size (depending on which is smaller).
+  const toggleDimension = `calc(${ref(cssVarInternalSwitchScaling)} * 1.25rem)`;
+  const toggleTranslateX = `calc(${ref(cssVarInternalSwitchScaling)} * .1875rem)`;
 
   return getCss({
     '@global': {
@@ -79,7 +80,7 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...(isDisabled && getDisabledBaseStyles()),
           outline: 0, // custom element is able to delegate the focus
-          font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct gap definition based on ex-unit
+          font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct gap definition based on ex-unit
           gap,
           ...hostHiddenStyles,
           ...buildResponsiveStyles(isStretched, (stretchValue: boolean) => ({
@@ -100,9 +101,9 @@ export const getComponentCss = (
         width: buttonWidth,
         height: buttonHeight,
         marginBlock: buttonMarginBlock,
-        font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct width and height definition based on ex-unit
+        font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width and height definition based on ex-unit
         border: `${buttonBorderWidth} solid ${buttonBorderColor}`,
-        borderRadius: radiusFull,
+        borderRadius: ref(radiusFull),
         background: buttonBackgroundColor,
         cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
@@ -126,7 +127,7 @@ export const getComponentCss = (
         },
       },
       label: {
-        font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         minWidth: 0, // prevents flex child to overflow max available parent size
         minHeight: 0, // prevents flex child to overflow max available parent size
         cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
@@ -153,7 +154,7 @@ export const getComponentCss = (
       placeContent: 'center',
       width: toggleDimension,
       height: toggleDimension,
-      borderRadius: radiusFull,
+      borderRadius: ref(radiusFull),
       background: toggleBackgroundColor,
       transition: getTransition('transform'),
       transform: `translate3d(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX}, 0, 0)`,

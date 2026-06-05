@@ -1,5 +1,5 @@
+import { ref, spacingStaticMd } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
-import { spacingStaticMd } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import {
   cssVariableOrderedGridColumn,
@@ -15,8 +15,8 @@ export const getComponentCss = (): string => {
       ':host': {
         display: 'grid',
         ...addImportantToEachRule({
-          gridTemplateColumns: `var(${cssVariablePseudoSpace}) 1fr`,
-          columnGap: spacingStaticMd,
+          gridTemplateColumns: `${ref(cssVariablePseudoSpace)} 1fr`,
+          columnGap: ref(spacingStaticMd),
           font: 'inherit', // ensures style can't be overwritten from outside
           color: 'inherit', // ensures style can't be overwritten from outside
           ...hostHiddenStyles,

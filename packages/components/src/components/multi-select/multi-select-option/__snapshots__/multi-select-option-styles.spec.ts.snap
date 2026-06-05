@@ -3,8 +3,8 @@
 exports[`getComponentCss() > should return correct css for isDisabled: false and selected: false 1`] = `
 ":host {
   display: block;
-  scroll-margin-block-start: calc(max(2px, var(--_p-multi-select-option-a, 1) * 6px) + 36px) !important;
-  scroll-margin-block-end: max(2px, var(--_p-multi-select-option-a, 1) * 6px) !important;
+  scroll-margin-block-start: calc(max(2px, var(--_p-multi-select-option-a,1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--_p-multi-select-option-a,1) * 6px) !important;
   --_p-checkbox-scaling: var(--_p-multi-select-option-a) !important;
 }
 :host([hidden]) {
@@ -18,7 +18,7 @@ slot {
   display: flex;
   gap: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
-  padding-inline: var(--_p-multi-select-option-b, calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
+  padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
@@ -26,8 +26,8 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-sm);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -50,9 +50,9 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -77,7 +77,7 @@ slot {
 
 @media(hover:hover) {
   .checkbox:hover {
-    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+    border-color: var(--p-checkbox-border-color,var(--p-color-primary));
   }
 }
 "
@@ -86,8 +86,8 @@ slot {
 exports[`getComponentCss() > should return correct css for isDisabled: false and selected: true 1`] = `
 ":host {
   display: block;
-  scroll-margin-block-start: calc(max(2px, var(--_p-multi-select-option-a, 1) * 6px) + 36px) !important;
-  scroll-margin-block-end: max(2px, var(--_p-multi-select-option-a, 1) * 6px) !important;
+  scroll-margin-block-start: calc(max(2px, var(--_p-multi-select-option-a,1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--_p-multi-select-option-a,1) * 6px) !important;
   --_p-checkbox-scaling: var(--_p-multi-select-option-a) !important;
 }
 :host([hidden]) {
@@ -101,7 +101,7 @@ slot {
   display: flex;
   gap: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
-  padding-inline: var(--_p-multi-select-option-b, calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
+  padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
@@ -109,8 +109,8 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-sm);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -133,9 +133,9 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   flex-shrink: 0;
 }
 .checkbox::before {
@@ -170,7 +170,7 @@ slot {
 @media(hover:hover) {
   .checkbox:hover {
     border-color: transparent;
-    background-color: var(--p-checkbox-border-color, var(--p-color-contrast-high));
+    background-color: var(--p-checkbox-border-color,var(--p-color-contrast-high));
   }
 }
 "
@@ -180,8 +180,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
 ":host {
   display: block;
   opacity: 0.4 !important;
-  scroll-margin-block-start: calc(max(2px, var(--_p-multi-select-option-a, 1) * 6px) + 36px) !important;
-  scroll-margin-block-end: max(2px, var(--_p-multi-select-option-a, 1) * 6px) !important;
+  scroll-margin-block-start: calc(max(2px, var(--_p-multi-select-option-a,1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--_p-multi-select-option-a,1) * 6px) !important;
   --_p-checkbox-scaling: var(--_p-multi-select-option-a) !important;
 }
 :host([hidden]) {
@@ -202,7 +202,7 @@ slot {
   display: flex;
   gap: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
-  padding-inline: var(--_p-multi-select-option-b, calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
+  padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
@@ -210,8 +210,8 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-sm);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -234,9 +234,9 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   pointer-events: none;
   flex-shrink: 0;
 }
@@ -265,7 +265,7 @@ slot {
 
 @media(hover:hover) {
   .checkbox:hover {
-    border-color: var(--p-checkbox-border-color, var(--p-color-primary));
+    border-color: var(--p-checkbox-border-color,var(--p-color-primary));
   }
 }
 "
@@ -275,8 +275,8 @@ exports[`getComponentCss() > should return correct css for isDisabled: true and 
 ":host {
   display: block;
   opacity: 0.4 !important;
-  scroll-margin-block-start: calc(max(2px, var(--_p-multi-select-option-a, 1) * 6px) + 36px) !important;
-  scroll-margin-block-end: max(2px, var(--_p-multi-select-option-a, 1) * 6px) !important;
+  scroll-margin-block-start: calc(max(2px, var(--_p-multi-select-option-a,1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--_p-multi-select-option-a,1) * 6px) !important;
   --_p-checkbox-scaling: var(--_p-multi-select-option-a) !important;
 }
 :host([hidden]) {
@@ -297,7 +297,7 @@ slot {
   display: flex;
   gap: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
-  padding-inline: var(--_p-multi-select-option-b, calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
+  padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
@@ -305,8 +305,8 @@ slot {
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-sm));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-sm);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -329,9 +329,9 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-md));
+  border-radius: var(--p-radius-md);
   pointer-events: none;
   flex-shrink: 0;
 }
@@ -370,7 +370,7 @@ slot {
 @media(hover:hover) {
   .checkbox:hover {
     border-color: transparent;
-    background-color: var(--p-checkbox-border-color, var(--p-color-contrast-high));
+    background-color: var(--p-checkbox-border-color,var(--p-color-contrast-high));
   }
 }
 "

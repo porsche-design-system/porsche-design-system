@@ -250,7 +250,7 @@ export function StickyBenefitsSection() {
             ref={(el) => {
               cardInnerRefs.current[i] = el;
             }}
-            className="origin-[center_top] relative w-full h-full px-fluid-xl py-fluid-md bg-frosted backdrop-blur-frosted rounded-4xl flex flex-col gap-static-md @2xl:flex-row items-center justify-between will-change-transform"
+            className="origin-[center_top] relative w-full h-full px-fluid-xl py-fluid-md bg-frosted backdrop-blur-frosted rounded-3xl flex flex-col gap-static-md @2xl:flex-row items-center justify-between will-change-transform"
           >
             {/* Dimming overlay – only needed for the cover animation */}
             {!prefersReducedMotion && (
@@ -258,7 +258,7 @@ export function StickyBenefitsSection() {
                 ref={(el) => {
                   overlayRefs.current[i] = el;
                 }}
-                className="absolute inset-0 opacity-0 bg-[light-dark(white,black)] rounded-4xl pointer-events-none will-change-[opacity]"
+                className="absolute inset-0 opacity-0 bg-[light-dark(white,black)] rounded-3xl pointer-events-none will-change-[opacity]"
               />
             )}
             <div className="flex-1 flex items-center justify-center @xl:h-full">{illustrations[i]}</div>
