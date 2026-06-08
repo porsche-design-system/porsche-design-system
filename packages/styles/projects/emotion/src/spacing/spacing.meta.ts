@@ -13,8 +13,9 @@ import {
   spacingStaticXl,
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
+import type { Meta, MetaEntry } from '../meta.types';
 
-export const spacingMeta = {
+export const spacingMeta: Meta = {
   fluid: {
     spacingFluidXs: {
       name: 'spacingFluidXs',
@@ -87,91 +88,91 @@ export const spacingMeta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingFluidXs instead. */
-const deprecatedSpacingFluidXSmall = {
+const deprecatedSpacingFluidXSmall: MetaEntry = {
   name: 'spacingFluidXSmall',
   value: spacingFluidXs,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingFluidXs instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingStaticXs instead. */
-const deprecatedSpacingStaticXSmall = {
+const deprecatedSpacingStaticXSmall: MetaEntry = {
   name: 'spacingStaticXSmall',
   value: spacingStaticXs,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingStaticXs instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingFluidSm instead. */
-const deprecatedSpacingFluidSmall = {
+const deprecatedSpacingFluidSmall: MetaEntry = {
   name: 'spacingFluidSmall',
   value: spacingFluidSm,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingFluidSm instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingStaticSm instead. */
-const deprecatedSpacingStaticSmall = {
+const deprecatedSpacingStaticSmall: MetaEntry = {
   name: 'spacingStaticSmall',
   value: spacingStaticSm,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingStaticSm instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingFluidMd instead. */
-const deprecatedSpacingFluidMedium = {
+const deprecatedSpacingFluidMedium: MetaEntry = {
   name: 'spacingFluidMedium',
   value: spacingFluidMd,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingFluidMd instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingStaticMd instead. */
-const deprecatedSpacingStaticMedium = {
+const deprecatedSpacingStaticMedium: MetaEntry = {
   name: 'spacingStaticMedium',
   value: spacingStaticMd,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingStaticMd instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingFluidLg instead. */
-const deprecatedSpacingFluidLarge = {
+const deprecatedSpacingFluidLarge: MetaEntry = {
   name: 'spacingFluidLarge',
   value: spacingFluidLg,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingFluidLg instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingStaticLg instead. */
-const deprecatedSpacingStaticLarge = {
+const deprecatedSpacingStaticLarge: MetaEntry = {
   name: 'spacingStaticLarge',
   value: spacingStaticLg,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingStaticLg instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingFluidXl instead. */
-const deprecatedSpacingFluidXLarge = {
+const deprecatedSpacingFluidXLarge: MetaEntry = {
   name: 'spacingFluidXLarge',
   value: spacingFluidXl,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingFluidXl instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingStaticXl instead. */
-const deprecatedSpacingStaticXLarge = {
+const deprecatedSpacingStaticXLarge: MetaEntry = {
   name: 'spacingStaticXLarge',
   value: spacingStaticXl,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingStaticXl instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingFluid2Xl instead. */
-const deprecatedSpacingFluidXXLarge = {
+const deprecatedSpacingFluidXXLarge: MetaEntry = {
   name: 'spacingFluidXXLarge',
   value: spacingFluid2Xl,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingFluid2Xl instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacingStatic2Xl instead. */
-const deprecatedSpacingStaticXXLarge = {
+const deprecatedSpacingStaticXXLarge: MetaEntry = {
   name: 'spacingStaticXXLarge',
   value: spacingStatic2Xl,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use spacingStatic2Xl instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacing variables directly instead. */
-const deprecatedSpacing = {
+const deprecatedSpacing: MetaEntry = {
   name: 'spacing',
   value: {
     static: {
@@ -196,7 +197,7 @@ const deprecatedSpacing = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacing variables directly instead. */
-const deprecatedSpacingFluid = {
+const deprecatedSpacingFluid: MetaEntry = {
   name: 'spacingFluid',
   value: {
     xSmall: spacingFluidXs,
@@ -211,7 +212,7 @@ const deprecatedSpacingFluid = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use spacing variables directly instead. */
-const deprecatedSpacingStatic = {
+const deprecatedSpacingStatic: MetaEntry = {
   name: 'spacingStatic',
   value: {
     xSmall: spacingStaticXs,
@@ -225,7 +226,7 @@ const deprecatedSpacingStatic = {
     'deprecated since v4.0.0, will be removed with next major release. Use spacing variables directly instead.',
 };
 
-export const deprecatedSpacingMeta = {
+export const deprecatedSpacingMeta: Meta = {
   spacingFluidXSmall: deprecatedSpacingFluidXSmall,
   spacingStaticXSmall: deprecatedSpacingStaticXSmall,
   spacingFluidSmall: deprecatedSpacingFluidSmall,

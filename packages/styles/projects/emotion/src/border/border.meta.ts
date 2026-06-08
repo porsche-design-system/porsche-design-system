@@ -9,8 +9,9 @@ import {
   radiusXl,
   radiusXs,
 } from '@porsche-design-system/tokens';
+import type { Meta, MetaEntry } from '../meta.types';
 
-export const borderMeta = {
+export const borderMeta: Meta = {
   radius: {
     radiusXs: { name: 'radiusXs', value: radiusXs, description: 'Holds a **x-small** `border-radius`.' },
     radiusSm: { name: 'radiusSm', value: radiusSm, description: 'Holds a **small** `border-radius`.' },
@@ -25,35 +26,35 @@ export const borderMeta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use radiusSm instead. */
-export const deprecatedBorderRadiusSmall = {
+export const deprecatedBorderRadiusSmall: MetaEntry = {
   name: 'borderRadiusSmall',
   value: radiusSm,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use radiusSm instead.',
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use radiusMd instead. */
-export const deprecatedBorderRadiusMedium = {
+export const deprecatedBorderRadiusMedium: MetaEntry = {
   name: 'borderRadiusMedium',
   value: radiusMd,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use radiusMd instead.',
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use radiusLg instead. */
-export const deprecatedBorderRadiusLarge = {
+export const deprecatedBorderRadiusLarge: MetaEntry = {
   name: 'borderRadiusLarge',
   value: radiusLg,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use radiusLg instead.',
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use variables directly instead. */
-export const deprecatedBorderRadius = {
+export const deprecatedBorderRadius: MetaEntry = {
   name: 'borderRadius',
   value: { small: radiusSm, medium: radiusMd, large: radiusLg } as const,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.',
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use variables directly instead. */
-export const deprecatedBorder = {
+export const deprecatedBorder: MetaEntry = {
   name: 'border',
   value: {
     radius: { small: radiusSm, medium: radiusMd, large: radiusLg },
@@ -63,27 +64,27 @@ export const deprecatedBorder = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use variables directly instead. */
-export const deprecatedBorderWidth = {
+export const deprecatedBorderWidth: MetaEntry = {
   name: 'borderWidth',
   value: { base: '2px', thin: '1px' } as const,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.',
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use 2px instead. */
-export const deprecatedBorderWidthBase = {
+export const deprecatedBorderWidthBase: MetaEntry = {
   name: 'borderWidthBase',
   value: '2px',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use 2px instead.',
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use 1px instead. */
-export const deprecatedBorderWidthThin = {
+export const deprecatedBorderWidthThin: MetaEntry = {
   name: 'borderWidthThin',
   value: '1px',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use 1px instead.',
 } as const;
 
-export const deprecatedBorderMeta = {
+export const deprecatedBorderMeta: Meta = {
   borderRadiusSmall: deprecatedBorderRadiusSmall,
   borderRadiusMedium: deprecatedBorderRadiusMedium,
   borderRadiusLarge: deprecatedBorderRadiusLarge,

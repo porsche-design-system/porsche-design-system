@@ -7,6 +7,7 @@ import {
   breakpointXs,
 } from '@porsche-design-system/tokens';
 import { getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from './helpers';
+import type { Meta } from '../meta.types';
 
 type Breakpoint = 'base' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 type MaxBreakpoint = Exclude<Breakpoint, 'base'>;
@@ -16,7 +17,7 @@ type GetMediaQueryMaxValue = (max: MaxBreakpoint) => string;
 type GetMediaQueryMinValue = (min: Breakpoint) => string;
 type GetMediaQueryMinMaxValue = (min: MinMaxBreakpoint, max: MaxBreakpoint) => string;
 
-export const mediaQueryMeta = {
+export const mediaQueryMeta: Meta = {
   breakpoint: {
     name: 'breakpoint',
     value: {

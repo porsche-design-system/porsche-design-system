@@ -1,6 +1,7 @@
 import { gradientStopsFadeDark } from '@porsche-design-system/tokens';
+import type { Meta, MetaEntry } from '../meta.types';
 
-export const gradientMeta = {
+export const gradientMeta: Meta = {
   gradientStopsFadeDark: {
     name: 'gradientStopsFadeDark',
     value: gradientStopsFadeDark,
@@ -9,7 +10,7 @@ export const gradientMeta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to bottom, ${gradientStopsFadeDark});` instead  */
-export const deprecatedGradientToBottomStyleMeta = {
+export const deprecatedGradientToBottomStyleMeta: MetaEntry = {
   name: 'gradientToBottomStyle',
   value: { background: `linear-gradient(to bottom, ${gradientStopsFadeDark})` } as const,
   description:
@@ -17,7 +18,7 @@ export const deprecatedGradientToBottomStyleMeta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to left, ${gradientStopsFadeDark});` instead  */
-export const deprecatedGradientToLeftStyleMeta = {
+export const deprecatedGradientToLeftStyleMeta: MetaEntry = {
   name: 'gradientToLeftStyle',
   value: { background: `linear-gradient(to left, ${gradientStopsFadeDark})` } as const,
   description:
@@ -25,7 +26,7 @@ export const deprecatedGradientToLeftStyleMeta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to right, ${gradientStopsFadeDark});` instead  */
-export const deprecatedGradientToRightStyleMeta = {
+export const deprecatedGradientToRightStyleMeta: MetaEntry = {
   name: 'gradientToRightStyle',
   value: { background: `linear-gradient(to right, ${gradientStopsFadeDark})` } as const,
   description:
@@ -33,14 +34,14 @@ export const deprecatedGradientToRightStyleMeta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to top, ${gradientStopsFadeDark});` instead  */
-export const deprecatedGradientToTopStyleMeta = {
+export const deprecatedGradientToTopStyleMeta: MetaEntry = {
   name: 'gradientToTopStyle',
   value: { background: `linear-gradient(to top, ${gradientStopsFadeDark})` } as const,
   description:
     'since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to top, ${gradientStopsFadeDark})` instead',
 } as const;
 
-export const deprecatedGradientMeta = {
+export const deprecatedGradientMeta: Meta = {
   gradientToBottomStyle: deprecatedGradientToBottomStyleMeta,
   gradientToLeftStyle: deprecatedGradientToLeftStyleMeta,
   gradientToRightStyle: deprecatedGradientToRightStyleMeta,

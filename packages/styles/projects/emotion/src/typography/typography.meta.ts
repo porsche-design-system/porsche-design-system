@@ -1,4 +1,5 @@
 import { colorPrimary } from '../color';
+import type { Meta, MetaEntry } from '../meta.types';
 import {
   fontFamily,
   fontLineHeight,
@@ -36,7 +37,7 @@ import {
 const deprecatedFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `;
 const deprecatedFontPartB = `/${fontLineHeight} ${fontFamily}`;
 
-export const typographyMeta = {
+export const typographyMeta: Meta = {
   proseHeading5XlStyle: {
     name: 'proseHeading5XlStyle',
     description:
@@ -240,7 +241,7 @@ export const typographyMeta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseHeading5XlStyle instead. */
-const deprecatedDisplayLargeStyle = {
+const deprecatedDisplayLargeStyle: MetaEntry = {
   name: 'displayLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeading5XlStyle instead.',
   value: {
@@ -249,7 +250,7 @@ const deprecatedDisplayLargeStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseHeading4XlStyle instead. */
-const deprecatedDisplayMediumStyle = {
+const deprecatedDisplayMediumStyle: MetaEntry = {
   name: 'displayMediumStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeading4XlStyle instead.',
   value: {
@@ -258,7 +259,7 @@ const deprecatedDisplayMediumStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseHeading3XlStyle instead. */
-const deprecatedDisplaySmallStyle = {
+const deprecatedDisplaySmallStyle: MetaEntry = {
   name: 'displaySmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeading3XlStyle instead.',
   value: {
@@ -267,7 +268,7 @@ const deprecatedDisplaySmallStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseHeading2Xl instead. */
-const deprecatedHeadingXXLargeStyle = {
+const deprecatedHeadingXXLargeStyle: MetaEntry = {
   name: 'headingXXLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeading2Xl instead.',
   value: {
@@ -276,7 +277,7 @@ const deprecatedHeadingXXLargeStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseHeadingXl instead. */
-const deprecatedHeadingXLargeStyle = {
+const deprecatedHeadingXLargeStyle: MetaEntry = {
   name: 'headingXLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeadingXl instead.',
   value: {
@@ -285,7 +286,7 @@ const deprecatedHeadingXLargeStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseHeadingLg instead. */
-const deprecatedHeadingLargeStyle = {
+const deprecatedHeadingLargeStyle: MetaEntry = {
   name: 'headingLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeadingLg instead.',
   value: {
@@ -294,7 +295,7 @@ const deprecatedHeadingLargeStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseHeadingMd instead. */
-const deprecatedHeadingMediumStyle = {
+const deprecatedHeadingMediumStyle: MetaEntry = {
   name: 'headingMediumStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeadingMd instead.',
   value: {
@@ -303,7 +304,7 @@ const deprecatedHeadingMediumStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseHeadingSm instead. */
-const deprecatedHeadingSmallStyle = {
+const deprecatedHeadingSmallStyle: MetaEntry = {
   name: 'headingSmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeadingSm instead.',
   value: {
@@ -312,7 +313,7 @@ const deprecatedHeadingSmallStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseTextXl instead. */
-const deprecatedTextXLargeStyle = {
+const deprecatedTextXLargeStyle: MetaEntry = {
   name: 'textXLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextXl instead.',
   value: {
@@ -321,7 +322,7 @@ const deprecatedTextXLargeStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseTextLg instead. */
-const deprecatedTextLargeStyle = {
+const deprecatedTextLargeStyle: MetaEntry = {
   name: 'textLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextLg instead.',
   value: {
@@ -330,7 +331,7 @@ const deprecatedTextLargeStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseTextMd instead. */
-const deprecatedTextMediumStyle = {
+const deprecatedTextMediumStyle: MetaEntry = {
   name: 'textMediumStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextMd instead.',
   value: {
@@ -339,7 +340,7 @@ const deprecatedTextMediumStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseTextSm instead. */
-const deprecatedTextSmallStyle = {
+const deprecatedTextSmallStyle: MetaEntry = {
   name: 'textSmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextSm instead.',
   value: {
@@ -348,7 +349,7 @@ const deprecatedTextSmallStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseTextXs instead. */
-const deprecatedTextXSmallStyle = {
+const deprecatedTextXSmallStyle: MetaEntry = {
   name: 'textXSmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextXs instead.',
   value: {
@@ -357,7 +358,7 @@ const deprecatedTextXSmallStyle = {
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use proseText2Xs instead. */
-const deprecatedTextXXSmallStyle = {
+const deprecatedTextXXSmallStyle: MetaEntry = {
   name: 'textXXSmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseText2Xs instead.',
   value: {
@@ -365,7 +366,7 @@ const deprecatedTextXXSmallStyle = {
   } as const,
 };
 
-export const deprecatedTypographyMeta = {
+export const deprecatedTypographyMeta: Meta = {
   display: {
     displayLargeStyle: deprecatedDisplayLargeStyle,
     displayMediumStyle: deprecatedDisplayMediumStyle,
