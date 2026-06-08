@@ -15,9 +15,10 @@
 
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import * as ts from 'typescript';
 
-const SRC_DIR = path.resolve('./src');
+const SRC_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../src');
 
 type Entry = {
   name: string; // export name, e.g. 'spacingFluidXs'
@@ -71,6 +72,7 @@ function getStringProperty(obj: ts.ObjectLiteralExpression, key: string): string
       if (ts.isStringLiteral(prop.initializer)) return prop.initializer.text;
     }
   }
+  return undefined;
 }
 
 /** Returns the boolean value of a `key: true` / `key: false` property, or undefined. */
@@ -81,6 +83,7 @@ function getBooleanProperty(obj: ts.ObjectLiteralExpression, key: string): boole
       if (prop.initializer.kind === ts.SyntaxKind.FalseKeyword) return false;
     }
   }
+  return undefined;
 }
 
 /** A leaf entry has a `name: 'string'` property; a non-leaf is a nested group. */
@@ -95,6 +98,7 @@ function getValueNode(obj: ts.ObjectLiteralExpression): ts.Node | undefined {
       return prop.initializer;
     }
   }
+  return undefined;
 }
 
 /** Reads the raw source text of any AST node. */
@@ -238,6 +242,7 @@ function resolveDescription(
       return text;
     }
   }
+  return undefined;
 }
 
 /** Resolves a `${...}` placeholder in a description template to plain text, unwrapping inlinable scalar references. */
@@ -528,6 +533,10 @@ function processMetaFile(metaFilePath: string): void {
   const localObjects = buildLocalObjectMap(source);
   const inlinableScalars = buildInlinableScalars(source, imports, localObjects);
   const { regular, deprecated } = collectAllEntries(source, localObjects, inlinableScalars);
+
+  // Wipe generated/ before writing so stale files from renamed/removed entries don't linger.
+  const generatedDir = path.join(dir, 'generated');
+  if (fs.existsSync(generatedDir)) fs.rmSync(generatedDir, { recursive: true });
 
   // Pre-compute each entry's output directory so cross-entry imports can be resolved.
   // For example, `theme.ts` needs to import `themeLight` and `themeDark` from sibling files.
