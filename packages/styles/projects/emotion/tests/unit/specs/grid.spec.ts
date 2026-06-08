@@ -1,4 +1,4 @@
-import * as fromGrid from './';
+import * as fromGrid from '../../../src/grid';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromGrid).length).toBe(39);
