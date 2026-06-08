@@ -16,7 +16,7 @@ it('should have no regression for cjs dependency tree', async () => {
 });
 
 it('should have no regression for esm dependency tree', async () => {
-  const entrypointEsm = entrypointCjs.replace(/dist\/cjs\/.*/, 'dist/esm/index.mjs');
+  const entrypointEsm = entrypointCjs.replace(/dist\/styles\/cjs\/.*/, 'dist/styles/esm/index.mjs');
   const tree = await madge(entrypointEsm);
 
   // visualize result
