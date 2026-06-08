@@ -1,4 +1,4 @@
-import { gridBasicOffsetBase } from './gridBasicOffsetBase';
+import { gridBasicOffsetBase } from './generated';
 import { gridBasicOffsetS } from './gridBasicOffsetS';
 import { gridBasicOffsetXXL } from './gridBasicOffsetXXL';
 

@@ -1,13 +1,17 @@
 import { getMediaQueryMin } from '../mediaQuery';
-import { gridBasicColumnEnd } from './gridBasicColumnEnd';
-import { gridBasicColumnStart } from './gridBasicColumnStart';
-import { gridExtendedColumnEnd } from './gridExtendedColumnEnd';
-import { gridExtendedColumnStart } from './gridExtendedColumnStart';
-import { gridFullColumnEnd } from './gridFullColumnEnd';
-import { gridFullColumnStart } from './gridFullColumnStart';
-import { gridGap } from './gridGap';
-import { gridNarrowColumnEnd } from './gridNarrowColumnEnd';
-import { gridNarrowColumnStart } from './gridNarrowColumnStart';
+import {
+  gridBasicColumnEnd,
+  gridBasicColumnStart,
+  gridExtendedColumnEnd,
+  gridExtendedColumnStart,
+  gridFullColumnEnd,
+  gridFullColumnStart,
+  gridGap,
+  gridNarrowColumnEnd,
+  gridNarrowColumnStart,
+  gridWideColumnEnd,
+  gridWideColumnStart,
+} from './generated';
 import {
   _cssVariableGridBasicSpanOneHalf,
   _cssVariableGridBasicSpanOneThird,
@@ -25,8 +29,6 @@ import {
   _gridWidthMax,
   _gridWidthMin,
 } from './gridShared';
-import { gridWideColumnEnd } from './gridWideColumnEnd';
-import { gridWideColumnStart } from './gridWideColumnStart';
 
 // _cssVariableGridOuterColumn is needed in case behaviour needs to be adjusted like when used in Flyout or Modal
 const outerColumn = `minmax(0,var(${_cssVariableGridOuterColumn},calc(var(${_cssVariableGridSafeZone}) - ${gridGap})))`;
