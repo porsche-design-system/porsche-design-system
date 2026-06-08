@@ -34,9 +34,6 @@ import {
 } from '../font';
 import type { Meta, MetaEntry } from '../meta.types';
 
-const deprecatedFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `;
-const deprecatedFontPartB = `/${fontLineHeight} ${fontFamily}`;
-
 export const typographyMeta: Meta = {
   proseHeading5XlStyle: {
     name: 'proseHeading5XlStyle',
@@ -245,7 +242,7 @@ const deprecatedDisplayLargeStyle: MetaEntry = {
   name: 'displayLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeading5XlStyle instead.',
   value: {
-    font: `${deprecatedFontPartA}${typescale5Xl}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${typescale5Xl}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -254,7 +251,7 @@ const deprecatedDisplayMediumStyle: MetaEntry = {
   name: 'displayMediumStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeading4XlStyle instead.',
   value: {
-    font: `${deprecatedFontPartA}${typescale4Xl}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${typescale4Xl}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -263,7 +260,7 @@ const deprecatedDisplaySmallStyle: MetaEntry = {
   name: 'displaySmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeading3XlStyle instead.',
   value: {
-    font: `${deprecatedFontPartA}${typescale3Xl}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${typescale3Xl}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -272,7 +269,7 @@ const deprecatedHeadingXXLargeStyle: MetaEntry = {
   name: 'headingXXLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeading2Xl instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeHeadingXXLarge}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeHeadingXXLarge}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -281,7 +278,7 @@ const deprecatedHeadingXLargeStyle: MetaEntry = {
   name: 'headingXLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeadingXl instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeHeadingXLarge}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeHeadingXLarge}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -290,7 +287,7 @@ const deprecatedHeadingLargeStyle: MetaEntry = {
   name: 'headingLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeadingLg instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeHeadingLarge}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeHeadingLarge}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -299,7 +296,7 @@ const deprecatedHeadingMediumStyle: MetaEntry = {
   name: 'headingMediumStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeadingMd instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeHeadingMedium}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeHeadingMedium}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -308,7 +305,7 @@ const deprecatedHeadingSmallStyle: MetaEntry = {
   name: 'headingSmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseHeadingSm instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeHeadingSmall}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeHeadingSmall}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -317,7 +314,7 @@ const deprecatedTextXLargeStyle: MetaEntry = {
   name: 'textXLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextXl instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeTextXLarge}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeTextXLarge}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -326,7 +323,7 @@ const deprecatedTextLargeStyle: MetaEntry = {
   name: 'textLargeStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextLg instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeTextLarge}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeTextLarge}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -335,7 +332,7 @@ const deprecatedTextMediumStyle: MetaEntry = {
   name: 'textMediumStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextMd instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeTextMedium}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeTextMedium}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -344,7 +341,7 @@ const deprecatedTextSmallStyle: MetaEntry = {
   name: 'textSmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextSm instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeTextSmall}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeTextSmall}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -353,7 +350,7 @@ const deprecatedTextXSmallStyle: MetaEntry = {
   name: 'textXSmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseTextXs instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeTextXSmall}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeTextXSmall}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 
@@ -362,7 +359,7 @@ const deprecatedTextXXSmallStyle: MetaEntry = {
   name: 'textXXSmallStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use proseText2Xs instead.',
   value: {
-    font: `${deprecatedFontPartA}${fontSizeTextXXSmall}${deprecatedFontPartB}`,
+    font: `${`${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `}${fontSizeTextXXSmall}${`/${fontLineHeight} ${fontFamily}`}`,
   } as const,
 };
 

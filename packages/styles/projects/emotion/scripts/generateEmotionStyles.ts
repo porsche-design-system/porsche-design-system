@@ -42,7 +42,6 @@ type ParsedMetaFile = {
   dir: string; // directory of the meta file
   imports: Map<string, Import>; // localName → Import
   localObjects: Map<string, ts.ObjectLiteralExpression>; // top-level const objects
-  inlinableScalars: Map<string, ts.Expression>; // local scalar const name → its value expression
   entryDirs: Map<string, string>; // entry name → its output dir (for cross-entry imports)
   regular: Entry[];
   deprecated: Entry[];
@@ -136,48 +135,6 @@ function buildLocalObjectMap(source: ts.SourceFile): Map<string, ts.ObjectLitera
   return objects;
 }
 
-/**
- * Collects local scalar consts whose values can be safely inlined into generated
- * files. Example: `const gridGap = spacingFluidMd` → 'gridGap' → 'spacingFluidMd'.
- * These are needed because value expressions may reference local names that won't
- * exist in the output file's scope.
- */
-function buildInlinableScalars(
-  source: ts.SourceFile,
-  imports: Map<string, Import>,
-  localObjects: Map<string, ts.ObjectLiteralExpression>
-): Map<string, ts.Expression> {
-  const scalars = new Map<string, ts.Expression>();
-  ts.forEachChild(source, (node) => {
-    if (!ts.isVariableStatement(node)) return;
-    for (const decl of node.declarationList.declarations) {
-      if (!ts.isIdentifier(decl.name) || !decl.initializer) continue;
-      const name = decl.name.text;
-      if (imports.has(name) || localObjects.has(name)) continue; // already tracked elsewhere
-      const init = decl.initializer as ts.Expression;
-      if (ts.isArrowFunction(init) || ts.isFunctionExpression(init) || asObjectLiteral(init)) continue;
-      if (isSimpleExpression(init, imports)) {
-        scalars.set(name, init);
-      }
-    }
-  });
-  return scalars;
-}
-
-/**
- * Returns true if an expression resolves entirely to string/number literals and
- * imported identifiers. Used to decide if a local const is safe to inline.
- */
-function isSimpleExpression(node: ts.Expression, imports: Map<string, Import>): boolean {
-  if (ts.isStringLiteral(node) || ts.isNumericLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) return true;
-  if (ts.isIdentifier(node)) return imports.has(node.text);
-  if (ts.isAsExpression(node)) return isSimpleExpression(node.expression, imports);
-  if (ts.isTemplateExpression(node)) {
-    return node.templateSpans.every((span) => isSimpleExpression(span.expression as ts.Expression, imports));
-  }
-  return false;
-}
-
 // ─── Extracting entries from *Meta exports ────────────────────────────────────
 
 /**
@@ -188,8 +145,6 @@ function isSimpleExpression(node: ts.Expression, imports: Map<string, Import>): 
 function extractEntries(
   metaObj: ts.ObjectLiteralExpression,
   localObjects: Map<string, ts.ObjectLiteralExpression>,
-  source: ts.SourceFile,
-  inlinableScalars: Map<string, ts.Expression>,
   deprecated: boolean,
   group?: string
 ): Entry[] {
@@ -206,7 +161,7 @@ function extractEntries(
 
     if (isLeafEntry(entryObj)) {
       const name = getStringProperty(entryObj, 'name')!;
-      const description = resolveDescription(entryObj, source, inlinableScalars) ?? '';
+      const description = resolveDescription(entryObj) ?? '';
       const valueNode = getValueNode(entryObj);
       const handWritten = getBooleanProperty(entryObj, 'handWritten');
       if (valueNode) entries.push({ name, valueNode, description, group, deprecated, handWritten });
@@ -214,57 +169,27 @@ function extractEntries(
       // Nested group — recurse with the property key as the group name.
       const groupKey = ts.isIdentifier(prop.name) ? prop.name.text : undefined;
       if (groupKey) {
-        entries.push(...extractEntries(entryObj, localObjects, source, inlinableScalars, deprecated, groupKey));
+        entries.push(...extractEntries(entryObj, localObjects, deprecated, groupKey));
       }
     }
   }
   return entries;
 }
 
-/**
- * Resolves the `description` property of a leaf entry to a plain string.
- * Handles template literals that reference local scalar consts.
- */
-function resolveDescription(
-  obj: ts.ObjectLiteralExpression,
-  source: ts.SourceFile,
-  inlinableScalars: Map<string, ts.Expression>
-): string | undefined {
+/** Resolves the `description` property of a leaf entry to a plain string. */
+function resolveDescription(obj: ts.ObjectLiteralExpression): string | undefined {
   for (const prop of obj.properties) {
     if (!ts.isPropertyAssignment(prop) || !ts.isIdentifier(prop.name) || prop.name.text !== 'description') continue;
     const init = prop.initializer;
     if (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) return init.text;
-    if (ts.isTemplateExpression(init)) {
-      let text = init.head.text;
-      for (const span of init.templateSpans) {
-        text += describeTemplateSpanExpression(span.expression, source, inlinableScalars) + span.literal.text;
-      }
-      return text;
-    }
   }
   return undefined;
-}
-
-/** Resolves a `${...}` placeholder in a description template to plain text, unwrapping inlinable scalar references. */
-function describeTemplateSpanExpression(
-  expr: ts.Expression,
-  source: ts.SourceFile,
-  inlinableScalars: Map<string, ts.Expression>
-): string {
-  if (!ts.isIdentifier(expr)) return `\${...}`;
-  const scalar = inlinableScalars.get(expr.text);
-  if (!scalar) return `\${${expr.text}}`;
-  // Plain string scalars (e.g. `const mdLink = '...'`) inline as their decoded text content.
-  return ts.isStringLiteral(scalar) || ts.isNoSubstitutionTemplateLiteral(scalar)
-    ? scalar.text
-    : nodeText(scalar, source);
 }
 
 /** Finds all exported *Meta variables and returns their entries split by deprecated flag. */
 function collectAllEntries(
   source: ts.SourceFile,
-  localObjects: Map<string, ts.ObjectLiteralExpression>,
-  inlinableScalars: Map<string, ts.Expression>
+  localObjects: Map<string, ts.ObjectLiteralExpression>
 ): { regular: Entry[]; deprecated: Entry[] } {
   const regular: Entry[] = [];
   const deprecated: Entry[] = [];
@@ -276,7 +201,7 @@ function collectAllEntries(
       const metaObj = decl.initializer ? asObjectLiteral(decl.initializer as ts.Expression) : undefined;
       if (!metaObj) continue;
       const isDeprecated = /^deprecated/i.test(decl.name.text);
-      const entries = extractEntries(metaObj, localObjects, source, inlinableScalars, isDeprecated);
+      const entries = extractEntries(metaObj, localObjects, isDeprecated);
       (isDeprecated ? deprecated : regular).push(...entries);
     }
   });
@@ -318,39 +243,16 @@ function collectReferenceIdentifierNodes(node: ts.Node): ts.Identifier[] {
 }
 
 /**
- * Renders the source text for a value expression with references to local scalar consts
- * replaced by their literal source — they won't exist in the output file's scope, e.g.
- * `gridGap` (-> `const gridGap = spacingFluidMd`) becomes `spacingFluidMd` in the output.
- *
- * Also returns every token import the rendered text ends up depending on, whether
- * referenced directly in the value or pulled in through an inlined scalar's own expression.
+ * Returns the value expression's source text verbatim, plus every token import it
+ * references (so the generated file can re-import them). Value expressions reference
+ * only literals, imports, or sibling-entry consts — never local helper consts.
  */
 function renderValueText(valueNode: ts.Node, parsed: ParsedMetaFile): { text: string; neededImports: Set<string> } {
   const neededImports = new Set<string>();
-  const replacements: { start: number; end: number; text: string }[] = [];
-
   for (const node of collectReferenceIdentifierNodes(valueNode)) {
-    const scalar = parsed.inlinableScalars.get(node.text);
-    if (scalar) {
-      replacements.push({
-        start: node.getStart(parsed.source),
-        end: node.getEnd(),
-        text: nodeText(scalar, parsed.source),
-      });
-      for (const id of collectReferenceIdentifierNodes(scalar)) {
-        if (parsed.imports.has(id.text)) neededImports.add(id.text);
-      }
-    } else if (parsed.imports.has(node.text)) {
-      neededImports.add(node.text);
-    }
+    if (parsed.imports.has(node.text)) neededImports.add(node.text);
   }
-
-  const valueStart = valueNode.getStart(parsed.source);
-  let text = nodeText(valueNode, parsed.source);
-  for (const { start, end, text: replacementText } of replacements.sort((a, b) => b.start - a.start)) {
-    text = text.slice(0, start - valueStart) + replacementText + text.slice(end - valueStart);
-  }
-  return { text, neededImports };
+  return { text: nodeText(valueNode, parsed.source), neededImports };
 }
 
 /** Strips TypeScript type assertions, but keeps `as const` (meaningful in output). */
@@ -531,8 +433,7 @@ function processMetaFile(metaFilePath: string): void {
 
   const imports = buildImportMap(source);
   const localObjects = buildLocalObjectMap(source);
-  const inlinableScalars = buildInlinableScalars(source, imports, localObjects);
-  const { regular, deprecated } = collectAllEntries(source, localObjects, inlinableScalars);
+  const { regular, deprecated } = collectAllEntries(source, localObjects);
 
   // Wipe generated/ before writing so stale files from renamed/removed entries don't linger.
   const generatedDir = path.join(dir, 'generated');
@@ -550,7 +451,6 @@ function processMetaFile(metaFilePath: string): void {
     dir,
     imports,
     localObjects,
-    inlinableScalars,
     entryDirs,
     regular,
     deprecated,
