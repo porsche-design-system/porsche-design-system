@@ -1,8 +1,7 @@
-import { expect, it } from 'vitest';
-import * as fromBorder from '../index';
+import * as fromBorder from '../../../../../src/border/generated/deprecated';
 
 it('should provide all exports', () => {
-  expect(Object.keys(fromBorder).length).toBe(17);
+  expect(Object.keys(fromBorder).length).toBe(8);
 });
 
 it.each<keyof typeof fromBorder>(Object.keys(fromBorder) as (keyof typeof fromBorder)[])(

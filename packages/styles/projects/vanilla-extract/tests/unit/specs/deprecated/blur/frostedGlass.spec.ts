@@ -1,5 +1,4 @@
-import { expect, it } from 'vitest';
-import * as fromFrostedGlass from './';
+import * as fromFrostedGlass from '../../../../../src/blur/generated/deprecated';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromFrostedGlass).length).toBe(1);

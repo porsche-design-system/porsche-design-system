@@ -1,1 +1,1 @@
-export { skeletonKeyframes, getSkeletonStyle } from './getSkeletonStyle';
+export * from './generated';

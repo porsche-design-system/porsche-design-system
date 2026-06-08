@@ -1,5 +1,4 @@
-import { expect, it } from 'vitest';
-import * as fromFont from './';
+import * as fromFont from '../../../../../src/font/generated/deprecated';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromFont).length).toBe(24);

@@ -1,5 +1,4 @@
-import { expect, it } from 'vitest';
-import * as fromTypography from './';
+import * as fromTypography from '../../../../../src/typography/generated/deprecated';
 
 it('should provide all typography exports', () => {
   expect(Object.keys(fromTypography).length).toBe(14);

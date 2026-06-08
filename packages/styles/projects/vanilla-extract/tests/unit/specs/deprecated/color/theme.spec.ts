@@ -1,5 +1,4 @@
-import { expect, it } from 'vitest';
-import * as fromTheme from './';
+import * as fromTheme from '../../../../../src/color/generated/deprecated';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromTheme).length).toBe(43);

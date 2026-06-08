@@ -1,5 +1,4 @@
-import { expect, it } from 'vitest';
-import * as fromDropShadow from './index';
+import * as fromDropShadow from '../../../../../src/shadow/generated/deprecated';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromDropShadow).length).toBe(3);

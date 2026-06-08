@@ -1,5 +1,4 @@
-import { expect, it } from 'vitest';
-import * as fromGradient from './';
+import * as fromGradient from '../../../../../src/gradient/generated/deprecated';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromGradient).length).toBe(4);
