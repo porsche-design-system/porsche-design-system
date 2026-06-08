@@ -19,8 +19,8 @@ import {
   typescaleXl,
   typescaleXs,
 } from '@porsche-design-system/tokens';
-import { getCJKFontFamilyStyle } from './helpers';
 import type { Meta, MetaEntry } from '../meta.types';
+import { getCJKFontFamilyStyle } from './helpers';
 
 export const fontMeta: Meta = {
   family: {

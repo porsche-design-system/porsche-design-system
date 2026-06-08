@@ -44,49 +44,49 @@ export const motionMeta: Meta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationSm instead. */
-export const deprecatedMotionDurationShortMeta: MetaEntry = {
+const deprecatedMotionDurationShortMeta: MetaEntry = {
   name: 'motionDurationShort',
   value: durationSm,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationSm instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationMd instead. */
-export const deprecatedMotionDurationModerateMeta: MetaEntry = {
+const deprecatedMotionDurationModerateMeta: MetaEntry = {
   name: 'motionDurationModerate',
   value: durationMd,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationMd instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationLg instead. */
-export const deprecatedMotionDurationLongMeta: MetaEntry = {
+const deprecatedMotionDurationLongMeta: MetaEntry = {
   name: 'motionDurationLong',
   value: durationLg,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationLg instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationXl instead. */
-export const deprecatedMotionDurationVeryLongMeta: MetaEntry = {
+const deprecatedMotionDurationVeryLongMeta: MetaEntry = {
   name: 'motionDurationVeryLong',
   value: durationXl,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationXl instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead. */
-export const deprecatedMotionEasingBaseMeta: MetaEntry = {
+const deprecatedMotionEasingBaseMeta: MetaEntry = {
   name: 'motionEasingBase',
   value: easeInOut,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use easeIn instead. */
-export const deprecatedMotionEasingInMeta: MetaEntry = {
+const deprecatedMotionEasingInMeta: MetaEntry = {
   name: 'motionEasingIn',
   value: easeIn,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use easeIn instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use easeOut instead. */
-export const deprecatedMotionEasingOutMeta: MetaEntry = {
+const deprecatedMotionEasingOutMeta: MetaEntry = {
   name: 'motionEasingOut',
   value: easeOut,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use easeOut instead.',

@@ -1,5 +1,5 @@
-import { getSkeletonStyle } from './helpers';
 import type { Meta } from '../meta.types';
+import { getSkeletonStyle } from './helpers';
 
 export const skeletonMeta: Meta = {
   getSkeletonStyle: {

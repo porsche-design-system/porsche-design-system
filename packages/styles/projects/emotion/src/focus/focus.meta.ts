@@ -1,6 +1,6 @@
+import type { Meta, MetaEntry } from '../meta.types';
 import { getFocusStyle } from './getFocusStyle';
 import { getFocusVisibleStyle } from './helpers';
-import type { Meta, MetaEntry } from '../meta.types';
 
 type FocusVisibleStyleValue = (opts?: { offset?: string }) => {
   readonly '&:focus-visible': {
@@ -29,7 +29,7 @@ export const focusMeta: Meta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use getFocusVisibleStyle instead. */
-export const deprecatedGetFocusStyleMeta: MetaEntry = {
+const deprecatedGetFocusStyleMeta: MetaEntry = {
   name: 'getFocusStyle',
   description: 'deprecated since v4.0.0, will be removed with next major release. Use getFocusVisibleStyle instead.',
   value: getFocusStyle as FocusStyleValue,
