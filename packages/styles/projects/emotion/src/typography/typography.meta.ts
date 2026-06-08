@@ -1,5 +1,4 @@
 import { colorPrimary } from '../color';
-import type { Meta, MetaEntry } from '../meta.types';
 import {
   fontFamily,
   fontLineHeight,
@@ -33,6 +32,7 @@ import {
   typescaleXl,
   typescaleXs,
 } from '../font';
+import type { Meta, MetaEntry } from '../meta.types';
 
 const deprecatedFontPartA = `${fontStyleNormal} ${fontVariant} ${fontWeightRegular} `;
 const deprecatedFontPartB = `/${fontLineHeight} ${fontFamily}`;
