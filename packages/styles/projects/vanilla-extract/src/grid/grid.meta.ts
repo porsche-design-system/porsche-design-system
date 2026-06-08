@@ -16,6 +16,7 @@ import {
   _gridWidthMax,
   _gridWidthMin,
 } from './gridShared';
+import type { Meta } from '../meta.types';
 
 const gridGap = spacingFluidMd;
 
@@ -88,7 +89,7 @@ const gridStyleValue = {
   },
 } as const;
 
-export const gridMeta = {
+export const gridMeta: Meta = {
   gridFull: {
     name: 'gridFull',
     value: { columnStart: fullStart, columnEnd: fullEnd } as const,
@@ -119,6 +120,7 @@ export const gridMeta = {
     name: 'gridBasicOffset',
     value: { base: _gridSafeZoneBase, s: getOffsetS(2), xxl: getOffsetXXL(2) } as const,
     description: 'Object containing all `basic` grid offset styles.',
+    handWritten: true,
   },
   gridBasicOffsetBase: {
     name: 'gridBasicOffsetBase',
@@ -129,11 +131,13 @@ export const gridMeta = {
     name: 'gridBasicOffsetS',
     value: getOffsetS(2),
     description: 'Holds a **small** offset within the `basic` area of the Porsche Grid.',
+    handWritten: true,
   },
   gridBasicOffsetXXL: {
     name: 'gridBasicOffsetXXL',
     value: getOffsetXXL(2),
     description: 'Holds a **xxl** offset within the `basic` area of the Porsche Grid.',
+    handWritten: true,
   },
   gridBasicSpanOneHalf: {
     name: 'gridBasicSpanOneHalf',
@@ -169,6 +173,7 @@ export const gridMeta = {
     name: 'gridExtendedOffset',
     value: { base: _gridSafeZoneBase, s: getOffsetS(1), xxl: getOffsetXXL(1) } as const,
     description: 'Object containing all `extended` grid offset styles.',
+    handWritten: true,
   },
   gridExtendedOffsetBase: {
     name: 'gridExtendedOffsetBase',
@@ -179,11 +184,13 @@ export const gridMeta = {
     name: 'gridExtendedOffsetS',
     value: getOffsetS(1),
     description: 'Holds a **small** offset within the `extended` area of the Porsche Grid.',
+    handWritten: true,
   },
   gridExtendedOffsetXXL: {
     name: 'gridExtendedOffsetXXL',
     value: getOffsetXXL(1),
     description: 'Holds a **xxl** offset within the `extended` area of the Porsche Grid.',
+    handWritten: true,
   },
   gridExtendedSpanOneHalf: {
     name: 'gridExtendedSpanOneHalf',
@@ -225,6 +232,7 @@ export const gridMeta = {
     name: 'gridNarrowOffset',
     value: { base: _gridSafeZoneBase, s: getOffsetS(4), xxl: getOffsetXXL(4) } as const,
     description: 'Object containing all `narrow` grid offset styles.',
+    handWritten: true,
   },
   gridNarrowOffsetBase: {
     name: 'gridNarrowOffsetBase',
@@ -235,11 +243,13 @@ export const gridMeta = {
     name: 'gridNarrowOffsetS',
     value: getOffsetS(4),
     description: 'Holds a **small** offset within the `narrow` area of the Porsche Grid.',
+    handWritten: true,
   },
   gridNarrowOffsetXXL: {
     name: 'gridNarrowOffsetXXL',
     value: getOffsetXXL(4),
     description: 'Holds a **xxl** offset within the `narrow` area of the Porsche Grid.',
+    handWritten: true,
   },
   gridNarrowSpanOneHalf: {
     name: 'gridNarrowSpanOneHalf',
@@ -251,6 +261,7 @@ export const gridMeta = {
     value: gridStyleValue,
     description:
       'Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested).',
+    handWritten: true,
   },
   gridWide: {
     name: 'gridWide',

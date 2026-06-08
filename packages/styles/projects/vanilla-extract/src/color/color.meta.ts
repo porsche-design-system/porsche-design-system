@@ -67,11 +67,12 @@ import {
   colorWarningFrostedLight,
   colorWarningLight,
 } from '@porsche-design-system/tokens';
+import type { Meta, MetaEntry } from '../meta.types';
 
 const mdLink =
   '[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark)';
 
-export const colorMeta = {
+export const colorMeta: Meta = {
   lightDark: {
     colorCanvas: {
       name: 'colorCanvas',
@@ -296,307 +297,307 @@ const themeLight = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
-const deprecatedTheme = {
+const deprecatedTheme: MetaEntry = {
   name: 'theme',
   value: { light: themeLight, dark: themeDark } as const,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
-const deprecatedThemeDark = {
+const deprecatedThemeDark: MetaEntry = {
   name: 'themeDark',
   value: themeDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorCanvasDark instead. */
-const deprecatedThemeDarkBackgroundBase = {
+const deprecatedThemeDarkBackgroundBase: MetaEntry = {
   name: 'themeDarkBackgroundBase',
   value: colorCanvasDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorCanvasDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead. */
-const deprecatedThemeDarkBackgroundFrosted = {
+const deprecatedThemeDarkBackgroundFrosted: MetaEntry = {
   name: 'themeDarkBackgroundFrosted',
   value: colorFrostedDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorBackdropDark instead. */
-const deprecatedThemeDarkBackgroundShading = {
+const deprecatedThemeDarkBackgroundShading: MetaEntry = {
   name: 'themeDarkBackgroundShading',
   value: colorBackdropDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorBackdropDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceDark instead. */
-const deprecatedThemeDarkBackgroundSurface = {
+const deprecatedThemeDarkBackgroundSurface: MetaEntry = {
   name: 'themeDarkBackgroundSurface',
   value: colorSurfaceDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighDark instead. */
-const deprecatedThemeDarkContrastHigh = {
+const deprecatedThemeDarkContrastHigh: MetaEntry = {
   name: 'themeDarkContrastHigh',
   value: colorContrastHighDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowDark instead. */
-const deprecatedThemeDarkContrastLow = {
+const deprecatedThemeDarkContrastLow: MetaEntry = {
   name: 'themeDarkContrastLow',
   value: colorContrastLowDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumDark instead. */
-const deprecatedThemeDarkContrastMedium = {
+const deprecatedThemeDarkContrastMedium: MetaEntry = {
   name: 'themeDarkContrastMedium',
   value: colorContrastMediumDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorDark instead. */
-const deprecatedThemeDarkNotificationError = {
+const deprecatedThemeDarkNotificationError: MetaEntry = {
   name: 'themeDarkNotificationError',
   value: colorErrorDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedDark instead. */
-const deprecatedThemeDarkNotificationErrorSoft = {
+const deprecatedThemeDarkNotificationErrorSoft: MetaEntry = {
   name: 'themeDarkNotificationErrorSoft',
   value: colorErrorFrostedDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoDark instead. */
-const deprecatedThemeDarkNotificationInfo = {
+const deprecatedThemeDarkNotificationInfo: MetaEntry = {
   name: 'themeDarkNotificationInfo',
   value: colorInfoDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedDark instead. */
-const deprecatedThemeDarkNotificationInfoSoft = {
+const deprecatedThemeDarkNotificationInfoSoft: MetaEntry = {
   name: 'themeDarkNotificationInfoSoft',
   value: colorInfoFrostedDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessDark instead. */
-const deprecatedThemeDarkNotificationSuccess = {
+const deprecatedThemeDarkNotificationSuccess: MetaEntry = {
   name: 'themeDarkNotificationSuccess',
   value: colorSuccessDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedDark instead. */
-const deprecatedThemeDarkNotificationSuccessSoft = {
+const deprecatedThemeDarkNotificationSuccessSoft: MetaEntry = {
   name: 'themeDarkNotificationSuccessSoft',
   value: colorSuccessFrostedDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningDark instead. */
-const deprecatedThemeDarkNotificationWarning = {
+const deprecatedThemeDarkNotificationWarning: MetaEntry = {
   name: 'themeDarkNotificationWarning',
   value: colorWarningDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedDark instead. */
-const deprecatedThemeDarkNotificationWarningSoft = {
+const deprecatedThemeDarkNotificationWarningSoft: MetaEntry = {
   name: 'themeDarkNotificationWarningSoft',
   value: colorWarningFrostedDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryDark instead. */
-const deprecatedThemeDarkPrimary = {
+const deprecatedThemeDarkPrimary: MetaEntry = {
   name: 'themeDarkPrimary',
   value: colorPrimaryDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead. */
-const deprecatedThemeDarkStateActive = {
+const deprecatedThemeDarkStateActive: MetaEntry = {
   name: 'themeDarkStateActive',
   value: colorFrostedDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. */
-const deprecatedThemeDarkStateDisabled = {
+const deprecatedThemeDarkStateDisabled: MetaEntry = {
   name: 'themeDarkStateDisabled',
   value: 'hsla(240,1.5%,61.8%,0.302)',
   description: 'deprecated since v4.0.0, will be removed with next major release.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorFocusDark instead. */
-const deprecatedThemeDarkStateFocus = {
+const deprecatedThemeDarkStateFocus: MetaEntry = {
   name: 'themeDarkStateFocus',
   value: colorFocusDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFocusDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead. */
-const deprecatedThemeDarkStateHover = {
+const deprecatedThemeDarkStateHover: MetaEntry = {
   name: 'themeDarkStateHover',
   value: colorFrostedDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
-const deprecatedThemeLight = {
+const deprecatedThemeLight: MetaEntry = {
   name: 'themeLight',
   value: themeLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorCanvasLight instead. */
-const deprecatedThemeLightBackgroundBase = {
+const deprecatedThemeLightBackgroundBase: MetaEntry = {
   name: 'themeLightBackgroundBase',
   value: colorCanvasLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorCanvasLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead. */
-const deprecatedThemeLightBackgroundFrosted = {
+const deprecatedThemeLightBackgroundFrosted: MetaEntry = {
   name: 'themeLightBackgroundFrosted',
   value: colorFrostedLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorBackdropLight instead. */
-const deprecatedThemeLightBackgroundShading = {
+const deprecatedThemeLightBackgroundShading: MetaEntry = {
   name: 'themeLightBackgroundShading',
   value: colorBackdropLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorBackdropLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceLight instead. */
-const deprecatedThemeLightBackgroundSurface = {
+const deprecatedThemeLightBackgroundSurface: MetaEntry = {
   name: 'themeLightBackgroundSurface',
   value: colorSurfaceLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighLight instead. */
-const deprecatedThemeLightContrastHigh = {
+const deprecatedThemeLightContrastHigh: MetaEntry = {
   name: 'themeLightContrastHigh',
   value: colorContrastHighLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowLight instead. */
-const deprecatedThemeLightContrastLow = {
+const deprecatedThemeLightContrastLow: MetaEntry = {
   name: 'themeLightContrastLow',
   value: colorContrastLowLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead. */
-const deprecatedThemeLightContrastMedium = {
+const deprecatedThemeLightContrastMedium: MetaEntry = {
   name: 'themeLightContrastMedium',
   value: colorContrastMediumLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorLight instead. */
-const deprecatedThemeLightNotificationError = {
+const deprecatedThemeLightNotificationError: MetaEntry = {
   name: 'themeLightNotificationError',
   value: colorErrorLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedLight instead. */
-const deprecatedThemeLightNotificationErrorSoft = {
+const deprecatedThemeLightNotificationErrorSoft: MetaEntry = {
   name: 'themeLightNotificationErrorSoft',
   value: colorErrorFrostedLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoLight instead. */
-const deprecatedThemeLightNotificationInfo = {
+const deprecatedThemeLightNotificationInfo: MetaEntry = {
   name: 'themeLightNotificationInfo',
   value: colorInfoLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedLight instead. */
-const deprecatedThemeLightNotificationInfoSoft = {
+const deprecatedThemeLightNotificationInfoSoft: MetaEntry = {
   name: 'themeLightNotificationInfoSoft',
   value: colorInfoFrostedLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessLight instead. */
-const deprecatedThemeLightNotificationSuccess = {
+const deprecatedThemeLightNotificationSuccess: MetaEntry = {
   name: 'themeLightNotificationSuccess',
   value: colorSuccessLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead. */
-const deprecatedThemeLightNotificationSuccessSoft = {
+const deprecatedThemeLightNotificationSuccessSoft: MetaEntry = {
   name: 'themeLightNotificationSuccessSoft',
   value: colorSuccessFrostedLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningLight instead. */
-const deprecatedThemeLightNotificationWarning = {
+const deprecatedThemeLightNotificationWarning: MetaEntry = {
   name: 'themeLightNotificationWarning',
   value: colorWarningLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead. */
-const deprecatedThemeLightNotificationWarningSoft = {
+const deprecatedThemeLightNotificationWarningSoft: MetaEntry = {
   name: 'themeLightNotificationWarningSoft',
   value: colorWarningFrostedLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead. */
-const deprecatedThemeLightPrimary = {
+const deprecatedThemeLightPrimary: MetaEntry = {
   name: 'themeLightPrimary',
   value: colorPrimaryLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead. */
-const deprecatedThemeLightStateActive = {
+const deprecatedThemeLightStateActive: MetaEntry = {
   name: 'themeLightStateActive',
   value: colorFrostedLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. */
-const deprecatedThemeLightStateDisabled = {
+const deprecatedThemeLightStateDisabled: MetaEntry = {
   name: 'themeLightStateDisabled',
   value: 'hsla(233,6.6%,23.9%,0.412)',
   description: 'deprecated since v4.0.0, will be removed with next major release.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorFocusLight instead. */
-const deprecatedThemeLightStateFocus = {
+const deprecatedThemeLightStateFocus: MetaEntry = {
   name: 'themeLightStateFocus',
   value: colorFocusLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFocusLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead. */
-const deprecatedThemeLightStateHover = {
+const deprecatedThemeLightStateHover: MetaEntry = {
   name: 'themeLightStateHover',
   value: colorFrostedLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.',
 };
 
-export const deprecatedColorMeta = {
+export const deprecatedColorMeta: Meta = {
   theme: deprecatedTheme,
   themeDark: deprecatedThemeDark,
   themeDarkBackgroundBase: deprecatedThemeDarkBackgroundBase,

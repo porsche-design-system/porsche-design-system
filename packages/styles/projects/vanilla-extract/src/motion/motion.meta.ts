@@ -7,8 +7,9 @@ import {
   easeInOut,
   easeOut,
 } from '@porsche-design-system/tokens';
+import type { Meta, MetaEntry } from '../meta.types';
 
-export const motionMeta = {
+export const motionMeta: Meta = {
   duration: {
     durationSm: { name: 'durationSm', value: durationSm, description: 'Holds a **short** `transition-duration` / `animation-duration`.' },
     durationMd: { name: 'durationMd', value: durationMd, description: 'Holds a **moderate** `transition-duration` / `animation-duration`.' },
@@ -23,55 +24,55 @@ export const motionMeta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationSm instead. */
-export const deprecatedMotionDurationShortMeta = {
+const deprecatedMotionDurationShortMeta: MetaEntry = {
   name: 'motionDurationShort',
   value: durationSm,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationSm instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationMd instead. */
-export const deprecatedMotionDurationModerateMeta = {
+const deprecatedMotionDurationModerateMeta: MetaEntry = {
   name: 'motionDurationModerate',
   value: durationMd,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationMd instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationLg instead. */
-export const deprecatedMotionDurationLongMeta = {
+const deprecatedMotionDurationLongMeta: MetaEntry = {
   name: 'motionDurationLong',
   value: durationLg,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationLg instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use durationXl instead. */
-export const deprecatedMotionDurationVeryLongMeta = {
+const deprecatedMotionDurationVeryLongMeta: MetaEntry = {
   name: 'motionDurationVeryLong',
   value: durationXl,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use durationXl instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead. */
-export const deprecatedMotionEasingBaseMeta = {
+const deprecatedMotionEasingBaseMeta: MetaEntry = {
   name: 'motionEasingBase',
   value: easeInOut,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use easeIn instead. */
-export const deprecatedMotionEasingInMeta = {
+const deprecatedMotionEasingInMeta: MetaEntry = {
   name: 'motionEasingIn',
   value: easeIn,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use easeIn instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use easeOut instead. */
-export const deprecatedMotionEasingOutMeta = {
+const deprecatedMotionEasingOutMeta: MetaEntry = {
   name: 'motionEasingOut',
   value: easeOut,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use easeOut instead.',
 };
 
-export const deprecatedMotionMeta = {
+export const deprecatedMotionMeta: Meta = {
   motionDurationShort: deprecatedMotionDurationShortMeta,
   motionDurationModerate: deprecatedMotionDurationModerateMeta,
   motionDurationLong: deprecatedMotionDurationLongMeta,
@@ -80,41 +81,3 @@ export const deprecatedMotionMeta = {
   motionEasingIn: deprecatedMotionEasingInMeta,
   motionEasingOut: deprecatedMotionEasingOutMeta,
 } as const;
-
-// export const deprecatedMotionMeta = [
-//   {
-//     name: 'motionDurationShort',
-//     value: durationSm,
-//     description: 'deprecated since v4.0.0, will be removed with next major release. Use durationSm instead.',
-//   },
-//   {
-//     name: 'motionDurationModerate',
-//     value: durationMd,
-//     description: 'deprecated since v4.0.0, will be removed with next major release. Use durationMd instead.',
-//   },
-//   {
-//     name: 'motionDurationLong',
-//     value: durationLg,
-//     description: 'deprecated since v4.0.0, will be removed with next major release. Use durationLg instead.',
-//   },
-//   {
-//     name: 'motionDurationVeryLong',
-//     value: durationXl,
-//     description: 'deprecated since v4.0.0, will be removed with next major release. Use durationXl instead.',
-//   },
-//   {
-//     name: 'motionEasingBase',
-//     value: easeInOut,
-//     description: 'deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead.',
-//   },
-//   {
-//     name: 'motionEasingIn',
-//     value: easeIn,
-//     description: 'deprecated since v4.0.0, will be removed with next major release. Use easeIn instead.',
-//   },
-//   {
-//     name: 'motionEasingOut',
-//     value: easeOut,
-//     description: 'deprecated since v4.0.0, will be removed with next major release. Use easeOut instead.',
-//   },
-// ];

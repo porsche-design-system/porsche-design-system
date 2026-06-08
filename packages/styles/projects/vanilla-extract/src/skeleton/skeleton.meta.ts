@@ -1,6 +1,7 @@
 import { getSkeletonStyle, skeletonKeyframes } from './getSkeletonStyle';
+import type { Meta } from '../meta.types';
 
-export const skeletonMeta = {
+export const skeletonMeta: Meta = {
   skeletonKeyframes: {
     name: 'skeletonKeyframes',
     value: skeletonKeyframes,

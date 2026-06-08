@@ -1,8 +1,9 @@
 import { getMediaQueryMax } from './getMediaQueryMax';
 import { getMediaQueryMin } from './getMediaQueryMin';
 import { getMediaQueryMinMax } from './getMediaQueryMinMax';
+import type { Meta } from '../meta.types';
 
-export const mediaQueryMeta = {
+export const mediaQueryMeta: Meta = {
   breakpoint: {
     name: 'breakpoint',
     value: { base: 0, xs: 480, s: 760, m: 1000, l: 1300, xl: 1760, xxl: 1920 } as const,
