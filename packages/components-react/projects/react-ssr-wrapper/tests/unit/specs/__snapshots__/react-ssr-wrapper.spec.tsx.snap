@@ -6715,7 +6715,7 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
@@ -6723,6 +6723,9 @@ dialog::backdrop {
   max-width: 100vw;
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
+}
+.flyout:dir(rtl) {
+  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
   grid-area: 1/3;
@@ -10146,7 +10149,7 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
+  clip-path: inset(0 round var(--p-radius-3xl));
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
@@ -13054,7 +13057,7 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  overflow: clip;
+  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
