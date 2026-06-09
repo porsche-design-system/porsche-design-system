@@ -1,5 +1,5 @@
-import { getFocusStyle } from '../../../../../src/focus/generated/deprecated';
 import * as fromFocus from '../../../../../src/focus/generated/deprecated';
+import { getFocusStyle } from '../../../../../src/focus/generated/deprecated';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromFocus).length).toBe(1);

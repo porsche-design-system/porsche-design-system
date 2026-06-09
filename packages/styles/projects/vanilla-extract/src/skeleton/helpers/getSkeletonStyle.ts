@@ -1,6 +1,6 @@
-import { radiusSm } from '../border';
-import { colorFrosted, colorFrostedStrong } from '../color';
-import { durationXl, easeInOut } from '../motion';
+import { radiusSm } from '../../border';
+import { colorFrosted, colorFrostedStrong } from '../../color';
+import { durationXl, easeInOut } from '../../motion';
 
 /**
  * Keyframes for the skeleton loading animation.

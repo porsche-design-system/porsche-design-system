@@ -1,6 +1,6 @@
 import type { Meta, MetaEntry } from '../meta.types';
-import { getFocusStyle } from './deprecated';
-import { getFocusVisibleStyle } from './getFocusVisibleStyle';
+import { getFocusStyle } from './getFocusStyle';
+import { getFocusVisibleStyle } from './helpers';
 
 export const focusMeta: Meta = {
   getFocusVisibleStyle: {

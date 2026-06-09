@@ -1,6 +1,6 @@
-import { breakpoint } from './breakpoint';
-import type { Breakpoint } from './breakpointShared';
-import type { BKey } from './mediaQueryShared';
+import type { Breakpoint } from '../breakpointShared';
+import { breakpoint } from '../generated/breakpoint';
+import type { BKey } from '../mediaQueryShared';
 
 export function getMediaQueryMinMax(min: BKey<'base'>, max: BKey<'xs'>): '(min-width:0px) and (max-width:479px)';
 export function getMediaQueryMinMax(min: BKey<'base'>, max: BKey<'s'>): '(min-width:0px) and (max-width:759px)';

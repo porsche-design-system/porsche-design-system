@@ -1,5 +1,5 @@
+import { gridGap } from './generated';
 import { _gridSafeZoneS, _gridSafeZoneXXL, _gridWidthMax } from './gridShared';
-import { gridGap } from './gridGap';
 
 type GridWidth = 'narrow' | 'basic' | 'extended' | 'wide' | 'full';
 

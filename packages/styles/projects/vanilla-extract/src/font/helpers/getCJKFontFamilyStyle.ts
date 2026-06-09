@@ -1,7 +1,9 @@
-import { fontPorscheNextJa } from './fontPorscheNextJa';
-import { fontPorscheNextKo } from './fontPorscheNextKo';
-import { fontPorscheNextZhHans } from './fontPorscheNextZhHans';
-import { fontPorscheNextZhHant } from './fontPorscheNextZhHant';
+import {
+  fontPorscheNextJa,
+  fontPorscheNextKo,
+  fontPorscheNextZhHans,
+  fontPorscheNextZhHant,
+} from '@porsche-design-system/tokens';
 
 export const getCJKFontFamilyStyle = () => {
   return {

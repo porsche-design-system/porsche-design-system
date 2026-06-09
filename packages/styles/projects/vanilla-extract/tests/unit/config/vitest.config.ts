@@ -12,6 +12,6 @@ export default defineConfig({
       tsconfig: './tsconfig.test.json',
     },
   },
-  // @ts-ignore
+  // @ts-expect-error
   plugins: [vanillaExtractPlugin()],
 });

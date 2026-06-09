@@ -1,7 +1,5 @@
-import { getMediaQueryMax } from './getMediaQueryMax';
-import { getMediaQueryMin } from './getMediaQueryMin';
-import { getMediaQueryMinMax } from './getMediaQueryMinMax';
 import type { Meta } from '../meta.types';
+import { getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from './helpers';
 
 export const mediaQueryMeta: Meta = {
   breakpoint: {
@@ -24,17 +22,17 @@ export const mediaQueryMeta: Meta = {
   breakpointXXL: { name: 'breakpointXXL', value: 1920, description: 'Holds the `2xl` breakpoint value.' },
   getMediaQueryMax: {
     name: 'getMediaQueryMax',
-    description: "Returns a **max-width** media query string for the specified breakpoint.",
+    description: 'Returns a **max-width** media query string for the specified breakpoint.',
     value: getMediaQueryMax,
   },
   getMediaQueryMin: {
     name: 'getMediaQueryMin',
-    description: "Returns a **min-width** media query string for the specified breakpoint.",
+    description: 'Returns a **min-width** media query string for the specified breakpoint.',
     value: getMediaQueryMin,
   },
   getMediaQueryMinMax: {
     name: 'getMediaQueryMinMax',
-    description: "Returns a **min-width and max-width** media query string for the specified breakpoints.",
+    description: 'Returns a **min-width and max-width** media query string for the specified breakpoints.',
     value: getMediaQueryMinMax,
   },
 } as const;

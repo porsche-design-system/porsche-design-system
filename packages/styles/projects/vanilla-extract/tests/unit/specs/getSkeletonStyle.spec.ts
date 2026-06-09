@@ -1,6 +1,6 @@
-import * as fromSkeleton from './index';
-import { skeletonKeyframes } from './index';
-import { getSkeletonStyle } from './getSkeletonStyle';
+import * as fromSkeleton from '../../../src/skeleton';
+import { skeletonKeyframes } from '../../../src/skeleton';
+import { getSkeletonStyle } from '../../../src/skeleton/helpers';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromSkeleton).length).toBe(2);

@@ -1,0 +1,1 @@
+export { getCJKFontFamilyStyle } from './getCJKFontFamilyStyle';
