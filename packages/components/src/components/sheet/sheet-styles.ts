@@ -62,7 +62,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
     },
     scroller: getScrollerJssStyle('fullscreen'),
     sheet: {
-      ...dialogGridJssStyle(),
+      ...dialogGridJssStyle(`inset(0 round ${dialogBorderRadius} ${dialogBorderRadius} 0 0)`), // round top corners only
       ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       width: '100%',

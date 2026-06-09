@@ -104,11 +104,21 @@ export const getComponentCss = (
       },
     },
     flyout: {
-      ...dialogGridJssStyle(),
+      ...dialogGridJssStyle(
+        isPositionStart
+          ? `inset(0 round 0 ${dialogBorderRadius} ${dialogBorderRadius} 0)` // position 'start': round inline-end (right in LTR) corners only
+          : `inset(0 round ${dialogBorderRadius} 0 0 ${dialogBorderRadius})` // position 'end': round inline-start (left in LTR) corners only
+      ),
       ...getDialogColorJssStyle(),
       width: ref(cssVariableWidth, 'auto'),
       minWidth: '320px',
       maxWidth: '100vw',
+      // `clip-path` uses physical corners, so mirror for RTL to keep parity with the logical border*Radius below
+      '&:dir(rtl)': {
+        clipPath: isPositionStart
+          ? `inset(0 round ${dialogBorderRadius} 0 0 ${dialogBorderRadius})`
+          : `inset(0 round 0 ${dialogBorderRadius} ${dialogBorderRadius} 0)`,
+      },
       ...(isPositionStart
         ? {
             borderStartEndRadius: dialogBorderRadius,

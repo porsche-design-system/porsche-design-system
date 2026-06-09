@@ -87,7 +87,7 @@ export const getComponentCss = (
     },
     scroller: getScrollerJssStyle('fullscreen'),
     modal: {
-      ...dialogGridJssStyle(),
+      ...dialogGridJssStyle(`inset(0 round ${dialogBorderRadius})`),
       ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
@@ -99,6 +99,7 @@ export const getComponentCss = (
               placeSelf: 'stretch',
               margin: 0,
               borderRadius: 0,
+              clipPath: 'none', // fullscreen has square corners, so disable corner clipping
             }
           : {
               width: ref(cssVariableWidth, 'auto'),
