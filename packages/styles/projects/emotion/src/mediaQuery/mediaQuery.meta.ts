@@ -35,6 +35,7 @@ export const mediaQueryMeta: Meta = {
     name: 'breakpoints',
     value: ['base', 'xs', 's', 'm', 'l', 'xl', 'xxl'] as const,
     description: 'Array containing all breakpoint keys.',
+    handWritten: true,
   },
   breakpointBase: { name: 'breakpointBase', value: 0, description: 'Holds the `base` breakpoint value.' },
   breakpointXS: { name: 'breakpointXS', value: breakpointXs, description: 'Holds the `xs` breakpoint value.' },

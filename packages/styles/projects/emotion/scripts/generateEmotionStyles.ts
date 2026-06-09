@@ -446,6 +446,24 @@ function processMetaFile(metaFilePath: string): void {
     entryDirs.set(entry.name, getOutputDir(dir, entry));
   }
 
+  // Guard against case-insensitive filename collisions (e.g. `breakpoints` vs `breakpointS`).
+  // These silently overwrite each other on case-insensitive filesystems (macOS) but produce two
+  // distinct files on case-sensitive CI (Linux), which breaks the typings build with TS1149.
+  // Fail loudly at generation time so the trap can't reach CI.
+  const pathByLower = new Map<string, string>();
+  for (const entry of [...regular, ...deprecated]) {
+    if (entry.handWritten) continue;
+    const outPath = path.join(getOutputDir(dir, entry), `${entry.name}.ts`);
+    const lower = outPath.toLowerCase();
+    const prev = pathByLower.get(lower);
+    if (prev && prev !== entry.name) {
+      throw new Error(
+        `Case-insensitive filename collision: '${prev}' and '${entry.name}' both generate '${outPath}' (differ only in casing). Rename or remove one entry.`
+      );
+    }
+    pathByLower.set(lower, entry.name);
+  }
+
   const parsed: ParsedMetaFile = {
     source,
     dir,
