@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Flyout`, `Modal`, `Sheet`: content no longer disappears in Chromium when many elements with a frosted
+  `backdrop-filter` (e.g. `p-tag`) are rendered
+  ([#4490](https://github.com/porsche-design-system/porsche-design-system/pull/4490))
+
 ## [4.2.0-rc.2] - 2026-06-04
 
 ### Added
