@@ -1,6 +1,4 @@
 import { gridGap } from '@porsche-design-system/emotion';
-import type { JssStyle, Styles } from 'jss';
-import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import {
   blurFrosted,
   colorBackdrop,
@@ -17,6 +15,8 @@ import {
   spacingStatic2Xs,
   spacingStaticMd,
 } from '@porsche-design-system/stylesheets';
+import type { JssStyle, Styles } from 'jss';
+import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -132,7 +132,7 @@ export const dialogPaddingTop = ref(spacingFluidMd);
 export const dialogPaddingBottom = `calc(${dialogBorderRadius} + ${ref(spacingFluidMd)})`;
 export const dialogPaddingInline = ref(spacingFluidLg);
 
-export const dialogGridJssStyle = (): JssStyle => {
+export const dialogGridJssStyle = (clipPath: string = 'none'): JssStyle => {
   return {
     position: 'relative',
     display: 'grid',
@@ -141,7 +141,8 @@ export const dialogGridJssStyle = (): JssStyle => {
     paddingTop: dialogPaddingTop,
     paddingBottom: dialogPaddingBottom,
     alignContent: 'flex-start',
-    overflow: 'clip',
+    // `overflow: clip` can't be used due to a Chromium bug that drops descendant backdrop-filter tiles (e.g. frosted p-tag); `clip-path` clips slotted content to the rounded corners without the faulty paint-containment box while keeping the scroll behavior intact
+    clipPath,
   };
 };
 
