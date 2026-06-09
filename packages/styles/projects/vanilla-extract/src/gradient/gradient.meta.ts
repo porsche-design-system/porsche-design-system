@@ -10,7 +10,7 @@ export const gradientMeta: Meta = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to bottom, ${gradientStopsFadeDark});` instead  */
-export const deprecatedGradientToBottomStyleMeta: MetaEntry = {
+const deprecatedGradientToBottomStyleMeta: MetaEntry = {
   name: 'gradientToBottomStyle',
   value: { background: `linear-gradient(to bottom, ${gradientStopsFadeDark});` } as const,
   description:
@@ -18,7 +18,7 @@ export const deprecatedGradientToBottomStyleMeta: MetaEntry = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to left, ${gradientStopsFadeDark});` instead  */
-export const deprecatedGradientToLeftStyleMeta: MetaEntry = {
+const deprecatedGradientToLeftStyleMeta: MetaEntry = {
   name: 'gradientToLeftStyle',
   value: { background: `linear-gradient(to left, ${gradientStopsFadeDark});` } as const,
   description:
@@ -26,7 +26,7 @@ export const deprecatedGradientToLeftStyleMeta: MetaEntry = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. background: `linear-gradient(to right, ${gradientStopsFadeDark});` instead  */
-export const deprecatedGradientToRightStyleMeta: MetaEntry = {
+const deprecatedGradientToRightStyleMeta: MetaEntry = {
   name: 'gradientToRightStyle',
   value: { background: `linear-gradient(to right, ${gradientStopsFadeDark});` } as const,
   description:
@@ -34,7 +34,7 @@ export const deprecatedGradientToRightStyleMeta: MetaEntry = {
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. background: `linear-gradient(to top, ${gradientStopsFadeDark});` instead  */
-export const deprecatedGradientToTopStyleMeta: MetaEntry = {
+const deprecatedGradientToTopStyleMeta: MetaEntry = {
   name: 'gradientToTopStyle',
   value: { background: `linear-gradient(to top, ${gradientStopsFadeDark});` } as const,
   description:

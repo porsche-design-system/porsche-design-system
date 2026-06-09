@@ -69,175 +69,172 @@ import {
 } from '@porsche-design-system/tokens';
 import type { Meta, MetaEntry } from '../meta.types';
 
-const mdLink =
-  '[light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark)';
-
 export const colorMeta: Meta = {
   lightDark: {
     colorCanvas: {
       name: 'colorCanvas',
       value: `var(--_color-canvas, ${_colorCanvas})`,
-      description: `Holds the ${mdLink} **canvas** color, typically used for surfaces.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **canvas** color, typically used for surfaces.`,
     },
     colorSurface: {
       name: 'colorSurface',
       value: `var(--_color-surface, ${_colorSurface})`,
-      description: `Holds the ${mdLink} **surface** color, typically used for surfaces.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **surface** color, typically used for surfaces.`,
     },
     colorFrosted: {
       name: 'colorFrosted',
       value: `var(--_color-frosted, ${_colorFrosted})`,
-      description: `Holds the ${mdLink} **frosted** color, typically used as a background in combination with \`blur()\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted** color, typically used as a background in combination with \`blur()\`.`,
     },
     colorFrostedSoft: {
       name: 'colorFrostedSoft',
       value: `var(--_color-frosted-soft, ${_colorFrostedSoft})`,
-      description: `Holds the ${mdLink} **frosted-soft** color, typically used as a background \`:hover\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-soft** color, typically used as a background \`:hover\`.`,
     },
     colorFrostedStrong: {
       name: 'colorFrostedStrong',
       value: `var(--_color-frosted-strong, ${_colorFrostedStrong})`,
-      description: `Holds the ${mdLink} **frosted-strong** color, typically used as a background in combination with \`blur()\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-strong** color, typically used as a background in combination with \`blur()\`.`,
     },
     colorBackdrop: {
       name: 'colorBackdrop',
       value: `var(--_color-backdrop, ${_colorBackdrop})`,
-      description: `Holds the ${mdLink} **backdrop** color, typically used for backdrops.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **backdrop** color, typically used for backdrops.`,
     },
     colorPrimary: {
       name: 'colorPrimary',
       value: `var(--_color-primary, ${_colorPrimary})`,
-      description: `Holds the ${mdLink} **primary** color, typically used for text.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **primary** color, typically used for text.`,
     },
     colorContrastHigher: {
       name: 'colorContrastHigher',
       value: `var(--_color-contrast-higher, ${_colorContrastHigher})`,
-      description: `Holds the ${mdLink} **contrast-higher** color, typically used for text.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-higher** color, typically used for text.`,
     },
     colorContrastHigh: {
       name: 'colorContrastHigh',
       value: `var(--_color-contrast-high, ${_colorContrastHigh})`,
-      description: `Holds the ${mdLink} **contrast-high** color, typically used for text.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-high** color, typically used for text.`,
     },
     colorContrastMedium: {
       name: 'colorContrastMedium',
       value: `var(--_color-contrast-medium, ${_colorContrastMedium})`,
-      description: `Holds the ${mdLink} **contrast-medium** color, typically used for text.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-medium** color, typically used for text.`,
     },
     colorContrastLow: {
       name: 'colorContrastLow',
       value: `var(--_color-contrast-low, ${_colorContrastLow})`,
-      description: `Holds the ${mdLink} **contrast-low** color, intended only for decorative elements.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-low** color, intended only for decorative elements.`,
     },
     colorContrastLower: {
       name: 'colorContrastLower',
       value: `var(--_color-contrast-lower, ${_colorContrastLower})`,
-      description: `Holds the ${mdLink} **contrast-lower** color, intended only for decorative elements.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-lower** color, intended only for decorative elements.`,
     },
     colorInfo: {
       name: 'colorInfo',
       value: `var(--_color-info, ${_colorInfo})`,
-      description: `Holds the ${mdLink} **info** color, typically used for text.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info** color, typically used for text.`,
     },
     colorInfoMedium: {
       name: 'colorInfoMedium',
       value: `var(--_color-info-medium, ${_colorInfoMedium})`,
-      description: `Holds the ${mdLink} **info-medium** color, typically used for text or border.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-medium** color, typically used for text or border.`,
     },
     colorInfoLow: {
       name: 'colorInfoLow',
       value: `var(--_color-info-low, ${_colorInfoLow})`,
-      description: `Holds the ${mdLink} **info-low** color, typically used for text or border.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-low** color, typically used for text or border.`,
     },
     colorInfoFrosted: {
       name: 'colorInfoFrosted',
       value: `var(--_color-info-frosted, ${_colorInfoFrosted})`,
-      description: `Holds the ${mdLink} **info-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
     },
     colorInfoFrostedSoft: {
       name: 'colorInfoFrostedSoft',
       value: `var(--_color-info-frosted-soft, ${_colorInfoFrostedSoft})`,
-      description: `Holds the ${mdLink} **info-frosted-soft** color, typically used as background \`:hover\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted-soft** color, typically used as background \`:hover\`.`,
     },
     colorSuccess: {
       name: 'colorSuccess',
       value: `var(--_color-success, ${_colorSuccess})`,
-      description: `Holds the ${mdLink} **success** color, typically used for text.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success** color, typically used for text.`,
     },
     colorSuccessMedium: {
       name: 'colorSuccessMedium',
       value: `var(--_color-success-medium, ${_colorSuccessMedium})`,
-      description: `Holds the ${mdLink} **success-medium** color, typically used for text or border.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-medium** color, typically used for text or border.`,
     },
     colorSuccessLow: {
       name: 'colorSuccessLow',
       value: `var(--_color-success-low, ${_colorSuccessLow})`,
-      description: `Holds the ${mdLink} **success-low** color, typically used for text or border.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-low** color, typically used for text or border.`,
     },
     colorSuccessFrosted: {
       name: 'colorSuccessFrosted',
       value: `var(--_color-success-frosted, ${_colorSuccessFrosted})`,
-      description: `Holds the ${mdLink} **success-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
     },
     colorSuccessFrostedSoft: {
       name: 'colorSuccessFrostedSoft',
       value: `var(--_color-success-frosted-soft, ${_colorSuccessFrostedSoft})`,
-      description: `Holds the ${mdLink} **success-frosted-soft** color, typically used as background \`:hover\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted-soft** color, typically used as background \`:hover\`.`,
     },
     colorWarning: {
       name: 'colorWarning',
       value: `var(--_color-warning, ${_colorWarning})`,
-      description: `Holds the ${mdLink} **warning** color, typically used for text.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning** color, typically used for text.`,
     },
     colorWarningMedium: {
       name: 'colorWarningMedium',
       value: `var(--_color-warning-medium, ${_colorWarningMedium})`,
-      description: `Holds the ${mdLink} **warning-medium** color, typically used for text or border.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-medium** color, typically used for text or border.`,
     },
     colorWarningLow: {
       name: 'colorWarningLow',
       value: `var(--_color-warning-low, ${_colorWarningLow})`,
-      description: `Holds the ${mdLink} **warning-low** color, typically used for text or border.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-low** color, typically used for text or border.`,
     },
     colorWarningFrosted: {
       name: 'colorWarningFrosted',
       value: `var(--_color-warning-frosted, ${_colorWarningFrosted})`,
-      description: `Holds the ${mdLink} **warning-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
     },
     colorWarningFrostedSoft: {
       name: 'colorWarningFrostedSoft',
       value: `var(--_color-warning-frosted-soft, ${_colorWarningFrostedSoft})`,
-      description: `Holds the ${mdLink} **warning-frosted-soft** color, typically used as background \`:hover\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted-soft** color, typically used as background \`:hover\`.`,
     },
     colorError: {
       name: 'colorError',
       value: `var(--_color-error, ${_colorError})`,
-      description: `Holds the ${mdLink} **error** color, typically used for text.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error** color, typically used for text.`,
     },
     colorErrorMedium: {
       name: 'colorErrorMedium',
       value: `var(--_color-error-medium, ${_colorErrorMedium})`,
-      description: `Holds the ${mdLink} **error-medium** color, typically used for text or border.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-medium** color, typically used for text or border.`,
     },
     colorErrorLow: {
       name: 'colorErrorLow',
       value: `var(--_color-error-low, ${_colorErrorLow})`,
-      description: `Holds the ${mdLink} **error-low** color, typically used for text or border.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-low** color, typically used for text or border.`,
     },
     colorErrorFrosted: {
       name: 'colorErrorFrosted',
       value: `var(--_color-error-frosted, ${_colorErrorFrosted})`,
-      description: `Holds the ${mdLink} **error-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
     },
     colorErrorFrostedSoft: {
       name: 'colorErrorFrostedSoft',
       value: `var(--_color-error-frosted-soft, ${_colorErrorFrostedSoft})`,
-      description: `Holds the ${mdLink} **error-frosted-soft** color, typically used as background \`:hover\`.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted-soft** color, typically used as background \`:hover\`.`,
     },
     colorFocus: {
       name: 'colorFocus',
       value: `var(--_color-focus, ${_colorFocus})`,
-      description: `Holds the ${mdLink} **focus** color, typically used as the outline for \`:focus-visible\` states.`,
+      description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **focus** color, typically used as the outline for \`:focus-visible\` states.`,
     },
   },
 } as const;
@@ -503,7 +500,8 @@ const deprecatedThemeLightContrastLow: MetaEntry = {
 const deprecatedThemeLightContrastMedium: MetaEntry = {
   name: 'themeLightContrastMedium',
   value: colorContrastMediumLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead.',
+  description:
+    'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorLight instead. */
@@ -545,7 +543,8 @@ const deprecatedThemeLightNotificationSuccess: MetaEntry = {
 const deprecatedThemeLightNotificationSuccessSoft: MetaEntry = {
   name: 'themeLightNotificationSuccessSoft',
   value: colorSuccessFrostedLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead.',
+  description:
+    'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningLight instead. */
@@ -559,7 +558,8 @@ const deprecatedThemeLightNotificationWarning: MetaEntry = {
 const deprecatedThemeLightNotificationWarningSoft: MetaEntry = {
   name: 'themeLightNotificationWarningSoft',
   value: colorWarningFrostedLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead.',
+  description:
+    'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead.',
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead. */

@@ -1,4 +1,5 @@
 import { spacingFluidMd } from '@porsche-design-system/tokens';
+import type { Meta } from '../meta.types';
 import {
   _cssVariableGridBasicSpanOneHalf,
   _cssVariableGridBasicSpanOneThird,
@@ -16,7 +17,6 @@ import {
   _gridWidthMax,
   _gridWidthMin,
 } from './gridShared';
-import type { Meta } from '../meta.types';
 
 const gridGap = spacingFluidMd;
 
@@ -37,12 +37,6 @@ const spanOneHalfDesktopExtended = `span 7`;
 const spanOneHalfDesktopNarrow = `span 4`;
 const spanOneThirdDesktop = `span 4`;
 const spanTwoThirdsDesktop = `span 8`;
-
-const gridBasicSpanOneHalf = `var(${_cssVariableGridBasicSpanOneHalf})`;
-const gridBasicSpanOneThird = `var(${_cssVariableGridBasicSpanOneThird})`;
-const gridBasicSpanTwoThirds = `var(${_cssVariableGridBasicSpanTwoThirds})`;
-const gridExtendedSpanOneHalf = `var(${_cssVariableGridExtendedSpanOneHalf})`;
-const gridNarrowSpanOneHalf = `var(${_cssVariableGridNarrowSpanOneHalf})`;
 
 const gridColumnWidthS = `calc((100vw - ${_gridSafeZoneS} * 2 - ${gridGap} * 15) / 16)`;
 const gridColumnWidthXXL = `calc((min(100vw, ${_gridWidthMax}) - ${_gridSafeZoneXXL} * 2 - ${gridGap} * 15) / 16)`;
@@ -92,28 +86,28 @@ const gridStyleValue = {
 export const gridMeta: Meta = {
   gridFull: {
     name: 'gridFull',
-    value: { columnStart: fullStart, columnEnd: fullEnd } as const,
+    value: { columnStart: 'full-start', columnEnd: 'full-end' } as const,
     description: 'Object containing all `full` grid styles.',
   },
   gridBasic: {
     name: 'gridBasic',
     value: {
-      columnStart: basicStart,
-      columnEnd: basicEnd,
-      spanOneHalf: gridBasicSpanOneHalf,
-      spanOneThird: gridBasicSpanOneThird,
-      spanTwoThirds: gridBasicSpanTwoThirds,
+      columnStart: 'basic-start',
+      columnEnd: 'basic-end',
+      spanOneHalf: `var(${_cssVariableGridBasicSpanOneHalf})`,
+      spanOneThird: `var(${_cssVariableGridBasicSpanOneThird})`,
+      spanTwoThirds: `var(${_cssVariableGridBasicSpanTwoThirds})`,
     } as const,
     description: 'Object containing all `basic` grid styles.',
   },
   gridBasicColumnEnd: {
     name: 'gridBasicColumnEnd',
-    value: basicEnd,
+    value: 'basic-end',
     description: 'Holds the **end** position of the `basic` area within the Porsche Grid.',
   },
   gridBasicColumnStart: {
     name: 'gridBasicColumnStart',
-    value: basicStart,
+    value: 'basic-start',
     description: 'Holds the **start** position of the `basic` area within the Porsche Grid.',
   },
   gridBasicOffset: {
@@ -141,32 +135,33 @@ export const gridMeta: Meta = {
   },
   gridBasicSpanOneHalf: {
     name: 'gridBasicSpanOneHalf',
-    value: gridBasicSpanOneHalf,
+    value: `var(${_cssVariableGridBasicSpanOneHalf})`,
     description: 'Holds a **half** span within the `basic` area of the Porsche Grid.',
   },
   gridBasicSpanOneThird: {
     name: 'gridBasicSpanOneThird',
-    value: gridBasicSpanOneThird,
+    value: `var(${_cssVariableGridBasicSpanOneThird})`,
     description: 'Holds a **one third** span within the `basic` area of the Porsche Grid.',
   },
   gridBasicSpanTwoThirds: {
     name: 'gridBasicSpanTwoThirds',
-    value: gridBasicSpanTwoThirds,
+    value: `var(${_cssVariableGridBasicSpanTwoThirds})`,
     description: 'Holds a **two thirds** span within the `basic` area of the Porsche Grid.',
   },
   gridExtended: {
     name: 'gridExtended',
-    value: { columnStart: extendedStart, columnEnd: extendedEnd, spanOneHalf: gridExtendedSpanOneHalf } as const,
+    // biome-ignore format: kept on one line so the generated file matches byte-for-byte
+    value: { columnStart: 'extended-start', columnEnd: 'extended-end', spanOneHalf: `var(${_cssVariableGridExtendedSpanOneHalf})` } as const,
     description: 'Object containing all `extended` grid styles.',
   },
   gridExtendedColumnEnd: {
     name: 'gridExtendedColumnEnd',
-    value: extendedEnd,
+    value: 'extended-end',
     description: 'Holds the **end** position of the `extended` area within the Porsche Grid.',
   },
   gridExtendedColumnStart: {
     name: 'gridExtendedColumnStart',
-    value: extendedStart,
+    value: 'extended-start',
     description: 'Holds the **start** position of the `extended` area within the Porsche Grid.',
   },
   gridExtendedOffset: {
@@ -194,38 +189,39 @@ export const gridMeta: Meta = {
   },
   gridExtendedSpanOneHalf: {
     name: 'gridExtendedSpanOneHalf',
-    value: gridExtendedSpanOneHalf,
+    value: `var(${_cssVariableGridExtendedSpanOneHalf})`,
     description: 'Holds a **half** span within the `extended` area of the Porsche Grid.',
   },
   gridFullColumnEnd: {
     name: 'gridFullColumnEnd',
-    value: fullEnd,
+    value: 'full-end',
     description: 'Holds the **end** position of the `full` area within the Porsche Grid.',
   },
   gridFullColumnStart: {
     name: 'gridFullColumnStart',
-    value: fullStart,
+    value: 'full-start',
     description: 'Holds the **start** position of the `full` area within the Porsche Grid.',
   },
   gridFullOffset: {
     name: 'gridFullOffset',
-    value: _gridPadding,
+    value: `max(0px, 50vw - ${_gridWidthMax} / 2)`,
     description: 'Holds a **full** offset within the `full` area of the Porsche Grid.',
   },
-  gridGap: { name: 'gridGap', value: gridGap, description: 'Holds the grid **gap** of the Porsche Grid.' },
+  gridGap: { name: 'gridGap', value: spacingFluidMd, description: 'Holds the grid **gap** of the Porsche Grid.' },
   gridNarrow: {
     name: 'gridNarrow',
-    value: { columnStart: narrowStart, columnEnd: narrowEnd, spanOneHalf: gridNarrowSpanOneHalf } as const,
+    // biome-ignore format: kept on one line so the generated file matches byte-for-byte
+    value: { columnStart: 'narrow-start', columnEnd: 'narrow-end', spanOneHalf: `var(${_cssVariableGridNarrowSpanOneHalf})` } as const,
     description: 'Object containing all `narrow` grid styles.',
   },
   gridNarrowColumnEnd: {
     name: 'gridNarrowColumnEnd',
-    value: narrowEnd,
+    value: 'narrow-end',
     description: 'Holds the **end** position of the `narrow` area within the Porsche Grid.',
   },
   gridNarrowColumnStart: {
     name: 'gridNarrowColumnStart',
-    value: narrowStart,
+    value: 'narrow-start',
     description: 'Holds the **start** position of the `narrow` area within the Porsche Grid.',
   },
   gridNarrowOffset: {
@@ -253,7 +249,7 @@ export const gridMeta: Meta = {
   },
   gridNarrowSpanOneHalf: {
     name: 'gridNarrowSpanOneHalf',
-    value: gridNarrowSpanOneHalf,
+    value: `var(${_cssVariableGridNarrowSpanOneHalf})`,
     description: 'Holds a **one half** span within the `narrow` area of the Porsche Grid.',
   },
   gridStyle: {
@@ -265,22 +261,23 @@ export const gridMeta: Meta = {
   },
   gridWide: {
     name: 'gridWide',
-    value: { columnStart: wideStart, columnEnd: wideEnd } as const,
+    value: { columnStart: 'wide-start', columnEnd: 'wide-end' } as const,
     description: 'Object containing all `wide` grid styles.',
   },
   gridWideColumnEnd: {
     name: 'gridWideColumnEnd',
-    value: wideEnd,
+    value: 'wide-end',
     description: 'Holds the **end** position of the `wide` area within the Porsche Grid.',
   },
   gridWideColumnStart: {
     name: 'gridWideColumnStart',
-    value: wideStart,
+    value: 'wide-start',
     description: 'Holds the **start** position of the `wide` area within the Porsche Grid.',
   },
   gridWideOffset: {
     name: 'gridWideOffset',
-    value: { base: _gridSafeZoneBase, s: _gridSafeZoneS, xxl: `calc(${_gridPadding} + ${_gridSafeZoneXXL})` } as const,
+    // biome-ignore format: kept on one line so the generated file matches byte-for-byte
+    value: { base: _gridSafeZoneBase, s: _gridSafeZoneS, xxl: `calc(${`max(0px, 50vw - ${_gridWidthMax} / 2)`} + ${_gridSafeZoneXXL})` } as const,
     description: 'Object containing all `wide` grid offset styles.',
   },
   gridWideOffsetBase: {
@@ -295,7 +292,7 @@ export const gridMeta: Meta = {
   },
   gridWideOffsetXXL: {
     name: 'gridWideOffsetXXL',
-    value: `calc(${_gridPadding} + ${_gridSafeZoneXXL})`,
+    value: `calc(${`max(0px, 50vw - ${_gridWidthMax} / 2)`} + ${_gridSafeZoneXXL})`,
     description: 'Holds a **xxl** offset within the `wide` area of the Porsche Grid.',
   },
 } as const;
