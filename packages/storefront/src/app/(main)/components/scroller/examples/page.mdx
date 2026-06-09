@@ -1,0 +1,26 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { scrollerMeta } from '@/app/(main)/components/scroller/scroller.meta';
+
+export const metadata = {
+  title: 'Scroller - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Scroller component.',
+};
+
+# Scroller <ComponentStatus tagName="p-scroller"></ComponentStatus>
+
+<TableOfContents headings={[scrollerMeta.examples.height.name, scrollerMeta.examples.scrollToPosition.name]} />
+
+## {scrollerMeta.examples.height.name}
+
+<scrollerMeta.examples.height.description />
+
+<ComponentStory story={scrollerMeta.examples.height.story} />
+
+## {scrollerMeta.examples.scrollToPosition.name}
+
+<scrollerMeta.examples.scrollToPosition.description />
+
+<ComponentExample codeSample={scrollerMeta.examples.scrollToPosition.example} />

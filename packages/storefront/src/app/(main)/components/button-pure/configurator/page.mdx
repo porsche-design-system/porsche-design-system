@@ -1,0 +1,16 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { buttonPureMeta } from '@/app/(main)/components/button-pure/button-pure.meta';
+
+export const metadata = {
+  title: 'Button Pure - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Button Pure component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Button Pure <ComponentStatus tagName="p-button-pure"></ComponentStatus>
+
+<buttonPureMeta.introduction />
+
+<Configurator tagName="p-button-pure" story={buttonPureMeta.configurator.story} />
+

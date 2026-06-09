@@ -536,3 +536,20 @@
 [data-animation].animation-play {
   animation: fade-in-up var(--p-animation-duration, 0.6s) ease-out forwards;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-1, 
+  .glow-2, 
+  .glow-3, 
+  [data-animation="fade-in-up"], 
+  [data-animation="tile-fade-in-up"], 
+  [data-animation].animation-play, 
+  [data-animation="fade-in-up"].animation-play, 
+  [data-animation="tile-fade-in-up"].animation-play,
+  [data-parallax] {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

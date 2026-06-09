@@ -1,0 +1,28 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  typographyVanillaExtractStoryHeading,
+  typographyVanillaExtractStoryText,
+} from '@/app/(main)/vanilla-extract/typography/examples/typography.stories';
+
+export const metadata = {
+  title: 'Vanilla Extract: Typography - Porsche Design System',
+  description: 'Learn about the Vanilla Extract typography styles of our design language and how to use them.',
+};
+
+# Typography
+
+<TableOfContents headings={['Heading', 'Text']} />
+
+The Porsche Design System provides multiple JS Objects for the typography style to be used in Vanilla Extract.
+
+Styles import:
+`import { proseDisplayLgStyle, proseHeadingMdStyle, proseTextSmStyle … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';`
+
+## Heading
+
+<ComponentStory story={typographyVanillaExtractStoryHeading} showCodeBlock={false} />
+
+## Text
+
+<ComponentStory story={typographyVanillaExtractStoryText} showCodeBlock={false} />

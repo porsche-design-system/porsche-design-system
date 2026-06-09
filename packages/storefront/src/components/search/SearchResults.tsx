@@ -26,25 +26,30 @@ export const SearchResults = ({
   const { items } = useHits<AlgoliaRecord>({ ...props, transformItems } as any);
 
   return (
-    <div className="h-full overflow-auto flex flex-col gap-fluid-sm">
+    <div className="h-full flex flex-col gap-fluid-sm">
       {(items as unknown as AlgoliaResult[]).map(({ category, hits }) => (
-        <section key={category}>
-          <PHeading size="small" tag="h2" className="mb-fluid-xs">
+        <div key={category}>
+          <PHeading size="small" tag="h3" className="mb-fluid-xs">
             {category}
           </PHeading>
           <ol className="flex flex-col gap-fluid-sm">
             {hits.map((hit) => (
-              <Link key={hit.url} href={hit.url} onClick={onResultClick}>
-                <li className="hit py-fluid-sm px-fluid-md bg-surface rounded-md">
-                  <p className="text-sm">
+              <li className="hit" key={hit.url}>
+                <Link
+                  href={hit.url}
+                  onClick={onResultClick}
+                  className="block py-fluid-sm px-fluid-md bg-surface rounded-md"
+                  aria-labelledby={`search-result-${hit.url}`}
+                >
+                  <p id={`search-result-${hit.url}`} className="text-sm">
                     {hit.page} {hit.tab ? ` - ${hit.tab}` : ''}
                   </p>
                   <p className="text-sm text-contrast-high">{hit.url.includes('#') ? `# ${hit.name}` : hit.name}</p>
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
           </ol>
-        </section>
+        </div>
       ))}
       <SearchRecommendations onRecommendationClick={onResultClick} />
     </div>

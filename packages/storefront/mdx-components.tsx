@@ -34,14 +34,8 @@ export const P = ({ children }: PropsWithChildren) => (
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    wrapper: ({ children }) => (
-      // biome-ignore lint/correctness/useUniqueElementIds: ok
-      <article id="main-content" className="col-[wide]">
-        {children as React.ReactNode}
-      </article>
-    ),
     h1: ({ children }) => (
-      <PHeading tag="h1" size="3xl" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
+      <PHeading tag="h1" size="3xl" id="main-heading" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
         {children as React.ReactNode}
       </PHeading>
     ),
@@ -53,8 +47,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <PHeading
           tag="h2"
           size="xl"
-          className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14"
+          className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14 focus-visible:outline outline-focus outline-offset-2 rounded-lg"
           id={id}
+          tabIndex={-1}
         >
           {children as React.ReactNode}
           <PLinkPure

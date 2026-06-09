@@ -37,6 +37,8 @@ export const Home = () => {
       <section
         className="col-[full] relative grid grid-cols-subgrid gap-y-fluid-xl"
         aria-label="Porsche Design System v4"
+        id="main-content"
+        tabIndex={-1}
       >
         {/* ── intro ── */}
         <div className="col-[wide] @container grid h-[max(580px,80vh)]">
@@ -80,10 +82,9 @@ export const Home = () => {
               </span>
             </div>
             <PLink hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-              <Link
-                href={`news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}
-                aria-label={`Release Note: Checkout the release ${localPorscheDesignSystemVersion}`}
-              />
+              <Link href={`news/changelog/#${kebabCase(localPorscheDesignSystemVersion)}`}>
+                Release Note: Checkout the release {localPorscheDesignSystemVersion}
+              </Link>
             </PLink>
           </div>
         </div>
@@ -122,7 +123,7 @@ export const Home = () => {
                 Start Designing
               </PHeading>
               <PLink className="shrink-0" hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-                <Link href="/designing/introduction/" aria-label="Start Designing" />
+                <Link href="/designing/introduction/">Start Designing</Link>
               </PLink>
             </div>
           </AppearAnimation>
@@ -141,7 +142,7 @@ export const Home = () => {
                 Start Coding
               </PHeading>
               <PLink className="shrink-0" hideLabel={true} variant="secondary" icon="arrow-right" compact={true}>
-                <Link href="/developing/introduction/" aria-label="Start Coding" />
+                <Link href="/developing/introduction/">Start Coding</Link>
               </PLink>
             </div>
           </AppearAnimation>
@@ -486,7 +487,9 @@ export const Home = () => {
         aria-label="Resources"
       >
         <AppearAnimation animation="fade-in-up">
-          <PHeading size="xl">Resources</PHeading>
+          <PHeading size="xl" tag="h2">
+            Resources
+          </PHeading>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
           <div className="flex flex-col gap-fluid-md items-start">
