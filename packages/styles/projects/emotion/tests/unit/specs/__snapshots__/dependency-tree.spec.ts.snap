@@ -396,6 +396,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
   "focus/helpers/getFocusVisibleStyle.cjs": [
     "color/generated/light-dark/colorFocus.cjs",
   ],
+  "font/fontHyphenationStyle.cjs": [],
   "font/generated/deprecated/fontFamily.cjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.cjs",
   ],
@@ -778,6 +779,7 @@ exports[`should have no regression for cjs dependency tree 1`] = `
     "color/generated/light-dark/colorWarningMedium.cjs",
     "focus/generated/deprecated/getFocusStyle.cjs",
     "focus/generated/getFocusVisibleStyle.cjs",
+    "font/fontHyphenationStyle.cjs",
     "font/generated/deprecated/fontFamily.cjs",
     "font/generated/deprecated/fontLineHeight.cjs",
     "font/generated/deprecated/fontSize.cjs",
@@ -2206,6 +2208,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
   "focus/helpers/getFocusVisibleStyle.mjs": [
     "color/generated/light-dark/colorFocus.mjs",
   ],
+  "font/fontHyphenationStyle.mjs": [],
   "font/generated/deprecated/fontFamily.mjs": [
     "tokens/dist/esm/font/family/fontPorscheNext.mjs",
   ],
@@ -2588,6 +2591,7 @@ exports[`should have no regression for esm dependency tree 1`] = `
     "color/generated/light-dark/colorWarningMedium.mjs",
     "focus/generated/deprecated/getFocusStyle.mjs",
     "focus/generated/getFocusVisibleStyle.mjs",
+    "font/fontHyphenationStyle.mjs",
     "font/generated/deprecated/fontFamily.mjs",
     "font/generated/deprecated/fontLineHeight.mjs",
     "font/generated/deprecated/fontSize.mjs",
