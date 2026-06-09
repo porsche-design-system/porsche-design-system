@@ -42,6 +42,7 @@ export const Playground = ({
               variant="secondary"
               compact={true}
               onClick={onOpenInStackblitz}
+              aria={{ 'aria-description': 'Opens in a new tab' }}
             >
               Open in Stackblitz
             </PButton>

@@ -44,6 +44,7 @@ test.describe('properties > select', () => {
       const markup = page.locator('.markup');
       const accordion = page.locator('.demo p-accordion');
       const backgroundSelect = page.locator('p-select[name="background"]');
+      const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
       await expect(accordion).toBeVisible();
       await expect(backgroundSelect).toBeVisible();
@@ -62,7 +63,7 @@ test.describe('properties > select', () => {
       await expect(markup).toContainText(expectedTag);
       await expect(markup).toContainText(backgroundPropText);
 
-      await backgroundSelect.locator('p-tag button').click();
+      await resetAllButton.click();
 
       await expect(accordion).toHaveJSProperty('background', 'none');
       await expect(backgroundSelect).toHaveJSProperty('value', 'none');
@@ -88,6 +89,7 @@ test.describe('properties > switch', () => {
       await selectMarkupFramework(page, framework);
       const markup = page.locator('.markup');
       const accordion = page.locator('.demo p-accordion');
+      const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
       await expect(accordion).toBeVisible();
       await expect(markup).toContainText(expectedTag);
@@ -105,7 +107,7 @@ test.describe('properties > switch', () => {
       await expect(accordion).toHaveJSProperty('compact', true);
 
       // Reset prop
-      await page.locator('p-switch p-tag button').click();
+      await resetAllButton.click();
       await expect(compactSwitch).toHaveJSProperty('checked', false);
       await expect(accordion).toHaveJSProperty('compact', undefined);
       await expect(markup).not.toContainText('compact');
@@ -120,6 +122,7 @@ test.describe('properties > input-text', () => {
 
     const markup = page.locator('.markup');
     const button = page.locator('.demo p-button');
+    const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
     await expect(button).toBeVisible();
     await expect(markup).toContainText('p-button');
@@ -138,7 +141,7 @@ test.describe('properties > input-text', () => {
     // Default value is for name is undefined but prop is not removed until reset is clicked
     await expect(markup).toContainText('name=""');
 
-    await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
+    await resetAllButton.click();
     await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
@@ -149,6 +152,7 @@ test.describe('properties > input-text', () => {
 
     const markup = page.locator('.markup');
     const button = page.locator('.demo p-button');
+    const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
     await expect(button).toBeVisible();
     await expect(markup).toContainText('PButton');
@@ -167,7 +171,7 @@ test.describe('properties > input-text', () => {
     // Default value is for name is undefined but prop is not removed until reset is clicked
     await expect(markup).toContainText('name=""');
 
-    await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
+    await resetAllButton.click();
     await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
@@ -178,6 +182,7 @@ test.describe('properties > input-text', () => {
 
     const markup = page.locator('.markup');
     const button = page.locator('.demo p-button');
+    const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
     await expect(button).toBeVisible();
     await expect(markup).toContainText('p-button');
@@ -196,7 +201,7 @@ test.describe('properties > input-text', () => {
     // Default value is for name is undefined but prop is not removed until reset is clicked
     await expect(markup).toContainText('name=""');
 
-    await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
+    await resetAllButton.click();
     await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
@@ -207,6 +212,7 @@ test.describe('properties > input-text', () => {
 
     const markup = page.locator('.markup');
     const button = page.locator('.demo p-button');
+    const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
     await expect(button).toBeVisible();
     await expect(markup).toContainText('PButton');
@@ -225,7 +231,7 @@ test.describe('properties > input-text', () => {
     // Default value is for name is undefined but prop is not removed until reset is clicked
     await expect(markup).toContainText('name=""');
 
-    await page.locator('p-input-text').filter({ hasText: 'Name' }).getByText('Reset').click();
+    await resetAllButton.click();
     await expect(button).toHaveJSProperty('name', undefined);
     await expect(markup).not.toContainText('name');
   });
@@ -282,6 +288,7 @@ test.describe('properties > input number', () => {
 
         const markup = page.locator('.markup');
         const pagination = page.locator('.demo p-pagination');
+        const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
         await expect(pagination).toBeVisible();
         await expect(markup).toContainText(componentTag);
@@ -301,7 +308,7 @@ test.describe('properties > input number', () => {
         await expect(pagination).toHaveJSProperty('activePage', 2);
         await expect(markup).toContainText(getProp(framework as Framework, 'active-page', '2'));
 
-        await page.locator('p-input-number').filter({ hasText: 'Active Page' }).getByText('Reset').click();
+        await resetAllButton.click();
 
         await expect(pagination).toHaveJSProperty('activePage', 1);
         await expect(textField).toHaveJSProperty('value', '1');
@@ -320,6 +327,7 @@ test.describe('properties > input number', () => {
 
         const markup = page.locator('.markup');
         const textarea = page.locator('.demo p-textarea');
+        const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
         await expect(textarea).toBeVisible();
         await expect(markup).toContainText(componentTag);
@@ -346,7 +354,7 @@ test.describe('properties > input number', () => {
         await expect(textField).toHaveJSProperty('value', '2');
         await expect(markup).toContainText(getProp(framework as Framework, 'max-length', '2'));
 
-        await page.locator('p-input-number').filter({ hasText: 'Max Length' }).getByText('Reset').click();
+        await resetAllButton.click();
 
         await expect(textarea).toHaveJSProperty('maxLength', undefined);
         await expect(textField).toHaveJSProperty('value', '');
@@ -365,6 +373,7 @@ test.describe('properties > input number', () => {
 
         const markup = page.locator('.markup');
         const tabsBar = page.locator('.demo p-tabs-bar');
+        const resetAllButton = page.locator('p-tag button').filter({ hasText: 'Reset All' });
 
         await expect(tabsBar).toBeVisible();
         await expect(markup).toContainText(componentTag);
@@ -395,7 +404,7 @@ test.describe('properties > input number', () => {
           await expect(markup).toContainText(getProp(framework as Framework, 'active-tab-index', 'activeTabIndex'));
         }
 
-        await page.locator('p-input-number').filter({ hasText: 'Active Tab Index' }).getByText('Reset').click();
+        await resetAllButton.click();
 
         await expect(tabsBar).toHaveJSProperty('activeTabIndex', 0);
         await expect(textField).toHaveJSProperty('value', '0');

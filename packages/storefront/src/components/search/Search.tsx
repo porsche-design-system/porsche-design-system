@@ -81,7 +81,7 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
       aria={{ 'aria-label': 'Search' }}
     >
       <InstantSearch searchClient={searchClient} indexName={getAlgoliaIndexName()} routing={true}>
-        <div className="h-[80vh] p-fluid-lg">
+        <div className="p-fluid-lg">
           <div className="flex flex-col gap-fluid-sm h-full">
             <PHeading size="medium" tag="h2">
               Search
