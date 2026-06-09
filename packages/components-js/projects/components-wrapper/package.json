@@ -120,5 +120,8 @@
     "./legacy-radius.css": "./global-styles/legacy-radius.css",
     "./legacy-radius": "./global-styles/legacy-radius.css"
   },
-  "style": "./global-styles/index.css"
+  "style": "./global-styles/index.css",
+  "files": [
+    "**"
+  ]
 }
