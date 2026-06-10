@@ -1,14 +1,6 @@
+import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import {
-  durationSm,
-  durationMd,
-  durationLg,
-  durationXl,
-  easeInOut,
-  easeIn,
-  easeOut,
-} from '@porsche-design-system/components-react/vanilla-extract';
+import { StylesTable } from '@/components/common/StylesTable';
 
 export const metadata = {
   title: 'Vanilla Extract: Motion - Porsche Design System',
@@ -23,17 +15,8 @@ export const metadata = {
 
 ### Duration
 
-| JS                                              | Description                                                         | Value                                            |
-| ----------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------ |
-| <Code variant="nowrap">durationSm</Code> | Holds a **short** `transition-duration` / `animation-duration`.     | <Code variant="value">{durationSm}</Code> |
-| <Code variant="nowrap">durationMd</Code> | Holds a **moderate** `transition-duration` / `animation-duration`.  | <Code variant="value">{durationMd}</Code> |
-| <Code variant="nowrap">durationLg</Code> | Holds a **long** `transition-duration` / `animation-duration`.      | <Code variant="value">{durationLg}</Code> |
-| <Code variant="nowrap">durationXl</Code> | Holds a **very long** `transition-duration` / `animation-duration`. | <Code variant="value">{durationXl}</Code> |
+<StylesTable meta={vanillaExtractMeta.motion.duration} columnLabel="JS" />
 
 ### Ease
 
-| JS                                             | Description                                       | Value                                           |
-| ---------------------------------------------- | ------------------------------------------------- | ----------------------------------------------- |
-| <Code variant="nowrap">easeInOut</Code> | Holds an **in-out** `transition-timing-function`. | <Code variant="value">{easeInOut}</Code> |
-| <Code variant="nowrap">easeIn</Code>    | Holds an **in** `transition-timing-function`.     | <Code variant="value">{easeIn}</Code>    |
-| <Code variant="nowrap">easeOut</Code>   | Holds an **out** `transition-timing-function`.    | <Code variant="value">{easeOut}</Code>   |
+<StylesTable meta={vanillaExtractMeta.motion.ease} columnLabel="JS" />

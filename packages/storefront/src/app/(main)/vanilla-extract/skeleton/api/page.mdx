@@ -1,6 +1,7 @@
+import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import { skeletonKeyframes } from '@porsche-design-system/components-react/vanilla-extract';
+import { StylesTable } from '@/components/common/StylesTable';
+import { filterMeta } from '@/lib/filterMeta';
 
 export const metadata = {
   title: 'Vanilla Extract: Skeleton - Porsche Design System',
@@ -13,12 +14,8 @@ export const metadata = {
 
 ## JS Functions
 
-| JS Function                                                           | Description                                                     |
-| --------------------------------------------------------------------- | --------------------------------------------------------------- |
-| <Code variant="nowrap">getSkeletonStyle(animationName: string)</Code> | Applies a skeleton placeholder style to indicate loading state. |
+<StylesTable meta={filterMeta(vanillaExtractMeta.skeleton, (k) => k.startsWith('get'))} columnLabel="JS Function" />
 
 ## JS
 
-| JS                                              | Description                                                                      | Value                                                            |
-| ----------------------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| <Code variant="nowrap">skeletonKeyframes</Code> | Holds the **keyframes** to be used with the `keyframes` vanila-extract function. | <Code variant="value">{JSON.stringify(skeletonKeyframes)}</Code> |
+<StylesTable meta={filterMeta(vanillaExtractMeta.skeleton, (k) => !k.startsWith('get'))} columnLabel="JS" />
