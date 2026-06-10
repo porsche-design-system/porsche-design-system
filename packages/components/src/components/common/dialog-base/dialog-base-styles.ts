@@ -43,18 +43,14 @@ export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backd
 };
 
 const dialogBackdropResetJssStyle: JssStyle = {
-  position: 'fixed', // ua-style
-  inset: 0, // ua-style
-  margin: 0, // ua-style
-  padding: 0, // ua-style
-  border: 0, // ua-style
-  width: '100dvw', // ua-style
-  height: '100dvh', // ua-style
-  maxWidth: '100dvw', // ua-style
-  maxHeight: '100dvh', // ua-style
-  overflow: 'hidden', // ua-style
-  display: 'block', // ua-style
-  outline: 0, // ua-style (we always expect a focusable element to be within the dialog)
+  all: 'unset',
+  position: 'fixed',
+  inset: 0,
+  maxWidth: '100dvw',
+  maxHeight: '100dvh',
+  overflow: 'hidden',
+  display: 'block',
+  outline: 0, // we always expect a focusable element to be within the dialog
   '&::backdrop': {
     display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
   },
@@ -65,8 +61,9 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
 
   const duration = isVisible ? 'long' : 'moderate';
   const easing = isVisible ? 'in' : 'out';
+  const delay = ref(cssVariableTransitionDuration, isVisible ? '0s' : motionDurationMap[duration]);
   // as soon as all browsers are supporting `allow-discrete`, visibility transition shouldn't be necessary anymore
-  const transition = `visibility 0s linear ${ref(cssVariableTransitionDuration, isVisible ? '0s' : motionDurationMap[duration])}, ${getTransition('background-color', duration, easing)}, ${getTransition(
+  const transition = `visibility 0s linear ${delay}, width 0s linear ${delay}, height 0s linear ${delay}, ${getTransition('background-color', duration, easing)}, ${getTransition(
     '-webkit-backdrop-filter',
     duration,
     easing
@@ -76,6 +73,8 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
     zIndex: 9999999, // fallback for fade out stacking until `overlay` + `allow-discrete` is supported in all browsers. It tries to mimic #top-layer positioning hierarchy.
     ...(isVisible
       ? {
+          width: '100dvw',
+          height: '100dvh',
           visibility: 'inherit',
           pointerEvents: 'auto',
           background: ref(colorBackdrop),
@@ -85,6 +84,12 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
           }),
         }
       : {
+          // When the dialog lives inside a new stacking context, it is no longer promoted to the #top-layer while closed.
+          // In that case it can reserve additional space and break the surrounding layout, so width and height are collapsed to zero.
+          // A future improvement could use `transition-behavior: allow-discrete` to toggle between `display: none` and `block`,
+          // but browser support is still insufficient and behaves inconsistently in Safari and Firefox.
+          width: '0px',
+          height: '0px',
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
           pointerEvents: 'none', // element can't be interacted with mouse
           background: 'transparent',
