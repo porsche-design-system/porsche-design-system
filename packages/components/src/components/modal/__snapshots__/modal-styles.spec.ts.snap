@@ -29,30 +29,28 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -137,30 +135,28 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -238,30 +234,28 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -339,30 +333,28 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -447,30 +439,28 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -548,30 +538,28 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -653,30 +641,28 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -755,30 +741,28 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -863,30 +847,28 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -958,30 +940,28 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -1053,30 +1033,28 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -1158,32 +1136,30 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1255,32 +1231,30 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1362,32 +1336,30 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1456,32 +1428,30 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1546,32 +1516,30 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1646,32 +1614,30 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1843,32 +1809,30 @@ slot[name=footer][data-stuck]::after {
   backdrop-filter: var(--p-blur-frosted);
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1963,32 +1927,30 @@ slot[name=footer][data-stuck]::after {
   backdrop-filter: var(--p-blur-frosted);
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -2064,32 +2026,30 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -2175,32 +2135,30 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
   outline: 0;
   z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 

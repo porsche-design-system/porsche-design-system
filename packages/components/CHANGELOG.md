@@ -14,10 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.2.0-rc.4] - 2026-06-10
+
 ### Fixed
 
-- `Radio Group`: Prevent clicks on `label-after` slot from bubbling to the
-  host element ([#4477](https://github.com/porsche-design-system/porsche-design-system/pull/4477))
+- `Radio Group`: Prevent clicks on `label-after` slot from bubbling to the host element
+  ([#4477](https://github.com/porsche-design-system/porsche-design-system/pull/4477))
+- `Flyout`, `Modal`, `Sheet`: Prevent dialog elements from reserving layout space in closed state when placed within a
+  new stacking context ([#4494](https://github.com/porsche-design-system/porsche-design-system/pull/4494))
 
 ## [4.2.0-rc.3] - 2026-06-09
 

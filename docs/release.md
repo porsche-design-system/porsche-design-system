@@ -20,8 +20,8 @@ version can be released.
 ### Publish
 
 1. Create a commit with following message structure
-   `Release Porsche Design System - Components (JS/Angular/React/Vue) v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}`
-   (e.g. `Release Porsche Design System - Components (JS/Angular/React/Vue) v4.0.0-rc.0 | sas`)
+   `Release Porsche Design System v{MAJOR_NUMBER}.{MINOR_NUMBER}.{PATCH_NUMBER} | {DEVELOPER_ABBREVEATION}` (e.g.
+   `Release Porsche Design System v4.0.0-rc.0 | sas`)
 2. Push the local commit to the release branch, e.g. `git push origin release/components-v4.0.0-rc.0`
 3. Create pull request and start review
 4. Merge into `main` branch (then CI/CD will trigger a release automatically)
@@ -62,7 +62,8 @@ release can be published.
 
 1. Create a new housekeeping branch from `main` e.g. `git checkout -b housekeeping/components-v4.0.0`
 2. Adapt PDS version in Stackblitz framework `package.json` files, e.g.
-   `./packages/storefront/projects/stackblitz/src/(js/angular/react/vue)/package.json` to the newly released stable version.
+   `./packages/storefront/projects/stackblitz/src/(js/angular/react/vue)/package.json` to the newly released stable
+   version.
 3. Create new pull request from e.g. `housekeeping/components-v4.0.0` into `main` branch and merge
 4. Create pull request from `main` into `v4` branch
 5. Merge into `v4` branch (then CI/CD will trigger a Storefront deployment automatically)

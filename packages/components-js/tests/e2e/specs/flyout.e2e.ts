@@ -917,7 +917,7 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveCSS('--p-flyout-sticky-top', '107px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '203px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 
