@@ -1,10 +1,10 @@
+import { ref, spacingFluidLg } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { spacingFluidLg } from '../../styles/css-variables';
 import { getCss } from '../../utils';
 import {
   dialogBorderRadius,
@@ -62,12 +62,12 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
     },
     scroller: getScrollerJssStyle('fullscreen'),
     sheet: {
-      ...dialogGridJssStyle(),
+      ...dialogGridJssStyle(`inset(0 round ${dialogBorderRadius} ${dialogBorderRadius} 0 0)`), // round top corners only
       ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       width: '100%',
       alignSelf: 'flex-end',
-      marginBlockStart: spacingFluidLg, // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
+      marginBlockStart: ref(spacingFluidLg), // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
       borderTopLeftRadius: dialogBorderRadius,
       borderTopRightRadius: dialogBorderRadius,
       ...forcedColorsMediaQuery({

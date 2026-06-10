@@ -1,3 +1,4 @@
+import { ref } from '@porsche-design-system/stylesheets';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -28,8 +29,8 @@ export const getComponentCss = (
     ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly),
     ...(toggle && {
       button: {
-        padding: `var(${cssVarButtonPurePadding})`,
-        margin: `var(${cssVarButtonPureMargin})`,
+        padding: ref(cssVarButtonPurePadding),
+        margin: ref(cssVarButtonPureMargin),
       },
     }),
   });

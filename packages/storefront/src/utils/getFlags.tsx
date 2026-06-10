@@ -7,9 +7,21 @@ export const getFlags = <
 ): JSX.Element => {
   return (
     <>
-      {meta.isDeprecated && <span title="deprecated">🚫</span>}
-      {meta.isBreakpointCustomizable && <span title="breakpoint-customizable">🛠</span>}
-      {meta.isExperimental && <span title="experimental">🧪</span>}
+      {meta.isDeprecated && (
+        <span role="img" aria-label="deprecated">
+          🚫
+        </span>
+      )}
+      {meta.isBreakpointCustomizable && (
+        <span role="img" aria-label="breakpoint customizable">
+          🛠
+        </span>
+      )}
+      {meta.isExperimental && (
+        <span role="img" aria-label="experimental">
+          🧪
+        </span>
+      )}
     </>
   );
 };

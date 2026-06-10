@@ -89,23 +89,17 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
     if (allowedValues === 'boolean') {
       return (
         <div key={propName} className="flex gap-static-xs">
-          <PSwitch
-            checked={getCurrentValue(propName, propMeta) === 'true'}
-            compact={true}
-            onUpdate={(e) => onUpdateProps(propName, e.detail.checked)}
-          >
-            <span className="inline-flex gap-static-xs">
+          <span className="inline-flex gap-static-xs">
+            <PSwitch
+              checked={getCurrentValue(propName, propMeta) === 'true'}
+              compact={true}
+              onUpdate={(e) => onUpdateProps(propName, e.detail.checked)}
+            >
               {capitalCase(propName)}
-              <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
-              {getFlags(propMeta)}
-              <ResetButton
-                propName={propName}
-                configuredProps={configuredProps}
-                defaultProps={defaultProps}
-                onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-              />
-            </span>
-          </PSwitch>
+            </PSwitch>
+            <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
+            {getFlags(propMeta)}
+          </span>
         </div>
       );
     }
@@ -132,12 +126,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
-            <ResetButton
-              propName={propName}
-              configuredProps={configuredProps}
-              defaultProps={defaultProps}
-              onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-            />
           </span>
         </PInputText>
       );
@@ -163,12 +151,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
-            <ResetButton
-              propName={propName}
-              configuredProps={configuredProps}
-              defaultProps={defaultProps}
-              onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-            />
           </span>
         </PInputNumber>
       );
@@ -189,12 +171,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
-            <ResetButton
-              propName={propName}
-              configuredProps={configuredProps}
-              defaultProps={defaultProps}
-              onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-            />
           </span>
           {renderOptions(propName, propMeta)}
         </PSelect>
@@ -308,29 +284,4 @@ type ResetButtonProps<T extends ConfiguratorTagNames> = {
   configuredProps: ElementConfig<T>['properties'];
   defaultProps: ElementConfig<HTMLTagOrComponent>['properties'];
   onReset: (propName: keyof ElementConfig<T>['properties']) => void;
-};
-
-const ResetButton = <T extends ConfiguratorTagNames>({
-  propName,
-  configuredProps,
-  defaultProps,
-  onReset,
-}: ResetButtonProps<T>) => {
-  return (
-    <>
-      {configuredProps?.[propName] !== defaultProps?.[propName] && (
-        <PTag variant="secondary" compact={true}>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              onReset(propName);
-            }}
-          >
-            Reset
-          </button>
-        </PTag>
-      )}
-    </>
-  );
 };

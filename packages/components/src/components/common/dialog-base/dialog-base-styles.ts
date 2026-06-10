@@ -1,6 +1,4 @@
 import { gridGap } from '@porsche-design-system/emotion';
-import type { JssStyle, Styles } from 'jss';
-import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import {
   blurFrosted,
   colorBackdrop,
@@ -8,14 +6,17 @@ import {
   colorFrosted,
   colorPrimary,
   colorSurface,
-  legacyRadiusLarge,
+  radius2Xl,
   radius3Xl,
-  radiusXl,
+  ref,
   spacingFluidLg,
   spacingFluidMd,
   spacingFluidSm,
+  spacingStatic2Xs,
   spacingStaticMd,
-} from '../../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import type { JssStyle, Styles } from 'jss';
+import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -24,11 +25,11 @@ const cssVarBackgroundColor = '--_p-dialog-a';
 
 export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle => {
   return {
-    '--pds-internal-grid-outer-column': `calc(${spacingFluidLg} - ${gridGap})`,
-    '--pds-internal-grid-margin': `calc(${spacingFluidLg} * -1)`,
+    '--pds-internal-grid-outer-column': `calc(${ref(spacingFluidLg)} - ${gridGap})`,
+    '--pds-internal-grid-margin': `calc(${ref(spacingFluidLg)} * -1)`,
     '--pds-internal-grid-width-min': 'auto',
     '--pds-internal-grid-width-max': 'none',
-    [cssVarBackgroundColor]: background === 'surface' ? colorSurface : colorCanvas,
+    [cssVarBackgroundColor]: background === 'surface' ? ref(colorSurface) : ref(colorCanvas),
   };
 };
 
@@ -65,7 +66,7 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
   const duration = isVisible ? 'long' : 'moderate';
   const easing = isVisible ? 'in' : 'out';
   // as soon as all browsers are supporting `allow-discrete`, visibility transition shouldn't be necessary anymore
-  const transition = `visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]}), ${getTransition('background-color', duration, easing)}, ${getTransition(
+  const transition = `visibility 0s linear ${ref(cssVariableTransitionDuration, isVisible ? '0s' : motionDurationMap[duration])}, ${getTransition('background-color', duration, easing)}, ${getTransition(
     '-webkit-backdrop-filter',
     duration,
     easing
@@ -77,10 +78,10 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
       ? {
           visibility: 'inherit',
           pointerEvents: 'auto',
-          background: colorBackdrop,
+          background: ref(colorBackdrop),
           ...(isBackdropBlur && {
-            WebkitBackdropFilter: blurFrosted,
-            backdropFilter: blurFrosted,
+            WebkitBackdropFilter: ref(blurFrosted),
+            backdropFilter: ref(blurFrosted),
           }),
         }
       : {
@@ -126,27 +127,29 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
   };
 };
 
-export const dialogBorderRadius = `var(${legacyRadiusLarge}, ${radiusXl})`;
-export const dialogPaddingTop = spacingFluidMd;
-export const dialogPaddingBottom = `calc(${spacingFluidSm} + ${spacingFluidMd})`;
-export const dialogPaddingInline = spacingFluidLg;
+export const dialogBorderRadius = ref(radius3Xl);
+export const dialogPaddingTop = ref(spacingFluidMd);
+export const dialogPaddingBottom = `calc(${dialogBorderRadius} + ${ref(spacingFluidMd)})`;
+export const dialogPaddingInline = ref(spacingFluidLg);
 
-export const dialogGridJssStyle = (): JssStyle => {
+export const dialogGridJssStyle = (clipPath: string = 'none'): JssStyle => {
   return {
     position: 'relative',
     display: 'grid',
-    gridTemplate: `auto/${spacingFluidSm} minmax(0,1fr) ${spacingFluidSm}`,
-    gap: `${spacingFluidMd} calc(${spacingFluidLg} - ${spacingFluidSm})`,
+    gridTemplate: `auto/${ref(spacingFluidSm)} minmax(0,1fr) ${ref(spacingFluidSm)}`,
+    gap: `${ref(spacingFluidMd)} calc(${ref(spacingFluidLg)} - ${ref(spacingFluidSm)})`,
     paddingTop: dialogPaddingTop,
     paddingBottom: dialogPaddingBottom,
     alignContent: 'flex-start',
+    // `overflow: clip` can't be used due to a Chromium bug that drops descendant backdrop-filter tiles (e.g. frosted p-tag); `clip-path` clips slotted content to the rounded corners without the faulty paint-containment box while keeping the scroll behavior intact
+    clipPath,
   };
 };
 
 export const getDialogColorJssStyle = (): JssStyle => {
   return {
-    color: colorPrimary, // enables color inheritance for slots
-    background: `var(${cssVarBackgroundColor})`,
+    color: ref(colorPrimary), // enables color inheritance for slots
+    background: ref(cssVarBackgroundColor),
   };
 };
 
@@ -178,11 +181,11 @@ export const getDialogDismissButtonJssStyle = (): JssStyle => {
     gridArea: '1/3',
     zIndex: 5, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',
-    top: spacingFluidSm,
-    marginTop: `calc(-1 * ${dialogPaddingTop} + ${spacingFluidSm})`,
-    marginInlineEnd: spacingFluidSm,
+    top: ref(spacingFluidSm),
+    marginTop: `calc(-1 * ${dialogPaddingTop} + ${ref(spacingFluidSm)})`,
+    marginInlineEnd: ref(spacingFluidSm),
     placeSelf: 'flex-start flex-end',
-    boxShadow: `0px 0px 30px hsla(from var(${cssVarBackgroundColor}) h s l / 0.35)`,
+    filter: 'invert(1) brightness(1.02)',
   };
 };
 
@@ -197,7 +200,7 @@ export const getSlotJssStyle = (): JssStyle => {
 
 export const getSlotHeaderJssStyle = (): JssStyle => {
   const paddingTop = dialogPaddingTop;
-  const paddingBottom = spacingStaticMd;
+  const paddingBottom = ref(spacingStaticMd);
 
   return {
     gridColumn: '1/-1',
@@ -206,7 +209,7 @@ export const getSlotHeaderJssStyle = (): JssStyle => {
     top: 0, // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
     marginBlock: `calc(-1 * ${paddingTop}) calc(-1 * ${paddingBottom})`,
     padding: `${paddingTop} ${dialogPaddingInline} ${paddingBottom}`,
-    background: `linear-gradient(180deg,var(${cssVarBackgroundColor}) 0%,var(${cssVarBackgroundColor}) 80%,transparent 100%)`,
+    background: `linear-gradient(180deg,${ref(cssVarBackgroundColor)} 0%,${ref(cssVarBackgroundColor)} 80%,transparent 100%)`,
   };
 };
 
@@ -219,7 +222,7 @@ export const getSlotMainJssStyle = (): JssStyle => {
 
 export const getSlotFooterJssStyle = (): JssStyle => {
   const paddingBlock = `calc(${dialogPaddingBottom} - ${dialogBorderRadius})`;
-  const offset = `calc(${paddingBlock} / 2)`;
+  const offset = `12 * ${ref(spacingStatic2Xs)}`;
 
   return {
     gridColumn: '1/-1',
@@ -228,16 +231,16 @@ export const getSlotFooterJssStyle = (): JssStyle => {
     bottom: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
     marginBlock: `calc(-1 * ${paddingBlock})`,
     padding: `${paddingBlock} ${dialogPaddingInline}`,
-    background: `linear-gradient(0deg,var(${cssVarBackgroundColor}) 0%,var(${cssVarBackgroundColor}) 20%,transparent 80%)`,
+    background: `linear-gradient(0deg,${ref(cssVarBackgroundColor)} 0%,${ref(cssVarBackgroundColor)} 20%,transparent 80%)`,
     '&[data-stuck]::after': {
       content: '""',
       zIndex: -1,
       position: 'absolute',
       inset: `calc(${paddingBlock} - ${offset}) calc(${dialogPaddingInline} - ${offset})`,
-      background: colorFrosted,
-      borderRadius: radius3Xl,
-      WebkitBackdropFilter: blurFrosted,
-      backdropFilter: blurFrosted,
+      background: ref(colorFrosted),
+      borderRadius: ref(radius2Xl),
+      WebkitBackdropFilter: ref(blurFrosted),
+      backdropFilter: ref(blurFrosted),
     },
   };
 };
@@ -247,6 +250,6 @@ export const getSlotSubFooterJssStyle = (): JssStyle => {
     gridColumn: '1/-1',
     zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     paddingInline: dialogPaddingInline,
-    backgroundColor: `var(${cssVarBackgroundColor})`,
+    backgroundColor: ref(cssVarBackgroundColor),
   };
 };

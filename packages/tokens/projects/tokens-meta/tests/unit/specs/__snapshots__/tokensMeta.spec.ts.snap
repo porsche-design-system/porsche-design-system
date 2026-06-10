@@ -12,12 +12,12 @@ exports[`should match snapshot 1`] = `
   "border": {
     "radius": {
       "radius2Xl": {
-        "description": "Holds a **2xl** \`border-radius\`.",
+        "description": "Holds a **2xl** \`border-radius\`. Used for notification components (e.g. \`p-banner\`, \`p-inline-notification\`, \`p-toast\`,…).",
         "name": "radius2Xl",
         "value": "16px",
       },
       "radius3Xl": {
-        "description": "Holds a **3xl** \`border-radius\`.",
+        "description": "Holds a **3xl** \`border-radius\`. Used for card-like containers or dialogs (e.g. \`p-link-tile\`, \`p-modal\`, \`p-flyout\`, \`p-sheet\`,…). Defines the primary visual appearance alongside **radiusXl**.",
         "name": "radius3Xl",
         "value": "24px",
       },
@@ -27,17 +27,17 @@ exports[`should match snapshot 1`] = `
         "value": "32px",
       },
       "radiusFull": {
-        "description": "Holds a **full** \`border-radius\`.",
+        "description": "Holds a **full** \`border-radius\`. Used for pill shapes (e.g. \`p-tag\`, \`p-switch\`,…). Recommended only for standalone indicators.",
         "name": "radiusFull",
         "value": "calc(infinity * 1px)",
       },
       "radiusLg": {
-        "description": "Holds a **lg** \`border-radius\`.",
+        "description": "Holds a **lg** \`border-radius\`. Used for interactive controls in **compact mode** (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…).",
         "name": "radiusLg",
         "value": "8px",
       },
       "radiusMd": {
-        "description": "Holds a **md** \`border-radius\`.",
+        "description": "Holds a **md** \`border-radius\`. Used for \`p-checkbox\` in **compact mode**.",
         "name": "radiusMd",
         "value": "6px",
       },
@@ -47,7 +47,7 @@ exports[`should match snapshot 1`] = `
         "value": "4px",
       },
       "radiusXl": {
-        "description": "Holds a **xl** \`border-radius\`.",
+        "description": "Holds a **xl** \`border-radius\`. Used for interactive controls (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…). Defines the primary visual appearance alongside **radius3Xl**.",
         "name": "radiusXl",
         "value": "12px",
       },

@@ -22,12 +22,12 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
   radiusLg,
   radiusXl,
+  ref,
   typescaleSm,
-} from './css-variables';
+} from '@porsche-design-system/stylesheets';
 
 type Colors = {
   textColor: string;
@@ -40,14 +40,14 @@ const getVariantColors = (variant: LinkButtonVariant): Colors => {
     [v in LinkButtonVariant]: Colors;
   } = {
     primary: {
-      textColor: colorCanvas,
-      backgroundColor: colorPrimary,
-      backgroundColorHover: colorContrastHigh,
+      textColor: ref(colorCanvas),
+      backgroundColor: ref(colorPrimary),
+      backgroundColorHover: ref(colorContrastHigh),
     },
     secondary: {
-      textColor: colorPrimary,
-      backgroundColor: colorFrostedStrong,
-      backgroundColorHover: colorFrosted,
+      textColor: ref(colorPrimary),
+      backgroundColor: ref(colorFrostedStrong),
+      backgroundColorHover: ref(colorFrosted),
     },
   };
 
@@ -68,10 +68,10 @@ export const getLinkButtonStyles = (
 
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
-  const paddingBlock = `calc(28px * (var(${cssVariableInternalScaling}) - 0.64285714) + 6px)`;
-  const paddingInline = `calc(33.6px * (var(${cssVariableInternalScaling}) - 0.64285714) + 16px)`;
-  const gap = `calc(11.2px * (var(${cssVariableInternalScaling}) - 0.64285714) + 4px)`;
-  const iconMarginInlineStart = `calc(-1 * (11.2px * (var(${cssVariableInternalScaling}) - 0.64285714) + 4px))`;
+  const paddingBlock = `calc(28px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 6px)`;
+  const paddingInline = `calc(33.6px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 16px)`;
+  const gap = `calc(11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px)`;
+  const iconMarginInlineStart = `calc(-1 * (11.2px * (${ref(cssVariableInternalScaling)} - 0.64285714) + 4px))`;
 
   return {
     '@global': {
@@ -81,12 +81,10 @@ export const getLinkButtonStyles = (
         ...mergeDeep(
           buildResponsiveStyles(isCompact, (compactValue: boolean) => ({
             [`${cssVariableInternalScaling}`]: compactValue ? 0.64285714 : 1,
-            '--_p-link-button-a': compactValue ? radiusLg : radiusXl,
+            '--_p-link-button-a': compactValue ? ref(radiusLg) : ref(radiusXl),
           })),
           buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-            borderRadius: addImportantToRule(
-              `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : 'var(--_p-link-button-a)'})`
-            ),
+            borderRadius: addImportantToRule(hideLabelValue ? ref(radiusFull) : ref('--_p-link-button-a')),
           }))
         ),
         ...addImportantToEachRule({
@@ -102,9 +100,9 @@ export const getLinkButtonStyles = (
       width: '100%', // Allows for setting a width on the host
       minWidth: 'min-content', // Do not shrink beyond icon size + padding + border + label
       boxSizing: 'border-box',
-      WebkitBackdropFilter: blurFrosted,
-      backdropFilter: blurFrosted,
-      font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+      WebkitBackdropFilter: ref(blurFrosted),
+      backdropFilter: ref(blurFrosted),
+      font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       borderRadius: 'inherit',
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
@@ -141,9 +139,9 @@ export const getLinkButtonStyles = (
     label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {
       icon: {
-        font: `${typescaleSm} ${fontPorscheNext}`, // needed for correct width/height definition based on ex-unit
-        width: leadingNormal, // ensure space is already reserved until icon component is loaded (ssr)
-        height: leadingNormal, // ensure space is already reserved until icon component is loaded (ssr)
+        font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
+        width: ref(leadingNormal), // ensure space is already reserved until icon component is loaded (ssr)
+        height: ref(leadingNormal), // ensure space is already reserved until icon component is loaded (ssr)
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           marginInlineStart: hideLabelValue ? 0 : iconMarginInlineStart, // compensate white space of svg icon and optimize visual alignment
         })),

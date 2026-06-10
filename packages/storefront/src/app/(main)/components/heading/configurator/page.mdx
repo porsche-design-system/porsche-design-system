@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { headingMeta } from '@/app/(main)/components/heading/heading.meta';
+
+export const metadata = {
+  title: 'Heading - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Heading component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Heading <ComponentStatus tagName="p-heading"></ComponentStatus>
+
+<headingMeta.introduction />
+
+<Configurator tagName="p-heading" story={headingMeta.configurator.story} />

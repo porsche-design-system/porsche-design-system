@@ -2,7 +2,7 @@
 
 import { PHeading, PText } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 
 const BENEFITS = [
@@ -137,8 +137,23 @@ export function StickyBenefitsSection() {
   /* Dim-overlay refs – one per card, created once */
   const overlayRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  /* Respect the user's reduced-motion preference – disable the sticky scroll effect entirely */
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const prefersReducedMotionRef = useRef(false);
+
   const updateCards = useCallback(() => {
     const n = BENEFITS.length;
+
+    /* ── Reduced motion: reset any applied styles and bail out ── */
+    if (prefersReducedMotionRef.current) {
+      for (let i = 0; i < n; i++) {
+        const inner = cardInnerRefs.current[i];
+        const overlay = overlayRefs.current[i];
+        if (inner) inner.style.transform = '';
+        if (overlay) overlay.style.opacity = '0';
+      }
+      return;
+    }
 
     /* ── 1. Batch-READ: collect all rects first (no style writes yet) ── */
     const rects: (DOMRect | null)[] = [];
@@ -191,10 +206,22 @@ export function StickyBenefitsSection() {
   }, [updateCards]);
 
   useEffect(() => {
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    prefersReducedMotionRef.current = motionQuery.matches;
+    setPrefersReducedMotion(motionQuery.matches);
+
+    const onMotionPreferenceChange = (e: MediaQueryListEvent) => {
+      prefersReducedMotionRef.current = e.matches;
+      setPrefersReducedMotion(e.matches);
+      updateCards(); // re-apply or reset styles immediately on preference change
+    };
+
+    motionQuery.addEventListener('change', onMotionPreferenceChange);
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
     updateCards(); // initial positioning
     return () => {
+      motionQuery.removeEventListener('change', onMotionPreferenceChange);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
       cancelAnimationFrame(rafId.current);
@@ -209,12 +236,13 @@ export function StickyBenefitsSection() {
           ref={(el) => {
             wrapperRefs.current[i] = el;
           }}
-          className="sticky"
+          className={prefersReducedMotion ? undefined : 'sticky'}
           style={{
-            top: `${STICKY_TOP}px`,
+            top: prefersReducedMotion ? undefined : `${STICKY_TOP}px`,
             zIndex: i,
             marginBottom: i < BENEFITS.length - 1 ? '1.5rem' : 0,
-            height: CARD_HEIGHT_CSS,
+            height: prefersReducedMotion ? undefined : CARD_HEIGHT_CSS,
+            minHeight: prefersReducedMotion ? undefined : CARD_HEIGHT_CSS,
             contain: 'layout style paint',
           }}
         >
@@ -222,15 +250,17 @@ export function StickyBenefitsSection() {
             ref={(el) => {
               cardInnerRefs.current[i] = el;
             }}
-            className="origin-[center_top] relative w-full h-full px-fluid-xl py-fluid-md bg-frosted backdrop-blur-frosted rounded-4xl flex flex-col gap-static-md @2xl:flex-row items-center justify-between will-change-transform"
+            className="origin-[center_top] relative w-full h-full px-fluid-xl py-fluid-md bg-frosted backdrop-blur-frosted rounded-3xl flex flex-col gap-static-md @2xl:flex-row items-center justify-between will-change-transform"
           >
-            {/* Dimming overlay – GPU-composited opacity instead of expensive filter */}
-            <div
-              ref={(el) => {
-                overlayRefs.current[i] = el;
-              }}
-              className="absolute inset-0 opacity-0 bg-[light-dark(white,black)] rounded-4xl pointer-events-none will-change-[opacity]"
-            />
+            {/* Dimming overlay – only needed for the cover animation */}
+            {!prefersReducedMotion && (
+              <div
+                ref={(el) => {
+                  overlayRefs.current[i] = el;
+                }}
+                className="absolute inset-0 opacity-0 bg-[light-dark(white,black)] rounded-3xl pointer-events-none will-change-[opacity]"
+              />
+            )}
             <div className="flex-1 flex items-center justify-center @xl:h-full">{illustrations[i]}</div>
             <div className="flex-1 h-full flex flex-col items-center justify-center rounded-[2.5rem]">
               <div className="text-center max-w-[28rem] flex flex-col gap-static-xs">

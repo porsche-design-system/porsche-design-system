@@ -160,6 +160,11 @@ export namespace Components {
          */
         "headingTag"?: AccordionHeadingTag;
         /**
+          * Indents the slotted content to be vertically aligned with the text of the summary section.
+          * @default false
+         */
+        "indent"?: BreakpointCustomizable<boolean>;
+        /**
           * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
@@ -4297,6 +4302,11 @@ declare namespace LocalJSX {
          */
         "headingTag"?: AccordionHeadingTag;
         /**
+          * Indents the slotted content to be vertically aligned with the text of the summary section.
+          * @default false
+         */
+        "indent"?: BreakpointCustomizable<boolean>;
+        /**
           * Emitted when the accordion state changes.
          */
         "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
@@ -7555,6 +7565,7 @@ declare namespace LocalJSX {
         "alignMarker": AccordionAlignMarker;
         "background": AccordionBackground;
         "compact": boolean;
+        "indent": string;
         "size": BreakpointCustomizable<AccordionSize>;
         "heading": string;
         "headingTag": AccordionHeadingTag;

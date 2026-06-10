@@ -1,5 +1,5 @@
+import { fontPorscheNext, leadingNormal, ref } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
-import { fontPorscheNext, leadingNormal } from '../../styles/css-variables';
 import { colorMap, sizeMap } from '../../styles/maps';
 import type { BreakpointCustomizable, IconName } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
@@ -46,7 +46,7 @@ export const getComponentCss = (
   color: IconColor,
   size: BreakpointCustomizable<IconSize>
 ): string => {
-  const dimension = `var(${cssVarSize},${leadingNormal})`;
+  const dimension = ref(cssVarSize, ref(leadingNormal));
   const mask = `url("${buildIconUrl(source || name)}") center/contain no-repeat`;
 
   return getCss({
@@ -70,13 +70,13 @@ export const getComponentCss = (
         pointerEvents: 'none', // disable dragging/ghosting of images
         width: dimension,
         height: dimension,
-        fontFamily: fontPorscheNext, // needed for correct width/height definition based on ex-unit
+        fontFamily: ref(fontPorscheNext), // needed for correct width/height definition based on ex-unit
         ...buildResponsiveStyles(size, (s: IconSize) => ({
           fontSize: sizeMap[s], // needed for correct width/height definition based on ex-unit
         })),
         WebkitMask: mask, // necessary for Sogou browser support :-)
         mask,
-        background: `var(${cssVarColor},${colorMap[color]})`,
+        background: ref(cssVarColor, colorMap[color]),
         ...forcedColorsMediaQuery({
           background: 'CanvasText',
         }),

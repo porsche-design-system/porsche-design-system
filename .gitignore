@@ -107,9 +107,9 @@ packages/components-react/projects/nextjs/styles/getSharedStyles.tsx
 packages/shared/bin/
 
 # Storefront
-packages/storefront-old/scripts/algoliaRecords.json
-packages/storefront-old/src/pages/changelog.md
-packages/storefront-old/public/porsche-design-system
+packages/storefront/scripts/algoliaRecords.json
+packages/storefront/src/app/(main)/news/changelog/page.mdx
+packages/storefront/src/app/(main)/license/license.mdx
 packages/storefront/public/porsche-design-system
 
 # Lib

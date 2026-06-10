@@ -11,7 +11,7 @@
     "build:generateTableOfContents": "tsx --tsconfig tsconfig.node.json scripts/generateTableOfContents.ts",
     "build:preparePartialResults": "tsx --tsconfig tsconfig.node.json scripts/preparePartialResults.ts",
     "build:prepareChangelog": "tsx --tsconfig tsconfig.node.json scripts/prepareChangelog.ts",
-    "build:copyLicense": "cp ../../LICENSE.md ./src/app/license/license.mdx",
+    "build:copyLicense": "cp ../../LICENSE.md './src/app/(main)/license/license.mdx'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws -p 8080 -d ./dist'",
     "updateAlgolia": "tsx --tsconfig tsconfig.json scripts/updateAlgoliaIndex.tsx",
     "lint": "biome lint",
@@ -37,7 +37,7 @@
     "clean:stackblitz:build": "npm run clean:build --workspace=@porsche-design-system/stackblitz"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "4.2.0-rc.1",
+    "@porsche-design-system/components-react": "4.2.0-rc.3",
     "react-syntax-highlighter": "^16.1.1",
     "next": "^16.2.3",
     "algoliasearch": "^5.50.1",
@@ -50,6 +50,7 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/stackblitz": "0.0.0",
+    "@porsche-design-system/stylesheets": "0.0.0",
     "@porsche-design-system/tokens-meta": "0.0.0",
     "@next/mdx": "^16.2.3",
     "@mdx-js/loader": "^3.1.1",

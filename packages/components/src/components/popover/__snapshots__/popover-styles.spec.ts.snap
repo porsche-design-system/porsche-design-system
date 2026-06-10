@@ -36,7 +36,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
     border-radius: var(--p-radius-full);
     cursor: pointer;
     background-color: var(--p-color-frosted);
-    transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
   }
@@ -50,7 +50,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
     pointer-events: none;
     filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
     backdrop-filter: drop-shadow(0 0 transparent);
-    animation: var(--p-animation-duration, var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
+    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
   }
   [popover]:not(:popover-open) {
     display: none;
@@ -93,7 +93,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
     box-sizing: border-box;
     padding: var(--p-spacing-static-sm) var(--p-spacing-static-md);
     pointer-events: auto;
-    border-radius: var(--_p-legacy-radius-small, var(--p-radius-lg));
+    border-radius: var(--p-radius-xl);
     background: var(--p-color-canvas);
     font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);

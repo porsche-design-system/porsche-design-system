@@ -1,0 +1,38 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { inputPasswordMeta } from '@/app/(main)/components/input-password/input-password.meta';
+
+export const metadata = {
+  title: 'Input Password - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Input Password component.',
+};
+
+# Input Password <ComponentStatus tagName="p-input-password"></ComponentStatus>
+
+<TableOfContents
+  headings={[
+    inputPasswordMeta.examples.form.name,
+    inputPasswordMeta.examples.toggle.name,
+    inputPasswordMeta.examples.slots.name,
+  ]}
+/>
+
+## {inputPasswordMeta.examples.form.name}
+
+<inputPasswordMeta.examples.form.description />
+
+<ComponentExample codeSample={inputPasswordMeta.examples.form.example} />
+
+## {inputPasswordMeta.examples.toggle.name}
+
+<inputPasswordMeta.examples.toggle.description />
+
+<ComponentStory story={inputPasswordMeta.examples.toggle.story} />
+
+## {inputPasswordMeta.examples.slots.name}
+
+<inputPasswordMeta.examples.slots.description />
+
+<ComponentStory story={inputPasswordMeta.examples.slots.story} />

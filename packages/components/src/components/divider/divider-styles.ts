@@ -1,19 +1,20 @@
-import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import {
   colorContrastHigh,
   colorContrastLow,
   colorContrastLower,
   colorContrastMedium,
-} from '../../styles/css-variables';
+  ref,
+} from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { DividerColor, DividerDirection } from './divider-utils';
 
 const colorMap: Record<DividerColor, string> = {
-  'contrast-lower': colorContrastLower,
-  'contrast-low': colorContrastLow,
-  'contrast-medium': colorContrastMedium,
-  'contrast-high': colorContrastHigh,
+  'contrast-lower': ref(colorContrastLower),
+  'contrast-low': ref(colorContrastLow),
+  'contrast-medium': ref(colorContrastMedium),
+  'contrast-high': ref(colorContrastHigh),
 };
 
 export const getComponentCss = (color: DividerColor, orientation: BreakpointCustomizable<DividerDirection>): string => {
