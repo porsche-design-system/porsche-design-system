@@ -22,17 +22,17 @@ export const mediaQueryMeta: Meta = {
   breakpointXXL: { name: 'breakpointXXL', value: 1920, description: 'Holds the `2xl` breakpoint value.' },
   getMediaQueryMax: {
     name: 'getMediaQueryMax',
-    description: 'Returns a **max-width** media query string for the specified breakpoint.',
+    description: 'Applies a **max** media query with the specified breakpoint.',
     value: getMediaQueryMax,
   },
   getMediaQueryMin: {
     name: 'getMediaQueryMin',
-    description: 'Returns a **min-width** media query string for the specified breakpoint.',
+    description: 'Applies a **min** media query with the specified breakpoint.',
     value: getMediaQueryMin,
   },
   getMediaQueryMinMax: {
     name: 'getMediaQueryMinMax',
-    description: 'Returns a **min-width and max-width** media query string for the specified breakpoints.',
+    description: 'Applies a **min-max** media query with the specified breakpoints.',
     value: getMediaQueryMinMax,
   },
 } as const;

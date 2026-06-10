@@ -32,22 +32,22 @@ export const fontMeta: Meta = {
     fontPorscheNextJa: {
       name: 'fontPorscheNextJa',
       value: fontPorscheNextJa,
-      description: 'Holds the **Porsche Next** font family (Japanese) along with fallback fonts.',
+      description: 'Holds the **Porsche Next** font family along with fallback fonts for **Japanese**.',
     },
     fontPorscheNextKo: {
       name: 'fontPorscheNextKo',
       value: fontPorscheNextKo,
-      description: 'Holds the **Porsche Next** font family (Korean) along with fallback fonts.',
+      description: 'Holds the **Porsche Next** font family along with fallback fonts for **Korean**.',
     },
     fontPorscheNextZhHans: {
       name: 'fontPorscheNextZhHans',
       value: fontPorscheNextZhHans,
-      description: 'Holds the **Porsche Next** font family (Simplified Chinese) along with fallback fonts.',
+      description: 'Holds the **Porsche Next** font family along with fallback fonts for **Simplified Chinese**.',
     },
     fontPorscheNextZhHant: {
       name: 'fontPorscheNextZhHant',
       value: fontPorscheNextZhHant,
-      description: 'Holds the **Porsche Next** font family (Traditional Chinese) along with fallback fonts.',
+      description: 'Holds the **Porsche Next** font family along with fallback fonts for **Traditional Chinese**.',
     },
   },
   lineHeight: {

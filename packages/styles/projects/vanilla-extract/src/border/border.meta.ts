@@ -15,13 +15,42 @@ export const borderMeta: Meta = {
   radius: {
     radiusXs: { name: 'radiusXs', value: radiusXs, description: 'Holds a **x-small** `border-radius`.' },
     radiusSm: { name: 'radiusSm', value: radiusSm, description: 'Holds a **small** `border-radius`.' },
-    radiusMd: { name: 'radiusMd', value: radiusMd, description: 'Holds a **medium** `border-radius`.' },
-    radiusLg: { name: 'radiusLg', value: radiusLg, description: 'Holds a **large** `border-radius`.' },
-    radiusXl: { name: 'radiusXl', value: radiusXl, description: 'Holds a **x-large** `border-radius`.' },
-    radius2Xl: { name: 'radius2Xl', value: radius2Xl, description: 'Holds a **2x-large** `border-radius`.' },
-    radius3Xl: { name: 'radius3Xl', value: radius3Xl, description: 'Holds a **3x-large** `border-radius`.' },
+    radiusMd: {
+      name: 'radiusMd',
+      value: radiusMd,
+      description: 'Holds a **medium** `border-radius`. Used for `p-checkbox` in **compact mode**.',
+    },
+    radiusLg: {
+      name: 'radiusLg',
+      value: radiusLg,
+      description:
+        'Holds a **large** `border-radius`. Used for interactive controls in **compact mode** (e.g. `p-tabs-bar`, `p-input-*`, `p-textarea`, `p-select`, `p-button`, `p-link`,…).',
+    },
+    radiusXl: {
+      name: 'radiusXl',
+      value: radiusXl,
+      description:
+        'Holds a **x-large** `border-radius`. Used for interactive controls (e.g. `p-tabs-bar`, `p-input-*`, `p-textarea`, `p-select`, `p-button`, `p-link`,…). Defines the primary visual appearance alongside **radius3Xl**.',
+    },
+    radius2Xl: {
+      name: 'radius2Xl',
+      value: radius2Xl,
+      description:
+        'Holds a **2x-large** `border-radius`. Used for notification components (e.g. `p-banner`, `p-inline-notification`, `p-toast`,…).',
+    },
+    radius3Xl: {
+      name: 'radius3Xl',
+      value: radius3Xl,
+      description:
+        'Holds a **3x-large** `border-radius`. Used for card-like containers or dialogs (e.g. `p-link-tile`, `p-modal`, `p-flyout`, `p-sheet`,…). Defines the primary visual appearance alongside **radiusXl**.',
+    },
     radius4Xl: { name: 'radius4Xl', value: radius4Xl, description: 'Holds a **4x-large** `border-radius`.' },
-    radiusFull: { name: 'radiusFull', value: radiusFull, description: 'Holds a **fully** rounded `border-radius`.' },
+    radiusFull: {
+      name: 'radiusFull',
+      value: radiusFull,
+      description:
+        'Holds a **fully** rounded `border-radius`. Used for pill shapes (e.g. `p-tag`, `p-switch`,…). Recommended only for standalone indicators.',
+    },
   },
 } as const;
 

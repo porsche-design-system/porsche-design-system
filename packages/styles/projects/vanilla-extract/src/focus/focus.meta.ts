@@ -5,7 +5,7 @@ import { getFocusVisibleStyle } from './helpers';
 export const focusMeta: Meta = {
   getFocusVisibleStyle: {
     name: 'getFocusVisibleStyle',
-    description: 'Applies a focus ring to the element for `:focus-visible` states.',
+    description: 'Applies a **focus-visible** style.',
     value: getFocusVisibleStyle,
   },
 } as const;

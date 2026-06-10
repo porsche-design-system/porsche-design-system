@@ -6,6 +6,8 @@ export * from './font';
 export * from './gradient';
 export * from './grid';
 export * from './mediaQuery';
+export { vanillaExtractMeta } from './meta';
+export type { Meta, MetaEntry } from './meta.types';
 export * from './motion';
 export * from './shadow';
 export * from './skeleton';

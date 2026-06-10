@@ -2,9 +2,9 @@ import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
 import type { Meta, MetaEntry } from '../meta.types';
 
 export const shadowMeta: Meta = {
-  shadowSm: { name: 'shadowSm', value: shadowSm, description: 'Holds a **small** `box-shadow`.' },
-  shadowMd: { name: 'shadowMd', value: shadowMd, description: 'Holds a **medium** `box-shadow`.' },
-  shadowLg: { name: 'shadowLg', value: shadowLg, description: 'Holds a **large** `box-shadow`.' },
+  shadowSm: { name: 'shadowSm', value: shadowSm, description: 'Holds a **small** `shadow`.' },
+  shadowMd: { name: 'shadowMd', value: shadowMd, description: 'Holds a **medium** `shadow`.' },
+  shadowLg: { name: 'shadowLg', value: shadowLg, description: 'Holds a **large** `shadow`.' },
 } as const;
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use boxShadow: shadowMd instead. */
