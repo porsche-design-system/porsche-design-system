@@ -28,10 +28,9 @@
       <form
         slot="sidebar-start"
         class="grid gap-fluid-sm"
-        onreset="resetComponentVisibility(); updateRoute({search: ''});"
+        onreset="resetComponentVisibility(); updateRoute({search: ''}); setTimeout(() => updateRoute(), 0);"
       >
         <p-input-search
-          class="mb-fluid-md"
           name="search"
           label="Filter components"
           hide-label="true"
@@ -40,105 +39,95 @@
           indicator="true"
           oninput="updateRoute({search: this.value})"
         ></p-input-search>
+        <div class="flex flex-wrap items-center justify-between gap-fluid-xs mb-fluid-md">
+          <p-heading tag="h3" size="medium">All components</p-heading>
+          <p-checkbox label="Select all components" hide-label="true" data-toggle-all="true"></p-checkbox>
+        </div>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs">
           <p-heading tag="h3" size="medium">Brand</p-heading>
-          <p-tag variant="secondary" compact="true">
-            <button type="button" onclick="toggleSection(this, 'brand')">Deselect all</button>
-          </p-tag>
+          <p-checkbox label="Select all Brand components" hide-label="true" data-section-toggle="brand"></p-checkbox>
         </div>
-        <p-checkbox label="Crest" name="crest" data-section="brand"></p-checkbox>
-        <p-checkbox label="Wordmark" name="wordmark" data-section="brand"></p-checkbox>
-        <p-checkbox label="Model Signature" name="model-signature" data-section="brand"></p-checkbox>
+        <p-switch data-name="crest" data-section="brand">Crest</p-switch>
+        <p-switch data-name="wordmark" data-section="brand">Wordmark</p-switch>
+        <p-switch data-name="model-signature" data-section="brand">Model Signature</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Common</p-heading>
-          <p-tag variant="secondary" compact="true">
-            <button type="button" onclick="toggleSection(this, 'common')">Deselect all</button>
-          </p-tag>
+          <p-checkbox label="Select all Common components" hide-label="true" data-section-toggle="common"></p-checkbox>
         </div>
-        <p-checkbox label="Accordion" name="accordion" data-section="common"></p-checkbox>
-        <p-checkbox label="Button" name="button" data-section="common"></p-checkbox>
-        <p-checkbox label="Button Pure" name="button-pure" data-section="common"></p-checkbox>
-        <p-checkbox label="Button Tile" name="button-tile" data-section="common"></p-checkbox>
-        <p-checkbox label="Carousel" name="carousel" data-section="common"></p-checkbox>
-        <p-checkbox label="Divider" name="divider" data-section="common"></p-checkbox>
-        <p-checkbox label="Flag" name="flag" data-section="common"></p-checkbox>
-        <p-checkbox label="Scroller" name="scroller" data-section="common"></p-checkbox>
-        <p-checkbox label="Stepper Horizontal" name="stepper-horizontal" data-section="common"></p-checkbox>
-        <p-checkbox label="Table" name="table" data-section="common"></p-checkbox>
-        <p-checkbox label="Tag" name="tag" data-section="common"></p-checkbox>
-        <p-checkbox label="Tag Dismissible" name="tag-dismissible" data-section="common"></p-checkbox>
-        <p-checkbox label="AI Tag" name="ai-tag" data-section="common"></p-checkbox>
-        <p-checkbox label="Text List" name="text-list" data-section="common"></p-checkbox>
+        <p-switch data-name="accordion" data-section="common">Accordion</p-switch>
+        <p-switch data-name="button" data-section="common">Button</p-switch>
+        <p-switch data-name="button-pure" data-section="common">Button Pure</p-switch>
+        <p-switch data-name="button-tile" data-section="common">Button Tile</p-switch>
+        <p-switch data-name="carousel" data-section="common">Carousel</p-switch>
+        <p-switch data-name="divider" data-section="common">Divider</p-switch>
+        <p-switch data-name="flag" data-section="common">Flag</p-switch>
+        <p-switch data-name="scroller" data-section="common">Scroller</p-switch>
+        <p-switch data-name="stepper-horizontal" data-section="common">Stepper Horizontal</p-switch>
+        <p-switch data-name="table" data-section="common">Table</p-switch>
+        <p-switch data-name="tag" data-section="common">Tag</p-switch>
+        <p-switch data-name="tag-dismissible" data-section="common">Tag Dismissible</p-switch>
+        <p-switch data-name="ai-tag" data-section="common">AI Tag</p-switch>
+        <p-switch data-name="text-list" data-section="common">Text List</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Feedback</p-heading>
-          <p-tag variant="secondary" compact="true">
-            <button type="button" onclick="toggleSection(this, 'feedback')">Deselect all</button>
-          </p-tag>
+          <p-checkbox label="Select all Feedback components" hide-label="true" data-section-toggle="feedback"></p-checkbox>
         </div>
-        <p-checkbox label="Spinner" name="spinner" data-section="feedback"></p-checkbox>
-        <p-checkbox label="Inline Notification" name="inline-notification" data-section="feedback"></p-checkbox>
-        <p-checkbox label="Toast" name="toast" data-section="feedback"></p-checkbox>
-        <p-checkbox label="Banner" name="banner" data-section="feedback"></p-checkbox>
+        <p-switch data-name="spinner" data-section="feedback">Spinner</p-switch>
+        <p-switch data-name="inline-notification" data-section="feedback">Inline Notification</p-switch>
+        <p-switch data-name="toast" data-section="feedback">Toast</p-switch>
+        <p-switch data-name="banner" data-section="feedback">Banner</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Navigation</p-heading>
-          <p-tag variant="secondary" compact="true">
-            <button type="button" onclick="toggleSection(this, 'navigation')">Deselect all</button>
-          </p-tag>
+          <p-checkbox label="Select all Navigation components" hide-label="true" data-section-toggle="navigation"></p-checkbox>
         </div>
-        <p-checkbox label="Link" name="link" data-section="navigation"></p-checkbox>
-        <p-checkbox label="Link Pure" name="link-pure" data-section="navigation"></p-checkbox>
-        <p-checkbox label="Link Tile" name="link-tile" data-section="navigation"></p-checkbox>
-        <p-checkbox label="Link Tile Product" name="link-tile-product" data-section="navigation"></p-checkbox>
-        <p-checkbox label="Pagination" name="pagination" data-section="navigation"></p-checkbox>
-        <p-checkbox label="Tabs" name="tabs" data-section="navigation"></p-checkbox>
-        <p-checkbox label="Tabs Bar" name="tabs-bar" data-section="navigation"></p-checkbox>
+        <p-switch data-name="link" data-section="navigation">Link</p-switch>
+        <p-switch data-name="link-pure" data-section="navigation">Link Pure</p-switch>
+        <p-switch data-name="link-tile" data-section="navigation">Link Tile</p-switch>
+        <p-switch data-name="link-tile-product" data-section="navigation">Link Tile Product</p-switch>
+        <p-switch data-name="pagination" data-section="navigation">Pagination</p-switch>
+        <p-switch data-name="tabs" data-section="navigation">Tabs</p-switch>
+        <p-switch data-name="tabs-bar" data-section="navigation">Tabs Bar</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Dialog</p-heading>
-          <p-tag variant="secondary" compact="true">
-            <button type="button" onclick="toggleSection(this, 'dialog')">Deselect all</button>
-          </p-tag>
+          <p-checkbox label="Select all Dialog components" hide-label="true" data-section-toggle="dialog"></p-checkbox>
         </div>
-        <p-checkbox label="Drilldown" name="drilldown" data-section="dialog"></p-checkbox>
-        <p-checkbox label="Modal" name="modal" data-section="dialog"></p-checkbox>
-        <p-checkbox label="Flyout" name="flyout" data-section="dialog"></p-checkbox>
-        <p-checkbox label="Sheet" name="sheet" data-section="dialog"></p-checkbox>
-        <p-checkbox label="Popover" name="popover" data-section="dialog"></p-checkbox>
+        <p-switch data-name="drilldown" data-section="dialog">Drilldown</p-switch>
+        <p-switch data-name="modal" data-section="dialog">Modal</p-switch>
+        <p-switch data-name="flyout" data-section="dialog">Flyout</p-switch>
+        <p-switch data-name="sheet" data-section="dialog">Sheet</p-switch>
+        <p-switch data-name="popover" data-section="dialog">Popover</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Typography</p-heading>
-          <p-tag variant="secondary" compact="true">
-            <button type="button" onclick="toggleSection(this, 'typography')">Deselect all</button>
-          </p-tag>
+          <p-checkbox label="Select all Typography components" hide-label="true" data-section-toggle="typography"></p-checkbox>
         </div>
-        <p-checkbox label="Display" name="display" data-section="typography"></p-checkbox>
-        <p-checkbox label="Heading" name="heading" data-section="typography"></p-checkbox>
-        <p-checkbox label="Text" name="text" data-section="typography"></p-checkbox>
-        <p-checkbox label="Icon" name="icon" data-section="typography"></p-checkbox>
+        <p-switch data-name="display" data-section="typography">Display</p-switch>
+        <p-switch data-name="heading" data-section="typography">Heading</p-switch>
+        <p-switch data-name="text" data-section="typography">Text</p-switch>
+        <p-switch data-name="icon" data-section="typography">Icon</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Form</p-heading>
-          <p-tag variant="secondary" compact="true">
-            <button type="button" onclick="toggleSection(this, 'form')">Deselect all</button>
-          </p-tag>
+          <p-checkbox label="Select all Form components" hide-label="true" data-section-toggle="form"></p-checkbox>
         </div>
-        <p-checkbox label="Checkbox" name="checkbox" data-section="form"></p-checkbox>
-        <p-checkbox label="Fieldset" name="fieldset" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Date" name="input-date" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Email" name="input-email" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Text" name="input-text" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Tel" name="input-tel" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Month" name="input-month" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Number" name="input-number" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Password" name="input-password" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Search" name="input-search" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Time" name="input-time" data-section="form"></p-checkbox>
-        <p-checkbox label="Input URL" name="input-url" data-section="form"></p-checkbox>
-        <p-checkbox label="Input Week" name="input-week" data-section="form"></p-checkbox>
-        <p-checkbox label="Multi Select" name="multi-select" data-section="form"></p-checkbox>
-        <p-checkbox label="Pin Code" name="pin-code" data-section="form"></p-checkbox>
-        <p-checkbox label="Radio Group" name="radio-group" data-section="form"></p-checkbox>
-        <p-checkbox label="Segmented Control" name="segmented-control" data-section="form"></p-checkbox>
-        <p-checkbox label="Select" name="select" data-section="form"></p-checkbox>
-        <p-checkbox label="Switch" name="switch" data-section="form"></p-checkbox>
-        <p-checkbox label="Textarea" name="textarea" data-section="form"></p-checkbox>
+        <p-switch data-name="checkbox" data-section="form">Checkbox</p-switch>
+        <p-switch data-name="fieldset" data-section="form">Fieldset</p-switch>
+        <p-switch data-name="input-date" data-section="form">Input Date</p-switch>
+        <p-switch data-name="input-email" data-section="form">Input Email</p-switch>
+        <p-switch data-name="input-text" data-section="form">Input Text</p-switch>
+        <p-switch data-name="input-tel" data-section="form">Input Tel</p-switch>
+        <p-switch data-name="input-month" data-section="form">Input Month</p-switch>
+        <p-switch data-name="input-number" data-section="form">Input Number</p-switch>
+        <p-switch data-name="input-password" data-section="form">Input Password</p-switch>
+        <p-switch data-name="input-search" data-section="form">Input Search</p-switch>
+        <p-switch data-name="input-time" data-section="form">Input Time</p-switch>
+        <p-switch data-name="input-url" data-section="form">Input URL</p-switch>
+        <p-switch data-name="input-week" data-section="form">Input Week</p-switch>
+        <p-switch data-name="multi-select" data-section="form">Multi Select</p-switch>
+        <p-switch data-name="pin-code" data-section="form">Pin Code</p-switch>
+        <p-switch data-name="radio-group" data-section="form">Radio Group</p-switch>
+        <p-switch data-name="segmented-control" data-section="form">Segmented Control</p-switch>
+        <p-switch data-name="select" data-section="form">Select</p-switch>
+        <p-switch data-name="switch" data-section="form">Switch</p-switch>
+        <p-switch data-name="textarea" data-section="form">Textarea</p-switch>
         <p-button class="mt-fluid-md" type="reset" variant="secondary">Reset</p-button>
       </form>
 
@@ -2787,66 +2776,106 @@
       updateRoute({ components: allComponents.join(',') });
     };
 
-    const toggleSection = (button, sectionName) => {
-      const checkboxes = document.querySelectorAll(`p-checkbox[data-section="${sectionName}"]`);
+    const toggleAllComponents = () => {
+      const allComponents = getAllComponentNames();
       const currentComponents = getComponents();
+      const allVisible =
+        allComponents.length > 0 && allComponents.every((name) => currentComponents.includes(name));
 
-      // Check if all checkboxes in this section are currently checked
-      const sectionCheckboxNames = [...checkboxes].map((cb) => cb.name);
-      const allChecked = sectionCheckboxNames.every((name) => currentComponents.includes(name));
-
-      let updatedComponents;
-
-      if (allChecked) {
-        // Deselect all checkboxes in this section
-        updatedComponents = currentComponents.filter((name) => !sectionCheckboxNames.includes(name));
-        button.textContent = 'Select all';
+      if (allVisible) {
+        // Hide all components
+        updateRoute({ components: '' });
       } else {
-        // Select all checkboxes in this section
-        const componentsToAdd = sectionCheckboxNames.filter((name) => !currentComponents.includes(name));
-        updatedComponents = [...currentComponents, ...componentsToAdd];
-        button.textContent = 'Deselect all';
+        // Show all components
+        resetComponentVisibility();
       }
+    };
+
+    // Component toggles are "p-switch" carrying a "data-section" (+ "data-name"); the section /
+    // global "select all" master toggles are "p-checkbox" carrying "data-section-toggle" /
+    // "data-toggle-all" (kept as checkboxes for their indeterminate / tri-state affordance).
+    const getSectionNames = () => [
+      ...new Set(
+        [...document.querySelectorAll('[slot="sidebar-start"] p-switch[data-section]')].map((sw) =>
+          sw.getAttribute('data-section')
+        )
+      ),
+    ];
+
+    const getSectionSwitches = (sectionName) => [
+      ...document.querySelectorAll(`[slot="sidebar-start"] p-switch[data-section="${sectionName}"]`),
+    ];
+
+    const getAllComponentNames = () =>
+      [...document.querySelectorAll('[data-card]')].map((el) => el.getAttribute('data-card'));
+
+    // Tri-state "select all" for a single section: select all when not every item is
+    // selected, otherwise deselect all (matches the WAI-ARIA select-all pattern).
+    const toggleSection = (sectionName) => {
+      const sectionComponentNames = getSectionSwitches(sectionName).map((sw) => sw.getAttribute('data-name'));
+      const currentComponents = getComponents();
+      const allChecked =
+        sectionComponentNames.length > 0 && sectionComponentNames.every((name) => currentComponents.includes(name));
+
+      const updatedComponents = allChecked
+        ? currentComponents.filter((name) => !sectionComponentNames.includes(name))
+        : [...currentComponents, ...sectionComponentNames.filter((name) => !currentComponents.includes(name))];
 
       updateRoute({ components: updatedComponents.join(',') });
     };
 
-    const updateSectionButtons = () => {
-      const sections = ['brand', 'common', 'navigation', 'dialog', 'typography', 'form'];
+    // Sync each section master checkbox to checked / indeterminate / unchecked.
+    const updateSectionToggles = () => {
       const currentComponents = getComponents();
 
-      sections.forEach((sectionName) => {
-        const checkboxes = document.querySelectorAll(`p-checkbox[data-section="${sectionName}"]`);
-        const sectionCheckboxNames = [...checkboxes].map((cb) => cb.name);
-        const allChecked = sectionCheckboxNames.every((name) => currentComponents.includes(name));
+      for (const sectionName of getSectionNames()) {
+        const master = document.querySelector(
+          `[slot="sidebar-start"] p-checkbox[data-section-toggle="${sectionName}"]`
+        );
+        if (!master) continue;
 
-        const button = document.querySelector(`button[onclick*="${sectionName}"]`);
-        if (button) {
-          button.textContent = allChecked ? 'Deselect all' : 'Select all';
-        }
-      });
+        const sectionComponentNames = getSectionSwitches(sectionName).map((sw) => sw.getAttribute('data-name'));
+        const selectedCount = sectionComponentNames.filter((name) => currentComponents.includes(name)).length;
+        const allChecked = sectionComponentNames.length > 0 && selectedCount === sectionComponentNames.length;
+
+        master.checked = allChecked;
+        master.indeterminate = selectedCount > 0 && !allChecked;
+      }
+    };
+
+    // Sync the global "All components" master checkbox.
+    const updateGlobalToggle = () => {
+      const master = document.querySelector('[slot="sidebar-start"] p-checkbox[data-toggle-all]');
+      if (!master) return;
+
+      const allComponents = getAllComponentNames();
+      const currentComponents = getComponents();
+      const selectedCount = allComponents.filter((name) => currentComponents.includes(name)).length;
+      const allChecked = allComponents.length > 0 && selectedCount === allComponents.length;
+
+      master.checked = allChecked;
+      master.indeterminate = selectedCount > 0 && !allChecked;
     };
 
     const applySearchFilter = (query) => {
       const q = (query || '').trim().toLowerCase();
-      const checkboxes = [...document.querySelectorAll('[slot="sidebar-start"] p-checkbox')];
-      // Toggle checkbox visibility based on label substring match.
-      for (const cb of checkboxes) {
-        const label = (cb.getAttribute('label') || '').toLowerCase();
+      // Only component toggles (which carry "data-section") are filterable.
+      const switches = [...document.querySelectorAll('[slot="sidebar-start"] p-switch[data-section]')];
+      // Toggle switch visibility based on label substring match (label is the slotted text content).
+      for (const sw of switches) {
+        const label = (sw.textContent || '').trim().toLowerCase();
         const matches = !q || label.includes(q);
-        cb.hidden = !matches;
+        sw.hidden = !matches;
       }
-      // Toggle each section header visibility: hide when all its checkboxes are hidden.
-      for (const button of document.querySelectorAll('[slot="sidebar-start"] button[onclick*="toggleSection"]')) {
-        const match = button.getAttribute('onclick').match(/toggleSection\(this,\s*'([^']+)'\)/);
-        if (!match) continue;
-        const section = match[1];
-        const sectionCheckboxes = [
-          ...document.querySelectorAll(`[slot="sidebar-start"] p-checkbox[data-section="${section}"]`),
-        ];
-        const anyVisible = sectionCheckboxes.some((cb) => !cb.hidden);
-        // The header is the closest ancestor flex row containing the toggle button.
-        const header = button.closest('div.flex');
+      // Toggle each section header visibility: hide when all its switches are hidden.
+      for (const sectionName of getSectionNames()) {
+        const master = document.querySelector(
+          `[slot="sidebar-start"] p-checkbox[data-section-toggle="${sectionName}"]`
+        );
+        if (!master) continue;
+        const anyVisible = getSectionSwitches(sectionName).some((sw) => !sw.hidden);
+        // The header is the closest ancestor flex row containing the section master checkbox.
+        const header = master.closest('div.flex');
         if (header) header.hidden = !anyVisible;
       }
     };
@@ -2960,15 +2989,19 @@
         const cardName = card.getAttribute('data-card');
         card.style.display = components.includes(cardName) ? '' : 'none';
       }
-      // Update checkboxes
-      for (const checkbox of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
-        checkbox.checked = components.includes(checkbox.name);
+      // Update component switches (those carry a "data-section")
+      for (const sw of document.querySelectorAll('[slot="sidebar-start"] p-switch[data-section]')) {
+        sw.checked = components.includes(sw.getAttribute('data-name'));
       }
-      // Update section buttons
-      if (typeof updateSectionButtons === 'function') {
-        updateSectionButtons();
+      // Update section master checkboxes (checked / indeterminate / unchecked)
+      if (typeof updateSectionToggles === 'function') {
+        updateSectionToggles();
       }
-      // Apply search filter (hide/show checkboxes based on label)
+      // Update global "All components" master checkbox
+      if (typeof updateGlobalToggle === 'function') {
+        updateGlobalToggle();
+      }
+      // Apply search filter (hide/show component switches based on label)
       applySearchFilter(search);
     };
 
@@ -2976,6 +3009,7 @@
 
     Promise.all([
       customElements.whenDefined('p-checkbox'),
+      customElements.whenDefined('p-switch'),
       customElements.whenDefined('p-select'),
       customElements.whenDefined('p-input-search'),
     ]).then(() => {
@@ -2988,17 +3022,20 @@
       updateInput('accent', getAccent());
       updateInput('search', getSearch());
 
-      for (const checkbox of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
-        checkbox.checked = getComponents().includes(checkbox.name);
+      for (const sw of document.querySelectorAll('[slot="sidebar-start"] p-switch[data-section]')) {
+        sw.checked = getComponents().includes(sw.getAttribute('data-name'));
       }
 
       updateRoute();
-      updateSectionButtons();
+      updateSectionToggles();
+      updateGlobalToggle();
     });
     </script>
 
     <script>
-    for (const el of document.querySelectorAll('p-switch')) {
+    // Demo switches self-control their checked state. The sidebar component switches
+    // (carrying "data-section") are controlled via updateRoute(), so exclude them here.
+    for (const el of document.querySelectorAll('p-switch:not([data-section])')) {
       el.addEventListener('update', (e) => (e.target.checked = e.detail.checked));
     }
 
@@ -3071,10 +3108,24 @@
       manageContent(activeStepIndex);
     });
 
-    for (const el of document.querySelectorAll('[slot="sidebar-start"] p-checkbox')) {
-      el.addEventListener('change', (e) => {
-        toggleCard(e.target.name, e.target.checked);
+    // Component switches toggle a single card.
+    for (const el of document.querySelectorAll('[slot="sidebar-start"] p-switch[data-section]')) {
+      el.addEventListener('update', (e) => {
+        toggleCard(e.target.getAttribute('data-name'), e.detail.checked);
       });
+    }
+
+    // Section "select all" master checkboxes toggle their whole section.
+    for (const el of document.querySelectorAll('[slot="sidebar-start"] p-checkbox[data-section-toggle]')) {
+      el.addEventListener('change', (e) => {
+        toggleSection(e.target.getAttribute('data-section-toggle'));
+      });
+    }
+
+    // Global "All components" master checkbox toggles every card.
+    const globalToggleCheckbox = document.querySelector('[slot="sidebar-start"] p-checkbox[data-toggle-all]');
+    if (globalToggleCheckbox) {
+      globalToggleCheckbox.addEventListener('change', () => toggleAllComponents());
     }
 
     document.querySelector('p-canvas').addEventListener('sidebarStartUpdate', (e) => {
