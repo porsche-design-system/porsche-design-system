@@ -46,6 +46,7 @@ dialog {
   height: 0px;
   visibility: hidden;
   pointer-events: none;
+  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
@@ -76,10 +77,10 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
+  transform: translateY(25vh);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: 100%;
   align-self: flex-end;
@@ -144,6 +145,7 @@ dialog {
   height: 0px;
   visibility: hidden;
   pointer-events: none;
+  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
@@ -174,10 +176,10 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
+  transform: translateY(25vh);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: 100%;
   align-self: flex-end;
@@ -252,6 +254,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
@@ -282,10 +285,10 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
+  transform: initial;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: 100%;
   align-self: flex-end;
@@ -357,6 +360,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
@@ -387,10 +391,10 @@ dialog::backdrop {
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
   clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
+  transform: initial;
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: 100%;
   align-self: flex-end;
