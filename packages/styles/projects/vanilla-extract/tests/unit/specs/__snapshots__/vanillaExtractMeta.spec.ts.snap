@@ -1545,17 +1545,17 @@ exports[`should match snapshot 1`] = `
       "value": 0,
     },
     "breakpointL": {
-      "description": "Holds the \`l\` breakpoint value.",
+      "description": "Holds the \`lg\` breakpoint value.",
       "name": "breakpointL",
       "value": 1300,
     },
     "breakpointM": {
-      "description": "Holds the \`m\` breakpoint value.",
+      "description": "Holds the \`md\` breakpoint value.",
       "name": "breakpointM",
       "value": 1000,
     },
     "breakpointS": {
-      "description": "Holds the \`s\` breakpoint value.",
+      "description": "Holds the \`sm\` breakpoint value.",
       "name": "breakpointS",
       "value": 760,
     },
