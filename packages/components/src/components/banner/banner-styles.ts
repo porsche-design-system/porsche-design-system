@@ -78,6 +78,7 @@ export const getComponentCss = (
             })),
             left: '50vw',
             width: `min(calc(100vw - 2 * ${ref(cssVarInsetX, gridExtendedOffsetBase)}),${ref(cssVarMaxWidth, '100ch')})`,
+            overlay: 'none',
             '&:popover-open': {
               overlay: 'auto',
             },
@@ -93,7 +94,7 @@ export const getComponentCss = (
             }),
             transition,
             // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
-            '@supports (transition-behavior: allow-discrete)': {
+            '@supports (overlay: auto) and (transition-behavior: allow-discrete)': {
               transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete`,
             },
           },
