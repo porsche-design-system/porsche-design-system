@@ -1181,14 +1181,16 @@
           </p-modal>
         </div>
         <div data-card="flyout">
-          <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Flyout (Taycan)</p-button>
+          <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
+            >Open Flyout (with nested dialogs)</p-button
+          >
           <p-flyout
             class="[--p-flyout-width:100vw] [--p-flyout-max-width:100%] md:[--p-flyout-width:1150px]"
             aria="{'aria-label': 'Some heading'}"
           >
             <p-model-signature slot="header" model="taycan" color="primary"></p-model-signature>
-            <div role="list">
-              <div>
+            <div role="list" class="grid gap-y-fluid-lg">
+              <div class="grid gap-y-fluid-sm">
                 <img
                   src="https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/5000x1390/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh"
                   alt="Seitenansicht eines Porsche Taycan."
@@ -1203,6 +1205,26 @@
                 >
                 <h3>Taycan</h3>
                 <p>Ab EUR 102.600,00 inkl. MwSt.</p>
+                <div>
+                  <p-tag>2026</p-tag>
+                  <p-tag>Elektro</p-tag>
+                  <p-tag>Heckantrieb</p-tag>
+                  <p-tag>Automatik</p-tag>
+                </div>
+                <ul>
+                  <li>
+                    <div>4,8 s</div>
+                    <div>Beschleunigung 0 - 100 km/h bei Launch Control</div>
+                  </li>
+                  <li>
+                    <div>300 kW / 408 PS</div>
+                    <div>Leistung bis zu (kW) / Leistung bis zu (PS)</div>
+                  </li>
+                </ul>
+                <p>
+                  (Performancebatterie) Stromverbrauch kombiniert: 19,1 – 16,7 kWh/100 km, CO₂-Emissionen kombiniert: 0
+                  g/km, CO₂-Klasse: A
+                </p>
                 <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal</p-button>
                 <p-modal
                   class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]"
@@ -1229,34 +1251,14 @@
                     et ea rebum.
                   </p-text>
                   <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
-                    <p-button type="button">Proceed</p-button>
-                    <p-button type="button" variant="secondary">Cancel</p-button>
+                    <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
+                      >Open Banner</p-button
+                    >
+                    <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
                   </div>
                 </p-modal>
-                <div>
-                  <p-tag>2026</p-tag>
-                  <p-tag>Elektro</p-tag>
-                  <p-tag>Heckantrieb</p-tag>
-                  <p-tag>Automatik</p-tag>
-                </div>
-                <ul>
-                  <li>
-                    <div>4,8 s</div>
-                    <div>Beschleunigung 0 - 100 km/h bei Launch Control</div>
-                  </li>
-                  <li>
-                    <div>300 kW / 408 PS</div>
-                    <div>Leistung bis zu (kW) / Leistung bis zu (PS)</div>
-                  </li>
-                </ul>
-                <p>
-                  (Performancebatterie) Stromverbrauch kombiniert: 19,1 – 16,7 kWh/100 km, CO₂-Emissionen kombiniert: 0
-                  g/km, CO₂-Klasse: A
-                </p>
-                <p-button type="button" variant="secondary">Konfigurieren</p-button>
               </div>
-
-              <div>
+              <div class="grid gap-y-fluid-sm">
                 <img
                   src="https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/5000x1390/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh"
                   alt="Seitenansicht eines Porsche Taycan."
@@ -1291,10 +1293,40 @@
                   (Performancebatterie) Stromverbrauch kombiniert: 19,1 – 16,7 kWh/100 km, CO₂-Emissionen kombiniert: 0
                   g/km, CO₂-Klasse: A
                 </p>
-                <p-button type="button" variant="secondary">Konfigurieren</p-button>
+                <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal</p-button>
+                <p-modal
+                  class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]"
+                  aria="{'aria-label': 'Some heading'}"
+                >
+                  <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
+                    <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="">
+                  </div>
+                  <p-text color="contrast-medium">ABC</p-text>
+                  <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  </p-text>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum.
+                  </p-text>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum.
+                  </p-text>
+                  <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+                    <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
+                      >Open Banner</p-button
+                    >
+                    <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
+                  </div>
+                </p-modal>
               </div>
-
-              <div>
+              <div class="grid gap-y-fluid-sm">
                 <img
                   src="https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/5000x1390/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh"
                   alt="Seitenansicht eines Porsche Taycan."
@@ -1329,10 +1361,40 @@
                   (Performancebatterie) Stromverbrauch kombiniert: 19,1 – 16,7 kWh/100 km, CO₂-Emissionen kombiniert: 0
                   g/km, CO₂-Klasse: A
                 </p>
-                <p-button type="button" variant="secondary">Konfigurieren</p-button>
+                <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal</p-button>
+                <p-modal
+                  class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]"
+                  aria="{'aria-label': 'Some heading'}"
+                >
+                  <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
+                    <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="">
+                  </div>
+                  <p-text color="contrast-medium">ABC</p-text>
+                  <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  </p-text>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum.
+                  </p-text>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum.
+                  </p-text>
+                  <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+                    <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
+                      >Open Banner</p-button
+                    >
+                    <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
+                  </div>
+                </p-modal>
               </div>
-
-              <div>
+              <div class="grid gap-y-fluid-sm">
                 <img
                   src="https://images.porsche.com/f/285489813253582/5000x1390/f4aa4bb1b2/model-y1aai1-2026-side-shot_8e6dfeb61b7241c18e1e4fd09c8cbaf1.png/m/5000x1390/smart/filters:format(avif)?dpl=dpl_H2fXguSn3kYCpTzU5ZhmqWfizKQh"
                   alt="Seitenansicht eines Porsche Taycan."
@@ -1367,7 +1429,38 @@
                   (Performancebatterie) Stromverbrauch kombiniert: 19,1 – 16,7 kWh/100 km, CO₂-Emissionen kombiniert: 0
                   g/km, CO₂-Klasse: A
                 </p>
-                <p-button type="button" variant="secondary">Konfigurieren</p-button>
+                <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal</p-button>
+                <p-modal
+                  class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]"
+                  aria="{'aria-label': 'Some heading'}"
+                >
+                  <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
+                    <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="">
+                  </div>
+                  <p-text color="contrast-medium">ABC</p-text>
+                  <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  </p-text>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum.
+                  </p-text>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum.
+                  </p-text>
+                  <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+                    <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
+                      >Open Banner</p-button
+                    >
+                    <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
+                  </div>
+                </p-modal>
               </div>
             </div>
           </p-flyout>
