@@ -16,8 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
-- `Flyout`, `Modal`, `Sheet`: Nested dialog elements no longer cause rendering issues in Chromium
-  ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498))
+- `Flyout`, `Modal`, `Sheet` ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498)):
+  - Nested dialog elements no longer cause rendering issues in Chromium
+  - Keep the dialog element on the `#top-layer` during the fade-out animation in Safari and Firefox, so closing
+    (especially nested) dialogs no longer drop behind surrounding content
 
 ## [4.2.0-rc.4] - 2026-06-10
 
