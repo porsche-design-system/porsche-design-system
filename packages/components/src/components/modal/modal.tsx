@@ -3,7 +3,7 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '
 import {
   AllowedTypes,
   attachComponentCss,
-  clearDialogCloseFallback,
+  createTopLayerController,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -11,8 +11,9 @@ import {
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
-  setDialogVisibility,
   setScrollLock,
+  showDialog,
+  type TopLayerController,
   unobserveChildren,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
@@ -91,6 +92,12 @@ export class Modal {
   private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.dialog,
+    isShown: () => !!this.dialog?.open,
+    show: () => showDialog(this.dialog, this.scroller),
+    hide: () => this.dialog?.close(),
+  });
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -113,7 +120,11 @@ export class Modal {
   }
 
   public componentDidRender(): void {
-    setDialogVisibility(this.open, this.dialog, this.scroller);
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
   }
 
   public componentDidLoad(): void {
@@ -133,7 +144,7 @@ export class Modal {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
-    clearDialogCloseFallback(this.dialog);
+    this.topLayer.cancel();
     unobserveChildren(this.host);
   }
 
@@ -170,7 +181,7 @@ export class Modal {
         containerClass="modal"
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         onDismiss={this.dismissButton ? this.dismissDialog : undefined}
         header={this.hasHeader ? <slot name="header" /> : undefined}
         footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}

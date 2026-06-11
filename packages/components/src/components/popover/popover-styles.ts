@@ -1,15 +1,4 @@
 import {
-  addImportantToEachRule,
-  cssVariableAnimationDuration,
-  forcedColorsMediaQuery,
-  getFocusBaseStyles,
-  getHiddenTextJssStyle,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
-import {
   blurFrosted,
   colorCanvas,
   colorFrosted,
@@ -27,6 +16,17 @@ import {
   spacingStaticSm,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
+import {
+  addImportantToEachRule,
+  cssVariableAnimationDuration,
+  forcedColorsMediaQuery,
+  getFocusBaseStyles,
+  getHiddenTextJssStyle,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { getCss } from '../../utils';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 

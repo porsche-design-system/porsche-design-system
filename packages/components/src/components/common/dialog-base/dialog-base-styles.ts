@@ -17,6 +17,7 @@ import {
 } from '@porsche-design-system/stylesheets';
 import type { JssStyle, Styles } from 'jss';
 import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
+import { overlayTransitionSupportsQuery } from '../../../utils';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -97,14 +98,10 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
           background: 'transparent',
         }),
     transition,
-    // `allow-discrete` transition for ua-style `overlay` (supported browsers only) ensures dialog is rendered on
-    // #top-layer as long as fade-in or fade-out transition/animation is running.
-    // Must gate on BOTH `overlay` and `transition-behavior: allow-discrete` to stay in sync with the JS detection in
-    // `setDialogVisibility` (see `utils/dialog/dialog.ts`): Firefox/Safari supports `allow-discrete` but NOT `overlay`, so it
-    // must not enter this block — there the dialog is kept natively open during fade-out and closed on `transitionend`.
-    '@supports (overlay: auto) and (transition-behavior: allow-discrete)': {
+    // keep the dialog on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
+    ...overlayTransitionSupportsQuery({
       transition: `${transition}, ${getTransition('overlay', duration, easing)} allow-discrete`,
-    },
+    }),
   };
 };
 

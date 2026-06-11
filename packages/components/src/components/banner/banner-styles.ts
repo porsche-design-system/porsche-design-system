@@ -9,7 +9,7 @@ import {
   motionDurationMap,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep, overlayTransitionSupportsQuery } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getFunctionalComponentNotificationBaseStyles } from '../common/notification-base/notification-base-styles';
 import type { BannerPosition, BannerState } from './banner-utils';
@@ -93,10 +93,10 @@ export const getComponentCss = (
               transform: 'translate3d(-50%,0,0)',
             }),
             transition,
-            // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
-            '@supports (overlay: auto) and (transition-behavior: allow-discrete)': {
+            // keep the popover on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
+            ...overlayTransitionSupportsQuery({
               transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete`,
-            },
+            }),
           },
         },
       },

@@ -3,7 +3,7 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  clearDialogCloseFallback,
+  createTopLayerController,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -11,8 +11,9 @@ import {
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
-  setDialogVisibility,
   setScrollLock,
+  showDialog,
+  type TopLayerController,
   unobserveChildren,
   validateProps,
 } from '../../utils';
@@ -99,6 +100,12 @@ export class Flyout {
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSubFooter: boolean;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.dialog,
+    isShown: () => !!this.dialog?.open,
+    show: () => showDialog(this.dialog, this.scroller),
+    hide: () => this.dialog?.close(),
+  });
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -121,7 +128,11 @@ export class Flyout {
   }
 
   public componentDidRender(): void {
-    setDialogVisibility(this.open, this.dialog, this.scroller);
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
   }
 
   public componentDidLoad(): void {
@@ -137,7 +148,7 @@ export class Flyout {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
-    clearDialogCloseFallback(this.dialog);
+    this.topLayer.cancel();
     unobserveChildren(this.host);
   }
 
@@ -169,7 +180,7 @@ export class Flyout {
         dismissable={true}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         onDismiss={this.dismissDialog}
         containerClass="flyout"
         header={this.hasHeader ? <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} /> : undefined}
