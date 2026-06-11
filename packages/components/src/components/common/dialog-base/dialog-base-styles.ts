@@ -98,8 +98,11 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
         }),
     transition,
     // `allow-discrete` transition for ua-style `overlay` (supported browsers only) ensures dialog is rendered on
-    // #top-layer as long as fade-in or fade-out transition/animation is running
-    '@supports (transition-behavior: allow-discrete)': {
+    // #top-layer as long as fade-in or fade-out transition/animation is running.
+    // Must gate on BOTH `overlay` and `transition-behavior: allow-discrete` to stay in sync with the JS detection in
+    // `setDialogVisibility` (see `utils/dialog/dialog.ts`): Firefox/Safari supports `allow-discrete` but NOT `overlay`, so it
+    // must not enter this block — there the dialog is kept natively open during fade-out and closed on `transitionend`.
+    '@supports (overlay: auto) and (transition-behavior: allow-discrete)': {
       transition: `${transition}, ${getTransition('overlay', duration, easing)} allow-discrete`,
     },
   };
