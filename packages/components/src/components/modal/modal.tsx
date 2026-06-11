@@ -3,6 +3,7 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '
 import {
   AllowedTypes,
   attachComponentCss,
+  clearDialogCloseFallback,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -132,6 +133,7 @@ export class Modal {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    clearDialogCloseFallback(this.dialog);
     unobserveChildren(this.host);
   }
 
@@ -168,7 +170,7 @@ export class Modal {
         containerClass="modal"
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         onDismiss={this.dismissButton ? this.dismissDialog : undefined}
         header={this.hasHeader ? <slot name="header" /> : undefined}
         footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}

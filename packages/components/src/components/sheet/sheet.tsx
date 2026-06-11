@@ -3,6 +3,7 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  clearDialogCloseFallback,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -89,6 +90,7 @@ export class Sheet {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    clearDialogCloseFallback(this.dialog);
   }
 
   public render(): JSX.Element {
@@ -111,7 +113,7 @@ export class Sheet {
         dismissable={this.dismissButton ?? undefined}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         onDismiss={this.dismissButton ? this.dismissDialog : undefined}
         containerClass="sheet"
         header={this.hasHeader ? <slot name="header" /> : undefined}

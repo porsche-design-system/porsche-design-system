@@ -3,6 +3,7 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  clearDialogCloseFallback,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -136,6 +137,7 @@ export class Flyout {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    clearDialogCloseFallback(this.dialog);
     unobserveChildren(this.host);
   }
 
@@ -167,7 +169,7 @@ export class Flyout {
         dismissable={true}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         onDismiss={this.dismissDialog}
         containerClass="flyout"
         header={this.hasHeader ? <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} /> : undefined}
