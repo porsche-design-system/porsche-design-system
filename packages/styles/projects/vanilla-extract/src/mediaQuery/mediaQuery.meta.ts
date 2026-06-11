@@ -15,9 +15,9 @@ export const mediaQueryMeta: Meta = {
   },
   breakpointBase: { name: 'breakpointBase', value: 0, description: 'Holds the `base` breakpoint value.' },
   breakpointXS: { name: 'breakpointXS', value: 480, description: 'Holds the `xs` breakpoint value.' },
-  breakpointS: { name: 'breakpointS', value: 760, description: 'Holds the `s` breakpoint value.' },
-  breakpointM: { name: 'breakpointM', value: 1000, description: 'Holds the `m` breakpoint value.' },
-  breakpointL: { name: 'breakpointL', value: 1300, description: 'Holds the `l` breakpoint value.' },
+  breakpointS: { name: 'breakpointS', value: 760, description: 'Holds the `sm` breakpoint value.' },
+  breakpointM: { name: 'breakpointM', value: 1000, description: 'Holds the `md` breakpoint value.' },
+  breakpointL: { name: 'breakpointL', value: 1300, description: 'Holds the `lg` breakpoint value.' },
   breakpointXL: { name: 'breakpointXL', value: 1760, description: 'Holds the `xl` breakpoint value.' },
   breakpointXXL: { name: 'breakpointXXL', value: 1920, description: 'Holds the `2xl` breakpoint value.' },
   getMediaQueryMax: {
