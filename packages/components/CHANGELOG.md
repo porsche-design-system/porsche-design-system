@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Flyout`, `Modal`, `Sheet`: Nested dialog elements no longer cause rendering issues in Chromium
+  ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498))
+
 ## [4.2.0-rc.4] - 2026-06-10
 
 ### Fixed
