@@ -77,6 +77,7 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
           height: '100dvh',
           visibility: 'inherit',
           pointerEvents: 'auto',
+          overlay: 'auto',
           background: ref(colorBackdrop),
           ...(isBackdropBlur && {
             WebkitBackdropFilter: ref(blurFrosted),
@@ -92,6 +93,7 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
           height: '0px',
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
           pointerEvents: 'none', // element can't be interacted with mouse
+          overlay: 'none',
           background: 'transparent',
         }),
     transition,
@@ -148,6 +150,10 @@ export const dialogGridJssStyle = (clipPath: string = 'none'): JssStyle => {
     alignContent: 'flex-start',
     // `overflow: clip` can't be used due to a Chromium bug that drops descendant backdrop-filter tiles (e.g. frosted p-tag); `clip-path` clips slotted content to the rounded corners without the faulty paint-containment box while keeping the scroll behavior intact
     clipPath,
+    // Chromium paint bug: when a dialog element is nested inside another (e.g. `p-modal` within `p-flyout`),
+    // the inner dialog's grid content fails to render. Forcing a new compositing layer via `translate3d`
+    // triggers a repaint and fixes it. Re-check periodically; remove once the upstream Chromium bug is resolved.
+    transform: 'translate3d(0,0,0)',
   };
 };
 
