@@ -1142,5 +1142,2180 @@ exports[`style package content > should match vanilla-extract content 1`] = `
   "typescaleSm": "1rem",
   "typescaleXl": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
   "typescaleXs": ".875rem",
+  "vanillaExtractMeta": {
+    "blur": {
+      "blurFrosted": {
+        "description": "Holds a blur value for a **frosted** effect when combined with a semi-transparent color.",
+        "name": "blurFrosted",
+        "value": "blur(32px)",
+      },
+    },
+    "border": {
+      "radius": {
+        "radius2Xl": {
+          "description": "Holds a **2x-large** \`border-radius\`. Used for notification components (e.g. \`p-banner\`, \`p-inline-notification\`, \`p-toast\`,…).",
+          "name": "radius2Xl",
+          "value": "16px",
+        },
+        "radius3Xl": {
+          "description": "Holds a **3x-large** \`border-radius\`. Used for card-like containers or dialogs (e.g. \`p-link-tile\`, \`p-modal\`, \`p-flyout\`, \`p-sheet\`,…). Defines the primary visual appearance alongside **radiusXl**.",
+          "name": "radius3Xl",
+          "value": "24px",
+        },
+        "radius4Xl": {
+          "description": "Holds a **4x-large** \`border-radius\`.",
+          "name": "radius4Xl",
+          "value": "32px",
+        },
+        "radiusFull": {
+          "description": "Holds a **fully** rounded \`border-radius\`. Used for pill shapes (e.g. \`p-tag\`, \`p-switch\`,…). Recommended only for standalone indicators.",
+          "name": "radiusFull",
+          "value": "calc(infinity * 1px)",
+        },
+        "radiusLg": {
+          "description": "Holds a **large** \`border-radius\`. Used for interactive controls in **compact mode** (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…).",
+          "name": "radiusLg",
+          "value": "8px",
+        },
+        "radiusMd": {
+          "description": "Holds a **medium** \`border-radius\`. Used for \`p-checkbox\` in **compact mode**.",
+          "name": "radiusMd",
+          "value": "6px",
+        },
+        "radiusSm": {
+          "description": "Holds a **small** \`border-radius\`.",
+          "name": "radiusSm",
+          "value": "4px",
+        },
+        "radiusXl": {
+          "description": "Holds a **x-large** \`border-radius\`. Used for interactive controls (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…). Defines the primary visual appearance alongside **radius3Xl**.",
+          "name": "radiusXl",
+          "value": "12px",
+        },
+        "radiusXs": {
+          "description": "Holds a **x-small** \`border-radius\`.",
+          "name": "radiusXs",
+          "value": "2px",
+        },
+      },
+    },
+    "color": {
+      "lightDark": {
+        "colorBackdrop": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **backdrop** color, typically used for backdrops.",
+          "name": "colorBackdrop",
+          "value": "var(--_color-backdrop, light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 5.3% 14.9% / 0.5)))",
+        },
+        "colorCanvas": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **canvas** color, typically used for surfaces.",
+          "name": "colorCanvas",
+          "value": "var(--_color-canvas, light-dark(#fff,hsl(225 66.7% 1.2%)))",
+        },
+        "colorContrastHigh": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-high** color, typically used for text.",
+          "name": "colorContrastHigh",
+          "value": "var(--_color-contrast-high, light-dark(hsl(240 7.1% 11% / 0.7),hsl(240 12.5% 96.9% / 0.67)))",
+        },
+        "colorContrastHigher": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-higher** color, typically used for text.",
+          "name": "colorContrastHigher",
+          "value": "var(--_color-contrast-higher, light-dark(hsl(240 8.7% 9% / 0.8),hsl(240 12.5% 96.9% / 0.78)))",
+        },
+        "colorContrastLow": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-low** color, intended only for decorative elements.",
+          "name": "colorContrastLow",
+          "value": "var(--_color-contrast-low, light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45)))",
+        },
+        "colorContrastLower": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-lower** color, intended only for decorative elements.",
+          "name": "colorContrastLower",
+          "value": "var(--_color-contrast-lower, light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302)))",
+        },
+        "colorContrastMedium": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-medium** color, typically used for text.",
+          "name": "colorContrastMedium",
+          "value": "var(--_color-contrast-medium, light-dark(hsl(240 6.1% 7% / 0.6),hsl(240 12.5% 96.9% / 0.56)))",
+        },
+        "colorError": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error** color, typically used for text.",
+          "name": "colorError",
+          "value": "var(--_color-error, light-dark(hsl(357 78% 41%),hsl(0 96.9% 62%)))",
+        },
+        "colorErrorFrosted": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.",
+          "name": "colorErrorFrosted",
+          "value": "var(--_color-error-frosted, light-dark(hsl(0 100% 90% / 0.55),hsl(0 79% 20% / 0.66)))",
+        },
+        "colorErrorFrostedSoft": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted-soft** color, typically used as background \`:hover\`.",
+          "name": "colorErrorFrostedSoft",
+          "value": "var(--_color-error-frosted-soft, light-dark(hsl(0 80% 95% / 0.55),hsl(0 59% 15% / 0.66)))",
+        },
+        "colorErrorLow": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-low** color, typically used for text or border.",
+          "name": "colorErrorLow",
+          "value": "var(--_color-error-low, light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18)))",
+        },
+        "colorErrorMedium": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-medium** color, typically used for text or border.",
+          "name": "colorErrorMedium",
+          "value": "var(--_color-error-medium, light-dark(hsl(357 78% 41% / 0.6),hsl(0 96.9% 62% / 0.6)))",
+        },
+        "colorFocus": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **focus** color, typically used as the outline for \`:focus-visible\` states.",
+          "name": "colorFocus",
+          "value": "var(--_color-focus, light-dark(#1A44EA,#1A44EA))",
+        },
+        "colorFrosted": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted** color, typically used as a background in combination with \`blur()\`.",
+          "name": "colorFrosted",
+          "value": "var(--_color-frosted, light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228)))",
+        },
+        "colorFrostedSoft": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-soft** color, typically used as a background \`:hover\`.",
+          "name": "colorFrostedSoft",
+          "value": "var(--_color-frosted-soft, light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154)))",
+        },
+        "colorFrostedStrong": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-strong** color, typically used as a background in combination with \`blur()\`.",
+          "name": "colorFrostedStrong",
+          "value": "var(--_color-frosted-strong, light-dark(hsl(236 6.5% 42% / 0.236),hsl(240 1.5% 61.8% / 0.302)))",
+        },
+        "colorInfo": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info** color, typically used for text.",
+          "name": "colorInfo",
+          "value": "var(--_color-info, light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%)))",
+        },
+        "colorInfoFrosted": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.",
+          "name": "colorInfoFrosted",
+          "value": "var(--_color-info-frosted, light-dark(hsl(211 100% 90% / 0.55),hsl(210 79% 20% / 0.66)))",
+        },
+        "colorInfoFrostedSoft": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted-soft** color, typically used as background \`:hover\`.",
+          "name": "colorInfoFrostedSoft",
+          "value": "var(--_color-info-frosted-soft, light-dark(hsl(211 80% 95% / 0.55),hsl(210 59% 15% / 0.66)))",
+        },
+        "colorInfoLow": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-low** color, typically used for text or border.",
+          "name": "colorInfoLow",
+          "value": "var(--_color-info-low, light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18)))",
+        },
+        "colorInfoMedium": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-medium** color, typically used for text or border.",
+          "name": "colorInfoMedium",
+          "value": "var(--_color-info-medium, light-dark(hsl(228 83.2% 51% / 0.6),hsl(210 100% 54.5% / 0.6)))",
+        },
+        "colorPrimary": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **primary** color, typically used for text.",
+          "name": "colorPrimary",
+          "value": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+        },
+        "colorSuccess": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success** color, typically used for text.",
+          "name": "colorSuccess",
+          "value": "var(--_color-success, light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%)))",
+        },
+        "colorSuccessFrosted": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.",
+          "name": "colorSuccessFrosted",
+          "value": "var(--_color-success-frosted, light-dark(hsl(109 100% 90% / 0.55),hsl(157 79% 20% / 0.66)))",
+        },
+        "colorSuccessFrostedSoft": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted-soft** color, typically used as background \`:hover\`.",
+          "name": "colorSuccessFrostedSoft",
+          "value": "var(--_color-success-frosted-soft, light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66)))",
+        },
+        "colorSuccessLow": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-low** color, typically used for text or border.",
+          "name": "colorSuccessLow",
+          "value": "var(--_color-success-low, light-dark(hsl(115 77.5% 27.8% / 0.18),hsl(157 84.9% 41.6% / 0.18)))",
+        },
+        "colorSuccessMedium": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-medium** color, typically used for text or border.",
+          "name": "colorSuccessMedium",
+          "value": "var(--_color-success-medium, light-dark(hsl(115 77.5% 27.8% / 0.6),hsl(157 84.9% 41.6% / 0.6)))",
+        },
+        "colorSurface": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **surface** color, typically used for surfaces.",
+          "name": "colorSurface",
+          "value": "var(--_color-surface, light-dark(hsl(240 10% 95%),hsl(240 2% 10%)))",
+        },
+        "colorWarning": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning** color, typically used for text.",
+          "name": "colorWarning",
+          "value": "var(--_color-warning, light-dark(hsl(28 97.7% 34.1%),hsl(28 90.2% 56.1%)))",
+        },
+        "colorWarningFrosted": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.",
+          "name": "colorWarningFrosted",
+          "value": "var(--_color-warning-frosted, light-dark(hsl(40 100% 90% / 0.55),hsl(52 79% 20% / 0.66)))",
+        },
+        "colorWarningFrostedSoft": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted-soft** color, typically used as background \`:hover\`.",
+          "name": "colorWarningFrostedSoft",
+          "value": "var(--_color-warning-frosted-soft, light-dark(hsl(40 80% 95% / 0.55),hsl(52 59% 15% / 0.66)))",
+        },
+        "colorWarningLow": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-low** color, typically used for text or border.",
+          "name": "colorWarningLow",
+          "value": "var(--_color-warning-low, light-dark(hsl(28 97.7% 34.1% / 0.18),hsl(28 90.2% 56.1% / 0.18)))",
+        },
+        "colorWarningMedium": {
+          "description": "Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-medium** color, typically used for text or border.",
+          "name": "colorWarningMedium",
+          "value": "var(--_color-warning-medium, light-dark(hsl(28 97.7% 34.1% / 0.6),hsl(28 90.2% 56.1% / 0.6)))",
+        },
+      },
+    },
+    "deprecated": {
+      "blur": {
+        "frostedGlassStyle": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use backdropFilter: blurFrosted instead.",
+          "name": "frostedGlassStyle",
+          "value": {
+            "WebkitBackdropFilter": "blur(32px)",
+            "backdropFilter": "blur(32px)",
+          },
+        },
+      },
+      "border": {
+        "border": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.",
+          "name": "border",
+          "value": {
+            "radius": {
+              "large": "8px",
+              "medium": "6px",
+              "small": "4px",
+            },
+            "width": {
+              "base": "2px",
+              "thin": "1px",
+            },
+          },
+        },
+        "borderRadius": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.",
+          "name": "borderRadius",
+          "value": {
+            "large": "8px",
+            "medium": "6px",
+            "small": "4px",
+          },
+        },
+        "borderRadiusLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use radiusLg instead.",
+          "name": "borderRadiusLarge",
+          "value": "8px",
+        },
+        "borderRadiusMedium": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use radiusMd instead.",
+          "name": "borderRadiusMedium",
+          "value": "6px",
+        },
+        "borderRadiusSmall": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use radiusSm instead.",
+          "name": "borderRadiusSmall",
+          "value": "4px",
+        },
+        "borderWidth": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.",
+          "name": "borderWidth",
+          "value": {
+            "base": "2px",
+            "thin": "1px",
+          },
+        },
+        "borderWidthBase": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use 2px instead.",
+          "name": "borderWidthBase",
+          "value": "2px",
+        },
+        "borderWidthThin": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use 1px instead.",
+          "name": "borderWidthThin",
+          "value": "1px",
+        },
+      },
+      "color": {
+        "theme": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.",
+          "name": "theme",
+          "value": {
+            "dark": {
+              "background": {
+                "base": "hsl(225 66.7% 1.2%)",
+                "frosted": "hsl(240 2% 43% / 0.228)",
+                "shading": "hsl(240 5.3% 14.9% / 0.5)",
+                "surface": "hsl(240 2% 10%)",
+              },
+              "contrast": {
+                "high": "hsl(240 12.5% 96.9% / 0.67)",
+                "low": "hsl(240 12.5% 96.9% / 0.45)",
+                "medium": "hsl(240 12.5% 96.9% / 0.56)",
+              },
+              "notification": {
+                "error": "hsl(0 96.9% 62%)",
+                "errorSoft": "hsl(0 79% 20% / 0.66)",
+                "info": "hsl(210 100% 54.5%)",
+                "infoSoft": "hsl(210 79% 20% / 0.66)",
+                "success": "hsl(157 84.9% 41.6%)",
+                "successSoft": "hsl(157 79% 20% / 0.66)",
+                "warning": "hsl(28 90.2% 56.1%)",
+                "warningSoft": "hsl(52 79% 20% / 0.66)",
+              },
+              "primary": "hsl(225 100% 99%)",
+              "state": {
+                "active": "hsl(240 2% 43% / 0.228)",
+                "disabled": "hsla(240,1.5%,61.8%,0.302)",
+                "focus": "#1A44EA",
+                "hover": "hsl(240 2% 43% / 0.228)",
+              },
+            },
+            "light": {
+              "background": {
+                "base": "#fff",
+                "frosted": "hsl(240 5% 70% / 0.148)",
+                "shading": "hsl(240 5.3% 14.9% / 0.5)",
+                "surface": "hsl(240 10% 95%)",
+              },
+              "contrast": {
+                "high": "hsl(240 7.1% 11% / 0.7)",
+                "low": "hsl(240 5.3% 14.9% / 0.5)",
+                "medium": "hsl(240 6.1% 7% / 0.6)",
+              },
+              "notification": {
+                "error": "hsl(357 78% 41%)",
+                "errorSoft": "hsl(0 100% 90% / 0.55)",
+                "info": "hsl(228 83.2% 51%)",
+                "infoSoft": "hsl(211 100% 90% / 0.55)",
+                "success": "hsl(115 77.5% 27.8%)",
+                "successSoft": "hsl(109 100% 90% / 0.55)",
+                "warning": "hsl(28 97.7% 34.1%)",
+                "warningSoft": "hsl(40 100% 90% / 0.55)",
+              },
+              "primary": "hsl(225 66.7% 1.2%)",
+              "state": {
+                "active": "hsl(240 5% 70% / 0.148)",
+                "disabled": "hsla(233,6.6%,23.9%,0.412)",
+                "focus": "#1A44EA",
+                "hover": "hsl(240 5% 70% / 0.148)",
+              },
+            },
+          },
+        },
+        "themeDark": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.",
+          "name": "themeDark",
+          "value": {
+            "background": {
+              "base": "hsl(225 66.7% 1.2%)",
+              "frosted": "hsl(240 2% 43% / 0.228)",
+              "shading": "hsl(240 5.3% 14.9% / 0.5)",
+              "surface": "hsl(240 2% 10%)",
+            },
+            "contrast": {
+              "high": "hsl(240 12.5% 96.9% / 0.67)",
+              "low": "hsl(240 12.5% 96.9% / 0.45)",
+              "medium": "hsl(240 12.5% 96.9% / 0.56)",
+            },
+            "notification": {
+              "error": "hsl(0 96.9% 62%)",
+              "errorSoft": "hsl(0 79% 20% / 0.66)",
+              "info": "hsl(210 100% 54.5%)",
+              "infoSoft": "hsl(210 79% 20% / 0.66)",
+              "success": "hsl(157 84.9% 41.6%)",
+              "successSoft": "hsl(157 79% 20% / 0.66)",
+              "warning": "hsl(28 90.2% 56.1%)",
+              "warningSoft": "hsl(52 79% 20% / 0.66)",
+            },
+            "primary": "hsl(225 100% 99%)",
+            "state": {
+              "active": "hsl(240 2% 43% / 0.228)",
+              "disabled": "hsla(240,1.5%,61.8%,0.302)",
+              "focus": "#1A44EA",
+              "hover": "hsl(240 2% 43% / 0.228)",
+            },
+          },
+        },
+        "themeDarkBackgroundBase": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorCanvasDark instead.",
+          "name": "themeDarkBackgroundBase",
+          "value": "hsl(225 66.7% 1.2%)",
+        },
+        "themeDarkBackgroundFrosted": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.",
+          "name": "themeDarkBackgroundFrosted",
+          "value": "hsl(240 2% 43% / 0.228)",
+        },
+        "themeDarkBackgroundShading": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorBackdropDark instead.",
+          "name": "themeDarkBackgroundShading",
+          "value": "hsl(240 5.3% 14.9% / 0.5)",
+        },
+        "themeDarkBackgroundSurface": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceDark instead.",
+          "name": "themeDarkBackgroundSurface",
+          "value": "hsl(240 2% 10%)",
+        },
+        "themeDarkContrastHigh": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighDark instead.",
+          "name": "themeDarkContrastHigh",
+          "value": "hsl(240 12.5% 96.9% / 0.67)",
+        },
+        "themeDarkContrastLow": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowDark instead.",
+          "name": "themeDarkContrastLow",
+          "value": "hsl(240 12.5% 96.9% / 0.45)",
+        },
+        "themeDarkContrastMedium": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumDark instead.",
+          "name": "themeDarkContrastMedium",
+          "value": "hsl(240 12.5% 96.9% / 0.56)",
+        },
+        "themeDarkNotificationError": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorErrorDark instead.",
+          "name": "themeDarkNotificationError",
+          "value": "hsl(0 96.9% 62%)",
+        },
+        "themeDarkNotificationErrorSoft": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedDark instead.",
+          "name": "themeDarkNotificationErrorSoft",
+          "value": "hsl(0 79% 20% / 0.66)",
+        },
+        "themeDarkNotificationInfo": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorInfoDark instead.",
+          "name": "themeDarkNotificationInfo",
+          "value": "hsl(210 100% 54.5%)",
+        },
+        "themeDarkNotificationInfoSoft": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedDark instead.",
+          "name": "themeDarkNotificationInfoSoft",
+          "value": "hsl(210 79% 20% / 0.66)",
+        },
+        "themeDarkNotificationSuccess": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorSuccessDark instead.",
+          "name": "themeDarkNotificationSuccess",
+          "value": "hsl(157 84.9% 41.6%)",
+        },
+        "themeDarkNotificationSuccessSoft": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedDark instead.",
+          "name": "themeDarkNotificationSuccessSoft",
+          "value": "hsl(157 79% 20% / 0.66)",
+        },
+        "themeDarkNotificationWarning": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorWarningDark instead.",
+          "name": "themeDarkNotificationWarning",
+          "value": "hsl(28 90.2% 56.1%)",
+        },
+        "themeDarkNotificationWarningSoft": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedDark instead.",
+          "name": "themeDarkNotificationWarningSoft",
+          "value": "hsl(52 79% 20% / 0.66)",
+        },
+        "themeDarkPrimary": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryDark instead.",
+          "name": "themeDarkPrimary",
+          "value": "hsl(225 100% 99%)",
+        },
+        "themeDarkStateActive": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.",
+          "name": "themeDarkStateActive",
+          "value": "hsl(240 2% 43% / 0.228)",
+        },
+        "themeDarkStateDisabled": {
+          "description": "deprecated since v4.0.0, will be removed with next major release.",
+          "name": "themeDarkStateDisabled",
+          "value": "hsla(240,1.5%,61.8%,0.302)",
+        },
+        "themeDarkStateFocus": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorFocusDark instead.",
+          "name": "themeDarkStateFocus",
+          "value": "#1A44EA",
+        },
+        "themeDarkStateHover": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.",
+          "name": "themeDarkStateHover",
+          "value": "hsl(240 2% 43% / 0.228)",
+        },
+        "themeLight": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.",
+          "name": "themeLight",
+          "value": {
+            "background": {
+              "base": "#fff",
+              "frosted": "hsl(240 5% 70% / 0.148)",
+              "shading": "hsl(240 5.3% 14.9% / 0.5)",
+              "surface": "hsl(240 10% 95%)",
+            },
+            "contrast": {
+              "high": "hsl(240 7.1% 11% / 0.7)",
+              "low": "hsl(240 5.3% 14.9% / 0.5)",
+              "medium": "hsl(240 6.1% 7% / 0.6)",
+            },
+            "notification": {
+              "error": "hsl(357 78% 41%)",
+              "errorSoft": "hsl(0 100% 90% / 0.55)",
+              "info": "hsl(228 83.2% 51%)",
+              "infoSoft": "hsl(211 100% 90% / 0.55)",
+              "success": "hsl(115 77.5% 27.8%)",
+              "successSoft": "hsl(109 100% 90% / 0.55)",
+              "warning": "hsl(28 97.7% 34.1%)",
+              "warningSoft": "hsl(40 100% 90% / 0.55)",
+            },
+            "primary": "hsl(225 66.7% 1.2%)",
+            "state": {
+              "active": "hsl(240 5% 70% / 0.148)",
+              "disabled": "hsla(233,6.6%,23.9%,0.412)",
+              "focus": "#1A44EA",
+              "hover": "hsl(240 5% 70% / 0.148)",
+            },
+          },
+        },
+        "themeLightBackgroundBase": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorCanvasLight instead.",
+          "name": "themeLightBackgroundBase",
+          "value": "#fff",
+        },
+        "themeLightBackgroundFrosted": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.",
+          "name": "themeLightBackgroundFrosted",
+          "value": "hsl(240 5% 70% / 0.148)",
+        },
+        "themeLightBackgroundShading": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorBackdropLight instead.",
+          "name": "themeLightBackgroundShading",
+          "value": "hsl(240 5.3% 14.9% / 0.5)",
+        },
+        "themeLightBackgroundSurface": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceLight instead.",
+          "name": "themeLightBackgroundSurface",
+          "value": "hsl(240 10% 95%)",
+        },
+        "themeLightContrastHigh": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighLight instead.",
+          "name": "themeLightContrastHigh",
+          "value": "hsl(240 7.1% 11% / 0.7)",
+        },
+        "themeLightContrastLow": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowLight instead.",
+          "name": "themeLightContrastLow",
+          "value": "hsl(240 5.3% 14.9% / 0.5)",
+        },
+        "themeLightContrastMedium": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead.",
+          "name": "themeLightContrastMedium",
+          "value": "hsl(240 6.1% 7% / 0.6)",
+        },
+        "themeLightNotificationError": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorErrorLight instead.",
+          "name": "themeLightNotificationError",
+          "value": "hsl(357 78% 41%)",
+        },
+        "themeLightNotificationErrorSoft": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedLight instead.",
+          "name": "themeLightNotificationErrorSoft",
+          "value": "hsl(0 100% 90% / 0.55)",
+        },
+        "themeLightNotificationInfo": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorInfoLight instead.",
+          "name": "themeLightNotificationInfo",
+          "value": "hsl(228 83.2% 51%)",
+        },
+        "themeLightNotificationInfoSoft": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedLight instead.",
+          "name": "themeLightNotificationInfoSoft",
+          "value": "hsl(211 100% 90% / 0.55)",
+        },
+        "themeLightNotificationSuccess": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorSuccessLight instead.",
+          "name": "themeLightNotificationSuccess",
+          "value": "hsl(115 77.5% 27.8%)",
+        },
+        "themeLightNotificationSuccessSoft": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead.",
+          "name": "themeLightNotificationSuccessSoft",
+          "value": "hsl(109 100% 90% / 0.55)",
+        },
+        "themeLightNotificationWarning": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorWarningLight instead.",
+          "name": "themeLightNotificationWarning",
+          "value": "hsl(28 97.7% 34.1%)",
+        },
+        "themeLightNotificationWarningSoft": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead.",
+          "name": "themeLightNotificationWarningSoft",
+          "value": "hsl(40 100% 90% / 0.55)",
+        },
+        "themeLightPrimary": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead.",
+          "name": "themeLightPrimary",
+          "value": "hsl(225 66.7% 1.2%)",
+        },
+        "themeLightStateActive": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.",
+          "name": "themeLightStateActive",
+          "value": "hsl(240 5% 70% / 0.148)",
+        },
+        "themeLightStateDisabled": {
+          "description": "deprecated since v4.0.0, will be removed with next major release.",
+          "name": "themeLightStateDisabled",
+          "value": "hsla(233,6.6%,23.9%,0.412)",
+        },
+        "themeLightStateFocus": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorFocusLight instead.",
+          "name": "themeLightStateFocus",
+          "value": "#1A44EA",
+        },
+        "themeLightStateHover": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.",
+          "name": "themeLightStateHover",
+          "value": "hsl(240 5% 70% / 0.148)",
+        },
+      },
+      "focus": {
+        "getFocusStyle": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use getFocusVisibleStyle instead.",
+          "name": "getFocusStyle",
+          "value": [Function],
+        },
+      },
+      "font": {
+        "fontFamily": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use fontPorscheNext instead.",
+          "name": "fontFamily",
+          "value": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        },
+        "fontLineHeight": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use leadingNormal instead",
+          "name": "fontLineHeight",
+          "value": "calc(6px + 2.125ex)",
+        },
+        "fontSize": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead.",
+          "name": "fontSize",
+          "value": {
+            "display": {
+              "large": "clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)",
+              "medium": "clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)",
+              "small": "clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)",
+            },
+            "heading": {
+              "large": "clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)",
+              "medium": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+              "small": "1rem",
+              "xLarge": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
+              "xxLarge": "clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)",
+            },
+            "text": {
+              "large": "clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)",
+              "medium": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+              "small": "1rem",
+              "xLarge": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
+              "xSmall": ".875rem",
+              "xxSmall": ".75rem",
+            },
+          },
+        },
+        "fontSizeDisplay": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.",
+          "name": "fontSizeDisplay",
+          "value": {
+            "large": "clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)",
+            "medium": "clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)",
+            "small": "clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)",
+          },
+        },
+        "fontSizeHeading": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead.",
+          "name": "fontSizeHeading",
+          "value": {
+            "large": "clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)",
+            "medium": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+            "small": "1rem",
+            "xLarge": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
+            "xxLarge": "clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)",
+          },
+        },
+        "fontSizeHeadingLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead.",
+          "name": "fontSizeHeadingLarge",
+          "value": "clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)",
+        },
+        "fontSizeHeadingMedium": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead.",
+          "name": "fontSizeHeadingMedium",
+          "value": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+        },
+        "fontSizeHeadingSmall": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead.",
+          "name": "fontSizeHeadingSmall",
+          "value": "1rem",
+        },
+        "fontSizeHeadingXLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead.",
+          "name": "fontSizeHeadingXLarge",
+          "value": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
+        },
+        "fontSizeHeadingXXLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescale2Xl instead.",
+          "name": "fontSizeHeadingXXLarge",
+          "value": "clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)",
+        },
+        "fontSizeText": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead.",
+          "name": "fontSizeText",
+          "value": {
+            "large": "clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)",
+            "medium": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+            "small": "1rem",
+            "xLarge": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
+            "xSmall": ".875rem",
+            "xxSmall": ".75rem",
+          },
+        },
+        "fontSizeTextLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead.",
+          "name": "fontSizeTextLarge",
+          "value": "clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)",
+        },
+        "fontSizeTextMedium": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead.",
+          "name": "fontSizeTextMedium",
+          "value": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+        },
+        "fontSizeTextSmall": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead.",
+          "name": "fontSizeTextSmall",
+          "value": "1rem",
+        },
+        "fontSizeTextXLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead.",
+          "name": "fontSizeTextXLarge",
+          "value": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
+        },
+        "fontSizeTextXSmall": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescaleXs instead.",
+          "name": "fontSizeTextXSmall",
+          "value": ".875rem",
+        },
+        "fontSizeTextXXSmall": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use typescale2Xs instead.",
+          "name": "fontSizeTextXXSmall",
+          "value": ".75rem",
+        },
+        "fontStyle": {
+          "description": "since v4.0.0, will be removed with next major release. Use 'normal' | 'italic' instead.",
+          "name": "fontStyle",
+          "value": {
+            "italic": "italic",
+            "normal": "normal",
+          },
+        },
+        "fontStyleItalic": {
+          "description": "since v4.0.0, will be removed with next major release. Use 'italic' instead.",
+          "name": "fontStyleItalic",
+          "value": "italic",
+        },
+        "fontStyleNormal": {
+          "description": "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
+          "name": "fontStyleNormal",
+          "value": "normal",
+        },
+        "fontVariant": {
+          "description": "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
+          "name": "fontVariant",
+          "value": "normal",
+        },
+        "fontWeight": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.",
+          "name": "fontWeight",
+          "value": {
+            "bold": 700,
+            "regular": 400,
+            "semiBold": 600,
+          },
+        },
+        "fontWeightRegular": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use fontWeightNormal instead.",
+          "name": "fontWeightRegular",
+          "value": 400,
+        },
+        "fontWeightSemiBold": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use fontWeightSemibold instead.",
+          "name": "fontWeightSemiBold",
+          "value": 600,
+        },
+      },
+      "gradient": {
+        "gradientToBottomStyle": {
+          "description": "since v4.0.0, will be removed with next major release. Use background: \`linear-gradient(to bottom, \${gradientStopsFadeDark});\` instead",
+          "name": "gradientToBottomStyle",
+          "value": {
+            "background": "linear-gradient(to bottom, hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%);",
+          },
+        },
+        "gradientToLeftStyle": {
+          "description": "since v4.0.0, will be removed with next major release. Use background: \`linear-gradient(to left, \${gradientStopsFadeDark});\` instead",
+          "name": "gradientToLeftStyle",
+          "value": {
+            "background": "linear-gradient(to left, hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%);",
+          },
+        },
+        "gradientToRightStyle": {
+          "description": "since v4.0.0, will be removed with next major release. background: \`linear-gradient(to right, \${gradientStopsFadeDark});\` instead",
+          "name": "gradientToRightStyle",
+          "value": {
+            "background": "linear-gradient(to right, hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%);",
+          },
+        },
+        "gradientToTopStyle": {
+          "description": "since v4.0.0, will be removed with next major release. background: \`linear-gradient(to top, \${gradientStopsFadeDark});\` instead",
+          "name": "gradientToTopStyle",
+          "value": {
+            "background": "linear-gradient(to top, hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%);",
+          },
+        },
+      },
+      "motion": {
+        "motionDurationLong": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use durationLg instead.",
+          "name": "motionDurationLong",
+          "value": ".6s",
+        },
+        "motionDurationModerate": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use durationMd instead.",
+          "name": "motionDurationModerate",
+          "value": ".4s",
+        },
+        "motionDurationShort": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use durationSm instead.",
+          "name": "motionDurationShort",
+          "value": ".25s",
+        },
+        "motionDurationVeryLong": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use durationXl instead.",
+          "name": "motionDurationVeryLong",
+          "value": "1.2s",
+        },
+        "motionEasingBase": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead.",
+          "name": "motionEasingBase",
+          "value": "cubic-bezier(.25,.1,.25,1)",
+        },
+        "motionEasingIn": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use easeIn instead.",
+          "name": "motionEasingIn",
+          "value": "cubic-bezier(0,0,.2,1)",
+        },
+        "motionEasingOut": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use easeOut instead.",
+          "name": "motionEasingOut",
+          "value": "cubic-bezier(.4,0,.5,1)",
+        },
+      },
+      "shadow": {
+        "dropShadowHighStyle": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use boxShadow: shadowLg instead.",
+          "name": "dropShadowHighStyle",
+          "value": {
+            "boxShadow": "0px 8px 40px rgba(0,0,0,.16)",
+          },
+        },
+        "dropShadowLowStyle": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use boxShadow: shadowSm instead.",
+          "name": "dropShadowLowStyle",
+          "value": {
+            "boxShadow": "0px 3px 8px rgba(0,0,0,.16)",
+          },
+        },
+        "dropShadowMediumStyle": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use boxShadow: shadowMd instead.",
+          "name": "dropShadowMediumStyle",
+          "value": {
+            "boxShadow": "0px 4px 16px rgba(0,0,0,.16)",
+          },
+        },
+      },
+      "spacing": {
+        "spacing": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacing variables directly instead.",
+          "name": "spacing",
+          "value": {
+            "fluid": {
+              "large": "clamp(32px, 2.75vw + 23px, 76px)",
+              "medium": "clamp(16px, 1.25vw + 12px, 36px)",
+              "small": "clamp(8px, 0.5vw + 6px, 16px)",
+              "xLarge": "clamp(48px, 3vw + 38px, 96px)",
+              "xSmall": "clamp(4px, 0.25vw + 3px, 8px)",
+              "xxLarge": "clamp(80px, 7.5vw + 56px, 200px)",
+            },
+            "static": {
+              "large": "32px",
+              "medium": "16px",
+              "small": "8px",
+              "xLarge": "48px",
+              "xSmall": "4px",
+              "xxLarge": "80px",
+            },
+          },
+        },
+        "spacingFluid": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacing variables directly instead.",
+          "name": "spacingFluid",
+          "value": {
+            "large": "clamp(32px, 2.75vw + 23px, 76px)",
+            "medium": "clamp(16px, 1.25vw + 12px, 36px)",
+            "small": "clamp(8px, 0.5vw + 6px, 16px)",
+            "xLarge": "clamp(48px, 3vw + 38px, 96px)",
+            "xSmall": "clamp(4px, 0.25vw + 3px, 8px)",
+            "xxLarge": "clamp(80px, 7.5vw + 56px, 200px)",
+          },
+        },
+        "spacingFluidLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingFluidLg instead.",
+          "name": "spacingFluidLarge",
+          "value": "clamp(32px, 2.75vw + 23px, 76px)",
+        },
+        "spacingFluidMedium": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingFluidMd instead.",
+          "name": "spacingFluidMedium",
+          "value": "clamp(16px, 1.25vw + 12px, 36px)",
+        },
+        "spacingFluidSmall": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingFluidSm instead.",
+          "name": "spacingFluidSmall",
+          "value": "clamp(8px, 0.5vw + 6px, 16px)",
+        },
+        "spacingFluidXLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingFluidXl instead.",
+          "name": "spacingFluidXLarge",
+          "value": "clamp(48px, 3vw + 38px, 96px)",
+        },
+        "spacingFluidXSmall": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingFluidXs instead.",
+          "name": "spacingFluidXSmall",
+          "value": "clamp(4px, 0.25vw + 3px, 8px)",
+        },
+        "spacingFluidXXLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingFluid2Xl instead.",
+          "name": "spacingFluidXXLarge",
+          "value": "clamp(80px, 7.5vw + 56px, 200px)",
+        },
+        "spacingStatic": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacing variables directly instead.",
+          "name": "spacingStatic",
+          "value": {
+            "large": "32px",
+            "medium": "16px",
+            "small": "8px",
+            "xLarge": "48px",
+            "xSmall": "4px",
+            "xxLarge": "80px",
+          },
+        },
+        "spacingStaticLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingStaticLg instead.",
+          "name": "spacingStaticLarge",
+          "value": "32px",
+        },
+        "spacingStaticMedium": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingStaticMd instead.",
+          "name": "spacingStaticMedium",
+          "value": "16px",
+        },
+        "spacingStaticSmall": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingStaticSm instead.",
+          "name": "spacingStaticSmall",
+          "value": "8px",
+        },
+        "spacingStaticXLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingStaticXl instead.",
+          "name": "spacingStaticXLarge",
+          "value": "48px",
+        },
+        "spacingStaticXSmall": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingStaticXs instead.",
+          "name": "spacingStaticXSmall",
+          "value": "4px",
+        },
+        "spacingStaticXXLarge": {
+          "description": "deprecated since v4.0.0, will be removed with next major release. Use spacingStatic2Xl instead.",
+          "name": "spacingStaticXXLarge",
+          "value": "80px",
+        },
+      },
+      "typography": {
+        "display": {
+          "displayLargeStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseHeading5XlStyle instead.",
+            "name": "displayLargeStyle",
+            "value": {
+              "font": "normal normal 400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "displayMediumStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseHeading4XlStyle instead.",
+            "name": "displayMediumStyle",
+            "value": {
+              "font": "normal normal 400 clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "displaySmallStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseHeading3XlStyle instead.",
+            "name": "displaySmallStyle",
+            "value": {
+              "font": "normal normal 400 clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+        },
+        "heading": {
+          "headingLargeStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseHeadingLg instead.",
+            "name": "headingLargeStyle",
+            "value": {
+              "font": "normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "headingMediumStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseHeadingMd instead.",
+            "name": "headingMediumStyle",
+            "value": {
+              "font": "normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "headingSmallStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseHeadingSm instead.",
+            "name": "headingSmallStyle",
+            "value": {
+              "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "headingXLargeStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseHeadingXl instead.",
+            "name": "headingXLargeStyle",
+            "value": {
+              "font": "normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "headingXXLargeStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseHeading2Xl instead.",
+            "name": "headingXXLargeStyle",
+            "value": {
+              "font": "normal normal 400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+        },
+        "text": {
+          "textLargeStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseTextLg instead.",
+            "name": "textLargeStyle",
+            "value": {
+              "font": "normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "textMediumStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseTextMd instead.",
+            "name": "textMediumStyle",
+            "value": {
+              "font": "normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "textSmallStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseTextSm instead.",
+            "name": "textSmallStyle",
+            "value": {
+              "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "textXLargeStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseTextXl instead.",
+            "name": "textXLargeStyle",
+            "value": {
+              "font": "normal normal 400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "textXSmallStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseTextXs instead.",
+            "name": "textXSmallStyle",
+            "value": {
+              "font": "normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+          "textXXSmallStyle": {
+            "description": "deprecated since v4.0.0, will be removed with next major release. Use proseText2Xs instead.",
+            "name": "textXXSmallStyle",
+            "value": {
+              "font": "normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            },
+          },
+        },
+      },
+    },
+    "focus": {
+      "getFocusVisibleStyle": {
+        "description": "Applies a **focus-visible** style.",
+        "name": "getFocusVisibleStyle",
+        "value": [Function],
+      },
+    },
+    "font": {
+      "family": {
+        "fontPorscheNext": {
+          "description": "Holds the **Porsche Next** font family along with fallback fonts.",
+          "name": "fontPorscheNext",
+          "value": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+        },
+        "fontPorscheNextJa": {
+          "description": "Holds the **Porsche Next** font family along with fallback fonts for **Japanese**.",
+          "name": "fontPorscheNextJa",
+          "value": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+        },
+        "fontPorscheNextKo": {
+          "description": "Holds the **Porsche Next** font family along with fallback fonts for **Korean**.",
+          "name": "fontPorscheNextKo",
+          "value": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+        },
+        "fontPorscheNextZhHans": {
+          "description": "Holds the **Porsche Next** font family along with fallback fonts for **Simplified Chinese**.",
+          "name": "fontPorscheNextZhHans",
+          "value": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+        },
+        "fontPorscheNextZhHant": {
+          "description": "Holds the **Porsche Next** font family along with fallback fonts for **Traditional Chinese**.",
+          "name": "fontPorscheNextZhHant",
+          "value": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+        },
+      },
+      "getCJKFontFamilyStyle": {
+        "description": "Applies locale-specific **Porsche Next** font stacks for **CJK** languages (Simplified Chinese, Traditional Chinese, Japanese, Korean) based on the element's \`lang\` attribute.",
+        "name": "getCJKFontFamilyStyle",
+        "value": [Function],
+      },
+      "lineHeight": {
+        "leadingNormal": {
+          "description": "Holds a dynamic default line height specifically optimized for the Porsche Next typeface.",
+          "name": "leadingNormal",
+          "value": "calc(6px + 2.125ex)",
+        },
+      },
+      "size": {
+        "typescale2Xl": {
+          "description": "Holds the **2x-large** font size optimized for the Porsche Next typeface.",
+          "name": "typescale2Xl",
+          "value": "clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)",
+        },
+        "typescale2Xs": {
+          "description": "Holds the **2x-small** font size optimized for the Porsche Next typeface.",
+          "name": "typescale2Xs",
+          "value": ".75rem",
+        },
+        "typescale3Xl": {
+          "description": "Holds the **3x-large** font size optimized for the Porsche Next typeface.",
+          "name": "typescale3Xl",
+          "value": "clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)",
+        },
+        "typescale4Xl": {
+          "description": "Holds the **4x-large** font size optimized for the Porsche Next typeface.",
+          "name": "typescale4Xl",
+          "value": "clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)",
+        },
+        "typescale5Xl": {
+          "description": "Holds the **5x-large** font size optimized for the Porsche Next typeface.",
+          "name": "typescale5Xl",
+          "value": "clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)",
+        },
+        "typescaleLg": {
+          "description": "Holds the **large** font size optimized for the Porsche Next typeface.",
+          "name": "typescaleLg",
+          "value": "clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)",
+        },
+        "typescaleMd": {
+          "description": "Holds the **medium** font size optimized for the Porsche Next typeface.",
+          "name": "typescaleMd",
+          "value": "clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)",
+        },
+        "typescaleSm": {
+          "description": "Holds the **small** font size optimized for the Porsche Next typeface.",
+          "name": "typescaleSm",
+          "value": "1rem",
+        },
+        "typescaleXl": {
+          "description": "Holds the **x-large** font size optimized for the Porsche Next typeface.",
+          "name": "typescaleXl",
+          "value": "clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)",
+        },
+        "typescaleXs": {
+          "description": "Holds the **x-small** font size optimized for the Porsche Next typeface.",
+          "name": "typescaleXs",
+          "value": ".875rem",
+        },
+      },
+      "weight": {
+        "fontWeightBold": {
+          "description": "Holds the **bold** font weight optimized for the Porsche Next typeface.",
+          "name": "fontWeightBold",
+          "value": 700,
+        },
+        "fontWeightNormal": {
+          "description": "Holds the **normal** font weight optimized for the Porsche Next typeface.",
+          "name": "fontWeightNormal",
+          "value": 400,
+        },
+        "fontWeightSemibold": {
+          "description": "Holds the **semibold** font weight optimized for the Porsche Next typeface.",
+          "name": "fontWeightSemibold",
+          "value": 600,
+        },
+      },
+    },
+    "gradient": {
+      "gradientStopsFadeDark": {
+        "description": "Holds color stops for a faded gradient, used as \`background-image\`.",
+        "name": "gradientStopsFadeDark",
+        "value": "hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%",
+      },
+    },
+    "grid": {
+      "gridBasic": {
+        "description": "Object containing all \`basic\` grid styles.",
+        "name": "gridBasic",
+        "value": {
+          "columnEnd": "basic-end",
+          "columnStart": "basic-start",
+          "spanOneHalf": "var(--pds-grid-basic-span-one-half)",
+          "spanOneThird": "var(--pds-grid-basic-span-one-third)",
+          "spanTwoThirds": "var(--pds-grid-basic-span-two-thirds)",
+        },
+      },
+      "gridBasicColumnEnd": {
+        "description": "Holds the **end** position of the \`basic\` area within the Porsche Grid.",
+        "name": "gridBasicColumnEnd",
+        "value": "basic-end",
+      },
+      "gridBasicColumnStart": {
+        "description": "Holds the **start** position of the \`basic\` area within the Porsche Grid.",
+        "name": "gridBasicColumnStart",
+        "value": "basic-start",
+      },
+      "gridBasicOffset": {
+        "description": "Object containing all \`basic\` grid offset styles.",
+        "handWritten": true,
+        "name": "gridBasicOffset",
+        "value": {
+          "base": "max(22px, 10.625vw - 12px)",
+          "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+          "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+        },
+      },
+      "gridBasicOffsetBase": {
+        "description": "Holds a **base** offset within the \`basic\` area of the Porsche Grid.",
+        "name": "gridBasicOffsetBase",
+        "value": "max(22px, 10.625vw - 12px)",
+      },
+      "gridBasicOffsetS": {
+        "description": "Holds a **small** offset within the \`basic\` area of the Porsche Grid.",
+        "handWritten": true,
+        "name": "gridBasicOffsetS",
+        "value": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+      },
+      "gridBasicOffsetXXL": {
+        "description": "Holds a **xxl** offset within the \`basic\` area of the Porsche Grid.",
+        "handWritten": true,
+        "name": "gridBasicOffsetXXL",
+        "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+      },
+      "gridBasicSpanOneHalf": {
+        "description": "Holds a **half** span within the \`basic\` area of the Porsche Grid.",
+        "name": "gridBasicSpanOneHalf",
+        "value": "var(--pds-grid-basic-span-one-half)",
+      },
+      "gridBasicSpanOneThird": {
+        "description": "Holds a **one third** span within the \`basic\` area of the Porsche Grid.",
+        "name": "gridBasicSpanOneThird",
+        "value": "var(--pds-grid-basic-span-one-third)",
+      },
+      "gridBasicSpanTwoThirds": {
+        "description": "Holds a **two thirds** span within the \`basic\` area of the Porsche Grid.",
+        "name": "gridBasicSpanTwoThirds",
+        "value": "var(--pds-grid-basic-span-two-thirds)",
+      },
+      "gridExtended": {
+        "description": "Object containing all \`extended\` grid styles.",
+        "name": "gridExtended",
+        "value": {
+          "columnEnd": "extended-end",
+          "columnStart": "extended-start",
+          "spanOneHalf": "var(--pds-grid-extended-span-one-half)",
+        },
+      },
+      "gridExtendedColumnEnd": {
+        "description": "Holds the **end** position of the \`extended\` area within the Porsche Grid.",
+        "name": "gridExtendedColumnEnd",
+        "value": "extended-end",
+      },
+      "gridExtendedColumnStart": {
+        "description": "Holds the **start** position of the \`extended\` area within the Porsche Grid.",
+        "name": "gridExtendedColumnStart",
+        "value": "extended-start",
+      },
+      "gridExtendedOffset": {
+        "description": "Object containing all \`extended\` grid offset styles.",
+        "handWritten": true,
+        "name": "gridExtendedOffset",
+        "value": {
+          "base": "max(22px, 10.625vw - 12px)",
+          "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+          "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+        },
+      },
+      "gridExtendedOffsetBase": {
+        "description": "Holds a **base** offset within the \`extended\` area of the Porsche Grid.",
+        "name": "gridExtendedOffsetBase",
+        "value": "max(22px, 10.625vw - 12px)",
+      },
+      "gridExtendedOffsetS": {
+        "description": "Holds a **small** offset within the \`extended\` area of the Porsche Grid.",
+        "handWritten": true,
+        "name": "gridExtendedOffsetS",
+        "value": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+      },
+      "gridExtendedOffsetXXL": {
+        "description": "Holds a **xxl** offset within the \`extended\` area of the Porsche Grid.",
+        "handWritten": true,
+        "name": "gridExtendedOffsetXXL",
+        "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+      },
+      "gridExtendedSpanOneHalf": {
+        "description": "Holds a **half** span within the \`extended\` area of the Porsche Grid.",
+        "name": "gridExtendedSpanOneHalf",
+        "value": "var(--pds-grid-extended-span-one-half)",
+      },
+      "gridFull": {
+        "description": "Object containing all \`full\` grid styles.",
+        "name": "gridFull",
+        "value": {
+          "columnEnd": "full-end",
+          "columnStart": "full-start",
+        },
+      },
+      "gridFullColumnEnd": {
+        "description": "Holds the **end** position of the \`full\` area within the Porsche Grid.",
+        "name": "gridFullColumnEnd",
+        "value": "full-end",
+      },
+      "gridFullColumnStart": {
+        "description": "Holds the **start** position of the \`full\` area within the Porsche Grid.",
+        "name": "gridFullColumnStart",
+        "value": "full-start",
+      },
+      "gridFullOffset": {
+        "description": "Holds a **full** offset within the \`full\` area of the Porsche Grid.",
+        "name": "gridFullOffset",
+        "value": "max(0px, 50vw - 2560px / 2)",
+      },
+      "gridGap": {
+        "description": "Holds the grid **gap** of the Porsche Grid.",
+        "name": "gridGap",
+        "value": "clamp(16px, 1.25vw + 12px, 36px)",
+      },
+      "gridNarrow": {
+        "description": "Object containing all \`narrow\` grid styles.",
+        "name": "gridNarrow",
+        "value": {
+          "columnEnd": "narrow-end",
+          "columnStart": "narrow-start",
+          "spanOneHalf": "var(--pds-grid-narrow-span-one-half)",
+        },
+      },
+      "gridNarrowColumnEnd": {
+        "description": "Holds the **end** position of the \`narrow\` area within the Porsche Grid.",
+        "name": "gridNarrowColumnEnd",
+        "value": "narrow-end",
+      },
+      "gridNarrowColumnStart": {
+        "description": "Holds the **start** position of the \`narrow\` area within the Porsche Grid.",
+        "name": "gridNarrowColumnStart",
+        "value": "narrow-start",
+      },
+      "gridNarrowOffset": {
+        "description": "Object containing all \`narrow\` grid offset styles.",
+        "handWritten": true,
+        "name": "gridNarrowOffset",
+        "value": {
+          "base": "max(22px, 10.625vw - 12px)",
+          "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
+          "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
+        },
+      },
+      "gridNarrowOffsetBase": {
+        "description": "Holds a **base** offset within the \`narrow\` area of the Porsche Grid.",
+        "name": "gridNarrowOffsetBase",
+        "value": "max(22px, 10.625vw - 12px)",
+      },
+      "gridNarrowOffsetS": {
+        "description": "Holds a **small** offset within the \`narrow\` area of the Porsche Grid.",
+        "handWritten": true,
+        "name": "gridNarrowOffsetS",
+        "value": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
+      },
+      "gridNarrowOffsetXXL": {
+        "description": "Holds a **xxl** offset within the \`narrow\` area of the Porsche Grid.",
+        "handWritten": true,
+        "name": "gridNarrowOffsetXXL",
+        "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
+      },
+      "gridNarrowSpanOneHalf": {
+        "description": "Holds a **one half** span within the \`narrow\` area of the Porsche Grid.",
+        "name": "gridNarrowSpanOneHalf",
+        "value": "var(--pds-grid-narrow-span-one-half)",
+      },
+      "gridStyle": {
+        "description": "Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested).",
+        "handWritten": true,
+        "name": "gridStyle",
+        "value": {
+          "--pds-grid-basic-span-one-half": "span 3",
+          "--pds-grid-basic-span-one-third": "span 2",
+          "--pds-grid-basic-span-two-thirds": "span 4",
+          "--pds-grid-extended-span-one-half": "span 3",
+          "--pds-grid-narrow-span-one-half": "span 3",
+          "--pds-internal-grid-safe-zone": "max(22px, 10.625vw - 12px)",
+          "@media(min-width:1920px)": {
+            "--pds-internal-grid-safe-zone": "min(50vw - 880px, 400px)",
+          },
+          "@media(min-width:760px)": {
+            "--pds-grid-basic-span-one-half": "span 6",
+            "--pds-grid-basic-span-one-third": "span 4",
+            "--pds-grid-basic-span-two-thirds": "span 8",
+            "--pds-grid-extended-span-one-half": "span 7",
+            "--pds-grid-narrow-span-one-half": "span 4",
+            "--pds-internal-grid-safe-zone": "calc(5vw - 16px)",
+            "gridTemplateColumns": "[full-start] minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))) [wide-start] minmax(0,1fr) [extended-start] minmax(0,1fr) [basic-start] repeat(2, minmax(0,1fr)) [narrow-start] repeat(8, minmax(0,1fr)) [narrow-end] repeat(2, minmax(0,1fr)) [basic-end] minmax(0,1fr) [extended-end] minmax(0,1fr) [wide-end] minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))) [full-end]",
+          },
+          "boxSizing": "content-box",
+          "display": "grid",
+          "gridGap": "clamp(16px, 1.25vw + 12px, 36px)",
+          "gridTemplateColumns": "[full-start] minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))) [wide-start extended-start basic-start narrow-start] repeat(6, minmax(0,1fr)) [narrow-end basic-end extended-end wide-end] minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))) [full-end]",
+          "margin": "0 var(--pds-internal-grid-margin,0)",
+          "maxWidth": "var(--pds-internal-grid-width-max,2560px)",
+          "minWidth": "var(--pds-internal-grid-width-min,320px)",
+          "padding": "0 calc(50% - var(--pds-internal-grid-margin,0px) - 2560px / 2)",
+        },
+      },
+      "gridWide": {
+        "description": "Object containing all \`wide\` grid styles.",
+        "name": "gridWide",
+        "value": {
+          "columnEnd": "wide-end",
+          "columnStart": "wide-start",
+        },
+      },
+      "gridWideColumnEnd": {
+        "description": "Holds the **end** position of the \`wide\` area within the Porsche Grid.",
+        "name": "gridWideColumnEnd",
+        "value": "wide-end",
+      },
+      "gridWideColumnStart": {
+        "description": "Holds the **start** position of the \`wide\` area within the Porsche Grid.",
+        "name": "gridWideColumnStart",
+        "value": "wide-start",
+      },
+      "gridWideOffset": {
+        "description": "Object containing all \`wide\` grid offset styles.",
+        "name": "gridWideOffset",
+        "value": {
+          "base": "max(22px, 10.625vw - 12px)",
+          "s": "calc(5vw - 16px)",
+          "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px))",
+        },
+      },
+      "gridWideOffsetBase": {
+        "description": "Holds a **base** offset within the \`wide\` area of the Porsche Grid.",
+        "name": "gridWideOffsetBase",
+        "value": "max(22px, 10.625vw - 12px)",
+      },
+      "gridWideOffsetS": {
+        "description": "Holds a **small** offset within the \`wide\` area of the Porsche Grid.",
+        "name": "gridWideOffsetS",
+        "value": "calc(5vw - 16px)",
+      },
+      "gridWideOffsetXXL": {
+        "description": "Holds a **xxl** offset within the \`wide\` area of the Porsche Grid.",
+        "name": "gridWideOffsetXXL",
+        "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px))",
+      },
+    },
+    "mediaQuery": {
+      "breakpoint": {
+        "description": "Object containing all breakpoint values.",
+        "name": "breakpoint",
+        "value": {
+          "base": 0,
+          "l": 1300,
+          "m": 1000,
+          "s": 760,
+          "xl": 1760,
+          "xs": 480,
+          "xxl": 1920,
+        },
+      },
+      "breakpointBase": {
+        "description": "Holds the \`base\` breakpoint value.",
+        "name": "breakpointBase",
+        "value": 0,
+      },
+      "breakpointL": {
+        "description": "Holds the \`lg\` breakpoint value.",
+        "name": "breakpointL",
+        "value": 1300,
+      },
+      "breakpointM": {
+        "description": "Holds the \`md\` breakpoint value.",
+        "name": "breakpointM",
+        "value": 1000,
+      },
+      "breakpointS": {
+        "description": "Holds the \`sm\` breakpoint value.",
+        "name": "breakpointS",
+        "value": 760,
+      },
+      "breakpointXL": {
+        "description": "Holds the \`xl\` breakpoint value.",
+        "name": "breakpointXL",
+        "value": 1760,
+      },
+      "breakpointXS": {
+        "description": "Holds the \`xs\` breakpoint value.",
+        "name": "breakpointXS",
+        "value": 480,
+      },
+      "breakpointXXL": {
+        "description": "Holds the \`2xl\` breakpoint value.",
+        "name": "breakpointXXL",
+        "value": 1920,
+      },
+      "breakpoints": {
+        "description": "Array containing all breakpoint keys.",
+        "handWritten": true,
+        "name": "breakpoints",
+        "value": [
+          "base",
+          "xs",
+          "s",
+          "m",
+          "l",
+          "xl",
+          "xxl",
+        ],
+      },
+      "getMediaQueryMax": {
+        "description": "Applies a **max** media query with the specified breakpoint.",
+        "name": "getMediaQueryMax",
+        "value": [Function],
+      },
+      "getMediaQueryMin": {
+        "description": "Applies a **min** media query with the specified breakpoint.",
+        "name": "getMediaQueryMin",
+        "value": [Function],
+      },
+      "getMediaQueryMinMax": {
+        "description": "Applies a **min-max** media query with the specified breakpoints.",
+        "name": "getMediaQueryMinMax",
+        "value": [Function],
+      },
+    },
+    "motion": {
+      "duration": {
+        "durationLg": {
+          "description": "Holds a **long** \`transition-duration\` / \`animation-duration\`.",
+          "name": "durationLg",
+          "value": ".6s",
+        },
+        "durationMd": {
+          "description": "Holds a **moderate** \`transition-duration\` / \`animation-duration\`.",
+          "name": "durationMd",
+          "value": ".4s",
+        },
+        "durationSm": {
+          "description": "Holds a **short** \`transition-duration\` / \`animation-duration\`.",
+          "name": "durationSm",
+          "value": ".25s",
+        },
+        "durationXl": {
+          "description": "Holds a **very long** \`transition-duration\` / \`animation-duration\`.",
+          "name": "durationXl",
+          "value": "1.2s",
+        },
+      },
+      "ease": {
+        "easeIn": {
+          "description": "Holds an **in** \`transition-timing-function\`.",
+          "name": "easeIn",
+          "value": "cubic-bezier(0,0,.2,1)",
+        },
+        "easeInOut": {
+          "description": "Holds an **in-out** \`transition-timing-function\`.",
+          "name": "easeInOut",
+          "value": "cubic-bezier(.25,.1,.25,1)",
+        },
+        "easeOut": {
+          "description": "Holds an **out** \`transition-timing-function\`.",
+          "name": "easeOut",
+          "value": "cubic-bezier(.4,0,.5,1)",
+        },
+      },
+    },
+    "shadow": {
+      "shadowLg": {
+        "description": "Holds a **large** \`shadow\`.",
+        "name": "shadowLg",
+        "value": "0px 8px 40px rgba(0,0,0,.16)",
+      },
+      "shadowMd": {
+        "description": "Holds a **medium** \`shadow\`.",
+        "name": "shadowMd",
+        "value": "0px 4px 16px rgba(0,0,0,.16)",
+      },
+      "shadowSm": {
+        "description": "Holds a **small** \`shadow\`.",
+        "name": "shadowSm",
+        "value": "0px 3px 8px rgba(0,0,0,.16)",
+      },
+    },
+    "skeleton": {
+      "getSkeletonStyle": {
+        "description": "Applies a skeleton placeholder style to indicate loading state.",
+        "name": "getSkeletonStyle",
+        "value": [Function],
+      },
+      "skeletonKeyframes": {
+        "description": "Holds the **keyframes** to be used with the \`keyframes\` vanilla-extract function.",
+        "name": "skeletonKeyframes",
+        "value": {
+          "from": {
+            "backgroundPositionX": "100%",
+          },
+          "to": {
+            "backgroundPositionX": "-100%",
+          },
+        },
+      },
+    },
+    "spacing": {
+      "fluid": {
+        "spacingFluid2Xl": {
+          "description": "Holds the **2x-large fluid** spacing.",
+          "name": "spacingFluid2Xl",
+          "value": "clamp(80px, 7.5vw + 56px, 200px)",
+        },
+        "spacingFluidLg": {
+          "description": "Holds the **large fluid** spacing.",
+          "name": "spacingFluidLg",
+          "value": "clamp(32px, 2.75vw + 23px, 76px)",
+        },
+        "spacingFluidMd": {
+          "description": "Holds the **medium fluid** spacing.",
+          "name": "spacingFluidMd",
+          "value": "clamp(16px, 1.25vw + 12px, 36px)",
+        },
+        "spacingFluidSm": {
+          "description": "Holds the **small fluid** spacing.",
+          "name": "spacingFluidSm",
+          "value": "clamp(8px, 0.5vw + 6px, 16px)",
+        },
+        "spacingFluidXl": {
+          "description": "Holds the **x-large fluid** spacing.",
+          "name": "spacingFluidXl",
+          "value": "clamp(48px, 3vw + 38px, 96px)",
+        },
+        "spacingFluidXs": {
+          "description": "Holds the **x-small fluid** spacing.",
+          "name": "spacingFluidXs",
+          "value": "clamp(4px, 0.25vw + 3px, 8px)",
+        },
+      },
+      "static": {
+        "spacingStatic2Xl": {
+          "description": "Holds the **2x-large static** spacing.",
+          "name": "spacingStatic2Xl",
+          "value": "80px",
+        },
+        "spacingStatic2Xs": {
+          "description": "Holds the **2x-small static** spacing.",
+          "name": "spacingStatic2Xs",
+          "value": "1px",
+        },
+        "spacingStaticLg": {
+          "description": "Holds the **large static** spacing.",
+          "name": "spacingStaticLg",
+          "value": "32px",
+        },
+        "spacingStaticMd": {
+          "description": "Holds the **medium static** spacing.",
+          "name": "spacingStaticMd",
+          "value": "16px",
+        },
+        "spacingStaticSm": {
+          "description": "Holds the **small static** spacing.",
+          "name": "spacingStaticSm",
+          "value": "8px",
+        },
+        "spacingStaticXl": {
+          "description": "Holds the **x-large static** spacing.",
+          "name": "spacingStaticXl",
+          "value": "48px",
+        },
+        "spacingStaticXs": {
+          "description": "Holds the **x-small static** spacing.",
+          "name": "spacingStaticXs",
+          "value": "4px",
+        },
+      },
+    },
+    "typography": {
+      "proseHeading2XlStyle": {
+        "description": "Applies the **2x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeading2XlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseHeading2XsStyle": {
+        "description": "Applies the **2x-small** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeading2XsStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "600 .75rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseHeading3XlStyle": {
+        "description": "Applies the **3x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeading3XlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseHeading4XlStyle": {
+        "description": "Applies the **4x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeading4XlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseHeading5XlStyle": {
+        "description": "Applies the **5x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeading5XlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseHeadingLgStyle": {
+        "description": "Applies the **large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeadingLgStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseHeadingMdStyle": {
+        "description": "Applies the **medium** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeadingMdStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseHeadingSmStyle": {
+        "description": "Applies the **small** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeadingSmStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "600 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseHeadingXlStyle": {
+        "description": "Applies the **x-large** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeadingXlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseHeadingXsStyle": {
+        "description": "Applies the **x-small** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.",
+        "name": "proseHeadingXsStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "600 .875rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseText2XlStyle": {
+        "description": "Applies the **2x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseText2XlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseText2XsStyle": {
+        "description": "Applies the **2x-small** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseText2XsStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 .75rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseText3XlStyle": {
+        "description": "Applies the **3x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseText3XlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseText4XlStyle": {
+        "description": "Applies the **4x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseText4XlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseText5XlStyle": {
+        "description": "Applies the **5x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseText5XlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseTextLgStyle": {
+        "description": "Applies the **large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseTextLgStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseTextMdStyle": {
+        "description": "Applies the **medium** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseTextMdStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseTextSmStyle": {
+        "description": "Applies the **small** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseTextSmStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 1rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseTextXlStyle": {
+        "description": "Applies the **x-large** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseTextXlStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem) / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+      "proseTextXsStyle": {
+        "description": "Applies the **x-small** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.",
+        "name": "proseTextXsStyle",
+        "value": {
+          "color": "var(--_color-primary, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))",
+          "font": "400 .875rem / calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+          "selectors": {
+            "&:lang(ja)": {
+              "fontFamily": "'Porsche Next', 'Hiragino Sans', 'Yu Gothic', 'Noto Sans JP', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(ko)": {
+              "fontFamily": "'Porsche Next', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": {
+              "fontFamily": "'Porsche Next', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Arial Narrow', Arial, sans-serif",
+            },
+            "&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": {
+              "fontFamily": "'Porsche Next', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Arial Narrow', Arial, sans-serif",
+            },
+          },
+        },
+      },
+    },
+  },
 }
 `;
