@@ -70,7 +70,11 @@
         <p-switch data-name="text-list" data-section="common">Text List</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Feedback</p-heading>
-          <p-checkbox label="Select all Feedback components" hide-label="true" data-section-toggle="feedback"></p-checkbox>
+          <p-checkbox
+            label="Select all Feedback components"
+            hide-label="true"
+            data-section-toggle="feedback"
+          ></p-checkbox>
         </div>
         <p-switch data-name="spinner" data-section="feedback">Spinner</p-switch>
         <p-switch data-name="inline-notification" data-section="feedback">Inline Notification</p-switch>
@@ -78,7 +82,11 @@
         <p-switch data-name="banner" data-section="feedback">Banner</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Navigation</p-heading>
-          <p-checkbox label="Select all Navigation components" hide-label="true" data-section-toggle="navigation"></p-checkbox>
+          <p-checkbox
+            label="Select all Navigation components"
+            hide-label="true"
+            data-section-toggle="navigation"
+          ></p-checkbox>
         </div>
         <p-switch data-name="link" data-section="navigation">Link</p-switch>
         <p-switch data-name="link-pure" data-section="navigation">Link Pure</p-switch>
@@ -98,7 +106,11 @@
         <p-switch data-name="popover" data-section="dialog">Popover</p-switch>
         <div class="flex flex-wrap items-center justify-between gap-fluid-xs mt-fluid-sm">
           <p-heading tag="h3" size="medium">Typography</p-heading>
-          <p-checkbox label="Select all Typography components" hide-label="true" data-section-toggle="typography"></p-checkbox>
+          <p-checkbox
+            label="Select all Typography components"
+            hide-label="true"
+            data-section-toggle="typography"
+          ></p-checkbox>
         </div>
         <p-switch data-name="display" data-section="typography">Display</p-switch>
         <p-switch data-name="heading" data-section="typography">Heading</p-switch>
@@ -1191,6 +1203,36 @@
                 >
                 <h3>Taycan</h3>
                 <p>Ab EUR 102.600,00 inkl. MwSt.</p>
+                <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}">Open Modal</p-button>
+                <p-modal
+                  class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)]"
+                  aria="{'aria-label': 'Some heading'}"
+                >
+                  <div slot="header" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) h-[480px]">
+                    <img class="w-full h-full object-cover" src="/assets/interior.jpg" alt="">
+                  </div>
+                  <p-text color="contrast-medium">ABC</p-text>
+                  <p-heading tag="h2" size="x-large">The quick brown fox jumps over the lazy dog</p-heading>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  </p-text>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum.
+                  </p-text>
+                  <p-text class="mt-fluid-md"
+                    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum.
+                  </p-text>
+                  <div slot="footer" role="group" class="flex flex-wrap gap-fluid-sm max-xs:flex-col">
+                    <p-button type="button">Proceed</p-button>
+                    <p-button type="button" variant="secondary">Cancel</p-button>
+                  </div>
+                </p-modal>
                 <div>
                   <p-tag>2026</p-tag>
                   <p-tag>Elektro</p-tag>
@@ -1211,9 +1253,7 @@
                   (Performancebatterie) Stromverbrauch kombiniert: 19,1 – 16,7 kWh/100 km, CO₂-Emissionen kombiniert: 0
                   g/km, CO₂-Klasse: A
                 </p>
-                <p-link variant="secondary" href="https://configurator.porsche.com/de-DE/mode/model/Y1AAI1"
-                  >Konfigurieren</p-link
-                >
+                <p-button type="button" variant="secondary">Konfigurieren</p-button>
               </div>
 
               <div>
@@ -1251,9 +1291,7 @@
                   (Performancebatterie) Stromverbrauch kombiniert: 19,1 – 16,7 kWh/100 km, CO₂-Emissionen kombiniert: 0
                   g/km, CO₂-Klasse: A
                 </p>
-                <p-link variant="secondary" href="https://configurator.porsche.com/de-DE/mode/model/Y1AAI1"
-                  >Konfigurieren</p-link
-                >
+                <p-button type="button" variant="secondary">Konfigurieren</p-button>
               </div>
 
               <div>
@@ -1291,9 +1329,7 @@
                   (Performancebatterie) Stromverbrauch kombiniert: 19,1 – 16,7 kWh/100 km, CO₂-Emissionen kombiniert: 0
                   g/km, CO₂-Klasse: A
                 </p>
-                <p-link variant="secondary" href="https://configurator.porsche.com/de-DE/mode/model/Y1AAI1"
-                  >Konfigurieren</p-link
-                >
+                <p-button type="button" variant="secondary">Konfigurieren</p-button>
               </div>
 
               <div>
@@ -1331,9 +1367,7 @@
                   (Performancebatterie) Stromverbrauch kombiniert: 19,1 – 16,7 kWh/100 km, CO₂-Emissionen kombiniert: 0
                   g/km, CO₂-Klasse: A
                 </p>
-                <p-link variant="secondary" href="https://configurator.porsche.com/de-DE/mode/model/Y1AAI1"
-                  >Konfigurieren</p-link
-                >
+                <p-button type="button" variant="secondary">Konfigurieren</p-button>
               </div>
             </div>
           </p-flyout>
@@ -2779,8 +2813,7 @@
     const toggleAllComponents = () => {
       const allComponents = getAllComponentNames();
       const currentComponents = getComponents();
-      const allVisible =
-        allComponents.length > 0 && allComponents.every((name) => currentComponents.includes(name));
+      const allVisible = allComponents.length > 0 && allComponents.every((name) => currentComponents.includes(name));
 
       if (allVisible) {
         // Hide all components
