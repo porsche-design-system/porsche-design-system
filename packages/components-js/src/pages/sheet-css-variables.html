@@ -1,7 +1,7 @@
 <style>
 .media {
-  margin: calc(var(--ref-p-flyout-pt) * -1) calc(var(--ref-p-flyout-px) * -1) calc(var(--ref-p-flyout-pb) * -1);
-  height: 100vh;
+  margin: calc(var(--ref-p-sheet-pt) * -1) calc(var(--ref-p-sheet-px) * -1) calc(var(--ref-p-sheet-pb) * -1);
+  height: 50vh;
 }
 
 img {
@@ -11,8 +11,8 @@ img {
 }
 </style>
 
-<p-flyout open="true" footer-behavior="fixed">
+<p-sheet open="true" aria="{ 'aria-label': 'Some Heading' }">
   <div class="media">
     <img src="http://localhost:3002/lights.jpg" alt="Some alt text" width="1366" height="2048">
   </div>
-</p-flyout>
+</p-sheet>

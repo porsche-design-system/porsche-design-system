@@ -1,23 +1,18 @@
 <style>
-  .media-top {
-    margin-top: calc(var(--ref-p-modal-pt) * -1);
-    margin-inline: calc(var(--ref-p-modal-px) * -1);
-    height: 40vh;
-    background: rgba(255, 0, 0, 0.1);
-    border: 4px solid rgba(255, 0, 0, 0.2);
-  }
+.media {
+  margin: calc(var(--ref-p-modal-pt) * -1) calc(var(--ref-p-modal-px) * -1) calc(var(--ref-p-modal-pb) * -1);
+  height: 80vh;
+}
 
-  .media-bottom {
-    margin-bottom: calc(var(--ref-p-modal-pb) * -1);
-    margin-inline: calc(var(--ref-p-modal-px) * -1);
-    height: 40vh;
-    background: rgba(255, 0, 0, 0.1);
-    border: 4px solid rgba(255, 0, 0, 0.2);
-  }
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 </style>
 
 <p-modal open="true" aria="{ 'aria-label': 'Some Heading' }">
-  <div class="media-top"></div>
-  <p-text>Some Content</p-text>
-  <div class="media-bottom"></div>
+  <div class="media">
+    <img src="http://localhost:3002/lights.jpg" alt="Some alt text" width="1366" height="2048">
+  </div>
 </p-modal>
