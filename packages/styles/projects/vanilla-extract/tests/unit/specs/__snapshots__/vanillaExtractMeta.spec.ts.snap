@@ -300,6 +300,7 @@ exports[`should match snapshot 1`] = `
     "color": {
       "theme": {
         "description": "deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.",
+        "handWritten": true,
         "name": "theme",
         "value": {
           "dark": {
@@ -366,6 +367,7 @@ exports[`should match snapshot 1`] = `
       },
       "themeDark": {
         "description": "deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.",
+        "handWritten": true,
         "name": "themeDark",
         "value": {
           "background": {
@@ -500,6 +502,7 @@ exports[`should match snapshot 1`] = `
       },
       "themeLight": {
         "description": "deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.",
+        "handWritten": true,
         "name": "themeLight",
         "value": {
           "background": {
