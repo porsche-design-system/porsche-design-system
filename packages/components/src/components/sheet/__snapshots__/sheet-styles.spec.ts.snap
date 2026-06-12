@@ -77,7 +77,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
   transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
@@ -88,6 +87,7 @@ dialog::backdrop {
   margin-block-start: var(--p-spacing-fluid-lg);
   border-top-left-radius: var(--p-radius-3xl);
   border-top-right-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
 }
 .sheet:dir(rtl) {
   transform: translate3d(0,25vh,0);
@@ -177,7 +177,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
   transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
@@ -188,6 +187,7 @@ dialog::backdrop {
   margin-block-start: var(--p-spacing-fluid-lg);
   border-top-left-radius: var(--p-radius-3xl);
   border-top-right-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
 }
 .sheet:dir(rtl) {
   transform: translate3d(0,25vh,0);
@@ -287,7 +287,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
   transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
@@ -298,6 +297,7 @@ dialog::backdrop {
   margin-block-start: var(--p-spacing-fluid-lg);
   border-top-left-radius: var(--p-radius-3xl);
   border-top-right-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
 }
 .dismiss {
   grid-area: 1/3;
@@ -394,7 +394,6 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
   transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
@@ -405,6 +404,7 @@ dialog::backdrop {
   margin-block-start: var(--p-spacing-fluid-lg);
   border-top-left-radius: var(--p-radius-3xl);
   border-top-right-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl) var(--p-radius-3xl) 0 0);
 }
 .dismiss {
   grid-area: 1/3;
