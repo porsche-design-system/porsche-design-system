@@ -9,8 +9,12 @@
  * Entries may be grouped in nested objects (e.g. `fluid: { spacingFluidXs: {...} }`).
  *
  * For each leaf entry the script writes:
- *   generated/{group?}/{name}.ts  — re-exports entry.value with a JSDoc comment
- *   generated/index.ts            — barrel file that re-exports everything
+ *   generated/{group?}/{name}.ts    — re-exports entry.value with a JSDoc comment
+ *   generated/deprecated/{name}.ts  — entries from `deprecatedXxxMeta` exports
+ *   generated/index.ts              — barrel files (root + one per subdir)
+ *
+ * Entries marked `handWritten: true` are skipped — their files are written and
+ * wired up by hand (see src/META_FILES.md).
  */
 
 import * as fs from 'node:fs';
@@ -41,10 +45,6 @@ type ParsedMetaFile = {
   source: ts.SourceFile;
   dir: string; // directory of the meta file
   imports: Map<string, Import>; // localName → Import
-  localObjects: Map<string, ts.ObjectLiteralExpression>; // top-level const objects
-  entryDirs: Map<string, string>; // entry name → its output dir (for cross-entry imports)
-  regular: Entry[];
-  deprecated: Entry[];
 };
 
 function findMetaFiles(dir: string): string[] {
@@ -64,40 +64,31 @@ function asObjectLiteral(node: ts.Expression): ts.ObjectLiteralExpression | unde
   return undefined;
 }
 
+/** Returns the initializer expression of an object's `key:` property, or undefined. */
+function getProp(obj: ts.ObjectLiteralExpression, key: string): ts.Expression | undefined {
+  const prop = obj.properties.find(
+    (p): p is ts.PropertyAssignment => ts.isPropertyAssignment(p) && ts.isIdentifier(p.name) && p.name.text === key
+  );
+  return prop?.initializer;
+}
+
 /** Returns the string value of a `key: 'literal'` property, or undefined. */
 function getStringProperty(obj: ts.ObjectLiteralExpression, key: string): string | undefined {
-  for (const prop of obj.properties) {
-    if (ts.isPropertyAssignment(prop) && ts.isIdentifier(prop.name) && prop.name.text === key) {
-      if (ts.isStringLiteral(prop.initializer)) return prop.initializer.text;
-    }
-  }
-  return undefined;
+  const init = getProp(obj, key);
+  return init && ts.isStringLiteral(init) ? init.text : undefined;
 }
 
 /** Returns the boolean value of a `key: true` / `key: false` property, or undefined. */
 function getBooleanProperty(obj: ts.ObjectLiteralExpression, key: string): boolean | undefined {
-  for (const prop of obj.properties) {
-    if (ts.isPropertyAssignment(prop) && ts.isIdentifier(prop.name) && prop.name.text === key) {
-      if (prop.initializer.kind === ts.SyntaxKind.TrueKeyword) return true;
-      if (prop.initializer.kind === ts.SyntaxKind.FalseKeyword) return false;
-    }
-  }
+  const init = getProp(obj, key);
+  if (init?.kind === ts.SyntaxKind.TrueKeyword) return true;
+  if (init?.kind === ts.SyntaxKind.FalseKeyword) return false;
   return undefined;
 }
 
 /** A leaf entry has a `name: 'string'` property; a non-leaf is a nested group. */
 function isLeafEntry(obj: ts.ObjectLiteralExpression): boolean {
   return getStringProperty(obj, 'name') !== undefined;
-}
-
-/** Gets the AST node of the `value` property from a leaf entry object. */
-function getValueNode(obj: ts.ObjectLiteralExpression): ts.Node | undefined {
-  for (const prop of obj.properties) {
-    if (ts.isPropertyAssignment(prop) && ts.isIdentifier(prop.name) && prop.name.text === 'value') {
-      return prop.initializer;
-    }
-  }
-  return undefined;
 }
 
 /** Reads the raw source text of any AST node. */
@@ -128,7 +119,7 @@ function buildLocalObjectMap(source: ts.SourceFile): Map<string, ts.ObjectLitera
     if (!ts.isVariableStatement(node)) return;
     for (const decl of node.declarationList.declarations) {
       if (!ts.isIdentifier(decl.name) || !decl.initializer) continue;
-      const obj = asObjectLiteral(decl.initializer as ts.Expression);
+      const obj = asObjectLiteral(decl.initializer);
       if (obj) objects.set(decl.name.text, obj);
     }
   });
@@ -162,7 +153,7 @@ function extractEntries(
     if (isLeafEntry(entryObj)) {
       const name = getStringProperty(entryObj, 'name')!;
       const description = resolveDescription(entryObj) ?? '';
-      const valueNode = getValueNode(entryObj);
+      const valueNode = getProp(entryObj, 'value');
       const handWritten = getBooleanProperty(entryObj, 'handWritten');
       if (valueNode) entries.push({ name, valueNode, description, group, deprecated, handWritten });
     } else {
@@ -178,12 +169,8 @@ function extractEntries(
 
 /** Resolves the `description` property of a leaf entry to a plain string. */
 function resolveDescription(obj: ts.ObjectLiteralExpression): string | undefined {
-  for (const prop of obj.properties) {
-    if (!ts.isPropertyAssignment(prop) || !ts.isIdentifier(prop.name) || prop.name.text !== 'description') continue;
-    const init = prop.initializer;
-    if (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) return init.text;
-  }
-  return undefined;
+  const init = getProp(obj, 'description');
+  return init && (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) ? init.text : undefined;
 }
 
 /** Finds all exported *Meta variables and returns their entries split by deprecated flag. */
@@ -198,7 +185,7 @@ function collectAllEntries(
     if (!node.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)) return;
     for (const decl of node.declarationList.declarations) {
       if (!ts.isIdentifier(decl.name) || !decl.name.text.endsWith('Meta')) continue;
-      const metaObj = decl.initializer ? asObjectLiteral(decl.initializer as ts.Expression) : undefined;
+      const metaObj = decl.initializer ? asObjectLiteral(decl.initializer) : undefined;
       if (!metaObj) continue;
       const isDeprecated = /^deprecated/i.test(decl.name.text);
       const entries = extractEntries(metaObj, localObjects, isDeprecated);
@@ -219,14 +206,12 @@ function getOutputDir(categoryDir: string, entry: Entry): string {
   return entry.group ? path.join(generatedDir, toKebabDir(entry.group)) : generatedDir;
 }
 
-/** True for identifier nodes that are *references* — not property names, declaration names, or import specifier names. */
+/** True for identifier nodes that are *references* — not property names (`frosted:`) or property access names (`.foo`). */
 function isReferenceIdentifier(node: ts.Identifier): boolean {
   const parent = node.parent;
   return !(
     (ts.isPropertyAssignment(parent) && parent.name === node) ||
-    (ts.isPropertyAccessExpression(parent) && parent.name === node) ||
-    (ts.isVariableDeclaration(parent) && parent.name === node) ||
-    (ts.isImportSpecifier(parent) && (parent.name === node || parent.propertyName === node))
+    (ts.isPropertyAccessExpression(parent) && parent.name === node)
   );
 }
 
@@ -240,30 +225,6 @@ function collectReferenceIdentifierNodes(node: ts.Node): ts.Identifier[] {
   };
   walk(node);
   return result;
-}
-
-/**
- * Returns the value expression's source text verbatim, plus every token import it
- * references (so the generated file can re-import them). Value expressions reference
- * only literals, imports, or sibling-entry consts — never local helper consts.
- */
-function renderValueText(valueNode: ts.Node, parsed: ParsedMetaFile): { text: string; neededImports: Set<string> } {
-  const neededImports = new Set<string>();
-  for (const node of collectReferenceIdentifierNodes(valueNode)) {
-    if (parsed.imports.has(node.text)) neededImports.add(node.text);
-  }
-  return { text: nodeText(valueNode, parsed.source), neededImports };
-}
-
-/** Strips TypeScript type assertions, but keeps `as const` (meaningful in output). */
-function stripTypeAssertions(node: ts.Node): ts.Node {
-  if (ts.isAsExpression(node)) {
-    const isConstAssertion =
-      ts.isTypeReferenceNode(node.type) && ts.isIdentifier(node.type.typeName) && node.type.typeName.text === 'const';
-    return isConstAssertion ? node : stripTypeAssertions(node.expression);
-  }
-  if (ts.isTypeAssertionExpression(node)) return stripTypeAssertions(node.expression);
-  return node;
 }
 
 /** Adjusts a relative import path so it's valid from outputDir instead of metaDir. */
@@ -284,20 +245,13 @@ function generateEntryFile(entry: Entry, parsed: ParsedMetaFile): string | null 
   if (entry.handWritten) return null;
 
   const outputDir = getOutputDir(parsed.dir, entry);
+  const valueNode = entry.valueNode;
 
-  // If the value is a reference to a same-named local object const, expand it inline
-  // so the generated file contains the full object, not just the identifier.
-  let valueNode = entry.valueNode;
-  if (ts.isIdentifier(valueNode) && valueNode.text === entry.name && parsed.localObjects.has(valueNode.text)) {
-    valueNode = parsed.localObjects.get(valueNode.text)!;
-  }
-  valueNode = stripTypeAssertions(valueNode);
-
-  const referencedNames = collectReferenceIdentifierNodes(valueNode).map((n) => n.text);
-
-  // Render the value, inlining local scalars, and learn which token imports it now needs
-  // (directly, or via an inlined scalar's own expression).
-  let { text: valueText, neededImports } = renderValueText(valueNode, parsed);
+  // The value expression is copied into the generated file verbatim; per the golden rule
+  // (see src/META_FILES.md) every identifier it references is an import and must be
+  // re-imported by the generated file.
+  const referencedNames = [...new Set(collectReferenceIdentifierNodes(valueNode).map((n) => n.text))];
+  let valueText = nodeText(valueNode, parsed.source);
 
   // If the value is just the same-named imported identifier, we must alias the import
   // to avoid a name collision: `export const spacingFluidXs = _spacingFluidXs`.
@@ -308,23 +262,12 @@ function generateEntryFile(entry: Entry, parsed: ParsedMetaFile): string | null 
   // Group needed imports by module.
   const importsByModule = new Map<string, string[]>();
 
-  for (const localName of [...neededImports].sort()) {
+  for (const localName of referencedNames.filter((name) => parsed.imports.has(name)).sort()) {
     const info = parsed.imports.get(localName)!;
     const adjusted = adjustImportPath(info.module, parsed.dir, outputDir);
     const bucket = importsByModule.get(adjusted) ?? [];
     bucket.push(localName);
     importsByModule.set(adjusted, bucket);
-  }
-
-  // Local object consts referenced by name become imports from their sibling generated files.
-  for (const localName of new Set(referencedNames.filter((name) => parsed.localObjects.has(name)))) {
-    const siblingDir = parsed.entryDirs.get(localName);
-    if (!siblingDir) continue;
-    const rel = path.relative(outputDir, path.join(siblingDir, localName));
-    const mod = rel.startsWith('.') ? rel : `./${rel}`;
-    const bucket = importsByModule.get(mod) ?? [];
-    bucket.push(localName);
-    importsByModule.set(mod, bucket);
   }
 
   // Build import lines.
@@ -357,23 +300,19 @@ function writeFile(filePath: string, content: string): void {
   fs.writeFileSync(filePath, content, 'utf-8');
 }
 
-function writeEntries(entries: Entry[], parsed: ParsedMetaFile): Set<string> {
-  const written = new Map<string, { filePath: string; content: string }>();
+function writeEntries(entries: Entry[], parsed: ParsedMetaFile): void {
   for (const entry of entries) {
     const content = generateEntryFile(entry, parsed);
     if (content === null) continue;
-    const filePath = path.join(getOutputDir(parsed.dir, entry), `${entry.name}.ts`);
-    writeFile(filePath, content);
-    written.set(entry.name, { filePath, content });
+    writeFile(path.join(getOutputDir(parsed.dir, entry), `${entry.name}.ts`), content);
   }
+}
 
-  // Verify after all writes: on case-insensitive filesystems a later sibling
-  // may silently overwrite an earlier one.
-  const verified = new Set<string>();
-  for (const [name, { filePath, content }] of written) {
-    if (fs.readFileSync(filePath, 'utf-8') === content) verified.add(name);
-  }
-  return verified;
+/** Sorted `export { name } from './name';` lines for a list of entries. */
+function exportLines(entries: Entry[]): string[] {
+  return [...entries]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((e) => `export { ${e.name} } from './${e.name}';`);
 }
 
 function writeIndexFiles(categoryDir: string, regular: Entry[], deprecated: Entry[]): void {
@@ -388,37 +327,21 @@ function writeIndexFiles(categoryDir: string, regular: Entry[], deprecated: Entr
     byGroup.set(entry.group, bucket);
   }
   for (const [group, entries] of byGroup) {
-    const lines = [...entries]
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map((e) => `export { ${e.name} } from './${e.name}';`);
-    writeFile(path.join(generatedDir, toKebabDir(group), 'index.ts'), `${lines.join('\n')}\n`);
+    writeFile(path.join(generatedDir, toKebabDir(group), 'index.ts'), `${exportLines(entries).join('\n')}\n`);
   }
 
   // Write deprecated/index.ts.
   if (deprecated.length > 0) {
-    const lines = [...deprecated]
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map((e) => `export { ${e.name} } from './${e.name}';`);
-    writeFile(path.join(generatedDir, 'deprecated', 'index.ts'), `${lines.join('\n')}\n`);
+    writeFile(path.join(generatedDir, 'deprecated', 'index.ts'), `${exportLines(deprecated).join('\n')}\n`);
   }
 
-  // Write generated/index.ts (root barrel).
-  const hasGroups = regular.some((e) => e.group);
-  const rootLines: string[] = [];
-  if (hasGroups) {
-    if (deprecated.length > 0) rootLines.push(`export * from './deprecated';`);
-    const groups = [...new Set(regular.map((e) => e.group).filter(Boolean) as string[])].sort();
-    for (const g of groups) rootLines.push(`export * from './${toKebabDir(g)}';`);
-    // Non-grouped entries go directly in generated/
-    for (const e of regular.filter((e) => !e.group).sort((a, b) => a.name.localeCompare(b.name))) {
-      rootLines.push(`export { ${e.name} } from './${e.name}';`);
-    }
-  } else {
-    for (const e of [...regular].sort((a, b) => a.name.localeCompare(b.name))) {
-      rootLines.push(`export { ${e.name} } from './${e.name}';`);
-    }
-    if (deprecated.length > 0) rootLines.push(`export * from './deprecated';`);
-  }
+  // Write generated/index.ts (root barrel). The deprecated re-export comes first when
+  // groups exist and last otherwise — kept that way so existing output stays stable.
+  const groupLines = [...byGroup.keys()].sort().map((g) => `export * from './${toKebabDir(g)}';`);
+  const ungroupedLines = exportLines(regular.filter((e) => !e.group));
+  const deprecatedLines = deprecated.length > 0 ? [`export * from './deprecated';`] : [];
+  const rootLines =
+    byGroup.size > 0 ? [...deprecatedLines, ...groupLines, ...ungroupedLines] : [...ungroupedLines, ...deprecatedLines];
   writeFile(path.join(generatedDir, 'index.ts'), `${rootLines.join('\n')}\n`);
 }
 
@@ -439,13 +362,6 @@ function processMetaFile(metaFilePath: string): void {
   const generatedDir = path.join(dir, 'generated');
   if (fs.existsSync(generatedDir)) fs.rmSync(generatedDir, { recursive: true });
 
-  // Pre-compute each entry's output directory so cross-entry imports can be resolved.
-  // For example, `theme.ts` needs to import `themeLight` and `themeDark` from sibling files.
-  const entryDirs = new Map<string, string>();
-  for (const entry of [...regular, ...deprecated]) {
-    entryDirs.set(entry.name, getOutputDir(dir, entry));
-  }
-
   // Guard against case-insensitive filename collisions (e.g. `breakpoints` vs `breakpointS`).
   // These silently overwrite each other on case-insensitive filesystems (macOS) but produce two
   // distinct files on case-sensitive CI (Linux), which breaks the typings build with TS1149.
@@ -464,22 +380,15 @@ function processMetaFile(metaFilePath: string): void {
     pathByLower.set(lower, entry.name);
   }
 
-  const parsed: ParsedMetaFile = {
-    source,
-    dir,
-    imports,
-    localObjects,
-    entryDirs,
-    regular,
-    deprecated,
-  };
+  const parsed: ParsedMetaFile = { source, dir, imports };
 
-  const writtenRegular = writeEntries(regular, parsed);
-  const writtenDeprecated = writeEntries(deprecated, parsed);
+  writeEntries(regular, parsed);
+  writeEntries(deprecated, parsed);
+  // Hand-written entries are excluded from index files — they're wired up manually.
   writeIndexFiles(
     dir,
-    regular.filter((e) => writtenRegular.has(e.name)),
-    deprecated.filter((e) => writtenDeprecated.has(e.name))
+    regular.filter((e) => !e.handWritten),
+    deprecated.filter((e) => !e.handWritten)
   );
 }
 

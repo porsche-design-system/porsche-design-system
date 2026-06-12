@@ -298,6 +298,7 @@ const deprecatedTheme: MetaEntry = {
   name: 'theme',
   value: { light: themeLight, dark: themeDark } as const,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
+  handWritten: true,
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
@@ -305,6 +306,7 @@ const deprecatedThemeDark: MetaEntry = {
   name: 'themeDark',
   value: themeDark,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
+  handWritten: true,
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorCanvasDark instead. */
@@ -452,6 +454,7 @@ const deprecatedThemeLight: MetaEntry = {
   name: 'themeLight',
   value: themeLight,
   description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
+  handWritten: true,
 };
 
 /** @deprecated since v4.0.0, will be removed with next major release. Use colorCanvasLight instead. */
