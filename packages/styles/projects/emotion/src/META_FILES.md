@@ -4,21 +4,18 @@ Each `*.meta.ts` file describes a group of style tokens. A build script (`script
 `npm run generate:styles`) reads every meta file and writes one standalone `.ts` file per entry into a `generated/`
 folder, plus the barrel `index.ts` files.
 
-You almost never need to read the generator. You just need to follow one rule.
-
----
+You almost never need to read the generator. There is only one rule to keep in mind.
 
 ## The golden rule
 
-> **A `value` must be self-contained: build it only from string/number literals, imported identifiers, and inline
-> objects/templates of those. Never reference a `const` declared elsewhere in the same meta file from inside a
-> `value`.**
+A `value` must be self-contained: build it only from string/number literals, imported identifiers, and inline
+objects/templates of those. Never reference a `const` declared elsewhere in the same meta file from inside a `value`.
 
-The generator copies a `value` expression into a new file _verbatim_. If the value mentions a helper that only exists in
-the meta file, that helper won't exist in the generated file — so the generator can't use it. Keeping values
-self-contained is what makes the generator simple and predictable.
+The reason is simple: the generator copies the `value` expression into a new file verbatim. A helper that only exists in
+the meta file won't exist in the generated file, so the generated code would reference an undefined name. Keeping values
+self-contained is what keeps the generator simple and predictable.
 
-### ✅ Allowed inside `value`
+Allowed inside `value`:
 
 ```ts
 import { spacingFluidMd } from '@porsche-design-system/tokens';
@@ -37,118 +34,103 @@ value: `var(${_cssVariableGridBasicSpanOneHalf})`,
 value: { columnStart: 'full-start', columnEnd: 'full-end' } as const,
 ```
 
-### ❌ Not allowed inside `value`
+Not allowed:
 
 ```ts
-const gridGap = spacingFluidMd;        // local helper
-const fullStart = 'full-start';        // local helper
+const gridGap = spacingFluidMd; // local helper
+const fullStart = 'full-start'; // local helper
 
-value: gridGap,        // ❌ generated file would reference a name that doesn't exist there
-value: fullStart,      // ❌ same problem
+value: gridGap,    // generated file would reference a name that doesn't exist there
+value: fullStart,  // same problem
 ```
 
-**Fix:** inline it, or import a real export instead of a local const.
-
-```ts
-value: spacingFluidMd,   // ✅ use the import directly
-value: 'full-start',     // ✅ inline the literal
-```
-
-> If two entries share the same value and you want to avoid repeating a literal, put the shared value in a **real
-> importable module** (like `gridShared.ts`) and `import` it. An import is fine; a local `const` in the meta file is
-> not.
-
----
+The fix is to inline the literal or use the import directly. If two entries share the same value and you don't want to
+repeat a literal, put the shared value in a real importable module (like `gridShared.ts`) and import it from there. An
+import is fine; a local `const` in the meta file is not.
 
 ## Descriptions
 
-`description` must be a plain string or a template literal — **no references to local consts**. (It ends up verbatim in
-the generated JSDoc comment.)
+Same idea: `description` must be a plain string or a template literal with no references to local consts, because it
+ends up verbatim in the generated JSDoc comment.
 
 ```ts
-// ✅ fine
+// fine
 description: 'Holds a **medium** `border-radius`.',
 description: `Holds the [light-dark()](https://…) **canvas** color.`,
 
-// ❌ not allowed
+// not allowed — inline the text instead
 const mdLink = '[light-dark()](https://…)';
-description: `Holds the ${mdLink} **canvas** color.`,   // inline the text instead
+description: `Holds the ${mdLink} **canvas** color.`,
 ```
 
----
+## When the value genuinely needs logic: `handWritten: true`
 
-## When the value genuinely needs logic — `handWritten: true`
-
-Some entries can't be expressed as a self-contained literal: they call a helper function, compute something, or
+Some entries can't be expressed as a self-contained literal because they call a helper function, compute something, or
 reference a large shared object. For those, set `handWritten: true` and write the file yourself.
 
 ```ts
 gridBasicOffsetS: {
   name: 'gridBasicOffsetS',
-  value: getOffsetS('basic'),   // calls a local helper — can't be generated
+  value: getOffsetS('basic'), // calls a local helper — can't be generated
   description: 'Holds a **small** offset within the `basic` area.',
-  handWritten: true,            // generator SKIPS this entry
+  handWritten: true, // generator skips this entry
 },
 ```
 
-What you must do for a hand-written entry:
+A hand-written entry needs two things from you:
 
-1. **Create the file yourself** at the category root (next to the meta file), e.g. `grid/gridBasicOffsetS.ts`, exporting
-   `export const gridBasicOffsetS = …`. (Hand-written files live _outside_ the `generated/` folder so the generator's
-   wipe-and-rewrite of `generated/` never touches them.)
-2. **Wire it into the category `index.ts`** by hand:
+1. Create the file yourself at the category root (next to the meta file), e.g. `grid/gridBasicOffsetS.ts`, exporting
+   `export const gridBasicOffsetS = …`. Hand-written files live outside the `generated/` folder on purpose — the
+   generator wipes and rewrites `generated/` on every run and must never touch them.
+2. Wire it into the category `index.ts` by hand:
+
    ```ts
    export * from './generated';
    export { gridBasicOffsetS } from './gridBasicOffsetS';
    ```
 
-The `value` you write in the meta file for a hand-written entry is effectively documentation — the generator ignores it
-— but keep it accurate so the meta file still reads as the source of truth.
+The `value` you write in the meta file for a hand-written entry is documentation only — the generator ignores it. Keep
+it accurate anyway, so the meta file still reads as the source of truth.
 
----
+## Grouping and deprecated entries
 
-## Grouping & deprecated entries (these are fine — they're about structure, not values)
+Both of these are fine — they're about how entries are organized, not about what goes inside a `value`.
 
-- **Nested groups** become sub-folders. The object key is the folder name (camelCase → kebab-case):
-  `fluid: { spacingFluidXs: { … } }` → `generated/fluid/spacingFluidXs.ts`.
-- **Deprecated entries** go in an export named `deprecatedXxxMeta` and land in `generated/deprecated/`. It's idiomatic
-  to define each one as a `const deprecatedFooMeta: MetaEntry = { … }` and reference it by name in the export map:
+- Nested groups become sub-folders. The object key is the folder name (camelCase becomes kebab-case):
+  `fluid: { spacingFluidXs: { … } }` ends up as `generated/fluid/spacingFluidXs.ts`.
+- Deprecated entries go in an export named `deprecatedXxxMeta` and land in `generated/deprecated/`. It's idiomatic to
+  define each one as a `const deprecatedFooMeta: MetaEntry = { … }` and reference it by name in the export map:
 
   ```ts
   const deprecatedBorderRadiusSmall: MetaEntry = { name: 'borderRadiusSmall', value: radiusSm, description: '…' };
 
   export const deprecatedBorderMeta: Meta = {
-    borderRadiusSmall: deprecatedBorderRadiusSmall, // ✅ referencing an ENTRY by name is fine
+    borderRadiusSmall: deprecatedBorderRadiusSmall, // referencing an entry by name is fine
   };
   ```
 
-  This is allowed because it's about _organizing entries_, not about the content of a `value`. The golden rule only
-  restricts what goes **inside** `value`.
-
----
+  This doesn't break the golden rule, which only restricts what goes inside `value`.
 
 ## Before you commit
 
 Always regenerate and sanity-check:
 
 ```bash
-npm run generate:styles                  # rewrites every generated/ folder
-npm run test:unit                         # 199 snapshot/contract tests
+npm run generate:styles                   # rewrites every generated/ folder
+npm run test:unit                         # snapshot/contract tests
 npx biome check src/<your-file>.meta.ts   # lint/format the meta file
 ```
 
-If a generated file ends up referencing an undefined name, or a snapshot test fails, you almost certainly broke the
-golden rule — find the local-const reference inside a `value` and inline it (or mark the entry `handWritten`).
+If a generated file references an undefined name, or a snapshot test fails, you almost certainly broke the golden rule.
+Find the local-const reference inside a `value` and inline it, or mark the entry `handWritten`.
 
-### One gotcha: very long inlined values
-
-If inlining makes a `value` object longer than Biome's 120-char line limit, Biome will want to wrap it across lines —
-which would change the generated file. Keep it on one line and add a suppression comment so the generated output stays
-stable:
+One gotcha with very long inlined values: if inlining pushes a `value` object past Biome's 120-char line limit, Biome
+will want to wrap it across lines, which would change the generated file. Keep it on one line and add a suppression
+comment:
 
 ```ts
 // biome-ignore format: kept on one line so the generated file matches byte-for-byte
 value: { columnStart: 'extended-start', columnEnd: 'extended-end', spanOneHalf: `var(${_cssVariableGridExtendedSpanOneHalf})` } as const,
 ```
 
-(Long **template literals** and **strings** don't need this — Biome can't reflow them, so it leaves them alone.)
+Long template literals and plain strings don't need this — Biome can't reflow them.
