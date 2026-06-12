@@ -143,7 +143,7 @@ export const dialogPaddingTop = ref(spacingFluidMd);
 export const dialogPaddingBottom = `calc(${dialogBorderRadius} + ${ref(spacingFluidMd)})`;
 export const dialogPaddingInline = ref(spacingFluidLg);
 
-export const dialogGridJssStyle = (clipPath: string = 'none'): JssStyle => {
+export const dialogGridJssStyle = (): JssStyle => {
   return {
     position: 'relative',
     display: 'grid',
@@ -152,8 +152,8 @@ export const dialogGridJssStyle = (clipPath: string = 'none'): JssStyle => {
     paddingTop: dialogPaddingTop,
     paddingBottom: dialogPaddingBottom,
     alignContent: 'flex-start',
+    // Consumers set their own `clip-path` next to their corner `border-radius` (e.g. `inset(0 round …)`).
     // `overflow: clip` can't be used due to a Chromium bug that drops descendant backdrop-filter tiles (e.g. frosted p-tag); `clip-path` clips slotted content to the rounded corners without the faulty paint-containment box while keeping the scroll behavior intact
-    clipPath,
     // Chromium paint bug: when a dialog element is nested inside another (e.g. `p-modal` within `p-flyout`),
     // the inner dialog's grid content fails to render. Forcing a new compositing layer via `translate3d`
     // triggers a repaint and fixes it. Re-check periodically; remove once the upstream Chromium bug is resolved.
