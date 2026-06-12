@@ -716,6 +716,10 @@ const generatedRoutes = {
     "path": "/sheet-basic",
     "name": "SheetBasic"
   },
+  "sheetCssVariables": {
+    "path": "/sheet-css-variables",
+    "name": "SheetCssVariables"
+  },
   "sheetGrid": {
     "path": "/sheet-grid",
     "name": "SheetGrid"

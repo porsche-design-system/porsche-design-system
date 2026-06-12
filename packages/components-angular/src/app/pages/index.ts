@@ -203,6 +203,7 @@ import { SelectOpenedWithSelectedEmptyOptionComponent } from './generated/select
 import { SelectOpenedWithSlottedImagesComponent } from './generated/select-opened-with-slotted-images.component';
 import { SheetComponent } from './generated/sheet.component';
 import { SheetBasicComponent } from './generated/sheet-basic.component';
+import { SheetCssVariablesComponent } from './generated/sheet-css-variables.component';
 import { SheetGridComponent } from './generated/sheet-grid.component';
 import { SheetPrefixedComponent } from './generated/sheet-prefixed.component';
 import { SheetScrollableComponent } from './generated/sheet-scrollable.component';
@@ -417,6 +418,7 @@ export const generatedPages = [
   SelectOpenedWithSlottedImagesComponent,
   SheetComponent,
   SheetBasicComponent,
+  SheetCssVariablesComponent,
   SheetGridComponent,
   SheetPrefixedComponent,
   SheetScrollableComponent,
@@ -1342,6 +1344,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Sheet Basic',
     path: 'sheet-basic',
     component: SheetBasicComponent,
+  },
+  {
+    name: 'Sheet Css Variables',
+    path: 'sheet-css-variables',
+    component: SheetCssVariablesComponent,
   },
   {
     name: 'Sheet Grid',
