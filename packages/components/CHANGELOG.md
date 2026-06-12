@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.2.0-rc.5] - 2026-06-12
+
 ### Added
 
 - `Flyout`: Prop `fullscreen` to stretch the flyout to the full viewport width with squared corners, useful for smaller
