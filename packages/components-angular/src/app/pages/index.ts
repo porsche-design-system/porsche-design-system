@@ -99,6 +99,9 @@ import { FlyoutFixedFooterSubfooterScrollableContentScrolledComponent } from './
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
 import { FlyoutFooterScrolledComponent } from './generated/flyout-footer-scrolled.component';
+import { FlyoutFullscreenComponent } from './generated/flyout-fullscreen.component';
+import { FlyoutFullscreenPositionStartComponent } from './generated/flyout-fullscreen-position-start.component';
+import { FlyoutFullscreenResponsiveComponent } from './generated/flyout-fullscreen-responsive.component';
 import { FlyoutGridComponent } from './generated/flyout-grid.component';
 import { FlyoutHeaderComponent } from './generated/flyout-header.component';
 import { FlyoutHeaderFooterComponent } from './generated/flyout-header-footer.component';
@@ -310,6 +313,9 @@ export const generatedPages = [
   FlyoutFooterComponent,
   FlyoutFooterScrollableContentComponent,
   FlyoutFooterScrolledComponent,
+  FlyoutFullscreenComponent,
+  FlyoutFullscreenPositionStartComponent,
+  FlyoutFullscreenResponsiveComponent,
   FlyoutGridComponent,
   FlyoutHeaderComponent,
   FlyoutHeaderFooterComponent,
@@ -816,6 +822,21 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Footer Scrolled',
     path: 'flyout-footer-scrolled',
     component: FlyoutFooterScrolledComponent,
+  },
+  {
+    name: 'Flyout Fullscreen',
+    path: 'flyout-fullscreen',
+    component: FlyoutFullscreenComponent,
+  },
+  {
+    name: 'Flyout Fullscreen Position Start',
+    path: 'flyout-fullscreen-position-start',
+    component: FlyoutFullscreenPositionStartComponent,
+  },
+  {
+    name: 'Flyout Fullscreen Responsive',
+    path: 'flyout-fullscreen-responsive',
+    component: FlyoutFullscreenResponsiveComponent,
   },
   {
     name: 'Flyout Grid',

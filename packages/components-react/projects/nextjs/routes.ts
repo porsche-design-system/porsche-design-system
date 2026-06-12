@@ -300,6 +300,18 @@ const generatedRoutes = {
     "path": "/flyout-footer-scrolled",
     "name": "FlyoutFooterScrolled"
   },
+  "flyoutFullscreen": {
+    "path": "/flyout-fullscreen",
+    "name": "FlyoutFullscreen"
+  },
+  "flyoutFullscreenPositionStart": {
+    "path": "/flyout-fullscreen-position-start",
+    "name": "FlyoutFullscreenPositionStart"
+  },
+  "flyoutFullscreenResponsive": {
+    "path": "/flyout-fullscreen-responsive",
+    "name": "FlyoutFullscreenResponsive"
+  },
   "flyoutGrid": {
     "path": "/flyout-grid",
     "name": "FlyoutGrid"
