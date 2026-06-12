@@ -70,12 +70,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(100%,0,0);
   opacity: 0;
-  transform: translateX(100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(-100%);
+  transform: translate3d(-100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -208,12 +208,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(100%,0,0);
   opacity: 0;
-  transform: translateX(100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(-100%);
+  transform: translate3d(-100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -331,12 +331,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(100%,0,0);
   opacity: 0;
-  transform: translateX(100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(-100%);
+  transform: translate3d(-100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -444,12 +444,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(-100%,0,0);
   opacity: 0;
-  transform: translateX(-100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(100%);
+  transform: translate3d(100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -563,12 +563,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(-100%,0,0);
   opacity: 0;
-  transform: translateX(-100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(100%);
+  transform: translate3d(100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -701,12 +701,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(-100%,0,0);
   opacity: 0;
-  transform: translateX(-100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(100%);
+  transform: translate3d(100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -814,12 +814,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(100%,0,0);
   opacity: 0;
-  transform: translateX(100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(-100%);
+  transform: translate3d(-100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -929,8 +929,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1041,8 +1041,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1159,8 +1159,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1290,8 +1290,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1427,8 +1427,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1574,8 +1574,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1800,8 +1800,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1947,8 +1947,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2052,8 +2052,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2164,8 +2164,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2295,8 +2295,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2426,8 +2426,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2563,8 +2563,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2710,8 +2710,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2813,8 +2813,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2942,8 +2942,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3054,8 +3054,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3173,8 +3173,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3305,8 +3305,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3443,8 +3443,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3566,8 +3566,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3695,8 +3695,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3837,8 +3837,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3985,8 +3985,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
