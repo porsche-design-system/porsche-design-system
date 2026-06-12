@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Flyout`: Prop `fullscreen` to stretch the flyout to the full viewport width with squared corners, useful for smaller
+  viewports ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498))
+
 ### Fixed
 
 - `Flyout`, `Modal`, `Sheet` ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498)):
