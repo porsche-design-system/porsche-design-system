@@ -3,11 +3,13 @@ import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  createTopLayerController,
   getPrefixedTagNames,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
   observeChildren,
+  type TopLayerController,
   unobserveChildren,
   validateProps,
 } from '../../utils';
@@ -75,6 +77,12 @@ export class Banner {
   private refDismiss: HTMLElement;
   private hasHeadingSlot: boolean;
   private hasDescriptionSlot: boolean;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.refPopover,
+    isShown: () => !!this.refPopover?.matches(':popover-open'),
+    show: () => this.refPopover?.showPopover(),
+    hide: () => this.refPopover?.hidePopover(),
+  });
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -105,6 +113,7 @@ export class Banner {
 
   public disconnectedCallback(): void {
     unobserveChildren(this.host);
+    this.topLayer.cancel();
 
     if (this.open && this.dismissButton) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
@@ -116,8 +125,13 @@ export class Banner {
   }
 
   public componentDidRender(): void {
-    // showPopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly
-    this.refPopover[this.open ? 'showPopover' : 'hidePopover']();
+    // showPopover/hidePopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly.
+    // `componentDidRender` runs on every render (not only when `open` changes); both controller methods are idempotent.
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
     this.refDismiss?.focus();
   }
 

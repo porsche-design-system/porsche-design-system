@@ -809,6 +809,11 @@ export namespace Components {
          */
         "footerBehavior"?: FlyoutFooterBehavior;
         /**
+          * If true the flyout stretches to the full viewport width with squared corners. Useful for smaller viewports where the flyout would otherwise fill the screen but still show rounded corners.
+          * @default false
+         */
+        "fullscreen"?: BreakpointCustomizable<boolean>;
+        /**
           * If true, the flyout is open.
           * @default false
          */
@@ -4987,6 +4992,11 @@ declare namespace LocalJSX {
          */
         "footerBehavior"?: FlyoutFooterBehavior;
         /**
+          * If true the flyout stretches to the full viewport width with squared corners. Useful for smaller viewports where the flyout would otherwise fill the screen but still show rounded corners.
+          * @default false
+         */
+        "fullscreen"?: BreakpointCustomizable<boolean>;
+        /**
           * Emitted when the component requests to be dismissed.
          */
         "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
@@ -7725,6 +7735,7 @@ declare namespace LocalJSX {
         "background": FlyoutBackground;
         "backdrop": FlyoutBackdrop;
         "footerBehavior": FlyoutFooterBehavior;
+        "fullscreen": string;
         "aria": SelectedAriaAttributes<FlyoutAriaAttribute>;
     }
     interface PHeadingAttributes {

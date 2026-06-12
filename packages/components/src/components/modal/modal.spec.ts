@@ -48,11 +48,20 @@ describe('componentWillRender', () => {
 });
 
 describe('componentDidRender', () => {
-  it('should call setDialogVisibility() with correct parameters', () => {
-    const setDialogVisibilitySpy = vi.spyOn(dialogUtils, 'setDialogVisibility');
+  it('should call showDialog() with correct parameters when open', () => {
+    const showDialogSpy = vi.spyOn(dialogUtils, 'showDialog').mockReturnValueOnce();
+    component.open = true;
     component.componentDidRender();
 
-    expect(setDialogVisibilitySpy).toHaveBeenCalledWith(component.open, component['dialog'], component['scroller']);
+    expect(showDialogSpy).toHaveBeenCalledWith(component['dialog'], component['scroller']);
+  });
+
+  it('should not call showDialog() when closed', () => {
+    const showDialogSpy = vi.spyOn(dialogUtils, 'showDialog').mockReturnValueOnce();
+    component.open = false;
+    component.componentDidRender();
+
+    expect(showDialogSpy).not.toHaveBeenCalled();
   });
 });
 

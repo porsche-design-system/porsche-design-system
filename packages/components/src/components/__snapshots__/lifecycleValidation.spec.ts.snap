@@ -217,6 +217,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
   "background": "oneOf",
   "disableBackdropClick": "boolean",
   "footerBehavior": "oneOf",
+  "fullscreen": "breakpoint",
   "open": "boolean",
   "position": "oneOf",
 }

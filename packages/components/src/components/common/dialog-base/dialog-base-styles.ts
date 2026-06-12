@@ -17,6 +17,7 @@ import {
 } from '@porsche-design-system/stylesheets';
 import type { JssStyle, Styles } from 'jss';
 import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
+import { overlayTransitionSupportsQuery } from '../../../utils';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -77,6 +78,7 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
           height: '100dvh',
           visibility: 'inherit',
           pointerEvents: 'auto',
+          overlay: 'auto',
           background: ref(colorBackdrop),
           ...(isBackdropBlur && {
             WebkitBackdropFilter: ref(blurFrosted),
@@ -92,14 +94,14 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
           height: '0px',
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
           pointerEvents: 'none', // element can't be interacted with mouse
+          overlay: 'none',
           background: 'transparent',
         }),
     transition,
-    // `allow-discrete` transition for ua-style `overlay` (supported browsers only) ensures dialog is rendered on
-    // #top-layer as long as fade-in or fade-out transition/animation is running
-    '@supports (transition-behavior: allow-discrete)': {
+    // keep the dialog on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
+    ...overlayTransitionSupportsQuery({
       transition: `${transition}, ${getTransition('overlay', duration, easing)} allow-discrete`,
-    },
+    }),
   };
 };
 
@@ -129,6 +131,10 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
     overscrollBehaviorY: 'none',
     // TODO: check if smooth scrolling on iOS is given?
     background: background.light,
+    // ensure a translate3d style is always applied on .scroller and .modal/.flyout/.sheet to create a new stacking
+    // context and prevent a Chromium paint bug: when a dialog element is nested inside another (e.g. `p-modal` within
+    // `p-flyout`)
+    transform: 'translate3d(0,0,0)',
   };
 };
 
@@ -137,7 +143,7 @@ export const dialogPaddingTop = ref(spacingFluidMd);
 export const dialogPaddingBottom = `calc(${dialogBorderRadius} + ${ref(spacingFluidMd)})`;
 export const dialogPaddingInline = ref(spacingFluidLg);
 
-export const dialogGridJssStyle = (clipPath: string = 'none'): JssStyle => {
+export const dialogGridJssStyle = (): JssStyle => {
   return {
     position: 'relative',
     display: 'grid',
@@ -146,8 +152,12 @@ export const dialogGridJssStyle = (clipPath: string = 'none'): JssStyle => {
     paddingTop: dialogPaddingTop,
     paddingBottom: dialogPaddingBottom,
     alignContent: 'flex-start',
+    // Consumers set their own `clip-path` next to their corner `border-radius` (e.g. `inset(0 round …)`).
     // `overflow: clip` can't be used due to a Chromium bug that drops descendant backdrop-filter tiles (e.g. frosted p-tag); `clip-path` clips slotted content to the rounded corners without the faulty paint-containment box while keeping the scroll behavior intact
-    clipPath,
+    // Chromium paint bug: when a dialog element is nested inside another (e.g. `p-modal` within `p-flyout`),
+    // the inner dialog's grid content fails to render. Forcing a new compositing layer via `translate3d`
+    // triggers a repaint and fixes it. Re-check periodically; remove once the upstream Chromium bug is resolved.
+    transform: 'translate3d(0,0,0)',
   };
 };
 
@@ -168,13 +178,13 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
     ...(isVisible
       ? {
           opacity: 1,
-          transform: 'initial',
+          transform: 'translate3d(0,0,0)',
         }
       : {
           opacity: 0,
-          transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '-' : ''}100%)`,
+          transform: slideIn === '^' ? 'translate3d(0,25vh,0)' : `translate3d(${slideIn === '>' ? '-' : ''}100%,0,0)`,
           '&:dir(rtl)': {
-            transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '' : '-'}100%)`,
+            transform: slideIn === '^' ? 'translate3d(0,25vh,0)' : `translate3d(${slideIn === '>' ? '' : '-'}100%,0,0)`,
           },
         }),
     transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,

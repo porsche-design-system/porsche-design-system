@@ -85,6 +85,9 @@ import { FlyoutFixedFooterSubfooterScrollableContentScrolledPage } from './gener
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
 import { FlyoutFooterScrolledPage } from './generated/FlyoutFooterScrolled';
+import { FlyoutFullscreenPage } from './generated/FlyoutFullscreen';
+import { FlyoutFullscreenPositionStartPage } from './generated/FlyoutFullscreenPositionStart';
+import { FlyoutFullscreenResponsivePage } from './generated/FlyoutFullscreenResponsive';
 import { FlyoutGridPage } from './generated/FlyoutGrid';
 import { FlyoutHeaderPage } from './generated/FlyoutHeader';
 import { FlyoutHeaderFooterPage } from './generated/FlyoutHeaderFooter';
@@ -186,6 +189,7 @@ import { SelectOpenedWithSelectedEmptyOptionPage } from './generated/SelectOpene
 import { SelectOpenedWithSlottedImagesPage } from './generated/SelectOpenedWithSlottedImages';
 import { SheetPage } from './generated/Sheet';
 import { SheetBasicPage } from './generated/SheetBasic';
+import { SheetCssVariablesPage } from './generated/SheetCssVariables';
 import { SheetGridPage } from './generated/SheetGrid';
 import { SheetPrefixedPage } from './generated/SheetPrefixed';
 import { SheetScrollablePage } from './generated/SheetScrollable';
@@ -590,6 +594,21 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Footer Scrolled',
     path: '/flyout-footer-scrolled',
     element: <FlyoutFooterScrolledPage />,
+  },
+  {
+    name: 'Flyout Fullscreen',
+    path: '/flyout-fullscreen',
+    element: <FlyoutFullscreenPage />,
+  },
+  {
+    name: 'Flyout Fullscreen Position Start',
+    path: '/flyout-fullscreen-position-start',
+    element: <FlyoutFullscreenPositionStartPage />,
+  },
+  {
+    name: 'Flyout Fullscreen Responsive',
+    path: '/flyout-fullscreen-responsive',
+    element: <FlyoutFullscreenResponsivePage />,
   },
   {
     name: 'Flyout Grid',
@@ -1095,6 +1114,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Sheet Basic',
     path: '/sheet-basic',
     element: <SheetBasicPage />,
+  },
+  {
+    name: 'Sheet Css Variables',
+    path: '/sheet-css-variables',
+    element: <SheetCssVariablesPage />,
   },
   {
     name: 'Sheet Grid',

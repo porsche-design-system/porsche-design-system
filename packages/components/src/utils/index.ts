@@ -35,4 +35,5 @@ export * from './supportsNativePopover';
 export * from './sync';
 export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-name';
 export * from './tile';
+export * from './top-layer';
 export * from './validation';
