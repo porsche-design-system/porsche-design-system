@@ -188,7 +188,7 @@ test('should have correct transform when opened and dismissed', async ({ page })
 
   await openFlyout(page);
 
-  await expect(getFlyoutScroller(page)).toHaveCSS('transform', 'none');
+  await expect(getFlyoutScroller(page)).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
 
   await dismissFlyout(page);
 
