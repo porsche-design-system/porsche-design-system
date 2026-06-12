@@ -131,6 +131,10 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
     overscrollBehaviorY: 'none',
     // TODO: check if smooth scrolling on iOS is given?
     background: background.light,
+    // ensure a translate3d style is always applied on .scroller and .modal/.flyout/.sheet to create a new stacking
+    // context and prevent a Chromium paint bug: when a dialog element is nested inside another (e.g. `p-modal` within
+    // `p-flyout`)
+    transform: 'translate3d(0,0,0)',
   };
 };
 
@@ -174,13 +178,13 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
     ...(isVisible
       ? {
           opacity: 1,
-          transform: 'initial',
+          transform: 'translate3d(0,0,0)',
         }
       : {
           opacity: 0,
-          transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '-' : ''}100%)`,
+          transform: slideIn === '^' ? 'translate3d(0,25vh,0)' : `translate3d(${slideIn === '>' ? '-' : ''}100%,0,0)`,
           '&:dir(rtl)': {
-            transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '' : '-'}100%)`,
+            transform: slideIn === '^' ? 'translate3d(0,25vh,0)' : `translate3d(${slideIn === '>' ? '' : '-'}100%,0,0)`,
           },
         }),
     transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
