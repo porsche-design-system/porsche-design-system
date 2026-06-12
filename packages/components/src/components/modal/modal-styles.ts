@@ -87,7 +87,7 @@ export const getComponentCss = (
     },
     scroller: getScrollerJssStyle('fullscreen'),
     modal: {
-      ...dialogGridJssStyle(`inset(0 round ${dialogBorderRadius})`),
+      ...dialogGridJssStyle(),
       ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
@@ -108,6 +108,7 @@ export const getComponentCss = (
               placeSelf: 'center',
               margin: `${ref(cssVariableSpacingTop, 'clamp(16px, 10vh, 192px)')} ${gridExtendedOffsetBase} ${ref(cssVariableSpacingBottom, 'clamp(16px, 10vh, 192px)')}`, // horizontal margin is needed to ensure modal is placed on "Porsche Grid" when slotted content is wider than the viewport width
               borderRadius: dialogBorderRadius,
+              clipPath: `inset(0 round ${dialogBorderRadius})`, // non-fullscreen has rounded corners, so clip slotted content to them
               ...forcedColorsMediaQuery({
                 outline: '2px solid CanvasText',
                 outlineOffset: '-2px',

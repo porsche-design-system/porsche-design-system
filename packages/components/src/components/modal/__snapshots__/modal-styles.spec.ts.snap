@@ -1706,6 +1706,7 @@ dialog::backdrop {
     place-self: center;
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
     border-radius: var(--p-radius-3xl);
+    clip-path: inset(0 round var(--p-radius-3xl));
   }
 @media(forced-colors:active) {
     .modal {
@@ -1736,6 +1737,7 @@ dialog::backdrop {
     place-self: center;
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
     border-radius: var(--p-radius-3xl);
+    clip-path: inset(0 round var(--p-radius-3xl));
   }
 @media(forced-colors:active) {
     .modal {
@@ -1766,6 +1768,7 @@ dialog::backdrop {
     place-self: center;
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
     border-radius: var(--p-radius-3xl);
+    clip-path: inset(0 round var(--p-radius-3xl));
   }
 @media(forced-colors:active) {
     .modal {
