@@ -1184,8 +1184,10 @@
           <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
             >Open Flyout (with nested dialogs)</p-button
           >
+          <!-- class="[--p-flyout-width:100vw] [--p-flyout-max-width:100%] md:[--p-flyout-width:1150px]" -->
           <p-flyout
-            class="[--p-flyout-width:100vw] [--p-flyout-max-width:100%] md:[--p-flyout-width:1150px]"
+            class="md:[--p-flyout-width:min(80vw,1150px)]"
+            fullscreen="{ base: true, m: false }"
             aria="{'aria-label': 'Some heading'}"
           >
             <p-model-signature slot="header" model="taycan" color="primary"></p-model-signature>

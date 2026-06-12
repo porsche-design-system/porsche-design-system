@@ -1,5 +1,5 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -44,6 +44,7 @@ const propTypes: PropTypes<typeof Flyout> = {
   position: AllowedTypes.oneOf<FlyoutPosition>(FLYOUT_POSITIONS),
   disableBackdropClick: AllowedTypes.boolean,
   backdrop: AllowedTypes.oneOf<FlyoutBackdrop>(BACKDROPS),
+  fullscreen: AllowedTypes.breakpoint('boolean'),
   footerBehavior: AllowedTypes.oneOf<FlyoutFooterBehavior>(FLYOUT_FOOTER_BEHAVIOR),
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
@@ -80,6 +81,9 @@ export class Flyout {
 
   /** Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows. */
   @Prop() public footerBehavior?: FlyoutFooterBehavior = 'sticky';
+
+  /** If true the flyout stretches to the full viewport width with squared corners. Useful for smaller viewports where the flyout would otherwise fill the screen but still show rounded corners. */
+  @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
 
   /** Sets ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<FlyoutAriaAttribute>;
@@ -169,7 +173,8 @@ export class Flyout {
       this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,
-      this.footerBehavior
+      this.footerBehavior,
+      this.fullscreen
     );
 
     return (
