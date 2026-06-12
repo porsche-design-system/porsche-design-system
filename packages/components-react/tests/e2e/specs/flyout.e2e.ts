@@ -47,9 +47,9 @@ test.describe('form', () => {
     await expect(nativeTextarea).toHaveValue('');
     await expect(checkbox).toHaveJSProperty('checked', false);
 
-    expect((await getEventSummary(form, 'reset')).counter).toBe(1);
-    expect(await getFormDataValue(form, 'some-textarea')).toBe('');
-    expect(await getFormDataValue(form, 'some-checkbox')).toBe(null);
+    await expect.poll(async () => (await getEventSummary(form, 'reset')).counter).toBe(1);
+    await expect.poll(async () => getFormDataValue(form, 'some-textarea')).toBe('');
+    await expect.poll(async () => getFormDataValue(form, 'some-checkbox')).toBe(null);
   });
 
   test('should submit form component values when submit button is slotted outside the form', async ({ page }) => {
