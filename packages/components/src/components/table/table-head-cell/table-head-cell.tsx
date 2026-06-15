@@ -38,13 +38,13 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
 export class TableHeadCell {
   @Element() public host!: HTMLElement;
 
-  /** Defines sortability properties. */
+  /** Configures sorting behavior for this column by providing an `id`, `active` state, and current `direction` (`asc` or `desc`). */
   @Prop() public sort?: TableHeadCellSort;
 
-  /** Hides the label but keeps it accessible for screen readers. This property only takes effect when the `sort` prop is not set. */
+  /** Hides the visible column label while keeping it accessible to screen readers. Only applies when `sort` is not set. */
   @Prop() public hideLabel?: boolean = false;
 
-  /** Allows slotted text to wrap onto multiple lines instead of being forced onto a single line. */
+  /** Allows the column header text to wrap onto multiple lines instead of being truncated to a single line. */
   @Prop() public multiline?: boolean = false;
 
   public connectedCallback(): void {

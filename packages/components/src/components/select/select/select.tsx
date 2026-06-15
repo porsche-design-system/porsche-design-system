@@ -96,13 +96,13 @@ const propTypes: PropTypes<typeof Select> = {
 export class Select {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the select control to identify its purpose. */
   @Prop() public label?: string = '';
 
-  /** Supplementary text providing more context or explanation for the select. */
+  /** Sets a supplementary description displayed below the label to give users additional guidance about the select. */
   @Prop() public description?: string = '';
 
-  /** The name of the control. */
+  /** Sets the name of the control submitted with the form data, identifying the selected value on the server. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
@@ -123,40 +123,40 @@ export class Select {
    */
   @Prop({ mutable: true }) public value?: string | number | null;
 
-  /** The validation state. */
+  /** Sets the validation state of the select, which controls its visual appearance and feedback message style (`none`, `success`, `error`). */
   @Prop() public state?: SelectState = 'none';
 
-  /** The message styled depending on validation state. */
+  /** Sets the validation feedback message displayed below the select when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Disables the select. */
+  /** Prevents user interaction with the select and excludes its value from form submissions. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** Requires an option with a non-empty string value to be selected. */
+  /** Marks the select as required so the form cannot be submitted unless a non-empty option is selected. */
   @Prop() public required?: boolean = false;
 
-  /** Changes the direction to which the dropdown list appears. */
+  /** Controls whether the dropdown list opens upward (`up`) or downward (`down`), or determines the direction automatically (`auto`). */
   @Prop() public dropdownDirection?: SelectDropdownDirection = 'auto';
 
-  /** Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used. */
+  /** Shows a text input inside the dropdown that filters the visible options as the user types. Ignored when the `filter` slot is used. */
   @Prop() public filter?: boolean = false;
 
-  /** Displays the select in compact mode. */
+  /** Reduces the control height and padding for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
-  /** The id of a form element the select should be associated with. */
+  /** Associates the select with a form element by its ID when it is not a direct descendant of that form. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Emitted when the select has lost focus. */
+  /** Emitted when the select component loses focus, useful for triggering validation on blur. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
-  /** Emitted when the selection is changed. */
+  /** Emitted when the user selects a different option, carrying the new value in the event detail. */
   @Event({ bubbles: true }) public change: EventEmitter<SelectChangeEventDetail>;
 
-  /** Emitted when the dropdown is toggled. */
+  /** Emitted when the dropdown list opens or closes, carrying the new `isOpen` state in the event detail. */
   @Event({ bubbles: false }) public toggle: EventEmitter<SelectToggleEventDetail>;
 
   @State() private isOpen = false;

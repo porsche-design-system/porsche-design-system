@@ -29,7 +29,7 @@ const propTypes: PropTypes<typeof Popover> = {
 
 /**
  * @slot {"name": "", "description": "Default slot for the popover content." }
- * @slot {"name": "button", "description": "Slot for custom button." }
+ * @slot {"name": "button", "description": "Renders a custom trigger button. When used, the default info button is replaced." }
  */
 @Component({
   tag: 'p-popover',
@@ -38,14 +38,13 @@ const propTypes: PropTypes<typeof Popover> = {
 export class Popover {
   @Element() public host!: HTMLElement;
 
-  /** Preferred direction in which the popover should open when there is enough space in the viewport.
-   * Otherwise, it opens in the direction with the most available space. */
+  /** Sets the preferred direction for the popover to open relative to its trigger button. Falls back to the direction with the most available viewport space. */
   @Prop() public direction?: PopoverDirection = 'bottom';
 
-  /** Descriptive text shown when the popover is open. */
+  /** Sets the text content displayed inside the popover panel when it is open, providing contextual help or information. */
   @Prop() public description?: string;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the popover panel to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
 
   @State() private isOpen = false;

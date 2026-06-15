@@ -57,46 +57,46 @@ const propTypes: PropTypes<typeof ButtonTile> = {
 export class ButtonTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
-  /** Font size of the description. */
+  /** Sets the font size of the description text in the tile content area. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<ButtonTileSize> = 'medium';
 
-  /** Font weight of the description. */
+  /** Sets the font weight of the description text in the tile content area. Supports responsive breakpoint values. */
   @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semi-bold';
 
-  /** Aspect ratio of the button-tile. */
+  /** Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values. */
   @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4/3';
 
-  /** Label of the button. */
+  /** Sets the accessible label text of the action button rendered inside the tile. */
   @Prop() public label: string;
 
-  /** Description text. */
+  /** Sets the description text displayed in the tile's content area. */
   @Prop() public description: string;
 
-  /** Alignment of button and description. */
+  /** Controls the vertical placement of the description and button — `top` or `bottom`. */
   @Prop() public align?: ButtonTileAlign = 'bottom';
 
-  /** Show gradient. */
+  /** Shows a gradient overlay over the media slot to improve text legibility on bright images or videos. */
   @Prop() public gradient?: boolean = false;
 
-  /** Displays the button-tile as compact version with description and button icon only. */
+  /** Renders only the icon button without the full label. Supports responsive breakpoint values. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
-  /** Specifies the type of the button. */
+  /** Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action. */
   @Prop() public type?: ButtonTileType = 'submit';
 
-  /** Disables the button. No events will be triggered while disabled state is active. */
+  /** Disables the tile, preventing button interaction. */
   @Prop() public disabled?: boolean = false;
 
-  /** Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active. */
+  /** Disables the tile and shows a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** The icon shown. By choosing 'none', no icon is displayed. */
+  /** Sets the icon displayed in the tile's action button. Use `none` to show no icon. */
   @Prop() public icon?: ButtonTileIcon = 'none';
 
-  /** A URL path to a custom icon. */
+  /** Sets a path to a custom SVG icon for the action button, used instead of the built-in icon set. */
   @Prop() public iconSource?: string;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the tile's action button to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
 
   @State() private hasFooterSlot: boolean = false;

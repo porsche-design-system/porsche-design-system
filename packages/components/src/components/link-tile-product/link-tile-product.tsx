@@ -49,37 +49,37 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
 export class LinkTileProduct {
   @Element() public host!: HTMLElement;
 
-  /** Product heading. */
+  /** Sets the product name displayed prominently at the top of the tile. */
   @Prop() public heading: string;
 
-  /** Product retail price (with or without discount). */
+  /** Sets the current retail price of the product, displayed with or without a discount. */
   @Prop() public price: string;
 
-  /** Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect. */
+  /** Sets the original recommended retail price shown with a strikethrough to indicate a discount. Requires `price` to be set. */
   @Prop() public priceOriginal?: string;
 
-  /** Additional product description. */
+  /** Sets an optional short description providing additional product details below the price. */
   @Prop() public description?: string;
 
-  /** Shows a like button. */
+  /** Shows a like/bookmark button so users can save the product. */
   @Prop() public likeButton?: boolean = true;
 
-  /** Indicates whether the product is liked. */
+  /** Reflects whether the product is currently liked — controls the filled state of the like button. */
   @Prop() public liked?: boolean = false;
 
-  /** href of the `<a>`. */
+  /** Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element. */
   @Prop() public href?: string;
 
-  /** Aspect ratio of the link-tile-product. */
+  /** Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileProductAspectRatio> = '3/4';
 
-  /** Specifies where to open the linked document. */
+  /** Specifies where to open the linked URL (e.g. `_self`, `_blank`). */
   @Prop() public target?: LinkTileProductTarget = '_self';
 
-  /** Sets the `rel` attribute on the link. */
+  /** Sets the `rel` attribute on the link (e.g. `noopener`). */
   @Prop() public rel?: string;
 
-  /** Emitted when the like button is clicked. */
+  /** Emitted when the user clicks the like button, with the new liked state in the event detail. */
   @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEventDetail>;
 
   public connectedCallback(): void {
