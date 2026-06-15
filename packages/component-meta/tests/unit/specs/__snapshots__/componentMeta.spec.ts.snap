@@ -3787,6 +3787,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-button-pure",
+      "p-spinner",
     ],
     "propsMeta": {
       "autoComplete": {
@@ -3973,6 +3974,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-icon",
+      "p-spinner",
     ],
     "propsMeta": {
       "autoComplete": {
@@ -4177,6 +4179,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-button-pure",
+      "p-spinner",
     ],
     "propsMeta": {
       "autoComplete": {
@@ -4363,6 +4366,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-button-pure",
+      "p-spinner",
     ],
     "propsMeta": {
       "autoComplete": {
@@ -4562,6 +4566,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-button-pure",
+      "p-spinner",
     ],
     "propsMeta": {
       "autoComplete": {
@@ -4755,6 +4760,7 @@ exports[`should match snapshot 1`] = `
     "nestedComponents": [
       "p-icon",
       "p-button-pure",
+      "p-spinner",
     ],
     "propsMeta": {
       "aria": {
@@ -4967,6 +4973,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-icon",
+      "p-spinner",
     ],
     "propsMeta": {
       "autoComplete": {
@@ -5163,6 +5170,9 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": true,
     "isInternal": false,
+    "nestedComponents": [
+      "p-spinner",
+    ],
     "propsMeta": {
       "autoComplete": {
         "allowedValues": "string",
@@ -5361,6 +5371,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-button-pure",
+      "p-spinner",
     ],
     "propsMeta": {
       "autoComplete": {
@@ -5547,6 +5558,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-icon",
+      "p-spinner",
     ],
     "propsMeta": {
       "autoComplete": {
@@ -5745,6 +5757,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-button-pure",
+      "p-spinner",
     ],
     "propsMeta": {
       "autoComplete": {
