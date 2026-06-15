@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@porsche-design-system/components-vue": "4.2.0-rc.5",
-    "vue-imask": "^7.6.1",
     "vue-router": "^5.0.4"
   },
   "devDependencies": {
