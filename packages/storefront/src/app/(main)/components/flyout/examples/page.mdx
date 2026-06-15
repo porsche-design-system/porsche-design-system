@@ -1,0 +1,34 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { flyoutMeta } from '@/app/(main)/components/flyout/flyout.meta';
+
+export const metadata = {
+  title: 'Flyout - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Flyout component.',
+};
+
+# Flyout <ComponentStatus tagName="p-flyout"></ComponentStatus>
+
+<TableOfContents
+  headings={[flyoutMeta.examples.stickyTop.name, flyoutMeta.examples.form.name, flyoutMeta.examples.customStyling.name]}
+/>
+
+## {flyoutMeta.examples.stickyTop.name}
+
+<flyoutMeta.examples.stickyTop.description />
+
+<ComponentStory story={flyoutMeta.examples.stickyTop.story} />
+
+## {flyoutMeta.examples.form.name}
+
+<flyoutMeta.examples.form.description />
+
+<ComponentExample codeSample={flyoutMeta.examples.form.example} />
+
+## {flyoutMeta.examples.customStyling.name}
+
+<flyoutMeta.examples.customStyling.description />
+
+<ComponentStory story={flyoutMeta.examples.customStyling.story} />

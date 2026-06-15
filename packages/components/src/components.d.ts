@@ -160,6 +160,11 @@ export namespace Components {
          */
         "headingTag"?: AccordionHeadingTag;
         /**
+          * Indents the slotted content to be vertically aligned with the text of the summary section.
+          * @default false
+         */
+        "indent"?: BreakpointCustomizable<boolean>;
+        /**
           * Controls whether the accordion is open or closed.
          */
         "open"?: boolean;
@@ -803,6 +808,11 @@ export namespace Components {
           * @default 'sticky'
          */
         "footerBehavior"?: FlyoutFooterBehavior;
+        /**
+          * If true the flyout stretches to the full viewport width with squared corners. Useful for smaller viewports where the flyout would otherwise fill the screen but still show rounded corners.
+          * @default false
+         */
+        "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
           * Controls whether the flyout panel is visible.
           * @default false
@@ -4297,6 +4307,11 @@ declare namespace LocalJSX {
          */
         "headingTag"?: AccordionHeadingTag;
         /**
+          * Indents the slotted content to be vertically aligned with the text of the summary section.
+          * @default false
+         */
+        "indent"?: BreakpointCustomizable<boolean>;
+        /**
           * Emitted when the user toggles the accordion open or closed, with the new open state in the event detail.
          */
         "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
@@ -4976,6 +4991,11 @@ declare namespace LocalJSX {
           * @default 'sticky'
          */
         "footerBehavior"?: FlyoutFooterBehavior;
+        /**
+          * If true the flyout stretches to the full viewport width with squared corners. Useful for smaller viewports where the flyout would otherwise fill the screen but still show rounded corners.
+          * @default false
+         */
+        "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
           * Emitted when the user closes the flyout via the close button, backdrop click, or Escape key.
          */
@@ -7555,6 +7575,7 @@ declare namespace LocalJSX {
         "alignMarker": AccordionAlignMarker;
         "background": AccordionBackground;
         "compact": boolean;
+        "indent": string;
         "size": BreakpointCustomizable<AccordionSize>;
         "heading": string;
         "headingTag": AccordionHeadingTag;
@@ -7714,6 +7735,7 @@ declare namespace LocalJSX {
         "background": FlyoutBackground;
         "backdrop": FlyoutBackdrop;
         "footerBehavior": FlyoutFooterBehavior;
+        "fullscreen": string;
         "aria": SelectedAriaAttributes<FlyoutAriaAttribute>;
     }
     interface PHeadingAttributes {

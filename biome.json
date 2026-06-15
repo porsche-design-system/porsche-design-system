@@ -102,6 +102,14 @@
       "tailwindDirectives": true
     }
   },
+  "html": {
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    }
+  },
   "javascript": {
     "formatter": {
       "jsxQuoteStyle": "double",
@@ -119,6 +127,14 @@
     }
   },
   "overrides": [
+    {
+      "includes": [
+        "packages/components/src/**/*.{js,ts,tsx}",
+        "!packages/components/src/**/*.spec.ts",
+        "!packages/components/src/**/*.spec.tsx"
+      ],
+      "plugins": ["./packages/components/biome-plugins/use-ref-instead-of-var.grit"]
+    },
     {
       "includes": ["**/*.css", "**/*.scss"],
       "javascript": {

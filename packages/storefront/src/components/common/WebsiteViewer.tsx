@@ -33,7 +33,7 @@ export const WebsiteViewer = ({ sourceCodePath, viewPath, title }: WebsiteViewer
         </PLinkPure>
       </div>
       <iframe
-        className="my-fluid-md w-full aspect-3/2 rounded-4xl shadow-high border border-[light-dark(transparent,var(--color-contrast-lower))]"
+        className="my-fluid-md w-full aspect-3/2 rounded-3xl shadow-high border border-[light-dark(transparent,var(--color-contrast-lower))]"
         title={title}
         src={viewUrl}
       />

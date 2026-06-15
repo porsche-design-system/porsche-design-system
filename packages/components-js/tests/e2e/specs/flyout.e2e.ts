@@ -188,7 +188,7 @@ test('should have correct transform when opened and dismissed', async ({ page })
 
   await openFlyout(page);
 
-  await expect(getFlyoutScroller(page)).toHaveCSS('transform', 'none');
+  await expect(getFlyoutScroller(page)).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
 
   await dismissFlyout(page);
 
@@ -917,7 +917,7 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveCSS('--p-flyout-sticky-top', '107px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '203px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 

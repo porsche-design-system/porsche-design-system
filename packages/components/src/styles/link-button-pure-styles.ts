@@ -19,12 +19,12 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
   radiusLg,
+  ref,
   spacingStaticXs,
   typescaleSm,
-} from './css-variables';
+} from '@porsche-design-system/stylesheets';
 import { colorMap, sizeMap } from './maps';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -82,10 +82,10 @@ export const getLinkButtonPureStyles = (
       cursor: 'pointer',
       color: colorMap[color],
       textDecoration: underline ? 'underline' : 'none',
-      font: `${fontWeightNormal} ${typescaleSm}/${leadingNormal} ${fontPorscheNext}`,
+      font: `${ref(fontWeightNormal)} ${ref(typescaleSm)}/${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       ...mergeDeep(
         buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
-          gap: hidelabelValue ? 0 : spacingStaticXs,
+          gap: hidelabelValue ? 0 : ref(spacingStaticXs),
         })),
         buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           justifyContent: stretchValue ? 'space-between' : 'flex-start',
@@ -109,21 +109,21 @@ export const getLinkButtonPureStyles = (
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           right: hideLabelValue ? offsetVertical : offsetHorizontal,
           left: hideLabelValue ? offsetVertical : offsetHorizontal,
-          borderRadius: `var(${legacyRadiusSmall}, ${hideLabelValue ? radiusFull : radiusLg})`,
+          borderRadius: hideLabelValue ? ref(radiusFull) : ref(radiusLg),
         })),
         transition: getTransition('background-color'),
         ...(active && {
-          WebkitBackdropFilter: blurFrosted,
-          backdropFilter: blurFrosted,
-          backgroundColor: colorFrosted,
+          WebkitBackdropFilter: ref(blurFrosted),
+          backdropFilter: ref(blurFrosted),
+          backgroundColor: ref(colorFrosted),
         }),
       },
       ...(!isDisabledOrLoading &&
         hoverMediaQuery({
           '&:hover::before': {
-            WebkitBackdropFilter: blurFrosted,
-            backdropFilter: blurFrosted,
-            backgroundColor: colorFrostedStrong,
+            WebkitBackdropFilter: ref(blurFrosted),
+            backdropFilter: ref(blurFrosted),
+            backgroundColor: ref(colorFrostedStrong),
           },
         })),
       ...(!hasSlottedAnchor && {

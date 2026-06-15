@@ -89,6 +89,13 @@ exports[`should match snapshot 1`] = `
         "isDeprecated": true,
         "type": "AccordionHeadingTag",
       },
+      "indent": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Indents the slotted content to be vertically aligned with the text of the summary section.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": null,
@@ -2822,6 +2829,13 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "sticky",
         "description": "Controls footer behavior. \`fixed\` keeps it anchored at the bottom; \`sticky\` pins it only when content overflows.",
         "type": "FlyoutFooterBehavior",
+      },
+      "fullscreen": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true the flyout stretches to the full viewport width with squared corners. Useful for smaller viewports where the flyout would otherwise fill the screen but still show rounded corners.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
       },
       "open": {
         "allowedValues": "boolean",

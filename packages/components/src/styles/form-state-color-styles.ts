@@ -1,4 +1,3 @@
-import type { FormState } from '../utils/form/form-state';
 import {
   colorContrastHigh,
   colorContrastLower,
@@ -10,7 +9,9 @@ import {
   colorSuccess,
   colorSuccessFrostedSoft,
   colorSuccessMedium,
-} from './css-variables';
+  ref,
+} from '@porsche-design-system/stylesheets';
+import type { FormState } from '../utils/form/form-state';
 
 type ThemedFormStateColors = {
   formStateBackgroundColor: string;
@@ -21,32 +22,32 @@ type ThemedFormStateColors = {
 };
 
 const colorBackgroundMap: Record<FormState, string> = {
-  success: colorSuccessFrostedSoft,
-  error: colorErrorFrostedSoft,
-  none: colorFrosted,
+  success: ref(colorSuccessFrostedSoft),
+  error: ref(colorErrorFrostedSoft),
+  none: ref(colorFrosted),
 };
 
 const colorBackgroundHoverMap: Record<FormState, string> = {
-  success: colorSuccessMedium,
-  error: colorErrorMedium,
-  none: colorContrastHigh,
+  success: ref(colorSuccessMedium),
+  error: ref(colorErrorMedium),
+  none: ref(colorContrastHigh),
 };
 
 const colorBorderMap: Record<FormState, string> = {
-  success: colorSuccess,
-  error: colorError,
-  none: colorContrastLower,
+  success: ref(colorSuccess),
+  error: ref(colorError),
+  none: ref(colorContrastLower),
 };
 
 const colorBorderHoverMap: Record<FormState, string> = {
-  success: colorSuccess,
-  error: colorError,
-  none: colorPrimary,
+  success: ref(colorSuccess),
+  error: ref(colorError),
+  none: ref(colorPrimary),
 };
 
 const colorMap: Record<FormState, string> = {
-  success: colorSuccess,
-  error: colorError,
+  success: ref(colorSuccess),
+  error: ref(colorError),
   none: undefined,
 };
 

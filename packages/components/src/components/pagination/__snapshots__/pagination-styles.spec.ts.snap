@@ -28,7 +28,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -39,7 +39,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -131,7 +131,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -142,7 +142,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -234,7 +234,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -245,7 +245,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -337,7 +337,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -348,7 +348,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -446,7 +446,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -457,7 +457,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -555,7 +555,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -566,7 +566,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -664,7 +664,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -675,7 +675,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -773,7 +773,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -784,7 +784,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -882,7 +882,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -893,7 +893,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -991,7 +991,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1002,7 +1002,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1100,7 +1100,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1111,7 +1111,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1209,7 +1209,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1220,7 +1220,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1318,7 +1318,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1329,7 +1329,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1427,7 +1427,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1438,7 +1438,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1533,7 +1533,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1544,7 +1544,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1642,7 +1642,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1653,7 +1653,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1748,7 +1748,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1759,7 +1759,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1857,7 +1857,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1868,7 +1868,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -1969,7 +1969,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -1980,7 +1980,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }
@@ -2081,7 +2081,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
@@ -2092,7 +2092,7 @@ span {
   cursor: pointer;
   background-color: transparent;
   color: var(--p-color-primary);
-  border-radius: var(--_p-legacy-radius-small, var(--p-radius-full));
+  border-radius: var(--p-radius-full);
   border-color: transparent;
   outline: 0;
 }

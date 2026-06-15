@@ -3,14 +3,16 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  createTopLayerController,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
-  setDialogVisibility,
   setScrollLock,
+  showDialog,
+  type TopLayerController,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
 } from '../../utils';
@@ -74,6 +76,12 @@ export class Sheet {
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
   private hasHeader: boolean;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.dialog,
+    isShown: () => !!this.dialog?.open,
+    show: () => showDialog(this.dialog, this.scroller),
+    hide: () => this.dialog?.close(),
+  });
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -84,11 +92,16 @@ export class Sheet {
   }
 
   public componentDidRender(): void {
-    setDialogVisibility(this.open, this.dialog, this.scroller);
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
   }
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    this.topLayer.cancel();
   }
 
   public render(): JSX.Element {

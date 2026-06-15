@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { sheetMeta } from '@/app/(main)/components/sheet/sheet.meta';
+
+export const metadata = {
+  title: 'Sheet - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Sheet component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Sheet <ComponentStatus tagName="p-sheet"></ComponentStatus>
+
+<sheetMeta.introduction />
+
+<Configurator
+  tagName="p-sheet"
+  story={sheetMeta.configurator.story}
+  slotStories={sheetMeta.configurator.slotStories}
+/>

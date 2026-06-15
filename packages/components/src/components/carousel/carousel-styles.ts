@@ -22,9 +22,9 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusLarge,
-  radius4Xl,
+  radius3Xl,
   radiusFull,
+  ref,
   spacingFluidMd,
   spacingFluidSm,
   spacingStaticMd,
@@ -33,7 +33,7 @@ import {
   typescale2Xl,
   typescaleSm,
   typescaleXl,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import type { CarouselAlignControls, CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
@@ -107,7 +107,7 @@ const backfaceVisibilityJssStyle: JssStyle = {
   WebkitBackfaceVisibility: 'hidden',
 };
 
-const gradientMask = `linear-gradient(90deg,transparent 20%,#000 var(${cssVariableGradientColorWidth},33%) calc(100% - var(${cssVariableGradientColorWidth},33%)),transparent 80%)`;
+const gradientMask = `linear-gradient(90deg,transparent 20%,#000 ${ref(cssVariableGradientColorWidth, '33%')} calc(100% - ${ref(cssVariableGradientColorWidth, '33%')}),transparent 80%)`;
 
 export const getComponentCss = (
   gradient: boolean,
@@ -129,7 +129,7 @@ export const getComponentCss = (
       ':host': {
         display: 'flex',
         ...addImportantToEachRule({
-          gap: spacingFluidMd, // TODO: maybe it's better to style by margin on .splide, then styles would be part of shadow dom
+          gap: ref(spacingFluidMd), // TODO: maybe it's better to style by margin on .splide, then styles would be part of shadow dom
           flexDirection: 'column',
           boxSizing: 'content-box', // ensures padding is added to host instead of subtracted
           ...hostHiddenStyles,
@@ -153,7 +153,7 @@ export const getComponentCss = (
       ...addImportantToEachRule({
         '::slotted': {
           '&(*)': {
-            borderRadius: `var(--p-carousel-border-radius, var(${legacyRadiusLarge}, ${radius4Xl}))`,
+            borderRadius: ref('--p-carousel-border-radius', ref(radius3Xl)),
           },
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
@@ -161,7 +161,7 @@ export const getComponentCss = (
         ...((hasHeading || hasDescription) && {
           [`${selectorHeading},${selectorDescription}`]: {
             gridColumn: '1/-1',
-            color: colorPrimary,
+            color: ref(colorPrimary),
             ...(isHeaderAlignCenter && {
               textAlign: 'center', // relevant in case heading or description becomes multiline
               justifySelf: 'center', // relevant for horizontal alignment of heading and description in case max-width applies
@@ -171,37 +171,37 @@ export const getComponentCss = (
         ...(hasHeading && {
           [selectorHeading]: {
             maxWidth: '56.25rem',
-            margin: `0 0 ${hasDescription ? 0 : spacingFluidMd}`,
-            font: `${fontWeightNormal} ${headingSize === 'xx-large' ? typescale2Xl : typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
+            margin: `0 0 ${hasDescription ? 0 : ref(spacingFluidMd)}`,
+            font: `${ref(fontWeightNormal)} ${headingSize === 'xx-large' ? ref(typescale2Xl) : ref(typescaleXl)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
           },
           '::slotted([slot=heading])': {
             margin: 0, // reset ua-style
-            font: `${fontWeightNormal} ${headingSize === 'xx-large' ? typescale2Xl : typescaleXl} / ${leadingNormal} ${fontPorscheNext}`,
+            font: `${ref(fontWeightNormal)} ${headingSize === 'xx-large' ? ref(typescale2Xl) : ref(typescaleXl)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
           },
         }),
         // p,::slotted([slot=description])
         ...(hasDescription && {
           [selectorDescription]: {
             maxWidth: '34.375rem',
-            margin: `${spacingFluidSm} 0 ${spacingFluidMd}`,
-            font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+            margin: `${ref(spacingFluidSm)} 0 ${ref(spacingFluidMd)}`,
+            font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
           },
         }),
       }),
     },
     header: {
       display: 'grid',
-      paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
-      paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
+      paddingInlineStart: ref(cssVarPaddingInlineStart, ref(cssVarPaddingInline, spacingMap[width].base)),
+      paddingInlineEnd: ref(cssVarPaddingInlineEnd, ref(cssVarPaddingInline, spacingMap[width].base)),
       [mediaQueryS]: {
         gridTemplateColumns: 'minmax(0px,1fr) auto',
-        paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
-        paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
-        ...(hasNavigation && { columnGap: spacingStaticMd }),
+        paddingInlineStart: ref(cssVarPaddingInlineStart, ref(cssVarPaddingInline, spacingMap[width].s)),
+        paddingInlineEnd: ref(cssVarPaddingInlineEnd, ref(cssVarPaddingInline, spacingMap[width].s)),
+        ...(hasNavigation && { columnGap: ref(spacingStaticMd) }),
       },
       [mediaQueryXXL]: {
-        paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
-        paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
+        paddingInlineStart: ref(cssVarPaddingInlineStart, ref(cssVarPaddingInline, spacingMap[width].xxl)),
+        paddingInlineEnd: ref(cssVarPaddingInlineEnd, ref(cssVarPaddingInline, spacingMap[width].xxl)),
       },
     },
     nav: {
@@ -210,13 +210,13 @@ export const getComponentCss = (
         gridRowStart: '3',
         gridColumnEnd: '-1',
         display: 'flex',
-        gap: spacingStaticXs,
+        gap: ref(spacingStaticXs),
         alignSelf: 'flex-start', // relevant in case slot="header" becomes higher than nav group
       },
-      colorScheme: `var(${cssVariablePrevNextColorScheme})`,
+      colorScheme: ref(cssVariablePrevNextColorScheme),
     },
     btn: {
-      padding: spacingStaticSm,
+      padding: ref(spacingStaticSm),
     },
     'skip-link': {
       // :focus must be used in this case, because :focus-visible is just matched on the focusable element itself, not on the host element.
@@ -238,15 +238,15 @@ export const getComponentCss = (
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
           paddingBlock: '0px',
-          paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
-          paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].base}))`,
+          paddingInlineStart: ref(cssVarPaddingInlineStart, ref(cssVarPaddingInline, spacingMap[width].base)),
+          paddingInlineEnd: ref(cssVarPaddingInlineEnd, ref(cssVarPaddingInline, spacingMap[width].base)),
           [mediaQueryS]: {
-            paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
-            paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].s}))`,
+            paddingInlineStart: ref(cssVarPaddingInlineStart, ref(cssVarPaddingInline, spacingMap[width].s)),
+            paddingInlineEnd: ref(cssVarPaddingInlineEnd, ref(cssVarPaddingInline, spacingMap[width].s)),
           },
           [mediaQueryXXL]: {
-            paddingInlineStart: `var(${cssVarPaddingInlineStart},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
-            paddingInlineEnd: `var(${cssVarPaddingInlineEnd},var(${cssVarPaddingInline},${spacingMap[width].xxl}))`,
+            paddingInlineStart: ref(cssVarPaddingInlineStart, ref(cssVarPaddingInline, spacingMap[width].xxl)),
+            paddingInlineEnd: ref(cssVarPaddingInlineEnd, ref(cssVarPaddingInline, spacingMap[width].xxl)),
           },
         }),
         '&--draggable': {
@@ -264,7 +264,7 @@ export const getComponentCss = (
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
-        borderRadius: `var(--p-carousel-border-radius, var(${legacyRadiusLarge}, ${radius4Xl}))`,
+        borderRadius: ref('--p-carousel-border-radius', ref(radius3Xl)),
         '&:focus-visible': getFocusBaseStyles(),
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
@@ -314,8 +314,8 @@ export const getComponentCss = (
           },
           position: 'relative',
         },
-        borderRadius: radiusFull,
-        background: colorContrastMedium,
+        borderRadius: ref(radiusFull),
+        background: ref(colorContrastMedium),
         ...(isInfinitePagination
           ? {
               width: '0px',
@@ -355,7 +355,7 @@ export const getComponentCss = (
         },
       }),
       [bulletActiveClass]: {
-        background: colorPrimary,
+        background: ref(colorPrimary),
         height: paginationBulletSize,
         width: addImportantToRule(paginationActiveBulletSize),
         ...(isInfinitePagination && {

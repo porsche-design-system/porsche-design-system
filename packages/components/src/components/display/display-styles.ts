@@ -1,21 +1,22 @@
-import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
+  ref,
   typescale3Xl,
   typescale4Xl,
   typescale5Xl,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, hostHiddenStyles } from '../../styles';
 import { colorMap } from '../../styles/maps';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { DISPLAY_TAGS, type DisplayAlign, type DisplayColor, type DisplaySize } from './display-utils';
 
 const sizeMap: { [key in DisplaySize]: string } = {
-  small: typescale3Xl,
-  medium: typescale4Xl,
-  large: typescale5Xl,
+  small: ref(typescale3Xl),
+  medium: ref(typescale4Xl),
+  large: ref(typescale5Xl),
   inherit: 'inherit',
 };
 
@@ -40,7 +41,7 @@ export const getComponentCss = (
     root: {
       all: 'unset',
       display: 'block',
-      font: `${fontWeightNormal} ${typescale5Xl}/${leadingNormal} ${fontPorscheNext}`,
+      font: `${ref(fontWeightNormal)} ${ref(typescale5Xl)}/${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
       ...buildResponsiveStyles(size, (v: DisplaySize) => ({
         fontSize: sizeMap[v],
       })),

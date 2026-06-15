@@ -1,0 +1,57 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { multiSelectMeta } from '@/app/(main)/components/multi-select/multi-select.meta';
+
+export const metadata = {
+  title: 'Multi Select - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Multi Select component.',
+};
+
+# Multi Select <ComponentStatus tagName="p-multi-select"></ComponentStatus>
+
+<TableOfContents
+  headings={[
+    multiSelectMeta.examples.form.name,
+    multiSelectMeta.examples.slots.name,
+    multiSelectMeta.examples.setValue.name,
+    multiSelectMeta.examples.optgroups.name,
+    multiSelectMeta.examples.asyncFilter.name,
+    multiSelectMeta.examples.selectedSlot.name,
+  ]}
+/>
+
+## {multiSelectMeta.examples.form.name}
+
+<multiSelectMeta.examples.form.description />
+
+<ComponentExample codeSample={multiSelectMeta.examples.form.example} />
+
+## {multiSelectMeta.examples.slots.name}
+
+<multiSelectMeta.examples.slots.description />
+
+<ComponentStory story={multiSelectMeta.examples.slots.story} />
+
+## {multiSelectMeta.examples.setValue.name}
+
+<multiSelectMeta.examples.setValue.description />
+
+<ComponentExample codeSample={multiSelectMeta.examples.setValue.example} />
+
+## {multiSelectMeta.examples.optgroups.name}
+
+<ComponentStory story={multiSelectMeta.examples.optgroups.story} />
+
+## {multiSelectMeta.examples.asyncFilter.name}
+
+<multiSelectMeta.examples.asyncFilter.description />
+
+<ComponentExample codeSample={multiSelectMeta.examples.asyncFilter.example} />
+
+## {multiSelectMeta.examples.selectedSlot.name}
+
+<multiSelectMeta.examples.selectedSlot.description />
+
+<ComponentExample codeSample={multiSelectMeta.examples.selectedSlot.example} />

@@ -1,0 +1,23 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { ComponentApi } from '@/components/components/ComponentApi';
+import { componentMeta } from '@porsche-design-system/component-meta';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { selectMeta } from '@/app/(main)/components/select/select.meta';
+
+export const metadata = {
+  title: 'Select - Porsche Design System',
+  description:
+    'Detailed API reference for the Select component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Select <ComponentStatus tagName="p-select"></ComponentStatus>
+
+<TableOfContents headings={['Select', 'Select Option']} />
+
+## Select
+
+<ComponentApi api={selectMeta.api} showTableOfContents={false} />
+
+## Select Option
+
+<ComponentApi api={componentMeta['p-select-option']} showTableOfContents={false} />
