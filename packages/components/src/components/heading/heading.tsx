@@ -38,25 +38,25 @@ const propTypes: PropTypes<typeof Heading> = {
 export class Heading {
   @Element() public host!: HTMLElement;
 
-  /** Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property (e.g. '2xl' maps to 'h2', 'md' to 'h5', 'sm' to 'h6'). */
+  /** Sets the HTML heading tag (h1–h6) for correct document outline placement. When omitted, the tag is inferred from `size`. */
   @Prop() public tag?: HeadingTag;
 
-  /** Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size. */
+  /** Sets the visual size of the heading. Use `inherit` to derive size from the parent. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<HeadingSize> = '2xl';
 
-  /** The font weight of the heading. Use 'normal' for regular weight, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability. */
+  /** Sets the font weight — `normal`, `semibold`, or `bold`. */
   @Prop() public weight?: HeadingWeight = 'normal';
 
-  /** Text alignment of the heading. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment. */
+  /** Sets the horizontal text alignment (`start`, `center`, `end`, or `inherit`). */
   @Prop() public align?: HeadingAlign = 'start';
 
-  /** Text color of the heading. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, or 'inherit' to adopt the parent's color. */
+  /** Sets the text color using PDS color tokens. */
   @Prop() public color?: HeadingColor = 'primary';
 
-  /** Controls the hyphenation behavior of the heading. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting. */
+  /** Controls hyphenation behavior — `auto` lets the browser decide, `manual` only breaks at `&shy;`, `none` disables it entirely. */
   @Prop() public hyphens?: HeadingHyphens = 'none';
 
-  /** Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content. */
+  /** Truncates the text with an ellipsis when it overflows the container on a single line. Cannot be combined with multi-line content. */
   @Prop() public ellipsis?: boolean = false;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

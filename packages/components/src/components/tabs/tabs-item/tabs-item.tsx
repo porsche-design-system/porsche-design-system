@@ -23,7 +23,7 @@ const propTypes: PropTypes<typeof TabsItem> = {
 export class TabsItem {
   @Element() public host!: HTMLElement;
 
-  /** Defines the label used in tabs. */
+  /** Sets the label text displayed in the tab navigation button that the user clicks to activate this tab's content. */
   @Prop() public label: string;
 
   @Watch('label')

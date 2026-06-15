@@ -27,16 +27,16 @@ const propTypes: PropTypes<typeof Tag> = {
 export class Tag {
   @Element() public host!: HTMLElement;
 
-  /** Background color variations. */
+  /** Sets the visual style of the tag, which controls its background and text colors (e.g. `primary`, `secondary`, `notification-info`). */
   @Prop() public variant?: TagVariant = 'secondary';
 
-  /** The icon shown. */
+  /** Sets the icon displayed inside the tag alongside the label. Use `none` to render the tag without an icon. */
   @Prop() public icon?: TagIcon = 'none';
 
-  /** A URL path to a custom icon. */
+  /** Sets a URL to a custom SVG icon, overriding the built-in icon set when a brand-specific icon is needed. */
   @Prop() public iconSource?: string;
 
-  /** Displays the tag in compact mode. */
+  /** Reduces the tag's padding and height for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
   public render(): JSX.Element {

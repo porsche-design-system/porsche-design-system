@@ -52,46 +52,46 @@ const propTypes: PropTypes<typeof LinkPure> = {
 export class LinkPure {
   @Element() public host!: HTMLElement;
 
-  /** Aligns the label. */
+  /** Sets the label position relative to the icon — `start` places it before, `end` places it after. Supports responsive breakpoint values. */
   @Prop() public alignLabel?: BreakpointCustomizable<LinkPureAlignLabel> = 'end';
 
-  /** Stretches the area between icon and label to max available space. */
+  /** Expands the space between icon and label to fill the full container width. Supports responsive breakpoint values. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
-  /** Size of the link. */
+  /** Sets the font size of the link label. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<LinkPureSize> = 'sm';
 
-  /** The color. */
+  /** Sets the foreground color of the link's icon and label text. */
   @Prop() public color?: LinkPureColor = 'primary';
 
-  /** The icon shown. By choosing 'none', no icon is displayed */
+  /** Sets the icon displayed next to the label. */
   @Prop() public icon?: LinkPureIcon = 'arrow-right';
 
-  /** A URL path to a custom icon. */
+  /** Sets a path to a custom SVG icon, used instead of the built-in icon set. */
   @Prop() public iconSource?: string;
 
-  /** Shows an underline under the label. */
+  /** Adds a text underline to the label to reinforce its link-like appearance. */
   @Prop() public underline?: boolean = false;
 
-  /** When `href` is provided, the component renders as an `<a>` element. */
+  /** When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element. */
   @Prop() public href?: string;
 
-  /** Displays the link in its active state. */
+  /** Visually marks the link as the currently active navigation item, e.g. the current page. */
   @Prop() public active?: boolean = false;
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Specifies where to open the linked document. */
+  /** Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set. */
   @Prop() public target?: LinkPureTarget = '_self';
 
-  /** Sets the native `download` attribute when the target URL points to a downloadable file. */
+  /** Sets the native `download` attribute to trigger a file download. Only applies when `href` is set. */
   @Prop() public download?: string;
 
-  /** Sets the `rel` attribute on the link. */
+  /** Sets the `rel` attribute on the link (e.g. `noopener`). Only applies when `href` is set. */
   @Prop() public rel?: string;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the link element to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<LinkPureAriaAttribute>;
 
   public componentWillLoad(): void {

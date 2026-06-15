@@ -33,22 +33,22 @@ const propTypes: PropTypes<typeof ModelSignature> = {
 export class ModelSignature {
   @Element() public host!: HTMLElement;
 
-  /** Adapts the model of the component. */
+  /** Selects the Porsche model whose typographic signature SVG is displayed. */
   @Prop() public model?: ModelSignatureModel = '911';
 
-  /** When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone. */
+  /** When enabled, adds invisible padding so all model signatures visually align to a consistent baseline. */
   @Prop() public safeZone?: boolean = true;
 
-  /** Sets the browser's fetch priority hint for the model signature asset. */
+  /** Sets the browser's fetch priority hint for the signature asset (`auto`, `high`, `low`). */
   @Prop() public fetchPriority?: ModelSignatureFetchPriority = 'auto';
 
-  /** Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably). */
+  /** Defers loading the signature until it enters the viewport to improve initial page performance. */
   @Prop() public lazy?: boolean = false;
 
-  /** Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both. */
+  /** Sets the display size of the signature using predefined PDS sizes. Use `inherit` with a CSS `width` or `height` on the host for custom sizing. */
   @Prop() public size?: ModelSignatureSize = 'small';
 
-  /** Adapts the color of the component. */
+  /** Sets the fill color of the signature using PDS color tokens. */
   @Prop() public color?: ModelSignatureColor = 'primary';
 
   public render(): JSX.Element {

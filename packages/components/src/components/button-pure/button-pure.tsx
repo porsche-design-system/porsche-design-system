@@ -58,52 +58,52 @@ const propTypes: PropTypes<typeof ButtonPure> = {
 export class ButtonPure {
   @Element() public host!: HTMLElement;
 
-  /** Specifies the type of the button. */
+  /** Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action. */
   @Prop() public type?: ButtonPureType = 'submit';
 
-  /** The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form. */
+  /** Sets the name submitted with the form data when this button triggers form submission. */
   @Prop({ reflect: true }) public name?: string;
 
-  /** Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button. */
+  /** Sets the value submitted with the form data when this button triggers form submission, paired with `name`. */
   @Prop() public value?: string;
 
-  /** Disables the button. No events will be triggered while disabled state is active. */
+  /** Disables the button, preventing all interaction and blocking events. */
   @Prop() public disabled?: boolean = false;
 
-  /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
+  /** Disables the button and replaces its icon with a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Size of the button. */
+  /** Sets the font size of the button label. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<ButtonPureSize> = 'sm';
 
-  /** The color. */
+  /** Sets the foreground color of the button's icon and label text. */
   @Prop() public color?: ButtonPureColor = 'primary';
 
-  /** The icon shown. */
+  /** Sets the icon displayed next to the label. */
   @Prop() public icon?: ButtonPureIcon = 'arrow-right';
 
-  /** A URL path to a custom icon. */
+  /** Sets a path to a custom SVG icon, used instead of the built-in icon set. */
   @Prop() public iconSource?: string;
 
-  /** Shows an underline under the label. */
+  /** Adds a text underline to the label to reinforce the button's link-like appearance. */
   @Prop() public underline?: boolean = false;
 
-  /** Displays the button in its active state. */
+  /** Visually marks the button as the currently active or selected item, useful for navigation and toggle patterns. */
   @Prop() public active?: boolean = false;
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Aligns the label. */
+  /** Sets the label position relative to the icon — `start` places it before, `end` places it after. Supports responsive breakpoint values. */
   @Prop() public alignLabel?: BreakpointCustomizable<ButtonPureAlignLabel> = 'end';
 
-  /** Stretches the area between icon and label to max available space. */
+  /** Expands the space between icon and label to fill the full container width. Supports responsive breakpoint values. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the button to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
-  /** The id of a form element the button should be associated with. */
+  /** Associates the button with a form element by its ID, so it can submit or reset that form even when placed outside of it. */
   @Prop({ reflect: true }) public form?: string;
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "form" as an attribute ensures it is properly handled in the form submission process.
 

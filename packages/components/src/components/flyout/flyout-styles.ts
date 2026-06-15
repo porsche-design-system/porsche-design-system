@@ -31,6 +31,10 @@ import type { FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutPosi
  * @css-variable {"name": "--p-flyout-width", "description": "Width of the flyout.", "defaultValue": "auto"}
  */
 const cssVariableWidth = '--p-flyout-width';
+
+/**
+ * @css-variable {"name": "--p-flyout-sticky-top", "description": "@experimental Exposes the header's height as a read-only CSS variable, set automatically by the component. Slotted sticky content can use this value to offset their top position correctly."}
+ */
 /**
  * @css-variable {"name": "--ref-p-flyout-pt", "description": "Exposes the internally used padding-top of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Flyout."}
  */

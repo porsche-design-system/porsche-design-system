@@ -41,13 +41,13 @@ const propTypes: PropTypes<typeof Scroller> = {
 export class Scroller {
   @Element() public host!: HTMLElement;
 
-  /** Specifies if scrollbar should be shown. */
+  /** Shows the browser's native scrollbar inside the scroller, in addition to the scroll indicator arrows. */
   @Prop() public scrollbar?: boolean = false;
 
-  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
+  /** Reduces the scroller's padding and the gap between slotted items for use in dense layouts. */
   @Prop() public compact?: boolean;
 
-  /** Add ARIA role. */
+  /** Sets the ARIA `role` attribute on the scroller's scroll container, useful for list-based navigation patterns. */
   @Prop() public aria?: SelectedAriaAttributes<ScrollerAriaAttribute>;
 
   /**

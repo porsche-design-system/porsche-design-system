@@ -39,22 +39,22 @@ const propTypes: PropTypes<typeof SegmentedControlItem> = {
 export class SegmentedControlItem {
   @Element() public host!: HTMLElement & SegmentedControlItemInternalHTMLProps;
 
-  /** The value of this item which is emitted by the parent element if it becomes selected. This property is **required**. */
+  /** Sets the value emitted by the parent `p-segmented-control` when this item is selected. This property is **required**. */
   @Prop() public value: string | number;
 
-  /** Disables the button. No events will be triggered while disabled state is active. */
+  /** Prevents this item from being selected and visually dims it; the parent's value will not change to this item's value. */
   @Prop() public disabled?: boolean = false;
 
-  /** Text content for a user-facing label. */
+  /** Sets a visible text label rendered inside the item button, used when no slotted content is provided. */
   @Prop() public label?: string;
 
-  /** The icon shown. */
+  /** Sets an icon rendered inside the item button using an icon name from the PDS icon library. */
   @Prop() public icon?: SegmentedControlItemIcon;
 
-  /** A URL path to a custom icon. */
+  /** Sets a URL to a custom SVG icon for the item button, overriding the built-in icon set. */
   @Prop() public iconSource?: string;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the item's button element to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
 
   @Watch('label')

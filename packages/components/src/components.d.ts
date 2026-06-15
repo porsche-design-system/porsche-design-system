@@ -137,17 +137,17 @@ export namespace Components {
      */
     interface PAccordion {
         /**
-          * Aligns the marker within the summary section.
+          * Positions the expand/collapse marker icon at the start or end of the summary section.
           * @default 'end'
          */
         "alignMarker"?: AccordionAlignMarker;
         /**
-          * Defines the background color. Use `frosted` only on images, videos or gradients.
+          * Sets the background color of the accordion panel. Use `frosted` only when placed on images, videos, or gradients.
           * @default 'none'
          */
         "background"?: AccordionBackground;
         /**
-          * Displays the accordion in compact mode.
+          * Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces.
          */
         "compact"?: boolean;
         /**
@@ -195,239 +195,239 @@ export namespace Components {
      */
     interface PBanner {
         /**
-          * Sets the description text of the banner.
+          * Sets the supporting description text shown below the heading.
           * @default ''
          */
         "description"?: string;
         /**
-          * Shows a dismiss button allowing the banner to be closed.
+          * Shows a dismiss button so the user can manually close the banner.
           * @default true
          */
         "dismissButton"?: boolean;
         /**
-          * Sets the heading text of the banner.
+          * Sets the heading text displayed at the top of the banner.
           * @default ''
          */
         "heading"?: string;
         /**
-          * Sets the heading tag for proper semantic structure within the page.
+          * Sets the HTML heading tag (e.g. h2, h3) to maintain correct document structure for the heading.
           * @default 'h5'
          */
         "headingTag"?: BannerHeadingTag;
         /**
-          * Controls whether the banner is open or closed.
+          * Controls whether the banner is visible. Set to `true` to show it and `false` to hide it.
           * @default false
          */
         "open": boolean;
         /**
-          * Sets the position of the banner.
+          * Sets the position of the banner on screen — `top` or `bottom`. Supports responsive breakpoint values.
           * @default { base: 'bottom', s: 'top' }
          */
         "position"?: BreakpointCustomizable<BannerPosition>;
         /**
-          * Defines the visual state of the banner.
+          * Sets the visual state of the banner — controls the icon and color scheme (`info`, `warning`, `error`, `success`).
           * @default 'info'
          */
         "state"?: BannerState;
     }
     interface PButton {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the button to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
-          * Displays the button in compact mode.
+          * Reduces the button's height and padding for denser layouts. Supports responsive breakpoint values.
           * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Disables the button. No events will be triggered while disabled state is active.
+          * Disables the button, preventing all interaction and blocking events.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the button should be associated with.
+          * Associates the button with a form element by its ID, so it can submit or reset that form even when placed outside of it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown. By choosing 'none', no icon is displayed.
+          * Sets the icon displayed inside the button. Use `none` to show no icon.
           * @default 'none'
          */
         "icon"?: ButtonIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the button and replaces its content with a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
+          * Sets the name submitted with the form data when this button triggers form submission.
          */
         "name"?: string;
         /**
-          * Specifies the type of the button.
+          * Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action.
           * @default 'submit'
          */
         "type"?: ButtonType;
         /**
-          * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
+          * Sets the value submitted with the form data when this button triggers form submission, paired with `name`.
          */
         "value"?: string;
         /**
-          * The style variant of the button.
+          * Sets the visual style variant of the button (e.g. `primary`, `secondary`, `tertiary`).
           * @default 'primary'
          */
         "variant"?: ButtonVariant;
     }
     interface PButtonPure {
         /**
-          * Displays the button in its active state.
+          * Visually marks the button as the currently active or selected item, useful for navigation and toggle patterns.
           * @default false
          */
         "active"?: boolean;
         /**
-          * Aligns the label.
+          * Sets the label position relative to the icon — `start` places it before, `end` places it after. Supports responsive breakpoint values.
           * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the button to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
-          * The color.
+          * Sets the foreground color of the button's icon and label text.
           * @default 'primary'
          */
         "color"?: ButtonPureColor;
         /**
-          * Disables the button. No events will be triggered while disabled state is active.
+          * Disables the button, preventing all interaction and blocking events.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the button should be associated with.
+          * Associates the button with a form element by its ID, so it can submit or reset that form even when placed outside of it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * Sets the icon displayed next to the label.
           * @default 'arrow-right'
          */
         "icon"?: ButtonPureIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the button and replaces its icon with a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
+          * Sets the name submitted with the form data when this button triggers form submission.
          */
         "name"?: string;
         /**
-          * Size of the button.
+          * Sets the font size of the button label. Supports responsive breakpoint values.
           * @default 'sm'
          */
         "size"?: BreakpointCustomizable<ButtonPureSize>;
         /**
-          * Stretches the area between icon and label to max available space.
+          * Expands the space between icon and label to fill the full container width. Supports responsive breakpoint values.
           * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * Specifies the type of the button.
+          * Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action.
           * @default 'submit'
          */
         "type"?: ButtonPureType;
         /**
-          * Shows an underline under the label.
+          * Adds a text underline to the label to reinforce the button's link-like appearance.
           * @default false
          */
         "underline"?: boolean;
         /**
-          * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
+          * Sets the value submitted with the form data when this button triggers form submission, paired with `name`.
          */
         "value"?: string;
     }
     interface PButtonTile {
         /**
-          * Alignment of button and description.
+          * Controls the vertical placement of the description and button — `top` or `bottom`.
           * @default 'bottom'
          */
         "align"?: ButtonTileAlign;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the tile's action button to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
-          * Aspect ratio of the button-tile.
+          * Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values.
           * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
-          * Displays the button-tile as compact version with description and button icon only.
+          * Renders only the icon button without the full label. Supports responsive breakpoint values.
           * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Description text.
+          * Sets the description text displayed in the tile's content area.
          */
         "description": string;
         /**
-          * Disables the button. No events will be triggered while disabled state is active.
+          * Disables the tile, preventing button interaction.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Show gradient.
+          * Shows a gradient overlay over the media slot to improve text legibility on bright images or videos.
           * @default false
          */
         "gradient"?: boolean;
         /**
-          * The icon shown. By choosing 'none', no icon is displayed.
+          * Sets the icon displayed in the tile's action button. Use `none` to show no icon.
           * @default 'none'
          */
         "icon"?: ButtonTileIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon for the action button, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Label of the button.
+          * Sets the accessible label text of the action button rendered inside the tile.
          */
         "label": string;
         /**
-          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the tile and shows a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Font size of the description.
+          * Sets the font size of the description text in the tile content area. Supports responsive breakpoint values.
           * @default 'medium'
          */
         "size"?: BreakpointCustomizable<ButtonTileSize>;
         /**
-          * Specifies the type of the button.
+          * Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action.
           * @default 'submit'
          */
         "type"?: ButtonTileType;
         /**
-          * Font weight of the description.
+          * Sets the font weight of the description text in the tile content area. Supports responsive breakpoint values.
           * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
@@ -437,17 +437,17 @@ export namespace Components {
      */
     interface PCanvas {
         /**
-          * Defines the background color of the main section and auto adjust it for the sidebar
+          * Sets the background color of the main content area and automatically applies a matching color to the sidebar.
           * @default 'canvas'
          */
         "background"?: CanvasBackground;
         /**
-          * Open the sidebar on the end side
+          * Controls whether the utility sidebar on the end side (right in LTR) is open or collapsed.
           * @default false
          */
         "sidebarEndOpen"?: boolean;
         /**
-          * Open the sidebar on the start side
+          * Controls whether the navigation sidebar on the start side (left in LTR) is open or collapsed.
           * @default false
          */
         "sidebarStartOpen"?: boolean;
@@ -457,158 +457,158 @@ export namespace Components {
      */
     interface PCarousel {
         /**
-          * Defines which slide is active (zero-based numbering).
+          * Sets the zero-based index of the currently visible slide. Update this to navigate programmatically.
           * @default 0
          */
         "activeSlideIndex"?: number;
         /**
-          * Aligns the slotted controls.
+          * Controls the alignment of custom slotted controls within the header area.
           * @default 'auto'
          */
         "alignControls"?: CarouselAlignControls;
         /**
-          * Aligns the heading and description.
+          * Controls the horizontal alignment of the heading and description.
           * @default 'start'
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the carousel region element for improved accessibility.
          */
         "aria"?: SelectedAriaAttributes<CarouselAriaAttribute>;
         /**
-          * Defines the description used in the carousel.
+          * Sets the description text displayed below the heading for additional context.
          */
         "description"?: string;
         /**
-          * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
+          * When enabled, each slide is individually focusable and the carousel navigates one slide at a time instead of one page.
           * @default false
          */
         "focusOnCenterSlide"?: boolean;
         /**
-          * Fades the slides out.
+          * Shows a gradient fade at the start and end edges to visually indicate more slides beyond the viewport.
           * @default false
          */
         "gradient"?: boolean;
         /**
-          * Defines the heading used in the carousel.
+          * Sets the heading text displayed above the carousel. Also used as the accessible label when no `aria` prop is set.
          */
         "heading"?: string;
         /**
-          * Defines the heading size used in the carousel.
+          * Sets the font size of the carousel heading.
           * @default 'x-large'
          */
         "headingSize"?: CarouselHeadingSize;
         /**
-          * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
+          * Overrides the default label strings used for the previous, next, and page indicators — useful for localization.
          */
         "intl"?: CarouselInternationalization;
         /**
-          * If false, the carousel will not show pagination bullets at the bottom.
+          * Shows pagination dot indicators below the carousel. Supports responsive breakpoint values.
           * @default false
          */
         "pagination"?: BreakpointCustomizable<boolean>;
         /**
-          * Whether the slides should rewind from last to first slide and vice versa.
+          * Enables infinite looping — navigating past the last slide wraps back to the first, and vice versa.
           * @default false
          */
         "rewind"?: boolean;
         /**
-          * Defines the skip link target used to skip carousel entries.
+          * Sets the `href` of an in-page skip link that lets keyboard users jump past the carousel slides.
          */
         "skipLinkTarget"?: string;
         /**
-          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
+          * Sets how many slides are visible at once. Use `auto` to control each slide's width via CSS. Supports responsive breakpoint values.
           * @default 1
          */
         "slidesPerPage"?: BreakpointCustomizable<CarouselSlidesPerPage>;
         /**
-          * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+          * Removes whitespace before the first and after the last slide when `focusOnCenterSlide` is enabled.
           * @default false
          */
         "trimSpace"?: boolean;
         /**
-          * Defines the outer spacings between the carousel and the left and right screen sides.
+          * Sets the maximum width and outer spacing of the carousel, aligned to PDS grid widths.
           * @default 'basic'
          */
         "width"?: CarouselWidth;
     }
     interface PCheckbox {
         /**
-          * Reflects the checkbox current checked state and allows setting the initial checked state.
+          * Reflects the checkbox's current checked state and allows setting the initial checked value on load.
           * @default false
          */
         "checked"?: boolean;
         /**
-          * Displays the checkbox in compact mode.
+          * Reduces the checkbox size and spacing for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Marks the checkbox as disabled.
+          * Disables the checkbox, preventing all interaction. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the checkbox should be associated with.
+          * Associates the checkbox with a form element by its ID when not directly nested inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Marks the checkbox as indeterminate.
+          * Puts the checkbox into an indeterminate state, indicating that a group of child items is only partially selected.
           * @default false
          */
         "indeterminate"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed next to the checkbox.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Disables the checkbox and shows a loading indicator.
+          * @experimental Disables the checkbox and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the checkbox when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the checkbox.
+          * Sets the name submitted with the form data to identify this checkbox's value on the server.
           * @default ''
          */
         "name"?: string;
         /**
-          * Marks the checkbox as required.
+          * Marks the checkbox as required — form submission is blocked unless the checkbox is checked.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: CheckboxState;
         /**
-          * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
+          * Sets the value submitted with the form data when the checkbox is checked. Unchecked checkboxes are excluded from form submissions.
           * @default 'on'
          */
         "value"?: string;
     }
     interface PCrest {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the anchor element to improve accessibility when the crest is used as a link.
          */
         "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
         /**
-          * When `href` is provided, the component renders as an `<a>` element.
+          * When set, renders the crest as an anchor element navigating to this URL when clicked.
          */
         "href"?: string;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set.
           * @default '_self'
          */
         "target"?: CrestTarget;
@@ -618,38 +618,38 @@ export namespace Components {
      */
     interface PDisplay {
         /**
-          * Text alignment of the component.
+          * Sets the horizontal text alignment (`start`, `center`, `end`, or `inherit`).
           * @default 'start'
          */
         "align"?: DisplayAlign;
         /**
-          * Basic text color variations.
+          * Sets the text color using PDS color tokens.
           * @default 'primary'
          */
         "color"?: DisplayColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows.
+          * Truncates the text with an ellipsis when it overflows the container on a single line.
           * @default false
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+          * Sets the visual text size. Supports responsive breakpoint values.
           * @default 'large'
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the HTML heading tag (h1–h6) for correct document outline placement. When omitted, the tag is inferred from `size`.
          */
         "tag"?: DisplayTag;
     }
     interface PDivider {
         /**
-          * Defines color.
+          * Sets the color of the divider line using PDS contrast tokens.
           * @default 'contrast-lower'
          */
         "color"?: DividerColor;
         /**
-          * Defines direction.
+          * Sets the orientation of the divider to `horizontal` or `vertical`. Supports responsive breakpoint values.
           * @default 'horizontal'
          */
         "direction"?: BreakpointCustomizable<DividerDirection>;
@@ -661,15 +661,15 @@ export namespace Components {
      */
     interface PDrilldown {
         /**
-          * Defines which `p-drilldown-item` is shown as open.
+          * Sets which `p-drilldown-item` (by `identifier`) is currently expanded to show its sub-navigation level.
          */
         "activeIdentifier"?: string | undefined;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the drilldown dialog element for improved screen reader accessibility.
          */
         "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
         /**
-          * If `true`, the drilldown is shown as open.
+          * Controls whether the drilldown navigation panel is visible.
           * @default false
          */
         "open"?: boolean;
@@ -684,11 +684,11 @@ export namespace Components {
          */
         "cascade"?: boolean;
         /**
-          * Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value.
+          * Sets the unique identifier matched against the drilldown's `activeIdentifier` to determine if this item is shown.
          */
         "identifier": string;
         /**
-          * Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure.
+          * Sets the text used for the back button, sticky header, and cascade button that navigates into this navigation level.
          */
         "label"?: string;
         /**
@@ -707,59 +707,59 @@ export namespace Components {
      */
     interface PDrilldownLink {
         /**
-          * Displays the link in its active state.
+          * Visually marks the link as the currently active navigation item, e.g. the current page.
           * @default false
          */
         "active"?: boolean;
         /**
-          * Add ARIA attributes (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets ARIA attributes on the link for improved accessibility. Only applies when `href` is set.
          */
         "aria"?: SelectedAriaAttributes<DrilldownLinkAriaAttribute>;
         /**
-          * Sets the native `download` attribute when the target URL points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
         /**
-          * When `href` is provided, the component renders as an `<a>` element. Otherwise, provide a slotted anchor element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * Sets the `rel` attribute on the link (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets the `rel` attribute on the link element (e.g. `noopener`). Only applies when `href` is set.
          */
         "rel"?: string;
         /**
-          * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set.
           * @default '_self'
          */
         "target"?: DrilldownLinkTarget;
     }
     interface PFieldset {
         /**
-          * Sets ARIA attributes.
+          * Overrides the ARIA role on the fieldset — use `radiogroup` when grouping radio buttons.
          */
         "aria"?: SelectedAriaRole<'radiogroup'>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible legend text displayed above the grouped form controls.
           * @default ''
          */
         "label"?: string;
         /**
-          * Controls the size of the label text.
+          * Sets the font size of the fieldset label (`small`, `medium`, or `large`).
           * @default 'medium'
          */
         "labelSize"?: FieldsetLabelSize;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the fieldset when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Marks the Fieldset as required.
+          * Marks all controls within the fieldset as required and adds a required indicator to the label.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state of the fieldset, controlling the color and style of the feedback message.
           * @default 'none'
          */
         "state"?: FieldsetState;
@@ -785,26 +785,26 @@ export namespace Components {
      */
     interface PFlyout {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the flyout dialog element for improved screen reader accessibility.
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
-          * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+          * Sets the backdrop style. Use `blur` when background content is irrelevant; use `shading` when users still need visual context.
           * @default 'blur'
          */
         "backdrop"?: FlyoutBackdrop;
         /**
-          * Defines the background color
+          * Sets the background color of the flyout panel (`canvas` or `surface`).
           * @default 'canvas'
          */
         "background"?: FlyoutBackground;
         /**
-          * If true, the flyout will not be closable via backdrop click.
+          * When enabled, clicking the backdrop will not close the flyout.
           * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
-          * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
+          * Controls footer behavior. `fixed` keeps it anchored at the bottom; `sticky` pins it only when content overflows.
           * @default 'sticky'
          */
         "footerBehavior"?: FlyoutFooterBehavior;
@@ -814,1261 +814,1261 @@ export namespace Components {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * If true, the flyout is open.
+          * Controls whether the flyout panel is visible.
           * @default false
          */
         "open": boolean;
         /**
-          * The position of the flyout
+          * Sets the side the flyout slides in from — `start` for left or `end` for right in LTR layouts.
           * @default 'end'
          */
         "position"?: FlyoutPosition;
     }
     interface PHeading {
         /**
-          * Text alignment of the heading. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment.
+          * Sets the horizontal text alignment (`start`, `center`, `end`, or `inherit`).
           * @default 'start'
          */
         "align"?: HeadingAlign;
         /**
-          * Text color of the heading. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, or 'inherit' to adopt the parent's color.
+          * Sets the text color using PDS color tokens.
           * @default 'primary'
          */
         "color"?: HeadingColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content.
+          * Truncates the text with an ellipsis when it overflows the container on a single line. Cannot be combined with multi-line content.
           * @default false
          */
         "ellipsis"?: boolean;
         /**
-          * Controls the hyphenation behavior of the heading. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting.
+          * Controls hyphenation behavior — `auto` lets the browser decide, `manual` only breaks at `&shy;`, `none` disables it entirely.
           * @default 'none'
          */
         "hyphens"?: HeadingHyphens;
         /**
-          * Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size.
+          * Sets the visual size of the heading. Use `inherit` to derive size from the parent. Supports responsive breakpoint values.
           * @default '2xl'
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property (e.g. '2xl' maps to 'h2', 'md' to 'h5', 'sm' to 'h6').
+          * Sets the HTML heading tag (h1–h6) for correct document outline placement. When omitted, the tag is inferred from `size`.
          */
         "tag"?: HeadingTag;
         /**
-          * The font weight of the heading. Use 'normal' for regular weight, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability.
+          * Sets the font weight — `normal`, `semibold`, or `bold`.
           * @default 'normal'
          */
         "weight"?: HeadingWeight;
     }
     interface PIcon {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the icon — use `aria-label` to make the icon meaningful to screen readers when it conveys information.
          */
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
-          * Basic color variations.
+          * Sets the fill color of the icon using PDS color tokens.
           * @default 'primary'
          */
         "color"?: IconColor;
         /**
-          * Specifies which icon to use.
+          * Selects an icon from the built-in PDS icon library by name (e.g. `arrow-right`, `close`).
           * @default 'arrow-right'
          */
         "name"?: IconName;
         /**
-          * Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+          * Sets the icon size using the PDS typographic scale. Use `inherit` to derive size from the parent element. Supports responsive breakpoint values.
           * @default 'sm'
          */
         "size"?: BreakpointCustomizable<IconSize>;
         /**
-          * Specifies a whole icon path which can be used for custom icons.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon library.
          */
         "source"?: string;
     }
     interface PInlineNotification {
         /**
-          * Action icon of the inline-notification.
+          * Sets the icon displayed inside the action button using a PDS icon name.
           * @default 'arrow-right'
          */
         "actionIcon"?: InlineNotificationActionIcon;
         /**
-          * Action label of the inline-notification.
+          * Sets the label text of the optional action button inside the notification.
          */
         "actionLabel"?: string;
         /**
-          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the action button and shows a spinner to indicate an ongoing operation.
           * @default false
          */
         "actionLoading"?: boolean;
         /**
-          * Description of the inline-notification.
+          * Sets the supporting description text shown below the heading.
           * @default ''
          */
         "description"?: string;
         /**
-          * If false, the inline-notification will not have a dismiss button.
+          * Shows a dismiss button so the user can manually close the notification.
           * @default true
          */
         "dismissButton"?: boolean;
         /**
-          * Heading of the inline-notification.
+          * Sets the heading text displayed at the top of the inline notification.
           * @default ''
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the HTML heading tag (e.g. h2, h3) to maintain correct document structure.
           * @default 'h5'
          */
         "headingTag"?: InlineNotificationHeadingTag;
         /**
-          * State of the inline-notification.
+          * Sets the visual state — controls the icon and color scheme (`info`, `warning`, `error`, `success`).
           * @default 'info'
          */
         "state"?: InlineNotificationState;
     }
     interface PInputDate {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='bday' for a birthday).
+          * Provides the browser with a date autofill hint (e.g. `autocomplete='bday'` for a birthday field).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing date selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').
+          * Sets the latest selectable date in YYYY-MM-DD format. Dates after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').
+          * Sets the earliest selectable date in YYYY-MM-DD format. Dates before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the date is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no date is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputDateState;
         /**
-          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * Sets the stepping interval in days. The selected date must align with the `min` date by a multiple of this value.
           * @default 1
          */
         "step"?: number;
         /**
-          * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
+          * Sets the current date value in YYYY-MM-DD format (e.g. `2025-07-02`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputEmail {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='email'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the email icon.
+          * Shows an email icon at the start of the field as a visual indicator.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * Allows the user to enter a list of email addresses separated by commas (and optional whitespace). The browser validates each email address in the list.
+          * Allows entry of multiple email addresses separated by commas. The browser validates each address individually.
           * @default false
          */
         "multiple"?: boolean;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default email validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputEmailState;
         /**
-          * The default email address (or comma-separated list of addresses) for the input.
+          * Sets the current email value. When `multiple` is enabled, accepts a comma-separated list of email addresses.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputMonth {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+          * Provides the browser with a month/year autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing month selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format (e.g., max='2024-12').
+          * Sets the latest selectable month in YYYY-MM format. Months after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').
+          * Sets the earliest selectable month in YYYY-MM format. Months before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no month is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputMonthState;
         /**
-          * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
+          * Sets the stepping interval in months (e.g. `1` for monthly, `12` for annual).
           * @default 1
          */
         "step"?: number;
         /**
-          * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
+          * Sets the current month value in YYYY-MM format (e.g. `2025-07`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputNumber {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='postal-code'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the increment/decrement stepper controls.
+          * Shows increment/decrement spin buttons inside the field to adjust the numeric value by clicking.
           * @default false
          */
         "controls"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The max value of the number input.
+          * Sets the maximum allowed numeric value. Values above this are invalid.
          */
         "max"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The min value of the number input.
+          * Sets the minimum allowed numeric value. Values below this are invalid.
          */
         "min"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputNumberState;
         /**
-          * The granularity that the value must adhere to.
+          * Sets the stepping granularity — the value must be a multiple of this number. Also controls step button increment size.
           * @default 1
          */
         "step"?: number;
         /**
-          * The value of the number input.
+          * Sets the current numeric value of the field.
           * @default ''
          */
         "value"?: string | number | null;
     }
     interface PInputPassword {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').
+          * Provides the browser with a password autofill hint (e.g. `autocomplete='current-password'` or `autocomplete='new-password'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputPasswordState;
         /**
-          * Show or hide password toggle for `input type="password"`.
+          * Shows a toggle button that switches the password between masked and plain text visibility.
           * @default false
          */
         "toggle"?: boolean;
         /**
-          * The password input value.
+          * Sets the current password value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputSearch {
         /**
-          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions.
          */
         "autoComplete"?: string;
         /**
-          * Show clear input value button
+          * Shows a clear button (×) inside the field that resets the value to empty when clicked.
           * @default false
          */
         "clear"?: boolean;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Show search indicator icon
+          * Shows a magnifying glass icon inside the field as a visual affordance for search input.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputSearchState;
         /**
-          * The search input value.
+          * Sets the current search query value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputTel {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').
+          * Provides the browser with a phone number autofill hint (e.g. `autocomplete='tel'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the phone icon.
+          * Shows a phone icon at the start of the field as a visual indicator for telephone input.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default telephone validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
+          * Sets placeholder text shown inside the field when it is empty, such as an example phone number format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTelState;
         /**
-          * The tel input value.
+          * Sets the current telephone number value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputText {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='name'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
+          * Shows a live character counter below the field indicating how many characters have been entered relative to `maxLength`.
           * @default false
          */
         "counter"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited by the user. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicate whether to enable spell-checking.
+          * Controls whether the browser's built-in spell-checking is enabled for this field.
          */
         "spellCheck"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTextState;
         /**
-          * The text input value.
+          * Sets the current text value of the input field.
           * @default ''
          */
         "value"?: string | number | null;
     }
     interface PInputTime {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a time autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing time selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').
+          * Sets the latest selectable time in `hh:mm` or `hh:mm:ss` format. Times after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').
+          * Sets the earliest selectable time in `hh:mm` or `hh:mm:ss` format. Times before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no time is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTimeState;
         /**
-          * Defines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+          * Sets the stepping interval in seconds. Use `60` for minute-level selection, `1` to also expose seconds.
           * @default 60
          */
         "step"?: number;
         /**
-          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
+          * Sets the current time value in `hh:mm` or `hh:mm:ss` format (e.g. `14:00`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputUrl {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').
+          * Provides the browser with a URL autofill hint (e.g. `autocomplete='url'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the URL icon.
+          * Shows a URL/link icon at the start of the field as a visual indicator.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * Specifies a regular expression that the input's value must match to pass constraint validation. This allows for more specific URL validation rules than the browser's default. If provided, it overrides the browser's default URL validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default URL validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+          * Sets placeholder text shown inside the field when it is empty, such as an example URL.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputUrlState;
         /**
-          * The URL input value.
+          * Sets the current URL value. Must be an absolute URL (e.g. `https://porsche.com`) to pass browser validation.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputWeek {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+          * Provides the browser with a week/year autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing week selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').
+          * Sets the latest selectable week in YYYY-Www format. Weeks after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').
+          * Sets the earliest selectable week in YYYY-Www format. Weeks before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no week is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputWeekState;
         /**
-          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 week.
+          * Sets the stepping interval in weeks.
           * @default 1
          */
         "step"?: number;
         /**
-          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
+          * Sets the current ISO week value in YYYY-Www format (e.g. `2025-W27`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PLink {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the link element to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
-          * Displays the link in compact mode.
+          * Reduces the link's padding and height for denser layouts. Supports responsive breakpoint values.
           * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Sets the native `download` attribute when the target URL points to a downloadable file.
+          * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When `href` is provided, the component renders as an `<a>` element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * The icon shown. By choosing 'none', no icon is displayed.
+          * Sets the icon displayed next to the link label. Use `none` to show no icon.
           * @default 'none'
          */
         "icon"?: LinkIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Sets the `rel` attribute on the link.
+          * Sets the `rel` attribute on the link (e.g. `noopener`). Only applies when `href` is set.
          */
         "rel"?: string;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set.
           * @default '_self'
          */
         "target"?: LinkTarget;
         /**
-          * The style variant of the link.
+          * Sets the visual style variant of the link (e.g. `primary`, `secondary`, `tertiary`).
           * @default 'primary'
          */
         "variant"?: LinkVariant;
     }
     interface PLinkPure {
         /**
-          * Displays the link in its active state.
+          * Visually marks the link as the currently active navigation item, e.g. the current page.
           * @default false
          */
         "active"?: boolean;
         /**
-          * Aligns the label.
+          * Sets the label position relative to the icon — `start` places it before, `end` places it after. Supports responsive breakpoint values.
           * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the link element to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<LinkPureAriaAttribute>;
         /**
-          * The color.
+          * Sets the foreground color of the link's icon and label text.
           * @default 'primary'
          */
         "color"?: LinkPureColor;
         /**
-          * Sets the native `download` attribute when the target URL points to a downloadable file.
+          * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When `href` is provided, the component renders as an `<a>` element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * The icon shown. By choosing 'none', no icon is displayed
+          * Sets the icon displayed next to the label.
           * @default 'arrow-right'
          */
         "icon"?: LinkPureIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Sets the `rel` attribute on the link.
+          * Sets the `rel` attribute on the link (e.g. `noopener`). Only applies when `href` is set.
          */
         "rel"?: string;
         /**
-          * Size of the link.
+          * Sets the font size of the link label. Supports responsive breakpoint values.
           * @default 'sm'
          */
         "size"?: BreakpointCustomizable<LinkPureSize>;
         /**
-          * Stretches the area between icon and label to max available space.
+          * Expands the space between icon and label to fill the full container width. Supports responsive breakpoint values.
           * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set.
           * @default '_self'
          */
         "target"?: LinkPureTarget;
         /**
-          * Shows an underline under the label.
+          * Adds a text underline to the label to reinforce its link-like appearance.
           * @default false
          */
         "underline"?: boolean;
     }
     interface PLinkTile {
         /**
-          * Alignment of link and description.
+          * Controls the vertical placement of the description and link — `top` or `bottom`.
           * @default 'bottom'
          */
         "align"?: LinkTileAlign;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the tile's anchor element to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
-          * Aspect ratio of the link-tile.
+          * Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values.
           * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
-          * Displays the link-tile as compact version with description and link icon only.
+          * Renders only the icon link without the full label. Supports responsive breakpoint values.
           * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Description text.
+          * Sets the description text displayed in the tile's content area.
          */
         "description": string;
         /**
-          * Sets the native `download` attribute when the target URL points to a downloadable file.
+          * Sets the native `download` attribute to trigger a file download.
          */
         "download"?: string;
         /**
-          * Show gradient.
+          * Shows a gradient overlay over the media slot to improve text legibility on bright images or videos.
           * @default false
          */
         "gradient"?: boolean;
         /**
-          * href of the `<a>`.
+          * Sets the URL the tile's anchor element navigates to when clicked.
          */
         "href": string;
         /**
-          * Label of the <a />.
+          * Sets the accessible label text of the link rendered inside the tile.
          */
         "label": string;
         /**
-          * Sets the `rel` attribute on the link.
+          * Sets the `rel` attribute on the link (e.g. `noopener`).
          */
         "rel"?: string;
         /**
-          * Font size of the description.
+          * Sets the font size of the description text in the tile content area. Supports responsive breakpoint values.
           * @default 'medium'
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`).
           * @default '_self'
          */
         "target"?: LinkTileTarget;
         /**
-          * Font weight of the description.
+          * Sets the font weight of the description text in the tile content area. Supports responsive breakpoint values.
           * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
@@ -2079,46 +2079,46 @@ export namespace Components {
      */
     interface PLinkTileProduct {
         /**
-          * Aspect ratio of the link-tile-product.
+          * Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values.
           * @default '3/4'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
-          * Additional product description.
+          * Sets an optional short description providing additional product details below the price.
          */
         "description"?: string;
         /**
-          * Product heading.
+          * Sets the product name displayed prominently at the top of the tile.
          */
         "heading": string;
         /**
-          * href of the `<a>`.
+          * Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * Shows a like button.
+          * Shows a like/bookmark button so users can save the product.
           * @default true
          */
         "likeButton"?: boolean;
         /**
-          * Indicates whether the product is liked.
+          * Reflects whether the product is currently liked — controls the filled state of the like button.
           * @default false
          */
         "liked"?: boolean;
         /**
-          * Product retail price (with or without discount).
+          * Sets the current retail price of the product, displayed with or without a discount.
          */
         "price": string;
         /**
-          * Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
+          * Sets the original recommended retail price shown with a strikethrough to indicate a discount. Requires `price` to be set.
          */
         "priceOriginal"?: string;
         /**
-          * Sets the `rel` attribute on the link.
+          * Sets the `rel` attribute on the link (e.g. `noopener`).
          */
         "rel"?: string;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`).
           * @default '_self'
          */
         "target"?: LinkTileProductTarget;
@@ -2128,68 +2128,68 @@ export namespace Components {
      */
     interface PModal {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the dialog element for improved accessibility when no visible heading is present.
          */
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
-          * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+          * Sets the backdrop style. Use `blur` when the modal is opened by user interaction; use `shading` when opened automatically (e.g. Cookie Consent).
           * @default 'blur'
          */
         "backdrop"?: ModalBackdrop;
         /**
-          * Defines the background color
+          * Sets the background color of the modal panel (`canvas` or `surface`).
           * @default 'canvas'
          */
         "background"?: ModalBackground;
         /**
-          * If true, the modal will not be closable via backdrop click.
+          * When enabled, clicking the backdrop will not close the modal.
           * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If false, the modal will not have a dismiss button.
+          * Shows a dismiss button in the modal header so the user can manually close it.
           * @default true
          */
         "dismissButton"?: boolean;
         /**
-          * If true the modal uses max viewport height and width. Should only be used for mobile.
+          * Expands the modal to the full viewport size, intended for mobile use cases. Supports responsive breakpoint values.
           * @default false
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * If true, the modal is open.
+          * Controls whether the modal dialog is visible.
           * @default false
          */
         "open": boolean;
     }
     interface PModelSignature {
         /**
-          * Adapts the color of the component.
+          * Sets the fill color of the signature using PDS color tokens.
           * @default 'primary'
          */
         "color"?: ModelSignatureColor;
         /**
-          * Sets the browser's fetch priority hint for the model signature asset.
+          * Sets the browser's fetch priority hint for the signature asset (`auto`, `high`, `low`).
           * @default 'auto'
          */
         "fetchPriority"?: ModelSignatureFetchPriority;
         /**
-          * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+          * Defers loading the signature until it enters the viewport to improve initial page performance.
           * @default false
          */
         "lazy"?: boolean;
         /**
-          * Adapts the model of the component.
+          * Selects the Porsche model whose typographic signature SVG is displayed.
           * @default '911'
          */
         "model"?: ModelSignatureModel;
         /**
-          * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+          * When enabled, adds invisible padding so all model signatures visually align to a consistent baseline.
           * @default true
          */
         "safeZone"?: boolean;
         /**
-          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * Sets the display size of the signature using predefined PDS sizes. Use `inherit` with a CSS `width` or `height` on the host for custom sizing.
           * @default 'small'
          */
         "size"?: ModelSignatureSize;
@@ -2199,55 +2199,55 @@ export namespace Components {
      */
     interface PMultiSelect {
         /**
-          * Displays the multi-select in compact mode.
+          * Reduces the control height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the multi-select.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the multi-select
+          * Disables the multi-select, preventing all interaction. Selected values are not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Changes the direction to which the dropdown list appears.
+          * Controls whether the dropdown opens upward (`up`) or downward (`down`), or decides automatically (`auto`).
           * @default 'auto'
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
-          * The id of a form element the multi-select should be associated with.
+          * Associates the multi-select with a form element by its ID when not directly nested inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the multi-select control.
           * @default ''
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the control when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the control.
+          * Sets the name submitted with the form data to identify the selected values on the server.
          */
         "name": string;
         /**
-          * Requires an option with a non-empty string value to be selected.
+          * Marks the multi-select as required — form submission is blocked unless at least one option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: MultiSelectState;
@@ -2259,23 +2259,23 @@ export namespace Components {
     }
     interface PMultiSelectOption {
         /**
-          * Disables the option.
+          * Disables the option, preventing it from being selected.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * Sets the value submitted with the form data when this option is selected in the parent multi-select.
          */
         "value": string | number;
     }
     interface POptgroup {
         /**
-          * Disables the optgroup.
+          * Disables all options in the group, preventing any of them from being selected.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The optgroup label.
+          * Sets the visible group heading displayed above the grouped options.
          */
         "label"?: string;
     }
@@ -2284,27 +2284,27 @@ export namespace Components {
      */
     interface PPagination {
         /**
-          * Index of the currently active page.
+          * Sets the one-based index of the currently active page; update this prop to navigate programmatically.
           * @default 1
          */
         "activePage"?: number;
         /**
-          * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+          * Overrides the default ARIA label strings used for the previous, next, and page number buttons to support localisation.
           * @default {     root: 'Pagination',     prev: 'Previous page',     next: 'Next page',     page: 'Page',   }
          */
         "intl"?: PaginationInternationalization;
         /**
-          * The total count of items which should be shown per page.
+          * Sets the number of items displayed per page, used together with `totalItemsCount` to compute the page count.
           * @default 1
          */
         "itemsPerPage": number;
         /**
-          * Show or hide the button to jump to the last page.
+          * Shows or hides the button that jumps directly to the last page of the pagination.
           * @default true
          */
         "showLastPage"?: boolean;
         /**
-          * The total count of items.
+          * Sets the total number of items in the dataset, used to calculate the number of pages.
           * @default 1
          */
         "totalItemsCount": number;
@@ -2314,171 +2314,171 @@ export namespace Components {
      */
     interface PPinCode {
         /**
-          * Displays the pin code in compact mode.
+          * Reduces the pin code field height and spacing for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the pin code.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the pin code.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the Pin Code. No events will be triggered while disabled state is active.
+          * Prevents user interaction with all pin code fields and blocks events while the component is disabled.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the pin-code should be associated with.
+          * Associates the pin code with a form element by its ID when it is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label and description. For better accessibility, it is recommended to show the label.
+          * Hides the visible label and description while keeping them accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the pin code fields to identify their purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * Number of characters of the Pin Code.
+          * Sets the number of individual input fields rendered, determining how many characters the pin code consists of.
           * @default 4
          */
         "length"?: PinCodeLength;
         /**
-          * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the pin code fields and shows a loading spinner to indicate an ongoing background operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the pin code when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Name of the control.
+          * Sets the name of the control submitted with the form data to identify the pin code value on the server.
          */
         "name"?: string;
         /**
-          * Marks the Pin Code as required.
+          * Marks the pin code as required so the form cannot be submitted until all fields are filled.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state of the pin code, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: PinCodeState;
         /**
-          * Pin Code type.
+          * Controls whether the individual input fields mask their content as password dots (`password`) or show digits (`number`).
           * @default 'number'
          */
         "type"?: PinCodeType;
         /**
-          * Sets the initial value of the Pin Code.
+          * Sets the current concatenated value of all pin code fields and allows setting the initial value.
           * @default ''
          */
         "value"?: string;
     }
     interface PPopover {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the popover panel to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
-          * Descriptive text shown when the popover is open.
+          * Sets the text content displayed inside the popover panel when it is open, providing contextual help or information.
          */
         "description"?: string;
         /**
-          * Preferred direction in which the popover should open when there is enough space in the viewport. Otherwise, it opens in the direction with the most available space.
+          * Sets the preferred direction for the popover to open relative to its trigger button. Falls back to the direction with the most available viewport space.
           * @default 'bottom'
          */
         "direction"?: PopoverDirection;
     }
     interface PRadioGroup {
         /**
-          * Displays the radio group in compact mode.
+          * Reduces the spacing between radio options for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the radio group.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the radio group.
           * @default ''
          */
         "description"?: string;
         /**
-          * Defines the direction of the main and cross-axis. The default is `column`, which stacks the options vertically. You always need to provide a base value when using breakpoints.
+          * Sets the layout direction of the radio options. Use `column` to stack them vertically or `row` to arrange them horizontally. Supports responsive breakpoint values.
           * @default 'column'
          */
         "direction"?: BreakpointCustomizable<RadioGroupDirection>;
         /**
-          * Disables the radio group. The value will not be submitted with the form.
+          * Disables all radio options in the group, preventing selection and excluding the value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form).
+          * Associates the radio group with a form element by its ID when the group is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the radio group to identify the group's purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables all radio options and shows a spinner to indicate a background loading operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the radio group when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the group of radio buttons, used when submitting the form data.
+          * Sets the shared name attribute for all radio buttons in the group, grouping them for mutually exclusive selection.
          */
         "name": string;
         /**
-          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+          * Marks the radio group as required so the form cannot be submitted until one option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the radio group component.
+          * Sets the validation state of the radio group, controlling its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: RadioGroupState;
         /**
-          * The default value for the radio-group.
+          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes.
           * @default ''
          */
         "value"?: string;
     }
     interface PRadioGroupOption {
         /**
-          * Disables the radio group option. The value will not be submitted with the form.
+          * Prevents this option from being selected and excludes its value from form submissions while it is disabled.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed next to the radio button that the user reads to identify the option.
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables this option and shows a spinner to indicate that this particular option is in a loading state.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The value for the input.
+          * Sets the value submitted with the form data when this radio option is selected within its parent group.
          */
         "value"?: string;
     }
@@ -2489,11 +2489,11 @@ export namespace Components {
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
-          * Add ARIA role.
+          * Sets the ARIA `role` attribute on the scroller's scroll container, useful for list-based navigation patterns.
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Displays with reduced spacing and smaller padding for a more condensed layout.
+          * Reduces the scroller's padding and the gap between slotted items for use in dense layouts.
          */
         "compact"?: boolean;
         /**
@@ -2501,7 +2501,7 @@ export namespace Components {
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
-          * Specifies if scrollbar should be shown.
+          * Shows the browser's native scrollbar inside the scroller, in addition to the scroll indicator arrows.
           * @default false
          */
         "scrollbar"?: boolean;
@@ -2516,92 +2516,92 @@ export namespace Components {
      */
     interface PSegmentedControl {
         /**
-          * Sets the amount of columns.
+          * Sets the number of equal-width columns for the item layout. Use `auto` to distribute items based on their content width. Supports responsive breakpoint values.
           * @default 'auto'
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
-          * Displays the segmented control in compact mode.
+          * Reduces the item height and spacing for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the segmented-control.
+          * Sets a supplementary description displayed below the label to give users additional context about the segmented control.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the segmented-control.
+          * Prevents user interaction with all items in the segmented control and excludes the value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the segmented-control should be associated with.
+          * Associates the segmented control with a form element by its ID when it is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the segmented control to describe the group of options.
           * @default ''
          */
         "label"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the segmented control when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the segmented-control.
+          * Sets the name of the control submitted with the form data to identify the selected value on the server.
          */
         "name"?: string;
         /**
-          * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+          * Prevents items from wrapping to new rows and renders them in a single horizontally scrollable row instead.
           * @default false
          */
         "noWrap"?: boolean;
         /**
-          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+          * Marks the segmented control as required so the form cannot be submitted until one option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the component.
+          * Sets the validation state of the segmented control, controlling its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: SegmentedControlState;
         /**
-          * Sets the initial value of the segmented-control.
+          * Sets the currently selected item's value and pre-selects the matching option when the component renders.
          */
         "value"?: string | number;
     }
     interface PSegmentedControlItem {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the item's button element to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
-          * Disables the button. No events will be triggered while disabled state is active.
+          * Prevents this item from being selected and visually dims it; the parent's value will not change to this item's value.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The icon shown.
+          * Sets an icon rendered inside the item button using an icon name from the PDS icon library.
          */
         "icon"?: SegmentedControlItemIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a URL to a custom SVG icon for the item button, overriding the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Text content for a user-facing label.
+          * Sets a visible text label rendered inside the item button, used when no slotted content is provided.
          */
         "label"?: string;
         /**
-          * The value of this item which is emitted by the parent element if it becomes selected. This property is **required**.
+          * Sets the value emitted by the parent `p-segmented-control` when this item is selected. This property is **required**.
          */
         "value": string | number;
     }
@@ -2610,60 +2610,60 @@ export namespace Components {
      */
     interface PSelect {
         /**
-          * Displays the select in compact mode.
+          * Reduces the control height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the select.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the select.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the select.
+          * Prevents user interaction with the select and excludes its value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Changes the direction to which the dropdown list appears.
+          * Controls whether the dropdown list opens upward (`up`) or downward (`down`), or determines the direction automatically (`auto`).
           * @default 'auto'
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
+          * Shows a text input inside the dropdown that filters the visible options as the user types. Ignored when the `filter` slot is used.
           * @default false
          */
         "filter"?: boolean;
         /**
-          * The id of a form element the select should be associated with.
+          * Associates the select with a form element by its ID when it is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the select control to identify its purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the select when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the control.
+          * Sets the name of the control submitted with the form data, identifying the selected value on the server.
          */
         "name": string;
         /**
-          * Requires an option with a non-empty string value to be selected.
+          * Marks the select as required so the form cannot be submitted unless a non-empty option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state of the select, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: SelectState;
@@ -2674,12 +2674,12 @@ export namespace Components {
     }
     interface PSelectOption {
         /**
-          * Disables the option.
+          * Prevents the option from being selected and visually dims it to indicate it is unavailable.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The option value. Selected when it strictly matches the p-select value (same type and value).
+          * Sets the value submitted with the form data when this option is selected in the parent select control.
          */
         "value"?: string | number | null;
     }
@@ -2688,49 +2688,49 @@ export namespace Components {
      */
     interface PSheet {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the sheet dialog element for improved accessibility when the default `aria-label` is insufficient.
          */
         "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
         /**
-          * Defines the background color
+          * Sets the background color of the sheet panel (`canvas` or `surface`).
           * @default 'canvas'
          */
         "background"?: SheetBackground;
         /**
-          * If true, the sheet will not be closable via backdrop click.
+          * When enabled, clicking the backdrop will not close the sheet.
           * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If false, the sheet will not have a dismiss button.
+          * Shows a dismiss button in the sheet header so users can manually close it.
           * @default true
          */
         "dismissButton"?: boolean;
         /**
-          * If true, the sheet is open.
+          * Controls whether the sheet panel slides in from the bottom and is visible to the user.
           * @default false
          */
         "open": boolean;
     }
     interface PSpinner {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the spinner's live region element; use `aria-label` to provide a descriptive loading message for screen readers.
          */
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
-          * Basic color variations.
+          * Sets the color of the spinning indicator using PDS semantic color tokens (e.g. `primary`, `contrast-high`, `inherit`).
           * @default 'primary'
          */
         "color"?: SpinnerColor;
         /**
-          * Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+          * Sets the size of the spinner using the PDS typographic scale. Use `inherit` to derive the size from the parent element's font-size. Supports responsive breakpoint values.
           * @default 'sm'
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
     }
     interface PStepperHorizontal {
         /**
-          * The text size.
+          * The font size of the step labels.
           * @default 'small'
          */
         "size"?: BreakpointCustomizable<StepperHorizontalSize>;
@@ -2742,7 +2742,7 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * The validation state.
+          * The current progression state of the step. Use `current` for the active step, `complete` for finished steps, `warning` for steps with issues. Leave unset for future steps.
          */
         "state"?: StepperHorizontalItemState;
     }
@@ -2751,58 +2751,58 @@ export namespace Components {
      */
     interface PSwitch {
         /**
-          * Aligns the label.
+          * Sets the position of the slotted label relative to the switch toggle, either before (`start`) or after (`end`) it. Supports responsive breakpoint values.
           * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
         /**
-          * Visualize the switch with on/off status.
+          * Reflects the switch's current on/off state and allows setting the initial checked value when the component first renders.
           * @default false
          */
         "checked"?: boolean;
         /**
-          * Displays the switch in compact mode.
+          * Reduces the switch size and spacing for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Disables the switch. No events will be triggered while disabled state is active.
+          * Prevents user interaction with the switch and blocks all click and keyboard events while it is disabled.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the switch and shows a loading spinner to indicate an ongoing asynchronous toggle operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Stretches the contents to max available space.
+          * Expands the space between the switch toggle and its label to fill the full available width of the container. Supports responsive breakpoint values.
           * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
     }
     interface PTable {
         /**
-          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
+          * Sets a screen-reader-only accessible caption that describes the table's content; it is not visible in the browser. Use an element with `slot="caption"` for a visible caption instead.
          */
         "caption"?: string;
         /**
-          * Displays with reduced spacing and smaller padding for a more condensed layout.
+          * Reduces the cell padding and spacing for a more condensed table layout in data-dense UIs.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Controls the layout behavior of the table.
+          * Controls the CSS `table-layout` algorithm: `auto` sizes columns to fit their content, `fixed` distributes width equally.
           * @default 'auto'
          */
         "layout"?: TableLayout;
         /**
-          * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+          * @experimental Makes the scroll position indicator sticky at the viewport edge while scrolling, indicating overflow in the table.
           * @default false
          */
         "sticky"?: boolean;
@@ -2820,17 +2820,17 @@ export namespace Components {
     }
     interface PTableHeadCell {
         /**
-          * Hides the label but keeps it accessible for screen readers. This property only takes effect when the `sort` prop is not set.
+          * Hides the visible column label while keeping it accessible to screen readers. Only applies when `sort` is not set.
           * @default false
          */
         "hideLabel"?: boolean;
         /**
-          * Allows slotted text to wrap onto multiple lines instead of being forced onto a single line.
+          * Allows the column header text to wrap onto multiple lines instead of being truncated to a single line.
           * @default false
          */
         "multiline"?: boolean;
         /**
-          * Defines sortability properties.
+          * Configures sorting behavior for this column by providing an `id`, `active` state, and current `direction` (`asc` or `desc`).
          */
         "sort"?: TableHeadCellSort;
     }
@@ -2843,21 +2843,21 @@ export namespace Components {
      */
     interface PTabs {
         /**
-          * Defines which tab is shown as selected (zero-based numbering).
+          * Sets the zero-based index of the currently active tab; update this prop to switch tabs programmatically.
           * @default 0
          */
         "activeTabIndex"?: number;
         /**
-          * Defines the background color. Use `frosted` only on images, videos or gradients.
+          * Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients.
           * @default 'none'
          */
         "background"?: TabsBackground;
         /**
-          * Displays with reduced spacing and smaller padding for a more condensed layout.
+          * Reduces the tab height and padding for use in dense layouts where vertical space is limited.
          */
         "compact"?: boolean;
         /**
-          * The text size.
+          * Sets the font size of the tab labels using the PDS typographic scale. Supports responsive breakpoint values.
           * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsSize>;
@@ -2872,20 +2872,20 @@ export namespace Components {
      */
     interface PTabsBar {
         /**
-          * Defines which tab is shown as selected (zero-based numbering), or `undefined` if none should be selected.
+          * Sets the zero-based index of the currently active tab. Pass `undefined` to render all tabs in an unselected state.
          */
         "activeTabIndex"?: number | undefined;
         /**
-          * Defines the background color. Use `frosted` only on images, videos or gradients.
+          * Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients.
           * @default 'none'
          */
         "background"?: TabsBarBackground;
         /**
-          * Displays with reduced spacing and smaller padding for a more condensed layout.
+          * Reduces the tab height and padding for use in dense layouts where vertical space is limited.
          */
         "compact"?: boolean;
         /**
-          * The text size.
+          * Sets the font size of the tab labels using the PDS typographic scale. Supports responsive breakpoint values.
           * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
@@ -2897,43 +2897,43 @@ export namespace Components {
     }
     interface PTabsItem {
         /**
-          * Defines the label used in tabs.
+          * Sets the label text displayed in the tab navigation button that the user clicks to activate this tab's content.
          */
         "label": string;
     }
     interface PTag {
         /**
-          * Displays the tag in compact mode.
+          * Reduces the tag's padding and height for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * The icon shown.
+          * Sets the icon displayed inside the tag alongside the label. Use `none` to render the tag without an icon.
           * @default 'none'
          */
         "icon"?: TagIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a URL to a custom SVG icon, overriding the built-in icon set when a brand-specific icon is needed.
          */
         "iconSource"?: string;
         /**
-          * Background color variations.
+          * Sets the visual style of the tag, which controls its background and text colors (e.g. `primary`, `secondary`, `notification-info`).
           * @default 'secondary'
          */
         "variant"?: TagVariant;
     }
     interface PTagDismissible {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the dismiss button element, for example use `aria-label` to provide a descriptive close action for screen readers.
          */
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
-          * Displays the dismissible tag in compact mode.
+          * Reduces the tag's padding and height for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed inside the tag alongside the dismiss button.
          */
         "label"?: string;
     }
@@ -2976,7 +2976,7 @@ export namespace Components {
     }
     interface PTextList {
         /**
-          * The list style type.
+          * Sets the list type to either `unordered` (bulleted) or `ordered` (numbered), controlling the rendered HTML element (`ul` vs `ol`).
           * @default 'unordered'
          */
         "type"?: TextListType;
@@ -2985,101 +2985,101 @@ export namespace Components {
     }
     interface PTextarea {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a hint to enable text autofill suggestions for the textarea (e.g. `autocomplete='on'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the textarea in compact mode.
+          * Reduces the textarea's initial height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
+          * Shows a live character counter below the textarea indicating how many characters the user has typed relative to `maxLength`.
           * @default false
          */
         "counter"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the textarea.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the textarea.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the textarea. The value will not be submitted with the form.
+          * Prevents user interaction with the textarea and excludes its value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
+          * Associates the textarea with a form element by its ID when the textarea is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the textarea to identify its purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the textarea.
+          * Sets the maximum number of characters the user is allowed to enter into the textarea.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the textarea when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid.
+          * Sets the minimum number of characters required for the textarea's value to pass constraint validation.
          */
         "minLength"?: number;
         /**
-          * The name of the textarea, used when submitting the form data.
+          * Sets the name of the textarea submitted with the form data to identify this field's value on the server.
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.
+          * Sets placeholder text displayed inside the textarea when it is empty to hint at the expected content format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
+          * Makes the textarea read-only so users cannot modify the value, while still including it in form submissions.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
+          * Marks the textarea as required so the form cannot be submitted while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Controls whether the textarea is resizable and in which direction.
+          * Controls whether and in which direction the user can resize the textarea (`horizontal`, `vertical`, `both`, or `none`).
           * @default 'vertical'
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
+          * Sets the initial visible height of the textarea in lines of text. Has no effect when the `--p-textarea-field-sizing` CSS variable is set to `content`.
           * @default 7
          */
         "rows"?: number;
         /**
-          * Specifies whether the textarea should have its spelling and grammar checked
+          * Controls whether the browser's built-in spell-checking and grammar checking is enabled for the textarea content.
          */
         "spellCheck"?: boolean;
         /**
-          * Indicates the validation or overall status of the textarea component.
+          * Sets the validation state of the textarea, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: TextareaState;
         /**
-          * The textarea value.
+          * Sets the current multi-line text value of the textarea and reflects any changes made by the user.
           * @default ''
          */
         "value"?: string | null;
         /**
-          * Handles wrapping behavior of elements.
+          * Controls how the submitted text wraps in the form data: `soft` wraps only visually, `hard` inserts line breaks at the textarea width.
           * @default 'soft'
          */
         "wrap"?: TextareaWrap;
@@ -3089,32 +3089,32 @@ export namespace Components {
     }
     interface PToastItem {
         /**
-          * State of the toast-item.
+          * Sets the visual and semantic state of the toast item, controlling its icon and color scheme (`info`, `warning`, `error`, `success`).
           * @default 'info'
          */
         "state"?: ToastState;
         /**
-          * Text of the toast-item.
+          * Sets the notification message text displayed inside the toast item to inform the user about the outcome of an action.
           * @default ''
          */
         "text"?: string;
     }
     interface PWordmark {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the anchor element to improve accessibility when the wordmark is used as a link.
          */
         "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
         /**
-          * When `href` is provided, the component renders as an `<a>` element.
+          * When set, wraps the wordmark in an anchor element that navigates to the given URL on click.
          */
         "href"?: string;
         /**
-          * Controls the size of the wordmark.
+          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens (`small`, `medium`, `large`, `inherit`).
           * @default 'small'
          */
         "size"?: WordmarkSize;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL when `href` is set (e.g. `_self`, `_blank`).
           * @default '_self'
          */
         "target"?: WordmarkTarget;
@@ -4284,17 +4284,17 @@ declare namespace LocalJSX {
      */
     interface PAccordion {
         /**
-          * Aligns the marker within the summary section.
+          * Positions the expand/collapse marker icon at the start or end of the summary section.
           * @default 'end'
          */
         "alignMarker"?: AccordionAlignMarker;
         /**
-          * Defines the background color. Use `frosted` only on images, videos or gradients.
+          * Sets the background color of the accordion panel. Use `frosted` only when placed on images, videos, or gradients.
           * @default 'none'
          */
         "background"?: AccordionBackground;
         /**
-          * Displays the accordion in compact mode.
+          * Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces.
          */
         "compact"?: boolean;
         /**
@@ -4312,7 +4312,7 @@ declare namespace LocalJSX {
          */
         "indent"?: BreakpointCustomizable<boolean>;
         /**
-          * Emitted when the accordion state changes.
+          * Emitted when the user toggles the accordion open or closed, with the new open state in the event detail.
          */
         "onUpdate"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
         /**
@@ -4346,243 +4346,243 @@ declare namespace LocalJSX {
      */
     interface PBanner {
         /**
-          * Sets the description text of the banner.
+          * Sets the supporting description text shown below the heading.
           * @default ''
          */
         "description"?: string;
         /**
-          * Shows a dismiss button allowing the banner to be closed.
+          * Shows a dismiss button so the user can manually close the banner.
           * @default true
          */
         "dismissButton"?: boolean;
         /**
-          * Sets the heading text of the banner.
+          * Sets the heading text displayed at the top of the banner.
           * @default ''
          */
         "heading"?: string;
         /**
-          * Sets the heading tag for proper semantic structure within the page.
+          * Sets the HTML heading tag (e.g. h2, h3) to maintain correct document structure for the heading.
           * @default 'h5'
          */
         "headingTag"?: BannerHeadingTag;
         /**
-          * Emitted when the banner is requested to be dismissed.
+          * Emitted when the user closes the banner via the dismiss button or Escape key.
          */
         "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
         /**
-          * Controls whether the banner is open or closed.
+          * Controls whether the banner is visible. Set to `true` to show it and `false` to hide it.
           * @default false
          */
         "open"?: boolean;
         /**
-          * Sets the position of the banner.
+          * Sets the position of the banner on screen — `top` or `bottom`. Supports responsive breakpoint values.
           * @default { base: 'bottom', s: 'top' }
          */
         "position"?: BreakpointCustomizable<BannerPosition>;
         /**
-          * Defines the visual state of the banner.
+          * Sets the visual state of the banner — controls the icon and color scheme (`info`, `warning`, `error`, `success`).
           * @default 'info'
          */
         "state"?: BannerState;
     }
     interface PButton {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the button to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
-          * Displays the button in compact mode.
+          * Reduces the button's height and padding for denser layouts. Supports responsive breakpoint values.
           * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Disables the button. No events will be triggered while disabled state is active.
+          * Disables the button, preventing all interaction and blocking events.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the button should be associated with.
+          * Associates the button with a form element by its ID, so it can submit or reset that form even when placed outside of it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown. By choosing 'none', no icon is displayed.
+          * Sets the icon displayed inside the button. Use `none` to show no icon.
           * @default 'none'
          */
         "icon"?: ButtonIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the button and replaces its content with a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
+          * Sets the name submitted with the form data when this button triggers form submission.
          */
         "name"?: string;
         /**
-          * Specifies the type of the button.
+          * Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action.
           * @default 'submit'
          */
         "type"?: ButtonType;
         /**
-          * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
+          * Sets the value submitted with the form data when this button triggers form submission, paired with `name`.
          */
         "value"?: string;
         /**
-          * The style variant of the button.
+          * Sets the visual style variant of the button (e.g. `primary`, `secondary`, `tertiary`).
           * @default 'primary'
          */
         "variant"?: ButtonVariant;
     }
     interface PButtonPure {
         /**
-          * Displays the button in its active state.
+          * Visually marks the button as the currently active or selected item, useful for navigation and toggle patterns.
           * @default false
          */
         "active"?: boolean;
         /**
-          * Aligns the label.
+          * Sets the label position relative to the icon — `start` places it before, `end` places it after. Supports responsive breakpoint values.
           * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the button to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
-          * The color.
+          * Sets the foreground color of the button's icon and label text.
           * @default 'primary'
          */
         "color"?: ButtonPureColor;
         /**
-          * Disables the button. No events will be triggered while disabled state is active.
+          * Disables the button, preventing all interaction and blocking events.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the button should be associated with.
+          * Associates the button with a form element by its ID, so it can submit or reset that form even when placed outside of it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The icon shown.
+          * Sets the icon displayed next to the label.
           * @default 'arrow-right'
          */
         "icon"?: ButtonPureIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the button and replaces its icon with a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.
+          * Sets the name submitted with the form data when this button triggers form submission.
          */
         "name"?: string;
         /**
-          * Size of the button.
+          * Sets the font size of the button label. Supports responsive breakpoint values.
           * @default 'sm'
          */
         "size"?: BreakpointCustomizable<ButtonPureSize>;
         /**
-          * Stretches the area between icon and label to max available space.
+          * Expands the space between icon and label to fill the full container width. Supports responsive breakpoint values.
           * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * Specifies the type of the button.
+          * Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action.
           * @default 'submit'
          */
         "type"?: ButtonPureType;
         /**
-          * Shows an underline under the label.
+          * Adds a text underline to the label to reinforce the button's link-like appearance.
           * @default false
          */
         "underline"?: boolean;
         /**
-          * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
+          * Sets the value submitted with the form data when this button triggers form submission, paired with `name`.
          */
         "value"?: string;
     }
     interface PButtonTile {
         /**
-          * Alignment of button and description.
+          * Controls the vertical placement of the description and button — `top` or `bottom`.
           * @default 'bottom'
          */
         "align"?: ButtonTileAlign;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the tile's action button to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
-          * Aspect ratio of the button-tile.
+          * Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values.
           * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
-          * Displays the button-tile as compact version with description and button icon only.
+          * Renders only the icon button without the full label. Supports responsive breakpoint values.
           * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Description text.
+          * Sets the description text displayed in the tile's content area.
          */
         "description"?: string;
         /**
-          * Disables the button. No events will be triggered while disabled state is active.
+          * Disables the tile, preventing button interaction.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Show gradient.
+          * Shows a gradient overlay over the media slot to improve text legibility on bright images or videos.
           * @default false
          */
         "gradient"?: boolean;
         /**
-          * The icon shown. By choosing 'none', no icon is displayed.
+          * Sets the icon displayed in the tile's action button. Use `none` to show no icon.
           * @default 'none'
          */
         "icon"?: ButtonTileIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon for the action button, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Label of the button.
+          * Sets the accessible label text of the action button rendered inside the tile.
          */
         "label"?: string;
         /**
-          * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the tile and shows a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Font size of the description.
+          * Sets the font size of the description text in the tile content area. Supports responsive breakpoint values.
           * @default 'medium'
          */
         "size"?: BreakpointCustomizable<ButtonTileSize>;
         /**
-          * Specifies the type of the button.
+          * Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action.
           * @default 'submit'
          */
         "type"?: ButtonTileType;
         /**
-          * Font weight of the description.
+          * Sets the font weight of the description text in the tile content area. Supports responsive breakpoint values.
           * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
@@ -4592,25 +4592,25 @@ declare namespace LocalJSX {
      */
     interface PCanvas {
         /**
-          * Defines the background color of the main section and auto adjust it for the sidebar
+          * Sets the background color of the main content area and automatically applies a matching color to the sidebar.
           * @default 'canvas'
          */
         "background"?: CanvasBackground;
         /**
-          * Emitted when the sidebar end requests to be dismissed.
+          * Emitted when the user dismisses the end sidebar via the close button.
          */
         "onSidebarEndDismiss"?: (event: PCanvasCustomEvent<void>) => void;
         /**
-          * Emitted when the sidebar start requests to be opened or dismissed.
+          * Emitted when the user toggles the start sidebar, with the new open state in the event detail.
          */
         "onSidebarStartUpdate"?: (event: PCanvasCustomEvent<CanvasSidebarStartUpdateEventDetail>) => void;
         /**
-          * Open the sidebar on the end side
+          * Controls whether the utility sidebar on the end side (right in LTR) is open or collapsed.
           * @default false
          */
         "sidebarEndOpen"?: boolean;
         /**
-          * Open the sidebar on the start side
+          * Controls whether the navigation sidebar on the start side (left in LTR) is open or collapsed.
           * @default false
          */
         "sidebarStartOpen"?: boolean;
@@ -4620,170 +4620,170 @@ declare namespace LocalJSX {
      */
     interface PCarousel {
         /**
-          * Defines which slide is active (zero-based numbering).
+          * Sets the zero-based index of the currently visible slide. Update this to navigate programmatically.
           * @default 0
          */
         "activeSlideIndex"?: number;
         /**
-          * Aligns the slotted controls.
+          * Controls the alignment of custom slotted controls within the header area.
           * @default 'auto'
          */
         "alignControls"?: CarouselAlignControls;
         /**
-          * Aligns the heading and description.
+          * Controls the horizontal alignment of the heading and description.
           * @default 'start'
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the carousel region element for improved accessibility.
          */
         "aria"?: SelectedAriaAttributes<CarouselAriaAttribute>;
         /**
-          * Defines the description used in the carousel.
+          * Sets the description text displayed below the heading for additional context.
          */
         "description"?: string;
         /**
-          * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
+          * When enabled, each slide is individually focusable and the carousel navigates one slide at a time instead of one page.
           * @default false
          */
         "focusOnCenterSlide"?: boolean;
         /**
-          * Fades the slides out.
+          * Shows a gradient fade at the start and end edges to visually indicate more slides beyond the viewport.
           * @default false
          */
         "gradient"?: boolean;
         /**
-          * Defines the heading used in the carousel.
+          * Sets the heading text displayed above the carousel. Also used as the accessible label when no `aria` prop is set.
          */
         "heading"?: string;
         /**
-          * Defines the heading size used in the carousel.
+          * Sets the font size of the carousel heading.
           * @default 'x-large'
          */
         "headingSize"?: CarouselHeadingSize;
         /**
-          * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
+          * Overrides the default label strings used for the previous, next, and page indicators — useful for localization.
          */
         "intl"?: CarouselInternationalization;
         /**
-          * Emitted when carousel's content slides.
+          * Emitted when the carousel navigates to a new slide, with the active and previous slide indexes in the event detail.
          */
         "onUpdate"?: (event: PCarouselCustomEvent<CarouselUpdateEventDetail>) => void;
         /**
-          * If false, the carousel will not show pagination bullets at the bottom.
+          * Shows pagination dot indicators below the carousel. Supports responsive breakpoint values.
           * @default false
          */
         "pagination"?: BreakpointCustomizable<boolean>;
         /**
-          * Whether the slides should rewind from last to first slide and vice versa.
+          * Enables infinite looping — navigating past the last slide wraps back to the first, and vice versa.
           * @default false
          */
         "rewind"?: boolean;
         /**
-          * Defines the skip link target used to skip carousel entries.
+          * Sets the `href` of an in-page skip link that lets keyboard users jump past the carousel slides.
          */
         "skipLinkTarget"?: string;
         /**
-          * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
+          * Sets how many slides are visible at once. Use `auto` to control each slide's width via CSS. Supports responsive breakpoint values.
           * @default 1
          */
         "slidesPerPage"?: BreakpointCustomizable<CarouselSlidesPerPage>;
         /**
-          * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+          * Removes whitespace before the first and after the last slide when `focusOnCenterSlide` is enabled.
           * @default false
          */
         "trimSpace"?: boolean;
         /**
-          * Defines the outer spacings between the carousel and the left and right screen sides.
+          * Sets the maximum width and outer spacing of the carousel, aligned to PDS grid widths.
           * @default 'basic'
          */
         "width"?: CarouselWidth;
     }
     interface PCheckbox {
         /**
-          * Reflects the checkbox current checked state and allows setting the initial checked state.
+          * Reflects the checkbox's current checked state and allows setting the initial checked value on load.
           * @default false
          */
         "checked"?: boolean;
         /**
-          * Displays the checkbox in compact mode.
+          * Reduces the checkbox size and spacing for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Marks the checkbox as disabled.
+          * Disables the checkbox, preventing all interaction. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the checkbox should be associated with.
+          * Associates the checkbox with a form element by its ID when not directly nested inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Marks the checkbox as indeterminate.
+          * Puts the checkbox into an indeterminate state, indicating that a group of child items is only partially selected.
           * @default false
          */
         "indeterminate"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed next to the checkbox.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Disables the checkbox and shows a loading indicator.
+          * @experimental Disables the checkbox and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the checkbox when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the checkbox.
+          * Sets the name submitted with the form data to identify this checkbox's value on the server.
           * @default ''
          */
         "name"?: string;
         /**
-          * Emitted when the checkbox has lost focus.
+          * Emitted when the checkbox loses focus.
          */
         "onBlur"?: (event: PCheckboxCustomEvent<CheckboxBlurEventDetail>) => void;
         /**
-          * Emitted when checkbox checked property is changed.
+          * Emitted when the user changes the checked state of the checkbox.
          */
         "onChange"?: (event: PCheckboxCustomEvent<CheckboxChangeEventDetail>) => void;
         /**
-          * Marks the checkbox as required.
+          * Marks the checkbox as required — form submission is blocked unless the checkbox is checked.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: CheckboxState;
         /**
-          * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
+          * Sets the value submitted with the form data when the checkbox is checked. Unchecked checkboxes are excluded from form submissions.
           * @default 'on'
          */
         "value"?: string;
     }
     interface PCrest {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the anchor element to improve accessibility when the crest is used as a link.
          */
         "aria"?: SelectedAriaAttributes<CrestAriaAttribute>;
         /**
-          * When `href` is provided, the component renders as an `<a>` element.
+          * When set, renders the crest as an anchor element navigating to this URL when clicked.
          */
         "href"?: string;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set.
           * @default '_self'
          */
         "target"?: CrestTarget;
@@ -4793,38 +4793,38 @@ declare namespace LocalJSX {
      */
     interface PDisplay {
         /**
-          * Text alignment of the component.
+          * Sets the horizontal text alignment (`start`, `center`, `end`, or `inherit`).
           * @default 'start'
          */
         "align"?: DisplayAlign;
         /**
-          * Basic text color variations.
+          * Sets the text color using PDS color tokens.
           * @default 'primary'
          */
         "color"?: DisplayColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows.
+          * Truncates the text with an ellipsis when it overflows the container on a single line.
           * @default false
          */
         "ellipsis"?: boolean;
         /**
-          * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+          * Sets the visual text size. Supports responsive breakpoint values.
           * @default 'large'
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the HTML heading tag (h1–h6) for correct document outline placement. When omitted, the tag is inferred from `size`.
          */
         "tag"?: DisplayTag;
     }
     interface PDivider {
         /**
-          * Defines color.
+          * Sets the color of the divider line using PDS contrast tokens.
           * @default 'contrast-lower'
          */
         "color"?: DividerColor;
         /**
-          * Defines direction.
+          * Sets the orientation of the divider to `horizontal` or `vertical`. Supports responsive breakpoint values.
           * @default 'horizontal'
          */
         "direction"?: BreakpointCustomizable<DividerDirection>;
@@ -4836,23 +4836,23 @@ declare namespace LocalJSX {
      */
     interface PDrilldown {
         /**
-          * Defines which `p-drilldown-item` is shown as open.
+          * Sets which `p-drilldown-item` (by `identifier`) is currently expanded to show its sub-navigation level.
          */
         "activeIdentifier"?: string | undefined;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the drilldown dialog element for improved screen reader accessibility.
          */
         "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
         /**
-          * Emitted when the component requests to be dismissed.
+          * Emitted when the user closes the drilldown via the close button or Escape key.
          */
         "onDismiss"?: (event: PDrilldownCustomEvent<void>) => void;
         /**
-          * Emitted when `activeIdentifier` changes.
+          * Emitted when the active navigation level changes, with the new `activeIdentifier` in the event detail.
          */
         "onUpdate"?: (event: PDrilldownCustomEvent<DrilldownUpdateEventDetail>) => void;
         /**
-          * If `true`, the drilldown is shown as open.
+          * Controls whether the drilldown navigation panel is visible.
           * @default false
          */
         "open"?: boolean;
@@ -4867,11 +4867,11 @@ declare namespace LocalJSX {
          */
         "cascade"?: boolean;
         /**
-          * Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value.
+          * Sets the unique identifier matched against the drilldown's `activeIdentifier` to determine if this item is shown.
          */
         "identifier"?: string;
         /**
-          * Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure.
+          * Sets the text used for the back button, sticky header, and cascade button that navigates into this navigation level.
          */
         "label"?: string;
         /**
@@ -4890,59 +4890,59 @@ declare namespace LocalJSX {
      */
     interface PDrilldownLink {
         /**
-          * Displays the link in its active state.
+          * Visually marks the link as the currently active navigation item, e.g. the current page.
           * @default false
          */
         "active"?: boolean;
         /**
-          * Add ARIA attributes (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets ARIA attributes on the link for improved accessibility. Only applies when `href` is set.
          */
         "aria"?: SelectedAriaAttributes<DrilldownLinkAriaAttribute>;
         /**
-          * Sets the native `download` attribute when the target URL points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
         /**
-          * When `href` is provided, the component renders as an `<a>` element. Otherwise, provide a slotted anchor element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * Sets the `rel` attribute on the link (only has effect when `href` is defined and no slotted anchor is used).
+          * Sets the `rel` attribute on the link element (e.g. `noopener`). Only applies when `href` is set.
          */
         "rel"?: string;
         /**
-          * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set.
           * @default '_self'
          */
         "target"?: DrilldownLinkTarget;
     }
     interface PFieldset {
         /**
-          * Sets ARIA attributes.
+          * Overrides the ARIA role on the fieldset — use `radiogroup` when grouping radio buttons.
          */
         "aria"?: SelectedAriaRole<'radiogroup'>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible legend text displayed above the grouped form controls.
           * @default ''
          */
         "label"?: string;
         /**
-          * Controls the size of the label text.
+          * Sets the font size of the fieldset label (`small`, `medium`, or `large`).
           * @default 'medium'
          */
         "labelSize"?: FieldsetLabelSize;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the fieldset when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Marks the Fieldset as required.
+          * Marks all controls within the fieldset as required and adds a required indicator to the label.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state of the fieldset, controlling the color and style of the feedback message.
           * @default 'none'
          */
         "state"?: FieldsetState;
@@ -4968,26 +4968,26 @@ declare namespace LocalJSX {
      */
     interface PFlyout {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the flyout dialog element for improved screen reader accessibility.
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
-          * Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content).
+          * Sets the backdrop style. Use `blur` when background content is irrelevant; use `shading` when users still need visual context.
           * @default 'blur'
          */
         "backdrop"?: FlyoutBackdrop;
         /**
-          * Defines the background color
+          * Sets the background color of the flyout panel (`canvas` or `surface`).
           * @default 'canvas'
          */
         "background"?: FlyoutBackground;
         /**
-          * If true, the flyout will not be closable via backdrop click.
+          * When enabled, clicking the backdrop will not close the flyout.
           * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
-          * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
+          * Controls footer behavior. `fixed` keeps it anchored at the bottom; `sticky` pins it only when content overflows.
           * @default 'sticky'
          */
         "footerBehavior"?: FlyoutFooterBehavior;
@@ -4997,493 +4997,493 @@ declare namespace LocalJSX {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * Emitted when the component requests to be dismissed.
+          * Emitted when the user closes the flyout via the close button, backdrop click, or Escape key.
          */
         "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
         /**
-          * Emitted when the flyout is closed and the transition is finished.
+          * Emitted after the flyout's close transition completes and the panel is fully hidden.
          */
         "onMotionHiddenEnd"?: (event: PFlyoutCustomEvent<FlyoutMotionHiddenEndEventDetail>) => void;
         /**
-          * Emitted when the flyout is opened and the transition is finished.
+          * Emitted after the flyout's open transition completes and the panel is fully visible.
          */
         "onMotionVisibleEnd"?: (event: PFlyoutCustomEvent<FlyoutMotionVisibleEndEventDetail>) => void;
         /**
-          * If true, the flyout is open.
+          * Controls whether the flyout panel is visible.
           * @default false
          */
         "open"?: boolean;
         /**
-          * The position of the flyout
+          * Sets the side the flyout slides in from — `start` for left or `end` for right in LTR layouts.
           * @default 'end'
          */
         "position"?: FlyoutPosition;
     }
     interface PHeading {
         /**
-          * Text alignment of the heading. Use 'start' for left-aligned text (in LTR), 'center' for centered, 'end' for right-aligned (in LTR), or 'inherit' to adopt the parent's alignment.
+          * Sets the horizontal text alignment (`start`, `center`, `end`, or `inherit`).
           * @default 'start'
          */
         "align"?: HeadingAlign;
         /**
-          * Text color of the heading. Use 'primary' for default, 'contrast-higher' / 'contrast-high' / 'contrast-medium' for alternative emphasis levels, or 'inherit' to adopt the parent's color.
+          * Sets the text color using PDS color tokens.
           * @default 'primary'
          */
         "color"?: HeadingColor;
         /**
-          * Adds an ellipsis to a single line of text if it overflows the container width. When enabled, the text is truncated to a single line with `text-overflow: ellipsis`. Cannot be combined with multi-line content.
+          * Truncates the text with an ellipsis when it overflows the container on a single line. Cannot be combined with multi-line content.
           * @default false
          */
         "ellipsis"?: boolean;
         /**
-          * Controls the hyphenation behavior of the heading. Use 'auto' to let the browser automatically hyphenate words at appropriate points, 'manual' to only hyphenate at manually inserted hyphenation points (e.g. `&shy;`), 'none' to disable hyphenation entirely, or 'inherit' to adopt the parent's hyphenation setting.
+          * Controls hyphenation behavior — `auto` lets the browser decide, `manual` only breaks at `&shy;`, `none` disables it entirely.
           * @default 'none'
          */
         "hyphens"?: HeadingHyphens;
         /**
-          * Size of the heading. Also defines the size for specific breakpoints, like {base: "md", l: "2xl"}. You always need to provide a base value when doing this. Use 'inherit' to adopt the parent's font size.
+          * Sets the visual size of the heading. Use `inherit` to derive size from the parent. Supports responsive breakpoint values.
           * @default '2xl'
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets the HTML heading tag (h1 - h6) to ensure the correct document outline and semantic hierarchy. If not set, the tag is automatically inferred from the `size` property (e.g. '2xl' maps to 'h2', 'md' to 'h5', 'sm' to 'h6').
+          * Sets the HTML heading tag (h1–h6) for correct document outline placement. When omitted, the tag is inferred from `size`.
          */
         "tag"?: HeadingTag;
         /**
-          * The font weight of the heading. Use 'normal' for regular weight, 'semibold' for slightly emphasized text, or 'bold' for strong emphasis. For `size` values of 'sm' or smaller, it's recommended to use 'semibold' for better readability.
+          * Sets the font weight — `normal`, `semibold`, or `bold`.
           * @default 'normal'
          */
         "weight"?: HeadingWeight;
     }
     interface PIcon {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the icon — use `aria-label` to make the icon meaningful to screen readers when it conveys information.
          */
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
-          * Basic color variations.
+          * Sets the fill color of the icon using PDS color tokens.
           * @default 'primary'
          */
         "color"?: IconColor;
         /**
-          * Specifies which icon to use.
+          * Selects an icon from the built-in PDS icon library by name (e.g. `arrow-right`, `close`).
           * @default 'arrow-right'
          */
         "name"?: IconName;
         /**
-          * Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+          * Sets the icon size using the PDS typographic scale. Use `inherit` to derive size from the parent element. Supports responsive breakpoint values.
           * @default 'sm'
          */
         "size"?: BreakpointCustomizable<IconSize>;
         /**
-          * Specifies a whole icon path which can be used for custom icons.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon library.
          */
         "source"?: string;
     }
     interface PInlineNotification {
         /**
-          * Action icon of the inline-notification.
+          * Sets the icon displayed inside the action button using a PDS icon name.
           * @default 'arrow-right'
          */
         "actionIcon"?: InlineNotificationActionIcon;
         /**
-          * Action label of the inline-notification.
+          * Sets the label text of the optional action button inside the notification.
          */
         "actionLabel"?: string;
         /**
-          * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the action button and shows a spinner to indicate an ongoing operation.
           * @default false
          */
         "actionLoading"?: boolean;
         /**
-          * Description of the inline-notification.
+          * Sets the supporting description text shown below the heading.
           * @default ''
          */
         "description"?: string;
         /**
-          * If false, the inline-notification will not have a dismiss button.
+          * Shows a dismiss button so the user can manually close the notification.
           * @default true
          */
         "dismissButton"?: boolean;
         /**
-          * Heading of the inline-notification.
+          * Sets the heading text displayed at the top of the inline notification.
           * @default ''
          */
         "heading"?: string;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * Sets the HTML heading tag (e.g. h2, h3) to maintain correct document structure.
           * @default 'h5'
          */
         "headingTag"?: InlineNotificationHeadingTag;
         /**
-          * Emitted when the action button is clicked.
+          * Emitted when the user clicks the action button.
          */
         "onAction"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
-          * Emitted when the close button is clicked.
+          * Emitted when the user clicks the dismiss button.
          */
         "onDismiss"?: (event: PInlineNotificationCustomEvent<void>) => void;
         /**
-          * State of the inline-notification.
+          * Sets the visual state — controls the icon and color scheme (`info`, `warning`, `error`, `success`).
           * @default 'info'
          */
         "state"?: InlineNotificationState;
     }
     interface PInputDate {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='bday' for a birthday).
+          * Provides the browser with a date autofill hint (e.g. `autocomplete='bday'` for a birthday field).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing date selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').
+          * Sets the latest selectable date in YYYY-MM-DD format. Dates after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').
+          * Sets the earliest selectable date in YYYY-MM-DD format. Dates before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the date input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputDateCustomEvent<InputDateBlurEventDetail>) => void;
         /**
-          * Emitted when the date input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputDateCustomEvent<InputDateChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user interacts with the date picker.
          */
         "onInput"?: (event: PInputDateCustomEvent<InputDateInputEventDetail>) => void;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the date is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no date is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputDateState;
         /**
-          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+          * Sets the stepping interval in days. The selected date must align with the `min` date by a multiple of this value.
           * @default 1
          */
         "step"?: number;
         /**
-          * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
+          * Sets the current date value in YYYY-MM-DD format (e.g. `2025-07-02`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputEmail {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='email'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the email icon.
+          * Shows an email icon at the start of the field as a visual indicator.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * Allows the user to enter a list of email addresses separated by commas (and optional whitespace). The browser validates each email address in the list.
+          * Allows entry of multiple email addresses separated by commas. The browser validates each address individually.
           * @default false
          */
         "multiple"?: boolean;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the email input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputEmailCustomEvent<InputEmailBlurEventDetail>) => void;
         /**
-          * Emitted when the email input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputEmailCustomEvent<InputEmailChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user types.
          */
         "onInput"?: (event: PInputEmailCustomEvent<InputEmailInputEventDetail>) => void;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default email validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputEmailState;
         /**
-          * The default email address (or comma-separated list of addresses) for the input.
+          * Sets the current email value. When `multiple` is enabled, accepts a comma-separated list of email addresses.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputMonth {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+          * Provides the browser with a month/year autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing month selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest month that can be selected. The value must be a month string in YYYY-MM format (e.g., max='2024-12').
+          * Sets the latest selectable month in YYYY-MM format. Months after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest month that can be selected. The value must be a month string in YYYY-MM format (e.g., min='2023-01').
+          * Sets the earliest selectable month in YYYY-MM format. Months before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the month input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputMonthCustomEvent<InputMonthBlurEventDetail>) => void;
         /**
-          * Emitted when the month input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputMonthCustomEvent<InputMonthChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user interacts with the month picker.
          */
         "onInput"?: (event: PInputMonthCustomEvent<InputMonthInputEventDetail>) => void;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no month is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputMonthState;
         /**
-          * Defines the stepping interval in months. For example, step="1" increments by 1 month, step="12" by 1 year. The default is 1 month.
+          * Sets the stepping interval in months (e.g. `1` for monthly, `12` for annual).
           * @default 1
          */
         "step"?: number;
         /**
-          * The default month value for the input, in YYYY-MM format (e.g., value='2025-07').
+          * Sets the current month value in YYYY-MM format (e.g. `2025-07`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputNumber {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='postal-code'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the increment/decrement stepper controls.
+          * Shows increment/decrement spin buttons inside the field to adjust the numeric value by clicking.
           * @default false
          */
         "controls"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The max value of the number input.
+          * Sets the maximum allowed numeric value. Values above this are invalid.
          */
         "max"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The min value of the number input.
+          * Sets the minimum allowed numeric value. Values below this are invalid.
          */
         "min"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
@@ -5499,90 +5499,90 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputNumberCustomEvent<InputNumberInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputNumberState;
         /**
-          * The granularity that the value must adhere to.
+          * Sets the stepping granularity — the value must be a multiple of this number. Also controls step button increment size.
           * @default 1
          */
         "step"?: number;
         /**
-          * The value of the number input.
+          * Sets the current numeric value of the field.
           * @default ''
          */
         "value"?: string | number | null;
     }
     interface PInputPassword {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').
+          * Provides the browser with a password autofill hint (e.g. `autocomplete='current-password'` or `autocomplete='new-password'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
@@ -5598,112 +5598,112 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputPasswordState;
         /**
-          * Show or hide password toggle for `input type="password"`.
+          * Shows a toggle button that switches the password between masked and plain text visibility.
           * @default false
          */
         "toggle"?: boolean;
         /**
-          * The password input value.
+          * Sets the current password value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputSearch {
         /**
-          * Additional ARIA attributes for the native search input (e.g. `role="combobox"`, `aria-expanded`).
+          * Sets additional ARIA attributes on the search input, useful for combobox patterns (e.g. `role="combobox"`, `aria-expanded`).
          */
         "aria"?: SelectedAriaAttributes<InputSearchAriaAttribute>;
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions.
          */
         "autoComplete"?: string;
         /**
-          * Show clear input value button
+          * Shows a clear button (×) inside the field that resets the value to empty when clicked.
           * @default false
          */
         "clear"?: boolean;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Show search indicator icon
+          * Shows a magnifying glass icon inside the field as a visual affordance for search input.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the search input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputSearchCustomEvent<InputSearchBlurEventDetail>) => void;
         /**
-          * Emitted when the search input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputSearchCustomEvent<InputSearchChangeEventDetail>) => void;
         /**
@@ -5711,699 +5711,699 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputSearchCustomEvent<InputSearchInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputSearchState;
         /**
-          * The search input value.
+          * Sets the current search query value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputTel {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').
+          * Provides the browser with a phone number autofill hint (e.g. `autocomplete='tel'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the phone icon.
+          * Shows a phone icon at the start of the field as a visual indicator for telephone input.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the tel input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputTelCustomEvent<InputTelBlurEventDetail>) => void;
         /**
-          * Emitted when the tel input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputTelCustomEvent<InputTelChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user types.
          */
         "onInput"?: (event: PInputTelCustomEvent<InputTelInputEventDetail>) => void;
         /**
-          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default telephone validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
+          * Sets placeholder text shown inside the field when it is empty, such as an example phone number format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTelState;
         /**
-          * The tel input value.
+          * Sets the current telephone number value of the field.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputText {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name').
+          * Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='name'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
+          * Shows a live character counter below the field indicating how many characters have been entered relative to `maxLength`.
           * @default false
          */
         "counter"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the text input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputTextCustomEvent<InputTextBlurEventDetail>) => void;
         /**
-          * Emitted when the text input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputTextCustomEvent<InputTextChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user types.
          */
         "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.
+          * Sets placeholder text shown inside the field when it is empty, to hint at the expected format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited by the user. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicate whether to enable spell-checking.
+          * Controls whether the browser's built-in spell-checking is enabled for this field.
          */
         "spellCheck"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTextState;
         /**
-          * The text input value.
+          * Sets the current text value of the input field.
           * @default ''
          */
         "value"?: string | number | null;
     }
     interface PInputTime {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a time autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing time selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').
+          * Sets the latest selectable time in `hh:mm` or `hh:mm:ss` format. Times after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').
+          * Sets the earliest selectable time in `hh:mm` or `hh:mm:ss` format. Times before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the time input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputTimeCustomEvent<InputTimeBlurEventDetail>) => void;
         /**
-          * Emitted when the time input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputTimeCustomEvent<InputTimeChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user interacts with the time picker.
          */
         "onInput"?: (event: PInputTimeCustomEvent<InputTimeInputEventDetail>) => void;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no time is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputTimeState;
         /**
-          * Defines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
+          * Sets the stepping interval in seconds. Use `60` for minute-level selection, `1` to also expose seconds.
           * @default 60
          */
         "step"?: number;
         /**
-          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
+          * Sets the current time value in `hh:mm` or `hh:mm:ss` format (e.g. `14:00`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputUrl {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').
+          * Provides the browser with a URL autofill hint (e.g. `autocomplete='url'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing all input. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of the URL icon.
+          * Shows a URL/link icon at the start of the field as a visual indicator.
           * @default false
          */
         "indicator"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+          * Sets the maximum number of characters the user can enter.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+          * Sets the minimum number of characters required for the field to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the URL input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputUrlCustomEvent<InputUrlBlurEventDetail>) => void;
         /**
-          * Emitted when the URL input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputUrlCustomEvent<InputUrlChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user types.
          */
         "onInput"?: (event: PInputUrlCustomEvent<InputUrlInputEventDetail>) => void;
         /**
-          * Specifies a regular expression that the input's value must match to pass constraint validation. This allows for more specific URL validation rules than the browser's default. If provided, it overrides the browser's default URL validation.
+          * Sets a regular expression the entered value must match to be valid. Overrides the browser's default URL validation.
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+          * Sets placeholder text shown inside the field when it is empty, such as an example URL.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputUrlState;
         /**
-          * The URL input value.
+          * Sets the current URL value. Must be an absolute URL (e.g. `https://porsche.com`) to pass browser validation.
           * @default ''
          */
         "value"?: string | null;
     }
     interface PInputWeek {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features.
+          * Provides the browser with a week/year autofill hint.
          */
         "autoComplete"?: string;
         /**
-          * Displays the input field in compact mode.
+          * Reduces the input height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the input.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the input field. The value will not be submitted with the form.
+          * Disables the field, preventing week selection. The value is not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+          * Associates the field with a form element by its ID when the field is not nested directly inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the input field.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables the field and displays a loading spinner to indicate an ongoing operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest week that can be selected. The value must be a week string in YYYY-Www format (e.g., max='2024-W52').
+          * Sets the latest selectable week in YYYY-Www format. Weeks after this are disabled in the picker.
          */
         "max"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the field when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Specifies the earliest week that can be selected. The value must be a week string in YYYY-Www format (e.g., min='2024-W01').
+          * Sets the earliest selectable week in YYYY-Www format. Weeks before this are disabled in the picker.
          */
         "min"?: string;
         /**
-          * The name of the input field, used when submitting the form data.
+          * Sets the name submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the week input has lost focus.
+          * Emitted when the input loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PInputWeekCustomEvent<InputWeekBlurEventDetail>) => void;
         /**
-          * Emitted when the week input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputWeekCustomEvent<InputWeekChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every value change as the user interacts with the week picker.
          */
         "onInput"?: (event: PInputWeekCustomEvent<InputWeekInputEventDetail>) => void;
         /**
-          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * Marks the field as required — form submission is blocked while no week is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the input component.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: InputWeekState;
         /**
-          * Defines the stepping interval in weeks. For example, step="1" increments by 1 week. The default is 1 week.
+          * Sets the stepping interval in weeks.
           * @default 1
          */
         "step"?: number;
         /**
-          * The default week value for the input, in YYYY-Www format (e.g., value='2025-W27').
+          * Sets the current ISO week value in YYYY-Www format (e.g. `2025-W27`).
           * @default ''
          */
         "value"?: string | null;
     }
     interface PLink {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the link element to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
-          * Displays the link in compact mode.
+          * Reduces the link's padding and height for denser layouts. Supports responsive breakpoint values.
           * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Sets the native `download` attribute when the target URL points to a downloadable file.
+          * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When `href` is provided, the component renders as an `<a>` element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * The icon shown. By choosing 'none', no icon is displayed.
+          * Sets the icon displayed next to the link label. Use `none` to show no icon.
           * @default 'none'
          */
         "icon"?: LinkIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Sets the `rel` attribute on the link.
+          * Sets the `rel` attribute on the link (e.g. `noopener`). Only applies when `href` is set.
          */
         "rel"?: string;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set.
           * @default '_self'
          */
         "target"?: LinkTarget;
         /**
-          * The style variant of the link.
+          * Sets the visual style variant of the link (e.g. `primary`, `secondary`, `tertiary`).
           * @default 'primary'
          */
         "variant"?: LinkVariant;
     }
     interface PLinkPure {
         /**
-          * Displays the link in its active state.
+          * Visually marks the link as the currently active navigation item, e.g. the current page.
           * @default false
          */
         "active"?: boolean;
         /**
-          * Aligns the label.
+          * Sets the label position relative to the icon — `start` places it before, `end` places it after. Supports responsive breakpoint values.
           * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the link element to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<LinkPureAriaAttribute>;
         /**
-          * The color.
+          * Sets the foreground color of the link's icon and label text.
           * @default 'primary'
          */
         "color"?: LinkPureColor;
         /**
-          * Sets the native `download` attribute when the target URL points to a downloadable file.
+          * Sets the native `download` attribute to trigger a file download. Only applies when `href` is set.
          */
         "download"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * When `href` is provided, the component renders as an `<a>` element.
+          * When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * The icon shown. By choosing 'none', no icon is displayed
+          * Sets the icon displayed next to the label.
           * @default 'arrow-right'
          */
         "icon"?: LinkPureIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a path to a custom SVG icon, used instead of the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Sets the `rel` attribute on the link.
+          * Sets the `rel` attribute on the link (e.g. `noopener`). Only applies when `href` is set.
          */
         "rel"?: string;
         /**
-          * Size of the link.
+          * Sets the font size of the link label. Supports responsive breakpoint values.
           * @default 'sm'
          */
         "size"?: BreakpointCustomizable<LinkPureSize>;
         /**
-          * Stretches the area between icon and label to max available space.
+          * Expands the space between icon and label to fill the full container width. Supports responsive breakpoint values.
           * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set.
           * @default '_self'
          */
         "target"?: LinkPureTarget;
         /**
-          * Shows an underline under the label.
+          * Adds a text underline to the label to reinforce its link-like appearance.
           * @default false
          */
         "underline"?: boolean;
     }
     interface PLinkTile {
         /**
-          * Alignment of link and description.
+          * Controls the vertical placement of the description and link — `top` or `bottom`.
           * @default 'bottom'
          */
         "align"?: LinkTileAlign;
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the tile's anchor element to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
-          * Aspect ratio of the link-tile.
+          * Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values.
           * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
-          * Displays the link-tile as compact version with description and link icon only.
+          * Renders only the icon link without the full label. Supports responsive breakpoint values.
           * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
-          * Description text.
+          * Sets the description text displayed in the tile's content area.
          */
         "description"?: string;
         /**
-          * Sets the native `download` attribute when the target URL points to a downloadable file.
+          * Sets the native `download` attribute to trigger a file download.
          */
         "download"?: string;
         /**
-          * Show gradient.
+          * Shows a gradient overlay over the media slot to improve text legibility on bright images or videos.
           * @default false
          */
         "gradient"?: boolean;
         /**
-          * href of the `<a>`.
+          * Sets the URL the tile's anchor element navigates to when clicked.
          */
         "href"?: string;
         /**
-          * Label of the <a />.
+          * Sets the accessible label text of the link rendered inside the tile.
          */
         "label"?: string;
         /**
-          * Sets the `rel` attribute on the link.
+          * Sets the `rel` attribute on the link (e.g. `noopener`).
          */
         "rel"?: string;
         /**
-          * Font size of the description.
+          * Sets the font size of the description text in the tile content area. Supports responsive breakpoint values.
           * @default 'medium'
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`).
           * @default '_self'
          */
         "target"?: LinkTileTarget;
         /**
-          * Font weight of the description.
+          * Sets the font weight of the description text in the tile content area. Supports responsive breakpoint values.
           * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
@@ -6414,50 +6414,50 @@ declare namespace LocalJSX {
      */
     interface PLinkTileProduct {
         /**
-          * Aspect ratio of the link-tile-product.
+          * Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values.
           * @default '3/4'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
-          * Additional product description.
+          * Sets an optional short description providing additional product details below the price.
          */
         "description"?: string;
         /**
-          * Product heading.
+          * Sets the product name displayed prominently at the top of the tile.
          */
         "heading"?: string;
         /**
-          * href of the `<a>`.
+          * Sets the URL the tile navigates to when clicked. Alternatively, provide a slotted anchor element.
          */
         "href"?: string;
         /**
-          * Shows a like button.
+          * Shows a like/bookmark button so users can save the product.
           * @default true
          */
         "likeButton"?: boolean;
         /**
-          * Indicates whether the product is liked.
+          * Reflects whether the product is currently liked — controls the filled state of the like button.
           * @default false
          */
         "liked"?: boolean;
         /**
-          * Emitted when the like button is clicked.
+          * Emitted when the user clicks the like button, with the new liked state in the event detail.
          */
         "onLike"?: (event: PLinkTileProductCustomEvent<LinkTileProductLikeEventDetail>) => void;
         /**
-          * Product retail price (with or without discount).
+          * Sets the current retail price of the product, displayed with or without a discount.
          */
         "price"?: string;
         /**
-          * Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
+          * Sets the original recommended retail price shown with a strikethrough to indicate a discount. Requires `price` to be set.
          */
         "priceOriginal"?: string;
         /**
-          * Sets the `rel` attribute on the link.
+          * Sets the `rel` attribute on the link (e.g. `noopener`).
          */
         "rel"?: string;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL (e.g. `_self`, `_blank`).
           * @default '_self'
          */
         "target"?: LinkTileProductTarget;
@@ -6467,80 +6467,80 @@ declare namespace LocalJSX {
      */
     interface PModal {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the dialog element for improved accessibility when no visible heading is present.
          */
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
-          * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+          * Sets the backdrop style. Use `blur` when the modal is opened by user interaction; use `shading` when opened automatically (e.g. Cookie Consent).
           * @default 'blur'
          */
         "backdrop"?: ModalBackdrop;
         /**
-          * Defines the background color
+          * Sets the background color of the modal panel (`canvas` or `surface`).
           * @default 'canvas'
          */
         "background"?: ModalBackground;
         /**
-          * If true, the modal will not be closable via backdrop click.
+          * When enabled, clicking the backdrop will not close the modal.
           * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If false, the modal will not have a dismiss button.
+          * Shows a dismiss button in the modal header so the user can manually close it.
           * @default true
          */
         "dismissButton"?: boolean;
         /**
-          * If true the modal uses max viewport height and width. Should only be used for mobile.
+          * Expands the modal to the full viewport size, intended for mobile use cases. Supports responsive breakpoint values.
           * @default false
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * Emitted when the component requests to be dismissed.
+          * Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key.
          */
         "onDismiss"?: (event: PModalCustomEvent<void>) => void;
         /**
-          * Emitted when the modal is closed and the transition is finished.
+          * Emitted after the modal's close transition completes and the dialog is fully hidden.
          */
         "onMotionHiddenEnd"?: (event: PModalCustomEvent<ModalMotionHiddenEndEventDetail>) => void;
         /**
-          * Emitted when the modal is opened and the transition is finished.
+          * Emitted after the modal's open transition completes and the dialog is fully visible.
          */
         "onMotionVisibleEnd"?: (event: PModalCustomEvent<ModalMotionVisibleEndEventDetail>) => void;
         /**
-          * If true, the modal is open.
+          * Controls whether the modal dialog is visible.
           * @default false
          */
         "open"?: boolean;
     }
     interface PModelSignature {
         /**
-          * Adapts the color of the component.
+          * Sets the fill color of the signature using PDS color tokens.
           * @default 'primary'
          */
         "color"?: ModelSignatureColor;
         /**
-          * Sets the browser's fetch priority hint for the model signature asset.
+          * Sets the browser's fetch priority hint for the signature asset (`auto`, `high`, `low`).
           * @default 'auto'
          */
         "fetchPriority"?: ModelSignatureFetchPriority;
         /**
-          * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+          * Defers loading the signature until it enters the viewport to improve initial page performance.
           * @default false
          */
         "lazy"?: boolean;
         /**
-          * Adapts the model of the component.
+          * Selects the Porsche model whose typographic signature SVG is displayed.
           * @default '911'
          */
         "model"?: ModelSignatureModel;
         /**
-          * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+          * When enabled, adds invisible padding so all model signatures visually align to a consistent baseline.
           * @default true
          */
         "safeZone"?: boolean;
         /**
-          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * Sets the display size of the signature using predefined PDS sizes. Use `inherit` with a CSS `width` or `height` on the host for custom sizing.
           * @default 'small'
          */
         "size"?: ModelSignatureSize;
@@ -6550,67 +6550,67 @@ declare namespace LocalJSX {
      */
     interface PMultiSelect {
         /**
-          * Displays the multi-select in compact mode.
+          * Reduces the control height and padding for a more compact layout.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the multi-select.
+          * Sets a supplementary description displayed below the label to provide additional context.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the multi-select
+          * Disables the multi-select, preventing all interaction. Selected values are not submitted with the form.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Changes the direction to which the dropdown list appears.
+          * Controls whether the dropdown opens upward (`up`) or downward (`down`), or decides automatically (`auto`).
           * @default 'auto'
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
-          * The id of a form element the multi-select should be associated with.
+          * Associates the multi-select with a form element by its ID when not directly nested inside it.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the multi-select control.
           * @default ''
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the control when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the control.
+          * Sets the name submitted with the form data to identify the selected values on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the multi-select has lost focus.
+          * Emitted when the multi-select loses focus.
          */
         "onBlur"?: (event: PMultiSelectCustomEvent<void>) => void;
         /**
-          * Emitted when the selection is changed.
+          * Emitted when the user selects or deselects an option, with the updated array of values in the event detail.
          */
         "onChange"?: (event: PMultiSelectCustomEvent<MultiSelectChangeEventDetail>) => void;
         /**
-          * Emitted when the dropdown is toggled.
+          * Emitted when the dropdown opens or closes, with the new open state in the event detail.
          */
         "onToggle"?: (event: PMultiSelectCustomEvent<MultiSelectToggleEventDetail>) => void;
         /**
-          * Requires an option with a non-empty string value to be selected.
+          * Marks the multi-select as required — form submission is blocked unless at least one option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: MultiSelectState;
@@ -6622,23 +6622,23 @@ declare namespace LocalJSX {
     }
     interface PMultiSelectOption {
         /**
-          * Disables the option.
+          * Disables the option, preventing it from being selected.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The option value.
+          * Sets the value submitted with the form data when this option is selected in the parent multi-select.
          */
         "value"?: string | number;
     }
     interface POptgroup {
         /**
-          * Disables the optgroup.
+          * Disables all options in the group, preventing any of them from being selected.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The optgroup label.
+          * Sets the visible group heading displayed above the grouped options.
          */
         "label"?: string;
     }
@@ -6647,31 +6647,31 @@ declare namespace LocalJSX {
      */
     interface PPagination {
         /**
-          * Index of the currently active page.
+          * Sets the one-based index of the currently active page; update this prop to navigate programmatically.
           * @default 1
          */
         "activePage"?: number;
         /**
-          * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+          * Overrides the default ARIA label strings used for the previous, next, and page number buttons to support localisation.
           * @default {     root: 'Pagination',     prev: 'Previous page',     next: 'Next page',     page: 'Page',   }
          */
         "intl"?: PaginationInternationalization;
         /**
-          * The total count of items which should be shown per page.
+          * Sets the number of items displayed per page, used together with `totalItemsCount` to compute the page count.
           * @default 1
          */
         "itemsPerPage"?: number;
         /**
-          * Emitted when the page changes.
+          * Emitted when the user navigates to a different page, carrying the new `activePage` index in the event detail.
          */
         "onUpdate"?: (event: PPaginationCustomEvent<PaginationUpdateEventDetail>) => void;
         /**
-          * Show or hide the button to jump to the last page.
+          * Shows or hides the button that jumps directly to the last page of the pagination.
           * @default true
          */
         "showLastPage"?: boolean;
         /**
-          * The total count of items.
+          * Sets the total number of items in the dataset, used to calculate the number of pages.
           * @default 1
          */
         "totalItemsCount"?: number;
@@ -6681,187 +6681,187 @@ declare namespace LocalJSX {
      */
     interface PPinCode {
         /**
-          * Displays the pin code in compact mode.
+          * Reduces the pin code field height and spacing for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the pin code.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the pin code.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the Pin Code. No events will be triggered while disabled state is active.
+          * Prevents user interaction with all pin code fields and blocks events while the component is disabled.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the pin-code should be associated with.
+          * Associates the pin code with a form element by its ID when it is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label and description. For better accessibility, it is recommended to show the label.
+          * Hides the visible label and description while keeping them accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the pin code fields to identify their purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * Number of characters of the Pin Code.
+          * Sets the number of individual input fields rendered, determining how many characters the pin code consists of.
           * @default 4
          */
         "length"?: PinCodeLength;
         /**
-          * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the pin code fields and shows a loading spinner to indicate an ongoing background operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the pin code when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * Name of the control.
+          * Sets the name of the control submitted with the form data to identify the pin code value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the pin-code has lost focus.
+          * Emitted when the pin code component loses focus after the user finishes entering characters.
          */
         "onBlur"?: (event: PPinCodeCustomEvent<void>) => void;
         /**
-          * Emitted when the input is changed.
+          * Emitted when the pin code value changes as the user types, carrying the new concatenated value in the event detail.
          */
         "onChange"?: (event: PPinCodeCustomEvent<PinCodeChangeEventDetail>) => void;
         /**
-          * Marks the Pin Code as required.
+          * Marks the pin code as required so the form cannot be submitted until all fields are filled.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state of the pin code, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: PinCodeState;
         /**
-          * Pin Code type.
+          * Controls whether the individual input fields mask their content as password dots (`password`) or show digits (`number`).
           * @default 'number'
          */
         "type"?: PinCodeType;
         /**
-          * Sets the initial value of the Pin Code.
+          * Sets the current concatenated value of all pin code fields and allows setting the initial value.
           * @default ''
          */
         "value"?: string;
     }
     interface PPopover {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the popover panel to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
-          * Descriptive text shown when the popover is open.
+          * Sets the text content displayed inside the popover panel when it is open, providing contextual help or information.
          */
         "description"?: string;
         /**
-          * Preferred direction in which the popover should open when there is enough space in the viewport. Otherwise, it opens in the direction with the most available space.
+          * Sets the preferred direction for the popover to open relative to its trigger button. Falls back to the direction with the most available viewport space.
           * @default 'bottom'
          */
         "direction"?: PopoverDirection;
     }
     interface PRadioGroup {
         /**
-          * Displays the radio group in compact mode.
+          * Reduces the spacing between radio options for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the radio group.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the radio group.
           * @default ''
          */
         "description"?: string;
         /**
-          * Defines the direction of the main and cross-axis. The default is `column`, which stacks the options vertically. You always need to provide a base value when using breakpoints.
+          * Sets the layout direction of the radio options. Use `column` to stack them vertically or `row` to arrange them horizontally. Supports responsive breakpoint values.
           * @default 'column'
          */
         "direction"?: BreakpointCustomizable<RadioGroupDirection>;
         /**
-          * Disables the radio group. The value will not be submitted with the form.
+          * Disables all radio options in the group, preventing selection and excluding the value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form).
+          * Associates the radio group with a form element by its ID when the group is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the radio group to identify the group's purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables all radio options and shows a spinner to indicate a background loading operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the radio group when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the group of radio buttons, used when submitting the form data.
+          * Sets the shared name attribute for all radio buttons in the group, grouping them for mutually exclusive selection.
          */
         "name"?: string;
         /**
-          * Emitted when the radio-group has lost focus.
+          * Emitted when the radio group loses focus after the user interacts with it, useful for triggering validation on blur.
          */
         "onBlur"?: (event: PRadioGroupCustomEvent<void>) => void;
         /**
-          * Emitted when the selected option is changed.
+          * Emitted when the user selects a different option, carrying the new value and the native event in the event detail.
          */
         "onChange"?: (event: PRadioGroupCustomEvent<RadioGroupChangeEventDetail>) => void;
         /**
-          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+          * Marks the radio group as required so the form cannot be submitted until one option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the radio group component.
+          * Sets the validation state of the radio group, controlling its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: RadioGroupState;
         /**
-          * The default value for the radio-group.
+          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes.
           * @default ''
          */
         "value"?: string;
     }
     interface PRadioGroupOption {
         /**
-          * Disables the radio group option. The value will not be submitted with the form.
+          * Prevents this option from being selected and excludes its value from form submissions while it is disabled.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed next to the radio button that the user reads to identify the option.
          */
         "label"?: string;
         /**
-          * @experimental Shows a loading indicator.
+          * @experimental Disables this option and shows a spinner to indicate that this particular option is in a loading state.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * The value for the input.
+          * Sets the value submitted with the form data when this radio option is selected within its parent group.
          */
         "value"?: string;
     }
@@ -6872,11 +6872,11 @@ declare namespace LocalJSX {
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
-          * Add ARIA role.
+          * Sets the ARIA `role` attribute on the scroller's scroll container, useful for list-based navigation patterns.
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Displays with reduced spacing and smaller padding for a more condensed layout.
+          * Reduces the scroller's padding and the gap between slotted items for use in dense layouts.
          */
         "compact"?: boolean;
         /**
@@ -6884,7 +6884,7 @@ declare namespace LocalJSX {
          */
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
-          * Specifies if scrollbar should be shown.
+          * Shows the browser's native scrollbar inside the scroller, in addition to the scroll indicator arrows.
           * @default false
          */
         "scrollbar"?: boolean;
@@ -6899,100 +6899,100 @@ declare namespace LocalJSX {
      */
     interface PSegmentedControl {
         /**
-          * Sets the amount of columns.
+          * Sets the number of equal-width columns for the item layout. Use `auto` to distribute items based on their content width. Supports responsive breakpoint values.
           * @default 'auto'
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
-          * Displays the segmented control in compact mode.
+          * Reduces the item height and spacing for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the segmented-control.
+          * Sets a supplementary description displayed below the label to give users additional context about the segmented control.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the segmented-control.
+          * Prevents user interaction with all items in the segmented control and excludes the value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the segmented-control should be associated with.
+          * Associates the segmented control with a form element by its ID when it is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the segmented control to describe the group of options.
           * @default ''
          */
         "label"?: string;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the segmented control when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the segmented-control.
+          * Sets the name of the control submitted with the form data to identify the selected value on the server.
          */
         "name"?: string;
         /**
-          * If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead.
+          * Prevents items from wrapping to new rows and renders them in a single horizontally scrollable row instead.
           * @default false
          */
         "noWrap"?: boolean;
         /**
-          * Emitted when the segmented-control has lost focus.
+          * Emitted when the segmented control loses focus, useful for triggering validation on blur.
          */
         "onBlur"?: (event: PSegmentedControlCustomEvent<void>) => void;
         /**
-          * Emitted when the selection is changed.
+          * Emitted when the user selects a different item, carrying the new value in the event detail.
          */
         "onChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlChangeEventDetail>) => void;
         /**
-          * A boolean value that specifies a selection must be made from the group before the form can be submitted.
+          * Marks the segmented control as required so the form cannot be submitted until one option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Indicates the validation or overall status of the component.
+          * Sets the validation state of the segmented control, controlling its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: SegmentedControlState;
         /**
-          * Sets the initial value of the segmented-control.
+          * Sets the currently selected item's value and pre-selects the matching option when the component renders.
          */
         "value"?: string | number;
     }
     interface PSegmentedControlItem {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the item's button element to improve accessibility for screen readers.
          */
         "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
-          * Disables the button. No events will be triggered while disabled state is active.
+          * Prevents this item from being selected and visually dims it; the parent's value will not change to this item's value.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The icon shown.
+          * Sets an icon rendered inside the item button using an icon name from the PDS icon library.
          */
         "icon"?: SegmentedControlItemIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a URL to a custom SVG icon for the item button, overriding the built-in icon set.
          */
         "iconSource"?: string;
         /**
-          * Text content for a user-facing label.
+          * Sets a visible text label rendered inside the item button, used when no slotted content is provided.
          */
         "label"?: string;
         /**
-          * The value of this item which is emitted by the parent element if it becomes selected. This property is **required**.
+          * Sets the value emitted by the parent `p-segmented-control` when this item is selected. This property is **required**.
          */
         "value"?: string | number;
     }
@@ -7001,72 +7001,72 @@ declare namespace LocalJSX {
      */
     interface PSelect {
         /**
-          * Displays the select in compact mode.
+          * Reduces the control height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the select.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the select.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the select.
+          * Prevents user interaction with the select and excludes its value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Changes the direction to which the dropdown list appears.
+          * Controls whether the dropdown list opens upward (`up`) or downward (`down`), or determines the direction automatically (`auto`).
           * @default 'auto'
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
-          * Shows an input in the dropdown allowing options to be filtered. Will be ignored if the `filter` slot is used.
+          * Shows a text input inside the dropdown that filters the visible options as the user types. Ignored when the `filter` slot is used.
           * @default false
          */
         "filter"?: boolean;
         /**
-          * The id of a form element the select should be associated with.
+          * Associates the select with a form element by its ID when it is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the select control to identify its purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * The message styled depending on validation state.
+          * Sets the validation feedback message displayed below the select when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * The name of the control.
+          * Sets the name of the control submitted with the form data, identifying the selected value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the select has lost focus.
+          * Emitted when the select component loses focus, useful for triggering validation on blur.
          */
         "onBlur"?: (event: PSelectCustomEvent<void>) => void;
         /**
-          * Emitted when the selection is changed.
+          * Emitted when the user selects a different option, carrying the new value in the event detail.
          */
         "onChange"?: (event: PSelectCustomEvent<SelectChangeEventDetail>) => void;
         /**
-          * Emitted when the dropdown is toggled.
+          * Emitted when the dropdown list opens or closes, carrying the new `isOpen` state in the event detail.
          */
         "onToggle"?: (event: PSelectCustomEvent<SelectToggleEventDetail>) => void;
         /**
-          * Requires an option with a non-empty string value to be selected.
+          * Marks the select as required so the form cannot be submitted unless a non-empty option is selected.
           * @default false
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Sets the validation state of the select, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: SelectState;
@@ -7077,12 +7077,12 @@ declare namespace LocalJSX {
     }
     interface PSelectOption {
         /**
-          * Disables the option.
+          * Prevents the option from being selected and visually dims it to indicate it is unavailable.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * The option value. Selected when it strictly matches the p-select value (same type and value).
+          * Sets the value submitted with the form data when this option is selected in the parent select control.
          */
         "value"?: string | number | null;
     }
@@ -7091,54 +7091,54 @@ declare namespace LocalJSX {
      */
     interface PSheet {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the sheet dialog element for improved accessibility when the default `aria-label` is insufficient.
          */
         "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
         /**
-          * Defines the background color
+          * Sets the background color of the sheet panel (`canvas` or `surface`).
           * @default 'canvas'
          */
         "background"?: SheetBackground;
         /**
-          * If true, the sheet will not be closable via backdrop click.
+          * When enabled, clicking the backdrop will not close the sheet.
           * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
-          * If false, the sheet will not have a dismiss button.
+          * Shows a dismiss button in the sheet header so users can manually close it.
           * @default true
          */
         "dismissButton"?: boolean;
         /**
-          * Emitted when the component requests to be dismissed.
+          * Emitted when the user dismisses the sheet via the close button, backdrop click, or Escape key.
          */
         "onDismiss"?: (event: PSheetCustomEvent<void>) => void;
         /**
-          * Emitted when the sheet is closed and the transition is finished.
+          * Emitted after the sheet's close transition has fully completed and the panel is hidden.
          */
         "onMotionHiddenEnd"?: (event: PSheetCustomEvent<SheetMotionHiddenEndEventDetail>) => void;
         /**
-          * Emitted when the sheet is opened and the transition is finished.
+          * Emitted after the sheet's open transition has fully completed and the panel is visible.
          */
         "onMotionVisibleEnd"?: (event: PSheetCustomEvent<SheetMotionVisibleEndEventDetail>) => void;
         /**
-          * If true, the sheet is open.
+          * Controls whether the sheet panel slides in from the bottom and is visible to the user.
           * @default false
          */
         "open"?: boolean;
     }
     interface PSpinner {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the spinner's live region element; use `aria-label` to provide a descriptive loading message for screen readers.
          */
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
-          * Basic color variations.
+          * Sets the color of the spinning indicator using PDS semantic color tokens (e.g. `primary`, `contrast-high`, `inherit`).
           * @default 'primary'
          */
         "color"?: SpinnerColor;
         /**
-          * Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components.
+          * Sets the size of the spinner using the PDS typographic scale. Use `inherit` to derive the size from the parent element's font-size. Supports responsive breakpoint values.
           * @default 'sm'
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
@@ -7149,7 +7149,7 @@ declare namespace LocalJSX {
          */
         "onUpdate"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEventDetail>) => void;
         /**
-          * The text size.
+          * The font size of the step labels.
           * @default 'small'
          */
         "size"?: BreakpointCustomizable<StepperHorizontalSize>;
@@ -7161,7 +7161,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The validation state.
+          * The current progression state of the step. Use `current` for the active step, `complete` for finished steps, `warning` for steps with issues. Leave unset for future steps.
          */
         "state"?: StepperHorizontalItemState;
     }
@@ -7170,66 +7170,66 @@ declare namespace LocalJSX {
      */
     interface PSwitch {
         /**
-          * Aligns the label.
+          * Sets the position of the slotted label relative to the switch toggle, either before (`start`) or after (`end`) it. Supports responsive breakpoint values.
           * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
         /**
-          * Visualize the switch with on/off status.
+          * Reflects the switch's current on/off state and allows setting the initial checked value when the component first renders.
           * @default false
          */
         "checked"?: boolean;
         /**
-          * Displays the switch in compact mode.
+          * Reduces the switch size and spacing for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Disables the switch. No events will be triggered while disabled state is active.
+          * Prevents user interaction with the switch and blocks all click and keyboard events while it is disabled.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+          * Disables the switch and shows a loading spinner to indicate an ongoing asynchronous toggle operation.
           * @default false
          */
         "loading"?: boolean;
         /**
-          * Emitted when the checked state changes.
+          * Emitted when the user toggles the switch, carrying the new `checked` state in the event detail.
          */
         "onUpdate"?: (event: PSwitchCustomEvent<SwitchUpdateEventDetail>) => void;
         /**
-          * Stretches the contents to max available space.
+          * Expands the space between the switch toggle and its label to fill the full available width of the container. Supports responsive breakpoint values.
           * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
     }
     interface PTable {
         /**
-          * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
+          * Sets a screen-reader-only accessible caption that describes the table's content; it is not visible in the browser. Use an element with `slot="caption"` for a visible caption instead.
          */
         "caption"?: string;
         /**
-          * Displays with reduced spacing and smaller padding for a more condensed layout.
+          * Reduces the cell padding and spacing for a more condensed table layout in data-dense UIs.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Controls the layout behavior of the table.
+          * Controls the CSS `table-layout` algorithm: `auto` sizes columns to fit their content, `fixed` distributes width equally.
           * @default 'auto'
          */
         "layout"?: TableLayout;
         /**
-          * Emitted when sorting is changed.
+          * Emitted when the user clicks a sortable column header, carrying the new sort configuration in the event detail.
          */
         "onUpdate"?: (event: PTableCustomEvent<TableUpdateEventDetail>) => void;
         /**
-          * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+          * @experimental Makes the scroll position indicator sticky at the viewport edge while scrolling, indicating overflow in the table.
           * @default false
          */
         "sticky"?: boolean;
@@ -7247,17 +7247,17 @@ declare namespace LocalJSX {
     }
     interface PTableHeadCell {
         /**
-          * Hides the label but keeps it accessible for screen readers. This property only takes effect when the `sort` prop is not set.
+          * Hides the visible column label while keeping it accessible to screen readers. Only applies when `sort` is not set.
           * @default false
          */
         "hideLabel"?: boolean;
         /**
-          * Allows slotted text to wrap onto multiple lines instead of being forced onto a single line.
+          * Allows the column header text to wrap onto multiple lines instead of being truncated to a single line.
           * @default false
          */
         "multiline"?: boolean;
         /**
-          * Defines sortability properties.
+          * Configures sorting behavior for this column by providing an `id`, `active` state, and current `direction` (`asc` or `desc`).
          */
         "sort"?: TableHeadCellSort;
     }
@@ -7270,25 +7270,25 @@ declare namespace LocalJSX {
      */
     interface PTabs {
         /**
-          * Defines which tab is shown as selected (zero-based numbering).
+          * Sets the zero-based index of the currently active tab; update this prop to switch tabs programmatically.
           * @default 0
          */
         "activeTabIndex"?: number;
         /**
-          * Defines the background color. Use `frosted` only on images, videos or gradients.
+          * Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients.
           * @default 'none'
          */
         "background"?: TabsBackground;
         /**
-          * Displays with reduced spacing and smaller padding for a more condensed layout.
+          * Reduces the tab height and padding for use in dense layouts where vertical space is limited.
          */
         "compact"?: boolean;
         /**
-          * Emitted when active tab is changed.
+          * Emitted when the user switches to a different tab, carrying the new `activeTabIndex` in the event detail.
          */
         "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEventDetail>) => void;
         /**
-          * The text size.
+          * Sets the font size of the tab labels using the PDS typographic scale. Supports responsive breakpoint values.
           * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsSize>;
@@ -7303,24 +7303,24 @@ declare namespace LocalJSX {
      */
     interface PTabsBar {
         /**
-          * Defines which tab is shown as selected (zero-based numbering), or `undefined` if none should be selected.
+          * Sets the zero-based index of the currently active tab. Pass `undefined` to render all tabs in an unselected state.
          */
         "activeTabIndex"?: number | undefined;
         /**
-          * Defines the background color. Use `frosted` only on images, videos or gradients.
+          * Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients.
           * @default 'none'
          */
         "background"?: TabsBarBackground;
         /**
-          * Displays with reduced spacing and smaller padding for a more condensed layout.
+          * Reduces the tab height and padding for use in dense layouts where vertical space is limited.
          */
         "compact"?: boolean;
         /**
-          * Emitted when active tab is changed.
+          * Emitted when the user clicks a different tab, carrying the new `activeTabIndex` in the event detail.
          */
         "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEventDetail>) => void;
         /**
-          * The text size.
+          * Sets the font size of the tab labels using the PDS typographic scale. Supports responsive breakpoint values.
           * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
@@ -7332,43 +7332,43 @@ declare namespace LocalJSX {
     }
     interface PTabsItem {
         /**
-          * Defines the label used in tabs.
+          * Sets the label text displayed in the tab navigation button that the user clicks to activate this tab's content.
          */
         "label"?: string;
     }
     interface PTag {
         /**
-          * Displays the tag in compact mode.
+          * Reduces the tag's padding and height for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * The icon shown.
+          * Sets the icon displayed inside the tag alongside the label. Use `none` to render the tag without an icon.
           * @default 'none'
          */
         "icon"?: TagIcon;
         /**
-          * A URL path to a custom icon.
+          * Sets a URL to a custom SVG icon, overriding the built-in icon set when a brand-specific icon is needed.
          */
         "iconSource"?: string;
         /**
-          * Background color variations.
+          * Sets the visual style of the tag, which controls its background and text colors (e.g. `primary`, `secondary`, `notification-info`).
           * @default 'secondary'
          */
         "variant"?: TagVariant;
     }
     interface PTagDismissible {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the dismiss button element, for example use `aria-label` to provide a descriptive close action for screen readers.
          */
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
-          * Displays the dismissible tag in compact mode.
+          * Reduces the tag's padding and height for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed inside the tag alongside the dismiss button.
          */
         "label"?: string;
     }
@@ -7411,7 +7411,7 @@ declare namespace LocalJSX {
     }
     interface PTextList {
         /**
-          * The list style type.
+          * Sets the list type to either `unordered` (bulleted) or `ordered` (numbered), controlling the rendered HTML element (`ul` vs `ol`).
           * @default 'unordered'
          */
         "type"?: TextListType;
@@ -7420,113 +7420,113 @@ declare namespace LocalJSX {
     }
     interface PTextarea {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides the browser with a hint to enable text autofill suggestions for the textarea (e.g. `autocomplete='on'`).
          */
         "autoComplete"?: string;
         /**
-          * Displays the textarea in compact mode.
+          * Reduces the textarea's initial height and padding for use in dense layouts where vertical space is limited.
           * @default false
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
+          * Shows a live character counter below the textarea indicating how many characters the user has typed relative to `maxLength`.
           * @default false
          */
         "counter"?: boolean;
         /**
-          * Supplementary text providing more context or explanation for the textarea.
+          * Sets a supplementary description displayed below the label to give users additional guidance about the textarea.
           * @default ''
          */
         "description"?: string;
         /**
-          * Disables the textarea. The value will not be submitted with the form.
+          * Prevents user interaction with the textarea and excludes its value from form submissions.
           * @default false
          */
         "disabled"?: boolean;
         /**
-          * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
+          * Associates the textarea with a form element by its ID when the textarea is not a direct descendant of that form.
          */
         "form"?: string;
         /**
-          * Shows or hides the label. For better accessibility, it is recommended to show the label.
+          * Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values.
           * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Text content for a user-facing label.
+          * Sets the visible label text displayed above the textarea to identify its purpose.
           * @default ''
          */
         "label"?: string;
         /**
-          * A non-negative integer specifying the maximum number of characters the user can enter into the textarea.
+          * Sets the maximum number of characters the user is allowed to enter into the textarea.
          */
         "maxLength"?: number;
         /**
-          * Dynamic feedback text for validation or status.
+          * Sets the validation feedback message displayed below the textarea when `state` is `success` or `error`.
           * @default ''
          */
         "message"?: string;
         /**
-          * A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid.
+          * Sets the minimum number of characters required for the textarea's value to pass constraint validation.
          */
         "minLength"?: number;
         /**
-          * The name of the textarea, used when submitting the form data.
+          * Sets the name of the textarea submitted with the form data to identify this field's value on the server.
          */
         "name"?: string;
         /**
-          * Emitted when the textarea has lost focus.
+          * Emitted when the textarea element loses focus, regardless of whether the value changed.
          */
         "onBlur"?: (event: PTextareaCustomEvent<TextareaBlurEventDetail>) => void;
         /**
-          * Emitted when the textarea loses focus after its value was changed.
+          * Emitted when the textarea loses focus after its value was changed, equivalent to the native `change` event.
          */
         "onChange"?: (event: PTextareaCustomEvent<TextareaChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted on every keystroke or value change as a direct result of user interaction, equivalent to the native `input` event.
          */
         "onInput"?: (event: PTextareaCustomEvent<TextareaInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.
+          * Sets placeholder text displayed inside the textarea when it is empty to hint at the expected content format.
           * @default ''
          */
         "placeholder"?: string;
         /**
-          * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
+          * Makes the textarea read-only so users cannot modify the value, while still including it in form submissions.
           * @default false
          */
         "readOnly"?: boolean;
         /**
-          * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
+          * Marks the textarea as required so the form cannot be submitted while this field is empty.
           * @default false
          */
         "required"?: boolean;
         /**
-          * Controls whether the textarea is resizable and in which direction.
+          * Controls whether and in which direction the user can resize the textarea (`horizontal`, `vertical`, `both`, or `none`).
           * @default 'vertical'
          */
         "resize"?: TextareaResize;
         /**
-          * The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'.
+          * Sets the initial visible height of the textarea in lines of text. Has no effect when the `--p-textarea-field-sizing` CSS variable is set to `content`.
           * @default 7
          */
         "rows"?: number;
         /**
-          * Specifies whether the textarea should have its spelling and grammar checked
+          * Controls whether the browser's built-in spell-checking and grammar checking is enabled for the textarea content.
          */
         "spellCheck"?: boolean;
         /**
-          * Indicates the validation or overall status of the textarea component.
+          * Sets the validation state of the textarea, which controls its visual appearance and feedback message style (`none`, `success`, `error`).
           * @default 'none'
          */
         "state"?: TextareaState;
         /**
-          * The textarea value.
+          * Sets the current multi-line text value of the textarea and reflects any changes made by the user.
           * @default ''
          */
         "value"?: string | null;
         /**
-          * Handles wrapping behavior of elements.
+          * Controls how the submitted text wraps in the form data: `soft` wraps only visually, `hard` inserts line breaks at the textarea width.
           * @default 'soft'
          */
         "wrap"?: TextareaWrap;
@@ -7535,36 +7535,36 @@ declare namespace LocalJSX {
     }
     interface PToastItem {
         /**
-          * Emitted when the close button is clicked.
+          * Emitted when the user clicks the close button on the toast item, signalling that it should be dismissed.
          */
         "onDismiss"?: (event: PToastItemCustomEvent<void>) => void;
         /**
-          * State of the toast-item.
+          * Sets the visual and semantic state of the toast item, controlling its icon and color scheme (`info`, `warning`, `error`, `success`).
           * @default 'info'
          */
         "state"?: ToastState;
         /**
-          * Text of the toast-item.
+          * Sets the notification message text displayed inside the toast item to inform the user about the outcome of an action.
           * @default ''
          */
         "text"?: string;
     }
     interface PWordmark {
         /**
-          * Sets ARIA attributes.
+          * Sets ARIA attributes on the anchor element to improve accessibility when the wordmark is used as a link.
          */
         "aria"?: SelectedAriaAttributes<WordmarkAriaAttribute>;
         /**
-          * When `href` is provided, the component renders as an `<a>` element.
+          * When set, wraps the wordmark in an anchor element that navigates to the given URL on click.
          */
         "href"?: string;
         /**
-          * Controls the size of the wordmark.
+          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens (`small`, `medium`, `large`, `inherit`).
           * @default 'small'
          */
         "size"?: WordmarkSize;
         /**
-          * Specifies where to open the linked document.
+          * Specifies where to open the linked URL when `href` is set (e.g. `_self`, `_blank`).
           * @default '_self'
          */
         "target"?: WordmarkTarget;

@@ -74,49 +74,49 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the segmented control to describe the group of options. */
   @Prop() public label?: string = '';
 
-  /** Supplementary text providing more context or explanation for the segmented-control. */
+  /** Sets a supplementary description displayed below the label to give users additional context about the segmented control. */
   @Prop() public description?: string = '';
 
-  /** Sets the initial value of the segmented-control. */
+  /** Sets the currently selected item's value and pre-selects the matching option when the component renders. */
   @Prop({ mutable: true }) public value?: string | number;
 
-  /** The name of the segmented-control. */
+  /** Sets the name of the control submitted with the form data to identify the selected value on the server. */
   @Prop({ reflect: true }) public name?: string;
 
-  /** Displays the segmented control in compact mode. */
+  /** Reduces the item height and spacing for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
-  /** Indicates the validation or overall status of the component. */
+  /** Sets the validation state of the segmented control, controlling its visual appearance and feedback message style (`none`, `success`, `error`). */
   @Prop() public state?: SegmentedControlState = 'none';
 
-  /** A boolean value that specifies a selection must be made from the group before the form can be submitted. */
+  /** Marks the segmented control as required so the form cannot be submitted until one option is selected. */
   @Prop() public required?: boolean = false;
 
-  /** Dynamic feedback text for validation or status. */
+  /** Sets the validation feedback message displayed below the segmented control when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Sets the amount of columns. */
+  /** Sets the number of equal-width columns for the item layout. Use `auto` to distribute items based on their content width. Supports responsive breakpoint values. */
   @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
 
-  /** The id of a form element the segmented-control should be associated with. */
+  /** Associates the segmented control with a form element by its ID when it is not a direct descendant of that form. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Disables the segmented-control. */
+  /** Prevents user interaction with all items in the segmented control and excludes the value from form submissions. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** If true, prevents items from wrapping to new rows and renders them in a single scrollable row instead. */
+  /** Prevents items from wrapping to new rows and renders them in a single horizontally scrollable row instead. */
   @Prop() public noWrap?: boolean = false;
 
-  /** Emitted when the segmented-control has lost focus. */
+  /** Emitted when the segmented control loses focus, useful for triggering validation on blur. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
-  /** Emitted when the selection is changed. */
+  /** Emitted when the user selects a different item, carrying the new value in the event detail. */
   @Event({ bubbles: true }) public change: EventEmitter<SegmentedControlChangeEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;

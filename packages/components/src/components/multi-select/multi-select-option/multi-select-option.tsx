@@ -25,10 +25,10 @@ const propTypes: PropTypes<typeof MultiSelectOption> = {
 export class MultiSelectOption {
   @Element() public host!: HTMLElement & MultiSelectOptionInternalHTMLProps;
 
-  /** The option value. */
+  /** Sets the value submitted with the form data when this option is selected in the parent multi-select. */
   @Prop() public value: string | number;
 
-  /** Disables the option. */
+  /** Disables the option, preventing it from being selected. */
   @Prop() public disabled?: boolean = false;
 
   public connectedCallback(): void {
