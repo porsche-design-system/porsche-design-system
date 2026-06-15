@@ -99,6 +99,9 @@ import { FlyoutFixedFooterSubfooterScrollableContentScrolledComponent } from './
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
 import { FlyoutFooterScrolledComponent } from './generated/flyout-footer-scrolled.component';
+import { FlyoutFullscreenComponent } from './generated/flyout-fullscreen.component';
+import { FlyoutFullscreenPositionStartComponent } from './generated/flyout-fullscreen-position-start.component';
+import { FlyoutFullscreenResponsiveComponent } from './generated/flyout-fullscreen-responsive.component';
 import { FlyoutGridComponent } from './generated/flyout-grid.component';
 import { FlyoutHeaderComponent } from './generated/flyout-header.component';
 import { FlyoutHeaderFooterComponent } from './generated/flyout-header-footer.component';
@@ -200,6 +203,7 @@ import { SelectOpenedWithSelectedEmptyOptionComponent } from './generated/select
 import { SelectOpenedWithSlottedImagesComponent } from './generated/select-opened-with-slotted-images.component';
 import { SheetComponent } from './generated/sheet.component';
 import { SheetBasicComponent } from './generated/sheet-basic.component';
+import { SheetCssVariablesComponent } from './generated/sheet-css-variables.component';
 import { SheetGridComponent } from './generated/sheet-grid.component';
 import { SheetPrefixedComponent } from './generated/sheet-prefixed.component';
 import { SheetScrollableComponent } from './generated/sheet-scrollable.component';
@@ -310,6 +314,9 @@ export const generatedPages = [
   FlyoutFooterComponent,
   FlyoutFooterScrollableContentComponent,
   FlyoutFooterScrolledComponent,
+  FlyoutFullscreenComponent,
+  FlyoutFullscreenPositionStartComponent,
+  FlyoutFullscreenResponsiveComponent,
   FlyoutGridComponent,
   FlyoutHeaderComponent,
   FlyoutHeaderFooterComponent,
@@ -411,6 +418,7 @@ export const generatedPages = [
   SelectOpenedWithSlottedImagesComponent,
   SheetComponent,
   SheetBasicComponent,
+  SheetCssVariablesComponent,
   SheetGridComponent,
   SheetPrefixedComponent,
   SheetScrollableComponent,
@@ -816,6 +824,21 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Footer Scrolled',
     path: 'flyout-footer-scrolled',
     component: FlyoutFooterScrolledComponent,
+  },
+  {
+    name: 'Flyout Fullscreen',
+    path: 'flyout-fullscreen',
+    component: FlyoutFullscreenComponent,
+  },
+  {
+    name: 'Flyout Fullscreen Position Start',
+    path: 'flyout-fullscreen-position-start',
+    component: FlyoutFullscreenPositionStartComponent,
+  },
+  {
+    name: 'Flyout Fullscreen Responsive',
+    path: 'flyout-fullscreen-responsive',
+    component: FlyoutFullscreenResponsiveComponent,
   },
   {
     name: 'Flyout Grid',
@@ -1321,6 +1344,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Sheet Basic',
     path: 'sheet-basic',
     component: SheetBasicComponent,
+  },
+  {
+    name: 'Sheet Css Variables',
+    path: 'sheet-css-variables',
+    component: SheetCssVariablesComponent,
   },
   {
     name: 'Sheet Grid',

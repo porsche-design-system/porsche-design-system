@@ -2813,6 +2813,13 @@ exports[`should match snapshot 1`] = `
         "description": "Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.",
         "type": "FlyoutFooterBehavior",
       },
+      "fullscreen": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true the flyout stretches to the full viewport width with squared corners. Useful for smaller viewports where the flyout would otherwise fill the screen but still show rounded corners.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": false,

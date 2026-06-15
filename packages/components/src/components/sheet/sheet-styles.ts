@@ -62,7 +62,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
     },
     scroller: getScrollerJssStyle('fullscreen'),
     sheet: {
-      ...dialogGridJssStyle(`inset(0 round ${dialogBorderRadius} ${dialogBorderRadius} 0 0)`), // round top corners only
+      ...dialogGridJssStyle(),
       ...getDialogColorJssStyle(),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       width: '100%',
@@ -70,6 +70,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
       marginBlockStart: ref(spacingFluidLg), // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
       borderTopLeftRadius: dialogBorderRadius,
       borderTopRightRadius: dialogBorderRadius,
+      clipPath: `inset(0 round ${dialogBorderRadius} ${dialogBorderRadius} 0 0)`, // round top corners only
       ...forcedColorsMediaQuery({
         borderTop: '2px solid CanvasText',
       }),

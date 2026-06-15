@@ -14,6 +14,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.2.0-rc.5] - 2026-06-12
+
+### Added
+
+- `Flyout`: Prop `fullscreen` to stretch the flyout to the full viewport width with squared corners, useful for smaller
+  viewports ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498))
+
+### Fixed
+
+- `Flyout`, `Modal`, `Sheet` ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498)):
+  - Nested dialog elements no longer cause rendering issues in Chromium
+  - Keep the dialog element on the `#top-layer` during the fade-out animation in Safari and Firefox, so closing
+    (especially nested) dialogs no longer drop behind surrounding content
+- `Banner`: Keep the popover on the `#top-layer` during the fade-out animation in Safari and Firefox, so it no longer
+  drops behind surrounding content while closing
+  ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498))
+
 ## [4.2.0-rc.4] - 2026-06-10
 
 ### Fixed

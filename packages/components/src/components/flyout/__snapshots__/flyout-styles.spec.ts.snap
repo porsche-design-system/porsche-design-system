@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, background: canvas, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -48,13 +48,14 @@ dialog {
   height: 0px;
   visibility: hidden;
   pointer-events: none;
+  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
@@ -69,12 +70,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(100%,0,0);
   opacity: 0;
-  transform: translateX(100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(-100%);
+  transform: translate3d(-100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -87,12 +88,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -117,7 +119,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, background: canvas, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -184,13 +186,14 @@ dialog {
   height: 0px;
   visibility: hidden;
   pointer-events: none;
+  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
@@ -205,12 +208,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(100%,0,0);
   opacity: 0;
-  transform: translateX(100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(-100%);
+  transform: translate3d(-100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -223,12 +226,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -253,7 +257,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, background: canvas, backdrop: blur, position: end, hasHeader: true, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -305,13 +309,14 @@ dialog {
   height: 0px;
   visibility: hidden;
   pointer-events: none;
+  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
@@ -326,12 +331,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(100%,0,0);
   opacity: 0;
-  transform: translateX(100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(-100%);
+  transform: translate3d(-100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -344,12 +349,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -374,7 +380,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, background: canvas, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -416,13 +422,14 @@ dialog {
   height: 0px;
   visibility: hidden;
   pointer-events: none;
+  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
@@ -437,12 +444,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(-100%,0,0);
   opacity: 0;
-  transform: translateX(-100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(100%);
+  transform: translate3d(100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -455,12 +462,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
   border-start-end-radius: var(--p-radius-3xl);
   border-end-end-radius: var(--p-radius-3xl);
 }
@@ -485,7 +493,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, background: canvas, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -533,13 +541,14 @@ dialog {
   height: 0px;
   visibility: hidden;
   pointer-events: none;
+  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
@@ -554,12 +563,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(-100%,0,0);
   opacity: 0;
-  transform: translateX(-100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(100%);
+  transform: translate3d(100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -572,12 +581,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
   border-start-end-radius: var(--p-radius-3xl);
   border-end-end-radius: var(--p-radius-3xl);
 }
@@ -602,7 +612,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, background: canvas, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -669,13 +679,14 @@ dialog {
   height: 0px;
   visibility: hidden;
   pointer-events: none;
+  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
@@ -690,12 +701,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(-100%,0,0);
   opacity: 0;
-  transform: translateX(-100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(100%);
+  transform: translate3d(100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -708,12 +719,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
   border-start-end-radius: var(--p-radius-3xl);
   border-end-end-radius: var(--p-radius-3xl);
 }
@@ -738,7 +750,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: false, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: false, background: canvas, backdrop: shading, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -780,13 +792,14 @@ dialog {
   height: 0px;
   visibility: hidden;
   pointer-events: none;
+  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
@@ -801,12 +814,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(100%,0,0);
   opacity: 0;
-  transform: translateX(100%);
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
-  transform: translateX(-100%);
+  transform: translate3d(-100%,0,0);
 }
 .scroller:focus-visible {
   outline: none;
@@ -819,12 +832,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -849,7 +863,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -891,6 +905,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -899,7 +914,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -914,8 +929,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -929,12 +944,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -959,7 +975,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 2`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -1001,6 +1017,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1009,7 +1026,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -1024,8 +1041,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1039,12 +1056,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -1069,7 +1087,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -1117,6 +1135,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1125,7 +1144,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -1140,8 +1159,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1155,12 +1174,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -1185,7 +1205,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -1246,6 +1266,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1254,7 +1275,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -1269,8 +1290,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1284,12 +1305,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -1314,7 +1336,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -1381,6 +1403,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1389,7 +1412,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -1404,8 +1427,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1419,12 +1442,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -1449,7 +1473,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: { base: true, xs: false, s: true, m: false, l: true, xl: false } 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -1526,6 +1550,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1534,7 +1559,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -1549,8 +1574,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1564,12 +1589,239 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
+  color: var(--p-color-primary);
+  background: var(--_p-dialog-a);
+  width: 100dvw;
+  min-width: auto;
+  max-width: none;
+  border-radius: 0;
+  clip-path: none;
+}
+.flyout:dir(rtl) {
+  clip-path: none;
+}
+.dismiss {
+  grid-area: 1/3;
+  z-index: 5;
+  position: sticky;
+  top: var(--p-spacing-fluid-sm);
+  margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
+  margin-inline-end: var(--p-spacing-fluid-sm);
+  place-self: flex-start flex-end;
+  filter: invert(1) brightness(1.02);
+}
+@media(min-width:480px) {
+  .flyout {
+    width: var(--p-flyout-width,auto);
+    min-width: 320px;
+    max-width: 100vw;
+    clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+    border-start-start-radius: var(--p-radius-3xl);
+    border-end-start-radius: var(--p-radius-3xl);
+  }
+  .flyout:dir(rtl) {
+    clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  }
+@media(forced-colors:active) {
+    .flyout {
+      border-inline-start: 2px solid CanvasText;
+    }
+}
+
+}
+
+@media(min-width:760px) {
+  .flyout {
+    width: 100dvw;
+    min-width: auto;
+    max-width: none;
+    border-radius: 0;
+    clip-path: none;
+  }
+  .flyout:dir(rtl) {
+    clip-path: none;
+  }
+}
+
+@media(min-width:1000px) {
+  .flyout {
+    width: var(--p-flyout-width,auto);
+    min-width: 320px;
+    max-width: 100vw;
+    clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+    border-start-start-radius: var(--p-radius-3xl);
+    border-end-start-radius: var(--p-radius-3xl);
+  }
+  .flyout:dir(rtl) {
+    clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  }
+@media(forced-colors:active) {
+    .flyout {
+      border-inline-start: 2px solid CanvasText;
+    }
+}
+
+}
+
+@media(min-width:1300px) {
+  .flyout {
+    width: 100dvw;
+    min-width: auto;
+    max-width: none;
+    border-radius: 0;
+    clip-path: none;
+  }
+  .flyout:dir(rtl) {
+    clip-path: none;
+  }
+}
+
+@media(min-width:1760px) {
+  .flyout {
+    width: var(--p-flyout-width,auto);
+    min-width: 320px;
+    max-width: 100vw;
+    clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+    border-start-start-radius: var(--p-radius-3xl);
+    border-end-start-radius: var(--p-radius-3xl);
+  }
+  .flyout:dir(rtl) {
+    clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  }
+@media(forced-colors:active) {
+    .flyout {
+      border-inline-start: 2px solid CanvasText;
+    }
+}
+
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: false 1`] = `
+":host {
+  display: contents;
+  --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
+  --ref-p-flyout-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-flyout-px: var(--p-spacing-fluid-lg) !important;
+  --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+slot[name=header] {
+  grid-column: 1/-1;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  margin-block: calc(-1 * var(--p-spacing-fluid-md)) calc(-1 * var(--p-spacing-static-md));
+  padding: var(--p-spacing-fluid-md) var(--p-spacing-fluid-lg) var(--p-spacing-static-md);
+  background: linear-gradient(180deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 80%,transparent 100%);
+  border-start-start-radius: var(--p-radius-3xl);
+}
+slot[name=footer] {
+  grid-column: 1/-1;
+  z-index: 2;
+  position: sticky;
+  bottom: -.1px;
+  margin-block: calc(-1 * calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)));
+  padding: calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) var(--p-spacing-fluid-lg);
+  background: linear-gradient(0deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 20%,transparent 80%);
+}
+slot[name=sub-footer] {
+  grid-column: 1/-1;
+  z-index: 3;
+  padding-inline: var(--p-spacing-fluid-lg);
+  background-color: var(--_p-dialog-a);
+}
+slot[name=footer][data-stuck]::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: calc(calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) - 12 * var(--p-spacing-static-2xs)) calc(var(--p-spacing-fluid-lg) - 12 * var(--p-spacing-static-2xs));
+  background: var(--p-color-frosted);
+  border-radius: var(--p-radius-2xl);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+dialog {
+  all: unset;
+  position: fixed;
+  inset: 0;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
+  visibility: inherit;
+  pointer-events: auto;
+  overlay: auto;
+  background: var(--p-color-backdrop);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  position: relative;
+  display: grid;
+  grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
+  gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
+  padding-top: var(--p-spacing-fluid-md);
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
+  align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -1594,7 +1846,147 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: true 1`] = `
+":host {
+  display: contents;
+  --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
+  --ref-p-flyout-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-flyout-px: var(--p-spacing-fluid-lg) !important;
+  --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+slot[name=header] {
+  grid-column: 1/-1;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  margin-block: calc(-1 * var(--p-spacing-fluid-md)) calc(-1 * var(--p-spacing-static-md));
+  padding: var(--p-spacing-fluid-md) var(--p-spacing-fluid-lg) var(--p-spacing-static-md);
+  background: linear-gradient(180deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 80%,transparent 100%);
+  border-start-start-radius: var(--p-radius-3xl);
+}
+slot[name=footer] {
+  grid-column: 1/-1;
+  z-index: 2;
+  position: sticky;
+  bottom: -.1px;
+  margin-block: calc(-1 * calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)));
+  padding: calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) var(--p-spacing-fluid-lg);
+  background: linear-gradient(0deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 20%,transparent 80%);
+}
+slot[name=sub-footer] {
+  grid-column: 1/-1;
+  z-index: 3;
+  padding-inline: var(--p-spacing-fluid-lg);
+  background-color: var(--_p-dialog-a);
+}
+slot[name=footer][data-stuck]::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: calc(calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) - 12 * var(--p-spacing-static-2xs)) calc(var(--p-spacing-fluid-lg) - 12 * var(--p-spacing-static-2xs));
+  background: var(--p-color-frosted);
+  border-radius: var(--p-radius-2xl);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+dialog {
+  all: unset;
+  position: fixed;
+  inset: 0;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
+  visibility: inherit;
+  pointer-events: auto;
+  overlay: auto;
+  background: var(--p-color-backdrop);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  position: relative;
+  display: grid;
+  grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
+  gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
+  padding-top: var(--p-spacing-fluid-md);
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
+  align-content: flex-start;
+  transform: translate3d(0,0,0);
+  color: var(--p-color-primary);
+  background: var(--_p-dialog-a);
+  width: 100dvw;
+  min-width: auto;
+  max-width: none;
+  border-radius: 0;
+  clip-path: none;
+}
+.flyout:dir(rtl) {
+  clip-path: none;
+}
+.dismiss {
+  grid-area: 1/3;
+  z-index: 5;
+  position: sticky;
+  top: var(--p-spacing-fluid-sm);
+  margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
+  margin-inline-end: var(--p-spacing-fluid-sm);
+  place-self: flex-start flex-end;
+  filter: invert(1) brightness(1.02);
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -1636,6 +2028,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1644,7 +2037,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -1659,8 +2052,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1674,12 +2067,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
   border-start-end-radius: var(--p-radius-3xl);
   border-end-end-radius: var(--p-radius-3xl);
 }
@@ -1704,7 +2098,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: false and footerBehavior: false 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 2`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -1746,6 +2140,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1754,7 +2149,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -1769,8 +2164,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1784,12 +2179,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
   border-start-end-radius: var(--p-radius-3xl);
   border-end-end-radius: var(--p-radius-3xl);
 }
@@ -1814,7 +2210,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -1875,6 +2271,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -1883,7 +2280,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -1898,8 +2295,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -1913,12 +2310,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
   border-start-end-radius: var(--p-radius-3xl);
   border-end-end-radius: var(--p-radius-3xl);
 }
@@ -1943,7 +2341,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: false 2`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 2`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -2004,6 +2402,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -2012,7 +2411,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -2027,8 +2426,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2042,12 +2441,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
   border-start-end-radius: var(--p-radius-3xl);
   border-end-end-radius: var(--p-radius-3xl);
 }
@@ -2072,7 +2472,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: blur, hasHeader: start, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -2139,6 +2539,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -2147,7 +2548,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -2162,8 +2563,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2177,12 +2578,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
   border-start-end-radius: var(--p-radius-3xl);
   border-end-end-radius: var(--p-radius-3xl);
 }
@@ -2207,7 +2609,147 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: start, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: sticky and fullscreen: true 1`] = `
+":host {
+  display: contents;
+  --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
+  --ref-p-flyout-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-flyout-px: var(--p-spacing-fluid-lg) !important;
+  --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  --_p-dialog-a: var(--p-color-canvas) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+slot[name=header] {
+  grid-column: 1/-1;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  margin-block: calc(-1 * var(--p-spacing-fluid-md)) calc(-1 * var(--p-spacing-static-md));
+  padding: var(--p-spacing-fluid-md) var(--p-spacing-fluid-lg) var(--p-spacing-static-md);
+  background: linear-gradient(180deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 80%,transparent 100%);
+  border-start-end-radius: var(--p-radius-3xl);
+}
+slot[name=footer] {
+  grid-column: 1/-1;
+  z-index: 2;
+  position: sticky;
+  bottom: -.1px;
+  margin-block: calc(-1 * calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)));
+  padding: calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) var(--p-spacing-fluid-lg);
+  background: linear-gradient(0deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 20%,transparent 80%);
+}
+slot[name=sub-footer] {
+  grid-column: 1/-1;
+  z-index: 3;
+  padding-inline: var(--p-spacing-fluid-lg);
+  background-color: var(--_p-dialog-a);
+}
+slot[name=footer][data-stuck]::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: calc(calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) - 12 * var(--p-spacing-static-2xs)) calc(var(--p-spacing-fluid-lg) - 12 * var(--p-spacing-static-2xs));
+  background: var(--p-color-frosted);
+  border-radius: var(--p-radius-2xl);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+dialog {
+  all: unset;
+  position: fixed;
+  inset: 0;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
+  visibility: inherit;
+  pointer-events: auto;
+  overlay: auto;
+  background: var(--p-color-backdrop);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-start: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
+  opacity: 1;
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  position: relative;
+  display: grid;
+  grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
+  gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
+  padding-top: var(--p-spacing-fluid-md);
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
+  align-content: flex-start;
+  transform: translate3d(0,0,0);
+  color: var(--p-color-primary);
+  background: var(--_p-dialog-a);
+  width: 100dvw;
+  min-width: auto;
+  max-width: none;
+  border-radius: 0;
+  clip-path: none;
+}
+.flyout:dir(rtl) {
+  clip-path: none;
+}
+.dismiss {
+  grid-area: 1/3;
+  z-index: 5;
+  position: sticky;
+  top: var(--p-spacing-fluid-sm);
+  margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
+  margin-inline-end: var(--p-spacing-fluid-sm);
+  place-self: flex-start flex-end;
+  filter: invert(1) brightness(1.02);
+}"
+`;
+
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: shading, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -2249,13 +2791,14 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -2270,8 +2813,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2285,12 +2828,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -2315,7 +2859,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: canvas, position: shading, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: shading, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -2376,13 +2920,14 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -2397,8 +2942,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2412,12 +2957,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
 }
@@ -2442,7 +2988,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: surface, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: fixed and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -2484,6 +3030,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -2492,7 +3039,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -2507,8 +3054,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2522,12 +3069,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
   grid-template-rows: 1fr;
@@ -2553,7 +3101,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: false and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: surface, backdrop: blur, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: fixed and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -2601,6 +3149,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -2609,7 +3158,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -2624,8 +3173,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2639,12 +3188,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
   grid-template-rows: 1fr;
@@ -2670,7 +3220,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: surface, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: fixed and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -2731,6 +3281,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -2739,7 +3290,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -2754,8 +3305,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2769,12 +3320,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
   grid-template-rows: 1fr;
@@ -2800,7 +3352,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: false, hasSubFooter: true and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: surface, backdrop: blur, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: fixed and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -2867,6 +3419,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -2875,7 +3428,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -2890,8 +3443,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -2905,12 +3458,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
   grid-template-rows: 1fr;
@@ -2936,7 +3490,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: surface, backdrop: blur, position: end, hasHeader: true, hasFooter: false, hasSubFooter: false, footerBehavior: fixed and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -2988,6 +3542,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -2996,7 +3551,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -3011,8 +3566,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3026,12 +3581,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
   grid-template-rows: auto 1fr auto;
@@ -3057,7 +3613,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: false and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: surface, backdrop: blur, position: end, hasHeader: true, hasFooter: false, hasSubFooter: true, footerBehavior: fixed and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -3115,6 +3671,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -3123,7 +3680,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -3138,8 +3695,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3153,12 +3710,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
   grid-template-rows: auto 1fr auto;
@@ -3184,7 +3742,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true and footerBehavior: false 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: surface, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: false, footerBehavior: fixed and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -3255,6 +3813,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -3263,7 +3822,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -3278,8 +3837,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3293,12 +3852,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
   grid-template-rows: auto 1fr auto;
@@ -3324,7 +3884,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for isOpen: true, backdrop: surface, position: blur, hasHeader: end, hasFooter: true, hasSubFooter: true and footerBehavior: true 1`] = `
+exports[`getComponentCss() > should return correct css for isOpen: true, background: surface, backdrop: blur, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: fixed and fullscreen: false 1`] = `
 ":host {
   display: contents;
   --ref-p-flyout-pt: var(--p-spacing-fluid-md) !important;
@@ -3401,6 +3961,7 @@ dialog {
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
+  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -3409,7 +3970,7 @@ dialog {
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
     transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
@@ -3424,8 +3985,8 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
   opacity: 1;
-  transform: initial;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
 }
 .scroller:focus-visible {
@@ -3439,12 +4000,13 @@ dialog::backdrop {
   padding-top: var(--p-spacing-fluid-md);
   padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
-  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: 100vw;
+  clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
   border-start-start-radius: var(--p-radius-3xl);
   border-end-start-radius: var(--p-radius-3xl);
   grid-template-rows: auto 1fr auto;
