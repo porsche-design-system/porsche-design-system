@@ -67,7 +67,7 @@ jobs:
         shell: bash
       - name: "Send"
         # Only on scheduled runs.
-        # if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule'
         run: |
           zip \
             -j analyzer-result.zip ort/analyzer-result.yml
