@@ -1,14 +1,15 @@
-import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../styles';
 import {
   colorPrimary,
   fontPorscheNext,
   fontWeightNormal,
   fontWeightSemibold,
   leadingNormal,
+  ref,
   spacingStaticMd,
   typescaleMd,
   typescaleSm,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../styles';
 import { getCss, mergeDeep } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
@@ -32,16 +33,16 @@ export const getComponentCss = (state: FormState, labelSize: FieldsetLabelSize, 
       ...(hasLabel && {
         legend: {
           all: 'unset',
-          marginBottom: spacingStaticMd,
-          color: colorPrimary,
-          font: `${labelSize === 'small' ? fontWeightSemibold : fontWeightNormal} ${labelSize === 'small' ? typescaleSm : typescaleMd} / ${leadingNormal} ${fontPorscheNext}`,
+          marginBottom: ref(spacingStaticMd),
+          color: ref(colorPrimary),
+          font: `${labelSize === 'small' ? ref(fontWeightSemibold) : ref(fontWeightNormal)} ${labelSize === 'small' ? ref(typescaleSm) : ref(typescaleMd)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         },
       }),
     },
     ...getFunctionalComponentRequiredStyles(),
     ...mergeDeep(getFunctionalComponentStateMessageStyles(state), {
       message: {
-        marginTop: spacingStaticMd,
+        marginTop: ref(spacingStaticMd),
       },
     }),
   });

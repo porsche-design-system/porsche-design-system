@@ -1,7 +1,7 @@
+import { colorPrimary, ref } from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
 import type { FormState } from '../../utils/form/form-state';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { colorPrimary } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
@@ -18,7 +18,7 @@ export const getCheckboxIndeterminateBaseStyles = (isLoading: boolean, state: Fo
     '&::before': {
       WebkitMask: `${indeterminateIcon} center/contain no-repeat`,
       mask: `${indeterminateIcon} center/contain no-repeat`,
-      backgroundColor: state === 'none' ? colorPrimary : formStateBorderColor,
+      backgroundColor: state === 'none' ? ref(colorPrimary) : formStateBorderColor,
       ...forcedColorsMediaQuery({
         background: 'CanvasText',
       }),

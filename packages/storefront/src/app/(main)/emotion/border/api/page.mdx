@@ -1,0 +1,38 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Code } from '@/components/common/Code';
+import {
+  radius3Xl,
+  radius4Xl,
+  radiusXl,
+  radius2Xl,
+  radiusFull,
+  radiusLg,
+  radiusMd,
+  radiusSm,
+  radiusXs,
+} from '@porsche-design-system/components-react/emotion';
+
+export const metadata = {
+  title: 'Emotion: Border - Porsche Design System',
+  description: 'Detailed API reference for the Border style.',
+};
+
+# Border
+
+<TableOfContents headings={[]} />
+
+## JS
+
+### Radius
+
+| JS                                       | Description                                                                                                                                                                                                           | Value                                     |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| <Code variant="nowrap">radiusXs</Code>   | Holds a **x-small** `border-radius`.                                                                                                                                                                                  | <Code variant="value">{radiusXs}</Code>   |
+| <Code variant="nowrap">radiusSm</Code>   | Holds a **small** `border-radius`.                                                                                                                                                                                    | <Code variant="value">{radiusSm}</Code>   |
+| <Code variant="nowrap">radiusMd</Code>   | Holds a **medium** `border-radius`. Used for `p-checkbox` in **compact mode**.                                                                                                                                        | <Code variant="value">{radiusMd}</Code>   |
+| <Code variant="nowrap">radiusLg</Code>   | Holds a **large** `border-radius`. Used for interactive controls in **compact mode** (e.g. `p-tabs-bar`, `p-input-*`, `p-textarea`, `p-select`, `p-button`, `p-link`,…).                                              | <Code variant="value">{radiusLg}</Code>   |
+| <Code variant="nowrap">radiusXl</Code>   | Holds a **x-large** `border-radius`. Used for interactive controls (e.g. `p-tabs-bar`, `p-input-*`, `p-textarea`, `p-select`, `p-button`, `p-link`,…). Defines the primary visual appearance alongside **radius3Xl**. | <Code variant="value">{radiusXl}</Code>   |
+| <Code variant="nowrap">radius2Xl</Code>  | Holds a **2x-large** `border-radius`. Used for notification components (e.g. `p-banner`, `p-inline-notification`, `p-toast`,…).                                                                                       | <Code variant="value">{radius2Xl}</Code>  |
+| <Code variant="nowrap">radius3Xl</Code>  | Holds a **3x-large** `border-radius`. Used for card-like containers or dialogs (e.g. `p-link-tile`, `p-modal`, `p-flyout`, `p-sheet`,…). Defines the primary visual appearance alongside **radiusXl**.                | <Code variant="value">{radius3Xl}</Code>  |
+| <Code variant="nowrap">radius4Xl</Code>  | Holds a **4x-large** `border-radius`.                                                                                                                                                                                 | <Code variant="value">{radius4Xl}</Code>  |
+| <Code variant="nowrap">radiusFull</Code> | Holds a **fully** rounded `border-radius`. Used for pill shapes (e.g. `p-tag`, `p-switch`,…). Recommended only for standalone indicators.                                                                             | <Code variant="value">{radiusFull}</Code> |

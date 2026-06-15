@@ -1,3 +1,4 @@
+import { ref } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
@@ -18,8 +19,8 @@ export const getComponentCss = (isDisabled: boolean): string => {
       ...addImportantToEachRule({
         ':host': {
           ...(isDisabled && getDisabledBaseStyles()),
-          scrollMarginBlockStart: `calc(max(2px, var(${cssVarInternalSelectOptionScaling}, 1) * 6px) + 36px)`, // 36px input height + 6px padding
-          scrollMarginBlockEnd: `max(2px, var(${cssVarInternalSelectOptionScaling}, 1) * 6px)`, // Aligns option when list is scrolled by navigating with keyboard
+          scrollMarginBlockStart: `calc(max(2px, ${ref(cssVarInternalSelectOptionScaling, 1)} * 6px) + 36px)`, // 36px input height + 6px padding
+          scrollMarginBlockEnd: `max(2px, ${ref(cssVarInternalSelectOptionScaling, 1)} * 6px)`, // Aligns option when list is scrolled by navigating with keyboard
           ...hostHiddenStyles,
         },
         '::slotted(img)': getButtonImageJssStyle,

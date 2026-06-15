@@ -25,9 +25,9 @@ export const Playground = ({
   children,
 }: PropsWithChildren<PlaygroundProps>) => {
   return (
-    <div className="playground my-fluid-md border-thin border-contrast-lower rounded-4xl">
+    <div className="playground my-fluid-md border-thin border-contrast-lower rounded-3xl">
       <div
-        className={`demo p-static-lg border-b-thin border-contrast-lower bg-${backgroundColor} rounded-t-4xl`}
+        className={`demo p-static-lg border-b-thin border-contrast-lower bg-${backgroundColor} rounded-t-3xl`}
         style={{ ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }) }}
       >
         {children}
@@ -42,6 +42,7 @@ export const Playground = ({
               variant="secondary"
               compact={true}
               onClick={onOpenInStackblitz}
+              aria={{ 'aria-description': 'Opens in a new tab' }}
             >
               Open in Stackblitz
             </PButton>

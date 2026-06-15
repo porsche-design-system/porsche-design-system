@@ -7,6 +7,7 @@ exports[`should call validateProps() with correct parameters via render for p-ac
   "compact": "boolean",
   "heading": "string",
   "headingTag": "oneOf",
+  "indent": "breakpoint",
   "open": "boolean",
   "size": "breakpoint",
   "sticky": "boolean",
@@ -216,6 +217,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
   "background": "oneOf",
   "disableBackdropClick": "boolean",
   "footerBehavior": "oneOf",
+  "fullscreen": "breakpoint",
   "open": "boolean",
   "position": "oneOf",
 }

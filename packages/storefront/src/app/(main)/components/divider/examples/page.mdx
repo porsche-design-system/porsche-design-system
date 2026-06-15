@@ -1,0 +1,25 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { dividerMeta } from '@/app/(main)/components/divider/divider.meta';
+
+export const metadata = {
+  title: 'Divider - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Divider component.',
+};
+
+# Divider <ComponentStatus tagName="p-divider"></ComponentStatus>
+
+<TableOfContents headings={[dividerMeta.examples.vertical.name, dividerMeta.examples.responsive.name]} />
+
+## {dividerMeta.examples.vertical.name}
+
+<dividerMeta.examples.vertical.description />
+
+<ComponentStory story={dividerMeta.examples.vertical.story} />
+
+## {dividerMeta.examples.responsive.name}
+
+<dividerMeta.examples.responsive.description />
+
+<ComponentStory story={dividerMeta.examples.responsive.story} />
