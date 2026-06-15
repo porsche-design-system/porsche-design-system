@@ -101,3 +101,8 @@ resolutions:
     - message: "^karma-jasmine-html-reporter@.+ karma-jasmine@.+$"
       reason: BUILD_TOOL_ISSUE
       comment: "Peer-dependency host mismatch reported by `npm list` for the Angular test setup; only affects devDependencies and is tolerated via `legacy-peer-deps=true`."
+
+    - message: "^(?:@(?:emnapi|napi-rs|tybys)/[^ ]+@[^ ]+ /project/node_modules/@(?:emnapi|napi-rs|tybys)/[^ ]+ ?)+$"
+      reason: BUILD_TOOL_ISSUE
+      comment: "Peer-dependency resolution chain of the optional WASM runtime helpers (`@napi-rs/wasm-runtime`, `@emnapi/*`, `@tybys/wasm-util`) reported by `npm list`. These are dev-only, optional native-binding fallbacks pulled in transitively by build tooling (e.g. rolldown/lightningcss/oxide WASM bindings); ignored by npm install due to `legacy-peer-deps=true` in .npmrc and not part of distributed artifacts."
+
