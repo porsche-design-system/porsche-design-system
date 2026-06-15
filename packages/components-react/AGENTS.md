@@ -96,10 +96,6 @@ Tests are located in the `tests/` directory. When modifying wrapper behavior:
 - Use `/ssr` import path for server components
 - See [`projects/nextjs/`](projects/nextjs/) for integration example
 
-### Remix
-
-- Use `/ssr` import path
-- See [`projects/remix/`](projects/remix/) for integration example
 
 ### React Router
 
