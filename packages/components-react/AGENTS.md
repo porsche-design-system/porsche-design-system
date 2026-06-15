@@ -5,7 +5,7 @@
 
 ## Overview
 
-This package contains the **React wrapper** for Porsche Design System web components. It also includes integrations for Next.js, Remix, and React Router.
+This package contains the **React wrapper** for Porsche Design System web components. It also includes integrations for Next.js and React Router.
 
 ## Structure
 
@@ -16,7 +16,6 @@ packages/components-react/
 │   ├── react-wrapper/      # Generated React wrapper components
 │   ├── react-ssr-wrapper/  # SSR-compatible wrapper
 │   ├── nextjs/             # Next.js integration
-│   ├── remix/              # Remix integration
 │   └── react-router/       # React Router integration
 └── tests/                  # Test files
 ```
@@ -32,9 +31,6 @@ npm run build:components-react
 
 # Start Next.js integration
 npm run start:components-react/nextjs
-
-# Start Remix integration
-npm run start:components-react/remix
 ```
 
 ## Usage Patterns
