@@ -1,10 +1,10 @@
+import { ref, spacingStaticXs } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { spacingStaticXs } from '../../../styles/css-variables';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss } from '../../../utils';
 import {
@@ -52,7 +52,7 @@ export const getComponentCss = (
     root: {
       all: 'unset',
       display: 'grid',
-      gap: spacingStaticXs,
+      gap: ref(spacingStaticXs),
     },
     // .label / .required
     ...getFunctionalComponentLabelStyles(disabled, false, hideLabel, {
@@ -62,7 +62,7 @@ export const getComponentCss = (
     ...getFunctionalComponentStateMessageStyles(state),
     ...(noWrap && {
       scroller: {
-        margin: `-${spacingStaticXs} 0`,
+        margin: `-${ref(spacingStaticXs)} 0`,
       },
     }),
   });

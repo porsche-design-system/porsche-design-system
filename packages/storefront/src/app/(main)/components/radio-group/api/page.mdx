@@ -1,0 +1,23 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { ComponentApi } from '@/components/components/ComponentApi';
+import { componentMeta } from '@porsche-design-system/component-meta';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { radioGroupMeta } from '@/app/(main)/components/radio-group/radio-group.meta';
+
+export const metadata = {
+  title: 'Radio Group - Porsche Design System',
+  description:
+    'Detailed API reference for the Radio Group component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Radio Group <ComponentStatus tagName="p-radio-group"></ComponentStatus>
+
+<TableOfContents headings={['Radio Group', 'Radio Group Option']} />
+
+## Radio Group
+
+<ComponentApi api={radioGroupMeta.api} showTableOfContents={false} />
+
+## Radio Group Option
+
+<ComponentApi api={componentMeta['p-radio-group-option']} showTableOfContents={false} />

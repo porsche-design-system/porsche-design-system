@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { inputSearchMeta } from '@/app/(main)/components/input-search/input-search.meta';
+
+export const metadata = {
+  title: 'Input Search - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Input Search component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Input Search <ComponentStatus tagName="p-input-search"></ComponentStatus>
+
+<inputSearchMeta.introduction />
+
+<Configurator
+  tagName="p-input-search"
+  story={inputSearchMeta.configurator.story}
+  slotStories={inputSearchMeta.configurator.slotStories}
+/>

@@ -1,0 +1,33 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { textMeta } from '@/app/(main)/components/text/text.meta';
+
+export const metadata = {
+  title: 'Text - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Text component.',
+};
+
+# Text <ComponentStatus tagName="p-text"></ComponentStatus>
+
+<TableOfContents
+  headings={[textMeta.examples.size.name, textMeta.examples.sizeResponsive.name, textMeta.examples.semantics.name]}
+/>
+
+## {textMeta.examples.size.name}
+
+<textMeta.examples.size.description />
+
+<ComponentStory story={textMeta.examples.size.story} />
+
+## {textMeta.examples.sizeResponsive.name}
+
+<textMeta.examples.sizeResponsive.description />
+
+<ComponentStory story={textMeta.examples.sizeResponsive.story} />
+
+## {textMeta.examples.semantics.name}
+
+<textMeta.examples.semantics.description />
+
+<ComponentStory story={textMeta.examples.semantics.story} />

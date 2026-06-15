@@ -1,7 +1,7 @@
+import { colorCanvas, colorPrimary, ref } from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
 import type { FormState } from '../../utils/form/form-state';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { colorCanvas, colorPrimary } from '../css-variables';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
@@ -20,12 +20,12 @@ export const getCheckboxCheckedBaseStyles = (isLoading: boolean, state: FormStat
 
   return {
     '&': {
-      background: state === 'none' ? colorPrimary : formStateBorderColor,
+      background: state === 'none' ? ref(colorPrimary) : formStateBorderColor,
     },
     ...(state === 'none' && {
       ...hoverMediaQuery({
         '&:hover': {
-          backgroundColor: `var(${cssVarCheckboxBorderColor}, ${formStateBackgroundHoverColor})`,
+          backgroundColor: ref(cssVarCheckboxBorderColor, formStateBackgroundHoverColor),
           borderColor: 'transparent',
         },
       }),
@@ -33,7 +33,7 @@ export const getCheckboxCheckedBaseStyles = (isLoading: boolean, state: FormStat
     '&::before': {
       WebkitMask: `${checkedIcon} center/contain no-repeat`, // necessary for Sogou browser support :-)
       mask: `${checkedIcon} center/contain no-repeat`,
-      backgroundColor: `var(${cssVarCheckboxIconColor},${colorCanvas})`,
+      backgroundColor: ref(cssVarCheckboxIconColor, ref(colorCanvas)),
       ...forcedColorsMediaQuery({
         background: 'CanvasText',
       }),

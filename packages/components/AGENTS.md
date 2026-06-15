@@ -7,6 +7,10 @@
 
 This package contains the **Porsche Design System Web Components** built with Stencil and styled with JSS. These are the source-of-truth components that get wrapped for Angular, React, and Vue.
 
+## Subpackages
+
+- [`projects/stylesheets`](projects/stylesheets/AGENTS.md) — `@porsche-design-system/stylesheets`, the single source of truth for the global styles (meta + generated `variables.css`, `color-scheme.css`, `normalize.css`, `font-face.css` and the combined `index.css`). Built as part of `build:components` and copied into the framework wrappers.
+
 ## File Structure (per component)
 
 ```

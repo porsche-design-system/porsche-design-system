@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
-  --_p-toast-a: var(--p-toast-position-bottom, 56px) !important;
+  --_p-toast-a: var(--p-toast-position-bottom,56px) !important;
   position: fixed !important;
   inset: auto max(22px, 10.625vw - 12px) var(--_p-toast-a) !important;
   z-index: 999999 !important;
@@ -31,7 +31,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
 }
 @media(min-width:760px) {
     :host {
-      --_p-toast-a: var(--p-toast-position-bottom, 64px) !important;
+      --_p-toast-a: var(--p-toast-position-bottom,64px) !important;
       inset: auto auto var(--_p-toast-a) 64px !important;
       max-width: min(42rem, calc(100vw - 64px * 2)) !important;
     }

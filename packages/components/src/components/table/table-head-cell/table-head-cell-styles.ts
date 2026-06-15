@@ -7,14 +7,7 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  blurFrosted,
-  colorFrosted,
-  legacyRadiusSmall,
-  radiusSm,
-  spacingFluidSm,
-  spacingStaticXs,
-} from '../../../styles/css-variables';
+import { blurFrosted, colorFrosted, radiusSm, ref, spacingFluidSm, spacingStaticXs } from '@porsche-design-system/stylesheets';
 import { getCss } from '../../../utils';
 import { cssVariableTablePadding } from '../table/table-styles';
 import type { Direction } from '../table/table-utils';
@@ -36,7 +29,7 @@ export const getComponentCss = (
       ':host': {
         display: 'table-cell',
         ...addImportantToEachRule({
-          padding: `2px var(${cssVariableTablePadding}, ${spacingFluidSm}) var(${cssVariableTablePadding}, ${spacingFluidSm})`,
+          padding: `2px ${ref(cssVariableTablePadding, ref(spacingFluidSm))} ${ref(cssVariableTablePadding, ref(spacingFluidSm))}`,
           verticalAlign: 'bottom',
           whiteSpace: multiline ? 'normal' : 'nowrap',
           ...hostHiddenStyles,
@@ -48,7 +41,7 @@ export const getComponentCss = (
             button: {
               position: 'relative',
               display: 'flex',
-              gap: spacingStaticXs,
+              gap: ref(spacingStaticXs),
               width: 'auto',
               margin: 0, // Removes default button margin on safari 15
               padding: 0,
@@ -70,7 +63,7 @@ export const getComponentCss = (
                 content: '""',
                 position: 'absolute',
                 inset: `${buttonBeforeOffsetVertical} ${buttonBeforeOffsetHorizontal}`,
-                borderRadius: `var(${legacyRadiusSmall}, ${radiusSm})`,
+                borderRadius: ref(radiusSm),
                 zIndex: -1, // needed so that text behind element is selectable and/or visible
                 transition: getTransition('background-color'),
               },
@@ -81,9 +74,9 @@ export const getComponentCss = (
                   },
                 },
                 '&:hover::before': {
-                  WebkitBackdropFilter: blurFrosted,
-                  backdropFilter: blurFrosted,
-                  backgroundColor: colorFrosted,
+                  WebkitBackdropFilter: ref(blurFrosted),
+                  backdropFilter: ref(blurFrosted),
+                  backgroundColor: ref(colorFrosted),
                 },
               }),
               '&:focus-visible::before': getFocusBaseStyles(),

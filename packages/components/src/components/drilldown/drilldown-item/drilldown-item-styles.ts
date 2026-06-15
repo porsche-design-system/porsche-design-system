@@ -1,20 +1,21 @@
 import {
-  addImportantToEachRule,
-  getAnimation,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
-import {
   fontPorscheNext,
   fontWeightSemibold,
   leadingNormal,
+  ref,
   spacingFluidLg,
   spacingFluidMd,
   spacingFluidSm,
   spacingFluidXs,
   spacingStaticMd,
   typescaleSm,
-} from '../../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import {
+  addImportantToEachRule,
+  getAnimation,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
 import { getCss } from '../../../utils';
 import {
   cssVarColorBackgroundBase,
@@ -31,15 +32,15 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
   return getCss({
     '@global': {
       '@keyframes slide-up-mobile': {
-        from: { transform: `translate3d(0,${spacingFluidMd},0)` },
+        from: { transform: `translate3d(0,${ref(spacingFluidMd)},0)` },
         to: { transform: 'translate3d(0,0,0)' },
       },
       '@keyframes slide-up-desktop-primary': {
-        from: { marginBlockStart: spacingFluidMd },
+        from: { marginBlockStart: ref(spacingFluidMd) },
         to: { marginBlockStart: '0px' },
       },
       '@keyframes slide-up-desktop-secondary': {
-        from: { marginBlockStart: spacingFluidMd },
+        from: { marginBlockStart: ref(spacingFluidMd) },
         to: { marginBlockStart: '0px' },
       },
       ':host': {
@@ -78,14 +79,14 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
               gridArea: '4/2/auto/-2',
               zIndex: 0,
               display: 'grid',
-              gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
-              gap: `var(${cssVariableGap},${spacingFluidXs})`,
+              gridTemplate: ref(cssVariableGridTemplate, 'auto/auto'),
+              gap: ref(cssVariableGap, ref(spacingFluidXs)),
               alignContent: 'start',
               alignItems: 'start',
               boxSizing: 'border-box',
               minHeight: '100%',
               height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-              paddingBlockEnd: spacingFluidLg,
+              paddingBlockEnd: ref(spacingFluidLg),
               animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
             }),
             ...((isPrimary || isCascade) && {
@@ -96,19 +97,19 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             ...((isPrimary || isSecondary) && {
               gridArea: '3/2/auto/-2',
               display: 'grid',
-              gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
-              gap: `var(${cssVariableGap},${spacingFluidXs})`,
+              gridTemplate: ref(cssVariableGridTemplate, 'auto/auto'),
+              gap: ref(cssVariableGap, ref(spacingFluidXs)),
               alignContent: 'start',
               alignItems: 'start',
               boxSizing: 'border-box',
               minHeight: '100%',
               height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-              paddingBlockEnd: spacingFluidLg,
+              paddingBlockEnd: ref(spacingFluidLg),
               animation: getAnimation(`slide-up-desktop-${isPrimary ? 'primary' : 'secondary'}`, 'moderate', 'base'),
             }),
             ...(isSecondary && {
               gridArea: '2/2/auto/-2',
-              paddingBlockEnd: spacingFluidLg,
+              paddingBlockEnd: ref(spacingFluidLg),
             }),
             ...(isCascade && {
               display: 'contents',
@@ -120,19 +121,19 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         display: 'none',
         [mediaQueryMobile]: {
           ...(isSecondary && {
-            font: `${fontWeightSemibold} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+            font: `${ref(fontWeightSemibold)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
             display: 'block',
             gridArea: '2/3',
             placeSelf: 'center',
             zIndex: 2,
             margin: 0,
-            paddingInline: spacingStaticMd,
+            paddingInline: ref(spacingStaticMd),
             maxWidth: '100%',
             boxSizing: 'border-box',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
-            color: `var(${cssVarColorPrimary})`, // enables color inheritance for slotted content
+            color: ref(cssVarColorPrimary), // enables color inheritance for slotted content
           }),
         },
       },
@@ -151,7 +152,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       }),
       '::slotted(*)': {
         [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
-        [cssVariableGap]: spacingFluidXs, // reset css variable to prevent inheritance
+        [cssVariableGap]: ref(spacingFluidXs), // reset css variable to prevent inheritance
       },
     },
     // drawer subgrid in combination with scroller grid ensures no content squeezing during slide up animation, potentially caused by scrollbar
@@ -169,7 +170,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           inset: 0,
           insetInlineStart: scrollerWidthDesktop,
           display: 'grid',
-          gridTemplate: `${spacingFluidMd} minmax(0, 1fr)/${spacingFluidLg} minmax(0, 1fr) ${spacingFluidLg}`,
+          gridTemplate: `${ref(spacingFluidMd)} minmax(0, 1fr)/${ref(spacingFluidLg)} minmax(0, 1fr) ${ref(spacingFluidLg)}`,
         }),
         ...((isPrimary || isCascade) && {
           display: 'contents',
@@ -182,7 +183,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
       // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
       // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
-      background: `var(${cssVarColorBackgroundScroller})`,
+      background: ref(cssVarColorBackgroundScroller),
       [mediaQueryMobile]: {
         ...(isSecondary && {
           display: 'grid',
@@ -195,7 +196,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             position: 'sticky',
             top: 0,
             gridArea: '1/1/4/-1',
-            background: `linear-gradient(180deg,var(${cssVarColorBackgroundBase}) 0%,var(${cssVarColorBackgroundBase}) 65%,transparent 100%)`,
+            background: `linear-gradient(180deg,${ref(cssVarColorBackgroundBase)} 0%,${ref(cssVarColorBackgroundBase)} 65%,transparent 100%)`,
           },
         }),
         ...((isPrimary || isCascade) && {
@@ -228,8 +229,8 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           // TODO: not sure if this is ideal, since the consumer won't be able to change it when used with a custom
           //  grid-template, maybe <p-drilldown-button slot="button" /> would be an option, similar to <p-drilldown-link />
           gridColumn: '1/-1',
-          padding: spacingFluidSm,
-          margin: `0 calc(${spacingFluidSm} * -1)`,
+          padding: ref(spacingFluidSm),
+          margin: `0 calc(${ref(spacingFluidSm)} * -1)`,
         }),
     },
     back: {
@@ -247,7 +248,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         },
         [mediaQueryDesktop]: {
           gridArea: '2/2',
-          marginBottom: spacingFluidMd,
+          marginBottom: ref(spacingFluidMd),
           width: 'fit-content',
           height: 'fit-content',
           marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon

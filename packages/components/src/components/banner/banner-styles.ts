@@ -1,4 +1,5 @@
 import { gridExtendedOffsetBase } from '@porsche-design-system/emotion';
+import { ref, shadowLg } from '@porsche-design-system/stylesheets';
 import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
@@ -8,8 +9,7 @@ import {
   motionDurationMap,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { shadowLg } from '../../styles/css-variables';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep, overlayTransitionSupportsQuery } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getFunctionalComponentNotificationBaseStyles } from '../common/notification-base/notification-base-styles';
 import type { BannerPosition, BannerState } from './banner-utils';
@@ -45,7 +45,7 @@ export const getComponentCss = (
 ): string => {
   const duration = isOpen ? 'moderate' : 'short';
   const easing = isOpen ? 'in' : 'out';
-  const transition = `visibility 0s linear var(${cssVariableTransitionDuration},${isOpen ? '0s' : motionDurationMap[duration]}),${getTransition('transform', duration, easing)}`;
+  const transition = `visibility 0s linear ${ref(cssVariableTransitionDuration, isOpen ? '0s' : motionDurationMap[duration])},${getTransition('transform', duration, easing)}`;
 
   return getCss({
     ...mergeDeep(
@@ -61,23 +61,24 @@ export const getComponentCss = (
           '[popover]': {
             all: 'unset',
             position: 'fixed',
-            zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`, // Fallback for browsers lacking `transition-behavior: allow-discrete` — keeps the banner visible during fade-out after leaving the top layer.
+            zIndex: ref(cssVariableZIndex, BANNER_Z_INDEX), // Fallback for browsers lacking `transition-behavior: allow-discrete` — keeps the banner visible during fade-out after leaving the top layer.
             ...buildResponsiveStyles(position, (v: BannerPosition) => ({
               ...(v === 'top' && {
-                insetBlock: `var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback})) auto`,
+                insetBlock: `${ref(cssVarTop, ref(cssVarPositionTop, topBottomFallback))} auto`,
                 ...(!isOpen && {
-                  transform: `translate3d(-50%,calc(-100% - var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback}))),0)`,
+                  transform: `translate3d(-50%,calc(-100% - ${ref(cssVarTop, ref(cssVarPositionTop, topBottomFallback))}),0)`,
                 }),
               }),
               ...(v === 'bottom' && {
-                insetBlock: `auto var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback}))`,
+                insetBlock: `auto ${ref(cssVarBottom, ref(cssVarPositionBottom, topBottomFallback))}`,
                 ...(!isOpen && {
-                  transform: `translate3d(-50%,calc(var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback})) + 100%),0)`,
+                  transform: `translate3d(-50%,calc(${ref(cssVarBottom, ref(cssVarPositionBottom, topBottomFallback))} + 100%),0)`,
                 }),
               }),
             })),
             left: '50vw',
-            width: `min(calc(100vw - 2 * var(${cssVarInsetX},${gridExtendedOffsetBase})),var(${cssVarMaxWidth},100ch))`,
+            width: `min(calc(100vw - 2 * ${ref(cssVarInsetX, gridExtendedOffsetBase)}),${ref(cssVarMaxWidth, '100ch')})`,
+            overlay: 'none',
             '&:popover-open': {
               overlay: 'auto',
             },
@@ -92,16 +93,16 @@ export const getComponentCss = (
               transform: 'translate3d(-50%,0,0)',
             }),
             transition,
-            // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
-            '@supports (transition-behavior: allow-discrete)': {
+            // keep the popover on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
+            ...overlayTransitionSupportsQuery({
               transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete`,
-            },
+            }),
           },
         },
       },
       {
         notification: {
-          boxShadow: shadowLg,
+          boxShadow: ref(shadowLg),
           opacity: isOpen ? 1 : 0, // it's necessary to spit up opacity transition from [popover], otherwise frosted effect won't render
           transition: getTransition('opacity', duration, easing),
         },

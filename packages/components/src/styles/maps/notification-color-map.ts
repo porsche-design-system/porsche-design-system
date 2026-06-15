@@ -1,8 +1,8 @@
-import { colorError, colorInfo, colorSuccess, colorWarning } from '../css-variables';
+import { colorError, colorInfo, colorSuccess, colorWarning, ref } from '@porsche-design-system/stylesheets';
 
 export const notificationColorMap = {
-  info: colorInfo,
-  warning: colorWarning,
-  success: colorSuccess,
-  error: colorError,
+  info: ref(colorInfo),
+  warning: ref(colorWarning),
+  success: ref(colorSuccess),
+  error: ref(colorError),
 } as const;

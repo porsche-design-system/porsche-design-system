@@ -1,4 +1,3 @@
-import { addImportantToEachRule, forcedColorsMediaQuery, getTransition, hostHiddenStyles } from '../../styles';
 import {
   blurFrosted,
   colorContrastHigh,
@@ -6,12 +5,13 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
+  ref,
   spacingStaticSm,
   spacingStaticXs,
   typescale2Xs,
   typescaleSm,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, forcedColorsMediaQuery, getTransition, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { AI_TAG_ICON_PATH } from './ai-tag-utils';
@@ -27,7 +27,7 @@ export const getComponentCss = (): string => {
         whiteSpace: 'nowrap',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
-          font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
+          font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         }),
       },
       abbr: {
@@ -37,13 +37,13 @@ export const getComponentCss = (): string => {
         display: 'flex',
         alignItems: 'center',
         gap: '2px',
-        padding: `0 ${spacingStaticSm} 0 ${spacingStaticXs}`,
-        borderRadius: `var(${legacyRadiusSmall}, calc(${spacingStaticXs} + (${leadingNormal} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
-        fontSize: typescale2Xs,
-        color: colorContrastHigh,
-        background: colorFrostedStrong,
-        WebkitBackdropFilter: blurFrosted,
-        backdropFilter: blurFrosted,
+        padding: `0 ${ref(spacingStaticSm)} 0 ${ref(spacingStaticXs)}`,
+        borderRadius: `calc(${ref(spacingStaticXs)} + (${ref(leadingNormal)} / 2))`, // ensures pill shape has a maximum border radius to support multiline.
+        fontSize: ref(typescale2Xs),
+        color: ref(colorContrastHigh),
+        background: ref(colorFrostedStrong),
+        WebkitBackdropFilter: ref(blurFrosted),
+        backdropFilter: ref(blurFrosted),
         ...forcedColorsMediaQuery({
           outline: '1px solid transparent',
         }),
@@ -52,7 +52,7 @@ export const getComponentCss = (): string => {
           content: '""',
           width: '1rem',
           height: '1rem',
-          background: colorContrastHigh,
+          background: ref(colorContrastHigh),
           mask: iconMask,
           WebkitMask: iconMask,
           ...forcedColorsMediaQuery({

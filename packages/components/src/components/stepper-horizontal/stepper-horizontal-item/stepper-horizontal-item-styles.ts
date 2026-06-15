@@ -19,9 +19,9 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
-  radiusFull,
-} from '../../../styles/css-variables';
+  radiusXl,
+  ref,
+} from '@porsche-design-system/stylesheets';
 import { getCss } from '../../../utils';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
@@ -58,25 +58,25 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         display: 'grid',
         gridTemplateColumns: 'auto minmax(0,1fr)',
         gap: spacingStaticXs,
-        color: colorPrimary,
+        color: ref(colorPrimary),
         paddingInline: `${spacingStaticSm} 12px`,
         paddingBlock: '6px',
         width: 'max-content',
         cursor: isDisabled ? 'not-allowed' : 'pointer',
-        font: `${fontWeightNormal} inherit / ${leadingNormal} ${fontPorscheNext}`,
-        borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+        font: `${ref(fontWeightNormal)} inherit / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+        borderRadius: ref(radiusXl),
         ...(isStateCurrent && {
-          WebkitBackdropFilter: blurFrosted,
-          backdropFilter: blurFrosted,
-          background: colorFrosted,
+          WebkitBackdropFilter: ref(blurFrosted),
+          backdropFilter: ref(blurFrosted),
+          background: ref(colorFrosted),
         }),
         ...(!isDisabled &&
           hoverMediaQuery({
             transition: getTransition('background-color'),
             '&:hover': {
-              WebkitBackdropFilter: blurFrosted,
-              backdropFilter: blurFrosted,
-              background: colorFrosted,
+              WebkitBackdropFilter: ref(blurFrosted),
+              backdropFilter: ref(blurFrosted),
+              background: ref(colorFrosted),
             },
           })),
         '&:focus-visible': getFocusBaseStyles(),
@@ -92,13 +92,13 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
       },
     },
     icon: {
-      font: `inherit ${fontPorscheNext}`, // necessary because of all: unset and to correctly calculate width/height based on ex-unit
-      width: leadingNormal,
-      height: leadingNormal,
+      font: `inherit ${ref(fontPorscheNext)}`, // necessary because of all: unset and to correctly calculate width/height based on ex-unit
+      width: ref(leadingNormal),
+      height: ref(leadingNormal),
       forcedColorAdjust: 'none',
       ...(isStateCurrentOrUndefined && {
         display: 'grid',
-        backgroundImage: `radial-gradient(circle, ${colorPrimary} 60%, transparent 62%)`,
+        backgroundImage: `radial-gradient(circle, ${ref(colorPrimary)} 60%, transparent 62%)`,
         ...(isDisabled && {
           ...forcedColorsMediaQuery({
             backgroundImage: 'radial-gradient(circle, GrayText 60%, transparent 62%)',
@@ -112,7 +112,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
               [`:host(:nth-of-type(${i + 1})) &`]: {
                 WebkitMask: `${getInlineSVGBackgroundImage(svgNumber[i])} center/contain no-repeat`, // necessary for Sogou browser support :-)
                 mask: `${getInlineSVGBackgroundImage(svgNumber[i])} center/contain no-repeat`,
-                backgroundColor: colorCanvas,
+                backgroundColor: ref(colorCanvas),
               },
             }),
             {} as JssStyle

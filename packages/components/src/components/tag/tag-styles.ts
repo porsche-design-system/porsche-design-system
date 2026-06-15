@@ -34,52 +34,52 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusFull,
+  ref,
   spacingStatic2Xs,
   spacingStaticSm,
   typescaleXs,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
 import { getCss } from '../../utils';
 import type { TagVariant } from './tag-utils';
 
 const colorTextMap: Record<TagVariant, string> = {
-  primary: colorCanvas,
-  secondary: colorPrimary,
-  info: colorCanvas,
-  'info-frosted': colorPrimary,
-  success: colorCanvas,
-  'success-frosted': colorPrimary,
-  warning: colorCanvas,
-  'warning-frosted': colorPrimary,
-  error: colorCanvas,
-  'error-frosted': colorPrimary,
+  primary: ref(colorCanvas),
+  secondary: ref(colorPrimary),
+  info: ref(colorCanvas),
+  'info-frosted': ref(colorPrimary),
+  success: ref(colorCanvas),
+  'success-frosted': ref(colorPrimary),
+  warning: ref(colorCanvas),
+  'warning-frosted': ref(colorPrimary),
+  error: ref(colorCanvas),
+  'error-frosted': ref(colorPrimary),
 };
 
 const colorBackgroundMap: Record<TagVariant, string> = {
-  primary: colorPrimary,
-  secondary: colorFrostedStrong,
-  info: colorInfo,
-  'info-frosted': colorInfoFrosted,
-  success: colorSuccess,
-  'success-frosted': colorSuccessFrosted,
-  warning: colorWarning,
-  'warning-frosted': colorWarningFrosted,
-  error: colorError,
-  'error-frosted': colorErrorFrosted,
+  primary: ref(colorPrimary),
+  secondary: ref(colorFrostedStrong),
+  info: ref(colorInfo),
+  'info-frosted': ref(colorInfoFrosted),
+  success: ref(colorSuccess),
+  'success-frosted': ref(colorSuccessFrosted),
+  warning: ref(colorWarning),
+  'warning-frosted': ref(colorWarningFrosted),
+  error: ref(colorError),
+  'error-frosted': ref(colorErrorFrosted),
 };
 
 const colorBackgroundHoverMap: Record<TagVariant, string> = {
-  primary: colorContrastHigh,
-  secondary: colorFrosted,
-  info: colorInfoMedium,
-  'info-frosted': colorInfoFrostedSoft,
-  success: colorSuccessMedium,
-  'success-frosted': colorSuccessFrostedSoft,
-  warning: colorWarningMedium,
-  'warning-frosted': colorWarningFrostedSoft,
-  error: colorErrorMedium,
-  'error-frosted': colorErrorFrostedSoft,
+  primary: ref(colorContrastHigh),
+  secondary: ref(colorFrosted),
+  info: ref(colorInfoMedium),
+  'info-frosted': ref(colorInfoFrostedSoft),
+  success: ref(colorSuccessMedium),
+  'success-frosted': ref(colorSuccessFrostedSoft),
+  warning: ref(colorWarningMedium),
+  'warning-frosted': ref(colorWarningFrostedSoft),
+  error: ref(colorErrorMedium),
+  'error-frosted': ref(colorErrorFrostedSoft),
 };
 
 export const getColors = (
@@ -120,17 +120,17 @@ export const getComponentCss = (
         display: 'flex',
         gap: '2px',
         padding: compact
-          ? `${spacingStatic2Xs} ${spacingStaticSm}`
-          : `${spacingStaticXs} calc(12 * ${spacingStatic2Xs})`,
-        borderRadius: `var(${legacyRadiusSmall}, calc(${compact ? '1px' : spacingStaticXs} + (${leadingNormal} / 2)))`, // ensures pill shape has a maximum border radius to support multiline.
-        font: `${fontWeightNormal} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
+          ? `${ref(spacingStatic2Xs)} ${ref(spacingStaticSm)}`
+          : `${spacingStaticXs} calc(12 * ${ref(spacingStatic2Xs)})`,
+        borderRadius: `calc(${compact ? '1px' : spacingStaticXs} + (${ref(leadingNormal)} / 2))`, // ensures pill shape has a maximum border radius to support multiline.
+        font: `${ref(fontWeightNormal)} ${ref(typescaleXs)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         ...((variant === 'secondary' ||
           variant === 'info-frosted' ||
           variant === 'success-frosted' ||
           variant === 'warning-frosted' ||
           variant === 'error-frosted') && {
-          WebkitBackdropFilter: blurFrosted,
-          backdropFilter: blurFrosted,
+          WebkitBackdropFilter: ref(blurFrosted),
+          backdropFilter: ref(blurFrosted),
         }),
         color: textColor,
         background: backgroundColor,
@@ -160,7 +160,7 @@ export const getComponentCss = (
           content: '""',
           position: 'absolute',
           inset: 0,
-          borderRadius: `var(${legacyRadiusSmall}, ${radiusFull})`,
+          borderRadius: ref(radiusFull),
         },
         '&(a:focus-visible)::before,&(button:focus-visible)::before': getFocusBaseStyles(),
         '&(br)': {
