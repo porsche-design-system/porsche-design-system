@@ -93,7 +93,10 @@
       "!**/components-vue/**/*",
       "!**/shared/**/*",
       "!**/storefront-old/**/*",
-      "!**/utilities/**/*"
+      "!**/utilities/**/*",
+      "!**/*.svg",
+      "!packages/components/src/index.html",
+      "!packages/components/src/debug.html"
     ]
   },
   "css": {
