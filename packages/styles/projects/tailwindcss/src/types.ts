@@ -97,3 +97,38 @@ export type TailwindUtility = {
   /** The raw CSS declaration body (implementation detail, rendered verbatim). */
   raw: string;
 };
+
+/** A group of documented theme variables keyed by name, e.g. `tailwindMeta.color.background`. */
+export type TailwindVariableGroup = Record<string, TailwindThemeVariable>;
+
+/**
+ * The docs-oriented Tailwind meta: a single global object whose parts map 1:1 to
+ * the storefront Tailwind API pages and the LLM context. Unlike {@link TailwindCssMeta}
+ * (the rendering meta — a flat `CssNode` tree assembled into the generated CSS), this
+ * exposes the documented theme variables and utilities **already grouped** the way the
+ * docs consume them, so the storefront can read a part directly
+ * (e.g. `tailwindMeta.color.background`, `tailwindMeta.utilities.grid`) without having
+ * to query or transform the structure. It is derived from the same single sources of
+ * truth (`color`, `typography`, `radius`, `spacing`, the `*ThemeVariables` and the
+ * `*Utilities` arrays) that feed {@link TailwindCssMeta}.
+ */
+export type TailwindMeta = {
+  /** Color theme variables grouped exactly like the storefront color API tables. */
+  color: Record<'background' | 'foreground' | 'semantic' | 'a11y', TailwindVariableGroup>;
+  /** Typography theme variables grouped by family / weight / line height / text size. */
+  typography: Record<'family' | 'weight' | 'lineHeight' | 'text', TailwindVariableGroup>;
+  /** Spacing theme variables grouped into fluid / static. */
+  spacing: Record<'fluid' | 'static', TailwindVariableGroup>;
+  /** Border theme variables: the radius scale plus the border widths. */
+  border: { radius: TailwindVariableGroup; width: TailwindThemeVariable[] };
+  /** Blur theme variables. */
+  blur: TailwindThemeVariable[];
+  /** Shadow theme variables (documented only — deprecated aliases excluded). */
+  shadow: TailwindThemeVariable[];
+  /** Breakpoint theme variables backing the responsive variant prefixes (media-query page). */
+  breakpoint: TailwindThemeVariable[];
+  /** Motion theme variables grouped into duration / easing (documented only). */
+  motion: { duration: TailwindThemeVariable[]; easing: TailwindThemeVariable[] };
+  /** Documented `@utility` classes grouped by topic. */
+  utilities: Record<'heading' | 'text' | 'display' | 'gradient' | 'grid' | 'skeleton', TailwindUtility[]>;
+};

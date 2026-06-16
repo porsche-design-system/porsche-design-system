@@ -5,11 +5,18 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
   "style": "./dist/index.css",
   "exports": {
     ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs",
       "style": "./dist/index.css"
-    }
+    },
+    "./*": "./dist/*"
   },
   "sideEffects": false,
   "files": [
@@ -18,8 +25,9 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "npm run clean:build && npm run build:package",
-    "build:package": "tsx scripts/build.ts",
+    "build": "npm run clean:build && npm run build:css && npm run build:package",
+    "build:css": "tsx scripts/build.ts",
+    "build:package": "rollup -c rollup.config.mjs",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
@@ -32,7 +40,10 @@
   },
   "peerDependencies": {
     "@biomejs/biome": "*",
+    "@rollup/plugin-typescript": "*",
     "@types/node": "*",
+    "rollup": "*",
+    "rollup-plugin-generate-package-json": "*",
     "tailwindcss": "*",
     "vitest": "*",
     "tsx": "*",

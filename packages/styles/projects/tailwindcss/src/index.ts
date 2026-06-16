@@ -26,6 +26,7 @@ export * from './font';
 export * from './gradient';
 export * from './grid';
 export * from './heading';
+export * from './meta';
 export * from './motion';
 export * from './render';
 export * from './scheme';

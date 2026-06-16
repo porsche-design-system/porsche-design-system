@@ -51,6 +51,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/stackblitz": "0.0.0",
     "@porsche-design-system/stylesheets": "0.0.0",
+    "@porsche-design-system/tailwindcss": "0.0.0",
     "@porsche-design-system/tokens-meta": "0.0.0",
     "@next/mdx": "^16.2.3",
     "@mdx-js/loader": "^3.1.1",

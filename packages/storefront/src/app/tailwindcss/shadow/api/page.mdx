@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { TailwindVariablesTable } from '@/components/common/TailwindVariablesTable';
+import { tailwindMeta } from '@porsche-design-system/tailwindcss';
 
 export const metadata = {
   title: 'Tailwind CSS: Shadow - Porsche Design System',
@@ -12,8 +13,4 @@ export const metadata = {
 
 ## Variables
 
-| Tailwind CSS variable                            | Tailwind CSS class                           | Description                        |
-| ------------------------------------------------ | -------------------------------------------- | ---------------------------------- |
-| <Code variant="nowrap">--shadow-lg</Code>         | <Code variant="nowrap">.shadow-lg</Code>       | Applies a **large** `box-shadow`.  |
-| <Code variant="nowrap">--shadow-md</Code>         | <Code variant="nowrap">.shadow-md</Code>       | Applies a **medium** `box-shadow`. |
-| <Code variant="nowrap">--shadow-sm</Code>         | <Code variant="nowrap">.shadow-sm</Code>       | Applies a **small** `box-shadow`.  |
+<TailwindVariablesTable variables={tailwindMeta.shadow} />

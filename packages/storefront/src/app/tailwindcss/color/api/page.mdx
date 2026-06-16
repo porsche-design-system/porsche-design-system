@@ -1,40 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import {
-  colorCanvas,
-  colorSurface,
-  colorFrosted,
-  colorFrostedSoft,
-  colorFrostedStrong,
-  colorBackdrop,
-  colorPrimary,
-  colorContrastHigher,
-  colorContrastHigh,
-  colorContrastMedium,
-  colorContrastLow,
-  colorContrastLower,
-  colorInfo,
-  colorInfoMedium,
-  colorInfoLow,
-  colorInfoFrosted,
-  colorInfoFrostedSoft,
-  colorSuccess,
-  colorSuccessMedium,
-  colorSuccessLow,
-  colorSuccessFrosted,
-  colorSuccessFrostedSoft,
-  colorWarning,
-  colorWarningMedium,
-  colorWarningLow,
-  colorWarningFrosted,
-  colorWarningFrostedSoft,
-  colorError,
-  colorErrorMedium,
-  colorErrorLow,
-  colorErrorFrosted,
-  colorErrorFrostedSoft,
-  colorFocus,
-} from '@porsche-design-system/tokens';
+import { TailwindVariablesTable } from '@/components/common/TailwindVariablesTable';
+import { tailwindMeta } from '@porsche-design-system/tailwindcss';
 
 export const metadata = {
   title: 'Tailwind CSS: Color - Porsche Design System',
@@ -49,53 +15,16 @@ export const metadata = {
 
 ### Background
 
-| Color                                                                                     | Tailwind CSS variable                                | Tailwind CSS class                               | Description                                                                                                               | Value                                                  |
-| ----------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| <div className="bg-canvas w-10 h-10 rounded-md border border-contrast-low"></div>         | <Code variant="nowrap">--color-canvas</Code>         | <Code variant="nowrap">.bg-canvas</Code>         | Applies the **canvas** color, typically used for surfaces.                                                                | <Code variant="value">{colorCanvas}</Code>             |
-| <div className="bg-surface w-10 h-10 rounded-md border border-contrast-low"></div>        | <Code variant="nowrap">--color-surface</Code>        | <Code variant="nowrap">.bg-surface</Code>        | Applies the **surface** color, typically used for surfaces.                                                               | <Code variant="value">{colorSurface}</Code>            |
-| <div className="bg-frosted w-10 h-10 rounded-md border border-contrast-low"></div>        | <Code variant="nowrap">--color-frosted</Code>        | <Code variant="nowrap">.bg-frosted</Code>        | Applies the **frosted** color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | <Code variant="value">{colorFrosted}</Code>            |
-| <div className="bg-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>   | <Code variant="nowrap">--color-frosted-soft</Code>   | <Code variant="nowrap">.bg-frosted-soft</Code>   | Applies the **frosted** color, typically used as a background `:hover`.                                                   | <Code variant="value">{colorFrostedSoft}</Code>        |
-| <div className="bg-frosted-strong w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">--color-frosted-strong</Code> | <Code variant="nowrap">.bg-frosted-strong</Code> | Applies the **frosted** color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | <Code variant="value">{colorFrostedStrong}</Code>      |
-| <div className="bg-backdrop w-10 h-10 rounded-md border border-contrast-low"></div>       | <Code variant="nowrap">--color-backdrop</Code>       | <Code variant="nowrap">.bg-backdrop</Code>       | Applies the **backdrop** color, typically used for backdrops.                                                             | <Code variant="value">{colorBackdrop}</Code>           |
+<TailwindVariablesTable variables={tailwindMeta.color.background} showColorSwatch={true} />
 
 ### Foreground
 
-| Color                                                                                      | Tailwind CSS variable                                 | Tailwind CSS class                                   | Description                                                                                                        | Value                                                   |
-| ------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
-| <div className="bg-primary w-10 h-10 rounded-md border border-contrast-low"></div>         | <Code variant="nowrap">--color-primary</Code>         | <Code variant="nowrap">.text-primary</Code>          | Applies the **primary** color, typically used for text.                                                            | <Code variant="value">{colorPrimary}</Code>             |
-| <div className="bg-contrast-higher w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">--color-contrast-higher</Code> | <Code variant="nowrap">.text-contrast-higher</Code>  | Applies the **contrast-higher** color, typically used for text.                                                    | <Code variant="value">{colorContrastHigher}</Code>      |
-| <div className="bg-contrast-high w-10 h-10 rounded-md border border-contrast-low"></div>   | <Code variant="nowrap">--color-contrast-high</Code>   | <Code variant="nowrap">.text-contrast-high</Code>    | Applies the **contrast-high** color, typically used for text.                                                      | <Code variant="value">{colorContrastHigh}</Code>        |
-| <div className="bg-contrast-medium w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">--color-contrast-medium</Code> | <Code variant="nowrap">.text-contrast-medium</Code>  | Applies the **contrast-medium** color, typically used for text.                                                    | <Code variant="value">{colorContrastMedium}</Code>      |
-| <div className="bg-contrast-low w-10 h-10 rounded-md border border-contrast-low"></div>    | <Code variant="nowrap">--color-contrast-low</Code>    | <Code variant="nowrap">.border-contrast-low</Code>   | Applies the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant.   | <Code variant="value">{colorContrastLow}</Code>         |
-| <div className="bg-contrast-lower w-10 h-10 rounded-md border border-contrast-low"></div>  | <Code variant="nowrap">--color-contrast-lower</Code>  | <Code variant="nowrap">.border-contrast-lower</Code> | Applies the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant. | <Code variant="value">{colorContrastLower}</Code>       |
+<TailwindVariablesTable variables={tailwindMeta.color.foreground} showColorSwatch={true} />
 
 ### Semantic
 
-| Color                                                                                           | Tailwind CSS variable                                      | Tailwind CSS class                                                                        | Description                                                                                                                     | Value                                                       |
-| ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| <div className="bg-info w-10 h-10 rounded-md border border-contrast-low"></div>                 | <Code variant="nowrap">--color-info</Code>                 | <Code variant="nowrap">.text-info</Code>                                                  | Applies the **info** color, typically used for text.                                                                            | <Code variant="value">{colorInfo}</Code>                    |
-| <div className="bg-info-medium w-10 h-10 rounded-md border border-contrast-low"></div>          | <Code variant="nowrap">--color-info-medium</Code>          | <Code variant="nowrap">.text-info</Code> <Code variant="nowrap">.border-info</Code>       | Applies the **info** color, typically used for text or border.                                                                  | <Code variant="value">{colorInfoMedium}</Code>              |
-| <div className="bg-info-low w-10 h-10 rounded-md border border-contrast-low"></div>             | <Code variant="nowrap">--color-info-low</Code>             | <Code variant="nowrap">.text-info</Code> <Code variant="nowrap">.border-info</Code>       | Applies the **info** color, typically used for text or border.                                                                  | <Code variant="value">{colorInfoLow}</Code>                 |
-| <div className="bg-info-frosted w-10 h-10 rounded-md border border-contrast-low"></div>         | <Code variant="nowrap">--color-info-frosted</Code>         | <Code variant="nowrap">.bg-info-frosted</Code>                                            | Applies the **info-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.    | <Code variant="value">{colorInfoFrosted}</Code>             |
-| <div className="bg-info-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>    | <Code variant="nowrap">--color-info-frosted-soft</Code>    | <Code variant="nowrap">.bg-info-frosted-soft</Code>                                       | Applies the **info-frosted-soft** color, typically used as background `:hover`.                                                 | <Code variant="value">{colorInfoFrostedSoft}</Code>         |
-| <div className="bg-success w-10 h-10 rounded-md border border-contrast-low"></div>              | <Code variant="nowrap">--color-success</Code>              | <Code variant="nowrap">.text-success</Code>                                               | Applies the **success** color, typically used for text.                                                                         | <Code variant="value">{colorSuccess}</Code>                 |
-| <div className="bg-success-medium w-10 h-10 rounded-md border border-contrast-low"></div>       | <Code variant="nowrap">--color-success-medium</Code>       | <Code variant="nowrap">.text-success</Code> <Code variant="nowrap">.border-success</Code> | Applies the **success** color, typically used for text or border.                                                               | <Code variant="value">{colorSuccessMedium}</Code>           |
-| <div className="bg-success-low w-10 h-10 rounded-md border border-contrast-low"></div>          | <Code variant="nowrap">--color-success-low</Code>          | <Code variant="nowrap">.text-success</Code> <Code variant="nowrap">.border-success</Code> | Applies the **success** color, typically used for text or border.                                                               | <Code variant="value">{colorSuccessLow}</Code>              |
-| <div className="bg-success-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | <Code variant="nowrap">--color-success-frosted</Code>      | <Code variant="nowrap">.bg-success-frosted</Code>                                         | Applies the **success-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | <Code variant="value">{colorSuccessFrosted}</Code>          |
-| <div className="bg-success-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">--color-success-frosted-soft</Code> | <Code variant="nowrap">.bg-success-frosted-soft</Code>                                    | Applies the **success-frosted-soft** color, typically used as background `:hover`.                                              | <Code variant="value">{colorSuccessFrostedSoft}</Code>      |
-| <div className="bg-warning w-10 h-10 rounded-md border border-contrast-low"></div>              | <Code variant="nowrap">--color-warning</Code>              | <Code variant="nowrap">.text-warning</Code>                                               | Applies the **warning** color, typically used for text.                                                                         | <Code variant="value">{colorWarning}</Code>                 |
-| <div className="bg-warning-medium w-10 h-10 rounded-md border border-contrast-low"></div>       | <Code variant="nowrap">--color-warning-medium</Code>       | <Code variant="nowrap">.text-warning</Code> <Code variant="nowrap">.border-warning</Code> | Applies the **warning** color, typically used for text or border.                                                               | <Code variant="value">{colorWarningMedium}</Code>           |
-| <div className="bg-warning-low w-10 h-10 rounded-md border border-contrast-low"></div>          | <Code variant="nowrap">--color-warning-low</Code>          | <Code variant="nowrap">.text-warning</Code> <Code variant="nowrap">.border-warning</Code> | Applies the **warning** color, typically used for text or border.                                                               | <Code variant="value">{colorWarningLow}</Code>              |
-| <div className="bg-warning-frosted w-10 h-10 rounded-md border border-contrast-low"></div>      | <Code variant="nowrap">--color-warning-frosted</Code>      | <Code variant="nowrap">.bg-warning-frosted</Code>                                         | Applies the **warning-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | <Code variant="value">{colorWarningFrosted}</Code>          |
-| <div className="bg-warning-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">--color-warning-frosted-soft</Code> | <Code variant="nowrap">.bg-warning-frosted-soft</Code>                                    | Applies the **warning-frosted-soft** color, typically used as background `:hover`.                                              | <Code variant="value">{colorWarningFrostedSoft}</Code>      |
-| <div className="bg-error w-10 h-10 rounded-md border border-contrast-low"></div>                | <Code variant="nowrap">--color-error</Code>                | <Code variant="nowrap">.text-error</Code>                                                 | Applies the **error** color, typically used for text.                                                                           | <Code variant="value">{colorError}</Code>                   |
-| <div className="bg-error-medium w-10 h-10 rounded-md border border-contrast-low"></div>         | <Code variant="nowrap">--color-error-medium</Code>         | <Code variant="nowrap">.text-error</Code> <Code variant="nowrap">.border-error</Code>     | Applies the **error** color, typically used for text or border.                                                                 | <Code variant="value">{colorErrorMedium}</Code>             |
-| <div className="bg-error-low w-10 h-10 rounded-md border border-contrast-low"></div>            | <Code variant="nowrap">--color-error-low</Code>            | <Code variant="nowrap">.text-error</Code> <Code variant="nowrap">.border-error</Code>     | Applies the **error** color, typically used for text or border.                                                                 | <Code variant="value">{colorErrorLow}</Code>                |
-| <div className="bg-error-frosted w-10 h-10 rounded-md border border-contrast-low"></div>        | <Code variant="nowrap">--color-error-frosted</Code>        | <Code variant="nowrap">.bg-error-frosted</Code>                                           | Applies the **error-frosted** color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`.   | <Code variant="value">{colorErrorFrosted}</Code>            |
-| <div className="bg-error-frosted-soft w-10 h-10 rounded-md border border-contrast-low"></div>   | <Code variant="nowrap">--color-error-frosted-soft</Code>   | <Code variant="nowrap">.bg-error-frosted-soft</Code>                                      | Applies the **error-frosted-soft** color, typically used as background `:hover`.                                                | <Code variant="value">{colorErrorFrostedSoft}</Code>        |
+<TailwindVariablesTable variables={tailwindMeta.color.semantic} showColorSwatch={true} />
 
 ### A11y
 
-| Color                                                                            | Tailwind CSS variable                       | Tailwind CSS class                           | Description                                                                             | Value                                          |
-| -------------------------------------------------------------------------------- | ------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| <div className="bg-focus w-10 h-10 rounded-md border border-contrast-low"></div> | <Code variant="nowrap">--color-focus</Code> | <Code variant="nowrap">.outline-focus</Code> | Applies the **focus** color, typically used as the outline for `:focus-visible` states. | <Code variant="value">{colorFocus}</Code>      |
+<TailwindVariablesTable variables={tailwindMeta.color.a11y} showColorSwatch={true} />
