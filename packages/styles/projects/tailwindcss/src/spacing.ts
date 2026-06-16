@@ -18,8 +18,8 @@ import type { TailwindThemeVariable } from './types';
 /**
  * Nested single source of truth for spacing, grouped like `cssVariablesMeta`
  * (fluid / static). Access a single spacing via its path, e.g. `spacing.fluid.md`,
- * to read e.g. `spacing.fluid.md.property`. The `@theme` variables
- * ({@link spacingThemeVariables}) are produced by flat-mapping the groups.
+ * to read e.g. `spacing.fluid.md.property`. The generated `@theme` block flattens
+ * these groups.
  */
 export const spacing = {
   fluid: {
@@ -118,10 +118,3 @@ export const spacing = {
     },
   },
 } satisfies Record<string, Record<string, TailwindThemeVariable>>;
-
-// Spacing theme variables — flattened from the nested groups. Order matches the
-// generated `@theme` block.
-export const spacingThemeVariables: TailwindThemeVariable[] = [
-  ...Object.values(spacing.fluid),
-  ...Object.values(spacing.static),
-];

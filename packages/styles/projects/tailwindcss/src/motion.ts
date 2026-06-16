@@ -66,15 +66,17 @@ export const durationThemeVariables: TailwindThemeVariable[] = [
   },
 ];
 
-// Motion — infrastructure defaults (no Tailwind utility classes).
-const defaultTransitionTimingFunction: TailwindThemeVariable = {
+// Motion — infrastructure defaults (no Tailwind utility classes). Non-documented:
+// not part of `tailwindMeta`, but interleaved into the `@theme` block by the CSS
+// assembly in `index.ts`.
+export const defaultTransitionTimingFunction: TailwindThemeVariable = {
   property: '--default-transition-timing-function',
   value: easeInOut,
   description: 'Tailwind default `transition-timing-function` for the `transition-*` utilities.',
   group: 'motion',
 };
 
-const defaultTransitionDuration: TailwindThemeVariable = {
+export const defaultTransitionDuration: TailwindThemeVariable = {
   property: '--default-transition-duration',
   value: durationSm,
   description: 'Tailwind default `transition-duration` for the `transition-*` utilities.',
@@ -123,11 +125,3 @@ export const motion = {
   duration: durationThemeVariables,
   easing: easeThemeVariables,
 };
-
-export const allMotionThemeVariables: TailwindThemeVariable[] = [
-  defaultTransitionTimingFunction,
-  ...motion.easing,
-  defaultTransitionDuration,
-  ...motion.duration,
-  ...motionDeprecatedThemeVariables,
-];

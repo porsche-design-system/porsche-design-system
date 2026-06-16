@@ -51,5 +51,3 @@ export const shadowDeprecatedThemeVariables: TailwindThemeVariable[] = [
     group: 'shadow',
   },
 ];
-
-export const allShadowThemeVariables: TailwindThemeVariable[] = [...shadow, ...shadowDeprecatedThemeVariables];

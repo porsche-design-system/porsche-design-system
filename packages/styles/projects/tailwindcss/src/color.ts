@@ -99,12 +99,12 @@ import {
   colorWarningMediumDark,
   colorWarningMediumLight,
 } from '@porsche-design-system/tokens';
-import type { CssNode, TailwindThemeVariable, TailwindThemeVariableGroup } from './types';
+import type { CssNode, TailwindThemeVariableGroup } from './types';
 
 /**
- * Full description of a single color — the single source of truth from which the
- * `@theme` variable ({@link colorThemeVariables}) and the per-scheme fallback
- * assignments ({@link colorLightVars} / {@link colorDarkVars}) are all derived.
+ * Full description of a single color — the single source of truth for the `@theme`
+ * color variable, the storefront docs (via {@link color} / `tailwindMeta.color`) and
+ * the per-scheme fallback assignments ({@link colorLightVars} / {@link colorDarkVars}).
  * The `group` is intentionally omitted: it is encoded by the nesting key inside
  * {@link color}, mirroring the structure of the storefront `cssVariablesMeta`.
  */
@@ -139,11 +139,11 @@ type ColorGroup = Extract<TailwindThemeVariableGroup, 'background' | 'foreground
  * Nested single source of truth for every color, grouped exactly like the
  * storefront API tables / `cssVariablesMeta` (a11y / background / foreground /
  * semantic). Access a single color via its path, e.g. `color.background.frosted`,
- * to read e.g. `color.background.frosted.property`. The derived `@theme` variables
- * ({@link colorThemeVariables}) and the per-scheme fallbacks ({@link colorLightVars}
- * / {@link colorDarkVars}) are produced by flat-mapping the groups, so there is
- * exactly one place to add, remove or reorder a color. The group/key order is
- * preserved in the generated `@theme` block; the docs reorder by group.
+ * to read e.g. `color.background.frosted.property`. The generated `@theme` block
+ * (flattened in `index.ts`) and the per-scheme fallbacks ({@link colorLightVars} /
+ * {@link colorDarkVars}) are produced from these groups, so there is exactly one
+ * place to add, remove or reorder a color. The group/key order is preserved in the
+ * generated `@theme` block; the docs render each group as its own section.
  */
 export const color = {
   a11y: {
@@ -465,17 +465,10 @@ export const color = {
 // per-scheme fallback assignments below.
 const colorConfigs: ColorConfig[] = Object.values(color).flatMap((group) => Object.values(group));
 
-// Flat list of every color theme variable for the `@theme` color section, in the
-// nested `color` source order (a11y → background → foreground → semantic). The docs
-// consume the grouped `color` object directly, so both share the same objects.
-export const colorThemeVariables: TailwindThemeVariable[] = Object.values(color).flatMap((group) =>
-  Object.values(group)
-);
-
 // Fallback variable assignments for browsers without `light-dark()` support.
 // Used both for the `:root` default and inside `@utility scheme-*` blocks so
 // that Tailwind applies its configured prefix (e.g. `tw:scheme-dark`). They
-// assign the same dynamic properties read by `colorThemeVariables`.
+// assign the same dynamic properties read by the `@theme` color variables.
 export const colorLightVars: CssNode[] = colorConfigs.map(({ dynamicProperty, light }) => ({
   property: dynamicProperty,
   value: light,

@@ -21,8 +21,8 @@ import type { TailwindThemeVariable } from './types';
  * Nested single source of truth for typography, grouped like `cssVariablesMeta`
  * (family / weight / lineHeight / text). Access a single variable via its path,
  * e.g. `typography.weight.semibold`, to read e.g. `typography.weight.semibold.property`.
- * The `@theme` variables ({@link typographyThemeVariables}) are produced by
- * flattening the groups (plus the {@link textSizeCompanions} below).
+ * The generated `@theme` block flattens these groups (plus the {@link textSizeCompanions}
+ * below).
  */
 export const typography = {
   family: {
@@ -151,13 +151,10 @@ export const typography = {
   },
 } satisfies Record<string, Record<string, TailwindThemeVariable>>;
 
-// Text-size theme variables — the nested `typography.text` group. Kept as a
-// dedicated export because utilities consume it to build the `prose-*` font shorthands.
-export const textSizeThemeVariables: TailwindThemeVariable[] = Object.values(typography.text);
-
 // Companion theme variables for each text size: the Tailwind-required `--*--line-height`
-// pairing plus the `--text-base` alias for `xs`. Kept separate from `typographyThemeVariables`
-// so storefront docs can choose whether to surface them.
+// pairing plus the `--text-base` alias for `xs`. Non-documented: kept out of
+// `tailwindMeta.typography` (the storefront docs don't surface them) but appended to
+// the `@theme` typography section by the CSS assembly in `index.ts`.
 export const textSizeCompanions: TailwindThemeVariable[] = [
   {
     property: '--text-base',
@@ -254,15 +251,4 @@ export const textSizeCompanions: TailwindThemeVariable[] = [
       'Sets the line height applied alongside `--text-5xl` by the `.text-5xl` utility for the **5x-large** type scale.',
     group: 'typography',
   },
-];
-
-// All typography theme variables — consumed by the @theme block. Flattened from
-// the nested `typography` groups (family → weight → lineHeight → text), followed by
-// the companions.
-export const typographyThemeVariables: TailwindThemeVariable[] = [
-  ...Object.values(typography.family),
-  ...Object.values(typography.weight),
-  ...Object.values(typography.lineHeight),
-  ...textSizeThemeVariables,
-  ...textSizeCompanions,
 ];
