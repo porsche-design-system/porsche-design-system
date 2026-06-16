@@ -2,7 +2,7 @@ import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
 import type { TailwindThemeVariable } from './types';
 
 // Shadow.
-export const shadowThemeVariables: TailwindThemeVariable[] = [
+export const shadow: TailwindThemeVariable[] = [
   {
     property: '--shadow-sm',
     value: shadowSm,
@@ -27,7 +27,7 @@ export const shadowThemeVariables: TailwindThemeVariable[] = [
 ];
 
 // Shadow — deprecated aliases.
-/** @deprecated Use `shadowThemeVariables` (`--shadow-sm/md/lg`) instead. */
+/** @deprecated Use `shadow` (`--shadow-sm/md/lg`) instead. */
 export const shadowDeprecatedThemeVariables: TailwindThemeVariable[] = [
   {
     property: '--shadow-low',
@@ -52,4 +52,4 @@ export const shadowDeprecatedThemeVariables: TailwindThemeVariable[] = [
   },
 ];
 
-export const allShadowThemeVariables: TailwindThemeVariable[] = [...shadowThemeVariables, ...shadowDeprecatedThemeVariables];
+export const allShadowThemeVariables: TailwindThemeVariable[] = [...shadow, ...shadowDeprecatedThemeVariables];

@@ -9,7 +9,7 @@ import {
 import type { TailwindThemeVariable } from './types';
 
 // Breakpoint — generates the responsive variant prefixes (e.g. `md:`).
-export const breakpointThemeVariables: TailwindThemeVariable[] = [
+export const breakpoint: TailwindThemeVariable[] = [
   {
     property: '--breakpoint-xs',
     value: `${breakpointXs}px`,

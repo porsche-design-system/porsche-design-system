@@ -1,6 +1,6 @@
-import { blurThemeVariables } from './blur';
+import { blur } from './blur';
 import { borderThemeVariables } from './border';
-import { breakpointThemeVariables } from './breakpoint';
+import { breakpoint } from './breakpoint';
 import { colorThemeVariables } from './color';
 import { displayUtilities } from './display';
 import { fontBaseLayer } from './font';
@@ -62,10 +62,10 @@ export const tailwindCssMeta: TailwindCssMeta = {
         { property: '--color-white', value: '#fff' },
         ...colorThemeVariables,
         ...typographyThemeVariables,
-        ...breakpointThemeVariables,
+        ...breakpoint,
         ...spacingThemeVariables,
         ...borderThemeVariables,
-        ...blurThemeVariables,
+        ...blur,
         ...allShadowThemeVariables,
         { property: '--default-outline-width', value: '2px' },
         ...allMotionThemeVariables,

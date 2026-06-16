@@ -1,13 +1,13 @@
-import { blurThemeVariables } from './blur';
+import { blur } from './blur';
 import { border } from './border';
-import { breakpointThemeVariables } from './breakpoint';
+import { breakpoint } from './breakpoint';
 import { color } from './color';
 import { displayUtilities } from './display';
 import { gradientUtilities } from './gradient';
 import { gridUtilities } from './grid';
 import { headingUtilities } from './heading';
 import { motion } from './motion';
-import { shadowThemeVariables } from './shadow';
+import { shadow } from './shadow';
 import { skeletonUtilities } from './skeleton';
 import { spacing } from './spacing';
 import { textUtilities } from './text';
@@ -32,9 +32,9 @@ export const tailwindMeta = {
   typography,
   spacing,
   border,
-  blur: blurThemeVariables,
-  shadow: shadowThemeVariables,
-  breakpoint: breakpointThemeVariables,
+  blur,
+  shadow,
+  breakpoint,
   motion,
   utilities: {
     heading: headingUtilities,
