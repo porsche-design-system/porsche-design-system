@@ -1,4 +1,4 @@
-import type { Meta } from '..';
+import type { Meta } from '../meta.types';
 import { getFocusStyle, getFocusVisibleStyle } from '.';
 
 export const focusMeta: Meta = {

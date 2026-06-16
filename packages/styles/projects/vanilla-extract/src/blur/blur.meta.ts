@@ -1,4 +1,4 @@
-import type { Meta } from '..';
+import type { Meta } from '../meta.types';
 import { blurFrosted, frostedGlassStyle } from '.';
 
 export const blurMeta: Meta = {

@@ -1,4 +1,4 @@
-import type { Meta } from '..';
+import type { Meta } from '../meta.types';
 import { dropShadowHighStyle, dropShadowLowStyle, dropShadowMediumStyle, shadowLg, shadowMd, shadowSm } from '.';
 
 export const shadowMeta: Meta = {
