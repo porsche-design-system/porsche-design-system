@@ -32,6 +32,20 @@ Every week, we update our NPM packages:
 We are using Dependabot to manage our dependencies. Every note about not updatable dependencies in this document is also
 reflected in the configuration file under `.github/dependabot.yml` and must be kept in sync!
 
+## Strict peer dependency resolution
+
+`npm install` runs with **strict** peer dependency resolution (npm 7+ default). We intentionally do **not** use
+`--legacy-peer-deps` or `--force`, and these are not enabled in `.npmrc`.
+
+When a third-party package declares a peer dependency range that conflicts with the versions we pin, resolve it
+explicitly via the `overrides` field in the root `package.json` instead of disabling peer-dependency checks globally.
+
+Current overrides:
+
+- `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
+  `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
+  TypeScript optionally for analyzing TS sources.
+
 ## Not updatable dependencies
 
 These dependencies are intentionally held back and are ignored in `.github/dependabot.yml`:

@@ -212,6 +212,11 @@
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0"
   },
+  "overrides": {
+    "madge": {
+      "typescript": "$typescript"
+    }
+  },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
     "@biomejs/biome": "^2.5.0",
