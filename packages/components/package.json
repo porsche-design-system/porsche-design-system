@@ -39,9 +39,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.6",
-    "@porsche-design-system/crest": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
-    "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/model-signatures": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/emotion": "0.0.0",
@@ -54,7 +52,6 @@
     "change-case": "^5.4.4",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^9.5.1",
-    "happy-dom": "^20.9.0",
     "@tailwindcss/cli": "^4.2.2"
   },
   "peerDependencies": {

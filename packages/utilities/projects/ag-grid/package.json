@@ -16,10 +16,7 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
-  "dependencies": {
-    "@porsche-design-system/icons": "0.0.0",
-    "@porsche-design-system/emotion": "0.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "ag-grid-community": "35.2.1"

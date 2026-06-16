@@ -239,7 +239,6 @@
     "rollup-plugin-modify": "^3.0.0",
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
-    "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.99.0",
     "semver": "^7.7.4",
     "svgo": "^4.0.1",

@@ -19,8 +19,7 @@
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0",
-    "react-jss": "^10.10.0"
+    "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
     "@types/madge": "*",

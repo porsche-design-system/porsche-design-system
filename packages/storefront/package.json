@@ -44,8 +44,7 @@
     "@algolia/cache-in-memory": "^4.26.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-instantsearch": "^7.29.0",
-    "react-instantsearch-nextjs": "^1.1.4"
+    "react-instantsearch": "^7.29.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
@@ -60,7 +59,6 @@
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "autoprefixer": "^10.4.27",
     "remark-gfm": "^4.0.1",
     "cheerio": "^1.2.0",
     "@testing-library/jest-dom": "^6.9.1",
