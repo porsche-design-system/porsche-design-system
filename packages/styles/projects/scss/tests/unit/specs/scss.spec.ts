@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from 'node:fs';
 import { expect, it } from 'vitest';
 import { fileMap } from '../../../scripts/fileMap';
 

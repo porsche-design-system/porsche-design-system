@@ -12,6 +12,5 @@ export default defineConfig({
       tsconfig: './tsconfig.test.json',
     },
   },
-  // @ts-ignore
   plugins: [vanillaExtractPlugin()],
 });

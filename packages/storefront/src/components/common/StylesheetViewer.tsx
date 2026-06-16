@@ -1,5 +1,5 @@
 import path from 'node:path';
-import fs from 'fs';
+import fs from 'node:fs';
 import * as prettier from 'prettier';
 import type React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';

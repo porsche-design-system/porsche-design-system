@@ -170,6 +170,9 @@
             "useLiteralKeys": "off",
             "noForEach": "off"
           },
+          "performance": {
+            "noDynamicNamespaceImportAccess": "off"
+          },
           "suspicious": {
             "noConsole": "off",
             "noEmptyBlockStatements": "off"

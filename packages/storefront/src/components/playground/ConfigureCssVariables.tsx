@@ -19,7 +19,6 @@ type ConfigureCssVariablesProps<T extends ConfiguratorTagNames> = {
 export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
   componentCssVariables,
   configuredCssVariables,
-  defaultCssVariables,
   onUpdateCssVariables,
 }: ConfigureCssVariablesProps<T>) => {
   const styleObject = Object.entries(configuredCssVariables ?? {}).find(([key]) => key === 'style')?.[1];
