@@ -27,6 +27,7 @@
   "scripts": {
     "build": "npm run clean:build && npm run build:css && npm run build:package",
     "build:css": "tsx scripts/build.ts",
+    "build:skill": "tsx scripts/build-skill.ts",
     "build:package": "rollup -c rollup.config.mjs",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
