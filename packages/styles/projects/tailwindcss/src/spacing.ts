@@ -13,25 +13,7 @@ import {
   spacingStaticXl,
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
-import { sizeLabel } from './shared';
-import type { TailwindThemeVariable, TailwindThemeVariableGroup } from './types';
-
-/** A single spacing entry without its `group` (the group is encoded by the nesting key). */
-type SpacingConfig = Omit<TailwindThemeVariable, 'group'>;
-
-const makeFluid = (size: string, value: string | number): SpacingConfig => ({
-  property: `--spacing-fluid-${size}`,
-  value,
-  classes: [`.p-fluid-${size}`, `.m-fluid-${size}`],
-  description: `Applies the **${sizeLabel[size]} fluid** spacing.`,
-});
-
-const makeStatic = (size: string, value: string | number): SpacingConfig => ({
-  property: `--spacing-static-${size}`,
-  value,
-  classes: [`.p-static-${size}`, `.m-static-${size}`],
-  description: `Applies the **${sizeLabel[size]} static** spacing.`,
-});
+import type { TailwindThemeVariable } from './types';
 
 /**
  * Nested single source of truth for spacing, grouped like `cssVariablesMeta`
@@ -41,26 +23,105 @@ const makeStatic = (size: string, value: string | number): SpacingConfig => ({
  */
 export const spacing = {
   fluid: {
-    xs: makeFluid('xs', spacingFluidXs),
-    sm: makeFluid('sm', spacingFluidSm),
-    md: makeFluid('md', spacingFluidMd),
-    lg: makeFluid('lg', spacingFluidLg),
-    xl: makeFluid('xl', spacingFluidXl),
-    '2xl': makeFluid('2xl', spacingFluid2Xl),
+    xs: {
+      property: '--spacing-fluid-xs',
+      value: spacingFluidXs,
+      classes: ['.p-fluid-xs', '.m-fluid-xs'],
+      description: 'Applies the **x-small fluid** spacing.',
+      group: 'fluid',
+    },
+    sm: {
+      property: '--spacing-fluid-sm',
+      value: spacingFluidSm,
+      classes: ['.p-fluid-sm', '.m-fluid-sm'],
+      description: 'Applies the **small fluid** spacing.',
+      group: 'fluid',
+    },
+    md: {
+      property: '--spacing-fluid-md',
+      value: spacingFluidMd,
+      classes: ['.p-fluid-md', '.m-fluid-md'],
+      description: 'Applies the **medium fluid** spacing.',
+      group: 'fluid',
+    },
+    lg: {
+      property: '--spacing-fluid-lg',
+      value: spacingFluidLg,
+      classes: ['.p-fluid-lg', '.m-fluid-lg'],
+      description: 'Applies the **large fluid** spacing.',
+      group: 'fluid',
+    },
+    xl: {
+      property: '--spacing-fluid-xl',
+      value: spacingFluidXl,
+      classes: ['.p-fluid-xl', '.m-fluid-xl'],
+      description: 'Applies the **x-large fluid** spacing.',
+      group: 'fluid',
+    },
+    '2xl': {
+      property: '--spacing-fluid-2xl',
+      value: spacingFluid2Xl,
+      classes: ['.p-fluid-2xl', '.m-fluid-2xl'],
+      description: 'Applies the **2x-large fluid** spacing.',
+      group: 'fluid',
+    },
   },
   static: {
-    '2xs': makeStatic('2xs', spacingStatic2Xs),
-    xs: makeStatic('xs', spacingStaticXs),
-    sm: makeStatic('sm', spacingStaticSm),
-    md: makeStatic('md', spacingStaticMd),
-    lg: makeStatic('lg', spacingStaticLg),
-    xl: makeStatic('xl', spacingStaticXl),
-    '2xl': makeStatic('2xl', spacingStatic2Xl),
+    '2xs': {
+      property: '--spacing-static-2xs',
+      value: spacingStatic2Xs,
+      classes: ['.p-static-2xs', '.m-static-2xs'],
+      description: 'Applies the **2x-small static** spacing.',
+      group: 'static',
+    },
+    xs: {
+      property: '--spacing-static-xs',
+      value: spacingStaticXs,
+      classes: ['.p-static-xs', '.m-static-xs'],
+      description: 'Applies the **x-small static** spacing.',
+      group: 'static',
+    },
+    sm: {
+      property: '--spacing-static-sm',
+      value: spacingStaticSm,
+      classes: ['.p-static-sm', '.m-static-sm'],
+      description: 'Applies the **small static** spacing.',
+      group: 'static',
+    },
+    md: {
+      property: '--spacing-static-md',
+      value: spacingStaticMd,
+      classes: ['.p-static-md', '.m-static-md'],
+      description: 'Applies the **medium static** spacing.',
+      group: 'static',
+    },
+    lg: {
+      property: '--spacing-static-lg',
+      value: spacingStaticLg,
+      classes: ['.p-static-lg', '.m-static-lg'],
+      description: 'Applies the **large static** spacing.',
+      group: 'static',
+    },
+    xl: {
+      property: '--spacing-static-xl',
+      value: spacingStaticXl,
+      classes: ['.p-static-xl', '.m-static-xl'],
+      description: 'Applies the **x-large static** spacing.',
+      group: 'static',
+    },
+    '2xl': {
+      property: '--spacing-static-2xl',
+      value: spacingStatic2Xl,
+      classes: ['.p-static-2xl', '.m-static-2xl'],
+      description: 'Applies the **2x-large static** spacing.',
+      group: 'static',
+    },
   },
-};
+} satisfies Record<string, Record<string, TailwindThemeVariable>>;
 
-// Spacing theme variables — flat-mapped from the nested groups, tagging each
-// entry with its group. Order matches the generated `@theme` block.
-export const spacingThemeVariables: TailwindThemeVariable[] = Object.entries(spacing).flatMap(([group, sizes]) =>
-  Object.values(sizes).map((config) => ({ ...config, group: group as TailwindThemeVariableGroup }))
-);
+// Spacing theme variables — flattened from the nested groups. Order matches the
+// generated `@theme` block.
+export const spacingThemeVariables: TailwindThemeVariable[] = [
+  ...Object.values(spacing.fluid),
+  ...Object.values(spacing.static),
+];

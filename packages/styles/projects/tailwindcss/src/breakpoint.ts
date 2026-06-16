@@ -6,24 +6,50 @@ import {
   breakpointXl,
   breakpointXs,
 } from '@porsche-design-system/tokens';
-import { sizeLabel } from './shared';
 import type { TailwindThemeVariable } from './types';
 
 // Breakpoint — generates the responsive variant prefixes (e.g. `md:`).
-const breakpointValues: Record<string, number> = {
-  xs: breakpointXs,
-  sm: breakpointSm,
-  md: breakpointMd,
-  lg: breakpointLg,
-  xl: breakpointXl,
-  '2xl': breakpoint2Xl,
-};
-export const breakpointThemeVariables: TailwindThemeVariable[] = (['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map(
-  (size) => ({
-    property: `--breakpoint-${size}`,
-    value: `${breakpointValues[size]}px`,
-    classes: [`${size}:*`],
-    description: `Defines the **${sizeLabel[size]}** responsive breakpoint.`,
+export const breakpointThemeVariables: TailwindThemeVariable[] = [
+  {
+    property: '--breakpoint-xs',
+    value: `${breakpointXs}px`,
+    classes: ['xs:*'],
+    description: 'Defines the **x-small** responsive breakpoint.',
     group: 'breakpoint',
-  })
-);
+  },
+  {
+    property: '--breakpoint-sm',
+    value: `${breakpointSm}px`,
+    classes: ['sm:*'],
+    description: 'Defines the **small** responsive breakpoint.',
+    group: 'breakpoint',
+  },
+  {
+    property: '--breakpoint-md',
+    value: `${breakpointMd}px`,
+    classes: ['md:*'],
+    description: 'Defines the **medium** responsive breakpoint.',
+    group: 'breakpoint',
+  },
+  {
+    property: '--breakpoint-lg',
+    value: `${breakpointLg}px`,
+    classes: ['lg:*'],
+    description: 'Defines the **large** responsive breakpoint.',
+    group: 'breakpoint',
+  },
+  {
+    property: '--breakpoint-xl',
+    value: `${breakpointXl}px`,
+    classes: ['xl:*'],
+    description: 'Defines the **x-large** responsive breakpoint.',
+    group: 'breakpoint',
+  },
+  {
+    property: '--breakpoint-2xl',
+    value: `${breakpoint2Xl}px`,
+    classes: ['2xl:*'],
+    description: 'Defines the **2x-large** responsive breakpoint.',
+    group: 'breakpoint',
+  },
+];

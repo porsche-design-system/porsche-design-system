@@ -9,21 +9,7 @@ import {
   radiusXl,
   radiusXs,
 } from '@porsche-design-system/tokens';
-import { sizeLabel } from './shared';
 import type { TailwindThemeVariable } from './types';
-
-/** A single radius entry without its `group` (always `border`). */
-type RadiusConfig = Omit<TailwindThemeVariable, 'group'>;
-
-const makeRadius = (size: string, value: string | number): RadiusConfig => ({
-  property: `--radius-${size}`,
-  value,
-  classes: [`.rounded-${size}`],
-  description:
-    size === 'full'
-      ? 'Applies a **fully** rounded `border-radius`.'
-      : `Applies a **${sizeLabel[size]}** \`border-radius\`.`,
-});
 
 /**
  * Nested single source of truth for border radii, grouped like `cssVariablesMeta`
@@ -31,16 +17,70 @@ const makeRadius = (size: string, value: string | number): RadiusConfig => ({
  * `radius.sm.property`. The `@theme` variables are produced by mapping the entries.
  */
 export const radius = {
-  xs: makeRadius('xs', radiusXs),
-  sm: makeRadius('sm', radiusSm),
-  md: makeRadius('md', radiusMd),
-  lg: makeRadius('lg', radiusLg),
-  xl: makeRadius('xl', radiusXl),
-  '2xl': makeRadius('2xl', radius2Xl),
-  '3xl': makeRadius('3xl', radius3Xl),
-  '4xl': makeRadius('4xl', radius4Xl),
-  full: makeRadius('full', radiusFull),
-};
+  xs: {
+    property: '--radius-xs',
+    value: radiusXs,
+    classes: ['.rounded-xs'],
+    description: 'Applies a **x-small** `border-radius`.',
+    group: 'border',
+  },
+  sm: {
+    property: '--radius-sm',
+    value: radiusSm,
+    classes: ['.rounded-sm'],
+    description: 'Applies a **small** `border-radius`.',
+    group: 'border',
+  },
+  md: {
+    property: '--radius-md',
+    value: radiusMd,
+    classes: ['.rounded-md'],
+    description: 'Applies a **medium** `border-radius`.',
+    group: 'border',
+  },
+  lg: {
+    property: '--radius-lg',
+    value: radiusLg,
+    classes: ['.rounded-lg'],
+    description: 'Applies a **large** `border-radius`.',
+    group: 'border',
+  },
+  xl: {
+    property: '--radius-xl',
+    value: radiusXl,
+    classes: ['.rounded-xl'],
+    description: 'Applies a **x-large** `border-radius`.',
+    group: 'border',
+  },
+  '2xl': {
+    property: '--radius-2xl',
+    value: radius2Xl,
+    classes: ['.rounded-2xl'],
+    description: 'Applies a **2x-large** `border-radius`.',
+    group: 'border',
+  },
+  '3xl': {
+    property: '--radius-3xl',
+    value: radius3Xl,
+    classes: ['.rounded-3xl'],
+    description: 'Applies a **3x-large** `border-radius`.',
+    group: 'border',
+  },
+  '4xl': {
+    property: '--radius-4xl',
+    value: radius4Xl,
+    classes: ['.rounded-4xl'],
+    description: 'Applies a **4x-large** `border-radius`.',
+    group: 'border',
+  },
+  full: {
+    property: '--radius-full',
+    value: radiusFull,
+    classes: ['.rounded-full'],
+    description: 'Applies a **fully** rounded `border-radius`.',
+    group: 'border',
+  },
+} satisfies Record<string, TailwindThemeVariable>;
 
 // Border — width.
 export const borderWidthThemeVariables: TailwindThemeVariable[] = [
@@ -69,6 +109,6 @@ export const borderWidthThemeVariables: TailwindThemeVariable[] = [
 // All border theme variables consumed by the `@theme` block: the radii (mapped
 // from the nested `radius` object) followed by the border widths.
 export const borderThemeVariables: TailwindThemeVariable[] = [
-  ...Object.values(radius).map((config) => ({ ...config, group: 'border' as const })),
+  ...Object.values(radius),
   ...borderWidthThemeVariables,
 ];

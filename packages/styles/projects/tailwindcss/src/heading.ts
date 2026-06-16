@@ -4,24 +4,78 @@ import type { TailwindUtility } from './types';
 import { typography } from './typography';
 
 // Documented Tailwind heading utilities — the `prose-heading-*` font shorthands
-// for each typescale size.
+// for each typescale size. Sizes 2xs/xs/sm use the semibold weight, the larger
+// sizes use the normal weight.
 export const headingUtilities: TailwindUtility[] = [
-  '2xs',
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-  '2xl',
-  '3xl',
-  '4xl',
-  '5xl',
-].map<TailwindUtility>((size, index) => ({
-  ...(index === 0 ? { comment: 'Typography: Heading' } : {}),
-  selector: `@utility prose-heading-${size}`,
-  class: `.prose-heading-${size}`,
-  description: `Applies the heading style in size ${size}.`,
-  // Heading sizes 2xs/xs/sm use the semibold weight, the larger sizes use the normal weight.
-  raw: `  font: ${['2xs', 'xs', 'sm'].includes(size) ? prefix(typography.weight.semibold.property) : prefix(typography.weight.normal.property)} ${prefix(`--text-${size}`)} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  {
+    comment: 'Typography: Heading',
+    selector: '@utility prose-heading-2xs',
+    class: '.prose-heading-2xs',
+    description: 'Applies the heading style in size 2xs.',
+    raw: `  font: ${prefix(typography.weight.semibold.property)} ${prefix('--text-2xs')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
   color: ${prefix(color.foreground.primary.property)};`,
-}));
+  },
+  {
+    selector: '@utility prose-heading-xs',
+    class: '.prose-heading-xs',
+    description: 'Applies the heading style in size xs.',
+    raw: `  font: ${prefix(typography.weight.semibold.property)} ${prefix('--text-xs')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  color: ${prefix(color.foreground.primary.property)};`,
+  },
+  {
+    selector: '@utility prose-heading-sm',
+    class: '.prose-heading-sm',
+    description: 'Applies the heading style in size sm.',
+    raw: `  font: ${prefix(typography.weight.semibold.property)} ${prefix('--text-sm')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  color: ${prefix(color.foreground.primary.property)};`,
+  },
+  {
+    selector: '@utility prose-heading-md',
+    class: '.prose-heading-md',
+    description: 'Applies the heading style in size md.',
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-md')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  color: ${prefix(color.foreground.primary.property)};`,
+  },
+  {
+    selector: '@utility prose-heading-lg',
+    class: '.prose-heading-lg',
+    description: 'Applies the heading style in size lg.',
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-lg')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  color: ${prefix(color.foreground.primary.property)};`,
+  },
+  {
+    selector: '@utility prose-heading-xl',
+    class: '.prose-heading-xl',
+    description: 'Applies the heading style in size xl.',
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-xl')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  color: ${prefix(color.foreground.primary.property)};`,
+  },
+  {
+    selector: '@utility prose-heading-2xl',
+    class: '.prose-heading-2xl',
+    description: 'Applies the heading style in size 2xl.',
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-2xl')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  color: ${prefix(color.foreground.primary.property)};`,
+  },
+  {
+    selector: '@utility prose-heading-3xl',
+    class: '.prose-heading-3xl',
+    description: 'Applies the heading style in size 3xl.',
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-3xl')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  color: ${prefix(color.foreground.primary.property)};`,
+  },
+  {
+    selector: '@utility prose-heading-4xl',
+    class: '.prose-heading-4xl',
+    description: 'Applies the heading style in size 4xl.',
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-4xl')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  color: ${prefix(color.foreground.primary.property)};`,
+  },
+  {
+    selector: '@utility prose-heading-5xl',
+    class: '.prose-heading-5xl',
+    description: 'Applies the heading style in size 5xl.',
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-5xl')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+  color: ${prefix(color.foreground.primary.property)};`,
+  },
+];

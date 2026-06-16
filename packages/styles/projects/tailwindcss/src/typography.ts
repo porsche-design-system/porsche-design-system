@@ -15,25 +15,14 @@ import {
   typescaleXs,
 } from '@porsche-design-system/tokens';
 import { fontPorscheNextDynamicVar } from './font';
-import { sizeLabel } from './shared';
 import type { TailwindThemeVariable } from './types';
-
-/** A single typography entry without its `group` (always `typography`). */
-type TypographyConfig = Omit<TailwindThemeVariable, 'group'>;
-
-const makeText = (size: string, value: string | number): TypographyConfig => ({
-  property: `--text-${size}`,
-  value,
-  classes: [`.text-${size}`],
-  description: `Applies the **${sizeLabel[size]}** font size and line height optimized for the Porsche Next typeface.`,
-});
 
 /**
  * Nested single source of truth for typography, grouped like `cssVariablesMeta`
  * (family / weight / lineHeight / text). Access a single variable via its path,
  * e.g. `typography.weight.semibold`, to read e.g. `typography.weight.semibold.property`.
  * The `@theme` variables ({@link typographyThemeVariables}) are produced by
- * flat-mapping the groups (plus the {@link textSizeCompanions} below).
+ * flattening the groups (plus the {@link textSizeCompanions} below).
  */
 export const typography = {
   family: {
@@ -45,6 +34,7 @@ export const typography = {
         'Applies the **Porsche Next** font family along with fallback fonts. Automatically swaps to the locale-specific CJK stack (Simplified Chinese, Traditional Chinese, Japanese, Korean) via `:lang()` based on the nearest `lang` attribute.',
       comment:
         'This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next). By pointing it to our dynamic variable, we create a stable link.',
+      group: 'typography',
     },
     sans: {
       property: '--font-sans',
@@ -52,6 +42,7 @@ export const typography = {
       classes: ['.font-sans'],
       description:
         'Aliases the Tailwind `--font-sans` variable to `--font-porsche-next`, so the built-in `.font-sans` utility automatically applies the Porsche Next typeface.',
+      group: 'typography',
     },
   },
   weight: {
@@ -60,18 +51,21 @@ export const typography = {
       value: fontWeightNormal,
       classes: ['.font-normal'],
       description: 'Applies the **regular** font weight optimized for the Porsche Next typeface.',
+      group: 'typography',
     },
     semibold: {
       property: '--font-weight-semibold',
       value: fontWeightSemibold,
       classes: ['.font-semibold'],
       description: 'Applies the **semi-bold** font weight optimized for the Porsche Next typeface.',
+      group: 'typography',
     },
     bold: {
       property: '--font-weight-bold',
       value: fontWeightBold,
       classes: ['.font-bold'],
       description: 'Applies the **bold** font weight optimized for the Porsche Next typeface.',
+      group: 'typography',
     },
   },
   lineHeight: {
@@ -80,29 +74,86 @@ export const typography = {
       value: leadingNormal,
       classes: ['.leading-normal'],
       description: 'Applies a dynamic default line height specifically optimized for the Porsche Next typeface.',
+      group: 'typography',
     },
   },
   text: {
-    '2xs': makeText('2xs', typescale2Xs),
-    xs: makeText('xs', typescaleXs),
-    sm: makeText('sm', typescaleSm),
-    md: makeText('md', typescaleMd),
-    lg: makeText('lg', typescaleLg),
-    xl: makeText('xl', typescaleXl),
-    '2xl': makeText('2xl', typescale2Xl),
-    '3xl': makeText('3xl', typescale3Xl),
-    '4xl': makeText('4xl', typescale4Xl),
-    '5xl': makeText('5xl', typescale5Xl),
+    '2xs': {
+      property: '--text-2xs',
+      value: typescale2Xs,
+      classes: ['.text-2xs'],
+      description: 'Applies the **2x-small** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
+    xs: {
+      property: '--text-xs',
+      value: typescaleXs,
+      classes: ['.text-xs'],
+      description: 'Applies the **x-small** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
+    sm: {
+      property: '--text-sm',
+      value: typescaleSm,
+      classes: ['.text-sm'],
+      description: 'Applies the **small** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
+    md: {
+      property: '--text-md',
+      value: typescaleMd,
+      classes: ['.text-md'],
+      description: 'Applies the **medium** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
+    lg: {
+      property: '--text-lg',
+      value: typescaleLg,
+      classes: ['.text-lg'],
+      description: 'Applies the **large** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
+    xl: {
+      property: '--text-xl',
+      value: typescaleXl,
+      classes: ['.text-xl'],
+      description: 'Applies the **x-large** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
+    '2xl': {
+      property: '--text-2xl',
+      value: typescale2Xl,
+      classes: ['.text-2xl'],
+      description: 'Applies the **2x-large** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
+    '3xl': {
+      property: '--text-3xl',
+      value: typescale3Xl,
+      classes: ['.text-3xl'],
+      description: 'Applies the **3x-large** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
+    '4xl': {
+      property: '--text-4xl',
+      value: typescale4Xl,
+      classes: ['.text-4xl'],
+      description: 'Applies the **4x-large** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
+    '5xl': {
+      property: '--text-5xl',
+      value: typescale5Xl,
+      classes: ['.text-5xl'],
+      description: 'Applies the **5x-large** font size and line height optimized for the Porsche Next typeface.',
+      group: 'typography',
+    },
   },
-};
+} satisfies Record<string, Record<string, TailwindThemeVariable>>;
 
-// Text-size theme variables — mapped from the nested `typography.text` group.
-// Kept as a dedicated export because utilities consume it to build the
-// `prose-*` font shorthands.
-export const textSizeThemeVariables: TailwindThemeVariable[] = Object.values(typography.text).map((config) => ({
-  ...config,
-  group: 'typography' as const,
-}));
+// Text-size theme variables — the nested `typography.text` group. Kept as a
+// dedicated export because utilities consume it to build the `prose-*` font shorthands.
+export const textSizeThemeVariables: TailwindThemeVariable[] = Object.values(typography.text);
 
 // Companion theme variables for each text size: the Tailwind-required `--*--line-height`
 // pairing plus the `--text-base` alias for `xs`. Kept separate from `typographyThemeVariables`
@@ -123,22 +174,95 @@ export const textSizeCompanions: TailwindThemeVariable[] = [
     description: 'Sets the line height applied alongside `--text-base` by the `.text-base` utility.',
     group: 'typography',
   },
-  ...(['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl'] as const).map((size) => ({
-    property: `--text-${size}--line-height`,
+  {
+    property: '--text-2xs--line-height',
     value: leadingNormal,
-    classes: [`.text-${size}`],
-    description: `Sets the line height applied alongside \`--text-${size}\` by the \`.text-${size}\` utility for the **${sizeLabel[size]}** type scale.`,
-    group: 'typography' as const,
-  })),
+    classes: ['.text-2xs'],
+    description:
+      'Sets the line height applied alongside `--text-2xs` by the `.text-2xs` utility for the **2x-small** type scale.',
+    group: 'typography',
+  },
+  {
+    property: '--text-xs--line-height',
+    value: leadingNormal,
+    classes: ['.text-xs'],
+    description:
+      'Sets the line height applied alongside `--text-xs` by the `.text-xs` utility for the **x-small** type scale.',
+    group: 'typography',
+  },
+  {
+    property: '--text-sm--line-height',
+    value: leadingNormal,
+    classes: ['.text-sm'],
+    description:
+      'Sets the line height applied alongside `--text-sm` by the `.text-sm` utility for the **small** type scale.',
+    group: 'typography',
+  },
+  {
+    property: '--text-md--line-height',
+    value: leadingNormal,
+    classes: ['.text-md'],
+    description:
+      'Sets the line height applied alongside `--text-md` by the `.text-md` utility for the **medium** type scale.',
+    group: 'typography',
+  },
+  {
+    property: '--text-lg--line-height',
+    value: leadingNormal,
+    classes: ['.text-lg'],
+    description:
+      'Sets the line height applied alongside `--text-lg` by the `.text-lg` utility for the **large** type scale.',
+    group: 'typography',
+  },
+  {
+    property: '--text-xl--line-height',
+    value: leadingNormal,
+    classes: ['.text-xl'],
+    description:
+      'Sets the line height applied alongside `--text-xl` by the `.text-xl` utility for the **x-large** type scale.',
+    group: 'typography',
+  },
+  {
+    property: '--text-2xl--line-height',
+    value: leadingNormal,
+    classes: ['.text-2xl'],
+    description:
+      'Sets the line height applied alongside `--text-2xl` by the `.text-2xl` utility for the **2x-large** type scale.',
+    group: 'typography',
+  },
+  {
+    property: '--text-3xl--line-height',
+    value: leadingNormal,
+    classes: ['.text-3xl'],
+    description:
+      'Sets the line height applied alongside `--text-3xl` by the `.text-3xl` utility for the **3x-large** type scale.',
+    group: 'typography',
+  },
+  {
+    property: '--text-4xl--line-height',
+    value: leadingNormal,
+    classes: ['.text-4xl'],
+    description:
+      'Sets the line height applied alongside `--text-4xl` by the `.text-4xl` utility for the **4x-large** type scale.',
+    group: 'typography',
+  },
+  {
+    property: '--text-5xl--line-height',
+    value: leadingNormal,
+    classes: ['.text-5xl'],
+    description:
+      'Sets the line height applied alongside `--text-5xl` by the `.text-5xl` utility for the **5x-large** type scale.',
+    group: 'typography',
+  },
 ];
 
-// All typography theme variables — consumed by the @theme block. Flat-mapped from
+// All typography theme variables — consumed by the @theme block. Flattened from
 // the nested `typography` groups (family → weight → lineHeight → text), followed by
 // the companions.
 export const typographyThemeVariables: TailwindThemeVariable[] = [
-  ...Object.values(typography.family).map((config) => ({ ...config, group: 'typography' as const })),
-  ...Object.values(typography.weight).map((config) => ({ ...config, group: 'typography' as const })),
-  ...Object.values(typography.lineHeight).map((config) => ({ ...config, group: 'typography' as const })),
+  ...Object.values(typography.family),
+  ...Object.values(typography.weight),
+  ...Object.values(typography.lineHeight),
   ...textSizeThemeVariables,
   ...textSizeCompanions,
 ];

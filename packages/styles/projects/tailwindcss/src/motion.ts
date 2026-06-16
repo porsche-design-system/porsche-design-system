@@ -35,15 +35,36 @@ export const easeThemeVariables: TailwindThemeVariable[] = [
 ];
 
 // Motion — duration.
-const durationValues: Record<string, string> = { sm: durationSm, md: durationMd, lg: durationLg, xl: durationXl };
-const durationLabel: Record<string, string> = { sm: 'short', md: 'moderate', lg: 'long', xl: 'very long' };
-export const durationThemeVariables: TailwindThemeVariable[] = (['sm', 'md', 'lg', 'xl'] as const).map((size) => ({
-  property: `--transition-duration-${size}`,
-  value: durationValues[size],
-  classes: [`.duration-${size}`],
-  description: `Applies a **${durationLabel[size]}** \`transition-duration\`.`,
-  group: 'motion',
-}));
+export const durationThemeVariables: TailwindThemeVariable[] = [
+  {
+    property: '--transition-duration-sm',
+    value: durationSm,
+    classes: ['.duration-sm'],
+    description: 'Applies a **short** `transition-duration`.',
+    group: 'motion',
+  },
+  {
+    property: '--transition-duration-md',
+    value: durationMd,
+    classes: ['.duration-md'],
+    description: 'Applies a **moderate** `transition-duration`.',
+    group: 'motion',
+  },
+  {
+    property: '--transition-duration-lg',
+    value: durationLg,
+    classes: ['.duration-lg'],
+    description: 'Applies a **long** `transition-duration`.',
+    group: 'motion',
+  },
+  {
+    property: '--transition-duration-xl',
+    value: durationXl,
+    classes: ['.duration-xl'],
+    description: 'Applies a **very long** `transition-duration`.',
+    group: 'motion',
+  },
+];
 
 // Motion — infrastructure defaults (no Tailwind utility classes).
 const defaultTransitionTimingFunction: TailwindThemeVariable = {

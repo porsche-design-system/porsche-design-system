@@ -1,16 +1,30 @@
 import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
-import { sizeLabel } from './shared';
 import type { TailwindThemeVariable } from './types';
 
 // Shadow.
-const shadowValues: Record<string, string> = { sm: shadowSm, md: shadowMd, lg: shadowLg };
-export const shadowThemeVariables: TailwindThemeVariable[] = (['sm', 'md', 'lg'] as const).map((size) => ({
-  property: `--shadow-${size}`,
-  value: shadowValues[size],
-  classes: [`.shadow-${size}`],
-  description: `Applies a **${sizeLabel[size]}** \`box-shadow\`.`,
-  group: 'shadow',
-}));
+export const shadowThemeVariables: TailwindThemeVariable[] = [
+  {
+    property: '--shadow-sm',
+    value: shadowSm,
+    classes: ['.shadow-sm'],
+    description: 'Applies a **small** `box-shadow`.',
+    group: 'shadow',
+  },
+  {
+    property: '--shadow-md',
+    value: shadowMd,
+    classes: ['.shadow-md'],
+    description: 'Applies a **medium** `box-shadow`.',
+    group: 'shadow',
+  },
+  {
+    property: '--shadow-lg',
+    value: shadowLg,
+    classes: ['.shadow-lg'],
+    description: 'Applies a **large** `box-shadow`.',
+    group: 'shadow',
+  },
+];
 
 // Shadow — deprecated aliases.
 /** @deprecated Use `shadowThemeVariables` (`--shadow-sm/md/lg`) instead. */

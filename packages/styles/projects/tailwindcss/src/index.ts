@@ -41,9 +41,9 @@ export * from './typography';
 // The complete Tailwind CSS theme described as data. `meta` is a single CssNode
 // tree where everything comes together: the `@theme` block (documented theme
 // variables interleaved with the non-documented infrastructure — resets, aliases,
-// companions, keyframes — via `raw` nodes), the font base layer, the scheme
-// fallback + `@utility` blocks and the documented utilities. Prettier normalizes
-// spacing afterwards, so no manual blank-line separators are needed.
+// companions, keyframes), the font base layer, the scheme fallback + `@utility`
+// blocks and the documented utilities. Prettier normalizes spacing afterwards, so
+// no manual blank-line separators are needed.
 export const tailwindCssMeta: TailwindCssMeta = {
   file: 'index.css',
   description:
@@ -52,38 +52,22 @@ export const tailwindCssMeta: TailwindCssMeta = {
     {
       selector: '@theme',
       declarations: [
-        {
-          raw: `
-  /* Reset */
-  --breakpoint-*: initial;
-  --color-*: initial;
-  --radius-*: initial;
-  --shadow-*: initial;
-  --text-*: initial;
-
-  /* Color */
-  --color-black: #000;
-  --color-white: #fff;
-          `,
-        },
+        { property: '--breakpoint-*', value: 'initial' },
+        { property: '--color-*', value: 'initial' },
+        { property: '--radius-*', value: 'initial' },
+        { property: '--shadow-*', value: 'initial' },
+        { property: '--text-*', value: 'initial' },
+        { property: '--color-black', value: '#000' },
+        { property: '--color-white', value: '#fff' },
         ...colorThemeVariables,
-        { raw: '/* Typography */' },
         ...typographyThemeVariables,
-        { raw: '/* Breakpoint */' },
         ...breakpointThemeVariables,
-        { raw: '/* Spacing */' },
         ...spacingThemeVariables,
-        { raw: '/* Border */' },
         ...borderThemeVariables,
-        { raw: '/* Blur */' },
         ...blurThemeVariables,
-        { raw: '/* Shadow */' },
         ...allShadowThemeVariables,
-        { raw: '/* Outline */' },
-        { raw: '--default-outline-width: 2px;' },
-        { raw: '/* Motion */' },
+        { property: '--default-outline-width', value: '2px' },
         ...allMotionThemeVariables,
-        { raw: '/* Animation */' },
         ...allAnimationThemeDeclarations,
       ],
     },
