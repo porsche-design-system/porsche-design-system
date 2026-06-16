@@ -25,6 +25,7 @@ type ColumnDefs = DataAdvanced & {
       <img [src]="value" width="80" height="45" alt="" />
     </span>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       img {
@@ -79,6 +80,7 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [PorscheDesignSystemModule],
 })
 class ButtonRenderer implements ICellRendererAngularComp {
@@ -98,8 +100,7 @@ class ButtonRenderer implements ICellRendererAngularComp {
 
 @Component({
   selector: 'ag-grid-example',
-  template: `
-  <div>
+  template: ` <div>
     <ag-grid-angular
       style="width: 100%; height: 550px;"
       [rowData]="rowData"
