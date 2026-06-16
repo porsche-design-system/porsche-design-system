@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { pinCodeMeta } from '@/app/(main)/components/pin-code/pin-code.meta';
+
+export const metadata = {
+  title: 'Pin Code - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Pin Code component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
+
+<pinCodeMeta.introduction />
+
+<Configurator
+  tagName="p-pin-code"
+  story={pinCodeMeta.configurator.story}
+  slotStories={pinCodeMeta.configurator.slotStories}
+/>

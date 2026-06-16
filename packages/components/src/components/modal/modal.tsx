@@ -3,6 +3,7 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '
 import {
   AllowedTypes,
   attachComponentCss,
+  createTopLayerController,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -10,8 +11,9 @@ import {
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
-  setDialogVisibility,
   setScrollLock,
+  showDialog,
+  type TopLayerController,
   unobserveChildren,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
@@ -55,34 +57,34 @@ const propTypes: PropTypes<typeof Modal> = {
 export class Modal {
   @Element() public host!: HTMLElement;
 
-  /** If true, the modal is open. */
+  /** Controls whether the modal dialog is visible. */
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
 
-  /** If false, the modal will not have a dismiss button. */
+  /** Shows a dismiss button in the modal header so the user can manually close it. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** If true, the modal will not be closable via backdrop click. */
+  /** When enabled, clicking the backdrop will not close the modal. */
   @Prop() public disableBackdropClick?: boolean = false;
 
-  /** Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent). */
+  /** Sets the backdrop style. Use `blur` when the modal is opened by user interaction; use `shading` when opened automatically (e.g. Cookie Consent). */
   @Prop() public backdrop?: ModalBackdrop = 'blur';
 
-  /** Defines the background color */
+  /** Sets the background color of the modal panel (`canvas` or `surface`). */
   @Prop() public background?: ModalBackground = 'canvas';
 
-  /** If true the modal uses max viewport height and width. Should only be used for mobile. */
+  /** Expands the modal to the full viewport size, intended for mobile use cases. Supports responsive breakpoint values. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the dialog element for improved accessibility when no visible heading is present. */
   @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttribute>;
 
-  /** Emitted when the component requests to be dismissed. */
+  /** Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when the modal is opened and the transition is finished. */
+  /** Emitted after the modal's open transition completes and the dialog is fully visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<ModalMotionVisibleEndEventDetail>;
 
-  /** Emitted when the modal is closed and the transition is finished. */
+  /** Emitted after the modal's close transition completes and the dialog is fully hidden. */
   @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<ModalMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;
@@ -90,6 +92,12 @@ export class Modal {
   private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.dialog,
+    isShown: () => !!this.dialog?.open,
+    show: () => showDialog(this.dialog, this.scroller),
+    hide: () => this.dialog?.close(),
+  });
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -112,7 +120,11 @@ export class Modal {
   }
 
   public componentDidRender(): void {
-    setDialogVisibility(this.open, this.dialog, this.scroller);
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
   }
 
   public componentDidLoad(): void {
@@ -132,6 +144,7 @@ export class Modal {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    this.topLayer.cancel();
     unobserveChildren(this.host);
   }
 

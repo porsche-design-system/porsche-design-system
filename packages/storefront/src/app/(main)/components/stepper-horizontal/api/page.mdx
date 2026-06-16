@@ -1,0 +1,23 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { ComponentApi } from '@/components/components/ComponentApi';
+import { componentMeta } from '@porsche-design-system/component-meta';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { stepperHorizontalMeta } from '@/app/(main)/components/stepper-horizontal/stepper-horizontal.meta';
+
+export const metadata = {
+  title: 'Stepper Horizontal - Porsche Design System',
+  description:
+    'Detailed API reference for the Stepper Horizontal component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Stepper Horizontal <ComponentStatus tagName="p-stepper-horizontal"></ComponentStatus>
+
+<TableOfContents headings={['Stepper Horizontal', 'Stepper Horizontal Item']} />
+
+## Stepper Horizontal
+
+<ComponentApi api={stepperHorizontalMeta.api} showTableOfContents={false} />
+
+## Stepper Horizontal Item
+
+<ComponentApi api={componentMeta['p-stepper-horizontal-item']} showTableOfContents={false} />

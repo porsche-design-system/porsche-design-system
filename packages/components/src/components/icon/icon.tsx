@@ -34,19 +34,19 @@ const propTypes: PropTypes<typeof Icon> = {
 export class Icon {
   @Element() public host!: HTMLElement;
 
-  /** Specifies which icon to use. */
+  /** Selects an icon from the built-in PDS icon library by name (e.g. `arrow-right`, `close`). */
   @Prop() public name?: IconName = 'arrow-right';
 
-  /** Specifies a whole icon path which can be used for custom icons. */
+  /** Sets a path to a custom SVG icon, used instead of the built-in icon library. */
   @Prop() public source?: string;
 
-  /** Basic color variations. */
+  /** Sets the fill color of the icon using PDS color tokens. */
   @Prop() public color?: IconColor = 'primary';
 
-  /** Defines the size of the icon, aligned with the typographic scale used by components such as p-spinner, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. */
+  /** Sets the icon size using the PDS typographic scale. Use `inherit` to derive size from the parent element. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<IconSize> = 'sm';
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the icon — use `aria-label` to make the icon meaningful to screen readers when it conveys information. */
   @Prop() public aria?: SelectedAriaAttributes<IconAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

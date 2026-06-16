@@ -28,22 +28,22 @@ const propTypes: PropTypes<typeof Table> = {
 export class Table {
   @Element() public host!: HTMLElement;
 
-  /** A caption describing the contents of the table for accessibility only. This won't be visible in the browser.
-   * Use an element with an attribute of `slot="caption"` for a visible caption. */
+  /** Sets a screen-reader-only accessible caption that describes the table's content; it is not visible in the browser.
+   * Use an element with `slot="caption"` for a visible caption instead. */
   @Prop() public caption?: string;
 
-  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
+  /** Reduces the cell padding and spacing for a more condensed table layout in data-dense UIs. */
   @Prop() public compact?: boolean = false;
 
-  /** Controls the layout behavior of the table. */
+  /** Controls the CSS `table-layout` algorithm: `auto` sizes columns to fit their content, `fixed` distributes width equally. */
   @Prop() public layout?: TableLayout = 'auto';
 
   /**
-   * @experimental Makes the scroll indicator sticky at the top or bottom while scrolling depending on the scroll direction.
+   * @experimental Makes the scroll position indicator sticky at the viewport edge while scrolling, indicating overflow in the table.
    */
   @Prop() public sticky?: boolean = false;
 
-  /** Emitted when sorting is changed. */
+  /** Emitted when the user clicks a sortable column header, carrying the new sort configuration in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEventDetail>;
 
   public componentWillLoad(): void {

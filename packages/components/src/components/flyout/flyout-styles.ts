@@ -5,7 +5,8 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { getCss } from '../../utils';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -30,6 +31,10 @@ import type { FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutPosi
  * @css-variable {"name": "--p-flyout-width", "description": "Width of the flyout.", "defaultValue": "auto"}
  */
 const cssVariableWidth = '--p-flyout-width';
+
+/**
+ * @css-variable {"name": "--p-flyout-sticky-top", "description": "@experimental Exposes the header's height as a read-only CSS variable, set automatically by the component. Slotted sticky content can use this value to offset their top position correctly."}
+ */
 /**
  * @css-variable {"name": "--ref-p-flyout-pt", "description": "Exposes the internally used padding-top of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Flyout."}
  */
@@ -51,7 +56,8 @@ export const getComponentCss = (
   hasHeader: boolean,
   hasFooter: boolean,
   hasSubFooter: boolean,
-  footerBehavior: FlyoutFooterBehavior
+  footerBehavior: FlyoutFooterBehavior,
+  fullscreen: BreakpointCustomizable<boolean>
 ): string => {
   const isPositionStart = position === 'start';
   const isFooterFixed = footerBehavior === 'fixed';
@@ -106,25 +112,50 @@ export const getComponentCss = (
     flyout: {
       ...dialogGridJssStyle(),
       ...getDialogColorJssStyle(),
-      width: ref(cssVariableWidth, 'auto'),
-      minWidth: '320px',
-      maxWidth: '100vw',
-      ...(isPositionStart
-        ? {
-            borderStartEndRadius: dialogBorderRadius,
-            borderEndEndRadius: dialogBorderRadius,
-            ...forcedColorsMediaQuery({
-              borderInlineEnd: '2px solid CanvasText',
-            }),
-          }
-        : {
-            borderStartStartRadius: dialogBorderRadius,
-            borderEndStartRadius: dialogBorderRadius,
-            // TODO: Fix needs to be implemented for Fullscreen (which is not available as prop for Flyout yet)
-            ...forcedColorsMediaQuery({
-              borderInlineStart: '2px solid CanvasText',
-            }),
-          }),
+      ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
+        fullscreenValue
+          ? {
+              // fullscreen spans the whole viewport width, so corners are squared and corner clipping is disabled
+              width: '100dvw',
+              minWidth: 'auto',
+              maxWidth: 'none',
+              borderRadius: 0,
+              clipPath: 'none',
+              // the flyout touches both inline edges, so the inner-side HCM border is no longer needed
+              '&:dir(rtl)': {
+                clipPath: 'none',
+              },
+            }
+          : {
+              width: ref(cssVariableWidth, 'auto'),
+              minWidth: '320px',
+              maxWidth: '100vw',
+              clipPath: isPositionStart
+                ? `inset(0 round 0 ${dialogBorderRadius} ${dialogBorderRadius} 0)` // position 'start': round inline-end (right in LTR) corners only
+                : `inset(0 round ${dialogBorderRadius} 0 0 ${dialogBorderRadius})`, // position 'end': round inline-start (left in LTR) corners only
+              // `clip-path` uses physical corners, so mirror for RTL to keep parity with the logical border*Radius below
+              '&:dir(rtl)': {
+                clipPath: isPositionStart
+                  ? `inset(0 round ${dialogBorderRadius} 0 0 ${dialogBorderRadius})`
+                  : `inset(0 round 0 ${dialogBorderRadius} ${dialogBorderRadius} 0)`,
+              },
+              ...(isPositionStart
+                ? {
+                    borderStartEndRadius: dialogBorderRadius,
+                    borderEndEndRadius: dialogBorderRadius,
+                    ...forcedColorsMediaQuery({
+                      borderInlineEnd: '2px solid CanvasText',
+                    }),
+                  }
+                : {
+                    borderStartStartRadius: dialogBorderRadius,
+                    borderEndStartRadius: dialogBorderRadius,
+                    ...forcedColorsMediaQuery({
+                      borderInlineStart: '2px solid CanvasText',
+                    }),
+                  }),
+            }
+      ),
       ...(isFooterFixed && {
         gridTemplateRows: hasHeader ? 'auto 1fr auto' : '1fr',
       }),

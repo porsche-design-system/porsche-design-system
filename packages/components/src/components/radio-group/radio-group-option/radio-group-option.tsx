@@ -33,16 +33,16 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
 export class RadioGroupOption {
   @Element() public host!: HTMLElement & RadioGroupOptionInternalHTMLProps;
 
-  /** The value for the input. */
+  /** Sets the value submitted with the form data when this radio option is selected within its parent group. */
   @Prop() public value?: string;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed next to the radio button that the user reads to identify the option. */
   @Prop() public label?: string;
 
-  /** Disables the radio group option. The value will not be submitted with the form. */
+  /** Prevents this option from being selected and excludes its value from form submissions while it is disabled. */
   @Prop() public disabled?: boolean = false;
 
-  /** @experimental Shows a loading indicator. */
+  /** @experimental Disables this option and shows a spinner to indicate that this particular option is in a loading state. */
   @Prop() public loading?: boolean = false;
 
   private initialLoading: boolean = false;

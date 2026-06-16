@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { accordionMeta } from '@/app/(main)/components/accordion/accordion.meta';
+
+export const metadata = {
+  title: 'Accordion - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Accordion component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
+
+<accordionMeta.introduction />
+
+<Configurator
+  tagName="p-accordion"
+  story={accordionMeta.configurator.story}
+  slotStories={accordionMeta.configurator.slotStories}
+/>

@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "4.2.0-rc.2",
+    "@porsche-design-system/components-react": "4.2.0-rc.5",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },

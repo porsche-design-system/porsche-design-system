@@ -1,6 +1,4 @@
 import { gridGap } from '@porsche-design-system/emotion';
-import type { JssStyle, Styles } from 'jss';
-import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import {
   blurFrosted,
   colorBackdrop,
@@ -17,6 +15,9 @@ import {
   spacingStatic2Xs,
   spacingStaticMd,
 } from '@porsche-design-system/stylesheets';
+import type { JssStyle, Styles } from 'jss';
+import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
+import { overlayTransitionSupportsQuery } from '../../../utils';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -43,18 +44,14 @@ export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backd
 };
 
 const dialogBackdropResetJssStyle: JssStyle = {
-  position: 'fixed', // ua-style
-  inset: 0, // ua-style
-  margin: 0, // ua-style
-  padding: 0, // ua-style
-  border: 0, // ua-style
-  width: '100dvw', // ua-style
-  height: '100dvh', // ua-style
-  maxWidth: '100dvw', // ua-style
-  maxHeight: '100dvh', // ua-style
-  overflow: 'hidden', // ua-style
-  display: 'block', // ua-style
-  outline: 0, // ua-style (we always expect a focusable element to be within the dialog)
+  all: 'unset',
+  position: 'fixed',
+  inset: 0,
+  maxWidth: '100dvw',
+  maxHeight: '100dvh',
+  overflow: 'hidden',
+  display: 'block',
+  outline: 0, // we always expect a focusable element to be within the dialog
   '&::backdrop': {
     display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
   },
@@ -65,8 +62,9 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
 
   const duration = isVisible ? 'long' : 'moderate';
   const easing = isVisible ? 'in' : 'out';
+  const delay = ref(cssVariableTransitionDuration, isVisible ? '0s' : motionDurationMap[duration]);
   // as soon as all browsers are supporting `allow-discrete`, visibility transition shouldn't be necessary anymore
-  const transition = `visibility 0s linear ${ref(cssVariableTransitionDuration, isVisible ? '0s' : motionDurationMap[duration])}, ${getTransition('background-color', duration, easing)}, ${getTransition(
+  const transition = `visibility 0s linear ${delay}, width 0s linear ${delay}, height 0s linear ${delay}, ${getTransition('background-color', duration, easing)}, ${getTransition(
     '-webkit-backdrop-filter',
     duration,
     easing
@@ -76,8 +74,11 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
     zIndex: 9999999, // fallback for fade out stacking until `overlay` + `allow-discrete` is supported in all browsers. It tries to mimic #top-layer positioning hierarchy.
     ...(isVisible
       ? {
+          width: '100dvw',
+          height: '100dvh',
           visibility: 'inherit',
           pointerEvents: 'auto',
+          overlay: 'auto',
           background: ref(colorBackdrop),
           ...(isBackdropBlur && {
             WebkitBackdropFilter: ref(blurFrosted),
@@ -85,16 +86,22 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
           }),
         }
       : {
+          // When the dialog lives inside a new stacking context, it is no longer promoted to the #top-layer while closed.
+          // In that case it can reserve additional space and break the surrounding layout, so width and height are collapsed to zero.
+          // A future improvement could use `transition-behavior: allow-discrete` to toggle between `display: none` and `block`,
+          // but browser support is still insufficient and behaves inconsistently in Safari and Firefox.
+          width: '0px',
+          height: '0px',
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
           pointerEvents: 'none', // element can't be interacted with mouse
+          overlay: 'none',
           background: 'transparent',
         }),
     transition,
-    // `allow-discrete` transition for ua-style `overlay` (supported browsers only) ensures dialog is rendered on
-    // #top-layer as long as fade-in or fade-out transition/animation is running
-    '@supports (transition-behavior: allow-discrete)': {
+    // keep the dialog on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
+    ...overlayTransitionSupportsQuery({
       transition: `${transition}, ${getTransition('overlay', duration, easing)} allow-discrete`,
-    },
+    }),
   };
 };
 
@@ -124,6 +131,10 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): J
     overscrollBehaviorY: 'none',
     // TODO: check if smooth scrolling on iOS is given?
     background: background.light,
+    // ensure a translate3d style is always applied on .scroller and .modal/.flyout/.sheet to create a new stacking
+    // context and prevent a Chromium paint bug: when a dialog element is nested inside another (e.g. `p-modal` within
+    // `p-flyout`)
+    transform: 'translate3d(0,0,0)',
   };
 };
 
@@ -141,7 +152,12 @@ export const dialogGridJssStyle = (): JssStyle => {
     paddingTop: dialogPaddingTop,
     paddingBottom: dialogPaddingBottom,
     alignContent: 'flex-start',
-    overflow: 'clip',
+    // Consumers set their own `clip-path` next to their corner `border-radius` (e.g. `inset(0 round …)`).
+    // `overflow: clip` can't be used due to a Chromium bug that drops descendant backdrop-filter tiles (e.g. frosted p-tag); `clip-path` clips slotted content to the rounded corners without the faulty paint-containment box while keeping the scroll behavior intact
+    // Chromium paint bug: when a dialog element is nested inside another (e.g. `p-modal` within `p-flyout`),
+    // the inner dialog's grid content fails to render. Forcing a new compositing layer via `translate3d`
+    // triggers a repaint and fixes it. Re-check periodically; remove once the upstream Chromium bug is resolved.
+    transform: 'translate3d(0,0,0)',
   };
 };
 
@@ -162,13 +178,13 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
     ...(isVisible
       ? {
           opacity: 1,
-          transform: 'initial',
+          transform: 'translate3d(0,0,0)',
         }
       : {
           opacity: 0,
-          transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '-' : ''}100%)`,
+          transform: slideIn === '^' ? 'translate3d(0,25vh,0)' : `translate3d(${slideIn === '>' ? '-' : ''}100%,0,0)`,
           '&:dir(rtl)': {
-            transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '' : '-'}100%)`,
+            transform: slideIn === '^' ? 'translate3d(0,25vh,0)' : `translate3d(${slideIn === '>' ? '' : '-'}100%,0,0)`,
           },
         }),
     transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,

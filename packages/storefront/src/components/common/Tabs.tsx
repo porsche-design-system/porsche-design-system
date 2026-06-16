@@ -39,12 +39,14 @@ export default function Tabs() {
   }
 
   return (
-    <PTabsBar className="col-[wide]" activeTabIndex={tabIndex} background="surface" onUpdate={onUpdate}>
-      {Object.entries(tabs).map(([_, route]) => (
-        <Link key={route.path} href={route.path as string}>
-          {route.name}
-        </Link>
-      ))}
-    </PTabsBar>
+    <nav aria-label="Content navigation" id="content-navigation">
+      <PTabsBar activeTabIndex={tabIndex} background="surface" onUpdate={onUpdate}>
+        {Object.entries(tabs).map(([_, route]) => (
+          <Link key={route.path} href={route.path as string}>
+            {route.name}
+          </Link>
+        ))}
+      </PTabsBar>
+    </nav>
   );
 }

@@ -24,6 +24,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -158,6 +162,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -294,6 +302,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -427,6 +439,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -562,6 +578,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -695,6 +715,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -831,6 +855,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -966,6 +994,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -1099,6 +1131,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1234,6 +1270,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -1366,6 +1406,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -1500,6 +1544,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -1629,6 +1677,10 @@ slot[name="label-after"] {
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
+.label-after {
+  display: inline-block;
+  vertical-align: top;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -1757,6 +1809,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2006,6 +2062,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
@@ -2273,6 +2333,10 @@ slot[name="label-after"] {
 }
 slot[name="label-after"]::slotted(*) {
   margin-inline-start: var(--p-spacing-static-xs) !important;
+}
+.label-after {
+  display: inline-block;
+  vertical-align: top;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;

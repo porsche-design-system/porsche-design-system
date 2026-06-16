@@ -27,13 +27,13 @@ const propTypes: PropTypes<typeof TagDismissible> = {
 export class TagDismissible {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed inside the tag alongside the dismiss button. */
   @Prop() public label?: string;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the dismiss button element, for example use `aria-label` to provide a descriptive close action for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
 
-  /** Displays the dismissible tag in compact mode. */
+  /** Reduces the tag's padding and height for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
