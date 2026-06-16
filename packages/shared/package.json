@@ -23,7 +23,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "change-case": "^5.4.4"
+    "change-case": "^5.4.4",
+    "spdy": "^4.0.2"
   },
   "peerDependencies": {
     "@rollup/plugin-commonjs": "*",

@@ -60,7 +60,8 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/http-server": "^0.12.4",
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "spdy": "^4.0.2"
   },
   "peerDependencies": {
     "@types/madge": "*",
