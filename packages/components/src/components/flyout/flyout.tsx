@@ -65,7 +65,7 @@ export class Flyout {
   @Element() public host!: HTMLElement;
 
   /** Controls whether the flyout panel is visible. */
-  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public open: boolean = false;
 
   /** Sets the side the flyout slides in from — `start` for left or `end` for right in LTR layouts. */
   @Prop() public position?: FlyoutPosition = 'end';

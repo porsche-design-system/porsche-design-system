@@ -43,10 +43,10 @@ export class Pagination {
   @Element() public host!: HTMLElement;
 
   /** Sets the total number of items in the dataset, used to calculate the number of pages. */
-  @Prop() public totalItemsCount: number = 1; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public totalItemsCount: number = 1;
 
   /** Sets the number of items displayed per page, used together with `totalItemsCount` to compute the page count. */
-  @Prop() public itemsPerPage: number = 1; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public itemsPerPage: number = 1;
 
   /** Sets the one-based index of the currently active page; update this prop to navigate programmatically. */
   @Prop({ mutable: true }) public activePage?: number = 1;
