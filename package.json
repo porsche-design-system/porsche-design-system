@@ -232,7 +232,7 @@
     "madge": "^8.0.0",
     "prettier": "^3.8.4",
     "publint": "^0.3.21",
-    "react-router": "^7.17.0",
+    "react-router": "^7.18.0",
     "rollup": "^4.62.0",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.5.0",
