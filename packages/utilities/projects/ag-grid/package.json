@@ -19,7 +19,7 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "35.2.1"
+    "ag-grid-community": "35.3.1"
   },
   "peerDependencies": {
     "typescript": "*"

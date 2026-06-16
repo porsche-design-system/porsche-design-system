@@ -20,6 +20,8 @@ updates:
     ignore:
       - dependency-name: "@porsche-design-system/*"
       - dependency-name: "@playwright/test"
+      # Pinned: a patch-package patch targets this exact version (see docs/dependencies.md)
+      - dependency-name: "@stencil/core"
     groups:
       npm-updates:
         patterns:

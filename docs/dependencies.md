@@ -32,10 +32,21 @@ Every week, we update our NPM packages:
 We are using Dependabot to manage our dependencies. Every note about not updatable dependencies in this document is also
 reflected in the configuration file under `.github/dependabot.yml` and must be kept in sync!
 
+## Not updatable dependencies
+
+These dependencies are intentionally held back and are ignored in `.github/dependabot.yml`:
+
+- `@porsche-design-system/*` – internal workspace packages, versioned via the release process.
+- `@playwright/test` – pinned to keep browser binaries and committed VRT snapshots in sync; upgrade deliberately.
+- `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
+  version. Bumping it breaks `patch-package` on `postinstall`. To upgrade, regenerate the patch for the new version first.
+- `@angular/*` (incl. `ng-packagr`, `zone.js`) – upgrade Angular separately via `ng update` (see steps above), not via
+  `npm-check-updates`, and verify `typescript` stays within Angular's `MAX_TS_VERSION`.
+
 ## Overview of Framework Versions
 
 |         | Monorepo | Sample Integrations   |
 | ------- | -------- | --------------------- |
-| Angular | 21.2.7   | 21.1.2                |
-| React   | 19.2.5   | 19.2.4                |
-| Next.js | 16.2.3   | 16.1.6 (React 19.2.4) |
+| Angular | 21.2.8   | 21.1.2                |
+| React   | 19.2.7   | 19.2.4                |
+| Next.js | 16.2.9   | 16.1.6 (React 19.2.4) |

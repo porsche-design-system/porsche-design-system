@@ -48,11 +48,11 @@
     "@stencil/core": "4.43.3"
   },
   "devDependencies": {
-    "@types/react": "^19.2.14",
+    "@types/react": "^19.2.17",
     "change-case": "^5.4.4",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^9.5.1",
-    "@tailwindcss/cli": "^4.2.2"
+    "@tailwindcss/cli": "^4.3.1"
   },
   "peerDependencies": {
     "@rollup/plugin-replace": "*",

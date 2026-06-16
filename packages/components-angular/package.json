@@ -58,11 +58,11 @@
     "@angular/language-service": "^21.2.8",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@testing-library/angular": "^19.2.1",
+    "@testing-library/angular": "^19.4.1",
     "@types/jasmine": "^6.0.0",
-    "ag-grid-angular": "35.2.1",
-    "ag-grid-community": "35.2.1",
-    "ag-grid-enterprise": "35.2.1",
+    "ag-grid-angular": "35.3.1",
+    "ag-grid-community": "35.3.1",
+    "ag-grid-enterprise": "35.3.1",
     "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage-istanbul-reporter": "~3.0.3",
@@ -70,8 +70,8 @@
     "karma-jasmine-html-reporter": "^2.2.0",
     "local-web-server": "^5.4.0",
     "ng-packagr": "^21.2.2",
-    "postcss": "^8.5.9",
-    "typescript": "6.0.2"
+    "postcss": "^8.5.15",
+    "typescript": "6.0.3"
   },
   "peerDependencies": {
     "@playwright/test": "*",
