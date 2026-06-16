@@ -117,8 +117,9 @@ type ColorConfig = {
    */
   dynamicProperty: string;
   /**
-   * The documented token: shown as the value in the docs and used as the `var()`
-   * fallback in the `@theme` block.
+   * The documented value, rendered verbatim in both the `@theme` block and the docs:
+   * the dynamic property the `scheme-*` utilities assign to, falling back to the token,
+   * e.g. `var(--_color-canvas-dynamic, light-dark(#fff, …))`.
    */
   value: string;
   /** Token assigned to `dynamicProperty` in the light scheme. */
@@ -149,7 +150,7 @@ export const color = {
     focus: {
       property: '--color-focus',
       dynamicProperty: '--_color-focus-dynamic',
-      value: colorFocus,
+      value: `var(--_color-focus-dynamic, ${colorFocus})`,
       light: colorFocusLight,
       dark: colorFocusDark,
       classes: ['.outline-focus'],
@@ -160,7 +161,7 @@ export const color = {
     canvas: {
       property: '--color-canvas',
       dynamicProperty: '--_color-canvas-dynamic',
-      value: colorCanvas,
+      value: `var(--_color-canvas-dynamic, ${colorCanvas})`,
       light: colorCanvasLight,
       dark: colorCanvasDark,
       classes: ['.bg-canvas'],
@@ -169,7 +170,7 @@ export const color = {
     surface: {
       property: '--color-surface',
       dynamicProperty: '--_color-surface-dynamic',
-      value: colorSurface,
+      value: `var(--_color-surface-dynamic, ${colorSurface})`,
       light: colorSurfaceLight,
       dark: colorSurfaceDark,
       classes: ['.bg-surface'],
@@ -178,7 +179,7 @@ export const color = {
     frosted: {
       property: '--color-frosted',
       dynamicProperty: '--_color-frosted-dynamic',
-      value: colorFrosted,
+      value: `var(--_color-frosted-dynamic, ${colorFrosted})`,
       light: colorFrostedLight,
       dark: colorFrostedDark,
       classes: ['.bg-frosted'],
@@ -188,7 +189,7 @@ export const color = {
     frostedSoft: {
       property: '--color-frosted-soft',
       dynamicProperty: '--_color-frosted-soft-dynamic',
-      value: colorFrostedSoft,
+      value: `var(--_color-frosted-soft-dynamic, ${colorFrostedSoft})`,
       light: colorFrostedSoftLight,
       dark: colorFrostedSoftDark,
       classes: ['.bg-frosted-soft'],
@@ -197,7 +198,7 @@ export const color = {
     frostedStrong: {
       property: '--color-frosted-strong',
       dynamicProperty: '--_color-frosted-strong-dynamic',
-      value: colorFrostedStrong,
+      value: `var(--_color-frosted-strong-dynamic, ${colorFrostedStrong})`,
       light: colorFrostedStrongLight,
       dark: colorFrostedStrongDark,
       classes: ['.bg-frosted-strong'],
@@ -207,7 +208,7 @@ export const color = {
     backdrop: {
       property: '--color-backdrop',
       dynamicProperty: '--_color-backdrop-dynamic',
-      value: colorBackdrop,
+      value: `var(--_color-backdrop-dynamic, ${colorBackdrop})`,
       light: colorBackdropLight,
       dark: colorBackdropDark,
       classes: ['.bg-backdrop'],
@@ -218,7 +219,7 @@ export const color = {
     contrastLower: {
       property: '--color-contrast-lower',
       dynamicProperty: '--_color-contrast-lower-dynamic',
-      value: colorContrastLower,
+      value: `var(--_color-contrast-lower-dynamic, ${colorContrastLower})`,
       light: colorContrastLowerLight,
       dark: colorContrastLowerDark,
       classes: ['.border-contrast-lower'],
@@ -228,7 +229,7 @@ export const color = {
     contrastLow: {
       property: '--color-contrast-low',
       dynamicProperty: '--_color-contrast-low-dynamic',
-      value: colorContrastLow,
+      value: `var(--_color-contrast-low-dynamic, ${colorContrastLow})`,
       light: colorContrastLowLight,
       dark: colorContrastLowDark,
       classes: ['.border-contrast-low'],
@@ -238,7 +239,7 @@ export const color = {
     contrastMedium: {
       property: '--color-contrast-medium',
       dynamicProperty: '--_color-contrast-medium-dynamic',
-      value: colorContrastMedium,
+      value: `var(--_color-contrast-medium-dynamic, ${colorContrastMedium})`,
       light: colorContrastMediumLight,
       dark: colorContrastMediumDark,
       classes: ['.text-contrast-medium'],
@@ -247,7 +248,7 @@ export const color = {
     contrastHigh: {
       property: '--color-contrast-high',
       dynamicProperty: '--_color-contrast-high-dynamic',
-      value: colorContrastHigh,
+      value: `var(--_color-contrast-high-dynamic, ${colorContrastHigh})`,
       light: colorContrastHighLight,
       dark: colorContrastHighDark,
       classes: ['.text-contrast-high'],
@@ -256,7 +257,7 @@ export const color = {
     contrastHigher: {
       property: '--color-contrast-higher',
       dynamicProperty: '--_color-contrast-higher-dynamic',
-      value: colorContrastHigher,
+      value: `var(--_color-contrast-higher-dynamic, ${colorContrastHigher})`,
       light: colorContrastHigherLight,
       dark: colorContrastHigherDark,
       classes: ['.text-contrast-higher'],
@@ -265,7 +266,7 @@ export const color = {
     primary: {
       property: '--color-primary',
       dynamicProperty: '--_color-primary-dynamic',
-      value: colorPrimary,
+      value: `var(--_color-primary-dynamic, ${colorPrimary})`,
       light: colorPrimaryLight,
       dark: colorPrimaryDark,
       classes: ['.text-primary'],
@@ -276,7 +277,7 @@ export const color = {
     success: {
       property: '--color-success',
       dynamicProperty: '--_color-success-dynamic',
-      value: colorSuccess,
+      value: `var(--_color-success-dynamic, ${colorSuccess})`,
       light: colorSuccessLight,
       dark: colorSuccessDark,
       classes: ['.text-success'],
@@ -285,7 +286,7 @@ export const color = {
     successLow: {
       property: '--color-success-low',
       dynamicProperty: '--_color-success-low-dynamic',
-      value: colorSuccessLow,
+      value: `var(--_color-success-low-dynamic, ${colorSuccessLow})`,
       light: colorSuccessLowLight,
       dark: colorSuccessLowDark,
       classes: ['.text-success', '.border-success'],
@@ -294,7 +295,7 @@ export const color = {
     successMedium: {
       property: '--color-success-medium',
       dynamicProperty: '--_color-success-medium-dynamic',
-      value: colorSuccessMedium,
+      value: `var(--_color-success-medium-dynamic, ${colorSuccessMedium})`,
       light: colorSuccessMediumLight,
       dark: colorSuccessMediumDark,
       classes: ['.text-success', '.border-success'],
@@ -303,7 +304,7 @@ export const color = {
     successFrosted: {
       property: '--color-success-frosted',
       dynamicProperty: '--_color-success-frosted-dynamic',
-      value: colorSuccessFrosted,
+      value: `var(--_color-success-frosted-dynamic, ${colorSuccessFrosted})`,
       light: colorSuccessFrostedLight,
       dark: colorSuccessFrostedDark,
       classes: ['.bg-success-frosted'],
@@ -313,7 +314,7 @@ export const color = {
     successFrostedSoft: {
       property: '--color-success-frosted-soft',
       dynamicProperty: '--_color-success-frosted-soft-dynamic',
-      value: colorSuccessFrostedSoft,
+      value: `var(--_color-success-frosted-soft-dynamic, ${colorSuccessFrostedSoft})`,
       light: colorSuccessFrostedSoftLight,
       dark: colorSuccessFrostedSoftDark,
       classes: ['.bg-success-frosted-soft'],
@@ -322,7 +323,7 @@ export const color = {
     warning: {
       property: '--color-warning',
       dynamicProperty: '--_color-warning-dynamic',
-      value: colorWarning,
+      value: `var(--_color-warning-dynamic, ${colorWarning})`,
       light: colorWarningLight,
       dark: colorWarningDark,
       classes: ['.text-warning'],
@@ -331,7 +332,7 @@ export const color = {
     warningLow: {
       property: '--color-warning-low',
       dynamicProperty: '--_color-warning-low-dynamic',
-      value: colorWarningLow,
+      value: `var(--_color-warning-low-dynamic, ${colorWarningLow})`,
       light: colorWarningLowLight,
       dark: colorWarningLowDark,
       classes: ['.text-warning', '.border-warning'],
@@ -340,7 +341,7 @@ export const color = {
     warningMedium: {
       property: '--color-warning-medium',
       dynamicProperty: '--_color-warning-medium-dynamic',
-      value: colorWarningMedium,
+      value: `var(--_color-warning-medium-dynamic, ${colorWarningMedium})`,
       light: colorWarningMediumLight,
       dark: colorWarningMediumDark,
       classes: ['.text-warning', '.border-warning'],
@@ -349,7 +350,7 @@ export const color = {
     warningFrosted: {
       property: '--color-warning-frosted',
       dynamicProperty: '--_color-warning-frosted-dynamic',
-      value: colorWarningFrosted,
+      value: `var(--_color-warning-frosted-dynamic, ${colorWarningFrosted})`,
       light: colorWarningFrostedLight,
       dark: colorWarningFrostedDark,
       classes: ['.bg-warning-frosted'],
@@ -359,7 +360,7 @@ export const color = {
     warningFrostedSoft: {
       property: '--color-warning-frosted-soft',
       dynamicProperty: '--_color-warning-frosted-soft-dynamic',
-      value: colorWarningFrostedSoft,
+      value: `var(--_color-warning-frosted-soft-dynamic, ${colorWarningFrostedSoft})`,
       light: colorWarningFrostedSoftLight,
       dark: colorWarningFrostedSoftDark,
       classes: ['.bg-warning-frosted-soft'],
@@ -368,7 +369,7 @@ export const color = {
     error: {
       property: '--color-error',
       dynamicProperty: '--_color-error-dynamic',
-      value: colorError,
+      value: `var(--_color-error-dynamic, ${colorError})`,
       light: colorErrorLight,
       dark: colorErrorDark,
       classes: ['.text-error'],
@@ -377,7 +378,7 @@ export const color = {
     errorLow: {
       property: '--color-error-low',
       dynamicProperty: '--_color-error-low-dynamic',
-      value: colorErrorLow,
+      value: `var(--_color-error-low-dynamic, ${colorErrorLow})`,
       light: colorErrorLowLight,
       dark: colorErrorLowDark,
       classes: ['.text-error', '.border-error'],
@@ -386,7 +387,7 @@ export const color = {
     errorMedium: {
       property: '--color-error-medium',
       dynamicProperty: '--_color-error-medium-dynamic',
-      value: colorErrorMedium,
+      value: `var(--_color-error-medium-dynamic, ${colorErrorMedium})`,
       light: colorErrorMediumLight,
       dark: colorErrorMediumDark,
       classes: ['.text-error', '.border-error'],
@@ -395,7 +396,7 @@ export const color = {
     errorFrosted: {
       property: '--color-error-frosted',
       dynamicProperty: '--_color-error-frosted-dynamic',
-      value: colorErrorFrosted,
+      value: `var(--_color-error-frosted-dynamic, ${colorErrorFrosted})`,
       light: colorErrorFrostedLight,
       dark: colorErrorFrostedDark,
       classes: ['.bg-error-frosted'],
@@ -405,7 +406,7 @@ export const color = {
     errorFrostedSoft: {
       property: '--color-error-frosted-soft',
       dynamicProperty: '--_color-error-frosted-soft-dynamic',
-      value: colorErrorFrostedSoft,
+      value: `var(--_color-error-frosted-soft-dynamic, ${colorErrorFrostedSoft})`,
       light: colorErrorFrostedSoftLight,
       dark: colorErrorFrostedSoftDark,
       classes: ['.bg-error-frosted-soft'],
@@ -414,7 +415,7 @@ export const color = {
     info: {
       property: '--color-info',
       dynamicProperty: '--_color-info-dynamic',
-      value: colorInfo,
+      value: `var(--_color-info-dynamic, ${colorInfo})`,
       light: colorInfoLight,
       dark: colorInfoDark,
       classes: ['.text-info'],
@@ -423,7 +424,7 @@ export const color = {
     infoLow: {
       property: '--color-info-low',
       dynamicProperty: '--_color-info-low-dynamic',
-      value: colorInfoLow,
+      value: `var(--_color-info-low-dynamic, ${colorInfoLow})`,
       light: colorInfoLowLight,
       dark: colorInfoLowDark,
       classes: ['.text-info', '.border-info'],
@@ -432,7 +433,7 @@ export const color = {
     infoMedium: {
       property: '--color-info-medium',
       dynamicProperty: '--_color-info-medium-dynamic',
-      value: colorInfoMedium,
+      value: `var(--_color-info-medium-dynamic, ${colorInfoMedium})`,
       light: colorInfoMediumLight,
       dark: colorInfoMediumDark,
       classes: ['.text-info', '.border-info'],
@@ -441,7 +442,7 @@ export const color = {
     infoFrosted: {
       property: '--color-info-frosted',
       dynamicProperty: '--_color-info-frosted-dynamic',
-      value: colorInfoFrosted,
+      value: `var(--_color-info-frosted-dynamic, ${colorInfoFrosted})`,
       light: colorInfoFrostedLight,
       dark: colorInfoFrostedDark,
       classes: ['.bg-info-frosted'],
@@ -451,7 +452,7 @@ export const color = {
     infoFrostedSoft: {
       property: '--color-info-frosted-soft',
       dynamicProperty: '--_color-info-frosted-soft-dynamic',
-      value: colorInfoFrostedSoft,
+      value: `var(--_color-info-frosted-soft-dynamic, ${colorInfoFrostedSoft})`,
       light: colorInfoFrostedSoftLight,
       dark: colorInfoFrostedSoftDark,
       classes: ['.bg-info-frosted-soft'],
@@ -464,17 +465,11 @@ export const color = {
 // per-scheme fallback assignments below.
 const colorConfigs: ColorConfig[] = Object.values(color).flatMap((group) => Object.values(group));
 
-// Color theme variables — single source for the `@theme` color section and the
-// color docs. Each variable reads its dynamic property and falls back to the
-// documented `value` token. Order matches the generated `@theme` block; the docs reorder by `group`.
-export const colorThemeVariables: TailwindThemeVariable[] = Object.entries(color).flatMap(([group, colors]) =>
-  Object.values(colors).map(({ property, dynamicProperty, value, classes, description }) => ({
-    property,
-    value: `var(${dynamicProperty}, ${value})`,
-    classes,
-    description,
-    group: group as ColorGroup,
-  }))
+// Flat list of every color theme variable for the `@theme` color section, in the
+// nested `color` source order (a11y → background → foreground → semantic). The docs
+// consume the grouped `color` object directly, so both share the same objects.
+export const colorThemeVariables: TailwindThemeVariable[] = Object.values(color).flatMap((group) =>
+  Object.values(group)
 );
 
 // Fallback variable assignments for browsers without `light-dark()` support.

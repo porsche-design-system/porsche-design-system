@@ -114,10 +114,20 @@ export const motionDeprecatedThemeVariables: TailwindThemeVariable[] = [
   },
 ];
 
+/**
+ * Motion theme variables grouped exactly like the storefront API tables /
+ * `tailwindMeta.motion`: the `duration`s and `easing`s (documented only — the
+ * infrastructure defaults and deprecated aliases are excluded).
+ */
+export const motion = {
+  duration: durationThemeVariables,
+  easing: easeThemeVariables,
+};
+
 export const allMotionThemeVariables: TailwindThemeVariable[] = [
   defaultTransitionTimingFunction,
-  ...easeThemeVariables,
+  ...motion.easing,
   defaultTransitionDuration,
-  ...durationThemeVariables,
+  ...motion.duration,
   ...motionDeprecatedThemeVariables,
 ];

@@ -106,9 +106,19 @@ export const borderWidthThemeVariables: TailwindThemeVariable[] = [
   },
 ];
 
+/**
+ * Border theme variables grouped exactly like the storefront API tables /
+ * `tailwindMeta.border`: the `radius` scale and the border `width`s. The single
+ * source for both the docs and the flat `@theme` list ({@link borderThemeVariables}).
+ */
+export const border = {
+  radius,
+  width: borderWidthThemeVariables,
+};
+
 // All border theme variables consumed by the `@theme` block: the radii (mapped
 // from the nested `radius` object) followed by the border widths.
 export const borderThemeVariables: TailwindThemeVariable[] = [
-  ...Object.values(radius),
-  ...borderWidthThemeVariables,
+  ...Object.values(border.radius),
+  ...border.width,
 ];

@@ -1,12 +1,12 @@
 import { blurThemeVariables } from './blur';
-import { borderWidthThemeVariables, radius } from './border';
+import { border } from './border';
 import { breakpointThemeVariables } from './breakpoint';
 import { color } from './color';
 import { displayUtilities } from './display';
 import { gradientUtilities } from './gradient';
 import { gridUtilities } from './grid';
 import { headingUtilities } from './heading';
-import { durationThemeVariables, easeThemeVariables } from './motion';
+import { motion } from './motion';
 import { shadowThemeVariables } from './shadow';
 import { skeletonUtilities } from './skeleton';
 import { spacing } from './spacing';
@@ -28,33 +28,14 @@ import { typography } from './typography';
  * are intentionally omitted, matching the dedicated `*ThemeVariables` exports.
  */
 export const tailwindMeta = {
-  color: {
-    background: color.background,
-    foreground: color.foreground,
-    semantic: color.semantic,
-    a11y: color.a11y,
-  },
-  typography: {
-    family: typography.family,
-    weight: typography.weight,
-    lineHeight: typography.lineHeight,
-    text: typography.text,
-  },
-  spacing: {
-    fluid: spacing.fluid,
-    static: spacing.static,
-  },
-  border: {
-    radius,
-    width: borderWidthThemeVariables,
-  },
+  color,
+  typography,
+  spacing,
+  border,
   blur: blurThemeVariables,
   shadow: shadowThemeVariables,
   breakpoint: breakpointThemeVariables,
-  motion: {
-    duration: durationThemeVariables,
-    easing: easeThemeVariables,
-  },
+  motion,
   utilities: {
     heading: headingUtilities,
     text: textUtilities,
