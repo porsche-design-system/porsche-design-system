@@ -1,4 +1,11 @@
-import type { CssNode } from './types';
+import type { CssNode, ThemeBranch } from './types';
+
+/** Whether a meta branch is a concrete {@link CssNode} leaf (vs. a grouping record/array). */
+const isLeaf = (node: ThemeBranch): node is CssNode => 'property' in node || 'selector' in node || 'raw' in node;
+
+/** Recursively flatten any meta branch into a flat {@link CssNode} list, in source order. */
+export const flatten = (node: ThemeBranch): CssNode[] =>
+  Array.isArray(node) ? node.flatMap(flatten) : isLeaf(node) ? [node] : Object.values(node).flatMap(flatten);
 
 /**
  * Serializes a single {@link CssNode}. Declarations and rules render structurally,
