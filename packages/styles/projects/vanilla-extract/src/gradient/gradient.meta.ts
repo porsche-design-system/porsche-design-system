@@ -1,49 +1,48 @@
-import { gradientStopsFadeDark } from '@porsche-design-system/tokens';
-import type { Meta, MetaEntry } from '../meta.types';
+import type { Meta } from '..';
+import {
+  gradientStopsFadeDark,
+  gradientToBottomStyle,
+  gradientToLeftStyle,
+  gradientToRightStyle,
+  gradientToTopStyle,
+} from '.';
 
 export const gradientMeta: Meta = {
   gradientStopsFadeDark: {
     name: 'gradientStopsFadeDark',
-    value: gradientStopsFadeDark,
     description: 'Holds color stops for a faded gradient, used as `background-image`.',
+    value: gradientStopsFadeDark,
   },
-} as const;
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to bottom, ${gradientStopsFadeDark});` instead  */
-const deprecatedGradientToBottomStyleMeta: MetaEntry = {
-  name: 'gradientToBottomStyle',
-  value: { background: `linear-gradient(to bottom, ${gradientStopsFadeDark});` } as const,
-  description:
-    'since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to bottom, ${gradientStopsFadeDark});` instead',
-} as const;
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to left, ${gradientStopsFadeDark});` instead  */
-const deprecatedGradientToLeftStyleMeta: MetaEntry = {
-  name: 'gradientToLeftStyle',
-  value: { background: `linear-gradient(to left, ${gradientStopsFadeDark});` } as const,
-  description:
-    'since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to left, ${gradientStopsFadeDark});` instead',
-} as const;
-
-/** @deprecated since v4.0.0, will be removed with next major release. background: `linear-gradient(to right, ${gradientStopsFadeDark});` instead  */
-const deprecatedGradientToRightStyleMeta: MetaEntry = {
-  name: 'gradientToRightStyle',
-  value: { background: `linear-gradient(to right, ${gradientStopsFadeDark});` } as const,
-  description:
-    'since v4.0.0, will be removed with next major release. background: `linear-gradient(to right, ${gradientStopsFadeDark});` instead',
-} as const;
-
-/** @deprecated since v4.0.0, will be removed with next major release. background: `linear-gradient(to top, ${gradientStopsFadeDark});` instead  */
-const deprecatedGradientToTopStyleMeta: MetaEntry = {
-  name: 'gradientToTopStyle',
-  value: { background: `linear-gradient(to top, ${gradientStopsFadeDark});` } as const,
-  description:
-    'since v4.0.0, will be removed with next major release. background: `linear-gradient(to top, ${gradientStopsFadeDark});` instead',
-} as const;
-
-export const deprecatedGradientMeta: Meta = {
-  gradientToBottomStyle: deprecatedGradientToBottomStyleMeta,
-  gradientToLeftStyle: deprecatedGradientToLeftStyleMeta,
-  gradientToRightStyle: deprecatedGradientToRightStyleMeta,
-  gradientToTopStyle: deprecatedGradientToTopStyleMeta,
+  /** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to bottom, ${gradientStopsFadeDark});` instead  */
+  gradientToBottomStyle: {
+    name: 'gradientToBottomStyle',
+    description:
+      'since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to bottom, ${gradientStopsFadeDark});` instead',
+    value: gradientToBottomStyle,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to left, ${gradientStopsFadeDark});` instead  */
+  gradientToLeftStyle: {
+    name: 'gradientToLeftStyle',
+    description:
+      'since v4.0.0, will be removed with next major release. Use background: `linear-gradient(to left, ${gradientStopsFadeDark});` instead',
+    value: gradientToLeftStyle,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. background: `linear-gradient(to right, ${gradientStopsFadeDark});` instead  */
+  gradientToRightStyle: {
+    name: 'gradientToRightStyle',
+    description:
+      'since v4.0.0, will be removed with next major release. background: `linear-gradient(to right, ${gradientStopsFadeDark});` instead',
+    value: gradientToRightStyle,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. background: `linear-gradient(to top, ${gradientStopsFadeDark});` instead  */
+  gradientToTopStyle: {
+    name: 'gradientToTopStyle',
+    description:
+      'since v4.0.0, will be removed with next major release. background: `linear-gradient(to top, ${gradientStopsFadeDark});` instead',
+    value: gradientToTopStyle,
+    deprecated: true,
+  },
 } as const;

@@ -1,12 +1,39 @@
+import type { Meta } from '..';
 import {
+  fontFamily,
+  fontHyphenationStyle,
+  fontLineHeight,
   fontPorscheNext,
   fontPorscheNextJa,
   fontPorscheNextKo,
   fontPorscheNextZhHans,
   fontPorscheNextZhHant,
+  fontSize,
+  fontSizeDisplay,
+  fontSizeHeading,
+  fontSizeHeadingLarge,
+  fontSizeHeadingMedium,
+  fontSizeHeadingSmall,
+  fontSizeHeadingXLarge,
+  fontSizeHeadingXXLarge,
+  fontSizeText,
+  fontSizeTextLarge,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
+  fontSizeTextXLarge,
+  fontSizeTextXSmall,
+  fontSizeTextXXSmall,
+  fontStyle,
+  fontStyleItalic,
+  fontStyleNormal,
+  fontVariant,
+  fontWeight,
   fontWeightBold,
   fontWeightNormal,
+  fontWeightRegular,
+  fontWeightSemiBold,
   fontWeightSemibold,
+  getCJKFontFamilyStyle,
   leadingNormal,
   typescale2Xl,
   typescale2Xs,
@@ -18,112 +45,110 @@ import {
   typescaleSm,
   typescaleXl,
   typescaleXs,
-} from '@porsche-design-system/tokens';
-import type { Meta, MetaEntry } from '../meta.types';
-import { getCJKFontFamilyStyle } from './helpers';
+} from '.';
 
 export const fontMeta: Meta = {
   family: {
     fontPorscheNext: {
       name: 'fontPorscheNext',
-      value: fontPorscheNext,
       description: 'Holds the **Porsche Next** font family along with fallback fonts.',
+      value: fontPorscheNext,
     },
     fontPorscheNextJa: {
       name: 'fontPorscheNextJa',
-      value: fontPorscheNextJa,
       description: 'Holds the **Porsche Next** font family along with fallback fonts for **Japanese**.',
+      value: fontPorscheNextJa,
     },
     fontPorscheNextKo: {
       name: 'fontPorscheNextKo',
-      value: fontPorscheNextKo,
       description: 'Holds the **Porsche Next** font family along with fallback fonts for **Korean**.',
+      value: fontPorscheNextKo,
     },
     fontPorscheNextZhHans: {
       name: 'fontPorscheNextZhHans',
-      value: fontPorscheNextZhHans,
       description: 'Holds the **Porsche Next** font family along with fallback fonts for **Simplified Chinese**.',
+      value: fontPorscheNextZhHans,
     },
     fontPorscheNextZhHant: {
       name: 'fontPorscheNextZhHant',
-      value: fontPorscheNextZhHant,
       description: 'Holds the **Porsche Next** font family along with fallback fonts for **Traditional Chinese**.',
+      value: fontPorscheNextZhHant,
     },
   },
   lineHeight: {
     leadingNormal: {
       name: 'leadingNormal',
-      value: leadingNormal,
       description: 'Holds a dynamic default line height specifically optimized for the Porsche Next typeface.',
+      value: leadingNormal,
     },
   },
   size: {
     typescale2Xs: {
       name: 'typescale2Xs',
-      value: typescale2Xs,
       description: 'Holds the **2x-small** font size optimized for the Porsche Next typeface.',
+      value: typescale2Xs,
     },
     typescaleXs: {
       name: 'typescaleXs',
-      value: typescaleXs,
       description: 'Holds the **x-small** font size optimized for the Porsche Next typeface.',
+      value: typescaleXs,
     },
     typescaleSm: {
       name: 'typescaleSm',
-      value: typescaleSm,
       description: 'Holds the **small** font size optimized for the Porsche Next typeface.',
+      value: typescaleSm,
     },
     typescaleMd: {
       name: 'typescaleMd',
-      value: typescaleMd,
       description: 'Holds the **medium** font size optimized for the Porsche Next typeface.',
+      value: typescaleMd,
     },
     typescaleLg: {
       name: 'typescaleLg',
-      value: typescaleLg,
       description: 'Holds the **large** font size optimized for the Porsche Next typeface.',
+      value: typescaleLg,
     },
     typescaleXl: {
       name: 'typescaleXl',
-      value: typescaleXl,
       description: 'Holds the **x-large** font size optimized for the Porsche Next typeface.',
+      value: typescaleXl,
     },
     typescale2Xl: {
       name: 'typescale2Xl',
-      value: typescale2Xl,
       description: 'Holds the **2x-large** font size optimized for the Porsche Next typeface.',
+      value: typescale2Xl,
     },
     typescale3Xl: {
       name: 'typescale3Xl',
-      value: typescale3Xl,
       description: 'Holds the **3x-large** font size optimized for the Porsche Next typeface.',
+      value: typescale3Xl,
     },
     typescale4Xl: {
       name: 'typescale4Xl',
-      value: typescale4Xl,
       description: 'Holds the **4x-large** font size optimized for the Porsche Next typeface.',
+      value: typescale4Xl,
     },
     typescale5Xl: {
       name: 'typescale5Xl',
-      value: typescale5Xl,
       description: 'Holds the **5x-large** font size optimized for the Porsche Next typeface.',
+      value: typescale5Xl,
     },
   },
   weight: {
     fontWeightNormal: {
       name: 'fontWeightNormal',
-      value: fontWeightNormal,
       description: 'Holds the **normal** font weight optimized for the Porsche Next typeface.',
+      value: fontWeightNormal,
     },
     fontWeightSemibold: {
       name: 'fontWeightSemibold',
-      value: fontWeightSemibold,
       description: 'Holds the **semibold** font weight optimized for the Porsche Next typeface.',
+      value: fontWeightSemibold,
     },
     fontWeightBold: {
       name: 'fontWeightBold',
-      value: fontWeightBold,
       description: 'Holds the **bold** font weight optimized for the Porsche Next typeface.',
+      value: fontWeightBold,
     },
   },
   getCJKFontFamilyStyle: {
@@ -132,229 +157,177 @@ export const fontMeta: Meta = {
       "Applies locale-specific **Porsche Next** font stacks for **CJK** languages (Simplified Chinese, Traditional Chinese, Japanese, Korean) based on the element's `lang` attribute.",
     value: getCJKFontFamilyStyle,
   },
-} as const;
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescale2Xs instead. */
-const deprecatedFontSizeTextXXSmall: MetaEntry = {
-  name: 'fontSizeTextXXSmall',
-  value: typescale2Xs,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale2Xs instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescaleXs instead. */
-const deprecatedFontSizeTextXSmall: MetaEntry = {
-  name: 'fontSizeTextXSmall',
-  value: typescaleXs,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleXs instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead. */
-const deprecatedFontSizeHeadingSmall: MetaEntry = {
-  name: 'fontSizeHeadingSmall',
-  value: typescaleSm,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead. */
-const deprecatedFontSizeTextSmall: MetaEntry = {
-  name: 'fontSizeTextSmall',
-  value: typescaleSm,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead. */
-const deprecatedFontSizeHeadingMedium: MetaEntry = {
-  name: 'fontSizeHeadingMedium',
-  value: typescaleMd,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead. */
-const deprecatedFontSizeTextMedium: MetaEntry = {
-  name: 'fontSizeTextMedium',
-  value: typescaleMd,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead. */
-const deprecatedFontSizeHeadingLarge: MetaEntry = {
-  name: 'fontSizeHeadingLarge',
-  value: typescaleLg,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead. */
-const deprecatedFontSizeTextLarge: MetaEntry = {
-  name: 'fontSizeTextLarge',
-  value: typescaleLg,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead. */
-const deprecatedFontSizeHeadingXLarge: MetaEntry = {
-  name: 'fontSizeHeadingXLarge',
-  value: typescaleXl,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead. */
-const deprecatedFontSizeTextXLarge: MetaEntry = {
-  name: 'fontSizeTextXLarge',
-  value: typescaleXl,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescale2Xl instead. */
-const deprecatedFontSizeHeadingXXLarge: MetaEntry = {
-  name: 'fontSizeHeadingXXLarge',
-  value: typescale2Xl,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale2Xl instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use fontPorscheNext instead. */
-const deprecatedFontFamily: MetaEntry = {
-  name: 'fontFamily',
-  value: fontPorscheNext,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use fontPorscheNext instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use leadingNormal instead. */
-const deprecatedFontLineHeight: MetaEntry = {
-  name: 'fontLineHeight',
-  value: leadingNormal,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use leadingNormal instead',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead. */
-const deprecatedFontSize: MetaEntry = {
-  name: 'fontSize',
-  value: {
-    text: {
-      xxSmall: typescale2Xs,
-      xSmall: typescaleXs,
-      small: typescaleSm,
-      medium: typescaleMd,
-      large: typescaleLg,
-      xLarge: typescaleXl,
-    },
-    heading: {
-      small: typescaleSm,
-      medium: typescaleMd,
-      large: typescaleLg,
-      xLarge: typescaleXl,
-      xxLarge: typescale2Xl,
-    },
-    display: { small: typescale3Xl, medium: typescale4Xl, large: typescale5Xl },
-  } as const,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use variables directly instead. */
-const deprecatedFontSizeDisplay: MetaEntry = {
-  name: 'fontSizeDisplay',
-  value: { small: typescale3Xl, medium: typescale4Xl, large: typescale5Xl } as const,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead. */
-const deprecatedFontSizeHeading: MetaEntry = {
-  name: 'fontSizeHeading',
-  value: {
-    small: typescaleSm,
-    medium: typescaleMd,
-    large: typescaleLg,
-    xLarge: typescaleXl,
-    xxLarge: typescale2Xl,
-  } as const,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead. */
-const deprecatedFontSizeText: MetaEntry = {
-  name: 'fontSizeText',
-  value: {
-    xxSmall: typescale2Xs,
-    xSmall: typescaleXs,
-    small: typescaleSm,
-    medium: typescaleMd,
-    large: typescaleLg,
-    xLarge: typescaleXl,
-  } as const,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use 'normal' | 'italic' instead. */
-const deprecatedFontStyle: MetaEntry = {
-  name: 'fontStyle',
-  value: { normal: 'normal', italic: 'italic' } as const,
-  description: "since v4.0.0, will be removed with next major release. Use 'normal' | 'italic' instead.",
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use 'italic' instead. */
-const deprecatedFontStyleItalic: MetaEntry = {
-  name: 'fontStyleItalic',
-  value: 'italic' as const,
-  description: "since v4.0.0, will be removed with next major release. Use 'italic' instead.",
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use 'normal' instead. */
-const deprecatedFontStyleNormal: MetaEntry = {
-  name: 'fontStyleNormal',
-  value: 'normal' as const,
-  description: "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use 'normal' instead. */
-const deprecatedFontVariant: MetaEntry = {
-  name: 'fontVariant',
-  value: 'normal' as const,
-  description: "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use variables directly instead. */
-const deprecatedFontWeight: MetaEntry = {
-  name: 'fontWeight',
-  value: { regular: fontWeightNormal, semiBold: fontWeightSemibold, bold: fontWeightBold } as const,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use fontWeightNormal instead. */
-const deprecatedFontWeightRegular: MetaEntry = {
-  name: 'fontWeightRegular',
-  value: fontWeightNormal,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use fontWeightNormal instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use fontWeightSemibold instead. */
-const deprecatedFontWeightSemiBold: MetaEntry = {
-  name: 'fontWeightSemiBold',
-  value: fontWeightSemibold,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use fontWeightSemibold instead.',
-};
-
-export const deprecatedFontMeta: Meta = {
-  fontSizeTextXXSmall: deprecatedFontSizeTextXXSmall,
-  fontSizeTextXSmall: deprecatedFontSizeTextXSmall,
-  fontSizeHeadingSmall: deprecatedFontSizeHeadingSmall,
-  fontSizeTextSmall: deprecatedFontSizeTextSmall,
-  fontSizeHeadingMedium: deprecatedFontSizeHeadingMedium,
-  fontSizeTextMedium: deprecatedFontSizeTextMedium,
-  fontSizeHeadingLarge: deprecatedFontSizeHeadingLarge,
-  fontSizeTextLarge: deprecatedFontSizeTextLarge,
-  fontSizeHeadingXLarge: deprecatedFontSizeHeadingXLarge,
-  fontSizeTextXLarge: deprecatedFontSizeTextXLarge,
-  fontSizeHeadingXXLarge: deprecatedFontSizeHeadingXXLarge,
-  fontFamily: deprecatedFontFamily,
-  fontLineHeight: deprecatedFontLineHeight,
-  fontSize: deprecatedFontSize,
-  fontSizeDisplay: deprecatedFontSizeDisplay,
-  fontSizeHeading: deprecatedFontSizeHeading,
-  fontSizeText: deprecatedFontSizeText,
-  fontStyle: deprecatedFontStyle,
-  fontStyleItalic: deprecatedFontStyleItalic,
-  fontStyleNormal: deprecatedFontStyleNormal,
-  fontVariant: deprecatedFontVariant,
-  fontWeight: deprecatedFontWeight,
-  fontWeightRegular: deprecatedFontWeightRegular,
-  fontWeightSemiBold: deprecatedFontWeightSemiBold,
+  fontHyphenationStyle: {
+    name: 'fontHyphenationStyle',
+    description: 'Applies **hyphenation** styles (`overflow-wrap` and `hyphens`) to break and hyphenate long words.',
+    value: fontHyphenationStyle,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescale2Xs instead. */
+  fontSizeTextXXSmall: {
+    name: 'fontSizeTextXXSmall',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale2Xs instead.',
+    value: fontSizeTextXXSmall,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescaleXs instead. */
+  fontSizeTextXSmall: {
+    name: 'fontSizeTextXSmall',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleXs instead.',
+    value: fontSizeTextXSmall,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead. */
+  fontSizeHeadingSmall: {
+    name: 'fontSizeHeadingSmall',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead.',
+    value: fontSizeHeadingSmall,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead. */
+  fontSizeTextSmall: {
+    name: 'fontSizeTextSmall',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleSm instead.',
+    value: fontSizeTextSmall,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead. */
+  fontSizeHeadingMedium: {
+    name: 'fontSizeHeadingMedium',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead.',
+    value: fontSizeHeadingMedium,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead. */
+  fontSizeTextMedium: {
+    name: 'fontSizeTextMedium',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleMd instead.',
+    value: fontSizeTextMedium,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead. */
+  fontSizeHeadingLarge: {
+    name: 'fontSizeHeadingLarge',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead.',
+    value: fontSizeHeadingLarge,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead. */
+  fontSizeTextLarge: {
+    name: 'fontSizeTextLarge',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleLg instead.',
+    value: fontSizeTextLarge,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead. */
+  fontSizeHeadingXLarge: {
+    name: 'fontSizeHeadingXLarge',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead.',
+    value: fontSizeHeadingXLarge,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead. */
+  fontSizeTextXLarge: {
+    name: 'fontSizeTextXLarge',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescaleXl instead.',
+    value: fontSizeTextXLarge,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescale2Xl instead. */
+  fontSizeHeadingXXLarge: {
+    name: 'fontSizeHeadingXXLarge',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale2Xl instead.',
+    value: fontSizeHeadingXXLarge,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use fontPorscheNext instead. */
+  fontFamily: {
+    name: 'fontFamily',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use fontPorscheNext instead.',
+    value: fontFamily,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use leadingNormal instead. */
+  fontLineHeight: {
+    name: 'fontLineHeight',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use leadingNormal instead',
+    value: fontLineHeight,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead. */
+  fontSize: {
+    name: 'fontSize',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead.',
+    value: fontSize,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use variables directly instead. */
+  fontSizeDisplay: {
+    name: 'fontSizeDisplay',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.',
+    value: fontSizeDisplay,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead. */
+  fontSizeHeading: {
+    name: 'fontSizeHeading',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead.',
+    value: fontSizeHeading,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead. */
+  fontSizeText: {
+    name: 'fontSizeText',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use typescale variables instead.',
+    value: fontSizeText,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use 'normal' | 'italic' instead. */
+  fontStyle: {
+    name: 'fontStyle',
+    description: "since v4.0.0, will be removed with next major release. Use 'normal' | 'italic' instead.",
+    value: fontStyle,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use 'italic' instead. */
+  fontStyleItalic: {
+    name: 'fontStyleItalic',
+    description: "since v4.0.0, will be removed with next major release. Use 'italic' instead.",
+    value: fontStyleItalic,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use 'normal' instead. */
+  fontStyleNormal: {
+    name: 'fontStyleNormal',
+    description: "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
+    value: fontStyleNormal,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use 'normal' instead. */
+  fontVariant: {
+    name: 'fontVariant',
+    description: "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
+    value: fontVariant,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use variables directly instead. */
+  fontWeight: {
+    name: 'fontWeight',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use variables directly instead.',
+    value: fontWeight,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use fontWeightNormal instead. */
+  fontWeightRegular: {
+    name: 'fontWeightRegular',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use fontWeightNormal instead.',
+    value: fontWeightRegular,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use fontWeightSemibold instead. */
+  fontWeightSemiBold: {
+    name: 'fontWeightSemiBold',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use fontWeightSemibold instead.',
+    value: fontWeightSemiBold,
+    deprecated: true,
+  },
 } as const;

@@ -1,644 +1,571 @@
+import type { Meta } from '..';
 import {
-  colorBackdrop as _colorBackdrop,
-  colorCanvas as _colorCanvas,
-  colorContrastHigh as _colorContrastHigh,
-  colorContrastHigher as _colorContrastHigher,
-  colorContrastLow as _colorContrastLow,
-  colorContrastLower as _colorContrastLower,
-  colorContrastMedium as _colorContrastMedium,
-  colorError as _colorError,
-  colorErrorFrosted as _colorErrorFrosted,
-  colorErrorFrostedSoft as _colorErrorFrostedSoft,
-  colorErrorLow as _colorErrorLow,
-  colorErrorMedium as _colorErrorMedium,
-  colorFocus as _colorFocus,
-  colorFrosted as _colorFrosted,
-  colorFrostedSoft as _colorFrostedSoft,
-  colorFrostedStrong as _colorFrostedStrong,
-  colorInfo as _colorInfo,
-  colorInfoFrosted as _colorInfoFrosted,
-  colorInfoFrostedSoft as _colorInfoFrostedSoft,
-  colorInfoLow as _colorInfoLow,
-  colorInfoMedium as _colorInfoMedium,
-  colorPrimary as _colorPrimary,
-  colorSuccess as _colorSuccess,
-  colorSuccessFrosted as _colorSuccessFrosted,
-  colorSuccessFrostedSoft as _colorSuccessFrostedSoft,
-  colorSuccessLow as _colorSuccessLow,
-  colorSuccessMedium as _colorSuccessMedium,
-  colorSurface as _colorSurface,
-  colorWarning as _colorWarning,
-  colorWarningFrosted as _colorWarningFrosted,
-  colorWarningFrostedSoft as _colorWarningFrostedSoft,
-  colorWarningLow as _colorWarningLow,
-  colorWarningMedium as _colorWarningMedium,
-  colorBackdropDark,
-  colorBackdropLight,
-  colorCanvasDark,
-  colorCanvasLight,
-  colorContrastHighDark,
-  colorContrastHighLight,
-  colorContrastLowDark,
-  colorContrastLowLight,
-  colorContrastMediumDark,
-  colorContrastMediumLight,
-  colorErrorDark,
-  colorErrorFrostedDark,
-  colorErrorFrostedLight,
-  colorErrorLight,
-  colorFocusDark,
-  colorFocusLight,
-  colorFrostedDark,
-  colorFrostedLight,
-  colorInfoDark,
-  colorInfoFrostedDark,
-  colorInfoFrostedLight,
-  colorInfoLight,
-  colorPrimaryDark,
-  colorPrimaryLight,
-  colorSuccessDark,
-  colorSuccessFrostedDark,
-  colorSuccessFrostedLight,
-  colorSuccessLight,
-  colorSurfaceDark,
-  colorSurfaceLight,
-  colorWarningDark,
-  colorWarningFrostedDark,
-  colorWarningFrostedLight,
-  colorWarningLight,
-} from '@porsche-design-system/tokens';
-import type { Meta, MetaEntry } from '../meta.types';
+  colorBackdrop,
+  colorCanvas,
+  colorContrastHigh,
+  colorContrastHigher,
+  colorContrastLow,
+  colorContrastLower,
+  colorContrastMedium,
+  colorError,
+  colorErrorFrosted,
+  colorErrorFrostedSoft,
+  colorErrorLow,
+  colorErrorMedium,
+  colorFocus,
+  colorFrosted,
+  colorFrostedSoft,
+  colorFrostedStrong,
+  colorInfo,
+  colorInfoFrosted,
+  colorInfoFrostedSoft,
+  colorInfoLow,
+  colorInfoMedium,
+  colorPrimary,
+  colorSchemeStyles,
+  colorSuccess,
+  colorSuccessFrosted,
+  colorSuccessFrostedSoft,
+  colorSuccessLow,
+  colorSuccessMedium,
+  colorSurface,
+  colorWarning,
+  colorWarningFrosted,
+  colorWarningFrostedSoft,
+  colorWarningLow,
+  colorWarningMedium,
+  theme,
+  themeDark,
+  themeDarkBackgroundBase,
+  themeDarkBackgroundFrosted,
+  themeDarkBackgroundShading,
+  themeDarkBackgroundSurface,
+  themeDarkContrastHigh,
+  themeDarkContrastLow,
+  themeDarkContrastMedium,
+  themeDarkNotificationError,
+  themeDarkNotificationErrorSoft,
+  themeDarkNotificationInfo,
+  themeDarkNotificationInfoSoft,
+  themeDarkNotificationSuccess,
+  themeDarkNotificationSuccessSoft,
+  themeDarkNotificationWarning,
+  themeDarkNotificationWarningSoft,
+  themeDarkPrimary,
+  themeDarkStateActive,
+  themeDarkStateDisabled,
+  themeDarkStateFocus,
+  themeDarkStateHover,
+  themeLight,
+  themeLightBackgroundBase,
+  themeLightBackgroundFrosted,
+  themeLightBackgroundShading,
+  themeLightBackgroundSurface,
+  themeLightContrastHigh,
+  themeLightContrastLow,
+  themeLightContrastMedium,
+  themeLightNotificationError,
+  themeLightNotificationErrorSoft,
+  themeLightNotificationInfo,
+  themeLightNotificationInfoSoft,
+  themeLightNotificationSuccess,
+  themeLightNotificationSuccessSoft,
+  themeLightNotificationWarning,
+  themeLightNotificationWarningSoft,
+  themeLightPrimary,
+  themeLightStateActive,
+  themeLightStateDisabled,
+  themeLightStateFocus,
+  themeLightStateHover,
+} from '.';
 
 export const colorMeta: Meta = {
-  lightDark: {
+  background: {
     colorCanvas: {
       name: 'colorCanvas',
-      value: `var(--_color-canvas, ${_colorCanvas})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **canvas** color, typically used for surfaces.`,
+      value: colorCanvas,
     },
     colorSurface: {
       name: 'colorSurface',
-      value: `var(--_color-surface, ${_colorSurface})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **surface** color, typically used for surfaces.`,
+      value: colorSurface,
     },
     colorFrosted: {
       name: 'colorFrosted',
-      value: `var(--_color-frosted, ${_colorFrosted})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted** color, typically used as a background in combination with \`blur()\`.`,
+      value: colorFrosted,
     },
     colorFrostedSoft: {
       name: 'colorFrostedSoft',
-      value: `var(--_color-frosted-soft, ${_colorFrostedSoft})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-soft** color, typically used as a background \`:hover\`.`,
+      value: colorFrostedSoft,
     },
     colorFrostedStrong: {
       name: 'colorFrostedStrong',
-      value: `var(--_color-frosted-strong, ${_colorFrostedStrong})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-strong** color, typically used as a background in combination with \`blur()\`.`,
+      value: colorFrostedStrong,
     },
     colorBackdrop: {
       name: 'colorBackdrop',
-      value: `var(--_color-backdrop, ${_colorBackdrop})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **backdrop** color, typically used for backdrops.`,
+      value: colorBackdrop,
     },
+  },
+  foreground: {
     colorPrimary: {
       name: 'colorPrimary',
-      value: `var(--_color-primary, ${_colorPrimary})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **primary** color, typically used for text.`,
+      value: colorPrimary,
     },
     colorContrastHigher: {
       name: 'colorContrastHigher',
-      value: `var(--_color-contrast-higher, ${_colorContrastHigher})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-higher** color, typically used for text.`,
+      value: colorContrastHigher,
     },
     colorContrastHigh: {
       name: 'colorContrastHigh',
-      value: `var(--_color-contrast-high, ${_colorContrastHigh})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-high** color, typically used for text.`,
+      value: colorContrastHigh,
     },
     colorContrastMedium: {
       name: 'colorContrastMedium',
-      value: `var(--_color-contrast-medium, ${_colorContrastMedium})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-medium** color, typically used for text.`,
+      value: colorContrastMedium,
     },
     colorContrastLow: {
       name: 'colorContrastLow',
-      value: `var(--_color-contrast-low, ${_colorContrastLow})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-low** color, intended only for decorative elements.`,
+      value: colorContrastLow,
     },
     colorContrastLower: {
       name: 'colorContrastLower',
-      value: `var(--_color-contrast-lower, ${_colorContrastLower})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-lower** color, intended only for decorative elements.`,
+      value: colorContrastLower,
     },
+  },
+  semantic: {
     colorInfo: {
       name: 'colorInfo',
-      value: `var(--_color-info, ${_colorInfo})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info** color, typically used for text.`,
+      value: colorInfo,
     },
     colorInfoMedium: {
       name: 'colorInfoMedium',
-      value: `var(--_color-info-medium, ${_colorInfoMedium})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-medium** color, typically used for text or border.`,
+      value: colorInfoMedium,
     },
     colorInfoLow: {
       name: 'colorInfoLow',
-      value: `var(--_color-info-low, ${_colorInfoLow})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-low** color, typically used for text or border.`,
+      value: colorInfoLow,
     },
     colorInfoFrosted: {
       name: 'colorInfoFrosted',
-      value: `var(--_color-info-frosted, ${_colorInfoFrosted})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
+      value: colorInfoFrosted,
     },
     colorInfoFrostedSoft: {
       name: 'colorInfoFrostedSoft',
-      value: `var(--_color-info-frosted-soft, ${_colorInfoFrostedSoft})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted-soft** color, typically used as background \`:hover\`.`,
+      value: colorInfoFrostedSoft,
     },
     colorSuccess: {
       name: 'colorSuccess',
-      value: `var(--_color-success, ${_colorSuccess})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success** color, typically used for text.`,
+      value: colorSuccess,
     },
     colorSuccessMedium: {
       name: 'colorSuccessMedium',
-      value: `var(--_color-success-medium, ${_colorSuccessMedium})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-medium** color, typically used for text or border.`,
+      value: colorSuccessMedium,
     },
     colorSuccessLow: {
       name: 'colorSuccessLow',
-      value: `var(--_color-success-low, ${_colorSuccessLow})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-low** color, typically used for text or border.`,
+      value: colorSuccessLow,
     },
     colorSuccessFrosted: {
       name: 'colorSuccessFrosted',
-      value: `var(--_color-success-frosted, ${_colorSuccessFrosted})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
+      value: colorSuccessFrosted,
     },
     colorSuccessFrostedSoft: {
       name: 'colorSuccessFrostedSoft',
-      value: `var(--_color-success-frosted-soft, ${_colorSuccessFrostedSoft})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted-soft** color, typically used as background \`:hover\`.`,
+      value: colorSuccessFrostedSoft,
     },
     colorWarning: {
       name: 'colorWarning',
-      value: `var(--_color-warning, ${_colorWarning})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning** color, typically used for text.`,
+      value: colorWarning,
     },
     colorWarningMedium: {
       name: 'colorWarningMedium',
-      value: `var(--_color-warning-medium, ${_colorWarningMedium})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-medium** color, typically used for text or border.`,
+      value: colorWarningMedium,
     },
     colorWarningLow: {
       name: 'colorWarningLow',
-      value: `var(--_color-warning-low, ${_colorWarningLow})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-low** color, typically used for text or border.`,
+      value: colorWarningLow,
     },
     colorWarningFrosted: {
       name: 'colorWarningFrosted',
-      value: `var(--_color-warning-frosted, ${_colorWarningFrosted})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
+      value: colorWarningFrosted,
     },
     colorWarningFrostedSoft: {
       name: 'colorWarningFrostedSoft',
-      value: `var(--_color-warning-frosted-soft, ${_colorWarningFrostedSoft})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted-soft** color, typically used as background \`:hover\`.`,
+      value: colorWarningFrostedSoft,
     },
     colorError: {
       name: 'colorError',
-      value: `var(--_color-error, ${_colorError})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error** color, typically used for text.`,
+      value: colorError,
     },
     colorErrorMedium: {
       name: 'colorErrorMedium',
-      value: `var(--_color-error-medium, ${_colorErrorMedium})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-medium** color, typically used for text or border.`,
+      value: colorErrorMedium,
     },
     colorErrorLow: {
       name: 'colorErrorLow',
-      value: `var(--_color-error-low, ${_colorErrorLow})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-low** color, typically used for text or border.`,
+      value: colorErrorLow,
     },
     colorErrorFrosted: {
       name: 'colorErrorFrosted',
-      value: `var(--_color-error-frosted, ${_colorErrorFrosted})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted** color, typically used as background with \`.backdrop-blur-frosted\`.`,
+      value: colorErrorFrosted,
     },
     colorErrorFrostedSoft: {
       name: 'colorErrorFrostedSoft',
-      value: `var(--_color-error-frosted-soft, ${_colorErrorFrostedSoft})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted-soft** color, typically used as background \`:hover\`.`,
+      value: colorErrorFrostedSoft,
     },
+  },
+  a11y: {
     colorFocus: {
       name: 'colorFocus',
-      value: `var(--_color-focus, ${_colorFocus})`,
       description: `Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **focus** color, typically used as the outline for \`:focus-visible\` states.`,
+      value: colorFocus,
     },
   },
-} as const;
-
-const themeDark = {
-  primary: colorPrimaryDark,
-  background: {
-    base: colorCanvasDark,
-    surface: colorSurfaceDark,
-    shading: colorBackdropDark,
-    frosted: colorFrostedDark,
+  colorSchemeStyles: {
+    name: 'colorSchemeStyles',
+    description:
+      'Holds the global style rules for the `.scheme-*` color-scheme classes, including [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) fallback variables for browsers without support.',
+    value: colorSchemeStyles,
   },
-  contrast: { low: colorContrastLowDark, medium: colorContrastMediumDark, high: colorContrastHighDark },
-  notification: {
-    success: colorSuccessDark,
-    successSoft: colorSuccessFrostedDark,
-    warning: colorWarningDark,
-    warningSoft: colorWarningFrostedDark,
-    error: colorErrorDark,
-    errorSoft: colorErrorFrostedDark,
-    info: colorInfoDark,
-    infoSoft: colorInfoFrostedDark,
+  /** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
+  theme: {
+    name: 'theme',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
+    value: theme,
+    deprecated: true,
   },
-  state: {
-    hover: colorFrostedDark,
-    active: colorFrostedDark,
-    focus: colorFocusDark,
-    disabled: 'hsla(240,1.5%,61.8%,0.302)',
+  /** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
+  themeDark: {
+    name: 'themeDark',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
+    value: themeDark,
+    deprecated: true,
   },
-} as const;
-
-const themeLight = {
-  primary: colorPrimaryLight,
-  background: {
-    base: colorCanvasLight,
-    surface: colorSurfaceLight,
-    shading: colorBackdropLight,
-    frosted: colorFrostedLight,
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorCanvasDark instead. */
+  themeDarkBackgroundBase: {
+    name: 'themeDarkBackgroundBase',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorCanvasDark instead.',
+    value: themeDarkBackgroundBase,
+    deprecated: true,
   },
-  contrast: { low: colorContrastLowLight, medium: colorContrastMediumLight, high: colorContrastHighLight },
-  notification: {
-    success: colorSuccessLight,
-    successSoft: colorSuccessFrostedLight,
-    warning: colorWarningLight,
-    warningSoft: colorWarningFrostedLight,
-    error: colorErrorLight,
-    errorSoft: colorErrorFrostedLight,
-    info: colorInfoLight,
-    infoSoft: colorInfoFrostedLight,
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead. */
+  themeDarkBackgroundFrosted: {
+    name: 'themeDarkBackgroundFrosted',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.',
+    value: themeDarkBackgroundFrosted,
+    deprecated: true,
   },
-  state: {
-    hover: colorFrostedLight,
-    active: colorFrostedLight,
-    focus: colorFocusLight,
-    disabled: 'hsla(233,6.6%,23.9%,0.412)',
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorBackdropDark instead. */
+  themeDarkBackgroundShading: {
+    name: 'themeDarkBackgroundShading',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorBackdropDark instead.',
+    value: themeDarkBackgroundShading,
+    deprecated: true,
   },
-} as const;
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
-const deprecatedTheme: MetaEntry = {
-  name: 'theme',
-  value: { light: themeLight, dark: themeDark } as const,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
-const deprecatedThemeDark: MetaEntry = {
-  name: 'themeDark',
-  value: themeDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorCanvasDark instead. */
-const deprecatedThemeDarkBackgroundBase: MetaEntry = {
-  name: 'themeDarkBackgroundBase',
-  value: colorCanvasDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorCanvasDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead. */
-const deprecatedThemeDarkBackgroundFrosted: MetaEntry = {
-  name: 'themeDarkBackgroundFrosted',
-  value: colorFrostedDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorBackdropDark instead. */
-const deprecatedThemeDarkBackgroundShading: MetaEntry = {
-  name: 'themeDarkBackgroundShading',
-  value: colorBackdropDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorBackdropDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceDark instead. */
-const deprecatedThemeDarkBackgroundSurface: MetaEntry = {
-  name: 'themeDarkBackgroundSurface',
-  value: colorSurfaceDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighDark instead. */
-const deprecatedThemeDarkContrastHigh: MetaEntry = {
-  name: 'themeDarkContrastHigh',
-  value: colorContrastHighDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowDark instead. */
-const deprecatedThemeDarkContrastLow: MetaEntry = {
-  name: 'themeDarkContrastLow',
-  value: colorContrastLowDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumDark instead. */
-const deprecatedThemeDarkContrastMedium: MetaEntry = {
-  name: 'themeDarkContrastMedium',
-  value: colorContrastMediumDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorDark instead. */
-const deprecatedThemeDarkNotificationError: MetaEntry = {
-  name: 'themeDarkNotificationError',
-  value: colorErrorDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedDark instead. */
-const deprecatedThemeDarkNotificationErrorSoft: MetaEntry = {
-  name: 'themeDarkNotificationErrorSoft',
-  value: colorErrorFrostedDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoDark instead. */
-const deprecatedThemeDarkNotificationInfo: MetaEntry = {
-  name: 'themeDarkNotificationInfo',
-  value: colorInfoDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedDark instead. */
-const deprecatedThemeDarkNotificationInfoSoft: MetaEntry = {
-  name: 'themeDarkNotificationInfoSoft',
-  value: colorInfoFrostedDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessDark instead. */
-const deprecatedThemeDarkNotificationSuccess: MetaEntry = {
-  name: 'themeDarkNotificationSuccess',
-  value: colorSuccessDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedDark instead. */
-const deprecatedThemeDarkNotificationSuccessSoft: MetaEntry = {
-  name: 'themeDarkNotificationSuccessSoft',
-  value: colorSuccessFrostedDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningDark instead. */
-const deprecatedThemeDarkNotificationWarning: MetaEntry = {
-  name: 'themeDarkNotificationWarning',
-  value: colorWarningDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedDark instead. */
-const deprecatedThemeDarkNotificationWarningSoft: MetaEntry = {
-  name: 'themeDarkNotificationWarningSoft',
-  value: colorWarningFrostedDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryDark instead. */
-const deprecatedThemeDarkPrimary: MetaEntry = {
-  name: 'themeDarkPrimary',
-  value: colorPrimaryDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead. */
-const deprecatedThemeDarkStateActive: MetaEntry = {
-  name: 'themeDarkStateActive',
-  value: colorFrostedDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. */
-const deprecatedThemeDarkStateDisabled: MetaEntry = {
-  name: 'themeDarkStateDisabled',
-  value: 'hsla(240,1.5%,61.8%,0.302)',
-  description: 'deprecated since v4.0.0, will be removed with next major release.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorFocusDark instead. */
-const deprecatedThemeDarkStateFocus: MetaEntry = {
-  name: 'themeDarkStateFocus',
-  value: colorFocusDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFocusDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead. */
-const deprecatedThemeDarkStateHover: MetaEntry = {
-  name: 'themeDarkStateHover',
-  value: colorFrostedDark,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
-const deprecatedThemeLight: MetaEntry = {
-  name: 'themeLight',
-  value: themeLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorCanvasLight instead. */
-const deprecatedThemeLightBackgroundBase: MetaEntry = {
-  name: 'themeLightBackgroundBase',
-  value: colorCanvasLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorCanvasLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead. */
-const deprecatedThemeLightBackgroundFrosted: MetaEntry = {
-  name: 'themeLightBackgroundFrosted',
-  value: colorFrostedLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorBackdropLight instead. */
-const deprecatedThemeLightBackgroundShading: MetaEntry = {
-  name: 'themeLightBackgroundShading',
-  value: colorBackdropLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorBackdropLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceLight instead. */
-const deprecatedThemeLightBackgroundSurface: MetaEntry = {
-  name: 'themeLightBackgroundSurface',
-  value: colorSurfaceLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighLight instead. */
-const deprecatedThemeLightContrastHigh: MetaEntry = {
-  name: 'themeLightContrastHigh',
-  value: colorContrastHighLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowLight instead. */
-const deprecatedThemeLightContrastLow: MetaEntry = {
-  name: 'themeLightContrastLow',
-  value: colorContrastLowLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead. */
-const deprecatedThemeLightContrastMedium: MetaEntry = {
-  name: 'themeLightContrastMedium',
-  value: colorContrastMediumLight,
-  description:
-    'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorLight instead. */
-const deprecatedThemeLightNotificationError: MetaEntry = {
-  name: 'themeLightNotificationError',
-  value: colorErrorLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedLight instead. */
-const deprecatedThemeLightNotificationErrorSoft: MetaEntry = {
-  name: 'themeLightNotificationErrorSoft',
-  value: colorErrorFrostedLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoLight instead. */
-const deprecatedThemeLightNotificationInfo: MetaEntry = {
-  name: 'themeLightNotificationInfo',
-  value: colorInfoLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedLight instead. */
-const deprecatedThemeLightNotificationInfoSoft: MetaEntry = {
-  name: 'themeLightNotificationInfoSoft',
-  value: colorInfoFrostedLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessLight instead. */
-const deprecatedThemeLightNotificationSuccess: MetaEntry = {
-  name: 'themeLightNotificationSuccess',
-  value: colorSuccessLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead. */
-const deprecatedThemeLightNotificationSuccessSoft: MetaEntry = {
-  name: 'themeLightNotificationSuccessSoft',
-  value: colorSuccessFrostedLight,
-  description:
-    'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningLight instead. */
-const deprecatedThemeLightNotificationWarning: MetaEntry = {
-  name: 'themeLightNotificationWarning',
-  value: colorWarningLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead. */
-const deprecatedThemeLightNotificationWarningSoft: MetaEntry = {
-  name: 'themeLightNotificationWarningSoft',
-  value: colorWarningFrostedLight,
-  description:
-    'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead. */
-const deprecatedThemeLightPrimary: MetaEntry = {
-  name: 'themeLightPrimary',
-  value: colorPrimaryLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead. */
-const deprecatedThemeLightStateActive: MetaEntry = {
-  name: 'themeLightStateActive',
-  value: colorFrostedLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. */
-const deprecatedThemeLightStateDisabled: MetaEntry = {
-  name: 'themeLightStateDisabled',
-  value: 'hsla(233,6.6%,23.9%,0.412)',
-  description: 'deprecated since v4.0.0, will be removed with next major release.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorFocusLight instead. */
-const deprecatedThemeLightStateFocus: MetaEntry = {
-  name: 'themeLightStateFocus',
-  value: colorFocusLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFocusLight instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead. */
-const deprecatedThemeLightStateHover: MetaEntry = {
-  name: 'themeLightStateHover',
-  value: colorFrostedLight,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.',
-};
-
-export const deprecatedColorMeta: Meta = {
-  theme: deprecatedTheme,
-  themeDark: deprecatedThemeDark,
-  themeDarkBackgroundBase: deprecatedThemeDarkBackgroundBase,
-  themeDarkBackgroundFrosted: deprecatedThemeDarkBackgroundFrosted,
-  themeDarkBackgroundShading: deprecatedThemeDarkBackgroundShading,
-  themeDarkBackgroundSurface: deprecatedThemeDarkBackgroundSurface,
-  themeDarkContrastHigh: deprecatedThemeDarkContrastHigh,
-  themeDarkContrastLow: deprecatedThemeDarkContrastLow,
-  themeDarkContrastMedium: deprecatedThemeDarkContrastMedium,
-  themeDarkNotificationError: deprecatedThemeDarkNotificationError,
-  themeDarkNotificationErrorSoft: deprecatedThemeDarkNotificationErrorSoft,
-  themeDarkNotificationInfo: deprecatedThemeDarkNotificationInfo,
-  themeDarkNotificationInfoSoft: deprecatedThemeDarkNotificationInfoSoft,
-  themeDarkNotificationSuccess: deprecatedThemeDarkNotificationSuccess,
-  themeDarkNotificationSuccessSoft: deprecatedThemeDarkNotificationSuccessSoft,
-  themeDarkNotificationWarning: deprecatedThemeDarkNotificationWarning,
-  themeDarkNotificationWarningSoft: deprecatedThemeDarkNotificationWarningSoft,
-  themeDarkPrimary: deprecatedThemeDarkPrimary,
-  themeDarkStateActive: deprecatedThemeDarkStateActive,
-  themeDarkStateDisabled: deprecatedThemeDarkStateDisabled,
-  themeDarkStateFocus: deprecatedThemeDarkStateFocus,
-  themeDarkStateHover: deprecatedThemeDarkStateHover,
-  themeLight: deprecatedThemeLight,
-  themeLightBackgroundBase: deprecatedThemeLightBackgroundBase,
-  themeLightBackgroundFrosted: deprecatedThemeLightBackgroundFrosted,
-  themeLightBackgroundShading: deprecatedThemeLightBackgroundShading,
-  themeLightBackgroundSurface: deprecatedThemeLightBackgroundSurface,
-  themeLightContrastHigh: deprecatedThemeLightContrastHigh,
-  themeLightContrastLow: deprecatedThemeLightContrastLow,
-  themeLightContrastMedium: deprecatedThemeLightContrastMedium,
-  themeLightNotificationError: deprecatedThemeLightNotificationError,
-  themeLightNotificationErrorSoft: deprecatedThemeLightNotificationErrorSoft,
-  themeLightNotificationInfo: deprecatedThemeLightNotificationInfo,
-  themeLightNotificationInfoSoft: deprecatedThemeLightNotificationInfoSoft,
-  themeLightNotificationSuccess: deprecatedThemeLightNotificationSuccess,
-  themeLightNotificationSuccessSoft: deprecatedThemeLightNotificationSuccessSoft,
-  themeLightNotificationWarning: deprecatedThemeLightNotificationWarning,
-  themeLightNotificationWarningSoft: deprecatedThemeLightNotificationWarningSoft,
-  themeLightPrimary: deprecatedThemeLightPrimary,
-  themeLightStateActive: deprecatedThemeLightStateActive,
-  themeLightStateDisabled: deprecatedThemeLightStateDisabled,
-  themeLightStateFocus: deprecatedThemeLightStateFocus,
-  themeLightStateHover: deprecatedThemeLightStateHover,
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceDark instead. */
+  themeDarkBackgroundSurface: {
+    name: 'themeDarkBackgroundSurface',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceDark instead.',
+    value: themeDarkBackgroundSurface,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighDark instead. */
+  themeDarkContrastHigh: {
+    name: 'themeDarkContrastHigh',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighDark instead.',
+    value: themeDarkContrastHigh,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowDark instead. */
+  themeDarkContrastLow: {
+    name: 'themeDarkContrastLow',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowDark instead.',
+    value: themeDarkContrastLow,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumDark instead. */
+  themeDarkContrastMedium: {
+    name: 'themeDarkContrastMedium',
+    description:
+      'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumDark instead.',
+    value: themeDarkContrastMedium,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorDark instead. */
+  themeDarkNotificationError: {
+    name: 'themeDarkNotificationError',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorDark instead.',
+    value: themeDarkNotificationError,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedDark instead. */
+  themeDarkNotificationErrorSoft: {
+    name: 'themeDarkNotificationErrorSoft',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedDark instead.',
+    value: themeDarkNotificationErrorSoft,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoDark instead. */
+  themeDarkNotificationInfo: {
+    name: 'themeDarkNotificationInfo',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoDark instead.',
+    value: themeDarkNotificationInfo,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedDark instead. */
+  themeDarkNotificationInfoSoft: {
+    name: 'themeDarkNotificationInfoSoft',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedDark instead.',
+    value: themeDarkNotificationInfoSoft,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessDark instead. */
+  themeDarkNotificationSuccess: {
+    name: 'themeDarkNotificationSuccess',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessDark instead.',
+    value: themeDarkNotificationSuccess,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedDark instead. */
+  themeDarkNotificationSuccessSoft: {
+    name: 'themeDarkNotificationSuccessSoft',
+    description:
+      'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedDark instead.',
+    value: themeDarkNotificationSuccessSoft,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningDark instead. */
+  themeDarkNotificationWarning: {
+    name: 'themeDarkNotificationWarning',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningDark instead.',
+    value: themeDarkNotificationWarning,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedDark instead. */
+  themeDarkNotificationWarningSoft: {
+    name: 'themeDarkNotificationWarningSoft',
+    description:
+      'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedDark instead.',
+    value: themeDarkNotificationWarningSoft,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryDark instead. */
+  themeDarkPrimary: {
+    name: 'themeDarkPrimary',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryDark instead.',
+    value: themeDarkPrimary,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead. */
+  themeDarkStateActive: {
+    name: 'themeDarkStateActive',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.',
+    value: themeDarkStateActive,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. */
+  themeDarkStateDisabled: {
+    name: 'themeDarkStateDisabled',
+    description: 'deprecated since v4.0.0, will be removed with next major release.',
+    value: themeDarkStateDisabled,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorFocusDark instead. */
+  themeDarkStateFocus: {
+    name: 'themeDarkStateFocus',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFocusDark instead.',
+    value: themeDarkStateFocus,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead. */
+  themeDarkStateHover: {
+    name: 'themeDarkStateHover',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.',
+    value: themeDarkStateHover,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use individual variables instead. */
+  themeLight: {
+    name: 'themeLight',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use individual variables instead.',
+    value: themeLight,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorCanvasLight instead. */
+  themeLightBackgroundBase: {
+    name: 'themeLightBackgroundBase',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorCanvasLight instead.',
+    value: themeLightBackgroundBase,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead. */
+  themeLightBackgroundFrosted: {
+    name: 'themeLightBackgroundFrosted',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.',
+    value: themeLightBackgroundFrosted,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorBackdropLight instead. */
+  themeLightBackgroundShading: {
+    name: 'themeLightBackgroundShading',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorBackdropLight instead.',
+    value: themeLightBackgroundShading,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceLight instead. */
+  themeLightBackgroundSurface: {
+    name: 'themeLightBackgroundSurface',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSurfaceLight instead.',
+    value: themeLightBackgroundSurface,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighLight instead. */
+  themeLightContrastHigh: {
+    name: 'themeLightContrastHigh',
+    description:
+      'deprecated since v4.0.0, will be removed with next major release. Use colorContrastHighLight instead.',
+    value: themeLightContrastHigh,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowLight instead. */
+  themeLightContrastLow: {
+    name: 'themeLightContrastLow',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorContrastLowLight instead.',
+    value: themeLightContrastLow,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead. */
+  themeLightContrastMedium: {
+    name: 'themeLightContrastMedium',
+    description:
+      'deprecated since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead.',
+    value: themeLightContrastMedium,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorLight instead. */
+  themeLightNotificationError: {
+    name: 'themeLightNotificationError',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorErrorLight instead.',
+    value: themeLightNotificationError,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedLight instead. */
+  themeLightNotificationErrorSoft: {
+    name: 'themeLightNotificationErrorSoft',
+    description:
+      'deprecated since v4.0.0, will be removed with next major release. Use colorErrorFrostedLight instead.',
+    value: themeLightNotificationErrorSoft,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoLight instead. */
+  themeLightNotificationInfo: {
+    name: 'themeLightNotificationInfo',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoLight instead.',
+    value: themeLightNotificationInfo,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedLight instead. */
+  themeLightNotificationInfoSoft: {
+    name: 'themeLightNotificationInfoSoft',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorInfoFrostedLight instead.',
+    value: themeLightNotificationInfoSoft,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessLight instead. */
+  themeLightNotificationSuccess: {
+    name: 'themeLightNotificationSuccess',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessLight instead.',
+    value: themeLightNotificationSuccess,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead. */
+  themeLightNotificationSuccessSoft: {
+    name: 'themeLightNotificationSuccessSoft',
+    description:
+      'deprecated since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead.',
+    value: themeLightNotificationSuccessSoft,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningLight instead. */
+  themeLightNotificationWarning: {
+    name: 'themeLightNotificationWarning',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorWarningLight instead.',
+    value: themeLightNotificationWarning,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead. */
+  themeLightNotificationWarningSoft: {
+    name: 'themeLightNotificationWarningSoft',
+    description:
+      'deprecated since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead.',
+    value: themeLightNotificationWarningSoft,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead. */
+  themeLightPrimary: {
+    name: 'themeLightPrimary',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead.',
+    value: themeLightPrimary,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead. */
+  themeLightStateActive: {
+    name: 'themeLightStateActive',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.',
+    value: themeLightStateActive,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. */
+  themeLightStateDisabled: {
+    name: 'themeLightStateDisabled',
+    description: 'deprecated since v4.0.0, will be removed with next major release.',
+    value: themeLightStateDisabled,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorFocusLight instead. */
+  themeLightStateFocus: {
+    name: 'themeLightStateFocus',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFocusLight instead.',
+    value: themeLightStateFocus,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead. */
+  themeLightStateHover: {
+    name: 'themeLightStateHover',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.',
+    value: themeLightStateHover,
+    deprecated: true,
+  },
 } as const;

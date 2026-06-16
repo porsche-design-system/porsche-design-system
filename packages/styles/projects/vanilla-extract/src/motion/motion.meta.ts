@@ -1,3 +1,4 @@
+import type { Meta } from '..';
 import {
   durationLg,
   durationMd,
@@ -6,98 +7,94 @@ import {
   easeIn,
   easeInOut,
   easeOut,
-} from '@porsche-design-system/tokens';
-import type { Meta, MetaEntry } from '../meta.types';
+  motionDurationLong,
+  motionDurationModerate,
+  motionDurationShort,
+  motionDurationVeryLong,
+  motionEasingBase,
+  motionEasingIn,
+  motionEasingOut,
+} from '.';
 
 export const motionMeta: Meta = {
   duration: {
     durationSm: {
       name: 'durationSm',
-      value: durationSm,
       description: 'Holds a **short** `transition-duration` / `animation-duration`.',
+      value: durationSm,
     },
     durationMd: {
       name: 'durationMd',
-      value: durationMd,
       description: 'Holds a **moderate** `transition-duration` / `animation-duration`.',
+      value: durationMd,
     },
     durationLg: {
       name: 'durationLg',
-      value: durationLg,
       description: 'Holds a **long** `transition-duration` / `animation-duration`.',
+      value: durationLg,
     },
     durationXl: {
       name: 'durationXl',
-      value: durationXl,
       description: 'Holds a **very long** `transition-duration` / `animation-duration`.',
+      value: durationXl,
     },
   },
   ease: {
-    easeIn: { name: 'easeIn', value: easeIn, description: 'Holds an **in** `transition-timing-function`.' },
+    easeIn: { name: 'easeIn', description: 'Holds an **in** `transition-timing-function`.', value: easeIn },
     easeInOut: {
       name: 'easeInOut',
-      value: easeInOut,
       description: 'Holds an **in-out** `transition-timing-function`.',
+      value: easeInOut,
     },
-    easeOut: { name: 'easeOut', value: easeOut, description: 'Holds an **out** `transition-timing-function`.' },
+    easeOut: { name: 'easeOut', description: 'Holds an **out** `transition-timing-function`.', value: easeOut },
   },
-} as const;
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use durationSm instead. */
-const deprecatedMotionDurationShortMeta: MetaEntry = {
-  name: 'motionDurationShort',
-  value: durationSm,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use durationSm instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use durationMd instead. */
-const deprecatedMotionDurationModerateMeta: MetaEntry = {
-  name: 'motionDurationModerate',
-  value: durationMd,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use durationMd instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use durationLg instead. */
-const deprecatedMotionDurationLongMeta: MetaEntry = {
-  name: 'motionDurationLong',
-  value: durationLg,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use durationLg instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use durationXl instead. */
-const deprecatedMotionDurationVeryLongMeta: MetaEntry = {
-  name: 'motionDurationVeryLong',
-  value: durationXl,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use durationXl instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead. */
-const deprecatedMotionEasingBaseMeta: MetaEntry = {
-  name: 'motionEasingBase',
-  value: easeInOut,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use easeIn instead. */
-const deprecatedMotionEasingInMeta: MetaEntry = {
-  name: 'motionEasingIn',
-  value: easeIn,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use easeIn instead.',
-};
-
-/** @deprecated since v4.0.0, will be removed with next major release. Use easeOut instead. */
-const deprecatedMotionEasingOutMeta: MetaEntry = {
-  name: 'motionEasingOut',
-  value: easeOut,
-  description: 'deprecated since v4.0.0, will be removed with next major release. Use easeOut instead.',
-};
-
-export const deprecatedMotionMeta: Meta = {
-  motionDurationShort: deprecatedMotionDurationShortMeta,
-  motionDurationModerate: deprecatedMotionDurationModerateMeta,
-  motionDurationLong: deprecatedMotionDurationLongMeta,
-  motionDurationVeryLong: deprecatedMotionDurationVeryLongMeta,
-  motionEasingBase: deprecatedMotionEasingBaseMeta,
-  motionEasingIn: deprecatedMotionEasingInMeta,
-  motionEasingOut: deprecatedMotionEasingOutMeta,
+  /** @deprecated since v4.0.0, will be removed with next major release. Use durationSm instead. */
+  motionDurationShort: {
+    name: 'motionDurationShort',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use durationSm instead.',
+    value: motionDurationShort,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use durationMd instead. */
+  motionDurationModerate: {
+    name: 'motionDurationModerate',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use durationMd instead.',
+    value: motionDurationModerate,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use durationLg instead. */
+  motionDurationLong: {
+    name: 'motionDurationLong',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use durationLg instead.',
+    value: motionDurationLong,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use durationXl instead. */
+  motionDurationVeryLong: {
+    name: 'motionDurationVeryLong',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use durationXl instead.',
+    value: motionDurationVeryLong,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead. */
+  motionEasingBase: {
+    name: 'motionEasingBase',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use easeInOut instead.',
+    value: motionEasingBase,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use easeIn instead. */
+  motionEasingIn: {
+    name: 'motionEasingIn',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use easeIn instead.',
+    value: motionEasingIn,
+    deprecated: true,
+  },
+  /** @deprecated since v4.0.0, will be removed with next major release. Use easeOut instead. */
+  motionEasingOut: {
+    name: 'motionEasingOut',
+    description: 'deprecated since v4.0.0, will be removed with next major release. Use easeOut instead.',
+    value: motionEasingOut,
+    deprecated: true,
+  },
 } as const;

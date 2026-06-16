@@ -1,11 +1,11 @@
-import type { Meta } from '../meta.types';
-import { getSkeletonStyle, skeletonKeyframes } from './helpers';
+import type { Meta } from '..';
+import { getSkeletonStyle, skeletonKeyframes } from '.';
 
 export const skeletonMeta: Meta = {
   skeletonKeyframes: {
     name: 'skeletonKeyframes',
-    value: skeletonKeyframes,
     description: 'Holds the **keyframes** to be used with the `keyframes` vanilla-extract function.',
+    value: skeletonKeyframes,
   },
   getSkeletonStyle: {
     name: 'getSkeletonStyle',
