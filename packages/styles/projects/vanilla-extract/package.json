@@ -8,6 +8,10 @@
   "homepage": "https://designsystem.porsche.com",
   "sideEffects": false,
   "type": "commonjs",
+  "files": [
+    "./dist/",
+    "./meta/"
+  ],
   "exports": {
     ".": {
       "types": "./dist/esm/index.d.ts",

@@ -16,6 +16,9 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
+  "files": [
+    "**"
+  ],
   "homepage": "https://designsystem.porsche.com",
   "repository": {
     "type": "git",
