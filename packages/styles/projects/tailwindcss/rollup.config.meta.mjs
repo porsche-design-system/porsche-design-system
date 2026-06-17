@@ -28,23 +28,6 @@ export default [
     },
     plugins: [
       typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src', exclude: ['**/*.spec.ts'] }),
-      generatePackageJson({
-        outputFolder: outputDir,
-        baseContents: {
-          main: 'cjs/index.cjs',
-          module: 'esm/index.mjs',
-          types: 'esm/index.d.ts',
-          sideEffects: false,
-          exports: {
-            // Default export (JS meta + helpers) — internal-only, never redistributed
-            '.': {
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-          },
-        },
-      }),
     ],
   },
 ];
