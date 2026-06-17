@@ -61,11 +61,50 @@ Current overrides:
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
 
+## Auditing dependencies (`npm audit`)
+
+Use `npm run npm:audit` (plain `npm audit`) to review advisories. **Do not run `npm audit fix` /
+`npm audit fix --force`** on this monorepo. `npm audit fix` does not understand our workspace setup and will try to
+"repair" a transitive advisory by **downgrading a hoisted dev tool** to an old version, which then violates our pinned
+tooling and aborts with `ERESOLVE` under [strict peer resolution](#strict-peer-dependency-resolution).
+
+### Why `npm audit fix` aborts with `ERESOLVE`
+
+The private asset sub-projects (`packages/assets/projects/*`) declare their shared dev tooling (`tsup`, `tsx`,
+`typescript`, `change-case`, …) as `peerDependencies: "*"`. This is **intentional**: it lets each private workspace
+consume the single version pinned once in the root [`package.json`](../package.json) instead of re-pinning (and
+drifting) per project. `syncpack` keeps that single root version consistent.
+
+When `npm audit fix` encounters the `esbuild` advisory (no fixed version is reachable from `tsup`, see below), it
+proposes downgrading `tsup` to `6.5.0`. That old `tsup` pulls in `typescript@^4.1.0`, which conflicts with the root
+`typescript`. Because the `"*"` peers accept whatever the root pins, the conflict surfaces as an `ERESOLVE` against the
+workspace tree.
+
+**The `"*"` peers are not the bug** — removing them would only hide the conflict, break the single-version hoisting
+contract, and allow duplicate tool versions across workspaces. Keep them.
+
+### Remediation policy
+
+- For a **genuinely fixable** advisory, add a pinned [`overrides`](#strict-peer-dependency-resolution) entry in the root
+  `package.json` (same pattern as `madge > typescript`) and run `npm install`.
+- For an advisory in a **held-back** dependency (Angular, Stencil, Playwright — see
+  [Held-back dependencies](#held-back-dependencies)), wait for the upstream-sanctioned upgrade path.
+- Never reach for `--legacy-peer-deps` or `--force`.
+
+### Known unfixable advisory: `esbuild` via `tsup`
+
+The `esbuild` advisory covers `0.17.0 - 0.28.0`; the first non-vulnerable release is `0.28.1`. However `tsup@8.5.1`
+constrains `esbuild` to `^0.27.0` (`>=0.27.0 <0.28.0`), so **no non-vulnerable `esbuild` satisfies `tsup`** — hence
+`npm audit` reports "No fix available". An `overrides` bump to `esbuild@0.28.1` is **not** applied because it would
+break `tsup`'s expected esbuild API (a minor esbuild bump can be breaking) while `@angular/build` (held-back) still pins
+`0.28.0`. This advisory is therefore tracked and cleared once `tsup` ships a release that widens its `esbuild` range.
+The vulnerability only affects local build tooling, not shipped artifacts.
+
 ## Explicit `@next/swc-*` optional dependencies (storefront)
 
 The storefront's [`package.json`](../packages/storefront/package.json) declares all eight `@next/swc-*` platform
-binaries as `optionalDependencies` (pinned to the same range as `next`). **Do not remove them.**
-The same block is declared in every workspace that runs `next build`
+binaries as `optionalDependencies` (pinned to the same range as `next`). **Do not remove them.** The same block is
+declared in every workspace that runs `next build`
 ([`packages/components-react/projects/nextjs`](../packages/components-react/projects/nextjs/package.json)), so each one
 is self-sufficient.
 
