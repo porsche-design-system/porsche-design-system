@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import type { VanillaExtractMetaEntry } from '../../../src/index.meta';
 import * as publicApi from '../../../src';
-import { vanillaExtractMeta } from '../../../src/index.meta';
+import type { VanillaExtractMetaEntry } from '../../../vanillaExtractMeta/index';
+import { vanillaExtractMeta } from '../../../vanillaExtractMeta/index';
 
 // Recursively collect every leaf meta entry, descending into grouped metas
 // (e.g. border.radius, color.background, spacing.fluid, motion.duration, …).
