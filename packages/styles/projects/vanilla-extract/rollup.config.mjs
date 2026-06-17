@@ -20,14 +20,12 @@ const ts = (format, { exclude = '**.spec.ts' } = {}) =>
     ? typescript({ declaration: true, declarationDir: `${outputDir}/esm`, exclude, rootDir: 'src' })
     : typescript();
 
-const entryFileNames = (ext) => (chunk) => (chunk.name === 'index.styles' ? `index.${ext}` : `[name].${ext}`);
-
 const stylesBuild = (format, ext) => ({
-  input: ['src/index.styles.ts', ...categories.map((category) => `src/${category}/index.ts`)],
+  input: ['src/index.ts', ...categories.map((category) => `src/${category}/index.ts`)],
   output: {
     dir: `${outputDir}/${format}`,
     format,
-    entryFileNames: entryFileNames(ext),
+    entryFileNames: `[name].${ext}`,
     preserveModules: true,
     preserveModulesRoot: 'src',
   },

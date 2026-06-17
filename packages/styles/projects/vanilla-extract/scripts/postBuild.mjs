@@ -1,7 +1,21 @@
-import { existsSync, renameSync } from 'node:fs';
+import { existsSync, readdirSync, renameSync, rmSync } from 'node:fs';
+import { join } from 'node:path';
 
-// TypeScript emits the barrel as index.styles.d.ts (matching the input filename).
-// Rename it to index.d.ts to match the types path in dist/package.json.
-if (existsSync('dist/esm/index.styles.d.ts')) {
-  renameSync('dist/esm/index.styles.d.ts', 'dist/esm/index.d.ts');
+// rootDir '.' causes TypeScript to emit meta declarations into meta/esm/vanillaExtractMeta/.
+// Move them up one level to meta/esm/ so meta/package.json exports resolve correctly.
+const metaEsmDir = 'meta/esm';
+const metaSrcSubdir = join(metaEsmDir, 'vanillaExtractMeta');
+if (existsSync(metaSrcSubdir)) {
+  for (const entry of readdirSync(metaSrcSubdir, { withFileTypes: true })) {
+    if (entry.name.endsWith('.d.ts')) {
+      renameSync(join(metaSrcSubdir, entry.name), join(metaEsmDir, entry.name));
+    }
+  }
+  rmSync(metaSrcSubdir, { recursive: true });
+}
+
+// Remove src/ declarations leaked by TypeScript compiling transitive imports from src/.
+const leakedSrcDir = join(metaEsmDir, 'src');
+if (existsSync(leakedSrcDir)) {
+  rmSync(leakedSrcDir, { recursive: true });
 }
