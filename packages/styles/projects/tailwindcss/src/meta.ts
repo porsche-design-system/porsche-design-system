@@ -33,11 +33,11 @@ export const tailwindMeta = {
   theme: {
     color,
     typography,
-    breakpoint,
     spacing,
     border,
     blur,
     shadow,
+    breakpoint,
     motion,
   },
   utilities: {

@@ -54,9 +54,9 @@ const utilitySection = (heading: string, entries: TailwindUtility[]): string =>
 
 /**
  * An ordered outline: each entry is either a flat group of items (a leaf section) or a
- * record of named sub-groups (rendered as `Parent — Child` sections). Headings are
- * human-curated keys — they cannot be derived from the meta because `tailwindMeta.theme`
- * mixes documented + non-documented entries and the keys don't match the labels.
+ * record of named sub-groups (rendered as `Parent — Child` sections). The theme outline is
+ * derived directly from `tailwindMeta.theme` (see `themeOutline`); the utility outline stays
+ * hand-curated because its grouping (the `Typography` super-group) is not a 1:1 mirror of the meta.
  */
 type Outline<T> = Record<string, T[] | Record<string, T[]>>;
 
@@ -131,36 +131,33 @@ the document or any container; the selected context cascades to all child elemen
 </html>
 \`\`\``;
 
-/** The documented theme-variable groups in render order, paired with their curated headings. */
-const themeOutline: Outline<TailwindThemeVariable> = {
-  Color: {
-    Background: Object.values(theme.color.background),
-    Foreground: Object.values(theme.color.foreground),
-    Semantic: Object.values(theme.color.semantic),
-    A11y: Object.values(theme.color.a11y),
-  },
-  Typography: {
-    'Font family': Object.values(theme.typography.family),
-    'Font weight': Object.values(theme.typography.weight),
-    'Line height': Object.values(theme.typography.lineHeight),
-    'Text size': Object.values(theme.typography.text),
-  },
-  Spacing: {
-    Fluid: Object.values(theme.spacing.fluid),
-    Static: Object.values(theme.spacing.static),
-  },
-  Border: {
-    Radius: Object.values(theme.border.radius),
-    Width: theme.border.width,
-  },
-  Blur: theme.blur,
-  Shadow: theme.shadow,
-  Breakpoint: theme.breakpoint,
-  Motion: {
-    Duration: theme.motion.duration,
-    Easing: theme.motion.easing,
-  },
-};
+/** Title-case a group key for display: split camelCase, then sentence-case it (`lineHeight` → `Line height`). */
+const label = (key: string): string =>
+  key
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .toLowerCase()
+    .replace(/^./, (c) => c.toUpperCase());
+
+/** Normalize a documented group — a keyed record or an array — to a flat list of variables. */
+const groupVariables = (
+  group: TailwindThemeVariable[] | Record<string, TailwindThemeVariable>
+): TailwindThemeVariable[] => (Array.isArray(group) ? group : Object.values(group));
+
+/**
+ * The documented theme-variable outline, derived directly from `tailwindMeta.theme`: each top-level
+ * group becomes a section (arrays) or a parent with one sub-section per sub-group (records), with
+ * headings derived from the keys. Source order is followed verbatim (e.g. colors list `a11y` first).
+ */
+const themeOutline = Object.fromEntries(
+  Object.entries(theme).map(([key, value]) => [
+    label(key),
+    Array.isArray(value)
+      ? value
+      : Object.fromEntries(
+          Object.entries(value).map(([subKey, subValue]) => [label(subKey), groupVariables(subValue)])
+        ),
+  ])
+) as Outline<TailwindThemeVariable>;
 
 /** The documented `@utility` groups in render order, paired with their curated headings. */
 const utilityOutline: Outline<TailwindUtility> = {
