@@ -7,6 +7,8 @@
     "type": "git",
     "url": "git+https://github.com/porsche-design-system/porsche-design-system.git"
   },
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "description": "Porsche Design System Monorepo",
   "workspaces": [
     "packages/*",
     "packages/assets/projects/crest",
@@ -38,8 +40,6 @@
     "packages/storefront/projects/stackblitz",
     "packages/shared/dist"
   ],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "description": "Porsche Design System Monorepo",
   "scripts": {
     "prepare-release": "tsx scripts/prepare-release.ts",
     "preinstall": "npm run preinstall:assets && npm run preinstall:components-manager-cli && npm run preinstall:components-js && npm run preinstall:components-angular && npm run preinstall:components-react && npm run preinstall:components-vue && npm run preinstall:shared",

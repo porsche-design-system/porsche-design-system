@@ -3,13 +3,6 @@
   "version": "5.0.2",
   "license": "SEE LICENSE IN LICENSE",
   "scope": "@porsche-design-system",
-  "sideEffects": false,
-  "main": "dist/cjs/src/index.cjs",
-  "module": "dist/esm/src/index.mjs",
-  "types": "dist/esm/index.d.ts",
-  "bin": {
-    "serve-cdn": "./bin/serve-cdn.js"
-  },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "description": "This package provides manifests and CDN URLs of Porsche assets like fonts, icons, marques, etc.",
@@ -19,6 +12,13 @@
     "system",
     "assets"
   ],
+  "sideEffects": false,
+  "main": "dist/cjs/src/index.cjs",
+  "module": "dist/esm/src/index.mjs",
+  "types": "dist/esm/index.d.ts",
+  "bin": {
+    "serve-cdn": "./bin/serve-cdn.js"
+  },
   "scripts": {
     "start": "npm run build && node ./bin/serve-cdn.js",
     "build": "npm run clean:build && npm run build:projects && npm run build:manifest && npm run build:copyAssets",

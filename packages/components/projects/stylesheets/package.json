@@ -4,6 +4,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "sideEffects": false,
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.mjs",
@@ -20,8 +22,6 @@
   "files": [
     "./dist/"
   ],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build:font-face && npm run build:index",
     "build-prod": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build-prod:font-face && npm run build:index",

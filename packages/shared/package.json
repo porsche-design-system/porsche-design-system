@@ -4,6 +4,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",
@@ -11,8 +13,6 @@
     "serve-dummyassets": "./bin/serve-dummyassets.js",
     "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
   },
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
     "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run build:generateCodeExamples && npm run build:bundle",

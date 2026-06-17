@@ -4,6 +4,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "type": "commonjs",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -23,8 +25,6 @@
   "files": [
     "./dist/"
   ],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "lint": "publint",
     "build": "npm run clean:build && npm run build:flags && npm run build:lib",

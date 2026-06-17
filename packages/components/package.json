@@ -4,6 +4,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "collection": "dist/collection/collection-manifest.json",
@@ -12,7 +13,6 @@
   "es2017": "dist/esm/index.js",
   "jsnext:main": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
-  "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "prestart": "npm run prestart:prepareAriaTypes && npm run prestart:buildStylesheets",
     "prestart:prepareAriaTypes": "tsx scripts/prepareAriaTypes.ts",

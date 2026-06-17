@@ -4,6 +4,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "type": "module",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.mjs",
@@ -18,8 +20,6 @@
   "files": [
     "./dist/"
   ],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "npm run clean:build && npm run build:generateTokensMeta && npm run build:package",
     "build:generateTokensMeta": "tsx scripts/generateTokensMeta.ts",

@@ -4,6 +4,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -24,8 +26,6 @@
     "./dist/",
     "./scripts/"
   ],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "npm run clean:build && npm run build:font-face && npm run build:lib",
     "build:font-face": "npm run typecheck && tsx scripts/buildFontFace.ts",

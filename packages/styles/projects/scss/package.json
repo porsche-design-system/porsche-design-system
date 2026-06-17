@@ -4,6 +4,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "sideEffects": false,
   "type": "commonjs",
   "exports": {
@@ -11,8 +13,6 @@
       "sass": "./dist/_index.scss"
     }
   },
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "npm run clean:build && npm run build:package && npm run copy:scss",
     "build:package": "tsx scripts/build.ts",
