@@ -7,17 +7,21 @@ import {
   easeInOut,
   easeOut,
 } from '@porsche-design-system/tokens';
-import type { TailwindThemeVariable } from './types';
+import { prefix } from './shared';
+import type { CssNode, TailwindThemeVariable } from './types';
 
-// Motion — easing.
+// Motion — easing. `easeInOut` is named on its own because it is referenced elsewhere (e.g. the
+// skeleton animation composes the real variable rather than re-deriving its property name).
+export const easeInOutThemeVariable: TailwindThemeVariable = {
+  property: '--ease-in-out',
+  value: easeInOut,
+  classes: ['.ease-in-out'],
+  description: 'Applies an **in-out** `transition-timing-function`.',
+  group: 'motion',
+};
+
 export const easeThemeVariables: TailwindThemeVariable[] = [
-  {
-    property: '--ease-in-out',
-    value: easeInOut,
-    classes: ['.ease-in-out'],
-    description: 'Applies an **in-out** `transition-timing-function`.',
-    group: 'motion',
-  },
+  easeInOutThemeVariable,
   {
     property: '--ease-in',
     value: easeIn,
@@ -34,7 +38,16 @@ export const easeThemeVariables: TailwindThemeVariable[] = [
   },
 ];
 
-// Motion — duration.
+// Motion — duration. `durationXl` is named on its own because it is referenced elsewhere (e.g. the
+// skeleton animation composes the real variable rather than re-deriving its property name).
+export const durationXlThemeVariable: TailwindThemeVariable = {
+  property: '--transition-duration-xl',
+  value: durationXl,
+  classes: ['.duration-xl'],
+  description: 'Applies a **very long** `transition-duration`.',
+  group: 'motion',
+};
+
 export const durationThemeVariables: TailwindThemeVariable[] = [
   {
     property: '--transition-duration-sm',
@@ -57,62 +70,47 @@ export const durationThemeVariables: TailwindThemeVariable[] = [
     description: 'Applies a **long** `transition-duration`.',
     group: 'motion',
   },
-  {
-    property: '--transition-duration-xl',
-    value: durationXl,
-    classes: ['.duration-xl'],
-    description: 'Applies a **very long** `transition-duration`.',
-    group: 'motion',
-  },
+  durationXlThemeVariable,
 ];
 
-// Motion — infrastructure defaults (no Tailwind utility classes). Non-documented:
-// not part of `tailwindMeta`, but interleaved into the `@theme` block by the CSS
-// assembly in `index.ts`.
-export const defaultTransitionTimingFunction: TailwindThemeVariable = {
+// Motion — infrastructure defaults (no Tailwind utility classes). Non-documented CSS-only
+// plumbing: not part of `tailwindMeta`, but interleaved into the `@theme` block by the CSS
+// assembly in `css.ts`.
+export const defaultTransitionTimingFunction: CssNode = {
   property: '--default-transition-timing-function',
   value: easeInOut,
-  description: 'Tailwind default `transition-timing-function` for the `transition-*` utilities.',
-  group: 'motion',
 };
 
-export const defaultTransitionDuration: TailwindThemeVariable = {
+export const defaultTransitionDuration: CssNode = {
   property: '--default-transition-duration',
   value: durationSm,
-  description: 'Tailwind default `transition-duration` for the `transition-*` utilities.',
-  group: 'motion',
 };
 
-// Motion — deprecated aliases.
+// Motion — deprecated aliases. Non-documented CSS-only plumbing. Each points at the corresponding
+// canonical duration variable via the prefix helper so they stay in sync; the deprecation note
+// lives in the rendered CSS `comment`.
+const [durationSmVariable, durationMdVariable, durationLgVariable] = durationThemeVariables;
 /** @deprecated Use `durationThemeVariables` (`--transition-duration-sm/md/lg/xl`) instead. */
-export const motionDeprecatedThemeVariables: TailwindThemeVariable[] = [
+export const motionDeprecatedThemeVariables: CssNode[] = [
   {
     property: '--transition-duration-short',
-    value: '--theme(--transition-duration-sm)',
+    value: prefix(durationSmVariable.property),
     comment: 'alias (deprecated)',
-    description: 'Alias for `--transition-duration-sm`. **Deprecated** — use `--transition-duration-sm` instead.',
-    group: 'motion',
   },
   {
     property: '--transition-duration-moderate',
-    value: '--theme(--transition-duration-md)',
+    value: prefix(durationMdVariable.property),
     comment: 'alias (deprecated)',
-    description: 'Alias for `--transition-duration-md`. **Deprecated** — use `--transition-duration-md` instead.',
-    group: 'motion',
   },
   {
     property: '--transition-duration-long',
-    value: '--theme(--transition-duration-lg)',
+    value: prefix(durationLgVariable.property),
     comment: 'alias (deprecated)',
-    description: 'Alias for `--transition-duration-lg`. **Deprecated** — use `--transition-duration-lg` instead.',
-    group: 'motion',
   },
   {
     property: '--transition-duration-very-long',
-    value: '--theme(--transition-duration-xl)',
+    value: prefix(durationXlThemeVariable.property),
     comment: 'alias (deprecated)',
-    description: 'Alias for `--transition-duration-xl`. **Deprecated** — use `--transition-duration-xl` instead.',
-    group: 'motion',
   },
 ];
 

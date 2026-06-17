@@ -1,7 +1,8 @@
 import { radius } from './border';
 import { color } from './color';
+import { durationXlThemeVariable, easeInOutThemeVariable } from './motion';
 import { prefix } from './shared';
-import type { CssNode, CssRaw, TailwindThemeVariable, TailwindUtility } from './types';
+import type { CssDeclaration, CssRaw, TailwindUtility } from './types';
 
 // Animation — @keyframes skeleton.
 export const skeletonKeyframes: CssRaw = {
@@ -15,20 +16,13 @@ export const skeletonKeyframes: CssRaw = {
 }`,
 };
 
-// Animation — theme variables.
-export const animateSkeletonThemeVariable: TailwindThemeVariable = {
+// Animation — theme variable. Non-documented CSS-only plumbing (not part of `tailwindMeta`); it
+// backs the documented `.skeleton` utility below rather than being surfaced on its own. The
+// duration and easing reference the real motion variables so they stay in sync.
+export const animateSkeletonThemeVariable: CssDeclaration = {
   property: '--animate-skeleton',
-  value: 'skeleton --theme(--transition-duration-xl) --theme(--ease-in-out) infinite',
-  classes: ['.animate-skeleton'],
-  description:
-    'Applies the skeleton loading animation: combines the `skeleton` keyframes with the XL transition duration and in-out easing, repeating infinitely.',
+  value: `skeleton ${prefix(durationXlThemeVariable.property)} ${prefix(easeInOutThemeVariable.property)} infinite`,
 };
-
-export const animationThemeVariables: TailwindThemeVariable[] = [animateSkeletonThemeVariable];
-
-// All CSS nodes for the `@theme` block — documented variables first, then the
-// accompanying `@keyframes` that back them.
-export const allAnimationThemeDeclarations: CssNode[] = [...animationThemeVariables, skeletonKeyframes];
 
 // Documented Tailwind skeleton utility — the loading placeholder built on top of
 // the skeleton animation theme variable.

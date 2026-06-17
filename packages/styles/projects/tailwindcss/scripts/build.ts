@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import * as prettier from 'prettier';
-import { getTailwindcssTheme, tailwindCssMeta } from '../src';
+import { getTailwindcssTheme, tailwindCssMeta } from '../src/css';
 
 export const buildTailwindcssTheme = async () => {
   const targetPath = './dist';

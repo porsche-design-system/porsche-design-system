@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import * as prettier from 'prettier';
 import { getTailwindcssSkill } from '../skill/skill';
-import { getTailwindcssTheme, tailwindCssMeta } from '../src';
+import { getTailwindcssTheme, tailwindCssMeta } from '../src/css';
 
 /**
  * Separate build that prepares the Tailwind portion of the future Porsche Design System

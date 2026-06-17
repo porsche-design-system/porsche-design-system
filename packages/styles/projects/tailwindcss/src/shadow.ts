@@ -1,5 +1,6 @@
 import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
-import type { TailwindThemeVariable } from './types';
+import { prefix } from './shared';
+import type { CssNode, TailwindThemeVariable } from './types';
 
 // Shadow.
 export const shadow: TailwindThemeVariable[] = [
@@ -26,28 +27,13 @@ export const shadow: TailwindThemeVariable[] = [
   },
 ];
 
-// Shadow — deprecated aliases.
+// Shadow — deprecated aliases. Non-documented CSS-only plumbing (not part of `tailwindMeta`). Each
+// points at the corresponding canonical `shadow` variable via the prefix helper so they stay in
+// sync; the deprecation note lives in the rendered CSS `comment`.
+const [shadowSmVariable, shadowMdVariable, shadowLgVariable] = shadow;
 /** @deprecated Use `shadow` (`--shadow-sm/md/lg`) instead. */
-export const shadowDeprecatedThemeVariables: TailwindThemeVariable[] = [
-  {
-    property: '--shadow-low',
-    value: '--theme(--shadow-sm)',
-    comment: 'alias (deprecated)',
-    description: 'Alias for `--shadow-sm`. **Deprecated** — use `--shadow-sm` instead.',
-    group: 'shadow',
-  },
-  {
-    property: '--shadow-medium',
-    value: '--theme(--shadow-md)',
-    comment: 'alias (deprecated)',
-    description: 'Alias for `--shadow-md`. **Deprecated** — use `--shadow-md` instead.',
-    group: 'shadow',
-  },
-  {
-    property: '--shadow-high',
-    value: '--theme(--shadow-lg)',
-    comment: 'alias (deprecated)',
-    description: 'Alias for `--shadow-lg`. **Deprecated** — use `--shadow-lg` instead.',
-    group: 'shadow',
-  },
+export const shadowDeprecatedThemeVariables: CssNode[] = [
+  { property: '--shadow-low', value: prefix(shadowSmVariable.property), comment: 'alias (deprecated)' },
+  { property: '--shadow-medium', value: prefix(shadowMdVariable.property), comment: 'alias (deprecated)' },
+  { property: '--shadow-high', value: prefix(shadowLgVariable.property), comment: 'alias (deprecated)' },
 ];

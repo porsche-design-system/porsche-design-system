@@ -11,21 +11,21 @@ export const displayUtilities: TailwindUtility[] = [
     selector: '@utility prose-display-sm',
     class: '.prose-display-sm',
     description: 'Applies the display style in size sm.',
-    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-3xl')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix(typography.text['3xl'].property)} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
   color: ${prefix(color.foreground.primary.property)};`,
   },
   {
     selector: '@utility prose-display-md',
     class: '.prose-display-md',
     description: 'Applies the display style in size md.',
-    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-4xl')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix(typography.text['4xl'].property)} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
   color: ${prefix(color.foreground.primary.property)};`,
   },
   {
     selector: '@utility prose-display-lg',
     class: '.prose-display-lg',
     description: 'Applies the display style in size lg.',
-    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix('--text-5xl')} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
+    raw: `  font: ${prefix(typography.weight.normal.property)} ${prefix(typography.text['5xl'].property)} / ${prefix(typography.lineHeight.normal.property)} ${prefix(typography.family.porscheNext.property)};
   color: ${prefix(color.foreground.primary.property)};`,
   },
 ];

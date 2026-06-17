@@ -15,7 +15,8 @@ import {
   typescaleXs,
 } from '@porsche-design-system/tokens';
 import { fontPorscheNextDynamicVar } from './font';
-import type { TailwindThemeVariable } from './types';
+import { prefix } from './shared';
+import type { CssNode, TailwindThemeVariable } from './types';
 
 /**
  * Nested single source of truth for typography, grouped like `cssVariablesMeta`
@@ -24,21 +25,25 @@ import type { TailwindThemeVariable } from './types';
  * The generated `@theme` block flattens these groups (plus the {@link textSizeCompanions}
  * below).
  */
+// Named on its own because `sans` aliases it via the prefix helper — referencing the real
+// variable rather than re-deriving its property name.
+const porscheNextFamily: TailwindThemeVariable = {
+  property: '--font-porsche-next',
+  value: `var(${fontPorscheNextDynamicVar})`,
+  classes: ['.font-porsche-next'],
+  description:
+    'Applies the **Porsche Next** font family along with fallback fonts. Automatically swaps to the locale-specific CJK stack (Simplified Chinese, Traditional Chinese, Japanese, Korean) via `:lang()` based on the nearest `lang` attribute.',
+  comment:
+    'This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next). By pointing it to our dynamic variable, we create a stable link.',
+  group: 'typography',
+};
+
 export const typography = {
   family: {
-    porscheNext: {
-      property: '--font-porsche-next',
-      value: `var(${fontPorscheNextDynamicVar})`,
-      classes: ['.font-porsche-next'],
-      description:
-        'Applies the **Porsche Next** font family along with fallback fonts. Automatically swaps to the locale-specific CJK stack (Simplified Chinese, Traditional Chinese, Japanese, Korean) via `:lang()` based on the nearest `lang` attribute.',
-      comment:
-        'This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next). By pointing it to our dynamic variable, we create a stable link.',
-      group: 'typography',
-    },
+    porscheNext: porscheNextFamily,
     sans: {
       property: '--font-sans',
-      value: '--theme(--font-porsche-next)',
+      value: prefix(porscheNextFamily.property),
       classes: ['.font-sans'],
       description:
         'Aliases the Tailwind `--font-sans` variable to `--font-porsche-next`, so the built-in `.font-sans` utility automatically applies the Porsche Next typeface.',
@@ -152,103 +157,20 @@ export const typography = {
 } satisfies Record<string, Record<string, TailwindThemeVariable>>;
 
 // Companion theme variables for each text size: the Tailwind-required `--*--line-height`
-// pairing plus the `--text-base` alias for `xs`. Non-documented: kept out of
-// `tailwindMeta.typography` (the storefront docs don't surface them) but appended to
-// the `@theme` typography section by the CSS assembly in `index.ts`.
-export const textSizeCompanions: TailwindThemeVariable[] = [
-  {
-    property: '--text-base',
-    value: typescaleSm,
-    classes: ['.text-base'],
-    description:
-      'Aliases the Tailwind `--text-base` variable to the **small** typescale, making `.text-base` equivalent to `.text-sm` in the Porsche Next type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-base--line-height',
-    value: leadingNormal,
-    classes: ['.text-base'],
-    description: 'Sets the line height applied alongside `--text-base` by the `.text-base` utility.',
-    group: 'typography',
-  },
-  {
-    property: '--text-2xs--line-height',
-    value: leadingNormal,
-    classes: ['.text-2xs'],
-    description:
-      'Sets the line height applied alongside `--text-2xs` by the `.text-2xs` utility for the **2x-small** type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-xs--line-height',
-    value: leadingNormal,
-    classes: ['.text-xs'],
-    description:
-      'Sets the line height applied alongside `--text-xs` by the `.text-xs` utility for the **x-small** type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-sm--line-height',
-    value: leadingNormal,
-    classes: ['.text-sm'],
-    description:
-      'Sets the line height applied alongside `--text-sm` by the `.text-sm` utility for the **small** type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-md--line-height',
-    value: leadingNormal,
-    classes: ['.text-md'],
-    description:
-      'Sets the line height applied alongside `--text-md` by the `.text-md` utility for the **medium** type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-lg--line-height',
-    value: leadingNormal,
-    classes: ['.text-lg'],
-    description:
-      'Sets the line height applied alongside `--text-lg` by the `.text-lg` utility for the **large** type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-xl--line-height',
-    value: leadingNormal,
-    classes: ['.text-xl'],
-    description:
-      'Sets the line height applied alongside `--text-xl` by the `.text-xl` utility for the **x-large** type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-2xl--line-height',
-    value: leadingNormal,
-    classes: ['.text-2xl'],
-    description:
-      'Sets the line height applied alongside `--text-2xl` by the `.text-2xl` utility for the **2x-large** type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-3xl--line-height',
-    value: leadingNormal,
-    classes: ['.text-3xl'],
-    description:
-      'Sets the line height applied alongside `--text-3xl` by the `.text-3xl` utility for the **3x-large** type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-4xl--line-height',
-    value: leadingNormal,
-    classes: ['.text-4xl'],
-    description:
-      'Sets the line height applied alongside `--text-4xl` by the `.text-4xl` utility for the **4x-large** type scale.',
-    group: 'typography',
-  },
-  {
-    property: '--text-5xl--line-height',
-    value: leadingNormal,
-    classes: ['.text-5xl'],
-    description:
-      'Sets the line height applied alongside `--text-5xl` by the `.text-5xl` utility for the **5x-large** type scale.',
-    group: 'typography',
-  },
+// pairing plus the `--text-base` alias for `xs`. Non-documented CSS-only plumbing: kept out of
+// `tailwindMeta.theme.typography` (the storefront docs don't surface them) but appended to the
+// `@theme` typography section by the CSS assembly in `css.ts`.
+export const textSizeCompanions: CssNode[] = [
+  { property: '--text-base', value: typescaleSm },
+  { property: '--text-base--line-height', value: leadingNormal },
+  { property: '--text-2xs--line-height', value: leadingNormal },
+  { property: '--text-xs--line-height', value: leadingNormal },
+  { property: '--text-sm--line-height', value: leadingNormal },
+  { property: '--text-md--line-height', value: leadingNormal },
+  { property: '--text-lg--line-height', value: leadingNormal },
+  { property: '--text-xl--line-height', value: leadingNormal },
+  { property: '--text-2xl--line-height', value: leadingNormal },
+  { property: '--text-3xl--line-height', value: leadingNormal },
+  { property: '--text-4xl--line-height', value: leadingNormal },
+  { property: '--text-5xl--line-height', value: leadingNormal },
 ];

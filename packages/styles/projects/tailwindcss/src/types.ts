@@ -1,5 +1,7 @@
 /** A single CSS declaration, e.g. `color-scheme: dark` or `--p-color-canvas: #fff`. */
 export type CssDeclaration = {
+  /** Optional leading comment rendered above the declaration, e.g. `alias (deprecated)`. */
+  comment?: string;
   /** The CSS property or custom property, e.g. `color-scheme` or `--p-color-canvas`. */
   property: string;
   /** The declaration value, e.g. `dark` or `light-dark(#fff, #000)`. */
@@ -90,6 +92,18 @@ export type TokenMeta = {
 export type TokenGroup<T extends TokenMeta = TokenMeta> = Record<string, T>;
 
 /**
+ * Solution-agnostic shape of a single documented utility: just a human readable
+ * {@link description}. The utility *contract* (a heading helper, a skeleton helper, …) is shared
+ * across styling solutions, but unlike {@link TokenMeta} there is no shared `value` — the
+ * naming and implementation differ per solution, so each plugs in its own entry type (Tailwind
+ * uses {@link TailwindUtility}, adding `selector` / `class` / `raw`).
+ */
+export type UtilityMeta = {
+  /** Human readable description rendered in the docs and LLM context. */
+  description: string;
+};
+
+/**
  * The shared design-token catalog shape — the common group taxonomy and size keys
  * reused across `tokens`, stylesheets' `cssVariablesMeta` and the styling solutions.
  * Generic over the token type so each solution plugs in its own entry type (Tailwind
@@ -106,6 +120,17 @@ export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
   breakpoint: T[];
   motion: { duration: T[]; easing: T[] };
 };
+
+/**
+ * The shared documented-utility catalog shape — the common topic grouping every styling solution
+ * exposes (typography helpers, gradients, the layout grid, skeletons). Generic over the utility
+ * type so each solution plugs in its own entry type (Tailwind uses {@link TailwindUtility}).
+ * Solution-agnostic: it describes *which* documented utilities exist, not how they are rendered.
+ */
+export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = Record<
+  'heading' | 'text' | 'display' | 'gradient' | 'grid' | 'skeleton',
+  T[]
+>;
 
 /**
  * A documented Tailwind theme variable — a {@link TokenMeta} (the shared description +
@@ -125,19 +150,17 @@ export type TailwindThemeVariable = TokenMeta & {
 };
 
 /**
- * A documented Tailwind `@utility`. Only `selector`, `class` and `description`
- * are structured (consumed by docs + LLM context); the declaration body is kept
- * as `raw` CSS because it is pure implementation detail.
+ * A documented Tailwind `@utility` — a {@link UtilityMeta} (the shared `description`) extended
+ * with the Tailwind-specific `selector` / `class` (consumed by docs + LLM context) and the
+ * `raw` declaration body (kept as raw CSS because it is pure implementation detail).
  */
-export type TailwindUtility = {
+export type TailwindUtility = UtilityMeta & {
   /** Optional leading comment rendered above the utility, e.g. `Grid: Area Narrow`. */
   comment?: string;
   /** The at-rule prelude, e.g. `@utility col-full`. */
   selector: string;
   /** The generated utility class, e.g. `.col-full`. */
   class: string;
-  /** Human readable description rendered in the docs and LLM context. */
-  description: string;
   /** The raw CSS declaration body (implementation detail, rendered verbatim). */
   raw: string;
 };
@@ -146,71 +169,24 @@ export type TailwindUtility = {
 export type TailwindVariableGroup = TokenGroup<TailwindThemeVariable>;
 
 /** Documented `@utility` classes grouped by topic (docs + LLM + the generated `@utility` blocks). */
-export type TailwindUtilities = Record<'heading' | 'text' | 'display' | 'gradient' | 'grid' | 'skeleton', TailwindUtility[]>;
+export type TailwindUtilities = UtilitiesCatalog<TailwindUtility>;
 
 /**
- * The non-documented, solution-specific additions that still render **inside** the
- * `@theme` block, alongside the documented {@link ThemeCatalog} tokens. Never surfaced
- * in the docs. This is a per-solution extension point.
- */
-export type TailwindThemeExtras = {
-  /** `@theme` namespace resets (`--color-*: initial`, …) clearing the framework defaults. */
-  resets: CssNode[];
-  /** Base colors retained after the reset (`--color-black` / `--color-white`). */
-  baseColors: CssNode[];
-  /** The default focus outline width (`--default-outline-width`). */
-  outlineWidth: CssNode;
-  /** Tailwind-required `--text-*--line-height` companions plus the `--text-base` alias. */
-  typographyCompanions: TailwindThemeVariable[];
-  /** Deprecated theme-variable aliases kept for back-compat (not documented). */
-  deprecatedAliases: { shadow: TailwindThemeVariable[]; motion: TailwindThemeVariable[] };
-  /** Tailwind transition defaults (`--default-transition-*`), interleaved with motion in the `@theme`. */
-  transitionDefaults: { timingFunction: TailwindThemeVariable; duration: TailwindThemeVariable };
-  /** The skeleton `@keyframes` plus its `--animate-skeleton` theme variable. */
-  keyframes: CssNode[];
-};
-
-/**
- * The full `@theme` content: the shared, documented design-token catalog
- * ({@link ThemeCatalog}) plus the solution-specific {@link TailwindThemeExtras}. Everything
- * here renders inside the generated `@theme` block.
- */
-export type TailwindTheme = ThemeCatalog<TailwindThemeVariable> & TailwindThemeExtras;
-
-/**
- * The solution-specific rules rendered **outside** the `@theme` block — globally
- * (`@layer base`) or as utilities (`@utility`). The per-solution extension point for
- * font application, color-scheme handling, etc.
- */
-export type TailwindLayers = {
-  /** The `@layer base` locale-aware Porsche Next font base layer. */
-  fontBase: CssRule;
-  /** The `@layer base` `light-dark()` color-scheme fallback. */
-  schemeFallback: CssRule;
-  /** The `@utility scheme-*` blocks. */
-  schemeUtilities: CssRule[];
-};
-
-/**
- * The single source of truth for the Tailwind styling solution — drives the generated
- * CSS file, the storefront docs and (later) the LLM context. Three sections, split by
- * where they render:
+ * The documented single source of truth for the Tailwind styling solution — the surface shared
+ * with the storefront docs and the LLM context. Two sections, both carrying `description`s and
+ * stable grouping/keys (everything a `getLlmContext()` serializer needs):
  *
- * - {@link theme}: everything inside the `@theme` block — the shared-shape design-token
- *   catalog (documented) plus the solution-specific {@link TailwindThemeExtras}.
- * - {@link utilities}: the documented `@utility` blocks.
- * - {@link layers}: the solution-specific rules rendered outside `@theme` (font base layer,
- *   color-scheme fallback, `scheme-*` utilities).
+ * - {@link theme}: the shared-shape, documented design-token {@link ThemeCatalog}.
+ * - {@link utilities}: the documented `@utility` blocks ({@link UtilitiesCatalog}).
  *
- * The catalog groups + `utilities` carry `description`s and stable grouping/keys, which is
- * everything a future `getLlmContext()` serializer needs. The CSS is assembled from this
- * object only.
+ * Solution-specific CSS-generation plumbing (resets, defaults, layers, keyframes, deprecated
+ * aliases) is intentionally **not** here — it lives alongside the assembly in `css.ts`. The CSS
+ * file is assembled from this documented model plus that plumbing; the catalog groups are the same
+ * object references, so the docs and the generated CSS can never diverge.
  */
 export type TailwindMeta = {
-  /** Everything rendered inside the `@theme` block (documented catalog + solution-specific additions). */
-  theme: TailwindTheme;
-  /** Documented `@utility` blocks. */
+  /** The documented, shared-shape design-token catalog rendered inside the `@theme` block. */
+  theme: ThemeCatalog<TailwindThemeVariable>;
+  /** The documented `@utility` blocks. */
   utilities: TailwindUtilities;
-  /** Solution-specific rules rendered outside `@theme` (global layers / utilities). */
-  layers: TailwindLayers;
 };
