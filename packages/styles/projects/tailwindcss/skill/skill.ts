@@ -24,36 +24,33 @@ const { theme, utilities } = tailwindMeta;
 
 const code = (value: string): string => `\`${value}\``;
 
-/** Render a variable's generated utility classes as comma-separated inline code (or `–`). */
-const renderClasses = (variable: TailwindThemeVariable): string =>
-  variable.classes?.length ? variable.classes.map(code).join(', ') : '–';
-
 /** Escape the few markdown-table-breaking characters a description might contain. */
 const cell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ');
 
-/** A table of theme variables: property | class(es) | description. */
-const variableTable = (variables: TailwindThemeVariable[]): string =>
-  [
-    '| Theme variable | Tailwind class(es) | Description |',
-    '| --- | --- | --- |',
-    ...variables.map((v) => `| ${code(v.property)} | ${renderClasses(v)} | ${cell(v.description)} |`),
-  ].join('\n');
+/** A markdown table from a header row and pre-rendered cell rows. */
+const table = (headers: string[], rows: string[][]): string =>
+  [headers, headers.map(() => '---'), ...rows].map((r) => `| ${r.join(' | ')} |`).join('\n');
 
-/** A table of `@utility` classes: class | description. */
-const utilityTable = (entries: TailwindUtility[]): string =>
-  [
-    '| Tailwind `@utility` class | Description |',
-    '| --- | --- |',
-    ...entries.map((u) => `| ${code(u.class)} | ${cell(u.description)} |`),
-  ].join('\n');
+/** One column of a reference table: its header and how to render a cell from an item. */
+type Column<T> = { header: string; render: (item: T) => string };
 
-/** A `### group` heading followed by its variable table. */
-const variableSection = (heading: string, variables: TailwindThemeVariable[]): string =>
-  `### ${heading}\n\n${variableTable(variables)}`;
+const variableColumns: Column<TailwindThemeVariable>[] = [
+  { header: 'Theme variable', render: (v) => code(v.property) },
+  { header: 'Tailwind class(es)', render: (v) => (v.classes?.length ? v.classes.map(code).join(', ') : '–') },
+  { header: 'Description', render: (v) => cell(v.description) },
+];
 
-/** A `### group` heading followed by its utility table. */
-const utilitySection = (heading: string, entries: TailwindUtility[]): string =>
-  `### ${heading}\n\n${utilityTable(entries)}`;
+const utilityColumns: Column<TailwindUtility>[] = [
+  { header: 'Tailwind `@utility` class', render: (u) => code(u.class) },
+  { header: 'Description', render: (u) => cell(u.description) },
+];
+
+/** A `### heading` followed by a reference table built from `columns`. */
+const section = <T>(heading: string, items: T[], columns: Column<T>[]): string =>
+  `### ${heading}\n\n${table(
+    columns.map((c) => c.header),
+    items.map((item) => columns.map((c) => c.render(item)))
+  )}`;
 
 /**
  * An ordered outline: each entry is either a flat group of items (a leaf section) or a
@@ -63,26 +60,26 @@ const utilitySection = (heading: string, entries: TailwindUtility[]): string =>
  */
 type Outline<T> = Record<string, T[] | Record<string, T[]>>;
 
-/** Render an outline to markdown sections using the given `### heading + table` renderer. */
-const renderOutline = <T>(outline: Outline<T>, section: (heading: string, items: T[]) => string): string =>
+/** Render an outline to markdown sections, building each section's table from `columns`. */
+const renderOutline = <T>(outline: Outline<T>, columns: Column<T>[]): string =>
   Object.entries(outline)
     .map(([parent, value]) =>
       Array.isArray(value)
-        ? section(parent, value)
+        ? section(parent, value, columns)
         : Object.entries(value)
-            .map(([child, items]) => section(`${parent} — ${child}`, items))
+            .map(([child, items]) => section(`${parent} — ${child}`, items, columns))
             .join('\n\n')
     )
     .join('\n\n');
 
 /**
- * Derive a `## Contents` TOC line from an outline. `withChildren` expands nested groups as
+ * Derive a `## Contents` TOC line from an outline. `expandSubgroups` lists nested groups as
  * `Parent (Child / Child)` (utilities); when false only top-level names are listed (theme).
  */
-const tocLine = <T>(outline: Outline<T>, withChildren: boolean): string =>
+const tocLine = <T>(outline: Outline<T>, expandSubgroups: boolean): string =>
   Object.entries(outline)
     .map(([parent, value]) =>
-      withChildren && !Array.isArray(value) ? `${parent} (${Object.keys(value).join(' / ')})` : parent
+      expandSubgroups && !Array.isArray(value) ? `${parent} (${Object.keys(value).join(' / ')})` : parent
     )
     .join(', ');
 
@@ -124,9 +121,9 @@ const contents = `## Contents
 - [Theme variables](#theme-variables) — ${tocLine(themeOutline, false)}
 - [Utilities](#utilities) — ${tocLine(utilityOutline, true)}`;
 
-const themeVariables = `## Theme variables\n\n${renderOutline(themeOutline, variableSection)}`;
+const themeVariables = `## Theme variables\n\n${renderOutline(themeOutline, variableColumns)}`;
 
-const themeUtilities = `## Utilities\n\n${renderOutline(utilityOutline, utilitySection)}`;
+const themeUtilities = `## Utilities\n\n${renderOutline(utilityOutline, utilityColumns)}`;
 
 /**
  * Render the full Tailwind theme overview as markdown. Pure function over
