@@ -6,11 +6,11 @@
   "scope": "@porsche-design-system",
   "main": "index.js",
   "module": "esm/index.js",
+  "types": "index.d.ts",
   "bin": {
     "serve-dummyassets": "./bin/serve-dummyassets.js",
     "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
   },
-  "types": "index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {

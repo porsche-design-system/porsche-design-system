@@ -6,10 +6,17 @@
     "private",
     "license",
     "scope",
+    "repository",
+    "workspaces",
     "sideEffects",
     "type",
     "main",
     "module",
+    "collection",
+    "collection:main",
+    "es2015",
+    "es2017",
+    "jsnext:main",
     "types",
     "browser",
     "style",
@@ -23,7 +30,9 @@
     "scripts",
     "dependencies",
     "devDependencies",
-    "peerDependencies"
+    "peerDependencies",
+    "overrides",
+    "volta"
   ],
   "sortAz": ["dependencies", "devDependencies", "peerDependencies"],
   "updateGroups": [

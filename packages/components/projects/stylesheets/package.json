@@ -7,6 +7,7 @@
   "sideEffects": false,
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
   "style": "./dist/index.css",
   "exports": {
     ".": {
@@ -16,7 +17,6 @@
     },
     "./*": "./dist/*"
   },
-  "types": "./dist/esm/index.d.ts",
   "files": [
     "./dist/"
   ],

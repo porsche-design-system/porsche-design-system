@@ -6,6 +6,11 @@
   "scope": "@porsche-design-system",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "es2015": "dist/esm/index.js",
+  "es2017": "dist/esm/index.js",
+  "jsnext:main": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
@@ -68,11 +73,6 @@
     "tsx": "*",
     "typescript": "*"
   },
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "es2015": "dist/esm/index.js",
-  "es2017": "dist/esm/index.js",
-  "jsnext:main": "dist/esm/index.js",
   "volta": {
     "extends": "../../package.json"
   }

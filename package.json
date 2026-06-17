@@ -3,6 +3,41 @@
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porsche-design-system/porsche-design-system.git"
+  },
+  "workspaces": [
+    "packages/*",
+    "packages/assets/projects/crest",
+    "packages/assets/projects/flags",
+    "packages/assets/projects/fonts",
+    "packages/assets/projects/font-face",
+    "packages/assets/projects/icons",
+    "packages/assets/projects/marque",
+    "packages/assets/projects/meta-icons",
+    "packages/assets/projects/model-signatures",
+    "packages/components-js/projects/components-manager-cli",
+    "packages/components-js/projects/components-manager-core",
+    "packages/components-js/projects/jsdom-polyfill",
+    "packages/components-js/projects/partials",
+    "packages/components-js/dist/components-wrapper",
+    "packages/components-angular/dist/angular-wrapper",
+    "packages/components-react/dist/react-wrapper",
+    "packages/components-react/projects/nextjs",
+    "packages/components-react/projects/react-ssr-wrapper",
+    "packages/components-react/projects/react-router",
+    "packages/components-vue/dist/vue-wrapper",
+    "packages/styles/projects/tailwindcss",
+    "packages/styles/projects/scss",
+    "packages/styles/projects/emotion",
+    "packages/styles/projects/vanilla-extract",
+    "packages/components/projects/stylesheets",
+    "packages/tokens/projects/tokens-meta",
+    "packages/utilities/projects/ag-grid",
+    "packages/storefront/projects/stackblitz",
+    "packages/shared/dist"
+  ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "description": "Porsche Design System Monorepo",
   "scripts": {
@@ -235,43 +270,8 @@
       "typescript": "$typescript"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porsche-design-system/porsche-design-system.git"
-  },
   "volta": {
     "node": "24.15.0",
     "npm": "11.12.1"
-  },
-  "workspaces": [
-    "packages/*",
-    "packages/assets/projects/crest",
-    "packages/assets/projects/flags",
-    "packages/assets/projects/fonts",
-    "packages/assets/projects/font-face",
-    "packages/assets/projects/icons",
-    "packages/assets/projects/marque",
-    "packages/assets/projects/meta-icons",
-    "packages/assets/projects/model-signatures",
-    "packages/components-js/projects/components-manager-cli",
-    "packages/components-js/projects/components-manager-core",
-    "packages/components-js/projects/jsdom-polyfill",
-    "packages/components-js/projects/partials",
-    "packages/components-js/dist/components-wrapper",
-    "packages/components-angular/dist/angular-wrapper",
-    "packages/components-react/dist/react-wrapper",
-    "packages/components-react/projects/nextjs",
-    "packages/components-react/projects/react-ssr-wrapper",
-    "packages/components-react/projects/react-router",
-    "packages/components-vue/dist/vue-wrapper",
-    "packages/styles/projects/tailwindcss",
-    "packages/styles/projects/scss",
-    "packages/styles/projects/emotion",
-    "packages/styles/projects/vanilla-extract",
-    "packages/components/projects/stylesheets",
-    "packages/tokens/projects/tokens-meta",
-    "packages/utilities/projects/ag-grid",
-    "packages/storefront/projects/stackblitz",
-    "packages/shared/dist"
-  ]
+  }
 }

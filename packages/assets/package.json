@@ -6,10 +6,10 @@
   "sideEffects": false,
   "main": "dist/cjs/src/index.cjs",
   "module": "dist/esm/src/index.mjs",
+  "types": "dist/esm/index.d.ts",
   "bin": {
     "serve-cdn": "./bin/serve-cdn.js"
   },
-  "types": "dist/esm/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "description": "This package provides manifests and CDN URLs of Porsche assets like fonts, icons, marques, etc.",
