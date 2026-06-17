@@ -4,9 +4,6 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/openInStackblitz.js",
-  "module": "./dist/openInStackblitz.mjs",
-  "types": "./dist/openInStackblitz.d.ts",
   "exports": {
     ".": {
       "import": {
@@ -19,6 +16,9 @@
       }
     }
   },
+  "main": "./dist/openInStackblitz.js",
+  "module": "./dist/openInStackblitz.mjs",
+  "types": "./dist/openInStackblitz.d.ts",
   "files": [
     "./dist/"
   ],

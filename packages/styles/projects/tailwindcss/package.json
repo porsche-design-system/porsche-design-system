@@ -8,12 +8,12 @@
   "homepage": "https://designsystem.porsche.com",
   "sideEffects": false,
   "type": "commonjs",
-  "style": "./dist/index.css",
   "exports": {
     ".": {
       "style": "./dist/index.css"
     }
   },
+  "style": "./dist/index.css",
   "files": [
     "./dist/"
   ],
