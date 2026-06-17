@@ -38,7 +38,6 @@ for (const exampleUrl of exampleUrls) {
         '/select-example',
         '/multi-select-example-dynamic', // TODO: Active once text-field-wrapper validation warning bug is fixed (https://github.com/porsche-design-system/porsche-design-system/issues/3821)
         '/select-example-dynamic', // TODO: Active once text-field-wrapper validation warning bug is fixed (https://github.com/porsche-design-system/porsche-design-system/issues/3821)
-        '/text-field-wrapper-example-imask',
         '/text-field-wrapper-example-search',
       ].includes(exampleUrl)
     );

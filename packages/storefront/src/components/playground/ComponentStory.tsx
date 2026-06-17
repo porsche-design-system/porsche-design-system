@@ -34,7 +34,6 @@ export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }:
     return createFrameworkMarkup(generatedStory, state, storefrontColorScheme);
   }, [story, storefrontColorScheme]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
   useEffect(() => {
     const generatedStory = story.generator(exampleState);
     setExampleElement(createElements(generatedStory, setExampleState));

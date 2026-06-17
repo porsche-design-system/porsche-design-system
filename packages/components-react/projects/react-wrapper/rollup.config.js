@@ -323,14 +323,6 @@ export default [
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
           sideEffects: false,
-          exports: {
-            // Default export (JS)
-            '.': {
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-          },
         },
       }),
     ],
@@ -394,13 +386,6 @@ export default [
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
           sideEffects: false,
-          exports: {
-            '.': {
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-          },
         },
       }),
     ],

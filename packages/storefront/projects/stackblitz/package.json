@@ -4,8 +4,6 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/openInStackblitz.js",
-  "module": "./dist/openInStackblitz.mjs",
   "exports": {
     ".": {
       "import": {
@@ -18,8 +16,12 @@
       }
     }
   },
+  "main": "./dist/openInStackblitz.js",
+  "module": "./dist/openInStackblitz.mjs",
   "types": "./dist/openInStackblitz.d.ts",
-  "files": ["./dist/"],
+  "files": [
+    "./dist/"
+  ],
   "scripts": {
     "build": "npm run clean:build && npm run build:generateStackblitzBundle && npm run build:lib",
     "build:generateStackblitzBundle": "tsx --tsconfig tsconfig.node.json scripts/generateStackblitzBundle.ts",

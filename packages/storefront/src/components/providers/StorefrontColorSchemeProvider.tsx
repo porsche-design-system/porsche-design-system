@@ -19,7 +19,6 @@ export const StorefrontColorSchemeProvider = ({ children }: PropsWithChildren) =
   const prefersDark = usePreferredColorScheme();
 
   // Load initial state from localStorage once component mounts
-  // biome-ignore lint/correctness/useExhaustiveDependencies: only used for mount
   useEffect(() => {
     const storedColorScheme = localStorage.getItem(
       storefrontColorSchemeLocalStorageKey

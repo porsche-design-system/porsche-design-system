@@ -1,58 +1,60 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import { readdirSync } from 'fs';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
+const input = 'src/index.ts';
 const outputDir = 'dist';
-
-const categories = readdirSync('src', { withFileTypes: true })
-  .filter((d) => d.isDirectory())
-  .map((d) => d.name);
 
 const commonPlugins = [
   resolve({
+    // Resolve tokens package to inline the values
     resolveOnly: [/^@porsche-design-system\/tokens$/],
   }),
 ];
 
-const ts = (format, { exclude = '**.spec.ts' } = {}) =>
-  format === 'esm'
-    ? typescript({ declaration: true, declarationDir: `${outputDir}/esm`, exclude, rootDir: 'src' })
-    : typescript();
-
-const stylesBuild = (format, ext) => ({
-  input: ['src/index.ts', ...categories.map((category) => `src/${category}/index.ts`)],
-  output: {
-    dir: `${outputDir}/${format}`,
-    format,
-    entryFileNames: `[name].${ext}`,
-    preserveModules: true,
-    preserveModulesRoot: 'src',
+export default [
+  {
+    input,
+    output: {
+      dir: `${outputDir}/cjs`,
+      format: 'cjs',
+      entryFileNames: '[name].cjs',
+      preserveModules: true,
+      preserveModulesRoot: 'src',
+    },
+    plugins: [...commonPlugins, typescript()],
   },
-  plugins: [
-    ...commonPlugins,
-    ts(format),
-    ...(format === 'esm'
-      ? [
-          generatePackageJson({
-            outputFolder: outputDir,
-            baseContents: {
-              main: 'cjs/index.cjs',
-              module: 'esm/index.mjs',
-              types: 'esm/index.d.ts',
-              sideEffects: false,
-              exports: {
-                '.': {
-                  types: './esm/index.d.ts',
-                  import: './esm/index.mjs',
-                  default: './cjs/index.cjs',
-                },
-              },
-            },
-          }),
-        ]
-      : []),
-  ],
-});
-
-export default [stylesBuild('cjs', 'cjs'), stylesBuild('esm', 'mjs')];
+  // Vanilla-Extract Build - ESM
+  {
+    input,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+      entryFileNames: '[name].mjs',
+      preserveModules: true,
+      preserveModulesRoot: 'src',
+    },
+    plugins: [
+      ...commonPlugins,
+      typescript({
+        declaration: true,
+        declarationDir: `${outputDir}/esm`,
+        exclude: '**.spec.ts',
+        rootDir: 'src',
+      }),
+      generatePackageJson({
+        outputFolder: outputDir,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+          // Note: no `exports` field here on purpose. This package.json is copied into the
+          // wrapper packages (components-js/react/vue) as a nested folder, where the parent's
+          // root `exports` map governs resolution. A nested `exports` field would be ignored
+          // and triggers publint's NESTED_PACKAGE_JSON_FIELD_IGNORED warning.
+        },
+      }),
+    ],
+  },
+];

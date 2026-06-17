@@ -63,14 +63,10 @@ export default [
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
           sideEffects: false,
-          exports: {
-            // Default export (JS)
-            '.': {
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-          },
+          // Note: no `exports` field here on purpose. This package.json is copied into the
+          // wrapper packages (components-js/react/vue) as a nested folder, where the parent's
+          // root `exports` map governs resolution. A nested `exports` field would be ignored
+          // and triggers publint's NESTED_PACKAGE_JSON_FIELD_IGNORED warning.
         },
       }),
     ],

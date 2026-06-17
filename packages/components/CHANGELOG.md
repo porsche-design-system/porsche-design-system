@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Angular`: Bumped peer dependency to support Angular new major version 22
+  ([#4505](https://github.com/porsche-design-system/porsche-design-system/pull/4505))
 - `Flyout`: Prop `fullscreen` to stretch the flyout to the full viewport width with squared corners, useful for smaller
   viewports ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498))
 

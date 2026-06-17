@@ -6,21 +6,19 @@ import { type AngularCharacteristics, convertToAngularVRTPage } from './convertT
 import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';
 import { convertToReactRouterVRTPage } from './convertToReactRouterVRTPage';
 import { convertToReactVRTPage, type ReactCharacteristics } from './convertToReactVRTPage';
-import { convertToRemixVRTPage } from './convertToRemixVRTPage';
 
 /** array of html file names that don't get converted */
 const PAGES_TO_SKIP: string[] = [];
 /** array of html file names that are converted but without route since it is maintained manually */
 const PAGES_WITHOUT_ROUTE: string[] = ['core-initializer', 'overview', 'overview-notifications'];
 
-type Framework = 'angular' | 'react' | 'nextjs' | 'remix' | 'react-router';
+type Framework = 'angular' | 'react' | 'nextjs' | 'react-router';
 
 const rootDirectory = path.resolve(__dirname, '..');
 const pagesDirectories: Record<Framework, string> = {
   angular: path.resolve(rootDirectory, '../components-angular/src/app/pages/generated'),
   react: path.resolve(rootDirectory, '../components-react/src/pages/generated'),
   nextjs: path.resolve(rootDirectory, '../components-react/projects/nextjs/app'),
-  remix: path.resolve(rootDirectory, '../components-react/projects/remix/app/routes'),
   'react-router': path.resolve(rootDirectory, '../components-react/projects/react-router/app/routes'),
 };
 
@@ -36,7 +34,6 @@ const generateVRTPages = (): void => {
   generateVRTPagesForJsFramework(htmlFileContentMap, 'angular');
   generateVRTPagesForJsFramework(htmlFileContentMap, 'react');
   generateVRTPagesForJsFramework(htmlFileContentMap, 'nextjs');
-  generateVRTPagesForJsFramework(htmlFileContentMap, 'remix');
   generateVRTPagesForJsFramework(htmlFileContentMap, 'react-router');
 };
 
@@ -124,7 +121,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
   const importPaths = Object.entries(htmlFileContentMap)
     // .filter(([component]) => component === 'icon') // for easy debugging
     .filter(([component]) =>
-      framework === 'remix' || framework === 'react-router'
+      framework === 'react-router'
         ? [
             'banner-basic',
             'banner-prefixed',
@@ -143,7 +140,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
             'toast-prefixed',
           ].includes(component)
         : true
-    ) // only overview page for remix
+    ) // only overview page for react-router
     .map(([fileName, fileContent]) => {
       fileContent = fileContent.trim();
 
@@ -213,11 +210,9 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
             ? convertToReactVRTPage(...baseParams, reactCharacteristics)
             : framework === 'nextjs'
               ? convertToNextJsVRTPage(...baseParams, reactCharacteristics)
-              : framework === 'remix'
-                ? convertToRemixVRTPage(...baseParams, reactCharacteristics)
-                : framework === 'react-router'
-                  ? convertToReactRouterVRTPage(...baseParams, reactCharacteristics)
-                  : { fileName: '', fileContent: '' };
+              : framework === 'react-router'
+                ? convertToReactRouterVRTPage(...baseParams, reactCharacteristics)
+                : { fileName: '', fileContent: '' };
 
       const targetFilePath = path.resolve(pagesDirectories[framework], convertedFileName);
       if (framework === 'nextjs') {

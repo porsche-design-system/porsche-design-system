@@ -19,8 +19,8 @@
   },
   "peerDependencies": {
     "fast-glob": "*",
-    "vitest": "*",
     "typescript": "*",
+    "vitest": "*",
     "webpack": "*"
   },
   "volta": {

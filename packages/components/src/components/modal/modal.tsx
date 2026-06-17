@@ -58,7 +58,7 @@ export class Modal {
   @Element() public host!: HTMLElement;
 
   /** Controls whether the modal dialog is visible. */
-  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public open: boolean = false;
 
   /** Shows a dismiss button in the modal header so the user can manually close it. */
   @Prop() public dismissButton?: boolean = true;

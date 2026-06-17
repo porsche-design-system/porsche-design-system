@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noTemplateCurlyInString: used in examples */
 'use client';
 
 import type { Story } from '@/models/story';
