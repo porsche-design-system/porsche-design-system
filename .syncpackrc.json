@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/syncpack/schema.json",
+  "updateGroups": [
+    {
+      "label": "Held-back dependencies — upgraded deliberately, not via automated checks (see docs/dependencies.md and .github/dependabot.yml)",
+      "dependencies": [
+        "@porsche-design-system/**",
+        "@angular/**",
+        "ng-packagr",
+        "zone.js",
+        "@playwright/test",
+        "@stencil/core"
+      ],
+      "isIgnored": true
+    }
+  ]
+}

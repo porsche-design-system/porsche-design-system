@@ -6,7 +6,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     groups:
       github-actions-updates:
         patterns:
@@ -16,12 +16,20 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    # Held-back dependencies — kept in sync with docs/dependencies.md and the
+    # updateGroups entry in .syncpackrc.json
     ignore:
+      # Internal workspace packages, versioned via the release process (see docs/dependencies.md)
       - dependency-name: "@porsche-design-system/*"
+      # Pinned to keep browser binaries in sync with committed VRT snapshots; upgrade deliberately (see docs/dependencies.md)
       - dependency-name: "@playwright/test"
       # Pinned: a patch-package patch targets this exact version (see docs/dependencies.md)
       - dependency-name: "@stencil/core"
+      # Upgraded separately via `ng update`, not Dependabot (see docs/dependencies.md)
+      - dependency-name: "@angular/*"
+      - dependency-name: "ng-packagr"
+      - dependency-name: "zone.js"
     groups:
       npm-updates:
         patterns:

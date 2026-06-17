@@ -2,35 +2,50 @@
 
 ## Dependency updates
 
-Every week, we update our NPM packages:
+Every week, we update our NPM packages. Updates are driven by [`syncpack`](#syncpack-helper-scripts) via the root
+scripts — do **not** edit versions in each `package.json` by hand, as syncpack keeps the version ranges consistent
+across all workspaces.
 
-1. Switch to **project root directory**
-2. Run `npm outdated` to check for outdated dependencies, then update as needed in `package.json` and run `npm install`.  
-   Afterwards execute automated tests to make sure application still works.
-3. Angular has to be updated with `ng update`.
-4. `cd packages/components-angular`
-5. `./node_modules/.bin/ng update`
-6. `./node_modules/.bin/ng update @angular/cli @angular/core`
-7. Check `MAX_TS_VERSION` in `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`
-   which indicates whether `typescript` can be updated for Angular packages or not.
-8. `exit` to leave the docker container
-9. Run `npm install`
+1. Switch to the **project root directory** and make sure you pulled the latest version.
+2. Run `npm run npm:outdated` to see which dependencies have newer versions available (held-back deps are excluded
+   automatically, see [Held-back dependencies](#held-back-dependencies)).
+3. Run `npm run npm:update` to interactively pick and apply updates. syncpack writes the new ranges into every
+   `package.json` across the workspaces in one go. Don't upgrade too many dependencies at once — keep related upgrades
+   grouped (e.g. if React types can be upgraded, also check whether React itself can be upgraded).
+4. Run `npm install` to update `package-lock.json`, then execute the automated tests to make sure the application still
+   works.
+5. Once everything is updated, delete `package-lock.json` and recreate it by running `npm install` again, so the
+   transitive dependencies of our dependencies are refreshed too.
 
-### Hints for updating
+Some dependencies (Angular, Playwright, Stencil, internal packages) are intentionally excluded from this flow and
+updated manually — see [Held-back dependencies](#held-back-dependencies). If you update them in the same session, start
+with Angular (`ng update`) to avoid corrupting `package-lock.json`.
 
-1. Make sure you pulled the latest version before starting.
-2. To avoid corrupting the `package-lock.json` start with Angular (by using `ng update`). The following upgrades should be
-   grouped e.g. if React types can be upgraded also look if React can be upgraded.
-3. Don't upgrade too many dependencies at once, keep them logically together.
-4. Certain dependencies can not be upgraded which are documented in `docs/dependencies.md`
-5. In case you discover new dependencies that can not be upgraded, e.g. due to esm builds not compatible with nodejs,
-   add them to the list
-6. Update `docs/dependencies.md` to reflect the current date and adjust framework versions if needed
-7. Once you updated everything possible, delete `package-lock.json` and have it created again by running `npm install` in order to
-   update dependencies of our dependencies
+### Syncpack helper scripts
 
-We are using Dependabot to manage our dependencies. Every note about not updatable dependencies in this document is also
-reflected in the configuration file under `.github/dependabot.yml` and must be kept in sync!
+[`syncpack`](https://syncpack.dev) is pinned as a root `devDependency` (do **not** rely on an unpinned `npx syncpack`,
+as its CLI changed across major versions). Its behavior is configured centrally in
+[`.syncpackrc.json`](../.syncpackrc.json) (JSON with `$schema` for editor validation, matching our `biome.json`
+convention). The following root scripts help keep dependency versions consistent across the workspaces:
+
+| Script                   | Purpose                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------- |
+| `npm run npm:lint`       | Lint `prod` + `dev` dependency versions for mismatches across workspaces.       |
+| `npm run npm:lint:fix`   | Fix mismatched versions so all workspaces use the same version.                 |
+| `npm run npm:list`       | List every dependency and its version usage across workspaces.                  |
+| `npm run npm:format`     | Check that each `package.json` is formatted (field order, sorting).             |
+| `npm run npm:format:fix` | Apply `package.json` formatting.                                                |
+| `npm run npm:outdated`   | Check the npm registry for newer versions (excludes held-back deps, see below). |
+| `npm run npm:update`     | Interactively pick updates to apply (excludes held-back deps, see below).       |
+
+The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
+from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
+`.syncpackrc.json` (`@porsche-design-system/**`, `@angular/**`, `ng-packagr`, `zone.js`, `@playwright/test`,
+`@stencil/core`). The `npm:outdated` and `npm:update` scripts additionally pass
+`--dependencies '!@porsche-design-system/**'` so the unpublished internal workspace packages are not even looked up
+against the npm registry (which would otherwise emit `Failed to fetch` warnings). When you add a new held-back
+dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to the ignore list in
+`.github/dependabot.yml`.
 
 ## Strict peer dependency resolution
 
@@ -46,21 +61,38 @@ Current overrides:
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
 
-## Not updatable dependencies
+## Held-back dependencies
 
-These dependencies are intentionally held back and are ignored in `.github/dependabot.yml`:
+These dependencies are intentionally excluded from the automated `syncpack` / `npm run npm:update` flow and from
+Dependabot. The exclusion is configured in two places that must be kept in sync when adding a new entry:
+
+- the `isIgnored` `updateGroups` entry in [`.syncpackrc.json`](../.syncpackrc.json), and
+- the `ignore` list in `.github/dependabot.yml`.
+
+### Why they are held back
 
 - `@porsche-design-system/*` – internal workspace packages, versioned via the release process.
 - `@playwright/test` – pinned to keep browser binaries and committed VRT snapshots in sync; upgrade deliberately.
 - `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
-  version. Bumping it breaks `patch-package` on `postinstall`. To upgrade, regenerate the patch for the new version first.
-- `@angular/*` (incl. `ng-packagr`, `zone.js`) – upgrade Angular separately via `ng update` (see steps above), not via
-  `npm-check-updates`, and verify `typescript` stays within Angular's `MAX_TS_VERSION`.
+  version. Bumping it breaks `patch-package` on `postinstall`.
+- `@angular/*` (incl. `ng-packagr`, `zone.js`) – must be upgraded with `ng update` rather than syncpack, and
+  `typescript` must stay within Angular's `MAX_TS_VERSION`.
 
-## Overview of Framework Versions
+### How to update them
 
-|         | Monorepo | Sample Integrations   |
-| ------- | -------- | --------------------- |
-| Angular | 21.2.8   | 21.1.2                |
-| React   | 19.2.7   | 19.2.4                |
-| Next.js | 16.2.9   | 16.1.6 (React 19.2.4) |
+**`@angular/*` (incl. `ng-packagr`, `zone.js`)** — upgrade with Angular's own tooling:
+
+1. `cd packages/components-angular`
+2. `./node_modules/.bin/ng update`
+3. `./node_modules/.bin/ng update @angular/cli @angular/core`
+4. Check `MAX_TS_VERSION` in `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`,
+   which indicates whether `typescript` can be updated for Angular packages or not.
+5. Run `npm install` again from the project root.
+
+**`@playwright/test`** — bump the version deliberately, then regenerate and verify the committed VRT snapshots so the
+browser binaries and screenshots stay in sync.
+
+**`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
+dependency; otherwise `patch-package` fails on `postinstall`.
+
+**`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
