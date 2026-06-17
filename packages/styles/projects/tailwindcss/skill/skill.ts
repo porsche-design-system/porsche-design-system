@@ -52,6 +52,37 @@ const variableSection = (heading: string, variables: TailwindThemeVariable[]): s
 const utilitySection = (heading: string, entries: TailwindUtility[]): string =>
   `### ${heading}\n\n${utilityTable(entries)}`;
 
+/**
+ * An ordered outline: each entry is either a flat group of items (a leaf section) or a
+ * record of named sub-groups (rendered as `Parent — Child` sections). Headings are
+ * human-curated keys — they cannot be derived from the meta because `tailwindMeta.theme`
+ * mixes documented + non-documented entries and the keys don't match the labels.
+ */
+type Outline<T> = Record<string, T[] | Record<string, T[]>>;
+
+/** Render an outline to markdown sections using the given `### heading + table` renderer. */
+const renderOutline = <T>(outline: Outline<T>, section: (heading: string, items: T[]) => string): string =>
+  Object.entries(outline)
+    .map(([parent, value]) =>
+      Array.isArray(value)
+        ? section(parent, value)
+        : Object.entries(value)
+            .map(([child, items]) => section(`${parent} — ${child}`, items))
+            .join('\n\n')
+    )
+    .join('\n\n');
+
+/**
+ * Derive a `## Contents` TOC line from an outline. `withChildren` expands nested groups as
+ * `Parent (Child / Child)` (utilities); when false only top-level names are listed (theme).
+ */
+const tocLine = <T>(outline: Outline<T>, withChildren: boolean): string =>
+  Object.entries(outline)
+    .map(([parent, value]) =>
+      withChildren && !Array.isArray(value) ? `${parent} (${Object.keys(value).join(' / ')})` : parent
+    )
+    .join(', ');
+
 const intro = `# Porsche Design System — Tailwind CSS theme
 
 The Porsche Design System ships a ready-made Tailwind CSS theme: a curated catalog of design
@@ -100,60 +131,53 @@ the document or any container; the selected context cascades to all child elemen
 </html>
 \`\`\``;
 
+/** The documented theme-variable groups in render order, paired with their curated headings. */
+const themeOutline: Outline<TailwindThemeVariable> = {
+  Color: {
+    Background: Object.values(theme.color.background),
+    Foreground: Object.values(theme.color.foreground),
+    Semantic: Object.values(theme.color.semantic),
+    A11y: Object.values(theme.color.a11y),
+  },
+  Typography: {
+    'Font family': Object.values(theme.typography.family),
+    'Font weight': Object.values(theme.typography.weight),
+    'Line height': Object.values(theme.typography.lineHeight),
+    'Text size': Object.values(theme.typography.text),
+  },
+  Spacing: {
+    Fluid: Object.values(theme.spacing.fluid),
+    Static: Object.values(theme.spacing.static),
+  },
+  Border: {
+    Radius: Object.values(theme.border.radius),
+    Width: theme.border.width,
+  },
+  Blur: theme.blur,
+  Shadow: theme.shadow,
+  Breakpoint: theme.breakpoint,
+  Motion: {
+    Duration: theme.motion.duration,
+    Easing: theme.motion.easing,
+  },
+};
+
+/** The documented `@utility` groups in render order, paired with their curated headings. */
+const utilityOutline: Outline<TailwindUtility> = {
+  Typography: { Heading: utilities.heading, Text: utilities.text, Display: utilities.display },
+  Gradient: utilities.gradient,
+  Grid: utilities.grid,
+  Skeleton: utilities.skeleton,
+};
+
 const contents = `## Contents
 
-- [Theme variables](#theme-variables) — Color, Typography, Spacing, Border, Blur, Shadow, Breakpoint, Motion
-- [Utilities](#utilities) — Typography (Heading / Text / Display), Gradient, Grid, Skeleton`;
+- [Theme variables](#theme-variables) — ${tocLine(themeOutline, false)}
+- [Utilities](#utilities) — ${tocLine(utilityOutline, true)}`;
 
-const themeVariables = `## Theme variables
+const themeVariables = `## Theme variables\n\n${renderOutline(themeOutline, variableSection)}`;
 
-${variableSection('Color — Background', Object.values(theme.color.background))}
-
-${variableSection('Color — Foreground', Object.values(theme.color.foreground))}
-
-${variableSection('Color — Semantic', Object.values(theme.color.semantic))}
-
-${variableSection('Color — A11y', Object.values(theme.color.a11y))}
-
-${variableSection('Typography — Font family', Object.values(theme.typography.family))}
-
-${variableSection('Typography — Font weight', Object.values(theme.typography.weight))}
-
-${variableSection('Typography — Line height', Object.values(theme.typography.lineHeight))}
-
-${variableSection('Typography — Text size', Object.values(theme.typography.text))}
-
-${variableSection('Spacing — Fluid', Object.values(theme.spacing.fluid))}
-
-${variableSection('Spacing — Static', Object.values(theme.spacing.static))}
-
-${variableSection('Border — Radius', Object.values(theme.border.radius))}
-
-${variableSection('Border — Width', theme.border.width)}
-
-${variableSection('Blur', theme.blur)}
-
-${variableSection('Shadow', theme.shadow)}
-
-${variableSection('Breakpoint', theme.breakpoint)}
-
-${variableSection('Motion — Duration', theme.motion.duration)}
-
-${variableSection('Motion — Easing', theme.motion.easing)}`;
-
-const themeUtilities = `## Utilities
-
-${utilitySection('Typography — Heading', utilities.heading)}
-
-${utilitySection('Typography — Text', utilities.text)}
-
-${utilitySection('Typography — Display', utilities.display)}
-
-${utilitySection('Gradient', utilities.gradient)}
-
-${utilitySection('Grid', utilities.grid)}
-
-${utilitySection('Skeleton', utilities.skeleton)}`;
+const themeUtilities = `## Utilities\n\n${renderOutline(utilityOutline, utilitySection)}`;
 
 /**
  * Render the full Tailwind theme overview as markdown. Pure function over
