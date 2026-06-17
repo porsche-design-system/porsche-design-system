@@ -5,33 +5,34 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/cjs/index.cjs",
-  "module": "./dist/esm/index.mjs",
-  "types": "./dist/esm/index.d.ts",
+  "main": "./meta/cjs/index.cjs",
+  "module": "./meta/esm/index.mjs",
+  "types": "./meta/esm/index.d.ts",
   "style": "./dist/index.css",
   "exports": {
     ".": {
-      "types": "./dist/esm/index.d.ts",
-      "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.cjs",
+      "types": "./meta/esm/index.d.ts",
+      "import": "./meta/esm/index.mjs",
+      "require": "./meta/cjs/index.cjs",
       "style": "./dist/index.css"
     },
-    "./*": "./dist/*"
+    "./index.css": "./dist/index.css"
   },
   "sideEffects": false,
   "files": [
-    "./dist/"
+    "./dist/",
+    "./meta/"
   ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "npm run clean:build && npm run build:css && npm run build:package",
-    "build:css": "tsx scripts/build.ts",
+    "build": "npm run clean:build && npm run build:meta && npm run build:package",
+    "build:meta": "rollup -c rollup.config.meta.mjs",
+    "build:package": "tsx scripts/build.ts",
     "build:skill": "tsx scripts/build-skill.ts",
-    "build:package": "rollup -c rollup.config.mjs",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist"
+    "clean:build": "rm -rf ./dist ./meta"
   },
   "dependencies": {
     "@porsche-design-system/tokens": "0.0.0"

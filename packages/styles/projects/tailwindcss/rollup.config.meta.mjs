@@ -3,7 +3,7 @@ import typescript from '@rollup/plugin-typescript';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const input = 'src/index.ts';
-const outputDir = 'dist';
+const outputDir = 'meta';
 
 export default [
   {
@@ -13,6 +13,7 @@ export default [
       format: 'cjs',
       entryFileNames: '[name].cjs',
       preserveModules: true,
+      preserveModulesRoot: 'src',
     },
     plugins: [typescript({ exclude: ['**/*.spec.ts'] })],
   },
@@ -33,17 +34,14 @@ export default [
           main: 'cjs/index.cjs',
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
-          style: 'index.css',
           sideEffects: false,
           exports: {
-            // Default export (JS meta + helpers)
+            // Default export (JS meta + helpers) — internal-only, never redistributed
             '.': {
               types: './esm/index.d.ts',
               import: './esm/index.mjs',
               default: './cjs/index.cjs',
             },
-            // Granular file access (e.g. ./index.css)
-            './*': './*',
           },
         },
       }),

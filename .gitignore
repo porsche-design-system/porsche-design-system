@@ -8,6 +8,7 @@ lerna-debug.log*
 node_modules/
 dist/
 dist-tmp/
+meta/
 .stencil/
 .angular/
 tmp/
