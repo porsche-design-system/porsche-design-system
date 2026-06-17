@@ -63,6 +63,7 @@ jobs:
             ./packages/styles/projects/shared-styles/dist/
             ./packages/styles/projects/shared-styles/src/generated/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/tailwindcss/meta/
             ./packages/styles/projects/scss/dist/
             ./packages/styles/projects/emotion/dist/
             ./packages/styles/projects/vanilla-extract/dist/
@@ -141,6 +142,7 @@ jobs:
             ./packages/styles/projects/shared-styles/dist/
             ./packages/styles/projects/shared-styles/src/generated/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/tailwindcss/meta/
             ./packages/styles/projects/scss/dist/
             ./packages/styles/projects/emotion/dist/
             ./packages/styles/projects/vanilla-extract/dist/
