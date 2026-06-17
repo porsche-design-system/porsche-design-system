@@ -41,11 +41,13 @@ export const tailwindMeta = {
     motion,
   },
   utilities: {
+    typography: {
+      heading: headingUtilities,
+      text: textUtilities,
+      display: displayUtilities,
+    },
     gradient: gradientUtilities,
     grid: gridUtilities,
     skeleton: skeletonUtilities,
-    text: textUtilities,
-    heading: headingUtilities,
-    display: displayUtilities,
   },
 } satisfies TailwindMeta;

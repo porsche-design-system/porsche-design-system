@@ -123,14 +123,17 @@ export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
 
 /**
  * The shared documented-utility catalog shape — the common topic grouping every styling solution
- * exposes (typography helpers, gradients, the layout grid, skeletons). Generic over the utility
- * type so each solution plugs in its own entry type (Tailwind uses {@link TailwindUtility}).
- * Solution-agnostic: it describes *which* documented utilities exist, not how they are rendered.
+ * exposes: the `typography` shorthands (split into heading/text/display, mirroring the storefront
+ * grouping), gradients, the layout grid and skeletons. Generic over the utility type so each
+ * solution plugs in its own entry type (Tailwind uses {@link TailwindUtility}). Solution-agnostic:
+ * it describes *which* documented utilities exist and how they are grouped, not how they render.
  */
-export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = Record<
-  'heading' | 'text' | 'display' | 'gradient' | 'grid' | 'skeleton',
-  T[]
->;
+export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
+  typography: { heading: T[]; text: T[]; display: T[] };
+  gradient: T[];
+  grid: T[];
+  skeleton: T[];
+};
 
 /**
  * A documented Tailwind theme variable — a {@link TokenMeta} (the shared description +

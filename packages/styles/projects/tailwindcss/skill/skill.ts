@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { sentenceCase } from 'change-case';
 import type { TailwindThemeVariable, TailwindUtility } from '../src';
 import { tailwindMeta } from '../src';
 
@@ -83,89 +86,38 @@ const tocLine = <T>(outline: Outline<T>, withChildren: boolean): string =>
     )
     .join(', ');
 
-const intro = `# Porsche Design System — Tailwind CSS theme
+/** Read a hand-authored markdown source shipped alongside this serializer. */
+const readMarkdown = (file: string): string => fs.readFileSync(path.join(__dirname, file), 'utf8').trim();
 
-The Porsche Design System ships a ready-made Tailwind CSS theme: a curated catalog of design
-tokens exposed as Tailwind \`@theme\` variables (colors, typography, spacing, border radii,
-blur, shadow, motion and breakpoints) plus a set of documented \`@utility\` classes
-(gradients, the layout grid, skeletons and typography shorthands). Importing it resets
-Tailwind's default namespaces so that **only** Porsche Design System tokens remain, and
-generates the matching utility classes (e.g. \`.bg-canvas\`, \`.p-fluid-md\`, \`.rounded-md\`).
+/** The hand-authored theme intro and "how to use" guide, kept as editable markdown next to this file. */
+const intro = readMarkdown('intro.md');
 
-> Requires **Tailwind CSS v4 or higher** — the theme is built on the v4 \`@theme\` engine.
+const howToUse = readMarkdown('how-to-use.md');
 
-This document is an index of the theme. For the exact token values and the complete
-generated CSS, read the \`index.css\` file shipped alongside it.`;
-
-const howToUse = `## How to use
-
-### Import
-
-Install Tailwind CSS (see the [official guide](https://tailwindcss.com/docs/installation)),
-then add the Porsche Design System theme import to your global CSS **immediately after** the
-standard Tailwind import:
-
-\`\`\`css
-@import 'tailwindcss';
-@import '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';
-\`\`\`
-
-### Color scheme (light / dark)
-
-Colors are driven by the native CSS [\`light-dark()\`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark)
-function via the CSS [\`color-scheme\`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme)
-property — no proprietary switching logic. The Tailwind \`.scheme-*\` utilities are extended
-with a polyfill for browsers without \`light-dark()\` support. Apply one of these classes to
-the document or any container; the selected context cascades to all child elements:
-
-- \`.scheme-light\` — forces light mode.
-- \`.scheme-dark\` — forces dark mode.
-- \`.scheme-light-dark\` — dynamically follows the system/OS setting.
-
-\`\`\`html
-<html class="scheme-dark">
-  <body>
-    <!-- rendered in dark mode -->
-    <div class="bg-frosted text-primary"></div>
-  </body>
-</html>
-\`\`\``;
-
-/** Title-case a group key for display: split camelCase, then sentence-case it (`lineHeight` → `Line height`). */
-const label = (key: string): string =>
-  key
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .toLowerCase()
-    .replace(/^./, (c) => c.toUpperCase());
-
-/** Normalize a documented group — a keyed record or an array — to a flat list of variables. */
-const groupVariables = (
-  group: TailwindThemeVariable[] | Record<string, TailwindThemeVariable>
-): TailwindThemeVariable[] => (Array.isArray(group) ? group : Object.values(group));
+/** Normalize a documented group — a keyed record (e.g. a color/size group) or an array — to a flat list. */
+const groupItems = <T>(group: T[] | Record<string, T>): T[] => (Array.isArray(group) ? group : Object.values(group));
 
 /**
- * The documented theme-variable outline, derived directly from `tailwindMeta.theme`: each top-level
- * group becomes a section (arrays) or a parent with one sub-section per sub-group (records), with
- * headings derived from the keys. Source order is followed verbatim (e.g. colors list `a11y` first).
+ * Derive an {@link Outline} from a documented catalog (`tailwindMeta.theme` / `.utilities`): each
+ * top-level group becomes a section (arrays) or a parent with one sub-section per sub-group
+ * (records), with headings sentence-cased from the keys (`lineHeight` → `Line height`). Source order
+ * is followed verbatim (e.g. colors list `a11y` first), so the catalog's shape *is* the documentation outline.
  */
-const themeOutline = Object.fromEntries(
-  Object.entries(theme).map(([key, value]) => [
-    label(key),
-    Array.isArray(value)
-      ? value
-      : Object.fromEntries(
-          Object.entries(value).map(([subKey, subValue]) => [label(subKey), groupVariables(subValue)])
-        ),
-  ])
-) as Outline<TailwindThemeVariable>;
+const deriveOutline = <T>(catalog: object): Outline<T> =>
+  Object.fromEntries(
+    Object.entries(catalog).map(([key, value]: [string, T[] | Record<string, T[] | Record<string, T>>]) => [
+      sentenceCase(key),
+      Array.isArray(value)
+        ? value
+        : Object.fromEntries(
+            Object.entries(value).map(([subKey, subValue]) => [sentenceCase(subKey), groupItems(subValue)])
+          ),
+    ])
+  ) as Outline<T>;
 
-/** The documented `@utility` groups in render order, paired with their curated headings. */
-const utilityOutline: Outline<TailwindUtility> = {
-  Typography: { Heading: utilities.heading, Text: utilities.text, Display: utilities.display },
-  Gradient: utilities.gradient,
-  Grid: utilities.grid,
-  Skeleton: utilities.skeleton,
-};
+const themeOutline = deriveOutline<TailwindThemeVariable>(theme);
+
+const utilityOutline = deriveOutline<TailwindUtility>(utilities);
 
 const contents = `## Contents
 

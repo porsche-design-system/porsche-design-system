@@ -66,6 +66,19 @@ const themeBlock: CssRule = {
   ]),
 };
 
+// The documented `@utility` blocks in CSS render order. The documented model groups them for the
+// docs (`typography` super-group); here they are listed explicitly so the stylesheet order is
+// decided by this recipe rather than the model's grouping.
+const { typography, gradient, grid, skeleton } = tailwindMeta.utilities;
+const utilities: CssNode[] = [
+  ...gradient,
+  ...grid,
+  ...skeleton,
+  ...typography.text,
+  ...typography.heading,
+  ...typography.display,
+];
+
 // The final CSS tree used to generate the index.css file containing the tailwind theme which gets exposed.
 // After the `@theme` block come the outside-`@theme` layers (font base, color-scheme fallback,
 // `scheme-*` utilities) and finally the documented `@utility` blocks.
@@ -73,13 +86,7 @@ export const tailwindCssMeta: TailwindCssMeta = {
   file: 'index.css',
   description:
     'The complete Tailwind CSS theme: the `@theme` block of design tokens, the locale-aware font base layer, the color-scheme fallback with its `scheme-*` utilities and the documented Porsche Design System utilities.',
-  meta: [
-    themeBlock,
-    fontBaseLayer,
-    schemeRootFallback,
-    ...schemeUtilities,
-    ...Object.values(tailwindMeta.utilities).flat(),
-  ],
+  meta: [themeBlock, fontBaseLayer, schemeRootFallback, ...schemeUtilities, ...utilities],
 };
 
 export const getTailwindcssTheme = (): string => tailwindCssMeta.meta.map(renderNode).join('\n\n');
