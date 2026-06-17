@@ -1174,9 +1174,13 @@ exports[`vanillaExtractMeta > should match snapshot 1`] = `
       "name": "getCJKFontFamilyStyle",
       "value": "() => {
 	return { selectors: {
+		/* Simplified Chinese */
 		"&:lang(zh-Hans), &:lang(zh-CN), &:lang(zh-SG)": { fontFamily: __vite_ssr_import_2__.fontPorscheNextZhHans },
+		/* Traditional Chinese */
 		"&:lang(zh-Hant), &:lang(zh-TW), &:lang(zh-HK), &:lang(zh-MO)": { fontFamily: __vite_ssr_import_3__.fontPorscheNextZhHant },
+		/* Japanese */
 		"&:lang(ja)": { fontFamily: __vite_ssr_import_0__.fontPorscheNextJa },
+		/* Korean */
 		"&:lang(ko)": { fontFamily: __vite_ssr_import_1__.fontPorscheNextKo }
 	} };
 }",
