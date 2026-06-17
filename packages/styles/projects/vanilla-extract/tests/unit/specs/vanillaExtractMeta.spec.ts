@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import type { MetaEntry } from '../../../src';
+import type { VanillaExtractMetaEntry } from '../../../src/index.meta';
 import * as publicApi from '../../../src';
-import { vanillaExtractMeta } from '../../../src';
+import { vanillaExtractMeta } from '../../../src/index.meta';
 
 // Recursively collect every leaf meta entry, descending into grouped metas
 // (e.g. border.radius, color.background, spacing.fluid, motion.duration, …).
-const collectEntries = (meta: Record<string, unknown>): MetaEntry[] =>
+const collectEntries = (meta: Record<string, unknown>): VanillaExtractMetaEntry[] =>
   Object.values(meta).flatMap((value) =>
     value && typeof value === 'object' && 'name' in value
-      ? [value as MetaEntry]
+      ? [value as VanillaExtractMetaEntry]
       : collectEntries(value as Record<string, unknown>)
   );
 

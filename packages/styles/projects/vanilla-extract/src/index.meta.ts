@@ -1,18 +1,18 @@
-import { blurMeta } from './blur/blur.meta';
-import { borderMeta } from './border/border.meta';
-import { colorMeta } from './color/color.meta';
-import { focusMeta } from './focus/focus.meta';
-import { fontMeta } from './font/font.meta';
-import { gradientMeta } from './gradient/gradient.meta';
-import { gridMeta } from './grid/grid.meta';
-import { mediaQueryMeta } from './mediaQuery/mediaQuery.meta';
-import { motionMeta } from './motion/motion.meta';
-import { shadowMeta } from './shadow/shadow.meta';
-import { skeletonMeta } from './skeleton/skeleton.meta';
-import { spacingMeta } from './spacing/spacing.meta';
-import { typographyMeta } from './typography/typography.meta';
+import { blurMeta } from './blur/meta/blur.meta';
+import { borderMeta } from './border/meta/border.meta';
+import { colorMeta } from './color/meta/color.meta';
+import { focusMeta } from './focus/meta/focus.meta';
+import { fontMeta } from './font/meta/font.meta';
+import { gradientMeta } from './gradient/meta/gradient.meta';
+import { gridMeta } from './grid/meta/grid.meta';
+import { mediaQueryMeta } from './mediaQuery/meta/mediaQuery.meta';
+import { motionMeta } from './motion/meta/motion.meta';
+import { shadowMeta } from './shadow/meta/shadow.meta';
+import { skeletonMeta } from './skeleton/meta/skeleton.meta';
+import { spacingMeta } from './spacing/meta/spacing.meta';
+import { typographyMeta } from './typography/meta/typography.meta';
 
-export type { Meta, MetaEntry } from './meta.types';
+export type { VanillaExtractMeta, VanillaExtractMetaEntry } from './meta.types';
 
 export const vanillaExtractMeta = {
   blur: blurMeta,
@@ -30,16 +30,16 @@ export const vanillaExtractMeta = {
   typography: typographyMeta,
 };
 
-export * from './blur/blur.meta';
-export * from './border/border.meta';
-export * from './color/color.meta';
-export * from './focus/focus.meta';
-export * from './font/font.meta';
-export * from './gradient/gradient.meta';
-export * from './grid/grid.meta';
-export * from './mediaQuery/mediaQuery.meta';
-export * from './motion/motion.meta';
-export * from './shadow/shadow.meta';
-export * from './skeleton/skeleton.meta';
-export * from './spacing/spacing.meta';
-export * from './typography/typography.meta';
+export * from './blur/meta/blur.meta';
+export * from './border/meta/border.meta';
+export * from './color/meta/color.meta';
+export * from './focus/meta/focus.meta';
+export * from './font/meta/font.meta';
+export * from './gradient/meta/gradient.meta';
+export * from './grid/meta/grid.meta';
+export * from './mediaQuery/meta/mediaQuery.meta';
+export * from './motion/meta/motion.meta';
+export * from './shadow/meta/shadow.meta';
+export * from './skeleton/meta/skeleton.meta';
+export * from './spacing/meta/spacing.meta';
+export * from './typography/meta/typography.meta';

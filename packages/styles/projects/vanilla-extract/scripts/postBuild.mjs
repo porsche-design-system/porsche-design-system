@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, renameSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, renameSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 
 const rename = (from, to) => {
@@ -7,12 +7,13 @@ const rename = (from, to) => {
   }
 };
 
-rename('dist/esm/styles/index.styles.d.ts', 'dist/esm/styles/index.d.ts');
-rename('dist/esm/meta/index.meta.d.ts', 'dist/esm/meta/index.d.ts');
+// dist: rename styles barrel declaration
+rename('dist/esm/index.styles.d.ts', 'dist/esm/index.d.ts');
 
-writeFileSync('dist/esm/index.d.ts', "export * from './styles/index';\nexport * from './meta/index';\n");
+// meta: rename meta barrel declaration
+rename('meta/esm/index.meta.d.ts', 'meta/esm/index.d.ts');
 
-const metaDir = 'dist/esm/meta';
+const metaDir = 'meta/esm';
 const isMetaDeclaration = (path) =>
   path === join(metaDir, 'index.d.ts') || path === join(metaDir, 'meta.types.d.ts') || path.endsWith('.meta.d.ts');
 
