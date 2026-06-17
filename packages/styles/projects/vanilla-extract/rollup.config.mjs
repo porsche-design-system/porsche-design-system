@@ -33,9 +33,7 @@ const stylesBuild = (format, ext) => ({
   },
   plugins: [
     ...commonPlugins,
-    ts(format, {
-      exclude: ['**/*.spec.ts', '**/*.meta.ts', '**/src/index.meta.ts', '**/src/index.ts', '**/src/meta.types.ts'],
-    }),
+    ts(format),
     ...(format === 'esm'
       ? [
           generatePackageJson({

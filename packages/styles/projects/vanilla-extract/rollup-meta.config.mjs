@@ -1,49 +1,56 @@
-import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const outputDir = 'meta';
 
-const commonPlugins = [
-  resolve({
-    resolveOnly: [/^@porsche-design-system\/tokens$/],
-  }),
-];
+const isStyleModule = (id) => id.includes('/src/') && !id.includes('/vanillaExtractMeta/');
 
-const ts = (format, declarationDir, { include } = {}) =>
-  format === 'esm'
-    ? typescript({ declaration: true, declarationDir, rootDir: 'src', ...(include ? { include } : {}) })
-    : typescript();
-
-const entryFileNames = (entryName, ext) => (chunk) => (chunk.name === entryName ? `index.${ext}` : `[name].${ext}`);
-
-const isStyleModule = (id) =>
-  id.includes('/src/') && !id.endsWith('.meta.ts') && !id.endsWith('/meta.types.ts') && !id.endsWith('/index.meta.ts');
-
-// paths is resolved relative to the meta output dir (meta/{format}/)
-// meta files sit 2 levels below that dir, rollup adds those 2 levels automatically
-// so ../../dist/{format}/styles/{category}/index.{ext} resolves correctly from the output file
 const metaStylePath = (id, ext, format) => {
   const match = id.replace(/\/index\.tsx?$/, '').match(/\/src\/([^/]+)$/);
   return match ? `../../dist/${format}/${match[1]}/index.${ext}` : id;
 };
 
-const metaBuild = (format, ext) => ({
-  input: 'src/index.meta.ts',
-  external: isStyleModule,
-  output: {
-    dir: `${outputDir}/${format}`,
-    format,
-    entryFileNames: entryFileNames('index.meta', ext),
-    preserveModules: true,
-    preserveModulesRoot: 'src',
-    paths: (id) => metaStylePath(id, ext, format),
+export default [
+  {
+    input: 'vanillaExtractMeta/index.ts',
+    external: isStyleModule,
+    output: {
+      dir: `${outputDir}/cjs`,
+      format: 'cjs',
+      entryFileNames: '[name].cjs',
+      preserveModules: true,
+      preserveModulesRoot: 'vanillaExtractMeta',
+      paths: (id) => metaStylePath(id, 'cjs', 'cjs'),
+    },
+    plugins: [typescript({ exclude: ['**/*.spec.ts'] })],
   },
-  plugins: [
-    ...commonPlugins,
-    ts(format, `${outputDir}/esm`, {
-      include: ['**/*.meta.ts', '**/src/index.meta.ts', '**/src/meta.types.ts'],
-    }),
-  ],
-});
-
-export default [metaBuild('cjs', 'cjs'), metaBuild('esm', 'mjs')];
+  {
+    input: 'vanillaExtractMeta/index.ts',
+    external: isStyleModule,
+    output: {
+      dir: `${outputDir}/esm`,
+      format: 'esm',
+      entryFileNames: '[name].mjs',
+      preserveModules: true,
+      preserveModulesRoot: 'vanillaExtractMeta',
+      paths: (id) => metaStylePath(id, 'mjs', 'esm'),
+    },
+    plugins: [
+      typescript({ exclude: ['**/*.spec.ts'] }),
+      generatePackageJson({
+        outputFolder: outputDir,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          sideEffects: false,
+          exports: {
+            '.': {
+              import: './esm/index.mjs',
+              default: './cjs/index.cjs',
+            },
+          },
+        },
+      }),
+    ],
+  },
+];
