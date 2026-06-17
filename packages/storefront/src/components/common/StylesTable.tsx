@@ -32,7 +32,7 @@ const renderDescription = (description: string): ReactNode => {
     if (linkMatch) {
       return (
         <PLinkPure key={i} icon="none" underline={true}>
-          <a href={linkMatch[2]} target="_blank" rel="noreferrer">
+          <a href={linkMatch[2]} target="_blank" rel="noreferrer noopener">
             {linkMatch[1]}
           </a>
         </PLinkPure>
