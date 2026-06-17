@@ -70,15 +70,21 @@ tooling and aborts with `ERESOLVE` under [strict peer resolution](#strict-peer-d
 
 ### Why `npm audit fix` aborts with `ERESOLVE`
 
-The private asset sub-projects (`packages/assets/projects/*`) declare their shared dev tooling (`tsup`, `tsx`,
-`typescript`, `change-case`, …) as `peerDependencies: "*"`. This is **intentional**: it lets each private workspace
-consume the single version pinned once in the root [`package.json`](../package.json) instead of re-pinning (and
-drifting) per project. `syncpack` keeps that single root version consistent.
+The private workspace sub-projects (e.g. `packages/assets/projects/*`) declare their shared dev tooling
+(`@rollup/plugin-typescript`, `rollup`, `rollup-plugin-dts`, `tsx`, `typescript`, `change-case`, …) as
+`peerDependencies: "*"`. This is **intentional**: it lets each private workspace consume the single version pinned once
+in the root [`package.json`](../package.json) instead of re-pinning (and drifting) per project. `syncpack` keeps that
+single root version consistent.
 
-When `npm audit fix` encounters the `esbuild` advisory (no fixed version is reachable from `tsup`, see below), it
-proposes downgrading `tsup` to `6.5.0`. That old `tsup` pulls in `typescript@^4.1.0`, which conflicts with the root
-`typescript`. Because the `"*"` peers accept whatever the root pins, the conflict surfaces as an `ERESOLVE` against the
-workspace tree.
+`npm audit fix` does not understand this hoisting contract. When it finds a transitive advisory whose only "fix" is to
+**downgrade a hoisted build tool**, it picks an old version that pulls in an incompatible `typescript` peer, and the
+conflict surfaces as an `ERESOLVE` against the workspace tree.
+
+> **Historical example:** before the build tooling was consolidated onto rollup, the private libs used `tsup`. The
+> `esbuild` advisory had no fixed version reachable from `tsup@8.5.1` (it caps `esbuild` at `^0.27.0`), so
+> `npm audit fix` proposed downgrading `tsup` to `6.5.0`, which pulls `typescript@^4.1.0` and collided with the root
+> `typescript`. Migrating the `--dts` libs to `rollup` + `rollup-plugin-dts` removed `tsup` (and that downgrade path)
+> entirely.
 
 **The `"*"` peers are not the bug** — removing them would only hide the conflict, break the single-version hoisting
 contract, and allow duplicate tool versions across workspaces. Keep them.
@@ -91,14 +97,16 @@ contract, and allow duplicate tool versions across workspaces. Keep them.
   [Held-back dependencies](#held-back-dependencies)), wait for the upstream-sanctioned upgrade path.
 - Never reach for `--legacy-peer-deps` or `--force`.
 
-### Known unfixable advisory: `esbuild` via `tsup`
+## Build tooling for `--dts` libraries
 
-The `esbuild` advisory covers `0.17.0 - 0.28.0`; the first non-vulnerable release is `0.28.1`. However `tsup@8.5.1`
-constrains `esbuild` to `^0.27.0` (`>=0.27.0 <0.28.0`), so **no non-vulnerable `esbuild` satisfies `tsup`** — hence
-`npm audit` reports "No fix available". An `overrides` bump to `esbuild@0.28.1` is **not** applied because it would
-break `tsup`'s expected esbuild API (a minor esbuild bump can be breaking) while `@angular/build` (held-back) still pins
-`0.28.0`. This advisory is therefore tracked and cleared once `tsup` ships a release that widens its `esbuild` range.
-The vulnerability only affects local build tooling, not shipped artifacts.
+The private workspace libraries that ship `index.js`/`index.mjs` plus bundled `.d.ts`/`.d.mts` (the
+`packages/assets/projects/*` manifests and the storefront `stackblitz` helper) are bundled with **rollup**, the same
+bundler used everywhere else in the monorepo, via the shared factory
+[`packages/assets/projects/rollup.config.base.mjs`](../packages/assets/projects/rollup.config.base.mjs). It uses
+`@rollup/plugin-typescript` for the JS bundles and `rollup-plugin-dts` for the bundled declaration (the same library
+`tsup --dts` used internally). Each project's `build:lib` runs `rollup -c` against a tiny `rollup.config.mjs` that calls
+the factory. This replaced the previous `tsup` setup, removing `tsup` (and its vulnerable transitive `esbuild`) from the
+dependency tree.
 
 ## Explicit `@next/swc-*` optional dependencies (storefront)
 

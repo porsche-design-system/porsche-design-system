@@ -25,7 +25,7 @@
   "scripts": {
     "build": "npm run clean:build && npm run build:generateStackblitzBundle && npm run build:lib",
     "build:generateStackblitzBundle": "tsx --tsconfig tsconfig.node.json scripts/generateStackblitzBundle.ts",
-    "build:lib": "tsup scripts/openInStackblitz.ts --format esm,cjs --dts",
+    "build:lib": "rollup -c",
     "clean:build": "rm -rf ./generated && rm -rf ./dist"
   },
   "dependencies": {
@@ -33,6 +33,13 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "@rollup/plugin-typescript": "*",
+    "rollup": "*",
+    "rollup-plugin-dts": "*",
+    "tsx": "*",
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../package.json"
