@@ -61,6 +61,26 @@ Current overrides:
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
 
+## Explicit `@next/swc-*` optional dependencies (storefront)
+
+The storefront's [`package.json`](../packages/storefront/package.json) declares all eight `@next/swc-*` platform
+binaries as `optionalDependencies` (pinned to the same range as `next`). **Do not remove them.**
+The same block is declared in every workspace that runs `next build`
+([`packages/components-react/projects/nextjs`](../packages/components-react/projects/nextjs/package.json)), so each one
+is self-sufficient.
+
+`next` lists these native SWC binaries as its own `optionalDependencies`, but npm only persists the binary matching the
+current platform (e.g. `@next/swc-darwin-arm64`) into `package-lock.json` and prunes the other seven. On `next build`,
+Next.js detects the "missing" platforms, tries to patch the lockfile, and fails with
+`Found lockfile missing swc dependencies, patching...` → `Failed to get registry from "yarn"` (it mis-detects the
+package manager when yarn is not installed).
+
+Declaring the binaries explicitly forces npm to record all eight entries in `package-lock.json` with their `resolved`
+and `integrity` fields, so the lockfile stays complete even after the regenerate step
+([Dependency updates](#dependency-updates) step 5: delete `package-lock.json` and run `npm install`). On any given
+machine npm still installs only the matching binary; the rest are recorded but skipped. Because the range mirrors
+`next`, `syncpack` (`npm run npm:update`) keeps them in lockstep when `next` is upgraded.
+
 ## Held-back dependencies
 
 These dependencies are intentionally excluded from the automated `syncpack` / `npm run npm:update` flow and from
