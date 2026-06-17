@@ -1,24 +1,13 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+import { readdirSync } from 'fs';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 export const outputDir = 'dist';
 
-export const categories = [
-  'blur',
-  'border',
-  'color',
-  'focus',
-  'font',
-  'gradient',
-  'grid',
-  'mediaQuery',
-  'motion',
-  'shadow',
-  'skeleton',
-  'spacing',
-  'typography',
-];
+export const categories = readdirSync('src', { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => d.name);
 
 const commonPlugins = [
   resolve({
