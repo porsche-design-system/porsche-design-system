@@ -15,16 +15,15 @@
       "default": "./dist/cjs/index.cjs"
     },
     "./meta": {
-      "types": "./meta/esm/index.d.ts",
+      "types": "./meta/esm/vanillaExtractMeta/index.d.ts",
       "import": "./meta/esm/index.mjs",
       "default": "./meta/cjs/index.cjs"
     }
   },
   "scripts": {
-    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta && npm run build:postBuild",
+    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
     "build:bundle:meta": "rollup -c rollup-meta.config.mjs --bundleConfigAsCjs",
-    "build:postBuild": "node ./scripts/postBuild.mjs",
     "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.mjs --bundleConfigAsCjs",
     "test": "npm run test:unit",
     "test:unit": "npm run generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
