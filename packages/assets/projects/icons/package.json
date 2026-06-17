@@ -4,8 +4,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "exports": {
     ".": {
       "import": {
@@ -18,10 +18,12 @@
       }
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["./dist/"],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
+  "files": [
+    "./dist/"
+  ],
   "scripts": {
     "build": "npm run clean:build && npm run build:icons && npm run build:lib",
     "build:icons": "tsx scripts/build.ts",
@@ -35,13 +37,13 @@
   "peerDependencies": {
     "change-case": "*",
     "fast-glob": "*",
+    "gzip-size": "*",
     "prettier": "*",
     "svgo": "*",
     "tsup": "*",
     "tsx": "*",
     "typescript": "*",
-    "vitest": "*",
-    "gzip-size": "*"
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

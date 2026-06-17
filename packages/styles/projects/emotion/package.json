@@ -4,10 +4,10 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "sideEffects": false,
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
   "types": "dist/esm/index.d.ts",
-  "sideEffects": false,
   "scripts": {
     "build": "npm run clean:build && npm run build:bundle",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
@@ -19,23 +19,22 @@
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0",
-    "react-jss": "^10.10.0"
+    "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
-    "@types/madge": "*",
-    "@types/node": "*",
-    "prettier": "*",
-    "madge": "*",
-    "typescript": "*",
     "@rollup/plugin-node-resolve": "*",
     "@rollup/plugin-typescript": "*",
-    "rollup-plugin-generate-package-json": "*",
+    "@types/madge": "*",
+    "@types/node": "*",
     "jss": "*",
     "jss-plugin-camel-case": "*",
     "jss-plugin-global": "*",
     "jss-plugin-nested": "*",
-    "jss-plugin-sort-css-media-queries": "*"
+    "jss-plugin-sort-css-media-queries": "*",
+    "madge": "*",
+    "prettier": "*",
+    "rollup-plugin-generate-package-json": "*",
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../package.json"

@@ -39,19 +39,14 @@ const filterFalsePositives = (errors: W3CValidationMessage[]): W3CValidationMess
   errors.filter((e) => !KNOWN_FALSE_POSITIVES.some((fn) => fn(e)));
 
 describe('W3C CSS validation (stylesheets)', () => {
-  it.each(cssFiles)(
-    '%s should be valid CSS per W3C CSS validator',
-    async (file) => {
-      // Space out requests
-      await sleep(1_000);
-      const result = await validateCssWithW3C(readCss(file));
-      const realErrors = filterFalsePositives(result.errors);
-      if (realErrors.length > 0) {
-        // biome-ignore lint/suspicious/noConsole: surface validator messages in test output
-        console.error(`W3C validation errors in ${file}:\n${formatW3CMessages(realErrors)}`);
-      }
-      expect(realErrors, `W3C validator reported errors for ${file}`).toEqual([]);
-    },
-    60_000
-  );
+  it.each(cssFiles)('%s should be valid CSS per W3C CSS validator', async (file) => {
+    // Space out requests
+    await sleep(1_000);
+    const result = await validateCssWithW3C(readCss(file));
+    const realErrors = filterFalsePositives(result.errors);
+    if (realErrors.length > 0) {
+      console.error(`W3C validation errors in ${file}:\n${formatW3CMessages(realErrors)}`);
+    }
+    expect(realErrors, `W3C validator reported errors for ${file}`).toEqual([]);
+  }, 60_000);
 });

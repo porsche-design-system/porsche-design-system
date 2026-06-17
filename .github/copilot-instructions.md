@@ -28,7 +28,7 @@ packages/
 ├── components/        # Core Stencil web components (source of truth)
 ├── components-js/     # JS wrapper, partials, CDN build
 ├── components-angular/# Angular wrapper
-├── components-react/  # React wrapper + Next.js/Remix integrations
+├── components-react/  # React wrapper + Next.js/React Router integrations
 ├── components-vue/    # Vue wrapper
 ├── storefront/        # Next.js documentation site
 ├── tokens/            # Design tokens (colors, spacing, typography)

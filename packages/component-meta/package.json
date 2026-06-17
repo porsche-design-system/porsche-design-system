@@ -2,10 +2,10 @@
   "name": "@porsche-design-system/component-meta",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/cjs/index.cjs",
-  "module": "./dist/esm/index.mjs",
-  "types": "./dist/esm/index.d.ts",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "exports": {
     ".": {
       "types": "./dist/esm/index.d.ts",
@@ -18,9 +18,9 @@
       "default": "./dist/cjs/utils/index.cjs"
     }
   },
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "license": "UNLICENSED",
-  "homepage": "https://designsystem.porsche.com",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
     "build": "npm run clean:build && npm run build:generateComponentMeta && npm run build:bundle",
     "build:generateComponentMeta": "tsx scripts/generateComponentMeta.ts",

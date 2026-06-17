@@ -22,24 +22,34 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "next": "^16.2.3",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "next": "^16.2.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/react": "^19.2.14",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3"
   },
   "peerDependencies": {
+    "@tailwindcss/postcss": "*",
     "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
     "ag-grid-react": ">= 35.0.0 <36.0.0",
     "concurrently": "*",
-    "tsx": "*",
-    "typescript": "*",
-    "tailwindcss": "*",
     "postcss": "*",
-    "@tailwindcss/postcss": "*"
+    "tailwindcss": "*",
+    "tsx": "*",
+    "typescript": "*"
+  },
+  "optionalDependencies": {
+    "@next/swc-darwin-arm64": "^16.2.9",
+    "@next/swc-darwin-x64": "^16.2.9",
+    "@next/swc-linux-arm64-gnu": "^16.2.9",
+    "@next/swc-linux-arm64-musl": "^16.2.9",
+    "@next/swc-linux-x64-gnu": "^16.2.9",
+    "@next/swc-linux-x64-musl": "^16.2.9",
+    "@next/swc-win32-arm64-msvc": "^16.2.9",
+    "@next/swc-win32-x64-msvc": "^16.2.9"
   },
   "volta": {
     "extends": "../../../../package.json"

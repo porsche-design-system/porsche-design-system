@@ -1,4 +1,3 @@
-/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { getHTMLElement } from './getHTMLElement';
 import { transformSelectorToDirectChildSelector } from './transformSelectorToDirectChildSelector';
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { componentsReady, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
@@ -8,6 +8,7 @@ import { componentsReady, PorscheDesignSystemModule } from '@porsche-design-syst
 @Component({
   selector: 'empty',
   template: `<div></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class EmptyComponent {}
@@ -19,7 +20,8 @@ class EmptyComponent {}
     @if (active) {
       <p-button>Button 2</p-button>
     }
-    `,
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 class SampleComponent {

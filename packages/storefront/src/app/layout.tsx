@@ -122,7 +122,6 @@ export default function RootLayout({
         </StorefrontColorSchemeProvider>
         {/* Framebuster script see: https://en.wikipedia.org/wiki/Framekiller?utm_source=chatgpt.com */}
         <Script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: ok
           dangerouslySetInnerHTML={{
             __html: `self===top?document.getElementsByTagName('body')[0].style.display='block':top.location=self.location;`,
           }}

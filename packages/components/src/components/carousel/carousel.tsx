@@ -217,7 +217,7 @@ export class Carousel {
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(
         this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<CarouselSlidesPerPage> | 'auto', string>
-      ), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+      ),
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
       direction: getLangDirection(this.host),

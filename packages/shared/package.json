@@ -2,13 +2,17 @@
   "name": "shared",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "license": "UNLICENSED",
-  "homepage": "https://designsystem.porsche.com",
+  "bin": {
+    "serve-dummyassets": "./bin/serve-dummyassets.js",
+    "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
+  },
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
     "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run build:generateCodeExamples && npm run build:bundle",
@@ -23,10 +27,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@octokit/core": "^7.0.6",
     "change-case": "^5.4.4",
-    "@types/tinycolor2": "^1.4.6",
-    "tinycolor2": "^1.6.0"
+    "spdy": "^4.0.2"
   },
   "peerDependencies": {
     "@rollup/plugin-commonjs": "*",
@@ -38,6 +40,7 @@
     "@types/node": "*",
     "fast-glob": "*",
     "madge": "*",
+    "react": "*",
     "rollup": "*",
     "rollup-plugin-bin": "*",
     "rollup-plugin-copy": "*",
@@ -45,15 +48,9 @@
     "rollup-plugin-modify": "*",
     "rollup-plugin-preserve-directives": "*",
     "rollup-plugin-preserve-shebang": "*",
-    "rollup-plugin-terser": "*",
     "tsx": "*",
     "typescript": "*",
-    "vitest": "*",
-    "react": "*"
-  },
-  "bin": {
-    "serve-dummyassets": "./bin/serve-dummyassets.js",
-    "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../package.json"

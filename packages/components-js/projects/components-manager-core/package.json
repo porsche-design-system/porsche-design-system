@@ -13,8 +13,8 @@
     "clean:build": "rm -rf ./dist"
   },
   "peerDependencies": {
-    "vitest": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

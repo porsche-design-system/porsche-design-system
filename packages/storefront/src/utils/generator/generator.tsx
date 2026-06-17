@@ -160,7 +160,7 @@ type SafePropTypeMapping = {
 // PDS component tags without internal/child components (p-accordion, p-banner...)
 export type ConfiguratorTagNames = keyof SafePropTypeMapping;
 // HTML tags (a, img, div...) or PDS component tags (p-accordion, p-banner...)
-export type HTMLTagOrComponent = keyof JSX.IntrinsicElements | ConfiguratorTagNames;
+export type HTMLTagOrComponent = keyof React.JSX.IntrinsicElements | ConfiguratorTagNames;
 
 // TODO: Create type for children and share with story generator return type. Maybe make ElementConfig also string | undefined?
 export type ElementConfig<T extends HTMLTagOrComponent> = {
@@ -193,8 +193,8 @@ export type ElementConfig<T extends HTMLTagOrComponent> = {
 /**
  * Represents the properties of T which can be either a PDS Component or an HTML Element
  */
-export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent> = T extends keyof JSX.IntrinsicElements
-  ? Partial<JSX.IntrinsicElements[T]>
+export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent> = T extends keyof React.JSX.IntrinsicElements
+  ? Partial<React.JSX.IntrinsicElements[T]>
   : T extends ConfiguratorTagNames
     ? SafePropTypeMapping[T]
     : never;
