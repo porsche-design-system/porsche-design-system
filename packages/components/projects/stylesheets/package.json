@@ -1,13 +1,11 @@
 {
   "name": "@porsche-design-system/stylesheets",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/cjs/index.cjs",
-  "module": "./dist/esm/index.mjs",
-  "types": "./dist/esm/index.d.ts",
-  "style": "./dist/index.css",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -17,11 +15,13 @@
     },
     "./*": "./dist/*"
   },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
+  "style": "./dist/index.css",
   "files": [
     "./dist/"
   ],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build:font-face && npm run build:index",
     "build-prod": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build-prod:font-face && npm run build:index",
@@ -38,8 +38,8 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/tokens": "0.0.0",
-    "@porsche-design-system/font-face": "0.0.0"
+    "@porsche-design-system/font-face": "0.0.0",
+    "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"
@@ -48,8 +48,8 @@
     "@rollup/plugin-typescript": "*",
     "@types/node": "*",
     "rollup": "*",
-    "typescript": "*",
     "tsx": "*",
+    "typescript": "*",
     "vitest": "*"
   },
   "volta": {

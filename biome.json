@@ -16,7 +16,6 @@
       "!packages/components/src/types/aria-types.d.ts",
       "!packages/components-js/tests/unit/results/stats-raw.json",
       "!packages/components-react/projects/nextjs/routes.ts",
-      "!packages/components-react/projects/remix/app/routes/**/*",
       "!packages/storefront/**/*.css"
     ]
   },
@@ -94,7 +93,10 @@
       "!**/components-vue/**/*",
       "!**/shared/**/*",
       "!**/storefront-old/**/*",
-      "!**/utilities/**/*"
+      "!**/utilities/**/*",
+      "!**/*.svg",
+      "!packages/components/src/index.html",
+      "!packages/components/src/debug.html"
     ]
   },
   "css": {
@@ -167,6 +169,9 @@
           "complexity": {
             "useLiteralKeys": "off",
             "noForEach": "off"
+          },
+          "performance": {
+            "noDynamicNamespaceImportAccess": "off"
           },
           "suspicious": {
             "noConsole": "off",

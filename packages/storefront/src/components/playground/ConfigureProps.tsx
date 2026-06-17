@@ -278,10 +278,3 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
     </>
   );
 };
-
-type ResetButtonProps<T extends ConfiguratorTagNames> = {
-  propName: keyof ElementConfig<T>['properties'];
-  configuredProps: ElementConfig<T>['properties'];
-  defaultProps: ElementConfig<HTMLTagOrComponent>['properties'];
-  onReset: (propName: keyof ElementConfig<T>['properties']) => void;
-};

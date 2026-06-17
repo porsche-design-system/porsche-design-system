@@ -34,9 +34,6 @@ excludes:
       reason: EXAMPLE_OF
       comment: "Example integration project demonstrating framework usage; not included in any distributed artifacts."
 
-    - pattern: "packages/components-react/projects/remix/**"
-      reason: EXAMPLE_OF
-      comment: "Example integration project demonstrating framework usage; not included in any distributed artifacts."
 
     # -----------------------------
     # components-angular

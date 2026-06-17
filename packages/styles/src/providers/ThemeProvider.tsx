@@ -20,7 +20,6 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   };
 
   // Sync initial theme class on mount
-  // biome-ignore lint/correctness/useExhaustiveDependencies: only for mount
   useEffect(() => {
     document.documentElement.classList.remove('scheme-light', 'scheme-dark', 'scheme-light-dark');
     document.documentElement.classList.add(schemeMap[selectedTheme]);

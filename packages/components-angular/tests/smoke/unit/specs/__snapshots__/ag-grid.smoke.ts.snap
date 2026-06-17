@@ -307,9 +307,19 @@ exports[`style package content > should match content 1`] = `
             },
             "statusBarValueFontWeight": 500,
             "toolPanelSeparatorBorder": true,
+            "toolbarBackgroundColor": {
+              "ref": "headerBackgroundColor",
+            },
+            "toolbarSeparatorBorder": true,
+            "toolbarTextColor": {
+              "ref": "headerTextColor",
+            },
             "valueChangeDeltaDownColor": "#e53935",
             "valueChangeDeltaUpColor": "#43a047",
             "valueChangeValueHighlightBackgroundColor": "#16a08580",
+            "wrapperBackgroundColor": {
+              "ref": "backgroundColor",
+            },
             "wrapperBorder": true,
             "wrapperBorderRadius": 8,
           },
@@ -469,6 +479,38 @@ exports[`style package content > should match content 1`] = `
               },
             },
             "formulaToken7Color": "#247492",
+          },
+        },
+      },
+      PartImpl {
+        "css": undefined,
+        "cssImports": undefined,
+        "feature": "noteStyle",
+        "modeParams": {
+          "$default": {
+            "noteIndicatorColor": {
+              "ref": "accentColor",
+            },
+            "noteIndicatorSize": "8px",
+            "notePopupBackgroundColor": {
+              "ref": "menuBackgroundColor",
+            },
+            "notePopupBorder": {
+              "ref": "dialogBorder",
+            },
+            "notePopupInputBackgroundColor": {
+              "ref": "inputBackgroundColor",
+            },
+            "notePopupInputTextColor": {
+              "ref": "inputTextColor",
+            },
+            "notePopupPadding": {
+              "calc": "spacing * 0.5",
+            },
+            "notePopupTextColor": {
+              "mix": 0.75,
+              "ref": "menuTextColor",
+            },
           },
         },
       },
@@ -873,6 +915,9 @@ exports[`style package content > should match content 1`] = `
               "Roboto",
               "Oxygen-Sans",
               "Ubuntu",
+              "Cantarell",
+              "Helvetica Neue",
+              "sans-serif",
             ],
           },
         },
@@ -1502,9 +1547,19 @@ exports[`style package content > should match content 1`] = `
             },
             "statusBarValueFontWeight": 500,
             "toolPanelSeparatorBorder": true,
+            "toolbarBackgroundColor": {
+              "ref": "headerBackgroundColor",
+            },
+            "toolbarSeparatorBorder": true,
+            "toolbarTextColor": {
+              "ref": "headerTextColor",
+            },
             "valueChangeDeltaDownColor": "#e53935",
             "valueChangeDeltaUpColor": "#43a047",
             "valueChangeValueHighlightBackgroundColor": "#16a08580",
+            "wrapperBackgroundColor": {
+              "ref": "backgroundColor",
+            },
             "wrapperBorder": true,
             "wrapperBorderRadius": 8,
           },
@@ -1664,6 +1719,38 @@ exports[`style package content > should match content 1`] = `
               },
             },
             "formulaToken7Color": "#247492",
+          },
+        },
+      },
+      PartImpl {
+        "css": undefined,
+        "cssImports": undefined,
+        "feature": "noteStyle",
+        "modeParams": {
+          "$default": {
+            "noteIndicatorColor": {
+              "ref": "accentColor",
+            },
+            "noteIndicatorSize": "8px",
+            "notePopupBackgroundColor": {
+              "ref": "menuBackgroundColor",
+            },
+            "notePopupBorder": {
+              "ref": "dialogBorder",
+            },
+            "notePopupInputBackgroundColor": {
+              "ref": "inputBackgroundColor",
+            },
+            "notePopupInputTextColor": {
+              "ref": "inputTextColor",
+            },
+            "notePopupPadding": {
+              "calc": "spacing * 0.5",
+            },
+            "notePopupTextColor": {
+              "mix": 0.75,
+              "ref": "menuTextColor",
+            },
           },
         },
       },
@@ -2068,6 +2155,9 @@ exports[`style package content > should match content 1`] = `
               "Roboto",
               "Oxygen-Sans",
               "Ubuntu",
+              "Cantarell",
+              "Helvetica Neue",
+              "sans-serif",
             ],
           },
         },

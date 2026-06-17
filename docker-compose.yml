@@ -38,7 +38,6 @@ services:
       - components-react-node-modules:/opt/repository/packages/components-react/node_modules
       - components-react-nextjs-node-modules:/opt/repository/packages/components-react/projects/nextjs/node_modules
       - components-react-react-ssr-wrapper-node-modules:/opt/repository/packages/components-react/projects/react-ssr-wrapper/node_modules
-      - components-react-remix-node-modules:/opt/repository/packages/components-react/projects/remix/node_modules
       - components-react-react-router-node-modules:/opt/repository/packages/components-react/projects/react-router/node_modules
       - components-vue-node-modules:/opt/repository/packages/components-vue/node_modules
       - shared-node-modules:/opt/repository/packages/shared/node_modules
@@ -75,7 +74,6 @@ services:
       - components-react-node-modules:/opt/repository-volumes/components-react-node_modules
       - components-react-nextjs-node-modules:/opt/repository-volumes/components-react-nextjs-node_modules
       - components-react-react-ssr-wrapper-node-modules:/opt/repository-volumes/components-react-react-ssr-wrapper-node_modules
-      - components-react-remix-node-modules:/opt/repository-volumes/components-react-remix-node_modules
       - components-react-react-router-node-modules:/opt/repository-volumes/components-react-react-router-node_modules
       - components-vue-node-modules:/opt/repository-volumes/components-vue-node_modules
       - shared-node-modules:/opt/repository-volumes/shared-node_modules
@@ -112,7 +110,6 @@ volumes:
   components-react-node-modules:
   components-react-nextjs-node-modules:
   components-react-react-ssr-wrapper-node-modules:
-  components-react-remix-node-modules:
   components-react-react-router-node-modules:
   components-vue-node-modules:
   shared-node-modules:

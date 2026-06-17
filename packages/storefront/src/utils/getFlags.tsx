@@ -1,10 +1,10 @@
-import React from 'react';
+import type React from 'react';
 
 export const getFlags = <
   T extends { isDeprecated?: boolean; isBreakpointCustomizable?: boolean; isExperimental?: boolean },
 >(
   meta: T
-): JSX.Element => {
+): React.JSX.Element => {
   return (
     <>
       {meta.isDeprecated && (

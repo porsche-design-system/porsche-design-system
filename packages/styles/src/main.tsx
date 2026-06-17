@@ -7,18 +7,22 @@ import { App } from './App.tsx';
 import { ThemeProvider } from './providers/ThemeProvider.tsx';
 import { routes } from './routes.tsx';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <ThemeProvider>
-        <Routes>
-          <Route element={<App />}>
-            {routes.map((route) => (
-              <Route key={route.path} path={route.path} element={route.element} />
-            ))}
-          </Route>
-        </Routes>
-      </ThemeProvider>
-    </BrowserRouter>
-  </StrictMode>
-);
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  createRoot(rootElement).render(
+    <StrictMode>
+      <BrowserRouter>
+        <ThemeProvider>
+          <Routes>
+            <Route element={<App />}>
+              {routes.map((route) => (
+                <Route key={route.path} path={route.path} element={route.element} />
+              ))}
+            </Route>
+          </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
+    </StrictMode>
+  );
+}

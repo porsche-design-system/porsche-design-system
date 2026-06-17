@@ -1,14 +1,16 @@
 {
   "name": "@porsche-design-system/tailwindcss",
   "version": "0.0.0",
-  "type": "commonjs",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "sideEffects": false,
+  "type": "commonjs",
   "main": "./meta/cjs/index.cjs",
   "module": "./meta/esm/index.mjs",
   "types": "./meta/esm/index.d.ts",
-  "style": "./dist/index.css",
   "exports": {
     ".": {
       "types": "./meta/esm/index.d.ts",
@@ -18,13 +20,11 @@
     },
     "./index.css": "./dist/index.css"
   },
-  "sideEffects": false,
+  "style": "./dist/index.css",
   "files": [
     "./dist/",
     "./meta/"
   ],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "npm run clean:build && npm run build:meta && npm run build:package",
     "build:meta": "rollup -c rollup.config.meta.mjs",
@@ -47,9 +47,9 @@
     "rollup": "*",
     "rollup-plugin-generate-package-json": "*",
     "tailwindcss": "*",
-    "vitest": "*",
     "tsx": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

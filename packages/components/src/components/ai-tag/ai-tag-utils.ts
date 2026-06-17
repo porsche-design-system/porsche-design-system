@@ -169,5 +169,5 @@ export const AI_TAG_TRANSLATIONS = {
 export type AiTagLocale = keyof typeof AI_TAG_TRANSLATIONS;
 
 export const getAiTagTranslation = (locale: string): AiTagTranslationEntry => {
-  return AI_TAG_TRANSLATIONS[locale as AiTagLocale] ?? AI_TAG_TRANSLATIONS['en_US'];
+  return AI_TAG_TRANSLATIONS[locale as AiTagLocale] ?? AI_TAG_TRANSLATIONS.en_US;
 };
