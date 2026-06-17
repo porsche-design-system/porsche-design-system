@@ -7,12 +7,12 @@ import {
   PTableHeadCell,
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
-import type { Meta, MetaEntry } from '@porsche-design-system/vanilla-extract';
+import type { VanillaExtractMeta, VanillaExtractMetaEntry } from '@porsche-design-system/vanilla-extract/meta';
 import type { ReactNode } from 'react';
 import { Code } from '@/components/common/Code';
 
 type StylesTableProps = {
-  meta: Meta;
+  meta: VanillaExtractMeta;
   columnLabel?: string;
   showColorSwatch?: boolean;
   showValue?: boolean;
@@ -43,7 +43,7 @@ const renderDescription = (description: string): ReactNode => {
 };
 
 // Functions carry no displayable value; strings/numbers render verbatim, everything else as JSON
-const renderValue = (value: MetaEntry['value']): ReactNode => {
+const renderValue = (value: VanillaExtractMetaEntry['value']): ReactNode => {
   if (typeof value === 'function') {
     return null;
   }
@@ -52,7 +52,9 @@ const renderValue = (value: MetaEntry['value']): ReactNode => {
 };
 
 export const StylesTable = ({ meta, columnLabel = 'JS', showColorSwatch, showValue }: StylesTableProps) => {
-  const items = Object.values(meta).filter((entry): entry is MetaEntry => 'name' in entry && !entry.deprecated);
+  const items = Object.values(meta).filter(
+    (entry): entry is VanillaExtractMetaEntry => 'name' in entry && !entry.deprecated
+  );
   const hasValues = showValue ?? items.some((entry) => typeof entry.value !== 'function');
 
   return (
