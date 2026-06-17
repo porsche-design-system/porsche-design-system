@@ -5,6 +5,7 @@ import { focusMeta } from './focus/meta/focus.meta';
 import { fontMeta } from './font/meta/font.meta';
 import { gradientMeta } from './gradient/meta/gradient.meta';
 import { gridMeta } from './grid/meta/grid.meta';
+import { breakpointMeta } from './mediaQuery/meta/breakpoint.meta';
 import { mediaQueryMeta } from './mediaQuery/meta/mediaQuery.meta';
 import { motionMeta } from './motion/meta/motion.meta';
 import { shadowMeta } from './shadow/meta/shadow.meta';
@@ -22,6 +23,7 @@ export const vanillaExtractMeta = {
   font: fontMeta,
   gradient: gradientMeta,
   grid: gridMeta,
+  breakpoint: breakpointMeta,
   mediaQuery: mediaQueryMeta,
   motion: motionMeta,
   shadow: shadowMeta,
@@ -37,6 +39,7 @@ export * from './focus/meta/focus.meta';
 export * from './font/meta/font.meta';
 export * from './gradient/meta/gradient.meta';
 export * from './grid/meta/grid.meta';
+export * from './mediaQuery/meta/breakpoint.meta';
 export * from './mediaQuery/meta/mediaQuery.meta';
 export * from './motion/meta/motion.meta';
 export * from './shadow/meta/shadow.meta';

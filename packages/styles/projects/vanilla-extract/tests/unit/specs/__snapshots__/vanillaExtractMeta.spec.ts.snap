@@ -132,6 +132,69 @@ exports[`vanillaExtractMeta > should match snapshot 1`] = `
       },
     },
   },
+  "breakpoint": {
+    "breakpoint": {
+      "description": "Object containing all breakpoint values.",
+      "name": "breakpoint",
+      "value": {
+        "base": 0,
+        "l": 1300,
+        "m": 1000,
+        "s": 760,
+        "xl": 1760,
+        "xs": 480,
+        "xxl": 1920,
+      },
+    },
+    "breakpointBase": {
+      "description": "Holds the \`base\` breakpoint value.",
+      "name": "breakpointBase",
+      "value": 0,
+    },
+    "breakpointL": {
+      "description": "Holds the \`lg\` breakpoint value.",
+      "name": "breakpointL",
+      "value": 1300,
+    },
+    "breakpointM": {
+      "description": "Holds the \`md\` breakpoint value.",
+      "name": "breakpointM",
+      "value": 1000,
+    },
+    "breakpointS": {
+      "description": "Holds the \`sm\` breakpoint value.",
+      "name": "breakpointS",
+      "value": 760,
+    },
+    "breakpointXL": {
+      "description": "Holds the \`xl\` breakpoint value.",
+      "name": "breakpointXL",
+      "value": 1760,
+    },
+    "breakpointXS": {
+      "description": "Holds the \`xs\` breakpoint value.",
+      "name": "breakpointXS",
+      "value": 480,
+    },
+    "breakpointXXL": {
+      "description": "Holds the \`2xl\` breakpoint value.",
+      "name": "breakpointXXL",
+      "value": 1920,
+    },
+    "breakpoints": {
+      "description": "Array containing all breakpoint keys.",
+      "name": "breakpoints",
+      "value": [
+        "base",
+        "xs",
+        "s",
+        "m",
+        "l",
+        "xl",
+        "xxl",
+      ],
+    },
+  },
   "color": {
     "a11y": {
       "colorFocus": {
@@ -1499,67 +1562,6 @@ exports[`vanillaExtractMeta > should match snapshot 1`] = `
     },
   },
   "mediaQuery": {
-    "breakpoint": {
-      "description": "Object containing all breakpoint values.",
-      "name": "breakpoint",
-      "value": {
-        "base": 0,
-        "l": 1300,
-        "m": 1000,
-        "s": 760,
-        "xl": 1760,
-        "xs": 480,
-        "xxl": 1920,
-      },
-    },
-    "breakpointBase": {
-      "description": "Holds the \`base\` breakpoint value.",
-      "name": "breakpointBase",
-      "value": 0,
-    },
-    "breakpointL": {
-      "description": "Holds the \`lg\` breakpoint value.",
-      "name": "breakpointL",
-      "value": 1300,
-    },
-    "breakpointM": {
-      "description": "Holds the \`md\` breakpoint value.",
-      "name": "breakpointM",
-      "value": 1000,
-    },
-    "breakpointS": {
-      "description": "Holds the \`sm\` breakpoint value.",
-      "name": "breakpointS",
-      "value": 760,
-    },
-    "breakpointXL": {
-      "description": "Holds the \`xl\` breakpoint value.",
-      "name": "breakpointXL",
-      "value": 1760,
-    },
-    "breakpointXS": {
-      "description": "Holds the \`xs\` breakpoint value.",
-      "name": "breakpointXS",
-      "value": 480,
-    },
-    "breakpointXXL": {
-      "description": "Holds the \`2xl\` breakpoint value.",
-      "name": "breakpointXXL",
-      "value": 1920,
-    },
-    "breakpoints": {
-      "description": "Array containing all breakpoint keys.",
-      "name": "breakpoints",
-      "value": [
-        "base",
-        "xs",
-        "s",
-        "m",
-        "l",
-        "xl",
-        "xxl",
-      ],
-    },
     "getMediaQueryMax": {
       "description": "Applies a **max** media query with the specified breakpoint.",
       "name": "getMediaQueryMax",

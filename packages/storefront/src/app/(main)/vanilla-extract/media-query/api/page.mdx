@@ -1,7 +1,6 @@
 import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract/meta';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { StylesTable } from '@/components/common/StylesTable';
-import { filterMeta } from '@/lib/filterMeta';
 
 export const metadata = {
   title: 'Vanilla Extract: Media Query - Porsche Design System',
@@ -14,8 +13,8 @@ export const metadata = {
 
 ## JS Functions
 
-<StylesTable meta={filterMeta(vanillaExtractMeta.mediaQuery, (k) => k.startsWith('get'))} columnLabel="JS Function" />
+<StylesTable meta={vanillaExtractMeta.mediaQuery} columnLabel="JS Function" />
 
 ## JS
 
-<StylesTable meta={filterMeta(vanillaExtractMeta.mediaQuery, (k) => !k.startsWith('get'))} columnLabel="JS" />
+<StylesTable meta={vanillaExtractMeta.breakpoint} columnLabel="JS" />
