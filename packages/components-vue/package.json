@@ -54,17 +54,17 @@
     "vue-tsc": "3.3.5"
   },
   "peerDependencies": {
-    "vue": "*",
     "@playwright/test": "*",
+    "@tailwindcss/postcss": "*",
     "change-case": "*",
     "concurrently": "*",
     "fast-glob": "*",
+    "postcss": "*",
+    "tailwindcss": "*",
     "tsx": "*",
     "typescript": "*",
     "vite": "*",
-    "tailwindcss": "*",
-    "postcss": "*",
-    "@tailwindcss/postcss": "*"
+    "vue": "*"
   },
   "volta": {
     "extends": "../../package.json"

@@ -39,14 +39,14 @@
   "peerDependencies": {
     "change-case": "*",
     "fast-glob": "*",
+    "gzip-size": "*",
     "prettier": "*",
     "publint": "*",
     "svgo": "*",
     "tsup": "*",
     "tsx": "*",
     "typescript": "*",
-    "vitest": "*",
-    "gzip-size": "*"
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

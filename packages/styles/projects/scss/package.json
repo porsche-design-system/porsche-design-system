@@ -1,11 +1,16 @@
 {
   "name": "@porsche-design-system/scss",
   "version": "0.0.0",
-  "type": "commonjs",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "sideEffects": false,
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "sass": "./dist/_index.scss"
+    }
+  },
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
@@ -16,11 +21,6 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
-  "exports": {
-    ".": {
-      "sass": "./dist/_index.scss"
-    }
-  },
   "dependencies": {
     "@porsche-design-system/tokens": "0.0.0"
   },
@@ -30,11 +30,11 @@
   "peerDependencies": {
     "@biomejs/biome": "*",
     "@types/node": "*",
-    "vitest": "*",
+    "prettier": "*",
+    "sass": "*",
     "tsx": "*",
     "typescript": "*",
-    "prettier": "*",
-    "sass": "*"
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

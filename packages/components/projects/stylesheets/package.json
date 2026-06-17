@@ -1,14 +1,13 @@
 {
   "name": "@porsche-design-system/stylesheets",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "sideEffects": false,
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.mjs",
-  "types": "./dist/esm/index.d.ts",
   "style": "./dist/index.css",
-  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/esm/index.d.ts",
@@ -17,6 +16,7 @@
     },
     "./*": "./dist/*"
   },
+  "types": "./dist/esm/index.d.ts",
   "files": [
     "./dist/"
   ],
@@ -38,8 +38,8 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/tokens": "0.0.0",
-    "@porsche-design-system/font-face": "0.0.0"
+    "@porsche-design-system/font-face": "0.0.0",
+    "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"
@@ -48,8 +48,8 @@
     "@rollup/plugin-typescript": "*",
     "@types/node": "*",
     "rollup": "*",
-    "typescript": "*",
     "tsx": "*",
+    "typescript": "*",
     "vitest": "*"
   },
   "volta": {

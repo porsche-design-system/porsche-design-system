@@ -1,6 +1,17 @@
 {
   "name": "@porsche-design-system/assets",
   "version": "5.0.2",
+  "license": "SEE LICENSE IN LICENSE",
+  "scope": "@porsche-design-system",
+  "sideEffects": false,
+  "main": "dist/cjs/src/index.cjs",
+  "module": "dist/esm/src/index.mjs",
+  "bin": {
+    "serve-cdn": "./bin/serve-cdn.js"
+  },
+  "types": "dist/esm/index.d.ts",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "description": "This package provides manifests and CDN URLs of Porsche assets like fonts, icons, marques, etc.",
   "keywords": [
     "porsche",
@@ -8,14 +19,6 @@
     "system",
     "assets"
   ],
-  "scope": "@porsche-design-system",
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "license": "SEE LICENSE IN LICENSE",
-  "homepage": "https://designsystem.porsche.com",
-  "main": "dist/cjs/src/index.cjs",
-  "module": "dist/esm/src/index.mjs",
-  "types": "dist/esm/index.d.ts",
-  "sideEffects": false,
   "scripts": {
     "start": "npm run build && node ./bin/serve-cdn.js",
     "build": "npm run clean:build && npm run build:projects && npm run build:manifest && npm run build:copyAssets",
@@ -50,8 +53,8 @@
   },
   "dependencies": {
     "@porsche-design-system/crest": "0.0.0",
-    "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/font-face": "0.0.0",
+    "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/meta-icons": "0.0.0",
@@ -68,9 +71,6 @@
     "madge": "*",
     "tsx": "*",
     "typescript": "*"
-  },
-  "bin": {
-    "serve-cdn": "./bin/serve-cdn.js"
   },
   "volta": {
     "extends": "../../package.json"

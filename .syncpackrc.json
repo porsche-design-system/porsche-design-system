@@ -1,5 +1,31 @@
 {
   "$schema": "./node_modules/syncpack/schema.json",
+  "sortFirst": [
+    "name",
+    "version",
+    "private",
+    "license",
+    "scope",
+    "sideEffects",
+    "type",
+    "main",
+    "module",
+    "types",
+    "browser",
+    "style",
+    "exports",
+    "bin",
+    "files",
+    "author",
+    "homepage",
+    "description",
+    "keywords",
+    "scripts",
+    "dependencies",
+    "devDependencies",
+    "peerDependencies"
+  ],
+  "sortAz": ["dependencies", "devDependencies", "peerDependencies"],
   "updateGroups": [
     {
       "label": "Held-back dependencies — upgraded deliberately, not via automated checks (see docs/dependencies.md and .github/dependabot.yml)",

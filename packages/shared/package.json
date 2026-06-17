@@ -2,12 +2,16 @@
   "name": "shared",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "main": "index.js",
   "module": "esm/index.js",
+  "bin": {
+    "serve-dummyassets": "./bin/serve-dummyassets.js",
+    "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
+  },
   "types": "index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
-  "license": "UNLICENSED",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
@@ -36,6 +40,7 @@
     "@types/node": "*",
     "fast-glob": "*",
     "madge": "*",
+    "react": "*",
     "rollup": "*",
     "rollup-plugin-bin": "*",
     "rollup-plugin-copy": "*",
@@ -45,12 +50,7 @@
     "rollup-plugin-preserve-shebang": "*",
     "tsx": "*",
     "typescript": "*",
-    "vitest": "*",
-    "react": "*"
-  },
-  "bin": {
-    "serve-dummyassets": "./bin/serve-dummyassets.js",
-    "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../package.json"

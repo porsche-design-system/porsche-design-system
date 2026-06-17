@@ -4,6 +4,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "prestart": "npm run prestart:prepareAriaTypes && npm run prestart:buildStylesheets",
@@ -39,20 +42,20 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.6",
+    "@porsche-design-system/emotion": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/model-signatures": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/emotion": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0",
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "4.43.3"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.1",
     "@types/react": "^19.2.17",
     "change-case": "^5.4.4",
     "construct-style-sheets-polyfill": "^3.1.0",
-    "dts-bundle-generator": "^9.5.1",
-    "@tailwindcss/cli": "^4.3.1"
+    "dts-bundle-generator": "^9.5.1"
   },
   "peerDependencies": {
     "@rollup/plugin-replace": "*",
@@ -61,18 +64,15 @@
     "jss": "*",
     "jss-plugin-sort-css-media-queries": "*",
     "jss-preset-default": "*",
+    "tailwindcss": "*",
     "tsx": "*",
-    "typescript": "*",
-    "tailwindcss": "*"
+    "typescript": "*"
   },
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.js",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
   "es2015": "dist/esm/index.js",
   "es2017": "dist/esm/index.js",
   "jsnext:main": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
   "volta": {
     "extends": "../../package.json"
   }

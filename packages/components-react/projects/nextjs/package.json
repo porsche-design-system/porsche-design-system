@@ -32,14 +32,14 @@
     "@types/react-dom": "^19.2.3"
   },
   "peerDependencies": {
+    "@tailwindcss/postcss": "*",
     "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
     "ag-grid-react": ">= 35.0.0 <36.0.0",
     "concurrently": "*",
-    "tsx": "*",
-    "typescript": "*",
-    "tailwindcss": "*",
     "postcss": "*",
-    "@tailwindcss/postcss": "*"
+    "tailwindcss": "*",
+    "tsx": "*",
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

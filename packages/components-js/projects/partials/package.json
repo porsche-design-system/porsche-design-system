@@ -2,19 +2,19 @@
   "name": "@porsche-design-system/partials",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
-  "sideEffects": false,
   "author": "Dr. Ing. h.c. F. Porsche AG",
-  "license": "UNLICENSED",
+  "homepage": "https://designsystem.porsche.com",
   "description": "Porsche Design System Partials",
   "keywords": [
     "porsche",
     "partials"
   ],
-  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "npm run clean:build && npm run build:partials && npm run build:package && npm run build:copyToComponentsJs",
     "build:package": "rollup -c rollup.config.js --bundleConfigAsCjs",
@@ -26,9 +26,9 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/font-face": "0.0.0",
     "@porsche-design-system/emotion": "0.0.0",
+    "@porsche-design-system/font-face": "0.0.0",
+    "@porsche-design-system/shared": "0.0.0",
     "@webcomponents/template-shadowroot": "^0.2.1"
   },
   "devDependencies": {

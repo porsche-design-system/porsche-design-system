@@ -3,43 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
-  "workspaces": [
-    "packages/*",
-    "packages/assets/projects/crest",
-    "packages/assets/projects/flags",
-    "packages/assets/projects/fonts",
-    "packages/assets/projects/font-face",
-    "packages/assets/projects/icons",
-    "packages/assets/projects/marque",
-    "packages/assets/projects/meta-icons",
-    "packages/assets/projects/model-signatures",
-    "packages/components-js/projects/components-manager-cli",
-    "packages/components-js/projects/components-manager-core",
-    "packages/components-js/projects/jsdom-polyfill",
-    "packages/components-js/projects/partials",
-    "packages/components-js/dist/components-wrapper",
-    "packages/components-angular/dist/angular-wrapper",
-    "packages/components-react/dist/react-wrapper",
-    "packages/components-react/projects/nextjs",
-    "packages/components-react/projects/react-ssr-wrapper",
-    "packages/components-react/projects/react-router",
-    "packages/components-vue/dist/vue-wrapper",
-    "packages/styles/projects/tailwindcss",
-    "packages/styles/projects/scss",
-    "packages/styles/projects/emotion",
-    "packages/styles/projects/vanilla-extract",
-    "packages/components/projects/stylesheets",
-    "packages/tokens/projects/tokens-meta",
-    "packages/utilities/projects/ag-grid",
-    "packages/storefront/projects/stackblitz",
-    "packages/shared/dist"
-  ],
-  "description": "Porsche Design System Monorepo",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/porsche-design-system/porsche-design-system.git"
-  },
   "author": "Dr. Ing. h.c. F. Porsche AG",
+  "description": "Porsche Design System Monorepo",
   "scripts": {
     "prepare-release": "tsx scripts/prepare-release.ts",
     "preinstall": "npm run preinstall:assets && npm run preinstall:components-manager-cli && npm run preinstall:components-js && npm run preinstall:components-angular && npm run preinstall:components-react && npm run preinstall:components-vue && npm run preinstall:shared",
@@ -217,11 +182,6 @@
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0"
   },
-  "overrides": {
-    "madge": {
-      "typescript": "$typescript"
-    }
-  },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
     "@biomejs/biome": "^2.5.0",
@@ -232,14 +192,21 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
+    "@tailwindcss/postcss": "^4.3.1",
+    "@tailwindcss/vite": "^4.3.1",
     "@types/madge": "^5.0.3",
     "@types/node": "^25.9.3",
+    "@vanilla-extract/css": "^1.20.1",
+    "@vanilla-extract/rollup-plugin": "^1.5.3",
+    "@vanilla-extract/vite-plugin": "^5.2.2",
     "@vitest/ui": "^4.1.9",
     "concurrently": "^10.0.3",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
     "karma": "~6.4.4",
     "madge": "^8.0.0",
+    "patch-package": "^8.0.1",
+    "postcss": "^8.5.15",
     "prettier": "^3.8.4",
     "publint": "^0.3.21",
     "react-router": "^7.18.0",
@@ -254,24 +221,57 @@
     "semver": "^7.8.4",
     "svgo": "^4.0.1",
     "syncpack": "^15.3.2",
-    "postcss": "^8.5.15",
     "tailwindcss": "^4.3.1",
-    "@tailwindcss/postcss": "^4.3.1",
-    "@tailwindcss/vite": "^4.3.1",
     "tsup": "^8.5.1",
     "tsx": "^4.22.4",
     "typescript": "~6.0.3",
     "vite": "^8.0.16",
     "vitest": "^4.1.9",
-    "@vanilla-extract/css": "^1.20.1",
-    "@vanilla-extract/vite-plugin": "^5.2.2",
-    "@vanilla-extract/rollup-plugin": "^1.5.3",
-    "webpack": "^5.107.2",
-    "patch-package": "^8.0.1",
-    "vue": "^3.5.38"
+    "vue": "^3.5.38",
+    "webpack": "^5.107.2"
+  },
+  "overrides": {
+    "madge": {
+      "typescript": "$typescript"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porsche-design-system/porsche-design-system.git"
   },
   "volta": {
     "node": "24.15.0",
     "npm": "11.12.1"
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "packages/assets/projects/crest",
+    "packages/assets/projects/flags",
+    "packages/assets/projects/fonts",
+    "packages/assets/projects/font-face",
+    "packages/assets/projects/icons",
+    "packages/assets/projects/marque",
+    "packages/assets/projects/meta-icons",
+    "packages/assets/projects/model-signatures",
+    "packages/components-js/projects/components-manager-cli",
+    "packages/components-js/projects/components-manager-core",
+    "packages/components-js/projects/jsdom-polyfill",
+    "packages/components-js/projects/partials",
+    "packages/components-js/dist/components-wrapper",
+    "packages/components-angular/dist/angular-wrapper",
+    "packages/components-react/dist/react-wrapper",
+    "packages/components-react/projects/nextjs",
+    "packages/components-react/projects/react-ssr-wrapper",
+    "packages/components-react/projects/react-router",
+    "packages/components-vue/dist/vue-wrapper",
+    "packages/styles/projects/tailwindcss",
+    "packages/styles/projects/scss",
+    "packages/styles/projects/emotion",
+    "packages/styles/projects/vanilla-extract",
+    "packages/components/projects/stylesheets",
+    "packages/tokens/projects/tokens-meta",
+    "packages/utilities/projects/ag-grid",
+    "packages/storefront/projects/stackblitz",
+    "packages/shared/dist"
+  ]
 }

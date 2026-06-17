@@ -4,10 +4,10 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "sideEffects": false,
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
   "types": "dist/esm/index.d.ts",
-  "sideEffects": false,
   "scripts": {
     "prebuild:generateThemesObject": "tsx scripts/generateThemesObject.ts",
     "build": "npm run clean:build && npm run prebuild:generateThemesObject && npm run build:bundle",

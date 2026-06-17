@@ -115,22 +115,22 @@
   },
   "peerDependencies": {
     "@playwright/test": "*",
+    "@tailwindcss/postcss": "*",
+    "@tailwindcss/vite": "*",
     "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
     "ag-grid-react": ">= 35.0.0 <36.0.0",
     "change-case": "*",
     "concurrently": "*",
     "fast-glob": "*",
+    "gzip-size": "*",
+    "postcss": "*",
     "sass": "*",
     "tailwindcss": "*",
     "tsx": "*",
     "typescript": "*",
-    "webpack": "*",
     "vite": "*",
     "vitest": "*",
-    "gzip-size": "*",
-    "postcss": "*",
-    "@tailwindcss/vite": "*",
-    "@tailwindcss/postcss": "*"
+    "webpack": "*"
   },
   "volta": {
     "extends": "../../package.json"

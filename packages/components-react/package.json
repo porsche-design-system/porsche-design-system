@@ -30,12 +30,12 @@
     "clean:build": "rm -rf ./dist && npm run clean:build --workspace=@porsche-design-system/nextjs"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "4.2.0-rc.5",
-    "react-router-dom": "^7.18.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@porsche-design-system/components-react": "4.2.0-rc.5",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.0"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
@@ -44,21 +44,21 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
     "ag-grid-community": "35.3.1",
     "ag-grid-enterprise": "35.3.1",
     "ag-grid-react": "35.3.1",
     "local-web-server": "^5.4.0",
-    "@vitejs/plugin-react": "^6.0.2",
     "vite-plugin-html": "^3.2.2"
   },
   "peerDependencies": {
     "@playwright/test": "*",
+    "@tailwindcss/vite": "*",
     "change-case": "*",
     "concurrently": "*",
     "fast-glob": "*",
-    "vite": "*",
     "typescript": "*",
-    "@tailwindcss/vite": "*"
+    "vite": "*"
   },
   "volta": {
     "extends": "../../package.json"

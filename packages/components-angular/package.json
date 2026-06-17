@@ -76,13 +76,13 @@
   },
   "peerDependencies": {
     "@playwright/test": "*",
+    "@tailwindcss/postcss": "*",
     "change-case": "*",
     "concurrently": "*",
-    "tailwindcss": "*",
     "postcss": "*",
-    "@tailwindcss/postcss": "*",
-    "vitest": "*",
-    "vite": "*"
+    "tailwindcss": "*",
+    "vite": "*",
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../package.json"
