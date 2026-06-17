@@ -36,15 +36,17 @@ export default [
       paths: (id) => metaStylePath(id, 'mjs', 'esm'),
     },
     plugins: [
-      typescript({ exclude: ['**/*.spec.ts'] }),
+      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: '.', exclude: ['**/*.spec.ts'] }),
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
           main: 'cjs/index.cjs',
           module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
           sideEffects: false,
           exports: {
             '.': {
+              types: './esm/index.d.ts',
               import: './esm/index.mjs',
               default: './cjs/index.cjs',
             },
