@@ -1,6 +1,6 @@
-import { blurFrosted } from '@porsche-design-system/components-react/vanilla-extract';
+import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract/meta';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { StylesTable } from '@/components/common/StylesTable';
 
 export const metadata = {
   title: 'Vanilla Extract: Blur - Porsche Design System',
@@ -13,6 +13,4 @@ export const metadata = {
 
 ## JS
 
-| JS                                        | Description                                                                              | Value                                      |
-| ----------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------ |
-| <Code variant="nowrap">blurFrosted</Code> | Holds a blur value for a **frosted** effect when combined with a semi-transparent color. | <Code variant="value">{blurFrosted}</Code> |
+<StylesTable meta={vanillaExtractMeta.blur} columnLabel="JS" />
