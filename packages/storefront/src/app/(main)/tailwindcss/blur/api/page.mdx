@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { TailwindVariablesTable } from '@/components/common/TailwindVariablesTable';
+import { tailwindMeta } from '@porsche-design-system/tailwindcss';
 
 export const metadata = {
   title: 'Tailwind CSS: Blur - Porsche Design System',
@@ -12,6 +13,4 @@ export const metadata = {
 
 ## Variables
 
-| Tailwind CSS variable                          | Tailwind CSS class                                                                  | Description                                                                                                                    |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| <Code variant="nowrap">--blur-frosted</Code> | <Code variant="nowrap">.backdrop-blur-frosted</Code>, <Code variant="nowrap">.blur-frosted</Code> | Applies a **frosted** effect when used with `backdrop-filter` or `filter: blur()` when combined with a semi-transparent color. |
+<TailwindVariablesTable variables={tailwindMeta.theme.blur} />
