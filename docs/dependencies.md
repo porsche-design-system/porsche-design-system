@@ -50,6 +50,15 @@ against the npm registry (which would otherwise emit `Failed to fetch` warnings)
 dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to the ignore list in
 `.github/dependabot.yml`.
 
+### Dependabot (security-only for npm)
+
+Routine npm **version** updates are handled by `syncpack` (above) and, for the recurring automated task, by the AI agent
+runbook ([`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md)) — **not** by Dependabot.
+The npm entry in `.github/dependabot.yml` sets `open-pull-requests-limit: 0`, which disables Dependabot version-update
+PRs while still allowing **security** PRs (grouped via `applies-to: security-updates`). The `ignore` list there keeps the
+held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
+Dependabot on a monthly schedule.
+
 ## Strict peer dependency resolution
 
 `npm install` runs with **strict** peer dependency resolution (npm 7+ default). We intentionally do **not** use
@@ -164,8 +173,10 @@ machine npm still installs only the matching binary; the rest are recorded but s
 
 ## Held-back dependencies
 
-These dependencies are intentionally excluded from the automated `syncpack` / `npm run npm:update` flow and from
-Dependabot. The exclusion is configured in two places that must be kept in sync when adding a new entry:
+These dependencies are intentionally excluded from the automated `syncpack` / `npm run npm:update` flow. They are also
+listed in Dependabot's `ignore` list so they stay out of Dependabot's **security** PRs (npm version updates are already
+off — see [Dependabot (security-only for npm)](#dependabot-security-only-for-npm)). The exclusion is configured in two
+places that must be kept in sync when adding a new entry:
 
 - the `isIgnored` `updateGroups` entry in [`.syncpackrc.json`](../.syncpackrc.json), and
 - the `ignore` list in `.github/dependabot.yml`.
