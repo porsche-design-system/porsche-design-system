@@ -24,7 +24,7 @@
     "./meta/"
   ],
   "scripts": {
-    "build": "npm run clean:build && npm run build:meta && npm run build:package",
+    "build": "npm run clean:build && npm run build:meta && npm run build:package && npm run build:skill",
     "build:meta": "rollup -c rollup.config.meta.mjs",
     "build:package": "tsx scripts/build.ts",
     "build:skill": "tsx scripts/build-skill.ts",

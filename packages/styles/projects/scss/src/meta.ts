@@ -17,8 +17,9 @@ import { typography as typographyMixins } from './utilities/typography';
 
 /**
  * The documented single source of truth for the scss package, mirroring `tailwindMeta`: a `theme`
- * of variables and `utilities` of mixins. The variable domains are migrated; the mixin rails carry
- * skeleton and focus, with later slices populating the remaining utilities.
+ * of variables and `utilities` of mixins. Every documented domain lives here; the SCSS-only plumbing
+ * (deprecated aliases, private helpers, the theming mixin, the `@forward` index) lives in the
+ * composition layer (`scss/index.ts`), never here.
  */
 export const scssMeta = {
   theme: {

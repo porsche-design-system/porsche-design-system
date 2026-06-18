@@ -46,7 +46,8 @@ export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
 /**
  * Shared documented-utility catalog shape — the common topic grouping every solution exposes
  * (typography shorthands, gradients, grid, skeletons). `focus` and `mediaQuery` are scss-specific
- * superset members added with the mixin rails; later slices add the rest. Generic over the utility type.
+ * superset members. Some catalog members map only to plumbing in scss (the `gradient` mixins and
+ * `typography.display` are deprecated, so they stay unpopulated in `scssMeta`). Generic over the utility type.
  */
 export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
   typography: { heading: T[]; text: T[]; display: T[] };
@@ -142,16 +143,17 @@ export type ScssFileMeta = {
  * groups are the same object references the SCSS is built from, so docs and generated SCSS can never
  * diverge.
  *
- * The variable domains are migrated; the utility groups are added by later slices.
+ * Every documented domain is present; the unpopulated catalog members (e.g. `utilities.gradient`)
+ * map only to plumbing and so are intentionally absent.
  */
 export type ScssMeta = {
-  /** The documented design-token catalog. All variable groups are migrated. */
+  /** The documented design-token catalog — every variable group. */
   theme: Partial<ThemeCatalog<ScssVariable>> &
     Pick<
       ThemeCatalog<ScssVariable>,
       'border' | 'blur' | 'breakpoint' | 'color' | 'typography' | 'shadow' | 'spacing' | 'motion' | 'gradient' | 'grid'
     >;
-  /** The documented mixins. Typography, skeleton, focus, media-query and grid are migrated; later slices add the rest. */
+  /** The documented mixins: typography, skeleton, focus, media-query and grid (`gradient`/`display` are plumbing-only). */
   utilities: Partial<UtilitiesCatalog<ScssMixin>> &
     Pick<UtilitiesCatalog<ScssMixin>, 'typography' | 'skeleton' | 'focus' | 'mediaQuery' | 'grid'>;
 };

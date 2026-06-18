@@ -402,8 +402,8 @@ const indexFile: ScssFileMeta = {
 /**
  * The composition layer: an ordered collection of per-file descriptors. Each interleaves documented
  * `scssMeta` entries (by identity) with SCSS-only plumbing. The build iterates this list, renders
- * each to a string, Prettier-formats it and writes `dist/<file>`. Only the migrated domains live
- * here; the rest are still produced by the legacy `fileMap` generators until their slices land.
+ * each to a string, Prettier-formats it and writes `dist/<file>`. Every domain lives here — this is
+ * the single source of every generated partial plus the `_index.scss` `@forward` index.
  */
 export const scssFileMeta: ScssFileMeta[] = [
   borderFile,
