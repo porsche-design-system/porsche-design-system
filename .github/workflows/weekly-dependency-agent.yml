@@ -73,7 +73,7 @@ jobs:
           **Follow the runbook exactly:** [`docs/runbooks/dependency-updates-agent.md`](__RUNBOOK_URL__)
 
           Key guardrails (see the runbook for the full list):
-          - Skip held-back dependencies (`@porsche-design-system/**`, `@angular/**`, `ng-packagr`, `zone.js`, `@playwright/test`, `@stencil/core`).
+          - Skip fully held-back deps (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). Update Angular via `ng update` per the runbook (step 3), not syncpack.
           - Never run `npm audit fix`, `--legacy-peer-deps` or `--force`.
           - Don't hand-edit `package.json` versions or `package-lock.json`; use `syncpack` / `npm install`.
           - Deliver a single PR per the runbook's "Output contract".
@@ -87,7 +87,3 @@ jobs:
             --label "dependencies" \
             --assignee "@copilot" \
             --body-file issue-body.md
-
-
-
-

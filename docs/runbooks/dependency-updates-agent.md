@@ -4,8 +4,8 @@
 > dependency update** for this monorepo.
 >
 > This is a deterministic, step-by-step runbook. It restates the relevant parts of
-> [`docs/dependencies.md`](../dependencies.md) as an executable workflow. When in doubt about _why_ a rule exists, read the
-> linked sections there — but **follow this runbook's steps and order exactly**.
+> [`docs/dependencies.md`](../dependencies.md) as an executable workflow. When in doubt about _why_ a rule exists, read
+> the linked sections there — but **follow this runbook's steps and order exactly**.
 
 ## Trigger & cadence
 
@@ -17,35 +17,40 @@
 ### How this task is dispatched
 
 This runbook is executed by the **Copilot coding agent**, scheduled via
-[`.github/workflows/weekly-dependency-agent.yml`](../../.github/workflows/weekly-dependency-agent.yml). That workflow runs
-weekly, checks `npm run npm:outdated`, and — only when updates exist — opens an issue assigned to `@copilot` linking back
-to this file. The agent's environment is bootstrapped by
+[`.github/workflows/weekly-dependency-agent.yml`](../../.github/workflows/weekly-dependency-agent.yml). That workflow
+runs weekly, checks `npm run npm:outdated`, and — only when updates exist — opens an issue assigned to `@copilot`
+linking back to this file. The agent's environment is bootstrapped by
 [`.github/workflows/copilot-setup-steps.yml`](../../.github/workflows/copilot-setup-steps.yml) (Node 24 + `npm ci`,
 mirroring [`.github/actions/install`](../../.github/actions/install/action.yml)).
 
 ## Hard rules — never do these
 
-| ❌ Never                                            | Why                                                                                          |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Run `npm audit fix` / `npm audit fix --force`       | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`). |
-| Use `--legacy-peer-deps` or `--force`               | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.              |
-| Edit dependency versions in any `package.json` by hand | `syncpack` owns version ranges across all workspaces.                                      |
-| Edit `package-lock.json` by hand                    | Regenerate it via `npm install` only.                                                        |
-| Upgrade held-back dependencies (see below)          | These follow their own deliberate upgrade paths.                                             |
-| Push directly to `main`                             | Always open a PR for human review.                                                           |
+| ❌ Never                                                         | Why                                                                                                    |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Run `npm audit fix` / `npm audit fix --force`                    | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`).        |
+| Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                        |
+| Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges; the **only** exception is the Angular family via `ng update` (step 3). |
+| Edit `package-lock.json` by hand                                 | Regenerate it via `npm install` only.                                                                  |
+| Upgrade held-back deps by selecting them in `npm run npm:update` | They have their own paths — Angular via `ng update` (step 3); Stencil/Playwright/internal stay pinned. |
+| Push directly to `main`                                          | Always open a PR for human review.                                                                     |
 
-## Held-back dependencies (do NOT upgrade here)
+## Held-back dependencies (special handling)
 
-These are intentionally excluded from this flow. They are ignored by `syncpack` via
-[`.syncpackrc.json`](../../.syncpackrc.json) and by Dependabot via [`.github/dependabot.yml`](../../.github/dependabot.yml),
-so the commands below already skip them. **Do not upgrade them manually in this task:**
+These are excluded from the `syncpack` flow — they are ignored by `syncpack` via
+[`.syncpackrc.json`](../../.syncpackrc.json) and by Dependabot via
+[`.github/dependabot.yml`](../../.github/dependabot.yml), so `npm run npm:update` already skips them. **Never bump them
+by selecting them in `npm run npm:update`.** Handle them as noted:
 
-- `@porsche-design-system/**` — internal workspace packages, versioned by the release process.
-- `@angular/**`, `ng-packagr`, `zone.js` — upgrade only via `ng update` (separate task).
-- `@playwright/test` — pinned to keep browser binaries in sync with committed VRT snapshots.
-- `@stencil/core` — pinned because a `patch-package` patch targets the exact version.
+- `@porsche-design-system/**` — internal workspace packages, versioned by the release process. **Never touch here.**
+- `@angular/**`, `ng-packagr`, `zone.js` — updated via **`ng update`** in
+  [step 3](#3-update-angular-via-ng-update-do-this-before-syncpack), not syncpack.
+- `typescript` — may move only **within** Angular's `MAX_TS_VERSION` ceiling (see step 3); otherwise keep it held back
+  this round.
+- `@playwright/test` — pinned to keep browser binaries in sync with committed VRT snapshots. **Never touch here.**
+- `@stencil/core` — pinned because a `patch-package` patch targets the exact version. **Never touch here.**
 
-If one of these is the _only_ remaining outdated package, **skip it** and note it in the PR description.
+If the only remaining outdated packages are the _never-touch_ ones above, **skip them** and note it in the PR
+description.
 
 ## Prerequisites
 
@@ -70,7 +75,38 @@ npm run npm:outdated
 
 This runs `syncpack update --check` and already excludes the held-back/internal packages.
 
-### 3. Apply updates with syncpack
+### 3. Update Angular via `ng update` (do this before syncpack)
+
+Angular (`@angular/*`, `ng-packagr`, `zone.js`) is **not** updated by syncpack — it must be migrated with Angular's own
+tooling, and it must run **before** the syncpack steps (running syncpack / `npm install` first can corrupt
+`package-lock.json` for the Angular packages — see `docs/dependencies.md` → _Held-back dependencies_).
+
+Only proceed for a **minor/patch** Angular update within the current major (or a major you have explicitly been asked to
+do). For a major upgrade with framework migrations, prefer handing off — see
+[Stop conditions](#stop-conditions-hand-back-to-a-human).
+
+```bash
+cd packages/components-angular
+./node_modules/.bin/ng update                         # list available Angular updates
+./node_modules/.bin/ng update @angular/cli @angular/core
+cd ../..
+```
+
+Reconcile TypeScript: Angular caps the supported version via `MAX_TS_VERSION` in
+`packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`. In step 4, do **not** let
+syncpack bump `typescript` past that ceiling; if the monorepo `typescript` would exceed it, keep `typescript` held back
+this round.
+
+Re-sync the lockfile from the repo root:
+
+```bash
+npm install
+```
+
+If `ng update` applies migrations that require non-trivial source changes, **stop** and hand off rather than forcing it
+into the weekly dependency PR.
+
+### 4. Apply updates with syncpack
 
 ```bash
 npm run npm:update
@@ -81,13 +117,13 @@ npm run npm:update
   framework-related packages in lockstep.
 - Do not select any held-back dependency even if it surfaces.
 
-### 4. Refresh the lockfile and verify the install
+### 5. Refresh the lockfile and verify the install
 
 ```bash
 npm install
 ```
 
-### 5. Resolve peer-dependency conflicts the correct way
+### 6. Resolve peer-dependency conflicts the correct way
 
 If `npm install` fails with `ERESOLVE` due to a third-party peer range conflicting with our pinned versions:
 
@@ -97,7 +133,7 @@ If `npm install` fails with `ERESOLVE` due to a third-party peer range conflicti
   transitive entries).
 - Never work around it with `--legacy-peer-deps` / `--force`.
 
-### 6. Keep version ranges consistent
+### 7. Keep version ranges consistent
 
 ```bash
 npm run npm:lint
@@ -106,7 +142,7 @@ npm run npm:format
 
 If either reports issues, fix them with `npm run npm:lint:fix` / `npm run npm:format:fix`, then re-run the check.
 
-### 7. Regenerate the lockfile cleanly
+### 8. Regenerate the lockfile cleanly
 
 To refresh transitive dependencies, delete `package-lock.json` and recreate it:
 
@@ -118,7 +154,7 @@ npm install
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).
 
-### 8. Sync the StackBlitz starter templates (not workspace-managed)
+### 9. Sync the StackBlitz starter templates (not workspace-managed)
 
 The four StackBlitz starter templates under
 `packages/storefront/projects/stackblitz/src/{vanilla-js,angular,react,vue}/package.json` are **standalone, runnable
@@ -134,10 +170,14 @@ typically `vite`, `tailwindcss`, `@tailwindcss/postcss`, `postcss`, `react`, `re
 
 **Leave these untouched** (same rules as the rest of this runbook):
 
-- `@porsche-design-system/components-*` — the **published** PDS version; bumped by the release process
-  (see `docs/release.md` → _Deploy_), not here.
-- Held-back deps — `@angular/*`, `ng-packagr`, `zone.js`, `@playwright/test`, `@stencil/core`, and `typescript` where it
-  is bound to Angular's `MAX_TS_VERSION`.
+- `@porsche-design-system/components-*` — the **published** PDS version; bumped by the release process (see
+  `docs/release.md` → _Deploy_), not here.
+- `@playwright/test`, `@stencil/core` — fully held back.
+
+**If step 3 updated Angular**, also align the Angular template
+(`packages/storefront/projects/stackblitz/src/angular/package.json`) to the new versions: `@angular/*`,
+`@angular/build`, `@angular/cli`, `@angular/compiler-cli`, `zone.js`, and `typescript` (respecting `MAX_TS_VERSION`).
+Otherwise leave them as-is.
 
 Verify the bundle still generates (this writes the git-ignored `generated/bundle.ts`; **do not commit** it):
 
@@ -145,7 +185,7 @@ Verify the bundle still generates (this writes the git-ignored `generated/bundle
 npm run build:generateStackblitzBundle --workspace=@porsche-design-system/stackblitz
 ```
 
-### 9. Verify against CI-equivalent checks (do not finalize on failure)
+### 10. Verify against CI-equivalent checks (do not finalize on failure)
 
 CI runs automatically on the PR you open (`build` + `test` jobs in
 [`.github/workflows/contribution.yml`](../../.github/workflows/contribution.yml)). A failing CI run will **not**
@@ -180,14 +220,14 @@ Then run the **additional suites relevant to the changed packages** (mirror what
 > snapshots, cross-browser e2e). Run what you can; for the rest, call them out explicitly in the PR description so the
 > reviewer knows what still needs to pass on CI.
 
-### 10. Review security advisories (report only)
+### 11. Review security advisories (report only)
 
 ```bash
 npm run npm:audit
 ```
 
 Summarize advisories in the PR. **Do not** run `npm audit fix`. For a genuinely fixable advisory, add a pinned
-`overrides` entry (as in step 5) and regenerate the lockfile.
+`overrides` entry (as in step 6) and regenerate the lockfile.
 
 ## Output contract (what the agent must deliver)
 
@@ -198,7 +238,7 @@ Open a **single pull request** from the working branch with:
 - [ ] Any **held-back** packages that were intentionally skipped.
 - [ ] Any new/changed `overrides` entries and the reason.
 - [ ] The `npm run npm:audit` summary.
-- [ ] Build/test results (commands run + pass/fail), confirming the CI-equivalent gates from step 9 (`lint`, `build`,
+- [ ] Build/test results (commands run + pass/fail), confirming the CI-equivalent gates from step 10 (`lint`, `build`,
       relevant unit/e2e/a11y) passed locally — plus any checks left for CI (e.g. VRT) called out explicitly.
 - [ ] Only these files changed: workspace `package.json` files, root `package.json` (ranges/overrides),
       `package-lock.json`, and the StackBlitz starter templates
@@ -219,4 +259,3 @@ Stop and request review instead of forcing a change when:
 - [`docs/dependencies.md`](../dependencies.md) — full rationale, remediation policy, and held-back-dependency details.
 - [`.syncpackrc.json`](../../.syncpackrc.json) — syncpack config and ignored update groups.
 - [`.github/dependabot.yml`](../../.github/dependabot.yml) — Dependabot ignore list (keep in sync with the above).
-
