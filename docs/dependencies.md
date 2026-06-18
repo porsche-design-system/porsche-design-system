@@ -60,6 +60,14 @@ Current overrides:
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
+- **Security overrides** force vulnerable transitive dependencies up to their first patched release (see
+  [Remediation policy](#remediation-policy)). For libraries whose newer majors are not API-compatible with older
+  consumers (`minimatch`, `brace-expansion`), per-major version-selector keys (e.g. `"minimatch@3": "3.1.4"`,
+  `"minimatch@9": "9.0.7"`) keep each major on its own backported patch. `minimatch@10`/`brace-expansion@5` export
+  non-callable objects, so a blanket override would break `^3.x`/`^1.x` consumers (e.g. `glob@7`) that call the default
+  export directly. Overrides that would collide with a different major required elsewhere are scoped to a single parent
+  (e.g. `"js-beautify": { "glob": "^10.5.0" }`, `"@react-router/serve": { "express": "^4.22.2" }`,
+  `"next": { "postcss": "^8.5.10" }`).
 
 ## Auditing dependencies (`npm audit`)
 
@@ -96,6 +104,29 @@ contract, and allow duplicate tool versions across workspaces. Keep them.
 - For an advisory in a **held-back** dependency (Angular, Stencil, Playwright — see
   [Held-back dependencies](#held-back-dependencies)), wait for the upstream-sanctioned upgrade path.
 - Never reach for `--legacy-peer-deps` or `--force`.
+- After adding/changing overrides, delete `package-lock.json` and `node_modules` and re-run `npm install`
+  ([Dependency updates](#dependency-updates) step 5). A plain `npm install` only re-resolves changed nodes, so stale
+  transitive entries keep their old (vulnerable) versions and the override appears to have no effect.
+
+### Known unfixable advisory: `html-minifier`
+
+`html-minifier@4` (used only by the build-time partials generator in
+[`packages/components-js/projects/partials`](../packages/components-js/projects/partials)) has an unpatched ReDoS
+advisory with **no fixed release**. It was replaced with the maintained drop-in fork
+[`html-minifier-terser`](https://www.npmjs.com/package/html-minifier-terser), whose `minify()` is async — the partial
+generators and `minifyHTML()` were made `async` accordingly. Output is byte-for-byte identical, so the generated
+`partials.tsx` is unchanged.
+
+### Accepted advisories (held-back build tooling)
+
+The remaining advisories all originate from **dev-only** build tooling we hold back, are not reachable from shipped
+package output, and several are Windows-dev-server-only:
+
+- `@angular/build`, `@angular/compiler-cli`, `@babel/core` (pulled by Angular) — Angular is upgraded via `ng update`
+  only (see [Held-back dependencies](#held-back-dependencies)).
+- `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` (held back) and the React Router dev server
+  (`@react-router/dev` → `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These
+  clear once Angular and `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
 
 ## Build tooling for `--dts` libraries
 

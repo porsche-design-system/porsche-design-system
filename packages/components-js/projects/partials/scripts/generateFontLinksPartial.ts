@@ -2,7 +2,7 @@ import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 import { minifyHTML } from './utils';
 
-export const generateFontLinksPartial = (): string => {
+export const generateFontLinksPartial = async (): Promise<string> => {
   const fontSubsets = ['latin', 'greek', 'cyril', 'thai', 'arabic', 'pashto', 'urdu'];
   const fontWeights = ['regular', 'semi-bold', 'bold'];
 
@@ -15,7 +15,7 @@ type GetFontLinksOptions = {
   format?: FormatWithJS;
 };`;
 
-  const linkTemplate = minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
+  const linkTemplate = await minifyHTML('<link rel="preload" href="${url}" as="font" type="font/woff2" crossorigin>');
 
   const func = `export function getFontLinks(opts: GetFontLinksOptions & { format: 'js' }): PartialLink[];
 export function getFontLinks(opts: GetFontLinksOptions & { format: 'jsx' }): JSX.Element;

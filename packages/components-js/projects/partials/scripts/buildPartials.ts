@@ -56,10 +56,10 @@ const generatePartials = async (): Promise<void> => {
 
   const content = [
     generateSharedCode(),
-    generateFontLinksPartial(),
+    await generateFontLinksPartial(),
     generateComponentChunkLinksPartial(),
-    generateMetaTagsAndIconLinksPartial(),
-    generateIconLinksPartial(),
+    await generateMetaTagsAndIconLinksPartial(),
+    await generateIconLinksPartial(),
     generateLoaderScriptPartial(),
   ].join('\n\n');
 
