@@ -1,18 +1,18 @@
-import { blur } from './blur';
-import { border } from './border';
-import { breakpoint } from './breakpoint';
-import { color } from './color';
-import { displayUtilities } from './display';
-import { gradientUtilities } from './gradient';
-import { gridUtilities } from './grid';
-import { headingUtilities } from './heading';
-import { motion } from './motion';
-import { skeletonUtilities } from './skeleton';
-import { spacing } from './spacing';
-import { textUtilities } from './text';
-import { shadow } from './shadow';
+import { blur } from './theme/blur';
+import { border } from './theme/border';
+import { breakpoint } from './theme/breakpoint';
+import { color } from './theme/color';
+import { displayUtilities } from './utilities/display';
+import { gradientUtilities } from './utilities/gradient';
+import { gridUtilities } from './utilities/grid';
+import { headingUtilities } from './utilities/heading';
+import { motion } from './theme/motion';
+import { skeletonUtilities } from './utilities/skeleton';
+import { spacing } from './theme/spacing';
+import { textUtilities } from './utilities/text';
+import { shadow } from './theme/shadow';
 import type { TailwindMeta } from './types';
-import { typography } from './typography';
+import { typography } from './theme/typography';
 
 /**
  * The documented single source of truth for the Tailwind styling solution — the surface shared

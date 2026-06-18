@@ -15,8 +15,8 @@ import {
   typescaleXs,
 } from '@porsche-design-system/tokens';
 import { fontPorscheNextDynamicVar } from './font';
-import { prefix } from './shared';
-import type { CssNode, TailwindThemeVariable } from './types';
+import { prefix } from '../prefix';
+import type { CssNode, TailwindThemeVariable } from '../types';
 
 /**
  * Nested single source of truth for typography, grouped like `cssVariablesMeta`

@@ -1,4 +1,4 @@
-import type { CssNode, ThemeBranch } from './types';
+import type { CssNode, ThemeBranch } from '../types';
 
 /** Whether a meta branch is a concrete {@link CssNode} leaf (vs. a grouping record/array). */
 const isLeaf = (node: ThemeBranch): node is CssNode => 'property' in node || 'selector' in node || 'raw' in node;

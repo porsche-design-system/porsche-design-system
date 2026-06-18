@@ -1,12 +1,12 @@
-import { fontBaseLayer } from './font';
-import { tailwindMeta } from './meta';
-import { defaultTransitionDuration, defaultTransitionTimingFunction, motionDeprecatedThemeVariables } from './motion';
+import { fontBaseLayer } from '../theme/font';
+import { tailwindMeta } from '../meta';
+import { defaultTransitionDuration, defaultTransitionTimingFunction, motionDeprecatedThemeVariables } from '../theme/motion';
 import { flatten, renderNode } from './render';
 import { schemeRootFallback, schemeUtilities } from './scheme';
-import { animateSkeletonThemeVariable, skeletonKeyframes } from './skeleton';
-import { shadowDeprecatedThemeVariables } from './shadow';
-import { textSizeCompanions } from './typography';
-import type { CssNode, CssRule, TailwindCssMeta } from './types';
+import { animateSkeletonThemeVariable, skeletonKeyframes } from '../utilities/skeleton';
+import { shadowDeprecatedThemeVariables } from '../theme/shadow';
+import { textSizeCompanions } from '../theme/typography';
+import type { CssNode, CssRule, TailwindCssMeta } from '../types';
 
 /**
  * The CSS-generation layer for the Tailwind styling solution: the assembly that composes the

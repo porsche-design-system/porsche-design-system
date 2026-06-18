@@ -1,7 +1,7 @@
-import { color } from './color';
-import { prefix } from './shared';
-import type { TailwindUtility } from './types';
-import { typography } from './typography';
+import { color } from '../theme/color';
+import { prefix } from '../prefix';
+import type { TailwindUtility } from '../types';
+import { typography } from '../theme/typography';
 
 // Documented Tailwind heading utilities — the `prose-heading-*` font shorthands
 // for each typescale size. Sizes 2xs/xs/sm use the semibold weight, the larger

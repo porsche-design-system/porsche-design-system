@@ -1,5 +1,5 @@
 import { gradientStopsFadeDark } from '@porsche-design-system/tokens';
-import type { TailwindUtility } from './types';
+import type { TailwindUtility } from '../types';
 
 // Documented Tailwind gradient utilities — the `bg-fade-*` fade helpers.
 export const gradientUtilities: TailwindUtility[] = [

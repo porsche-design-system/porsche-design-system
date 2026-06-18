@@ -1,7 +1,7 @@
 import { breakpoint2Xl, breakpointSm } from '@porsche-design-system/tokens';
-import { prefix } from './shared';
-import { spacing } from './spacing';
-import type { TailwindUtility } from './types';
+import { prefix } from '../prefix';
+import { spacing } from '../theme/spacing';
+import type { TailwindUtility } from '../types';
 
 // Documented Tailwind grid utilities — the responsive Porsche Grid template
 // together with its named area, position, and division helpers.

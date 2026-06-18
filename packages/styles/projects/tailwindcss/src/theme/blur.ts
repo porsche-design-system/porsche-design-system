@@ -1,5 +1,5 @@
 import { blurFrosted } from '@porsche-design-system/tokens';
-import type { TailwindThemeVariable } from './types';
+import type { TailwindThemeVariable } from '../types';
 
 // Blur.
 export const blur: TailwindThemeVariable[] = [

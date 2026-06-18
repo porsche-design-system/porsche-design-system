@@ -1,7 +1,7 @@
-import { color } from './color';
-import { prefix } from './shared';
-import type { TailwindUtility } from './types';
-import { typography } from './typography';
+import { color } from '../theme/color';
+import { prefix } from '../prefix';
+import type { TailwindUtility } from '../types';
+import { typography } from '../theme/typography';
 
 // Documented Tailwind display utilities — the `prose-display-*` font shorthands.
 // Each display size maps to a larger typescale than its name suggests.

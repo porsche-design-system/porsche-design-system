@@ -1,8 +1,8 @@
-import { radius } from './border';
-import { color } from './color';
-import { durationXlThemeVariable, easeInOutThemeVariable } from './motion';
-import { prefix } from './shared';
-import type { CssDeclaration, CssRaw, TailwindUtility } from './types';
+import { radius } from '../theme/border';
+import { color } from '../theme/color';
+import { durationXlThemeVariable, easeInOutThemeVariable } from '../theme/motion';
+import { prefix } from '../prefix';
+import type { CssDeclaration, CssRaw, TailwindUtility } from '../types';
 
 // Animation — @keyframes skeleton.
 export const skeletonKeyframes: CssRaw = {

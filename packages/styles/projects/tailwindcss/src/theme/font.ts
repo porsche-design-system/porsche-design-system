@@ -5,7 +5,7 @@ import {
   fontPorscheNextZhHans,
   fontPorscheNextZhHant,
 } from '@porsche-design-system/tokens';
-import type { CssRule } from './types';
+import type { CssRule } from '../types';
 
 // The "Bridge Variable" pointing the Tailwind `--font-porsche-next` theme variable
 // to the dynamic, locale-aware font stack. Shared as a single source so the base

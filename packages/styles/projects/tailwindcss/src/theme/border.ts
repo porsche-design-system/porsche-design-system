@@ -9,7 +9,7 @@ import {
   radiusXl,
   radiusXs,
 } from '@porsche-design-system/tokens';
-import type { TailwindThemeVariable } from './types';
+import type { TailwindThemeVariable } from '../types';
 
 /**
  * Nested single source of truth for border radii, grouped like `cssVariablesMeta`

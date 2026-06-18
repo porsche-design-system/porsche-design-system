@@ -1,6 +1,6 @@
 import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
-import { prefix } from './shared';
-import type { CssNode, TailwindThemeVariable } from './types';
+import { prefix } from '../prefix';
+import type { CssNode, TailwindThemeVariable } from '../types';
 
 // Shadow.
 export const shadow: TailwindThemeVariable[] = [

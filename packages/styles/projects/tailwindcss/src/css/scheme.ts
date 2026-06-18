@@ -1,5 +1,5 @@
-import { colorDarkVars, colorLightVars } from './color';
-import type { CssRule } from './types';
+import { colorDarkVars, colorLightVars } from '../theme/color';
+import type { CssRule } from '../types';
 
 // The `@layer base` fallback applied for browsers without `light-dark()` support.
 // Defaults every dynamic color variable to its light-scheme value.

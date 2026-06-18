@@ -6,7 +6,7 @@ import {
   breakpointXl,
   breakpointXs,
 } from '@porsche-design-system/tokens';
-import type { TailwindThemeVariable } from './types';
+import type { TailwindThemeVariable } from '../types';
 
 // Breakpoint — generates the responsive variant prefixes (e.g. `md:`).
 export const breakpoint: TailwindThemeVariable[] = [

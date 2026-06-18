@@ -99,7 +99,7 @@ import {
   colorWarningMediumDark,
   colorWarningMediumLight,
 } from '@porsche-design-system/tokens';
-import type { CssNode, TailwindThemeVariableGroup } from './types';
+import type { CssNode, TailwindThemeVariableGroup } from '../types';
 
 /**
  * Full description of a single color — the single source of truth for the `@theme`

@@ -13,7 +13,7 @@ import {
   spacingStaticXl,
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
-import type { TailwindThemeVariable } from './types';
+import type { TailwindThemeVariable } from '../types';
 
 /**
  * Nested single source of truth for spacing, grouped like `cssVariablesMeta`

@@ -7,8 +7,8 @@ import {
   easeInOut,
   easeOut,
 } from '@porsche-design-system/tokens';
-import { prefix } from './shared';
-import type { CssNode, TailwindThemeVariable } from './types';
+import { prefix } from '../prefix';
+import type { CssNode, TailwindThemeVariable } from '../types';
 
 // Motion — easing. `easeInOut` is named on its own because it is referenced elsewhere (e.g. the
 // skeleton animation composes the real variable rather than re-deriving its property name).
