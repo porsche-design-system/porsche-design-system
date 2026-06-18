@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { TailwindUtilitiesTable } from '@/components/common/TailwindUtilitiesTable';
+import { tailwindMeta } from '@porsche-design-system/tailwindcss';
 
 export const metadata = {
   title: 'Tailwind CSS: Grid - Porsche Design System',
@@ -12,24 +13,4 @@ export const metadata = {
 
 ## Classes
 
-| Tailwind `@utility` CSS class                             | Description                                                                                                                             |
-| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| <Code variant="nowrap">.grid-template</Code>              | Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). |
-| <Code variant="nowrap">.col-full</Code>                   | Applies the **start/end** position of the `full` area within the Porsche Grid.                                                          |
-| <Code variant="nowrap">.col-start-full</Code>             | Applies the **start** position of the `full` area within the Porsche Grid.                                                              |
-| <Code variant="nowrap">.col-end-full</Code>               | Applies the **end** position of the `full` area within the Porsche Grid.                                                                |
-| <Code variant="nowrap">.col-wide</Code>                   | Applies the **start/end** position of the `wide` area within the Porsche Grid.                                                          |
-| <Code variant="nowrap">.col-start-wide</Code>             | Applies the **start** position of the `wide` area within the Porsche Grid.                                                              |
-| <Code variant="nowrap">.col-end-wide</Code>               | Applies the **end** position of the `wide` area within the Porsche Grid.                                                                |
-| <Code variant="nowrap">.col-extended</Code>               | Applies the **start/end** position of the `extended` area within the Porsche Grid.                                                      |
-| <Code variant="nowrap">.col-start-extended</Code>         | Applies the **start** position of the `extended` area within the Porsche Grid.                                                          |
-| <Code variant="nowrap">.col-end-extended</Code>           | Applies the **end** position of the `extended` area within the Porsche Grid.                                                            |
-| <Code variant="nowrap">.col-basic</Code>                  | Applies the **start/end** position of the `basic` area within the Porsche Grid.                                                         |
-| <Code variant="nowrap">.col-start-basic</Code>            | Applies the **start** position of the `basic` area within the Porsche Grid.                                                             |
-| <Code variant="nowrap">.col-end-basic</Code>              | Applies the **end** position of the `basic` area within the Porsche Grid.                                                               |
-| <Code variant="nowrap">.col-narrow</Code>                 | Applies the **start/end** position of the `narrow` area within the Porsche Grid.                                                        |
-| <Code variant="nowrap">.col-start-narrow</Code>           | Applies the **start** position of the `narrow` area within the Porsche Grid.                                                            |
-| <Code variant="nowrap">.col-end-narrow</Code>             | Applies the **end** position of the `narrow` area within the Porsche Grid.                                                              |
-| <Code variant="nowrap">.col-span-one-half</Code>          | Applies a **half** span within the `wide`, `extended`, `basic` or `narrow` area of the Porsche Grid.                                    |
-| <Code variant="nowrap">.col-span-one-third</Code>         | Applies a **one third** span within the `basic` area of the Porsche Grid.                                                               |
-| <Code variant="nowrap">.col-span-two-thirds</Code>        | Applies a **two thirds** span within the `basic` area of the Porsche Grid.                                                              |
+<TailwindUtilitiesTable utilities={tailwindMeta.utilities.grid} />

@@ -1,5 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { TailwindUtilitiesTable } from '@/components/common/TailwindUtilitiesTable';
+import { TailwindVariablesTable } from '@/components/common/TailwindVariablesTable';
+import { tailwindMeta } from '@porsche-design-system/tailwindcss';
 
 export const metadata = {
   title: 'Tailwind CSS: Typography - Porsche Design System',
@@ -12,45 +14,32 @@ export const metadata = {
 
 ## Classes
 
-| Tailwind `@utility` CSS class                    | Description                                                                                                           |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| <Code variant="nowrap">.prose-heading-5xl</Code> | Applies the **5x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">.prose-heading-4xl</Code> | Applies the **4x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">.prose-heading-3xl</Code> | Applies the **3x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">.prose-heading-2xl</Code> | Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">.prose-heading-xl</Code>  | Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
-| <Code variant="nowrap">.prose-heading-lg</Code>  | Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
-| <Code variant="nowrap">.prose-heading-md</Code>  | Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.   |
-| <Code variant="nowrap">.prose-heading-sm</Code>  | Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
-| <Code variant="nowrap">.prose-heading-xs</Code>  | Applies the **x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
-| <Code variant="nowrap">.prose-heading-2xs</Code> | Applies the **2x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">.prose-text-5xl</Code>    | Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.             |
-| <Code variant="nowrap">.prose-text-4xl</Code>    | Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.             |
-| <Code variant="nowrap">.prose-text-3xl</Code>    | Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.             |
-| <Code variant="nowrap">.prose-text-2xl</Code>    | Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.             |
-| <Code variant="nowrap">.prose-text-xl</Code>     | Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.              |
-| <Code variant="nowrap">.prose-text-lg</Code>     | Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.                |
-| <Code variant="nowrap">.prose-text-md</Code>     | Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.               |
-| <Code variant="nowrap">.prose-text-sm</Code>     | Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.                |
-| <Code variant="nowrap">.prose-text-xs</Code>     | Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.              |
-| <Code variant="nowrap">.prose-text-2xs</Code>    | Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.             |
+### Heading
+
+<TailwindUtilitiesTable utilities={tailwindMeta.utilities.typography.heading} />
+
+### Text
+
+<TailwindUtilitiesTable utilities={tailwindMeta.utilities.typography.text} />
+
+### Display
+
+<TailwindUtilitiesTable utilities={tailwindMeta.utilities.typography.display} />
 
 ## Variables
 
-| Tailwind CSS variable                                | Tailwind CSS class                               | Description                                                                                                                                                                                                                                                                         |
-| ---------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <Code variant="nowrap">--font-porsche-next</Code>    | <Code variant="nowrap">.font-porsche-next</Code> | Applies the **Porsche Next** font family along with fallback fonts. Automatically swaps to the locale-specific CJK stack (Simplified Chinese, Traditional Chinese, Japanese, Korean) via `:lang()` based on the nearest `lang` attribute — see [Typography](/must-know/typography). |
-| <Code variant="nowrap">--font-weight-normal</Code>   | <Code variant="nowrap">.font-normal</Code>       | Applies the **regular** font weight optimized for the Porsche Next typeface.                                                                                                                                                                                                        |
-| <Code variant="nowrap">--font-weight-semibold</Code> | <Code variant="nowrap">.font-semibold</Code>     | Applies the **semi-bold** font weight optimized for the Porsche Next typeface.                                                                                                                                                                                                      |
-| <Code variant="nowrap">--font-weight-bold</Code>     | <Code variant="nowrap">.font-bold</Code>         | Applies the **bold** font weight optimized for the Porsche Next typeface.                                                                                                                                                                                                           |
-| <Code variant="nowrap">--leading-normal</Code>       | <Code variant="nowrap">.leading-normal</Code>    | Applies a dynamic default line height specifically optimized for the Porsche Next typeface.                                                                                                                                                                                         |
-| <Code variant="nowrap">--text-2xs (--leading)</Code> | <Code variant="nowrap">.text-2xs</Code>          | Applies the **2x-small** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                         |
-| <Code variant="nowrap">--text-xs (--leading)</Code>  | <Code variant="nowrap">.text-xs</Code>           | Applies the **x-small** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                          |
-| <Code variant="nowrap">--text-sm (--leading)</Code>  | <Code variant="nowrap">.text-sm</Code>           | Applies the **small** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                            |
-| <Code variant="nowrap">--text-md (--leading)</Code>  | <Code variant="nowrap">.text-md</Code>           | Applies the **medium** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                           |
-| <Code variant="nowrap">--text-lg (--leading)</Code>  | <Code variant="nowrap">.text-lg</Code>           | Applies the **large** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                            |
-| <Code variant="nowrap">--text-xl (--leading)</Code>  | <Code variant="nowrap">.text-xl</Code>           | Applies the **x-large** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                          |
-| <Code variant="nowrap">--text-2xl (--leading)</Code> | <Code variant="nowrap">.text-2xl</Code>          | Applies the **2x-large** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                         |
-| <Code variant="nowrap">--text-3xl (--leading)</Code> | <Code variant="nowrap">.text-3xl</Code>          | Applies the **3x-large** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                         |
-| <Code variant="nowrap">--text-4xl (--leading)</Code> | <Code variant="nowrap">.text-4xl</Code>          | Applies the **4x-large** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                         |
-| <Code variant="nowrap">--text-5xl (--leading)</Code> | <Code variant="nowrap">.text-5xl</Code>          | Applies the **5x-large** font size and line height optimized for the Porsche Next typeface.                                                                                                                                                                                         |
+### Font Family
+
+<TailwindVariablesTable variables={tailwindMeta.theme.typography.family} />
+
+### Font Weight
+
+<TailwindVariablesTable variables={tailwindMeta.theme.typography.weight} />
+
+### Line Height
+
+<TailwindVariablesTable variables={tailwindMeta.theme.typography.lineHeight} />
+
+### Typescale
+
+<TailwindVariablesTable variables={tailwindMeta.theme.typography.text} />

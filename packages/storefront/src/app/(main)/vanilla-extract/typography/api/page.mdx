@@ -1,26 +1,7 @@
+import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract/meta';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import {
-  fontPorscheNext,
-  fontPorscheNextZhHant,
-  fontPorscheNextZhHans,
-  fontPorscheNextJa,
-  fontPorscheNextKo,
-  fontWeightNormal,
-  fontWeightSemibold,
-  fontWeightBold,
-  leadingNormal,
-  typescale2Xs,
-  typescaleXs,
-  typescaleSm,
-  typescaleMd,
-  typescaleLg,
-  typescaleXl,
-  typescale2Xl,
-  typescale3Xl,
-  typescale4Xl,
-  typescale5Xl,
-} from '@porsche-design-system/components-react/vanilla-extract';
+import { StylesTable } from '@/components/common/StylesTable';
+import { filterMeta } from '@/lib/filterMeta';
 
 export const metadata = {
   title: 'Vanilla Extract: Typography - Porsche Design System',
@@ -35,57 +16,31 @@ export const metadata = {
 
 ### Heading
 
-| JS                                                 | Description                                                                                                           |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| <Code variant="nowrap">proseHeading5XlStyle</Code> | Applies the **5x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">proseHeading4XlStyle</Code> | Applies the **4x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">proseHeading3XlStyle</Code> | Applies the **3x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">proseHeading2XlStyle</Code> | Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">proseHeadingXlStyle</Code>  | Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
-| <Code variant="nowrap">proseHeadingLgStyle</Code>  | Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
-| <Code variant="nowrap">proseHeadingMdStyle</Code>  | Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.   |
-| <Code variant="nowrap">proseHeadingSmStyle</Code>  | Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
-| <Code variant="nowrap">proseHeadingXsStyle</Code>  | Applies the **x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
-| <Code variant="nowrap">proseHeading2XsStyle</Code> | Applies the **2x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+<StylesTable
+  meta={filterMeta(vanillaExtractMeta.typography, (k) => k.startsWith('proseHeading'))}
+  columnLabel="JS"
+  showValue={false}
+/>
 
 ### Text
 
-| JS                                              | Description                                                                                               |
-| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| <Code variant="nowrap">proseText5XlStyle</Code> | Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
-| <Code variant="nowrap">proseText4XlStyle</Code> | Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
-| <Code variant="nowrap">proseText3XlStyle</Code> | Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
-| <Code variant="nowrap">proseText2XlStyle</Code> | Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
-| <Code variant="nowrap">proseTextXlStyle</Code>  | Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
-| <Code variant="nowrap">proseTextLgStyle</Code>  | Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
-| <Code variant="nowrap">proseTextMdStyle</Code>  | Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.   |
-| <Code variant="nowrap">proseTextSmStyle</Code>  | Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
-| <Code variant="nowrap">proseTextXsStyle</Code>  | Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
-| <Code variant="nowrap">proseText2XsStyle</Code> | Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+<StylesTable
+  meta={filterMeta(vanillaExtractMeta.typography, (k) => k.startsWith('proseText'))}
+  columnLabel="JS"
+  showValue={false}
+/>
 
 ## JS Variables
 
-| JS                                                  | Description                                                                                   | Value                                                |
-| --------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| <Code variant="nowrap">fontPorscheNext</Code>       | Holds the **Porsche Next** font family along with fallback fonts.                             | <Code variant="value">{fontPorscheNext}</Code>       |
-| <Code variant="nowrap">fontPorscheNextZhHans</Code> | Holds the **Porsche Next** font family along with fallback fonts for **Simplified Chinese**.  | <Code variant="value">{fontPorscheNextZhHans}</Code> |
-| <Code variant="nowrap">fontPorscheNextZhHant</Code> | Holds the **Porsche Next** font family along with fallback fonts for **Traditional Chinese**. | <Code variant="value">{fontPorscheNextZhHant}</Code> |
-| <Code variant="nowrap">fontPorscheNextJa</Code>     | Holds the **Porsche Next** font family along with fallback fonts for **Japanese**.            | <Code variant="value">{fontPorscheNextJa}</Code>     |
-| <Code variant="nowrap">fontPorscheNextKo</Code>     | Holds the **Porsche Next** font family along with fallback fonts for **Korean**.              | <Code variant="value">{fontPorscheNextKo}</Code>     |
-| <Code variant="nowrap">fontWeightNormal</Code>      | Holds the **normal** font weight optimized for the Porsche Next typeface.                     | <Code variant="value">{fontWeightNormal}</Code>      |
-| <Code variant="nowrap">fontWeightSemibold</Code>    | Holds the **semibold** font weight optimized for the Porsche Next typeface.                   | <Code variant="value">{fontWeightSemibold}</Code>    |
-| <Code variant="nowrap">fontWeightBold</Code>        | Holds the **bold** font weight optimized for the Porsche Next typeface.                       | <Code variant="value">{fontWeightBold}</Code>        |
-| <Code variant="nowrap">leadingNormal</Code>         | Holds a dynamic default line height specifically optimized for the Porsche Next typeface.     | <Code variant="value">{leadingNormal}</Code>         |
-| <Code variant="nowrap">typescale2Xs</Code>          | Holds the **2x-small** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale2Xs}</Code>          |
-| <Code variant="nowrap">typescaleXs</Code>           | Holds the **x-small** font size optimized for the Porsche Next typeface.                      | <Code variant="value">{typescaleXs}</Code>           |
-| <Code variant="nowrap">typescaleSm</Code>           | Holds the **small** font size optimized for the Porsche Next typeface.                        | <Code variant="value">{typescaleSm}</Code>           |
-| <Code variant="nowrap">typescaleMd</Code>           | Holds the **medium** font size optimized for the Porsche Next typeface.                       | <Code variant="value">{typescaleMd}</Code>           |
-| <Code variant="nowrap">typescaleLg</Code>           | Holds the **large** font size optimized for the Porsche Next typeface.                        | <Code variant="value">{typescaleLg}</Code>           |
-| <Code variant="nowrap">typescaleXl</Code>           | Holds the **x-large** font size optimized for the Porsche Next typeface.                      | <Code variant="value">{typescaleXl}</Code>           |
-| <Code variant="nowrap">typescale2Xl</Code>          | Holds the **2x-large** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale2Xl}</Code>          |
-| <Code variant="nowrap">typescale3Xl</Code>          | Holds the **3x-large** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale3Xl}</Code>          |
-| <Code variant="nowrap">typescale4Xl</Code>          | Holds the **4x-large** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale4Xl}</Code>          |
-| <Code variant="nowrap">typescale5Xl</Code>          | Holds the **5x-large** font size optimized for the Porsche Next typeface.                     | <Code variant="value">{typescale5Xl}</Code>          |
+<StylesTable
+  meta={{
+    ...vanillaExtractMeta.font.family,
+    ...vanillaExtractMeta.font.weight,
+    ...vanillaExtractMeta.font.lineHeight,
+    ...vanillaExtractMeta.font.size,
+  }}
+  columnLabel="JS"
+/>
 
 ## CJK auto-detection
 
@@ -93,9 +48,10 @@ Use the `getCJKFontFamilyStyle()` helper on any style object that sets `fontFami
 locale-specific **Porsche Next** font stack for **Simplified Chinese**, **Traditional Chinese**, **Japanese** or
 **Korean** based on the nearest `lang` attribute (typically set on `<html>`).
 
-| JS Function                                           | Description                                                                                                                                                                     |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <Code variant="nowrap">getCJKFontFamilyStyle()</Code> | Applies locale-specific **Porsche Next** font stacks for **CJK** languages (Simplified Chinese, Traditional Chinese, Japanese, Korean) based on the element's `lang` attribute. |
+<StylesTable
+  meta={{ getCJKFontFamilyStyle: vanillaExtractMeta.font.getCJKFontFamilyStyle }}
+  columnLabel="JS Function"
+/>
 
 ```ts
 import { style } from '@vanilla-extract/css';

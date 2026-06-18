@@ -54,6 +54,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/stackblitz": "0.0.0",
     "@porsche-design-system/stylesheets": "0.0.0",
+    "@porsche-design-system/tailwindcss": "0.0.0",
     "@porsche-design-system/tokens-meta": "0.0.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
