@@ -1,5 +1,17 @@
-@mixin pds-grid {
-  margin: 0 var(--pds-internal-grid-margin, 0);
+import type { ScssMixin } from '../types';
+
+/**
+ * Grid utility mixin — the documented `pds-grid` layout system. The responsive grid template, its
+ * media queries and the internal `--pds-internal-grid-*` / `--pds-grid-*-span-*` custom properties
+ * are carried verbatim through the raw escape hatch. The documented `$pds-grid-*` span/offset/column
+ * variables (in `theme.grid`) read the custom properties this mixin sets.
+ */
+export const grid = [
+  {
+    name: 'pds-grid',
+    description:
+      'Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested).',
+    raw: `  margin: 0 var(--pds-internal-grid-margin, 0);
   display: grid;
   padding: 0 calc(50% - var(--pds-internal-grid-margin, 0px) - 2560px/2);
   grid-gap: clamp(16px, 1.25vw + 12px, 36px);
@@ -53,5 +65,6 @@
 
   @media (min-width: 1920px) {
     --pds-internal-grid-safe-zone: min(50vw - 880px, 400px);
-  }
-}
+  }`,
+  },
+] satisfies ScssMixin[];

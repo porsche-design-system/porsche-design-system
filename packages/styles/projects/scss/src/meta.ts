@@ -3,12 +3,14 @@ import { border } from './theme/border';
 import { breakpoint } from './theme/breakpoint';
 import { color } from './theme/color';
 import { gradient } from './theme/gradient';
+import { grid } from './theme/grid';
 import { motion } from './theme/motion';
 import { shadow } from './theme/shadow';
 import { spacing } from './theme/spacing';
 import { typography } from './theme/typography';
 import type { ScssMeta } from './types';
 import { focus } from './utilities/focus';
+import { grid as gridMixins } from './utilities/grid';
 import { mediaQuery } from './utilities/media-query';
 import { skeleton } from './utilities/skeleton';
 import { typography as typographyMixins } from './utilities/typography';
@@ -29,11 +31,13 @@ export const scssMeta = {
     spacing,
     motion,
     gradient,
+    grid,
   },
   utilities: {
     typography: typographyMixins,
     skeleton,
     focus,
     mediaQuery,
+    grid: gridMixins,
   },
 } satisfies ScssMeta;

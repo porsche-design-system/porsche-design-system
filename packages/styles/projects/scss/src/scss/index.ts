@@ -33,6 +33,7 @@ import {
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
 import { scssMeta } from '../meta';
+import { gridGroups } from '../theme/grid';
 import type { ScssFileMeta, ScssRaw } from '../types';
 import { colorDeprecatedAliases, colorSchemeMixin } from './color-plumbing';
 import { focusDeprecatedAliases } from './focus-plumbing';
@@ -281,6 +282,82 @@ const mediaQueryFile: ScssFileMeta = {
   ],
 };
 
+// Grid — the documented `pds-grid` mixin (the responsive grid template, via the raw escape hatch)
+// plus the documented `$pds-grid-*` span/offset/column/gap variables. The variables keep their
+// original per-partial split (one descriptor each) so the `@forward` index is unchanged in effect;
+// each consumes its `gridGroups` slice by identity. No grid plumbing — every piece is documented.
+const gridFile: ScssFileMeta = {
+  file: '_grid.scss',
+  description: 'The `pds-grid` responsive layout mixin (the Porsche Grid).',
+  nodes: [...flatten(scssMeta.utilities.grid)],
+};
+
+const gridGapFile: ScssFileMeta = {
+  file: '_grid-gap.scss',
+  description: 'The `$pds-grid-gap` variable.',
+  nodes: [...flatten(gridGroups.gap)],
+};
+
+const gridFullFile: ScssFileMeta = {
+  file: '_grid-full.scss',
+  description: 'The `full` area column-start/end variables.',
+  nodes: [...flatten(gridGroups.full)],
+};
+
+const gridFullOffsetFile: ScssFileMeta = {
+  file: '_grid-full-offset.scss',
+  description: 'The `full` area offset variable.',
+  nodes: [...flatten(gridGroups.fullOffset)],
+};
+
+const gridWideFile: ScssFileMeta = {
+  file: '_grid-wide.scss',
+  description: 'The `wide` area column-start/end variables.',
+  nodes: [...flatten(gridGroups.wide)],
+};
+
+const gridWideOffsetFile: ScssFileMeta = {
+  file: '_grid-wide-offset.scss',
+  description: 'The `wide` area offset variables.',
+  nodes: [...flatten(gridGroups.wideOffset)],
+};
+
+const gridExtendedFile: ScssFileMeta = {
+  file: '_grid-extended.scss',
+  description: 'The `extended` area column-start/end and span variables.',
+  nodes: [...flatten(gridGroups.extended)],
+};
+
+const gridExtendedOffsetFile: ScssFileMeta = {
+  file: '_grid-extended-offset.scss',
+  description: 'The `extended` area offset variables.',
+  nodes: [...flatten(gridGroups.extendedOffset)],
+};
+
+const gridBasicFile: ScssFileMeta = {
+  file: '_grid-basic.scss',
+  description: 'The `basic` area column-start/end and span variables.',
+  nodes: [...flatten(gridGroups.basic)],
+};
+
+const gridBasicOffsetFile: ScssFileMeta = {
+  file: '_grid-basic-offset.scss',
+  description: 'The `basic` area offset variables.',
+  nodes: [...flatten(gridGroups.basicOffset)],
+};
+
+const gridNarrowFile: ScssFileMeta = {
+  file: '_grid-narrow.scss',
+  description: 'The `narrow` area column-start/end and span variables.',
+  nodes: [...flatten(gridGroups.narrow)],
+};
+
+const gridNarrowOffsetFile: ScssFileMeta = {
+  file: '_grid-narrow-offset.scss',
+  description: 'The `narrow` area offset variables.',
+  nodes: [...flatten(gridGroups.narrowOffset)],
+};
+
 // The `@forward` index re-exporting every partial under the consumer's `pds.*` namespace. Plumbing.
 const indexFile: ScssFileMeta = {
   file: '_index.scss',
@@ -344,6 +421,18 @@ export const scssFileMeta: ScssFileMeta[] = [
   skeletonFile,
   focusFile,
   mediaQueryFile,
+  gridFile,
+  gridGapFile,
+  gridFullFile,
+  gridFullOffsetFile,
+  gridWideFile,
+  gridWideOffsetFile,
+  gridExtendedFile,
+  gridExtendedOffsetFile,
+  gridBasicFile,
+  gridBasicOffsetFile,
+  gridNarrowFile,
+  gridNarrowOffsetFile,
   indexFile,
 ];
 
