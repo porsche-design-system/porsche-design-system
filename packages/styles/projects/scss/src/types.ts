@@ -39,6 +39,7 @@ export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
   shadow: T[];
   breakpoint: T[];
   motion: { duration: T[]; easing: T[] };
+  gradient: T[];
 };
 
 /**
@@ -68,7 +69,8 @@ export type ScssVariableGroup =
   | 'border'
   | 'blur'
   | 'shadow'
-  | 'motion';
+  | 'motion'
+  | 'gradient';
 
 /**
  * A documented scss variable — {@link TokenMeta} extended with the `$`-prefixed `name` plus doc
@@ -145,7 +147,7 @@ export type ScssMeta = {
   theme: Partial<ThemeCatalog<ScssVariable>> &
     Pick<
       ThemeCatalog<ScssVariable>,
-      'border' | 'blur' | 'breakpoint' | 'color' | 'typography' | 'shadow' | 'spacing' | 'motion'
+      'border' | 'blur' | 'breakpoint' | 'color' | 'typography' | 'shadow' | 'spacing' | 'motion' | 'gradient'
     >;
   /** The documented mixins. Typography, skeleton, focus and media-query are migrated; later slices add the rest. */
   utilities: Partial<UtilitiesCatalog<ScssMixin>> &

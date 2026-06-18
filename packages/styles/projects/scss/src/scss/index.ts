@@ -37,6 +37,7 @@ import type { ScssFileMeta, ScssRaw } from '../types';
 import { colorDeprecatedAliases, colorSchemeMixin } from './color-plumbing';
 import { focusDeprecatedAliases } from './focus-plumbing';
 import { cjkFontFamilyMixin, fontDeprecatedAliases } from './font-plumbing';
+import { gradientDeprecatedMixins } from './gradient-plumbing';
 import { breakpointsMap, mediaQueryDeprecatedAliases } from './media-query-plumbing';
 import { flatten, renderNode } from './render';
 import { skeletonDeprecatedMixin } from './skeleton-plumbing';
@@ -172,6 +173,14 @@ const motionFile: ScssFileMeta = {
   file: '_motion.scss',
   description: 'The duration and easing scales plus the deprecated `$pds-motion-*` aliases.',
   nodes: [...flatten(scssMeta.theme.motion), blank, motionDeprecatedAliases],
+};
+
+// Gradient — the documented `$gradient-stops-fade-dark` variable, then the deprecated
+// `pds-gradient-to-*` directional mixins as plumbing (still emitted, not documented entries).
+const gradientFile: ScssFileMeta = {
+  file: '_gradient.scss',
+  description: 'The `$gradient-stops-fade-dark` color stops plus the deprecated `pds-gradient-to-*` mixins.',
+  nodes: [...flatten(scssMeta.theme.gradient), blank, gradientDeprecatedMixins],
 };
 
 // Color — the documented `$color-*` variables, then the `color-scheme()` theming mixin and the
@@ -326,6 +335,7 @@ export const scssFileMeta: ScssFileMeta[] = [
   shadowFile,
   spacingFile,
   motionFile,
+  gradientFile,
   colorFile,
   fontFile,
   headingFile,
