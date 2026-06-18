@@ -113,3 +113,7 @@ packages/tokens/projects/tokens-meta/src/lib/*
 packages/styles/projects/tailwindcss/meta/
 packages/styles/projects/vanilla-extract/meta/
 
+# Claude, ignored for now for testing and review of the skills. Remove once we decided on what skills to keep.
+.claude/
+.skills-lock.json
+
