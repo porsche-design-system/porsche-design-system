@@ -11,6 +11,13 @@
 #
 # Assigning an issue to `@copilot` is what starts the coding agent. Confirm the
 # agent is enabled for this repo under Settings → Copilot → Coding agent.
+#
+# IMPORTANT: assigning the `@copilot` agent requires a *user* token. The default
+# `GITHUB_TOKEN` is a GitHub App installation token and fails with:
+#   "Assigning agents is not supported with GitHub App installation tokens.
+#    Use a user token (personal access token or OAuth token) instead."
+# Provide a fine-grained or classic PAT as the `GH_COPILOT_AGENT_TOKEN` repo secret
+# (Settings → Secrets and variables → Actions). See the runbook for setup steps.
 name: 'Weekly Dependency Agent'
 
 on:
@@ -54,7 +61,9 @@ jobs:
       - name: 'Open task issue for the Copilot coding agent'
         if: steps.outdated.outputs.has-updates == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Must be a *user* token (PAT) — the default GITHUB_TOKEN is a GitHub
+          # App installation token and cannot assign the `@copilot` agent.
+          GH_TOKEN: ${{ secrets.GH_COPILOT_AGENT_TOKEN }}
           # Absolute URL to the runbook at the dispatched commit (repo-relative
           # paths are not auto-linked in issue bodies). `${{ }}` is substituted
           # by the Actions runner before the shell runs.
