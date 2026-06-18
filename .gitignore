@@ -112,4 +112,4 @@ packages/tokens/projects/tokens-meta/src/lib/*
 # Meta
 packages/styles/projects/tailwindcss/meta/
 packages/styles/projects/vanilla-extract/meta/
-
+packages/styles/projects/emotion/meta/
