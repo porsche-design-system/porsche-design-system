@@ -5,6 +5,6 @@
     "ignoreDeprecations": "6.0",
     "jsx": "react-jsx"
   },
-  "include": ["./src"],
+  "include": ["./src", "./emotionMeta"],
   "exclude": ["**/*.spec.ts"]
 }
