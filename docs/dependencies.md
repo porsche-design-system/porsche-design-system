@@ -1,5 +1,8 @@
 # Dependencies
 
+> **AI cloud agents**: For the recurring automated update task, follow the deterministic runbook in
+> [`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md). The sections below provide the full rationale.
+
 ## Dependency updates
 
 Every week, we update our NPM packages. Updates are driven by [`syncpack`](#syncpack-helper-scripts) via the root
@@ -47,6 +50,15 @@ against the npm registry (which would otherwise emit `Failed to fetch` warnings)
 dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to the ignore list in
 `.github/dependabot.yml`.
 
+### Dependabot (security-only for npm)
+
+Routine npm **version** updates are handled by `syncpack` (above) and, for the recurring automated task, by the AI agent
+runbook ([`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md)) — **not** by Dependabot.
+The npm entry in `.github/dependabot.yml` sets `open-pull-requests-limit: 0`, which disables Dependabot version-update
+PRs while still allowing **security** PRs (grouped via `applies-to: security-updates`). The `ignore` list there keeps the
+held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
+Dependabot on a monthly schedule.
+
 ## Strict peer dependency resolution
 
 `npm install` runs with **strict** peer dependency resolution (npm 7+ default). We intentionally do **not** use
@@ -60,12 +72,90 @@ Current overrides:
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
+- **Security overrides** force vulnerable transitive dependencies up to their first patched release (see
+  [Remediation policy](#remediation-policy)). For libraries whose newer majors are not API-compatible with older
+  consumers (`minimatch`, `brace-expansion`), per-major version-selector keys (e.g. `"minimatch@3": "3.1.4"`,
+  `"minimatch@9": "9.0.7"`) keep each major on its own backported patch. `minimatch@10`/`brace-expansion@5` export
+  non-callable objects, so a blanket override would break `^3.x`/`^1.x` consumers (e.g. `glob@7`) that call the default
+  export directly. Overrides that would collide with a different major required elsewhere are scoped to a single parent
+  (e.g. `"js-beautify": { "glob": "^10.5.0" }`, `"@react-router/serve": { "express": "^4.22.2" }`,
+  `"next": { "postcss": "^8.5.10" }`).
+
+## Auditing dependencies (`npm audit`)
+
+Use `npm run npm:audit` (plain `npm audit`) to review advisories. **Do not run `npm audit fix` /
+`npm audit fix --force`** on this monorepo. `npm audit fix` does not understand our workspace setup and will try to
+"repair" a transitive advisory by **downgrading a hoisted dev tool** to an old version, which then violates our pinned
+tooling and aborts with `ERESOLVE` under [strict peer resolution](#strict-peer-dependency-resolution).
+
+### Why `npm audit fix` aborts with `ERESOLVE`
+
+The private workspace sub-projects (e.g. `packages/assets/projects/*`) declare their shared dev tooling
+(`@rollup/plugin-typescript`, `rollup`, `rollup-plugin-dts`, `tsx`, `typescript`, `change-case`, …) as
+`peerDependencies: "*"`. This is **intentional**: it lets each private workspace consume the single version pinned once
+in the root [`package.json`](../package.json) instead of re-pinning (and drifting) per project. `syncpack` keeps that
+single root version consistent.
+
+`npm audit fix` does not understand this hoisting contract. When it finds a transitive advisory whose only "fix" is to
+**downgrade a hoisted build tool**, it picks an old version that pulls in an incompatible `typescript` peer, and the
+conflict surfaces as an `ERESOLVE` against the workspace tree.
+
+> **Historical example:** before the build tooling was consolidated onto rollup, the private libs used `tsup`. The
+> `esbuild` advisory had no fixed version reachable from `tsup@8.5.1` (it caps `esbuild` at `^0.27.0`), so
+> `npm audit fix` proposed downgrading `tsup` to `6.5.0`, which pulls `typescript@^4.1.0` and collided with the root
+> `typescript`. Migrating the `--dts` libs to `rollup` + `rollup-plugin-dts` removed `tsup` (and that downgrade path)
+> entirely.
+
+**The `"*"` peers are not the bug** — removing them would only hide the conflict, break the single-version hoisting
+contract, and allow duplicate tool versions across workspaces. Keep them.
+
+### Remediation policy
+
+- For a **genuinely fixable** advisory, add a pinned [`overrides`](#strict-peer-dependency-resolution) entry in the root
+  `package.json` (same pattern as `madge > typescript`) and run `npm install`.
+- For an advisory in a **held-back** dependency (Angular, Stencil, Playwright — see
+  [Held-back dependencies](#held-back-dependencies)), wait for the upstream-sanctioned upgrade path.
+- Never reach for `--legacy-peer-deps` or `--force`.
+- After adding/changing overrides, delete `package-lock.json` and `node_modules` and re-run `npm install`
+  ([Dependency updates](#dependency-updates) step 5). A plain `npm install` only re-resolves changed nodes, so stale
+  transitive entries keep their old (vulnerable) versions and the override appears to have no effect.
+
+### Known unfixable advisory: `html-minifier`
+
+`html-minifier@4` (used only by the build-time partials generator in
+[`packages/components-js/projects/partials`](../packages/components-js/projects/partials)) has an unpatched ReDoS
+advisory with **no fixed release**. It was replaced with the maintained drop-in fork
+[`html-minifier-terser`](https://www.npmjs.com/package/html-minifier-terser), whose `minify()` is async — the partial
+generators and `minifyHTML()` were made `async` accordingly. Output is byte-for-byte identical, so the generated
+`partials.tsx` is unchanged.
+
+### Accepted advisories (held-back build tooling)
+
+The remaining advisories all originate from **dev-only** build tooling we hold back, are not reachable from shipped
+package output, and several are Windows-dev-server-only:
+
+- `@angular/build`, `@angular/compiler-cli`, `@babel/core` (pulled by Angular) — Angular is upgraded via `ng update`
+  only (see [Held-back dependencies](#held-back-dependencies)).
+- `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` (held back) and the React Router dev server
+  (`@react-router/dev` → `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These
+  clear once Angular and `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
+
+## Build tooling for `--dts` libraries
+
+The private workspace libraries that ship `index.js`/`index.mjs` plus bundled `.d.ts`/`.d.mts` (the
+`packages/assets/projects/*` manifests and the storefront `stackblitz` helper) are bundled with **rollup**, the same
+bundler used everywhere else in the monorepo, via the shared factory
+[`packages/assets/projects/rollup.config.base.mjs`](../packages/assets/projects/rollup.config.base.mjs). It uses
+`@rollup/plugin-typescript` for the JS bundles and `rollup-plugin-dts` for the bundled declaration (the same library
+`tsup --dts` used internally). Each project's `build:lib` runs `rollup -c` against a tiny `rollup.config.mjs` that calls
+the factory. This replaced the previous `tsup` setup, removing `tsup` (and its vulnerable transitive `esbuild`) from the
+dependency tree.
 
 ## Explicit `@next/swc-*` optional dependencies (storefront)
 
 The storefront's [`package.json`](../packages/storefront/package.json) declares all eight `@next/swc-*` platform
-binaries as `optionalDependencies` (pinned to the same range as `next`). **Do not remove them.**
-The same block is declared in every workspace that runs `next build`
+binaries as `optionalDependencies` (pinned to the same range as `next`). **Do not remove them.** The same block is
+declared in every workspace that runs `next build`
 ([`packages/components-react/projects/nextjs`](../packages/components-react/projects/nextjs/package.json)), so each one
 is self-sufficient.
 
@@ -83,8 +173,10 @@ machine npm still installs only the matching binary; the rest are recorded but s
 
 ## Held-back dependencies
 
-These dependencies are intentionally excluded from the automated `syncpack` / `npm run npm:update` flow and from
-Dependabot. The exclusion is configured in two places that must be kept in sync when adding a new entry:
+These dependencies are intentionally excluded from the automated `syncpack` / `npm run npm:update` flow. They are also
+listed in Dependabot's `ignore` list so they stay out of Dependabot's **security** PRs (npm version updates are already
+off — see [Dependabot (security-only for npm)](#dependabot-security-only-for-npm)). The exclusion is configured in two
+places that must be kept in sync when adding a new entry:
 
 - the `isIgnored` `updateGroups` entry in [`.syncpackrc.json`](../.syncpackrc.json), and
 - the `ignore` list in `.github/dependabot.yml`.
@@ -109,8 +201,10 @@ Dependabot. The exclusion is configured in two places that must be kept in sync 
    which indicates whether `typescript` can be updated for Angular packages or not.
 5. Run `npm install` again from the project root.
 
-**`@playwright/test`** — bump the version deliberately, then regenerate and verify the committed VRT snapshots so the
-browser binaries and screenshots stay in sync.
+**`@playwright/test`** — bump the exact pin deliberately, then update the Docker image tag
+(`mcr.microsoft.com/playwright:vX.Y.Z-jammy`) in `docker-compose.yml` (×2) and `.github/workflows/contribution.yml` (×4)
+to match, and regenerate/verify the committed VRT snapshots so browser binaries and screenshots stay in sync. A mismatch
+between the installed Playwright and the Docker image makes CI fail.
 
 **`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
 dependency; otherwise `patch-package` fails on `postinstall`.

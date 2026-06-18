@@ -208,6 +208,7 @@
     "npm:format:fix": "syncpack format",
     "npm:outdated": "syncpack update --check --dependencies '!@porsche-design-system/**'",
     "npm:update": "syncpack update --interactive --dependencies '!@porsche-design-system/**'",
+    "npm:audit": "npm audit",
     "npm:remove": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
     "npm:clean": "npm cache clean --force"
   },
@@ -220,7 +221,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
     "@biomejs/biome": "^2.5.0",
-    "@playwright/test": "1.59.1",
+    "@playwright/test": "1.61.0",
     "@porsche-design-system/prettier-config": "^1.0.1",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-json": "^6.1.0",
@@ -248,6 +249,7 @@
     "rollup": "^4.62.0",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-dts": "^6.4.1",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "rollup-plugin-modify": "^3.0.0",
     "rollup-plugin-preserve-directives": "^0.4.0",
@@ -257,7 +259,6 @@
     "svgo": "^4.0.1",
     "syncpack": "^15.3.2",
     "tailwindcss": "^4.3.1",
-    "tsup": "^8.5.1",
     "tsx": "^4.22.4",
     "typescript": "~6.0.3",
     "vite": "^8.0.16",
@@ -268,6 +269,33 @@
   "overrides": {
     "madge": {
       "typescript": "$typescript"
+    },
+    "@babel/runtime": "^7.26.10",
+    "@tootallnate/once": "^3.0.1",
+    "brace-expansion@1": "1.1.13",
+    "brace-expansion@2": "2.0.3",
+    "braces": "^3.0.3",
+    "ejs": "^3.1.10",
+    "follow-redirects": "^1.16.0",
+    "js-cookie": "^3.0.8",
+    "koa": "^2.16.4",
+    "lodash": "^4.18.1",
+    "mdast-util-to-hast": "^13.2.1",
+    "micromatch": "^4.0.8",
+    "minimatch@3": "3.1.4",
+    "minimatch@5": "5.1.8",
+    "minimatch@9": "9.0.7",
+    "minimatch@10": "10.2.5",
+    "qs": "^6.15.2",
+    "tmp": "^0.2.7",
+    "js-beautify": {
+      "glob": "^10.5.0"
+    },
+    "next": {
+      "postcss": "^8.5.10"
+    },
+    "@react-router/serve": {
+      "express": "^4.22.2"
     }
   },
   "volta": {
