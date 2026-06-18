@@ -32,7 +32,8 @@
     "clean:build:vanilla-extract": "npm run clean:build --workspace=@porsche-design-system/vanilla-extract"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
+    "@porsche-design-system/shared": "0.0.0",
+    "@vitejs/plugin-react": "^6.0.2"
   },
   "peerDependencies": {
     "@emotion/styled": "*",

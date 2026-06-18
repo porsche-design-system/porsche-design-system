@@ -27,7 +27,7 @@
   "scripts": {
     "build": "npm run clean:build && npm run build:icons && npm run build:lib",
     "build:icons": "tsx scripts/build.ts",
-    "build:lib": "tsup index.ts --format esm,cjs --dts",
+    "build:lib": "rollup -c",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
@@ -35,12 +35,14 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
+    "@rollup/plugin-typescript": "*",
     "change-case": "*",
     "fast-glob": "*",
     "gzip-size": "*",
     "prettier": "*",
+    "rollup": "*",
+    "rollup-plugin-dts": "*",
     "svgo": "*",
-    "tsup": "*",
     "tsx": "*",
     "typescript": "*",
     "vitest": "*"

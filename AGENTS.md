@@ -162,6 +162,11 @@ See [`.github/instructions/accessibility.instructions.md`](.github/instructions/
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds
 2. **Angular updates**: Use `ng update` separately, check TypeScript compatibility
 
+## Task Runbooks
+
+- [`docs/runbooks/dependency-updates-agent.md`](docs/runbooks/dependency-updates-agent.md) — step-by-step runbook for AI
+  cloud agents performing the recurring weekly npm dependency update.
+
 ## Package-Specific Instructions
 
 Each major package has its own `AGENTS.md` with detailed guidance:

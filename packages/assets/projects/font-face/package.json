@@ -29,7 +29,7 @@
   "scripts": {
     "build": "npm run clean:build && npm run build:font-face && npm run build:lib",
     "build:font-face": "npm run typecheck && tsx scripts/buildFontFace.ts",
-    "build:lib": "tsup index.ts --format esm,cjs --dts",
+    "build:lib": "rollup -c",
     "typecheck": "tsc --noEmit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
@@ -39,9 +39,11 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
+    "@rollup/plugin-typescript": "*",
     "change-case": "*",
     "jss": "*",
-    "tsup": "*",
+    "rollup": "*",
+    "rollup-plugin-dts": "*",
     "tsx": "*",
     "typescript": "*"
   },
