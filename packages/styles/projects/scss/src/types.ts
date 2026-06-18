@@ -146,6 +146,7 @@ export type ScssMeta = {
       ThemeCatalog<ScssVariable>,
       'border' | 'blur' | 'breakpoint' | 'color' | 'typography' | 'shadow' | 'spacing' | 'motion'
     >;
-  /** The documented mixins. Skeleton and focus are migrated; later slices add the rest. */
-  utilities: Partial<UtilitiesCatalog<ScssMixin>> & Pick<UtilitiesCatalog<ScssMixin>, 'skeleton' | 'focus'>;
+  /** The documented mixins. Typography, skeleton and focus are migrated; later slices add the rest. */
+  utilities: Partial<UtilitiesCatalog<ScssMixin>> &
+    Pick<UtilitiesCatalog<ScssMixin>, 'typography' | 'skeleton' | 'focus'>;
 };

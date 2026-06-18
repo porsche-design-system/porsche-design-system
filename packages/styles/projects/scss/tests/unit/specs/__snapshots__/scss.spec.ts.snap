@@ -431,6 +431,24 @@ $pds-theme-dark-state-disabled: hsla(
 "
 `;
 
+exports[`should contain correct scss content for file ./dist/_display.scss 1`] = `
+"@use "heading";
+
+/* alias (deprecated) */
+@mixin pds-display-large {
+  @include heading.prose-heading-5xl;
+}
+/* alias (deprecated) */
+@mixin pds-display-medium {
+  @include heading.prose-heading-4xl;
+}
+/* alias (deprecated) */
+@mixin pds-display-small {
+  @include heading.prose-heading-3xl;
+}
+"
+`;
+
 exports[`should contain correct scss content for file ./dist/_focus.scss 1`] = `
 "@use "border";
 @use "color";
@@ -654,6 +672,70 @@ exports[`should contain correct scss content for file ./dist/_gradient.scss 1`] 
 "
 `;
 
+exports[`should contain correct scss content for file ./dist/_heading.scss 1`] = `
+"@use "font";
+@use "color";
+
+@mixin -prose-heading($size, $weight) {
+  @include font.cjk-font-family;
+  font: $weight $size / font.$leading-normal font.$font-porsche-next;
+  color: color.$color-primary;
+}
+
+@mixin prose-heading-5xl {
+  @include -prose-heading(font.$typescale-5xl, font.$font-weight-normal);
+}
+@mixin prose-heading-4xl {
+  @include -prose-heading(font.$typescale-4xl, font.$font-weight-normal);
+}
+@mixin prose-heading-3xl {
+  @include -prose-heading(font.$typescale-3xl, font.$font-weight-normal);
+}
+@mixin prose-heading-2xl {
+  @include -prose-heading(font.$typescale-2xl, font.$font-weight-normal);
+}
+@mixin prose-heading-xl {
+  @include -prose-heading(font.$typescale-xl, font.$font-weight-normal);
+}
+@mixin prose-heading-lg {
+  @include -prose-heading(font.$typescale-lg, font.$font-weight-normal);
+}
+@mixin prose-heading-md {
+  @include -prose-heading(font.$typescale-md, font.$font-weight-normal);
+}
+@mixin prose-heading-sm {
+  @include -prose-heading(font.$typescale-sm, font.$font-weight-semibold);
+}
+@mixin prose-heading-xs {
+  @include -prose-heading(font.$typescale-xs, font.$font-weight-semibold);
+}
+@mixin prose-heading-2xs {
+  @include -prose-heading(font.$typescale-2xs, font.$font-weight-semibold);
+}
+
+/* alias (deprecated) */
+@mixin pds-heading-xx-large {
+  @include prose-heading-2xl();
+}
+/* alias (deprecated) */
+@mixin pds-heading-x-large {
+  @include prose-heading-xl();
+}
+/* alias (deprecated) */
+@mixin pds-heading-large {
+  @include prose-heading-lg();
+}
+/* alias (deprecated) */
+@mixin pds-heading-medium {
+  @include prose-heading-md();
+}
+/* alias (deprecated) */
+@mixin pds-heading-small {
+  @include prose-heading-sm();
+}
+"
+`;
+
 exports[`should contain correct scss content for file ./dist/_index.scss 1`] = `
 "@forward "border";
 @forward "breakpoint";
@@ -824,5 +906,74 @@ $pds-spacing-fluid-xx-large: clamp(
   7.5vw + 56px,
   200px
 ); /* alias (deprecated) */
+"
+`;
+
+exports[`should contain correct scss content for file ./dist/_text.scss 1`] = `
+"@use "font";
+@use "color";
+
+@mixin -prose-text($size) {
+  @include font.cjk-font-family;
+  font: font.$font-weight-normal $size / font.$leading-normal
+    font.$font-porsche-next;
+  color: color.$color-primary;
+}
+
+@mixin prose-text-5xl {
+  @include -prose-text(font.$typescale-5xl);
+}
+@mixin prose-text-4xl {
+  @include -prose-text(font.$typescale-4xl);
+}
+@mixin prose-text-3xl {
+  @include -prose-text(font.$typescale-3xl);
+}
+@mixin prose-text-2xl {
+  @include -prose-text(font.$typescale-2xl);
+}
+@mixin prose-text-xl {
+  @include -prose-text(font.$typescale-xl);
+}
+@mixin prose-text-lg {
+  @include -prose-text(font.$typescale-lg);
+}
+@mixin prose-text-md {
+  @include -prose-text(font.$typescale-md);
+}
+@mixin prose-text-sm {
+  @include -prose-text(font.$typescale-sm);
+}
+@mixin prose-text-xs {
+  @include -prose-text(font.$typescale-xs);
+}
+@mixin prose-text-2xs {
+  @include -prose-text(font.$typescale-2xs);
+}
+
+/* alias (deprecated) */
+@mixin pds-text-x-large {
+  @include prose-text-xl();
+}
+/* alias (deprecated) */
+@mixin pds-text-large {
+  @include prose-text-lg();
+}
+/* alias (deprecated) */
+@mixin pds-text-medium {
+  @include prose-text-md();
+}
+/* alias (deprecated) */
+@mixin pds-text-small {
+  @include prose-text-sm();
+}
+/* alias (deprecated) */
+@mixin pds-text-x-small {
+  @include prose-text-xs();
+}
+/* alias (deprecated) */
+@mixin pds-text-xx-small {
+  @include prose-text-2xs();
+}
 "
 `;

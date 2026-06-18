@@ -39,6 +39,13 @@ import { focusDeprecatedAliases } from './focus-plumbing';
 import { cjkFontFamilyMixin, fontDeprecatedAliases } from './font-plumbing';
 import { flatten, renderNode } from './render';
 import { skeletonDeprecatedMixin } from './skeleton-plumbing';
+import {
+  displayDeprecatedAliases,
+  headingDeprecatedAliases,
+  proseHeadingHelper,
+  proseTextHelper,
+  textDeprecatedAliases,
+} from './typography-plumbing';
 
 /** A blank-line separator between sections within a partial (an empty raw node). */
 const blank: ScssRaw = { raw: '' };
@@ -214,6 +221,40 @@ const focusFile: ScssFileMeta = {
   nodes: [...flatten(scssMeta.utilities.focus), blank, focusDeprecatedAliases],
 };
 
+// Heading — the documented `prose-heading-*` mixins, with the private `-prose-heading` helper
+// (emitted first, Sass needs it before the documented mixins) and the deprecated `pds-heading-*`
+// aliases as plumbing. Bodies keep their namespaced `font.` / `color.` cross-references.
+const headingFile: ScssFileMeta = {
+  file: '_heading.scss',
+  description: 'The `prose-heading-*` mixins plus the `-prose-heading` helper and `pds-heading-*` aliases.',
+  uses: ['font', 'color'],
+  nodes: [
+    proseHeadingHelper,
+    blank,
+    ...flatten(scssMeta.utilities.typography.heading),
+    blank,
+    headingDeprecatedAliases,
+  ],
+};
+
+// Text — the documented `prose-text-*` mixins, with the private `-prose-text` helper and the
+// deprecated `pds-text-*` aliases as plumbing.
+const textFile: ScssFileMeta = {
+  file: '_text.scss',
+  description: 'The `prose-text-*` mixins plus the `-prose-text` helper and `pds-text-*` aliases.',
+  uses: ['font', 'color'],
+  nodes: [proseTextHelper, blank, ...flatten(scssMeta.utilities.typography.text), blank, textDeprecatedAliases],
+};
+
+// Display — only the deprecated `pds-display-*` aliases routed through the heading prose mixins; the
+// whole partial is plumbing (no documented display entries).
+const displayFile: ScssFileMeta = {
+  file: '_display.scss',
+  description: 'The deprecated `pds-display-*` aliases routed through the `prose-heading-*` mixins.',
+  uses: ['heading'],
+  nodes: [displayDeprecatedAliases],
+};
+
 // The `@forward` index re-exporting every partial under the consumer's `pds.*` namespace. Plumbing.
 const indexFile: ScssFileMeta = {
   file: '_index.scss',
@@ -270,6 +311,9 @@ export const scssFileMeta: ScssFileMeta[] = [
   motionFile,
   colorFile,
   fontFile,
+  headingFile,
+  textFile,
+  displayFile,
   skeletonFile,
   focusFile,
   indexFile,

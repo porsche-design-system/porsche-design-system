@@ -9,6 +9,7 @@ import { typography } from './theme/typography';
 import type { ScssMeta } from './types';
 import { focus } from './utilities/focus';
 import { skeleton } from './utilities/skeleton';
+import { typography as typographyMixins } from './utilities/typography';
 
 /**
  * The documented single source of truth for the scss package, mirroring `tailwindMeta`: a `theme`
@@ -27,6 +28,7 @@ export const scssMeta = {
     motion,
   },
   utilities: {
+    typography: typographyMixins,
     skeleton,
     focus,
   },

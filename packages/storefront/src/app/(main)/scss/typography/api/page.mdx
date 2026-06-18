@@ -1,6 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Code } from '@/components/common/Code';
 import { ScssVariablesTable } from '@/components/common/ScssVariablesTable';
+import { ScssMixinsTable } from '@/components/common/ScssMixinsTable';
 import { scssMeta } from '@porsche-design-system/scss';
 
 export const metadata = {
@@ -16,33 +17,11 @@ export const metadata = {
 
 ### Heading
 
-| SCSS Mixin                                             | Description                                                                                                           |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| <Code variant="nowrap">@mixin prose-heading-5xl</Code> | Applies the **5x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">@mixin prose-heading-4xl</Code> | Applies the **4x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">@mixin prose-heading-3xl</Code> | Applies the **3x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">@mixin prose-heading-2xl</Code> | Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
-| <Code variant="nowrap">@mixin prose-heading-xl</Code>  | Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
-| <Code variant="nowrap">@mixin prose-heading-lg</Code>  | Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
-| <Code variant="nowrap">@mixin prose-heading-md</Code>  | Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.   |
-| <Code variant="nowrap">@mixin prose-heading-sm</Code>  | Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.    |
-| <Code variant="nowrap">@mixin prose-heading-xs</Code>  | Applies the **x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.  |
-| <Code variant="nowrap">@mixin prose-heading-2xs</Code> | Applies the **2x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+<ScssMixinsTable mixins={scssMeta.utilities.typography.heading} />
 
 ### Text
 
-| SCSS Mixin                                          | Description                                                                                               |
-| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| <Code variant="nowrap">@mixin prose-text-5xl</Code> | Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
-| <Code variant="nowrap">@mixin prose-text-4xl</Code> | Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
-| <Code variant="nowrap">@mixin prose-text-3xl</Code> | Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
-| <Code variant="nowrap">@mixin prose-text-2xl</Code> | Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
-| <Code variant="nowrap">@mixin prose-text-xl</Code>  | Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
-| <Code variant="nowrap">@mixin prose-text-lg</Code>  | Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
-| <Code variant="nowrap">@mixin prose-text-md</Code>  | Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.   |
-| <Code variant="nowrap">@mixin prose-text-sm</Code>  | Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.    |
-| <Code variant="nowrap">@mixin prose-text-xs</Code>  | Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.  |
-| <Code variant="nowrap">@mixin prose-text-2xs</Code> | Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+<ScssMixinsTable mixins={scssMeta.utilities.typography.text} />
 
 ## SCSS Variables
 
