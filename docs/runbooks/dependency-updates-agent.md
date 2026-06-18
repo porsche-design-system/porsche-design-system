@@ -118,7 +118,34 @@ npm install
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).
 
-### 8. Verify against CI-equivalent checks (do not finalize on failure)
+### 8. Sync the StackBlitz starter templates (not workspace-managed)
+
+The four StackBlitz starter templates under
+`packages/storefront/projects/stackblitz/src/{vanilla-js,angular,react,vue}/package.json` are **standalone, runnable
+projects** read verbatim by
+[`generateStackblitzBundle.ts`](../../packages/storefront/projects/stackblitz/scripts/generateStackblitzBundle.ts). They
+are intentionally **not** npm workspace members (a workspace member would resolve `@porsche-design-system/components-*`
+to the local `0.0.0` package instead of the published version), so `syncpack` and Dependabot never touch them and they
+must be updated **by hand here**.
+
+Align the **shared tooling** versions in these four files with the versions `syncpack` just applied in the monorepo —
+typically `vite`, `tailwindcss`, `@tailwindcss/postcss`, `postcss`, `react`, `react-dom`, `@types/react`,
+`@types/react-dom`, `@vitejs/plugin-react`, `vue`, `vue-tsc`, `@vitejs/plugin-vue`, `globals`.
+
+**Leave these untouched** (same rules as the rest of this runbook):
+
+- `@porsche-design-system/components-*` — the **published** PDS version; bumped by the release process
+  (see `docs/release.md` → _Deploy_), not here.
+- Held-back deps — `@angular/*`, `ng-packagr`, `zone.js`, `@playwright/test`, `@stencil/core`, and `typescript` where it
+  is bound to Angular's `MAX_TS_VERSION`.
+
+Verify the bundle still generates (this writes the git-ignored `generated/bundle.ts`; **do not commit** it):
+
+```bash
+npm run build:generateStackblitzBundle --workspace=@porsche-design-system/stackblitz
+```
+
+### 9. Verify against CI-equivalent checks (do not finalize on failure)
 
 CI runs automatically on the PR you open (`build` + `test` jobs in
 [`.github/workflows/contribution.yml`](../../.github/workflows/contribution.yml)). A failing CI run will **not**
@@ -153,7 +180,7 @@ Then run the **additional suites relevant to the changed packages** (mirror what
 > snapshots, cross-browser e2e). Run what you can; for the rest, call them out explicitly in the PR description so the
 > reviewer knows what still needs to pass on CI.
 
-### 9. Review security advisories (report only)
+### 10. Review security advisories (report only)
 
 ```bash
 npm run npm:audit
@@ -171,10 +198,12 @@ Open a **single pull request** from the working branch with:
 - [ ] Any **held-back** packages that were intentionally skipped.
 - [ ] Any new/changed `overrides` entries and the reason.
 - [ ] The `npm run npm:audit` summary.
-- [ ] Build/test results (commands run + pass/fail), confirming the CI-equivalent gates from step 8 (`lint`, `build`,
+- [ ] Build/test results (commands run + pass/fail), confirming the CI-equivalent gates from step 9 (`lint`, `build`,
       relevant unit/e2e/a11y) passed locally — plus any checks left for CI (e.g. VRT) called out explicitly.
-- [ ] Only these files changed: workspace `package.json` files, root `package.json` (ranges/overrides), and
-      `package-lock.json`.
+- [ ] Only these files changed: workspace `package.json` files, root `package.json` (ranges/overrides),
+      `package-lock.json`, and the StackBlitz starter templates
+      `packages/storefront/projects/stackblitz/src/*/package.json` (shared tooling only — never their PDS version or
+      held-back deps). Do **not** commit the generated `generated/bundle.ts`.
 
 ## Stop conditions (hand back to a human)
 
