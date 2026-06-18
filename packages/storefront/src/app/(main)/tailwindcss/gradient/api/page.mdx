@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { TailwindUtilitiesTable } from '@/components/common/TailwindUtilitiesTable';
+import { tailwindMeta } from '@porsche-design-system/tailwindcss';
 
 export const metadata = {
   title: 'Tailwind CSS: Gradient - Porsche Design System',
@@ -12,9 +13,4 @@ export const metadata = {
 
 ## Classes
 
-| Tailwind `@utility` CSS class                        | Description                                                       |
-| ---------------------------------------------------- | ----------------------------------------------------------------- |
-| <Code variant="nowrap">.bg-fade-to-t</Code>               | Applies a gradient faded to the **top** as `background-image`.    |
-| <Code variant="nowrap">.bg-fade-to-r</Code>               | Applies a gradient faded to the **right** as `background-image`.  |
-| <Code variant="nowrap">.bg-fade-to-b</Code>               | Applies a gradient faded to the **bottom** as `background-image`. |
-| <Code variant="nowrap">.bg-fade-to-l</Code>               | Applies a gradient faded to the **left** as `background-image`.   |
+<TailwindUtilitiesTable utilities={tailwindMeta.utilities.gradient} />

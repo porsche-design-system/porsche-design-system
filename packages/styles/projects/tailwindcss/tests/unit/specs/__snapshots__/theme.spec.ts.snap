@@ -2,17 +2,13 @@
 
 exports[`should match compiled tailwindcss theme 1`] = `
 "@theme {
-  /* Reset */
   --breakpoint-*: initial;
   --color-*: initial;
   --radius-*: initial;
   --shadow-*: initial;
   --text-*: initial;
-
-  /* Color */
   --color-black: #000;
   --color-white: #fff;
-
   --color-focus: var(--_color-focus-dynamic, light-dark(#1a44ea, #1a44ea));
   --color-canvas: var(
     --_color-canvas-dynamic,
@@ -142,61 +138,47 @@ exports[`should match compiled tailwindcss theme 1`] = `
     --_color-info-frosted-soft-dynamic,
     light-dark(hsl(211 80% 95% / 0.55), hsl(210 59% 15% / 0.66))
   );
-
-  /* Typography */
-
-  /*
-    This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next).
-    By pointing it to our dynamic variable, we create a stable link.
-  */
+  /* This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next). By pointing it to our dynamic variable, we create a stable link. */
   --font-porsche-next: var(--_font-porsche-next-dynamic);
   --font-sans: --theme(--font-porsche-next);
-
   --font-weight-normal: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
-
   --leading-normal: calc(6px + 2.125ex);
-
   --text-2xs: 0.75rem;
-  --text-2xs--line-height: calc(6px + 2.125ex);
   --text-xs: 0.875rem;
-  --text-xs--line-height: calc(6px + 2.125ex);
+  --text-sm: 1rem;
+  --text-md: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  --text-lg: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
+  --text-xl: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
+  --text-2xl: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
+  --text-3xl: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem);
+  --text-4xl: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
+  --text-5xl: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
   --text-base: 1rem;
   --text-base--line-height: calc(6px + 2.125ex);
-  --text-sm: 1rem;
+  --text-2xs--line-height: calc(6px + 2.125ex);
+  --text-xs--line-height: calc(6px + 2.125ex);
   --text-sm--line-height: calc(6px + 2.125ex);
-  --text-md: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   --text-md--line-height: calc(6px + 2.125ex);
-  --text-lg: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
   --text-lg--line-height: calc(6px + 2.125ex);
-  --text-xl: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
   --text-xl--line-height: calc(6px + 2.125ex);
-  --text-2xl: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
   --text-2xl--line-height: calc(6px + 2.125ex);
-  --text-3xl: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem);
   --text-3xl--line-height: calc(6px + 2.125ex);
-  --text-4xl: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
   --text-4xl--line-height: calc(6px + 2.125ex);
-  --text-5xl: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
   --text-5xl--line-height: calc(6px + 2.125ex);
-
-  /* Breakpoint */
   --breakpoint-xs: 480px;
   --breakpoint-sm: 760px;
   --breakpoint-md: 1000px;
   --breakpoint-lg: 1300px;
   --breakpoint-xl: 1760px;
   --breakpoint-2xl: 1920px;
-
-  /* Spacing */
   --spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
   --spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
   --spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
   --spacing-fluid-lg: clamp(32px, 2.75vw + 23px, 76px);
   --spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
   --spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
-
   --spacing-static-2xs: 1px;
   --spacing-static-xs: 4px;
   --spacing-static-sm: 8px;
@@ -204,8 +186,6 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --spacing-static-lg: 32px;
   --spacing-static-xl: 48px;
   --spacing-static-2xl: 80px;
-
-  /* Border */
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;
@@ -215,53 +195,41 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --radius-3xl: 24px;
   --radius-4xl: 32px;
   --radius-full: calc(infinity * 1px);
-
   --default-border-width: 1px;
-  --border-width-regular: 2px; /* alias (deprecated) */
-  --border-width-thin: 1px; /* alias (deprecated) */
-
-  /* Blur */
+  /* alias (deprecated) */
+  --border-width-regular: 2px;
+  /* alias (deprecated) */
+  --border-width-thin: 1px;
   --blur-frosted: 32px;
-
-  /* Shadow */
   --shadow-sm: 0px 3px 8px rgba(0, 0, 0, 0.16);
-  --shadow-low: --theme(--shadow-sm); /* alias (deprecated) */
   --shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.16);
-  --shadow-medium: --theme(--shadow-md); /* alias (deprecated) */
   --shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
-  --shadow-high: --theme(--shadow-lg); /* alias (deprecated) */
-
-  /* Outline */
   --default-outline-width: 2px;
-
-  /* Motion */
-  --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-duration-sm: 0.25s;
+  --transition-duration-md: 0.4s;
+  --transition-duration-lg: 0.6s;
+  --transition-duration-xl: 1.2s;
   --ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
   --ease-in: cubic-bezier(0, 0, 0.2, 1);
   --ease-out: cubic-bezier(0.4, 0, 0.5, 1);
-
+  --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   --default-transition-duration: 0.25s;
-  --transition-duration-sm: 0.25s;
-  --transition-duration-short: --theme(
-    --transition-duration-sm
-  ); /* alias (deprecated) */
-  --transition-duration-md: 0.4s;
-  --transition-duration-moderate: --theme(
-    --transition-duration-md
-  ); /* alias (deprecated) */
-  --transition-duration-lg: 0.6s;
-  --transition-duration-long: --theme(
-    --transition-duration-lg
-  ); /* alias (deprecated) */
-  --transition-duration-xl: 1.2s;
-  --transition-duration-very-long: --theme(
-    --transition-duration-xl
-  ); /* alias (deprecated) */
-
-  /* Animation */
+  /* alias (deprecated) */
+  --shadow-low: --theme(--shadow-sm);
+  /* alias (deprecated) */
+  --shadow-medium: --theme(--shadow-md);
+  /* alias (deprecated) */
+  --shadow-high: --theme(--shadow-lg);
+  /* alias (deprecated) */
+  --transition-duration-short: --theme(--transition-duration-sm);
+  /* alias (deprecated) */
+  --transition-duration-moderate: --theme(--transition-duration-md);
+  /* alias (deprecated) */
+  --transition-duration-long: --theme(--transition-duration-lg);
+  /* alias (deprecated) */
+  --transition-duration-very-long: --theme(--transition-duration-xl);
   --animate-skeleton: skeleton --theme(--transition-duration-xl)
     --theme(--ease-in-out) infinite;
-
   @keyframes skeleton {
     from {
       background-position-x: 100%;
@@ -274,17 +242,15 @@ exports[`should match compiled tailwindcss theme 1`] = `
 
 @layer base {
   /*
-     Tailwind v4 won't add a prefix to variables defined outside the @theme block.
-     We override the "Bridge Variable". Since the Tailwind theme variable
-     points here, the font will update even if the utility class is prefixed.
+    Tailwind v4 won't add a prefix to variables defined outside the @theme block.
+    We override the "Bridge Variable". Since the Tailwind theme variable
+    points here, the font will update even if the utility class is prefixed.
   */
-
   :root,
   :host {
     --_font-porsche-next-dynamic:
       "Porsche Next", "Arial Narrow", Arial, "Heiti SC", SimHei, sans-serif;
   }
-
   /* Simplified Chinese */
   :lang(zh-Hans),
   :lang(zh-CN),
@@ -293,7 +259,6 @@ exports[`should match compiled tailwindcss theme 1`] = `
       "Porsche Next", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
       "Arial Narrow", Arial, sans-serif;
   }
-
   /* Traditional Chinese */
   :lang(zh-Hant),
   :lang(zh-TW),
@@ -303,14 +268,12 @@ exports[`should match compiled tailwindcss theme 1`] = `
       "Porsche Next", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
       "Arial Narrow", Arial, sans-serif;
   }
-
   /* Japanese */
   :lang(ja) {
     --_font-porsche-next-dynamic:
       "Porsche Next", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
       "Arial Narrow", Arial, sans-serif;
   }
-
   /* Korean */
   :lang(ko) {
     --_font-porsche-next-dynamic:
@@ -327,7 +290,6 @@ exports[`should match compiled tailwindcss theme 1`] = `
     (instead of plain class selectors) ensures Tailwind applies its configured
     prefix (e.g. tw:scheme-dark).
   */
-
   @supports not (color: light-dark(white, black)) {
     :root,
     :host {
@@ -944,46 +906,55 @@ exports[`should match compiled tailwindcss theme 1`] = `
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-text-xs {
   font: --theme(--font-weight-normal) --theme(--text-xs) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-text-sm {
   font: --theme(--font-weight-normal) --theme(--text-sm) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-text-md {
   font: --theme(--font-weight-normal) --theme(--text-md) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-text-lg {
   font: --theme(--font-weight-normal) --theme(--text-lg) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-text-xl {
   font: --theme(--font-weight-normal) --theme(--text-xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-text-2xl {
   font: --theme(--font-weight-normal) --theme(--text-2xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-text-3xl {
   font: --theme(--font-weight-normal) --theme(--text-3xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-text-4xl {
   font: --theme(--font-weight-normal) --theme(--text-4xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-text-5xl {
   font: --theme(--font-weight-normal) --theme(--text-5xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
@@ -996,46 +967,55 @@ exports[`should match compiled tailwindcss theme 1`] = `
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-heading-xs {
   font: --theme(--font-weight-semibold) --theme(--text-xs) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-heading-sm {
   font: --theme(--font-weight-semibold) --theme(--text-sm) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-heading-md {
   font: --theme(--font-weight-normal) --theme(--text-md) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-heading-lg {
   font: --theme(--font-weight-normal) --theme(--text-lg) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-heading-xl {
   font: --theme(--font-weight-normal) --theme(--text-xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-heading-2xl {
   font: --theme(--font-weight-normal) --theme(--text-2xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-heading-3xl {
   font: --theme(--font-weight-normal) --theme(--text-3xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-heading-4xl {
   font: --theme(--font-weight-normal) --theme(--text-4xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-heading-5xl {
   font: --theme(--font-weight-normal) --theme(--text-5xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
@@ -1048,11 +1028,13 @@ exports[`should match compiled tailwindcss theme 1`] = `
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-display-md {
   font: --theme(--font-weight-normal) --theme(--text-4xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);
   color: --theme(--color-primary);
 }
+
 @utility prose-display-lg {
   font: --theme(--font-weight-normal) --theme(--text-5xl) /
     --theme(--leading-normal) --theme(--font-porsche-next);

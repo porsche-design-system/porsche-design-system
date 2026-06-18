@@ -22,8 +22,6 @@ coverage/
 playwright-report/
 ort/
 **/tests/**/results/
-packages/styles/projects/vanilla-extract/meta/
-packages/styles/projects/emotion/meta/
 
 # Cache
 .npm
@@ -110,3 +108,8 @@ packages/component-meta/src/lib/*
 packages/components-js/projects/partials/src/lib/*
 packages/utilities/projects/utilities/src/scss/lib/*
 packages/tokens/projects/tokens-meta/src/lib/*
+
+# Meta
+packages/styles/projects/tailwindcss/meta/
+packages/styles/projects/vanilla-extract/meta/
+packages/styles/projects/emotion/meta/
