@@ -46,7 +46,8 @@ by selecting them in `npm run npm:update`.** Handle them as noted:
   [step 3](#3-update-angular-via-ng-update-do-this-before-syncpack), not syncpack.
 - `typescript` — may move only **within** Angular's `MAX_TS_VERSION` ceiling (see step 3); otherwise keep it held back
   this round.
-- `@playwright/test` — pinned to keep browser binaries in sync with committed VRT snapshots. **Never touch here.**
+- `@playwright/test` — held back from the weekly run; update deliberately via
+  [Updating Playwright](#updating-playwright-npm-pin-docker-image-vrt) (npm pin + Docker image + VRT).
 - `@stencil/core` — pinned because a `patch-package` patch targets the exact version. **Never touch here.**
 
 If the only remaining outdated packages are the _never-touch_ ones above, **skip them** and note it in the PR
@@ -229,21 +230,35 @@ npm run npm:audit
 Summarize advisories in the PR. **Do not** run `npm audit fix`. For a genuinely fixable advisory, add a pinned
 `overrides` entry (as in step 6) and regenerate the lockfile.
 
-## Output contract (what the agent must deliver)
+## Updating Playwright (npm pin, Docker image, VRT)
 
-Open a **single pull request** from the working branch with:
+`@playwright/test` is held back and is **not** part of the routine weekly run (`syncpack` skips it). Update it only
+deliberately, because the version is mirrored by the **Docker image** used for tests/VRT and by the **committed VRT
+snapshots**. Regenerating snapshots requires Docker, so **only proceed if you can run `./docker.sh`** — otherwise
+**stop and hand off** ([Stop conditions](#stop-conditions-hand-back-to-a-human)).
 
-- [ ] A title like `chore(deps): weekly npm dependency updates (<YYYY-MM-DD>)`.
-- [ ] A description listing each upgraded package with old → new version, grouped logically.
-- [ ] Any **held-back** packages that were intentionally skipped.
-- [ ] Any new/changed `overrides` entries and the reason.
-- [ ] The `npm run npm:audit` summary.
-- [ ] Build/test results (commands run + pass/fail), confirming the CI-equivalent gates from step 10 (`lint`, `build`,
-      relevant unit/e2e/a11y) passed locally — plus any checks left for CI (e.g. VRT) called out explicitly.
-- [ ] Only these files changed: workspace `package.json` files, root `package.json` (ranges/overrides),
-      `package-lock.json`, and the StackBlitz starter templates
-      `packages/storefront/projects/stackblitz/src/*/package.json` (shared tooling only — never their PDS version or
-      held-back deps). Do **not** commit the generated `generated/bundle.ts`.
+Keep all of these on the **same** version (npm `X.Y.Z` ↔ image `vX.Y.Z-jammy`):
+
+1. The exact npm pin in the root [`package.json`](../../package.json): `"@playwright/test": "X.Y.Z"`.
+2. Every Docker image reference `mcr.microsoft.com/playwright:vX.Y.Z-jammy` in
+   [`docker-compose.yml`](../../docker-compose.yml) and the workflows under `.github/workflows/` (the `image:` inputs in
+   [`contribution.yml`](../../.github/workflows/contribution.yml); there is also a commented example in
+   `code-scanning.yml`). A mismatch between the installed Playwright and the Docker image makes CI fail, so keep them
+   aligned.
+
+```bash
+# 1. Bump the exact npm pin in root package.json ("@playwright/test": "X.Y.Z"), then:
+npm install
+
+# 2. Update every Docker image reference to mcr.microsoft.com/playwright:vX.Y.Z-jammy
+#    (docker-compose.yml + the workflows under .github/workflows/).
+
+# 3. Regenerate and verify the committed VRT snapshots in Docker:
+./docker.sh npm run test:vrt:components-js
+```
+
+Commit the bumped `package.json`, `package-lock.json`, the Docker image changes, and any regenerated VRT snapshots
+**together**. If snapshots change beyond what the browser bump explains, **stop** and hand off.
 
 ## Stop conditions (hand back to a human)
 

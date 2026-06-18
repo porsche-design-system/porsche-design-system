@@ -201,8 +201,10 @@ places that must be kept in sync when adding a new entry:
    which indicates whether `typescript` can be updated for Angular packages or not.
 5. Run `npm install` again from the project root.
 
-**`@playwright/test`** — bump the version deliberately, then regenerate and verify the committed VRT snapshots so the
-browser binaries and screenshots stay in sync.
+**`@playwright/test`** — bump the exact pin deliberately, then update the Docker image tag
+(`mcr.microsoft.com/playwright:vX.Y.Z-jammy`) in `docker-compose.yml` (×2) and `.github/workflows/contribution.yml` (×4)
+to match, and regenerate/verify the committed VRT snapshots so browser binaries and screenshots stay in sync. A mismatch
+between the installed Playwright and the Docker image makes CI fail.
 
 **`@stencil/core`** — first regenerate `patches/@stencil+core+<version>.patch` for the new version, then bump the
 dependency; otherwise `patch-package` fails on `postinstall`.
