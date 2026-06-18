@@ -8,18 +8,30 @@
   "homepage": "https://designsystem.porsche.com",
   "sideEffects": false,
   "type": "commonjs",
+  "main": "./meta/cjs/index.cjs",
+  "module": "./meta/esm/index.mjs",
+  "types": "./meta/esm/index.d.ts",
   "exports": {
     ".": {
+      "types": "./meta/esm/index.d.ts",
+      "import": "./meta/esm/index.mjs",
+      "require": "./meta/cjs/index.cjs",
       "sass": "./dist/_index.scss"
     }
   },
+  "files": [
+    "./dist/",
+    "./meta/"
+  ],
   "scripts": {
-    "build": "npm run clean:build && npm run build:package && npm run copy:scss",
+    "build": "npm run clean:build && npm run build:meta && npm run build:package && npm run copy:scss",
+    "build:meta": "rollup -c rollup.config.meta.mjs",
     "build:package": "tsx scripts/build.ts",
+    "build:skill": "tsx scripts/build-skill.ts",
     "copy:scss": "cp -r src/*.scss dist/",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist"
+    "clean:build": "rm -rf ./dist ./meta"
   },
   "dependencies": {
     "@porsche-design-system/tokens": "0.0.0"
@@ -29,8 +41,10 @@
   },
   "peerDependencies": {
     "@biomejs/biome": "*",
+    "@rollup/plugin-typescript": "*",
     "@types/node": "*",
     "prettier": "*",
+    "rollup": "*",
     "sass": "*",
     "tsx": "*",
     "typescript": "*",
