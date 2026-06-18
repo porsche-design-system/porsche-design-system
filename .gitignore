@@ -22,7 +22,7 @@ coverage/
 playwright-report/
 ort/
 **/tests/**/results/
-meta/
+packages/styles/projects/vanilla-extract/meta/
 
 # Cache
 .npm
