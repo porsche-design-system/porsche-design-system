@@ -77,13 +77,25 @@ jobs:
           - Never run `npm audit fix`, `--legacy-peer-deps` or `--force`.
           - Don't hand-edit `package.json` versions or `package-lock.json`; use `syncpack` / `npm install`.
           - Deliver a single PR per the runbook's "Output contract".
+          - If this issue is unassigned, assign it to `@copilot` manually.
           EOF
 
           # Inject the URL without touching any other characters.
           sed -i "s#__RUNBOOK_URL__#${RUNBOOK_URL}#g" issue-body.md
 
-          gh issue create \
+          if ! gh issue create \
             --title "chore(deps): weekly npm dependency updates ($(date +%F))" \
             --label "dependencies" \
             --assignee "@copilot" \
-            --body-file issue-body.md
+            --body-file issue-body.md 2>issue-create.err; then
+            if grep -q "Assigning agents is not supported with GitHub App installation tokens" issue-create.err; then
+              echo "::warning::Could not auto-assign @copilot with GITHUB_TOKEN; creating issue without assignee."
+              gh issue create \
+                --title "chore(deps): weekly npm dependency updates ($(date +%F))" \
+                --label "dependencies" \
+                --body-file issue-body.md
+            else
+              cat issue-create.err >&2
+              exit 1
+            fi
+          fi
