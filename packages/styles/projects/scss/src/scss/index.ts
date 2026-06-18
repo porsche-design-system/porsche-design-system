@@ -35,6 +35,7 @@ import {
 import { scssMeta } from '../meta';
 import type { ScssFileMeta, ScssRaw } from '../types';
 import { colorDeprecatedAliases, colorSchemeMixin } from './color-plumbing';
+import { cjkFontFamilyMixin, fontDeprecatedAliases } from './font-plumbing';
 import { flatten, renderNode } from './render';
 
 /** A blank-line separator between sections within a partial (an empty raw node). */
@@ -171,6 +172,28 @@ const colorFile: ScssFileMeta = {
   nodes: [...flatten(scssMeta.theme.color), blank, colorSchemeMixin, blank, colorDeprecatedAliases],
 };
 
+// Font — the documented typography variables (families, line height, type scale, weights), with the
+// `cjk-font-family` helper mixin and the deprecated `$pds-font-*` aliases as plumbing (both still
+// emitted, neither a documented entry). The prose mixins are migrated in the typography-mixins slice.
+const { family, weight, lineHeight, text } = scssMeta.theme.typography;
+const fontFile: ScssFileMeta = {
+  file: '_font.scss',
+  description: 'The typography scale, weights and families plus the `cjk-font-family` helper mixin and `$pds-font-*` aliases.',
+  nodes: [
+    ...flatten(family),
+    blank,
+    cjkFontFamilyMixin,
+    blank,
+    ...flatten(lineHeight),
+    blank,
+    ...flatten(text),
+    blank,
+    ...flatten(weight),
+    blank,
+    fontDeprecatedAliases,
+  ],
+};
+
 // The `@forward` index re-exporting every partial under the consumer's `pds.*` namespace. Plumbing.
 const indexFile: ScssFileMeta = {
   file: '_index.scss',
@@ -226,6 +249,7 @@ export const scssFileMeta: ScssFileMeta[] = [
   spacingFile,
   motionFile,
   colorFile,
+  fontFile,
   indexFile,
 ];
 
