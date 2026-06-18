@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta",
-    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
     "build:bundle:meta": "rollup -c rollup-meta.config.mjs --bundleConfigAsCjs",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
