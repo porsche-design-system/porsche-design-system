@@ -159,7 +159,7 @@ export const typography = {
 // Companion theme variables for each text size: the Tailwind-required `--*--line-height`
 // pairing plus the `--text-base` alias for `xs`. Non-documented CSS-only plumbing: kept out of
 // `tailwindMeta.theme.typography` (the storefront docs don't surface them) but appended to the
-// `@theme` typography section by the CSS assembly in `css.ts`.
+// `@theme` typography section by the CSS assembly in `css/index.ts`.
 export const textSizeCompanions: CssNode[] = [
   { property: '--text-base', value: typescaleSm },
   { property: '--text-base--line-height', value: leadingNormal },

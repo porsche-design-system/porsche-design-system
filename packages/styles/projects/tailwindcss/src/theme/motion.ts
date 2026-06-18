@@ -75,7 +75,7 @@ export const durationThemeVariables: TailwindThemeVariable[] = [
 
 // Motion — infrastructure defaults (no Tailwind utility classes). Non-documented CSS-only
 // plumbing: not part of `tailwindMeta`, but interleaved into the `@theme` block by the CSS
-// assembly in `css.ts`.
+// assembly in `css/index.ts`.
 export const defaultTransitionTimingFunction: CssNode = {
   property: '--default-transition-timing-function',
   value: easeInOut,

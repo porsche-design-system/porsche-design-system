@@ -1,22 +1,18 @@
 /** A single CSS declaration, e.g. `color-scheme: dark` or `--p-color-canvas: #fff`. */
 export type CssDeclaration = {
-  /** Optional leading comment rendered above the declaration, e.g. `alias (deprecated)`. */
+  /** Optional leading comment rendered above the declaration. */
   comment?: string;
-  /** The CSS property or custom property, e.g. `color-scheme` or `--p-color-canvas`. */
+  /** The CSS property or custom property. */
   property: string;
-  /** The declaration value, e.g. `dark` or `light-dark(#fff, #000)`. */
+  /** The declaration value. */
   value: string | number;
 };
 
-/**
- * A CSS rule or at-rule. The body is either structured (`declarations`) or
- * an opaque `raw` CSS string. `raw` is always available as an escape hatch so
- * any part of the tree can fall back to verbatim CSS when structure adds no value.
- */
+/** A CSS rule or at-rule. Body is structured (`declarations`) or verbatim (`raw`). */
 export type CssRule = {
-  /** Optional leading comment rendered above the rule, e.g. `Simplified Chinese`. */
+  /** Optional leading comment rendered above the rule. */
   comment?: string;
-  /** The selector or at-rule prelude, e.g. `:root`, `.scheme-dark`, `@supports …`. */
+  /** The selector or at-rule prelude, e.g. `:root`, `@supports …`. */
   selector: string;
   /** Declarations and/or nested rules belonging to this rule. */
   declarations?: CssNode[];
@@ -24,27 +20,22 @@ export type CssRule = {
   raw?: string;
 };
 
-/** A raw CSS snippet (comment, blank line, deprecated alias, `@keyframes`, …) rendered verbatim. */
+/** A raw CSS snippet (comment, deprecated alias, `@keyframes`, …) rendered verbatim. */
 export type CssRaw = {
   /** The raw CSS rendered verbatim. */
   raw: string;
 };
 
-/** A plain declaration, a (possibly nested) rule, or a raw snippet. */
+/** A declaration, a (possibly nested) rule, or a raw snippet. */
 export type CssNode = CssRule | CssDeclaration | CssRaw;
 
 /**
- * Any branch of the meta tree: a concrete {@link CssNode} leaf, an array of branches, or a
- * nested record of branches. Records and arrays are grouping containers (for the docs); only
- * leaves render. Lets the recipe flatten any part of `tailwindMeta` uniformly.
+ * Any branch of the meta tree: a {@link CssNode} leaf, an array, or a nested record.
+ * Records/arrays group for the docs; only leaves render. Lets the assembly flatten uniformly.
  */
 export type ThemeBranch = CssNode | ThemeBranch[] | { [key: string]: ThemeBranch };
 
-/**
- * The full Tailwind CSS theme described as data: the output {@link file}, a human
- * readable {@link description} (consumed by the docs + LLM context) and the
- * {@link meta} — the ordered {@link CssNode} tree assembled into the final stylesheet.
- */
+/** The full Tailwind CSS theme as data: output {@link file}, {@link description}, ordered {@link meta} tree. */
 export type TailwindCssMeta = {
   /** The generated output file name, e.g. `index.css`. */
   file: string;
@@ -54,11 +45,7 @@ export type TailwindCssMeta = {
   meta: CssNode[];
 };
 
-/**
- * The grouping of a theme variable, used to organize the documentation. Mirrors
- * the grouping used by the storefront API pages (e.g. color is split into
- * background/foreground/semantic/a11y, spacing into fluid/static).
- */
+/** Doc grouping of a theme variable, mirroring the storefront API pages. */
 export type TailwindThemeVariableGroup =
   | 'background'
   | 'foreground'
@@ -74,12 +61,8 @@ export type TailwindThemeVariableGroup =
   | 'motion';
 
 /**
- * Solution-agnostic shape of a single design-token entry: a human readable
- * {@link description} plus the rendered {@link value}. This is the shared contract —
- * the common vocabulary every styling solution (Tailwind, emotion, scss, …) can
- * implement, extending it with its own representation (Tailwind adds `property` /
- * `classes`). Kept minimal on purpose so the catalog shape ({@link ThemeCatalog})
- * can be lifted into a shared module later.
+ * Solution-agnostic shape of a design-token entry: `description` + rendered `value`. The shared
+ * contract every styling solution extends with its own representation (Tailwind adds `property` / `classes`).
  */
 export type TokenMeta = {
   /** Human readable description rendered in the docs and LLM context. */
@@ -92,11 +75,8 @@ export type TokenMeta = {
 export type TokenGroup<T extends TokenMeta = TokenMeta> = Record<string, T>;
 
 /**
- * Solution-agnostic shape of a single documented utility: just a human readable
- * {@link description}. The utility *contract* (a heading helper, a skeleton helper, …) is shared
- * across styling solutions, but unlike {@link TokenMeta} there is no shared `value` — the
- * naming and implementation differ per solution, so each plugs in its own entry type (Tailwind
- * uses {@link TailwindUtility}, adding `selector` / `class` / `raw`).
+ * Solution-agnostic shape of a documented utility: just a `description`. Unlike {@link TokenMeta}
+ * there is no shared `value` — each solution plugs in its own entry type (Tailwind uses {@link TailwindUtility}).
  */
 export type UtilityMeta = {
   /** Human readable description rendered in the docs and LLM context. */
@@ -104,11 +84,8 @@ export type UtilityMeta = {
 };
 
 /**
- * The shared design-token catalog shape — the common group taxonomy and size keys
- * reused across `tokens`, stylesheets' `cssVariablesMeta` and the styling solutions.
- * Generic over the token type so each solution plugs in its own entry type (Tailwind
- * uses {@link TailwindThemeVariable}). Solution-agnostic: it describes *what* tokens
- * exist and how they are grouped, not how a given solution renders them.
+ * Shared design-token catalog shape — the common group taxonomy reused across solutions. Generic
+ * over the token type so each solution plugs in its own entry (Tailwind uses {@link TailwindThemeVariable}).
  */
 export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
   color: Record<'background' | 'foreground' | 'semantic' | 'a11y', TokenGroup<T>>;
@@ -122,11 +99,9 @@ export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
 };
 
 /**
- * The shared documented-utility catalog shape — the common topic grouping every styling solution
- * exposes: the `typography` shorthands (split into heading/text/display, mirroring the storefront
- * grouping), gradients, the layout grid and skeletons. Generic over the utility type so each
- * solution plugs in its own entry type (Tailwind uses {@link TailwindUtility}). Solution-agnostic:
- * it describes *which* documented utilities exist and how they are grouped, not how they render.
+ * Shared documented-utility catalog shape — the common topic grouping every solution exposes
+ * (typography shorthands, gradients, grid, skeletons). Generic over the utility type (Tailwind
+ * uses {@link TailwindUtility}).
  */
 export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
   typography: { heading: T[]; text: T[]; display: T[] };
@@ -136,10 +111,8 @@ export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
 };
 
 /**
- * A documented Tailwind theme variable — a {@link TokenMeta} (the shared description +
- * value) extended with the Tailwind-specific `property` (the single source for the
- * `@theme` block) and the metadata required to render the storefront docs and the
- * LLM context. Assignable to {@link CssDeclaration} (`property` + `value`).
+ * A documented Tailwind theme variable — {@link TokenMeta} extended with the Tailwind-specific
+ * `property` (source for the `@theme` block) plus doc metadata. Assignable to {@link CssDeclaration}.
  */
 export type TailwindThemeVariable = TokenMeta & {
   /** The CSS custom property feeding the `@theme` block, e.g. `--color-canvas`. */
@@ -153,9 +126,8 @@ export type TailwindThemeVariable = TokenMeta & {
 };
 
 /**
- * A documented Tailwind `@utility` — a {@link UtilityMeta} (the shared `description`) extended
- * with the Tailwind-specific `selector` / `class` (consumed by docs + LLM context) and the
- * `raw` declaration body (kept as raw CSS because it is pure implementation detail).
+ * A documented Tailwind `@utility` — {@link UtilityMeta} extended with `selector` / `class` (docs)
+ * and the `raw` declaration body (implementation detail, rendered verbatim).
  */
 export type TailwindUtility = UtilityMeta & {
   /** Optional leading comment rendered above the utility, e.g. `Grid: Area Narrow`. */
@@ -168,27 +140,17 @@ export type TailwindUtility = UtilityMeta & {
   raw: string;
 };
 
-/** A group of documented theme variables keyed by name, e.g. `tailwindMeta.theme.color.background`. */
-export type TailwindVariableGroup = TokenGroup<TailwindThemeVariable>;
-
 /** Documented `@utility` classes grouped by topic (docs + LLM + the generated `@utility` blocks). */
 export type TailwindUtilities = UtilitiesCatalog<TailwindUtility>;
 
 /**
- * The documented single source of truth for the Tailwind styling solution — the surface shared
- * with the storefront docs and the LLM context. Two sections, both carrying `description`s and
- * stable grouping/keys (everything a `getLlmContext()` serializer needs):
- *
- * - {@link theme}: the shared-shape, documented design-token {@link ThemeCatalog}.
- * - {@link utilities}: the documented `@utility` blocks ({@link UtilitiesCatalog}).
- *
- * Solution-specific CSS-generation plumbing (resets, defaults, layers, keyframes, deprecated
- * aliases) is intentionally **not** here — it lives alongside the assembly in `css.ts`. The CSS
- * file is assembled from this documented model plus that plumbing; the catalog groups are the same
- * object references, so the docs and the generated CSS can never diverge.
+ * The documented single source of truth shared with the storefront docs and LLM context. CSS-generation
+ * plumbing (resets, defaults, layers, keyframes, deprecated aliases) is intentionally **not** here — it
+ * lives alongside the assembly in `css/index.ts`. The catalog groups are the same object references the
+ * CSS is built from, so docs and generated CSS can never diverge.
  */
 export type TailwindMeta = {
-  /** The documented, shared-shape design-token catalog rendered inside the `@theme` block. */
+  /** The documented design-token catalog rendered inside the `@theme` block. */
   theme: ThemeCatalog<TailwindThemeVariable>;
   /** The documented `@utility` blocks. */
   utilities: TailwindUtilities;

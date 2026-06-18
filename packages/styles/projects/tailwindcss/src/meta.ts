@@ -15,19 +15,11 @@ import type { TailwindMeta } from './types';
 import { typography } from './theme/typography';
 
 /**
- * The documented single source of truth for the Tailwind styling solution — the surface shared
- * with the storefront docs and the LLM context. Split by where it renders:
- *
- * - `theme`: the shared-shape, documented design-token catalog (`color`, `typography`, … — the
- *   common vocabulary, same group taxonomy and size keys as `tokens` / stylesheets'
- *   `cssVariablesMeta`), rendered inside the `@theme` block.
- * - `utilities`: the documented `@utility` blocks.
- *
- * The CSS-only implementation detail (resets, base colors, the focus-outline default, the
- * line-height companions, the transition defaults, deprecated aliases, keyframes and the
- * outside-`@theme` layers) is intentionally **not** here — it lives in `css.ts`, which assembles
- * the stylesheet from this documented model. The catalog groups are the same objects referenced by
- * that assembly, so the docs and the generated CSS can never diverge.
+ * The documented single source of truth — the surface shared with the storefront docs and LLM
+ * context. `theme` is the design-token catalog rendered inside `@theme`; `utilities` is the
+ * documented `@utility` blocks. CSS-only plumbing (resets, defaults, layers, keyframes, deprecated
+ * aliases) lives in `css/index.ts`, which assembles the stylesheet from these same object
+ * references — so docs and generated CSS can never diverge.
  */
 export const tailwindMeta = {
   theme: {
