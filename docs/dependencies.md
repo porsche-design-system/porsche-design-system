@@ -1,5 +1,8 @@
 # Dependencies
 
+> **AI cloud agents**: For the recurring automated update task, follow the deterministic runbook in
+> [`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md). The sections below provide the full rationale.
+
 ## Dependency updates
 
 Every week, we update our NPM packages. Updates are driven by [`syncpack`](#syncpack-helper-scripts) via the root
