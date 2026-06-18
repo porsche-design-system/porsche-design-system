@@ -8,7 +8,6 @@ lerna-debug.log*
 node_modules/
 dist/
 dist-tmp/
-meta/
 .stencil/
 .angular/
 tmp/
@@ -109,3 +108,4 @@ packages/component-meta/src/lib/*
 packages/components-js/projects/partials/src/lib/*
 packages/utilities/projects/utilities/src/scss/lib/*
 packages/tokens/projects/tokens-meta/src/lib/*
+packages/styles/projects/tailwindcss/meta/
