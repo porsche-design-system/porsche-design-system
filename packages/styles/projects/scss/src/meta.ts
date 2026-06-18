@@ -8,6 +8,7 @@ import { spacing } from './theme/spacing';
 import { typography } from './theme/typography';
 import type { ScssMeta } from './types';
 import { focus } from './utilities/focus';
+import { mediaQuery } from './utilities/media-query';
 import { skeleton } from './utilities/skeleton';
 import { typography as typographyMixins } from './utilities/typography';
 
@@ -31,5 +32,6 @@ export const scssMeta = {
     typography: typographyMixins,
     skeleton,
     focus,
+    mediaQuery,
   },
 } satisfies ScssMeta;

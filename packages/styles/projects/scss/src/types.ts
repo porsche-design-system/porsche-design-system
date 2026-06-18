@@ -43,8 +43,8 @@ export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
 
 /**
  * Shared documented-utility catalog shape — the common topic grouping every solution exposes
- * (typography shorthands, gradients, grid, skeletons). `focus` is the first scss-specific superset
- * member added with the mixin rails; later slices add `mediaQuery`, etc. Generic over the utility type.
+ * (typography shorthands, gradients, grid, skeletons). `focus` and `mediaQuery` are scss-specific
+ * superset members added with the mixin rails; later slices add the rest. Generic over the utility type.
  */
 export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
   typography: { heading: T[]; text: T[]; display: T[] };
@@ -52,6 +52,7 @@ export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
   grid: T[];
   skeleton: T[];
   focus: T[];
+  mediaQuery: T[];
 };
 
 /** Doc grouping of a theme variable, mirroring the storefront API pages and the tailwind taxonomy. */
@@ -146,7 +147,7 @@ export type ScssMeta = {
       ThemeCatalog<ScssVariable>,
       'border' | 'blur' | 'breakpoint' | 'color' | 'typography' | 'shadow' | 'spacing' | 'motion'
     >;
-  /** The documented mixins. Typography, skeleton and focus are migrated; later slices add the rest. */
+  /** The documented mixins. Typography, skeleton, focus and media-query are migrated; later slices add the rest. */
   utilities: Partial<UtilitiesCatalog<ScssMixin>> &
-    Pick<UtilitiesCatalog<ScssMixin>, 'typography' | 'skeleton' | 'focus'>;
+    Pick<UtilitiesCatalog<ScssMixin>, 'typography' | 'skeleton' | 'focus' | 'mediaQuery'>;
 };

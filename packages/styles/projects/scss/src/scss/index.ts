@@ -37,6 +37,7 @@ import type { ScssFileMeta, ScssRaw } from '../types';
 import { colorDeprecatedAliases, colorSchemeMixin } from './color-plumbing';
 import { focusDeprecatedAliases } from './focus-plumbing';
 import { cjkFontFamilyMixin, fontDeprecatedAliases } from './font-plumbing';
+import { breakpointsMap, mediaQueryDeprecatedAliases } from './media-query-plumbing';
 import { flatten, renderNode } from './render';
 import { skeletonDeprecatedMixin } from './skeleton-plumbing';
 import {
@@ -255,6 +256,22 @@ const displayFile: ScssFileMeta = {
   nodes: [displayDeprecatedAliases],
 };
 
+// Media query — the documented `media-query-*` mixins, preceded by the `$pds-breakpoints` lookup map
+// they consult and followed by the deprecated `pds-media-query-*` aliases (both plumbing). Bodies
+// keep their namespaced `breakpoint.` / `map.` cross-references.
+const mediaQueryFile: ScssFileMeta = {
+  file: '_media-query.scss',
+  description: 'The `media-query-*` mixins plus the `$pds-breakpoints` map and deprecated `pds-media-query-*` aliases.',
+  uses: ['breakpoint', 'sass:map'],
+  nodes: [
+    breakpointsMap,
+    blank,
+    ...flatten(scssMeta.utilities.mediaQuery),
+    blank,
+    mediaQueryDeprecatedAliases,
+  ],
+};
+
 // The `@forward` index re-exporting every partial under the consumer's `pds.*` namespace. Plumbing.
 const indexFile: ScssFileMeta = {
   file: '_index.scss',
@@ -316,6 +333,7 @@ export const scssFileMeta: ScssFileMeta[] = [
   displayFile,
   skeletonFile,
   focusFile,
+  mediaQueryFile,
   indexFile,
 ];
 
