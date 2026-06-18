@@ -17,15 +17,23 @@ type ScssVariablesTableProps = {
   showColorSwatch?: boolean;
 };
 
-// Render Markdown bold (**text**) and backtick code (`text`) as React nodes
+// Render Markdown bold (**text**), backtick code (`text`) and links ([text](url)) as React nodes
 const renderDescription = (description: string): ReactNode => {
-  const parts = description.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
+  const parts = description.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
     }
     if (part.startsWith('`') && part.endsWith('`')) {
       return <code key={i}>{part.slice(1, -1)}</code>;
+    }
+    const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (link) {
+      return (
+        <a key={i} href={link[2]} target="_blank" rel="noreferrer">
+          {link[1]}
+        </a>
+      );
     }
     return part;
   });

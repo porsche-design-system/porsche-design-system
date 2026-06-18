@@ -125,7 +125,7 @@ export type ScssFileMeta = {
 export type ScssMeta = {
   /** The documented design-token catalog. The variable-only groups are migrated; color/typography are added later. */
   theme: Partial<ThemeCatalog<ScssVariable>> &
-    Pick<ThemeCatalog<ScssVariable>, 'border' | 'blur' | 'breakpoint' | 'shadow' | 'spacing' | 'motion'>;
+    Pick<ThemeCatalog<ScssVariable>, 'border' | 'blur' | 'breakpoint' | 'color' | 'shadow' | 'spacing' | 'motion'>;
   /** The documented mixins. Empty until the mixin rails land. */
   utilities: Partial<UtilitiesCatalog>;
 };

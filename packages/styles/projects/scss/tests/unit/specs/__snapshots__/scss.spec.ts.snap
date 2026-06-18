@@ -49,8 +49,7 @@ $pds-breakpoint-xxl: 1920; /* alias (deprecated) */
 `;
 
 exports[`should contain correct scss content for file ./dist/_color.scss 1`] = `
-"$color-focus: var(--_color-focus, light-dark(#1a44ea, #1a44ea));
-$color-canvas: var(--_color-canvas, light-dark(#fff, hsl(225 66.7% 1.2%)));
+"$color-canvas: var(--_color-canvas, light-dark(#fff, hsl(225 66.7% 1.2%)));
 $color-surface: var(
   --_color-surface,
   light-dark(hsl(240 10% 95%), hsl(240 2% 10%))
@@ -71,41 +70,61 @@ $color-backdrop: var(
   --_color-backdrop,
   light-dark(hsl(240 5.3% 14.9% / 0.5), hsl(240 5.3% 14.9% / 0.5))
 );
-$color-contrast-lower: var(
-  --_color-contrast-lower,
-  light-dark(hsl(234 6% 32.9% / 0.324), hsl(240 1.5% 61.8% / 0.302))
-);
-$color-contrast-low: var(
-  --_color-contrast-low,
-  light-dark(hsl(240 5.3% 14.9% / 0.5), hsl(240 12.5% 96.9% / 0.45))
-);
-$color-contrast-medium: var(
-  --_color-contrast-medium,
-  light-dark(hsl(240 6.1% 7% / 0.6), hsl(240 12.5% 96.9% / 0.56))
-);
-$color-contrast-high: var(
-  --_color-contrast-high,
-  light-dark(hsl(240 7.1% 11% / 0.7), hsl(240 12.5% 96.9% / 0.67))
+$color-primary: var(
+  --_color-primary,
+  light-dark(hsl(225 66.7% 1.2%), hsl(225 100% 99%))
 );
 $color-contrast-higher: var(
   --_color-contrast-higher,
   light-dark(hsl(240 8.7% 9% / 0.8), hsl(240 12.5% 96.9% / 0.78))
 );
-$color-primary: var(
-  --_color-primary,
-  light-dark(hsl(225 66.7% 1.2%), hsl(225 100% 99%))
+$color-contrast-high: var(
+  --_color-contrast-high,
+  light-dark(hsl(240 7.1% 11% / 0.7), hsl(240 12.5% 96.9% / 0.67))
+);
+$color-contrast-medium: var(
+  --_color-contrast-medium,
+  light-dark(hsl(240 6.1% 7% / 0.6), hsl(240 12.5% 96.9% / 0.56))
+);
+$color-contrast-low: var(
+  --_color-contrast-low,
+  light-dark(hsl(240 5.3% 14.9% / 0.5), hsl(240 12.5% 96.9% / 0.45))
+);
+$color-contrast-lower: var(
+  --_color-contrast-lower,
+  light-dark(hsl(234 6% 32.9% / 0.324), hsl(240 1.5% 61.8% / 0.302))
+);
+$color-info: var(
+  --_color-info,
+  light-dark(hsl(228 83.2% 51%), hsl(210 100% 54.5%))
+);
+$color-info-medium: var(
+  --_color-info-medium,
+  light-dark(hsl(228 83.2% 51% / 0.6), hsl(210 100% 54.5% / 0.6))
+);
+$color-info-low: var(
+  --_color-info-low,
+  light-dark(hsl(228 83.2% 51% / 0.18), hsl(210 100% 54.5% / 0.18))
+);
+$color-info-frosted: var(
+  --_color-info-frosted,
+  light-dark(hsl(211 100% 90% / 0.55), hsl(210 79% 20% / 0.66))
+);
+$color-info-frosted-soft: var(
+  --_color-info-frosted-soft,
+  light-dark(hsl(211 80% 95% / 0.55), hsl(210 59% 15% / 0.66))
 );
 $color-success: var(
   --_color-success,
   light-dark(hsl(115 77.5% 27.8%), hsl(157 84.9% 41.6%))
 );
-$color-success-low: var(
-  --_color-success-low,
-  light-dark(hsl(115 77.5% 27.8% / 0.18), hsl(157 84.9% 41.6% / 0.18))
-);
 $color-success-medium: var(
   --_color-success-medium,
   light-dark(hsl(115 77.5% 27.8% / 0.6), hsl(157 84.9% 41.6% / 0.6))
+);
+$color-success-low: var(
+  --_color-success-low,
+  light-dark(hsl(115 77.5% 27.8% / 0.18), hsl(157 84.9% 41.6% / 0.18))
 );
 $color-success-frosted: var(
   --_color-success-frosted,
@@ -119,13 +138,13 @@ $color-warning: var(
   --_color-warning,
   light-dark(hsl(28 97.7% 34.1%), hsl(28 90.2% 56.1%))
 );
-$color-warning-low: var(
-  --_color-warning-low,
-  light-dark(hsl(28 97.7% 34.1% / 0.18), hsl(28 90.2% 56.1% / 0.18))
-);
 $color-warning-medium: var(
   --_color-warning-medium,
   light-dark(hsl(28 97.7% 34.1% / 0.6), hsl(28 90.2% 56.1% / 0.6))
+);
+$color-warning-low: var(
+  --_color-warning-low,
+  light-dark(hsl(28 97.7% 34.1% / 0.18), hsl(28 90.2% 56.1% / 0.18))
 );
 $color-warning-frosted: var(
   --_color-warning-frosted,
@@ -139,13 +158,13 @@ $color-error: var(
   --_color-error,
   light-dark(hsl(357 78% 41%), hsl(0 96.9% 62%))
 );
-$color-error-low: var(
-  --_color-error-low,
-  light-dark(hsl(357 78% 41% / 0.18), hsl(0 96.9% 62% / 0.18))
-);
 $color-error-medium: var(
   --_color-error-medium,
   light-dark(hsl(357 78% 41% / 0.6), hsl(0 96.9% 62% / 0.6))
+);
+$color-error-low: var(
+  --_color-error-low,
+  light-dark(hsl(357 78% 41% / 0.18), hsl(0 96.9% 62% / 0.18))
 );
 $color-error-frosted: var(
   --_color-error-frosted,
@@ -155,26 +174,7 @@ $color-error-frosted-soft: var(
   --_color-error-frosted-soft,
   light-dark(hsl(0 80% 95% / 0.55), hsl(0 59% 15% / 0.66))
 );
-$color-info: var(
-  --_color-info,
-  light-dark(hsl(228 83.2% 51%), hsl(210 100% 54.5%))
-);
-$color-info-low: var(
-  --_color-info-low,
-  light-dark(hsl(228 83.2% 51% / 0.18), hsl(210 100% 54.5% / 0.18))
-);
-$color-info-medium: var(
-  --_color-info-medium,
-  light-dark(hsl(228 83.2% 51% / 0.6), hsl(210 100% 54.5% / 0.6))
-);
-$color-info-frosted: var(
-  --_color-info-frosted,
-  light-dark(hsl(211 100% 90% / 0.55), hsl(210 79% 20% / 0.66))
-);
-$color-info-frosted-soft: var(
-  --_color-info-frosted-soft,
-  light-dark(hsl(211 80% 95% / 0.55), hsl(210 59% 15% / 0.66))
-);
+$color-focus: var(--_color-focus, light-dark(#1a44ea, #1a44ea));
 
 @mixin color-scheme() {
   .scheme-normal {

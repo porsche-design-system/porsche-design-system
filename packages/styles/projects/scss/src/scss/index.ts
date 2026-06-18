@@ -34,6 +34,7 @@ import {
 } from '@porsche-design-system/tokens';
 import { scssMeta } from '../meta';
 import type { ScssFileMeta, ScssRaw } from '../types';
+import { colorDeprecatedAliases, colorSchemeMixin } from './color-plumbing';
 import { flatten, renderNode } from './render';
 
 /** A blank-line separator between sections within a partial (an empty raw node). */
@@ -162,6 +163,14 @@ const motionFile: ScssFileMeta = {
   nodes: [...flatten(scssMeta.theme.motion), blank, motionDeprecatedAliases],
 };
 
+// Color — the documented `$color-*` variables, then the `color-scheme()` theming mixin and the
+// deprecated `$pds-theme-*` aliases as plumbing (both still emitted, neither a documented entry).
+const colorFile: ScssFileMeta = {
+  file: '_color.scss',
+  description: 'The `$color-*` scale plus the `color-scheme()` mixin and deprecated `$pds-theme-*` aliases.',
+  nodes: [...flatten(scssMeta.theme.color), blank, colorSchemeMixin, blank, colorDeprecatedAliases],
+};
+
 // The `@forward` index re-exporting every partial under the consumer's `pds.*` namespace. Plumbing.
 const indexFile: ScssFileMeta = {
   file: '_index.scss',
@@ -216,6 +225,7 @@ export const scssFileMeta: ScssFileMeta[] = [
   shadowFile,
   spacingFile,
   motionFile,
+  colorFile,
   indexFile,
 ];
 
