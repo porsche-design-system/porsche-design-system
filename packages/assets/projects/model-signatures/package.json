@@ -27,17 +27,19 @@
   "scripts": {
     "build": "npm run clean:build && npm run build:model-signatures && npm run build:lib",
     "build:model-signatures": "tsx scripts/build.ts",
-    "build:lib": "tsup index.ts --format esm,cjs --dts",
+    "build:lib": "rollup -c",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
+    "@rollup/plugin-typescript": "*",
     "change-case": "*",
     "fast-glob": "*",
+    "rollup": "*",
+    "rollup-plugin-dts": "*",
     "svgo": "*",
-    "tsup": "*",
     "tsx": "*",
     "typescript": "*"
   },

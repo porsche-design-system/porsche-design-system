@@ -5,21 +5,22 @@
 
 ## Overview
 
-The Porsche Design System (PDS) is a **monorepo** providing design tokens, web components, and framework wrappers for building Porsche web applications. Components are built with **Stencil** and wrapped for Angular, React, and Vue.
+The Porsche Design System (PDS) is a **monorepo** providing design tokens, web components, and framework wrappers for
+building Porsche web applications. Components are built with **Stencil** and wrapped for Angular, React, and Vue.
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| **Package Manager** | npm 10+ (workspaces) |
-| **Node** | v22 (use Volta) |
-| **Web Components** | Stencil 4.x |
-| **Styling** | JSS (CSS-in-JS), Tailwind CSS |
-| **Frameworks** | Angular 20, React 19, Vue 3, Next.js 15 |
-| **Build** | Rollup, Vite, Webpack |
-| **Testing** | Vitest (unit), Playwright (e2e/vrt/a11y) |
+| Layer                  | Technology                                 |
+| ---------------------- | ------------------------------------------ |
+| **Package Manager**    | npm 11+ (workspaces)                       |
+| **Node**               | v24 (use Volta)                            |
+| **Web Components**     | Stencil 4.x                                |
+| **Styling**            | JSS (CSS-in-JS), Tailwind CSS              |
+| **Frameworks**         | Angular 22, React 19, Vue 3, Next.js 16    |
+| **Build**              | Rollup, Vite, Webpack                      |
+| **Testing**            | Vitest (unit), Playwright (e2e/vrt/a11y)   |
 | **Linting/Formatting** | Biome (JS/TS/JSON), Prettier (MD/MDX only) |
-| **Types** | TypeScript 5.9 |
+| **Types**              | TypeScript 6.x                             |
 
 ## Project Structure
 
@@ -54,7 +55,7 @@ npm run build:core-dependencies
 # Start component dev server
 npm run start:components
 
-# Start storefront dev server  
+# Start storefront dev server
 npm run start:storefront
 
 # Run unit tests for a package
@@ -87,6 +88,7 @@ Use `npm run build` to handle this automatically, or `npm run build:core-depende
 ## Component Development
 
 ### File Structure (per component)
+
 ```
 packages/components/src/components/{name}/
 ├── {name}.tsx           # Stencil component
@@ -108,12 +110,12 @@ packages/components/src/components/{name}/
 
 ## Testing
 
-| Test Type | Command | Notes |
-|-----------|---------|-------|
-| Unit | `npm run test:unit:{package}` | Vitest, runs fast |
-| E2E | `npm run test:e2e:components-js` | Playwright, requires build |
-| VRT | `./docker.sh npm run test:vrt:components-js` | Use Docker for consistency |
-| A11Y | `npm run test:a11y:components-js` | Axe-core + a11y tree snapshots |
+| Test Type | Command                                      | Notes                          |
+| --------- | -------------------------------------------- | ------------------------------ |
+| Unit      | `npm run test:unit:{package}`                | Vitest, runs fast              |
+| E2E       | `npm run test:e2e:components-js`             | Playwright, requires build     |
+| VRT       | `./docker.sh npm run test:vrt:components-js` | Use Docker for consistency     |
+| A11Y      | `npm run test:a11y:components-js`            | Axe-core + a11y tree snapshots |
 
 **Important**: VRT tests should run in Docker (`./docker.sh`) to ensure consistent screenshots across machines.
 
@@ -136,19 +138,20 @@ packages/components/src/components/{name}/
 - **Don't** remove focus outlines without providing accessible alternatives
 - **Do** use Docker for VRT to match CI environment
 - **Do** check `docs/dependencies.md` before upgrading packages
+- **Do** follow `docs/runbooks/dependency-updates-agent.md` for the recurring automated npm dependency update task
 
 ## Accessibility (Critical)
 
-Accessibility instructions are in `instructions/accessibility.instructions.md`. Follow these guidelines strictly to ensure compliance with WCAG 2.2 AA standards.
+Accessibility instructions are in `instructions/accessibility.instructions.md`. Follow these guidelines strictly to
+ensure compliance with WCAG 2.2 AA standards.
 
 ## Quick Reference
 
-| Task | Command |
-|------|---------|
-| Fresh install | `npm install && npm run build` |
-| Dev components | `npm run start:components` |
-| Dev storefront | `npm run start:storefront` |
-| Test component | `npm run test:unit:components` |
-| Clean rebuild | `npm run clean && npm install && npm run build` |
-| Run in Docker | `./docker.sh {command}` |
-
+| Task           | Command                                         |
+| -------------- | ----------------------------------------------- |
+| Fresh install  | `npm install && npm run build`                  |
+| Dev components | `npm run start:components`                      |
+| Dev storefront | `npm run start:storefront`                      |
+| Test component | `npm run test:unit:components`                  |
+| Clean rebuild  | `npm run clean && npm install && npm run build` |
+| Run in Docker  | `./docker.sh {command}`                         |
