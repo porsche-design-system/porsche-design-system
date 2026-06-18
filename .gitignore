@@ -23,6 +23,7 @@ playwright-report/
 ort/
 **/tests/**/results/
 packages/styles/projects/vanilla-extract/meta/
+packages/styles/projects/emotion/meta/
 
 # Cache
 .npm
