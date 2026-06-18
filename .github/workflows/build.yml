@@ -65,6 +65,7 @@ jobs:
             ./packages/styles/projects/tailwindcss/dist/
             ./packages/styles/projects/scss/dist/
             ./packages/styles/projects/emotion/dist/
+            ./packages/styles/projects/emotion/meta/
             ./packages/styles/projects/vanilla-extract/dist/
             ./packages/styles/projects/vanilla-extract/meta/
             ./packages/components/dist/
@@ -144,6 +145,7 @@ jobs:
             ./packages/styles/projects/tailwindcss/dist/
             ./packages/styles/projects/scss/dist/
             ./packages/styles/projects/emotion/dist/
+            ./packages/styles/projects/emotion/meta/
             ./packages/styles/projects/vanilla-extract/dist/
             ./packages/styles/projects/vanilla-extract/meta/
             ./packages/components/dist/
