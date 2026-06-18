@@ -1,4 +1,37 @@
-import { radiusLg, radiusMd, radiusSm } from '@porsche-design-system/tokens';
+import {
+  blurFrosted,
+  breakpoint2Xl,
+  breakpointLg,
+  breakpointMd,
+  breakpointSm,
+  breakpointXl,
+  breakpointXs,
+  durationLg,
+  durationMd,
+  durationSm,
+  durationXl,
+  easeIn,
+  easeInOut,
+  easeOut,
+  radiusLg,
+  radiusMd,
+  radiusSm,
+  shadowLg,
+  shadowMd,
+  shadowSm,
+  spacingFluid2Xl,
+  spacingFluidLg,
+  spacingFluidMd,
+  spacingFluidSm,
+  spacingFluidXl,
+  spacingFluidXs,
+  spacingStatic2Xl,
+  spacingStaticLg,
+  spacingStaticMd,
+  spacingStaticSm,
+  spacingStaticXl,
+  spacingStaticXs,
+} from '@porsche-design-system/tokens';
 import { scssMeta } from '../meta';
 import type { ScssFileMeta, ScssRaw } from '../types';
 import { flatten, renderNode } from './render';
@@ -21,6 +54,112 @@ const borderFile: ScssFileMeta = {
   file: '_border.scss',
   description: 'The border radius scale plus the deprecated `$pds-border-*` aliases.',
   nodes: [...flatten(scssMeta.theme.border), blank, borderDeprecatedAliases],
+};
+
+// Blur — deprecated `pds-frosted-glass` mixin. Plumbing: still emitted, but not a documented entry.
+const blurDeprecatedMixin: ScssRaw = {
+  raw: [
+    '/* alias (deprecated) */',
+    '@mixin pds-frosted-glass {',
+    `  backdrop-filter: ${blurFrosted};`,
+    `  -webkit-backdrop-filter: ${blurFrosted};`,
+    '}',
+  ].join('\n'),
+};
+
+const blurFile: ScssFileMeta = {
+  file: '_blur.scss',
+  description: 'The frosted blur variable plus the deprecated `pds-frosted-glass` mixin.',
+  nodes: [...flatten(scssMeta.theme.blur), blank, blurDeprecatedMixin],
+};
+
+// Breakpoint — deprecated `$pds-breakpoint-*` aliases. Plumbing: still emitted, not documented.
+const breakpointDeprecatedAliases: ScssRaw = {
+  raw: [
+    '$pds-breakpoint-base: 0; /* alias (deprecated) */',
+    `$pds-breakpoint-xs: ${breakpointXs}; /* alias (deprecated) */`,
+    `$pds-breakpoint-s: ${breakpointSm}; /* alias (deprecated) */`,
+    `$pds-breakpoint-m: ${breakpointMd}; /* alias (deprecated) */`,
+    `$pds-breakpoint-l: ${breakpointLg}; /* alias (deprecated) */`,
+    `$pds-breakpoint-xl: ${breakpointXl}; /* alias (deprecated) */`,
+    `$pds-breakpoint-xxl: ${breakpoint2Xl}; /* alias (deprecated) */`,
+  ].join('\n'),
+};
+
+const breakpointFile: ScssFileMeta = {
+  file: '_breakpoint.scss',
+  description: 'The responsive breakpoint scale plus the deprecated `$pds-breakpoint-*` aliases.',
+  nodes: [...flatten(scssMeta.theme.breakpoint), blank, breakpointDeprecatedAliases],
+};
+
+// Shadow — deprecated `pds-drop-shadow-*` mixins. Plumbing: still emitted, not documented.
+const shadowDeprecatedMixins: ScssRaw = {
+  raw: [
+    '/* alias (deprecated) */',
+    '@mixin pds-drop-shadow-high {',
+    `  box-shadow: ${shadowLg};`,
+    '}',
+    '',
+    '/* alias (deprecated) */',
+    '@mixin pds-drop-shadow-low {',
+    `  box-shadow: ${shadowSm};`,
+    '}',
+    '',
+    '/* alias (deprecated) */',
+    '@mixin pds-drop-shadow-medium {',
+    `  box-shadow: ${shadowMd};`,
+    '}',
+  ].join('\n'),
+};
+
+const shadowFile: ScssFileMeta = {
+  file: '_shadow.scss',
+  description: 'The shadow scale plus the deprecated `pds-drop-shadow-*` mixins.',
+  nodes: [...flatten(scssMeta.theme.shadow), blank, shadowDeprecatedMixins],
+};
+
+// Spacing — deprecated `$pds-spacing-*` aliases (static, then fluid). Plumbing: still emitted, not documented.
+const spacingDeprecatedAliases: ScssRaw = {
+  raw: [
+    `$pds-spacing-static-x-small: ${spacingStaticXs}; /* alias (deprecated) */`,
+    `$pds-spacing-static-small: ${spacingStaticSm}; /* alias (deprecated) */`,
+    `$pds-spacing-static-medium: ${spacingStaticMd}; /* alias (deprecated) */`,
+    `$pds-spacing-static-large: ${spacingStaticLg}; /* alias (deprecated) */`,
+    `$pds-spacing-static-x-large: ${spacingStaticXl}; /* alias (deprecated) */`,
+    `$pds-spacing-static-xx-large: ${spacingStatic2Xl}; /* alias (deprecated) */`,
+    '',
+    `$pds-spacing-fluid-x-small: ${spacingFluidXs}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-small: ${spacingFluidSm}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-medium: ${spacingFluidMd}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-large: ${spacingFluidLg}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-x-large: ${spacingFluidXl}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-xx-large: ${spacingFluid2Xl}; /* alias (deprecated) */`,
+  ].join('\n'),
+};
+
+const spacingFile: ScssFileMeta = {
+  file: '_spacing.scss',
+  description: 'The fluid and static spacing scales plus the deprecated `$pds-spacing-*` aliases.',
+  nodes: [...flatten(scssMeta.theme.spacing), blank, spacingDeprecatedAliases],
+};
+
+// Motion — deprecated `$pds-motion-*` aliases. Plumbing: still emitted, not documented.
+const motionDeprecatedAliases: ScssRaw = {
+  raw: [
+    `$pds-motion-duration-long: ${durationLg}; /* alias (deprecated) */`,
+    `$pds-motion-duration-moderate: ${durationMd}; /* alias (deprecated) */`,
+    `$pds-motion-duration-short: ${durationSm}; /* alias (deprecated) */`,
+    `$pds-motion-duration-very-long: ${durationXl}; /* alias (deprecated) */`,
+    `$pds-motion-easing-base: ${easeInOut}; /* alias (deprecated) */`,
+    `$pds-motion-easing-in: ${easeIn}; /* alias (deprecated) */`,
+    `$pds-motion-easing-out: ${easeOut}; /* alias (deprecated) */`,
+  ].join('\n'),
+};
+
+const motionFile: ScssFileMeta = {
+  file: '_motion.scss',
+  description: 'The duration and easing scales plus the deprecated `$pds-motion-*` aliases.',
+  nodes: [...flatten(scssMeta.theme.motion), blank, motionDeprecatedAliases],
 };
 
 // The `@forward` index re-exporting every partial under the consumer's `pds.*` namespace. Plumbing.
@@ -70,7 +209,15 @@ const indexFile: ScssFileMeta = {
  * each to a string, Prettier-formats it and writes `dist/<file>`. Only the migrated domains live
  * here; the rest are still produced by the legacy `fileMap` generators until their slices land.
  */
-export const scssFileMeta: ScssFileMeta[] = [borderFile, indexFile];
+export const scssFileMeta: ScssFileMeta[] = [
+  borderFile,
+  blurFile,
+  breakpointFile,
+  shadowFile,
+  spacingFile,
+  motionFile,
+  indexFile,
+];
 
 /** Render a file descriptor to its SCSS string: optional `@use` headers, then the ordered nodes. */
 export const renderScssFile = ({ uses, nodes }: ScssFileMeta): string => {

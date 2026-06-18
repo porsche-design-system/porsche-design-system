@@ -119,11 +119,13 @@ export type ScssFileMeta = {
  * groups are the same object references the SCSS is built from, so docs and generated SCSS can never
  * diverge.
  *
- * Only `border` is migrated so far; the remaining theme/utility groups are added by later slices.
+ * The variable-only domains are migrated; the remaining theme groups (color, typography) and the
+ * utility groups are added by later slices.
  */
 export type ScssMeta = {
-  /** The documented design-token catalog. `border` is migrated; other groups are added later. */
-  theme: Partial<ThemeCatalog<ScssVariable>> & Pick<ThemeCatalog<ScssVariable>, 'border'>;
+  /** The documented design-token catalog. The variable-only groups are migrated; color/typography are added later. */
+  theme: Partial<ThemeCatalog<ScssVariable>> &
+    Pick<ThemeCatalog<ScssVariable>, 'border' | 'blur' | 'breakpoint' | 'shadow' | 'spacing' | 'motion'>;
   /** The documented mixins. Empty until the mixin rails land. */
   utilities: Partial<UtilitiesCatalog>;
 };

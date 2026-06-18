@@ -636,7 +636,6 @@ exports[`should contain correct scss content for file ./dist/_motion.scss 1`] = 
 $duration-md: 0.4s;
 $duration-lg: 0.6s;
 $duration-xl: 1.2s;
-
 $ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
 $ease-in: cubic-bezier(0, 0, 0.2, 1);
 $ease-out: cubic-bezier(0.4, 0, 0.5, 1);
@@ -679,20 +678,19 @@ $shadow-lg: 0px 8px 40px rgba(0, 0, 0, 0.16);
 `;
 
 exports[`should contain correct scss content for file ./dist/_spacing.scss 1`] = `
-"$spacing-static-2xs: 1px;
+"$spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
+$spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
+$spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
+$spacing-fluid-lg: clamp(32px, 2.75vw + 23px, 76px);
+$spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
+$spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
+$spacing-static-2xs: 1px;
 $spacing-static-xs: 4px;
 $spacing-static-sm: 8px;
 $spacing-static-md: 16px;
 $spacing-static-lg: 32px;
 $spacing-static-xl: 48px;
 $spacing-static-2xl: 80px;
-
-$spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
-$spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
-$spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
-$spacing-fluid-lg: clamp(32px, 2.75vw + 23px, 76px);
-$spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
-$spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
 
 $pds-spacing-static-x-small: 4px; /* alias (deprecated) */
 $pds-spacing-static-small: 8px; /* alias (deprecated) */
