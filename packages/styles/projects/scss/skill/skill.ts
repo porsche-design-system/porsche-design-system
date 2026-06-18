@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { sentenceCase } from 'change-case';
-import type { ScssVariable } from '../src';
+import type { ScssMixin, ScssVariable } from '../src';
 import { scssMeta } from '../src';
 
 /**
@@ -17,7 +17,7 @@ import { scssMeta } from '../src';
  * Token values are likewise left to the partials — this file is the index, the partials are the detail.
  */
 
-const { theme } = scssMeta;
+const { theme, utilities } = scssMeta;
 
 const code = (value: string): string => `\`${value}\``;
 
@@ -34,6 +34,11 @@ type Column<T> = { header: string; render: (item: T) => string };
 const variableColumns: Column<ScssVariable>[] = [
   { header: 'SCSS variable', render: (v) => code(v.name) },
   { header: 'Description', render: (v) => cell(v.description) },
+];
+
+const mixinColumns: Column<ScssMixin>[] = [
+  { header: 'SCSS mixin', render: (m) => code(`@include ${m.name}${m.signature ?? ''}`) },
+  { header: 'Description', render: (m) => cell(m.description) },
 ];
 
 /** A `### heading` followed by a reference table built from `columns`. */
@@ -110,16 +115,20 @@ const deriveOutline = <T>(catalog: object): Outline<T> =>
 
 const themeOutline = deriveOutline<ScssVariable>(theme);
 
+const utilitiesOutline = deriveOutline<ScssMixin>(utilities);
+
 const contents = `## Contents
 
-- [Variables](#variables) — ${tocLine(themeOutline, false)}`;
+- [Variables](#variables) — ${tocLine(themeOutline, false)}
+- [Mixins](#mixins) — ${tocLine(utilitiesOutline, false)}`;
 
 const themeVariables = `## Variables\n\n${renderOutline(themeOutline, variableColumns)}`;
 
+const utilitiesMixins = `## Mixins\n\n${renderOutline(utilitiesOutline, mixinColumns)}`;
+
 /**
  * Render the full scss package overview as markdown. Pure function over {@link scssMeta}; the build
- * script is responsible for writing it to disk. The utilities section is omitted until mixins are
- * documented.
+ * script is responsible for writing it to disk.
  */
 export const getScssSkill = (): string =>
-  `${[intro, howToUse, contents, themeVariables].filter(Boolean).join('\n\n')}\n`;
+  `${[intro, howToUse, contents, themeVariables, utilitiesMixins].filter(Boolean).join('\n\n')}\n`;

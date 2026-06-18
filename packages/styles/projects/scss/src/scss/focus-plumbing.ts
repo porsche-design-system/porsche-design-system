@@ -1,15 +1,9 @@
-@use 'border';
-@use 'color';
-@use 'sass:map';
+import type { ScssRaw } from '../types';
 
-@mixin focus-visible($offset: 2px) {
-  &:focus-visible {
-    outline: 2px solid color.$color-focus;
-    outline-offset: $offset;
-  }
-}
-
-$pds-focus-offset-map: (
+// Focus plumbing: the offset / border-radius lookup maps and the deprecated `pds-focus` mixin (which
+// resolves named keys through those maps). Still emitted, but not documented `scssMeta` entries.
+export const focusDeprecatedAliases: ScssRaw = {
+  raw: `$pds-focus-offset-map: (
   'small': 2px,
   'none': 0,
 );
@@ -47,4 +41,5 @@ $pds-focus-border-radius-map: (
   &:focus:not(:focus-visible) {
     outline-color: transparent;
   }
-}
+}`,
+};

@@ -6,8 +6,8 @@ import { describe, expect, it } from 'vitest';
 const borderVariables = fs.readFileSync(path.resolve('dist/_border.scss'), 'utf8');
 const themeVariables = fs.readFileSync(path.resolve('dist/_color.scss'), 'utf8');
 const focusMixin = fs
-  .readFileSync(path.resolve('src/_focus.scss'), 'utf8')
-  .replace(/@use\s+'[^']+';?\n?/g, '')
+  .readFileSync(path.resolve('dist/_focus.scss'), 'utf8')
+  .replace(/@use\s+["'][^"']+["'];?\n?/g, '')
   .replace(/border\./g, '')
   .replace(/color\./g, '')
   .replace(/map\./g, 'map-');

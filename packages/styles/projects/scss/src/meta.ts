@@ -7,11 +7,13 @@ import { shadow } from './theme/shadow';
 import { spacing } from './theme/spacing';
 import { typography } from './theme/typography';
 import type { ScssMeta } from './types';
+import { focus } from './utilities/focus';
+import { skeleton } from './utilities/skeleton';
 
 /**
  * The documented single source of truth for the scss package, mirroring `tailwindMeta`: a `theme`
- * of variables and `utilities` of mixins. The variable domains are migrated; later slices
- * populate the (currently empty) utilities.
+ * of variables and `utilities` of mixins. The variable domains are migrated; the mixin rails carry
+ * skeleton and focus, with later slices populating the remaining utilities.
  */
 export const scssMeta = {
   theme: {
@@ -24,5 +26,8 @@ export const scssMeta = {
     spacing,
     motion,
   },
-  utilities: {},
+  utilities: {
+    skeleton,
+    focus,
+  },
 } satisfies ScssMeta;

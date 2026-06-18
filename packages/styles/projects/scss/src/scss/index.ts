@@ -35,8 +35,10 @@ import {
 import { scssMeta } from '../meta';
 import type { ScssFileMeta, ScssRaw } from '../types';
 import { colorDeprecatedAliases, colorSchemeMixin } from './color-plumbing';
+import { focusDeprecatedAliases } from './focus-plumbing';
 import { cjkFontFamilyMixin, fontDeprecatedAliases } from './font-plumbing';
 import { flatten, renderNode } from './render';
+import { skeletonDeprecatedMixin } from './skeleton-plumbing';
 
 /** A blank-line separator between sections within a partial (an empty raw node). */
 const blank: ScssRaw = { raw: '' };
@@ -194,6 +196,24 @@ const fontFile: ScssFileMeta = {
   ],
 };
 
+// Skeleton — the documented `skeleton()` mixin, then the deprecated `pds-skeleton` variant as
+// plumbing (still emitted, not a documented entry). Bodies keep their namespaced cross-references.
+const skeletonFile: ScssFileMeta = {
+  file: '_skeleton.scss',
+  description: 'The `skeleton()` loading-placeholder mixin plus the deprecated `pds-skeleton` variant.',
+  uses: ['border', 'color', 'motion'],
+  nodes: [...flatten(scssMeta.utilities.skeleton), blank, skeletonDeprecatedMixin],
+};
+
+// Focus — the documented `focus-visible()` mixin, then the deprecated `pds-focus` mixin and its
+// lookup maps as plumbing (still emitted, not documented entries).
+const focusFile: ScssFileMeta = {
+  file: '_focus.scss',
+  description: 'The `focus-visible()` mixin plus the deprecated `pds-focus` variant and its lookup maps.',
+  uses: ['border', 'color', 'sass:map'],
+  nodes: [...flatten(scssMeta.utilities.focus), blank, focusDeprecatedAliases],
+};
+
 // The `@forward` index re-exporting every partial under the consumer's `pds.*` namespace. Plumbing.
 const indexFile: ScssFileMeta = {
   file: '_index.scss',
@@ -250,6 +270,8 @@ export const scssFileMeta: ScssFileMeta[] = [
   motionFile,
   colorFile,
   fontFile,
+  skeletonFile,
+  focusFile,
   indexFile,
 ];
 

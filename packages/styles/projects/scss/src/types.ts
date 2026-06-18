@@ -43,14 +43,15 @@ export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
 
 /**
  * Shared documented-utility catalog shape — the common topic grouping every solution exposes
- * (typography shorthands, gradients, grid, skeletons). The scss-specific superset (focus,
- * mediaQuery, …) is added when the mixin rails land. Generic over the utility type.
+ * (typography shorthands, gradients, grid, skeletons). `focus` is the first scss-specific superset
+ * member added with the mixin rails; later slices add `mediaQuery`, etc. Generic over the utility type.
  */
 export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
   typography: { heading: T[]; text: T[]; display: T[] };
   gradient: T[];
   grid: T[];
   skeleton: T[];
+  focus: T[];
 };
 
 /** Doc grouping of a theme variable, mirroring the storefront API pages and the tailwind taxonomy. */
@@ -82,14 +83,31 @@ export type ScssVariable = TokenMeta & {
   comment?: string;
 };
 
+/**
+ * A documented scss mixin — {@link UtilityMeta} extended with the mixin `name`, an optional raw
+ * `signature` (the parameter list with parentheses, e.g. `()` or `($offset: 2px)`) and the verbatim
+ * `raw` body (the escape hatch). It is also a render node: the generator wraps `raw` in
+ * `@mixin name(signature) { … }`, while the docs render the call signature.
+ */
+export type ScssMixin = UtilityMeta & {
+  /** The mixin name, e.g. `skeleton` or `focus-visible`. */
+  name: string;
+  /** The raw parameter list including parentheses, e.g. `()` or `($offset: 2px)`. */
+  signature?: string;
+  /** The verbatim mixin body (the escape hatch — supports `@if`, `@each`, `@content`, keyframes, …). */
+  raw: string;
+  /** Optional comment rendered on its own line above the `@mixin` declaration. */
+  comment?: string;
+};
+
 /** A raw scss snippet (deprecated alias block, `@use`/`@forward` lines, …) rendered verbatim. */
 export type ScssRaw = {
   /** The raw scss rendered verbatim. */
   raw: string;
 };
 
-/** A leaf render node: a documented variable or a raw snippet. (Mixin nodes are added later.) */
-export type ScssNode = ScssVariable | ScssRaw;
+/** A leaf render node: a documented variable, a documented mixin or a raw snippet. */
+export type ScssNode = ScssVariable | ScssMixin | ScssRaw;
 
 /**
  * Any branch of the meta tree: a {@link ScssNode} leaf, an array, or a nested record.
@@ -128,6 +146,6 @@ export type ScssMeta = {
       ThemeCatalog<ScssVariable>,
       'border' | 'blur' | 'breakpoint' | 'color' | 'typography' | 'shadow' | 'spacing' | 'motion'
     >;
-  /** The documented mixins. Empty until the mixin rails land. */
-  utilities: Partial<UtilitiesCatalog>;
+  /** The documented mixins. Skeleton and focus are migrated; later slices add the rest. */
+  utilities: Partial<UtilitiesCatalog<ScssMixin>> & Pick<UtilitiesCatalog<ScssMixin>, 'skeleton' | 'focus'>;
 };
