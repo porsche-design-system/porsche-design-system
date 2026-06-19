@@ -8,9 +8,6 @@
   "homepage": "https://designsystem.porsche.com",
   "sideEffects": false,
   "type": "commonjs",
-  "main": "./meta/cjs/index.cjs",
-  "module": "./meta/esm/index.mjs",
-  "types": "./meta/esm/index.d.ts",
   "exports": {
     ".": {
       "types": "./meta/esm/index.d.ts",
@@ -20,6 +17,9 @@
     },
     "./index.css": "./dist/index.css"
   },
+  "main": "./meta/cjs/index.cjs",
+  "module": "./meta/esm/index.mjs",
+  "types": "./meta/esm/index.d.ts",
   "style": "./dist/index.css",
   "files": [
     "./dist/",

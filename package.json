@@ -206,7 +206,7 @@
     "clean:utilities:build": "npm run clean:build --workspace=utilities-v2",
     "npm:install": "npm install",
     "npm:lint": "syncpack lint",
-    "npm:lint:fix": "syncpack fix --dependency-types prod,dev",
+    "npm:lint:fix": "syncpack fix",
     "npm:list": "syncpack list --show all --sort count",
     "npm:format": "syncpack format --check",
     "npm:format:fix": "syncpack format",

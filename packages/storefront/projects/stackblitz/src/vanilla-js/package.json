@@ -1,7 +1,7 @@
 {
   "name": "@porsche-design-system/stackblitz-vanilla-js",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,9 +12,9 @@
     "@porsche-design-system/components-js": "4.2.0-rc.5"
   },
   "devDependencies": {
-    "vite": "^8.0.16",
+    "@tailwindcss/postcss": "^4.3.1",
     "postcss": "^8",
     "tailwindcss": "^4.3.1",
-    "@tailwindcss/postcss": "^4.3.1"
+    "vite": "^8.0.16"
   }
 }
