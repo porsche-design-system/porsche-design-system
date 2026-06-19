@@ -139,7 +139,33 @@ If `npm install` fails with `ERESOLVE` due to a third-party peer range conflicti
   transitive entries).
 - Never work around it with `--legacy-peer-deps` / `--force`.
 
-### 7. Keep version ranges consistent
+### 7. Re-validate the existing `overrides`
+
+Every `overrides` entry in the root [`package.json`](../../package.json) is a workaround for a peer-dependency conflict
+or a security advisory (see `docs/dependencies.md` → _Strict peer dependency resolution_). As the tree moves each week,
+some of these become unnecessary — the upstream/transitive dependency may now satisfy our pins natively. Stale overrides
+silently freeze transitive versions and hide real upgrades, so prune the ones that are no longer needed.
+
+For each override (e.g. `madge > typescript`, the per-major security pins like `minimatch@*` / `brace-expansion@*`, and
+the scoped ones like `js-beautify > glob`, `next > postcss`):
+
+- **Keep** entries that are still required: held-back-related pins, and security overrides whose advisory is not yet
+  fixed upstream (cross-check `npm run npm:audit`).
+- **Test for staleness** by temporarily removing (or relaxing) the candidate entry, then deleting `package-lock.json`
+  **and** `node_modules` and re-running `npm install`:
+
+  ```bash
+  rm -rf package-lock.json node_modules
+  npm install
+  ```
+
+  If `npm install` succeeds with no `ERESOLVE` **and** `npm run npm:audit` reports no regression for that package, the
+  override is obsolete — **remove it**. If either fails, restore the entry as-is.
+
+- Record every removed (or relaxed) override in the PR description, and keep `docs/dependencies.md` →
+  _Current overrides_ in sync with the result.
+
+### 8. Keep version ranges consistent
 
 ```bash
 npm run npm:lint
@@ -148,7 +174,7 @@ npm run npm:format
 
 If either reports issues, fix them with `npm run npm:lint:fix` / `npm run npm:format:fix`, then re-run the check.
 
-### 8. Regenerate the lockfile cleanly
+### 9. Regenerate the lockfile cleanly
 
 To refresh transitive dependencies, delete `package-lock.json` and recreate it:
 
@@ -160,7 +186,7 @@ npm install
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).
 
-### 9. Sync the StackBlitz starter templates (npm workspace members)
+### 10. Sync the StackBlitz starter templates (npm workspace members)
 
 The four StackBlitz starter templates under
 `packages/storefront/projects/stackblitz/src/{vanilla-js,angular,react,vue}/package.json` are **standalone, runnable
@@ -195,7 +221,7 @@ Verify the bundle still generates (this writes the git-ignored `generated/bundle
 npm run build:generateStackblitzBundle --workspace=@porsche-design-system/stackblitz
 ```
 
-### 10. Verify against CI-equivalent checks (do not finalize on failure)
+### 11. Verify against CI-equivalent checks (do not finalize on failure)
 
 CI runs automatically on the PR you open (`build` + `test` jobs in
 [`.github/workflows/contribution.yml`](../../.github/workflows/contribution.yml)). A failing CI run will **not**
@@ -230,14 +256,15 @@ Then run the **additional suites relevant to the changed packages** (mirror what
 > snapshots, cross-browser e2e). Run what you can; for the rest, call them out explicitly in the PR description so the
 > reviewer knows what still needs to pass on CI.
 
-### 11. Review security advisories (report only)
+### 12. Review security advisories (report only)
 
 ```bash
 npm run npm:audit
 ```
 
 Summarize advisories in the PR. **Do not** run `npm audit fix`. For a genuinely fixable advisory, add a pinned
-`overrides` entry (as in step 6) and regenerate the lockfile.
+`overrides` entry (as in step 6) and regenerate the lockfile. Conversely, drop any override an advisory no longer needs
+(see [step 7](#7-re-validate-the-existing-overrides)).
 
 ## Updating Playwright (npm pin, Docker image, VRT)
 
