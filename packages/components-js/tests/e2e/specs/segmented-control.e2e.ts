@@ -8,9 +8,7 @@ import {
   getHTMLAttributes,
   getLifecycleStatus,
   getOffsetWidth,
-  getProperty,
   hasFocus,
-  reattachElement,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -72,7 +70,7 @@ test.describe('width calculation', () => {
     await secondItemHost.evaluate((el) => el.remove());
     await waitForStencilLifecycle(page);
 
-    expect(await getFirstItemOffsetWidth(page)).toBeLessThan(initialItemWidth);
+    await expect.poll(() => getFirstItemOffsetWidth(page)).toBeLessThan(initialItemWidth);
   });
 
   test('should recalculate width on items when new item with longer content is added', async ({ page }) => {
@@ -88,7 +86,7 @@ test.describe('width calculation', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getFirstItemOffsetWidth(page)).toBeGreaterThan(initialItemWidth);
+    await expect.poll(() => getFirstItemOffsetWidth(page)).toBeGreaterThan(initialItemWidth);
   });
 
   test('should recalculate width on items when content changes', async ({ page }) => {
@@ -102,7 +100,7 @@ test.describe('width calculation', () => {
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getFirstItemOffsetWidth(page)).toBeGreaterThan(initialItemWidth);
+    await expect.poll(() => getFirstItemOffsetWidth(page)).toBeGreaterThan(initialItemWidth);
   });
 
   test('should recalculate width on items on label change', async ({ page }) => {
@@ -117,7 +115,7 @@ test.describe('width calculation', () => {
     await setProperty(firstItemHost, 'label', 'Some Label');
     await waitForStencilLifecycle(page);
 
-    expect(await getFirstItemOffsetWidth(page)).toBeLessThan(initialItemWidth);
+    await expect.poll(() => getFirstItemOffsetWidth(page)).toBeLessThan(initialItemWidth);
   });
 
   test('should recalculate width on items when icon is added', async ({ page }) => {
@@ -129,7 +127,7 @@ test.describe('width calculation', () => {
     await setProperty(secondItemHost, 'icon', 'truck');
     await waitForStencilLifecycle(page);
 
-    expect(await getFirstItemOffsetWidth(page)).toBeGreaterThan(initialItemWidth);
+    await expect.poll(() => getFirstItemOffsetWidth(page)).toBeGreaterThan(initialItemWidth);
   });
 
   test('should recalculate width on items when icon is removed', async ({ page }) => {
@@ -144,12 +142,7 @@ test.describe('width calculation', () => {
     await setProperty(secondItemHost, 'icon', undefined);
     await waitForStencilLifecycle(page);
 
-    await expect
-      .poll(async () => {
-        const el = getFirstItemHost(page);
-        return await el.evaluate((el: HTMLElement) => el.offsetWidth);
-      })
-      .toBeLessThan(initialItemWidth);
+    await expect.poll(() => getFirstItemOffsetWidth(page)).toBeLessThan(initialItemWidth);
   });
 });
 
