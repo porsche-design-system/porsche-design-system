@@ -296,9 +296,6 @@
     },
     "next": {
       "postcss": "^8.5.10"
-    },
-    "@react-router/serve": {
-      "express": "^4.22.2"
     }
   },
   "volta": {
