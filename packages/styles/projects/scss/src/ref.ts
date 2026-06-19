@@ -9,6 +9,3 @@ export const ref =
   (namespace: string) =>
   (node: Referenceable): string =>
     `${namespace}.${node.name}`;
-
-/** Same-partial reference (no namespace prefix), e.g. `@include -prose-heading(...)`. */
-export const localRef = (node: Referenceable): string => node.name;

@@ -19,7 +19,7 @@ import {
   typescaleXl,
   typescaleXs,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw, ScssVariable } from '../types';
+import type { ScssMeta, ScssMixin, ScssRaw, ScssVariable } from '../types';
 
 /** The Porsche Next font families (base plus the locale-specific CJK stacks). */
 const family = {
@@ -159,13 +159,11 @@ export const font = {
   size,
 } satisfies ScssMeta['font'];
 
-/** Name-only handle for `ref('font')` to reference the `cjk-font-family` mixin (the mixin itself stays a `ScssRaw`). */
-export const cjkFontFamily = { name: 'cjk-font-family' };
-
-/** The `cjk-font-family` helper mixin: swaps to the locale-specific font stack by nearest `lang` attribute (plumbing). */
-export const cjkFontFamilyMixin: ScssRaw = {
-  raw: `@mixin cjk-font-family {
-  /* Simplified Chinese */
+/** The `cjk-font-family` helper mixin: swaps to the locale-specific font stack by nearest `lang` attribute. Referenced via `ref('font')` from the prose helpers (plumbing). */
+export const cjkFontFamily: ScssMixin = {
+  name: 'cjk-font-family',
+  description: 'Swaps to the locale-specific CJK font stack based on the nearest `lang` attribute.',
+  raw: `  /* Simplified Chinese */
   &:lang(zh-Hans),
   &:lang(zh-CN),
   &:lang(zh-SG) {
@@ -188,8 +186,7 @@ export const cjkFontFamilyMixin: ScssRaw = {
   /* Korean */
   &:lang(ko) {
     font-family: $font-porsche-next-ko;
-  }
-}`,
+  }`,
 };
 
 /**

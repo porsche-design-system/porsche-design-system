@@ -10,7 +10,7 @@ import { grid as gridMixin } from '../utilities/grid';
 import { motionDeprecatedAliases } from '../theme/motion';
 import { shadowDeprecatedMixins } from '../theme/shadow';
 import { spacingDeprecatedAliases } from '../theme/spacing';
-import { cjkFontFamilyMixin, fontDeprecatedAliases } from '../theme/font';
+import { cjkFontFamily, fontDeprecatedAliases } from '../theme/font';
 import type { ScssFileMeta, ScssRaw } from '../types';
 import { focusDeprecatedAliases } from '../utilities/focus';
 import { breakpointsMap, mediaQueryDeprecatedAliases } from '../utilities/media-query';
@@ -83,7 +83,7 @@ const fontFile: ScssFileMeta = {
   nodes: [
     ...flatten(family),
     blank,
-    cjkFontFamilyMixin,
+    cjkFontFamily,
     blank,
     ...flatten(lineHeight),
     blank,

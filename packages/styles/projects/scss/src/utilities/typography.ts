@@ -1,16 +1,30 @@
 import { colorRef, fontRef } from '../namespaces';
-import { localRef } from '../ref';
 import { color } from '../theme/color';
-import { cjkFontFamily, font as fontTheme } from '../theme/font';
+import { cjkFontFamily, font } from '../theme/font';
 import type { ScssMixin, ScssRaw } from '../types';
 
 // The documented `prose-heading-*` / `prose-text-*` mixins delegate to the private `-prose-*` helpers
 // and reference the `font` / `color` partials via `ref()`.
 
-/** Name-only handle for the private `-prose-heading` helper (same partial → no namespace). */
-const proseHeading = { name: '-prose-heading' };
-/** Name-only handle for the private `-prose-text` helper (same partial → no namespace). */
-const proseText = { name: '-prose-text' };
+/** The private `-prose-heading` helper the `prose-heading-*` mixins delegate to (plumbing, emitted first). */
+export const proseHeadingHelper: ScssMixin = {
+  name: '-prose-heading',
+  signature: '($size, $weight)',
+  description: 'The private helper the documented `prose-heading-*` mixins delegate to.',
+  raw: `  @include ${fontRef(cjkFontFamily)};
+  font: $weight $size / ${fontRef(font.lineHeight.normal)} ${fontRef(font.family.porscheNext)};
+  color: ${colorRef(color.foreground.primary)};`,
+};
+
+/** The private `-prose-text` helper the documented `prose-text-*` mixins delegate to. Plumbing. */
+export const proseTextHelper: ScssMixin = {
+  name: '-prose-text',
+  signature: '($size)',
+  description: 'The private helper the documented `prose-text-*` mixins delegate to.',
+  raw: `  @include ${fontRef(cjkFontFamily)};
+  font: ${fontRef(font.weight.normal)} $size / ${fontRef(font.lineHeight.normal)} ${fontRef(font.family.porscheNext)};
+  color: ${colorRef(color.foreground.primary)};`,
+};
 
 /** The documented heading variants, applied primarily to heading tags (largest → smallest). */
 export const heading = [
@@ -18,61 +32,61 @@ export const heading = [
     name: 'prose-heading-5xl',
     description:
       'Applies the **5x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size['5xl'])}, ${fontRef(fontTheme.weight.normal)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size['5xl'])}, ${fontRef(font.weight.normal)});`,
   },
   {
     name: 'prose-heading-4xl',
     description:
       'Applies the **4x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size['4xl'])}, ${fontRef(fontTheme.weight.normal)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size['4xl'])}, ${fontRef(font.weight.normal)});`,
   },
   {
     name: 'prose-heading-3xl',
     description:
       'Applies the **3x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size['3xl'])}, ${fontRef(fontTheme.weight.normal)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size['3xl'])}, ${fontRef(font.weight.normal)});`,
   },
   {
     name: 'prose-heading-2xl',
     description:
       'Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size['2xl'])}, ${fontRef(fontTheme.weight.normal)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size['2xl'])}, ${fontRef(font.weight.normal)});`,
   },
   {
     name: 'prose-heading-xl',
     description:
       'Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size.xl)}, ${fontRef(fontTheme.weight.normal)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size.xl)}, ${fontRef(font.weight.normal)});`,
   },
   {
     name: 'prose-heading-lg',
     description:
       'Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size.lg)}, ${fontRef(fontTheme.weight.normal)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size.lg)}, ${fontRef(font.weight.normal)});`,
   },
   {
     name: 'prose-heading-md',
     description:
       'Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size.md)}, ${fontRef(fontTheme.weight.normal)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size.md)}, ${fontRef(font.weight.normal)});`,
   },
   {
     name: 'prose-heading-sm',
     description:
       'Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size.sm)}, ${fontRef(fontTheme.weight.semibold)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size.sm)}, ${fontRef(font.weight.semibold)});`,
   },
   {
     name: 'prose-heading-xs',
     description:
       'Applies the **x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size.xs)}, ${fontRef(fontTheme.weight.semibold)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size.xs)}, ${fontRef(font.weight.semibold)});`,
   },
   {
     name: 'prose-heading-2xs',
     description:
       'Applies the **2x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
-    raw: `  @include ${localRef(proseHeading)}(${fontRef(fontTheme.size['2xs'])}, ${fontRef(fontTheme.weight.semibold)});`,
+    raw: `  @include ${proseHeadingHelper.name}(${fontRef(font.size['2xs'])}, ${fontRef(font.weight.semibold)});`,
   },
 ] satisfies ScssMixin[];
 
@@ -81,52 +95,52 @@ export const text = [
   {
     name: 'prose-text-5xl',
     description: 'Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size['5xl'])});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['5xl'])});`,
   },
   {
     name: 'prose-text-4xl',
     description: 'Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size['4xl'])});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['4xl'])});`,
   },
   {
     name: 'prose-text-3xl',
     description: 'Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size['3xl'])});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['3xl'])});`,
   },
   {
     name: 'prose-text-2xl',
     description: 'Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size['2xl'])});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['2xl'])});`,
   },
   {
     name: 'prose-text-xl',
     description: 'Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size.xl)});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.xl)});`,
   },
   {
     name: 'prose-text-lg',
     description: 'Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size.lg)});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.lg)});`,
   },
   {
     name: 'prose-text-md',
     description: 'Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size.md)});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.md)});`,
   },
   {
     name: 'prose-text-sm',
     description: 'Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size.sm)});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.sm)});`,
   },
   {
     name: 'prose-text-xs',
     description: 'Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size.xs)});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.xs)});`,
   },
   {
     name: 'prose-text-2xs',
     description: 'Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
-    raw: `  @include ${localRef(proseText)}(${fontRef(fontTheme.size['2xs'])});`,
+    raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['2xs'])});`,
   },
 ] satisfies ScssMixin[];
 
@@ -135,24 +149,6 @@ export const display = [] satisfies ScssMixin[];
 
 /** Typography mixins grouped like the storefront API tables and the tailwind taxonomy. */
 export const typography = { heading, text, display };
-
-/** The private `-prose-heading` helper the `prose-heading-*` mixins delegate to (plumbing, emitted first). */
-export const proseHeadingHelper: ScssRaw = {
-  raw: `@mixin -prose-heading($size, $weight) {
-  @include ${fontRef(cjkFontFamily)};
-  font: $weight $size / ${fontRef(fontTheme.lineHeight.normal)} ${fontRef(fontTheme.family.porscheNext)};
-  color: ${colorRef(color.foreground.primary)};
-}`,
-};
-
-/** The private `-prose-text` helper the documented `prose-text-*` mixins delegate to. Plumbing. */
-export const proseTextHelper: ScssRaw = {
-  raw: `@mixin -prose-text($size) {
-  @include ${fontRef(cjkFontFamily)};
-  font: ${fontRef(fontTheme.weight.normal)} $size / ${fontRef(fontTheme.lineHeight.normal)} ${fontRef(fontTheme.family.porscheNext)};
-  color: ${colorRef(color.foreground.primary)};
-}`,
-};
 
 /** Deprecated `pds-heading-*` aliases (plumbing). @deprecated Use the documented `prose-heading-*` mixins. */
 export const headingDeprecatedAliases: ScssRaw = {
