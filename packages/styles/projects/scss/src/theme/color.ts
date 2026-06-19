@@ -99,7 +99,7 @@ import {
   colorWarningMediumDark,
   colorWarningMediumLight,
 } from '@porsche-design-system/tokens';
-import type { ScssRaw, ScssVariable } from '../types';
+import type { ScssMeta, ScssRaw } from '../types';
 
 /** The `light-dark()` MDN link prefixing every color description. */
 const ld =
@@ -316,7 +316,7 @@ export const color = {
       group: 'a11y',
     },
   },
-} satisfies Record<'background' | 'foreground' | 'semantic' | 'a11y', Record<string, ScssVariable>>;
+} satisfies ScssMeta['color'];
 
 // The light-mode custom-property assignments shared by the `@supports` fallback's light selectors.
 const lightCustomProps = `--_color-focus: ${colorFocusLight};

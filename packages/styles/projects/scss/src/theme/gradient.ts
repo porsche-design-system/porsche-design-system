@@ -1,15 +1,15 @@
 import { gradientStopsFadeDark } from '@porsche-design-system/tokens';
-import type { ScssRaw, ScssVariable } from '../types';
+import type { ScssMeta, ScssRaw } from '../types';
 
-/** Gradient theme variable: the `$gradient-stops-fade-dark` color stops. */
-export const gradient = [
-  {
+/** Gradient theme variable, keyed by variant (e.g. `gradient.stopsFadeDark`). */
+export const gradient = {
+  stopsFadeDark: {
     name: '$gradient-stops-fade-dark',
     value: gradientStopsFadeDark,
     description: 'Holds color stops for a faded gradient, used as `background-image`.',
     group: 'gradient',
   },
-] satisfies ScssVariable[];
+} satisfies ScssMeta['gradient'];
 
 /**
  * Deprecated `pds-gradient-to-*` directional mixins (plumbing).

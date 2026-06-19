@@ -1,13 +1,15 @@
+import { colorRef } from '../namespaces';
+import { color } from '../theme/color';
 import type { ScssMixin, ScssRaw } from '../types';
 
-/** The documented `focus-visible()` mixin. The `raw` body keeps its namespaced `color.` reference (`@use` declared in the descriptor). */
+/** The documented `focus-visible()` mixin. The `raw` body references `color` via `ref()` (`@use` declared in the descriptor). */
 export const focus = [
   {
     name: 'focus-visible',
     signature: '($offset: 2px)',
     description: 'Applies a **focus-visible** style.',
     raw: `  &:focus-visible {
-    outline: 2px solid color.$color-focus;
+    outline: 2px solid ${colorRef(color.a11y.focus)};
     outline-offset: $offset;
   }`,
   },

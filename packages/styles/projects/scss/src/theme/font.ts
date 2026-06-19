@@ -19,10 +19,10 @@ import {
   typescaleXl,
   typescaleXs,
 } from '@porsche-design-system/tokens';
-import type { ScssRaw, ScssVariable } from '../types';
+import type { ScssMeta, ScssRaw, ScssVariable } from '../types';
 
 /** The Porsche Next font families (base plus the locale-specific CJK stacks). */
-export const family = {
+const family = {
   porscheNext: {
     name: '$font-porsche-next',
     value: fontPorscheNext,
@@ -56,7 +56,7 @@ export const family = {
 } satisfies Record<string, ScssVariable>;
 
 /** The font weights optimized for the Porsche Next typeface. */
-export const weight = {
+const weight = {
   normal: {
     name: '$font-weight-normal',
     value: fontWeightNormal,
@@ -78,7 +78,7 @@ export const weight = {
 } satisfies Record<string, ScssVariable>;
 
 /** The dynamic default line height optimized for the Porsche Next typeface. */
-export const lineHeight = {
+const lineHeight = {
   normal: {
     name: '$leading-normal',
     value: leadingNormal,
@@ -88,7 +88,7 @@ export const lineHeight = {
 } satisfies Record<string, ScssVariable>;
 
 /** The fluid type scale (`$typescale-2xs` … `$typescale-5xl`) optimized for the Porsche Next typeface. */
-export const text = {
+const size = {
   '2xs': {
     name: '$typescale-2xs',
     value: typescale2Xs,
@@ -151,13 +151,16 @@ export const text = {
   },
 } satisfies Record<string, ScssVariable>;
 
-/** Typography theme variables (`family` / `weight` / `lineHeight` / `text`). The prose mixins live in `utilities/typography.ts`. */
-export const typography = {
+/** Font token variables (`family` / `weight` / `lineHeight` / `size`). The prose mixins live in `utilities/typography.ts`. */
+export const font = {
   family,
   weight,
   lineHeight,
-  text,
-} satisfies Record<'family' | 'weight' | 'lineHeight' | 'text', Record<string, ScssVariable>>;
+  size,
+} satisfies ScssMeta['font'];
+
+/** Name-only handle for `ref('font')` to reference the `cjk-font-family` mixin (the mixin itself stays a `ScssRaw`). */
+export const cjkFontFamily = { name: 'cjk-font-family' };
 
 /** The `cjk-font-family` helper mixin: swaps to the locale-specific font stack by nearest `lang` attribute (plumbing). */
 export const cjkFontFamilyMixin: ScssRaw = {

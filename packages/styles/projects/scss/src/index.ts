@@ -1,4 +1,5 @@
-// Public JS API: only the documented `scssMeta` model and its types. SCSS-file generation
-// (`scss/index.ts`) is imported directly by the build scripts.
+// Public JS API: the documented `scssMeta` model, its types, and the `kindOf` leaf discriminant.
+// SCSS-file generation (`scss/index.ts`) is imported directly by the build scripts.
 export { scssMeta } from './meta';
+export { kindOf, type ScssKind } from './kind';
 export type * from './types';

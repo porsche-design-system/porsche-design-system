@@ -1,6 +1,10 @@
+import { borderRef, colorRef, motionRef } from '../namespaces';
+import { border } from '../theme/border';
+import { color } from '../theme/color';
+import { motion } from '../theme/motion';
 import type { ScssMixin, ScssRaw } from '../types';
 
-/** The documented `skeleton()` mixin. The `raw` body keeps its namespaced `border.` / `color.` / `motion.` cross-references. */
+/** The documented `skeleton()` mixin. The `raw` body references its `border` / `color` / `motion` cross-references via `ref()`. */
 export const skeleton = [
   {
     name: 'skeleton',
@@ -16,9 +20,9 @@ export const skeleton = [
   }
 
   display: block;
-  border-radius: border.$radius-sm;
-  background: transparent linear-gradient(to right, color.$color-frosted 0%, color.$color-frosted-strong 50%, color.$color-frosted 100%) 0 0 / 200% 100%;
-  animation: skeleton motion.$duration-xl motion.$ease-in-out infinite;`,
+  border-radius: ${borderRef(border.radius.sm)};
+  background: transparent linear-gradient(to right, ${colorRef(color.background.frosted)} 0%, ${colorRef(color.background.frostedStrong)} 50%, ${colorRef(color.background.frosted)} 100%) 0 0 / 200% 100%;
+  animation: skeleton ${motionRef(motion.duration.xl)} ${motionRef(motion.ease.inOut)} infinite;`,
   },
 ] satisfies ScssMixin[];
 

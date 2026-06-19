@@ -1,16 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { sentenceCase } from 'change-case';
-import type { ScssMixin, ScssVariable } from '../src';
-import { scssMeta } from '../src';
+import type { ScssBranch, ScssMixin, ScssNode, ScssVariable } from '../src';
+import { kindOf, type ScssKind, scssMeta } from '../src';
 
 /**
  * Markdown serializer for the scss package, driven by {@link scssMeta}. Renders an intro, a
  * hand-authored "how to use" guide and a grouped reference of every documented variable and mixin.
  * Only the documented surface is rendered; plumbing and exact token values stay in the partials.
  */
-
-const { theme, utilities } = scssMeta;
 
 const code = (value: string): string => `\`${value}\``;
 
@@ -46,6 +44,12 @@ type Outline<T> = Record<string, T[] | Record<string, T[]>>;
 
 /** Normalize a documented group — a keyed record or an array — to a flat list. */
 const groupItems = <T>(group: T[] | Record<string, T>): T[] => (Array.isArray(group) ? group : Object.values(group));
+
+/** A documented leaf (variable/mixin) carries a `name`; a group/category is a keyed record or array of leaves. */
+const isLeaf = (node: unknown): boolean => typeof node === 'object' && node !== null && 'name' in node;
+
+/** A flat group is an array of leaves or a record of leaves; a category is a record of such groups. */
+const isFlatGroup = (value: object): boolean => Array.isArray(value) || Object.values(value).every(isLeaf);
 
 /** Render an outline to markdown sections, building each section's table from `columns`. Empty groups are skipped. */
 const renderOutline = <T>(outline: Outline<T>, columns: Column<T>[]): string =>
@@ -87,19 +91,42 @@ const howToUse = readMarkdown('how-to-use.md');
 /** Derive an {@link Outline} from a catalog, sentence-casing keys (`lineHeight` → `Line height`) and following source order. */
 const deriveOutline = <T>(catalog: object): Outline<T> =>
   Object.fromEntries(
-    Object.entries(catalog).map(([key, value]: [string, T[] | Record<string, T[] | Record<string, T>>]) => [
-      sentenceCase(key),
-      Array.isArray(value)
-        ? value
-        : Object.fromEntries(
-            Object.entries(value).map(([subKey, subValue]) => [sentenceCase(subKey), groupItems(subValue)])
-          ),
-    ])
+    Object.entries(catalog).map(
+      ([key, value]: [string, T[] | Record<string, T> | Record<string, T[] | Record<string, T>>]) => [
+        sentenceCase(key),
+        isFlatGroup(value)
+          ? groupItems(value as T[] | Record<string, T>)
+          : Object.fromEntries(
+              Object.entries(value as Record<string, T[] | Record<string, T>>).map(([subKey, subValue]) => [
+                sentenceCase(subKey),
+                groupItems(subValue),
+              ])
+            ),
+      ]
+    )
   ) as Outline<T>;
 
-const themeOutline = deriveOutline<ScssVariable>(theme);
+/** Keep only the leaves of a given {@link ScssKind}, pruning emptied groups. Returns `undefined` when nothing remains. */
+const pruneByKind = (node: ScssBranch, kind: ScssKind): ScssBranch | undefined => {
+  if (isLeaf(node)) {
+    return kindOf(node as ScssNode) === kind ? node : undefined;
+  }
+  const entries = (Array.isArray(node) ? node.map((n, i) => [i, n] as const) : Object.entries(node))
+    .map(([key, value]) => [key, pruneByKind(value as ScssBranch, kind)] as const)
+    .filter((entry): entry is [string | number, ScssBranch] => entry[1] !== undefined);
+  if (entries.length === 0) {
+    return undefined;
+  }
+  return Array.isArray(node) ? entries.map(([, value]) => value) : Object.fromEntries(entries);
+};
 
-const utilitiesOutline = deriveOutline<ScssMixin>(utilities);
+/** Split the flat `scssMeta` catalog into a single-kind view, dropping domains/groups that end up empty. */
+const catalogByKind = (kind: ScssKind): Record<string, ScssBranch> =>
+  (pruneByKind(scssMeta as ScssBranch, kind) ?? {}) as Record<string, ScssBranch>;
+
+const themeOutline = deriveOutline<ScssVariable>(catalogByKind('token'));
+
+const utilitiesOutline = deriveOutline<ScssMixin>(catalogByKind('utility'));
 
 const contents = `## Contents
 

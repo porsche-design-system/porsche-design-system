@@ -1,49 +1,6 @@
-// The scss meta model. The base shapes (`TokenMeta`, `UtilityMeta`, `TokenGroup`, `ThemeCatalog`,
-// `UtilitiesCatalog`) are duplicated from the tailwindcss package to keep this package self-contained.
-
-/** Solution-agnostic design-token entry: `description` + rendered `value`. scss extends it with a `$`-prefixed `name`. */
-export type TokenMeta = {
-  /** Description rendered in the docs and LLM context. */
-  description: string;
-  /** The rendered value (a token, a CSS expression, …). */
-  value: string | number;
-};
-
-/** A group of tokens keyed by size/name, e.g. `theme.color.background` or `theme.spacing.fluid`. */
-export type TokenGroup<T extends TokenMeta = TokenMeta> = Record<string, T>;
-
-/** Solution-agnostic documented utility: just a `description`. scss extends it with {@link ScssMixin}. */
-export type UtilityMeta = {
-  /** Description rendered in the docs and LLM context. */
-  description: string;
-};
-
-/** Shared design-token catalog shape reused across solutions. Generic over the token type ({@link ScssVariable} for scss). */
-export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
-  color: Record<'background' | 'foreground' | 'semantic' | 'a11y', TokenGroup<T>>;
-  typography: Record<'family' | 'weight' | 'lineHeight' | 'text', TokenGroup<T>>;
-  spacing: Record<'fluid' | 'static', TokenGroup<T>>;
-  border: { radius: TokenGroup<T>; width: T[] };
-  blur: T[];
-  shadow: T[];
-  breakpoint: T[];
-  motion: { duration: T[]; easing: T[] };
-  gradient: T[];
-  grid: T[];
-};
-
-/**
- * Shared documented-utility catalog shape. `focus` / `mediaQuery` are scss-specific; `gradient` and
- * `typography.display` map only to plumbing in scss, so they stay unpopulated in `scssMeta`.
- */
-export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
-  typography: { heading: T[]; text: T[]; display: T[] };
-  gradient: T[];
-  grid: T[];
-  skeleton: T[];
-  focus: T[];
-  mediaQuery: T[];
-};
+// The scss meta model. `ScssMeta` is the documented single source of truth: a `theme` of design-token
+// variables and a `utilities` catalog of mixins, every group and key spelled out inline so the types
+// read like the data they validate. Leaves are `ScssVariable` (a documented `$`-variable) and `ScssMixin`.
 
 /** Doc grouping of a theme variable, mirroring the storefront API pages and the tailwind taxonomy. */
 export type ScssVariableGroup =
@@ -62,8 +19,12 @@ export type ScssVariableGroup =
   | 'gradient'
   | 'grid';
 
-/** A documented scss variable: {@link TokenMeta} + `$`-prefixed `name`. Renders both a docs row and a `$name: value;` declaration. */
-export type ScssVariable = TokenMeta & {
+/** A documented scss variable: `description` + rendered `value` + `$`-prefixed `name`. Renders both a docs row and a `$name: value;` declaration. */
+export type ScssVariable = {
+  /** Description rendered in the docs and LLM context. */
+  description: string;
+  /** The rendered value (a token, a CSS expression, …). */
+  value: string | number;
   /** The `$`-prefixed Sass variable name, e.g. `$radius-xs`. */
   name: string;
   /** Grouping used to organize the documentation tables. */
@@ -72,8 +33,10 @@ export type ScssVariable = TokenMeta & {
   comment?: string;
 };
 
-/** A documented scss mixin: {@link UtilityMeta} + `name`, optional `signature` and verbatim `raw` body. Renders a `@mixin` and a docs row. */
-export type ScssMixin = UtilityMeta & {
+/** A documented scss mixin: `description` + `name`, optional `signature` and verbatim `raw` body. Renders a `@mixin` and a docs row. */
+export type ScssMixin = {
+  /** Description rendered in the docs and LLM context. */
+  description: string;
   /** The mixin name, e.g. `skeleton` or `focus-visible`. */
   name: string;
   /** The raw parameter list including parentheses, e.g. `()` or `($offset: 2px)`. */
@@ -109,18 +72,172 @@ export type ScssFileMeta = {
 };
 
 /**
- * The documented single source of truth shared with the storefront docs and LLM context. SCSS-only
- * plumbing lives in the composition layer (`scss/index.ts`), not here. Catalog groups are the same
- * object references the SCSS is built from, so docs and generated SCSS can't diverge.
+ * The documented single source of truth shared with the storefront docs and LLM context. A flat,
+ * domain-keyed catalog mirroring `tokensMeta`: token domains use the tokens vocabulary, the
+ * utility-only domains (`typography` prose, `skeleton`, `focus`, `mediaQuery`) stand alone, and
+ * `grid` holds both kinds. Each leaf's kind (`token` | `utility`) is recoverable via `kindOf`;
+ * SCSS-only plumbing lives in the composition layer (`scss/index.ts`), not here. Catalog groups are
+ * the same object references the SCSS is built from, so docs and generated SCSS can't diverge.
  */
 export type ScssMeta = {
-  /** The documented design-token catalog — every variable group. */
-  theme: Partial<ThemeCatalog<ScssVariable>> &
-    Pick<
-      ThemeCatalog<ScssVariable>,
-      'border' | 'blur' | 'breakpoint' | 'color' | 'typography' | 'shadow' | 'spacing' | 'motion' | 'gradient' | 'grid'
-    >;
-  /** The documented mixins: typography, skeleton, focus, media-query and grid (`gradient`/`display` are plumbing-only). */
-  utilities: Partial<UtilitiesCatalog<ScssMixin>> &
-    Pick<UtilitiesCatalog<ScssMixin>, 'typography' | 'skeleton' | 'focus' | 'mediaQuery' | 'grid'>;
+  /** Border token variables: the `radius` scale plus the (deprecated-only) `width` list. */
+  border: {
+    radius: {
+      xs: ScssVariable;
+      sm: ScssVariable;
+      md: ScssVariable;
+      lg: ScssVariable;
+      xl: ScssVariable;
+      '2xl': ScssVariable;
+      '3xl': ScssVariable;
+      '4xl': ScssVariable;
+      full: ScssVariable;
+    };
+    width: ScssVariable[];
+  };
+  /** Blur token variables keyed by variant. */
+  blur: {
+    frosted: ScssVariable;
+  };
+  /** Breakpoint token variables keyed by size. */
+  breakpoint: {
+    xs: ScssVariable;
+    sm: ScssVariable;
+    md: ScssVariable;
+    lg: ScssVariable;
+    xl: ScssVariable;
+    '2xl': ScssVariable;
+  };
+  /** Color token variables grouped by role. */
+  color: {
+    background: {
+      canvas: ScssVariable;
+      surface: ScssVariable;
+      frosted: ScssVariable;
+      frostedSoft: ScssVariable;
+      frostedStrong: ScssVariable;
+      backdrop: ScssVariable;
+    };
+    foreground: {
+      primary: ScssVariable;
+      contrastHigher: ScssVariable;
+      contrastHigh: ScssVariable;
+      contrastMedium: ScssVariable;
+      contrastLow: ScssVariable;
+      contrastLower: ScssVariable;
+    };
+    semantic: {
+      info: ScssVariable;
+      infoMedium: ScssVariable;
+      infoLow: ScssVariable;
+      infoFrosted: ScssVariable;
+      infoFrostedSoft: ScssVariable;
+      success: ScssVariable;
+      successMedium: ScssVariable;
+      successLow: ScssVariable;
+      successFrosted: ScssVariable;
+      successFrostedSoft: ScssVariable;
+      warning: ScssVariable;
+      warningMedium: ScssVariable;
+      warningLow: ScssVariable;
+      warningFrosted: ScssVariable;
+      warningFrostedSoft: ScssVariable;
+      error: ScssVariable;
+      errorMedium: ScssVariable;
+      errorLow: ScssVariable;
+      errorFrosted: ScssVariable;
+      errorFrostedSoft: ScssVariable;
+    };
+    a11y: {
+      focus: ScssVariable;
+    };
+  };
+  /** Font token variables grouped by facet (mirrors `tokensMeta.font`). The prose mixins live under `typography`. */
+  font: {
+    family: {
+      porscheNext: ScssVariable;
+      porscheNextZhHans: ScssVariable;
+      porscheNextZhHant: ScssVariable;
+      porscheNextJa: ScssVariable;
+      porscheNextKo: ScssVariable;
+    };
+    weight: {
+      normal: ScssVariable;
+      semibold: ScssVariable;
+      bold: ScssVariable;
+    };
+    lineHeight: {
+      normal: ScssVariable;
+    };
+    size: {
+      '2xs': ScssVariable;
+      xs: ScssVariable;
+      sm: ScssVariable;
+      md: ScssVariable;
+      lg: ScssVariable;
+      xl: ScssVariable;
+      '2xl': ScssVariable;
+      '3xl': ScssVariable;
+      '4xl': ScssVariable;
+      '5xl': ScssVariable;
+    };
+  };
+  /** Shadow token variables keyed by size. */
+  shadow: {
+    sm: ScssVariable;
+    md: ScssVariable;
+    lg: ScssVariable;
+  };
+  /** Spacing token variables grouped by scaling behavior. */
+  spacing: {
+    fluid: {
+      xs: ScssVariable;
+      sm: ScssVariable;
+      md: ScssVariable;
+      lg: ScssVariable;
+      xl: ScssVariable;
+      '2xl': ScssVariable;
+    };
+    static: {
+      '2xs': ScssVariable;
+      xs: ScssVariable;
+      sm: ScssVariable;
+      md: ScssVariable;
+      lg: ScssVariable;
+      xl: ScssVariable;
+      '2xl': ScssVariable;
+    };
+  };
+  /** Motion token variables grouped into the `duration` and `ease` scales. */
+  motion: {
+    duration: {
+      sm: ScssVariable;
+      md: ScssVariable;
+      lg: ScssVariable;
+      xl: ScssVariable;
+    };
+    ease: {
+      inOut: ScssVariable;
+      in: ScssVariable;
+      out: ScssVariable;
+    };
+  };
+  /** Gradient token variables keyed by variant. */
+  gradient: {
+    stopsFadeDark: ScssVariable;
+  };
+  /** Prose typography mixins grouped by element; `display` stays empty in scss (plumbing-only). */
+  typography: {
+    heading: ScssMixin[];
+    text: ScssMixin[];
+    display: ScssMixin[];
+  };
+  /** The `skeleton()` loading-placeholder mixin. */
+  skeleton: ScssMixin[];
+  /** The `focus-visible()` mixin. */
+  focus: ScssMixin[];
+  /** The `media-query-*` mixins. */
+  mediaQuery: ScssMixin[];
+  /** The Porsche Grid domain: the token variables (flat, ordered) plus the `pds-grid` layout mixin. */
+  grid: (ScssVariable | ScssMixin)[];
 };

@@ -13,7 +13,7 @@ import {
   spacingStaticXl,
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
-import type { ScssRaw, ScssVariable } from '../types';
+import type { ScssMeta, ScssRaw } from '../types';
 
 /** Spacing theme variables (`fluid` / `static`). */
 export const spacing = {
@@ -99,7 +99,7 @@ export const spacing = {
       group: 'static',
     },
   },
-} satisfies { fluid: Record<string, ScssVariable>; static: Record<string, ScssVariable> };
+} satisfies ScssMeta['spacing'];
 
 /**
  * Deprecated `$pds-spacing-*` aliases (plumbing).

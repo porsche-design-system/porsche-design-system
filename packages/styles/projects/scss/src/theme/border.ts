@@ -9,7 +9,7 @@ import {
   radiusXl,
   radiusXs,
 } from '@porsche-design-system/tokens';
-import type { ScssRaw, ScssVariable } from '../types';
+import type { ScssMeta, ScssRaw, ScssVariable } from '../types';
 
 /** The border radius scale. The same entries render both the docs rows and the `$radius-*: …;` declarations. */
 export const radius = {
@@ -78,7 +78,7 @@ export const radius = {
 export const border = {
   radius,
   width: [],
-} satisfies { radius: Record<string, ScssVariable>; width: ScssVariable[] };
+} satisfies ScssMeta['border'];
 
 /**
  * Deprecated `$pds-border-*` aliases (plumbing).
