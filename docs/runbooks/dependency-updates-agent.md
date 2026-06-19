@@ -29,9 +29,9 @@ mirroring [`.github/actions/install`](../../.github/actions/install/action.yml))
 | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | Run `npm audit fix` / `npm audit fix --force`                    | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`).        |
 | Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                        |
-| Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges; the **only** exception is the Angular family via `ng update` (step 3). |
+| Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3).  |
 | Edit `package-lock.json` by hand                                 | Regenerate it via `npm install` only.                                                                  |
-| Upgrade held-back deps by selecting them in `npm run npm:update` | They have their own paths — Angular via `ng update` (step 3); Stencil/Playwright/internal stay pinned. |
+| Upgrade held-back deps by selecting them in `npm run npm:update` | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3. |
 | Push directly to `main`                                          | Always open a PR for human review.                                                                     |
 
 ## Held-back dependencies (special handling)
@@ -42,8 +42,9 @@ These are excluded from the `syncpack` flow — they are ignored by `syncpack` v
 by selecting them in `npm run npm:update`.** Handle them as noted:
 
 - `@porsche-design-system/**` — internal workspace packages, versioned by the release process. **Never touch here.**
-- `@angular/**`, `ng-packagr`, `zone.js` — updated via **`ng update`** in
-  [step 3](#3-update-angular-via-ng-update-do-this-before-syncpack), not syncpack.
+- `@angular/**`, `ng-packagr`, `zone.js` — **versions** go through syncpack (`npm run npm:update`) like everything else;
+  only Angular's framework **migrations** are applied separately in
+  [step 3](#3-apply-angular-framework-migrations-after-the-syncpack-version-bump).
 - `typescript` — may move only **within** Angular's `MAX_TS_VERSION` ceiling (see step 3); otherwise keep it held back
   this round.
 - `@playwright/test` — held back from the weekly run; update deliberately via
@@ -76,21 +77,31 @@ npm run npm:outdated
 
 This runs `syncpack update --check` and already excludes the held-back/internal packages.
 
-### 3. Update Angular via `ng update` (do this before syncpack)
+### 3. Apply Angular framework migrations (after the syncpack version bump)
 
-Angular (`@angular/*`, `ng-packagr`, `zone.js`) is **not** updated by syncpack — it must be migrated with Angular's own
-tooling, and it must run **before** the syncpack steps (running syncpack / `npm install` first can corrupt
-`package-lock.json` for the Angular packages — see `docs/dependencies.md` → _Held-back dependencies_).
+Angular splits into two concerns:
+
+- **Versions** (`@angular/*`, `ng-packagr`, `zone.js`) are bumped by syncpack like everything else, in
+  [step 4](#4-apply-updates-with-syncpack). Select the `@angular/*` family together so they move in lockstep.
+- **Framework migrations** (code transforms) are applied here, by the
+  [`ng-update.sh`](../../packages/components-angular/scripts/ng-update.sh) wrapper (`npm run ng:update`).
 
 Only proceed for a **minor/patch** Angular update within the current major (or a major you have explicitly been asked to
 do). For a major upgrade with framework migrations, prefer handing off — see
 [Stop conditions](#stop-conditions-hand-back-to-a-human).
 
+> `ng update` cannot be invoked directly here: dependencies are **hoisted** (no local `node_modules` in
+> `packages/components-angular` → `Found 0 dependencies`) and the package depends on **unpublished** private workspace
+> packages (registry `404`). The wrapper runs `ng update` in an isolated throwaway install of the public Angular tooling
+> and (in `--migrate-only` mode) copies the migrated source back, leaving versions to syncpack.
+
 ```bash
 cd packages/components-angular
-./node_modules/.bin/ng update                         # list available Angular updates
-./node_modules/.bin/ng update @angular/cli @angular/core
+npm run ng:update                                                     # list available updates/migrations (read-only)
+# after the syncpack bump + `npm install` (step 4/5), apply migrations only:
+npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>
 cd ../..
+git diff packages/components-angular                                  # review migration changes
 ```
 
 Reconcile TypeScript: Angular caps the supported version via `MAX_TS_VERSION` in
@@ -98,14 +109,8 @@ Reconcile TypeScript: Angular caps the supported version via `MAX_TS_VERSION` in
 syncpack bump `typescript` past that ceiling; if the monorepo `typescript` would exceed it, keep `typescript` held back
 this round.
 
-Re-sync the lockfile from the repo root:
-
-```bash
-npm install
-```
-
-If `ng update` applies migrations that require non-trivial source changes, **stop** and hand off rather than forcing it
-into the weekly dependency PR.
+If the migrations require non-trivial source changes, **stop** and hand off rather than forcing it into the weekly
+dependency PR.
 
 ### 4. Apply updates with syncpack
 
@@ -155,16 +160,18 @@ npm install
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).
 
-### 9. Sync the StackBlitz starter templates (syncpack-managed via `source`, not workspace members)
+### 9. Sync the StackBlitz starter templates (npm workspace members)
 
 The four StackBlitz starter templates under
 `packages/storefront/projects/stackblitz/src/{vanilla-js,angular,react,vue}/package.json` are **standalone, runnable
 projects** read verbatim by
 [`generateStackblitzBundle.ts`](../../packages/storefront/projects/stackblitz/scripts/generateStackblitzBundle.ts). They
-are intentionally **not** npm workspace members (a workspace member would resolve `@porsche-design-system/components-*`
-to the local `0.0.0` package instead of the published version, and would break `npm install`). Instead, they are
-registered in the `source` globs of [`.syncpackrc.json`](../../.syncpackrc.json), so **`syncpack` does see and manage
-their shared tooling versions** while npm workspaces (and Dependabot) still ignore them.
+are now **npm workspace members** (listed in the root [`package.json`](../../package.json) `workspaces` array), so
+`syncpack` sees them by default — `.syncpackrc.json` no longer needs a `source` array.
+
+Although each starter pins the **published** `@porsche-design-system/components-*` version, `npm install` works because
+the local wrapper packages (`packages/components-*/dist/*-wrapper`) carry that same release version, so npm satisfies the
+pin by symlinking to the local workspace; off the monorepo the same pin resolves from the registry.
 
 This means `npm run npm:update` / `npm run npm:lint:fix` will already align the **shared tooling** versions in these four
 files with the rest of the monorepo — typically `vite`, `tailwindcss`, `@tailwindcss/postcss`, `postcss`, `react`,
@@ -177,7 +184,7 @@ syncpack steps, just verify these files look correct (don't hand-edit versions s
   `docs/release.md` → _Deploy_), not here.
 - `@playwright/test`, `@stencil/core` — fully held back.
 
-**If step 3 updated Angular**, also align the Angular template
+**If syncpack bumped Angular**, also align the Angular template
 (`packages/storefront/projects/stackblitz/src/angular/package.json`) to the new versions: `@angular/*`,
 `@angular/build`, `@angular/cli`, `@angular/compiler-cli`, `zone.js`, and `typescript` (respecting `MAX_TS_VERSION`).
 Otherwise leave them as-is.

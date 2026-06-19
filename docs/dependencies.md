@@ -20,9 +20,10 @@ across all workspaces.
 5. Once everything is updated, delete `package-lock.json` and recreate it by running `npm install` again, so the
    transitive dependencies of our dependencies are refreshed too.
 
-Some dependencies (Angular, Playwright, Stencil, internal packages) are intentionally excluded from this flow and
-updated manually — see [Held-back dependencies](#held-back-dependencies). If you update them in the same session, start
-with Angular (`ng update`) to avoid corrupting `package-lock.json`.
+Some dependencies (Playwright, Stencil, internal packages) are intentionally excluded from this flow and updated
+manually — see [Held-back dependencies](#held-back-dependencies). Angular **versions** now go through this normal
+syncpack flow; only Angular's framework **migrations** are applied separately — see
+[Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations).
 
 ### Syncpack helper scripts
 
@@ -43,29 +44,30 @@ convention). The following root scripts help keep dependency versions consistent
 
 The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
 from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
-`.syncpackrc.json` (`@porsche-design-system/**`, `@angular/**`, `ng-packagr`, `zone.js`, `@playwright/test`,
-`@stencil/core`). The `npm:outdated` and `npm:update` scripts additionally pass
+`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). The `npm:outdated` and `npm:update` scripts additionally pass
 `--dependencies '!@porsche-design-system/**'` so the unpublished internal workspace packages are not even looked up
 against the npm registry (which would otherwise emit `Failed to fetch` warnings). When you add a new held-back
 dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to the ignore list in
 `.github/dependabot.yml`.
 
-### Syncpack `source` globs (StackBlitz starters)
+### StackBlitz starter templates (npm workspace members)
 
-`.syncpackrc.json` defines an explicit `source` array listing every `package.json` syncpack should manage. It mirrors the
-npm `workspaces` array in the root `package.json` **plus** the four StackBlitz starter templates under
-`packages/storefront/projects/stackblitz/src/{vanilla-js,angular,react,vue}/package.json`.
+The four StackBlitz starter templates under
+`packages/storefront/projects/stackblitz/src/{vanilla-js,angular,react,vue}/package.json` are **npm workspace members**
+(listed in the root [`package.json`](../package.json) `workspaces` array). `.syncpackrc.json` therefore no longer needs
+an explicit `source` array — `syncpack` scans the npm `workspaces` by default, so it keeps the starters' shared tooling
+(`vite`, `tailwindcss`, `react`, `vue`, …) in lockstep with the rest of the monorepo automatically.
 
-Those StackBlitz projects are **standalone, runnable apps** that must keep the **published**
-`@porsche-design-system/components-*` versions, so they are deliberately **not** npm workspace members (a workspace
-member would resolve those to the local `0.0.0` packages and break `npm install`). Registering them only in syncpack's
-`source` lets `syncpack` keep their shared tooling (`vite`, `tailwindcss`, `react`, `vue`, …) in lockstep with the
-monorepo while npm workspaces and Dependabot still ignore them. The held-back `updateGroups` entry still shields
-`@porsche-design-system/**`, `@angular/**`, `zone.js`, `@playwright/test`, and `@stencil/core` from automated bumps in
-these files too.
+Even though each starter pins the **published** `@porsche-design-system/components-*` version (e.g. `4.2.0-rc.5`),
+`npm install` works as a workspace member because the local wrapper packages
+(`packages/components-*/dist/*-wrapper`) carry that **same** release version, so npm satisfies the pin by symlinking to
+the local workspace. Off the monorepo (on StackBlitz), the identical pin resolves the published package from the
+registry instead. The pin stays in sync with the release version via the release process (see `docs/release.md`), and
+`@porsche-design-system/**` is shielded from automated bumps by the held-back `updateGroups` entry, alongside
+`@playwright/test` and `@stencil/core`.
 
-When you add or remove an npm workspace, update the `source` array in `.syncpackrc.json` accordingly so syncpack keeps
-scanning every managed `package.json`.
+When you add or remove a workspace, update only the `workspaces` array in the root `package.json` — there is no separate
+syncpack `source` list to keep in sync anymore.
 
 ### Dependabot (security-only for npm)
 
@@ -151,8 +153,9 @@ generators and `minifyHTML()` were made `async` accordingly. Output is byte-for-
 The remaining advisories all originate from **dev-only** build tooling we hold back, are not reachable from shipped
 package output, and several are Windows-dev-server-only:
 
-- `@angular/build`, `@angular/compiler-cli`, `@babel/core` (pulled by Angular) — Angular is upgraded via `ng update`
-  only (see [Held-back dependencies](#held-back-dependencies)).
+- `@angular/build`, `@angular/compiler-cli`, `@babel/core` (pulled by Angular) — Angular **versions** are bumped via
+  syncpack, but only as upstream ships fixes; framework migrations are applied via the `ng:update` wrapper (see
+  [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations)).
 - `vite@7` / `esbuild@<0.28.1` — required by `@angular/build` (held back) and the React Router dev server
   (`@react-router/dev` → `vite-node`), which pins `vite@7`. Our root `vite` is already on a non-vulnerable `8.x`. These
   clear once Angular and `@react-router/dev` ship on `vite@8` / `esbuild@>=0.28.1`.
@@ -204,19 +207,42 @@ places that must be kept in sync when adding a new entry:
 - `@playwright/test` – pinned to keep browser binaries and committed VRT snapshots in sync; upgrade deliberately.
 - `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
-- `@angular/*` (incl. `ng-packagr`, `zone.js`) – must be upgraded with `ng update` rather than syncpack, and
-  `typescript` must stay within Angular's `MAX_TS_VERSION`.
+
+> **Angular is no longer held back for versions.** `@angular/*`, `ng-packagr` and `zone.js` are now bumped by `syncpack`
+> like any other dependency (`npm run npm:update`). Only Angular's **framework migration schematics** need special
+> handling — see [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations). `typescript`
+> must still stay within Angular's `MAX_TS_VERSION`.
 
 ### How to update them
 
-**`@angular/*` (incl. `ng-packagr`, `zone.js`)** — upgrade with Angular's own tooling:
+### Updating Angular (versions vs. migrations)
+
+Angular splits into two concerns that are handled separately:
+
+- **Version ranges** (`@angular/*`, `ng-packagr`, `zone.js`) — owned by `syncpack`. Bump them via `npm run npm:update`
+  (pick the `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep
+  `typescript` within Angular's `MAX_TS_VERSION` (see
+  `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back for
+  the round if a bump would exceed that ceiling.
+- **Framework migrations** (code transforms) — owned by the
+  [`packages/components-angular/scripts/ng-update.sh`](../packages/components-angular/scripts/ng-update.sh) wrapper
+  (`npm run ng:update`).
+
+> **Why a wrapper script?** Running `ng update` directly fails in this monorepo. Because dependencies are **hoisted**
+> to the repo-root `node_modules`, `packages/components-angular` has no local `node_modules`, so `ng update` reports
+> `Found 0 dependencies`. It also queries the npm registry for every dependency, including the **unpublished** private
+> workspace packages (`@porsche-design-system/shared@0.0.0`, `@porsche-design-system/assets`,
+> `@porsche-design-system/components-angular`), which aborts the run with a `404 Not Found`. The wrapper works around
+> both by running `ng update` in an isolated, throwaway install that contains only the public Angular tooling.
 
 1. `cd packages/components-angular`
-2. `./node_modules/.bin/ng update`
-3. `./node_modules/.bin/ng update @angular/cli @angular/core`
-4. Check `MAX_TS_VERSION` in `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`,
-   which indicates whether `typescript` can be updated for Angular packages or not.
-5. Run `npm install` again from the project root.
+2. `npm run ng:update` — lists available Angular updates/migrations (informational; no changes are written).
+3. Bump the versions with `syncpack`: from the repo root run `npm run npm:update`, select the `@angular/*` family (and
+   `ng-packagr` / `zone.js`), then `npm install`.
+4. Apply the framework migrations only (the wrapper runs the schematics in the isolated install and copies the changed
+   source back into this package, leaving `package.json` and the lockfile to syncpack):
+   `npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>`.
+5. Review the migration diff (`git diff packages/components-angular`) and run `npm install` again from the project root.
 
 **`@playwright/test`** — bump the exact pin deliberately, then update the Docker image tag
 (`mcr.microsoft.com/playwright:vX.Y.Z-jammy`) in `docker-compose.yml` (×2) and `.github/workflows/contribution.yml` (×4)
