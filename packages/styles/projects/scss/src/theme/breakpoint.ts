@@ -56,13 +56,11 @@ export const breakpoint = [
  * @deprecated Use the documented `$breakpoint-*` variables instead.
  */
 export const breakpointDeprecatedAliases: ScssRaw = {
-  raw: [
-    '$pds-breakpoint-base: 0; /* alias (deprecated) */',
-    `$pds-breakpoint-xs: ${breakpointXs}; /* alias (deprecated) */`,
-    `$pds-breakpoint-s: ${breakpointSm}; /* alias (deprecated) */`,
-    `$pds-breakpoint-m: ${breakpointMd}; /* alias (deprecated) */`,
-    `$pds-breakpoint-l: ${breakpointLg}; /* alias (deprecated) */`,
-    `$pds-breakpoint-xl: ${breakpointXl}; /* alias (deprecated) */`,
-    `$pds-breakpoint-xxl: ${breakpoint2Xl}; /* alias (deprecated) */`,
-  ].join('\n'),
+  raw: `$pds-breakpoint-base: 0; /* alias (deprecated) */
+$pds-breakpoint-xs: ${breakpointXs}; /* alias (deprecated) */
+$pds-breakpoint-s: ${breakpointSm}; /* alias (deprecated) */
+$pds-breakpoint-m: ${breakpointMd}; /* alias (deprecated) */
+$pds-breakpoint-l: ${breakpointLg}; /* alias (deprecated) */
+$pds-breakpoint-xl: ${breakpointXl}; /* alias (deprecated) */
+$pds-breakpoint-xxl: ${breakpoint2Xl}; /* alias (deprecated) */`,
 };

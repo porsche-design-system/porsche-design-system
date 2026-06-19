@@ -18,11 +18,9 @@ export const blur = [
  * @deprecated Use the documented `$blur-frosted` variable instead.
  */
 export const blurDeprecatedMixin: ScssRaw = {
-  raw: [
-    '/* alias (deprecated) */',
-    '@mixin pds-frosted-glass {',
-    `  backdrop-filter: ${blurFrosted};`,
-    `  -webkit-backdrop-filter: ${blurFrosted};`,
-    '}',
-  ].join('\n'),
+  raw: `/* alias (deprecated) */
+@mixin pds-frosted-glass {
+  backdrop-filter: ${blurFrosted};
+  -webkit-backdrop-filter: ${blurFrosted};
+}`,
 };

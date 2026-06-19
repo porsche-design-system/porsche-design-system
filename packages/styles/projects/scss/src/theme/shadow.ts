@@ -30,20 +30,18 @@ export const shadow = [
  * @deprecated Use the documented `$shadow-*` variables instead.
  */
 export const shadowDeprecatedMixins: ScssRaw = {
-  raw: [
-    '/* alias (deprecated) */',
-    '@mixin pds-drop-shadow-high {',
-    `  box-shadow: ${shadowLg};`,
-    '}',
-    '',
-    '/* alias (deprecated) */',
-    '@mixin pds-drop-shadow-low {',
-    `  box-shadow: ${shadowSm};`,
-    '}',
-    '',
-    '/* alias (deprecated) */',
-    '@mixin pds-drop-shadow-medium {',
-    `  box-shadow: ${shadowMd};`,
-    '}',
-  ].join('\n'),
+  raw: `/* alias (deprecated) */
+@mixin pds-drop-shadow-high {
+  box-shadow: ${shadowLg};
+}
+
+/* alias (deprecated) */
+@mixin pds-drop-shadow-low {
+  box-shadow: ${shadowSm};
+}
+
+/* alias (deprecated) */
+@mixin pds-drop-shadow-medium {
+  box-shadow: ${shadowMd};
+}`,
 };

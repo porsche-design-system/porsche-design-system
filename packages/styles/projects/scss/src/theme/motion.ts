@@ -59,13 +59,11 @@ export const motion = {
  * @deprecated Use the documented `$duration-*` / `$ease-*` variables instead.
  */
 export const motionDeprecatedAliases: ScssRaw = {
-  raw: [
-    `$pds-motion-duration-long: ${durationLg}; /* alias (deprecated) */`,
-    `$pds-motion-duration-moderate: ${durationMd}; /* alias (deprecated) */`,
-    `$pds-motion-duration-short: ${durationSm}; /* alias (deprecated) */`,
-    `$pds-motion-duration-very-long: ${durationXl}; /* alias (deprecated) */`,
-    `$pds-motion-easing-base: ${easeInOut}; /* alias (deprecated) */`,
-    `$pds-motion-easing-in: ${easeIn}; /* alias (deprecated) */`,
-    `$pds-motion-easing-out: ${easeOut}; /* alias (deprecated) */`,
-  ].join('\n'),
+  raw: `$pds-motion-duration-long: ${durationLg}; /* alias (deprecated) */
+$pds-motion-duration-moderate: ${durationMd}; /* alias (deprecated) */
+$pds-motion-duration-short: ${durationSm}; /* alias (deprecated) */
+$pds-motion-duration-very-long: ${durationXl}; /* alias (deprecated) */
+$pds-motion-easing-base: ${easeInOut}; /* alias (deprecated) */
+$pds-motion-easing-in: ${easeIn}; /* alias (deprecated) */
+$pds-motion-easing-out: ${easeOut}; /* alias (deprecated) */`,
 };

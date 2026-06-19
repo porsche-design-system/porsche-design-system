@@ -94,11 +94,9 @@ export const border = {
  * @deprecated Use the documented `$radius-*` variables instead.
  */
 export const borderDeprecatedAliases: ScssRaw = {
-  raw: [
-    `$pds-border-radius-small: ${radiusSm}; /* alias (deprecated) */`,
-    `$pds-border-radius-medium: ${radiusMd}; /* alias (deprecated) */`,
-    `$pds-border-radius-large: ${radiusLg}; /* alias (deprecated) */`,
-    `$pds-border-width-base: 2px; /* alias (deprecated) */`,
-    `$pds-border-width-thin: 1px; /* alias (deprecated) */`,
-  ].join('\n'),
+  raw: `$pds-border-radius-small: ${radiusSm}; /* alias (deprecated) */
+$pds-border-radius-medium: ${radiusMd}; /* alias (deprecated) */
+$pds-border-radius-large: ${radiusLg}; /* alias (deprecated) */
+$pds-border-width-base: 2px; /* alias (deprecated) */
+$pds-border-width-thin: 1px; /* alias (deprecated) */`,
 };

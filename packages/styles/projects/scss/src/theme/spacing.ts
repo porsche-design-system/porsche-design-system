@@ -44,19 +44,17 @@ export const spacing = {
  * @deprecated Use the documented `$spacing-fluid-*` / `$spacing-static-*` variables instead.
  */
 export const spacingDeprecatedAliases: ScssRaw = {
-  raw: [
-    `$pds-spacing-static-x-small: ${spacingStaticXs}; /* alias (deprecated) */`,
-    `$pds-spacing-static-small: ${spacingStaticSm}; /* alias (deprecated) */`,
-    `$pds-spacing-static-medium: ${spacingStaticMd}; /* alias (deprecated) */`,
-    `$pds-spacing-static-large: ${spacingStaticLg}; /* alias (deprecated) */`,
-    `$pds-spacing-static-x-large: ${spacingStaticXl}; /* alias (deprecated) */`,
-    `$pds-spacing-static-xx-large: ${spacingStatic2Xl}; /* alias (deprecated) */`,
-    '',
-    `$pds-spacing-fluid-x-small: ${spacingFluidXs}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-small: ${spacingFluidSm}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-medium: ${spacingFluidMd}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-large: ${spacingFluidLg}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-x-large: ${spacingFluidXl}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-xx-large: ${spacingFluid2Xl}; /* alias (deprecated) */`,
-  ].join('\n'),
+  raw: `$pds-spacing-static-x-small: ${spacingStaticXs}; /* alias (deprecated) */
+$pds-spacing-static-small: ${spacingStaticSm}; /* alias (deprecated) */
+$pds-spacing-static-medium: ${spacingStaticMd}; /* alias (deprecated) */
+$pds-spacing-static-large: ${spacingStaticLg}; /* alias (deprecated) */
+$pds-spacing-static-x-large: ${spacingStaticXl}; /* alias (deprecated) */
+$pds-spacing-static-xx-large: ${spacingStatic2Xl}; /* alias (deprecated) */
+
+$pds-spacing-fluid-x-small: ${spacingFluidXs}; /* alias (deprecated) */
+$pds-spacing-fluid-small: ${spacingFluidSm}; /* alias (deprecated) */
+$pds-spacing-fluid-medium: ${spacingFluidMd}; /* alias (deprecated) */
+$pds-spacing-fluid-large: ${spacingFluidLg}; /* alias (deprecated) */
+$pds-spacing-fluid-x-large: ${spacingFluidXl}; /* alias (deprecated) */
+$pds-spacing-fluid-xx-large: ${spacingFluid2Xl}; /* alias (deprecated) */`,
 };
