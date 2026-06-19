@@ -50,6 +50,23 @@ against the npm registry (which would otherwise emit `Failed to fetch` warnings)
 dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to the ignore list in
 `.github/dependabot.yml`.
 
+### Syncpack `source` globs (StackBlitz starters)
+
+`.syncpackrc.json` defines an explicit `source` array listing every `package.json` syncpack should manage. It mirrors the
+npm `workspaces` array in the root `package.json` **plus** the four StackBlitz starter templates under
+`packages/storefront/projects/stackblitz/src/{vanilla-js,angular,react,vue}/package.json`.
+
+Those StackBlitz projects are **standalone, runnable apps** that must keep the **published**
+`@porsche-design-system/components-*` versions, so they are deliberately **not** npm workspace members (a workspace
+member would resolve those to the local `0.0.0` packages and break `npm install`). Registering them only in syncpack's
+`source` lets `syncpack` keep their shared tooling (`vite`, `tailwindcss`, `react`, `vue`, …) in lockstep with the
+monorepo while npm workspaces and Dependabot still ignore them. The held-back `updateGroups` entry still shields
+`@porsche-design-system/**`, `@angular/**`, `zone.js`, `@playwright/test`, and `@stencil/core` from automated bumps in
+these files too.
+
+When you add or remove an npm workspace, update the `source` array in `.syncpackrc.json` accordingly so syncpack keeps
+scanning every managed `package.json`.
+
 ### Dependabot (security-only for npm)
 
 Routine npm **version** updates are handled by `syncpack` (above) and, for the recurring automated task, by the AI agent

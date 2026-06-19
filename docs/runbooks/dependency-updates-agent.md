@@ -155,19 +155,21 @@ npm install
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).
 
-### 9. Sync the StackBlitz starter templates (not workspace-managed)
+### 9. Sync the StackBlitz starter templates (syncpack-managed via `source`, not workspace members)
 
 The four StackBlitz starter templates under
 `packages/storefront/projects/stackblitz/src/{vanilla-js,angular,react,vue}/package.json` are **standalone, runnable
 projects** read verbatim by
 [`generateStackblitzBundle.ts`](../../packages/storefront/projects/stackblitz/scripts/generateStackblitzBundle.ts). They
 are intentionally **not** npm workspace members (a workspace member would resolve `@porsche-design-system/components-*`
-to the local `0.0.0` package instead of the published version), so `syncpack` and Dependabot never touch them and they
-must be updated **by hand here**.
+to the local `0.0.0` package instead of the published version, and would break `npm install`). Instead, they are
+registered in the `source` globs of [`.syncpackrc.json`](../../.syncpackrc.json), so **`syncpack` does see and manage
+their shared tooling versions** while npm workspaces (and Dependabot) still ignore them.
 
-Align the **shared tooling** versions in these four files with the versions `syncpack` just applied in the monorepo —
-typically `vite`, `tailwindcss`, `@tailwindcss/postcss`, `postcss`, `react`, `react-dom`, `@types/react`,
-`@types/react-dom`, `@vitejs/plugin-react`, `vue`, `vue-tsc`, `@vitejs/plugin-vue`, `globals`.
+This means `npm run npm:update` / `npm run npm:lint:fix` will already align the **shared tooling** versions in these four
+files with the rest of the monorepo — typically `vite`, `tailwindcss`, `@tailwindcss/postcss`, `postcss`, `react`,
+`react-dom`, `@types/react`, `@types/react-dom`, `@vitejs/plugin-react`, `vue`, `vue-tsc`, `globals`. After running the
+syncpack steps, just verify these files look correct (don't hand-edit versions syncpack owns).
 
 **Leave these untouched** (same rules as the rest of this runbook):
 
