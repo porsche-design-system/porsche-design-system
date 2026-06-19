@@ -1,9 +1,8 @@
 import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
-import type { ScssVariable } from '../types';
+import type { ScssRaw, ScssVariable } from '../types';
 
 /**
- * Shadow theme variables. The deprecated `pds-drop-shadow-*` mixins are plumbing — they live in the
- * composition layer, not here.
+ * Shadow theme variables. The deprecated `pds-drop-shadow-*` mixins (plumbing) live alongside below.
  */
 export const shadow = [
   {
@@ -25,3 +24,26 @@ export const shadow = [
     group: 'shadow',
   },
 ] satisfies ScssVariable[];
+
+/**
+ * Deprecated `pds-drop-shadow-*` mixins. Plumbing: still emitted, but not documented `scssMeta` entries.
+ * @deprecated Use the documented `$shadow-*` variables instead.
+ */
+export const shadowDeprecatedMixins: ScssRaw = {
+  raw: [
+    '/* alias (deprecated) */',
+    '@mixin pds-drop-shadow-high {',
+    `  box-shadow: ${shadowLg};`,
+    '}',
+    '',
+    '/* alias (deprecated) */',
+    '@mixin pds-drop-shadow-low {',
+    `  box-shadow: ${shadowSm};`,
+    '}',
+    '',
+    '/* alias (deprecated) */',
+    '@mixin pds-drop-shadow-medium {',
+    `  box-shadow: ${shadowMd};`,
+    '}',
+  ].join('\n'),
+};

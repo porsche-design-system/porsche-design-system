@@ -1,10 +1,10 @@
-import type { ScssMixin } from '../types';
+import type { ScssMixin, ScssRaw } from '../types';
 
 /**
  * Single source of truth for the documented `skeleton()` mixin. The `raw` body keeps its namespaced
  * cross-references (`border.`, `color.`, `motion.`) — the `_skeleton.scss` composition descriptor
- * declares the matching `@use` headers. The deprecated `pds-skeleton` variant is plumbing — it lives
- * in the composition layer, not here.
+ * declares the matching `@use` headers. The deprecated `pds-skeleton` variant (plumbing) lives
+ * alongside below.
  */
 export const skeleton = [
   {
@@ -26,3 +26,21 @@ export const skeleton = [
   animation: skeleton motion.$duration-xl motion.$ease-in-out infinite;`,
   },
 ] satisfies ScssMixin[];
+
+/**
+ * `pds-skeleton` — the deprecated theme-parameterized variant wrapping the documented `skeleton()`
+ * mixin. Plumbing: still emitted, but not a documented `scssMeta` entry.
+ * @deprecated Use the documented `skeleton()` mixin instead.
+ */
+export const skeletonDeprecatedMixin: ScssRaw = {
+  raw: `@mixin pds-skeleton($theme: 'light') {
+  @include skeleton();
+  @if ($theme == 'dark') {
+    color-scheme: dark;
+  } @else if ($theme == 'auto') {
+    color-scheme: light dark;
+  } @else {
+    color-scheme: light;
+  }
+}`,
+};

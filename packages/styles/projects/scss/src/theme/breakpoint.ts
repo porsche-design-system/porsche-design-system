@@ -6,11 +6,11 @@ import {
   breakpointXl,
   breakpointXs,
 } from '@porsche-design-system/tokens';
-import type { ScssVariable } from '../types';
+import type { ScssRaw, ScssVariable } from '../types';
 
 /**
  * Breakpoint theme variables (the responsive breakpoint scale). The deprecated `$pds-breakpoint-*`
- * aliases are plumbing — they live in the composition layer, not here.
+ * aliases (plumbing) live alongside below.
  */
 export const breakpoint = [
   {
@@ -50,3 +50,19 @@ export const breakpoint = [
     group: 'breakpoint',
   },
 ] satisfies ScssVariable[];
+
+/**
+ * Deprecated `$pds-breakpoint-*` aliases. Plumbing: still emitted, but not a documented `scssMeta` entry.
+ * @deprecated Use the documented `$breakpoint-*` variables instead.
+ */
+export const breakpointDeprecatedAliases: ScssRaw = {
+  raw: [
+    '$pds-breakpoint-base: 0; /* alias (deprecated) */',
+    `$pds-breakpoint-xs: ${breakpointXs}; /* alias (deprecated) */`,
+    `$pds-breakpoint-s: ${breakpointSm}; /* alias (deprecated) */`,
+    `$pds-breakpoint-m: ${breakpointMd}; /* alias (deprecated) */`,
+    `$pds-breakpoint-l: ${breakpointLg}; /* alias (deprecated) */`,
+    `$pds-breakpoint-xl: ${breakpointXl}; /* alias (deprecated) */`,
+    `$pds-breakpoint-xxl: ${breakpoint2Xl}; /* alias (deprecated) */`,
+  ].join('\n'),
+};

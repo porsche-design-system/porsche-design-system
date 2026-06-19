@@ -1,84 +1,34 @@
-import {
-  blurFrosted,
-  breakpoint2Xl,
-  breakpointLg,
-  breakpointMd,
-  breakpointSm,
-  breakpointXl,
-  breakpointXs,
-  durationLg,
-  durationMd,
-  durationSm,
-  durationXl,
-  easeIn,
-  easeInOut,
-  easeOut,
-  radiusLg,
-  radiusMd,
-  radiusSm,
-  shadowLg,
-  shadowMd,
-  shadowSm,
-  spacingFluid2Xl,
-  spacingFluidLg,
-  spacingFluidMd,
-  spacingFluidSm,
-  spacingFluidXl,
-  spacingFluidXs,
-  spacingStatic2Xl,
-  spacingStaticLg,
-  spacingStaticMd,
-  spacingStaticSm,
-  spacingStaticXl,
-  spacingStaticXs,
-} from '@porsche-design-system/tokens';
 import { scssMeta } from '../meta';
+import { blurDeprecatedMixin } from '../theme/blur';
+import { borderDeprecatedAliases } from '../theme/border';
+import { breakpointDeprecatedAliases } from '../theme/breakpoint';
+import { colorDeprecatedAliases, colorSchemeMixin } from '../theme/color';
+import { gradientDeprecatedMixins } from '../theme/gradient';
 import { gridGroups } from '../theme/grid';
+import { motionDeprecatedAliases } from '../theme/motion';
+import { shadowDeprecatedMixins } from '../theme/shadow';
+import { spacingDeprecatedAliases } from '../theme/spacing';
+import { cjkFontFamilyMixin, fontDeprecatedAliases } from '../theme/typography';
 import type { ScssFileMeta, ScssRaw } from '../types';
-import { colorDeprecatedAliases, colorSchemeMixin } from './color-plumbing';
-import { focusDeprecatedAliases } from './focus-plumbing';
-import { cjkFontFamilyMixin, fontDeprecatedAliases } from './font-plumbing';
-import { gradientDeprecatedMixins } from './gradient-plumbing';
-import { breakpointsMap, mediaQueryDeprecatedAliases } from './media-query-plumbing';
-import { flatten, renderNode } from './render';
-import { skeletonDeprecatedMixin } from './skeleton-plumbing';
+import { focusDeprecatedAliases } from '../utilities/focus';
+import { breakpointsMap, mediaQueryDeprecatedAliases } from '../utilities/media-query';
+import { skeletonDeprecatedMixin } from '../utilities/skeleton';
 import {
   displayDeprecatedAliases,
   headingDeprecatedAliases,
   proseHeadingHelper,
   proseTextHelper,
   textDeprecatedAliases,
-} from './typography-plumbing';
+} from '../utilities/typography';
+import { flatten, renderNode } from './render';
 
 /** A blank-line separator between sections within a partial (an empty raw node). */
 const blank: ScssRaw = { raw: '' };
-
-// Border — deprecated `$pds-border-*` aliases. Plumbing: still emitted, but not a documented entry.
-const borderDeprecatedAliases: ScssRaw = {
-  raw: [
-    `$pds-border-radius-small: ${radiusSm}; /* alias (deprecated) */`,
-    `$pds-border-radius-medium: ${radiusMd}; /* alias (deprecated) */`,
-    `$pds-border-radius-large: ${radiusLg}; /* alias (deprecated) */`,
-    `$pds-border-width-base: 2px; /* alias (deprecated) */`,
-    `$pds-border-width-thin: 1px; /* alias (deprecated) */`,
-  ].join('\n'),
-};
 
 const borderFile: ScssFileMeta = {
   file: '_border.scss',
   description: 'The border radius scale plus the deprecated `$pds-border-*` aliases.',
   nodes: [...flatten(scssMeta.theme.border), blank, borderDeprecatedAliases],
-};
-
-// Blur — deprecated `pds-frosted-glass` mixin. Plumbing: still emitted, but not a documented entry.
-const blurDeprecatedMixin: ScssRaw = {
-  raw: [
-    '/* alias (deprecated) */',
-    '@mixin pds-frosted-glass {',
-    `  backdrop-filter: ${blurFrosted};`,
-    `  -webkit-backdrop-filter: ${blurFrosted};`,
-    '}',
-  ].join('\n'),
 };
 
 const blurFile: ScssFileMeta = {
@@ -87,43 +37,10 @@ const blurFile: ScssFileMeta = {
   nodes: [...flatten(scssMeta.theme.blur), blank, blurDeprecatedMixin],
 };
 
-// Breakpoint — deprecated `$pds-breakpoint-*` aliases. Plumbing: still emitted, not documented.
-const breakpointDeprecatedAliases: ScssRaw = {
-  raw: [
-    '$pds-breakpoint-base: 0; /* alias (deprecated) */',
-    `$pds-breakpoint-xs: ${breakpointXs}; /* alias (deprecated) */`,
-    `$pds-breakpoint-s: ${breakpointSm}; /* alias (deprecated) */`,
-    `$pds-breakpoint-m: ${breakpointMd}; /* alias (deprecated) */`,
-    `$pds-breakpoint-l: ${breakpointLg}; /* alias (deprecated) */`,
-    `$pds-breakpoint-xl: ${breakpointXl}; /* alias (deprecated) */`,
-    `$pds-breakpoint-xxl: ${breakpoint2Xl}; /* alias (deprecated) */`,
-  ].join('\n'),
-};
-
 const breakpointFile: ScssFileMeta = {
   file: '_breakpoint.scss',
   description: 'The responsive breakpoint scale plus the deprecated `$pds-breakpoint-*` aliases.',
   nodes: [...flatten(scssMeta.theme.breakpoint), blank, breakpointDeprecatedAliases],
-};
-
-// Shadow — deprecated `pds-drop-shadow-*` mixins. Plumbing: still emitted, not documented.
-const shadowDeprecatedMixins: ScssRaw = {
-  raw: [
-    '/* alias (deprecated) */',
-    '@mixin pds-drop-shadow-high {',
-    `  box-shadow: ${shadowLg};`,
-    '}',
-    '',
-    '/* alias (deprecated) */',
-    '@mixin pds-drop-shadow-low {',
-    `  box-shadow: ${shadowSm};`,
-    '}',
-    '',
-    '/* alias (deprecated) */',
-    '@mixin pds-drop-shadow-medium {',
-    `  box-shadow: ${shadowMd};`,
-    '}',
-  ].join('\n'),
 };
 
 const shadowFile: ScssFileMeta = {
@@ -132,42 +49,10 @@ const shadowFile: ScssFileMeta = {
   nodes: [...flatten(scssMeta.theme.shadow), blank, shadowDeprecatedMixins],
 };
 
-// Spacing — deprecated `$pds-spacing-*` aliases (static, then fluid). Plumbing: still emitted, not documented.
-const spacingDeprecatedAliases: ScssRaw = {
-  raw: [
-    `$pds-spacing-static-x-small: ${spacingStaticXs}; /* alias (deprecated) */`,
-    `$pds-spacing-static-small: ${spacingStaticSm}; /* alias (deprecated) */`,
-    `$pds-spacing-static-medium: ${spacingStaticMd}; /* alias (deprecated) */`,
-    `$pds-spacing-static-large: ${spacingStaticLg}; /* alias (deprecated) */`,
-    `$pds-spacing-static-x-large: ${spacingStaticXl}; /* alias (deprecated) */`,
-    `$pds-spacing-static-xx-large: ${spacingStatic2Xl}; /* alias (deprecated) */`,
-    '',
-    `$pds-spacing-fluid-x-small: ${spacingFluidXs}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-small: ${spacingFluidSm}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-medium: ${spacingFluidMd}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-large: ${spacingFluidLg}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-x-large: ${spacingFluidXl}; /* alias (deprecated) */`,
-    `$pds-spacing-fluid-xx-large: ${spacingFluid2Xl}; /* alias (deprecated) */`,
-  ].join('\n'),
-};
-
 const spacingFile: ScssFileMeta = {
   file: '_spacing.scss',
   description: 'The fluid and static spacing scales plus the deprecated `$pds-spacing-*` aliases.',
   nodes: [...flatten(scssMeta.theme.spacing), blank, spacingDeprecatedAliases],
-};
-
-// Motion — deprecated `$pds-motion-*` aliases. Plumbing: still emitted, not documented.
-const motionDeprecatedAliases: ScssRaw = {
-  raw: [
-    `$pds-motion-duration-long: ${durationLg}; /* alias (deprecated) */`,
-    `$pds-motion-duration-moderate: ${durationMd}; /* alias (deprecated) */`,
-    `$pds-motion-duration-short: ${durationSm}; /* alias (deprecated) */`,
-    `$pds-motion-duration-very-long: ${durationXl}; /* alias (deprecated) */`,
-    `$pds-motion-easing-base: ${easeInOut}; /* alias (deprecated) */`,
-    `$pds-motion-easing-in: ${easeIn}; /* alias (deprecated) */`,
-    `$pds-motion-easing-out: ${easeOut}; /* alias (deprecated) */`,
-  ].join('\n'),
 };
 
 const motionFile: ScssFileMeta = {

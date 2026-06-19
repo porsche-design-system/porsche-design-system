@@ -33,8 +33,13 @@ no `scssMeta` entry and appears in no docs table or skill section. Plumbing cove
 - the lookup maps a mixin consults (e.g. `$pds-breakpoints`),
 - the `_index.scss` `@forward` index.
 
-Plumbing lives in the **composition layer** (`src/scss/` — the `*-plumbing.ts` modules and the raw
-nodes in `src/scss/index.ts`), never in `scssMeta`.
+Plumbing is **colocated with the documented model it relates to**: each `theme/` and `utilities/`
+domain module exports both its `scssMeta` entries and its plumbing nodes (the deprecated aliases, the
+helper/theming mixins, the lookup maps) as named exports — mirroring how the tailwindcss package
+keeps e.g. `motionDeprecatedThemeVariables` next to `motion` in `theme/motion.ts`. The `_index.scss`
+`@forward` index and the blank-line separators stay in `src/scss/index.ts`. Plumbing is never part of
+`scssMeta`; the **composition layer** (`src/scss/index.ts`) imports it by name and interleaves it with
+the documented entries.
 
 ### `scssMeta`
 
@@ -82,12 +87,14 @@ read its fields.
 src/
   meta.ts            # scssMeta — the documented model (single source of truth)
   types.ts           # the meta + render-node types (duplicated from tailwindcss; see the ADR)
-  theme/             # documented variables, one module per domain
-  utilities/         # documented mixins, one module per domain
+  theme/             # one module per domain: documented variables + their plumbing (deprecated
+                     #   aliases, helper/theming mixins) as named exports
+  utilities/         # one module per domain: documented mixins + their plumbing (deprecated
+                     #   variants, lookup maps, private helpers) as named exports
   scss/
-    index.ts         # the composition layer: scssFileMeta + renderScssFile
+    index.ts         # the composition layer: scssFileMeta + renderScssFile (imports the plumbing
+                     #   from theme/ + utilities/ and interleaves it with the documented entries)
     render.ts        # flatten() + renderNode()
-    *-plumbing.ts     # the plumbing nodes (deprecated aliases, helpers, maps, theming mixin)
 scripts/
   build.ts           # iterate scssFileMeta → dist/<file>
   build-skill.ts     # getScssSkill() → skill/generated/scss.md (+ a copy of the partials)

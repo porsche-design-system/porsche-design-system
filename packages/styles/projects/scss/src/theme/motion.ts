@@ -1,9 +1,9 @@
 import { durationLg, durationMd, durationSm, durationXl, easeIn, easeInOut, easeOut } from '@porsche-design-system/tokens';
-import type { ScssVariable } from '../types';
+import type { ScssRaw, ScssVariable } from '../types';
 
 /**
  * Motion theme variables grouped like the storefront API tables (`duration` / `easing`). The
- * deprecated `$pds-motion-*` aliases are plumbing — they live in the composition layer, not here.
+ * deprecated `$pds-motion-*` aliases (plumbing) live alongside below.
  */
 export const motion = {
   duration: [
@@ -53,3 +53,19 @@ export const motion = {
     },
   ],
 } satisfies { duration: ScssVariable[]; easing: ScssVariable[] };
+
+/**
+ * Deprecated `$pds-motion-*` aliases. Plumbing: still emitted, not documented.
+ * @deprecated Use the documented `$duration-*` / `$ease-*` variables instead.
+ */
+export const motionDeprecatedAliases: ScssRaw = {
+  raw: [
+    `$pds-motion-duration-long: ${durationLg}; /* alias (deprecated) */`,
+    `$pds-motion-duration-moderate: ${durationMd}; /* alias (deprecated) */`,
+    `$pds-motion-duration-short: ${durationSm}; /* alias (deprecated) */`,
+    `$pds-motion-duration-very-long: ${durationXl}; /* alias (deprecated) */`,
+    `$pds-motion-easing-base: ${easeInOut}; /* alias (deprecated) */`,
+    `$pds-motion-easing-in: ${easeIn}; /* alias (deprecated) */`,
+    `$pds-motion-easing-out: ${easeOut}; /* alias (deprecated) */`,
+  ].join('\n'),
+};

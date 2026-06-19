@@ -13,11 +13,11 @@ import {
   spacingStaticXl,
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
-import type { ScssVariable } from '../types';
+import type { ScssRaw, ScssVariable } from '../types';
 
 /**
  * Spacing theme variables grouped like the storefront API tables (`fluid` / `static`). The
- * deprecated `$pds-spacing-*` aliases are plumbing — they live in the composition layer, not here.
+ * deprecated `$pds-spacing-*` aliases (plumbing) live alongside below.
  */
 export const spacing = {
   fluid: {
@@ -38,3 +38,25 @@ export const spacing = {
     '2xl': { name: '$spacing-static-2xl', value: spacingStatic2Xl, description: 'Holds the **2x-large static** spacing.', group: 'static' },
   },
 } satisfies { fluid: Record<string, ScssVariable>; static: Record<string, ScssVariable> };
+
+/**
+ * Deprecated `$pds-spacing-*` aliases (static, then fluid). Plumbing: still emitted, not documented.
+ * @deprecated Use the documented `$spacing-fluid-*` / `$spacing-static-*` variables instead.
+ */
+export const spacingDeprecatedAliases: ScssRaw = {
+  raw: [
+    `$pds-spacing-static-x-small: ${spacingStaticXs}; /* alias (deprecated) */`,
+    `$pds-spacing-static-small: ${spacingStaticSm}; /* alias (deprecated) */`,
+    `$pds-spacing-static-medium: ${spacingStaticMd}; /* alias (deprecated) */`,
+    `$pds-spacing-static-large: ${spacingStaticLg}; /* alias (deprecated) */`,
+    `$pds-spacing-static-x-large: ${spacingStaticXl}; /* alias (deprecated) */`,
+    `$pds-spacing-static-xx-large: ${spacingStatic2Xl}; /* alias (deprecated) */`,
+    '',
+    `$pds-spacing-fluid-x-small: ${spacingFluidXs}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-small: ${spacingFluidSm}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-medium: ${spacingFluidMd}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-large: ${spacingFluidLg}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-x-large: ${spacingFluidXl}; /* alias (deprecated) */`,
+    `$pds-spacing-fluid-xx-large: ${spacingFluid2Xl}; /* alias (deprecated) */`,
+  ].join('\n'),
+};
