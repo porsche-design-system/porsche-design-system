@@ -32,14 +32,12 @@
     "@stackblitz/sdk": "1.11.0"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
-  },
-  "peerDependencies": {
-    "@rollup/plugin-typescript": "*",
-    "rollup": "*",
-    "rollup-plugin-dts": "*",
-    "tsx": "*",
-    "typescript": "*"
+    "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "rollup": "^4.62.0",
+    "rollup-plugin-dts": "^6.4.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   },
   "volta": {
     "extends": "../../package.json"

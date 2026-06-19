@@ -17,10 +17,6 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"
   },
-  "peerDependencies": {
-    "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
-    "ag-grid-react": ">= 35.0.0 <36.0.0"
-  },
   "volta": {
     "extends": "../../../../package.json"
   }

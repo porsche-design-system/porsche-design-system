@@ -56,22 +56,20 @@
     "@stencil/core": "4.43.3"
   },
   "devDependencies": {
+    "@rollup/plugin-replace": "^6.0.3",
     "@tailwindcss/cli": "^4.3.1",
     "@types/react": "^19.2.17",
     "change-case": "^5.4.4",
+    "concurrently": "^10.0.3",
     "construct-style-sheets-polyfill": "^3.1.0",
-    "dts-bundle-generator": "^9.5.1"
-  },
-  "peerDependencies": {
-    "@rollup/plugin-replace": "*",
-    "concurrently": "*",
-    "fast-glob": "*",
-    "jss": "*",
-    "jss-plugin-sort-css-media-queries": "*",
-    "jss-preset-default": "*",
-    "tailwindcss": "*",
-    "tsx": "*",
-    "typescript": "*"
+    "dts-bundle-generator": "^9.5.1",
+    "fast-glob": "^3.3.3",
+    "jss": "^10.10.0",
+    "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
+    "jss-preset-default": "^10.10.0",
+    "tailwindcss": "^4.3.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   },
   "volta": {
     "extends": "../../package.json"
