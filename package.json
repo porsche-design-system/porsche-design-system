@@ -38,6 +38,7 @@
     "packages/tokens/projects/tokens-meta",
     "packages/utilities/projects/ag-grid",
     "packages/storefront/projects/stackblitz",
+    "packages/storefront/projects/stackblitz/src/angular",
     "packages/storefront/projects/stackblitz/src/react",
     "packages/storefront/projects/stackblitz/src/vanilla-js",
     "packages/storefront/projects/stackblitz/src/vue",
