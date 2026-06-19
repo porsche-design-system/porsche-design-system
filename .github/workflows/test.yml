@@ -16,7 +16,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -31,7 +31,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -43,7 +43,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -67,7 +67,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -81,7 +81,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -93,7 +93,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -117,7 +117,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -134,7 +134,7 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -151,7 +151,7 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -168,7 +168,7 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -185,7 +185,7 @@ jobs:
         shardIndex: [ 1, 2, 3, 4, 5, 6 ]
         shardTotal: [ 6 ]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -208,7 +208,7 @@ jobs:
         shardIndex: [ 1, 2, 3 ]
         shardTotal: [ 3 ]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -226,7 +226,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -247,7 +247,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -267,7 +267,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -285,7 +285,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -305,7 +305,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -325,7 +325,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -337,7 +337,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -350,7 +350,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -362,7 +362,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -379,7 +379,7 @@ jobs:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -397,7 +397,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -420,7 +420,7 @@ jobs:
         shardIndex: [ 1, 2, 3, 4, 5, 6 ]
         shardTotal: [ 6 ]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -438,7 +438,7 @@ jobs:
 #      image: ${{ inputs.image }}
 #      options: --user 1001
 #    steps:
-#      - uses: actions/checkout@v6
+#      - uses: actions/checkout@v7
 #      - uses: actions/setup-node@v6
 #        with:
 #          node-version: '24'
@@ -460,7 +460,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
