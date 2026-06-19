@@ -2,11 +2,12 @@
 
 ### Import
 
-Add the Porsche Design System SCSS package to your stylesheet with the Sass module system. Always
-import it under the `pds` namespace so the variables and mixins are clearly scoped:
+Install Sass (see the [official guide](https://sass-lang.com/install/)), then add the Porsche Design
+System SCSS package to your stylesheet with the Sass module system. Always import it under the `pds`
+namespace so the variables and mixins are clearly scoped:
 
 ```scss
-@use '@porsche-design-system/scss' as pds;
+@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as pds;
 
 .my-card {
   border-radius: pds.$radius-md;
@@ -15,6 +16,49 @@ import it under the `pds` namespace so the variables and mixins are clearly scop
 
 You can also forward it with `as *` to drop the namespace, but the explicit `pds` namespace is
 recommended to avoid collisions.
+
+### Color scheme (light / dark)
+
+Colors are driven by the native CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark)
+function via the CSS [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme)
+property — no proprietary switching logic. Include the `color-scheme()` mixin **once** in your global
+styles to generate the `.scheme-*` utility classes and add a polyfill for browsers without
+`light-dark()` support:
+
+```scss
+// global styles
+@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as pds;
+
+@include pds.color-scheme();
+
+html, body {…}
+```
+
+Then use the light-dark color variables in your component styles; they resolve to the correct value
+for the active theme automatically:
+
+```scss
+.my-component {
+  background-color: pds.$color-frosted;
+  color: pds.$color-primary;
+}
+```
+
+Apply one of the `.scheme-*` classes to the document or any container; the selected context cascades
+to all child elements:
+
+- `.scheme-light` — forces light mode.
+- `.scheme-dark` — forces dark mode.
+- `.scheme-light-dark` — dynamically follows the system/OS setting.
+
+```html
+<html class="scheme-dark">
+  <body>
+    <!-- rendered in dark mode -->
+    <div class="my-component"></div>
+  </body>
+</html>
+```
 
 ### Variables and mixins
 
