@@ -274,7 +274,7 @@
     "madge": {
       "typescript": "$typescript"
     },
-    "@babel/runtime": "^8.0.0",
+    "@babel/runtime": "^7.29.7",
     "@tootallnate/once": "^3.0.1",
     "brace-expansion@1": "1.1.13",
     "brace-expansion@2": "2.0.3",
