@@ -35,5 +35,5 @@ export const scssMeta = {
   skeleton,
   focus,
   mediaQuery,
-  grid: [...gridVariables, ...gridMixins],
+  grid: [...Object.values(gridVariables).flat(), ...gridMixins],
 } satisfies ScssMeta;

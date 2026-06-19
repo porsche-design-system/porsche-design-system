@@ -9,7 +9,7 @@ const offsetXxl = (factor: number): string =>
 
 const offsetBase = 'max(22px, 10.625vw - 12px)';
 
-// Each group maps 1:1 to a generated `_grid-*.scss` partial; the flat `grid` export concatenates them.
+// Each group maps 1:1 to a generated `_grid-*.scss` partial; `meta.ts` flattens them into the catalog.
 
 const gap = [
   {
@@ -218,32 +218,21 @@ const fullOffset = [
   },
 ] satisfies ScssVariable[];
 
-/** Per-partial groups consumed by identity in the composition layer (`scss/index.ts`). */
-export const gridGroups = {
+/**
+ * The grid token variables grouped per generated `_grid-*.scss` partial: consumed by identity in the
+ * composition layer (`scss/index.ts`) and flattened into the documented catalog in `meta.ts`. Keys are
+ * in storefront order (gap, then each area narrow → full).
+ */
+export const grid = {
   gap,
-  full,
-  fullOffset,
-  wide,
-  wideOffset,
-  extended,
-  extendedOffset,
-  basic,
-  basicOffset,
   narrow,
   narrowOffset,
-};
-
-/** The grid variables as a flat list (gap, then each area narrow → full); regrouped per-partial in `gridGroups`. */
-export const grid = [
-  ...gap,
-  ...narrow,
-  ...narrowOffset,
-  ...basic,
-  ...basicOffset,
-  ...extended,
-  ...extendedOffset,
-  ...wide,
-  ...wideOffset,
-  ...full,
-  ...fullOffset,
-] satisfies ScssVariable[];
+  basic,
+  basicOffset,
+  extended,
+  extendedOffset,
+  wide,
+  wideOffset,
+  full,
+  fullOffset,
+} satisfies Record<string, ScssVariable[]>;

@@ -5,7 +5,7 @@ import { borderDeprecatedAliases } from '../theme/border';
 import { breakpointDeprecatedAliases } from '../theme/breakpoint';
 import { colorDeprecatedAliases, colorSchemeMixin } from '../theme/color';
 import { gradientDeprecatedMixins } from '../theme/gradient';
-import { gridGroups } from '../theme/grid';
+import { grid as gridGroups } from '../theme/grid';
 import { grid as gridMixin } from '../utilities/grid';
 import { motionDeprecatedAliases } from '../theme/motion';
 import { shadowDeprecatedMixins } from '../theme/shadow';

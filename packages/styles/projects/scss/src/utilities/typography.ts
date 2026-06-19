@@ -94,52 +94,62 @@ export const heading = [
 export const text = [
   {
     name: 'prose-text-5xl',
-    description: 'Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['5xl'])});`,
   },
   {
     name: 'prose-text-4xl',
-    description: 'Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['4xl'])});`,
   },
   {
     name: 'prose-text-3xl',
-    description: 'Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['3xl'])});`,
   },
   {
     name: 'prose-text-2xl',
-    description: 'Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['2xl'])});`,
   },
   {
     name: 'prose-text-xl',
-    description: 'Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.xl)});`,
   },
   {
     name: 'prose-text-lg',
-    description: 'Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.lg)});`,
   },
   {
     name: 'prose-text-md',
-    description: 'Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.md)});`,
   },
   {
     name: 'prose-text-sm',
-    description: 'Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.sm)});`,
   },
   {
     name: 'prose-text-xs',
-    description: 'Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size.xs)});`,
   },
   {
     name: 'prose-text-2xs',
-    description: 'Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    description:
+      'Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
     raw: `  @include ${proseTextHelper.name}(${fontRef(font.size['2xs'])});`,
   },
 ] satisfies ScssMixin[];
@@ -150,7 +160,10 @@ export const display = [] satisfies ScssMixin[];
 /** Typography mixins grouped like the storefront API tables and the tailwind taxonomy. */
 export const typography = { heading, text, display };
 
-/** Deprecated `pds-heading-*` aliases (plumbing). @deprecated Use the documented `prose-heading-*` mixins. */
+/**
+ * Deprecated `pds-heading-*` aliases (plumbing).
+ * @deprecated Use the documented `prose-heading-*` mixins.
+ */
 export const headingDeprecatedAliases: ScssRaw = {
   raw: `/* alias (deprecated) */
 @mixin pds-heading-xx-large {
@@ -174,7 +187,10 @@ export const headingDeprecatedAliases: ScssRaw = {
 }`,
 };
 
-/** Deprecated `pds-text-*` aliases (plumbing). @deprecated Use the documented `prose-text-*` mixins. */
+/**
+ * Deprecated `pds-text-*` aliases (plumbing).
+ * @deprecated Use the documented `prose-text-*` mixins.
+ */
 export const textDeprecatedAliases: ScssRaw = {
   raw: `/* alias (deprecated) */
 @mixin pds-text-x-large {
@@ -202,7 +218,10 @@ export const textDeprecatedAliases: ScssRaw = {
 }`,
 };
 
-/** Deprecated `pds-display-*` aliases routed through the heading prose mixins (plumbing). @deprecated Use `prose-heading-3xl` / `-4xl` / `-5xl`. */
+/**
+ * Deprecated `pds-display-*` aliases routed through the heading prose mixins (plumbing).
+ * @deprecated Use `prose-heading-3xl` / `-4xl` / `-5xl`.
+ */
 export const displayDeprecatedAliases: ScssRaw = {
   raw: `/* alias (deprecated) */
 @mixin pds-display-large {
