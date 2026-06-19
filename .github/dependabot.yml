@@ -39,10 +39,6 @@ updates:
       - dependency-name: "@playwright/test"
       # Pinned: a patch-package patch targets this exact version (see docs/dependencies.md)
       - dependency-name: "@stencil/core"
-      # Upgraded separately via `ng update`, not Dependabot (see docs/dependencies.md)
-      - dependency-name: "@angular/*"
-      - dependency-name: "ng-packagr"
-      - dependency-name: "zone.js"
     groups:
       # Version-update groups don't apply while version updates are disabled, so
       # group SECURITY updates instead (one PR per batch of advisories).

@@ -26,6 +26,7 @@
     "build:subPackages:typings:meta": "tsc projects/angular-wrapper/src/meta/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/meta/esm --types node --ignoreConfig",
     "build-app": "ng build demo-app --configuration=production && npm run build-app:injectPartials",
     "build-app:injectPartials": "tsx scripts/inject-partials.ts",
+    "ng:update": "./scripts/ng-update.sh",
     "test": "npm run test:unit && npm run test:e2e && npm run test:vrt && npm run test:smoke",
     "test:unit": "npm run test:unit:vitest && npm run test:unit:karma",
     "test:unit:vitest": "vitest -c tests/unit/config/vitest.config.ts",
@@ -53,7 +54,7 @@
   },
   "devDependencies": {
     "@angular/build": "^22.0.1",
-    "@angular/cli": "^22.0.1",
+    "@angular/cli": "^22.0.3",
     "@angular/compiler-cli": "^22.0.1",
     "@angular/language-service": "^22.0.1",
     "@porsche-design-system/assets": "5.0.2",
