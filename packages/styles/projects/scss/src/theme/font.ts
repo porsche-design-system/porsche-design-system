@@ -167,7 +167,7 @@ export const cjkFontFamily: ScssMixin = {
   &:lang(zh-Hans),
   &:lang(zh-CN),
   &:lang(zh-SG) {
-    font-family: $font-porsche-next-zh-hans;
+    font-family: ${family.porscheNextZhHans.name};
   }
 
   /* Traditional Chinese */
@@ -175,17 +175,17 @@ export const cjkFontFamily: ScssMixin = {
   &:lang(zh-TW),
   &:lang(zh-HK),
   &:lang(zh-MO) {
-    font-family: $font-porsche-next-zh-hant;
+    font-family: ${family.porscheNextZhHant.name};
   }
 
   /* Japanese */
   &:lang(ja) {
-    font-family: $font-porsche-next-ja;
+    font-family: ${family.porscheNextJa.name};
   }
 
   /* Korean */
   &:lang(ko) {
-    font-family: $font-porsche-next-ko;
+    font-family: ${family.porscheNextKo.name};
   }`,
 };
 
