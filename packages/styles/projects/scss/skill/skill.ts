@@ -5,16 +5,9 @@ import type { ScssMixin, ScssVariable } from '../src';
 import { scssMeta } from '../src';
 
 /**
- * Markdown serializer for the scss styling solution — the companion to the generated partials,
- * both driven by the single source of truth {@link scssMeta}. Produces a self-describing overview
- * of the package (a short intro, a hand-authored "how to use" guide and a grouped reference of
- * every documented variable and mixin) intended to be shipped next to the regenerated partials and
- * composed into the Porsche Design System docs skill.
- *
- * Only the documented surface is rendered — exactly what the storefront API pages expose. The
- * SCSS-only plumbing (deprecated `$pds-*` aliases, private helpers, the theming mixin, the
- * `@forward` index) is intentionally omitted here; it remains in the partials for exact values.
- * Token values are likewise left to the partials — this file is the index, the partials are the detail.
+ * Markdown serializer for the scss package, driven by {@link scssMeta}. Renders an intro, a
+ * hand-authored "how to use" guide and a grouped reference of every documented variable and mixin.
+ * Only the documented surface is rendered; plumbing and exact token values stay in the partials.
  */
 
 const { theme, utilities } = scssMeta;
@@ -48,11 +41,7 @@ const section = <T>(heading: string, items: T[], columns: Column<T>[]): string =
     items.map((item) => columns.map((c) => c.render(item)))
   )}`;
 
-/**
- * An ordered outline: each entry is either a flat group of items (a leaf section) or a record of
- * named sub-groups (rendered as `Parent — Child` sections). Derived directly from the documented
- * catalog, so the catalog's shape *is* the documentation outline.
- */
+/** An ordered outline: each entry is a flat group (leaf section) or a record of named sub-groups (`Parent — Child` sections). */
 type Outline<T> = Record<string, T[] | Record<string, T[]>>;
 
 /** Normalize a documented group — a keyed record or an array — to a flat list. */
@@ -95,12 +84,7 @@ const intro = readMarkdown('intro.md');
 
 const howToUse = readMarkdown('how-to-use.md');
 
-/**
- * Derive an {@link Outline} from a documented catalog (`scssMeta.theme` / `.utilities`): each
- * top-level group becomes a section (arrays) or a parent with one sub-section per sub-group
- * (records), with headings sentence-cased from the keys (`lineHeight` → `Line height`). Source
- * order is followed verbatim, so the catalog's shape *is* the documentation outline.
- */
+/** Derive an {@link Outline} from a catalog, sentence-casing keys (`lineHeight` → `Line height`) and following source order. */
 const deriveOutline = <T>(catalog: object): Outline<T> =>
   Object.fromEntries(
     Object.entries(catalog).map(([key, value]: [string, T[] | Record<string, T[] | Record<string, T>>]) => [

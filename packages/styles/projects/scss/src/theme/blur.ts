@@ -1,9 +1,7 @@
 import { blurFrosted } from '@porsche-design-system/tokens';
 import type { ScssRaw, ScssVariable } from '../types';
 
-/**
- * Blur theme variable. The deprecated `pds-frosted-glass` mixin (plumbing) lives alongside below.
- */
+/** Blur theme variable. */
 export const blur = [
   {
     name: '$blur-frosted',
@@ -14,8 +12,8 @@ export const blur = [
 ] satisfies ScssVariable[];
 
 /**
- * Deprecated `pds-frosted-glass` mixin. Plumbing: still emitted, but not a documented `scssMeta` entry.
- * @deprecated Use the documented `$blur-frosted` variable instead.
+ * Deprecated `pds-frosted-glass` mixin (plumbing).
+ * @deprecated Use the documented `$blur-frosted` variable.
  */
 export const blurDeprecatedMixin: ScssRaw = {
   raw: `/* alias (deprecated) */

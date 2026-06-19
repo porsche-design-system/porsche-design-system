@@ -8,8 +8,7 @@ export const buildScssStyles = async () => {
   fs.rmSync(targetPath, { force: true, recursive: true });
   fs.mkdirSync(targetPath, { recursive: true });
 
-  // The build runs entirely off the meta-driven composition layer: every partial plus the
-  // `_index.scss` `@forward` index is an ordered file descriptor in `scssFileMeta`.
+  // Every partial (plus the `_index.scss` index) is a descriptor in `scssFileMeta`.
   for (const fileMeta of scssFileMeta) {
     const formatted = await prettier.format(renderScssFile(fileMeta), { parser: 'scss' });
     fs.writeFileSync(`${targetPath}/${fileMeta.file}`, formatted);

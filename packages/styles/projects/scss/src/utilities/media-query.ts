@@ -1,12 +1,6 @@
 import type { ScssMixin, ScssRaw } from '../types';
 
-/**
- * Single source of truth for the documented `media-query-*` mixins. Their `raw` bodies take a
- * breakpoint key, look it up in the file-local `$pds-breakpoints` map (plumbing, alongside below),
- * guard with `@error` and wrap `@content` — so the `_media-query.scss` descriptor declares the
- * `breakpoint` + `sass:map` `@use` headers. The deprecated `pds-media-query-*` variants (plumbing)
- * live alongside below too.
- */
+/** The documented `media-query-*` mixins: look a breakpoint key up in `$pds-breakpoints`, guard with `@error` and wrap `@content`. */
 export const mediaQuery = [
   {
     name: 'media-query-min',
@@ -46,9 +40,7 @@ export const mediaQuery = [
   },
 ] satisfies ScssMixin[];
 
-// The `$pds-breakpoints` lookup map consumed by the documented media-query mixins above. Plumbing:
-// emitted before them (Sass needs it first), not a documented `scssMeta` entry. It keeps its
-// namespaced `breakpoint.` references — the `_media-query.scss` descriptor declares the `@use` header.
+// The `$pds-breakpoints` lookup map the mixins consult (plumbing). Emitted before them — Sass needs it first.
 export const breakpointsMap: ScssRaw = {
   raw: `$pds-breakpoints: (
   'xs': breakpoint.$breakpoint-xs,
@@ -66,9 +58,8 @@ export const breakpointsMap: ScssRaw = {
 };
 
 /**
- * The deprecated `pds-media-query-*` aliases delegating to the documented mixins. Plumbing.
- * @deprecated Use the documented `media-query-min()` / `media-query-max()` / `media-query-min-max()`
- * mixins instead.
+ * Deprecated `pds-media-query-*` aliases (plumbing).
+ * @deprecated Use `media-query-min()` / `media-query-max()` / `media-query-min-max()`.
  */
 export const mediaQueryDeprecatedAliases: ScssRaw = {
   raw: `/* alias (deprecated) */

@@ -61,25 +61,18 @@ const motionFile: ScssFileMeta = {
   nodes: [...flatten(scssMeta.theme.motion), blank, motionDeprecatedAliases],
 };
 
-// Gradient — the documented `$gradient-stops-fade-dark` variable, then the deprecated
-// `pds-gradient-to-*` directional mixins as plumbing (still emitted, not documented entries).
 const gradientFile: ScssFileMeta = {
   file: '_gradient.scss',
   description: 'The `$gradient-stops-fade-dark` color stops plus the deprecated `pds-gradient-to-*` mixins.',
   nodes: [...flatten(scssMeta.theme.gradient), blank, gradientDeprecatedMixins],
 };
 
-// Color — the documented `$color-*` variables, then the `color-scheme()` theming mixin and the
-// deprecated `$pds-theme-*` aliases as plumbing (both still emitted, neither a documented entry).
 const colorFile: ScssFileMeta = {
   file: '_color.scss',
   description: 'The `$color-*` scale plus the `color-scheme()` mixin and deprecated `$pds-theme-*` aliases.',
   nodes: [...flatten(scssMeta.theme.color), blank, colorSchemeMixin, blank, colorDeprecatedAliases],
 };
 
-// Font — the documented typography variables (families, line height, type scale, weights), with the
-// `cjk-font-family` helper mixin and the deprecated `$pds-font-*` aliases as plumbing (both still
-// emitted, neither a documented entry). The prose mixins are migrated in the typography-mixins slice.
 const { family, weight, lineHeight, text } = scssMeta.theme.typography;
 const fontFile: ScssFileMeta = {
   file: '_font.scss',
@@ -99,8 +92,6 @@ const fontFile: ScssFileMeta = {
   ],
 };
 
-// Skeleton — the documented `skeleton()` mixin, then the deprecated `pds-skeleton` variant as
-// plumbing (still emitted, not a documented entry). Bodies keep their namespaced cross-references.
 const skeletonFile: ScssFileMeta = {
   file: '_skeleton.scss',
   description: 'The `skeleton()` loading-placeholder mixin plus the deprecated `pds-skeleton` variant.',
@@ -108,8 +99,6 @@ const skeletonFile: ScssFileMeta = {
   nodes: [...flatten(scssMeta.utilities.skeleton), blank, skeletonDeprecatedMixin],
 };
 
-// Focus — the documented `focus-visible()` mixin, then the deprecated `pds-focus` mixin and its
-// lookup maps as plumbing (still emitted, not documented entries).
 const focusFile: ScssFileMeta = {
   file: '_focus.scss',
   description: 'The `focus-visible()` mixin plus the deprecated `pds-focus` variant and its lookup maps.',
@@ -117,9 +106,6 @@ const focusFile: ScssFileMeta = {
   nodes: [...flatten(scssMeta.utilities.focus), blank, focusDeprecatedAliases],
 };
 
-// Heading — the documented `prose-heading-*` mixins, with the private `-prose-heading` helper
-// (emitted first, Sass needs it before the documented mixins) and the deprecated `pds-heading-*`
-// aliases as plumbing. Bodies keep their namespaced `font.` / `color.` cross-references.
 const headingFile: ScssFileMeta = {
   file: '_heading.scss',
   description: 'The `prose-heading-*` mixins plus the `-prose-heading` helper and `pds-heading-*` aliases.',
@@ -133,8 +119,6 @@ const headingFile: ScssFileMeta = {
   ],
 };
 
-// Text — the documented `prose-text-*` mixins, with the private `-prose-text` helper and the
-// deprecated `pds-text-*` aliases as plumbing.
 const textFile: ScssFileMeta = {
   file: '_text.scss',
   description: 'The `prose-text-*` mixins plus the `-prose-text` helper and `pds-text-*` aliases.',
@@ -142,8 +126,6 @@ const textFile: ScssFileMeta = {
   nodes: [proseTextHelper, blank, ...flatten(scssMeta.utilities.typography.text), blank, textDeprecatedAliases],
 };
 
-// Display — only the deprecated `pds-display-*` aliases routed through the heading prose mixins; the
-// whole partial is plumbing (no documented display entries).
 const displayFile: ScssFileMeta = {
   file: '_display.scss',
   description: 'The deprecated `pds-display-*` aliases routed through the `prose-heading-*` mixins.',
@@ -151,9 +133,6 @@ const displayFile: ScssFileMeta = {
   nodes: [displayDeprecatedAliases],
 };
 
-// Media query — the documented `media-query-*` mixins, preceded by the `$pds-breakpoints` lookup map
-// they consult and followed by the deprecated `pds-media-query-*` aliases (both plumbing). Bodies
-// keep their namespaced `breakpoint.` / `map.` cross-references.
 const mediaQueryFile: ScssFileMeta = {
   file: '_media-query.scss',
   description: 'The `media-query-*` mixins plus the `$pds-breakpoints` map and deprecated `pds-media-query-*` aliases.',
@@ -167,10 +146,7 @@ const mediaQueryFile: ScssFileMeta = {
   ],
 };
 
-// Grid — the documented `pds-grid` mixin (the responsive grid template, via the raw escape hatch)
-// plus the documented `$pds-grid-*` span/offset/column/gap variables. The variables keep their
-// original per-partial split (one descriptor each) so the `@forward` index is unchanged in effect;
-// each consumes its `gridGroups` slice by identity. No grid plumbing — every piece is documented.
+// The grid mixin plus one descriptor per `gridGroups` slice below, keeping the original per-partial split.
 const gridFile: ScssFileMeta = {
   file: '_grid.scss',
   description: 'The `pds-grid` responsive layout mixin (the Porsche Grid).',
@@ -243,7 +219,6 @@ const gridNarrowOffsetFile: ScssFileMeta = {
   nodes: [...flatten(gridGroups.narrowOffset)],
 };
 
-// The `@forward` index re-exporting every partial under the consumer's `pds.*` namespace. Plumbing.
 const indexFile: ScssFileMeta = {
   file: '_index.scss',
   description: 'The `@forward` index re-exporting every partial under the `pds.*` namespace.',
@@ -284,12 +259,7 @@ const indexFile: ScssFileMeta = {
   ],
 };
 
-/**
- * The composition layer: an ordered collection of per-file descriptors. Each interleaves documented
- * `scssMeta` entries (by identity) with SCSS-only plumbing. The build iterates this list, renders
- * each to a string, Prettier-formats it and writes `dist/<file>`. Every domain lives here — this is
- * the single source of every generated partial plus the `_index.scss` `@forward` index.
- */
+/** The composition layer: ordered per-file descriptors interleaving `scssMeta` entries with plumbing. The build renders each to `dist/<file>`. */
 export const scssFileMeta: ScssFileMeta[] = [
   borderFile,
   blurFile,

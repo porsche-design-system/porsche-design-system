@@ -151,12 +151,7 @@ export const text = {
   },
 } satisfies Record<string, ScssVariable>;
 
-/**
- * Typography theme variables grouped like the storefront API tables and the tailwind taxonomy
- * (`family` / `weight` / `lineHeight` / `text`). The `cjk-font-family` helper mixin and the
- * deprecated `$pds-font-*` aliases (plumbing) live alongside below. The documented `prose-heading-*`
- * / `prose-text-*` mixins land in the typography-mixins slice (`utilities/typography.ts`).
- */
+/** Typography theme variables (`family` / `weight` / `lineHeight` / `text`). The prose mixins live in `utilities/typography.ts`. */
 export const typography = {
   family,
   weight,
@@ -164,11 +159,7 @@ export const typography = {
   text,
 } satisfies Record<'family' | 'weight' | 'lineHeight' | 'text', Record<string, ScssVariable>>;
 
-/**
- * The `cjk-font-family` helper mixin: swaps to the locale-specific Porsche Next font stack based on
- * the nearest `lang` attribute. Plumbing: an internal helper consumed by the prose mixins, still
- * emitted so it stays available, but NOT a documented `scssMeta` entry.
- */
+/** The `cjk-font-family` helper mixin: swaps to the locale-specific font stack by nearest `lang` attribute (plumbing). */
 export const cjkFontFamilyMixin: ScssRaw = {
   raw: `@mixin cjk-font-family {
   /* Simplified Chinese */
@@ -199,10 +190,8 @@ export const cjkFontFamilyMixin: ScssRaw = {
 };
 
 /**
- * The deprecated `$pds-font-*` aliases. Plumbing: still emitted with identical values, but NOT
- * documented `scssMeta` entries.
- * @deprecated Use the documented `$font-porsche-next`, `$typescale-*`, `$font-weight-*` and
- * `$leading-normal` variables instead.
+ * Deprecated `$pds-font-*` aliases (plumbing).
+ * @deprecated Use `$font-porsche-next`, `$typescale-*`, `$font-weight-*`, `$leading-normal`.
  */
 export const fontDeprecatedAliases: ScssRaw = {
   raw: `$pds-font-family: ${fontPorscheNext}; /* alias (deprecated) */

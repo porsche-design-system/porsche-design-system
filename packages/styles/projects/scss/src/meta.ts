@@ -15,13 +15,7 @@ import { mediaQuery } from './utilities/media-query';
 import { skeleton } from './utilities/skeleton';
 import { typography as typographyMixins } from './utilities/typography';
 
-/**
- * The documented single source of truth for the scss package, mirroring `tailwindMeta`: a `theme`
- * of variables and `utilities` of mixins. Every documented domain lives here. The SCSS-only plumbing
- * (deprecated aliases, private helpers, the theming mixin) is colocated as separate named exports in
- * the same `theme/` + `utilities/` modules, never folded into `scssMeta`; the composition layer
- * (`scss/index.ts`) imports it and interleaves it with these entries (plus the `@forward` index).
- */
+/** The documented single source of truth: a `theme` of variables and `utilities` of mixins. Plumbing lives in `scss/index.ts`. */
 export const scssMeta = {
   theme: {
     border,

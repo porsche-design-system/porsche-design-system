@@ -11,12 +11,7 @@ import {
 } from '@porsche-design-system/tokens';
 import type { ScssRaw, ScssVariable } from '../types';
 
-/**
- * Nested single source of truth for the border radii, grouped like the storefront API tables
- * (`radius`). The same entries render both the docs table rows and the `$radius-*: …;`
- * declarations in `_border.scss`. The deprecated `$pds-border-*` aliases (plumbing) live alongside
- * below.
- */
+/** The border radius scale. The same entries render both the docs rows and the `$radius-*: …;` declarations. */
 export const radius = {
   xs: {
     name: '$radius-xs',
@@ -79,19 +74,15 @@ export const radius = {
   },
 } satisfies Record<string, ScssVariable>;
 
-/**
- * Border theme variables grouped like the storefront API tables: the `radius` scale. There are no
- * documented border `width` variables (the only widths are the deprecated `$pds-border-width-*`
- * aliases, routed through the composition layer as plumbing), so `width` stays empty.
- */
+/** Border theme variables: the `radius` scale. `width` stays empty — the only widths are deprecated `$pds-border-width-*` aliases. */
 export const border = {
   radius,
   width: [],
 } satisfies { radius: Record<string, ScssVariable>; width: ScssVariable[] };
 
 /**
- * Deprecated `$pds-border-*` aliases. Plumbing: still emitted, but not a documented `scssMeta` entry.
- * @deprecated Use the documented `$radius-*` variables instead.
+ * Deprecated `$pds-border-*` aliases (plumbing).
+ * @deprecated Use the documented `$radius-*` variables.
  */
 export const borderDeprecatedAliases: ScssRaw = {
   raw: `$pds-border-radius-small: ${radiusSm}; /* alias (deprecated) */

@@ -1,11 +1,6 @@
 import type { ScssMixin, ScssRaw } from '../types';
 
-/**
- * Single source of truth for the documented `focus-visible()` mixin. The `raw` body keeps its
- * namespaced `color.` reference — the `_focus.scss` composition descriptor declares the matching
- * `@use` headers. The deprecated `pds-focus` variant and its lookup maps (plumbing) live alongside
- * below.
- */
+/** The documented `focus-visible()` mixin. The `raw` body keeps its namespaced `color.` reference (`@use` declared in the descriptor). */
 export const focus = [
   {
     name: 'focus-visible',
@@ -19,9 +14,8 @@ export const focus = [
 ] satisfies ScssMixin[];
 
 /**
- * The offset / border-radius lookup maps and the deprecated `pds-focus` mixin (which resolves named
- * keys through those maps). Plumbing: still emitted, but not documented `scssMeta` entries.
- * @deprecated Use the documented `focus-visible()` mixin instead.
+ * The lookup maps and deprecated `pds-focus` mixin (plumbing).
+ * @deprecated Use the documented `focus-visible()` mixin.
  */
 export const focusDeprecatedAliases: ScssRaw = {
   raw: `$pds-focus-offset-map: (

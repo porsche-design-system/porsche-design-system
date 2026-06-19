@@ -1,14 +1,9 @@
-// The scss meta model. The solution-agnostic base shapes (`TokenMeta`, `UtilityMeta`,
-// `TokenGroup`, `ThemeCatalog`, `UtilitiesCatalog`) are **duplicated** from the tailwindcss
-// package rather than shared, so the scss package stays self-contained (see the ADR for the
-// future extraction path). The scss-specific render nodes mirror tailwind's CSS nodes.
+// The scss meta model. The base shapes (`TokenMeta`, `UtilityMeta`, `TokenGroup`, `ThemeCatalog`,
+// `UtilitiesCatalog`) are duplicated from the tailwindcss package to keep this package self-contained.
 
-/**
- * Solution-agnostic shape of a design-token entry: `description` + rendered `value`. The shared
- * contract every styling solution extends with its own representation (scss adds `$`-prefixed `name`).
- */
+/** Solution-agnostic design-token entry: `description` + rendered `value`. scss extends it with a `$`-prefixed `name`. */
 export type TokenMeta = {
-  /** Human readable description rendered in the docs and LLM context. */
+  /** Description rendered in the docs and LLM context. */
   description: string;
   /** The rendered value (a token, a CSS expression, …). */
   value: string | number;
@@ -17,19 +12,13 @@ export type TokenMeta = {
 /** A group of tokens keyed by size/name, e.g. `theme.color.background` or `theme.spacing.fluid`. */
 export type TokenGroup<T extends TokenMeta = TokenMeta> = Record<string, T>;
 
-/**
- * Solution-agnostic shape of a documented utility: just a `description`. Unlike {@link TokenMeta}
- * there is no shared `value` — each solution plugs in its own entry type (scss will add `ScssMixin`).
- */
+/** Solution-agnostic documented utility: just a `description`. scss extends it with {@link ScssMixin}. */
 export type UtilityMeta = {
-  /** Human readable description rendered in the docs and LLM context. */
+  /** Description rendered in the docs and LLM context. */
   description: string;
 };
 
-/**
- * Shared design-token catalog shape — the common group taxonomy reused across solutions. Generic
- * over the token type so the scss package plugs in {@link ScssVariable}.
- */
+/** Shared design-token catalog shape reused across solutions. Generic over the token type ({@link ScssVariable} for scss). */
 export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
   color: Record<'background' | 'foreground' | 'semantic' | 'a11y', TokenGroup<T>>;
   typography: Record<'family' | 'weight' | 'lineHeight' | 'text', TokenGroup<T>>;
@@ -44,10 +33,8 @@ export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
 };
 
 /**
- * Shared documented-utility catalog shape — the common topic grouping every solution exposes
- * (typography shorthands, gradients, grid, skeletons). `focus` and `mediaQuery` are scss-specific
- * superset members. Some catalog members map only to plumbing in scss (the `gradient` mixins and
- * `typography.display` are deprecated, so they stay unpopulated in `scssMeta`). Generic over the utility type.
+ * Shared documented-utility catalog shape. `focus` / `mediaQuery` are scss-specific; `gradient` and
+ * `typography.display` map only to plumbing in scss, so they stay unpopulated in `scssMeta`.
  */
 export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
   typography: { heading: T[]; text: T[]; display: T[] };
@@ -75,11 +62,7 @@ export type ScssVariableGroup =
   | 'gradient'
   | 'grid';
 
-/**
- * A documented scss variable — {@link TokenMeta} extended with the `$`-prefixed `name` plus doc
- * metadata. It is also a render node: the same object renders both a docs table row and a
- * `$name: value;` declaration.
- */
+/** A documented scss variable: {@link TokenMeta} + `$`-prefixed `name`. Renders both a docs row and a `$name: value;` declaration. */
 export type ScssVariable = TokenMeta & {
   /** The `$`-prefixed Sass variable name, e.g. `$radius-xs`. */
   name: string;
@@ -89,12 +72,7 @@ export type ScssVariable = TokenMeta & {
   comment?: string;
 };
 
-/**
- * A documented scss mixin — {@link UtilityMeta} extended with the mixin `name`, an optional raw
- * `signature` (the parameter list with parentheses, e.g. `()` or `($offset: 2px)`) and the verbatim
- * `raw` body (the escape hatch). It is also a render node: the generator wraps `raw` in
- * `@mixin name(signature) { … }`, while the docs render the call signature.
- */
+/** A documented scss mixin: {@link UtilityMeta} + `name`, optional `signature` and verbatim `raw` body. Renders a `@mixin` and a docs row. */
 export type ScssMixin = UtilityMeta & {
   /** The mixin name, e.g. `skeleton` or `focus-visible`. */
   name: string;
@@ -115,16 +93,10 @@ export type ScssRaw = {
 /** A leaf render node: a documented variable, a documented mixin or a raw snippet. */
 export type ScssNode = ScssVariable | ScssMixin | ScssRaw;
 
-/**
- * Any branch of the meta tree: a {@link ScssNode} leaf, an array, or a nested record.
- * Records/arrays group for the docs; only leaves render. Lets the composition flatten uniformly.
- */
+/** Any branch of the meta tree: a {@link ScssNode} leaf, an array, or a nested record. Only leaves render; records/arrays group. */
 export type ScssBranch = ScssNode | ScssBranch[] | { [key: string]: ScssBranch };
 
-/**
- * A per-file composition descriptor: the output file, its `@use` headers, a description and the
- * ordered render nodes interleaving documented entries (by identity) with plumbing.
- */
+/** A per-file composition descriptor: output file, `@use` headers, description and ordered render nodes. */
 export type ScssFileMeta = {
   /** The generated output file name, e.g. `_border.scss`. */
   file: string;
@@ -138,13 +110,8 @@ export type ScssFileMeta = {
 
 /**
  * The documented single source of truth shared with the storefront docs and LLM context. SCSS-only
- * plumbing (deprecated `$pds-*` aliases, private helpers, the theming mixin, the `@forward` index)
- * is intentionally **not** here — it lives in the composition layer (`scss/index.ts`). The catalog
- * groups are the same object references the SCSS is built from, so docs and generated SCSS can never
- * diverge.
- *
- * Every documented domain is present; the unpopulated catalog members (e.g. `utilities.gradient`)
- * map only to plumbing and so are intentionally absent.
+ * plumbing lives in the composition layer (`scss/index.ts`), not here. Catalog groups are the same
+ * object references the SCSS is built from, so docs and generated SCSS can't diverge.
  */
 export type ScssMeta = {
   /** The documented design-token catalog — every variable group. */

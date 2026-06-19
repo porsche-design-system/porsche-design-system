@@ -7,11 +7,7 @@ const isLeaf = (node: ScssBranch): node is ScssNode => 'name' in node || 'raw' i
 export const flatten = (node: ScssBranch): ScssNode[] =>
   Array.isArray(node) ? node.flatMap(flatten) : isLeaf(node) ? [node] : Object.values(node).flatMap(flatten);
 
-/**
- * Serialize a single render node: a mixin to `@mixin name(signature) { raw }` (the escape hatch
- * wraps the verbatim body), a variable to `$name: value;` (with optional trailing comment), a raw
- * snippet verbatim.
- */
+/** Serialize a node: a mixin to `@mixin name(sig) { raw }`, a variable to `$name: value;`, a raw snippet verbatim. */
 export const renderNode = (node: ScssNode): string => {
   if ('name' in node && 'raw' in node) {
     const comment = node.comment ? `/* ${node.comment} */\n` : '';

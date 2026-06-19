@@ -1,10 +1,7 @@
 import { gradientStopsFadeDark } from '@porsche-design-system/tokens';
 import type { ScssRaw, ScssVariable } from '../types';
 
-/**
- * Gradient theme variable — the documented `$gradient-stops-fade-dark` color stops. The deprecated
- * `pds-gradient-to-*` mixins (plumbing) live alongside below.
- */
+/** Gradient theme variable: the `$gradient-stops-fade-dark` color stops. */
 export const gradient = [
   {
     name: '$gradient-stops-fade-dark',
@@ -15,9 +12,8 @@ export const gradient = [
 ] satisfies ScssVariable[];
 
 /**
- * The deprecated `pds-gradient-to-*` directional mixins wrapping `$gradient-stops-fade-dark`.
- * Plumbing: still emitted, but not documented `scssMeta` entries.
- * @deprecated Use the documented `$gradient-stops-fade-dark` variable with `linear-gradient()` instead.
+ * Deprecated `pds-gradient-to-*` directional mixins (plumbing).
+ * @deprecated Use `$gradient-stops-fade-dark` with `linear-gradient()`.
  */
 export const gradientDeprecatedMixins: ScssRaw = {
   raw: `/* alias (deprecated) */

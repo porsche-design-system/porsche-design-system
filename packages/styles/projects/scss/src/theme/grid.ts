@@ -1,7 +1,7 @@
 import type { ScssVariable } from '../types';
 
-// The grid offsets are static layout expressions (not tokens). The `-s` and `-xxl` offsets share a
-// shape across areas, differing only by the column-count factor (extended 1, basic 2, narrow 4).
+// Static layout expressions (not tokens). The `-s` / `-xxl` offsets differ per area only by the
+// column-count factor (extended 1, basic 2, narrow 4).
 const offsetS = (factor: number): string =>
   `calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)) * ${factor})`;
 const offsetXxl = (factor: number): string =>
@@ -9,8 +9,7 @@ const offsetXxl = (factor: number): string =>
 
 const offsetBase = 'max(22px, 10.625vw - 12px)';
 
-// Each group below maps 1:1 to a generated `_grid-*.scss` partial (consumed by identity in the
-// composition layer); the flat `grid` export concatenates them in the storefront table order.
+// Each group maps 1:1 to a generated `_grid-*.scss` partial; the flat `grid` export concatenates them.
 
 const gap = [
   {
@@ -234,11 +233,7 @@ export const gridGroups = {
   narrowOffset,
 };
 
-/**
- * The documented grid span/offset/column/gap variables — a flat list in the storefront table order
- * (gap, then each area narrow → full). The same objects are regrouped per-partial in `gridGroups`.
- * The `pds-grid` mixin (in `utilities.grid`) sets the custom properties the span variables read.
- */
+/** The grid variables as a flat list (gap, then each area narrow → full); regrouped per-partial in `gridGroups`. */
 export const grid = [
   ...gap,
   ...narrow,

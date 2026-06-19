@@ -1,40 +1,125 @@
 import type { ScssMixin, ScssRaw } from '../types';
 
-/**
- * Single source of truth for the documented `prose-heading-*` / `prose-text-*` mixins. Each `raw`
- * body delegates to the private `-prose-heading` / `-prose-text` helpers (plumbing) and keeps its
- * namespaced `font.` references — the `_heading.scss` / `_text.scss` composition descriptors declare
- * the matching `@use` headers. The helpers and the deprecated `pds-heading-*` / `pds-text-*` /
- * `pds-display-*` aliases (plumbing) live alongside below.
- */
+// The documented `prose-heading-*` / `prose-text-*` mixins delegate to the private `-prose-*` helpers
+// and keep their namespaced `font.` references.
 
-// Type scale suffix + label + heading weight, in render order (largest → smallest).
-const sizes = [
-  { suffix: '5xl', label: '5x-large', weight: 'normal' },
-  { suffix: '4xl', label: '4x-large', weight: 'normal' },
-  { suffix: '3xl', label: '3x-large', weight: 'normal' },
-  { suffix: '2xl', label: '2x-large', weight: 'normal' },
-  { suffix: 'xl', label: 'x-large', weight: 'normal' },
-  { suffix: 'lg', label: 'large', weight: 'normal' },
-  { suffix: 'md', label: 'medium', weight: 'normal' },
-  { suffix: 'sm', label: 'small', weight: 'semibold' },
-  { suffix: 'xs', label: 'x-small', weight: 'semibold' },
-  { suffix: '2xs', label: '2x-small', weight: 'semibold' },
-] as const;
+/** The documented heading variants, applied primarily to heading tags (largest → smallest). */
+export const heading = [
+  {
+    name: 'prose-heading-5xl',
+    description:
+      'Applies the **5x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-5xl, font.$font-weight-normal);',
+  },
+  {
+    name: 'prose-heading-4xl',
+    description:
+      'Applies the **4x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-4xl, font.$font-weight-normal);',
+  },
+  {
+    name: 'prose-heading-3xl',
+    description:
+      'Applies the **3x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-3xl, font.$font-weight-normal);',
+  },
+  {
+    name: 'prose-heading-2xl',
+    description:
+      'Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-2xl, font.$font-weight-normal);',
+  },
+  {
+    name: 'prose-heading-xl',
+    description:
+      'Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-xl, font.$font-weight-normal);',
+  },
+  {
+    name: 'prose-heading-lg',
+    description:
+      'Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-lg, font.$font-weight-normal);',
+  },
+  {
+    name: 'prose-heading-md',
+    description:
+      'Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-md, font.$font-weight-normal);',
+  },
+  {
+    name: 'prose-heading-sm',
+    description:
+      'Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-sm, font.$font-weight-semibold);',
+  },
+  {
+    name: 'prose-heading-xs',
+    description:
+      'Applies the **x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-xs, font.$font-weight-semibold);',
+  },
+  {
+    name: 'prose-heading-2xs',
+    description:
+      'Applies the **2x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags.',
+    raw: '  @include -prose-heading(font.$typescale-2xs, font.$font-weight-semibold);',
+  },
+] satisfies ScssMixin[];
 
-/** The documented heading variants, applied primarily to heading tags. */
-export const heading = sizes.map(({ suffix, label, weight }) => ({
-  name: `prose-heading-${suffix}`,
-  description: `Applies the **${label}** heading typography variant primarily to \`<h1>\`, \`<h2>\`, \`<h3>\`, \`<h4>\`, \`<h5>\`, \`<h6>\` tags.`,
-  raw: `  @include -prose-heading(font.$typescale-${suffix}, font.$font-weight-${weight});`,
-})) satisfies ScssMixin[];
-
-/** The documented text variants, applied primarily to flow-content tags. */
-export const text = sizes.map(({ suffix, label }) => ({
-  name: `prose-text-${suffix}`,
-  description: `Applies the **${label}** text typography variant primarily to \`<p>\`, \`<ul>\`, \`<ol>\`, \`<blockquote>\` tags.`,
-  raw: `  @include -prose-text(font.$typescale-${suffix});`,
-})) satisfies ScssMixin[];
+/** The documented text variants, applied primarily to flow-content tags (largest → smallest). */
+export const text = [
+  {
+    name: 'prose-text-5xl',
+    description: 'Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-5xl);',
+  },
+  {
+    name: 'prose-text-4xl',
+    description: 'Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-4xl);',
+  },
+  {
+    name: 'prose-text-3xl',
+    description: 'Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-3xl);',
+  },
+  {
+    name: 'prose-text-2xl',
+    description: 'Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-2xl);',
+  },
+  {
+    name: 'prose-text-xl',
+    description: 'Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-xl);',
+  },
+  {
+    name: 'prose-text-lg',
+    description: 'Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-lg);',
+  },
+  {
+    name: 'prose-text-md',
+    description: 'Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-md);',
+  },
+  {
+    name: 'prose-text-sm',
+    description: 'Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-sm);',
+  },
+  {
+    name: 'prose-text-xs',
+    description: 'Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-xs);',
+  },
+  {
+    name: 'prose-text-2xs',
+    description: 'Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags.',
+    raw: '  @include -prose-text(font.$typescale-2xs);',
+  },
+] satisfies ScssMixin[];
 
 /** No documented display mixins — the `pds-display-*` aliases are deprecated plumbing. */
 export const display = [] satisfies ScssMixin[];
@@ -42,11 +127,7 @@ export const display = [] satisfies ScssMixin[];
 /** Typography mixins grouped like the storefront API tables and the tailwind taxonomy. */
 export const typography = { heading, text, display };
 
-/**
- * The private `-prose-heading` helper: the shared body the documented `prose-heading-*` mixins
- * delegate to. Plumbing — emitted before the documented mixins (Sass needs it defined first), but
- * not a documented `scssMeta` entry.
- */
+/** The private `-prose-heading` helper the `prose-heading-*` mixins delegate to (plumbing, emitted first). */
 export const proseHeadingHelper: ScssRaw = {
   raw: `@mixin -prose-heading($size, $weight) {
   @include font.cjk-font-family;
@@ -64,10 +145,7 @@ export const proseTextHelper: ScssRaw = {
 }`,
 };
 
-/**
- * The deprecated `pds-heading-*` aliases routed through the documented prose mixins. Plumbing.
- * @deprecated Use the documented `prose-heading-*` mixins instead.
- */
+/** Deprecated `pds-heading-*` aliases (plumbing). @deprecated Use the documented `prose-heading-*` mixins. */
 export const headingDeprecatedAliases: ScssRaw = {
   raw: `/* alias (deprecated) */
 @mixin pds-heading-xx-large {
@@ -91,10 +169,7 @@ export const headingDeprecatedAliases: ScssRaw = {
 }`,
 };
 
-/**
- * The deprecated `pds-text-*` aliases routed through the documented prose mixins. Plumbing.
- * @deprecated Use the documented `prose-text-*` mixins instead.
- */
+/** Deprecated `pds-text-*` aliases (plumbing). @deprecated Use the documented `prose-text-*` mixins. */
 export const textDeprecatedAliases: ScssRaw = {
   raw: `/* alias (deprecated) */
 @mixin pds-text-x-large {
@@ -122,13 +197,7 @@ export const textDeprecatedAliases: ScssRaw = {
 }`,
 };
 
-/**
- * The deprecated `pds-display-*` aliases routed through the heading prose mixins (the `_display.scss`
- * descriptor declares the `@use 'heading'` header). Plumbing — the whole `_display.scss` partial is
- * plumbing; there are no documented display entries.
- * @deprecated Use the documented `prose-heading-3xl` / `prose-heading-4xl` / `prose-heading-5xl`
- * mixins instead.
- */
+/** Deprecated `pds-display-*` aliases routed through the heading prose mixins (plumbing). @deprecated Use `prose-heading-3xl` / `-4xl` / `-5xl`. */
 export const displayDeprecatedAliases: ScssRaw = {
   raw: `/* alias (deprecated) */
 @mixin pds-display-large {

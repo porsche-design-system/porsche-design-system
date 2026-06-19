@@ -1,11 +1,6 @@
 import type { ScssMixin } from '../types';
 
-/**
- * Grid utility mixin — the documented `pds-grid` layout system. The responsive grid template, its
- * media queries and the internal `--pds-internal-grid-*` / `--pds-grid-*-span-*` custom properties
- * are carried verbatim through the raw escape hatch. The documented `$pds-grid-*` span/offset/column
- * variables (in `theme.grid`) read the custom properties this mixin sets.
- */
+/** The documented `pds-grid` layout mixin. Sets the `--pds-grid-*` custom properties the `theme.grid` span variables read. */
 export const grid = [
   {
     name: 'pds-grid',

@@ -101,19 +101,14 @@ import {
 } from '@porsche-design-system/tokens';
 import type { ScssRaw, ScssVariable } from '../types';
 
-/** The `light-dark()` MDN link prefixing every color description, kept identical to the storefront page. */
+/** The `light-dark()` MDN link prefixing every color description. */
 const ld =
   'Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark)';
 
 /** Each `$color-*` resolves a runtime custom property (set by `color-scheme()`) with the token as fallback. */
 const cssVar = (name: string, token: string): string => `var(--_${name}, ${token})`;
 
-/**
- * Color theme variables grouped like the storefront API tables
- * (`background` / `foreground` / `semantic` / `a11y`). Each value is a `var(--_color-*, token)`
- * expression resolved at runtime by the `color-scheme()` mixin. The mixin itself and the deprecated
- * `$pds-theme-*` aliases (plumbing) live alongside below.
- */
+/** Color theme variables (`background` / `foreground` / `semantic` / `a11y`), each a `var(--_color-*, token)` resolved by `color-scheme()`. */
 export const color = {
   background: {
     canvas: {
@@ -393,11 +388,7 @@ const darkCustomProps = `--_color-focus: ${colorFocusDark};
 --_color-info-frosted: ${colorInfoFrostedDark};
 --_color-info-frosted-soft: ${colorInfoFrostedSoftDark};`;
 
-/**
- * The `color-scheme()` theming mixin: the `.scheme-*` classes plus the `@supports`-gated light/dark
- * custom-property fallbacks for browsers without `light-dark()`. Plumbing: still emitted so consumers
- * can `@include` it, but NOT a documented `scssMeta` entry.
- */
+/** The `color-scheme()` theming mixin: `.scheme-*` classes plus `@supports` fallbacks for browsers without `light-dark()` (plumbing). */
 export const colorSchemeMixin: ScssRaw = {
   raw: `@mixin color-scheme() {
   .scheme-normal {
@@ -438,9 +429,8 @@ ${darkCustomProps}
 };
 
 /**
- * The deprecated `$pds-theme-light-*` / `$pds-theme-dark-*` aliases. Plumbing: still emitted with
- * identical values, but NOT documented `scssMeta` entries.
- * @deprecated Use the documented `$color-*` variables instead.
+ * Deprecated `$pds-theme-*` aliases (plumbing).
+ * @deprecated Use the documented `$color-*` variables.
  */
 export const colorDeprecatedAliases: ScssRaw = {
   raw: `$pds-theme-light-primary: ${colorPrimaryLight}; /* alias (deprecated) */

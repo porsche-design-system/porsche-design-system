@@ -1,11 +1,6 @@
 import type { ScssMixin, ScssRaw } from '../types';
 
-/**
- * Single source of truth for the documented `skeleton()` mixin. The `raw` body keeps its namespaced
- * cross-references (`border.`, `color.`, `motion.`) — the `_skeleton.scss` composition descriptor
- * declares the matching `@use` headers. The deprecated `pds-skeleton` variant (plumbing) lives
- * alongside below.
- */
+/** The documented `skeleton()` mixin. The `raw` body keeps its namespaced `border.` / `color.` / `motion.` cross-references. */
 export const skeleton = [
   {
     name: 'skeleton',
@@ -28,9 +23,8 @@ export const skeleton = [
 ] satisfies ScssMixin[];
 
 /**
- * `pds-skeleton` — the deprecated theme-parameterized variant wrapping the documented `skeleton()`
- * mixin. Plumbing: still emitted, but not a documented `scssMeta` entry.
- * @deprecated Use the documented `skeleton()` mixin instead.
+ * Deprecated theme-parameterized `pds-skeleton` variant (plumbing).
+ * @deprecated Use the documented `skeleton()` mixin.
  */
 export const skeletonDeprecatedMixin: ScssRaw = {
   raw: `@mixin pds-skeleton($theme: 'light') {
