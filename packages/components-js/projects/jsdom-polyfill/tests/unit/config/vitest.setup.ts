@@ -22,6 +22,10 @@ beforeAll(() => {
         setValidity: vi.fn(),
       }) as unknown as ElementInternals
   );
+
+  // Mock for requestAnimationFrame/cancelAnimationFrame (not available in jsdom)
+  global.requestAnimationFrame = vi.fn((callback: FrameRequestCallback) => setTimeout(callback, 0) as unknown as number);
+  global.cancelAnimationFrame = vi.fn((id: number) => clearTimeout(id));
 });
 
 beforeEach(() => {
