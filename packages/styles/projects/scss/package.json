@@ -13,10 +13,10 @@
   "types": "./meta/esm/index.d.ts",
   "exports": {
     ".": {
+      "sass": "./dist/_index.scss",
       "types": "./meta/esm/index.d.ts",
       "import": "./meta/esm/index.mjs",
-      "require": "./meta/cjs/index.cjs",
-      "sass": "./dist/_index.scss"
+      "require": "./meta/cjs/index.cjs"
     }
   },
   "files": [

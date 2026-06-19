@@ -45,7 +45,6 @@
     "@rollup/plugin-typescript": "*",
     "@types/node": "*",
     "rollup": "*",
-    "rollup-plugin-generate-package-json": "*",
     "tailwindcss": "*",
     "tsx": "*",
     "typescript": "*",
