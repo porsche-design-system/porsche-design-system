@@ -5,7 +5,6 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "npm run build:ag-grid",
-    "build-prod": "npm run build",
     "build:ag-grid": "npm run build --workspace=@porsche-design-system/ag-grid",
     "test": "npm run test:unit",
     "test:unit": "npm run test:unit:ag-grid",

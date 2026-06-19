@@ -23,7 +23,6 @@
   "types": "./dist/esm/index.d.ts",
   "scripts": {
     "build": "npm run clean:build && npm run build:generateComponentMeta && npm run build:bundle",
-    "build-prod": "npm run build",
     "build:generateComponentMeta": "tsx scripts/generateComponentMeta.ts",
     "build:bundle": "rollup -c rollup.config.mjs",
     "test": "npm run test:unit",
