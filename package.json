@@ -278,7 +278,7 @@
     "brace-expansion@1": "1.1.13",
     "brace-expansion@2": "2.0.3",
     "braces": "^3.0.3",
-    "ejs": "^6.0.1",
+    "ejs": "^3.1.10",
     "follow-redirects": "^1.16.0",
     "js-cookie": "^3.0.8",
     "koa": "^3.2.1",
