@@ -983,12 +983,20 @@ exports[`should contain correct scss content for file ./dist/_heading.scss 1`] =
 
 exports[`should contain correct scss content for file ./dist/_index.scss 1`] = `
 "@forward "border";
-@forward "breakpoint";
-@forward "display";
-@forward "shadow";
-@forward "font";
 @forward "blur";
+@forward "breakpoint";
+@forward "shadow";
+@forward "spacing";
+@forward "motion";
 @forward "gradient";
+@forward "color";
+@forward "font";
+@forward "heading";
+@forward "text";
+@forward "display";
+@forward "skeleton";
+@forward "focus";
+@forward "media-query";
 @forward "grid";
 @forward "grid-gap";
 @forward "grid-full";
@@ -1001,14 +1009,6 @@ exports[`should contain correct scss content for file ./dist/_index.scss 1`] = `
 @forward "grid-basic-offset";
 @forward "grid-narrow";
 @forward "grid-narrow-offset";
-@forward "heading";
-@forward "motion";
-@forward "spacing";
-@forward "text";
-@forward "color";
-@forward "focus";
-@forward "media-query";
-@forward "skeleton";
 "
 `;
 

@@ -210,48 +210,8 @@ const gridNarrowOffsetFile: ScssFileMeta = {
   nodes: [...flatten(gridGroups.narrowOffset)],
 };
 
-const indexFile: ScssFileMeta = {
-  file: '_index.scss',
-  description: 'The `@forward` index re-exporting every partial under the `pds.*` namespace.',
-  nodes: [
-    {
-      raw: [
-        'border',
-        'breakpoint',
-        'display',
-        'shadow',
-        'font',
-        'blur',
-        'gradient',
-        'grid',
-        'grid-gap',
-        'grid-full',
-        'grid-full-offset',
-        'grid-wide',
-        'grid-wide-offset',
-        'grid-extended',
-        'grid-extended-offset',
-        'grid-basic',
-        'grid-basic-offset',
-        'grid-narrow',
-        'grid-narrow-offset',
-        'heading',
-        'motion',
-        'spacing',
-        'text',
-        'color',
-        'focus',
-        'media-query',
-        'skeleton',
-      ]
-        .map((partial) => `@forward '${partial}';`)
-        .join('\n'),
-    },
-  ],
-};
-
-/** The composition layer: ordered per-file descriptors interleaving `scssMeta` entries with plumbing. The build renders each to `dist/<file>`. */
-export const scssFileMeta: ScssFileMeta[] = [
+/** Every partial the index forwards, in build order. The grid* descriptors keep their per-partial split. */
+const partialFiles: ScssFileMeta[] = [
   borderFile,
   blurFile,
   breakpointFile,
@@ -279,8 +239,20 @@ export const scssFileMeta: ScssFileMeta[] = [
   gridBasicOffsetFile,
   gridNarrowFile,
   gridNarrowOffsetFile,
-  indexFile,
 ];
+
+/** `_grid-full-offset.scss` → `grid-full-offset` — the token `@forward` expects. */
+const forwardName = (file: string): string => file.replace(/^_/, '').replace(/\.scss$/, '');
+
+// Derived from `partialFiles` so the forwards can never drift from the partials that exist.
+const indexFile: ScssFileMeta = {
+  file: '_index.scss',
+  description: 'The `@forward` index re-exporting every partial under the `pds.*` namespace.',
+  nodes: [{ raw: partialFiles.map(({ file }) => `@forward '${forwardName(file)}';`).join('\n') }],
+};
+
+/** The composition layer: ordered per-file descriptors interleaving `scssMeta` entries with plumbing. The build renders each to `dist/<file>`. */
+export const scssFileMeta: ScssFileMeta[] = [...partialFiles, indexFile];
 
 /** Render a file descriptor to its SCSS string: optional `@use` headers, then the ordered nodes. */
 export const renderScssFile = ({ uses, nodes }: ScssFileMeta): string => {
