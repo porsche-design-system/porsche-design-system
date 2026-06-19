@@ -1,41 +1,5 @@
 {
   "$schema": "./node_modules/syncpack/schema.json",
-  "source": [
-    "package.json",
-    "packages/*/package.json",
-    "packages/assets/projects/crest/package.json",
-    "packages/assets/projects/flags/package.json",
-    "packages/assets/projects/fonts/package.json",
-    "packages/assets/projects/font-face/package.json",
-    "packages/assets/projects/icons/package.json",
-    "packages/assets/projects/marque/package.json",
-    "packages/assets/projects/meta-icons/package.json",
-    "packages/assets/projects/model-signatures/package.json",
-    "packages/components-js/projects/components-manager-cli/package.json",
-    "packages/components-js/projects/components-manager-core/package.json",
-    "packages/components-js/projects/jsdom-polyfill/package.json",
-    "packages/components-js/projects/partials/package.json",
-    "packages/components-js/dist/components-wrapper/package.json",
-    "packages/components-angular/dist/angular-wrapper/package.json",
-    "packages/components-react/dist/react-wrapper/package.json",
-    "packages/components-react/projects/nextjs/package.json",
-    "packages/components-react/projects/react-ssr-wrapper/package.json",
-    "packages/components-react/projects/react-router/package.json",
-    "packages/components-vue/dist/vue-wrapper/package.json",
-    "packages/styles/projects/tailwindcss/package.json",
-    "packages/styles/projects/scss/package.json",
-    "packages/styles/projects/emotion/package.json",
-    "packages/styles/projects/vanilla-extract/package.json",
-    "packages/components/projects/stylesheets/package.json",
-    "packages/tokens/projects/tokens-meta/package.json",
-    "packages/utilities/projects/ag-grid/package.json",
-    "packages/storefront/projects/stackblitz/package.json",
-    "packages/shared/dist/package.json",
-    "packages/storefront/projects/stackblitz/src/angular/package.json",
-    "packages/storefront/projects/stackblitz/src/react/package.json",
-    "packages/storefront/projects/stackblitz/src/vanilla-js/package.json",
-    "packages/storefront/projects/stackblitz/src/vue/package.json"
-  ],
   "sortFirst": [
     "name",
     "version",
@@ -80,11 +44,7 @@
   "updateGroups": [
     {
       "label": "Held-back dependencies — upgraded deliberately, not via automated checks (see docs/dependencies.md and .github/dependabot.yml)",
-      "dependencies": [
-        "@porsche-design-system/**",
-        "@playwright/test",
-        "@stencil/core"
-      ],
+      "dependencies": ["@porsche-design-system/**", "@playwright/test", "@stencil/core"],
       "isIgnored": true
     }
   ]
