@@ -16,25 +16,21 @@ export const motion = {
       name: '$duration-sm',
       value: durationSm,
       description: 'Holds a **short** `transition-duration` / `animation-duration`.',
-      group: 'motion',
     },
     md: {
       name: '$duration-md',
       value: durationMd,
       description: 'Holds a **moderate** `transition-duration` / `animation-duration`.',
-      group: 'motion',
     },
     lg: {
       name: '$duration-lg',
       value: durationLg,
       description: 'Holds a **long** `transition-duration` / `animation-duration`.',
-      group: 'motion',
     },
     xl: {
       name: '$duration-xl',
       value: durationXlToken,
       description: 'Holds a **very long** `transition-duration` / `animation-duration`.',
-      group: 'motion',
     },
   },
   ease: {
@@ -42,19 +38,16 @@ export const motion = {
       name: '$ease-in-out',
       value: easeInOutToken,
       description: 'Holds an **in-out** `transition-timing-function`.',
-      group: 'motion',
     },
     in: {
       name: '$ease-in',
       value: easeIn,
       description: 'Holds an **in** `transition-timing-function`.',
-      group: 'motion',
     },
     out: {
       name: '$ease-out',
       value: easeOut,
       description: 'Holds an **out** `transition-timing-function`.',
-      group: 'motion',
     },
   },
 } satisfies ScssMeta['motion'];

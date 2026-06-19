@@ -7,7 +7,6 @@ export const gradient = {
     name: '$gradient-stops-fade-dark',
     value: gradientStopsFadeDark,
     description: 'Holds color stops for a faded gradient, used as `background-image`.',
-    group: 'gradient',
   },
 } satisfies ScssMeta['gradient'];
 

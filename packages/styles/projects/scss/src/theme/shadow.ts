@@ -7,19 +7,16 @@ export const shadow = {
     name: '$shadow-sm',
     value: shadowSm,
     description: 'Holds a **small** `shadow`.',
-    group: 'shadow',
   },
   md: {
     name: '$shadow-md',
     value: shadowMd,
     description: 'Holds a **medium** `shadow`.',
-    group: 'shadow',
   },
   lg: {
     name: '$shadow-lg',
     value: shadowLg,
     description: 'Holds a **large** `shadow`.',
-    group: 'shadow',
   },
 } satisfies ScssMeta['shadow'];
 

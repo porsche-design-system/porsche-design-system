@@ -2,23 +2,6 @@
 // variables and a `utilities` catalog of mixins, every group and key spelled out inline so the types
 // read like the data they validate. Leaves are `ScssVariable` (a documented `$`-variable) and `ScssMixin`.
 
-/** Doc grouping of a theme variable, mirroring the storefront API pages and the tailwind taxonomy. */
-export type ScssVariableGroup =
-  | 'background'
-  | 'foreground'
-  | 'semantic'
-  | 'a11y'
-  | 'typography'
-  | 'breakpoint'
-  | 'fluid'
-  | 'static'
-  | 'border'
-  | 'blur'
-  | 'shadow'
-  | 'motion'
-  | 'gradient'
-  | 'grid';
-
 /** A documented scss variable: `description` + rendered `value` + `$`-prefixed `name`. Renders both a docs row and a `$name: value;` declaration. */
 export type ScssVariable = {
   /** Description rendered in the docs and LLM context. */
@@ -27,8 +10,6 @@ export type ScssVariable = {
   value: string | number;
   /** The `$`-prefixed Sass variable name, e.g. `$radius-xs`. */
   name: string;
-  /** Grouping used to organize the documentation tables. */
-  group?: ScssVariableGroup;
   /** Optional trailing comment rendered after the declaration, e.g. `alias (deprecated)`. */
   comment?: string;
 };
