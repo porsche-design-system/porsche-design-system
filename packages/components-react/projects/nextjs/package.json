@@ -28,18 +28,18 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
+    "@tailwindcss/postcss": "^4.3.1",
     "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3"
+    "@types/react-dom": "^19.2.3",
+    "concurrently": "^10.0.3",
+    "postcss": "^8",
+    "tailwindcss": "^4.3.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "@tailwindcss/postcss": "*",
     "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
-    "ag-grid-react": ">= 35.0.0 <36.0.0",
-    "concurrently": "*",
-    "postcss": "*",
-    "tailwindcss": "*",
-    "tsx": "*",
-    "typescript": "*"
+    "ag-grid-react": ">= 35.0.0 <36.0.0"
   },
   "optionalDependencies": {
     "@next/swc-darwin-arm64": "^16.2.9",

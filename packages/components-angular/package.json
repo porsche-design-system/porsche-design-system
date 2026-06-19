@@ -57,13 +57,17 @@
     "@angular/cli": "^22.0.3",
     "@angular/compiler-cli": "^22.0.2",
     "@angular/language-service": "^22.0.2",
+    "@playwright/test": "1.61.0",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
+    "@tailwindcss/postcss": "^4.3.1",
     "@testing-library/angular": "^19.4.1",
     "@types/jasmine": "^6.0.0",
     "ag-grid-angular": "35.3.1",
     "ag-grid-community": "35.3.1",
     "ag-grid-enterprise": "35.3.1",
+    "change-case": "^5.4.4",
+    "concurrently": "^10.0.3",
     "istanbul-lib-instrument": "^6.0.3",
     "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
@@ -73,17 +77,10 @@
     "local-web-server": "^5.4.0",
     "ng-packagr": "^22.0.0",
     "postcss": "^8",
-    "typescript": "^6.0.3"
-  },
-  "peerDependencies": {
-    "@playwright/test": "*",
-    "@tailwindcss/postcss": "*",
-    "change-case": "*",
-    "concurrently": "*",
-    "postcss": "*",
-    "tailwindcss": "*",
-    "vite": "*",
-    "vitest": "*"
+    "tailwindcss": "^4.3.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.9"
   },
   "volta": {
     "extends": "../../package.json"

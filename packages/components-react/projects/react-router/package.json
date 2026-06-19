@@ -26,19 +26,17 @@
     "react-router": "^8.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.61.0",
     "@porsche-design-system/shared": "0.0.0",
     "@react-router/dev": "^8.0.0",
     "@tailwindcss/vite": "^4.3.1",
     "@types/node": "^25.9.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "typescript": "^6.0.3"
-  },
-  "peerDependencies": {
-    "@playwright/test": "*",
-    "concurrently": "*",
-    "tailwindcss": "*",
-    "vite": "*"
+    "concurrently": "^10.0.3",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
   },
   "volta": {
     "extends": "../../../../package.json"

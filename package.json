@@ -205,7 +205,7 @@
     "clean:storefront:build": "npm run clean:build --workspace=@porsche-design-system/storefront",
     "clean:utilities:build": "npm run clean:build --workspace=utilities-v2",
     "npm:install": "npm install",
-    "npm:lint": "syncpack lint --dependency-types prod,dev",
+    "npm:lint": "syncpack lint",
     "npm:lint:fix": "syncpack fix --dependency-types prod,dev",
     "npm:list": "syncpack list --show all --sort count",
     "npm:format": "syncpack format --check",
