@@ -22,6 +22,7 @@
   ],
   "scripts": {
     "build": "npm run clean:build && npm run build:package && npm run build:tokens-meta",
+    "build-prod": "npm run build",
     "build:tokens-meta": "npm run build --workspace=@porsche-design-system/tokens-meta",
     "build:package": "rollup -c rollup.config.js",
     "test": "npm run test:unit",

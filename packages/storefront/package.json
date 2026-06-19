@@ -8,6 +8,7 @@
     "dev": "npm run prebuild && concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next dev'",
     "prebuild": "npm run build:stackblitz && npm run build:generateTableOfContents && npm run build:preparePartialResults && npm run build:prepareChangelog && npm run build:copyLicense",
     "build": "next build",
+    "build-prod": "npm run build",
     "build:stackblitz": "npm run build --workspace=@porsche-design-system/stackblitz",
     "build:generateTableOfContents": "tsx --tsconfig tsconfig.node.json scripts/generateTableOfContents.ts",
     "build:preparePartialResults": "tsx --tsconfig tsconfig.node.json scripts/preparePartialResults.ts",

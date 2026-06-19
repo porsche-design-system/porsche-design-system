@@ -16,6 +16,7 @@
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
     "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run build:generateCodeExamples && npm run build:bundle",
+    "build-prod": "npm run build",
     "build:generateTagNames": "tsx scripts/generateTagNames.ts",
     "build:generateCodeExamples": "tsx scripts/generateCodeExamples.ts",
     "build:generateChunkNames": "tsx scripts/generateTagNamesWithChunk.ts",

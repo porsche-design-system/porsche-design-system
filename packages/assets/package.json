@@ -22,6 +22,7 @@
   "scripts": {
     "start": "npm run build && node ./bin/serve-cdn.js",
     "build": "npm run clean:build && npm run build:projects && npm run build:manifest && npm run build:copyAssets",
+    "build-prod": "npm run build",
     "build:projects": "npm run build:crest && npm run build:flags && npm run build:fonts && npm run build:font-face && npm run build:icons && npm run build:marque && npm run build:meta-icons && npm run build:model-signatures",
     "build:crest": "npm run build --workspace=@porsche-design-system/crest",
     "build:flags": "npm run build --workspace=@porsche-design-system/flags",
