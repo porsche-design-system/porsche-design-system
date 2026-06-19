@@ -53,7 +53,7 @@
     "zone.js": "~0.16.2"
   },
   "devDependencies": {
-    "@angular/build": "^22.0.2",
+    "@angular/build": "^22.0.3",
     "@angular/cli": "^22.0.3",
     "@angular/compiler-cli": "^22.0.2",
     "@angular/language-service": "^22.0.2",
@@ -72,8 +72,8 @@
     "karma-jasmine-html-reporter": "^2.2.0",
     "local-web-server": "^5.4.0",
     "ng-packagr": "^22.0.0",
-    "postcss": "^8.5.15",
-    "typescript": "6.0.3"
+    "postcss": "^8",
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "@playwright/test": "*",
