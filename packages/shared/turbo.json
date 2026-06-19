@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**", "src/lib/**", "bin/**"]
+    },
+    "build-prod": {
+      "outputs": ["dist/**", "src/lib/**", "bin/**"]
+    }
+  }
+}

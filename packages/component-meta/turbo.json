@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["@porsche-design-system/stylesheets#build", "@porsche-design-system/assets#build"],
+      "outputs": ["dist/**", "src/lib/**"]
+    },
+    "build-prod": {
+      "dependsOn": ["@porsche-design-system/stylesheets#build-prod", "@porsche-design-system/assets#build-prod"],
+      "outputs": ["dist/**", "src/lib/**"]
+    }
+  }
+}

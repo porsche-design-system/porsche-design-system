@@ -25,6 +25,7 @@ ort/
 
 # Cache
 .npm
+.turbo/
 
 
 # dotenv environment variables file

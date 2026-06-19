@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/turbo/schema.json",
+  "ui": "stream",
+  "globalDependencies": ["patches/**"],
+  "globalEnv": ["NODE_ENV", "PDS_IS_STAGING", "PORSCHE_DESIGN_SYSTEM_DEV"],
+  "concurrency": "100%",
+  "tasks": {
+    "build": {
+      "dependsOn": [],
+      "outputs": [],
+      "cache": true
+    }
+  }
+}

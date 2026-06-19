@@ -1,0 +1,14 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["shared#build", "@porsche-design-system/tokens#build"],
+      "outputs": ["dist/**", "cdn/**", "bin/**", "projects/*/dist/**"]
+    },
+    "build-prod": {
+      "dependsOn": ["shared#build-prod", "@porsche-design-system/tokens#build-prod"],
+      "outputs": ["dist/**", "cdn/**", "bin/**", "projects/*/dist/**"]
+    }
+  }
+}

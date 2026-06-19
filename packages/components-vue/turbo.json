@@ -1,0 +1,26 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "@porsche-design-system/js#build",
+        "@porsche-design-system/assets#build",
+        "shared#build",
+        "@porsche-design-system/components#build",
+        "@porsche-design-system/styles#build"
+      ],
+      "outputs": ["dist/**"]
+    },
+    "build-prod": {
+      "dependsOn": [
+        "@porsche-design-system/js#build-prod",
+        "@porsche-design-system/assets#build-prod",
+        "shared#build-prod",
+        "@porsche-design-system/components#build-prod",
+        "@porsche-design-system/styles#build-prod"
+      ],
+      "outputs": ["dist/**"]
+    }
+  }
+}

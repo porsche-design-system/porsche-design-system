@@ -1,0 +1,32 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "@porsche-design-system/components#build",
+        "@porsche-design-system/assets#build",
+        "shared#build",
+        "@porsche-design-system/stylesheets#build",
+        "@porsche-design-system/component-meta#build",
+        "@porsche-design-system/tokens#build",
+        "@porsche-design-system/styles#build",
+        "utilities-v2#build"
+      ],
+      "outputs": ["dist/**", "projects/*/dist/**", "projects/components-wrapper/lib/**", "projects/partials/src/lib/**"]
+    },
+    "build-prod": {
+      "dependsOn": [
+        "@porsche-design-system/components#build-prod",
+        "@porsche-design-system/assets#build-prod",
+        "shared#build-prod",
+        "@porsche-design-system/stylesheets#build-prod",
+        "@porsche-design-system/component-meta#build-prod",
+        "@porsche-design-system/tokens#build-prod",
+        "@porsche-design-system/styles#build-prod",
+        "utilities-v2#build-prod"
+      ],
+      "outputs": ["dist/**", "projects/*/dist/**", "projects/components-wrapper/lib/**", "projects/partials/src/lib/**"]
+    }
+  }
+}
