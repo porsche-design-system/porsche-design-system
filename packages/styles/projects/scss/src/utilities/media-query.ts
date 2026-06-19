@@ -17,7 +17,7 @@ export const mediaQuery = [
       @content;
     }
   } @else {
-    @error "Passed #{$min} breakpoint is not available for used pds-media-query-min() mixin.";
+    @error "Passed #{$min} breakpoint is not available for used media-query-min() mixin.";
   }`,
   },
   {
@@ -29,7 +29,7 @@ export const mediaQuery = [
       @content;
     }
   } @else {
-    @error "Passed #{$max} breakpoint is not available for used pds-media-query-max() mixin.";
+    @error "Passed #{$max} breakpoint is not available for used media-query-max() mixin.";
   }`,
   },
   {
@@ -41,7 +41,7 @@ export const mediaQuery = [
       @content;
     }
   } @else {
-    @error "Passed #{$min} and/or #{$max} breakpoint is not available for used pds-media-query-min-max() mixin.";
+    @error "Passed #{$min} and/or #{$max} breakpoint is not available for used media-query-min-max() mixin.";
   }`,
   },
 ] satisfies ScssMixin[];
