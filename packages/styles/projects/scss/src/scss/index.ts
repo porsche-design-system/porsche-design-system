@@ -28,7 +28,7 @@ import { flatten, renderNode } from './render';
 const blank: ScssRaw = { raw: '' };
 
 const borderFile: ScssFileMeta = {
-  file: '_border.scss',
+  file: `_${namespace.border}.scss`,
   description: 'The border radius scale plus the deprecated `$pds-border-*` aliases.',
   nodes: [...flatten(scssMeta.border), blank, borderDeprecatedAliases],
 };
@@ -40,7 +40,7 @@ const blurFile: ScssFileMeta = {
 };
 
 const breakpointFile: ScssFileMeta = {
-  file: '_breakpoint.scss',
+  file: `_${namespace.breakpoint}.scss`,
   description: 'The responsive breakpoint scale plus the deprecated `$pds-breakpoint-*` aliases.',
   nodes: [...flatten(scssMeta.breakpoint), blank, breakpointDeprecatedAliases],
 };
@@ -58,7 +58,7 @@ const spacingFile: ScssFileMeta = {
 };
 
 const motionFile: ScssFileMeta = {
-  file: '_motion.scss',
+  file: `_${namespace.motion}.scss`,
   description: 'The duration and easing scales plus the deprecated `$pds-motion-*` aliases.',
   nodes: [...flatten(scssMeta.motion), blank, motionDeprecatedAliases],
 };
@@ -70,14 +70,14 @@ const gradientFile: ScssFileMeta = {
 };
 
 const colorFile: ScssFileMeta = {
-  file: '_color.scss',
+  file: `_${namespace.color}.scss`,
   description: 'The `$color-*` scale plus the `color-scheme()` mixin and deprecated `$pds-theme-*` aliases.',
   nodes: [...flatten(scssMeta.color), blank, colorSchemeMixin, blank, colorDeprecatedAliases],
 };
 
 const { family, weight, lineHeight, size } = scssMeta.font;
 const fontFile: ScssFileMeta = {
-  file: '_font.scss',
+  file: `_${namespace.font}.scss`,
   description:
     'The typography scale, weights and families plus the `cjk-font-family` helper mixin and `$pds-font-*` aliases.',
   nodes: [
@@ -110,7 +110,7 @@ const focusFile: ScssFileMeta = {
 };
 
 const headingFile: ScssFileMeta = {
-  file: '_heading.scss',
+  file: `_${namespace.heading}.scss`,
   description: 'The `prose-heading-*` mixins plus the `-prose-heading` helper and `pds-heading-*` aliases.',
   uses: [namespace.font, namespace.color],
   nodes: [proseHeadingHelper, blank, ...flatten(scssMeta.typography.heading), blank, headingDeprecatedAliases],
@@ -241,14 +241,12 @@ const partialFiles: ScssFileMeta[] = [
   gridNarrowOffsetFile,
 ];
 
-/** `_grid-full-offset.scss` → `grid-full-offset` — the token `@forward` expects. */
-const forwardName = (file: string): string => file.replace(/^_/, '').replace(/\.scss$/, '');
-
 // Derived from `partialFiles` so the forwards can never drift from the partials that exist.
+// `_grid-full-offset.scss` → `grid-full-offset`: strip the leading `_` and the `.scss` extension.
 const indexFile: ScssFileMeta = {
   file: '_index.scss',
   description: 'The `@forward` index re-exporting every partial under the `pds.*` namespace.',
-  nodes: [{ raw: partialFiles.map(({ file }) => `@forward '${forwardName(file)}';`).join('\n') }],
+  nodes: [{ raw: partialFiles.map(({ file }) => `@forward '${file.slice(1, -'.scss'.length)}';`).join('\n') }],
 };
 
 /** The composition layer: ordered per-file descriptors interleaving `scssMeta` entries with plumbing. The build renders each to `dist/<file>`. */
