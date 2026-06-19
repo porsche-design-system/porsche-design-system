@@ -5,10 +5,6 @@
     "build": {
       "dependsOn": ["shared#build"],
       "outputs": ["dist/**", "projects/tokens-meta/dist/**"]
-    },
-    "build-prod": {
-      "dependsOn": ["shared#build-prod"],
-      "outputs": ["dist/**", "projects/tokens-meta/dist/**"]
     }
   }
 }

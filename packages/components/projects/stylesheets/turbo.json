@@ -7,7 +7,7 @@
       "outputs": ["dist/**"]
     },
     "build-prod": {
-      "dependsOn": ["@porsche-design-system/tokens#build-prod", "@porsche-design-system/assets#build-prod"],
+      "dependsOn": ["@porsche-design-system/tokens#build", "@porsche-design-system/assets#build"],
       "outputs": ["dist/**"]
     }
   }

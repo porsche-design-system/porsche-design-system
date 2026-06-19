@@ -7,7 +7,7 @@
       "outputs": ["dist/**", "projects/*/dist/**", "projects/*/meta/**", "projects/shared-styles/src/generated/**"]
     },
     "build-prod": {
-      "dependsOn": ["shared#build-prod", "@porsche-design-system/tokens#build-prod"],
+      "dependsOn": ["shared#build", "@porsche-design-system/tokens#build"],
       "outputs": ["dist/**", "projects/*/dist/**", "projects/*/meta/**", "projects/shared-styles/src/generated/**"]
     }
   }

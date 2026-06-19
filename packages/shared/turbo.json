@@ -4,9 +4,6 @@
   "tasks": {
     "build": {
       "outputs": ["dist/**", "src/lib/**", "bin/**"]
-    },
-    "build-prod": {
-      "outputs": ["dist/**", "src/lib/**", "bin/**"]
     }
   }
 }

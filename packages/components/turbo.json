@@ -16,12 +16,12 @@
     },
     "build-prod": {
       "dependsOn": [
-        "shared#build-prod",
-        "@porsche-design-system/tokens#build-prod",
+        "shared#build",
+        "@porsche-design-system/tokens#build",
         "@porsche-design-system/styles#build-prod",
-        "@porsche-design-system/assets#build-prod",
+        "@porsche-design-system/assets#build",
         "@porsche-design-system/stylesheets#build-prod",
-        "@porsche-design-system/component-meta#build-prod"
+        "@porsche-design-system/component-meta#build"
       ],
       "inputs": ["$TURBO_DEFAULT$", "!src/styles-entry.ts", "!src/utils-entry.ts"],
       "outputs": ["dist/**", "www/**", "src/styles-entry.ts", "src/utils-entry.ts", "dist/wrappers/**"]

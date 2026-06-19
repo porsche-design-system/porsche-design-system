@@ -15,8 +15,8 @@
     "build-prod": {
       "dependsOn": [
         "@porsche-design-system/js#build-prod",
-        "@porsche-design-system/assets#build-prod",
-        "shared#build-prod",
+        "@porsche-design-system/assets#build",
+        "shared#build",
         "@porsche-design-system/components#build-prod",
         "@porsche-design-system/styles#build-prod"
       ],

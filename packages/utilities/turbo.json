@@ -6,11 +6,6 @@
       "dependsOn": ["@porsche-design-system/tokens#build"],
       "inputs": ["$TURBO_DEFAULT$", "!projects/ag-grid/src/styles.ts"],
       "outputs": ["projects/ag-grid/dist/**", "projects/ag-grid/src/styles.ts"]
-    },
-    "build-prod": {
-      "dependsOn": ["@porsche-design-system/tokens#build-prod"],
-      "inputs": ["$TURBO_DEFAULT$", "!projects/ag-grid/src/styles.ts"],
-      "outputs": ["projects/ag-grid/dist/**", "projects/ag-grid/src/styles.ts"]
     }
   }
 }
