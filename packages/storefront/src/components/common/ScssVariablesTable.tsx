@@ -30,7 +30,7 @@ const renderDescription = (description: string): ReactNode => {
     const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (link) {
       return (
-        <a key={i} href={link[2]} target="_blank" rel="noreferrer">
+        <a key={i} href={link[2]} target="_blank" rel="noreferrer noopener">
           {link[1]}
         </a>
       );
