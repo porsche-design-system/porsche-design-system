@@ -1,5 +1,5 @@
 diff --git a/node_modules/@stencil/core/compiler/stencil.js b/node_modules/@stencil/core/compiler/stencil.js
-index 1f97bb5..e9c1023 100644
+index 1f97bb5..538b44d 100644
 --- a/node_modules/@stencil/core/compiler/stencil.js
 +++ b/node_modules/@stencil/core/compiler/stencil.js
 @@ -251954,7 +251954,7 @@ function createLazyAttachInternalsBinding(cmp) {
@@ -12,7 +12,7 @@ index 1f97bb5..e9c1023 100644
                  void 0,
                  []
 diff --git a/node_modules/@stencil/core/internal/client/index.js b/node_modules/@stencil/core/internal/client/index.js
-index 7ca390b..e10ed7a 100644
+index 7ca390b..f17ed21 100644
 --- a/node_modules/@stencil/core/internal/client/index.js
 +++ b/node_modules/@stencil/core/internal/client/index.js
 @@ -3256,6 +3256,14 @@ var updateComponent = async (hostRef, instance, isInitialLoad) => {
@@ -30,17 +30,75 @@ index 7ca390b..e10ed7a 100644
    if (BUILD21.hydrateServerSide) {
      await callRender(hostRef, instance, elm, isInitialLoad);
    } else {
-@@ -4245,6 +4253,13 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
+@@ -3968,11 +3976,25 @@ var connectedCallback = (elm) => {
+           }
+         });
+       }
+-      if (BUILD25.initializeNextTick) {
+-        nextTick(() => initializeComponent(elm, hostRef, cmpMeta));
++
++      //========= PDS PATCH START
++      // DSD component is used but shadowRoot is not available means we are in streaming case and need to wait until a shadowRoot is available
++      if (elm.hasDSR && !elm.shadowRoot) {
++        const mo = new MutationObserver(() => {
++          if (elm.shadowRoot) {
++            mo.disconnect();
++            initializeComponent(elm, hostRef, cmpMeta);
++          }
++        });
++        mo.observe(elm, { childList: true });
+       } else {
+-        initializeComponent(elm, hostRef, cmpMeta);
++        if (BUILD25.initializeNextTick) {
++          nextTick(() => initializeComponent(elm, hostRef, cmpMeta));
++        } else {
++          initializeComponent(elm, hostRef, cmpMeta);
++        }
+       }
++      //========= PDS PATCH END
+     } else {
+       addHostEventListeners(elm, hostRef, cmpMeta.$listeners$, false);
+       if (hostRef == null ? void 0 : hostRef.$lazyInstance$) {
+@@ -4243,23 +4265,29 @@ var bootstrapLazy = (lazyBundles, options = {}) => {
+           super(self);
+           self = this;
            registerHost(self, cmpMeta);
-           if (BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
-             if (supportsShadow) {
-+
-+              //========= PDS PATCH START
-+              if (self.shadowRoot) {
-+                self.hasDSR = true;
-+              }
-+              //========= PDS PATCH END
-+
-               if (!self.shadowRoot) {
-                 createShadowRoot.call(self, cmpMeta);
-               } else {
+-          if (BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
+-            if (supportsShadow) {
+-              if (!self.shadowRoot) {
+-                createShadowRoot.call(self, cmpMeta);
+-              } else {
+-                if (self.shadowRoot.mode !== "open") {
+-                  throw new Error(
+-                    `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${self.shadowRoot.mode} but Stencil only supports open shadow roots.`
+-                  );
++        }
++        connectedCallback() {
++          //========= PDS PATCH START
++          if (this.hasAttribute('data-dsr')) {
++            this.hasDSR = true;
++          } else {
++            if (BUILD28.shadowDom && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
++              if (supportsShadow) {
++                if (!this.shadowRoot) {
++                  createShadowRoot.call(this, cmpMeta);
++                } else {
++                  if (this.shadowRoot.mode !== "open") {
++                    throw new Error(
++                      `Unable to re-use existing shadow root for ${cmpMeta.$tagName$}! Mode is set to ${this.shadowRoot.mode} but Stencil only supports open shadow roots.`
++                    );
++                  }
+                 }
++              } else if (!BUILD28.hydrateServerSide && !("shadowRoot" in this)) {
++                this.shadowRoot = this;
+               }
+-            } else if (!BUILD28.hydrateServerSide && !("shadowRoot" in self)) {
+-              self.shadowRoot = self;
+             }
+           }
+-        }
+-        connectedCallback() {
++          //========= PDS PATCH END
+           const hostRef = getHostRef(this);
+           if (!hostRef) {
+             return;

@@ -2,6 +2,7 @@
 
 exports[`manual test cases > should pass internal props correctly to p-multi-select-option 1`] = `
 <p-multi-select
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -260,6 +261,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
         <p-icon
           aria-hidden="true"
           class="icon"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -314,6 +316,7 @@ img {
       >
         <p-input-search
           class="filter"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -486,6 +489,7 @@ input::-webkit-search-cancel-button {
                 />
                 <p-icon
                   aria-hidden="true"
+                  data-dsr=""
                   data-ssr=""
                 >
                   <template
@@ -543,6 +547,7 @@ img {
                 />
                 <p-button-pure
                   class="button"
+                  data-dsr=""
                   data-ssr=""
                   hidden=""
                   tabindex="-1"
@@ -641,6 +646,7 @@ img {
                       <p-icon
                         aria-hidden="true"
                         class="icon"
+                        data-dsr=""
                         data-ssr=""
                       >
                         <template
@@ -756,6 +762,7 @@ img {
     </div>
   </template>
   <p-multi-select-option
+    data-dsr=""
     data-ssr=""
   >
     <template
@@ -858,6 +865,7 @@ slot {
     Option A
   </p-multi-select-option>
   <p-multi-select-option
+    data-dsr=""
     data-ssr=""
   >
     <template
@@ -960,6 +968,7 @@ slot {
     Option B
   </p-multi-select-option>
   <p-multi-select-option
+    data-dsr=""
     data-ssr=""
   >
     <template
@@ -1062,6 +1071,7 @@ slot {
     Option C
   </p-multi-select-option>
   <p-multi-select-option
+    data-dsr=""
     data-ssr=""
   >
     <template
@@ -1164,6 +1174,7 @@ slot {
     Option D
   </p-multi-select-option>
   <p-multi-select-option
+    data-dsr=""
     data-ssr=""
   >
     <template
@@ -1266,6 +1277,7 @@ slot {
     Option E
   </p-multi-select-option>
   <p-multi-select-option
+    data-dsr=""
     data-ssr=""
   >
     <template
@@ -1372,6 +1384,7 @@ slot {
 
 exports[`manual test cases > should pass internal props correctly to p-pin-code 1`] = `
 <p-pin-code
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -1561,6 +1574,7 @@ input:focus-visible {
 
 exports[`manual test cases > should pass internal props correctly to p-segmented-control-item 1`] = `
 <p-segmented-control
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -1660,6 +1674,7 @@ slot:not([name]) {
     </fieldset>
   </template>
   <p-segmented-control-item
+    data-dsr=""
     data-ssr=""
   >
     <template
@@ -1718,6 +1733,7 @@ span {
     Item 1
   </p-segmented-control-item>
   <p-segmented-control-item
+    data-dsr=""
     data-ssr=""
   >
     <template
@@ -1786,6 +1802,7 @@ span {
 
 exports[`manual test cases > should pass internal props correctly to p-stepper-horizontal-item 1`] = `
 <p-stepper-horizontal
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -1810,6 +1827,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
     </style>
     <p-scroller
       class="scroller"
+      data-dsr=""
       data-ssr=""
     >
       <template
@@ -1958,6 +1976,7 @@ slot {
     </p-scroller>
   </template>
   <p-stepper-horizontal-item
+    data-dsr=""
     data-ssr=""
     role="listitem"
   >
@@ -2095,6 +2114,7 @@ button:focus-visible {
     Item 1
   </p-stepper-horizontal-item>
   <p-stepper-horizontal-item
+    data-dsr=""
     data-ssr=""
     role="listitem"
   >
@@ -2236,6 +2256,7 @@ button:focus-visible {
 
 exports[`manual test cases > should pass internal props correctly to p-tabs-bar 1`] = `
 <p-tabs-bar
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -2320,6 +2341,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
     </style>
     <p-scroller
       class="scroller"
+      data-dsr=""
       data-ssr=""
     >
       <template
@@ -2484,6 +2506,7 @@ slot {
 
 exports[`manual test cases > should pass internal props correctly to p-tabs-item 1`] = `
 <p-tabs
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -2506,6 +2529,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
     </style>
     <p-tabs-bar
       class="root"
+      data-dsr=""
       data-ssr=""
     >
       <template
@@ -2590,6 +2614,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
         </style>
         <p-scroller
           class="scroller"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -2753,6 +2778,7 @@ slot {
     <slot />
   </template>
   <p-tabs-item
+    data-dsr=""
     data-ssr=""
   >
     <template
@@ -2783,6 +2809,7 @@ slot {
     </template>
   </p-tabs-item>
   <p-tabs-item
+    data-dsr=""
     data-ssr=""
     hidden=""
   >
@@ -2818,6 +2845,7 @@ slot {
 
 exports[`manual test cases > should pass internal props correctly to p-text-list-item 1`] = `
 <p-text-list
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -2856,6 +2884,7 @@ ol,ul {
     </ol>
   </template>
   <p-text-list-item
+    data-dsr=""
     data-ssr=""
     role="listitem"
   >
@@ -2892,6 +2921,7 @@ slot {
     Item 1
   </p-text-list-item>
   <p-text-list-item
+    data-dsr=""
     data-ssr=""
     role="listitem"
   >
@@ -2932,6 +2962,7 @@ slot {
 
 exports[`should render dsr component for PAccordion 1`] = `
 <p-accordion
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -3165,6 +3196,7 @@ div::before {
 
 exports[`should render dsr component for PBanner 1`] = `
 <p-banner
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -3278,6 +3310,7 @@ slot:not([name]),slot[name="description"],p {
         <slot />
         <p-button
           class="dismiss"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -3386,6 +3419,7 @@ slot:not([name]),slot[name="description"],p {
               <p-icon
                 aria-hidden="true"
                 class="icon"
+                data-dsr=""
                 data-ssr=""
               >
                 <template
@@ -3456,6 +3490,7 @@ img {
 
 exports[`should render dsr component for PButton 1`] = `
 <p-button
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -3575,6 +3610,7 @@ exports[`should render dsr component for PButton 1`] = `
 
 exports[`should render dsr component for PButtonPure 1`] = `
 <p-button-pure
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -3671,6 +3707,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
       <p-icon
         aria-hidden="true"
         class="icon"
+        data-dsr=""
         data-ssr=""
       >
         <template
@@ -3739,6 +3776,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PButtonTile 1`] = `
 <p-button-tile
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -3871,6 +3909,7 @@ p {
         />
         <p-button
           class="link-or-button"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -3994,6 +4033,7 @@ p {
 
 exports[`should render dsr component for PCanvas 1`] = `
 <p-canvas
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -4317,6 +4357,7 @@ h2 {
           class="header__area header__area--start"
         >
           <p-button
+            data-dsr=""
             data-ssr=""
             hide-label="true"
           >
@@ -4427,6 +4468,7 @@ h2 {
                 <p-icon
                   aria-hidden="true"
                   class="icon"
+                  data-dsr=""
                   data-ssr=""
                 >
                   <template
@@ -4495,6 +4537,7 @@ img {
         </div>
         <p-crest
           class="header__crest"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -4569,6 +4612,7 @@ img {
         </p-crest>
         <p-wordmark
           class="header__wordmark"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -4654,6 +4698,7 @@ svg {
           class="sidebar__header sidebar__header--start"
         >
           <p-button
+            data-dsr=""
             data-ssr=""
             hide-label="true"
           >
@@ -4764,6 +4809,7 @@ svg {
                 <p-icon
                   aria-hidden="true"
                   class="icon"
+                  data-dsr=""
                   data-ssr=""
                 >
                   <template
@@ -4844,6 +4890,7 @@ img {
 
 exports[`should render dsr component for PCarousel 1`] = `
 <p-carousel
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -4999,6 +5046,7 @@ exports[`should render dsr component for PCarousel 1`] = `
 
 exports[`should render dsr component for PCheckbox 1`] = `
 <p-checkbox
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -5205,6 +5253,7 @@ input:checked::before {
 
 exports[`should render dsr component for PCrest 1`] = `
 <p-crest
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -5281,6 +5330,7 @@ img {
 
 exports[`should render dsr component for PDisplay 1`] = `
 <p-display
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -5318,6 +5368,7 @@ exports[`should render dsr component for PDisplay 1`] = `
 
 exports[`should render dsr component for PDivider 1`] = `
 <p-divider
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -5352,6 +5403,7 @@ hr {
 
 exports[`should render dsr component for PDrilldown 1`] = `
 <p-drilldown
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -5547,6 +5599,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
       >
         <p-button-pure
           class="back"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -5642,6 +5695,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
               <p-icon
                 aria-hidden="true"
                 class="icon"
+                data-dsr=""
                 data-ssr=""
               >
                 <template
@@ -5708,6 +5762,7 @@ img:dir(rtl) {
         </p-button-pure>
         <p-button
           class="dismiss-mobile"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -5816,6 +5871,7 @@ img:dir(rtl) {
               <p-icon
                 aria-hidden="true"
                 class="icon"
+                data-dsr=""
                 data-ssr=""
               >
                 <template
@@ -5879,6 +5935,7 @@ img {
         </p-button>
         <p-button
           class="dismiss-desktop"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -5987,6 +6044,7 @@ img {
               <p-icon
                 aria-hidden="true"
                 class="icon"
+                data-dsr=""
                 data-ssr=""
               >
                 <template
@@ -6062,6 +6120,7 @@ img {
 
 exports[`should render dsr component for PDrilldownItem 1`] = `
 <p-drilldown-item
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -6149,6 +6208,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
     </style>
     <p-button-pure
       class="button"
+      data-dsr=""
       data-ssr=""
     >
       <template
@@ -6245,6 +6305,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
           <p-icon
             aria-hidden="true"
             class="icon"
+            data-dsr=""
             data-ssr=""
           >
             <template
@@ -6310,6 +6371,7 @@ img:dir(rtl) {
     </p-button-pure>
     <p-button-pure
       class="back"
+      data-dsr=""
       data-ssr=""
     >
       <template
@@ -6421,6 +6483,7 @@ img:dir(rtl) {
           <p-icon
             aria-hidden="true"
             class="icon"
+            data-dsr=""
             data-ssr=""
           >
             <template
@@ -6501,6 +6564,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PDrilldownLink 1`] = `
 <p-drilldown-link
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -6555,6 +6619,7 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
 
 exports[`should render dsr component for PFieldset 1`] = `
 <p-fieldset
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -6605,6 +6670,7 @@ fieldset {
 
 exports[`should render dsr component for PFlag 1`] = `
 <p-flag
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -6647,6 +6713,7 @@ img {
 
 exports[`should render dsr component for PFlyout 1`] = `
 <p-flyout
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -6778,6 +6845,7 @@ dialog::backdrop {
         >
           <p-button
             class="dismiss"
+            data-dsr=""
             data-ssr=""
           >
             <template
@@ -6886,6 +6954,7 @@ dialog::backdrop {
                 <p-icon
                   aria-hidden="true"
                   class="icon"
+                  data-dsr=""
                   data-ssr=""
                 >
                   <template
@@ -6958,6 +7027,7 @@ img {
 
 exports[`should render dsr component for PHeading 1`] = `
 <p-heading
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -6996,6 +7066,7 @@ exports[`should render dsr component for PHeading 1`] = `
 
 exports[`should render dsr component for PIcon 1`] = `
 <p-icon
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -7050,6 +7121,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PInlineNotification 1`] = `
 <p-inline-notification
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -7124,6 +7196,7 @@ slot:not([name]),slot[name="description"],p {
       <slot />
       <p-button
         class="dismiss"
+        data-dsr=""
         data-ssr=""
       >
         <template
@@ -7232,6 +7305,7 @@ slot:not([name]),slot[name="description"],p {
             <p-icon
               aria-hidden="true"
               class="icon"
+              data-dsr=""
               data-ssr=""
             >
               <template
@@ -7301,6 +7375,7 @@ img {
 
 exports[`should render dsr component for PInputDate 1`] = `
 <p-input-date
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -7487,6 +7562,7 @@ input::-webkit-calendar-picker-indicator {
 
 exports[`should render dsr component for PInputEmail 1`] = `
 <p-input-email
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -7668,6 +7744,7 @@ input {
 
 exports[`should render dsr component for PInputMonth 1`] = `
 <p-input-month
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -7855,6 +7932,7 @@ input::-webkit-calendar-picker-indicator {
 
 exports[`should render dsr component for PInputNumber 1`] = `
 <p-input-number
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -8038,6 +8116,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 
 exports[`should render dsr component for PInputPassword 1`] = `
 <p-input-password
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -8216,6 +8295,7 @@ input {
 
 exports[`should render dsr component for PInputSearch 1`] = `
 <p-input-search
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -8397,6 +8477,7 @@ input::-webkit-search-cancel-button {
 
 exports[`should render dsr component for PInputTel 1`] = `
 <p-input-tel
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -8578,6 +8659,7 @@ input {
 
 exports[`should render dsr component for PInputText 1`] = `
 <p-input-text
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -8756,6 +8838,7 @@ input {
 
 exports[`should render dsr component for PInputTime 1`] = `
 <p-input-time
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -8942,6 +9025,7 @@ input::-webkit-calendar-picker-indicator {
 
 exports[`should render dsr component for PInputUrl 1`] = `
 <p-input-url
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -9123,6 +9207,7 @@ input {
 
 exports[`should render dsr component for PInputWeek 1`] = `
 <p-input-week
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -9310,6 +9395,7 @@ input::-webkit-calendar-picker-indicator {
 
 exports[`should render dsr component for PLink 1`] = `
 <p-link
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -9421,6 +9507,7 @@ exports[`should render dsr component for PLink 1`] = `
 
 exports[`should render dsr component for PLinkPure 1`] = `
 <p-link-pure
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -9519,6 +9606,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
       <p-icon
         aria-hidden="true"
         class="icon"
+        data-dsr=""
         data-ssr=""
       >
         <template
@@ -9582,6 +9670,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PLinkTile 1`] = `
 <p-link-tile
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -9718,6 +9807,7 @@ p {
         />
         <p-link
           class="link-or-button"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -9833,6 +9923,7 @@ p {
 
 exports[`should render dsr component for PLinkTileProduct 1`] = `
 <p-link-tile-product
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -9961,6 +10052,7 @@ slot[name="header"] {
         />
         <p-button-pure
           class="button"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -10057,6 +10149,7 @@ slot[name="header"] {
               <p-icon
                 aria-hidden="true"
                 class="icon"
+                data-dsr=""
                 data-ssr=""
               >
                 <template
@@ -10135,6 +10228,7 @@ img {
 
 exports[`should render dsr component for PModal 1`] = `
 <p-modal
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -10261,6 +10355,7 @@ dialog::backdrop {
         >
           <p-button
             class="dismiss"
+            data-dsr=""
             data-ssr=""
           >
             <template
@@ -10369,6 +10464,7 @@ dialog::backdrop {
                 <p-icon
                   aria-hidden="true"
                   class="icon"
+                  data-dsr=""
                   data-ssr=""
                 >
                   <template
@@ -10441,6 +10537,7 @@ img {
 
 exports[`should render dsr component for PModelSignature 1`] = `
 <p-model-signature
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -10493,6 +10590,7 @@ img {
 
 exports[`should render dsr component for PMultiSelect 1`] = `
 <p-multi-select
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -10751,6 +10849,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
         <p-icon
           aria-hidden="true"
           class="icon"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -10805,6 +10904,7 @@ img {
       >
         <p-input-search
           class="filter"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -10977,6 +11077,7 @@ input::-webkit-search-cancel-button {
                 />
                 <p-icon
                   aria-hidden="true"
+                  data-dsr=""
                   data-ssr=""
                 >
                   <template
@@ -11034,6 +11135,7 @@ img {
                 />
                 <p-button-pure
                   class="button"
+                  data-dsr=""
                   data-ssr=""
                   hidden=""
                   tabindex="-1"
@@ -11132,6 +11234,7 @@ img {
                       <p-icon
                         aria-hidden="true"
                         class="icon"
+                        data-dsr=""
                         data-ssr=""
                       >
                         <template
@@ -11252,6 +11355,7 @@ img {
 
 exports[`should render dsr component for PMultiSelectOption 1`] = `
 <p-multi-select-option
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -11357,6 +11461,7 @@ slot {
 
 exports[`should render dsr component for POptgroup 1`] = `
 <p-optgroup
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -11400,6 +11505,7 @@ exports[`should render dsr component for POptgroup 1`] = `
 
 exports[`should render dsr component for PPagination 1`] = `
 <p-pagination
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -11523,6 +11629,7 @@ span:not(.ellipsis):focus-visible {
           >
             <p-icon
               aria-hidden="true"
+              data-dsr=""
               data-ssr=""
             >
               <template
@@ -11597,6 +11704,7 @@ img:dir(rtl) {
           >
             <p-icon
               aria-hidden="true"
+              data-dsr=""
               data-ssr=""
             >
               <template
@@ -11657,6 +11765,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PPinCode 1`] = `
 <p-pin-code
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -11843,6 +11952,7 @@ input:focus-visible {
 
 exports[`should render dsr component for PPopover 1`] = `
 <p-popover
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -11963,6 +12073,7 @@ exports[`should render dsr component for PPopover 1`] = `
     >
       <p-icon
         class="icon"
+        data-dsr=""
         data-ssr=""
       >
         <template
@@ -12023,6 +12134,7 @@ img {
 
 exports[`should render dsr component for PRadioGroup 1`] = `
 <p-radio-group
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -12165,6 +12277,7 @@ slot[name="label-after"]::slotted(*) {
 
 exports[`should render dsr component for PRadioGroupOption 1`] = `
 <p-radio-group-option
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -12326,6 +12439,7 @@ input:checked::before {
 
 exports[`should render dsr component for PScroller 1`] = `
 <p-scroller
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -12475,6 +12589,7 @@ slot {
 
 exports[`should render dsr component for PSegmentedControl 1`] = `
 <p-segmented-control
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -12579,6 +12694,7 @@ slot:not([name]) {
 
 exports[`should render dsr component for PSegmentedControlItem 1`] = `
 <p-segmented-control-item
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -12645,6 +12761,7 @@ span {
 
 exports[`should render dsr component for PSelect 1`] = `
 <p-select
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -12910,6 +13027,7 @@ exports[`should render dsr component for PSelect 1`] = `
         <p-icon
           aria-hidden="true"
           class="icon"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -12989,6 +13107,7 @@ img {
 
 exports[`should render dsr component for PSelectOption 1`] = `
 <p-select-option
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -13067,6 +13186,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
 
 exports[`should render dsr component for PSheet 1`] = `
 <p-sheet
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -13195,6 +13315,7 @@ dialog::backdrop {
         >
           <p-button
             class="dismiss"
+            data-dsr=""
             data-ssr=""
           >
             <template
@@ -13303,6 +13424,7 @@ dialog::backdrop {
                 <p-icon
                   aria-hidden="true"
                   class="icon"
+                  data-dsr=""
                   data-ssr=""
                 >
                   <template
@@ -13375,6 +13497,7 @@ img {
 
 exports[`should render dsr component for PSpinner 1`] = `
 <p-spinner
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -13488,6 +13611,7 @@ exports[`should render dsr component for PSpinner 1`] = `
 
 exports[`should render dsr component for PStepperHorizontal 1`] = `
 <p-stepper-horizontal
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -13512,6 +13636,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
     </style>
     <p-scroller
       class="scroller"
+      data-dsr=""
       data-ssr=""
     >
       <template
@@ -13665,6 +13790,7 @@ slot {
 
 exports[`should render dsr component for PStepperHorizontalItem 1`] = `
 <p-stepper-horizontal-item
+  data-dsr=""
   data-ssr=""
   role="listitem"
 >
@@ -13805,6 +13931,7 @@ button:focus-visible {
 
 exports[`should render dsr component for PSwitch 1`] = `
 <p-switch
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -13944,6 +14071,7 @@ label {
 
 exports[`should render dsr component for PTable 1`] = `
 <p-table
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -13980,6 +14108,7 @@ exports[`should render dsr component for PTable 1`] = `
 }
     </style>
     <p-scroller
+      data-dsr=""
       data-ssr=""
     >
       <template
@@ -14151,6 +14280,7 @@ slot {
 
 exports[`should render dsr component for PTableBody 1`] = `
 <p-table-body
+  data-dsr=""
   data-ssr=""
   role="rowgroup"
 >
@@ -14174,6 +14304,7 @@ exports[`should render dsr component for PTableBody 1`] = `
 
 exports[`should render dsr component for PTableCell 1`] = `
 <p-table-cell
+  data-dsr=""
   data-ssr=""
   role="cell"
 >
@@ -14201,6 +14332,7 @@ exports[`should render dsr component for PTableCell 1`] = `
 
 exports[`should render dsr component for PTableHead 1`] = `
 <p-table-head
+  data-dsr=""
   data-ssr=""
   role="rowgroup"
 >
@@ -14230,6 +14362,7 @@ exports[`should render dsr component for PTableHead 1`] = `
 
 exports[`should render dsr component for PTableHeadCell 1`] = `
 <p-table-head-cell
+  data-dsr=""
   data-ssr=""
   role="columnheader"
   scope="col"
@@ -14262,6 +14395,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
 
 exports[`should render dsr component for PTableHeadRow 1`] = `
 <p-table-head-row
+  data-dsr=""
   data-ssr=""
   role="row"
 >
@@ -14285,6 +14419,7 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 
 exports[`should render dsr component for PTableRow 1`] = `
 <p-table-row
+  data-dsr=""
   data-ssr=""
   role="row"
 >
@@ -14316,6 +14451,7 @@ exports[`should render dsr component for PTableRow 1`] = `
 
 exports[`should render dsr component for PTabs 1`] = `
 <p-tabs
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -14338,6 +14474,7 @@ exports[`should render dsr component for PTabs 1`] = `
     </style>
     <p-tabs-bar
       class="root"
+      data-dsr=""
       data-ssr=""
     >
       <template
@@ -14422,6 +14559,7 @@ exports[`should render dsr component for PTabs 1`] = `
         </style>
         <p-scroller
           class="scroller"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -14587,6 +14725,7 @@ slot {
 
 exports[`should render dsr component for PTabsBar 1`] = `
 <p-tabs-bar
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -14666,6 +14805,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
     </style>
     <p-scroller
       class="scroller"
+      data-dsr=""
       data-ssr=""
     >
       <template
@@ -14821,6 +14961,7 @@ slot {
 
 exports[`should render dsr component for PTabsItem 1`] = `
 <p-tabs-item
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -14855,6 +14996,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
 
 exports[`should render dsr component for PTag 1`] = `
 <p-tag
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -14929,6 +15071,7 @@ span {
 
 exports[`should render dsr component for PTagDismissible 1`] = `
 <p-tag-dismissible
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -15015,6 +15158,7 @@ button:focus-visible {
       >
         <p-icon
           aria-hidden="true"
+          data-dsr=""
           data-ssr=""
         >
           <template
@@ -15071,6 +15215,7 @@ img {
 
 exports[`should render dsr component for PText 1`] = `
 <p-text
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -15109,6 +15254,7 @@ exports[`should render dsr component for PText 1`] = `
 
 exports[`should render dsr component for PTextList 1`] = `
 <p-text-list
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -15149,6 +15295,7 @@ ol,ul {
 
 exports[`should render dsr component for PTextListItem 1`] = `
 <p-text-list-item
+  data-dsr=""
   data-ssr=""
   role="listitem"
 >
@@ -15188,6 +15335,7 @@ slot {
 
 exports[`should render dsr component for PTextarea 1`] = `
 <p-textarea
+  data-dsr=""
   data-ssr=""
 >
   <template
@@ -15331,6 +15479,7 @@ textarea:focus {
 
 exports[`should render dsr component for PToast 1`] = `
 <p-toast
+  data-dsr=""
   data-ssr=""
   role="status"
 >
@@ -15352,6 +15501,7 @@ exports[`should render dsr component for PToast 1`] = `
 
 exports[`should render dsr component for PWordmark 1`] = `
 <p-wordmark
+  data-dsr=""
   data-ssr=""
 >
   <template

@@ -46,7 +46,7 @@ export class Table {
   /** Emitted when the user clicks a sortable column header, carrying the new sort configuration in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEventDetail>;
 
-  public componentWillLoad(): void {
+  public componentDidLoad(): void {
     warnIfCaptionIsMissing(this.host, this.caption);
     this.host.shadowRoot.addEventListener(SORT_EVENT_NAME, (e: CustomEvent<TableUpdateEventDetail>) => {
       e.stopPropagation();
