@@ -22,7 +22,7 @@ jobs:
     #   options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: 'Initialize'
         uses: github/codeql-action/init@v4
         with:
