@@ -89,7 +89,6 @@ const porscheNextFamily: TailwindThemeVariable = {
     'Applies the **Porsche Next** font family along with fallback fonts. Automatically swaps to the locale-specific CJK stack (Simplified Chinese, Traditional Chinese, Japanese, Korean) via `:lang()` based on the nearest `lang` attribute.',
   comment:
     'This variable might be prefixed by Tailwind (e.g., --tw-font-porsche-next). By pointing it to our dynamic variable, we create a stable link.',
-  group: 'typography',
 };
 
 export const font = {
@@ -101,7 +100,6 @@ export const font = {
       classes: ['.font-sans'],
       description:
         'Aliases the Tailwind `--font-sans` variable to `--font-porsche-next`, so the built-in `.font-sans` utility automatically applies the Porsche Next typeface.',
-      group: 'typography',
     },
   },
   weight: {
@@ -110,21 +108,18 @@ export const font = {
       value: fontWeightNormal,
       classes: ['.font-normal'],
       description: 'Applies the **regular** font weight optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     semibold: {
       property: '--font-weight-semibold',
       value: fontWeightSemibold,
       classes: ['.font-semibold'],
       description: 'Applies the **semi-bold** font weight optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     bold: {
       property: '--font-weight-bold',
       value: fontWeightBold,
       classes: ['.font-bold'],
       description: 'Applies the **bold** font weight optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
   },
   lineHeight: {
@@ -133,7 +128,6 @@ export const font = {
       value: leadingNormal,
       classes: ['.leading-normal'],
       description: 'Applies a dynamic default line height specifically optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
   },
   size: {
@@ -142,70 +136,60 @@ export const font = {
       value: typescale2Xs,
       classes: ['.text-2xs'],
       description: 'Applies the **2x-small** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     xs: {
       property: '--text-xs',
       value: typescaleXs,
       classes: ['.text-xs'],
       description: 'Applies the **x-small** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     sm: {
       property: '--text-sm',
       value: typescaleSm,
       classes: ['.text-sm'],
       description: 'Applies the **small** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     md: {
       property: '--text-md',
       value: typescaleMd,
       classes: ['.text-md'],
       description: 'Applies the **medium** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     lg: {
       property: '--text-lg',
       value: typescaleLg,
       classes: ['.text-lg'],
       description: 'Applies the **large** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     xl: {
       property: '--text-xl',
       value: typescaleXl,
       classes: ['.text-xl'],
       description: 'Applies the **x-large** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     '2xl': {
       property: '--text-2xl',
       value: typescale2Xl,
       classes: ['.text-2xl'],
       description: 'Applies the **2x-large** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     '3xl': {
       property: '--text-3xl',
       value: typescale3Xl,
       classes: ['.text-3xl'],
       description: 'Applies the **3x-large** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     '4xl': {
       property: '--text-4xl',
       value: typescale4Xl,
       classes: ['.text-4xl'],
       description: 'Applies the **4x-large** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
     '5xl': {
       property: '--text-5xl',
       value: typescale5Xl,
       classes: ['.text-5xl'],
       description: 'Applies the **5x-large** font size and line height optimized for the Porsche Next typeface.',
-      group: 'typography',
     },
   },
 } satisfies TailwindMeta['font'];

@@ -45,21 +45,6 @@ export type TailwindCssMeta = {
   meta: CssNode[];
 };
 
-/** Doc grouping of a theme variable, mirroring the storefront API pages. */
-export type TailwindThemeVariableGroup =
-  | 'background'
-  | 'foreground'
-  | 'semantic'
-  | 'a11y'
-  | 'typography'
-  | 'breakpoint'
-  | 'fluid'
-  | 'static'
-  | 'border'
-  | 'blur'
-  | 'shadow'
-  | 'motion';
-
 /**
  * A documented Tailwind theme variable: a `description` + rendered `value`, extended with the
  * Tailwind-specific `property` (source for the `@theme` block) plus doc metadata. A `token` leaf
@@ -74,8 +59,6 @@ export type TailwindThemeVariable = {
   property: string;
   /** The Tailwind utility classes generated from this variable, e.g. `.bg-canvas`. */
   classes?: string[];
-  /** Grouping used to organize the documentation tables. */
-  group?: TailwindThemeVariableGroup;
   /** Optional leading comment rendered above the declaration in the `@theme` block. */
   comment?: string;
 };
@@ -114,6 +97,31 @@ export type TailwindBranch = TailwindNode | TailwindBranch[] | { [key: string]: 
  * deprecated aliases) lives in the composition layer (`css/index.ts`).
  */
 export type TailwindMeta = {
+  border: {
+    radius: {
+      xs: TailwindThemeVariable;
+      sm: TailwindThemeVariable;
+      md: TailwindThemeVariable;
+      lg: TailwindThemeVariable;
+      xl: TailwindThemeVariable;
+      '2xl': TailwindThemeVariable;
+      '3xl': TailwindThemeVariable;
+      '4xl': TailwindThemeVariable;
+      full: TailwindThemeVariable;
+    };
+    width: TailwindThemeVariable[];
+  };
+  blur: {
+    frosted: TailwindThemeVariable;
+  };
+  breakpoint: {
+    xs: TailwindThemeVariable;
+    sm: TailwindThemeVariable;
+    md: TailwindThemeVariable;
+    lg: TailwindThemeVariable;
+    xl: TailwindThemeVariable;
+    '2xl': TailwindThemeVariable;
+  };
   color: {
     a11y: {
       focus: TailwindThemeVariable;
@@ -183,6 +191,11 @@ export type TailwindMeta = {
       '5xl': TailwindThemeVariable;
     };
   };
+  shadow: {
+    sm: TailwindThemeVariable;
+    md: TailwindThemeVariable;
+    lg: TailwindThemeVariable;
+  };
   spacing: {
     fluid: {
       xs: TailwindThemeVariable;
@@ -202,36 +215,6 @@ export type TailwindMeta = {
       '2xl': TailwindThemeVariable;
     };
   };
-  border: {
-    radius: {
-      xs: TailwindThemeVariable;
-      sm: TailwindThemeVariable;
-      md: TailwindThemeVariable;
-      lg: TailwindThemeVariable;
-      xl: TailwindThemeVariable;
-      '2xl': TailwindThemeVariable;
-      '3xl': TailwindThemeVariable;
-      '4xl': TailwindThemeVariable;
-      full: TailwindThemeVariable;
-    };
-    width: TailwindThemeVariable[];
-  };
-  blur: {
-    frosted: TailwindThemeVariable;
-  };
-  shadow: {
-    sm: TailwindThemeVariable;
-    md: TailwindThemeVariable;
-    lg: TailwindThemeVariable;
-  };
-  breakpoint: {
-    xs: TailwindThemeVariable;
-    sm: TailwindThemeVariable;
-    md: TailwindThemeVariable;
-    lg: TailwindThemeVariable;
-    xl: TailwindThemeVariable;
-    '2xl': TailwindThemeVariable;
-  };
   motion: {
     duration: {
       sm: TailwindThemeVariable;
@@ -245,12 +228,12 @@ export type TailwindMeta = {
       out: TailwindThemeVariable;
     };
   };
+  gradient: TailwindUtility[];
   typography: {
     heading: TailwindUtility[];
     text: TailwindUtility[];
     display: TailwindUtility[];
   };
-  gradient: TailwindUtility[];
-  grid: TailwindUtility[];
   skeleton: TailwindUtility[];
+  grid: TailwindUtility[];
 };

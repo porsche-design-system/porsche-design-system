@@ -9,6 +9,5 @@ export const blur = {
     classes: ['.backdrop-blur-frosted', '.blur-frosted'],
     description:
       'Applies a **frosted** effect when used with `backdrop-filter` or `filter: blur()` when combined with a semi-transparent color.',
-    group: 'blur',
   },
 } satisfies TailwindMeta['blur'];

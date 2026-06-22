@@ -192,7 +192,7 @@ export type ScssMeta = {
     display: ScssMixin[];
   };
   skeleton: ScssMixin[];
+  grid: (ScssVariable | ScssMixin)[];
   focus: ScssMixin[];
   mediaQuery: ScssMixin[];
-  grid: (ScssVariable | ScssMixin)[];
 };

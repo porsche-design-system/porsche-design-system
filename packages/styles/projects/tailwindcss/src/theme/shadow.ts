@@ -9,21 +9,18 @@ export const shadow = {
     value: shadowSm,
     classes: ['.shadow-sm'],
     description: 'Applies a **small** `box-shadow`.',
-    group: 'shadow',
   },
   md: {
     property: '--shadow-md',
     value: shadowMd,
     classes: ['.shadow-md'],
     description: 'Applies a **medium** `box-shadow`.',
-    group: 'shadow',
   },
   lg: {
     property: '--shadow-lg',
     value: shadowLg,
     classes: ['.shadow-lg'],
     description: 'Applies a **large** `box-shadow`.',
-    group: 'shadow',
   },
 } satisfies TailwindMeta['shadow'];
 

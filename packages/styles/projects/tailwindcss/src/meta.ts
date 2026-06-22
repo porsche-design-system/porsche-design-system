@@ -20,24 +20,25 @@ import type { TailwindMeta } from './types';
  * shorthands, `gradient` / `grid` / `skeleton` are the remaining `@utility` groups. A leaf's kind is
  * recovered via `kindOf`. CSS-only plumbing (resets, defaults, layers, keyframes, deprecated
  * aliases) lives in `css/index.ts`, which assembles the stylesheet from these same object
- * references — so docs and generated CSS can never diverge. Key order is chosen so the skill's
- * `token` and `utility` views keep their documentation order (token domains first, then utilities).
+ * references — so docs and generated CSS can never diverge. Key order mirrors the scss `scssMeta`
+ * (and `tokensMeta`) verbatim, minus the `focus` / `mediaQuery` domains Tailwind doesn't ship, so the
+ * domains line up one-to-one across solutions for the shared skill / storefront renderer.
  */
 export const tailwindMeta = {
-  color,
-  font,
-  spacing,
   border,
   blur,
-  shadow,
   breakpoint,
+  color,
+  font,
+  shadow,
+  spacing,
   motion,
+  gradient: gradientUtilities,
   typography: {
     heading: headingUtilities,
     text: textUtilities,
     display: displayUtilities,
   },
-  gradient: gradientUtilities,
-  grid: gridUtilities,
   skeleton: skeletonUtilities,
+  grid: gridUtilities,
 } satisfies TailwindMeta;
