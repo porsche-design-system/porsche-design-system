@@ -1,9 +1,9 @@
 'use client';
 
 import type { Story } from '@/models/story';
-import type { ElementConfig } from '@/utils/generator/generator';
+import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
-export const tabsBarStoryGradient: Story<'p-tabs-bar'> = {
+export const tabsBarStoryLabelling: Story<'p-tabs-bar'> = {
   state: {
     properties: {
       activeTabIndex: 0,
@@ -16,7 +16,7 @@ export const tabsBarStoryGradient: Story<'p-tabs-bar'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-tabs-bar',
-      properties: properties,
+      properties,
       events: {
         // @ts-expect-error
         onUpdate: {
@@ -27,13 +27,13 @@ export const tabsBarStoryGradient: Story<'p-tabs-bar'> = {
         },
       },
       children: [
-        ...(new Array(20).fill(null).map((_, index) => ({
-          tag: 'button',
+        ...['Tab One', 'Tab Two', 'Tab Three'].map((tab) => ({
+          tag: 'button' as HTMLTagOrComponent,
           properties: {
             type: 'button',
           },
-          children: [`Tab ${index}`],
-        })) as ElementConfig<'button'>[]),
+          children: [tab],
+        })),
       ],
     },
   ],

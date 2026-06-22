@@ -1,3 +1,6 @@
+import * as a11yUtils from '../../utils/a11y/a11y';
+import * as attachComponentCssUtils from '../../utils/jss';
+import * as validatePropsUtils from '../../utils/validation/validateProps';
 import { TabsBar } from './tabs-bar';
 
 const initComponent = (): TabsBar => {
@@ -257,6 +260,42 @@ describe('resizeObserver', () => {
     component.disconnectedCallback();
 
     expect(mockDisconnect).toHaveBeenCalled();
+  });
+});
+
+describe('render', () => {
+  beforeEach(() => {
+    vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
+    vi.spyOn(attachComponentCssUtils, 'attachComponentCss').mockImplementation(() => {});
+  });
+
+  it('should call parseAndGetAriaAttributes() with aria prop when buttons are slotted', () => {
+    const spy = vi.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
+    const component = initComponent();
+    appendChildren(component.host, 'button');
+    component['defineTabs']();
+    component.aria = { 'aria-label': 'Product tabs', 'aria-description': 'Vehicle information sections' };
+
+    component.render();
+
+    expect(spy).toHaveBeenCalledWith({
+      'aria-label': 'Product tabs',
+      'aria-description': 'Vehicle information sections',
+    });
+    expect(component['isTabList']).toBe(true);
+  });
+
+  it('should not call parseAndGetAriaAttributes() with aria prop when links are slotted', () => {
+    const spy = vi.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
+    const component = initComponent();
+    appendChildren(component.host, 'a');
+    component['defineTabs']();
+    component.aria = { 'aria-label': 'Product tabs' };
+
+    component.render();
+
+    expect(spy).not.toHaveBeenCalled();
+    expect(component['isTabList']).toBe(false);
   });
 });
 

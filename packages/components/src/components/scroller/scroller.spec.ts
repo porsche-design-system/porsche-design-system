@@ -1,5 +1,8 @@
 import { vi } from 'vitest';
+import * as a11yUtils from '../../utils/a11y/a11y';
+import * as attachComponentCssUtils from '../../utils/jss';
 import * as jsonUtils from '../../utils/json';
+import * as validatePropsUtils from '../../utils/validation/validateProps';
 import { Scroller } from './scroller';
 
 const initComponent = (): Scroller => {
@@ -144,6 +147,31 @@ describe('initIntersectionObserver()', () => {
 
     expect(component['intersectionObserver']).toBeDefined();
     expect(component['intersectionObserver'].observe).toBeDefined();
+  });
+});
+
+describe('render', () => {
+  beforeEach(() => {
+    vi.spyOn(validatePropsUtils, 'validateProps').mockImplementation(() => {});
+    vi.spyOn(attachComponentCssUtils, 'attachComponentCss').mockImplementation(() => {});
+  });
+
+  it('should call parseAndGetAriaAttributes() with aria prop during render', () => {
+    const spy = vi.spyOn(a11yUtils, 'parseAndGetAriaAttributes');
+    const component = initComponent();
+    component.aria = {
+      role: 'tablist',
+      'aria-label': 'Section tabs',
+      'aria-description': 'Switch between content sections',
+    };
+
+    component.render();
+
+    expect(spy).toHaveBeenCalledWith({
+      role: 'tablist',
+      'aria-label': 'Section tabs',
+      'aria-description': 'Switch between content sections',
+    });
   });
 });
 

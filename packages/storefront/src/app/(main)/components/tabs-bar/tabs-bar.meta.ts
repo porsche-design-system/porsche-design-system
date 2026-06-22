@@ -4,6 +4,8 @@ import IntroductionDescription from '@/app/(main)/components/tabs-bar/configurat
 import { tabsBarStory } from '@/app/(main)/components/tabs-bar/configurator/story';
 import GradientDescription from '@/app/(main)/components/tabs-bar/examples/gradient/example.mdx';
 import { tabsBarStoryGradient } from '@/app/(main)/components/tabs-bar/examples/gradient/story';
+import LabellingDescription from '@/app/(main)/components/tabs-bar/examples/labelling/example.mdx';
+import { tabsBarStoryLabelling } from '@/app/(main)/components/tabs-bar/examples/labelling/story';
 import LinksDescription from '@/app/(main)/components/tabs-bar/examples/links/example.mdx';
 import { tabsBarStoryLinks } from '@/app/(main)/components/tabs-bar/examples/links/story';
 import Usage from '@/app/(main)/components/tabs-bar/usage/page.mdx';
@@ -26,6 +28,12 @@ export const tabsBarMeta = {
       name: 'Gradient color',
       description: GradientDescription,
       story: tabsBarStoryGradient,
+    },
+    labelling: {
+      kind: 'story',
+      name: 'Labelling',
+      description: LabellingDescription,
+      story: tabsBarStoryLabelling,
     },
   },
   usage: Usage,

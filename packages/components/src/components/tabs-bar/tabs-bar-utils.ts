@@ -1,5 +1,8 @@
 import { easeInOut } from '@porsche-design-system/tokens';
 
+export const TABS_BAR_ARIA_ATTRIBUTES = ['aria-label', 'aria-description'] as const;
+export type TabsBarAriaAttribute = (typeof TABS_BAR_ARIA_ATTRIBUTES)[number];
+
 export const TABS_BAR_BACKGROUNDS = ['canvas', 'surface', 'frosted', 'none'] as const;
 export type TabsBarBackground = (typeof TABS_BAR_BACKGROUNDS)[number];
 

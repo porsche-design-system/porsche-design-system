@@ -2,15 +2,13 @@
 
 import type { Story } from '@/models/story';
 
-const tabsAria = {
-  'aria-label': 'Some label for the tablist',
-  'aria-description': 'Some description for the tablist',
-};
-
-export const tabsStory: Story<'p-tabs'> = {
+export const tabsStoryLabelling: Story<'p-tabs'> = {
   state: {
     properties: {
-      aria: tabsAria,
+      aria: {
+        'aria-label': 'Some label for the tablist',
+        'aria-description': 'Some description for the tablist',
+      },
     },
   },
   generator: ({ properties } = {}) => [
