@@ -834,6 +834,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "aria": "aria",
   "background": "oneOf",
   "compact": "boolean",
   "size": "breakpoint",
@@ -844,6 +845,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs-bar > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "aria": "aria",
   "background": "oneOf",
   "compact": "boolean",
   "size": "breakpoint",
