@@ -1,26 +1,23 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { sentenceCase } from 'change-case';
-import type { TailwindThemeVariable, TailwindUtility } from '../src';
-import { tailwindMeta } from '../src';
+import type { TailwindBranch, TailwindNode, TailwindThemeVariable, TailwindUtility } from '../src';
+import { kindOf, type TailwindKind, tailwindMeta } from '../src';
 
 /**
- * Markdown serializer for the Tailwind styling solution — the `getLlmContext()`-style
- * companion to {@link getTailwindcssTheme}, both driven by the single source of truth
- * {@link tailwindMeta}. Produces a self-describing overview of the theme (a short intro,
- * a hand-authored "how to use" guide and a grouped reference of every documented theme
- * variable and utility) intended to be shipped next to the generated `index.css` and
- * composed into the Porsche Design System docs skill.
+ * Markdown serializer for the Tailwind styling solution — the `getLlmContext()`-style companion to
+ * {@link getTailwindcssTheme}, both driven by the single source of truth {@link tailwindMeta}.
+ * Produces a self-describing overview of the theme (a short intro, a hand-authored "how to use"
+ * guide and a grouped reference of every documented theme variable and utility) intended to be
+ * shipped next to the generated `index.css` and composed into the Porsche Design System docs skill.
  *
- * Only the documented surface is rendered — the shared design-token catalog and the six
- * documented `@utility` groups, mirroring exactly what the storefront API pages expose.
- * The solution-specific internals (resets, base colors, deprecated aliases, keyframes and
- * the outside-`@theme` layers) are intentionally omitted here; they remain available in
- * `index.css` for exact values. Token values are likewise left to `index.css` — this file
- * is the index, the stylesheet is the detail.
+ * The documented surface is split into a `token` view (the `## Theme variables` section) and a
+ * `utility` view (the `## Utilities` section) by partitioning the flat `tailwindMeta` catalog per
+ * leaf via {@link kindOf}. The solution-specific internals (resets, base colors, deprecated aliases,
+ * keyframes and the outside-`@theme` layers) are intentionally omitted here; they remain available
+ * in `index.css` for exact values. Token values are likewise left to `index.css` — this file is the
+ * index, the stylesheet is the detail.
  */
-
-const { theme, utilities } = tailwindMeta;
 
 const code = (value: string): string => `\`${value}\``;
 
@@ -52,21 +49,27 @@ const section = <T>(heading: string, items: T[], columns: Column<T>[]): string =
     items.map((item) => columns.map((c) => c.render(item)))
   )}`;
 
-/**
- * An ordered outline: each entry is either a flat group of items (a leaf section) or a
- * record of named sub-groups (rendered as `Parent — Child` sections). The theme outline is
- * derived directly from `tailwindMeta.theme` (see `themeOutline`); the utility outline stays
- * hand-curated because its grouping (the `Typography` super-group) is not a 1:1 mirror of the meta.
- */
+/** An ordered outline: each entry is a flat group (leaf section) or a record of named sub-groups (`Parent — Child` sections). */
 type Outline<T> = Record<string, T[] | Record<string, T[]>>;
 
-/** Render an outline to markdown sections, building each section's table from `columns`. */
+/** Normalize a documented group — a keyed record or an array — to a flat list. */
+const groupItems = <T>(group: T[] | Record<string, T>): T[] => (Array.isArray(group) ? group : Object.values(group));
+
+/** A documented leaf (theme variable / utility) carries a `property` or a `class`; a group/category is a keyed record or array of leaves. */
+const isLeaf = (node: unknown): boolean =>
+  typeof node === 'object' && node !== null && ('property' in node || 'class' in node);
+
+/** A flat group is an array of leaves or a record of leaves; a category is a record of such groups. */
+const isFlatGroup = (value: object): boolean => Array.isArray(value) || Object.values(value).every(isLeaf);
+
+/** Render an outline to markdown sections, building each section's table from `columns`. Empty groups are skipped. */
 const renderOutline = <T>(outline: Outline<T>, columns: Column<T>[]): string =>
   Object.entries(outline)
     .map(([parent, value]) =>
       Array.isArray(value)
         ? section(parent, value, columns)
         : Object.entries(value)
+            .filter(([, items]) => items.length > 0)
             .map(([child, items]) => section(`${parent} — ${child}`, items, columns))
             .join('\n\n')
     )
@@ -74,12 +77,17 @@ const renderOutline = <T>(outline: Outline<T>, columns: Column<T>[]): string =>
 
 /**
  * Derive a `## Contents` TOC line from an outline. `expandSubgroups` lists nested groups as
- * `Parent (Child / Child)` (utilities); when false only top-level names are listed (theme).
+ * `Parent (Child / Child)`; when false only top-level names are listed.
  */
 const tocLine = <T>(outline: Outline<T>, expandSubgroups: boolean): string =>
   Object.entries(outline)
     .map(([parent, value]) =>
-      expandSubgroups && !Array.isArray(value) ? `${parent} (${Object.keys(value).join(' / ')})` : parent
+      expandSubgroups && !Array.isArray(value)
+        ? `${parent} (${Object.entries(value)
+            .filter(([, items]) => items.length > 0)
+            .map(([child]) => child)
+            .join(' / ')})`
+        : parent
     )
     .join(', ');
 
@@ -91,30 +99,48 @@ const intro = readMarkdown('intro.md');
 
 const howToUse = readMarkdown('how-to-use.md');
 
-/** Normalize a documented group — a keyed record (e.g. a color/size group) or an array — to a flat list. */
-const groupItems = <T>(group: T[] | Record<string, T>): T[] => (Array.isArray(group) ? group : Object.values(group));
-
 /**
- * Derive an {@link Outline} from a documented catalog (`tailwindMeta.theme` / `.utilities`): each
- * top-level group becomes a section (arrays) or a parent with one sub-section per sub-group
- * (records), with headings sentence-cased from the keys (`lineHeight` → `Line height`). Source order
- * is followed verbatim (e.g. colors list `a11y` first), so the catalog's shape *is* the documentation outline.
+ * Derive an {@link Outline} from a catalog, sentence-casing keys (`lineHeight` → `Line height`) and
+ * following source order, so the catalog's shape *is* the documentation outline.
  */
 const deriveOutline = <T>(catalog: object): Outline<T> =>
   Object.fromEntries(
-    Object.entries(catalog).map(([key, value]: [string, T[] | Record<string, T[] | Record<string, T>>]) => [
-      sentenceCase(key),
-      Array.isArray(value)
-        ? value
-        : Object.fromEntries(
-            Object.entries(value).map(([subKey, subValue]) => [sentenceCase(subKey), groupItems(subValue)])
-          ),
-    ])
+    Object.entries(catalog).map(
+      ([key, value]: [string, T[] | Record<string, T> | Record<string, T[] | Record<string, T>>]) => [
+        sentenceCase(key),
+        isFlatGroup(value)
+          ? groupItems(value as T[] | Record<string, T>)
+          : Object.fromEntries(
+              Object.entries(value as Record<string, T[] | Record<string, T>>).map(([subKey, subValue]) => [
+                sentenceCase(subKey),
+                groupItems(subValue),
+              ])
+            ),
+      ]
+    )
   ) as Outline<T>;
 
-const themeOutline = deriveOutline<TailwindThemeVariable>(theme);
+/** Keep only the leaves of a given {@link TailwindKind}, pruning emptied groups. Returns `undefined` when nothing remains. */
+const pruneByKind = (node: TailwindBranch, kind: TailwindKind): TailwindBranch | undefined => {
+  if (isLeaf(node)) {
+    return kindOf(node as TailwindNode) === kind ? node : undefined;
+  }
+  const entries = (Array.isArray(node) ? node.map((n, i) => [i, n] as const) : Object.entries(node))
+    .map(([key, value]) => [key, pruneByKind(value as TailwindBranch, kind)] as const)
+    .filter((entry): entry is [string | number, TailwindBranch] => entry[1] !== undefined);
+  if (entries.length === 0) {
+    return undefined;
+  }
+  return Array.isArray(node) ? entries.map(([, value]) => value) : Object.fromEntries(entries);
+};
 
-const utilityOutline = deriveOutline<TailwindUtility>(utilities);
+/** Split the flat `tailwindMeta` catalog into a single-kind view, dropping domains/groups that end up empty. */
+const catalogByKind = (kind: TailwindKind): Record<string, TailwindBranch> =>
+  (pruneByKind(tailwindMeta as TailwindBranch, kind) ?? {}) as Record<string, TailwindBranch>;
+
+const themeOutline = deriveOutline<TailwindThemeVariable>(catalogByKind('token'));
+
+const utilityOutline = deriveOutline<TailwindUtility>(catalogByKind('utility'));
 
 const contents = `## Contents
 
@@ -130,4 +156,4 @@ const themeUtilities = `## Utilities\n\n${renderOutline(utilityOutline, utilityC
  * {@link tailwindMeta}; the build script is responsible for writing it to disk.
  */
 export const getTailwindcssSkill = (): string =>
-  [intro, howToUse, contents, themeVariables, themeUtilities].join('\n\n') + '\n';
+  `${[intro, howToUse, contents, themeVariables, themeUtilities].join('\n\n')}\n`;
