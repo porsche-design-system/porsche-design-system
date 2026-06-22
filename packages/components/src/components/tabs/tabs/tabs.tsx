@@ -1,5 +1,5 @@
 import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -13,9 +13,11 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './tabs-styles';
 import {
+  TABS_ARIA_ATTRIBUTES,
   TABS_BACKGROUNDS,
   TABS_SIZES,
   TABS_WEIGHTS,
+  type TabsAriaAttribute,
   type TabsBackground,
   type TabsSize,
   type TabsUpdateEventDetail,
@@ -28,6 +30,7 @@ const propTypes: PropTypes<typeof Tabs> = {
   background: AllowedTypes.oneOf<TabsBackground>(TABS_BACKGROUNDS),
   compact: AllowedTypes.boolean,
   weight: AllowedTypes.oneOf<TabsWeight>(TABS_WEIGHTS),
+  aria: AllowedTypes.aria<TabsAriaAttribute>(TABS_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -58,6 +61,9 @@ export class Tabs {
    * @deprecated Will be removed in the next major release.
    * Has no effect anymore. */
   @Prop() public weight?: TabsWeight = 'regular';
+
+  /** Sets ARIA attributes on the tablist, such as `aria-label` and `aria-description`. */
+  @Prop() public aria?: SelectedAriaAttributes<TabsAriaAttribute>;
 
   /** Emitted when the user switches to a different tab, carrying the new `activeTabIndex` in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<TabsUpdateEventDetail>;
@@ -106,6 +112,7 @@ export class Tabs {
           background={this.background}
           compact={this.compact}
           activeTabIndex={this.activeTabIndex}
+          aria={this.aria}
           onUpdate={this.onTabsBarUpdate}
         >
           {this.tabsItems.map((tab, index) => (

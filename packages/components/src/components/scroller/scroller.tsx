@@ -47,7 +47,7 @@ export class Scroller {
   /** Reduces the scroller's padding and the gap between slotted items for use in dense layouts. */
   @Prop() public compact?: boolean;
 
-  /** Sets the ARIA `role` attribute on the scroller's scroll container, useful for list-based navigation patterns. */
+  /** Sets ARIA role and attributes on the scroller's scroll container, useful for tablist navigation patterns and additional accessibility context. */
   @Prop() public aria?: SelectedAriaAttributes<ScrollerAriaAttribute>;
 
   /**
@@ -126,7 +126,7 @@ export class Scroller {
         <div
           class="scroll"
           ref={(el) => (this.scrollArea = el)}
-          role={(parseAndGetAriaAttributes(this.aria) as any)?.role || null}
+          {...parseAndGetAriaAttributes(this.aria)}
           tabIndex={this.isIndicatorPrevVisible || this.isIndicatorNextVisible ? 0 : null}
         >
           <span class="sentinel" ref={(el) => (this.sentinelLeft = el)} />

@@ -3,10 +3,16 @@
 import type { Story } from '@/models/story';
 import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
+const tabsBarAria = {
+  'aria-label': 'Some label for the tablist',
+  'aria-description': 'Some description for the tablist',
+};
+
 export const tabsBarStory: Story<'p-tabs-bar'> = {
   state: {
     properties: {
       activeTabIndex: 0,
+      aria: tabsBarAria,
     },
   },
   generator: ({ properties } = {}) => [
@@ -34,4 +40,3 @@ export const tabsBarStory: Story<'p-tabs-bar'> = {
     },
   ],
 };
-

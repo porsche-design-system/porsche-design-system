@@ -6,6 +6,10 @@ export const tabsStoryActiveTabIndex: Story<'p-tabs'> = {
   state: {
     properties: {
       activeTabIndex: 1,
+      aria: {
+        'aria-label': 'Some label for the tablist',
+        'aria-description': 'Some description for the tablist',
+      },
     },
   },
   generator: ({ properties } = {}) => [
@@ -32,4 +36,3 @@ export const tabsStoryActiveTabIndex: Story<'p-tabs'> = {
     },
   ],
 };
-
