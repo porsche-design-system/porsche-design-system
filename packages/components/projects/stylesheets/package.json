@@ -28,11 +28,12 @@
     "./dist/"
   ],
   "scripts": {
-    "build": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build:font-face && npm run build:index",
-    "build-prod": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build-prod:font-face && npm run build:index",
+    "build": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build:font-face && npm run build:index && npm run build:skill",
+    "build-prod": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:css && npm run build-prod:font-face && npm run build:index && npm run build:skill",
     "build:constants": "tsx scripts/buildCssVariableConstants.ts",
     "build:package": "rollup -c rollup.config.mjs",
     "build:css": "tsx scripts/buildStylesheetsCss.ts",
+    "build:skill": "tsx scripts/build-skill.ts",
     "build:font-face": "NODE_ENV=development tsx scripts/buildFontFaceCss.ts",
     "build-prod:font-face": "tsx scripts/buildFontFaceCss.ts",
     "build:index": "npm run build:index:default && npm run build:index:cdn",
