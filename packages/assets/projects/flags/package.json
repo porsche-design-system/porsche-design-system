@@ -41,7 +41,7 @@
     "gzip-size": "^7.0.0",
     "prettier": "^3.8.4",
     "publint": "^0.3.21",
-    "rollup": "^4.62.0",
+    "rollup": "^4.62.2",
     "rollup-plugin-dts": "^6.4.1",
     "svgo": "^4.0.1",
     "tsx": "^4.22.4",
