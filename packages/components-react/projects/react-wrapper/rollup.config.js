@@ -89,93 +89,10 @@ export default [
       generatePackageJson({
         inputFolder: 'projects/react-wrapper', // defaults to current working directory, which is the wrong one
         outputFolder: outputDir,
+        // `exports` and `style` are defined in the source package.json (single source of truth, like components-js),
+        // so they are kept here simply by spreading `...pkg`.
         baseContents: (pkg) => ({
           ...pkg,
-          exports: {
-            './package.json': './package.json',
-            '.': {
-              types: './esm/public-api.d.ts',
-              style: './stylesheets/index.css',
-              import: './esm/public-api.mjs',
-              default: './cjs/public-api.cjs',
-            },
-            './jsdom-polyfill': {
-              types: './jsdom-polyfill/index.d.ts',
-              default: './jsdom-polyfill/index.cjs',
-            },
-            './partials': {
-              types: './partials/esm/index.d.ts',
-              module: './partials/esm/index.mjs',
-              default: './partials/cjs/index.cjs',
-            },
-            './ssr': {
-              types: './ssr/esm/public-api.d.ts',
-              import: './ssr/esm/components-react/projects/react-ssr-wrapper/src/public-api.mjs',
-              default: './ssr/cjs/components-react/projects/react-ssr-wrapper/src/public-api.cjs',
-            },
-            './tokens': {
-              types: './tokens/esm/index.d.ts',
-              import: './tokens/esm/index.mjs',
-              default: './tokens/cjs/index.cjs',
-            },
-            './scss': {
-              sass: './scss/_index.scss',
-            },
-            './emotion': {
-              types: './emotion/esm/index.d.ts',
-              import: './emotion/esm/index.mjs',
-              default: './emotion/cjs/index.cjs',
-            },
-            './meta': {
-              types: './meta/esm/index.d.ts',
-              import: './meta/esm/index.mjs',
-              default: './meta/cjs/index.cjs',
-            },
-            './vanilla-extract': {
-              types: './vanilla-extract/esm/index.d.ts',
-              import: './vanilla-extract/esm/index.mjs',
-              default: './vanilla-extract/cjs/index.cjs',
-            },
-            './ag-grid': {
-              types: './ag-grid/esm/index.d.ts',
-              import: './ag-grid/esm/index.mjs',
-              default: './ag-grid/cjs/index.cjs',
-            },
-            './testing': {
-              types: './testing/index.d.ts',
-              default: './testing/index.cjs',
-            },
-            './styles': {
-              types: './emotion/esm/index.d.ts',
-              sass: './scss/_index.scss',
-              import: './emotion/esm/index.mjs',
-              default: './emotion/cjs/index.cjs',
-            },
-            './styles/vanilla-extract': {
-              types: './vanilla-extract/esm/index.d.ts',
-              import: './vanilla-extract/esm/index.mjs',
-              default: './vanilla-extract/cjs/index.cjs',
-            },
-            './tailwindcss': './tailwindcss/index.css',
-            './tailwindcss/index.css': './tailwindcss/index.css',
-            './tailwindcss/index': './tailwindcss/index.css',
-            './index.css': './stylesheets/index.css',
-            './index': './stylesheets/index.css',
-            './color-scheme.css': './stylesheets/color-scheme.css',
-            './color-scheme': './stylesheets/color-scheme.css',
-            './font-face.css': './stylesheets/font-face.css',
-            './font-face': './stylesheets/font-face.css',
-            './normalize.css': './stylesheets/normalize.css',
-            './normalize': './stylesheets/normalize.css',
-            './variables.css': './stylesheets/variables.css',
-            './variables': './stylesheets/variables.css',
-            './cn': './stylesheets/cn/index.css',
-            './cn/index.css': './stylesheets/cn/index.css',
-            './cn/index': './stylesheets/cn/index.css',
-            './cn/font-face.css': './stylesheets/cn/font-face.css',
-            './cn/font-face': './stylesheets/cn/font-face.css',
-          },
-          style: './stylesheets/index.css',
         }),
       }),
     ],

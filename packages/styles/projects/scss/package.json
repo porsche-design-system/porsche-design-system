@@ -36,18 +36,14 @@
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
-  },
-  "peerDependencies": {
-    "@biomejs/biome": "*",
-    "@rollup/plugin-typescript": "*",
-    "@types/node": "*",
-    "prettier": "*",
-    "rollup": "*",
-    "sass": "*",
-    "tsx": "*",
-    "typescript": "*",
-    "vitest": "*"
+    "@biomejs/biome": "^2.5.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "@types/node": "^25.9.3",
+    "prettier": "^3.8.4",
+    "sass": "^1.101.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   },
   "volta": {
     "extends": "../../../../package.json"
