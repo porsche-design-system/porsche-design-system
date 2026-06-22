@@ -36,7 +36,7 @@ export const metadata = {
 | ARIA                  | Usage                                                                           |
 | --------------------- | ------------------------------------------------------------------------------- |
 | `aria-label="STRING"` | Defines a string value that labels the tablist when used as a tabbed interface. |
-| `aria-description`    | Defines a string value that adds a more detailed description of the tablist.    |
+| `aria-description="STRING"`    | Defines a string value that adds a more detailed description of the tablist.    |
 
 The `aria` property applies only when the component is used as a **tabbed interface** with `<button>` children. It is
 not applied when the component is used as a **link list** with `<a>` children.
@@ -98,7 +98,7 @@ p-tabs-bar ~ [tabindex='0'][role='tabpanel'] {
 
 #### Route based navigation
 
-If the `p-tabs-bar` is used as a link list (navigation context), the semantic of that UI component changes completely -
+If the `p-tabs-bar` is used as a link list (navigation context), the semantics of that UI component changes completely -
 from a **tabbed interface** where content changes happen **on-site** to a **list of links** where content changes are
 **route-based**. Therefore, additional ARIA attributes **must not** be provided for tab identification. The `p-tabs-bar`
 component manages this also internally.
