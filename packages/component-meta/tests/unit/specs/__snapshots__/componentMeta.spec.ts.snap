@@ -8016,10 +8016,12 @@ exports[`should match snapshot 1`] = `
       },
       "aria": {
         "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
           "role": "string",
         },
         "defaultValue": null,
-        "description": "Sets the ARIA \`role\` attribute on the scroller's scroll container, useful for list-based navigation patterns.",
+        "description": "Sets ARIA role and attributes on the scroller's scroll container, useful for tablist navigation patterns and additional accessibility context.",
         "isAria": true,
         "type": "ScrollerAriaAttribute",
       },
@@ -9419,7 +9421,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "{ activeTabIndex: number }",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -9440,6 +9442,16 @@ exports[`should match snapshot 1`] = `
           "mutable": true,
         },
         "type": "number",
+      },
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets ARIA attributes on the tablist, such as \`aria-label\` and \`aria-description\`.",
+        "isAria": true,
+        "type": "TabsAriaAttribute",
       },
       "background": {
         "allowedValues": [
@@ -9502,7 +9514,7 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "{ activeTabIndex: number }",
       },
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
@@ -9520,6 +9532,16 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Sets the zero-based index of the currently active tab. Pass \`undefined\` to render all tabs in an unselected state.",
         "type": "number | undefined",
+      },
+      "aria": {
+        "allowedValues": {
+          "aria-description": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Sets ARIA attributes on the tablist, such as \`aria-label\` and \`aria-description\`.",
+        "isAria": true,
+        "type": "TabsBarAriaAttribute",
       },
       "background": {
         "allowedValues": [

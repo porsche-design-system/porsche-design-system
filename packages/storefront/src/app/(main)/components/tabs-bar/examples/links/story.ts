@@ -8,16 +8,14 @@ export const tabsBarStoryLinks: Story<'p-tabs-bar'> = {
     {
       tag: 'p-tabs-bar',
       children: [
-        ...['Tab One', 'Tab Two', 'Tab Three'].map((tab) => ({
+        ...['Page One', 'Page Two', 'Page Three'].map((page, index) => ({
           tag: 'a' as HTMLTagOrComponent,
           properties: {
-            href: 'https://porsche.com',
-            target: '_blank',
+            href: `https://porsche.com/page-${index + 1}`,
           },
-          children: [tab],
+          children: [page],
         })),
       ],
     },
   ],
 };
-
