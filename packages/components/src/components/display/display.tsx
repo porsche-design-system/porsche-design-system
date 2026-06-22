@@ -40,19 +40,19 @@ const propTypes: PropTypes<typeof Display> = {
 export class Display {
   @Element() public host!: HTMLElement;
 
-  /** Sets a heading tag, so it fits correctly within the outline of the page. */
+  /** Sets the HTML heading tag (h1–h6) for correct document outline placement. When omitted, the tag is inferred from `size`. */
   @Prop() public tag?: DisplayTag;
 
-  /** Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this. */
+  /** Sets the visual text size. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<DisplaySize> = 'large';
 
-  /** Text alignment of the component. */
+  /** Sets the horizontal text alignment (`start`, `center`, `end`, or `inherit`). */
   @Prop() public align?: DisplayAlign = 'start';
 
-  /** Basic text color variations. */
+  /** Sets the text color using PDS color tokens. */
   @Prop() public color?: DisplayColor = 'primary';
 
-  /** Adds an ellipsis to a single line of text if it overflows. */
+  /** Truncates the text with an ellipsis when it overflows the container on a single line. */
   @Prop() public ellipsis?: boolean = false;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

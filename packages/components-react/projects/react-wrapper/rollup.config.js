@@ -21,6 +21,7 @@ const external = [
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/tokens',
   '@porsche-design-system/components-js/emotion',
+  '@porsche-design-system/components-js/meta',
   '@porsche-design-system/components-js/ag-grid',
   '@porsche-design-system/components-js/scss',
   '@porsche-design-system/components-js/vanilla-extract',
@@ -88,90 +89,10 @@ export default [
       generatePackageJson({
         inputFolder: 'projects/react-wrapper', // defaults to current working directory, which is the wrong one
         outputFolder: outputDir,
+        // `exports` and `style` are defined in the source package.json (single source of truth, like components-js),
+        // so they are kept here simply by spreading `...pkg`.
         baseContents: (pkg) => ({
           ...pkg,
-          exports: {
-            './package.json': './package.json',
-            '.': {
-              types: './esm/public-api.d.ts',
-              style: './global-styles/index.css',
-              import: './esm/public-api.mjs',
-              default: './cjs/public-api.cjs',
-            },
-            './jsdom-polyfill': {
-              types: './jsdom-polyfill/index.d.ts',
-              default: './jsdom-polyfill/index.cjs',
-            },
-            './partials': {
-              types: './partials/esm/index.d.ts',
-              module: './partials/esm/index.mjs',
-              default: './partials/cjs/index.cjs',
-            },
-            './ssr': {
-              types: './ssr/esm/public-api.d.ts',
-              import: './ssr/esm/components-react/projects/react-ssr-wrapper/src/public-api.mjs',
-              default: './ssr/cjs/components-react/projects/react-ssr-wrapper/src/public-api.cjs',
-            },
-            './tokens': {
-              types: './tokens/esm/index.d.ts',
-              import: './tokens/esm/index.mjs',
-              default: './tokens/cjs/index.cjs',
-            },
-            './scss': {
-              sass: './scss/_index.scss',
-            },
-            './emotion': {
-              types: './emotion/esm/index.d.ts',
-              import: './emotion/esm/index.mjs',
-              default: './emotion/cjs/index.cjs',
-            },
-            './vanilla-extract': {
-              types: './vanilla-extract/esm/index.d.ts',
-              import: './vanilla-extract/esm/index.mjs',
-              default: './vanilla-extract/cjs/index.cjs',
-            },
-            './ag-grid': {
-              types: './ag-grid/esm/index.d.ts',
-              import: './ag-grid/esm/index.mjs',
-              default: './ag-grid/cjs/index.cjs',
-            },
-            './testing': {
-              types: './testing/index.d.ts',
-              default: './testing/index.cjs',
-            },
-            './styles': {
-              types: './emotion/esm/index.d.ts',
-              sass: './scss/_index.scss',
-              import: './emotion/esm/index.mjs',
-              default: './emotion/cjs/index.cjs',
-            },
-            './styles/vanilla-extract': {
-              types: './vanilla-extract/esm/index.d.ts',
-              import: './vanilla-extract/esm/index.mjs',
-              default: './vanilla-extract/cjs/index.cjs',
-            },
-            './tailwindcss': './tailwindcss/index.css',
-            './tailwindcss/index.css': './tailwindcss/index.css',
-            './tailwindcss/index': './tailwindcss/index.css',
-            './index.css': './global-styles/index.css',
-            './index': './global-styles/index.css',
-            './color-scheme.css': './global-styles/color-scheme.css',
-            './color-scheme': './global-styles/color-scheme.css',
-            './font-face.css': './global-styles/font-face.css',
-            './font-face': './global-styles/font-face.css',
-            './normalize.css': './global-styles/normalize.css',
-            './normalize': './global-styles/normalize.css',
-            './variables.css': './global-styles/variables.css',
-            './variables': './global-styles/variables.css',
-            './cn': './global-styles/cn/index.css',
-            './cn/index.css': './global-styles/cn/index.css',
-            './cn/index': './global-styles/cn/index.css',
-            './cn/font-face.css': './global-styles/cn/font-face.css',
-            './cn/font-face': './global-styles/cn/font-face.css',
-            './legacy-radius.css': './global-styles/legacy-radius.css',
-            './legacy-radius': './global-styles/legacy-radius.css',
-          },
-          style: './global-styles/index.css',
         }),
       }),
     ],
@@ -319,14 +240,33 @@ export default [
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
           sideEffects: false,
-          exports: {
-            // Default export (JS)
-            '.': {
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-          },
+        },
+      }),
+    ],
+  },
+  {
+    input: `${projectDir}/src/meta/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/meta/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/meta/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/meta`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
         },
       }),
     ],
@@ -363,13 +303,6 @@ export default [
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
           sideEffects: false,
-          exports: {
-            '.': {
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-          },
         },
       }),
     ],

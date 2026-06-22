@@ -1,0 +1,20 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { TailwindVariablesTable } from '@/components/common/TailwindVariablesTable';
+import { tailwindMeta } from '@porsche-design-system/tailwindcss';
+
+export const metadata = {
+  title: 'Tailwind CSS: Spacing - Porsche Design System',
+  description: 'Detailed API reference for the spacing style.',
+};
+
+# Spacing
+
+<TableOfContents headings={['Fluid', 'Static']} />
+
+## Fluid
+
+<TailwindVariablesTable variables={tailwindMeta.theme.spacing.fluid} />
+
+## Static
+
+<TailwindVariablesTable variables={tailwindMeta.theme.spacing.static} />

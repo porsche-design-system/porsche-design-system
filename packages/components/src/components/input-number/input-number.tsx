@@ -10,7 +10,7 @@ import {
   Prop,
   Watch,
 } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -18,6 +18,7 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   implicitSubmit,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -34,7 +35,7 @@ const propTypes: PropTypes<typeof InputNumber> = {
   description: AllowedTypes.string,
   placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   step: AllowedTypes.number,
   controls: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
@@ -67,63 +68,63 @@ const propTypes: PropTypes<typeof InputNumber> = {
 export class InputNumber {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the input field. */
   @Prop() public label?: string = '';
 
-  /** The granularity that the value must adhere to. */
+  /** Sets the stepping granularity — the value must be a multiple of this number. Also controls step button increment size. */
   @Prop() public step?: number = 1;
 
-  /** Supplementary text providing more context or explanation for the input. */
+  /** Sets a supplementary description displayed below the label to provide additional context. */
   @Prop() public description?: string = '';
 
-  /** Displays the input field in compact mode. */
+  /** Reduces the input height and padding for a more compact layout. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the input field, used when submitting the form data. */
+  /** Sets the name submitted with the form data to identify this field's value on the server. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The value of the number input. */
-  @Prop({ mutable: true }) public value?: string = '';
+  /** Sets the current numeric value of the field. */
+  @Prop({ mutable: true }) public value?: string | number | null = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code'). */
+  /** Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='postal-code'`). */
   @Prop() public autoComplete?: string;
 
-  /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
+  /** Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
+  /** Associates the field with a form element by its ID when the field is not nested directly inside it. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** The max value of the number input. */
+  /** Sets the maximum allowed numeric value. Values above this are invalid. */
   @Prop() public max?: number;
 
-  /** The min value of the number input. */
+  /** Sets the minimum allowed numeric value. Values below this are invalid. */
   @Prop() public min?: number;
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty. */
+  /** Sets placeholder text shown inside the field when it is empty, to hint at the expected format. */
   @Prop() public placeholder?: string = '';
 
-  /** Disables the input field. The value will not be submitted with the form. */
+  /** Disables the field, preventing all input. The value is not submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
+  /** Marks the field as required — form submission is blocked while this field is empty. */
   @Prop() public required?: boolean = false;
 
-  /** @experimental Shows a loading indicator. */
+  /** @experimental Disables the field and displays a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Indicates the validation or overall status of the input component. */
+  /** Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). */
   @Prop() public state?: InputNumberState = 'none';
 
-  /** Dynamic feedback text for validation or status. */
+  /** Sets the validation feedback message displayed below the field when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Show or hide the increment/decrement stepper controls. */
+  /** Shows increment/decrement spin buttons inside the field to adjust the numeric value by clicking. */
   @Prop() public controls?: boolean = false;
 
   /** Emitted when the number input loses focus after its value was changed. */
@@ -139,14 +140,18 @@ export class InputNumber {
 
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
-  private defaultValue: string;
+  private defaultValue: string | number | null;
+
+  // Native input.value is always a string; coerce number/null/undefined to mirror native behavior.
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
 
   @Watch('value')
-  public onValueChange(newValue: string): void {
-    if (this.inputElement && this.inputElement.value !== newValue) {
-      this.inputElement.value = newValue;
+  public onValueChange(): void {
+    if (this.inputElement && this.inputElement.value !== this.parsedValue) {
+      this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(newValue);
   }
 
   public connectedCallback(): void {
@@ -154,7 +159,7 @@ export class InputNumber {
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.value;
+    this.defaultValue = this.value; // preserve original type so reset can restore the consumer's exact input
     this.initialLoading = this.loading;
   }
 
@@ -173,7 +178,7 @@ export class InputNumber {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: string): void {
+  public formStateRestoreCallback(state: string | null): void {
     this.value = state;
   }
 
@@ -181,18 +186,12 @@ export class InputNumber {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
-  }
-
   public componentDidRender(): void {
-    if (!this.disabled && !this.readOnly) {
-      this.internals?.setValidity(
-        this.inputElement.validity,
-        this.inputElement.validationMessage || ' ',
-        this.inputElement
-      );
-    }
+    syncFormState(this.internals, this.inputElement, {
+      disabled: this.disabled,
+      readOnly: this.readOnly,
+      value: this.parsedValue,
+    });
   }
 
   public render(): JSX.Element {
@@ -231,7 +230,7 @@ export class InputNumber {
         placeholder={this.placeholder}
         max={this.max}
         min={this.min}
-        value={this.value}
+        value={this.parsedValue}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
         disabled={this.disabled}

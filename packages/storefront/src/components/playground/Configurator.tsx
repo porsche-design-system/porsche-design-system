@@ -33,7 +33,6 @@ export const Configurator = <T extends HTMLTagOrComponent>({
     createFrameworkMarkup(story.generator(story.state), story.state, storefrontColorScheme)
   );
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
   useEffect(() => {
     const generatedStory = story.generator(exampleState);
     setExampleElement(createElements(generatedStory, setExampleState));

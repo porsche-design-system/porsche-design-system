@@ -1,15 +1,15 @@
 import path from 'node:path';
-import fs from 'fs';
+import fs from 'node:fs';
 import * as prettier from 'prettier';
 import type React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
 type StylesheetViewerProps = {
-  file: 'color-scheme.css' | 'font-face.css' | 'legacy-radius.css' | 'normalize.css' | 'variables.css';
+  file: 'color-scheme.css' | 'font-face.css' | 'normalize.css' | 'variables.css';
 };
 
 // TODO: it would be better to resolve the path from npm package entrypoint
-const filePath = path.resolve(process.cwd(), '../components-react/dist/react-wrapper/global-styles');
+const filePath = path.resolve(process.cwd(), '../components-react/dist/react-wrapper/stylesheets');
 
 export const StylesheetViewer = async ({ file }: StylesheetViewerProps) => {
   const rawCss = fs.readFileSync(path.resolve(`${filePath}/${file}`), 'utf8');

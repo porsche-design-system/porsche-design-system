@@ -19,6 +19,10 @@ export const config: Config = {
           src: './favicon.ico',
           dest: 'favicon.ico',
         },
+        {
+          src: './debug.html',
+          dest: 'debug.html',
+        },
       ],
     },
   ],

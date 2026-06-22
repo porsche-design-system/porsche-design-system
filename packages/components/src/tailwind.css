@@ -1,4 +1,4 @@
-@import "@porsche-design-system/global-styles/index.css";
+@import "@porsche-design-system/stylesheets/index.css";
 @import "tailwindcss";
 @import "@porsche-design-system/tailwindcss";
 
@@ -8,11 +8,10 @@
   initial-value: 90deg;
 }
 
-/* biome-ignore lint/suspicious/noUnknownAtRules: Tailwind CSS */
 @theme {
   --animate-gradient:
-    gradient-rotate calc(var(--transition-duration-moderate) * 50) linear infinite, gradient-blur
-    calc(var(--transition-duration-moderate) * 25) var(--ease-in-out) infinite;
+    gradient-rotate calc(var(--transition-duration-moderate) * 50) linear infinite,
+    gradient-blur calc(var(--transition-duration-moderate) * 25) var(--ease-in-out) infinite;
 
   @keyframes gradient-rotate {
     from {

@@ -7,9 +7,17 @@ exports[`should call validateProps() with correct parameters via render for p-ac
   "compact": "boolean",
   "heading": "string",
   "headingTag": "oneOf",
+  "indent": "breakpoint",
   "open": "boolean",
   "size": "breakpoint",
   "sticky": "boolean",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-ai-tag > propTypes with ValidatorFunctions 1`] = `
+{
+  "locale": "oneOf",
+  "variant": "oneOf",
 }
 `;
 
@@ -209,6 +217,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
   "background": "oneOf",
   "disableBackdropClick": "boolean",
   "footerBehavior": "oneOf",
+  "fullscreen": "breakpoint",
   "open": "boolean",
   "position": "oneOf",
 }
@@ -267,7 +276,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -292,7 +301,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -314,7 +323,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -338,7 +347,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -361,7 +370,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "toggle": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -386,7 +395,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -410,7 +419,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -434,7 +443,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "spellCheck": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -456,7 +465,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -480,7 +489,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -502,7 +511,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "state": "oneOf",
   "step": "number",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -609,7 +618,7 @@ exports[`should call validateProps() with correct parameters via render for p-mu
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "value": "array",
+  "value": "oneOf",
 }
 `;
 
@@ -745,14 +754,14 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
 exports[`should call validateProps() with correct parameters via render for p-select-option > propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -904,7 +913,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "rows": "number",
   "spellCheck": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
   "wrap": "oneOf",
 }
 `;

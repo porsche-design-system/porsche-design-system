@@ -1,4 +1,3 @@
-/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import type { HTMLElementOrShadowRoot } from './dom-types';
 
 // prettier-ignore

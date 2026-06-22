@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { PSelect, PSelectOption, PText, type SelectChangeEventDetail } from '@porsche-design-system/components-vue';
+import { PSelect, PSelectOption, type PSelectProps, PText, type SelectChangeEventDetail } from '@porsche-design-system/components-vue';
 import { computed, ref } from 'vue';
 
-const selectedValue = ref<string>('a');
+const selectedValue = ref<PSelectProps['value']>('a');
 
 const onChange = (e: CustomEvent<SelectChangeEventDetail>) => {
   selectedValue.value = e.detail.value;

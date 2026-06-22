@@ -5,10 +5,11 @@ import {
   PInputText,
   PMultiSelect,
   PMultiSelectOption,
+  type PMultiSelectProps,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const selectedValues = ref<string[]>([]);
+const selectedValues = ref<PMultiSelectProps['value']>([]);
 const inputValue = ref('');
 const optionCount = ref(3);
 
@@ -38,18 +39,21 @@ const onRemoveOption = () => {
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col gap-fluid-sm">
     <PInputText label="Value:" name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1,2" />
-    <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
-    <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
+    <div class="flex gap-fluid-sm">
+      <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
+      <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
+    </div>
 
     <PMultiSelect :name="'options'" :label="'Some Label'" :value="selectedValues" @change="onChange">
       <PMultiSelectOption v-for="idx in optionCount" :key="idx" :value="`${idx}`">
         Option {{ idx }}
       </PMultiSelectOption>
     </PMultiSelect>
-
-    <PButton type="button" @click="onAddOption" :compact="true">Add option</PButton>
-    <PButton type="button" @click="onRemoveOption" :compact="true">Remove last option</PButton>
+    <div class="flex gap-fluid-sm">
+      <PButton type="button" @click="onAddOption" :compact="true">Add option</PButton>
+      <PButton type="button" @click="onRemoveOption" :compact="true">Remove last option</PButton>
+    </div>
   </div>
 </template>

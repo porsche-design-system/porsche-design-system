@@ -18,7 +18,7 @@ const propTypes: PropTypes<typeof TextList> = {
 export class TextList {
   @Element() public host!: HTMLElement;
 
-  /** The list style type. */
+  /** Sets the list type to either `unordered` (bulleted) or `ordered` (numbered), controlling the rendered HTML element (`ul` vs `ol`). */
   @Prop() public type?: TextListType = 'unordered';
 
   public render(): JSX.Element {

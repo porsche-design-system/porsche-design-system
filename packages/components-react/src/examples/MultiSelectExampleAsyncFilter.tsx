@@ -6,6 +6,7 @@ import {
   PInputSearch,
   PMultiSelect,
   PMultiSelectOption,
+  type PMultiSelectProps,
 } from '@porsche-design-system/components-react';
 import { useCallback, useRef, useState } from 'react';
 
@@ -18,7 +19,7 @@ const useDebounce = <T,>(callback: (value: T) => void, delay = 400) => {
 };
 
 export const MultiSelectExampleAsyncFilter = () => {
-  const [value, setValue] = useState<string[]>([]);
+  const [value, setValue] = useState<PMultiSelectProps['value']>([]);
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
 
   const [searchValue, setSearchValue] = useState('');

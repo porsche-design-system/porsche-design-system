@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { PCheckbox } from '@porsche-design-system/components-vue';
+import { PCheckbox, type PCheckboxProps } from '@porsche-design-system/components-vue';
 import { reactive } from 'vue';
 
-const form = reactive({
+const form = reactive<{ myCheckbox: PCheckboxProps['checked'] }>({
   myCheckbox: false,
 });
 

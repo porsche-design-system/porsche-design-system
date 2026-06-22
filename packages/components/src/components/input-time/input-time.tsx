@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,6 +8,7 @@ import {
   hasPropValueChanged,
   hasShowPickerSupport,
   implicitSubmit,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -23,7 +24,7 @@ const propTypes: PropTypes<typeof InputTime> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.null]),
   step: AllowedTypes.number,
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -55,80 +56,84 @@ const propTypes: PropTypes<typeof InputTime> = {
 export class InputTime {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the input field. */
   @Prop() public label?: string = '';
 
-  /** Defines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds). */
+  /** Sets the stepping interval in seconds. Use `60` for minute-level selection, `1` to also expose seconds. */
   @Prop() public step?: number = 60;
 
-  /** Supplementary text providing more context or explanation for the input. */
+  /** Sets a supplementary description displayed below the label to provide additional context. */
   @Prop() public description?: string = '';
 
-  /** Displays the input field in compact mode. */
+  /** Reduces the input height and padding for a more compact layout. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the input field, used when submitting the form data. */
+  /** Sets the name submitted with the form data to identify this field's value on the server. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00'). */
-  @Prop({ mutable: true }) public value?: string = '';
+  /** Sets the current time value in `hh:mm` or `hh:mm:ss` format (e.g. `14:00`). */
+  @Prop({ mutable: true }) public value?: string | null = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */
+  /** Provides the browser with a time autofill hint. */
   @Prop() public autoComplete?: string;
 
-  /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
+  /** Makes the field read-only — the value is displayed but cannot be changed. The value is still submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
+  /** Associates the field with a form element by its ID when the field is not nested directly inside it. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30'). */
+  /** Sets the latest selectable time in `hh:mm` or `hh:mm:ss` format. Times after this are disabled in the picker. */
   @Prop() public max?: string;
 
-  /** Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00'). */
+  /** Sets the earliest selectable time in `hh:mm` or `hh:mm:ss` format. Times before this are disabled in the picker. */
   @Prop() public min?: string;
 
-  /** Disables the input field. The value will not be submitted with the form. */
+  /** Disables the field, preventing time selection. The value is not submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
+  /** Marks the field as required — form submission is blocked while no time is selected. */
   @Prop() public required?: boolean = false;
 
-  /** @experimental Shows a loading indicator. */
+  /** @experimental Disables the field and displays a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Indicates the validation or overall status of the input component. */
+  /** Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). */
   @Prop() public state?: InputTimeState = 'none';
 
-  /** Dynamic feedback text for validation or status. */
+  /** Sets the validation feedback message displayed below the field when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Emitted when the time input loses focus after its value was changed. */
+  /** Emitted when the input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTimeChangeEventDetail>;
 
-  /** Emitted when the time input has lost focus. */
+  /** Emitted when the input loses focus, regardless of whether the value changed. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputTimeBlurEventDetail>;
 
-  /** Emitted when the value has been changed as a direct result of a user action. */
+  /** Emitted on every value change as the user interacts with the time picker. */
   @Event({ bubbles: true }) public input: EventEmitter<InputTimeInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
-  private defaultValue: string;
+  private defaultValue: string | null;
+
+  // Native input.value is always a string; coerce null/undefined to mirror native behavior.
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
 
   @Watch('value')
-  public onValueChange(newValue: string): void {
-    if (this.inputElement && this.inputElement.value !== newValue) {
-      this.inputElement.value = newValue;
+  public onValueChange(): void {
+    if (this.inputElement && this.inputElement.value !== this.parsedValue) {
+      this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(newValue);
   }
 
   public connectedCallback(): void {
@@ -136,7 +141,7 @@ export class InputTime {
   }
 
   public componentWillLoad(): void {
-    this.defaultValue = this.value;
+    this.defaultValue = this.value; // preserve original type so reset can restore the consumer's exact input
     this.initialLoading = this.loading;
   }
 
@@ -155,7 +160,7 @@ export class InputTime {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: string): void {
+  public formStateRestoreCallback(state: string | null): void {
     this.value = state;
   }
 
@@ -163,18 +168,12 @@ export class InputTime {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
-  }
-
   public componentDidRender(): void {
-    if (!this.disabled && !this.readOnly) {
-      this.internals?.setValidity(
-        this.inputElement.validity,
-        this.inputElement.validationMessage || ' ',
-        this.inputElement
-      );
-    }
+    syncFormState(this.internals, this.inputElement, {
+      disabled: this.disabled,
+      readOnly: this.readOnly,
+      value: this.parsedValue,
+    });
   }
 
   public render(): JSX.Element {
@@ -210,7 +209,7 @@ export class InputTime {
         required={this.required}
         max={this.max}
         min={this.min}
-        value={this.value}
+        value={this.parsedValue}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
         disabled={this.disabled}

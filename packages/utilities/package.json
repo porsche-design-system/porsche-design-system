@@ -11,9 +11,6 @@
     "test:unit:ag-grid": "npm run test --workspace=@porsche-design-system/ag-grid",
     "clean:build": "npm run clean:build --workspace=@porsche-design-system/ag-grid"
   },
-  "devDependencies": {
-    "react-scripts": "^5.0.1"
-  },
   "volta": {
     "extends": "../../package.json"
   }

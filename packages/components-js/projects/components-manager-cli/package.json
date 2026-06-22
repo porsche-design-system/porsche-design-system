@@ -17,11 +17,11 @@
   "dependencies": {
     "@porsche-design-system/components-manager-core": "0.0.0"
   },
-  "peerDependencies": {
-    "fast-glob": "*",
-    "vitest": "*",
-    "typescript": "*",
-    "webpack": "*"
+  "devDependencies": {
+    "fast-glob": "^3.3.3",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9",
+    "webpack": "^5.107.2"
   },
   "volta": {
     "extends": "../../../../package.json"

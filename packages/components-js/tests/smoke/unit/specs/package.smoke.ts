@@ -1,8 +1,8 @@
 import { createRequire } from 'node:module';
 import { type Analysis, checkPackage, createPackageFromTarballData, type Problem } from '@arethetypeswrong/core';
 import { execSync } from 'child_process';
-import * as fs from 'fs';
 import { sync as globbySync } from 'fast-glob';
+import * as fs from 'fs';
 import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 import componentsJsPackageJson from '../../../../dist/components-wrapper/package.json';
@@ -37,6 +37,11 @@ const packageJsonExports = {
     import: './emotion/esm/index.mjs',
     default: './emotion/cjs/index.cjs',
   },
+  './meta': {
+    types: './meta/esm/index.d.ts',
+    import: './meta/esm/index.mjs',
+    default: './meta/cjs/index.cjs',
+  },
   './vanilla-extract': {
     types: './vanilla-extract/esm/index.d.ts',
     import: './vanilla-extract/esm/index.mjs',
@@ -60,23 +65,21 @@ const packageJsonExports = {
   './tailwindcss': './tailwindcss/index.css',
   './tailwindcss/index.css': './tailwindcss/index.css',
   './tailwindcss/index': './tailwindcss/index.css',
-  './index.css': './global-styles/index.css',
-  './index': './global-styles/index.css',
-  './color-scheme.css': './global-styles/color-scheme.css',
-  './color-scheme': './global-styles/color-scheme.css',
-  './font-face.css': './global-styles/font-face.css',
-  './font-face': './global-styles/font-face.css',
-  './normalize.css': './global-styles/normalize.css',
-  './normalize': './global-styles/normalize.css',
-  './variables.css': './global-styles/variables.css',
-  './variables': './global-styles/variables.css',
-  './cn': './global-styles/cn/index.css',
-  './cn/index.css': './global-styles/cn/index.css',
-  './cn/index': './global-styles/cn/index.css',
-  './cn/font-face.css': './global-styles/cn/font-face.css',
-  './cn/font-face': './global-styles/cn/font-face.css',
-  './legacy-radius.css': './global-styles/legacy-radius.css',
-  './legacy-radius': './global-styles/legacy-radius.css',
+  './index.css': './stylesheets/index.css',
+  './index': './stylesheets/index.css',
+  './color-scheme.css': './stylesheets/color-scheme.css',
+  './color-scheme': './stylesheets/color-scheme.css',
+  './font-face.css': './stylesheets/font-face.css',
+  './font-face': './stylesheets/font-face.css',
+  './normalize.css': './stylesheets/normalize.css',
+  './normalize': './stylesheets/normalize.css',
+  './variables.css': './stylesheets/variables.css',
+  './variables': './stylesheets/variables.css',
+  './cn': './stylesheets/cn/index.css',
+  './cn/index.css': './stylesheets/cn/index.css',
+  './cn/index': './stylesheets/cn/index.css',
+  './cn/font-face.css': './stylesheets/cn/font-face.css',
+  './cn/font-face': './stylesheets/cn/font-face.css',
 };
 
 describe('package content', () => {
@@ -93,6 +96,18 @@ describe('package content', () => {
   }
 });
 
+describe('stylesheets folder content', () => {
+  const componentsJsFilePath = nodeRequire.resolve('@porsche-design-system/components-js');
+  const componentsJsPackageDir = path.resolve(componentsJsFilePath, '../..');
+  const stylesheetsDir = path.resolve(componentsJsPackageDir, 'stylesheets');
+  const stylesheetsFiles = globbySync(`${stylesheetsDir}/**/*`);
+
+  test('should only expose .css files and no internal meta (js/cjs/mjs/d.ts) or package.json', () => {
+    const nonCssFiles = stylesheetsFiles.filter((filePath) => !filePath.endsWith('.css'));
+    expect(nonCssFiles).toEqual([]);
+  });
+});
+
 describe('package.json files', () => {
   const packageNames = [
     '@porsche-design-system/components-js',
@@ -102,99 +117,94 @@ describe('package.json files', () => {
   ] as const;
 
   for (const packageName of packageNames) {
-    test(
-      `should have correct entrypoints for "${packageName}"`,
-      { timeout: 30000 },
-      async () => {
-        const pathName = path
-          .resolve(nodeRequire.resolve(packageName), '../package.json')
-          .replace(/(wrapper\/).+\/(package\.json)/, '$1$2'); // get rid of nested folders if there are any
-        const pkgJson = JSON.parse(fs.readFileSync(pathName, 'utf8'));
+    test(`should have correct entrypoints for "${packageName}"`, { timeout: 30000 }, async () => {
+      const pathName = path
+        .resolve(nodeRequire.resolve(packageName), '../package.json')
+        .replace(/(wrapper\/).+\/(package\.json)/, '$1$2'); // get rid of nested folders if there are any
+      const pkgJson = JSON.parse(fs.readFileSync(pathName, 'utf8'));
 
-        // adjust and ignore stuff that is ssr related
-        delete pkgJson.exports['./ssr'];
+      // adjust and ignore stuff that is ssr related
+      delete pkgJson.exports['./ssr'];
 
-        // map `public-api` filenames to `index` because `components-js` calls it `index`
-        pkgJson.exports['.'] = Object.fromEntries(
-          Object.entries<string>(pkgJson.exports['.']).map(([key, val]) => [key, val.replace('public-api', 'index')])
-        );
+      // map `public-api` filenames to `index` because `components-js` calls it `index`
+      pkgJson.exports['.'] = Object.fromEntries(
+        Object.entries<string>(pkgJson.exports['.']).map(([key, val]) => [key, val.replace('public-api', 'index')])
+      );
 
-        // check that version and exports match
-        expect(pkgJson.version).toBe(componentsJsPackageJson.version);
+      // check that version and exports match
+      expect(pkgJson.version).toBe(componentsJsPackageJson.version);
 
-        if (packageName === '@porsche-design-system/components-angular') {
-          expect(pkgJson.exports).toEqual({
-            '.': {
-              default: './fesm2022/porsche-design-system-components-angular.mjs',
-              types: './types/porsche-design-system-components-angular.d.ts',
-            },
-            './package.json': {
-              default: './package.json',
-            },
-            ...packageJsonExports,
-          });
-        } else {
-          expect(pkgJson.exports).toEqual({
-            './package.json': './package.json',
-            '.': {
-              style: './global-styles/index.css',
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-            ...packageJsonExports,
-          });
-        }
-
-        // create temporary local package tgz package
-        // inspired by https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/9c6db02a531a797d2ce7b197bca94f82a50064e7/packages/cli/src/index.ts#L152-L155
-        const tarBall = path.resolve(
-          pathName,
-          '..',
-          execSync('npm pack', { cwd: path.dirname(pathName), encoding: 'utf8', stdio: 'pipe' }).trim()
-        );
-
-        const file = fs.readFileSync(tarBall);
-        const data = new Uint8Array(file);
-        const result = (await checkPackage(await createPackageFromTarballData(data), {})) as Analysis;
-
-        // delete temporary package again
-        fs.rmSync(tarBall);
-
-        // ignore FalseCJS issues for certain entrypoints where both
-        // esm and cjs build need their own typings
-        // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseCJS.md
-        const relevantProblems = result.problems.filter(
-          (prob: Problem) =>
-            !(
-              prob.kind === 'FalseCJS' ||
-              prob.resolutionKind === 'node10' ||
-              ('entrypoint' in prob &&
-                (prob.entrypoint === './ag-grid' ||
-                  prob.entrypoint === '.' ||
-                  prob.entrypoint === './scss' ||
-                  prob.entrypoint === './emotion' ||
-                  prob.entrypoint === './vanilla-extract' ||
-                  prob.entrypoint === './ssr' ||
-                  prob.entrypoint === './styles' ||
-                  prob.entrypoint === './styles/vanilla-extract' ||
-                  prob.entrypoint.includes('tailwindcss') ||
-                  prob.entrypoint.includes('color-scheme') ||
-                  prob.entrypoint.includes('font-face') ||
-                  prob.entrypoint.includes('normalize') ||
-                  prob.entrypoint.includes('legacy-radius') ||
-                  prob.entrypoint.includes('variables') ||
-                  prob.entrypoint.includes('cn') ||
-                  prob.entrypoint.includes('index')))
-            )
-        );
-
-        if (relevantProblems.length) {
-          console.error(relevantProblems);
-        }
-
-        expect(relevantProblems).toHaveLength(0);
+      if (packageName === '@porsche-design-system/components-angular') {
+        expect(pkgJson.exports).toEqual({
+          '.': {
+            default: './fesm2022/porsche-design-system-components-angular.mjs',
+            types: './types/porsche-design-system-components-angular.d.ts',
+          },
+          './package.json': {
+            default: './package.json',
+          },
+          ...packageJsonExports,
+        });
+      } else {
+        expect(pkgJson.exports).toEqual({
+          './package.json': './package.json',
+          '.': {
+            style: './stylesheets/index.css',
+            types: './esm/index.d.ts',
+            import: './esm/index.mjs',
+            default: './cjs/index.cjs',
+          },
+          ...packageJsonExports,
+        });
       }
-    );
+
+      // create temporary local package tgz package
+      // inspired by https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/9c6db02a531a797d2ce7b197bca94f82a50064e7/packages/cli/src/index.ts#L152-L155
+      const tarBall = path.resolve(
+        pathName,
+        '..',
+        execSync('npm pack', { cwd: path.dirname(pathName), encoding: 'utf8', stdio: 'pipe' }).trim()
+      );
+
+      const file = fs.readFileSync(tarBall);
+      const data = new Uint8Array(file);
+      const result = (await checkPackage(await createPackageFromTarballData(data), {})) as Analysis;
+
+      // delete temporary package again
+      fs.rmSync(tarBall);
+
+      // ignore FalseCJS issues for certain entrypoints where both
+      // esm and cjs build need their own typings
+      // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseCJS.md
+      const relevantProblems = result.problems.filter(
+        (prob: Problem) =>
+          !(
+            prob.kind === 'FalseCJS' ||
+            prob.resolutionKind === 'node10' ||
+            ('entrypoint' in prob &&
+              (prob.entrypoint === './ag-grid' ||
+                prob.entrypoint === '.' ||
+                prob.entrypoint === './scss' ||
+                prob.entrypoint === './emotion' ||
+                prob.entrypoint === './vanilla-extract' ||
+                prob.entrypoint === './ssr' ||
+                prob.entrypoint === './styles' ||
+                prob.entrypoint === './styles/vanilla-extract' ||
+                prob.entrypoint.includes('tailwindcss') ||
+                prob.entrypoint.includes('color-scheme') ||
+                prob.entrypoint.includes('font-face') ||
+                prob.entrypoint.includes('normalize') ||
+                prob.entrypoint.includes('variables') ||
+                prob.entrypoint.includes('cn') ||
+                prob.entrypoint.includes('index')))
+          )
+      );
+
+      if (relevantProblems.length) {
+        console.error(relevantProblems);
+      }
+
+      expect(relevantProblems).toHaveLength(0);
+    });
   }
 });

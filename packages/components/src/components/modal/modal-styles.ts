@@ -1,10 +1,13 @@
 import { gridExtendedOffsetBase } from '@porsche-design-system/emotion';
+import { ref } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
+import type { BreakpointCustomizable } from '../../types';
+import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   dialogBorderRadius,
   dialogGridJssStyle,
@@ -14,15 +17,13 @@ import {
   dialogPaddingTop,
   getDialogColorJssStyle,
   getDialogDismissButtonJssStyle,
-  getDialogJssStyle,
   getDialogTransitionJssStyle,
+  getFunctionalComponentDialogBaseStyles,
   getScrollerJssStyle,
   getSlotFooterJssStyle,
   getSlotJssStyle,
   getSlotMainJssStyle,
-} from '../../styles/dialog-styles';
-import type { BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
+} from '../common/dialog-base/dialog-base-styles';
 import type { ModalBackdrop, ModalBackground } from './modal-utils';
 
 /**
@@ -82,7 +83,7 @@ export const getComponentCss = (
           '&[name=footer]': getSlotFooterJssStyle(),
         }),
       },
-      dialog: getDialogJssStyle(isOpen, backdrop),
+      ...getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
     },
     scroller: getScrollerJssStyle('fullscreen'),
     modal: {
@@ -98,14 +99,16 @@ export const getComponentCss = (
               placeSelf: 'stretch',
               margin: 0,
               borderRadius: 0,
+              clipPath: 'none', // fullscreen has square corners, so disable corner clipping
             }
           : {
-              width: `var(${cssVariableWidth},auto)`,
+              width: ref(cssVariableWidth, 'auto'),
               minWidth: '276px', // to be in sync with "Porsche Grid" on viewport = 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
               maxWidth: '1535.5px', // to be in sync with "Porsche Grid" on viewport >= 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
               placeSelf: 'center',
-              margin: `var(${cssVariableSpacingTop},clamp(16px, 10vh, 192px)) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},clamp(16px, 10vh, 192px))`, // horizontal margin is needed to ensure modal is placed on "Porsche Grid" when slotted content is wider than the viewport width
+              margin: `${ref(cssVariableSpacingTop, 'clamp(16px, 10vh, 192px)')} ${gridExtendedOffsetBase} ${ref(cssVariableSpacingBottom, 'clamp(16px, 10vh, 192px)')}`, // horizontal margin is needed to ensure modal is placed on "Porsche Grid" when slotted content is wider than the viewport width
               borderRadius: dialogBorderRadius,
+              clipPath: `inset(0 round ${dialogBorderRadius})`, // non-fullscreen has rounded corners, so clip slotted content to them
               ...forcedColorsMediaQuery({
                 outline: '2px solid CanvasText',
                 outlineOffset: '-2px',

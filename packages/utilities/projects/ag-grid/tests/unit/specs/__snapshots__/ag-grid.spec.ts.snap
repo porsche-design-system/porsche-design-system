@@ -45,7 +45,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-chart-menu-label-color: var(--ag-inherited-chart-menu-label-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 80%));
 	--ag-chart-menu-panel-width: var(--ag-inherited-chart-menu-panel-width, 260px);
 	--ag-checkbox-border-radius: var(--ag-inherited-checkbox-border-radius, 4px);
-	--ag-checkbox-border-width: var(--ag-inherited-checkbox-border-width, 2px);
+	--ag-checkbox-border-width: var(--ag-inherited-checkbox-border-width, 1px);
 	--ag-checkbox-checked-background-color: var(--ag-inherited-checkbox-checked-background-color, light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154)));
 	--ag-checkbox-checked-border-color: var(--ag-inherited-checkbox-checked-border-color, light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302)));
 	--ag-checkbox-checked-hover-background-color: var(--ag-inherited-checkbox-checked-hover-background-color, light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154)));
@@ -178,6 +178,14 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-menu-shadow: var(--ag-inherited-menu-shadow, var(--ag-popup-shadow));
 	--ag-menu-text-color: var(--ag-inherited-menu-text-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 95%));
 	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228)));
+	--ag-note-indicator-color: var(--ag-inherited-note-indicator-color, var(--ag-accent-color));
+	--ag-note-indicator-size: var(--ag-inherited-note-indicator-size, 8px);
+	--ag-note-popup-background-color: var(--ag-inherited-note-popup-background-color, var(--ag-menu-background-color));
+	--ag-note-popup-border: var(--ag-inherited-note-popup-border, var(--ag-dialog-border));
+	--ag-note-popup-input-background-color: var(--ag-inherited-note-popup-input-background-color, var(--ag-input-background-color));
+	--ag-note-popup-input-text-color: var(--ag-inherited-note-popup-input-text-color, var(--ag-input-text-color));
+	--ag-note-popup-padding: var(--ag-inherited-note-popup-padding, calc( var(--ag-spacing)   *  0.5));
+	--ag-note-popup-text-color: var(--ag-inherited-note-popup-text-color, color-mix(in srgb, transparent, var(--ag-menu-text-color) 75%));
 	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, light-dark(hsl(240 10% 95%),hsl(240 2% 10%)));
 	--ag-pagination-panel-height: var(--ag-inherited-pagination-panel-height, calc(max( var(--ag-row-height) , 22px)));
 	--ag-panel-background-color: var(--ag-inherited-panel-background-color, var(--ag-background-color));
@@ -286,6 +294,9 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-toggle-button-switch-inset: var(--ag-inherited-toggle-button-switch-inset, 3px);
 	--ag-toggle-button-width: var(--ag-inherited-toggle-button-width, 48px);
 	--ag-tool-panel-separator-border: var(--ag-inherited-tool-panel-separator-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-toolbar-background-color: var(--ag-inherited-toolbar-background-color, var(--ag-header-background-color));
+	--ag-toolbar-separator-border: var(--ag-inherited-toolbar-separator-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-toolbar-text-color: var(--ag-inherited-toolbar-text-color, var(--ag-header-text-color));
 	--ag-tooltip-background-color: var(--ag-inherited-tooltip-background-color, var(--ag-chrome-background-color));
 	--ag-tooltip-border: var(--ag-inherited-tooltip-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-tooltip-error-background-color: var(--ag-inherited-tooltip-error-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 10%));
@@ -299,6 +310,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-widget-container-vertical-padding: var(--ag-inherited-widget-container-vertical-padding, calc( var(--ag-spacing)   *  1.5));
 	--ag-widget-horizontal-spacing: var(--ag-inherited-widget-horizontal-spacing, calc( var(--ag-spacing)   *  1.5));
 	--ag-widget-vertical-spacing: var(--ag-inherited-widget-vertical-spacing, var(--ag-spacing));
+	--ag-wrapper-background-color: var(--ag-inherited-wrapper-background-color, var(--ag-background-color));
 	--ag-wrapper-border: var(--ag-inherited-wrapper-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-wrapper-border-radius: var(--ag-inherited-wrapper-border-radius, 6px);
 :where([data-ag-theme-mode="light"]) & {
@@ -532,6 +544,14 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-menu-shadow: var(--ag-menu-shadow);
 	--ag-inherited-menu-text-color: var(--ag-menu-text-color);
 	--ag-inherited-modal-overlay-background-color: var(--ag-modal-overlay-background-color);
+	--ag-inherited-note-indicator-color: var(--ag-note-indicator-color);
+	--ag-inherited-note-indicator-size: var(--ag-note-indicator-size);
+	--ag-inherited-note-popup-background-color: var(--ag-note-popup-background-color);
+	--ag-inherited-note-popup-border: var(--ag-note-popup-border);
+	--ag-inherited-note-popup-input-background-color: var(--ag-note-popup-input-background-color);
+	--ag-inherited-note-popup-input-text-color: var(--ag-note-popup-input-text-color);
+	--ag-inherited-note-popup-padding: var(--ag-note-popup-padding);
+	--ag-inherited-note-popup-text-color: var(--ag-note-popup-text-color);
 	--ag-inherited-odd-row-background-color: var(--ag-odd-row-background-color);
 	--ag-inherited-pagination-panel-height: var(--ag-pagination-panel-height);
 	--ag-inherited-panel-background-color: var(--ag-panel-background-color);
@@ -640,6 +660,9 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-toggle-button-switch-inset: var(--ag-toggle-button-switch-inset);
 	--ag-inherited-toggle-button-width: var(--ag-toggle-button-width);
 	--ag-inherited-tool-panel-separator-border: var(--ag-tool-panel-separator-border);
+	--ag-inherited-toolbar-background-color: var(--ag-toolbar-background-color);
+	--ag-inherited-toolbar-separator-border: var(--ag-toolbar-separator-border);
+	--ag-inherited-toolbar-text-color: var(--ag-toolbar-text-color);
 	--ag-inherited-tooltip-background-color: var(--ag-tooltip-background-color);
 	--ag-inherited-tooltip-border: var(--ag-tooltip-border);
 	--ag-inherited-tooltip-error-background-color: var(--ag-tooltip-error-background-color);
@@ -653,6 +676,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-widget-container-vertical-padding: var(--ag-widget-container-vertical-padding);
 	--ag-inherited-widget-horizontal-spacing: var(--ag-widget-horizontal-spacing);
 	--ag-inherited-widget-vertical-spacing: var(--ag-widget-vertical-spacing);
+	--ag-inherited-wrapper-background-color: var(--ag-wrapper-background-color);
 	--ag-inherited-wrapper-border: var(--ag-wrapper-border);
 	--ag-inherited-wrapper-border-radius: var(--ag-wrapper-border-radius);
 :where([data-ag-theme-mode="light"]) & {
@@ -909,7 +933,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     },
     "chartMenuPanelWidth": 260,
     "checkboxBorderRadius": "4px",
-    "checkboxBorderWidth": 2,
+    "checkboxBorderWidth": 1,
     "checkboxCheckedBackgroundColor": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
     "checkboxCheckedBorderColor": "light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))",
     "checkboxCheckedHoverBackgroundColor": "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))",
@@ -1244,6 +1268,29 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "foregroundColor",
     },
     "modalOverlayBackgroundColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
+    "noteIndicatorColor": {
+      "ref": "accentColor",
+    },
+    "noteIndicatorSize": "8px",
+    "notePopupBackgroundColor": {
+      "ref": "menuBackgroundColor",
+    },
+    "notePopupBorder": {
+      "ref": "dialogBorder",
+    },
+    "notePopupInputBackgroundColor": {
+      "ref": "inputBackgroundColor",
+    },
+    "notePopupInputTextColor": {
+      "ref": "inputTextColor",
+    },
+    "notePopupPadding": {
+      "calc": "spacing * 0.5",
+    },
+    "notePopupTextColor": {
+      "mix": 0.75,
+      "ref": "menuTextColor",
+    },
     "oddRowBackgroundColor": "light-dark(hsl(240 10% 95%),hsl(240 2% 10%))",
     "paginationPanelHeight": {
       "calc": "max(rowHeight, 22px)",
@@ -1476,6 +1523,13 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "toggleButtonSwitchInset": 3,
     "toggleButtonWidth": 48,
     "toolPanelSeparatorBorder": true,
+    "toolbarBackgroundColor": {
+      "ref": "headerBackgroundColor",
+    },
+    "toolbarSeparatorBorder": true,
+    "toolbarTextColor": {
+      "ref": "headerTextColor",
+    },
     "tooltipBackgroundColor": {
       "ref": "chromeBackgroundColor",
     },
@@ -1512,6 +1566,9 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     },
     "widgetVerticalSpacing": {
       "ref": "spacing",
+    },
+    "wrapperBackgroundColor": {
+      "ref": "backgroundColor",
     },
     "wrapperBorder": true,
     "wrapperBorderRadius": "6px",

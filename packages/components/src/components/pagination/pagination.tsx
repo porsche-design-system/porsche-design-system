@@ -42,19 +42,19 @@ const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
 export class Pagination {
   @Element() public host!: HTMLElement;
 
-  /** The total count of items. */
-  @Prop() public totalItemsCount: number = 1; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  /** Sets the total number of items in the dataset, used to calculate the number of pages. */
+  @Prop() public totalItemsCount: number = 1;
 
-  /** The total count of items which should be shown per page.  */
-  @Prop() public itemsPerPage: number = 1; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  /** Sets the number of items displayed per page, used together with `totalItemsCount` to compute the page count. */
+  @Prop() public itemsPerPage: number = 1;
 
-  /** Index of the currently active page. */
+  /** Sets the one-based index of the currently active page; update this prop to navigate programmatically. */
   @Prop({ mutable: true }) public activePage?: number = 1;
 
-  /** Show or hide the button to jump to the last page. */
+  /** Shows or hides the button that jumps directly to the last page of the pagination. */
   @Prop() public showLastPage?: boolean = true;
 
-  /** Override the default wordings that are used for aria-labels on the next/prev and page buttons. */
+  /** Overrides the default ARIA label strings used for the previous, next, and page number buttons to support localisation. */
   @Prop() public intl?: PaginationInternationalization = {
     root: 'Pagination',
     prev: 'Previous page',
@@ -62,7 +62,7 @@ export class Pagination {
     page: 'Page',
   };
 
-  /** Emitted when the page changes. */
+  /** Emitted when the user navigates to a different page, carrying the new `activePage` index in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<PaginationUpdateEventDetail>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

@@ -72,31 +72,39 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
   };
 
   const renderInput = (propName: keyof ElementConfig<T>['properties'], propMeta: PropMeta) => {
-    if (propMeta.allowedValues === 'boolean') {
+    // Components whose value prop accepts `string | null` (e.g. p-input-url) or
+    // `string | number | null` (e.g. p-input-text) are emitted by generateComponentMeta as
+    // `allowedValues: ['string', 'null']` or `['string', 'number', 'null']`. For configurator UX
+    // we want to treat these exactly like a plain string prop and render a text input, not a
+    // select. Use a strict check so unrelated patterns such as p-segmented-control's
+    // `['string', 'number']` keep their existing array-branch handling.
+    const isNullableStringAllowedValues =
+      Array.isArray(propMeta.allowedValues) &&
+      propMeta.allowedValues.includes('string' as never) &&
+      propMeta.allowedValues.includes('null' as never) &&
+      propMeta.allowedValues.every((value) => value === 'string' || value === 'number' || value === 'null');
+
+    const allowedValues = isNullableStringAllowedValues ? 'string' : propMeta.allowedValues;
+
+    if (allowedValues === 'boolean') {
       return (
         <div key={propName} className="flex gap-static-xs">
-          <PSwitch
-            checked={getCurrentValue(propName, propMeta) === 'true'}
-            compact={true}
-            onUpdate={(e) => onUpdateProps(propName, e.detail.checked)}
-          >
-            <span className="inline-flex gap-static-xs">
+          <span className="inline-flex gap-static-xs">
+            <PSwitch
+              checked={getCurrentValue(propName, propMeta) === 'true'}
+              compact={true}
+              onUpdate={(e) => onUpdateProps(propName, e.detail.checked)}
+            >
               {capitalCase(propName)}
-              <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
-              {getFlags(propMeta)}
-              <ResetButton
-                propName={propName}
-                configuredProps={configuredProps}
-                defaultProps={defaultProps}
-                onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-              />
-            </span>
-          </PSwitch>
+            </PSwitch>
+            <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
+            {getFlags(propMeta)}
+          </span>
         </div>
       );
     }
 
-    if (propMeta.allowedValues === 'string') {
+    if (allowedValues === 'string') {
       return (
         <PInputText
           name={propName}
@@ -118,18 +126,12 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
-            <ResetButton
-              propName={propName}
-              configuredProps={configuredProps}
-              defaultProps={defaultProps}
-              onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-            />
           </span>
         </PInputText>
       );
     }
 
-    if (propMeta.allowedValues === 'number') {
+    if (allowedValues === 'number') {
       return (
         <PInputNumber
           key={propName}
@@ -149,38 +151,26 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
-            <ResetButton
-              propName={propName}
-              configuredProps={configuredProps}
-              defaultProps={defaultProps}
-              onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-            />
           </span>
         </PInputNumber>
       );
     }
 
-    if (Array.isArray(propMeta.allowedValues)) {
+    if (Array.isArray(allowedValues)) {
       return (
         <PSelect
           key={propName}
           name={propName}
-          filter={propMeta.allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop)).length > 10}
+          filter={allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop)).length > 10}
           value={getCurrentValue(propName, propMeta)}
           compact={true}
           required={propMeta.isRequired}
-          onChange={(e) => onUpdateProps(propName, e.detail.value)}
+          onChange={(e) => onUpdateProps(propName, e.detail.value as string | number | undefined)}
         >
           <span slot="label">{capitalCase(propName)}</span>
           <span slot="label-after" className="inline-flex gap-static-xs">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
-            <ResetButton
-              propName={propName}
-              configuredProps={configuredProps}
-              defaultProps={defaultProps}
-              onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
-            />
           </span>
           {renderOptions(propName, propMeta)}
         </PSelect>
@@ -285,38 +275,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           renderInput(propName as keyof ElementConfig<T>['properties'], propMeta)
         )}
       </div>
-    </>
-  );
-};
-
-type ResetButtonProps<T extends ConfiguratorTagNames> = {
-  propName: keyof ElementConfig<T>['properties'];
-  configuredProps: ElementConfig<T>['properties'];
-  defaultProps: ElementConfig<HTMLTagOrComponent>['properties'];
-  onReset: (propName: keyof ElementConfig<T>['properties']) => void;
-};
-
-const ResetButton = <T extends ConfiguratorTagNames>({
-  propName,
-  configuredProps,
-  defaultProps,
-  onReset,
-}: ResetButtonProps<T>) => {
-  return (
-    <>
-      {configuredProps?.[propName] !== defaultProps?.[propName] && (
-        <PTag variant="secondary" compact={true}>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              onReset(propName);
-            }}
-          >
-            Reset
-          </button>
-        </PTag>
-      )}
     </>
   );
 };

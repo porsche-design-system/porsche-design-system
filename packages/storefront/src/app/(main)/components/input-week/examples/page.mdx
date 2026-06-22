@@ -1,0 +1,26 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { inputWeekMeta } from '@/app/(main)/components/input-week/input-week.meta';
+
+export const metadata = {
+  title: 'Input Week - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Input Week component.',
+};
+
+# Input Week <ComponentStatus tagName="p-input-week"></ComponentStatus>
+
+<TableOfContents headings={[inputWeekMeta.examples.form.name, inputWeekMeta.examples.slots.name]} />
+
+## {inputWeekMeta.examples.form.name}
+
+<inputWeekMeta.examples.form.description />
+
+<ComponentExample codeSample={inputWeekMeta.examples.form.example} />
+
+## {inputWeekMeta.examples.slots.name}
+
+<inputWeekMeta.examples.slots.description />
+
+<ComponentStory story={inputWeekMeta.examples.slots.story} />

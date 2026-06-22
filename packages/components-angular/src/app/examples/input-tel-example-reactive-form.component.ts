@@ -27,7 +27,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>Disabled: <span data-field="disabled">{{ form.controls.myInputTel.disabled }}</span></div>
     <div>Value: <span data-field="value">{{ form.controls.myInputTel.value }}</span></div>
     <div>Valid: <span data-field="valid">{{ form.controls.myInputTel.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
+    <div [@if]="submittedValue !== null">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -35,17 +35,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class InputTelExampleReactiveFormComponent {
   form = new FormGroup({
-    myInputTel: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myInputTel: new FormControl<string | null>(null, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: string | null = null;
 
   setValue(): void {
     this.form.controls.myInputTel.setValue('0123 4567890');
   }
 
   resetValue(): void {
-    this.form.controls.myInputTel.reset('');
+    this.form.controls.myInputTel.reset(null);
   }
 
   toggleDisabled(): void {

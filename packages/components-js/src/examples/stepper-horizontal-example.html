@@ -1,25 +1,25 @@
-<p-stepper-horizontal>
-  <p-stepper-horizontal-item state="current">Enter personal details</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item>Confirm e-mail</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item>Set password</p-stepper-horizontal-item>
-</p-stepper-horizontal>
+<div class="flex flex-col gap-fluid-sm">
+  <p-stepper-horizontal>
+    <p-stepper-horizontal-item state="current">Enter personal details</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Confirm e-mail</p-stepper-horizontal-item>
+    <p-stepper-horizontal-item>Set password</p-stepper-horizontal-item>
+  </p-stepper-horizontal>
 
-<div id="step-content-0">
-  <p-text>A form with personal details could be displayed here.</p-text>
-</div>
-<div id="step-content-1" hidden>
-  <p-text>A form with a verification code input field could be displayed here.</p-text>
-</div>
-<div id="step-content-2" hidden>
-  <p-text>A form with a password input field could be displayed here.</p-text>
-</div>
+  <div id="step-content-0">
+    <p-text>A form with personal details could be displayed here.</p-text>
+  </div>
+  <div id="step-content-1" hidden>
+    <p-text>A form with a verification code input field could be displayed here.</p-text>
+  </div>
+  <div id="step-content-2" hidden>
+    <p-text>A form with a password input field could be displayed here.</p-text>
+  </div>
 
-<p-button-group>
-  <p-button type="button" id="prev-button" icon="arrow-head-left" variant="secondary" disabled="true"
-    >Previous Step</p-button
-  >
-  <p-button type="button" id="next-button" variant="primary">Next Step</p-button>
-</p-button-group>
+  <div class="flex gap-fluid-sm">
+    <p-button type="button" id="prev-button" icon="arrow-head-left" variant="secondary" disabled="true">Previous Step</p-button>
+    <p-button type="button" id="next-button" variant="primary">Next Step</p-button>
+  </div>
+</div>
 
 <script>
   const stepper = document.querySelector('p-stepper-horizontal');

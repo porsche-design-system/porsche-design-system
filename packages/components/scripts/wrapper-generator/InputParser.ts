@@ -1,7 +1,7 @@
-import { isDeprecatedComponent } from '@porsche-design-system/component-meta/src/utils';
+import { isDeprecatedComponent } from '@porsche-design-system/component-meta/utils';
 import type { TagName } from '@porsche-design-system/shared';
-import * as fs from 'fs';
 import { sync as globbySync } from 'fast-glob';
+import * as fs from 'fs';
 import * as path from 'path';
 
 const ROOT_DIR = path.normalize(__dirname + '/../../');
@@ -137,7 +137,7 @@ export class InputParser {
       .replace(/.*interface EventEmitter(\s|\S)*?}\n/, '')
       // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`, `const ROLLUP_REPLACE_VERSION: string;` and `const ROLLUP_REPLACE_CDN_BASE_URL: string;`
       .replace(
-        /declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n\tconst ROLLUP_REPLACE_VERSION: string;\n\tconst ROLLUP_REPLACE_CDN_BASE_URL: string;\n\t\/\/ eslint-disable-next-line @typescript-eslint\/consistent-type-definitions\n\tinterface Document {\n\t\tporscheDesignSystem: PorscheDesignSystem;\n\t}\n}\n/,
+        /declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n\tconst ROLLUP_REPLACE_VERSION: string;\n\tconst ROLLUP_REPLACE_CDN_BASE_URL: string;\n(?:\t\/\/ eslint-disable-next-line @typescript-eslint\/consistent-type-definitions\n)?\tinterface Document {\n\t\tporscheDesignSystem: PorscheDesignSystem;\n\t}\n}\n/,
         ''
       )
       // remove global declaration of `window.PORSCHE_DESIGN_SYSTEM_CDN` and `window.PORSCHE_DESIGN_SYSTEM_CDN_URL`

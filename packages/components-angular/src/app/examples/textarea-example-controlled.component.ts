@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule, type TextareaInputEventDetail } from '@porsche-design-system/components-angular';
+import {
+  type PTextareaProps,
+  PorscheDesignSystemModule,
+  type TextareaInputEventDetail,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-textarea-example-controlled',
@@ -12,7 +16,7 @@ import { PorscheDesignSystemModule, type TextareaInputEventDetail } from '@porsc
   imports: [PorscheDesignSystemModule],
 })
 export class TextareaExampleControlledComponent {
-  value: string = '';
+  value: PTextareaProps['value'] = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }

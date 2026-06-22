@@ -1,0 +1,30 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { TailwindVariablesTable } from '@/components/common/TailwindVariablesTable';
+import { tailwindMeta } from '@porsche-design-system/tailwindcss';
+
+export const metadata = {
+  title: 'Tailwind CSS: Color - Porsche Design System',
+  description: 'Detailed API reference for the Color style.',
+};
+
+# Color
+
+<TableOfContents headings={[]} />
+
+## Variables
+
+### Background
+
+<TailwindVariablesTable variables={tailwindMeta.theme.color.background} showColorSwatch={true} />
+
+### Foreground
+
+<TailwindVariablesTable variables={tailwindMeta.theme.color.foreground} showColorSwatch={true} />
+
+### Semantic
+
+<TailwindVariablesTable variables={tailwindMeta.theme.color.semantic} showColorSwatch={true} />
+
+### A11y
+
+<TailwindVariablesTable variables={tailwindMeta.theme.color.a11y} showColorSwatch={true} />

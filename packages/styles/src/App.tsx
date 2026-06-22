@@ -14,7 +14,7 @@ export function App() {
   return (
     <EmotionThemeProvider theme={emotionTheme}>
       <Global styles={colorSchemeStyles} />
-      <header className="flex gap-fluid-sm p-static-md">
+      <header className="tw:flex tw:gap-fluid-sm tw:p-static-md">
         <RouteSelect />
         <ThemeSelect value={theme} onChange={(e) => setTheme(e.target.value as LightDarkTheme)} />
       </header>

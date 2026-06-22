@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { fieldsetMeta } from '@/app/(main)/components/fieldset/fieldset.meta';
+
+export const metadata = {
+  title: 'Fieldset - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Fieldset component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
+
+<fieldsetMeta.introduction />
+
+<Configurator
+  tagName="p-fieldset"
+  story={fieldsetMeta.configurator.story}
+  slotStories={fieldsetMeta.configurator.slotStories}
+/>

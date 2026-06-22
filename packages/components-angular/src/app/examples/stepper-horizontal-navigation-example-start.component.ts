@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 export type LabelState = {
@@ -18,16 +18,15 @@ export const startSteps: LabelState[] = [
   template: `
     <p-stepper-horizontal size="small">
       @for (step of steps; track step) {
-        <p-stepper-horizontal-item [state]="getState(step)">{{
-          step.label
-        }}</p-stepper-horizontal-item>
+        <p-stepper-horizontal-item [state]="getState(step)">{{ step.label }}</p-stepper-horizontal-item>
       }
     </p-stepper-horizontal>
     <p-link-pure>
       <a routerLink="/stepper-horizontal-navigation-example-second-component">to second page</a>
     </p-link-pure>
-    `,
+  `,
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [PorscheDesignSystemModule],
 })
 export class StepperHorizontalNavigationExampleStartComponent {

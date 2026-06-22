@@ -19,7 +19,6 @@ type ConfigureCssVariablesProps<T extends ConfiguratorTagNames> = {
 export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
   componentCssVariables,
   configuredCssVariables,
-  defaultCssVariables,
   onUpdateCssVariables,
 }: ConfigureCssVariablesProps<T>) => {
   const styleObject = Object.entries(configuredCssVariables ?? {}).find(([key]) => key === 'style')?.[1];
@@ -64,14 +63,6 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
               <span slot="label-after" className="inline-flex gap-static-xs">
                 <PPopover onClick={(e) => e.preventDefault()}>{cssVariableMeta.description}</PPopover>
                 {getFlags(cssVariableMeta)}
-                {/* TODO: Fix typing */}
-                {cssVariables[cssVariableName] !== (defaultCssVariables as any)?.[cssVariableName] && (
-                  <PTag variant="secondary" compact={true}>
-                    <button type="button" onClick={() => onUpdateCssVariables(cssVariableName, undefined)}>
-                      Reset
-                    </button>
-                  </PTag>
-                )}
               </span>
             </PInputText>
           ))}

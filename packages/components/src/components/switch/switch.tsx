@@ -35,28 +35,28 @@ const propTypes: PropTypes<typeof Switch> = {
 export class Switch {
   @Element() public host!: HTMLElement;
 
-  /** Aligns the label. */
+  /** Sets the position of the slotted label relative to the switch toggle, either before (`start`) or after (`end`) it. Supports responsive breakpoint values. */
   @Prop() public alignLabel?: BreakpointCustomizable<SwitchAlignLabel> = 'end';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Stretches the contents to max available space. */
+  /** Expands the space between the switch toggle and its label to fill the full available width of the container. Supports responsive breakpoint values. */
   @Prop() public stretch?: BreakpointCustomizable<boolean> = false;
 
-  /** Visualize the switch with on/off status. */
+  /** Reflects the switch's current on/off state and allows setting the initial checked value when the component first renders. */
   @Prop() public checked?: boolean = false;
 
-  /** Disables the switch. No events will be triggered while disabled state is active. */
+  /** Prevents user interaction with the switch and blocks all click and keyboard events while it is disabled. */
   @Prop() public disabled?: boolean = false;
 
-  /** Disables the switch and shows a loading indicator. No events will be triggered while loading state is active. */
+  /** Disables the switch and shows a loading spinner to indicate an ongoing asynchronous toggle operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Displays the switch in compact mode. */
+  /** Reduces the switch size and spacing for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
-  /** Emitted when the checked state changes. */
+  /** Emitted when the user toggles the switch, carrying the new `checked` state in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
 
   private initialLoading: boolean = false;

@@ -8,6 +8,7 @@ import {
   PCanvas,
   PHeading,
   PLink,
+  PLinkPure,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointMd, breakpointSm } from '@porsche-design-system/tokens';
 import Link from 'next/link';
@@ -16,11 +17,11 @@ import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { DirectionSelect } from '@/components/common/DirectionSelect';
 import { Navigation } from '@/components/common/Navigation';
-import Tabs from '@/components/common/Tabs';
 import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { Search } from '@/components/search/Search';
 import { useDirection } from '@/hooks/useDirection';
+import { useFocusMainContentOnRouteChange } from '@/hooks/useFocusMainContentOnRouteChange';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontVersion } from '@/hooks/useStorefrontVersion';
 import { useTextZoom } from '@/hooks/useTextZoom';
@@ -44,6 +45,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
   const pathname = usePathname();
+  useFocusMainContentOnRouteChange();
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(false);
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
@@ -94,6 +96,9 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       onSidebarStartUpdate={onSidebarStartUpdate}
       onSidebarEndDismiss={onSidebarEndDismiss}
     >
+      <PLinkPure slot="header-start" icon="arrow-down" className="sr-only focus-within:not-sr-only">
+        <Link href="#main-content">Skip to content</Link>
+      </PLinkPure>
       <Link slot="title" href="/">
         Porsche Design System
       </Link>
@@ -114,7 +119,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         compact={true}
         hideLabel={true}
         onClick={onOpenSearch}
-        aria={{ 'aria-label': 'Search' }}
+        aria={{ 'aria-haspopup': 'dialog' }}
       >
         Search
       </PButton>
@@ -126,8 +131,9 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         hideLabel={true}
         href="https://github.com/porsche-design-system/porsche-design-system"
         target="_blank"
+        aria={{ 'aria-description': 'External link, opens in new tab' }}
       >
-        Navigate to GitHub repository of Porsche Design System
+        GitHub repository of Porsche Design System
       </PLink>
       <PButton
         slot="header-end"
@@ -137,12 +143,11 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         hideLabel={true}
         onClick={onSidebarEndOpen}
       >
-        Open sidebar
+        Open settings sidebar
       </PButton>
 
       <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md">
         <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
-        <Tabs />
         {children}
       </div>
 

@@ -4,10 +4,10 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "sideEffects": false,
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
   "types": "dist/esm/index.d.ts",
-  "sideEffects": false,
   "scripts": {
     "prebuild:generateThemesObject": "tsx scripts/generateThemesObject.ts",
     "build": "npm run clean:build && npm run prebuild:generateThemesObject && npm run build:bundle",
@@ -16,16 +16,11 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
-  "dependencies": {
-    "@porsche-design-system/icons": "0.0.0",
-    "@porsche-design-system/emotion": "0.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "35.2.1"
-  },
-  "peerDependencies": {
-    "typescript": "*"
+    "ag-grid-community": "35.3.1",
+    "typescript": "^6.0.3"
   },
   "volta": {
     "extends": "../../package.json"

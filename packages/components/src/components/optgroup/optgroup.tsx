@@ -25,10 +25,10 @@ const propTypes: PropTypes<typeof Optgroup> = {
 export class Optgroup {
   @Element() public host!: HTMLElement;
 
-  /** The optgroup label. */
+  /** Sets the visible group heading displayed above the grouped options. */
   @Prop() public label?: string;
 
-  /** Disables the optgroup. */
+  /** Disables all options in the group, preventing any of them from being selected. */
   @Prop() public disabled?: boolean = false;
 
   @Watch('disabled')

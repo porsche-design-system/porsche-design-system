@@ -571,11 +571,6 @@ export const sitemap: Routes = {
           },
         },
       },
-      'ai-tag': {
-        name: 'AI Tag',
-        path: '/patterns/ai-tag',
-        type: 'PAGE',
-      },
     },
   },
   templates: {
@@ -1813,6 +1808,11 @@ export const sitemap: Routes = {
       theme: {
         name: 'Theme',
         path: '/must-know/theme',
+        type: 'PAGE',
+      },
+      typography: {
+        name: 'Typography',
+        path: '/must-know/typography',
         type: 'PAGE',
       },
       performance: {

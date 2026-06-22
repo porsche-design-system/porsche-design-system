@@ -28,7 +28,7 @@ packages/
 ├── components/         # Core Stencil web components (source of truth)
 ├── components-js/      # JS wrapper, partials, CDN build
 ├── components-angular/ # Angular wrapper
-├── components-react/   # React wrapper + Next.js/Remix integrations
+├── components-react/   # React wrapper + Next.js/React Router integrations
 ├── components-vue/     # Vue wrapper
 ├── storefront/         # Next.js documentation site
 ├── tokens/             # Design tokens (colors, spacing, typography)
@@ -160,7 +160,14 @@ See [`.github/instructions/accessibility.instructions.md`](.github/instructions/
 ## Known Constraints
 
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds
-2. **Angular updates**: Use `ng update` separately, check TypeScript compatibility
+2. **Angular updates**: Versions are bumped by syncpack like any other dependency; only Angular's framework migrations
+   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never `ng update`
+   directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check TypeScript compatibility.
+
+## Task Runbooks
+
+- [`docs/runbooks/dependency-updates-agent.md`](docs/runbooks/dependency-updates-agent.md) — step-by-step runbook for AI
+  cloud agents performing the recurring weekly npm dependency update.
 
 ## Package-Specific Instructions
 

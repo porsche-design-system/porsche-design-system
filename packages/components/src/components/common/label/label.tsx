@@ -13,8 +13,8 @@ type LabelProps = {
   isLoading?: boolean;
   isDisabled?: boolean;
   /**
-   * If true, clicking the label will not bubble to the host element,
-   * preventing duplicate handling on host click listeners.
+   * If true, clicks on the label use `htmlFor` only and do not bubble to the host.
+   * Clicks on the `label-after` slot are also stopped so they do not trigger host handlers (e.g. radio selection).
    */
   stopClickPropagation?: boolean;
 };
@@ -30,10 +30,14 @@ export const Label: FunctionalComponent<LabelProps> = ({
   isDisabled,
   stopClickPropagation,
 }) => {
-  const handleClick = (e: MouseEvent) => {
+  const handleLabelClick = (e: MouseEvent) => {
     if (stopClickPropagation) {
       e.stopPropagation();
     }
+  };
+
+  const handleLabelAfterClick = (e: MouseEvent) => {
+    e.stopPropagation();
   };
 
   const TagType = tag || 'label';
@@ -47,14 +51,21 @@ export const Label: FunctionalComponent<LabelProps> = ({
             id={labelId}
             aria-disabled={isLoading || isDisabled ? 'true' : null}
             htmlFor={htmlFor}
-            onClick={handleClick}
+            onClick={handleLabelClick}
           >
             <Fragment>
               {label || <slot name="label" />}
               {isRequired && !isParentFieldsetRequired(host) && <Required />}
             </Fragment>
           </TagType>
-          <slot name="label-after" />
+          {stopClickPropagation ? (
+            // biome-ignore lint/a11y/noStaticElementInteractions: stop propagation only; links/buttons in label-after keep default behavior
+            <span class="label-after" onClick={handleLabelAfterClick}>
+              <slot name="label-after" />
+            </span>
+          ) : (
+            <slot name="label-after" />
+          )}
         </div>
       )}
       {hasDescription(host, description) && (

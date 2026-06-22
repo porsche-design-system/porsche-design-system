@@ -30,13 +30,13 @@ const propTypes: PropTypes<typeof Spinner> = {
 export class Spinner {
   @Element() public host!: HTMLElement;
 
-  /** Basic color variations. */
+  /** Sets the color of the spinning indicator using PDS semantic color tokens (e.g. `primary`, `contrast-high`, `inherit`). */
   @Prop() public color?: SpinnerColor = 'primary';
 
-  /** Defines the size of the spinner, aligned with the typographic scale used by components such as p-icon, p-flag, p-text, and p-heading. When set to `inherit`, the size is derived from a custom font-size defined on a parent element, calculated against the global line-height (based on `ex`-unit) to remain visually consistent with other typographic-scale-based components. */
+  /** Sets the size of the spinner using the PDS typographic scale. Use `inherit` to derive the size from the parent element's font-size. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<SpinnerSize> = 'sm';
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the spinner's live region element; use `aria-label` to provide a descriptive loading message for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<SpinnerAriaAttribute>;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

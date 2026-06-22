@@ -1,15 +1,15 @@
-import type { TagName } from '@porsche-design-system/shared';
 import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/emotion';
+import type { TagName } from '@porsche-design-system/shared';
 import { create, type JssStyle, type Styles } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import { addImportantToEachRule } from '../styles';
-import { hasPropValueChanged } from './has-prop-value-changed';
-import { getTagNameWithoutPrefix } from './tag-name';
 import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
+import { hasPropValueChanged } from './has-prop-value-changed';
+import { getTagNameWithoutPrefix } from './tag-name';
 
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
@@ -105,7 +105,6 @@ export const buildResponsiveStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
   getJssStyle: GetJssStyleFunction
 ): Styles => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const value = parseJSON(rawValue as any);
 
   return typeof value === 'object'
@@ -116,7 +115,6 @@ export const buildResponsiveStyles = <T>(
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             [getMediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
           getJssStyle(value.base) as Styles

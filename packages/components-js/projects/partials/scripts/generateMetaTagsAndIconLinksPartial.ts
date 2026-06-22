@@ -12,7 +12,7 @@ const convertToJSX = (templates: string[]): JSX.Element[] => {
   );
 };
 
-export const generateMetaTagsAndIconLinksPartial = (): string => {
+export const generateMetaTagsAndIconLinksPartial = async (): Promise<string> => {
   const metaIconCDNPath = `$cdnBaseUrl/${CDN_BASE_PATH_META_ICONS}`;
 
   const themeColorLight = '#FFF';
@@ -70,8 +70,8 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`,
   ];
-  const minifiedOgImageMeta = JSON.stringify(ogImageMeta.map((template) => minifyHTML(template)));
-  const minifiedMetaIconsHTML = JSON.stringify(metaIconLinks.map((template) => minifyHTML(template)));
+  const minifiedOgImageMeta = JSON.stringify(await Promise.all(ogImageMeta.map((template) => minifyHTML(template))));
+  const minifiedMetaIconsHTML = JSON.stringify(await Promise.all(metaIconLinks.map((template) => minifyHTML(template))));
 
   const metaIconTemplatesJSX = convertToJSX(metaIconLinks);
   const ogImageMetaJSX = convertToJSX(ogImageMeta);

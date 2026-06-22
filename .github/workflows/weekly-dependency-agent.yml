@@ -1,0 +1,98 @@
+# Weekly dependency-update task dispatcher for the Copilot coding agent.
+#
+# This workflow does NOT update dependencies itself. On a weekly schedule it:
+#   1. Checks whether anything is actually outdated (skips noise when nothing is).
+#   2. Opens a task issue assigned to `@copilot`, pointing the coding agent at
+#      docs/runbooks/dependency-updates-agent.md.
+#
+# The agent then works on its own branch and opens a PR per the runbook's
+# "Output contract". CODEOWNERS routes that PR (package.json / package-lock.json
+# / .github) to @porsche-design-system/maintainers for review.
+#
+# Assigning an issue to `@copilot` is what starts the coding agent. Confirm the
+# agent is enabled for this repo under Settings → Copilot → Coding agent.
+#
+# IMPORTANT: assigning the `@copilot` agent requires a *user* token. The default
+# `GITHUB_TOKEN` is a GitHub App installation token and fails with:
+#   "Assigning agents is not supported with GitHub App installation tokens.
+#    Use a user token (personal access token or OAuth token) instead."
+# Provide a fine-grained or classic PAT as the `GH_COPILOT_AGENT_TOKEN` repo secret
+# (Settings → Secrets and variables → Actions). See the runbook for setup steps.
+name: 'Weekly Dependency Agent'
+
+on:
+  schedule:
+    # Mondays 06:00 UTC — matches the weekly cadence in the runbook. Cron on
+    # GitHub Actions always runs in UTC.
+    - cron: '0 6 * * 1'
+  # Allow on-demand dispatch (e.g. to test the flow) from the Actions tab.
+  workflow_dispatch: {}
+
+# Least privilege: only the permissions needed to inspect deps and open an issue.
+permissions:
+  contents: read
+  issues: write
+
+# Never run two dispatchers at once; a newer run supersedes an in-flight one.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  dispatch:
+    name: 'Dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - name: 'Check for outdated dependencies'
+        id: outdated
+        # `npm run npm:outdated` exits non-zero when updates are available; that
+        # is the signal we want, so capture it without failing the job.
+        run: |
+          if npm run --silent npm:outdated; then
+            echo "has-updates=false" >> "$GITHUB_OUTPUT"
+            echo "No outdated dependencies — nothing to dispatch."
+          else
+            echo "has-updates=true" >> "$GITHUB_OUTPUT"
+            echo "Outdated dependencies found — dispatching task to the coding agent."
+          fi
+      - name: 'Open task issue for the Copilot coding agent'
+        if: steps.outdated.outputs.has-updates == 'true'
+        env:
+          # Must be a *user* token (PAT) — the default GITHUB_TOKEN is a GitHub
+          # App installation token and cannot assign the `@copilot` agent.
+          GH_TOKEN: ${{ secrets.GH_COPILOT_AGENT_TOKEN }}
+          # Absolute URL to the runbook at the dispatched commit (repo-relative
+          # paths are not auto-linked in issue bodies). `${{ }}` is substituted
+          # by the Actions runner before the shell runs.
+          RUNBOOK_URL: ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.sha }}/docs/runbooks/dependency-updates-agent.md
+        run: |
+          # Ensure the label exists (gh issue create fails on an unknown label).
+          gh label create "dependencies" \
+            --description "Automated npm dependency updates" \
+            --color "0366d6" 2>/dev/null || true
+
+          # Quoted heredoc → no shell expansion, so the backticks below stay
+          # literal. The runbook URL is injected afterwards via a placeholder.
+          cat > issue-body.md <<'EOF'
+          Run the recurring weekly npm dependency update.
+
+          **Follow the runbook exactly:** [`docs/runbooks/dependency-updates-agent.md`](__RUNBOOK_URL__)
+
+          Key guardrails (see the runbook for the full list):
+          - Skip fully held-back deps (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). Update Angular via `ng update` per the runbook (step 3), not syncpack.
+          - Never run `npm audit fix`, `--legacy-peer-deps` or `--force`.
+          - Don't hand-edit `package.json` versions or `package-lock.json`; use `syncpack` / `npm install`.
+          - Deliver a single PR per the runbook's "Output contract".
+          EOF
+
+          # Inject the URL without touching any other characters.
+          sed -i "s#__RUNBOOK_URL__#${RUNBOOK_URL}#g" issue-body.md
+
+          gh issue create \
+            --title "chore(deps): weekly npm dependency updates ($(date +%F))" \
+            --label "dependencies" \
+            --assignee "@copilot" \
+            --body-file issue-body.md

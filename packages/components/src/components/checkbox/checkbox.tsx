@@ -21,10 +21,11 @@ import {
   hasPropValueChanged,
   isDisabledOrLoading,
   setAriaIDREF,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
-import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './checkbox-styles';
 import type { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } from './checkbox-utils';
@@ -57,54 +58,54 @@ const propTypes: PropTypes<typeof Checkbox> = {
 export class Checkbox {
   @Element() public host!: HTMLElement;
 
-  /** The name of the checkbox. */
+  /** Sets the name submitted with the form data to identify this checkbox's value on the server. */
   @Prop({ reflect: true }) public name?: string = '';
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** Marks the checkbox as required. */
+  /** Marks the checkbox as required — form submission is blocked unless the checkbox is checked. */
   @Prop() public required?: boolean = false;
 
-  /** Marks the checkbox as disabled. */
+  /** Disables the checkbox, preventing all interaction. The value is not submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** Marks the checkbox as indeterminate. */
+  /** Puts the checkbox into an indeterminate state, indicating that a group of child items is only partially selected. */
   @Prop() public indeterminate?: boolean = false;
 
-  /** Reflects the checkbox current checked state and allows setting the initial checked state. */
+  /** Reflects the checkbox's current checked state and allows setting the initial checked value on load. */
   @Prop({ mutable: true }) public checked?: boolean = false;
 
-  /** The id of a form element the checkbox should be associated with. */
+  /** Associates the checkbox with a form element by its ID when not directly nested inside it. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /**
-   * The checkbox value.
-   * When a form is submitted, only a checkbox which is currently checked is included in the submission.
+   * Sets the value submitted with the form data when the checkbox is checked.
+   * Unchecked checkboxes are excluded from form submissions.
    */
   @Prop() public value?: string = 'on';
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed next to the checkbox. */
   @Prop() public label?: string = '';
 
-  /** The validation state. */
+  /** Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). */
   @Prop() public state?: CheckboxState = 'none';
 
-  /** The message styled depending on validation state. */
+  /** Sets the validation feedback message displayed below the checkbox when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** @experimental Disables the checkbox and shows a loading indicator. */
+  /** @experimental Disables the checkbox and displays a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Displays the checkbox in compact mode. */
+  /** Reduces the checkbox size and spacing for a more compact layout. */
   @Prop() public compact?: boolean = false;
 
-  /** Emitted when checkbox checked property is changed. */
+  /** Emitted when the user changes the checked state of the checkbox. */
   @Event({ bubbles: true }) public change: EventEmitter<CheckboxChangeEventDetail>;
 
-  /** Emitted when the checkbox has lost focus. */
+  /** Emitted when the checkbox loses focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<CheckboxBlurEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
@@ -122,21 +123,11 @@ export class Checkbox {
     }
   }
 
-  @Watch('value')
-  public onValueChange(newValue: string): void {
-    this.internals?.setFormValue(this.checkboxInputElement?.checked ? newValue : undefined);
-  }
-
   @Watch('indeterminate')
   public onIndeterminateChange(newValue: boolean): void {
     if (this.checkboxInputElement) {
       this.checkboxInputElement.indeterminate = newValue;
     }
-  }
-
-  @Watch('checked')
-  public onCheckedChange(newValue: boolean): void {
-    this.internals?.setFormValue(newValue ? this.value : undefined);
   }
 
   public connectedCallback(): void {
@@ -155,9 +146,6 @@ export class Checkbox {
 
   public componentDidLoad(): void {
     this.checkboxInputElement.indeterminate = this.indeterminate;
-    if (this.checkboxInputElement.checked) {
-      this.internals?.setFormValue(this.value);
-    }
   }
 
   public componentWillUpdate(): void {
@@ -167,7 +155,6 @@ export class Checkbox {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultChecked ? this.value : undefined);
     this.checked = this.defaultChecked;
   }
 
@@ -181,15 +168,11 @@ export class Checkbox {
   }
 
   public componentDidRender(): void {
-    // Skip validation if the checkbox is disabled; it's ignored in form validation
-    // and always has an empty validationMessage, even if some ValidityState flags are true.
-    if (!this.disabled) {
-      this.internals?.setValidity(
-        this.checkboxInputElement.validity,
-        this.checkboxInputElement.validationMessage || ' ',
-        this.checkboxInputElement
-      );
-    }
+    syncFormState(this.internals, this.checkboxInputElement, {
+      disabled: this.disabled,
+      // If the checkbox is unchecked it is removed from native form submission
+      value: this.checked ? this.value : null,
+    });
 
     // Handle cross-root ARIA labeling when the component is wrapped in a <label> element.
     // We use the Accessibility Object Model (AOM) ariaLabelledByElements property to establish
@@ -266,9 +249,7 @@ export class Checkbox {
   private onChange = (e: Event): void => {
     e.stopPropagation();
     e.stopImmediatePropagation();
-    const checked = (e.target as HTMLInputElement).checked;
-    this.checked = checked;
-    this.internals?.setFormValue(checked ? this.value : undefined);
+    this.checked = (e.target as HTMLInputElement).checked;
     this.change.emit(e);
   };
 }

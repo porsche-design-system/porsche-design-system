@@ -1,13 +1,8 @@
 <script setup lang="ts">
-import {
-  PButton,
-  PScroller,
-  PTagDismissible,
-  type ScrollerScrollToPosition,
-} from '@porsche-design-system/components-vue';
+import { PButton, PScroller, type PScrollerProps, PTagDismissible } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
-const scrollToPosition = ref<ScrollerScrollToPosition>({
+const scrollToPosition = ref<PScrollerProps['scrollToPosition']>({
   scrollPosition: 220,
   isSmooth: false,
 });
@@ -17,11 +12,13 @@ const onClick = (scrollPosition: number): void => {
 </script>
 
 <template v-html="style">
-  <PButton type="button" @click="onClick(0)" :compact="true">Scroll to start</PButton>
-  <PButton type="button" @click="onClick(220)" :compact="true">Scroll to middle</PButton>
-  <PButton type="button" @click="onClick(720)" :compact="true">Scroll to end</PButton>
+  <div class="flex gap-fluid-sm">
+    <PButton type="button" @click="onClick(0)" :compact="true">Scroll to start</PButton>
+    <PButton type="button" @click="onClick(220)" :compact="true">Scroll to middle</PButton>
+    <PButton type="button" @click="onClick(720)" :compact="true">Scroll to end</PButton>
+  </div>
 
-  <div :style="{ maxWidth: '400px', whiteSpace: 'nowrap' }">
+  <div :style="{ maxWidth: '400px', whiteSpace: 'nowrap' }" class="mt-fluid-sm">
     <PScroller :scrollToPosition="scrollToPosition">
       <PTagDismissible>START - some tag content</PTagDismissible>
       <PTagDismissible>MIDDLE - some tag content</PTagDismissible>

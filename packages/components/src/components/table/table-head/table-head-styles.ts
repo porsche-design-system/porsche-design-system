@@ -1,5 +1,5 @@
+import { fontPorscheNext, fontWeightSemibold, leadingNormal, ref, typescaleXs } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
-import { fontPorscheNext, fontWeightSemibold, leadingNormal, typescaleXs } from '../../../styles/css-variables';
 import { getCss } from '../../../utils';
 import {
   cssVariableTableBorderColor,
@@ -13,8 +13,8 @@ export const getComponentCss = (): string => {
       ':host': {
         display: 'table-header-group',
         ...addImportantToEachRule({
-          font: `${fontWeightSemibold} ${typescaleXs} / ${leadingNormal} ${fontPorscheNext}`,
-          borderBottom: `1px solid var(${cssVariableTableBorderColor})`,
+          font: `${ref(fontWeightSemibold)} ${ref(typescaleXs)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+          borderBottom: `1px solid ${ref(cssVariableTableBorderColor)}`,
           ...hostHiddenStyles,
         }),
       },

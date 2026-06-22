@@ -27,6 +27,7 @@ const propTypes: PropTypes<typeof Accordion> = {
   alignMarker: AllowedTypes.oneOf<AccordionAlignMarker>(ACCORDION_ALIGN_MARKERS),
   background: AllowedTypes.oneOf<AccordionBackground>(ACCORDIONS_BACKGROUNDS),
   compact: AllowedTypes.boolean,
+  indent: AllowedTypes.breakpoint('boolean'),
   sticky: AllowedTypes.boolean,
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
   heading: AllowedTypes.string,
@@ -52,14 +53,17 @@ export class Accordion {
   /** Controls whether the accordion is open or closed. */
   @Prop() public open?: boolean;
 
-  /** Aligns the marker within the summary section. */
+  /** Positions the expand/collapse marker icon at the start or end of the summary section. */
   @Prop() public alignMarker?: AccordionAlignMarker = 'end';
 
-  /** Defines the background color. Use `frosted` only on images, videos or gradients. */
+  /** Sets the background color of the accordion panel. Use `frosted` only when placed on images, videos, or gradients. */
   @Prop() public background?: AccordionBackground = 'none';
 
-  /** Displays the accordion in compact mode. */
+  /** Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces. */
   @Prop() public compact?: boolean;
+
+  /** Indents the slotted content to be vertically aligned with the text of the summary section. */
+  @Prop() public indent?: BreakpointCustomizable<boolean> = false;
 
   /**
    * @deprecated Will be removed in the next major release. Use the `summary` slot instead.
@@ -81,7 +85,7 @@ export class Accordion {
    */
   @Prop() public sticky?: boolean;
 
-  /** Emitted when the accordion state changes. */
+  /** Emitted when the user toggles the accordion open or closed, with the new open state in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
   private hasSummary: boolean;
@@ -122,6 +126,7 @@ export class Accordion {
       this.alignMarker,
       this.background,
       this.compact,
+      this.indent,
       this.open,
       this.sticky,
       this.hasSummaryBefore,

@@ -6,21 +6,43 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     groups:
       github-actions-updates:
         patterns:
           - "*"
 
-  # Maintain dependencies for npm
+  # npm dependencies.
+  #
+  # Routine version bumps are handled by the weekly Copilot coding agent, which
+  # follows docs/runbooks/dependency-updates-agent.md (syncpack-driven, override-
+  # aware) and is dispatched by .github/workflows/weekly-dependency-agent.yml.
+  # To avoid two competing weekly PRs over package.json/package-lock.json, we run
+  # Dependabot npm in SECURITY-ONLY mode:
+  #   - `open-pull-requests-limit: 0` disables version-update PRs but still lets
+  #     Dependabot raise security PRs (defense-in-depth) and still honors `ignore`.
+  #   - The held-back `ignore` list below therefore also protects these packages
+  #     from automatic security bumps (they are upgraded deliberately).
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    # Disable routine version-update PRs (owned by the weekly agent); keep
+    # security updates enabled.
+    open-pull-requests-limit: 0
+    # Held-back dependencies — kept in sync with docs/dependencies.md and the
+    # updateGroups entry in .syncpackrc.json
     ignore:
+      # Internal workspace packages, versioned via the release process (see docs/dependencies.md)
       - dependency-name: "@porsche-design-system/*"
+      # Pinned to keep browser binaries in sync with committed VRT snapshots; upgrade deliberately (see docs/dependencies.md)
       - dependency-name: "@playwright/test"
+      # Pinned: a patch-package patch targets this exact version (see docs/dependencies.md)
+      - dependency-name: "@stencil/core"
     groups:
-      npm-updates:
+      # Version-update groups don't apply while version updates are disabled, so
+      # group SECURITY updates instead (one PR per batch of advisories).
+      npm-security-updates:
+        applies-to: security-updates
         patterns:
           - "*"

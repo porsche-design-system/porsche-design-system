@@ -1,4 +1,3 @@
-import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
 import {
   colorContrastLow,
   colorFrosted,
@@ -6,11 +5,13 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
+  ref,
   spacingFluidMd,
   spacingFluidSm,
   spacingStaticSm,
   typescaleSm,
-} from '../../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
 import { getCss } from '../../../utils';
 import type { TableLayout } from './table-utils';
 
@@ -35,22 +36,22 @@ export const getComponentCss = (isCompact: boolean, layout: TableLayout): string
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          '--p-scroller-indicator-top': `var(${cssVarScrollIndicatorTop},0px)`,
-          '--p-scroller-indicator-bottom': `var(${cssVarScrollIndicatorBottom},0px)`,
-          [cssVariableTableHoverColor]: colorFrosted,
-          [cssVariableTableBorderColor]: colorContrastLow,
-          [cssVariableTablePadding]: isCompact ? spacingStaticSm : spacingFluidSm,
+          '--p-scroller-indicator-top': ref(cssVarScrollIndicatorTop, '0px'),
+          '--p-scroller-indicator-bottom': ref(cssVarScrollIndicatorBottom, '0px'),
+          [cssVariableTableHoverColor]: ref(colorFrosted),
+          [cssVariableTableBorderColor]: ref(colorContrastLow),
+          [cssVariableTablePadding]: isCompact ? ref(spacingStaticSm) : ref(spacingFluidSm),
           [cssVariableTableBorderWidth]: '1px',
           ...hostHiddenStyles,
-          font: `${fontWeightNormal} ${typescaleSm} / ${leadingNormal} ${fontPorscheNext}`,
-          color: colorPrimary,
+          font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+          color: ref(colorPrimary),
           textAlign: 'start',
         }),
       },
       ...preventFoucOfNestedElementsStyles,
     },
     caption: {
-      marginBottom: spacingFluidMd,
+      marginBottom: ref(spacingFluidMd),
     },
     table: {
       display: 'table',
