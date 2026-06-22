@@ -6,6 +6,8 @@ import ActiveTabDescription from '@/app/(main)/components/tabs/examples/active-t
 import { tabsStoryActiveTabIndex } from '@/app/(main)/components/tabs/examples/active-tab/story';
 import GradientDescription from '@/app/(main)/components/tabs/examples/gradient/example.mdx';
 import { tabsStoryGradient } from '@/app/(main)/components/tabs/examples/gradient/story';
+import LabellingDescription from '@/app/(main)/components/tabs/examples/labelling/example.mdx';
+import { tabsStoryLabelling } from '@/app/(main)/components/tabs/examples/labelling/story';
 import Usage from '@/app/(main)/components/tabs/usage/page.mdx';
 import type { ComponentDocsMeta } from '@/models/meta';
 
@@ -26,6 +28,12 @@ export const tabsMeta = {
       name: 'Active Tab',
       description: ActiveTabDescription,
       story: tabsStoryActiveTabIndex,
+    },
+    labelling: {
+      kind: 'story',
+      name: 'Labelling',
+      description: LabellingDescription,
+      story: tabsStoryLabelling,
     },
   },
   usage: Usage,
