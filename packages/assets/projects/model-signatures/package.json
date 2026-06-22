@@ -35,7 +35,7 @@
     "@rollup/plugin-typescript": "^12.3.0",
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
-    "rollup": "^4.62.0",
+    "rollup": "^4.62.2",
     "rollup-plugin-dts": "^6.4.1",
     "svgo": "^4.0.1",
     "tsx": "^4.22.4",
