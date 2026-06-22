@@ -13,6 +13,11 @@
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.cjs"
     },
+    "./meta": {
+      "types": "./dist/esm/meta.d.ts",
+      "import": "./dist/esm/meta.mjs",
+      "require": "./dist/cjs/meta.cjs"
+    },
     "./*": "./dist/*"
   },
   "main": "./dist/cjs/index.cjs",

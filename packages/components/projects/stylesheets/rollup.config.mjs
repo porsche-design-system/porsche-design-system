@@ -2,7 +2,10 @@
 import typescript from '@rollup/plugin-typescript';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
-const input = 'src/index.ts';
+// Two entry points: the main `.` export (runtime constants + `ref`) and the `./meta` subpath (the
+// documented meta catalog, leaf/CssNode types and `kindOf`). With `preserveModules`, each entry's
+// module graph is emitted under `dist/<esm|cjs>/` so `./meta` resolves to `meta.mjs` / `meta.cjs`.
+const input = ['src/index.ts', 'src/meta.ts'];
 const outputDir = 'dist';
 
 export default [
@@ -41,6 +44,12 @@ export default [
               types: './esm/index.d.ts',
               import: './esm/index.mjs',
               default: './cjs/index.cjs',
+            },
+            // Documented meta model (catalog, leaf/CssNode types, kindOf)
+            './meta': {
+              types: './esm/meta.d.ts',
+              import: './esm/meta.mjs',
+              default: './cjs/meta.cjs',
             },
             // Granular stylesheet access (e.g. ./index.css, ./variables.css, ./normalize.css)
             './*': './*',

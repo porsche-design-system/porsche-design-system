@@ -1,26 +1,46 @@
 import { expect, it } from 'vitest';
+import { globalStylesMeta } from '../../../src/css';
 import {
-  colorSchemeClassesMeta,
-  cssVariablesMeta,
+  colorScheme,
+  cssVariableTokens,
   flattenColorVariables,
   flattenCssVariables,
+  kindOf,
   renderCss,
   renderCssNode,
   stylesheetsMeta,
-} from '../../../src';
+} from '../../../src/meta';
 
-const allCssVariables = flattenCssVariables(cssVariablesMeta);
+const allCssVariables = flattenCssVariables(cssVariableTokens);
 
 it('should match snapshot', () => {
   expect(stylesheetsMeta).toMatchSnapshot();
 });
 
-it('should contain all expected stylesheets', () => {
-  expect(Object.keys(stylesheetsMeta)).toEqual(['cssVariables', 'colorScheme', 'normalize']);
+it('should expose the documented catalog domains in a stable order', () => {
+  expect(Object.keys(stylesheetsMeta)).toEqual([
+    'color',
+    'font',
+    'spacing',
+    'border',
+    'blur',
+    'shadow',
+    'motion',
+    'colorScheme',
+  ]);
 });
 
-it('every stylesheet entry should expose file, description and meta', () => {
-  for (const [key, entry] of Object.entries(stylesheetsMeta)) {
+it('kindOf should classify a css variable as a token and a color-scheme class as a utility', () => {
+  expect(kindOf(stylesheetsMeta.color.background.canvas)).toBe('token');
+  expect(kindOf(stylesheetsMeta.colorScheme[0])).toBe('utility');
+});
+
+it('should contain all expected generated stylesheets', () => {
+  expect(Object.keys(globalStylesMeta)).toEqual(['cssVariables', 'colorScheme', 'normalize']);
+});
+
+it('every generated stylesheet entry should expose file, description and meta', () => {
+  for (const [key, entry] of Object.entries(globalStylesMeta)) {
     expect(entry.file, `${key}: missing file`).toMatch(/\.css$/);
     expect(entry.description, `${key}: missing description`).toBeTruthy();
     expect(Array.isArray(entry.meta), `${key}: meta must be a CssNode array`).toBe(true);
@@ -29,8 +49,8 @@ it('every stylesheet entry should expose file, description and meta', () => {
 });
 
 it('should expose granular metas independently of globalStylesMeta', () => {
-  expect(cssVariablesMeta).toBeTruthy();
-  expect(colorSchemeClassesMeta.length).toBeGreaterThan(0);
+  expect(cssVariableTokens).toBeTruthy();
+  expect(colorScheme.length).toBeGreaterThan(0);
 });
 
 it('every css variable leaf should have property, description and value', () => {
@@ -52,7 +72,7 @@ it('no css variable value should be the string "undefined"', () => {
 });
 
 it('every color variable should provide light and dark values for the polyfill', () => {
-  for (const leaf of flattenColorVariables(cssVariablesMeta)) {
+  for (const leaf of flattenColorVariables(cssVariableTokens)) {
     expect(leaf.valueLight, `${leaf.property}: missing valueLight`).toBeTruthy();
     expect(leaf.valueDark, `${leaf.property}: missing valueDark`).toBeTruthy();
   }
@@ -73,7 +93,7 @@ it('renderCssNode should serialize a nested rule with an optional comment', () =
 });
 
 it('renderCss should serialize the resolution of every generated stylesheet to a snapshot', () => {
-  for (const [key, { meta }] of Object.entries(stylesheetsMeta)) {
+  for (const [key, { meta }] of Object.entries(globalStylesMeta)) {
     expect(renderCss(meta), key).toMatchSnapshot();
   }
 });

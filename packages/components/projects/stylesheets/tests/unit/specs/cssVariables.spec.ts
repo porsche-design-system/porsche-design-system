@@ -1,6 +1,7 @@
 import { expect, it } from 'vitest';
-import { cssVariablesMeta, flattenCssVariables, ref } from '../../../src';
+import { ref } from '../../../src';
 import * as cssVariables from '../../../src/generated/cssVariables';
+import { cssVariableTokens, flattenCssVariables } from '../../../src/meta';
 
 // Derives the const name from a CSS custom property, mirroring the generator
 // (`scripts/buildCssVariableConstants.ts`), e.g. `--p-spacing-fluid-2xl` -> `spacingFluid2Xl`.
@@ -14,7 +15,7 @@ const toConstName = (property: string): string =>
     })
     .join('');
 
-const allLeaves = [...flattenCssVariables(cssVariablesMeta)];
+const allLeaves = [...flattenCssVariables(cssVariableTokens)];
 
 it.each(
   allLeaves.map((leaf) => [toConstName(leaf.property), leaf.property] as const)
@@ -23,7 +24,7 @@ it.each(
 });
 
 it('should reference the name consts from the meta `property` fields (single source of truth)', () => {
-  for (const leaf of flattenCssVariables(cssVariablesMeta)) {
+  for (const leaf of flattenCssVariables(cssVariableTokens)) {
     expect((cssVariables as Record<string, string>)[toConstName(leaf.property)]).toBe(leaf.property);
   }
 });
