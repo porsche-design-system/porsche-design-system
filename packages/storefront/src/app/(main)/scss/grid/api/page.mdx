@@ -1,7 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ScssVariablesTable } from '@/components/common/ScssVariablesTable';
 import { ScssMixinsTable } from '@/components/common/ScssMixinsTable';
-import { scssMeta } from '@porsche-design-system/scss';
+import { scssMeta, type ScssMixin, type ScssVariable } from '@porsche-design-system/scss';
 
 export const metadata = {
   title: 'SCSS: Grid - Porsche Design System',
@@ -14,8 +14,8 @@ export const metadata = {
 
 ## SCSS Mixins
 
-<ScssMixinsTable mixins={scssMeta.utilities.grid} />
+<ScssMixinsTable mixins={scssMeta.grid.filter((node): node is ScssMixin => 'raw' in node)} />
 
 ## SCSS Variables
 
-<ScssVariablesTable variables={scssMeta.theme.grid} />
+<ScssVariablesTable variables={scssMeta.grid.filter((node): node is ScssVariable => 'value' in node)} />
