@@ -4,6 +4,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["@porsche-design-system/stylesheets#build", "@porsche-design-system/assets#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx"],
       "outputs": ["dist/**", "src/lib/**"]
     }
   }

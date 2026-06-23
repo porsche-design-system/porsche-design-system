@@ -4,10 +4,12 @@
   "tasks": {
     "build": {
       "dependsOn": ["@porsche-design-system/tokens#build", "@porsche-design-system/assets#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx"],
       "outputs": ["dist/**"]
     },
     "build-prod": {
       "dependsOn": ["@porsche-design-system/tokens#build", "@porsche-design-system/assets#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx"],
       "outputs": ["dist/**"]
     }
   }

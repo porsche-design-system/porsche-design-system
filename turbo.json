@@ -4,11 +4,23 @@
   "globalDependencies": ["patches/**"],
   "globalEnv": ["NODE_ENV", "PDS_IS_STAGING", "PORSCHE_DESIGN_SYSTEM_DEV"],
   "concurrency": "100%",
+  "cacheMaxAge": "14d",
+  "cacheMaxSize": "5GB",
+  "futureFlags": {
+    "affectedUsingTaskInputs": true
+  },
   "tasks": {
     "build": {
       "dependsOn": [],
       "outputs": [],
-      "cache": true
+      "cache": true,
+      "outputLogs": "new-only"
+    },
+    "build-prod": {
+      "dependsOn": [],
+      "outputs": [],
+      "cache": true,
+      "outputLogs": "new-only"
     }
   }
 }

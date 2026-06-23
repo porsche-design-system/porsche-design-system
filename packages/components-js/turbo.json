@@ -13,6 +13,7 @@
         "@porsche-design-system/styles#build",
         "utilities-v2#build"
       ],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**"],
       "outputs": ["dist/**", "projects/*/dist/**", "projects/components-wrapper/lib/**", "projects/partials/src/lib/**"]
     },
     "build-prod": {
@@ -26,6 +27,7 @@
         "@porsche-design-system/styles#build-prod",
         "utilities-v2#build"
       ],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**"],
       "outputs": ["dist/**", "projects/*/dist/**", "projects/components-wrapper/lib/**", "projects/partials/src/lib/**"]
     }
   }

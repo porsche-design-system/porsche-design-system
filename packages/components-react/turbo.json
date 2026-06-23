@@ -10,6 +10,7 @@
         "@porsche-design-system/components#build",
         "@porsche-design-system/styles#build"
       ],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**"],
       "outputs": [
         "dist/**",
         "projects/*/dist/**",
@@ -26,6 +27,7 @@
         "@porsche-design-system/components#build-prod",
         "@porsche-design-system/styles#build-prod"
       ],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**"],
       "outputs": [
         "dist/**",
         "projects/*/dist/**",

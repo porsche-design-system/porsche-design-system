@@ -4,6 +4,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["shared#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx"],
       "outputs": ["dist/**", "projects/tokens-meta/dist/**"]
     }
   }
