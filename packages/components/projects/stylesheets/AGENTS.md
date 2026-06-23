@@ -18,6 +18,9 @@ lived in two separate packages (a meta package and a CSS build package):
 2. **CSS build** — `scripts/` generates the published stylesheets (`variables.css`, `color-scheme.css`, `normalize.css`,
    `font-face.css` and the combined `index.css`) from the meta. These CSS files are exported via
    subpath exports (e.g. `@porsche-design-system/stylesheets/index.css`) and copied into the framework wrappers.
+3. **Skill (docs generation)** — `skill/` serializes the meta into markdown (`skill/generated/stylesheets.md`) for the
+   docs/LLM skill, mirroring the `scss` / `tailwindcss` skill layout. This is build-time documentation only; it is not
+   published.
 
 ## Structure
 
@@ -41,7 +44,12 @@ src/
 scripts/
 ├── buildCssVariableConstants.ts    # Generates src/generated/cssVariables/** (one plain-literal const per variable) from cssVariableTokens
 ├── buildStylesheetsCss.ts         # Renders every `globalStylesMeta` entry to its CSS file via renderCss + Prettier
-└── buildFontFaceCss.ts             # Builds font-face.css (com + cn) from @porsche-design-system/font-face
+├── buildFontFaceCss.ts            # Builds font-face.css (com + cn) from @porsche-design-system/font-face
+└── build-skill.ts                 # Serializes the meta to skill/generated/stylesheets.md via getStylesheetsSkill + Prettier
+skill/                              # Build-time docs (not published)
+├── intro.md, how-to-use.md        # Hand-authored markdown prepended to the generated doc
+├── skill.ts                       # `getStylesheetsSkill()`: pure serializer over stylesheetsMeta + globalStylesMeta
+└── generated/                     # GITIGNORED build artifact (stylesheets.md)
 ```
 
 The catalog uses the shared cross-solution vocabulary (`font`, `font.size`, `border.radius`, `motion.ease`) so it lines
@@ -50,10 +58,7 @@ never changes the generated const names or the emitted CSS) — those are author
 
 ## CSS variable names: source of truth + generated consts + `ref()`
 
-`cssVariablesMeta` is the **single source of truth**: it carries the authored `property` literals (e.g.
-`property: '--p-color-canvas'`) plus the grouping, descriptions and (for colors) light/dark values.
-
-Each domain token file in `src/theme/` carries the authored `property` literals (e.g. `property: '--p-color-canvas'`)
+Each domain token file in `src/theme/` is the **single source of truth**: it carries the authored `property` literals (e.g. `property: '--p-color-canvas'`)
 plus the grouping, descriptions and (for colors) light/dark values; `cssVariableTokens` (`src/theme/index.ts`)
 aggregates them.
 
@@ -90,8 +95,8 @@ resolved `meta` (`CssNode` tree). The `buildStylesheetsCss.ts` script only itera
 `renderCss(entry.meta)` and writes the result to `entry.file` through Prettier — it contains no CSS structure of its own.
 `font-face.css` is intentionally **not** modeled here; it is a raw stylesheet built from the font-face package.
 
-For docs and the future LLM skill, the documented catalog `stylesheetsMeta` is the partitionable surface: walk it and use
-`kindOf` to split CSS-variable **tokens** from `.scheme-*` **utilities**. Single entries (e.g.
+For docs and the LLM skill (`skill/skill.ts`), the documented catalog `stylesheetsMeta` is the partitionable surface: walk
+it and use `kindOf` to split CSS-variable **tokens** from `.scheme-*` **utilities**. Single entries (e.g.
 `stylesheetsMeta.color.background.canvas`) can be read directly; the storefront imports it from
 `@porsche-design-system/stylesheets/meta`.
 
@@ -107,5 +112,6 @@ For docs and the future LLM skill, the documented catalog `stylesheetsMeta` is t
 
 ```bash
 npm run build --workspace=@porsche-design-system/stylesheets
+npm run build:skill --workspace=@porsche-design-system/stylesheets   # regenerate skill/generated/stylesheets.md only
 npm run test:unit --workspace=@porsche-design-system/stylesheets -- run
 ```
