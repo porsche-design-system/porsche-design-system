@@ -12,9 +12,5 @@ export const stylesheetsMeta = {
   colorScheme,
 } satisfies StylesheetsMeta;
 
-export { cssVariableTokens } from './theme';
-export { blur, border, color, font, motion, shadow, spacing } from './theme';
-export { colorScheme, colorSchemePolyfillCssRule } from './utilities/color-scheme';
-export { flattenColorVariables, flattenCssVariables, renderCss, renderCssNode } from './helpers';
 export { kindOf, type StylesheetKind } from './kind';
 export type * from './types';

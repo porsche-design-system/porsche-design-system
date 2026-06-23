@@ -1,15 +1,9 @@
 import { expect, it } from 'vitest';
 import { globalStylesMeta } from '../../../src/css';
-import {
-  colorScheme,
-  cssVariableTokens,
-  flattenColorVariables,
-  flattenCssVariables,
-  kindOf,
-  renderCss,
-  renderCssNode,
-  stylesheetsMeta,
-} from '../../../src/meta';
+import { flattenColorVariables, flattenCssVariables, renderCss, renderCssNode } from '../../../src/helpers';
+import { kindOf, stylesheetsMeta } from '../../../src/meta';
+import { cssVariableTokens } from '../../../src/theme';
+import { colorScheme } from '../../../src/utilities/color-scheme';
 
 const allCssVariables = flattenCssVariables(cssVariableTokens);
 

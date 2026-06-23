@@ -1,7 +1,8 @@
 import { expect, it } from 'vitest';
 import { ref } from '../../../src';
 import * as cssVariables from '../../../src/generated/cssVariables';
-import { cssVariableTokens, flattenCssVariables } from '../../../src/meta';
+import { flattenCssVariables } from '../../../src/helpers';
+import { cssVariableTokens } from '../../../src/theme';
 
 // Derives the const name from a CSS custom property, mirroring the generator
 // (`scripts/buildCssVariableConstants.ts`), e.g. `--p-spacing-fluid-2xl` -> `spacingFluid2Xl`.
