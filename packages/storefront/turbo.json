@@ -23,6 +23,7 @@
         "@porsche-design-system/tokens#build",
         "shared#build"
       ],
+      "env": ["NEXT_PUBLIC_BASE_PATH"],
       "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**", "projects/stackblitz/dist/**"]
     }
