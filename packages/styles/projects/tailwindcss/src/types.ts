@@ -45,91 +45,32 @@ export type TailwindCssMeta = {
   meta: CssNode[];
 };
 
-/** Doc grouping of a theme variable, mirroring the storefront API pages. */
-export type TailwindThemeVariableGroup =
-  | 'background'
-  | 'foreground'
-  | 'semantic'
-  | 'a11y'
-  | 'typography'
-  | 'breakpoint'
-  | 'fluid'
-  | 'static'
-  | 'border'
-  | 'blur'
-  | 'shadow'
-  | 'motion';
-
 /**
- * Solution-agnostic shape of a design-token entry: `description` + rendered `value`. The shared
- * contract every styling solution extends with its own representation (Tailwind adds `property` / `classes`).
+ * A documented Tailwind theme variable: a `description` + rendered `value`, extended with the
+ * Tailwind-specific `property` (source for the `@theme` block) plus doc metadata. A `token` leaf
+ * (recovered via `kindOf` by its `value`). Assignable to {@link CssDeclaration}.
  */
-export type TokenMeta = {
+export type TailwindThemeVariable = {
   /** Human readable description rendered in the docs and LLM context. */
   description: string;
   /** The rendered value (a token, a CSS expression, …). */
   value: string | number;
-};
-
-/** A group of tokens keyed by size/name, e.g. `theme.color.background` or `theme.spacing.fluid`. */
-export type TokenGroup<T extends TokenMeta = TokenMeta> = Record<string, T>;
-
-/**
- * Solution-agnostic shape of a documented utility: just a `description`. Unlike {@link TokenMeta}
- * there is no shared `value` — each solution plugs in its own entry type (Tailwind uses {@link TailwindUtility}).
- */
-export type UtilityMeta = {
-  /** Human readable description rendered in the docs and LLM context. */
-  description: string;
-};
-
-/**
- * Shared design-token catalog shape — the common group taxonomy reused across solutions. Generic
- * over the token type so each solution plugs in its own entry (Tailwind uses {@link TailwindThemeVariable}).
- */
-export type ThemeCatalog<T extends TokenMeta = TokenMeta> = {
-  color: Record<'background' | 'foreground' | 'semantic' | 'a11y', TokenGroup<T>>;
-  typography: Record<'family' | 'weight' | 'lineHeight' | 'text', TokenGroup<T>>;
-  spacing: Record<'fluid' | 'static', TokenGroup<T>>;
-  border: { radius: TokenGroup<T>; width: T[] };
-  blur: T[];
-  shadow: T[];
-  breakpoint: T[];
-  motion: { duration: T[]; easing: T[] };
-};
-
-/**
- * Shared documented-utility catalog shape — the common topic grouping every solution exposes
- * (typography shorthands, gradients, grid, skeletons). Generic over the utility type (Tailwind
- * uses {@link TailwindUtility}).
- */
-export type UtilitiesCatalog<T extends UtilityMeta = UtilityMeta> = {
-  typography: { heading: T[]; text: T[]; display: T[] };
-  gradient: T[];
-  grid: T[];
-  skeleton: T[];
-};
-
-/**
- * A documented Tailwind theme variable — {@link TokenMeta} extended with the Tailwind-specific
- * `property` (source for the `@theme` block) plus doc metadata. Assignable to {@link CssDeclaration}.
- */
-export type TailwindThemeVariable = TokenMeta & {
   /** The CSS custom property feeding the `@theme` block, e.g. `--color-canvas`. */
   property: string;
   /** The Tailwind utility classes generated from this variable, e.g. `.bg-canvas`. */
   classes?: string[];
-  /** Grouping used to organize the documentation tables. */
-  group?: TailwindThemeVariableGroup;
   /** Optional leading comment rendered above the declaration in the `@theme` block. */
   comment?: string;
 };
 
 /**
- * A documented Tailwind `@utility` — {@link UtilityMeta} extended with `selector` / `class` (docs)
- * and the `raw` declaration body (implementation detail, rendered verbatim).
+ * A documented Tailwind `@utility`: a `description` plus `selector` / `class` (docs) and the `raw`
+ * declaration body (implementation detail, rendered verbatim). A `utility` leaf (recovered via
+ * `kindOf` by the absence of `value`).
  */
-export type TailwindUtility = UtilityMeta & {
+export type TailwindUtility = {
+  /** Human readable description rendered in the docs and LLM context. */
+  description: string;
   /** Optional leading comment rendered above the utility, e.g. `Grid: Area Narrow`. */
   comment?: string;
   /** The at-rule prelude, e.g. `@utility col-full`. */
@@ -140,18 +81,159 @@ export type TailwindUtility = UtilityMeta & {
   raw: string;
 };
 
-/** Documented `@utility` classes grouped by topic (docs + LLM + the generated `@utility` blocks). */
-export type TailwindUtilities = UtilitiesCatalog<TailwindUtility>;
+/** A documented meta leaf — a token ({@link TailwindThemeVariable}) or a utility ({@link TailwindUtility}). */
+export type TailwindNode = TailwindThemeVariable | TailwindUtility;
+
+/** Any branch of the meta tree: a leaf {@link TailwindNode}, an array, or a nested record. Only leaves render; records and arrays group. */
+export type TailwindBranch = TailwindNode | TailwindBranch[] | { [key: string]: TailwindBranch };
 
 /**
- * The documented single source of truth shared with the storefront docs and LLM context. CSS-generation
- * plumbing (resets, defaults, layers, keyframes, deprecated aliases) is intentionally **not** here — it
- * lives alongside the assembly in `css/index.ts`. The catalog groups are the same object references the
- * CSS is built from, so docs and generated CSS can never diverge.
+ * The documented single source of truth, shared with the storefront docs and LLM context. A flat,
+ * domain-keyed catalog mirroring `tokensMeta` (and the scss `ScssMeta`); each leaf's kind
+ * (`token` | `utility`) is recoverable via `kindOf`. `gradient` is a utility domain here (Tailwind
+ * emits CSS classes, not a token), and there are no `focus` / `mediaQuery` domains (Tailwind
+ * built-in variants). Catalog groups are the same object references the CSS is built from, so docs
+ * and generated CSS can't diverge. CSS-only plumbing (resets, defaults, layers, keyframes,
+ * deprecated aliases) lives in the composition layer (`css/index.ts`).
  */
 export type TailwindMeta = {
-  /** The documented design-token catalog rendered inside the `@theme` block. */
-  theme: ThemeCatalog<TailwindThemeVariable>;
-  /** The documented `@utility` blocks. */
-  utilities: TailwindUtilities;
+  border: {
+    radius: {
+      xs: TailwindThemeVariable;
+      sm: TailwindThemeVariable;
+      md: TailwindThemeVariable;
+      lg: TailwindThemeVariable;
+      xl: TailwindThemeVariable;
+      '2xl': TailwindThemeVariable;
+      '3xl': TailwindThemeVariable;
+      '4xl': TailwindThemeVariable;
+      full: TailwindThemeVariable;
+    };
+    width: TailwindThemeVariable[];
+  };
+  blur: {
+    frosted: TailwindThemeVariable;
+  };
+  breakpoint: {
+    xs: TailwindThemeVariable;
+    sm: TailwindThemeVariable;
+    md: TailwindThemeVariable;
+    lg: TailwindThemeVariable;
+    xl: TailwindThemeVariable;
+    '2xl': TailwindThemeVariable;
+  };
+  color: {
+    a11y: {
+      focus: TailwindThemeVariable;
+    };
+    background: {
+      canvas: TailwindThemeVariable;
+      surface: TailwindThemeVariable;
+      frosted: TailwindThemeVariable;
+      frostedSoft: TailwindThemeVariable;
+      frostedStrong: TailwindThemeVariable;
+      backdrop: TailwindThemeVariable;
+    };
+    foreground: {
+      contrastLower: TailwindThemeVariable;
+      contrastLow: TailwindThemeVariable;
+      contrastMedium: TailwindThemeVariable;
+      contrastHigh: TailwindThemeVariable;
+      contrastHigher: TailwindThemeVariable;
+      primary: TailwindThemeVariable;
+    };
+    semantic: {
+      success: TailwindThemeVariable;
+      successLow: TailwindThemeVariable;
+      successMedium: TailwindThemeVariable;
+      successFrosted: TailwindThemeVariable;
+      successFrostedSoft: TailwindThemeVariable;
+      warning: TailwindThemeVariable;
+      warningLow: TailwindThemeVariable;
+      warningMedium: TailwindThemeVariable;
+      warningFrosted: TailwindThemeVariable;
+      warningFrostedSoft: TailwindThemeVariable;
+      error: TailwindThemeVariable;
+      errorLow: TailwindThemeVariable;
+      errorMedium: TailwindThemeVariable;
+      errorFrosted: TailwindThemeVariable;
+      errorFrostedSoft: TailwindThemeVariable;
+      info: TailwindThemeVariable;
+      infoLow: TailwindThemeVariable;
+      infoMedium: TailwindThemeVariable;
+      infoFrosted: TailwindThemeVariable;
+      infoFrostedSoft: TailwindThemeVariable;
+    };
+  };
+  font: {
+    family: {
+      porscheNext: TailwindThemeVariable;
+      sans: TailwindThemeVariable;
+    };
+    weight: {
+      normal: TailwindThemeVariable;
+      semibold: TailwindThemeVariable;
+      bold: TailwindThemeVariable;
+    };
+    lineHeight: {
+      normal: TailwindThemeVariable;
+    };
+    size: {
+      '2xs': TailwindThemeVariable;
+      xs: TailwindThemeVariable;
+      sm: TailwindThemeVariable;
+      md: TailwindThemeVariable;
+      lg: TailwindThemeVariable;
+      xl: TailwindThemeVariable;
+      '2xl': TailwindThemeVariable;
+      '3xl': TailwindThemeVariable;
+      '4xl': TailwindThemeVariable;
+      '5xl': TailwindThemeVariable;
+    };
+  };
+  shadow: {
+    sm: TailwindThemeVariable;
+    md: TailwindThemeVariable;
+    lg: TailwindThemeVariable;
+  };
+  spacing: {
+    fluid: {
+      xs: TailwindThemeVariable;
+      sm: TailwindThemeVariable;
+      md: TailwindThemeVariable;
+      lg: TailwindThemeVariable;
+      xl: TailwindThemeVariable;
+      '2xl': TailwindThemeVariable;
+    };
+    static: {
+      '2xs': TailwindThemeVariable;
+      xs: TailwindThemeVariable;
+      sm: TailwindThemeVariable;
+      md: TailwindThemeVariable;
+      lg: TailwindThemeVariable;
+      xl: TailwindThemeVariable;
+      '2xl': TailwindThemeVariable;
+    };
+  };
+  motion: {
+    duration: {
+      sm: TailwindThemeVariable;
+      md: TailwindThemeVariable;
+      lg: TailwindThemeVariable;
+      xl: TailwindThemeVariable;
+    };
+    ease: {
+      inOut: TailwindThemeVariable;
+      in: TailwindThemeVariable;
+      out: TailwindThemeVariable;
+    };
+  };
+  gradient: TailwindUtility[];
+  typography: {
+    heading: TailwindUtility[];
+    text: TailwindUtility[];
+    display: TailwindUtility[];
+  };
+  skeleton: TailwindUtility[];
+  grid: TailwindUtility[];
 };
