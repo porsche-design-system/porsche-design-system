@@ -32,7 +32,7 @@ runs:
       id: cache-node_modules
       with:
         path: '**/node_modules'
-        key: ${{ runner.os }}-v3-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
     - name: 'Install node_modules'
       if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit != 'true'
       # `preinstall` creates the build-output workspace stubs (dist/*/package.json) that npm must see

@@ -40,12 +40,6 @@ jobs:
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
-      - name: 'Debug: components-js workspace link'
-        run: |
-          echo "--- node_modules/@porsche-design-system/components-js ---"
-          ls -la node_modules/@porsche-design-system/components-js 2>&1 || echo "MISSING symlink/dir"
-          echo "--- resolve (may fail pre-build; symlink presence/target is the signal) ---"
-          node -e "try{console.log('resolve:',require.resolve('@porsche-design-system/components-js'))}catch(e){console.log('RESOLVE FAIL',e.code)}" || true
       - run: npm run build
       - uses: actions/upload-artifact@v7
         with:
@@ -122,12 +116,6 @@ jobs:
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
-      - name: 'Debug: components-js workspace link'
-        run: |
-          echo "--- node_modules/@porsche-design-system/components-js ---"
-          ls -la node_modules/@porsche-design-system/components-js 2>&1 || echo "MISSING symlink/dir"
-          echo "--- resolve (may fail pre-build; symlink presence/target is the signal) ---"
-          node -e "try{console.log('resolve:',require.resolve('@porsche-design-system/components-js'))}catch(e){console.log('RESOLVE FAIL',e.code)}" || true
       - run: npm run build-prod
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ inputs.storefront-slug }}
