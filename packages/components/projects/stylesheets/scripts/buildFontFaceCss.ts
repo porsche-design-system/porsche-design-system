@@ -7,8 +7,8 @@ export const buildFontFaceCss = () => {
   const stylesCom = getMinifiedPorscheNextFontFaceCss({ cdn: isDev ? 'localhost' : 'com' });
   const stylesCn = getMinifiedPorscheNextFontFaceCss({ cdn: isDev ? 'localhost' : 'cn' });
 
-  const targetPath = './dist';
-  const targetPathCn = './dist/cn';
+  const targetPath = './lib';
+  const targetPathCn = './lib/cn';
   const targetFile = 'font-face.css';
 
   fs.mkdirSync(targetPath, { recursive: true });

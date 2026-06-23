@@ -1,14 +1,13 @@
 // @ts-check
 import typescript from '@rollup/plugin-typescript';
 
-// The package's main (`.`) entry: the tree-shakeable CSS-variable name consts (generated from the
-// meta into `src/generated/`) plus the hand-written `ref` helper — what runtime consumers like the
-// components package import. With `preserveModules` the module graph is emitted under
-// `dist/<esm|cjs>/` so `.` resolves to `dist/esm/index.mjs` / `dist/cjs/index.cjs`. The documented
-// meta catalog lives in its own build (`rollup.config.meta.mjs` → `meta/`), and the generated CSS
-// files live in `lib/` — keeping the three concerns in separate output dirs.
-const input = ['src/index.ts'];
-const outputDir = 'dist';
+// The `./meta` subpath: the documented meta catalog (`stylesheetsMeta`, leaf/CssNode types and
+// `kindOf`). With `preserveModules`, its module graph is emitted under `meta/<esm|cjs>/` so `./meta`
+// resolves to `meta.mjs` / `meta.cjs`. This JS is internal-only and consumed by the storefront docs;
+// the runtime `.` entry has its own build (`rollup.config.mjs` → `dist/`) and the generated CSS
+// files live in `lib/` — mirroring the `scss`/`tailwindcss` packages' `dist/` vs `meta/` split.
+const input = ['src/meta.ts'];
+const outputDir = 'meta';
 
 export default [
   {
