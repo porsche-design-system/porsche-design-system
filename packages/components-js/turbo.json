@@ -13,8 +13,8 @@
         "@porsche-design-system/styles#build",
         "utilities-v2#build"
       ],
-      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**"],
-      "outputs": ["dist/**", "projects/*/dist/**", "projects/components-wrapper/lib/**", "projects/partials/src/lib/**"]
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!projects/**/src/lib/**", "!projects/components-wrapper/lib/**"],
+      "outputs": ["dist/**", "projects/*/dist/**", "projects/components-wrapper/lib/**", "projects/**/src/lib/**"]
     },
     "build-prod": {
       "dependsOn": [
@@ -27,8 +27,8 @@
         "@porsche-design-system/styles#build-prod",
         "utilities-v2#build"
       ],
-      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**"],
-      "outputs": ["dist/**", "projects/*/dist/**", "projects/components-wrapper/lib/**", "projects/partials/src/lib/**"]
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!projects/**/src/lib/**", "!projects/components-wrapper/lib/**"],
+      "outputs": ["dist/**", "projects/*/dist/**", "projects/components-wrapper/lib/**", "projects/**/src/lib/**"]
     }
   }
 }

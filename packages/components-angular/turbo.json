@@ -10,8 +10,8 @@
         "@porsche-design-system/components#build",
         "@porsche-design-system/styles#build"
       ],
-      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**"],
-      "outputs": ["dist/**"]
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!projects/angular-wrapper/src/lib/**", "!src/app/pages/generated/**"],
+      "outputs": ["dist/**", "projects/angular-wrapper/src/lib/**", "src/app/pages/generated/**"]
     },
     "build-prod": {
       "dependsOn": [
@@ -21,8 +21,8 @@
         "@porsche-design-system/components#build-prod",
         "@porsche-design-system/styles#build-prod"
       ],
-      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**"],
-      "outputs": ["dist/**"]
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!projects/angular-wrapper/src/lib/**", "!src/app/pages/generated/**"],
+      "outputs": ["dist/**", "projects/angular-wrapper/src/lib/**", "src/app/pages/generated/**"]
     }
   }
 }
