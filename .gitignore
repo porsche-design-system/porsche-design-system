@@ -108,12 +108,14 @@ packages/component-meta/src/lib/*
 packages/components-js/projects/partials/src/lib/*
 packages/utilities/projects/utilities/src/scss/lib/*
 packages/tokens/projects/tokens-meta/src/lib/*
+packages/components/projects/stylesheets/lib/
 
 # Meta
 packages/styles/projects/scss/meta/
 packages/styles/projects/tailwindcss/meta/
 packages/styles/projects/vanilla-extract/meta/
 packages/styles/projects/emotion/meta/
+packages/components/projects/stylesheets/meta/
 
 # Agent Skills, ignored for now for testing and review of the skills. Remove once we decided on what skills to keep.
 .claude/

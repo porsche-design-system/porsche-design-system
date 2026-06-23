@@ -19,6 +19,13 @@ packages/styles/
 └── tests/vrt/                 # Visual regression tests
 ```
 
+Each publishable project follows a shared `meta/` (the documented catalog, single source of truth) +
+`scripts/` (build) layout. `scss` and `tailwindcss` additionally ship a `skill/` generator
+(`skill/skill.ts` + `scripts/build-skill.ts`, output in gitignored `skill/generated/`) that serializes
+their meta into markdown for the docs/LLM skill — mirroring
+[`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). `emotion` and
+`vanilla-extract` are being aligned to the same meta structure (skill generators not added yet).
+
 ## Commands
 
 ```bash

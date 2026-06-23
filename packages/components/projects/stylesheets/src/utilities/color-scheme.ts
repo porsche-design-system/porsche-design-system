@@ -1,11 +1,9 @@
-import { cssVariablesMeta } from './cssVariablesMeta';
-import { flattenColorVariables } from './helpers';
-import type { ColorCssVariableMeta, ColorSchemeClassMeta, CssDeclaration, CssNode, CssRule } from './types';
+import type { ColorCssVariableMeta, ColorSchemeClassMeta, CssDeclaration, CssRule } from '../types';
 
-// Utility classes controlling the CSS `color-scheme` property. Emitted into
-// `color-scheme.css`, which also contains the `light-dark()` polyfill generated
-// from the color variables in `cssVariablesMeta`.
-export const colorSchemeClassesMeta = [
+// Utility classes controlling the CSS `color-scheme` property — documented `utility` leaves of the
+// meta catalog. Emitted into `color-scheme.css`, which also contains the `light-dark()` polyfill
+// generated from the theme-aware color variables (see `colorSchemePolyfillCssRule`).
+export const colorScheme = [
   {
     selector: '.scheme-normal',
     declarations: [{ property: 'color-scheme', value: 'normal' }],
@@ -59,9 +57,7 @@ const toColorDeclarations = (
  * Builds the `@supports not (color: light-dark(…))` polyfill rule that maps the
  * theme-aware color variables to explicit light/dark values per color-scheme class.
  */
-export const colorSchemePolyfillCssRule = (
-  colorVariables: ColorCssVariableMeta[] = flattenColorVariables(cssVariablesMeta)
-): CssRule => {
+export const colorSchemePolyfillCssRule = (colorVariables: ColorCssVariableMeta[]): CssRule => {
   const lightDeclarations = toColorDeclarations(colorVariables, 'valueLight');
   const darkDeclarations = toColorDeclarations(colorVariables, 'valueDark');
 
@@ -83,9 +79,3 @@ export const colorSchemePolyfillCssRule = (
     ],
   };
 };
-
-// The fully resolved CSS for `color-scheme.css`, expressed as `CssNode` trees.
-// The build scripts only have to `renderCss()` these nodes and format the result.
-export const colorSchemeCss: CssNode[] = [...colorSchemeClassesMeta, colorSchemePolyfillCssRule()];
-
-
