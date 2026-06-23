@@ -1,6 +1,6 @@
+import { sync as globbySync } from 'fast-glob';
 import * as fs from 'fs';
 import * as path from 'path';
-import { sync as globbySync } from 'fast-glob';
 import { npmDistTmpSubPath } from '../projects/components-wrapper/environment';
 
 const packageDir = path.resolve(__dirname, '..');
@@ -19,18 +19,17 @@ const readAndWriteFile = (targetFile: string): void => {
 };
 
 const replaceCdnBaseUrlDynamicPlaceholder = () => {
-  const componentsJsUmdFilePath = require.resolve('@porsche-design-system/components-js');
-  const packageDir = path.resolve(componentsJsUmdFilePath, '../..');
-  const componentsJsEsmFilePath = path.resolve(packageDir, 'esm/index.mjs');
-  const componentsJsLegacyFilePath = path.resolve(packageDir, 'index.js');
-  const componentsJsIifeFilePath = path.resolve(packageDir, '../..', npmDistTmpSubPath, 'index.js');
+  // resolve everything from this package's own build output (packageDir = packages/components-js).
+  // avoids require.resolve('@porsche-design-system/components-js'), which follows the self-symlink
+  // differently across install layouts (collapses locally, stays in node_modules on CI).
+  const loaderDir = path.resolve(packageDir, 'dist/components-wrapper'); // built core loader (published as components-js)
 
   [
-    componentsJsUmdFilePath, // core loader umd build
-    componentsJsEsmFilePath, // core loader esm build
-    componentsJsLegacyFilePath, // same as umd build under cjs folder but different file extension for webpack 4
-    componentsJsIifeFilePath, // temporary core loader used for getLoaderScript partial
-    globbySync(path.resolve(packageDir, '../components/porsche-design-system.v*'))[0], // core chunk on cdn
+    path.resolve(loaderDir, 'cjs/index.cjs'), // core loader umd build (package main)
+    path.resolve(loaderDir, 'esm/index.mjs'), // core loader esm build
+    path.resolve(loaderDir, 'index.js'), // same as umd build but different extension for webpack 4
+    path.resolve(packageDir, npmDistTmpSubPath, 'index.js'), // temporary core loader used for getLoaderScript partial
+    globbySync(path.resolve(packageDir, 'dist/components/porsche-design-system.v*'))[0], // core chunk on cdn
   ].forEach(readAndWriteFile);
 
   console.log(`Replaced: "%%%CDN_BASE_URL_DYNAMIC%%%" –> "document.porscheDesignSystem.cdn.url"`);

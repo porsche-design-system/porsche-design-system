@@ -1,7 +1,7 @@
+import type { TagName } from '@porsche-design-system/shared';
+import { kebabCase } from 'change-case';
 import * as fs from 'fs';
 import * as path from 'path';
-import { kebabCase } from 'change-case';
-import type { TagName } from '@porsche-design-system/shared';
 
 type Manifest = {
   [key in TagName | 'core']?: string;
@@ -39,12 +39,14 @@ const createManifest = (indexJsFile: string): Manifest => {
 const generateChunksManifest = (): void => {
   let manifest: Manifest = {}; // fallback
 
-  const packageName = '@porsche-design-system/components-js';
+  // built core loader of this package (resolved from the package's own folder rather than
+  // require.resolve('@porsche-design-system/components-js'), whose self-symlink resolves
+  // differently across install layouts — collapses locally, stays in node_modules on CI)
+  const indexJsFile = path.resolve(__dirname, '..', 'dist/components-wrapper/cjs/index.cjs');
   try {
-    const indexJsFile = require.resolve(packageName);
     manifest = createManifest(indexJsFile);
   } catch (e) {
-    throw new Error(`"${packageName}" can't be resolved, so manifest will be empty`);
+    throw new Error(`"${indexJsFile}" can't be read, so manifest will be empty`);
   }
 
   const chunkNames = Object.keys(manifest).filter((chunkName) => chunkName !== 'core');
