@@ -14,9 +14,10 @@ lived in two separate packages (a meta package and a CSS build package):
    fields (avoiding duplicated literals). The documented catalog (`stylesheetsMeta`) is exposed via the dedicated
    **`./meta` subpath** (mirroring `@porsche-design-system/scss` / `tailwindcss`) and is consumed by the storefront to
    render the CSS variable / color-scheme documentation. The package's default (JS) entry (`.`) exposes only the
-   tree-shakeable name consts + `ref` (what runtime consumers like the components package need).
+   tree-shakeable name consts + `ref` (what runtime consumers like the components package need); it is built into
+   `dist/` by `rollup.config.mjs`, while the `./meta` catalog is built into `meta/` by `rollup.config.meta.mjs`.
 2. **CSS build** — `scripts/` generates the published stylesheets (`variables.css`, `color-scheme.css`, `normalize.css`,
-   `font-face.css` and the combined `index.css`) from the meta. These CSS files are exported via
+   `font-face.css` and the combined `index.css`) from the meta into `lib/`. These CSS files are exported via
    subpath exports (e.g. `@porsche-design-system/stylesheets/index.css`) and copied into the framework wrappers.
 3. **Skill (docs generation)** — `skill/` serializes the meta into markdown (`skill/generated/stylesheets.md`) for the
    docs/LLM skill, mirroring the `scss` / `tailwindcss` skill layout. This is build-time documentation only; it is not

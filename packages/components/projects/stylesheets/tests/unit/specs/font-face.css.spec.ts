@@ -3,12 +3,12 @@ import path from 'node:path';
 import { expect, it } from 'vitest';
 
 const readFontFace = () => {
-  const themePath = path.resolve(__dirname, '../../../dist/font-face.css');
+  const themePath = path.resolve(__dirname, '../../../lib/font-face.css');
   return fs.readFileSync(themePath, 'utf-8');
 };
 
 const readFontFaceCn = () => {
-  const themePath = path.resolve(__dirname, '../../../dist/cn/font-face.css');
+  const themePath = path.resolve(__dirname, '../../../lib/cn/font-face.css');
   return fs.readFileSync(themePath, 'utf-8');
 };
 

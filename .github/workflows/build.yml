@@ -72,6 +72,7 @@ jobs:
             ./packages/styles/projects/vanilla-extract/meta/
             ./packages/components/dist/
             ./packages/components/projects/stylesheets/dist/
+            ./packages/components/projects/stylesheets/lib/
             ./packages/components/projects/stylesheets/meta/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/
@@ -155,6 +156,7 @@ jobs:
             ./packages/styles/projects/vanilla-extract/meta/
             ./packages/components/dist/
             ./packages/components/projects/stylesheets/dist/
+            ./packages/components/projects/stylesheets/lib/
             ./packages/components/projects/stylesheets/meta/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/

@@ -4,7 +4,7 @@ import { expect, it } from 'vitest';
 import { CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../../../cdn.config';
 
 const readFile = (file: string) => {
-  const themePath = path.resolve(__dirname, `../../../dist/${file}`);
+  const themePath = path.resolve(__dirname, `../../../lib/${file}`);
   return fs.readFileSync(themePath, 'utf-8');
 };
 

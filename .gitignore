@@ -108,6 +108,7 @@ packages/component-meta/src/lib/*
 packages/components-js/projects/partials/src/lib/*
 packages/utilities/projects/utilities/src/scss/lib/*
 packages/tokens/projects/tokens-meta/src/lib/*
+packages/components/projects/stylesheets/lib/
 
 # Meta
 packages/styles/projects/scss/meta/

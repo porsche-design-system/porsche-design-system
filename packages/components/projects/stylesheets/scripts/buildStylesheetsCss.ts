@@ -8,7 +8,7 @@ import { renderCss } from '../src/helpers';
 // to render, so a single loop replaces the previously duplicated per-file scripts.
 // Note: `font-face.css` is intentionally not handled here (see buildFontFaceCss.ts).
 export const buildStylesheetsCss = async (): Promise<void> => {
-  const targetPath = './dist';
+  const targetPath = './lib';
   fs.mkdirSync(targetPath, { recursive: true });
 
   const stylesheets = Object.values(globalStylesMeta);
