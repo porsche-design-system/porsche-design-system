@@ -35,7 +35,10 @@ runs:
         key: ${{ runner.os }}-v2-${{ hashFiles('**/package-lock.json') }}
     - name: 'Install node_modules'
       if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit != 'true'
-      run: npm ci
+      # `preinstall` creates the build-output workspace stubs (dist/*/package.json) that npm must see
+      # at workspace-resolution time; `npm ci` runs lifecycle scripts only AFTER linking workspaces,
+      # so on a fresh install those workspaces (e.g. @porsche-design-system/components-js) never link.
+      run: npm run preinstall && npm ci
       shell: bash
     - name: 'Install rclone'
       if: inputs.rclone == 'true'
