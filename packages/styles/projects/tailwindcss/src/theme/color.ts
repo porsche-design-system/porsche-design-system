@@ -99,7 +99,7 @@ import {
   colorWarningMediumDark,
   colorWarningMediumLight,
 } from '@porsche-design-system/tokens';
-import type { CssNode, TailwindThemeVariableGroup } from '../types';
+import type { CssNode } from '../types';
 
 /**
  * Full description of a single color — the single source of truth for the `@theme`
@@ -133,7 +133,7 @@ type ColorConfig = {
 };
 
 /** The color groups that exist in {@link color} (mirrors the storefront API tables). */
-type ColorGroup = Extract<TailwindThemeVariableGroup, 'background' | 'foreground' | 'semantic' | 'a11y'>;
+type ColorGroup = 'background' | 'foreground' | 'semantic' | 'a11y';
 
 /**
  * Nested single source of truth for every color, grouped exactly like the

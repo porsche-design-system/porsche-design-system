@@ -38,6 +38,9 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
           compact={true}
           background="surface"
           onUpdate={onUpdate}
+          aria={{
+            'aria-label': 'Select the JavaScript framework for code preview',
+          }}
         >
           {frameworks.map((framework) => (
             <button key={framework} type="button">

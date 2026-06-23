@@ -21,7 +21,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - run: npm run lint
   build-development:
@@ -32,7 +32,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - uses: actions/cache@v5
         with:
@@ -59,6 +59,7 @@ jobs:
             ./packages/styles/projects/tailwindcss/dist/
             ./packages/styles/projects/tailwindcss/meta/
             ./packages/styles/projects/scss/dist/
+            ./packages/styles/projects/scss/meta/
             ./packages/styles/projects/emotion/dist/
             ./packages/styles/projects/emotion/meta/
             ./packages/styles/projects/vanilla-extract/dist/
@@ -107,7 +108,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - uses: actions/cache@v5
         with:
@@ -136,6 +137,7 @@ jobs:
             ./packages/styles/projects/tailwindcss/dist/
             ./packages/styles/projects/tailwindcss/meta/
             ./packages/styles/projects/scss/dist/
+            ./packages/styles/projects/scss/meta/
             ./packages/styles/projects/emotion/dist/
             ./packages/styles/projects/emotion/meta/
             ./packages/styles/projects/vanilla-extract/dist/

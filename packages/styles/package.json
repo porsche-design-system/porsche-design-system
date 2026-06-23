@@ -31,23 +31,23 @@
     "clean:build:emotion": "npm run clean:build --workspace=@porsche-design-system/emotion",
     "clean:build:vanilla-extract": "npm run clean:build --workspace=@porsche-design-system/vanilla-extract"
   },
-  "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0",
-    "@vitejs/plugin-react": "^6.0.2"
+  "dependencies": {
+    "@emotion/styled": "^11.14.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
-  "peerDependencies": {
-    "@emotion/styled": "*",
-    "@playwright/test": "*",
-    "@tailwindcss/vite": "*",
-    "@vanilla-extract/css": "*",
-    "@vanilla-extract/vite-plugin": "*",
-    "react": "*",
-    "react-dom": "*",
-    "react-router": "*",
-    "sass": "*",
-    "tailwindcss": "*",
-    "typescript": "*",
-    "vite": "*"
+  "devDependencies": {
+    "@playwright/test": "1.61.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "@vanilla-extract/css": "^1.20.1",
+    "@vanilla-extract/vite-plugin": "^5.2.2",
+    "@vitejs/plugin-react": "^6.0.2",
+    "react-router": "^8.0.1",
+    "sass": "^1.101.0",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
   },
   "volta": {
     "extends": "../../package.json"

@@ -31,17 +31,15 @@
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
-  },
-  "peerDependencies": {
-    "@rollup/plugin-typescript": "*",
-    "change-case": "*",
-    "fast-glob": "*",
-    "rollup": "*",
-    "rollup-plugin-dts": "*",
-    "svgo": "*",
-    "tsx": "*",
-    "typescript": "*"
+    "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "change-case": "^5.4.4",
+    "fast-glob": "^3.3.3",
+    "rollup": "^4.62.2",
+    "rollup-plugin-dts": "^6.4.1",
+    "svgo": "^4.0.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   },
   "volta": {
     "extends": "../../../../package.json"

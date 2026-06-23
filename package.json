@@ -39,6 +39,10 @@
     "packages/tokens/projects/tokens-meta",
     "packages/utilities/projects/ag-grid",
     "packages/storefront/projects/stackblitz",
+    "packages/storefront/projects/stackblitz/src/angular",
+    "packages/storefront/projects/stackblitz/src/react",
+    "packages/storefront/projects/stackblitz/src/vanilla-js",
+    "packages/storefront/projects/stackblitz/src/vue",
     "packages/shared/dist"
   ],
   "scripts": {
@@ -203,8 +207,8 @@
     "clean:storefront:build": "npm run clean:build --workspace=@porsche-design-system/storefront",
     "clean:utilities:build": "npm run clean:build --workspace=utilities-v2",
     "npm:install": "npm install",
-    "npm:lint": "syncpack lint --dependency-types prod,dev",
-    "npm:lint:fix": "syncpack fix --dependency-types prod,dev",
+    "npm:lint": "syncpack lint",
+    "npm:lint:fix": "syncpack fix",
     "npm:list": "syncpack list --show all --sort count",
     "npm:format": "syncpack format --check",
     "npm:format:fix": "syncpack format",
@@ -233,7 +237,7 @@
     "@tailwindcss/postcss": "^4.3.1",
     "@tailwindcss/vite": "^4.3.1",
     "@types/madge": "^5.0.3",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.0.0",
     "@vanilla-extract/css": "^1.20.1",
     "@vanilla-extract/rollup-plugin": "^1.5.3",
     "@vanilla-extract/vite-plugin": "^5.2.2",
@@ -244,11 +248,11 @@
     "karma": "~6.4.4",
     "madge": "^8.0.0",
     "patch-package": "^8.0.1",
-    "postcss": "^8.5.15",
+    "postcss": "^8",
     "prettier": "^3.8.4",
     "publint": "^0.3.21",
-    "react-router": "^7.18.0",
-    "rollup": "^4.62.0",
+    "react-router": "^8.0.1",
+    "rollup": "^4.62.2",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-dts": "^6.4.1",
@@ -257,13 +261,13 @@
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "sass": "^1.101.0",
-    "semver": "^7.8.4",
+    "semver": "^7.8.5",
     "svgo": "^4.0.1",
     "syncpack": "^15.3.2",
     "tailwindcss": "^4.3.1",
     "tsx": "^4.22.4",
     "turbo": "^2.9.18",
-    "typescript": "~6.0.3",
+    "typescript": "^6.0.3",
     "vite": "^8.0.16",
     "vitest": "^4.1.9",
     "vue": "^3.5.38",
@@ -273,7 +277,6 @@
     "madge": {
       "typescript": "$typescript"
     },
-    "@babel/runtime": "^7.26.10",
     "@tootallnate/once": "^3.0.1",
     "brace-expansion@1": "1.1.13",
     "brace-expansion@2": "2.0.3",
@@ -281,7 +284,7 @@
     "ejs": "^3.1.10",
     "follow-redirects": "^1.16.0",
     "js-cookie": "^3.0.8",
-    "koa": "^2.16.4",
+    "koa": "^3.2.1",
     "lodash": "^4.18.1",
     "mdast-util-to-hast": "^13.2.1",
     "micromatch": "^4.0.8",
@@ -296,9 +299,6 @@
     },
     "next": {
       "postcss": "^8.5.10"
-    },
-    "@react-router/serve": {
-      "express": "^4.22.2"
     }
   },
   "volta": {

@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Tabs`, `Tabs Bar`: `aria` prop to provide additional context for screen readers
+  ([#4538](https://github.com/porsche-design-system/porsche-design-system/pull/4538))
+
+## [4.2.0] - 2026-06-22
+
 ## [4.2.0-rc.5] - 2026-06-12
 
 ### Added

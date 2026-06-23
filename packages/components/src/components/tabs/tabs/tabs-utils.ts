@@ -1,3 +1,6 @@
+export const TABS_ARIA_ATTRIBUTES = ['aria-label', 'aria-description'] as const;
+export type TabsAriaAttribute = (typeof TABS_ARIA_ATTRIBUTES)[number];
+
 export const TABS_SIZES = ['small', 'medium'] as const;
 export type TabsSize = (typeof TABS_SIZES)[number];
 

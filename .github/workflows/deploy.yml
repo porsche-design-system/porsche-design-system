@@ -37,7 +37,7 @@ jobs:
     name: 'Akamai CDN (Assets)'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
         with:
           node_modules: 'false'
@@ -127,7 +127,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -143,8 +143,8 @@ jobs:
     container:
       image: ${{ inputs.image }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}

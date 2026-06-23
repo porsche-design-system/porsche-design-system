@@ -33,19 +33,17 @@
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
-  },
-  "peerDependencies": {
-    "@biomejs/biome": "*",
-    "@rollup/plugin-node-resolve": "*",
-    "@types/node": "*",
-    "@vanilla-extract/css": "*",
-    "@vanilla-extract/rollup-plugin": "*",
-    "@vanilla-extract/vite-plugin": "*",
-    "rollup": "*",
-    "rollup-plugin-generate-package-json": "*",
-    "typescript": "*",
-    "vitest": "*"
+    "@biomejs/biome": "^2.5.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@types/node": "^26.0.0",
+    "@vanilla-extract/css": "^1.20.1",
+    "@vanilla-extract/rollup-plugin": "^1.5.3",
+    "@vanilla-extract/vite-plugin": "^5.2.2",
+    "rollup": "^4.62.2",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   },
   "volta": {
     "extends": "../../../../package.json"

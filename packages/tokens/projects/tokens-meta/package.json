@@ -29,16 +29,14 @@
     "clean:build": "rm -rf ./dist && rm -rf ./src/lib"
   },
   "devDependencies": {
-    "@porsche-design-system/tokens": "0.0.0"
-  },
-  "peerDependencies": {
-    "@rollup/plugin-typescript": "*",
-    "change-case": "*",
-    "fast-glob": "*",
-    "rollup": "*",
-    "tsx": "*",
-    "typescript": "*",
-    "vitest": "*"
+    "@porsche-design-system/tokens": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "change-case": "^5.4.4",
+    "fast-glob": "^3.3.3",
+    "rollup": "^4.62.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   },
   "volta": {
     "extends": "../../../../package.json"

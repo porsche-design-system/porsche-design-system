@@ -1,5 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
+import { ScssMixinsTable } from '@/components/common/ScssMixinsTable';
+import { scssMeta } from '@porsche-design-system/scss';
 
 export const metadata = {
   title: 'SCSS: Focus - Porsche Design System',
@@ -12,6 +13,4 @@ export const metadata = {
 
 ## SCSS Mixins
 
-| SCSS Mixin                                                       | Description                        |
-| ---------------------------------------------------------------- | ---------------------------------- |
-| <Code variant="nowrap">@mixin focus-visible($offset: 2px)</Code> | Applies a **focus-visible** style. |
+<ScssMixinsTable mixins={scssMeta.focus} />

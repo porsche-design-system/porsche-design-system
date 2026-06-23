@@ -1,6 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import { blurFrosted } from '@porsche-design-system/tokens';
+import { ScssVariablesTable } from '@/components/common/ScssVariablesTable';
+import { scssMeta } from '@porsche-design-system/scss';
 
 export const metadata = {
   title: 'SCSS: Blur - Porsche Design System',
@@ -13,6 +13,4 @@ export const metadata = {
 
 ## SCSS Variables
 
-| SCSS Variable                               | Description                                                                              | Value                                      |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------ |
-| <Code variant="nowrap">$blur-frosted</Code> | Holds a blur value for a **frosted** effect when combined with a semi-transparent color. | <Code variant="value">{blurFrosted}</Code> |
+<ScssVariablesTable variables={scssMeta.blur} />

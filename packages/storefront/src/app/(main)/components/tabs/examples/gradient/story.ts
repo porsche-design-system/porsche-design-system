@@ -4,6 +4,14 @@ import type { Story } from '@/models/story';
 import type { ElementConfig } from '@/utils/generator/generator';
 
 export const tabsStoryGradient: Story<'p-tabs'> = {
+  state: {
+    properties: {
+      aria: {
+        'aria-label': 'Some label for the tablist',
+        'aria-description': 'Some description for the tablist',
+      },
+    },
+  },
   generator: ({ properties } = {}) => [
     {
       tag: 'p-tabs',
@@ -18,4 +26,3 @@ export const tabsStoryGradient: Story<'p-tabs'> = {
     },
   ],
 };
-

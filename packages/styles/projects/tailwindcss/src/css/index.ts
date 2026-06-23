@@ -1,11 +1,10 @@
-import { fontBaseLayer } from '../theme/font';
+import { fontBaseLayer, textSizeCompanions } from '../theme/font';
 import { tailwindMeta } from '../meta';
 import { defaultTransitionDuration, defaultTransitionTimingFunction, motionDeprecatedThemeVariables } from '../theme/motion';
 import { flatten, renderNode } from './render';
 import { schemeRootFallback, schemeUtilities } from './scheme';
 import { animateSkeletonThemeVariable, skeletonKeyframes } from '../utilities/skeleton';
 import { shadowDeprecatedThemeVariables } from '../theme/shadow';
-import { textSizeCompanions } from '../theme/typography';
 import type { CssNode, CssRule, TailwindCssMeta } from '../types';
 
 /**
@@ -47,16 +46,16 @@ const themeBlock: CssRule = {
   declarations: flatten([
     resets,
     baseColors,
-    tailwindMeta.theme.color,
-    tailwindMeta.theme.typography,
+    tailwindMeta.color,
+    tailwindMeta.font,
     textSizeCompanions,
-    tailwindMeta.theme.breakpoint,
-    tailwindMeta.theme.spacing,
-    tailwindMeta.theme.border,
-    tailwindMeta.theme.blur,
-    tailwindMeta.theme.shadow,
+    tailwindMeta.breakpoint,
+    tailwindMeta.spacing,
+    tailwindMeta.border,
+    tailwindMeta.blur,
+    tailwindMeta.shadow,
     outlineWidth,
-    tailwindMeta.theme.motion,
+    tailwindMeta.motion,
     defaultTransitionTimingFunction,
     defaultTransitionDuration,
     shadowDeprecatedThemeVariables,
@@ -69,7 +68,7 @@ const themeBlock: CssRule = {
 // The documented `@utility` blocks in CSS render order. The documented model groups them for the
 // docs (`typography` super-group); here they are listed explicitly so the stylesheet order is
 // decided by this recipe rather than the model's grouping.
-const { typography, gradient, grid, skeleton } = tailwindMeta.utilities;
+const { typography, gradient, grid, skeleton } = tailwindMeta;
 const utilities: CssNode[] = [
   ...gradient,
   ...grid,

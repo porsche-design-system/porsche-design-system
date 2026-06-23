@@ -3,43 +3,42 @@ import { border } from './theme/border';
 import { breakpoint } from './theme/breakpoint';
 import { color } from './theme/color';
 import { displayUtilities } from './utilities/display';
+import { font } from './theme/font';
 import { gradientUtilities } from './utilities/gradient';
 import { gridUtilities } from './utilities/grid';
 import { headingUtilities } from './utilities/heading';
 import { motion } from './theme/motion';
+import { shadow } from './theme/shadow';
 import { skeletonUtilities } from './utilities/skeleton';
 import { spacing } from './theme/spacing';
 import { textUtilities } from './utilities/text';
-import { shadow } from './theme/shadow';
 import type { TailwindMeta } from './types';
-import { typography } from './theme/typography';
 
 /**
- * The documented single source of truth — the surface shared with the storefront docs and LLM
- * context. `theme` is the design-token catalog rendered inside `@theme`; `utilities` is the
- * documented `@utility` blocks. CSS-only plumbing (resets, defaults, layers, keyframes, deprecated
+ * The documented single source of truth — a flat, domain-keyed catalog mirroring `tokensMeta` (and
+ * the scss `scssMeta`). Token domains use the tokens vocabulary; `typography` holds the prose
+ * shorthands, `gradient` / `grid` / `skeleton` are the remaining `@utility` groups. A leaf's kind is
+ * recovered via `kindOf`. CSS-only plumbing (resets, defaults, layers, keyframes, deprecated
  * aliases) lives in `css/index.ts`, which assembles the stylesheet from these same object
- * references — so docs and generated CSS can never diverge.
+ * references — so docs and generated CSS can never diverge. Key order mirrors the scss `scssMeta`
+ * (and `tokensMeta`) verbatim, minus the `focus` / `mediaQuery` domains Tailwind doesn't ship, so the
+ * domains line up one-to-one across solutions for the shared skill / storefront renderer.
  */
 export const tailwindMeta = {
-  theme: {
-    color,
-    typography,
-    spacing,
-    border,
-    blur,
-    shadow,
-    breakpoint,
-    motion,
+  border,
+  blur,
+  breakpoint,
+  color,
+  font,
+  shadow,
+  spacing,
+  motion,
+  gradient: gradientUtilities,
+  typography: {
+    heading: headingUtilities,
+    text: textUtilities,
+    display: displayUtilities,
   },
-  utilities: {
-    typography: {
-      heading: headingUtilities,
-      text: textUtilities,
-      display: displayUtilities,
-    },
-    gradient: gradientUtilities,
-    grid: gridUtilities,
-    skeleton: skeletonUtilities,
-  },
+  skeleton: skeletonUtilities,
+  grid: gridUtilities,
 } satisfies TailwindMeta;
