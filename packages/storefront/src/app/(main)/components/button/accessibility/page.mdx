@@ -62,6 +62,16 @@ the `aria` property with the `aria-label` value to provide more context for scre
 "Detail" or "Show" can be unclear when read out of context by a screen reader. In such instances, provide an alternative
 text that offers more detailed information, such as "Add item XYZ to shopping cart" or "Details of product XYZ."
 
+### Common do's and don'ts
+
+- **Do** pass ARIA attributes via the `aria` prop, for example `aria={{ 'aria-haspopup': 'dialog' }}` when opening a
+  dialog.
+- **Do** provide a clear accessible name for icon-only actions via slotted label or `aria` property.
+- **Don't** add native `aria-*` attributes directly on the component host.
+- **Don't** rely on short generic button labels like "Show" or "Add" without context.
+
+See the central [Accessibility Do's and Don'ts](/must-know/accessibility/dos-and-donts) guide for shared rules.
+
 ## Tests
 
 ### Automated

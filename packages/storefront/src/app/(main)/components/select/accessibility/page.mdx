@@ -53,6 +53,15 @@ export const metadata = {
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
 
+### Common do's and don'ts
+
+- **Do** provide a clear label for what the selection controls.
+- **Do** use meaningful option text so choices are understandable out of context.
+- **Do** use state/message props for validation and feedback so updates are announced.
+- **Don't** use very short or ambiguous option labels when context is important.
+
+See the central [Accessibility Do's and Don'ts](/must-know/accessibility/dos-and-donts) guide for shared rules.
+
 ## Tests
 
 ### Automated

@@ -1,0 +1,118 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: "Accessibility: Do's and Don'ts - Porsche Design System",
+  description:
+    "Practical accessibility do's and don'ts for Porsche Design System usage, including common mistakes, fixes, and a pre-merge checklist.",
+};
+
+# Accessibility: Do's and Don'ts
+
+<TableOfContents
+  headings={[
+    'Why this page exists',
+    'Top 5 audit mistakes',
+    "General do's",
+    "General don'ts",
+    'Mistake to better solution',
+    'Before-merge checklist',
+    'Further reading',
+  ]}
+/>
+
+## Why this page exists
+
+Most accessibility regressions found in audits are not caused by missing component features, but by incorrect
+integration or semantic misuse. This page focuses on practical implementation guidance so developers can avoid recurring
+issues while using PDS components.
+
+## Top 5 audit mistakes
+
+1. Adding `aria-*` directly on a PDS component root element instead of using the `aria` prop.
+2. Missing accessible names for icon-only action buttons or links.
+3. Missing focus indicators on custom UI components.
+4. Missing skip links for repeated, long content blocks (e.g. large carousels).
+5. Missing semantic structure (e.g. wrong heading hierarchy or missing landmarks).
+
+## General do's
+
+- Use semantic landmarks (`header`, `nav`, `main`, `footer`) and add `aria-label` or `aria-labelledby` where appropriate.
+- Keep heading order logical (use `h1` → `h2` → `h3` and avoid skipping levels).
+- Pass ARIA through the component `aria` prop where supported.
+- Add clear, distinguishable labels for actions, especially icon-only controls.
+- Keep focus visible and keyboard behavior/order complete.
+- Use skip links when users would otherwise tab through long repeated blocks.
+
+## General don'ts
+
+- Do not put raw `aria-*` attributes on PDS component `host` elements as a workaround.
+- Use PDS focus styling for custom components instead of removing or building own focus outlines.
+- Do not pick headings by visual size, pick them by document structure.
+- Do not rely on placeholder text as the only form label.
+- Do not use "click here" link text without context.
+- Do not create mouse-only interactions.
+
+## Mistake to better solution
+
+### 1) ARIA on PDS component host vs aria prop
+
+❌ Anti-pattern
+
+```jsx
+<PButton aria-haspopup="dialog" aria-label="Open details of product XYZ">Open details</PButton>
+```
+
+✅ Recommended
+
+```jsx
+<PButton aria={{ 'aria-haspopup': 'dialog', 'aria-label': 'Open details of product XYZ' }}>Open details</PButton>
+```
+
+### 2) Icon-only action without accessible name
+
+❌ Anti-pattern
+
+```jsx
+<PLink icon="arrow-right" href="https://porsche.com"></PLink>
+```
+
+✅ Recommended
+
+```jsx
+<PLink icon="arrow-right" hideLabel={true} href="https://porsche.com">Some label</PLink>
+
+// or with more contextual label for screen readers
+
+<PLink icon="arrow-right" hideLabel={true} aria={{ 'aria-label': 'Some label with more information about XYZ' }} href="https://porsche.com">Some label</PLink>
+```
+
+### 3) Large carousel without skip behavior
+
+❌ Anti-pattern
+
+```jsx
+<PCarousel>{/* many slides */}</PCarousel>
+
+<PHeading tag={"h2"}>Next content area</PHeading>
+```
+
+✅ Recommended
+
+```jsx
+<PCarousel skipLinkTarget="next-content-area">{/* many slides */}</PCarousel>
+
+<PHeading tag={"h2"} id="next-content-area">Next content area</PHeading>
+```
+
+Make sure the skip target points to the next meaningful element after the carousel.
+
+## Before-merge checklist
+
+- Check the components accessibility tab for any component-specific requirements.
+- All interactive controls are keyboard reachable and operable.
+- Focus indicators are visible in default and uses PDS focus styling.
+- Icon-only actions have clear accessible names.
+- ARIA is passed via supported PDS component APIs.
+- Repeated blocks include a skip strategy when needed.
+- Use semantic structural elements and maintain logical heading order.
+

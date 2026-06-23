@@ -48,6 +48,16 @@ over all carousel entries. The skip link is only visible when it receives focus 
 - Use the `skipLinkTarget` property if you have >5 carousel items
 - The target of the skip link should point to the next heading or element right after the carousel
 
+### Common do's and don'ts
+
+- **Do** configure `skipLinkTarget` for larger carousels or repeated content sections.
+- **Do** ensure the skip target points to the next meaningful section.
+- **Do** provide a descriptive carousel label via the `aria` property.
+- **Don't** force keyboard users to tab through every slide control when a skip path is needed.
+- **Don't** use vague labels that do not communicate carousel context.
+
+See the central [Accessibility Do's and Don'ts](/must-know/accessibility/dos-and-donts) guide for shared rules.
+
 ## Tests
 
 ### Automated

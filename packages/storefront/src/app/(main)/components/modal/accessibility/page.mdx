@@ -43,6 +43,16 @@ behavior. As a result, accessibility features may vary across different browsers
 To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria`
 property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
 
+### Common do's and don'ts
+
+- **Do** use a semantic trigger (usually a button) with a meaningful accessible name.
+- **Do** set `aria-haspopup` through the trigger component `aria` prop when opening the modal.
+- **Do** ensure a meaningful title/label is available for the dialog.
+- **Don't** add raw host-level ARIA attributes as a workaround.
+- **Don't** use unclear trigger copy like "Open" when the destination is not obvious.
+
+See the central [Accessibility Do's and Don'ts](/must-know/accessibility/dos-and-donts) guide for shared rules.
+
 ## Tests
 
 ### Automated
