@@ -10,7 +10,6 @@ export const linkTileProductStoryFrameworkRouting: Story<'p-link-tile-product'> 
       price: '718,00 €',
       priceOriginal: '911,00 €',
       description: 'Some description',
-      href: 'https://porsche.com',
     },
   },
   generator: ({ properties } = {}) => [
@@ -49,4 +48,3 @@ export const linkTileProductStoryFrameworkRouting: Story<'p-link-tile-product'> 
     },
   ],
 };
-
