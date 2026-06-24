@@ -12,7 +12,7 @@
     "build-app": "npm run build-app:components && npm run build-app:shared && npm run build-app:stylesheets && npm run build-app:componentsAngularReact && vite build",
     "build-app:components": "cp ./dist/components-wrapper/cjs/index.cjs ./public/index.js",
     "build-app:shared": "cp ../shared/dist/esm/data/table-data-sorting.js ./public/assets/table-data-sorting.js && cp ../shared/dist/esm/data/table-data-basic.js ./public/assets/table-data-basic.js && cp ../shared/dist/esm/data/table-data-advanced.js ./public/assets/table-data-advanced.js && cp ../shared/dist/esm/data/table-data-vrt.js ./public/assets/table-data-vrt.js && cp ../shared/dist/css/styles.css ./public/assets/styles.css",
-    "build-app:stylesheets": "cp -r ../components/projects/stylesheets/dist/index.css ./public/assets/index.css",
+    "build-app:stylesheets": "cp -r ../components/projects/stylesheets/lib/index.css ./public/assets/index.css",
     "build-app:componentsAngularReact": "npm run generateVRTPages",
     "build:components-manager-cli": "npm run build --workspace=@porsche-design-system/components-manager-cli",
     "build:components-manager-core": "npm run build --workspace=@porsche-design-system/components-manager-core",
@@ -33,7 +33,7 @@
     "build:tailwindcss": "TARGET=./dist/components-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:scss": "TARGET=./dist/components-wrapper/scss && rm -rf $TARGET && cp -r ../styles/projects/scss/dist $TARGET",
     "build:vanilla-extract": "TARGET=./dist/components-wrapper/vanilla-extract && rm -rf $TARGET && cp -r ../styles/projects/vanilla-extract/dist $TARGET",
-    "build:stylesheets": "TARGET=./dist/components-wrapper/stylesheets && SOURCE=../components/projects/stylesheets/dist && rm -rf $TARGET && mkdir -p $TARGET/cn && cp $SOURCE/*.css $TARGET/ && cp $SOURCE/cn/*.css $TARGET/cn/",
+    "build:stylesheets": "TARGET=./dist/components-wrapper/stylesheets && SOURCE=../components/projects/stylesheets/lib && rm -rf $TARGET && mkdir -p $TARGET/cn && cp $SOURCE/*.css $TARGET/ && cp $SOURCE/cn/*.css $TARGET/cn/",
     "generateVRTPages": "tsx scripts/generateVRTPages.ts",
     "test": "npm run test:unit && npm run test:e2e && npm run test:vrt && npm run test:smoke",
     "test:unit": "npm run test:unit:components-manager-cli && npm run test:unit:components-manager-core && npm run test:unit:components-js && npm run test:unit:jsdom-polyfill && npm run test:unit:partials",
@@ -95,8 +95,8 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "4.2.0",
-    "@porsche-design-system/components-js": "4.2.0",
+    "@porsche-design-system/components": "4.3.0",
+    "@porsche-design-system/components-js": "4.3.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0"
   },

@@ -1,7 +1,7 @@
 import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { Features } from 'lightningcss';
-import { type Plugin, defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 
 // With Vite's Environment API a single build orchestrates multiple environments (`client` + `ssr`) in one pass, so the
 // legacy `isSsrBuild` config flag is no longer a reliable per-output signal — it would resolve `process.browser` to the

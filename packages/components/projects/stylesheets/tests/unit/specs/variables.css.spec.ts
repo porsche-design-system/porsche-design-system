@@ -3,7 +3,7 @@ import path from 'node:path';
 import { expect, it } from 'vitest';
 
 const readVariables = () => {
-  const themePath = path.resolve(__dirname, '../../../dist/variables.css');
+  const themePath = path.resolve(__dirname, '../../../lib/variables.css');
   return fs.readFileSync(themePath, 'utf-8');
 };
 

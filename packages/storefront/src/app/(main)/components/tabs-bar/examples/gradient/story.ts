@@ -7,6 +7,10 @@ export const tabsBarStoryGradient: Story<'p-tabs-bar'> = {
   state: {
     properties: {
       activeTabIndex: 0,
+      aria: {
+        'aria-label': 'Some label for the tablist',
+        'aria-description': 'Some description for the tablist',
+      },
     },
   },
   generator: ({ properties } = {}) => [
@@ -34,4 +38,3 @@ export const tabsBarStoryGradient: Story<'p-tabs-bar'> = {
     },
   ],
 };
-

@@ -58,8 +58,8 @@ import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./com
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
 import { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
-import { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-import { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+import { TabsAriaAttribute, TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+import { TabsBarAriaAttribute, TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagIcon, TagVariant } from "./components/tag/tag-utils";
 import { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 import { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
@@ -121,8 +121,8 @@ export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./com
 export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 export { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
 export { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
-export { TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
-export { TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
+export { TabsAriaAttribute, TabsBackground, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
+export { TabsBarAriaAttribute, TabsBarBackground, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 export { TagIcon, TagVariant } from "./components/tag/tag-utils";
 export { TagDismissibleAriaAttribute } from "./components/tag-dismissible/tag-dismissible-utils";
 export { TextAlign, TextColor, TextHyphens, TextSize, TextTag, TextWeight } from "./components/text/text-utils";
@@ -2489,7 +2489,7 @@ export namespace Components {
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
-          * Sets the ARIA `role` attribute on the scroller's scroll container, useful for list-based navigation patterns.
+          * Sets ARIA role and attributes on the scroller's scroll container, useful for tablist navigation patterns and additional accessibility context.
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
@@ -2848,6 +2848,10 @@ export namespace Components {
          */
         "activeTabIndex"?: number;
         /**
+          * Sets ARIA attributes on the tablist, such as `aria-label` and `aria-description`.
+         */
+        "aria"?: SelectedAriaAttributes<TabsAriaAttribute>;
+        /**
           * Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients.
           * @default 'none'
          */
@@ -2875,6 +2879,10 @@ export namespace Components {
           * Sets the zero-based index of the currently active tab. Pass `undefined` to render all tabs in an unselected state.
          */
         "activeTabIndex"?: number | undefined;
+        /**
+          * Sets ARIA attributes on the tablist, such as `aria-label` and `aria-description`.
+         */
+        "aria"?: SelectedAriaAttributes<TabsBarAriaAttribute>;
         /**
           * Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients.
           * @default 'none'
@@ -6872,7 +6880,7 @@ declare namespace LocalJSX {
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
-          * Sets the ARIA `role` attribute on the scroller's scroll container, useful for list-based navigation patterns.
+          * Sets ARIA role and attributes on the scroller's scroll container, useful for tablist navigation patterns and additional accessibility context.
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
@@ -7275,6 +7283,10 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number;
         /**
+          * Sets ARIA attributes on the tablist, such as `aria-label` and `aria-description`.
+         */
+        "aria"?: SelectedAriaAttributes<TabsAriaAttribute>;
+        /**
           * Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients.
           * @default 'none'
          */
@@ -7306,6 +7318,10 @@ declare namespace LocalJSX {
           * Sets the zero-based index of the currently active tab. Pass `undefined` to render all tabs in an unselected state.
          */
         "activeTabIndex"?: number | undefined;
+        /**
+          * Sets ARIA attributes on the tablist, such as `aria-label` and `aria-description`.
+         */
+        "aria"?: SelectedAriaAttributes<TabsBarAriaAttribute>;
         /**
           * Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients.
           * @default 'none'
@@ -8227,6 +8243,7 @@ declare namespace LocalJSX {
         "background": TabsBackground;
         "compact": boolean;
         "weight": TabsWeight;
+        "aria": SelectedAriaAttributes<TabsAriaAttribute>;
     }
     interface PTabsBarAttributes {
         "activeTabIndex": number | undefined;
@@ -8234,6 +8251,7 @@ declare namespace LocalJSX {
         "size": BreakpointCustomizable<TabsBarSize>;
         "compact": boolean;
         "weight": TabsBarWeight;
+        "aria": SelectedAriaAttributes<TabsBarAriaAttribute>;
     }
     interface PTabsItemAttributes {
         "label": string;

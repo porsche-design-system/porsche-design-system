@@ -1,13 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Code } from '@/components/common/Code';
-import {
-  breakpointMd,
-  breakpointLg,
-  breakpointSm,
-  breakpointXl,
-  breakpoint2Xl,
-  breakpointXs,
-} from '@porsche-design-system/tokens';
+import { ScssVariablesTable } from '@/components/common/ScssVariablesTable';
+import { ScssMixinsTable } from '@/components/common/ScssMixinsTable';
+import { scssMeta } from '@porsche-design-system/scss';
 
 export const metadata = {
   title: 'SCSS: Media Query - Porsche Design System',
@@ -20,19 +14,8 @@ export const metadata = {
 
 ## SCSS Mixins
 
-| SCSS Mixins                                                                                                                        | Description                                                       |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| <Code variant="nowrap">@mixin media-query-min('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')</Code>                                          | Applies a **min** media query with the specified breakpoint.      |
-| <Code variant="nowrap">@mixin media-query-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')</Code>                                          | Applies a **max** media query with the specified breakpoint.      |
-| <Code variant="nowrap">@mixin media-query-min-max('xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl', 'xs'\|'sm'\|'md'\|'lg'\|'xl'\|'2xl')</Code> | Applies a **min-max** media query with the specified breakpoints. |
+<ScssMixinsTable mixins={scssMeta.mediaQuery} />
 
 ## SCSS Variables
 
-| SCSS Variable                                 | Description                       | Value                                        |
-| --------------------------------------------- | --------------------------------- | -------------------------------------------- |
-| <Code variant="nowrap">$breakpoint-xs</Code>  | Holds the `xs` breakpoint value.  | <Code variant="value">{breakpointXs}</Code>  |
-| <Code variant="nowrap">$breakpoint-sm</Code>  | Holds the `sm` breakpoint value.  | <Code variant="value">{breakpointSm}</Code>  |
-| <Code variant="nowrap">$breakpoint-md</Code>  | Holds the `md` breakpoint value.  | <Code variant="value">{breakpointMd}</Code>  |
-| <Code variant="nowrap">$breakpoint-lg</Code>  | Holds the `lg` breakpoint value.  | <Code variant="value">{breakpointLg}</Code>  |
-| <Code variant="nowrap">$breakpoint-xl</Code>  | Holds the `xl` breakpoint value.  | <Code variant="value">{breakpointXl}</Code>  |
-| <Code variant="nowrap">$breakpoint-2xl</Code> | Holds the `2xl` breakpoint value. | <Code variant="value">{breakpoint2Xl}</Code> |
+<ScssVariablesTable variables={scssMeta.breakpoint} />

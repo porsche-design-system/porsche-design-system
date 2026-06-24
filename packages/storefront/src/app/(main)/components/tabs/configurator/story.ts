@@ -2,7 +2,17 @@
 
 import type { Story } from '@/models/story';
 
+const tabsAria = {
+  'aria-label': 'Some label for the tablist',
+  'aria-description': 'Some description for the tablist',
+};
+
 export const tabsStory: Story<'p-tabs'> = {
+  state: {
+    properties: {
+      aria: tabsAria,
+    },
+  },
   generator: ({ properties } = {}) => [
     {
       tag: 'p-tabs',
@@ -27,4 +37,3 @@ export const tabsStory: Story<'p-tabs'> = {
     },
   ],
 };
-
