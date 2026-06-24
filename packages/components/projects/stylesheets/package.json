@@ -32,7 +32,7 @@
   ],
   "scripts": {
     "build": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:meta && npm run build:css && npm run build:font-face && npm run build:index && npm run build:skill",
-    "build-prod": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:meta && npm run build:css && npm run build-prod:font-face && npm run build:index && npm run build:skill",
+    "build-prod": "npm run clean:build-prod && npm run build:constants && npm run build:css && npm run build-prod:font-face && npm run build:index && npm run build:skill",
     "build:constants": "tsx scripts/buildCssVariableConstants.ts",
     "build:package": "rollup -c rollup.config.mjs",
     "build:meta": "rollup -c rollup.config.meta.mjs",
@@ -45,7 +45,8 @@
     "build:index:cdn": "mkdir -p lib/cn && cat lib/normalize.css lib/variables.css lib/color-scheme.css lib/cn/font-face.css > lib/cn/index.css",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist ./lib ./meta ./src/generated"
+    "clean:build": "rm -rf ./dist ./lib ./meta ./src/generated",
+    "clean:build-prod": "rm -rf ./lib ./src/generated"
   },
   "dependencies": {
     "@porsche-design-system/font-face": "0.0.0",
