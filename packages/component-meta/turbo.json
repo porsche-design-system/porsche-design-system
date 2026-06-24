@@ -3,7 +3,7 @@
   "extends": ["//"],
   "tasks": {
     "build": {
-      "dependsOn": ["@porsche-design-system/stylesheets#build", "@porsche-design-system/assets#build"],
+      "dependsOn": ["@porsche-design-system/stylesheets#build", "@porsche-design-system/assets#build", "@porsche-design-system/emotion#build"],
       "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!src/lib/**"],
       "outputs": ["dist/**", "src/lib/**"]
     }
