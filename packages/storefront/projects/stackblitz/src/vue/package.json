@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "4.2.0",
+    "@porsche-design-system/components-vue": "4.3.0-rc.0",
     "vue": "^3.5.38"
   },
   "devDependencies": {
