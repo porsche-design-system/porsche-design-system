@@ -1,7 +1,6 @@
 import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract/meta';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { StylesTable } from '@/components/common/StylesTable';
-import { filterMeta } from '@/lib/filterMeta';
 
 export const metadata = {
   title: 'Vanilla Extract: Typography - Porsche Design System',
@@ -16,19 +15,11 @@ export const metadata = {
 
 ### Heading
 
-<StylesTable
-  meta={filterMeta(vanillaExtractMeta.typography, (k) => k.startsWith('proseHeading'))}
-  columnLabel="JS"
-  showValue={false}
-/>
+<StylesTable meta={vanillaExtractMeta.typography.heading} columnLabel="JS" showValue={false} />
 
 ### Text
 
-<StylesTable
-  meta={filterMeta(vanillaExtractMeta.typography, (k) => k.startsWith('proseText'))}
-  columnLabel="JS"
-  showValue={false}
-/>
+<StylesTable meta={vanillaExtractMeta.typography.text} columnLabel="JS" showValue={false} />
 
 ## JS Variables
 
