@@ -1,12 +1,18 @@
 // Meta types describing the global styles. This package is intentionally the single
 // source of truth for the global styles and is NOT derived from the design tokens,
 // since the set of exposed CSS variables is not guaranteed to map 1:1 to tokens.
+//
+// The documented catalog (`stylesheetsMeta`) is a domain-keyed tree whose leaves are a
+// discriminated `StylesheetNode` union: a `CssVariableMeta` token (carries `property`) or a
+// `ColorSchemeClassMeta` utility (carries `selector`). The leaf's kind (`token` | `utility`)
+// is recoverable via `kindOf`, mirroring the scss/tailwind meta model.
 
-/** The CSS custom property type. */
-export type CssVariableType = 'color' | 'typography' | 'spacing' | 'radius' | 'blur' | 'shadow' | 'motion';
+/** The CSS custom property category; also acts as the color discriminant. */
+export type CssVariableType = 'color' | 'font' | 'spacing' | 'border' | 'blur' | 'shadow' | 'motion';
 
 /**
- * A single CSS custom property (CSS variable) exposed by the global styles.
+ * A single CSS custom property (CSS variable) exposed by the global styles — a documented
+ * **token**.
  *
  * A variable leaf is structurally a {@link CssDeclaration} (`property` + `value`)
  * enriched with documentation metadata, so it can be emitted into CSS directly
@@ -43,11 +49,9 @@ type CssVariableMetaBase = CssDeclaration & {
 /** A theme-aware color variable (`type: 'color'`) carrying explicit light/dark values. */
 export type ColorCssVariableMeta = Extract<CssVariableMeta, { type: 'color' }>;
 
-/** Recursive tree of grouped CSS variables (`color.background.canvas`, …). */
-export type CssVariablesMetaTree = { [key: string]: CssVariablesMetaTree | CssVariableMeta };
-
 /**
- * A `.scheme-*` utility class controlling the CSS `color-scheme` property.
+ * A `.scheme-*` utility class controlling the CSS `color-scheme` property — a documented
+ * **utility**.
  *
  * A color-scheme class is structurally a {@link CssRule} (`selector` +
  * `declarations`) enriched with documentation metadata, so it can be emitted
@@ -59,6 +63,60 @@ export type ColorSchemeClassMeta = CssRule & {
   usage: string;
   /** Markdown-enabled description. */
   description: string;
+};
+
+/**
+ * A documented leaf of the meta catalog: either a CSS variable {@link CssVariableMeta} token
+ * or a `.scheme-*` {@link ColorSchemeClassMeta} utility. Discriminated structurally — a token
+ * carries `property`, a utility carries `selector` — which `kindOf` uses to recover the kind.
+ */
+export type StylesheetNode = CssVariableMeta | ColorSchemeClassMeta;
+
+/** Recursive tree of grouped CSS variable tokens (`color.background.canvas`, …). */
+export type StylesheetTokenTree = { [key: string]: StylesheetTokenTree | CssVariableMeta };
+
+/**
+ * The precise per-domain shape of the documented CSS variable tokens. Domain order mirrors the
+ * emitted `variables.css` declaration order (kept stable for byte-identical output); the
+ * vocabulary (`font`, `border.radius`, `motion.ease`, `font.size`) mirrors the scss meta model.
+ */
+export type CssVariableTokens = {
+  color: {
+    background: Record<string, ColorCssVariableMeta>;
+    foreground: Record<string, ColorCssVariableMeta>;
+    semantic: Record<string, ColorCssVariableMeta>;
+    a11y: Record<string, ColorCssVariableMeta>;
+  };
+  font: {
+    family: Record<string, CssVariableMeta>;
+    weight: Record<string, CssVariableMeta>;
+    lineHeight: Record<string, CssVariableMeta>;
+    size: Record<string, CssVariableMeta>;
+  };
+  spacing: {
+    fluid: Record<string, CssVariableMeta>;
+    static: Record<string, CssVariableMeta>;
+  };
+  border: {
+    radius: Record<string, CssVariableMeta>;
+  };
+  blur: Record<string, CssVariableMeta>;
+  shadow: Record<string, CssVariableMeta>;
+  motion: {
+    duration: Record<string, CssVariableMeta>;
+    ease: Record<string, CssVariableMeta>;
+  };
+};
+
+/**
+ * The documented single source of truth, shared with the storefront docs and (future) LLM skill.
+ * A domain-keyed catalog whose leaves are a discriminated {@link StylesheetNode} union; each
+ * leaf's kind (`token` | `utility`) is recoverable via `kindOf`. CSS variables are tokens; the
+ * `.scheme-*` classes are utilities. The `normalize` reset has no documented leaves and therefore
+ * lives only in the composition layer (`css/index.ts`), not in this catalog.
+ */
+export type StylesheetsMeta = CssVariableTokens & {
+  colorScheme: ColorSchemeClassMeta[];
 };
 
 // ---------------------------------------------------------------------------
@@ -103,5 +161,5 @@ export type GlobalStyleMeta = {
   meta: CssNode[];
 };
 
-/** The complete meta describing every part of the global styles. */
+/** The complete per-file composition describing every generated global stylesheet. */
 export type GlobalStylesMeta = { [key: string]: GlobalStyleMeta };

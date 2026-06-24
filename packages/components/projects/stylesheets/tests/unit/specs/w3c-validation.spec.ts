@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/shared/testing';
 import { describe, expect, it } from 'vitest';
 
-const distDir = path.resolve(__dirname, '../../../dist');
+const libDir = path.resolve(__dirname, '../../../lib');
 
 const cssFiles = [
   'index.css',
@@ -19,7 +19,7 @@ const cssFiles = [
   'cn/font-face.css',
 ];
 
-const readCss = (file: string) => fs.readFileSync(path.join(distDir, file), 'utf-8');
+const readCss = (file: string) => fs.readFileSync(path.join(libDir, file), 'utf-8');
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
