@@ -3,7 +3,7 @@ import path from 'node:path';
 import { expect, it } from 'vitest';
 
 const readNormalize = () => {
-  const themePath = path.resolve(__dirname, '../../../dist/normalize.css');
+  const themePath = path.resolve(__dirname, '../../../lib/normalize.css');
   return fs.readFileSync(themePath, 'utf-8');
 };
 

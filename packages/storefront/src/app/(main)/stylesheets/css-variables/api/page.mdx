@@ -1,6 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { CssVariablesTable } from '@/components/common/CssVariablesTable';
-import { cssVariablesMeta } from '@porsche-design-system/stylesheets';
+import { stylesheetsMeta } from '@porsche-design-system/stylesheets/meta';
 
 export const metadata = {
   title: 'Styles: CSS Variables - Porsche Design System',
@@ -15,66 +15,66 @@ export const metadata = {
 
 ### Background
 
-<CssVariablesTable variables={cssVariablesMeta.color.background} showColorSwatch={true} />
+<CssVariablesTable variables={stylesheetsMeta.color.background} showColorSwatch={true} />
 
 ### Foreground
 
-<CssVariablesTable variables={cssVariablesMeta.color.foreground} showColorSwatch={true} />
+<CssVariablesTable variables={stylesheetsMeta.color.foreground} showColorSwatch={true} />
 
 ### Semantic
 
-<CssVariablesTable variables={cssVariablesMeta.color.semantic} showColorSwatch={true} />
+<CssVariablesTable variables={stylesheetsMeta.color.semantic} showColorSwatch={true} />
 
 ### A11y
 
-<CssVariablesTable variables={cssVariablesMeta.color.a11y} showColorSwatch={true} />
+<CssVariablesTable variables={stylesheetsMeta.color.a11y} showColorSwatch={true} />
 
 ## Typography
 
 ### Font Family
 
-<CssVariablesTable variables={cssVariablesMeta.typography.family} />
+<CssVariablesTable variables={stylesheetsMeta.font.family} />
 
 ### Font Weight
 
-<CssVariablesTable variables={cssVariablesMeta.typography.weight} />
+<CssVariablesTable variables={stylesheetsMeta.font.weight} />
 
 ### Line Height
 
-<CssVariablesTable variables={cssVariablesMeta.typography.lineHeight} />
+<CssVariablesTable variables={stylesheetsMeta.font.lineHeight} />
 
 ### Typescale
 
-<CssVariablesTable variables={cssVariablesMeta.typography.typescale} />
+<CssVariablesTable variables={stylesheetsMeta.font.size} />
 
 ## Spacing
 
 ### Fluid
 
-<CssVariablesTable variables={cssVariablesMeta.spacing.fluid} />
+<CssVariablesTable variables={stylesheetsMeta.spacing.fluid} />
 
 ### Static
 
-<CssVariablesTable variables={cssVariablesMeta.spacing.static} />
+<CssVariablesTable variables={stylesheetsMeta.spacing.static} />
 
 ## Border Radius
 
-<CssVariablesTable variables={cssVariablesMeta.radius} />
+<CssVariablesTable variables={stylesheetsMeta.border.radius} />
 
 ## Blur
 
-<CssVariablesTable variables={cssVariablesMeta.blur} />
+<CssVariablesTable variables={stylesheetsMeta.blur} />
 
 ## Shadow
 
-<CssVariablesTable variables={cssVariablesMeta.shadow} />
+<CssVariablesTable variables={stylesheetsMeta.shadow} />
 
 ## Motion
 
 ### Duration
 
-<CssVariablesTable variables={cssVariablesMeta.motion.duration} />
+<CssVariablesTable variables={stylesheetsMeta.motion.duration} />
 
 ### Easing
 
-<CssVariablesTable variables={cssVariablesMeta.motion.easing} />
+<CssVariablesTable variables={stylesheetsMeta.motion.ease} />
