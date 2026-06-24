@@ -16,7 +16,6 @@ export const metadata = {
     "General don'ts",
     'Mistake to better solution',
     'Before-merge checklist',
-    'Further reading',
   ]}
 />
 
@@ -36,7 +35,8 @@ issues while using PDS components.
 
 ## General do's
 
-- Use semantic landmarks (`header`, `nav`, `main`, `footer`) and add `aria-label` or `aria-labelledby` where appropriate.
+- Use semantic landmarks (`header`, `nav`, `main`, `footer`) and add `aria-label` or `aria-labelledby` where
+  appropriate.
 - Keep heading order logical (use `h1` → `h2` → `h3` and avoid skipping levels).
 - Pass ARIA through the component `aria` prop where supported.
 - Add clear, distinguishable labels for actions, especially icon-only controls.
@@ -59,7 +59,9 @@ issues while using PDS components.
 ❌ Anti-pattern
 
 ```jsx
-<PButton aria-haspopup="dialog" aria-label="Open details of product XYZ">Open details</PButton>
+<PButton aria-haspopup="dialog" aria-label="Open details of product XYZ">
+  Open details
+</PButton>
 ```
 
 ✅ Recommended
@@ -115,4 +117,3 @@ Make sure the skip target points to the next meaningful element after the carous
 - ARIA is passed via supported PDS component APIs.
 - Repeated blocks include a skip strategy when needed.
 - Use semantic structural elements and maintain logical heading order.
-
