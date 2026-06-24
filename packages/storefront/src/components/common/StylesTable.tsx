@@ -7,12 +7,27 @@ import {
   PTableHeadCell,
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
-import type { VanillaExtractMeta, VanillaExtractMetaEntry } from '@porsche-design-system/vanilla-extract/meta';
 import type { ReactNode } from 'react';
 import { Code } from '@/components/common/Code';
 
+// Structural entry type covering both meta shapes: the legacy single-`value` model and the aligned
+// token/utility split (tokens carry `value`, utilities carry `styles`). Kept local so the table
+// works for every styling solution regardless of which package's meta it renders.
+type MetaEntry = {
+  name: string;
+  description: string;
+  value?: string | number | readonly unknown[] | Record<string, unknown> | ((...args: any[]) => unknown);
+  styles?: readonly unknown[] | Record<string, unknown> | ((...args: any[]) => unknown);
+  deprecated?: boolean;
+};
+
+type Meta = Record<string, MetaEntry | Record<string, MetaEntry>>;
+
+// A leaf's displayable payload lives under `value` (token) or `styles` (utility).
+const payloadOf = (entry: MetaEntry): unknown => ('value' in entry ? entry.value : entry.styles);
+
 type StylesTableProps = {
-  meta: VanillaExtractMeta;
+  meta: Meta;
   columnLabel?: string;
   showColorSwatch?: boolean;
   showValue?: boolean;
@@ -43,19 +58,19 @@ const renderDescription = (description: string): ReactNode => {
 };
 
 // Functions carry no displayable value; strings/numbers render verbatim, everything else as JSON
-const renderValue = (value: VanillaExtractMetaEntry['value']): ReactNode => {
-  if (typeof value === 'function') {
+const renderValue = (payload: unknown): ReactNode => {
+  if (typeof payload === 'function') {
     return null;
   }
-  const text = typeof value === 'string' || typeof value === 'number' ? String(value) : JSON.stringify(value);
+  const text = typeof payload === 'string' || typeof payload === 'number' ? String(payload) : JSON.stringify(payload);
   return <Code variant="value">{text}</Code>;
 };
 
 export const StylesTable = ({ meta, columnLabel = 'JS', showColorSwatch, showValue }: StylesTableProps) => {
   const items = Object.values(meta).filter(
-    (entry): entry is VanillaExtractMetaEntry => 'name' in entry && !entry.deprecated
+    (entry): entry is MetaEntry => 'name' in entry && !(entry as MetaEntry).deprecated
   );
-  const hasValues = showValue ?? items.some((entry) => typeof entry.value !== 'function');
+  const hasValues = showValue ?? items.some((entry) => typeof payloadOf(entry) !== 'function');
 
   return (
     <PTable className="my-fluid-md" caption="List of style utilities with their descriptions and values.">
@@ -74,7 +89,7 @@ export const StylesTable = ({ meta, columnLabel = 'JS', showColorSwatch, showVal
               <PTableCell>
                 <div
                   className="w-10 h-10 rounded-md border border-contrast-low"
-                  style={{ background: String(entry.value) }}
+                  style={{ background: String(payloadOf(entry)) }}
                 />
               </PTableCell>
             )}
@@ -82,7 +97,7 @@ export const StylesTable = ({ meta, columnLabel = 'JS', showColorSwatch, showVal
               <Code variant="nowrap">{entry.name}</Code>
             </PTableCell>
             <PTableCell multiline={true}>{renderDescription(entry.description)}</PTableCell>
-            {hasValues && <PTableCell multiline={true}>{renderValue(entry.value)}</PTableCell>}
+            {hasValues && <PTableCell multiline={true}>{renderValue(payloadOf(entry))}</PTableCell>}
           </PTableRow>
         ))}
       </PTableBody>

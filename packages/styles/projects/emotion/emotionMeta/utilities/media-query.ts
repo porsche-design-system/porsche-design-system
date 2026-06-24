@@ -1,20 +1,20 @@
-import { getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from '../src/mediaQuery/';
-import type { EmotionMeta } from './meta.types';
+import { getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from '../../src/mediaQuery/';
+import type { EmotionMeta } from '../types';
 
-export const mediaQueryMeta: EmotionMeta = {
+export const mediaQuery = {
   getMediaQueryMax: {
     name: 'getMediaQueryMax',
     description: 'Applies a **max** media query with the specified breakpoint.',
-    value: getMediaQueryMax,
+    styles: getMediaQueryMax,
   },
   getMediaQueryMin: {
     name: 'getMediaQueryMin',
     description: 'Applies a **min** media query with the specified breakpoint.',
-    value: getMediaQueryMin,
+    styles: getMediaQueryMin,
   },
   getMediaQueryMinMax: {
     name: 'getMediaQueryMinMax',
     description: 'Applies a **min-max** media query with the specified breakpoints.',
-    value: getMediaQueryMinMax,
+    styles: getMediaQueryMinMax,
   },
-} as const;
+} satisfies EmotionMeta['mediaQuery'];

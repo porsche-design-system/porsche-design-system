@@ -38,19 +38,21 @@ import {
   gridWideOffsetBase,
   gridWideOffsetS,
   gridWideOffsetXXL,
-} from '../src/grid/';
-import type { EmotionMeta } from './meta.types';
+} from '../../src/grid/';
+import type { EmotionMeta } from '../types';
 
-export const gridMeta: EmotionMeta = {
+// `ScssMeta['grid']` splits across `theme/grid` (variables) and `utilities/grid` (mixins); emotion
+// keeps grid as one flat domain (documented divergence), so it lives in a single `theme/grid` file.
+export const grid = {
   gridFull: {
     name: 'gridFull',
     description: 'Object containing all `full` grid styles.',
-    value: gridFull,
+    styles: gridFull,
   },
   gridBasic: {
     name: 'gridBasic',
     description: 'Object containing all `basic` grid styles.',
-    value: gridBasic,
+    styles: gridBasic,
   },
   gridBasicColumnEnd: {
     name: 'gridBasicColumnEnd',
@@ -65,7 +67,7 @@ export const gridMeta: EmotionMeta = {
   gridBasicOffset: {
     name: 'gridBasicOffset',
     description: 'Object containing all `basic` grid offset styles.',
-    value: gridBasicOffset,
+    styles: gridBasicOffset,
   },
   gridBasicOffsetBase: {
     name: 'gridBasicOffsetBase',
@@ -100,7 +102,7 @@ export const gridMeta: EmotionMeta = {
   gridExtended: {
     name: 'gridExtended',
     description: 'Object containing all `extended` grid styles.',
-    value: gridExtended,
+    styles: gridExtended,
   },
   gridExtendedColumnEnd: {
     name: 'gridExtendedColumnEnd',
@@ -115,7 +117,7 @@ export const gridMeta: EmotionMeta = {
   gridExtendedOffset: {
     name: 'gridExtendedOffset',
     description: 'Object containing all `extended` grid offset styles.',
-    value: gridExtendedOffset,
+    styles: gridExtendedOffset,
   },
   gridExtendedOffsetBase: {
     name: 'gridExtendedOffsetBase',
@@ -156,7 +158,7 @@ export const gridMeta: EmotionMeta = {
   gridNarrow: {
     name: 'gridNarrow',
     description: 'Object containing all `narrow` grid styles.',
-    value: gridNarrow,
+    styles: gridNarrow,
   },
   gridNarrowColumnEnd: {
     name: 'gridNarrowColumnEnd',
@@ -171,7 +173,7 @@ export const gridMeta: EmotionMeta = {
   gridNarrowOffset: {
     name: 'gridNarrowOffset',
     description: 'Object containing all `narrow` grid offset styles.',
-    value: gridNarrowOffset,
+    styles: gridNarrowOffset,
   },
   gridNarrowOffsetBase: {
     name: 'gridNarrowOffsetBase',
@@ -197,12 +199,12 @@ export const gridMeta: EmotionMeta = {
     name: 'gridStyle',
     description:
       'Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested).',
-    value: gridStyle,
+    styles: gridStyle,
   },
   gridWide: {
     name: 'gridWide',
     description: 'Object containing all `wide` grid styles.',
-    value: gridWide,
+    styles: gridWide,
   },
   gridWideColumnEnd: {
     name: 'gridWideColumnEnd',
@@ -217,7 +219,7 @@ export const gridMeta: EmotionMeta = {
   gridWideOffset: {
     name: 'gridWideOffset',
     description: 'Object containing all `wide` grid offset styles.',
-    value: gridWideOffset,
+    styles: gridWideOffset,
   },
   gridWideOffsetBase: {
     name: 'gridWideOffsetBase',
@@ -234,4 +236,4 @@ export const gridMeta: EmotionMeta = {
     description: 'Holds a **xxl** offset within the `wide` area of the Porsche Grid.',
     value: gridWideOffsetXXL,
   },
-} as const;
+} satisfies EmotionMeta['grid'];
