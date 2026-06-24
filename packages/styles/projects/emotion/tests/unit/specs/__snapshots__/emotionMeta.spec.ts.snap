@@ -579,191 +579,205 @@ exports[`emotionMeta > should match snapshot 1`] = `
     },
   },
   "grid": {
-    "gridBasic": {
-      "description": "Object containing all \`basic\` grid styles.",
-      "name": "gridBasic",
-      "styles": {
-        "columnEnd": "basic-end",
-        "columnStart": "basic-start",
-        "spanOneHalf": "var(--pds-grid-basic-span-one-half)",
-        "spanOneThird": "var(--pds-grid-basic-span-one-third)",
-        "spanTwoThirds": "var(--pds-grid-basic-span-two-thirds)",
+    "basic": {
+      "column": {
+        "description": "Object containing all \`basic\` grid styles.",
+        "name": "gridBasic",
+        "styles": {
+          "columnEnd": "basic-end",
+          "columnStart": "basic-start",
+          "spanOneHalf": "var(--pds-grid-basic-span-one-half)",
+          "spanOneThird": "var(--pds-grid-basic-span-one-third)",
+          "spanTwoThirds": "var(--pds-grid-basic-span-two-thirds)",
+        },
+      },
+      "end": {
+        "description": "Holds the **end** position of the \`basic\` area within the Porsche Grid.",
+        "name": "gridBasicColumnEnd",
+        "value": "basic-end",
+      },
+      "offset": {
+        "description": "Object containing all \`basic\` grid offset styles.",
+        "name": "gridBasicOffset",
+        "styles": {
+          "base": "max(22px, 10.625vw - 12px)",
+          "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+          "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+        },
+      },
+      "offsetBase": {
+        "description": "Holds a **base** offset within the \`basic\` area of the Porsche Grid.",
+        "name": "gridBasicOffsetBase",
+        "value": "max(22px, 10.625vw - 12px)",
+      },
+      "offsetS": {
+        "description": "Holds a **small** offset within the \`basic\` area of the Porsche Grid.",
+        "name": "gridBasicOffsetS",
+        "value": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+      },
+      "offsetXXL": {
+        "description": "Holds a **xxl** offset within the \`basic\` area of the Porsche Grid.",
+        "name": "gridBasicOffsetXXL",
+        "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+      },
+      "span": {
+        "oneHalf": {
+          "description": "Holds a **half** span within the \`basic\` area of the Porsche Grid.",
+          "name": "gridBasicSpanOneHalf",
+          "value": "var(--pds-grid-basic-span-one-half)",
+        },
+        "oneThird": {
+          "description": "Holds a **one third** span within the \`basic\` area of the Porsche Grid.",
+          "name": "gridBasicSpanOneThird",
+          "value": "var(--pds-grid-basic-span-one-third)",
+        },
+        "twoThirds": {
+          "description": "Holds a **two thirds** span within the \`basic\` area of the Porsche Grid.",
+          "name": "gridBasicSpanTwoThirds",
+          "value": "var(--pds-grid-basic-span-two-thirds)",
+        },
+      },
+      "start": {
+        "description": "Holds the **start** position of the \`basic\` area within the Porsche Grid.",
+        "name": "gridBasicColumnStart",
+        "value": "basic-start",
       },
     },
-    "gridBasicColumnEnd": {
-      "description": "Holds the **end** position of the \`basic\` area within the Porsche Grid.",
-      "name": "gridBasicColumnEnd",
-      "value": "basic-end",
-    },
-    "gridBasicColumnStart": {
-      "description": "Holds the **start** position of the \`basic\` area within the Porsche Grid.",
-      "name": "gridBasicColumnStart",
-      "value": "basic-start",
-    },
-    "gridBasicOffset": {
-      "description": "Object containing all \`basic\` grid offset styles.",
-      "name": "gridBasicOffset",
-      "styles": {
-        "base": "max(22px, 10.625vw - 12px)",
-        "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
-        "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
+    "extended": {
+      "column": {
+        "description": "Object containing all \`extended\` grid styles.",
+        "name": "gridExtended",
+        "styles": {
+          "columnEnd": "extended-end",
+          "columnStart": "extended-start",
+          "spanOneHalf": "var(--pds-grid-extended-span-one-half)",
+        },
+      },
+      "end": {
+        "description": "Holds the **end** position of the \`extended\` area within the Porsche Grid.",
+        "name": "gridExtendedColumnEnd",
+        "value": "extended-end",
+      },
+      "offset": {
+        "description": "Object containing all \`extended\` grid offset styles.",
+        "name": "gridExtendedOffset",
+        "styles": {
+          "base": "max(22px, 10.625vw - 12px)",
+          "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+          "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+        },
+      },
+      "offsetBase": {
+        "description": "Holds a **base** offset within the \`extended\` area of the Porsche Grid.",
+        "name": "gridExtendedOffsetBase",
+        "value": "max(22px, 10.625vw - 12px)",
+      },
+      "offsetS": {
+        "description": "Holds a **small** offset within the \`extended\` area of the Porsche Grid.",
+        "name": "gridExtendedOffsetS",
+        "value": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+      },
+      "offsetXXL": {
+        "description": "Holds a **xxl** offset within the \`extended\` area of the Porsche Grid.",
+        "name": "gridExtendedOffsetXXL",
+        "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
+      },
+      "span": {
+        "oneHalf": {
+          "description": "Holds a **half** span within the \`extended\` area of the Porsche Grid.",
+          "name": "gridExtendedSpanOneHalf",
+          "value": "var(--pds-grid-extended-span-one-half)",
+        },
+      },
+      "start": {
+        "description": "Holds the **start** position of the \`extended\` area within the Porsche Grid.",
+        "name": "gridExtendedColumnStart",
+        "value": "extended-start",
       },
     },
-    "gridBasicOffsetBase": {
-      "description": "Holds a **base** offset within the \`basic\` area of the Porsche Grid.",
-      "name": "gridBasicOffsetBase",
-      "value": "max(22px, 10.625vw - 12px)",
-    },
-    "gridBasicOffsetS": {
-      "description": "Holds a **small** offset within the \`basic\` area of the Porsche Grid.",
-      "name": "gridBasicOffsetS",
-      "value": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
-    },
-    "gridBasicOffsetXXL": {
-      "description": "Holds a **xxl** offset within the \`basic\` area of the Porsche Grid.",
-      "name": "gridBasicOffsetXXL",
-      "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2)",
-    },
-    "gridBasicSpanOneHalf": {
-      "description": "Holds a **half** span within the \`basic\` area of the Porsche Grid.",
-      "name": "gridBasicSpanOneHalf",
-      "value": "var(--pds-grid-basic-span-one-half)",
-    },
-    "gridBasicSpanOneThird": {
-      "description": "Holds a **one third** span within the \`basic\` area of the Porsche Grid.",
-      "name": "gridBasicSpanOneThird",
-      "value": "var(--pds-grid-basic-span-one-third)",
-    },
-    "gridBasicSpanTwoThirds": {
-      "description": "Holds a **two thirds** span within the \`basic\` area of the Porsche Grid.",
-      "name": "gridBasicSpanTwoThirds",
-      "value": "var(--pds-grid-basic-span-two-thirds)",
-    },
-    "gridExtended": {
-      "description": "Object containing all \`extended\` grid styles.",
-      "name": "gridExtended",
-      "styles": {
-        "columnEnd": "extended-end",
-        "columnStart": "extended-start",
-        "spanOneHalf": "var(--pds-grid-extended-span-one-half)",
+    "full": {
+      "column": {
+        "description": "Object containing all \`full\` grid styles.",
+        "name": "gridFull",
+        "styles": {
+          "columnEnd": "full-end",
+          "columnStart": "full-start",
+        },
+      },
+      "end": {
+        "description": "Holds the **end** position of the \`full\` area within the Porsche Grid.",
+        "name": "gridFullColumnEnd",
+        "value": "full-end",
+      },
+      "offset": {
+        "description": "Holds a **full** offset within the \`full\` area of the Porsche Grid.",
+        "name": "gridFullOffset",
+        "value": "max(0px, 50vw - 2560px / 2)",
+      },
+      "start": {
+        "description": "Holds the **start** position of the \`full\` area within the Porsche Grid.",
+        "name": "gridFullColumnStart",
+        "value": "full-start",
       },
     },
-    "gridExtendedColumnEnd": {
-      "description": "Holds the **end** position of the \`extended\` area within the Porsche Grid.",
-      "name": "gridExtendedColumnEnd",
-      "value": "extended-end",
-    },
-    "gridExtendedColumnStart": {
-      "description": "Holds the **start** position of the \`extended\` area within the Porsche Grid.",
-      "name": "gridExtendedColumnStart",
-      "value": "extended-start",
-    },
-    "gridExtendedOffset": {
-      "description": "Object containing all \`extended\` grid offset styles.",
-      "name": "gridExtendedOffset",
-      "styles": {
-        "base": "max(22px, 10.625vw - 12px)",
-        "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
-        "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
-      },
-    },
-    "gridExtendedOffsetBase": {
-      "description": "Holds a **base** offset within the \`extended\` area of the Porsche Grid.",
-      "name": "gridExtendedOffsetBase",
-      "value": "max(22px, 10.625vw - 12px)",
-    },
-    "gridExtendedOffsetS": {
-      "description": "Holds a **small** offset within the \`extended\` area of the Porsche Grid.",
-      "name": "gridExtendedOffsetS",
-      "value": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
-    },
-    "gridExtendedOffsetXXL": {
-      "description": "Holds a **xxl** offset within the \`extended\` area of the Porsche Grid.",
-      "name": "gridExtendedOffsetXXL",
-      "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1)",
-    },
-    "gridExtendedSpanOneHalf": {
-      "description": "Holds a **half** span within the \`extended\` area of the Porsche Grid.",
-      "name": "gridExtendedSpanOneHalf",
-      "value": "var(--pds-grid-extended-span-one-half)",
-    },
-    "gridFull": {
-      "description": "Object containing all \`full\` grid styles.",
-      "name": "gridFull",
-      "styles": {
-        "columnEnd": "full-end",
-        "columnStart": "full-start",
-      },
-    },
-    "gridFullColumnEnd": {
-      "description": "Holds the **end** position of the \`full\` area within the Porsche Grid.",
-      "name": "gridFullColumnEnd",
-      "value": "full-end",
-    },
-    "gridFullColumnStart": {
-      "description": "Holds the **start** position of the \`full\` area within the Porsche Grid.",
-      "name": "gridFullColumnStart",
-      "value": "full-start",
-    },
-    "gridFullOffset": {
-      "description": "Holds a **full** offset within the \`full\` area of the Porsche Grid.",
-      "name": "gridFullOffset",
-      "value": "max(0px, 50vw - 2560px / 2)",
-    },
-    "gridGap": {
+    "gap": {
       "description": "Holds the grid **gap** of the Porsche Grid.",
       "name": "gridGap",
       "value": "clamp(16px, 1.25vw + 12px, 36px)",
     },
-    "gridNarrow": {
-      "description": "Object containing all \`narrow\` grid styles.",
-      "name": "gridNarrow",
-      "styles": {
-        "columnEnd": "narrow-end",
-        "columnStart": "narrow-start",
-        "spanOneHalf": "var(--pds-grid-narrow-span-one-half)",
+    "narrow": {
+      "column": {
+        "description": "Object containing all \`narrow\` grid styles.",
+        "name": "gridNarrow",
+        "styles": {
+          "columnEnd": "narrow-end",
+          "columnStart": "narrow-start",
+          "spanOneHalf": "var(--pds-grid-narrow-span-one-half)",
+        },
+      },
+      "end": {
+        "description": "Holds the **end** position of the \`narrow\` area within the Porsche Grid.",
+        "name": "gridNarrowColumnEnd",
+        "value": "narrow-end",
+      },
+      "offset": {
+        "description": "Object containing all \`narrow\` grid offset styles.",
+        "name": "gridNarrowOffset",
+        "styles": {
+          "base": "max(22px, 10.625vw - 12px)",
+          "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
+          "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
+        },
+      },
+      "offsetBase": {
+        "description": "Holds a **base** offset within the \`narrow\` area of the Porsche Grid.",
+        "name": "gridNarrowOffsetBase",
+        "value": "max(22px, 10.625vw - 12px)",
+      },
+      "offsetS": {
+        "description": "Holds a **small** offset within the \`narrow\` area of the Porsche Grid.",
+        "name": "gridNarrowOffsetS",
+        "value": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
+      },
+      "offsetXXL": {
+        "description": "Holds a **xxl** offset within the \`narrow\` area of the Porsche Grid.",
+        "name": "gridNarrowOffsetXXL",
+        "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
+      },
+      "span": {
+        "oneHalf": {
+          "description": "Holds a **one half** span within the \`narrow\` area of the Porsche Grid.",
+          "name": "gridNarrowSpanOneHalf",
+          "value": "var(--pds-grid-narrow-span-one-half)",
+        },
+      },
+      "start": {
+        "description": "Holds the **start** position of the \`narrow\` area within the Porsche Grid.",
+        "name": "gridNarrowColumnStart",
+        "value": "narrow-start",
       },
     },
-    "gridNarrowColumnEnd": {
-      "description": "Holds the **end** position of the \`narrow\` area within the Porsche Grid.",
-      "name": "gridNarrowColumnEnd",
-      "value": "narrow-end",
-    },
-    "gridNarrowColumnStart": {
-      "description": "Holds the **start** position of the \`narrow\` area within the Porsche Grid.",
-      "name": "gridNarrowColumnStart",
-      "value": "narrow-start",
-    },
-    "gridNarrowOffset": {
-      "description": "Object containing all \`narrow\` grid offset styles.",
-      "name": "gridNarrowOffset",
-      "styles": {
-        "base": "max(22px, 10.625vw - 12px)",
-        "s": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
-        "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
-      },
-    },
-    "gridNarrowOffsetBase": {
-      "description": "Holds a **base** offset within the \`narrow\` area of the Porsche Grid.",
-      "name": "gridNarrowOffsetBase",
-      "value": "max(22px, 10.625vw - 12px)",
-    },
-    "gridNarrowOffsetS": {
-      "description": "Holds a **small** offset within the \`narrow\` area of the Porsche Grid.",
-      "name": "gridNarrowOffsetS",
-      "value": "calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
-    },
-    "gridNarrowOffsetXXL": {
-      "description": "Holds a **xxl** offset within the \`narrow\` area of the Porsche Grid.",
-      "name": "gridNarrowOffsetXXL",
-      "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 4)",
-    },
-    "gridNarrowSpanOneHalf": {
-      "description": "Holds a **one half** span within the \`narrow\` area of the Porsche Grid.",
-      "name": "gridNarrowSpanOneHalf",
-      "value": "var(--pds-grid-narrow-span-one-half)",
-    },
-    "gridStyle": {
+    "template": {
       "description": "Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested).",
       "name": "gridStyle",
       "styles": {
@@ -795,47 +809,49 @@ exports[`emotionMeta > should match snapshot 1`] = `
         "padding": "0 calc(50% - var(--pds-internal-grid-margin,0px) - 2560px / 2)",
       },
     },
-    "gridWide": {
-      "description": "Object containing all \`wide\` grid styles.",
-      "name": "gridWide",
-      "styles": {
-        "columnEnd": "wide-end",
-        "columnStart": "wide-start",
+    "wide": {
+      "column": {
+        "description": "Object containing all \`wide\` grid styles.",
+        "name": "gridWide",
+        "styles": {
+          "columnEnd": "wide-end",
+          "columnStart": "wide-start",
+        },
       },
-    },
-    "gridWideColumnEnd": {
-      "description": "Holds the **end** position of the \`wide\` area within the Porsche Grid.",
-      "name": "gridWideColumnEnd",
-      "value": "wide-end",
-    },
-    "gridWideColumnStart": {
-      "description": "Holds the **start** position of the \`wide\` area within the Porsche Grid.",
-      "name": "gridWideColumnStart",
-      "value": "wide-start",
-    },
-    "gridWideOffset": {
-      "description": "Object containing all \`wide\` grid offset styles.",
-      "name": "gridWideOffset",
-      "styles": {
-        "base": "max(22px, 10.625vw - 12px)",
-        "s": "calc(5vw - 16px)",
-        "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px))",
+      "end": {
+        "description": "Holds the **end** position of the \`wide\` area within the Porsche Grid.",
+        "name": "gridWideColumnEnd",
+        "value": "wide-end",
       },
-    },
-    "gridWideOffsetBase": {
-      "description": "Holds a **base** offset within the \`wide\` area of the Porsche Grid.",
-      "name": "gridWideOffsetBase",
-      "value": "max(22px, 10.625vw - 12px)",
-    },
-    "gridWideOffsetS": {
-      "description": "Holds a **small** offset within the \`wide\` area of the Porsche Grid.",
-      "name": "gridWideOffsetS",
-      "value": "calc(5vw - 16px)",
-    },
-    "gridWideOffsetXXL": {
-      "description": "Holds a **xxl** offset within the \`wide\` area of the Porsche Grid.",
-      "name": "gridWideOffsetXXL",
-      "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px))",
+      "offset": {
+        "description": "Object containing all \`wide\` grid offset styles.",
+        "name": "gridWideOffset",
+        "styles": {
+          "base": "max(22px, 10.625vw - 12px)",
+          "s": "calc(5vw - 16px)",
+          "xxl": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px))",
+        },
+      },
+      "offsetBase": {
+        "description": "Holds a **base** offset within the \`wide\` area of the Porsche Grid.",
+        "name": "gridWideOffsetBase",
+        "value": "max(22px, 10.625vw - 12px)",
+      },
+      "offsetS": {
+        "description": "Holds a **small** offset within the \`wide\` area of the Porsche Grid.",
+        "name": "gridWideOffsetS",
+        "value": "calc(5vw - 16px)",
+      },
+      "offsetXXL": {
+        "description": "Holds a **xxl** offset within the \`wide\` area of the Porsche Grid.",
+        "name": "gridWideOffsetXXL",
+        "value": "calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px))",
+      },
+      "start": {
+        "description": "Holds the **start** position of the \`wide\` area within the Porsche Grid.",
+        "name": "gridWideColumnStart",
+        "value": "wide-start",
+      },
     },
   },
   "mediaQuery": {

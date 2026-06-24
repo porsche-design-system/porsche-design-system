@@ -10,9 +10,18 @@ import type { TailwindUtility } from '@porsche-design-system/tailwindcss';
 import type { ReactNode } from 'react';
 import { Code } from '@/components/common/Code';
 
+// A utilities branch: a leaf, an array, or a nested record (e.g. the grid area tree).
+type UtilityBranch = TailwindUtility | UtilityBranch[] | { [key: string]: UtilityBranch };
+
 type TailwindUtilitiesTableProps = {
-  utilities: TailwindUtility[];
+  utilities: UtilityBranch;
 };
+
+// A leaf carries a `class`; records/arrays only group. Recursively collect the leaves in source order
+// so the table renders both flat utility arrays and the nested grid tree uniformly.
+const isLeaf = (node: UtilityBranch): node is TailwindUtility => 'class' in node;
+const flattenUtilities = (node: UtilityBranch): TailwindUtility[] =>
+  isLeaf(node) ? [node] : (Array.isArray(node) ? node : Object.values(node)).flatMap(flattenUtilities);
 
 // Render Markdown bold (**text**) and backtick code (`text`) as React nodes
 const renderDescription = (description: string): ReactNode => {
@@ -37,7 +46,7 @@ export const TailwindUtilitiesTable = ({ utilities }: TailwindUtilitiesTableProp
       </PTableRow>
     </PTableHead>
     <PTableBody>
-      {utilities.map((utility) => (
+      {flattenUtilities(utilities).map((utility) => (
         <PTableRow key={utility.class}>
           <PTableCell>
             <Code variant="nowrap">{utility.class}</Code>

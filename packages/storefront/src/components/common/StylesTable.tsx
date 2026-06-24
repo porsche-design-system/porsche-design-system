@@ -21,7 +21,15 @@ type MetaEntry = {
   deprecated?: boolean;
 };
 
-type Meta = Record<string, MetaEntry | Record<string, MetaEntry>>;
+// A meta branch: a leaf entry, an array, or an arbitrarily nested record (e.g. the grid area tree).
+type MetaBranch = MetaEntry | MetaBranch[] | { [key: string]: MetaBranch };
+type Meta = Record<string, MetaBranch>;
+
+// A leaf carries a `name`; records/arrays only group. Recursively collect the leaves in source order
+// so the table renders both the flat domains and the nested grid tree uniformly.
+const isLeaf = (node: MetaBranch): node is MetaEntry => 'name' in node;
+const flattenEntries = (node: MetaBranch): MetaEntry[] =>
+  isLeaf(node) ? [node] : (Array.isArray(node) ? node : Object.values(node)).flatMap(flattenEntries);
 
 // A leaf's displayable payload lives under `value` (token) or `styles` (utility).
 const payloadOf = (entry: MetaEntry): unknown => ('value' in entry ? entry.value : entry.styles);
@@ -67,9 +75,7 @@ const renderValue = (payload: unknown): ReactNode => {
 };
 
 export const StylesTable = ({ meta, columnLabel = 'JS', showColorSwatch, showValue }: StylesTableProps) => {
-  const items = Object.values(meta).filter(
-    (entry): entry is MetaEntry => 'name' in entry && !(entry as MetaEntry).deprecated
-  );
+  const items = flattenEntries(meta).filter((entry) => !entry.deprecated);
   const hasValues = showValue ?? items.some((entry) => typeof payloadOf(entry) !== 'function');
 
   return (

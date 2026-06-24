@@ -235,5 +235,17 @@ export type TailwindMeta = {
     display: TailwindUtility[];
   };
   skeleton: TailwindUtility[];
-  grid: TailwindUtility[];
+  // Grouped by grid area, aligned with `EmotionMeta['grid']` / `ScssMeta['grid']`. `template` is the
+  // whole-grid layout; each area exposes its placement utility (`column`) and line utilities
+  // (`start`/`end`). Tailwind ships no grid tokens or per-area offsets, and its `span` division
+  // utilities are area-agnostic, so they sit at the top level rather than nested under an area.
+  grid: {
+    template: TailwindUtility;
+    narrow: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
+    basic: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
+    extended: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
+    wide: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
+    full: { column: TailwindUtility; start: TailwindUtility; end: TailwindUtility };
+    span: { oneHalf: TailwindUtility; oneThird: TailwindUtility; twoThirds: TailwindUtility };
+  };
 };

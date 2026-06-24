@@ -52,15 +52,18 @@ const section = <T>(heading: string, items: T[], columns: Column<T>[]): string =
 /** An ordered outline: each entry is a flat group (leaf section) or a record of named sub-groups (`Parent — Child` sections). */
 type Outline<T> = Record<string, T[] | Record<string, T[]>>;
 
-/** Normalize a documented group — a keyed record or an array — to a flat list. */
-const groupItems = <T>(group: T[] | Record<string, T>): T[] => (Array.isArray(group) ? group : Object.values(group));
-
 /** A documented leaf (theme variable / utility) carries a `property` or a `class`; a group/category is a keyed record or array of leaves. */
 const isLeaf = (node: unknown): boolean =>
   typeof node === 'object' && node !== null && ('property' in node || 'class' in node);
 
-/** A flat group is an array of leaves or a record of leaves; a category is a record of such groups. */
-const isFlatGroup = (value: object): boolean => Array.isArray(value) || Object.values(value).every(isLeaf);
+/** Recursively collect a group's documented leaves into a flat list in source order, flattening nested sub-groups (e.g. grid areas). */
+const groupItems = <T>(group: object): T[] =>
+  isLeaf(group)
+    ? [group as T]
+    : (Array.isArray(group) ? group : Object.values(group)).flatMap((child) => groupItems<T>(child as object));
+
+/** A flat group has at least one direct leaf (a leaf array/record, or a mixed group like grid); a category is a record of nested groups. */
+const isFlatGroup = (value: object): boolean => Array.isArray(value) || Object.values(value).some(isLeaf);
 
 /** Render an outline to markdown sections, building each section's table from `columns`. Empty groups are skipped. */
 const renderOutline = <T>(outline: Outline<T>, columns: Column<T>[]): string =>

@@ -192,7 +192,50 @@ export type ScssMeta = {
     display: ScssMixin[];
   };
   skeleton: ScssMixin[];
-  grid: (ScssVariable | ScssMixin)[];
+  // Grouped by grid area, aligned with `EmotionMeta['grid']` / `TailwindMeta['grid']`. `template` is the
+  // `pds-grid` layout mixin, `gap` a token. scss has no per-area placement utility (`column`), so areas
+  // expose only line tokens (`start`/`end`), per-area `span`s and offsets; only `full` has a composed
+  // `offset` variable. The per-area `offset{Base,S,XXL}` tokens read the `--pds-grid-*` custom properties.
+  grid: {
+    template: ScssMixin;
+    gap: ScssVariable;
+    narrow: {
+      start: ScssVariable;
+      end: ScssVariable;
+      span: { oneHalf: ScssVariable };
+      offsetBase: ScssVariable;
+      offsetS: ScssVariable;
+      offsetXXL: ScssVariable;
+    };
+    basic: {
+      start: ScssVariable;
+      end: ScssVariable;
+      span: { oneHalf: ScssVariable; oneThird: ScssVariable; twoThirds: ScssVariable };
+      offsetBase: ScssVariable;
+      offsetS: ScssVariable;
+      offsetXXL: ScssVariable;
+    };
+    extended: {
+      start: ScssVariable;
+      end: ScssVariable;
+      span: { oneHalf: ScssVariable };
+      offsetBase: ScssVariable;
+      offsetS: ScssVariable;
+      offsetXXL: ScssVariable;
+    };
+    wide: {
+      start: ScssVariable;
+      end: ScssVariable;
+      offsetBase: ScssVariable;
+      offsetS: ScssVariable;
+      offsetXXL: ScssVariable;
+    };
+    full: {
+      start: ScssVariable;
+      end: ScssVariable;
+      offset: ScssVariable;
+    };
+  };
   focus: ScssMixin[];
   mediaQuery: ScssMixin[];
 };

@@ -211,47 +211,56 @@ export type EmotionMeta = {
     getMediaQueryMin: EmotionUtility;
     getMediaQueryMinMax: EmotionUtility;
   };
-  // `ScssMeta['grid']` is a flat mixed array with no keyed skeleton to mirror, so emotion keeps its
-  // current export-name-keyed shape and only applies the token/utility split.
+  // Grouped by grid area, aligned with `ScssMeta['grid']` / `TailwindMeta['grid']`. `template` is the
+  // whole-grid layout, `gap` a token; each area carries its placement utility (`column`), line tokens
+  // (`start`/`end`), per-area `span`s, the composed `offset` utility and its `offset{Base,S,XXL}` tokens.
   grid: {
-    gridFull: EmotionUtility;
-    gridBasic: EmotionUtility;
-    gridBasicColumnEnd: EmotionToken;
-    gridBasicColumnStart: EmotionToken;
-    gridBasicOffset: EmotionUtility;
-    gridBasicOffsetBase: EmotionToken;
-    gridBasicOffsetS: EmotionToken;
-    gridBasicOffsetXXL: EmotionToken;
-    gridBasicSpanOneHalf: EmotionToken;
-    gridBasicSpanOneThird: EmotionToken;
-    gridBasicSpanTwoThirds: EmotionToken;
-    gridExtended: EmotionUtility;
-    gridExtendedColumnEnd: EmotionToken;
-    gridExtendedColumnStart: EmotionToken;
-    gridExtendedOffset: EmotionUtility;
-    gridExtendedOffsetBase: EmotionToken;
-    gridExtendedOffsetS: EmotionToken;
-    gridExtendedOffsetXXL: EmotionToken;
-    gridExtendedSpanOneHalf: EmotionToken;
-    gridFullColumnEnd: EmotionToken;
-    gridFullColumnStart: EmotionToken;
-    gridFullOffset: EmotionToken;
-    gridGap: EmotionToken;
-    gridNarrow: EmotionUtility;
-    gridNarrowColumnEnd: EmotionToken;
-    gridNarrowColumnStart: EmotionToken;
-    gridNarrowOffset: EmotionUtility;
-    gridNarrowOffsetBase: EmotionToken;
-    gridNarrowOffsetS: EmotionToken;
-    gridNarrowOffsetXXL: EmotionToken;
-    gridNarrowSpanOneHalf: EmotionToken;
-    gridStyle: EmotionUtility;
-    gridWide: EmotionUtility;
-    gridWideColumnEnd: EmotionToken;
-    gridWideColumnStart: EmotionToken;
-    gridWideOffset: EmotionUtility;
-    gridWideOffsetBase: EmotionToken;
-    gridWideOffsetS: EmotionToken;
-    gridWideOffsetXXL: EmotionToken;
+    template: EmotionUtility;
+    gap: EmotionToken;
+    narrow: {
+      column: EmotionUtility;
+      start: EmotionToken;
+      end: EmotionToken;
+      span: { oneHalf: EmotionToken };
+      offset: EmotionUtility;
+      offsetBase: EmotionToken;
+      offsetS: EmotionToken;
+      offsetXXL: EmotionToken;
+    };
+    basic: {
+      column: EmotionUtility;
+      start: EmotionToken;
+      end: EmotionToken;
+      span: { oneHalf: EmotionToken; oneThird: EmotionToken; twoThirds: EmotionToken };
+      offset: EmotionUtility;
+      offsetBase: EmotionToken;
+      offsetS: EmotionToken;
+      offsetXXL: EmotionToken;
+    };
+    extended: {
+      column: EmotionUtility;
+      start: EmotionToken;
+      end: EmotionToken;
+      span: { oneHalf: EmotionToken };
+      offset: EmotionUtility;
+      offsetBase: EmotionToken;
+      offsetS: EmotionToken;
+      offsetXXL: EmotionToken;
+    };
+    wide: {
+      column: EmotionUtility;
+      start: EmotionToken;
+      end: EmotionToken;
+      offset: EmotionUtility;
+      offsetBase: EmotionToken;
+      offsetS: EmotionToken;
+      offsetXXL: EmotionToken;
+    };
+    full: {
+      column: EmotionUtility;
+      start: EmotionToken;
+      end: EmotionToken;
+      offset: EmotionToken;
+    };
   };
 };
