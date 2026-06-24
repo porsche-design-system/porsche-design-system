@@ -31,10 +31,17 @@ const generateVRTPages = (): void => {
     .map((filePath) => [path.parse(filePath).name, fs.readFileSync(filePath, 'utf8')])
     .reduce((result, [key, content]) => ({ ...result, [key]: content }), {});
 
-  generateVRTPagesForJsFramework(htmlFileContentMap, 'angular');
-  generateVRTPagesForJsFramework(htmlFileContentMap, 'react');
-  generateVRTPagesForJsFramework(htmlFileContentMap, 'nextjs');
-  generateVRTPagesForJsFramework(htmlFileContentMap, 'react-router');
+  // Each consuming package generates only its own framework(s) inside its own turbo build task,
+  // so generation and turbo output-ownership live in the same package. Frameworks are passed as
+  // CLI args (e.g. `tsx generateVRTPages.ts react nextjs`); no args = all (local full build).
+  const allFrameworks: Framework[] = ['angular', 'react', 'nextjs', 'react-router'];
+  const requested = process.argv.slice(2) as Framework[];
+  const invalid = requested.filter((framework) => !allFrameworks.includes(framework));
+  if (invalid.length) {
+    throw new Error(`Unknown framework(s): ${invalid.join(', ')}. Valid: ${allFrameworks.join(', ')}`);
+  }
+  const frameworks: Framework[] = requested.length ? requested : allFrameworks;
+  frameworks.forEach((framework) => generateVRTPagesForJsFramework(htmlFileContentMap, framework));
 };
 
 export const templateRegEx = /( *<template.*>[\s\S]*?<\/template>)/;

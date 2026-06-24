@@ -8,8 +8,9 @@
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,angular' 'serve-cdn' 'serve-dummyassets' 'ng serve'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'ws --spa index.html -p 4200 -d ./dist/demo-app/browser'",
-    "build": "npm run clean:build && npm run build:restoreWrapperSrc && npm run build:angular-wrapper && npm run build:subPackages",
+    "build": "npm run clean:build && npm run build:generatePages && npm run build:restoreWrapperSrc && npm run build:angular-wrapper && npm run build:subPackages",
     "build-prod": "npm run build",
+    "build:generatePages": "tsx ../components-js/scripts/generateVRTPages.ts angular",
     "build:restoreWrapperSrc": "rm -rf ./projects/angular-wrapper/src/lib && mkdir -p ./projects/angular-wrapper/src/lib && cp -r ../components/dist/wrappers/angular/. ./projects/angular-wrapper/src/lib/",
     "build:angular-wrapper": "ng build angular-wrapper --configuration=production",
     "build:subPackages": "npm run build:subPackages:lib && npm run build:subPackages:stylesheets && npm run build:subPackages:tailwindcss && npm run build:subPackages:vanilla-extract && npm run build:subPackages:typings",
