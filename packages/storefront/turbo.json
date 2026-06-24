@@ -11,8 +11,8 @@
         "@porsche-design-system/tokens#build",
         "shared#build"
       ],
-      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!src/lib/**"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "projects/stackblitz/dist/**", "src/lib/**"]
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!src/lib/**", "!src/app/*/news/changelog/page.mdx", "!src/app/*/license/license.mdx"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "projects/stackblitz/dist/**", "src/lib/**", "src/app/*/news/changelog/page.mdx", "src/app/*/license/license.mdx"]
     },
     "build-prod": {
       "dependsOn": [
@@ -24,8 +24,8 @@
         "shared#build"
       ],
       "env": ["NEXT_PUBLIC_BASE_PATH"],
-      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!src/lib/**"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "projects/stackblitz/dist/**", "src/lib/**"]
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!src/lib/**", "!src/app/*/news/changelog/page.mdx", "!src/app/*/license/license.mdx"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "projects/stackblitz/dist/**", "src/lib/**", "src/app/*/news/changelog/page.mdx", "src/app/*/license/license.mdx"]
     }
   }
 }
