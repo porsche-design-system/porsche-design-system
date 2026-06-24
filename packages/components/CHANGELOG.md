@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Changed
 
 - `Angular`: Widen peer dependency to support Angular version 21 + 22
+  ([#4546](https://github.com/porsche-design-system/porsche-design-system/pull/4546))
 
 ## [4.2.0] - 2026-06-22
 
