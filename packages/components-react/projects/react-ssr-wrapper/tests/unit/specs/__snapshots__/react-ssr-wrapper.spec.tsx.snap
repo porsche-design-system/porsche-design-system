@@ -287,8 +287,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -302,7 +302,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg"
+              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -513,8 +513,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
 @media(forced-colors:active) {
@@ -528,7 +528,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg"
+                      src="http://localhost:3001/icons/search.3f0f1ce.svg"
                       width="24"
                     />
                   </template>
@@ -668,8 +668,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -683,7 +683,7 @@ img {
                             alt=""
                             height="24"
                             loading="lazy"
-                            src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+                            src="http://localhost:3001/icons/close.eec3c5d.svg"
                             width="24"
                           />
                         </template>
@@ -3413,8 +3413,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -3428,7 +3428,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+                    src="http://localhost:3001/icons/close.eec3c5d.svg"
                     width="24"
                   />
                 </template>
@@ -3698,8 +3698,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -3716,7 +3716,7 @@ img:dir(rtl) {
             alt=""
             height="24"
             loading="lazy"
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg"
+            src="http://localhost:3001/icons/arrow-right.872716b.svg"
             width="24"
           />
         </template>
@@ -4454,8 +4454,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -4469,7 +4469,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg"
+                      src="http://localhost:3001/icons/sidebar.8e43896.svg"
                       width="24"
                     />
                   </template>
@@ -4551,17 +4551,17 @@ img {
             </style>
             <picture>
               <source
-                srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.0d0cc89@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.2245c45@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.19b4292@3x.webp 3x"
+                srcset="http://localhost:3001/crest/porsche-crest.0d0cc89@1x.webp 1x,http://localhost:3001/crest/porsche-crest.2245c45@2x.webp 2x,http://localhost:3001/crest/porsche-crest.19b4292@3x.webp 3x"
                 type="image/webp"
               />
               <source
-                srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.d76137c@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.8a292fb@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.18d6f02@3x.png 3x"
+                srcset="http://localhost:3001/crest/porsche-crest.d76137c@1x.png 1x,http://localhost:3001/crest/porsche-crest.8a292fb@2x.png 2x,http://localhost:3001/crest/porsche-crest.18d6f02@3x.png 3x"
                 type="image/png"
               />
               <img
                 alt="Porsche"
                 height="40"
-                src="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.8a292fb@2x.png"
+                src="http://localhost:3001/crest/porsche-crest.8a292fb@2x.png"
                 width="30"
               />
             </picture>
@@ -4791,8 +4791,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/sidebar.8e43896.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -4806,7 +4806,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/sidebar.8e43896.svg"
+                      src="http://localhost:3001/icons/sidebar.8e43896.svg"
                       width="24"
                     />
                   </template>
@@ -5261,17 +5261,17 @@ img {
     </style>
     <picture>
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.0d0cc89@1x.webp 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.2245c45@2x.webp 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.19b4292@3x.webp 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.0d0cc89@1x.webp 1x,http://localhost:3001/crest/porsche-crest.2245c45@2x.webp 2x,http://localhost:3001/crest/porsche-crest.19b4292@3x.webp 3x"
         type="image/webp"
       />
       <source
-        srcset="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.d76137c@1x.png 1x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.8a292fb@2x.png 2x,https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.18d6f02@3x.png 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.d76137c@1x.png 1x,http://localhost:3001/crest/porsche-crest.8a292fb@2x.png 2x,http://localhost:3001/crest/porsche-crest.18d6f02@3x.png 3x"
         type="image/png"
       />
       <img
         alt="Porsche"
         height="40"
-        src="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.8a292fb@2x.png"
+        src="http://localhost:3001/crest/porsche-crest.8a292fb@2x.png"
         width="30"
       />
     </picture>
@@ -5669,8 +5669,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -5687,7 +5687,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg"
+                    src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
                     width="24"
                   />
                 </template>
@@ -5843,8 +5843,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -5858,7 +5858,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+                    src="http://localhost:3001/icons/close.eec3c5d.svg"
                     width="24"
                   />
                 </template>
@@ -6014,8 +6014,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -6029,7 +6029,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+                    src="http://localhost:3001/icons/close.eec3c5d.svg"
                     width="24"
                   />
                 </template>
@@ -6272,8 +6272,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-head-right.304b330.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -6290,7 +6290,7 @@ img:dir(rtl) {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.304b330.svg"
+                src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                 width="24"
               />
             </template>
@@ -6448,8 +6448,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -6466,7 +6466,7 @@ img:dir(rtl) {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg"
+                src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
                 width="24"
               />
             </template>
@@ -6638,7 +6638,7 @@ img {
       alt=""
       height="24"
       loading="lazy"
-      src="https://cdn.ui.porsche.com/porsche-design-system/flags/de.b575e11.svg"
+      src="http://localhost:3001/flags/de.b575e11.svg"
       width="24"
     />
   </template>
@@ -6913,8 +6913,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -6928,7 +6928,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+                      src="http://localhost:3001/icons/close.eec3c5d.svg"
                       width="24"
                     />
                   </template>
@@ -7023,8 +7023,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 img:dir(rtl) {
@@ -7041,7 +7041,7 @@ img:dir(rtl) {
       alt=""
       height="24"
       loading="lazy"
-      src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg"
+      src="http://localhost:3001/icons/arrow-right.872716b.svg"
       width="24"
     />
   </template>
@@ -7259,8 +7259,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -7274,7 +7274,7 @@ img {
                   alt=""
                   height="24"
                   loading="lazy"
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+                  src="http://localhost:3001/icons/close.eec3c5d.svg"
                   width="24"
                 />
               </template>
@@ -9546,8 +9546,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 img:dir(rtl) {
@@ -9564,7 +9564,7 @@ img:dir(rtl) {
             alt=""
             height="24"
             loading="lazy"
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg"
+            src="http://localhost:3001/icons/arrow-right.872716b.svg"
             width="24"
           />
         </template>
@@ -10084,8 +10084,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/heart.9a5962e.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/heart.9a5962e.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/heart.9a5962e.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -10099,7 +10099,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="https://cdn.ui.porsche.com/porsche-design-system/icons/heart.9a5962e.svg"
+                    src="http://localhost:3001/icons/heart.9a5962e.svg"
                     width="24"
                   />
                 </template>
@@ -10396,8 +10396,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -10411,7 +10411,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+                      src="http://localhost:3001/icons/close.eec3c5d.svg"
                       width="24"
                     />
                   </template>
@@ -10455,7 +10455,7 @@ exports[`should render dsr component for PModelSignature 1`] = `
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
+  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
@@ -10484,7 +10484,7 @@ img {
     <slot />
     <img
       alt="911"
-      src="https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.b68f913.svg"
+      src="http://localhost:3001/model-signatures/911.b68f913.svg"
     />
   </template>
   Some child
@@ -10778,8 +10778,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -10793,7 +10793,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg"
+              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -11004,8 +11004,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/search.3f0f1ce.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-contrast-medium));
 }
 @media(forced-colors:active) {
@@ -11019,7 +11019,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/search.3f0f1ce.svg"
+                      src="http://localhost:3001/icons/search.3f0f1ce.svg"
                       width="24"
                     />
                   </template>
@@ -11159,8 +11159,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: inherit;
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -11174,7 +11174,7 @@ img {
                             alt=""
                             height="24"
                             loading="lazy"
-                            src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+                            src="http://localhost:3001/icons/close.eec3c5d.svg"
                             width="24"
                           />
                         </template>
@@ -11550,8 +11550,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-left.e03c25b.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 img:dir(rtl) {
@@ -11568,7 +11568,7 @@ img:dir(rtl) {
                   alt=""
                   height="24"
                   loading="lazy"
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-left.e03c25b.svg"
+                  src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
                   width="24"
                 />
               </template>
@@ -11624,8 +11624,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-right.872716b.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 img:dir(rtl) {
@@ -11642,7 +11642,7 @@ img:dir(rtl) {
                   alt=""
                   height="24"
                   loading="lazy"
-                  src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg"
+                  src="http://localhost:3001/icons/arrow-right.872716b.svg"
                   width="24"
                 />
               </template>
@@ -11990,8 +11990,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/information.da41162.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/information.da41162.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -12005,7 +12005,7 @@ img {
             alt=""
             height="24"
             loading="lazy"
-            src="https://cdn.ui.porsche.com/porsche-design-system/icons/information.da41162.svg"
+            src="http://localhost:3001/icons/information.da41162.svg"
             width="24"
           />
         </template>
@@ -12937,8 +12937,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -12952,7 +12952,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg"
+              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -13330,8 +13330,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,currentcolor);
 }
 @media(forced-colors:active) {
@@ -13345,7 +13345,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+                      src="http://localhost:3001/icons/close.eec3c5d.svg"
                       width="24"
                     />
                   </template>
@@ -13428,7 +13428,7 @@ exports[`should render dsr component for PSpinner 1`] = `
   }
   circle:last-child {
     stroke: var(--p-spinner-color,var(--p-color-primary));
-    stroke-dasharray: 69;
+    stroke-dasharray: var(--p-temporary-spinner-stroke-dasharray,69);
     stroke-linecap: round;
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
@@ -15042,8 +15042,8 @@ img {
   height: var(--p-icon-size,var(--p-leading-normal));
   font-family: var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
-  -webkit-mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg") center/contain no-repeat;
+  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
+  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
   background: var(--p-icon-color,var(--p-color-primary));
 }
 @media(forced-colors:active) {
@@ -15057,7 +15057,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="https://cdn.ui.porsche.com/porsche-design-system/icons/close.eec3c5d.svg"
+              src="http://localhost:3001/icons/close.eec3c5d.svg"
               width="24"
             />
           </template>
