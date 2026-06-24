@@ -7,22 +7,16 @@ import {
   PTableHeadCell,
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
+import type { EmotionBranch, EmotionNode } from '@porsche-design-system/emotion/meta';
+import type { VanillaExtractBranch, VanillaExtractNode } from '@porsche-design-system/vanilla-extract/meta';
 import type { ReactNode } from 'react';
 import { Code } from '@/components/common/Code';
 
-// Structural entry type covering both meta shapes: the legacy single-`value` model and the aligned
-// token/utility split (tokens carry `value`, utilities carry `styles`). Kept local so the table
-// works for every styling solution regardless of which package's meta it renders.
-type MetaEntry = {
-  name: string;
-  description: string;
-  value?: string | number | readonly unknown[] | Record<string, unknown> | ((...args: any[]) => unknown);
-  styles?: readonly unknown[] | Record<string, unknown> | ((...args: any[]) => unknown);
-  deprecated?: boolean;
-};
-
-// A meta branch: a leaf entry, an array, or an arbitrarily nested record (e.g. the grid area tree).
-type MetaBranch = MetaEntry | MetaBranch[] | { [key: string]: MetaBranch };
+// StylesTable renders the emotion and vanilla-extract catalogs, whose meta types are identical; reuse
+// the exported leaf/branch types instead of re-declaring the shape. The prop is a record of branches
+// (not the `*Meta` root) because pages pass sub-trees and ad-hoc groups, e.g. `emotionMeta.color.background`.
+type MetaEntry = EmotionNode | VanillaExtractNode;
+type MetaBranch = EmotionBranch | VanillaExtractBranch;
 type Meta = Record<string, MetaBranch>;
 
 // A leaf carries a `name`; records/arrays only group. Recursively collect the leaves in source order
@@ -75,7 +69,7 @@ const renderValue = (payload: unknown): ReactNode => {
 };
 
 export const StylesTable = ({ meta, columnLabel = 'JS', showColorSwatch, showValue }: StylesTableProps) => {
-  const items = flattenEntries(meta).filter((entry) => !entry.deprecated);
+  const items = flattenEntries(meta);
   const hasValues = showValue ?? items.some((entry) => typeof payloadOf(entry) !== 'function');
 
   return (
