@@ -62,8 +62,7 @@ Set `process.browser` per environment via the `configEnvironment` hook instead, 
 
 import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
-+ import { type Plugin, defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
++ import { defineConfig, type Plugin } from 'vite';
 
 + const patchProcessBrowserGlobalIdentifierPlugin = (): Plugin => ({
 +   name: 'pds:patch-process-browser-global-identifier',
@@ -76,9 +75,12 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 +   },
 + });
 
-+ export default defineConfig({
-+   plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), patchProcessBrowserGlobalIdentifierPlugin()],
-+ });
+export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
++ plugins: [tailwindcss(), reactRouter(), patchProcessBrowserGlobalIdentifierPlugin()],
+});
 ```
 
 ### Step 3
@@ -116,18 +118,23 @@ Disable the `lightningcss` polyfill for the `light-dark()` CSS function since it
 ```diff
 // vite.config.ts
 
+import { reactRouter } from '@react-router/dev/vite';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig, type Plugin } from 'vite';
 + import { Features } from 'lightningcss';
 
-export default defineConfig(({ isSsrBuild }) => {
-  return {
-+   css: {
-+     transformer: 'lightningcss',
-+     // disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
-+     lightningcss: {
-+       exclude: Features.LightDark,
-+     },
+export default defineConfig({
++ css: {
++   transformer: 'lightningcss',
++   // disables light-dark() polyfill of lightningcss which is broken https://github.com/porsche-design-system/porsche-design-system/issues/4257
++   lightningcss: {
++     exclude: Features.LightDark,
 +   },
-  };
++ },
+  resolve: {
+    tsconfigPaths: true,
+  },
+  plugins: [tailwindcss(), reactRouter(), patchProcessBrowserGlobalIdentifierPlugin()],
 });
 ```
 
