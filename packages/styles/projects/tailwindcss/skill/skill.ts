@@ -62,8 +62,8 @@ const groupItems = <T>(group: object): T[] =>
     ? [group as T]
     : (Array.isArray(group) ? group : Object.values(group)).flatMap((child) => groupItems<T>(child as object));
 
-/** A flat group has at least one direct leaf (a leaf array/record, or a mixed group like grid); a category is a record of nested groups. */
-const isFlatGroup = (value: object): boolean => Array.isArray(value) || Object.values(value).some(isLeaf);
+/** A flat group is an array of leaves or a record whose direct children are all leaves; anything with nested sub-records is a category. */
+const isFlatGroup = (value: object): boolean => Array.isArray(value) || Object.values(value).every(isLeaf);
 
 /** Render an outline to markdown sections, building each section's table from `columns`. Empty groups are skipped. */
 const renderOutline = <T>(outline: Outline<T>, columns: Column<T>[]): string =>
@@ -104,23 +104,23 @@ const howToUse = readMarkdown('how-to-use.md');
 
 /**
  * Derive an {@link Outline} from a catalog, sentence-casing keys (`lineHeight` → `Line height`) and
- * following source order, so the catalog's shape *is* the documentation outline.
+ * following source order, so the catalog's shape *is* the documentation outline. A "mixed" domain
+ * (loose leaves + nested sub-records, e.g. grid's `template`/`span` alongside the area records)
+ * buckets its loose leaves into a leading `Base` subgroup.
  */
 const deriveOutline = <T>(catalog: object): Outline<T> =>
   Object.fromEntries(
-    Object.entries(catalog).map(
-      ([key, value]: [string, T[] | Record<string, T> | Record<string, T[] | Record<string, T>>]) => [
-        sentenceCase(key),
-        isFlatGroup(value)
-          ? groupItems(value as T[] | Record<string, T>)
-          : Object.fromEntries(
-              Object.entries(value as Record<string, T[] | Record<string, T>>).map(([subKey, subValue]) => [
-                sentenceCase(subKey),
-                groupItems(subValue),
-              ])
-            ),
-      ]
-    )
+    Object.entries(catalog).map(([key, value]: [string, object]) => [
+      sentenceCase(key),
+      isFlatGroup(value)
+        ? groupItems<T>(value)
+        : Object.fromEntries([
+            ...(Object.values(value).some(isLeaf) ? [['Base', Object.values(value).filter(isLeaf) as T[]]] : []),
+            ...Object.entries(value)
+              .filter(([, subValue]) => !isLeaf(subValue))
+              .map(([subKey, subValue]) => [sentenceCase(subKey), groupItems<T>(subValue as object)]),
+          ]),
+    ])
   ) as Outline<T>;
 
 /** Keep only the leaves of a given {@link TailwindKind}, pruning emptied groups. Returns `undefined` when nothing remains. */

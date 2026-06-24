@@ -18,4 +18,26 @@ export const metadata = {
 
 ## SCSS Variables
 
-<ScssVariablesTable variables={flatten(scssMeta.grid).filter((node) => kindOf(node) === 'token')} />
+### Base
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.gap)} />
+
+### Narrow
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.narrow)} />
+
+### Basic
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.basic)} />
+
+### Extended
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.extended)} />
+
+### Wide
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.wide)} />
+
+### Full
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.full)} />
