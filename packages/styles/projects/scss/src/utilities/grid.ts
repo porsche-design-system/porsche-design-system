@@ -1,12 +1,11 @@
 import type { ScssMixin } from '../types';
 
 /** The documented `pds-grid` layout mixin. Sets the `--pds-grid-*` custom properties the `theme.grid` span variables read. */
-export const grid = [
-  {
-    name: 'pds-grid',
-    description:
-      'Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested).',
-    raw: `  margin: 0 var(--pds-internal-grid-margin, 0);
+export const grid = {
+  name: 'pds-grid',
+  description:
+    'Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested).',
+  raw: `  margin: 0 var(--pds-internal-grid-margin, 0);
   display: grid;
   padding: 0 calc(50% - var(--pds-internal-grid-margin, 0px) - 2560px/2);
   grid-gap: clamp(16px, 1.25vw + 12px, 36px);
@@ -61,5 +60,4 @@ export const grid = [
   @media (min-width: 1920px) {
     --pds-internal-grid-safe-zone: min(50vw - 880px, 400px);
   }`,
-  },
-] satisfies ScssMixin[];
+} satisfies ScssMixin;
