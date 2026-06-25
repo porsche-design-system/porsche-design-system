@@ -8,6 +8,18 @@ export type Framework = (typeof FRAMEWORKS)[number];
 export const isFramework = (value: string): value is Framework => (FRAMEWORKS as readonly string[]).includes(value);
 
 /**
+ * Each framework's committed `skill/` tree, relative to the monorepo root. Single
+ * source of truth shared by the generator (`build:skill`) and the producer CI gates
+ * (drift + completeness), so the gates always inspect the same trees the generator writes.
+ */
+export const WRAPPER_SKILL_DIRS: Record<Framework, string> = {
+  js: 'packages/components-js/projects/components-wrapper/skill',
+  angular: 'packages/components-angular/projects/angular-wrapper/skill',
+  react: 'packages/components-react/projects/react-wrapper/skill',
+  vue: 'packages/components-vue/projects/vue-wrapper/skill',
+};
+
+/**
  * Reference sub-directories laid out under the skill root. The harness creates
  * these empty up front so the content generators (TASK-03+) only have to write
  * files into a tree that already has the right shape.

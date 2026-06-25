@@ -7,7 +7,7 @@ import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference'
 import type { MigrationSource } from '../src/lib/skill/migrationReference';
 import type { PartialsSource } from '../src/lib/skill/partialsReference';
 import { buildSkillMd, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
-import { FRAMEWORKS, type Framework, isFramework, SkillTree } from '../src/lib/skill/skillTree';
+import { FRAMEWORKS, type Framework, isFramework, SkillTree, WRAPPER_SKILL_DIRS } from '../src/lib/skill/skillTree';
 import { writeStyleReferences } from '../src/lib/skill/stylesReference';
 import { writeTokensReference } from '../src/lib/skill/tokensReference';
 
@@ -129,21 +129,13 @@ const loadMigrationGeneration = async (): Promise<MigrationGeneration | null> =>
   }
 };
 
-/** Wrapper source dir (relative to the repo root) whose committed `skill/` tree each framework owns. */
-const WRAPPER_SKILL_DIR: Record<Framework, string> = {
-  js: 'packages/components-js/projects/components-wrapper/skill',
-  angular: 'packages/components-angular/projects/angular-wrapper/skill',
-  react: 'packages/components-react/projects/react-wrapper/skill',
-  vue: 'packages/components-vue/projects/vue-wrapper/skill',
-};
-
 const generateTree = async (
   framework: Framework,
   generation: ComponentGeneration | null,
   partialsGeneration: PartialsGeneration | null,
   migrationGeneration: MigrationGeneration | null
 ): Promise<void> => {
-  const root = path.resolve(REPO_ROOT, WRAPPER_SKILL_DIR[framework]);
+  const root = path.resolve(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]);
   const tree = new SkillTree(root);
   tree.reset();
 
