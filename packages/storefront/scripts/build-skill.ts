@@ -2,6 +2,7 @@ import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExamples';
 import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
+import type { PartialsSource } from '../src/lib/skill/partialsReference';
 import { buildSkillMd, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SkillTree } from '../src/lib/skill/skillTree';
 import { writeStyleReferences } from '../src/lib/skill/stylesReference';
@@ -39,6 +40,51 @@ const loadComponentGeneration = async (): Promise<ComponentGeneration | null> =>
   }
 };
 
+/**
+ * The partials reference, like the component references, depends on the storefront
+ * runtime: each partial's `page.mdx` is an `@/`-aliased MDX module that only resolves
+ * under the MDX/alias-aware runtime wired in TASK-10. Under plain `tsx` the import
+ * throws, so this degrades to omitting the partials reference rather than failing.
+ * There is no partials meta object — the MDX render is the source.
+ */
+type PartialsGeneration = {
+  source: PartialsSource;
+  writePartialsReference: typeof import('../src/lib/skill/partialsReference').writePartialsReference;
+};
+
+/** Partial directory → its exported function name, in documentation order (matches the design). */
+const PARTIAL_DIRECTORIES: { functionName: string; dir: string }[] = [
+  { functionName: 'getFontLinks', dir: 'font-links' },
+  { functionName: 'getComponentChunkLinks', dir: 'component-chunk-links' },
+  { functionName: 'getMetaTagsAndIconLinks', dir: 'meta-tags-and-icon-links' },
+  { functionName: 'getIconLinks', dir: 'icon-links' },
+  { functionName: 'getLoaderScript', dir: 'loader-script' },
+];
+
+const loadPartialsGeneration = async (): Promise<PartialsGeneration | null> => {
+  try {
+    const [{ writePartialsReference }, introduction, ...pages] = await Promise.all([
+      import('../src/lib/skill/partialsReference'),
+      import('../src/app/(main)/partials/introduction/page.mdx'),
+      ...PARTIAL_DIRECTORIES.map(({ dir }) => import(`../src/app/(main)/partials/${dir}/page.mdx`)),
+    ]);
+    return {
+      writePartialsReference,
+      source: {
+        introduction: introduction.default,
+        partials: PARTIAL_DIRECTORIES.map(({ functionName }, index) => ({
+          functionName,
+          page: pages[index].default,
+        })),
+      },
+    };
+  } catch (error) {
+    const reason = error instanceof Error ? error.message.split('\n')[0] : String(error);
+    console.warn(`Skipping partials reference — generation unavailable under this runtime (${reason}).`);
+    return null;
+  }
+};
+
 /** Wrapper source dir (relative to the repo root) whose committed `skill/` tree each framework owns. */
 const WRAPPER_SKILL_DIR: Record<Framework, string> = {
   js: 'packages/components-js/projects/components-wrapper/skill',
@@ -47,7 +93,11 @@ const WRAPPER_SKILL_DIR: Record<Framework, string> = {
   vue: 'packages/components-vue/projects/vue-wrapper/skill',
 };
 
-const generateTree = async (framework: Framework, generation: ComponentGeneration | null): Promise<void> => {
+const generateTree = async (
+  framework: Framework,
+  generation: ComponentGeneration | null,
+  partialsGeneration: PartialsGeneration | null
+): Promise<void> => {
   const root = path.resolve(REPO_ROOT, WRAPPER_SKILL_DIR[framework]);
   const tree = new SkillTree(root);
   tree.reset();
@@ -63,6 +113,14 @@ const generateTree = async (framework: Framework, generation: ComponentGeneratio
 
   writeTokensReference(tree);
   console.log('  tokens reference written');
+
+  if (partialsGeneration) {
+    const { degraded } = partialsGeneration.writePartialsReference(tree, partialsGeneration.source);
+    console.log('  partials reference written');
+    if (degraded.length > 0) {
+      console.warn(`  degraded partials prose (review the source MDX): ${degraded.join(', ')}`);
+    }
+  }
 
   if (generation) {
     const { componentDocsMeta, writeComponentReferences } = generation;
@@ -98,10 +156,10 @@ const main = async (): Promise<void> => {
     }
   }
 
-  const generation = await loadComponentGeneration();
+  const [generation, partialsGeneration] = await Promise.all([loadComponentGeneration(), loadPartialsGeneration()]);
 
   for (const framework of frameworks as Framework[]) {
-    await generateTree(framework, generation);
+    await generateTree(framework, generation, partialsGeneration);
   }
 };
 
