@@ -8,7 +8,7 @@ export const metadata = {
 
 # Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -42,6 +42,57 @@ the `Banner` is closed. This is important to keep focus order consistent.
 
 The `Banner` component uses `role="status"` and `role="alert"` to announce **content changes** for assistive
 technologies, but only if the component is **pre-rendered** and the content is added dynamically.
+
+### Common do's and don'ts
+
+- **Do** pre-render the banner in the DOM and update its content when showing feedback.
+- **Do** provide meaningful `heading` and `description` text for warnings and errors.
+- **Do** return focus to the trigger or at a logical place after the banner is dismissed.
+- **Don't** mount the entire banner only at the moment it should be announced.
+
+## Integration examples
+
+### Banner mounted only when shown
+
+❌ Anti-pattern
+
+```js
+// Banner is created only when an error occurs — live region may not announce.
+if (hasError) {
+  document.body.insertAdjacentHTML('beforeend', '<p-banner open heading="Error">Something went wrong.</p-banner>');
+}
+```
+
+✅ Recommended
+
+```js
+// Pre-render the banner and update content when needed.
+<p-banner
+  id="form-banner"
+  heading="Error"
+  description="Check the highlighted fields and try again."
+  state="error"
+></p-banner>
+```
+
+### Error feedback without descriptive content
+
+❌ Anti-pattern
+
+```js
+<p-banner open state="error" description="Error"></p-banner>
+```
+
+✅ Recommended
+
+```js
+<p-banner
+  open
+  state="error"
+  heading="Payment could not be processed"
+  description="Check your card details or try another payment method."
+></p-banner>
+```
 
 ## Tests
 

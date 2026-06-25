@@ -8,7 +8,9 @@ export const metadata = {
 
 # Input URL <ComponentStatus tagName="p-input-url"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -36,6 +38,63 @@ export const metadata = {
 
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
+
+### Common do's and don'ts
+
+- **Do** keep a persistent label and use helper/description text when additional context is required.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** rely on placeholder text as the only label.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+### Placeholder used as the only label
+
+❌ Anti-pattern
+
+```js
+<p-input-url name="website" placeholder="https://"></p-input-url>
+```
+
+✅ Recommended
+
+```js
+<p-input-url name="website" label="Website URL" description="Include https:// at the beginning."></p-input-url>
+```
+
+### Hidden label without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-input-url name="website" hide-label="true"></p-input-url>
+```
+
+✅ Recommended
+
+```js
+<p-input-url name="website" hide-label="true" label="Website URL"></p-input-url>
+```
+
+### Validation feedback via state and message API
+
+❌ Anti-pattern
+
+```js
+<p-input-url name="website" label="Website URL" aria-invalid="true" message="Invalid"></p-input-url>
+```
+
+✅ Recommended
+
+```js
+<p-input-url
+  name="website"
+  label="Website URL"
+  state="error"
+  message="Enter a valid URL, for example https://www.porsche.com."
+></p-input-url>
+```
 
 ## Limitations
 

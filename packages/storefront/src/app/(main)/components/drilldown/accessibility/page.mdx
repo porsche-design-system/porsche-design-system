@@ -8,6 +8,8 @@ export const metadata = {
 
 # Drilldown <ComponentStatus tagName="p-drilldown"></ComponentStatus>
 
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
 ## Accessibility support
 
 The `Drilldown` component uses the native `dialog` element to provide a modal dialog which comes with browser-specific
@@ -15,11 +17,11 @@ behavior. As a result, accessibility features may vary across different browsers
 
 ### Keyboard
 
-| Key / state                | Function                                                                                                         |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Key / state                | Function                                                                                                        |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behavior). |
-| `ESC`                      | Closes the dialog.                                                                                               |
-| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                        |
+| `ESC`                      | Closes the dialog.                                                                                              |
+| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                       |
 
 ### ARIA enhancements
 
@@ -32,7 +34,64 @@ behavior. As a result, accessibility features may vary across different browsers
 ## Development considerations
 
 To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria`
-property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
+property, e.g.: `aria="{ 'aria-haspopup': 'dialog' }"`.
+
+### Common do's and don'ts
+
+- **Do** use a semantic trigger (usually a button) with a meaningful accessible name.
+- **Do** set `aria-haspopup` through the trigger component `aria` prop.
+- **Do** provide a meaningful dialog label through the drilldown `aria` prop when needed.
+- **Don't** add native `aria-*` attributes directly on the component host.
+
+## Integration examples
+
+### ARIA on trigger button host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-button aria-haspopup="dialog">Menu</p-button>
+```
+
+✅ Recommended
+
+```js
+<p-button aria="{ 'aria-haspopup': 'dialog' }">Vehicle menu</p-button>
+```
+
+### Drilldown label on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-drilldown open aria-label="Navigation">
+  ...
+</p-drilldown>
+```
+
+✅ Recommended
+
+```js
+<p-drilldown open aria="{ 'aria-label': 'Vehicle navigation' }">
+  ...
+</p-drilldown>
+```
+
+### Trigger without popup semantics or context
+
+❌ Anti-pattern
+
+```js
+<p-button>Menu</p-button>
+<p-drilldown>...</p-drilldown>
+```
+
+✅ Recommended
+
+```js
+<p-button aria="{ 'aria-haspopup': 'dialog' }">Vehicle menu</p-button>
+<p-drilldown aria="{ 'aria-label': 'Vehicle navigation' }">...</p-drilldown>
+```
 
 ## Tests
 

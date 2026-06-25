@@ -8,7 +8,7 @@ export const metadata = {
 
 # Carousel <ComponentStatus tagName="p-carousel"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -50,13 +50,69 @@ over all carousel entries. The skip link is only visible when it receives focus 
 
 ### Common do's and don'ts
 
-- **Do** configure `skipLinkTarget` for larger carousels or repeated content sections.
+- **Do** configure `skip-link-target` for larger carousels or repeated content sections.
 - **Do** ensure the skip target points to the next meaningful section.
 - **Do** provide a descriptive carousel label via the `aria` property.
 - **Don't** force keyboard users to tab through every slide control when a skip path is needed.
 - **Don't** use vague labels that do not communicate carousel context.
 
-See the central [Accessibility Do's and Don'ts](/must-know/accessibility/dos-and-donts) guide for shared rules.
+## Integration examples
+
+### ARIA on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-carousel aria-label="Slider">
+  <!-- slides -->
+</p-carousel>
+```
+
+✅ Recommended
+
+```js
+<p-carousel aria="{ 'aria-label': 'Featured Porsche models' }">
+  <!-- slides -->
+</p-carousel>
+```
+
+### Carousel without skip path for keyboard users
+
+❌ Anti-pattern
+
+```js
+<p-carousel>
+  <!-- many slides (>6 items) -->
+</p-carousel>
+```
+
+✅ Recommended
+
+```js
+<p-carousel skip-link-target="#after-carousel" aria="{ 'aria-label': 'Highlights' }">
+  <!-- many slides (>6 items) -->
+</p-carousel>
+
+<p-heading tag="h2" id="after-carousel">Next section</p-heading>
+```
+
+### Vague carousel label
+
+❌ Anti-pattern
+
+```js
+<p-carousel aria="{ 'aria-label': 'Slider' }">
+  <!-- slides -->
+</p-carousel>
+```
+
+✅ Recommended
+
+```js
+<p-carousel aria="{ 'aria-label': 'Featured Porsche models' }">
+  <!-- slides -->
+</p-carousel>
+```
 
 ## Tests
 

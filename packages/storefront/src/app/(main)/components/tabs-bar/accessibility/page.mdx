@@ -8,7 +8,7 @@ export const metadata = {
 
 # Tabs Bar <ComponentStatus tagName="p-tabs-bar"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -120,6 +120,67 @@ Additionally, an `aria-current="page"` attribute should be provided to the activ
 
 If the `p-tabs-bar` is used as an in-page jump navigation, you should follow the same rules as for the route-based
 variant except that `aria-current="page"` should not be used.
+
+### Common do's and don'ts
+
+- **Do** pass tablist ARIA through the `aria` prop when using a tabbed interface.
+- **Do** wrap route-based navigation in `<nav>` with a descriptive `aria-label`.
+- **Do** wire `aria-controls`, `role="tabpanel"`, and `aria-labelledby` in the host application for tab interfaces.
+- **Don't** add tab semantics when the component is used as a link list for route-based navigation.
+
+## Integration examples
+
+### Tabbed interface without tablist label
+
+❌ Anti-pattern
+
+```js
+<p-tabs-bar active-tab-index="0">
+  <button type="button" id="tab-0" aria-controls="panel-0">
+    Overview
+  </button>
+  <button type="button" id="tab-1" aria-controls="panel-1">
+    Equipment
+  </button>
+</p-tabs-bar>
+```
+
+✅ Recommended
+
+```js
+<p-tabs-bar aria="{ 'aria-label': 'Porsche 911 configuration sections' }" active-tab-index="0">
+  <button type="button" id="tab-0" aria-controls="panel-0">
+    Overview
+  </button>
+  <button type="button" id="tab-1" aria-controls="panel-1">
+    Equipment
+  </button>
+</p-tabs-bar>
+```
+
+### Route navigation without landmark label
+
+❌ Anti-pattern
+
+```js
+<p-tabs-bar>
+  <a href="/models/911">911</a>
+  <a href="/models/taycan">Taycan</a>
+</p-tabs-bar>
+```
+
+✅ Recommended
+
+```js
+<nav aria-label="Porsche model range">
+  <p-tabs-bar>
+    <a href="/models/911" aria-current="page">
+      911
+    </a>
+    <a href="/models/taycan">Taycan</a>
+  </p-tabs-bar>
+</nav>
+```
 
 ## Tests
 

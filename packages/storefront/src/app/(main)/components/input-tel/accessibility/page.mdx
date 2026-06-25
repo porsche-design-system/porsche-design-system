@@ -8,7 +8,9 @@ export const metadata = {
 
 # Input Tel <ComponentStatus tagName="p-input-tel"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -36,6 +38,63 @@ export const metadata = {
 
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
+
+### Common do's and don'ts
+
+- **Do** keep a persistent label and use helper/description text when additional context is required.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** rely on placeholder text as the only label.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+### Placeholder used as the only label
+
+❌ Anti-pattern
+
+```js
+<p-input-tel name="phone" placeholder="Phone"></p-input-tel>
+```
+
+✅ Recommended
+
+```js
+<p-input-tel name="phone" label="Phone number" description="Include your country code, for example +49."></p-input-tel>
+```
+
+### Hidden label without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-input-tel name="phone" hide-label="true"></p-input-tel>
+```
+
+✅ Recommended
+
+```js
+<p-input-tel name="phone" hide-label="true" label="Phone number"></p-input-tel>
+```
+
+### Validation feedback via state and message API
+
+❌ Anti-pattern
+
+```js
+<p-input-tel name="phone" label="Phone number" aria-invalid="true" message="Invalid"></p-input-tel>
+```
+
+✅ Recommended
+
+```js
+<p-input-tel
+  name="phone"
+  label="Phone number"
+  state="error"
+  message="Enter a valid phone number including your country code."
+></p-input-tel>
+```
 
 ## Limitations
 

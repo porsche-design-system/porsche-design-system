@@ -8,7 +8,7 @@ export const metadata = {
 
 # Icon <ComponentStatus tagName="p-icon"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -30,6 +30,44 @@ cases, it is important to **hide** the icon from assistive technologies. This ca
 
 ```html
 <p-icon aria-hidden="true" name="phone" /><p-text>+49 123 456 7890</p-text>
+```
+
+### Common do's and don'ts
+
+- **Do** pass meaningful names through the `aria` prop when the icon conveys information on its own.
+- **Do** hide decorative icons from assistive technologies when adjacent text provides the meaning.
+- **Don't** add redundant `aria-label` to decorative icons beside visible text.
+
+## Integration examples
+
+### Meaningful icon without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-icon name="warning"></p-icon>
+```
+
+✅ Recommended
+
+```js
+<p-icon name="warning" aria="{ 'aria-label': 'Warning' }"></p-icon>
+```
+
+### Decorative icon with redundant label
+
+❌ Anti-pattern
+
+```js
+<p-icon name="phone" aria="{ 'aria-label': 'Phone' }"></p-icon>
+<p-text>+49 711 911 0</p-text>
+```
+
+✅ Recommended
+
+```js
+<p-icon aria-hidden="true" name="phone"></p-icon>
+<p-text>+49 711 911 0</p-text>
 ```
 
 ## Tests

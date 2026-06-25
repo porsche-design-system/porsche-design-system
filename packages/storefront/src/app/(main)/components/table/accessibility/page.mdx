@@ -8,7 +8,7 @@ export const metadata = {
 
 # Table <ComponentStatus tagName="p-table"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -27,6 +27,50 @@ export const metadata = {
 | ------------------------------------------------ | ---------------------------------------------------- |
 | `aria-label="STRING"`, `aria-labelledby="IDREF"` | Captions are provided by aria labels.                |
 | `aria-sort="VALUE"`                              | Provides the sorting direction of the column header. |
+
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** provide a `caption` or `slot="caption"` that describes the table purpose.
+- **Do** keep visible header text for sortable columns.
+- **Don't** use `hide-label` on a sortable column without an alternative accessible name.
+
+## Integration examples
+
+### Data table without caption
+
+❌ Anti-pattern
+
+```js
+<p-table>
+  <p-table-head>...</p-table-head>
+  <p-table-body>...</p-table-body>
+</p-table>
+```
+
+✅ Recommended
+
+```js
+<p-table caption="Available Porsche 911 models and starting prices">
+  <p-table-head>...</p-table-head>
+  <p-table-body>...</p-table-body>
+</p-table>
+```
+
+### Column with hidden label
+
+❌ Anti-pattern
+
+```js
+<p-table-head-cell hide-label="true"></p-table-head-cell>
+```
+
+✅ Recommended
+
+```js
+<p-table-head-cell hide-label="true">Model</p-table-head-cell>
+```
 
 ## Tests
 

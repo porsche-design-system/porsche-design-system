@@ -8,7 +8,7 @@ export const metadata = {
 
 # Inline Notification <ComponentStatus tagName="p-inline-notification"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -34,6 +34,63 @@ export const metadata = {
 
 The `Inline Notification` component uses `role="status"` and `role="alert"` to announce **content changes** for
 assistive technologies, but only if the component is **pre-rendered** and the content is added dynamically.
+
+### Common do's and don'ts
+
+- **Do** pre-render the notification and update `heading`/`description` when status changes.
+- **Do** use `state="warning"` or `state="error"` with descriptive content for urgent issues.
+- **Don't** conditionally mount the component only when an alert should be announced.
+
+## Integration examples
+
+### Notification mounted only when needed
+
+❌ Anti-pattern
+
+```js
+// Component is created only when a warning appears — live region may not announce.
+if (hasWarning) {
+  container.innerHTML = '<p-inline-notification state="warning" description="Warning"></p-inline-notification>';
+}
+```
+
+✅ Recommended
+
+```js
+// Pre-render the notification and update its content when needed.
+<p-inline-notification
+  id="account-warning"
+  state="warning"
+  heading="Verify your email address"
+  description="Confirm your email to receive order updates."
+></p-inline-notification>
+
+// or wrap inside an aria live region
+
+<div role="alert" aria-live="assertive">
+  if (hasWarning) {
+    container.innerHTML = '<p-inline-notification state="warning" description="Warning"></p-inline-notification>';
+  }
+</div>
+```
+
+### Warning without descriptive heading
+
+❌ Anti-pattern
+
+```js
+<p-inline-notification state="warning" description="Something went wrong"></p-inline-notification>
+```
+
+✅ Recommended
+
+```js
+<p-inline-notification
+  state="warning"
+  heading="Delivery date unavailable"
+  description="Choose another date or contact your Porsche Centre."
+></p-inline-notification>
+```
 
 ## Tests
 

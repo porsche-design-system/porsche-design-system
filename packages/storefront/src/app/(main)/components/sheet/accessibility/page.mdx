@@ -8,7 +8,7 @@ export const metadata = {
 
 # Sheet <ComponentStatus tagName="p-sheet"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -37,6 +37,78 @@ behavior. As a result, accessibility features may vary across different browsers
 | ARIA                  | Usage                                                                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `aria-label="STRING"` | Defines the accessible name if no `aria` property is provided, uses the contents of the header slot and falls back to a fixed name. |
+
+## Development considerations
+
+Set `aria-haspopup` on the trigger so users know a dialog will open. Ensure the sheet has a meaningful title via the
+header slot or `aria` property.
+
+### Common do's and don'ts
+
+- **Do** use a semantic trigger (usually a button) with a meaningful accessible name.
+- **Do** set `aria-haspopup` through the trigger component `aria` prop when opening the sheet.
+- **Do** ensure a meaningful title/label is available via the header slot or `aria` property.
+- **Don't** add raw host-level ARIA attributes as a workaround.
+- **Don't** use unclear trigger copy like "Open" when the sheet purpose is not obvious.
+
+## Integration examples
+
+### ARIA on trigger button host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-button aria-haspopup="dialog">Filter results</p-button>
+```
+
+✅ Recommended
+
+```js
+<p-button aria="{ 'aria-haspopup': 'dialog' }">Filter results</p-button>
+```
+
+### Dialog label on component host vs header slot
+
+❌ Anti-pattern
+
+```js
+<p-sheet aria-label="Filters">...</p-sheet>
+```
+
+✅ Recommended
+
+```js
+<p-sheet>
+  <p-heading slot="header" tag="h2" size="lg">Filter results</p-heading>
+  ...
+</p-sheet>
+
+// or with aria prop when no visible header is shown
+
+<p-sheet aria="{ 'aria-label': 'Filter results' }">...</p-sheet>
+```
+
+### Sheet trigger without popup semantics
+
+❌ Anti-pattern
+
+```js
+<p-button>Open</p-button>
+<p-sheet>
+  <p-heading slot="header" tag="h2" size="lg">Filters</p-heading>
+  ...
+</p-sheet>
+```
+
+✅ Recommended
+
+```js
+<p-button aria="{ 'aria-haspopup': 'dialog' }">Filter results</p-button>
+<p-sheet>
+  <p-heading slot="header" tag="h2" size="lg">Filter results</p-heading>
+  ...
+</p-sheet>
+```
 
 ## Tests
 

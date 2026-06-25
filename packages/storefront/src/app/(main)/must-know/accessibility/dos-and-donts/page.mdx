@@ -22,8 +22,11 @@ export const metadata = {
 ## Why this page exists
 
 Most accessibility regressions found in audits are not caused by missing component features, but by incorrect
-integration or semantic misuse. This page focuses on practical implementation guidance so developers can avoid recurring
-issues while using PDS components.
+integration or semantic misuse. This page focuses on practical **integration guidance** so developers can avoid
+recurring issues while using PDS components.
+
+This is different from the **Usage** tab on component pages, which covers design and UX guidance. The **Accessibility**
+tab documents keyboard behavior, ARIA support, and component-specific integration patterns.
 
 ## Top 5 audit mistakes
 
@@ -46,7 +49,7 @@ issues while using PDS components.
 ## General don'ts
 
 - Do not put raw `aria-*` attributes on PDS component `host` elements as a workaround.
-- Use PDS focus styling for custom components instead of removing or building own focus outlines.
+- Do not remove focus outlines or build custom focus styles without using PDS focus styling as a reference.
 - Do not pick headings by visual size, pick them by document structure.
 - Do not rely on placeholder text as the only form label.
 - Do not use "click here" link text without context.
@@ -54,65 +57,82 @@ issues while using PDS components.
 
 ## Mistake to better solution
 
-### 1) ARIA on PDS component host vs aria prop
+<span id="aria-prop"></span>
+
+### ARIA on PDS component host vs aria prop
 
 ❌ Anti-pattern
 
-```jsx
-<PButton aria-haspopup="dialog" aria-label="Open details of product XYZ">
+```js
+<p-button aria-haspopup="dialog" aria-label="Open details of product XYZ">
   Open details
-</PButton>
+</p-button>
 ```
 
 ✅ Recommended
 
-```jsx
-<PButton aria={{ 'aria-haspopup': 'dialog', 'aria-label': 'Open details of product XYZ' }}>Open details</PButton>
+```js
+<p-button aria="{ 'aria-haspopup': 'dialog', 'aria-label': 'Open details of product XYZ' }">Open details</p-button>
 ```
 
-### 2) Icon-only action without accessible name
+<span id="icon-only-labels"></span>
+
+### Icon-only action without accessible name
 
 ❌ Anti-pattern
 
-```jsx
-<PLink icon="arrow-right" href="https://porsche.com"></PLink>
+```js
+<p-link icon="arrow-right" href="https://porsche.com"></p-link>
 ```
 
 ✅ Recommended
 
-```jsx
-<PLink icon="arrow-right" hideLabel={true} href="https://porsche.com">Some label</PLink>
+```js
+<p-link icon="arrow-right" hide-label="true" href="https://porsche.com">Some label</p-link>
 
 // or with more contextual label for screen readers
 
-<PLink icon="arrow-right" hideLabel={true} aria={{ 'aria-label': 'Some label with more information about XYZ' }} href="https://porsche.com">Some label</PLink>
+<p-link
+  icon="arrow-right"
+  hide-label="true"
+  aria="{ 'aria-label': 'Some label with more information about XYZ' }"
+  href="https://porsche.com"
+>
+  Some label
+</p-link>
 ```
 
-### 3) Large carousel without skip behavior
+<span id="carousel-skip"></span>
+
+### Large carousel without skip behavior
 
 ❌ Anti-pattern
 
-```jsx
-<PCarousel>{/* many slides */}</PCarousel>
+```js
+<p-carousel>
+  <!-- many slides -->
+</p-carousel>
 
-<PHeading tag={"h2"}>Next content area</PHeading>
+<p-heading tag="h2">Next content area</p-heading>
 ```
 
 ✅ Recommended
 
-```jsx
-<PCarousel skipLinkTarget="next-content-area">{/* many slides */}</PCarousel>
+```js
+<p-carousel skip-link-target="#next-content-area">
+  <!-- many slides -->
+</p-carousel>
 
-<PHeading tag={"h2"} id="next-content-area">Next content area</PHeading>
+<p-heading tag="h2" id="next-content-area">Next content area</p-heading>
 ```
 
 Make sure the skip target points to the next meaningful element after the carousel.
 
 ## Before-merge checklist
 
-- Check the components accessibility tab for any component-specific requirements.
+- Check the component's Accessibility tab for component-specific requirements.
 - All interactive controls are keyboard reachable and operable.
-- Focus indicators are visible in default and uses PDS focus styling.
+- Focus indicators are visible in default state and use PDS focus styling.
 - Icon-only actions have clear accessible names.
 - ARIA is passed via supported PDS component APIs.
 - Repeated blocks include a skip strategy when needed.

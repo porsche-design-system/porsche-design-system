@@ -8,7 +8,7 @@ export const metadata = {
 
 # Radio Group <ComponentStatus tagName="p-radio-group"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -39,6 +39,76 @@ export const metadata = {
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
 
+### Common do's and don'ts
+
+- **Do** provide a clear group `label` that describes the choice being made.
+- **Do** use meaningful option labels so each choice is understandable out of context.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Don't** rely on adjacent text instead of the group `label` prop.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+### Missing group label
+
+❌ Anti-pattern
+
+```js
+<p-radio-group name="fuel">
+  <p-radio-group-option value="electric" label="Electric"></p-radio-group-option>
+  <p-radio-group-option value="hybrid" label="Hybrid"></p-radio-group-option>
+</p-radio-group>
+```
+
+✅ Recommended
+
+```js
+<p-radio-group label="Powertrain" name="fuel" description="Select your preferred powertrain.">
+  <p-radio-group-option value="electric" label="Electric"></p-radio-group-option>
+  <p-radio-group-option value="hybrid" label="Hybrid"></p-radio-group-option>
+</p-radio-group>
+```
+
+### Hidden label without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-radio-group name="fuel" hide-label="true">
+  <p-radio-group-option value="electric" label="Electric"></p-radio-group-option>
+  <p-radio-group-option value="hybrid" label="Hybrid"></p-radio-group-option>
+</p-radio-group>
+```
+
+✅ Recommended
+
+```js
+<p-radio-group label="Powertrain" name="fuel" hide-label="true">
+  <p-radio-group-option value="electric" label="Electric"></p-radio-group-option>
+  <p-radio-group-option value="hybrid" label="Hybrid"></p-radio-group-option>
+</p-radio-group>
+```
+
+### Validation feedback via state and message API
+
+❌ Anti-pattern
+
+```js
+<p-radio-group label="Powertrain" name="fuel" aria-invalid="true" message="Required">
+  <p-radio-group-option value="electric" label="Electric"></p-radio-group-option>
+  <p-radio-group-option value="hybrid" label="Hybrid"></p-radio-group-option>
+</p-radio-group>
+```
+
+✅ Recommended
+
+```js
+<p-radio-group label="Powertrain" name="fuel" required state="error" message="Select a powertrain to continue.">
+  <p-radio-group-option value="electric" label="Electric"></p-radio-group-option>
+  <p-radio-group-option value="hybrid" label="Hybrid"></p-radio-group-option>
+</p-radio-group>
+```
+
 ## Tests
 
 ### Automated
@@ -54,4 +124,4 @@ reader users. They can also confuse sighted users if the reason they are disable
 | Technology                      | Support                                                               |
 | ------------------------------- | --------------------------------------------------------------------- |
 | Keyboard                        | ✅                                                                    |
-| Screen reader (VoiceOver, NVDA) | ⚠️(Note: VoiceOver does not announce the number of options correctly) |
+| Screen reader (VoiceOver, NVDA) | ⚠️(Note: VoiceOver/NVDA do not announce the number of options correctly when used with Safari or Chrome) |

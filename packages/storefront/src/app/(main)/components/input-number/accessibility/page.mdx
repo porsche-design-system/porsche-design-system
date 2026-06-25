@@ -8,7 +8,9 @@ export const metadata = {
 
 # Input Number <ComponentStatus tagName="p-input-number"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -43,6 +45,70 @@ prop to `kilometers per hour`. This way, the screen reader will read out the ful
 
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
+
+### Common do's and don'ts
+
+- **Do** keep a persistent label and spell out unit abbreviations in the `description` prop.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** rely on placeholder text or the `unit` prop alone for accessible context.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+### Placeholder used as the only label
+
+❌ Anti-pattern
+
+```js
+<p-input-number name="speed" placeholder="Top speed" unit="kmh"></p-input-number>
+```
+
+✅ Recommended
+
+```js
+<p-input-number
+  name="speed"
+  label="Top speed"
+  unit="kmh"
+  description="Enter the maximum speed in kilometers per hour."
+></p-input-number>
+```
+
+### Hidden label without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-input-number name="speed" hide-label="true"></p-input-number>
+```
+
+✅ Recommended
+
+```js
+<p-input-number name="speed" hide-label="true" label="Top speed"></p-input-number>
+```
+
+### Validation feedback via state and message API
+
+❌ Anti-pattern
+
+```js
+<p-input-number name="speed" label="Top speed" aria-invalid="true" message="Invalid"></p-input-number>
+```
+
+✅ Recommended
+
+```js
+<p-input-number
+  name="speed"
+  label="Top speed"
+  unit="kmh"
+  description="Enter the maximum speed in kilometers per hour."
+  state="error"
+  message="Enter a speed between 0 and 350 kilometers per hour."
+></p-input-number>
+```
 
 ## Limitations
 

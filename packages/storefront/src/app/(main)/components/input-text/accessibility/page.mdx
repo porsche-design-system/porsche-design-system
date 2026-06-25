@@ -8,7 +8,9 @@ export const metadata = {
 
 # Input Text <ComponentStatus tagName="p-input-text"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -49,8 +51,56 @@ reader users. They can also confuse sighted users if the reason they are disable
 - **Do** use the component state/message API so validation and status changes are announced.
 - **Do** use clear error wording that helps users recover.
 - **Don't** rely on placeholder text as the only label.
+- **Don't** use `hide-label` without an accessible name.
 
-See the central [Accessibility Do's and Don'ts](/must-know/accessibility/dos-and-donts) guide for shared rules.
+## Integration examples
+
+### Placeholder used as the only label
+
+❌ Anti-pattern
+
+```js
+<p-input-text name="email" placeholder="Email"></p-input-text>
+```
+
+✅ Recommended
+
+```js
+<p-input-text name="email" label="Email address" description="We use this to send your confirmation."></p-input-text>
+```
+
+### Hidden label without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-input-text name="reference" hide-label="true"></p-input-text>
+```
+
+✅ Recommended
+
+```js
+<p-input-text name="reference" hide-label="true" label="Order reference"></p-input-text>
+```
+
+### Validation feedback via state and message API
+
+❌ Anti-pattern
+
+```js
+<p-input-text name="email" label="Email" aria-invalid="true" message="Invalid"></p-input-text>
+```
+
+✅ Recommended
+
+```js
+<p-input-text
+  name="email"
+  label="Email address"
+  state="error"
+  message="Enter a valid email address, for example name@example.com."
+></p-input-text>
+```
 
 ## Limitations
 

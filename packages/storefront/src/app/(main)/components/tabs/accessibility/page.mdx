@@ -8,7 +8,9 @@ export const metadata = {
 
 # Tabs <ComponentStatus tagName="p-tabs"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -46,6 +48,54 @@ export const metadata = {
 When multiple tab groups appear on the same page, or when the purpose of the tabs is not clear from the visible tab
 labels alone, provide a descriptive accessible name for the tablist using the `aria` property, e.g.:
 `<p-tabs aria="{ 'aria-label': 'Some label for the tablist', 'aria-description': 'Some description for the tablist' }">`.
+
+### Common do's and don'ts
+
+- **Do** pass tablist ARIA through the `aria` prop when multiple tab groups appear on one page.
+- **Do** use specific `label` text on each `p-tabs-item`.
+- **Don't** add native `aria-*` attributes directly on the component host.
+- **Don't** use vague tab labels like "Details" without context.
+
+## Integration examples
+
+### ARIA on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-tabs aria-label="Product details">
+  <p-tabs-item label="Overview">...</p-tabs-item>
+</p-tabs>
+```
+
+✅ Recommended
+
+```js
+<p-tabs aria="{ 'aria-label': 'Porsche 911 configuration details' }">
+  <p-tabs-item label="Overview">...</p-tabs-item>
+  <p-tabs-item label="Equipment">...</p-tabs-item>
+</p-tabs>
+```
+
+### Vague tab labels without context
+
+❌ Anti-pattern
+
+```js
+<p-tabs aria="{ 'aria-label': 'Product details' }">
+  <p-tabs-item label="Details">...</p-tabs-item>
+  <p-tabs-item label="More">...</p-tabs-item>
+</p-tabs>
+```
+
+✅ Recommended
+
+```js
+<p-tabs aria="{ 'aria-label': 'Porsche 911 configuration details' }">
+  <p-tabs-item label="Overview">...</p-tabs-item>
+  <p-tabs-item label="Equipment and packages">...</p-tabs-item>
+</p-tabs>
+```
 
 ## Limitations
 

@@ -8,7 +8,9 @@ export const metadata = {
 
 # Button Pure <ComponentStatus tagName="p-button-pure"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Limitations', 'Development considerations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Limitations', 'Development considerations', 'Integration examples', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -65,11 +67,65 @@ XYZ."
 
 ### Common do's and don'ts
 
-- **Do** pass ARIA attributes via the `aria` prop, for example `aria={{ 'aria-haspopup': 'dialog' }}` when opening a
+- **Do** pass ARIA attributes via the `aria` prop, for example `aria="{ 'aria-haspopup': 'dialog' }"` when opening a
   dialog.
 - **Do** provide a clear accessible name for icon-only actions via slotted label or `aria` property.
 - **Don't** add native `aria-*` attributes directly on the component host.
 - **Don't** rely on short generic button labels like "Show" or "Add" without context.
+
+## Integration examples
+
+### ARIA on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-button-pure aria-haspopup="dialog" aria-label="Open details of product XYZ">
+  Open details
+</p-button-pure>
+```
+
+✅ Recommended
+
+```js
+<p-button-pure aria="{ 'aria-haspopup': 'dialog', 'aria-label': 'Open details of product XYZ' }">
+  Open details
+</p-button-pure>
+```
+
+### Icon-only button without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-button-pure icon="plus"></p-button-pure>
+```
+
+✅ Recommended
+
+```js
+<p-button-pure icon="plus" hide-label="true">
+  Add item XYZ to shopping cart
+</p-button-pure>
+```
+
+### Vague button label without context
+
+❌ Anti-pattern
+
+```js
+<p-button-pure icon="plus">Add</p-button-pure>
+```
+
+✅ Recommended
+
+```js
+<p-button-pure icon="plus" aria="{ 'aria-label': 'Add item XYZ to shopping cart' }">Add</p-button-pure>
+
+// or use descriptive visible text
+
+<p-button-pure icon="plus">Add item XYZ to cart</p-button-pure>
+```
 
 ## Tests
 

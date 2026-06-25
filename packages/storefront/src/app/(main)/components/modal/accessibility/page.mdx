@@ -8,7 +8,7 @@ export const metadata = {
 
 # Modal <ComponentStatus tagName="p-modal"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -41,17 +41,77 @@ behavior. As a result, accessibility features may vary across different browsers
 ## Development considerations
 
 To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria`
-property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
+property.
 
 ### Common do's and don'ts
 
 - **Do** use a semantic trigger (usually a button) with a meaningful accessible name.
 - **Do** set `aria-haspopup` through the trigger component `aria` prop when opening the modal.
-- **Do** ensure a meaningful title/label is available for the dialog.
+- **Do** ensure a meaningful title is available via the `header` slot or `aria` property.
 - **Don't** add raw host-level ARIA attributes as a workaround.
 - **Don't** use unclear trigger copy like "Open" when the destination is not obvious.
 
-See the central [Accessibility Do's and Don'ts](/must-know/accessibility/dos-and-donts) guide for shared rules.
+## Integration examples
+
+### ARIA on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-button aria-haspopup="dialog">Details of product XYZ</p-button>
+```
+
+✅ Recommended
+
+```js
+<p-button aria="{ 'aria-haspopup': 'dialog' }">Details of product XYZ</p-button>
+```
+
+### Dialog label on component host vs header slot
+
+❌ Anti-pattern
+
+```js
+<p-modal aria-label="Details">...</p-modal>
+```
+
+✅ Recommended
+
+```js
+<p-modal>
+  <p-heading slot="header" tag="h2" size="lg">Details of product XYZ</p-heading>
+  ...
+</p-modal>
+
+// or with aria prop when no visible header is shown
+
+<p-modal aria="{ 'aria-label': 'Details of product XYZ' }">...</p-modal>
+```
+
+### Modal trigger without popup semantics or context
+
+❌ Anti-pattern
+
+```js
+<p-button>Open</p-button>
+<p-modal>
+  <p-heading slot="header" tag="h2" size="lg">Details</p-heading>
+  ...
+</p-modal>
+```
+
+✅ Recommended
+
+```js
+<p-button aria="{ 'aria-haspopup': 'dialog' }">Details of product XYZ</p-button>
+<p-modal>
+  <p-heading slot="header" tag="h2" size="lg">Details of product XYZ</p-heading>
+  ...
+</p-modal>
+```
+
+Use a semantic trigger (usually a button) with a meaningful accessible name and set `aria-haspopup` on the trigger, not
+on the modal host.
 
 ## Tests
 

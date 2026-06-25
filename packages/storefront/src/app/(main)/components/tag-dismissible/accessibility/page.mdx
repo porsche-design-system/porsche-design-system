@@ -8,7 +8,7 @@ export const metadata = {
 
 # Tag Dismissible <ComponentStatus tagName="p-tag-dismissible"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -39,6 +39,43 @@ export const metadata = {
 
 Ensure that when a `p-tag-dismissible` is removed, the focus is set to the previous or next `p-tag-dismissible` or to
 another focusable element. This prevents losing the focus order.
+
+### Common do's and don'ts
+
+- **Do** provide a visible `label` that describes the tag content.
+- **Do** pass dismiss-button ARIA through the `aria` prop when the default action text is insufficient.
+- **Do** move focus to a sensible target after removing a tag.
+- **Don't** add native `aria-*` attributes directly on the component host.
+
+## Integration examples
+
+### Dismiss button ARIA on host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-tag-dismissible label="Sport Chrono" aria-label="Remove Sport Chrono filter"></p-tag-dismissible>
+```
+
+✅ Recommended
+
+```js
+<p-tag-dismissible label="Sport Chrono" aria="{ 'aria-label': 'Remove Sport Chrono filter' }"></p-tag-dismissible>
+```
+
+### Tag without descriptive label
+
+❌ Anti-pattern
+
+```js
+<p-tag-dismissible><p-icon name="watch-sport-chrono"></p-icon></p-tag-dismissible>
+```
+
+✅ Recommended
+
+```js
+<p-tag-dismissible label="Sport Chrono Package"><p-icon name="watch-sport-chrono"></p-icon></p-tag-dismissible>
+```
 
 ## Tests
 

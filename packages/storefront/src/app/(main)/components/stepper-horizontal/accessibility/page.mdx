@@ -8,7 +8,7 @@ export const metadata = {
 
 # Stepper Horizontal <ComponentStatus tagName="p-stepper-horizontal"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -28,6 +28,37 @@ export const metadata = {
 | ----------------- | --------------------------------------------- |
 | `role="list"`     | Indicates the stepper as list element.        |
 | `role="listitem"` | Indicates the step-item as list-item element. |
+
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** provide descriptive text in each step item so progress is understandable out of context.
+- **Do** reflect the current step with the item `state` prop (`current`, `complete`, `warning`).
+- **Don't** use generic labels like "Step 1" without describing the step purpose.
+
+## Integration examples
+
+### Generic step labels without context
+
+❌ Anti-pattern
+
+```js
+<p-stepper-horizontal>
+  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="current">Step 2</p-stepper-horizontal-item>
+</p-stepper-horizontal>
+```
+
+✅ Recommended
+
+```js
+<p-stepper-horizontal>
+  <p-stepper-horizontal-item state="complete">Configure vehicle</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item state="current">Choose delivery date</p-stepper-horizontal-item>
+  <p-stepper-horizontal-item>Review and confirm</p-stepper-horizontal-item>
+</p-stepper-horizontal>
+```
 
 ## Tests
 

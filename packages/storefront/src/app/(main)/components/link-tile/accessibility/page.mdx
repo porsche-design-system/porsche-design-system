@@ -8,7 +8,7 @@ export const metadata = {
 
 # Link Tile <ComponentStatus tagName="p-link-tile"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -39,6 +39,43 @@ If the text of a link does not clearly indicate what the link's target is, add a
 "Click" can be unclear when read out of context by a screen reader. In such instances, provide an alternative text that
 offers more detailed information, such as "Details of product XYZ."
 
+### Common do's and don'ts
+
+- **Do** pass ARIA attributes via the `aria` prop when the visible label needs more context.
+- **Do** provide a descriptive `label` that explains the link destination.
+- **Do** add `aria-label` on slotted `<video>` elements used as backgrounds.
+- **Don't** add native `aria-*` attributes directly on the component host.
+
+## Integration examples
+
+### ARIA on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-link-tile label="Details" href="#" aria-label="Details of Porsche Taycan"></p-link-tile>
+```
+
+✅ Recommended
+
+```js
+<p-link-tile label="Details" href="#" aria="{ 'aria-label': 'Details of Porsche Taycan' }"></p-link-tile>
+```
+
+### Vague link label without context
+
+❌ Anti-pattern
+
+```js
+<p-link-tile label="Details" href="#"></p-link-tile>
+```
+
+✅ Recommended
+
+```js
+<p-link-tile label="Porsche Taycan details" href="#"></p-link-tile>
+```
+
 ### Readable text
 
 In general, placing textual contents above an image or video can easily lead to **contrast issues**. Though the
@@ -53,7 +90,7 @@ In case a video background is used, the component checks whether **reduced motio
 settings and prevents the `<video autoplay loop />` attribute from working to improve accessibility & UX. In addition,
 the slotted video should have no audio or is muted by `<video muted />`. Also keep in mind that long videos or videos in
 general might increase the page load time. The video content should support the CTA instead of distracting from it. To
-support screen reader users, define an alternative video description: `<video aria-label="Some video description"" />`.
+support screen reader users, define an alternative video description: `<video aria-label="Some video description" />`.
 
 ## Tests
 

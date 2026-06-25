@@ -8,11 +8,9 @@ export const metadata = {
 
 # Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
-
-### ARIA enhancements
 
 ### ARIA enhancements
 
@@ -30,6 +28,56 @@ export const metadata = {
 | `aria-required="true"`     | Indicates if all children of the fieldset group are required.                                    |
 | `aria-invalid="true"`      | If `error` state is set.                                                                         |
 | `aria-describedby="IDREF"` | References the accessible description when `state` message is provided.                          |
+
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** provide a clear `label` that describes the grouped fields.
+- **Do** use the component state/message API so group validation is announced.
+- **Do** use `aria="{ 'role': 'radiogroup' }"` only when the fieldset contains custom radio controls.
+- **Don't** set `state="error"` without a descriptive `message`.
+
+## Integration examples
+
+### Unlabeled field group
+
+❌ Anti-pattern
+
+```js
+<p-fieldset>
+  <p-input-text name="street" label="Street"></p-input-text>
+  <p-input-text name="city" label="City"></p-input-text>
+</p-fieldset>
+```
+
+✅ Recommended
+
+```js
+<p-fieldset label="Delivery address">
+  <p-input-text name="street" label="Street"></p-input-text>
+  <p-input-text name="city" label="City"></p-input-text>
+</p-fieldset>
+```
+
+### Error state without recovery guidance
+
+❌ Anti-pattern
+
+```js
+<p-fieldset label="Delivery address" state="error" message="Invalid"></p-fieldset>
+```
+
+✅ Recommended
+
+```js
+<p-fieldset
+  label="Delivery address"
+  required
+  state="error"
+  message="Complete all required address fields to continue."
+></p-fieldset>
+```
 
 ## Tests
 

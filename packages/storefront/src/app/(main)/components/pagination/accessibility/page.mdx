@@ -8,7 +8,7 @@ export const metadata = {
 
 # Pagination <ComponentStatus tagName="p-pagination"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -32,6 +32,39 @@ export const metadata = {
 | ARIA         | Usage                                                                       |
 | ------------ | --------------------------------------------------------------------------- |
 | `aria-label` | Defines a string value that labels the navigation and interactive elements. |
+
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** localize `intl` strings so navigation labels match the page language.
+- **Do** keep prev/next and page button labels specific enough to identify the pagination control.
+- **Don't** rely on default English `intl` strings on localized pages.
+
+## Integration examples
+
+### Default English labels on a localized page
+
+❌ Anti-pattern
+
+```js
+<html lang="de_DE">
+...
+<p-pagination total-items-count="120" items-per-page="10" active-page="1"></p-pagination>
+```
+
+✅ Recommended
+
+```js
+<html lang="de_DE">
+...
+<p-pagination
+  total-items-count="120"
+  items-per-page="10"
+  active-page="1"
+  intl='{ "root": "Seitennavigation", "prev": "Vorherige Seite", "next": "Nächste Seite", "page": "Seite" }'
+></p-pagination>
+```
 
 ## Tests
 

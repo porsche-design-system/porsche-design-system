@@ -39,6 +39,9 @@ If a request conflicts with these requirements, prioritize accessibility and pro
 - If a PDS component needs extra ARIA, pass it via the component’s **`aria` prop** (per PDS conventions/documentation).
 - Avoid placing `aria-*` attributes on a PDS component `:host` as a workaround.
 
+For human-readable integration examples and a pre-merge checklist, see the Porsche Design System storefront guide:
+[Accessibility Do's and Don'ts](https://designsystem.porsche.com/must-know/accessibility/dos-and-donts).
+
 ### Focus styling in this repo
 
 - **Do not remove focus indicators** (avoid global `outline: none`).

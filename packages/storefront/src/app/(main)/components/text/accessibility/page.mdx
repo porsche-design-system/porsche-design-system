@@ -8,6 +8,53 @@ export const metadata = {
 
 # Text <ComponentStatus tagName="p-text"></ComponentStatus>
 
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
 ## Accessibility support
 
 This component does not include any special accessibility features.
+
+## Development considerations
+
+### Semantic markup
+
+Use the `tag` prop to choose the correct HTML element. Do not pick heading tags only for visual styling.
+
+### Common do's and don'ts
+
+- **Do** evaluate correct semantic meaning, e.g. use `tag="p"` for regular paragraphs.
+- **Don't** nest text components.
+
+## Integration examples
+
+### Heading tag used for styling only
+
+❌ Anti-pattern
+
+```js
+<p-text tag="p" size="lg" weight="bold">
+  Delivery options
+</p-text>
+```
+
+✅ Recommended
+
+```js
+<p-heading tag="h2" size="lg">Delivery options</p-heading>
+```
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |

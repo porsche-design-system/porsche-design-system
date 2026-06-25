@@ -8,7 +8,7 @@ export const metadata = {
 
 # Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -19,6 +19,46 @@ export const metadata = {
 | ARIA         | Usage                                                                         |
 | ------------ | ----------------------------------------------------------------------------- |
 | `aria-label` | Defines a string value that labels the element (through the `alt` attribute). |
+
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** pass a country or region name through the `aria` prop when the flag conveys meaning.
+- **Do** hide decorative flags from assistive technologies when adjacent text already names the country or region.
+- **Don't** leave informative flags without an accessible name.
+
+## Integration examples
+
+### Informative flag without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-flag name="germany"></p-flag>
+```
+
+✅ Recommended
+
+```js
+<p-flag name="germany" aria="{ 'aria-label': 'Germany' }"></p-flag>
+```
+
+### Decorative flag with redundant label
+
+❌ Anti-pattern
+
+```js
+<p-flag name="germany" aria="{ 'aria-label': 'Germany' }"></p-flag>
+<p-text>Germany</p-text>
+```
+
+✅ Recommended
+
+```js
+<p-flag name="germany" aria-hidden="true"></p-flag>
+<p-text>Germany</p-text>
+```
 
 ## Tests
 

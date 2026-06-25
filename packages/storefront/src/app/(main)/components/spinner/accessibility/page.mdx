@@ -8,7 +8,7 @@ export const metadata = {
 
 # Spinner <ComponentStatus tagName="p-spinner"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -36,6 +36,44 @@ achieved in the following ways:
 - Pre-rendering the component in the DOM.
 - Providing a meaningful loading state message through the `aria` property, e.g.
   `aria="{ 'aria-label': 'Start/End loading content'}"`.
+
+### Common do's and don'ts
+
+- **Do** pre-render the spinner when loading feedback must be announced.
+- **Do** provide a specific loading message through the `aria` prop.
+- **Don't** mount the spinner only at the moment loading starts without a label.
+
+## Integration examples
+
+### Spinner mounted only when loading starts
+
+❌ Anti-pattern
+
+```js
+if (isLoading) {
+  container.innerHTML = '<p-spinner></p-spinner>';
+}
+```
+
+✅ Recommended
+
+```js
+<p-spinner aria="{ 'aria-label': 'Loading vehicle configuration' }"></p-spinner>
+```
+
+### Spinner without loading message
+
+❌ Anti-pattern
+
+```js
+<p-spinner></p-spinner>
+```
+
+✅ Recommended
+
+```js
+<p-spinner aria="{ 'aria-label': 'Loading vehicle configuration' }"></p-spinner>
+```
 
 ## Tests
 

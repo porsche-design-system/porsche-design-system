@@ -8,7 +8,7 @@ export const metadata = {
 
 # Wordmark <ComponentStatus tagName="p-wordmark"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -28,6 +28,44 @@ export const metadata = {
 | `aria-label`    | Defines a string value that labels the interactive element. |
 | `aria-current`  | Exposes the current state of the link.                      |
 | `aria-haspopup` | Defines that the button opens a popup (e.g. `dialog`).      |
+
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** pass ARIA attributes through the `aria` prop when the wordmark is linked.
+- **Do** provide a descriptive `aria-label` for linked wordmarks, for example "Porsche home".
+- **Don't** add native `aria-*` attributes directly on the component host.
+
+## Integration examples
+
+### ARIA on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-wordmark href="/" aria-label="Porsche home"></p-wordmark>
+```
+
+✅ Recommended
+
+```js
+<p-wordmark href="/" aria="{ 'aria-label': 'Porsche home' }"></p-wordmark>
+```
+
+### Linked wordmark without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-wordmark href="/"></p-wordmark>
+```
+
+✅ Recommended
+
+```js
+<p-wordmark href="/" aria="{ 'aria-label': 'Porsche home' }"></p-wordmark>
+```
 
 ## Tests
 

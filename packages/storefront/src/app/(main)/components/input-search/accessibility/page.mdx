@@ -8,7 +8,9 @@ export const metadata = {
 
 # Input Search <ComponentStatus tagName="p-input-search"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -73,6 +75,88 @@ expected semantics supported by this component, for example:
 
 Associate the suggestion list and keyboard interaction in the host application according to the
 [ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) you implement there.
+
+### Common do's and don'ts
+
+- **Do** keep a persistent `label` and pass combobox-related ARIA through the `aria` prop when needed.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** rely on placeholder text as the only label.
+- **Don't** add native `aria-*` attributes directly on the component host.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+### Placeholder used as the only label
+
+❌ Anti-pattern
+
+```js
+<p-input-search name="search" placeholder="Search"></p-input-search>
+```
+
+✅ Recommended
+
+```js
+<p-input-search name="search" label="Search vehicles" description="Search by model name or VIN."></p-input-search>
+```
+
+### ARIA on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-input-search
+  name="search"
+  label="Search vehicles"
+  role="combobox"
+  aria-expanded="false"
+  aria-haspopup="listbox"
+></p-input-search>
+```
+
+✅ Recommended
+
+```js
+<p-input-search
+  name="search"
+  label="Search vehicles"
+  aria="{ 'role': 'combobox', 'aria-expanded': false, 'aria-haspopup': 'listbox' }"
+></p-input-search>
+```
+
+### Hidden label without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-input-search name="search" hide-label="true"></p-input-search>
+```
+
+✅ Recommended
+
+```js
+<p-input-search name="search" hide-label="true" label="Search vehicles"></p-input-search>
+```
+
+### Validation feedback via state and message API
+
+❌ Anti-pattern
+
+```js
+<p-input-search name="search" label="Search vehicles" aria-invalid="true" message="Invalid"></p-input-search>
+```
+
+✅ Recommended
+
+```js
+<p-input-search
+  name="search"
+  label="Search vehicles"
+  state="error"
+  message="Enter at least 3 characters to search."
+></p-input-search>
+```
 
 ## Limitations
 

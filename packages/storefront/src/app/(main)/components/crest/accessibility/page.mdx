@@ -8,11 +8,43 @@ export const metadata = {
 
 # Crest <ComponentStatus tagName="p-crest"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
-This component does not include any special accessibility features.
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA            | Usage                                                       |
+| --------------- | ----------------------------------------------------------- |
+| `aria-label`    | Defines a string value that labels the interactive element. |
+| `aria-current`  | Exposes the current state of the link.                      |
+| `aria-haspopup` | Defines that the link opens a popup (e.g. `dialog`).        |
+
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** pass ARIA attributes through the `aria` prop when the crest is linked.
+- **Do** provide a descriptive `aria-label` for linked crests, for example "Porsche home".
+- **Don't** add native `aria-*` attributes directly on the component host.
+
+## Integration examples
+
+### ARIA on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-crest href="/" aria-label="Porsche home"></p-crest>
+```
+
+✅ Recommended
+
+```js
+<p-crest href="/" aria="{ 'aria-label': 'Porsche home' }"></p-crest>
+```
 
 ## Tests
 
@@ -21,3 +53,10 @@ This component does not include any special accessibility features.
 | Technology                            | Support |
 | ------------------------------------- | ------- |
 | AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |

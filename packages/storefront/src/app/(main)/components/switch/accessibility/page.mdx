@@ -8,7 +8,7 @@ export const metadata = {
 
 # Switch <ComponentStatus tagName="p-switch"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -29,6 +29,51 @@ export const metadata = {
 | `role="switch"`          | Indicates the element as switch element.                                                  |
 | `aria-checked="BOOLEAN"` | Indicates the status of the switch element.                                               |
 | `role="status"`          | When `loading` prop is set, the component announces the loading state (start and finish). |
+
+## Development considerations
+
+### Labelling
+
+The switch accessible name comes from the default slot. Provide concise, descriptive text that states what the switch
+controls and its on/off meaning.
+
+### Common do's and don'ts
+
+- **Do** provide a clear slotted label that describes what the switch controls.
+- **Do** use `hide-label` only when the label text remains in the slot for screen readers.
+- **Don't** use an icon or visual state alone without descriptive label text.
+
+## Integration examples
+
+### Switch without descriptive label
+
+❌ Anti-pattern
+
+```js
+<p-switch name="notifications"></p-switch>
+```
+
+✅ Recommended
+
+```js
+<p-switch name="notifications">Email notifications for order updates</p-switch>
+```
+
+### Hidden label without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-switch name="notifications" hide-label="true"></p-switch>
+```
+
+✅ Recommended
+
+```js
+<p-switch name="notifications" hide-label="true">
+  Email notifications for order updates
+</p-switch>
+```
 
 ## Tests
 

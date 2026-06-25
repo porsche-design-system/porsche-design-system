@@ -8,7 +8,9 @@ export const metadata = {
 
 # Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -32,6 +34,61 @@ export const metadata = {
 | ARIA                      | Usage                                                   |
 | ------------------------- | ------------------------------------------------------- |
 | `aria-expanded="BOOLEAN"` | Indicates that the popover element is displayed/hidden. |
+
+## Development considerations
+
+Prefer the built-in popover trigger when possible. The component manages `aria-expanded` internally for the default info
+button.
+
+### Common do's and don'ts
+
+- **Do** prefer the built-in popover trigger when possible so `aria-expanded` is managed internally.
+- **Do** provide an accessible name on a custom slotted button when you cannot use the default trigger.
+- **Do** pass additional ARIA via the `aria` prop when the default labeling is not sufficient.
+- **Don't** use an unnamed custom slotted trigger button.
+- **Don't** add native `aria-*` attributes directly on the component host.
+
+## Integration examples
+
+### ARIA on component host vs aria prop
+
+❌ Anti-pattern
+
+```js
+<p-popover aria-label="Specification details" description="Additional specification details."></p-popover>
+```
+
+✅ Recommended
+
+```js
+<p-popover aria="{ 'aria-label': 'Specification details' }" description="Additional specification details."></p-popover>
+```
+
+### Custom slotted trigger without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-popover>
+  <button slot="button" type="button"></button>
+  Additional specification details.
+</p-popover>
+```
+
+✅ Recommended
+
+```js
+<p-popover description="Additional specification details."></p-popover>
+
+// or provide an accessible name on a custom slotted button
+
+<p-popover>
+  <button slot="button" type="button" aria-label="Specification details">i</button>
+  Additional specification details.
+</p-popover>
+```
+
+Custom slotted buttons do not receive managed `aria-expanded` state. See Limitations below.
 
 ## Limitations
 

@@ -8,7 +8,7 @@ export const metadata = {
 
 # Multi Select <ComponentStatus tagName="p-multi-select"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -53,6 +53,79 @@ export const metadata = {
 
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
+
+### Common do's and don'ts
+
+- **Do** provide a clear, persistent label for what the selection controls.
+- **Do** use meaningful option text so choices are understandable out of context.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Don't** use a prompt option or adjacent text as a substitute for a field label.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+### Prompt option used instead of a label
+
+❌ Anti-pattern
+
+```js
+<p-multi-select name="features">
+  <p-multi-select-option value="">Select features</p-multi-select-option>
+  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
+</p-multi-select>
+```
+
+✅ Recommended
+
+```js
+<p-multi-select label="Optional features" name="features" description="Select all features for your configuration.">
+  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
+  <p-multi-select-option value="audio">BOSE Surround Sound</p-multi-select-option>
+</p-multi-select>
+```
+
+### Hidden label without accessible name
+
+❌ Anti-pattern
+
+```js
+<p-multi-select name="features" hide-label="true">
+  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
+</p-multi-select>
+```
+
+✅ Recommended
+
+```js
+<p-multi-select label="Optional features" name="features" hide-label="true">
+  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
+</p-multi-select>
+```
+
+### Validation feedback via state and message API
+
+❌ Anti-pattern
+
+```js
+<p-multi-select label="Optional features" name="features" aria-invalid="true" message="Required">
+  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
+</p-multi-select>
+```
+
+✅ Recommended
+
+```js
+<p-multi-select
+  label="Optional features"
+  name="features"
+  required
+  state="error"
+  message="Select at least one feature to continue."
+>
+  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
+  <p-multi-select-option value="audio">BOSE Surround Sound</p-multi-select-option>
+</p-multi-select>
+```
 
 ## Tests
 
