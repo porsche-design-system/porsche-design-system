@@ -134,6 +134,7 @@
   },
   "style": "./stylesheets/index.css",
   "bin": {
-    "patchRemixRunProcessBrowserGlobalIdentifier": "./bin/patchRemixRunProcessBrowserGlobalIdentifier.js"
+    "patchRemixRunProcessBrowserGlobalIdentifier": "./bin/patchRemixRunProcessBrowserGlobalIdentifier.js",
+    "pds-skill": "./bin/pds-skill.js"
   }
 }

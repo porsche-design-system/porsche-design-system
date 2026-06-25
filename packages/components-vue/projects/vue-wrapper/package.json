@@ -122,5 +122,8 @@
     "./cn/font-face.css": "./stylesheets/cn/font-face.css",
     "./cn/font-face": "./stylesheets/cn/font-face.css"
   },
-  "style": "./stylesheets/index.css"
+  "style": "./stylesheets/index.css",
+  "bin": {
+    "pds-skill": "./bin/pds-skill.js"
+  }
 }
