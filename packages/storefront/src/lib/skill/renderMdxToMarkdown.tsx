@@ -1,0 +1,267 @@
+import { type HTMLElement as ParsedElement, type Node as ParsedNode, NodeType, parse } from 'node-html-parser';
+import { type ComponentType, createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+
+export type RenderMdxResult = {
+  /** The rendered prose as plain markdown. */
+  markdown: string;
+  /**
+   * `true` when the source rendered to nothing meaningful (empty / whitespace /
+   * no textual content). Signals that a human should review the source prose,
+   * since the API tables — sourced from `component-meta`, not MDX — are unaffected.
+   */
+  degraded: boolean;
+};
+
+/**
+ * Storefront-only doc components embedded in MDX prose that carry no value in a
+ * plain-markdown context. They are substituted with nothing via the `components`
+ * prop so they never leak into the output. Any not resolved through the prop
+ * (e.g. directly imported) are caught by the drop-list below after rendering.
+ */
+const EMBEDDED_COMPONENT_STUBS = ['TableOfContents', 'Notification', 'PartialDocs', 'TokensTable', 'ComponentStatus'];
+
+/** Block-level tags that map directly to markdown blocks. */
+const BLOCK_TAGS = new Set(['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'P', 'UL', 'OL', 'BLOCKQUOTE', 'PRE', 'HR', 'TABLE']);
+
+/** Generic containers with no markdown meaning — unwrapped (children kept, wrapper dropped). */
+const UNWRAP_TAGS = new Set(['DIV', 'SECTION', 'ARTICLE', 'MAIN', 'HEADER', 'FIGURE', 'FIGCAPTION']);
+
+/** Tags whose rendered output is non-prose noise (typically from embedded components) — dropped entirely. */
+const DROP_TAGS = new Set([
+  'NAV',
+  'ASIDE',
+  'FOOTER',
+  'BUTTON',
+  'FORM',
+  'INPUT',
+  'SELECT',
+  'TEXTAREA',
+  'SVG',
+  'STYLE',
+  'SCRIPT',
+  'NOSCRIPT',
+  'IFRAME',
+]);
+
+const isElement = (node: ParsedNode): node is ParsedElement => node.nodeType === NodeType.ELEMENT_NODE;
+
+/** Custom elements (e.g. `p-button`) are PDS web components, never prose. */
+const isCustomElement = (tagName: string): boolean => tagName.includes('-');
+
+const collapseWhitespace = (text: string): string => text.replace(/\s+/g, ' ');
+
+const renderChildrenInline = (parent: ParsedNode): string =>
+  parent.childNodes.map((child) => renderInline(child)).join('');
+
+const renderInline = (node: ParsedNode): string => {
+  if (node.nodeType === NodeType.TEXT_NODE) {
+    return collapseWhitespace(node.text);
+  }
+  if (!isElement(node)) {
+    return '';
+  }
+
+  const { tagName } = node;
+
+  if (DROP_TAGS.has(tagName) || isCustomElement(tagName)) {
+    return '';
+  }
+
+  switch (tagName) {
+    case 'STRONG':
+    case 'B': {
+      const inner = renderChildrenInline(node).trim();
+      return inner ? `**${inner}**` : '';
+    }
+    case 'EM':
+    case 'I': {
+      const inner = renderChildrenInline(node).trim();
+      return inner ? `*${inner}*` : '';
+    }
+    case 'DEL':
+    case 'S': {
+      const inner = renderChildrenInline(node).trim();
+      return inner ? `~~${inner}~~` : '';
+    }
+    case 'CODE': {
+      const inner = node.text.trim();
+      return inner ? `\`${inner}\`` : '';
+    }
+    case 'A': {
+      const inner = renderChildrenInline(node).trim();
+      const href = node.getAttribute('href');
+      return href ? `[${inner}](${href})` : inner;
+    }
+    case 'IMG': {
+      const src = node.getAttribute('src');
+      const alt = node.getAttribute('alt') ?? '';
+      return src ? `![${alt}](${src})` : '';
+    }
+    case 'BR':
+      return '\n';
+    default:
+      // Generic / unknown inline wrapper: keep the prose, drop the wrapper.
+      return renderChildrenInline(node);
+  }
+};
+
+const renderList = (node: ParsedElement, ordered: boolean): string => {
+  const items = node.childNodes.filter((child): child is ParsedElement => isElement(child) && child.tagName === 'LI');
+
+  return items
+    .map((item, index) => {
+      const marker = ordered ? `${index + 1}.` : '-';
+      const indent = ' '.repeat(marker.length + 1);
+
+      let inline = '';
+      const nestedLists: ParsedElement[] = [];
+      for (const child of item.childNodes) {
+        if (isElement(child) && (child.tagName === 'UL' || child.tagName === 'OL')) {
+          nestedLists.push(child);
+        } else {
+          inline += renderInline(child);
+        }
+      }
+
+      let line = `${marker} ${inline.trim()}`;
+      for (const nested of nestedLists) {
+        const nestedMarkdown = renderList(nested, nested.tagName === 'OL');
+        const indented = nestedMarkdown
+          .split('\n')
+          .map((row) => (row ? indent + row : row))
+          .join('\n');
+        line += `\n${indented}`;
+      }
+      return line;
+    })
+    .join('\n');
+};
+
+const renderPre = (node: ParsedElement): string => {
+  const language = /language-([\w-]+)/.exec(node.innerHTML)?.[1] ?? '';
+  // `node-html-parser` treats `<pre>` as raw text, so `.text` is the decoded
+  // content with the inner `<code>` wrapper present as a literal string.
+  const code = node.text
+    .replace(/^\s*<code[^>]*>/, '')
+    .replace(/<\/code>\s*$/, '')
+    .replace(/\n+$/, '');
+  return `\`\`\`${language}\n${code}\n\`\`\``;
+};
+
+const renderTable = (node: ParsedElement): string => {
+  const rows = node.querySelectorAll('tr');
+  const lines: string[] = [];
+  let separatorWritten = false;
+
+  for (const row of rows) {
+    const cells = row.querySelectorAll('th, td').map((cell) => renderChildrenInline(cell).trim());
+    if (cells.length === 0) {
+      continue;
+    }
+    lines.push(`| ${cells.join(' | ')} |`);
+
+    const isHeaderRow = row.querySelectorAll('th').length > 0;
+    if (isHeaderRow && !separatorWritten) {
+      lines.push(`| ${cells.map(() => '---').join(' | ')} |`);
+      separatorWritten = true;
+    }
+  }
+
+  return lines.join('\n');
+};
+
+const renderBlock = (node: ParsedElement): string => {
+  const { tagName } = node;
+
+  if (/^H[1-6]$/.test(tagName)) {
+    const level = Number(tagName[1]);
+    return `${'#'.repeat(level)} ${renderChildrenInline(node).trim()}`;
+  }
+
+  switch (tagName) {
+    case 'P':
+      return renderChildrenInline(node).trim();
+    case 'UL':
+      return renderList(node, false);
+    case 'OL':
+      return renderList(node, true);
+    case 'PRE':
+      return renderPre(node);
+    case 'HR':
+      return '---';
+    case 'TABLE':
+      return renderTable(node);
+    case 'BLOCKQUOTE':
+      return renderBlocks(node)
+        .split('\n')
+        .map((line) => (line ? `> ${line}` : '>'))
+        .join('\n');
+    default:
+      // Unwrapped container (DIV, SECTION, …): recurse into its blocks.
+      return renderBlocks(node);
+  }
+};
+
+/** Whether an element starts a markdown block (vs. flowing into an inline paragraph). */
+const isBlockElement = (node: ParsedNode): boolean =>
+  isElement(node) && (BLOCK_TAGS.has(node.tagName) || UNWRAP_TAGS.has(node.tagName));
+
+const renderBlocks = (parent: ParsedNode): string => {
+  const blocks: string[] = [];
+  let inlineBuffer = '';
+
+  const flushInline = (): void => {
+    const text = inlineBuffer.trim();
+    if (text) {
+      blocks.push(text);
+    }
+    inlineBuffer = '';
+  };
+
+  for (const child of parent.childNodes) {
+    if (isElement(child) && (DROP_TAGS.has(child.tagName) || isCustomElement(child.tagName))) {
+      continue;
+    }
+    if (isBlockElement(child)) {
+      flushInline();
+      const block = renderBlock(child as ParsedElement).trim();
+      if (block) {
+        blocks.push(block);
+      }
+    } else {
+      inlineBuffer += renderInline(child);
+    }
+  }
+  flushInline();
+
+  return blocks.join('\n\n');
+};
+
+const normalize = (markdown: string): string =>
+  markdown
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
+/**
+ * Renders a storefront MDX `ComponentType` (component introduction / usage /
+ * accessibility / notes, partials prose, migration prose) to plain markdown.
+ *
+ * Pure and synchronous — performs no I/O. The caller resolves the MDX module to
+ * a React component; this renders it to static markup and converts the result.
+ * Embedded storefront components are substituted away (see {@link EMBEDDED_COMPONENT_STUBS})
+ * or dropped, so no JSX/component noise leaks into the output.
+ */
+export const renderMdxToMarkdown = (component: ComponentType<{ components?: Record<string, unknown> }>): RenderMdxResult => {
+  const componentStubs: Record<string, ComponentType> = {};
+  for (const name of EMBEDDED_COMPONENT_STUBS) {
+    componentStubs[name] = () => null;
+  }
+
+  const html = renderToStaticMarkup(createElement(component, { components: componentStubs }));
+  const markdown = normalize(renderBlocks(parse(html)));
+  const degraded = markdown.length === 0 || !/[A-Za-z0-9]/.test(markdown);
+
+  return { markdown, degraded };
+};

@@ -72,6 +72,7 @@
     "concurrently": "^10.0.3",
     "fast-glob": "^3.3.3",
     "local-web-server": "^5.4.0",
+    "node-html-parser": "^5.4.2",
     "postcss": "^8",
     "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.3.1",
