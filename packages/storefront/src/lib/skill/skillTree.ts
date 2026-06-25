@@ -20,6 +20,20 @@ export const WRAPPER_SKILL_DIRS: Record<Framework, string> = {
 };
 
 /**
+ * Each framework's built dist root (relative to the monorepo root) — the parent the
+ * `build:subPackages:skill` copy step writes `skill/` into, sitting beside the also-copied
+ * `meta/` and `tokens/`. The raw-link CI gate resolves the trees' `../meta` / `../tokens`
+ * references against this layout, since those siblings exist only in the built dist, not in
+ * the committed source dir. Populated in CI by restoring the `build-development` artifact.
+ */
+export const WRAPPER_DIST_DIRS: Record<Framework, string> = {
+  js: 'packages/components-js/dist/components-wrapper',
+  angular: 'packages/components-angular/dist/angular-wrapper',
+  react: 'packages/components-react/dist/react-wrapper',
+  vue: 'packages/components-vue/dist/vue-wrapper',
+};
+
+/**
  * Reference sub-directories laid out under the skill root. The harness creates
  * these empty up front so the content generators (TASK-03+) only have to write
  * files into a tree that already has the right shape.
