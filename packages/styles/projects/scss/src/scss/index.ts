@@ -137,7 +137,8 @@ const mediaQueryFile: ScssFileMeta = {
   nodes: [breakpointsMap, blank, ...flatten(scssMeta.mediaQuery), blank, mediaQueryDeprecatedAliases],
 };
 
-// The grid mixin plus one descriptor per `gridGroups` slice below, keeping the original per-partial split.
+// The grid mixin plus one descriptor per `_grid-*.scss` partial: the area-grouped `gridGroups` tree is
+// sliced back into the original per-partial split (line tokens/spans separate from offsets).
 const gridFile: ScssFileMeta = {
   file: '_grid.scss',
   description: 'The `pds-grid` responsive layout mixin (the Porsche Grid).',
@@ -153,61 +154,63 @@ const gridGapFile: ScssFileMeta = {
 const gridFullFile: ScssFileMeta = {
   file: '_grid-full.scss',
   description: 'The `full` area column-start/end variables.',
-  nodes: [...flatten(gridGroups.full)],
+  nodes: [...flatten([gridGroups.full.start, gridGroups.full.end])],
 };
 
 const gridFullOffsetFile: ScssFileMeta = {
   file: '_grid-full-offset.scss',
   description: 'The `full` area offset variable.',
-  nodes: [...flatten(gridGroups.fullOffset)],
+  nodes: [...flatten(gridGroups.full.offset)],
 };
 
 const gridWideFile: ScssFileMeta = {
   file: '_grid-wide.scss',
   description: 'The `wide` area column-start/end variables.',
-  nodes: [...flatten(gridGroups.wide)],
+  nodes: [...flatten([gridGroups.wide.start, gridGroups.wide.end])],
 };
 
 const gridWideOffsetFile: ScssFileMeta = {
   file: '_grid-wide-offset.scss',
   description: 'The `wide` area offset variables.',
-  nodes: [...flatten(gridGroups.wideOffset)],
+  nodes: [...flatten([gridGroups.wide.offsetBase, gridGroups.wide.offsetS, gridGroups.wide.offsetXXL])],
 };
 
 const gridExtendedFile: ScssFileMeta = {
   file: '_grid-extended.scss',
   description: 'The `extended` area column-start/end and span variables.',
-  nodes: [...flatten(gridGroups.extended)],
+  nodes: [...flatten([gridGroups.extended.start, gridGroups.extended.end, gridGroups.extended.span])],
 };
 
 const gridExtendedOffsetFile: ScssFileMeta = {
   file: '_grid-extended-offset.scss',
   description: 'The `extended` area offset variables.',
-  nodes: [...flatten(gridGroups.extendedOffset)],
+  nodes: [
+    ...flatten([gridGroups.extended.offsetBase, gridGroups.extended.offsetS, gridGroups.extended.offsetXXL]),
+  ],
 };
 
 const gridBasicFile: ScssFileMeta = {
   file: '_grid-basic.scss',
   description: 'The `basic` area column-start/end and span variables.',
-  nodes: [...flatten(gridGroups.basic)],
+  nodes: [...flatten([gridGroups.basic.start, gridGroups.basic.end, gridGroups.basic.span])],
 };
 
 const gridBasicOffsetFile: ScssFileMeta = {
   file: '_grid-basic-offset.scss',
   description: 'The `basic` area offset variables.',
-  nodes: [...flatten(gridGroups.basicOffset)],
+  nodes: [...flatten([gridGroups.basic.offsetBase, gridGroups.basic.offsetS, gridGroups.basic.offsetXXL])],
 };
 
 const gridNarrowFile: ScssFileMeta = {
   file: '_grid-narrow.scss',
   description: 'The `narrow` area column-start/end and span variables.',
-  nodes: [...flatten(gridGroups.narrow)],
+  nodes: [...flatten([gridGroups.narrow.start, gridGroups.narrow.end, gridGroups.narrow.span])],
 };
 
 const gridNarrowOffsetFile: ScssFileMeta = {
   file: '_grid-narrow-offset.scss',
   description: 'The `narrow` area offset variables.',
-  nodes: [...flatten(gridGroups.narrowOffset)],
+  nodes: [...flatten([gridGroups.narrow.offsetBase, gridGroups.narrow.offsetS, gridGroups.narrow.offsetXXL])],
 };
 
 /** Every partial the index forwards, in build order. The grid* descriptors keep their per-partial split. */

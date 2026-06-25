@@ -1,7 +1,7 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ScssVariablesTable } from '@/components/common/ScssVariablesTable';
 import { ScssMixinsTable } from '@/components/common/ScssMixinsTable';
-import { scssMeta, kindOf } from '@porsche-design-system/scss';
+import { scssMeta, kindOf, flatten } from '@porsche-design-system/scss';
 
 export const metadata = {
   title: 'SCSS: Grid - Porsche Design System',
@@ -14,8 +14,30 @@ export const metadata = {
 
 ## SCSS Mixins
 
-<ScssMixinsTable mixins={scssMeta.grid.filter((node) => kindOf(node) === 'utility')} />
+<ScssMixinsTable mixins={flatten(scssMeta.grid).filter((node) => kindOf(node) === 'utility')} />
 
 ## SCSS Variables
 
-<ScssVariablesTable variables={scssMeta.grid.filter((node) => kindOf(node) === 'token')} />
+### Base
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.gap)} />
+
+### Narrow
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.narrow)} />
+
+### Basic
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.basic)} />
+
+### Extended
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.extended)} />
+
+### Wide
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.wide)} />
+
+### Full
+
+<ScssVariablesTable variables={flatten(scssMeta.grid.full)} />
