@@ -5,6 +5,7 @@ import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference'
 import { buildSkillMd, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SkillTree } from '../src/lib/skill/skillTree';
 import { writeStyleReferences } from '../src/lib/skill/stylesReference';
+import { writeTokensReference } from '../src/lib/skill/tokensReference';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 
@@ -59,6 +60,9 @@ const generateTree = async (framework: Framework, generation: ComponentGeneratio
 
   const styleReferences = await writeStyleReferences(tree);
   console.log(`  ${styleReferences.length} style reference files written`);
+
+  writeTokensReference(tree);
+  console.log('  tokens reference written');
 
   if (generation) {
     const { componentDocsMeta, writeComponentReferences } = generation;
