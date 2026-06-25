@@ -1,24 +1,38 @@
 import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { type ComponentDocsMetaMap, writeComponentReferences } from '../src/lib/skill/componentsReference';
+import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExamples';
+import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
 import { buildSkillMd, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SkillTree } from '../src/lib/skill/skillTree';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 
 /**
- * Load the storefront component docs meta. Its prose fields are MDX modules, so the
- * import only resolves under an MDX-aware runtime; under plain `tsx` it throws. The
- * full MDX-enabled generation is wired in TASK-10 — until then this degrades to the
- * skeleton tree rather than failing the build.
+ * The component-reference generation, loaded together as a unit because it all depends
+ * on the storefront runtime: the docs meta's prose is MDX, and the examples pipeline
+ * (`componentsReference` → `componentExamples` → `createFrameworkMarkup`) pulls in the
+ * storefront's `@/`-aliased generators. Both only resolve under an MDX/alias-aware
+ * runtime; under plain `tsx` the import throws. The full runtime is wired in TASK-10 —
+ * until then this degrades to the skeleton tree rather than failing the build.
  */
-const loadComponentDocsMeta = async (): Promise<ComponentDocsMetaMap | null> => {
+type ComponentGeneration = {
+  componentDocsMeta: ComponentDocsMetaMap & ComponentExamplesMetaMap;
+  writeComponentReferences: typeof import('../src/lib/skill/componentsReference').writeComponentReferences;
+};
+
+const loadComponentGeneration = async (): Promise<ComponentGeneration | null> => {
   try {
-    const mod = await import('../src/app/(main)/components/components.meta');
-    return mod.componentDocsMeta as ComponentDocsMetaMap;
+    const [meta, references] = await Promise.all([
+      import('../src/app/(main)/components/components.meta'),
+      import('../src/lib/skill/componentsReference'),
+    ]);
+    return {
+      componentDocsMeta: meta.componentDocsMeta as unknown as ComponentDocsMetaMap & ComponentExamplesMetaMap,
+      writeComponentReferences: references.writeComponentReferences,
+    };
   } catch (error) {
     const reason = error instanceof Error ? error.message.split('\n')[0] : String(error);
-    console.warn(`Skipping component prose — component docs meta unavailable under this runtime (${reason}).`);
+    console.warn(`Skipping component references — generation unavailable under this runtime (${reason}).`);
     return null;
   }
 };
@@ -31,7 +45,7 @@ const WRAPPER_SKILL_DIR: Record<Framework, string> = {
   vue: 'packages/components-vue/projects/vue-wrapper/skill',
 };
 
-const generateTree = (framework: Framework, componentDocsMeta: ComponentDocsMetaMap | null): void => {
+const generateTree = (framework: Framework, generation: ComponentGeneration | null): void => {
   const root = path.resolve(REPO_ROOT, WRAPPER_SKILL_DIR[framework]);
   const tree = new SkillTree(root);
   tree.reset();
@@ -42,8 +56,14 @@ const generateTree = (framework: Framework, componentDocsMeta: ComponentDocsMeta
     tree.registerReference(entry);
   }
 
-  if (componentDocsMeta) {
-    const { tags, degraded } = writeComponentReferences(tree, componentDocsMeta, { componentMeta, framework });
+  if (generation) {
+    const { componentDocsMeta, writeComponentReferences } = generation;
+    const { tags, degraded } = writeComponentReferences(
+      tree,
+      componentDocsMeta,
+      { componentMeta, framework },
+      { metaMap: componentDocsMeta, framework }
+    );
     console.log(`  ${tags.length} component references written`);
     if (degraded.length > 0) {
       console.warn(
@@ -70,10 +90,10 @@ const main = async (): Promise<void> => {
     }
   }
 
-  const componentDocsMeta = await loadComponentDocsMeta();
+  const generation = await loadComponentGeneration();
 
   for (const framework of frameworks as Framework[]) {
-    generateTree(framework, componentDocsMeta);
+    generateTree(framework, generation);
   }
 };
 

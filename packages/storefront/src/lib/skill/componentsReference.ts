@@ -1,6 +1,7 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentType } from 'react';
 import { renderComponentApi } from './componentApi';
+import { type ComponentExamplesOptions, writeComponentExamples } from './componentExamples';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { Framework, SkillTree } from './skillTree';
 
@@ -148,7 +149,8 @@ export type ComponentApiOptions = {
 export const writeComponentReferences = (
   tree: SkillTree,
   metaMap: ComponentDocsMetaMap,
-  apiOptions?: ComponentApiOptions
+  apiOptions?: ComponentApiOptions,
+  examplesOptions?: ComponentExamplesOptions
 ): ComponentReferenceReport => {
   const tags = Object.keys(metaMap).sort();
   const overviewEntries: { tag: string; summary: string }[] = [];
@@ -157,7 +159,17 @@ export const writeComponentReferences = (
   for (const tag of tags) {
     const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag]);
     const apiMeta = apiOptions?.componentMeta[tag];
-    const sections = apiMeta ? [markdown, renderComponentApi(apiMeta, apiOptions.framework)] : [markdown];
+    const sections = [markdown];
+    if (apiMeta) {
+      sections.push(renderComponentApi(apiMeta, apiOptions.framework));
+    }
+    const examplesSource = examplesOptions?.metaMap[tag];
+    if (examplesSource) {
+      const table = writeComponentExamples(tree, tag, examplesSource, examplesOptions.framework, examplesOptions.theme);
+      if (table) {
+        sections.push(table);
+      }
+    }
     tree.writeReference(`components/${tag}.md`, sections.join('\n\n'));
     overviewEntries.push({ tag, summary });
     if (degradedSections.length > 0) {
