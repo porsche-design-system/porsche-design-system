@@ -409,6 +409,11 @@ export const sitemap: Routes = {
         path: '/developing/components-ready',
         type: 'PAGE',
       },
+      'claude-code-skill': {
+        name: 'Claude Code Skill',
+        path: '/developing/claude-code-skill',
+        type: 'PAGE',
+      },
     },
   },
   components: {

@@ -1,0 +1,101 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Claude Code Skill - Porsche Design System',
+  description:
+    'Install the Porsche Design System Claude Code skill so your AI assistant gets version-exact knowledge of PDS.',
+};
+
+# Claude Code Skill
+
+<TableOfContents headings={['Installation', 'How It Works', 'Windows', 'Yarn PnP', 'Updating & Reinstalling']} />
+
+Each Porsche Design System wrapper package ships a [Claude Code](https://docs.claude.com/en/docs/claude-code/overview)
+skill named `porsche-design-system-docs`. The skill gives your AI assistant **version-exact** knowledge of the Porsche
+Design System — the components, styles, tokens, partials and migration guides that match the exact package version you
+have installed — so it can answer questions, generate new code, review or fix existing usage, and assist with upgrades.
+
+The skill content lives inside the installed package in `node_modules`. To make it discoverable by Claude Code, a small
+CLI creates a symlink from your project's `.claude/skills/` directory into the package.
+
+## Installation
+
+Run the bundled CLI once in your project root, using the wrapper package that matches your framework:
+
+```bash
+# Vanilla JS
+npx @porsche-design-system/components-js pds-skill
+
+# Angular
+npx @porsche-design-system/components-angular pds-skill
+
+# React
+npx @porsche-design-system/components-react pds-skill
+
+# Vue
+npx @porsche-design-system/components-vue pds-skill
+```
+
+This creates the symlink `.claude/skills/porsche-design-system-docs` pointing at the invoking package's `skill/`
+directory. The CLI is **package-scoped**: it resolves its own package via the bin's own location, so the `react` CLI
+links the React skill and never falls through to `@porsche-design-system/components-js` — even though `js` is always
+installed as a dependency of the framework wrappers.
+
+The command is **idempotent**: re-running it repoints or repairs the symlink it owns (including a dangling link from a
+previously removed package). If the installed package version predates the skill (older releases ship no `skill/`
+directory), the CLI is a **silent no-op**.
+
+<Notification heading="macOS and Linux only" heading-tag="h3" state="info">
+  The CLI creates the symlink automatically on macOS and Linux. On Windows, follow the manual step below.
+</Notification>
+
+## How It Works
+
+Claude Code only auto-discovers skills under `.claude/skills/` (project) or `~/.claude/skills/` (personal). A skill
+sitting in `node_modules` is not discoverable on its own — hence the symlink.
+
+Because the symlink points into the installed package, the content the skill exposes always equals the **installed
+version's** content. There is no separate sync step and no possibility of a docs/version mismatch: bumping the installed
+package version updates the exposed content automatically.
+
+Direct referencing into `node_modules` works on **npm**, **Yarn Classic (v1)**, **pnpm** (via its transparent symlink
+layout) and **Bun**.
+
+## Windows
+
+The CLI does not create symlinks on Windows automatically. Create the link manually from your project root with
+`mklink /D` (directory symlink):
+
+```bat
+mklink /D ".claude\skills\porsche-design-system-docs" "node_modules\@porsche-design-system\components-react\skill"
+```
+
+Adjust the package path (`components-js` / `components-angular` / `components-react` / `components-vue`) to match your
+framework.
+
+<Notification heading="Symlink permissions" heading-tag="h3" state="warning">
+  Creating symlinks on Windows requires either **Developer Mode** enabled or running the terminal **as administrator**.
+</Notification>
+
+## Yarn PnP
+
+Yarn Berry's Plug'n'Play (`nodeLinker: pnp`) is **not supported**: it has no `node_modules` directory for the symlink to
+target. If you use Yarn Berry, opt into the classic node-modules linker by setting the following in your `.yarnrc.yml`,
+then reinstall:
+
+```yaml
+nodeLinker: node-modules
+```
+
+## Updating & Reinstalling
+
+The skill content is effectively **read-only**. It lives in `node_modules`, so any edits you make to it are **lost on
+the next install**. Do not edit the skill files directly.
+
+The only consumer-side state is the symlink itself. If it ever breaks — for example after reinstalling dependencies, or
+after upgrading to a version that newly ships the skill — simply **re-run the CLI** to recreate or repair it:
+
+```bash
+npx @porsche-design-system/components-{js|angular|react|vue} pds-skill
+```
