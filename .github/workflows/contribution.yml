@@ -82,13 +82,26 @@ jobs:
       - build
   deploy:
     name: 'Deploy'
-    # Secrets are NOT available on pull_request events from forks, and we must
+    # Secrets are NOT available on pull_request events from forks (read-only token), and we must
     # not expose them. Run deploy only for:
     #   - any push event (always from a trusted branch, see `on.push.branches`)
-    #   - pull_request events whose head is in this repository (internal PRs)
+    #   - pull_request events whose head is in this repository (internal PRs), excluding bot-authored
+    #     PRs (dependabot, Copilot coding agent). Defense-in-depth: even an approved bot PR must never
+    #     reach the deploy secrets — keep that path closed to automation-authored code.
+    #
+    # We gate on the PR *author* (`github.event.pull_request.user.login`), NOT on `github.actor`:
+    # `github.actor` is whoever triggered the current run (e.g. a maintainer pushing a commit to, or
+    # re-running, a bot's PR), so it does not reliably identify an automation-authored PR. The PR
+    # author is stable regardless of who later pushes or re-runs the workflow.
+    #
+    # NOTE: deploy.yml pushes the storefront to a separate repo via the `gh-deploy-key-storefront`
+    # SSH deploy key (not the workflow `GITHUB_TOKEN`), so no `contents: write` elevation is needed here.
     if: >-
       github.event_name == 'push' ||
-      (github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]')
+      (github.event.pull_request.head.repo.full_name == github.repository &&
+       github.event.pull_request.user.login != 'dependabot[bot]' &&
+       github.event.pull_request.user.login != 'copilot-swe-agent[bot]' &&
+       github.event.pull_request.user.login != 'Copilot')
     uses: ./.github/workflows/deploy.yml
     with:
       image: mcr.microsoft.com/playwright:v1.61.0-jammy
