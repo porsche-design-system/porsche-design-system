@@ -4,6 +4,7 @@ import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExample
 import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
 import { buildSkillMd, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SkillTree } from '../src/lib/skill/skillTree';
+import { writeStyleReferences } from '../src/lib/skill/stylesReference';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 
@@ -45,7 +46,7 @@ const WRAPPER_SKILL_DIR: Record<Framework, string> = {
   vue: 'packages/components-vue/projects/vue-wrapper/skill',
 };
 
-const generateTree = (framework: Framework, generation: ComponentGeneration | null): void => {
+const generateTree = async (framework: Framework, generation: ComponentGeneration | null): Promise<void> => {
   const root = path.resolve(REPO_ROOT, WRAPPER_SKILL_DIR[framework]);
   const tree = new SkillTree(root);
   tree.reset();
@@ -55,6 +56,9 @@ const generateTree = (framework: Framework, generation: ComponentGeneration | nu
   for (const entry of SKELETON_REFERENCE_MAP) {
     tree.registerReference(entry);
   }
+
+  const styleReferences = await writeStyleReferences(tree);
+  console.log(`  ${styleReferences.length} style reference files written`);
 
   if (generation) {
     const { componentDocsMeta, writeComponentReferences } = generation;
@@ -93,7 +97,7 @@ const main = async (): Promise<void> => {
   const generation = await loadComponentGeneration();
 
   for (const framework of frameworks as Framework[]) {
-    generateTree(framework, generation);
+    await generateTree(framework, generation);
   }
 };
 
