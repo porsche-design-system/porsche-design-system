@@ -2,6 +2,7 @@ import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExamples';
 import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
+import type { MigrationSource } from '../src/lib/skill/migrationReference';
 import type { PartialsSource } from '../src/lib/skill/partialsReference';
 import { buildSkillMd, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SkillTree } from '../src/lib/skill/skillTree';
@@ -85,6 +86,39 @@ const loadPartialsGeneration = async (): Promise<PartialsGeneration | null> => {
   }
 };
 
+/**
+ * The migration references, like the partials reference, depend on the storefront
+ * runtime: each guide's `page.mdx` is an `@/`-aliased MDX module that only resolves
+ * under the MDX/alias-aware runtime wired in TASK-10. Under plain `tsx` the import
+ * throws, so this degrades to omitting the migration references rather than failing.
+ * There is no migration meta object — the MDX render is the source. Styling behaves
+ * identically across frameworks, so every wrapper ships the same guide set.
+ */
+type MigrationGeneration = {
+  sources: MigrationSource[];
+  writeMigrationReferences: typeof import('../src/lib/skill/migrationReference').writeMigrationReferences;
+};
+
+/** Migration guide slugs — source dir and output filename stem — in documentation order (matches the design). */
+const MIGRATION_GUIDES = ['porsche-design-system', 'scss', 'tailwindcss', 'vanilla-extract', 'emotion'] as const;
+
+const loadMigrationGeneration = async (): Promise<MigrationGeneration | null> => {
+  try {
+    const [{ writeMigrationReferences }, ...pages] = await Promise.all([
+      import('../src/lib/skill/migrationReference'),
+      ...MIGRATION_GUIDES.map((slug) => import(`../src/app/(main)/news/migration-guide/${slug}/page.mdx`)),
+    ]);
+    return {
+      writeMigrationReferences,
+      sources: MIGRATION_GUIDES.map((slug, index) => ({ slug, page: pages[index].default })),
+    };
+  } catch (error) {
+    const reason = error instanceof Error ? error.message.split('\n')[0] : String(error);
+    console.warn(`Skipping migration references — generation unavailable under this runtime (${reason}).`);
+    return null;
+  }
+};
+
 /** Wrapper source dir (relative to the repo root) whose committed `skill/` tree each framework owns. */
 const WRAPPER_SKILL_DIR: Record<Framework, string> = {
   js: 'packages/components-js/projects/components-wrapper/skill',
@@ -96,7 +130,8 @@ const WRAPPER_SKILL_DIR: Record<Framework, string> = {
 const generateTree = async (
   framework: Framework,
   generation: ComponentGeneration | null,
-  partialsGeneration: PartialsGeneration | null
+  partialsGeneration: PartialsGeneration | null,
+  migrationGeneration: MigrationGeneration | null
 ): Promise<void> => {
   const root = path.resolve(REPO_ROOT, WRAPPER_SKILL_DIR[framework]);
   const tree = new SkillTree(root);
@@ -119,6 +154,14 @@ const generateTree = async (
     console.log('  partials reference written');
     if (degraded.length > 0) {
       console.warn(`  degraded partials prose (review the source MDX): ${degraded.join(', ')}`);
+    }
+  }
+
+  if (migrationGeneration) {
+    const { written, degraded } = migrationGeneration.writeMigrationReferences(tree, migrationGeneration.sources);
+    console.log(`  ${written.length} migration references written`);
+    if (degraded.length > 0) {
+      console.warn(`  degraded migration prose (review the source MDX): ${degraded.join(', ')}`);
     }
   }
 
@@ -156,10 +199,14 @@ const main = async (): Promise<void> => {
     }
   }
 
-  const [generation, partialsGeneration] = await Promise.all([loadComponentGeneration(), loadPartialsGeneration()]);
+  const [generation, partialsGeneration, migrationGeneration] = await Promise.all([
+    loadComponentGeneration(),
+    loadPartialsGeneration(),
+    loadMigrationGeneration(),
+  ]);
 
   for (const framework of frameworks as Framework[]) {
-    await generateTree(framework, generation, partialsGeneration);
+    await generateTree(framework, generation, partialsGeneration, migrationGeneration);
   }
 };
 
