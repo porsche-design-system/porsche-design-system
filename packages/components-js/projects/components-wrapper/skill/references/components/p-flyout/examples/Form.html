@@ -1,0 +1,38 @@
+<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+
+<p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }">
+  <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+  <form id="some-form">
+    <p-checkbox name="some-checkbox" label="Some Label"></p-checkbox>
+    <p-textarea name="some-textarea" label="Some Label"></p-textarea>
+  </form>
+  <p-button-group slot="footer">
+    <p-button type="submit" form="some-form">Submit</p-button>
+    <p-button type="reset" variant="secondary" form="some-form">Reset</p-button>
+  </p-button-group>
+  <p-text slot="sub-footer">
+    Last submitted data:
+    <br/><br/>
+    checkbox: <span>none</span>
+    <br/>
+    textarea: <span>none</span>
+  </p-text>
+</p-flyout>
+
+
+<script>
+  const flyout = document.querySelector('p-flyout');
+  flyout.addEventListener('dismiss', () => (flyout.open = false));
+  document.querySelector('p-button').addEventListener('click', () => (flyout.open = true));
+
+  const debugElement = document.querySelectorAll('span');
+  const checkboxValue = debugElement[0];
+  const textareaValue = debugElement[1];
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    checkboxValue.innerHTML = formData.get('some-checkbox')?.toString() || 'none';
+    textareaValue.innerHTML = formData.get('some-textarea')?.toString() || 'none';
+  });
+</script>

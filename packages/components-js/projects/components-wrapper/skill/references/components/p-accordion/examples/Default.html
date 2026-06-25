@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" class="scheme-light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-accordion>
+  <p-heading slot="summary" tag="h2" size="small" weight="semibold">
+    Some summary
+  </p-heading>
+  <p-text>
+    Some details. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+  </p-text>
+</p-accordion>
+<script>
+  const pAccordion = document.querySelector("p-accordion");
+  pAccordion.addEventListener('update', (e) => e.target.open = e.detail.open);
+</script>
+</body>
+</html>

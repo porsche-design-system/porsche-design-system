@@ -1,0 +1,22 @@
+<p-input-text name="some-name" label="Some Label"></p-input-text>
+
+<p-text>Value: ''</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const inputText = document.querySelector('p-input-text');
+
+  inputText.addEventListener('input', (e) => {
+    const target = e.target;
+
+    if (target.value.length > 3) {
+      const newValue = target.value.slice(0, 3);
+      target.value = newValue;
+      setDebugText(newValue);
+    }
+  });
+
+  function setDebugText(value) {
+    debugElement.innerText = `Value: ${value}`;
+  }
+</script>

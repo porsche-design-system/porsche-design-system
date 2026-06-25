@@ -1,0 +1,20 @@
+$duration-sm: 0.25s;
+$duration-md: 0.4s;
+$duration-lg: 0.6s;
+$duration-xl: 1.2s;
+$ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+$ease-in: cubic-bezier(0, 0, 0.2, 1);
+$ease-out: cubic-bezier(0.4, 0, 0.5, 1);
+
+$pds-motion-duration-long: 0.6s; /* alias (deprecated) */
+$pds-motion-duration-moderate: 0.4s; /* alias (deprecated) */
+$pds-motion-duration-short: 0.25s; /* alias (deprecated) */
+$pds-motion-duration-very-long: 1.2s; /* alias (deprecated) */
+$pds-motion-easing-base: cubic-bezier(
+  0.25,
+  0.1,
+  0.25,
+  1
+); /* alias (deprecated) */
+$pds-motion-easing-in: cubic-bezier(0, 0, 0.2, 1); /* alias (deprecated) */
+$pds-motion-easing-out: cubic-bezier(0.4, 0, 0.5, 1); /* alias (deprecated) */

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" class="scheme-light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-link-tile-product heading="Some product" price="718,00 €" price-original="911,00 €" description="Some description" href="https://porsche.com">
+  <p-tag slot="header" color="background-base">
+    New
+  </p-tag>
+  <img src="assets/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
+</p-link-tile-product>
+<script>
+  const pLinkTileProduct = document.querySelector("p-link-tile-product");
+  pLinkTileProduct.addEventListener('like', (e) => e.target.liked = !e.detail.liked);
+</script>
+</body>
+</html>

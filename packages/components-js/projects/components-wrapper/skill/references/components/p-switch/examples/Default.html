@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en" class="scheme-light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-switch>
+  Some label
+</p-switch>
+<script>
+  const pSwitch = document.querySelector("p-switch");
+  pSwitch.addEventListener('update', (e) => e.target.checked = e.detail.checked);
+</script>
+</body>
+</html>

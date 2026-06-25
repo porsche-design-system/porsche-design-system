@@ -1,6 +1,8 @@
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import { type HTMLElement as ParsedElement, type Node as ParsedNode, NodeType, parse } from 'node-html-parser';
-import { type ComponentType, createElement } from 'react';
+import { type ComponentType, createElement, type ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
 
 export type RenderMdxResult = {
   /** The rendered prose as plain markdown. */
@@ -110,10 +112,7 @@ const renderList = (node: ParsedElement, ordered: boolean): string => {
   const items = node.childNodes.filter((child): child is ParsedElement => isElement(child) && child.tagName === 'LI');
 
   return items
-    .map((item, index) => {
-      const marker = ordered ? `${index + 1}.` : '-';
-      const indent = ' '.repeat(marker.length + 1);
-
+    .map((item) => {
       let inline = '';
       const nestedLists: ParsedElement[] = [];
       for (const child of item.childNodes) {
@@ -123,8 +122,17 @@ const renderList = (node: ParsedElement, ordered: boolean): string => {
           inline += renderInline(child);
         }
       }
+      return { inline: inline.trim(), nestedLists };
+    })
+    // Items whose entire content was dropped noise (e.g. an embedded PDS component
+    // rendered then stripped) leave no prose and no nested list — drop them so the
+    // output carries no empty `-` bullets.
+    .filter(({ inline, nestedLists }) => inline || nestedLists.length > 0)
+    .map(({ inline, nestedLists }, index) => {
+      const marker = ordered ? `${index + 1}.` : '-';
+      const indent = ' '.repeat(marker.length + 1);
 
-      let line = `${marker} ${inline.trim()}`;
+      let line = `${marker} ${inline}`;
       for (const nested of nestedLists) {
         const nestedMarkdown = renderList(nested, nested.tagName === 'OL');
         const indented = nestedMarkdown
@@ -244,6 +252,10 @@ const normalize = (markdown: string): string =>
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
+/** The storefront contexts the embedded doc components read during SSR. */
+const SkillProviders = ({ children }: { children: ReactNode }) =>
+  createElement(PorscheDesignSystemProvider, null, createElement(StorefrontFrameworkProvider, null, children));
+
 /**
  * Renders a storefront MDX `ComponentType` (component introduction / usage /
  * accessibility / notes, partials prose, migration prose) to plain markdown.
@@ -259,7 +271,13 @@ export const renderMdxToMarkdown = (component: ComponentType<{ components?: Reco
     componentStubs[name] = () => null;
   }
 
-  const html = renderToStaticMarkup(createElement(component, { components: componentStubs }));
+  // Prose embeds live PDS and storefront doc components (rendered, then dropped as
+  // custom-element / chrome noise below). They read React context — PDS `usePrefix`,
+  // the storefront framework switcher — so the render must sit inside the same
+  // providers the storefront layout wraps these pages in, or SSR throws.
+  const html = renderToStaticMarkup(
+    createElement(SkillProviders, null, createElement(component, { components: componentStubs }))
+  );
   const markdown = normalize(renderBlocks(parse(html)));
   const degraded = markdown.length === 0 || !/[A-Za-z0-9]/.test(markdown);
 

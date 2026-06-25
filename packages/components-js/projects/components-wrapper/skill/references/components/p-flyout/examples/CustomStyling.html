@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" class="scheme-light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Flyout
+</p-button>
+
+<p-flyout aria="{'aria-label': 'Some Heading'}" footer-behavior="fixed" class="[--p-flyout-width:90vw]">
+  <div class="-mt-(--ref-p-flyout-pt) -mx-(--ref-p-flyout-px) h-[300px]">
+    <img class="w-full h-full object-cover" src="assets/lights.jpg" alt="Some image description" />
+  </div>
+  <p-display class="mt-fluid-md" size="small" tag="h2">
+    Some heading
+  </p-display>
+  <p-text class="mt-fluid-sm">
+    Some paragraph.
+  </p-text>
+  <div slot="footer" class="grid grid-cols-[auto_1fr_auto] gap-static-sm justify-items-center">
+    <p-button-pure icon="arrow-left" type="button" hide-label="true">
+      Prev
+    </p-button-pure>
+    <p-text>
+      1/4
+    </p-text>
+    <p-button-pure icon="arrow-right" type="button" hide-label="true">
+      Next
+    </p-button-pure>
+  </div>
+</p-flyout>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pFlyout = document.querySelector("p-flyout");
+  pButton.addEventListener('click', () => (pFlyout.open = true));
+  pFlyout.addEventListener('dismiss', () => (pFlyout.open = false));
+</script>
+</body>
+</html>

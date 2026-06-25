@@ -1,0 +1,51 @@
+<div class="flex flex-col gap-static-sm">
+  <p-text-field-wrapper label="Value:"><input name="input-value" type="text" placeholder="e.g. 1" /></p-text-field-wrapper>
+  <div class="flex gap-fluid-sm">
+    <p-button id="btn-input-value" type="button" compact="true">Set Value</p-button>
+    <p-button id="btn-reset" type="button" compact="true">Reset value</p-button>
+  </div>
+  <p-select name="options" label="Some Label" value="1">
+    <p-select-option value="1">Option 1</p-select-option>
+    <p-select-option value="2">Option 2</p-select-option>
+    <p-select-option value="3">Option 3</p-select-option>
+  </p-select>
+  <div class="flex gap-fluid-sm">
+    <p-button id="btn-add" type="button" compact="true">Add option</p-button>
+    <p-button id="btn-remove" type="button" compact="true">Remove last option</p-button>
+  </div>
+</div>
+
+<script>
+  const input = document.querySelector('input');
+  const select = document.querySelector('p-select');
+
+  select.addEventListener('change', (e) => {
+    input.value = select.value;
+  });
+
+  document.querySelector('#btn-input-value').addEventListener('click', () => {
+    select.value = input.value;
+  });
+
+  document.querySelector('#btn-reset').addEventListener('click', () => {
+    input.value = '';
+    select.value = '1';
+  });
+
+  document.querySelector('#btn-add').addEventListener('click', () => {
+    addOption();
+  });
+
+  document.querySelector('#btn-remove').addEventListener('click', () => {
+    if (select.children.length > 0) {
+      select.lastChild.remove();
+    }
+  });
+
+  function addOption() {
+    const child = document.createElement('p-select-option');
+    child.innerText = `Option ${select.children.length + 1}`;
+    child.setAttribute('value', `${select.children.length + 1}`);
+    select.append(child);
+  }
+</script>

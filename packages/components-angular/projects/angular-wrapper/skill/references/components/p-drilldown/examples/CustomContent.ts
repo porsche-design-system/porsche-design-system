@@ -1,0 +1,166 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule, type DrilldownUpdateEventDetail } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <nav aria-label="Main">
+        <p-button type="button" [aria]="{'aria-haspopup': 'dialog'}" (click)="onClick()">
+          Open Drilldown
+        </p-button>
+        <p-drilldown [open]="open" [activeIdentifier]="activeIdentifier" class="[--p-drilldown-grid-template:repeat(5,auto)_minmax(0,1fr)/auto]" (update)="onUpdate($event)" (dismiss)="onDismiss()">
+          <p-drilldown-item identifier="id-1" label="Motorsport" class="[--p-drilldown-grid-template:auto/repeat(2,minmax(0,1fr))] [--p-drilldown-gap:0px_16px]">
+            <p-drilldown-item identifier="id-1-1" label="718">
+              <p-model-signature slot="header" model="718"></p-model-signature>
+              <p-button-tile slot="button" label="Some label" description="718" weight="semi-bold" [compact]="true" [aspectRatio]="{'base': '1/1', 's': '9/16'}" class="mb-fluid-sm">
+                <img srcset="assets/porsche-963@2x.webp 2x" src="assets/porsche-963.webp" [width]="636" [height]="847" alt="Porsche 963" />
+              </p-button-tile>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-1-2" label="911">
+              <p-model-signature slot="header" model="911"></p-model-signature>
+              <p-button-tile slot="button" label="Some label" description="911" weight="semi-bold" [compact]="true" [aspectRatio]="{'base': '1/1', 's': '9/16'}" class="mb-fluid-sm">
+                <img srcset="assets/porsche-963@2x.webp 2x" src="assets/porsche-963.webp" [width]="636" [height]="847" alt="Porsche 963" />
+              </p-button-tile>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#" aria-current="page">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+          </p-drilldown-item>
+          <p-drilldown-item identifier="id-2" label="Some label">
+            <p-drilldown-item identifier="id-2-1" label="Some label">
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-item identifier="id-2-2" label="Some label">
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+              <p-drilldown-link href="#">
+                Some anchor
+              </p-drilldown-link>
+            </p-drilldown-item>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+          </p-drilldown-item>
+          <p-drilldown-item identifier="id-3" label="Some label">
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+          </p-drilldown-item>
+          <p-drilldown-item identifier="id-4" label="Some label">
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+          </p-drilldown-item>
+          <p-drilldown-item identifier="id-5" label="Some label">
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+            <p-drilldown-link href="#">
+              Some anchor
+            </p-drilldown-link>
+          </p-drilldown-item>
+          <p-link href="#" variant="secondary" icon="external" class="self-end">
+            Some external anchor
+          </p-link>
+        </p-drilldown>
+      </nav>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {
+  activeIdentifier = "id-1";
+  open = false;
+
+  onClick() {
+    this.open = true;
+  }
+  onUpdate(e: CustomEvent<DrilldownUpdateEventDetail>) {
+    this.activeIdentifier = e.detail.activeIdentifier;
+  }
+  onDismiss() {
+    this.open = false;
+  }
+}

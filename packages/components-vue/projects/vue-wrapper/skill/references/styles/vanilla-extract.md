@@ -1,0 +1,434 @@
+# Porsche Design System — Vanilla Extract
+
+The Porsche Design System ships a ready-made [Vanilla Extract](https://vanilla-extract.style) package: a curated catalog
+of design tokens exposed as JavaScript values (colors, typography, spacing, border radii, blur, shadow, motion and
+breakpoints) plus a set of documented style utilities (the layout grid, focus, skeletons, media queries, typography
+shorthands and the color-scheme styles). Every documented symbol is a named export you import and apply inside your
+`*.css.ts` style definitions.
+
+Reach for these foundational styles when you build a custom component or pattern that is not yet available in the
+component library, or for foundational layout work such as typography, surfaces and boxes.
+
+This document is an index of the package. Tokens resolve to native CSS
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) custom
+properties at runtime, so the exact value follows the active color scheme — import the token by name and let it resolve.
+
+## How to use
+
+### Import
+
+Install Vanilla Extract (see the [official guide](https://vanilla-extract.style/documentation/getting-started)),
+then import the documented tokens and utilities from the Porsche Design System Vanilla Extract entry
+inside a `*.css.ts` file:
+
+```ts
+// my-component.css.ts
+import { colorPrimary, spacingFluidMd } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+import { style } from '@vanilla-extract/css';
+
+export const card = style({
+  color: colorPrimary,
+  padding: spacingFluidMd,
+});
+```
+
+Tokens are plain values you assign to CSS properties; utilities are style objects or functions you
+spread/call inside `style()`/`globalStyle()` (e.g. `getFocusVisibleStyle()`, `proseHeadingMdStyle`).
+
+### Color scheme (light / dark)
+
+Colors are driven by the native CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark)
+function via the CSS [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme)
+property — no proprietary switching logic. Register the global `colorSchemeStyles` **once** in your
+global styles to generate the `.scheme-*` utility classes and add a polyfill for browsers without
+`light-dark()` support:
+
+```ts
+// app.css.ts
+import { colorSchemeStyles } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+import { type GlobalStyleRule, globalStyle } from '@vanilla-extract/css';
+
+for (const { selector, rule } of colorSchemeStyles) {
+  globalStyle(selector, rule as GlobalStyleRule);
+}
+```
+
+Then use the light-dark color tokens in your component styles; they resolve to the correct value for
+the active theme automatically. Apply one of the `.scheme-*` classes to the document or any container
+and the selected context cascades to all child elements:
+
+- `.scheme-light` — forces light mode.
+- `.scheme-dark` — forces dark mode.
+- `.scheme-light-dark` — dynamically follows the system/OS setting.
+
+```html
+<div class="scheme-dark"><!-- rendered in dark mode --></div>
+```
+
+### Tokens and utilities
+
+Every documented token is a named value export (e.g. `colorPrimary`, `radiusMd`); every documented
+utility is a style object or a function returning one (e.g. `getMediaQueryMin`, `proseHeadingMdStyle`,
+`gridNarrow`, `skeletonKeyframes`). Use the reference below to discover what is available.
+
+### Deprecated aliases
+
+The package still ships legacy exports as deprecated aliases so existing code keeps working. They are
+intentionally **not** listed here — prefer the documented tokens and utilities below for new code.
+
+## Contents
+
+- [Tokens](#tokens) — Border, Blur, Breakpoint, Color, Font, Shadow, Spacing, Motion, Gradient, Grid
+- [Utilities](#utilities) — Breakpoint, Color, Font, Typography (Heading / Text), Skeleton, Focus, Media query, Grid (Base / Narrow / Basic / Extended / Wide / Full)
+
+## Tokens
+
+### Border — Radius
+
+| Export | Description |
+| --- | --- |
+| `radiusXs` | Holds a **x-small** `border-radius`. |
+| `radiusSm` | Holds a **small** `border-radius`. |
+| `radiusMd` | Holds a **medium** `border-radius`. Used for `p-checkbox` in **compact mode**. |
+| `radiusLg` | Holds a **large** `border-radius`. Used for interactive controls in **compact mode** (e.g. `p-tabs-bar`, `p-input-*`, `p-textarea`, `p-select`, `p-button`, `p-link`,…). |
+| `radiusXl` | Holds a **x-large** `border-radius`. Used for interactive controls (e.g. `p-tabs-bar`, `p-input-*`, `p-textarea`, `p-select`, `p-button`, `p-link`,…). Defines the primary visual appearance alongside **radius3Xl**. |
+| `radius2Xl` | Holds a **2x-large** `border-radius`. Used for notification components (e.g. `p-banner`, `p-inline-notification`, `p-toast`,…). |
+| `radius3Xl` | Holds a **3x-large** `border-radius`. Used for card-like containers or dialogs (e.g. `p-link-tile`, `p-modal`, `p-flyout`, `p-sheet`,…). Defines the primary visual appearance alongside **radiusXl**. |
+| `radius4Xl` | Holds a **4x-large** `border-radius`. |
+| `radiusFull` | Holds a **fully** rounded `border-radius`. Used for pill shapes (e.g. `p-tag`, `p-switch`,…). Recommended only for standalone indicators. |
+
+### Blur
+
+| Export | Description |
+| --- | --- |
+| `blurFrosted` | Holds a blur value for a **frosted** effect when combined with a semi-transparent color. |
+
+### Breakpoint
+
+| Export | Description |
+| --- | --- |
+| `breakpointXS` | Holds the `xs` breakpoint value. |
+| `breakpointS` | Holds the `sm` breakpoint value. |
+| `breakpointM` | Holds the `md` breakpoint value. |
+| `breakpointL` | Holds the `lg` breakpoint value. |
+| `breakpointXL` | Holds the `xl` breakpoint value. |
+| `breakpointXXL` | Holds the `2xl` breakpoint value. |
+| `breakpointBase` | Holds the `base` breakpoint value. |
+
+### Color — Background
+
+| Export | Description |
+| --- | --- |
+| `colorCanvas` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **canvas** color, typically used for surfaces. |
+| `colorSurface` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **surface** color, typically used for surfaces. |
+| `colorFrosted` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted** color, typically used as a background in combination with `blur()`. |
+| `colorFrostedSoft` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-soft** color, typically used as a background `:hover`. |
+| `colorFrostedStrong` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **frosted-strong** color, typically used as a background in combination with `blur()`. |
+| `colorBackdrop` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **backdrop** color, typically used for backdrops. |
+
+### Color — Foreground
+
+| Export | Description |
+| --- | --- |
+| `colorPrimary` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **primary** color, typically used for text. |
+| `colorContrastHigher` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-higher** color, typically used for text. |
+| `colorContrastHigh` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-high** color, typically used for text. |
+| `colorContrastMedium` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-medium** color, typically used for text. |
+| `colorContrastLow` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-low** color, intended only for decorative elements. |
+| `colorContrastLower` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **contrast-lower** color, intended only for decorative elements. |
+
+### Color — Semantic
+
+| Export | Description |
+| --- | --- |
+| `colorInfo` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info** color, typically used for text. |
+| `colorInfoMedium` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-medium** color, typically used for text or border. |
+| `colorInfoLow` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-low** color, typically used for text or border. |
+| `colorInfoFrosted` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted** color, typically used as background with `.backdrop-blur-frosted`. |
+| `colorInfoFrostedSoft` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **info-frosted-soft** color, typically used as background `:hover`. |
+| `colorSuccess` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success** color, typically used for text. |
+| `colorSuccessMedium` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-medium** color, typically used for text or border. |
+| `colorSuccessLow` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-low** color, typically used for text or border. |
+| `colorSuccessFrosted` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted** color, typically used as background with `.backdrop-blur-frosted`. |
+| `colorSuccessFrostedSoft` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **success-frosted-soft** color, typically used as background `:hover`. |
+| `colorWarning` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning** color, typically used for text. |
+| `colorWarningMedium` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-medium** color, typically used for text or border. |
+| `colorWarningLow` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-low** color, typically used for text or border. |
+| `colorWarningFrosted` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted** color, typically used as background with `.backdrop-blur-frosted`. |
+| `colorWarningFrostedSoft` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **warning-frosted-soft** color, typically used as background `:hover`. |
+| `colorError` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error** color, typically used for text. |
+| `colorErrorMedium` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-medium** color, typically used for text or border. |
+| `colorErrorLow` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-low** color, typically used for text or border. |
+| `colorErrorFrosted` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted** color, typically used as background with `.backdrop-blur-frosted`. |
+| `colorErrorFrostedSoft` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **error-frosted-soft** color, typically used as background `:hover`. |
+
+### Color — A11y
+
+| Export | Description |
+| --- | --- |
+| `colorFocus` | Holds the [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) **focus** color, typically used as the outline for `:focus-visible` states. |
+
+### Font — Family
+
+| Export | Description |
+| --- | --- |
+| `fontPorscheNext` | Holds the **Porsche Next** font family along with fallback fonts. |
+| `fontPorscheNextZhHans` | Holds the **Porsche Next** font family along with fallback fonts for **Simplified Chinese**. |
+| `fontPorscheNextZhHant` | Holds the **Porsche Next** font family along with fallback fonts for **Traditional Chinese**. |
+| `fontPorscheNextJa` | Holds the **Porsche Next** font family along with fallback fonts for **Japanese**. |
+| `fontPorscheNextKo` | Holds the **Porsche Next** font family along with fallback fonts for **Korean**. |
+
+### Font — Weight
+
+| Export | Description |
+| --- | --- |
+| `fontWeightNormal` | Holds the **normal** font weight optimized for the Porsche Next typeface. |
+| `fontWeightSemibold` | Holds the **semibold** font weight optimized for the Porsche Next typeface. |
+| `fontWeightBold` | Holds the **bold** font weight optimized for the Porsche Next typeface. |
+
+### Font — Line height
+
+| Export | Description |
+| --- | --- |
+| `leadingNormal` | Holds a dynamic default line height specifically optimized for the Porsche Next typeface. |
+
+### Font — Size
+
+| Export | Description |
+| --- | --- |
+| `typescale2Xs` | Holds the **2x-small** font size optimized for the Porsche Next typeface. |
+| `typescaleXs` | Holds the **x-small** font size optimized for the Porsche Next typeface. |
+| `typescaleSm` | Holds the **small** font size optimized for the Porsche Next typeface. |
+| `typescaleMd` | Holds the **medium** font size optimized for the Porsche Next typeface. |
+| `typescaleLg` | Holds the **large** font size optimized for the Porsche Next typeface. |
+| `typescaleXl` | Holds the **x-large** font size optimized for the Porsche Next typeface. |
+| `typescale2Xl` | Holds the **2x-large** font size optimized for the Porsche Next typeface. |
+| `typescale3Xl` | Holds the **3x-large** font size optimized for the Porsche Next typeface. |
+| `typescale4Xl` | Holds the **4x-large** font size optimized for the Porsche Next typeface. |
+| `typescale5Xl` | Holds the **5x-large** font size optimized for the Porsche Next typeface. |
+
+### Shadow
+
+| Export | Description |
+| --- | --- |
+| `shadowSm` | Holds a **small** `shadow`. |
+| `shadowMd` | Holds a **medium** `shadow`. |
+| `shadowLg` | Holds a **large** `shadow`. |
+
+### Spacing — Fluid
+
+| Export | Description |
+| --- | --- |
+| `spacingFluidXs` | Holds the **x-small fluid** spacing. |
+| `spacingFluidSm` | Holds the **small fluid** spacing. |
+| `spacingFluidMd` | Holds the **medium fluid** spacing. |
+| `spacingFluidLg` | Holds the **large fluid** spacing. |
+| `spacingFluidXl` | Holds the **x-large fluid** spacing. |
+| `spacingFluid2Xl` | Holds the **2x-large fluid** spacing. |
+
+### Spacing — Static
+
+| Export | Description |
+| --- | --- |
+| `spacingStatic2Xs` | Holds the **2x-small static** spacing. |
+| `spacingStaticXs` | Holds the **x-small static** spacing. |
+| `spacingStaticSm` | Holds the **small static** spacing. |
+| `spacingStaticMd` | Holds the **medium static** spacing. |
+| `spacingStaticLg` | Holds the **large static** spacing. |
+| `spacingStaticXl` | Holds the **x-large static** spacing. |
+| `spacingStatic2Xl` | Holds the **2x-large static** spacing. |
+
+### Motion — Duration
+
+| Export | Description |
+| --- | --- |
+| `durationSm` | Holds a **short** `transition-duration` / `animation-duration`. |
+| `durationMd` | Holds a **moderate** `transition-duration` / `animation-duration`. |
+| `durationLg` | Holds a **long** `transition-duration` / `animation-duration`. |
+| `durationXl` | Holds a **very long** `transition-duration` / `animation-duration`. |
+
+### Motion — Ease
+
+| Export | Description |
+| --- | --- |
+| `easeInOut` | Holds an **in-out** `transition-timing-function`. |
+| `easeIn` | Holds an **in** `transition-timing-function`. |
+| `easeOut` | Holds an **out** `transition-timing-function`. |
+
+### Gradient
+
+| Export | Description |
+| --- | --- |
+| `gradientStopsFadeDark` | Holds color stops for a faded gradient, used as `background-image`. |
+
+### Grid — Base
+
+| Export | Description |
+| --- | --- |
+| `gridGap` | Holds the grid **gap** of the Porsche Grid. |
+
+### Grid — Narrow
+
+| Export | Description |
+| --- | --- |
+| `gridNarrowColumnStart` | Holds the **start** position of the `narrow` area within the Porsche Grid. |
+| `gridNarrowColumnEnd` | Holds the **end** position of the `narrow` area within the Porsche Grid. |
+| `gridNarrowSpanOneHalf` | Holds a **one half** span within the `narrow` area of the Porsche Grid. |
+| `gridNarrowOffsetBase` | Holds a **base** offset within the `narrow` area of the Porsche Grid. |
+| `gridNarrowOffsetS` | Holds a **small** offset within the `narrow` area of the Porsche Grid. |
+| `gridNarrowOffsetXXL` | Holds a **xxl** offset within the `narrow` area of the Porsche Grid. |
+
+### Grid — Basic
+
+| Export | Description |
+| --- | --- |
+| `gridBasicColumnStart` | Holds the **start** position of the `basic` area within the Porsche Grid. |
+| `gridBasicColumnEnd` | Holds the **end** position of the `basic` area within the Porsche Grid. |
+| `gridBasicSpanOneHalf` | Holds a **half** span within the `basic` area of the Porsche Grid. |
+| `gridBasicSpanOneThird` | Holds a **one third** span within the `basic` area of the Porsche Grid. |
+| `gridBasicSpanTwoThirds` | Holds a **two thirds** span within the `basic` area of the Porsche Grid. |
+| `gridBasicOffsetBase` | Holds a **base** offset within the `basic` area of the Porsche Grid. |
+| `gridBasicOffsetS` | Holds a **small** offset within the `basic` area of the Porsche Grid. |
+| `gridBasicOffsetXXL` | Holds a **xxl** offset within the `basic` area of the Porsche Grid. |
+
+### Grid — Extended
+
+| Export | Description |
+| --- | --- |
+| `gridExtendedColumnStart` | Holds the **start** position of the `extended` area within the Porsche Grid. |
+| `gridExtendedColumnEnd` | Holds the **end** position of the `extended` area within the Porsche Grid. |
+| `gridExtendedSpanOneHalf` | Holds a **half** span within the `extended` area of the Porsche Grid. |
+| `gridExtendedOffsetBase` | Holds a **base** offset within the `extended` area of the Porsche Grid. |
+| `gridExtendedOffsetS` | Holds a **small** offset within the `extended` area of the Porsche Grid. |
+| `gridExtendedOffsetXXL` | Holds a **xxl** offset within the `extended` area of the Porsche Grid. |
+
+### Grid — Wide
+
+| Export | Description |
+| --- | --- |
+| `gridWideColumnStart` | Holds the **start** position of the `wide` area within the Porsche Grid. |
+| `gridWideColumnEnd` | Holds the **end** position of the `wide` area within the Porsche Grid. |
+| `gridWideOffsetBase` | Holds a **base** offset within the `wide` area of the Porsche Grid. |
+| `gridWideOffsetS` | Holds a **small** offset within the `wide` area of the Porsche Grid. |
+| `gridWideOffsetXXL` | Holds a **xxl** offset within the `wide` area of the Porsche Grid. |
+
+### Grid — Full
+
+| Export | Description |
+| --- | --- |
+| `gridFullColumnStart` | Holds the **start** position of the `full` area within the Porsche Grid. |
+| `gridFullColumnEnd` | Holds the **end** position of the `full` area within the Porsche Grid. |
+| `gridFullOffset` | Holds a **full** offset within the `full` area of the Porsche Grid. |
+
+## Utilities
+
+### Breakpoint
+
+| Export | Description |
+| --- | --- |
+| `breakpoint` | Object containing all breakpoint values. |
+| `breakpoints` | Array containing all breakpoint keys. |
+
+### Color
+
+| Export | Description |
+| --- | --- |
+| `colorSchemeStyles` | Holds the global style rules for the `.scheme-*` color-scheme classes, including [light-dark()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) fallback variables for browsers without support. |
+
+### Font
+
+| Export | Description |
+| --- | --- |
+| `getCJKFontFamilyStyle` | Applies locale-specific **Porsche Next** font stacks for **CJK** languages (Simplified Chinese, Traditional Chinese, Japanese, Korean) based on the element's `lang` attribute. |
+| `fontHyphenationStyle` | Applies **hyphenation** styles (`overflow-wrap` and `hyphens`) to break and hyphenate long words. |
+
+### Typography — Heading
+
+| Export | Description |
+| --- | --- |
+| `proseHeading5XlStyle` | Applies the **5x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeading4XlStyle` | Applies the **4x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeading3XlStyle` | Applies the **3x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeading2XlStyle` | Applies the **2x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeadingXlStyle` | Applies the **x-large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeadingLgStyle` | Applies the **large** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeadingMdStyle` | Applies the **medium** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeadingSmStyle` | Applies the **small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeadingXsStyle` | Applies the **x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+| `proseHeading2XsStyle` | Applies the **2x-small** heading typography variant primarily to `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>` tags. |
+
+### Typography — Text
+
+| Export | Description |
+| --- | --- |
+| `proseText5XlStyle` | Applies the **5x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| `proseText4XlStyle` | Applies the **4x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| `proseText3XlStyle` | Applies the **3x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| `proseText2XlStyle` | Applies the **2x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| `proseTextXlStyle` | Applies the **x-large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| `proseTextLgStyle` | Applies the **large** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| `proseTextMdStyle` | Applies the **medium** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| `proseTextSmStyle` | Applies the **small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| `proseTextXsStyle` | Applies the **x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+| `proseText2XsStyle` | Applies the **2x-small** text typography variant primarily to `<p>`, `<ul>`, `<ol>`, `<blockquote>` tags. |
+
+### Skeleton
+
+| Export | Description |
+| --- | --- |
+| `getSkeletonStyle` | Applies a skeleton placeholder style to indicate loading state. |
+| `skeletonKeyframes` | Holds the **keyframes** to be used with the `keyframes` vanilla-extract function. |
+
+### Focus
+
+| Export | Description |
+| --- | --- |
+| `getFocusVisibleStyle` | Applies a **focus-visible** style. |
+
+### Media query
+
+| Export | Description |
+| --- | --- |
+| `getMediaQueryMax` | Applies a **max** media query with the specified breakpoint. |
+| `getMediaQueryMin` | Applies a **min** media query with the specified breakpoint. |
+| `getMediaQueryMinMax` | Applies a **min-max** media query with the specified breakpoints. |
+
+### Grid — Base
+
+| Export | Description |
+| --- | --- |
+| `gridStyle` | Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). |
+
+### Grid — Narrow
+
+| Export | Description |
+| --- | --- |
+| `gridNarrow` | Object containing all `narrow` grid styles. |
+| `gridNarrowOffset` | Object containing all `narrow` grid offset styles. |
+
+### Grid — Basic
+
+| Export | Description |
+| --- | --- |
+| `gridBasic` | Object containing all `basic` grid styles. |
+| `gridBasicOffset` | Object containing all `basic` grid offset styles. |
+
+### Grid — Extended
+
+| Export | Description |
+| --- | --- |
+| `gridExtended` | Object containing all `extended` grid styles. |
+| `gridExtendedOffset` | Object containing all `extended` grid offset styles. |
+
+### Grid — Wide
+
+| Export | Description |
+| --- | --- |
+| `gridWide` | Object containing all `wide` grid styles. |
+| `gridWideOffset` | Object containing all `wide` grid offset styles. |
+
+### Grid — Full
+
+| Export | Description |
+| --- | --- |
+| `gridFull` | Object containing all `full` grid styles. |

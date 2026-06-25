@@ -1,0 +1,51 @@
+$spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
+$spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
+$spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
+$spacing-fluid-lg: clamp(32px, 2.75vw + 23px, 76px);
+$spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
+$spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
+$spacing-static-2xs: 1px;
+$spacing-static-xs: 4px;
+$spacing-static-sm: 8px;
+$spacing-static-md: 16px;
+$spacing-static-lg: 32px;
+$spacing-static-xl: 48px;
+$spacing-static-2xl: 80px;
+
+$pds-spacing-static-x-small: 4px; /* alias (deprecated) */
+$pds-spacing-static-small: 8px; /* alias (deprecated) */
+$pds-spacing-static-medium: 16px; /* alias (deprecated) */
+$pds-spacing-static-large: 32px; /* alias (deprecated) */
+$pds-spacing-static-x-large: 48px; /* alias (deprecated) */
+$pds-spacing-static-xx-large: 80px; /* alias (deprecated) */
+
+$pds-spacing-fluid-x-small: clamp(
+  4px,
+  0.25vw + 3px,
+  8px
+); /* alias (deprecated) */
+$pds-spacing-fluid-small: clamp(
+  8px,
+  0.5vw + 6px,
+  16px
+); /* alias (deprecated) */
+$pds-spacing-fluid-medium: clamp(
+  16px,
+  1.25vw + 12px,
+  36px
+); /* alias (deprecated) */
+$pds-spacing-fluid-large: clamp(
+  32px,
+  2.75vw + 23px,
+  76px
+); /* alias (deprecated) */
+$pds-spacing-fluid-x-large: clamp(
+  48px,
+  3vw + 38px,
+  96px
+); /* alias (deprecated) */
+$pds-spacing-fluid-xx-large: clamp(
+  80px,
+  7.5vw + 56px,
+  200px
+); /* alias (deprecated) */

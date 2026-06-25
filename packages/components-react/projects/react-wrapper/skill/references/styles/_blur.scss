@@ -1,0 +1,7 @@
+$blur-frosted: blur(32px);
+
+/* alias (deprecated) */
+@mixin pds-frosted-glass {
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+}

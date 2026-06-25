@@ -1,5 +1,7 @@
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
+import type { ComponentType } from 'react';
 import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExamples';
 import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
 import type { MigrationSource } from '../src/lib/skill/migrationReference';
@@ -10,6 +12,18 @@ import { writeStyleReferences } from '../src/lib/skill/stylesReference';
 import { writeTokensReference } from '../src/lib/skill/tokensReference';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
+
+/**
+ * The MDX runtime (`./skill-mdx-loader.cjs`) registers `.mdx` as a CommonJS
+ * `require` extension. Partials/migration prose is pulled through `require` (not
+ * dynamic `import()`) so it shares that path with the component meta: keeping the
+ * whole graph in CJS lets the MDX's own imports — notably the components-wrapper's
+ * `COMPONENT_CHUNK_NAMES` — resolve through tsx, which ESM named-export detection
+ * over the package's CJS build cannot.
+ */
+const requireFromHere = createRequire(__filename);
+const requireMdxDefault = (relativePath: string): ComponentType =>
+  (requireFromHere(relativePath) as { default: ComponentType }).default;
 
 /**
  * The component-reference generation, loaded together as a unit because it all depends
@@ -64,18 +78,14 @@ const PARTIAL_DIRECTORIES: { functionName: string; dir: string }[] = [
 
 const loadPartialsGeneration = async (): Promise<PartialsGeneration | null> => {
   try {
-    const [{ writePartialsReference }, introduction, ...pages] = await Promise.all([
-      import('../src/lib/skill/partialsReference'),
-      import('../src/app/(main)/partials/introduction/page.mdx'),
-      ...PARTIAL_DIRECTORIES.map(({ dir }) => import(`../src/app/(main)/partials/${dir}/page.mdx`)),
-    ]);
+    const { writePartialsReference } = await import('../src/lib/skill/partialsReference');
     return {
       writePartialsReference,
       source: {
-        introduction: introduction.default,
-        partials: PARTIAL_DIRECTORIES.map(({ functionName }, index) => ({
+        introduction: requireMdxDefault('../src/app/(main)/partials/introduction/page.mdx'),
+        partials: PARTIAL_DIRECTORIES.map(({ functionName, dir }) => ({
           functionName,
-          page: pages[index].default,
+          page: requireMdxDefault(`../src/app/(main)/partials/${dir}/page.mdx`),
         })),
       },
     };
@@ -104,13 +114,13 @@ const MIGRATION_GUIDES = ['porsche-design-system', 'scss', 'tailwindcss', 'vanil
 
 const loadMigrationGeneration = async (): Promise<MigrationGeneration | null> => {
   try {
-    const [{ writeMigrationReferences }, ...pages] = await Promise.all([
-      import('../src/lib/skill/migrationReference'),
-      ...MIGRATION_GUIDES.map((slug) => import(`../src/app/(main)/news/migration-guide/${slug}/page.mdx`)),
-    ]);
+    const { writeMigrationReferences } = await import('../src/lib/skill/migrationReference');
     return {
       writeMigrationReferences,
-      sources: MIGRATION_GUIDES.map((slug, index) => ({ slug, page: pages[index].default })),
+      sources: MIGRATION_GUIDES.map((slug) => ({
+        slug,
+        page: requireMdxDefault(`../src/app/(main)/news/migration-guide/${slug}/page.mdx`),
+      })),
     };
   } catch (error) {
     const reason = error instanceof Error ? error.message.split('\n')[0] : String(error);

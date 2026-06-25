@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" class="scheme-light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Modal
+</p-button>
+
+<p-modal backdrop="shading" aria="{'aria-label': 'Some Label'}" class="[--p-modal-width:clamp(276px,45.25vw+131px,1000px)] [--p-modal-spacing-top:200px] [--p-modal-spacing-bottom:50px]">
+  <img src="assets/porsche-992-carrera-s.jpg" class="-mt-(--ref-p-modal-pt) -mx-(--ref-p-modal-px) -mb-(--ref-p-modal-pb) max-w-(--p-modal-width) rounded-xl" />
+</p-modal>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pModal = document.querySelector("p-modal");
+  pButton.addEventListener('click', () => (pModal.open = true));
+  pModal.addEventListener('dismiss', () => (pModal.open = false));
+</script>
+</body>
+</html>

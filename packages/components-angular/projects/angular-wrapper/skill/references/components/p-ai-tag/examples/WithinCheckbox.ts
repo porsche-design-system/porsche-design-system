@@ -1,0 +1,33 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <p-fieldset label="Pick your favorite Fruits" labelSize="small" class="flex flex-col gap-static-sm">
+        <p-text class="-mt-static-md mb-static-sm">
+          Slotted description with optional link
+        </p-text>
+        <div class="flex flex-col gap-static-sm">
+          <p-checkbox>
+            <span slot="label">
+              Banana
+              <p-ai-tag variant="generated" class="ms-static-sm"></p-ai-tag>
+            </span>
+          </p-checkbox>
+          <p-checkbox label="Apple"></p-checkbox>
+          <p-checkbox [checked]="true">
+            <span slot="label">
+              Melon
+              <p-ai-tag variant="abbreviation" class="ms-static-sm"></p-ai-tag>
+            </span>
+          </p-checkbox>
+          <p-checkbox label="Grapefruit"></p-checkbox>
+        </div>
+      </p-fieldset>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}

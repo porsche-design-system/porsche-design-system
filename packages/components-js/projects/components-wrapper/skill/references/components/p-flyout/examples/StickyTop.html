@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" class="scheme-light">
+<head>
+  <title></title>
+</head>
+<body class="bg-canvas">
+
+<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
+  Open Flyout
+</p-button>
+
+<p-flyout aria="{'aria-label': 'Some Heading'}">
+  <p-heading slot="header" size="large" tag="h2">
+    Some Heading
+  </p-heading>
+  <div class="grid grid-cols-[2fr_1fr] gap-static-md items-start">
+    <div class="sticky top-[calc(var(--p-flyout-sticky-top,0)+16px)] p-static-md bg-surface">
+      Some sticky element within content relying on --p-flyout-sticky-top
+    </div>
+    <div>
+      <p-text>
+        Some Content Begin
+      </p-text>
+      <div class="w-[10px] h-[120vh] bg-[deeppink]"></div>
+      <p-text>
+        Some Content End
+      </p-text>
+    </div>
+  </div>
+</p-flyout>
+<script>
+  const pButton = document.querySelector("p-button");
+  const pFlyout = document.querySelector("p-flyout");
+  pButton.addEventListener('click', () => (pFlyout.open = true));
+  pFlyout.addEventListener('dismiss', () => (pFlyout.open = false));
+</script>
+</body>
+</html>

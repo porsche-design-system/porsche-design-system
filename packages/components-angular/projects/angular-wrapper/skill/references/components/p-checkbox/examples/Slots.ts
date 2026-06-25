@@ -1,0 +1,57 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: `
+      <div class="flex flex-col gap-static-sm">
+        <p-checkbox name="some-name">
+          <span slot="label">
+            <img src="assets/911.png" alt="" class="object-contain inline-block align-middle -mt-2 me-static-sm w-[70px]" />
+            Some slotted label with custom content and a "label-after" slot
+          </span>
+          <p-popover slot="label-after">
+            Some label with a 
+            <a href="https://designsystem.porsche.com" class="underline">
+              link
+            </a>
+          </p-popover>
+        </p-checkbox>
+        <p-checkbox name="some-name">
+          <span slot="label">
+            Some slotted label
+          </span>
+        </p-checkbox>
+        <p-checkbox name="some-name" disabled="true">
+          <span slot="label">
+            Disabled slotted label, a nested 
+            <a href="https://www.porsche.com" class="underline" tabindex="-1">
+              link
+            </a>
+             and a label-after slot.
+          </span>
+          <p-popover slot="label-after">
+            Some information about the disabled state.
+          </p-popover>
+        </p-checkbox>
+        <p-checkbox name="some-name" state="error">
+          <span slot="label">
+            Some slotted label with a nested 
+            <a href="https://www.porsche.com" class="underline">
+              link
+            </a>
+          </span>
+          <span slot="message">
+            Some slotted error message with a 
+            <a href="https://designsystem.porsche.com" class="underline">
+              link
+            </a>
+          </span>
+        </p-checkbox>
+      </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+})
+export class ExampleComponent {}
