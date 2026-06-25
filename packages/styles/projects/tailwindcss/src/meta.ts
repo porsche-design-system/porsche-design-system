@@ -5,7 +5,7 @@ import { color } from './theme/color';
 import { displayUtilities } from './utilities/display';
 import { font } from './theme/font';
 import { gradientUtilities } from './utilities/gradient';
-import { gridUtilities } from './utilities/grid';
+import { grid } from './utilities/grid';
 import { headingUtilities } from './utilities/heading';
 import { motion } from './theme/motion';
 import { shadow } from './theme/shadow';
@@ -40,5 +40,5 @@ export const tailwindMeta = {
     display: displayUtilities,
   },
   skeleton: skeletonUtilities,
-  grid: gridUtilities,
+  grid,
 } satisfies TailwindMeta;

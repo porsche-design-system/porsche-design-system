@@ -10,10 +10,13 @@ import { shadow } from './theme/shadow';
 import { spacing } from './theme/spacing';
 import type { ScssMeta } from './types';
 import { focus } from './utilities/focus';
-import { grid as gridMixins } from './utilities/grid';
+import { grid as gridMixin } from './utilities/grid';
 import { mediaQuery } from './utilities/media-query';
 import { skeleton } from './utilities/skeleton';
 import { typography } from './utilities/typography';
+
+// `grid` combines the `template` layout mixin (`utilities/grid`) with the area-grouped token tree
+// (`theme/grid`), shared with emotion / tailwind.
 
 /**
  * The documented single source of truth: a flat, domain-keyed catalog mirroring `tokensMeta`. Token
@@ -35,5 +38,8 @@ export const scssMeta = {
   skeleton,
   focus,
   mediaQuery,
-  grid: [...Object.values(gridVariables).flat(), ...gridMixins],
+  grid: {
+    template: gridMixin,
+    ...gridVariables,
+  },
 } satisfies ScssMeta;
