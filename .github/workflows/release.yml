@@ -32,6 +32,10 @@ jobs:
   check-publication-status:
     name: 'Check Publication Status'
     runs-on: ubuntu-latest
+    # Only reads: checks out the repo and queries the npm registry. Declared explicitly so it doesn't
+    # inherit the broader (`contents: write` + `id-token: write`) scope the caller grants at the call site.
+    permissions:
+      contents: read
     container:
       image: ${{ inputs.image }}
       options: --user 1001
@@ -211,6 +215,10 @@ jobs:
     needs: check-publication-status
     if: ${{ needs.check-publication-status.outputs.is-storefront-published == 'false' }}
     runs-on: ubuntu-latest
+    # Deploys via the `gh-deploy-key-storefront` SSH deploy key — not the workflow `GITHUB_TOKEN` — so
+    # read access suffices. Declared explicitly so it doesn't inherit the caller's broader write scope.
+    permissions:
+      contents: read
     container:
       image: ${{ inputs.image }}
     steps:

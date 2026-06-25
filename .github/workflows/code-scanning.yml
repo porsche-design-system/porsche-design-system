@@ -9,14 +9,15 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
 jobs:
   build:
     name: 'CodeQL'
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
     # container:
     #   image: mcr.microsoft.com/playwright:v1.61.0-jammy
     #   options: --user 1001
