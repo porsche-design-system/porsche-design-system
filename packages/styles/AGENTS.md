@@ -20,11 +20,13 @@ packages/styles/
 ```
 
 Each publishable project follows a shared `meta/` (the documented catalog, single source of truth) +
-`scripts/` (build) layout. `scss` and `tailwindcss` additionally ship a `skill/` generator
-(`skill/skill.ts` + `scripts/build-skill.ts`, output in gitignored `skill/generated/`) that serializes
-their meta into markdown for the docs/LLM skill — mirroring
-[`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). `emotion` and
-`vanilla-extract` are being aligned to the same meta structure (skill generators not added yet).
+`scripts/` (build) layout. All four projects (`scss`, `tailwindcss`, `emotion`, `vanilla-extract`) ship
+a `skill/` generator (`skill/skill.ts` + `scripts/build-skill.ts`, output in gitignored
+`skill/generated/`) that serializes their meta into markdown for the docs/LLM skill — mirroring
+[`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). For `emotion`
+and `vanilla-extract` the JS `src/` stays the source of truth and the serializer reads the descriptive
+`*Meta` catalog (`emotionMeta`/`vanillaExtractMeta`); for `scss`/`tailwindcss` the meta itself is the
+source of truth.
 
 ## Commands
 

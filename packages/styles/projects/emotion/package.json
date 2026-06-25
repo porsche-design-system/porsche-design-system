@@ -19,9 +19,10 @@
     }
   },
   "scripts": {
-    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta",
+    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta && npm run build:skill",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
     "build:bundle:meta": "rollup -c rollup-meta.config.mjs --bundleConfigAsCjs",
+    "build:skill": "tsx scripts/build-skill.ts",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta"
@@ -43,6 +44,7 @@
     "madge": "^8.0.0",
     "prettier": "^3.8.4",
     "rollup-plugin-generate-package-json": "^3.2.0",
+    "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   },
   "volta": {

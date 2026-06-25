@@ -277,17 +277,27 @@ code.
 | --- | --- |
 | \`$gradient-stops-fade-dark\` | Holds color stops for a faded gradient, used as \`background-image\`. |
 
-### Grid
+### Grid — Base
 
 | SCSS variable | Description |
 | --- | --- |
 | \`$pds-grid-gap\` | Holds the grid **gap** the Porsche Grid. |
+
+### Grid — Narrow
+
+| SCSS variable | Description |
+| --- | --- |
 | \`$pds-grid-narrow-column-start\` | Holds the **start** position of the \`narrow\` area within the Porsche Grid. |
 | \`$pds-grid-narrow-column-end\` | Holds the **end** position of the \`narrow\` area within the Porsche Grid. |
 | \`$pds-grid-narrow-span-one-half\` | Holds a **one third** span within the \`narrow\` area of the Porsche Grid. |
 | \`$pds-grid-narrow-offset-base\` | Holds a **base** offset within the \`narrow\` area of the Porsche Grid. |
 | \`$pds-grid-narrow-offset-s\` | Holds a **small** offset within the \`narrow\` area of the Porsche Grid. |
 | \`$pds-grid-narrow-offset-xxl\` | Holds a **xxl** offset within the \`narrow\` area of the Porsche Grid. |
+
+### Grid — Basic
+
+| SCSS variable | Description |
+| --- | --- |
 | \`$pds-grid-basic-column-start\` | Holds the **start** position of the \`basic\` area within the Porsche Grid. |
 | \`$pds-grid-basic-column-end\` | Holds the **end** position of the \`basic\` area within the Porsche Grid. |
 | \`$pds-grid-basic-span-one-half\` | Holds a **half** span within the \`basic\` area of the Porsche Grid. |
@@ -296,17 +306,32 @@ code.
 | \`$pds-grid-basic-offset-base\` | Holds a **base** offset within the \`base\` area of the Porsche Grid. |
 | \`$pds-grid-basic-offset-s\` | Holds a **small** offset within the \`base\` area of the Porsche Grid. |
 | \`$pds-grid-basic-offset-xxl\` | Holds a **xxl** offset within the \`base\` area of the Porsche Grid. |
+
+### Grid — Extended
+
+| SCSS variable | Description |
+| --- | --- |
 | \`$pds-grid-extended-column-start\` | Holds the **start** position of the \`extended\` area within the Porsche Grid. |
 | \`$pds-grid-extended-column-end\` | Holds the **end** position of the \`extended\` area within the Porsche Grid. |
 | \`$pds-grid-extended-span-one-half\` | Holds a **half** span within the \`extended\` area of the Porsche Grid. |
 | \`$pds-grid-extended-offset-base\` | Holds a **base** offset within the \`extended\` area of the Porsche Grid. |
 | \`$pds-grid-extended-offset-s\` | Holds a **small** offset within the \`extended\` area of the Porsche Grid. |
 | \`$pds-grid-extended-offset-xxl\` | Holds a **xxl** offset within the \`extended\` area of the Porsche Grid. |
+
+### Grid — Wide
+
+| SCSS variable | Description |
+| --- | --- |
 | \`$pds-grid-wide-column-start\` | Holds the **start** position of the \`wide\` area within the Porsche Grid. |
 | \`$pds-grid-wide-column-end\` | Holds the **end** position of the \`wide\` area within the Porsche Grid. |
 | \`$pds-grid-wide-offset-base\` | Holds a **base** offset within the \`wide\` area of the Porsche Grid. |
 | \`$pds-grid-wide-offset-s\` | Holds a **small** offset within the \`wide\` area of the Porsche Grid. |
 | \`$pds-grid-wide-offset-xxl\` | Holds a **xxl** offset within the \`wide\` area of the Porsche Grid. |
+
+### Grid — Full
+
+| SCSS variable | Description |
+| --- | --- |
 | \`$pds-grid-full-column-start\` | Holds the **start** position of the \`full\` area within the Porsche Grid. |
 | \`$pds-grid-full-column-end\` | Holds the **end** position of the \`full\` area within the Porsche Grid. |
 | \`$pds-grid-full-offset\` | Holds a **full** offset within the \`full\` area of the Porsche Grid. |
