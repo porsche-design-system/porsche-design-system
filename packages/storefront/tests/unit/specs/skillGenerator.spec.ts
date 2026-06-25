@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { PLACEHOLDER_DESCRIPTION, SKELETON_REFERENCE_MAP, SKILL_NAME, buildSkillMd } from '@/lib/skill/skillMd';
+import { ACTIVATION_DESCRIPTION, SKELETON_REFERENCE_MAP, SKILL_NAME, buildSkillMd } from '@/lib/skill/skillMd';
 import {
   FRAMEWORKS,
   type Framework,
@@ -109,12 +109,17 @@ describe('buildSkillMd', () => {
     );
   };
 
-  it('emits frontmatter with the fixed name and a placeholder description', () => {
+  it('emits frontmatter with the fixed name and the tuned activation description', () => {
     const frontmatter = parseFrontmatter(buildSkillMd('react', SKELETON_REFERENCE_MAP));
 
     expect(frontmatter.name).toBe(SKILL_NAME);
     expect(frontmatter.name).toBe('porsche-design-system-docs');
-    expect(frontmatter.description).toBe(PLACEHOLDER_DESCRIPTION);
+    expect(frontmatter.description).toBe(ACTIVATION_DESCRIPTION);
+  });
+
+  it('keeps the activation description a single frontmatter line free of parse-breaking sequences', () => {
+    expect(ACTIVATION_DESCRIPTION).not.toContain('\n');
+    expect(ACTIVATION_DESCRIPTION).not.toContain(': ');
   });
 
   it('renders the reference map as a table from the registered rows', () => {
