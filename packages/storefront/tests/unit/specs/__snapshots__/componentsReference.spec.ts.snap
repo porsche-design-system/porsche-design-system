@@ -1,0 +1,45 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`component reference generator > renderComponentProse > snapshots the full prose body for a representative component 1`] = `
+"# p-button
+
+The \`p-button\` component is essential for performing **interaction** events such as submitting a form. Whenever you want to provide navigational elements, use the [Link](/components/link/) component instead.
+
+## Usage
+
+Guidance on how to use this component in different situations.
+
+### Do:
+
+- Use buttons for actions with clear consequences.
+
+### Don't:
+
+- Don't use a button for navigation.
+
+## Accessibility support
+
+The component follows the [WAI-ARIA Button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/).
+
+1. Tab moves focus to the button.
+2. Enter or Space activates it.
+
+## Notes
+
+### Form attribute
+
+Use the \`form\` attribute to associate the button with a form by its \`id\`."
+`;
+
+exports[`component reference generator > writeComponentReferences > snapshots the generated overview.md 1`] = `
+"# Components overview
+
+The Porsche Design System ships 3 documented components. Open a component's reference for its prose, props, slots, events, CSS variables and examples.
+
+| Component | Summary | Reference |
+| --- | --- | --- |
+| \`p-accordion\` | The **Accordion** lets users expand and collapse sections of *related* content to reduce visual clutter. | [p-accordion.md](./p-accordion.md) |
+| \`p-button\` | The \`p-button\` component is essential for performing **interaction** events such as submitting a form. | [p-button.md](./p-button.md) |
+| \`p-degraded\` | _No description available._ | [p-degraded.md](./p-degraded.md) |
+"
+`;

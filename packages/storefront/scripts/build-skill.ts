@@ -1,8 +1,26 @@
 import path from 'node:path';
+import { type ComponentDocsMetaMap, writeComponentReferences } from '../src/lib/skill/componentsReference';
 import { SKELETON_REFERENCE_MAP, buildSkillMd } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, SkillTree, isFramework } from '../src/lib/skill/skillTree';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
+
+/**
+ * Load the storefront component docs meta. Its prose fields are MDX modules, so the
+ * import only resolves under an MDX-aware runtime; under plain `tsx` it throws. The
+ * full MDX-enabled generation is wired in TASK-10 — until then this degrades to the
+ * skeleton tree rather than failing the build.
+ */
+const loadComponentDocsMeta = async (): Promise<ComponentDocsMetaMap | null> => {
+  try {
+    const mod = await import('../src/app/(main)/components/components.meta');
+    return mod.componentDocsMeta as ComponentDocsMetaMap;
+  } catch (error) {
+    const reason = error instanceof Error ? error.message.split('\n')[0] : String(error);
+    console.warn(`Skipping component prose — component docs meta unavailable under this runtime (${reason}).`);
+    return null;
+  }
+};
 
 /** Wrapper source dir (relative to the repo root) whose committed `skill/` tree each framework owns. */
 const WRAPPER_SKILL_DIR: Record<Framework, string> = {
@@ -12,7 +30,7 @@ const WRAPPER_SKILL_DIR: Record<Framework, string> = {
   vue: 'packages/components-vue/projects/vue-wrapper/skill',
 };
 
-const generateTree = (framework: Framework): void => {
+const generateTree = (framework: Framework, componentDocsMeta: ComponentDocsMetaMap | null): void => {
   const root = path.resolve(REPO_ROOT, WRAPPER_SKILL_DIR[framework]);
   const tree = new SkillTree(root);
   tree.reset();
@@ -23,12 +41,24 @@ const generateTree = (framework: Framework): void => {
     tree.registerReference(entry);
   }
 
+  if (componentDocsMeta) {
+    const { tags, degraded } = writeComponentReferences(tree, componentDocsMeta);
+    console.log(`  ${tags.length} component references written`);
+    if (degraded.length > 0) {
+      console.warn(
+        `  degraded prose (review the source MDX): ${degraded
+          .map(({ tag, sections }) => `${tag} [${sections.join(', ')}]`)
+          .join('; ')}`
+      );
+    }
+  }
+
   tree.write('SKILL.md', buildSkillMd(framework, tree.referenceMap));
 
   console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
 };
 
-const main = (): void => {
+const main = async (): Promise<void> => {
   const requested = process.argv.slice(2).filter((arg) => !arg.startsWith('-'));
   const frameworks = requested.length > 0 ? requested : [...FRAMEWORKS];
 
@@ -37,7 +67,12 @@ const main = (): void => {
       console.error(`Unknown framework "${framework}". Expected one of: ${FRAMEWORKS.join(', ')}.`);
       process.exit(1);
     }
-    generateTree(framework);
+  }
+
+  const componentDocsMeta = await loadComponentDocsMeta();
+
+  for (const framework of frameworks as Framework[]) {
+    generateTree(framework, componentDocsMeta);
   }
 };
 

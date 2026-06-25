@@ -1,4 +1,14 @@
-import type { ReactElement } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
+
+// The fixture renders a raw PDS web component (`<p-tag>`) in TSX to exercise the
+// render module's drop-list; the storefront has no global custom-element JSX typing.
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'p-tag': HTMLAttributes<HTMLElement> & { color?: string };
+    }
+  }
+}
 
 /**
  * Stand-in for a compiled MDX module whose embedded components are *directly
