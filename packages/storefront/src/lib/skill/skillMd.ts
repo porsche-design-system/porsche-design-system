@@ -45,7 +45,7 @@ export const SKELETON_REFERENCE_MAP: readonly ReferenceMapEntry[] = [
  * package; the framework wrappers' local `../meta` is a re-export shim, so they
  * link the js peer's `/meta` subpath instead (see design "Data & state").
  */
-const rawMetaReference = (framework: Framework): string =>
+export const rawMetaReference = (framework: Framework): string =>
   framework === 'js' ? '../meta' : '@porsche-design-system/components-js/meta';
 
 const escapeCell = (text: string): string => text.replace(/\|/g, '\\|');

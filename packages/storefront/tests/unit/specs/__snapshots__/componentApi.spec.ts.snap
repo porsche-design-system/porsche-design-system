@@ -1,0 +1,57 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderComponentApi > renders the API section for a component whose props carry deprecated values 1`] = `
+"## API
+
+Authoritative API data: \`../meta\` (\`component-meta\`). When these tables disagree with it, follow \`component-meta\`.
+
+### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| \`size\` | \`'2xs'\` \`'xs'\` \`'sm'\` \`'md'\` \`'lg'\` \`'xl'\`<br>_deprecated:_ \`'small'\` \`'medium'\` \`'large'\` \`'x-large'\` \`'xx-large'\` | \`'large'\` | Adjusts the size of the heading. |
+| \`weight\` | \`'normal'\` \`'semibold'\` \`'bold'\`<br>_deprecated:_ \`'regular'\` \`'semi-bold'\` | \`'semibold'\` | Adjusts the font weight of the heading. |
+
+### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the heading text. |"
+`;
+
+exports[`renderComponentApi > renders the full API section for a component with props, events, slots and CSS variables 1`] = `
+"## API
+
+Authoritative API data: \`../meta\` (\`component-meta\`). When these tables disagree with it, follow \`component-meta\`.
+
+### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| \`background\` | \`'canvas'\` \`'surface'\` \`'frosted'\` \`'none'\` | \`'none'\` | Sets the background color of the accordion panel. |
+| \`indent\` | \`boolean\`<br>\`BreakpointCustomizable<boolean>\` | \`false\` | Indents the slotted content to align with the summary text. |
+| \`open\` | \`boolean\` | \`undefined\` | Controls whether the accordion is open or closed. |
+| \`size\` _(deprecated)_ | \`'small'\` \`'medium'\`<br>\`BreakpointCustomizable<AccordionSize>\` | \`'small'\` | @deprecated Will be removed in the next major release. Controls the heading size. |
+| \`sticky\` _(experimental)_ | \`boolean\` | \`undefined\` | @experimental Makes the summary section sticky while scrolling. |
+
+### Events
+
+| Event | Type | Description |
+| --- | --- | --- |
+| \`update\` | \`CustomEvent<AccordionUpdateEventDetail>\`<br>\`{ open: boolean }\` | Emitted when the user toggles the accordion open or closed. |
+
+### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| \`summary\` | no | — | Content for the accordion's summary section. |
+| \`heading\` _(deprecated)_ | no | — | Content for the accordion's heading section. |
+| _(default)_ | no | — | Main content displayed when the accordion is expanded. |
+
+### CSS Variables
+
+| CSS Variable | Default | Description |
+| --- | --- | --- |
+| \`--p-accordion-px\` | \`16px\` | Horizontal padding of the accordion. |
+| \`--p-accordion-py\` | \`16px\` | Vertical padding of the accordion. |"
+`;

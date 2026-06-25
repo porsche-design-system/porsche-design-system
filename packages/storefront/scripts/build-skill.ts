@@ -1,7 +1,8 @@
 import path from 'node:path';
+import { componentMeta } from '@porsche-design-system/component-meta';
 import { type ComponentDocsMetaMap, writeComponentReferences } from '../src/lib/skill/componentsReference';
-import { SKELETON_REFERENCE_MAP, buildSkillMd } from '../src/lib/skill/skillMd';
-import { FRAMEWORKS, type Framework, SkillTree, isFramework } from '../src/lib/skill/skillTree';
+import { buildSkillMd, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
+import { FRAMEWORKS, type Framework, isFramework, SkillTree } from '../src/lib/skill/skillTree';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 
@@ -42,7 +43,7 @@ const generateTree = (framework: Framework, componentDocsMeta: ComponentDocsMeta
   }
 
   if (componentDocsMeta) {
-    const { tags, degraded } = writeComponentReferences(tree, componentDocsMeta);
+    const { tags, degraded } = writeComponentReferences(tree, componentDocsMeta, { componentMeta, framework });
     console.log(`  ${tags.length} component references written`);
     if (degraded.length > 0) {
       console.warn(

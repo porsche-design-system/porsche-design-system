@@ -1,6 +1,8 @@
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentType } from 'react';
+import { renderComponentApi } from './componentApi';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
-import type { SkillTree } from './skillTree';
+import type { Framework, SkillTree } from './skillTree';
 
 /**
  * The prose-bearing subset of a component's storefront `ComponentDocsMeta` this
@@ -130,19 +132,33 @@ export const buildComponentsOverview = (entries: { tag: string; summary: string 
   ].join('\n');
 };
 
+/** Authoritative `componentMeta` (props/slots/events/CSS variables) keyed by tag, plus the target framework. */
+export type ComponentApiOptions = {
+  componentMeta: Record<string, ComponentMeta>;
+  framework: Framework;
+};
+
 /**
  * Write the prose section of every component reference plus `overview.md` into the
  * skill tree, keyed by `componentMeta` tag (the iteration source guarantees
- * coverage). Returns a report so the harness can surface degraded prose for review.
+ * coverage). When {@link ComponentApiOptions} is supplied, the props/slots/events/
+ * CSS-variable API tables (TASK-04) are appended to each `<tag>.md` after its prose.
+ * Returns a report so the harness can surface degraded prose for review.
  */
-export const writeComponentReferences = (tree: SkillTree, metaMap: ComponentDocsMetaMap): ComponentReferenceReport => {
+export const writeComponentReferences = (
+  tree: SkillTree,
+  metaMap: ComponentDocsMetaMap,
+  apiOptions?: ComponentApiOptions
+): ComponentReferenceReport => {
   const tags = Object.keys(metaMap).sort();
   const overviewEntries: { tag: string; summary: string }[] = [];
   const degraded: DegradedProse[] = [];
 
   for (const tag of tags) {
     const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag]);
-    tree.writeReference(`components/${tag}.md`, markdown);
+    const apiMeta = apiOptions?.componentMeta[tag];
+    const sections = apiMeta ? [markdown, renderComponentApi(apiMeta, apiOptions.framework)] : [markdown];
+    tree.writeReference(`components/${tag}.md`, sections.join('\n\n'));
     overviewEntries.push({ tag, summary });
     if (degradedSections.length > 0) {
       degraded.push({ tag, sections: degradedSections });
