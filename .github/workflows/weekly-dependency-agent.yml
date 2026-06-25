@@ -22,13 +22,11 @@
 # Authorize); without that, the agent fails to start the assigned issue.
 #
 # Why it is safe to disable "Require approval for workflow runs" for Copilot pushes:
-# the agent's PRs only trigger `contribution.yml`, whose `build`/`test` jobs run with a
-# workflow-level `contents: read` token. The single `contents: write` path (the gh-pages
-# `deploy` job) explicitly excludes bot actors (`dependabot[bot]`, `copilot-swe-agent[bot]`,
-# `Copilot`). No custom Actions secret is exposed to PR-triggered jobs — the secret-bearing
-# workflows (`ort.yml`, this file) run only on `schedule`/`workflow_dispatch`, never on a PR.
-# So a Copilot PR can neither write to the repo nor read Actions secrets; the only exposed
-# token is the read-only `GITHUB_TOKEN`.
+# the agent's PRs trigger only workflows that run with read-only tokens (e.g.
+# `contribution.yml`, `code-scanning.yml`, and `copilot-setup-steps.yml` depending on paths),
+# and none of the PR-triggered workflows read Actions secrets. Secret-bearing workflows
+# (`ort.yml`, this file) run only on `schedule`/`workflow_dispatch`, never on a PR; the only
+# exposed token is the read-only `GITHUB_TOKEN`.
 name: 'Weekly Dependency Agent'
 
 on:
