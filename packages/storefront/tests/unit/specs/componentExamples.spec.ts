@@ -51,7 +51,7 @@ describe('component examples generator', () => {
         // Snapshot the table and every emitted example file.
         expect(table).toMatchSnapshot('table');
         for (const relativePath of tableFilePaths(table)) {
-          const absolute = tree.resolve('references', 'components', relativePath.replace(/^\.\//, ''));
+          const absolute = tree.resolve('references', 'components', tag, relativePath.replace(/^\.\//, ''));
           expect(fs.existsSync(absolute), `${relativePath} should exist`).toBe(true);
           expect(fs.readFileSync(absolute, 'utf-8')).toMatchSnapshot(relativePath);
         }
@@ -135,7 +135,7 @@ describe('component examples generator', () => {
       const paths = tableFilePaths(table);
       expect(paths.length).toBeGreaterThan(0);
       for (const relativePath of paths) {
-        const absolute = tree.resolve('references', 'components', relativePath.replace(/^\.\//, ''));
+        const absolute = tree.resolve('references', 'components', 'p-button', relativePath.replace(/^\.\//, ''));
         expect(fs.existsSync(absolute), `${relativePath} (${framework})`).toBe(true);
       }
     }

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`component examples generator > emits files and a reference table for p-accordion (angular) > ./p-accordion/examples/Default.ts 1`] = `
+exports[`component examples generator > emits files and a reference table for p-accordion (angular) > ./examples/Default.ts 1`] = `
 "import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -19,7 +19,7 @@ export class ExampleComponent {}
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (angular) > ./p-accordion/examples/MultipleOpen.ts 1`] = `
+exports[`component examples generator > emits files and a reference table for p-accordion (angular) > ./examples/MultipleOpen.ts 1`] = `
 "import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -47,11 +47,11 @@ exports[`component examples generator > emits files and a reference table for p-
 
 | Example | When to use | File |
 | --- | --- | --- |
-| Default | Minimal default configuration. | [./p-accordion/examples/Default.ts](./p-accordion/examples/Default.ts) |
-| Multiple open panels | Multiple open panels | [./p-accordion/examples/MultipleOpen.ts](./p-accordion/examples/MultipleOpen.ts) |"
+| Default | Minimal default configuration. | [./examples/Default.ts](./examples/Default.ts) |
+| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.ts](./examples/MultipleOpen.ts) |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (js) > ./p-accordion/examples/Default.html 1`] = `
+exports[`component examples generator > emits files and a reference table for p-accordion (js) > ./examples/Default.html 1`] = `
 "<!doctype html>
 <html lang="en" class="scheme-light">
 <head>
@@ -70,7 +70,7 @@ exports[`component examples generator > emits files and a reference table for p-
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (js) > ./p-accordion/examples/MultipleOpen.html 1`] = `
+exports[`component examples generator > emits files and a reference table for p-accordion (js) > ./examples/MultipleOpen.html 1`] = `
 "<!doctype html>
 <html lang="en" class="scheme-light">
 <head>
@@ -98,11 +98,11 @@ exports[`component examples generator > emits files and a reference table for p-
 
 | Example | When to use | File |
 | --- | --- | --- |
-| Default | Minimal default configuration. | [./p-accordion/examples/Default.html](./p-accordion/examples/Default.html) |
-| Multiple open panels | Multiple open panels | [./p-accordion/examples/MultipleOpen.html](./p-accordion/examples/MultipleOpen.html) |"
+| Default | Minimal default configuration. | [./examples/Default.html](./examples/Default.html) |
+| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.html](./examples/MultipleOpen.html) |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (react) > ./p-accordion/examples/Default.tsx 1`] = `
+exports[`component examples generator > emits files and a reference table for p-accordion (react) > ./examples/Default.tsx 1`] = `
 "import React from 'react';
 import { PAccordion } from '@porsche-design-system/components-react';
 
@@ -118,7 +118,7 @@ export const Example = () => {
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (react) > ./p-accordion/examples/MultipleOpen.tsx 1`] = `
+exports[`component examples generator > emits files and a reference table for p-accordion (react) > ./examples/MultipleOpen.tsx 1`] = `
 "import React from 'react';
 import { PAccordion } from '@porsche-design-system/components-react';
 
@@ -143,11 +143,11 @@ exports[`component examples generator > emits files and a reference table for p-
 
 | Example | When to use | File |
 | --- | --- | --- |
-| Default | Minimal default configuration. | [./p-accordion/examples/Default.tsx](./p-accordion/examples/Default.tsx) |
-| Multiple open panels | Multiple open panels | [./p-accordion/examples/MultipleOpen.tsx](./p-accordion/examples/MultipleOpen.tsx) |"
+| Default | Minimal default configuration. | [./examples/Default.tsx](./examples/Default.tsx) |
+| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.tsx](./examples/MultipleOpen.tsx) |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (vue) > ./p-accordion/examples/Default.vue 1`] = `
+exports[`component examples generator > emits files and a reference table for p-accordion (vue) > ./examples/Default.vue 1`] = `
 "<script setup lang="ts">
   import { PAccordion } from '@porsche-design-system/components-vue';
 </script>
@@ -160,7 +160,7 @@ exports[`component examples generator > emits files and a reference table for p-
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (vue) > ./p-accordion/examples/MultipleOpen.vue 1`] = `
+exports[`component examples generator > emits files and a reference table for p-accordion (vue) > ./examples/MultipleOpen.vue 1`] = `
 "<script setup lang="ts">
   import { PAccordion } from '@porsche-design-system/components-vue';
 </script>
@@ -182,11 +182,11 @@ exports[`component examples generator > emits files and a reference table for p-
 
 | Example | When to use | File |
 | --- | --- | --- |
-| Default | Minimal default configuration. | [./p-accordion/examples/Default.vue](./p-accordion/examples/Default.vue) |
-| Multiple open panels | Multiple open panels | [./p-accordion/examples/MultipleOpen.vue](./p-accordion/examples/MultipleOpen.vue) |"
+| Default | Minimal default configuration. | [./examples/Default.vue](./examples/Default.vue) |
+| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.vue](./examples/MultipleOpen.vue) |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (angular) > ./p-button/examples/Default.ts 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (angular) > ./examples/Default.ts 1`] = `
 "import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -205,7 +205,7 @@ export class ExampleComponent {}
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (angular) > ./p-button/examples/Loading.ts 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (angular) > ./examples/Loading.ts 1`] = `
 "import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -224,7 +224,7 @@ export class ExampleComponent {}
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (angular) > ./p-button/examples/SubmitForm.ts 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (angular) > ./examples/SubmitForm.ts 1`] = `
 "<p-button type="submit">Submit form</p-button>
 "
 `;
@@ -234,13 +234,13 @@ exports[`component examples generator > emits files and a reference table for p-
 
 | Example | When to use | File |
 | --- | --- | --- |
-| Default | Minimal default configuration. | [./p-button/examples/Default.ts](./p-button/examples/Default.ts) |
-| Loading | Use a loading state while an async action is in progress. | [./p-button/examples/Loading.ts](./p-button/examples/Loading.ts) |
-| Submit form | Submit the surrounding form when the button is activated. | [./p-button/examples/SubmitForm.ts](./p-button/examples/SubmitForm.ts) |
+| Default | Minimal default configuration. | [./examples/Default.ts](./examples/Default.ts) |
+| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.ts](./examples/Loading.ts) |
+| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.ts](./examples/SubmitForm.ts) |
 | Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (js) > ./p-button/examples/Default.html 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (js) > ./examples/Default.html 1`] = `
 "<!doctype html>
 <html lang="en" class="scheme-light">
 <head>
@@ -259,7 +259,7 @@ exports[`component examples generator > emits files and a reference table for p-
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (js) > ./p-button/examples/Loading.html 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (js) > ./examples/Loading.html 1`] = `
 "<!doctype html>
 <html lang="en" class="scheme-light">
 <head>
@@ -278,7 +278,7 @@ exports[`component examples generator > emits files and a reference table for p-
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (js) > ./p-button/examples/SubmitForm.html 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (js) > ./examples/SubmitForm.html 1`] = `
 "<p-button type="submit">Submit form</p-button>
 "
 `;
@@ -288,13 +288,13 @@ exports[`component examples generator > emits files and a reference table for p-
 
 | Example | When to use | File |
 | --- | --- | --- |
-| Default | Minimal default configuration. | [./p-button/examples/Default.html](./p-button/examples/Default.html) |
-| Loading | Use a loading state while an async action is in progress. | [./p-button/examples/Loading.html](./p-button/examples/Loading.html) |
-| Submit form | Submit the surrounding form when the button is activated. | [./p-button/examples/SubmitForm.html](./p-button/examples/SubmitForm.html) |
+| Default | Minimal default configuration. | [./examples/Default.html](./examples/Default.html) |
+| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.html](./examples/Loading.html) |
+| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.html](./examples/SubmitForm.html) |
 | Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (react) > ./p-button/examples/Default.tsx 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (react) > ./examples/Default.tsx 1`] = `
 "import React from 'react';
 import { PButton } from '@porsche-design-system/components-react';
 
@@ -310,7 +310,7 @@ export const Example = () => {
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (react) > ./p-button/examples/Loading.tsx 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (react) > ./examples/Loading.tsx 1`] = `
 "import React from 'react';
 import { PButton } from '@porsche-design-system/components-react';
 
@@ -326,7 +326,7 @@ export const Example = () => {
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (react) > ./p-button/examples/SubmitForm.tsx 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (react) > ./examples/SubmitForm.tsx 1`] = `
 "<PButton type="submit">Submit form</PButton>
 "
 `;
@@ -336,13 +336,13 @@ exports[`component examples generator > emits files and a reference table for p-
 
 | Example | When to use | File |
 | --- | --- | --- |
-| Default | Minimal default configuration. | [./p-button/examples/Default.tsx](./p-button/examples/Default.tsx) |
-| Loading | Use a loading state while an async action is in progress. | [./p-button/examples/Loading.tsx](./p-button/examples/Loading.tsx) |
-| Submit form | Submit the surrounding form when the button is activated. | [./p-button/examples/SubmitForm.tsx](./p-button/examples/SubmitForm.tsx) |
+| Default | Minimal default configuration. | [./examples/Default.tsx](./examples/Default.tsx) |
+| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.tsx](./examples/Loading.tsx) |
+| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.tsx](./examples/SubmitForm.tsx) |
 | Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (vue) > ./p-button/examples/Default.vue 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (vue) > ./examples/Default.vue 1`] = `
 "<script setup lang="ts">
   import { PButton } from '@porsche-design-system/components-vue';
 </script>
@@ -355,7 +355,7 @@ exports[`component examples generator > emits files and a reference table for p-
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (vue) > ./p-button/examples/Loading.vue 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (vue) > ./examples/Loading.vue 1`] = `
 "<script setup lang="ts">
   import { PButton } from '@porsche-design-system/components-vue';
 </script>
@@ -368,7 +368,7 @@ exports[`component examples generator > emits files and a reference table for p-
 "
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (vue) > ./p-button/examples/SubmitForm.vue 1`] = `
+exports[`component examples generator > emits files and a reference table for p-button (vue) > ./examples/SubmitForm.vue 1`] = `
 "<PButton type="submit">Submit form</PButton>
 "
 `;
@@ -378,8 +378,8 @@ exports[`component examples generator > emits files and a reference table for p-
 
 | Example | When to use | File |
 | --- | --- | --- |
-| Default | Minimal default configuration. | [./p-button/examples/Default.vue](./p-button/examples/Default.vue) |
-| Loading | Use a loading state while an async action is in progress. | [./p-button/examples/Loading.vue](./p-button/examples/Loading.vue) |
-| Submit form | Submit the surrounding form when the button is activated. | [./p-button/examples/SubmitForm.vue](./p-button/examples/SubmitForm.vue) |
+| Default | Minimal default configuration. | [./examples/Default.vue](./examples/Default.vue) |
+| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.vue](./examples/Loading.vue) |
+| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.vue](./examples/SubmitForm.vue) |
 | Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
 `;

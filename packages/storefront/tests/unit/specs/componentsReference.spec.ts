@@ -69,8 +69,10 @@ describe('component reference generator', () => {
       ]);
 
       expect(overview).toContain('| Component | Summary | Reference |');
-      expect(overview).toContain('| `p-button` | The button component. | [p-button.md](./p-button.md) |');
-      expect(overview).toContain('| `p-accordion` | The accordion component. | [p-accordion.md](./p-accordion.md) |');
+      expect(overview).toContain('| `p-button` | The button component. | [p-button.md](./p-button/p-button.md) |');
+      expect(overview).toContain(
+        '| `p-accordion` | The accordion component. | [p-accordion.md](./p-accordion/p-accordion.md) |'
+      );
       expect(overview).toContain('2 documented components');
     });
 
@@ -100,7 +102,7 @@ describe('component reference generator', () => {
       // Every componentMeta tag yields a reference file (sorted, deterministic order).
       expect(report.tags).toEqual(['p-accordion', 'p-button', 'p-degraded']);
       for (const tag of report.tags) {
-        expect(fs.existsSync(tree.resolve(`references/components/${tag}.md`)), `${tag}.md`).toBe(true);
+        expect(fs.existsSync(tree.resolve(`references/components/${tag}/${tag}.md`)), `${tag}.md`).toBe(true);
       }
       expect(fs.existsSync(tree.resolve('references/components/overview.md'))).toBe(true);
 

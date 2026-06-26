@@ -12,7 +12,7 @@ Version-exact knowledge of the installed Porsche Design System. Open the referen
 | Reference | Use this when |
 | --- | --- |
 | `references/components/overview.md` | Choosing or listing the available PDS components. |
-| `references/components/<p-component>.md` | Working with a specific component — props, slots, events, CSS variables and examples. |
+| `references/components/<p-component>/<p-component>.md` | Working with a specific component — props, slots, events, CSS variables and examples. |
 | `references/styles/tailwindcss.md` | Styling PDS usage with Tailwind CSS. |
 | `references/styles/scss.md` | Styling PDS usage with SCSS. |
 | `references/styles/vanilla-extract.md` | Styling PDS usage with vanilla-extract. |

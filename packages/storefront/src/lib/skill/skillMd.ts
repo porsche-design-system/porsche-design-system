@@ -30,7 +30,7 @@ export const ACTIVATION_DESCRIPTION =
 export const SKELETON_REFERENCE_MAP: readonly ReferenceMapEntry[] = [
   { path: 'references/components/overview.md', useWhen: 'Choosing or listing the available PDS components.' },
   {
-    path: 'references/components/<p-component>.md',
+    path: 'references/components/<p-component>/<p-component>.md',
     useWhen: 'Working with a specific component — props, slots, events, CSS variables and examples.',
   },
   { path: 'references/styles/tailwindcss.md', useWhen: 'Styling PDS usage with Tailwind CSS.' },

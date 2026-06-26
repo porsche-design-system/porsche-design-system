@@ -50,7 +50,7 @@ const classify = (target: string): ReferenceKind | null => {
 /**
  * Extract every reference path from a markdown body, deduped, with its kind. Scans both markdown
  * links (`[…](./…)`) and inline code (`` `../meta` ``, `` `references/…` ``) — the raw-meta links
- * are written as inline code, not links. Placeholder rows like `references/components/<p-component>.md`
+ * are written as inline code, not links. Placeholder rows like `references/components/<p-component>/<p-component>.md`
  * (the SKILL.md map's per-component pattern) are dropped via the `<` guard.
  */
 export const extractReferences = (markdown: string): ReferenceLink[] => {

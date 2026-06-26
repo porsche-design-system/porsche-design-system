@@ -57,7 +57,7 @@ const renderSection = (
 
 /**
  * Render a single component's prose sections (introduction / usage / accessibility
- * / notes) to the markdown body of `references/components/<tag>.md`. TASK-04 (API
+ * / notes) to the markdown body of `references/components/<tag>/<tag>.md`. TASK-04 (API
  * tables) and TASK-05 (examples) append their sections to this file.
  */
 export const renderComponentProse = (
@@ -99,7 +99,11 @@ export const renderComponentProse = (
 
 /** Build the `references/components/overview.md` table — one row per component. */
 export const buildComponentsOverview = (entries: { tag: string; summary: string }[]): string => {
-  const rows = entries.map(({ tag, summary }) => [`\`${tag}\``, escapeCell(summary), `[${tag}.md](./${tag}.md)`]);
+  const rows = entries.map(({ tag, summary }) => [
+    `\`${tag}\``,
+    escapeCell(summary),
+    `[${tag}.md](./${tag}/${tag}.md)`,
+  ]);
   return [
     '# Components overview',
     '',
@@ -146,7 +150,7 @@ export const writeComponentReferences = (
         sections.push(table);
       }
     }
-    tree.writeReference(`components/${tag}.md`, sections.join('\n\n'));
+    tree.writeReference(`components/${tag}/${tag}.md`, sections.join('\n\n'));
     overviewEntries.push({ tag, summary });
     if (degradedSections.length > 0) {
       degraded.push({ tag, sections: degradedSections });

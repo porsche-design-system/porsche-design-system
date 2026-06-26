@@ -11,7 +11,7 @@ import type { Framework } from './skillTree';
 
 /**
  * Renders the props / slots / events / CSS-variable API tables for a component's
- * `references/components/<tag>.md`, driven entirely from `componentMeta` (the
+ * `references/components/<tag>/<tag>.md`, driven entirely from `componentMeta` (the
  * authoritative source). TASK-03 owns creation of the file and its prose; this
  * module produces only the API section that gets appended to it.
  *

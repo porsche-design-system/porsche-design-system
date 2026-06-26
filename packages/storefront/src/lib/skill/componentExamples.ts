@@ -11,7 +11,7 @@ import type { Framework, SkillTree } from './skillTree';
 
 /**
  * Emits one example file per component example and owns the examples reference table
- * appended to `references/components/<tag>.md`. Co-locating emission and table here
+ * appended to `references/components/<tag>/<tag>.md`. Co-locating emission and table here
  * means the table rows and the files they point at can never drift — every row is
  * built from the same pass that writes (or skips) the file.
  *
@@ -135,7 +135,7 @@ export const writeComponentExamples = (
         unique = `${fileBase}${index}`;
       }
       usedFileBases.add(unique);
-      const relativePath = `./${tag}/examples/${unique}.${ext}`;
+      const relativePath = `./examples/${unique}.${ext}`;
       tree.writeReference(`components/${tag}/examples/${unique}.${ext}`, markup);
       fileCell = `[${relativePath}](${relativePath})`;
     }

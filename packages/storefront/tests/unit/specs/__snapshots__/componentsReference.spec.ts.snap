@@ -38,8 +38,8 @@ The Porsche Design System ships 3 documented components. Open a component's refe
 
 | Component | Summary | Reference |
 | --- | --- | --- |
-| \`p-accordion\` | The **Accordion** lets users expand and collapse sections of *related* content to reduce visual clutter. | [p-accordion.md](./p-accordion.md) |
-| \`p-button\` | The \`p-button\` component is essential for performing **interaction** events such as submitting a form. | [p-button.md](./p-button.md) |
-| \`p-degraded\` | _No description available._ | [p-degraded.md](./p-degraded.md) |
+| \`p-accordion\` | The **Accordion** lets users expand and collapse sections of *related* content to reduce visual clutter. | [p-accordion.md](./p-accordion/p-accordion.md) |
+| \`p-button\` | The \`p-button\` component is essential for performing **interaction** events such as submitting a form. | [p-button.md](./p-button/p-button.md) |
+| \`p-degraded\` | _No description available._ | [p-degraded.md](./p-degraded/p-degraded.md) |
 "
 `;
