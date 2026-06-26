@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `AG Grid`: Upgrade `ag-grid-community` to v36.0.0
+  ([#4553](https://github.com/porsche-design-system/porsche-design-system/pull/4553))
+
 ## [4.3.0] - 2026-06-24
 
 ## [4.3.0-rc.0] - 2026-06-24
