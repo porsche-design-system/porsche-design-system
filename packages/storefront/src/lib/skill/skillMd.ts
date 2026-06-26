@@ -6,9 +6,8 @@ export const SKILL_NAME = 'porsche-design-system-docs';
 
 /**
  * Auto-activation description — the only matching surface Claude Code uses to decide
- * whether to load this skill. Tuned offline against the activation eval set
- * (`scripts/skill-activation-eval/`): it names concrete UI triggers so it fires broadly
- * on frontend work even when PDS is not mentioned, and an explicit "do not activate"
+ * whether to load this skill. It names concrete UI triggers so it fires broadly on
+ * frontend work even when PDS is not mentioned, and has an explicit "do not activate"
  * clause so it stays dormant on backend/non-UI, tooling, prose, foreign-library, and
  * opt-out prompts. Keep it a single line (rendered verbatim into YAML frontmatter) and
  * free of `: ` sequences that would break the frontmatter parse.
