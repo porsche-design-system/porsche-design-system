@@ -68,6 +68,26 @@ describe('renderMdxToMarkdown', () => {
     expect(markdown).not.toContain('<');
   });
 
+  it('emits a header-separator row for a table whose header uses <td> (no <th>)', () => {
+    const TdTable: ComponentType = () => (
+      <table>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>Value</td>
+          </tr>
+          <tr>
+            <td>a</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+    const { markdown } = renderMdxToMarkdown(TdTable);
+
+    expect(markdown).toBe('| Name | Value |\n| --- | --- |\n| a | 1 |');
+  });
+
   it('flags prose that renders to nothing meaningful as degraded', () => {
     const { markdown, degraded } = renderMdxToMarkdown(compiled.degraded);
 

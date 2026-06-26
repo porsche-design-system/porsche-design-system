@@ -158,19 +158,19 @@ const renderPre = (node: ParsedElement): string => {
 };
 
 const renderTable = (node: ParsedElement): string => {
-  const rows = node.querySelectorAll('tr');
   const lines: string[] = [];
   let separatorWritten = false;
 
-  for (const row of rows) {
+  for (const row of node.querySelectorAll('tr')) {
     const cells = row.querySelectorAll('th, td').map((cell) => renderChildrenInline(cell).trim());
     if (cells.length === 0) {
       continue;
     }
     lines.push(`| ${cells.join(' | ')} |`);
 
-    const isHeaderRow = row.querySelectorAll('th').length > 0;
-    if (isHeaderRow && !separatorWritten) {
+    // Markdown needs the `| --- |` separator as the table's second line; emit it after the
+    // first row whether or not that row used <th>, so a `<td>`-only header table stays valid.
+    if (!separatorWritten) {
       lines.push(`| ${cells.map(() => '---').join(' | ')} |`);
       separatorWritten = true;
     }
