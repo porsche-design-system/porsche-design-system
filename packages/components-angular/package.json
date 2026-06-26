@@ -56,8 +56,8 @@
     "zone.js": "~0.16.2"
   },
   "devDependencies": {
-    "@angular/build": "^22.0.3",
-    "@angular/cli": "^22.0.3",
+    "@angular/build": "^22.0.4",
+    "@angular/cli": "^22.0.4",
     "@angular/compiler-cli": "^22.0.2",
     "@angular/language-service": "^22.0.2",
     "@playwright/test": "1.61.0",
@@ -82,7 +82,7 @@
     "postcss": "^8",
     "tailwindcss": "^4.3.1",
     "typescript": "^6.0.3",
-    "vite": "^8.0.16",
+    "vite": "^8.1.0",
     "vitest": "^4.1.9"
   },
   "volta": {

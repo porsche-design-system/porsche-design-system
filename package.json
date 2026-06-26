@@ -225,8 +225,8 @@
     "jss-preset-default": "^10.10.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.11.3",
-    "@biomejs/biome": "^2.5.0",
+    "@axe-core/playwright": "^4.12.1",
+    "@biomejs/biome": "^2.5.1",
     "@playwright/test": "1.61.0",
     "@porsche-design-system/prettier-config": "^1.0.1",
     "@rollup/plugin-commonjs": "^29.0.3",
@@ -238,9 +238,9 @@
     "@tailwindcss/vite": "^4.3.1",
     "@types/madge": "^5.0.3",
     "@types/node": "^26.0.0",
-    "@vanilla-extract/css": "^1.20.1",
+    "@vanilla-extract/css": "^1.21.0",
     "@vanilla-extract/rollup-plugin": "^1.5.3",
-    "@vanilla-extract/vite-plugin": "^5.2.2",
+    "@vanilla-extract/vite-plugin": "^5.2.3",
     "@vitest/ui": "^4.1.9",
     "concurrently": "^10.0.3",
     "fast-glob": "^3.3.3",
@@ -268,7 +268,7 @@
     "tsx": "^4.22.4",
     "turbo": "^2.9.18",
     "typescript": "^6.0.3",
-    "vite": "^8.0.16",
+    "vite": "^8.1.0",
     "vitest": "^4.1.9",
     "vue": "^3.5.38",
     "webpack": "^5.107.2"
