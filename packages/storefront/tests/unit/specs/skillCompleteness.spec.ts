@@ -7,10 +7,10 @@ import { describe, expect, it } from 'vitest';
 
 /**
  * Producer completeness gate. Asserts every documented component is fully represented
- * in each committed `skill/` tree (a `references/components/<tag>/<tag>.md` file plus an
- * `overview.md` row) and that every emitted example carries a "when to use" description.
- * Fails on a missing component md, a missing overview row, or an example without a
- * description — catching coverage gaps the drift snapshot alone would silently bless.
+ * in each committed `skill/` tree (a `references/components/<tag>/<tag>.md` file plus a
+ * roster row in `SKILL.md`) and that every emitted example carries a "when to use"
+ * description. Fails on a missing component md, a missing roster row, or an example
+ * without a description — catching coverage gaps the drift snapshot alone would bless.
  */
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
 
@@ -59,15 +59,18 @@ describe('skill tree completeness', () => {
     describe(`${framework} skill tree`, () => {
       const root = path.join(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]);
       const componentsDir = path.join(root, 'references/components');
-      const overviewPath = path.join(componentsDir, 'overview.md');
-      const overview = fs.existsSync(overviewPath) ? fs.readFileSync(overviewPath, 'utf-8') : '';
+      const skillMdPath = path.join(root, 'SKILL.md');
+      const skillMd = fs.existsSync(skillMdPath) ? fs.readFileSync(skillMdPath, 'utf-8') : '';
 
-      it.each(DOCUMENTED_TAGS)('documents %s with a reference file and an overview row', (tag) => {
+      it.each(DOCUMENTED_TAGS)('documents %s with a reference file and a SKILL.md roster row', (tag) => {
         expect(
           fs.existsSync(path.join(componentsDir, tag, `${tag}.md`)),
           `missing references/components/${tag}/${tag}.md`
         ).toBe(true);
-        expect(overview.includes(`[${tag}.md](./${tag}/${tag}.md)`), `missing overview.md row for ${tag}`).toBe(true);
+        expect(
+          skillMd.includes(`[${tag}.md](references/components/${tag}/${tag}.md)`),
+          `missing SKILL.md roster row for ${tag}`
+        ).toBe(true);
       });
 
       it('gives every example a description', () => {

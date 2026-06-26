@@ -6,7 +6,7 @@ import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExample
 import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
 import type { MigrationSource } from '../src/lib/skill/migrationReference';
 import type { PartialsSource } from '../src/lib/skill/partialsReference';
-import { buildSkillMd, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
+import { buildSkillMd, type ComponentRosterEntry, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SkillTree, WRAPPER_SKILL_DIRS } from '../src/lib/skill/skillTree';
 import { writeStyleReferences } from '../src/lib/skill/stylesReference';
 import { writeTokensReference } from '../src/lib/skill/tokensReference';
@@ -167,25 +167,27 @@ const generateTree = async (
     }
   }
 
+  let roster: ComponentRosterEntry[] = [];
   if (generation) {
     const { componentDocsMeta, writeComponentReferences } = generation;
-    const { tags, degraded } = writeComponentReferences(
+    const report = writeComponentReferences(
       tree,
       componentDocsMeta,
       { componentMeta, framework },
       { metaMap: componentDocsMeta, framework }
     );
-    console.log(`  ${tags.length} component references written`);
-    if (degraded.length > 0) {
+    roster = report.roster;
+    console.log(`  ${report.tags.length} component references written`);
+    if (report.degraded.length > 0) {
       console.warn(
-        `  degraded prose (review the source MDX): ${degraded
+        `  degraded prose (review the source MDX): ${report.degraded
           .map(({ tag, sections }) => `${tag} [${sections.join(', ')}]`)
           .join('; ')}`
       );
     }
   }
 
-  tree.write('SKILL.md', buildSkillMd(framework, tree.referenceMap));
+  tree.write('SKILL.md', buildSkillMd(framework, tree.referenceMap, roster));
 
   console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
 };

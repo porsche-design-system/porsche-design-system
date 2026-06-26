@@ -111,5 +111,5 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | Example | When to use | File |
 | --- | --- | --- |
 | Default | Minimal default configuration. | [./examples/Default.tsx](./examples/Default.tsx) |
-| Framework routing (anchor nesting) | To support custom anchor tags (e.g. | [./examples/FrameworkRouting.tsx](./examples/FrameworkRouting.tsx) |
+| Framework routing (anchor nesting) | To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the component. | [./examples/FrameworkRouting.tsx](./examples/FrameworkRouting.tsx) |
 | Link with specific icon | If an icon needs to be implemented, just set another predefined icon. | [./examples/Icon.tsx](./examples/Icon.tsx) |

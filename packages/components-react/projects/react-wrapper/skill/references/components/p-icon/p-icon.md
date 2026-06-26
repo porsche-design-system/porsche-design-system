@@ -81,6 +81,6 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | Size via Prop | There are predefined sizes for the component available which should cover most use cases. | [./examples/Size.tsx](./examples/Size.tsx) |
 | Size via CSS Variable | Alternatively, the size can be controlled via the custom CSS variable `--p-icon-size`, which accepts any valid CSS length value. | [./examples/SizeCssVar.tsx](./examples/SizeCssVar.tsx) |
 | Responsive Size | The `size` property supports `BreakpointCustomizable` values, allowing you to define different sizes for each major breakpoint (`xs`, `s`, `m`, `l`, `xl`). | [./examples/ResponsiveSize.tsx](./examples/ResponsiveSize.tsx) |
-| Color via Prop | The `color` property can be set to `inherit` to derive the icon's color from the `currentcolor` of a parent element (e.g. | [./examples/Color.tsx](./examples/Color.tsx) |
+| Color via Prop | The `color` property can be set to `inherit` to derive the icon's color from the `currentcolor` of a parent element (e.g. a `p-text`). | [./examples/Color.tsx](./examples/Color.tsx) |
 | Color via CSS Variable | Alternatively, the color can be controlled via the custom CSS variable `--p-icon-color`, which accepts any valid CSS color value. | [./examples/ColorCssVar.tsx](./examples/ColorCssVar.tsx) |
 | Custom Icon | The whole Porsche icon set is hosted on the Porsche Design System CDN. | [./examples/Custom.tsx](./examples/Custom.tsx) |

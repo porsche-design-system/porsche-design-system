@@ -31,15 +31,19 @@ The component follows the [WAI-ARIA Button pattern](https://www.w3.org/WAI/ARIA/
 Use the \`form\` attribute to associate the button with a form by its \`id\`."
 `;
 
-exports[`component reference generator > writeComponentReferences > snapshots the generated overview.md 1`] = `
-"# Components overview
-
-The Porsche Design System ships 3 documented components. Open a component's reference for its prose, props, slots, events, CSS variables and examples.
-
-| Component | Summary | Reference |
-| --- | --- | --- |
-| \`p-accordion\` | The **Accordion** lets users expand and collapse sections of *related* content to reduce visual clutter. | [p-accordion.md](./p-accordion/p-accordion.md) |
-| \`p-button\` | The \`p-button\` component is essential for performing **interaction** events such as submitting a form. | [p-button.md](./p-button/p-button.md) |
-| \`p-degraded\` | _No description available._ | [p-degraded.md](./p-degraded/p-degraded.md) |
-"
+exports[`component reference generator > writeComponentReferences > snapshots the generated roster 1`] = `
+[
+  {
+    "summary": "The **Accordion** lets users expand and collapse sections of *related* content to reduce visual clutter.",
+    "tag": "p-accordion",
+  },
+  {
+    "summary": "The \`p-button\` component is essential for performing **interaction** events such as submitting a form.",
+    "tag": "p-button",
+  },
+  {
+    "summary": "_No description available._",
+    "tag": "p-degraded",
+  },
+]
 `;

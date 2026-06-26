@@ -104,5 +104,5 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | Size via Prop | There are predefined sizes for the component available which should cover most use cases. | [./examples/Size.ts](./examples/Size.ts) |
 | Size via CSS Variable | Instead of using the `size` prop, the size can be controlled via the custom CSS variable `--p-spinner-size`, which accepts any valid CSS length value. | [./examples/SizeCssVar.ts](./examples/SizeCssVar.ts) |
 | Responsive Size | The `size` property supports `BreakpointCustomizable` values, allowing you to define different sizes for each major breakpoint (`xs`, `s`, `m`, `l`, `xl`). | [./examples/ResponsiveSize.ts](./examples/ResponsiveSize.ts) |
-| Color via Prop | The `color` property can be set to `inherit` to derive the spinner's color from the `currentcolor` of a parent element (e.g. | [./examples/Color.ts](./examples/Color.ts) |
+| Color via Prop | The `color` property can be set to `inherit` to derive the spinner's color from the `currentcolor` of a parent element (e.g. a `p-text`). | [./examples/Color.ts](./examples/Color.ts) |
 | Color via CSS Variable | Instead of using the `color` prop, the colors can be controlled via the custom CSS variables `--p-spinner-color` and `--p-spinner-track-color`, which accept any valid CSS color value. | [./examples/ColorCssVar.ts](./examples/ColorCssVar.ts) |

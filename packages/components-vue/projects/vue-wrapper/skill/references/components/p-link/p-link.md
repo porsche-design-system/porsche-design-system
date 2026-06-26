@@ -111,5 +111,5 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | Example | When to use | File |
 | --- | --- | --- |
 | Default | Minimal default configuration. | [./examples/Default.vue](./examples/Default.vue) |
-| Framework routing (anchor nesting) | To support custom anchor tags (e.g. | [./examples/FrameworkRouting.vue](./examples/FrameworkRouting.vue) |
+| Framework routing (anchor nesting) | To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the component. | [./examples/FrameworkRouting.vue](./examples/FrameworkRouting.vue) |
 | Link with specific icon | If an icon needs to be implemented, just set another predefined icon. | [./examples/Icon.vue](./examples/Icon.vue) |

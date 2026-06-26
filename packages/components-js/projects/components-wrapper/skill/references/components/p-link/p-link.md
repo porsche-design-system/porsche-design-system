@@ -111,5 +111,5 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | Example | When to use | File |
 | --- | --- | --- |
 | Default | Minimal default configuration. | [./examples/Default.html](./examples/Default.html) |
-| Framework routing (anchor nesting) | To support custom anchor tags (e.g. | [./examples/FrameworkRouting.html](./examples/FrameworkRouting.html) |
+| Framework routing (anchor nesting) | To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the component. | [./examples/FrameworkRouting.html](./examples/FrameworkRouting.html) |
 | Link with specific icon | If an icon needs to be implemented, just set another predefined icon. | [./examples/Icon.html](./examples/Icon.html) |

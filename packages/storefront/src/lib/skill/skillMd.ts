@@ -24,15 +24,11 @@ export const ACTIVATION_DESCRIPTION =
 /**
  * The skeleton reference map describing the skill tree layout. Each row points at
  * a reference file the content generators fill in. Generators may register
- * additional rows (e.g. per-component) through {@link SkillTree.registerReference};
- * this scaffold guarantees a valid SKILL.md even before any content exists.
+ * additional rows through {@link SkillTree.registerReference}; this scaffold
+ * guarantees a valid SKILL.md even before any content exists. The component roster
+ * is rendered inline in SKILL.md's body (see {@link buildSkillMd}), not as a map row.
  */
 export const SKELETON_REFERENCE_MAP: readonly ReferenceMapEntry[] = [
-  { path: 'references/components/overview.md', useWhen: 'Choosing or listing the available PDS components.' },
-  {
-    path: 'references/components/<p-component>/<p-component>.md',
-    useWhen: 'Working with a specific component — props, slots, events, CSS variables and examples.',
-  },
   { path: 'references/styles/tailwindcss.md', useWhen: 'Styling PDS usage with Tailwind CSS.' },
   { path: 'references/styles/scss.md', useWhen: 'Styling PDS usage with SCSS.' },
   { path: 'references/styles/vanilla-extract.md', useWhen: 'Styling PDS usage with vanilla-extract.' },
@@ -58,6 +54,13 @@ export const SKELETON_REFERENCE_MAP: readonly ReferenceMapEntry[] = [
 export const rawMetaReference = (framework: Framework): string =>
   framework === 'js' ? '../meta' : '@porsche-design-system/components-js/meta';
 
+/**
+ * A single row of the inlined component roster: the component tag and a one-line
+ * summary. The reference path is derived from the tag, so it stays correct by
+ * construction with the `components/<tag>/<tag>.md` layout.
+ */
+export type ComponentRosterEntry = { tag: string; summary: string };
+
 const renderReferenceMap = (entries: readonly ReferenceMapEntry[]): string => {
   if (entries.length === 0) {
     return '_The reference map is populated by the content generators._';
@@ -67,11 +70,35 @@ const renderReferenceMap = (entries: readonly ReferenceMapEntry[]): string => {
 };
 
 /**
- * Build the always-loaded `SKILL.md` entry point: fixed-`name` frontmatter with a
- * placeholder activation description, the reference map rendered from the
- * registered rows, and the core always-apply rules.
+ * The component roster, rendered inline so the authoritative set of components is
+ * always in context the moment the skill activates — the agent never has to read a
+ * separate overview first to learn what exists, and the closed list anchors it
+ * against reaching for non-PDS elements. Each row links the component's own reference
+ * (relative to the skill root) for props, slots, events, CSS variables and examples.
  */
-export const buildSkillMd = (framework: Framework, entries: readonly ReferenceMapEntry[]): string => {
+const renderComponentRoster = (roster: readonly ComponentRosterEntry[]): string => {
+  const rows = roster.map(({ tag, summary }) => [
+    `\`${tag}\``,
+    escapeCell(summary),
+    `[${tag}.md](references/components/${tag}/${tag}.md)`,
+  ]);
+  return [
+    `The Porsche Design System ships ${roster.length} components. Open a component's reference for its props, slots, events, CSS variables and examples before using it.`,
+    '',
+    markdownTable(['Component', 'Summary', 'Reference'], rows),
+  ].join('\n');
+};
+
+/**
+ * Build the always-loaded `SKILL.md` entry point: fixed-`name` frontmatter with the
+ * tuned activation description, the inlined component roster (when supplied), the
+ * reference map rendered from the registered rows, and the core always-apply rules.
+ */
+export const buildSkillMd = (
+  framework: Framework,
+  entries: readonly ReferenceMapEntry[],
+  roster: readonly ComponentRosterEntry[] = []
+): string => {
   const frontmatter = ['---', `name: ${SKILL_NAME}`, `description: ${ACTIVATION_DESCRIPTION}`, '---'].join('\n');
 
   const coreRules = [
@@ -83,6 +110,8 @@ export const buildSkillMd = (framework: Framework, entries: readonly ReferenceMa
     '- Every reference path is relative to this skill root unless explicitly noted otherwise.',
   ].join('\n');
 
+  const componentsSection = roster.length > 0 ? ['## Components', '', renderComponentRoster(roster), ''] : [];
+
   return [
     frontmatter,
     '',
@@ -90,6 +119,7 @@ export const buildSkillMd = (framework: Framework, entries: readonly ReferenceMa
     '',
     'Version-exact knowledge of the installed Porsche Design System. Open the reference below that matches the task, then apply the core rules.',
     '',
+    ...componentsSection,
     '## Reference map',
     '',
     renderReferenceMap(entries),

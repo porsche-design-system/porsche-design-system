@@ -139,6 +139,32 @@ describe('buildSkillMd', () => {
     expect(markdown).toContain('populated by the content generators');
   });
 
+  it('inlines the component roster with skill-root-relative reference links', () => {
+    const markdown = buildSkillMd('react', SKELETON_REFERENCE_MAP, [
+      { tag: 'p-button', summary: 'The button component.' },
+      { tag: 'p-accordion', summary: 'Reveals or hides sections.' },
+    ]);
+
+    expect(markdown).toContain('## Components');
+    expect(markdown).toContain('| Component | Summary | Reference |');
+    expect(markdown).toContain('| `p-button` | The button component. | [p-button.md](references/components/p-button/p-button.md) |');
+    expect(markdown).toContain('2 components');
+    // The roster precedes the reference map so the available components are seen first.
+    expect(markdown.indexOf('## Components')).toBeLessThan(markdown.indexOf('## Reference map'));
+  });
+
+  it('omits the components section when no roster is supplied', () => {
+    const markdown = buildSkillMd('js', SKELETON_REFERENCE_MAP);
+
+    expect(markdown).not.toContain('## Components');
+  });
+
+  it('escapes pipe characters in roster summaries', () => {
+    const markdown = buildSkillMd('vue', SKELETON_REFERENCE_MAP, [{ tag: 'p-x', summary: 'a | b' }]);
+
+    expect(markdown).toContain('a \\| b');
+  });
+
   it('includes the core always-apply rules', () => {
     const markdown = buildSkillMd('angular', SKELETON_REFERENCE_MAP);
 

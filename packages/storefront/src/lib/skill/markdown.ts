@@ -15,9 +15,17 @@ export const escapeCell = (text: string): string => text.replace(/\s+/g, ' ').tr
 export const stripLeadingH1 = (markdown: string): string => markdown.replace(/^#\s+[^\n]*\n+/, '');
 
 /**
- * First sentence of the leading paragraph, used as a one-line summary. Falls back to
- * the whole leading paragraph when no sentence boundary is found (may be empty — the
- * caller supplies its own fallback).
+ * A period that does not end a sentence: a dotted abbreviation (`e.g`, `i.e`, `U.S`)
+ * or a common trailing abbreviation word. Tested against the text up to a candidate
+ * terminator so summaries are not truncated mid-abbreviation (e.g. "messages (e.g.").
+ */
+const NON_TERMINAL_ABBREVIATION = /(?:[a-z]\.[a-z]|\b(?:etc|vs|cf|al|approx|fig|no))$/i;
+
+/**
+ * First sentence of the leading paragraph, used as a one-line summary. Skips periods
+ * that belong to abbreviations rather than sentence ends. Falls back to the whole
+ * leading paragraph when no sentence boundary is found (may be empty — the caller
+ * supplies its own fallback).
  */
 export const leadSentence = (markdown: string): string => {
   const leadParagraph =
@@ -25,7 +33,13 @@ export const leadSentence = (markdown: string): string => {
       .split(/\n{2,}/)[0]
       ?.replace(/\s+/g, ' ')
       .trim() ?? '';
-  return leadParagraph.match(/^(.+?[.!?])(\s|$)/)?.[1]?.trim() || leadParagraph;
+  for (const match of leadParagraph.matchAll(/[.!?](?:\s|$)/g)) {
+    const candidate = leadParagraph.slice(0, match.index);
+    if (!NON_TERMINAL_ABBREVIATION.test(candidate)) {
+      return `${candidate}${leadParagraph[match.index]}`;
+    }
+  }
+  return leadParagraph;
 };
 
 /** A markdown table from a header row and pre-rendered cell rows (no heading). */

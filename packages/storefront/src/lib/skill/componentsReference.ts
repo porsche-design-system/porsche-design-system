@@ -2,8 +2,9 @@ import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentType } from 'react';
 import { renderComponentApi } from './componentApi';
 import { type ComponentExamplesOptions, writeComponentExamples } from './componentExamples';
-import { escapeCell, leadSentence, markdownTable, stripLeadingH1 } from './markdown';
+import { leadSentence, stripLeadingH1 } from './markdown';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
+import type { ComponentRosterEntry } from './skillMd';
 import type { Framework, SkillTree } from './skillTree';
 
 /**
@@ -29,6 +30,8 @@ export type DegradedProse = { tag: string; sections: string[] };
 export type ComponentReferenceReport = {
   /** Tags written, in emitted (sorted) order. */
   tags: string[];
+  /** One entry per component (tag + one-line summary), for the roster inlined into SKILL.md. */
+  roster: ComponentRosterEntry[];
   degraded: DegradedProse[];
 };
 
@@ -97,22 +100,6 @@ export const renderComponentProse = (
   return { markdown: sections.join('\n\n'), summary, degradedSections };
 };
 
-/** Build the `references/components/overview.md` table — one row per component. */
-export const buildComponentsOverview = (entries: { tag: string; summary: string }[]): string => {
-  const rows = entries.map(({ tag, summary }) => [
-    `\`${tag}\``,
-    escapeCell(summary),
-    `[${tag}.md](./${tag}/${tag}.md)`,
-  ]);
-  return [
-    '# Components overview',
-    '',
-    `The Porsche Design System ships ${entries.length} documented components. Open a component's reference for its prose, props, slots, events, CSS variables and examples.`,
-    '',
-    markdownTable(['Component', 'Summary', 'Reference'], rows),
-  ].join('\n');
-};
-
 /** Authoritative `componentMeta` (props/slots/events/CSS variables) keyed by tag, plus the target framework. */
 export type ComponentApiOptions = {
   componentMeta: Record<string, ComponentMeta>;
@@ -120,11 +107,12 @@ export type ComponentApiOptions = {
 };
 
 /**
- * Write the prose section of every component reference plus `overview.md` into the
- * skill tree, keyed by `componentMeta` tag (the iteration source guarantees
- * coverage). When {@link ComponentApiOptions} is supplied, the props/slots/events/
- * CSS-variable API tables (TASK-04) are appended to each `<tag>.md` after its prose.
- * Returns a report so the harness can surface degraded prose for review.
+ * Write the prose section of every component reference into the skill tree, keyed by
+ * `componentMeta` tag (the iteration source guarantees coverage). When
+ * {@link ComponentApiOptions} is supplied, the props/slots/events/CSS-variable API
+ * tables are appended to each `<tag>/<tag>.md` after its prose. Returns a report
+ * carrying the roster (inlined into SKILL.md by the harness) and any degraded prose
+ * to surface for review.
  */
 export const writeComponentReferences = (
   tree: SkillTree,
@@ -133,7 +121,7 @@ export const writeComponentReferences = (
   examplesOptions?: ComponentExamplesOptions
 ): ComponentReferenceReport => {
   const tags = Object.keys(metaMap).sort();
-  const overviewEntries: { tag: string; summary: string }[] = [];
+  const roster: ComponentRosterEntry[] = [];
   const degraded: DegradedProse[] = [];
 
   for (const tag of tags) {
@@ -151,13 +139,11 @@ export const writeComponentReferences = (
       }
     }
     tree.writeReference(`components/${tag}/${tag}.md`, sections.join('\n\n'));
-    overviewEntries.push({ tag, summary });
+    roster.push({ tag, summary });
     if (degradedSections.length > 0) {
       degraded.push({ tag, sections: degradedSections });
     }
   }
 
-  tree.writeReference('components/overview.md', buildComponentsOverview(overviewEntries));
-
-  return { tags, degraded };
+  return { tags, roster, degraded };
 };

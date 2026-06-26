@@ -3,7 +3,6 @@ import os from 'node:os';
 import path from 'node:path';
 import {
   type ComponentDocsMetaMap,
-  buildComponentsOverview,
   renderComponentProse,
   writeComponentReferences,
 } from '@/lib/skill/componentsReference';
@@ -61,27 +60,6 @@ describe('component reference generator', () => {
     });
   });
 
-  describe('buildComponentsOverview', () => {
-    it('lists every component with a one-line summary and a reference link', () => {
-      const overview = buildComponentsOverview([
-        { tag: 'p-button', summary: 'The button component.' },
-        { tag: 'p-accordion', summary: 'The accordion component.' },
-      ]);
-
-      expect(overview).toContain('| Component | Summary | Reference |');
-      expect(overview).toContain('| `p-button` | The button component. | [p-button.md](./p-button/p-button.md) |');
-      expect(overview).toContain(
-        '| `p-accordion` | The accordion component. | [p-accordion.md](./p-accordion/p-accordion.md) |'
-      );
-      expect(overview).toContain('2 documented components');
-    });
-
-    it('escapes pipe characters in summaries', () => {
-      const overview = buildComponentsOverview([{ tag: 'p-x', summary: 'a | b' }]);
-      expect(overview).toContain('a \\| b');
-    });
-  });
-
   describe('writeComponentReferences', () => {
     let root: string;
 
@@ -93,7 +71,7 @@ describe('component reference generator', () => {
       fs.rmSync(root, { recursive: true, force: true });
     });
 
-    it('writes a <tag>.md per component plus overview.md, and reports degraded prose', () => {
+    it('writes a <tag>/<tag>.md per component, returns a roster, and reports degraded prose', () => {
       const tree = new SkillTree(root);
       tree.reset();
 
@@ -104,24 +82,25 @@ describe('component reference generator', () => {
       for (const tag of report.tags) {
         expect(fs.existsSync(tree.resolve(`references/components/${tag}/${tag}.md`)), `${tag}.md`).toBe(true);
       }
-      expect(fs.existsSync(tree.resolve('references/components/overview.md'))).toBe(true);
 
-      // overview.md lists every component.
-      const overview = fs.readFileSync(tree.resolve('references/components/overview.md'), 'utf-8');
-      for (const tag of report.tags) {
-        expect(overview).toContain(`\`${tag}\``);
+      // The roster carries one entry per tag (the harness inlines it into SKILL.md).
+      expect(report.roster.map(({ tag }) => tag)).toEqual(report.tags);
+      for (const { tag, summary } of report.roster) {
+        expect(summary, `${tag} summary`).toBeTruthy();
       }
+
+      // No standalone overview file is written — the roster lives in SKILL.md.
+      expect(fs.existsSync(tree.resolve('references/components/overview.md'))).toBe(false);
 
       // Degraded prose surfaces for review.
       expect(report.degraded).toEqual([{ tag: 'p-degraded', sections: ['introduction'] }]);
     });
 
-    it('snapshots the generated overview.md', () => {
+    it('snapshots the generated roster', () => {
       const tree = new SkillTree(root);
       tree.reset();
-      writeComponentReferences(tree, metaMap);
 
-      expect(fs.readFileSync(tree.resolve('references/components/overview.md'), 'utf-8')).toMatchSnapshot();
+      expect(writeComponentReferences(tree, metaMap).roster).toMatchSnapshot();
     });
   });
 });

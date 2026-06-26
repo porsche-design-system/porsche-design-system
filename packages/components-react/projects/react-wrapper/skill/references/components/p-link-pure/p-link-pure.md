@@ -119,6 +119,6 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | --- | --- | --- |
 | Default | Minimal default configuration. | [./examples/Default.tsx](./examples/Default.tsx) |
 | Link with specific icon | If another icon needs to be implemented, just replace the default icon with another predefined icon. | [./examples/Icon.tsx](./examples/Icon.tsx) |
-| Framework routing (anchor nesting) | To support custom anchor tags (e.g. | [./examples/FrameworkRouting.tsx](./examples/FrameworkRouting.tsx) |
+| Framework routing (anchor nesting) | To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** (recommended) of the component. | [./examples/FrameworkRouting.tsx](./examples/FrameworkRouting.tsx) |
 | Framework specific router with "active state" support | Examples how to use the component together with a framework specific router with "active state" support. | — |
 | Link Pure with custom clickable/focusable area | Sometimes it might be useful to enlarge the clickable/focusable area of a link to fulfill accessibility guidelines. | [./examples/CustomClickableArea.tsx](./examples/CustomClickableArea.tsx) |
