@@ -93,6 +93,7 @@ export const pdsTheme: Theme = themeQuartz
     // Typography
     fontFamily: fontPorscheNext,
     fontSize: typescaleSm,
+    fontWeight: 'inherit',
     headerFontWeight: fontWeightSemibold,
     headerFontSize: typescaleXs,
 
