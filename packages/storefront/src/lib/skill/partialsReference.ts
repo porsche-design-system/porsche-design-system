@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import { stripLeadingH1 } from './markdown';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { SkillTree } from './skillTree';
 
@@ -45,9 +46,6 @@ than per-framework variants, each partial takes a \`format\` option that selects
 - \`format: 'sha256'\` — \`getLoaderScript\` only; returns a SHA-256 hash for a Content Security Policy.
 
 The per-partial "Supported options" tables below document each partial's exact \`format\` values.`;
-
-/** Drop a redundant leading top-level heading (the per-file H1 we emit replaces it). */
-const stripLeadingH1 = (markdown: string): string => markdown.replace(/^#\s+[^\n]*\n+/, '');
 
 /**
  * Demote every heading one level so a rendered partial page (which opens at H1) nests

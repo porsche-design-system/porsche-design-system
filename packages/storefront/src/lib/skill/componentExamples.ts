@@ -5,6 +5,7 @@ import type { ExampleMeta } from '../../models/meta';
 import type { Story } from '../../models/story';
 import { createFrameworkMarkup } from '../../utils/generator/createFrameworkMarkup';
 import type { HTMLTagOrComponent } from '../../utils/generator/generator';
+import { escapeCell, leadSentence, markdownTable } from './markdown';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { Framework, SkillTree } from './skillTree';
 
@@ -50,8 +51,6 @@ const DEFAULT_EXAMPLE_KEY = 'default';
 const toFileBase = (key: string): string =>
   key.replace(/(^|[-_\s]+)([a-zA-Z0-9])/g, (_, __, char: string) => char.toUpperCase());
 
-const escapeCell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s+/g, ' ').trim();
-
 /** First sentence of the rendered `description`, used as the row's short "when to use". */
 const whenToUse = (description: ComponentType | undefined, fallback: string): string => {
   if (!description) {
@@ -61,12 +60,7 @@ const whenToUse = (description: ComponentType | undefined, fallback: string): st
   if (degraded) {
     return fallback;
   }
-  const leadParagraph =
-    markdown
-      .split(/\n{2,}/)[0]
-      ?.replace(/\s+/g, ' ')
-      .trim() ?? '';
-  return leadParagraph.match(/^(.+?[.!?])(\s|$)/)?.[1]?.trim() || leadParagraph || fallback;
+  return leadSentence(markdown) || fallback;
 };
 
 const storyMarkup = (story: Story<HTMLTagOrComponent>, framework: Framework, theme: StorefrontColorScheme): string =>
@@ -130,7 +124,7 @@ export const writeComponentExamples = (
   theme: StorefrontColorScheme = DEFAULT_EXAMPLE_THEME
 ): string => {
   const ext = EXAMPLE_EXTENSION[framework];
-  const rows: string[] = [];
+  const rows: string[][] = [];
   const usedFileBases = new Set<string>();
 
   const emit = ({ name, whenToUse: note, fileBase, markup }: PlannedExample): void => {
@@ -145,7 +139,7 @@ export const writeComponentExamples = (
       tree.writeReference(`components/${tag}/examples/${unique}.${ext}`, markup);
       fileCell = `[${relativePath}](${relativePath})`;
     }
-    rows.push(`| ${escapeCell(name)} | ${escapeCell(note)} | ${fileCell} |`);
+    rows.push([escapeCell(name), escapeCell(note), fileCell]);
   };
 
   const baseMarkup = storyMarkup(source.configurator.story, framework, theme);
@@ -166,5 +160,5 @@ export const writeComponentExamples = (
     return '';
   }
 
-  return ['## Examples', '', '| Example | When to use | File |', '| --- | --- | --- |', ...rows].join('\n');
+  return ['## Examples', '', markdownTable(['Example', 'When to use', 'File'], rows)].join('\n');
 };

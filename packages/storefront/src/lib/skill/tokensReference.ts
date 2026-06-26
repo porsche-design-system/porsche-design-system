@@ -1,6 +1,7 @@
 import { sentenceCase } from 'change-case';
 import { type TokensMetaTree, tokensMeta } from '../../../../tokens/projects/tokens-meta/src/lib/tokensMeta';
 import type { TokenMeta } from '../../../../tokens/projects/tokens-meta/src/types/token-meta';
+import { escapeCell, headingSlug, markdownTable } from './markdown';
 import type { SkillTree } from './skillTree';
 
 /**
@@ -12,17 +13,10 @@ import type { SkillTree } from './skillTree';
 
 const code = (value: string | number): string => `\`${value}\``;
 
-/** Escape the few markdown-table-breaking characters a description might contain. */
-const cell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ');
-
-/** A markdown table from a header row and pre-rendered cell rows. */
-const table = (headers: string[], rows: string[][]): string =>
-  [headers, headers.map(() => '---'), ...rows].map((r) => `| ${r.join(' | ')} |`).join('\n');
-
 const tokenTable = (tokens: TokenMeta[]): string =>
-  table(
+  markdownTable(
     ['Token', 'Value', 'Description'],
-    tokens.map((token) => [code(token.name), code(token.value), cell(token.description)])
+    tokens.map((token) => [code(token.name), code(token.value), escapeCell(token.description)])
   );
 
 /** A documented leaf carries a `name`; a group is a keyed record of leaves and/or nested groups. */
@@ -54,7 +48,7 @@ exact resolved values and their generated CSS, see [\`../tokens\`](../tokens).`;
 const contents = `## Contents
 
 ${Object.keys(tokensMeta)
-  .map((key) => `- [${sentenceCase(key)}](#${sentenceCase(key).toLowerCase().replace(/\s+/g, '-')})`)
+  .map((key) => `- [${sentenceCase(key)}](#${headingSlug(sentenceCase(key))})`)
   .join('\n')}`;
 
 const categories = Object.entries(tokensMeta as TokensMetaTree)

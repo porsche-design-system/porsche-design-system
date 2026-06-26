@@ -2,6 +2,7 @@ import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentType } from 'react';
 import { renderComponentApi } from './componentApi';
 import { type ComponentExamplesOptions, writeComponentExamples } from './componentExamples';
+import { escapeCell, leadSentence, markdownTable, stripLeadingH1 } from './markdown';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { Framework, SkillTree } from './skillTree';
 
@@ -32,29 +33,6 @@ export type ComponentReferenceReport = {
 };
 
 const NO_SUMMARY = '_No description available._';
-
-/**
- * Drop a redundant leading top-level heading. The `usage` / `accessibility` MDX
- * pages each open with a `# <Component>` title (e.g. `# Button`) that duplicates
- * the per-file H1 we emit, so it is stripped before the section is nested.
- */
-const stripLeadingH1 = (markdown: string): string => markdown.replace(/^#\s+[^\n]*\n+/, '');
-
-const escapeCell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s+/g, ' ').trim();
-
-/**
- * First sentence of the introduction prose, used as the one-line `overview.md`
- * summary. Falls back to the whole leading paragraph when no sentence boundary is
- * found.
- */
-const firstSentence = (markdown: string): string => {
-  const leadParagraph =
-    markdown
-      .split(/\n{2,}/)[0]
-      ?.replace(/\s+/g, ' ')
-      .trim() ?? '';
-  return leadParagraph.match(/^(.+?[.!?])(\s|$)/)?.[1]?.trim() ?? leadParagraph;
-};
 
 const renderSection = (
   component: ComponentType | undefined,
@@ -95,7 +73,7 @@ export const renderComponentProse = (
   } else if (introResult.markdown.trim()) {
     sections.push(introResult.markdown.trim());
   }
-  const summary = introResult.degraded ? NO_SUMMARY : firstSentence(introResult.markdown) || NO_SUMMARY;
+  const summary = introResult.degraded ? NO_SUMMARY : leadSentence(introResult.markdown) || NO_SUMMARY;
 
   renderSection(source.usage, sections, degradedSections, 'usage', stripLeadingH1);
   renderSection(source.accessibility, sections, degradedSections, 'accessibility', stripLeadingH1);
@@ -121,15 +99,13 @@ export const renderComponentProse = (
 
 /** Build the `references/components/overview.md` table — one row per component. */
 export const buildComponentsOverview = (entries: { tag: string; summary: string }[]): string => {
-  const rows = entries.map(({ tag, summary }) => `| \`${tag}\` | ${escapeCell(summary)} | [${tag}.md](./${tag}.md) |`);
+  const rows = entries.map(({ tag, summary }) => [`\`${tag}\``, escapeCell(summary), `[${tag}.md](./${tag}.md)`]);
   return [
     '# Components overview',
     '',
     `The Porsche Design System ships ${entries.length} documented components. Open a component's reference for its prose, props, slots, events, CSS variables and examples.`,
     '',
-    '| Component | Summary | Reference |',
-    '| --- | --- | --- |',
-    ...rows,
+    markdownTable(['Component', 'Summary', 'Reference'], rows),
   ].join('\n');
 };
 

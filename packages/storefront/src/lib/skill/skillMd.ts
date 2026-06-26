@@ -1,3 +1,4 @@
+import { escapeCell, markdownTable } from './markdown';
 import type { Framework, ReferenceMapEntry } from './skillTree';
 
 /** Fixed skill identifier — never varies by framework or version. */
@@ -58,14 +59,12 @@ export const SKELETON_REFERENCE_MAP: readonly ReferenceMapEntry[] = [
 export const rawMetaReference = (framework: Framework): string =>
   framework === 'js' ? '../meta' : '@porsche-design-system/components-js/meta';
 
-const escapeCell = (text: string): string => text.replace(/\|/g, '\\|');
-
 const renderReferenceMap = (entries: readonly ReferenceMapEntry[]): string => {
   if (entries.length === 0) {
     return '_The reference map is populated by the content generators._';
   }
-  const rows = entries.map((entry) => `| \`${entry.path}\` | ${escapeCell(entry.useWhen)} |`);
-  return ['| Reference | Use this when |', '| --- | --- |', ...rows].join('\n');
+  const rows = entries.map((entry) => [`\`${entry.path}\``, escapeCell(entry.useWhen)]);
+  return markdownTable(['Reference', 'Use this when'], rows);
 };
 
 /**

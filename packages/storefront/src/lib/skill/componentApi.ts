@@ -5,6 +5,7 @@ import type {
   PropMeta,
   SlotMeta,
 } from '@porsche-design-system/component-meta';
+import { escapeCell, markdownTable } from './markdown';
 import { rawMetaReference } from './skillMd';
 import type { Framework } from './skillTree';
 
@@ -19,9 +20,6 @@ import type { Framework } from './skillTree';
  * split out of a prop's recommended value list into a separate `deprecated:` note so
  * they can never be read as a recommended value.
  */
-
-/** Collapse whitespace and escape table-breaking pipes for a single markdown cell. */
-const escapeCell = (text: string): string => text.replace(/\s+/g, ' ').trim().replace(/\|/g, '\\|');
 
 const code = (text: string | number): string => `\`${text}\``;
 
@@ -89,13 +87,7 @@ const formatType = (meta: PropMeta): string => {
 };
 
 const buildTable = (heading: string, columns: string[], rows: string[][]): string =>
-  [
-    `### ${heading}`,
-    '',
-    `| ${columns.join(' | ')} |`,
-    `| ${columns.map(() => '---').join(' | ')} |`,
-    ...rows.map((cells) => `| ${cells.join(' | ')} |`),
-  ].join('\n');
+  [`### ${heading}`, '', markdownTable(columns, rows)].join('\n');
 
 const propsTable = (propsMeta: NonNullable<ComponentMeta['propsMeta']>): string => {
   const rows = Object.entries(propsMeta)
