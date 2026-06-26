@@ -139,9 +139,13 @@ const runPrompt = (fixtureDir: string, cli: Cli, prompt: EvalPrompt): PromptResu
     if (activated) fired++;
     if (cli.debug) console.error(`  [debug] ${prompt.id} run ${run + 1}: ${activated ? 'fired' : 'dormant'}`);
   }
-  // A prompt "matches expectation" when its majority outcome equals the expected one.
-  const majorityFired = fired * 2 >= cli.runs;
-  const ok = prompt.expected === 'fire' ? majorityFired : !majorityFired;
+  // "Matches expectation" only when a strict majority of the *successful* runs match the
+  // expected outcome. An errored run carries no activation signal, so it counts as neither
+  // fired nor dormant; if every run errored there is nothing to judge and the prompt fails
+  // rather than letting infrastructure failure masquerade as a dormant pass.
+  const completed = cli.runs - errors;
+  const majorityFired = completed > 0 && fired * 2 > completed;
+  const ok = completed > 0 && (prompt.expected === 'fire' ? majorityFired : !majorityFired);
   return { prompt, fired, runs: cli.runs, ok, errors };
 };
 
