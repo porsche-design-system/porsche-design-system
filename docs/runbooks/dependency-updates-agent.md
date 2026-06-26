@@ -296,6 +296,29 @@ npm install
 Commit the bumped `package.json`, `package-lock.json`, the Docker image changes, and any regenerated VRT snapshots
 **together**. If snapshots change beyond what the browser bump explains, **stop** and hand off.
 
+## Output contract
+
+Deliver the result as a **single pull request** the maintainers can review and merge:
+
+- **One PR** containing all dependency changes from this run (no direct pushes to `main`).
+- **Target the default branch** (`main`) — closing keywords only auto-close issues when the PR merges into the default
+  branch.
+- **Close the dispatching issue automatically.** Put a
+  [closing keyword](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
+  in the **PR description** (not a commit message or a plain `#123` mention):
+
+  ```text
+  Closes #<issue-number>
+  ```
+
+  Use the number of the issue you were assigned — the dispatcher
+  ([`weekly-dependency-agent.yml`](../../.github/workflows/weekly-dependency-agent.yml)) pre-fills it as
+  `Closes #<number>` in the issue body. The keyword must stay in the **PR description**; without it, merging the PR will
+  **not** close the issue, leaving stale dependency tasks open.
+- **PR description** must summarize: which dependencies were bumped (grouped), any `overrides` added or removed, any
+  advisories from `npm run npm:audit`, and which builds/tests you ran — explicitly calling out any you could **not**
+  reproduce here (e.g. VRT in Docker, cross-browser e2e), so the reviewer knows what still needs to pass on CI.
+
 ## Stop conditions (hand back to a human)
 
 Stop and request review instead of forcing a change when:

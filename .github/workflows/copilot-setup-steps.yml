@@ -24,14 +24,15 @@ on:
       - package.json
       - package-lock.json
 
+# Least privilege: the agent only needs to read the repo to install deps.
+permissions:
+  contents: read
+
 jobs:
   # The job id is required to be `copilot-setup-steps`.
   copilot-setup-steps:
     name: 'Copilot Setup Steps'
     runs-on: ubuntu-latest
-    # Least privilege: the agent only needs to read the repo to install deps.
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v7
       - name: 'Setup Node.js'
