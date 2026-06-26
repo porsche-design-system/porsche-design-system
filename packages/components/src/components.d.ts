@@ -2382,6 +2382,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface PPopover {
         /**
           * Sets ARIA attributes on the popover panel to improve accessibility for screen readers.
@@ -2396,6 +2399,10 @@ export namespace Components {
           * @default 'bottom'
          */
         "direction"?: PopoverDirection;
+        /**
+          * Controls whether the popover is visible. When set (controlled mode), visibility follows this prop and the consumer owns the open state via a slotted `button`. When omitted (uncontrolled mode), the component manages visibility itself.
+         */
+        "open"?: boolean;
     }
     interface PRadioGroup {
         /**
@@ -3224,6 +3231,10 @@ export interface PPinCodeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPinCodeElement;
 }
+export interface PPopoverCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPPopoverElement;
+}
 export interface PRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPRadioGroupElement;
@@ -3869,7 +3880,21 @@ declare global {
         prototype: HTMLPPinCodeElement;
         new (): HTMLPPinCodeElement;
     };
+    interface HTMLPPopoverElementEventMap {
+        "dismiss": void;
+    }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface HTMLPPopoverElement extends Components.PPopover, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPPopoverElementEventMap>(type: K, listener: (this: HTMLPPopoverElement, ev: PPopoverCustomEvent<HTMLPPopoverElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPPopoverElementEventMap>(type: K, listener: (this: HTMLPPopoverElement, ev: PPopoverCustomEvent<HTMLPPopoverElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPPopoverElement: {
         prototype: HTMLPPopoverElement;
@@ -6765,6 +6790,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface PPopover {
         /**
           * Sets ARIA attributes on the popover panel to improve accessibility for screen readers.
@@ -6779,6 +6807,14 @@ declare namespace LocalJSX {
           * @default 'bottom'
          */
         "direction"?: PopoverDirection;
+        /**
+          * Emitted in controlled mode when the user requests to close the popover via the Escape key or an outside click.
+         */
+        "onDismiss"?: (event: PPopoverCustomEvent<void>) => void;
+        /**
+          * Controls whether the popover is visible. When set (controlled mode), visibility follows this prop and the consumer owns the open state via a slotted `button`. When omitted (uncontrolled mode), the component manages visibility itself.
+         */
+        "open"?: boolean;
     }
     interface PRadioGroup {
         /**
@@ -8121,6 +8157,7 @@ declare namespace LocalJSX {
         "form": string;
     }
     interface PPopoverAttributes {
+        "open": boolean;
         "direction": PopoverDirection;
         "description": string;
         "aria": SelectedAriaAttributes<PopoverAriaAttribute>;
@@ -8483,6 +8520,9 @@ declare module "@stencil/core" {
              * @controlled { "props": ["value"], "event": "change", "isInternallyMutated": true }
              */
             "p-pin-code": LocalJSX.IntrinsicElements["p-pin-code"] & JSXBase.HTMLAttributes<HTMLPPinCodeElement>;
+            /**
+             * @controlled {"props": ["open"], "event": "dismiss"}
+             */
             "p-popover": LocalJSX.IntrinsicElements["p-popover"] & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-group": LocalJSX.IntrinsicElements["p-radio-group"] & JSXBase.HTMLAttributes<HTMLPRadioGroupElement>;
             "p-radio-group-option": LocalJSX.IntrinsicElements["p-radio-group-option"] & JSXBase.HTMLAttributes<HTMLPRadioGroupOptionElement>;

@@ -1,5 +1,5 @@
 import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
-import { Component, Element, Host, h, type JSX, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Listen, Prop, State } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
@@ -22,6 +22,7 @@ import {
 } from './popover-utils';
 
 const propTypes: PropTypes<typeof Popover> = {
+  open: AllowedTypes.boolean,
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
@@ -30,6 +31,8 @@ const propTypes: PropTypes<typeof Popover> = {
 /**
  * @slot {"name": "", "description": "Default slot for the popover content." }
  * @slot {"name": "button", "description": "Renders a custom trigger button. When used, the default info button is replaced." }
+ *
+ * @controlled {"props": ["open"], "event": "dismiss"}
  */
 @Component({
   tag: 'p-popover',
@@ -37,6 +40,12 @@ const propTypes: PropTypes<typeof Popover> = {
 })
 export class Popover {
   @Element() public host!: HTMLElement;
+
+  /**
+   * Controls whether the popover is visible. When set (controlled mode), visibility follows this prop and the consumer
+   * owns the open state via a slotted `button`. When omitted (uncontrolled mode), the component manages visibility itself.
+   */
+  @Prop() public open?: boolean;
 
   /** Sets the preferred direction for the popover to open relative to its trigger button. Falls back to the direction with the most available viewport space. */
   @Prop() public direction?: PopoverDirection = 'bottom';
@@ -46,6 +55,9 @@ export class Popover {
 
   /** Sets ARIA attributes on the popover panel to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
+
+  /** Emitted in controlled mode when the user requests to close the popover via the Escape key or an outside click. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   @State() private isOpen = false;
 
@@ -58,22 +70,31 @@ export class Popover {
   // TODO: This should be updated when slot is changed
   private hasSlottedButton: boolean;
 
+  private get isControlled(): boolean {
+    return typeof this.open === 'boolean';
+  }
+
+  private get effectiveOpen(): boolean {
+    return this.isControlled ? this.open : this.isOpen;
+  }
+
   @Listen('click')
   public onClick(e: MouseEvent): void {
-    // Handle opening when custom slotted button is clicked
-    if (this.hasSlottedButton && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
+    // Handle opening when custom slotted button is clicked (uncontrolled mode only; in controlled mode the consumer owns the trigger)
+    if (!this.isControlled && this.hasSlottedButton && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
       this.isOpen = !this.isOpen;
     }
   }
 
   public connectedCallback(): void {
-    if (!this.hasNativePopoverSupport) {
+    // In controlled mode the panel uses `popover="manual"`, which doesn't light-dismiss, so the outside-click listener is required regardless of native support.
+    if (this.isControlled || !this.hasNativePopoverSupport) {
       document.addEventListener('mousedown', this.onClickOutside, true);
     }
   }
 
   public disconnectedCallback(): void {
-    if (!this.hasNativePopoverSupport) {
+    if (this.isControlled || !this.hasNativePopoverSupport) {
       document.removeEventListener('mousedown', this.onClickOutside, true);
     }
     // ensures floating ui event listeners are removed in case popover is removed from DOM
@@ -98,10 +119,10 @@ export class Popover {
         ) : (
           <button
             type="button"
-            onClick={() => (this.isOpen = !this.isOpen)}
+            onClick={() => !this.isControlled && (this.isOpen = !this.isOpen)}
             {...parseAndGetAriaAttributes({
               ...parseAndGetAriaAttributes(this.aria),
-              ...{ 'aria-expanded': this.isOpen },
+              ...{ 'aria-expanded': this.effectiveOpen },
             })}
             ref={(el) => (this.button = el)}
           >
@@ -109,8 +130,12 @@ export class Popover {
             <span class="label">More information</span>
           </button>
         )}
-        {this.isOpen && (
-          <div popover="auto" onToggle={this.onToggle} ref={(el) => (this.popover = el)}>
+        {this.effectiveOpen && (
+          <div
+            popover={this.isControlled ? 'manual' : 'auto'}
+            onToggle={this.onToggle}
+            ref={(el) => (this.popover = el)}
+          >
             <div class="arrow" ref={(el) => (this.arrow = el)} />
             <div class="content">{this.description ? <p>{this.description}</p> : <slot />}</div>
           </div>
@@ -121,7 +146,7 @@ export class Popover {
 
   public componentDidRender(): void {
     // needs to be called after render cycle to be able to render the popover conditionally
-    this.handlePopover(this.isOpen);
+    this.handlePopover(this.effectiveOpen);
   }
 
   private handlePopover = (open: boolean): void => {
@@ -137,26 +162,40 @@ export class Popover {
   };
 
   private onClickOutside = (e: MouseEvent): void => {
-    // Only called in case of no native popover support
-    if (this.isOpen && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
-      this.isOpen = false;
+    // Called when there is no native popover support or in controlled mode (where `popover="manual"` doesn't light-dismiss)
+    if (this.effectiveOpen && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
+      this.requestClose();
     }
   };
 
   private onToggle = (e: ToggleEvent): void => {
-    this.isOpen = e.newState === 'open';
+    // Only relevant in uncontrolled mode (`popover="auto"`); in controlled mode visibility is owned by the `open` prop
+    if (!this.isControlled) {
+      this.isOpen = e.newState === 'open';
+    }
   };
 
   private onHostKeydown = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' && this.isOpen) {
+    if (e.key === 'Escape' && this.effectiveOpen) {
       // TODO: How to handle focus when button is slotted?
       if (!this.hasSlottedButton) {
-        this.button.focus();
+        this.button?.focus();
       }
-      // Only necessary in case of no native popover support
-      if (!this.hasNativePopoverSupport) {
+      if (this.isControlled) {
+        // `popover="manual"` doesn't light-dismiss, so emit the close request and let the consumer update `open`
+        this.dismiss.emit();
+      } else if (!this.hasNativePopoverSupport) {
+        // Only necessary in case of no native popover support
         this.isOpen = false;
       }
+    }
+  };
+
+  private requestClose = (): void => {
+    if (this.isControlled) {
+      this.dismiss.emit();
+    } else {
+      this.isOpen = false;
     }
   };
 

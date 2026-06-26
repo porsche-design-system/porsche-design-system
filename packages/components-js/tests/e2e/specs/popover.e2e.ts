@@ -7,6 +7,7 @@ import {
   getEventSummary,
   getLifecycleStatus,
   setContentWithDesignSystem,
+  setProperty,
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -533,3 +534,70 @@ test.describe('lifecycle', () => {
     });
   });
 });
+
+test.describe('controlled mode', () => {
+  const initControlledPopover = (page: Page, open: boolean): Promise<void> =>
+    setContentWithDesignSystem(
+      page,
+      `<p-popover ${open ? 'open' : ''}>
+        <button slot="button">Some Button</button>
+        Some Popover Content
+      </p-popover>`
+    );
+
+  test('should be hidden when open prop is false', async ({ page }) => {
+    await initControlledPopover(page, false);
+    await expect(getPopover(page)).toBeHidden();
+  });
+
+  test('should be visible when open prop is true', async ({ page }) => {
+    await initControlledPopover(page, true);
+    await expect(getPopover(page)).toBeVisible();
+  });
+
+  test('should reflect open prop changes', async ({ page }) => {
+    await initControlledPopover(page, false);
+    const host = getHost(page);
+    const popover = getPopover(page);
+
+    await setProperty(host, 'open', true);
+    await expect(popover).toBeVisible();
+
+    await setProperty(host, 'open', false);
+    await expect(popover).toBeHidden();
+  });
+
+  test('should not toggle visibility itself when the slotted button is clicked', async ({ page }) => {
+    await initControlledPopover(page, false);
+    const button = getButton(page);
+
+    // In controlled mode the consumer owns the open state, so a click must not change visibility on its own
+    await button.click();
+    await expect(getPopover(page)).toBeHidden();
+  });
+
+  skipInBrowsers(['webkit', 'firefox'], () => {
+    test('should emit dismiss event on outside click when open', async ({ page }) => {
+      await initControlledPopover(page, true);
+      const host = getHost(page);
+      await addEventListener(host, 'dismiss');
+
+      await page.mouse.click(300, 300);
+
+      expect((await getEventSummary(host, 'dismiss')).counter, 'dismiss after outside click').toBe(1);
+      // popover stays visible because the consumer owns `open` and hasn't updated it yet
+      await expect(getPopover(page)).toBeVisible();
+    });
+
+    test('should emit dismiss event on Escape when open', async ({ page }) => {
+      await initControlledPopover(page, true);
+      const host = getHost(page);
+      await addEventListener(host, 'dismiss');
+
+      await page.keyboard.press('Escape');
+
+      expect((await getEventSummary(host, 'dismiss')).counter, 'dismiss after Escape').toBe(1);
+    });
+  });
+});
+

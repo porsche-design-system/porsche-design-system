@@ -1689,6 +1689,10 @@
             <p-button slot="button" variant="secondary" hide-label="true" icon="car">More information</p-button>
             <p-text>Some content</p-text>
           </p-popover>
+          <p-popover id="controlled-popover">
+            <p-button slot="button" variant="secondary">Controlled popover</p-button>
+            <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
+          </p-popover>
         </div>
         <div data-card="drilldown">
           <nav aria-label="Main">
@@ -3278,6 +3282,19 @@
 
     for (const el of document.querySelectorAll('p-drilldown')) {
       el.addEventListener('update', (e) => (e.target.activeIdentifier = e.detail.activeIdentifier));
+    }
+
+    // Controlled popover: the consumer owns the open state. The slotted button toggles `open`, and the `dismiss`
+    // event (emitted on Escape / outside click) closes it again.
+    const controlledPopover = document.querySelector('#controlled-popover');
+    if (controlledPopover) {
+      controlledPopover.open = false; // boolean definition initializes them component as controlled component
+      controlledPopover.querySelector('[slot="button"]').addEventListener('click', () => {
+        controlledPopover.open = !controlledPopover.open;
+      });
+      controlledPopover.addEventListener('dismiss', () => {
+        controlledPopover.open = false;
+      });
     }
     </script>
   </body>
