@@ -12,10 +12,6 @@ Reach for these foundational styles when you build a custom component or pattern
 available in the component library, or for foundational layout work such as typography, surfaces and
 boxes.
 
-This document is an index of the package. For the exact token values and the complete generated
-SCSS, read the per-domain partials shipped alongside it (`_color.scss`, `_font.scss`, `_grid*.scss`,
-… all re-exported from `_index.scss`).
-
 ## How to use
 
 ### Import
@@ -390,3 +386,7 @@ code.
 | SCSS mixin | Description |
 | --- | --- |
 | `@include pds-grid` | Applies the **Porsche Grid** layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). |
+
+## Exact values
+
+This document is the index. For the exact token values and the complete generated stylesheet, read `@porsche-design-system/components-js/scss` in the installed package.

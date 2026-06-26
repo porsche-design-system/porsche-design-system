@@ -12,6 +12,3 @@ generates the matching utility classes (e.g. `.bg-canvas`, `.p-fluid-md`, `.roun
 Reach for these foundational styles when you build a custom component or pattern that is not yet
 available in the component library, or for foundational layout work such as typography, surfaces and
 boxes.
-
-This document is an index of the theme. For the exact token values and the complete
-generated CSS, read the `index.css` file shipped alongside it.

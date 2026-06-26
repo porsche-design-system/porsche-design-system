@@ -13,9 +13,6 @@ Reach for these foundational styles when you build a custom component or pattern
 available in the component library, or for foundational layout work such as typography, surfaces and
 boxes.
 
-This document is an index of the theme. For the exact token values and the complete
-generated CSS, read the `index.css` file shipped alongside it.
-
 ## How to use
 
 ### Import
@@ -341,3 +338,7 @@ the document or any container; the selected context cascades to all child elemen
 | `.col-span-one-half` | Spans content across one half of the current Porsche Grid area. |
 | `.col-span-one-third` | Spans content across one third of the current Porsche Grid area. |
 | `.col-span-two-thirds` | Spans content across two thirds of the current Porsche Grid area. |
+
+## Exact values
+
+This document is the index. For the exact token values and the complete generated stylesheet, read `../tailwindcss/index.css` in the installed package.

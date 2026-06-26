@@ -145,7 +145,7 @@ const generateTree = async (
     tree.registerReference(entry);
   }
 
-  const styleReferences = await writeStyleReferences(tree);
+  const styleReferences = writeStyleReferences(tree, framework);
   console.log(`  ${styleReferences.length} style reference files written`);
 
   writeTokensReference(tree);

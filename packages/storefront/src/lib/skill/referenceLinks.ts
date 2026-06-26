@@ -10,6 +10,15 @@ import path from 'node:path';
 export const JS_PEER_META_SPECIFIER = '@porsche-design-system/components-js/meta';
 
 /**
+ * The js package's `/scss` subpath. The framework skills link this rather than their local `../scss`,
+ * because every framework wrapper's `scss/` is a `@forward '@porsche-design-system/components-js/scss'`
+ * shim — only the js package ships the real partials. Same shim edge as {@link JS_PEER_META_SPECIFIER},
+ * and version-exact via the same-version js peer. Tailwind needs no equivalent: its `index.css` is a
+ * real copy in every wrapper, so the framework skills link the local `../tailwindcss/index.css`.
+ */
+export const JS_PEER_SCSS_SPECIFIER = '@porsche-design-system/components-js/scss';
+
+/**
  * A skill tree carries two classes of reference path:
  * - `produced` — files generated into the tree (md, examples, generated assets), referenced by a
  *   path relative to the markdown file they appear in. Resolved against the committed snapshot.
@@ -26,6 +35,9 @@ export type ReferenceLink = {
 
 const MARKDOWN_LINK_RE = /\[[^\]]*\]\(([^)]+)\)/g;
 const INLINE_CODE_RE = /`([^`]+)`/g;
+/** Fenced code blocks (``` … ```) — example code, never a tree reference, and their backticks would
+ * throw off the single-backtick `INLINE_CODE_RE` pairing for prose later in the file. */
+const FENCED_CODE_RE = /```[\s\S]*?```/g;
 
 const stripFragment = (target: string): string => target.replace(/#.*$/, '').trim();
 
@@ -35,11 +47,11 @@ const stripFragment = (target: string): string => target.replace(/#.*$/, '').tri
  * prose code like `aria-label` or the bare package name `component-meta`).
  */
 const classify = (target: string): ReferenceKind | null => {
-  if (target === JS_PEER_META_SPECIFIER) {
+  if (target === JS_PEER_META_SPECIFIER || target === JS_PEER_SCSS_SPECIFIER) {
     return 'raw';
   }
   if (target.startsWith('../')) {
-    return 'raw'; // escapes the tree → a built-dist sibling (`../meta`, `../tokens`)
+    return 'raw'; // escapes the tree → a built-dist sibling (`../meta`, `../tokens`, `../tailwindcss/index.css`, `../scss`)
   }
   if (target.startsWith('./') || target.startsWith('references/')) {
     return 'produced';
@@ -54,6 +66,7 @@ const classify = (target: string): ReferenceKind | null => {
  * (the SKILL.md map's per-component pattern) are dropped via the `<` guard.
  */
 export const extractReferences = (markdown: string): ReferenceLink[] => {
+  const prose = markdown.replace(FENCED_CODE_RE, '');
   const byTarget = new Map<string, ReferenceKind>();
   const add = (raw: string): void => {
     const target = stripFragment(raw);
@@ -65,10 +78,10 @@ export const extractReferences = (markdown: string): ReferenceLink[] => {
       byTarget.set(target, kind);
     }
   };
-  for (const match of markdown.matchAll(MARKDOWN_LINK_RE)) {
+  for (const match of prose.matchAll(MARKDOWN_LINK_RE)) {
     add(match[1]);
   }
-  for (const match of markdown.matchAll(INLINE_CODE_RE)) {
+  for (const match of prose.matchAll(INLINE_CODE_RE)) {
     add(match[1]);
   }
   return [...byTarget].map(([target, kind]) => ({ target, kind }));
@@ -99,18 +112,19 @@ export const resolveProduced = (skillRoot: string, sourceFile: string, target: s
 };
 
 /**
- * Resolve the js-peer `/meta` subpath against a built js dist root, honouring its `exports` map
- * (`./meta` → `meta/{esm,cjs}/…`). Encodes the shim edge: this targets the js package's real meta,
- * never the framework wrapper's local re-export shim. Returns the resolved file, or `null` if the
- * dist, its package.json, the `./meta` export, or the target file is missing.
+ * Resolve a js-peer subpath against a built js dist root, honouring its `exports` map and trying the
+ * given condition keys in order (meta exposes `default`/`import`/`types`; scss exposes `sass`). Encodes
+ * the shim edge: this targets the js package's real file, never the framework wrapper's local re-export
+ * shim. Returns the resolved file, or `null` if the dist, its package.json, the export, or the target
+ * file is missing.
  */
-export const resolveJsPeerMeta = (jsDistRoot: string): string | null => {
+const resolveJsPeerSubpath = (jsDistRoot: string, subpath: string, conditions: readonly string[]): string | null => {
   const pkgPath = path.join(jsDistRoot, 'package.json');
   if (!fs.existsSync(pkgPath)) {
     return null;
   }
-  const entry = JSON.parse(fs.readFileSync(pkgPath, 'utf-8')).exports?.['./meta'];
-  const relative = typeof entry === 'string' ? entry : (entry?.default ?? entry?.import ?? entry?.types);
+  const entry = JSON.parse(fs.readFileSync(pkgPath, 'utf-8')).exports?.[subpath];
+  const relative = typeof entry === 'string' ? entry : conditions.map((condition) => entry?.[condition]).find(Boolean);
   if (!relative) {
     return null;
   }
@@ -118,15 +132,28 @@ export const resolveJsPeerMeta = (jsDistRoot: string): string | null => {
   return fs.existsSync(absolute) ? absolute : null;
 };
 
+/** Resolve the js-peer `/meta` subpath (`./meta` → `meta/{esm,cjs}/…`) against a built js dist root. */
+export const resolveJsPeerMeta = (jsDistRoot: string): string | null =>
+  resolveJsPeerSubpath(jsDistRoot, './meta', ['default', 'import', 'types']);
+
+/** Resolve the js-peer `/scss` subpath (`./scss` → `scss/_index.scss` under the `sass` condition). */
+export const resolveJsPeerScss = (jsDistRoot: string): string | null =>
+  resolveJsPeerSubpath(jsDistRoot, './scss', ['sass', 'default']);
+
 /**
  * Resolve a single raw reference against the built dist.
- * - `@porsche-design-system/components-js/meta` (framework skills) → the js peer's `/meta` subpath.
- * - `../meta` / `../tokens` (skill-root-relative) → this framework's own dist sibling. The js skill's
- *   `../meta` is its real data; framework skills only carry `../tokens` here, never `../meta`.
+ * - `@porsche-design-system/components-js/meta` / `…/scss` (framework skills) → the js peer's subpath.
+ * - `../meta` / `../tokens` / `../tailwindcss/index.css` / `../scss` (skill-root-relative) → this
+ *   framework's own dist sibling. The js skill's `../meta` and `../scss` are its real data; framework
+ *   skills carry the js-peer specifiers for those instead. `../tailwindcss/index.css` is real in every
+ *   wrapper, so every skill carries it directly.
  */
 export const resolveRaw = (distSkillRoot: string, jsDistRoot: string, target: string): boolean => {
   if (target === JS_PEER_META_SPECIFIER) {
     return resolveJsPeerMeta(jsDistRoot) !== null;
+  }
+  if (target === JS_PEER_SCSS_SPECIFIER) {
+    return resolveJsPeerScss(jsDistRoot) !== null;
   }
   return fs.existsSync(path.resolve(distSkillRoot, target));
 };

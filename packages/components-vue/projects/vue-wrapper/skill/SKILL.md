@@ -72,14 +72,23 @@ The Porsche Design System ships 58 components. Open a component's reference for 
 | `p-toast` | The `p-toast` component manages both, the queue and display of toast messages. | [p-toast.md](references/components/p-toast/p-toast.md) |
 | `p-wordmark` | The `p-wordmark` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product. | [p-wordmark.md](references/components/p-wordmark/p-wordmark.md) |
 
+## Styling
+
+The Porsche Design System offers a ready-made integration for four styling solutions. They are independent of the components — you do not need them to use components, and they do not depend on components — but they build on the same design system: the same design tokens and the same `color-scheme` (light/dark) theming. Custom UI you build with them therefore shares the exact palette, spacing and typography as PDS components.
+
+Use them to build layout and custom components or patterns not yet available in the component library — typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. Pick one solution per project and open its reference for setup and the full catalog.
+
+| Styling solution | Use this when | Reference |
+| --- | --- | --- |
+| Tailwind CSS | utility-first styling on a PDS Tailwind v4 theme | [tailwindcss.md](references/styles/tailwindcss.md) |
+| SCSS | Sass variables and mixins under the `pds` namespace | [scss.md](references/styles/scss.md) |
+| vanilla-extract | typed tokens and utilities in `*.css.ts` files | [vanilla-extract.md](references/styles/vanilla-extract.md) |
+| Emotion | tokens and utilities in `css`/`styled` styles | [emotion.md](references/styles/emotion.md) |
+
 ## Reference map
 
 | Reference | Use this when |
 | --- | --- |
-| `references/styles/tailwindcss.md` | Styling PDS usage with Tailwind CSS. |
-| `references/styles/scss.md` | Styling PDS usage with SCSS. |
-| `references/styles/vanilla-extract.md` | Styling PDS usage with vanilla-extract. |
-| `references/styles/emotion.md` | Styling PDS usage with Emotion. |
 | `references/stylesheets.md` | Setting up global stylesheets and the CSS reset. |
 | `references/tokens.md` | Using design tokens — color, spacing, typography, etc. |
 | `references/partials.md` | Adding PDS partials — fonts, icons, meta tags, loader script. |
