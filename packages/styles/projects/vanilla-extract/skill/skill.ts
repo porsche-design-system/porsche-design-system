@@ -17,9 +17,9 @@ import { type VanillaExtractKind, kindOf, vanillaExtractMeta } from '../vanillaE
  *
  * The documented surface is split into a `token` view (the `## Tokens` section) and a `utility` view
  * (the `## Utilities` section) by partitioning the flat `vanillaExtractMeta` catalog per leaf via
- * {@link kindOf}. Each leaf is keyed by its real export name; exact runtime values resolve to CSS
- * `light-dark()` custom properties at use time, so this file is the index of the JS API, not the
- * detail. Deprecated aliases stay public but undocumented and are intentionally omitted here.
+ * {@link kindOf}. Each leaf is keyed by its real export name; each token's resolved value is
+ * tabulated (colors as their `light-dark()` custom-property expression). Deprecated aliases stay
+ * public but undocumented and are intentionally omitted here.
  *
  * Structurally identical to the scss/tailwind/emotion serializers — only the leaf predicate, the
  * reference columns and the section headings differ (Vanilla Extract leaves carry a `name`; tokens a
@@ -41,6 +41,7 @@ type Column<T> = { header: string; render: (item: T) => string };
 const tokenColumns: Column<VanillaExtractToken>[] = [
   { header: 'Export', render: (t) => code(t.name) },
   { header: 'Description', render: (t) => cell(t.description) },
+  { header: 'Value', render: (t) => code(String(t.value)) },
 ];
 
 const utilityColumns: Column<VanillaExtractUtility>[] = [

@@ -37,9 +37,9 @@ const STYLE_REFERENCES: StyleReference[] = [
   { serialize: getStylesheetsSkill, reference: 'stylesheets.md' },
 ];
 
-/** The "Exact values" pointer appended to a reference that has a shipped stylesheet in the package. */
-const exactValuesSection = (rawReference: string): string =>
-  `## Exact values\n\nThis document is the index. For the exact token values and the complete generated stylesheet, read \`${rawReference}\` in the installed package.\n`;
+/** Pointer to the shipped stylesheet, appended to a reference whose package ships one. */
+const fullStylesheetSection = (rawReference: string): string =>
+  `## Full stylesheet\n\nThe tables above are the index, with each token's value. For the complete generated stylesheet — resets, deprecated aliases and everything not tabulated here — read \`${rawReference}\` in the installed package.\n`;
 
 /**
  * Write every styling-solution reference (`references/styles/*.md`) and the global stylesheets
@@ -48,6 +48,6 @@ const exactValuesSection = (rawReference: string): string =>
  */
 export const writeStyleReferences = (tree: SkillTree, framework: Framework): string[] =>
   STYLE_REFERENCES.map(({ serialize, reference, rawReference }) => {
-    const markdown = rawReference ? `${serialize()}\n${exactValuesSection(rawReference(framework))}` : serialize();
+    const markdown = rawReference ? `${serialize()}\n${fullStylesheetSection(rawReference(framework))}` : serialize();
     return tree.writeReference(reference, markdown);
   });

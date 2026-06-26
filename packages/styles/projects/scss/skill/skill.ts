@@ -7,7 +7,8 @@ import { kindOf, type ScssKind, scssMeta } from '../src';
 /**
  * Markdown serializer for the scss package, driven by {@link scssMeta}. Renders an intro, a
  * hand-authored "how to use" guide and a grouped reference of every documented variable and mixin.
- * Only the documented surface is rendered; plumbing and exact token values stay in the partials.
+ * Each variable's value is tabulated (colors as their `light-dark()` expression); only the plumbing
+ * and the full generated output stay in the partials.
  */
 
 const code = (value: string): string => `\`${value}\``;
@@ -25,6 +26,7 @@ type Column<T> = { header: string; render: (item: T) => string };
 const variableColumns: Column<ScssVariable>[] = [
   { header: 'SCSS variable', render: (v) => code(v.name) },
   { header: 'Description', render: (v) => cell(v.description) },
+  { header: 'Value', render: (v) => code(String(v.value)) },
 ];
 
 const mixinColumns: Column<ScssMixin>[] = [

@@ -56,179 +56,179 @@ the document or any container; the selected context cascades to all child elemen
 
 ### Border — Radius
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--radius-xs` | `.rounded-xs` | Applies a **x-small** `border-radius`. |
-| `--radius-sm` | `.rounded-sm` | Applies a **small** `border-radius`. |
-| `--radius-md` | `.rounded-md` | Applies a **medium** `border-radius`. |
-| `--radius-lg` | `.rounded-lg` | Applies a **large** `border-radius`. |
-| `--radius-xl` | `.rounded-xl` | Applies a **x-large** `border-radius`. |
-| `--radius-2xl` | `.rounded-2xl` | Applies a **2x-large** `border-radius`. |
-| `--radius-3xl` | `.rounded-3xl` | Applies a **3x-large** `border-radius`. |
-| `--radius-4xl` | `.rounded-4xl` | Applies a **4x-large** `border-radius`. |
-| `--radius-full` | `.rounded-full` | Applies a **fully** rounded `border-radius`. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--radius-xs` | `.rounded-xs` | Applies a **x-small** `border-radius`. | `2px` |
+| `--radius-sm` | `.rounded-sm` | Applies a **small** `border-radius`. | `4px` |
+| `--radius-md` | `.rounded-md` | Applies a **medium** `border-radius`. | `6px` |
+| `--radius-lg` | `.rounded-lg` | Applies a **large** `border-radius`. | `8px` |
+| `--radius-xl` | `.rounded-xl` | Applies a **x-large** `border-radius`. | `12px` |
+| `--radius-2xl` | `.rounded-2xl` | Applies a **2x-large** `border-radius`. | `16px` |
+| `--radius-3xl` | `.rounded-3xl` | Applies a **3x-large** `border-radius`. | `24px` |
+| `--radius-4xl` | `.rounded-4xl` | Applies a **4x-large** `border-radius`. | `32px` |
+| `--radius-full` | `.rounded-full` | Applies a **fully** rounded `border-radius`. | `calc(infinity * 1px)` |
 
 ### Border — Width
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--default-border-width` | – | Default border width applied globally via the Tailwind `@theme` block. |
-| `--border-width-regular` | – | Alias for the regular (2 px) border width. **Deprecated** — prefer `--default-border-width`. |
-| `--border-width-thin` | – | Alias for the thin (1 px) border width. **Deprecated** — prefer `--default-border-width`. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--default-border-width` | – | Default border width applied globally via the Tailwind `@theme` block. | `1px` |
+| `--border-width-regular` | – | Alias for the regular (2 px) border width. **Deprecated** — prefer `--default-border-width`. | `2px` |
+| `--border-width-thin` | – | Alias for the thin (1 px) border width. **Deprecated** — prefer `--default-border-width`. | `1px` |
 
 ### Blur
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--blur-frosted` | `.backdrop-blur-frosted`, `.blur-frosted` | Applies a **frosted** effect when used with `backdrop-filter` or `filter: blur()` when combined with a semi-transparent color. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--blur-frosted` | `.backdrop-blur-frosted`, `.blur-frosted` | Applies a **frosted** effect when used with `backdrop-filter` or `filter: blur()` when combined with a semi-transparent color. | `32px` |
 
 ### Breakpoint
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--breakpoint-xs` | `xs:*` | Defines the **x-small** responsive breakpoint. |
-| `--breakpoint-sm` | `sm:*` | Defines the **small** responsive breakpoint. |
-| `--breakpoint-md` | `md:*` | Defines the **medium** responsive breakpoint. |
-| `--breakpoint-lg` | `lg:*` | Defines the **large** responsive breakpoint. |
-| `--breakpoint-xl` | `xl:*` | Defines the **x-large** responsive breakpoint. |
-| `--breakpoint-2xl` | `2xl:*` | Defines the **2x-large** responsive breakpoint. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--breakpoint-xs` | `xs:*` | Defines the **x-small** responsive breakpoint. | `480px` |
+| `--breakpoint-sm` | `sm:*` | Defines the **small** responsive breakpoint. | `760px` |
+| `--breakpoint-md` | `md:*` | Defines the **medium** responsive breakpoint. | `1000px` |
+| `--breakpoint-lg` | `lg:*` | Defines the **large** responsive breakpoint. | `1300px` |
+| `--breakpoint-xl` | `xl:*` | Defines the **x-large** responsive breakpoint. | `1760px` |
+| `--breakpoint-2xl` | `2xl:*` | Defines the **2x-large** responsive breakpoint. | `1920px` |
 
 ### Color — A11y
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--color-focus` | `.outline-focus` | Applies the focus color, typically used as the outline for `:focus-visible` states. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--color-focus` | `.outline-focus` | Applies the focus color, typically used as the outline for `:focus-visible` states. | `var(--_color-focus-dynamic, light-dark(#1A44EA,#1A44EA))` |
 
 ### Color — Background
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--color-canvas` | `.bg-canvas` | Applies the canvas color, typically used for surfaces. |
-| `--color-surface` | `.bg-surface` | Applies the surface color, typically used for surfaces. |
-| `--color-frosted` | `.bg-frosted` | Applies the frosted color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. |
-| `--color-frosted-soft` | `.bg-frosted-soft` | Applies the frosted color, typically used as a background `:hover`. |
-| `--color-frosted-strong` | `.bg-frosted-strong` | Applies the frosted color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. |
-| `--color-backdrop` | `.bg-backdrop` | Applies the backdrop color, typically used for backdrops. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--color-canvas` | `.bg-canvas` | Applies the canvas color, typically used for surfaces. | `var(--_color-canvas-dynamic, light-dark(#fff,hsl(225 66.7% 1.2%)))` |
+| `--color-surface` | `.bg-surface` | Applies the surface color, typically used for surfaces. | `var(--_color-surface-dynamic, light-dark(hsl(240 10% 95%),hsl(240 2% 10%)))` |
+| `--color-frosted` | `.bg-frosted` | Applies the frosted color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | `var(--_color-frosted-dynamic, light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228)))` |
+| `--color-frosted-soft` | `.bg-frosted-soft` | Applies the frosted color, typically used as a background `:hover`. | `var(--_color-frosted-soft-dynamic, light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154)))` |
+| `--color-frosted-strong` | `.bg-frosted-strong` | Applies the frosted color, typically used as a background in combination with a blur effect `.backdrop-blur-frosted`. | `var(--_color-frosted-strong-dynamic, light-dark(hsl(236 6.5% 42% / 0.236),hsl(240 1.5% 61.8% / 0.302)))` |
+| `--color-backdrop` | `.bg-backdrop` | Applies the backdrop color, typically used for backdrops. | `var(--_color-backdrop-dynamic, light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 5.3% 14.9% / 0.5)))` |
 
 ### Color — Foreground
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--color-contrast-lower` | `.border-contrast-lower` | Applies the contrast-lower color, intended only for decorative elements, as it is not accessibility-compliant. |
-| `--color-contrast-low` | `.border-contrast-low` | Applies the contrast-low color, intended only for decorative elements, as it is not accessibility-compliant. |
-| `--color-contrast-medium` | `.text-contrast-medium` | Applies the contrast-medium color, typically used for text. |
-| `--color-contrast-high` | `.text-contrast-high` | Applies the contrast-high color, typically used for text. |
-| `--color-contrast-higher` | `.text-contrast-higher` | Applies the contrast-higher color, typically used for text. |
-| `--color-primary` | `.text-primary` | Applies the primary color, typically used for text. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--color-contrast-lower` | `.border-contrast-lower` | Applies the contrast-lower color, intended only for decorative elements, as it is not accessibility-compliant. | `var(--_color-contrast-lower-dynamic, light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302)))` |
+| `--color-contrast-low` | `.border-contrast-low` | Applies the contrast-low color, intended only for decorative elements, as it is not accessibility-compliant. | `var(--_color-contrast-low-dynamic, light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45)))` |
+| `--color-contrast-medium` | `.text-contrast-medium` | Applies the contrast-medium color, typically used for text. | `var(--_color-contrast-medium-dynamic, light-dark(hsl(240 6.1% 7% / 0.6),hsl(240 12.5% 96.9% / 0.56)))` |
+| `--color-contrast-high` | `.text-contrast-high` | Applies the contrast-high color, typically used for text. | `var(--_color-contrast-high-dynamic, light-dark(hsl(240 7.1% 11% / 0.7),hsl(240 12.5% 96.9% / 0.67)))` |
+| `--color-contrast-higher` | `.text-contrast-higher` | Applies the contrast-higher color, typically used for text. | `var(--_color-contrast-higher-dynamic, light-dark(hsl(240 8.7% 9% / 0.8),hsl(240 12.5% 96.9% / 0.78)))` |
+| `--color-primary` | `.text-primary` | Applies the primary color, typically used for text. | `var(--_color-primary-dynamic, light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)))` |
 
 ### Color — Semantic
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--color-success` | `.text-success` | Applies the success color, typically used for text. |
-| `--color-success-low` | `.text-success`, `.border-success` | Applies the success color, typically used for text or border. |
-| `--color-success-medium` | `.text-success`, `.border-success` | Applies the success color, typically used for text or border. |
-| `--color-success-frosted` | `.bg-success-frosted` | Applies the success-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. |
-| `--color-success-frosted-soft` | `.bg-success-frosted-soft` | Applies the success-frosted-soft color, typically used as background `:hover`. |
-| `--color-warning` | `.text-warning` | Applies the warning color, typically used for text. |
-| `--color-warning-low` | `.text-warning`, `.border-warning` | Applies the warning color, typically used for text or border. |
-| `--color-warning-medium` | `.text-warning`, `.border-warning` | Applies the warning color, typically used for text or border. |
-| `--color-warning-frosted` | `.bg-warning-frosted` | Applies the warning-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. |
-| `--color-warning-frosted-soft` | `.bg-warning-frosted-soft` | Applies the warning-frosted-soft color, typically used as background `:hover`. |
-| `--color-error` | `.text-error` | Applies the error color, typically used for text. |
-| `--color-error-low` | `.text-error`, `.border-error` | Applies the error color, typically used for text or border. |
-| `--color-error-medium` | `.text-error`, `.border-error` | Applies the error color, typically used for text or border. |
-| `--color-error-frosted` | `.bg-error-frosted` | Applies the error-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. |
-| `--color-error-frosted-soft` | `.bg-error-frosted-soft` | Applies the error-frosted-soft color, typically used as background `:hover`. |
-| `--color-info` | `.text-info` | Applies the info color, typically used for text. |
-| `--color-info-low` | `.text-info`, `.border-info` | Applies the info color, typically used for text or border. |
-| `--color-info-medium` | `.text-info`, `.border-info` | Applies the info color, typically used for text or border. |
-| `--color-info-frosted` | `.bg-info-frosted` | Applies the info-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. |
-| `--color-info-frosted-soft` | `.bg-info-frosted-soft` | Applies the info-frosted-soft color, typically used as background `:hover`. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--color-success` | `.text-success` | Applies the success color, typically used for text. | `var(--_color-success-dynamic, light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%)))` |
+| `--color-success-low` | `.text-success`, `.border-success` | Applies the success color, typically used for text or border. | `var(--_color-success-low-dynamic, light-dark(hsl(115 77.5% 27.8% / 0.18),hsl(157 84.9% 41.6% / 0.18)))` |
+| `--color-success-medium` | `.text-success`, `.border-success` | Applies the success color, typically used for text or border. | `var(--_color-success-medium-dynamic, light-dark(hsl(115 77.5% 27.8% / 0.6),hsl(157 84.9% 41.6% / 0.6)))` |
+| `--color-success-frosted` | `.bg-success-frosted` | Applies the success-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | `var(--_color-success-frosted-dynamic, light-dark(hsl(109 100% 90% / 0.55),hsl(157 79% 20% / 0.66)))` |
+| `--color-success-frosted-soft` | `.bg-success-frosted-soft` | Applies the success-frosted-soft color, typically used as background `:hover`. | `var(--_color-success-frosted-soft-dynamic, light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66)))` |
+| `--color-warning` | `.text-warning` | Applies the warning color, typically used for text. | `var(--_color-warning-dynamic, light-dark(hsl(28 97.7% 34.1%),hsl(28 90.2% 56.1%)))` |
+| `--color-warning-low` | `.text-warning`, `.border-warning` | Applies the warning color, typically used for text or border. | `var(--_color-warning-low-dynamic, light-dark(hsl(28 97.7% 34.1% / 0.18),hsl(28 90.2% 56.1% / 0.18)))` |
+| `--color-warning-medium` | `.text-warning`, `.border-warning` | Applies the warning color, typically used for text or border. | `var(--_color-warning-medium-dynamic, light-dark(hsl(28 97.7% 34.1% / 0.6),hsl(28 90.2% 56.1% / 0.6)))` |
+| `--color-warning-frosted` | `.bg-warning-frosted` | Applies the warning-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | `var(--_color-warning-frosted-dynamic, light-dark(hsl(40 100% 90% / 0.55),hsl(52 79% 20% / 0.66)))` |
+| `--color-warning-frosted-soft` | `.bg-warning-frosted-soft` | Applies the warning-frosted-soft color, typically used as background `:hover`. | `var(--_color-warning-frosted-soft-dynamic, light-dark(hsl(40 80% 95% / 0.55),hsl(52 59% 15% / 0.66)))` |
+| `--color-error` | `.text-error` | Applies the error color, typically used for text. | `var(--_color-error-dynamic, light-dark(hsl(357 78% 41%),hsl(0 96.9% 62%)))` |
+| `--color-error-low` | `.text-error`, `.border-error` | Applies the error color, typically used for text or border. | `var(--_color-error-low-dynamic, light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18)))` |
+| `--color-error-medium` | `.text-error`, `.border-error` | Applies the error color, typically used for text or border. | `var(--_color-error-medium-dynamic, light-dark(hsl(357 78% 41% / 0.6),hsl(0 96.9% 62% / 0.6)))` |
+| `--color-error-frosted` | `.bg-error-frosted` | Applies the error-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | `var(--_color-error-frosted-dynamic, light-dark(hsl(0 100% 90% / 0.55),hsl(0 79% 20% / 0.66)))` |
+| `--color-error-frosted-soft` | `.bg-error-frosted-soft` | Applies the error-frosted-soft color, typically used as background `:hover`. | `var(--_color-error-frosted-soft-dynamic, light-dark(hsl(0 80% 95% / 0.55),hsl(0 59% 15% / 0.66)))` |
+| `--color-info` | `.text-info` | Applies the info color, typically used for text. | `var(--_color-info-dynamic, light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%)))` |
+| `--color-info-low` | `.text-info`, `.border-info` | Applies the info color, typically used for text or border. | `var(--_color-info-low-dynamic, light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18)))` |
+| `--color-info-medium` | `.text-info`, `.border-info` | Applies the info color, typically used for text or border. | `var(--_color-info-medium-dynamic, light-dark(hsl(228 83.2% 51% / 0.6),hsl(210 100% 54.5% / 0.6)))` |
+| `--color-info-frosted` | `.bg-info-frosted` | Applies the info-frosted color, typically used as background in combination with a blur effect `.backdrop-blur-frosted`. | `var(--_color-info-frosted-dynamic, light-dark(hsl(211 100% 90% / 0.55),hsl(210 79% 20% / 0.66)))` |
+| `--color-info-frosted-soft` | `.bg-info-frosted-soft` | Applies the info-frosted-soft color, typically used as background `:hover`. | `var(--_color-info-frosted-soft-dynamic, light-dark(hsl(211 80% 95% / 0.55),hsl(210 59% 15% / 0.66)))` |
 
 ### Font — Family
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--font-porsche-next` | `.font-porsche-next` | Applies the **Porsche Next** font family along with fallback fonts. Automatically swaps to the locale-specific CJK stack (Simplified Chinese, Traditional Chinese, Japanese, Korean) via `:lang()` based on the nearest `lang` attribute. |
-| `--font-sans` | `.font-sans` | Aliases the Tailwind `--font-sans` variable to `--font-porsche-next`, so the built-in `.font-sans` utility automatically applies the Porsche Next typeface. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--font-porsche-next` | `.font-porsche-next` | Applies the **Porsche Next** font family along with fallback fonts. Automatically swaps to the locale-specific CJK stack (Simplified Chinese, Traditional Chinese, Japanese, Korean) via `:lang()` based on the nearest `lang` attribute. | `var(--_font-porsche-next-dynamic)` |
+| `--font-sans` | `.font-sans` | Aliases the Tailwind `--font-sans` variable to `--font-porsche-next`, so the built-in `.font-sans` utility automatically applies the Porsche Next typeface. | `--theme(--font-porsche-next)` |
 
 ### Font — Weight
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--font-weight-normal` | `.font-normal` | Applies the **regular** font weight optimized for the Porsche Next typeface. |
-| `--font-weight-semibold` | `.font-semibold` | Applies the **semi-bold** font weight optimized for the Porsche Next typeface. |
-| `--font-weight-bold` | `.font-bold` | Applies the **bold** font weight optimized for the Porsche Next typeface. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--font-weight-normal` | `.font-normal` | Applies the **regular** font weight optimized for the Porsche Next typeface. | `400` |
+| `--font-weight-semibold` | `.font-semibold` | Applies the **semi-bold** font weight optimized for the Porsche Next typeface. | `600` |
+| `--font-weight-bold` | `.font-bold` | Applies the **bold** font weight optimized for the Porsche Next typeface. | `700` |
 
 ### Font — Line height
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--leading-normal` | `.leading-normal` | Applies a dynamic default line height specifically optimized for the Porsche Next typeface. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--leading-normal` | `.leading-normal` | Applies a dynamic default line height specifically optimized for the Porsche Next typeface. | `calc(6px + 2.125ex)` |
 
 ### Font — Size
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--text-2xs` | `.text-2xs` | Applies the **2x-small** font size and line height optimized for the Porsche Next typeface. |
-| `--text-xs` | `.text-xs` | Applies the **x-small** font size and line height optimized for the Porsche Next typeface. |
-| `--text-sm` | `.text-sm` | Applies the **small** font size and line height optimized for the Porsche Next typeface. |
-| `--text-md` | `.text-md` | Applies the **medium** font size and line height optimized for the Porsche Next typeface. |
-| `--text-lg` | `.text-lg` | Applies the **large** font size and line height optimized for the Porsche Next typeface. |
-| `--text-xl` | `.text-xl` | Applies the **x-large** font size and line height optimized for the Porsche Next typeface. |
-| `--text-2xl` | `.text-2xl` | Applies the **2x-large** font size and line height optimized for the Porsche Next typeface. |
-| `--text-3xl` | `.text-3xl` | Applies the **3x-large** font size and line height optimized for the Porsche Next typeface. |
-| `--text-4xl` | `.text-4xl` | Applies the **4x-large** font size and line height optimized for the Porsche Next typeface. |
-| `--text-5xl` | `.text-5xl` | Applies the **5x-large** font size and line height optimized for the Porsche Next typeface. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--text-2xs` | `.text-2xs` | Applies the **2x-small** font size and line height optimized for the Porsche Next typeface. | `.75rem` |
+| `--text-xs` | `.text-xs` | Applies the **x-small** font size and line height optimized for the Porsche Next typeface. | `.875rem` |
+| `--text-sm` | `.text-sm` | Applies the **small** font size and line height optimized for the Porsche Next typeface. | `1rem` |
+| `--text-md` | `.text-md` | Applies the **medium** font size and line height optimized for the Porsche Next typeface. | `clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)` |
+| `--text-lg` | `.text-lg` | Applies the **large** font size and line height optimized for the Porsche Next typeface. | `clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)` |
+| `--text-xl` | `.text-xl` | Applies the **x-large** font size and line height optimized for the Porsche Next typeface. | `clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)` |
+| `--text-2xl` | `.text-2xl` | Applies the **2x-large** font size and line height optimized for the Porsche Next typeface. | `clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)` |
+| `--text-3xl` | `.text-3xl` | Applies the **3x-large** font size and line height optimized for the Porsche Next typeface. | `clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)` |
+| `--text-4xl` | `.text-4xl` | Applies the **4x-large** font size and line height optimized for the Porsche Next typeface. | `clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)` |
+| `--text-5xl` | `.text-5xl` | Applies the **5x-large** font size and line height optimized for the Porsche Next typeface. | `clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)` |
 
 ### Shadow
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--shadow-sm` | `.shadow-sm` | Applies a **small** `box-shadow`. |
-| `--shadow-md` | `.shadow-md` | Applies a **medium** `box-shadow`. |
-| `--shadow-lg` | `.shadow-lg` | Applies a **large** `box-shadow`. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--shadow-sm` | `.shadow-sm` | Applies a **small** `box-shadow`. | `0px 3px 8px rgba(0,0,0,.16)` |
+| `--shadow-md` | `.shadow-md` | Applies a **medium** `box-shadow`. | `0px 4px 16px rgba(0,0,0,.16)` |
+| `--shadow-lg` | `.shadow-lg` | Applies a **large** `box-shadow`. | `0px 8px 40px rgba(0,0,0,.16)` |
 
 ### Spacing — Fluid
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--spacing-fluid-xs` | `.p-fluid-xs`, `.m-fluid-xs` | Applies the **x-small fluid** spacing. |
-| `--spacing-fluid-sm` | `.p-fluid-sm`, `.m-fluid-sm` | Applies the **small fluid** spacing. |
-| `--spacing-fluid-md` | `.p-fluid-md`, `.m-fluid-md` | Applies the **medium fluid** spacing. |
-| `--spacing-fluid-lg` | `.p-fluid-lg`, `.m-fluid-lg` | Applies the **large fluid** spacing. |
-| `--spacing-fluid-xl` | `.p-fluid-xl`, `.m-fluid-xl` | Applies the **x-large fluid** spacing. |
-| `--spacing-fluid-2xl` | `.p-fluid-2xl`, `.m-fluid-2xl` | Applies the **2x-large fluid** spacing. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--spacing-fluid-xs` | `.p-fluid-xs`, `.m-fluid-xs` | Applies the **x-small fluid** spacing. | `clamp(4px, 0.25vw + 3px, 8px)` |
+| `--spacing-fluid-sm` | `.p-fluid-sm`, `.m-fluid-sm` | Applies the **small fluid** spacing. | `clamp(8px, 0.5vw + 6px, 16px)` |
+| `--spacing-fluid-md` | `.p-fluid-md`, `.m-fluid-md` | Applies the **medium fluid** spacing. | `clamp(16px, 1.25vw + 12px, 36px)` |
+| `--spacing-fluid-lg` | `.p-fluid-lg`, `.m-fluid-lg` | Applies the **large fluid** spacing. | `clamp(32px, 2.75vw + 23px, 76px)` |
+| `--spacing-fluid-xl` | `.p-fluid-xl`, `.m-fluid-xl` | Applies the **x-large fluid** spacing. | `clamp(48px, 3vw + 38px, 96px)` |
+| `--spacing-fluid-2xl` | `.p-fluid-2xl`, `.m-fluid-2xl` | Applies the **2x-large fluid** spacing. | `clamp(80px, 7.5vw + 56px, 200px)` |
 
 ### Spacing — Static
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--spacing-static-2xs` | `.p-static-2xs`, `.m-static-2xs` | Applies the **2x-small static** spacing. |
-| `--spacing-static-xs` | `.p-static-xs`, `.m-static-xs` | Applies the **x-small static** spacing. |
-| `--spacing-static-sm` | `.p-static-sm`, `.m-static-sm` | Applies the **small static** spacing. |
-| `--spacing-static-md` | `.p-static-md`, `.m-static-md` | Applies the **medium static** spacing. |
-| `--spacing-static-lg` | `.p-static-lg`, `.m-static-lg` | Applies the **large static** spacing. |
-| `--spacing-static-xl` | `.p-static-xl`, `.m-static-xl` | Applies the **x-large static** spacing. |
-| `--spacing-static-2xl` | `.p-static-2xl`, `.m-static-2xl` | Applies the **2x-large static** spacing. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--spacing-static-2xs` | `.p-static-2xs`, `.m-static-2xs` | Applies the **2x-small static** spacing. | `1px` |
+| `--spacing-static-xs` | `.p-static-xs`, `.m-static-xs` | Applies the **x-small static** spacing. | `4px` |
+| `--spacing-static-sm` | `.p-static-sm`, `.m-static-sm` | Applies the **small static** spacing. | `8px` |
+| `--spacing-static-md` | `.p-static-md`, `.m-static-md` | Applies the **medium static** spacing. | `16px` |
+| `--spacing-static-lg` | `.p-static-lg`, `.m-static-lg` | Applies the **large static** spacing. | `32px` |
+| `--spacing-static-xl` | `.p-static-xl`, `.m-static-xl` | Applies the **x-large static** spacing. | `48px` |
+| `--spacing-static-2xl` | `.p-static-2xl`, `.m-static-2xl` | Applies the **2x-large static** spacing. | `80px` |
 
 ### Motion — Duration
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--transition-duration-sm` | `.duration-sm` | Applies a **short** `transition-duration`. |
-| `--transition-duration-md` | `.duration-md` | Applies a **moderate** `transition-duration`. |
-| `--transition-duration-lg` | `.duration-lg` | Applies a **long** `transition-duration`. |
-| `--transition-duration-xl` | `.duration-xl` | Applies a **very long** `transition-duration`. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--transition-duration-sm` | `.duration-sm` | Applies a **short** `transition-duration`. | `.25s` |
+| `--transition-duration-md` | `.duration-md` | Applies a **moderate** `transition-duration`. | `.4s` |
+| `--transition-duration-lg` | `.duration-lg` | Applies a **long** `transition-duration`. | `.6s` |
+| `--transition-duration-xl` | `.duration-xl` | Applies a **very long** `transition-duration`. | `1.2s` |
 
 ### Motion — Ease
 
-| Theme variable | Tailwind class(es) | Description |
-| --- | --- | --- |
-| `--ease-in-out` | `.ease-in-out` | Applies an **in-out** `transition-timing-function`. |
-| `--ease-in` | `.ease-in` | Applies an **in** `transition-timing-function`. |
-| `--ease-out` | `.ease-out` | Applies an **out** `transition-timing-function`. |
+| Theme variable | Tailwind class(es) | Description | Value |
+| --- | --- | --- | --- |
+| `--ease-in-out` | `.ease-in-out` | Applies an **in-out** `transition-timing-function`. | `cubic-bezier(.25,.1,.25,1)` |
+| `--ease-in` | `.ease-in` | Applies an **in** `transition-timing-function`. | `cubic-bezier(0,0,.2,1)` |
+| `--ease-out` | `.ease-out` | Applies an **out** `transition-timing-function`. | `cubic-bezier(.4,0,.5,1)` |
 
 ## Utilities
 
@@ -339,6 +339,6 @@ the document or any container; the selected context cascades to all child elemen
 | `.col-span-one-third` | Spans content across one third of the current Porsche Grid area. |
 | `.col-span-two-thirds` | Spans content across two thirds of the current Porsche Grid area. |
 
-## Exact values
+## Full stylesheet
 
-This document is the index. For the exact token values and the complete generated stylesheet, read `../tailwindcss/index.css` in the installed package.
+The tables above are the index, with each token's value. For the complete generated stylesheet — resets, deprecated aliases and everything not tabulated here — read `../tailwindcss/index.css` in the installed package.
