@@ -12,6 +12,9 @@
     "test:unit": "vitest -c vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
+  "dependencies": {
+    "postcss": "^8.5.16"
+  },
   "devDependencies": {
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"

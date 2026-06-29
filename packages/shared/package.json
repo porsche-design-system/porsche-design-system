@@ -26,6 +26,7 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
+    "postcss": "^8.5.16",
     "react": "^19.2.7"
   },
   "devDependencies": {

@@ -28,6 +28,9 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./src/lib"
   },
+  "dependencies": {
+    "postcss": "^8.5.16"
+  },
   "devDependencies": {
     "@porsche-design-system/tokens": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",

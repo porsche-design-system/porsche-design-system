@@ -29,7 +29,8 @@
     "@porsche-design-system/emotion": "0.0.0",
     "@porsche-design-system/font-face": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@webcomponents/template-shadowroot": "^0.2.1"
+    "@webcomponents/template-shadowroot": "^0.2.1",
+    "postcss": "^8.5.16"
   },
   "devDependencies": {
     "@types/html-minifier-terser": "^7.0.2",

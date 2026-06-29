@@ -11,6 +11,9 @@
     "test:unit:ag-grid": "npm run test --workspace=@porsche-design-system/ag-grid",
     "clean:build": "npm run clean:build --workspace=@porsche-design-system/ag-grid"
   },
+  "dependencies": {
+    "postcss": "^8.5.16"
+  },
   "volta": {
     "extends": "../../package.json"
   }

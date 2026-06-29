@@ -15,7 +15,8 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-manager-core": "0.0.0"
+    "@porsche-design-system/components-manager-core": "0.0.0",
+    "postcss": "^8.5.16"
   },
   "devDependencies": {
     "fast-glob": "^3.3.3",

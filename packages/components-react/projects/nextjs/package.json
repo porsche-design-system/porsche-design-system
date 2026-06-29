@@ -34,7 +34,7 @@
     "ag-grid-enterprise": "35.3.1",
     "ag-grid-react": "35.3.1",
     "concurrently": "^10.0.3",
-    "postcss": "^8",
+    "postcss": "^8.5.16",
     "tailwindcss": "^4.3.1",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"

@@ -9,10 +9,10 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "style": "./lib/index.css",
       "types": "./dist/esm/index.d.ts",
       "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.cjs"
+      "require": "./dist/cjs/index.cjs",
+      "style": "./lib/index.css"
     },
     "./meta": {
       "types": "./meta/esm/meta.d.ts",
@@ -49,7 +49,8 @@
   },
   "dependencies": {
     "@porsche-design-system/font-face": "0.0.0",
-    "@porsche-design-system/tokens": "0.0.0"
+    "@porsche-design-system/tokens": "0.0.0",
+    "postcss": "^8.5.16"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",

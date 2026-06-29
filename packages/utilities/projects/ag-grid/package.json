@@ -16,7 +16,9 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "postcss": "^8.5.16"
+  },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "ag-grid-community": "35.3.1",

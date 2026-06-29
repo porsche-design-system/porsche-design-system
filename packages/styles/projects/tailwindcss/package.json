@@ -35,7 +35,8 @@
     "clean:build": "rm -rf ./dist ./meta"
   },
   "dependencies": {
-    "@porsche-design-system/tokens": "0.0.0"
+    "@porsche-design-system/tokens": "0.0.0",
+    "postcss": "^8.5.16"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.1",

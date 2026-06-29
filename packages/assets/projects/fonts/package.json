@@ -30,6 +30,9 @@
     "build:lib": "rollup -c",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
+  "dependencies": {
+    "postcss": "^8.5.16"
+  },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
