@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tableA11yExamples } from '@/app/(main)/components/table/accessibility/stories';
 
 export const metadata = {
   title: 'Table: Accessibility - Porsche Design System',
@@ -38,40 +40,7 @@ export const metadata = {
 
 ## Integration examples
 
-### Data table without caption
-
-❌ Anti-pattern
-
-```js
-<p-table>
-  <p-table-head>...</p-table-head>
-  <p-table-body>...</p-table-body>
-</p-table>
-```
-
-✅ Recommended
-
-```js
-<p-table caption="Available Porsche 911 models and starting prices">
-  <p-table-head>...</p-table-head>
-  <p-table-body>...</p-table-body>
-</p-table>
-```
-
-### Column with hidden label
-
-❌ Anti-pattern
-
-```js
-<p-table-head-cell hide-label="true"></p-table-head-cell>
-```
-
-✅ Recommended
-
-```js
-<p-table-head-cell hide-label="true">Model</p-table-head-cell>
-```
-
+<A11yIntegrationExamples examples={tableA11yExamples} />
 ## Tests
 
 ### Automated

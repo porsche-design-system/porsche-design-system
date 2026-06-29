@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputSearchA11yExamples } from '@/app/(main)/components/input-search/accessibility/stories';
 
 export const metadata = {
   title: 'Input Search: Accessibility - Porsche Design System',
@@ -87,77 +89,7 @@ Associate the suggestion list and keyboard interaction in the host application a
 
 ## Integration examples
 
-### Placeholder used as the only label
-
-❌ Anti-pattern
-
-```js
-<p-input-search name="search" placeholder="Search"></p-input-search>
-```
-
-✅ Recommended
-
-```js
-<p-input-search name="search" label="Search vehicles" description="Search by model name or VIN."></p-input-search>
-```
-
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-input-search
-  name="search"
-  label="Search vehicles"
-  role="combobox"
-  aria-expanded="false"
-  aria-haspopup="listbox"
-></p-input-search>
-```
-
-✅ Recommended
-
-```js
-<p-input-search
-  name="search"
-  label="Search vehicles"
-  aria="{ 'role': 'combobox', 'aria-expanded': false, 'aria-haspopup': 'listbox' }"
-></p-input-search>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-input-search name="search" hide-label="true"></p-input-search>
-```
-
-✅ Recommended
-
-```js
-<p-input-search name="search" hide-label="true" label="Search vehicles"></p-input-search>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-input-search name="search" label="Search vehicles" aria-invalid="true" message="Invalid"></p-input-search>
-```
-
-✅ Recommended
-
-```js
-<p-input-search
-  name="search"
-  label="Search vehicles"
-  state="error"
-  message="Enter at least 3 characters to search."
-></p-input-search>
-```
-
+<A11yIntegrationExamples examples={inputSearchA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

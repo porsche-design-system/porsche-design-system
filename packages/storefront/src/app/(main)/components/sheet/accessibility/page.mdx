@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { sheetA11yExamples } from '@/app/(main)/components/sheet/accessibility/stories';
 
 export const metadata = {
   title: 'Sheet: Accessibility - Porsche Design System',
@@ -53,63 +55,7 @@ header slot or `aria` property.
 
 ## Integration examples
 
-### ARIA on trigger button host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-button aria-haspopup="dialog">Filter results</p-button>
-```
-
-✅ Recommended
-
-```js
-<p-button aria="{ 'aria-haspopup': 'dialog' }">Filter results</p-button>
-```
-
-### Dialog label on component host vs header slot
-
-❌ Anti-pattern
-
-```js
-<p-sheet aria-label="Filters">...</p-sheet>
-```
-
-✅ Recommended
-
-```js
-<p-sheet>
-  <p-heading slot="header" tag="h2" size="lg">Filter results</p-heading>
-  ...
-</p-sheet>
-
-// or with aria prop when no visible header is shown
-
-<p-sheet aria="{ 'aria-label': 'Filter results' }">...</p-sheet>
-```
-
-### Sheet trigger without popup semantics
-
-❌ Anti-pattern
-
-```js
-<p-button>Open</p-button>
-<p-sheet>
-  <p-heading slot="header" tag="h2" size="lg">Filters</p-heading>
-  ...
-</p-sheet>
-```
-
-✅ Recommended
-
-```js
-<p-button aria="{ 'aria-haspopup': 'dialog' }">Filter results</p-button>
-<p-sheet>
-  <p-heading slot="header" tag="h2" size="lg">Filter results</p-heading>
-  ...
-</p-sheet>
-```
-
+<A11yIntegrationExamples examples={sheetA11yExamples} />
 ## Tests
 
 ### Automated

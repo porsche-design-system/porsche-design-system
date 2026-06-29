@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tabsA11yExamples } from '@/app/(main)/components/tabs/accessibility/stories';
 
 export const metadata = {
   title: 'Tabs: Accessibility - Porsche Design System',
@@ -58,45 +60,7 @@ labels alone, provide a descriptive accessible name for the tablist using the `a
 
 ## Integration examples
 
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-tabs aria-label="Product details">
-  <p-tabs-item label="Overview">...</p-tabs-item>
-</p-tabs>
-```
-
-✅ Recommended
-
-```js
-<p-tabs aria="{ 'aria-label': 'Porsche 911 configuration details' }">
-  <p-tabs-item label="Overview">...</p-tabs-item>
-  <p-tabs-item label="Equipment">...</p-tabs-item>
-</p-tabs>
-```
-
-### Vague tab labels without context
-
-❌ Anti-pattern
-
-```js
-<p-tabs aria="{ 'aria-label': 'Product details' }">
-  <p-tabs-item label="Details">...</p-tabs-item>
-  <p-tabs-item label="More">...</p-tabs-item>
-</p-tabs>
-```
-
-✅ Recommended
-
-```js
-<p-tabs aria="{ 'aria-label': 'Porsche 911 configuration details' }">
-  <p-tabs-item label="Overview">...</p-tabs-item>
-  <p-tabs-item label="Equipment and packages">...</p-tabs-item>
-</p-tabs>
-```
-
+<A11yIntegrationExamples examples={tabsA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

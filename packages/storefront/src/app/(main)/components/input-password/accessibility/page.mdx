@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputPasswordA11yExamples } from '@/app/(main)/components/input-password/accessibility/stories';
 
 export const metadata = {
   title: 'Input Password: Accessibility - Porsche Design System',
@@ -50,57 +52,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Placeholder used as the only label
-
-❌ Anti-pattern
-
-```js
-<p-input-password name="password" placeholder="Password"></p-input-password>
-```
-
-✅ Recommended
-
-```js
-<p-input-password
-  name="password"
-  label="Password"
-  description="Use at least 8 characters with one number."
-></p-input-password>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-input-password name="password" hide-label="true"></p-input-password>
-```
-
-✅ Recommended
-
-```js
-<p-input-password name="password" hide-label="true" label="Password"></p-input-password>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-input-password name="password" label="Password" aria-invalid="true" message="Invalid"></p-input-password>
-```
-
-✅ Recommended
-
-```js
-<p-input-password
-  name="password"
-  label="Password"
-  state="error"
-  message="Enter a password with at least 8 characters and one number."
-></p-input-password>
-```
-
+<A11yIntegrationExamples examples={inputPasswordA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { headingA11yExamples } from '@/app/(main)/components/heading/accessibility/stories';
 
 export const metadata = {
   title: 'Heading: Accessibility - Porsche Design System',
@@ -40,22 +42,7 @@ property. Keep in mind that the visual appearance must not always be identical w
 
 ## Integration examples
 
-### Skipped heading level
-
-❌ Anti-pattern
-
-```js
-<p-heading tag="h1" size="xl">Configure your Porsche</p-heading>
-<p-heading tag="h4" size="md">Delivery options</p-heading>
-```
-
-✅ Recommended
-
-```js
-<p-heading tag="h1" size="xl">Configure your Porsche</p-heading>
-<p-heading tag="h2" size="md">Delivery options</p-heading>
-```
-
+<A11yIntegrationExamples examples={headingA11yExamples} />
 ## Tests
 
 ### Automated

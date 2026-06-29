@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { selectA11yExamples } from '@/app/(main)/components/select/accessibility/stories';
 
 export const metadata = {
   title: 'Select: Accessibility - Porsche Design System',
@@ -65,116 +67,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Prompt option used instead of a label
-
-❌ Anti-pattern
-
-```js
-<p-select name="model">
-  <p-select-option value="">Select a model</p-select-option>
-  <p-select-option value="carrera">911 Carrera</p-select-option>
-  <p-select-option value="carrera-s">911 Carrera S</p-select-option>
-</p-select>
-```
-
-✅ Recommended
-
-```js
-<p-select label="Porsche model" name="model" description="Choose the model for your configuration.">
-  <p-select-option value="carrera">911 Carrera</p-select-option>
-  <p-select-option value="carrera-s">911 Carrera S</p-select-option>
-</p-select>
-```
-
-### Ambiguous option labels without field context
-
-❌ Anti-pattern
-
-```js
-<p-select label="Model" name="model">
-  <p-select-option value="base">Base</p-select-option>
-  <p-select-option value="s">S</p-select-option>
-</p-select>
-```
-
-✅ Recommended
-
-```js
-<p-select label="Porsche 911 trim" name="model" description="Select the trim level for your configuration.">
-  <p-select-option value="carrera">911 Carrera</p-select-option>
-  <p-select-option value="carrera-s">911 Carrera S</p-select-option>
-</p-select>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-select name="model" hide-label="true">
-  <p-select-option value="carrera">911 Carrera</p-select-option>
-</p-select>
-```
-
-✅ Recommended
-
-```js
-<p-select label="Porsche model" name="model" hide-label="true">
-  <p-select-option value="carrera">911 Carrera</p-select-option>
-</p-select>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-select label="Porsche model" name="model" aria-invalid="true" message="Required">
-  <p-select-option value="carrera">911 Carrera</p-select-option>
-  <p-select-option value="carrera-s">911 Carrera S</p-select-option>
-</p-select>
-```
-
-✅ Recommended
-
-```js
-<p-select
-  label="Porsche model"
-  name="model"
-  state="error"
-  message="Select a model to continue with your configuration."
->
-  <p-select-option value="carrera">911 Carrera</p-select-option>
-  <p-select-option value="carrera-s">911 Carrera S</p-select-option>
-</p-select>
-```
-
-### Error state without recovery guidance
-
-❌ Anti-pattern
-
-```js
-<p-select label="Porsche model" name="model" state="error" message="Invalid">
-  <p-select-option value="carrera">911 Carrera</p-select-option>
-  <p-select-option value="carrera-s">911 Carrera S</p-select-option>
-</p-select>
-```
-
-✅ Recommended
-
-```js
-<p-select
-  label="Porsche model"
-  name="model"
-  required
-  state="error"
-  message="Select a Porsche model. This field is required to continue."
->
-  <p-select-option value="carrera">911 Carrera</p-select-option>
-  <p-select-option value="carrera-s">911 Carrera S</p-select-option>
-</p-select>
-```
-
+<A11yIntegrationExamples examples={selectA11yExamples} />
 ## Tests
 
 ### Automated

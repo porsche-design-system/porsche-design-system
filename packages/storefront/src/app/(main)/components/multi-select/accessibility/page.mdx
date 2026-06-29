@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { multiSelectA11yExamples } from '@/app/(main)/components/multi-select/accessibility/stories';
 
 export const metadata = {
   title: 'Multi Select: Accessibility - Porsche Design System',
@@ -64,69 +66,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Prompt option used instead of a label
-
-❌ Anti-pattern
-
-```js
-<p-multi-select name="features">
-  <p-multi-select-option value="">Select features</p-multi-select-option>
-  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
-</p-multi-select>
-```
-
-✅ Recommended
-
-```js
-<p-multi-select label="Optional features" name="features" description="Select all features for your configuration.">
-  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
-  <p-multi-select-option value="audio">BOSE Surround Sound</p-multi-select-option>
-</p-multi-select>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-multi-select name="features" hide-label="true">
-  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
-</p-multi-select>
-```
-
-✅ Recommended
-
-```js
-<p-multi-select label="Optional features" name="features" hide-label="true">
-  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
-</p-multi-select>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-multi-select label="Optional features" name="features" aria-invalid="true" message="Required">
-  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
-</p-multi-select>
-```
-
-✅ Recommended
-
-```js
-<p-multi-select
-  label="Optional features"
-  name="features"
-  required
-  state="error"
-  message="Select at least one feature to continue."
->
-  <p-multi-select-option value="sport">Sport Chrono Package</p-multi-select-option>
-  <p-multi-select-option value="audio">BOSE Surround Sound</p-multi-select-option>
-</p-multi-select>
-```
-
+<A11yIntegrationExamples examples={multiSelectA11yExamples} />
 ## Tests
 
 ### Automated

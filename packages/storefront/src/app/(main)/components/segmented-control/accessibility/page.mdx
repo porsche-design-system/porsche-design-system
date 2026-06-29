@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { segmentedControlA11yExamples } from '@/app/(main)/components/segmented-control/accessibility/stories';
 
 export const metadata = {
   title: 'Segmented Control: Accessibility - Porsche Design System',
@@ -65,64 +67,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Missing group label
-
-❌ Anti-pattern
-
-```js
-<p-segmented-control name="size">
-  <p-segmented-control-item value="s">S</p-segmented-control-item>
-  <p-segmented-control-item value="m">M</p-segmented-control-item>
-</p-segmented-control>
-```
-
-✅ Recommended
-
-```js
-<p-segmented-control label="T-shirt size" name="size" description="Select your preferred size.">
-  <p-segmented-control-item value="s">S</p-segmented-control-item>
-  <p-segmented-control-item value="m">M</p-segmented-control-item>
-</p-segmented-control>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-segmented-control name="size" hide-label="true">
-  <p-segmented-control-item value="s">S</p-segmented-control-item>
-</p-segmented-control>
-```
-
-✅ Recommended
-
-```js
-<p-segmented-control label="T-shirt size" name="size" hide-label="true">
-  <p-segmented-control-item value="s">S</p-segmented-control-item>
-</p-segmented-control>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-segmented-control label="T-shirt size" name="size" aria-invalid="true" message="Required"></p-segmented-control>
-```
-
-✅ Recommended
-
-```js
-<p-segmented-control
-  label="T-shirt size"
-  name="size"
-  required
-  state="error"
-  message="Select a size to continue."
-></p-segmented-control>
-```
-
+<A11yIntegrationExamples examples={segmentedControlA11yExamples} />
 ## Tests
 
 ### Automated

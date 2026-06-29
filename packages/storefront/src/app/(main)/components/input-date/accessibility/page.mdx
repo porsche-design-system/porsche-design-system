@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputDateA11yExamples } from '@/app/(main)/components/input-date/accessibility/stories';
 
 export const metadata = {
   title: 'Input Date: Accessibility - Porsche Design System',
@@ -50,53 +52,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Placeholder used as the only label
-
-❌ Anti-pattern
-
-```js
-<p-input-date name="birthdate" placeholder="Date of birth"></p-input-date>
-```
-
-✅ Recommended
-
-```js
-<p-input-date name="birthdate" label="Date of birth" description="Enter day, month, and year."></p-input-date>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-input-date name="birthdate" hide-label="true"></p-input-date>
-```
-
-✅ Recommended
-
-```js
-<p-input-date name="birthdate" hide-label="true" label="Date of birth"></p-input-date>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-input-date name="birthdate" label="Date of birth" aria-invalid="true" message="Invalid"></p-input-date>
-```
-
-✅ Recommended
-
-```js
-<p-input-date
-  name="birthdate"
-  label="Date of birth"
-  state="error"
-  message="Enter a valid date of birth."
-></p-input-date>
-```
-
+<A11yIntegrationExamples examples={inputDateA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

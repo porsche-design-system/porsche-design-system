@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { flyoutA11yExamples } from '@/app/(main)/components/flyout/accessibility/stories';
 
 export const metadata = {
   title: 'Flyout: Accessibility - Porsche Design System',
@@ -39,8 +41,8 @@ behavior. As a result, accessibility features may vary across different browsers
 
 ## Development considerations
 
-To inform users that the trigger button opens a `dialog`, set `aria-haspopup` on the trigger using the `aria`
-property. Provide the dialog title through the `header` slot or the flyout `aria` property.
+To inform users that the trigger button opens a `dialog`, set `aria-haspopup` on the trigger using the `aria` property.
+Provide the dialog title through the `header` slot or the flyout `aria` property.
 
 ### Common do's and don'ts
 
@@ -52,63 +54,7 @@ property. Provide the dialog title through the `header` slot or the flyout `aria
 
 ## Integration examples
 
-### ARIA on trigger button host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-button aria-haspopup="dialog">Open dialog</p-button>
-```
-
-✅ Recommended
-
-```js
-<p-button aria="{ 'aria-haspopup': 'dialog' }">Open dialog</p-button>
-```
-
-### Dialog label on component host vs header slot
-
-❌ Anti-pattern
-
-```js
-<p-flyout aria-label="Navigation">...</p-flyout>
-```
-
-✅ Recommended
-
-```js
-<p-flyout>
-  <p-heading slot="header" tag="h2" size="lg">Main navigation</p-heading>
-  ...
-</p-flyout>
-
-// or with aria prop when no visible header is shown
-
-<p-flyout aria="{ 'aria-label': 'Main navigation' }">...</p-flyout>
-```
-
-### Flyout trigger without popup semantics
-
-❌ Anti-pattern
-
-```js
-<p-button>Menu</p-button>
-<p-flyout>
-  <p-heading slot="header" tag="h2" size="lg">Navigation</p-heading>
-  ...
-</p-flyout>
-```
-
-✅ Recommended
-
-```js
-<p-button aria="{ 'aria-haspopup': 'dialog' }">Main navigation</p-button>
-<p-flyout>
-  <p-heading slot="header" tag="h2" size="lg">Main navigation</p-heading>
-  ...
-</p-flyout>
-```
-
+<A11yIntegrationExamples examples={flyoutA11yExamples} />
 ## Tests
 
 ### Automated

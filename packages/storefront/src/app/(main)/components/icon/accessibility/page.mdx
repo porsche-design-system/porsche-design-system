@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { iconA11yExamples } from '@/app/(main)/components/icon/accessibility/stories';
 
 export const metadata = {
   title: 'Icon: Accessibility - Porsche Design System',
@@ -40,36 +42,7 @@ cases, it is important to **hide** the icon from assistive technologies. This ca
 
 ## Integration examples
 
-### Meaningful icon without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-icon name="warning"></p-icon>
-```
-
-✅ Recommended
-
-```js
-<p-icon name="warning" aria="{ 'aria-label': 'Warning' }"></p-icon>
-```
-
-### Decorative icon with redundant label
-
-❌ Anti-pattern
-
-```js
-<p-icon name="phone" aria="{ 'aria-label': 'Phone' }"></p-icon>
-<p-text>+49 711 911 0</p-text>
-```
-
-✅ Recommended
-
-```js
-<p-icon aria-hidden="true" name="phone"></p-icon>
-<p-text>+49 711 911 0</p-text>
-```
-
+<A11yIntegrationExamples examples={iconA11yExamples} />
 ## Tests
 
 ### Automated

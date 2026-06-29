@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { spinnerA11yExamples } from '@/app/(main)/components/spinner/accessibility/stories';
 
 export const metadata = {
   title: 'Spinner: Accessibility - Porsche Design System',
@@ -45,36 +47,7 @@ achieved in the following ways:
 
 ## Integration examples
 
-### Spinner mounted only when loading starts
-
-❌ Anti-pattern
-
-```js
-if (isLoading) {
-  container.innerHTML = '<p-spinner></p-spinner>';
-}
-```
-
-✅ Recommended
-
-```js
-<p-spinner aria="{ 'aria-label': 'Loading vehicle configuration' }"></p-spinner>
-```
-
-### Spinner without loading message
-
-❌ Anti-pattern
-
-```js
-<p-spinner></p-spinner>
-```
-
-✅ Recommended
-
-```js
-<p-spinner aria="{ 'aria-label': 'Loading vehicle configuration' }"></p-spinner>
-```
-
+<A11yIntegrationExamples examples={spinnerA11yExamples} />
 ## Tests
 
 ### Automated

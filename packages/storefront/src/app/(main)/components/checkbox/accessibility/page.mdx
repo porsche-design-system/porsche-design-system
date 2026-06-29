@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { checkboxA11yExamples } from '@/app/(main)/components/checkbox/accessibility/stories';
 
 export const metadata = {
   title: 'Checkbox: Accessibility - Porsche Design System',
@@ -47,39 +49,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-checkbox name="terms" hide-label="true"></p-checkbox>
-```
-
-✅ Recommended
-
-```js
-<p-checkbox name="terms" hide-label="true" label="I accept the terms and conditions"></p-checkbox>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-checkbox name="terms" label="I accept the terms and conditions" aria-invalid="true" message="Required"></p-checkbox>
-```
-
-✅ Recommended
-
-```js
-<p-checkbox
-  name="terms"
-  label="I accept the terms and conditions"
-  required
-  state="error"
-  message="Accept the terms and conditions to continue."
-></p-checkbox>
-```
+<A11yIntegrationExamples examples={checkboxA11yExamples} />
 
 ## Tests
 

@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tagDismissibleA11yExamples } from '@/app/(main)/components/tag-dismissible/accessibility/stories';
 
 export const metadata = {
   title: 'Tag Dismissible: Accessibility - Porsche Design System',
@@ -49,34 +51,7 @@ another focusable element. This prevents losing the focus order.
 
 ## Integration examples
 
-### Dismiss button ARIA on host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-tag-dismissible label="Sport Chrono" aria-label="Remove Sport Chrono filter"></p-tag-dismissible>
-```
-
-✅ Recommended
-
-```js
-<p-tag-dismissible label="Sport Chrono" aria="{ 'aria-label': 'Remove Sport Chrono filter' }"></p-tag-dismissible>
-```
-
-### Tag without descriptive label
-
-❌ Anti-pattern
-
-```js
-<p-tag-dismissible><p-icon name="watch-sport-chrono"></p-icon></p-tag-dismissible>
-```
-
-✅ Recommended
-
-```js
-<p-tag-dismissible label="Sport Chrono Package"><p-icon name="watch-sport-chrono"></p-icon></p-tag-dismissible>
-```
-
+<A11yIntegrationExamples examples={tagDismissibleA11yExamples} />
 ## Tests
 
 ### Automated

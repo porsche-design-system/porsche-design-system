@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { paginationA11yExamples } from '@/app/(main)/components/pagination/accessibility/stories';
 
 export const metadata = {
   title: 'Pagination: Accessibility - Porsche Design System',
@@ -43,29 +45,7 @@ export const metadata = {
 
 ## Integration examples
 
-### Default English labels on a localized page
-
-❌ Anti-pattern
-
-```js
-<html lang="de_DE">
-...
-<p-pagination total-items-count="120" items-per-page="10" active-page="1"></p-pagination>
-```
-
-✅ Recommended
-
-```js
-<html lang="de_DE">
-...
-<p-pagination
-  total-items-count="120"
-  items-per-page="10"
-  active-page="1"
-  intl='{ "root": "Seitennavigation", "prev": "Vorherige Seite", "next": "Nächste Seite", "page": "Seite" }'
-></p-pagination>
-```
-
+<A11yIntegrationExamples examples={paginationA11yExamples} />
 ## Tests
 
 ### Automated

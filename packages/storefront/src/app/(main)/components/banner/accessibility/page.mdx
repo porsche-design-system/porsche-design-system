@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { bannerA11yExamples } from '@/app/(main)/components/banner/accessibility/stories';
 
 export const metadata = {
   title: 'Banner: Accessibility - Porsche Design System',
@@ -52,48 +54,7 @@ technologies, but only if the component is **pre-rendered** and the content is a
 
 ## Integration examples
 
-### Banner mounted only when shown
-
-❌ Anti-pattern
-
-```js
-// Banner is created only when an error occurs — live region may not announce.
-if (hasError) {
-  document.body.insertAdjacentHTML('beforeend', '<p-banner open heading="Error">Something went wrong.</p-banner>');
-}
-```
-
-✅ Recommended
-
-```js
-// Pre-render the banner and update content when needed.
-<p-banner
-  id="form-banner"
-  heading="Error"
-  description="Check the highlighted fields and try again."
-  state="error"
-></p-banner>
-```
-
-### Error feedback without descriptive content
-
-❌ Anti-pattern
-
-```js
-<p-banner open state="error" description="Error"></p-banner>
-```
-
-✅ Recommended
-
-```js
-<p-banner
-  open
-  state="error"
-  heading="Payment could not be processed"
-  description="Check your card details or try another payment method."
-></p-banner>
-```
-
+<A11yIntegrationExamples examples={bannerA11yExamples} />
 ## Tests
 
 ### Automated

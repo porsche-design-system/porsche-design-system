@@ -189,6 +189,7 @@ When adding or updating accessibility documentation in the storefront:
 | **Code examples** | Use vanilla-js web component markup (`<p-button>`, kebab-case attributes). Pass ARIA via `aria="{ 'aria-label': '...' }"`. |
 | **Page structure** | Keep conceptual guidance under `## Development considerations`, including `### Common do's and don'ts` bullet rules. Use a separate `## Integration examples` section for anti-pattern/recommended code pairs. |
 | **Do/don't examples** | Pair each actionable do/don't with a **❌ Anti-pattern** / **✅ Recommended** `js` code example under `## Integration examples`. Include host-vs-`aria` prop examples for interactive components. |
+| **Story-driven examples** | Prefer `A11yIntegrationExamples` with colocated `accessibility/stories.ts`. Use typed `Story` `generator` for both ❌ anti and ✅ recommended examples. Host-level `aria-*` attributes belong in `properties` (e.g. `'aria-haspopup': 'dialog'`). Use raw strings inside `generator` only for imperative pseudo-code. |
 | **When to add do/don't** | Prioritize high-integration-risk components: interactive controls, forms, overlays, and keyboard-heavy widgets (carousel, tabs). |
 
 Example in MDX:
@@ -217,6 +218,37 @@ Example in MDX:
 <p-button aria="{ 'aria-label': 'Open product details' }">Open</p-button>
 ```
 ````
+
+Story-driven integration examples (checkbox pilot):
+
+````mdx
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { checkboxA11yExamples } from '@/app/(main)/components/checkbox/accessibility/stories';
+
+## Integration examples
+
+<A11yIntegrationExamples examples={checkboxA11yExamples} />
+````
+
+Define examples in `accessibility/stories.ts`:
+
+```ts
+import type { A11yIntegrationExample } from '@/models/a11yIntegrationExample';
+
+export const checkboxA11yExamples: A11yIntegrationExample[] = [
+  {
+    title: 'Hidden label without accessible name',
+    anti: {
+      generator: () => [{ tag: 'p-checkbox', properties: { name: 'terms', hideLabel: true } }],
+    },
+    recommended: {
+      generator: () => [
+        { tag: 'p-checkbox', properties: { name: 'terms', hideLabel: true, label: 'I accept the terms and conditions' } },
+      ],
+    },
+  },
+];
+```
 
 ## Done Checklist
 

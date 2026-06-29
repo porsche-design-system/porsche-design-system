@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputEmailA11yExamples } from '@/app/(main)/components/input-email/accessibility/stories';
 
 export const metadata = {
   title: 'Input Email: Accessibility - Porsche Design System',
@@ -49,53 +51,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Placeholder used as the only label
-
-❌ Anti-pattern
-
-```js
-<p-input-email name="email" placeholder="Email"></p-input-email>
-```
-
-✅ Recommended
-
-```js
-<p-input-email name="email" label="Email address" description="We use this to send your confirmation."></p-input-email>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-input-email name="email" hide-label="true"></p-input-email>
-```
-
-✅ Recommended
-
-```js
-<p-input-email name="email" hide-label="true" label="Email address"></p-input-email>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-input-email name="email" label="Email" aria-invalid="true" message="Invalid"></p-input-email>
-```
-
-✅ Recommended
-
-```js
-<p-input-email
-  name="email"
-  label="Email address"
-  state="error"
-  message="Enter a valid email address, for example name@example.com."
-></p-input-email>
-```
-
+<A11yIntegrationExamples examples={inputEmailA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

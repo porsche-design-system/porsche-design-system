@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { carouselA11yExamples } from '@/app/(main)/components/carousel/accessibility/stories';
 
 export const metadata = {
   title: 'Carousel: Accessibility - Porsche Design System',
@@ -58,62 +60,7 @@ over all carousel entries. The skip link is only visible when it receives focus 
 
 ## Integration examples
 
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-carousel aria-label="Slider">
-  <!-- slides -->
-</p-carousel>
-```
-
-✅ Recommended
-
-```js
-<p-carousel aria="{ 'aria-label': 'Featured Porsche models' }">
-  <!-- slides -->
-</p-carousel>
-```
-
-### Carousel without skip path for keyboard users
-
-❌ Anti-pattern
-
-```js
-<p-carousel>
-  <!-- many slides (>6 items) -->
-</p-carousel>
-```
-
-✅ Recommended
-
-```js
-<p-carousel skip-link-target="#after-carousel" aria="{ 'aria-label': 'Highlights' }">
-  <!-- many slides (>6 items) -->
-</p-carousel>
-
-<p-heading tag="h2" id="after-carousel">Next section</p-heading>
-```
-
-### Vague carousel label
-
-❌ Anti-pattern
-
-```js
-<p-carousel aria="{ 'aria-label': 'Slider' }">
-  <!-- slides -->
-</p-carousel>
-```
-
-✅ Recommended
-
-```js
-<p-carousel aria="{ 'aria-label': 'Featured Porsche models' }">
-  <!-- slides -->
-</p-carousel>
-```
-
+<A11yIntegrationExamples examples={carouselA11yExamples} />
 ## Tests
 
 ### Automated

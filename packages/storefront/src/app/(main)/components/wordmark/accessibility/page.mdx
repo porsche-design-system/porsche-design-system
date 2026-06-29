@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { wordmarkA11yExamples } from '@/app/(main)/components/wordmark/accessibility/stories';
 
 export const metadata = {
   title: 'Wordmark: Accessibility - Porsche Design System',
@@ -39,34 +41,7 @@ export const metadata = {
 
 ## Integration examples
 
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-wordmark href="/" aria-label="Porsche home"></p-wordmark>
-```
-
-✅ Recommended
-
-```js
-<p-wordmark href="/" aria="{ 'aria-label': 'Porsche home' }"></p-wordmark>
-```
-
-### Linked wordmark without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-wordmark href="/"></p-wordmark>
-```
-
-✅ Recommended
-
-```js
-<p-wordmark href="/" aria="{ 'aria-label': 'Porsche home' }"></p-wordmark>
-```
-
+<A11yIntegrationExamples examples={wordmarkA11yExamples} />
 ## Tests
 
 ### Automated

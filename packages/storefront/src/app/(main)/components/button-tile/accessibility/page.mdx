@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { buttonTileA11yExamples } from '@/app/(main)/components/button-tile/accessibility/stories';
 
 export const metadata = {
   title: 'Button Tile: Accessibility - Porsche Design System',
@@ -65,33 +67,7 @@ that offers more detailed information, such as "Open details of product XYZ."
 
 ## Integration examples
 
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-button-tile label="Open" aria-label="Open details of Porsche Taycan" aria-haspopup="dialog"></p-button-tile>
-```
-
-✅ Recommended
-
-```js
-<p-button-tile label="Open" aria="{ 'aria-haspopup': 'dialog', 'aria-label': 'Open details of Porsche Taycan' }"></p-button-tile>
-```
-
-### Vague tile label without context
-
-❌ Anti-pattern
-
-```js
-<p-button-tile label="Open"></p-button-tile>
-```
-
-✅ Recommended
-
-```js
-<p-button-tile label="Configure Porsche Taycan"></p-button-tile>
-```
+<A11yIntegrationExamples examples={buttonTileA11yExamples} />
 
 ### Readable text
 

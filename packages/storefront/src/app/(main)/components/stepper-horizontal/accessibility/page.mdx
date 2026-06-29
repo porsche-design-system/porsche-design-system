@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { stepperHorizontalA11yExamples } from '@/app/(main)/components/stepper-horizontal/accessibility/stories';
 
 export const metadata = {
   title: 'Stepper Horizontal: Accessibility - Porsche Design System',
@@ -39,27 +41,7 @@ export const metadata = {
 
 ## Integration examples
 
-### Generic step labels without context
-
-❌ Anti-pattern
-
-```js
-<p-stepper-horizontal>
-  <p-stepper-horizontal-item state="complete">Step 1</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item state="current">Step 2</p-stepper-horizontal-item>
-</p-stepper-horizontal>
-```
-
-✅ Recommended
-
-```js
-<p-stepper-horizontal>
-  <p-stepper-horizontal-item state="complete">Configure vehicle</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item state="current">Choose delivery date</p-stepper-horizontal-item>
-  <p-stepper-horizontal-item>Review and confirm</p-stepper-horizontal-item>
-</p-stepper-horizontal>
-```
-
+<A11yIntegrationExamples examples={stepperHorizontalA11yExamples} />
 ## Tests
 
 ### Automated

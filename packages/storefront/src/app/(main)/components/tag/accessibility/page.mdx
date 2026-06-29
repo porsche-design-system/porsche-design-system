@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tagA11yExamples } from '@/app/(main)/components/tag/accessibility/stories';
 
 export const metadata = {
   title: 'Tag: Accessibility - Porsche Design System',
@@ -26,22 +28,7 @@ Tags should communicate status or category in visible text. Do not rely on color
 
 ## Integration examples
 
-### Status conveyed by color and icon only
-
-❌ Anti-pattern
-
-```js
-<p-tag variant="success" icon="check"></p-tag>
-```
-
-✅ Recommended
-
-```js
-<p-tag variant="success" icon="check">
-  Configuration saved
-</p-tag>
-```
-
+<A11yIntegrationExamples examples={tagA11yExamples} />
 ## Tests
 
 ### Automated

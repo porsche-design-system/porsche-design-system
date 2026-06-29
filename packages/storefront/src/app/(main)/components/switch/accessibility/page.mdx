@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { switchA11yExamples } from '@/app/(main)/components/switch/accessibility/stories';
 
 export const metadata = {
   title: 'Switch: Accessibility - Porsche Design System',
@@ -45,36 +47,7 @@ controls and its on/off meaning.
 
 ## Integration examples
 
-### Switch without descriptive label
-
-❌ Anti-pattern
-
-```js
-<p-switch name="notifications"></p-switch>
-```
-
-✅ Recommended
-
-```js
-<p-switch name="notifications">Email notifications for order updates</p-switch>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-switch name="notifications" hide-label="true"></p-switch>
-```
-
-✅ Recommended
-
-```js
-<p-switch name="notifications" hide-label="true">
-  Email notifications for order updates
-</p-switch>
-```
-
+<A11yIntegrationExamples examples={switchA11yExamples} />
 ## Tests
 
 ### Automated

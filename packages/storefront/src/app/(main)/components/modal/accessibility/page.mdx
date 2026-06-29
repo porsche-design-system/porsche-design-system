@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { modalA11yExamples } from '@/app/(main)/components/modal/accessibility/stories';
 
 export const metadata = {
   title: 'Modal: Accessibility - Porsche Design System',
@@ -53,66 +55,7 @@ property.
 
 ## Integration examples
 
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-button aria-haspopup="dialog">Details of product XYZ</p-button>
-```
-
-✅ Recommended
-
-```js
-<p-button aria="{ 'aria-haspopup': 'dialog' }">Details of product XYZ</p-button>
-```
-
-### Dialog label on component host vs header slot
-
-❌ Anti-pattern
-
-```js
-<p-modal aria-label="Details">...</p-modal>
-```
-
-✅ Recommended
-
-```js
-<p-modal>
-  <p-heading slot="header" tag="h2" size="lg">Details of product XYZ</p-heading>
-  ...
-</p-modal>
-
-// or with aria prop when no visible header is shown
-
-<p-modal aria="{ 'aria-label': 'Details of product XYZ' }">...</p-modal>
-```
-
-### Modal trigger without popup semantics or context
-
-❌ Anti-pattern
-
-```js
-<p-button>Open</p-button>
-<p-modal>
-  <p-heading slot="header" tag="h2" size="lg">Details</p-heading>
-  ...
-</p-modal>
-```
-
-✅ Recommended
-
-```js
-<p-button aria="{ 'aria-haspopup': 'dialog' }">Details of product XYZ</p-button>
-<p-modal>
-  <p-heading slot="header" tag="h2" size="lg">Details of product XYZ</p-heading>
-  ...
-</p-modal>
-```
-
-Use a semantic trigger (usually a button) with a meaningful accessible name and set `aria-haspopup` on the trigger, not
-on the modal host.
-
+<A11yIntegrationExamples examples={modalA11yExamples} />
 ## Tests
 
 ### Automated

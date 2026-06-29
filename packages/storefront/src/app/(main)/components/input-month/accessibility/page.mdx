@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputMonthA11yExamples } from '@/app/(main)/components/input-month/accessibility/stories';
 
 export const metadata = {
   title: 'Input Month: Accessibility - Porsche Design System',
@@ -50,53 +52,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Placeholder used as the only label
-
-❌ Anti-pattern
-
-```js
-<p-input-month name="month" placeholder="Month"></p-input-month>
-```
-
-✅ Recommended
-
-```js
-<p-input-month name="month" label="Delivery month" description="Select the month for your delivery."></p-input-month>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-input-month name="month" hide-label="true"></p-input-month>
-```
-
-✅ Recommended
-
-```js
-<p-input-month name="month" hide-label="true" label="Delivery month"></p-input-month>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-input-month name="month" label="Delivery month" aria-invalid="true" message="Required"></p-input-month>
-```
-
-✅ Recommended
-
-```js
-<p-input-month
-  name="month"
-  label="Delivery month"
-  state="error"
-  message="Select a delivery month to continue."
-></p-input-month>
-```
-
+<A11yIntegrationExamples examples={inputMonthA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

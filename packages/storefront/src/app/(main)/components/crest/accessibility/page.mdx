@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { crestA11yExamples } from '@/app/(main)/components/crest/accessibility/stories';
 
 export const metadata = {
   title: 'Crest: Accessibility - Porsche Design System',
@@ -32,20 +34,7 @@ export const metadata = {
 
 ## Integration examples
 
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-crest href="/" aria-label="Porsche home"></p-crest>
-```
-
-✅ Recommended
-
-```js
-<p-crest href="/" aria="{ 'aria-label': 'Porsche home' }"></p-crest>
-```
-
+<A11yIntegrationExamples examples={crestA11yExamples} />
 ## Tests
 
 ### Automated

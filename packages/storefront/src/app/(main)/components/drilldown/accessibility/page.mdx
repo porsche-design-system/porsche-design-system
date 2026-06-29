@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { drilldownA11yExamples } from '@/app/(main)/components/drilldown/accessibility/stories';
 
 export const metadata = {
   title: 'Drilldown: Accessibility - Porsche Design System',
@@ -45,54 +47,7 @@ property, e.g.: `aria="{ 'aria-haspopup': 'dialog' }"`.
 
 ## Integration examples
 
-### ARIA on trigger button host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-button aria-haspopup="dialog">Menu</p-button>
-```
-
-✅ Recommended
-
-```js
-<p-button aria="{ 'aria-haspopup': 'dialog' }">Vehicle menu</p-button>
-```
-
-### Drilldown label on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-drilldown open aria-label="Navigation">
-  ...
-</p-drilldown>
-```
-
-✅ Recommended
-
-```js
-<p-drilldown open aria="{ 'aria-label': 'Vehicle navigation' }">
-  ...
-</p-drilldown>
-```
-
-### Trigger without popup semantics or context
-
-❌ Anti-pattern
-
-```js
-<p-button>Menu</p-button>
-<p-drilldown>...</p-drilldown>
-```
-
-✅ Recommended
-
-```js
-<p-button aria="{ 'aria-haspopup': 'dialog' }">Vehicle menu</p-button>
-<p-drilldown aria="{ 'aria-label': 'Vehicle navigation' }">...</p-drilldown>
-```
-
+<A11yIntegrationExamples examples={drilldownA11yExamples} />
 ## Tests
 
 ### Automated

@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { textareaA11yExamples } from '@/app/(main)/components/textarea/accessibility/stories';
 
 export const metadata = {
   title: 'Textarea: Accessibility - Porsche Design System',
@@ -47,57 +49,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Placeholder-only instructions for open text input
-
-❌ Anti-pattern
-
-```js
-<p-textarea name="feedback" placeholder="Tell us what you think"></p-textarea>
-```
-
-✅ Recommended
-
-```js
-<p-textarea
-  name="feedback"
-  label="Your feedback"
-  description="Describe what worked well and what we should improve (min. 20 characters)."
-></p-textarea>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-textarea name="feedback" hide-label="true"></p-textarea>
-```
-
-✅ Recommended
-
-```js
-<p-textarea name="feedback" hide-label="true" label="Your feedback"></p-textarea>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-textarea name="feedback" label="Your feedback" aria-invalid="true" message="Too short"></p-textarea>
-```
-
-✅ Recommended
-
-```js
-<p-textarea
-  name="feedback"
-  label="Your feedback"
-  state="error"
-  message="Enter at least 20 characters so we can understand your feedback."
-></p-textarea>
-```
-
+<A11yIntegrationExamples examples={textareaA11yExamples} />
 ## Tests
 
 ### Automated

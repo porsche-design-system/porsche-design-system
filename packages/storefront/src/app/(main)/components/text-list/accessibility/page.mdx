@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { textListA11yExamples } from '@/app/(main)/components/text-list/accessibility/stories';
 
 export const metadata = {
   title: 'Text List: Accessibility - Porsche Design System',
@@ -28,26 +30,7 @@ Choose the list `type` based on whether item order matters to understanding the 
 
 ## Integration examples
 
-### Numbered list for non-sequential items
-
-❌ Anti-pattern
-
-```js
-<p-text-list type="numbered">
-  <p-text-list-item>Sport Chrono Package</p-text-list-item>
-  <p-text-list-item>BOSE Surround Sound</p-text-list-item>
-</p-text-list>
-```
-
-✅ Recommended
-
-```js
-<p-text-list type="unordered">
-  <p-text-list-item>Sport Chrono Package</p-text-list-item>
-  <p-text-list-item>BOSE Surround Sound</p-text-list-item>
-</p-text-list>
-```
-
+<A11yIntegrationExamples examples={textListA11yExamples} />
 ## Tests
 
 ### Automated

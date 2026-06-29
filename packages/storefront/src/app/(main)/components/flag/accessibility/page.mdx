@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { flagA11yExamples } from '@/app/(main)/components/flag/accessibility/stories';
 
 export const metadata = {
   title: 'Flag: Accessibility - Porsche Design System',
@@ -30,36 +32,7 @@ export const metadata = {
 
 ## Integration examples
 
-### Informative flag without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-flag name="germany"></p-flag>
-```
-
-✅ Recommended
-
-```js
-<p-flag name="germany" aria="{ 'aria-label': 'Germany' }"></p-flag>
-```
-
-### Decorative flag with redundant label
-
-❌ Anti-pattern
-
-```js
-<p-flag name="germany" aria="{ 'aria-label': 'Germany' }"></p-flag>
-<p-text>Germany</p-text>
-```
-
-✅ Recommended
-
-```js
-<p-flag name="germany" aria-hidden="true"></p-flag>
-<p-text>Germany</p-text>
-```
-
+<A11yIntegrationExamples examples={flagA11yExamples} />
 ## Tests
 
 ### Automated

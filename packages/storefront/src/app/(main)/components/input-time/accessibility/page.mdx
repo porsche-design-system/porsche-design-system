@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputTimeA11yExamples } from '@/app/(main)/components/input-time/accessibility/stories';
 
 export const metadata = {
   title: 'Input Time: Accessibility - Porsche Design System',
@@ -50,53 +52,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Placeholder used as the only label
-
-❌ Anti-pattern
-
-```js
-<p-input-time name="time" placeholder="Time"></p-input-time>
-```
-
-✅ Recommended
-
-```js
-<p-input-time name="time" label="Appointment time" description="Use 24-hour format, for example 14:30."></p-input-time>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-input-time name="time" hide-label="true"></p-input-time>
-```
-
-✅ Recommended
-
-```js
-<p-input-time name="time" hide-label="true" label="Appointment time"></p-input-time>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-input-time name="time" label="Appointment time" aria-invalid="true" message="Invalid"></p-input-time>
-```
-
-✅ Recommended
-
-```js
-<p-input-time
-  name="time"
-  label="Appointment time"
-  state="error"
-  message="Enter a valid appointment time."
-></p-input-time>
-```
-
+<A11yIntegrationExamples examples={inputTimeA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputTelA11yExamples } from '@/app/(main)/components/input-tel/accessibility/stories';
 
 export const metadata = {
   title: 'Input Tel: Accessibility - Porsche Design System',
@@ -49,53 +51,7 @@ reader users. They can also confuse sighted users if the reason they are disable
 
 ## Integration examples
 
-### Placeholder used as the only label
-
-❌ Anti-pattern
-
-```js
-<p-input-tel name="phone" placeholder="Phone"></p-input-tel>
-```
-
-✅ Recommended
-
-```js
-<p-input-tel name="phone" label="Phone number" description="Include your country code, for example +49."></p-input-tel>
-```
-
-### Hidden label without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-input-tel name="phone" hide-label="true"></p-input-tel>
-```
-
-✅ Recommended
-
-```js
-<p-input-tel name="phone" hide-label="true" label="Phone number"></p-input-tel>
-```
-
-### Validation feedback via state and message API
-
-❌ Anti-pattern
-
-```js
-<p-input-tel name="phone" label="Phone number" aria-invalid="true" message="Invalid"></p-input-tel>
-```
-
-✅ Recommended
-
-```js
-<p-input-tel
-  name="phone"
-  label="Phone number"
-  state="error"
-  message="Enter a valid phone number including your country code."
-></p-input-tel>
-```
-
+<A11yIntegrationExamples examples={inputTelA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

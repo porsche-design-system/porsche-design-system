@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { popoverA11yExamples } from '@/app/(main)/components/popover/accessibility/stories';
 
 export const metadata = {
   title: 'Popover: Accessibility - Porsche Design System',
@@ -50,46 +52,7 @@ button.
 
 ## Integration examples
 
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-popover aria-label="Specification details" description="Additional specification details."></p-popover>
-```
-
-✅ Recommended
-
-```js
-<p-popover aria="{ 'aria-label': 'Specification details' }" description="Additional specification details."></p-popover>
-```
-
-### Custom slotted trigger without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-popover>
-  <button slot="button" type="button"></button>
-  Additional specification details.
-</p-popover>
-```
-
-✅ Recommended
-
-```js
-<p-popover description="Additional specification details."></p-popover>
-
-// or provide an accessible name on a custom slotted button
-
-<p-popover>
-  <button slot="button" type="button" aria-label="Specification details">i</button>
-  Additional specification details.
-</p-popover>
-```
-
-Custom slotted buttons do not receive managed `aria-expanded` state. See Limitations below.
-
+<A11yIntegrationExamples examples={popoverA11yExamples} />
 ## Limitations
 
 ### Custom slotted button

@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tabsBarA11yExamples } from '@/app/(main)/components/tabs-bar/accessibility/stories';
 
 export const metadata = {
   title: 'Tabs Bar: Accessibility - Porsche Design System',
@@ -130,58 +132,7 @@ variant except that `aria-current="page"` should not be used.
 
 ## Integration examples
 
-### Tabbed interface without tablist label
-
-❌ Anti-pattern
-
-```js
-<p-tabs-bar active-tab-index="0">
-  <button type="button" id="tab-0" aria-controls="panel-0">
-    Overview
-  </button>
-  <button type="button" id="tab-1" aria-controls="panel-1">
-    Equipment
-  </button>
-</p-tabs-bar>
-```
-
-✅ Recommended
-
-```js
-<p-tabs-bar aria="{ 'aria-label': 'Porsche 911 configuration sections' }" active-tab-index="0">
-  <button type="button" id="tab-0" aria-controls="panel-0">
-    Overview
-  </button>
-  <button type="button" id="tab-1" aria-controls="panel-1">
-    Equipment
-  </button>
-</p-tabs-bar>
-```
-
-### Route navigation without landmark label
-
-❌ Anti-pattern
-
-```js
-<p-tabs-bar>
-  <a href="/models/911">911</a>
-  <a href="/models/taycan">Taycan</a>
-</p-tabs-bar>
-```
-
-✅ Recommended
-
-```js
-<nav aria-label="Porsche model range">
-  <p-tabs-bar>
-    <a href="/models/911" aria-current="page">
-      911
-    </a>
-    <a href="/models/taycan">Taycan</a>
-  </p-tabs-bar>
-</nav>
-```
-
+<A11yIntegrationExamples examples={tabsBarA11yExamples} />
 ## Tests
 
 ### Automated

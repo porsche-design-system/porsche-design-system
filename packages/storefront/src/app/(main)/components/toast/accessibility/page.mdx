@@ -8,7 +8,7 @@ export const metadata = {
 
 # Toast <ComponentStatus tagName="p-toast"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
 
 ## Accessibility support
 
@@ -41,36 +41,6 @@ The `Toast` component uses `role="status"` to announce **content changes** for a
 - **Don't** create the toast container only when a message should be announced.
 
 ## Integration examples
-
-### Toast container created on demand
-
-❌ Anti-pattern
-
-```js
-// Toast host is inserted only when feedback should appear — announcement may be missed.
-document.body.insertAdjacentHTML('beforeend', '<p-toast><p-toast-item text="Saved"></p-toast-item></p-toast>');
-```
-
-✅ Recommended
-
-```js
-// Pre-render the toast host and add items dynamically.
-<p-toast id="app-toast"></p-toast>
-```
-
-### Success message without context
-
-❌ Anti-pattern
-
-```js
-<p-toast-item text="Done" state="success"></p-toast-item>
-```
-
-✅ Recommended
-
-```js
-<p-toast-item text="Your Porsche 911 configuration was saved successfully." state="success"></p-toast-item>
-```
 
 ## Tests
 

@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { buttonA11yExamples } from '@/app/(main)/components/button/accessibility/stories';
 
 export const metadata = {
   title: 'Button: Accessibility - Porsche Design System',
@@ -74,56 +76,7 @@ text that offers more detailed information, such as "Add item XYZ to shopping ca
 
 ## Integration examples
 
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-button aria-haspopup="dialog" aria-label="Open details of product XYZ">
-  Open details
-</p-button>
-```
-
-✅ Recommended
-
-```js
-<p-button aria="{ 'aria-haspopup': 'dialog', 'aria-label': 'Open details of product XYZ' }">Open details</p-button>
-```
-
-### Icon-only button without accessible name
-
-❌ Anti-pattern
-
-```js
-<p-button icon="plus"></p-button>
-```
-
-✅ Recommended
-
-```js
-<p-button icon="plus" hide-label="true">
-  Add item XYZ to shopping cart
-</p-button>
-```
-
-### Vague button label without context
-
-❌ Anti-pattern
-
-```js
-<p-button icon="plus">Add</p-button>
-```
-
-✅ Recommended
-
-```js
-<p-button icon="plus" aria="{ 'aria-label': 'Add item XYZ to shopping cart' }">Add</p-button>
-
-// or use descriptive visible text
-
-<p-button icon="plus">Add item XYZ to cart</p-button>
-```
-
+<A11yIntegrationExamples examples={buttonA11yExamples} />
 ## Tests
 
 ### Automated

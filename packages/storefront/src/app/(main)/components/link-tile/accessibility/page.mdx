@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { linkTileA11yExamples } from '@/app/(main)/components/link-tile/accessibility/stories';
 
 export const metadata = {
   title: 'Link Tile: Accessibility - Porsche Design System',
@@ -48,33 +50,7 @@ offers more detailed information, such as "Details of product XYZ."
 
 ## Integration examples
 
-### ARIA on component host vs aria prop
-
-❌ Anti-pattern
-
-```js
-<p-link-tile label="Details" href="#" aria-label="Details of Porsche Taycan"></p-link-tile>
-```
-
-✅ Recommended
-
-```js
-<p-link-tile label="Details" href="#" aria="{ 'aria-label': 'Details of Porsche Taycan' }"></p-link-tile>
-```
-
-### Vague link label without context
-
-❌ Anti-pattern
-
-```js
-<p-link-tile label="Details" href="#"></p-link-tile>
-```
-
-✅ Recommended
-
-```js
-<p-link-tile label="Porsche Taycan details" href="#"></p-link-tile>
-```
+<A11yIntegrationExamples examples={linkTileA11yExamples} />
 
 ### Readable text
 
