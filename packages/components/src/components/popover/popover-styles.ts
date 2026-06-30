@@ -107,7 +107,7 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
       span: getHiddenTextJssStyle(),
       '[popover]': {
         all: 'unset',
-        position: 'absolute',
+        position: 'fixed', // matches floating ui's `fixed` strategy; required for correct top-layer positioning in Safari
         filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
         pointerEvents: 'none', // prevents auto close

@@ -59,7 +59,7 @@ span {
 }
 [popover] {
   all: unset;
-  position: absolute;
+  position: fixed;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
   pointer-events: none;
@@ -177,7 +177,7 @@ span {
 }
 [popover] {
   all: unset;
-  position: absolute;
+  position: fixed;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
   pointer-events: none;
@@ -295,7 +295,7 @@ span {
 }
 [popover] {
   all: unset;
-  position: absolute;
+  position: fixed;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
   pointer-events: none;
@@ -413,7 +413,7 @@ span {
 }
 [popover] {
   all: unset;
-  position: absolute;
+  position: fixed;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
   pointer-events: none;

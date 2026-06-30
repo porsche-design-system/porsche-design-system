@@ -5,7 +5,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   createTopLayerController,
-  getHasNativePopoverSupport,
   hasNamedSlot,
   hasPropValueChanged,
   isClickOutside,
@@ -72,15 +71,14 @@ export class Popover {
   private refSlottedButton: HTMLElement;
   private refArrow: HTMLDivElement;
   private cleanUpAutoUpdate: () => void;
-  private hasNativePopoverSupport = getHasNativePopoverSupport();
   // TODO: This should be updated when slot is changed
   private hasSlottedButton: boolean;
   // Keeps the panel on the #top-layer during its fade-out (Chromium via `overlay`; Safari/Firefox via a deferred hide).
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.refPopover,
-    isShown: () => this.hasNativePopoverSupport && !!this.refPopover?.matches(':popover-open'),
-    show: () => this.hasNativePopoverSupport && this.refPopover?.showPopover(),
-    hide: () => this.hasNativePopoverSupport && this.refPopover?.hidePopover(),
+    isShown: () => !!this.refPopover?.matches(':popover-open'),
+    show: () => this.refPopover?.showPopover(),
+    hide: () => this.refPopover?.hidePopover(),
   });
 
   private get isControlled(): boolean {
@@ -208,6 +206,11 @@ export class Popover {
       this.refPopover,
       {
         placement: this.direction,
+        // Use the `fixed` strategy because the panel is promoted to the `#top-layer` via `showPopover()`. Safari does
+        // not resolve a top-layer element's `offsetParent` synchronously after `showPopover()`, so the default
+        // `absolute` strategy computes offsets against a wrong/zero origin and mis-places the panel at the top-left
+        // until a resize re-triggers `autoUpdate`. `fixed` positions relative to the viewport and avoids this.
+        strategy: 'fixed',
         middleware: [
           offset(16),
           shift({
