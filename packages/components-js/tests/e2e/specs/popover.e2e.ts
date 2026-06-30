@@ -598,6 +598,32 @@ test.describe('controlled mode', () => {
 
       expect((await getEventSummary(host, 'dismiss')).counter, 'dismiss after Escape').toBe(1);
     });
+
+    test('should emit dismiss event on the first popover when a second popover opens', async ({ page }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-popover class="first" open>
+          <button slot="button">First Button</button>
+          First Content
+        </p-popover>
+        <p-popover class="second">
+          <button slot="button">Second Button</button>
+          Second Content
+        </p-popover>`
+      );
+
+      const firstHost = page.locator('p-popover.first');
+      await addEventListener(firstHost, 'dismiss');
+
+      // Opening the second (uncontrolled) popover must request dismissal of the first (controlled) popover.
+      await page.locator('p-popover.second button').click();
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(firstHost, 'dismiss')).counter, 'dismiss after second popover opens').toBe(1);
+      await expect(page.locator('p-popover.second [popover]'), 'second popover visible').toBeVisible();
+      // first popover stays visible because the consumer owns `open` and hasn't updated it yet
+      await expect(page.locator('p-popover.first [popover]'), 'first popover still visible').toBeVisible();
+    });
   });
 });
 
