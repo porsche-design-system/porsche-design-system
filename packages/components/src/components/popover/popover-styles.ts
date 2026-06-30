@@ -4,8 +4,6 @@ import {
   colorFrosted,
   colorFrostedSoft,
   colorPrimary,
-  durationSm,
-  easeInOut,
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
@@ -21,16 +19,16 @@ import {
 } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
-  cssVariableAnimationDuration,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
   getHiddenTextJssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  motionDurationMap,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { getCss } from '../../utils';
+import { getCss, overlayTransitionSupportsQuery } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
@@ -53,17 +51,13 @@ const iconInfo = getInlineSVGBackgroundImage(
   `<path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/>`
 );
 
-export const getComponentCss = (isCompact: boolean): string => {
+export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => {
+  // fade-in on open, fade-out on close; `visibility` is delayed by the duration on close so the panel stays
+  // in the accessibility tree / tabbable until the fade-out finishes, then becomes inert.
+  const transition = `${getTransition('opacity', 'short', isOpen ? 'in' : 'out')},visibility 0s linear ${isOpen ? '0s' : motionDurationMap.short}`;
+
   return getCss({
     '@global': {
-      '@keyframes fade-in': {
-        from: {
-          opacity: 0,
-        },
-        to: {
-          opacity: 1,
-        },
-      },
       ':host': {
         position: 'relative', // ensures correct reference for floating ui fallback positioning in older browsers
         display: 'inline-block',
@@ -116,7 +110,6 @@ export const getComponentCss = (isCompact: boolean): string => {
         position: 'absolute',
         filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
-        animation: `${ref(cssVariableAnimationDuration, ref(durationSm))} fade-in ${ref(easeInOut)} forwards`,
         pointerEvents: 'none', // prevents auto close
         borderRadius: ref(cssVarRadius, isCompact ? ref(radiusLg) : ref(radiusXl)),
         background: ref(colorCanvas),
@@ -125,13 +118,21 @@ export const getComponentCss = (isCompact: boolean): string => {
         maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
         width: 'max-content', // ensures in older browsers correct width
         boxSizing: 'border-box',
+        opacity: isOpen ? 1 : 0,
+        visibility: isOpen ? 'inherit' : 'hidden', // panel shall not be tabbable/announced after the fade-out has finished
+        transition,
+        // keep the popover on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
+        ...overlayTransitionSupportsQuery({
+          transition: `${transition},${getTransition('overlay', 'short', isOpen ? 'in' : 'out')} allow-discrete`,
+        }),
+        overlay: 'none',
+        '&:popover-open': {
+          overlay: 'auto',
+        },
         ...forcedColorsMediaQuery({
           outline: '2px solid CanvasText',
           outlineOffset: '-2px',
         }),
-        '&:not(:popover-open)': {
-          display: 'none', // ensures popover is not flickering when closed in some situations
-        },
         '&::backdrop': {
           display: 'none', // ua-style
         },

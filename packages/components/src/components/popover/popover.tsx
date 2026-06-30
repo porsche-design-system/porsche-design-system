@@ -4,21 +4,23 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  createTopLayerController,
   getHasNativePopoverSupport,
   hasNamedSlot,
   hasPropValueChanged,
   isClickOutside,
   parseAndGetAriaAttributes,
+  type TopLayerController,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import {
+  getPopoverBorderRadius,
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
   POPOVER_SAFE_ZONE,
   type PopoverAriaAttribute,
   type PopoverDirection,
-  getPopoverBorderRadius,
 } from './popover-utils';
 
 const propTypes: PropTypes<typeof Popover> = {
@@ -65,14 +67,21 @@ export class Popover {
 
   @State() private isOpen = false;
 
-  private popover: HTMLDivElement;
-  private button: HTMLButtonElement;
-  private slottedButton: HTMLElement;
-  private arrow: HTMLDivElement;
+  private refPopover: HTMLDivElement;
+  private refButton: HTMLButtonElement;
+  private refSlottedButton: HTMLElement;
+  private refArrow: HTMLDivElement;
   private cleanUpAutoUpdate: () => void;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
   // TODO: This should be updated when slot is changed
   private hasSlottedButton: boolean;
+  // Keeps the panel on the #top-layer during its fade-out (Chromium via `overlay`; Safari/Firefox via a deferred hide).
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.refPopover,
+    isShown: () => this.hasNativePopoverSupport && !!this.refPopover?.matches(':popover-open'),
+    show: () => this.hasNativePopoverSupport && this.refPopover?.showPopover(),
+    hide: () => this.hasNativePopoverSupport && this.refPopover?.hidePopover(),
+  });
 
   private get isControlled(): boolean {
     return typeof this.open === 'boolean';
@@ -91,17 +100,14 @@ export class Popover {
   }
 
   public connectedCallback(): void {
-    // In controlled mode the panel uses `popover="manual"`, which doesn't light-dismiss, so the outside-click listener is required regardless of native support.
-    if (this.isControlled || !this.hasNativePopoverSupport) {
-      document.addEventListener('mousedown', this.onClickOutside, true);
-    }
+    // The panel always uses `popover="manual"`, which never light-dismisses, so closing (outside click) is handled here in every mode.
+    document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public disconnectedCallback(): void {
-    if (this.isControlled || !this.hasNativePopoverSupport) {
-      document.removeEventListener('mousedown', this.onClickOutside, true);
-    }
-    // ensures floating ui event listeners are removed in case popover is removed from DOM
+    document.removeEventListener('mousedown', this.onClickOutside, true);
+    // ensures the deferred top-layer hide is cancelled and floating ui event listeners are removed in case popover is removed from DOM
+    this.topLayer.cancel();
     this.handlePopover(false);
   }
 
@@ -111,14 +117,14 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.compact);
+    attachComponentCss(this.host, getComponentCss, this.compact, this.effectiveOpen);
 
     this.hasSlottedButton = hasNamedSlot(this.host, 'button');
 
     return (
       <Host onKeyDown={this.onHostKeydown}>
         {this.hasSlottedButton ? (
-          <slot name="button" ref={(el: HTMLElement) => (this.slottedButton = el)} />
+          <slot name="button" ref={(el: HTMLElement) => (this.refSlottedButton = el)} />
         ) : (
           <button
             type="button"
@@ -127,35 +133,38 @@ export class Popover {
               ...parseAndGetAriaAttributes(this.aria),
               ...{ 'aria-expanded': this.effectiveOpen },
             })}
-            ref={(el) => (this.button = el)}
+            ref={(el) => (this.refButton = el)}
           >
             <span>More information</span>
           </button>
         )}
-        {this.effectiveOpen && (
-          <div
-            popover={this.isControlled ? 'manual' : 'auto'}
-            onToggle={this.onToggle}
-            ref={(el) => (this.popover = el)}
-          >
-            <div class="arrow" ref={(el) => (this.arrow = el)} />
-            {this.description ? <p>{this.description}</p> : <slot />}
-          </div>
-        )}
+        {/* The panel stays mounted so it can transition (fade-out) when closing; visibility is driven by `effectiveOpen` via CSS and the top-layer controller. Always `manual` so closing always flows through the controller for a consistent fade-out. */}
+        <div popover="manual" aria-hidden={this.effectiveOpen ? 'false' : 'true'} ref={(el) => (this.refPopover = el)}>
+          <div class="arrow" ref={(el) => (this.refArrow = el)} />
+          {this.description ? <p>{this.description}</p> : <slot />}
+        </div>
       </Host>
     );
   }
 
   public componentDidRender(): void {
-    // needs to be called after render cycle to be able to render the popover conditionally
+    // needs to be called after render cycle so the panel reference exists and visibility can be toggled
+    if (this.effectiveOpen) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
     this.handlePopover(this.effectiveOpen);
   }
 
   private handlePopover = (open: boolean): void => {
     if (open) {
-      this.hasNativePopoverSupport && this.popover.showPopover();
       if (!this.cleanUpAutoUpdate) {
-        this.cleanUpAutoUpdate = autoUpdate(this.button || this.slottedButton, this.popover, this.updatePosition);
+        this.cleanUpAutoUpdate = autoUpdate(
+          this.refButton || this.refSlottedButton,
+          this.refPopover,
+          this.updatePosition
+        );
       }
     } else {
       this.cleanUpAutoUpdate?.();
@@ -164,16 +173,13 @@ export class Popover {
   };
 
   private onClickOutside = (e: MouseEvent): void => {
-    // Called when there is no native popover support or in controlled mode (where `popover="manual"` doesn't light-dismiss)
-    if (this.effectiveOpen && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
+    // `popover="manual"` never light-dismisses, so outside clicks are handled here in both controlled and uncontrolled mode
+    if (
+      this.effectiveOpen &&
+      isClickOutside(e, this.refButton || this.refSlottedButton) &&
+      isClickOutside(e, this.refPopover)
+    ) {
       this.requestClose();
-    }
-  };
-
-  private onToggle = (e: ToggleEvent): void => {
-    // Only relevant in uncontrolled mode (`popover="auto"`); in controlled mode visibility is owned by the `open` prop
-    if (!this.isControlled) {
-      this.isOpen = e.newState === 'open';
     }
   };
 
@@ -181,15 +187,10 @@ export class Popover {
     if (e.key === 'Escape' && this.effectiveOpen) {
       // TODO: How to handle focus when button is slotted?
       if (!this.hasSlottedButton) {
-        this.button?.focus();
+        this.refButton?.focus();
       }
-      if (this.isControlled) {
-        // `popover="manual"` doesn't light-dismiss, so emit the close request and let the consumer update `open`
-        this.dismiss.emit();
-      } else if (!this.hasNativePopoverSupport) {
-        // Only necessary in case of no native popover support
-        this.isOpen = false;
-      }
+      // `popover="manual"` never light-dismisses, so Escape is handled here for both modes (emits `dismiss` when controlled, otherwise closes)
+      this.requestClose();
     }
   };
 
@@ -202,36 +203,40 @@ export class Popover {
   };
 
   private updatePosition = async (): Promise<void> => {
-    const { x, y, placement, middlewareData } = await computePosition(this.button || this.slottedButton, this.popover, {
-      placement: this.direction,
-      middleware: [
-        offset(16),
-        shift({
-          padding: POPOVER_SAFE_ZONE,
-          limiter: limitShift({
-            // ensures that the popover is placed to the right if the button is smaller than 34px. This fixes correct placement of arrow.
-            offset: ({ rects }) => (rects.reference.width > 33 ? 0 : rects.reference.width),
+    const { x, y, placement, middlewareData } = await computePosition(
+      this.refButton || this.refSlottedButton,
+      this.refPopover,
+      {
+        placement: this.direction,
+        middleware: [
+          offset(16),
+          shift({
+            padding: POPOVER_SAFE_ZONE,
+            limiter: limitShift({
+              // ensures that the popover is placed to the right if the button is smaller than 34px. This fixes correct placement of arrow.
+              offset: ({ rects }) => (rects.reference.width > 33 ? 0 : rects.reference.width),
+            }),
           }),
-        }),
-        flip({
-          padding: POPOVER_SAFE_ZONE,
-          fallbackAxisSideDirection: 'end',
-        }),
-        arrow({ element: this.arrow, padding: getPopoverBorderRadius(this.popover) }),
-      ],
-    });
+          flip({
+            padding: POPOVER_SAFE_ZONE,
+            fallbackAxisSideDirection: 'end',
+          }),
+          arrow({ element: this.refArrow, padding: getPopoverBorderRadius(this.refPopover) }),
+        ],
+      }
+    );
 
     const placementVertical = placement === 'top' || placement === 'bottom';
     const placementTopLeft = placement === 'top' || placement === 'left';
 
-    Object.assign(this.popover.style, {
+    Object.assign(this.refPopover.style, {
       left: `${x}px`,
       top: `${y}px`,
     });
 
     const { x: xArrow, y: yArrow } = middlewareData.arrow;
 
-    Object.assign(this.arrow.style, {
+    Object.assign(this.refArrow.style, {
       clipPath: placementVertical ? 'polygon(50% 0, 100% 110%, 0 110%)' : 'polygon(0 50%, 110% 0, 110% 100%)',
       width: placementVertical ? '24px' : '12px',
       height: placementVertical ? '12px' : '24px',
