@@ -73,6 +73,8 @@ export class Popover {
   private cleanUpAutoUpdate: () => void;
   // TODO: This should be updated when slot is changed
   private hasSlottedButton: boolean;
+  // Tracks whether the document-level dismiss listeners (outside click / Escape) are currently registered.
+  private hasDismissListeners = false;
   // Keeps the panel on the #top-layer during its fade-out (Chromium via `overlay`; Safari/Firefox via a deferred hide).
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.refPopover,
@@ -97,16 +99,11 @@ export class Popover {
     }
   }
 
-  public connectedCallback(): void {
-    // The panel always uses `popover="manual"`, which never light-dismisses, so closing (outside click) is handled here in every mode.
-    document.addEventListener('mousedown', this.onClickOutside, true);
-  }
-
   public disconnectedCallback(): void {
-    document.removeEventListener('mousedown', this.onClickOutside, true);
     // ensures the deferred top-layer hide is cancelled and floating ui event listeners are removed in case popover is removed from DOM
     this.topLayer.cancel();
     this.handlePopover(false);
+    this.updateDismissListeners(false);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -120,7 +117,7 @@ export class Popover {
     this.hasSlottedButton = hasNamedSlot(this.host, 'button');
 
     return (
-      <Host onKeyDown={this.onHostKeydown}>
+      <Host>
         {this.hasSlottedButton ? (
           <slot name="button" ref={(el: HTMLElement) => (this.refSlottedButton = el)} />
         ) : (
@@ -136,7 +133,10 @@ export class Popover {
             <span>More information</span>
           </button>
         )}
-        {/* The panel stays mounted so it can transition (fade-out) when closing; visibility is driven by `effectiveOpen` via CSS and the top-layer controller. Always `manual` so closing always flows through the controller for a consistent fade-out. */}
+        {/* The panel uses `popover="manual"` so the component fully owns open/close timing (no native light-dismiss).
+            It stays mounted so it can transition (fade-out) when closing; visibility is driven by `effectiveOpen` via
+            CSS and the top-layer controller. Outside-click and Escape dismissal are handled via document listeners
+            (see `onClickOutside` / `onKeyboardEvent`), which keeps the panel on the #top-layer during the fade-out. */}
         <div popover="manual" aria-hidden={this.effectiveOpen ? 'false' : 'true'} ref={(el) => (this.refPopover = el)}>
           <div class="arrow" ref={(el) => (this.refArrow = el)} />
           {this.description ? <p>{this.description}</p> : <slot />}
@@ -153,6 +153,8 @@ export class Popover {
       this.topLayer.requestHide();
     }
     this.handlePopover(this.effectiveOpen);
+    // Register/unregister the document-level dismiss listeners based on the current open state (idempotent).
+    this.updateDismissListeners(this.effectiveOpen);
   }
 
   private handlePopover = (open: boolean): void => {
@@ -170,8 +172,20 @@ export class Popover {
     }
   };
 
+  private dismissPopover = (): void => {
+    // Centralizes the dismissal behavior: in controlled mode the consumer owns the open state, so only emit `dismiss`;
+    // in uncontrolled mode the component closes itself. The fade-out and top-layer removal are handled by the
+    // top-layer controller on the next render.
+    if (this.isControlled) {
+      this.dismiss.emit();
+    } else {
+      this.isOpen = false;
+    }
+  };
+
   private onClickOutside = (e: MouseEvent): void => {
-    // `popover="manual"` never light-dismisses, so outside clicks are handled here in both controlled and uncontrolled mode
+    // Light-dismiss on outside click. Clicks on the trigger button or inside the panel must not close it; the trigger
+    // toggles its own state via the button/`onClick` handlers.
     if (
       this.effectiveOpen &&
       isClickOutside(e, this.refButton || this.refSlottedButton) &&
@@ -181,22 +195,23 @@ export class Popover {
     }
   };
 
-  private onHostKeydown = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' && this.effectiveOpen) {
-      // TODO: How to handle focus when button is slotted?
-      if (!this.hasSlottedButton) {
-        this.refButton?.focus();
-      }
-      // `popover="manual"` never light-dismisses, so Escape is handled here for both modes (emits `dismiss` when controlled, otherwise closes)
+  private onKeyboardEvent = (e: KeyboardEvent): void => {
+    // `popover="manual"` does not light-dismiss, so Escape is handled manually (mirrors `p-banner`).
+    if (e.key === 'Escape') {
       this.dismissPopover();
     }
   };
 
-  private dismissPopover = (): void => {
-    if (this.isControlled) {
-      this.dismiss.emit();
-    } else {
-      this.isOpen = false;
+  private updateDismissListeners = (open: boolean): void => {
+    if (open && !this.hasDismissListeners) {
+      // capture phase so dismissal happens before focus shifts on outside `mousedown`
+      document.addEventListener('mousedown', this.onClickOutside, true);
+      document.addEventListener('keydown', this.onKeyboardEvent);
+      this.hasDismissListeners = true;
+    } else if (!open && this.hasDismissListeners) {
+      document.removeEventListener('mousedown', this.onClickOutside, true);
+      document.removeEventListener('keydown', this.onKeyboardEvent);
+      this.hasDismissListeners = false;
     }
   };
 

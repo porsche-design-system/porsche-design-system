@@ -1257,7 +1257,14 @@
                     <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
                       >Open Banner</p-button
                     >
-                    <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
+                    <p-banner>
+                      <p-heading slot="heading" size="sm" weight="semibold" tag="h3">Some heading</p-heading>
+                      <p-text>Some content</p-text>
+                      <p-popover class="controlled-popover">
+                        <p-button slot="button" variant="secondary">Open Popover</p-button>
+                        <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
+                      </p-popover>
+                    </p-banner>
                   </div>
                 </p-modal>
               </div>
@@ -1326,7 +1333,14 @@
                     <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
                       >Open Banner</p-button
                     >
-                    <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
+                    <p-banner>
+                      <p-heading slot="heading" size="sm" weight="semibold" tag="h3">Some heading</p-heading>
+                      <p-text>Some content</p-text>
+                      <p-popover class="controlled-popover">
+                        <p-button slot="button" variant="secondary">Open Popover</p-button>
+                        <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
+                      </p-popover>
+                    </p-banner>
                   </div>
                 </p-modal>
               </div>
@@ -1395,7 +1409,14 @@
                     <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
                       >Open Banner</p-button
                     >
-                    <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
+                    <p-banner>
+                      <p-heading slot="heading" size="sm" weight="semibold" tag="h3">Some heading</p-heading>
+                      <p-text>Some content</p-text>
+                      <p-popover class="controlled-popover">
+                        <p-button slot="button" variant="secondary">Open Popover</p-button>
+                        <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
+                      </p-popover>
+                    </p-banner>
                   </div>
                 </p-modal>
               </div>
@@ -1464,7 +1485,14 @@
                     <p-button type="button" variant="secondary" aria="{'aria-haspopup': 'dialog'}"
                       >Open Banner</p-button
                     >
-                    <p-banner heading="Some heading" heading-tag="h3" description="Some content"></p-banner>
+                    <p-banner>
+                      <p-heading slot="heading" size="sm" weight="semibold" tag="h3">Some heading</p-heading>
+                      <p-text>Some content</p-text>
+                      <p-popover class="controlled-popover">
+                        <p-button slot="button" variant="secondary">Open Popover</p-button>
+                        <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
+                      </p-popover>
+                    </p-banner>
                   </div>
                 </p-modal>
               </div>
@@ -1673,24 +1701,30 @@
           </p-sheet>
         </div>
         <div data-card="popover">
-          <p-popover title="bottom">
+          <p-popover description="Some content"></p-popover>
+          <p-popover direction="top">
             <p-text>Some content</p-text>
           </p-popover>
-          <p-popover title="top" direction="top">
+          <p-popover direction="right">
             <p-text>Some content</p-text>
           </p-popover>
-          <p-popover title="right" direction="right">
-            <p-text>Some content</p-text>
-          </p-popover>
-          <p-popover title="left" direction="left">
+          <p-popover direction="left">
             <p-text>Some content</p-text>
           </p-popover>
           <p-popover>
             <p-button slot="button" variant="secondary" hide-label="true" icon="car">More information</p-button>
             <p-text>Some content</p-text>
           </p-popover>
-          <p-popover id="controlled-popover">
+          <p-popover class="controlled-popover">
             <p-button slot="button" variant="secondary">Controlled popover</p-button>
+            <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
+          </p-popover>
+          <p-popover class="controlled-popover">
+            <p-button slot="button" variant="secondary">Controlled popover 2</p-button>
+            <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
+          </p-popover>
+          <p-popover class="controlled-popover" open="true" direction="right">
+            <p-button slot="button" variant="secondary">Controlled popover 3</p-button>
             <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
           </p-popover>
         </div>
@@ -3286,15 +3320,17 @@
 
     // Controlled popover: the consumer owns the open state. The slotted button toggles `open`, and the `dismiss`
     // event (emitted on Escape / outside click) closes it again.
-    const controlledPopover = document.querySelector('#controlled-popover');
-    if (controlledPopover) {
-      controlledPopover.open = false; // boolean definition initializes them component as controlled component
-      controlledPopover.querySelector('[slot="button"]').addEventListener('click', () => {
-        controlledPopover.open = !controlledPopover.open;
-      });
-      controlledPopover.addEventListener('dismiss', () => {
-        controlledPopover.open = false;
-      });
+    const controlledPopovers = document.querySelectorAll('.controlled-popover');
+    if (controlledPopovers.length > 0) {
+      for (const controlledPopover of controlledPopovers) {
+        controlledPopover.open = false; // boolean definition initializes them component as controlled component
+        controlledPopover.querySelector('[slot="button"]').addEventListener('click', () => {
+          controlledPopover.open = !controlledPopover.open;
+        });
+        controlledPopover.addEventListener('dismiss', () => {
+          controlledPopover.open = false;
+        });
+      }
     }
     </script>
   </body>
