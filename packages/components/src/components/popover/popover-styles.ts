@@ -10,10 +10,13 @@ import {
   fontWeightNormal,
   leadingNormal,
   radiusFull,
+  radiusLg,
   radiusXl,
   ref,
+  spacingStatic2Xs,
   spacingStaticMd,
   spacingStaticSm,
+  spacingStaticXs,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
 import {
@@ -28,11 +31,29 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getCss } from '../../utils';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
-export const getComponentCss = (): string => {
-  const shadowColor = 'rgba(0,0,0,0.3)';
+/**
+ * @css-variable {"name": "--p-popover-px", "description": "Horizontal padding of the popover.", "defaultValue": "16px"}
+ */
+const cssVarPaddingInline = '--p-popover-px';
 
+/**
+ * @css-variable {"name": "--p-popover-py", "description": "Vertical padding of the popover.", "defaultValue": "12px"}
+ */
+const cssVarPaddingBlock = '--p-popover-py';
+
+/**
+ * @css-variable {"name": "--p-popover-radius", "description": "Border radius of the popover.", "defaultValue": "12px"}
+ */
+const cssVarRadius = '--p-popover-radius';
+
+const iconInfo = getInlineSVGBackgroundImage(
+  `<path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/>`
+);
+
+export const getComponentCss = (isCompact: boolean): string => {
   return getCss({
     '@global': {
       '@keyframes fade-in': {
@@ -51,8 +72,13 @@ export const getComponentCss = (): string => {
           ...hostHiddenStyles,
         }),
       },
-      'slot[name="button"]': {
+      'slot:not([name]), p': {
         display: 'block',
+        pointerEvents: 'auto',
+        padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
+      },
+      'slot[name="button"]': {
+        display: 'inline-block',
       },
       ...preventFoucOfNestedElementsStyles,
       p: {
@@ -61,7 +87,7 @@ export const getComponentCss = (): string => {
       },
       button: {
         all: 'unset',
-        display: 'block',
+        display: 'grid',
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
         width: ref(leadingNormal), // width needed to improve ssr support
         height: ref(leadingNormal), // height needed to improve ssr support
@@ -77,22 +103,39 @@ export const getComponentCss = (): string => {
           },
         }),
         '&:focus-visible': getFocusBaseStyles(),
+        '&::after': {
+          content: '""',
+          WebkitMask: `${iconInfo} center/contain no-repeat`, // necessary for Sogou browser support :-)
+          mask: `${iconInfo} center/contain no-repeat`,
+          background: ref(colorPrimary),
+        },
       },
+      span: getHiddenTextJssStyle(),
       '[popover]': {
         all: 'unset',
         position: 'absolute',
-        pointerEvents: 'none',
-        filter: `drop-shadow(0 0 16px ${shadowColor})`,
+        filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
         animation: `${ref(cssVariableAnimationDuration, ref(durationSm))} fade-in ${ref(easeInOut)} forwards`,
+        pointerEvents: 'none', // prevents auto close
+        borderRadius: ref(cssVarRadius, isCompact ? ref(radiusLg) : ref(radiusXl)),
+        background: ref(colorCanvas),
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+        color: ref(colorPrimary),
+        maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
+        width: 'max-content', // ensures in older browsers correct width
+        boxSizing: 'border-box',
+        ...forcedColorsMediaQuery({
+          outline: '2px solid CanvasText',
+          outlineOffset: '-2px',
+        }),
         '&:not(:popover-open)': {
           display: 'none', // ensures popover is not flickering when closed in some situations
         },
+        '&::backdrop': {
+          display: 'none', // ua-style
+        },
       },
-    },
-    label: getHiddenTextJssStyle(),
-    icon: {
-      transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     arrow: {
       position: 'absolute',
@@ -102,21 +145,6 @@ export const getComponentCss = (): string => {
       background: ref(colorCanvas),
       ...forcedColorsMediaQuery({
         background: 'CanvasText',
-      }),
-    },
-    content: {
-      maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
-      width: 'max-content', // ensures in older browsers correct width
-      boxSizing: 'border-box',
-      padding: `${ref(spacingStaticSm)} ${ref(spacingStaticMd)}`,
-      pointerEvents: 'auto',
-      borderRadius: ref(radiusXl),
-      background: ref(colorCanvas),
-      font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
-      color: ref(colorPrimary),
-      ...forcedColorsMediaQuery({
-        outline: '2px solid CanvasText',
-        outlineOffset: '-2px',
       }),
     },
   });

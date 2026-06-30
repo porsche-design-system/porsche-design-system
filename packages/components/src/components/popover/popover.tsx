@@ -5,7 +5,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getHasNativePopoverSupport,
-  getPrefixedTagNames,
   hasNamedSlot,
   hasPropValueChanged,
   isClickOutside,
@@ -15,6 +14,7 @@ import {
 import { getComponentCss } from './popover-styles';
 import {
   POPOVER_ARIA_ATTRIBUTES,
+  POPOVER_BORDER_RADIUS,
   POPOVER_DIRECTIONS,
   POPOVER_SAFE_ZONE,
   type PopoverAriaAttribute,
@@ -25,6 +25,7 @@ const propTypes: PropTypes<typeof Popover> = {
   open: AllowedTypes.boolean,
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
 };
 
@@ -52,6 +53,9 @@ export class Popover {
 
   /** Sets the text content displayed inside the popover panel when it is open, providing contextual help or information. */
   @Prop() public description?: string;
+
+  /** Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces. */
+  @Prop() public compact?: boolean;
 
   /** Sets ARIA attributes on the popover panel to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
@@ -107,9 +111,8 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss, this.compact);
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
     this.hasSlottedButton = hasNamedSlot(this.host, 'button');
 
     return (
@@ -126,8 +129,7 @@ export class Popover {
             })}
             ref={(el) => (this.button = el)}
           >
-            <PrefixedTagNames.pIcon class="icon" name="information" />
-            <span class="label">More information</span>
+            <span>More information</span>
           </button>
         )}
         {this.effectiveOpen && (
@@ -137,7 +139,7 @@ export class Popover {
             ref={(el) => (this.popover = el)}
           >
             <div class="arrow" ref={(el) => (this.arrow = el)} />
-            <div class="content">{this.description ? <p>{this.description}</p> : <slot />}</div>
+            {this.description ? <p>{this.description}</p> : <slot />}
           </div>
         )}
       </Host>
@@ -215,7 +217,7 @@ export class Popover {
           padding: POPOVER_SAFE_ZONE,
           fallbackAxisSideDirection: 'end',
         }),
-        arrow({ element: this.arrow }),
+        arrow({ element: this.arrow, padding: POPOVER_BORDER_RADIUS }),
       ],
     });
 

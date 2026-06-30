@@ -2391,6 +2391,10 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
+          * Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces.
+         */
+        "compact"?: boolean;
+        /**
           * Sets the text content displayed inside the popover panel when it is open, providing contextual help or information.
          */
         "description"?: string;
@@ -6799,6 +6803,10 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<PopoverAriaAttribute>;
         /**
+          * Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces.
+         */
+        "compact"?: boolean;
+        /**
           * Sets the text content displayed inside the popover panel when it is open, providing contextual help or information.
          */
         "description"?: string;
@@ -8160,6 +8168,7 @@ declare namespace LocalJSX {
         "open": boolean;
         "direction": PopoverDirection;
         "description": string;
+        "compact": boolean;
         "aria": SelectedAriaAttributes<PopoverAriaAttribute>;
     }
     interface PRadioGroupAttributes {
