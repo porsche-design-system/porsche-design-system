@@ -14,11 +14,11 @@ import {
 import { getComponentCss } from './popover-styles';
 import {
   POPOVER_ARIA_ATTRIBUTES,
-  POPOVER_BORDER_RADIUS,
   POPOVER_DIRECTIONS,
   POPOVER_SAFE_ZONE,
   type PopoverAriaAttribute,
   type PopoverDirection,
+  getPopoverBorderRadius,
 } from './popover-utils';
 
 const propTypes: PropTypes<typeof Popover> = {
@@ -217,7 +217,7 @@ export class Popover {
           padding: POPOVER_SAFE_ZONE,
           fallbackAxisSideDirection: 'end',
         }),
-        arrow({ element: this.arrow, padding: POPOVER_BORDER_RADIUS }),
+        arrow({ element: this.arrow, padding: getPopoverBorderRadius(this.popover) }),
       ],
     });
 
