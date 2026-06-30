@@ -177,7 +177,7 @@ export class Popover {
       isClickOutside(e, this.refButton || this.refSlottedButton) &&
       isClickOutside(e, this.refPopover)
     ) {
-      this.requestClose();
+      this.dismissPopover();
     }
   };
 
@@ -188,11 +188,11 @@ export class Popover {
         this.refButton?.focus();
       }
       // `popover="manual"` never light-dismisses, so Escape is handled here for both modes (emits `dismiss` when controlled, otherwise closes)
-      this.requestClose();
+      this.dismissPopover();
     }
   };
 
-  private requestClose = (): void => {
+  private dismissPopover = (): void => {
     if (this.isControlled) {
       this.dismiss.emit();
     } else {
