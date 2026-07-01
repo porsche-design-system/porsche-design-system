@@ -46,6 +46,21 @@ const cssVariableMinWidth = '--p-popover-min-w';
 const cssVariableMaxWidth = '--p-popover-max-w';
 
 /**
+ * @css-variable {"name": "--p-popover-h", "description": "Height of the popover.", "defaultValue": "auto"}
+ */
+const cssVariableHeight = '--p-popover-h';
+
+/**
+ * @css-variable {"name": "--p-popover-min-h", "description": "Min height of the popover.", "defaultValue": "auto"}
+ */
+const cssVariableMinHeight = '--p-popover-min-h';
+
+/**
+ * @css-variable {"name": "--p-popover-max-h", "description": "Max height of the popover.", "defaultValue": "none"}
+ */
+const cssVariableMaxHeight = '--p-popover-max-h';
+
+/**
  * @css-variable {"name": "--p-popover-px", "description": "Horizontal padding of the popover.", "defaultValue": "16px"}
  */
 const cssVarPaddingInline = '--p-popover-px';
@@ -118,9 +133,15 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
         font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         color: ref(colorPrimary),
         width: ref(cssVariableWidth, 'max-content'),
-        minWidth: `max(0px, ${ref(cssVariableMinWidth, '0px')})`,
+        minWidth: ref(cssVariableMinWidth, '0px'),
         maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), ${ref(cssVariableMaxWidth, '48ch')})`,
+        height: ref(cssVariableHeight, 'auto'),
+        minHeight: ref(cssVariableMinHeight, 'auto'),
+        maxHeight: ref(cssVariableMaxHeight, 'none'),
         padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
+        // overflow: 'hidden auto',
+        // overscrollBehaviorY: 'none',
+        // boxSizing: 'border-box',
         opacity: isOpen ? 1 : 0,
         visibility: isOpen ? 'inherit' : 'hidden', // panel shall not be tabbable/announced after the fade-out has finished
         transition,
