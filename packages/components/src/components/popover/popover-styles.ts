@@ -21,7 +21,6 @@ import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
-  getHiddenTextJssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -104,7 +103,6 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
           background: ref(colorPrimary),
         },
       },
-      span: getHiddenTextJssStyle(),
       '[popover]': {
         all: 'unset',
         position: 'fixed', // matches floating ui's `fixed` strategy; required for correct top-layer positioning in Safari

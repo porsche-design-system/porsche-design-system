@@ -137,13 +137,12 @@ export class Popover {
             type="button"
             onClick={() => !this.isControlled && (this.isOpen = !this.isOpen)}
             {...parseAndGetAriaAttributes({
+              ...{ 'aria-label': 'More information' },
               ...parseAndGetAriaAttributes(this.aria),
               ...{ 'aria-expanded': this.effectiveOpen },
             })}
             ref={(el) => (this.refButton = el)}
-          >
-            <span>More information</span>
-          </button>
+          />
         )}
         {/* The panel uses `popover="manual"` so the component fully owns open/close timing (no native light-dismiss).
             It stays mounted so it can transition (fade-out) when closing; visibility is driven by `effectiveOpen` via
