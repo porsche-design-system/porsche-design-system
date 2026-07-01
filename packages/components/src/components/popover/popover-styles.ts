@@ -24,7 +24,6 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  motionDurationMap,
 } from '../../styles';
 import { getCss, overlayTransitionSupportsQuery } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
@@ -80,9 +79,11 @@ const iconInfo = getInlineSVGBackgroundImage(
 );
 
 export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => {
-  // fade-in on open, fade-out on close; `visibility` is delayed by the duration on close so the panel stays
-  // in the accessibility tree / tabbable until the fade-out finishes, then becomes inert.
-  const transition = `${getTransition('opacity', 'short', isOpen ? 'in' : 'out')},visibility 0s linear ${isOpen ? '0s' : motionDurationMap.short}`;
+  // fade-in on open, fade-out on close. While closing, the panel keeps `display: grid` (Chromium via `overlay` +
+  // `display` `allow-discrete`; Safari/Firefox via the deferred `hidePopover()`), so `display: none` only describes the
+  // fully-closed terminal state. Tabbability / a11y-tree removal during the fade-out is handled immediately via the
+  // `inert` attribute on the panel (see popover.tsx), which is why no `visibility` toggle is needed here.
+  const transition = getTransition('opacity', 'short', isOpen ? 'in' : 'out');
 
   return getCss({
     '@global': {
@@ -136,8 +137,9 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
       },
       '[popover]': {
         all: 'unset',
-        display: 'grid',
         position: 'fixed', // matches floating ui's `fixed` strategy; required for correct top-layer positioning in Safari
+        top: 0,
+        left: 0,
         filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
         borderRadius: ref(cssVarRadius, isCompact ? ref(radiusLg) : ref(radiusXl)),
@@ -151,15 +153,24 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
         minHeight: ref(cssVariableMinHeight, 'auto'),
         maxHeight: ref(cssVariableMaxHeight, `calc(100dvh - ${POPOVER_SAFE_ZONE * 2}px)`),
         opacity: isOpen ? 1 : 0,
-        visibility: isOpen ? 'inherit' : 'hidden', // panel shall not be tabbable/announced after the fade-out has finished
         transition,
         // keep the popover on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
         ...overlayTransitionSupportsQuery({
-          transition: `${transition},${getTransition('overlay', 'short', isOpen ? 'in' : 'out')} allow-discrete`,
+          transition: `${transition},${getTransition('overlay', 'short', isOpen ? 'in' : 'out')} allow-discrete,${getTransition('display', 'short', isOpen ? 'in' : 'out')} allow-discrete`,
         }),
+        // Unlike `opacity` (driven by the `isOpen` render flag), `overlay` and `display` are toggled via the
+        // `:popover-open` UA state instead of `isOpen`. Both are owned by the browser: they only flip once
+        // `showPopover()` / `hidePopover()` actually promote/remove the element to/from the #top-layer. Driving them
+        // from `isOpen` would desync from that native state — e.g. Safari/Firefox defer `hidePopover()` until the
+        // fade-out ends (see `createTopLayerController`), so `display` must stay `grid` while `:popover-open` is still
+        // truthy; an `isOpen`-based `display: none` would hide the panel instantly and kill the fade. Binding to
+        // `:popover-open` keeps CSS in lockstep with the browser across all engines, while the Chromium-only
+        // `allow-discrete` transition above animates the discrete `overlay`/`display` switch during the fade-out.
         overlay: 'none',
+        display: 'none',
         '&:popover-open': {
           overlay: 'auto',
+          display: 'grid',
         },
         ...forcedColorsMediaQuery({
           outline: '2px solid CanvasText',

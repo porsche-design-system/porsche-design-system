@@ -2,26 +2,26 @@
 
 exports[`getComponentCss() > should return correct css for compact: false and isOpen: false 1`] = `
 ":host {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
+  display: contents;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot:not([name]), p {
   display: block;
-  pointer-events: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: inherit;
+  max-height: inherit;
+  box-sizing: border-box;
   padding: var(--p-popover-py,calc(12 * var(--p-spacing-static-2xs))) var(--p-popover-px,var(--p-spacing-static-md));
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
 }
 slot[name="button"] {
   display: inline-block;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 p {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
 }
 button {
@@ -32,7 +32,7 @@ button {
   height: var(--p-leading-normal);
   border-radius: var(--p-radius-full);
   cursor: pointer;
-  background-color: var(--p-color-frosted);
+  background: var(--p-color-frosted);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -47,36 +47,29 @@ button::after {
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
 }
-span {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
 [popover] {
   all: unset;
   position: fixed;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
-  pointer-events: none;
   border-radius: var(--p-popover-radius,var(--p-radius-xl));
   background: var(--p-color-canvas);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  max-width: min(calc(100dvw - 16px), 48ch);
-  width: max-content;
-  box-sizing: border-box;
+  width: var(--p-popover-w,max-content);
+  min-width: var(--p-popover-min-w,0px);
+  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
+  height: var(--p-popover-h,auto);
+  min-height: var(--p-popover-min-h,auto);
+  max-height: var(--p-popover-max-h,calc(100dvh - 16px));
   opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),visibility 0s linear var(--p-duration-sm);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   overlay: none;
+  display: none;
 }
 [popover]:popover-open {
   overlay: auto;
+  display: grid;
 }
 [popover]::backdrop {
   display: none;
@@ -93,13 +86,13 @@ span {
 
 @media(hover:hover) {
   button:hover {
-    background-color: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted-soft);
   }
 }
 
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),visibility 0s linear var(--p-duration-sm),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -120,26 +113,26 @@ span {
 
 exports[`getComponentCss() > should return correct css for compact: false and isOpen: true 1`] = `
 ":host {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
+  display: contents;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot:not([name]), p {
   display: block;
-  pointer-events: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: inherit;
+  max-height: inherit;
+  box-sizing: border-box;
   padding: var(--p-popover-py,calc(12 * var(--p-spacing-static-2xs))) var(--p-popover-px,var(--p-spacing-static-md));
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
 }
 slot[name="button"] {
   display: inline-block;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 p {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
 }
 button {
@@ -150,7 +143,7 @@ button {
   height: var(--p-leading-normal);
   border-radius: var(--p-radius-full);
   cursor: pointer;
-  background-color: var(--p-color-frosted);
+  background: var(--p-color-frosted);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -165,36 +158,29 @@ button::after {
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
 }
-span {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
 [popover] {
   all: unset;
   position: fixed;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
-  pointer-events: none;
   border-radius: var(--p-popover-radius,var(--p-radius-xl));
   background: var(--p-color-canvas);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  max-width: min(calc(100dvw - 16px), 48ch);
-  width: max-content;
-  box-sizing: border-box;
+  width: var(--p-popover-w,max-content);
+  min-width: var(--p-popover-min-w,0px);
+  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
+  height: var(--p-popover-h,auto);
+  min-height: var(--p-popover-min-h,auto);
+  max-height: var(--p-popover-max-h,calc(100dvh - 16px));
   opacity: 1;
-  visibility: inherit;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in),visibility 0s linear 0s;
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in);
   overlay: none;
+  display: none;
 }
 [popover]:popover-open {
   overlay: auto;
+  display: grid;
 }
 [popover]::backdrop {
   display: none;
@@ -211,13 +197,13 @@ span {
 
 @media(hover:hover) {
   button:hover {
-    background-color: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted-soft);
   }
 }
 
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in),visibility 0s linear 0s,overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete;
+    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -238,26 +224,26 @@ span {
 
 exports[`getComponentCss() > should return correct css for compact: true and isOpen: false 1`] = `
 ":host {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
+  display: contents;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot:not([name]), p {
   display: block;
-  pointer-events: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: inherit;
+  max-height: inherit;
+  box-sizing: border-box;
   padding: var(--p-popover-py,var(--p-spacing-static-xs)) var(--p-popover-px,var(--p-spacing-static-sm));
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
 }
 slot[name="button"] {
   display: inline-block;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 p {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
 }
 button {
@@ -268,7 +254,7 @@ button {
   height: var(--p-leading-normal);
   border-radius: var(--p-radius-full);
   cursor: pointer;
-  background-color: var(--p-color-frosted);
+  background: var(--p-color-frosted);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -283,36 +269,29 @@ button::after {
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
 }
-span {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
 [popover] {
   all: unset;
   position: fixed;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
-  pointer-events: none;
   border-radius: var(--p-popover-radius,var(--p-radius-lg));
   background: var(--p-color-canvas);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  max-width: min(calc(100dvw - 16px), 48ch);
-  width: max-content;
-  box-sizing: border-box;
+  width: var(--p-popover-w,max-content);
+  min-width: var(--p-popover-min-w,0px);
+  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
+  height: var(--p-popover-h,auto);
+  min-height: var(--p-popover-min-h,auto);
+  max-height: var(--p-popover-max-h,calc(100dvh - 16px));
   opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),visibility 0s linear var(--p-duration-sm);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   overlay: none;
+  display: none;
 }
 [popover]:popover-open {
   overlay: auto;
+  display: grid;
 }
 [popover]::backdrop {
   display: none;
@@ -329,13 +308,13 @@ span {
 
 @media(hover:hover) {
   button:hover {
-    background-color: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted-soft);
   }
 }
 
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),visibility 0s linear var(--p-duration-sm),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -356,26 +335,26 @@ span {
 
 exports[`getComponentCss() > should return correct css for compact: true and isOpen: true 1`] = `
 ":host {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
+  display: contents;
 }
 :host([hidden]) {
   display: none !important;
 }
 slot:not([name]), p {
   display: block;
-  pointer-events: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: inherit;
+  max-height: inherit;
+  box-sizing: border-box;
   padding: var(--p-popover-py,var(--p-spacing-static-xs)) var(--p-popover-px,var(--p-spacing-static-sm));
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
 }
 slot[name="button"] {
   display: inline-block;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 p {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
 }
 button {
@@ -386,7 +365,7 @@ button {
   height: var(--p-leading-normal);
   border-radius: var(--p-radius-full);
   cursor: pointer;
-  background-color: var(--p-color-frosted);
+  background: var(--p-color-frosted);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -401,36 +380,29 @@ button::after {
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/></svg>') center/contain no-repeat;
   background: var(--p-color-primary);
 }
-span {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
 [popover] {
   all: unset;
   position: fixed;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
-  pointer-events: none;
   border-radius: var(--p-popover-radius,var(--p-radius-lg));
   background: var(--p-color-canvas);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  max-width: min(calc(100dvw - 16px), 48ch);
-  width: max-content;
-  box-sizing: border-box;
+  width: var(--p-popover-w,max-content);
+  min-width: var(--p-popover-min-w,0px);
+  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
+  height: var(--p-popover-h,auto);
+  min-height: var(--p-popover-min-h,auto);
+  max-height: var(--p-popover-max-h,calc(100dvh - 16px));
   opacity: 1;
-  visibility: inherit;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in),visibility 0s linear 0s;
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in);
   overlay: none;
+  display: none;
 }
 [popover]:popover-open {
   overlay: auto;
+  display: grid;
 }
 [popover]::backdrop {
   display: none;
@@ -447,13 +419,13 @@ span {
 
 @media(hover:hover) {
   button:hover {
-    background-color: var(--p-color-frosted-soft);
+    background: var(--p-color-frosted-soft);
   }
 }
 
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in),visibility 0s linear 0s,overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete;
+    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete;
   }
 }
 
