@@ -50,6 +50,8 @@ button::after {
 [popover] {
   all: unset;
   position: fixed;
+  top: 0;
+  left: 0;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
   border-radius: var(--p-popover-radius,var(--p-radius-xl));
@@ -161,6 +163,8 @@ button::after {
 [popover] {
   all: unset;
   position: fixed;
+  top: 0;
+  left: 0;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
   border-radius: var(--p-popover-radius,var(--p-radius-xl));
@@ -219,7 +223,12 @@ button::after {
     background: CanvasText;
   }
 }
-"
+
+@starting-style {
+  [popover] {
+    opacity: 0;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for compact: true and isOpen: false 1`] = `
@@ -272,6 +281,8 @@ button::after {
 [popover] {
   all: unset;
   position: fixed;
+  top: 0;
+  left: 0;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
   border-radius: var(--p-popover-radius,var(--p-radius-lg));
@@ -383,6 +394,8 @@ button::after {
 [popover] {
   all: unset;
   position: fixed;
+  top: 0;
+  left: 0;
   filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
   backdrop-filter: drop-shadow(0 0 transparent);
   border-radius: var(--p-popover-radius,var(--p-radius-lg));
@@ -441,5 +454,10 @@ button::after {
     background: CanvasText;
   }
 }
-"
+
+@starting-style {
+  [popover] {
+    opacity: 0;
+  }
+}"
 `;

@@ -79,22 +79,21 @@ const iconInfo = getInlineSVGBackgroundImage(
 );
 
 export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => {
-  // fade-in on open, fade-out on close. While closing, the panel keeps `display: grid` (Chromium via `overlay` +
-  // `display` `allow-discrete`; Safari/Firefox via the deferred `hidePopover()`), so `display: none` only describes the
-  // fully-closed terminal state. Tabbability / a11y-tree removal during the fade-out is handled immediately via the
-  // `inert` attribute on the panel (see popover.tsx), which is why no `visibility` toggle is needed here.
+  // fade-in on open (via `@starting-style` below), fade-out on close. While closing, the panel keeps `display: grid`
+  // (Chromium via `overlay` + `display` `allow-discrete`; Safari/Firefox via the deferred `hidePopover()`), so
+  // `display: none` only describes the fully-closed terminal state. Tabbability / a11y-tree removal during the fade-out
+  // is handled immediately via the `inert` attribute on the panel (see popover.tsx), so no `visibility` toggle is needed.
   const transition = getTransition('opacity', 'short', isOpen ? 'in' : 'out');
 
-  return getCss({
+  const css = getCss({
     '@global': {
       ':host': {
         display: 'contents',
-        ...addImportantToEachRule({
-          ...hostHiddenStyles,
-        }),
+        ...addImportantToEachRule(hostHiddenStyles),
       },
       'slot:not([name]), p': {
         display: 'block',
+        margin: 0, // reset ua-style for paragraphs
         minWidth: 0, // allow the grid item to shrink below its content size (needed for correct clamping via --p-popover-max-w)
         minHeight: 0, // allow the grid item to shrink below its content size so overflow scrolls instead of expanding the panel (needed for --p-popover-max-h)
         maxWidth: 'inherit',
@@ -106,9 +105,6 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
       },
       'slot[name="button"]': {
         display: 'inline-block',
-      },
-      p: {
-        margin: 0,
       },
       button: {
         all: 'unset',
@@ -177,7 +173,7 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
           outlineOffset: '-2px',
         }),
         '&::backdrop': {
-          display: 'none', // ua-style
+          display: 'none', // reset ua-style
         },
       },
     },
@@ -192,4 +188,30 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
       }),
     },
   });
+
+  // Fade-IN: `@starting-style` supplies the opacity the browser transitions *from* on the first rendered frame, i.e. the
+  // moment the panel leaves `display: none` via `:popover-open` (triggered by `showPopover()`). Without it the panel
+  // snaps to full opacity, because its computed `opacity` is already `1` by the time it is promoted out of `display:
+  // none`. The fade-OUT needs no starting style (a rendered prior state already exists). Appended as raw CSS because the
+  // JSS conditional-rule plugin only supports `@media`/`@supports`/`@container`, not `@starting-style`. Unsupported
+  // engines (< Chromium 117 / Safari 17.5 / Firefox 129) ignore the unknown at-rule and skip the entry fade (graceful
+  // degradation). Formatting mirrors JSS output so the unit-test CSS parser can read it.
+  //
+  // ALTERNATIVE APPROACH (not implemented) — mirror the `dialog-base` (p-modal/p-flyout) pattern and drop `@starting-style`:
+  //   • Keep the panel permanently rendered (never `display: none`); collapse the closed state via `visibility: hidden`
+  //     + `width/height: 0` instead. Because the element stays rendered, `opacity` fades normally in BOTH directions with
+  //     no `@starting-style`, and an initial `open=true` computes straight to `opacity: 1` (appears instantly, no entry
+  //     fade) — which fixes the one downside of the current approach (initial `open=true` fades in on page load).
+  //   • Caveat: drive `visibility` + `width/height` from the `isOpen` flag with a CLOSE-ONLY delayed transition
+  //     (`… 0s linear ${isOpen ? '0s' : motionDurationMap.short}`), NOT from `:popover-open`. `:popover-open` drops
+  //     immediately on Chromium (only Safari/FF defer `hidePopover()`), so `:popover-open`-bound dimensions would collapse
+  //     to 0 at the START of the Chromium fade-out and clip the panel mid-fade. The delay keeps size/visibility through
+  //     the fade and collapses them only afterwards. `:popover-open` then remains solely for `overlay` + the Chromium
+  //     `allow-discrete` top-layer retention.
+  //   • `visibility: hidden` still occupies layout (can cause scrollbars), which is why it must be paired with
+  //     `width/height: 0`. `inert` is still required either way (visibility is delayed, so the panel stays visible/
+  //     tabbable during the fade-out).
+  //   • Trade-off: removes the `@starting-style` raw-CSS append + the initial-load fade, at the cost of reintroducing the
+  //     delayed `visibility` plus delayed `width/height` and tighter coupling to the motion duration.
+  return isOpen ? `${css}\n@starting-style {\n  [popover] {\n    opacity: 0;\n  }\n}` : css;
 };
