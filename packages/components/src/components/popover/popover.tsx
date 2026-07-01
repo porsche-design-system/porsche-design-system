@@ -14,15 +14,12 @@ import {
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import {
-  dispatchPopoverOpenEvent,
   getPopoverBorderRadius,
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
-  POPOVER_OPEN_EVENT,
   POPOVER_SAFE_ZONE,
   type PopoverAriaAttribute,
   type PopoverDirection,
-  type PopoverOpenEventDetail,
 } from './popover-utils';
 
 const propTypes: PropTypes<typeof Popover> = {
@@ -78,8 +75,6 @@ export class Popover {
   private hasSlottedButton: boolean;
   // Tracks whether the document-level dismiss listeners (outside click / Escape) are currently registered.
   private hasDismissListeners = false;
-  // Tracks the previous effective open state to detect the closed -> open transition for cross-popover dismissal.
-  private wasOpen = false;
   // Keeps the panel on the #top-layer during its fade-out (Chromium via `overlay`; Safari/Firefox via a deferred hide).
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.refPopover,
@@ -96,12 +91,6 @@ export class Popover {
     return this.isControlled ? this.open : this.isOpen;
   }
 
-  public connectedCallback(): void {
-    // Listen for other popovers opening so this instance can dismiss itself. Uses a document-level event (not a
-    // module-level registry) so coordination also works across multiple PDS bundles/versions on the same page.
-    document.addEventListener(POPOVER_OPEN_EVENT, this.onOtherPopoverOpen as EventListener);
-  }
-
   @Listen('click')
   public onClick(e: MouseEvent): void {
     // Handle opening when custom slotted button is clicked (uncontrolled mode only; in controlled mode the consumer owns the trigger)
@@ -110,12 +99,23 @@ export class Popover {
     }
   }
 
+  @Listen('focusout')
+  public onFocusout(e: FocusEvent): void {
+    // Close when keyboard focus leaves the popover entirely (e.g. Tab / Shift+Tab onto another element such as a second
+    // popover's trigger). `relatedTarget` is the element receiving focus; if it is outside this host, dismiss. This
+    // covers keyboard-opening another popover without any document-level coordination. Mouse outside-clicks and Escape
+    // are handled separately (`onClickOutside` / `onKeyboardEvent`).
+    const relatedTarget = e.relatedTarget as HTMLElement | null;
+    if (this.effectiveOpen && (!relatedTarget || !this.host.contains(relatedTarget))) {
+      this.dismissPopover();
+    }
+  }
+
   public disconnectedCallback(): void {
     // ensures the deferred top-layer hide is cancelled and floating ui event listeners are removed in case popover is removed from DOM
     this.topLayer.cancel();
     this.handlePopover(false);
     this.updateDismissListeners(false);
-    document.removeEventListener(POPOVER_OPEN_EVENT, this.onOtherPopoverOpen as EventListener);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -147,8 +147,9 @@ export class Popover {
         )}
         {/* The panel uses `popover="manual"` so the component fully owns open/close timing (no native light-dismiss).
             It stays mounted so it can transition (fade-out) when closing; visibility is driven by `effectiveOpen` via
-            CSS and the top-layer controller. Outside-click and Escape dismissal are handled via document listeners
-            (see `onClickOutside` / `onKeyboardEvent`), which keeps the panel on the #top-layer during the fade-out. */}
+            CSS and the top-layer controller. Dismissal on outside-click, Escape, and focus leaving the popover is
+            handled via `onClickOutside` / `onKeyboardEvent` / `onFocusout`, keeping the panel on the #top-layer during
+            the fade-out. */}
         <div popover="manual" aria-hidden={this.effectiveOpen ? 'false' : 'true'} ref={(el) => (this.refPopover = el)}>
           <div class="arrow" ref={(el) => (this.refArrow = el)} />
           {this.description ? <p>{this.description}</p> : <slot />}
@@ -167,13 +168,6 @@ export class Popover {
     this.handlePopover(this.effectiveOpen);
     // Register/unregister the document-level dismiss listeners based on the current open state (idempotent).
     this.updateDismissListeners(this.effectiveOpen);
-
-    // On the closed -> open transition, broadcast so every other open popover dismisses itself (only one popover open
-    // at a time). Works across all open paths (mouse, keyboard, controlled `open` prop) and across PDS bundles/versions.
-    if (this.effectiveOpen && !this.wasOpen) {
-      dispatchPopoverOpenEvent(this.host);
-    }
-    this.wasOpen = this.effectiveOpen;
   }
 
   private handlePopover = (open: boolean): void => {
@@ -191,12 +185,6 @@ export class Popover {
     }
   };
 
-  private onOtherPopoverOpen = (e: CustomEvent<PopoverOpenEventDetail>): void => {
-    // Another popover opened: dismiss this one (if open and not the source) so only a single popover stays open.
-    if (e.detail.source !== this.host && this.effectiveOpen) {
-      this.dismissPopover();
-    }
-  };
 
   private dismissPopover = (): void => {
     // Centralizes the dismissal behavior: in controlled mode the consumer owns the open state, so only emit `dismiss`;

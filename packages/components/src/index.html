@@ -1710,22 +1710,45 @@
           </p-popover>
           <p-popover direction="left">
             <p-text>Some content</p-text>
+            <div role="group" class="mt-fluid-sm flex flex-wrap gap-fluid-sm max-xs:flex-col">
+              <p-button type="button" variant="primary">Confirm</p-button>
+              <p-button type="button" variant="secondary">Cancel</p-button>
+            </div>
           </p-popover>
           <p-popover>
             <p-button slot="button" variant="secondary" hide-label="true" icon="car">More information</p-button>
             <p-text>Some content</p-text>
+            <div role="group" class="mt-fluid-sm flex flex-wrap gap-fluid-sm max-xs:flex-col">
+              <p-button type="button" variant="primary">Confirm</p-button>
+              <p-button type="button" variant="secondary">Cancel</p-button>
+            </div>
           </p-popover>
           <p-popover class="controlled-popover">
             <p-button slot="button" variant="secondary">Controlled popover</p-button>
             <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
           </p-popover>
           <p-popover class="controlled-popover">
-            <p-button slot="button" variant="secondary">Controlled popover 2</p-button>
+            <p-button slot="button" variant="secondary">Controlled popover with a nested uncontrolled popover</p-button>
             <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
+            <div role="group" class="mt-fluid-sm flex flex-wrap gap-fluid-sm max-xs:flex-col">
+              <p-button type="button" variant="primary">Confirm</p-button>
+              <p-button type="button" variant="secondary">Cancel</p-button>
+            </div>
+            <p-popover class="mt-fluid-sm" direction="left">
+              <p-text>Some content</p-text>
+              <div role="group" class="mt-fluid-sm flex flex-wrap gap-fluid-sm max-xs:flex-col">
+                <p-button type="button" variant="primary">Confirm</p-button>
+                <p-button type="button" variant="secondary">Cancel</p-button>
+              </div>
+            </p-popover>
           </p-popover>
           <p-popover class="controlled-popover" open="true" direction="right">
-            <p-button slot="button" variant="secondary">Controlled popover 3</p-button>
+            <p-button slot="button" variant="secondary">Controlled popover initally opened</p-button>
             <p-text>This popover is controlled via the `open` prop and `dismiss` event.</p-text>
+            <div role="group" class="mt-fluid-sm flex flex-wrap gap-fluid-sm max-xs:flex-col">
+              <p-button type="button" variant="primary">Confirm</p-button>
+              <p-button type="button" variant="secondary">Cancel</p-button>
+            </div>
           </p-popover>
         </div>
         <div data-card="drilldown">

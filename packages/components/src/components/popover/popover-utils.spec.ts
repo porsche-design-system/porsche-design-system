@@ -1,10 +1,5 @@
 import { vi } from 'vitest';
-import {
-  dispatchPopoverOpenEvent,
-  getPopoverBorderRadius,
-  POPOVER_OPEN_EVENT,
-  type PopoverOpenEventDetail,
-} from './popover-utils';
+import { getPopoverBorderRadius } from './popover-utils';
 
 describe('getPopoverBorderRadius()', () => {
   const popover = document.createElement('div');
@@ -31,19 +26,4 @@ describe('getPopoverBorderRadius()', () => {
   });
 });
 
-describe('dispatchPopoverOpenEvent()', () => {
-  it('should dispatch the popover open event on document with the source host as detail', () => {
-    const source = document.createElement('p-popover');
-    const spy = vi.fn();
-    document.addEventListener(POPOVER_OPEN_EVENT, spy);
-
-    dispatchPopoverOpenEvent(source);
-
-    expect(spy).toHaveBeenCalledTimes(1);
-    const event = spy.mock.calls[0][0] as CustomEvent<PopoverOpenEventDetail>;
-    expect(event.detail.source).toBe(source);
-
-    document.removeEventListener(POPOVER_OPEN_EVENT, spy);
-  });
-});
 

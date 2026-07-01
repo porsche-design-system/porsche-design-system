@@ -365,6 +365,38 @@ test.describe('keyboard behavior', () => {
         await expect(page.locator('p-popover.second [popover]'), 'second popover, second enter').toBeVisible();
       });
     });
+
+    test('should close popover when focus leaves it', async ({ page }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-popover>Some Content</p-popover>
+        <button id="after">after</button>`
+      );
+      const popover = getPopover(page);
+      const button = getButton(page);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      // Tab moves focus to the button outside the popover, which must dismiss it (keyboard light-dismiss).
+      await page.keyboard.press('Tab');
+      await expect(page.locator('#after')).toBeFocused();
+      await expect(popover).toBeHidden();
+    });
+
+    test('should not close popover when focus moves to slotted content', async ({ page }) => {
+      await initPopover(page, { withLink: true });
+      const popover = getPopover(page);
+      const button = getButton(page);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      // Tab moves focus into the slotted link inside the popover, which must keep it open.
+      await page.keyboard.press('Tab');
+      await expect(page.locator('p-popover a')).toBeFocused();
+      await expect(popover).toBeVisible();
+    });
   });
 
   test.describe('custom slotted button', () => {
