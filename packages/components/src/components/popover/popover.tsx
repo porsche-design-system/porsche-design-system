@@ -120,10 +120,10 @@ export class Popover {
   }
 
   public disconnectedCallback(): void {
-    // ensures the deferred top-layer hide is cancelled and floating ui event listeners are removed in case popover is removed from DOM
+    // ensures the deferred top-layer hide is canceled and floating ui event listeners are removed in case popover is removed from DOM
     this.topLayer.cancel();
-    this.handlePopover(false);
-    this.updateDismissListeners(false);
+    this.syncAutoUpdate(false);
+    this.syncDismissListeners(false);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -176,85 +176,27 @@ export class Popover {
     } else {
       this.topLayer.requestHide();
     }
-    this.handlePopover(this.effectiveOpen);
+    this.syncAutoUpdate(this.effectiveOpen);
     // Register/unregister the document-level dismiss listeners based on the current open state (idempotent).
-    this.updateDismissListeners(this.effectiveOpen);
+    this.syncDismissListeners(this.effectiveOpen);
   }
 
-  private handlePopover = (open: boolean): void => {
-    if (open) {
-      if (!this.cleanUpAutoUpdate) {
-        this.cleanUpAutoUpdate = autoUpdate(
-          this.refButton || this.refSlotButton,
-          this.refPopover,
-          this.updatePosition
-        );
-      }
-    } else {
-      this.cleanUpAutoUpdate?.();
+  private syncAutoUpdate = (active: boolean): void => {
+    if (active && !this.cleanUpAutoUpdate) {
+      this.cleanUpAutoUpdate = autoUpdate(
+        this.refButton ?? this.refSlotButton,
+        this.refPopover,
+        this.updatePosition
+      );
+    } else if (!active && this.cleanUpAutoUpdate) {
+      this.cleanUpAutoUpdate();
       this.cleanUpAutoUpdate = undefined;
-    }
-  };
-
-
-  private dismissPopover = (): void => {
-    // Centralizes the dismissal behavior: in controlled mode the consumer owns the open state, so only emit `dismiss`;
-    // in uncontrolled mode the component closes itself. The fade-out and top-layer removal are handled by the
-    // top-layer controller on the next render.
-    if (this.isControlled) {
-      this.dismiss.emit();
-    } else {
-      this.isOpen = false;
-    }
-  };
-
-  private onClickOutside = (e: MouseEvent): void => {
-    // Light-dismiss on outside click. Clicks on the trigger button or inside the panel must not close it; the trigger
-    // toggles its own state via the button/`onClick` handlers.
-    if (
-      this.effectiveOpen &&
-      isClickOutside(e, this.refButton || this.refSlotButton) &&
-      isClickOutside(e, this.refPopover)
-    ) {
-      this.dismissPopover();
-    }
-  };
-
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
-    // `popover="manual"` does not light-dismiss, so Escape is handled manually (mirrors `p-banner`).
-    if (e.key === 'Escape' && this.effectiveOpen) {
-      // Return focus to the trigger before closing so keyboard users are not stranded on the (about to be `inert`)
-      // panel content. Focus must move synchronously here: the closing re-render marks the panel `inert`, which would
-      // otherwise drop focus to `<body>`. Mirrors the focus-restore behavior of native `<dialog>` (`p-modal` / `p-flyout`).
-      this.focusTrigger();
-      this.dismissPopover();
-    }
-  };
-
-  private focusTrigger = (): void => {
-    // Default (info) button lives in the Shadow DOM; the custom trigger is projected through the `button` slot, so
-    // resolve the actually rendered element to move focus to.
-    const trigger =
-      this.refButton ?? ((this.refSlotButton as HTMLSlotElement)?.assignedElements()[0] as HTMLElement | undefined);
-    trigger?.focus();
-  };
-
-  private updateDismissListeners = (open: boolean): void => {
-    if (open && !this.hasDismissListeners) {
-      // capture phase so dismissal happens before focus shifts on outside `mousedown`
-      document.addEventListener('mousedown', this.onClickOutside, true);
-      document.addEventListener('keydown', this.onKeyboardEvent);
-      this.hasDismissListeners = true;
-    } else if (!open && this.hasDismissListeners) {
-      document.removeEventListener('mousedown', this.onClickOutside, true);
-      document.removeEventListener('keydown', this.onKeyboardEvent);
-      this.hasDismissListeners = false;
     }
   };
 
   private updatePosition = async (): Promise<void> => {
     const { x, y, placement, middlewareData } = await computePosition(
-      this.refButton || this.refSlotButton,
+      this.refButton ?? this.refSlotButton,
       this.refPopover,
       {
         placement: this.direction,
@@ -301,5 +243,60 @@ export class Popover {
       top: ['bottom', 'left', 'right'].includes(placement) ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
       bottom: placement === 'top' ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
     });
+  };
+
+  private syncDismissListeners = (active: boolean): void => {
+    if (active && !this.hasDismissListeners) {
+      // capture phase so dismissal happens before focus shifts on outside `mousedown`
+      document.addEventListener('mousedown', this.onClickOutside, true);
+      document.addEventListener('keydown', this.onKeyboardEvent);
+      this.hasDismissListeners = true;
+    } else if (!active && this.hasDismissListeners) {
+      document.removeEventListener('mousedown', this.onClickOutside, true);
+      document.removeEventListener('keydown', this.onKeyboardEvent);
+      this.hasDismissListeners = false;
+    }
+  };
+
+  private onClickOutside = (e: MouseEvent): void => {
+    // Light-dismiss on outside click. Clicks on the trigger button or inside the panel must not close it; the trigger
+    // toggles its own state via the button/`onClick` handlers.
+    if (
+      this.effectiveOpen &&
+      isClickOutside(e, this.refButton ?? this.refSlotButton) &&
+      isClickOutside(e, this.refPopover)
+    ) {
+      this.dismissPopover();
+    }
+  };
+
+  private onKeyboardEvent = (e: KeyboardEvent): void => {
+    // `popover="manual"` does not light-dismiss, so Escape is handled manually (mirrors `p-banner`).
+    if (e.key === 'Escape' && this.effectiveOpen) {
+      // Return focus to the trigger before closing so keyboard users are not stranded on the (about to be `inert`)
+      // panel content. Focus must move synchronously here: the closing re-render marks the panel `inert`, which would
+      // otherwise drop focus to `<body>`. Mirrors the focus-restore behavior of native `<dialog>` (`p-modal` / `p-flyout`).
+      this.focusTrigger();
+      this.dismissPopover();
+    }
+  };
+
+  private focusTrigger = (): void => {
+    // Default (info) button lives in the Shadow DOM; the custom trigger is projected through the `button` slot, so
+    // resolve the actually rendered element to move focus to.
+    const trigger =
+      this.refButton ?? ((this.refSlotButton as HTMLSlotElement)?.assignedElements()[0] as HTMLElement | undefined);
+    trigger?.focus();
+  };
+
+  private dismissPopover = (): void => {
+    // Centralizes the dismissal behavior: in controlled mode the consumer owns the open state, so only emit `dismiss`;
+    // in uncontrolled mode the component closes itself. The fade-out and top-layer removal are handled by the
+    // top-layer controller on the next render.
+    if (this.isControlled) {
+      this.dismiss.emit();
+    } else {
+      this.isOpen = false;
+    }
   };
 }

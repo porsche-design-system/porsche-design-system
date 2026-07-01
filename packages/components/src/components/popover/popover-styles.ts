@@ -35,24 +35,24 @@ import { POPOVER_SAFE_ZONE } from './popover-utils';
 const cssVariableWidth = '--p-popover-w';
 
 /**
- * @css-variable {"name": "--p-popover-min-w", "description": "Min width of the popover.", "defaultValue": "0px"}
- */
-const cssVariableMinWidth = '--p-popover-min-w';
-
-/**
- * @css-variable {"name": "--p-popover-max-w", "description": "Max width of the popover.", "defaultValue": "min(calc(100dvw - 16px), 48ch)"}
- */
-const cssVariableMaxWidth = '--p-popover-max-w';
-
-/**
  * @css-variable {"name": "--p-popover-h", "description": "Height of the popover.", "defaultValue": "auto"}
  */
 const cssVariableHeight = '--p-popover-h';
 
 /**
+ * @css-variable {"name": "--p-popover-min-w", "description": "Min width of the popover.", "defaultValue": "0px"}
+ */
+const cssVariableMinWidth = '--p-popover-min-w';
+
+/**
  * @css-variable {"name": "--p-popover-min-h", "description": "Min height of the popover.", "defaultValue": "auto"}
  */
 const cssVariableMinHeight = '--p-popover-min-h';
+
+/**
+ * @css-variable {"name": "--p-popover-max-w", "description": "Max width of the popover.", "defaultValue": "min(calc(100dvw - 16px), 48ch)"}
+ */
+const cssVariableMaxWidth = '--p-popover-max-w';
 
 /**
  * @css-variable {"name": "--p-popover-max-h", "description": "Max height of the popover.", "defaultValue": "calc(100dvh - 16px)"}
@@ -143,10 +143,10 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
         font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         color: ref(colorPrimary),
         width: ref(cssVariableWidth, 'max-content'),
-        minWidth: ref(cssVariableMinWidth, '0px'),
-        maxWidth: ref(cssVariableMaxWidth, `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`),
         height: ref(cssVariableHeight, 'auto'),
+        minWidth: ref(cssVariableMinWidth, '0px'),
         minHeight: ref(cssVariableMinHeight, 'auto'),
+        maxWidth: ref(cssVariableMaxWidth, `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`),
         maxHeight: ref(cssVariableMaxHeight, `calc(100dvh - ${POPOVER_SAFE_ZONE * 2}px)`),
         opacity: isOpen ? 1 : 0,
         transition,
