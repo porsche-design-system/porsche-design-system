@@ -58,41 +58,33 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
   return getCss({
     '@global': {
       ':host': {
-        position: 'relative', // ensures correct reference for floating ui fallback positioning in older browsers
-        display: 'inline-block',
-        verticalAlign: 'top',
+        display: 'contents',
         ...addImportantToEachRule({
           ...hostHiddenStyles,
         }),
-      },
-      'slot:not([name]), p': {
-        display: 'block',
-        pointerEvents: 'auto',
-        padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
       },
       'slot[name="button"]': {
         display: 'inline-block',
       },
       ...preventFoucOfNestedElementsStyles,
       p: {
-        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         margin: 0,
       },
       button: {
         all: 'unset',
         display: 'grid',
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
-        width: ref(leadingNormal), // width needed to improve ssr support
-        height: ref(leadingNormal), // height needed to improve ssr support
+        width: ref(leadingNormal),
+        height: ref(leadingNormal),
         borderRadius: ref(radiusFull),
         cursor: 'pointer',
-        backgroundColor: ref(colorFrosted),
+        background: ref(colorFrosted),
         transition: getTransition('background-color'),
         WebkitBackdropFilter: ref(blurFrosted),
         backdropFilter: ref(blurFrosted),
         ...hoverMediaQuery({
           '&:hover': {
-            backgroundColor: ref(colorFrostedSoft),
+            background: ref(colorFrostedSoft),
           },
         }),
         '&:focus-visible': getFocusBaseStyles(),
@@ -108,7 +100,6 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
         position: 'fixed', // matches floating ui's `fixed` strategy; required for correct top-layer positioning in Safari
         filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
-        pointerEvents: 'none', // prevents auto close
         borderRadius: ref(cssVarRadius, isCompact ? ref(radiusLg) : ref(radiusXl)),
         background: ref(colorCanvas),
         font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
@@ -116,6 +107,7 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
         maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
         width: 'max-content', // ensures in older browsers correct width
         boxSizing: 'border-box',
+        padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
         opacity: isOpen ? 1 : 0,
         visibility: isOpen ? 'inherit' : 'hidden', // panel shall not be tabbable/announced after the fade-out has finished
         transition,

@@ -68,7 +68,7 @@ export class Popover {
 
   private refPopover: HTMLDivElement;
   private refButton: HTMLButtonElement;
-  private refSlottedButton: HTMLElement;
+  private refSlotButton: HTMLElement;
   private refArrow: HTMLDivElement;
   private cleanUpAutoUpdate: () => void;
   // TODO: This should be updated when slot is changed
@@ -139,7 +139,7 @@ export class Popover {
     return (
       <Host>
         {this.hasSlottedButton ? (
-          <slot name="button" ref={(el: HTMLElement) => (this.refSlottedButton = el)} />
+          <slot name="button" ref={(el: HTMLElement) => (this.refSlotButton = el)} />
         ) : (
           <button
             type="button"
@@ -185,7 +185,7 @@ export class Popover {
     if (open) {
       if (!this.cleanUpAutoUpdate) {
         this.cleanUpAutoUpdate = autoUpdate(
-          this.refButton || this.refSlottedButton,
+          this.refButton || this.refSlotButton,
           this.refPopover,
           this.updatePosition
         );
@@ -213,7 +213,7 @@ export class Popover {
     // toggles its own state via the button/`onClick` handlers.
     if (
       this.effectiveOpen &&
-      isClickOutside(e, this.refButton || this.refSlottedButton) &&
+      isClickOutside(e, this.refButton || this.refSlotButton) &&
       isClickOutside(e, this.refPopover)
     ) {
       this.dismissPopover();
@@ -222,9 +222,21 @@ export class Popover {
 
   private onKeyboardEvent = (e: KeyboardEvent): void => {
     // `popover="manual"` does not light-dismiss, so Escape is handled manually (mirrors `p-banner`).
-    if (e.key === 'Escape') {
+    if (e.key === 'Escape' && this.effectiveOpen) {
+      // Return focus to the trigger before closing so keyboard users are not stranded on the (about to be `inert`)
+      // panel content. Focus must move synchronously here: the closing re-render marks the panel `inert`, which would
+      // otherwise drop focus to `<body>`. Mirrors the focus-restore behavior of native `<dialog>` (`p-modal` / `p-flyout`).
+      this.focusTrigger();
       this.dismissPopover();
     }
+  };
+
+  private focusTrigger = (): void => {
+    // Default (info) button lives in the Shadow DOM; the custom trigger is projected through the `button` slot, so
+    // resolve the actually rendered element to move focus to.
+    const trigger =
+      this.refButton ?? ((this.refSlotButton as HTMLSlotElement)?.assignedElements()[0] as HTMLElement | undefined);
+    trigger?.focus();
   };
 
   private updateDismissListeners = (open: boolean): void => {
@@ -242,7 +254,7 @@ export class Popover {
 
   private updatePosition = async (): Promise<void> => {
     const { x, y, placement, middlewareData } = await computePosition(
-      this.refButton || this.refSlottedButton,
+      this.refButton || this.refSlotButton,
       this.refPopover,
       {
         placement: this.direction,

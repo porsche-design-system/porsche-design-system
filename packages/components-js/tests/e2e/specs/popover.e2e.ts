@@ -446,6 +446,7 @@ test.describe('keyboard behavior', () => {
 
           await page.keyboard.press('Escape');
           await expect(popover).toBeHidden();
+          await expect(button).toBeFocused();
         });
       });
     });
