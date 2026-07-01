@@ -157,7 +157,11 @@ export class Popover {
             CSS and the top-layer controller. Dismissal on outside-click, Escape, and focus leaving the popover is
             handled via `onClickOutside` / `onKeyboardEvent` / `onFocusout`, keeping the panel on the #top-layer during
             the fade-out. */}
-        <div popover="manual" aria-hidden={this.effectiveOpen ? 'false' : 'true'} ref={(el) => (this.refPopover = el)}>
+        {/* `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
+            fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
+            during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
+            `inert` avoids that and mirrors the pattern used by `p-modal` / `p-sheet` / `p-drilldown`. */}
+        <div popover="manual" inert={!this.effectiveOpen} ref={(el) => (this.refPopover = el)}>
           <div class="arrow" ref={(el) => (this.refArrow = el)} />
           {this.description ? <p>{this.description}</p> : <slot />}
         </div>
