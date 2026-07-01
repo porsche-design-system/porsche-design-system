@@ -25,11 +25,25 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   motionDurationMap,
-  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getCss, overlayTransitionSupportsQuery } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
+
+/**
+ * @css-variable {"name": "--p-popover-w", "description": "Width of the popover.", "defaultValue": "max-content"}
+ */
+const cssVariableWidth = '--p-popover-w';
+
+/**
+ * @css-variable {"name": "--p-popover-min-w", "description": "Min width of the popover.", "defaultValue": "0px"}
+ */
+const cssVariableMinWidth = '--p-popover-min-w';
+
+/**
+ * @css-variable {"name": "--p-popover-max-w", "description": "Max width of the popover.", "defaultValue": "48ch"}
+ */
+const cssVariableMaxWidth = '--p-popover-max-w';
 
 /**
  * @css-variable {"name": "--p-popover-px", "description": "Horizontal padding of the popover.", "defaultValue": "16px"}
@@ -66,7 +80,6 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
       'slot[name="button"]': {
         display: 'inline-block',
       },
-      ...preventFoucOfNestedElementsStyles,
       p: {
         margin: 0,
       },
@@ -104,9 +117,9 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
         background: ref(colorCanvas),
         font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         color: ref(colorPrimary),
-        maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
-        width: 'max-content', // ensures in older browsers correct width
-        boxSizing: 'border-box',
+        width: ref(cssVariableWidth, 'max-content'),
+        minWidth: `max(0px, ${ref(cssVariableMinWidth, '0px')})`,
+        maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), ${ref(cssVariableMaxWidth, '48ch')})`,
         padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
         opacity: isOpen ? 1 : 0,
         visibility: isOpen ? 'inherit' : 'hidden', // panel shall not be tabbable/announced after the fade-out has finished
