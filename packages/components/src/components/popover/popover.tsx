@@ -93,7 +93,8 @@ export class Popover {
 
   @Listen('click')
   public onClick(e: MouseEvent): void {
-    // Handle opening when custom slotted button is clicked (uncontrolled mode only; in controlled mode the consumer owns the trigger)
+    // Handle opening when custom slotted button is clicked (uncontrolled mode only; in controlled mode the consumer owns
+    // the trigger)
     if (!this.isControlled && this.hasSlottedButton && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
       this.isOpen = !this.isOpen;
     }
@@ -102,11 +103,18 @@ export class Popover {
   @Listen('focusout')
   public onFocusout(e: FocusEvent): void {
     // Close when keyboard focus leaves the popover entirely (e.g. Tab / Shift+Tab onto another element such as a second
-    // popover's trigger). `relatedTarget` is the element receiving focus; if it is outside this host, dismiss. This
-    // covers keyboard-opening another popover without any document-level coordination. Mouse outside-clicks and Escape
-    // are handled separately (`onClickOutside` / `onKeyboardEvent`).
+    // popover's trigger). `relatedTarget` is the element receiving focus; only dismiss when it is a real element outside
+    // both the host and the panel. A `null` `relatedTarget` means focus was lost without moving to another focusable
+    // element (e.g. a mouse click on non-focusable panel content) and must NOT dismiss the popover — those cases are
+    // covered by `onClickOutside` / `onKeyboardEvent`. This keeps keyboard-opening another popover working without any
+    // document-level coordination.
     const relatedTarget = e.relatedTarget as HTMLElement | null;
-    if (this.effectiveOpen && (!relatedTarget || !this.host.contains(relatedTarget))) {
+    if (
+      this.effectiveOpen &&
+      relatedTarget &&
+      !this.host.contains(relatedTarget) &&
+      !this.refPopover?.contains(relatedTarget)
+    ) {
       this.dismissPopover();
     }
   }

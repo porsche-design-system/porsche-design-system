@@ -195,6 +195,20 @@ test.describe('mouse behavior', () => {
       await expect(popover).toBeVisible();
     });
 
+    test('should not close popover when non-focusable content is clicked after opening', async ({ page }) => {
+      await initPopover(page, { withStrong: true });
+      const popover = getPopover(page);
+      const button = getButton(page);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+      await expect(button).toBeFocused();
+
+      // Clicking non-focusable content blurs the trigger with a `null` relatedTarget and must not dismiss the popover.
+      await page.locator('strong').click();
+      await expect(popover).toBeVisible();
+    });
+
     test('should be possible to select/highlight text within open popover', async ({ page }) => {
       await initPopover(page, { withStrong: true });
       const popover = getPopover(page);
