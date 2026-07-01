@@ -204,3 +204,12 @@ When multiple guidance files exist, prefer them in this order:
 | Clean rebuild  | `npm run clean && npm install && npm run build` |
 | Run in Docker  | `./docker.sh {command}`                    |
 
+## Cursor Cloud specific instructions
+
+The startup update script already runs `npm install` (with Node 24 active). Standard build/dev/test commands are documented above; only the non-obvious caveats below matter for this environment.
+
+- **Node version gotcha**: The base VM ships Node 22 at `/exec-daemon/node`, which sits ahead of nvm on `PATH`. The repo requires the Volta-pinned Node 24 (`24.15.0`). Node 24 is installed via nvm and `~/.bashrc` prepends its bin dir so login shells resolve `node` to v24 automatically. If a command unexpectedly runs on Node 22, run `nvm use 24.15.0` (or start a fresh login shell) before retrying.
+- **`npm run build` is long and must precede tests/wrappers/storefront**: The full build (through the storefront `next build`) takes on the order of ~25–30 min and exceeds a single foreground command window — run it in a background tmux session and poll a log file rather than blocking. For component-only work, `npm run build:core-dependencies` is much faster.
+- **Dev servers auto-start mock hosts**: `npm run start:storefront` (Next.js, port `3000`) and `npm run start:components` (Stencil, port `3333`) each also launch a mock CDN on `3001` (and framework demo apps additionally launch dummy-assets on `3002`). No external services/DB are needed. The Vite demo apps all default to port `5173` and both Next.js apps to `3000`, so run conflicting apps one at a time.
+- **VRT tests require Docker** (`./docker.sh npm run test:vrt:components-js`) for consistent screenshots; e2e/a11y tests require a completed build first.
+
