@@ -41,7 +41,7 @@ const cssVariableWidth = '--p-popover-w';
 const cssVariableMinWidth = '--p-popover-min-w';
 
 /**
- * @css-variable {"name": "--p-popover-max-w", "description": "Max width of the popover.", "defaultValue": "48ch"}
+ * @css-variable {"name": "--p-popover-max-w", "description": "Max width of the popover.", "defaultValue": "min(calc(100dvw - 16px), 48ch)"}
  */
 const cssVariableMaxWidth = '--p-popover-max-w';
 
@@ -56,7 +56,7 @@ const cssVariableHeight = '--p-popover-h';
 const cssVariableMinHeight = '--p-popover-min-h';
 
 /**
- * @css-variable {"name": "--p-popover-max-h", "description": "Max height of the popover.", "defaultValue": "none"}
+ * @css-variable {"name": "--p-popover-max-h", "description": "Max height of the popover.", "defaultValue": "calc(100dvh - 16px)"}
  */
 const cssVariableMaxHeight = '--p-popover-max-h';
 
@@ -92,6 +92,17 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
           ...hostHiddenStyles,
         }),
       },
+      'slot:not([name]), p': {
+        display: 'block',
+        minWidth: 0, // allow the grid item to shrink below its content size (needed for correct clamping via --p-popover-max-w)
+        minHeight: 0, // allow the grid item to shrink below its content size so overflow scrolls instead of expanding the panel (needed for --p-popover-max-h)
+        maxWidth: 'inherit',
+        maxHeight: 'inherit',
+        boxSizing: 'border-box',
+        padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
+        overflow: 'hidden auto',
+        overscrollBehaviorY: 'none',
+      },
       'slot[name="button"]': {
         display: 'inline-block',
       },
@@ -125,6 +136,7 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
       },
       '[popover]': {
         all: 'unset',
+        display: 'grid',
         position: 'fixed', // matches floating ui's `fixed` strategy; required for correct top-layer positioning in Safari
         filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
@@ -134,14 +146,10 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
         color: ref(colorPrimary),
         width: ref(cssVariableWidth, 'max-content'),
         minWidth: ref(cssVariableMinWidth, '0px'),
-        maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), ${ref(cssVariableMaxWidth, '48ch')})`,
+        maxWidth: ref(cssVariableMaxWidth, `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`),
         height: ref(cssVariableHeight, 'auto'),
         minHeight: ref(cssVariableMinHeight, 'auto'),
-        maxHeight: ref(cssVariableMaxHeight, 'none'),
-        padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
-        // overflow: 'hidden auto',
-        // overscrollBehaviorY: 'none',
-        // boxSizing: 'border-box',
+        maxHeight: ref(cssVariableMaxHeight, `calc(100dvh - ${POPOVER_SAFE_ZONE * 2}px)`),
         opacity: isOpen ? 1 : 0,
         visibility: isOpen ? 'inherit' : 'hidden', // panel shall not be tabbable/announced after the fade-out has finished
         transition,
