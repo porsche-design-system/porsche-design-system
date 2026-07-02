@@ -80,11 +80,11 @@ const iconInfo = getInlineSVGBackgroundImage(
 
 /**
  * Builds the popover's scoped CSS.
- * @param isCompact - Reduces padding/spacing and uses smaller radii (mirrors the `compact` prop).
  * @param isOpen - The effective open state; drives the fade-in/fade-out direction and the `@starting-style` append.
+ * @param isCompact - Reduces padding/spacing and uses smaller radii (mirrors the `compact` prop).
  * @returns The component CSS string, with a trailing `@starting-style` rule appended while opening.
  */
-export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => {
+export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => {
   // fade-in on open (via `@starting-style` below), fade-out on close. While closing, the panel keeps `display: grid`
   // (Chromium via `overlay` + `display` `allow-discrete`; Safari/Firefox via the deferred `hidePopover()`), so
   // `display: none` only describes the fully-closed terminal state. Tabbability / a11y-tree removal during the fade-out

@@ -191,7 +191,7 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.compact, this.effectiveOpen);
+    attachComponentCss(this.host, getComponentCss, this.effectiveOpen, this.compact);
 
     const hasSlottedButton = hasNamedSlot(this.host, 'button');
     const id = 'popover';

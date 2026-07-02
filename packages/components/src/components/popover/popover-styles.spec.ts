@@ -4,10 +4,10 @@ import { getComponentCss } from './popover-styles';
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     [false, false],
-    [false, true],
     [true, false],
+    [false, true],
     [true, true],
-  ])('should return correct css for compact: %s and isOpen: %s', (...args) => {
+  ])('should return correct css for isOpen: %s and compact: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });
