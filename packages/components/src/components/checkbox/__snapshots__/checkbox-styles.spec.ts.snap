@@ -11,7 +11,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: { base: tr
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -316,7 +320,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -476,7 +484,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -636,7 +648,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -814,7 +830,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -992,7 +1012,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -1155,7 +1179,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -1318,7 +1346,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -1499,7 +1531,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -1680,7 +1716,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -1840,7 +1880,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -2000,7 +2044,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -2178,7 +2226,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: false, sta
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -2356,7 +2408,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -2513,7 +2569,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -2670,7 +2730,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -2845,7 +2909,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -3020,7 +3088,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -3180,7 +3252,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -3340,7 +3416,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -3489,7 +3569,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -3638,7 +3722,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -3816,7 +3904,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -3994,7 +4086,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -4156,7 +4252,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -4318,7 +4418,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -4475,7 +4579,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -4632,7 +4740,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
@@ -4807,7 +4919,11 @@ exports[`getComponentCss() > should return correct css for hideLabel: true, stat
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-  margin-inline-start: var(--p-spacing-static-xs);
+}
+slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
+  margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
   display: inline-block;
