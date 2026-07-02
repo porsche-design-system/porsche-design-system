@@ -13,6 +13,14 @@ vi.mock('@floating-ui/dom', async (importOriginal) => ({
 
 const autoUpdateMock = vi.mocked(autoUpdate);
 
+// Creates a `<slot>` whose `assignedElements()` resolves to the given light-DOM element, mirroring a projected
+// `slot="button"` child (jsdom does not perform real slot assignment without a full shadow tree).
+const createSlotWithAssigned = (assigned?: HTMLElement): HTMLSlotElement => {
+  const slot = document.createElement('slot');
+  vi.spyOn(slot, 'assignedElements').mockReturnValue(assigned ? [assigned] : []);
+  return slot;
+};
+
 let component: Popover;
 
 beforeEach(() => {
@@ -20,6 +28,28 @@ beforeEach(() => {
   component = new Popover();
   component.host = document.createElement('p-popover');
   component.host.attachShadow({ mode: 'open' });
+});
+
+describe('triggerElement', () => {
+  it('should return the default shadow button when no slotted button is projected', () => {
+    const button = document.createElement('button');
+    component['refButton'] = button as HTMLButtonElement;
+
+    expect(component['triggerElement']).toBe(button);
+  });
+
+  it('should return the assigned element of the button slot instead of the slot itself', () => {
+    const slotButton = document.createElement('button');
+    component['refSlotButton'] = createSlotWithAssigned(slotButton);
+
+    expect(component['triggerElement']).toBe(slotButton);
+  });
+
+  it('should return undefined when the button slot has no assigned element', () => {
+    component['refSlotButton'] = createSlotWithAssigned();
+
+    expect(component['triggerElement']).toBeUndefined();
+  });
 });
 
 describe('connectedCallback', () => {
@@ -74,7 +104,7 @@ describe('syncAutoUpdate', () => {
     const cleanUp = vi.fn();
     autoUpdateMock.mockReturnValue(cleanUp);
     const button = document.createElement('button');
-    const slotButton = document.createElement('slot');
+    const slotButton = document.createElement('button');
     const popover = document.createElement('div');
     component['refPopover'] = popover as HTMLDivElement;
 
@@ -82,9 +112,10 @@ describe('syncAutoUpdate', () => {
     component['refButton'] = button as HTMLButtonElement;
     component['syncAutoUpdate'](true);
 
-    // trigger switches to the slotted button (default button removed → ref nulled by Stencil)
+    // trigger switches to the slotted button (default button removed → ref nulled by Stencil), resolved via the slot's
+    // assigned element rather than the slot itself
     component['refButton'] = undefined;
-    component['refSlotButton'] = slotButton;
+    component['refSlotButton'] = createSlotWithAssigned(slotButton);
     component['syncAutoUpdate'](true);
 
     expect(cleanUp).toHaveBeenCalledTimes(1); // old binding torn down
@@ -92,12 +123,25 @@ describe('syncAutoUpdate', () => {
     expect(autoUpdateMock).toHaveBeenLastCalledWith(slotButton, popover, component['updatePosition']);
   });
 
+  it('should not bind autoUpdate while active when no trigger element is resolvable yet', () => {
+    const cleanUp = vi.fn();
+    autoUpdateMock.mockReturnValue(cleanUp);
+    // slotted button not yet projected → `assignedElements()` is empty
+    component['refSlotButton'] = createSlotWithAssigned();
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+
+    component['syncAutoUpdate'](true);
+
+    expect(autoUpdateMock).not.toHaveBeenCalled();
+    expect(component['cleanUpAutoUpdate']).toBeUndefined();
+  });
+
   it('should not rebind autoUpdate when the trigger reference is unchanged', () => {
     const cleanUp = vi.fn();
     autoUpdateMock.mockReturnValue(cleanUp);
-    const slotButton = document.createElement('slot');
+    const slotButton = document.createElement('button');
     const popover = document.createElement('div');
-    component['refSlotButton'] = slotButton;
+    component['refSlotButton'] = createSlotWithAssigned(slotButton);
     component['refPopover'] = popover as HTMLDivElement;
 
     component['syncAutoUpdate'](true);

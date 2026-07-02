@@ -88,12 +88,11 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
   const css = getCss({
     '@global': {
       ':host': {
-        // We use display: inline-block for now, but would prefer display: contents once possible. The popover mimics
-        // the native [popover] element, so its :host ideally shouldn't participate in visual DOM rendering. Switching
-        // is blocked by the slotted button, which must remain rendered until it can be referenced via an external
-        // button (e.g. through a ref property).
-        display: 'inline-block',
-        verticalAlign: 'top',
+        // `display: contents` so the host box does not participate in visual DOM rendering — the popover mimics the
+        // native `[popover]` element, so the slotted trigger (or default info button) lays out directly in the parent
+        // flow. Enabled by anchoring Floating UI to the assigned trigger element (see `triggerElement` in popover.tsx)
+        // instead of the `<slot>` box, so the slot no longer needs a layout box of its own.
+        display: 'contents',
         ...addImportantToEachRule(hostHiddenStyles),
       },
       'slot:not([name]), p': {
@@ -107,9 +106,6 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
         padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
         overflow: 'hidden auto',
         overscrollBehaviorY: 'none',
-      },
-      'slot[name="button"]': {
-        display: 'block',
       },
       button: {
         all: 'unset',

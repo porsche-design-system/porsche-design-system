@@ -9,6 +9,7 @@ exports[`getComponentCss() > should return correct css for compact: false and is
 }
 slot:not([name]), p {
   display: block;
+  margin: 0;
   min-width: 0;
   min-height: 0;
   max-width: inherit;
@@ -19,10 +20,7 @@ slot:not([name]), p {
   overscroll-behavior-y: none;
 }
 slot[name="button"] {
-  display: inline-block;
-}
-p {
-  margin: 0;
+  display: contents;
 }
 button {
   all: unset;
@@ -59,10 +57,10 @@ button::after {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   width: var(--p-popover-w,max-content);
-  min-width: var(--p-popover-min-w,0px);
-  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
   height: var(--p-popover-h,auto);
+  min-width: var(--p-popover-min-w,0px);
   min-height: var(--p-popover-min-h,auto);
+  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
   max-height: var(--p-popover-max-h,calc(100dvh - 16px));
   opacity: 0;
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
@@ -122,6 +120,7 @@ exports[`getComponentCss() > should return correct css for compact: false and is
 }
 slot:not([name]), p {
   display: block;
+  margin: 0;
   min-width: 0;
   min-height: 0;
   max-width: inherit;
@@ -132,10 +131,7 @@ slot:not([name]), p {
   overscroll-behavior-y: none;
 }
 slot[name="button"] {
-  display: inline-block;
-}
-p {
-  margin: 0;
+  display: contents;
 }
 button {
   all: unset;
@@ -172,10 +168,10 @@ button::after {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   width: var(--p-popover-w,max-content);
-  min-width: var(--p-popover-min-w,0px);
-  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
   height: var(--p-popover-h,auto);
+  min-width: var(--p-popover-min-w,0px);
   min-height: var(--p-popover-min-h,auto);
+  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
   max-height: var(--p-popover-max-h,calc(100dvh - 16px));
   opacity: 1;
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in);
@@ -240,6 +236,7 @@ exports[`getComponentCss() > should return correct css for compact: true and isO
 }
 slot:not([name]), p {
   display: block;
+  margin: 0;
   min-width: 0;
   min-height: 0;
   max-width: inherit;
@@ -250,10 +247,7 @@ slot:not([name]), p {
   overscroll-behavior-y: none;
 }
 slot[name="button"] {
-  display: inline-block;
-}
-p {
-  margin: 0;
+  display: contents;
 }
 button {
   all: unset;
@@ -290,10 +284,10 @@ button::after {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   width: var(--p-popover-w,max-content);
-  min-width: var(--p-popover-min-w,0px);
-  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
   height: var(--p-popover-h,auto);
+  min-width: var(--p-popover-min-w,0px);
   min-height: var(--p-popover-min-h,auto);
+  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
   max-height: var(--p-popover-max-h,calc(100dvh - 16px));
   opacity: 0;
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
@@ -353,6 +347,7 @@ exports[`getComponentCss() > should return correct css for compact: true and isO
 }
 slot:not([name]), p {
   display: block;
+  margin: 0;
   min-width: 0;
   min-height: 0;
   max-width: inherit;
@@ -363,10 +358,7 @@ slot:not([name]), p {
   overscroll-behavior-y: none;
 }
 slot[name="button"] {
-  display: inline-block;
-}
-p {
-  margin: 0;
+  display: contents;
 }
 button {
   all: unset;
@@ -403,10 +395,10 @@ button::after {
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   width: var(--p-popover-w,max-content);
-  min-width: var(--p-popover-min-w,0px);
-  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
   height: var(--p-popover-h,auto);
+  min-width: var(--p-popover-min-w,0px);
   min-height: var(--p-popover-min-h,auto);
+  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
   max-height: var(--p-popover-max-h,calc(100dvh - 16px));
   opacity: 1;
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in);

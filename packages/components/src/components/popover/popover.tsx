@@ -107,6 +107,14 @@ export class Popover {
     return this.isControlled ? this.open : this.isOpen;
   }
 
+  private get triggerElement(): HTMLElement {
+    // Resolves the element that actually acts as the trigger: the default info button in the Shadow DOM, or — when a
+    // custom trigger is projected through the `button` slot — the assigned light-DOM element itself (not the `<slot>`).
+    // Using the assigned element gives Floating UI an accurate anchor rect and lets `:host` use `display: contents`.
+    // Kept correct across dynamic slot changes by the `observeChildren` re-render in `connectedCallback`.
+    return this.refButton ?? ((this.refSlotButton as HTMLSlotElement)?.assignedElements()[0] as HTMLElement);
+  }
+
   @Listen('click')
   public onClick(e: MouseEvent): void {
     // Handle opening when custom slotted button is clicked (uncontrolled mode only; in controlled mode the consumer owns
@@ -220,16 +228,18 @@ export class Popover {
   }
 
   private syncAutoUpdate = (active: boolean): void => {
-    const ref = this.refButton ?? this.refSlotButton;
+    const ref = this.triggerElement;
     // Rebind if the trigger element identity changed while active. This happens when the children observer swaps
-    // between the default shadow button and the slotted `button` (e.g. a `slot="button"` child added/removed while the
-    // popover is already open); `autoUpdate` captured the previous reference at setup and would otherwise stay anchored
-    // to the removed element. Replacing a slot's assigned child keeps the same slot element and does not trigger this.
+    // between the default shadow button and the slotted `button` (e.g. a `slot="button"` child added/removed/replaced
+    // while the popover is already open); `autoUpdate` captured the previous reference at setup and would otherwise stay
+    // anchored to the removed element.
     if (active && this.cleanUpAutoUpdate && this.autoUpdateRef !== ref) {
       this.cleanUpAutoUpdate();
       this.cleanUpAutoUpdate = undefined;
     }
-    if (active && !this.cleanUpAutoUpdate) {
+    // `ref` can be momentarily undefined (e.g. a slotted button not yet projected), so only bind once it resolves to a
+    // real element; the next render (forced by `observeChildren`) re-runs this and binds then.
+    if (active && ref && !this.cleanUpAutoUpdate) {
       this.cleanUpAutoUpdate = autoUpdate(ref, this.refPopover, this.updatePosition);
       this.autoUpdateRef = ref;
     } else if (!active && this.cleanUpAutoUpdate) {
@@ -240,33 +250,29 @@ export class Popover {
   };
 
   private updatePosition = async (): Promise<void> => {
-    const { x, y, placement, middlewareData } = await computePosition(
-      this.refButton ?? this.refSlotButton,
-      this.refPopover,
-      {
-        placement: this.direction,
-        // Use the `fixed` strategy because the panel is promoted to the `#top-layer` via `showPopover()`. Safari does
-        // not resolve a top-layer element's `offsetParent` synchronously after `showPopover()`, so the default
-        // `absolute` strategy computes offsets against a wrong/zero origin and mis-places the panel at the top-left
-        // until a resize re-triggers `autoUpdate`. `fixed` positions relative to the viewport and avoids this.
-        strategy: 'fixed',
-        middleware: [
-          offset(16),
-          shift({
-            padding: POPOVER_SAFE_ZONE,
-            limiter: limitShift({
-              // ensures that the popover is placed to the right if the button is smaller than 34px. This fixes correct placement of arrow.
-              offset: ({ rects }) => (rects.reference.width > 33 ? 0 : rects.reference.width),
-            }),
+    const { x, y, placement, middlewareData } = await computePosition(this.triggerElement, this.refPopover, {
+      placement: this.direction,
+      // Use the `fixed` strategy because the panel is promoted to the `#top-layer` via `showPopover()`. Safari does
+      // not resolve a top-layer element's `offsetParent` synchronously after `showPopover()`, so the default
+      // `absolute` strategy computes offsets against a wrong/zero origin and mis-places the panel at the top-left
+      // until a resize re-triggers `autoUpdate`. `fixed` positions relative to the viewport and avoids this.
+      strategy: 'fixed',
+      middleware: [
+        offset(16),
+        shift({
+          padding: POPOVER_SAFE_ZONE,
+          limiter: limitShift({
+            // ensures that the popover is placed to the right if the button is smaller than 34px. This fixes correct placement of arrow.
+            offset: ({ rects }) => (rects.reference.width > 33 ? 0 : rects.reference.width),
           }),
-          flip({
-            padding: POPOVER_SAFE_ZONE,
-            fallbackAxisSideDirection: 'end',
-          }),
-          arrow({ element: this.refArrow, padding: getPopoverBorderRadius(this.refPopover) }),
-        ],
-      }
-    );
+        }),
+        flip({
+          padding: POPOVER_SAFE_ZONE,
+          fallbackAxisSideDirection: 'end',
+        }),
+        arrow({ element: this.refArrow, padding: getPopoverBorderRadius(this.refPopover) }),
+      ],
+    });
 
     const placementVertical = placement === 'top' || placement === 'bottom';
     const placementTopLeft = placement === 'top' || placement === 'left';
@@ -306,11 +312,7 @@ export class Popover {
   private onClickOutside = (e: MouseEvent): void => {
     // Light-dismiss on outside click. Clicks on the trigger button or inside the panel must not close it; the trigger
     // toggles its own state via the button/`onClick` handlers.
-    if (
-      this.effectiveOpen &&
-      isClickOutside(e, this.refButton ?? this.refSlotButton) &&
-      isClickOutside(e, this.refPopover)
-    ) {
+    if (this.effectiveOpen && isClickOutside(e, this.triggerElement) && isClickOutside(e, this.refPopover)) {
       this.dismissPopover();
     }
   };
@@ -327,11 +329,8 @@ export class Popover {
   };
 
   private focusTrigger = (): void => {
-    // Default (info) button lives in the Shadow DOM; the custom trigger is projected through the `button` slot, so
-    // resolve the actually rendered element to move focus to.
-    const trigger =
-      this.refButton ?? ((this.refSlotButton as HTMLSlotElement)?.assignedElements()[0] as HTMLElement | undefined);
-    trigger?.focus();
+    // Move focus to the actually rendered trigger (default info button or the projected custom button).
+    this.triggerElement?.focus();
   };
 
   private dismissPopover = (): void => {
