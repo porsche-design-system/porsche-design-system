@@ -759,3 +759,37 @@ test.describe('controlled mode', () => {
   });
 });
 
+test.describe('viewport clamping', () => {
+  // Mirrors POPOVER_SAFE_ZONE from packages/components/src/components/popover/popover-utils.ts. The default
+  // `--p-popover-max-w`/`--p-popover-max-h` inset the panel by `2 * POPOVER_SAFE_ZONE` from the viewport edges.
+  const POPOVER_SAFE_ZONE = 8;
+
+  const longContent = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr. '.repeat(40);
+
+  test('should clamp the panel within the viewport via the default max-width and max-height', async ({ page }) => {
+    // Small viewport so the long content is guaranteed to hit both the width (100dvw) and height (100dvh) clamps.
+    await page.setViewportSize({ width: 360, height: 640 });
+    await setContentWithDesignSystem(page, `<p-popover open="true">${longContent}</p-popover>`);
+
+    const popover = getPopover(page);
+    await expect(popover).toBeVisible();
+
+    const box = await popover.boundingBox();
+    const viewport = page.viewportSize();
+
+    // The panel must never exceed the viewport minus the safe zone on both edges (default `100dvw/dvh - 2 * safeZone`).
+    expect(box.width, 'panel width within viewport safe zone').toBeLessThanOrEqual(
+      viewport.width - 2 * POPOVER_SAFE_ZONE
+    );
+    expect(box.height, 'panel height within viewport safe zone').toBeLessThanOrEqual(
+      viewport.height - 2 * POPOVER_SAFE_ZONE
+    );
+
+    // The panel must stay fully inside the viewport (no overflow past any edge).
+    expect(box.x, 'panel left edge inside viewport').toBeGreaterThanOrEqual(0);
+    expect(box.y, 'panel top edge inside viewport').toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width, 'panel right edge inside viewport').toBeLessThanOrEqual(viewport.width);
+    expect(box.y + box.height, 'panel bottom edge inside viewport').toBeLessThanOrEqual(viewport.height);
+  });
+});
+
