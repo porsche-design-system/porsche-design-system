@@ -177,6 +177,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -409,6 +419,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -660,6 +680,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     position: absolute;
     width: 1px;
@@ -901,6 +931,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     position: absolute;
     width: 1px;
@@ -1125,6 +1165,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1374,6 +1424,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -1604,6 +1664,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1852,6 +1922,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -2082,6 +2162,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -2331,6 +2421,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     position: absolute;
     width: 1px;
@@ -2570,6 +2670,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     position: absolute;
     width: 1px;
@@ -2799,6 +2909,16 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -3055,6 +3175,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -3288,6 +3418,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -3538,6 +3678,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -3770,6 +3920,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -4020,6 +4180,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     position: absolute;
     width: 1px;
@@ -4261,6 +4431,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     position: absolute;
     width: 1px;
@@ -4492,6 +4672,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -4742,6 +4932,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     position: absolute;
     width: 1px;
@@ -4966,6 +5166,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -5215,6 +5425,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -5445,6 +5665,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -5694,6 +5924,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -5934,6 +6174,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     position: absolute;
     width: 1px;
@@ -6164,6 +6414,16 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
