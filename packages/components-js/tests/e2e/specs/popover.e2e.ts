@@ -643,14 +643,16 @@ test.describe('description', () => {
 });
 
 test.describe('controlled mode', () => {
-  const initControlledPopover = (page: Page, open: boolean): Promise<void> =>
-    setContentWithDesignSystem(
+  const initControlledPopover = async (page: Page, open: boolean): Promise<void> => {
+    await setContentWithDesignSystem(
       page,
-      `<p-popover ${open ? 'open' : ''}>
+      `<p-popover>
         <button slot="button">Some Button</button>
         Some Popover Content
       </p-popover>`
     );
+    await setProperty(getHost(page), 'open', open);
+  };
 
   test('should be hidden when open prop is false', async ({ page }) => {
     await initControlledPopover(page, false);
