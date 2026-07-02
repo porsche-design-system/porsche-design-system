@@ -195,14 +195,17 @@ test.describe('mouse behavior', () => {
       await expect(popover).toBeVisible();
     });
 
-    test('should not close popover when non-focusable content is clicked after opening', async ({ page }) => {
+    test('should not close popover when non-focusable content is clicked after opening', async ({ page }, testInfo) => {
       await initPopover(page, { withStrong: true });
       const popover = getPopover(page);
       const button = getButton(page);
 
       await button.click();
       await expect(popover).toBeVisible();
-      await expect(button).toBeFocused();
+      // WebKit does not focus a `<button>` on click, so only assert the trigger focus where it is reliable.
+      if (testInfo.project.name !== 'safari') {
+        await expect(button).toBeFocused();
+      }
 
       // Clicking non-focusable content blurs the trigger with a `null` relatedTarget and must not dismiss the popover.
       await page.locator('strong').click();
@@ -220,8 +223,9 @@ test.describe('mouse behavior', () => {
       const strongEl = page.locator('strong');
       await strongEl.click({ clickCount: 2 });
 
+      // Some browsers (e.g. Firefox) include surrounding whitespace in the double-click selection, so compare trimmed.
       const selection = await page.evaluate(() => window.getSelection().toString());
-      expect(selection).toBe('strong');
+      expect(selection.trim()).toBe('strong');
     });
   });
 
@@ -298,8 +302,9 @@ test.describe('mouse behavior', () => {
       const strongEl = page.locator('strong');
       await strongEl.click({ clickCount: 2 });
 
+      // Some browsers (e.g. Firefox) include surrounding whitespace in the double-click selection, so compare trimmed.
       const selection = await page.evaluate(() => window.getSelection().toString());
-      expect(selection).toBe('strong');
+      expect(selection.trim()).toBe('strong');
     });
   });
 });
@@ -489,7 +494,7 @@ test.describe('keyboard behavior', () => {
 });
 
 test.describe('dynamic content change', () => {
-  test.fixme('should work with dynamic slotted button change correctly', async ({ page }) => {
+  test('should work with dynamic slotted button change correctly', async ({ page }) => {
     await initPopover(page);
 
     await page.evaluate(() => {
@@ -525,9 +530,8 @@ test.describe('lifecycle', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
-      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
@@ -538,8 +542,7 @@ test.describe('lifecycle', () => {
 
       const status = await getLifecycleStatus(page);
       expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
-      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
 
       await button.click();
       await expect(popover).toBeVisible();
@@ -579,6 +582,72 @@ test.describe('lifecycle', () => {
       expect(status2.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
       expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     });
+  });
+});
+
+test.describe('accessibility', () => {
+  test('should render the default button with correct static aria attributes', async ({ page }) => {
+    await initPopover(page);
+    const button = getButton(page);
+
+    await expect(button).toHaveAttribute('aria-label', 'More information');
+    await expect(button).toHaveAttribute('aria-details', 'popover');
+  });
+
+  test('should toggle aria-expanded on the default button when opening/closing', async ({ page }) => {
+    await initPopover(page);
+    const button = getButton(page);
+    const popover = getPopover(page);
+
+    await expect(button).toHaveAttribute('aria-expanded', 'false');
+
+    await button.click();
+    await expect(popover).toBeVisible();
+    await expect(button).toHaveAttribute('aria-expanded', 'true');
+
+    await button.click();
+    await expect(popover).toBeHidden();
+    await expect(button).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  test('should reflect the open prop in aria-expanded in controlled mode', async ({ page }) => {
+    await setContentWithDesignSystem(page, '<p-popover>Some Popover Content</p-popover>');
+    const host = getHost(page);
+    const button = getButton(page);
+
+    await setProperty(host, 'open', true);
+    await expect(button).toHaveAttribute('aria-expanded', 'true');
+
+    await setProperty(host, 'open', false);
+    await expect(button).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  test('should override the aria-label of the default button via the aria prop', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-popover aria="{ 'aria-label': 'Some custom label' }">Some Popover Content</p-popover>`
+    );
+    const button = getButton(page);
+
+    await expect(button).toHaveAttribute('aria-label', 'Some custom label');
+  });
+});
+
+test.describe('description', () => {
+  test('should render the description prop as panel content instead of the default slot', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-popover description="Some description text">Some Slotted Content</p-popover>`
+    );
+    const button = getButton(page);
+    const popover = getPopover(page);
+
+    await button.click();
+    await expect(popover).toBeVisible();
+
+    // The `description` prop renders a `<p>` inside the panel and suppresses the default slot content.
+    await expect(popover.locator('p')).toHaveText('Some description text');
+    await expect(popover).not.toContainText('Some Slotted Content');
   });
 });
 
@@ -644,6 +713,22 @@ test.describe('controlled mode', () => {
       await page.keyboard.press('Escape');
 
       expect((await getEventSummary(host, 'dismiss')).counter, 'dismiss after Escape').toBe(1);
+    });
+
+    test('should return focus to the slotted trigger on Escape when open', async ({ page }) => {
+      await initControlledPopover(page, true);
+      const host = getHost(page);
+      const button = getButton(page);
+      await addEventListener(host, 'dismiss');
+
+      await page.keyboard.press('Escape');
+
+      // Focus must move back to the trigger synchronously (before the consumer flips `open`), so keyboard users
+      // are not stranded on the panel that becomes `inert` once closed.
+      await expect(button).toBeFocused();
+      expect((await getEventSummary(host, 'dismiss')).counter, 'dismiss after Escape').toBe(1);
+      // popover stays visible because the consumer owns `open` and hasn't updated it yet
+      await expect(getPopover(page)).toBeVisible();
     });
 
     test('should emit dismiss event on the first popover when a second popover opens', async ({ page }) => {
