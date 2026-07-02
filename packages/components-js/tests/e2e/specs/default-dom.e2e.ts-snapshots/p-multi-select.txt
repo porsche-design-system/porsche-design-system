@@ -14,6 +14,7 @@
   </button>
   <div popover="manual" tabindex="0">
     <p-input-search class="filter hydrated" name="filter"> </p-input-search>
+    <div class="filter-status" aria-live="polite" aria-atomic="true"></div>
     <div
       id="listbox"
       class="options"
