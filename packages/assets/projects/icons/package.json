@@ -37,7 +37,7 @@
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
-    "prettier": "^3.8.4",
+    "prettier": "^3.9.1",
     "rollup": "^4.62.2",
     "rollup-plugin-dts": "^6.4.1",
     "svgo": "^4.0.1",

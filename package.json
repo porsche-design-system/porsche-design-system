@@ -237,7 +237,7 @@
     "@tailwindcss/postcss": "^4.3.1",
     "@tailwindcss/vite": "^4.3.1",
     "@types/madge": "^5.0.3",
-    "@types/node": "^26.0.0",
+    "@types/node": "^26.0.1",
     "@vanilla-extract/css": "^1.21.0",
     "@vanilla-extract/rollup-plugin": "^1.5.3",
     "@vanilla-extract/vite-plugin": "^5.2.3",
@@ -249,7 +249,7 @@
     "madge": "^8.0.0",
     "patch-package": "^8.0.1",
     "postcss": "^8",
-    "prettier": "^3.8.4",
+    "prettier": "^3.9.1",
     "publint": "^0.3.21",
     "react-router": "^8.0.1",
     "rollup": "^4.62.2",
@@ -270,8 +270,8 @@
     "typescript": "^6.0.3",
     "vite": "^8.1.0",
     "vitest": "^4.1.9",
-    "vue": "^3.5.38",
-    "webpack": "^5.107.2"
+    "vue": "^3.5.39",
+    "webpack": "^5.108.1"
   },
   "overrides": {
     "madge": {
@@ -292,7 +292,7 @@
     "minimatch@5": "5.1.8",
     "minimatch@9": "9.0.7",
     "minimatch@10": "10.2.5",
-    "qs": "^6.15.2",
+    "qs": "^6.15.3",
     "tmp": "^0.2.7",
     "js-beautify": {
       "glob": "^10.5.0"
