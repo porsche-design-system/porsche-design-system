@@ -136,6 +136,8 @@ export class Popover {
 
     this.hasSlottedButton = hasNamedSlot(this.host, 'button');
 
+    const id = 'popover';
+
     return (
       <Host>
         {this.hasSlottedButton ? (
@@ -146,6 +148,7 @@ export class Popover {
             onClick={() => !this.isControlled && (this.isOpen = !this.isOpen)}
             {...parseAndGetAriaAttributes({
               ...{ 'aria-label': 'More information' },
+              ...{ 'aria-details': id },
               ...parseAndGetAriaAttributes(this.aria),
               ...{ 'aria-expanded': this.effectiveOpen },
             })}
@@ -161,7 +164,7 @@ export class Popover {
             fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
             during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
             `inert` avoids that and mirrors the pattern used by `p-modal` / `p-sheet` / `p-drilldown`. */}
-        <div popover="manual" inert={!this.effectiveOpen} ref={(el) => (this.refPopover = el)}>
+        <div id={id} popover="manual" inert={!this.effectiveOpen} ref={(el) => (this.refPopover = el)}>
           <div class="arrow" ref={(el) => (this.refArrow = el)} />
           {this.description ? <p>{this.description}</p> : <slot />}
         </div>

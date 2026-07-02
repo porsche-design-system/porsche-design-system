@@ -88,7 +88,12 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
   const css = getCss({
     '@global': {
       ':host': {
-        display: 'contents',
+        // We use display: inline-block for now, but would prefer display: contents once possible. The popover mimics
+        // the native [popover] element, so its :host ideally shouldn't participate in visual DOM rendering. Switching
+        // is blocked by the slotted button, which must remain rendered until it can be referenced via an external
+        // button (e.g. through a ref property).
+        display: 'inline-block',
+        verticalAlign: 'top',
         ...addImportantToEachRule(hostHiddenStyles),
       },
       'slot:not([name]), p': {
@@ -104,7 +109,7 @@ export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => 
         overscrollBehaviorY: 'none',
       },
       'slot[name="button"]': {
-        display: 'inline-block',
+        display: 'block',
       },
       button: {
         all: 'unset',
