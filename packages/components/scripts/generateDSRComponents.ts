@@ -94,7 +94,8 @@ const generateDSRComponents = (): void => {
                 group.endsWith('dialog-base') ||
                 group.endsWith('required') ||
                 group.endsWith('label') ||
-                group.endsWith('no-results-option')
+                group.endsWith('no-results-option') ||
+                group.endsWith('filter-status-announcer')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
