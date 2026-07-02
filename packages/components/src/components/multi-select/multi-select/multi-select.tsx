@@ -516,7 +516,7 @@ export class MultiSelect {
           getNextOptionToHighlight(this.multiSelectOptions, this.currentlyHighlightedOption, action)
         );
         const targetElement = (
-          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+          !this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
         ) as
           | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
           | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
