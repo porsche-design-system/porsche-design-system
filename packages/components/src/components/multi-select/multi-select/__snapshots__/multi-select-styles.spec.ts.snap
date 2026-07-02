@@ -21,9 +21,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -256,9 +254,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -492,9 +488,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -727,9 +721,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -962,9 +954,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -1196,9 +1186,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -1429,9 +1417,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -1662,9 +1648,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -1895,9 +1879,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -2129,9 +2111,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -2362,9 +2342,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -2594,9 +2572,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -2827,9 +2803,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -3063,9 +3037,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -3298,9 +3270,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -3533,9 +3503,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -3768,9 +3736,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -4003,9 +3969,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -4237,9 +4201,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -4472,9 +4434,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -4707,9 +4667,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -4941,9 +4899,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -5174,9 +5130,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -5408,9 +5362,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -5642,9 +5594,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;
@@ -5875,9 +5825,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   slot[name="label-after"] {
     display: inline-block;
     vertical-align: top;
-  }
-  slot[name="label-after"]::slotted(*) {
-    margin-inline-start: var(--p-spacing-static-xs) !important;
+    margin-inline-start: var(--p-spacing-static-xs);
   }
   .label-after {
     display: inline-block;

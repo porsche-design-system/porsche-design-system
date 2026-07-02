@@ -7,9 +7,7 @@ exports[`getComponentCss() > should return correct css for minWidth: 36, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-}
-slot[name="label-after"]::slotted(*) {
-  margin-inline-start: var(--p-spacing-static-xs) !important;
+  margin-inline-start: var(--p-spacing-static-xs);
 }
 .label-after {
   display: inline-block;
@@ -210,9 +208,7 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-}
-slot[name="label-after"]::slotted(*) {
-  margin-inline-start: var(--p-spacing-static-xs) !important;
+  margin-inline-start: var(--p-spacing-static-xs);
 }
 .label-after {
   display: inline-block;
@@ -320,9 +316,7 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-}
-slot[name="label-after"]::slotted(*) {
-  margin-inline-start: var(--p-spacing-static-xs) !important;
+  margin-inline-start: var(--p-spacing-static-xs);
 }
 .label-after {
   display: inline-block;
@@ -402,9 +396,7 @@ exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidt
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-}
-slot[name="label-after"]::slotted(*) {
-  margin-inline-start: var(--p-spacing-static-xs) !important;
+  margin-inline-start: var(--p-spacing-static-xs);
 }
 .label-after {
   display: inline-block;
@@ -483,9 +475,7 @@ exports[`getComponentCss() > should return correct css for minWidth: undefined, 
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-}
-slot[name="label-after"]::slotted(*) {
-  margin-inline-start: var(--p-spacing-static-xs) !important;
+  margin-inline-start: var(--p-spacing-static-xs);
 }
 .label-after {
   display: inline-block;
@@ -569,9 +559,7 @@ exports[`getComponentCss() > should return correct css for minWidth: undefined, 
 slot[name="label-after"] {
   display: inline-block;
   vertical-align: top;
-}
-slot[name="label-after"]::slotted(*) {
-  margin-inline-start: var(--p-spacing-static-xs) !important;
+  margin-inline-start: var(--p-spacing-static-xs);
 }
 .label-after {
   display: inline-block;
