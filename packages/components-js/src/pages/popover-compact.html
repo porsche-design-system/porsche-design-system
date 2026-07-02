@@ -8,20 +8,13 @@
   }
 </style>
 
-<p-popover compact="true" direction="right">
+<p-popover open="true" compact="true" direction="right">
   <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p-text>
 </p-popover>
 
-<p-popover compact="true" direction="left">
+<p-popover open="true" compact="true" direction="left">
   <p-button-pure slot="button" hide-label="true" icon="car" size="small">More information</p-button-pure>
   <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p-text>
 </p-popover>
 
-<script>
-  porscheDesignSystem.componentsReady().then(() => {
-    const [defaultPopover, slottedPopover] = document.querySelectorAll('p-popover');
-    defaultPopover.shadowRoot.querySelector('button').click();
-    slottedPopover.querySelector('p-button-pure').click();
-  });
-</script>
 
