@@ -83,6 +83,19 @@ describe('disconnectedCallback', () => {
 
     expect(unobserveChildrenSpy).toHaveBeenCalledWith(component.host);
   });
+
+  it('should tear down the top layer, autoUpdate and dismiss listeners', () => {
+    const cancel = vi.fn();
+    component['topLayer'] = { requestShow: vi.fn(), requestHide: vi.fn(), cancel } as any;
+    const syncAutoUpdateSpy = vi.spyOn(component as any, 'syncAutoUpdate').mockImplementation(() => {});
+    const syncDismissListenersSpy = vi.spyOn(component as any, 'syncDismissListeners').mockImplementation(() => {});
+
+    component.disconnectedCallback();
+
+    expect(cancel).toHaveBeenCalledTimes(1);
+    expect(syncAutoUpdateSpy).toHaveBeenCalledWith(false);
+    expect(syncDismissListenersSpy).toHaveBeenCalledWith(false);
+  });
 });
 
 describe('syncAutoUpdate', () => {
@@ -182,6 +195,293 @@ describe('syncAutoUpdate', () => {
 
     expect(cleanUp).toHaveBeenCalledTimes(1);
     expect(component['cleanUpAutoUpdate']).toBeUndefined();
-    expect(component['autoUpdateRef']).toBeUndefined();
+    expect(component['boundTriggerElement']).toBeUndefined();
+  });
+});
+
+describe('isControlled', () => {
+  it.each<[boolean | undefined, boolean]>([
+    [true, true],
+    [false, true],
+    [undefined, false],
+  ])('should return %s for open: %s', (open, expected) => {
+    component.open = open;
+
+    expect(component['isControlled']).toBe(expected);
+  });
+});
+
+describe('effectiveOpen', () => {
+  it('should reflect the open prop in controlled mode', () => {
+    component.open = true;
+    component['isOpen'] = false;
+
+    expect(component['effectiveOpen']).toBe(true);
+  });
+
+  it('should reflect the internal isOpen state in uncontrolled mode', () => {
+    component.open = undefined;
+    component['isOpen'] = true;
+
+    expect(component['effectiveOpen']).toBe(true);
+  });
+});
+
+describe('onClick', () => {
+  it('should toggle isOpen when a slotted button is clicked in uncontrolled mode', () => {
+    const slotButton = document.createElement('button');
+    slotButton.slot = 'button';
+    component.host.appendChild(slotButton);
+    component['isOpen'] = false;
+
+    component.onClick({ target: slotButton } as unknown as MouseEvent);
+
+    expect(component['isOpen']).toBe(true);
+  });
+
+  it('should not toggle isOpen when the click did not originate from a slotted button', () => {
+    const other = document.createElement('div');
+    component['isOpen'] = false;
+
+    component.onClick({ target: other } as unknown as MouseEvent);
+
+    expect(component['isOpen']).toBe(false);
+  });
+
+  it('should not toggle isOpen in controlled mode', () => {
+    const slotButton = document.createElement('button');
+    slotButton.slot = 'button';
+    component.host.appendChild(slotButton);
+    component.open = true;
+    component['isOpen'] = false;
+
+    component.onClick({ target: slotButton } as unknown as MouseEvent);
+
+    expect(component['isOpen']).toBe(false);
+  });
+});
+
+describe('onFocusout', () => {
+  it('should dismiss when focus moves to an element outside host and panel', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
+    component.open = true;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+
+    component.onFocusout({ relatedTarget: document.createElement('a') } as unknown as FocusEvent);
+
+    expect(dismissSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not dismiss when relatedTarget is null', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover');
+    component.open = true;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+
+    component.onFocusout({ relatedTarget: null } as unknown as FocusEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
+
+  it('should not dismiss when focus stays inside the host', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover');
+    const child = document.createElement('button');
+    component.host.appendChild(child);
+    component.open = true;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+
+    component.onFocusout({ relatedTarget: child } as unknown as FocusEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
+
+  it('should not dismiss when focus stays inside the panel', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover');
+    const panel = document.createElement('div');
+    const child = document.createElement('button');
+    panel.appendChild(child);
+    component.open = true;
+    component['refPopover'] = panel as HTMLDivElement;
+
+    component.onFocusout({ relatedTarget: child } as unknown as FocusEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
+
+  it('should not dismiss when the popover is closed', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover');
+    component.open = false;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+
+    component.onFocusout({ relatedTarget: document.createElement('a') } as unknown as FocusEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('onEscape', () => {
+  it('should focus the trigger and dismiss when Escape is pressed while open', () => {
+    const focusTriggerSpy = vi.spyOn(component as any, 'focusTrigger').mockImplementation(() => {});
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
+    component.open = true;
+
+    component['onEscape']({ key: 'Escape' } as KeyboardEvent);
+
+    expect(focusTriggerSpy).toHaveBeenCalledTimes(1);
+    expect(dismissSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not dismiss for other keys', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
+    component.open = true;
+
+    component['onEscape']({ key: 'Enter' } as KeyboardEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
+
+  it('should not dismiss when the popover is closed', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
+    component.open = false;
+
+    component['onEscape']({ key: 'Escape' } as KeyboardEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('onClickOutside', () => {
+  it('should dismiss on a click outside both the trigger and the panel', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
+    component.open = true;
+    component['refButton'] = document.createElement('button') as HTMLButtonElement;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+    const outside = document.createElement('div');
+
+    component['onClickOutside']({ target: outside, composedPath: () => [outside] } as unknown as MouseEvent);
+
+    expect(dismissSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not dismiss when clicking inside the panel', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
+    const panel = document.createElement('div');
+    component.open = true;
+    component['refButton'] = document.createElement('button') as HTMLButtonElement;
+    component['refPopover'] = panel as HTMLDivElement;
+
+    component['onClickOutside']({ target: panel, composedPath: () => [panel] } as unknown as MouseEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
+
+  it('should not dismiss when the popover is closed', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
+    component.open = false;
+    component['refButton'] = document.createElement('button') as HTMLButtonElement;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+    const outside = document.createElement('div');
+
+    component['onClickOutside']({ target: outside, composedPath: () => [outside] } as unknown as MouseEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('dismissPopover', () => {
+  it('should emit dismiss and keep isOpen in controlled mode', () => {
+    const emit = vi.fn();
+    component.dismiss = { emit } as any;
+    component.open = true;
+    component['isOpen'] = true;
+
+    component['dismissPopover']();
+
+    expect(emit).toHaveBeenCalledTimes(1);
+    expect(component['isOpen']).toBe(true);
+  });
+
+  it('should set isOpen to false in uncontrolled mode', () => {
+    const emit = vi.fn();
+    component.dismiss = { emit } as any;
+    component.open = undefined;
+    component['isOpen'] = true;
+
+    component['dismissPopover']();
+
+    expect(emit).not.toHaveBeenCalled();
+    expect(component['isOpen']).toBe(false);
+  });
+});
+
+describe('focusTrigger', () => {
+  it('should focus the resolved trigger element', () => {
+    const button = document.createElement('button');
+    const focusSpy = vi.spyOn(button, 'focus');
+    component['refButton'] = button as HTMLButtonElement;
+
+    component['focusTrigger']();
+
+    expect(focusSpy).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('syncDismissListeners', () => {
+  it('should register document listeners once when activated', () => {
+    const addSpy = vi.spyOn(document, 'addEventListener');
+
+    component['syncDismissListeners'](true);
+    component['syncDismissListeners'](true); // idempotent
+
+    expect(addSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
+    expect(addSpy).toHaveBeenCalledWith('keydown', component['onEscape']);
+    expect(component['hasDismissListeners']).toBe(true);
+    expect(addSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('should remove document listeners once when deactivated', () => {
+    const removeSpy = vi.spyOn(document, 'removeEventListener');
+    component['syncDismissListeners'](true);
+
+    component['syncDismissListeners'](false);
+    component['syncDismissListeners'](false); // idempotent
+
+    expect(removeSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
+    expect(removeSpy).toHaveBeenCalledWith('keydown', component['onEscape']);
+    expect(component['hasDismissListeners']).toBe(false);
+    expect(removeSpy).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe('componentDidRender', () => {
+  it('should request show and sync listeners/positioning when open', () => {
+    const requestShow = vi.fn();
+    const requestHide = vi.fn();
+    component['topLayer'] = { requestShow, requestHide, cancel: vi.fn() } as any;
+    const syncAutoUpdateSpy = vi.spyOn(component as any, 'syncAutoUpdate').mockImplementation(() => {});
+    const syncDismissListenersSpy = vi.spyOn(component as any, 'syncDismissListeners').mockImplementation(() => {});
+    component.open = true;
+
+    component.componentDidRender();
+
+    expect(requestShow).toHaveBeenCalledTimes(1);
+    expect(requestHide).not.toHaveBeenCalled();
+    expect(syncAutoUpdateSpy).toHaveBeenCalledWith(true);
+    expect(syncDismissListenersSpy).toHaveBeenCalledWith(true);
+  });
+
+  it('should request hide and sync listeners/positioning when closed', () => {
+    const requestShow = vi.fn();
+    const requestHide = vi.fn();
+    component['topLayer'] = { requestShow, requestHide, cancel: vi.fn() } as any;
+    const syncAutoUpdateSpy = vi.spyOn(component as any, 'syncAutoUpdate').mockImplementation(() => {});
+    const syncDismissListenersSpy = vi.spyOn(component as any, 'syncDismissListeners').mockImplementation(() => {});
+    component.open = false;
+
+    component.componentDidRender();
+
+    expect(requestHide).toHaveBeenCalledTimes(1);
+    expect(requestShow).not.toHaveBeenCalled();
+    expect(syncAutoUpdateSpy).toHaveBeenCalledWith(false);
+    expect(syncDismissListenersSpy).toHaveBeenCalledWith(false);
   });
 });
