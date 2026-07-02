@@ -1,5 +1,17 @@
 import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
-import { Component, Element, Event, type EventEmitter, Host, h, type JSX, Listen, Prop, State } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  Host,
+  h,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+} from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
@@ -8,8 +20,10 @@ import {
   hasNamedSlot,
   hasPropValueChanged,
   isClickOutside,
+  observeChildren,
   parseAndGetAriaAttributes,
   type TopLayerController,
+  unobserveChildren,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
@@ -71,7 +85,9 @@ export class Popover {
   private refSlotButton: HTMLElement;
   private refArrow: HTMLDivElement;
   private cleanUpAutoUpdate: () => void;
-  // TODO: This should be updated when slot is changed
+  // The trigger element `autoUpdate` is currently anchored to, so it can be rebound when the trigger identity changes.
+  private autoUpdateRef: HTMLElement;
+  // Recomputed on each render via `hasNamedSlot`; kept in sync when slotted content changes through `observeChildren`.
   private hasSlottedButton: boolean;
   // Tracks whether the document-level dismiss listeners (outside click / Escape) are currently registered.
   private hasDismissListeners = false;
@@ -119,11 +135,30 @@ export class Popover {
     }
   }
 
+  public connectedCallback(): void {
+    // Observe dynamic light-DOM child changes so a slotted `button` being added, removed or replaced re-renders the
+    // component (switching between the default info button and the custom trigger). This watches the host's children
+    // directly rather than the shadow `slot`, so it also fires for the first button added to an empty popover.
+    // Scope is intentionally `childList`-only: `render()` only derives `hasSlottedButton` via `hasNamedSlot`, which
+    // depends on a direct child carrying `slot="button"` — i.e. an add/remove (as frameworks do when conditionally
+    // rendering the trigger). Toggling the `slot` attribute on a persistent element isn't covered on purpose to avoid
+    // broadening the observer to `subtree`/`attributes`; matches `p-flyout` / `p-banner` / `p-accordion`.
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
+  }
+
   public disconnectedCallback(): void {
     // ensures the deferred top-layer hide is canceled and floating ui event listeners are removed in case popover is removed from DOM
     this.topLayer.cancel();
     this.syncAutoUpdate(false);
     this.syncDismissListeners(false);
+    unobserveChildren(this.host);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -185,15 +220,22 @@ export class Popover {
   }
 
   private syncAutoUpdate = (active: boolean): void => {
+    const ref = this.refButton ?? this.refSlotButton;
+    // Rebind if the trigger element identity changed while active. This happens when the children observer swaps
+    // between the default shadow button and the slotted `button` (e.g. a `slot="button"` child added/removed while the
+    // popover is already open); `autoUpdate` captured the previous reference at setup and would otherwise stay anchored
+    // to the removed element. Replacing a slot's assigned child keeps the same slot element and does not trigger this.
+    if (active && this.cleanUpAutoUpdate && this.autoUpdateRef !== ref) {
+      this.cleanUpAutoUpdate();
+      this.cleanUpAutoUpdate = undefined;
+    }
     if (active && !this.cleanUpAutoUpdate) {
-      this.cleanUpAutoUpdate = autoUpdate(
-        this.refButton ?? this.refSlotButton,
-        this.refPopover,
-        this.updatePosition
-      );
+      this.cleanUpAutoUpdate = autoUpdate(ref, this.refPopover, this.updatePosition);
+      this.autoUpdateRef = ref;
     } else if (!active && this.cleanUpAutoUpdate) {
       this.cleanUpAutoUpdate();
       this.cleanUpAutoUpdate = undefined;
+      this.autoUpdateRef = undefined;
     }
   };
 
