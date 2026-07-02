@@ -19,11 +19,7 @@ export const getFunctionalComponentLabelAfterStyles = (): Styles => {
   const labelAfterStyles: JssStyle = {
     display: 'inline-block',
     verticalAlign: 'top',
-    '&::slotted(*)': {
-      ...addImportantToEachRule({
-        marginInlineStart: ref(spacingStaticXs),
-      }),
-    },
+    marginInlineStart: ref(spacingStaticXs),
   };
 
   return {
