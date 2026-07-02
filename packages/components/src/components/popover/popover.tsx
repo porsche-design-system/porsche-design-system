@@ -130,7 +130,7 @@ export class Popover {
     // popover's trigger). `relatedTarget` is the element receiving focus; only dismiss when it is a real element outside
     // both the host and the panel. A `null` `relatedTarget` means focus was lost without moving to another focusable
     // element (e.g. a mouse click on non-focusable panel content) and must NOT dismiss the popover — those cases are
-    // covered by `onClickOutside` / `onKeyboardEvent`. This keeps keyboard-opening another popover working without any
+    // covered by `onClickOutside` / `onEscape`. This keeps keyboard-opening another popover working without any
     // document-level coordination.
     const relatedTarget = e.relatedTarget as HTMLElement | null;
     if (
@@ -200,7 +200,7 @@ export class Popover {
         {/* The panel uses `popover="manual"` so the component fully owns open/close timing (no native light-dismiss).
             It stays mounted so it can transition (fade-out) when closing; visibility is driven by `effectiveOpen` via
             CSS and the top-layer controller. Dismissal on outside-click, Escape, and focus leaving the popover is
-            handled via `onClickOutside` / `onKeyboardEvent` / `onFocusout`, keeping the panel on the #top-layer during
+            handled via `onClickOutside` / `onEscape` / `onFocusout`, keeping the panel on the #top-layer during
             the fade-out. */}
         {/* `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
             fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
@@ -299,11 +299,11 @@ export class Popover {
     if (active && !this.hasDismissListeners) {
       // capture phase so dismissal happens before focus shifts on outside `mousedown`
       document.addEventListener('mousedown', this.onClickOutside, true);
-      document.addEventListener('keydown', this.onKeyboardEvent);
+      document.addEventListener('keydown', this.onEscape);
       this.hasDismissListeners = true;
     } else if (!active && this.hasDismissListeners) {
       document.removeEventListener('mousedown', this.onClickOutside, true);
-      document.removeEventListener('keydown', this.onKeyboardEvent);
+      document.removeEventListener('keydown', this.onEscape);
       this.hasDismissListeners = false;
     }
   };
@@ -316,7 +316,7 @@ export class Popover {
     }
   };
 
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
+  private onEscape = (e: KeyboardEvent): void => {
     // `popover="manual"` does not light-dismiss, so Escape is handled manually (mirrors `p-banner`).
     if (e.key === 'Escape' && this.effectiveOpen) {
       // Return focus to the trigger before closing so keyboard users are not stranded on the (about to be `inert`)
