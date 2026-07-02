@@ -45,7 +45,7 @@ const propTypes: PropTypes<typeof Popover> = {
 };
 
 /**
- * @slot {"name": "", "description": "Default slot for the popover content." }
+ * @slot {"name": "", "description": "Default slot for the popover content. Ignored when the `description` prop is set, which takes precedence." }
  * @slot {"name": "button", "description": "Renders a custom trigger button. When used, the default info button is replaced." }
  *
  * @controlled {"props": ["open"], "event": "dismiss"}
@@ -72,7 +72,7 @@ export class Popover {
   /** Sets the preferred direction for the popover to open relative to its trigger button. Falls back to the direction with the most available viewport space. */
   @Prop() public direction?: PopoverDirection = 'bottom';
 
-  /** Sets the text content displayed inside the popover panel when it is open, providing contextual help or information. */
+  /** Sets the text content displayed inside the popover panel when it is open, providing contextual help or information. Takes precedence over the default slot when both are provided. */
   @Prop() public description?: string;
 
   /** Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces. */
@@ -204,12 +204,12 @@ export class Popover {
           <button
             type="button"
             onClick={() => !this.isControlled && (this.isOpen = !this.isOpen)}
-            {...parseAndGetAriaAttributes({
-              ...{ 'aria-label': 'More information' },
-              ...{ 'aria-details': id },
-              ...parseAndGetAriaAttributes(this.aria),
-              ...{ 'aria-expanded': this.effectiveOpen },
-            })}
+            // Defaults first, then the consumer `aria` prop (parsed once) so it can override e.g. `aria-label`,
+            // then `aria-expanded` last so it always reflects the current open state and can't be overridden.
+            aria-label="More information"
+            aria-details={id}
+            {...parseAndGetAriaAttributes(this.aria)}
+            aria-expanded={this.effectiveOpen ? 'true' : 'false'}
             ref={(el) => (this.refButton = el)}
           />
         )}
@@ -310,7 +310,7 @@ export class Popover {
       width: placementVertical ? '24px' : '12px',
       height: placementVertical ? '12px' : '24px',
       // Flip 180° for `top`/`left` so the tip points away from the panel (towards a trigger above/left of it).
-      transform: `rotate(${placementTopLeft ? '180deg' : '0'}`,
+      transform: `rotate(${placementTopLeft ? '180deg' : '0'})`,
       // Offset along the edge (`xArrow`) for placements whose arrow lives on a horizontal edge; pinned otherwise.
       left: ['right', 'bottom', 'top'].includes(placement) ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
       right: placement === 'left' ? (xArrow != null ? `${xArrow}px` : '-12px') : '',

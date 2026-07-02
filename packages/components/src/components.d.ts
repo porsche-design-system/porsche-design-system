@@ -2395,7 +2395,7 @@ export namespace Components {
          */
         "compact"?: boolean;
         /**
-          * Sets the text content displayed inside the popover panel when it is open, providing contextual help or information.
+          * Sets the text content displayed inside the popover panel when it is open, providing contextual help or information. Takes precedence over the default slot when both are provided.
          */
         "description"?: string;
         /**
@@ -6807,7 +6807,7 @@ declare namespace LocalJSX {
          */
         "compact"?: boolean;
         /**
-          * Sets the text content displayed inside the popover panel when it is open, providing contextual help or information.
+          * Sets the text content displayed inside the popover panel when it is open, providing contextual help or information. Takes precedence over the default slot when both are provided.
          */
         "description"?: string;
         /**
