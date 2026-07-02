@@ -111,7 +111,7 @@
     "ag-grid-react": "36.0.0",
     "change-case": "^5.4.4",
     "concurrently": "^10.0.3",
-    "devtools-protocol": "^0.0.1651496",
+    "devtools-protocol": "^0.0.1653615",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
     "jsdom": "^29.1.1",
@@ -125,9 +125,9 @@
     "typescript": "^6.0.3",
     "vite": "^8.1.0",
     "vitest": "^4.1.9",
-    "webpack": "^5.107.2",
+    "webpack": "^5.108.1",
     "webpack-bundle-analyzer": "^5.3.0",
-    "webpack-cli": "^7.0.3"
+    "webpack-cli": "^7.1.0"
   },
   "volta": {
     "extends": "../../package.json"
