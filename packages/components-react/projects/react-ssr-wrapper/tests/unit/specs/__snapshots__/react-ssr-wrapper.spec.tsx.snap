@@ -180,6 +180,16 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -720,6 +730,11 @@ img {
           </template>
         </p-input-search>
         <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="filter-status"
+        />
+        <div
           aria-multiselectable="true"
           aria-required="false"
           class="options"
@@ -727,7 +742,6 @@ img {
           role="listbox"
         >
           <div
-            aria-live="polite"
             class="no-results"
             role="option"
           >
@@ -10671,6 +10685,16 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -11211,6 +11235,11 @@ img {
           </template>
         </p-input-search>
         <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="filter-status"
+        />
+        <div
           aria-multiselectable="true"
           aria-required="false"
           class="options"
@@ -11218,7 +11247,6 @@ img {
           role="listbox"
         >
           <div
-            aria-live="polite"
             class="no-results"
             role="option"
           >
@@ -12820,6 +12848,16 @@ exports[`should render dsr component for PSelect 1`] = `
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;
