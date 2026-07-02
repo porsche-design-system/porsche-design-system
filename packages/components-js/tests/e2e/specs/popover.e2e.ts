@@ -20,21 +20,13 @@ type InitOptions = {
   direction?: PopoverDirection;
   withLink?: boolean;
   withStrong?: boolean;
-  withButtonOutside?: boolean;
   withSlottedButton?: boolean;
 };
 const initPopover = (page: Page, opts?: InitOptions): Promise<void> => {
-  const {
-    direction = 'bottom',
-    withLink = false,
-    withStrong = false,
-    withButtonOutside = false,
-    withSlottedButton = false,
-  } = opts || {};
+  const { direction = 'bottom', withLink = false, withStrong = false, withSlottedButton = false } = opts || {};
 
   const linkMarkup = withLink ? '<a href="#">Some Link</a>' : '';
   const strongMarkup = withStrong ? '<strong>strong</strong>' : '';
-  const buttonMarkup = withButtonOutside ? '<button>Some Button</button>' : '';
   const slottedButtonMarkup = withSlottedButton ? '<button slot="button">Some Button</button>' : '';
 
   return setContentWithDesignSystem(
@@ -45,8 +37,7 @@ const initPopover = (page: Page, opts?: InitOptions): Promise<void> => {
   ${linkMarkup}
   ${strongMarkup}
   Some Popover Content
-</p-popover>
-${buttonMarkup}`
+</p-popover>`
   );
 };
 

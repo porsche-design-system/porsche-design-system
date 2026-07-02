@@ -17,7 +17,8 @@ export const POPOVER_SAFE_ZONE = 8;
  */
 export const getPopoverBorderRadius = (popover: HTMLElement): number => {
   const borderRadius = Number.parseFloat(getComputedStyle(popover).borderRadius);
-  // Fallback border-radius matching the popover's non-compact `radiusXl` (12px). Used when the rendered value can't be
-  // resolved (e.g. SSR or test environments without layout).
+  // Fallback used when the rendered value can't be resolved (e.g. SSR or test environments without layout). Matches the
+  // non-compact `radiusXl` token (12px); the compact variant (`radiusLg`) is smaller, so this stays a safe default that
+  // never places the arrow on top of a corner.
   return Number.isNaN(borderRadius) ? 12 : borderRadius;
 };
