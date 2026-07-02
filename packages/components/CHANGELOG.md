@@ -14,6 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Select`, `Multi Select`: Announcement of filter results in screen reader (currently only in english)
+  ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+
+### Fixed
+
+- `Multi Select`: Announcement of the active/selected option in screen reader
+  ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+
 ## [4.3.0] - 2026-06-24
 
 ## [4.3.0-rc.0] - 2026-06-24
