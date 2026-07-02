@@ -86,7 +86,7 @@ export class Popover {
   private refArrow: HTMLDivElement;
   private cleanUpAutoUpdate: () => void;
   // The trigger element `autoUpdate` is currently anchored to, so it can be rebound when the trigger identity changes.
-  private autoUpdateRef: HTMLElement;
+  private boundTriggerElement: HTMLElement;
   // Tracks whether the document-level dismiss listeners (outside click / Escape) are currently registered.
   private hasDismissListeners = false;
   // Keeps the panel on the #top-layer during its fade-out (Chromium via `overlay`; Safari/Firefox via a deferred hide).
@@ -227,28 +227,28 @@ export class Popover {
   }
 
   private syncAutoUpdate = (active: boolean): void => {
-    const ref = this.triggerElement;
+    const triggerElement = this.triggerElement;
     // Rebind if the trigger element identity changed while active. This happens when the children observer swaps
     // between the default shadow button and the slotted `button` (e.g. a `slot="button"` child added/removed/replaced
     // while the popover is already open); `autoUpdate` captured the previous reference at setup and would otherwise stay
     // anchored to the removed element.
-    if (active && this.cleanUpAutoUpdate && this.autoUpdateRef !== ref) {
+    if (active && this.cleanUpAutoUpdate && this.boundTriggerElement !== triggerElement) {
       this.cleanUpAutoUpdate();
       this.cleanUpAutoUpdate = undefined;
     }
-    // `ref` can be momentarily undefined (e.g. a slotted button not yet projected), so only bind once it resolves to a
-    // real element; the next render (forced by `observeChildren`) re-runs this and binds then.
-    if (active && ref && !this.cleanUpAutoUpdate) {
-      this.cleanUpAutoUpdate = autoUpdate(ref, this.refPopover, this.updatePosition);
-      this.autoUpdateRef = ref;
+    // `triggerElement` can be momentarily undefined (e.g. a slotted button not yet projected), so only bind once it
+    // resolves to a real element; the next render (forced by `observeChildren`) re-runs this and binds then.
+    if (active && triggerElement && !this.cleanUpAutoUpdate) {
+      this.cleanUpAutoUpdate = autoUpdate(triggerElement, this.refPopover, this.positionPopover);
+      this.boundTriggerElement = triggerElement;
     } else if (!active && this.cleanUpAutoUpdate) {
       this.cleanUpAutoUpdate();
       this.cleanUpAutoUpdate = undefined;
-      this.autoUpdateRef = undefined;
+      this.boundTriggerElement = undefined;
     }
   };
 
-  private updatePosition = async (): Promise<void> => {
+  private positionPopover = async (): Promise<void> => {
     const { x, y, placement, middlewareData } = await computePosition(this.triggerElement, this.refPopover, {
       placement: this.direction,
       // Use the `fixed` strategy because the panel is promoted to the `#top-layer` via `showPopover()`. Safari does

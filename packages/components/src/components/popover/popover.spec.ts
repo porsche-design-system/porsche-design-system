@@ -97,7 +97,7 @@ describe('syncAutoUpdate', () => {
     component['syncAutoUpdate'](true);
 
     expect(autoUpdateMock).toHaveBeenCalledTimes(1);
-    expect(autoUpdateMock).toHaveBeenCalledWith(button, popover, component['updatePosition']);
+    expect(autoUpdateMock).toHaveBeenCalledWith(button, popover, component['positionPopover']);
   });
 
   it('should rebind autoUpdate when the trigger identity changes while active', () => {
@@ -120,7 +120,7 @@ describe('syncAutoUpdate', () => {
 
     expect(cleanUp).toHaveBeenCalledTimes(1); // old binding torn down
     expect(autoUpdateMock).toHaveBeenCalledTimes(2);
-    expect(autoUpdateMock).toHaveBeenLastCalledWith(slotButton, popover, component['updatePosition']);
+    expect(autoUpdateMock).toHaveBeenLastCalledWith(slotButton, popover, component['positionPopover']);
   });
 
   it('should not bind autoUpdate while active when no trigger element is resolvable yet', () => {
