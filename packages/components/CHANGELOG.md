@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     visibility (uncontrolled), when it is set the consumer owns the open state via a custom trigger projected through
     the named `button` slot (controlled)
   - `open` prop to control the popover's visibility in controlled mode
+  - `compact` prop to reduce padding and spacing for a more compact layout, useful in space-constrained interfaces
   - `dismiss` event emitted in controlled mode when the user requests to close the popover via the `Escape` key or an
     outside click
   - CSS variables to customize the popover panel: `--p-popover-w`, `--p-popover-h`, `--p-popover-min-w`,
