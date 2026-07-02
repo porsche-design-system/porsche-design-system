@@ -136,6 +136,9 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => 
           WebkitMask: `${iconInfo} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${iconInfo} center/contain no-repeat`,
           background: ref(colorPrimary),
+          ...forcedColorsMediaQuery({
+            background: 'CanvasText',
+          }),
         },
       },
       '[popover]': {

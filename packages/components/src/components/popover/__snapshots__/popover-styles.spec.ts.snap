@@ -72,6 +72,9 @@ button::after {
   display: none;
 }
 @media(forced-colors:active) {
+  button::after {
+    background: CanvasText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -180,6 +183,9 @@ button::after {
   display: none;
 }
 @media(forced-colors:active) {
+  button::after {
+    background: CanvasText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -288,6 +294,9 @@ button::after {
   display: none;
 }
 @media(forced-colors:active) {
+  button::after {
+    background: CanvasText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
@@ -401,6 +410,9 @@ button::after {
   display: none;
 }
 @media(forced-colors:active) {
+  button::after {
+    background: CanvasText;
+  }
   button:focus-visible {
     outline-color: Highlight;
   }
