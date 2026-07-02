@@ -4,6 +4,8 @@ export type PopoverDirection = (typeof POPOVER_DIRECTIONS)[number];
 export const POPOVER_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type PopoverAriaAttribute = (typeof POPOVER_ARIA_ATTRIBUTES)[number];
 
+// Minimum gap (in px) kept between the panel and the viewport edges. Used both as Floating UI `shift`/`flip` padding
+// and to inset the panel's default max-width/height (`100dvw/dvh - 2 * POPOVER_SAFE_ZONE`) so it never touches the edge.
 export const POPOVER_SAFE_ZONE = 8;
 
 

@@ -78,6 +78,12 @@ const iconInfo = getInlineSVGBackgroundImage(
   `<path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/>`
 );
 
+/**
+ * Builds the popover's scoped CSS.
+ * @param isCompact - Reduces padding/spacing and uses smaller radii (mirrors the `compact` prop).
+ * @param isOpen - The effective open state; drives the fade-in/fade-out direction and the `@starting-style` append.
+ * @returns The component CSS string, with a trailing `@starting-style` rule appended while opening.
+ */
 export const getComponentCss = (isCompact: boolean, isOpen: boolean): string => {
   // fade-in on open (via `@starting-style` below), fade-out on close. While closing, the panel keeps `display: grid`
   // (Chromium via `overlay` + `display` `allow-discrete`; Safari/Firefox via the deferred `hidePopover()`), so

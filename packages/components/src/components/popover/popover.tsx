@@ -50,6 +50,12 @@ const propTypes: PropTypes<typeof Popover> = {
  *
  * @controlled {"props": ["open"], "event": "dismiss"}
  */
+// The panel is a native `[popover="manual"]` element that the component promotes to the `#top-layer` itself, so it
+// always renders above surrounding content regardless of ancestor stacking contexts. The component supports two modes:
+// - uncontrolled: `open` is omitted and the component owns visibility via the internal `isOpen` state (toggled by the
+//   default info button or a slotted trigger); dismissal closes it directly.
+// - controlled: `open` is a boolean and the consumer owns visibility via a slotted `button`; dismissal only emits
+//   `dismiss` and the consumer flips `open`. See `isControlled` / `effectiveOpen` for how the two are reconciled.
 @Component({
   tag: 'p-popover',
   shadow: true,
@@ -80,10 +86,16 @@ export class Popover {
 
   @State() private isOpen = false;
 
+  // The `[popover]` panel element on the #top-layer that holds the content and the arrow.
   private refPopover: HTMLDivElement;
+  // The default info button rendered in the Shadow DOM (only present when no `button` slot is used).
   private refButton: HTMLButtonElement;
+  // The `<slot name="button">` element (only present when a custom trigger is projected); its assigned element is the
+  // actual trigger, see `triggerElement`.
   private refSlotButton: HTMLElement;
+  // The visual arrow pointing from the panel to the trigger; positioned by Floating UI's `arrow` middleware.
   private refArrow: HTMLDivElement;
+  // Teardown for the active Floating UI `autoUpdate` subscription; `undefined` while not positioning.
   private cleanUpAutoUpdate: () => void;
   // The trigger element `autoUpdate` is currently anchored to, so it can be rebound when the trigger identity changes.
   private boundTriggerElement: HTMLElement;
@@ -98,10 +110,14 @@ export class Popover {
   });
 
   private get isControlled(): boolean {
+    // Controlled mode is opted into purely by passing a boolean `open`; an omitted (`undefined`) prop means the
+    // component manages its own visibility.
     return typeof this.open === 'boolean';
   }
 
   private get effectiveOpen(): boolean {
+    // Single source of truth for "is the panel currently open", regardless of mode: the consumer-owned `open` prop in
+    // controlled mode, the internal `isOpen` state otherwise. All render/positioning/dismissal logic reads this.
     return this.isControlled ? this.open : this.isOpen;
   }
 
@@ -283,13 +299,22 @@ export class Popover {
 
     const { x: xArrow, y: yArrow } = middlewareData.arrow;
 
+    // Position and orient the arrow so it points from the panel edge towards the trigger. Floating UI's `arrow`
+    // middleware only provides the offset along the panel edge (`xArrow` for horizontal edges, `yArrow` for vertical
+    // ones); the perpendicular side is pinned to `-12px` so the arrow sits flush against the panel, and its shape is
+    // rotated to face the trigger.
     Object.assign(this.refArrow.style, {
+      // Triangle shape: pointing down for top/bottom placements, pointing sideways for left/right placements.
       clipPath: placementVertical ? 'polygon(50% 0, 100% 110%, 0 110%)' : 'polygon(0 50%, 110% 0, 110% 100%)',
+      // Swap width/height so the base always spans the panel edge the arrow attaches to.
       width: placementVertical ? '24px' : '12px',
       height: placementVertical ? '12px' : '24px',
+      // Flip 180° for `top`/`left` so the tip points away from the panel (towards a trigger above/left of it).
       transform: `rotate(${placementTopLeft ? '180deg' : '0'}`,
+      // Offset along the edge (`xArrow`) for placements whose arrow lives on a horizontal edge; pinned otherwise.
       left: ['right', 'bottom', 'top'].includes(placement) ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
       right: placement === 'left' ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
+      // Offset along the edge (`yArrow`) for placements whose arrow lives on a vertical edge; pinned otherwise.
       top: ['bottom', 'left', 'right'].includes(placement) ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
       bottom: placement === 'top' ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
     });
