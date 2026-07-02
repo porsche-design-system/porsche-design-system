@@ -136,6 +136,26 @@ describe('syncAutoUpdate', () => {
     expect(component['cleanUpAutoUpdate']).toBeUndefined();
   });
 
+  it('should tear down autoUpdate when the trigger becomes unresolvable while active', () => {
+    const cleanUp = vi.fn();
+    autoUpdateMock.mockReturnValue(cleanUp);
+    const button = document.createElement('button');
+    component['refButton'] = button as HTMLButtonElement;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+
+    // initial bind to the default shadow button
+    component['syncAutoUpdate'](true);
+
+    // trigger disappears while still open (e.g. slotted button removed and not yet replaced) → `triggerElement` undefined
+    component['refButton'] = undefined;
+    component['refSlotButton'] = createSlotWithAssigned();
+    component['syncAutoUpdate'](true);
+
+    expect(cleanUp).toHaveBeenCalledTimes(1); // old binding torn down
+    expect(autoUpdateMock).toHaveBeenCalledTimes(1); // not re-created against an undefined reference
+    expect(component['cleanUpAutoUpdate']).toBeUndefined();
+  });
+
   it('should not rebind autoUpdate when the trigger reference is unchanged', () => {
     const cleanUp = vi.fn();
     autoUpdateMock.mockReturnValue(cleanUp);
@@ -165,5 +185,3 @@ describe('syncAutoUpdate', () => {
     expect(component['autoUpdateRef']).toBeUndefined();
   });
 });
-
-

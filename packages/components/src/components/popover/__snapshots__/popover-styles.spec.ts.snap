@@ -19,9 +19,6 @@ slot:not([name]), p {
   overflow: hidden auto;
   overscroll-behavior-y: none;
 }
-slot[name="button"] {
-  display: contents;
-}
 button {
   all: unset;
   display: grid;
@@ -129,9 +126,6 @@ slot:not([name]), p {
   padding: var(--p-popover-py,calc(12 * var(--p-spacing-static-2xs))) var(--p-popover-px,var(--p-spacing-static-md));
   overflow: hidden auto;
   overscroll-behavior-y: none;
-}
-slot[name="button"] {
-  display: contents;
 }
 button {
   all: unset;
@@ -246,9 +240,6 @@ slot:not([name]), p {
   overflow: hidden auto;
   overscroll-behavior-y: none;
 }
-slot[name="button"] {
-  display: contents;
-}
 button {
   all: unset;
   display: grid;
@@ -356,9 +347,6 @@ slot:not([name]), p {
   padding: var(--p-popover-py,var(--p-spacing-static-xs)) var(--p-popover-px,var(--p-spacing-static-sm));
   overflow: hidden auto;
   overscroll-behavior-y: none;
-}
-slot[name="button"] {
-  display: contents;
 }
 button {
   all: unset;

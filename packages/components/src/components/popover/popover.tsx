@@ -87,8 +87,6 @@ export class Popover {
   private cleanUpAutoUpdate: () => void;
   // The trigger element `autoUpdate` is currently anchored to, so it can be rebound when the trigger identity changes.
   private autoUpdateRef: HTMLElement;
-  // Recomputed on each render via `hasNamedSlot`; kept in sync when slotted content changes through `observeChildren`.
-  private hasSlottedButton: boolean;
   // Tracks whether the document-level dismiss listeners (outside click / Escape) are currently registered.
   private hasDismissListeners = false;
   // Keeps the panel on the #top-layer during its fade-out (Chromium via `overlay`; Safari/Firefox via a deferred hide).
@@ -117,9 +115,11 @@ export class Popover {
 
   @Listen('click')
   public onClick(e: MouseEvent): void {
-    // Handle opening when custom slotted button is clicked (uncontrolled mode only; in controlled mode the consumer owns
-    // the trigger)
-    if (!this.isControlled && this.hasSlottedButton && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
+    // Toggle open state when the custom slotted button is clicked (uncontrolled mode only; in controlled mode the
+    // consumer owns the trigger). The `closest('[slot="button"]')` match already implies a slotted button was clicked —
+    // clicks on the default shadow button retarget to the host at the shadow boundary, so `closest(...)` is `null` there
+    // and this does not double-toggle (that button toggles via its own inline `onClick`).
+    if (!this.isControlled && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
       this.isOpen = !this.isOpen;
     }
   }
@@ -147,8 +147,8 @@ export class Popover {
     // Observe dynamic light-DOM child changes so a slotted `button` being added, removed or replaced re-renders the
     // component (switching between the default info button and the custom trigger). This watches the host's children
     // directly rather than the shadow `slot`, so it also fires for the first button added to an empty popover.
-    // Scope is intentionally `childList`-only: `render()` only derives `hasSlottedButton` via `hasNamedSlot`, which
-    // depends on a direct child carrying `slot="button"` — i.e. an add/remove (as frameworks do when conditionally
+    // Scope is intentionally `childList`-only: `render()` only derives whether a slotted button exists via `hasNamedSlot`,
+    // which depends on a direct child carrying `slot="button"` — i.e. an add/remove (as frameworks do when conditionally
     // rendering the trigger). Toggling the `slot` attribute on a persistent element isn't covered on purpose to avoid
     // broadening the observer to `subtree`/`attributes`; matches `p-flyout` / `p-banner` / `p-accordion`.
     observeChildren(
@@ -177,13 +177,12 @@ export class Popover {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.compact, this.effectiveOpen);
 
-    this.hasSlottedButton = hasNamedSlot(this.host, 'button');
-
+    const hasSlottedButton = hasNamedSlot(this.host, 'button');
     const id = 'popover';
 
     return (
       <Host>
-        {this.hasSlottedButton ? (
+        {hasSlottedButton ? (
           <slot name="button" ref={(el: HTMLElement) => (this.refSlotButton = el)} />
         ) : (
           <button
