@@ -459,7 +459,7 @@ describe('syncDismissListeners', () => {
     component['syncDismissListeners'](true);
     component['syncDismissListeners'](true); // idempotent
 
-    expect(addSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
+    expect(addSpy).toHaveBeenCalledWith('click', component['onClickOutside'], true);
     expect(addSpy).toHaveBeenCalledWith('keydown', component['onEscape']);
     expect(addSpy).toHaveBeenCalledWith('pointerdown', component['onPointerDown'], true);
     expect(addSpy).toHaveBeenCalledWith('pointerup', component['onPointerUp'], true);
@@ -474,7 +474,7 @@ describe('syncDismissListeners', () => {
     component['syncDismissListeners'](false);
     component['syncDismissListeners'](false); // idempotent
 
-    expect(removeSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
+    expect(removeSpy).toHaveBeenCalledWith('click', component['onClickOutside'], true);
     expect(removeSpy).toHaveBeenCalledWith('keydown', component['onEscape']);
     expect(removeSpy).toHaveBeenCalledWith('pointerdown', component['onPointerDown'], true);
     expect(removeSpy).toHaveBeenCalledWith('pointerup', component['onPointerUp'], true);

@@ -338,8 +338,11 @@ export class Popover {
 
   private syncDismissListeners = (active: boolean): void => {
     if (active && !this.hasDismissListeners) {
-      // capture phase so dismissal happens before focus shifts on outside `mousedown`
-      document.addEventListener('mousedown', this.onClickOutside, true);
+      // Capture phase on `click` (not `mousedown`) so any external control bound to `open` finishes its own click
+      // first: the capture-phase dismiss and the control's bubble-phase toggle land in a single, correctly-ordered
+      // state update. Firing on `mousedown` re-renders such a control mid-gesture, letting its subsequent click flip
+      // the freshly-rendered state back and re-open the popover (controlled-mode re-open race).
+      document.addEventListener('click', this.onClickOutside, true);
       document.addEventListener('keydown', this.onEscape);
       // Track the pointer press/release around a click so `onFocusout` can defer pointer-driven focus loss to
       // `onClickOutside` (avoids emitting `dismiss` twice for one outside click on a focusable element).
@@ -347,7 +350,7 @@ export class Popover {
       document.addEventListener('pointerup', this.onPointerUp, true);
       this.hasDismissListeners = true;
     } else if (!active && this.hasDismissListeners) {
-      document.removeEventListener('mousedown', this.onClickOutside, true);
+      document.removeEventListener('click', this.onClickOutside, true);
       document.removeEventListener('keydown', this.onEscape);
       document.removeEventListener('pointerdown', this.onPointerDown, true);
       document.removeEventListener('pointerup', this.onPointerUp, true);
@@ -364,8 +367,10 @@ export class Popover {
   };
 
   private onClickOutside = (e: MouseEvent): void => {
-    // Light-dismiss on outside click. Clicks on the trigger button or inside the panel must not close it; the trigger
-    // toggles its own state via the button/`onClick` handlers.
+    // Light-dismiss on an outside `click` (capture phase). Firing on `click` rather than `mousedown` lets an external
+    // control bound to `open` complete its own click before dismissal, avoiding a controlled-mode re-open race.
+    // Clicks on the trigger button or inside the panel must not close it; the trigger toggles its own state via the
+    // button/`onClick` handlers.
     if (this.effectiveOpen && isClickOutside(e, this.triggerElement) && isClickOutside(e, this.refPopover)) {
       this.dismissPopover();
     }

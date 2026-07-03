@@ -727,7 +727,7 @@ test.describe('controlled mode', () => {
 
     test('should emit dismiss only once when clicking an outside focusable element', async ({ page }) => {
       // A click on an outside *focusable* element triggers both dismissal paths: the outside-click handler (on
-      // `mousedown`) and the focusout handler (focus shifts to that element). They must not both fire — `dismiss` must
+      // `click`) and the focusout handler (focus shifts to that element). They must not both fire — `dismiss` must
       // be emitted exactly once per interaction.
       await setContentWithDesignSystem(
         page,
