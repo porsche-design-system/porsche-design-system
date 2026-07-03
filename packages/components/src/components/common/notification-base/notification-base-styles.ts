@@ -1,5 +1,5 @@
 import { getMediaQueryMin } from '@porsche-design-system/emotion';
-import type { Styles } from 'jss';
+import type { Styles } from '../../../utils/jss';
 import { forcedColorsMediaQuery } from '../../../styles';
 import {
   blurFrosted,

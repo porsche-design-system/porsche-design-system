@@ -8,7 +8,7 @@ import {
   ref,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../../utils/jss';
 import type { FormState } from '../../utils/form/form-state';
 import { getDisabledBaseStyles, getFocusBaseStyles, getTransition } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';

@@ -1,4 +1,4 @@
-import type { Styles } from 'jss';
+import type { Styles } from '../../../utils/jss';
 
 export const getFunctionalComponentRequiredStyles = (): Styles<'required'> => {
   return {

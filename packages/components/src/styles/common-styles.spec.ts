@@ -1,5 +1,5 @@
 import type { PropertiesHyphen } from 'csstype';
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../utils/jss';
 import {
   addImportantToEachRule,
   addImportantToRule,

@@ -1,5 +1,5 @@
 import { getMediaQueryMax, getMediaQueryMin } from '@porsche-design-system/emotion';
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../../utils/jss';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,

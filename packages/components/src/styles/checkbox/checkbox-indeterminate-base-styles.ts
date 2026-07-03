@@ -1,5 +1,5 @@
 import { colorPrimary, ref } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../../utils/jss';
 import type { FormState } from '../../utils/form/form-state';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { getThemedFormStateColors } from '../form-state-color-styles';

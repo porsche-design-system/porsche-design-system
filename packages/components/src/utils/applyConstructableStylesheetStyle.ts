@@ -1,4 +1,4 @@
-import type { Styles } from 'jss';
+import type { Styles } from './jss';
 import { getCss } from './jss';
 
 type ElementsMap = Map<string, ElementMap>;

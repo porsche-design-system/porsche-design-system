@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as globby from 'fast-glob';
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle, Styles } from './jss';
 import { vi } from 'vitest';
 import * as jssUtils from './jss';
 import {

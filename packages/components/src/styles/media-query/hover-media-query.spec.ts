@@ -1,4 +1,4 @@
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../../utils/jss';
 import { hoverMediaQuery } from './hover-media-query';
 
 it('should return style wrapped in @media(hover: hover) query', () => {

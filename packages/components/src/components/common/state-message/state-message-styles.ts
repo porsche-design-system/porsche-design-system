@@ -6,7 +6,7 @@ import {
   spacingStaticXs,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle, Styles } from '../../../utils/jss';
 import { getTransition } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import type { FormState } from '../../../utils/form/form-state';

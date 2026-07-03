@@ -1,4 +1,4 @@
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../../utils/jss';
 
 /**
  * Utility to wrap JSS styles in `@media (pointer: coarse)`,

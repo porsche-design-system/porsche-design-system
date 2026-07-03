@@ -9,7 +9,7 @@ import {
   typescaleSm,
   typescaleXs,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle, Styles } from '../../../utils/jss';
 import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
 import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';

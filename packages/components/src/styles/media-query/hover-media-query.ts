@@ -1,4 +1,4 @@
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../../utils/jss';
 
 /**
  * utility to wrap jss styles parameter in `@media (hover: hover)`

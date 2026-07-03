@@ -1,4 +1,4 @@
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../../utils/jss';
 import { getTransition } from '../common-styles';
 
 export const getIconJssStyle = (isOpen: boolean): JssStyle => {

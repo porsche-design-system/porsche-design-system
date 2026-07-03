@@ -1,4 +1,4 @@
-import type { Styles } from 'jss';
+import type { Styles } from '../../utils/jss';
 import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 

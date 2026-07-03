@@ -1,5 +1,5 @@
 import { colorContrastMedium, ref } from '@porsche-design-system/stylesheets';
-import type { Styles } from 'jss';
+import type { Styles } from '../../../utils/jss';
 import { getHiddenTextJssStyle } from '../../../styles';
 import { getOptionJssStyle } from '../../../styles/select';
 
