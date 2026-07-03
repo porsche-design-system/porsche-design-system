@@ -495,6 +495,10 @@ test.describe('dynamic content change', () => {
       document.querySelector('p-popover').appendChild(slottedButton);
     });
 
+    // Wait for the component to re-render: the default info button is replaced by the slotted button slot,
+    // so there should be exactly 1 button before proceeding (avoids strict-mode violations in slow browsers).
+    await expect(page.locator('p-popover button')).toHaveCount(1);
+
     const popover = getPopover(page);
     const button = getButton(page);
 
