@@ -39,7 +39,6 @@
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "change-case": "^5.4.4",
-    "jss": "^10.10.0",
     "rollup": "^4.62.2",
     "rollup-plugin-dts": "^6.4.1",
     "tsx": "^4.22.4",
