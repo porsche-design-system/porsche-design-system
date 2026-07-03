@@ -1,8 +1,7 @@
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
-import { getMinifiedCss } from '@porsche-design-system/shared';
+import { getMinifiedCss, type Styles } from '@porsche-design-system/shared';
 import { fontWeightBold, fontWeightNormal, fontWeightSemibold } from '@porsche-design-system/tokens';
 import { camelCase } from 'change-case';
-import type { Styles } from 'jss';
 import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 
 type Cdn = 'com' | 'cn' | 'localhost';
