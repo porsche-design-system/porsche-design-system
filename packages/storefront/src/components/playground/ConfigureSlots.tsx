@@ -36,7 +36,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   onUpdate={(e) =>
                     onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)
                   }
-                  disabled={slotName === 'default' || slotName === 'summary'}
+                  disabled={(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.isRequired}
                 >
                   {capitalCase(slotName)}
                 </PSwitch>

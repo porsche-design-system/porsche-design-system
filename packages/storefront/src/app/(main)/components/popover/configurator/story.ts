@@ -1,13 +1,32 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
+
+export const popoverSlotStories: SlotStories<'p-popover'> = {
+  default: {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-text',
+          children: ['Some additional content.'],
+        },
+      ],
+    },
+  },
+};
 
 export const popoverStory: Story<'p-popover'> = {
-  generator: ({ properties } = {}) => [
+  state: {
+    slots: {
+      default: popoverSlotStories.default.basic,
+    },
+  },
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-popover',
       properties,
-      children: ['Some additional content.'],
+      children: [...(slots?.default?.generator() ?? [])],
     },
   ],
 };
