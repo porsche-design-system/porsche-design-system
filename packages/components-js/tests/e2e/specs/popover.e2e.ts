@@ -241,6 +241,25 @@ test.describe('mouse behavior', () => {
       const selection = await page.evaluate(() => window.getSelection().toString());
       expect(selection.trim()).toBe('strong');
     });
+
+    test('should not close popover when a text selection started inside is released outside', async ({ page }) => {
+      await initPopover(page, { withStrong: true });
+      const popover = getPopover(page);
+      const button = getButton(page);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      // Press inside the panel content, drag outside the popover, and release. The resulting `click` retargets to an
+      // outside ancestor, but must not dismiss because the gesture started inside.
+      const strongBox = await page.locator('strong').boundingBox();
+      await page.mouse.move(strongBox.x + 2, strongBox.y + strongBox.height / 2);
+      await page.mouse.down();
+      await page.mouse.move(strongBox.x + 2, strongBox.y + strongBox.height / 2 + 300, { steps: 5 });
+      await page.mouse.up();
+
+      await expect(popover).toBeVisible();
+    });
   });
 
   test.describe('custom slotted button', () => {

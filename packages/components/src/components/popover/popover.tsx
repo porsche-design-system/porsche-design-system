@@ -105,6 +105,12 @@ export class Popover {
   // an outside element, already handled by `onClickOutside`) to that handler, so a single outside pointer interaction
   // emits `dismiss` once instead of twice. `onFocusout` then only dismisses on keyboard focus moves (Tab / Shift+Tab).
   private isPointerInteraction = false;
+  // Tracks whether the current pointer gesture *started* inside the trigger or panel. A `click` only fires on the
+  // nearest common ancestor of `mousedown`/`mouseup`, so pressing inside the panel (e.g. starting a text selection),
+  // dragging out and releasing outside retargets the resulting `click` to an ancestor *outside* the popover. Without
+  // this flag `onClickOutside` would then wrongly dismiss. Captured at `pointerdown` time (where `composedPath()` is
+  // still valid) and consumed on the following `click`, so dismissal only happens when the gesture started outside too.
+  private isPointerDownInside = false;
   // Keeps the panel on the #top-layer during its fade-out (Chromium via `overlay`; Safari/Firefox via a deferred hide).
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.refPopover,
@@ -358,8 +364,12 @@ export class Popover {
     }
   };
 
-  private onPointerDown = (): void => {
+  private onPointerDown = (e: PointerEvent): void => {
     this.isPointerInteraction = true;
+    // Record whether the press began inside the trigger or the panel, so a selection dragged out and released outside
+    // does not dismiss on the resulting (retargeted) `click`.
+    this.isPointerDownInside =
+      !isClickOutside(e, this.refPopover) || (!!this.triggerElement && !isClickOutside(e, this.triggerElement));
   };
 
   private onPointerUp = (): void => {
@@ -367,6 +377,14 @@ export class Popover {
   };
 
   private onClickOutside = (e: MouseEvent): void => {
+    // A gesture that started inside the trigger or panel (e.g. a text selection) but ends outside produces a `click`
+    // retargeted to a common ancestor outside the popover. Consume the `pointerdown`-origin flag and skip dismissal in
+    // that case, so the popover only closes when the interaction both started and ended outside.
+    const startedInside = this.isPointerDownInside;
+    this.isPointerDownInside = false;
+    if (startedInside) {
+      return;
+    }
     // Light-dismiss on an outside `click` (capture phase). Firing on `click` rather than `mousedown` lets an external
     // control bound to `open` complete its own click before dismissal, avoiding a controlled-mode re-open race.
     // Clicks on the trigger button or inside the panel must not close it; the trigger toggles its own state via the

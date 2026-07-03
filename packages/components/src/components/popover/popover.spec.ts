@@ -412,6 +412,20 @@ describe('onClickOutside', () => {
 
     expect(dismissSpy).not.toHaveBeenCalled();
   });
+
+  it('should not dismiss when the gesture started inside the popover (selection dragged outside)', () => {
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
+    component.open = true;
+    component['refButton'] = document.createElement('button') as HTMLButtonElement;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+    component['isPointerDownInside'] = true; // pointerdown originated inside the panel
+    const outside = document.createElement('div');
+
+    component['onClickOutside']({ target: outside, composedPath: () => [outside] } as unknown as MouseEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+    expect(component['isPointerDownInside']).toBe(false); // flag consumed
+  });
 });
 
 describe('dismissPopover', () => {
@@ -485,10 +499,27 @@ describe('syncDismissListeners', () => {
 
 describe('pointer interaction tracking', () => {
   it('should flag on pointerdown and unflag on pointerup', () => {
-    component['onPointerDown']();
+    component['onPointerDown']({ composedPath: () => [] } as unknown as PointerEvent);
     expect(component['isPointerInteraction']).toBe(true);
     component['onPointerUp']();
     expect(component['isPointerInteraction']).toBe(false);
+  });
+
+  it('should flag isPointerDownInside when the press starts inside the panel', () => {
+    const panel = document.createElement('div');
+    component['refPopover'] = panel as HTMLDivElement;
+
+    component['onPointerDown']({ composedPath: () => [panel] } as unknown as PointerEvent);
+
+    expect(component['isPointerDownInside']).toBe(true);
+  });
+
+  it('should not flag isPointerDownInside when the press starts outside', () => {
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+
+    component['onPointerDown']({ composedPath: () => [document.createElement('div')] } as unknown as PointerEvent);
+
+    expect(component['isPointerDownInside']).toBe(false);
   });
 });
 
