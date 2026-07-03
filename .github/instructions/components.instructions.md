@@ -7,7 +7,7 @@ applyTo: "packages/components/**"
 > **Note**: See also [`packages/components/AGENTS.md`](../../packages/components/AGENTS.md) for comprehensive component development guidance.
 > The AGENTS.md file is the canonical source for AI assistants.
 
-This package contains the **Porsche Design System Web Components** (Stencil/JSS). Generated work here must preserve existing PDS accessibility behavior and styling.
+This package contains the **Porsche Design System Web Components** (Stencil, styled via an emotion/stylis-based CSS-in-JS engine). Generated work here must preserve existing PDS accessibility behavior and styling.
 
 ## Accessibility contract (WCAG 2.2 AA)
 
@@ -55,7 +55,7 @@ This repo already supports HCM and runs visual regression tests for it.
 
 | Utility | Location | Usage |
 |---------|----------|-------|
-| `forcedColorsMediaQuery()` | `packages/components/src/styles/media-query/forced-colors-media-query.ts` | Wrap HCM-specific CSS in JSS. |
+| `forcedColorsMediaQuery()` | `packages/components/src/styles/media-query/forced-colors-media-query.ts` | Wrap HCM-specific CSS in the style object. |
 | `getSchemedHighContrastMediaQuery()` | `packages/components/src/styles/media-query/schemed-high-contrast-media-query.ts` | Light/dark HCM variants. |
 | `isHighContrastMode` | `packages/components/src/utils/a11y/a11y.ts` | JS-only detection (use sparingly). |
 

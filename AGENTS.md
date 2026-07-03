@@ -14,7 +14,7 @@ The **Porsche Design System (PDS)** is a monorepo providing design tokens, web c
 | Package Manager    | npm 10+ (workspaces)                     |
 | Node               | v24 (use Volta)                            |
 | Web Components     | Stencil 4.x                                |
-| Styling            | JSS (CSS-in-JS), Tailwind CSS              |
+| Styling            | emotion/stylis (CSS-in-JS), Tailwind CSS   |
 | Frameworks         | Angular 21, React 19, Vue 3, Next.js 15    |
 | Build              | Rollup, Vite, Webpack                      |
 | Testing            | Vitest (unit), Playwright (e2e/vrt/a11y)   |
