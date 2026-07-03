@@ -5,6 +5,16 @@ import type { ElementConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } f
 export type Story<Tag extends HTMLTagOrComponent> = {
   name?: string;
   state?: StoryState<Tag>;
+  /**
+   * Slot names that are mandatory for this specific story (e.g. the trigger `button` in a controlled setup).
+   * Their toggle in the "Slots" configurator is rendered active but disabled so the user cannot remove them.
+   */
+  requiredSlots?: string[];
+  /**
+   * Prop names that are not usable in this specific story (e.g. `open` in a popover's uncontrolled setup).
+   * Their control in the "Properties" configurator is rendered but disabled so the user cannot change them.
+   */
+  disabledProps?: string[];
   generator: (state?: StoryState<Tag>) => (string | ElementConfig<HTMLTagOrComponent> | undefined)[];
 };
 
