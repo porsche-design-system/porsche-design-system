@@ -10,7 +10,7 @@ export const popoverSlotStories: SlotStories<'p-popover'> = {
         {
           tag: 'p-button',
           properties: { slot: 'button', type: 'button' },
-          children: ['More information'],
+          children: ['Toggle Popover'],
         },
       ],
     },
@@ -62,10 +62,12 @@ export const popoverControlledSlotStories: SlotStories<'p-popover'> = {
             onClick: {
               target: 'p-popover',
               prop: 'open',
-              value: true,
+              // Toggle the controlled `open` state so the trigger both opens and closes the popover. The slotted
+              // trigger is exempt from the popover's outside-click dismiss, so toggling here has no dismiss race.
+              toggleValue: true,
             },
           },
-          children: ['Show Popover'],
+          children: ['Toggle Popover'],
         },
       ],
     },

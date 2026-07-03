@@ -145,6 +145,29 @@ describe('generateReactControlledScript()', () => {
   }"`
     );
   });
+
+  it('should return a toggling eventHandler for toggleValue', () => {
+    const { states, eventHandler } = generateReactControlledScript(
+      'p-button',
+      [
+        [
+          'onClick',
+          {
+            target: 'p-popover',
+            prop: 'open',
+            toggleValue: true,
+          },
+        ],
+      ],
+      {}
+    );
+    expect(states).toMatchInlineSnapshot('""');
+    expect(eventHandler).toMatchInlineSnapshot(
+      `"  const onClick = () => {
+    setOpen((prev) => !prev);
+  }"`
+    );
+  });
 });
 
 describe('generateReactProperties()', () => {

@@ -104,7 +104,7 @@ export const generateAngularControlledScript = (
     .join('\n');
 
   const eventHandler = eventEntries
-    .map(([eventName, { prop, value, eventValueKey, eventType, negateValue }]) => {
+    .map(([eventName, { prop, value, eventValueKey, eventType, negateValue, toggleValue }]) => {
       if (eventValueKey) {
         eventType && types.push(eventType);
         return `  ${eventName}(e: CustomEvent<${eventType}>) {
@@ -112,7 +112,7 @@ export const generateAngularControlledScript = (
   }`;
       }
       return `  ${eventName}() {
-    this.${prop} = ${negateValue ? '!' : ''}${value};
+    this.${prop} = ${toggleValue ? `!this.${prop}` : `${negateValue ? '!' : ''}${value}`};
   }`;
     })
     .join('\n');
