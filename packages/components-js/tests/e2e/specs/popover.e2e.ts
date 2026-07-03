@@ -725,6 +725,33 @@ test.describe('controlled mode', () => {
       await expect(getPopover(page)).toBeVisible();
     });
 
+    test('should emit dismiss only once when clicking an outside focusable element', async ({ page }) => {
+      // A click on an outside *focusable* element triggers both dismissal paths: the outside-click handler (on
+      // `mousedown`) and the focusout handler (focus shifts to that element). They must not both fire — `dismiss` must
+      // be emitted exactly once per interaction.
+      await setContentWithDesignSystem(
+        page,
+        `<p-popover>
+          <button slot="button">Some Button</button>
+          Some Popover Content
+        </p-popover>
+        <button id="outside">Outside Button</button>`
+      );
+      const host = getHost(page);
+      await setProperty(host, 'open', true);
+      await expect(getPopover(page)).toBeVisible();
+      await addEventListener(host, 'dismiss');
+
+      await page.locator('#outside').click();
+
+      expect(
+        (await getEventSummary(host, 'dismiss')).counter,
+        'dismiss after clicking an outside focusable element'
+      ).toBe(1);
+      // popover stays visible because the consumer owns `open` and hasn't updated it yet
+      await expect(getPopover(page)).toBeVisible();
+    });
+
     test('should emit dismiss event on Escape when open', async ({ page }) => {
       await initControlledPopover(page, true);
       const host = getHost(page);

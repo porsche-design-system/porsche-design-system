@@ -99,8 +99,12 @@ export class Popover {
   private cleanUpAutoUpdate: () => void;
   // The trigger element `autoUpdate` is currently anchored to, so it can be rebound when the trigger identity changes.
   private boundTriggerElement: HTMLElement;
-  // Tracks whether the document-level dismiss listeners (outside click / Escape) are currently registered.
+  // Tracks whether the document-level dismiss listeners (outside click / Escape / pointer) are currently registered.
   private hasDismissListeners = false;
+  // Tracks whether a pointer button is currently pressed. Lets `onFocusout` defer pointer-driven focus loss (a click on
+  // an outside element, already handled by `onClickOutside`) to that handler, so a single outside pointer interaction
+  // emits `dismiss` once instead of twice. `onFocusout` then only dismisses on keyboard focus moves (Tab / Shift+Tab).
+  private isPointerInteraction = false;
   // Keeps the panel on the #top-layer during its fade-out (Chromium via `overlay`; Safari/Firefox via a deferred hide).
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.refPopover,
@@ -153,6 +157,12 @@ export class Popover {
     // focus up to that container rather than to a sibling/unrelated element. That is not a genuine "focus left the
     // popover" case — a keyboard tab-out never lands on an ancestor of the popover — so it must be ignored just like a
     // `null` `relatedTarget`; outside-click / Escape still handle real dismissal.
+    // A pointer-driven focus loss (clicking an outside element) is already handled by `onClickOutside`; without this
+    // guard both fire for the same interaction and `dismiss` is emitted twice. So on pointer interactions defer to
+    // `onClickOutside` and only dismiss here for keyboard focus moves (Tab / Shift+Tab).
+    if (this.isPointerInteraction) {
+      return;
+    }
     const relatedTarget = e.relatedTarget as HTMLElement | null;
     if (
       this.effectiveOpen &&
@@ -331,12 +341,26 @@ export class Popover {
       // capture phase so dismissal happens before focus shifts on outside `mousedown`
       document.addEventListener('mousedown', this.onClickOutside, true);
       document.addEventListener('keydown', this.onEscape);
+      // Track the pointer press/release around a click so `onFocusout` can defer pointer-driven focus loss to
+      // `onClickOutside` (avoids emitting `dismiss` twice for one outside click on a focusable element).
+      document.addEventListener('pointerdown', this.onPointerDown, true);
+      document.addEventListener('pointerup', this.onPointerUp, true);
       this.hasDismissListeners = true;
     } else if (!active && this.hasDismissListeners) {
       document.removeEventListener('mousedown', this.onClickOutside, true);
       document.removeEventListener('keydown', this.onEscape);
+      document.removeEventListener('pointerdown', this.onPointerDown, true);
+      document.removeEventListener('pointerup', this.onPointerUp, true);
       this.hasDismissListeners = false;
     }
+  };
+
+  private onPointerDown = (): void => {
+    this.isPointerInteraction = true;
+  };
+
+  private onPointerUp = (): void => {
+    this.isPointerInteraction = false;
   };
 
   private onClickOutside = (e: MouseEvent): void => {

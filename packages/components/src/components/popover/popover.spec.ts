@@ -330,6 +330,19 @@ describe('onFocusout', () => {
 
     expect(dismissSpy).not.toHaveBeenCalled();
   });
+
+  it('should not dismiss on focusout during a pointer interaction (deferred to onClickOutside)', () => {
+    // A pointer click on an outside focusable element is dismissed by `onClickOutside`; `onFocusout` must defer so
+    // `dismiss` is emitted once, not twice.
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover');
+    component.open = true;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+    component['isPointerInteraction'] = true;
+
+    component.onFocusout({ relatedTarget: document.createElement('a') } as unknown as FocusEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
 });
 
 describe('onEscape', () => {
@@ -448,8 +461,10 @@ describe('syncDismissListeners', () => {
 
     expect(addSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
     expect(addSpy).toHaveBeenCalledWith('keydown', component['onEscape']);
+    expect(addSpy).toHaveBeenCalledWith('pointerdown', component['onPointerDown'], true);
+    expect(addSpy).toHaveBeenCalledWith('pointerup', component['onPointerUp'], true);
     expect(component['hasDismissListeners']).toBe(true);
-    expect(addSpy).toHaveBeenCalledTimes(2);
+    expect(addSpy).toHaveBeenCalledTimes(4);
   });
 
   it('should remove document listeners once when deactivated', () => {
@@ -461,8 +476,19 @@ describe('syncDismissListeners', () => {
 
     expect(removeSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
     expect(removeSpy).toHaveBeenCalledWith('keydown', component['onEscape']);
+    expect(removeSpy).toHaveBeenCalledWith('pointerdown', component['onPointerDown'], true);
+    expect(removeSpy).toHaveBeenCalledWith('pointerup', component['onPointerUp'], true);
     expect(component['hasDismissListeners']).toBe(false);
-    expect(removeSpy).toHaveBeenCalledTimes(2);
+    expect(removeSpy).toHaveBeenCalledTimes(4);
+  });
+});
+
+describe('pointer interaction tracking', () => {
+  it('should flag on pointerdown and unflag on pointerup', () => {
+    component['onPointerDown']();
+    expect(component['isPointerInteraction']).toBe(true);
+    component['onPointerUp']();
+    expect(component['isPointerInteraction']).toBe(false);
   });
 });
 
