@@ -3,6 +3,18 @@
 import type { SlotStories, Story } from '@/models/story';
 
 export const popoverSlotStories: SlotStories<'p-popover'> = {
+  button: {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-button',
+          properties: { slot: 'button', type: 'button' },
+          children: ['More information'],
+        },
+      ],
+    },
+  },
   default: {
     basic: {
       name: 'Basic',
@@ -26,8 +38,7 @@ export const popoverStory: Story<'p-popover'> = {
     {
       tag: 'p-popover',
       properties,
-      children: [...(slots?.default?.generator() ?? [])],
+      children: [...(slots?.button?.generator() ?? []), ...(slots?.default?.generator() ?? [])],
     },
   ],
 };
-
