@@ -81,7 +81,7 @@ export class Popover {
   /** Sets ARIA attributes on the popover panel to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
 
-  /** Emitted in controlled mode when the user requests to close the popover via the Escape key or an outside click. */
+  /** Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   @State() private isOpen = false;

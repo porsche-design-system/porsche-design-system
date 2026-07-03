@@ -60,17 +60,17 @@ const cssVariableMaxWidth = '--p-popover-max-w';
 const cssVariableMaxHeight = '--p-popover-max-h';
 
 /**
- * @css-variable {"name": "--p-popover-px", "description": "Horizontal padding of the popover.", "defaultValue": "16px"}
+ * @css-variable {"name": "--p-popover-px", "description": "Horizontal padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration `--p-popover-px: var(--p-spacing-static-md)`, the Tailwind CSS arbitrary property `[--p-popover-px:var(--spacing-static-md)]` or the equivalent SCSS/JS token.", "defaultValue": "16px"}
  */
 const cssVarPaddingInline = '--p-popover-px';
 
 /**
- * @css-variable {"name": "--p-popover-py", "description": "Vertical padding of the popover.", "defaultValue": "12px"}
+ * @css-variable {"name": "--p-popover-py", "description": "Vertical padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration `--p-popover-py: var(--p-spacing-static-sm)`, the Tailwind CSS arbitrary property `[--p-popover-py:var(--spacing-static-sm)]` or the equivalent SCSS/JS token.", "defaultValue": "12px"}
  */
 const cssVarPaddingBlock = '--p-popover-py';
 
 /**
- * @css-variable {"name": "--p-popover-radius", "description": "Border radius of the popover.", "defaultValue": "12px"}
+ * @css-variable {"name": "--p-popover-radius", "description": "Border radius of the popover. It is recommended to apply an existing Porsche Design System border-radius token, e.g. the CSS declaration `--p-popover-radius: var(--p-radius-lg)`, the Tailwind CSS arbitrary property `[--p-popover-radius:var(--radius-lg)]` or the equivalent SCSS/JS token.", "defaultValue": "12px"}
  */
 const cssVarRadius = '--p-popover-radius';
 
