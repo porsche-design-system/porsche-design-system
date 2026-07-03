@@ -129,7 +129,7 @@ const printConditional = (query: string, children: AstNode[], pad: string): stri
   for (const child of children) {
     if (child.type === 'rule') {
       body += printRule(child, `${pad}  `);
-    } else if (child.type === '@media' || child.type === '@supports') {
+    } else if (child.type === '@media' || child.type === '@supports' || child.type === '@container') {
       body += printConditional(child.value, child.children as AstNode[], `${pad}  `);
     }
   }
@@ -165,9 +165,14 @@ const emitGroup = (batches: Batch[], hasKeyframesAnywhere: boolean): string => {
   const mediaMap = new Map<string, AstNode[]>();
   const mediaOrder: string[] = [];
   const supports: { query: string; children: AstNode[] }[] = [];
+  // `@container` queries aren't merged/sorted (unlike min-width `@media`) — a container query has no
+  // natural ordering, so they emit in encounter order, same as `@supports`.
+  const containers: { query: string; children: AstNode[] }[] = [];
   // keep rules and nested conditionals; drop declarations/comments hoisted to block level
   const blockChildren = (el: AstNode): AstNode[] =>
-    (el.children as AstNode[]).filter((c) => c.type === 'rule' || c.type === '@media' || c.type === '@supports');
+    (el.children as AstNode[]).filter(
+      (c) => c.type === 'rule' || c.type === '@media' || c.type === '@supports' || c.type === '@container'
+    );
 
   for (const { ast, afterKeyframes } of batches) {
     for (const el of ast) {
@@ -181,6 +186,8 @@ const emitGroup = (batches: Batch[], hasKeyframesAnywhere: boolean): string => {
         mediaMap.get(el.value)!.push(...blockChildren(el));
       } else if (el.type === '@supports') {
         supports.push({ query: el.value, children: blockChildren(el) });
+      } else if (el.type === '@container') {
+        containers.push({ query: el.value, children: blockChildren(el) });
       } else if (el.type === 'rule' && (el.children as AstNode[]).some((c) => c.type === 'decl')) {
         baseRules.push({ el, afterKeyframes });
       }
@@ -195,6 +202,7 @@ const emitGroup = (batches: Batch[], hasKeyframesAnywhere: boolean): string => {
   for (const { el, afterKeyframes } of baseRules) out += printRule(el, afterKeyframes ? '  ' : '');
   for (const q of sortedMedia) out += printConditional(q, mediaMap.get(q)!, condPad);
   for (const s of supports) out += printConditional(s.query, s.children, condPad);
+  for (const c of containers) out += printConditional(c.query, c.children, condPad);
   return out;
 };
 
