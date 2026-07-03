@@ -10,10 +10,6 @@ import pkg from './package.json';
 const input = 'src/index.ts';
 const external = [
   ...Object.keys(pkg.dependencies),
-  // JSS packages are hoisted from workspace root; keep them external at runtime
-  'jss',
-  'jss-preset-default',
-  'jss-plugin-sort-css-media-queries',
   // change-case is ESM-only; must stay external to avoid CJS bundling issues
   'change-case',
   'fs',

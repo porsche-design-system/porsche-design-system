@@ -1,5 +1,4 @@
-import type { Styles } from 'jss';
-import { getMinifiedCss, getCss } from '../../../src/styles/getMinifiedCss';
+import { getCss, getMinifiedCss, type Styles } from '../../../src/styles/getMinifiedCss';
 
 describe('getCss()', () => {
   it.each<Parameters<typeof getCss>>([

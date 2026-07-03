@@ -26,7 +26,8 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
-    "react": "^19.2.7"
+    "react": "^19.2.7",
+    "sort-css-media-queries": "^1.5.4"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^29.0.3",
