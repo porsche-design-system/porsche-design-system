@@ -35,7 +35,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -57,7 +57,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
@@ -74,7 +74,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -106,9 +106,9 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -136,11 +136,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-error);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and readOnly: false 1`] = `
@@ -178,7 +177,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -200,7 +199,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -217,7 +216,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -249,8 +248,8 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -278,11 +277,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: none, compact: false and readOnly: false 2`] = `
@@ -320,7 +318,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -342,7 +340,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -359,7 +357,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -391,8 +389,8 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -420,11 +418,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: false, state: success, compact: false and readOnly: false 1`] = `
@@ -462,7 +459,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -484,7 +481,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-success-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-success);
@@ -501,7 +498,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -533,9 +530,9 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -563,11 +560,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-success);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: error, compact: false and readOnly: false 1`] = `
@@ -605,7 +601,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -627,7 +623,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-error);
@@ -643,7 +639,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -675,9 +671,9 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -705,11 +701,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-error);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: none, compact: false and readOnly: false 1`] = `
@@ -747,7 +742,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -769,7 +764,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -785,7 +780,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -817,8 +812,8 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -846,11 +841,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: false, hideLabel: true, state: success, compact: true and readOnly: true 1`] = `
@@ -888,7 +882,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -910,7 +904,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-contrast-medium);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border-color: transparent;
 }
 .wrapper:not(:has(input:disabled)):focus-within {
@@ -927,7 +921,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -959,9 +953,9 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -986,8 +980,7 @@ input::-webkit-calendar-picker-indicator {
     outline: 2px solid Highlight;
     outline-offset: 2px;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: false, loading: true, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and readOnly: false 1`] = `
@@ -1025,7 +1018,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -1047,7 +1040,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -1063,7 +1056,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1096,8 +1089,8 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1243,8 +1236,7 @@ input::-webkit-calendar-picker-indicator {
     outline: 2px solid Highlight;
     outline-offset: 2px;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false and readOnly: false 1`] = `
@@ -1282,7 +1274,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -1304,7 +1296,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 0.4;
 }
 .wrapper:not(:has(input:disabled)):focus-within {
@@ -1324,7 +1316,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1358,8 +1350,8 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1501,6 +1493,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(forced-colors:active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -1510,16 +1506,11 @@ input::-webkit-calendar-picker-indicator {
     opacity: 1;
     color: GrayText;
   }
-  .wrapper:not(:has(input:disabled)):focus-within {
-    outline: 2px solid Highlight;
-    outline-offset: 2px;
-  }
   .label {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for disabled: true, loading: true, hideLabel: true, state: error, compact: false and readOnly: false 1`] = `
@@ -1557,7 +1548,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -1579,7 +1570,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-error-frosted-soft);
   color: var(--p-color-primary);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   opacity: 0.4;
 }
 .wrapper:not(:has(input:disabled)):focus-within {
@@ -1599,7 +1590,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1633,9 +1624,9 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1656,6 +1647,10 @@ input::-webkit-calendar-picker-indicator {
   margin: var(--ref-p-input-slotted-margin);
 }
 @media(forced-colors:active) {
+  .wrapper:not(:has(input:disabled)):focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
   .wrapper {
     opacity: 1;
     color: GrayText;
@@ -1665,14 +1660,9 @@ input::-webkit-calendar-picker-indicator {
     opacity: 1;
     color: GrayText;
   }
-  .wrapper:not(:has(input:disabled)):focus-within {
-    outline: 2px solid Highlight;
-    outline-offset: 2px;
-  }
   .label {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;

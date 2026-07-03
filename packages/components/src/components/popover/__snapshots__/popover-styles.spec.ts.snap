@@ -24,7 +24,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
     visibility: hidden;
   }
   p {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     margin: 0;
   }
   button {
@@ -55,15 +55,15 @@ exports[`getComponentCss() > should return correct css 1`] = `
   [popover]:not(:popover-open) {
     display: none;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
-    }
-}
-
 @media(hover:hover) {
     button:hover {
       background-color: var(--p-color-frosted-soft);
+    }
+}
+
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -95,7 +95,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
     pointer-events: auto;
     border-radius: var(--p-radius-xl);
     background: var(--p-color-canvas);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
   }
 @media(forced-colors:active) {
@@ -106,6 +106,5 @@ exports[`getComponentCss() > should return correct css 1`] = `
       outline: 2px solid CanvasText;
       outline-offset: -2px;
     }
-}
-"
+}"
 `;

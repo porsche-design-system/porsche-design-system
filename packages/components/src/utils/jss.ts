@@ -1,32 +1,15 @@
 import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/emotion';
 import type { TagName } from '@porsche-design-system/shared';
-import { create, type JssStyle, type Styles } from 'jss';
-import jssPluginCamelCase from 'jss-plugin-camel-case';
-import jssPluginGlobal from 'jss-plugin-global';
-import jssPluginNested from 'jss-plugin-nested';
-import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
 import { addImportantToEachRule } from '../styles';
 import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
+import type { JssStyle, Styles } from './emotionCss';
 import { hasPropValueChanged } from './has-prop-value-changed';
 import { getTagNameWithoutPrefix } from './tag-name';
 
-// NOTE: handpicked selection of plugins from jss-preset-default
-const jss = create({
-  plugins: [
-    jssPluginGlobal(),
-    jssPluginNested(),
-    jssPluginCamelCase(),
-    jssPluginSortMediaQueries({ combineMediaQueries: true }),
-  ],
-});
-
-export const getCss = (jssStyles: Styles): string =>
-  jss
-    .createStyleSheet(jssStyles, {
-      generateId: (rule) => rule.key,
-    })
-    .toString();
+// getCss lives in ./emotionCss (the CSS engine); re-exported here so the utils barrel and the
+// ~97 *-styles.ts authoring files keep importing it from the same place.
+export { getCss } from './emotionCss';
 
 export const supportsConstructableStylesheets = (): boolean => {
   try {

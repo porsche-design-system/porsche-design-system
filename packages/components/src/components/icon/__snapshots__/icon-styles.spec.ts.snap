@@ -29,8 +29,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-high and size: sm 2`] = `
@@ -62,8 +61,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low and size: sm 1`] = `
@@ -95,8 +93,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-low and size: sm 2`] = `
@@ -128,8 +125,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium and size: sm 1`] = `
@@ -161,8 +157,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: contrast-medium and size: sm 2`] = `
@@ -194,8 +189,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: error and size: sm 1`] = `
@@ -227,8 +221,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: error and size: sm 2`] = `
@@ -260,8 +253,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: info and size: sm 1`] = `
@@ -293,8 +285,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: info and size: sm 2`] = `
@@ -326,8 +317,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit and size: sm 1`] = `
@@ -359,8 +349,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: inherit and size: sm 2`] = `
@@ -392,8 +381,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: 2xs 1`] = `
@@ -425,8 +413,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: inherit 1`] = `
@@ -458,8 +445,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: lg 1`] = `
@@ -491,8 +477,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: md 1`] = `
@@ -524,8 +509,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: sm 1`] = `
@@ -557,8 +541,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: sm 2`] = `
@@ -590,8 +573,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: xl 1`] = `
@@ -623,8 +605,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: primary and size: xs 1`] = `
@@ -656,8 +637,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: success and size: sm 1`] = `
@@ -689,8 +669,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: success and size: sm 2`] = `
@@ -722,8 +701,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: warning and size: sm 1`] = `
@@ -755,8 +733,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: 360, source: , color: warning and size: sm 2`] = `
@@ -788,8 +765,7 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: , color: primary and size: sm 1`] = `
@@ -824,8 +800,7 @@ img:dir(rtl) {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for name: arrow-head-left, source: some-custom.svg, color: primary and size: sm 1`] = `
@@ -857,6 +832,5 @@ img {
   img {
     background: CanvasText;
   }
-}
-"
+}"
 `;

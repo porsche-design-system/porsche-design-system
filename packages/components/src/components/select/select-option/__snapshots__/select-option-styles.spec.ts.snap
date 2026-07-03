@@ -23,14 +23,14 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
   padding-block: calc(11.2px * (var(--_p-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -48,16 +48,15 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
   margin-inline-start: auto;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
-}
-"
+  .option--disabled {
+    color: GrayText;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true 1`] = `
@@ -91,14 +90,14 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
   padding-block: calc(11.2px * (var(--_p-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -116,14 +115,13 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
   margin-inline-start: auto;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
-}
-"
+  .option--disabled {
+    color: GrayText;
+  }
+}"
 `;

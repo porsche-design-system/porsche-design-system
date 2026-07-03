@@ -16,7 +16,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
 [role="presentation"] {
   padding-block: calc(11.2px * (var(--_p-optgroup-a) - 0.64285714) + 4px);
   padding-inline: calc(16.8px * (var(--_p-optgroup-a) - 0.64285714) + 6px);
-  font: var(--p-font-weight-semibold) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }"
 `;
@@ -37,7 +37,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 2`]
 [role="presentation"] {
   padding-block: calc(11.2px * (var(--_p-optgroup-a) - 0.64285714) + 4px);
   padding-inline: calc(16.8px * (var(--_p-optgroup-a) - 0.64285714) + 6px);
-  font: var(--p-font-weight-semibold) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }"
 `;
@@ -58,7 +58,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
 [role="presentation"] {
   padding-block: calc(11.2px * (var(--_p-optgroup-a) - 0.64285714) + 4px);
   padding-inline: calc(16.8px * (var(--_p-optgroup-a) - 0.64285714) + 6px);
-  font: var(--p-font-weight-semibold) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   opacity: 0.4;
 }
@@ -67,8 +67,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true 2`] = `
@@ -87,7 +86,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 2`] 
 [role="presentation"] {
   padding-block: calc(11.2px * (var(--_p-optgroup-a) - 0.64285714) + 4px);
   padding-inline: calc(16.8px * (var(--_p-optgroup-a) - 0.64285714) + 6px);
-  font: var(--p-font-weight-semibold) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   opacity: 0.4;
 }
@@ -96,6 +95,5 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 2`] 
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;

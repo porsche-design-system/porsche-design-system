@@ -1,5 +1,5 @@
 import type { PropertiesHyphen } from 'csstype';
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../utils/emotionCss';
 import {
   addImportantToEachRule,
   addImportantToRule,

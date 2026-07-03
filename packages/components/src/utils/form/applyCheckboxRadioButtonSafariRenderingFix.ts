@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import type { Styles } from 'jss';
+import type { Styles } from '../emotionCss';
 
 // TODO: we can get rid of this fix, as soon as p-checkbox-wrapper and p-radio-button-wrapper have been deprecated and
 //  replaced by encapsulated p-checkbox and p-radio-button component

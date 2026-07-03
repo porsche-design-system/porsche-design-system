@@ -32,14 +32,14 @@ exports[`getComponentCss() > should return correct css for open: false, position
 slot[name="heading"],h1,h2,h3,h4,h5,h6 {
   all: unset;
   grid-area: 1/2;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 2/2;
   margin-top: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
@@ -53,7 +53,7 @@ slot:not([name]),slot[name="description"],p {
   opacity: 0;
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-error-frosted);
@@ -91,8 +91,7 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for open: false, position: bottom, state: success, hasDismissButton: false, hasHeadingOrHeadingSlot: false 1`] = `
@@ -128,7 +127,7 @@ slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
   margin-top: 0px;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
@@ -142,7 +141,7 @@ slot:not([name]),slot[name="description"],p {
   opacity: 0;
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-success-frosted);
@@ -174,8 +173,7 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for open: false, position: bottom, state: warning, hasDismissButton: true, hasHeadingOrHeadingSlot: false 1`] = `
@@ -211,7 +209,7 @@ slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
   margin-top: 0px;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
@@ -225,7 +223,7 @@ slot:not([name]),slot[name="description"],p {
   opacity: 0;
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-warning-frosted);
@@ -263,8 +261,7 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for open: true, position: top, state: info, hasDismissButton: false, hasHeadingOrHeadingSlot: false 1`] = `
@@ -300,7 +297,7 @@ slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
   margin-top: 0px;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
@@ -314,7 +311,7 @@ slot:not([name]),slot[name="description"],p {
   opacity: 1;
   transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
@@ -346,6 +343,5 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
-}
-"
+}"
 `;

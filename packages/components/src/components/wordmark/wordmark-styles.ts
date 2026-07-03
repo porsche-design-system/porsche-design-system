@@ -1,5 +1,5 @@
 import { colorPrimary, ref } from '@porsche-design-system/stylesheets';
-import type { Styles } from 'jss';
+import type { Styles } from '../../utils/emotionCss';
 import { addImportantToEachRule, forcedColorsMediaQuery, getFocusBaseStyles, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import type { WordmarkSize } from './wordmark-utils';

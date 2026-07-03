@@ -34,9 +34,9 @@ input {
   border: 1px solid var(--p-color-success);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-success-frosted-soft);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -73,7 +73,7 @@ input:focus-visible {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -105,9 +105,9 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -242,8 +242,7 @@ input:focus-visible {
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: false, isLoading: false and length: 1 1`] = `
@@ -280,9 +279,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -320,7 +319,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -352,8 +351,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -405,9 +404,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -445,7 +444,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -477,8 +476,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -530,9 +529,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -570,7 +569,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -602,8 +601,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -655,9 +654,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -695,7 +694,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -727,8 +726,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -780,9 +779,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -820,7 +819,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -852,8 +851,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -905,9 +904,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -945,7 +944,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -977,8 +976,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1030,9 +1029,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
@@ -1079,7 +1078,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1112,8 +1111,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1165,9 +1164,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
@@ -1207,7 +1206,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1241,8 +1240,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1263,8 +1262,7 @@ input:focus-visible {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 2 1`] = `
@@ -1301,9 +1299,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
@@ -1343,7 +1341,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1377,8 +1375,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1399,8 +1397,7 @@ input:focus-visible {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 3 1`] = `
@@ -1437,9 +1434,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
@@ -1479,7 +1476,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1513,8 +1510,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1535,8 +1532,7 @@ input:focus-visible {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 4 1`] = `
@@ -1573,9 +1569,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
@@ -1615,7 +1611,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1649,8 +1645,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1671,8 +1667,7 @@ input:focus-visible {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 5 1`] = `
@@ -1709,9 +1704,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
@@ -1751,7 +1746,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1785,8 +1780,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1807,8 +1802,7 @@ input:focus-visible {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: false, state: none, isDisabled: true, isLoading: false and length: 5 2`] = `
@@ -1845,9 +1839,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-lg);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: not-allowed;
   text-align: center;
@@ -1887,7 +1881,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -1921,8 +1915,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1943,8 +1937,7 @@ input:focus-visible {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hideLabel: true, state: error, isDisabled: false, isLoading: false and length: 6 1`] = `
@@ -1981,9 +1974,9 @@ input {
   border: 1px solid var(--p-color-error);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-error-frosted-soft);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -2020,7 +2013,7 @@ input:focus-visible {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -2052,9 +2045,9 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;

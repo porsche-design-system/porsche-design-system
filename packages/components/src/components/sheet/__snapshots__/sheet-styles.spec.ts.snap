@@ -48,14 +48,14 @@ dialog {
   pointer-events: none;
   overlay: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -81,7 +81,7 @@ dialog::backdrop {
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
@@ -96,8 +96,7 @@ dialog::backdrop {
   .sheet {
     border-top: 2px solid CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for open: false, background: canvas and dismissButton: true 1`] = `
@@ -148,14 +147,14 @@ dialog {
   pointer-events: none;
   overlay: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -181,7 +180,7 @@ dialog::backdrop {
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
@@ -206,8 +205,7 @@ dialog::backdrop {
   .sheet {
     border-top: 2px solid CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for open: true, background: canvas and dismissButton: true 1`] = `
@@ -258,14 +256,14 @@ dialog {
   pointer-events: auto;
   overlay: auto;
   background: var(--p-color-backdrop);
-  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s),width 0s linear var(--p-transition-duration,0s),height 0s linear var(--p-transition-duration,0s),background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s),width 0s linear var(--p-transition-duration,0s),height 0s linear var(--p-transition-duration,0s),background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -291,7 +289,7 @@ dialog::backdrop {
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
@@ -313,8 +311,7 @@ dialog::backdrop {
   .sheet {
     border-top: 2px solid CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for open: true, background: surface and dismissButton: true 1`] = `
@@ -365,14 +362,14 @@ dialog {
   pointer-events: auto;
   overlay: auto;
   background: var(--p-color-backdrop);
-  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s),width 0s linear var(--p-transition-duration,0s),height 0s linear var(--p-transition-duration,0s),background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s),width 0s linear var(--p-transition-duration,0s),height 0s linear var(--p-transition-duration,0s),background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -398,7 +395,7 @@ dialog::backdrop {
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
@@ -420,6 +417,5 @@ dialog::backdrop {
   .sheet {
     border-top: 2px solid CanvasText;
   }
-}
-"
+}"
 `;

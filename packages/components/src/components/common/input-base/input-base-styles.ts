@@ -1,4 +1,4 @@
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle, Styles } from '../../../utils/emotionCss';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,

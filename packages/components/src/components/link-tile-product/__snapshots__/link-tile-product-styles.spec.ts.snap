@@ -68,7 +68,7 @@ slot[name="header"] {
 }
 .heading {
   margin: 0 0 2px;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -76,7 +76,7 @@ slot[name="header"] {
 }
 .price {
   margin: 0;
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 @media(min-width:760px) {
   .image {
@@ -98,8 +98,7 @@ slot[name="header"] {
   .root:hover .image {
     transform: scale3d(1.05,1.05,1.05);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3/4" 1`] = `
@@ -174,7 +173,7 @@ slot[name="header"] {
 }
 .heading {
   margin: 0 0 2px;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -182,7 +181,7 @@ slot[name="header"] {
 }
 .price {
   margin: 0;
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 @media(min-width:760px) {
   .image {
@@ -204,8 +203,7 @@ slot[name="header"] {
   .root:hover .image {
     transform: scale3d(1.05,1.05,1.05);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3/4" 2`] = `
@@ -280,7 +278,7 @@ slot[name="header"] {
 }
 .heading {
   margin: 0 0 2px;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -288,7 +286,7 @@ slot[name="header"] {
 }
 .price {
   margin: 0;
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 @media(min-width:760px) {
   .image {
@@ -310,8 +308,7 @@ slot[name="header"] {
   .root:hover .image {
     transform: scale3d(1.05,1.05,1.05);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: {"base":"3/4","xs":"9/16"} 1`] = `
@@ -386,7 +383,7 @@ slot[name="header"] {
 }
 .heading {
   margin: 0 0 2px;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -394,7 +391,7 @@ slot[name="header"] {
 }
 .price {
   margin: 0;
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 @media(min-width:480px) {
   .root {
@@ -422,8 +419,7 @@ slot[name="header"] {
   .root:hover .image {
     transform: scale3d(1.05,1.05,1.05);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3/4" 1`] = `
@@ -465,12 +461,12 @@ slot[name="header"] {
   overflow: hidden !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a[slot='anchor']:focus-visible) {
-    outline-color: Highlight !important;
-  }
   ::slotted(a[slot='anchor']) {
     forced-color-adjust: none !important;
     box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(a[slot='anchor']:focus-visible) {
+    outline-color: Highlight !important;
   }
 }
 
@@ -509,7 +505,7 @@ slot[name="header"] {
 }
 .heading {
   margin: 0 0 2px;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -517,7 +513,7 @@ slot[name="header"] {
 }
 .price {
   margin: 0;
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 @media(min-width:760px) {
   .image {
@@ -529,8 +525,7 @@ slot[name="header"] {
   .root:hover .image {
     transform: scale3d(1.05,1.05,1.05);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: true, hasDescription: false, aspectRatio: "3/4" 1`] = `
@@ -575,12 +570,12 @@ s {
   color: var(--p-color-contrast-medium);
 }
 @media(forced-colors:active) {
-  ::slotted(a[slot='anchor']:focus-visible) {
-    outline-color: Highlight !important;
-  }
   ::slotted(a[slot='anchor']) {
     forced-color-adjust: none !important;
     box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(a[slot='anchor']:focus-visible) {
+    outline-color: Highlight !important;
   }
 }
 
@@ -619,7 +614,7 @@ s {
 }
 .heading {
   margin: 0 0 2px;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -627,7 +622,7 @@ s {
 }
 .price {
   margin: 0;
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -653,8 +648,7 @@ s {
   .root:hover .image {
     transform: scale3d(1.05,1.05,1.05);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: true, hasDescription: true, aspectRatio: "3/4" 1`] = `
@@ -699,12 +693,12 @@ s {
   color: var(--p-color-contrast-medium);
 }
 @media(forced-colors:active) {
-  ::slotted(a[slot='anchor']:focus-visible) {
-    outline-color: Highlight !important;
-  }
   ::slotted(a[slot='anchor']) {
     forced-color-adjust: none !important;
     box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(a[slot='anchor']:focus-visible) {
+    outline-color: Highlight !important;
   }
 }
 
@@ -743,7 +737,7 @@ s {
 }
 .heading {
   margin: 0 0 2px;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -751,7 +745,7 @@ s {
 }
 .price {
   margin: 0;
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -759,7 +753,7 @@ s {
 }
 .description {
   margin: 0;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-2xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -786,6 +780,5 @@ s {
   .root:hover .image {
     transform: scale3d(1.05,1.05,1.05);
   }
-}
-"
+}"
 `;

@@ -13,6 +13,5 @@ exports[`getComponentCss() > should return correct css 1`] = `
   :host(:hover) {
     background: var(--_p-table-b) !important;
   }
-}
-"
+}"
 `;

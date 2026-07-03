@@ -53,13 +53,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px);
   gap: 0;
 }
@@ -209,8 +209,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     }
 }
 
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: false and compact: false 1`] = `
@@ -236,13 +235,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
@@ -292,8 +291,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     }
 }
 
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true and compact: false 1`] = `
@@ -338,13 +336,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
@@ -387,8 +385,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     }
 }
 
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true and compact: false 2`] = `
@@ -433,13 +430,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
@@ -482,8 +479,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     }
 }
 
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true and compact: true 1`] = `
@@ -528,13 +524,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
@@ -577,8 +573,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     }
 }
 
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, hasSlottedAnchor: true and compact: false 1`] = `
@@ -623,13 +618,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
@@ -672,8 +667,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     }
 }
 
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for icon: arrow-right, iconSource: , variant: secondary, hideLabel: false, hasSlottedAnchor: true and compact: false 2`] = `
@@ -718,13 +712,13 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
@@ -767,8 +761,7 @@ exports[`getComponentCss() > should return correct css for icon: arrow-right, ic
     }
 }
 
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for icon: none, iconSource: , variant: primary, hideLabel: false, hasSlottedAnchor: true and compact: false 1`] = `
@@ -813,13 +806,13 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
@@ -856,6 +849,5 @@ exports[`getComponentCss() > should return correct css for icon: none, iconSourc
     }
 }
 
-}
-"
+}"
 `;

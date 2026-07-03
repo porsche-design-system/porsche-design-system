@@ -1,4 +1,4 @@
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../emotionCss';
 
 // Single source of truth for the two CSS feature queries behind the "keep on #top-layer during fade-out" capability,
 // shared by the JS detection (`supportsOverlayTransition`) and the CSS `@supports` wrapper

@@ -79,8 +79,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 1`
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`] = `
@@ -162,8 +161,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 2`
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`] = `
@@ -245,8 +243,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 3`
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`] = `
@@ -320,8 +317,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 4`
   .root:focus-visible::before {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`] = `
@@ -395,8 +391,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 5`
   .root:focus-visible::before {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`] = `
@@ -473,8 +468,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 6`
   .root:focus-visible::before {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`] = `
@@ -556,8 +550,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 7`
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`] = `
@@ -641,8 +634,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 8`
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`] = `
@@ -726,8 +718,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 9`
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 10`] = `
@@ -809,8 +800,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 10
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 11`] = `
@@ -892,8 +882,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 11
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 12`] = `
@@ -1055,8 +1044,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 12
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "arrow-head-right" 13`] = `
@@ -1275,8 +1263,7 @@ exports[`getComponentCss() > should return correct css for "arrow-head-right" 13
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "none" 1`] = `
@@ -1348,8 +1335,7 @@ exports[`getComponentCss() > should return correct css for "none" 1`] = `
   .root:focus-visible::before {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "none" 2`] = `
@@ -1423,8 +1409,7 @@ exports[`getComponentCss() > should return correct css for "none" 2`] = `
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "none" 3`] = `
@@ -1498,8 +1483,7 @@ exports[`getComponentCss() > should return correct css for "none" 3`] = `
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for "none" 4`] = `
@@ -1603,6 +1587,5 @@ exports[`getComponentCss() > should return correct css for "none" 4`] = `
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted-strong);
   }
-}
-"
+}"
 `;

@@ -187,6 +187,5 @@ exports[`getComponentCss() > should return correct css for size: {"base":"sm","x
   .root {
     font-size: var(--p-typescale-xl);
   }
-}
-"
+}"
 `;

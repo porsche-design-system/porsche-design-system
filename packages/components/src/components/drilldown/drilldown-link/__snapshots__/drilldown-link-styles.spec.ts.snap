@@ -15,7 +15,7 @@ a {
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
   border-radius: var(--p-radius-sm);
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-md)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: transparent;
@@ -26,18 +26,17 @@ a:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  a:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   a:hover {
     text-decoration-color: inherit;
   }
 }
-"
+
+@media(forced-colors:active) {
+  a:focus-visible {
+    outline-color: Highlight;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: true 1`] = `
@@ -55,7 +54,7 @@ a {
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
   border-radius: var(--p-radius-sm);
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-md)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: inherit;
@@ -66,18 +65,17 @@ a:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  a:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   a:hover {
     text-decoration-color: inherit;
   }
 }
-"
+
+@media(forced-colors:active) {
+  a:focus-visible {
+    outline-color: Highlight;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: true 2`] = `
@@ -95,7 +93,7 @@ a {
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
   border-radius: var(--p-radius-sm);
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-md)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: inherit;
@@ -106,18 +104,17 @@ a:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  a:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   a:hover {
     text-decoration-color: inherit;
   }
 }
-"
+
+@media(forced-colors:active) {
+  a:focus-visible {
+    outline-color: Highlight;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasSlottedAnchor: false and isActive: true 3`] = `
@@ -135,7 +132,7 @@ a {
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px);
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px);
   border-radius: var(--p-radius-sm);
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-md)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--_p-drilldown-a);
   text-decoration: underline;
   text-decoration-color: inherit;
@@ -146,18 +143,17 @@ a:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  a:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   a:hover {
     text-decoration-color: inherit;
   }
 }
-"
+
+@media(forced-colors:active) {
+  a:focus-visible {
+    outline-color: Highlight;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: false 1`] = `
@@ -175,7 +171,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
   border-radius: var(--p-radius-sm) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-md)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
@@ -186,18 +182,17 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media(forced-colors:active) {
-  ::slotted(a:focus-visible) {
-    outline-color: Highlight !important;
-  }
-}
-
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
   }
 }
-"
+
+@media(forced-colors:active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: true 1`] = `
@@ -215,7 +210,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
   border-radius: var(--p-radius-sm) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-md)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
@@ -226,18 +221,17 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media(forced-colors:active) {
-  ::slotted(a:focus-visible) {
-    outline-color: Highlight !important;
-  }
-}
-
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
   }
 }
-"
+
+@media(forced-colors:active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: true 2`] = `
@@ -255,7 +249,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
   border-radius: var(--p-radius-sm) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-md)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
@@ -266,18 +260,17 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media(forced-colors:active) {
-  ::slotted(a:focus-visible) {
-    outline-color: Highlight !important;
-  }
-}
-
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
   }
 }
-"
+
+@media(forced-colors:active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for hasSlottedAnchor: true and isActive: true 3`] = `
@@ -295,7 +288,7 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
   border-radius: var(--p-radius-sm) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-md)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
@@ -306,16 +299,15 @@ exports[`getComponentCss() > should return correct css for hasSlottedAnchor: tru
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media(forced-colors:active) {
-  ::slotted(a:focus-visible) {
-    outline-color: Highlight !important;
-  }
-}
-
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
   }
 }
-"
+
+@media(forced-colors:active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}"
 `;

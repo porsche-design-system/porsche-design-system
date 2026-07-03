@@ -3,7 +3,7 @@
 exports[`getComponentCss() > should return correct css 1`] = `
 ":host {
   display: table-header-group;
-  font: var(--p-font-weight-semibold) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-semibold) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   border-bottom: 1px solid var(--_p-table-c) !important;
 }
 :host([hidden]) {

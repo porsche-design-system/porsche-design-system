@@ -7,14 +7,14 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   padding-block: calc(11.2px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 4px);
   padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
   background: var(--p-color-frosted);
@@ -42,16 +42,15 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   white-space: nowrap;
 }
 @media(forced-colors:active) {
-  .no-results--disabled {
-    color: GrayText;
-  }
   .no-results--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
-}
-"
+  .no-results--disabled {
+    color: GrayText;
+  }
+}"
 `;
 
 exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: multi-select-option and cssVarScaling: var(--_p-multi-select-a, 1) 2`] = `
@@ -61,14 +60,14 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   padding-block: calc(11.2px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 4px);
   padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
   background: var(--p-color-frosted);
@@ -96,16 +95,15 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   white-space: nowrap;
 }
 @media(forced-colors:active) {
-  .no-results--disabled {
-    color: GrayText;
-  }
   .no-results--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
-}
-"
+  .no-results--disabled {
+    color: GrayText;
+  }
+}"
 `;
 
 exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option and cssVarScaling: var(--_p-select-a, 1) 1`] = `
@@ -115,14 +113,14 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   padding-block: calc(11.2px * (var(var(--_p-select-a, 1)) - 0.64285714) + 4px);
   padding-inline: var(--_p-select-option-b,calc(16.8px * (var(var(--_p-select-a, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--_p-select-a, 1)) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
   background: var(--p-color-frosted);
@@ -150,16 +148,15 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   white-space: nowrap;
 }
 @media(forced-colors:active) {
-  .no-results--disabled {
-    color: GrayText;
-  }
   .no-results--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
-}
-"
+  .no-results--disabled {
+    color: GrayText;
+  }
+}"
 `;
 
 exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option and cssVarScaling: var(--_p-select-a, 1) 2`] = `
@@ -169,14 +166,14 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   padding-block: calc(11.2px * (var(var(--_p-select-a, 1)) - 0.64285714) + 4px);
   padding-inline: var(--_p-select-option-b,calc(16.8px * (var(var(--_p-select-a, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--_p-select-a, 1)) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .no-results--highlighted {
   background: var(--p-color-frosted);
@@ -204,14 +201,13 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
   white-space: nowrap;
 }
 @media(forced-colors:active) {
-  .no-results--disabled {
-    color: GrayText;
-  }
   .no-results--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
-}
-"
+  .no-results--disabled {
+    color: GrayText;
+  }
+}"
 `;

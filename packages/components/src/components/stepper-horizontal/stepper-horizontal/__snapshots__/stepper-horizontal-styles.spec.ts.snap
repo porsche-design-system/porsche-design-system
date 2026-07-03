@@ -12,7 +12,7 @@ exports[`getComponentCss() > should return correct css for size: "medium" 1`] = 
 }
 .scroller {
   place-self: flex-start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   font-size: var(--p-typescale-md);
 }"
 `;
@@ -29,7 +29,7 @@ exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
 }
 .scroller {
   place-self: flex-start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
 }"
 `;
@@ -46,7 +46,7 @@ exports[`getComponentCss() > should return correct css for size: {"base":"small"
 }
 .scroller {
   place-self: flex-start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
 }
 @media(min-width:480px) {
@@ -77,6 +77,5 @@ exports[`getComponentCss() > should return correct css for size: {"base":"small"
   .scroller {
     font-size: var(--p-typescale-md);
   }
-}
-"
+}"
 `;

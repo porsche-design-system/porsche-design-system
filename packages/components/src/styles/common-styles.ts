@@ -11,7 +11,7 @@ import {
   ref,
 } from '@porsche-design-system/stylesheets';
 import type { PropertiesHyphen } from 'csstype';
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../utils/emotionCss';
 import { alphaDisabled } from './alpha-disabled';
 import { forcedColorsMediaQuery } from './media-query/forced-colors-media-query';
 
@@ -80,8 +80,7 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
     (result, [key, value]) =>
       value === null
         ? result
-        : // @ts-expect-error: Type string can't be used to index type JssStyle
-          ((result[key] =
+        : ((result[key] =
             // biome-ignore lint/complexity/noCommaOperator: to be refactored
             typeof value === 'object' ? addImportantToEachRule(value as JssStyle) : addImportantToRule(value)),
           result),

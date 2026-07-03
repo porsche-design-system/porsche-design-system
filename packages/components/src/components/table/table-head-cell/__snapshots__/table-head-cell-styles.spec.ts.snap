@@ -46,20 +46,20 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  button:focus-visible::before {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
+  button:hover .icon, button:focus-visible .icon {
+    opacity: 1;
+  }
   button:hover::before {
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
-  button:hover .icon, button:focus-visible .icon {
-    opacity: 1;
+}
+
+@media(forced-colors:active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -117,20 +117,20 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  button:focus-visible::before {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
+  button:hover .icon, button:focus-visible .icon {
+    opacity: 1;
+  }
   button:hover::before {
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
-  button:hover .icon, button:focus-visible .icon {
-    opacity: 1;
+}
+
+@media(forced-colors:active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -188,20 +188,20 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  button:focus-visible::before {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
+  button:hover .icon, button:focus-visible .icon {
+    opacity: 1;
+  }
   button:hover::before {
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
-  button:hover .icon, button:focus-visible .icon {
-    opacity: 1;
+}
+
+@media(forced-colors:active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -259,20 +259,20 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  button:focus-visible::before {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
+  button:hover .icon, button:focus-visible .icon {
+    opacity: 1;
+  }
   button:hover::before {
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
-  button:hover .icon, button:focus-visible .icon {
-    opacity: 1;
+}
+
+@media(forced-colors:active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 
@@ -330,20 +330,20 @@ button:focus-visible::before {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  button:focus-visible::before {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
+  button:hover .icon, button:focus-visible .icon {
+    opacity: 1;
+  }
   button:hover::before {
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background-color: var(--p-color-frosted);
   }
-  button:hover .icon, button:focus-visible .icon {
-    opacity: 1;
+}
+
+@media(forced-colors:active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
   }
 }
 

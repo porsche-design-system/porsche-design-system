@@ -1,4 +1,4 @@
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../../utils/emotionCss';
 
 export const getSelectedSlotJssStyle: JssStyle = {
   display: 'block',

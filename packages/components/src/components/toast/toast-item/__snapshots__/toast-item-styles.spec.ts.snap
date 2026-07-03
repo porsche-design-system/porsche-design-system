@@ -25,13 +25,13 @@ slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
   margin-top: 0px;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   box-shadow: var(--p-shadow-lg);
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-error-frosted);
@@ -69,8 +69,7 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for state: info 1`] = `
@@ -98,13 +97,13 @@ slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
   margin-top: 0px;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   box-shadow: var(--p-shadow-lg);
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
@@ -142,8 +141,7 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for state: success 1`] = `
@@ -171,13 +169,13 @@ slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
   margin-top: 0px;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   box-shadow: var(--p-shadow-lg);
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-success-frosted);
@@ -215,8 +213,7 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for state: warning 1`] = `
@@ -244,13 +241,13 @@ slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
   margin-top: 0px;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   box-shadow: var(--p-shadow-lg);
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-warning-frosted);
@@ -288,6 +285,5 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
-}
-"
+}"
 `;

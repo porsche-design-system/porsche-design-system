@@ -32,7 +32,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -44,7 +44,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -60,15 +60,15 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--_p-switch-a) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -100,8 +100,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":true} 1`] = `
@@ -136,7 +135,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -148,7 +147,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -164,15 +163,15 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--_p-switch-a) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -204,8 +203,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"compact":false} 1`] = `
@@ -241,7 +239,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -253,7 +251,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
@@ -313,8 +311,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -348,7 +345,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -360,7 +357,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -376,15 +373,15 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--_p-switch-a) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -416,8 +413,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"compact":false} 1`] = `
@@ -451,7 +447,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -463,7 +459,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
@@ -522,8 +518,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false} 1`] = `
@@ -558,7 +553,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -570,7 +565,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
@@ -633,8 +628,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false} 2`] = `
@@ -669,7 +663,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: not-allowed;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -681,7 +675,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: not-allowed;
@@ -744,8 +738,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -779,7 +772,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-success-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -791,7 +784,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -807,15 +800,15 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--_p-switch-a) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-success);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -847,8 +840,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"left","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -883,7 +875,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -895,7 +887,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -911,15 +903,15 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--_p-switch-a) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -951,8 +943,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -987,7 +978,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -999,7 +990,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -1015,15 +1006,15 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--_p-switch-a) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -1055,8 +1046,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":"start","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -1091,7 +1081,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1103,7 +1093,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -1118,15 +1108,15 @@ label {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -1158,8 +1148,7 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for {"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
@@ -1194,7 +1183,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1206,7 +1195,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -1316,15 +1305,15 @@ label {
   }
 }
 
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -1356,6 +1345,5 @@ label {
   .toggle {
     background: CanvasText;
   }
-}
-"
+}"
 `;

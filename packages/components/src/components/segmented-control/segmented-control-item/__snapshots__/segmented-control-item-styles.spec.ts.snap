@@ -35,12 +35,6 @@ span {
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -49,7 +43,12 @@ span {
     border-color: var(--p-color-primary);
   }
 }
-"
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: false and compact: false 2`] = `
@@ -87,12 +86,6 @@ span {
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -101,7 +94,12 @@ span {
     border-color: var(--p-color-primary);
   }
 }
-"
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: false, state: none, hasSlottedContent: true and compact: false 1`] = `
@@ -139,18 +137,18 @@ span {
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -195,18 +193,18 @@ span {
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -251,18 +249,18 @@ span {
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -359,8 +357,7 @@ span {
   button:focus-visible {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
@@ -556,8 +553,7 @@ span {
   span {
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: false, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
@@ -658,8 +654,7 @@ span {
   button:focus-visible {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: false, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `
@@ -760,8 +755,7 @@ span {
   span {
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isDisabled: true, isSelected: true, hasIcon: true, state: none, hasSlottedContent: true and compact: false 1`] = `

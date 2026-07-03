@@ -1,8 +1,8 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as globby from 'fast-glob';
-import type { JssStyle, Styles } from 'jss';
 import { vi } from 'vitest';
+import type { JssStyle, Styles } from './emotionCss';
 import * as jssUtils from './jss';
 import {
   attachComponentCss,
@@ -68,8 +68,7 @@ describe('getCss()', () => {
   :host {
     margin-right: 5px !important;
   }
-}
-`,
+}`,
     },
     {
       input: {
@@ -101,8 +100,7 @@ describe('getCss()', () => {
   :host {
     margin-right: 10px !important;
   }
-}
-`,
+}`,
     },
     {
       // flat media query
@@ -135,8 +133,7 @@ describe('getCss()', () => {
   :host {
     margin-right: 10px !important;
   }
-}
-`,
+}`,
     },
     {
       // nested media query
@@ -159,8 +156,7 @@ describe('getCss()', () => {
   :host {
     margin-right: 10px !important;
   }
-}
-`,
+}`,
     },
     {
       // .class and global media query
@@ -178,7 +174,7 @@ describe('getCss()', () => {
           root: { display: 'block' },
         },
       },
-      // causes two identical media queries for now
+      // the emotion wrapper merges the two identical media queries into one
       result: `:host {
   display: block;
   margin-left: 5px !important;
@@ -187,14 +183,10 @@ describe('getCss()', () => {
   :host {
     margin-right: 10px !important;
   }
-}
-
-@media (min-width: 1000px) {
   .root {
     display: block;
   }
-}
-`,
+}`,
     },
     {
       input: {

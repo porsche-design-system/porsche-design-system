@@ -44,10 +44,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -101,15 +101,15 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-primary));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -143,14 +143,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -189,7 +189,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -221,24 +221,23 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success and compact: false 1`] = `
@@ -285,10 +284,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -342,15 +341,15 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-success));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-success));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -384,14 +383,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -430,7 +429,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -462,25 +461,24 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
@@ -527,10 +525,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -584,15 +582,15 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-error));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-error));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -626,14 +624,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -671,7 +669,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -703,25 +701,24 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
@@ -768,10 +765,10 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -825,15 +822,15 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-success));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-success));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -867,14 +864,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -912,7 +909,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -944,25 +941,24 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
@@ -1009,11 +1005,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -1100,14 +1096,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -1146,7 +1142,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -1180,29 +1176,28 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
@@ -1249,11 +1244,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -1340,14 +1335,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -1386,7 +1381,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -1420,28 +1415,27 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: false 2`] = `
@@ -1488,11 +1482,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -1579,14 +1573,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -1625,7 +1619,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -1659,28 +1653,27 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and compact: true 1`] = `
@@ -1727,11 +1720,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-lg);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -1818,14 +1811,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -1864,7 +1857,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -1898,28 +1891,27 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
@@ -1966,11 +1958,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -2057,14 +2049,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -2103,7 +2095,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -2137,29 +2129,28 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
@@ -2206,11 +2197,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -2297,14 +2288,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -2342,7 +2333,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -2376,29 +2367,28 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
@@ -2445,11 +2435,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -2536,14 +2526,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -2581,7 +2571,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -2615,28 +2605,27 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success and compact: false 1`] = `
@@ -2683,11 +2672,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -2774,14 +2763,14 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -2819,7 +2808,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -2853,29 +2842,28 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error and compact: false 1`] = `
@@ -2922,10 +2910,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -2979,15 +2967,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-error));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-error));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -3021,14 +3009,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -3067,7 +3055,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -3099,25 +3087,24 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 1`] = `
@@ -3164,10 +3151,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -3221,15 +3208,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-primary));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -3263,14 +3250,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -3309,7 +3296,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -3341,24 +3328,23 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 2`] = `
@@ -3405,10 +3391,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -3462,15 +3448,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-primary));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -3504,14 +3490,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -3550,7 +3536,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -3582,24 +3568,23 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and compact: false 3`] = `
@@ -3646,10 +3631,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -3703,15 +3688,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-primary));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -3745,14 +3730,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -3791,7 +3776,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -3823,24 +3808,23 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error and compact: false 1`] = `
@@ -3887,10 +3871,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -3944,15 +3928,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-error));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-error));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -3986,14 +3970,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -4031,7 +4015,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -4063,25 +4047,24 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none and compact: false 1`] = `
@@ -4128,10 +4111,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -4185,15 +4168,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-primary));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -4227,14 +4210,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -4272,7 +4255,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -4304,24 +4287,23 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 1`] = `
@@ -4368,10 +4350,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -4425,15 +4407,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-success));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-success));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -4467,14 +4449,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -4512,7 +4494,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -4544,25 +4526,24 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and compact: false 2`] = `
@@ -4609,10 +4590,10 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -4666,15 +4647,15 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-success));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-success));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -4708,14 +4689,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -4753,7 +4734,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -4785,25 +4766,24 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
-}
-"
+    .no-results--disabled {
+      color: GrayText;
+    }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error and compact: false 1`] = `
@@ -4850,11 +4830,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -4941,14 +4921,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -4987,7 +4967,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -5021,29 +5001,28 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none and compact: false 1`] = `
@@ -5090,11 +5069,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -5181,14 +5160,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -5227,7 +5206,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -5261,28 +5240,27 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: false 1`] = `
@@ -5329,11 +5307,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -5420,14 +5398,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -5466,7 +5444,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -5500,29 +5478,28 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and compact: true 1`] = `
@@ -5569,11 +5546,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-success));
     border-radius: var(--p-radius-lg);
     background: var(--p-select-background-color,var(--p-color-success-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -5660,14 +5637,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -5706,7 +5683,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -5740,29 +5717,28 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-success);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error and compact: false 1`] = `
@@ -5809,11 +5785,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-error));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-error-frosted-soft));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -5900,14 +5876,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -5945,7 +5921,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -5979,29 +5955,28 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-error);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none and compact: false 1`] = `
@@ -6048,11 +6023,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     border: 1px solid var(--p-select-border-color,var(--p-color-primary));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: not-allowed;
     opacity: 0.4;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button img {
     font: var(--p-typescale-sm) var(--p-font-porsche-next);
@@ -6139,14 +6114,14 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -6184,7 +6159,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     white-space: nowrap;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: not-allowed;
     color: var(--p-color-primary);
     pointer-events: none;
@@ -6218,26 +6193,25 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
     .label {
       opacity: 1;
       color: GrayText;
     }
-}
-"
+}"
 `;

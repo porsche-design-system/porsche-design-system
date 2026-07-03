@@ -18,8 +18,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "horizontal" 2`] = `
@@ -40,8 +39,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "vertical" 1`] = `
@@ -62,8 +60,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "vertical" 2`] = `
@@ -84,8 +81,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "horizontal" 1`] = `
@@ -106,8 +102,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "horizontal" 2`] = `
@@ -128,8 +123,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "vertical" 1`] = `
@@ -150,8 +144,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "vertical" 2`] = `
@@ -172,8 +165,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: {"base":"horizontal","xs":"vertical","s":"horizontal","m":"vertical","l":"horizontal","xl":"vertical"} 1`] = `
@@ -229,8 +221,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "horizontal" 1`] = `
@@ -251,8 +242,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "horizontal" 2`] = `
@@ -273,8 +263,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "vertical" 1`] = `
@@ -295,8 +284,7 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "vertical" 2`] = `
@@ -317,6 +305,5 @@ hr {
   hr {
     background: CanvasText;
   }
-}
-"
+}"
 `;

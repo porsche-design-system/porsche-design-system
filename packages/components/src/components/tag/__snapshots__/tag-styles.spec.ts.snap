@@ -18,10 +18,10 @@ span {
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
   border-radius: calc(4px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-error);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -43,6 +43,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media(hover:hover) {
+  span:hover {
+    background: var(--p-color-error-medium);
+  }
+}
+
 @media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
@@ -52,12 +58,6 @@ span {
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
-  }
-}
-
-@media(hover:hover) {
-  span:hover {
-    background: var(--p-color-error-medium);
   }
 }
 
@@ -84,12 +84,12 @@ span {
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
   border-radius: calc(4px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-error-frosted);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -111,6 +111,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media(hover:hover) {
+  span:hover {
+    background: var(--p-color-error-frosted-soft);
+  }
+}
+
 @media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
@@ -120,12 +126,6 @@ span {
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
-  }
-}
-
-@media(hover:hover) {
-  span:hover {
-    background: var(--p-color-error-frosted-soft);
   }
 }
 
@@ -152,10 +152,10 @@ span {
   gap: 2px;
   padding: var(--p-spacing-static-2xs) var(--p-spacing-static-sm);
   border-radius: calc(1px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-info);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -212,12 +212,12 @@ span {
   gap: 2px;
   padding: var(--p-spacing-static-2xs) var(--p-spacing-static-sm);
   border-radius: calc(1px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-info-frosted);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -274,10 +274,10 @@ span {
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
   border-radius: calc(4px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-primary);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -299,6 +299,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media(hover:hover) {
+  span:hover {
+    background: var(--p-color-contrast-high);
+  }
+}
+
 @media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
@@ -308,12 +314,6 @@ span {
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
-  }
-}
-
-@media(hover:hover) {
-  span:hover {
-    background: var(--p-color-contrast-high);
   }
 }
 
@@ -340,12 +340,12 @@ span {
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
   border-radius: calc(4px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-frosted-strong);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -402,10 +402,10 @@ span {
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
   border-radius: calc(4px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-success);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -427,6 +427,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media(hover:hover) {
+  span:hover {
+    background: var(--p-color-success-medium);
+  }
+}
+
 @media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
@@ -436,12 +442,6 @@ span {
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
-  }
-}
-
-@media(hover:hover) {
-  span:hover {
-    background: var(--p-color-success-medium);
   }
 }
 
@@ -468,12 +468,12 @@ span {
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
   border-radius: calc(4px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-success-frosted);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -495,6 +495,12 @@ span {
 ::slotted(br) {
   display: none !important;
 }
+@media(hover:hover) {
+  span:hover {
+    background: var(--p-color-success-frosted-soft);
+  }
+}
+
 @media(forced-colors:active) {
   span {
     outline: 2px solid CanvasText;
@@ -504,12 +510,6 @@ span {
   }
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
-  }
-}
-
-@media(hover:hover) {
-  span:hover {
-    background: var(--p-color-success-frosted-soft);
   }
 }
 
@@ -536,10 +536,10 @@ span {
   gap: 2px;
   padding: var(--p-spacing-static-2xs) var(--p-spacing-static-sm);
   border-radius: calc(1px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-canvas);
   background: var(--p-color-warning);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -571,8 +571,7 @@ span {
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for variant: warning-frosted, compact: true, isFocusable: false and hasIcon: false 1`] = `
@@ -593,12 +592,12 @@ span {
   gap: 2px;
   padding: var(--p-spacing-static-2xs) var(--p-spacing-static-sm);
   border-radius: calc(1px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-warning-frosted);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -630,6 +629,5 @@ span {
   ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
-}
-"
+}"
 `;

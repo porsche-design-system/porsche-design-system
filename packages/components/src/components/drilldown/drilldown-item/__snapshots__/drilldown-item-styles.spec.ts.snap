@@ -76,8 +76,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
     .drawer {
       display: none;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: false and isCascade: true 1`] = `
@@ -172,8 +171,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
     .scroller {
       display: contents;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: true and isCascade: false 1`] = `
@@ -240,6 +238,15 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 
 @media(max-width:759px) {
+    slot[name="header"] {
+      grid-area: 2/3;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+    slot[name="button"] {
+      display: none;
+    }
     slot:not([name]) {
       grid-area: 4/2/auto/-2;
       z-index: 0;
@@ -254,17 +261,8 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       padding-block-end: var(--p-spacing-fluid-lg);
       animation: slide-up-mobile var(--p-animation-duration,var(--p-duration-md)) var(--p-ease-in-out);
     }
-    slot[name="button"] {
-      display: none;
-    }
-    slot[name="header"] {
-      grid-area: 2/3;
-      display: grid;
-      place-items: center;
-      z-index: 2;
-    }
     h2 {
-      font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+      font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
       display: block;
       grid-area: 2/3;
       place-self: center;
@@ -330,8 +328,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
     .button {
       display: none;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isPrimary: false, isSecondary: true and isCascade: true 1`] = `
@@ -404,6 +401,15 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
 }
 
 @media(max-width:759px) {
+    slot[name="header"] {
+      grid-area: 2/3;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+    slot[name="button"] {
+      display: none;
+    }
     slot:not([name]) {
       grid-area: 4/2/auto/-2;
       z-index: 0;
@@ -418,17 +424,8 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
       padding-block-end: var(--p-spacing-fluid-lg);
       animation: slide-up-mobile var(--p-animation-duration,var(--p-duration-md)) var(--p-ease-in-out);
     }
-    slot[name="button"] {
-      display: none;
-    }
-    slot[name="header"] {
-      grid-area: 2/3;
-      display: grid;
-      place-items: center;
-      z-index: 2;
-    }
     h2 {
-      font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+      font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
       display: block;
       grid-area: 2/3;
       place-self: center;
@@ -492,8 +489,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: false, isS
     .button {
       display: none;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: false and isCascade: false 1`] = `
@@ -610,8 +606,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       place-self: start;
       z-index: 2;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: false and isCascade: true 1`] = `
@@ -731,8 +726,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       place-self: start;
       z-index: 2;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: true and isCascade: false 1`] = `
@@ -802,6 +796,15 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 
 @media(max-width:759px) {
+    slot[name="header"] {
+      grid-area: 2/3;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+    slot[name="button"] {
+      display: none;
+    }
     slot:not([name]) {
       grid-area: 4/2/auto/-2;
       z-index: 0;
@@ -816,17 +819,8 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       padding-block-end: var(--p-spacing-fluid-lg);
       animation: slide-up-mobile var(--p-animation-duration,var(--p-duration-md)) var(--p-ease-in-out);
     }
-    slot[name="button"] {
-      display: none;
-    }
-    slot[name="header"] {
-      grid-area: 2/3;
-      display: grid;
-      place-items: center;
-      z-index: 2;
-    }
     h2 {
-      font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+      font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
       display: block;
       grid-area: 2/3;
       place-self: center;
@@ -905,8 +899,7 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       place-self: start;
       z-index: 2;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isPrimary: true, isSecondary: true and isCascade: true 1`] = `
@@ -979,6 +972,15 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
 }
 
 @media(max-width:759px) {
+    slot[name="header"] {
+      grid-area: 2/3;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+    slot[name="button"] {
+      display: none;
+    }
     slot:not([name]) {
       grid-area: 4/2/auto/-2;
       z-index: 0;
@@ -993,17 +995,8 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       padding-block-end: var(--p-spacing-fluid-lg);
       animation: slide-up-mobile var(--p-animation-duration,var(--p-duration-md)) var(--p-ease-in-out);
     }
-    slot[name="button"] {
-      display: none;
-    }
-    slot[name="header"] {
-      grid-area: 2/3;
-      display: grid;
-      place-items: center;
-      z-index: 2;
-    }
     h2 {
-      font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+      font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
       display: block;
       grid-area: 2/3;
       place-self: center;
@@ -1082,6 +1075,5 @@ exports[`getComponentCss() > should return correct css for isPrimary: true, isSe
       place-self: start;
       z-index: 2;
     }
-}
-"
+}"
 `;

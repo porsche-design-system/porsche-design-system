@@ -24,12 +24,18 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media(hover:hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+
 @media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
@@ -37,12 +43,6 @@ button:focus-visible {
   }
   button:focus-visible {
     outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  button:hover > .icon {
-    background-color: var(--p-color-frosted);
   }
 }
 
@@ -88,12 +88,18 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media(hover:hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+
 @media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
@@ -101,12 +107,6 @@ button:focus-visible {
   }
   button:focus-visible {
     outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  button:hover > .icon {
-    background-color: var(--p-color-frosted);
   }
 }
 
@@ -152,12 +152,18 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media(hover:hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+
 @media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
@@ -165,12 +171,6 @@ button:focus-visible {
   }
   button:focus-visible {
     outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  button:hover > .icon {
-    background-color: var(--p-color-frosted);
   }
 }
 
@@ -222,12 +222,18 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media(hover:hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+
 @media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
@@ -235,12 +241,6 @@ button:focus-visible {
   }
   button:focus-visible {
     outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  button:hover > .icon {
-    background-color: var(--p-color-frosted);
   }
 }
 
@@ -292,12 +292,18 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media(hover:hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+
 @media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
@@ -305,12 +311,6 @@ button:focus-visible {
   }
   button:focus-visible {
     outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  button:hover > .icon {
-    background-color: var(--p-color-frosted);
   }
 }
 
@@ -362,12 +362,18 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media(hover:hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+
 @media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
@@ -375,12 +381,6 @@ button:focus-visible {
   }
   button:focus-visible {
     outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  button:hover > .icon {
-    background-color: var(--p-color-frosted);
   }
 }
 

@@ -52,11 +52,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 1`] =
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -130,11 +130,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 2`] =
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -208,11 +208,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 3`] =
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -286,11 +286,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 4`] =
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -394,11 +394,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 5`] =
 }
 
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -472,11 +472,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 6`] =
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -550,11 +550,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 7`] =
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -628,11 +628,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 8`] =
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -706,11 +706,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 9`] =
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -814,11 +814,11 @@ exports[`getComponentCss() > should return correct css for size: "primary" 10`] 
 }
 
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 

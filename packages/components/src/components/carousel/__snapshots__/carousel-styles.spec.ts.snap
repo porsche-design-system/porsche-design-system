@@ -25,7 +25,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -54,6 +54,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -65,6 +71,10 @@ p,::slotted([slot="description"]) {
   flex-shrink: 0;
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
+}
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .splide__sr {
   position: absolute;
@@ -81,16 +91,6 @@ p,::slotted([slot="description"]) {
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
   margin-inline-end: 0 !important;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 .pagination-container {
   display: flex;
@@ -113,7 +113,7 @@ p,::slotted([slot="description"]) {
   background: var(--p-color-contrast-medium);
   width: 8px;
   height: 8px;
-  transition: background-color .4s, width .4s;
+  transition: background-color .4s,width .4s;
 }
 .bullet--active {
   background: var(--p-color-primary);
@@ -151,6 +151,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -170,18 +176,11 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(forced-colors:active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
@@ -207,7 +206,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -236,6 +235,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -248,6 +253,10 @@ p,::slotted([slot="description"]) {
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
 .splide__sr {
   position: absolute;
   width: 1px;
@@ -257,16 +266,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 .pagination-container {
   display: flex;
@@ -289,7 +288,7 @@ p,::slotted([slot="description"]) {
   background: var(--p-color-contrast-medium);
   width: 8px;
   height: 8px;
-  transition: background-color .4s, width .4s;
+  transition: background-color .4s,width .4s;
 }
 .bullet--active {
   background: var(--p-color-primary);
@@ -327,6 +326,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -346,18 +351,11 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(forced-colors:active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and alignControls: center 1`] = `
@@ -385,7 +383,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -414,6 +412,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -425,6 +429,10 @@ p,::slotted([slot="description"]) {
   flex-shrink: 0;
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
+}
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .splide__sr {
   position: absolute;
@@ -441,16 +449,6 @@ p,::slotted([slot="description"]) {
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
   margin-inline-end: 0 !important;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 .pagination-container {
   display: flex;
@@ -473,7 +471,7 @@ p,::slotted([slot="description"]) {
   background: var(--p-color-contrast-medium);
   width: 0px;
   height: 0px;
-  transition: background-color .4s, width .4s, height .4s;
+  transition: background-color .4s,width .4s,height .4s;
 }
 .pagination--infinite > .bullet:nth-child(-n+4) {
   width: 8px;
@@ -535,6 +533,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -554,18 +558,11 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(forced-colors:active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
@@ -591,7 +588,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -620,6 +617,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -632,6 +635,10 @@ p,::slotted([slot="description"]) {
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
 .splide__sr {
   position: absolute;
   width: 1px;
@@ -641,16 +648,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 @media(min-width:760px) {
   .header {
@@ -687,8 +684,7 @@ p,::slotted([slot="description"]) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
@@ -714,16 +710,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -752,6 +748,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -764,6 +766,10 @@ p,::slotted([slot="description"]) {
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
 .splide__sr {
   position: absolute;
   width: 1px;
@@ -773,16 +779,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 @media(min-width:760px) {
   .header {
@@ -819,8 +815,7 @@ p,::slotted([slot="description"]) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: false, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
@@ -848,16 +843,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: false,
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -886,6 +881,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -897,6 +898,10 @@ p,::slotted([slot="description"]) {
   flex-shrink: 0;
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
+}
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .splide__sr {
   position: absolute;
@@ -913,16 +918,6 @@ p,::slotted([slot="description"]) {
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
   margin-inline-end: 0 !important;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 .pagination-container {
   display: none;
@@ -945,7 +940,7 @@ p,::slotted([slot="description"]) {
   background: var(--p-color-contrast-medium);
   width: 0px;
   height: 0px;
-  transition: background-color .4s, width .4s, height .4s;
+  transition: background-color .4s,width .4s,height .4s;
 }
 .pagination--infinite > .bullet:nth-child(-n+4) {
   width: 8px;
@@ -1034,6 +1029,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1053,18 +1054,11 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(forced-colors:active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
@@ -1090,7 +1084,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1121,6 +1115,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -1133,6 +1133,10 @@ p,::slotted([slot="description"]) {
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
 .splide__sr {
   position: absolute;
   width: 1px;
@@ -1142,16 +1146,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 @media(min-width:760px) {
   .header {
@@ -1188,8 +1182,7 @@ p,::slotted([slot="description"]) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: false, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
@@ -1217,7 +1210,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1248,6 +1241,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -1259,6 +1258,10 @@ p,::slotted([slot="description"]) {
   flex-shrink: 0;
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
+}
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .splide__sr {
   position: absolute;
@@ -1275,16 +1278,6 @@ p,::slotted([slot="description"]) {
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
   margin-inline-end: 0 !important;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 @media(min-width:760px) {
   .header {
@@ -1321,8 +1314,7 @@ p,::slotted([slot="description"]) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: false, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, hasNavigation: true and alignControls: center 1`] = `
@@ -1348,11 +1340,11 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1383,6 +1375,12 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -1395,6 +1393,10 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
 .splide__sr {
   position: absolute;
   width: 1px;
@@ -1404,16 +1406,6 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 .pagination-container {
   display: flex;
@@ -1436,7 +1428,7 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   background: var(--p-color-contrast-medium);
   width: 8px;
   height: 8px;
-  transition: background-color .4s, width .4s;
+  transition: background-color .4s,width .4s;
 }
 .bullet--active {
   background: var(--p-color-primary);
@@ -1474,6 +1466,12 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1493,18 +1491,11 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
   }
 }
 
-@media(forced-colors:active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
@@ -1532,16 +1523,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1572,6 +1563,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -1583,6 +1580,10 @@ p,::slotted([slot="description"]) {
   flex-shrink: 0;
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
+}
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .splide__sr {
   position: absolute;
@@ -1599,16 +1600,6 @@ p,::slotted([slot="description"]) {
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
   margin-inline-end: 0 !important;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 @media(min-width:760px) {
   .header {
@@ -1645,8 +1636,7 @@ p,::slotted([slot="description"]) {
   .splide__slide:focus-visible {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
@@ -1672,16 +1662,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1712,6 +1702,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -1724,6 +1720,10 @@ p,::slotted([slot="description"]) {
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
 .splide__sr {
   position: absolute;
   width: 1px;
@@ -1733,16 +1733,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 .pagination-container {
   display: flex;
@@ -1765,7 +1755,7 @@ p,::slotted([slot="description"]) {
   background: var(--p-color-contrast-medium);
   width: 0px;
   height: 0px;
-  transition: background-color .4s, width .4s, height .4s;
+  transition: background-color .4s,width .4s,height .4s;
 }
 .pagination--infinite > .bullet:nth-child(-n+4) {
   width: 8px;
@@ -1827,6 +1817,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1846,18 +1842,11 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(forced-colors:active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: x-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start, hasNavigation: true and alignControls: auto 1`] = `
@@ -1883,16 +1872,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -1923,6 +1912,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -1935,6 +1930,10 @@ p,::slotted([slot="description"]) {
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
 .splide__sr {
   position: absolute;
   width: 1px;
@@ -1944,16 +1943,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 .pagination-container {
   display: none;
@@ -1976,7 +1965,7 @@ p,::slotted([slot="description"]) {
   background: var(--p-color-contrast-medium);
   width: 8px;
   height: 8px;
-  transition: background-color .4s, width .4s;
+  transition: background-color .4s,width .4s;
 }
 .bullet--active {
   background: var(--p-color-primary);
@@ -2041,6 +2030,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2060,18 +2055,11 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(forced-colors:active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, hasNavigation: false and alignControls: auto 1`] = `
@@ -2097,16 +2085,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -2137,6 +2125,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -2149,6 +2143,10 @@ p,::slotted([slot="description"]) {
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
 .splide__sr {
   position: absolute;
   width: 1px;
@@ -2158,16 +2156,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 .pagination-container {
   display: flex;
@@ -2190,7 +2178,7 @@ p,::slotted([slot="description"]) {
   background: var(--p-color-contrast-medium);
   width: 8px;
   height: 8px;
-  transition: background-color .4s, width .4s;
+  transition: background-color .4s,width .4s;
 }
 .bullet--active {
   background: var(--p-color-primary);
@@ -2227,6 +2215,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2246,18 +2240,11 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(forced-colors:active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for gradientColor: true, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, hasNavigation: true and alignControls: auto 1`] = `
@@ -2285,16 +2272,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 ::slotted([slot=heading]) {
   margin: 0 !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-2xl) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-2xl)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
   margin: var(--p-spacing-fluid-sm) 0 var(--p-spacing-fluid-md) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 .header {
   display: grid;
@@ -2325,6 +2312,12 @@ p,::slotted([slot="description"]) {
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -2336,6 +2329,10 @@ p,::slotted([slot="description"]) {
   flex-shrink: 0;
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
+}
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
 .splide__sr {
   position: absolute;
@@ -2352,16 +2349,6 @@ p,::slotted([slot="description"]) {
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
   margin-inline-end: 0 !important;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 .pagination-container {
   display: flex;
@@ -2384,7 +2371,7 @@ p,::slotted([slot="description"]) {
   background: var(--p-color-contrast-medium);
   width: 0px;
   height: 0px;
-  transition: background-color .4s, width .4s, height .4s;
+  transition: background-color .4s,width .4s,height .4s;
 }
 .pagination--infinite > .bullet:nth-child(-n+4) {
   width: 8px;
@@ -2446,6 +2433,12 @@ p,::slotted([slot="description"]) {
   }
 }
 
+@media(forced-colors:active) {
+  .splide__slide:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2465,16 +2458,9 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(forced-colors:active) {
-  .splide__slide:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   .bullet {
     cursor: pointer;
   }
-}
-"
+}"
 `;

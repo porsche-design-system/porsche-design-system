@@ -44,8 +44,7 @@ svg {
   svg {
     fill: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for size: inherit 2`] = `
@@ -92,8 +91,7 @@ svg {
   svg {
     fill: CanvasText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for size: small 1`] = `
@@ -134,12 +132,6 @@ svg {
   height: inherit;
   fill: var(--p-color-primary);
 }
-@supports (height: round(down, 1px, 1px)) {
-  :host {
-    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
-  }
-}
-
 @media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
@@ -148,7 +140,12 @@ svg {
     fill: CanvasText;
   }
 }
-"
+
+@supports (height: round(down, 1px, 1px)) {
+  :host {
+    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+  }
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for size: small 2`] = `
@@ -189,12 +186,6 @@ svg {
   height: inherit;
   fill: var(--p-color-primary);
 }
-@supports (height: round(down, 1px, 1px)) {
-  :host {
-    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
-  }
-}
-
 @media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
@@ -203,5 +194,10 @@ svg {
     fill: CanvasText;
   }
 }
-"
+
+@supports (height: round(down, 1px, 1px)) {
+  :host {
+    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+  }
+}"
 `;

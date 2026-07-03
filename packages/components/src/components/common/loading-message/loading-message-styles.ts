@@ -1,4 +1,4 @@
-import type { Styles } from 'jss';
+import type { Styles } from '../../../utils/emotionCss';
 import { getHiddenTextJssStyle } from '../../../styles';
 
 export const getFunctionalComponentLoadingMessageStyles = (): Styles<'loading'> => {

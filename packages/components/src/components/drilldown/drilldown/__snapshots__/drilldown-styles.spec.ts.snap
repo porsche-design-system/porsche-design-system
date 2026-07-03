@@ -42,7 +42,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
     z-index: 999999999;
     outline: 0;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete, background var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete,background var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
   }
   dialog::backdrop {
     display: none;
@@ -78,7 +78,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
     display: grid;
     opacity: 0;
     transform: translate3d(-100%,0,0);
-    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   .drawer:dir(rtl) {
     transform: translate3d(100%,0,0);
@@ -107,13 +107,13 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
     .drawer:dir(rtl) {
       background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
-    .drawer::after {
-      grid-area: 1/4/-1/-1;
-      background: var(--_p-drilldown-c);
-    }
     .drawer::before {
       grid-area: 1/1/-1/4;
       background: var(--_p-drilldown-b);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: var(--_p-drilldown-c);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -140,11 +140,11 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
+    .drawer::before {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
-    .drawer::before {
+    .drawer::after {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
@@ -167,8 +167,7 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isPrim
       place-self: center;
       z-index: 2;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false and isSecondaryScrollerVisible: false 1`] = `
@@ -216,7 +215,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-drilldown-d);
-    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -246,7 +245,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -269,13 +268,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(1, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
-      grid-area: 1/4/-1/-1;
-      background: var(--_p-drilldown-c);
-    }
     .drawer::before {
       grid-area: 1/1/-1/4;
       background: var(--_p-drilldown-b);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: var(--_p-drilldown-c);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -302,11 +301,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
+    .drawer::before {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
-    .drawer::before {
+    .drawer::after {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
@@ -335,8 +334,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .dismiss-desktop {
       display: none;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: false and isSecondaryScrollerVisible: true 1`] = `
@@ -384,7 +382,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-drilldown-d);
-    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -410,7 +408,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -436,13 +434,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer:dir(rtl) {
       background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
-    .drawer::after {
-      grid-area: 1/4/-1/-1;
-      background: var(--_p-drilldown-c);
-    }
     .drawer::before {
       grid-area: 1/1/-1/4;
       background: var(--_p-drilldown-b);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: var(--_p-drilldown-c);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -469,11 +467,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
+    .drawer::before {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
-    .drawer::before {
+    .drawer::after {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
@@ -488,8 +486,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .dismiss-desktop {
       display: none;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: false 1`] = `
@@ -537,7 +534,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-drilldown-d);
-    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -581,7 +578,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -604,13 +601,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(1, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
-      grid-area: 1/4/-1/-1;
-      background: var(--_p-drilldown-c);
-    }
     .drawer::before {
       grid-area: 1/1/-1/4;
       background: var(--_p-drilldown-b);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: var(--_p-drilldown-c);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -637,11 +634,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
+    .drawer::before {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
-    .drawer::before {
+    .drawer::after {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
@@ -670,8 +667,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .dismiss-desktop {
       display: none;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: true 1`] = `
@@ -719,7 +715,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-drilldown-d);
-    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -755,7 +751,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -781,13 +777,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer:dir(rtl) {
       background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
-    .drawer::after {
-      grid-area: 1/4/-1/-1;
-      background: var(--_p-drilldown-c);
-    }
     .drawer::before {
       grid-area: 1/1/-1/4;
       background: var(--_p-drilldown-b);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: var(--_p-drilldown-c);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -814,11 +810,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
+    .drawer::before {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
-    .drawer::before {
+    .drawer::after {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
@@ -841,8 +837,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       place-self: center;
       z-index: 2;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: true 2`] = `
@@ -890,7 +885,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-drilldown-d);
-    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -926,7 +921,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -952,13 +947,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer:dir(rtl) {
       background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
-    .drawer::after {
-      grid-area: 1/4/-1/-1;
-      background: var(--_p-drilldown-c);
-    }
     .drawer::before {
       grid-area: 1/1/-1/4;
       background: var(--_p-drilldown-b);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: var(--_p-drilldown-c);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -985,11 +980,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
+    .drawer::before {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
-    .drawer::before {
+    .drawer::after {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
@@ -1012,8 +1007,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       place-self: center;
       z-index: 2;
     }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, isPrimary: true and isSecondaryScrollerVisible: true 3`] = `
@@ -1061,7 +1055,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background: var(--_p-drilldown-d);
-    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+    transition: background var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
   }
   dialog::backdrop {
     display: none;
@@ -1097,7 +1091,7 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     display: grid;
     opacity: 1;
     transform: translate3d(0,0,0);
-    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+    transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   .drawer::before, .drawer::after {
     content: "";
@@ -1123,13 +1117,13 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
     .drawer:dir(rtl) {
       background: linear-gradient(90deg,var(--_p-drilldown-c) 0%,var(--_p-drilldown-c) 50%,var(--_p-drilldown-b) 50%,var(--_p-drilldown-b) 100%);
     }
-    .drawer::after {
-      grid-area: 1/4/-1/-1;
-      background: var(--_p-drilldown-c);
-    }
     .drawer::before {
       grid-area: 1/1/-1/4;
       background: var(--_p-drilldown-b);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: var(--_p-drilldown-c);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -1156,11 +1150,11 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
+    .drawer::before {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
-    .drawer::before {
+    .drawer::after {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
@@ -1183,6 +1177,5 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isPrima
       place-self: center;
       z-index: 2;
     }
-}
-"
+}"
 `;

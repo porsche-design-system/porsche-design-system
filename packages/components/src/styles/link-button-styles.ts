@@ -1,4 +1,4 @@
-import type { Styles } from 'jss';
+import type { Styles } from '../utils/emotionCss';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant } from '../types';
 import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import {

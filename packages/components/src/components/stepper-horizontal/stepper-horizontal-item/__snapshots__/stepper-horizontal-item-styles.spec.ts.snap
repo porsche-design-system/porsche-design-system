@@ -20,19 +20,13 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: pointer;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -41,6 +35,12 @@ button:focus-visible {
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -83,7 +83,7 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: not-allowed;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
@@ -95,12 +95,12 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
   button {
     color: GrayText;
     border-color: GrayText;
-  }
-  button:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -142,7 +142,7 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: pointer;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -152,15 +152,6 @@ button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  button {
-    outline: 1px solid CanvasText;
-  }
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -169,6 +160,15 @@ button:focus-visible {
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  button {
+    outline: 1px solid CanvasText;
   }
 }
 
@@ -261,7 +261,7 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: not-allowed;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
@@ -276,13 +276,13 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
   button {
     outline: 1px solid CanvasText;
     color: GrayText;
     border-color: GrayText;
-  }
-  button:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -356,8 +356,7 @@ button:focus-visible {
   .icon {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for state: undefined, isDisabled: false 1`] = `
@@ -381,7 +380,7 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: not-allowed;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
@@ -393,12 +392,12 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
   button {
     color: GrayText;
     border-color: GrayText;
-  }
-  button:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -472,8 +471,7 @@ button:focus-visible {
   .icon {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for state: undefined, isDisabled: true 1`] = `
@@ -497,7 +495,7 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: not-allowed;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
@@ -509,12 +507,12 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
   button {
     color: GrayText;
     border-color: GrayText;
-  }
-  button:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -588,8 +586,7 @@ button:focus-visible {
   .icon {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for state: warning, isDisabled: false 1`] = `
@@ -612,19 +609,13 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: pointer;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -633,6 +624,12 @@ button:focus-visible {
     -webkit-backdrop-filter: var(--p-blur-frosted);
     backdrop-filter: var(--p-blur-frosted);
     background: var(--p-color-frosted);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -675,7 +672,7 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: not-allowed;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
@@ -687,12 +684,12 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
   button {
     color: GrayText;
     border-color: GrayText;
-  }
-  button:focus-visible {
-    outline-color: Highlight;
   }
 }
 

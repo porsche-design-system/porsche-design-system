@@ -9,7 +9,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   --_p-table-c: var(--p-color-contrast-low) !important;
   --_p-table-a: var(--p-spacing-fluid-sm) !important;
   --_p-table-d: 1px !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -39,7 +39,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   --_p-table-c: var(--p-color-contrast-low) !important;
   --_p-table-a: var(--p-spacing-fluid-sm) !important;
   --_p-table-d: 1px !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -69,7 +69,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   --_p-table-c: var(--p-color-contrast-low) !important;
   --_p-table-a: var(--p-spacing-fluid-sm) !important;
   --_p-table-d: 1px !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -100,7 +100,7 @@ exports[`getComponentCss() > should return correct css for compact: false and la
   --_p-table-c: var(--p-color-contrast-low) !important;
   --_p-table-a: var(--p-spacing-fluid-sm) !important;
   --_p-table-d: 1px !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -131,7 +131,7 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   --_p-table-c: var(--p-color-contrast-low) !important;
   --_p-table-a: var(--p-spacing-static-sm) !important;
   --_p-table-d: 1px !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -161,7 +161,7 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   --_p-table-c: var(--p-color-contrast-low) !important;
   --_p-table-a: var(--p-spacing-static-sm) !important;
   --_p-table-d: 1px !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -191,7 +191,7 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   --_p-table-c: var(--p-color-contrast-low) !important;
   --_p-table-a: var(--p-spacing-static-sm) !important;
   --_p-table-d: 1px !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -222,7 +222,7 @@ exports[`getComponentCss() > should return correct css for compact: true and lay
   --_p-table-c: var(--p-color-contrast-low) !important;
   --_p-table-a: var(--p-spacing-static-sm) !important;
   --_p-table-d: 1px !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }

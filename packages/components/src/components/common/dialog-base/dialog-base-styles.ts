@@ -15,7 +15,7 @@ import {
   spacingStatic2Xs,
   spacingStaticMd,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle, Styles } from '../../../utils/emotionCss';
 import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import { overlayTransitionSupportsQuery } from '../../../utils';
 

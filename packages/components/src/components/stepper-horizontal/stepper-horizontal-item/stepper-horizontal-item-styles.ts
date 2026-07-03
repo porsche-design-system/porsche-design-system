@@ -1,5 +1,5 @@
 import { spacingStaticSm, spacingStaticXs } from '@porsche-design-system/tokens';
-import type { JssStyle } from 'jss';
+import type { JssStyle } from '../../../utils/emotionCss';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,

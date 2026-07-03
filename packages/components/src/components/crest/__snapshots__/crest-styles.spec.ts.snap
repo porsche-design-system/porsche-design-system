@@ -44,6 +44,5 @@ img {
   a:focus-visible::before {
     outline-color: Highlight;
   }
-}
-"
+}"
 `;

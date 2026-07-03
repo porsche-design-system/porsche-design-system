@@ -17,6 +17,5 @@ exports[`getComponentCss() > should return correct css 1`] = `
   :host(:focus-visible) {
     outline-color: Highlight !important;
   }
-}
-"
+}"
 `;

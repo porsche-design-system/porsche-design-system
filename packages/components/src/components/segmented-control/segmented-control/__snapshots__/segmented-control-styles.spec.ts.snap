@@ -40,7 +40,7 @@ slot:not([name]) {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -72,9 +72,9 @@ slot:not([name]) {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -199,8 +199,7 @@ slot:not([name]) {
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: { base: 4, s: 3, m: 2, l: 'auto' }, disabled: true, hideLabel: false, state: success and noWrap: false 1`] = `
@@ -262,7 +261,7 @@ slot:not([name]) {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -296,9 +295,9 @@ slot:not([name]) {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-success);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -309,8 +308,7 @@ slot:not([name]) {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getComponentCss() > should return correct css for minWidth: 46, maxWidth: 20, columns: auto, disabled: false, hideLabel: false, state: none and noWrap: false 1`] = `
@@ -354,7 +352,7 @@ slot:not([name]) {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -386,8 +384,8 @@ slot:not([name]) {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -435,7 +433,7 @@ slot:not([name]) {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -467,8 +465,8 @@ slot:not([name]) {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -518,7 +516,7 @@ slot:not([name]) {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -550,8 +548,8 @@ slot:not([name]) {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -604,7 +602,7 @@ slot:not([name]) {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -638,9 +636,9 @@ slot:not([name]) {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-error);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -654,6 +652,5 @@ slot:not([name]) {
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;

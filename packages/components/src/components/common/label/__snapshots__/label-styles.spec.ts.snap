@@ -12,7 +12,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -160,8 +160,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
     white-space: normal;
     margin-top: calc(-1 * var(--p-spacing-static-xs));
   }
-}
-"
+}"
 `;
 
 exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 1`] = `
@@ -177,7 +176,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -222,7 +221,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -267,7 +266,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -311,7 +310,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -354,7 +353,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -397,7 +396,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -441,7 +440,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -486,7 +485,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -531,7 +530,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -567,8 +566,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
 
 exports[`getLabelStyles() > should return correct css for isDisabled: true, isLoading: false, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 2`] = `
@@ -584,7 +582,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: not-allowed;
   color: var(--p-color-primary);
   pointer-events: none;
@@ -620,6 +618,5 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
     opacity: 1;
     color: GrayText;
   }
-}
-"
+}"
 `;
