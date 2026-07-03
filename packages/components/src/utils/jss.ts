@@ -1,32 +1,23 @@
 import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/emotion';
 import type { TagName } from '@porsche-design-system/shared';
-import { create, type JssStyle, type Styles } from 'jss';
-import jssPluginCamelCase from 'jss-plugin-camel-case';
-import jssPluginGlobal from 'jss-plugin-global';
-import jssPluginNested from 'jss-plugin-nested';
-import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
+// Local replacement for the types previously imported from the `jss` package. `jss` is no longer a
+// dependency (see ./jss-custom-serializer.ts); these structural types stand in for `jss`'s
+// `JssStyle`/`Styles` wherever plain CSS-in-JS objects are authored across the components package.
+export interface JssStyle {
+  [property: string]: any;
+}
+export type Styles<Name extends string | number | symbol = string> = Partial<Record<Name, JssStyle | string>>;
+
 import { addImportantToEachRule } from '../styles';
 import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
 import { getShadowRootHTMLElement } from './dom';
 import { hasPropValueChanged } from './has-prop-value-changed';
+import { getCssCustom } from './jss-custom-serializer';
 import { getTagNameWithoutPrefix } from './tag-name';
 
-// NOTE: handpicked selection of plugins from jss-preset-default
-const jss = create({
-  plugins: [
-    jssPluginGlobal(),
-    jssPluginNested(),
-    jssPluginCamelCase(),
-    jssPluginSortMediaQueries({ combineMediaQueries: true }),
-  ],
-});
-
-export const getCss = (jssStyles: Styles): string =>
-  jss
-    .createStyleSheet(jssStyles, {
-      generateId: (rule) => rule.key,
-    })
-    .toString();
+// Byte-for-byte custom serializer replacing jss@10 + jss-plugin-{global,nested,camel-case}
+// + jss-plugin-sort-css-media-queries. Implementation in ./jss-custom-serializer.
+export const getCss = (jssStyles: Styles): string => getCssCustom(jssStyles);
 
 export const supportsConstructableStylesheets = (): boolean => {
   try {
