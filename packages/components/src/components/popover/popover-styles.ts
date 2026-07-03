@@ -115,7 +115,8 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => 
       },
       button: {
         all: 'unset',
-        display: 'grid',
+        display: 'inline-grid',
+        verticalAlign: 'top',
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
         width: ref(leadingNormal),
         height: ref(leadingNormal),

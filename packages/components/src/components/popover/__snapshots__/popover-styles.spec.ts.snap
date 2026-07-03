@@ -21,7 +21,8 @@ slot:not([name]), p {
 }
 button {
   all: unset;
-  display: grid;
+  display: inline-grid;
+  vertical-align: top;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
@@ -132,7 +133,8 @@ slot:not([name]), p {
 }
 button {
   all: unset;
-  display: grid;
+  display: inline-grid;
+  vertical-align: top;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
@@ -243,7 +245,8 @@ slot:not([name]), p {
 }
 button {
   all: unset;
-  display: grid;
+  display: inline-grid;
+  vertical-align: top;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
@@ -359,7 +362,8 @@ slot:not([name]), p {
 }
 button {
   all: unset;
-  display: grid;
+  display: inline-grid;
+  vertical-align: top;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
