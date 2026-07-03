@@ -203,6 +203,29 @@ test.describe('mouse behavior', () => {
       await expect(popover).toBeVisible();
     });
 
+    test('should not close popover when non-focusable content is clicked inside a focusable ancestor container', async ({
+      page,
+    }) => {
+      // Regression: when the popover lives inside a focusable container (e.g. a scroll/main wrapper with `tabindex="-1"`,
+      // as used by the storefront's `#main-content`), clicking non-focusable panel content shifts focus up to that
+      // container. `relatedTarget` is then a real element that is an *ancestor* of the popover — this must not dismiss it.
+      await setContentWithDesignSystem(
+        page,
+        `
+<div id="focusable-ancestor" tabindex="-1">
+  <p-popover><strong>strong</strong> Some Popover Content</p-popover>
+</div>`
+      );
+      const popover = getPopover(page);
+      const button = getButton(page);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      await page.locator('strong').click();
+      await expect(popover).toBeVisible();
+    });
+
     test('should be possible to select/highlight text within open popover', async ({ page }) => {
       await initPopover(page, { withStrong: true });
       const popover = getPopover(page);

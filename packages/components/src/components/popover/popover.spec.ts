@@ -316,6 +316,20 @@ describe('onFocusout', () => {
 
     expect(dismissSpy).not.toHaveBeenCalled();
   });
+
+  it('should not dismiss when focus moves to an ancestor of the host (e.g. a focusable container)', () => {
+    // Clicking non-focusable panel content inside a focusable ancestor (such as a `[tabindex]` scroll/main wrapper)
+    // shifts focus up to that container; `relatedTarget` then contains the host and must not dismiss the popover.
+    const dismissSpy = vi.spyOn(component as any, 'dismissPopover');
+    const ancestor = document.createElement('div');
+    ancestor.appendChild(component.host);
+    component.open = true;
+    component['refPopover'] = document.createElement('div') as HTMLDivElement;
+
+    component.onFocusout({ relatedTarget: ancestor } as unknown as FocusEvent);
+
+    expect(dismissSpy).not.toHaveBeenCalled();
+  });
 });
 
 describe('onEscape', () => {

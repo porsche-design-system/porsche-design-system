@@ -148,12 +148,18 @@ export class Popover {
     // element (e.g. a mouse click on non-focusable panel content) and must NOT dismiss the popover — those cases are
     // covered by `onClickOutside` / `onEscape`. This keeps keyboard-opening another popover working without any
     // document-level coordination.
+    // Also skip when `relatedTarget` is an *ancestor* of the host: clicking non-focusable panel content inside a
+    // focusable container (e.g. an `[tabindex]` scroll/main wrapper such as the storefront's `#main-content`) shifts
+    // focus up to that container rather than to a sibling/unrelated element. That is not a genuine "focus left the
+    // popover" case — a keyboard tab-out never lands on an ancestor of the popover — so it must be ignored just like a
+    // `null` `relatedTarget`; outside-click / Escape still handle real dismissal.
     const relatedTarget = e.relatedTarget as HTMLElement | null;
     if (
       this.effectiveOpen &&
       relatedTarget &&
       !this.host.contains(relatedTarget) &&
-      !this.refPopover?.contains(relatedTarget)
+      !this.refPopover?.contains(relatedTarget) &&
+      !relatedTarget.contains(this.host)
     ) {
       this.dismissPopover();
     }
