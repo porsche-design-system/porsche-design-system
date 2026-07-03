@@ -217,10 +217,7 @@
     "npm:clean": "npm cache clean --force"
   },
   "dependencies": {
-    "change-case": "^5.4.4",
-    "jss": "^10.10.0",
-    "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
-    "jss-preset-default": "^10.10.0"
+    "change-case": "^5.4.4"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
@@ -271,6 +268,7 @@
     "webpack": "^5.108.1"
   },
   "overrides": {
+    "@babel/runtime": "^8.0.0",
     "madge": {
       "typescript": "$typescript"
     },
