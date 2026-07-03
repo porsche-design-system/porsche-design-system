@@ -72,10 +72,10 @@ export const getComponentCss = (): string => {
       '@keyframes out': getKeyframesMobile('out', cssVariablePositionBottomInternal),
     },
     hydrated: {
-      animation: `${duration} $in ${motionEasingIn} forwards`,
+      animation: `${duration} in ${motionEasingIn} forwards`,
     },
     [toastCloseClassName]: {
-      animation: addImportantToRule(`${ANIMATION_DURATION} $out ${motionEasingOut} forwards`),
+      animation: addImportantToRule(`${ANIMATION_DURATION} out ${motionEasingOut} forwards`),
     },
   });
 };

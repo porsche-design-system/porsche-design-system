@@ -38,10 +38,10 @@ exports[`getComponentCss() > should return correct css 1`] = `
 }
 
   .hydrated {
-    animation: .4s $in cubic-bezier(0,0,.2,1) forwards;
+    animation: .4s in cubic-bezier(0,0,.2,1) forwards;
   }
   .close {
-    animation: .4s $out cubic-bezier(.4,0,.5,1) forwards !important;
+    animation: .4s out cubic-bezier(.4,0,.5,1) forwards !important;
   }"
 `;
 
