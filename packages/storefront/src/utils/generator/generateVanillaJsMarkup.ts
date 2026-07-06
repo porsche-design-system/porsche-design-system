@@ -99,12 +99,12 @@ export const generateVanillaJSControlledScript = (
   const selector = `  const ${constant} = document.querySelector("${tagName}");`;
 
   const eventHandler = eventEntries
-    .map(([eventName, { target, prop, value, eventValueKey, negateValue }]) => {
+    .map(([eventName, { target, prop, value, eventValueKey, negateValue, toggleValue }]) => {
       const element = camelCase(target);
       const nativeEventName = camelCase(eventName.replace('on', ''));
       return eventValueKey
         ? `  ${constant}.addEventListener('${nativeEventName}', (e) => e.target.${prop} = ${negateValue ? '!' : ''}e.detail.${eventValueKey});`
-        : `  ${constant}.addEventListener('${nativeEventName}', () => (${element}.${prop} = ${negateValue ? '!' : ''}${value}));`;
+        : `  ${constant}.addEventListener('${nativeEventName}', () => (${element}.${prop} = ${toggleValue ? `!${element}.${prop}` : `${negateValue ? '!' : ''}${value}`}));`;
     })
     .join('\n');
 

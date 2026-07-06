@@ -3,6 +3,7 @@
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import React, { type ReactNode, useEffect, useState } from 'react';
+import type { ConfiguratorMode } from '@/components/playground/ConfigureBehavior';
 import { ConfiguratorControls } from '@/components/playground/ConfiguratorControls';
 import { Playground } from '@/components/playground/Playground';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
@@ -16,31 +17,50 @@ type ConfiguratorTestProps<T extends HTMLTagOrComponent> = {
   tagName: T;
   story: Story<HTMLTagOrComponent>;
   slotStories?: SlotStories<T>;
+  /**
+   * Optional controlled-mode variant. When provided, a "Behavior" card is rendered in the sidebar that
+   * lets the user switch between the uncontrolled (`story`) and controlled (`controlledStory`) setups.
+   * Used by dual-mode components such as `p-popover`.
+   */
+  controlledStory?: Story<HTMLTagOrComponent>;
+  controlledSlotStories?: SlotStories<T>;
 };
 
 export const Configurator = <T extends HTMLTagOrComponent>({
   tagName,
   story,
   slotStories,
+  controlledStory,
+  controlledSlotStories,
 }: ConfiguratorTestProps<T>) => {
   const { storefrontColorScheme } = useStorefrontColorScheme();
   const { storefrontFramework } = useStorefrontFramework();
-  const [exampleState, setExampleState] = useState<StoryState<HTMLTagOrComponent>>(story.state ?? {});
+
+  const [mode, setMode] = useState<ConfiguratorMode>('uncontrolled');
+  const activeStory = mode === 'controlled' && controlledStory ? controlledStory : story;
+  const activeSlotStories = mode === 'controlled' && controlledStory ? controlledSlotStories : slotStories;
+
+  const [exampleState, setExampleState] = useState<StoryState<HTMLTagOrComponent>>(activeStory.state ?? {});
   const [exampleElement, setExampleElement] = useState<ReactNode>(
-    createElements(story.generator(story.state), setExampleState)
+    createElements(activeStory.generator(activeStory.state), setExampleState)
   );
   const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>(
-    createFrameworkMarkup(story.generator(story.state), story.state, storefrontColorScheme)
+    createFrameworkMarkup(activeStory.generator(activeStory.state), activeStory.state, storefrontColorScheme)
   );
 
+  // Reset the configured state to the active story's defaults whenever the mode changes.
   useEffect(() => {
-    const generatedStory = story.generator(exampleState);
+    setExampleState(activeStory.state ?? {});
+  }, [mode]);
+
+  useEffect(() => {
+    const generatedStory = activeStory.generator(exampleState);
     setExampleElement(createElements(generatedStory, setExampleState));
     setExampleMarkup(createFrameworkMarkup(generatedStory, exampleState, storefrontColorScheme));
-  }, [exampleState, storefrontColorScheme]);
+  }, [exampleState, storefrontColorScheme, activeStory]);
 
   const onOpenInStackblitz = () => {
-    const markup = createStackblitzMarkupFromStory(story, exampleState, storefrontFramework, storefrontColorScheme);
+    const markup = createStackblitzMarkupFromStory(activeStory, exampleState, storefrontFramework, storefrontColorScheme);
     openInStackblitz(storefrontFramework as Framework, markup, storefrontColorScheme);
   };
 
@@ -51,10 +71,15 @@ export const Configurator = <T extends HTMLTagOrComponent>({
       </Playground>
       <ConfiguratorControls
         tagName={tagName as ConfiguratorTagNames}
-        defaultStoryState={story.state ?? {}}
+        defaultStoryState={activeStory.state ?? {}}
         storyState={exampleState as StoryState<ConfiguratorTagNames>}
         setStoryState={setExampleState}
-        slotStories={slotStories as SlotStories<ConfiguratorTagNames>}
+        slotStories={activeSlotStories as SlotStories<ConfiguratorTagNames>}
+        requiredSlots={activeStory.requiredSlots}
+        disabledProps={activeStory.disabledProps}
+        mode={mode}
+        onUpdateMode={setMode}
+        hasControlledStory={!!controlledStory}
       />
     </>
   );

@@ -132,7 +132,7 @@ export const generateVueControlledScript = (
     .join('\n');
 
   const eventHandler = eventEntries
-    .map(([eventName, { prop, value, eventValueKey, eventType, negateValue }]) => {
+    .map(([eventName, { prop, value, eventValueKey, eventType, negateValue, toggleValue }]) => {
       if (eventValueKey) {
         eventType && types.push(eventType);
         return `  const ${eventName} = (e: CustomEvent<${eventType}>) => {
@@ -140,7 +140,7 @@ export const generateVueControlledScript = (
   }`;
       }
       return `  const ${eventName} = () => {
-    ${prop}.value = ${negateValue ? '!' : ''}${value};
+    ${prop}.value = ${toggleValue ? `!${prop}.value` : `${negateValue ? '!' : ''}${value}`};
   }`;
     })
     .join('\n');

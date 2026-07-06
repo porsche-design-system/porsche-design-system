@@ -24,6 +24,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Multi Select`: Announcement of the active/selected option in screen reader
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
 
+## [4.4.0-rc.0] - 2026-07-06
+
+### Added
+
+- `Popover` ([#4562](https://github.com/porsche-design-system/porsche-design-system/pull/4562)):
+  - Support for controlled and uncontrolled usage: when the `open` prop is omitted the component manages its own
+    visibility (uncontrolled), when it is set the consumer owns the open state via a custom trigger projected through
+    the named `button` slot (controlled)
+  - `open` prop to control the popover's visibility in controlled mode
+  - `compact` prop to reduce padding and spacing for a more compact layout, useful in space-constrained interfaces
+  - `dismiss` event emitted in controlled mode when the user requests to close the popover via the `Escape` key, an
+    outside click, or when keyboard focus leaves the popover (`Tab` / `Shift+Tab`)
+  - CSS variables to customize the popover panel: `--p-popover-w`, `--p-popover-h`, `--p-popover-min-w`,
+    `--p-popover-min-h`, `--p-popover-max-w`, `--p-popover-max-h`, `--p-popover-px`, `--p-popover-py` and
+    `--p-popover-radius`
+
+### Changed
+
+- `Popover`: Improved visual appearance
+  ([#4562](https://github.com/porsche-design-system/porsche-design-system/pull/4562))
+
 ## [4.3.0] - 2026-06-24
 
 ## [4.3.0-rc.0] - 2026-06-24

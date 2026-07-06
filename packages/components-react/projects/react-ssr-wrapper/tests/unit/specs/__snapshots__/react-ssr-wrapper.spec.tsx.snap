@@ -32,6 +32,8 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
+    display: inline-block !important;
+    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -350,6 +352,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -1406,6 +1410,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -1590,6 +1596,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -5033,6 +5041,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -7341,6 +7351,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -7530,6 +7542,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -7708,6 +7722,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -7895,6 +7911,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -8078,6 +8096,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -8256,6 +8276,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -8440,6 +8462,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -8618,6 +8642,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -8796,6 +8822,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -8985,6 +9013,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -9163,6 +9193,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -10537,6 +10569,8 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
+    display: inline-block !important;
+    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -10855,6 +10889,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -11705,6 +11741,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -11878,172 +11916,138 @@ exports[`should render dsr component for PPopover 1`] = `
     shadowrootmode="open"
   >
     <style>
-      @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-  :host {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-  }
-  :host([hidden]) {
-    display: none !important;
-  }
-  slot[name="button"] {
-    display: block;
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
-  }
-  p {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    margin: 0;
-  }
-  button {
-    all: unset;
-    display: block;
-    font: var(--p-typescale-sm) var(--p-font-porsche-next);
-    width: var(--p-leading-normal);
-    height: var(--p-leading-normal);
-    border-radius: var(--p-radius-full);
-    cursor: pointer;
-    background-color: var(--p-color-frosted);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-    -webkit-backdrop-filter: var(--p-blur-frosted);
-    backdrop-filter: var(--p-blur-frosted);
-  }
-  button:focus-visible {
-    outline: 2px solid var(--p-color-focus);
-    outline-offset: 2px;
-  }
-  [popover] {
-    all: unset;
-    position: absolute;
-    pointer-events: none;
-    filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-    backdrop-filter: drop-shadow(0 0 transparent);
-    animation: var(--p-animation-duration,var(--p-duration-sm)) fade-in var(--p-ease-in-out) forwards;
-  }
-  [popover]:not(:popover-open) {
-    display: none;
-  }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
-    }
-}
-
-@media(hover:hover) {
-    button:hover {
-      background-color: var(--p-color-frosted-soft);
-    }
-}
-
-  .label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    transform: translate3d(0,0,0);
-  }
-  .arrow {
-    position: absolute;
-    width: 24px;
-    height: 12px;
-    clip-path: polygon(50% 0, 100% 110%, 0 110%);
-    background: var(--p-color-canvas);
-  }
-  .content {
-    max-width: min(calc(100dvw - 16px), 48ch);
-    width: max-content;
-    box-sizing: border-box;
-    padding: var(--p-spacing-static-sm) var(--p-spacing-static-md);
-    pointer-events: auto;
-    border-radius: var(--p-radius-xl);
-    background: var(--p-color-canvas);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    color: var(--p-color-primary);
-  }
-@media(forced-colors:active) {
-    .arrow {
-      background: CanvasText;
-    }
-    .content {
-      outline: 2px solid CanvasText;
-      outline-offset: -2px;
-    }
-}
-
-    </style>
-    <button
-      type="button"
-    >
-      <p-icon
-        class="icon"
-        data-ssr=""
-      >
-        <template
-          shadowroot="open"
-          shadowrootmode="open"
-        >
-          <style>
-            :host {
-  display: inline-flex;
-  vertical-align: top;
+      :host {
+  display: contents;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
+slot:not([name]), p {
   display: block;
   margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  object-position: -9999px -9999px;
-  pointer-events: none;
-  width: var(--p-icon-size,var(--p-leading-normal));
-  height: var(--p-icon-size,var(--p-leading-normal));
-  font-family: var(--p-font-porsche-next);
-  font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/information.da41162.svg") center/contain no-repeat;
-  background: var(--p-icon-color,var(--p-color-primary));
+  min-width: 0;
+  min-height: 0;
+  max-width: inherit;
+  max-height: inherit;
+  box-sizing: border-box;
+  padding: var(--p-popover-py,calc(12 * var(--p-spacing-static-2xs))) var(--p-popover-px,var(--p-spacing-static-md));
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+}
+button {
+  all: unset;
+  display: inline-grid;
+  vertical-align: top;
+  font: var(--p-typescale-sm) var(--p-font-porsche-next);
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  border-radius: var(--p-radius-full);
+  cursor: pointer;
+  background: var(--p-color-frosted);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+}
+button:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+button::after {
+  content: "";
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: var(--p-color-primary);
+}
+[popover] {
+  all: unset;
+  position: fixed;
+  top: 0;
+  left: 0;
+  filter: drop-shadow(0 0 16px rgba(0,0,0,.3));
+  backdrop-filter: drop-shadow(0 0 transparent);
+  border-radius: var(--p-popover-radius,var(--p-radius-xl));
+  background: var(--p-color-canvas);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  color: var(--p-color-primary);
+  width: var(--p-popover-w,max-content);
+  height: var(--p-popover-h,auto);
+  min-width: var(--p-popover-min-w,0px);
+  min-height: var(--p-popover-min-h,auto);
+  max-width: var(--p-popover-max-w,min(calc(100dvw - 16px), 48ch));
+  max-height: var(--p-popover-max-h,calc(100dvh - 16px));
+  opacity: 0;
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  overlay: none;
+  display: none;
+}
+[popover]:popover-open {
+  overlay: auto;
+  display: grid;
+}
+[popover]::backdrop {
+  display: none;
 }
 @media(forced-colors:active) {
-  img {
+  button::after {
+    background: CanvasText;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+  [popover] {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+}
+
+@media(hover:hover) {
+  button:hover {
+    background: var(--p-color-frosted-soft);
+  }
+}
+
+@supports (color: oklch(from red l c h)) {
+  [popover] {
+    background: hsl(from var(--p-color-canvas) h 0% calc(l + 14));
+  }
+}
+
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
+  [popover] {
+    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+  }
+}
+
+.arrow {
+  position: absolute;
+  width: 24px;
+  height: 12px;
+  clip-path: polygon(50% 0, 100% 110%, 0 110%);
+  background: inherit;
+}
+@media(forced-colors:active) {
+  .arrow {
     background: CanvasText;
   }
 }
 
-          </style>
-          <img
-            alt=""
-            height="24"
-            loading="lazy"
-            src="http://localhost:3001/icons/information.da41162.svg"
-            width="24"
-          />
-        </template>
-      </p-icon>
-      <span
-        class="label"
-      >
-        More information
-      </span>
-    </button>
+    </style>
+    <button
+      aria-details="popover"
+      aria-expanded="false"
+      aria-label="More information"
+      type="button"
+    />
+    <div
+      id="popover"
+      inert=""
+      popover="manual"
+    >
+      <div
+        class="arrow"
+      />
+      <slot />
+    </div>
   </template>
   Some child
 </p-popover>
@@ -12071,6 +12075,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -12212,6 +12218,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -12518,6 +12526,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -12703,6 +12713,8 @@ exports[`should render dsr component for PSelect 1`] = `
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
+    display: inline-block !important;
+    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -15246,6 +15258,8 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
+  display: inline-block !important;
+  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
