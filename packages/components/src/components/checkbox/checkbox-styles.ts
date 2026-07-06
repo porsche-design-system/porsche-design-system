@@ -52,8 +52,11 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       input: {
         ...getCheckboxBaseStyles(isDisabled, isLoading, isCompact, state),
-        '&:checked': getCheckboxCheckedBaseStyles(isLoading, state),
+        // `:indeterminate` must precede `:checked`: both target `::before` at equal specificity, so
+        // for a checked+indeterminate checkbox the later rule wins. Ordering `:checked` last keeps
+        // the checkmark visible (matching the pre-emotion baseline) instead of a black-on-black dash.
         '&:indeterminate': getCheckboxIndeterminateBaseStyles(isLoading, state),
+        '&:checked': getCheckboxCheckedBaseStyles(isLoading, state),
         '&:focus-visible': getFocusBaseStyles(),
       },
     },

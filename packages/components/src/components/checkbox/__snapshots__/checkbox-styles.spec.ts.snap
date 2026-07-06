@@ -45,6 +45,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -52,11 +57,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -66,10 +66,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -350,6 +350,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-error);
+}
 input:checked {
   background: var(--p-color-error);
 }
@@ -357,11 +362,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -374,10 +374,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -512,6 +512,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-error);
+}
 input:checked {
   background: var(--p-color-error);
 }
@@ -519,11 +524,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -536,10 +536,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -675,6 +675,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-error);
+}
 input:checked {
   background: var(--p-color-error);
 }
@@ -682,11 +687,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -696,10 +696,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -854,6 +854,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-error);
+}
 input:checked {
   background: var(--p-color-error);
 }
@@ -861,11 +866,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -875,10 +875,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -1032,6 +1032,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -1039,11 +1044,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1060,10 +1060,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -1197,6 +1197,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -1204,11 +1209,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1225,10 +1225,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -1363,6 +1363,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -1370,11 +1375,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1384,10 +1384,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -1545,6 +1545,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -1552,11 +1557,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1566,10 +1566,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -1726,6 +1726,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-success);
+}
 input:checked {
   background: var(--p-color-success);
 }
@@ -1733,11 +1738,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1750,10 +1750,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -1888,6 +1888,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-success);
+}
 input:checked {
   background: var(--p-color-success);
 }
@@ -1895,11 +1900,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -1912,10 +1912,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -2051,6 +2051,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-success);
+}
 input:checked {
   background: var(--p-color-success);
 }
@@ -2058,11 +2063,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -2072,10 +2072,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -2230,6 +2230,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-success);
+}
 input:checked {
   background: var(--p-color-success);
 }
@@ -2237,11 +2242,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -2251,10 +2251,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -2408,6 +2408,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-error);
+}
 input:checked {
   background: var(--p-color-error);
 }
@@ -2415,11 +2420,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -2432,10 +2432,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -2567,6 +2567,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-error);
+}
 input:checked {
   background: var(--p-color-error);
 }
@@ -2574,11 +2579,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -2591,10 +2591,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -2727,6 +2727,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-error);
+}
 input:checked {
   background: var(--p-color-error);
 }
@@ -2734,11 +2739,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -2748,10 +2748,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -2903,6 +2903,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-error);
+}
 input:checked {
   background: var(--p-color-error);
 }
@@ -2910,11 +2915,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-error);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -2924,10 +2924,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -3078,6 +3078,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -3085,11 +3090,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -3106,10 +3106,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -3240,6 +3240,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -3247,11 +3252,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -3268,10 +3268,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -3705,6 +3705,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -3712,11 +3717,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -3726,10 +3726,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -3884,6 +3884,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-primary);
+}
 input:checked {
   background: var(--p-color-primary);
 }
@@ -3891,11 +3896,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-primary);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -3905,10 +3905,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -4388,6 +4388,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-success);
+}
 input:checked {
   background: var(--p-color-success);
 }
@@ -4395,11 +4400,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -4412,10 +4412,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -4547,6 +4547,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-success);
+}
 input:checked {
   background: var(--p-color-success);
 }
@@ -4554,11 +4559,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -4571,10 +4571,10 @@ input:focus-visible {
 }
 
 @media(forced-colors:active) {
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -4707,6 +4707,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-success);
+}
 input:checked {
   background: var(--p-color-success);
 }
@@ -4714,11 +4719,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -4728,10 +4728,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
@@ -4883,6 +4883,11 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
+input:indeterminate::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
+  background-color: var(--p-color-success);
+}
 input:checked {
   background: var(--p-color-success);
 }
@@ -4890,11 +4895,6 @@ input:checked::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
-}
-input:indeterminate::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>') center/contain no-repeat;
-  background-color: var(--p-color-success);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -4904,10 +4904,10 @@ input:focus-visible {
   input {
     border-color: GrayText;
   }
-  input:checked::before {
+  input:indeterminate::before {
     background: CanvasText;
   }
-  input:indeterminate::before {
+  input:checked::before {
     background: CanvasText;
   }
   input:focus-visible {
