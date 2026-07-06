@@ -188,7 +188,7 @@ export class Select {
 
   private announceFilterStatus = debounce((filterValue: string, visibleOptionCount: number): void => {
     this.filterStatusMessage = getFilterStatusMessage(filterValue, visibleOptionCount);
-  }, FILTER_STATUS_ANNOUNCE_TIMEOUT);
+  }, 0);
 
   private get hasFilter(): boolean {
     return !!(this.filter || this.filterSlot);

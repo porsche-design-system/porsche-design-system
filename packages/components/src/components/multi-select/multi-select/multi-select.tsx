@@ -191,6 +191,10 @@ export class MultiSelect {
     this.filterStatusMessage = getFilterStatusMessage(filterValue, visibleOptionCount);
   }, FILTER_STATUS_ANNOUNCE_TIMEOUT);
 
+  private get hasFilter(): boolean {
+    return !hasNamedSlot(this.host, 'filter') || !!this.filterSlot;
+  }
+
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: MultiSelectOption }): void {
     e.stopPropagation();
@@ -516,7 +520,7 @@ export class MultiSelect {
           getNextOptionToHighlight(this.multiSelectOptions, this.currentlyHighlightedOption, action)
         );
         const targetElement = (
-          !this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+          this.hasFilter ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
         ) as
           | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
           | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
@@ -551,7 +555,7 @@ export class MultiSelect {
         this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
 
         const targetElement = (
-          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+          this.hasFilter ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
         ) as
           | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
           | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
