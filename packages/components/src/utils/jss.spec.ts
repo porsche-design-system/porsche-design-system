@@ -198,6 +198,38 @@ describe('getCss()', () => {
   display: block;
 }`,
     },
+    // JSS could not emit these at-rules; the emotion/stylis engine must (guards against silent-drop
+    // regression like the one @container originally hit).
+    {
+      input: {
+        '@global': {
+          ':host': { display: 'block', '@container (min-width: 760px)': { display: 'none' } },
+        },
+      },
+      result: `:host {
+  display: block;
+}
+@container (min-width: 760px) {
+  :host {
+    display: none;
+  }
+}`,
+    },
+    {
+      input: {
+        '@global': {
+          ':host': { display: 'block', '@starting-style': { opacity: 0 } },
+        },
+      },
+      result: `:host {
+  display: block;
+}
+@starting-style {
+  :host {
+    opacity: 0;
+  }
+}`,
+    },
   ];
   it.each(
     data.map(({ input, result }) => [input, result])
