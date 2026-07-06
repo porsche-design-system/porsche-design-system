@@ -35,7 +35,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: false 1`]
 .option--highlighted {
   background: var(--p-color-frosted);
 }
-.option--highlighted, .option--selected {
+.option--highlighted,.option--selected {
   color: var(--p-color-primary);
 }
 .option--disabled {
@@ -102,7 +102,7 @@ exports[`getComponentCss() > should return correct css for isDisabled: true 1`] 
 .option--highlighted {
   background: var(--p-color-frosted);
 }
-.option--highlighted, .option--selected {
+.option--highlighted,.option--selected {
   color: var(--p-color-primary);
 }
 .option--disabled {

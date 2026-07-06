@@ -10,7 +10,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   white-space: nowrap !important;
   cursor: pointer !important;
@@ -22,20 +22,20 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
   background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
-::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+::slotted(a:focus-visible),::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+::slotted(a:nth-child(1)),::slotted(button:nth-child(1)) {
   background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
   background-size: 100% 100% !important;
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  ::slotted(a:focus-visible),::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
   }
@@ -50,7 +50,7 @@ exports[`getComponentCss() > should return correct css for background: canvas, s
 }
 
 @media(hover:hover) {
-  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
+  ::slotted(a:not(:nth-child(1)):hover),::slotted(button:not(:nth-child(1)):hover) {
     background-color: var(--p-color-frosted) !important;
   }
 }
@@ -93,7 +93,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   white-space: nowrap !important;
   cursor: pointer !important;
@@ -105,20 +105,20 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
-::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+::slotted(a:focus-visible),::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+::slotted(a:nth-child(1)),::slotted(button:nth-child(1)) {
   background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
   background-size: 100% 100% !important;
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  ::slotted(a:focus-visible),::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
   }
@@ -133,7 +133,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 }
 
 @media(hover:hover) {
-  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
+  ::slotted(a:not(:nth-child(1)):hover),::slotted(button:not(:nth-child(1)):hover) {
     background-color: var(--p-color-frosted) !important;
   }
 }
@@ -178,7 +178,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   white-space: nowrap !important;
   cursor: pointer !important;
@@ -190,20 +190,20 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
-::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+::slotted(a:focus-visible),::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+::slotted(a:nth-child(1)),::slotted(button:nth-child(1)) {
   background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
   background-size: 100% 100% !important;
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  ::slotted(a:focus-visible),::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
   }
@@ -218,7 +218,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 }
 
 @media(hover:hover) {
-  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
+  ::slotted(a:not(:nth-child(1)):hover),::slotted(button:not(:nth-child(1)):hover) {
     background-color: var(--p-color-frosted) !important;
   }
 }
@@ -263,7 +263,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   white-space: nowrap !important;
   cursor: pointer !important;
@@ -275,20 +275,20 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
   background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
-::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+::slotted(a:focus-visible),::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+::slotted(a:nth-child(1)),::slotted(button:nth-child(1)) {
   background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
   background-size: 100% 100% !important;
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  ::slotted(a:focus-visible),::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
   }
@@ -303,7 +303,7 @@ exports[`getComponentCss() > should return correct css for background: frosted, 
 }
 
 @media(hover:hover) {
-  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
+  ::slotted(a:not(:nth-child(1)):hover),::slotted(button:not(:nth-child(1)):hover) {
     background-color: var(--p-color-frosted) !important;
   }
 }
@@ -348,7 +348,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   white-space: nowrap !important;
   cursor: pointer !important;
@@ -360,20 +360,20 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
-::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+::slotted(a:focus-visible),::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+::slotted(a:nth-child(1)),::slotted(button:nth-child(1)) {
   background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
   background-size: 100% 100% !important;
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  ::slotted(a:focus-visible),::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
   }
@@ -388,7 +388,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 }
 
 @media(hover:hover) {
-  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
+  ::slotted(a:not(:nth-child(1)):hover),::slotted(button:not(:nth-child(1)):hover) {
     background-color: var(--p-color-frosted) !important;
   }
 }
@@ -424,7 +424,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   white-space: nowrap !important;
   cursor: pointer !important;
@@ -436,20 +436,20 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
-::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+::slotted(a:focus-visible),::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a:nth-child(3)), ::slotted(button:nth-child(3)) {
+::slotted(a:nth-child(3)),::slotted(button:nth-child(3)) {
   background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
   background-size: 100% 100% !important;
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  ::slotted(a:focus-visible),::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
   }
@@ -464,7 +464,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 }
 
 @media(hover:hover) {
-  ::slotted(a:not(:nth-child(3)):hover), ::slotted(button:not(:nth-child(3)):hover) {
+  ::slotted(a:not(:nth-child(3)):hover),::slotted(button:not(:nth-child(3)):hover) {
     background-color: var(--p-color-frosted) !important;
   }
 }
@@ -500,7 +500,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   white-space: nowrap !important;
   cursor: pointer !important;
@@ -512,15 +512,15 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
-::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+::slotted(a:focus-visible),::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  ::slotted(a:focus-visible),::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
   }
@@ -535,7 +535,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 }
 
 @media(hover:hover) {
-  ::slotted(a:hover), ::slotted(button:hover) {
+  ::slotted(a:hover),::slotted(button:hover) {
     background-color: var(--p-color-frosted) !important;
   }
 }
@@ -571,7 +571,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   white-space: nowrap !important;
   cursor: pointer !important;
@@ -583,50 +583,50 @@ exports[`getComponentCss() > should return correct css for background: none, siz
   background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
-::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+::slotted(a:focus-visible),::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+::slotted(a:nth-child(1)),::slotted(button:nth-child(1)) {
   background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
   background-size: 100% 100% !important;
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(min-width:480px) {
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     font-size: var(--p-typescale-md) !important;
   }
 }
 
 @media(min-width:760px) {
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     font-size: var(--p-typescale-sm) !important;
   }
 }
 
 @media(min-width:1000px) {
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     font-size: var(--p-typescale-md) !important;
   }
 }
 
 @media(min-width:1300px) {
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     font-size: var(--p-typescale-sm) !important;
   }
 }
 
 @media(min-width:1760px) {
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     font-size: var(--p-typescale-md) !important;
   }
 }
 
 @media(forced-colors:active) {
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  ::slotted(a:focus-visible),::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
   }
@@ -641,7 +641,7 @@ exports[`getComponentCss() > should return correct css for background: none, siz
 }
 
 @media(hover:hover) {
-  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
+  ::slotted(a:not(:nth-child(1)):hover),::slotted(button:not(:nth-child(1)):hover) {
     background-color: var(--p-color-frosted) !important;
   }
 }
@@ -677,7 +677,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   white-space: nowrap !important;
   cursor: pointer !important;
@@ -689,20 +689,20 @@ exports[`getComponentCss() > should return correct css for background: surface, 
   background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
-::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+::slotted(a:focus-visible),::slotted(button:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-::slotted(a:nth-child(1)), ::slotted(button:nth-child(1)) {
+::slotted(a:nth-child(1)),::slotted(button:nth-child(1)) {
   background-image: linear-gradient(var(--p-color-frosted-strong), var(--p-color-frosted-strong)) !important;
   background-size: 100% 100% !important;
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+  ::slotted(a:focus-visible),::slotted(button:focus-visible) {
     outline-color: Highlight !important;
   }
-  ::slotted(a), ::slotted(button) {
+  ::slotted(a),::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
   }
@@ -717,7 +717,7 @@ exports[`getComponentCss() > should return correct css for background: surface, 
 }
 
 @media(hover:hover) {
-  ::slotted(a:not(:nth-child(1)):hover), ::slotted(button:not(:nth-child(1)):hover) {
+  ::slotted(a:not(:nth-child(1)):hover),::slotted(button:not(:nth-child(1)):hover) {
     background-color: var(--p-color-frosted) !important;
   }
 }

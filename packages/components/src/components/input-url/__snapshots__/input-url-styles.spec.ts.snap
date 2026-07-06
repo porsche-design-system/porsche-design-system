@@ -14,7 +14,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -132,7 +132,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-error);
   }
 }"
@@ -152,7 +152,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -270,7 +270,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-error);
   }
 }"
@@ -290,7 +290,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -407,7 +407,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }"
@@ -427,7 +427,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -544,7 +544,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }"
@@ -564,7 +564,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -681,7 +681,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }"
@@ -701,7 +701,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -819,7 +819,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-success);
   }
 }"
@@ -839,7 +839,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -957,7 +957,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-success);
   }
 }"
@@ -977,7 +977,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -1094,7 +1094,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-error);
   }
 }"
@@ -1114,7 +1114,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -1231,7 +1231,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-error);
   }
 }"
@@ -1251,7 +1251,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -1367,7 +1367,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }"
@@ -1387,7 +1387,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -1503,7 +1503,7 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }"
@@ -1523,7 +1523,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -1655,7 +1655,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -1787,7 +1787,7 @@ exports[`getComponentCss() > should return correct css for disabled: false, load
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -2039,7 +2039,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {
@@ -2309,7 +2309,7 @@ exports[`getComponentCss() > should return correct css for disabled: true, loadi
   direction: rtl;
   text-align: end;
 }
-:host(:dir(rtl)) .wrapper, :host(:dir(rtl)) input:placeholder-shown {
+:host(:dir(rtl)) .wrapper,:host(:dir(rtl)) input:placeholder-shown {
   direction: ltr;
 }
 slot[name="label-after"] {

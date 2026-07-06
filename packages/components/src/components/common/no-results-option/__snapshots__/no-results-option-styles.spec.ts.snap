@@ -19,7 +19,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
 .no-results--highlighted {
   background: var(--p-color-frosted);
 }
-.no-results--highlighted, .no-results--selected {
+.no-results--highlighted,.no-results--selected {
   color: var(--p-color-primary);
 }
 .no-results--disabled {
@@ -72,7 +72,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
 .no-results--highlighted {
   background: var(--p-color-frosted);
 }
-.no-results--highlighted, .no-results--selected {
+.no-results--highlighted,.no-results--selected {
   color: var(--p-color-primary);
 }
 .no-results--disabled {
@@ -125,7 +125,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
 .no-results--highlighted {
   background: var(--p-color-frosted);
 }
-.no-results--highlighted, .no-results--selected {
+.no-results--highlighted,.no-results--selected {
   color: var(--p-color-primary);
 }
 .no-results--disabled {
@@ -178,7 +178,7 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
 .no-results--highlighted {
   background: var(--p-color-frosted);
 }
-.no-results--highlighted, .no-results--selected {
+.no-results--highlighted,.no-results--selected {
   color: var(--p-color-primary);
 }
 .no-results--disabled {

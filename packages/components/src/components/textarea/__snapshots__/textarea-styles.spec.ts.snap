@@ -46,7 +46,7 @@ textarea:focus {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-primary);
   }
 }
@@ -276,7 +276,7 @@ textarea:focus {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-primary);
   }
 }
@@ -506,7 +506,7 @@ textarea:focus {
   border-color: var(--p-color-error);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-error);
   }
 }
@@ -618,7 +618,7 @@ textarea:focus {
   border-color: var(--p-color-error);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-error);
   }
 }
@@ -730,7 +730,7 @@ textarea:focus {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-primary);
   }
 }
@@ -865,7 +865,7 @@ textarea:focus {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-primary);
   }
 }
@@ -1000,7 +1000,7 @@ textarea:focus {
   border-color: var(--p-color-success);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-success);
   }
 }
@@ -1112,7 +1112,7 @@ textarea:focus {
   border-color: var(--p-color-success);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-success);
   }
 }
@@ -1248,7 +1248,7 @@ textarea:focus {
   border-color: var(--p-color-error);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-error);
   }
 }
@@ -1359,7 +1359,7 @@ textarea:focus {
   border-color: var(--p-color-error);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-error);
   }
 }
@@ -1470,7 +1470,7 @@ textarea:focus {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-primary);
   }
 }
@@ -1604,7 +1604,7 @@ textarea:focus {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-primary);
   }
 }
@@ -1738,7 +1738,7 @@ textarea:focus {
   border-color: var(--p-color-success);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-success);
   }
 }
@@ -1849,7 +1849,7 @@ textarea:focus {
   border-color: var(--p-color-success);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover ~ textarea {
+  textarea:hover,.label-wrapper:hover ~ textarea {
     border-color: var(--p-color-success);
   }
 }

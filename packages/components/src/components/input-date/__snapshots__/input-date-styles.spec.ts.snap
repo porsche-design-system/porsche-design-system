@@ -136,7 +136,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-error);
   }
 }"
@@ -277,7 +277,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }"
@@ -418,7 +418,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }"
@@ -560,7 +560,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-success);
   }
 }"
@@ -701,7 +701,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-error);
   }
 }"
@@ -841,7 +841,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
+  .wrapper:hover:not(.button:hover),.label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }"

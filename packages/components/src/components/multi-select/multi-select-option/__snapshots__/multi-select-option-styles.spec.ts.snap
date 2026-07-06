@@ -32,7 +32,7 @@ slot {
 .option--highlighted {
   background: var(--p-color-frosted);
 }
-.option--highlighted, .option--selected {
+.option--highlighted,.option--selected {
   color: var(--p-color-primary);
 }
 .option--disabled {
@@ -114,7 +114,7 @@ slot {
 .option--highlighted {
   background: var(--p-color-frosted);
 }
-.option--highlighted, .option--selected {
+.option--highlighted,.option--selected {
   color: var(--p-color-primary);
 }
 .option--disabled {
@@ -214,7 +214,7 @@ slot {
 .option--highlighted {
   background: var(--p-color-frosted);
 }
-.option--highlighted, .option--selected {
+.option--highlighted,.option--selected {
   color: var(--p-color-primary);
 }
 .option--disabled {
@@ -308,7 +308,7 @@ slot {
 .option--highlighted {
   background: var(--p-color-frosted);
 }
-.option--highlighted, .option--selected {
+.option--highlighted,.option--selected {
   color: var(--p-color-primary);
 }
 .option--disabled {

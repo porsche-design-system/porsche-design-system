@@ -23,20 +23,20 @@ span {
   background: var(--p-color-error);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -56,7 +56,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }
@@ -91,20 +91,20 @@ span {
   background: var(--p-color-error-frosted);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -124,7 +124,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }
@@ -157,20 +157,20 @@ span {
   background: var(--p-color-info);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -184,7 +184,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }
@@ -219,20 +219,20 @@ span {
   background: var(--p-color-info-frosted);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -246,7 +246,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }
@@ -279,20 +279,20 @@ span {
   background: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -312,7 +312,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }
@@ -347,20 +347,20 @@ span {
   background: var(--p-color-frosted-strong);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -374,7 +374,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }
@@ -407,20 +407,20 @@ span {
   background: var(--p-color-success);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -440,7 +440,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }
@@ -475,20 +475,20 @@ span {
   background: var(--p-color-success-frosted);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -508,7 +508,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }
@@ -541,20 +541,20 @@ span {
   background: var(--p-color-warning);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -568,7 +568,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }"
@@ -599,20 +599,20 @@ span {
   background: var(--p-color-warning-frosted);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
-::slotted(a), ::slotted(button) {
+::slotted(a),::slotted(button) {
   all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
 }
-::slotted(a)::before, ::slotted(button)::before {
+::slotted(a)::before,::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   border-radius: var(--p-radius-full) !important;
 }
-::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
@@ -626,7 +626,7 @@ span {
     background-color: Canvas;
     color: CanvasText;
   }
-  ::slotted(a:focus-visible)::before, ::slotted(button:focus-visible)::before {
+  ::slotted(a:focus-visible)::before,::slotted(button:focus-visible)::before {
     outline-color: Highlight !important;
   }
 }"

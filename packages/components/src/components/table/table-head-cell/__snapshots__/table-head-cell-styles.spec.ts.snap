@@ -31,7 +31,7 @@ button {
   z-index: 0;
   cursor: pointer;
 }
-button:focus, button:focus-visible {
+button:focus,button:focus-visible {
   outline: none;
 }
 button::before {
@@ -47,7 +47,7 @@ button:focus-visible::before {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  button:hover .icon, button:focus-visible .icon {
+  button:hover .icon,button:focus-visible .icon {
     opacity: 1;
   }
   button:hover::before {
@@ -102,7 +102,7 @@ button {
   z-index: 0;
   cursor: pointer;
 }
-button:focus, button:focus-visible {
+button:focus,button:focus-visible {
   outline: none;
 }
 button::before {
@@ -118,7 +118,7 @@ button:focus-visible::before {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  button:hover .icon, button:focus-visible .icon {
+  button:hover .icon,button:focus-visible .icon {
     opacity: 1;
   }
   button:hover::before {
@@ -173,7 +173,7 @@ button {
   z-index: 0;
   cursor: pointer;
 }
-button:focus, button:focus-visible {
+button:focus,button:focus-visible {
   outline: none;
 }
 button::before {
@@ -189,7 +189,7 @@ button:focus-visible::before {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  button:hover .icon, button:focus-visible .icon {
+  button:hover .icon,button:focus-visible .icon {
     opacity: 1;
   }
   button:hover::before {
@@ -244,7 +244,7 @@ button {
   z-index: 0;
   cursor: pointer;
 }
-button:focus, button:focus-visible {
+button:focus,button:focus-visible {
   outline: none;
 }
 button::before {
@@ -260,7 +260,7 @@ button:focus-visible::before {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  button:hover .icon, button:focus-visible .icon {
+  button:hover .icon,button:focus-visible .icon {
     opacity: 1;
   }
   button:hover::before {
@@ -315,7 +315,7 @@ button {
   z-index: 0;
   cursor: pointer;
 }
-button:focus, button:focus-visible {
+button:focus,button:focus-visible {
   outline: none;
 }
 button::before {
@@ -331,7 +331,7 @@ button:focus-visible::before {
   outline-offset: 2px;
 }
 @media(hover:hover) {
-  button:hover .icon, button:focus-visible .icon {
+  button:hover .icon,button:focus-visible .icon {
     opacity: 1;
   }
   button:hover::before {

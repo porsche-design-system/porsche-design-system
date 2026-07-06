@@ -11,7 +11,7 @@ exports[`getComponentCss() > should return correct css for: false 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-canvas-grid) {
+slot:not([name])::slotted(.-p-canvas-grid),slot[name="footer"]::slotted(.-p-canvas-grid) {
   display: grid !important;
   grid-template-columns: repeat(12,minmax(0,1fr)) !important;
   column-gap: clamp(16px, 1.25vw + 12px, 24px) !important;
@@ -32,7 +32,7 @@ slot[name="background"] {
   overflow: hidden;
   transform: translate3d(0,0,0);
 }
-slot[name="background"]::slotted(video), slot[name="background"]::slotted(img) {
+slot[name="background"]::slotted(video),slot[name="background"]::slotted(img) {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -305,7 +305,7 @@ exports[`getComponentCss() > should return correct css for: false 2`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-canvas-grid) {
+slot:not([name])::slotted(.-p-canvas-grid),slot[name="footer"]::slotted(.-p-canvas-grid) {
   display: grid !important;
   grid-template-columns: repeat(12,minmax(0,1fr)) !important;
   column-gap: clamp(16px, 1.25vw + 12px, 24px) !important;
@@ -326,7 +326,7 @@ slot[name="background"] {
   overflow: hidden;
   transform: translate3d(0,0,0);
 }
-slot[name="background"]::slotted(video), slot[name="background"]::slotted(img) {
+slot[name="background"]::slotted(video),slot[name="background"]::slotted(img) {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -599,7 +599,7 @@ exports[`getComponentCss() > should return correct css for: false 3`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-canvas-grid) {
+slot:not([name])::slotted(.-p-canvas-grid),slot[name="footer"]::slotted(.-p-canvas-grid) {
   display: grid !important;
   grid-template-columns: repeat(12,minmax(0,1fr)) !important;
   column-gap: clamp(16px, 1.25vw + 12px, 24px) !important;
@@ -620,7 +620,7 @@ slot[name="background"] {
   overflow: hidden;
   transform: translate3d(0,0,0);
 }
-slot[name="background"]::slotted(video), slot[name="background"]::slotted(img) {
+slot[name="background"]::slotted(video),slot[name="background"]::slotted(img) {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -893,7 +893,7 @@ exports[`getComponentCss() > should return correct css for: true 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-canvas-grid) {
+slot:not([name])::slotted(.-p-canvas-grid),slot[name="footer"]::slotted(.-p-canvas-grid) {
   display: grid !important;
   grid-template-columns: repeat(12,minmax(0,1fr)) !important;
   column-gap: clamp(16px, 1.25vw + 12px, 24px) !important;
@@ -914,7 +914,7 @@ slot[name="background"] {
   overflow: hidden;
   transform: translate3d(0,0,0);
 }
-slot[name="background"]::slotted(video), slot[name="background"]::slotted(img) {
+slot[name="background"]::slotted(video),slot[name="background"]::slotted(img) {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -1187,7 +1187,7 @@ exports[`getComponentCss() > should return correct css for: true 2`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-canvas-grid) {
+slot:not([name])::slotted(.-p-canvas-grid),slot[name="footer"]::slotted(.-p-canvas-grid) {
   display: grid !important;
   grid-template-columns: repeat(12,minmax(0,1fr)) !important;
   column-gap: clamp(16px, 1.25vw + 12px, 24px) !important;
@@ -1208,7 +1208,7 @@ slot[name="background"] {
   overflow: hidden;
   transform: translate3d(0,0,0);
 }
-slot[name="background"]::slotted(video), slot[name="background"]::slotted(img) {
+slot[name="background"]::slotted(video),slot[name="background"]::slotted(img) {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -1481,7 +1481,7 @@ exports[`getComponentCss() > should return correct css for: true 3`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-canvas-grid) {
+slot:not([name])::slotted(.-p-canvas-grid),slot[name="footer"]::slotted(.-p-canvas-grid) {
   display: grid !important;
   grid-template-columns: repeat(12,minmax(0,1fr)) !important;
   column-gap: clamp(16px, 1.25vw + 12px, 24px) !important;
@@ -1502,7 +1502,7 @@ slot[name="background"] {
   overflow: hidden;
   transform: translate3d(0,0,0);
 }
-slot[name="background"]::slotted(video), slot[name="background"]::slotted(img) {
+slot[name="background"]::slotted(video),slot[name="background"]::slotted(img) {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
