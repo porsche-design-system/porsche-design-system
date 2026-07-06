@@ -108,7 +108,9 @@ describe('getCss()', () => {
       result: `:host{display:block;margin-left:5px!important;}@media (min-width: 1000px){:host{margin-right:10px!important;}}`,
     },
     {
-      // identical media queries are NOT merged (unlike the former engine) — emitted as separate blocks
+      // identical media queries are merged into a single block, hoisted after the base rules
+      // (like the former engine's combineMediaQueries) — the order is load-bearing for the
+      // forced-colors cascade, see hoistAndCombineMedia in css-serializer.ts
       input: {
         '@global': {
           ':host': {
@@ -123,7 +125,7 @@ describe('getCss()', () => {
           root: { display: 'block' },
         },
       },
-      result: `:host{display:block;margin-left:5px!important;}@media (min-width: 1000px){:host{margin-right:10px!important;}}@media (min-width: 1000px){.root{display:block;}}`,
+      result: `:host{display:block;margin-left:5px!important;}@media (min-width: 1000px){:host{margin-right:10px!important;}.root{display:block;}}`,
     },
     {
       input: {

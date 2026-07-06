@@ -1,5 +1,9 @@
 // Converts a JSS-style object (e.g. { display: 'block' }) into a CSS string.
 // We build the CSS text ourselves, then let `stylis` handle nesting and at-rules like @media.
+//
+// Don't swap this for emotion or another CSS-in-JS lib: it runs on the same stylis, so it
+// wouldn't hoist/combine media queries either (we'd still need hoistAndCombineMedia below),
+// and it adds class hashing/caching we don't use. More weight, no gain.
 import { compile, serialize, stringify } from 'stylis';
 
 // Loose stand-ins for jss's `Styles`/`JssStyle` types. Kept as `any` on purpose so the
@@ -57,4 +61,40 @@ const mapToCss = (map: Record<string, any>): string => {
   return base + conditional;
 };
 
-export const getCss = (jssStyles: Styles): string => serialize(compile(mapToCss(jssStyles)), stringify);
+// stylis leaves @media where it was written, but the cascade needs it after the base rules:
+// in High Contrast Mode a base rule and a forced-colors rule can hit the same element with
+// equal weight, so the last one wins (e.g. the disabled counter color turning black instead
+// of grey). So we move every @media to the end and merge same-query blocks, like JSS did.
+const hoistAndCombineMedia = (css: string): string => {
+  let base = '';
+  const media = new Map<string, string>();
+  const n = css.length;
+  let i = 0;
+  while (i < n) {
+    const open = css.indexOf('{', i);
+    if (open === -1) {
+      base += css.slice(i);
+      break;
+    }
+    const header = css.slice(i, open);
+    // brace-match the block body (handles nested rules inside the block)
+    let depth = 0;
+    let end = open;
+    for (; end < n; end++) {
+      if (css[end] === '{') depth++;
+      else if (css[end] === '}' && --depth === 0) break;
+    }
+    if (header.startsWith('@media')) {
+      media.set(header, (media.get(header) ?? '') + css.slice(open + 1, end));
+    } else {
+      base += css.slice(i, end + 1);
+    }
+    i = end + 1;
+  }
+  let out = base;
+  for (const [query, body] of media) out += `${query}{${body}}`;
+  return out;
+};
+
+export const getCss = (jssStyles: Styles): string =>
+  hoistAndCombineMedia(serialize(compile(mapToCss(jssStyles)), stringify));
