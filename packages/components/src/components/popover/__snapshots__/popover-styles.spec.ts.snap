@@ -91,6 +91,12 @@ button::after {
   }
 }
 
+@supports (color: oklch(from red l c h)) {
+  [popover] {
+    background: hsl(from var(--p-color-canvas) h 0% calc(l + 14));
+  }
+}
+
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
     transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
@@ -102,7 +108,7 @@ button::after {
   width: 24px;
   height: 12px;
   clip-path: polygon(50% 0, 100% 110%, 0 110%);
-  background: var(--p-color-canvas);
+  background: inherit;
 }
 @media(forced-colors:active) {
   .arrow {
@@ -203,6 +209,12 @@ button::after {
   }
 }
 
+@supports (color: oklch(from red l c h)) {
+  [popover] {
+    background: hsl(from var(--p-color-canvas) h 0% calc(l + 14));
+  }
+}
+
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
     transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
@@ -214,7 +226,7 @@ button::after {
   width: 24px;
   height: 12px;
   clip-path: polygon(50% 0, 100% 110%, 0 110%);
-  background: var(--p-color-canvas);
+  background: inherit;
 }
 @media(forced-colors:active) {
   .arrow {
@@ -315,6 +327,12 @@ button::after {
   }
 }
 
+@supports (color: oklch(from red l c h)) {
+  [popover] {
+    background: hsl(from var(--p-color-canvas) h 0% calc(l + 14));
+  }
+}
+
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
     transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete;
@@ -326,7 +344,7 @@ button::after {
   width: 24px;
   height: 12px;
   clip-path: polygon(50% 0, 100% 110%, 0 110%);
-  background: var(--p-color-canvas);
+  background: inherit;
 }
 @media(forced-colors:active) {
   .arrow {
@@ -432,6 +450,12 @@ button::after {
   }
 }
 
+@supports (color: oklch(from red l c h)) {
+  [popover] {
+    background: hsl(from var(--p-color-canvas) h 0% calc(l + 14));
+  }
+}
+
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
     transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in) allow-discrete;
@@ -443,7 +467,7 @@ button::after {
   width: 24px;
   height: 12px;
   clip-path: polygon(50% 0, 100% 110%, 0 110%);
-  background: var(--p-color-canvas);
+  background: inherit;
 }
 @media(forced-colors:active) {
   .arrow {

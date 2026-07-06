@@ -150,7 +150,16 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => 
         filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
         borderRadius: ref(cssVarRadius, isCompact ? ref(radiusLg) : ref(radiusXl)),
+        // Fallback for engines without CSS relative color syntax (< Chromium 119 / Safari 16.4 / Firefox 128): the
+        // `hsl(from …)` override below would be an invalid value and get dropped, leaving the panel with no background.
+        // The plain `light-dark()` token renders correct white (light) / near-black (dark) as graceful degradation.
         background: ref(colorCanvas),
+        // Relative color syntax: lightens ONLY the dark scheme (light `#fff` clamps at l=100 → stays white; dark
+        // `l≈1.2%` → `≈15.2%`). Feature-test string kept in sync with `spinner-styles.ts` (one relative-color feature
+        // covers all color functions).
+        '@supports (color: oklch(from red l c h))': {
+          background: `hsl(from ${ref(colorCanvas)} h 0% calc(l + 14))`,
+        },
         font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
         color: ref(colorPrimary),
         width: ref(cssVariableWidth, 'max-content'),
@@ -193,7 +202,7 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => 
       width: '24px',
       height: '12px',
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
-      background: ref(colorCanvas),
+      background: 'inherit',
       ...forcedColorsMediaQuery({
         background: 'CanvasText',
       }),

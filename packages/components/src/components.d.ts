@@ -6816,7 +6816,7 @@ declare namespace LocalJSX {
          */
         "direction"?: PopoverDirection;
         /**
-          * Emitted in controlled mode when the user requests to close the popover via the Escape key or an outside click.
+          * Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab).
          */
         "onDismiss"?: (event: PPopoverCustomEvent<void>) => void;
         /**
