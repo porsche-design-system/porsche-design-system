@@ -134,6 +134,9 @@ packages/components/src/components/{name}/
    are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never
    `ng update` directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check
    TypeScript compatibility.
+3. **Sandbox / registry limits** (offline caches, platform-specific optional deps, firewall/registry quirks): see
+   [`docs/runbooks/dependency-updates-agent.md`](../docs/runbooks/dependency-updates-agent.md) for the constraints AI
+   cloud agents hit and how to work around them.
 
 ## Common Pitfalls
 
