@@ -11,7 +11,6 @@ const input = 'src/index.ts';
 const external = [
   ...Object.keys(pkg.dependencies),
   // CSS engine packages are hoisted from workspace root; keep them external at runtime
-  '@emotion/serialize',
   'stylis',
   // change-case is ESM-only; must stay external to avoid CJS bundling issues
   'change-case',
