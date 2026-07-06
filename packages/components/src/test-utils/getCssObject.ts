@@ -1,16 +1,15 @@
 import { compile, type Element } from 'stylis';
 
-// Build the nested object the css validators inspect by walking stylis's own AST of the (already
-// fully resolved) stylesheet — format-agnostic, so it works on compact or pretty CSS and never
-// breaks on whitespace. Rules become `{ 'selector': { prop: 'value' } }`, at-rule blocks become
-// `{ '@media(...)': { 'selector': {...} } }`. Values keep ` !important` with a leading space to
-// match the previous helper's output (validators assert on `!important$`).
+// Test helper: turns a CSS string into a plain nested object so tests can assert on it
+// instead of comparing raw CSS text. Example:
+//   ":host{display:block}" -> { ':host': { display: 'block' } }
+// Works by using stylis to parse the CSS, then walking the result.
 const walk = (nodes: Element[]): Record<string, any> => {
   const obj: Record<string, any> = {};
   for (const node of nodes) {
     if (node.type === 'decl') {
+      // node.value looks like "display:block;" — strip the property name and the ";"
       const prop = node.props as string;
-      // node.value is `prop:value;` — drop `prop:` and the trailing `;`, keep ` !important`
       obj[prop] = node.value.slice(prop.length + 1, -1).replace(/!important/, ' !important');
     } else if (node.type === 'rule') {
       obj[(node.props as string[]).join(', ')] = walk(node.children as Element[]);

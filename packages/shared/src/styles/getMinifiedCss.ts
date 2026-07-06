@@ -1,32 +1,29 @@
-// object->CSS engine: a raw JSS-style selector map -> one CSS stylesheet string. Mirrors
-// packages/components/src/utils/emotionCss.ts's approach: `mapToCss`/`styleToCss` flatten the
-// style object to a CSS string (camelCase->kebab, selector/at-rule keys verbatim), then `stylis`
-// compiles + stringifies it, resolving nesting/at-rules with no per-at-rule handling of our own.
-// `@emotion/unitless` is emotion's own canonical (dependency-free) list of unitless CSS properties;
-// reused here instead of `@emotion/serialize` so numeric values keep the exact same auto-`px`
-// behaviour this file always had, without pulling in the rest of the emotion serializer.
+// Converts a JSS-style object (e.g. { display: 'block' }) into a CSS string.
+// Same approach as packages/components/src/utils/emotionCss.ts: we build the CSS text
+// ourselves, then let `stylis` handle nesting and at-rules like @media.
+// `@emotion/unitless` is just a small list of CSS properties that don't take a unit
+// (e.g. `opacity`, `zIndex`) — used below to decide when to auto-add `px` to numbers.
 import unitless from '@emotion/unitless';
 import { compile, serialize, stringify } from 'stylis';
 
-// Loose replacements for jss's `Styles`/`JssStyle` (permissive on purpose — see components' emotionCss).
+// Loose stand-ins for jss's `Styles`/`JssStyle` types (see components' emotionCss.ts).
 export type JssStyle = Record<string, any>;
 export type Styles<_Name = string, _Data = unknown, _Theme = undefined> = Record<string, any>;
 
-// camelCase property name -> kebab-case, matching @emotion/serialize's hyphenateStyleName:
-// prefix every uppercase letter (and a leading `ms`) with `-` then lowercase, so `WebkitMask` ->
-// `-webkit-mask`. Custom properties (`--_p-x`) pass through untouched.
+// camelCase -> kebab-case, e.g. `marginLeft` -> `margin-left`. CSS custom properties
+// (starting with `--`) are left untouched.
 const hyphenate = (key: string): string =>
   key.startsWith('--') ? key : key.replace(/[A-Z]|^ms/g, '-$&').toLowerCase();
 
-// stringify a declaration value; numbers auto-append `px` unless the property is unitless or a
-// custom property, and unless the value is `0` (matches @emotion/serialize's numeric handling).
+// Numbers become `Npx` unless the property is unitless (e.g. `opacity: 0.5`), a custom
+// property, or the value is `0`.
 const toValue = (key: string, v: any): string =>
   typeof v === 'number' && v !== 0 && unitless[key] !== 1 && !key.startsWith('--') ? `${v}px` : String(v);
 
-// style object -> flat CSS declaration string with selector/at-rule keys kept verbatim for stylis.
-// Nested object value => `keyVerbatim{ ...recurse... }`; primitive => `prop:value;`; array =>
-// repeated declarations (CSS fallback values). Skips null/undefined/boolean values so conditional
-// props drop out instead of emitting e.g. `color:undefined;`.
+// Turns one style object into a CSS declaration string, e.g. { display: 'block' } -> "display:block;".
+// - nested object (like `@media (...): {...}`) -> recurse into a nested block
+// - array -> repeated declarations (used for CSS fallback values)
+// - null/undefined/boolean -> skipped
 const styleToCss = (obj: Record<string, any>): string => {
   let out = '';
   for (const key in obj) {
@@ -45,15 +42,14 @@ const styleToCss = (obj: Record<string, any>): string => {
 
 const isConditional = (key: string): boolean => key.startsWith('@media') || key.startsWith('@supports');
 
-// top-level selector key -> emitted selector. Pseudo/attribute selectors (e.g. `:host`) stay
-// verbatim; plain identifiers become classes (mirrors jss's key-as-generated-class behaviour).
+// Top-level selector keys like `:host` stay as-is; plain names (e.g. `class`) become `.class`.
 const toSelector = (key: string): string => (/^[a-zA-Z][\w-]*$/.test(key) ? `.${key}` : key);
 
-// Translate a JSS-style map to a nested CSS string. `@global` children keep their selector
-// verbatim; `@font-face` accepts a single face object or an array of them; a top-level conditional
-// at-rule key wraps its (recursively translated) body; every other key goes through `toSelector`.
-// Base rules emit before conditional at-rule blocks so conditionals override the base cascade
-// (stylis preserves source order and hoists nested at-rules to sit after their base rule).
+// Turns our top-level JSS-style map into one CSS string.
+// - `@global` keys use their selector as-is (e.g. `:host`)
+// - `@font-face` accepts one face object or an array of them
+// - `@media`/`@supports` keys wrap another map of the same shape (recurse)
+// - everything else goes through `toSelector`
 const mapToCss = (map: Record<string, any>): string => {
   let base = '';
   let conditional = '';
@@ -74,6 +70,5 @@ const mapToCss = (map: Record<string, any>): string => {
 
 export const getCss = (style: Styles): string => serialize(compile(mapToCss(style)), stringify);
 
-// stylis's compact stringify already omits the whitespace `getMinifiedCss` used to strip via regex;
-// the only remaining byte to shave is the (harmless but unnecessary) trailing `;` before `}`.
+// `getCss` output from stylis is already compact; just drop the last unnecessary `;` before `}`.
 export const getMinifiedCss = (style: Styles): string => getCss(style).replace(/;(?=})/g, '');
