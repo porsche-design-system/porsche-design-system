@@ -10,6 +10,7 @@ type ConfigureSlotsProps<Tag extends HTMLTagOrComponent> = {
   componentSlots: SlotMeta | undefined;
   configuredSlots: StoryState<Tag>;
   slotStories: SlotStories<Tag>;
+  requiredSlots?: string[];
   onUpdateSlots: (slotName: string, selectedSlotStory: Story<Tag> | undefined) => void;
 };
 
@@ -18,6 +19,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
   componentSlots,
   configuredSlots,
   slotStories,
+  requiredSlots,
   onUpdateSlots,
 }: ConfigureSlotsProps<T>) => {
   return (
@@ -36,7 +38,10 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   onUpdate={(e) =>
                     onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)
                   }
-                  disabled={slotName === 'default' || slotName === 'summary'}
+                  disabled={
+                    requiredSlots?.includes(slotName) ||
+                    (componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.isRequired
+                  }
                 >
                   {capitalCase(slotName)}
                 </PSwitch>

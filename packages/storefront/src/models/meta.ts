@@ -52,6 +52,10 @@ export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
   configurator: {
     story: Story<Tag>;
     slotStories?: SlotStories<Tag>;
+    // Optional controlled-mode variant for dual-mode components (e.g. p-popover). When present, the
+    // configurator renders a "Behavior" segmented control to switch between uncontrolled and controlled.
+    controlledStory?: Story<Tag>;
+    controlledSlotStories?: SlotStories<Tag>;
   };
   // Curated examples shown on the examples page — either generated stories or hand-authored code samples.
   examples: Record<string, ExampleMeta<Tag>>;
