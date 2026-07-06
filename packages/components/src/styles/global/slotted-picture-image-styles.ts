@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import type { Styles } from '../../utils/emotionCss';
+import type { Styles } from '../../utils/css-serializer';
 import { addImportantToEachRule } from '../common-styles';
 
 export const tagNamesWithSlottedPictureImageArray: TagName[] = ['p-button-tile', 'p-link-tile', 'p-link-tile-product'];

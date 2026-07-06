@@ -6,7 +6,7 @@ import {
   motionEasingOut,
 } from '@porsche-design-system/emotion';
 import { ref } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../../utils/emotionCss';
+import type { JssStyle } from '../../../utils/css-serializer';
 import { TOAST_Z_INDEX } from '../../../constants';
 import {
   addImportantToEachRule,

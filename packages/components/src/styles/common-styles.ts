@@ -11,7 +11,7 @@ import {
   ref,
 } from '@porsche-design-system/stylesheets';
 import type { PropertiesHyphen } from 'csstype';
-import type { JssStyle } from '../utils/emotionCss';
+import type { JssStyle } from '../utils/css-serializer';
 import { alphaDisabled } from './alpha-disabled';
 import { forcedColorsMediaQuery } from './media-query/forced-colors-media-query';
 

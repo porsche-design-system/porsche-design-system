@@ -2,14 +2,14 @@ import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/emotio
 import type { TagName } from '@porsche-design-system/shared';
 import { addImportantToEachRule } from '../styles';
 import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
+import type { JssStyle, Styles } from './css-serializer';
 import { getShadowRootHTMLElement } from './dom';
-import type { JssStyle, Styles } from './emotionCss';
 import { hasPropValueChanged } from './has-prop-value-changed';
 import { getTagNameWithoutPrefix } from './tag-name';
 
-// getCss lives in ./emotionCss (the CSS engine); re-exported here so the utils barrel and the
+// getCss lives in ./css-serializer (the CSS engine); re-exported here so the utils barrel and the
 // ~97 *-styles.ts authoring files keep importing it from the same place.
-export { getCss } from './emotionCss';
+export { getCss } from './css-serializer';
 
 export const supportsConstructableStylesheets = (): boolean => {
   try {
@@ -53,9 +53,9 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
   getComponentCss: T,
   ...args: Parameters<T>
 ): void => {
-  const css = internalJss.getCachedComponentCss(host, getComponentCss, ...args);
+  const css = internalCss.getCachedComponentCss(host, getComponentCss, ...args);
 
-  if (internalJss.getHasConstructableStylesheetSupport()) {
+  if (internalCss.getHasConstructableStylesheetSupport()) {
     const [sheet] = host.shadowRoot.adoptedStyleSheets;
     if (sheet) {
       sheet.replaceSync(css);
@@ -126,7 +126,7 @@ export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => 
   }, {} as T);
 };
 
-export const internalJss = {
+export const internalCss = {
   getCachedComponentCss,
   getHasConstructableStylesheetSupport,
 };

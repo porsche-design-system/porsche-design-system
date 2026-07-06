@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../utils/emotionCss';
+import type { JssStyle } from '../../utils/css-serializer';
 
 /**
  * Utility to wrap JSS styles in `@media (pointer: coarse)`,

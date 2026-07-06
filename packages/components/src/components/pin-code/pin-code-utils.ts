@@ -1,4 +1,4 @@
-import type { Styles } from '../../utils/emotionCss';
+import type { Styles } from '../../utils/css-serializer';
 import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 

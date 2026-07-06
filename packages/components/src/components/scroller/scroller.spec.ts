@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
 import * as a11yUtils from '../../utils/a11y/a11y';
-import * as attachComponentCssUtils from '../../utils/jss';
+import * as attachComponentCssUtils from '../../utils/css';
 import * as jsonUtils from '../../utils/json';
 import * as validatePropsUtils from '../../utils/validation/validateProps';
 import { Scroller } from './scroller';

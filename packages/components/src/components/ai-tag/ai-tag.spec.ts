@@ -1,5 +1,5 @@
 import { vi } from 'vitest';
-import * as attachComponentCssModule from '../../utils/jss';
+import * as attachComponentCssModule from '../../utils/css';
 import { AiTag } from './ai-tag';
 
 describe('render', () => {

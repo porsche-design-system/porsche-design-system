@@ -1,4 +1,4 @@
-import type { JssStyle } from './emotionCss';
+import type { JssStyle } from './css-serializer';
 
 /**
  * Applies a style only on Chromium based browsers by using a media query which is only supported there.

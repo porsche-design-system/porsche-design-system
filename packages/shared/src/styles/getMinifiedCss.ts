@@ -1,12 +1,12 @@
 // Converts a JSS-style object (e.g. { display: 'block' }) into a CSS string.
-// Same approach as packages/components/src/utils/emotionCss.ts: we build the CSS text
+// Same approach as packages/components/src/utils/css-serializer.ts: we build the CSS text
 // ourselves, then let `stylis` handle nesting and at-rules like @media.
 // `@emotion/unitless` is just a small list of CSS properties that don't take a unit
 // (e.g. `opacity`, `zIndex`) — used below to decide when to auto-add `px` to numbers.
 import unitless from '@emotion/unitless';
 import { compile, serialize, stringify } from 'stylis';
 
-// Loose stand-ins for jss's `Styles`/`JssStyle` types (see components' emotionCss.ts).
+// Loose stand-ins for jss's `Styles`/`JssStyle` types (see components' css-serializer.ts).
 export type JssStyle = Record<string, any>;
 export type Styles<_Name = string, _Data = unknown, _Theme = undefined> = Record<string, any>;
 

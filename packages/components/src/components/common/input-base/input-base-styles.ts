@@ -1,4 +1,4 @@
-import type { JssStyle, Styles } from '../../../utils/emotionCss';
+import type { JssStyle, Styles } from '../../../utils/css-serializer';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,

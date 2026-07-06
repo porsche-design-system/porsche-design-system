@@ -6,7 +6,7 @@ import { addParentAndSetRequiredProps, componentFactory, TAG_NAMES_CONSTRUCTOR_M
 import * as attributeObserverUtils from '../utils/attribute-observer';
 import * as childrenObserverUtils from '../utils/children-observer';
 import * as hasPropValueChangedUtils from '../utils/has-prop-value-changed';
-import * as jssUtils from '../utils/jss';
+import * as cssUtils from '../utils/css';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
 import * as throwIfRootNodeIsNotOneOfKindUtils from '../utils/validation/throwIfRootNodeIsNotOneOfKind';
@@ -173,7 +173,7 @@ describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
 it.each<TagName>(tagNamesWithJss)(
   'should call attachComponentCss() with correct parameters via render for %s',
   (tagName) => {
-    const spy = vi.spyOn(jssUtils, 'attachComponentCss');
+    const spy = vi.spyOn(cssUtils, 'attachComponentCss');
     const component = componentFactory(tagName);
 
     // some components require a parent and certain props in order to work

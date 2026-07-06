@@ -1,5 +1,5 @@
-import type { Styles } from './emotionCss';
-import { getCss } from './jss';
+import type { Styles } from './css-serializer';
+import { getCss } from './css';
 
 type ElementsMap = Map<string, ElementMap>;
 type ElementMap = Map<Document | ShadowRoot, boolean>;

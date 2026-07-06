@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../utils/emotionCss';
+import type { JssStyle } from '../../utils/css-serializer';
 import { fontPorscheNext, leadingNormal, radiusLg, radiusMd, ref, typescaleSm } from '@porsche-design-system/stylesheets';
 import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';

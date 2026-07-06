@@ -9,7 +9,7 @@ import {
   spacingStaticXs,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../utils/emotionCss';
+import type { JssStyle } from '../utils/css-serializer';
 
 export const formElementLayeredGap = '9px'; // to have same distance vertically and horizontally for e.g. button/icon within form element
 // TODO: basic button/icon padding can already be set within style function instead of on component style level

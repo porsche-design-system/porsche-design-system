@@ -1,4 +1,4 @@
-import type { JssStyle, Styles } from '../utils/emotionCss';
+import type { JssStyle, Styles } from '../utils/css-serializer';
 import type { ButtonPureColor, ButtonPureSize } from '../components/button-pure/button-pure-utils';
 import type { LinkPureColor, LinkPureSize } from '../components/link-pure/link-pure-utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../types';

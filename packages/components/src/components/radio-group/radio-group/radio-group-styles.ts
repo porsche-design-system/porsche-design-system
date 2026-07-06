@@ -1,5 +1,5 @@
 import { ref, spacingStaticXs } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../../utils/emotionCss';
+import type { JssStyle } from '../../../utils/css-serializer';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,

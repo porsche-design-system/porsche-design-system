@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../utils/emotionCss';
+import type { JssStyle } from '../../utils/css-serializer';
 import { hoverMediaQuery } from './hover-media-query';
 
 it('should return style wrapped in @media(hover: hover) query', () => {

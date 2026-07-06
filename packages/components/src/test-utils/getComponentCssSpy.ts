@@ -1,5 +1,5 @@
 import { vi } from 'vitest';
-import * as jssUtils from '../utils/jss';
+import * as cssUtils from '../utils/css';
 import { getCssObject } from './getCssObject';
 
 export const getComponentCssSpy = (): ReturnType<typeof vi.spyOn> => {
@@ -8,7 +8,7 @@ export const getComponentCssSpy = (): ReturnType<typeof vi.spyOn> => {
 
   // mock to get the result from getComponentCss() directly
   return vi
-    .spyOn(jssUtils, 'attachComponentCss')
+    .spyOn(cssUtils, 'attachComponentCss')
     .mockImplementation((_, getComponentCss, ...args) => getComponentCss(...args)); // eslint-disable-line @typescript-eslint/no-unsafe-argument
 };
 

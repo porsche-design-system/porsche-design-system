@@ -1,4 +1,4 @@
-import type { JssStyle } from '../utils/emotionCss';
+import type { JssStyle } from '../utils/css-serializer';
 import type { GetJssStyleFunction } from '../utils';
 
 export const GROUP_DIRECTIONS = ['row', 'column'] as const;

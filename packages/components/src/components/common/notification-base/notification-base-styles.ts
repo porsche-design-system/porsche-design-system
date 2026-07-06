@@ -1,5 +1,5 @@
 import { getMediaQueryMin } from '@porsche-design-system/emotion';
-import type { Styles } from '../../../utils/emotionCss';
+import type { Styles } from '../../../utils/css-serializer';
 import { forcedColorsMediaQuery } from '../../../styles';
 import {
   blurFrosted,

@@ -18,7 +18,7 @@ import {
   typescaleSm,
   typescaleXs,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../utils/emotionCss';
+import type { JssStyle } from '../../utils/css-serializer';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,

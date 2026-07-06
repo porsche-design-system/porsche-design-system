@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
 import * as a11yUtils from '../../../utils/a11y/select/select-aria';
-import * as attachComponentCssUtils from '../../../utils/jss';
+import * as attachComponentCssUtils from '../../../utils/css';
 import * as prefixedTagNamesUtils from '../../../utils/tag-name';
 import * as validatePropsUtils from '../../../utils/validation/validateProps';
 import { SelectOption } from './select-option';

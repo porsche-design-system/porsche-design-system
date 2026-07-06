@@ -1,4 +1,4 @@
-import type { Styles } from '../../../utils/emotionCss';
+import type { Styles } from '../../../utils/css-serializer';
 
 export const getFunctionalComponentRequiredStyles = (): Styles<'required'> => {
   return {

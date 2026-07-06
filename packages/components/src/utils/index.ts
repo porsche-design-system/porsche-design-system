@@ -22,7 +22,7 @@ export * from './input-utils';
 export * from './is-click-outside';
 export * from './is-ssr-hydration';
 export { parseJSONAttribute } from './json';
-export * from './jss';
+export * from './css';
 export * from './link-button/link-target';
 export * from './link-button-tile/link-button-tile-utils';
 export * from './log';

@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../utils/emotionCss';
+import type { JssStyle } from '../../utils/css-serializer';
 
 /**
  * utility to wrap jss styles parameter in `@media (hover: hover)`

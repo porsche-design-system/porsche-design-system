@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../utils/emotionCss';
+import type { JssStyle } from '../../utils/css-serializer';
 
 export const getButtonLabelJssStyle: JssStyle = {
   flexGrow: 1,

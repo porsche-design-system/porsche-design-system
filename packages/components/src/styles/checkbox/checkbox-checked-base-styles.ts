@@ -1,5 +1,5 @@
 import { colorCanvas, colorPrimary, ref } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../utils/emotionCss';
+import type { JssStyle } from '../../utils/css-serializer';
 import type { FormState } from '../../utils/form/form-state';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { getThemedFormStateColors } from '../form-state-color-styles';

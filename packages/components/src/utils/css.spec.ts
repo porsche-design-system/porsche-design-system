@@ -2,8 +2,8 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as globby from 'fast-glob';
 import { vi } from 'vitest';
-import type { JssStyle, Styles } from './emotionCss';
-import * as jssUtils from './jss';
+import type { JssStyle, Styles } from './css-serializer';
+import * as cssUtils from './css';
 import {
   attachComponentCss,
   buildResponsiveStyles,
@@ -13,7 +13,7 @@ import {
   isObject,
   mergeDeep,
   supportsConstructableStylesheets,
-} from './jss';
+} from './css';
 
 describe('getCss()', () => {
   // stylis stringifies compactly (no pretty-print). It does NOT sort or merge @media queries — they
@@ -280,7 +280,7 @@ describe('attachComponentCss()', () => {
   it('should call getCachedComponentCss() with infinite parameters to retrieve cached css', () => {
     const host = document.createElement('p-some-component');
     host.attachShadow({ mode: 'open' });
-    const spy = vi.spyOn(jssUtils.internalJss, 'getCachedComponentCss').mockImplementation(() => '');
+    const spy = vi.spyOn(cssUtils.internalCss, 'getCachedComponentCss').mockImplementation(() => '');
 
     attachComponentCss(host, (_x: boolean) => 'some css', true);
 
@@ -305,7 +305,7 @@ describe('attachComponentCss()', () => {
 
   describe('without CSSStyleSheet support', () => {
     it('should create style node and prepend it in shadowRoot', () => {
-      const spy = vi.spyOn(jssUtils.internalJss, 'getHasConstructableStylesheetSupport').mockReturnValue(false);
+      const spy = vi.spyOn(cssUtils.internalCss, 'getHasConstructableStylesheetSupport').mockReturnValue(false);
 
       const div = document.createElement('p-some-component');
       div.attachShadow({ mode: 'open' });
