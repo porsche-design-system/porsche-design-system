@@ -1,9 +1,8 @@
-// object->CSS engine on @emotion/serialize + stylis: a raw JSS-style selector map -> one
-// pretty-printed stylesheet string. `@emotion/serialize` flattens the style object to a CSS
-// declaration string (camelCase->kebab, `&` nesting kept); `stylis` resolves nesting/at-rules
-// into a flat AST that we pretty-print. Output is semantically equivalent to the former JSS
-// output (same rules/values, same cascade order) but not byte-identical to it.
-import { serializeStyles } from '@emotion/serialize';
+// object->CSS engine: a raw JSS-style selector map -> one pretty-printed stylesheet string.
+// `styleToCss` flattens the style object to a CSS declaration string (camelCase->kebab, `&`
+// nesting kept verbatim); `stylis` resolves nesting/at-rules into a flat AST that we pretty-print.
+// Output is semantically equivalent to the former JSS output (same rules/values, same cascade
+// order) but not byte-identical to it.
 // stylis ships no bundled types; vitest transpiles (esbuild) so this runs regardless.
 // @ts-expect-error
 import { compile } from 'stylis';
@@ -23,28 +22,34 @@ type AstNode = {
   children: AstNode[] | string;
 };
 
-const CONTENT_TOKEN = (i: number): string => `"pdsc${i}"`;
+// camelCase property name -> kebab-case, matching @emotion/serialize's hyphenateStyleName:
+// prefix every uppercase letter (and a leading `ms`) with `-` then lowercase, so `WebkitMask` ->
+// `-webkit-mask` and `msFlexAlign` -> `-ms-flex-align`. Custom properties (`--_p-x`) pass through
+// untouched. Only leaf property names are hyphenated; selector/at-rule keys stay verbatim.
+const hyphenate = (key: string): string =>
+  key.startsWith('--') ? key : key.replace(/[A-Z]|^ms/g, '-$&').toLowerCase();
 
-// non-mutating pre-walk:
-// - stringify every numeric value so Emotion never auto-appends `px`
-// - swap `content` string values for a quoted placeholder. Emotion's serializer validates the
-//   `content` property and throws in dev on values it can't parse (e.g. PDS's `"" !important`);
-//   the placeholder always passes, and getCss restores the real value verbatim afterwards.
-const normalizeValues = (o: any, content: string[]): any => {
-  if (Array.isArray(o)) return o.map((v) => normalizeValues(v, content));
-  if (o && typeof o === 'object') {
-    const r: Record<string, any> = {};
-    for (const k in o) {
-      const v = o[k];
-      if (k === 'content' && typeof v === 'string') {
-        r[k] = CONTENT_TOKEN(content.push(v) - 1);
-      } else {
-        r[k] = typeof v === 'number' ? String(v) : normalizeValues(v, content);
-      }
+// style object -> flat CSS declaration string with `&` nesting kept for stylis to resolve.
+// Nested object value => `selectorOrAtRule{ ...recurse... }`; primitive => `prop:value;`; array =>
+// repeated declarations (CSS fallback values, matching @emotion/serialize). Numbers stringify
+// as-is (no `px` auto-append) and `content` values pass through verbatim — the two behaviours we
+// previously had to work around when @emotion/serialize produced this string.
+const styleToCss = (obj: Record<string, any>): string => {
+  let out = '';
+  for (const key in obj) {
+    const v = obj[key];
+    // skip null/undefined/boolean values (matches @emotion/serialize) — lets conditional props
+    // like `color: cond ? x : undefined` drop out instead of emitting `color:undefined;`
+    if (v == null || typeof v === 'boolean') continue;
+    if (Array.isArray(v)) {
+      for (const item of v) out += `${hyphenate(key)}:${String(item)};`;
+    } else if (v && typeof v === 'object') {
+      out += `${key}{${styleToCss(v)}}`;
+    } else {
+      out += `${hyphenate(key)}:${String(v)};`;
     }
-    return r;
   }
-  return o;
+  return out;
 };
 
 // decl node -> "prop: value;" (space after colon, space before !important)
@@ -97,7 +102,7 @@ const printKeyframes = (el: AstNode): string => {
   return `${el.value} {\n${steps}\n}\n`;
 };
 
-// @media/@supports/@container block; children may be rules or nested conditionals
+// @media/@supports/@container/@starting-style block; children may be rules or nested conditionals
 const printConditional = (query: string, children: AstNode[], pad: string): string => {
   let body = '';
   for (const child of children) {
@@ -122,14 +127,12 @@ const minWidth = (q: string): number => {
 };
 
 // serialize one selector branch's subtree to a flat stylis AST (nesting/`&` resolved)
-const compileBranch = (selector: string, subtree: any, content: string[]): AstNode[] => {
-  const { styles: raw } = serializeStyles([normalizeValues(subtree, content)]);
-  return compile(`${selector}{${raw}}`) as AstNode[];
-};
+const compileBranch = (selector: string, subtree: any): AstNode[] =>
+  compile(`${selector}{${styleToCss(subtree)}}`) as AstNode[];
 
 // emit one group of top-level nodes: keyframes, base rules, merged+sorted @media, then
-// @supports/@container. `@media` blocks merge by query and sort ascending by min-width (mobile
-// first); `@supports`/`@container` have no natural ordering, so they emit in encounter order.
+// @supports/@container/@starting-style. `@media` blocks merge by query and sort ascending by
+// min-width (mobile first); the others have no natural ordering, so they emit in encounter order.
 // Base rules emit before conditionals so conditional queries override the base cascade.
 const emitGroup = (nodes: AstNode[]): string => {
   const keyframes: AstNode[] = [];
@@ -179,17 +182,15 @@ const isConditional = (key: string): boolean => key.startsWith('@media') || key.
 // Compile a style map to a flat list of top-level stylis nodes.
 // @global children keep their selector verbatim; other selector keys become `.key`;
 // a top-level @media/@supports key wraps its (recursively compiled) body in a conditional node.
-const compileMap = (map: Record<string, any>, content: string[]): AstNode[] => {
+const compileMap = (map: Record<string, any>): AstNode[] => {
   const nodes: AstNode[] = [];
   for (const key in map) {
     if (key === '@global') {
       for (const gk in map['@global']) {
         if (gk.startsWith('@keyframes')) {
-          nodes.push(
-            ...(compile(serializeStyles([normalizeValues({ [gk]: map['@global'][gk] }, content)]).styles) as AstNode[])
-          );
+          nodes.push(...(compile(styleToCss({ [gk]: map['@global'][gk] })) as AstNode[]));
         } else {
-          nodes.push(...compileBranch(gk, map['@global'][gk], content));
+          nodes.push(...compileBranch(gk, map['@global'][gk]));
         }
       }
     } else if (isConditional(key)) {
@@ -197,10 +198,10 @@ const compileMap = (map: Record<string, any>, content: string[]): AstNode[] => {
         type: key.startsWith('@media') ? '@media' : '@supports',
         value: key,
         props: [key],
-        children: compileMap(map[key], content),
+        children: compileMap(map[key]),
       });
     } else {
-      nodes.push(...compileBranch(`.${key}`, map[key], content));
+      nodes.push(...compileBranch(`.${key}`, map[key]));
     }
   }
   return nodes;
@@ -210,7 +211,6 @@ export const getCss = (jssStyles: Styles): string => {
   const globalNodes: AstNode[] = [];
   const scopedNodes: AstNode[] = [];
   const styles = jssStyles as Record<string, any>;
-  const content: string[] = [];
 
   // Split top-level keys: @global rules (and top-level conditionals) emit first, scoped `.key`
   // rules after — mirrors jss's global-then-scoped ordering.
@@ -218,11 +218,9 @@ export const getCss = (jssStyles: Styles): string => {
     if (key === '@global') {
       for (const gk in styles['@global']) {
         if (gk.startsWith('@keyframes')) {
-          globalNodes.push(
-            ...(compile(serializeStyles([normalizeValues({ [gk]: styles['@global'][gk] }, content)]).styles) as AstNode[])
-          );
+          globalNodes.push(...(compile(styleToCss({ [gk]: styles['@global'][gk] })) as AstNode[]));
         } else {
-          globalNodes.push(...compileBranch(gk, styles['@global'][gk], content));
+          globalNodes.push(...compileBranch(gk, styles['@global'][gk]));
         }
       }
     } else if (isConditional(key)) {
@@ -230,14 +228,12 @@ export const getCss = (jssStyles: Styles): string => {
         type: key.startsWith('@media') ? '@media' : '@supports',
         value: key,
         props: [key],
-        children: compileMap(styles[key], content),
+        children: compileMap(styles[key]),
       });
     } else {
-      scopedNodes.push(...compileBranch(`.${key}`, styles[key], content));
+      scopedNodes.push(...compileBranch(`.${key}`, styles[key]));
     }
   }
 
-  const css = (emitGroup(globalNodes) + emitGroup(scopedNodes)).replace(/\n+$/, '');
-  // restore placeholdered `content` values verbatim
-  return content.reduce((acc, value, i) => acc.replace(CONTENT_TOKEN(i), value), css);
+  return (emitGroup(globalNodes) + emitGroup(scopedNodes)).replace(/\n+$/, '');
 };
