@@ -38,6 +38,7 @@
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/madge": "^5.0.3",
     "@types/node": "^26.0.1",
+    "@types/stylis": "^4.2.7",
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
     "madge": "^8.0.0",

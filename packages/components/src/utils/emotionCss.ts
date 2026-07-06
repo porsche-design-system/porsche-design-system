@@ -4,8 +4,6 @@
 // and every at-rule (@media/@supports/@container/@starting-style/@keyframes and anything CSS adds
 // next) with no per-at-rule handling of our own. Output is semantically equivalent to the former
 // JSS output (same rules/values/cascade order) but compact, not pretty-printed.
-// stylis ships no bundled types; the toolchain transpiles regardless.
-// @ts-expect-error
 import { compile, serialize, stringify } from 'stylis';
 
 // Loose replacements for jss's `Styles`/`JssStyle` (the style-object contract for getCss and the
