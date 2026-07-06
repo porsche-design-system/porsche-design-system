@@ -11,7 +11,7 @@ export const metadata = {
 # Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
 
 <TableOfContents
-  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']}
 />
 
 ## Accessibility support
@@ -54,13 +54,6 @@ button.
 ## Integration examples
 
 <A11yIntegrationExamples examples={popoverA11yExamples} />
-## Limitations
-
-### Custom slotted button
-
-The `p-popover` component does not support the `aria-expanded` attribute when used with a custom slotted button. This is
-because the component does not expose its `open` state publicly, which is necessary to manage the relationship between
-the button and the internal state of the popover.
 
 ## Tests
 
