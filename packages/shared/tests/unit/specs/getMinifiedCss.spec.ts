@@ -35,7 +35,7 @@ describe('getMinifiedCss()', () => {
     { input: { class: { display: 'block', marginLeft: 5 } }, result: '.class{display:block;margin-left:5px}' },
     {
       input: { ':host': { display: 'block', marginLeft: '5px !important' } },
-      result: ':host{display:block;margin-left:5px !important}',
+      result: ':host{display:block;margin-left:5px!important}',
     },
     {
       input: { ':host': { display: 'block', width: 500, transition: 'width .25s ease' } },
@@ -47,7 +47,7 @@ describe('getMinifiedCss()', () => {
         '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
       },
       result:
-        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}',
+        ':host{display:block;margin-left:5px!important}@media (min-width: 760px){:host{margin-right:5px!important}}',
     },
     {
       input: {
@@ -56,16 +56,17 @@ describe('getMinifiedCss()', () => {
         '@media (min-width: 1000px)': { ':host': { marginRight: '10px !important' } },
       },
       result:
-        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+        ':host{display:block;margin-left:5px!important}@media (min-width: 760px){:host{margin-right:5px!important}}@media (min-width: 1000px){:host{margin-right:10px!important}}',
     },
     {
+      // media queries are emitted in source order — NOT sorted (unlike the previous engine)
       input: {
         ':host': { display: 'block', marginLeft: '5px !important' },
         '@media (min-width: 1000px)': { ':host': { marginRight: '10px !important' } },
         '@media (min-width: 760px)': { ':host': { marginRight: '5px !important' } },
       },
       result:
-        ':host{display:block;margin-left:5px !important}@media(min-width:760px){:host{margin-right:5px !important}}@media(min-width:1000px){:host{margin-right:10px !important}}',
+        ':host{display:block;margin-left:5px!important}@media (min-width: 1000px){:host{margin-right:10px!important}}@media (min-width: 760px){:host{margin-right:5px!important}}',
     },
     {
       input: { '@global': { div: { display: 'block' } } },
