@@ -1,83 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 1`] = `
-".message {
-  display: flex;
-  gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-error);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.message:empty {
-  opacity: 0;
-  position: absolute;
-}"
-`;
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 1`] = `".message{display:flex;gap:var(--p-spacing-static-xs);font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);color:var(--p-color-error);transition:color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}.message:empty{opacity:0;position:absolute;}"`;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 2`] = `
-".message {
-  display: flex;
-  gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-error);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.message:empty {
-  opacity: 0;
-  position: absolute;
-}"
-`;
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 2`] = `".message{display:flex;gap:var(--p-spacing-static-xs);font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);color:var(--p-color-error);transition:color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}.message:empty{opacity:0;position:absolute;}"`;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 1`] = `
-".message {
-  display: flex;
-  gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.message:empty {
-  opacity: 0;
-  position: absolute;
-}"
-`;
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 1`] = `".message{display:flex;gap:var(--p-spacing-static-xs);font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);transition:color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}.message:empty{opacity:0;position:absolute;}"`;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 2`] = `
-".message {
-  display: flex;
-  gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.message:empty {
-  opacity: 0;
-  position: absolute;
-}"
-`;
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 2`] = `".message{display:flex;gap:var(--p-spacing-static-xs);font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);transition:color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}.message:empty{opacity:0;position:absolute;}"`;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 1`] = `
-".message {
-  display: flex;
-  gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-success);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.message:empty {
-  opacity: 0;
-  position: absolute;
-}"
-`;
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 1`] = `".message{display:flex;gap:var(--p-spacing-static-xs);font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);color:var(--p-color-success);transition:color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}.message:empty{opacity:0;position:absolute;}"`;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 2`] = `
-".message {
-  display: flex;
-  gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
-  color: var(--p-color-success);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.message:empty {
-  opacity: 0;
-  position: absolute;
-}"
-`;
+exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 2`] = `".message{display:flex;gap:var(--p-spacing-static-xs);font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);color:var(--p-color-success);transition:color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}.message:empty{opacity:0;position:absolute;}"`;

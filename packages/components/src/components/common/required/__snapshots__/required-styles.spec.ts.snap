@@ -1,7 +1,3 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentRequiredStyles() > should return correct styles 1`] = `
-".required {
-  user-select: none;
-}"
-`;
+exports[`getFunctionalComponentRequiredStyles() > should return correct styles 1`] = `".required{user-select:none;}"`;

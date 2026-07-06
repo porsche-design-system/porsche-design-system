@@ -1,16 +1,3 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  margin-bottom: var(--p-spacing-static-sm);
-}"
-`;
+exports[`getComponentCss() > should return correct css 1`] = `":host{display:block;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.root{margin-bottom:var(--p-spacing-static-sm);}"`;

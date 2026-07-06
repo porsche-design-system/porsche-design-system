@@ -1,26 +1,3 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css 1`] = `
-":host {
-  display: grid;
-  grid-template-columns: var(--_p-text-list-e) 1fr !important;
-  column-gap: var(--p-spacing-static-md) !important;
-  font: inherit !important;
-  color: inherit !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-slot {
-  display: inline;
-}
-::slotted(*) {
-  --_p-text-list-f: .625rem !important;
-  --_p-text-list-g: "–" !important;
-  --_p-text-list-a: 2rem !important;
-  --_p-text-list-b: "" !important;
-}
-::slotted(*:last-child) {
-  grid-column: 2 !important;
-}"
-`;
+exports[`getComponentCss() > should return correct css 1`] = `":host{display:grid;grid-template-columns:var(--_p-text-list-e) 1fr!important;column-gap:var(--p-spacing-static-md)!important;font:inherit!important;color:inherit!important;}:host([hidden]){display:none!important;}slot{display:inline;}::slotted(*){--_p-text-list-f:.625rem!important;--_p-text-list-g:"–"!important;--_p-text-list-a:2rem!important;--_p-text-list-b:""!important;}::slotted(*:last-child){grid-column:2!important;}"`;
