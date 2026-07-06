@@ -164,10 +164,9 @@ const emitGroup = (batches: Batch[], hasKeyframesAnywhere: boolean): string => {
   const baseRules: { el: AstNode; afterKeyframes: boolean }[] = [];
   const mediaMap = new Map<string, AstNode[]>();
   const mediaOrder: string[] = [];
-  const supports: { query: string; children: AstNode[] }[] = [];
-  // `@container` queries aren't merged/sorted (unlike min-width `@media`) — a container query has no
-  // natural ordering, so they emit in encounter order, same as `@supports`.
-  const containers: { query: string; children: AstNode[] }[] = [];
+  // `@supports` and `@container` share handling: unlike min-width `@media` they have no natural
+  // ordering to sort/merge by, so both emit in encounter order.
+  const nonMergedConditionals: { query: string; children: AstNode[] }[] = [];
   // keep rules and nested conditionals; drop declarations/comments hoisted to block level
   const blockChildren = (el: AstNode): AstNode[] =>
     (el.children as AstNode[]).filter(
@@ -184,10 +183,8 @@ const emitGroup = (batches: Batch[], hasKeyframesAnywhere: boolean): string => {
           mediaOrder.push(el.value);
         }
         mediaMap.get(el.value)!.push(...blockChildren(el));
-      } else if (el.type === '@supports') {
-        supports.push({ query: el.value, children: blockChildren(el) });
-      } else if (el.type === '@container') {
-        containers.push({ query: el.value, children: blockChildren(el) });
+      } else if (el.type === '@supports' || el.type === '@container') {
+        nonMergedConditionals.push({ query: el.value, children: blockChildren(el) });
       } else if (el.type === 'rule' && (el.children as AstNode[]).some((c) => c.type === 'decl')) {
         baseRules.push({ el, afterKeyframes });
       }
@@ -201,8 +198,7 @@ const emitGroup = (batches: Batch[], hasKeyframesAnywhere: boolean): string => {
   for (const kf of keyframes) out += printKeyframes(kf);
   for (const { el, afterKeyframes } of baseRules) out += printRule(el, afterKeyframes ? '  ' : '');
   for (const q of sortedMedia) out += printConditional(q, mediaMap.get(q)!, condPad);
-  for (const s of supports) out += printConditional(s.query, s.children, condPad);
-  for (const c of containers) out += printConditional(c.query, c.children, condPad);
+  for (const c of nonMergedConditionals) out += printConditional(c.query, c.children, condPad);
   return out;
 };
 
