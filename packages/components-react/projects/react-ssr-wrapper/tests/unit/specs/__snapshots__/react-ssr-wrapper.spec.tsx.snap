@@ -53,10 +53,10 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     border: 1px solid var(--p-multi-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -104,15 +104,15 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-multi-select-border-color,var(--p-color-primary));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-multi-select-border-color,var(--p-color-primary));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -146,14 +146,14 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     padding-block: calc(11.2px * (var(--_p-multi-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -192,7 +192,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -224,24 +224,23 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
 }
-
     </style>
     <div
       class="root"
@@ -296,7 +295,6 @@ img {
     background: CanvasText;
   }
 }
-
             </style>
             <img
               alt=""
@@ -356,7 +354,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-search-cancel-button {
@@ -378,7 +376,7 @@ input::-webkit-search-cancel-button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -394,7 +392,7 @@ input::-webkit-search-cancel-button {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -426,8 +424,8 @@ input::-webkit-search-cancel-button {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -455,11 +453,10 @@ input::-webkit-search-cancel-button {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
             </style>
             <div
               class="root"
@@ -522,7 +519,6 @@ img {
     background: CanvasText;
   }
 }
-
                     </style>
                     <img
                       alt=""
@@ -632,7 +628,6 @@ img {
     background-color: var(--p-color-frosted-strong);
   }
 }
-
                     </style>
                     <button
                       class="root"
@@ -677,7 +672,6 @@ img {
     background: CanvasText;
   }
 }
-
                           </style>
                           <img
                             alt=""
@@ -782,14 +776,14 @@ slot {
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -812,7 +806,7 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--p-radius-md);
   flex-shrink: 0;
@@ -827,13 +821,13 @@ slot {
   grid-area: 1/1;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+  .option--disabled {
+    color: GrayText;
   }
 }
 
@@ -842,7 +836,6 @@ slot {
     border-color: var(--p-checkbox-border-color,var(--p-color-primary));
   }
 }
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -884,14 +877,14 @@ slot {
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -914,7 +907,7 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--p-radius-md);
   flex-shrink: 0;
@@ -929,13 +922,13 @@ slot {
   grid-area: 1/1;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+  .option--disabled {
+    color: GrayText;
   }
 }
 
@@ -944,7 +937,6 @@ slot {
     border-color: var(--p-checkbox-border-color,var(--p-color-primary));
   }
 }
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -986,14 +978,14 @@ slot {
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -1016,7 +1008,7 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--p-radius-md);
   flex-shrink: 0;
@@ -1031,13 +1023,13 @@ slot {
   grid-area: 1/1;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+  .option--disabled {
+    color: GrayText;
   }
 }
 
@@ -1046,7 +1038,6 @@ slot {
     border-color: var(--p-checkbox-border-color,var(--p-color-primary));
   }
 }
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1088,14 +1079,14 @@ slot {
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -1118,7 +1109,7 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--p-radius-md);
   flex-shrink: 0;
@@ -1133,13 +1124,13 @@ slot {
   grid-area: 1/1;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+  .option--disabled {
+    color: GrayText;
   }
 }
 
@@ -1148,7 +1139,6 @@ slot {
     border-color: var(--p-checkbox-border-color,var(--p-color-primary));
   }
 }
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1190,14 +1180,14 @@ slot {
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -1220,7 +1210,7 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--p-radius-md);
   flex-shrink: 0;
@@ -1235,13 +1225,13 @@ slot {
   grid-area: 1/1;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+  .option--disabled {
+    color: GrayText;
   }
 }
 
@@ -1250,7 +1240,6 @@ slot {
     border-color: var(--p-checkbox-border-color,var(--p-color-primary));
   }
 }
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1292,14 +1281,14 @@ slot {
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -1322,7 +1311,7 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--p-radius-md);
   flex-shrink: 0;
@@ -1337,13 +1326,13 @@ slot {
   grid-area: 1/1;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+  .option--disabled {
+    color: GrayText;
   }
 }
 
@@ -1352,7 +1341,6 @@ slot {
     border-color: var(--p-checkbox-border-color,var(--p-color-primary));
   }
 }
-
       </style>
       // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
       <div
@@ -1413,9 +1401,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -1453,7 +1441,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -1485,8 +1473,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1608,7 +1596,7 @@ slot:not([name]) {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -1640,8 +1628,8 @@ slot:not([name]) {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -1706,7 +1694,6 @@ span {
     outline-color: Highlight;
   }
 }
-
       </style>
       <button
         aria-pressed="true"
@@ -1759,18 +1746,17 @@ span {
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
 }
 
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
       </style>
       <button
         aria-pressed="false"
@@ -1804,7 +1790,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 }
 .scroller {
   place-self: flex-start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
 }
     </style>
@@ -1929,7 +1915,6 @@ slot {
     transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
-
         </style>
         <div
           class="root"
@@ -1987,7 +1972,7 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: not-allowed;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
@@ -1999,12 +1984,12 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
   button {
     color: GrayText;
     border-color: GrayText;
-  }
-  button:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2079,7 +2064,6 @@ button:focus-visible {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
 }
-
       </style>
       <button
         aria-disabled="true"
@@ -2124,7 +2108,7 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: not-allowed;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
@@ -2136,12 +2120,12 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
   button {
     color: GrayText;
     border-color: GrayText;
-  }
-  button:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -2216,7 +2200,6 @@ button:focus-visible {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
 }
-
       </style>
       <button
         aria-disabled="true"
@@ -2258,10 +2241,10 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   cursor: pointer !important;
   border-radius: var(--p-radius-xl) !important;
   padding: var(--p-spacing-static-md) calc(28 * var(--p-spacing-static-2xs)) !important;
-  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  background: 0 0 / 0% 100% no-repeat !important;
+  background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -2274,6 +2257,9 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+    outline-color: Highlight !important;
+  }
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -2285,9 +2271,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   ::slotted(button) {
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
-  }
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
-    outline-color: Highlight !important;
   }
 }
 
@@ -2316,7 +2299,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
     display: none;
   }
 }
-
     </style>
     <p-scroller
       class="scroller"
@@ -2439,7 +2421,6 @@ slot {
     transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
-
         </style>
         <div
           class="root"
@@ -2528,10 +2509,10 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   cursor: pointer !important;
   border-radius: var(--p-radius-xl) !important;
   padding: var(--p-spacing-static-md) calc(28 * var(--p-spacing-static-2xs)) !important;
-  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  background: 0 0 / 0% 100% no-repeat !important;
+  background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -2544,6 +2525,9 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+    outline-color: Highlight !important;
+  }
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -2555,9 +2539,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   ::slotted(button) {
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
-  }
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
-    outline-color: Highlight !important;
   }
 }
 
@@ -2586,7 +2567,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
     display: none;
   }
 }
-
         </style>
         <p-scroller
           class="scroller"
@@ -2709,7 +2689,6 @@ slot {
     transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
-
             </style>
             <div
               class="root"
@@ -2777,7 +2756,6 @@ slot {
     outline-color: Highlight !important;
   }
 }
-
       </style>
       <slot />
     </template>
@@ -2808,7 +2786,6 @@ slot {
     outline-color: Highlight !important;
   }
 }
-
       </style>
       <slot />
     </template>
@@ -2833,7 +2810,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-list
   display: none !important;
 }
 ol,ul {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   padding: var(--_p-text-list-d,0) 0 var(--_p-text-list-c,0) 0;
   list-style-type: none;
@@ -2989,10 +2966,10 @@ exports[`should render dsr component for PAccordion 1`] = `
   }
   details {
     all: unset;
-    font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
     display: grid;
-    grid-template: repeat(2, auto) / minmax(0, 1fr) auto;
+    grid-template: repeat(2, auto)/minmax(0, 1fr) auto;
     column-gap: calc(11.2px * (1 - 0.64285714) + 4px);
     align-items: center;
     padding: var(--p-accordion-py,0) var(--p-accordion-px,0);
@@ -3012,7 +2989,7 @@ exports[`should render dsr component for PAccordion 1`] = `
     margin-top: 0px;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)), grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), padding-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),padding-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] &gt; div {
     opacity: 1;
@@ -3022,7 +2999,7 @@ exports[`should render dsr component for PAccordion 1`] = `
     margin-inline: calc(-1 * var(--p-accordion-px,0));
     grid-template-rows: 1fr;
     visibility: inherit;
-    transition: visibility 0s linear 0s, grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), margin-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+    transition: visibility 0s linear 0s,grid-template-rows var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),margin-top var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   summary {
     all: unset;
@@ -3072,11 +3049,11 @@ exports[`should render dsr component for PAccordion 1`] = `
       outline-offset: 0;
       padding: var(--p-accordion-py,calc(28px * (1 - 0.64285714) + 6px)) var(--p-accordion-px,calc(11.2px * (1 - 0.64285714) + 12px));
     }
-    summary::after {
-      background-color: LinkText;
-    }
     summary:focus-visible::before {
       outline-color: Highlight;
+    }
+    summary::after {
+      background-color: LinkText;
     }
 }
 
@@ -3085,7 +3062,6 @@ exports[`should render dsr component for PAccordion 1`] = `
       background: var(--p-color-frosted);
     }
 }
-
     </style>
     <details>
       <summary>
@@ -3117,7 +3093,7 @@ exports[`should render dsr component for PAiTag 1`] = `
   display: inline-flex;
   vertical-align: top;
   white-space: nowrap;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -3136,7 +3112,7 @@ div {
   background: var(--p-color-frosted-strong);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 div::before {
   content: "";
@@ -3154,7 +3130,6 @@ div::before {
     background: CanvasText;
   }
 }
-
     </style>
     <div>
       AI-generated
@@ -3204,7 +3179,7 @@ slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
   margin-top: 0px;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 @media(min-width:760px) {
@@ -3225,7 +3200,7 @@ slot:not([name]),slot[name="description"],p {
   opacity: 0;
   transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
@@ -3264,7 +3239,6 @@ slot:not([name]),slot[name="description"],p {
     outline-offset: -2px;
   }
 }
-
     </style>
     <div
       aria-hidden="true"
@@ -3308,13 +3282,13 @@ slot:not([name]),slot[name="description"],p {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
   gap: 0;
 }
@@ -3377,7 +3351,6 @@ slot:not([name]),slot[name="description"],p {
 }
 
 }
-
             </style>
             <button
               class="root"
@@ -3422,7 +3395,6 @@ img {
     background: CanvasText;
   }
 }
-
                   </style>
                   <img
                     alt=""
@@ -3486,13 +3458,13 @@ exports[`should render dsr component for PButton 1`] = `
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
 }
@@ -3551,7 +3523,6 @@ exports[`should render dsr component for PButton 1`] = `
 }
 
 }
-
     </style>
     <button
       class="root"
@@ -3662,7 +3633,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
     background-color: var(--p-color-frosted-strong);
   }
 }
-
     </style>
     <button
       class="root"
@@ -3710,7 +3680,6 @@ img:dir(rtl) {
     background: CanvasText;
   }
 }
-
           </style>
           <img
             alt=""
@@ -3784,7 +3753,7 @@ slot[name="footer"] {
   object-fit: cover !important;
 }
 a {
-  grid-area: 1/1/-1 /-1;
+  grid-area: 1/1/-1/-1;
   z-index: 4;
   outline: 0;
 }
@@ -3792,7 +3761,7 @@ p {
   all: unset;
   z-index: 3;
   max-width: 34.375rem;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   hyphens: inherit;
   font-size: var(--p-typescale-md);
@@ -3814,7 +3783,7 @@ p {
 }
 .media {
   position: relative;
-  grid-area: 1/1/-1 /-1;
+  grid-area: 1/1/-1/-1;
   z-index: 1;
   overflow: hidden;
   border-radius: inherit;
@@ -3849,7 +3818,6 @@ p {
     height: 100%;
   }
 }
-
     </style>
     <div
       class="root"
@@ -3901,13 +3869,13 @@ p {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
 }
@@ -3966,7 +3934,6 @@ p {
 }
 
 }
-
             </style>
             <button
               class="root"
@@ -4011,6 +3978,13 @@ exports[`should render dsr component for PCanvas 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-canvas-grid) {
+  display: grid !important;
+  grid-template-columns: repeat(12,minmax(0,1fr)) !important;
+  column-gap: clamp(16px, 1.25vw + 12px, 24px) !important;
+  margin-inline: auto !important;
+  container-type: inline-size !important;
+}
 slot[name="sidebar-end-header"] {
   display: block;
 }
@@ -4025,6 +3999,11 @@ slot[name="background"] {
   overflow: hidden;
   transform: translate3d(0,0,0);
 }
+slot[name="background"]::slotted(video), slot[name="background"]::slotted(img) {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
 slot[name="title"]::slotted(a) {
   all: unset !important;
   cursor: pointer !important;
@@ -4035,22 +4014,10 @@ slot[name="title"]::slotted(a:focus-visible) {
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-slot[name="background"]::slotted(video), slot[name="background"]::slotted(img) {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-}
-slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-canvas-grid) {
-  display: grid !important;
-  grid-template-columns: repeat(12,minmax(0,1fr)) !important;
-  column-gap: clamp(16px, 1.25vw + 12px, 24px) !important;
-  margin-inline: auto !important;
-  container-type: inline-size !important;
-}
 h2 {
   all: unset;
   padding: 4px;
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   text-overflow: ellipsis;
   overflow: hidden;
@@ -4066,7 +4033,7 @@ h2 {
 
 .root {
   display: grid;
-  grid-template: auto minmax(0,1fr) auto / min(100vw,var(--p-canvas-sidebar-start-width,320px)) 100vw min(100vw,var(--p-canvas-sidebar-end-width,320px));
+  grid-template: auto minmax(0,1fr) auto/min(100vw,var(--p-canvas-sidebar-start-width,320px)) 100vw min(100vw,var(--p-canvas-sidebar-end-width,320px));
   grid-template-areas: "sidebar-start header sidebar-end" "sidebar-start main sidebar-end" "sidebar-start footer sidebar-end";
   min-height: 100lvh;
 }
@@ -4101,14 +4068,14 @@ h2 {
   gap: var(--p-spacing-static-sm);
   align-items: center;
 }
-.header__wordmark {
-  height: 10px;
-}
 .header__area--start {
   justify-content: flex-start;
 }
 .header__area--end {
   justify-content: flex-end;
+}
+.header__wordmark {
+  height: 10px;
 }
 .blur {
   z-index: -1;
@@ -4242,8 +4209,14 @@ h2 {
 .sidebar__header--start {
   justify-content: flex-start;
 }
+.sidebar__header--start::before {
+  background: linear-gradient(180deg,var(--p-color-surface) 0%,var(--p-color-surface) 65%,transparent 100%);
+}
 .sidebar__header--end {
   justify-content: space-between;
+}
+.sidebar__header--end::before {
+  background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 65%,transparent 100%);
 }
 .sidebar__header::before {
   content: "";
@@ -4252,28 +4225,16 @@ h2 {
   inset: 0 0 -8px;
   pointer-events: none;
 }
-.sidebar__header--end::before {
-  background: linear-gradient(180deg,var(--p-color-canvas) 0%,var(--p-color-canvas) 65%,transparent 100%);
-}
-.sidebar__header--start::before {
-  background: linear-gradient(180deg,var(--p-color-surface) 0%,var(--p-color-surface) 65%,transparent 100%);
-}
-@container(min-width:760px) {
-  .header__crest {
-    display: none;
-  }
-}
-
 @media(min-width:1000px) {
   .root {
     transition: grid-template-columns var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
     grid-template-columns: 0px minmax(320px,1fr) 0px;
   }
-  .sidebar--end {
-    width: min(calc(100vw - 320px),var(--p-canvas-sidebar-end-width,320px));
-  }
   .sidebar--start {
     width: min(calc(100vw - 320px),var(--p-canvas-sidebar-start-width,320px));
+  }
+  .sidebar--end {
+    width: min(calc(100vw - 320px),var(--p-canvas-sidebar-end-width,320px));
   }
 }
 
@@ -4287,12 +4248,17 @@ h2 {
   }
 }
 
+@container(min-width:760px) {
+  .header__crest {
+    display: none;
+  }
+}
+
 @container(max-width:759px) {
   .header__wordmark {
     display: none;
   }
 }
-
     </style>
     <div
       class="root"
@@ -4348,13 +4314,13 @@ h2 {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
 }
@@ -4417,7 +4383,6 @@ h2 {
 }
 
 }
-
               </style>
               <button
                 aria-expanded="false"
@@ -4463,7 +4428,6 @@ img {
     background: CanvasText;
   }
 }
-
                     </style>
                     <img
                       alt=""
@@ -4547,7 +4511,6 @@ img {
     outline-color: Highlight;
   }
 }
-
             </style>
             <picture>
               <source
@@ -4621,7 +4584,6 @@ svg {
     fill: CanvasText;
   }
 }
-
             </style>
             <svg
               viewBox="0 0 4500 300"
@@ -4685,13 +4647,13 @@ svg {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-button-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-button-a) - 0.64285714) + 4px);
 }
@@ -4754,7 +4716,6 @@ svg {
 }
 
 }
-
               </style>
               <button
                 aria-expanded="false"
@@ -4800,7 +4761,6 @@ img {
     background: CanvasText;
   }
 }
-
                     </style>
                     <img
                       alt=""
@@ -4893,6 +4853,12 @@ exports[`should render dsr component for PCarousel 1`] = `
   padding-inline-start: var(--p-carousel-ps,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
   padding-inline-end: var(--p-carousel-pe,var(--p-carousel-px,max(22px, 10.625vw - 12px))) !important;
 }
+.splide__track--draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .splide__list {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -4905,6 +4871,10 @@ exports[`should render dsr component for PCarousel 1`] = `
   transform: translateZ(0);
   border-radius: var(--p-carousel-border-radius,var(--p-radius-3xl));
 }
+.splide__slide:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
 .splide__sr {
   position: absolute;
   width: 1px;
@@ -4914,16 +4884,6 @@ exports[`should render dsr component for PCarousel 1`] = `
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.splide__track--draggable {
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
 }
 @media(min-width:760px) {
   .header {
@@ -4960,7 +4920,6 @@ exports[`should render dsr component for PCarousel 1`] = `
     outline-color: Highlight;
   }
 }
-
     </style>
     <div
       class="header"
@@ -5037,7 +4996,7 @@ input {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--p-radius-lg);
 }
@@ -5049,10 +5008,6 @@ input::after {
   content: "";
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-checkbox-scaling) * 1.75rem)) / 2));
   grid-area: 1/1;
-}
-input:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
 }
 input:indeterminate::before {
   -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
@@ -5067,18 +5022,10 @@ input:checked::before {
   mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
   background-color: var(--p-checkbox-icon-color,var(--p-color-canvas));
 }
-@media(forced-colors:active) {
-  input:focus-visible {
-    outline-color: Highlight;
-  }
-  input:indeterminate::before {
-    background: CanvasText;
-  }
-  input:checked::before {
-    background: CanvasText;
-  }
+input:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
 }
-
 @media(hover:hover) {
   input:hover {
     border-color: var(--p-checkbox-border-color,var(--p-color-primary));
@@ -5086,6 +5033,18 @@ input:checked::before {
   input:checked:hover {
     background-color: var(--p-checkbox-border-color,var(--p-color-contrast-high));
     border-color: transparent;
+  }
+}
+
+@media(forced-colors:active) {
+  input:indeterminate::before {
+    background: CanvasText;
+  }
+  input:checked::before {
+    background: CanvasText;
+  }
+  input:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -5120,7 +5079,7 @@ input:checked::before {
   padding-inline-start: calc(11.2px * (var(--_p-checkbox-scaling) - 0.64285714) + 4px);
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -5152,8 +5111,8 @@ input:checked::before {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -5257,7 +5216,6 @@ img {
     outline-color: Highlight;
   }
 }
-
     </style>
     <picture>
       <source
@@ -5343,7 +5301,6 @@ hr {
     background: CanvasText;
   }
 }
-
     </style>
     <hr />
   </template>
@@ -5400,7 +5357,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
     z-index: 999999999;
     outline: 0;
     visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete, background var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete,background var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
   }
   dialog::backdrop {
     display: none;
@@ -5444,7 +5401,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
     display: grid;
     opacity: 0;
     transform: translate3d(-100%,0,0);
-    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   .drawer:dir(rtl) {
     transform: translate3d(100%,0,0);
@@ -5470,13 +5427,13 @@ exports[`should render dsr component for PDrilldown 1`] = `
       grid-template: var(--p-spacing-fluid-md) auto minmax(0, 1fr)/repeat(1, var(--p-spacing-fluid-lg) minmax(0, 1fr) var(--p-spacing-fluid-lg));
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
-      grid-area: 1/4/-1/-1;
-      background: var(--_p-drilldown-c);
-    }
     .drawer::before {
       grid-area: 1/1/-1/4;
       background: var(--_p-drilldown-b);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: var(--_p-drilldown-c);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -5503,11 +5460,11 @@ exports[`should render dsr component for PDrilldown 1`] = `
       grid-template: var(--p-spacing-fluid-md) auto var(--p-spacing-fluid-lg) minmax(0, 1fr)/var(--p-spacing-fluid-lg) auto minmax(0, 1fr) auto var(--p-spacing-fluid-lg);
       background: var(--_p-drilldown-b);
     }
-    .drawer::after {
+    .drawer::before {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
-    .drawer::before {
+    .drawer::after {
       grid-area: 1/1/-1/-1;
       background: var(--_p-drilldown-b);
     }
@@ -5537,7 +5494,6 @@ exports[`should render dsr component for PDrilldown 1`] = `
       display: none;
     }
 }
-
     </style>
     <dialog
       inert=""
@@ -5633,7 +5589,6 @@ exports[`should render dsr component for PDrilldown 1`] = `
     background-color: var(--p-color-frosted-strong);
   }
 }
-
             </style>
             <button
               class="root"
@@ -5681,7 +5636,6 @@ img:dir(rtl) {
     background: CanvasText;
   }
 }
-
                   </style>
                   <img
                     alt=""
@@ -5738,13 +5692,13 @@ img:dir(rtl) {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
   gap: 0;
 }
@@ -5807,7 +5761,6 @@ img:dir(rtl) {
 }
 
 }
-
             </style>
             <button
               class="root"
@@ -5852,7 +5805,6 @@ img {
     background: CanvasText;
   }
 }
-
                   </style>
                   <img
                     alt=""
@@ -5909,13 +5861,13 @@ img {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
   gap: 0;
 }
@@ -5978,7 +5930,6 @@ img {
 }
 
 }
-
             </style>
             <button
               class="root"
@@ -6023,7 +5974,6 @@ img {
     background: CanvasText;
   }
 }
-
                   </style>
                   <img
                     alt=""
@@ -6145,7 +6095,6 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
       display: none;
     }
 }
-
     </style>
     <p-button-pure
       class="button"
@@ -6235,7 +6184,6 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
     background-color: var(--p-color-frosted-strong);
   }
 }
-
         </style>
         <button
           aria-expanded="false"
@@ -6284,7 +6232,6 @@ img:dir(rtl) {
     background: CanvasText;
   }
 }
-
               </style>
               <img
                 alt=""
@@ -6412,7 +6359,6 @@ img:dir(rtl) {
     background-color: var(--p-color-frosted-strong);
   }
 }
-
         </style>
         <button
           class="root"
@@ -6460,7 +6406,6 @@ img:dir(rtl) {
     background: CanvasText;
   }
 }
-
               </style>
               <img
                 alt=""
@@ -6523,7 +6468,7 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
   padding: calc(var(--p-spacing-fluid-sm) + 2px) calc(var(--p-spacing-fluid-sm) + 4px) !important;
   margin: -2px calc(var(--p-spacing-fluid-sm) * -1 - 4px) !important;
   border-radius: var(--p-radius-sm) !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-md) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-md)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--_p-drilldown-a) !important;
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
@@ -6534,18 +6479,17 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
   outline: 2px solid var(--p-color-focus) !important;
   outline-offset: 2px !important;
 }
-@media(forced-colors:active) {
-  ::slotted(a:focus-visible) {
-    outline-color: Highlight !important;
-  }
-}
-
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
   }
 }
 
+@media(forced-colors:active) {
+  ::slotted(a:focus-visible) {
+    outline-color: Highlight !important;
+  }
+}
     </style>
     <slot />
   </template>
@@ -6581,8 +6525,8 @@ fieldset {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   margin-top: var(--p-spacing-static-md);
 }
 .message:empty {
@@ -6697,14 +6641,14 @@ dialog {
   pointer-events: none;
   overlay: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -6719,7 +6663,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   transform: translate3d(100%,0,0);
   opacity: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
 }
 .scroller:dir(rtl) {
   transform: translate3d(-100%,0,0);
@@ -6763,7 +6707,6 @@ dialog::backdrop {
     border-inline-start: 2px solid CanvasText;
   }
 }
-
     </style>
     <dialog
       aria-label="Flyout"
@@ -6808,13 +6751,13 @@ dialog::backdrop {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
   gap: 0;
 }
@@ -6877,7 +6820,6 @@ dialog::backdrop {
 }
 
 }
-
               </style>
               <button
                 class="root"
@@ -6922,7 +6864,6 @@ img {
     background: CanvasText;
   }
 }
-
                     </style>
                     <img
                       alt=""
@@ -7035,7 +6976,6 @@ img:dir(rtl) {
     background: CanvasText;
   }
 }
-
     </style>
     <img
       alt=""
@@ -7070,12 +7010,12 @@ slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
   margin-top: 0px;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
 .notification {
   display: grid;
-  grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
+  grid-template: repeat(3, auto)/auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
   border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
@@ -7114,7 +7054,6 @@ slot:not([name]),slot[name="description"],p {
     outline-offset: -2px;
   }
 }
-
     </style>
     <div
       aria-live="polite"
@@ -7154,13 +7093,13 @@ slot:not([name]),slot[name="description"],p {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
   gap: 0;
 }
@@ -7223,7 +7162,6 @@ slot:not([name]),slot[name="description"],p {
 }
 
 }
-
           </style>
           <button
             class="root"
@@ -7268,7 +7206,6 @@ img {
     background: CanvasText;
   }
 }
-
                 </style>
                 <img
                   alt=""
@@ -7343,7 +7280,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -7365,7 +7302,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -7382,7 +7319,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -7414,8 +7351,8 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -7443,11 +7380,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -7532,7 +7468,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 .root {
@@ -7551,7 +7487,7 @@ input {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -7568,7 +7504,7 @@ input {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -7600,8 +7536,8 @@ input {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -7625,11 +7561,10 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -7710,7 +7645,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
   -moz-appearance: textfield;
 }
@@ -7733,7 +7668,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -7750,7 +7685,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -7782,8 +7717,8 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -7811,11 +7746,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -7897,7 +7831,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
   -moz-appearance: textfield;
 }
@@ -7920,7 +7854,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -7937,7 +7871,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -7969,8 +7903,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -7994,11 +7928,10 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -8080,7 +8013,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 .root {
@@ -8099,7 +8032,7 @@ input {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -8116,7 +8049,7 @@ input {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -8148,8 +8081,8 @@ input {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -8173,11 +8106,10 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -8258,7 +8190,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-search-cancel-button {
@@ -8280,7 +8212,7 @@ input::-webkit-search-cancel-button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -8297,7 +8229,7 @@ input::-webkit-search-cancel-button {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -8329,8 +8261,8 @@ input::-webkit-search-cancel-button {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -8354,11 +8286,10 @@ input::-webkit-search-cancel-button {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -8442,7 +8373,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 .root {
@@ -8461,7 +8392,7 @@ input {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -8478,7 +8409,7 @@ input {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -8510,8 +8441,8 @@ input {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -8535,11 +8466,10 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -8620,7 +8550,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 .root {
@@ -8639,7 +8569,7 @@ input {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -8656,7 +8586,7 @@ input {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -8688,8 +8618,8 @@ input {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -8713,11 +8643,10 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -8798,7 +8727,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-calendar-picker-indicator {
@@ -8820,7 +8749,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -8837,7 +8766,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -8869,8 +8798,8 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -8898,11 +8827,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -8987,7 +8915,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 .root {
@@ -9006,7 +8934,7 @@ input {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -9023,7 +8951,7 @@ input {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -9055,8 +8983,8 @@ input {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -9080,11 +9008,10 @@ input {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -9165,7 +9092,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
   -moz-appearance: textfield;
 }
@@ -9188,7 +9115,7 @@ input::-webkit-calendar-picker-indicator {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -9205,7 +9132,7 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -9237,8 +9164,8 @@ input::-webkit-calendar-picker-indicator {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -9266,11 +9193,10 @@ input::-webkit-calendar-picker-indicator {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
     </style>
     <div
       class="root"
@@ -9359,13 +9285,13 @@ exports[`should render dsr component for PLink 1`] = `
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
@@ -9403,7 +9329,6 @@ exports[`should render dsr component for PLink 1`] = `
 }
 
 }
-
     </style>
     <span
       class="root"
@@ -9511,7 +9436,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
     background-color: var(--p-color-frosted-strong);
   }
 }
-
     </style>
     <span
       class="root"
@@ -9558,7 +9482,6 @@ img:dir(rtl) {
     background: CanvasText;
   }
 }
-
           </style>
           <img
             alt=""
@@ -9627,7 +9550,7 @@ slot[name="footer"] {
   object-fit: cover !important;
 }
 a {
-  grid-area: 1/1/-1 /-1;
+  grid-area: 1/1/-1/-1;
   z-index: 4;
   outline: 0;
 }
@@ -9635,7 +9558,7 @@ p {
   all: unset;
   z-index: 3;
   max-width: 34.375rem;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
   hyphens: inherit;
   font-size: var(--p-typescale-md);
@@ -9656,7 +9579,7 @@ p {
 }
 .media {
   position: relative;
-  grid-area: 1/1/-1 /-1;
+  grid-area: 1/1/-1/-1;
   z-index: 1;
   overflow: hidden;
   border-radius: inherit;
@@ -9691,7 +9614,6 @@ p {
     height: 100%;
   }
 }
-
     </style>
     <div
       class="root"
@@ -9767,13 +9689,13 @@ p {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-link-a) - 0.64285714) + 6px) calc(33.6px * (var(--_p-link-a) - 0.64285714) + 16px);
   gap: calc(11.2px * (var(--_p-link-a) - 0.64285714) + 4px);
 }
@@ -9811,7 +9733,6 @@ p {
 }
 
 }
-
             </style>
             <span
               class="root"
@@ -9879,12 +9800,12 @@ slot[name="header"] {
   overflow: hidden !important;
 }
 @media(forced-colors:active) {
-  ::slotted(a[slot='anchor']:focus-visible) {
-    outline-color: Highlight !important;
-  }
   ::slotted(a[slot='anchor']) {
     forced-color-adjust: none !important;
     box-shadow: inset 0 0 0 2px LinkText !important;
+  }
+  ::slotted(a[slot='anchor']:focus-visible) {
+    outline-color: Highlight !important;
   }
 }
 
@@ -9923,7 +9844,7 @@ slot[name="header"] {
 }
 .heading {
   margin: 0 0 2px;
-  font: var(--p-font-weight-semibold) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -9931,7 +9852,7 @@ slot[name="header"] {
 }
 .price {
   margin: 0;
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 @media(min-width:760px) {
   .image {
@@ -9944,7 +9865,6 @@ slot[name="header"] {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
-
     </style>
     <div
       class="root"
@@ -10048,7 +9968,6 @@ slot[name="header"] {
     background-color: var(--p-color-frosted-strong);
   }
 }
-
             </style>
             <button
               class="root"
@@ -10093,7 +10012,6 @@ img {
     background: CanvasText;
   }
 }
-
                   </style>
                   <img
                     alt=""
@@ -10185,14 +10103,14 @@ dialog {
   pointer-events: none;
   overlay: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -10218,7 +10136,7 @@ dialog::backdrop {
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -10246,7 +10164,6 @@ dialog::backdrop {
     outline-offset: -2px;
   }
 }
-
     </style>
     <dialog
       aria-modal="true"
@@ -10291,13 +10208,13 @@ dialog::backdrop {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
   gap: 0;
 }
@@ -10360,7 +10277,6 @@ dialog::backdrop {
 }
 
 }
-
               </style>
               <button
                 class="root"
@@ -10405,7 +10321,6 @@ img {
     background: CanvasText;
   }
 }
-
                     </style>
                     <img
                       alt=""
@@ -10455,8 +10370,8 @@ exports[`should render dsr component for PModelSignature 1`] = `
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 36 !important;
+  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top/contain !important;
+  aspect-ratio: 94/36 !important;
   background: var(--p-model-signature-color,var(--p-color-primary)) !important;
 }
 :host([hidden]) {
@@ -10479,7 +10394,6 @@ img {
     background: CanvasText !important;
   }
 }
-
     </style>
     <slot />
     <img
@@ -10544,10 +10458,10 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     border: 1px solid var(--p-multi-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
     background: var(--p-multi-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-multi-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -10595,15 +10509,15 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-multi-select-border-color,var(--p-color-primary));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-multi-select-border-color,var(--p-color-primary));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -10637,14 +10551,14 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     padding-block: calc(11.2px * (var(--_p-multi-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -10683,7 +10597,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -10715,24 +10629,23 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
 }
-
     </style>
     <div
       class="root"
@@ -10787,7 +10700,6 @@ img {
     background: CanvasText;
   }
 }
-
             </style>
             <img
               alt=""
@@ -10847,7 +10759,7 @@ input {
   align-items: center;
   width: max(100%, 2ch);
   height: 100%;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   text-overflow: ellipsis;
 }
 input::-webkit-search-cancel-button {
@@ -10869,7 +10781,7 @@ input::-webkit-search-cancel-button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   cursor: text;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .wrapper:not(:has(input:disabled)):focus-within {
   border-color: var(--p-color-primary);
@@ -10885,7 +10797,7 @@ input::-webkit-search-cancel-button {
   white-space: nowrap;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -10917,8 +10829,8 @@ input::-webkit-search-cancel-button {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -10946,11 +10858,10 @@ input::-webkit-search-cancel-button {
 }
 
 @media(hover:hover) {
-  .wrapper:hover:not(.button:hover), .label-wrapper:hover~.wrapper {
+  .wrapper:hover:not(.button:hover), .label-wrapper:hover ~ .wrapper {
     border-color: var(--p-color-primary);
   }
 }
-
             </style>
             <div
               class="root"
@@ -11013,7 +10924,6 @@ img {
     background: CanvasText;
   }
 }
-
                     </style>
                     <img
                       alt=""
@@ -11123,7 +11033,6 @@ img {
     background-color: var(--p-color-frosted-strong);
   }
 }
-
                     </style>
                     <button
                       class="root"
@@ -11168,7 +11077,6 @@ img {
     background: CanvasText;
   }
 }
-
                           </style>
                           <img
                             alt=""
@@ -11278,14 +11186,14 @@ slot {
   padding-block: calc(11.2px * (var(--_p-multi-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -11308,7 +11216,7 @@ slot {
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   background: var(--p-checkbox-background-color,var(--p-color-frosted));
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid var(--p-checkbox-border-color,var(--p-color-contrast-lower));
   border-radius: var(--p-radius-md);
   flex-shrink: 0;
@@ -11323,13 +11231,13 @@ slot {
   grid-area: 1/1;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
+  }
+  .option--disabled {
+    color: GrayText;
   }
 }
 
@@ -11338,7 +11246,6 @@ slot {
     border-color: var(--p-checkbox-border-color,var(--p-color-primary));
   }
 }
-
     </style>
     // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
     <div
@@ -11379,7 +11286,7 @@ exports[`should render dsr component for POptgroup 1`] = `
 [role="presentation"] {
   padding-block: calc(11.2px * (var(--_p-optgroup-a) - 0.64285714) + 4px);
   padding-inline: calc(16.8px * (var(--_p-optgroup-a) - 0.64285714) + 6px);
-  font: var(--p-font-weight-semibold) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-semibold) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-primary);
 }
     </style>
@@ -11435,13 +11342,13 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   position: relative;
   padding: 0 6px;
   min-width: 2.25rem;
   height: 2.25rem;
   box-sizing: border-box;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   white-space: nowrap;
   cursor: pointer;
   background-color: transparent;
@@ -11473,19 +11380,6 @@ span:not(.ellipsis):focus-visible {
   }
 }
 
-@media(forced-colors:active) {
-  span:not(.ellipsis):focus-visible {
-    outline-color: Highlight;
-  }
-  span[aria-disabled] {
-    opacity: 1;
-    color: GrayText;
-  }
-  span[aria-current] {
-    border: 2px solid CanvasText;
-  }
-}
-
 @media(hover:hover) {
   span:not([aria-disabled]):not(.ellipsis):hover {
     -webkit-backdrop-filter: var(--p-blur-frosted);
@@ -11499,6 +11393,19 @@ span:not(.ellipsis):focus-visible {
     }
 }
 
+}
+
+@media(forced-colors:active) {
+  span[aria-current] {
+    border: 2px solid CanvasText;
+  }
+  span[aria-disabled] {
+    opacity: 1;
+    color: GrayText;
+  }
+  span:not(.ellipsis):focus-visible {
+    outline-color: Highlight;
+  }
 }
 
 .ellipsis {
@@ -11562,7 +11469,6 @@ img:dir(rtl) {
     background: CanvasText;
   }
 }
-
                 </style>
                 <img
                   alt=""
@@ -11636,7 +11542,6 @@ img:dir(rtl) {
     background: CanvasText;
   }
 }
-
                 </style>
                 <img
                   alt=""
@@ -11698,9 +11603,9 @@ input {
   border: 1px solid var(--p-color-contrast-lower);
   border-radius: var(--p-radius-xl);
   background: var(--p-color-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/calc(var(--p-leading-normal) + 6px) var(--p-font-porsche-next);
   color: var(--p-color-primary);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   text-overflow: ellipsis;
   cursor: text;
   text-align: center;
@@ -11738,7 +11643,7 @@ input:focus-visible {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -11770,8 +11675,8 @@ input:focus-visible {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -11873,7 +11778,7 @@ exports[`should render dsr component for PPopover 1`] = `
     visibility: hidden;
   }
   p {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     margin: 0;
   }
   button {
@@ -11904,15 +11809,15 @@ exports[`should render dsr component for PPopover 1`] = `
   [popover]:not(:popover-open) {
     display: none;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
-    }
-}
-
 @media(hover:hover) {
     button:hover {
       background-color: var(--p-color-frosted-soft);
+    }
+}
+
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -11944,7 +11849,7 @@ exports[`should render dsr component for PPopover 1`] = `
     pointer-events: auto;
     border-radius: var(--p-radius-xl);
     background: var(--p-color-canvas);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-primary);
   }
 @media(forced-colors:active) {
@@ -11956,7 +11861,6 @@ exports[`should render dsr component for PPopover 1`] = `
       outline-offset: -2px;
     }
 }
-
     </style>
     <button
       type="button"
@@ -11999,7 +11903,6 @@ img {
     background: CanvasText;
   }
 }
-
           </style>
           <img
             alt=""
@@ -12078,7 +11981,7 @@ slot[name="label-after"]::slotted(*) {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -12110,8 +12013,8 @@ slot[name="label-after"]::slotted(*) {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -12201,13 +12104,18 @@ input {
   margin-block: max(0px, calc((var(--p-leading-normal) - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   box-sizing: border-box;
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   border: 1px solid undefined;
   border-radius: var(--p-radius-full);
 }
 input:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
+}
+input:checked::before {
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background-color: var(--p-color-canvas);
 }
 input::before {
   content: "";
@@ -12218,21 +12126,16 @@ input::after {
   margin: calc(-1px - max(0px, calc(24px - calc(var(--_p-radio-group-option-a) * 1.75rem)) / 2));
   grid-area: 1/1;
 }
-input:checked::before {
-  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;circle cx="12" cy="12" r="6"/&gt;&lt;/svg&gt;') center/contain no-repeat;
-  background-color: var(--p-color-canvas);
+@media(hover:hover) {
 }
+
 @media(forced-colors:active) {
-  input:checked::before {
-    background: CanvasText;
-  }
   input:focus-visible {
     outline-color: Highlight;
   }
-}
-
-@media(hover:hover) {
+  input:checked::before {
+    background: CanvasText;
+  }
 }
 
 .root {
@@ -12262,7 +12165,7 @@ input:checked::before {
   padding-inline-start: calc(11.2px * (var(--_p-radio-group-option-a) - 0.64285714) + 4px);
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -12445,7 +12348,6 @@ slot {
     transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
-
     </style>
     <div
       class="root"
@@ -12522,7 +12424,7 @@ slot:not([name]) {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: inherit;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -12554,8 +12456,8 @@ slot:not([name]) {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -12620,18 +12522,17 @@ span {
   overflow-wrap: normal;
   color: var(--p-color-contrast-medium);
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button {
     transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
 }
 
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
     </style>
     <button
       type="button"
@@ -12696,10 +12597,10 @@ exports[`should render dsr component for PSelect 1`] = `
     border: 1px solid var(--p-select-border-color,var(--p-color-contrast-lower));
     border-radius: var(--p-radius-xl);
     background: var(--p-select-background-color,var(--p-color-frosted));
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-select-text-color,var(--p-color-primary));
     cursor: pointer;
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   button:focus-visible {
     outline: 2px solid var(--p-color-focus);
@@ -12753,15 +12654,15 @@ exports[`should render dsr component for PSelect 1`] = `
     flex-grow: 1;
     overflow: hidden;
   }
-@media(forced-colors:active) {
-    button:focus-visible {
-      outline-color: Highlight;
+@media(hover:hover) {
+    button:hover, label:hover ~ button {
+      border-color: var(--p-select-border-color,var(--p-color-primary));
     }
 }
 
-@media(hover:hover) {
-    button:hover, label:hover~button {
-      border-color: var(--p-select-border-color,var(--p-color-primary));
+@media(forced-colors:active) {
+    button:focus-visible {
+      outline-color: Highlight;
     }
 }
 
@@ -12795,14 +12696,14 @@ exports[`should render dsr component for PSelect 1`] = `
     padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
     padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
     min-height: var(--p-leading-normal);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     color: var(--p-color-contrast-medium);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
     box-sizing: content-box;
     border-radius: var(--p-radius-sm);
-    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .no-results--highlighted {
     background: var(--p-color-frosted);
@@ -12841,7 +12742,7 @@ exports[`should render dsr component for PSelect 1`] = `
     white-space: normal;
   }
   .label {
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
     cursor: pointer;
     color: var(--p-color-primary);
     transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -12873,24 +12774,23 @@ exports[`should render dsr component for PSelect 1`] = `
   .message {
     display: flex;
     gap: var(--p-spacing-static-xs);
-    font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+    transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   }
   .message:empty {
     opacity: 0;
     position: absolute;
   }
 @media(forced-colors:active) {
-    .no-results--disabled {
-      color: GrayText;
-    }
     .no-results--highlighted {
       forced-color-adjust: none;
       outline: 2px solid Highlight;
       outline-offset: -2px;
     }
+    .no-results--disabled {
+      color: GrayText;
+    }
 }
-
     </style>
     <div
       class="root"
@@ -12946,7 +12846,6 @@ img {
     background: CanvasText;
   }
 }
-
             </style>
             <img
               alt=""
@@ -13018,14 +12917,14 @@ exports[`should render dsr component for PSelectOption 1`] = `
   padding-block: calc(11.2px * (var(--_p-select-option-a) - 0.64285714) + 4px);
   padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-option-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-option-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-high);
   cursor: pointer;
   text-align: start;
   word-break: break-word;
   box-sizing: content-box;
   border-radius: var(--p-radius-sm);
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .option--highlighted {
   background: var(--p-color-frosted);
@@ -13043,16 +12942,15 @@ exports[`should render dsr component for PSelectOption 1`] = `
   margin-inline-start: auto;
 }
 @media(forced-colors:active) {
-  .option--disabled {
-    color: GrayText;
-  }
   .option--highlighted {
     forced-color-adjust: none;
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
+  .option--disabled {
+    color: GrayText;
+  }
 }
-
     </style>
     // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
     <div
@@ -13121,14 +13019,14 @@ dialog {
   pointer-events: none;
   overlay: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)),width 0s linear var(--p-transition-duration,var(--p-duration-md)),height 0s linear var(--p-transition-duration,var(--p-duration-md)),background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),-webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -13154,7 +13052,7 @@ dialog::backdrop {
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: 100%;
   align-self: flex-end;
   margin-block-start: var(--p-spacing-fluid-lg);
@@ -13180,7 +13078,6 @@ dialog::backdrop {
     border-top: 2px solid CanvasText;
   }
 }
-
     </style>
     <dialog
       aria-modal="true"
@@ -13225,13 +13122,13 @@ dialog::backdrop {
   box-sizing: border-box;
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: inherit;
   transform: translate3d(0,0,0);
   background-color: var(--p-color-primary);
   color: var(--p-color-canvas);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
   gap: 0;
 }
@@ -13294,7 +13191,6 @@ dialog::backdrop {
 }
 
 }
-
               </style>
               <button
                 class="root"
@@ -13339,7 +13235,6 @@ img {
     background: CanvasText;
   }
 }
-
                     </style>
                     <img
                       alt=""
@@ -13433,11 +13328,11 @@ exports[`should render dsr component for PSpinner 1`] = `
     animation: dash var(--p-animation-duration,var(--p-duration-xl)) steps(50) infinite;
   }
 @media(forced-colors:active) {
-    circle:last-child {
-      stroke: CanvasText;
-    }
     circle:first-child {
       stroke: none !important;
+    }
+    circle:last-child {
+      stroke: CanvasText;
     }
 }
 
@@ -13506,7 +13401,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 }
 .scroller {
   place-self: flex-start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   font-size: var(--p-typescale-sm);
 }
     </style>
@@ -13631,7 +13526,6 @@ slot {
     transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
-
         </style>
         <div
           class="root"
@@ -13694,7 +13588,7 @@ button {
   padding-block: 6px;
   width: max-content;
   cursor: not-allowed;
-  font: var(--p-font-weight-normal) inherit / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) inherit/var(--p-leading-normal) var(--p-font-porsche-next);
   border-radius: var(--p-radius-xl);
 }
 button:focus-visible {
@@ -13706,12 +13600,12 @@ button:focus-visible {
     opacity: 1 !important;
     color: GrayText !important;
   }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
   button {
     color: GrayText;
     border-color: GrayText;
-  }
-  button:focus-visible {
-    outline-color: Highlight;
   }
 }
 
@@ -13786,7 +13680,6 @@ button:focus-visible {
     background-image: radial-gradient(circle, GrayText 60%, transparent 62%);
   }
 }
-
     </style>
     <button
       aria-disabled="true"
@@ -13844,7 +13737,7 @@ button {
   border-radius: var(--p-radius-full);
   background: var(--p-color-frosted-soft);
   cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -13856,7 +13749,7 @@ button::before {
   inset: calc(-1px - max(0px, calc(24px - calc(var(--_p-switch-a) * 1.75rem)) / 2));
 }
 label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   min-width: 0;
   min-height: 0;
   cursor: pointer;
@@ -13872,15 +13765,15 @@ label {
   white-space: normal;
   padding-top: max(0px, calc((calc(var(--_p-switch-a) * 1.75rem) - var(--p-leading-normal)) / 2));
 }
-@media(forced-colors:active) {
-  button:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
 @media(hover:hover) {
   button:hover {
     border-color: var(--p-color-primary);
+  }
+}
+
+@media(forced-colors:active) {
+  button:focus-visible {
+    outline-color: Highlight;
   }
 }
 
@@ -13913,7 +13806,6 @@ label {
     background: CanvasText;
   }
 }
-
     </style>
     <button
       aria-checked="false"
@@ -13959,7 +13851,7 @@ exports[`should render dsr component for PTable 1`] = `
   --_p-table-c: var(--p-color-contrast-low) !important;
   --_p-table-a: var(--p-spacing-fluid-sm) !important;
   --_p-table-d: 1px !important;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   color: var(--p-color-primary) !important;
   text-align: start !important;
 }
@@ -14093,15 +13985,6 @@ slot {
   }
 }
 
-@media(hover:hover) {
-  .prev:hover::after {
-    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
-  }
-  .next:hover::after {
-    transform: translate3d(var(--p-spacing-static-xs),0,0);
-  }
-}
-
 @media(pointer:coarse) {
   .scroll {
     padding: 4px 0px;
@@ -14114,6 +13997,14 @@ slot {
   }
 }
 
+@media(hover:hover) {
+  .prev:hover::after {
+    transform: translate3d(calc(-1 * var(--p-spacing-static-xs)),0,0);
+  }
+  .next:hover::after {
+    transform: translate3d(var(--p-spacing-static-xs),0,0);
+  }
+}
         </style>
         <div
           class="root"
@@ -14211,7 +14102,7 @@ exports[`should render dsr component for PTableHead 1`] = `
     <style>
       :host {
   display: table-header-group;
-  font: var(--p-font-weight-semibold) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-font-weight-semibold) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   border-bottom: 1px solid var(--_p-table-c) !important;
 }
 :host([hidden]) {
@@ -14306,7 +14197,6 @@ exports[`should render dsr component for PTableRow 1`] = `
     background: var(--_p-table-b) !important;
   }
 }
-
     </style>
     <slot />
   </template>
@@ -14360,10 +14250,10 @@ exports[`should render dsr component for PTabs 1`] = `
   cursor: pointer !important;
   border-radius: var(--p-radius-xl) !important;
   padding: var(--p-spacing-static-md) calc(28 * var(--p-spacing-static-2xs)) !important;
-  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  background: 0 0 / 0% 100% no-repeat !important;
+  background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -14376,6 +14266,9 @@ exports[`should render dsr component for PTabs 1`] = `
   transition: background-size 0s linear var(--p-duration-md) !important;
 }
 @media(forced-colors:active) {
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+    outline-color: Highlight !important;
+  }
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -14387,9 +14280,6 @@ exports[`should render dsr component for PTabs 1`] = `
   ::slotted(button) {
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
-  }
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
-    outline-color: Highlight !important;
   }
 }
 
@@ -14418,7 +14308,6 @@ exports[`should render dsr component for PTabs 1`] = `
     display: none;
   }
 }
-
         </style>
         <p-scroller
           class="scroller"
@@ -14541,7 +14430,6 @@ slot {
     transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
-
             </style>
             <div
               class="root"
@@ -14609,10 +14497,10 @@ exports[`should render dsr component for PTabsBar 1`] = `
   cursor: pointer !important;
   border-radius: var(--p-radius-xl) !important;
   padding: var(--p-spacing-static-md) calc(28 * var(--p-spacing-static-2xs)) !important;
-  font: var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  font: var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
   font-size: var(--p-typescale-sm) !important;
   color: var(--p-color-primary) !important;
-  background: 0 0 / 0% 100% no-repeat !important;
+  background: 0 0/0% 100% no-repeat !important;
   transition: background-color var(--p-duration-sm) var(--p-ease-in-out) !important;
 }
 ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
@@ -14620,6 +14508,9 @@ exports[`should render dsr component for PTabsBar 1`] = `
   outline-offset: 2px !important;
 }
 @media(forced-colors:active) {
+  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
+    outline-color: Highlight !important;
+  }
   ::slotted(a), ::slotted(button) {
     forced-color-adjust: none !important;
     background: Canvas !important;
@@ -14631,9 +14522,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   ::slotted(button) {
     color: ButtonText !important;
     box-shadow: inset 0 0 0 2px ButtonBorder !important;
-  }
-  ::slotted(a:focus-visible), ::slotted(button:focus-visible) {
-    outline-color: Highlight !important;
   }
 }
 
@@ -14662,7 +14550,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
     display: none;
   }
 }
-
     </style>
     <p-scroller
       class="scroller"
@@ -14785,7 +14672,6 @@ slot {
     transform: translate3d(var(--p-spacing-static-xs),0,0);
   }
 }
-
         </style>
         <div
           class="root"
@@ -14845,7 +14731,6 @@ exports[`should render dsr component for PTabsItem 1`] = `
     outline-color: Highlight !important;
   }
 }
-
     </style>
     <slot />
   </template>
@@ -14879,12 +14764,12 @@ span {
   gap: 2px;
   padding: 4px calc(12 * var(--p-spacing-static-2xs));
   border-radius: calc(4px + (var(--p-leading-normal) / 2));
-  font: var(--p-font-weight-normal) var(--p-typescale-xs) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-xs)/var(--p-leading-normal) var(--p-font-porsche-next);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   color: var(--p-color-primary);
   background: var(--p-color-frosted-strong);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),backdrop-filter var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -14917,7 +14802,6 @@ span {
     outline-color: Highlight !important;
   }
 }
-
     </style>
     <span>
       <slot />
@@ -14960,12 +14844,18 @@ button {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   text-align: start;
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
 }
 button:focus-visible {
   outline: 2px solid var(--p-color-focus);
   outline-offset: 2px;
 }
+@media(hover:hover) {
+  button:hover &gt; .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+
 @media(forced-colors:active) {
   button {
     outline: 2px solid CanvasText;
@@ -14973,12 +14863,6 @@ button:focus-visible {
   }
   button:focus-visible {
     outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  button:hover &gt; .icon {
-    background-color: var(--p-color-frosted);
   }
 }
 
@@ -15051,7 +14935,6 @@ img {
     background: CanvasText;
   }
 }
-
             </style>
             <img
               alt=""
@@ -15124,7 +15007,7 @@ exports[`should render dsr component for PTextList 1`] = `
   display: none !important;
 }
 ol,ul {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   margin: 0;
   padding: var(--_p-text-list-d,0) 0 var(--_p-text-list-c,0) 0;
   list-style-type: none;
@@ -15232,8 +15115,8 @@ textarea {
   background: var(--p-color-frosted);
   color: var(--p-color-primary);
   box-sizing: border-box;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   padding: calc(28px * (var(--_p-textarea-a) - 0.64285714) + 5px) calc(22.4px * (var(--_p-textarea-a) - 0.64285714) + 8px);
   cursor: text;
 }
@@ -15241,7 +15124,7 @@ textarea:focus {
   border-color: var(--p-color-primary);
 }
 @media(hover:hover) {
-  textarea:hover, .label-wrapper:hover~textarea {
+  textarea:hover, .label-wrapper:hover ~ textarea {
     border-color: var(--p-color-primary);
   }
 }
@@ -15265,7 +15148,7 @@ textarea:focus {
   white-space: normal;
 }
 .label {
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
   cursor: pointer;
   color: var(--p-color-primary);
   transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -15297,8 +15180,8 @@ textarea:focus {
 .message {
   display: flex;
   gap: var(--p-spacing-static-xs);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  transition: color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out),opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
 }
 .message:empty {
   opacity: 0;
@@ -15339,7 +15222,23 @@ exports[`should render dsr component for PToast 1`] = `
     shadowrootmode="open"
   >
     <style>
-      :host {
+      @keyframes in {
+  from {
+    transform: translate3d(0,calc(var(--_p-toast-a) + 100%),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes out {
+  from {
+    transform: translate3d(0,0,0);
+  }
+  to {
+    transform: translate3d(0,calc(var(--_p-toast-a) + 100%),0);
+  }
+}
+:host {
   --_p-toast-a: var(--p-toast-position-bottom,56px) !important;
   position: fixed !important;
   inset: auto max(22px, 10.625vw - 12px) var(--_p-toast-a) !important;
@@ -15397,12 +15296,6 @@ svg {
   height: inherit;
   fill: var(--p-color-primary);
 }
-@supports (height: round(down, 1px, 1px)) {
-  :host {
-    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
-  }
-}
-
 @media(forced-colors:active) {
   a:focus-visible::before {
     outline-color: Highlight;
@@ -15412,6 +15305,11 @@ svg {
   }
 }
 
+@supports (height: round(down, 1px, 1px)) {
+  :host {
+    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+  }
+}
     </style>
     <svg
       viewBox="0 0 4500 300"
