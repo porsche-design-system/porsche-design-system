@@ -1,7 +1,8 @@
 # Porsche Design System - General Copilot Instructions
 
 > **Note**: The canonical source for AI assistant instructions is [`AGENTS.md`](../AGENTS.md) at the repository root.
-> This file is maintained for GitHub Copilot compatibility. Both files should be kept in sync.
+> This file is maintained for GitHub Copilot compatibility. Both files should be kept in sync. Tech-stack versions last
+> verified against the package manifests on 2026-07-06.
 
 ## Overview
 
@@ -130,8 +131,9 @@ packages/components/src/components/{name}/
 
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds in the codebase
 2. **Angular updates**: Versions are bumped by syncpack like any other dependency; only Angular's framework migrations
-   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never `ng update`
-   directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check TypeScript compatibility.
+   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never
+   `ng update` directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check
+   TypeScript compatibility.
 
 ## Common Pitfalls
 

@@ -1,25 +1,30 @@
 # AGENTS.md
 
-> This file provides context for AI coding assistants working in this repository.
-> See [agents.md](https://agents.md/) for the specification.
+> This file provides context for AI coding assistants working in this repository. See [agents.md](https://agents.md/)
+> for the specification.
+>
+> This file is the canonical source for AI assistant instructions;
+> [`.github/copilot-instructions.md`](.github/copilot-instructions.md) mirrors it for GitHub Copilot compatibility. Keep
+> both in sync. Tech-stack versions last verified against the package manifests on 2026-07-06.
 
 ## Overview
 
-The **Porsche Design System (PDS)** is a monorepo providing design tokens, web components, and framework wrappers for building Porsche web applications. Components are built with **Stencil** and wrapped for Angular, React, and Vue.
+The **Porsche Design System (PDS)** is a monorepo providing design tokens, web components, and framework wrappers for
+building Porsche web applications. Components are built with **Stencil** and wrapped for Angular, React, and Vue.
 
 ## Tech Stack
 
 | Layer              | Technology                                 |
 | ------------------ | ------------------------------------------ |
-| Package Manager    | npm 10+ (workspaces)                     |
+| Package Manager    | npm 11+ (workspaces)                       |
 | Node               | v24 (use Volta)                            |
 | Web Components     | Stencil 4.x                                |
 | Styling            | JSS (CSS-in-JS), Tailwind CSS              |
-| Frameworks         | Angular 21, React 19, Vue 3, Next.js 15    |
+| Frameworks         | Angular 22, React 19, Vue 3, Next.js 16    |
 | Build              | Rollup, Vite, Webpack                      |
 | Testing            | Vitest (unit), Playwright (e2e/vrt/a11y)   |
 | Linting/Formatting | Biome (JS/TS/JSON), Prettier (MD/MDX only) |
-| Types              | TypeScript 5.9                             |
+| Types              | TypeScript 6.x                             |
 
 ## Project Structure
 
@@ -80,12 +85,12 @@ npm run format
 
 ## Testing
 
-| Test Type | Command                                     | Notes                                      |
-| --------- | ------------------------------------------- | ------------------------------------------ |
-| Unit      | `npm run test:unit:{package}`                  | Vitest, runs fast                          |
-| E2E       | `npm run test:e2e:components-js`               | Playwright, requires build first           |
-| VRT       | `./docker.sh npm run test:vrt:components-js`   | **Must use Docker** for consistent screenshots |
-| A11Y      | `npm run test:a11y:components-js`              | Axe-core + a11y tree snapshots             |
+| Test Type | Command                                      | Notes                                          |
+| --------- | -------------------------------------------- | ---------------------------------------------- |
+| Unit      | `npm run test:unit:{package}`                | Vitest, runs fast                              |
+| E2E       | `npm run test:e2e:components-js`             | Playwright, requires build first               |
+| VRT       | `./docker.sh npm run test:vrt:components-js` | **Must use Docker** for consistent screenshots |
+| A11Y      | `npm run test:a11y:components-js`            | Axe-core + a11y tree snapshots                 |
 
 Key test files:
 
@@ -138,7 +143,8 @@ All UI code must:
 - Use ARIA only when needed; never add ARIA that conflicts with native semantics
 - Use helpers from `packages/components/src/utils/a11y/a11y.ts`
 
-See [`.github/instructions/accessibility.instructions.md`](.github/instructions/accessibility.instructions.md) for full guidelines.
+See [`.github/instructions/accessibility.instructions.md`](.github/instructions/accessibility.instructions.md) for full
+guidelines.
 
 ## Linting Rules
 
@@ -149,20 +155,24 @@ See [`.github/instructions/accessibility.instructions.md`](.github/instructions/
 
 ## Common Pitfalls
 
-| ❌ Don't                                            | ✅ Do                                              |
-| --------------------------------------------------- | -------------------------------------------------- |
-| Skip `npm run build` before tests                   | Build first, then test                             |
-| Modify `package-lock.json` manually                 | Run `npm install` to regenerate                    |
-| Remove focus outlines                               | Provide accessible alternatives                    |
-| Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                          |
+| ❌ Don't                                            | ✅ Do                                                      |
+| --------------------------------------------------- | ---------------------------------------------------------- |
+| Skip `npm run build` before tests                   | Build first, then test                                     |
+| Modify `package-lock.json` manually                 | Run `npm install` to regenerate                            |
+| Remove focus outlines                               | Provide accessible alternatives                            |
+| Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                                  |
 | Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first |
 
 ## Known Constraints
 
 1. **ESM-only packages**: `globby` and `change-case` are ESM-only; use existing workarounds
 2. **Angular updates**: Versions are bumped by syncpack like any other dependency; only Angular's framework migrations
-   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never `ng update`
-   directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check TypeScript compatibility.
+   are applied via `npm run ng:update -- … --migrate-only` (wrapper in `packages/components-angular`) — never
+   `ng update` directly, which fails on the hoisted `node_modules` / unpublished private workspace deps. Check
+   TypeScript compatibility.
+3. **Sandbox / registry limits** (offline caches, platform-specific optional deps, firewall/registry quirks): see
+   [`docs/runbooks/dependency-updates-agent.md`](docs/runbooks/dependency-updates-agent.md) for the constraints AI cloud
+   agents hit and how to work around them.
 
 ## Task Runbooks
 
@@ -195,12 +205,11 @@ When multiple guidance files exist, prefer them in this order:
 
 ## Quick Reference
 
-| Task           | Command                                    |
-| -------------- | ------------------------------------------ |
-| Fresh install  | `npm install && npm run build`               |
-| Dev components | `npm run start:components`                    |
-| Dev storefront | `npm run start:storefront`                    |
-| Test component | `npm run test:unit:components`                |
+| Task           | Command                                         |
+| -------------- | ----------------------------------------------- |
+| Fresh install  | `npm install && npm run build`                  |
+| Dev components | `npm run start:components`                      |
+| Dev storefront | `npm run start:storefront`                      |
+| Test component | `npm run test:unit:components`                  |
 | Clean rebuild  | `npm run clean && npm install && npm run build` |
-| Run in Docker  | `./docker.sh {command}`                    |
-
+| Run in Docker  | `./docker.sh {command}`                         |
