@@ -16,6 +16,8 @@ import {
 } from './jss';
 
 describe('getCss()', () => {
+  // stylis stringifies compactly (no pretty-print). It does NOT sort or merge @media queries — they
+  // emit in source order as separate blocks (rendering is identical either way).
   const data: { input: Styles; result: string }[] = [
     {
       input: {
@@ -23,10 +25,7 @@ describe('getCss()', () => {
           ':host': { display: 'block', marginLeft: '5px' },
         },
       },
-      result: `:host {
-  display: block;
-  margin-left: 5px;
-}`,
+      result: `:host{display:block;margin-left:5px;}`,
     },
     {
       input: {
@@ -34,10 +33,7 @@ describe('getCss()', () => {
           ':host': { display: 'block', marginLeft: '5px !important' },
         },
       },
-      result: `:host {
-  display: block;
-  margin-left: 5px !important;
-}`,
+      result: `:host{display:block;margin-left:5px!important;}`,
     },
     {
       input: {
@@ -45,11 +41,7 @@ describe('getCss()', () => {
           ':host': { display: 'block', width: '500px', transition: 'width .25s ease' },
         },
       },
-      result: `:host {
-  display: block;
-  width: 500px;
-  transition: width .25s ease;
-}`,
+      result: `:host{display:block;width:500px;transition:width .25s ease;}`,
     },
     {
       input: {
@@ -60,17 +52,10 @@ describe('getCss()', () => {
           '@global': { ':host': { marginRight: '5px !important' } },
         },
       },
-      result: `:host {
-  display: block;
-  margin-left: 5px !important;
-}
-@media (min-width: 760px) {
-  :host {
-    margin-right: 5px !important;
-  }
-}`,
+      result: `:host{display:block;margin-left:5px!important;}@media (min-width: 760px){:host{margin-right:5px!important;}}`,
     },
     {
+      // media queries authored mobile-first stay in source order
       input: {
         '@global': {
           ':host': { display: 'block', marginLeft: '5px !important' },
@@ -86,24 +71,10 @@ describe('getCss()', () => {
           },
         },
       },
-      result: `:host {
-  display: block;
-  margin-left: 5px !important;
-}
-@media (min-width: 760px) {
-  :host {
-    margin-right: 5px !important;
-  }
-}
-
-@media (min-width: 1000px) {
-  :host {
-    margin-right: 10px !important;
-  }
-}`,
+      result: `:host{display:block;margin-left:5px!important;}@media (min-width: 760px){:host{margin-right:5px!important;}}@media (min-width: 1000px){:host{margin-right:10px!important;}}`,
     },
     {
-      // flat media query
+      // media queries authored out of order are NOT sorted (unlike the former jss/emotion engine)
       input: {
         '@global': {
           ':host': { display: 'block', marginLeft: '5px !important' },
@@ -119,24 +90,10 @@ describe('getCss()', () => {
           },
         },
       },
-      result: `:host {
-  display: block;
-  margin-left: 5px !important;
-}
-@media (min-width: 760px) {
-  :host {
-    margin-right: 5px !important;
-  }
-}
-
-@media (min-width: 1000px) {
-  :host {
-    margin-right: 10px !important;
-  }
-}`,
+      result: `:host{display:block;margin-left:5px!important;}@media (min-width: 1000px){:host{margin-right:10px!important;}}@media (min-width: 760px){:host{margin-right:5px!important;}}`,
     },
     {
-      // nested media query
+      // nested media query is hoisted after its base rule
       input: {
         '@global': {
           ':host': {
@@ -148,18 +105,10 @@ describe('getCss()', () => {
           },
         },
       },
-      result: `:host {
-  display: block;
-  margin-left: 5px !important;
-}
-@media (min-width: 1000px) {
-  :host {
-    margin-right: 10px !important;
-  }
-}`,
+      result: `:host{display:block;margin-left:5px!important;}@media (min-width: 1000px){:host{margin-right:10px!important;}}`,
     },
     {
-      // .class and global media query
+      // identical media queries are NOT merged (unlike the former engine) — emitted as separate blocks
       input: {
         '@global': {
           ':host': {
@@ -174,19 +123,7 @@ describe('getCss()', () => {
           root: { display: 'block' },
         },
       },
-      // the emotion wrapper merges the two identical media queries into one
-      result: `:host {
-  display: block;
-  margin-left: 5px !important;
-}
-@media (min-width: 1000px) {
-  :host {
-    margin-right: 10px !important;
-  }
-  .root {
-    display: block;
-  }
-}`,
+      result: `:host{display:block;margin-left:5px!important;}@media (min-width: 1000px){:host{margin-right:10px!important;}}@media (min-width: 1000px){.root{display:block;}}`,
     },
     {
       input: {
@@ -194,26 +131,17 @@ describe('getCss()', () => {
           div: { display: 'block' },
         },
       },
-      result: `div {
-  display: block;
-}`,
+      result: `div{display:block;}`,
     },
-    // JSS could not emit these at-rules; the emotion/stylis engine must (guards against silent-drop
-    // regression like the one @container originally hit).
+    // stylis handles every at-rule generically (JSS could emit none of these); guards against the
+    // silent-drop regression class the former hardcoded-at-rule-list engine was prone to.
     {
       input: {
         '@global': {
           ':host': { display: 'block', '@container (min-width: 760px)': { display: 'none' } },
         },
       },
-      result: `:host {
-  display: block;
-}
-@container (min-width: 760px) {
-  :host {
-    display: none;
-  }
-}`,
+      result: `:host{display:block;}@container (min-width: 760px){:host{display:none;}}`,
     },
     {
       input: {
@@ -221,14 +149,16 @@ describe('getCss()', () => {
           ':host': { display: 'block', '@starting-style': { opacity: 0 } },
         },
       },
-      result: `:host {
-  display: block;
-}
-@starting-style {
-  :host {
-    opacity: 0;
-  }
-}`,
+      result: `:host{display:block;}@starting-style{:host{opacity:0;}}`,
+    },
+    {
+      // an at-rule stylis/we never special-case — proves at-rule handling needs no per-type code
+      input: {
+        '@global': {
+          ':host': { display: 'block', '@layer utils': { color: 'red' } },
+        },
+      },
+      result: `:host{display:block;}@layer utils{:host{color:red;}}`,
     },
   ];
   it.each(
