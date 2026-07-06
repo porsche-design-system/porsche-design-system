@@ -90,6 +90,23 @@ describe('generateVanillaJSControlledScript()', () => {
     expect(selector).toMatchInlineSnapshot(`"  const pButton = document.querySelector("p-button");"`);
     expect(eventHandler).toMatchInlineSnapshot(`"  pButton.addEventListener('click', () => (pFlyout.open = true));"`);
   });
+
+  it('should return a toggling eventHandler for toggleValue', () => {
+    const { selector, eventHandler } = generateVanillaJSControlledScript('p-button', [
+      [
+        'onClick',
+        {
+          target: 'p-popover',
+          prop: 'open',
+          toggleValue: true,
+        },
+      ],
+    ]);
+    expect(selector).toMatchInlineSnapshot(`"  const pButton = document.querySelector("p-button");"`);
+    expect(eventHandler).toMatchInlineSnapshot(
+      `"  pButton.addEventListener('click', () => (pPopover.open = !pPopover.open));"`
+    );
+  });
 });
 
 describe('generateVanillaJsProperties()', () => {

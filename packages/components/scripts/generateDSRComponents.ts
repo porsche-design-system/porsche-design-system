@@ -494,13 +494,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/(deprecationMap\[this\.props\.gradientColor)/, '$1 as ScrollerGradientColor');
       } else if (tagName === 'p-popover') {
         // only keep :host , button, .icon & .label styles
-        newFileContent = newFileContent
-          .replace(
-            /getPopoverCss\(.+?\)/,
-            `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
-          )
-          .replace(/this\.props\.(hasSlottedButton)/g, '$1')
-          .replace(/hasSlottedButton =/g, 'const $&');
+        // Note: `hasSlottedButton` is already a local `const` derived from `hasNamedSlot(...)` in the source render()
+        // and the generic named-slot rewiring above converts it to a `namedSlotChildren.filter(...)` expression, so no
+        // private-member reversal is needed here (doing so would produce invalid `const const hasSlottedButton = ...`).
+        newFileContent = newFileContent.replace(
+          /getPopoverCss\(.+?\)/,
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
+        );
       } else if (tagName === 'p-tabs-bar') {
         newFileContent = newFileContent
           // get rid of left over

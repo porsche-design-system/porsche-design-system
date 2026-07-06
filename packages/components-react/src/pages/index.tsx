@@ -162,11 +162,14 @@ import { PopoverPage } from './generated/Popover';
 import { PopoverBasicPage } from './generated/PopoverBasic';
 import { PopoverBasicSlottedPage } from './generated/PopoverBasicSlotted';
 import { PopoverBottomPage } from './generated/PopoverBottom';
+import { PopoverCompactPage } from './generated/PopoverCompact';
+import { PopoverCssVariablesPage } from './generated/PopoverCssVariables';
 import { PopoverEdgeCasePage } from './generated/PopoverEdgeCase';
 import { PopoverLeftPage } from './generated/PopoverLeft';
 import { PopoverRightPage } from './generated/PopoverRight';
 import { PopoverScrolledPage } from './generated/PopoverScrolled';
 import { PopoverTopPage } from './generated/PopoverTop';
+import { PopoverViewportLimitPage } from './generated/PopoverViewportLimit';
 import { RadioGroupPage } from './generated/RadioGroup';
 import { ScrollerPage } from './generated/Scroller';
 import { SegmentedControlPage } from './generated/SegmentedControl';
@@ -981,6 +984,16 @@ export const generatedRoutes: RouteType[] = [
     element: <PopoverBottomPage />,
   },
   {
+    name: 'Popover Compact',
+    path: '/popover-compact',
+    element: <PopoverCompactPage />,
+  },
+  {
+    name: 'Popover Css Variables',
+    path: '/popover-css-variables',
+    element: <PopoverCssVariablesPage />,
+  },
+  {
     name: 'Popover Edge Case',
     path: '/popover-edge-case',
     element: <PopoverEdgeCasePage />,
@@ -1004,6 +1017,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Popover Top',
     path: '/popover-top',
     element: <PopoverTopPage />,
+  },
+  {
+    name: 'Popover Viewport Limit',
+    path: '/popover-viewport-limit',
+    element: <PopoverViewportLimitPage />,
   },
   {
     name: 'Radio Group',
