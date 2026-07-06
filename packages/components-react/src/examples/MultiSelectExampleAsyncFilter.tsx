@@ -116,7 +116,7 @@ export const MultiSelectExampleAsyncFilter = () => {
         <div
           slot="options-status"
           className="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
-          role="alert"
+          role="status"
         >
           <span aria-hidden="true">–</span>
           <span className="sr-only">No results found</span>

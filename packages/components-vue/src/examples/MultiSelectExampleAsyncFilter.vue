@@ -35,7 +35,7 @@
       v-if="!initialLoading && options.length === 0 && !error"
       slot="options-status"
       class="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
-      role="alert"
+      role="status"
     >
       <span aria-hidden="true">–</span>
       <span class="sr-only">No results found</span>
