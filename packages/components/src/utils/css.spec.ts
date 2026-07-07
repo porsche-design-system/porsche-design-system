@@ -74,7 +74,7 @@ describe('getCss()', () => {
       result: `:host{display:block;margin-left:5px!important;}@media (min-width: 760px){:host{margin-right:5px!important;}}@media (min-width: 1000px){:host{margin-right:10px!important;}}`,
     },
     {
-      // media queries authored out of order are NOT sorted (unlike the former JSS engine)
+      // media queries authored out of order are sorted min-width ascending (like the former JSS engine)
       input: {
         '@global': {
           ':host': { display: 'block', marginLeft: '5px !important' },
@@ -90,7 +90,7 @@ describe('getCss()', () => {
           },
         },
       },
-      result: `:host{display:block;margin-left:5px!important;}@media (min-width: 1000px){:host{margin-right:10px!important;}}@media (min-width: 760px){:host{margin-right:5px!important;}}`,
+      result: `:host{display:block;margin-left:5px!important;}@media (min-width: 760px){:host{margin-right:5px!important;}}@media (min-width: 1000px){:host{margin-right:10px!important;}}`,
     },
     {
       // nested media query is hoisted after its base rule

@@ -61,10 +61,22 @@ const mapToCss = (map: Record<string, any>): string => {
   return base + conditional;
 };
 
+// Orders combined @media blocks like JSS's jss-plugin-sort-css-media-queries did: min-width/height
+// ascending, max-width/height descending, dimensionless queries (forced-colors/hover/pointer) kept
+// in source order between them. Without this, overlapping breakpoints of equal specificity cascade
+// by source order, so the wrong one can win (e.g. a min-width:760 override losing to min-width:480).
+const mediaSortKey = (header: string): [number, number] => {
+  const min = header.match(/min-(?:width|height):\s*(\d+)/);
+  if (min) return [0, Number(min[1])];
+  const max = header.match(/max-(?:width|height):\s*(\d+)/);
+  if (max) return [2, -Number(max[1])]; // negate so ascending sort yields descending value
+  return [1, 0];
+};
+
 // stylis leaves @media where it was written, but the cascade needs it after the base rules:
 // in High Contrast Mode a base rule and a forced-colors rule can hit the same element with
 // equal weight, so the last one wins (e.g. the disabled counter color turning black instead
-// of grey). So we move every @media to the end and merge same-query blocks, like JSS did.
+// of grey). So we move every @media to the end, merge same-query blocks, and re-sort them.
 const hoistAndCombineMedia = (css: string): string => {
   let base = '';
   const media = new Map<string, string>();
@@ -91,8 +103,13 @@ const hoistAndCombineMedia = (css: string): string => {
     }
     i = end + 1;
   }
+  const entries = [...media].sort((a, b) => {
+    const [ca, va] = mediaSortKey(a[0]);
+    const [cb, vb] = mediaSortKey(b[0]);
+    return ca - cb || va - vb;
+  });
   let out = base;
-  for (const [query, body] of media) out += `${query}{${body}}`;
+  for (const [query, body] of entries) out += `${query}{${body}}`;
   return out;
 };
 
