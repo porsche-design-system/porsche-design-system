@@ -67,6 +67,7 @@ export const attachComponentCss = <T extends (...p: any[]) => string>(
   } else {
     // NOTE: fallback for Safari
     // old style needs to be removed and added again in safari to be recognized
+    // TODO(next-major): rename 'jss' marker attribute -> neutral (e.g. 'css'); changing it is an observable shadow-DOM change.
     getShadowRootHTMLElement(host, 'style[jss]')?.remove();
 
     const styleEl = document.createElement('style');

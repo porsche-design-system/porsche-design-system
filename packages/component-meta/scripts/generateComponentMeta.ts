@@ -119,6 +119,8 @@ const generateComponentMeta = (): void => {
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
     const usesScss = source.includes('styleUrl:');
+    // TODO(next-major): rename styling value 'jss' -> 'css-in-js' (components no longer use JSS).
+    // Breaking: ComponentMeta.styling is published API; changing value/union breaks consumers comparing to 'jss'.
     const usesJss = source.includes('attachComponentCss');
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
 

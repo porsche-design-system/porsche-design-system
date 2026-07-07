@@ -88,6 +88,7 @@ export type ComponentMeta = {
   hasElementInternals: boolean;
   observedAttributes?: string[];
   hasObserveChildren: boolean;
+  // TODO(next-major): rename 'jss' -> 'css-in-js' (no JSS anymore). Breaking change to this published value/union.
   styling: 'jss' | 'scss' | 'hybrid';
 };
 

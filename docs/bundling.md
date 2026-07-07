@@ -154,7 +154,7 @@ import { q as forceUpdate, g as getCss, a as addImportantToEachRule, I as getMed
 
 #### Workaround example 2
 
-Another workaround we have is in `jss.ts`:
+Another workaround we have is in `css.ts`:
 
 ```
 export const doNothing = (): void => {

@@ -92,7 +92,7 @@ Use `npm run build` to handle this automatically, or `npm run build:core-depende
 ```
 packages/components/src/components/{name}/
 ├── {name}.tsx           # Stencil component
-├── {name}-styles.ts     # JSS styles
+├── {name}-styles.ts     # CSS-in-JS styles
 ├── {name}-utils.ts      # Utility functions
 ├── {name}.spec.ts       # Unit tests
 ├── {name}-styles.spec.ts
