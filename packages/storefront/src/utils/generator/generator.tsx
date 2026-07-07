@@ -238,6 +238,12 @@ export type EventConfig = {
    */
   negateValue?: boolean;
   preventDefault?: boolean;
+  /**
+   * Toggles the current boolean value of `prop` instead of applying a fixed `value`.
+   * Useful for a trigger button that should both open and close a controlled component
+   * (e.g. p-popover's slotted button flipping `open`).
+   */
+  toggleValue?: boolean;
 };
 
 export type PropTypeMapping = {
@@ -429,16 +435,16 @@ export const createElement = (
 
   const eventEntries = Object.entries(events);
 
-  const handleEvent = ({ prop, eventValueKey, negateValue, value, preventDefault }: EventConfig) => {
+  const handleEvent = ({ prop, eventValueKey, negateValue, value, preventDefault, toggleValue }: EventConfig) => {
     return (event: any) => {
       preventDefault && event?.preventDefault?.();
       const eventValue = eventValueKey ? event.detail[eventValueKey] : value;
-      const newValue = negateValue ? !eventValue : eventValue;
       updateState((prev) => ({
         ...prev,
         properties: {
           ...prev.properties,
-          [prop]: newValue,
+          // `toggleValue` flips the current state (needs `prev`); otherwise apply the (optionally negated) event/static value.
+          [prop]: toggleValue ? !(prev.properties as any)?.[prop] : negateValue ? !eventValue : eventValue,
         },
       }));
     };
