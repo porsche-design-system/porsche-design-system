@@ -10,8 +10,8 @@ describe('getComponentCss()', () => {
     [true, true, true],
     [true, true, true],
     [false, true, true],
-  ])('should return correct css for isOpen: %s, isPrimary: %s and isSecondaryScrollerVisible: %s', (...args) => {
-    // validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for isOpen: %s, isPrimary: %s and isSecondaryScrollerVisible: %s', async (...args) => {
+    // await validateCssAndMatchSnapshot(getComponentCss(...args));
     expect(getComponentCss(...args)).toMatchSnapshot();
   });
 });

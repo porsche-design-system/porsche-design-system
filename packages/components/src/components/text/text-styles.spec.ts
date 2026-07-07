@@ -12,8 +12,8 @@ describe('getComponentCss()', () => {
     [{ base: 'sm', xs: 'lg', s: 'md', m: 'inherit', l: 'xs', xl: 'xl' }, 'bold', 'center', 'error', 'none', true],
   ])(
     'should return correct css for size: %j, weight: %s, align: %s, color: %s, hyphens: %s and ellipsis: %o',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

@@ -19,8 +19,8 @@ describe('getComponentCss()', () => {
     ],
   ])(
     'should return correct css for aspectRatio: %j, size: %j, weight: %j, align: %s, compact: %j, hasGradient: %s and hasFooterSlot: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

@@ -9,7 +9,7 @@ describe('getComponentCss()', () => {
     [true, true, 'canvas'],
     [false, false, 'surface'],
     [true, true, 'surface'],
-  ])('should return correct css for: %o', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for: %o', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

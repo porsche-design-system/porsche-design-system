@@ -6,7 +6,7 @@ describe('getComponentCss()', () => {
     ['small'],
     ['medium'],
     [{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }],
-  ])('should return correct css for size: %j', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for size: %j', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

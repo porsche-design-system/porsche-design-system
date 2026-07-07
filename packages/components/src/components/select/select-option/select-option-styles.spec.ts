@@ -4,8 +4,8 @@ import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([[false], [true]])(
     'should return correct css for isDisabled: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

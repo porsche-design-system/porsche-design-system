@@ -1,31 +1,380 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "inherit", align: center, color: primary and ellipsis: false 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:inherit;color:var(--p-color-primary);text-align:center;}"`;
+exports[`getComponentCss() > should return correct css for size: "inherit", align: center, color: primary and ellipsis: false 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: inherit;
+  color: var(--p-color-primary);
+  text-align: center;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: center, color: primary and ellipsis: false 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-5xl);color:var(--p-color-primary);text-align:center;}"`;
+exports[`getComponentCss() > should return correct css for size: "large", align: center, color: primary and ellipsis: false 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-5xl);
+  color: var(--p-color-primary);
+  text-align: center;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: end, color: primary and ellipsis: false 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-5xl);color:var(--p-color-primary);text-align:end;}"`;
+exports[`getComponentCss() > should return correct css for size: "large", align: end, color: primary and ellipsis: false 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-5xl);
+  color: var(--p-color-primary);
+  text-align: end;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: end, color: primary and ellipsis: true 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-5xl);color:var(--p-color-primary);text-align:end;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for size: "large", align: end, color: primary and ellipsis: true 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-5xl);
+  color: var(--p-color-primary);
+  text-align: end;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: false 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-5xl);color:var(--p-color-primary);text-align:start;}"`;
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: false 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-5xl);
+  color: var(--p-color-primary);
+  text-align: start;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: false 2`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-5xl);color:var(--p-color-primary);text-align:start;}"`;
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: false 2`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-5xl);
+  color: var(--p-color-primary);
+  text-align: start;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: false 3`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-5xl);color:var(--p-color-primary);text-align:start;}"`;
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: false 3`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-5xl);
+  color: var(--p-color-primary);
+  text-align: start;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: true 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-5xl);color:var(--p-color-primary);text-align:start;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: true 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-5xl);
+  color: var(--p-color-primary);
+  text-align: start;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: true 2`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-5xl);color:var(--p-color-primary);text-align:start;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for size: "large", align: start, color: primary and ellipsis: true 2`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-5xl);
+  color: var(--p-color-primary);
+  text-align: start;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "medium", align: end, color: inherit and ellipsis: true 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-4xl);color:currentcolor;text-align:end;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for size: "medium", align: end, color: inherit and ellipsis: true 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-4xl);
+  color: currentcolor;
+  text-align: end;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "medium", align: start, color: inherit and ellipsis: false 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-4xl);color:currentcolor;text-align:start;}"`;
+exports[`getComponentCss() > should return correct css for size: "medium", align: start, color: inherit and ellipsis: false 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-4xl);
+  color: currentcolor;
+  text-align: start;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "small", align: end, color: inherit and ellipsis: true 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-3xl);color:currentcolor;text-align:end;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for size: "small", align: end, color: inherit and ellipsis: true 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-3xl);
+  color: currentcolor;
+  text-align: end;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "small", align: inherit, color: primary and ellipsis: false 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-3xl);color:var(--p-color-primary);text-align:inherit;}"`;
+exports[`getComponentCss() > should return correct css for size: "small", align: inherit, color: primary and ellipsis: false 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-3xl);
+  color: var(--p-color-primary);
+  text-align: inherit;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "small", align: start, color: inherit and ellipsis: false 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-3xl);color:currentcolor;text-align:start;}"`;
+exports[`getComponentCss() > should return correct css for size: "small", align: start, color: inherit and ellipsis: false 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-3xl);
+  color: currentcolor;
+  text-align: start;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: {"base":"medium","xs":"large","s":"medium","m":"inherit","l":"large","xl":"medium"}, align: center, color: primary and ellipsis: true 1`] = `":host{display:block;}:host([hidden]){display:none!important;}::slotted(:is(h1,h2,h3,h4,h5,h6)){all:unset!important;}.root{all:unset;display:block;font:var(--p-font-weight-normal) var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-4xl);color:var(--p-color-primary);text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}@media(min-width:480px){.root{font-size:var(--p-typescale-5xl);}}@media(min-width:760px){.root{font-size:var(--p-typescale-4xl);}}@media(min-width:1000px){.root{font-size:inherit;}}@media(min-width:1300px){.root{font-size:var(--p-typescale-5xl);}}@media(min-width:1760px){.root{font-size:var(--p-typescale-4xl);}}"`;
+exports[`getComponentCss() > should return correct css for size: {"base":"medium","xs":"large","s":"medium","m":"inherit","l":"large","xl":"medium"}, align: center, color: primary and ellipsis: true 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  all: unset !important;
+}
+.root {
+  all: unset;
+  display: block;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-5xl)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-4xl);
+  color: var(--p-color-primary);
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (min-width: 480px) {
+  .root {
+    font-size: var(--p-typescale-5xl);
+  }
+}
+@media (min-width: 760px) {
+  .root {
+    font-size: var(--p-typescale-4xl);
+  }
+}
+@media (min-width: 1000px) {
+  .root {
+    font-size: inherit;
+  }
+}
+@media (min-width: 1300px) {
+  .root {
+    font-size: var(--p-typescale-5xl);
+  }
+}
+@media (min-width: 1760px) {
+  .root {
+    font-size: var(--p-typescale-4xl);
+  }
+}
+"
+`;

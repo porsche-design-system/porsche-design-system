@@ -1,17 +1,309 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for compact: false and layout: auto 1`] = `":host{display:block;--p-scroller-indicator-top:var(--p-table-scroll-indicator-top,0px)!important;--p-scroller-indicator-bottom:var(--p-table-scroll-indicator-bottom,0px)!important;--_p-table-b:var(--p-color-frosted)!important;--_p-table-c:var(--p-color-contrast-low)!important;--_p-table-a:var(--p-spacing-fluid-sm)!important;--_p-table-d:1px!important;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next)!important;color:var(--p-color-primary)!important;text-align:start!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.caption{margin-bottom:var(--p-spacing-fluid-md);}.table{display:table;border-collapse:collapse;width:100%;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for compact: false and layout: auto 1`] = `
+":host {
+  display: block;
+  --p-scroller-indicator-top: var(
+    --p-table-scroll-indicator-top,
+    0px
+  ) !important;
+  --p-scroller-indicator-bottom: var(
+    --p-table-scroll-indicator-bottom,
+    0px
+  ) !important;
+  --_p-table-b: var(--p-color-frosted) !important;
+  --_p-table-c: var(--p-color-contrast-low) !important;
+  --_p-table-a: var(--p-spacing-fluid-sm) !important;
+  --_p-table-d: 1px !important;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  color: var(--p-color-primary) !important;
+  text-align: start !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.caption {
+  margin-bottom: var(--p-spacing-fluid-md);
+}
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for compact: false and layout: auto 2`] = `":host{display:block;--p-scroller-indicator-top:var(--p-table-scroll-indicator-top,0px)!important;--p-scroller-indicator-bottom:var(--p-table-scroll-indicator-bottom,0px)!important;--_p-table-b:var(--p-color-frosted)!important;--_p-table-c:var(--p-color-contrast-low)!important;--_p-table-a:var(--p-spacing-fluid-sm)!important;--_p-table-d:1px!important;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next)!important;color:var(--p-color-primary)!important;text-align:start!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.caption{margin-bottom:var(--p-spacing-fluid-md);}.table{display:table;border-collapse:collapse;width:100%;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for compact: false and layout: auto 2`] = `
+":host {
+  display: block;
+  --p-scroller-indicator-top: var(
+    --p-table-scroll-indicator-top,
+    0px
+  ) !important;
+  --p-scroller-indicator-bottom: var(
+    --p-table-scroll-indicator-bottom,
+    0px
+  ) !important;
+  --_p-table-b: var(--p-color-frosted) !important;
+  --_p-table-c: var(--p-color-contrast-low) !important;
+  --_p-table-a: var(--p-spacing-fluid-sm) !important;
+  --_p-table-d: 1px !important;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  color: var(--p-color-primary) !important;
+  text-align: start !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.caption {
+  margin-bottom: var(--p-spacing-fluid-md);
+}
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for compact: false and layout: fixed 1`] = `":host{display:block;--p-scroller-indicator-top:var(--p-table-scroll-indicator-top,0px)!important;--p-scroller-indicator-bottom:var(--p-table-scroll-indicator-bottom,0px)!important;--_p-table-b:var(--p-color-frosted)!important;--_p-table-c:var(--p-color-contrast-low)!important;--_p-table-a:var(--p-spacing-fluid-sm)!important;--_p-table-d:1px!important;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next)!important;color:var(--p-color-primary)!important;text-align:start!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.caption{margin-bottom:var(--p-spacing-fluid-md);}.table{display:table;border-collapse:collapse;table-layout:fixed;min-width:100%;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for compact: false and layout: fixed 1`] = `
+":host {
+  display: block;
+  --p-scroller-indicator-top: var(
+    --p-table-scroll-indicator-top,
+    0px
+  ) !important;
+  --p-scroller-indicator-bottom: var(
+    --p-table-scroll-indicator-bottom,
+    0px
+  ) !important;
+  --_p-table-b: var(--p-color-frosted) !important;
+  --_p-table-c: var(--p-color-contrast-low) !important;
+  --_p-table-a: var(--p-spacing-fluid-sm) !important;
+  --_p-table-d: 1px !important;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  color: var(--p-color-primary) !important;
+  text-align: start !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.caption {
+  margin-bottom: var(--p-spacing-fluid-md);
+}
+.table {
+  display: table;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 100%;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for compact: false and layout: fixed 2`] = `":host{display:block;--p-scroller-indicator-top:var(--p-table-scroll-indicator-top,0px)!important;--p-scroller-indicator-bottom:var(--p-table-scroll-indicator-bottom,0px)!important;--_p-table-b:var(--p-color-frosted)!important;--_p-table-c:var(--p-color-contrast-low)!important;--_p-table-a:var(--p-spacing-fluid-sm)!important;--_p-table-d:1px!important;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next)!important;color:var(--p-color-primary)!important;text-align:start!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.caption{margin-bottom:var(--p-spacing-fluid-md);}.table{display:table;border-collapse:collapse;table-layout:fixed;min-width:100%;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for compact: false and layout: fixed 2`] = `
+":host {
+  display: block;
+  --p-scroller-indicator-top: var(
+    --p-table-scroll-indicator-top,
+    0px
+  ) !important;
+  --p-scroller-indicator-bottom: var(
+    --p-table-scroll-indicator-bottom,
+    0px
+  ) !important;
+  --_p-table-b: var(--p-color-frosted) !important;
+  --_p-table-c: var(--p-color-contrast-low) !important;
+  --_p-table-a: var(--p-spacing-fluid-sm) !important;
+  --_p-table-d: 1px !important;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  color: var(--p-color-primary) !important;
+  text-align: start !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.caption {
+  margin-bottom: var(--p-spacing-fluid-md);
+}
+.table {
+  display: table;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 100%;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for compact: true and layout: auto 1`] = `":host{display:block;--p-scroller-indicator-top:var(--p-table-scroll-indicator-top,0px)!important;--p-scroller-indicator-bottom:var(--p-table-scroll-indicator-bottom,0px)!important;--_p-table-b:var(--p-color-frosted)!important;--_p-table-c:var(--p-color-contrast-low)!important;--_p-table-a:var(--p-spacing-static-sm)!important;--_p-table-d:1px!important;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next)!important;color:var(--p-color-primary)!important;text-align:start!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.caption{margin-bottom:var(--p-spacing-fluid-md);}.table{display:table;border-collapse:collapse;width:100%;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for compact: true and layout: auto 1`] = `
+":host {
+  display: block;
+  --p-scroller-indicator-top: var(
+    --p-table-scroll-indicator-top,
+    0px
+  ) !important;
+  --p-scroller-indicator-bottom: var(
+    --p-table-scroll-indicator-bottom,
+    0px
+  ) !important;
+  --_p-table-b: var(--p-color-frosted) !important;
+  --_p-table-c: var(--p-color-contrast-low) !important;
+  --_p-table-a: var(--p-spacing-static-sm) !important;
+  --_p-table-d: 1px !important;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  color: var(--p-color-primary) !important;
+  text-align: start !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.caption {
+  margin-bottom: var(--p-spacing-fluid-md);
+}
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for compact: true and layout: auto 2`] = `":host{display:block;--p-scroller-indicator-top:var(--p-table-scroll-indicator-top,0px)!important;--p-scroller-indicator-bottom:var(--p-table-scroll-indicator-bottom,0px)!important;--_p-table-b:var(--p-color-frosted)!important;--_p-table-c:var(--p-color-contrast-low)!important;--_p-table-a:var(--p-spacing-static-sm)!important;--_p-table-d:1px!important;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next)!important;color:var(--p-color-primary)!important;text-align:start!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.caption{margin-bottom:var(--p-spacing-fluid-md);}.table{display:table;border-collapse:collapse;width:100%;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for compact: true and layout: auto 2`] = `
+":host {
+  display: block;
+  --p-scroller-indicator-top: var(
+    --p-table-scroll-indicator-top,
+    0px
+  ) !important;
+  --p-scroller-indicator-bottom: var(
+    --p-table-scroll-indicator-bottom,
+    0px
+  ) !important;
+  --_p-table-b: var(--p-color-frosted) !important;
+  --_p-table-c: var(--p-color-contrast-low) !important;
+  --_p-table-a: var(--p-spacing-static-sm) !important;
+  --_p-table-d: 1px !important;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  color: var(--p-color-primary) !important;
+  text-align: start !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.caption {
+  margin-bottom: var(--p-spacing-fluid-md);
+}
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for compact: true and layout: fixed 1`] = `":host{display:block;--p-scroller-indicator-top:var(--p-table-scroll-indicator-top,0px)!important;--p-scroller-indicator-bottom:var(--p-table-scroll-indicator-bottom,0px)!important;--_p-table-b:var(--p-color-frosted)!important;--_p-table-c:var(--p-color-contrast-low)!important;--_p-table-a:var(--p-spacing-static-sm)!important;--_p-table-d:1px!important;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next)!important;color:var(--p-color-primary)!important;text-align:start!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.caption{margin-bottom:var(--p-spacing-fluid-md);}.table{display:table;border-collapse:collapse;table-layout:fixed;min-width:100%;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for compact: true and layout: fixed 1`] = `
+":host {
+  display: block;
+  --p-scroller-indicator-top: var(
+    --p-table-scroll-indicator-top,
+    0px
+  ) !important;
+  --p-scroller-indicator-bottom: var(
+    --p-table-scroll-indicator-bottom,
+    0px
+  ) !important;
+  --_p-table-b: var(--p-color-frosted) !important;
+  --_p-table-c: var(--p-color-contrast-low) !important;
+  --_p-table-a: var(--p-spacing-static-sm) !important;
+  --_p-table-d: 1px !important;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  color: var(--p-color-primary) !important;
+  text-align: start !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.caption {
+  margin-bottom: var(--p-spacing-fluid-md);
+}
+.table {
+  display: table;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 100%;
+  white-space: nowrap;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for compact: true and layout: fixed 2`] = `":host{display:block;--p-scroller-indicator-top:var(--p-table-scroll-indicator-top,0px)!important;--p-scroller-indicator-bottom:var(--p-table-scroll-indicator-bottom,0px)!important;--_p-table-b:var(--p-color-frosted)!important;--_p-table-c:var(--p-color-contrast-low)!important;--_p-table-a:var(--p-spacing-static-sm)!important;--_p-table-d:1px!important;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next)!important;color:var(--p-color-primary)!important;text-align:start!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.caption{margin-bottom:var(--p-spacing-fluid-md);}.table{display:table;border-collapse:collapse;table-layout:fixed;min-width:100%;white-space:nowrap;}"`;
+exports[`getComponentCss() > should return correct css for compact: true and layout: fixed 2`] = `
+":host {
+  display: block;
+  --p-scroller-indicator-top: var(
+    --p-table-scroll-indicator-top,
+    0px
+  ) !important;
+  --p-scroller-indicator-bottom: var(
+    --p-table-scroll-indicator-bottom,
+    0px
+  ) !important;
+  --_p-table-b: var(--p-color-frosted) !important;
+  --_p-table-c: var(--p-color-contrast-low) !important;
+  --_p-table-a: var(--p-spacing-static-sm) !important;
+  --_p-table-d: 1px !important;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next) !important;
+  color: var(--p-color-primary) !important;
+  text-align: start !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.caption {
+  margin-bottom: var(--p-spacing-fluid-md);
+}
+.table {
+  display: table;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 100%;
+  white-space: nowrap;
+}
+"
+`;

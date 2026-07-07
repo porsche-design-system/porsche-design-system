@@ -13,8 +13,8 @@ describe('getComponentCss()', () => {
     [true, true, true, true, true],
   ])(
     'should return correct css for isIndicatorPrevVisible: %s, isIndicatorNextVisible: %s, isSticky: %s, hasScrollbar: %s, isCompact: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

@@ -7,7 +7,7 @@ describe('getComponentCss()', () => {
     [true, 'surface', true],
     [false, 'canvas', true],
     [false, 'canvas', false],
-  ])('should return correct css for open: %s, background: %s and dismissButton: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for open: %s, background: %s and dismissButton: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

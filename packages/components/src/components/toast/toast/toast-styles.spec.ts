@@ -11,7 +11,7 @@ describe('getKeyframesMobile()', () => {
 });
 
 describe('getComponentCss()', () => {
-  it('should return correct css', () => {
-    validateCssAndMatchSnapshot(getComponentCss());
+  it('should return correct css', async () => {
+    await validateCssAndMatchSnapshot(getComponentCss());
   });
 });

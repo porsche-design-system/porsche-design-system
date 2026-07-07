@@ -20,7 +20,7 @@ describe('getComponentCss()', () => {
     ['end', 'none', false, true, false, false, false, false, 'small'],
     ['start', 'none', false, true, false, false, true, false, 'small'],
     ['start', 'none', false, { base: false, m: true }, false, false, true, false, 'small'],
-  ])('should return correct css for alignMarker: %s, background: %s, isCompact: %s, indent: %s, isOpen: %s, isSticky: %s, hasSummaryBefore: %s, hasSummaryAfter: %s, size: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for alignMarker: %s, background: %s, isCompact: %s, indent: %s, isOpen: %s, isSticky: %s, hasSummaryBefore: %s, hasSummaryAfter: %s, size: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

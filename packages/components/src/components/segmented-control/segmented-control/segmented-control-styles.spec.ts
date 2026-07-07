@@ -11,8 +11,8 @@ describe('getComponentCss()', () => {
     [undefined, undefined, 'auto', true, false, 'error', true],
   ])(
     'should return correct css for minWidth: %s, maxWidth: %s, columns: %s, disabled: %s, hideLabel: %o, state: %s and noWrap: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

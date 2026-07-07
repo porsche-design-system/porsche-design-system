@@ -145,7 +145,12 @@ describe('getComponentCss()', () => {
       loading: false,
       compact: true,
     },
-  ])('should return correct css for %j', ({ alignLabel, hideLabel, stretch, checked, disabled, loading, compact }) => {
-    validateCssAndMatchSnapshot(getComponentCss(alignLabel, hideLabel, stretch, checked, disabled, loading, compact));
-  });
+  ])(
+    'should return correct css for %j',
+    async ({ alignLabel, hideLabel, stretch, checked, disabled, loading, compact }) => {
+      await validateCssAndMatchSnapshot(
+        getComponentCss(alignLabel, hideLabel, stretch, checked, disabled, loading, compact)
+      );
+    }
+  );
 });

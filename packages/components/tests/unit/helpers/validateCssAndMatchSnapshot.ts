@@ -1,9 +1,10 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
+import { format } from 'prettier';
 import { expect } from 'vitest';
 import { getCssObject } from '../../../src/test-utils';
 
-export const validateCssAndMatchSnapshot = (css: string) => {
+export const validateCssAndMatchSnapshot = async (css: string) => {
   const cssObject: any = getCssObject(css);
   const componentName = expect.getState().testPath.match(/\/([^/]+)\/[^/]+\.spec\.ts/)[1];
   const componentTagName = `p-${componentName}` as TagName;
@@ -34,7 +35,8 @@ export const validateCssAndMatchSnapshot = (css: string) => {
     validateFormComponentHostDisplayStyle(cssObject, componentTagName);
   }
 
-  expect(css).toMatchSnapshot();
+  // snapshot the prettified CSS (multi-line, like the former JSS output) instead of the compact stylis string
+  expect(await format(css, { parser: 'css' })).toMatchSnapshot();
 };
 
 const validatePreventFoucOfNestedElementsStyle = (cssObject: any, isComponentWithNestedComponents: boolean) => {

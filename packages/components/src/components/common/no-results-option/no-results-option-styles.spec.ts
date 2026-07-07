@@ -8,7 +8,7 @@ describe('getFunctionalComponentNoResultsOptionStyles()', () => {
     ['select-option', `var(--_p-select-a, 1)`],
     ['multi-select-option', `var(--_p-multi-select-a, 1)`],
     ['multi-select-option', `var(--_p-multi-select-a, 1)`],
-  ])('should return correct css for componentName: %s and cssVarScaling: %s', (...args) => {
-    validateCssAndMatchSnapshot(getCss(getFunctionalComponentNoResultsOptionStyles(...args)));
+  ])('should return correct css for componentName: %s and cssVarScaling: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getCss(getFunctionalComponentNoResultsOptionStyles(...args)));
   });
 });

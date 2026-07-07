@@ -14,7 +14,7 @@ describe('getComponentCss()', () => {
     ['success-frosted', false, true, true],
     ['error', false, true, true],
     ['error-frosted', false, true, true],
-  ])('should return correct css for variant: %s, compact: %s, isFocusable: %s and hasIcon: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for variant: %s, compact: %s, isFocusable: %s and hasIcon: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

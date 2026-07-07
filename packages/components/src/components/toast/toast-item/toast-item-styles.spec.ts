@@ -8,7 +8,7 @@ describe('getComponentCss()', () => {
     ['success'],
     ['warning'],
     ['error'],
-  ])('should return correct css for state: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for state: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

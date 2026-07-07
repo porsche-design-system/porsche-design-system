@@ -22,8 +22,8 @@ describe('getFunctionalComponentInputBaseStyles()', () => {
     [true, false, { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true, false, null, null],
   ])(
     'should return correct css for disabled: %s, loading: %s, hideLabel: %o, state: %s, compact: %o, readOnly: %o, additionalInputJssStyle: %s and additionalHostJssStyle: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getCss(getFunctionalComponentInputBaseStyles(...args)));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getCss(getFunctionalComponentInputBaseStyles(...args)));
     }
   );
 });

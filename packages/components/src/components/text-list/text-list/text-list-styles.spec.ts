@@ -9,7 +9,7 @@ describe('getComponentCss()', () => {
     ['unordered'],
     ['numbered'],
     ['alphabetically'],
-  ])('should return correct css for type: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for type: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

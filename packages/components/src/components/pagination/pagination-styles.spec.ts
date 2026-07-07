@@ -23,7 +23,7 @@ describe('getComponentCss()', () => {
     [8, 10, true],
     [9, 10, true],
     [10, 10, true],
-  ])('should return correct css for activePage: %s, pageTotal: %s and showLastPage: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for activePage: %s, pageTotal: %s and showLastPage: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

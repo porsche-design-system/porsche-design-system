@@ -13,8 +13,8 @@ describe('getComponentCss()', () => {
     ['arrow-right', '', 'primary', false, true, true],
   ])(
     'should return correct css for icon: %s, iconSource: %s, variant: %s, hideLabel: %s, hasSlottedAnchor: %s and compact: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

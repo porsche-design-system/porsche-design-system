@@ -7,7 +7,7 @@ describe('getComponentCss()', () => {
     [true, false],
     [false, true],
     [true, true],
-  ])('should return correct css for isOpen: %s and compact: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for isOpen: %s and compact: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

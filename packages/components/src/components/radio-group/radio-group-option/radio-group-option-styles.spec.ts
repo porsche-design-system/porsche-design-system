@@ -35,7 +35,7 @@ describe('getComponentCss()', () => {
     [false, true, 'error'],
     [true, false, 'error'],
     [true, true, 'error'],
-  ])('should return correct css for disabled: %s, loading: %s and state: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for disabled: %s, loading: %s and state: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

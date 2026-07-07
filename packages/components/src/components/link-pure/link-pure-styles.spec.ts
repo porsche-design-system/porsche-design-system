@@ -51,8 +51,8 @@ describe('getComponentCss()', () => {
     ],
   ])(
     'should return correct css for icon: %s, iconSource: %s, active: %s, stretch: %s, size: %s, hideLabel: %s, alignLabel: %s, underline: %s and hasSlottedAnchor: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

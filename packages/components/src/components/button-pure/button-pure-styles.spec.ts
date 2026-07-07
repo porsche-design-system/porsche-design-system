@@ -68,7 +68,7 @@ describe('getComponentCss()', () => {
     ],
   ])(
     'should return correct css for %j',
-    (
+    async (
       icon,
       iconSource,
       active,
@@ -82,7 +82,7 @@ describe('getComponentCss()', () => {
       alignLabel,
       underline
     ) => {
-      validateCssAndMatchSnapshot(
+      await validateCssAndMatchSnapshot(
         getComponentCss(
           icon,
           iconSource,

@@ -9,12 +9,12 @@ describe('getComponentCss()', () => {
     [true, false],
     [false, false],
     [true, true],
-  ])('should return correct css for hasLabel: %s and compact: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for hasLabel: %s and compact: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 
   // Direct child selector fixes https://github.com/porsche-design-system/porsche-design-system/pull/1941 in safari < v15.5
-  it('should have ">" combinator on .button:hover for .icon', () => {
+  it('should have ">" combinator on .button:hover for .icon', async () => {
     expect(getComponentCss(true, false)).toContain('button:hover>.icon');
   });
 });

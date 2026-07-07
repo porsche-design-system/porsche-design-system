@@ -18,7 +18,7 @@ describe('getComponentCss()', () => {
     ['small', 'inherit', 'primary', false],
     ['inherit', 'center', 'primary', false],
     [{ base: 'medium', xs: 'large', s: 'medium', m: 'inherit', l: 'large', xl: 'medium' }, 'center', 'primary', true],
-  ])('should return correct css for size: %j, align: %s, color: %s and ellipsis: %o', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for size: %j, align: %s, color: %s and ellipsis: %o', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

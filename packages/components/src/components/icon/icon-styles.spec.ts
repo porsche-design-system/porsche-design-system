@@ -29,7 +29,7 @@ describe('getComponentCss()', () => {
     ['360', '', 'primary', 'inherit'],
     ['360', '', 'inherit', 'sm'],
     ['360', '', 'inherit', 'sm'],
-  ])('should return correct css for name: %s, source: %s, color: %s and size: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for name: %s, source: %s, color: %s and size: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

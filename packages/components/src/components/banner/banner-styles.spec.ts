@@ -8,7 +8,7 @@ describe('getComponentCss()', () => {
     [false, 'bottom', 'success', false, false],
     [false, 'bottom', 'warning', true, false],
     [false, 'bottom', 'error', true, true],
-  ])('should return correct css for open: %s, position: %s, state: %s, hasDismissButton: %s, hasHeadingOrHeadingSlot: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for open: %s, position: %s, state: %s, hasDismissButton: %s, hasHeadingOrHeadingSlot: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

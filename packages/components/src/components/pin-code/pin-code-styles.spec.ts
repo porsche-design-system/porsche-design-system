@@ -20,8 +20,8 @@ describe('getComponentCss()', () => {
     [{ base: true, xs: false, s: true, m: false, l: true, xl: false }, 'success', false, false, 4, false],
   ])(
     'should return correct css for hideLabel: %o, state: %s, isDisabled: %s, isLoading: %s and length: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

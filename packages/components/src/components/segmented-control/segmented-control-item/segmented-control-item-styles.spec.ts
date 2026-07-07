@@ -21,8 +21,8 @@ describe('getComponentCss()', () => {
     [false, false, false, 'none', false, false],
   ])(
     'should return correct css for isDisabled: %s, isSelected: %s, hasIcon: %s, state: %s, hasSlottedContent: %s and compact: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

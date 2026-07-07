@@ -4,8 +4,8 @@ import { getComponentCss } from './wordmark-styles';
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([['small'], ['inherit'], ['small'], ['inherit']])(
     'should return correct css for size: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

@@ -36,8 +36,8 @@ describe('getComponentCss()', () => {
     [true, 'canvas', 'blur', 'end', true, true, true, 'sticky', { base: true, xs: false, s: true, m: false, l: true, xl: false }],
   ])(
     'should return correct css for isOpen: %s, background: %s, backdrop: %s, position: %s, hasHeader: %s, hasFooter: %s, hasSubFooter: %s, footerBehavior: %s and fullscreen: %o',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

@@ -14,8 +14,8 @@ describe('getComponentCss()', () => {
     ['none', { base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }, false, 0],
   ])(
     'should return correct css for background: %s, size: %j, isCompact: %s, activeTabIndex: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

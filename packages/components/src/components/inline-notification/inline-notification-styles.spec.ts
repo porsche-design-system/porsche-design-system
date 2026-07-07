@@ -12,7 +12,7 @@ describe('getComponentCss()', () => {
     ['info', false, true, false],
     ['info', true, true, false],
     ['info', true, true, true],
-  ])('should return correct css for state: %s, hasAction: %s, hasDismissButton: %s, hasHeadingOrHeadingSlot: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for state: %s, hasAction: %s, hasDismissButton: %s, hasHeadingOrHeadingSlot: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

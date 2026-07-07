@@ -7,7 +7,7 @@ describe('getComponentCss()', () => {
     [true, false],
     [false, true],
     [true, true],
-  ])('should return correct css for isDisabled: %s and selected: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for isDisabled: %s and selected: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

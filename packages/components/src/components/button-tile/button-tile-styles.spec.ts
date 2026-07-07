@@ -21,8 +21,8 @@ describe('getComponentCss()', () => {
     ],
   ])(
     'should return correct css for isDisabledOrLoading: %s, aspectRatio: %j, size: %j, weight: %j, align: %s, isCompact: %j, hasGradient: %s and isDisabled: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

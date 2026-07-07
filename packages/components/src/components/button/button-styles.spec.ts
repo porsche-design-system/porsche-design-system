@@ -28,8 +28,8 @@ describe('getComponentCss()', () => {
     ['arrow-right', '', 'secondary', false, false, false, true],
   ])(
     'should return correct css for icon: %s, iconSource: %s, variant: %s, hideLabel: %s, disabled: %s and loading: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

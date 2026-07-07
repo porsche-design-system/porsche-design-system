@@ -20,7 +20,7 @@ describe('getComponentCss()', () => {
     ['911', true, 'small', 'inherit'],
     ['911', true, 'inherit', 'primary'],
     ['911', true, 'inherit', 'inherit'],
-  ])('should return correct css for model: %s, safe-zone: %s, size: %s and color: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for model: %s, safe-zone: %s, size: %s and color: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

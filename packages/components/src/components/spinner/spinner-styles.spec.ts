@@ -13,7 +13,7 @@ describe('getComponentCss()', () => {
     ['primary', 'lg'],
     ['primary', 'inherit'],
     ['primary', { base: 'md', xs: 'sm', s: 'md', m: 'sm', l: 'md', xl: 'sm' }],
-  ])('should return correct css for size: %j', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for size: %j', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

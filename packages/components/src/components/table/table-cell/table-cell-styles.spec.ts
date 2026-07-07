@@ -4,8 +4,8 @@ import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([[true], [false]])(
     'should return correct css for multiline: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

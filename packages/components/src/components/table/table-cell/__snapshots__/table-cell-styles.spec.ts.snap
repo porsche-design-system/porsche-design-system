@@ -1,5 +1,29 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for multiline: false 1`] = `":host{display:table-cell;vertical-align:middle;padding:var(--_p-table-a)!important;margin:0!important;white-space:nowrap!important;}:host([hidden]){display:none!important;}"`;
+exports[`getComponentCss() > should return correct css for multiline: false 1`] = `
+":host {
+  display: table-cell;
+  vertical-align: middle;
+  padding: var(--_p-table-a) !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for multiline: true 1`] = `":host{display:table-cell;vertical-align:middle;padding:var(--_p-table-a)!important;margin:0!important;white-space:normal!important;}:host([hidden]){display:none!important;}"`;
+exports[`getComponentCss() > should return correct css for multiline: true 1`] = `
+":host {
+  display: table-cell;
+  vertical-align: middle;
+  padding: var(--_p-table-a) !important;
+  margin: 0 !important;
+  white-space: normal !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+"
+`;

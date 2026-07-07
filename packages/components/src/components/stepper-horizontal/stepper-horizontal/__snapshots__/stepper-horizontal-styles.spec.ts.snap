@@ -1,7 +1,83 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for size: "medium" 1`] = `":host{display:grid;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.scroller{place-self:flex-start;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-md);}"`;
+exports[`getComponentCss() > should return correct css for size: "medium" 1`] = `
+":host {
+  display: grid;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.scroller {
+  place-self: flex-start;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-md);
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: "small" 1`] = `":host{display:grid;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.scroller{place-self:flex-start;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-sm);}"`;
+exports[`getComponentCss() > should return correct css for size: "small" 1`] = `
+":host {
+  display: grid;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.scroller {
+  place-self: flex-start;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} 1`] = `":host{display:grid;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}.scroller{place-self:flex-start;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);font-size:var(--p-typescale-sm);}@media(min-width:480px){.scroller{font-size:var(--p-typescale-md);}}@media(min-width:760px){.scroller{font-size:var(--p-typescale-sm);}}@media(min-width:1000px){.scroller{font-size:var(--p-typescale-md);}}@media(min-width:1300px){.scroller{font-size:var(--p-typescale-sm);}}@media(min-width:1760px){.scroller{font-size:var(--p-typescale-md);}}"`;
+exports[`getComponentCss() > should return correct css for size: {"base":"small","xs":"medium","s":"small","m":"medium","l":"small","xl":"medium"} 1`] = `
+":host {
+  display: grid;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+.scroller {
+  place-self: flex-start;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+  font-size: var(--p-typescale-sm);
+}
+@media (min-width: 480px) {
+  .scroller {
+    font-size: var(--p-typescale-md);
+  }
+}
+@media (min-width: 760px) {
+  .scroller {
+    font-size: var(--p-typescale-sm);
+  }
+}
+@media (min-width: 1000px) {
+  .scroller {
+    font-size: var(--p-typescale-md);
+  }
+}
+@media (min-width: 1300px) {
+  .scroller {
+    font-size: var(--p-typescale-sm);
+  }
+}
+@media (min-width: 1760px) {
+  .scroller {
+    font-size: var(--p-typescale-md);
+  }
+}
+"
+`;

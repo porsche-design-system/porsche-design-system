@@ -10,7 +10,7 @@ describe('getComponentCss()', () => {
     [false, 'desc', false, false],
     [true, 'desc', false, false],
     [true, 'desc', false, true],
-  ])('should return correct css for active: %s, direction: %s, hideLabel: %s and multiline: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for active: %s, direction: %s, hideLabel: %s and multiline: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

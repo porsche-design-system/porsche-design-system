@@ -12,8 +12,8 @@ describe('getComponentCss()', () => {
     [true, false, false, false, { base: '3/4', xs: '9/16' }],
   ])(
     'should return correct css for hasLikeButton: %s, hasSlottedAnchor: %s, hasPriceOriginal: %s, hasDescription: %s, aspectRatio: %j',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });

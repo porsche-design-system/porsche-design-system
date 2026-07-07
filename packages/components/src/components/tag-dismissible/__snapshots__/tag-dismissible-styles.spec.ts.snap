@@ -1,13 +1,421 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for hasLabel: false and compact: false 1`] = `":host{--_p-tag-dismissible-a:1;display:inline-block;vertical-align:top;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{all:unset;display:flex;position:relative;align-items:center;gap:calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);padding:calc(28px * (var(--_p-tag-dismissible-a) - 0.64285714) + 6px) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);border-radius:var(--p-radius-xl);cursor:pointer;background:var(--p-color-frosted);color:var(--p-color-primary);text-align:start;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);}button:focus-visible{outline:2px solid var(--p-color-focus);outline-offset:2px;}.icon{padding:calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));margin:calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);border-radius:var(--p-radius-full);}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}@media(hover:hover){button:hover>.icon{background-color:var(--p-color-frosted);}}@media(forced-colors:active){button{outline:2px solid CanvasText;outline-offset:-2px;}button:focus-visible{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for hasLabel: false and compact: false 1`] = `
+":host {
+  --_p-tag-dismissible-a: 1;
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  all: unset;
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-tag-dismissible-a) - 0.64285714) + 6px)
+    calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  border-radius: var(--p-radius-xl);
+  cursor: pointer;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
+  text-align: start;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+}
+button:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-full);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for hasLabel: false and compact: true 1`] = `":host{--_p-tag-dismissible-a:0.64285714;display:inline-block;vertical-align:top;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{all:unset;display:flex;position:relative;align-items:center;gap:calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);padding:calc(28px * (var(--_p-tag-dismissible-a) - 0.64285714) + 6px) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);border-radius:var(--p-radius-lg);cursor:pointer;background:var(--p-color-frosted);color:var(--p-color-primary);text-align:start;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);}button:focus-visible{outline:2px solid var(--p-color-focus);outline-offset:2px;}.icon{padding:calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));margin:calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);border-radius:var(--p-radius-full);}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}@media(hover:hover){button:hover>.icon{background-color:var(--p-color-frosted);}}@media(forced-colors:active){button{outline:2px solid CanvasText;outline-offset:-2px;}button:focus-visible{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for hasLabel: false and compact: true 1`] = `
+":host {
+  --_p-tag-dismissible-a: 0.64285714;
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  all: unset;
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(28px * (var(--_p-tag-dismissible-a) - 0.64285714) + 6px)
+    calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  border-radius: var(--p-radius-lg);
+  cursor: pointer;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
+  text-align: start;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+}
+button:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-full);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for hasLabel: true and compact: false 1`] = `":host{--_p-tag-dismissible-a:1;display:inline-block;vertical-align:top;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{all:unset;display:flex;position:relative;align-items:center;gap:calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);padding:calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);border-radius:var(--p-radius-xl);cursor:pointer;background:var(--p-color-frosted);color:var(--p-color-primary);text-align:start;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);}button:focus-visible{outline:2px solid var(--p-color-focus);outline-offset:2px;}.label{display:block;margin-bottom:-4px;color:var(--p-color-contrast-high);font-size:var(--p-typescale-xs);}.icon{padding:calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));margin:calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);border-radius:var(--p-radius-full);}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}@media(hover:hover){button:hover>.icon{background-color:var(--p-color-frosted);}}@media(forced-colors:active){button{outline:2px solid CanvasText;outline-offset:-2px;}button:focus-visible{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for hasLabel: true and compact: false 1`] = `
+":host {
+  --_p-tag-dismissible-a: 1;
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  all: unset;
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714))
+    calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  border-radius: var(--p-radius-xl);
+  cursor: pointer;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
+  text-align: start;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+}
+button:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  display: block;
+  margin-bottom: -4px;
+  color: var(--p-color-contrast-high);
+  font-size: var(--p-typescale-xs);
+}
+.icon {
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-full);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for hasLabel: true and compact: false 2`] = `":host{--_p-tag-dismissible-a:1;display:inline-block;vertical-align:top;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{all:unset;display:flex;position:relative;align-items:center;gap:calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);padding:calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);border-radius:var(--p-radius-xl);cursor:pointer;background:var(--p-color-frosted);color:var(--p-color-primary);text-align:start;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);}button:focus-visible{outline:2px solid var(--p-color-focus);outline-offset:2px;}.label{display:block;margin-bottom:-4px;color:var(--p-color-contrast-high);font-size:var(--p-typescale-xs);}.icon{padding:calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));margin:calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);border-radius:var(--p-radius-full);}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}@media(hover:hover){button:hover>.icon{background-color:var(--p-color-frosted);}}@media(forced-colors:active){button{outline:2px solid CanvasText;outline-offset:-2px;}button:focus-visible{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for hasLabel: true and compact: false 2`] = `
+":host {
+  --_p-tag-dismissible-a: 1;
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  all: unset;
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714))
+    calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  border-radius: var(--p-radius-xl);
+  cursor: pointer;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
+  text-align: start;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+}
+button:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  display: block;
+  margin-bottom: -4px;
+  color: var(--p-color-contrast-high);
+  font-size: var(--p-typescale-xs);
+}
+.icon {
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-full);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for hasLabel: true and compact: true 1`] = `":host{--_p-tag-dismissible-a:0.64285714;display:inline-block;vertical-align:top;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{all:unset;display:flex;position:relative;align-items:center;gap:calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);padding:calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);border-radius:var(--p-radius-lg);cursor:pointer;background:var(--p-color-frosted);color:var(--p-color-primary);text-align:start;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);}button:focus-visible{outline:2px solid var(--p-color-focus);outline-offset:2px;}.label{display:block;margin-bottom:-4px;color:var(--p-color-contrast-high);font-size:var(--p-typescale-xs);}.icon{padding:calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));margin:calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);border-radius:var(--p-radius-full);}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}@media(hover:hover){button:hover>.icon{background-color:var(--p-color-frosted);}}@media(forced-colors:active){button{outline:2px solid CanvasText;outline-offset:-2px;}button:focus-visible{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for hasLabel: true and compact: true 1`] = `
+":host {
+  --_p-tag-dismissible-a: 0.64285714;
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  all: unset;
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714))
+    calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  border-radius: var(--p-radius-lg);
+  cursor: pointer;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
+  text-align: start;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+}
+button:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  display: block;
+  margin-bottom: -4px;
+  color: var(--p-color-contrast-high);
+  font-size: var(--p-typescale-xs);
+}
+.icon {
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-full);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for hasLabel: true and compact: true 2`] = `":host{--_p-tag-dismissible-a:0.64285714;display:inline-block;vertical-align:top;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{all:unset;display:flex;position:relative;align-items:center;gap:calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);padding:calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714)) calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);border-radius:var(--p-radius-lg);cursor:pointer;background:var(--p-color-frosted);color:var(--p-color-primary);text-align:start;font:var(--p-font-weight-normal) var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);}button:focus-visible{outline:2px solid var(--p-color-focus);outline-offset:2px;}.label{display:block;margin-bottom:-4px;color:var(--p-color-contrast-high);font-size:var(--p-typescale-xs);}.icon{padding:calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));margin:calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);border-radius:var(--p-radius-full);}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}@media(hover:hover){button:hover>.icon{background-color:var(--p-color-frosted);}}@media(forced-colors:active){button{outline:2px solid CanvasText;outline-offset:-2px;}button:focus-visible{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for hasLabel: true and compact: true 2`] = `
+":host {
+  --_p-tag-dismissible-a: 0.64285714;
+  display: inline-block;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  all: unset;
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  padding: calc(16.8px * (var(--_p-tag-dismissible-a) - 0.64285714))
+    calc(22.4px * (var(--_p-tag-dismissible-a) - 0.64285714) + 4px);
+  border-radius: var(--p-radius-lg);
+  cursor: pointer;
+  background: var(--p-color-frosted);
+  color: var(--p-color-primary);
+  text-align: start;
+  font: var(--p-font-weight-normal)
+    var(--p-typescale-sm)/var(--p-leading-normal) var(--p-font-porsche-next);
+}
+button:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.label {
+  display: block;
+  margin-bottom: -4px;
+  color: var(--p-color-contrast-high);
+  font-size: var(--p-typescale-xs);
+}
+.icon {
+  padding: calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714));
+  margin: calc(-1 * calc(11.2px * (var(--_p-tag-dismissible-a) - 0.64285714)));
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-full);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  button:hover > .icon {
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button {
+    outline: 2px solid CanvasText;
+    outline-offset: -2px;
+  }
+  button:focus-visible {
+    outline-color: Highlight;
+  }
+}
+"
+`;

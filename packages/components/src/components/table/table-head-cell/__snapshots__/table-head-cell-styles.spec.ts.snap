@@ -1,15 +1,422 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getComponentCss() > should return correct css for active: false, direction: asc, hideLabel: false and multiline: false 1`] = `":host{display:table-cell;padding:2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm))!important;vertical-align:bottom!important;white-space:nowrap!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{position:relative;display:flex;gap:var(--p-spacing-static-xs);width:auto;margin:0;padding:0;font:inherit;color:inherit;align-items:flex-end;-webkit-appearance:none;appearance:none;background:transparent;text-align:start;border:0;z-index:0;cursor:pointer;}button:focus,button:focus-visible{outline:none;}button::before{content:"";position:absolute;inset:-2px -4px;border-radius:var(--p-radius-sm);z-index:-1;transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}button:focus-visible::before{outline:2px solid var(--p-color-focus);outline-offset:2px;}.icon{transition:opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);opacity:0;transform:rotate3d(0,0,1,0deg);transform-origin:50% 50%;}@media(hover:hover){button:hover .icon,button:focus-visible .icon{opacity:1;}button:hover::before{-webkit-backdrop-filter:var(--p-blur-frosted);backdrop-filter:var(--p-blur-frosted);background-color:var(--p-color-frosted);}}@media(forced-colors:active){button:focus-visible::before{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for active: false, direction: asc, hideLabel: false and multiline: false 1`] = `
+":host {
+  display: table-cell;
+  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm))
+    var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  vertical-align: bottom !important;
+  white-space: nowrap !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  position: relative;
+  display: flex;
+  gap: var(--p-spacing-static-xs);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  align-items: flex-end;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  z-index: 0;
+  cursor: pointer;
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: -2px -4px;
+  border-radius: var(--p-radius-sm);
+  z-index: -1;
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+}
+button:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm))
+    var(--p-ease-in-out);
+  opacity: 0;
+  transform: rotate3d(0, 0, 1, 0deg);
+  transform-origin: 50% 50%;
+}
+@media (hover: hover) {
+  button:hover .icon,
+  button:focus-visible .icon {
+    opacity: 1;
+  }
+  button:hover::before {
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for active: false, direction: desc, hideLabel: false and multiline: false 1`] = `":host{display:table-cell;padding:2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm))!important;vertical-align:bottom!important;white-space:nowrap!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{position:relative;display:flex;gap:var(--p-spacing-static-xs);width:auto;margin:0;padding:0;font:inherit;color:inherit;align-items:flex-end;-webkit-appearance:none;appearance:none;background:transparent;text-align:start;border:0;z-index:0;cursor:pointer;}button:focus,button:focus-visible{outline:none;}button::before{content:"";position:absolute;inset:-2px -4px;border-radius:var(--p-radius-sm);z-index:-1;transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}button:focus-visible::before{outline:2px solid var(--p-color-focus);outline-offset:2px;}.icon{transition:opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);opacity:0;transform:rotate3d(0,0,1,180deg);transform-origin:50% 50%;}@media(hover:hover){button:hover .icon,button:focus-visible .icon{opacity:1;}button:hover::before{-webkit-backdrop-filter:var(--p-blur-frosted);backdrop-filter:var(--p-blur-frosted);background-color:var(--p-color-frosted);}}@media(forced-colors:active){button:focus-visible::before{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for active: false, direction: desc, hideLabel: false and multiline: false 1`] = `
+":host {
+  display: table-cell;
+  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm))
+    var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  vertical-align: bottom !important;
+  white-space: nowrap !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  position: relative;
+  display: flex;
+  gap: var(--p-spacing-static-xs);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  align-items: flex-end;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  z-index: 0;
+  cursor: pointer;
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: -2px -4px;
+  border-radius: var(--p-radius-sm);
+  z-index: -1;
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+}
+button:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm))
+    var(--p-ease-in-out);
+  opacity: 0;
+  transform: rotate3d(0, 0, 1, 180deg);
+  transform-origin: 50% 50%;
+}
+@media (hover: hover) {
+  button:hover .icon,
+  button:focus-visible .icon {
+    opacity: 1;
+  }
+  button:hover::before {
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for active: true, direction: asc, hideLabel: false and multiline: false 1`] = `":host{display:table-cell;padding:2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm))!important;vertical-align:bottom!important;white-space:nowrap!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{position:relative;display:flex;gap:var(--p-spacing-static-xs);width:auto;margin:0;padding:0;font:inherit;color:inherit;align-items:flex-end;-webkit-appearance:none;appearance:none;background:transparent;text-align:start;border:0;z-index:0;cursor:pointer;}button:focus,button:focus-visible{outline:none;}button::before{content:"";position:absolute;inset:-2px -4px;border-radius:var(--p-radius-sm);z-index:-1;transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}button:focus-visible::before{outline:2px solid var(--p-color-focus);outline-offset:2px;}.icon{transition:opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);opacity:1;transform:rotate3d(0,0,1,0deg);transform-origin:50% 50%;}@media(hover:hover){button:hover .icon,button:focus-visible .icon{opacity:1;}button:hover::before{-webkit-backdrop-filter:var(--p-blur-frosted);backdrop-filter:var(--p-blur-frosted);background-color:var(--p-color-frosted);}}@media(forced-colors:active){button:focus-visible::before{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for active: true, direction: asc, hideLabel: false and multiline: false 1`] = `
+":host {
+  display: table-cell;
+  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm))
+    var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  vertical-align: bottom !important;
+  white-space: nowrap !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  position: relative;
+  display: flex;
+  gap: var(--p-spacing-static-xs);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  align-items: flex-end;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  z-index: 0;
+  cursor: pointer;
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: -2px -4px;
+  border-radius: var(--p-radius-sm);
+  z-index: -1;
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+}
+button:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm))
+    var(--p-ease-in-out);
+  opacity: 1;
+  transform: rotate3d(0, 0, 1, 0deg);
+  transform-origin: 50% 50%;
+}
+@media (hover: hover) {
+  button:hover .icon,
+  button:focus-visible .icon {
+    opacity: 1;
+  }
+  button:hover::before {
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: false 1`] = `":host{display:table-cell;padding:2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm))!important;vertical-align:bottom!important;white-space:nowrap!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{position:relative;display:flex;gap:var(--p-spacing-static-xs);width:auto;margin:0;padding:0;font:inherit;color:inherit;align-items:flex-end;-webkit-appearance:none;appearance:none;background:transparent;text-align:start;border:0;z-index:0;cursor:pointer;}button:focus,button:focus-visible{outline:none;}button::before{content:"";position:absolute;inset:-2px -4px;border-radius:var(--p-radius-sm);z-index:-1;transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}button:focus-visible::before{outline:2px solid var(--p-color-focus);outline-offset:2px;}.icon{transition:opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);opacity:1;transform:rotate3d(0,0,1,180deg);transform-origin:50% 50%;}@media(hover:hover){button:hover .icon,button:focus-visible .icon{opacity:1;}button:hover::before{-webkit-backdrop-filter:var(--p-blur-frosted);backdrop-filter:var(--p-blur-frosted);background-color:var(--p-color-frosted);}}@media(forced-colors:active){button:focus-visible::before{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: false 1`] = `
+":host {
+  display: table-cell;
+  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm))
+    var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  vertical-align: bottom !important;
+  white-space: nowrap !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  position: relative;
+  display: flex;
+  gap: var(--p-spacing-static-xs);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  align-items: flex-end;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  z-index: 0;
+  cursor: pointer;
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: -2px -4px;
+  border-radius: var(--p-radius-sm);
+  z-index: -1;
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+}
+button:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm))
+    var(--p-ease-in-out);
+  opacity: 1;
+  transform: rotate3d(0, 0, 1, 180deg);
+  transform-origin: 50% 50%;
+}
+@media (hover: hover) {
+  button:hover .icon,
+  button:focus-visible .icon {
+    opacity: 1;
+  }
+  button:hover::before {
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: true 1`] = `":host{display:table-cell;padding:2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm))!important;vertical-align:bottom!important;white-space:normal!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}button{position:relative;display:flex;gap:var(--p-spacing-static-xs);width:auto;margin:0;padding:0;font:inherit;color:inherit;align-items:flex-end;-webkit-appearance:none;appearance:none;background:transparent;text-align:start;border:0;z-index:0;cursor:pointer;}button:focus,button:focus-visible{outline:none;}button::before{content:"";position:absolute;inset:-2px -4px;border-radius:var(--p-radius-sm);z-index:-1;transition:background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);}button:focus-visible::before{outline:2px solid var(--p-color-focus);outline-offset:2px;}.icon{transition:opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);opacity:1;transform:rotate3d(0,0,1,180deg);transform-origin:50% 50%;}@media(hover:hover){button:hover .icon,button:focus-visible .icon{opacity:1;}button:hover::before{-webkit-backdrop-filter:var(--p-blur-frosted);backdrop-filter:var(--p-blur-frosted);background-color:var(--p-color-frosted);}}@media(forced-colors:active){button:focus-visible::before{outline-color:Highlight;}}"`;
+exports[`getComponentCss() > should return correct css for active: true, direction: desc, hideLabel: false and multiline: true 1`] = `
+":host {
+  display: table-cell;
+  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm))
+    var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  vertical-align: bottom !important;
+  white-space: normal !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+button {
+  position: relative;
+  display: flex;
+  gap: var(--p-spacing-static-xs);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  align-items: flex-end;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  z-index: 0;
+  cursor: pointer;
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: -2px -4px;
+  border-radius: var(--p-radius-sm);
+  z-index: -1;
+  transition: background-color
+    var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-in-out);
+}
+button:focus-visible::before {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.icon {
+  transition: opacity var(--p-transition-duration, var(--p-duration-sm))
+    var(--p-ease-in-out);
+  opacity: 1;
+  transform: rotate3d(0, 0, 1, 180deg);
+  transform-origin: 50% 50%;
+}
+@media (hover: hover) {
+  button:hover .icon,
+  button:focus-visible .icon {
+    opacity: 1;
+  }
+  button:hover::before {
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
+    background-color: var(--p-color-frosted);
+  }
+}
+@media (forced-colors: active) {
+  button:focus-visible::before {
+    outline-color: Highlight;
+  }
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: false and multiline: false 1`] = `":host{display:table-cell;padding:2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm))!important;vertical-align:bottom!important;white-space:nowrap!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}"`;
+exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: false and multiline: false 1`] = `
+":host {
+  display: table-cell;
+  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm))
+    var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  vertical-align: bottom !important;
+  white-space: nowrap !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+"
+`;
 
-exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: true and multiline: false 1`] = `":host{display:table-cell;padding:2px var(--_p-table-a,var(--p-spacing-fluid-sm)) var(--_p-table-a,var(--p-spacing-fluid-sm))!important;vertical-align:bottom!important;white-space:nowrap!important;}:host([hidden]){display:none!important;}:not(:defined,[data-ssr]){visibility:hidden;}span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;display:block;border:0;}"`;
+exports[`getComponentCss() > should return correct css for active: undefined, direction: undefined, hideLabel: true and multiline: false 1`] = `
+":host {
+  display: table-cell;
+  padding: 2px var(--_p-table-a, var(--p-spacing-fluid-sm))
+    var(--_p-table-a, var(--p-spacing-fluid-sm)) !important;
+  vertical-align: bottom !important;
+  white-space: nowrap !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined, [data-ssr]) {
+  visibility: hidden;
+}
+span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  display: block;
+  border: 0;
+}
+"
+`;

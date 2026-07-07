@@ -11,7 +11,7 @@ describe('getComponentCss()', () => {
     ['complete', false],
     ['warning', true],
     ['warning', false],
-  ])('should return correct css for state: %s, isDisabled: %s', (...args) => {
-    validateCssAndMatchSnapshot(getComponentCss(...args));
+  ])('should return correct css for state: %s, isDisabled: %s', async (...args) => {
+    await validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

@@ -31,8 +31,8 @@ describe('getComponentCss()', () => {
     [true, false, false, 'none', false],
   ])(
     'should return correct css for isOpen: %s, isDisabled: %s, hideLabel: %o, state: %s and compact: %s',
-    (...args) => {
-      validateCssAndMatchSnapshot(getComponentCss(...args));
+    async (...args) => {
+      await validateCssAndMatchSnapshot(getComponentCss(...args));
     }
   );
 });
