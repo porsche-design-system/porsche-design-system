@@ -77,15 +77,15 @@ const result = await page.evaluate(() => {
 | ------- | -------- |
 | `<PHeading tag="h1" id="main-heading">` | Page heading (may render in shadow DOM) |
 | `<section id="main-content">` | Main landmark equivalent |
-| `<p-carousel skip-link-target="#target">` | Carousel skip strategy |
+| `<PCarousel skip-link-target="#target">` | Carousel skip strategy |
 
 ## Pass criteria
 
 - `lang` on `<html>`
 - Non-empty `<title>`
-- One page heading (`h1`, `p-heading[h1]`, or `#main-heading`)
+- One page heading (`h1`, `PHeading tag="h1"`)
 - No skipped heading levels
-- One main landmark (including `#main-content`)
+- One main landmark (`main`, `[role="main"]`)
 - Skip link when page has long nav sidebars or carousel blocks
 
 ## Fix guide

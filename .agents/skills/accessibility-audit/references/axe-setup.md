@@ -71,16 +71,19 @@ In Playwright test fixtures, call `componentsReady()` after `goto` and before ax
 | Themes | Light and dark if supported |
 | Exclude | `iframe` (third-party embeds) |
 
-Storefront documentation site CI also disables `landmark-unique` — only apply that exclusion if you understand why (duplicate landmark labels in docs layout).
+## Before each scan
+
+- Always scroll to the bottom of each page to ensure lazy-loaded content is present.
+- Add  timeouts or wait for `networkidle` to ensure all content is loaded before running axe.
 
 ## Viewport and theme matrix
 
 For each URL, scan:
 
 1. Mobile + light
-2. Mobile + dark (if supported)
+2. Mobile + dark 
 3. Desktop + light
-4. Desktop + dark (if supported)
+4. Desktop + dark 
 
 Toggle dark mode via app UI or:
 

@@ -6,7 +6,7 @@ axe rules: `label`, `label-title-only`, `form-field-multiple-labels`, `aria-inpu
 
 ## PDS rules
 
-1. Use `p-text-field`, `p-select`, `p-checkbox`, etc. with `label` prop
+1. Use `p-text-field`, `p-select`, `p-checkbox`, etc. with `label` prop or slot
 2. Never rely on placeholder as the only label
 3. Associate errors with `message` prop or `aria-describedby`
 4. Group related fields with `p-fieldset`
@@ -16,13 +16,13 @@ axe rules: `label`, `label-title-only`, `form-field-multiple-labels`, `aria-inpu
 ### Labelled field
 
 ```jsx
-<p-text-field label="VIN" name="vin" required />
+<PTextfield label="VIN" name="vin" required />
 ```
 
 ### Error state
 
 ```jsx
-<p-text-field
+<PTextfield
   label="Email"
   state="error"
   message="Enter a valid email address"

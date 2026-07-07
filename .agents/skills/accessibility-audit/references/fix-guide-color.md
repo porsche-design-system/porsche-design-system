@@ -24,7 +24,7 @@ axe may report `color-contrast` incomplete or false positives on:
 ### Token-based text
 
 ```jsx
-<p-text color="primary">...</p-text>
+<PText color="primary">...</PText>
 ```
 
 ### Forced colors

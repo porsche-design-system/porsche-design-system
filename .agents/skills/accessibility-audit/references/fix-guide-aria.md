@@ -7,7 +7,7 @@ axe rules: `aria-*`, `button-name`, `link-name`, `aria-allowed-attr`, `aria-vali
 ## PDS rules
 
 1. Pass ARIA via the component `aria` prop object — never `aria-*` on the host element
-2. Icon-only controls need `aria-label` or visible text (with `hide-label` if needed)
+2. Icon-only controls need `aria-label`, `aria` prop or visible text (with `hide-label` if needed)
 3. Do not add ARIA that conflicts with native semantics
 4. Check component **Accessibility** tab on the PDS storefront (e.g. [Button accessibility](https://designsystem.porsche.com/v4/components/button/accessibility/))
 
@@ -16,20 +16,19 @@ axe rules: `aria-*`, `button-name`, `link-name`, `aria-allowed-attr`, `aria-vali
 ### Named button
 
 ```jsx
-<p-button aria={{ 'aria-label': 'Close dialog' }} icon="close" />
+<PButton aria={{ 'aria-label': 'Close dialog' }} icon="close" />
 ```
 
 ### Expanded state
 
 ```jsx
-<p-accordion heading="Section" aria={{ 'aria-expanded': isOpen }}>
+<PButton aria={{ 'aria-expanded': isOpen }}>Open</PButton>
 ```
 
-### Described by
+### Description
 
 ```jsx
-<p-text-field label="Email" aria={{ 'aria-describedby': 'email-hint' }} />
-<p-text id="email-hint">We never share your email.</p-text>
+<pTextfield label="Email" aria={{ 'aria-description': 'Long description' }} />
 ```
 
 ## Verify

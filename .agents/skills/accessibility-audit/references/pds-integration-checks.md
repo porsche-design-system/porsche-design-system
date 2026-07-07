@@ -25,17 +25,17 @@ rg '<(p-[a-z-]+)[^>]*\saria-[a-z]' --glob '*.{tsx,jsx,vue}' -n
 ❌ Anti-pattern:
 
 ```jsx
-<p-button aria-haspopup="dialog" aria-label="Open details">
+<PButton aria-haspopup="dialog" aria-label="Open details about the product">
   Open details
-</p-button>
+</PButton>
 ```
 
 ✅ Recommended:
 
 ```jsx
-<p-button aria={{ 'aria-haspopup': 'dialog', 'aria-label': 'Open details' }}>
+<PButton aria={{ 'aria-haspopup': 'dialog', 'aria-label': 'Open details about the product' }}>
   Open details
-</p-button>
+</PButton>
 ```
 
 ### Verify
@@ -69,25 +69,25 @@ Review each match for visible text, `hide-label` + text content, or `aria={{ 'ar
 ❌ Anti-pattern:
 
 ```jsx
-<p-link icon="arrow-right" href="https://example.com" />
+<PLink icon="arrow-right" href="https://example.com" />
 ```
 
 ✅ Recommended:
 
 ```jsx
-<p-link icon="arrow-right" hide-label href="https://example.com">
+<PLink icon="arrow-right" hide-label href="https://example.com">
   View details
-</p-link>
+</PLink>
 
 // or contextual SR label
-<p-link
+<PLink
   icon="arrow-right"
   hide-label
   aria={{ 'aria-label': 'View Porsche 911 details' }}
   href="https://example.com"
 >
   View details
-</p-link>
+</PLink>
 ```
 
 ### Verify
@@ -151,15 +151,15 @@ rg '<p-carousel(?![^>]*skip-link-target)' --glob '*.{tsx,jsx,vue,html}' -n
 ❌ Anti-pattern:
 
 ```jsx
-<p-carousel>{/* many slides */}</p-carousel>
-<p-heading tag="h2">Next section</p-heading>
+<PCarousel>{/* many slides */}</PCarousel>
+<PHeading tag="h2">Next section</PHeading>
 ```
 
 ✅ Recommended:
 
 ```jsx
-<p-carousel skip-link-target="#next-section">{/* many slides */}</p-carousel>
-<p-heading tag="h2" id="next-section">Next section</p-heading>
+<PCarousel skip-link-target="#next-section">{/* many slides */}</PCarousel>
+<PHeading tag="h2" id="next-section">Next section</PHeading>
 ```
 
 Skip target must point to the next meaningful element after the carousel.

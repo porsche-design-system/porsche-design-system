@@ -54,15 +54,15 @@ Use this matrix to proof audit completeness. Each criterion maps to a skill step
 | 4.1.2 | Name, Role, Value | Auto | 2a, 1 | axe + PDS `aria` prop |
 | 4.1.3 | Status Messages | Partial | 2a, 7 | axe `aria-live` + SR |
 
-## PDS integration rules (PR #4543)
+## PDS integration rules
 
 | Anti-pattern | Automation | Skill step |
 | ------------ | ---------- | ---------- |
 | `aria-*` on PDS host | Auto | 1, 2a | 
 | Icon-only without name | Auto | 1, 2a |
 | Missing focus indicators | Auto | 2b |
-| Carousel without skip link | Auto | 1, 2c |
 | Wrong headings/landmarks | Auto | 2c |
+| Links/Buttons without accessible name | Auto | 2c |
 
 ## Manual-only (do not claim automation)
 
@@ -71,7 +71,6 @@ Use this matrix to proof audit completeness. Each criterion maps to a skill step
 - Video/audio captions, transcripts, audio description
 - Complex live region behavior under real assistive technology
 - Legal accessibility statement accuracy
-- Full EN 301 549 non-web criteria
 
 ## PDS CI parity
 
@@ -79,4 +78,3 @@ Align axe configuration with PDS automated testing (see [AI Accessibility Audit]
 
 - Tags: `wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`, `wcag22aa`, `best-practice`
 - Exclude: `iframe`
-- Disabled: `landmark-unique` (storefront only — do not disable globally in product apps without reason)

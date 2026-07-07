@@ -35,6 +35,13 @@ axe rules: `page-has-heading-one`, `heading-order`, `landmark-one-main`, `region
 | `footer` | Site or section footer |
 | `aside` | Complementary content |
 
+## Page sections
+
+| Section | When |
+| -------- | ---- |
+| `section` | Content section; add `aria-label` if multiple sections are present |
+| `article` | Self-contained content block; add `aria-label` if multiple articles are present |
+
 ## PDS carousel skip
 
 Large `p-carousel` blocks need `skip-link-target` — see `pds-integration-checks.md`.
