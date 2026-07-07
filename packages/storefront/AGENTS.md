@@ -169,6 +169,9 @@ Follow the internal accessibility guidance page:
 
 > [`src/app/must-know/accessibility/introduction/page.mdx`](src/app/must-know/accessibility/introduction/page.mdx)
 
+For **AI-assisted audits** of this package, see root `AGENTS.md` (AI agent configuration) and
+`.github/instructions/a11y-audit.instructions.md`. Dev server: `npm run start:storefront` → `http://localhost:3000`.
+
 It documents expected testing stages:
 
 - AXE-Core automated checks

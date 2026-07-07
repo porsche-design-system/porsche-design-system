@@ -2,28 +2,31 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 import { PLink } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
-  title: 'Accessibility: AI Agent Setup - Porsche Design System',
+  title: 'Accessibility: AI Agent Context - Porsche Design System',
   description:
-    'Learn how to configure AI coding assistants like GitHub Copilot and Cursor to generate accessible code that follows WCAG 2.2 AA standards.',
+    'Learn how to configure AI coding assistants like GitHub Copilot, Cursor, and Claude Code to generate accessible code that follows WCAG 2.2 AA standards.',
 };
 
-# AI Agent Accessibility Setup
+# AI Agent Context
 
 <TableOfContents
   headings={[
     'AGENTS.md overview',
     'GitHub Copilot Instructions',
     'Cursor Rules',
+    'Claude Code',
+    'MCP server setup',
     'Accessibility specific instructions',
     'Download instruction files',
     'Installation steps',
+    'Next step: run an accessibility audit',
   ]}
 />
 
-AI coding assistants like **GitHub Copilot** and **Cursor** can significantly accelerate development, but without proper
-guidance they often generate code that lacks **semantic HTML**, **keyboard accessibility**, **focus management**, and
-proper **ARIA patterns**. By providing accessibility context to your AI agent, you ensure generated code follows **WCAG
-2.2 AA** standards from the start.
+AI coding assistants like **GitHub Copilot**, **Cursor**, and **Claude Code** can significantly accelerate development,
+but without proper guidance they often generate code that lacks **semantic HTML**, **keyboard accessibility**, **focus
+management**, and proper **ARIA patterns**. By providing accessibility context to your AI agent, you ensure generated
+code follows **WCAG 2.2 AA** standards from the start.
 
 ## AGENTS.md overview
 
@@ -106,12 +109,54 @@ globs: ['**/*.{html,css,scss,js,ts,tsx,jsx,vue}']
 ---
 ```
 
+## Claude Code
+
+[Claude Code](https://code.claude.com/docs) reads project context from `CLAUDE.md` at the repository root. We recommend:
+
+1. Use `AGENTS.md` as the canonical source and keep `CLAUDE.md` in sync.
+2. Add accessibility rules to `CLAUDE.md` (or reference the downloaded templates below).
+3. Install Playwright MCP in your agent for browser-based audits — see [MCP server setup](#mcp-server-setup).
+
+```diff
+.
+├── AGENTS.md          # Canonical agent context (tool-agnostic)
+└── CLAUDE.md          # Claude Code project instructions
+```
+
+## MCP server setup
+
+MCP configuration is **individual per developer** — it is not committed to the repository. Install **Playwright MCP** in
+your AI coding agent to run accessibility audits on `localhost`.
+
+| Platform                     | Where to configure                                                                                                                                     |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Cursor**                   | Settings → Features → MCP, or MCP marketplace                                                                                                          |
+| **GitHub Copilot** (VS Code) | Copilot MCP settings — see [Copilot MCP docs](https://docs.github.com/en/copilot/concepts/context/model-context-protocol/about-model-context-protocol) |
+| **Claude Code**              | `claude mcp add` or agent settings — see [Claude Code MCP docs](https://code.claude.com/docs/en/mcp)                                                   |
+
+Example Playwright MCP definition (add in your agent's MCP settings):
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    }
+  }
+}
+```
+
+See the [**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/) guide for the full audit
+workflow.
+
 ## Accessibility specific instructions
 
 ### Accessibility rules template
 
-Below is a comprehensive accessibility rules template you can use with either GitHub Copilot or Cursor. This template
-includes the Porsche Design System's internal accessibility guidelines and ensures compliance with **WCAG 2.2 AA**.
+Below is a comprehensive accessibility rules template you can use with GitHub Copilot, Cursor, or Claude Code. This
+template includes the Porsche Design System's internal accessibility guidelines and ensures compliance with **WCAG 2.2
+AA**.
 
 As always, providing context to AI agents is not a one-time setup. Custom instruction files are **living documents**.
 Continuously refine and expand your instruction files based on the specific accessibility challenges you encounter in
@@ -175,21 +220,35 @@ Download ready-to-use instruction files for your project:
 
 1. Create `AGENTS.md` in the repository root
 2. Add package-specific `AGENTS.md` files where needed (e.g., `packages/package1/AGENTS.md`)
-3. Keep `AGENTS.md` in sync with Copilot/Cursor instruction files
+3. Keep `AGENTS.md` in sync with Copilot, Cursor, and Claude Code instruction files
 
 **For GitHub Copilot:**
 
 1. Download `accessibility.instructions.md`
 2. Create `.github/instructions/` directory in your repository root
 3. Place the file in `.github/instructions/accessibility.instructions.md`
-4. Commit and push to your repository
+4. Install Playwright MCP in your VS Code / Copilot MCP settings if you run audits
+5. Commit and push to your repository
 
 **For Cursor Rules:**
 
 1. Download `accessibility.mdc`
 2. Create `.cursor/rules/` directory in your project root
 3. Place the file in `.cursor/rules/accessibility.mdc`
-4. Restart Cursor or reload the workspace
+4. Install Playwright MCP in Cursor Settings → MCP if you run audits
+5. Restart Cursor or reload the workspace
+
+**For Claude Code:**
+
+1. Download `accessibility.instructions.md` and merge the rules into `CLAUDE.md`, or reference `AGENTS.md`
+2. Install Playwright MCP via `claude mcp add` or your agent MCP settings if you run audits
+3. Approve MCP servers on first use (`/mcp` in Claude Code)
 
 Once configured, your AI agent will automatically apply these accessibility rules when generating or modifying frontend
 code.
+
+## Next step: run an accessibility audit
+
+With agent context in place, conduct an iterative **WCAG 2.2 AA audit** on your running application using browser
+automation and axe-core. See the [**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/) guide
+for the audit Skill, MCP setup, example prompts, and report template.

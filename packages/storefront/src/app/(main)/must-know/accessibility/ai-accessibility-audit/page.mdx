@@ -1,0 +1,260 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PLink } from '@porsche-design-system/components-react/ssr';
+
+export const metadata = {
+  title: 'Accessibility: AI Accessibility Audit - Porsche Design System',
+  description:
+    'Learn how to conduct iterative WCAG 2.2 AA accessibility audits on your product using AI coding agents, browser automation, and axe-core.',
+};
+
+# AI Accessibility Audit
+
+<TableOfContents
+  headings={[
+    'Overview',
+    'Prerequisites',
+    'Choose your tools',
+    'Iterative audit workflow',
+    'Audit criteria matrix',
+    'Example prompts',
+    'PDS-specific audit notes',
+    'Report and handoff',
+    'Limitations',
+    'Future: cloud automation',
+  ]}
+/>
+
+AI coding agents can accelerate accessibility audits by running **automated WCAG scans**, proposing fixes, and
+**re-scanning** until violations are resolved. This guide shows product teams how to conduct iterative accessibility
+audits in their local development environment using **Cursor**, **GitHub Copilot**, **Claude Code** (optional),
+**Playwright MCP**, and **axe-core**.
+
+<Notification heading="Prerequisite" headingTag="h3" state="warning">
+  Configure your AI agent for accessible code generation first. Complete the [AI Agent
+  Context](/must-know/accessibility/ai-agent-context/) guide before running an audit.
+</Notification>
+
+## Overview
+
+PDS components are tested to **WCAG 2.2 AA** on component level (see the
+[Accessibility introduction](/must-know/accessibility/introduction/)). Your **application integration** — page
+structure, custom content, routing, and business logic — still needs its own audit.
+
+Use AI-assisted audits when you want to:
+
+- Scan pages or flows in your running app for WCAG violations
+- Iterate quickly: scan → fix → re-scan
+- Produce a structured report for QA or Jira
+
+Agent-assisted audits **complement** manual testing. They do not replace keyboard-only sessions, screen reader checks,
+or High Contrast Mode verification.
+
+### Two-layer model
+
+| Layer                        | What                                                                  | Who runs it                            |
+| ---------------------------- | --------------------------------------------------------------------- | -------------------------------------- |
+| **Automated (agent-driven)** | WCAG rule violations, semantics, contrast, names, landmarks, language | axe-core via MCP or browser automation |
+| **Manual (human-driven)**    | Keyboard journeys, screen reader, HCM, content review                 | Developer and QA                       |
+
+**Primary standard:** [WCAG 2.2 Level AA](https://w3.org/WAI/standards-guidelines/wcag).
+
+**EN 301 549:** European procurement standard that references WCAG for web content. This guide covers web UI criteria
+only; full EN 301 549 includes hardware, documents, and other non-web requirements.
+
+For Porsche-specific compliance guidance, see the{' '}
+[Accessibility of digital products at Porsche](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction).
+
+## Prerequisites
+
+### Environment
+
+- [ ] Node/npm project with PDS integrated
+- [ ] Application runs locally (known `localhost` URL)
+- [ ] AI coding agent with agent/chat mode (Cursor, GitHub Copilot in VS Code, or Claude Code)
+
+### Agent context
+
+Complete the [AI Agent Context](/must-know/accessibility/ai-agent-context/):
+
+- [ ] Root `AGENTS.md` with accessibility section
+- [ ] Platform-specific instructions (see [AI Agent Context](/must-know/accessibility/ai-agent-context/)):
+  - **GitHub Copilot:** `.github/instructions/accessibility.instructions.md`
+  - **Cursor:** `.cursor/rules/accessibility.mdc`
+  - **Claude Code:** `CLAUDE.md` (keep in sync with `AGENTS.md`)
+- [ ] Package-level `AGENTS.md` in monorepos
+
+### Audit tooling
+
+- [ ] Agent mode / chat enabled in your IDE or CLI
+- [ ] Playwright MCP installed in your agent (user-specific — via IDE settings or MCP marketplace)
+- [ ] Playwright browsers installed if using Playwright MCP: `npx playwright install chromium`
+
+### MCP configuration
+
+MCP servers are **not part of this repository** — each developer configures them individually in their AI coding agent
+(Cursor Settings → MCP, VS Code Copilot MCP, Claude Code `/mcp`, etc.).
+
+We recommend **Playwright MCP** (`@playwright/mcp`) for iterative axe-core scans on `localhost`. You can install it from
+your agent's MCP marketplace or add it manually. Example configuration:
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    }
+  }
+}
+```
+
+See [Cursor MCP documentation](https://cursor.com/docs/context/mcp),
+[GitHub Copilot MCP documentation](https://docs.github.com/en/copilot/concepts/context/model-context-protocol/about-model-context-protocol),
+and [Claude Code MCP documentation](https://code.claude.com/docs/en/mcp) for where to add this in your environment.
+
+### Install the audit workflow
+
+Download and install the audit workflow for your platform:
+
+<div className="flex gap-static-sm mt-fluid-sm mb-fluid-lg flex-wrap">
+  {/* prettier-ignore */}
+  <PLink variant="secondary" href="/assets/downloads/a11y-audit/SKILL.md" download="SKILL.md" icon="download">Cursor (SKILL.md)</PLink>
+  {/* prettier-ignore */}
+  <PLink variant="secondary" href="/assets/downloads/a11y-audit.instructions.md" download="a11y-audit.instructions.md" icon="download">Copilot (a11y-audit.instructions.md)</PLink>
+  {/* prettier-ignore */}
+  <PLink variant="secondary" href="/assets/downloads/a11y-audit.claude.md" download="a11y-audit.claude.md" icon="download">Claude Code (a11y-audit.claude.md)</PLink>
+  {/* prettier-ignore */}
+  <PLink variant="secondary" href="/assets/downloads/a11y-audit-report-template.md" download="a11y-audit-report-template.md" icon="download">Report template</PLink>
+</div>
+
+| Platform           | Installation                                                                                 |
+| ------------------ | -------------------------------------------------------------------------------------------- |
+| **Cursor**         | Copy `SKILL.md` to `.cursor/skills/a11y-audit/SKILL.md` (project or user skills directory)   |
+| **GitHub Copilot** | Place `a11y-audit.instructions.md` in `.github/instructions/`                                |
+| **Claude Code**    | Merge `a11y-audit.claude.md` into `CLAUDE.md`, or keep as a referenced file in the repo root |
+
+## Choose your tools
+
+| Tier                | Tool                                        | Best for                                          | Prerequisites           | Trade-offs                      |
+| ------------------- | ------------------------------------------- | ------------------------------------------------- | ----------------------- | ------------------------------- |
+| **1 – Low setup**   | Built-in browser (Cursor) or IDE automation | Quick review, keyboard navigation, DOM inspection | Agent mode enabled      | Less deterministic than axe     |
+| **2 – Recommended** | Playwright MCP + axe-core                   | Iterative scan → fix → re-scan on `localhost`     | Dev server, MCP enabled | Agent needs structured workflow |
+| **Supplementary**   | Chrome DevTools MCP `lighthouse_audit`      | Performance + accessibility score                 | MCP enabled             | Coarse-grained; use with axe    |
+| **PDS monorepo**    | `npm run test:a11y:components-js`           | PDS component regression                          | Full build              | Not for external product repos  |
+
+**Recommendation:** Tier 1 + Tier 2, orchestrated by the platform-specific audit workflow files above.
+
+## Iterative audit workflow
+
+1. **Prerequisites** — Agent context configured; app running locally
+2. **Define scope** — URL list, viewports (mobile ~320px, desktop ~768px), light/dark themes, exclusions
+3. **Automated scan** — axe-core per URL × viewport × theme; tags: `wcag2a`, `wcag2aa`, `wcag21aa`, `wcag22aa`
+4. **Triage** — Group by severity; separate app fixes from PDS upstream or third-party issues
+5. **Fix loop** — Agent proposes fixes; you review; re-scan until clean or documented
+6. **Manual pass** — Keyboard-only, focus visibility, HCM, 200% zoom, screen reader spot-check
+7. **Report** — Fill the report template; paste Jira summary if needed
+
+## Audit criteria matrix
+
+| Area                      | Examples                                | Primary tool             | Manual follow-up           |
+| ------------------------- | --------------------------------------- | ------------------------ | -------------------------- |
+| **Contrast and color**    | Text/icon contrast, non-color cues      | axe                      | HCM visual check           |
+| **Semantics and ARIA**    | Roles, labels, landmarks, heading order | axe + accessibility tree | Screen reader              |
+| **Keyboard**              | Tab order, traps, focus return          | Browser / Playwright     | Full keyboard-only session |
+| **Focus visibility**      | `:focus-visible`, custom widgets        | Code review + visual     | Tab through UI             |
+| **Names and alt text**    | Buttons, icons, images, labels          | axe                      | Content review             |
+| **Language**              | `lang`, i18n                            | axe / DOM                | Native speaker review      |
+| **Forms and errors**      | `aria-invalid`, error association       | axe + code review        | SR announcement            |
+| **Responsiveness / zoom** | 200% text zoom, reflow                  | Browser resize           | Manual                     |
+| **Motion**                | `prefers-reduced-motion`                | Code review              | Manual                     |
+| **PDS-specific**          | `aria` prop, no host ARIA hacks         | Component docs           | —                          |
+
+## Example prompts
+
+Copy these into your AI agent — Cursor Agent, GitHub Copilot Chat, or Claude Code (adjust URLs and scope):
+
+### Full-page audit
+
+```text
+Conduct a WCAG 2.2 AA accessibility audit on my app at http://localhost:3000.
+
+Scope:
+- URLs: /, /checkout, /account
+- Viewports: 320px and 768px
+- Themes: light and dark
+
+Use the a11y-audit skill workflow. Run axe-core scans, triage violations, propose fixes, and re-scan until clean.
+Finish with the audit report template and manual checklist status.
+```
+
+### Single flow deep dive
+
+```text
+Audit the checkout flow at http://localhost:3000/checkout for accessibility.
+
+Check: axe violations, keyboard Tab order through the form, focus visibility on errors,
+and PDS component usage. Propose fixes only in files under src/features/checkout/.
+```
+
+### Re-scan after fixes
+
+```text
+Re-run axe-core on http://localhost:3000/checkout at 320px and 768px (light theme only).
+Compare to the previous audit. List only new or remaining violations.
+```
+
+### PDS component issue
+
+```text
+This violation appears to come from p-modal, not our app code: [paste violation].
+
+Document it for an upstream PDS bug report using the format from /help/bug-report.
+Suggest a temporary workaround if one exists.
+```
+
+## PDS-specific audit notes
+
+When fixing violations in a PDS-based app:
+
+- **Prefer PDS components** (`p-button`, `p-link`, `p-modal`, etc.) over custom widgets
+- **Extra ARIA** — use the component `aria` prop per PDS documentation; never put `aria-*` on the component host
+- **Focus styling** — preserve PDS focus rings; use `:focus-visible` for custom elements
+- **High Contrast Mode** — ensure UI works with `@media (forced-colors: active)`
+- **Component guidance** — check each component's **Accessibility** tab in the PDS storefront
+
+If a built-in PDS component fails axe without a workaround, [report a bug](/help/bug-report/) upstream.
+
+## Report and handoff
+
+Use the downloadable report template to document:
+
+- Audit metadata and scope
+- Pass/fail per URL
+- Violations table with WCAG criterion and fix status
+- Manual test results
+- Jira-ready summary block
+
+Share the report with QA and track open items in your issue tracker.
+
+## Limitations
+
+Agent-assisted audits **cannot**:
+
+- Certify full screen reader compatibility
+- Replace legal accessibility statement work (see [W3C guidance](https://w3.org/WAI/planning/statements) or your
+  [site accessibility statement](/accessibility-statement/))
+- Audit pages that require authentication without you providing access
+- Guarantee zero false positives — triage and document exclusions
+
+Always complete the **manual checklist** in the audit workflow file for your platform before sign-off.
+
+## Future: cloud automation
+
+Planned extensions (not yet available):
+
+- **GitHub workflow** — PR-triggered axe scan against preview deployments; report artifacts
+- **Cursor Cloud Agent** — run the audit Skill in a cloud workspace with browser MCP
+- **Structured violation JSON** — machine-readable output for agent triage in CI
+
+For now, use the local iterative workflow above.

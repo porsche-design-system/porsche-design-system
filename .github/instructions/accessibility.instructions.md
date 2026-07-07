@@ -6,6 +6,7 @@ applyTo: "**/*.{html,css,scss,js,ts,tsx,jsx,vue,mdx,md}"
 
 > **Note**: See also [`AGENTS.md`](../../AGENTS.md) at the repository root for general project guidance.
 > Package-specific AGENTS.md files contain additional accessibility context.
+> Cursor equivalent: [`.cursor/rules/accessibility.mdc`](../../.cursor/rules/accessibility.mdc) — keep both in sync.
 
 These instructions apply to **all frontend code** generated for this repository (Stencil components, wrappers, storefront, docs examples).
 

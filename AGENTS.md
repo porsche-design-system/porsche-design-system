@@ -189,9 +189,24 @@ Each major package has its own `AGENTS.md` with detailed guidance:
 When multiple guidance files exist, prefer them in this order:
 
 1. The nearest package- or folder-level `AGENTS.md`
-2. Applicable Cursor rules from `.cursor/rules/`
+2. Applicable Cursor rules from `.cursor/rules/` (including `accessibility.mdc`)
 3. Root-level `AGENTS.md`
 4. `.github/instructions/*.instructions.md` for GitHub/Copilot-oriented guidance
+
+## AI agent configuration (dogfooding)
+
+This repository ships agent context for accessibility audits:
+
+| Tool | Configuration |
+| ---- | ------------- |
+| **Cursor** | `.cursor/rules/accessibility.mdc`, `.cursor/skills/a11y-audit/SKILL.md` |
+| **GitHub Copilot** | `.github/instructions/accessibility.instructions.md`, `.github/instructions/a11y-audit.instructions.md` |
+| **Claude Code** | `CLAUDE.md` |
+
+Playwright MCP is configured **individually** in each developer's agent settings (not in this repo).
+
+Storefront audit: `npm run start:storefront` → `http://localhost:3000`, then follow `.cursor/skills/a11y-audit/SKILL.md`.
+Validate with `npm run test:a11y:storefront` after fixes.
 
 ## Quick Reference
 
