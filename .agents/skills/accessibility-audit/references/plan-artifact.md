@@ -72,7 +72,7 @@ Write this file after triage (step 4) to make audits **resumable** across agent 
 2. Before each fix → set `in_progress`
 3. After re-scan confirms → set `fixed` with `updatedAt`
 4. On resume → read plan; continue with `open` / `in_progress` items
-5. On report (step 8) → import plan into report template
+5. On report (step 8) → fill `references/report-template.md`, save as `accessibility-audit-report-{date}.md` at repo root
 
 ## Severity mapping (axe impact)
 

@@ -25,4 +25,4 @@ Automated scans cannot replace human testing. Complete before sign-off.
 
 ## Record results
 
-Update `.accessibility-audit-plan.json` → `manualChecklist` and the audit report template manual section.
+Update `.accessibility-audit-plan.json` → `manualChecklist` and the report (`references/report-template.md` → `accessibility-audit-report-{date}.md` at repo root).

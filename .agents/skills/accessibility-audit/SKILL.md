@@ -36,6 +36,7 @@ Read these when executing specific steps:
 | [references/structure-audit.md](references/structure-audit.md) | Landmarks, headings, skip links |
 | [references/plan-artifact.md](references/plan-artifact.md) | `.accessibility-audit-plan.json` schema |
 | [references/manual-checklist.md](references/manual-checklist.md) | Human-only verification |
+| [references/report-template.md](references/report-template.md) | Final audit report structure |
 | [references/fix-guide-*.md](references/) | Categorized fix patterns |
 
 ## Prerequisites (verify before scanning)
@@ -209,7 +210,7 @@ Complete [references/manual-checklist.md](references/manual-checklist.md). Updat
 
 ### 8. Report
 
-Output using the audit report template:
+Fill in [references/report-template.md](references/report-template.md):
 
 - Metadata, scope, exclusions
 - Pass/fail per URL and scan type (axe, focus, structure)
@@ -218,7 +219,7 @@ Output using the audit report template:
 - Manual test results
 - Jira-ready summary
 
-Save as `accessibility-audit-report-{date}.md` unless the user specifies another path.
+Save the completed report as `accessibility-audit-report-{date}.md` in the **repository root** (next to `.accessibility-audit-plan.json`) unless the user specifies another path.
 
 ## PDS-specific rules during fixes
 
@@ -251,9 +252,9 @@ After each audit cycle:
 
 - Agent context: `.cursor/rules/accessibility.mdc`, `.github/instructions/accessibility.instructions.md`, `CLAUDE.md`
 - Audit skill: `.agents/skills/accessibility-audit/`
+- Report template: `.agents/skills/accessibility-audit/references/report-template.md` → output `accessibility-audit-report-{date}.md` at repo root
 - **Storefront audit URL:** `http://localhost:3000` after `npm run start:storefront`
 - **CI validation:** `npm run build:storefront && npm run test:a11y:storefront`
-- **Report template:** `packages/storefront/public/assets/downloads/accessibility-audit-report-template.md`
 - **Storefront docs:** [AI Accessibility Audit](https://designsystem.porsche.com/v4/must-know/accessibility/ai-accessibility-audit/)
 
 Use the same Playwright MCP workflow as product teams. CI axe tests complement but do not replace agent-driven focus and structure checks.

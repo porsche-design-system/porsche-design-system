@@ -10,15 +10,7 @@ export const metadata = {
 
 # AI Accessibility Audit
 
-<TableOfContents
-  headings={[
-    'Quick start',
-    'Setup',
-    'Run the audit',
-    'Example prompts',
-    'Report and limitations',
-  ]}
-/>
+<TableOfContents headings={['Quick start', 'Setup', 'Run the audit', 'Example prompts', 'Report and limitations']} />
 
 Run iterative **WCAG 2.2 AA** audits on your locally running app with an AI agent, **Playwright MCP**, and **axe-core**.
 PDS components are tested at component level — your **application integration** (pages, routing, custom content) still
@@ -31,25 +23,35 @@ needs its own audit. Agent scans complement manual keyboard, screen reader, and 
 
 ## Quick start
 
-1. **Install the audit skill** — download the bundle below → move `accessibility-audit/` to `.agents/skills/accessibility-audit/`
+1. **Install the audit skill** — download the bundle → move `accessibility-audit/` to `.agents/skills/accessibility-audit/` (includes report template at `references/report-template.md`)
 2. **Configure Playwright MCP** in your agent (see [Setup](#setup))
 3. **Start your dev server** — note the `localhost` URL
 4. **Run** `/accessibility-audit` or paste an [example prompt](#example-prompts)
-5. **Finish** with the [report template](#report-and-limitations) and manual checklist in the skill
+5. **Finish** — agent fills `references/report-template.md` and saves **`accessibility-audit-report-{date}.md`** in your repo root
 
-<PLink variant="primary" href="/assets/downloads/accessibility-audit.zip" download="accessibility-audit.zip" icon="download" className="my-fluid-sm">Download skill bundle (ZIP)</PLink>
+  <PLink
+    variant="primary"
+    href="/assets/downloads/accessibility-audit.zip"
+    download="accessibility-audit.zip"
+    icon="download"
+    className="my-fluid-sm"
+  >Download skill bundle (ZIP)</PLink>
 
-Works with **Cursor**, **GitHub Copilot**, and **Claude Code** — same [Agent Skills](https://agentskills.io/) path for all.
+Works with **Cursor**, **GitHub Copilot**, and **Claude Code** — same [Agent Skills](https://agentskills.io/) path for
+all.
 
 ## Setup
 
-| Requirement | Action |
-| ----------- | ------ |
-| **Audit skill** | Extract ZIP → `.agents/skills/accessibility-audit/` (includes `SKILL.md` + `references/`) |
-| **Coding rules** | [AI Agent Context](/must-know/accessibility/ai-agent-context/) — `AGENTS.md` + platform rules |
-| **Playwright MCP** | Add in your agent settings (per developer, not in repo) |
-| **Browsers** | `npx playwright install chromium` |
-| **Local axe** | `axe-core` in `node_modules` — never CDN (CSP blocks it) |
+| Requirement        | Action                                                                                        |
+| ------------------ | --------------------------------------------------------------------------------------------- |
+| **Audit skill**    | Extract ZIP → `.agents/skills/accessibility-audit/` (`SKILL.md`, `references/`, report template) |
+| **Report template** | Stays in skill: `.agents/skills/accessibility-audit/references/report-template.md` — do not move |
+| **Report output**  | Agent writes `accessibility-audit-report-{date}.md` at **repository root**                    |
+| **Plan artifact**  | Agent writes `.accessibility-audit-plan.json` at **repository root** (resumable audit state)   |
+| **Coding rules**   | [AI Agent Context](/must-know/accessibility/ai-agent-context/) — `AGENTS.md` + platform rules |
+| **Playwright MCP** | Add in your agent settings (per developer, not in repo)                                       |
+| **Browsers**       | `npx playwright install chromium`                                                             |
+| **Local axe**      | `axe-core` in `node_modules` — never CDN (CSP blocks it)                                      |
 
 Example Playwright MCP config:
 
@@ -64,7 +66,9 @@ Example Playwright MCP config:
 }
 ```
 
-MCP setup: [Cursor](https://cursor.com/docs/context/mcp) · [Copilot](https://docs.github.com/en/copilot/concepts/context/model-context-protocol/about-model-context-protocol) · [Claude Code](https://code.claude.com/docs/en/mcp)
+MCP setup: [Cursor](https://cursor.com/docs/context/mcp) ·
+[Copilot](https://docs.github.com/en/copilot/concepts/context/model-context-protocol/about-model-context-protocol) ·
+[Claude Code](https://code.claude.com/docs/en/mcp)
 
 **Verify:** ask your agent to run a WCAG 2.2 AA audit on `http://localhost:3000/` using the accessibility audit skill.
 
@@ -72,14 +76,14 @@ MCP setup: [Cursor](https://cursor.com/docs/context/mcp) · [Copilot](https://do
 
 Invoke `/accessibility-audit` or use a prompt. The skill guides the agent through:
 
-| Step | What |
-| ---- | ---- |
-| 0 | **Scope** — URLs, viewports (~320px / ~768px), themes, exclusions |
-| 1 | **Static PDS scan** — aria-on-host, icon-only controls, missing focus styles |
+| Step | What                                                                               |
+| ---- | ---------------------------------------------------------------------------------- |
+| 0    | **Scope** — URLs, viewports (~320px / ~768px), themes, exclusions                  |
+| 1    | **Static PDS scan** — aria-on-host, icon-only controls, missing focus styles       |
 | 2a–d | **Automated checks** — axe-core, focus visibility, page structure, keyboard/modals |
-| 3–4 | **Triage + plan** — severity grouping; `.accessibility-audit-plan.json` |
-| 5–6 | **Fix loop** — propose fixes, re-scan until clean |
-| 7–8 | **Manual pass + report** — checklist in `references/manual-checklist.md` |
+| 3–4  | **Triage + plan** — severity grouping; `.accessibility-audit-plan.json`            |
+| 5–6  | **Fix loop** — propose fixes, re-scan until clean                                  |
+| 7–8  | **Manual pass + report** — `references/manual-checklist.md` → filled `accessibility-audit-report-{date}.md` at repo root |
 
 Detailed scripts, fix guides, and WCAG coverage matrix live in the skill's `references/` folder.
 
@@ -91,7 +95,7 @@ Detailed scripts, fix guides, and WCAG coverage matrix live in the skill's `refe
 Conduct a WCAG 2.2 AA accessibility audit on http://localhost:3000/.
 
 Scope: URLs /, /checkout; viewports 320px and 768px; light and dark themes.
-Use the accessibility audit skill. Run axe, triage, fix, re-scan. Finish with the report template.
+Use the accessibility audit skill. Run axe, triage, fix, re-scan. Save the report as accessibility-audit-report-{date}.md in the repo root.
 ```
 
 ### Re-scan after fixes
@@ -103,11 +107,18 @@ Compare to the previous audit. List only remaining violations.
 
 ## Report and limitations
 
-Document results with the **report template**. Include scope, violations, fix status,
-manual test results, and a Jira-ready summary.
+The **report template** is part of the skill (`references/report-template.md`). The agent reads it during step 8 and
+writes a completed report to **`accessibility-audit-report-{date}.md`** in your repository root. Keep
+`.accessibility-audit-plan.json` there too for resumable audits.
+
+You can also [download the template only](/assets/downloads/accessibility-audit-report-template.md) for reference — use
+the copy inside the installed skill so the agent can find it.
+
+Include scope, violations, fix status, manual test results, and the Jira-ready summary block.
 
 **Agent audits cannot:** certify screen reader compatibility, replace legal accessibility statements, or catch
-everything axe misses (focus visibility, structure — covered by skill steps 2b–2c). Always complete the manual
-checklist before sign-off.
+everything axe misses (focus visibility, structure — covered by skill steps 2b–2c). Always complete the manual checklist
+before sign-off.
 
-**Standard:** [WCAG 2.2 Level AA](https://w3.org/WAI/standards-guidelines/wcag). Porsche guidance: [Accessibility of digital products at Porsche](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction).
+**Standard:** [WCAG 2.2 Level AA](https://w3.org/WAI/standards-guidelines/wcag). Porsche guidance:
+[Accessibility of digital products at Porsche](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction).
