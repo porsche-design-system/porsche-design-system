@@ -7,17 +7,18 @@
 | **Application** | |
 | **Auditor** | |
 | **Date** | |
-| **Tools used** | e.g. Playwright MCP + axe-core, agent browser tools |
+| **Tools used** | e.g. Playwright MCP + local axe-core, focus probe, structure audit |
 | **Standard** | WCAG 2.2 Level AA |
 | **Base URL** | e.g. `http://localhost:3000` |
+| **Plan artifact** | `.accessibility-audit-plan.json` |
 
 ## Scope
 
 ### URLs audited
 
-| URL | Viewports | Themes | Result |
-| --- | --------- | ------ | ------ |
-| | mobile, desktop | light, dark | Pass / Fail |
+| URL | Viewports | Themes | axe | Focus | Structure | Result |
+| --- | --------- | ------ | --- | ----- | --------- | ------ |
+| | mobile, desktop | light, dark | Pass/Fail | Pass/Fail | Pass/Fail | Pass / Fail |
 
 ### Exclusions
 
@@ -38,18 +39,36 @@
 | Moderate | | | |
 | Minor | | | |
 
-## Violations
+## Violations (axe)
 
 | ID | Rule | WCAG | Severity | URL | Element / selector | Status | Notes |
 | -- | ---- | ---- | -------- | --- | ------------------ | ------ | ----- |
 | 1 | | | | | | Open / Fixed / Won't fix | |
+
+## PDS integration findings
+
+| ID | Anti-pattern | Source file | Status | Fix applied |
+| -- | ------------ | ----------- | ------ | ----------- |
+| | aria on host / icon-only / focus / carousel skip / structure | | Open / Fixed | |
+
+## Focus visibility (step 2b)
+
+| URL | Stops | Failures | Warnings (obscured) | Result |
+| --- | ----- | -------- | ------------------- | ------ |
+| | | | | Pass / Fail |
+
+## Page structure (step 2c)
+
+| URL | lang | title | h1 | main | Skip link | Issues | Result |
+| --- | ---- | ----- | -- | ---- | --------- | ------ | ------ |
+| | | | | | | | Pass / Fail |
 
 ## Manual test results
 
 | Check | Result | Notes |
 | ----- | ------ | ----- |
 | Keyboard-only primary flows | Pass / Fail | |
-| Focus visibility | Pass / Fail | |
+| Focus visibility (visual) | Pass / Fail | |
 | High Contrast Mode | Pass / Fail | |
 | 200% text zoom | Pass / Fail | |
 | Screen reader spot-check | Pass / Fail | |
@@ -85,6 +104,13 @@ h3. Findings
 
 # [Critical/Serious] [Short title] — [URL]
 ...
+
+h3. Automated scans
+
+* axe-core: [Pass/Fail]
+* Focus visibility: [Pass/Fail]
+* Page structure: [Pass/Fail]
+* PDS integration (static): [count issues]
 
 h3. Manual verification
 

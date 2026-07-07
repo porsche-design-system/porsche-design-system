@@ -14,32 +14,40 @@ Run a structured, iterative accessibility audit on the user's locally running ap
 propose fixes aligned with Porsche Design System (PDS) conventions, re-scan until automated checks pass, then guide
 manual verification before sign-off.
 
+## Reference files
+
+Read these when executing specific steps:
+
+| File | Purpose |
+| ---- | ------- |
+| [references/completeness-matrix.md](references/completeness-matrix.md) | WCAG 2.2 AA automation coverage |
+| [references/axe-setup.md](references/axe-setup.md) | Local axe injection, CSP, `componentsReady()` |
+| [references/pds-integration-checks.md](references/pds-integration-checks.md) | Top 5 PDS integration anti-patterns |
+| [references/structure-audit.md](references/structure-audit.md) | Landmarks, headings, skip links |
+| [references/plan-artifact.md](references/plan-artifact.md) | `.accessibility-audit-plan.json` schema |
+| [references/manual-checklist.md](references/manual-checklist.md) | Human-only verification |
+| [references/fix-guide-*.md](references/) | Categorized fix patterns |
+
 ## Prerequisites (verify before scanning)
 
-1. **Agent context configured** — `AGENTS.md` plus platform-specific rules:
-   - **Cursor:** `.cursor/rules/accessibility.mdc`
-   - **GitHub Copilot:** `.github/instructions/accessibility.instructions.md`
-   - **Claude Code:** `CLAUDE.md` (in sync with `AGENTS.md`)
+1. **Agent context configured** — `AGENTS.md` plus platform-specific rules (download from [AI Agent Context](https://designsystem.porsche.com/v4/must-know/accessibility/ai-agent-context/)):
+   - **Cursor:** `accessibility.mdc` → `.cursor/rules/`
+   - **GitHub Copilot:** `accessibility.instructions.md` → `.github/instructions/`
+   - **Claude Code:** merge into `CLAUDE.md` (keep in sync with `AGENTS.md`)
 2. **Application running** — dev server reachable at a known `localhost` URL.
-3. **MCP configured** — Playwright MCP installed in your individual agent settings (Cursor Settings → MCP, VS Code Copilot MCP, Claude Code `/mcp`, etc.).
-4. **Browser tooling available** — at least one of:
-   - Built-in browser (Cursor Agent mode)
-   - Playwright MCP (`@playwright/mcp`)
+3. **MCP configured** — Playwright MCP installed in your individual agent settings.
+4. **Browser tooling available** — Playwright MCP (`@playwright/mcp`) or built-in browser.
+5. **Local axe** — `axe-core` or `@axe-core/playwright` in `node_modules` (never CDN on CSP sites).
 
 If prerequisites are missing, stop and tell the user what to install. Link to PDS guidance:
-`/must-know/accessibility/ai-agent-context/` and `/must-know/accessibility/ai-accessibility-audit/`.
+[AI Agent Context](https://designsystem.porsche.com/v4/must-know/accessibility/ai-agent-context/) and
+[AI Accessibility Audit](https://designsystem.porsche.com/v4/must-know/accessibility/ai-accessibility-audit/).
 
 ## MCP configuration
 
-MCP servers are configured **individually** by each developer in their AI agent — not as committed repository files.
+MCP servers are configured **individually** by each developer — not as committed repository files.
 
-| Platform | Where to configure |
-| -------- | ------------------ |
-| Cursor | Settings → Features → MCP, or MCP marketplace |
-| GitHub Copilot (VS Code) | Copilot MCP settings |
-| Claude Code | `claude mcp add` or agent MCP settings |
-
-Example Playwright server definition:
+Example Playwright server:
 
 ```json
 {
@@ -56,125 +64,174 @@ Example Playwright server definition:
 
 | Situation | Tool |
 | --------- | ---- |
-| Quick exploration, keyboard walkthrough | Built-in browser (Cursor) or IDE tools |
-| Iterative scan → fix → re-scan (default) | Playwright MCP + axe-core |
-| Supplementary performance + a11y score | Chrome DevTools MCP `lighthouse_audit` |
-
-Prefer **Playwright MCP + axe-core** for deterministic WCAG rule checks on `localhost`.
+| Iterative scan → fix → re-scan (default) | Playwright MCP + local axe-core |
+| Focus visibility (WCAG 2.4.7) | Tab walk + computed-style probe (step 2b) |
+| Page structure | Structure audit (step 2c) |
+| Static PDS integration | Source grep (step 1) |
+| Supplementary score | Chrome DevTools MCP `lighthouse_audit` |
 
 ## Scan configuration
 
-Align with PDS automated tests:
+Align with PDS automated tests — see [references/axe-setup.md](references/axe-setup.md):
 
 - **axe tags:** `wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`, `wcag22aa`, `best-practice`
-- **Viewports:** mobile (~320px) and desktop (~768px or project breakpoint)
-- **Themes:** light and dark if the app supports color schemes
-- **Scope:** user-defined URL list; scan `main` content unless told otherwise
-
-When injecting axe via Playwright, evaluate on the loaded page and return structured violations (rule id, impact,
-selector, html snippet, help URL).
+- **Viewports:** mobile (~320px) and desktop (~768px)
+- **Themes:** light and dark if supported
+- **Pre-scan:** always call `componentsReady()` on PDS apps
 
 ## Workflow
 
-### 1. Define scope
+### 0. Scope and prerequisites
 
 Ask or infer:
 
 - URLs/routes to audit
 - Viewports and color schemes
 - Exclusions (third-party widgets, auth walls, WIP pages)
+- Whether resuming from `.accessibility-audit-plan.json`
 
-### 2. Automated scan
+### 1. Static PDS integration scan
+
+Before browser scans, check source for PDS anti-patterns — see [references/pds-integration-checks.md](references/pds-integration-checks.md):
+
+```bash
+rg '<(p-[a-z-]+)[^>]*\saria-[a-z]' --glob '*.{tsx,jsx,vue}' -n
+rg '<(p-link|p-button)[^>]*icon=' --glob '*.{tsx,jsx,vue}' -n
+rg '<p-carousel(?![^>]*skip-link-target)' --glob '*.{tsx,jsx,vue,html}' -n
+rg 'outline:\s*none|outline:\s*0' --glob '*.{css,scss,ts,tsx}' -n
+```
+
+Record static findings for the plan artifact.
+
+### 1b. Static component review (optional)
+
+When auditing a specific component file, review props before runtime:
+
+- `aria-*` on host → use `aria` prop
+- Icon-only without label
+- Custom focus styles without `:focus-visible`
+- Heading `tag` props vs visual size
+
+### 2a. axe-core scan
 
 For each URL × viewport × theme:
 
 1. Navigate to the URL
-2. Wait for network idle / PDS `componentsReady()` if applicable
-3. Run axe-core scan
-4. Collect violations and incomplete checks
+2. Wait for load + `componentsReady()` — see [references/axe-setup.md](references/axe-setup.md)
+3. Inject axe from **local** `node_modules` (never CDN)
+4. Run scan with WCAG tags above
+5. Collect violations and incomplete checks
+
+### 2b. Focus visibility scan
+
+axe does **not** verify WCAG **2.4.7 Focus Visible**. Run after axe using **Playwright MCP** (works in any PDS product).
+
+1. Tab through focusable elements (~20–40 stops)
+2. After each Tab, probe `document.activeElement` for visible focus indicator (outline, box-shadow, border)
+3. Traverse shadow roots to the deepest focused node
+4. Record failures (`missing-indicator`) and warnings (`obscured` in sidebars)
+
+See [references/fix-guide-focus.md](references/fix-guide-focus.md) for the probe logic and triage rules.
+
+### 2c. Page structure audit
+
+Check landmarks, headings, `lang`, `title`, skip links via **Playwright MCP** `page.evaluate`.
+
+See [references/structure-audit.md](references/structure-audit.md) for the inline check script and PDS-specific patterns (`p-heading`, `#main-content`, `p-carousel` skip).
+
+### 2d. Keyboard and modal checks
+
+For pages with modals, drawers, or dialogs:
+
+1. Tab to trigger; open overlay
+2. Verify focus moves inside
+3. Tab cycles within overlay (no trap beyond intended)
+4. Escape closes (if supported)
+5. Focus returns to trigger
+
+See [references/fix-guide-keyboard.md](references/fix-guide-keyboard.md).
 
 ### 3. Triage violations
 
-Group findings by impact (`critical`, `serious`, `moderate`, `minor`).
+Group by impact (`critical`, `serious`, `moderate`, `minor`).
 
 | Finding type | Action |
 | ------------ | ------ |
-| App code issue (missing label, contrast, heading order) | Fix in app code |
-| PDS component bug (built-in component fails axe) | Fix workaround if possible; file upstream bug at PDS bug report |
-| Third-party embed | Document exclusion; suggest vendor fix |
-| False positive (isolated component test context) | Document rationale; do not mask globally |
+| App code issue | Fix in app code; use fix guides |
+| PDS integration mistake | See `pds-integration-checks.md` |
+| PDS component bug | Workaround if possible; [file upstream bug](https://designsystem.porsche.com/v4/help/bug-report/) |
+| Third-party embed | Document exclusion |
+| False positive (shadow DOM, closed widget) | Document rationale |
 
-### 4. Fix loop
+### 4. Write plan artifact
+
+Create or update `.accessibility-audit-plan.json` — see [references/plan-artifact.md](references/plan-artifact.md).
+
+Include all findings from steps 1, 2a–2d with status `open`. This makes audits resumable.
+
+### 5. Fix loop
 
 For each violation (critical and serious first):
 
 1. Locate source in codebase
-2. Propose minimal fix following accessibility rules:
-   - Prefer native HTML and PDS `p-*` components
-   - Use PDS `aria` prop — never `aria-*` on component host
-   - Use `:focus-visible`; never `outline: none` without alternative
-   - Support `forced-colors` for essential affordances
+2. Apply fix guide for the rule category:
+   - ARIA/names → `fix-guide-aria.md`
+   - Forms → `fix-guide-forms.md`
+   - Keyboard → `fix-guide-keyboard.md`
+   - Structure → `fix-guide-structure.md`
+   - Contrast → `fix-guide-color.md`
+   - Focus → `fix-guide-focus.md`
+   - PDS integration → `pds-integration-checks.md`
 3. Apply fix (or present diff for user approval)
-4. Re-scan affected URL until violations for that rule are resolved
+4. Update plan artifact status
+5. Re-scan affected URL (steps 2a–2d) until resolved
 
-Stop the fix loop when axe reports zero violations for in-scope URLs, or when remaining issues are documented exclusions.
+Stop when automated checks pass or remaining issues are documented exclusions.
 
-### 5. Manual verification checklist
+### 6. Re-scan until clean
 
-Automated scans cannot replace human testing. Verify:
+Repeat steps 2a–2d for all in-scope URLs. Update plan artifact scan summary.
 
-- [ ] Full keyboard-only journey through primary flows (Tab, Shift+Tab, Enter, Space, Escape)
-- [ ] Focus always visible; no keyboard traps; focus returns after closing overlays
-- [ ] High Contrast Mode (`forced-colors: active`) — UI remains usable
-- [ ] 200% text zoom — content readable, no loss of function
-- [ ] Screen reader spot-check on critical flows (names, roles, announcements)
-- [ ] Motion respects `prefers-reduced-motion` where animations exist
-- [ ] Error messages programmatically associated with form fields
+### 7. Manual verification
 
-### 6. Report
+Complete [references/manual-checklist.md](references/manual-checklist.md). Update plan `manualChecklist`.
 
-Output using the audit report template structure:
+### 8. Report
 
-- Metadata (app, URLs, date, tools)
-- Scope and exclusions
-- Pass/fail summary per URL
-- Violations table (id, WCAG criterion, severity, element, status)
+Output using the audit report template:
+
+- Metadata, scope, exclusions
+- Pass/fail per URL and scan type (axe, focus, structure)
+- Violations table with WCAG criterion and fix status
+- PDS integration findings
 - Manual test results
-- Open issues / upstream PDS tickets
-- Jira-ready summary with numbered findings and acceptance criteria
+- Jira-ready summary
 
-Save report as `accessibility-audit-report-{date}.md` unless the user specifies another path.
+Save as `accessibility-audit-report-{date}.md` unless the user specifies another path.
 
 ## PDS-specific rules during fixes
 
 - Use `@porsche-design-system/components-{react|angular|vue}` for UI primitives
-- Check component Accessibility tab on the PDS storefront for keyboard and ARIA guidance
-- Do not re-implement patterns PDS already provides (buttons, modals, tabs, form controls)
-- For monorepo PDS development: run `npm run test:a11y:components-js` after component changes
+- Check each component's **Accessibility** tab on the PDS storefront (e.g. [Button accessibility](https://designsystem.porsche.com/v4/components/button/accessibility/))
+- Do not re-implement patterns PDS already provides
+- Integration dos and don'ts: [Accessibility: Do's and Don'ts](https://designsystem.porsche.com/v4/must-know/accessibility/dos-and-donts/)
 
 ## Out of scope
 
 - Legal accessibility statement authoring
 - Full screen reader certification
-- Non-web EN 301 549 criteria (hardware, documents, etc.)
-- Auditing without a running application (use static analysis only as a supplement)
+- Non-web EN 301 549 criteria
+- Auditing without a running application (static analysis supplements only)
+
+See [references/manual-checklist.md](references/manual-checklist.md) for criteria that cannot be automated.
 
 ## Output to the user
 
-After each audit cycle, provide:
+After each audit cycle:
 
-1. Violation count by severity
+1. Violation count by severity and scan type
 2. Top fixes applied or proposed
-3. Remaining open issues
-4. Manual checklist status
-5. Path to generated report file
-
-## In this repository (Porsche Design System)
-
-- Agent context: `.cursor/rules/accessibility.mdc`, `.github/instructions/accessibility.instructions.md`, `CLAUDE.md`
-- Audit instructions (Copilot): `.github/instructions/accessibility-audit.instructions.md`
-- Playwright MCP: install individually in your agent settings (not committed to this repo)
-- **Storefront audit URL:** `http://localhost:3000` after `npm run start:storefront`
-- **CI validation:** `npm run build:storefront && npm run test:a11y:storefront`
-- **Report template:** `packages/storefront/public/assets/downloads/accessibility-audit-report-template.md`
-- Storefront docs: `packages/storefront/src/app/(main)/must-know/accessibility/ai-accessibility-audit/`
+3. Plan artifact path (`.accessibility-audit-plan.json`)
+4. Remaining open issues
+5. Manual checklist status
+6. Path to generated report file

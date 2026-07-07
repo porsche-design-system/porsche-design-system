@@ -17,6 +17,7 @@ export const metadata = {
     'Choose your tools',
     'Iterative audit workflow',
     'Audit criteria matrix',
+    'WCAG automation coverage',
     'Example prompts',
     'PDS-specific audit notes',
     'Report and handoff',
@@ -128,11 +129,15 @@ Download and install the audit workflow for your platform:
   <PLink variant="secondary" href="/assets/downloads/accessibility-audit-report-template.md" download="accessibility-audit-report-template.md" icon="download">Report template</PLink>
 </div>
 
-| Platform           | Installation                                                                                 |
-| ------------------ | -------------------------------------------------------------------------------------------- |
-| **Cursor**         | Copy `SKILL.md` to `.cursor/skills/accessibility-audit/SKILL.md` (project or user skills directory)   |
+| Platform           | Installation                                                                                          |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| **Cursor**         | Copy `SKILL.md` and `references/` to `.cursor/skills/accessibility-audit/` (project or user skills)   |
 | **GitHub Copilot** | Place `accessibility-audit.instructions.md` in `.github/instructions/`                                |
 | **Claude Code**    | Merge `accessibility-audit.claude.md` into `CLAUDE.md`, or keep as a referenced file in the repo root |
+
+The download includes categorized fix guides, PDS integration checks, axe setup (CSP-safe local injection), a resumable
+plan artifact schema (`.accessibility-audit-plan.json`), and a WCAG 2.2 AA automation coverage matrix in
+`references/completeness-matrix.md`.
 
 ## Choose your tools
 
@@ -147,28 +152,47 @@ Download and install the audit workflow for your platform:
 
 ## Iterative audit workflow
 
-1. **Prerequisites** — Agent context configured; app running locally
-2. **Define scope** — URL list, viewports (mobile ~320px, desktop ~768px), light/dark themes, exclusions
-3. **Automated scan** — axe-core per URL × viewport × theme; tags: `wcag2a`, `wcag2aa`, `wcag21aa`, `wcag22aa`
-4. **Triage** — Group by severity; separate app fixes from PDS upstream or third-party issues
-5. **Fix loop** — Agent proposes fixes; you review; re-scan until clean or documented
-6. **Manual pass** — Keyboard-only, focus visibility, HCM, 200% zoom, screen reader spot-check
-7. **Report** — Fill the report template; paste Jira summary if needed
+0. **Scope** — URLs, viewports (mobile ~320px, desktop ~768px), light/dark themes, exclusions
+1. **Static PDS scan** — grep source for aria-on-host, icon-only controls, carousel skip, missing focus styles
+2. **axe scan (2a)** — local axe-core per URL × viewport × theme; wait for `componentsReady()` on PDS apps
+3. **Focus visibility (2b)** — Tab walk with computed-style probe (WCAG 2.4.7 — axe cannot verify this)
+4. **Structure audit (2c)** — landmarks, heading order, `lang`, `title`, skip links
+5. **Keyboard/modals (2d)** — overlay focus traps and focus return
+6. **Triage** — Group by severity; use categorized fix guides in `references/`
+7. **Plan artifact** — Write `.accessibility-audit-plan.json` for resumable audits
+8. **Fix loop** — Agent proposes fixes; you review; re-scan until clean or documented
+9. **Manual pass** — Keyboard-only, HCM, 200% zoom, screen reader spot-check (see `manual-checklist.md`)
+10. **Report** — Fill the report template; paste Jira summary if needed
 
 ## Audit criteria matrix
 
-| Area                      | Examples                                | Primary tool             | Manual follow-up           |
-| ------------------------- | --------------------------------------- | ------------------------ | -------------------------- |
-| **Contrast and color**    | Text/icon contrast, non-color cues      | axe                      | HCM visual check           |
-| **Semantics and ARIA**    | Roles, labels, landmarks, heading order | axe + accessibility tree | Screen reader              |
-| **Keyboard**              | Tab order, traps, focus return          | Browser / Playwright     | Full keyboard-only session |
-| **Focus visibility**      | `:focus-visible`, custom widgets        | Code review + visual     | Tab through UI             |
-| **Names and alt text**    | Buttons, icons, images, labels          | axe                      | Content review             |
-| **Language**              | `lang`, i18n                            | axe / DOM                | Native speaker review      |
-| **Forms and errors**      | `aria-invalid`, error association       | axe + code review        | SR announcement            |
-| **Responsiveness / zoom** | 200% text zoom, reflow                  | Browser resize           | Manual                     |
-| **Motion**                | `prefers-reduced-motion`                | Code review              | Manual                     |
-| **PDS-specific**          | `aria` prop, no host ARIA hacks         | Component docs           | —                          |
+| Area                      | Examples                                | Primary tool                     | Manual follow-up           |
+| ------------------------- | --------------------------------------- | -------------------------------- | -------------------------- |
+| **Contrast and color**    | Text/icon contrast, non-color cues      | axe                              | HCM visual check           |
+| **Semantics and ARIA**    | Roles, labels, landmarks, heading order | axe + accessibility tree         | Screen reader              |
+| **Keyboard**              | Tab order, traps, focus return          | Browser / Playwright             | Full keyboard-only session |
+| **Focus visibility**      | `:focus-visible`, custom widgets        | Code review + visual             | Tab through UI             |
+| **Names and alt text**    | Buttons, icons, images, labels          | axe                              | Content review             |
+| **Language**              | `lang`, i18n                            | axe / DOM                        | Native speaker review      |
+| **Forms and errors**      | `aria-invalid`, error association       | axe + code review                | SR announcement            |
+| **Responsiveness / zoom** | 200% text zoom, reflow                  | Browser resize                   | Manual                     |
+| **Motion**                | `prefers-reduced-motion`                | Code review                      | Manual                     |
+| **PDS-specific**          | `aria` prop, no host ARIA hacks         | Static scan + axe                | Integration dos/don'ts     |
+| **Page structure**        | Landmarks, headings, skip links         | Structure audit (2c)             | Content review             |
+| **Resumable plan**        | Track findings across sessions          | `.accessibility-audit-plan.json` | —                          |
+
+## WCAG automation coverage
+
+The skill includes a completeness matrix (`references/completeness-matrix.md`) mapping each WCAG 2.2 AA criterion to
+automation level and skill step. Highlights:
+
+- **Fully automated:** alt text, labels, link names, language, page title, most ARIA (with PDS `aria` prop)
+- **Automated with triage:** color contrast (shadow DOM), incomplete axe rules on closed widgets
+- **Requires dedicated probes:** focus visibility (2b), page structure (2c), keyboard traps (2d)
+- **Manual only:** screen reader phrasing, media captions, cognitive load, legal statements
+
+PDS integration anti-patterns (from dos and don'ts guidance) each have detect → fix → verify steps in
+`references/pds-integration-checks.md`.
 
 ## Example prompts
 
@@ -219,9 +243,12 @@ When fixing violations in a PDS-based app:
 
 - **Prefer PDS components** (`p-button`, `p-link`, `p-modal`, etc.) over custom widgets
 - **Extra ARIA** — use the component `aria` prop per PDS documentation; never put `aria-*` on the component host
-- **Focus styling** — preserve PDS focus rings; use `:focus-visible` for custom elements
+- **Focus styling** — preserve PDS focus rings; use `:focus-visible` for custom elements; run step 2b focus probe
 - **High Contrast Mode** — ensure UI works with `@media (forced-colors: active)`
 - **Component guidance** — check each component's **Accessibility** tab in the PDS storefront
+- **Integration dos and don'ts** — see `/must-know/accessibility/dos-and-donts/` when available; encoded in
+  `pds-integration-checks.md`
+- **Local axe only** — inject from `node_modules`; CDN injection is blocked by CSP on many PDS apps
 
 If a built-in PDS component fails axe without a workaround, [report a bug](/help/bug-report/) upstream.
 
@@ -246,6 +273,11 @@ Agent-assisted audits **cannot**:
   [site accessibility statement](/accessibility-statement/))
 - Audit pages that require authentication without you providing access
 - Guarantee zero false positives — triage and document exclusions
+- Verify focus visibility or page structure with axe alone — use steps 2b and 2c
+
+**Manual-only criteria** (documented in `references/manual-checklist.md`): screen reader phrasing quality, video/audio
+captions, cognitive load, complex live region behavior under real assistive technology, cross-page navigation
+consistency.
 
 Always complete the **manual checklist** in the audit workflow file for your platform before sign-off.
 

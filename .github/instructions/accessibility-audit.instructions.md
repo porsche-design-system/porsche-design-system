@@ -24,14 +24,23 @@ Use when the user asks for an accessibility audit, WCAG scan, or a11y review.
 
 Prefer agent audits on the **running dev server**. Use `npm run test:a11y:storefront` to validate fixes in CI.
 
+Focus visibility (step 2b) and page structure (step 2c) use **Playwright MCP** — same workflow as product teams. See skill references `fix-guide-focus.md` and `structure-audit.md`.
+
 ## Audit workflow
 
-1. **Define scope** — URLs, viewports (mobile ~320px, desktop ~768px), light/dark themes, exclusions.
-2. **Scan** — Playwright MCP + axe-core; tags: `wcag2a`, `wcag2aa`, `wcag21aa`, `wcag22aa`.
-3. **Triage** — Group by severity; separate storefront/app fixes from core component issues.
-4. **Fix loop** — Propose minimal fixes; re-scan until clean or documented.
-5. **Manual checks** — Keyboard-only, focus visibility, HCM, 200% zoom, screen reader spot-check.
-6. **Report** — Use `packages/storefront/public/assets/downloads/accessibility-audit-report-template.md`.
+Follow `.cursor/skills/accessibility-audit/SKILL.md`:
+
+0. **Scope** — URLs, viewports, themes, exclusions; check for existing `.accessibility-audit-plan.json`
+1. **Static PDS scan** — grep for aria-on-host, icon-only controls, carousel skip, outline:none
+2. **axe scan (2a)** — local axe injection; tags: `wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`, `wcag22aa`, `best-practice`; wait for `componentsReady()`
+3. **Focus visibility (2b)** — Playwright MCP Tab walk + computed-style probe (see `references/fix-guide-focus.md`)
+4. **Structure audit (2c)** — Playwright MCP `page.evaluate` (see `references/structure-audit.md`)
+5. **Keyboard/modals (2d)** — overlay focus trap and return
+6. **Triage** — group by severity; use fix guides in `references/`
+7. **Plan artifact** — write `.accessibility-audit-plan.json`
+8. **Fix loop** — re-scan until clean or documented
+9. **Manual checks** — see `references/manual-checklist.md`
+10. **Report** — use `packages/storefront/public/assets/downloads/accessibility-audit-report-template.md`
 
 ## Fix principles
 
@@ -39,12 +48,15 @@ Prefer agent audits on the **running dev server**. Use `npm run test:a11y:storef
 - Prefer PDS `p-*` components and `@porsche-design-system/components-react/ssr` in storefront.
 - Use PDS `aria` prop; never place `aria-*` on component host elements.
 - Visible focus via `:focus-visible`; support `forced-colors`.
-- For component bugs, file at `/help/bug-report` on the storefront.
+- Inject axe from local `node_modules` — never CDN (CSP blocks it).
+- For component bugs, file at [PDS bug report](https://designsystem.porsche.com/v4/help/bug-report/).
 
-## Related configuration
+## Reference files
 
-- Cursor audit skill: `.cursor/skills/accessibility-audit/SKILL.md`
-- Storefront docs: `packages/storefront/src/app/(main)/must-know/accessibility/ai-accessibility-audit/`
+- Skill: `.cursor/skills/accessibility-audit/SKILL.md`
+- Storefront docs: [AI Accessibility Audit](https://designsystem.porsche.com/v4/must-know/accessibility/ai-accessibility-audit/)
+- PDS integration checks: `.cursor/skills/accessibility-audit/references/pds-integration-checks.md`
+- axe setup: `.cursor/skills/accessibility-audit/references/axe-setup.md`
 
 ## Out of scope
 
