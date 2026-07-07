@@ -80,9 +80,11 @@ Complete the [AI Agent Context](/must-know/accessibility/ai-agent-context/):
 
 - [ ] Root `AGENTS.md` with accessibility section
 - [ ] Platform-specific instructions (see [AI Agent Context](/must-know/accessibility/ai-agent-context/)):
-  - **GitHub Copilot:** `.github/instructions/accessibility.instructions.md`
-  - **Cursor:** `.cursor/rules/accessibility.mdc`
-  - **Claude Code:** `CLAUDE.md` (keep in sync with `AGENTS.md`)
+  - **All agents (audit skill):** `.agents/skills/accessibility-audit/` ([Agent Skills](https://agentskills.io/)
+    standard)
+  - **GitHub Copilot:** `.github/instructions/accessibility.instructions.md` (coding rules)
+  - **Cursor:** `.cursor/rules/accessibility.mdc` (coding rules)
+  - **Claude Code:** `CLAUDE.md` aligned with `AGENTS.md` (coding rules)
 - [ ] Package-level `AGENTS.md` in monorepos
 
 ### Audit tooling
@@ -116,48 +118,39 @@ and [Claude Code MCP documentation](https://code.claude.com/docs/en/mcp) for whe
 
 ### Install the audit workflow
 
-Download the full skill bundle (recommended) or individual files for your platform:
+Download the **full skill bundle** — one canonical workflow for Cursor, GitHub Copilot, and Claude Code.
 
 <div className="flex gap-static-sm mt-fluid-sm mb-fluid-sm flex-wrap">
   {/* prettier-ignore */}
   <PLink variant="primary" href="/assets/downloads/accessibility-audit.zip" download="accessibility-audit.zip" icon="download">Full bundle (ZIP)</PLink>
 </div>
 
-The ZIP contains `accessibility-audit/SKILL.md`, all `references/` fix guides, Copilot and Claude instruction files, and
-the report template. Extract and install per platform below.
+<Notification heading="Use the full bundle" headingTag="h4" state="warning">
+  Always install `SKILL.md` together with `references/`. Extract the ZIP and move `accessibility-audit/` to
+  `.agents/skills/accessibility-audit/` which follows the official [Agent Skills](https://agentskills.io/) standard.
+</Notification>
 
-<div className="flex gap-static-sm mt-fluid-sm mb-fluid-lg flex-wrap">
-  {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/accessibility-audit/SKILL.md" download="SKILL.md" icon="download">Cursor (SKILL.md only)</PLink>
-  {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/accessibility-audit.instructions.md" download="accessibility-audit.instructions.md" icon="download">Copilot (instructions only)</PLink>
-  {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/accessibility-audit.claude.md" download="accessibility-audit.claude.md" icon="download">Claude Code (workflow only)</PLink>
-  {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/accessibility-audit-report-template.md" download="accessibility-audit-report-template.md" icon="download">Report template</PLink>
-</div>
+#### Verify
 
-| Platform           | Installation                                                                                          |
-| ------------------ | ----------------------------------------------------------------------------------------------------- |
-| **All platforms**  | Download **Full bundle (ZIP)** — extract, then follow platform row below                              |
-| **Cursor**         | Copy `accessibility-audit/` to `.cursor/skills/accessibility-audit/` (includes `references/`)         |
-| **GitHub Copilot** | Place `accessibility-audit.instructions.md` in `.github/instructions/`                                |
-| **Claude Code**    | Merge `accessibility-audit.claude.md` into `CLAUDE.md`, or keep as a referenced file in the repo root |
+```text
+// Prompt
+Conduct a WCAG 2.2 AA accessibility audit on http://localhost:3000/.
+Use the accessibility audit skill.
 
-The download includes categorized fix guides, PDS integration checks, axe setup (CSP-safe local injection), a resumable
-plan artifact schema (`.accessibility-audit-plan.json`), and a WCAG 2.2 AA automation coverage matrix in
-`references/completeness-matrix.md`.
+// Or just invoke the skill with /accessibility-audit
+```
 
 ## Choose your tools
 
-| Tier                | Tool                                        | Best for                                          | Prerequisites           | Trade-offs                      |
-| ------------------- | ------------------------------------------- | ------------------------------------------------- | ----------------------- | ------------------------------- |
-| **1 – Low setup**   | Built-in browser (Cursor) or IDE automation | Quick review, keyboard navigation, DOM inspection | Agent mode enabled      | Less deterministic than axe     |
-| **2 – Recommended** | Playwright MCP + axe-core                   | Iterative scan → fix → re-scan on `localhost`     | Dev server, MCP enabled | Agent needs structured workflow |
-| **Supplementary**   | Chrome DevTools MCP `lighthouse_audit`      | Performance + accessibility score                 | MCP enabled             | Coarse-grained; use with axe    |
-| **PDS monorepo**    | `npm run test:a11y:components-js`           | PDS component regression                          | Full build              | Not for external product repos  |
+| Tier                | Tool                                                              | Best for                                          | Prerequisites           | Trade-offs                      |
+| ------------------- | ----------------------------------------------------------------- | ------------------------------------------------- | ----------------------- | ------------------------------- |
+| **1 – Low setup**   | Built-in browser or IDE automation (Cursor, VS Code, Claude Code) | Quick review, keyboard navigation, DOM inspection | Agent mode enabled      | Less deterministic than axe     |
+| **2 – Recommended** | Playwright MCP + axe-core                                         | Iterative scan → fix → re-scan on `localhost`     | Dev server, MCP enabled | Agent needs structured workflow |
+| **Supplementary**   | Chrome DevTools MCP `lighthouse_audit`                            | Performance + accessibility score                 | MCP enabled             | Coarse-grained; use with axe    |
+| **PDS monorepo**    | `npm run test:a11y:components-js`                                 | PDS component regression                          | Full build              | Not for external product repos  |
 
-**Recommendation:** Tier 1 + Tier 2, orchestrated by the platform-specific audit workflow files above.
+**Recommendation:** Tier 1 + Tier 2, orchestrated by the accessibility audit skill at
+`.agents/skills/accessibility-audit/`.
 
 ## Iterative audit workflow
 
@@ -288,7 +281,8 @@ Agent-assisted audits **cannot**:
 captions, cognitive load, complex live region behavior under real assistive technology, cross-page navigation
 consistency.
 
-Always complete the **manual checklist** in the audit workflow file for your platform before sign-off.
+Always complete the **manual checklist** in `references/manual-checklist.md` (via the installed audit skill) before
+sign-off.
 
 ## Future: cloud automation
 

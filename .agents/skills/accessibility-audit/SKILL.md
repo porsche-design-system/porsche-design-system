@@ -14,6 +14,16 @@ Run a structured, iterative accessibility audit on the user's locally running ap
 propose fixes aligned with Porsche Design System (PDS) conventions, re-scan until automated checks pass, then guide
 manual verification before sign-off.
 
+## Install this skill
+
+Download the [full skill bundle (ZIP)](https://designsystem.porsche.com/v4/assets/downloads/accessibility-audit.zip) from
+[AI Accessibility Audit](https://designsystem.porsche.com/v4/must-know/accessibility/ai-accessibility-audit/). Move
+`accessibility-audit/` to **`.agents/skills/accessibility-audit/`** ([Agent Skills](https://agentskills.io/) standard).
+
+Invoke with **`/accessibility-audit`** or natural language. Supported by Cursor, GitHub Copilot, and Claude Code.
+
+**Coding rules** (`AGENTS.md`, accessibility rules) are separate — see [AI Agent Context](https://designsystem.porsche.com/v4/must-know/accessibility/ai-agent-context/).
+
 ## Reference files
 
 Read these when executing specific steps:
@@ -30,14 +40,15 @@ Read these when executing specific steps:
 
 ## Prerequisites (verify before scanning)
 
-1. **Agent context configured** — `AGENTS.md` plus platform-specific rules (download from [AI Agent Context](https://designsystem.porsche.com/v4/must-know/accessibility/ai-agent-context/)):
+1. **Agent context configured** — `AGENTS.md` plus platform-specific **coding rules** (download from [AI Agent Context](https://designsystem.porsche.com/v4/must-know/accessibility/ai-agent-context/)):
    - **Cursor:** `accessibility.mdc` → `.cursor/rules/`
    - **GitHub Copilot:** `accessibility.instructions.md` → `.github/instructions/`
-   - **Claude Code:** merge into `CLAUDE.md` (keep in sync with `AGENTS.md`)
-2. **Application running** — dev server reachable at a known `localhost` URL.
-3. **MCP configured** — Playwright MCP installed in your individual agent settings.
-4. **Browser tooling available** — Playwright MCP (`@playwright/mcp`) or built-in browser.
-5. **Local axe** — `axe-core` or `@axe-core/playwright` in `node_modules` (never CDN on CSP sites).
+   - **Claude Code:** `CLAUDE.md` aligned with `AGENTS.md`
+2. **Audit skill installed** — `.agents/skills/accessibility-audit/` per [Install this skill](#install-this-skill) above
+3. **Application running** — dev server reachable at a known `localhost` URL.
+4. **MCP configured** — Playwright MCP installed in your individual agent settings.
+5. **Browser tooling available** — Playwright MCP (`@playwright/mcp`) or built-in browser automation.
+6. **Local axe** — `axe-core` or `@axe-core/playwright` in `node_modules` (never CDN on CSP sites).
 
 If prerequisites are missing, stop and tell the user what to install. Link to PDS guidance:
 [AI Agent Context](https://designsystem.porsche.com/v4/must-know/accessibility/ai-agent-context/) and
@@ -238,8 +249,8 @@ After each audit cycle:
 
 ## In this repository (Porsche Design System)
 
-- Agent context: `.cursor/rules/accessibility.mdc`, `.github/instructions/accessibility.instructions.md`
-- Audit instructions (Copilot): `.github/instructions/accessibility-audit.instructions.md`
+- Agent context: `.cursor/rules/accessibility.mdc`, `.github/instructions/accessibility.instructions.md`, `CLAUDE.md`
+- Audit skill: `.agents/skills/accessibility-audit/`
 - **Storefront audit URL:** `http://localhost:3000` after `npm run start:storefront`
 - **CI validation:** `npm run build:storefront && npm run test:a11y:storefront`
 - **Report template:** `packages/storefront/public/assets/downloads/accessibility-audit-report-template.md`

@@ -6,28 +6,32 @@ Download from the [PDS storefront](https://designsystem.porsche.com/v4/must-know
 
 | Path | Purpose |
 | ---- | ------- |
-| `accessibility-audit/SKILL.md` | Cursor skill (main workflow) |
-| `accessibility-audit/references/` | Fix guides, axe setup, PDS integration checks |
-| `accessibility-audit.instructions.md` | GitHub Copilot instructions |
-| `accessibility-audit.claude.md` | Claude Code workflow |
+| `accessibility-audit/SKILL.md` | Audit workflow — install to `.agents/skills/accessibility-audit/` |
+| `accessibility-audit/references/` | Fix guides, axe setup, PDS integration checks, manual checklist |
 | `accessibility-audit-report-template.md` | Audit report template |
 
-## Installation
+## Install
 
-### Cursor
+1. Extract this ZIP into your **repository root**.
+2. Move `accessibility-audit/` to **`.agents/skills/accessibility-audit/`** (create `.agents/skills/` if needed).
+3. Complete [AI Agent Context](https://designsystem.porsche.com/v4/must-know/accessibility/ai-agent-context/) (`AGENTS.md` + platform coding rules).
+4. Install Playwright MCP in your agent settings.
+5. Invoke with **`/accessibility-audit`** or natural language.
 
-Copy the `accessibility-audit/` folder to `.cursor/skills/` in your project (or user skills directory).
+Cursor, GitHub Copilot, and Claude Code all support [Agent Skills](https://agentskills.io/) at `.agents/skills/` ([Cursor](https://cursor.com/docs/skills), [Copilot](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)).
 
-Invoke with `/accessibility-audit`.
+## Coding rules vs audit skill
 
-### GitHub Copilot
+| Purpose | What to install | Where |
+| ------- | --------------- | ----- |
+| **Accessible code generation** | `AGENTS.md`, `accessibility.instructions.md`, `accessibility.mdc` | See [AI Agent Context](https://designsystem.porsche.com/v4/must-know/accessibility/ai-agent-context/) |
+| **Accessibility audit workflow** | This skill bundle | `.agents/skills/accessibility-audit/` |
 
-Copy `accessibility-audit.instructions.md` to `.github/instructions/` in your project.
+## Verify installation
 
-### Claude Code
+```text
+Conduct a WCAG 2.2 AA accessibility audit on http://localhost:3000/.
+Use the accessibility audit skill. Start with scope, then static PDS scan, then axe.
+```
 
-Merge `accessibility-audit.claude.md` into your project `CLAUDE.md`, or keep it as a referenced file.
-
-### Prerequisites
-
-Complete [AI Agent Context](https://designsystem.porsche.com/v4/must-know/accessibility/ai-agent-context/) setup (`AGENTS.md` + platform rules) before running audits.
+The agent should resolve `references/axe-setup.md` relative to `.agents/skills/accessibility-audit/`.

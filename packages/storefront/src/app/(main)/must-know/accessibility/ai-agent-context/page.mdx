@@ -49,11 +49,14 @@ context-specific rules (e.g., accessibility, build steps, test expectations).
 
 ## GitHub Copilot Instructions
 
-GitHub Copilot supports **custom instructions** through Markdown files in your repository. We recommend:
+GitHub Copilot supports **custom instructions** through Markdown files in your repository, and **agent skills** via
+`.agents/skills/` ([about agent skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)). We
+recommend:
 
 1. Use `AGENTS.md` as the canonical source for repository guidance.
 2. Keep `.github/copilot-instructions.md` in sync with `AGENTS.md` for Copilot compatibility.
 3. Use scoped instruction files in `.github/instructions/` for file-type specific rules (like accessibility).
+4. Install workflow skills in **`.agents/skills/`** (also `.github/skills/`).
 
 ### Global Instructions
 
@@ -90,13 +93,20 @@ applyTo: '**/*.{html,css,scss,js,ts,tsx,jsx,vue,mdx}'
 
 ## Cursor Rules
 
-Cursor uses a `.cursor/rules/` directory structure for custom AI instructions:
+Cursor uses `.cursor/rules/` for **coding rules**. Workflow skills use the [Agent Skills](https://agentskills.io/)
+standard at **`.agents/skills/`** (Cursor also reads `.cursor/skills/`):
 
 ```diff
 .cursor/
 └── rules/
-    ├── accessibility.mdc    # Accessibility rules
+    ├── accessibility.mdc    # Accessibility coding rules
     └── project.mdc          # Project-specific rules
+
+.agents/
+└── skills/
+    └── accessibility-audit/   # Audit workflow (from PDS bundle)
+        ├── SKILL.md
+        └── references/
 ```
 
 Cursor rule files use the `.mdc` extension (Markdown with Cursor metadata). The format is similar to GitHub Copilot
@@ -113,15 +123,19 @@ globs: ['**/*.{html,css,scss,js,ts,tsx,jsx,vue}']
 
 [Claude Code](https://code.claude.com/docs) reads project context from `CLAUDE.md` at the repository root. We recommend:
 
-1. Use `AGENTS.md` as the canonical source and keep `CLAUDE.md` in sync.
-2. Add accessibility rules to `CLAUDE.md` (or reference the downloaded templates below).
+1. Use `AGENTS.md` as the canonical source and keep `CLAUDE.md` in sync for **coding rules**.
+2. Install workflow skills in **`.agents/skills/`** (e.g. accessibility audit — see
+   [AI Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/)).
 3. Install Playwright MCP in your agent for browser-based audits — see [MCP server setup](#mcp-server-setup).
 
 ```diff
 .
-├── AGENTS.md          # Canonical agent context (tool-agnostic)
-└── CLAUDE.md          # Claude Code project instructions
+├── AGENTS.md                              # Canonical agent context (tool-agnostic)
+├── CLAUDE.md                              # Claude Code coding rules (sync with AGENTS.md)
+└── .agents/skills/accessibility-audit/    # Audit workflow (all agents)
 ```
+
+Invoke the audit with `/accessibility-audit` or natural language.
 
 ## MCP server setup
 
@@ -228,24 +242,30 @@ Download ready-to-use instruction files for your project:
 2. Create `.github/instructions/` directory in your repository root
 3. Place the file in `.github/instructions/accessibility.instructions.md`
 4. Install Playwright MCP in your VS Code / Copilot MCP settings if you run audits
-5. Commit and push to your repository
+5. For **audits**, download the [full audit bundle](/must-know/accessibility/ai-accessibility-audit/) and install to
+   `.agents/skills/accessibility-audit/`
+6. Commit and push to your repository
 
 **For Cursor Rules:**
 
 1. Download `accessibility.mdc`
 2. Create `.cursor/rules/` directory in your project root
 3. Place the file in `.cursor/rules/accessibility.mdc`
-4. Install Playwright MCP in Cursor Settings → MCP if you run audits
-5. Restart Cursor or reload the workspace
+4. For **audits**, download the [full audit bundle](/must-know/accessibility/ai-accessibility-audit/) and install to
+   `.agents/skills/accessibility-audit/`
+5. Install Playwright MCP in Cursor Settings → MCP if you run audits
+6. Restart Cursor or reload the workspace
 
 **For Claude Code:**
 
 1. Download `accessibility.instructions.md` and merge the rules into `CLAUDE.md`, or reference `AGENTS.md`
-2. Install Playwright MCP via `claude mcp add` or your agent MCP settings if you run audits
-3. Approve MCP servers on first use (`/mcp` in Claude Code)
+2. For **audits**, download the [full audit bundle](/must-know/accessibility/ai-accessibility-audit/) and install to
+   `.agents/skills/accessibility-audit/`
+3. Install Playwright MCP via `claude mcp add` or your agent MCP settings if you run audits
+4. Approve MCP servers on first use (`/mcp` in Claude Code)
 
-Once configured, your AI agent will automatically apply these accessibility rules when generating or modifying frontend
-code.
+Once configured, your AI agent will automatically apply these accessibility **coding rules** when generating or
+modifying frontend code. Run **audits** via `/accessibility-audit` or natural language.
 
 ## Next step: run an accessibility audit
 

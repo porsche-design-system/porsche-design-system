@@ -170,8 +170,8 @@ Follow the internal accessibility guidance page:
 > [`src/app/must-know/accessibility/introduction/page.mdx`](src/app/must-know/accessibility/introduction/page.mdx)
 
 For **AI-assisted audits** of this package, see root `AGENTS.md` (AI agent configuration) and
-`.github/instructions/accessibility-audit.instructions.md`. Dev server: `npm run start:storefront` → `http://localhost:3000`.
-Use the same Playwright MCP audit workflow as product teams (see `.cursor/skills/accessibility-audit/SKILL.md`).
+`.agents/skills/accessibility-audit/SKILL.md`. Dev server: `npm run start:storefront` → `http://localhost:3000`.
+Use the same Playwright MCP audit workflow as product teams (`.agents/skills/accessibility-audit/SKILL.md`).
 
 It documents expected testing stages:
 
