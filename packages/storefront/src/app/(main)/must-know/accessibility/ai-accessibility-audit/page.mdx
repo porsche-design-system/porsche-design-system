@@ -119,20 +119,20 @@ Download and install the audit workflow for your platform:
 
 <div className="flex gap-static-sm mt-fluid-sm mb-fluid-lg flex-wrap">
   {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/a11y-audit/SKILL.md" download="SKILL.md" icon="download">Cursor (SKILL.md)</PLink>
+  <PLink variant="secondary" href="/assets/downloads/accessibility-audit/SKILL.md" download="SKILL.md" icon="download">Cursor (SKILL.md)</PLink>
   {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/a11y-audit.instructions.md" download="a11y-audit.instructions.md" icon="download">Copilot (a11y-audit.instructions.md)</PLink>
+  <PLink variant="secondary" href="/assets/downloads/accessibility-audit.instructions.md" download="accessibility-audit.instructions.md" icon="download">Copilot (accessibility-audit.instructions.md)</PLink>
   {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/a11y-audit.claude.md" download="a11y-audit.claude.md" icon="download">Claude Code (a11y-audit.claude.md)</PLink>
+  <PLink variant="secondary" href="/assets/downloads/accessibility-audit.claude.md" download="accessibility-audit.claude.md" icon="download">Claude Code (accessibility-audit.claude.md)</PLink>
   {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/a11y-audit-report-template.md" download="a11y-audit-report-template.md" icon="download">Report template</PLink>
+  <PLink variant="secondary" href="/assets/downloads/accessibility-audit-report-template.md" download="accessibility-audit-report-template.md" icon="download">Report template</PLink>
 </div>
 
 | Platform           | Installation                                                                                 |
 | ------------------ | -------------------------------------------------------------------------------------------- |
-| **Cursor**         | Copy `SKILL.md` to `.cursor/skills/a11y-audit/SKILL.md` (project or user skills directory)   |
-| **GitHub Copilot** | Place `a11y-audit.instructions.md` in `.github/instructions/`                                |
-| **Claude Code**    | Merge `a11y-audit.claude.md` into `CLAUDE.md`, or keep as a referenced file in the repo root |
+| **Cursor**         | Copy `SKILL.md` to `.cursor/skills/accessibility-audit/SKILL.md` (project or user skills directory)   |
+| **GitHub Copilot** | Place `accessibility-audit.instructions.md` in `.github/instructions/`                                |
+| **Claude Code**    | Merge `accessibility-audit.claude.md` into `CLAUDE.md`, or keep as a referenced file in the repo root |
 
 ## Choose your tools
 
@@ -184,7 +184,7 @@ Scope:
 - Viewports: 320px and 768px
 - Themes: light and dark
 
-Use the a11y-audit skill workflow. Run axe-core scans, triage violations, propose fixes, and re-scan until clean.
+Use the accessibility audit skill workflow. Run axe-core scans, triage violations, propose fixes, and re-scan until clean.
 Finish with the audit report template and manual checklist status.
 ```
 
@@ -254,7 +254,7 @@ Always complete the **manual checklist** in the audit workflow file for your pla
 Planned extensions (not yet available):
 
 - **GitHub workflow** — PR-triggered axe scan against preview deployments; report artifacts
-- **Cursor Cloud Agent** — run the audit Skill in a cloud workspace with browser MCP
+- **Cursor Cloud Agent** — run the accessibility audit skill in a cloud workspace with browser MCP
 - **Structured violation JSON** — machine-readable output for agent triage in CI
 
 For now, use the local iterative workflow above.

@@ -199,13 +199,13 @@ This repository ships agent context for accessibility audits:
 
 | Tool | Configuration |
 | ---- | ------------- |
-| **Cursor** | `.cursor/rules/accessibility.mdc`, `.cursor/skills/a11y-audit/SKILL.md` |
-| **GitHub Copilot** | `.github/instructions/accessibility.instructions.md`, `.github/instructions/a11y-audit.instructions.md` |
+| **Cursor** | `.cursor/rules/accessibility.mdc`, `.cursor/skills/accessibility-audit/SKILL.md` |
+| **GitHub Copilot** | `.github/instructions/accessibility.instructions.md`, `.github/instructions/accessibility-audit.instructions.md` |
 | **Claude Code** | `CLAUDE.md` |
 
 Playwright MCP is configured **individually** in each developer's agent settings (not in this repo).
 
-Storefront audit: `npm run start:storefront` → `http://localhost:3000`, then follow `.cursor/skills/a11y-audit/SKILL.md`.
+Storefront audit: `npm run start:storefront` → `http://localhost:3000`, then follow `.cursor/skills/accessibility-audit/SKILL.md`.
 Validate with `npm run test:a11y:storefront` after fixes.
 
 ## Quick Reference

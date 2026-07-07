@@ -9,8 +9,8 @@ See [`AGENTS.md`](AGENTS.md) for build order, essential commands, package struct
 | Tool | Files |
 | ---- | ----- |
 | **All agents** | [`AGENTS.md`](AGENTS.md) |
-| **GitHub Copilot** | [`.github/copilot-instructions.md`](.github/copilot-instructions.md), [`.github/instructions/accessibility.instructions.md`](.github/instructions/accessibility.instructions.md), [`.github/instructions/a11y-audit.instructions.md`](.github/instructions/a11y-audit.instructions.md) |
-| **Cursor** | [`.cursor/rules/accessibility.mdc`](.cursor/rules/accessibility.mdc), [`.cursor/skills/a11y-audit/SKILL.md`](.cursor/skills/a11y-audit/SKILL.md) |
+| **GitHub Copilot** | [`.github/copilot-instructions.md`](.github/copilot-instructions.md), [`.github/instructions/accessibility.instructions.md`](.github/instructions/accessibility.instructions.md), [`.github/instructions/accessibility-audit.instructions.md`](.github/instructions/accessibility-audit.instructions.md) |
+| **Cursor** | [`.cursor/rules/accessibility.mdc`](.cursor/rules/accessibility.mdc), [`.cursor/skills/accessibility-audit/SKILL.md`](.cursor/skills/accessibility-audit/SKILL.md) |
 | **Claude Code** | This file |
 
 MCP servers (e.g. Playwright) are configured **individually** in your agent settings — not committed to this repository.
@@ -32,7 +32,7 @@ Use when asked for a WCAG 2.2 AA audit, especially on the **storefront**.
 3. **Triage** — App/storefront vs core component fixes.
 4. **Fix loop** — Minimal fixes; re-scan until clean.
 5. **Manual checks** — Keyboard, focus, HCM, 200% zoom, screen reader spot-check.
-6. **Report** — `packages/storefront/public/assets/downloads/a11y-audit-report-template.md`.
+6. **Report** — `packages/storefront/public/assets/downloads/accessibility-audit-report-template.md`.
 7. **Validate** — `npm run test:a11y:storefront` after substantive fixes (requires `npm run build:storefront`).
 
-Detailed steps: [`.cursor/skills/a11y-audit/SKILL.md`](.cursor/skills/a11y-audit/SKILL.md) and storefront guide at `packages/storefront/src/app/(main)/must-know/accessibility/ai-accessibility-audit/`.
+Detailed steps: [`.cursor/skills/accessibility-audit/SKILL.md`](.cursor/skills/accessibility-audit/SKILL.md) and storefront guide at `packages/storefront/src/app/(main)/must-know/accessibility/ai-accessibility-audit/`.

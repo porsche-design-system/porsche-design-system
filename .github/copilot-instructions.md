@@ -147,7 +147,7 @@ packages/components/src/components/{name}/
 Accessibility instructions are in `instructions/accessibility.instructions.md`. Follow these guidelines strictly to
 ensure compliance with WCAG 2.2 AA standards.
 
-For **accessibility audits** (e.g. storefront), use `instructions/a11y-audit.instructions.md`. Install Playwright MCP in
+For **accessibility audits** (e.g. storefront), use `instructions/accessibility-audit.instructions.md`. Install Playwright MCP in
 your individual Copilot / VS Code MCP settings.
 
 ## Quick Reference

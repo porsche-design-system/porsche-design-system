@@ -31,7 +31,7 @@ Prefer agent audits on the **running dev server**. Use `npm run test:a11y:storef
 3. **Triage** — Group by severity; separate storefront/app fixes from core component issues.
 4. **Fix loop** — Propose minimal fixes; re-scan until clean or documented.
 5. **Manual checks** — Keyboard-only, focus visibility, HCM, 200% zoom, screen reader spot-check.
-6. **Report** — Use `packages/storefront/public/assets/downloads/a11y-audit-report-template.md`.
+6. **Report** — Use `packages/storefront/public/assets/downloads/accessibility-audit-report-template.md`.
 
 ## Fix principles
 
@@ -43,7 +43,7 @@ Prefer agent audits on the **running dev server**. Use `npm run test:a11y:storef
 
 ## Related configuration
 
-- Cursor audit skill: `.cursor/skills/a11y-audit/SKILL.md`
+- Cursor audit skill: `.cursor/skills/accessibility-audit/SKILL.md`
 - Storefront docs: `packages/storefront/src/app/(main)/must-know/accessibility/ai-accessibility-audit/`
 
 ## Out of scope

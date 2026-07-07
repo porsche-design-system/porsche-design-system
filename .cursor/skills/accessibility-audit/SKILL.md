@@ -1,5 +1,5 @@
 ---
-name: a11y-audit
+name: accessibility-audit
 description:
   Conducts iterative WCAG 2.2 AA accessibility audits on local web applications using browser automation and
   axe-core. Use when the user asks for an accessibility audit, WCAG scan, a11y review, or to check/fix accessibility
@@ -143,7 +143,7 @@ Output using the audit report template structure:
 - Open issues / upstream PDS tickets
 - Jira-ready summary with numbered findings and acceptance criteria
 
-Save report as `a11y-audit-report-{date}.md` unless the user specifies another path.
+Save report as `accessibility-audit-report-{date}.md` unless the user specifies another path.
 
 ## PDS-specific rules during fixes
 
@@ -172,9 +172,9 @@ After each audit cycle, provide:
 ## In this repository (Porsche Design System)
 
 - Agent context: `.cursor/rules/accessibility.mdc`, `.github/instructions/accessibility.instructions.md`, `CLAUDE.md`
-- Audit instructions (Copilot): `.github/instructions/a11y-audit.instructions.md`
+- Audit instructions (Copilot): `.github/instructions/accessibility-audit.instructions.md`
 - Playwright MCP: install individually in your agent settings (not committed to this repo)
 - **Storefront audit URL:** `http://localhost:3000` after `npm run start:storefront`
 - **CI validation:** `npm run build:storefront && npm run test:a11y:storefront`
-- **Report template:** `packages/storefront/public/assets/downloads/a11y-audit-report-template.md`
+- **Report template:** `packages/storefront/public/assets/downloads/accessibility-audit-report-template.md`
 - Storefront docs: `packages/storefront/src/app/(main)/must-know/accessibility/ai-accessibility-audit/`
