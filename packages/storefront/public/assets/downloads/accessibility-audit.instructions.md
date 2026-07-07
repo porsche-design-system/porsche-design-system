@@ -28,7 +28,7 @@ Use these instructions when the user asks for an accessibility audit, WCAG scan,
 
 ## Audit workflow
 
-Download the skill bundle from the [AI Accessibility Audit](https://designsystem.porsche.com/v4/must-know/accessibility/ai-accessibility-audit/) page (`accessibility-audit/SKILL.md` + `references/`).
+Download the skill bundle from the [AI Accessibility Audit](https://designsystem.porsche.com/v4/must-know/accessibility/ai-accessibility-audit/) page ([full ZIP](https://designsystem.porsche.com/v4/assets/downloads/accessibility-audit.zip) or individual files).
 
 0. **Scope** — URLs, viewports, themes, exclusions
 1. **Static PDS scan** — aria-on-host, icon-only controls, carousel skip (see `references/pds-integration-checks.md`)

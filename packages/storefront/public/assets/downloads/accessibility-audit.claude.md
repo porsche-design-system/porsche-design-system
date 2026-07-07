@@ -28,7 +28,7 @@ PDS docs: [AI Agent Context](https://designsystem.porsche.com/v4/must-know/acces
 
 ## Audit workflow
 
-Install the skill from the [AI Accessibility Audit](https://designsystem.porsche.com/v4/must-know/accessibility/ai-accessibility-audit/) download (`accessibility-audit/SKILL.md` + `references/` folder).
+Install the skill from the [AI Accessibility Audit](https://designsystem.porsche.com/v4/must-know/accessibility/ai-accessibility-audit/) [full bundle (ZIP)](https://designsystem.porsche.com/v4/assets/downloads/accessibility-audit.zip).
 
 0. **Scope** — URLs, viewports, themes, exclusions
 1. **Static PDS scan** — see `references/pds-integration-checks.md`

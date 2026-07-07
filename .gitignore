@@ -91,6 +91,7 @@ packages/shared/bin/
 
 # Storefront
 packages/storefront/scripts/algoliaRecords.json
+packages/storefront/public/assets/downloads/accessibility-audit.zip
 packages/storefront/src/app/(main)/news/changelog/page.mdx
 packages/storefront/src/app/(main)/license/license.mdx
 packages/storefront/public/porsche-design-system

@@ -116,22 +116,31 @@ and [Claude Code MCP documentation](https://code.claude.com/docs/en/mcp) for whe
 
 ### Install the audit workflow
 
-Download and install the audit workflow for your platform:
+Download the full skill bundle (recommended) or individual files for your platform:
+
+<div className="flex gap-static-sm mt-fluid-sm mb-fluid-sm flex-wrap">
+  {/* prettier-ignore */}
+  <PLink variant="primary" href="/assets/downloads/accessibility-audit.zip" download="accessibility-audit.zip" icon="download">Full bundle (ZIP)</PLink>
+</div>
+
+The ZIP contains `accessibility-audit/SKILL.md`, all `references/` fix guides, Copilot and Claude instruction files, and
+the report template. Extract and install per platform below.
 
 <div className="flex gap-static-sm mt-fluid-sm mb-fluid-lg flex-wrap">
   {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/accessibility-audit/SKILL.md" download="SKILL.md" icon="download">Cursor (SKILL.md)</PLink>
+  <PLink variant="secondary" href="/assets/downloads/accessibility-audit/SKILL.md" download="SKILL.md" icon="download">Cursor (SKILL.md only)</PLink>
   {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/accessibility-audit.instructions.md" download="accessibility-audit.instructions.md" icon="download">Copilot (accessibility-audit.instructions.md)</PLink>
+  <PLink variant="secondary" href="/assets/downloads/accessibility-audit.instructions.md" download="accessibility-audit.instructions.md" icon="download">Copilot (instructions only)</PLink>
   {/* prettier-ignore */}
-  <PLink variant="secondary" href="/assets/downloads/accessibility-audit.claude.md" download="accessibility-audit.claude.md" icon="download">Claude Code (accessibility-audit.claude.md)</PLink>
+  <PLink variant="secondary" href="/assets/downloads/accessibility-audit.claude.md" download="accessibility-audit.claude.md" icon="download">Claude Code (workflow only)</PLink>
   {/* prettier-ignore */}
   <PLink variant="secondary" href="/assets/downloads/accessibility-audit-report-template.md" download="accessibility-audit-report-template.md" icon="download">Report template</PLink>
 </div>
 
 | Platform           | Installation                                                                                          |
 | ------------------ | ----------------------------------------------------------------------------------------------------- |
-| **Cursor**         | Copy `SKILL.md` and `references/` to `.cursor/skills/accessibility-audit/` (project or user skills)   |
+| **All platforms**  | Download **Full bundle (ZIP)** — extract, then follow platform row below                              |
+| **Cursor**         | Copy `accessibility-audit/` to `.cursor/skills/accessibility-audit/` (includes `references/`)         |
 | **GitHub Copilot** | Place `accessibility-audit.instructions.md` in `.github/instructions/`                                |
 | **Claude Code**    | Merge `accessibility-audit.claude.md` into `CLAUDE.md`, or keep as a referenced file in the repo root |
 
