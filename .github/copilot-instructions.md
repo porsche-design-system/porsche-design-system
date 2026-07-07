@@ -15,7 +15,7 @@ building Porsche web applications. Components are built with **Stencil** and wra
 | **Package Manager**    | npm 11+ (workspaces)                       |
 | **Node**               | v24 (use Volta)                            |
 | **Web Components**     | Stencil 4.x                                |
-| **Styling**            | emotion/stylis (CSS-in-JS), Tailwind CSS   |
+| **Styling**            | stylis (CSS-in-JS), Tailwind CSS           |
 | **Frameworks**         | Angular 22, React 19, Vue 3, Next.js 16    |
 | **Build**              | Rollup, Vite, Webpack                      |
 | **Testing**            | Vitest (unit), Playwright (e2e/vrt/a11y)   |

@@ -5,7 +5,7 @@
 
 ## Overview
 
-This package contains the **Porsche Design System Web Components** built with Stencil and styled with an internal CSS-in-JS engine (`@emotion/serialize` + `stylis`, wrapped in `src/utils/emotionCss.ts` to preserve the original JSS-style authoring contract — see that file's doc comments for details). These are the source-of-truth components that get wrapped for Angular, React, and Vue.
+This package contains the **Porsche Design System Web Components** built with Stencil and styled with an internal CSS-in-JS engine (a hand-rolled serializer over `stylis`, in `src/utils/css-serializer.ts`, that preserves the original JSS-style authoring contract — see that file's doc comments for details). These are the source-of-truth components that get wrapped for Angular, React, and Vue.
 
 ## Subpackages
 
@@ -16,7 +16,7 @@ This package contains the **Porsche Design System Web Components** built with St
 ```
 src/components/{name}/
 ├── {name}.tsx           # Stencil component
-├── {name}-styles.ts     # Component styles (object-based CSS-in-JS, compiled via emotion/stylis)
+├── {name}-styles.ts     # Component styles (object-based CSS-in-JS, compiled via stylis)
 ├── {name}-utils.ts      # Utility functions
 ├── {name}.spec.ts       # Unit tests
 ├── {name}-styles.spec.ts # Spec files for Unit Testing styles

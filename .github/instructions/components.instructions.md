@@ -7,7 +7,7 @@ applyTo: "packages/components/**"
 > **Note**: See also [`packages/components/AGENTS.md`](../../packages/components/AGENTS.md) for comprehensive component development guidance.
 > The AGENTS.md file is the canonical source for AI assistants.
 
-This package contains the **Porsche Design System Web Components** (Stencil, styled via an emotion/stylis-based CSS-in-JS engine). Generated work here must preserve existing PDS accessibility behavior and styling.
+This package contains the **Porsche Design System Web Components** (Stencil, styled via a stylis-based CSS-in-JS engine). Generated work here must preserve existing PDS accessibility behavior and styling.
 
 ## Accessibility contract (WCAG 2.2 AA)
 
