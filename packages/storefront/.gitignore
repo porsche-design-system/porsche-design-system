@@ -36,5 +36,6 @@ next-env.d.ts
 # generated
 src/lib/partialResults.ts
 public/assets/downloads/accessibility-audit.zip
+public/assets/downloads/accessibility-audit/*
 src/app/news/changelog/page.mdx
 src/app/license/license.mdx
