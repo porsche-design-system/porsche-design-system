@@ -145,7 +145,9 @@ stages:
   # 5. angular-migrations (AI, conditional): ng update migrate-only + TS reconcile.
   - name: angular_migrations
     orchestrator: implementation
-    depends_on: [apply_bumps]
+    # Depend on resolve_conflicts so migration never starts against a broken install.
+    # resolve_conflicts is conditional; a skipped dependency is treated as satisfied.
+    depends_on: [apply_bumps, resolve_conflicts]
     condition: "assess.outdated_report.updates_exist and decide.update_plan.angular_bumped"
     agents:
       - type: angular_migrator
@@ -206,7 +208,15 @@ stages:
 model_provider:
   primary: copilot
   config:
-    model_id: claude-sonnet-5
+    model_id: claude-opus-4.8
+    reasoning_effort: high
+
+# Install rsync into the agent-sandbox worker so packages/components-angular/scripts/ng-update.sh
+# (which uses rsync to stage and copy back the isolated Angular install) works inside the firewall.
+# Runs as root with open network BEFORE the egress firewall + non-root drop — the only window where
+# apt can reach Ubuntu mirrors. Fail-closed on error; no-op when the sandbox is inactive
+# (local TURBO_SPEC_FIREWALL_OFF=1 runs on a host that already has rsync).
+sandbox_setup_command: "apt-get update && apt-get install -y --no-install-recommends rsync"
 
 settings:
   max_total_retries: 10
