@@ -26,7 +26,7 @@ Fonts should be loaded as soon as possible but only those which are needed. The 
 
 Font loading strategy for Porsche Next uses `font-display: swap` (FOUT) instead of `font-display: block` for better performance and less potential for layout shifts.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages which needs to be injected into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-vue` packages which needs to be injected into the `<head>` of your `index.html`.
 
 An in-depth optimization guide can be found at [Vanilla Js Optimization](https://designsystem.porsche.com/must-know/initialization/vanilla-js#optimization).
 
@@ -80,7 +80,7 @@ Project integration differs based on the project setup. The following showcases 
 
 Porsche Design System components load dynamically from a CDN as soon as they are used for the first time. This results in a waterfall like loading behaviour where your application bootstraps first, then loads the Porsche Design System Core and when any component rendered the corresponding component chunk gets loaded afterwards. This can be optimized by fetching used chunks in parallel while the application is bootstrapping.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages which needs to be injected into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-vue` packages which needs to be injected into the `<head>` of your `index.html`.
 
 An in-depth optimization guide can be found at [Vanilla Js Optimization](https://designsystem.porsche.com/must-know/initialization/vanilla-js#optimization).
 
@@ -131,7 +131,7 @@ Project integration differs based on the project setup. The following showcases 
 
 Meta Icons are a set of icons to be used for the following purposes: **Favicon**, **Apple Touch Icons**, **Android Touch Icons** and **Microsoft Windows Tiles**. To simplify the implementation process we provide a `getMetaTagsAndIconLinks` partial.
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages which needs to be injected into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-vue` packages which needs to be injected into the `<head>` of your `index.html`.
 
 This partial also provides some default Open Graph and Twitter meta tags which will display a thumbnail image when sharing a link on social media. If you want to define your own information you can set the `ogImage` option to false.
 
@@ -209,7 +209,7 @@ Project integration differs based on the project setup. The following showcases 
 
 Porsche Design System icons are loaded dynamically from a CDN as soon as they are used for the first time. This results in a waterfall like loading behaviour where your application is bootstrapped first, then loads the Porsche Design System Core and when any icon is rendered the corresponding icon is loaded afterwards. This can be optimized by prefetching used icons in parallel while the application is being bootstrapped. Keep in mind that prefetching is not yet supported on Safari and Safari on iOS, so you will not see a performance benefit there. [Current prefetch status on CanIUse](https://caniuse.com/link-rel-prefetch)
 
-Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages which needs to be injected into the `<head>` of your `index.html`.
+Therefore, we provide a ready to use partial in all `@porsche-design-system/components-vue` packages which needs to be injected into the `<head>` of your `index.html`.
 
 ### Supported options
 
@@ -258,7 +258,7 @@ Project integration differs based on the project setup. The following showcases 
 
 When using `porsche-design-system/components-{angular|react}` our core loader gets bundled into your application. This impacts the loading behavior of Porsche Design System components because the code gets executed **later**, once the framework bootstraps.
 
-To achieve this bootstrapping **earlier** we provide a partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages which needs to be injected into the `<body>` of your `index.html`.
+To achieve this bootstrapping **earlier** we provide a partial in all `@porsche-design-system/components-vue` packages which needs to be injected into the `<body>` of your `index.html`.
 
 An in-depth optimization guide can be found at [Vanilla Js Optimization](https://designsystem.porsche.com/must-know/initialization/vanilla-js#optimization).
 

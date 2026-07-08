@@ -11,6 +11,15 @@ import { afterEach, describe, expect, it } from 'vitest';
 const realBinPath = path.resolve(__dirname, '../../../projects/components-wrapper/bin/pds-skill.js');
 const SKILL_LINK_NAME = 'porsche-design-system-docs';
 
+// The four wrapper packages ship a byte-identical, hand-maintained copy of the bin. Nothing in the
+// build generates them, so this is the only thing keeping them in sync.
+const wrapperBinPaths: Record<string, string> = {
+  js: realBinPath,
+  angular: path.resolve(__dirname, '../../../../components-angular/projects/angular-wrapper/bin/pds-skill.js'),
+  react: path.resolve(__dirname, '../../../../components-react/projects/react-wrapper/bin/pds-skill.js'),
+  vue: path.resolve(__dirname, '../../../../components-vue/projects/vue-wrapper/bin/pds-skill.js'),
+};
+
 const fixtures: string[] = [];
 
 type Fixture = {
@@ -98,5 +107,67 @@ describe('pds-skill bin', () => {
 
     expect(fs.existsSync(path.dirname(linkPath))).toBe(false);
     expect(fs.existsSync(linkPath)).toBe(false);
+  });
+
+  it('should refuse to replace a real directory at the link path (no destructive delete)', () => {
+    const { run, linkPath } = createFixture({ withSkill: true });
+
+    // A real, non-symlink directory a user may have hand-maintained.
+    fs.mkdirSync(linkPath, { recursive: true });
+    fs.writeFileSync(path.join(linkPath, 'keep.md'), '# do not delete\n');
+
+    expect(() => run()).toThrow();
+
+    expect(fs.lstatSync(linkPath).isDirectory()).toBe(true);
+    expect(fs.lstatSync(linkPath).isSymbolicLink()).toBe(false);
+    expect(fs.readFileSync(path.join(linkPath, 'keep.md'), 'utf8')).toContain('# do not delete');
+  });
+
+  it('should fail with a clear error when .claude exists as a file (ENOTDIR)', () => {
+    const { run, projectDir, linkPath } = createFixture({ withSkill: true });
+
+    // `.claude` occupied by a file blocks creating `.claude/skills`.
+    fs.writeFileSync(path.join(projectDir, '.claude'), 'not a dir\n');
+
+    expect(() => run()).toThrow();
+    expect(fs.existsSync(linkPath)).toBe(false);
+  });
+});
+
+describe('pds-skill bin sync', () => {
+  it('should ship a byte-identical bin in all four wrapper packages', () => {
+    const reference = fs.readFileSync(wrapperBinPaths.js, 'utf8');
+    for (const [framework, binPath] of Object.entries(wrapperBinPaths)) {
+      expect(fs.existsSync(binPath), `${framework} wrapper is missing bin/pds-skill.js`).toBe(true);
+      expect(fs.readFileSync(binPath, 'utf8'), `${framework} wrapper bin/pds-skill.js drifted from js`).toBe(reference);
+    }
+  });
+});
+
+describe('pds-skill npx resolution', () => {
+  // The documented install command is `npx --package=<pkg> pds-skill`, which names both the package
+  // and the binary explicitly and always resolves. A bare `npx <pkg> pds-skill` instead resolves the
+  // package's DEFAULT bin: single-bin packages use it, but a multi-bin package (e.g. components-react,
+  // which also ships `patchRemixRunProcessBrowserGlobalIdentifier`) requires a bin named after the
+  // package's unscoped basename — none matches, so npx errors with "could not determine executable to
+  // run". This asserts the invariant the `--package=` form relies on: every wrapper exposes a
+  // `pds-skill` bin pointing at the shipped script.
+  const wrapperPkgJsonPaths: Record<string, string> = {
+    js: path.resolve(__dirname, '../../../projects/components-wrapper/package.json'),
+    angular: path.resolve(__dirname, '../../../../components-angular/projects/angular-wrapper/package.json'),
+    react: path.resolve(__dirname, '../../../../components-react/projects/react-wrapper/package.json'),
+    vue: path.resolve(__dirname, '../../../../components-vue/projects/vue-wrapper/package.json'),
+  };
+
+  it('every wrapper exposes a `pds-skill` bin so `npx --package=<pkg> pds-skill` resolves', () => {
+    for (const [framework, pkgJsonPath] of Object.entries(wrapperPkgJsonPaths)) {
+      const pkg = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
+      const binRelPath = pkg.bin?.['pds-skill'];
+      expect(binRelPath, `${framework} wrapper package.json has no \`pds-skill\` bin entry`).toBeTruthy();
+      const binAbsPath = path.resolve(path.dirname(pkgJsonPath), binRelPath);
+      expect(fs.existsSync(binAbsPath), `${framework} wrapper \`pds-skill\` bin ${binRelPath} does not exist`).toBe(
+        true
+      );
+    }
   });
 });

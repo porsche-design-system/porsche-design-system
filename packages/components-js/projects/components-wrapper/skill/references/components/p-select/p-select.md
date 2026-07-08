@@ -109,7 +109,7 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `name` _(required)_ | `string` | `undefined` | Sets the name of the control submitted with the form data, identifying the selected value on the server. |
 | `required` | `boolean` | `false` | Marks the select as required so the form cannot be submitted unless a non-empty option is selected. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state of the select, which controls its visual appearance and feedback message style (`none`, `success`, `error`). |
-| `value` | `'string'` `'number'` `'null'` | `undefined` | The selected value. Matches an option strictly by type and value, meaning null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string or number only match an option whose value has the same type and equal value. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end. |
+| `value` | `string | number | null` | `undefined` | The selected value. Matches an option strictly by type and value, meaning null matches only an option with value null, undefined matches only an option with value undefined (no preselection by default), and string or number only match an option whose value has the same type and equal value. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end. |
 
 ### Events
 
@@ -131,6 +131,61 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `options-status` | no | — | When implementing a custom filter with the `filter` slot, use this slot for loading, error and no results status. |
 | `message` | no | — | Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
 | `filter` | no | — | Optional slot for providing a custom `p-input-search` input. When used, the default filter input is replaced and the built-in filter logic is disabled, giving full control over filtering behavior. |
+
+## Sub-components
+
+These tags are only valid inside this component (see each one’s allowed parents). Their APIs come from the same authoritative `component-meta` as the parent above.
+
+### `p-multi-select-option`
+
+Allowed parents: `p-multi-select`, `p-optgroup`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `disabled` | `boolean` | `false` | Disables the option, preventing it from being selected. |
+| `value` _(required)_ | `string | number` | `undefined` | Sets the value submitted with the form data when this option is selected in the parent multi-select. |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the option text. |
+
+### `p-optgroup`
+
+Allowed parents: `p-select`, `p-multi-select`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `disabled` | `boolean` | `false` | Disables all options in the group, preventing any of them from being selected. |
+| `label` | `string` | `undefined` | Sets the visible group heading displayed above the grouped options. |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the optgroup content. |
+
+### `p-select-option`
+
+Allowed parents: `p-select`, `p-optgroup`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `disabled` | `boolean` | `false` | Prevents the option from being selected and visually dims it to indicate it is unavailable. |
+| `value` | `string | number | null` | `undefined` | Sets the value submitted with the form data when this option is selected in the parent select control. |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the option content. |
 
 ## Examples
 

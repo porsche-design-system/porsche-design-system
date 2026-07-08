@@ -23,7 +23,7 @@ inside a `*.css.ts` file:
 
 ```ts
 // my-component.css.ts
-import { colorPrimary, spacingFluidMd } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+import { colorPrimary, spacingFluidMd } from '@porsche-design-system/components-react/vanilla-extract';
 import { style } from '@vanilla-extract/css';
 
 export const card = style({
@@ -45,7 +45,7 @@ global styles to generate the `.scheme-*` utility classes and add a polyfill for
 
 ```ts
 // app.css.ts
-import { colorSchemeStyles } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+import { colorSchemeStyles } from '@porsche-design-system/components-react/vanilla-extract';
 import { type GlobalStyleRule, globalStyle } from '@vanilla-extract/css';
 
 for (const { selector, rule } of colorSchemeStyles) {

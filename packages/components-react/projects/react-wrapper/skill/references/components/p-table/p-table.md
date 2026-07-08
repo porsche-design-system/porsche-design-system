@@ -94,6 +94,84 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `--p-table-scroll-indicator-top` | `0px` | Defines the distance from the top of the viewport at which the scroll indicator sticks when scrolling down and `sticky` is enabled. |
 | `--p-table-scroll-indicator-bottom` | `0px` | Defines the distance from the bottom of the viewport at which the scroll indicator sticks when scrolling up and `sticky` is enabled. |
 
+## Sub-components
+
+These tags are only valid inside this component (see each one’s allowed parents). Their APIs come from the same authoritative `component-meta` as the parent above.
+
+### `p-table-body`
+
+Allowed parent: `p-table`.
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the table body content. |
+
+### `p-table-cell`
+
+Allowed parent: `p-table-row`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `multiline` | `boolean` | `false` | Allows slotted text to wrap onto multiple lines instead of being forced onto a single line. |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the table cell content. |
+
+### `p-table-head`
+
+Allowed parent: `p-table`.
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the table head content. |
+
+### `p-table-head-cell`
+
+Allowed parents: `p-table-head-row`, `p-table-row`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `hideLabel` | `boolean` | `false` | Hides the visible column label while keeping it accessible to screen readers. Only applies when `sort` is not set. |
+| `multiline` | `boolean` | `false` | Allows the column header text to wrap onto multiple lines instead of being truncated to a single line. |
+| `sort` | `TableHeadCellSort` | `undefined` | Configures sorting behavior for this column by providing an `id`, `active` state, and current `direction` (`asc` or `desc`). |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the table head cell content. |
+
+### `p-table-head-row`
+
+Allowed parent: `p-table-head`.
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the table head row content. |
+
+### `p-table-row`
+
+Allowed parents: `p-table-body`, `p-table-head`.
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the table row content. |
+
 ## Examples
 
 | Example | When to use | File |

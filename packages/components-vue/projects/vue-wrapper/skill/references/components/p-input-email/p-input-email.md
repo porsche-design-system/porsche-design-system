@@ -118,7 +118,7 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `readOnly` | `boolean` | `false` | Makes the field read-only — the value is displayed but cannot be edited. The value is still submitted with the form. |
 | `required` | `boolean` | `false` | Marks the field as required — form submission is blocked while this field is empty. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). |
-| `value` | `'string'` `'null'` | `''` | Sets the current email value. When `multiple` is enabled, accepts a comma-separated list of email addresses. |
+| `value` | `string | null` | `''` | Sets the current email value. When `multiple` is enabled, accepts a comma-separated list of email addresses. |
 
 ### Events
 

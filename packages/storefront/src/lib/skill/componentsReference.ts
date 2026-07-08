@@ -1,6 +1,6 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentType } from 'react';
-import { renderComponentApi } from './componentApi';
+import { parseRequiredParents, renderComponentApi, renderSubComponents } from './componentApi';
 import { type ComponentExamplesOptions, writeComponentExamples } from './componentExamples';
 import { rewriteDocLinks } from './links';
 import { leadSentence, stripLeadingH1 } from './markdown';
@@ -38,17 +38,33 @@ export type ComponentReferenceReport = {
 
 const NO_SUMMARY = '_No description available._';
 
+/**
+ * Curated roster one-liners for components whose introduction's lead sentence is unsuitable as a
+ * summary — marketing/context framing, a stat about the component rather than what it is, a
+ * grammatically broken opener, or a sentence truncated by an interactive component embedded in the
+ * MDX prose. The roster is the agent's primary lookup surface, so these get a concise "what it is"
+ * line instead of `leadSentence(introduction)`. Every other component keeps the auto-extracted lead
+ * sentence. Keys are asserted to be real documented tags by the completeness gate.
+ */
+export const ROSTER_SUMMARY_OVERRIDES: Record<string, string> = {
+  'p-flag': 'Displays a country or region flag, styled to the Porsche design language.',
+  'p-pagination': 'Splits a large set of content across pages and lets the user navigate between them.',
+  'p-popover': 'Shows additional contextual content in an overlay on top of other content, typically opened from an info button.',
+  'p-spinner': 'Indicates an ongoing process the user must wait for, such as loading or processing.',
+};
+
 const renderSection = (
   component: ComponentType | undefined,
   sections: string[],
   degradedSections: string[],
   name: string,
+  label: string,
   transform: (markdown: string) => string = (markdown) => markdown
 ): void => {
   if (!component) {
     return;
   }
-  const { markdown, degraded } = renderMdxToMarkdown(component);
+  const { markdown, degraded } = renderMdxToMarkdown(component, label);
   if (degraded) {
     degradedSections.push(name);
     return;
@@ -71,7 +87,7 @@ export const renderComponentProse = (
   const degradedSections: string[] = [];
   const sections: string[] = [`# ${tag}`];
 
-  const introResult = renderMdxToMarkdown(source.introduction);
+  const introResult = renderMdxToMarkdown(source.introduction, `${tag} › introduction`);
   if (introResult.degraded) {
     degradedSections.push('introduction');
   } else if (introResult.markdown.trim()) {
@@ -79,14 +95,14 @@ export const renderComponentProse = (
   }
   const summary = introResult.degraded ? NO_SUMMARY : leadSentence(introResult.markdown) || NO_SUMMARY;
 
-  renderSection(source.usage, sections, degradedSections, 'usage', stripLeadingH1);
-  renderSection(source.accessibility, sections, degradedSections, 'accessibility', stripLeadingH1);
+  renderSection(source.usage, sections, degradedSections, 'usage', `${tag} › usage`, stripLeadingH1);
+  renderSection(source.accessibility, sections, degradedSections, 'accessibility', `${tag} › accessibility`, stripLeadingH1);
 
   const noteEntries = Object.values(source.notes ?? {});
   if (noteEntries.length > 0) {
     const noteBlocks: string[] = ['## Notes'];
     for (const note of noteEntries) {
-      const { markdown, degraded } = renderMdxToMarkdown(note.description);
+      const { markdown, degraded } = renderMdxToMarkdown(note.description, `${tag} › notes:${note.name}`);
       if (degraded) {
         degradedSections.push(`notes:${note.name}`);
         continue;
@@ -108,6 +124,57 @@ export type ComponentApiOptions = {
 };
 
 /**
+ * The top-level (standalone, documented) ancestors of a tag: follow `requiredParent`
+ * up until a component with no parent is reached. A sub-component may resolve to more
+ * than one top-level parent (e.g. `p-select-option` belongs to both `p-select` and
+ * `p-multi-select`), so it is documented under each. Guards against cycles.
+ */
+const topLevelAncestors = (
+  tag: string,
+  componentMeta: Record<string, ComponentMeta>,
+  seen: Set<string> = new Set()
+): string[] => {
+  if (seen.has(tag)) {
+    return [];
+  }
+  seen.add(tag);
+  const parents = parseRequiredParents(componentMeta[tag]?.requiredParent);
+  if (parents.length === 0) {
+    return [tag]; // no parent → this is a top-level component
+  }
+  const ancestors = new Set<string>();
+  for (const parent of parents) {
+    for (const ancestor of topLevelAncestors(parent, componentMeta, seen)) {
+      ancestors.add(ancestor);
+    }
+  }
+  return [...ancestors];
+};
+
+/**
+ * Map each top-level component tag to the sub-components (tags with a `requiredParent`)
+ * that resolve to it, sorted for a deterministic tree. Sub-components have no standalone
+ * docs page, so their authoritative API is documented under their parent(s).
+ */
+export const buildSubComponentMap = (
+  componentMeta: Record<string, ComponentMeta>
+): Record<string, { tag: string; meta: ComponentMeta }[]> => {
+  const map: Record<string, { tag: string; meta: ComponentMeta }[]> = {};
+  for (const [tag, meta] of Object.entries(componentMeta)) {
+    if (parseRequiredParents(meta.requiredParent).length === 0) {
+      continue; // top-level component, not a sub-component
+    }
+    for (const ancestor of topLevelAncestors(tag, componentMeta)) {
+      (map[ancestor] ??= []).push({ tag, meta });
+    }
+  }
+  for (const entries of Object.values(map)) {
+    entries.sort((a, b) => a.tag.localeCompare(b.tag));
+  }
+  return map;
+};
+
+/**
  * Write the prose section of every component reference into the skill tree, keyed by
  * `componentMeta` tag (the iteration source guarantees coverage). When
  * {@link ComponentApiOptions} is supplied, the props/slots/events/CSS-variable API
@@ -124,6 +191,7 @@ export const writeComponentReferences = (
   const tags = Object.keys(metaMap).sort();
   const roster: ComponentRosterEntry[] = [];
   const degraded: DegradedProse[] = [];
+  const subComponentsByParent = apiOptions ? buildSubComponentMap(apiOptions.componentMeta) : {};
 
   for (const tag of tags) {
     const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag]);
@@ -131,6 +199,10 @@ export const writeComponentReferences = (
     const sections = [markdown];
     if (apiMeta) {
       sections.push(renderComponentApi(apiMeta, apiOptions.framework));
+    }
+    const subComponents = subComponentsByParent[tag];
+    if (subComponents && subComponents.length > 0) {
+      sections.push(renderSubComponents(subComponents));
     }
     const examplesSource = examplesOptions?.metaMap[tag];
     if (examplesSource) {
@@ -143,7 +215,7 @@ export const writeComponentReferences = (
     // "when to use" descriptions alike — relative to this component's own file location.
     const relativePath = `components/${tag}/${tag}.md`;
     tree.writeReference(relativePath, rewriteDocLinks(sections.join('\n\n'), `references/${relativePath}`));
-    roster.push({ tag, summary });
+    roster.push({ tag, summary: ROSTER_SUMMARY_OVERRIDES[tag] ?? summary });
     if (degradedSections.length > 0) {
       degraded.push({ tag, sections: degradedSections });
     }

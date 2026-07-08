@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { ROSTER_SUMMARY_OVERRIDES } from '@/lib/skill/componentsReference';
 import { FRAMEWORKS, WRAPPER_SKILL_DIRS } from '@/lib/skill/skillTree';
 import { describe, expect, it } from 'vitest';
 
@@ -22,6 +23,16 @@ const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..
  */
 const DOCUMENTED_TAGS = Object.entries(componentMeta)
   .filter(([, meta]) => meta.isChunked && !meta.requiredParent)
+  .map(([tag]) => tag)
+  .sort();
+
+/**
+ * Sub-components (a `requiredParent` is set) have no standalone docs page; their API is
+ * documented under their parent(s) in a "Sub-components" section. Each must appear as a
+ * `### \`<tag>\`` heading in at least one parent reference file somewhere in the tree.
+ */
+const SUB_COMPONENT_TAGS = Object.entries(componentMeta)
+  .filter(([, meta]) => meta.requiredParent)
   .map(([tag]) => tag)
   .sort();
 
@@ -55,6 +66,12 @@ describe('skill tree completeness', () => {
     expect(DOCUMENTED_TAGS.length).toBeGreaterThan(0);
   });
 
+  it('only overrides roster summaries for real documented components', () => {
+    for (const tag of Object.keys(ROSTER_SUMMARY_OVERRIDES)) {
+      expect(DOCUMENTED_TAGS, `stale roster-summary override for ${tag}`).toContain(tag);
+    }
+  });
+
   for (const framework of FRAMEWORKS) {
     describe(`${framework} skill tree`, () => {
       const root = path.join(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]);
@@ -71,6 +88,54 @@ describe('skill tree completeness', () => {
           skillMd.includes(`[${tag}.md](references/components/${tag}/${tag}.md)`),
           `missing SKILL.md roster row for ${tag}`
         ).toBe(true);
+      });
+
+      it('documents exactly the componentMeta-derived set — no missing and no extra component references', () => {
+        // The committed component dirs are the generator's output, keyed off `componentDocsMeta`. If
+        // that iteration source drifts from the `componentMeta` filter (a new/removed/renamed tag, or a
+        // sub-component leaking a top-level page), the two sets diverge — assert them equal so neither
+        // direction can rot silently.
+        const documented = fs.existsSync(componentsDir)
+          ? fs
+              .readdirSync(componentsDir, { withFileTypes: true })
+              .filter((entry) => entry.isDirectory())
+              .map((entry) => entry.name)
+              .sort()
+          : [];
+        expect(documented).toEqual(DOCUMENTED_TAGS);
+      });
+
+      it.each(SUB_COMPONENT_TAGS)('documents sub-component %s under a parent reference', (tag) => {
+        const heading = `### \`${tag}\``;
+        const documented = DOCUMENTED_TAGS.some((parent) => {
+          const file = path.join(componentsDir, parent, `${parent}.md`);
+          return fs.existsSync(file) && fs.readFileSync(file, 'utf-8').includes(heading);
+        });
+        expect(documented, `sub-component ${tag} is not documented under any parent reference`).toBe(true);
+      });
+
+      it('uses the curated roster summary for overridden components', () => {
+        for (const [tag, summary] of Object.entries(ROSTER_SUMMARY_OVERRIDES)) {
+          expect(skillMd, `${tag} roster summary not overridden in SKILL.md`).toContain(`| \`${tag}\` | ${summary} |`);
+        }
+      });
+
+      it('resolves the {js|angular|react|vue} package placeholder everywhere in the tree', () => {
+        const offenders: string[] = [];
+        const walk = (dir: string): void => {
+          for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+            const abs = path.join(dir, entry.name);
+            if (entry.isDirectory()) {
+              walk(abs);
+            } else if (fs.readFileSync(abs, 'utf-8').includes('{js|angular|react|vue}')) {
+              offenders.push(path.relative(root, abs));
+            }
+          }
+        };
+        if (fs.existsSync(root)) {
+          walk(root);
+        }
+        expect(offenders, `unresolved framework placeholder in: ${offenders.join(', ')}`).toEqual([]);
       });
 
       it('gives every example a description', () => {

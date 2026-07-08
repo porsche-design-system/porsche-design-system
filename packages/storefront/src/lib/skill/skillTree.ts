@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { resolveFrameworkPlaceholder } from './links';
 
 /** The four wrapper frameworks the skill is generated for. */
 export const FRAMEWORKS = ['js', 'angular', 'react', 'vue'] as const;
@@ -52,10 +53,18 @@ export type ReferenceMapEntry = { path: string; useWhen: string };
  */
 export class SkillTree {
   public readonly root: string;
+  private readonly framework?: Framework;
   private readonly references: ReferenceMapEntry[] = [];
 
-  constructor(root: string) {
+  /**
+   * @param root  the tree's filesystem root.
+   * @param framework  when set, produced content is resolved to this framework's concrete package
+   *   name (the `{js|angular|react|vue}` placeholder → `components-<framework>`). Omitted in unit
+   *   tests that assert on raw writer output.
+   */
+  constructor(root: string, framework?: Framework) {
     this.root = root;
+    this.framework = framework;
   }
 
   /** Resolve a tree-relative path to an absolute filesystem path. */
@@ -74,8 +83,9 @@ export class SkillTree {
   /** Write a produced file at a tree-relative path, creating parent dirs. Returns the path written. */
   public write(relativePath: string, content: string): string {
     const target = this.resolve(relativePath);
+    const resolved = this.framework ? resolveFrameworkPlaceholder(content, this.framework) : content;
     fs.mkdirSync(path.dirname(target), { recursive: true });
-    fs.writeFileSync(target, content.endsWith('\n') ? content : `${content}\n`, 'utf-8');
+    fs.writeFileSync(target, resolved.endsWith('\n') ? resolved : `${resolved}\n`, 'utf-8');
     return relativePath;
   }
 

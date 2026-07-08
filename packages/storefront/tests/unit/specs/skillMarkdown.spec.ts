@@ -1,5 +1,34 @@
-import { escapeCell, leadSentence, stripLeadingH1 } from '@/lib/skill/markdown';
+import { escapeCell, headingSlug, leadSentence, markdownTable, stripLeadingH1 } from '@/lib/skill/markdown';
 import { describe, expect, it } from 'vitest';
+
+describe('headingSlug', () => {
+  it('lower-cases, drops punctuation, and hyphenates whitespace', () => {
+    expect(headingSlug('CSS Variables')).toBe('css-variables');
+    expect(headingSlug('  Spaced   Out  ')).toBe('spaced-out');
+    expect(headingSlug('p-button (deprecated)')).toBe('p-button-deprecated');
+    // Runs of whitespace collapse to a *single* hyphen — a minor divergence from GitHub (which would
+    // keep a hyphen per space) that is harmless for the single-word token categories linked today.
+    expect(headingSlug('Slots & Events')).toBe('slots-events');
+  });
+
+  it('keeps distinct headings distinct (no collision for the categories actually linked)', () => {
+    const categories = ['Color', 'Spacing', 'Typography', 'Border', 'Shadow'];
+    const slugs = categories.map(headingSlug);
+    expect(new Set(slugs).size).toBe(categories.length);
+  });
+});
+
+describe('markdownTable', () => {
+  it('emits a header, a separator row, and one row per data entry', () => {
+    expect(markdownTable(['Name', 'Type'], [['open', 'boolean']])).toBe(
+      ['| Name | Type |', '| --- | --- |', '| open | boolean |'].join('\n')
+    );
+  });
+
+  it('emits just the header and separator when there are no rows', () => {
+    expect(markdownTable(['A', 'B'], [])).toBe(['| A | B |', '| --- | --- |'].join('\n'));
+  });
+});
 
 describe('leadSentence', () => {
   it('returns the first sentence of the leading paragraph', () => {

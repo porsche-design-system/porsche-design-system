@@ -145,4 +145,11 @@ describe('renderMdxToMarkdown', () => {
     const Empty: ComponentType = () => null;
     expect(renderMdxToMarkdown(Empty)).toEqual({ markdown: '', degraded: true });
   });
+
+  it('rethrows an SSR failure with the source label for context', () => {
+    const Throwing: ComponentType = () => {
+      throw new Error('boom');
+    };
+    expect(() => renderMdxToMarkdown(Throwing, 'p-button › usage')).toThrow(/MDX SSR failed for p-button › usage: boom/);
+  });
 });

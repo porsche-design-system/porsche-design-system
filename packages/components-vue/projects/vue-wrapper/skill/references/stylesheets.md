@@ -26,11 +26,10 @@ When you import the main package CSS file, all global styles are included (CSS v
 scheme, font face and normalize):
 
 ```css
-/* Replace {js|angular|react|vue} with your framework, e.g. components-react */
-@import '@porsche-design-system/components-{js|angular|react|vue}';
+@import '@porsche-design-system/components-vue';
 
 /* Alternative: if your bundler requires an explicit .css extension, use this path instead */
-@import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
+@import '@porsche-design-system/components-vue/index.css';
 ```
 
 If you only need specific styles, import each stylesheet separately for more granular control. Note
@@ -38,10 +37,10 @@ that `variables.css` and `font-face.css` are **required** — components will no
 without them:
 
 ```css
-@import '@porsche-design-system/components-{js|angular|react|vue}/variables.css';
-@import '@porsche-design-system/components-{js|angular|react|vue}/font-face.css';
-@import '@porsche-design-system/components-{js|angular|react|vue}/normalize.css';
-@import '@porsche-design-system/components-{js|angular|react|vue}/color-scheme.css';
+@import '@porsche-design-system/components-vue/variables.css';
+@import '@porsche-design-system/components-vue/font-face.css';
+@import '@porsche-design-system/components-vue/normalize.css';
+@import '@porsche-design-system/components-vue/color-scheme.css';
 ```
 
 ### CSS variables

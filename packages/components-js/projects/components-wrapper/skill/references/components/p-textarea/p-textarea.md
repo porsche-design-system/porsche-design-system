@@ -96,7 +96,7 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `rows` | `number` | `7` | Sets the initial visible height of the textarea in lines of text. Has no effect when the `--p-textarea-field-sizing` CSS variable is set to `content`. |
 | `spellCheck` | `boolean` | `undefined` | Controls whether the browser's built-in spell-checking and grammar checking is enabled for the textarea content. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state of the textarea, which controls its visual appearance and feedback message style (`none`, `success`, `error`). |
-| `value` | `'string'` `'null'` | `''` | Sets the current multi-line text value of the textarea and reflects any changes made by the user. |
+| `value` | `string | null` | `''` | Sets the current multi-line text value of the textarea and reflects any changes made by the user. |
 | `wrap` | `'hard'` `'soft'` `'off'` | `'soft'` | Controls how the submitted text wraps in the form data: `soft` wraps only visually, `hard` inserts line breaks at the textarea width. |
 
 ### Events

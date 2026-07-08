@@ -14,6 +14,7 @@
     "build:prepareChangelog": "tsx --tsconfig tsconfig.node.json scripts/prepareChangelog.ts",
     "build:copyLicense": "cp ../../LICENSE.md './src/app/(main)/license/license.mdx'",
     "build:skill": "node --import tsx --require ./scripts/skill-mdx-loader.cjs scripts/build-skill.ts",
+    "build:skill:check": "npm run build:skill && tsx --tsconfig tsconfig.node.json scripts/assert-skill-in-sync.ts",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws -p 8080 -d ./dist'",
     "updateAlgolia": "tsx --tsconfig tsconfig.json scripts/updateAlgoliaIndex.tsx",
     "lint": "biome lint",

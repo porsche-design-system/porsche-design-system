@@ -114,7 +114,7 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `required` | `boolean` | `false` | Marks the field as required — form submission is blocked while no date is selected. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). |
 | `step` | `number` | `1` | Sets the stepping interval in days. The selected date must align with the `min` date by a multiple of this value. |
-| `value` | `'string'` `'null'` | `''` | Sets the current date value in YYYY-MM-DD format (e.g. `2025-07-02`). |
+| `value` | `string | null` | `''` | Sets the current date value in YYYY-MM-DD format (e.g. `2025-07-02`). |
 
 ### Events
 

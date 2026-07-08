@@ -1,4 +1,5 @@
 import path from 'node:path';
+import type { Framework } from './skillTree';
 
 /**
  * Rewrites storefront site-absolute markdown links in generated prose so they resolve inside the
@@ -44,6 +45,25 @@ const localTarget = (href: string): string | null => {
   }
   return first ? (ROUTE_REFERENCES[first] ?? null) : null;
 };
+
+/**
+ * The multi-framework package placeholder the storefront MDX and style serializers author, e.g.
+ * `@porsche-design-system/components-{js|angular|react|vue}`. Correct in the framework-agnostic
+ * storefront, but each skill tree ships for one framework — so the placeholder must resolve to the
+ * concrete package name (the whole point of shipping four trees).
+ */
+const FRAMEWORK_PLACEHOLDER = '{js|angular|react|vue}';
+
+/** A `Replace {js|angular|react|vue} with your framework …` instruction line — obsolete once resolved. */
+const PLACEHOLDER_INSTRUCTION = /^.*Replace \{js\|angular\|react\|vue\} with your framework[^\n]*\n?/gm;
+
+/**
+ * Resolve the framework placeholder in generated content to this tree's concrete package name, and
+ * drop the now-pointless "replace it with your framework" instruction. A no-op on content that does
+ * not carry the placeholder, so it is safe to run over every produced file.
+ */
+export const resolveFrameworkPlaceholder = (markdown: string, framework: Framework): string =>
+  markdown.replace(PLACEHOLDER_INSTRUCTION, '').replaceAll(FRAMEWORK_PLACEHOLDER, framework);
 
 const LINK_PATTERN = /\]\((\/[^)\s]*)\)/g;
 

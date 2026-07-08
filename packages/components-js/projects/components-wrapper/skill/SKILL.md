@@ -7,9 +7,36 @@ description: Build, style, review, or upgrade web user interfaces with the Porsc
 
 Version-exact knowledge of the installed Porsche Design System. Open the reference below that matches the task, then apply the core rules.
 
+## Getting started
+
+Install `@porsche-design-system/components-js`, initialize the loader once, and import the global stylesheet:
+
+```ts
+import { load } from '@porsche-design-system/components-js';
+
+load();
+```
+
+For best loading performance, inject the loader-script partial into your HTML `<body>` at build time instead — see `references/partials.md` (`getLoaderScript`).
+
+```css
+/* style.css — one import for all global styles, plus a FOUC guard */
+@import '@porsche-design-system/components-js';
+
+:not(:defined) { visibility: hidden; }
+```
+
+Writing components:
+- Use the **custom-element tags** directly in HTML: `<p-button>`, `<p-text-field-wrapper>`.
+- Set props as attributes (`variant="secondary"`) or as DOM properties for non-string values.
+- Listen to events with `element.addEventListener('dismiss', ...)`.
+- Place a child into a named slot with the `slot="..."` attribute.
+
 ## Components
 
 The Porsche Design System ships 58 components. Open a component's reference for its props, slots, events, CSS variables and examples before using it.
+
+Sub-components (e.g. `p-table-row`, `p-select-option`, `p-tabs-item`) have no separate row — they are only valid inside a parent, so their API is documented under a "Sub-components" section in that parent's reference.
 
 | Component | Summary | Reference |
 | --- | --- | --- |
@@ -27,7 +54,7 @@ The Porsche Design System ships 58 components. Open a component's reference for 
 | `p-divider` | The `p-divider` is used as 'horizontal or vertical rule' and displays a dividing line. | [p-divider.md](references/components/p-divider/p-divider.md) |
 | `p-drilldown` | The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown menu that overlays the page content from the start side of the screen. | [p-drilldown.md](references/components/p-drilldown/p-drilldown.md) |
 | `p-fieldset` | The `p-fieldset` is a grouping component for wrapping contextual associated form elements. | [p-fieldset.md](references/components/p-fieldset/p-fieldset.md) |
-| `p-flag` | Alongside icons, colors and typography, are flags a fundamental part of the Porsche design language. | [p-flag.md](references/components/p-flag/p-flag.md) |
+| `p-flag` | Displays a country or region flag, styled to the Porsche design language. | [p-flag.md](references/components/p-flag/p-flag.md) |
 | `p-flyout` | The `p-flyout` is a overlay from the left or right side of the screen. | [p-flyout.md](references/components/p-flyout/p-flyout.md) |
 | `p-heading` | `p-heading` is used to highlight and specify heading styling and hierarchy in documents. | [p-heading.md](references/components/p-heading/p-heading.md) |
 | `p-icon` | Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components of the Porsche design. | [p-icon.md](references/components/p-icon/p-icon.md) |
@@ -50,15 +77,15 @@ The Porsche Design System ships 58 components. Open a component's reference for 
 | `p-modal` | The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying page are blocked. | [p-modal.md](references/components/p-modal/p-modal.md) |
 | `p-model-signature` | The `p-model-signature` component is purely visual and renders the different signatures of Porsche car models. | [p-model-signature.md](references/components/p-model-signature/p-model-signature.md) |
 | `p-multi-select` | The `p-multi-select` component is a versatile custom form element that facilitates the selection of multiple options. | [p-multi-select.md](references/components/p-multi-select/p-multi-select.md) |
-| `p-pagination` | To adapt the pagination to the specific viewport context, the amount of displayed page items varies between either `7` (desktop/tablet) or `5` (mobile). | [p-pagination.md](references/components/p-pagination/p-pagination.md) |
+| `p-pagination` | Splits a large set of content across pages and lets the user navigate between them. | [p-pagination.md](references/components/p-pagination/p-pagination.md) |
 | `p-pin-code` | The `p-pin-code` component is optimized for entering sequences of digits. | [p-pin-code.md](references/components/p-pin-code/p-pin-code.md) |
-| `p-popover` | The `p-popover` component can be used to display some additional content on top of another in conjunction with the info | [p-popover.md](references/components/p-popover/p-popover.md) |
+| `p-popover` | Shows additional contextual content in an overlay on top of other content, typically opened from an info button. | [p-popover.md](references/components/p-popover/p-popover.md) |
 | `p-radio-group` | The `p-radio-group` component is a versatile custom form element that enables the selection of a single option. | [p-radio-group.md](references/components/p-radio-group/p-radio-group.md) |
 | `p-scroller` | The `p-scroller` component forces its child nodes to be rendered horizontally next to each other. | [p-scroller.md](references/components/p-scroller/p-scroller.md) |
 | `p-segmented-control` | The `p-segmented-control` component is similar to the native `select` element while showing all available options right away. | [p-segmented-control.md](references/components/p-segmented-control/p-segmented-control.md) |
 | `p-select` | The `p-select` component is a versatile custom form element that enables the selection of a single option. | [p-select.md](references/components/p-select/p-select.md) |
 | `p-sheet` | The `p-sheet` is a temporary overlay to focus the user's attention on one or multiple tasks while the underlying page is still visible but interactions with it are blocked. | [p-sheet.md](references/components/p-sheet/p-sheet.md) |
-| `p-spinner` | There are unavoidable moments when the user has to wait for more than 1 second (for example due to technical processing of information or requests). | [p-spinner.md](references/components/p-spinner/p-spinner.md) |
+| `p-spinner` | Indicates an ongoing process the user must wait for, such as loading or processing. | [p-spinner.md](references/components/p-spinner/p-spinner.md) |
 | `p-stepper-horizontal` | The `p-stepper-horizontal` component displays progress through a sequence of logical and numbered steps. | [p-stepper-horizontal.md](references/components/p-stepper-horizontal/p-stepper-horizontal.md) |
 | `p-switch` | The `p-switch` component is a control that is used to quickly switch between two possible states. | [p-switch.md](references/components/p-switch/p-switch.md) |
 | `p-table` | The `p-table` component displays tabular data and offers column-wise sorting options. | [p-table.md](references/components/p-table/p-table.md) |

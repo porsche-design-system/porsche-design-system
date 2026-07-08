@@ -56,6 +56,17 @@ const formatDefault = (meta: PropMeta): string => {
 };
 
 /**
+ * Primitive type keywords. When a prop's `allowedValues` array is composed *entirely* of these, it is
+ * the decomposition of a union type (e.g. `value` → `['string', 'number', 'null']` for the type
+ * `string | number | null`), not a set of enumerable string literals — so it must be rendered as the
+ * type, not as quoted values (`'string'`).
+ */
+const PRIMITIVE_TYPE_KEYWORDS = new Set(['string', 'number', 'boolean', 'null', 'undefined', 'object', 'bigint', 'symbol']);
+
+const isTypeUnionDecomposition = (allowedValues: readonly unknown[]): boolean =>
+  allowedValues.length > 0 && allowedValues.every((value) => typeof value === 'string' && PRIMITIVE_TYPE_KEYWORDS.has(value));
+
+/**
  * The prop's type cell: its named type plus the recommended (non-deprecated) allowed
  * values, with any deprecated values listed separately so they are never presented as
  * recommended. Breakpoint-customizable props note the generic wrapper.
@@ -63,7 +74,7 @@ const formatDefault = (meta: PropMeta): string => {
 const formatType = (meta: PropMeta): string => {
   const parts: string[] = [];
 
-  if (Array.isArray(meta.allowedValues)) {
+  if (Array.isArray(meta.allowedValues) && !isTypeUnionDecomposition(meta.allowedValues)) {
     const deprecated = new Set(meta.deprecatedValues ?? []);
     const recommended = meta.allowedValues.filter((value) => !deprecated.has(value as string));
     const deprecatedValues = meta.allowedValues.filter((value) => deprecated.has(value as string));
@@ -86,10 +97,10 @@ const formatType = (meta: PropMeta): string => {
   return parts.join('<br>');
 };
 
-const buildTable = (heading: string, columns: string[], rows: string[][]): string =>
-  [`### ${heading}`, '', markdownTable(columns, rows)].join('\n');
+const buildTable = (heading: string, columns: string[], rows: string[][], level: number): string =>
+  [`${'#'.repeat(level)} ${heading}`, '', markdownTable(columns, rows)].join('\n');
 
-const propsTable = (propsMeta: NonNullable<ComponentMeta['propsMeta']>): string => {
+const propsTable = (propsMeta: NonNullable<ComponentMeta['propsMeta']>, level: number): string => {
   const rows = Object.entries(propsMeta)
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([name, meta]: [string, PropMeta]) => [
@@ -98,10 +109,10 @@ const propsTable = (propsMeta: NonNullable<ComponentMeta['propsMeta']>): string 
       formatDefault(meta),
       escapeCell(meta.description ?? ''),
     ]);
-  return buildTable('Properties', ['Property', 'Type', 'Default', 'Description'], rows);
+  return buildTable('Properties', ['Property', 'Type', 'Default', 'Description'], rows, level);
 };
 
-const eventsTable = (eventsMeta: NonNullable<ComponentMeta['eventsMeta']>): string => {
+const eventsTable = (eventsMeta: NonNullable<ComponentMeta['eventsMeta']>, level: number): string => {
   const rows = Object.entries(eventsMeta)
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([name, meta]: [string, EventMeta]) => [
@@ -109,26 +120,53 @@ const eventsTable = (eventsMeta: NonNullable<ComponentMeta['eventsMeta']>): stri
       code(`CustomEvent<${meta.type}>`) + (meta.typeDetail ? `<br>${code(meta.typeDetail)}` : ''),
       escapeCell(meta.description ?? ''),
     ]);
-  return buildTable('Events', ['Event', 'Type', 'Description'], rows);
+  return buildTable('Events', ['Event', 'Type', 'Description'], rows, level);
 };
 
-const slotsTable = (slotsMeta: NonNullable<ComponentMeta['slotsMeta']>): string => {
+const slotsTable = (slotsMeta: NonNullable<ComponentMeta['slotsMeta']>, level: number): string => {
   const rows = Object.entries(slotsMeta).map(([name, meta]: [string, SlotMeta]) => [
     `${name === '' ? '_(default)_' : code(name)}${flags(meta)}`,
     meta.isRequired ? 'yes' : 'no',
     (meta.allowedTagNames ?? []).map(code).join(' ') || '—',
     escapeCell(meta.description ?? ''),
   ]);
-  return buildTable('Slots', ['Slot', 'Required', 'Allowed tag names', 'Description'], rows);
+  return buildTable('Slots', ['Slot', 'Required', 'Allowed tag names', 'Description'], rows, level);
 };
 
-const cssVariablesTable = (cssVariablesMeta: NonNullable<ComponentMeta['cssVariablesMeta']>): string => {
+const cssVariablesTable = (cssVariablesMeta: NonNullable<ComponentMeta['cssVariablesMeta']>, level: number): string => {
   const rows = Object.entries(cssVariablesMeta).map(([name, meta]: [string, CssVariableMeta]) => [
     `${code(name)}${flags(meta)}`,
     meta.defaultValue ? code(meta.defaultValue) : '—',
     escapeCell(meta.description ?? ''),
   ]);
-  return buildTable('CSS Variables', ['CSS Variable', 'Default', 'Description'], rows);
+  return buildTable('CSS Variables', ['CSS Variable', 'Default', 'Description'], rows, level);
+};
+
+/** The non-empty props/slots/events/CSS-variable tables for a component, headings at the given level. */
+const apiTables = (meta: ComponentMeta, level: number): string[] => {
+  const tables: string[] = [];
+  if (meta.propsMeta && Object.keys(meta.propsMeta).length > 0) {
+    tables.push(propsTable(meta.propsMeta, level));
+  }
+  if (meta.eventsMeta && Object.keys(meta.eventsMeta).length > 0) {
+    tables.push(eventsTable(meta.eventsMeta, level));
+  }
+  if (meta.slotsMeta && Object.keys(meta.slotsMeta).length > 0) {
+    tables.push(slotsTable(meta.slotsMeta, level));
+  }
+  if (meta.cssVariablesMeta && Object.keys(meta.cssVariablesMeta).length > 0) {
+    tables.push(cssVariablesTable(meta.cssVariablesMeta, level));
+  }
+  return tables;
+};
+
+/** Normalize `requiredParent` (a tag, a comma-list, or an array) to a list of parent tags. */
+export const parseRequiredParents = (requiredParent: string | string[] | undefined): string[] => {
+  if (!requiredParent) {
+    return [];
+  }
+  const raw = Array.isArray(requiredParent) ? requiredParent : requiredParent.split(',');
+  return raw.map((tag) => tag.trim()).filter(Boolean);
 };
 
 /**
@@ -140,20 +178,31 @@ const cssVariablesTable = (cssVariablesMeta: NonNullable<ComponentMeta['cssVaria
 export const renderComponentApi = (meta: ComponentMeta, framework: Framework): string => {
   const sections: string[] = [
     `## API\n\nAuthoritative API data: ${code(rawMetaReference(framework))} (\`component-meta\`). When these tables disagree with it, follow \`component-meta\`.`,
+    ...apiTables(meta, 3),
   ];
-
-  if (meta.propsMeta && Object.keys(meta.propsMeta).length > 0) {
-    sections.push(propsTable(meta.propsMeta));
-  }
-  if (meta.eventsMeta && Object.keys(meta.eventsMeta).length > 0) {
-    sections.push(eventsTable(meta.eventsMeta));
-  }
-  if (meta.slotsMeta && Object.keys(meta.slotsMeta).length > 0) {
-    sections.push(slotsTable(meta.slotsMeta));
-  }
-  if (meta.cssVariablesMeta && Object.keys(meta.cssVariablesMeta).length > 0) {
-    sections.push(cssVariablesTable(meta.cssVariablesMeta));
-  }
-
   return sections.join('\n\n');
+};
+
+/**
+ * Render the `## Sub-components` section appended to a parent component's `<tag>.md`.
+ * Sub-components (e.g. `p-table-row`, `p-select-option`) have no standalone docs page —
+ * they are only valid inside a parent — so their authoritative `component-meta` API is
+ * documented here, under the parent, with each sub-component's tables demoted one level.
+ */
+export const renderSubComponents = (subComponents: { tag: string; meta: ComponentMeta }[]): string => {
+  const blocks: string[] = [
+    '## Sub-components',
+    'These tags are only valid inside this component (see each one’s allowed parents). Their APIs come ' +
+      'from the same authoritative `component-meta` as the parent above.',
+  ];
+  for (const { tag, meta } of subComponents) {
+    blocks.push(`### \`${tag}\``);
+    const parents = parseRequiredParents(meta.requiredParent);
+    if (parents.length > 0) {
+      blocks.push(`Allowed parent${parents.length > 1 ? 's' : ''}: ${parents.map(code).join(', ')}.`);
+    }
+    const tables = apiTables(meta, 4);
+    blocks.push(...(tables.length > 0 ? tables : ['_No configurable properties, slots, events or CSS variables._']));
+  }
+  return blocks.join('\n\n');
 };

@@ -39,6 +39,20 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | --- | --- | --- | --- |
 | _(default)_ | no | — | Default slot for the `p-text-list-item` tags or nested `p-text-list` tags. |
 
+## Sub-components
+
+These tags are only valid inside this component (see each one’s allowed parents). Their APIs come from the same authoritative `component-meta` as the parent above.
+
+### `p-text-list-item`
+
+Allowed parent: `p-text-list`.
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the content. |
+
 ## Examples
 
 | Example | When to use | File |

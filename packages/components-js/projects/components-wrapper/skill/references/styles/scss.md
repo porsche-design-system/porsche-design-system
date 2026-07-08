@@ -21,7 +21,7 @@ System SCSS package to your stylesheet with the Sass module system. Always impor
 namespace so the variables and mixins are clearly scoped:
 
 ```scss
-@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as pds;
+@use '@porsche-design-system/components-js/scss' as pds;
 
 .my-card {
   border-radius: pds.$radius-md;
@@ -41,7 +41,7 @@ styles to generate the `.scheme-*` utility classes and add a polyfill for browse
 
 ```scss
 // global styles
-@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as pds;
+@use '@porsche-design-system/components-js/scss' as pds;
 
 @include pds.color-scheme();
 

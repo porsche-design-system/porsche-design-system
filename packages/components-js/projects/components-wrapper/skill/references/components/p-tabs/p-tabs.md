@@ -119,6 +119,26 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | --- | --- | --- | --- |
 | _(default)_ | no | — | Default slot for the `p-tabs-item` tags. |
 
+## Sub-components
+
+These tags are only valid inside this component (see each one’s allowed parents). Their APIs come from the same authoritative `component-meta` as the parent above.
+
+### `p-tabs-item`
+
+Allowed parent: `p-tabs`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` _(required)_ | `string` | `undefined` | Sets the label text displayed in the tab navigation button that the user clicks to activate this tab's content. |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the tab content. |
+
 ## Examples
 
 | Example | When to use | File |

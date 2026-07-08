@@ -112,6 +112,53 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `--p-drilldown-grid-template` | `auto/auto` | Overrides the CSS `grid-template` of the default slot container, allowing custom grid layout for drilldown items. |
 | `--p-drilldown-gap` | `8px` | Overrides the gap between drilldown items in the default slot container. |
 
+## Sub-components
+
+These tags are only valid inside this component (see each one’s allowed parents). Their APIs come from the same authoritative `component-meta` as the parent above.
+
+### `p-drilldown-item`
+
+Allowed parents: `p-drilldown`, `p-drilldown-item`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `cascade` | `boolean` | `false` | Private property set by the component itself. |
+| `identifier` _(required)_ | `string` | `undefined` | Sets the unique identifier matched against the drilldown's `activeIdentifier` to determine if this item is shown. |
+| `label` | `string` | `undefined` | Sets the text used for the back button, sticky header, and cascade button that navigates into this navigation level. |
+| `primary` | `boolean` | `false` | Private property set by the component itself. |
+| `secondary` | `boolean` | `false` | Private property set by the component itself. |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the main content. |
+| `button` | no | — | Shows a custom button to reach a deeper level of the navigation structure. |
+| `header` | no | — | Shows a custom header section on mobile view. |
+
+### `p-drilldown-link`
+
+Allowed parents: `p-drilldown`, `p-drilldown-item`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `active` | `boolean` | `false` | Visually marks the link as the currently active navigation item, e.g. the current page. |
+| `aria` | `DrilldownLinkAriaAttribute` | `undefined` | Sets ARIA attributes on the link for improved accessibility. Only applies when `href` is set. |
+| `download` | `string` | `undefined` | Sets the native `download` attribute to trigger a file download. Only applies when `href` is set. |
+| `href` | `string` | `undefined` | When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element. |
+| `rel` | `string` | `undefined` | Sets the `rel` attribute on the link element (e.g. `noopener`). Only applies when `href` is set. |
+| `target` | `'_self'` `'_blank'` `'_parent'` `'_top'` `'string'` | `'_self'` | Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set. |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot to render the link label. |
+
 ## Examples
 
 | Example | When to use | File |

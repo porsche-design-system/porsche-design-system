@@ -97,8 +97,8 @@ Please transition to the new styles as soon as possible. All legacy styles are c
 Changed import path for Emotion styles.
 
 ```diff
-- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';
-+ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+- import { … } from '@porsche-design-system/components-angular/styles';
++ import { … } from '@porsche-design-system/components-angular/emotion';
 ```
 
 ### Blur

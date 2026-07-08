@@ -25,6 +25,30 @@ const requireFromHere = createRequire(__filename);
 const requireMdxDefault = (relativePath: string): ComponentType =>
   (requireFromHere(relativePath) as { default: ComponentType }).default;
 
+/** Node error codes meaning "this module isn't resolvable under the current runtime". */
+const MODULE_NOT_FOUND_CODES = new Set(['ERR_MODULE_NOT_FOUND', 'MODULE_NOT_FOUND']);
+const isModuleNotFound = (error: unknown): boolean =>
+  typeof error === 'object' && error !== null && MODULE_NOT_FOUND_CODES.has((error as { code?: string }).code ?? '');
+
+/**
+ * Run a generation loader that is only available under the storefront's MDX/alias-aware runtime.
+ * Degrade to `null` (skeleton tree) *only* when the module genuinely cannot be resolved; any other
+ * error is a real generator bug and is rethrown rather than hidden behind a "generation unavailable"
+ * warning + skeleton tree (which the drift/completeness gates could then bless).
+ */
+const loadOptional = async <T>(label: string, loader: () => Promise<T>): Promise<T | null> => {
+  try {
+    return await loader();
+  } catch (error) {
+    if (!isModuleNotFound(error)) {
+      throw error;
+    }
+    const reason = error instanceof Error ? error.message.split('\n')[0] : String(error);
+    console.warn(`Skipping ${label} — generation module not found under this runtime (${reason}).`);
+    return null;
+  }
+};
+
 /**
  * The component-reference generation, loaded together as a unit because it all depends
  * on the storefront runtime: the docs meta's prose is MDX, and the examples pipeline
@@ -38,8 +62,8 @@ type ComponentGeneration = {
   writeComponentReferences: typeof import('../src/lib/skill/componentsReference').writeComponentReferences;
 };
 
-const loadComponentGeneration = async (): Promise<ComponentGeneration | null> => {
-  try {
+const loadComponentGeneration = (): Promise<ComponentGeneration | null> =>
+  loadOptional('component references', async () => {
     const [meta, references] = await Promise.all([
       import('../src/app/(main)/components/components.meta'),
       import('../src/lib/skill/componentsReference'),
@@ -48,12 +72,7 @@ const loadComponentGeneration = async (): Promise<ComponentGeneration | null> =>
       componentDocsMeta: meta.componentDocsMeta as unknown as ComponentDocsMetaMap & ComponentExamplesMetaMap,
       writeComponentReferences: references.writeComponentReferences,
     };
-  } catch (error) {
-    const reason = error instanceof Error ? error.message.split('\n')[0] : String(error);
-    console.warn(`Skipping component references — generation unavailable under this runtime (${reason}).`);
-    return null;
-  }
-};
+  });
 
 /**
  * The partials reference, like the component references, depends on the storefront
@@ -76,8 +95,8 @@ const PARTIAL_DIRECTORIES: { functionName: string; dir: string }[] = [
   { functionName: 'getLoaderScript', dir: 'loader-script' },
 ];
 
-const loadPartialsGeneration = async (): Promise<PartialsGeneration | null> => {
-  try {
+const loadPartialsGeneration = (): Promise<PartialsGeneration | null> =>
+  loadOptional('partials reference', async () => {
     const { writePartialsReference } = await import('../src/lib/skill/partialsReference');
     return {
       writePartialsReference,
@@ -89,12 +108,7 @@ const loadPartialsGeneration = async (): Promise<PartialsGeneration | null> => {
         })),
       },
     };
-  } catch (error) {
-    const reason = error instanceof Error ? error.message.split('\n')[0] : String(error);
-    console.warn(`Skipping partials reference — generation unavailable under this runtime (${reason}).`);
-    return null;
-  }
-};
+  });
 
 /**
  * The migration references, like the partials reference, depend on the storefront
@@ -112,8 +126,8 @@ type MigrationGeneration = {
 /** Migration guide slugs — source dir and output filename stem — in documentation order (matches the design). */
 const MIGRATION_GUIDES = ['porsche-design-system', 'scss', 'tailwindcss', 'vanilla-extract', 'emotion'] as const;
 
-const loadMigrationGeneration = async (): Promise<MigrationGeneration | null> => {
-  try {
+const loadMigrationGeneration = (): Promise<MigrationGeneration | null> =>
+  loadOptional('migration references', async () => {
     const { writeMigrationReferences } = await import('../src/lib/skill/migrationReference');
     return {
       writeMigrationReferences,
@@ -122,21 +136,24 @@ const loadMigrationGeneration = async (): Promise<MigrationGeneration | null> =>
         page: requireMdxDefault(`../src/app/(main)/news/migration-guide/${slug}/page.mdx`),
       })),
     };
-  } catch (error) {
-    const reason = error instanceof Error ? error.message.split('\n')[0] : String(error);
-    console.warn(`Skipping migration references — generation unavailable under this runtime (${reason}).`);
-    return null;
-  }
-};
+  });
+
+/**
+ * Degraded prose that is known and accepted (source MDX embeds an interactive component that cannot
+ * render to markdown, etc.). Anything degraded and *not* listed here fails the build — the exact
+ * regression the drift snapshot cannot distinguish from an intentional change. Entries use the same
+ * identifiers `generateTree` reports, e.g. `react p-popover [introduction]`.
+ */
+const DEGRADED_ALLOWLIST = new Set<string>();
 
 const generateTree = async (
   framework: Framework,
   generation: ComponentGeneration | null,
   partialsGeneration: PartialsGeneration | null,
   migrationGeneration: MigrationGeneration | null
-): Promise<void> => {
+): Promise<string[]> => {
   const root = path.resolve(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]);
-  const tree = new SkillTree(root);
+  const tree = new SkillTree(root, framework);
   tree.reset();
 
   // Seed the reference-map scaffold. Content generators (TASK-03+) write their
@@ -145,6 +162,8 @@ const generateTree = async (
     tree.registerReference(entry);
   }
 
+  const degraded: string[] = [];
+
   const styleReferences = writeStyleReferences(tree, framework);
   console.log(`  ${styleReferences.length} style reference files written`);
 
@@ -152,19 +171,18 @@ const generateTree = async (
   console.log('  tokens reference written');
 
   if (partialsGeneration) {
-    const { degraded } = partialsGeneration.writePartialsReference(tree, partialsGeneration.source);
+    const result = partialsGeneration.writePartialsReference(tree, partialsGeneration.source);
     console.log('  partials reference written');
-    if (degraded.length > 0) {
-      console.warn(`  degraded partials prose (review the source MDX): ${degraded.join(', ')}`);
-    }
+    degraded.push(...result.degraded.map((name) => `${framework} partials:${name}`));
   }
 
   if (migrationGeneration) {
-    const { written, degraded } = migrationGeneration.writeMigrationReferences(tree, migrationGeneration.sources);
+    const { written, degraded: degradedSlugs } = migrationGeneration.writeMigrationReferences(
+      tree,
+      migrationGeneration.sources
+    );
     console.log(`  ${written.length} migration references written`);
-    if (degraded.length > 0) {
-      console.warn(`  degraded migration prose (review the source MDX): ${degraded.join(', ')}`);
-    }
+    degraded.push(...degradedSlugs.map((slug) => `${framework} migration:${slug}`));
   }
 
   let roster: ComponentRosterEntry[] = [];
@@ -178,24 +196,34 @@ const generateTree = async (
     );
     roster = report.roster;
     console.log(`  ${report.tags.length} component references written`);
-    if (report.degraded.length > 0) {
-      console.warn(
-        `  degraded prose (review the source MDX): ${report.degraded
-          .map(({ tag, sections }) => `${tag} [${sections.join(', ')}]`)
-          .join('; ')}`
-      );
-    }
+    degraded.push(...report.degraded.map(({ tag, sections }) => `${framework} ${tag} [${sections.join(', ')}]`));
   }
 
   tree.write('SKILL.md', buildSkillMd(framework, tree.referenceMap, roster));
 
   console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
+  return degraded;
+};
+
+/** Split CLI args into framework positionals and flags; there are no supported flags today. */
+const parseArgs = (argv: string[]): { frameworks: string[]; unknownFlags: string[] } => {
+  const frameworks: string[] = [];
+  const unknownFlags: string[] = [];
+  for (const arg of argv) {
+    (arg.startsWith('-') ? unknownFlags : frameworks).push(arg);
+  }
+  return { frameworks, unknownFlags };
 };
 
 const main = async (): Promise<void> => {
-  const requested = process.argv.slice(2).filter((arg) => !arg.startsWith('-'));
-  const frameworks = requested.length > 0 ? requested : [...FRAMEWORKS];
+  const { frameworks: requested, unknownFlags } = parseArgs(process.argv.slice(2));
 
+  if (unknownFlags.length > 0) {
+    console.error(`Unknown option(s): ${unknownFlags.join(', ')}. Usage: build:skill [${FRAMEWORKS.join('|')}]...`);
+    process.exit(1);
+  }
+
+  const frameworks = requested.length > 0 ? requested : [...FRAMEWORKS];
   for (const framework of frameworks) {
     if (!isFramework(framework)) {
       console.error(`Unknown framework "${framework}". Expected one of: ${FRAMEWORKS.join(', ')}.`);
@@ -209,9 +237,23 @@ const main = async (): Promise<void> => {
     loadMigrationGeneration(),
   ]);
 
+  const degraded: string[] = [];
   for (const framework of frameworks as Framework[]) {
-    await generateTree(framework, generation, partialsGeneration, migrationGeneration);
+    degraded.push(...(await generateTree(framework, generation, partialsGeneration, migrationGeneration)));
+  }
+
+  // Fail on any degraded prose that is not explicitly allowlisted: a degraded section silently
+  // committed would be blessed by the drift snapshot on the next `-u`, so gate it here at the source.
+  const unexpected = degraded.filter((entry) => !DEGRADED_ALLOWLIST.has(entry));
+  if (unexpected.length > 0) {
+    console.error(
+      `Degraded prose (review the source MDX, or add to DEGRADED_ALLOWLIST if intentional):\n  ${unexpected.join('\n  ')}`
+    );
+    process.exit(1);
   }
 };
 
-main();
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

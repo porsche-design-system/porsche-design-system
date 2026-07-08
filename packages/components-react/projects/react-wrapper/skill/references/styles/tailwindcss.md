@@ -23,7 +23,7 @@ standard Tailwind import:
 
 ```css
 @import 'tailwindcss';
-@import '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';
+@import '@porsche-design-system/components-react/tailwindcss';
 ```
 
 ### Color scheme (light / dark)

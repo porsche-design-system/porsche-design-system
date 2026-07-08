@@ -121,7 +121,7 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `required` | `boolean` | `false` | Marks the field as required — form submission is blocked while this field is empty. |
 | `spellCheck` | `boolean` | `undefined` | Controls whether the browser's built-in spell-checking is enabled for this field. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). |
-| `value` | `'string'` `'number'` `'null'` | `''` | Sets the current text value of the input field. |
+| `value` | `string | number | null` | `''` | Sets the current text value of the input field. |
 
 ### Events
 

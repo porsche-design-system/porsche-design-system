@@ -114,7 +114,7 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `required` | `boolean` | `false` | Marks the field as required — form submission is blocked while no month is selected. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). |
 | `step` | `number` | `1` | Sets the stepping interval in months (e.g. `1` for monthly, `12` for annual). |
-| `value` | `'string'` `'null'` | `''` | Sets the current month value in YYYY-MM format (e.g. `2025-07`). |
+| `value` | `string | null` | `''` | Sets the current month value in YYYY-MM format (e.g. `2025-07`). |
 
 ### Events
 

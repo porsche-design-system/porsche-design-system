@@ -77,7 +77,7 @@ export const renderPartialsReference = (source: PartialsSource): { markdown: str
   const degraded: string[] = [];
   const sections: string[] = ['# Partials'];
 
-  const intro = renderMdxToMarkdown(source.introduction);
+  const intro = renderMdxToMarkdown(source.introduction, 'partials › introduction');
   if (intro.degraded) {
     degraded.push('introduction');
   } else {
@@ -90,7 +90,7 @@ export const renderPartialsReference = (source: PartialsSource): { markdown: str
   sections.push(FORMAT_NOTE);
 
   for (const { functionName, page } of source.partials) {
-    const { markdown, degraded: isDegraded } = renderMdxToMarkdown(page);
+    const { markdown, degraded: isDegraded } = renderMdxToMarkdown(page, `partials › ${functionName}`);
     if (isDegraded) {
       degraded.push(functionName);
       continue;

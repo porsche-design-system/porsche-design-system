@@ -25,17 +25,21 @@ Run the bundled CLI once in your project root, using the wrapper package that ma
 
 ```bash
 # Vanilla JS
-npx @porsche-design-system/components-js pds-skill
+npx --package=@porsche-design-system/components-js pds-skill
 
 # Angular
-npx @porsche-design-system/components-angular pds-skill
+npx --package=@porsche-design-system/components-angular pds-skill
 
 # React
-npx @porsche-design-system/components-react pds-skill
+npx --package=@porsche-design-system/components-react pds-skill
 
 # Vue
-npx @porsche-design-system/components-vue pds-skill
+npx --package=@porsche-design-system/components-vue pds-skill
 ```
+
+The `--package=…` form names both the package and the `pds-skill` binary explicitly. It is required for
+`components-react` (which ships more than one binary, so a bare `npx @porsche-design-system/components-react pds-skill`
+cannot determine which executable to run) and works uniformly for all four packages.
 
 This creates the symlink `.claude/skills/porsche-design-system-docs` pointing at the invoking package's `skill/`
 directory. The CLI is **package-scoped**: it resolves its own package via the bin's own location, so the `react` CLI
@@ -97,5 +101,5 @@ The only consumer-side state is the symlink itself. If it ever breaks — for ex
 after upgrading to a version that newly ships the skill — simply **re-run the CLI** to recreate or repair it:
 
 ```bash
-npx @porsche-design-system/components-{js|angular|react|vue} pds-skill
+npx --package=@porsche-design-system/components-{js|angular|react|vue} pds-skill
 ```

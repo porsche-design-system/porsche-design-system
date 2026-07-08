@@ -267,8 +267,14 @@ const SkillProviders = ({ children }: { children: ReactNode }) =>
  * a React component; this renders it to static markup and converts the result.
  * Embedded storefront components are substituted away (see {@link EMBEDDED_COMPONENT_STUBS})
  * or dropped, so no JSX/component noise leaks into the output.
+ *
+ * @param label optional source identifier (e.g. `p-button › usage`) used to give an SSR failure an
+ *   actionable message — the raw `renderToStaticMarkup` stack names neither the tag nor the section.
  */
-export const renderMdxToMarkdown = (component: ComponentType<{ components?: Record<string, unknown> }>): RenderMdxResult => {
+export const renderMdxToMarkdown = (
+  component: ComponentType<{ components?: Record<string, unknown> }>,
+  label?: string
+): RenderMdxResult => {
   const componentStubs: Record<string, ComponentType> = {};
   for (const name of EMBEDDED_COMPONENT_STUBS) {
     componentStubs[name] = () => null;
@@ -278,9 +284,15 @@ export const renderMdxToMarkdown = (component: ComponentType<{ components?: Reco
   // custom-element / chrome noise below). They read React context — PDS `usePrefix`,
   // the storefront framework switcher — so the render must sit inside the same
   // providers the storefront layout wraps these pages in, or SSR throws.
-  const html = renderToStaticMarkup(
-    createElement(SkillProviders, null, createElement(component, { components: componentStubs }))
-  );
+  let html: string;
+  try {
+    html = renderToStaticMarkup(
+      createElement(SkillProviders, null, createElement(component, { components: componentStubs }))
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`MDX SSR failed${label ? ` for ${label}` : ''}: ${message}`, { cause: error });
+  }
   const markdown = normalize(renderBlocks(parse(html)));
   const degraded = markdown.length === 0 || !/[A-Za-z0-9]/.test(markdown);
 

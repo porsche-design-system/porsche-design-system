@@ -21,7 +21,7 @@ Install Emotion (see the [official guide](https://emotion.sh/docs/install)), the
 tokens and utilities from the Porsche Design System Emotion entry:
 
 ```ts
-import { colorPrimary, spacingFluidMd } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+import { colorPrimary, spacingFluidMd } from '@porsche-design-system/components-react/emotion';
 import styled from '@emotion/styled';
 
 const Card = styled.div({
@@ -42,7 +42,7 @@ global styles to generate the `.scheme-*` utility classes and add a polyfill for
 `light-dark()` support:
 
 ```tsx
-import { colorSchemeStyles } from '@porsche-design-system/components-{js|angular|react|vue}/emotion';
+import { colorSchemeStyles } from '@porsche-design-system/components-react/emotion';
 import { Global } from '@emotion/react';
 
 // global setup

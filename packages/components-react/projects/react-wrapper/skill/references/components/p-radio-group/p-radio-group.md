@@ -116,6 +116,30 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | _(default)_ | no | — | Default slot for the p-radio-group-option tags. |
 | `message` | no | — | Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
 
+## Sub-components
+
+These tags are only valid inside this component (see each one’s allowed parents). Their APIs come from the same authoritative `component-meta` as the parent above.
+
+### `p-radio-group-option`
+
+Allowed parent: `p-radio-group`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `disabled` | `boolean` | `false` | Prevents this option from being selected and excludes its value from form submissions while it is disabled. |
+| `label` | `string` | `undefined` | Sets the visible label text displayed next to the radio button that the user reads to identify the option. |
+| `loading` _(experimental)_ | `boolean` | `false` | @experimental Disables this option and shows a spinner to indicate that this particular option is in a loading state. |
+| `value` | `string` | `undefined` | Sets the value submitted with the form data when this radio option is selected within its parent group. |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| `label` | no | — | Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed. |
+| `label-after` | no | — | Places additional content after the label text (for content that should not be part of the label, e.g. external links or `p-popover`). |
+
 ## Examples
 
 | Example | When to use | File |

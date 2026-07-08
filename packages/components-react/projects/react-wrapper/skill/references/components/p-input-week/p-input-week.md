@@ -114,7 +114,7 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `required` | `boolean` | `false` | Marks the field as required — form submission is blocked while no week is selected. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). |
 | `step` | `number` | `1` | Sets the stepping interval in weeks. |
-| `value` | `'string'` `'null'` | `''` | Sets the current ISO week value in YYYY-Www format (e.g. `2025-W27`). |
+| `value` | `string | null` | `''` | Sets the current ISO week value in YYYY-Www format (e.g. `2025-W27`). |
 
 ### Events
 

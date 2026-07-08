@@ -1,5 +1,6 @@
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { describe, expect, it } from 'vitest';
-import { renderComponentApi } from '@/lib/skill/componentApi';
+import { parseRequiredParents, renderComponentApi, renderSubComponents } from '@/lib/skill/componentApi';
 import { componentApiFixtures } from '../data/skill/componentApiFixtures';
 
 const { 'p-accordion': accordion, 'p-heading': heading } = componentApiFixtures;
@@ -19,6 +20,37 @@ describe('renderComponentApi', () => {
     expect(markdown).not.toContain('### Events');
     expect(markdown).toContain('### Slots');
     expect(markdown).not.toContain('### CSS Variables');
+  });
+
+  describe('union-type props', () => {
+    // `value` on p-select: allowedValues is the decomposition of the union type, not enum literals.
+    const selectLike = {
+      isChunked: true,
+      propsMeta: {
+        value: {
+          description: 'The selected value.',
+          type: 'string | number | null',
+          defaultValue: null,
+          allowedValues: ['string', 'number', 'null'],
+        },
+        state: {
+          description: 'The validation state.',
+          type: 'SelectState',
+          defaultValue: 'none',
+          allowedValues: ['none', 'error', 'success'],
+        },
+      },
+    } as unknown as ComponentMeta;
+
+    it('renders a primitive union type as the type, not as quoted string literals', () => {
+      const markdown = renderComponentApi(selectLike, 'js');
+      expect(markdown).toContain('`string | number | null`');
+      expect(markdown).not.toContain("`'string'`");
+      expect(markdown).not.toContain("`'null'`");
+      // a real string-literal enum is still rendered as quoted values
+      expect(markdown).toContain("`'none'`");
+      expect(markdown).toContain("`'error'`");
+    });
   });
 
   describe('raw-meta link', () => {
@@ -60,5 +92,56 @@ describe('renderComponentApi', () => {
       expect(markdown).toContain("`'2xs'`");
       expect(markdown).toContain("`'semibold'`");
     });
+  });
+});
+
+describe('parseRequiredParents', () => {
+  it('normalizes an array, a single tag, and a comma-list to a list of tags', () => {
+    expect(parseRequiredParents(['p-select', 'p-optgroup'])).toEqual(['p-select', 'p-optgroup']);
+    expect(parseRequiredParents('p-tabs')).toEqual(['p-tabs']);
+    expect(parseRequiredParents('p-select, p-optgroup')).toEqual(['p-select', 'p-optgroup']);
+  });
+
+  it('returns an empty list for a top-level component (no requiredParent)', () => {
+    expect(parseRequiredParents(undefined)).toEqual([]);
+    expect(parseRequiredParents('')).toEqual([]);
+  });
+});
+
+describe('renderSubComponents', () => {
+  const tableRow: ComponentMeta = {
+    isChunked: false,
+    requiredParent: ['p-table-body', 'p-table-head'],
+    slotsMeta: { '': { description: 'Cells of the row.' } },
+  } as unknown as ComponentMeta;
+  const tabsItem: ComponentMeta = {
+    isChunked: false,
+    requiredParent: 'p-tabs',
+    propsMeta: {
+      label: { description: 'The tab label.', type: 'string', defaultValue: null, allowedValues: 'string' },
+    },
+  } as unknown as ComponentMeta;
+
+  it('renders a Sub-components section demoting each sub-component below the parent API', () => {
+    const markdown = renderSubComponents([
+      { tag: 'p-table-row', meta: tableRow },
+      { tag: 'p-tabs-item', meta: tabsItem },
+    ]);
+
+    expect(markdown).toContain('## Sub-components');
+    // sub-component tags at level 3, their tables at level 4
+    expect(markdown).toContain('### `p-table-row`');
+    expect(markdown).toContain('### `p-tabs-item`');
+    expect(markdown).toContain('#### Slots');
+    expect(markdown).toContain('#### Properties');
+    // allowed parents surfaced, singular/plural aware
+    expect(markdown).toContain('Allowed parents: `p-table-body`, `p-table-head`.');
+    expect(markdown).toContain('Allowed parent: `p-tabs`.');
+  });
+
+  it('notes when a sub-component exposes no configurable API', () => {
+    const empty = { isChunked: false, requiredParent: 'p-x' } as unknown as ComponentMeta;
+    const markdown = renderSubComponents([{ tag: 'p-x-item', meta: empty }]);
+    expect(markdown).toContain('_No configurable properties, slots, events or CSS variables._');
   });
 });

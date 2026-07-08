@@ -40,7 +40,7 @@ export const writeMigrationReferences = (tree: SkillTree, sources: MigrationSour
   const degraded: string[] = [];
 
   for (const { slug, page } of sources) {
-    const { markdown, degraded: isDegraded } = renderMdxToMarkdown(page);
+    const { markdown, degraded: isDegraded } = renderMdxToMarkdown(page, `migration/${slug}`);
     if (isDegraded) {
       degraded.push(slug);
       continue;

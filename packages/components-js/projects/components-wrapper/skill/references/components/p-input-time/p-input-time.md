@@ -116,7 +116,7 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `required` | `boolean` | `false` | Marks the field as required — form submission is blocked while no time is selected. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). |
 | `step` | `number` | `60` | Sets the stepping interval in seconds. Use `60` for minute-level selection, `1` to also expose seconds. |
-| `value` | `'string'` `'null'` | `''` | Sets the current time value in `hh:mm` or `hh:mm:ss` format (e.g. `14:00`). |
+| `value` | `string | null` | `''` | Sets the current time value in `hh:mm` or `hh:mm:ss` format (e.g. `14:00`). |
 
 ### Events
 

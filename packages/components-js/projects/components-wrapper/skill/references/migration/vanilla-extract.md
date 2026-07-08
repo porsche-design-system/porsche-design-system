@@ -86,8 +86,8 @@ Please transition to the new styles as soon as possible. All legacy styles are c
 Changed import path for Vanilla Extract styles.
 
 ```diff
-- import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
-+ import { … } from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+- import { … } from '@porsche-design-system/components-js/styles/vanilla-extract';
++ import { … } from '@porsche-design-system/components-js/vanilla-extract';
 ```
 
 ### Blur

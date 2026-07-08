@@ -116,7 +116,7 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `required` | `boolean` | `false` | Marks the field as required — form submission is blocked while this field is empty. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). |
 | `toggle` | `boolean` | `false` | Shows a toggle button that switches the password between masked and plain text visibility. |
-| `value` | `'string'` `'null'` | `''` | Sets the current password value of the field. |
+| `value` | `string | null` | `''` | Sets the current password value of the field. |
 
 ### Events
 

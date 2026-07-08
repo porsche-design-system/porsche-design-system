@@ -93,6 +93,27 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | --- | --- | --- | --- |
 | _(default)_ | no | — | Default slot for the `p-stepper-horizontal-item` tags. |
 
+## Sub-components
+
+These tags are only valid inside this component (see each one’s allowed parents). Their APIs come from the same authoritative `component-meta` as the parent above.
+
+### `p-stepper-horizontal-item`
+
+Allowed parent: `p-stepper-horizontal`.
+
+#### Properties
+
+| Property | Type | Default | Description |
+| --- | --- | --- | --- |
+| `disabled` | `boolean` | `false` | Disables the stepper-horizontal-item. No events will be triggered while disabled state is active. |
+| `state` | `undefined` `'current'` `'complete'` `'warning'` | `undefined` | The current progression state of the step. Use `current` for the active step, `complete` for finished steps, `warning` for steps with issues. Leave unset for future steps. |
+
+#### Slots
+
+| Slot | Required | Allowed tag names | Description |
+| --- | --- | --- | --- |
+| _(default)_ | no | — | Default slot for the content. |
+
 ## Examples
 
 | Example | When to use | File |

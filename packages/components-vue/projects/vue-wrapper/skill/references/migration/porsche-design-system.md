@@ -41,16 +41,16 @@ Without these global styles, components will not have access to their required c
 ```diff
 /* src/global-style.css */
 
-+ @import '@porsche-design-system/components-{js|angular|react|vue}';
++ @import '@porsche-design-system/components-vue';
 
 /* Alternative with fonts from China CDN */
-+ @import '@porsche-design-system/components-{js|angular|react|vue}/cn';
++ @import '@porsche-design-system/components-vue/cn';
 
 /* Alternative: If your bundler requires an explicit .css extension, use this path instead */
-+ @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
++ @import '@porsche-design-system/components-vue/index.css';
 
 /* Alternative with fonts from China CDN: If your bundler requires an explicit .css extension, use this path instead */
-+ @import '@porsche-design-system/components-{js|angular|react|vue}/cn/index.css';
++ @import '@porsche-design-system/components-vue/cn/index.css';
 ```
 
 ### Manual FOUC Prevention
@@ -261,19 +261,19 @@ const nextConfig: NextConfig = {
 - Removed `getInitialStyles()`, `getFontFaceStyles()` and `getFontFaceStylesheet()` partials. These styles are now included in the mandatory global styles, see [Setup Changes](#setup-changes) for more information.
 
 ```diff
-- import { getInitialStyles, getFontFaceStyles, getFontFaceStylesheet } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
+- import { getInitialStyles, getFontFaceStyles, getFontFaceStylesheet } from '@porsche-design-system/components-vue/partials';
 ```
 
 - Removed `getBrowserSupportFallbackScript()` and `getCookiesFallbackScript()` which are now in separate repo `@porsche-design-system/fallbacks` coming soon.
 
 ```diff
-- import { getBrowserSupportFallbackScript, getCookiesFallbackScript } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
+- import { getBrowserSupportFallbackScript, getCookiesFallbackScript } from '@porsche-design-system/components-vue/partials';
 ```
 
 - Removed `getDSRPonyfill()` partial as it is no longer needed.
 
 ```diff
-- import { getDSRPonyfill } from '@porsche-design-system/components-{js|angular|react|vue}/partials';
+- import { getDSRPonyfill } from '@porsche-design-system/components-vue/partials';
 ```
 
 ### Common
@@ -354,7 +354,7 @@ Pure CSS:
 SCSS:
 
 ```scss
-@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as pds;
+@use '@porsche-design-system/components-vue/scss' as pds;
 
 /* Adjust the `:is()` selector with the components you want to target and apply the following styles to your global stylesheet (see browser support for native CSS `&` selector: https://caniuse.com/css-nesting): */
 :is(p-accordion, p-table) a {

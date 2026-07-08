@@ -122,7 +122,7 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `required` | `boolean` | `false` | Marks the field as required — form submission is blocked while this field is empty. |
 | `state` | `'none'` `'error'` `'success'` | `'none'` | Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). |
 | `step` | `number` | `1` | Sets the stepping granularity — the value must be a multiple of this number. Also controls step button increment size. |
-| `value` | `'string'` `'number'` `'null'` | `''` | Sets the current numeric value of the field. |
+| `value` | `string | number | null` | `''` | Sets the current numeric value of the field. |
 
 ### Events
 

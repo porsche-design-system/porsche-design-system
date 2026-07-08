@@ -185,4 +185,48 @@ describe('buildSkillMd', () => {
       expect(markdown).not.toContain('`../meta`');
     }
   });
+
+  it('explains the js-peer subpath for framework wrappers only', () => {
+    for (const framework of ['angular', 'react', 'vue'] satisfies Framework[]) {
+      expect(buildSkillMd(framework, SKELETON_REFERENCE_MAP), framework).toContain('re-export the same-version');
+    }
+    expect(buildSkillMd('js', SKELETON_REFERENCE_MAP)).not.toContain('re-export the same-version');
+  });
+
+  it('includes a getting-started section for every framework, before the components section', () => {
+    for (const framework of FRAMEWORKS) {
+      const markdown = buildSkillMd(framework, SKELETON_REFERENCE_MAP, [{ tag: 'p-button', summary: 'x' }]);
+      expect(markdown, framework).toContain('## Getting started');
+      expect(markdown, framework).toContain(`@porsche-design-system/components-${framework}`);
+      expect(markdown.indexOf('## Getting started'), framework).toBeLessThan(markdown.indexOf('## Components'));
+    }
+  });
+
+  it('documents the PascalCase tag→component and event-name mapping for React and Vue', () => {
+    for (const framework of ['react', 'vue'] satisfies Framework[]) {
+      const markdown = buildSkillMd(framework, SKELETON_REFERENCE_MAP);
+      expect(markdown, framework).toContain('`p-button` → `<PButton>`');
+      expect(markdown, framework).toContain('PorscheDesignSystemProvider');
+    }
+    expect(buildSkillMd('react', SKELETON_REFERENCE_MAP)).toContain('onDismiss');
+    expect(buildSkillMd('vue', SKELETON_REFERENCE_MAP)).toContain('@dismiss');
+  });
+
+  it('documents custom-element tag usage and setup for Angular and vanilla JS', () => {
+    const angular = buildSkillMd('angular', SKELETON_REFERENCE_MAP);
+    expect(angular).toContain('PorscheDesignSystemModule');
+    expect(angular).toContain('(dismiss)');
+    expect(angular).not.toContain('`p-button` → `<PButton>`');
+
+    const js = buildSkillMd('js', SKELETON_REFERENCE_MAP);
+    expect(js).toContain("import { load } from '@porsche-design-system/components-js'");
+    expect(js).toContain("addEventListener('dismiss'");
+    expect(js).not.toContain('`p-button` → `<PButton>`');
+  });
+
+  it('includes a FOUC guard in every framework getting-started section', () => {
+    for (const framework of FRAMEWORKS) {
+      expect(buildSkillMd(framework, SKELETON_REFERENCE_MAP), framework).toContain(':not(:defined)');
+    }
+  });
 });

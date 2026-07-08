@@ -16,6 +16,11 @@ import { describe, expect, it } from 'vitest';
  * A fingerprint (not the full file bodies) keeps the snapshot bounded: the four trees
  * total several MB, and their contents already live — reviewable — in the committed
  * trees themselves. The fingerprint still fails on any content or structural change.
+ *
+ * This is the fast, build-free hand-edit guard. The authoritative staleness gate is the
+ * `Skill` CI job (`build:skill:check`), which regenerates the trees from source and diffs
+ * against the commit — that catches a re-blessed snapshot hiding stale committed trees,
+ * which this fingerprint (comparing committed trees to their own snapshot) cannot.
  */
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
 

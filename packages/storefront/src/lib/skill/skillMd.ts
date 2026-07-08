@@ -67,6 +67,128 @@ export const rawTailwindcssReference = (): string => '../tailwindcss/index.css';
 export const rawScssReference = (framework: Framework): string =>
   framework === 'js' ? '../scss' : '@porsche-design-system/components-js/scss';
 
+/** The installed wrapper package for a framework — used in setup snippets and import statements. */
+export const packageName = (framework: Framework): string => `@porsche-design-system/components-${framework}`;
+
+/**
+ * Framework-specific "Getting started" content, inlined into SKILL.md so the agent knows — the moment
+ * the skill activates — how to initialize PDS and how the framework's component syntax maps to the
+ * custom-element tags the roster and references use. React and Vue expose PascalCase component wrappers
+ * with framework-native prop/event syntax, so the tag→component and event-name mapping is essential;
+ * Angular and vanilla JS use the custom-element tags directly. Setup mirrors the storefront's
+ * per-framework getting-started guides (provider/module/loader + global stylesheet + FOUC guard).
+ */
+const GETTING_STARTED: Record<Framework, string> = {
+  react: [
+    `Install \`${packageName('react')}\`, wrap your app once with the provider, and import the global stylesheet:`,
+    '',
+    '```tsx',
+    '// main.tsx',
+    "import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';",
+    '',
+    'createRoot(document.getElementById(\'root\')!).render(',
+    '  <PorscheDesignSystemProvider>',
+    '    <App />',
+    '  </PorscheDesignSystemProvider>',
+    ');',
+    '```',
+    '',
+    '```css',
+    '/* index.css — one import for all global styles, plus a FOUC guard */',
+    "@import '@porsche-design-system/components-react';",
+    '',
+    ':not(:defined) { visibility: hidden; }',
+    '```',
+    '',
+    'Writing components (this differs from the custom-element tags the references show):',
+    '- Import each component by name and use its **PascalCase** React component: `p-button` → `<PButton>`, `p-text-field-wrapper` → `<PTextFieldWrapper>`.',
+    '- Props are **camelCase** (`disableBackdropClick`, not `disable-backdrop-click`); use `className` for CSS classes and pass ARIA via the `aria={{ ... }}` prop.',
+    '- Events are `on<Event>` handler props — the `dismiss` event is `onDismiss`, `update` is `onUpdate`.',
+    '- Place a child into a named slot with the `slot="..."` attribute.',
+  ].join('\n'),
+  vue: [
+    `Install \`${packageName('vue')}\`, wrap your app once with the provider, and import the global stylesheet:`,
+    '',
+    '```vue',
+    '<!-- App.vue -->',
+    '<script setup lang="ts">',
+    "  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';",
+    '</script>',
+    '',
+    '<template>',
+    '  <PorscheDesignSystemProvider>',
+    '    <!-- your app -->',
+    '  </PorscheDesignSystemProvider>',
+    '</template>',
+    '```',
+    '',
+    '```css',
+    '/* main.css — one import for all global styles, plus a FOUC guard */',
+    "@import '@porsche-design-system/components-vue';",
+    '',
+    ':not(:defined) { visibility: hidden; }',
+    '```',
+    '',
+    'Writing components (this differs from the custom-element tags the references show):',
+    '- Import each component by name and use its **PascalCase** component: `p-button` → `<PButton>`, `p-text-field-wrapper` → `<PTextFieldWrapper>`.',
+    '- Bind props with `:` and **camelCase** names (`:open="open"`, `:disableBackdropClick="true"`); use `class` for CSS classes.',
+    '- Listen to events with `@` — the `dismiss` event is `@dismiss`.',
+    '- Place a child into a named slot with the `slot="..."` attribute.',
+  ].join('\n'),
+  angular: [
+    `Install \`${packageName('angular')}\`, add \`PorscheDesignSystemModule\` to your component/module \`imports\`, and import the global stylesheet:`,
+    '',
+    '```ts',
+    '// app.ts',
+    "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
+    '',
+    '@Component({',
+    "  selector: 'app-root',",
+    '  imports: [PorscheDesignSystemModule],',
+    "  templateUrl: './app.html',",
+    '})',
+    'export class App {}',
+    '```',
+    '',
+    '```css',
+    '/* styles.css — one import for all global styles, plus a FOUC guard */',
+    "@import '@porsche-design-system/components-angular/index.css';",
+    '',
+    ':not(:defined) { visibility: hidden; }',
+    '```',
+    '',
+    'Writing components:',
+    '- Use the **custom-element tags** directly in templates: `<p-button>`, `<p-text-field-wrapper>`.',
+    '- Bind props with `[prop]` and camelCase names (`[open]="open"`, `[disableBackdropClick]="true"`).',
+    '- Listen to events with `(event)` — the `dismiss` event is `(dismiss)="onDismiss()"`.',
+    '- Place a child into a named slot with the `slot="..."` attribute.',
+  ].join('\n'),
+  js: [
+    `Install \`${packageName('js')}\`, initialize the loader once, and import the global stylesheet:`,
+    '',
+    '```ts',
+    "import { load } from '@porsche-design-system/components-js';",
+    '',
+    'load();',
+    '```',
+    '',
+    'For best loading performance, inject the loader-script partial into your HTML `<body>` at build time instead — see `references/partials.md` (`getLoaderScript`).',
+    '',
+    '```css',
+    '/* style.css — one import for all global styles, plus a FOUC guard */',
+    "@import '@porsche-design-system/components-js';",
+    '',
+    ':not(:defined) { visibility: hidden; }',
+    '```',
+    '',
+    'Writing components:',
+    '- Use the **custom-element tags** directly in HTML: `<p-button>`, `<p-text-field-wrapper>`.',
+    '- Set props as attributes (`variant="secondary"`) or as DOM properties for non-string values.',
+    "- Listen to events with `element.addEventListener('dismiss', ...)`.",
+    '- Place a child into a named slot with the `slot="..."` attribute.',
+  ].join('\n'),
+};
+
 /**
  * A single row of the inlined component roster: the component tag and a one-line
  * summary. The reference path is derived from the tag, so it stays correct by
@@ -97,6 +219,10 @@ const renderComponentRoster = (roster: readonly ComponentRosterEntry[]): string 
   ]);
   return [
     `The Porsche Design System ships ${roster.length} components. Open a component's reference for its props, slots, events, CSS variables and examples before using it.`,
+    '',
+    'Sub-components (e.g. `p-table-row`, `p-select-option`, `p-tabs-item`) have no separate row — they are ' +
+      'only valid inside a parent, so their API is documented under a "Sub-components" section in that ' +
+      "parent's reference.",
     '',
     markdownTable(['Component', 'Summary', 'Reference'], rows),
   ].join('\n');
@@ -150,10 +276,15 @@ export const buildSkillMd = (
 ): string => {
   const frontmatter = ['---', `name: ${SKILL_NAME}`, `description: ${ACTIVATION_DESCRIPTION}`, '---'].join('\n');
 
+  const rawDataNote =
+    framework === 'js'
+      ? ''
+      : ` This subpath is the authoritative source: the wrapper's own \`meta/\` and \`scss/\` re-export the same-version \`@porsche-design-system/components-js\` peer, so the skill links the peer directly.`;
+
   const coreRules = [
     '## Core rules',
     '',
-    `- \`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow \`component-meta\` (raw data at \`${rawMetaReference(framework)}\`).`,
+    `- \`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow \`component-meta\` (raw data at \`${rawMetaReference(framework)}\`).${rawDataNote}`,
     '- Prefer Porsche Design System components and tokens for new UI. Do not rewrite non-PDS UI unasked, and do not hijack work that targets another library.',
     '- All content here is version-exact for the installed package — never mix guidance across versions.',
     '- Every reference path is relative to this skill root unless explicitly noted otherwise.',
@@ -167,6 +298,10 @@ export const buildSkillMd = (
     `# Porsche Design System (\`${framework}\`)`,
     '',
     'Version-exact knowledge of the installed Porsche Design System. Open the reference below that matches the task, then apply the core rules.',
+    '',
+    '## Getting started',
+    '',
+    GETTING_STARTED[framework],
     '',
     ...componentsSection,
     '## Styling',
