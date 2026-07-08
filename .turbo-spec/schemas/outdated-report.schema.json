@@ -29,6 +29,19 @@
           "bump": { "type": "string", "enum": ["major", "minor", "patch", "other"] }
         }
       }
+    },
+    "overrides_skipped": {
+      "type": "array",
+      "description": "Deps reported by syncpack that live only in overrides/resolutions (hand-curated security pins). Never auto-bumped; surfaced for manual review.",
+      "items": {
+        "type": "object",
+        "required": ["name", "from", "to"],
+        "properties": {
+          "name": { "type": "string" },
+          "from": { "type": "string" },
+          "to": { "type": "string" }
+        }
+      }
     }
   }
 }

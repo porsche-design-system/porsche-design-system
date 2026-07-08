@@ -85,20 +85,119 @@ export function buildReport(text, now = new Date()) {
   return { generated_at: now.toISOString(), ...parseSyncpackOutput(text) };
 }
 
+/** Dependency sections the workflow can actually write (and thus bump). */
+export const WRITABLE_SECTIONS = [
+  'dependencies',
+  'devDependencies',
+  'peerDependencies',
+  'optionalDependencies',
+];
+
+/**
+ * Collect every dependency name declared in a writable section of any
+ * package.json under `repoRoot`. Names appearing ONLY in `overrides` /
+ * `resolutions` (hand-curated transitive-security pins) are intentionally
+ * NOT collected — the automation must never bump them.
+ *
+ * @param {string} repoRoot repository root to scan
+ * @returns {Set<string>} declared names
+ */
+export function collectWritableDeps(repoRoot, deps = {}) {
+  const { readFileSync } = deps.fs;
+  const files = findPackageJsons(repoRoot, deps);
+  const names = new Set();
+  for (const file of files) {
+    let pkg;
+    try {
+      pkg = JSON.parse(readFileSync(file, 'utf8'));
+    } catch {
+      continue; // skip unreadable/invalid package.json
+    }
+    for (const section of WRITABLE_SECTIONS) {
+      const block = pkg[section];
+      if (block && typeof block === 'object') {
+        for (const name of Object.keys(block)) names.add(name);
+      }
+    }
+  }
+  return names;
+}
+
+/** Recursively find package.json files, skipping node_modules and dotdirs. */
+export function findPackageJsons(repoRoot, deps = {}) {
+  const { readdirSync } = deps.fs;
+  const { join } = deps.path;
+  const out = [];
+  const walk = (dir) => {
+    let entries;
+    try {
+      entries = readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const entry of entries) {
+      const name = entry.name;
+      if (entry.isDirectory()) {
+        if (name === 'node_modules' || name.startsWith('.')) continue;
+        walk(join(dir, name));
+      } else if (name === 'package.json') {
+        out.push(join(dir, name));
+      }
+    }
+  };
+  walk(repoRoot);
+  return out;
+}
+
+/**
+ * Partition a parsed report against the repo's writable dependency sections.
+ * Deps whose name is not declared in any writable section (overrides-only
+ * security pins) are moved to `overrides_skipped` and excluded from bumps.
+ *
+ * @param {ReturnType<typeof buildReport>} report
+ * @param {string} repoRoot
+ * @returns {typeof report & {overrides_skipped: Array<{name,from,to}>}}
+ */
+export function partitionOverrides(report, repoRoot, deps = {}) {
+  const declared = collectWritableDeps(repoRoot, deps);
+  const dependencies = [];
+  const overrides_skipped = [];
+  for (const dep of report.dependencies) {
+    if (declared.has(dep.name)) {
+      dependencies.push(dep);
+    } else {
+      overrides_skipped.push({ name: dep.name, from: dep.from, to: dep.to });
+    }
+  }
+  return {
+    ...report,
+    updates_exist: dependencies.length > 0,
+    dependencies,
+    overrides_skipped,
+  };
+}
+
 // --- CLI: read stdin (or a file arg), write JSON report to stdout or --out ---
 async function main(argv) {
   const args = argv.slice(2);
   let inFile = null;
   let outFile = null;
+  let repoRoot = null;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--out') outFile = args[++i];
+    else if (args[i] === '--repo') repoRoot = args[++i];
     else if (!inFile) inFile = args[i];
   }
   const { readFileSync, writeFileSync } = await import('node:fs');
   const text = inFile
     ? readFileSync(inFile, 'utf8')
     : readFileSync(0, 'utf8'); // fd 0 = stdin
-  const report = buildReport(text);
+  let report = buildReport(text);
+  if (repoRoot) {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+    report = partitionOverrides(report, repoRoot, { fs, path });
+  }
   const json = `${JSON.stringify(report, null, 2)}\n`;
   if (outFile) writeFileSync(outFile, json);
   else process.stdout.write(json);

@@ -14,7 +14,7 @@ function groupUpdates(updates) {
   return groups;
 }
 
-export function buildPrBody({ plan, overrides = [], issue = null, date = null } = {}) {
+export function buildPrBody({ plan, overrides = [], overridesSkipped = [], issue = null, date = null } = {}) {
   const updates = Array.isArray(plan?.updates) ? plan.updates : [];
   const excluded = Array.isArray(plan?.excluded) ? plan.excluded : [];
   const day = date || new Date().toISOString().slice(0, 10);
@@ -60,6 +60,19 @@ export function buildPrBody({ plan, overrides = [], issue = null, date = null } 
     lines.push('');
   }
 
+  if (overridesSkipped.length > 0) {
+    lines.push('### Override pins with available updates — review manually', '');
+    lines.push(
+      '_These live only in the root `overrides` block (hand-curated transitive-security pins). ' +
+        'The automation never bumps them; update deliberately if appropriate._',
+      ''
+    );
+    for (const o of overridesSkipped) {
+      lines.push(`- \`${o.name}\`: \`${o.from}\` → \`${o.to}\``);
+    }
+    lines.push('');
+  }
+
   lines.push(
     '> ⚠️ Local build, tests and `npm audit` did **not** run in this phase — ' +
       '**CI on this PR is the correctness gate.**',
@@ -84,17 +97,21 @@ function main(argv) {
   const args = argv.slice(2);
   let planPath = null;
   let overridesPath = null;
+  let reportPath = null;
   let issue = null;
   let outFile = null;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--overrides') overridesPath = args[++i];
+    else if (args[i] === '--outdated-report') reportPath = args[++i];
     else if (args[i] === '--issue') issue = args[++i];
     else if (args[i] === '--out') outFile = args[++i];
     else if (!planPath) planPath = args[i];
   }
   const plan = readJsonMaybe(planPath) || { updates: [], angular_bumped: false };
   const overrides = readJsonMaybe(overridesPath) || [];
-  const body = buildPrBody({ plan, overrides, issue });
+  const report = readJsonMaybe(reportPath) || {};
+  const overridesSkipped = Array.isArray(report.overrides_skipped) ? report.overrides_skipped : [];
+  const body = buildPrBody({ plan, overrides, overridesSkipped, issue });
   if (outFile) writeFileSync(outFile, body);
   else process.stdout.write(body);
   return 0;

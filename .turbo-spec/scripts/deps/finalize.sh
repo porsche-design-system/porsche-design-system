@@ -10,6 +10,7 @@ set -euo pipefail
 OUT_DIR=".turbo-spec/out"
 PLAN="$OUT_DIR/update-plan.json"
 OVERRIDES="$OUT_DIR/overrides-added.json"
+REPORT="$OUT_DIR/outdated-report.json"
 BODY="$OUT_DIR/pr-body.md"
 DEFAULT_BRANCH="${DEFAULT_BRANCH:-main}"
 
@@ -22,9 +23,11 @@ ISSUE_ARG=()
 [ -n "${ISSUE_NUMBER:-}" ] && ISSUE_ARG=(--issue "$ISSUE_NUMBER")
 OVERRIDES_ARG=()
 [ -f "$OVERRIDES" ] && OVERRIDES_ARG=(--overrides "$OVERRIDES")
+REPORT_ARG=()
+[ -f "$REPORT" ] && REPORT_ARG=(--outdated-report "$REPORT")
 
 node .turbo-spec/scripts/deps/assemble-pr-body.mjs "$PLAN" \
-  "${OVERRIDES_ARG[@]}" "${ISSUE_ARG[@]}" --out "$BODY"
+  "${OVERRIDES_ARG[@]}" "${REPORT_ARG[@]}" "${ISSUE_ARG[@]}" --out "$BODY"
 
 # Stage tracked changes only (out/ is gitignored).
 git add -A

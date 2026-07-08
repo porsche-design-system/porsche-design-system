@@ -43,7 +43,7 @@ stages:
       npm install &&
       (npm run npm:outdated > .turbo-spec/out/outdated.txt 2>&1 || true) &&
       node .turbo-spec/scripts/deps/parse-outdated.mjs .turbo-spec/out/outdated.txt
-      --out .turbo-spec/out/outdated-report.json
+      --repo . --out .turbo-spec/out/outdated-report.json
     outputs:
       outdated_report: .turbo-spec/out/outdated-report.json
     quality_gates:

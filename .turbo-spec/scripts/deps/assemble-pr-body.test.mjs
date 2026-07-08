@@ -47,3 +47,18 @@ test('handles an empty plan gracefully', () => {
   assert.match(body, /No dependency version changes/);
   assert.match(body, /Not part of this round/);
 });
+
+test('renders skipped override pins for manual review when present', () => {
+  const body = buildPrBody({
+    plan,
+    overridesSkipped: [{ name: 'ejs', from: '^3.1.10', to: '^6.0.1' }],
+  });
+  assert.match(body, /Override pins with available updates — review manually/);
+  assert.match(body, /hand-curated transitive-security pins/);
+  assert.match(body, /`ejs`: `\^3\.1\.10` → `\^6\.0\.1`/);
+});
+
+test('omits the skipped-overrides section when none', () => {
+  const body = buildPrBody({ plan });
+  assert.doesNotMatch(body, /Override pins with available updates/);
+});
