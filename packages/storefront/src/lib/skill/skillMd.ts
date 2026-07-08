@@ -35,12 +35,12 @@ export const MIGRATION_GUIDES: readonly { slug: string; useWhen: string }[] = [
 ];
 
 /**
- * The skeleton reference map describing the skill tree layout. Each row points at
- * a reference file the content generators fill in. Generators may register
- * additional rows through {@link SkillTree.registerReference}; this scaffold
- * guarantees a valid SKILL.md even before any content exists. The component roster
- * and the styling solutions are rendered as their own sections in SKILL.md's body
- * (see {@link buildSkillMd}), not as map rows.
+ * The reference map describing the skill tree layout. Each row points at a reference file the content
+ * generators fill in, and is rendered verbatim into SKILL.md's reference-map table by {@link buildSkillMd}.
+ * The set of references is fixed (styles/tokens/partials are one file each; the migration guides come from
+ * {@link MIGRATION_GUIDES}), so this is the single source rather than a scaffold generators append to. The
+ * component roster and the styling solutions are rendered as their own sections in SKILL.md's body, not as
+ * map rows.
  */
 export const SKELETON_REFERENCE_MAP: readonly ReferenceMapEntry[] = [
   { path: 'references/stylesheets.md', useWhen: 'Setting up global stylesheets and the CSS reset.' },

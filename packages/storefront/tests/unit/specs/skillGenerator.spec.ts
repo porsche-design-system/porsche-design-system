@@ -2,14 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { ACTIVATION_DESCRIPTION, SKELETON_REFERENCE_MAP, SKILL_NAME, buildSkillMd } from '@/lib/skill/skillMd';
-import {
-  FRAMEWORKS,
-  type Framework,
-  type ReferenceMapEntry,
-  SKILL_DIRECTORY_LAYOUT,
-  SkillTree,
-  isFramework,
-} from '@/lib/skill/skillTree';
+import { FRAMEWORKS, type Framework, SKILL_DIRECTORY_LAYOUT, SkillTree, isFramework } from '@/lib/skill/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 describe('SkillTree', () => {
@@ -70,18 +63,6 @@ describe('SkillTree', () => {
     expect(fs.existsSync(tree.resolve('references/tokens.md'))).toBe(true);
   });
 
-  it('accumulates registered reference-map rows in order', () => {
-    const tree = new SkillTree(root);
-    const entries: ReferenceMapEntry[] = [
-      { path: 'references/tokens.md', useWhen: 'a' },
-      { path: 'references/partials.md', useWhen: 'b' },
-    ];
-    for (const entry of entries) {
-      tree.registerReference(entry);
-    }
-
-    expect(tree.referenceMap).toEqual(entries);
-  });
 });
 
 describe('isFramework', () => {

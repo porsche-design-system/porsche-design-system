@@ -158,12 +158,6 @@ const generateTree = async (
   const tree = new SkillTree(root, framework);
   tree.reset();
 
-  // Seed the reference-map scaffold. Content generators (TASK-03+) write their
-  // produced files and register their own rows here before SKILL.md is rendered.
-  for (const entry of SKELETON_REFERENCE_MAP) {
-    tree.registerReference(entry);
-  }
-
   const degraded: string[] = [];
 
   const styleReferences = writeStyleReferences(tree, framework);
@@ -201,7 +195,7 @@ const generateTree = async (
     degraded.push(...report.degraded.map(({ tag, sections }) => `${framework} ${tag} [${sections.join(', ')}]`));
   }
 
-  tree.write('SKILL.md', buildSkillMd(framework, tree.referenceMap, roster));
+  tree.write('SKILL.md', buildSkillMd(framework, SKELETON_REFERENCE_MAP, roster));
 
   console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
   return degraded;

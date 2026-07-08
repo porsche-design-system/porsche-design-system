@@ -52,9 +52,6 @@ source-data issue, not a sub-component gap._
   items without separation. _(The related value-type-as-string-literals bug is fixed — see below.)_
 - **[P3] `p-button.md` self-contradiction:** `variant` type is `'primary' | 'secondary'` but the prose
   says "(e.g. `primary`, `secondary`, `tertiary`)" — invites an invalid value. Source-data/prose fix.
-- **[P3] `tokens.md` link convention mixing:** `[../tokens](../tokens)` reads as a file-relative link to
-  a nonexistent `skill/tokens`; only correct under the SKILL.md "paths relative to skill root" note,
-  which sibling `./examples/…` links do not follow. Pick one convention for raw-value pointers.
 - **[P3] React `p-button/examples/Form.tsx` duplicate React imports** (harmless lint noise; example
   source, not generated). Also `name` frontmatter is identical across all four trees — fine when one
   framework is installed, collides in a monorepo with two frontends; documented as a single fixed name,
@@ -74,10 +71,6 @@ source-data issue, not a sub-component gap._
   `STYLE_REFERENCES` (`stylesReference.ts`) must still be edited in tandem to add a solution — fully
   merging them would couple `skillMd.ts` to the heavy `getXxxSkill` serializers, so left as-is. _(The
   `MIGRATION_GUIDES` / `SKELETON_REFERENCE_MAP` pair is done — see "Fixed in the follow-up pass".)_
-- **[P3] `registerReference` is write-only scaffolding.** Only the skeleton seeding loop calls it; no
-  content generator registers rows, despite comments saying they do. Either have generators register
-  their rows (so the map cannot point at never-written files) or delete it and pass
-  `SKELETON_REFERENCE_MAP` straight to `buildSkillMd`.
 - **[P3] Cross-package deep source imports.** `stylesReference.ts` / `tokensReference.ts` import sibling
   packages' *source* (`../../../../styles/projects/…`, `../../../../tokens/projects/…`), coupling the
   storefront build to their internal layout. Prefer built workspace entry points, or centralize the
@@ -201,3 +194,12 @@ upgrading" log line is the pragmatic mitigation that shipped instead._
   imports it for the MDX-load list, so adding a guide is a one-line edit. Output-neutral (same paths,
   `useWhen` text and order). The parallel `STYLING_SOLUTIONS` / `STYLE_REFERENCES` pair is left unmerged —
   see the open §3 note for why.
+- **`registerReference` scaffolding removed (§3 P3).** The unused `SkillTree.registerReference` /
+  `referenceMap` API (and its private row buffer) is deleted; `build-skill.ts` passes the now-static
+  `SKELETON_REFERENCE_MAP` straight to `buildSkillMd` instead of seeding a per-tree buffer that no
+  generator ever appended to. Output-neutral (regen produced zero tree drift); the obsolete
+  register/read roundtrip test in `skillGenerator.spec.ts` was dropped.
+- **`tokens.md` raw-pointer convention (§2 P3).** The design-tokens intro now writes the `../tokens`
+  raw pointer as inline code ("read `../tokens` in the installed package") instead of a markdown link,
+  matching how `component-meta`'s `../meta` and the styles "Full stylesheet" pointers are written. Drift
+  snapshot refreshed for the four `tokens.md`; the link gate still classifies `../tokens` as `raw`.

@@ -2,7 +2,7 @@
 
 The Porsche Design System design tokens — the source values for breakpoints, color, spacing,
 typography, motion and more. Each table lists the token `name`, its `value` and a description. For the
-exact resolved values and their generated CSS, see [`../tokens`](../tokens).
+exact resolved values and their generated CSS, read `../tokens` in the installed package.
 
 ## Contents
 

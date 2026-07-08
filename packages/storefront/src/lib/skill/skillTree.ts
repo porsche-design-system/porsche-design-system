@@ -46,15 +46,13 @@ export type ReferenceMapEntry = { path: string; useWhen: string };
 
 /**
  * Filesystem writer that owns a single framework's skill tree. It is the stable
- * API the content generators write through: produced files via {@link write} /
- * {@link writeReference}, and their SKILL.md reference-map row via
- * {@link registerReference}. The harness renders SKILL.md from the collected
- * rows once every generator has run.
+ * API the content generators write produced files through, via {@link write} /
+ * {@link writeReference}. SKILL.md itself (including its reference map) is rendered
+ * from {@link SKELETON_REFERENCE_MAP} by the harness once every generator has run.
  */
 export class SkillTree {
   public readonly root: string;
   private readonly framework?: Framework;
-  private readonly references: ReferenceMapEntry[] = [];
 
   /**
    * @param root  the tree's filesystem root.
@@ -92,15 +90,5 @@ export class SkillTree {
   /** Write a file under `references/`. Returns the tree-relative path written (POSIX separators). */
   public writeReference(relativePath: string, content: string): string {
     return this.write(path.posix.join('references', relativePath), content);
-  }
-
-  /** Register a SKILL.md reference-map row. */
-  public registerReference(entry: ReferenceMapEntry): void {
-    this.references.push(entry);
-  }
-
-  /** The registered reference-map rows, in registration order. */
-  public get referenceMap(): readonly ReferenceMapEntry[] {
-    return this.references;
   }
 }
