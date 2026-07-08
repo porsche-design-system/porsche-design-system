@@ -1,6 +1,12 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentType } from 'react';
-import { parseRequiredParents, renderComponentApi, renderSubComponents } from './componentApi';
+import {
+  deriveIconNames,
+  parseRequiredParents,
+  renderComponentApi,
+  renderIconsReference,
+  renderSubComponents,
+} from './componentApi';
 import { type ComponentExamplesOptions, writeComponentExamples } from './componentExamples';
 import { rewriteDocLinks } from './links';
 import { leadSentence, stripLeadingH1 } from './markdown';
@@ -197,16 +203,23 @@ export const writeComponentReferences = (
   const degraded: DegradedProse[] = [];
   const subComponentsByParent = apiOptions ? buildSubComponentMap(apiOptions.componentMeta) : {};
 
+  // The ~290-name icon union is shared by every icon-typed prop; emit it once as `references/icons.md`
+  // and collapse each prop's type cell to a link, instead of inlining ~4.2 KB into ~9 component files.
+  const iconNames = new Set(apiOptions ? deriveIconNames(apiOptions.componentMeta) : []);
+  if (iconNames.size > 0) {
+    tree.writeReference('icons.md', renderIconsReference([...iconNames]));
+  }
+
   for (const tag of tags) {
     const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag]);
     const apiMeta = apiOptions?.componentMeta[tag];
     const sections = [markdown];
     if (apiMeta) {
-      sections.push(renderComponentApi(apiMeta, apiOptions.framework));
+      sections.push(renderComponentApi(apiMeta, apiOptions.framework, iconNames));
     }
     const subComponents = subComponentsByParent[tag];
     if (subComponents && subComponents.length > 0) {
-      sections.push(renderSubComponents(subComponents));
+      sections.push(renderSubComponents(subComponents, iconNames));
     }
     const examplesSource = examplesOptions?.metaMap[tag];
     if (examplesSource) {

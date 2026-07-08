@@ -1,6 +1,12 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { describe, expect, it } from 'vitest';
-import { parseRequiredParents, renderComponentApi, renderSubComponents } from '@/lib/skill/componentApi';
+import {
+  deriveIconNames,
+  parseRequiredParents,
+  renderComponentApi,
+  renderIconsReference,
+  renderSubComponents,
+} from '@/lib/skill/componentApi';
 import { componentApiFixtures } from '../data/skill/componentApiFixtures';
 
 const { 'p-accordion': accordion, 'p-heading': heading } = componentApiFixtures;
@@ -50,6 +56,37 @@ describe('renderComponentApi', () => {
       // a real string-literal enum is still rendered as quoted values
       expect(markdown).toContain("`'none'`");
       expect(markdown).toContain("`'error'`");
+    });
+  });
+
+  describe('icon-union props', () => {
+    const iconNames = ['arrow-right', 'car', 'zoom-in'];
+    // p-button's `icon`: the full icon-name set plus a non-icon extra (`none`).
+    const buttonLike = {
+      isChunked: true,
+      propsMeta: {
+        icon: {
+          description: 'The icon to display.',
+          type: 'ButtonIcon',
+          defaultValue: 'none',
+          allowedValues: [...iconNames, 'none'],
+        },
+      },
+    } as unknown as ComponentMeta;
+
+    it('collapses the icon-name union to a shared-list link, keeping non-icon extras inline', () => {
+      const markdown = renderComponentApi(buttonLike, 'js', new Set(iconNames));
+      expect(markdown).toContain('see [icon names](references/icons.md)');
+      expect(markdown).toContain(`one of ${iconNames.length} icon names`);
+      expect(markdown).toContain("`'none'`"); // the non-icon extra is preserved
+      expect(markdown).not.toContain("`'arrow-right'`"); // individual icon names are not inlined
+      expect(markdown).not.toContain("`'zoom-in'`");
+    });
+
+    it('inlines the values when no icon-name set is supplied (default)', () => {
+      const markdown = renderComponentApi(buttonLike, 'js');
+      expect(markdown).toContain("`'arrow-right'`");
+      expect(markdown).not.toContain('references/icons.md');
     });
   });
 
@@ -143,5 +180,31 @@ describe('renderSubComponents', () => {
     const empty = { isChunked: false, requiredParent: 'p-x' } as unknown as ComponentMeta;
     const markdown = renderSubComponents([{ tag: 'p-x-item', meta: empty }]);
     expect(markdown).toContain('_No configurable properties, slots, events or CSS variables._');
+  });
+});
+
+describe('deriveIconNames', () => {
+  it('reads the icon-name set from `p-icon`’s own `name` allowed values', () => {
+    const meta = {
+      'p-icon': { propsMeta: { name: { allowedValues: ['a', 'b', 'c'] } } },
+    } as unknown as Record<string, ComponentMeta>;
+    expect(deriveIconNames(meta)).toEqual(['a', 'b', 'c']);
+  });
+
+  it('returns an empty list when `p-icon` (or its `name` enum) is absent', () => {
+    expect(deriveIconNames({} as Record<string, ComponentMeta>)).toEqual([]);
+    const stringName = { 'p-icon': { propsMeta: { name: { allowedValues: 'string' } } } } as unknown as Record<
+      string,
+      ComponentMeta
+    >;
+    expect(deriveIconNames(stringName)).toEqual([]);
+  });
+});
+
+describe('renderIconsReference', () => {
+  it('renders every icon name as inline code under an `# Icon names` heading', () => {
+    const markdown = renderIconsReference(['arrow-right', 'car']);
+    expect(markdown).toMatch(/^# Icon names/);
+    expect(markdown).toContain('`arrow-right` `car`');
   });
 });

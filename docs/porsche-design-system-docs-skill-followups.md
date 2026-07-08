@@ -33,12 +33,14 @@ _Sub-component documentation and the getting-started / framework tag-name mappin
 completeness gate would not cover them. If they still appear in any prose/examples, that is a separate
 source-data issue, not a sub-component gap._
 
-- **[P2] Per-file boilerplate duplicated across ~58 component files.** The "Authoritative API data…"
-  sentence, the "guidance for designers and developers…" filler line, the identical ARIA shadow-DOM
-  "Limitations" table, and the all-✅ "Tests" section repeat in every file. Biggest offender: the
-  ~230-literal icon union (~4.2 KB) duplicated in ~8 files per tree (`p-button`, `p-link`, `p-icon`, …).
-  Hoist shared prose to SKILL.md, link one shared icon list, and keep only exceptional Test rows
-  (e.g. p-table's Safari screen-reader caveat).
+- **[P2] Per-file *prose* boilerplate still duplicated across ~58 component files.** The "Authoritative
+  API data…" sentence, the "guidance for designers and developers…" filler line, the identical ARIA
+  shadow-DOM "Limitations" table, and the all-✅ "Tests" section still repeat in every file. These come
+  from the source MDX (usage/accessibility), so hoisting them means MDX post-processing (strip the known
+  boilerplate blocks + add one shared copy to SKILL.md) or source edits — a different mechanism from the
+  icon fix, deferred. _(The biggest offender — the ~290-name icon union, ~4.2 KB × ~9 files/tree — is
+  done: it is now the shared `references/icons.md`, linked from each icon prop. See "Fixed in the
+  follow-up pass".)_
 ### Content bugs (source-data / MDX-render, per component)
 
 - **[P2] `p-popover.md` mangled intro body** (all trees): the intro splits "…in conjunction with the
@@ -214,3 +216,12 @@ upgrading" log line is the pragmatic mitigation that shipped instead._
   the `tokensMeta` / `getXxxSkill` serializers are build-time source modules the packages' published
   entries don't re-export, and the generator runs under `tsx` against source before the siblings are
   built — the same rationale `generateComponentMeta` documents.
+- **Icon union hoisted to a shared `references/icons.md` (§2 P2, biggest offender).** The ~290-name icon
+  enumeration was inlined (~4.2 KB) into every icon-typed prop's type cell across ~9 components × 4 trees.
+  It now lives once per tree as `references/icons.md`; each icon prop's cell renders `one of N icon names —
+  see [icon names](references/icons.md)` (keeping non-icon extras like `'none'` inline). The icon-name set
+  is derived from `p-icon`'s own `name` allowed values (no new dependency / second source of truth), and
+  the collapse is detected by superset match so `p-flag`'s separate flag-name union is untouched. Net
+  ~130 KB removed across the four trees. New `componentApi.spec.ts` cases cover the collapse,
+  `deriveIconNames` and `renderIconsReference`; the produced-link gate confirms every `references/icons.md`
+  link resolves (relying on the root-relative `resolveProduced` fix above); drift snapshot refreshed.

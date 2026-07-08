@@ -23,6 +23,49 @@ import type { Framework } from './skillTree';
 
 const code = (text: string | number): string => `\`${text}\``;
 
+/** Skill-root-relative pointer to the shared icon-name list (see {@link renderIconsReference}). */
+const ICONS_REFERENCE = 'references/icons.md';
+
+/**
+ * The canonical icon-name set — `p-icon`'s own `name` allowed values. Every icon-typed prop
+ * (`p-button` `icon`, `p-link` `icon`, `p-inline-notification` `actionIcon`, …) enumerates this same
+ * ~290-name list; deriving it once from `component-meta` avoids a second source of truth and any new
+ * dependency. Returns `[]` when `p-icon` is absent (skeleton runs), which disables the collapse.
+ */
+export const deriveIconNames = (componentMeta: Record<string, ComponentMeta>): string[] => {
+  const values = componentMeta['p-icon']?.propsMeta?.name?.allowedValues;
+  return Array.isArray(values) ? values.filter((value): value is string => typeof value === 'string') : [];
+};
+
+/**
+ * The shared icon-name reference (`references/icons.md`). The ~290-name icon union was previously inlined
+ * into every icon-typed prop's type cell (~4.2 KB × ~9 components × 4 trees); every such cell now links
+ * here instead, so the full list lives once per tree.
+ */
+export const renderIconsReference = (iconNames: readonly string[]): string =>
+  [
+    '# Icon names',
+    'Valid values for the icon-typed props across PDS components (e.g. `p-icon` `name`, `p-button` ' +
+      '`icon`, `p-link` `icon`, `p-inline-notification` `actionIcon`). Pass one as a string, e.g. ' +
+      '`icon="arrow-right"`. Each component reference links here instead of repeating the full list. ' +
+      '(`p-flag` `name` uses a separate set of flag names, not listed here.)',
+    iconNames.map((name) => code(name)).join(' '),
+  ].join('\n\n');
+
+/** Whether a prop's allowed values are the icon-name union (a superset of the full icon-name set). */
+const isIconUnion = (values: readonly unknown[], iconNames: ReadonlySet<string>): boolean => {
+  if (iconNames.size === 0 || values.length < iconNames.size) {
+    return false;
+  }
+  const valueSet = new Set(values);
+  for (const name of iconNames) {
+    if (!valueSet.has(name)) {
+      return false;
+    }
+  }
+  return true;
+};
+
 /** Trailing status markers appended to an item's name column. */
 const flags = (meta: { isDeprecated?: boolean; isExperimental?: boolean; isRequired?: boolean }): string =>
   [meta.isRequired && '(required)', meta.isDeprecated && '(deprecated)', meta.isExperimental && '(experimental)']
@@ -71,7 +114,7 @@ const isTypeUnionDecomposition = (allowedValues: readonly unknown[]): boolean =>
  * values, with any deprecated values listed separately so they are never presented as
  * recommended. Breakpoint-customizable props note the generic wrapper.
  */
-const formatType = (meta: PropMeta): string => {
+const formatType = (meta: PropMeta, iconNames: ReadonlySet<string>): string => {
   const parts: string[] = [];
 
   if (Array.isArray(meta.allowedValues) && !isTypeUnionDecomposition(meta.allowedValues)) {
@@ -79,11 +122,21 @@ const formatType = (meta: PropMeta): string => {
     const recommended = meta.allowedValues.filter((value) => !deprecated.has(value as string));
     const deprecatedValues = meta.allowedValues.filter((value) => deprecated.has(value as string));
 
-    if (recommended.length > 0) {
-      parts.push(recommended.map(renderValue).join(' '));
-    }
-    if (deprecatedValues.length > 0) {
-      parts.push(`_deprecated:_ ${deprecatedValues.map(renderValue).join(' ')}`);
+    if (isIconUnion(recommended, iconNames)) {
+      // Collapse the ~290-name icon enumeration to a pointer at the shared list, keeping any non-icon
+      // extras (e.g. `'none'`) inline so they are not lost.
+      const extras = recommended.filter((value) => !iconNames.has(value as string));
+      if (extras.length > 0) {
+        parts.push(extras.map(renderValue).join(' '));
+      }
+      parts.push(`one of ${iconNames.size} icon names — see [icon names](${ICONS_REFERENCE})`);
+    } else {
+      if (recommended.length > 0) {
+        parts.push(recommended.map(renderValue).join(' '));
+      }
+      if (deprecatedValues.length > 0) {
+        parts.push(`_deprecated:_ ${deprecatedValues.map(renderValue).join(' ')}`);
+      }
     }
   } else {
     // boolean / string / number / aria-object props: the named type is the documentation
@@ -100,12 +153,16 @@ const formatType = (meta: PropMeta): string => {
 const buildTable = (heading: string, columns: string[], rows: string[][], level: number): string =>
   [`${'#'.repeat(level)} ${heading}`, '', markdownTable(columns, rows)].join('\n');
 
-const propsTable = (propsMeta: NonNullable<ComponentMeta['propsMeta']>, level: number): string => {
+const propsTable = (
+  propsMeta: NonNullable<ComponentMeta['propsMeta']>,
+  level: number,
+  iconNames: ReadonlySet<string>
+): string => {
   const rows = Object.entries(propsMeta)
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([name, meta]: [string, PropMeta]) => [
       `${code(name)}${flags(meta)}`,
-      formatType(meta),
+      formatType(meta, iconNames),
       formatDefault(meta),
       escapeCell(meta.description ?? ''),
     ]);
@@ -143,10 +200,10 @@ const cssVariablesTable = (cssVariablesMeta: NonNullable<ComponentMeta['cssVaria
 };
 
 /** The non-empty props/slots/events/CSS-variable tables for a component, headings at the given level. */
-const apiTables = (meta: ComponentMeta, level: number): string[] => {
+const apiTables = (meta: ComponentMeta, level: number, iconNames: ReadonlySet<string>): string[] => {
   const tables: string[] = [];
   if (meta.propsMeta && Object.keys(meta.propsMeta).length > 0) {
-    tables.push(propsTable(meta.propsMeta, level));
+    tables.push(propsTable(meta.propsMeta, level, iconNames));
   }
   if (meta.eventsMeta && Object.keys(meta.eventsMeta).length > 0) {
     tables.push(eventsTable(meta.eventsMeta, level));
@@ -175,10 +232,14 @@ export const parseRequiredParents = (requiredParent: string | string[] | undefin
  * the local `../meta` sibling in the js skill, the js package's `/meta` subpath in the
  * framework skills (whose own `../meta` is only a re-export shim).
  */
-export const renderComponentApi = (meta: ComponentMeta, framework: Framework): string => {
+export const renderComponentApi = (
+  meta: ComponentMeta,
+  framework: Framework,
+  iconNames: ReadonlySet<string> = new Set()
+): string => {
   const sections: string[] = [
     `## API\n\nAuthoritative API data: ${code(rawMetaReference(framework))} (\`component-meta\`). When these tables disagree with it, follow \`component-meta\`.`,
-    ...apiTables(meta, 3),
+    ...apiTables(meta, 3, iconNames),
   ];
   return sections.join('\n\n');
 };
@@ -189,7 +250,10 @@ export const renderComponentApi = (meta: ComponentMeta, framework: Framework): s
  * they are only valid inside a parent — so their authoritative `component-meta` API is
  * documented here, under the parent, with each sub-component's tables demoted one level.
  */
-export const renderSubComponents = (subComponents: { tag: string; meta: ComponentMeta }[]): string => {
+export const renderSubComponents = (
+  subComponents: { tag: string; meta: ComponentMeta }[],
+  iconNames: ReadonlySet<string> = new Set()
+): string => {
   const blocks: string[] = [
     '## Sub-components',
     'These tags are only valid inside this component (see each one’s allowed parents). Their APIs come ' +
@@ -201,7 +265,7 @@ export const renderSubComponents = (subComponents: { tag: string; meta: Componen
     if (parents.length > 0) {
       blocks.push(`Allowed parent${parents.length > 1 ? 's' : ''}: ${parents.map(code).join(', ')}.`);
     }
-    const tables = apiTables(meta, 4);
+    const tables = apiTables(meta, 4, iconNames);
     blocks.push(...(tables.length > 0 ? tables : ['_No configurable properties, slots, events or CSS variables._']));
   }
   return blocks.join('\n\n');
