@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dependency update plan",
+  "description": "Frozen plan emitted by the decide agent. Target versions are frozen from the outdated report; the agent chooses which deps and how to group them, never the target version.",
+  "type": "object",
+  "required": ["angular_bumped", "updates"],
+  "additionalProperties": false,
+  "properties": {
+    "generated_at": { "type": "string" },
+    "angular_bumped": {
+      "type": "boolean",
+      "description": "True when the Angular framework family is part of this plan."
+    },
+    "updates": {
+      "type": "array",
+      "description": "Flat, authoritative list applied verbatim by the deterministic writer.",
+      "items": {
+        "type": "object",
+        "required": ["name", "from", "to"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "from": { "type": "string", "minLength": 1 },
+          "to": { "type": "string", "minLength": 1 },
+          "group": { "type": "string" }
+        }
+      }
+    },
+    "excluded": {
+      "type": "array",
+      "description": "Dependencies intentionally left out of this round (e.g. typescript deferred under an Angular bump).",
+      "items": {
+        "type": "object",
+        "required": ["name", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

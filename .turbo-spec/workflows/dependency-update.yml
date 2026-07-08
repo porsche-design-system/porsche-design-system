@@ -1,0 +1,214 @@
+name: dependency-update
+version: "1.0"
+description: "Weekly npm dependency updates for the Porsche Design System — identify version bumps, apply frozen targets, resolve install conflicts, run syncpack consistency, and open a PR. Correctness is delegated to CI on that PR."
+
+triggers:
+  - type: cli
+    command: "run"
+
+context:
+  required: []
+  optional:
+    - repository
+    - issue_number
+
+# Egress firewall defaults to ON; the always-on ecosystem lists already cover the
+# npm registry, so nothing extra is needed here for a standard run.
+network:
+  allowed: []
+
+stages:
+  # 0. preflight (deterministic): prerequisites + dated update branch.
+  - name: preflight
+    orchestrator: testing
+    pre_command: "bash .turbo-spec/scripts/deps/preflight.sh"
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 1
+        config:
+          gate_name: preflight
+          failure_verdict: escalate
+          environment_verdict: escalate
+          success_reason: "Prerequisites met and on a non-main update branch"
+          steps:
+            - name: preflight-check
+              command: ["bash", ".turbo-spec/scripts/deps/preflight.sh", "--check"]
+
+  # 1. assess (deterministic): baseline install + machine-readable outdated report.
+  - name: assess
+    orchestrator: planning
+    depends_on: [preflight]
+    pre_command: >-
+      npm install &&
+      (npm run npm:outdated > .turbo-spec/out/outdated.txt 2>&1 || true) &&
+      node .turbo-spec/scripts/deps/parse-outdated.mjs .turbo-spec/out/outdated.txt
+      --out .turbo-spec/out/outdated-report.json
+    outputs:
+      outdated_report: .turbo-spec/out/outdated-report.json
+    quality_gates:
+      - evaluator: outcome_contract
+        on_fail: escalate
+        max_retries: 1
+        config:
+          outcome_path: .turbo-spec/out/outdated-report.json
+          schema: .turbo-spec/schemas/outdated-report.schema.json
+
+  # 2. decide (AI): frozen update-plan.json.
+  - name: decide
+    orchestrator: planning
+    depends_on: [assess]
+    condition: "assess.outdated_report.updates_exist"
+    agents:
+      - type: dependency_planner
+        system_prompt: dependency_planner
+        skills: [.github/skills/pds-dependency-context, .github/skills/dependency-update-decision]
+        tools: [file]
+    outputs:
+      update_plan: .turbo-spec/out/update-plan.json
+    quality_gates:
+      - evaluator: outcome_contract
+        on_fail: loop_back
+        max_retries: 2
+        config:
+          outcome_path: .turbo-spec/out/update-plan.json
+          schema: .turbo-spec/schemas/update-plan.schema.json
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        config:
+          gate_name: heldback
+          failure_verdict: loop_back
+          environment_verdict: escalate
+          success_reason: "No held-back dependency in plan"
+          steps:
+            - name: check-heldback
+              command: ["node", ".turbo-spec/scripts/deps/check-heldback.mjs", ".turbo-spec/out/update-plan.json"]
+
+  # 3. apply-bumps (deterministic): write frozen specifiers + install.
+  - name: apply_bumps
+    orchestrator: implementation
+    depends_on: [decide]
+    condition: "assess.outdated_report.updates_exist"
+    pre_command: >-
+      node .turbo-spec/scripts/deps/apply-plan.mjs .turbo-spec/out/update-plan.json . &&
+      node .turbo-spec/scripts/deps/run-install.mjs .
+    outputs:
+      apply_result: .turbo-spec/out/apply-result.json
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 1
+        config:
+          gate_name: equality
+          failure_verdict: escalate
+          environment_verdict: escalate
+          success_reason: "package.json changes equal the frozen plan"
+          steps:
+            - name: verify-equality
+              command: ["node", ".turbo-spec/scripts/deps/verify-equality.mjs", ".turbo-spec/out/update-plan.json", "."]
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 1
+        config:
+          gate_name: install-result
+          failure_verdict: escalate
+          environment_verdict: escalate
+          success_reason: "Install clean, or a third-party conflict routed to resolve-conflicts"
+          steps:
+            - name: check-apply-result
+              command: ["node", ".turbo-spec/scripts/deps/check-apply-result.mjs", ".turbo-spec/out/apply-result.json"]
+
+  # 4. resolve-conflicts (AI, conditional): scoped, pinned root override + reinstall.
+  - name: resolve_conflicts
+    orchestrator: implementation
+    depends_on: [apply_bumps]
+    condition: "assess.outdated_report.updates_exist and apply_bumps.apply_result.install_ok == false"
+    agents:
+      - type: eresolve_resolver
+        system_prompt: eresolve_resolver
+        skills: [.github/skills/pds-dependency-context, .github/skills/eresolve-override-resolution]
+        tools: [file, shell]
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        config:
+          gate_name: resolve-conflicts
+          failure_verdict: loop_back
+          environment_verdict: escalate
+          success_reason: "Override recorded and no forbidden flags used"
+          steps:
+            - name: check-resolve
+              command: ["node", ".turbo-spec/scripts/deps/check-resolve.mjs", ".turbo-spec/out/overrides-added.json", ".turbo-spec/out/install.log"]
+
+  # 5. angular-migrations (AI, conditional): ng update migrate-only + TS reconcile.
+  - name: angular_migrations
+    orchestrator: implementation
+    depends_on: [apply_bumps]
+    condition: "assess.outdated_report.updates_exist and decide.update_plan.angular_bumped"
+    agents:
+      - type: angular_migrator
+        system_prompt: angular_migrator
+        skills: [.github/skills/pds-dependency-context, .github/skills/angular-framework-migration]
+        tools: [file, shell]
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        config:
+          gate_name: ts-ceiling
+          failure_verdict: loop_back
+          environment_verdict: escalate
+          success_reason: "typescript within Angular MAX_TS_VERSION"
+          steps:
+            - name: check-ts-ceiling
+              command: ["node", ".turbo-spec/scripts/deps/check-ts-ceiling.mjs", "."]
+
+  # 6. consistency (deterministic): syncpack fix/format + clean lockfile regen.
+  - name: consistency
+    orchestrator: testing
+    depends_on: [apply_bumps, resolve_conflicts, angular_migrations]
+    condition: "assess.outdated_report.updates_exist"
+    pre_command: >-
+      npm run npm:lint:fix &&
+      npm run npm:format:fix &&
+      rm -f package-lock.json &&
+      npm install
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        config:
+          gate_name: consistency
+          failure_verdict: loop_back
+          environment_verdict: escalate
+          success_reason: "syncpack consistent, swc complete, TS within ceiling, no unplanned drift"
+          steps:
+            - name: syncpack-lint
+              command: ["npm", "run", "npm:lint"]
+            - name: syncpack-format
+              command: ["npm", "run", "npm:format"]
+            - name: check-swc
+              command: ["node", ".turbo-spec/scripts/deps/check-swc.mjs", "package-lock.json"]
+            - name: check-ts-ceiling
+              command: ["node", ".turbo-spec/scripts/deps/check-ts-ceiling.mjs", "."]
+            - name: no-drift
+              command: ["node", ".turbo-spec/scripts/deps/verify-equality.mjs", ".turbo-spec/out/update-plan.json", "."]
+
+  # 7. finalize (deterministic): PR body + commit + push origin + open PR.
+  - name: finalize
+    orchestrator: review
+    depends_on: [consistency]
+    condition: "assess.outdated_report.updates_exist"
+    pre_command: "bash .turbo-spec/scripts/deps/finalize.sh"
+
+model_provider:
+  primary: copilot
+  config:
+    model_id: claude-sonnet-5
+
+settings:
+  max_total_retries: 10
+  timeout_per_stage: "30m"
+  human_escalation: true

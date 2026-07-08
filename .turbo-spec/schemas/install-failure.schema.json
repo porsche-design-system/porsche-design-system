@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Install failure classification",
+  "description": "Structured record produced when `npm install` fails in apply-bumps; drives failure routing.",
+  "type": "object",
+  "required": ["kind", "packages"],
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "peer_conflict_ts_angular",
+        "peer_conflict_thirdparty",
+        "registry",
+        "postinstall",
+        "unknown"
+      ]
+    },
+    "packages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "detail": { "type": "string" }
+  }
+}
