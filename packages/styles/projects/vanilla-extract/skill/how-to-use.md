@@ -46,6 +46,10 @@ and the selected context cascades to all child elements:
 - `.scheme-dark` — forces dark mode.
 - `.scheme-light-dark` — dynamically follows the system/OS setting.
 
+The same class themes **both** the PDS components and your own vanilla-extract-styled markup — one
+`light-dark()` palette drives both layers. There is no separate component theming API and no `theme`
+prop on `PorscheDesignSystemProvider` or on components; the `.scheme-*` class is the whole switch.
+
 ```html
 <div class="scheme-dark"><!-- rendered in dark mode --></div>
 ```

@@ -1,9 +1,11 @@
 <script setup lang="ts">
-  import { PPopover } from '@porsche-design-system/components-vue';
+  import { PPopover, PText } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
   <PPopover>
-    Some additional content.
+    <PText>
+      Some additional content.
+    </PText>
   </PPopover>
 </template>

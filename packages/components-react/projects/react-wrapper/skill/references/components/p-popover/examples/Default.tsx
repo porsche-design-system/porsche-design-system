@@ -1,11 +1,13 @@
 import React from 'react';
-import { PPopover } from '@porsche-design-system/components-react';
+import { PPopover, PText } from '@porsche-design-system/components-react';
 
 export const Example = () => {
   return (
     <>
       <PPopover>
-        Some additional content.
+        <PText>
+          Some additional content.
+        </PText>
       </PPopover>
     </>
   )

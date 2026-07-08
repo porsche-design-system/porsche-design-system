@@ -5,7 +5,9 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'porsche-design-system-app',
   template: `
       <p-popover>
-        Some additional content.
+        <p-text>
+          Some additional content.
+        </p-text>
       </p-popover>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

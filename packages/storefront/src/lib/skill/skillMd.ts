@@ -43,7 +43,11 @@ export const MIGRATION_GUIDES: readonly { slug: string; useWhen: string }[] = [
  * map rows.
  */
 export const SKELETON_REFERENCE_MAP: readonly ReferenceMapEntry[] = [
-  { path: 'references/stylesheets.md', useWhen: 'Setting up global stylesheets and the CSS reset.' },
+  {
+    path: 'references/stylesheets.md',
+    useWhen:
+      'The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work.',
+  },
   { path: 'references/tokens.md', useWhen: 'Using design tokens — color, spacing, typography, etc.' },
   { path: 'references/partials.md', useWhen: 'Adding PDS partials — fonts, icons, meta tags, loader script.' },
   ...MIGRATION_GUIDES.map(({ slug, useWhen }) => ({ path: `references/migration/${slug}.md`, useWhen })),
@@ -260,7 +264,10 @@ const renderStylingSection = (): string => {
       'independent of the components — you do not need them to use components, and they do not depend on ' +
       'components — but they build on the same design system: the same design tokens and the same ' +
       '`color-scheme` (light/dark) theming. Custom UI you build with them therefore shares the exact ' +
-      'palette, spacing and typography as PDS components.',
+      'palette, spacing and typography as PDS components. Theming is a single switch: one `.scheme-*` class ' +
+      'on `<html>` drives both layers — PDS components and your custom markup — off one `light-dark()` ' +
+      'palette. There is no separate component theming API and no `theme` prop; see the Core rules and ' +
+      '`references/stylesheets.md`.',
     '',
     'Use them to build layout and custom components or patterns not yet available in the component ' +
       'library — typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. Pick ' +
@@ -290,6 +297,13 @@ export const buildSkillMd = (
   const coreRules = [
     '## Core rules',
     '',
+    '- **Theming is one mechanism — CSS `color-scheme`, nothing else.** Light/dark is controlled solely by ' +
+      'the `.scheme-light` / `.scheme-dark` / `.scheme-light-dark` classes on `<html>` (or any ancestor); ' +
+      'the scheme cascades to **both** PDS components and custom markup, which all resolve colors via ' +
+      '`light-dark()`. `.scheme-light-dark` follows the OS. There is **no** `theme` prop — not on ' +
+      '`PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`) and not on components. A ' +
+      '`theme="light|dark|auto"` prop existed in earlier majors and was removed; if you recall one, it is a ' +
+      'stale prior — do not add it, verify against the installed types. See `references/stylesheets.md`.',
     `- \`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow \`component-meta\` (raw data at \`${rawMetaReference(framework)}\`).${rawDataNote}`,
     '- Prefer Porsche Design System components and tokens for new UI. Do not rewrite non-PDS UI unasked, and do not hijack work that targets another library.',
     '- All content here is version-exact for the installed package — never mix guidance across versions.',

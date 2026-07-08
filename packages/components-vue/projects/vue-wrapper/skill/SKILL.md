@@ -106,7 +106,7 @@ Sub-components (e.g. `p-table-row`, `p-select-option`, `p-tabs-item`) have no se
 
 ## Styling
 
-The Porsche Design System offers a ready-made integration for four styling solutions. They are independent of the components — you do not need them to use components, and they do not depend on components — but they build on the same design system: the same design tokens and the same `color-scheme` (light/dark) theming. Custom UI you build with them therefore shares the exact palette, spacing and typography as PDS components.
+The Porsche Design System offers a ready-made integration for four styling solutions. They are independent of the components — you do not need them to use components, and they do not depend on components — but they build on the same design system: the same design tokens and the same `color-scheme` (light/dark) theming. Custom UI you build with them therefore shares the exact palette, spacing and typography as PDS components. Theming is a single switch: one `.scheme-*` class on `<html>` drives both layers — PDS components and your custom markup — off one `light-dark()` palette. There is no separate component theming API and no `theme` prop; see the Core rules and `references/stylesheets.md`.
 
 Use them to build layout and custom components or patterns not yet available in the component library — typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. Pick one solution per project and open its reference for setup and the full catalog.
 
@@ -121,7 +121,7 @@ Use them to build layout and custom components or patterns not yet available in 
 
 | Reference | Use this when |
 | --- | --- |
-| `references/stylesheets.md` | Setting up global stylesheets and the CSS reset. |
+| `references/stylesheets.md` | The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work. |
 | `references/tokens.md` | Using design tokens — color, spacing, typography, etc. |
 | `references/partials.md` | Adding PDS partials — fonts, icons, meta tags, loader script. |
 | `references/migration/porsche-design-system.md` | Upgrading the Porsche Design System to a new major version. |
@@ -132,6 +132,7 @@ Use them to build layout and custom components or patterns not yet available in 
 
 ## Core rules
 
+- **Theming is one mechanism — CSS `color-scheme`, nothing else.** Light/dark is controlled solely by the `.scheme-light` / `.scheme-dark` / `.scheme-light-dark` classes on `<html>` (or any ancestor); the scheme cascades to **both** PDS components and custom markup, which all resolve colors via `light-dark()`. `.scheme-light-dark` follows the OS. There is **no** `theme` prop — not on `PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`) and not on components. A `theme="light|dark|auto"` prop existed in earlier majors and was removed; if you recall one, it is a stale prior — do not add it, verify against the installed types. See `references/stylesheets.md`.
 - `component-meta` is authoritative: when it disagrees with the examples or prose here, follow `component-meta` (raw data at `@porsche-design-system/components-js/meta`). This subpath is the authoritative source: the wrapper's own `meta/` and `scss/` re-export the same-version `@porsche-design-system/components-js` peer, so the skill links the peer directly.
 - Prefer Porsche Design System components and tokens for new UI. Do not rewrite non-PDS UI unasked, and do not hijack work that targets another library.
 - All content here is version-exact for the installed package — never mix guidance across versions.

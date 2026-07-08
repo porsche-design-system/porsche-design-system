@@ -1,12 +1,10 @@
 # p-popover
 
-The `p-popover` component can be used to display some additional content on top of another in conjunction with the info
+The `p-popover` component can be used to display some additional content on top of surrounding content, triggered by a button. By default it renders its own info button , or you can provide a custom trigger via the `button` slot.
 
--button.
+By default, the Popover works **uncontrolled**: it manages its own visibility and toggles open or closed when its info button (or a slotted trigger) is clicked. It is dismissed on outside click, on `Escape`, or when keyboard focus leaves the Popover.
 
-Only one Popover can be opened at the time, by clicking another Popover the opened Popover will be closed.
-
-You can use the `description` or the slot of the Popover to provide content which will be displayed in the open Popover.
+Alternatively, the Popover can be used in a **controlled** mode by setting the `open` prop together with a slotted `button` (the default info button does not toggle in this mode). In this mode you own the open state: the Popover only emits the `dismiss` event when the user requests to close it (via `Escape`, an outside click or when keyboard focus leaves the Popover), and you decide whether to update `open` in response.
 
 **Hint:** The `p-popover` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) and gets rendered on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container.
 
