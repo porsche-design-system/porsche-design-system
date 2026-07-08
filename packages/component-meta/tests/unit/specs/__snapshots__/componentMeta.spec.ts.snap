@@ -7729,18 +7729,67 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
+    "controlledMeta": [
+      {
+        "event": "dismiss",
+        "props": [
+          "open",
+        ],
+      },
+    ],
+    "cssVariablesMeta": {
+      "--p-popover-h": {
+        "defaultValue": "auto",
+        "description": "Height of the popover.",
+      },
+      "--p-popover-max-h": {
+        "defaultValue": "calc(100dvh - 16px)",
+        "description": "Max height of the popover.",
+      },
+      "--p-popover-max-w": {
+        "defaultValue": "min(calc(100dvw - 16px), 48ch)",
+        "description": "Max width of the popover.",
+      },
+      "--p-popover-min-h": {
+        "defaultValue": "auto",
+        "description": "Min height of the popover.",
+      },
+      "--p-popover-min-w": {
+        "defaultValue": "0px",
+        "description": "Min width of the popover.",
+      },
+      "--p-popover-px": {
+        "defaultValue": "16px",
+        "description": "Horizontal padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration \`--p-popover-px: var(--p-spacing-static-md)\`, the Tailwind CSS arbitrary property \`[--p-popover-px:var(--spacing-static-md)]\` or the equivalent SCSS/JS token.",
+      },
+      "--p-popover-py": {
+        "defaultValue": "12px",
+        "description": "Vertical padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration \`--p-popover-py: var(--p-spacing-static-sm)\`, the Tailwind CSS arbitrary property \`[--p-popover-py:var(--spacing-static-sm)]\` or the equivalent SCSS/JS token.",
+      },
+      "--p-popover-radius": {
+        "defaultValue": "12px",
+        "description": "Border radius of the popover. It is recommended to apply an existing Porsche Design System border-radius token, e.g. the CSS declaration \`--p-popover-radius: var(--p-radius-lg)\`, the Tailwind CSS arbitrary property \`[--p-popover-radius:var(--radius-lg)]\` or the equivalent SCSS/JS token.",
+      },
+      "--p-popover-w": {
+        "defaultValue": "max-content",
+        "description": "Width of the popover.",
+      },
+    },
+    "eventsMeta": {
+      "dismiss": {
+        "description": "Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab).",
+        "type": "void",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
-    "hasEvent": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-icon",
-    ],
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -7751,10 +7800,16 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "PopoverAriaAttribute",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces.",
+        "type": "boolean",
+      },
       "description": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Sets the text content displayed inside the popover panel when it is open, providing contextual help or information.",
+        "description": "Sets the text content displayed inside the popover panel when it is open, providing contextual help or information. Takes precedence over the default slot when both are provided.",
         "type": "string",
       },
       "direction": {
@@ -7768,10 +7823,16 @@ exports[`should match snapshot 1`] = `
         "description": "Sets the preferred direction for the popover to open relative to its trigger button. Falls back to the direction with the most available viewport space.",
         "type": "PopoverDirection",
       },
+      "open": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Controls whether the popover is visible. When set (controlled mode), visibility follows this prop and the consumer owns the open state via a slotted \`button\`. When omitted (uncontrolled mode), the component manages visibility itself.",
+        "type": "boolean",
+      },
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot for the popover content.",
+        "description": "Default slot for the popover content. Ignored when the \`description\` prop is set, which takes precedence.",
       },
       "button": {
         "description": "Renders a custom trigger button. When used, the default info button is replaced.",

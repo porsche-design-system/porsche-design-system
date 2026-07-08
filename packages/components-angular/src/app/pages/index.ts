@@ -176,11 +176,14 @@ import { PopoverComponent } from './generated/popover.component';
 import { PopoverBasicComponent } from './generated/popover-basic.component';
 import { PopoverBasicSlottedComponent } from './generated/popover-basic-slotted.component';
 import { PopoverBottomComponent } from './generated/popover-bottom.component';
+import { PopoverCompactComponent } from './generated/popover-compact.component';
+import { PopoverCssVariablesComponent } from './generated/popover-css-variables.component';
 import { PopoverEdgeCaseComponent } from './generated/popover-edge-case.component';
 import { PopoverLeftComponent } from './generated/popover-left.component';
 import { PopoverRightComponent } from './generated/popover-right.component';
 import { PopoverScrolledComponent } from './generated/popover-scrolled.component';
 import { PopoverTopComponent } from './generated/popover-top.component';
+import { PopoverViewportLimitComponent } from './generated/popover-viewport-limit.component';
 import { RadioGroupComponent } from './generated/radio-group.component';
 import { ScrollerComponent } from './generated/scroller.component';
 import { SegmentedControlComponent } from './generated/segmented-control.component';
@@ -391,11 +394,14 @@ export const generatedPages = [
   PopoverBasicComponent,
   PopoverBasicSlottedComponent,
   PopoverBottomComponent,
+  PopoverCompactComponent,
+  PopoverCssVariablesComponent,
   PopoverEdgeCaseComponent,
   PopoverLeftComponent,
   PopoverRightComponent,
   PopoverScrolledComponent,
   PopoverTopComponent,
+  PopoverViewportLimitComponent,
   RadioGroupComponent,
   ScrollerComponent,
   SegmentedControlComponent,
@@ -1211,6 +1217,16 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: PopoverBottomComponent,
   },
   {
+    name: 'Popover Compact',
+    path: 'popover-compact',
+    component: PopoverCompactComponent,
+  },
+  {
+    name: 'Popover Css Variables',
+    path: 'popover-css-variables',
+    component: PopoverCssVariablesComponent,
+  },
+  {
     name: 'Popover Edge Case',
     path: 'popover-edge-case',
     component: PopoverEdgeCaseComponent,
@@ -1234,6 +1250,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Popover Top',
     path: 'popover-top',
     component: PopoverTopComponent,
+  },
+  {
+    name: 'Popover Viewport Limit',
+    path: 'popover-viewport-limit',
+    component: PopoverViewportLimitComponent,
   },
   {
     name: 'Radio Group',

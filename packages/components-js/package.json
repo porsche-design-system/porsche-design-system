@@ -97,8 +97,8 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "4.3.0",
-    "@porsche-design-system/components-js": "4.3.0",
+    "@porsche-design-system/components": "4.4.0-rc.0",
+    "@porsche-design-system/components-js": "4.4.0-rc.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0"
   },
@@ -113,7 +113,7 @@
     "ag-grid-react": "35.3.1",
     "change-case": "^5.4.4",
     "concurrently": "^10.0.3",
-    "devtools-protocol": "^0.0.1651496",
+    "devtools-protocol": "^0.0.1653615",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
     "jsdom": "^29.1.1",
@@ -127,9 +127,9 @@
     "typescript": "^6.0.3",
     "vite": "^8.1.0",
     "vitest": "^4.1.9",
-    "webpack": "^5.107.2",
+    "webpack": "^5.108.1",
     "webpack-bundle-analyzer": "^5.3.0",
-    "webpack-cli": "^7.0.3"
+    "webpack-cli": "^7.1.0"
   },
   "volta": {
     "extends": "../../package.json"

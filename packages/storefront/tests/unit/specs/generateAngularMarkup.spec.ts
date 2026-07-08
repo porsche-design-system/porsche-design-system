@@ -159,6 +159,31 @@ describe('generateAngularControlledScript()', () => {
     `
     );
   });
+
+  it('should return a toggling eventHandler for toggleValue', () => {
+    const { states, eventHandler } = generateAngularControlledScript(
+      'p-button',
+      [
+        [
+          'onClick',
+          {
+            target: 'p-popover',
+            prop: 'open',
+            toggleValue: true,
+          },
+        ],
+      ],
+      {}
+    );
+    expect(states).toMatchInlineSnapshot('""');
+    expect(eventHandler).toMatchInlineSnapshot(
+      `
+      "  onClick() {
+          this.open = !this.open;
+        }"
+    `
+    );
+  });
 });
 
 describe('generateAngularProperties()', () => {

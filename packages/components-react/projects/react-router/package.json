@@ -17,7 +17,7 @@
     "clean:build": "rm -rf ./.react-router && rm -rf ./build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "4.3.0",
+    "@porsche-design-system/components-react": "4.4.0-rc.0",
     "@react-router/node": "^8.0.1",
     "@react-router/serve": "^8.0.1",
     "isbot": "^5.1.44",
@@ -30,7 +30,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@react-router/dev": "^8.0.1",
     "@tailwindcss/vite": "^4.3.1",
-    "@types/node": "^26.0.0",
+    "@types/node": "^26.0.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "concurrently": "^10.0.3",
