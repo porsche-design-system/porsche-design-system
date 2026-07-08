@@ -12,8 +12,8 @@ function, plus spacing, typography, border radii, blur, shadow and motion tokens
 
 Reach for the global CSS variables directly for a pure-CSS approach — to align components in your
 page layout or to build custom components — when you prefer not to use one of the dedicated styling
-solutions ([Tailwind CSS](/tailwindcss/introduction), [SCSS](/scss/introduction),
-[Emotion](/emotion/introduction) or [Vanilla Extract](/vanilla-extract/introduction)).
+solutions ([Tailwind CSS](./styles/tailwindcss.md), [SCSS](./styles/scss.md),
+[Emotion](./styles/emotion.md) or [Vanilla Extract](./styles/vanilla-extract.md)).
 
 This document is an index of the global styles: it lists every documented stylesheet, every exposed
 CSS variable with its value, and every color-scheme class.

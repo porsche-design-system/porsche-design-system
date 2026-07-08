@@ -148,12 +148,13 @@ const renderList = (node: ParsedElement, ordered: boolean): string => {
 
 const renderPre = (node: ParsedElement): string => {
   const language = /language-([\w-]+)/.exec(node.innerHTML)?.[1] ?? '';
-  // `node-html-parser` treats `<pre>` as raw text, so `.text` is the decoded
-  // content with the inner `<code>` wrapper present as a literal string.
-  const code = node.text
-    .replace(/^\s*<code[^>]*>/, '')
-    .replace(/<\/code>\s*$/, '')
-    .replace(/\n+$/, '');
+  // `node-html-parser` treats `<pre>` as raw text: its inner HTML — the `<code>` wrapper and any
+  // syntax-highlighter `<span class="hljs-…">` markup — is not parsed into child nodes, so `.text`
+  // would leak that markup verbatim (plain code blocks have none; highlighted ones do). Strip the
+  // `<code>` wrapper, then re-parse the remaining inner HTML and take its text: this collapses the
+  // highlighter spans and decodes entities, recovering the original source in both cases.
+  const inner = node.innerHTML.replace(/^\s*<code[^>]*>/i, '').replace(/<\/code>\s*$/i, '');
+  const code = parse(inner).text.replace(/\n+$/, '');
   return `\`\`\`${language}\n${code}\n\`\`\``;
 };
 
@@ -162,7 +163,9 @@ const renderTable = (node: ParsedElement): string => {
   let separatorWritten = false;
 
   for (const row of node.querySelectorAll('tr')) {
-    const cells = row.querySelectorAll('th, td').map((cell) => renderChildrenInline(cell).trim());
+    // Escape pipes so cell content that itself contains `|` (e.g. a `'html' | 'jsx'` union type in an
+    // inline-code span) does not break the row into extra columns.
+    const cells = row.querySelectorAll('th, td').map((cell) => renderChildrenInline(cell).trim().replace(/\|/g, '\\|'));
     if (cells.length === 0) {
       continue;
     }

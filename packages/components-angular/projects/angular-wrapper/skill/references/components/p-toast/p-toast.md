@@ -2,7 +2,7 @@
 
 The `p-toast` component manages both, the queue and display of toast messages. Therefore, you can only have a single instance of this component within your application. Its messages are rendered on the `#top-layer` which ensures the element to be on top of the page, independent of where `p-toast` is placed in the DOM hierarchy (z-index is not relevant anymore and won't have any effect).
 
-Review the [notification decision tree](/patterns/notifications/decision-tree/) to determine which notification component is best for a particular scenario.
+Review the [notification decision tree](https://designsystem.porsche.com/patterns/notifications/decision-tree/) to determine which notification component is best for a particular scenario.
 
 Queuing messages on `p-toast` component happens via its `addMessage()` method. For Angular users, we offer the injectable `ToastManager` service, for React, there is the `useToastManager()` hook. Both expose the `addMessage()` method, which needs to be called with a parameter that has the following structure:
 
@@ -15,7 +15,7 @@ type ToastMessage = {
 
 The bottom position of the `p-toast` can be adjusted via the `--p-toast-position-bottom` CSS variable.
 
-For more information about the Usage of the `p-toast` checkout the [Notification](/patterns/notifications/introduction) page.
+For more information about the Usage of the `p-toast` checkout the [Notification](https://designsystem.porsche.com/patterns/notifications/introduction) page.
 
 ## Accessibility support
 

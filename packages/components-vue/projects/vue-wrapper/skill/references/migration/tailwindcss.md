@@ -66,7 +66,7 @@ Please transition to the new styles as soon as possible. All legacy styles are c
 
 ### Border
 
-See [Tailwind CSS Border Examples](/tailwindcss/border/examples) for more details.
+See [Tailwind CSS Border Examples](../styles/tailwindcss.md) for more details.
 
 ```diff
 - .border-thin
@@ -79,7 +79,7 @@ The CSS variables `--border-width-thin` and `--border-width-regular` are depreca
 
 ### Shadow
 
-See [Tailwind CSS Shadow Examples](/tailwindcss/shadow/examples) for more details.
+See [Tailwind CSS Shadow Examples](../styles/tailwindcss.md) for more details.
 
 ```diff
 - .shadow-low
@@ -92,7 +92,7 @@ See [Tailwind CSS Shadow Examples](/tailwindcss/shadow/examples) for more detail
 
 ### Motion
 
-See [Tailwind CSS Motion Examples](/tailwindcss/motion/examples) for more details.
+See [Tailwind CSS Motion Examples](../styles/tailwindcss.md) for more details.
 
 ```diff
 - .duration-short
@@ -107,7 +107,7 @@ See [Tailwind CSS Motion Examples](/tailwindcss/motion/examples) for more detail
 
 ### Typography
 
-See [Tailwind CSS Typography Examples](/tailwindcss/typography/examples) for more details.
+See [Tailwind CSS Typography Examples](../styles/tailwindcss.md) for more details.
 
 ```diff
 - .prose-display-lg

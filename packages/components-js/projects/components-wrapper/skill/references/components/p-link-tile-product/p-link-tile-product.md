@@ -4,7 +4,7 @@ The `p-link-tile-product` is a navigational component designed to showcase a fea
 
 An `img` or `picture` element has to be available as a child of the `p-link-tile-product` component.
 
-The `heading` and `price` properties are required and a link must be provided, using either the `href` property or a [slotted link](/components/link-tile-product/examples/#framework-routing-anchor-nesting).
+The `heading` and `price` properties are required and a link must be provided, using either the `href` property or a [slotted link](./p-link-tile-product.md).
 
 ## Usage
 
@@ -36,7 +36,7 @@ The following section provides guidance for designers and developers on how to u
 
 ## Related components
 
-- [Link Tile](/components/link-tile/)
+- [Link Tile](../p-link-tile/p-link-tile.md)
 
 ## Accessibility support
 

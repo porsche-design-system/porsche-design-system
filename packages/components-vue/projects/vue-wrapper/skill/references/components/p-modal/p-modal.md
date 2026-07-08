@@ -8,7 +8,7 @@ Following **web standards**, the component uses the native `<dialog />` element 
 
 The most important property of `p-modal` is its `open` property. When it's set to `true` the modal will be visible. In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.
 
-The size of `p-modal` adjusts itself to the content with a predefined **min/max width** which aligns to the **[Porsche Grid](/tailwindcss/grid/examples/)**.
+The size of `p-modal` adjusts itself to the content with a predefined **min/max width** which aligns to the **[Porsche Grid](../../styles/tailwindcss.md)**.
 
 ## Usage
 

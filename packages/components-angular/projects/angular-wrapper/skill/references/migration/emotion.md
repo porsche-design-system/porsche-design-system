@@ -2,7 +2,7 @@
 
 The library previously known as `JS` styles (`/styles`) has been officially rebranded as Emotion styles. While these styles may still function with Styled Components or other CSS-in-JS solutions, Emotion is the only officially supported framework moving forward.
 
-These styles are built directly upon the [Tokens](/tokens/introduction) package; however, if you are utilizing a different styling solution, you can still consume the design tokens independently.
+These styles are built directly upon the [Tokens](../tokens.md) package; however, if you are utilizing a different styling solution, you can still consume the design tokens independently.
 
 ## ⭐ Introducing Color Scheme
 
@@ -103,7 +103,7 @@ Changed import path for Emotion styles.
 
 ### Blur
 
-See [Emotion Blur Examples](/emotion/blur/examples) for more details.
+See [Emotion Blur Examples](../styles/emotion.md) for more details.
 
 ```diff
 - ...frostedGlassStyle,
@@ -112,7 +112,7 @@ See [Emotion Blur Examples](/emotion/blur/examples) for more details.
 
 ### Border
 
-See [Emotion Border Examples](/emotion/border/examples) for more details.
+See [Emotion Border Examples](../styles/emotion.md) for more details.
 
 ```diff
 - borderRadius: borderRadiusMedium,
@@ -129,7 +129,7 @@ See [Emotion Border Examples](/emotion/border/examples) for more details.
 
 ### Color
 
-New color definitions now leverage the native CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function. You can explore implementation samples in the [Emotion Color Examples](/emotion/color/examples) or dive deeper into our system architecture in the [Theme Guide](/must-know/theme).
+New color definitions now leverage the native CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function. You can explore implementation samples in the [Emotion Color Examples](../styles/emotion.md) or dive deeper into our system architecture in the [Theme Guide](https://designsystem.porsche.com/must-know/theme).
 
 ```diff
 - themeLightPrimary
@@ -196,7 +196,7 @@ New color definitions now leverage the native CSS [`light-dark()`](https://devel
 
 ### Focus
 
-See [Emotion Focus Examples](/emotion/focus/examples) for more details.
+See [Emotion Focus Examples](../styles/emotion.md) for more details.
 
 ```diff
 - ...getFocusStyle(),
@@ -205,7 +205,7 @@ See [Emotion Focus Examples](/emotion/focus/examples) for more details.
 
 ### Gradient
 
-See [Emotion Gradient Examples](/emotion/gradient/examples) for more details.
+See [Emotion Gradient Examples](../styles/emotion.md) for more details.
 
 ```diff
 - ...gradientToBottomStyle,
@@ -220,7 +220,7 @@ See [Emotion Gradient Examples](/emotion/gradient/examples) for more details.
 
 ### Motion
 
-See [Emotion Motion Examples](/emotion/motion/examples) for more details.
+See [Emotion Motion Examples](../styles/emotion.md) for more details.
 
 ```diff
 - transitionDuration: motionDurationShort,
@@ -241,7 +241,7 @@ See [Emotion Motion Examples](/emotion/motion/examples) for more details.
 
 ### Shadow
 
-See [Emotion Shadow Examples](/emotion/shadow/examples) for more details.
+See [Emotion Shadow Examples](../styles/emotion.md) for more details.
 
 ```diff
 - ...dropShadowHighStyle,
@@ -254,7 +254,7 @@ See [Emotion Shadow Examples](/emotion/shadow/examples) for more details.
 
 ### Spacing
 
-See [Emotion Spacing Examples](/emotion/spacing/examples) for more details.
+See [Emotion Spacing Examples](../styles/emotion.md) for more details.
 
 ```diff
 - spacingFluidXSmall
@@ -285,7 +285,7 @@ See [Emotion Spacing Examples](/emotion/spacing/examples) for more details.
 
 ### Typography
 
-See [Emotion Typography Examples](/emotion/typography/examples) for more details.
+See [Emotion Typography Examples](../styles/emotion.md) for more details.
 
 ```diff
 - ...displayLargeStyle,

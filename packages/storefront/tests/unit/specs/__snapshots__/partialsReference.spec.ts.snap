@@ -29,7 +29,7 @@ Fonts should be loaded as soon as possible but only those which are needed.
 
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
-| \`format\` | Defines the output format. | \`'html' | 'jsx' | 'js'\` | \`'html'\` |
+| \`format\` | Defines the output format. | \`'html' \\| 'jsx' \\| 'js'\` | \`'html'\` |
 
 ## Loader Script
 
@@ -41,5 +41,5 @@ To achieve earlier bootstrapping we provide a partial which needs to be injected
 
 | Option | Type | Default |
 | --- | --- | --- |
-| \`format\` | \`'html' | 'jsx' | 'sha256'\` | \`'html'\` |"
+| \`format\` | \`'html' \\| 'jsx' \\| 'sha256'\` | \`'html'\` |"
 `;

@@ -1,6 +1,6 @@
 # p-fieldset
 
-The `p-fieldset` is a grouping component for wrapping contextual associated form elements. Its visible part is an HTML *legend* element, which can be seen like a headline for describing the meaning of a form block. You can see some usage examples on our [form patterns section](/patterns/forms/resources/).
+The `p-fieldset` is a grouping component for wrapping contextual associated form elements. Its visible part is an HTML *legend* element, which can be seen like a headline for describing the meaning of a form block. You can see some usage examples on our [form patterns section](https://designsystem.porsche.com/patterns/forms/resources/).
 
 ## Usage
 
@@ -29,7 +29,7 @@ The following section provides guidance for designers and developers on how to u
 
 ### Sections including form elements
 
-[Form pattern guideline](/patterns/forms).
+[Form pattern guideline](https://designsystem.porsche.com/patterns/forms).
 
 ## Accessibility support
 

@@ -26,18 +26,18 @@ The following section provides guidance for designers and developers on how to u
 
 ### Don't:
 
-- Don't use it to filter or navigate content (use [Tabs](/components/tabs/) instead).
-- Don't use it for more than 5 options (use the [Select](/components/select/) component).
-- Don't use it with mixed values (use [Radio Group](/components/radio-group/) or [Select](/components/select/) instead).
+- Don't use it to filter or navigate content (use [Tabs](../p-tabs/p-tabs.md) instead).
+- Don't use it for more than 5 options (use the [Select](../p-select/p-select.md) component).
+- Don't use it with mixed values (use [Radio Group](../p-radio-group/p-radio-group.md) or [Select](../p-select/p-select.md) instead).
 - Don't exceed maximum width so the values turn multiline.
 
 ---
 
 ## Related components
 
-- [Select](/components/select/)
-- [Radio Button](/components/radio-group/)
-- [Tabs](/components/tabs/)
+- [Select](../p-select/p-select.md)
+- [Radio Button](../p-radio-group/p-radio-group.md)
+- [Tabs](../p-tabs/p-tabs.md)
 
 ## Accessibility support
 

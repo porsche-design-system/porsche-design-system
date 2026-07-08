@@ -1,6 +1,6 @@
 # p-button-tile
 
-The `p-button-tile` is an interactive component that displays a provided image to tease content and performs form or **interaction** events within one container. Whenever you want to provide navigational elements, stick to the [Link Tile](/components/link-tile/) component instead.
+The `p-button-tile` is an interactive component that displays a provided image to tease content and performs form or **interaction** events within one container. Whenever you want to provide navigational elements, stick to the [Link Tile](../p-link-tile/p-link-tile.md) component instead.
 
 **Note:** The component does not take care of processing and aligning the image.
 
@@ -17,7 +17,7 @@ The following section provides guidance for designers and developers on how to u
 ### Do:
 
 - Use Button Tile for **on-page interactivity**.
-- Use [Link Tile](/components/link-tile/) instead if you want to **navigate** to another page.
+- Use [Link Tile](../p-link-tile/p-link-tile.md) instead if you want to **navigate** to another page.
 - Use Button Tile with appropriate aspect ratios and short descriptions (80 characters or fewer).
 - Use basic Button Tile for better perception tests and compact Button Tile for improved spacing (especially on mobile).
 - Use gradient Button Tile when image contrast is insufficient and select images with natural contrast.

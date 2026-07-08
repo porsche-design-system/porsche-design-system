@@ -94,6 +94,11 @@ describe('component reference generator', () => {
 
       // Degraded prose surfaces for review.
       expect(report.degraded).toEqual([{ tag: 'p-degraded', sections: ['introduction'] }]);
+
+      // Storefront-absolute prose links are resolved to in-tree references in the written file.
+      const buttonMd = fs.readFileSync(tree.resolve('references/components/p-button/p-button.md'), 'utf-8');
+      expect(buttonMd).toContain('[Link](../p-link/p-link.md)');
+      expect(buttonMd).not.toContain('](/components/');
     });
 
     it('snapshots the generated roster', () => {

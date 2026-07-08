@@ -1,6 +1,6 @@
 # p-link-tile
 
-The `p-link-tile` is a navigational component that displays a provided image to tease content and navigate to further information within one container. In case you want the user to execute an action, you should select the [Button Tile](/components/button-tile/) component instead.
+The `p-link-tile` is a navigational component that displays a provided image to tease content and navigate to further information within one container. In case you want the user to execute an action, you should select the [Button Tile](../p-button-tile/p-button-tile.md) component instead.
 
 **Note:** The component does not take care of processing and aligning the image.
 
@@ -17,7 +17,7 @@ The following section provides guidance for designers and developers on how to u
 ### Do:
 
 - Use Link-Tile for prominent links with appropriate aspect ratios and short descriptions (80 characters or fewer).
-- Use [Button-Tile](/components/button-tile/) instead if you want on-page interactivity.
+- Use [Button-Tile](../p-button-tile/p-button-tile.md) instead if you want on-page interactivity.
 - Use basic Link-Tile for better perception tests and compact Link-Tile for improved spacing (especially on mobile).
 - Use gradient Link-Tile when image contrast is insufficient and select images with natural contrast.
 - Use font size for visual hierarchy and customize image type and font size for responsiveness.
@@ -32,7 +32,7 @@ The following section provides guidance for designers and developers on how to u
 
 ## Related components
 
-- [Button Tile](/components/button-tile/)
+- [Button Tile](../p-button-tile/p-button-tile.md)
 
 ## Accessibility support
 

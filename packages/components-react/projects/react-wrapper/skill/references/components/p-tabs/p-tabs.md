@@ -2,7 +2,7 @@
 
 The `p-tabs` component makes it easy to explore and switch between different views. You can organize and allow navigation between groups of content that are related and at the same level of hierarchy. The component handles the display of content according to the active tab and all accessibility attributes on your tab and tab content.
 
-This variant does not support `a` tags and should not be used for navigation. If you need to update your window location have a look at [Tabs Bar](/components/tabs-bar/) component.
+This variant does not support `a` tags and should not be used for navigation. If you need to update your window location have a look at [Tabs Bar](../p-tabs-bar/p-tabs-bar.md) component.
 
 Basic implementation shows a tab list with buttons to switch between the content. For every `p-tabs-item` inside of the `p-tabs` component, a tab will be created. The assigned `label` property defines also the name of the button.
 
@@ -27,7 +27,7 @@ The following section provides guidance for designers and developers on how to u
 
 ## Related Component
 
-- [Tabs Bar](/components/tabs-bar/)
+- [Tabs Bar](../p-tabs-bar/p-tabs-bar.md)
 
 ## Accessibility support
 

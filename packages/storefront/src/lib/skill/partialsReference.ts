@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import { rewriteDocLinks } from './links';
 import { stripLeadingH1 } from './markdown';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { SkillTree } from './skillTree';
@@ -97,7 +98,9 @@ export const renderPartialsReference = (source: PartialsSource): { markdown: str
     sections.push(demoteHeadings(markdown).trim());
   }
 
-  return { markdown: sections.join('\n\n'), degraded };
+  // Resolve storefront-absolute links to their in-tree references, relative to `references/partials.md`.
+  const markdown = rewriteDocLinks(sections.join('\n\n'), 'references/partials.md');
+  return { markdown, degraded };
 };
 
 /** Write the partials reference (`references/partials.md`) into the skill tree. */

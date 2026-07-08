@@ -2,7 +2,7 @@
 
 The `p-link-pure` component is essential for performing changes in **page routes**. A Link Pure can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 
-In case you want the user to execute an action, you should select the [Button](/components/button/) or [Button Pure](/components/button-pure/) component instead.
+In case you want the user to execute an action, you should select the [Button](../p-button/p-button.md) or [Button Pure](../p-button-pure/p-button-pure.md) component instead.
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-link-pure`.
 
@@ -13,7 +13,7 @@ The following section provides guidance for designers and developers on how to u
 ### Do:
 
 - Use a Link Pure as a more subtle call to action compared to the normal Link.
-- Use a [Button Pure](/components/button-pure/) instead of a Link Pure if you want to change a state (e.g. send form)
+- Use a [Button Pure](../p-button-pure/p-button-pure.md) instead of a Link Pure if you want to change a state (e.g. send form)
 - Use a Link Pure to navigate the user to another page.
 - Use the Icon and Text variant of Link Pure whenever possible as icons should preferably always be paired with text for better comprehensibility and accessibility.
 - Use the Text only variant when the use of icons causes interference (e.g. in-text placement, no matching icon, complex lists or tables, alignment to elements, navigation).
@@ -33,7 +33,7 @@ The following section provides guidance for designers and developers on how to u
 
 ## Related components
 
-- [Button Pure](/components/button-pure/)
+- [Button Pure](../p-button-pure/p-button-pure.md)
 
 ## Accessibility support
 

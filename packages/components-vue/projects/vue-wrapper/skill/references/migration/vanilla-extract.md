@@ -92,7 +92,7 @@ Changed import path for Vanilla Extract styles.
 
 ### Blur
 
-See [Emotion Blur Examples](/vanilla-extract/blur/examples) for more details.
+See [Emotion Blur Examples](../styles/vanilla-extract.md) for more details.
 
 ```diff
 - ...frostedGlassStyle,
@@ -101,7 +101,7 @@ See [Emotion Blur Examples](/vanilla-extract/blur/examples) for more details.
 
 ### Border
 
-See [Vanilla Extract Border Examples](/vanilla-extract/border/examples) for more details.
+See [Vanilla Extract Border Examples](../styles/vanilla-extract.md) for more details.
 
 ```diff
 - borderRadius: borderRadiusMedium,
@@ -118,7 +118,7 @@ See [Vanilla Extract Border Examples](/vanilla-extract/border/examples) for more
 
 ### Color
 
-New color definitions now leverage the native CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function. You can explore implementation samples in the [Vanilla Extract Color Examples](/vanilla-extract/color/examples) or dive deeper into our system architecture in the [Theme Guide](/must-know/theme).
+New color definitions now leverage the native CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function. You can explore implementation samples in the [Vanilla Extract Color Examples](../styles/vanilla-extract.md) or dive deeper into our system architecture in the [Theme Guide](https://designsystem.porsche.com/must-know/theme).
 
 ```diff
 - themeLightPrimary
@@ -185,7 +185,7 @@ New color definitions now leverage the native CSS [`light-dark()`](https://devel
 
 ### Focus
 
-See [Vanilla Extract Focus Examples](/vanilla-extract/focus/examples) for more details.
+See [Vanilla Extract Focus Examples](../styles/vanilla-extract.md) for more details.
 
 ```diff
 - ...getFocusStyle(),
@@ -194,7 +194,7 @@ See [Vanilla Extract Focus Examples](/vanilla-extract/focus/examples) for more d
 
 ### Gradient
 
-See [Vanilla Extract Gradient Examples](/vanilla-extract/gradient/examples) for more details.
+See [Vanilla Extract Gradient Examples](../styles/vanilla-extract.md) for more details.
 
 ```diff
 - ...gradientToBottomStyle,
@@ -209,7 +209,7 @@ See [Vanilla Extract Gradient Examples](/vanilla-extract/gradient/examples) for 
 
 ### Motion
 
-See [Vanilla Extract Motion Examples](/vanilla-extract/motion/examples) for more details.
+See [Vanilla Extract Motion Examples](../styles/vanilla-extract.md) for more details.
 
 ```diff
 - transitionDuration: motionDurationShort,
@@ -230,7 +230,7 @@ See [Vanilla Extract Motion Examples](/vanilla-extract/motion/examples) for more
 
 ### Shadow
 
-See [Vanilla Extract Shadow Examples](/vanilla-extract/shadow/examples) for more details.
+See [Vanilla Extract Shadow Examples](../styles/vanilla-extract.md) for more details.
 
 ```diff
 - ...dropShadowHighStyle,
@@ -243,7 +243,7 @@ See [Vanilla Extract Shadow Examples](/vanilla-extract/shadow/examples) for more
 
 ### Spacing
 
-See [Vanilla Extract Spacing Examples](/vanilla-extract/spacing/examples) for more details.
+See [Vanilla Extract Spacing Examples](../styles/vanilla-extract.md) for more details.
 
 ```diff
 - spacingFluidXSmall
@@ -274,7 +274,7 @@ See [Vanilla Extract Spacing Examples](/vanilla-extract/spacing/examples) for mo
 
 ### Typography
 
-See [Vanilla Extract Typography Examples](/vanilla-extract/typography/examples) for more details.
+See [Vanilla Extract Typography Examples](../styles/vanilla-extract.md) for more details.
 
 ```diff
 - ...displayLargeStyle,

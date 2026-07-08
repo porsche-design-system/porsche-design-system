@@ -28,16 +28,16 @@ The `p-input-url` component is specifically designed for collecting website URLs
 
 ## Related Components
 
-- [Input Date](/components/input-date/)
-- [Input Email](/components/input-email/)
-- [Input Month](/components/input-month/)
-- [Input Number](/components/input-number/)
-- [Input Password](/components/input-password/)
-- [Input Search](/components/input-search/)
-- [Input Tel](/components/input-tel/)
-- [Input Text](/components/input-text/)
-- [Input Time](/components/input-time/)
-- [Input Week](/components/input-week/)
+- [Input Date](../p-input-date/p-input-date.md)
+- [Input Email](../p-input-email/p-input-email.md)
+- [Input Month](../p-input-month/p-input-month.md)
+- [Input Number](../p-input-number/p-input-number.md)
+- [Input Password](../p-input-password/p-input-password.md)
+- [Input Search](../p-input-search/p-input-search.md)
+- [Input Tel](../p-input-tel/p-input-tel.md)
+- [Input Text](../p-input-text/p-input-text.md)
+- [Input Time](../p-input-time/p-input-time.md)
+- [Input Week](../p-input-week/p-input-week.md)
 
 ## Accessibility support
 

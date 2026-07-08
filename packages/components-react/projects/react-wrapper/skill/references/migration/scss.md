@@ -84,7 +84,7 @@ Changed import path for SCSS styles. We recommend using a namespace e.g. `as pds
 
 ### Blur
 
-See [SCSS Blur Examples](/scss/blur/examples) for more details.
+See [SCSS Blur Examples](../styles/scss.md) for more details.
 
 ```diff
 - @include pds-frosted-glass();
@@ -93,7 +93,7 @@ See [SCSS Blur Examples](/scss/blur/examples) for more details.
 
 ### Border
 
-See [SCSS Border Examples](/scss/border/examples) for more details.
+See [SCSS Border Examples](../styles/scss.md) for more details.
 
 ```diff
 - border-radius: $pds-border-radius-medium;
@@ -110,7 +110,7 @@ See [SCSS Border Examples](/scss/border/examples) for more details.
 
 ### Color
 
-New color definitions now leverage the native CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function. You can explore implementation samples in the [SCSS Color Examples](/scss/color/examples) or dive deeper into our system architecture in the [Theme Guide](/must-know/theme).
+New color definitions now leverage the native CSS [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark) function. You can explore implementation samples in the [SCSS Color Examples](../styles/scss.md) or dive deeper into our system architecture in the [Theme Guide](https://designsystem.porsche.com/must-know/theme).
 
 ```diff
 - $pds-theme-light-primary;
@@ -177,7 +177,7 @@ New color definitions now leverage the native CSS [`light-dark()`](https://devel
 
 ### Focus
 
-See [SCSS Focus Examples](/scss/focus/examples) for more details.
+See [SCSS Focus Examples](../styles/scss.md) for more details.
 
 ```diff
 - @include pds-focus();
@@ -186,7 +186,7 @@ See [SCSS Focus Examples](/scss/focus/examples) for more details.
 
 ### Gradient
 
-See [SCSS Gradient Examples](/scss/gradient/examples) for more details.
+See [SCSS Gradient Examples](../styles/scss.md) for more details.
 
 ```diff
 - @include pds-gradient-to-bottom();
@@ -201,7 +201,7 @@ See [SCSS Gradient Examples](/scss/gradient/examples) for more details.
 
 ### Media Query
 
-See [SCSS Media Query Examples](/scss/media-query/examples) for more details.
+See [SCSS Media Query Examples](../styles/scss.md) for more details.
 
 ```diff
 - $pds-breakpoint-base
@@ -231,7 +231,7 @@ See [SCSS Media Query Examples](/scss/media-query/examples) for more details.
 
 ### Motion
 
-See [SCSS Motion Examples](/scss/motion/examples) for more details.
+See [SCSS Motion Examples](../styles/scss.md) for more details.
 
 ```diff
 - transition-duration: $pds-motion-duration-short;
@@ -252,7 +252,7 @@ See [SCSS Motion Examples](/scss/motion/examples) for more details.
 
 ### Shadow
 
-See [SCSS Shadow Examples](/scss/shadow/examples) for more details.
+See [SCSS Shadow Examples](../styles/scss.md) for more details.
 
 ```diff
 - @include pds-drop-shadow-high();
@@ -265,7 +265,7 @@ See [SCSS Shadow Examples](/scss/shadow/examples) for more details.
 
 ### Spacing
 
-See [SCSS Spacing Examples](/scss/spacing/examples) for more details.
+See [SCSS Spacing Examples](../styles/scss.md) for more details.
 
 ```diff
 - $pds-spacing-fluid-x-small;
@@ -296,7 +296,7 @@ See [SCSS Spacing Examples](/scss/spacing/examples) for more details.
 
 ### Typography
 
-See [SCSS Typography Examples](/scss/typography/examples) for more details.
+See [SCSS Typography Examples](../styles/scss.md) for more details.
 
 > **Note:** All heading mixins now use `font-weight: normal` (regular) instead of `semi-bold`. This change is applied automatically through the new mixins.
 
@@ -376,7 +376,7 @@ Font variables:
 
 ### Skeleton
 
-See [SCSS Skeleton Examples](/scss/skeleton/examples) for more details.
+See [SCSS Skeleton Examples](../styles/scss.md) for more details.
 
 ```diff
 - @include pds-skeleton('light' | 'dark' | 'auto');

@@ -28,9 +28,9 @@ The following section provides guidance for designers and developers on how to u
 
 ## Related Components
 
-- [Tabs](/components/tabs/)
-- [Table](/components/table/)
-- [Stepper](/components/stepper-horizontal/)
+- [Tabs](../p-tabs/p-tabs.md)
+- [Table](../p-table/p-table.md)
+- [Stepper](../p-stepper-horizontal/p-stepper-horizontal.md)
 
 ## Accessibility support
 

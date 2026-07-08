@@ -21,16 +21,16 @@ The following section provides guidance for designers and developers on how to u
 
 ### Don't:
 
-- Avoid using when you have more than 8 options to choose from or consider using a [Select](/components/select/).
-- Don't mix [Radio Group](/components/radio-group/) options with checkboxes.
+- Avoid using when you have more than 8 options to choose from or consider using a [Select](../p-select/p-select.md).
+- Don't mix [Radio Group](../p-radio-group/p-radio-group.md) options with checkboxes.
 - Don't change the selection of another checkbox when a nested one is clicked. The only exception is when a checkbox is used to make a bulk selection of multiple items.
 
 ---
 
 ## Related Components
 
-- [Radio Group](/components/radio-group/)
-- [Select](/components/select/)
+- [Radio Group](../p-radio-group/p-radio-group.md)
+- [Select](../p-select/p-select.md)
 
 ## Accessibility support
 

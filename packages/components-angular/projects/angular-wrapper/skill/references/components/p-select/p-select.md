@@ -2,7 +2,7 @@
 
 The `p-select` component is a versatile custom form element that enables the selection of a single option.
 
-Options are slotted using the `p-select-option` component. Each option needs to have an assigned value, which can be passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved using the value property on the `p-select` component ([More Info](/components/select/examples/#set-value)). Options don't have a selected attribute or property. If an option should be visible but not selectable, it can be disabled by using the `disabled` attribute. If the selection isn't required or should be clearable again, you can use an empty `p-select-option` as default selection ([More Info](/components/select/examples/#empty)).
+Options are slotted using the `p-select-option` component. Each option needs to have an assigned value, which can be passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved using the value property on the `p-select` component ([More Info](./p-select.md)). Options don't have a selected attribute or property. If an option should be visible but not selectable, it can be disabled by using the `disabled` attribute. If the selection isn't required or should be clearable again, you can use an empty `p-select-option` as default selection ([More Info](./p-select.md)).
 
 **Hint:** The `p-select` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to render its dropdown on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container.
 

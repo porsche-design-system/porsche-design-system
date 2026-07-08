@@ -2,6 +2,7 @@ import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentType } from 'react';
 import { renderComponentApi } from './componentApi';
 import { type ComponentExamplesOptions, writeComponentExamples } from './componentExamples';
+import { rewriteDocLinks } from './links';
 import { leadSentence, stripLeadingH1 } from './markdown';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { ComponentRosterEntry } from './skillMd';
@@ -138,7 +139,10 @@ export const writeComponentReferences = (
         sections.push(table);
       }
     }
-    tree.writeReference(`components/${tag}/${tag}.md`, sections.join('\n\n'));
+    // Resolve storefront-absolute links across the whole file — prose, notes and the examples-table
+    // "when to use" descriptions alike — relative to this component's own file location.
+    const relativePath = `components/${tag}/${tag}.md`;
+    tree.writeReference(relativePath, rewriteDocLinks(sections.join('\n\n'), `references/${relativePath}`));
     roster.push({ tag, summary });
     if (degradedSections.length > 0) {
       degraded.push({ tag, sections: degradedSections });

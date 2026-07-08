@@ -10,7 +10,7 @@ The following section provides guidance for designers and developers on how to u
 
 ### Do:
 
-- Use the [Wordmark](/components/wordmark/) as the main brand identifier.
+- Use the [Wordmark](../p-wordmark/p-wordmark.md) as the main brand identifier.
 - Use the crest only as an additional small brand identifier (e.g., within contact cards).
 - Switch from the wordmark to the crest on small viewports below 480px (automatically implemented in global navigation and footer).
 
@@ -22,7 +22,7 @@ The following section provides guidance for designers and developers on how to u
 
 ## Related Components
 
-- [Wordmark](/components/wordmark/)
+- [Wordmark](../p-wordmark/p-wordmark.md)
 
 ## Accessibility support
 

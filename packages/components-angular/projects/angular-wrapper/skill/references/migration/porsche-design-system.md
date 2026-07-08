@@ -10,19 +10,19 @@ The introduction of the new **Porsche Design Language** brings updated layout an
 - Redesigned footer of dialog elements
 - All headings use regular as font-weight
 - Design Tokens are exposed as CSS variables, and all component styles are built directly upon them
-  - [CSS Variables](/stylesheets/css-variables/introduction/)
+  - [CSS Variables](../stylesheets.md)
 - Theming now works by adding a `scheme-light`, `scheme-dark` or `scheme-light-dark` CSS class to any HTML element
-  - [Vanilla JS](/developing/vanilla-js/advanced/#global-theme)
-  - [Angular](/developing/angular/advanced/#global-theme)
-  - [React](/developing/react/advanced/#global-theme)
-  - [Vue](/developing/vue/advanced/#global-theme)
-  - [Next.js](/developing/next-js/advanced/#global-theme)
-  - [React Router](/developing/react-router/advanced/#global-theme)
+  - [Vanilla JS](https://designsystem.porsche.com/developing/vanilla-js/advanced/#global-theme)
+  - [Angular](https://designsystem.porsche.com/developing/angular/advanced/#global-theme)
+  - [React](https://designsystem.porsche.com/developing/react/advanced/#global-theme)
+  - [Vue](https://designsystem.porsche.com/developing/vue/advanced/#global-theme)
+  - [Next.js](https://designsystem.porsche.com/developing/next-js/advanced/#global-theme)
+  - [React Router](https://designsystem.porsche.com/developing/react-router/advanced/#global-theme)
 - Aligned styling solutions with the new design language and color palette.
-  - [Tailwind CSS](/tailwindcss/introduction/)
-  - [SCSS](/scss/introduction/)
-  - [Emotion](/emotion/introduction/)
-  - [Vanilla Extract](/vanilla-extract/introduction/)
+  - [Tailwind CSS](../styles/tailwindcss.md)
+  - [SCSS](../styles/scss.md)
+  - [Emotion](../styles/emotion.md)
+  - [Vanilla Extract](../styles/vanilla-extract.md)
 
 ## 🛠️ Setup Changes
 
@@ -36,7 +36,7 @@ These styles provide the architectural foundation for the system, specifically:
 - **Normalize Styles:** Ensures consistent cross-browser rendering and base resets.
 - **Font-Face Styles:** Defines the Porsche Next font family, including all weights and styles.
 
-Without these global styles, components will not have access to their required color variables and will fail to render correctly. See [Styles](/stylesheets/introduction/) for more information.
+Without these global styles, components will not have access to their required color variables and will fail to render correctly. See [Styles](../stylesheets.md) for more information.
 
 ```diff
 /* src/global-style.css */
@@ -59,12 +59,12 @@ In previous versions, **FOUC (Flash of Unstyled Content)** was handled automatic
 
 To ensure components are hidden until the design system is fully initialized, add the following to your **main CSS file**:
 
-- [Vanilla JS](/developing/vanilla-js/getting-started/#integration)
-- [Angular](/developing/angular/getting-started/#integration)
-- [React](/developing/react/getting-started/#integration)
-- [Vue](/developing/vue/getting-started/#integration)
-- [Next.js](/developing/next-js/getting-started/#integration)
-- [React Router](/developing/react-router/getting-started/#integration)
+- [Vanilla JS](https://designsystem.porsche.com/developing/vanilla-js/getting-started/#integration)
+- [Angular](https://designsystem.porsche.com/developing/angular/getting-started/#integration)
+- [React](https://designsystem.porsche.com/developing/react/getting-started/#integration)
+- [Vue](https://designsystem.porsche.com/developing/vue/getting-started/#integration)
+- [Next.js](https://designsystem.porsche.com/developing/next-js/getting-started/#integration)
+- [React Router](https://designsystem.porsche.com/developing/react-router/getting-started/#integration)
 
 ```diff
 /* src/global-style.css */
@@ -746,7 +746,7 @@ Since both properties are inheritable, they will cascade down to all child eleme
 + <p-banner dismiss-button="false"></p-banner>
 ```
 
-- Removed deprecated prop `width`, instead the component is aligned with the **[Porsche Grid](/tailwindcss/grid/examples/)** "extended" by default.
+- Removed deprecated prop `width`, instead the component is aligned with the **[Porsche Grid](../styles/tailwindcss.md)** "extended" by default.
 
 ```diff
 - <p-banner width="fluid"></p-banner>
@@ -792,7 +792,7 @@ Since both properties are inheritable, they will cascade down to all child eleme
 
 ### Carousel:
 
-- Removed deprecated prop `wrap-content`. The component is always aligned with the **[Porsche Grid](/tailwindcss/grid/examples/)** now, adjustable by prop `width`.
+- Removed deprecated prop `wrap-content`. The component is always aligned with the **[Porsche Grid](../styles/tailwindcss.md)** now, adjustable by prop `width`.
 
 ```diff
 - <p-carousel wrap-content="true"></p-carousel>
@@ -1352,7 +1352,7 @@ Since both properties are inheritable, they will cascade down to all child eleme
 
 ### Content Wrapper:
 
-- Removed deprecated component `p-content-wrapper`, use [Porsche Grid Style](/tailwindcss/grid/examples/) instead, Tailwind CSS is recommended.
+- Removed deprecated component `p-content-wrapper`, use [Porsche Grid Style](../styles/tailwindcss.md) instead, Tailwind CSS is recommended.
 
 ```diff
 - <p-content-wrapper>

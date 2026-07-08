@@ -28,7 +28,7 @@ Font loading strategy for Porsche Next uses `font-display: swap` (FOUT) instead 
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages which needs to be injected into the `<head>` of your `index.html`.
 
-An in-depth optimization guide can be found at [Vanilla Js Optimization](/must-know/initialization/vanilla-js#optimization).
+An in-depth optimization guide can be found at [Vanilla Js Optimization](https://designsystem.porsche.com/must-know/initialization/vanilla-js#optimization).
 
 ### Supported options
 
@@ -36,10 +36,10 @@ An in-depth optimization guide can be found at [Vanilla Js Optimization](/must-k
 
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
-| `subset` | Defines which font subset should be loaded. | `'latin' | 'greek' | 'cyril' | 'arabic' | 'pashto' | 'urdu'` | `'latin'` |
+| `subset` | Defines which font subset should be loaded. | `'latin' \| 'greek' \| 'cyril' \| 'arabic' \| 'pashto' \| 'urdu'` | `'latin'` |
 | `weights` | Defines which font weights should be loaded. | `FontWeight[]` | `['regular', 'semi-bold']` |
-| `cdn` | Decides from which CDN the resources are loaded. | `'auto' | 'cn'` | `'auto'` |
-| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' | 'jsx' | 'js'` | `'html'` |
+| `cdn` | Decides from which CDN the resources are loaded. | `'auto' \| 'cn'` | `'auto'` |
+| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' \| 'jsx' \| 'js'` | `'html'` |
 
 When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
 
@@ -50,29 +50,28 @@ Project integration differs based on the project setup. The following showcases 
 **Note:** Make sure to preload only fonts which are really needed initially!
 
 ```
-<span class=""><!-- index.html -->
-</span><span class=""></span><span class="xml hljs-tag"><</span><span class="xml hljs-tag hljs-name">head</span><span class="xml hljs-tag">></span><span class="xml">
-</span><span class="xml">  </span><span class="xml hljs-comment"><!--PLACEHOLDER_FONT_LINKS--></span><span class="xml">
-</span><span class="xml"></span><span class="xml hljs-tag"></</span><span class="xml hljs-tag hljs-name">head</span><span class="xml hljs-tag">></span><span class="">
-</span>
+<!-- index.html -->
+<head>
+  <!--PLACEHOLDER_FONT_LINKS-->
+</head>
+
 <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
 <!-- make sure to adjust the path to the index.html file -->
-<span class=""></span><span class="hljs-string">"scripts"</span><span class="">: {
-</span><span class="">  </span><span class="hljs-string">"prestart"</span><span class="">: </span><span class="hljs-string">"npm run replace"</span><span class="">,
-</span><span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>  <!-- Alternative: Force using China CDN -->
-<span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>}
+"scripts": {
+  "prestart": "npm run replace",
+  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  <!-- Alternative: Force using China CDN -->
+  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+}
 ```
 
 ```
-<span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=preload </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2 </span><span class="hljs-attribute">as</span><span class="">=font </span><span class="hljs-attribute">type</span><span class="">=font/woff2 crossorigin>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=preload </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2 </span><span class="hljs-attribute">as</span><span class="">=font </span><span class="hljs-attribute">type</span><span class="">=font/woff2 crossorigin>
-</span>
+<link rel=preload href=https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2 as=font type=font/woff2 crossorigin>
+<link rel=preload href=https://cdn.ui.porsche.com/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2 as=font type=font/woff2 crossorigin>
+
 // Alternative: Force using China CDN
-<span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=preload </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2 </span><span class="hljs-attribute">as</span><span class="">=font </span><span class="hljs-attribute">type</span><span class="">=font/woff2 crossorigin>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=preload </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2 </span><span class="hljs-attribute">as</span><span class="">=font </span><span class="hljs-attribute">type</span><span class="">=font/woff2 crossorigin>
-</span>
+<link rel=preload href=https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-regular.b8f1c20.woff2 as=font type=font/woff2 crossorigin>
+<link rel=preload href=https://cdn.ui.porsche.cn/porsche-design-system/fonts/porsche-next-latin-semi-bold.b5f6fca.woff2 as=font type=font/woff2 crossorigin>
 ```
 
 ## Component Chunk Links
@@ -83,15 +82,15 @@ Porsche Design System components load dynamically from a CDN as soon as they are
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages which needs to be injected into the `<head>` of your `index.html`.
 
-An in-depth optimization guide can be found at [Vanilla Js Optimization](/must-know/initialization/vanilla-js#optimization).
+An in-depth optimization guide can be found at [Vanilla Js Optimization](https://designsystem.porsche.com/must-know/initialization/vanilla-js#optimization).
 
 ### Supported options
 
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
-| `components` | All components listed in the array are loaded from the CDN. By default, our core is always preloaded when using this partial. | `('accordion' | 'ai-tag' | 'banner' | 'button-pure' | 'button-tile' | 'button' | 'canvas' | 'carousel' | 'checkbox' | 'crest' | 'display' | 'divider' | 'drilldown' | 'fieldset' | 'flag' | 'flyout' | 'heading' | 'icon' | 'inline-notification' | 'input-date' | 'input-email' | 'input-month' | 'input-number' | 'input-password' | 'input-search' | 'input-tel' | 'input-text' | 'input-time' | 'input-url' | 'input-week' | 'link-pure' | 'link-tile-product' | 'link-tile' | 'link' | 'modal' | 'model-signature' | 'multi-select' | 'optgroup' | 'pagination' | 'pin-code' | 'popover' | 'radio-group' | 'scroller' | 'segmented-control' | 'select' | 'sheet' | 'spinner' | 'stepper-horizontal' | 'switch' | 'table' | 'tabs-bar' | 'tabs' | 'tag-dismissible' | 'tag' | 'text-list' | 'text' | 'textarea' | 'toast' | 'wordmark')[]` | `[]` |
-| `cdn` | Decides from which CDN the resources are loaded. | `'auto' | 'cn'` | `'auto'` |
-| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' | 'jsx' | 'js'` | `'html'` |
+| `components` | All components listed in the array are loaded from the CDN. By default, our core is always preloaded when using this partial. | `('accordion' \| 'ai-tag' \| 'banner' \| 'button-pure' \| 'button-tile' \| 'button' \| 'canvas' \| 'carousel' \| 'checkbox' \| 'crest' \| 'display' \| 'divider' \| 'drilldown' \| 'fieldset' \| 'flag' \| 'flyout' \| 'heading' \| 'icon' \| 'inline-notification' \| 'input-date' \| 'input-email' \| 'input-month' \| 'input-number' \| 'input-password' \| 'input-search' \| 'input-tel' \| 'input-text' \| 'input-time' \| 'input-url' \| 'input-week' \| 'link-pure' \| 'link-tile-product' \| 'link-tile' \| 'link' \| 'modal' \| 'model-signature' \| 'multi-select' \| 'optgroup' \| 'pagination' \| 'pin-code' \| 'popover' \| 'radio-group' \| 'scroller' \| 'segmented-control' \| 'select' \| 'sheet' \| 'spinner' \| 'stepper-horizontal' \| 'switch' \| 'table' \| 'tabs-bar' \| 'tabs' \| 'tag-dismissible' \| 'tag' \| 'text-list' \| 'text' \| 'textarea' \| 'toast' \| 'wordmark')[]` | `[]` |
+| `cdn` | Decides from which CDN the resources are loaded. | `'auto' \| 'cn'` | `'auto'` |
+| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' \| 'jsx' \| 'js'` | `'html'` |
 
 When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
 
@@ -102,29 +101,28 @@ Project integration differs based on the project setup. The following showcases 
 **Note:** Make sure to preload only component chunks which are really needed initially!
 
 ```
-<span class=""><!-- index.html -->
-</span><span class=""></span><span class="xml hljs-tag"><</span><span class="xml hljs-tag hljs-name">head</span><span class="xml hljs-tag">></span><span class="xml">
-</span><span class="xml">  </span><span class="xml hljs-comment"><!--PLACEHOLDER_COMPONENT_CHUNK_LINKS--></span><span class="xml">
-</span><span class="xml"></span><span class="xml hljs-tag"></</span><span class="xml hljs-tag hljs-name">head</span><span class="xml hljs-tag">></span><span class="">
-</span>
+<!-- index.html -->
+<head>
+  <!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->
+</head>
+
 <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
 <!-- make sure to adjust the path to the index.html file -->
-<span class=""></span><span class="hljs-string">"scripts"</span><span class="">: {
-</span><span class="">  </span><span class="hljs-string">"prestart"</span><span class="">: </span><span class="hljs-string">"npm run replace"</span><span class="">,
-</span><span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getComponentChunkLinks({ components: [\"button\", \"wordmark\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>  <!-- Alternative: force using China CDN -->
-<span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getComponentChunkLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>}
+"scripts": {
+  "prestart": "npm run replace",
+  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getComponentChunkLinks({ components: [\"button\", \"wordmark\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  <!-- Alternative: force using China CDN -->
+  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getComponentChunkLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+}
 ```
 
 ```
-<span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=preload </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js </span><span class="hljs-attribute">as</span><span class="">=script crossorigin>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=preload </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.button.5af99d4c11ab3c7d1f54.js </span><span class="hljs-attribute">as</span><span class="">=script>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=preload </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.wordmark.e6b4300bed3bf9a2b2bb.js </span><span class="hljs-attribute">as</span><span class="">=script>
-</span>
+<link rel=preload href=https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js as=script crossorigin>
+<link rel=preload href=https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.button.5af99d4c11ab3c7d1f54.js as=script>
+<link rel=preload href=https://cdn.ui.porsche.com/porsche-design-system/components/porsche-design-system.wordmark.e6b4300bed3bf9a2b2bb.js as=script>
+
 // Alternative: force using China CDN
-<span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=preload </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js </span><span class="hljs-attribute">as</span><span class="">=script crossorigin>
-</span>
+<link rel=preload href=https://cdn.ui.porsche.cn/porsche-design-system/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js as=script crossorigin>
 ```
 
 ## Meta Tags And Icon Links
@@ -142,8 +140,8 @@ This partial also provides some default Open Graph and Twitter meta tags which w
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
 | `appTitle` | **Mandatory:** Title of your app which will be reflected in the meta tag. | `string` | `undefined` |
-| `cdn` | Decides from which CDN the resources are loaded. | `'auto' | 'cn'` | `'auto'` |
-| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' | 'jsx' | 'js'` | `'html'` |
+| `cdn` | Decides from which CDN the resources are loaded. | `'auto' \| 'cn'` | `'auto'` |
+| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' \| 'jsx' \| 'js'` | `'html'` |
 | `ogImage` | Boolean attribute to decide whether the Open Graph and Twitter meta tags should be included. | `boolean` | `true` |
 
 When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
@@ -153,57 +151,56 @@ When using `jsx` in the `format` option, it is necessary to have `react/jsx-runt
 Project integration differs based on the project setup. The following showcases the most common ways.
 
 ```
-<span class=""><!-- index.html -->
-</span><span class=""></span><span class="xml hljs-tag"><</span><span class="xml hljs-tag hljs-name">head</span><span class="xml hljs-tag">></span><span class="xml">
-</span><span class="xml">  </span><span class="xml hljs-comment"><!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS--></span><span class="xml">
-</span><span class="xml"></span><span class="xml hljs-tag"></</span><span class="xml hljs-tag hljs-name">head</span><span class="xml hljs-tag">></span><span class="">
-</span>
+<!-- index.html -->
+<head>
+  <!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->
+</head>
+
 <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
 <!-- make sure to adjust the path to the index.html file -->
-<span class=""></span><span class="hljs-string">"scripts"</span><span class="">: {
-</span><span class="">  </span><span class="hljs-string">"prestart"</span><span class="">: </span><span class="hljs-string">"npm run replace"</span><span class="">,
-</span><span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>  <!-- Alternative: Force using China CDN -->
-<span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\", cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>}
+"scripts": {
+  "prestart": "npm run replace",
+  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  <!-- Alternative: Force using China CDN -->
+  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\", cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+}
 ```
 
 ```
-<span class=""><meta </span><span class="hljs-attribute">property</span><span class="">=og:title </span><span class="hljs-attribute">content</span><span class="">=</span><span class="hljs-string">"TITLE_OF_YOUR_APP"</span><span class="">>
-</span><span class=""><meta </span><span class="hljs-attribute">property</span><span class="">=og:image </span><span class="hljs-attribute">content</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/og-image.c880d39.png>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=twitter:title </span><span class="hljs-attribute">content</span><span class="">=</span><span class="hljs-string">"TITLE_OF_YOUR_APP"</span><span class="">>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=twitter:card </span><span class="hljs-attribute">content</span><span class="">=summary_large_image>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=twitter:image </span><span class="hljs-attribute">content</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/og-image.c880d39.png>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=theme-color </span><span class="hljs-attribute">content</span><span class="">=#FFF media=(prefers-color-scheme:light)>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=theme-color </span><span class="hljs-attribute">content</span><span class="">=#0E1418 media=(prefers-color-scheme:dark)>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=mobile-web-app-capable </span><span class="hljs-attribute">content</span><span class="">=</span><span class="hljs-literal">yes</span><span class="">>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=apple-mobile-web-app-status-bar-style </span><span class="hljs-attribute">content</span><span class="">=default>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=apple-mobile-web-app-title </span><span class="hljs-attribute">content</span><span class="">=</span><span class="hljs-string">"TITLE_OF_YOUR_APP"</span><span class="">>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=msapplication-TileImage </span><span class="hljs-attribute">content</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/mstile-270x270.f58081f.png>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=msapplication-TileColor </span><span class="hljs-attribute">content</span><span class="">=#FFF>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=icon </span><span class="hljs-attribute">sizes</span><span class="">=any </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/favicon.ed9a926.ico>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=icon </span><span class="hljs-attribute">type</span><span class="">=image/png </span><span class="hljs-attribute">sizes</span><span class="">=32x32 </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/favicon-32x32.d42ac28.png>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=apple-touch-icon </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/apple-touch-icon-180x180.bdf11cc.png>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=manifest </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/manifest.b904b15.webmanifest>
-</span>
+<meta property=og:title content="TITLE_OF_YOUR_APP">
+<meta property=og:image content=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/og-image.c880d39.png>
+<meta name=twitter:title content="TITLE_OF_YOUR_APP">
+<meta name=twitter:card content=summary_large_image>
+<meta name=twitter:image content=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/og-image.c880d39.png>
+<meta name=theme-color content=#FFF media=(prefers-color-scheme:light)>
+<meta name=theme-color content=#0E1418 media=(prefers-color-scheme:dark)>
+<meta name=mobile-web-app-capable content=yes>
+<meta name=apple-mobile-web-app-status-bar-style content=default>
+<meta name=apple-mobile-web-app-title content="TITLE_OF_YOUR_APP">
+<meta name=msapplication-TileImage content=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/mstile-270x270.f58081f.png>
+<meta name=msapplication-TileColor content=#FFF>
+<link rel=icon sizes=any href=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/favicon.ed9a926.ico>
+<link rel=icon type=image/png sizes=32x32 href=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/favicon-32x32.d42ac28.png>
+<link rel=apple-touch-icon href=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/apple-touch-icon-180x180.bdf11cc.png>
+<link rel=manifest href=https://cdn.ui.porsche.com/porsche-design-system/meta-icons/manifest.b904b15.webmanifest>
+
 // Alternative: Force using China CDN
-<span class=""><meta </span><span class="hljs-attribute">property</span><span class="">=og:title </span><span class="hljs-attribute">content</span><span class="">=</span><span class="hljs-string">"TITLE_OF_YOUR_APP"</span><span class="">>
-</span><span class=""><meta </span><span class="hljs-attribute">property</span><span class="">=og:image </span><span class="hljs-attribute">content</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/og-image.c880d39.png>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=twitter:title </span><span class="hljs-attribute">content</span><span class="">=</span><span class="hljs-string">"TITLE_OF_YOUR_APP"</span><span class="">>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=twitter:card </span><span class="hljs-attribute">content</span><span class="">=summary_large_image>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=twitter:image </span><span class="hljs-attribute">content</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/og-image.c880d39.png>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=theme-color </span><span class="hljs-attribute">content</span><span class="">=#FFF media=(prefers-color-scheme:light)>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=theme-color </span><span class="hljs-attribute">content</span><span class="">=#0E1418 media=(prefers-color-scheme:dark)>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=mobile-web-app-capable </span><span class="hljs-attribute">content</span><span class="">=</span><span class="hljs-literal">yes</span><span class="">>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=apple-mobile-web-app-status-bar-style </span><span class="hljs-attribute">content</span><span class="">=default>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=apple-mobile-web-app-title </span><span class="hljs-attribute">content</span><span class="">=</span><span class="hljs-string">"TITLE_OF_YOUR_APP"</span><span class="">>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=msapplication-TileImage </span><span class="hljs-attribute">content</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/mstile-270x270.f58081f.png>
-</span><span class=""><meta </span><span class="hljs-attribute">name</span><span class="">=msapplication-TileColor </span><span class="hljs-attribute">content</span><span class="">=#FFF>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=icon </span><span class="hljs-attribute">sizes</span><span class="">=any </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/favicon.ed9a926.ico>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=icon </span><span class="hljs-attribute">type</span><span class="">=image/png </span><span class="hljs-attribute">sizes</span><span class="">=32x32 </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/favicon-32x32.d42ac28.png>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=apple-touch-icon </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/apple-touch-icon-180x180.bdf11cc.png>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=manifest </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/manifest.cn.7d59be6.webmanifest>
-</span>
+<meta property=og:title content="TITLE_OF_YOUR_APP">
+<meta property=og:image content=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/og-image.c880d39.png>
+<meta name=twitter:title content="TITLE_OF_YOUR_APP">
+<meta name=twitter:card content=summary_large_image>
+<meta name=twitter:image content=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/og-image.c880d39.png>
+<meta name=theme-color content=#FFF media=(prefers-color-scheme:light)>
+<meta name=theme-color content=#0E1418 media=(prefers-color-scheme:dark)>
+<meta name=mobile-web-app-capable content=yes>
+<meta name=apple-mobile-web-app-status-bar-style content=default>
+<meta name=apple-mobile-web-app-title content="TITLE_OF_YOUR_APP">
+<meta name=msapplication-TileImage content=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/mstile-270x270.f58081f.png>
+<meta name=msapplication-TileColor content=#FFF>
+<link rel=icon sizes=any href=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/favicon.ed9a926.ico>
+<link rel=icon type=image/png sizes=32x32 href=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/favicon-32x32.d42ac28.png>
+<link rel=apple-touch-icon href=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/apple-touch-icon-180x180.bdf11cc.png>
+<link rel=manifest href=https://cdn.ui.porsche.cn/porsche-design-system/meta-icons/manifest.cn.7d59be6.webmanifest>
 ```
 
 ## Icon Links
@@ -219,8 +216,8 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
 | `icons` | All icons listed in the array are loaded from the CDN. | `({{this.iconNames}})[]` | `['arrowHeadRight']` |
-| `cdn` | Decides from which CDN the resources are loaded. | `'auto' | 'cn'` | `'auto'` |
-| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' | 'jsx' | 'js'` | `'html'` |
+| `cdn` | Decides from which CDN the resources are loaded. | `'auto' \| 'cn'` | `'auto'` |
+| `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' \| 'jsx' \| 'js'` | `'html'` |
 
 When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
 
@@ -231,29 +228,28 @@ Project integration differs based on the project setup. The following showcases 
 **Note:** Make sure to preload only icons which are really needed initially!
 
 ```
-<span class=""><!-- index.html -->
-</span><span class=""></span><span class="xml hljs-tag"><</span><span class="xml hljs-tag hljs-name">head</span><span class="xml hljs-tag">></span><span class="xml">
-</span><span class="xml">  </span><span class="xml hljs-comment"><!--PLACEHOLDER_ICON_LINKS--></span><span class="xml">
-</span><span class="xml"></span><span class="xml hljs-tag"></</span><span class="xml hljs-tag hljs-name">head</span><span class="xml hljs-tag">></span><span class="">
-</span>
+<!-- index.html -->
+<head>
+  <!--PLACEHOLDER_ICON_LINKS-->
+</head>
+
 <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
 <!-- make sure to adjust the path to the index.html file -->
-<span class=""></span><span class="hljs-string">"scripts"</span><span class="">: {
-</span><span class="">  </span><span class="hljs-string">"prestart"</span><span class="">: </span><span class="hljs-string">"npm run replace"</span><span class="">,
-</span><span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>  <!-- Alternative: Force using China CDN -->
-<span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"], cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>}
+"scripts": {
+  "prestart": "npm run replace",
+  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  <!-- Alternative: Force using China CDN -->
+  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"], cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+}
 ```
 
 ```
-<span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=prefetch </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.304b330.svg </span><span class="hljs-attribute">as</span><span class="">=image </span><span class="hljs-attribute">type</span><span class="">=image/svg+xml crossorigin>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=prefetch </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.com/porsche-design-system/icons/plus.319993e.svg </span><span class="hljs-attribute">as</span><span class="">=image </span><span class="hljs-attribute">type</span><span class="">=image/svg+xml crossorigin>
-</span>
+<link rel=prefetch href=https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-head-right.304b330.svg as=image type=image/svg+xml crossorigin>
+<link rel=prefetch href=https://cdn.ui.porsche.com/porsche-design-system/icons/plus.319993e.svg as=image type=image/svg+xml crossorigin>
+
 // Alternative: Force using China CDN
-<span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=prefetch </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/icons/arrow-head-right.304b330.svg </span><span class="hljs-attribute">as</span><span class="">=image </span><span class="hljs-attribute">type</span><span class="">=image/svg+xml crossorigin>
-</span><span class=""><link </span><span class="hljs-attribute">rel</span><span class="">=prefetch </span><span class="hljs-attribute">href</span><span class="">=https://cdn.ui.porsche.cn/porsche-design-system/icons/plus.319993e.svg </span><span class="hljs-attribute">as</span><span class="">=image </span><span class="hljs-attribute">type</span><span class="">=image/svg+xml crossorigin>
-</span>
+<link rel=prefetch href=https://cdn.ui.porsche.cn/porsche-design-system/icons/arrow-head-right.304b330.svg as=image type=image/svg+xml crossorigin>
+<link rel=prefetch href=https://cdn.ui.porsche.cn/porsche-design-system/icons/plus.319993e.svg as=image type=image/svg+xml crossorigin>
 ```
 
 ## Loader Script
@@ -264,14 +260,14 @@ When using `porsche-design-system/components-{angular|react}` our core loader ge
 
 To achieve this bootstrapping **earlier** we provide a partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages which needs to be injected into the `<body>` of your `index.html`.
 
-An in-depth optimization guide can be found at [Vanilla Js Optimization](/must-know/initialization/vanilla-js#optimization).
+An in-depth optimization guide can be found at [Vanilla Js Optimization](https://designsystem.porsche.com/must-know/initialization/vanilla-js#optimization).
 
 ### Supported options
 
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
-| `prefix` | Prefix will be added to the component names. | `string | string[]` | `undefined` |
-| `format` | Defines the output format of the partial. By default it returns a html string. For `jsx` it returns a jsx element. For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](/must-know/security/content-security-policy/). | `'html' | 'jsx' | 'sha256'` | `'html'` |
+| `prefix` | Prefix will be added to the component names. | `string \| string[]` | `undefined` |
+| `format` | Defines the output format of the partial. By default it returns a html string. For `jsx` it returns a jsx element. For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](https://designsystem.porsche.com/must-know/security/content-security-policy/). | `'html' \| 'jsx' \| 'sha256'` | `'html'` |
 
 When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
 
@@ -280,65 +276,65 @@ When using `jsx` in the `format` option, it is necessary to have `react/jsx-runt
 Project integration differs based on the project setup. The following showcases the most common ways.
 
 ```
-<span class=""><!-- index.html -->
-</span><span class=""></span><span class="xml hljs-tag"><</span><span class="xml hljs-tag hljs-name">body</span><span class="xml hljs-tag">></span><span class="xml">
-</span><span class="xml">  </span><span class="xml hljs-comment"><!--PLACEHOLDER_LOADER_SCRIPT--></span><span class="xml">
-</span><span class="xml"></span><span class="xml hljs-tag"></</span><span class="xml hljs-tag hljs-name">body</span><span class="xml hljs-tag">></span><span class="">
-</span>
+<!-- index.html -->
+<body>
+  <!--PLACEHOLDER_LOADER_SCRIPT-->
+</body>
+
 <!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
 <!-- make sure to adjust the path to the index.html file -->
-<span class=""></span><span class="hljs-string">"scripts"</span><span class="">: {
-</span><span class="">  </span><span class="hljs-string">"prestart"</span><span class="">: </span><span class="hljs-string">"npm run replace"</span><span class="">,
-</span><span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>  <!-- Alternative: With custom prefix -->
-<span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript({ prefix: \"custom-prefix\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>  <!-- Alternative: With multiple custom prefixes -->
-<span class="">  </span><span class="hljs-string">"replace"</span><span class="">: </span><span class="hljs-string">"placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript({ prefix: [\"\", \"custom-prefix\", \"another-prefix\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"</span><span class="">
-</span>}
+"scripts": {
+  "prestart": "npm run replace",
+  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  <!-- Alternative: With custom prefix -->
+  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript({ prefix: \"custom-prefix\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  <!-- Alternative: With multiple custom prefixes -->
+  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript({ prefix: [\"\", \"custom-prefix\", \"another-prefix\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+}
 ```
 
 ```
-<span class=""><script data-pds-loader-script>
-</span><span class=""></span><span class="hljs-keyword">var</span><span class=""> porscheDesignSystem;</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">(</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">{</span><span class="hljs-string">"use strict"</span><span class="">;</span><span class="hljs-keyword">var</span><span class=""> e={</span><span class="hljs-attr">d</span><span class="">:</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">t,o</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">{</span><span class="hljs-keyword">for</span><span class="">(</span><span class="hljs-keyword">var</span><span class=""> n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{</span><span class="hljs-attr">enumerable</span><span class="">:!</span><span class="hljs-number">0</span><span class="">,</span><span class="hljs-attr">get</span><span class="">:o[n]})},</span><span class="hljs-attr">o</span><span class="">:</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">e,t</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">Object.prototype.hasOwnProperty.call(e,t),</span><span class="hljs-attr">r</span><span class="">:</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">=></span><span class="">
-</span><span class="">{</span><span class="hljs-string">"undefined"</span><span class="">!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{</span><span class="hljs-attr">value</span><span class="">:</span><span class="hljs-string">"Module"</span><span class="">}),Object.defineProperty(e,</span><span class="hljs-string">"__esModule"</span><span class="">,{</span><span class="hljs-attr">value</span><span class="">:!</span><span class="hljs-number">0</span><span class="">})}},t={};e.r(t),e.d(t,{</span><span class="hljs-attr">load</span><span class="">:</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">=></span><span class="">
-</span><span class="">r});const o=</span><span class="hljs-string">"porscheDesignSystem"</span><span class="">;</span><span class="hljs-function hljs-keyword">function</span><span class="hljs-function"> </span><span class="hljs-function hljs-title">n</span><span class="hljs-function">(</span><span class="hljs-function">)</span><span class="">{</span><span class="hljs-keyword">return</span><span class=""> document[o]||</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">document[o]={}</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">document</span><span class="hljs-function">[</span><span class="hljs-function hljs-params">o</span><span class="hljs-function">]}</span><span class="hljs-function hljs-params">function</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">s</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">{script:e,version:t,prefix:s}</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">r</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">function</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">t</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">n</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">,{[</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">]:</span><span class="hljs-function hljs-params">o</span><span class="hljs-function">}=</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">;</span><span class="hljs-function hljs-params">if</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">!o</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">let</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">o</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">=></span><span class="">
-</span><span class="">{};const n=</span><span class="hljs-keyword">new</span><span class=""> Promise(</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">=></span><span class="">
-</span><span class="">o=e);t[e]={</span><span class="hljs-attr">isInjected</span><span class="">:!</span><span class="hljs-number">1</span><span class="">,</span><span class="hljs-attr">isReady</span><span class="">:</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">=></span><span class="">
-</span><span class="">n,</span><span class="hljs-attr">readyResolve</span><span class="">:o,</span><span class="hljs-attr">prefixes</span><span class="">:[],</span><span class="hljs-attr">registerCustomElements</span><span class="">:</span><span class="hljs-literal">null</span><span class="">}}</span><span class="hljs-keyword">return</span><span class=""> t[e]}(t),{</span><span class="hljs-attr">isInjected</span><span class="">:c,</span><span class="hljs-attr">prefixes</span><span class="">:i=[],</span><span class="hljs-attr">registerCustomElements</span><span class="">:d}=r,[u]=Object.entries(n()).filter(</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">[e,o]</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">e!==t&&</span><span class="hljs-string">"object"</span><span class="">==typeof o&&o.prefixes.includes(s));</span><span class="hljs-keyword">if</span><span class="">(u)throw </span><span class="hljs-keyword">new</span><span class=""> Error(</span><span class="hljs-string">`[Porsche Design System v</span><span class="hljs-string hljs-subst">${t}</span><span class="hljs-string">] prefix '</span><span class="hljs-string hljs-subst">${s}</span><span class="hljs-string">' is already registered with version '</span><span class="hljs-string hljs-subst">${u[</span><span class="hljs-string hljs-subst hljs-number">0</span><span class="hljs-string hljs-subst">]}</span><span class="hljs-string">' of the Porsche Design System. Please use a different one.\nTake a look at document.</span><span class="hljs-string hljs-subst">${o}</span><span class="hljs-string"> for more details.`</span><span class="">);c||</span><span class="hljs-function">(</span><span class="hljs-function hljs-params hljs-keyword">function</span><span class="hljs-function hljs-params">(e</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">t</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">document</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">createElement</span><span class="hljs-function">(</span><span class="hljs-function hljs-params hljs-string">"script"</span><span class="hljs-function">);</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">src</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">,</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">setAttribute</span><span class="hljs-function">(</span><span class="hljs-function hljs-params hljs-string">"crossorigin"</span><span class="hljs-function hljs-params">,</span><span class="hljs-function hljs-params hljs-string">""</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">document</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">body</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">appendChild</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">)}(</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">r</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">isInjected</span><span class="hljs-function">=!0),</span><span class="hljs-function hljs-params">i</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">includes</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">s</span><span class="hljs-function">)||(</span><span class="hljs-function hljs-params">i.push(s</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">d</span><span class="hljs-function">&&</span><span class="hljs-function hljs-params">d</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">s</span><span class="hljs-function">))}</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">r</span><span class="hljs-function">=(</span><span class="hljs-function hljs-params">e={}</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">{const t=</span><span class="hljs-string">"PORSCHE_DESIGN_SYSTEM_CDN"</span><span class="">;window[t]=e.cdn||window[t]||(window.location.origin.match(</span><span class="hljs-regexp">/\.cn$/</span><span class="">)?</span><span class="hljs-string">"cn"</span><span class="">:</span><span class="hljs-string">"auto"</span><span class="">);const o=</span><span class="hljs-string">"porscheDesignSystem"</span><span class="">;document[o]||(document[o]={}),document[o].cdn={</span><span class="hljs-attr">url</span><span class="">:</span><span class="hljs-string">"https://cdn.ui.porsche."</span><span class="">+(</span><span class="hljs-string">"cn"</span><span class="">===window[t]?</span><span class="hljs-string">"cn"</span><span class="">:</span><span class="hljs-string">"com"</span><span class="">),</span><span class="hljs-attr">prefixes</span><span class="">:[]},s({</span><span class="hljs-attr">version</span><span class="">:</span><span class="hljs-string">"4.3.0"</span><span class="">,</span><span class="hljs-attr">script</span><span class="">:</span><span class="hljs-string">"http://localhost:3001/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js"</span><span class="">,</span><span class="hljs-attr">prefix</span><span class="">:e.prefix||</span><span class="hljs-string">""</span><span class="">})};porscheDesignSystem=t})();porscheDesignSystem.load()
-</span></script>
+<script data-pds-loader-script>
+var porscheDesignSystem;(()=>
+{"use strict";var e={d:(t,o)=>
+{for(var n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:o[n]})},o:(e,t)=>
+Object.prototype.hasOwnProperty.call(e,t),r:e=>
+{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};e.r(t),e.d(t,{load:()=>
+r});const o="porscheDesignSystem";function n(){return document[o]||(document[o]={}),document[o]}function s({script:e,version:t,prefix:s}){const r=function(e){const t=n(),{[e]:o}=t;if(!o){let o=()=>
+{};const n=new Promise(e=>
+o=e);t[e]={isInjected:!1,isReady:()=>
+n,readyResolve:o,prefixes:[],registerCustomElements:null}}return t[e]}(t),{isInjected:c,prefixes:i=[],registerCustomElements:d}=r,[u]=Object.entries(n()).filter(([e,o])=>
+e!==t&&"object"==typeof o&&o.prefixes.includes(s));if(u)throw new Error(`[Porsche Design System v${t}] prefix '${s}' is already registered with version '${u[0]}' of the Porsche Design System. Please use a different one.\nTake a look at document.${o} for more details.`);c||(function(e){const t=document.createElement("script");t.src=e,t.setAttribute("crossorigin",""),document.body.appendChild(t)}(e),r.isInjected=!0),i.includes(s)||(i.push(s),d&&d(s))}const r=(e={})=>
+{const t="PORSCHE_DESIGN_SYSTEM_CDN";window[t]=e.cdn||window[t]||(window.location.origin.match(/\.cn$/)?"cn":"auto");const o="porscheDesignSystem";document[o]||(document[o]={}),document[o].cdn={url:"https://cdn.ui.porsche."+("cn"===window[t]?"cn":"com"),prefixes:[]},s({version:"4.3.0",script:"http://localhost:3001/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js",prefix:e.prefix||""})};porscheDesignSystem=t})();porscheDesignSystem.load()
+</script>
 
-<span class=""></span><span class="hljs-comment">// Alternative: With custom prefix</span><span class="">
-</span><script data-pds-loader-script>
-<span class=""></span><span class="hljs-keyword">var</span><span class=""> porscheDesignSystem;</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">(</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">{</span><span class="hljs-string">"use strict"</span><span class="">;</span><span class="hljs-keyword">var</span><span class=""> e={</span><span class="hljs-attr">d</span><span class="">:</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">t,o</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">{</span><span class="hljs-keyword">for</span><span class="">(</span><span class="hljs-keyword">var</span><span class=""> n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{</span><span class="hljs-attr">enumerable</span><span class="">:!</span><span class="hljs-number">0</span><span class="">,</span><span class="hljs-attr">get</span><span class="">:o[n]})},</span><span class="hljs-attr">o</span><span class="">:</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">e,t</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">Object.prototype.hasOwnProperty.call(e,t),</span><span class="hljs-attr">r</span><span class="">:</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">=></span><span class="">
-</span><span class="">{</span><span class="hljs-string">"undefined"</span><span class="">!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{</span><span class="hljs-attr">value</span><span class="">:</span><span class="hljs-string">"Module"</span><span class="">}),Object.defineProperty(e,</span><span class="hljs-string">"__esModule"</span><span class="">,{</span><span class="hljs-attr">value</span><span class="">:!</span><span class="hljs-number">0</span><span class="">})}},t={};e.r(t),e.d(t,{</span><span class="hljs-attr">load</span><span class="">:</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">=></span><span class="">
-</span><span class="">r});const o=</span><span class="hljs-string">"porscheDesignSystem"</span><span class="">;</span><span class="hljs-function hljs-keyword">function</span><span class="hljs-function"> </span><span class="hljs-function hljs-title">n</span><span class="hljs-function">(</span><span class="hljs-function">)</span><span class="">{</span><span class="hljs-keyword">return</span><span class=""> document[o]||</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">document[o]={}</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">document</span><span class="hljs-function">[</span><span class="hljs-function hljs-params">o</span><span class="hljs-function">]}</span><span class="hljs-function hljs-params">function</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">s</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">{script:e,version:t,prefix:s}</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">r</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">function</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">t</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">n</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">,{[</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">]:</span><span class="hljs-function hljs-params">o</span><span class="hljs-function">}=</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">;</span><span class="hljs-function hljs-params">if</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">!o</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">let</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">o</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">=></span><span class="">
-</span><span class="">{};const n=</span><span class="hljs-keyword">new</span><span class=""> Promise(</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">=></span><span class="">
-</span><span class="">o=e);t[e]={</span><span class="hljs-attr">isInjected</span><span class="">:!</span><span class="hljs-number">1</span><span class="">,</span><span class="hljs-attr">isReady</span><span class="">:</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">=></span><span class="">
-</span><span class="">n,</span><span class="hljs-attr">readyResolve</span><span class="">:o,</span><span class="hljs-attr">prefixes</span><span class="">:[],</span><span class="hljs-attr">registerCustomElements</span><span class="">:</span><span class="hljs-literal">null</span><span class="">}}</span><span class="hljs-keyword">return</span><span class=""> t[e]}(t),{</span><span class="hljs-attr">isInjected</span><span class="">:c,</span><span class="hljs-attr">prefixes</span><span class="">:i=[],</span><span class="hljs-attr">registerCustomElements</span><span class="">:d}=r,[u]=Object.entries(n()).filter(</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">[e,o]</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">e!==t&&</span><span class="hljs-string">"object"</span><span class="">==typeof o&&o.prefixes.includes(s));</span><span class="hljs-keyword">if</span><span class="">(u)throw </span><span class="hljs-keyword">new</span><span class=""> Error(</span><span class="hljs-string">`[Porsche Design System v</span><span class="hljs-string hljs-subst">${t}</span><span class="hljs-string">] prefix '</span><span class="hljs-string hljs-subst">${s}</span><span class="hljs-string">' is already registered with version '</span><span class="hljs-string hljs-subst">${u[</span><span class="hljs-string hljs-subst hljs-number">0</span><span class="hljs-string hljs-subst">]}</span><span class="hljs-string">' of the Porsche Design System. Please use a different one.\nTake a look at document.</span><span class="hljs-string hljs-subst">${o}</span><span class="hljs-string"> for more details.`</span><span class="">);c||</span><span class="hljs-function">(</span><span class="hljs-function hljs-params hljs-keyword">function</span><span class="hljs-function hljs-params">(e</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">t</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">document</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">createElement</span><span class="hljs-function">(</span><span class="hljs-function hljs-params hljs-string">"script"</span><span class="hljs-function">);</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">src</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">,</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">setAttribute</span><span class="hljs-function">(</span><span class="hljs-function hljs-params hljs-string">"crossorigin"</span><span class="hljs-function hljs-params">,</span><span class="hljs-function hljs-params hljs-string">""</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">document</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">body</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">appendChild</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">)}(</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">r</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">isInjected</span><span class="hljs-function">=!0),</span><span class="hljs-function hljs-params">i</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">includes</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">s</span><span class="hljs-function">)||(</span><span class="hljs-function hljs-params">i.push(s</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">d</span><span class="hljs-function">&&</span><span class="hljs-function hljs-params">d</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">s</span><span class="hljs-function">))}</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">r</span><span class="hljs-function">=(</span><span class="hljs-function hljs-params">e={}</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">{const t=</span><span class="hljs-string">"PORSCHE_DESIGN_SYSTEM_CDN"</span><span class="">;window[t]=e.cdn||window[t]||(window.location.origin.match(</span><span class="hljs-regexp">/\.cn$/</span><span class="">)?</span><span class="hljs-string">"cn"</span><span class="">:</span><span class="hljs-string">"auto"</span><span class="">);const o=</span><span class="hljs-string">"porscheDesignSystem"</span><span class="">;document[o]||(document[o]={}),document[o].cdn={</span><span class="hljs-attr">url</span><span class="">:</span><span class="hljs-string">"https://cdn.ui.porsche."</span><span class="">+(</span><span class="hljs-string">"cn"</span><span class="">===window[t]?</span><span class="hljs-string">"cn"</span><span class="">:</span><span class="hljs-string">"com"</span><span class="">),</span><span class="hljs-attr">prefixes</span><span class="">:[]},s({</span><span class="hljs-attr">version</span><span class="">:</span><span class="hljs-string">"4.3.0"</span><span class="">,</span><span class="hljs-attr">script</span><span class="">:</span><span class="hljs-string">"http://localhost:3001/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js"</span><span class="">,</span><span class="hljs-attr">prefix</span><span class="">:e.prefix||</span><span class="hljs-string">""</span><span class="">})};porscheDesignSystem=t})();porscheDesignSystem.load({</span><span class="hljs-attr">prefix</span><span class="">:</span><span class="hljs-string">'custom-prefix'</span><span class="">})
-</span></script>
+// Alternative: With custom prefix
+<script data-pds-loader-script>
+var porscheDesignSystem;(()=>
+{"use strict";var e={d:(t,o)=>
+{for(var n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:o[n]})},o:(e,t)=>
+Object.prototype.hasOwnProperty.call(e,t),r:e=>
+{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};e.r(t),e.d(t,{load:()=>
+r});const o="porscheDesignSystem";function n(){return document[o]||(document[o]={}),document[o]}function s({script:e,version:t,prefix:s}){const r=function(e){const t=n(),{[e]:o}=t;if(!o){let o=()=>
+{};const n=new Promise(e=>
+o=e);t[e]={isInjected:!1,isReady:()=>
+n,readyResolve:o,prefixes:[],registerCustomElements:null}}return t[e]}(t),{isInjected:c,prefixes:i=[],registerCustomElements:d}=r,[u]=Object.entries(n()).filter(([e,o])=>
+e!==t&&"object"==typeof o&&o.prefixes.includes(s));if(u)throw new Error(`[Porsche Design System v${t}] prefix '${s}' is already registered with version '${u[0]}' of the Porsche Design System. Please use a different one.\nTake a look at document.${o} for more details.`);c||(function(e){const t=document.createElement("script");t.src=e,t.setAttribute("crossorigin",""),document.body.appendChild(t)}(e),r.isInjected=!0),i.includes(s)||(i.push(s),d&&d(s))}const r=(e={})=>
+{const t="PORSCHE_DESIGN_SYSTEM_CDN";window[t]=e.cdn||window[t]||(window.location.origin.match(/\.cn$/)?"cn":"auto");const o="porscheDesignSystem";document[o]||(document[o]={}),document[o].cdn={url:"https://cdn.ui.porsche."+("cn"===window[t]?"cn":"com"),prefixes:[]},s({version:"4.3.0",script:"http://localhost:3001/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js",prefix:e.prefix||""})};porscheDesignSystem=t})();porscheDesignSystem.load({prefix:'custom-prefix'})
+</script>
 
-<span class=""></span><span class="hljs-comment">// Alternative: With multiple custom prefixes</span><span class="">
-</span><script data-pds-loader-script>
-<span class=""></span><span class="hljs-keyword">var</span><span class=""> porscheDesignSystem;</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">(</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">{</span><span class="hljs-string">"use strict"</span><span class="">;</span><span class="hljs-keyword">var</span><span class=""> e={</span><span class="hljs-attr">d</span><span class="">:</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">t,o</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">{</span><span class="hljs-keyword">for</span><span class="">(</span><span class="hljs-keyword">var</span><span class=""> n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{</span><span class="hljs-attr">enumerable</span><span class="">:!</span><span class="hljs-number">0</span><span class="">,</span><span class="hljs-attr">get</span><span class="">:o[n]})},</span><span class="hljs-attr">o</span><span class="">:</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">e,t</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">Object.prototype.hasOwnProperty.call(e,t),</span><span class="hljs-attr">r</span><span class="">:</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">=></span><span class="">
-</span><span class="">{</span><span class="hljs-string">"undefined"</span><span class="">!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{</span><span class="hljs-attr">value</span><span class="">:</span><span class="hljs-string">"Module"</span><span class="">}),Object.defineProperty(e,</span><span class="hljs-string">"__esModule"</span><span class="">,{</span><span class="hljs-attr">value</span><span class="">:!</span><span class="hljs-number">0</span><span class="">})}},t={};e.r(t),e.d(t,{</span><span class="hljs-attr">load</span><span class="">:</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">=></span><span class="">
-</span><span class="">r});const o=</span><span class="hljs-string">"porscheDesignSystem"</span><span class="">;</span><span class="hljs-function hljs-keyword">function</span><span class="hljs-function"> </span><span class="hljs-function hljs-title">n</span><span class="hljs-function">(</span><span class="hljs-function">)</span><span class="">{</span><span class="hljs-keyword">return</span><span class=""> document[o]||</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">document[o]={}</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">document</span><span class="hljs-function">[</span><span class="hljs-function hljs-params">o</span><span class="hljs-function">]}</span><span class="hljs-function hljs-params">function</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">s</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">{script:e,version:t,prefix:s}</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">r</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">function</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">t</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">n</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">,{[</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">]:</span><span class="hljs-function hljs-params">o</span><span class="hljs-function">}=</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">;</span><span class="hljs-function hljs-params">if</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">!o</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">let</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">o</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">=></span><span class="">
-</span><span class="">{};const n=</span><span class="hljs-keyword">new</span><span class=""> Promise(</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">=></span><span class="">
-</span><span class="">o=e);t[e]={</span><span class="hljs-attr">isInjected</span><span class="">:!</span><span class="hljs-number">1</span><span class="">,</span><span class="hljs-attr">isReady</span><span class="">:</span><span class="hljs-function hljs-params">()</span><span class="hljs-function">=></span><span class="">
-</span><span class="">n,</span><span class="hljs-attr">readyResolve</span><span class="">:o,</span><span class="hljs-attr">prefixes</span><span class="">:[],</span><span class="hljs-attr">registerCustomElements</span><span class="">:</span><span class="hljs-literal">null</span><span class="">}}</span><span class="hljs-keyword">return</span><span class=""> t[e]}(t),{</span><span class="hljs-attr">isInjected</span><span class="">:c,</span><span class="hljs-attr">prefixes</span><span class="">:i=[],</span><span class="hljs-attr">registerCustomElements</span><span class="">:d}=r,[u]=Object.entries(n()).filter(</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">[e,o]</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">e!==t&&</span><span class="hljs-string">"object"</span><span class="">==typeof o&&o.prefixes.includes(s));</span><span class="hljs-keyword">if</span><span class="">(u)throw </span><span class="hljs-keyword">new</span><span class=""> Error(</span><span class="hljs-string">`[Porsche Design System v</span><span class="hljs-string hljs-subst">${t}</span><span class="hljs-string">] prefix '</span><span class="hljs-string hljs-subst">${s}</span><span class="hljs-string">' is already registered with version '</span><span class="hljs-string hljs-subst">${u[</span><span class="hljs-string hljs-subst hljs-number">0</span><span class="hljs-string hljs-subst">]}</span><span class="hljs-string">' of the Porsche Design System. Please use a different one.\nTake a look at document.</span><span class="hljs-string hljs-subst">${o}</span><span class="hljs-string"> for more details.`</span><span class="">);c||</span><span class="hljs-function">(</span><span class="hljs-function hljs-params hljs-keyword">function</span><span class="hljs-function hljs-params">(e</span><span class="hljs-function">){</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">t</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">document</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">createElement</span><span class="hljs-function">(</span><span class="hljs-function hljs-params hljs-string">"script"</span><span class="hljs-function">);</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">src</span><span class="hljs-function">=</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">,</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">setAttribute</span><span class="hljs-function">(</span><span class="hljs-function hljs-params hljs-string">"crossorigin"</span><span class="hljs-function hljs-params">,</span><span class="hljs-function hljs-params hljs-string">""</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">document</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">body</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">appendChild</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">t</span><span class="hljs-function">)}(</span><span class="hljs-function hljs-params">e</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">r</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">isInjected</span><span class="hljs-function">=!0),</span><span class="hljs-function hljs-params">i</span><span class="hljs-function">.</span><span class="hljs-function hljs-params">includes</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">s</span><span class="hljs-function">)||(</span><span class="hljs-function hljs-params">i.push(s</span><span class="hljs-function">),</span><span class="hljs-function hljs-params">d</span><span class="hljs-function">&&</span><span class="hljs-function hljs-params">d</span><span class="hljs-function">(</span><span class="hljs-function hljs-params">s</span><span class="hljs-function">))}</span><span class="hljs-function hljs-params">const</span><span class="hljs-function"> </span><span class="hljs-function hljs-params">r</span><span class="hljs-function">=(</span><span class="hljs-function hljs-params">e={}</span><span class="hljs-function">)=></span><span class="">
-</span><span class="">{const t=</span><span class="hljs-string">"PORSCHE_DESIGN_SYSTEM_CDN"</span><span class="">;window[t]=e.cdn||window[t]||(window.location.origin.match(</span><span class="hljs-regexp">/\.cn$/</span><span class="">)?</span><span class="hljs-string">"cn"</span><span class="">:</span><span class="hljs-string">"auto"</span><span class="">);const o=</span><span class="hljs-string">"porscheDesignSystem"</span><span class="">;document[o]||(document[o]={}),document[o].cdn={</span><span class="hljs-attr">url</span><span class="">:</span><span class="hljs-string">"https://cdn.ui.porsche."</span><span class="">+(</span><span class="hljs-string">"cn"</span><span class="">===window[t]?</span><span class="hljs-string">"cn"</span><span class="">:</span><span class="hljs-string">"com"</span><span class="">),</span><span class="hljs-attr">prefixes</span><span class="">:[]},s({</span><span class="hljs-attr">version</span><span class="">:</span><span class="hljs-string">"4.3.0"</span><span class="">,</span><span class="hljs-attr">script</span><span class="">:</span><span class="hljs-string">"http://localhost:3001/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js"</span><span class="">,</span><span class="hljs-attr">prefix</span><span class="">:e.prefix||</span><span class="hljs-string">""</span><span class="">})};porscheDesignSystem=t})();porscheDesignSystem.load({</span><span class="hljs-attr">prefix</span><span class="">:</span><span class="hljs-string">''</span><span class="">});porscheDesignSystem.load({</span><span class="hljs-attr">prefix</span><span class="">:</span><span class="hljs-string">'custom-prefix'</span><span class="">});porscheDesignSystem.load({</span><span class="hljs-attr">prefix</span><span class="">:</span><span class="hljs-string">'another-prefix'</span><span class="">})
-</span></script>
+// Alternative: With multiple custom prefixes
+<script data-pds-loader-script>
+var porscheDesignSystem;(()=>
+{"use strict";var e={d:(t,o)=>
+{for(var n in o)e.o(o,n)&&!e.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:o[n]})},o:(e,t)=>
+Object.prototype.hasOwnProperty.call(e,t),r:e=>
+{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};e.r(t),e.d(t,{load:()=>
+r});const o="porscheDesignSystem";function n(){return document[o]||(document[o]={}),document[o]}function s({script:e,version:t,prefix:s}){const r=function(e){const t=n(),{[e]:o}=t;if(!o){let o=()=>
+{};const n=new Promise(e=>
+o=e);t[e]={isInjected:!1,isReady:()=>
+n,readyResolve:o,prefixes:[],registerCustomElements:null}}return t[e]}(t),{isInjected:c,prefixes:i=[],registerCustomElements:d}=r,[u]=Object.entries(n()).filter(([e,o])=>
+e!==t&&"object"==typeof o&&o.prefixes.includes(s));if(u)throw new Error(`[Porsche Design System v${t}] prefix '${s}' is already registered with version '${u[0]}' of the Porsche Design System. Please use a different one.\nTake a look at document.${o} for more details.`);c||(function(e){const t=document.createElement("script");t.src=e,t.setAttribute("crossorigin",""),document.body.appendChild(t)}(e),r.isInjected=!0),i.includes(s)||(i.push(s),d&&d(s))}const r=(e={})=>
+{const t="PORSCHE_DESIGN_SYSTEM_CDN";window[t]=e.cdn||window[t]||(window.location.origin.match(/\.cn$/)?"cn":"auto");const o="porscheDesignSystem";document[o]||(document[o]={}),document[o].cdn={url:"https://cdn.ui.porsche."+("cn"===window[t]?"cn":"com"),prefixes:[]},s({version:"4.3.0",script:"http://localhost:3001/components/porsche-design-system.v4.3.0.0bea98c7a1d46c18a7c2.js",prefix:e.prefix||""})};porscheDesignSystem=t})();porscheDesignSystem.load({prefix:''});porscheDesignSystem.load({prefix:'custom-prefix'});porscheDesignSystem.load({prefix:'another-prefix'})
+</script>
 ```

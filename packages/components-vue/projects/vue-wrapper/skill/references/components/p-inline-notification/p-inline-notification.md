@@ -2,7 +2,7 @@
 
 The `p-inline-notification` is a controlled component that provides action-based feedback messages (e.g. after performing a task) or to convey informational and/or critical notification like some site related topics.
 
-Review the [notification decision tree](/patterns/notifications/decision-tree/) to determine which notification component is best for a particular scenario.
+Review the [notification decision tree](https://designsystem.porsche.com/patterns/notifications/decision-tree/) to determine which notification component is best for a particular scenario.
 
 # Inline Notification
 

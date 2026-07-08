@@ -37,7 +37,7 @@ The following section provides guidance for designers and developers on how to u
 
 ## Related components
 
-- [Flyout](/components/flyout)
+- [Flyout](../p-flyout/p-flyout.md)
 
 ## Accessibility support
 

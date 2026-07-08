@@ -23,18 +23,18 @@ The following section provides guidance for designers and developers on how to u
 
 ### Don't:
 
-- Don't use it if a setting requires a button press before it can take effect (use a [Checkbox](/components/checkbox/) instead).
+- Don't use it if a setting requires a button press before it can take effect (use a [Checkbox](../p-checkbox/p-checkbox.md) instead).
 - Don't use anything longer than two words in the label whenever possible.
 - Don't use the switch for multiple-choice questions.
-- Don't use slide Switch when an intermediate state is required (Use [Checkbox](/components/checkbox/) instead).
+- Don't use slide Switch when an intermediate state is required (Use [Checkbox](../p-checkbox/p-checkbox.md) instead).
 - Don't use the label to describe the state of the component.
 
 ---
 
 ## Related Components
 
-- [Checkbox](/components/checkbox/)
-- [Button](/components/button/)
+- [Checkbox](../p-checkbox/p-checkbox.md)
+- [Button](../p-button/p-button.md)
 
 ## Accessibility support
 

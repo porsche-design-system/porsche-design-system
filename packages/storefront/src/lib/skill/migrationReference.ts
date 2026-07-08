@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import { rewriteDocLinks } from './links';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { SkillTree } from './skillTree';
 
@@ -44,7 +45,9 @@ export const writeMigrationReferences = (tree: SkillTree, sources: MigrationSour
       degraded.push(slug);
       continue;
     }
-    written.push(tree.writeReference(`migration/${slug}.md`, markdown));
+    // Resolve storefront-absolute links to their in-tree references, relative to this guide's file.
+    const resolved = rewriteDocLinks(markdown, `references/migration/${slug}.md`);
+    written.push(tree.writeReference(`migration/${slug}.md`, resolved));
   }
 
   return { written, degraded };

@@ -1,6 +1,6 @@
 # p-link
 
-The `p-link` component is essential to perform changes in **page routes**. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Links (**Primary** and **Secondary**) are available for usage. A Link can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers. In case you want the user to execute an action, you should select the [Button](/components/button/) component instead.
+The `p-link` component is essential to perform changes in **page routes**. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Links (**Primary** and **Secondary**) are available for usage. A Link can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers. In case you want the user to execute an action, you should select the [Button](../p-button/p-button.md) component instead.
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-link`.
 
@@ -11,10 +11,10 @@ The following section provides guidance for designers and developers on how to u
 ### Do:
 
 - Use a Link to navigate to another page.
-- Use a [Button](/components/button/) instead of a Link if you want to change a state (e.g. send form)
+- Use a [Button](../p-button/p-button.md) instead of a Link if you want to change a state (e.g. send form)
 - Use a Primary Link filled for one or two high-priority actions within a page.
 - Use a Secondary Link for all other stand-alone Links that aren't high priority.
-- Use a [Link Pure](/components/link-pure/) as a subordinated link version in combination with a filled link (primary or secondary) or stand-alone when the priority of the action is lower compared to all other link actions within the page.
+- Use a [Link Pure](../p-link-pure/p-link-pure.md) as a subordinated link version in combination with a filled link (primary or secondary) or stand-alone when the priority of the action is lower compared to all other link actions within the page.
 - Use an Icon and text variant only when appropriate (e.g. external link).
 - Use an Icon-only variant only in cases where the user is fully aware of the link function.
 - Ensure that the link remains legible even in a multiline state by using max. 100 characters per line.
@@ -29,8 +29,8 @@ The following section provides guidance for designers and developers on how to u
 
 ## Related components
 
-- [Button](/components/button/)
-- [Link Pure](/components/link-pure/)
+- [Button](../p-button/p-button.md)
+- [Link Pure](../p-link-pure/p-link-pure.md)
 
 ## Accessibility support
 

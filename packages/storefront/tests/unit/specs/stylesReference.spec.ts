@@ -6,6 +6,7 @@ import { getEmotionSkill } from '../../../../styles/projects/emotion/skill/skill
 import { getScssSkill } from '../../../../styles/projects/scss/skill/skill';
 import { getTailwindcssSkill } from '../../../../styles/projects/tailwindcss/skill/skill';
 import { getVanillaExtractSkill } from '../../../../styles/projects/vanilla-extract/skill/skill';
+import { rewriteDocLinks } from '@/lib/skill/links';
 import { SkillTree } from '@/lib/skill/skillTree';
 import { writeStyleReferences } from '@/lib/skill/stylesReference';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
@@ -56,7 +57,14 @@ describe('writeStyleReferences', () => {
     // vanilla-extract and Emotion resolve their values at runtime, so they carry no pointer.
     expect(read('references/styles/vanilla-extract.md')).toBe(getVanillaExtractSkill());
     expect(read('references/styles/emotion.md')).toBe(getEmotionSkill());
-    expect(read('references/stylesheets.md')).toBe(getStylesheetsSkill());
+    // The stylesheets overview links each solution's storefront intro by absolute path; those are
+    // resolved to in-tree references at aggregation, so the written file is the serializer output
+    // with only its links rewritten.
+    expect(read('references/stylesheets.md')).toBe(
+      rewriteDocLinks(getStylesheetsSkill(), 'references/stylesheets.md')
+    );
+    expect(read('references/stylesheets.md')).toContain('](./styles/scss.md)');
+    expect(read('references/stylesheets.md')).not.toContain('](/');
   });
 
   it('links shipped stylesheets where they physically live per framework', () => {

@@ -2,9 +2,9 @@
 
 The `p-button-pure` component is essential to perform events for **interactions**. A Button can be used with or without a label, but it's recommended to keep the **label visible** for better **usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers.
 
-Whenever you want to provide navigational elements, stick to the [Link](/components/link/) or [Link Pure](/components/link-pure/) component instead.
+Whenever you want to provide navigational elements, stick to the [Link](../p-link/p-link.md) or [Link Pure](../p-link-pure/p-link-pure.md) component instead.
 
-Similarly to the `p-button`, the `p-button-pure` can be used as a submit button within a form for which a `name` and `value` prop can be passed. See the [Button Form Example](/components/button/examples/#form) for more information.
+Similarly to the `p-button`, the `p-button-pure` can be used as a submit button within a form for which a `name` and `value` prop can be passed. See the [Button Form Example](../p-button/p-button.md) for more information.
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-button-pure`.
 
@@ -24,7 +24,7 @@ The following section provides guidance for designers and developers on how to u
 
 - Don't use Button Pure as the primary or only call to action.
 - Don't use long labels that do not give a clear indication of the action.
-- Don't use buttons to link/navigate to other pages. Use regular [Link](/components/link/) instead.
+- Don't use buttons to link/navigate to other pages. Use regular [Link](../p-link/p-link.md) instead.
 
 ## Accessibility support
 

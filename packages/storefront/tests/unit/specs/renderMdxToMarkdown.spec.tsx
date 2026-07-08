@@ -44,6 +44,28 @@ describe('renderMdxToMarkdown', () => {
     expect(introduction).toContain('<p-accordion heading="Section 1">Panel content</p-accordion>');
   });
 
+  it('recovers source from a syntax-highlighted <pre> without leaking highlighter markup', () => {
+    // The partials pages pre-highlight code into `hljs` spans; the renderer must collapse those spans
+    // (and decode entities) back to the original source rather than emit the span markup verbatim.
+    const Highlighted: ComponentType = () => (
+      <pre>
+        <code
+          className="hljs language-html"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: emulating the highlighter's span output
+          dangerouslySetInnerHTML={{
+            __html:
+              '<span class="hljs-tag">&lt;p-accordion heading=&quot;x&quot;&gt;</span><span>Panel</span><span class="hljs-tag">&lt;/p-accordion&gt;</span>',
+          }}
+        />
+      </pre>
+    );
+    const { markdown } = renderMdxToMarkdown(Highlighted);
+
+    expect(markdown).toBe('```html\n<p-accordion heading="x">Panel</p-accordion>\n```');
+    expect(markdown).not.toContain('hljs');
+    expect(markdown).not.toContain('<span');
+  });
+
   it('substitutes embedded JSX components — no raw JSX or component noise leaks', () => {
     const { markdown } = renderMdxToMarkdown(compiled.usage);
 
@@ -86,6 +108,30 @@ describe('renderMdxToMarkdown', () => {
     const { markdown } = renderMdxToMarkdown(TdTable);
 
     expect(markdown).toBe('| Name | Value |\n| --- | --- |\n| a | 1 |');
+  });
+
+  it('escapes pipes in table cells so a union-type cell does not break the row', () => {
+    const PipeTable: ComponentType = () => (
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>format</td>
+            <td>
+              <code>'html' | 'jsx' | 'sha256'</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    );
+    const { markdown } = renderMdxToMarkdown(PipeTable);
+
+    expect(markdown).toBe("| Option | Type |\n| --- | --- |\n| format | `'html' \\| 'jsx' \\| 'sha256'` |");
   });
 
   it('flags prose that renders to nothing meaningful as degraded', () => {

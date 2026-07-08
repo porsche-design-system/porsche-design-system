@@ -1,6 +1,6 @@
 # p-button
 
-The `p-button` component is essential for performing form or **interaction** events. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (**Primary** and **Secondary**) are available for usage. A Button can be used with or without a label but it's recommended to keep the **label visible** for better **usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers. Whenever you want to provide navigational elements, stick to the [Link](/components/link/) component instead.
+The `p-button` component is essential for performing form or **interaction** events. For an optimal user guidance and dedicated pursuit of business or sales goals, different types of Buttons (**Primary** and **Secondary**) are available for usage. A Button can be used with or without a label but it's recommended to keep the **label visible** for better **usability** whenever possible. When used without a label, it is mandatory for **accessibility** to provide a descriptive label text for screen readers. Whenever you want to provide navigational elements, stick to the [Link](../p-link/p-link.md) component instead.
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-button`.
 
@@ -29,7 +29,7 @@ The following section provides guidance for designers and developers on how to u
 
 ## Related components
 
-- [Links](/components/link/)
+- [Links](../p-link/p-link.md)
 
 ## Accessibility support
 

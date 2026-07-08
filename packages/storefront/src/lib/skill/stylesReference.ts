@@ -3,6 +3,7 @@ import { getEmotionSkill } from '../../../../styles/projects/emotion/skill/skill
 import { getScssSkill } from '../../../../styles/projects/scss/skill/skill';
 import { getTailwindcssSkill } from '../../../../styles/projects/tailwindcss/skill/skill';
 import { getVanillaExtractSkill } from '../../../../styles/projects/vanilla-extract/skill/skill';
+import { rewriteDocLinks } from './links';
 import { rawScssReference, rawTailwindcssReference } from './skillMd';
 import type { Framework, SkillTree } from './skillTree';
 
@@ -48,6 +49,10 @@ const fullStylesheetSection = (rawReference: string): string =>
  */
 export const writeStyleReferences = (tree: SkillTree, framework: Framework): string[] =>
   STYLE_REFERENCES.map(({ serialize, reference, rawReference }) => {
-    const markdown = rawReference ? `${serialize()}\n${fullStylesheetSection(rawReference(framework))}` : serialize();
+    const serialized = rawReference ? `${serialize()}\n${fullStylesheetSection(rawReference(framework))}` : serialize();
+    // The serializer markdown links sibling storefront pages by absolute path (e.g. the stylesheets
+    // overview links each styling solution's intro); resolve those to their in-tree references,
+    // mirroring how the "Exact values" pointer is injected at aggregation rather than in the serializer.
+    const markdown = rewriteDocLinks(serialized, `references/${reference}`);
     return tree.writeReference(reference, markdown);
   });
