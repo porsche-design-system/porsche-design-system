@@ -53,6 +53,12 @@ export const ROSTER_SUMMARY_OVERRIDES: Record<string, string> = {
   'p-spinner': 'Indicates an ongoing process the user must wait for, such as loading or processing.',
 };
 
+/**
+ * Render one prose section (introduction / usage / accessibility) to markdown and append it to
+ * `sections` unless it is empty. Degraded prose is recorded in `degradedSections` and not emitted.
+ * Returns the raw rendered markdown (before `transform` and trimming) so the caller can derive the
+ * roster summary from the introduction; the empty string when the source is absent or degraded.
+ */
 const renderSection = (
   component: ComponentType | undefined,
   sections: string[],
@@ -60,19 +66,20 @@ const renderSection = (
   name: string,
   label: string,
   transform: (markdown: string) => string = (markdown) => markdown
-): void => {
+): string => {
   if (!component) {
-    return;
+    return '';
   }
   const { markdown, degraded } = renderMdxToMarkdown(component, label);
   if (degraded) {
     degradedSections.push(name);
-    return;
+    return '';
   }
   const transformed = transform(markdown).trim();
   if (transformed) {
     sections.push(transformed);
   }
+  return markdown;
 };
 
 /**
@@ -87,13 +94,10 @@ export const renderComponentProse = (
   const degradedSections: string[] = [];
   const sections: string[] = [`# ${tag}`];
 
-  const introResult = renderMdxToMarkdown(source.introduction, `${tag} › introduction`);
-  if (introResult.degraded) {
-    degradedSections.push('introduction');
-  } else if (introResult.markdown.trim()) {
-    sections.push(introResult.markdown.trim());
-  }
-  const summary = introResult.degraded ? NO_SUMMARY : leadSentence(introResult.markdown) || NO_SUMMARY;
+  // The introduction goes through the same renderer as usage/accessibility (no heading strip); its raw
+  // markdown is returned so the roster summary is the lead sentence. Degraded intro → empty → NO_SUMMARY.
+  const introMarkdown = renderSection(source.introduction, sections, degradedSections, 'introduction', `${tag} › introduction`);
+  const summary = leadSentence(introMarkdown) || NO_SUMMARY;
 
   renderSection(source.usage, sections, degradedSections, 'usage', `${tag} › usage`, stripLeadingH1);
   renderSection(source.accessibility, sections, degradedSections, 'accessibility', `${tag} › accessibility`, stripLeadingH1);

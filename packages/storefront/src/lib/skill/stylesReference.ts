@@ -1,3 +1,7 @@
+// Deep source imports (not the styles/stylesheets package entries): each `getXxxSkill` serializer is a
+// build-time source module its package's published entry (built dist) does not re-export, and this
+// generator runs under `tsx` against source before the siblings are built — same rationale as
+// `generateComponentMeta`'s relative-path imports and `tokensReference.ts`'s `tokensMeta` import.
 import { getStylesheetsSkill } from '../../../../components/projects/stylesheets/skill/skill';
 import { getEmotionSkill } from '../../../../styles/projects/emotion/skill/skill';
 import { getScssSkill } from '../../../../styles/projects/scss/skill/skill';

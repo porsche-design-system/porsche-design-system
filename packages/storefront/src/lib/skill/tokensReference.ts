@@ -1,4 +1,8 @@
 import { sentenceCase } from 'change-case';
+// Deep source imports (not the `tokens-meta` package entry): `tokensMeta` is a build-time source module
+// that the package's published entry (built dist) does not re-export, and this generator runs under `tsx`
+// against source before the sibling packages are built — the same rationale as `generateComponentMeta`'s
+// relative-path imports. `stylesReference.ts` reaches into the styles/stylesheets sources for the same reason.
 import { type TokensMetaTree, tokensMeta } from '../../../../tokens/projects/tokens-meta/src/lib/tokensMeta';
 import type { TokenMeta } from '../../../../tokens/projects/tokens-meta/src/types/token-meta';
 import { escapeCell, headingSlug, markdownTable } from './markdown';

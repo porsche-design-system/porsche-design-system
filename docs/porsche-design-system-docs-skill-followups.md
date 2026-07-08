@@ -50,8 +50,16 @@ source-data issue, not a sub-component gap._
 - **[P2] `p-select.md` garbled run-on intro** from concatenated list items ("Use to trigger an action
   based on the selected option choose and search one option…"). MDX intro render concatenates list
   items without separation. _(The related value-type-as-string-literals bug is fixed — see below.)_
-- **[P3] `p-button.md` self-contradiction:** `variant` type is `'primary' | 'secondary'` but the prose
-  says "(e.g. `primary`, `secondary`, `tertiary`)" — invites an invalid value. Source-data/prose fix.
+- **[P3] `p-button` / `p-link` `variant` description names an invalid `tertiary` value.** The `variant`
+  prop type is `LinkButtonVariant` = `'primary' | 'secondary'`, but the JSDoc on `button.tsx` /
+  `link.tsx` says "(e.g. `primary`, `secondary`, `tertiary`)". **Not a contained skill fix:** the
+  description is authored in the two `@Prop()` JSDocs and Stencil/wrapper codegen bakes it into many
+  committed generated files — `components.d.ts`, the React (regular + SSR) and Vue wrappers, the
+  jsdom-polyfill entries, `component-meta` (src + snapshot) and the four skill trees. Fixing it correctly
+  means editing the two JSDocs (suggest "(`primary` or `secondary`)") and running the **full
+  components-package build** (`stencil build` → wrappers → jsdom-polyfill → `component-meta` → skill) so
+  every generated copy is regenerated in lockstep. Belongs in a dedicated components change, not a
+  storefront-scoped skill pass.
 - **[P3] React `p-button/examples/Form.tsx` duplicate React imports** (harmless lint noise; example
   source, not generated). Also `name` frontmatter is identical across all four trees — fine when one
   framework is installed, collides in a monorepo with two frontends; documented as a single fixed name,
@@ -71,13 +79,6 @@ source-data issue, not a sub-component gap._
   `STYLE_REFERENCES` (`stylesReference.ts`) must still be edited in tandem to add a solution — fully
   merging them would couple `skillMd.ts` to the heavy `getXxxSkill` serializers, so left as-is. _(The
   `MIGRATION_GUIDES` / `SKELETON_REFERENCE_MAP` pair is done — see "Fixed in the follow-up pass".)_
-- **[P3] Cross-package deep source imports.** `stylesReference.ts` / `tokensReference.ts` import sibling
-  packages' *source* (`../../../../styles/projects/…`, `../../../../tokens/projects/…`), coupling the
-  storefront build to their internal layout. Prefer built workspace entry points, or centralize the
-  paths with a comment on why source imports are required.
-- **[P3] `renderComponentProse` intro handling.** The introduction is rendered/handled inline rather
-  than through `renderSection` like usage/accessibility; unify the two. _(The other half of this
-  item — `main().catch` and unknown-flag rejection — is done; see "Fixed in the follow-up pass".)_
 - **[P3] `renderMdxToMarkdown` residual fragilities.** `renderPre`'s `<code>`-wrapper strip is still
   regex-based (now re-parses inner HTML, so highlighter markup is handled — but a literal `</code>` in
   example text could still confuse the strip); inline `CODE` wraps in single backticks without handling
@@ -203,3 +204,13 @@ upgrading" log line is the pragmatic mitigation that shipped instead._
   raw pointer as inline code ("read `../tokens` in the installed package") instead of a markdown link,
   matching how `component-meta`'s `../meta` and the styles "Full stylesheet" pointers are written. Drift
   snapshot refreshed for the four `tokens.md`; the link gate still classifies `../tokens` as `raw`.
+- **`renderComponentProse` intro unified (§3 P3).** The introduction now renders through the same
+  `renderSection` helper as usage/accessibility instead of a bespoke inline block; the helper returns the
+  raw markdown so the roster summary is still the intro's lead sentence (degraded intro → empty →
+  `NO_SUMMARY`). Output-neutral (zero tree drift; `componentsReference.spec.ts` incl. the prose snapshot
+  stays green).
+- **Cross-package deep source imports documented (§3 P3).** `tokensReference.ts` and `stylesReference.ts`
+  now carry a comment explaining why they import sibling packages' *source* rather than built entry points:
+  the `tokensMeta` / `getXxxSkill` serializers are build-time source modules the packages' published
+  entries don't re-export, and the generator runs under `tsx` against source before the siblings are
+  built — the same rationale `generateComponentMeta` documents.
