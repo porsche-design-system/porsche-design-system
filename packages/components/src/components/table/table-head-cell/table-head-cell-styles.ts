@@ -1,7 +1,7 @@
 import {
   addImportantToEachRule,
   getFocusBaseStyles,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -84,7 +84,7 @@ export const getComponentCss = (
           }
         : hideLabel && {
             span: {
-              ...getHiddenTextJssStyle(),
+              ...getHiddenTextCssStyle(),
               display: 'block',
               border: 0,
             },

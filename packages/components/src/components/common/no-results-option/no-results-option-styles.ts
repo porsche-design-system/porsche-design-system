@@ -1,7 +1,7 @@
 import { colorContrastMedium, ref } from '@porsche-design-system/stylesheets';
 import type { Styles } from '../../../utils/css-serializer';
-import { getHiddenTextJssStyle } from '../../../styles';
-import { getOptionJssStyle } from '../../../styles/select';
+import { getHiddenTextCssStyle } from '../../../styles';
+import { getOptionCssStyle } from '../../../styles/select';
 
 export const getFunctionalComponentNoResultsOptionStyles = (
   componentName: 'select-option' | 'multi-select-option',
@@ -9,12 +9,12 @@ export const getFunctionalComponentNoResultsOptionStyles = (
 ): Styles => {
   return {
     'no-results': {
-      ...getOptionJssStyle(componentName, cssVarScalingName),
+      ...getOptionCssStyle(componentName, cssVarScalingName),
       '&[role=option]': {
         cursor: 'not-allowed',
       },
       color: ref(colorContrastMedium),
     },
-    'sr-only': getHiddenTextJssStyle(),
+    'sr-only': getHiddenTextCssStyle(),
   };
 };

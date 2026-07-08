@@ -1,8 +1,8 @@
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 import { hoverMediaQuery } from './hover-media-query';
 
 it('should return style wrapped in @media(hover: hover) query', () => {
-  const style: JssStyle = {
+  const style: CssStyle = {
     '&:hover, &:focus': {
       color: 'd5001c',
       background: 'currentColor',

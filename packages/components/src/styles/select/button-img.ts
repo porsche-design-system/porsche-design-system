@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 import {
   fontPorscheNext,
   leadingNormal,
@@ -7,7 +7,7 @@ import {
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
 
-export const getButtonImageJssStyle: JssStyle = {
+export const getButtonImageCssStyle: CssStyle = {
   font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct calculations based on ex-unit
   width: 'auto',
   height: ref(leadingNormal),

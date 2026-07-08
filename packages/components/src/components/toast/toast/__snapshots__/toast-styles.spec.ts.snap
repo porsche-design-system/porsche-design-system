@@ -45,7 +45,7 @@ exports[`getComponentCss() > should return correct css 1`] = `
 "
 `;
 
-exports[`getKeyframesMobile() > should return correct JssStyle for direction: in and bottomVar: --_p-toast-a 1`] = `
+exports[`getKeyframesMobile() > should return correct CssStyle for direction: in and bottomVar: --_p-toast-a 1`] = `
 {
   "from": {
     "transform": "translate3d(0,calc(var(--_p-toast-a) + 100%),0)",
@@ -56,7 +56,7 @@ exports[`getKeyframesMobile() > should return correct JssStyle for direction: in
 }
 `;
 
-exports[`getKeyframesMobile() > should return correct JssStyle for direction: out and bottomVar: --_p-toast-a 1`] = `
+exports[`getKeyframesMobile() > should return correct CssStyle for direction: out and bottomVar: --_p-toast-a 1`] = `
 {
   "from": {
     "transform": "translate3d(0,0,0)",

@@ -2,7 +2,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as globby from 'fast-glob';
 import { vi } from 'vitest';
-import type { JssStyle, Styles } from './css-serializer';
+import type { CssStyle, Styles } from './css-serializer';
 import * as cssUtils from './css';
 import {
   attachComponentCss,
@@ -185,15 +185,15 @@ describe('supportsConstructableStylesheets()', () => {
 });
 
 describe('buildResponsiveStyles()', () => {
-  describe('for simple getJssStyle', () => {
-    const getJssStyle = (val: number): JssStyle => ({ width: 100 * val });
+  describe('for simple getCssStyle', () => {
+    const getCssStyle = (val: number): CssStyle => ({ width: 100 * val });
 
     it('should return flat jss for simple type', () => {
-      expect(buildResponsiveStyles(6, getJssStyle)).toStrictEqual({ width: 600 });
+      expect(buildResponsiveStyles(6, getCssStyle)).toStrictEqual({ width: 600 });
     });
 
     it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getJssStyle)).toStrictEqual({
+      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getCssStyle)).toStrictEqual({
         width: 600,
         '@media(min-width:480px)': { width: 300 },
         '@media(min-width:760px)': { width: 400 },
@@ -204,15 +204,15 @@ describe('buildResponsiveStyles()', () => {
     });
   });
 
-  describe('for complex getJssStyle', () => {
-    const getJssStyle = (val: number): JssStyle => ({ width: 100 * val, display: 'block' });
+  describe('for complex getCssStyle', () => {
+    const getCssStyle = (val: number): CssStyle => ({ width: 100 * val, display: 'block' });
 
     it('should return flat jss for simple type', () => {
-      expect(buildResponsiveStyles(6, getJssStyle)).toStrictEqual({ width: 600, display: 'block' });
+      expect(buildResponsiveStyles(6, getCssStyle)).toStrictEqual({ width: 600, display: 'block' });
     });
 
     it('should return nested jss for responsive type', () => {
-      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getJssStyle)).toStrictEqual({
+      expect(buildResponsiveStyles({ base: 6, xs: 3, s: 4, m: 5, l: 6, xl: 7 }, getCssStyle)).toStrictEqual({
         width: 600,
         display: 'block',
         '@media(min-width:480px)': { width: 300, display: 'block' },

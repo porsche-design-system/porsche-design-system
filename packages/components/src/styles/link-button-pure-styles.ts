@@ -1,8 +1,8 @@
-import type { JssStyle, Styles } from '../utils/css-serializer';
+import type { CssStyle, Styles } from '../utils/css-serializer';
 import type { ButtonPureColor, ButtonPureSize } from '../components/button-pure/button-pure-utils';
 import type { LinkPureColor, LinkPureSize } from '../components/link-pure/link-pure-utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName } from '../types';
-import { buildResponsiveStyles, type GetJssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
+import { buildResponsiveStyles, type GetCssStyleFunction, hasVisibleIcon, mergeDeep } from '../utils';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -28,7 +28,7 @@ import {
 import { colorMap, sizeMap } from './maps';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
-const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
+const getVisibilityCssStyle: GetCssStyleFunction = (hideLabel: boolean): CssStyle => {
   return hideLabel
     ? {
         whiteSpace: 'nowrap',
@@ -138,7 +138,7 @@ export const getLinkButtonPureStyles = (
           },
           label: mergeDeep(
             { zIndex: '1' }, // fix Firefox bug on :hover (#2583) & pure-link with nested anchor & hidden label (#3349)
-            buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
+            buildResponsiveStyles(hideLabel, getVisibilityCssStyle),
             buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
               order: alignLabelValue === 'start' ? -1 : 0,
             }))

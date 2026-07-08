@@ -2,15 +2,15 @@ import { ref, spacingStaticXs } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
 import {
-  getButtonImageJssStyle,
-  getButtonJssStyle,
-  getButtonLabelJssStyle,
-  getFilterJssStyle,
-  getIconJssStyle,
-  getOptionsJssStyle,
-  getPopoverJssStyle,
+  getButtonImageCssStyle,
+  getButtonCssStyle,
+  getButtonLabelCssStyle,
+  getFilterCssStyle,
+  getIconCssStyle,
+  getOptionsCssStyle,
+  getPopoverCssStyle,
   getPopoverKeyframesStyles,
-  getSelectedSlotJssStyle,
+  getSelectedSlotCssStyle,
 } from '../../../styles/select';
 import type { BreakpointCustomizable } from '../../../types';
 import { getCss } from '../../../utils';
@@ -49,13 +49,13 @@ export const getComponentCss = (
       ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
       button: {
-        ...getButtonJssStyle('select', isOpen, isDisabled, state, isCompact, cssVarInternalSelectScaling),
-        '& img': getButtonImageJssStyle,
-        '& span': getButtonLabelJssStyle,
+        ...getButtonCssStyle('select', isOpen, isDisabled, state, isCompact, cssVarInternalSelectScaling),
+        '& img': getButtonImageCssStyle,
+        '& span': getButtonLabelCssStyle,
       },
-      '[popover]': getPopoverJssStyle(isOpen, cssVarInternalSelectScaling, 40),
-      '::slotted([slot="filter"])': addImportantToEachRule(getFilterJssStyle(cssVarInternalSelectScaling)),
-      'slot[name="selected"]': getSelectedSlotJssStyle,
+      '[popover]': getPopoverCssStyle(isOpen, cssVarInternalSelectScaling, 40),
+      '::slotted([slot="filter"])': addImportantToEachRule(getFilterCssStyle(cssVarInternalSelectScaling)),
+      'slot[name="selected"]': getSelectedSlotCssStyle,
     },
     root: {
       display: 'grid',
@@ -63,9 +63,9 @@ export const getComponentCss = (
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + 1px * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
     },
-    filter: getFilterJssStyle(cssVarInternalSelectScaling),
-    options: getOptionsJssStyle(cssVarInternalSelectScaling),
-    icon: getIconJssStyle(isOpen),
+    filter: getFilterCssStyle(cssVarInternalSelectScaling),
+    options: getOptionsCssStyle(cssVarInternalSelectScaling),
+    icon: getIconCssStyle(isOpen),
     // .no-results / .sr-only
     ...getFunctionalComponentNoResultsOptionStyles('select-option', cssVarInternalSelectScaling),
     // .label / .required

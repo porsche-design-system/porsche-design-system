@@ -18,12 +18,12 @@ import {
   typescaleSm,
   typescaleXs,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -35,7 +35,7 @@ import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-
 
 const slottedAnchorSelector = `a[slot='${anchorSlot}']`;
 
-const anchorJssStyle: JssStyle = {
+const anchorCssStyle: CssStyle = {
   position: 'absolute',
   inset: 0,
   zIndex: 1, // necessary to be on top of img
@@ -46,7 +46,7 @@ const anchorJssStyle: JssStyle = {
   }),
 };
 
-const getMultilineEllipsis = (lineClamp: number): JssStyle => {
+const getMultilineEllipsis = (lineClamp: number): CssStyle => {
   return {
     display: '-webkit-box',
     WebkitLineClamp: lineClamp,
@@ -79,7 +79,7 @@ export const getComponentCss = (
         '::slotted': {
           ...(hasSlottedAnchor && {
             [`&(${slottedAnchorSelector})`]: {
-              ...anchorJssStyle,
+              ...anchorCssStyle,
               textIndent: '-999999px', // hide anchor label visually but still usable for a11y (only works in RTL-mode because of `overflow: hidden;` parent)
             },
             [`&(${slottedAnchorSelector}:focus-visible)`]: getFocusBaseStyles(),
@@ -121,7 +121,7 @@ export const getComponentCss = (
     },
     ...(!hasSlottedAnchor && {
       anchor: {
-        ...anchorJssStyle,
+        ...anchorCssStyle,
         '&:focus-visible': getFocusBaseStyles(),
       },
     }),
@@ -181,7 +181,7 @@ export const getComponentCss = (
       },
     }),
     ...(hasPriceOriginal && {
-      'sr-only': getHiddenTextJssStyle(),
+      'sr-only': getHiddenTextCssStyle(),
     }),
   });
 };

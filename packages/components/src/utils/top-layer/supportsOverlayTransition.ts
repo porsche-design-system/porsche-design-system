@@ -1,4 +1,4 @@
-import type { JssStyle } from '../css-serializer';
+import type { CssStyle } from '../css-serializer';
 
 // Single source of truth for the two CSS feature queries behind the "keep on #top-layer during fade-out" capability,
 // shared by the JS detection (`supportsOverlayTransition`) and the CSS `@supports` wrapper
@@ -29,9 +29,9 @@ export const supportsOverlayTransition = (): boolean =>
  * `#top-layer` during its fade-out (Chromium); other browsers defer the native hide instead (see
  * `createTopLayerController`).
  *
- * @param {JssStyle} style - The styles to apply only when the `overlay` transition is supported.
- * @returns {JssStyle} The `@supports`-wrapped styles.
+ * @param {CssStyle} style - The styles to apply only when the `overlay` transition is supported.
+ * @returns {CssStyle} The `@supports`-wrapped styles.
  */
-export const overlayTransitionSupportsQuery = (style: JssStyle): JssStyle => {
+export const overlayTransitionSupportsQuery = (style: CssStyle): CssStyle => {
   return { [`@supports (${overlayFeature}) and (${allowDiscreteFeature})`]: style };
 };

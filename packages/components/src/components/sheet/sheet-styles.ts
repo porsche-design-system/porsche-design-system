@@ -8,18 +8,18 @@ import {
 import { getCss } from '../../utils';
 import {
   dialogBorderRadius,
-  dialogGridJssStyle,
-  dialogHostJssStyle,
+  dialogGridCssStyle,
+  dialogHostCssStyle,
   dialogPaddingBottom,
   dialogPaddingInline,
   dialogPaddingTop,
-  getDialogColorJssStyle,
-  getDialogDismissButtonJssStyle,
-  getDialogTransitionJssStyle,
+  getDialogColorCssStyle,
+  getDialogDismissButtonCssStyle,
+  getDialogTransitionCssStyle,
   getFunctionalComponentDialogBaseStyles,
-  getScrollerJssStyle,
-  getSlotJssStyle,
-  getSlotMainJssStyle,
+  getScrollerCssStyle,
+  getSlotCssStyle,
+  getSlotMainCssStyle,
 } from '../common/dialog-base/dialog-base-styles';
 import type { SheetBackground } from './sheet-utils';
 
@@ -45,14 +45,14 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
           [`${cssVarRefPaddingTop}`]: dialogPaddingTop,
           [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
           [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
-          ...dialogHostJssStyle(background),
+          ...dialogHostCssStyle(background),
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       slot: {
-        ...getSlotJssStyle(),
-        '&:not([name])': getSlotMainJssStyle(),
+        ...getSlotCssStyle(),
+        '&:not([name])': getSlotMainCssStyle(),
         '&[name=header]': {
           gridColumn: '2/3',
           zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
@@ -60,11 +60,11 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
       },
       ...getFunctionalComponentDialogBaseStyles(isOpen, 'shading'),
     },
-    scroller: getScrollerJssStyle('fullscreen'),
+    scroller: getScrollerCssStyle('fullscreen'),
     sheet: {
-      ...dialogGridJssStyle(),
-      ...getDialogColorJssStyle(),
-      ...getDialogTransitionJssStyle(isOpen, '^'),
+      ...dialogGridCssStyle(),
+      ...getDialogColorCssStyle(),
+      ...getDialogTransitionCssStyle(isOpen, '^'),
       width: '100%',
       alignSelf: 'flex-end',
       marginBlockStart: ref(spacingFluidLg), // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
@@ -76,7 +76,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
       }),
     },
     ...(hasDismissButton && {
-      dismiss: getDialogDismissButtonJssStyle(),
+      dismiss: getDialogDismissButtonCssStyle(),
     }),
   });
 };

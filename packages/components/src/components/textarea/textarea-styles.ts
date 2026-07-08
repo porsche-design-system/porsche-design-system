@@ -1,7 +1,7 @@
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -21,7 +21,7 @@ import {
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-import { getUnitCounterJssStyle } from '../../styles/form-styles';
+import { getUnitCounterCssStyle } from '../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -119,13 +119,13 @@ export const getComponentCss = (
     },
     ...(hasCounter && {
       counter: {
-        ...getUnitCounterJssStyle(),
+        ...getUnitCounterCssStyle(),
         gridArea: '1/1',
         placeSelf: 'flex-end',
         marginInlineEnd: textareaPaddingInline,
         marginBottom: counterMarginBottom,
       },
-      'sr-only': getHiddenTextJssStyle(),
+      'sr-only': getHiddenTextCssStyle(),
     }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, false, hideLabel),

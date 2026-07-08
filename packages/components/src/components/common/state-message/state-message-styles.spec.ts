@@ -10,7 +10,7 @@ describe('getFunctionalComponentStateMessageStyles()', () => {
     ['none'],
     ['success'],
     ['error'],
-  ])('should return correct JssStyle for state: %s', async (...args) => {
+  ])('should return correct CssStyle for state: %s', async (...args) => {
     await validateCssAndMatchSnapshot(getCss(getFunctionalComponentStateMessageStyles(...args)));
   });
 });

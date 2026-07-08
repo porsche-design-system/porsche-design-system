@@ -1,5 +1,5 @@
-import { getHiddenTextJssStyle } from '../../styles';
-import { getUnitCounterJssStyle } from '../../styles/form-styles';
+import { getHiddenTextCssStyle } from '../../styles';
+import { getUnitCounterCssStyle } from '../../styles/form-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -25,8 +25,8 @@ export const getComponentCss = (
   return getCss({
     ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly),
     ...(counter && {
-      counter: getUnitCounterJssStyle(),
-      'sr-only': getHiddenTextJssStyle(),
+      counter: getUnitCounterCssStyle(),
+      'sr-only': getHiddenTextCssStyle(),
     }),
   });
 };

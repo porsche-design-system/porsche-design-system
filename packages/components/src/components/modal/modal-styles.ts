@@ -10,19 +10,19 @@ import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   dialogBorderRadius,
-  dialogGridJssStyle,
-  dialogHostJssStyle,
+  dialogGridCssStyle,
+  dialogHostCssStyle,
   dialogPaddingBottom,
   dialogPaddingInline,
   dialogPaddingTop,
-  getDialogColorJssStyle,
-  getDialogDismissButtonJssStyle,
-  getDialogTransitionJssStyle,
+  getDialogColorCssStyle,
+  getDialogDismissButtonCssStyle,
+  getDialogTransitionCssStyle,
   getFunctionalComponentDialogBaseStyles,
-  getScrollerJssStyle,
-  getSlotFooterJssStyle,
-  getSlotJssStyle,
-  getSlotMainJssStyle,
+  getScrollerCssStyle,
+  getSlotFooterCssStyle,
+  getSlotCssStyle,
+  getSlotMainCssStyle,
 } from '../common/dialog-base/dialog-base-styles';
 import type { ModalBackdrop, ModalBackground } from './modal-utils';
 
@@ -65,14 +65,14 @@ export const getComponentCss = (
           [`${cssVarRefPaddingTop}`]: dialogPaddingTop,
           [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
           [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
-          ...dialogHostJssStyle(background),
+          ...dialogHostCssStyle(background),
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       slot: {
-        ...getSlotJssStyle(),
-        '&:not([name])': getSlotMainJssStyle(),
+        ...getSlotCssStyle(),
+        '&:not([name])': getSlotMainCssStyle(),
         ...(hasHeader && {
           '&[name=header]': {
             gridColumn: '2/3',
@@ -80,16 +80,16 @@ export const getComponentCss = (
           },
         }),
         ...(hasFooter && {
-          '&[name=footer]': getSlotFooterJssStyle(),
+          '&[name=footer]': getSlotFooterCssStyle(),
         }),
       },
       ...getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
     },
-    scroller: getScrollerJssStyle('fullscreen'),
+    scroller: getScrollerCssStyle('fullscreen'),
     modal: {
-      ...dialogGridJssStyle(),
-      ...getDialogColorJssStyle(),
-      ...getDialogTransitionJssStyle(isOpen, '^'),
+      ...dialogGridCssStyle(),
+      ...getDialogColorCssStyle(),
+      ...getDialogTransitionCssStyle(isOpen, '^'),
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
         fullscreenValue
           ? {
@@ -117,7 +117,7 @@ export const getComponentCss = (
       ),
     },
     ...(hasDismissButton && {
-      dismiss: getDialogDismissButtonJssStyle(),
+      dismiss: getDialogDismissButtonCssStyle(),
     }),
   });
 };

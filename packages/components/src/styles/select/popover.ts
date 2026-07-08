@@ -1,4 +1,4 @@
-import type { JssStyle, Styles } from '../../utils/css-serializer';
+import type { CssStyle, Styles } from '../../utils/css-serializer';
 import { OPTION_LIST_SAFE_ZONE } from '../../utils';
 import { colorCanvas, colorContrastLow, durationSm, easeInOut, radiusXl, ref } from '@porsche-design-system/stylesheets';
 import { cssVariableAnimationDuration } from '../common-styles';
@@ -16,7 +16,7 @@ export const getPopoverKeyframesStyles: Styles = {
   },
 };
 
-export const getPopoverJssStyle = (isOpen: boolean, cssVarScalingName: string, optionHeight: 40 | 44): JssStyle => {
+export const getPopoverCssStyle = (isOpen: boolean, cssVarScalingName: string, optionHeight: 40 | 44): CssStyle => {
   const minHeightOptionList = `calc(${4.5 * (optionHeight + 8) + 6 + 2}px)`; // 4.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
 
   const padding = `calc(11.2px * (${ref(cssVarScalingName)} - 0.64285714) + 4px)`;

@@ -4,7 +4,7 @@ import {
   addImportantToRule,
   cssVariableAnimationDuration,
   forcedColorsMediaQuery,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   hostHiddenStyles,
 } from '../../styles';
 import { colorMap, sizeMap } from '../../styles/maps';
@@ -102,6 +102,6 @@ export const getComponentCss = (color: SpinnerColor, size: BreakpointCustomizabl
         },
       },
     },
-    'sr-only': getHiddenTextJssStyle(),
+    'sr-only': getHiddenTextCssStyle(),
   });
 };

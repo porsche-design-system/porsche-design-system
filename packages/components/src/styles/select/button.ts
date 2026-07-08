@@ -8,20 +8,20 @@ import {
   ref,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 import type { FormState } from '../../utils/form/form-state';
 import { getDisabledBaseStyles, getFocusBaseStyles, getTransition } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { hoverMediaQuery } from '../media-query/hover-media-query';
 
-export const getButtonJssStyle = (
+export const getButtonCssStyle = (
   componentName: 'select' | 'multi-select',
   isOpen: boolean,
   isDisabled: boolean,
   state: FormState,
   isCompact: boolean,
   cssVarScalingName: string
-): JssStyle => {
+): CssStyle => {
   const cssVarBackgroundColor = `--p-${componentName}-background-color`;
   const cssVarTextColor = `--p-${componentName}-text-color`;
   const cssVarBorderColor = `--p-${componentName}-border-color`;

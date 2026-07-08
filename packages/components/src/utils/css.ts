@@ -2,7 +2,7 @@ import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/emotio
 import type { TagName } from '@porsche-design-system/shared';
 import { addImportantToEachRule } from '../styles';
 import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
-import type { JssStyle, Styles } from './css-serializer';
+import type { CssStyle, Styles } from './css-serializer';
 import { getShadowRootHTMLElement } from './dom';
 import { hasPropValueChanged } from './has-prop-value-changed';
 import { getTagNameWithoutPrefix } from './tag-name';
@@ -83,11 +83,11 @@ export const doNothing = (): void => {
   hasPropValueChanged(1, 1); // to force into main chunk
 };
 
-export type GetJssStyleFunction = (value?: any) => JssStyle;
+export type GetCssStyleFunction = (value?: any) => CssStyle;
 
 export const buildResponsiveStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
-  getJssStyle: GetJssStyleFunction
+  getCssStyle: GetCssStyleFunction
 ): Styles => {
   const value = parseJSON(rawValue as any);
 
@@ -99,11 +99,11 @@ export const buildResponsiveStyles = <T>(
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            [getMediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
+            [getMediaQueryMin(breakpointValue as any)]: getCssStyle(value[breakpointValue]) as Styles,
           }),
-          getJssStyle(value.base) as Styles
+          getCssStyle(value.base) as Styles
         )
-    : (getJssStyle(value) as Styles);
+    : (getCssStyle(value) as Styles);
 };
 
 export const isObject = <T extends Record<string, any>>(obj: T): boolean =>

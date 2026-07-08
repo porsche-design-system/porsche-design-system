@@ -1,6 +1,6 @@
-import type { JssStyle } from '../utils/css-serializer';
+import type { CssStyle } from '../utils/css-serializer';
 
-export const getBannerPopoverResetStyles = (): JssStyle => {
+export const getBannerPopoverResetStyles = (): CssStyle => {
   return {
     position: 'fixed',
     margin: 0,

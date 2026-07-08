@@ -1,7 +1,7 @@
 import { ref } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 
-export const getOptionsJssStyle = (scalingVarName: string): JssStyle => {
+export const getOptionsCssStyle = (scalingVarName: string): CssStyle => {
   const gap = `calc(11.2px * (${ref(scalingVarName)} - 0.64285714) + 4px)`;
 
   return {

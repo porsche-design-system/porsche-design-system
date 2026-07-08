@@ -6,7 +6,7 @@ import {
   motionEasingOut,
 } from '@porsche-design-system/emotion';
 import { ref } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../../utils/css-serializer';
+import type { CssStyle } from '../../../utils/css-serializer';
 import { TOAST_Z_INDEX } from '../../../constants';
 import {
   addImportantToEachRule,
@@ -30,8 +30,8 @@ const duration =
     : ANIMATION_DURATION;
 
 export type KeyframesDirection = 'in' | 'out';
-export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssStyle): JssStyle => {
-  const insideStyle: JssStyle = { transform: 'translate3d(0,0,0)' };
+export const getKeyframes = (direction: KeyframesDirection, outsideStyle: CssStyle): CssStyle => {
+  const insideStyle: CssStyle = { transform: 'translate3d(0,0,0)' };
   return direction === 'in'
     ? {
         from: outsideStyle,
@@ -43,7 +43,7 @@ export const getKeyframes = (direction: KeyframesDirection, outsideStyle: JssSty
       };
 };
 
-export const getKeyframesMobile = (direction: KeyframesDirection, bottomVar: string): JssStyle =>
+export const getKeyframesMobile = (direction: KeyframesDirection, bottomVar: string): CssStyle =>
   getKeyframes(direction, {
     transform: `translate3d(0,calc(${ref(bottomVar)} + 100%),0)`, // space before and after "+" is crucial
   });

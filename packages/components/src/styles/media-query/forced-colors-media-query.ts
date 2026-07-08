@@ -1,5 +1,5 @@
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 
-export const forcedColorsMediaQuery = (style: JssStyle): JssStyle => {
+export const forcedColorsMediaQuery = (style: CssStyle): CssStyle => {
   return { '@media(forced-colors:active)': style };
 };

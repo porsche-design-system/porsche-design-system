@@ -6,12 +6,12 @@ import {
   gridWideOffset,
   motionDurationModerate,
 } from '@porsche-design-system/emotion';
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 import {
   addImportantToEachRule,
   addImportantToRule,
   getFocusBaseStyles,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   hostHiddenStyles,
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
@@ -102,7 +102,7 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
   },
 };
 
-const backfaceVisibilityJssStyle: JssStyle = {
+const backfaceVisibilityCssStyle: CssStyle = {
   backfaceVisibility: 'hidden',
   WebkitBackfaceVisibility: 'hidden',
 };
@@ -257,17 +257,17 @@ export const getComponentCss = (
         },
       },
       '&__list': {
-        ...backfaceVisibilityJssStyle,
+        ...backfaceVisibilityCssStyle,
         display: 'flex',
       },
       '&__slide': {
-        ...backfaceVisibilityJssStyle,
+        ...backfaceVisibilityCssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
         borderRadius: ref('--p-carousel-border-radius', ref(radius3Xl)),
         '&:focus-visible': getFocusBaseStyles(),
       },
-      '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
+      '&__sr': getHiddenTextCssStyle(), // appears in the DOM when sliding
       ...(isHeaderAlignCenter && {
         '&:not(.is-overflow) .splide__list': {
           justifyContent: 'center',

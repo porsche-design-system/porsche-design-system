@@ -9,7 +9,7 @@ import {
   spacingStaticXs,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../utils/css-serializer';
+import type { CssStyle } from '../utils/css-serializer';
 
 export const formElementLayeredGap = '9px'; // to have same distance vertically and horizontally for e.g. button/icon within form element
 // TODO: basic button/icon padding can already be set within style function instead of on component style level
@@ -25,7 +25,7 @@ export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: 1 
   return `calc(${formElementLayeredGap} + ${formElementPaddingHorizontal} / 2 + (${ref(leadingNormal)} + ${formButtonOrIconPadding} * 2) * ${buttonOrIconAmount})`;
 };
 
-export const getUnitCounterJssStyle = (): JssStyle => {
+export const getUnitCounterCssStyle = (): CssStyle => {
   return {
     pointerEvents: 'none',
     maxWidth: '100%',

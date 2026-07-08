@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../../utils/css-serializer';
+import type { CssStyle } from '../../../utils/css-serializer';
 import {
   addImportantToEachRule,
   getFocusBaseStyles,
@@ -19,12 +19,12 @@ import {
 import { getCss } from '../../../utils';
 import { cssVarColorPrimary } from '../drilldown/drilldown-styles';
 
-const anchorHoverJssStyle: JssStyle = {
+const anchorHoverCssStyle: CssStyle = {
   textDecorationColor: 'inherit',
 };
 
 export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): string => {
-  const anchorJssStyle: JssStyle = {
+  const anchorCssStyle: CssStyle = {
     all: 'unset',
     padding: `calc(${ref(spacingFluidSm)} + 2px) calc(${ref(spacingFluidSm)} + 4px)`, // aligned with link-pure
     margin: `-2px calc(${ref(spacingFluidSm)} * -1 - 4px)`, // aligned with link-pure
@@ -49,18 +49,18 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): s
       ...(hasSlottedAnchor
         ? {
             '::slotted': addImportantToEachRule({
-              '&(a)': anchorJssStyle,
+              '&(a)': anchorCssStyle,
               ...hoverMediaQuery({
-                '&(a:hover)': anchorHoverJssStyle,
+                '&(a:hover)': anchorHoverCssStyle,
               }),
               '&(a:focus-visible)': getFocusBaseStyles(),
             }),
           }
         : {
             a: {
-              ...anchorJssStyle,
+              ...anchorCssStyle,
               ...hoverMediaQuery({
-                '&:hover': anchorHoverJssStyle,
+                '&:hover': anchorHoverCssStyle,
               }),
               '&:focus-visible': getFocusBaseStyles(),
             },

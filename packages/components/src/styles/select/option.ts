@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 import {
   colorContrastHigh,
   colorFrosted,
@@ -13,10 +13,10 @@ import {
 import { getTransition } from '../common-styles';
 import { forcedColorsMediaQuery } from '../media-query/forced-colors-media-query';
 
-export const getOptionJssStyle = (
+export const getOptionCssStyle = (
   componentName: 'select-option' | 'multi-select-option',
   cssVarScalingName: string
-): JssStyle => {
+): CssStyle => {
   const gap = `calc(11.2px * (${ref(cssVarScalingName)} - 0.64285714) + 4px)`;
   const paddingBlock = `calc(11.2px * (${ref(cssVarScalingName)} - 0.64285714) + 4px)`;
   const paddingInline = `${ref(`--_p-${componentName}-b`, `calc(16.8px * (${ref(cssVarScalingName)} - 0.64285714) + 6px)`)} calc(16.8px * (${ref(cssVarScalingName)} - 0.64285714) + 6px)`;

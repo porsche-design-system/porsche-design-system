@@ -1,7 +1,7 @@
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 import { getTransition } from '../common-styles';
 
-export const getIconJssStyle = (isOpen: boolean): JssStyle => {
+export const getIconCssStyle = (isOpen: boolean): CssStyle => {
   return {
     marginInlineEnd: '-3px', // to temporarily align with multi-select and select-wrapper
     pointerEvents: 'none',

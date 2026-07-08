@@ -1,6 +1,6 @@
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 
-export const getSelectedSlotJssStyle: JssStyle = {
+export const getSelectedSlotCssStyle: CssStyle = {
   display: 'block',
   height: '100%',
   flexGrow: 1,

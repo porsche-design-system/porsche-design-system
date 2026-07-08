@@ -5,7 +5,7 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getButtonImageJssStyle, getOptionJssStyle } from '../../../styles/select';
+import { getButtonImageCssStyle, getOptionCssStyle } from '../../../styles/select';
 import { getCss } from '../../../utils';
 
 export const cssVarInternalSelectOptionScaling = '--_p-select-option-a';
@@ -23,11 +23,11 @@ export const getComponentCss = (isDisabled: boolean): string => {
           scrollMarginBlockEnd: `max(2px, ${ref(cssVarInternalSelectOptionScaling, 1)} * 6px)`, // Aligns option when list is scrolled by navigating with keyboard
           ...hostHiddenStyles,
         },
-        '::slotted(img)': getButtonImageJssStyle,
+        '::slotted(img)': getButtonImageCssStyle,
       }),
       ...preventFoucOfNestedElementsStyles,
     },
-    option: getOptionJssStyle('select-option', cssVarInternalSelectOptionScaling),
+    option: getOptionCssStyle('select-option', cssVarInternalSelectOptionScaling),
     icon: {
       marginInlineStart: 'auto',
     },

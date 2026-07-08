@@ -15,7 +15,7 @@ import {
   spacingStatic2Xs,
   spacingStaticMd,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle, Styles } from '../../../utils/css-serializer';
+import type { CssStyle, Styles } from '../../../utils/css-serializer';
 import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import { overlayTransitionSupportsQuery } from '../../../utils';
 
@@ -24,7 +24,7 @@ export type Backdrop = (typeof BACKDROPS)[number];
 
 const cssVarBackgroundColor = '--_p-dialog-a';
 
-export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle => {
+export const dialogHostCssStyle = (background: 'canvas' | 'surface'): CssStyle => {
   return {
     '--pds-internal-grid-outer-column': `calc(${ref(spacingFluidLg)} - ${gridGap})`,
     '--pds-internal-grid-margin': `calc(${ref(spacingFluidLg)} * -1)`,
@@ -37,13 +37,13 @@ export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle =
 export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backdrop: Backdrop = 'blur'): Styles => {
   return {
     dialog: {
-      ...dialogBackdropResetJssStyle,
-      ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
+      ...dialogBackdropResetCssStyle,
+      ...getDialogBackdropTransitionCssStyle(isVisible, backdrop),
     },
   };
 };
 
-const dialogBackdropResetJssStyle: JssStyle = {
+const dialogBackdropResetCssStyle: CssStyle = {
   all: 'unset',
   position: 'fixed',
   inset: 0,
@@ -57,7 +57,7 @@ const dialogBackdropResetJssStyle: JssStyle = {
   },
 };
 
-const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
+const getDialogBackdropTransitionCssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): CssStyle => {
   const isBackdropBlur = backdrop === 'blur';
 
   const duration = isVisible ? 'long' : 'moderate';
@@ -105,7 +105,7 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
   };
 };
 
-export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end'): JssStyle => {
+export const getScrollerCssStyle = (position: 'fullscreen' | 'start' | 'end'): CssStyle => {
   // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal surface or with Auto Dark Mode)
   const backgroundLight = 'rgba(255,255,255,.01)';
   const backgroundDark = 'rgba(0,0,0,.01)';
@@ -143,7 +143,7 @@ export const dialogPaddingTop = ref(spacingFluidMd);
 export const dialogPaddingBottom = `calc(${dialogBorderRadius} + ${ref(spacingFluidMd)})`;
 export const dialogPaddingInline = ref(spacingFluidLg);
 
-export const dialogGridJssStyle = (): JssStyle => {
+export const dialogGridCssStyle = (): CssStyle => {
   return {
     position: 'relative',
     display: 'grid',
@@ -161,14 +161,14 @@ export const dialogGridJssStyle = (): JssStyle => {
   };
 };
 
-export const getDialogColorJssStyle = (): JssStyle => {
+export const getDialogColorCssStyle = (): CssStyle => {
   return {
     color: ref(colorPrimary), // enables color inheritance for slots
     background: ref(cssVarBackgroundColor),
   };
 };
 
-export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>'): JssStyle => {
+export const getDialogTransitionCssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>'): CssStyle => {
   const duration = isVisible ? 'moderate' : 'short';
   const easing = isVisible ? 'in' : 'out';
 
@@ -191,7 +191,7 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
   };
 };
 
-export const getDialogDismissButtonJssStyle = (): JssStyle => {
+export const getDialogDismissButtonCssStyle = (): CssStyle => {
   return {
     gridArea: '1/3',
     zIndex: 5, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
@@ -204,7 +204,7 @@ export const getDialogDismissButtonJssStyle = (): JssStyle => {
   };
 };
 
-export const getSlotJssStyle = (): JssStyle => {
+export const getSlotCssStyle = (): CssStyle => {
   return {
     display: 'block',
     '&:first-of-type': {
@@ -213,7 +213,7 @@ export const getSlotJssStyle = (): JssStyle => {
   };
 };
 
-export const getSlotHeaderJssStyle = (): JssStyle => {
+export const getSlotHeaderCssStyle = (): CssStyle => {
   const paddingTop = dialogPaddingTop;
   const paddingBottom = ref(spacingStaticMd);
 
@@ -228,14 +228,14 @@ export const getSlotHeaderJssStyle = (): JssStyle => {
   };
 };
 
-export const getSlotMainJssStyle = (): JssStyle => {
+export const getSlotMainCssStyle = (): CssStyle => {
   return {
     gridColumn: '2/3',
     zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
   };
 };
 
-export const getSlotFooterJssStyle = (): JssStyle => {
+export const getSlotFooterCssStyle = (): CssStyle => {
   const paddingBlock = `calc(${dialogPaddingBottom} - ${dialogBorderRadius})`;
   const offset = `12 * ${ref(spacingStatic2Xs)}`;
 
@@ -260,7 +260,7 @@ export const getSlotFooterJssStyle = (): JssStyle => {
   };
 };
 
-export const getSlotSubFooterJssStyle = (): JssStyle => {
+export const getSlotSubFooterCssStyle = (): CssStyle => {
   return {
     gridColumn: '1/-1',
     zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)

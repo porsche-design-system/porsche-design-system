@@ -9,21 +9,21 @@ import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   dialogBorderRadius,
-  dialogGridJssStyle,
-  dialogHostJssStyle,
+  dialogGridCssStyle,
+  dialogHostCssStyle,
   dialogPaddingBottom,
   dialogPaddingInline,
   dialogPaddingTop,
-  getDialogColorJssStyle,
-  getDialogDismissButtonJssStyle,
-  getDialogTransitionJssStyle,
+  getDialogColorCssStyle,
+  getDialogDismissButtonCssStyle,
+  getDialogTransitionCssStyle,
   getFunctionalComponentDialogBaseStyles,
-  getScrollerJssStyle,
-  getSlotFooterJssStyle,
-  getSlotHeaderJssStyle,
-  getSlotJssStyle,
-  getSlotMainJssStyle,
-  getSlotSubFooterJssStyle,
+  getScrollerCssStyle,
+  getSlotFooterCssStyle,
+  getSlotHeaderCssStyle,
+  getSlotCssStyle,
+  getSlotMainCssStyle,
+  getSlotSubFooterCssStyle,
 } from '../common/dialog-base/dialog-base-styles';
 import type { FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 
@@ -70,17 +70,17 @@ export const getComponentCss = (
           [`${cssVarRefPaddingTop}`]: dialogPaddingTop,
           [`${cssVarRefPaddingBottom}`]: dialogPaddingBottom,
           [`${cssVarRefPaddingInline}`]: dialogPaddingInline,
-          ...dialogHostJssStyle(background),
+          ...dialogHostCssStyle(background),
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       slot: {
-        ...getSlotJssStyle(),
-        '&:not([name])': getSlotMainJssStyle(),
+        ...getSlotCssStyle(),
+        '&:not([name])': getSlotMainCssStyle(),
         ...(hasHeader && {
           '&[name=header]': {
-            ...getSlotHeaderJssStyle(),
+            ...getSlotHeaderCssStyle(),
             ...(isPositionStart
               ? {
                   borderStartEndRadius: dialogBorderRadius,
@@ -91,27 +91,27 @@ export const getComponentCss = (
           },
         }),
         ...(hasFooter && {
-          '&[name=footer]': getSlotFooterJssStyle(),
+          '&[name=footer]': getSlotFooterCssStyle(),
         }),
         ...(hasSubFooter && {
-          '&[name=sub-footer]': getSlotSubFooterJssStyle(),
+          '&[name=sub-footer]': getSlotSubFooterCssStyle(),
         }),
       },
       ...getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
     },
     scroller: {
-      ...getScrollerJssStyle(isPositionStart ? 'start' : 'end'),
+      ...getScrollerCssStyle(isPositionStart ? 'start' : 'end'),
       // compared to Modal, the transition is handled on the scroller to have correct stucked behaviour (visibility of drop shadow)
       // for sticky header area while transitioned
-      ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
+      ...getDialogTransitionCssStyle(isOpen, isPositionStart ? '>' : '<'),
       // Though this might be an accessibility issue, we don't want an outline to be rendered until we have a proper design solution
       '&:focus-visible': {
         outline: 'none',
       },
     },
     flyout: {
-      ...dialogGridJssStyle(),
-      ...getDialogColorJssStyle(),
+      ...dialogGridCssStyle(),
+      ...getDialogColorCssStyle(),
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
         fullscreenValue
           ? {
@@ -160,6 +160,6 @@ export const getComponentCss = (
         gridTemplateRows: hasHeader ? 'auto 1fr auto' : '1fr',
       }),
     },
-    dismiss: getDialogDismissButtonJssStyle(),
+    dismiss: getDialogDismissButtonCssStyle(),
   });
 };

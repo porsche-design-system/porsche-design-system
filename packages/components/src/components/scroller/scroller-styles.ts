@@ -1,4 +1,4 @@
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 import {
   addImportantToEachRule,
   cssVariableTransitionDuration,
@@ -48,7 +48,7 @@ const getScrollIndicatorStyles = (
   isSticky: boolean,
   hasScrollbar: boolean,
   isCompact: boolean
-): JssStyle => {
+): CssStyle => {
   const isPrev = direction === 'prev';
   const iconMask = `${isPrev ? iconPrev : iconNext} center/contain no-repeat`;
 

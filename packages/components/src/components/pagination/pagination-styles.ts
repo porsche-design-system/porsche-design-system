@@ -1,5 +1,5 @@
 import { getMediaQueryMax, getMediaQueryMin } from '@porsche-design-system/emotion';
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -29,12 +29,12 @@ import { getCss } from '../../utils';
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');
 
-const disabledCursorStyle: JssStyle = {
+const disabledCursorStyle: CssStyle = {
   cursor: 'default',
   pointerEvents: 'none', // prevents :hover (has no effect when forced), maybe we can remove it since CSS selectors already cover desired behavior
 };
 
-const hiddenStyle: JssStyle = { display: 'none' };
+const hiddenStyle: CssStyle = { display: 'none' };
 
 export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean): string => {
   return getCss({

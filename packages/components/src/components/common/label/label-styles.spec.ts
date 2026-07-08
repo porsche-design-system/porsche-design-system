@@ -16,7 +16,7 @@ describe('getLabelStyles()', () => {
     [false, false, false, { position: 'absolute' }, { padding: 0 }],
     [false, false, { base: true, xs: false, s: true, m: false, l: true, xl: false }, undefined, undefined],
   ])(
-    'should return correct css for isDisabled: %s, isLoading: %s, hideLabel: %o, additionalDefaultJssStyle: %o and additionalIsShownJssStyle: %o',
+    'should return correct css for isDisabled: %s, isLoading: %s, hideLabel: %o, additionalDefaultCssStyle: %o and additionalIsShownCssStyle: %o',
     async (...args) => {
       await validateCssAndMatchSnapshot(getCss(getFunctionalComponentLabelStyles(...args)));
     }

@@ -9,14 +9,14 @@ import {
   typescaleSm,
   typescaleXs,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle, Styles } from '../../../utils/css-serializer';
-import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextJssStyle, getTransition } from '../../../styles';
+import type { CssStyle, Styles } from '../../../utils/css-serializer';
+import { addImportantToEachRule, getDisabledBaseStyles, getHiddenTextCssStyle, getTransition } from '../../../styles';
 import { buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
 export const getFunctionalComponentLabelAfterStyles = (): Styles => {
-  const labelAfterStyles: JssStyle = {
+  const labelAfterStyles: CssStyle = {
     display: 'inline-block',
     verticalAlign: 'top',
     // The inline-start spacing is applied to the assigned elements via `::slotted(*)` (not to the `<slot>` box or via
@@ -51,18 +51,18 @@ export const getFunctionalComponentLabelStyles = (
   isDisabled: boolean,
   isLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
-  additionalDefaultJssStyle?: JssStyle,
-  additionalLabelWrapperJssStyle?: JssStyle,
-  additionalIsShownJssStyle?: JssStyle
+  additionalDefaultCssStyle?: CssStyle,
+  additionalLabelWrapperCssStyle?: CssStyle,
+  additionalIsShownCssStyle?: CssStyle
 ): Styles => {
   const isDisabledOrLoading = isDisabled || isLoading;
   return {
     'label-wrapper': {
       ...buildResponsiveStyles(hideLabel, (isHidden: boolean) => ({
         ...(!isHidden && { minWidth: 'fit-content' }), // ensures label contents don't shrink to zero in grid containers
-        ...getHiddenTextJssStyle(isHidden, additionalIsShownJssStyle),
+        ...getHiddenTextCssStyle(isHidden, additionalIsShownCssStyle),
       })),
-      ...additionalLabelWrapperJssStyle,
+      ...additionalLabelWrapperCssStyle,
     },
     label: {
       font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
@@ -85,7 +85,7 @@ export const getFunctionalComponentLabelStyles = (
         fontSize: ref(typescaleXs),
         color: ref(colorContrastHigh),
         ...buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, { marginTop: `calc(-1 * ${ref(spacingStaticXs)})` })
+          getHiddenTextCssStyle(isHidden, { marginTop: `calc(-1 * ${ref(spacingStaticXs)})` })
         ),
         marginTop: `calc(-1 * ${ref(spacingStaticXs)})`,
       },
@@ -94,7 +94,7 @@ export const getFunctionalComponentLabelStyles = (
           display: 'inline',
         }),
       },
-      ...additionalDefaultJssStyle,
+      ...additionalDefaultCssStyle,
     },
     // .required
     ...getFunctionalComponentRequiredStyles(),

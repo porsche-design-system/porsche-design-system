@@ -15,7 +15,7 @@ exports[`addImportantToEachRule() > should add !important to each rule 1`] = `
 }
 `;
 
-exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: false and shownStyles: { width: 'fit-content' } 1`] = `
+exports[`getHiddenTextStyles() > should return correct CssStyle for isHidden: false and shownStyles: { width: 'fit-content' } 1`] = `
 {
   "clip": "auto",
   "height": "auto",
@@ -28,7 +28,7 @@ exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: fa
 }
 `;
 
-exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: false and shownStyles: undefined 1`] = `
+exports[`getHiddenTextStyles() > should return correct CssStyle for isHidden: false and shownStyles: undefined 1`] = `
 {
   "clip": "auto",
   "height": "auto",
@@ -41,7 +41,7 @@ exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: fa
 }
 `;
 
-exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: true and shownStyles: { width: 'fit-content' } 1`] = `
+exports[`getHiddenTextStyles() > should return correct CssStyle for isHidden: true and shownStyles: { width: 'fit-content' } 1`] = `
 {
   "clip": "rect(0,0,0,0)",
   "height": "1px",
@@ -54,7 +54,7 @@ exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: tr
 }
 `;
 
-exports[`getHiddenTextStyles() > should return correct JssStyle for isHidden: true and shownStyles: undefined 1`] = `
+exports[`getHiddenTextStyles() > should return correct CssStyle for isHidden: true and shownStyles: undefined 1`] = `
 {
   "clip": "rect(0,0,0,0)",
   "height": "1px",

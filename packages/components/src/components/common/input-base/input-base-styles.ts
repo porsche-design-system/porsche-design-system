@@ -1,4 +1,4 @@
-import type { JssStyle, Styles } from '../../../utils/css-serializer';
+import type { CssStyle, Styles } from '../../../utils/css-serializer';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
@@ -47,8 +47,8 @@ export const getFunctionalComponentInputBaseStyles = (
   state: FormState,
   isCompact: boolean,
   readOnly: boolean,
-  additionalInputJssStyle?: JssStyle,
-  additionalHostJssStyle?: JssStyle
+  additionalInputCssStyle?: CssStyle,
+  additionalHostCssStyle?: CssStyle
 ): Styles => {
   const wrapperBorderWidth = '1px';
   const wrapperHeight = `calc(${ref(cssVarInternalInputBaseScaling)} * 3.5rem)`;
@@ -74,7 +74,7 @@ export const getFunctionalComponentInputBaseStyles = (
           direction: 'rtl',
           textAlign: 'end',
         },
-        ...additionalHostJssStyle,
+        ...additionalHostCssStyle,
       },
       ...getFunctionalComponentLabelAfterStyles(),
       ...preventFoucOfNestedElementsStyles,
@@ -87,7 +87,7 @@ export const getFunctionalComponentInputBaseStyles = (
         height: '100%',
         font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / calc(${ref(leadingNormal)} + 6px) ${ref(fontPorscheNext)}`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         textOverflow: 'ellipsis',
-        ...additionalInputJssStyle,
+        ...additionalInputCssStyle,
       },
     },
     root: {

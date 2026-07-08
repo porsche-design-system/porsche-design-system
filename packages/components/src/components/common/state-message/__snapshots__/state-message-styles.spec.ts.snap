@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct CssStyle for state: error 1`] = `
 ".message {
   display: flex;
   gap: var(--p-spacing-static-xs);
@@ -20,7 +20,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 "
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: error 2`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct CssStyle for state: error 2`] = `
 ".message {
   display: flex;
   gap: var(--p-spacing-static-xs);
@@ -40,7 +40,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 "
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct CssStyle for state: none 1`] = `
 ".message {
   display: flex;
   gap: var(--p-spacing-static-xs);
@@ -59,7 +59,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 "
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: none 2`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct CssStyle for state: none 2`] = `
 ".message {
   display: flex;
   gap: var(--p-spacing-static-xs);
@@ -78,7 +78,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 "
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 1`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct CssStyle for state: success 1`] = `
 ".message {
   display: flex;
   gap: var(--p-spacing-static-xs);
@@ -98,7 +98,7 @@ exports[`getFunctionalComponentStateMessageStyles() > should return correct JssS
 "
 `;
 
-exports[`getFunctionalComponentStateMessageStyles() > should return correct JssStyle for state: success 2`] = `
+exports[`getFunctionalComponentStateMessageStyles() > should return correct CssStyle for state: success 2`] = `
 ".message {
   display: flex;
   gap: var(--p-spacing-static-xs);

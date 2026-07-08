@@ -1,9 +1,9 @@
 import type { PropertiesHyphen } from 'csstype';
-import type { JssStyle } from '../utils/css-serializer';
+import type { CssStyle } from '../utils/css-serializer';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   getTransition,
   type MotionDurationKey,
   type motionEasingMap,
@@ -72,7 +72,7 @@ describe('addImportantToRule()', () => {
 });
 
 describe('addImportantToEachRule()', () => {
-  const input: JssStyle = {
+  const input: CssStyle = {
     display: 'block',
     color: 'red',
     '&:hover': {
@@ -96,12 +96,12 @@ describe('addImportantToEachRule()', () => {
 });
 
 describe('getHiddenTextStyles()', () => {
-  it.each<[boolean, JssStyle]>([
+  it.each<[boolean, CssStyle]>([
     [true, undefined],
     [false, undefined],
     [true, { width: 'fit-content' }],
     [false, { width: 'fit-content' }],
-  ])('should return correct JssStyle for isHidden: %s and shownStyles: %s', (isHidden, shownStyles) => {
-    expect(getHiddenTextJssStyle(isHidden, shownStyles)).toMatchSnapshot();
+  ])('should return correct CssStyle for isHidden: %s and shownStyles: %s', (isHidden, shownStyles) => {
+    expect(getHiddenTextCssStyle(isHidden, shownStyles)).toMatchSnapshot();
   });
 });

@@ -1,10 +1,10 @@
-import type { JssStyle } from '../utils/css-serializer';
-import { getHiddenTextJssStyle } from '.';
+import type { CssStyle } from '../utils/css-serializer';
+import { getHiddenTextCssStyle } from '.';
 
-export const getNoResultsOptionJssStyle = (): JssStyle => ({
+export const getNoResultsOptionCssStyle = (): CssStyle => ({
   '&[role=option]': {
     cursor: 'not-allowed',
   },
   // TODO: shouldn't be used here, instead use sr-only functional component and style
-  '&__sr': getHiddenTextJssStyle(),
+  '&__sr': getHiddenTextCssStyle(),
 });

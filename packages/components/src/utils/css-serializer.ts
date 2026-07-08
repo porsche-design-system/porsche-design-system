@@ -11,9 +11,9 @@ import { compile, serialize, stringify } from 'stylis';
 // number, an array of them (CSS fallback values), or another nested style object.
 // Kept loose (not strict CSS types): property keys and selector keys are both just strings, so TypeScript
 // can't tell them apart or catch typos here. Same trade-off the old jss types had.
-type JssStyleValue = string | number | (string | number)[] | null | false | undefined;
-export type JssStyle = { [key: string]: JssStyleValue | JssStyle };
-export type Styles<_Name = string, _Data = unknown, _Theme = undefined> = JssStyle;
+type CssStyleValue = string | number | (string | number)[] | null | false | undefined;
+export type CssStyle = { [key: string]: CssStyleValue | CssStyle };
+export type Styles<_Name = string, _Data = unknown, _Theme = undefined> = CssStyle;
 
 // camelCase -> kebab-case, e.g. `marginLeft` -> `margin-left`. CSS custom properties
 // (starting with `--`) are left untouched.

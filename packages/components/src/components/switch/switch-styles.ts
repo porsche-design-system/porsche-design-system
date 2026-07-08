@@ -17,7 +17,7 @@ import {
   forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -141,7 +141,7 @@ export const getComponentCss = (
             order: alignLabelValue === 'start' ? -1 : 0,
           })),
           buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-            getHiddenTextJssStyle(isHidden, {
+            getHiddenTextCssStyle(isHidden, {
               paddingTop: labelPaddingTop,
             })
           )

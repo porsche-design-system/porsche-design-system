@@ -3,7 +3,7 @@ import { getFunctionalComponentLoadingMessageStyles } from './loading-message-st
 import { getCss } from '../../../utils';
 
 describe('getFunctionalComponentLoadingMessageStyles()', () => {
-  it('should return correct JssStyle', async () => {
+  it('should return correct CssStyle', async () => {
     expect(await format(getCss(getFunctionalComponentLoadingMessageStyles()), { parser: 'css' })).toMatchSnapshot();
   });
 });

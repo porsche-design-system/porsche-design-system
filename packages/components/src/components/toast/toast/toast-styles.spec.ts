@@ -5,7 +5,7 @@ describe('getKeyframesMobile()', () => {
   it.each<[KeyframesDirection, string]>([
     ['in', '--_p-toast-a'],
     ['out', '--_p-toast-a'],
-  ])('should return correct JssStyle for direction: %s and bottomVar: %s', (direction, bottomVar) => {
+  ])('should return correct CssStyle for direction: %s and bottomVar: %s', (direction, bottomVar) => {
     expect(getKeyframesMobile(direction, bottomVar)).toMatchSnapshot();
   });
 });

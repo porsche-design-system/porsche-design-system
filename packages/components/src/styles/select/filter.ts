@@ -1,7 +1,7 @@
 import { colorCanvas, ref } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../utils/css-serializer';
+import type { CssStyle } from '../../utils/css-serializer';
 
-export const getFilterJssStyle = (scalingVarName: string): JssStyle => {
+export const getFilterCssStyle = (scalingVarName: string): CssStyle => {
   const padding = `calc(11.2px * (${ref(scalingVarName)} - 0.64285714) + 4px)`;
   const margin = `calc(${padding} * -1)`;
   const top = margin;

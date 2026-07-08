@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, additionalDefaultCssStyle: undefined and additionalIsShownCssStyle: undefined 1`] = `
 ".label-wrapper {
   position: absolute;
   width: 1px;
@@ -162,7 +162,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultCssStyle: { position: 'absolute' } and additionalIsShownCssStyle: { padding: +0 } 1`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;
@@ -210,7 +210,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultJssStyle: { position: 'absolute' } and additionalIsShownJssStyle: { padding: +0 } 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultCssStyle: { position: 'absolute' } and additionalIsShownCssStyle: { padding: +0 } 2`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;
@@ -258,7 +258,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultCssStyle: undefined and additionalIsShownCssStyle: undefined 1`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;
@@ -305,7 +305,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: false, additionalDefaultCssStyle: undefined and additionalIsShownCssStyle: undefined 2`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;
@@ -352,7 +352,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: true, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: true, additionalDefaultCssStyle: undefined and additionalIsShownCssStyle: undefined 1`] = `
 ".label-wrapper {
   position: absolute;
   width: 1px;
@@ -398,7 +398,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: true, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: false, hideLabel: true, additionalDefaultCssStyle: undefined and additionalIsShownCssStyle: undefined 2`] = `
 ".label-wrapper {
   position: absolute;
   width: 1px;
@@ -444,7 +444,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: true, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: true, hideLabel: false, additionalDefaultCssStyle: undefined and additionalIsShownCssStyle: undefined 1`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;
@@ -492,7 +492,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: true, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: false, isLoading: true, hideLabel: false, additionalDefaultCssStyle: undefined and additionalIsShownCssStyle: undefined 2`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;
@@ -540,7 +540,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: false, isL
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: true, isLoading: false, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 1`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: true, isLoading: false, hideLabel: false, additionalDefaultCssStyle: undefined and additionalIsShownCssStyle: undefined 1`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;
@@ -595,7 +595,7 @@ exports[`getLabelStyles() > should return correct css for isDisabled: true, isLo
 "
 `;
 
-exports[`getLabelStyles() > should return correct css for isDisabled: true, isLoading: false, hideLabel: false, additionalDefaultJssStyle: undefined and additionalIsShownJssStyle: undefined 2`] = `
+exports[`getLabelStyles() > should return correct css for isDisabled: true, isLoading: false, hideLabel: false, additionalDefaultCssStyle: undefined and additionalIsShownCssStyle: undefined 2`] = `
 ".label-wrapper {
   min-width: fit-content;
   position: static;

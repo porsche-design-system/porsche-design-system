@@ -2,7 +2,7 @@ import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -85,6 +85,6 @@ export const getComponentCss = (hasLabel: boolean, isCompact: boolean): string =
       transition: getTransition('background-color'),
       borderRadius: ref(radiusFull),
     },
-    'sr-only': getHiddenTextJssStyle(),
+    'sr-only': getHiddenTextCssStyle(),
   });
 };

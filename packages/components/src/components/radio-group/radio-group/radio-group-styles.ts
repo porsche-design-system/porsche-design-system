@@ -1,15 +1,15 @@
 import { ref, spacingStaticXs } from '@porsche-design-system/stylesheets';
-import type { JssStyle } from '../../../utils/css-serializer';
+import type { CssStyle } from '../../../utils/css-serializer';
 import {
   addImportantToEachRule,
   getDisabledBaseStyles,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import type { GroupDirection } from '../../../styles/group-direction-styles';
 import type { BreakpointCustomizable } from '../../../types';
-import { buildResponsiveStyles, type GetJssStyleFunction, getCss } from '../../../utils';
+import { buildResponsiveStyles, type GetCssStyleFunction, getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import {
   getFunctionalComponentLabelAfterStyles,
@@ -21,7 +21,7 @@ import { cssVarInternalRadioGroupOptionScaling } from '../radio-group-option/rad
 
 export const cssVarInternalRadioGroupScaling = '--_p-radio-group-a';
 
-const groupRadioGroupDirectionJssStyles: Record<GroupDirection, JssStyle> = {
+const groupRadioGroupDirectionCssStyles: Record<GroupDirection, CssStyle> = {
   column: {
     flexFlow: 'column nowrap',
     alignItems: 'stretch',
@@ -32,8 +32,8 @@ const groupRadioGroupDirectionJssStyles: Record<GroupDirection, JssStyle> = {
   },
 };
 
-const getRadioGroupDirectionJssStyles: GetJssStyleFunction = (direction: GroupDirection): JssStyle => {
-  return groupRadioGroupDirectionJssStyles[direction];
+const getRadioGroupDirectionCssStyles: GetCssStyleFunction = (direction: GroupDirection): CssStyle => {
+  return groupRadioGroupDirectionCssStyles[direction];
 };
 
 export const getComponentCss = (
@@ -74,7 +74,7 @@ export const getComponentCss = (
       alignItems: 'start',
       position: 'relative',
       display: 'flex',
-      ...buildResponsiveStyles(direction, getRadioGroupDirectionJssStyles),
+      ...buildResponsiveStyles(direction, getRadioGroupDirectionCssStyles),
       columnGap,
       rowGap,
     },
@@ -95,6 +95,6 @@ export const getComponentCss = (
     ...getFunctionalComponentStateMessageStyles(state),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
-    'sr-only': getHiddenTextJssStyle(),
+    'sr-only': getHiddenTextCssStyle(),
   });
 };

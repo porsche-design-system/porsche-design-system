@@ -11,7 +11,7 @@ import {
   ref,
 } from '@porsche-design-system/stylesheets';
 import type { PropertiesHyphen } from 'csstype';
-import type { JssStyle } from '../utils/css-serializer';
+import type { CssStyle } from '../utils/css-serializer';
 import { alphaDisabled } from './alpha-disabled';
 import { forcedColorsMediaQuery } from './media-query/forced-colors-media-query';
 
@@ -47,7 +47,7 @@ export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
  */
 export const SCALING_BASE_VALUE = '16px';
 
-export const dismissButtonJssStyle: JssStyle = {
+export const dismissButtonCssStyle: CssStyle = {
   '--_p-button-a': 0.5,
 };
 
@@ -75,16 +75,16 @@ export const getTransition = (
 
 export const addImportantToRule = (value: any): string => `${value} !important`;
 
-export const addImportantToEachRule = (input: JssStyle): JssStyle => {
+export const addImportantToEachRule = (input: CssStyle): CssStyle => {
   return Object.entries(input).reduce(
     (result, [key, value]) =>
       value === null
         ? result
         : ((result[key] =
             // biome-ignore lint/complexity/noCommaOperator: to be refactored
-            typeof value === 'object' ? addImportantToEachRule(value as JssStyle) : addImportantToRule(value)),
+            typeof value === 'object' ? addImportantToEachRule(value as CssStyle) : addImportantToRule(value)),
           result),
-    {} as JssStyle
+    {} as CssStyle
   );
 };
 
@@ -98,7 +98,7 @@ export const getFocusBaseStyles = (offset: number = 2) => {
   } as const;
 };
 
-export const getDisabledBaseStyles = (addForcedColorsDisabledStyles?: JssStyle) => {
+export const getDisabledBaseStyles = (addForcedColorsDisabledStyles?: CssStyle) => {
   return {
     opacity: alphaDisabled,
     ...forcedColorsMediaQuery({
@@ -112,10 +112,10 @@ export const getDisabledBaseStyles = (addForcedColorsDisabledStyles?: JssStyle) 
 /**
  * Returns a JSS style object that can be used to visually hide text in the browser, while still allowing it to be accessed by screen readers.
  * @param {boolean} isHidden - A boolean value indicating whether the text should be hidden or not. Defaults to true.
- * @param {JssStyle} isShownJssStyle - Additional styles applied when isHidden = false
- * @returns {JssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownJssStyle.
+ * @param {CssStyle} isShownCssStyle - Additional styles applied when isHidden = false
+ * @returns {CssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownCssStyle.
  */
-export const getHiddenTextJssStyle = (isHidden: boolean = true, isShownJssStyle?: JssStyle): JssStyle => {
+export const getHiddenTextCssStyle = (isHidden: boolean = true, isShownCssStyle?: CssStyle): CssStyle => {
   return isHidden
     ? {
         position: 'absolute',
@@ -136,6 +136,6 @@ export const getHiddenTextJssStyle = (isHidden: boolean = true, isShownJssStyle?
         overflow: 'visible',
         clip: 'auto',
         whiteSpace: 'normal',
-        ...isShownJssStyle,
+        ...isShownCssStyle,
       };
 };

@@ -3,7 +3,7 @@ import { addImportantToEachRule, getDisabledBaseStyles, hostHiddenStyles } from 
 import { getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';
 import { cssVarInternalCheckboxScaling } from '../../../styles/checkbox/checkbox-css-vars';
-import { getOptionJssStyle } from '../../../styles/select';
+import { getOptionCssStyle } from '../../../styles/select';
 import { getCss, mergeDeep } from '../../../utils';
 
 export const cssVarInternalMultiSelectOptionScaling = '--_p-multi-select-option-a';
@@ -29,7 +29,7 @@ export const getComponentCss = (isDisabled: boolean, selected: boolean): string 
         paddingTop: labelPaddingTop,
       },
     },
-    option: getOptionJssStyle('multi-select-option', cssVarInternalMultiSelectOptionScaling),
+    option: getOptionCssStyle('multi-select-option', cssVarInternalMultiSelectOptionScaling),
     checkbox: mergeDeep(
       getCheckboxBaseStyles(isDisabled, false, true, 'none'),
       selected ? getCheckboxCheckedBaseStyles(false, 'none') : {},

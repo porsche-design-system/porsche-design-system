@@ -1,10 +1,10 @@
-import type { JssStyle } from '../utils/css-serializer';
-import type { GetJssStyleFunction } from '../utils';
+import type { CssStyle } from '../utils/css-serializer';
+import type { GetCssStyleFunction } from '../utils';
 
 export const GROUP_DIRECTIONS = ['row', 'column'] as const;
 export type GroupDirection = (typeof GROUP_DIRECTIONS)[number];
 
-const groupDirectionJssStyles: Record<GroupDirection, JssStyle> = {
+const groupDirectionCssStyles: Record<GroupDirection, CssStyle> = {
   column: {
     flexFlow: 'column nowrap',
     alignItems: 'stretch',
@@ -15,6 +15,6 @@ const groupDirectionJssStyles: Record<GroupDirection, JssStyle> = {
   },
 };
 
-export const getGroupDirectionJssStyles: GetJssStyleFunction = (direction: GroupDirection): JssStyle => {
-  return groupDirectionJssStyles[direction];
+export const getGroupDirectionCssStyles: GetCssStyleFunction = (direction: GroupDirection): CssStyle => {
+  return groupDirectionCssStyles[direction];
 };

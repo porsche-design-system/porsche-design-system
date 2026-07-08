@@ -1,11 +1,11 @@
 import { spacingStaticSm, spacingStaticXs } from '@porsche-design-system/tokens';
-import type { JssStyle } from '../../../utils/css-serializer';
+import type { CssStyle } from '../../../utils/css-serializer';
 import {
   addImportantToEachRule,
   forcedColorsMediaQuery,
   getDisabledBaseStyles,
   getFocusBaseStyles,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -115,11 +115,11 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
                 backgroundColor: ref(colorCanvas),
               },
             }),
-            {} as JssStyle
+            {} as CssStyle
           ),
         },
       }),
     },
-    'sr-only': getHiddenTextJssStyle(),
+    'sr-only': getHiddenTextCssStyle(),
   });
 };

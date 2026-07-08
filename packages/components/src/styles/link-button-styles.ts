@@ -6,7 +6,7 @@ import {
   addImportantToRule,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
-  getHiddenTextJssStyle,
+  getHiddenTextCssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
@@ -136,7 +136,7 @@ export const getLinkButtonStyles = (
           },
         })),
     },
-    label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
+    label: buildResponsiveStyles(hideLabel, getHiddenTextCssStyle),
     ...(hasIcon && {
       icon: {
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
