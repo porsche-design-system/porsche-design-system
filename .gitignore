@@ -26,6 +26,9 @@ ort/
 # Cache
 .npm
 
+# Turbo-Spec engine run-state (session traces, worktrees) written into the workdir
+.sessions/
+
 
 # dotenv environment variables file
 .env
