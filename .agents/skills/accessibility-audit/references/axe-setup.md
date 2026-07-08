@@ -2,7 +2,7 @@
 
 ## Mandatory: local axe injection (never CDN on CSP sites)
 
-Many applications block third-party script injection via Content-Security-Policy. **Do not** load axe from a CDN when auditing PDS storefront or production-like apps.
+Many applications block third-party script injection via Content-Security-Policy. **Do not** load axe from a CDN when auditing apps with strict CSP or production-like environments.
 
 ### Option A — `@axe-core/playwright` (recommended in Node/CI)
 
@@ -36,7 +36,7 @@ const results = await page.evaluate(async () => {
 });
 ```
 
-If `node_modules` is not at repo root, resolve path from the app's package directory.
+If `node_modules` is not at the project root, resolve path from the application's package directory.
 
 ### Option C — `fs.readFileSync` + `page.evaluate` (MCP without file path support)
 

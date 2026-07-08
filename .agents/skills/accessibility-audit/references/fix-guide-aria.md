@@ -9,7 +9,7 @@ axe rules: `aria-*`, `button-name`, `link-name`, `aria-allowed-attr`, `aria-vali
 1. Pass ARIA via the component `aria` prop object — never `aria-*` on the host element
 2. Icon-only controls need `aria-label`, `aria` prop or visible text (with `hide-label` if needed)
 3. Do not add ARIA that conflicts with native semantics
-4. Check component **Accessibility** tab on the PDS storefront (e.g. [Button accessibility](https://designsystem.porsche.com/v4/components/button/accessibility/))
+4. Check each component's **Accessibility** tab in the [PDS documentation](https://designsystem.porsche.com/v4/components/button/accessibility/) (e.g. Button)
 
 ## Fix patterns
 

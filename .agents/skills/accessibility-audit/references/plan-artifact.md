@@ -19,7 +19,8 @@ Write this file after triage (step 4) to make audits **resumable** across agent 
     "urls": ["/", "/checkout"],
     "viewports": [320, 768],
     "themes": ["light", "dark"],
-    "exclusions": ["third-party chat widget"]
+    "exclusions": ["third-party chat widget"],
+    "pdsPrefix": "sample-prefix"
   },
   "findings": [
     {
@@ -56,6 +57,8 @@ Write this file after triage (step 4) to make audits **resumable** across agent 
 }
 ```
 
+Optional `scope.pdsPrefix` — team PDS custom element prefix (e.g. `sample-prefix` for `sample-prefix-p-button`). Used for static grep in step 1; runtime structure and axe scans do not require it.
+
 ## Status values
 
 | Status | Meaning |
@@ -72,7 +75,7 @@ Write this file after triage (step 4) to make audits **resumable** across agent 
 2. Before each fix → set `in_progress`
 3. After re-scan confirms → set `fixed` with `updatedAt`
 4. On resume → read plan; continue with `open` / `in_progress` items
-5. On report (step 8) → fill `references/report-template.md`, save as `accessibility-audit-report-{date}.md` at repo root
+5. On report (step 8) → fill `references/report-template.md`, save as `accessibility-audit-report-{date}.md` in the project working directory (unless the user specifies another path)
 
 ## Severity mapping (axe impact)
 
