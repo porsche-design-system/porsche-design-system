@@ -4,8 +4,16 @@
  * way — divergent per-module copies previously produced inconsistently escaped tables.
  */
 
-/** Collapse whitespace and escape table-breaking pipes for a single markdown cell. */
-export const escapeCell = (text: string): string => text.replace(/\s+/g, ' ').trim().replace(/\|/g, '\\|');
+/**
+ * Collapse whitespace and escape table-breaking characters for a single markdown cell. Backslashes are
+ * escaped before pipes so an escaped pipe already in the text (`\|`) is not misread as a live delimiter.
+ */
+export const escapeCell = (text: string): string =>
+  text
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/\\/g, '\\\\')
+    .replace(/\|/g, '\\|');
 
 /**
  * Drop a redundant leading top-level heading. MDX sections often open with a

@@ -26,48 +26,50 @@ describe('writeStyleReferences', () => {
 
   const read = (relativePath: string): string => fs.readFileSync(tree.resolve(relativePath), 'utf-8');
 
-  it('writes the styling-solution and stylesheets references into the tree', async () => {
-    const written = await writeStyleReferences(tree);
+  it('writes exactly the styling-solution and stylesheets references into the tree', () => {
+    const written = writeStyleReferences(tree, 'js');
 
-    expect(written).toContain('references/styles/tailwindcss.md');
-    expect(written).toContain('references/styles/scss.md');
-    expect(written).toContain('references/styles/vanilla-extract.md');
-    expect(written).toContain('references/styles/emotion.md');
-    expect(written).toContain('references/stylesheets.md');
-    expect(written).toMatchSnapshot();
-  });
-
-  // Cross-check: the aggregated markdown is the imported serializers' output verbatim
-  // (same seam the styles packages' own skill specs lock).
-  it('writes each serializer output verbatim', async () => {
-    await writeStyleReferences(tree);
-
-    expect(read('references/styles/tailwindcss.md')).toBe(getTailwindcssSkill());
-    expect(read('references/styles/scss.md')).toBe(getScssSkill());
-    expect(read('references/styles/vanilla-extract.md')).toBe(getVanillaExtractSkill());
-    expect(read('references/styles/emotion.md')).toBe(getEmotionSkill());
-    expect(read('references/stylesheets.md')).toBe(getStylesheetsSkill());
-  });
-
-  it('ships the generated style assets alongside the markdown', async () => {
-    const written = await writeStyleReferences(tree);
-
-    // Tailwind ships its generated theme stylesheet next to tailwindcss.md.
-    expect(written).toContain('references/styles/index.css');
-    expect(fs.existsSync(tree.resolve('references/styles/index.css'))).toBe(true);
-    expect(read('references/styles/index.css')).toContain('@theme');
-
-    // SCSS ships its meta-generated partials, all re-exported from _index.scss.
-    expect(written).toContain('references/styles/_index.scss');
-    expect(written.some((p) => /^references\/styles\/_color\.scss$/.test(p))).toBe(true);
-
-    // No serializer .md leaks in as an asset — markdown comes from the serializer only.
-    expect(written.filter((p) => p.endsWith('.md'))).toEqual([
+    expect(written).toEqual([
       'references/styles/tailwindcss.md',
       'references/styles/scss.md',
       'references/styles/vanilla-extract.md',
       'references/styles/emotion.md',
       'references/stylesheets.md',
     ]);
+
+    // Only the five markdown references — the shipped stylesheets are linked in place, never copied in.
+    const filesInStyles = fs.readdirSync(tree.resolve('references/styles'));
+    expect(filesInStyles.every((f) => f.endsWith('.md'))).toBe(true);
+  });
+
+  // Cross-check: the aggregated markdown is the imported serializers' output verbatim (same seam the
+  // styles packages' own skill specs lock). Tailwind and SCSS additionally get a shipped-stylesheet
+  // pointer appended, so their output starts with — rather than equals — the serializer output.
+  it('writes each serializer output verbatim, appending a pointer for the solutions that ship a stylesheet', () => {
+    writeStyleReferences(tree, 'js');
+
+    expect(read('references/styles/tailwindcss.md')).toContain(getTailwindcssSkill());
+    expect(read('references/styles/tailwindcss.md')).toContain('## Full stylesheet');
+    expect(read('references/styles/scss.md')).toContain(getScssSkill());
+    expect(read('references/styles/scss.md')).toContain('## Full stylesheet');
+
+    // vanilla-extract and Emotion resolve their values at runtime, so they carry no pointer.
+    expect(read('references/styles/vanilla-extract.md')).toBe(getVanillaExtractSkill());
+    expect(read('references/styles/emotion.md')).toBe(getEmotionSkill());
+    expect(read('references/stylesheets.md')).toBe(getStylesheetsSkill());
+  });
+
+  it('links shipped stylesheets where they physically live per framework', () => {
+    writeStyleReferences(tree, 'js');
+    // js ships the real Tailwind copy and the real SCSS partials as dist siblings of the skill root.
+    expect(read('references/styles/tailwindcss.md')).toContain('../tailwindcss/index.css');
+    expect(read('references/styles/scss.md')).toContain('../scss');
+
+    tree.reset();
+    writeStyleReferences(tree, 'react');
+    // Framework wrappers ship a real Tailwind copy but only a re-export shim for SCSS, so their SCSS
+    // pointer targets the js peer's subpath instead of the local `../scss` shim.
+    expect(read('references/styles/tailwindcss.md')).toContain('../tailwindcss/index.css');
+    expect(read('references/styles/scss.md')).toContain('@porsche-design-system/components-js/scss');
   });
 });

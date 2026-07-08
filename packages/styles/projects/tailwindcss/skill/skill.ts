@@ -22,7 +22,11 @@ import { kindOf, type TailwindKind, tailwindMeta } from '../src';
 const code = (value: string): string => `\`${value}\``;
 
 /** Escape the few markdown-table-breaking characters a description might contain. */
-const cell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ');
+const cell = (text: string): string =>
+  text
+    .replace(/\\/g, '\\\\')
+    .replace(/\|/g, '\\|')
+    .replace(/\s*\n\s*/g, ' ');
 
 /** A markdown table from a header row and pre-rendered cell rows. */
 const table = (headers: string[], rows: string[][]): string =>

@@ -30,6 +30,11 @@ describe('escapeCell', () => {
   it('escapes pipes and collapses whitespace', () => {
     expect(escapeCell('a |  b\nc')).toBe('a \\| b c');
   });
+
+  it('escapes backslashes before pipes so an escaped pipe is not misread as a delimiter', () => {
+    expect(escapeCell('a \\| b')).toBe('a \\\\\\| b');
+    expect(escapeCell('trailing \\')).toBe('trailing \\\\');
+  });
 });
 
 describe('stripLeadingH1', () => {
