@@ -22,6 +22,19 @@ export const ACTIVATION_DESCRIPTION =
   'work that clearly targets a different UI library, or when the user opts out of PDS.';
 
 /**
+ * Migration guides, in documentation order: source-dir/output-filename `slug` plus the reference-map
+ * "use this when". Single source of truth for both the SKILL.md migration rows below and the generator's
+ * MDX-load list (`build-skill.ts` imports this), so adding a guide is a one-line edit in one place.
+ */
+export const MIGRATION_GUIDES: readonly { slug: string; useWhen: string }[] = [
+  { slug: 'porsche-design-system', useWhen: 'Upgrading the Porsche Design System to a new major version.' },
+  { slug: 'scss', useWhen: 'Migrating the SCSS styling solution.' },
+  { slug: 'tailwindcss', useWhen: 'Migrating the Tailwind CSS styling solution.' },
+  { slug: 'vanilla-extract', useWhen: 'Migrating the vanilla-extract styling solution.' },
+  { slug: 'emotion', useWhen: 'Migrating the Emotion styling solution.' },
+];
+
+/**
  * The skeleton reference map describing the skill tree layout. Each row points at
  * a reference file the content generators fill in. Generators may register
  * additional rows through {@link SkillTree.registerReference}; this scaffold
@@ -33,14 +46,7 @@ export const SKELETON_REFERENCE_MAP: readonly ReferenceMapEntry[] = [
   { path: 'references/stylesheets.md', useWhen: 'Setting up global stylesheets and the CSS reset.' },
   { path: 'references/tokens.md', useWhen: 'Using design tokens — color, spacing, typography, etc.' },
   { path: 'references/partials.md', useWhen: 'Adding PDS partials — fonts, icons, meta tags, loader script.' },
-  {
-    path: 'references/migration/porsche-design-system.md',
-    useWhen: 'Upgrading the Porsche Design System to a new major version.',
-  },
-  { path: 'references/migration/scss.md', useWhen: 'Migrating the SCSS styling solution.' },
-  { path: 'references/migration/tailwindcss.md', useWhen: 'Migrating the Tailwind CSS styling solution.' },
-  { path: 'references/migration/vanilla-extract.md', useWhen: 'Migrating the vanilla-extract styling solution.' },
-  { path: 'references/migration/emotion.md', useWhen: 'Migrating the Emotion styling solution.' },
+  ...MIGRATION_GUIDES.map(({ slug, useWhen }) => ({ path: `references/migration/${slug}.md`, useWhen })),
 ];
 
 /**

@@ -101,13 +101,17 @@ export const listMarkdownFiles = (skillRoot: string): string[] => {
 };
 
 /**
- * Resolve a single produced reference against a committed-snapshot skill tree.
- * Produced `./…` links are relative to the markdown file they live in; the SKILL.md reference-map's
- * `references/…` rows are relative to the skill root (and SKILL.md is the root file, so the same
- * file-relative resolution is correct for both).
+ * Resolve a single produced reference against a committed-snapshot skill tree. The two conventions
+ * resolve against different bases:
+ * - `references/…` rows (the SKILL.md reference map) are skill-root-relative wherever they appear.
+ * - `./…` links are relative to the markdown file they live in.
+ * SKILL.md is itself the root file, so both bases coincide there; keeping them distinct means a bare
+ * `references/…` mention inside a *nested* file still resolves at the root instead of being reported
+ * as a false dangling path relative to that file's directory.
  */
 export const resolveProduced = (skillRoot: string, sourceFile: string, target: string): boolean => {
-  const absolute = path.resolve(path.dirname(path.join(skillRoot, sourceFile)), target);
+  const base = target.startsWith('references/') ? skillRoot : path.dirname(path.join(skillRoot, sourceFile));
+  const absolute = path.resolve(base, target);
   return fs.existsSync(absolute);
 };
 

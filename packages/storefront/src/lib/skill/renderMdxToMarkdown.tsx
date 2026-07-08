@@ -259,6 +259,19 @@ const normalize = (markdown: string): string =>
 const SkillProviders = ({ children }: { children: ReactNode }) =>
   createElement(PorscheDesignSystemProvider, null, createElement(StorefrontFrameworkProvider, null, children));
 
+/** An MDX module resolved to a React component, the sole input this renderer converts to markdown. */
+type MdxComponent = ComponentType<{ components?: Record<string, unknown> }>;
+
+/**
+ * Prose rendering is framework-independent: the render sits under the default (vanilla-js)
+ * `StorefrontFrameworkProvider` and takes no framework argument, so a given MDX component yields
+ * identical markdown for every framework. The generator makes one full pass per framework (four in
+ * all), re-rendering the same partials, migration guides and component prose each time — the dominant
+ * build cost. Cache the result on the MDX module's stable identity so each renders exactly once across
+ * all four trees. Only successful renders are memoized; a throw is always re-raised, never cached.
+ */
+const renderCache = new WeakMap<MdxComponent, RenderMdxResult>();
+
 /**
  * Renders a storefront MDX `ComponentType` (component introduction / usage /
  * accessibility / notes, partials prose, migration prose) to plain markdown.
@@ -271,10 +284,12 @@ const SkillProviders = ({ children }: { children: ReactNode }) =>
  * @param label optional source identifier (e.g. `p-button › usage`) used to give an SSR failure an
  *   actionable message — the raw `renderToStaticMarkup` stack names neither the tag nor the section.
  */
-export const renderMdxToMarkdown = (
-  component: ComponentType<{ components?: Record<string, unknown> }>,
-  label?: string
-): RenderMdxResult => {
+export const renderMdxToMarkdown = (component: MdxComponent, label?: string): RenderMdxResult => {
+  const cached = renderCache.get(component);
+  if (cached) {
+    return cached;
+  }
+
   const componentStubs: Record<string, ComponentType> = {};
   for (const name of EMBEDDED_COMPONENT_STUBS) {
     componentStubs[name] = () => null;
@@ -296,5 +311,7 @@ export const renderMdxToMarkdown = (
   const markdown = normalize(renderBlocks(parse(html)));
   const degraded = markdown.length === 0 || !/[A-Za-z0-9]/.test(markdown);
 
-  return { markdown, degraded };
+  const result: RenderMdxResult = { markdown, degraded };
+  renderCache.set(component, result);
+  return result;
 };

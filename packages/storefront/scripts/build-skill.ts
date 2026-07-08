@@ -6,7 +6,12 @@ import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExample
 import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
 import type { MigrationSource } from '../src/lib/skill/migrationReference';
 import type { PartialsSource } from '../src/lib/skill/partialsReference';
-import { buildSkillMd, type ComponentRosterEntry, SKELETON_REFERENCE_MAP } from '../src/lib/skill/skillMd';
+import {
+  buildSkillMd,
+  type ComponentRosterEntry,
+  MIGRATION_GUIDES,
+  SKELETON_REFERENCE_MAP,
+} from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SkillTree, WRAPPER_SKILL_DIRS } from '../src/lib/skill/skillTree';
 import { writeStyleReferences } from '../src/lib/skill/stylesReference';
 import { writeTokensReference } from '../src/lib/skill/tokensReference';
@@ -123,15 +128,12 @@ type MigrationGeneration = {
   writeMigrationReferences: typeof import('../src/lib/skill/migrationReference').writeMigrationReferences;
 };
 
-/** Migration guide slugs — source dir and output filename stem — in documentation order (matches the design). */
-const MIGRATION_GUIDES = ['porsche-design-system', 'scss', 'tailwindcss', 'vanilla-extract', 'emotion'] as const;
-
 const loadMigrationGeneration = (): Promise<MigrationGeneration | null> =>
   loadOptional('migration references', async () => {
     const { writeMigrationReferences } = await import('../src/lib/skill/migrationReference');
     return {
       writeMigrationReferences,
-      sources: MIGRATION_GUIDES.map((slug) => ({
+      sources: MIGRATION_GUIDES.map(({ slug }) => ({
         slug,
         page: requireMdxDefault(`../src/app/(main)/news/migration-guide/${slug}/page.mdx`),
       })),

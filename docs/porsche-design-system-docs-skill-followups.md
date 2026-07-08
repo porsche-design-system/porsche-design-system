@@ -64,23 +64,16 @@ source-data issue, not a sub-component gap._
 
 ## 3. Generator code quality
 
-- **[P2] MDX prose is rendered 4× (once per framework) but is framework-independent.**
-  `scripts/build-skill.ts` loops frameworks calling `writeComponentReferences` → `renderMdxToMarkdown`
-  fresh each time; the renderer takes no framework param and always renders the `vanilla-js` provider
-  default, so prose/summaries/example descriptions are identical across trees. Memoize prose rendering
-  (or hoist it out of the framework loop) to cut the dominant build cost to ~25% and stop degraded
-  warnings printing 4×. Corollary: framework-conditional MDX always comes out vanilla-js-flavoured —
-  if that is ever wrong, `renderMdxToMarkdown` needs a framework argument.
 - **[P2] Consolidate the six copies of the markdown `cell`/`table`/`code` helpers.** The backslash/pipe
   escaping was fixed in all six, but they remain duplicated: `packages/storefront/src/lib/skill/markdown.ts`
   and `packages/styles/projects/{tailwindcss,scss,emotion,vanilla-extract}/skill/skill.ts` +
   `packages/components/projects/stylesheets/skill/skill.ts`. Extract a shared util (e.g. in
   `packages/shared`) so escaping logic lives once. (markdown.ts's own header comment claims this was
   already done — it is not.)
-- **[P3] Single source of truth for parallel lists.** `STYLING_SOLUTIONS` (`skillMd.ts`) and
-  `STYLE_REFERENCES` (`stylesReference.ts`) must be edited in tandem to add a solution; likewise
-  `MIGRATION_GUIDES` (`build-skill.ts`) vs the migration rows in `SKELETON_REFERENCE_MAP` (`skillMd.ts`).
-  Merge each pair into one descriptor array.
+- **[P3] Single source of truth for parallel lists (partial).** `STYLING_SOLUTIONS` (`skillMd.ts`) and
+  `STYLE_REFERENCES` (`stylesReference.ts`) must still be edited in tandem to add a solution — fully
+  merging them would couple `skillMd.ts` to the heavy `getXxxSkill` serializers, so left as-is. _(The
+  `MIGRATION_GUIDES` / `SKELETON_REFERENCE_MAP` pair is done — see "Fixed in the follow-up pass".)_
 - **[P3] `registerReference` is write-only scaffolding.** Only the skeleton seeding loop calls it; no
   content generator registers rows, despite comments saying they do. Either have generators register
   their rows (so the map cannot point at never-written files) or delete it and pass
@@ -97,10 +90,6 @@ source-data issue, not a sub-component gap._
   example text could still confuse the strip); inline `CODE` wraps in single backticks without handling
   embedded backticks; `demoteHeadings` treats `~~~` and 4+-backtick fences as prose. Low probability
   with current sources; harden opportunistically.
-- **[P3] `referenceLinks.ts` root-relative `references/…` mentions.** `resolveProduced` classifies any
-  `references/…` string as produced and resolves it relative to the containing file's dir, so a bare
-  `references/tokens.md` mention inside a nested file would report a false dangling path. Resolve
-  `references/…` targets against the skill root, `./…` against the file's dir. (Low incidence today.)
 
 ---
 
@@ -196,3 +185,19 @@ upgrading" log line is the pragmatic mitigation that shipped instead._
   the generator's iteration source (`componentDocsMeta`) can't drift from the `componentMeta` filter
   silently. Added direct `headingSlug` / `markdownTable` unit tests (documenting the whitespace-collapse
   divergence from GitHub, harmless for today's single-word categories).
+- **MDX prose rendered once, not 4× (§3 P2).** `renderMdxToMarkdown` now memoizes on the MDX module's
+  identity (module-level `WeakMap`), so each partial / migration guide / component-prose section renders
+  exactly once across all four framework trees instead of once per framework. Prose is
+  framework-independent (rendered under the default vanilla-js provider, no framework param), so the
+  cache is output-neutral — regenerating all four trees produced zero drift. Only successful renders are
+  cached; a throw is always re-raised. The existing `renderMdxToMarkdown.spec.tsx` cases (which reuse the
+  same compiled fixtures across `it`s) stay green.
+- **`referenceLinks.ts` root-relative `references/…` resolution (§3 P3).** `resolveProduced` now resolves
+  `references/…` targets against the skill root and `./…` targets against the containing file's dir, so a
+  bare `references/…` mention inside a *nested* file no longer reports a false dangling path. Output-neutral
+  for today's tree (such mentions only appear in SKILL.md, the root file); the link gate stays green.
+- **`MIGRATION_GUIDES` single source of truth (§3 P3).** The guide list now lives once in `skillMd.ts` as
+  `{ slug, useWhen }[]`; `SKELETON_REFERENCE_MAP`'s migration rows are derived from it and `build-skill.ts`
+  imports it for the MDX-load list, so adding a guide is a one-line edit. Output-neutral (same paths,
+  `useWhen` text and order). The parallel `STYLING_SOLUTIONS` / `STYLE_REFERENCES` pair is left unmerged —
+  see the open §3 note for why.
