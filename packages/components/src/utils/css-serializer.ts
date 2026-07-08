@@ -6,10 +6,14 @@
 // and it adds class hashing/caching we don't use. More weight, no gain.
 import { compile, serialize, stringify } from 'stylis';
 
-// Loose stand-ins for jss's `Styles`/`JssStyle` types. Kept as `any` on purpose so the
-// ~50 existing *-styles.ts files don't need to be retyped against strict CSS types.
-export type JssStyle = Record<string, any>;
-export type Styles<_Name = string, _Data = unknown, _Theme = undefined> = Record<string, any>;
+// Shape of the style objects passed to getCss(), e.g. { root: { color: 'red', '&:hover': { color: 'blue' } } }.
+// A key is either a CSS property (color) or a selector/at-rule (&:hover, @media ...); a value is a string or
+// number, an array of them (CSS fallback values), or another nested style object.
+// Kept loose (not strict CSS types): property keys and selector keys are both just strings, so TypeScript
+// can't tell them apart or catch typos here. Same trade-off the old jss types had.
+type JssStyleValue = string | number | (string | number)[] | null | false | undefined;
+export type JssStyle = { [key: string]: JssStyleValue | JssStyle };
+export type Styles<_Name = string, _Data = unknown, _Theme = undefined> = JssStyle;
 
 // camelCase -> kebab-case, e.g. `marginLeft` -> `margin-left`. CSS custom properties
 // (starting with `--`) are left untouched.
