@@ -255,10 +255,37 @@ stages:
             - name: no-drift
               command: ["node", ".turbo-spec/scripts/deps/verify-equality.mjs", ".turbo-spec/out/update-plan.json", "."]
 
+  # 6b. prune-overrides (AI): remove stale root overrides (runbook step 7).
+  # Separate persona from the steward — inverse verb (remove, not add) + audit
+  # interpretation + docs edit. Runs after consistency so the tree is clean and
+  # every addition already exists.
+  - name: prune_overrides
+    orchestrator: implementation
+    depends_on: [consistency]
+    condition: "assess.outdated_report.updates_exist"
+    pre_command: "npm audit --json > .turbo-spec/out/audit-baseline.json 2>/dev/null || true"
+    agents:
+      - type: override_pruner
+        system_prompt: override_pruner
+        skills: [.github/skills/pds-facts, .github/skills/override-pruning]
+        tools: [file, shell]
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        config:
+          gate_name: prune
+          failure_verdict: loop_back
+          environment_verdict: escalate
+          success_reason: "Stale overrides pruned; install clean and audit stable"
+          steps:
+            - name: check-prune
+              command: ["node", ".turbo-spec/scripts/deps/check-prune.mjs", ".turbo-spec/out/overrides-removed.json", ".turbo-spec/out/prune-result.json"]
+
   # 7. finalize (deterministic): PR body + commit + push origin + open PR.
   - name: finalize
     orchestrator: review
-    depends_on: [consistency]
+    depends_on: [consistency, prune_overrides]
     condition: "assess.outdated_report.updates_exist"
     pre_command: "bash .turbo-spec/scripts/deps/finalize.sh"
 
