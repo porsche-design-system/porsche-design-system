@@ -113,6 +113,10 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | --- | --- | --- |
 | `update` | `CustomEvent<TabsUpdateEventDetail>`<br>`{ activeTabIndex: number }` | Emitted when the user switches to a different tab, carrying the new `activeTabIndex` in the event detail. |
 
+### Controlled properties
+
+- `activeTabIndex` — a controlled prop, but the component also updates it internally. Listen for the `update` event to observe changes; you do not have to write the value back.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

@@ -126,6 +126,10 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `change` | `CustomEvent<MultiSelectChangeEventDetail>`<br>`{ name: string; value: string[] | number[] }` | Emitted when the user selects or deselects an option, with the updated array of values in the event detail. |
 | `toggle` | `CustomEvent<MultiSelectToggleEventDetail>`<br>`{ open: boolean }` | Emitted when the dropdown opens or closes, with the new open state in the event detail. |
 
+### Controlled properties
+
+- `value` — a controlled prop, but the component also updates it internally. Listen for the `change` event to observe changes; you do not have to write the value back.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

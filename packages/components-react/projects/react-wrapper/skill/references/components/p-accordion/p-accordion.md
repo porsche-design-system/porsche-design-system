@@ -79,6 +79,10 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | --- | --- | --- |
 | `update` | `CustomEvent<AccordionUpdateEventDetail>`<br>`{ open: boolean }` | Emitted when the user toggles the accordion open or closed, with the new open state in the event detail. |
 
+### Controlled properties
+
+- `open` — a controlled prop: the component does **not** update it itself. Handle the `update` event and assign the new value to `open` yourself, or the change will not take effect.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

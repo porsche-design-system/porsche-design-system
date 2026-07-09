@@ -108,6 +108,10 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | --- | --- | --- |
 | `update` | `CustomEvent<CarouselUpdateEventDetail>`<br>`{ activeIndex: number; previousIndex: number }` | Emitted when the carousel navigates to a new slide, with the active and previous slide indexes in the event detail. |
 
+### Controlled properties
+
+- `activeSlideIndex` — a controlled prop, but the component also updates it internally. Listen for the `update` event to observe changes; you do not have to write the value back.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

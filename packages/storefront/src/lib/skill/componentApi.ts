@@ -186,6 +186,26 @@ const formatType = (meta: PropMeta, iconNames: ReadonlySet<string>): string => {
 const buildTable = (heading: string, columns: string[], rows: string[][], level: number): string =>
   [`${'#'.repeat(level)} ${heading}`, '', markdownTable(columns, rows)].join('\n');
 
+/**
+ * Controlled-property notes from `componentMeta`'s `controlledMeta` — dropped entirely until now, so the
+ * agent had no signal that a prop's state is owned by the consumer. Without it, `p-banner`/`p-modal`
+ * read as if they hide themselves (they do not: the `dismiss` event fires but `open` stays `true` until
+ * the consumer sets it back). `isInternallyMutated` marks the components that also update the prop
+ * themselves (`p-select`, `p-carousel`, `p-pagination`, …) — there the consumer only needs to observe
+ * the event, not write the value back.
+ */
+const controlledSection = (controlledMeta: NonNullable<ComponentMeta['controlledMeta']>, level: number): string => {
+  const bullets = controlledMeta.map(({ props, event, isInternallyMutated }) => {
+    const propList = props.map(code).join(', ');
+    const noun = props.length > 1 ? 'controlled props' : 'a controlled prop';
+    const objectPronoun = props.length > 1 ? 'them' : 'it';
+    return isInternallyMutated
+      ? `- ${propList} — ${noun}, but the component also updates ${objectPronoun} internally. Listen for the ${code(event)} event to observe changes; you do not have to write the value back.`
+      : `- ${propList} — ${noun}: the component does **not** update ${objectPronoun} itself. Handle the ${code(event)} event and assign the new value to ${propList} yourself, or the change will not take effect.`;
+  });
+  return [`${'#'.repeat(level)} Controlled properties`, '', bullets.join('\n')].join('\n');
+};
+
 const propsTable = (
   propsMeta: NonNullable<ComponentMeta['propsMeta']>,
   level: number,
@@ -240,6 +260,9 @@ const apiTables = (meta: ComponentMeta, level: number, iconNames: ReadonlySet<st
   }
   if (meta.eventsMeta && Object.keys(meta.eventsMeta).length > 0) {
     tables.push(eventsTable(meta.eventsMeta, level));
+  }
+  if (meta.controlledMeta && meta.controlledMeta.length > 0) {
+    tables.push(controlledSection(meta.controlledMeta, level));
   }
   if (meta.slotsMeta && Object.keys(meta.slotsMeta).length > 0) {
     tables.push(slotsTable(meta.slotsMeta, level));

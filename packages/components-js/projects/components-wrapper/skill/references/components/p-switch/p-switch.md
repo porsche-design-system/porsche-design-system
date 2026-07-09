@@ -95,6 +95,10 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | --- | --- | --- |
 | `update` | `CustomEvent<SwitchUpdateEventDetail>`<br>`{ checked: boolean }` | Emitted when the user toggles the switch, carrying the new `checked` state in the event detail. |
 
+### Controlled properties
+
+- `checked` — a controlled prop: the component does **not** update it itself. Handle the `update` event and assign the new value to `checked` yourself, or the change will not take effect.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

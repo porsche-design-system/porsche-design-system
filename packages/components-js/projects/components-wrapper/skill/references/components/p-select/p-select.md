@@ -119,6 +119,10 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `change` | `CustomEvent<SelectChangeEventDetail>`<br>`{ name: string; value: string | number | null | undefined }` | Emitted when the user selects a different option, carrying the new value in the event detail. |
 | `toggle` | `CustomEvent<SelectToggleEventDetail>`<br>`{ open: boolean }` | Emitted when the dropdown list opens or closes, carrying the new `isOpen` state in the event detail. |
 
+### Controlled properties
+
+- `value` — a controlled prop, but the component also updates it internally. Listen for the `change` event to observe changes; you do not have to write the value back.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

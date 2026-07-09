@@ -101,6 +101,11 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `dismiss` | `CustomEvent<void>` | Emitted when the user closes the drilldown via the close button or Escape key. |
 | `update` | `CustomEvent<DrilldownUpdateEventDetail>`<br>`{ activeIdentifier: string | undefined }` | Emitted when the active navigation level changes, with the new `activeIdentifier` in the event detail. |
 
+### Controlled properties
+
+- `open` — a controlled prop: the component does **not** update it itself. Handle the `dismiss` event and assign the new value to `open` yourself, or the change will not take effect.
+- `activeIdentifier` — a controlled prop: the component does **not** update it itself. Handle the `update` event and assign the new value to `activeIdentifier` yourself, or the change will not take effect.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

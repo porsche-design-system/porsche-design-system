@@ -128,6 +128,10 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `blur` | `CustomEvent<void>` | Emitted when the segmented control loses focus, useful for triggering validation on blur. |
 | `change` | `CustomEvent<SegmentedControlChangeEventDetail>`<br>`{ value: string | number }` | Emitted when the user selects a different item, carrying the new value in the event detail. |
 
+### Controlled properties
+
+- `value` — a controlled prop, but the component also updates it internally. Listen for the `change` event to observe changes; you do not have to write the value back.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

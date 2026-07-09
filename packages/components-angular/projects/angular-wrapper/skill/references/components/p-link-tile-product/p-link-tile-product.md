@@ -69,6 +69,10 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | --- | --- | --- |
 | `like` | `CustomEvent<LinkTileProductLikeEventDetail>`<br>`{ liked: boolean }` | Emitted when the user clicks the like button, with the new liked state in the event detail. |
 
+### Controlled properties
+
+- `liked` — a controlled prop: the component does **not** update it itself. Handle the `like` event and assign the new value to `liked` yourself, or the change will not take effect.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

@@ -75,6 +75,10 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | --- | --- | --- |
 | `dismiss` | `CustomEvent<void>` | Emitted when the user closes the banner via the dismiss button or Escape key. |
 
+### Controlled properties
+
+- `open` — a controlled prop: the component does **not** update it itself. Handle the `dismiss` event and assign the new value to `open` yourself, or the change will not take effect.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

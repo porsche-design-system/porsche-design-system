@@ -94,6 +94,10 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `motionHiddenEnd` | `CustomEvent<SheetMotionHiddenEndEventDetail>`<br>`TransitionEvent` | Emitted after the sheet's close transition has fully completed and the panel is hidden. |
 | `motionVisibleEnd` | `CustomEvent<SheetMotionVisibleEndEventDetail>`<br>`TransitionEvent` | Emitted after the sheet's open transition has fully completed and the panel is visible. |
 
+### Controlled properties
+
+- `open` — a controlled prop: the component does **not** update it itself. Handle the `dismiss` event and assign the new value to `open` yourself, or the change will not take effect.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

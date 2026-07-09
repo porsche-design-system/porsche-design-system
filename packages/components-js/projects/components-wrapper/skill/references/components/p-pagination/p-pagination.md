@@ -83,6 +83,10 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | --- | --- | --- |
 | `update` | `CustomEvent<PaginationUpdateEventDetail>`<br>`{ page: number; previousPage: number }` | Emitted when the user navigates to a different page, carrying the new `activePage` index in the event detail. |
 
+### Controlled properties
+
+- `activePage` — a controlled prop, but the component also updates it internally. Listen for the `update` event to observe changes; you do not have to write the value back.
+
 ## Examples
 
 | Example | When to use | File |

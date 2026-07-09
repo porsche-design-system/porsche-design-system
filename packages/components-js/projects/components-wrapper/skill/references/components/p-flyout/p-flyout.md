@@ -98,6 +98,10 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `motionHiddenEnd` | `CustomEvent<FlyoutMotionHiddenEndEventDetail>`<br>`TransitionEvent` | Emitted after the flyout's close transition completes and the panel is fully hidden. |
 | `motionVisibleEnd` | `CustomEvent<FlyoutMotionVisibleEndEventDetail>`<br>`TransitionEvent` | Emitted after the flyout's open transition completes and the panel is fully visible. |
 
+### Controlled properties
+
+- `open` — a controlled prop: the component does **not** update it itself. Handle the `dismiss` event and assign the new value to `open` yourself, or the change will not take effect.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |

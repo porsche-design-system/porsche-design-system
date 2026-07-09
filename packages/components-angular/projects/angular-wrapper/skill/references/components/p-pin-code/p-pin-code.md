@@ -100,6 +100,10 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `blur` | `CustomEvent<void>` | Emitted when the pin code component loses focus after the user finishes entering characters. |
 | `change` | `CustomEvent<PinCodeChangeEventDetail>`<br>`{ value: string; isComplete: boolean }` | Emitted when the pin code value changes as the user types, carrying the new concatenated value in the event detail. |
 
+### Controlled properties
+
+- `value` — a controlled prop, but the component also updates it internally. Listen for the `change` event to observe changes; you do not have to write the value back.
+
 ### Slots
 
 | Slot | Required | Allowed tag names | Description |
