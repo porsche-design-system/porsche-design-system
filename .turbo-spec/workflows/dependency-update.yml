@@ -136,8 +136,8 @@ stages:
     depends_on: [apply_bumps]
     condition: "assess.outdated_report.updates_exist and apply_bumps.apply_result.install_ok == false"
     agents:
-      - type: eresolve_resolver
-        system_prompt: eresolve_resolver
+      - type: overrides_steward
+        system_prompt: overrides_steward
         skills: [.github/skills/pds-facts, .github/skills/eresolve-override-resolution]
         tools: [file, shell]
     quality_gates:
