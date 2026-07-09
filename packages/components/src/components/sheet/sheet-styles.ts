@@ -58,7 +58,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
           zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
         },
       },
-      ...getFunctionalComponentDialogBaseStyles(isOpen, 'shading'),
+      dialog: getFunctionalComponentDialogBaseStyles(isOpen, 'shading'),
     },
     scroller: getScrollerJssStyle('fullscreen'),
     sheet: {

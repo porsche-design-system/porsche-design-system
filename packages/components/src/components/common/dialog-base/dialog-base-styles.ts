@@ -15,7 +15,7 @@ import {
   spacingStatic2Xs,
   spacingStaticMd,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle } from 'jss';
 import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import { overlayTransitionSupportsQuery } from '../../../utils';
 
@@ -34,30 +34,7 @@ export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle =
   };
 };
 
-export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backdrop: Backdrop = 'blur'): Styles => {
-  return {
-    dialog: {
-      ...dialogBackdropResetJssStyle,
-      ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
-    },
-  };
-};
-
-const dialogBackdropResetJssStyle: JssStyle = {
-  all: 'unset',
-  position: 'fixed',
-  inset: 0,
-  maxWidth: '100dvw',
-  maxHeight: '100dvh',
-  overflow: 'hidden',
-  display: 'block',
-  outline: 0, // we always expect a focusable element to be within the dialog
-  '&::backdrop': {
-    display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
-  },
-};
-
-const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
+export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   const isBackdropBlur = backdrop === 'blur';
 
   const duration = isVisible ? 'long' : 'moderate';
@@ -71,7 +48,18 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
   )}, ${getTransition('backdrop-filter', duration, easing)}`;
 
   return {
-    zIndex: 9999999, // fallback for fade out stacking until `overlay` + `allow-discrete` is supported in all browsers. It tries to mimic #top-layer positioning hierarchy.
+    all: 'unset',
+    position: 'fixed',
+    inset: 0,
+    maxWidth: '100dvw',
+    maxHeight: '100dvh',
+    overflow: 'hidden',
+    display: 'block',
+    userSelect: 'text', // allows text selection within dialog element (e.g. for copy & paste)
+    outline: 0, // we always expect a focusable element to be within the dialog
+    '&::backdrop': {
+      display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
+    },
     ...(isVisible
       ? {
           width: '100dvw',

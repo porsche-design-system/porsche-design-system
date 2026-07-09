@@ -97,7 +97,7 @@ export const getComponentCss = (
           '&[name=sub-footer]': getSlotSubFooterJssStyle(),
         }),
       },
-      ...getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
+      dialog: getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
     },
     scroller: {
       ...getScrollerJssStyle(isPositionStart ? 'start' : 'end'),

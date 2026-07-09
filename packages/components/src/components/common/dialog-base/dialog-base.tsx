@@ -4,7 +4,7 @@ import { getPrefixedTagNames } from '../../../utils';
 
 type DialogBaseProps = {
   host: HTMLElement;
-  inert?: boolean;
+  inert: boolean;
   dialogRef?: (el: HTMLDialogElement) => void;
   scrollerRef?: (el: HTMLDivElement) => void;
   containerClass: 'flyout' | 'modal' | 'sheet';

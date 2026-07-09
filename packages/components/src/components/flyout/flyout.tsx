@@ -180,6 +180,7 @@ export class Flyout {
     return (
       <DialogBase
         host={this.host}
+        inert={!this.open}
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
         dismissable={true}

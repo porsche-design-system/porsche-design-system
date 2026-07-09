@@ -83,7 +83,7 @@ export const getComponentCss = (
           '&[name=footer]': getSlotFooterJssStyle(),
         }),
       },
-      ...getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
+      dialog: getFunctionalComponentDialogBaseStyles(isOpen, backdrop),
     },
     scroller: getScrollerJssStyle('fullscreen'),
     modal: {
