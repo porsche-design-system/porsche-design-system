@@ -4,7 +4,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   createTopLayerController,
-  getPrefixedTagNames,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
@@ -13,6 +12,7 @@ import {
   unobserveChildren,
   validateProps,
 } from '../../utils';
+import { FCDismissButton } from '../common/fc-dismiss-button/fc-dismiss-button';
 import { NotificationBase } from '../common/notification-base/notification-base';
 import { getComponentCss } from './banner-styles';
 import {
@@ -150,7 +150,6 @@ export class Banner {
       this.isInitialRender
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const headingText = this.heading ? this.heading : getSlotTextContent(this.host, 'heading');
 
     return (
@@ -172,19 +171,12 @@ export class Banner {
           hasDescriptionSlot={this.hasDescriptionSlot}
           {...(this.dismissButton && {
             dismissButton: (
-              <PrefixedTagNames.pButton
-                class="dismiss"
-                type="button"
-                variant="secondary"
-                icon="close"
-                hideLabel={true}
-                compact={true}
+              <FCDismissButton
+                label="Close banner"
                 onClick={this.dismissBanner}
-                {...(headingText ? { aria: { 'aria-description': headingText } } : {})}
-                ref={(el: HTMLElement) => (this.refDismiss = el)}
-              >
-                Close banner
-              </PrefixedTagNames.pButton>
+                ariaDescription={headingText || undefined}
+                refCallback={(el) => (this.refDismiss = el)}
+              />
             ),
           })}
         />

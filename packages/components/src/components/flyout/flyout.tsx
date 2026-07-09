@@ -179,7 +179,6 @@ export class Flyout {
 
     return (
       <DialogBase
-        host={this.host}
         // `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
         // fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
         // during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").

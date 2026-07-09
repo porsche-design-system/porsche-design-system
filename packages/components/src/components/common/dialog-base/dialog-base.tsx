@@ -1,9 +1,8 @@
 import { type FunctionalComponent, h, type JSX } from '@stencil/core';
 import type { AriaAttributes } from '../../../types';
-import { getPrefixedTagNames } from '../../../utils';
+import { FCDismissButton } from '../fc-dismiss-button/fc-dismiss-button';
 
 type DialogBaseProps = {
-  host: HTMLElement;
   inert: boolean;
   dialogRef?: (el: HTMLDialogElement) => void;
   scrollerRef?: (el: HTMLDivElement) => void;
@@ -21,7 +20,6 @@ type DialogBaseProps = {
 
 export const DialogBase: FunctionalComponent<DialogBaseProps> = (
   {
-    host,
     inert,
     dialogRef,
     scrollerRef,
@@ -38,8 +36,6 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
   },
   children
 ) => {
-  const PrefixedTagNames = getPrefixedTagNames(host);
-
   return (
     <dialog
       inert={inert} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
@@ -53,18 +49,7 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
     >
       <div class="scroller" ref={scrollerRef}>
         <div class={containerClass}>
-          {dismissable && (
-            <PrefixedTagNames.pButton
-              class="dismiss"
-              compact={true}
-              type="button"
-              hideLabel={true}
-              icon="close"
-              onClick={onDismiss}
-            >
-              {`Dismiss ${containerClass}`}
-            </PrefixedTagNames.pButton>
-          )}
+          {dismissable && <FCDismissButton label={`Dismiss ${containerClass}`} onClick={onDismiss} />}
           {header}
           {children}
           {footer}

@@ -28,7 +28,6 @@ const getFlyoutScroller = (page: Page) => page.locator('p-flyout dialog .scrolle
 const getHeader = (page: Page) => page.locator('p-flyout slot[name="header"]');
 const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss');
-const getFlyoutDismissButtonReal = (page: Page) => page.locator('p-flyout .dismiss button');
 const getBody = (page: Page) => page.locator('body');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
@@ -137,7 +136,7 @@ const removeHeaderSlot = async (host: Locator) => {
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
+  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('BUTTON');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
@@ -242,10 +241,9 @@ test.describe('can be dismissed', () => {
 
   test('should be closable via x button', async ({ page }) => {
     const dismissBtn = getFlyoutDismissButton(page);
-    const dismissBtnReal = getFlyoutDismissButtonReal(page);
     expect(dismissBtn).not.toBeNull();
 
-    expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
+    expect(await getAttribute(dismissBtn, 'type')).toBe('button');
 
     await dismissBtn.click();
     await waitForStencilLifecycle(page);

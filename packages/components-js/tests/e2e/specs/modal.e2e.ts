@@ -112,7 +112,7 @@ const addButtonsBeforeAndAfterModal = (page: Page) =>
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
+  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('BUTTON');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
@@ -159,8 +159,7 @@ test.describe('can be dismissed', () => {
     const dismissBtn = getDismissButton(page);
     expect(dismissBtn).not.toBeNull();
 
-    const dismissBtnReal = page.locator('p-modal .dismiss button');
-    expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
+    expect(await getAttribute(dismissBtn, 'type')).toBe('button');
 
     await dismissBtn.click();
     await waitForStencilLifecycle(page);

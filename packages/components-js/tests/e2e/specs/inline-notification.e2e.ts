@@ -49,8 +49,8 @@ const getActionButton = (page: Page) => page.locator('p-inline-notification .act
 
 test('should render close button with type of "button"', async ({ page }) => {
   await initInlineNotification(page);
-  const closeBtnReal = page.locator('p-inline-notification .dismiss button');
-  expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
+  const closeBtn = getDismissButton(page);
+  expect(await getAttribute(closeBtn, 'type')).toBe('button');
 });
 
 test('should render without button when dismissButton prop false', async ({ page }) => {

@@ -18,6 +18,7 @@ import {
 import type { JssStyle } from 'jss';
 import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import { overlayTransitionSupportsQuery } from '../../../utils';
+import { getFCDismissButtonStyles } from '../fc-dismiss-button/fc-dismiss-button-styles';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -190,6 +191,9 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
 
 export const getDialogDismissButtonJssStyle = (): JssStyle => {
   return {
+    // native dismiss button visual (primary variant); positioning + the `invert` filter (renders it light on the
+    // dialog) are applied on top below
+    ...getFCDismissButtonStyles('primary'),
     gridArea: '1/3',
     zIndex: 5, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',
