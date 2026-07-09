@@ -33,13 +33,13 @@ report — but never add them to a plan or override under any circumstances.
 
 Group related packages so they move in lockstep. Assign each update a `group`:
 
-- **angular** — `@angular/*`, `ng-packagr`, `zone.js`
+- **angular** — `@angular/**`, `ng-packagr`, `zone.js`
 - **react** — `react`, `react-dom`, `@types/react`, `@types/react-dom`
-- **react-router** — `react-router`, `react-router-dom`, `@react-router/*`
-- **tailwind** — `tailwindcss`, `@tailwindcss/*`
+- **react-router** — `react-router`, `react-router-dom`, `@react-router/**`
+- **tailwind** — `tailwindcss`, `@tailwindcss/**`
 - **ag-grid** — `ag-grid-community`, `ag-grid-enterprise`, `ag-grid-angular`, `ag-grid-react`, `ag-grid-vue3`
-- **vanilla-extract** — `@vanilla-extract/*`
-- **next** — `next`, `@next/*`
+- **vanilla-extract** — `@vanilla-extract/**`
+- **next** — `next`, `@next/**`
 - **vitest** — `vitest`, `@vitest/ui`
 - everything else → `group: other`
 
