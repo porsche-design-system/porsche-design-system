@@ -44,3 +44,14 @@ it deterministically via `reconcile-ts.mjs`.
 - Never use `npm install --legacy-peer-deps`, `--force`, or `npm audit fix`.
 - Never hand-edit `package-lock.json`; regenerate it via `npm install`.
 - Target versions are **frozen** from the outdated report — never re-choose a version.
+
+## Environment invariants
+
+- **git is unavailable inside the sandbox.** `.git` points at the host worktree,
+  which is not mounted in the container, so `git status` / `git diff` /
+  `git commit` do not work. The turbo-spec engine handles all commits — do not run
+  git and do not reason about git state. Work directly with the files.
+- **Clean installs omit platform optionals.** After
+  `rm -rf package-lock.json node_modules && npm install`, npm may omit
+  platform-specific `optionalDependencies` (e.g. syncpack's native binary). Run
+  `npm install` a **second** time (idempotent top-up) so those are present.
