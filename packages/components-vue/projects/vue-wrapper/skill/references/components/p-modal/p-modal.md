@@ -62,7 +62,7 @@ The `Modal` component uses the native `dialog` element to provide a modal dialog
 
 ## Development considerations
 
-To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria` property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
+To inform users that the trigger button opens a `dialog`, set the trigger button's `aria` property to the value `{ 'aria-haspopup': 'dialog' }`, binding it with your framework's prop syntax (see the examples).
 
 ## Tests
 
