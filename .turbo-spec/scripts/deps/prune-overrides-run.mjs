@@ -1,4 +1,4 @@
-import { collectRemovable, verdictFromInstall, auditRegressed, withoutOverrideKeys, readOverrideKeys } from './prune-overrides.mjs';
+import { collectRemovable, verdictFromInstall, auditRegressed, withoutOverrideKeys } from './prune-overrides.mjs';
 
 /**
  * @param {{pkg: object, baselineAudit: object, candidates: string[],
