@@ -17,7 +17,7 @@ function groupUpdates(updates) {
   return groups;
 }
 
-export function buildPrBody({ plan, overrides = [], overridesSkipped = [], issue = null, date = null } = {}) {
+export function buildPrBody({ plan, overrides = [], overridesSkipped = [], overridesRemoved = [], issue = null, date = null } = {}) {
   const updates = Array.isArray(plan?.updates) ? plan.updates : [];
   const excluded = Array.isArray(plan?.excluded) ? plan.excluded : [];
   const day = date || new Date().toISOString().slice(0, 10);
@@ -54,6 +54,12 @@ export function buildPrBody({ plan, overrides = [], overridesSkipped = [], issue
       const reason = o.reason ? ` — ${o.reason}` : '';
       lines.push(`- \`${o.package}\`:${spec}${reason}`);
     }
+    lines.push('');
+  }
+
+  if (overridesRemoved.length > 0) {
+    lines.push('### Overrides removed', '');
+    for (const r of overridesRemoved) lines.push(`- \`${r.key}\` — ${r.reason}`);
     lines.push('');
   }
 
@@ -114,7 +120,8 @@ function main(argv) {
   const overrides = readJsonMaybe(overridesPath) || [];
   const report = readJsonMaybe(reportPath) || {};
   const overridesSkipped = Array.isArray(report.overrides_skipped) ? report.overrides_skipped : [];
-  const body = buildPrBody({ plan, overrides, overridesSkipped, issue });
+  const overridesRemoved = readJsonMaybe('.turbo-spec/out/overrides-removed.json') || [];
+  const body = buildPrBody({ plan, overrides, overridesSkipped, overridesRemoved, issue });
   if (outFile) writeFileSync(outFile, body);
   else process.stdout.write(body);
   return 0;

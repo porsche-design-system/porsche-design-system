@@ -62,3 +62,25 @@ test('omits the skipped-overrides section when none', () => {
   const body = buildPrBody({ plan });
   assert.doesNotMatch(body, /Override pins with available updates/);
 });
+
+test('renders an Overrides removed section when present', () => {
+  const body = buildPrBody({
+    plan: { updates: [], excluded: [] },
+    overrides: [],
+    overridesRemoved: [{ key: 'braces', reason: 'advisory fixed upstream' }],
+    date: '2026-07-09',
+  });
+  assert.match(body, /### Overrides removed/);
+  assert.match(body, /braces/);
+  assert.match(body, /advisory fixed upstream/);
+});
+
+test('omits the Overrides removed section when none', () => {
+  const body = buildPrBody({
+    plan: { updates: [], excluded: [] },
+    overrides: [],
+    overridesRemoved: [],
+    date: '2026-07-09',
+  });
+  assert.doesNotMatch(body, /### Overrides removed/);
+});
