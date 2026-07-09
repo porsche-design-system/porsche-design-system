@@ -11,20 +11,20 @@ exports[`getComponentCss() > should return correct css for open: false, position
   visibility: hidden;
 }
 [popover] {
+  --_a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   all: unset;
   position: fixed;
-  z-index: var(--_p-banner-a,99);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
-  transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
+  transform: var(--_a);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   overlay: none;
-  visibility: hidden;
-  pointer-events: none;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  display: none;
 }
 [popover]:popover-open {
   overlay: auto;
+  display: grid;
 }
 [popover]::backdrop {
   display: none;
@@ -44,14 +44,11 @@ slot:not([name]),slot[name="description"],p {
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete, display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
 .notification {
-  box-shadow: var(--p-shadow-lg);
-  opacity: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
@@ -106,20 +103,20 @@ exports[`getComponentCss() > should return correct css for open: false, position
   visibility: hidden;
 }
 [popover] {
+  --_a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   all: unset;
   position: fixed;
-  z-index: var(--_p-banner-a,99);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
-  transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
+  transform: var(--_a);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   overlay: none;
-  visibility: hidden;
-  pointer-events: none;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  display: none;
 }
 [popover]:popover-open {
   overlay: auto;
+  display: grid;
 }
 [popover]::backdrop {
   display: none;
@@ -133,14 +130,11 @@ slot:not([name]),slot[name="description"],p {
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete, display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
 .notification {
-  box-shadow: var(--p-shadow-lg);
-  opacity: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
@@ -189,20 +183,20 @@ exports[`getComponentCss() > should return correct css for open: false, position
   visibility: hidden;
 }
 [popover] {
+  --_a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   all: unset;
   position: fixed;
-  z-index: var(--_p-banner-a,99);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
-  transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
+  transform: var(--_a);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   overlay: none;
-  visibility: hidden;
-  pointer-events: none;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  display: none;
 }
 [popover]:popover-open {
   overlay: auto;
+  display: grid;
 }
 [popover]::backdrop {
   display: none;
@@ -216,14 +210,11 @@ slot:not([name]),slot[name="description"],p {
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete, display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
 .notification {
-  box-shadow: var(--p-shadow-lg);
-  opacity: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
@@ -278,20 +269,20 @@ exports[`getComponentCss() > should return correct css for open: true, position:
   visibility: hidden;
 }
 [popover] {
+  --_a: translate3d(-50%,calc(-100% - var(--p-banner-top,var(--p-banner-position-top,56px))),0);
   all: unset;
   position: fixed;
-  z-index: var(--_p-banner-a,99);
   inset-block: var(--p-banner-top,var(--p-banner-position-top,56px)) auto;
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
-  overlay: none;
-  visibility: inherit;
-  pointer-events: inherit;
   transform: translate3d(-50%,0,0);
-  transition: visibility 0s linear var(--p-transition-duration,0s),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+  transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
+  overlay: none;
+  display: none;
 }
 [popover]:popover-open {
   overlay: auto;
+  display: grid;
 }
 [popover]::backdrop {
   display: none;
@@ -305,14 +296,11 @@ slot:not([name]),slot[name="description"],p {
 }
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: visibility 0s linear var(--p-transition-duration,0s),transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in) allow-discrete;
+    transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in),overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in) allow-discrete, display var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in) allow-discrete;
   }
 }
 
 .notification {
-  box-shadow: var(--p-shadow-lg);
-  opacity: 1;
-  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
@@ -347,5 +335,10 @@ slot:not([name]),slot[name="description"],p {
     outline-offset: -2px;
   }
 }
-"
+
+@starting-style {
+  [popover] {
+    transform: var(--_a);
+  }
+}"
 `;

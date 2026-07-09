@@ -34,6 +34,13 @@ export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle =
   };
 };
 
+// INTENTIONAL DIVERGENCE from `popover-styles.ts` (kept, not aligned — see the mirrored note there):
+// This dialog stays permanently rendered and collapses its CLOSED state via delayed `visibility: hidden` + `width/height: 0`
+// (driven by `isVisible`), so `opacity`/`background` fade in BOTH directions with NO `@starting-style`, and an initial
+// `open=true` computes straight to the visible state (no entry fade on load). `p-popover`/`p-banner` instead use the native
+// `[popover]` `display: none`/`:popover-open` toggle plus a `@starting-style` entry fade, because those components mimic the
+// native popover box model. Both share `createTopLayerController` + the Chromium-only `overlay allow-discrete` transition
+// (`overlayTransitionSupportsQuery`) and the `inert` toggle for tabbability; only the closed-state expression differs.
 export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   const isBackdropBlur = backdrop === 'blur';
 
@@ -63,7 +70,6 @@ export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backd
           height: '100dvh',
           visibility: 'inherit',
           pointerEvents: 'auto',
-          overlay: 'auto',
           background: ref(colorBackdrop),
           ...(isBackdropBlur && {
             WebkitBackdropFilter: ref(blurFrosted),
@@ -79,7 +85,6 @@ export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backd
           height: '0px',
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
           pointerEvents: 'none', // element can't be interacted with mouse
-          overlay: 'none',
           background: 'transparent',
         }),
     transition,
@@ -87,8 +92,12 @@ export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backd
     ...overlayTransitionSupportsQuery({
       transition: `${transition}, ${getTransition('overlay', duration, easing)} allow-discrete`,
     }),
+    overlay: 'none',
+    '&:modal': {
+      overlay: 'auto',
+    },
     '&::backdrop': {
-      display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
+      display: 'none', // reset ua-style (we can't use it atm because it's not animatable in all browsers)
     },
   };
 };

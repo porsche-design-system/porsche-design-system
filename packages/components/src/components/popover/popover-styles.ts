@@ -89,7 +89,9 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => 
   // (Chromium via `overlay` + `display` `allow-discrete`; Safari/Firefox via the deferred `hidePopover()`), so
   // `display: none` only describes the fully-closed terminal state. Tabbability / a11y-tree removal during the fade-out
   // is handled immediately via the `inert` attribute on the panel (see popover.tsx), so no `visibility` toggle is needed.
-  const transition = getTransition('opacity', 'short', isOpen ? 'in' : 'out');
+  const duration = 'short';
+  const easing = isOpen ? 'in' : 'out';
+  const transition = getTransition('opacity', duration, easing);
 
   const css = getCss({
     '@global': {
@@ -172,7 +174,7 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => 
         transition,
         // keep the popover on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
         ...overlayTransitionSupportsQuery({
-          transition: `${transition},${getTransition('overlay', 'short', isOpen ? 'in' : 'out')} allow-discrete,${getTransition('display', 'short', isOpen ? 'in' : 'out')} allow-discrete`,
+          transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete, ${getTransition('display', duration, easing)} allow-discrete`,
         }),
         // Unlike `opacity` (driven by the `isOpen` render flag), `overlay` and `display` are toggled via the
         // `:popover-open` UA state instead of `isOpen`. Both are owned by the browser: they only flip once
@@ -217,7 +219,13 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => 
   // engines (< Chromium 117 / Safari 17.5 / Firefox 129) ignore the unknown at-rule and skip the entry fade (graceful
   // degradation). Formatting mirrors JSS output so the unit-test CSS parser can read it.
   //
-  // ALTERNATIVE APPROACH (not implemented) — mirror the `dialog-base` (p-modal/p-flyout) pattern and drop `@starting-style`:
+  // ALTERNATIVE APPROACH (INTENTIONALLY NOT IMPLEMENTED) — mirror the `dialog-base` (p-modal/p-flyout) pattern and drop `@starting-style`:
+  // Decision: KEEP this divergence (see the mirrored note in `common/dialog-base/dialog-base-styles.ts`). `p-popover`/`p-banner`
+  // mimic the native `[popover]` box model, so they use the native `display: none`/`:popover-open` toggle + `@starting-style`
+  // entry fade rather than the dialog's permanently-rendered `visibility`/`width`/`height` collapse. Both approaches share
+  // `createTopLayerController`, the Chromium-only `overlay allow-discrete` transition (`overlayTransitionSupportsQuery`) and
+  // the `inert` toggle for tabbability; only the closed-state expression differs. The alternative below is documented for
+  // context (and to record its one upside — no entry fade on initial `open=true`), but is deliberately left unimplemented.
   //   • Keep the panel permanently rendered (never `display: none`); collapse the closed state via `visibility: hidden`
   //     + `width/height: 0` instead. Because the element stays rendered, `opacity` fades normally in BOTH directions with
   //     no `@starting-style`, and an initial `open=true` computes straight to `opacity: 1` (appears instantly, no entry
