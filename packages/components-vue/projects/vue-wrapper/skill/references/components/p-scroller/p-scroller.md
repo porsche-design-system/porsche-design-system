@@ -8,8 +8,6 @@ If the `p-scroller` component is accessed by keyboard navigation and is focused,
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use when an item or a group of items do not fit into the viewport width and horizontal scrolling is needed.
@@ -49,26 +47,7 @@ The following section provides guidance for designers and developers on how to u
 | --- | --- |
 | `role="VALUE"` | Defines the semantic role of the container element. |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

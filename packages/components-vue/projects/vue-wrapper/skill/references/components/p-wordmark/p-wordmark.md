@@ -6,8 +6,6 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do
 
 - Use the `p-wordmark` as the main brand identifier.
@@ -40,26 +38,7 @@ The following section provides guidance for designers and developers on how to u
 | `aria-current` | Exposes the current state of the link. |
 | `aria-haspopup` | Defines that the button opens a popup (e.g. `dialog`). |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

@@ -6,8 +6,6 @@ It is a controlled component. This means it does not contain any internal state,
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use to display and compare structured data in rows and columns.
@@ -62,8 +60,6 @@ The following section provides guidance for designers and developers on how to u
 | Screen reader (VoiceOver, NVDA) | 🟠 (Partially supported, [Safari issues 1](https://adrianroselli.com/2022/07/its-mid-2022-and-browsers-mostly-safari-still-break-accessibility-via-display-properties.html), [Safari issues 2](https://adrianroselli.com/2018/02/tables-css-display-properties-and-aria.html)) |
 
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

@@ -4,8 +4,6 @@ The `p-divider` is used as 'horizontal or vertical rule' and displays a dividing
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use to create a visual separation between related sections of content.
@@ -23,8 +21,6 @@ The following section provides guidance for designers and developers on how to u
 This component does not include any special accessibility features.
 
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

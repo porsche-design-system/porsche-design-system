@@ -6,8 +6,6 @@ It is a controlled component. This means it does not contain any internal state,
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use accordions to organize and display large amounts of content in a structured and efficient way.
@@ -38,26 +36,7 @@ The following section provides guidance for designers and developers on how to u
 
 The accordion summary should be a heading element (e.g.,`p-heading` or `<h1>` to `<h6>`,) to ensure proper semantic structure and correct heading hierarchy.
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

@@ -12,8 +12,6 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 `p-input-email` is specifically designed for collecting email addresses. It leverages built-in browser validation to ensure that input follows the correct email format. This makes it a better choice than a generic text input when email validation, proper keyboard behavior on mobile, and accessibility are important. For further guidance, see the [MDN documentation on email inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/email#using_email_inputs).
 
 ### Do:
@@ -78,26 +76,7 @@ Due to the nature of **Web Components** and **shadow DOM**, there are limitation
 | `aria-labelledby` | 🚫 |
 | `aria-describedby` | 🚫 |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

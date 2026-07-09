@@ -16,8 +16,6 @@ It is a controlled component. This grants flexible control over the flyout's beh
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use a Flyout as a temporary workspace that allows users to complete tasks without navigating to a new page.
@@ -66,26 +64,7 @@ The `Flyout` component uses the native `dialog` element to provide a modal dialo
 
 To inform users that the trigger button opens a `dialog`, set the trigger button's `aria` property to the value `{ 'aria-haspopup': 'dialog' }`, binding it with your framework's prop syntax (see the examples).
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

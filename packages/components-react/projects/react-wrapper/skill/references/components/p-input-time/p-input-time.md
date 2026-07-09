@@ -12,8 +12,6 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 `p-input-time` is intended for time input scenarios. It should not be used for values that merely happen to consist of digits. For those cases, consider using another input with an appropriate input mode. For further guidance, see the [MDN documentation on time inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#using_time_inputs).
 
 ### Do:
@@ -79,26 +77,7 @@ Due to the nature of **Web Components** and **shadow DOM**, there are limitation
 | `aria-labelledby` | 🚫 |
 | `aria-describedby` | 🚫 |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

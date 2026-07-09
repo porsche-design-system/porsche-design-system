@@ -6,8 +6,6 @@ For ongoing operations between 2-10 seconds, where the loading progress cannot b
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use when the user has to wait for more than 1 second.
@@ -48,22 +46,6 @@ To provide feedback to screen reader users, it is mandatory to announce the load
 - Pre-rendering the component in the DOM.
 - Providing a meaningful loading state message through the `aria` property, e.g. `aria="{ 'aria-label': 'Start/End loading content'}"`.
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## Notes
 
 ### Disable animation
@@ -77,8 +59,6 @@ For automated visual regression tests, the spinner animation can be disabled by 
 ```
 
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

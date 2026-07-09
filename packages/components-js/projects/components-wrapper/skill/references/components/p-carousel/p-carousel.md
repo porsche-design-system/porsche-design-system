@@ -20,8 +20,6 @@ Therefore, the `p-carousel`'s content has to be divided into multiple parts or s
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use to showcase a group of related featured content in a row, such as images or cards.
@@ -74,26 +72,7 @@ Through the `skipLinkTarget` property, a skip link for keyboard users can be pro
 - Use the `skipLinkTarget` property if you have >5 carousel items
 - The target of the skip link should point to the next heading or element right after the carousel
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

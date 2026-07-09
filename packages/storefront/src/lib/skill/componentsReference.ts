@@ -91,6 +91,25 @@ const renderSection = (
   return markdown;
 };
 
+/** The information-free opener every `usage` MDX repeats; dropped so the section starts at the real "Do/Don't". */
+const USAGE_FILLER =
+  /\n*The following section provides guidance for designers and developers on how to use this component in different situations\.\n*/;
+
+/**
+ * Remove per-file boilerplate that repeats verbatim across the component references. The
+ * "component-meta is authoritative" API preamble is dropped in the generator; here we drop the
+ * information-free usage opener and the all-pass a11y `## Tests` matrix (stated once in SKILL.md). A
+ * `## Tests` section is kept when it flags an exception (a non-✅ mark, e.g. `p-icon`'s partial
+ * high-contrast support), since that is real per-component content. The per-component `## Limitations`
+ * ARIA table is left in place — its rows differ by component, so it is not boilerplate.
+ */
+const stripBoilerplateProse = (markdown: string): string =>
+  markdown
+    .replace(USAGE_FILLER, '\n\n')
+    .replace(/\n## Tests\n[\s\S]*?(?=\n## |$)/, (section) => (/🟠|❌|⚠️|🚫|partial/i.test(section) ? section : '\n'))
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
 /**
  * Render a single component's prose sections (introduction / usage / accessibility
  * / notes) to the markdown body of `references/components/<tag>/<tag>.md`. TASK-04 (API
@@ -133,7 +152,7 @@ export const renderComponentProse = (
     }
   }
 
-  return { markdown: sections.join('\n\n'), summary, degradedSections };
+  return { markdown: stripBoilerplateProse(sections.join('\n\n')), summary, degradedSections };
 };
 
 /** Authoritative `componentMeta` (props/slots/events/CSS variables) keyed by tag, plus the target framework. */
@@ -225,7 +244,7 @@ export const writeComponentReferences = (
     const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag], statusBanner, tree.framework);
     const sections = [markdown];
     if (apiMeta) {
-      sections.push(renderComponentApi(apiMeta, apiOptions.framework, iconNames));
+      sections.push(renderComponentApi(apiMeta, iconNames));
     }
     const subComponents = subComponentsByParent[tag];
     if (subComponents && subComponents.length > 0) {

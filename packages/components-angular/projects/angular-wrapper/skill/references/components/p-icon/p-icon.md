@@ -4,8 +4,6 @@ Along with other Porsche basic elements - such as colors, typography and the Por
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use the available icons from [Porsche Icons](https://icons.porsche.com).
@@ -52,8 +50,6 @@ Sometimes icons are used purely for **decorative purposes** and do not convey an
 | Screen reader (VoiceOver, NVDA) | ✅ |
 
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

@@ -8,8 +8,6 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 The `p-input-tel` component is specifically designed for collecting telephone numbers. It leverages built-in browser validation to ensure that input follows the correct phone number format. This makes it a better choice than a generic text input when phone number validation, proper keyboard behavior on mobile devices, and accessibility are important. For further guidance, see the [MDN documentation on tel inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/tel#using_tel_inputs).
 
 ### Do:
@@ -74,26 +72,7 @@ Due to the nature of **Web Components** and **shadow DOM**, there are limitation
 | `aria-labelledby` | 🚫 |
 | `aria-describedby` | 🚫 |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

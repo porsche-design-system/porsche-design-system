@@ -40,26 +40,7 @@ For more information about the Usage of the `p-toast` checkout the [Notification
 
 The `Toast` component uses `role="status"` to announce **content changes** for assistive technologies. Therefore, it is **mandatory** that the component is **pre-rendered** and the content (`Toast Item`) is added dynamically.
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### CSS Variables
 

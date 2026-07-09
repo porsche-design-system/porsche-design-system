@@ -10,8 +10,6 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use it when an instant response to applied settings is required without explicit action.
@@ -56,26 +54,7 @@ The following section provides guidance for designers and developers on how to u
 | `aria-checked="BOOLEAN"` | Indicates the status of the switch element. |
 | `role="status"` | When `loading` prop is set, the component announces the loading state (start and finish). |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

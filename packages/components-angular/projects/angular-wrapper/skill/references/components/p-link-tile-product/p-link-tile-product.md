@@ -18,8 +18,6 @@ The `heading` and `price` properties are required and a link must be provided, u
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use Link-Tile-Product to display a single product or within other products.
@@ -53,8 +51,6 @@ The following section provides guidance for designers and developers on how to u
 Not yet considered due to experimental state  🧪.
 
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

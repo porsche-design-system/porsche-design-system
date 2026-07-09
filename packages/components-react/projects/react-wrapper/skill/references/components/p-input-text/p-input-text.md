@@ -12,8 +12,6 @@ While a `placeholder` is optional but recommended to be set whenever bits of exa
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 `p-input-text` is intended for freeform text input scenarios. It is suitable for entering names, addresses, or any other non-restricted textual content. It should not be used where semantic or functional input types like numbers, emails, or dates are more appropriate. In such cases, consider using a more specific input type or component optimized for that data. For further guidance, see the [MDN documentation on text inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/text#using_text_inputs).
 
 ### Do:
@@ -82,26 +80,7 @@ Due to the nature of **Web Components** and **shadow DOM**, there are limitation
 | `aria-labelledby` | 🚫 |
 | `aria-describedby` | 🚫 |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

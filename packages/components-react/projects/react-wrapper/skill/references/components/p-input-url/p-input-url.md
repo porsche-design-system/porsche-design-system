@@ -12,8 +12,6 @@ A `placeholder` is optional, but recommended when example content or hints shoul
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 The `p-input-url` component is specifically designed for collecting website URLs. It leverages built-in browser validation to ensure that the input follows the correct URL format. This makes it a better choice than a generic text input when URL validation, proper keyboard behavior on mobile devices, and accessibility are important. For further guidance, see the [MDN documentation on url inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/url).
 
 ### Do:
@@ -78,26 +76,7 @@ Due to the nature of **Web Components** and **shadow DOM**, there are limitation
 | `aria-labelledby` | 🚫 |
 | `aria-describedby` | 🚫 |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

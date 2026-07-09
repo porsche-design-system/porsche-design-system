@@ -6,8 +6,6 @@
 
 Use tags to label, categorize, or organize items using keywords that describe them.
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use to indicate or highlight a certain attribute of an item.
@@ -32,8 +30,6 @@ The following section provides guidance for designers and developers on how to u
 This component does not include any special accessibility features.
 
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

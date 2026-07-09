@@ -18,8 +18,6 @@ Since it's a controlled component it's necessary to register an event listener f
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use Drilldown for multilevel purposes.
@@ -69,26 +67,7 @@ The `Drilldown` component uses the native `dialog` element to provide a modal di
 
 To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria` property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

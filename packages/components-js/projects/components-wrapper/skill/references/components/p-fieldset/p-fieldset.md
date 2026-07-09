@@ -4,8 +4,6 @@ The `p-fieldset` is a grouping component for wrapping contextual associated form
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use to group related fields together to make them more organized and easier to understand for users.
@@ -52,25 +50,7 @@ The following section provides guidance for designers and developers on how to u
 | `aria-invalid="true"` | If `error` state is set. |
 | `aria-describedby="IDREF"` | References the accessible description when `state` message is provided. |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

@@ -329,6 +329,7 @@ export const buildSkillMd = (
       'stale prior — do not add it, verify against the installed types. See `references/stylesheets.md`.',
     `- \`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow \`component-meta\` (raw data at \`${rawMetaReference(framework)}\`).${rawDataNote}`,
     '- Prefer Porsche Design System components and tokens for new UI. Do not rewrite non-PDS UI unasked, and do not hijack work that targets another library.',
+    '- Every component is validated against the PDS accessibility test matrix (automated: AXE-Core WCAG 2.2 AA, high-contrast, text-zoom; manual: keyboard, screen reader). A component reference carries a `## Tests` section only to flag an exception (e.g. partial high-contrast support).',
     '- All content here is version-exact for the installed package — never mix guidance across versions.',
     '- Every reference path is relative to this skill root unless explicitly noted otherwise.',
   ].join('\n');

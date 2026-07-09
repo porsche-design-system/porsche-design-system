@@ -48,8 +48,6 @@ Not yet considered due to experimental state  🧪.
 
 ## API
 
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
-
 ### Properties
 
 | Property | Type | Default | Description |

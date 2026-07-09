@@ -20,8 +20,6 @@ The most important property of `p-sheet` is its `open` property. When it's set t
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use an sheet only for critical decisions or when multiple related actions need to be presented.
@@ -65,26 +63,7 @@ The `Sheet` component uses the native `dialog` element to provide a modal dialog
 | --- | --- |
 | `aria-label="STRING"` | Defines the accessible name if no `aria` property is provided, uses the contents of the header slot and falls back to a fixed name. |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

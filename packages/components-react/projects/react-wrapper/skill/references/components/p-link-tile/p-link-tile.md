@@ -12,8 +12,6 @@ The `label` property is used to describe the anchor.
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use Link-Tile for prominent links with appropriate aspect ratios and short descriptions (80 characters or fewer).
@@ -68,26 +66,7 @@ In general, placing textual contents above an image or video can easily lead to 
 
 In case a video background is used, the component checks whether **reduced motion** is enabled in the operating system settings and prevents the `<video autoplay loop />` attribute from working to improve accessibility & UX. In addition, the slotted video should have no audio or is muted by `<video muted />`. Also keep in mind that long videos or videos in general might increase the page load time. The video content should support the CTA instead of distracting from it. To support screen reader users, define an alternative video description: `<video aria-label="Some video description"" />`.
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

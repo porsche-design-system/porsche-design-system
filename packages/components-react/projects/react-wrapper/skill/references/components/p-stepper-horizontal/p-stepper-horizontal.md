@@ -18,8 +18,6 @@ By clicking on a previous step, the `p-stepper-horizontal` emits the `update` ev
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use to display progress through a sequence of logical and numbered steps.
@@ -54,26 +52,7 @@ The following section provides guidance for designers and developers on how to u
 | `role="list"` | Indicates the stepper as list element. |
 | `role="listitem"` | Indicates the step-item as list-item element. |
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

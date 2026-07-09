@@ -6,8 +6,6 @@ import type {
   SlotMeta,
 } from '@porsche-design-system/component-meta';
 import { escapeCell, markdownTable } from './markdown';
-import { rawMetaReference } from './skillMd';
-import type { Framework } from './skillTree';
 
 /**
  * Renders the props / slots / events / CSS-variable API tables for a component's
@@ -284,19 +282,14 @@ export const parseRequiredParents = (requiredParent: string | string[] | undefin
 
 /**
  * Render the `## API` section to append to a component's `<tag>.md`. Only tables that
- * have entries are emitted. The raw-meta link is the authoritative source pointer:
- * the local `../meta` sibling in the js skill, the js package's `/meta` subpath in the
- * framework skills (whose own `../meta` is only a re-export shim).
+ * have entries are emitted. The "component-meta is authoritative" rule and the raw-meta
+ * location are stated once in SKILL.md's core rules rather than per file.
  */
-export const renderComponentApi = (
-  meta: ComponentMeta,
-  framework: Framework,
-  iconNames: ReadonlySet<string> = new Set()
-): string => {
-  const sections: string[] = [
-    `## API\n\nAuthoritative API data: ${code(rawMetaReference(framework))} (\`component-meta\`). When these tables disagree with it, follow \`component-meta\`.`,
-    ...apiTables(meta, 3, iconNames),
-  ];
+export const renderComponentApi = (meta: ComponentMeta, iconNames: ReadonlySet<string> = new Set()): string => {
+  // The "component-meta is authoritative" rule and the raw-meta location live once in SKILL.md's core
+  // rules (always in context when the skill is active), so the per-file preamble that repeated it in all
+  // 58 component references is dropped — just the heading and the tables remain here.
+  const sections: string[] = ['## API', ...apiTables(meta, 3, iconNames)];
   return sections.join('\n\n');
 };
 

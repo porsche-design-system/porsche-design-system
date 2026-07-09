@@ -10,8 +10,6 @@ Alternatively, the Popover can be used in a **controlled** mode by setting the `
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use it to display additional information that is not necessary for task completion or to provide further explanation about a workflow.
@@ -58,26 +56,7 @@ Nielsen Norman Group [Tooltip Guidelines](https://nngroup.com/articles/tooltip-g
 
 The `p-popover` component does not support the `aria-expanded` attribute when used with a custom slotted button. This is because the component does not expose its `open` state publicly, which is necessary to manage the relationship between the button and the internal state of the popover.
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

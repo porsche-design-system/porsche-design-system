@@ -10,8 +10,6 @@ You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on 
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use the [Wordmark](../p-wordmark/p-wordmark.md) as the main brand identifier.
@@ -32,17 +30,7 @@ The following section provides guidance for designers and developers on how to u
 
 This component does not include any special accessibility features.
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

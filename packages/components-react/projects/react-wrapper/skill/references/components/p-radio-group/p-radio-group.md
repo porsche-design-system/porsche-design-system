@@ -12,8 +12,6 @@ A `label` is a caption which informs the user what information a particular form
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use to enable a user to select one value from a predefined list. Use as soon as two options are mutually exclusive.
@@ -82,8 +80,6 @@ In general, avoid using the `disabled` state. Disabled elements are no longer fo
 | Screen reader (VoiceOver, NVDA) | ⚠️(Note: VoiceOver does not announce the number of options correctly) |
 
 ## API
-
-Authoritative API data: `@porsche-design-system/components-js/meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

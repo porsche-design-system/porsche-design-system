@@ -4,8 +4,6 @@ The `p-text-list` component is used to display listed data in form of an unorder
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use to display short pieces of information in the form of an unordered or ordered list.
@@ -24,8 +22,6 @@ The following section provides guidance for designers and developers on how to u
 This component does not include any special accessibility features.
 
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 

@@ -29,8 +29,6 @@ This component does not include any special accessibility features.
 
 ## API
 
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
-
 ### Properties
 
 | Property | Type | Default | Description |

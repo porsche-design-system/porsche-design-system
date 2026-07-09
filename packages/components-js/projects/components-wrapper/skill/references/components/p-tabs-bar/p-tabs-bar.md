@@ -18,8 +18,6 @@ In order to get notified when the active tabs change, you need to register an ev
 
 ## Usage
 
-The following section provides guidance for designers and developers on how to use this component in different situations.
-
 ### Do:
 
 - Use as an anchor navigation to jump to a section on a longer page.
@@ -140,26 +138,7 @@ To enhance accessibility even further, wrap the `p-tabs-bar` in a `<nav>` elemen
 
 If the `p-tabs-bar` is used as an in-page jump navigation, you should follow the same rules as for the route-based variant except that `aria-current="page"` should not be used.
 
-## Tests
-
-### Automated
-
-| Technology | Support |
-| --- | --- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅ |
-| High-Contrast Mode (light/dark) | ✅ |
-| Text-Zoom (200%) | ✅ |
-
-### Manual
-
-| Technology | Support |
-| --- | --- |
-| Keyboard | ✅ |
-| Screen reader (VoiceOver, NVDA) | ✅ |
-
 ## API
-
-Authoritative API data: `../meta` (`component-meta`). When these tables disagree with it, follow `component-meta`.
 
 ### Properties
 
