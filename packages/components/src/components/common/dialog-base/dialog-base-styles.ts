@@ -57,9 +57,6 @@ export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backd
     display: 'block',
     userSelect: 'text', // allows text selection within dialog element (e.g. for copy & paste)
     outline: 0, // we always expect a focusable element to be within the dialog
-    '&::backdrop': {
-      display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
-    },
     ...(isVisible
       ? {
           width: '100dvw',
@@ -90,6 +87,9 @@ export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backd
     ...overlayTransitionSupportsQuery({
       transition: `${transition}, ${getTransition('overlay', duration, easing)} allow-discrete`,
     }),
+    '&::backdrop': {
+      display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
+    },
   };
 };
 

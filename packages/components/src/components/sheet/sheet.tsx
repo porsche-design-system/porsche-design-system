@@ -118,6 +118,10 @@ export class Sheet {
     return (
       <DialogBase
         host={this.host}
+        // `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
+        // fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
+        // during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
+        // `inert` avoids that and mirrors the pattern used by `p-modal` / `p-popover` / `p-drilldown`.
         inert={!this.open}
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
