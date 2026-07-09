@@ -292,6 +292,11 @@ const renderStylingSection = (): string => {
       'library — typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. Pick ' +
       'one solution per project and open its reference for setup and the full catalog.',
     '',
+    'Note: the code examples in the component references use PDS Tailwind utility classes (e.g. `flex`, ' +
+      '`flex-col`, `gap-fluid-sm`) for layout. These only take effect with the Tailwind CSS solution ' +
+      'installed (`references/styles/tailwindcss.md`) — without it they are inert, so replace them with ' +
+      'your own layout CSS.',
+    '',
     markdownTable(['Styling solution', 'Use this when', 'Reference'], rows),
   ].join('\n');
 };

@@ -108,6 +108,8 @@ The Porsche Design System offers a ready-made integration for four styling solut
 
 Use them to build layout and custom components or patterns not yet available in the component library — typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. Pick one solution per project and open its reference for setup and the full catalog.
 
+Note: the code examples in the component references use PDS Tailwind utility classes (e.g. `flex`, `flex-col`, `gap-fluid-sm`) for layout. These only take effect with the Tailwind CSS solution installed (`references/styles/tailwindcss.md`) — without it they are inert, so replace them with your own layout CSS.
+
 | Styling solution | Use this when | Reference |
 | --- | --- | --- |
 | Tailwind CSS | utility-first styling on a PDS Tailwind v4 theme | [tailwindcss.md](references/styles/tailwindcss.md) |
