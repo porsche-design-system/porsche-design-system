@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
@@ -77,23 +77,14 @@ export class Banner {
   private refDismiss: HTMLElement;
   private hasHeadingSlot: boolean;
   private hasDescriptionSlot: boolean;
+  // Tracks whether the document-level Escape listener is currently registered (guards the idempotent sync below).
+  private hasKeydownListener = false;
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.refPopover,
     isShown: () => !!this.refPopover?.matches(':popover-open'),
     show: () => this.refPopover?.showPopover(),
     hide: () => this.refPopover?.hidePopover(),
   });
-
-  @Watch('open')
-  public openChangeHandler(isOpen: boolean): void {
-    if (this.dismissButton) {
-      if (isOpen) {
-        document.addEventListener('keydown', this.onKeyboardEvent);
-      } else {
-        document.removeEventListener('keydown', this.onKeyboardEvent);
-      }
-    }
-  }
 
   public connectedCallback(): void {
     // Observe dynamic slot changes (only needed until :has-slotted CSS pseudo-class gets better support)
@@ -105,20 +96,13 @@ export class Banner {
       undefined,
       { subtree: false, childList: true, attributes: false }
     );
-
-    if (this.open && this.dismissButton) {
-      document.addEventListener('keydown', this.onKeyboardEvent);
-    }
   }
 
   public disconnectedCallback(): void {
-    // ensures the deferred top-layer hide is canceled in case banner is removed from DOM
+    // ensures the deferred top-layer hide is canceled and the Escape listener is removed in case banner is removed from DOM
     this.topLayer.cancel();
+    this.syncEscapeListener(false);
     unobserveChildren(this.host);
-
-    if (this.open && this.dismissButton) {
-      document.removeEventListener('keydown', this.onKeyboardEvent);
-    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -133,6 +117,9 @@ export class Banner {
     } else {
       this.topLayer.requestHide();
     }
+    // Register/unregister the document-level Escape listener based on the current open state (idempotent). Escape only
+    // dismisses when a dismiss button is present, so the listener is gated on `dismissButton` too.
+    this.syncEscapeListener(this.open && this.dismissButton);
     this.refDismiss?.focus();
   }
 
@@ -194,8 +181,20 @@ export class Banner {
     );
   }
 
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape') {
+  private syncEscapeListener = (active: boolean): void => {
+    if (active && !this.hasKeydownListener) {
+      document.addEventListener('keydown', this.onEscape);
+      this.hasKeydownListener = true;
+    } else if (!active && this.hasKeydownListener) {
+      document.removeEventListener('keydown', this.onEscape);
+      this.hasKeydownListener = false;
+    }
+  };
+
+  private onEscape = (e: KeyboardEvent): void => {
+    // Guarded by `this.open` (mirrors `p-popover`) so it never emits `dismiss` for an already-closed banner, even
+    // though the listener is only registered while open — defense-in-depth against transitional windows.
+    if (e.key === 'Escape' && this.open) {
       this.dismissBanner();
     }
   };

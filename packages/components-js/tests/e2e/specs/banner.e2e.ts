@@ -114,6 +114,31 @@ test.describe('close', () => {
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
+  test('should not emit dismiss event on outside click', async ({ page }) => {
+    // Unlike p-popover, the banner intentionally does NOT light-dismiss on an outside click; it only closes via the
+    // dismiss button or Escape. This locks in that deliberate divergence.
+    await initBanner(page, { open: true });
+    const host = getHost(page);
+    await addEventListener(host, 'dismiss');
+    await page.mouse.click(1, 1); // click far outside the banner
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+  });
+
+  test('should attach ESC listener when dismissButton is enabled at runtime while open', async ({ page }) => {
+    // Regression guard for the idempotent `componentDidRender` listener sync: toggling `dismissButton` at runtime must
+    // (un)register the Escape listener even though `open` did not change (the previous `@Watch('open')` approach missed this).
+    await initBanner(page, { open: true, dismissButton: false });
+    const host = getHost(page);
+    await addEventListener(host, 'dismiss');
+    await page.keyboard.press('Escape');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    await setProperty(host, 'dismissButton', true);
+    await waitForStencilLifecycle(page);
+    await page.keyboard.press('Escape');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+  });
+
   test('should not influence other banner styles', async ({ page }) => {
     await setContentWithDesignSystem(
       page,
