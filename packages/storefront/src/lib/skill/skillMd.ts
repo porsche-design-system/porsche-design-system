@@ -87,6 +87,18 @@ export const rawScssReference = (framework: Framework): string =>
 export const packageName = (framework: Framework): string => `@porsche-design-system/components-${framework}`;
 
 /**
+ * The initialization API each framework configures PDS through — the place a reader might wrongly
+ * expect a `theme` option. React/Vue take the `PorscheDesignSystemProvider` component; js calls
+ * `load()`; Angular calls `PorscheDesignSystemModule.load()`. Each accepts only `prefix` and `cdn`.
+ */
+const THEME_INIT_TARGET: Record<Framework, string> = {
+  react: '`PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`)',
+  vue: '`PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`)',
+  js: 'the `load()` initializer (it takes only `prefix` and `cdn`)',
+  angular: '`PorscheDesignSystemModule.load()` (it takes only `prefix` and `cdn`)',
+};
+
+/**
  * Framework-specific "Getting started" content, inlined into SKILL.md so the agent knows — the moment
  * the skill activates — how to initialize PDS and how the framework's component syntax maps to the
  * custom-element tags the roster and references use. React and Vue expose PascalCase component wrappers
@@ -307,8 +319,7 @@ export const buildSkillMd = (
     '- **Theming is one mechanism — CSS `color-scheme`, nothing else.** Light/dark is controlled solely by ' +
       'the `.scheme-light` / `.scheme-dark` / `.scheme-light-dark` classes on `<html>` (or any ancestor); ' +
       'the scheme cascades to **both** PDS components and custom markup, which all resolve colors via ' +
-      '`light-dark()`. `.scheme-light-dark` follows the OS. There is **no** `theme` prop — not on ' +
-      '`PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`) and not on components. A ' +
+      `\`light-dark()\`. \`.scheme-light-dark\` follows the OS. There is **no** \`theme\` prop — not on ${THEME_INIT_TARGET[framework]} and not on components. A ` +
       '`theme="light|dark|auto"` prop existed in earlier majors and was removed; if you recall one, it is a ' +
       'stale prior — do not add it, verify against the installed types. See `references/stylesheets.md`.',
     `- \`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow \`component-meta\` (raw data at \`${rawMetaReference(framework)}\`).${rawDataNote}`,

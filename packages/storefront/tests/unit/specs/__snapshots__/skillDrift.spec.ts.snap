@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`skill tree drift > the committed angular skill tree matches its snapshot 1`] = `
-"db822010a406f5e8716fc585aa4294b13bb807c43a5ed1c6bb41745940cba41d  SKILL.md
+"396d5e12ebebfcb53e60adc537fc50abf750923ffae081e9bb2d61c4f709d323  SKILL.md
 aa43180aa08b165d84f7472d934177da5b2d81d9abdc5901ceabf8f4e997cc19  references/components/p-accordion/examples/Default.ts
 7b3e312df9510617c2a8a173337a254280f90a3b4381bc14aeb8dcf7f31907f6  references/components/p-accordion/examples/InteractiveElementsInSummary.ts
 8559e070d434df14593a8491ee02be364785ea30804a4f1c49c212694245e97e  references/components/p-accordion/examples/StickySummary.ts
@@ -286,7 +286,7 @@ ffa6c9f2eb42eb425dc2e4bed84c4cf31f9c6de73934a2b48970d04a372cc53d  references/tok
 `;
 
 exports[`skill tree drift > the committed js skill tree matches its snapshot 1`] = `
-"c362cc3fe1e0797dfb22ee243bbb727771b104bb9ecdad4f457678c4bd7de1fc  SKILL.md
+"30a2043d16ca16cb9f508456a5ac58e4348b20b1e96743e539a02e02b5e65b6a  SKILL.md
 9fc01487396134d1542aab677c47b685d8f4447551f63a5ba0f1203e7bbd836b  references/components/p-accordion/examples/Default.html
 f0abd7d910d4c0d32228a7e8c0ed8d8f87e7135a06ca5e3deeb045be995581db  references/components/p-accordion/examples/InteractiveElementsInSummary.html
 70af60619bf8f9352d7321274f1db8f44e4fc5e8eea6c7b34382cfda08f1edc0  references/components/p-accordion/examples/StickySummary.html
