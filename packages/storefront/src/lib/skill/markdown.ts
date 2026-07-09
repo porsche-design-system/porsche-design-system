@@ -23,6 +23,13 @@ export const escapeCell = (text: string): string =>
 export const stripLeadingH1 = (markdown: string): string => markdown.replace(/^#\s+[^\n]*\n+/, '');
 
 /**
+ * Drop leading blockquote block(s) (e.g. a notification admonition an introduction opens with) so the
+ * roster summary is derived from the first real prose sentence, not the admonition text.
+ */
+export const stripLeadingBlockquotes = (markdown: string): string =>
+  markdown.replace(/^(?:>[^\n]*(?:\n|$))+\s*/, '');
+
+/**
  * A period that does not end a sentence: a dotted abbreviation (`e.g`, `i.e`, `U.S`)
  * or a common trailing abbreviation word. Tested against the text up to a candidate
  * terminator so summaries are not truncated mid-abbreviation (e.g. "messages (e.g.").

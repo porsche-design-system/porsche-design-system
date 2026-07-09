@@ -1,8 +1,25 @@
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import type { Framework as StorefrontFramework } from '@porsche-design-system/shared';
 import { type HTMLElement as ParsedElement, type Node as ParsedNode, NodeType, parse } from 'node-html-parser';
 import { type ComponentType, createElement, type ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { FrameworkNotification } from '@/components/common/FrameworkNotification';
+import { Notification } from '@/components/common/Notification';
 import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
+import type { Framework } from './skillTree';
+
+/**
+ * Skill framework → the storefront's own framework identifier. They differ only in the vanilla-js name
+ * (`js` here, `vanilla-js` in the storefront `FrameworkNotification` / framework switcher). Threaded
+ * into the render so `FrameworkNotification` shows the content meant for the tree being generated,
+ * instead of being frozen to the SSR default.
+ */
+const STOREFRONT_FRAMEWORK: Record<Framework, StorefrontFramework> = {
+  js: 'vanilla-js',
+  angular: 'angular',
+  react: 'react',
+  vue: 'vue',
+};
 
 export type RenderMdxResult = {
   /** The rendered prose as plain markdown. */
@@ -20,8 +37,16 @@ export type RenderMdxResult = {
  * plain-markdown context. They are substituted with nothing via the `components`
  * prop so they never leak into the output. Any not resolved through the prop
  * (e.g. directly imported) are caught by the drop-list below after rendering.
+ *
+ * `Notification` / `FrameworkNotification` are deliberately absent: both render a
+ * `p-inline-notification` whose slotted children carry real guidance (e.g. the
+ * `p-checkbox` Firefox workaround, the React `onInput`-vs-`onChange` caveat). Those
+ * are preserved as blockquote admonitions by {@link renderNotification} rather than dropped.
  */
-const EMBEDDED_COMPONENT_STUBS = ['TableOfContents', 'Notification', 'PartialDocs', 'TokensTable', 'ComponentStatus'];
+const EMBEDDED_COMPONENT_STUBS = ['TableOfContents', 'PartialDocs', 'TokensTable', 'ComponentStatus'];
+
+/** The custom-element tag both `Notification` and `FrameworkNotification` render to. */
+const NOTIFICATION_TAG = 'P-INLINE-NOTIFICATION';
 
 /** Block-level tags that map directly to markdown blocks. */
 const BLOCK_TAGS = new Set(['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'P', 'UL', 'OL', 'BLOCKQUOTE', 'PRE', 'HR', 'TABLE']);
@@ -218,7 +243,35 @@ const renderBlock = (node: ParsedElement): string => {
 const isBlockElement = (node: ParsedNode): boolean =>
   isElement(node) && (BLOCK_TAGS.has(node.tagName) || UNWRAP_TAGS.has(node.tagName));
 
-const renderBlocks = (parent: ParsedNode): string => {
+/**
+ * Render a `p-inline-notification` (emitted by the `Notification` / `FrameworkNotification` doc
+ * components) as a blockquote admonition instead of dropping it as custom-element noise. The heading is
+ * a component prop reflected only into the shadow `<template>` (as the alert's `aria-label`, mirrored by
+ * its heading element), so it is read from there; the slotted guidance is the element's light-DOM
+ * children — every child except that `<template>`.
+ */
+const renderNotification = (node: ParsedElement): string => {
+  const template = node.childNodes.find(
+    (child): child is ParsedElement => isElement(child) && child.tagName === 'TEMPLATE'
+  );
+  const heading = (
+    template?.querySelector('[aria-label]')?.getAttribute('aria-label') ??
+    template?.querySelector('h1, h2, h3, h4, h5, h6')?.text ??
+    ''
+  ).trim();
+  const bodyNodes = node.childNodes.filter((child) => !(isElement(child) && child.tagName === 'TEMPLATE'));
+  const body = renderBlockNodes(bodyNodes);
+  const inner = [heading && `**${heading}**`, body].filter(Boolean).join('\n\n');
+  if (!inner.trim()) {
+    return '';
+  }
+  return inner
+    .split('\n')
+    .map((line) => (line ? `> ${line}` : '>'))
+    .join('\n');
+};
+
+const renderBlockNodes = (childNodes: ParsedNode[]): string => {
   const blocks: string[] = [];
   let inlineBuffer = '';
 
@@ -230,7 +283,17 @@ const renderBlocks = (parent: ParsedNode): string => {
     inlineBuffer = '';
   };
 
-  for (const child of parent.childNodes) {
+  for (const child of childNodes) {
+    // Notifications carry real guidance in their slotted children — surface them (see
+    // renderNotification) before the custom-element drop below strips the whole element.
+    if (isElement(child) && child.tagName === NOTIFICATION_TAG) {
+      flushInline();
+      const block = renderNotification(child);
+      if (block) {
+        blocks.push(block);
+      }
+      continue;
+    }
     if (isElement(child) && (DROP_TAGS.has(child.tagName) || isCustomElement(child.tagName))) {
       continue;
     }
@@ -249,28 +312,34 @@ const renderBlocks = (parent: ParsedNode): string => {
   return blocks.join('\n\n');
 };
 
+const renderBlocks = (parent: ParsedNode): string => renderBlockNodes(parent.childNodes);
+
 const normalize = (markdown: string): string =>
   markdown
     .replace(/[ \t]+\n/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
-/** The storefront contexts the embedded doc components read during SSR. */
-const SkillProviders = ({ children }: { children: ReactNode }) =>
-  createElement(PorscheDesignSystemProvider, null, createElement(StorefrontFrameworkProvider, null, children));
+/** The storefront contexts the embedded doc components read during SSR, framework fixed to the target tree. */
+const SkillProviders = ({ children, framework }: { children: ReactNode; framework: StorefrontFramework }) =>
+  createElement(
+    PorscheDesignSystemProvider,
+    null,
+    createElement(StorefrontFrameworkProvider, { initialFramework: framework }, children)
+  );
 
 /** An MDX module resolved to a React component, the sole input this renderer converts to markdown. */
 type MdxComponent = ComponentType<{ components?: Record<string, unknown> }>;
 
 /**
- * Prose rendering is framework-independent: the render sits under the default (vanilla-js)
- * `StorefrontFrameworkProvider` and takes no framework argument, so a given MDX component yields
- * identical markdown for every framework. The generator makes one full pass per framework (four in
- * all), re-rendering the same partials, migration guides and component prose each time — the dominant
- * build cost. Cache the result on the MDX module's stable identity so each renders exactly once across
- * all four trees. Only successful renders are memoized; a throw is always re-raised, never cached.
+ * Most prose is framework-independent, but `FrameworkNotification` renders per-framework, so the render
+ * is done under a `StorefrontFrameworkProvider` fixed to the target framework and the result is cached
+ * per (MDX module, framework). The generator makes one full pass per framework (four in all); this
+ * memoizes so framework-independent prose still renders once per framework at most (not once per call
+ * site) while framework-dependent prose stays correct. Only successful renders are memoized; a throw is
+ * always re-raised, never cached.
  */
-const renderCache = new WeakMap<MdxComponent, RenderMdxResult>();
+const renderCache = new WeakMap<MdxComponent, Map<Framework, RenderMdxResult>>();
 
 /**
  * Renders a storefront MDX `ComponentType` (component introduction / usage /
@@ -281,11 +350,18 @@ const renderCache = new WeakMap<MdxComponent, RenderMdxResult>();
  * Embedded storefront components are substituted away (see {@link EMBEDDED_COMPONENT_STUBS})
  * or dropped, so no JSX/component noise leaks into the output.
  *
+ * @param framework the tree being generated; fixes `FrameworkNotification` to the matching content and
+ *   keys the cache. Defaults to `js` (vanilla-js) for framework-agnostic callers and unit tests.
  * @param label optional source identifier (e.g. `p-button › usage`) used to give an SSR failure an
  *   actionable message — the raw `renderToStaticMarkup` stack names neither the tag nor the section.
  */
-export const renderMdxToMarkdown = (component: MdxComponent, label?: string): RenderMdxResult => {
-  const cached = renderCache.get(component);
+export const renderMdxToMarkdown = (
+  component: MdxComponent,
+  framework: Framework = 'js',
+  label?: string
+): RenderMdxResult => {
+  const byFramework = renderCache.get(component) ?? new Map<Framework, RenderMdxResult>();
+  const cached = byFramework.get(framework);
   if (cached) {
     return cached;
   }
@@ -294,6 +370,12 @@ export const renderMdxToMarkdown = (component: MdxComponent, label?: string): Re
   for (const name of EMBEDDED_COMPONENT_STUBS) {
     componentStubs[name] = () => null;
   }
+  // `Notification` / `FrameworkNotification` are provided (not nulled) so MDX that references them
+  // without a local import — as some prose does — resolves to the real component and its `dismiss`-free
+  // `p-inline-notification`, which renderNotification then turns into a blockquote. Directly-imported
+  // usages already resolve to the same components; both paths converge on that HTML handler.
+  componentStubs.Notification = Notification as ComponentType;
+  componentStubs.FrameworkNotification = FrameworkNotification as ComponentType;
 
   // Prose embeds live PDS and storefront doc components (rendered, then dropped as
   // custom-element / chrome noise below). They read React context — PDS `usePrefix`,
@@ -302,7 +384,11 @@ export const renderMdxToMarkdown = (component: MdxComponent, label?: string): Re
   let html: string;
   try {
     html = renderToStaticMarkup(
-      createElement(SkillProviders, null, createElement(component, { components: componentStubs }))
+      createElement(
+        SkillProviders,
+        { framework: STOREFRONT_FRAMEWORK[framework] },
+        createElement(component, { components: componentStubs })
+      )
     );
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
@@ -312,6 +398,7 @@ export const renderMdxToMarkdown = (component: MdxComponent, label?: string): Re
   const degraded = markdown.length === 0 || !/[A-Za-z0-9]/.test(markdown);
 
   const result: RenderMdxResult = { markdown, degraded };
-  renderCache.set(component, result);
+  byFramework.set(framework, result);
+  renderCache.set(component, byFramework);
   return result;
 };

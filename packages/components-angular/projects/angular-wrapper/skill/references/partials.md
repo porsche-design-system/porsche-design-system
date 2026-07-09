@@ -50,19 +50,37 @@ Project integration differs based on the project setup. The following showcases 
 **Note:** Make sure to preload only fonts which are really needed initially!
 
 ```
-<!-- index.html -->
-<head>
-  <!--PLACEHOLDER_FONT_LINKS-->
-</head>
+<!-- prerequisite -->
+<!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
+npm install --save-dev @angular-builders/custom-webpack
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getFontLinks())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: Force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getFontLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- angular.json -->
+...
+"architect": {
+  "build": {
+-   "builder": "@angular-devkit/build-angular:browser",
++   "builder": "@angular-builders/custom-webpack:browser",
+    "options": {
+      "outputPath": "dist/components-angular",
++     "indexTransform": "./scripts/injectPartials.ts",
+    }
+  }
+  "serve": {
+-   "builder": "@angular-devkit/build-angular:dev-server",
++   "builder": "@angular-builders/custom-webpack:dev-server",
+
+<!-- ./scripts/injectPartials.ts -->
+import type { TargetOptions } from '@angular-builders/custom-webpack';
+import { getFontLinks } from '@porsche-design-system/components-angular/partials';
+
+export default (targetOptions: TargetOptions, indexHtml: string): string => {
+  let partialContent = getFontLinks();
+
+  // Alternative: Force using China CDN
+  partialContent = getFontLinks({ cdn: 'cn' });
+
+  return indexHtml.replace(/<\/head>/, `${partialContent}$&`);
+};
 ```
 
 ```
@@ -101,19 +119,37 @@ Project integration differs based on the project setup. The following showcases 
 **Note:** Make sure to preload only component chunks which are really needed initially!
 
 ```
-<!-- index.html -->
-<head>
-  <!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->
-</head>
+<!-- prerequisite -->
+<!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
+npm install --save-dev @angular-builders/custom-webpack
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getComponentChunkLinks({ components: [\"button\", \"wordmark\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getComponentChunkLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- angular.json -->
+...
+"architect": {
+  "build": {
+-   "builder": "@angular-devkit/build-angular:browser",
++   "builder": "@angular-builders/custom-webpack:browser",
+    "options": {
+      "outputPath": "dist/components-angular",
++     "indexTransform": "./scripts/injectPartials.ts",
+    }
+  }
+  "serve": {
+-   "builder": "@angular-devkit/build-angular:dev-server",
++   "builder": "@angular-builders/custom-webpack:dev-server",
+
+<!-- ./scripts/injectPartials.ts -->
+import type { TargetOptions } from '@angular-builders/custom-webpack';
+import { getComponentChunkLinks } from '@porsche-design-system/components-angular/partials';
+
+export default (targetOptions: TargetOptions, indexHtml: string): string => {
+  let partialContent = getComponentChunkLinks({ components: ['button', 'wordmark'] });
+
+  // Alternative: force using China CDN
+  partialContent = getComponentChunkLinks({ cdn: 'cn' });
+
+  return indexHtml.replace(/<\/head>/, `${partialContent}$&`);
+};
 ```
 
 ```
@@ -151,19 +187,37 @@ When using `jsx` in the `format` option, it is necessary to have `react/jsx-runt
 Project integration differs based on the project setup. The following showcases the most common ways.
 
 ```
-<!-- index.html -->
-<head>
-  <!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->
-</head>
+<!-- prerequisite -->
+<!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
+npm install --save-dev @angular-builders/custom-webpack
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: Force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\", cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- angular.json -->
+...
+"architect": {
+  "build": {
+-   "builder": "@angular-devkit/build-angular:browser",
++   "builder": "@angular-builders/custom-webpack:browser",
+    "options": {
+      "outputPath": "dist/components-angular",
++     "indexTransform": "./scripts/injectPartials.ts",
+    }
+  }
+  "serve": {
+-   "builder": "@angular-devkit/build-angular:dev-server",
++   "builder": "@angular-builders/custom-webpack:dev-server",
+
+<!-- ./scripts/injectPartials.ts -->
+import type { TargetOptions } from '@angular-builders/custom-webpack';
+import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-angular/partials';
+
+export default (targetOptions: TargetOptions, indexHtml: string): string => {
+  let partialContent = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' });
+
+  // Alternative: Force using China CDN
+  partialContent = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP', cdn: 'cn' });
+
+  return indexHtml.replace(/<\/head>/, `${partialContent}$&`);
+};
 ```
 
 ```
@@ -230,19 +284,37 @@ Project integration differs based on the project setup. The following showcases 
 **Note:** Make sure to preload only icons which are really needed initially!
 
 ```
-<!-- index.html -->
-<head>
-  <!--PLACEHOLDER_ICON_LINKS-->
-</head>
+<!-- prerequisite -->
+<!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
+npm install --save-dev @angular-builders/custom-webpack
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: Force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"], cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- angular.json -->
+...
+"architect": {
+  "build": {
+-   "builder": "@angular-devkit/build-angular:browser",
++   "builder": "@angular-builders/custom-webpack:browser",
+    "options": {
+      "outputPath": "dist/components-angular",
++     "indexTransform": "./scripts/injectPartials.ts",
+    }
+  }
+  "serve": {
+-   "builder": "@angular-devkit/build-angular:dev-server",
++   "builder": "@angular-builders/custom-webpack:dev-server",
+
+<!-- ./scripts/injectPartials.ts -->
+import type { TargetOptions } from '@angular-builders/custom-webpack';
+import { getIconLinks } from '@porsche-design-system/components-angular/partials';
+
+export default (targetOptions: TargetOptions, indexHtml: string): string => {
+  let partialContent = getIconLinks({ icons: ['arrow-head-right', 'plus'] });
+
+  // Alternative: Force using China CDN
+  partialContent = getIconLinks({ icons: ['arrow-head-right', 'plus'], cdn: 'cn' });
+
+  return indexHtml.replace(/<\/head>/, `${partialContent}$&`);
+};
 ```
 
 ```
@@ -278,21 +350,40 @@ When using `jsx` in the `format` option, it is necessary to have `react/jsx-runt
 Project integration differs based on the project setup. The following showcases the most common ways.
 
 ```
-<!-- index.html -->
-<body>
-  <!--PLACEHOLDER_LOADER_SCRIPT-->
-</body>
+<!-- prerequisite -->
+<!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
+npm install --save-dev @angular-builders/custom-webpack
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getLoaderScript())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: With custom prefix -->
-  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getLoaderScript({ prefix: \"custom-prefix\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: With multiple custom prefixes -->
-  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-angular/partials\").getLoaderScript({ prefix: [\"\", \"custom-prefix\", \"another-prefix\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- angular.json -->
+...
+"architect": {
+  "build": {
+-   "builder": "@angular-devkit/build-angular:browser",
++   "builder": "@angular-builders/custom-webpack:browser",
+    "options": {
+      "outputPath": "dist/components-angular",
++     "indexTransform": "./scripts/injectPartials.ts",
+    }
+  }
+  "serve": {
+-   "builder": "@angular-devkit/build-angular:dev-server",
++   "builder": "@angular-builders/custom-webpack:dev-server",
+
+<!-- ./scripts/injectPartials.ts -->
+import type { TargetOptions } from '@angular-builders/custom-webpack';
+import { getLoaderScript } from '@porsche-design-system/components-angular/partials';
+
+export default (targetOptions: TargetOptions, indexHtml: string): string => {
+  let partialContent = getLoaderScript();
+
+  // Alternative: With custom prefix
+  partialContent = getLoaderScript({ prefix: 'custom-prefix' });
+
+  // Alternative: With multiple custom prefixes
+  partialContent = getLoaderScript({ prefix: ['', 'custom-prefix', 'another-prefix'] });
+
+  return indexHtml.replace(/<\/body>/, `${partialContent}$&`);
+};
 ```
 
 ```

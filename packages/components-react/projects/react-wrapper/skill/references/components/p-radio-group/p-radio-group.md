@@ -2,6 +2,10 @@
 
 The `p-radio-group` component is a versatile custom form element that enables the selection of a single option.
 
+> **Attention**
+>
+> The `blur` event is emitted whenever the focused `p-radio-group-option` changes — not only when the entire `p-radio-group` loses focus. This means that switching between options within the same group will also trigger a `blur` event for the previously focused option.
+
 Options are slotted using the `p-radio-group-option` component. Each option needs to have an assigned value, which can be passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved using the value property on the `p-radio-group` component. If an option should be visible but not selectable, it can be disabled by using the `disabled` attribute.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The `p-radio-group` component can be used with or without a label, but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.

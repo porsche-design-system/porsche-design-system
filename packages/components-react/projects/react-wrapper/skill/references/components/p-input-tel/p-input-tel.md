@@ -6,6 +6,10 @@ A `label` is a caption which informs the user what information a particular form
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to give the user visual cues to fill out the form.
 
+> **Input Event Handling**
+>
+> React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each keystroke, use `onInput` instead.
+
 ## Usage
 
 The following section provides guidance for designers and developers on how to use this component in different situations.

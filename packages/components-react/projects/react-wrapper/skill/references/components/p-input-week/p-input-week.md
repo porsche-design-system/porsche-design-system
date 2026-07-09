@@ -4,6 +4,10 @@ The `p-input-week` component provides a versatile, user‑friendly interface for
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The `p-input-week` component can be used with or without a label, but it's recommended to keep the label visible for better accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text for screen readers.
 
+> **Input Event Handling**
+>
+> React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each keystroke, use `onInput` instead.
+
 ## Usage
 
 The following section provides guidance for designers and developers on how to use this component in different situations.

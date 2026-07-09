@@ -2,6 +2,10 @@
 
 The `p-crest` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product.
 
+> **Usage hint**
+>
+> This component shall only be used on viewports below 480px (breakpoint "S"). Otherwise, [p-wordmark](../p-wordmark/p-wordmark.md) has to be used.
+
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-crest`.
 
 ## Usage

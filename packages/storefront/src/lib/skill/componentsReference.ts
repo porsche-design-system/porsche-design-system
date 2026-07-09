@@ -11,7 +11,7 @@ import {
 } from './componentApi';
 import { type ComponentExamplesOptions, writeComponentExamples } from './componentExamples';
 import { rewriteDocLinks } from './links';
-import { leadSentence, stripLeadingH1 } from './markdown';
+import { leadSentence, stripLeadingBlockquotes, stripLeadingH1 } from './markdown';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { ComponentRosterEntry } from './skillMd';
 import type { Framework, SkillTree } from './skillTree';
@@ -73,12 +73,13 @@ const renderSection = (
   degradedSections: string[],
   name: string,
   label: string,
+  framework: Framework,
   transform: (markdown: string) => string = (markdown) => markdown
 ): string => {
   if (!component) {
     return '';
   }
-  const { markdown, degraded } = renderMdxToMarkdown(component, label);
+  const { markdown, degraded } = renderMdxToMarkdown(component, framework, label);
   if (degraded) {
     degradedSections.push(name);
     return '';
@@ -98,7 +99,8 @@ const renderSection = (
 export const renderComponentProse = (
   tag: string,
   source: ComponentProseSource,
-  statusBanner = ''
+  statusBanner = '',
+  framework: Framework = 'js'
 ): { markdown: string; summary: string; degradedSections: string[] } => {
   const degradedSections: string[] = [];
   // The status banner (deprecated/experimental) sits directly under the H1, before any prose, so it is
@@ -106,18 +108,20 @@ export const renderComponentProse = (
   const sections: string[] = statusBanner ? [`# ${tag}`, statusBanner] : [`# ${tag}`];
 
   // The introduction goes through the same renderer as usage/accessibility (no heading strip); its raw
-  // markdown is returned so the roster summary is the lead sentence. Degraded intro → empty → NO_SUMMARY.
-  const introMarkdown = renderSection(source.introduction, sections, degradedSections, 'introduction', `${tag} › introduction`);
-  const summary = leadSentence(introMarkdown) || NO_SUMMARY;
+  // markdown is returned so the roster summary is the lead sentence. Any leading notification admonition
+  // (experimental components open with one) is skipped so the summary is the first real prose sentence.
+  // Degraded intro → empty → NO_SUMMARY.
+  const introMarkdown = renderSection(source.introduction, sections, degradedSections, 'introduction', `${tag} › introduction`, framework);
+  const summary = leadSentence(stripLeadingBlockquotes(introMarkdown)) || NO_SUMMARY;
 
-  renderSection(source.usage, sections, degradedSections, 'usage', `${tag} › usage`, stripLeadingH1);
-  renderSection(source.accessibility, sections, degradedSections, 'accessibility', `${tag} › accessibility`, stripLeadingH1);
+  renderSection(source.usage, sections, degradedSections, 'usage', `${tag} › usage`, framework, stripLeadingH1);
+  renderSection(source.accessibility, sections, degradedSections, 'accessibility', `${tag} › accessibility`, framework, stripLeadingH1);
 
   const noteEntries = Object.values(source.notes ?? {});
   if (noteEntries.length > 0) {
     const noteBlocks: string[] = ['## Notes'];
     for (const note of noteEntries) {
-      const { markdown, degraded } = renderMdxToMarkdown(note.description, `${tag} › notes:${note.name}`);
+      const { markdown, degraded } = renderMdxToMarkdown(note.description, framework, `${tag} › notes:${note.name}`);
       if (degraded) {
         degradedSections.push(`notes:${note.name}`);
         continue;
@@ -218,7 +222,7 @@ export const writeComponentReferences = (
   for (const tag of tags) {
     const apiMeta = apiOptions?.componentMeta[tag];
     const statusBanner = apiMeta ? renderComponentStatusBanner(apiMeta) : '';
-    const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag], statusBanner);
+    const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag], statusBanner, tree.framework);
     const sections = [markdown];
     if (apiMeta) {
       sections.push(renderComponentApi(apiMeta, apiOptions.framework, iconNames));

@@ -4,6 +4,20 @@ The `p-carousel` component allows related or similar content to be consumed on a
 
 Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides. The amount of slides visible can be specified on a per-breakpoint basis.
 
+> **Layout hint**
+>
+> When using the `width` prop to align with the **[Porsche Grid](../../styles/tailwindcss.md)**, the component must span the full viewport width.
+>
+> When using the `--p-carousel-px` CSS variable, the component can be placed within any container, allowing you to customize the horizontal padding that reveals parts of the next/previous slide.
+>
+> When using the `--p-carousel-ps` and `--p-carousel-pe` CSS variables, the component can be placed within any container, allowing you to customize the horizontal padding asymmetric that reveals parts of the next/previous slide.
+
+> **Dynamic changes**
+>
+> This component has limited support for dynamic property changes due to the way it is implemented.
+>
+> If you need to use a specific property dynamically, please open a [feature request](https://designsystem.porsche.com/help/feature-request).
+
 ## Usage
 
 The following section provides guidance for designers and developers on how to use this component in different situations.

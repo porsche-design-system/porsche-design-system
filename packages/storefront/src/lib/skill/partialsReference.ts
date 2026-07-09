@@ -2,7 +2,7 @@ import type { ComponentType } from 'react';
 import { rewriteDocLinks } from './links';
 import { stripLeadingH1 } from './markdown';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
-import type { SkillTree } from './skillTree';
+import type { Framework, SkillTree } from './skillTree';
 
 /**
  * Partials are framework-agnostic build-time functions — there is no partials meta
@@ -73,11 +73,14 @@ const demoteHeadings = (markdown: string): string => {
  * partial. Pure function over its {@link PartialsSource}; degraded sections are flagged
  * and omitted rather than emitted as empty prose.
  */
-export const renderPartialsReference = (source: PartialsSource): { markdown: string; degraded: string[] } => {
+export const renderPartialsReference = (
+  source: PartialsSource,
+  framework: Framework = 'js'
+): { markdown: string; degraded: string[] } => {
   const degraded: string[] = [];
   const sections: string[] = ['# Partials'];
 
-  const intro = renderMdxToMarkdown(source.introduction, 'partials › introduction');
+  const intro = renderMdxToMarkdown(source.introduction, framework, 'partials › introduction');
   if (intro.degraded) {
     degraded.push('introduction');
   } else {
@@ -90,7 +93,7 @@ export const renderPartialsReference = (source: PartialsSource): { markdown: str
   sections.push(FORMAT_NOTE);
 
   for (const { functionName, page } of source.partials) {
-    const { markdown, degraded: isDegraded } = renderMdxToMarkdown(page, `partials › ${functionName}`);
+    const { markdown, degraded: isDegraded } = renderMdxToMarkdown(page, framework, `partials › ${functionName}`);
     if (isDegraded) {
       degraded.push(functionName);
       continue;
@@ -114,7 +117,7 @@ export const renderPartialsReference = (source: PartialsSource): { markdown: str
 
 /** Write the partials reference (`references/partials.md`) into the skill tree. */
 export const writePartialsReference = (tree: SkillTree, source: PartialsSource): PartialsReferenceReport => {
-  const { markdown, degraded } = renderPartialsReference(source);
+  const { markdown, degraded } = renderPartialsReference(source, tree.framework);
   tree.writeReference('partials.md', markdown);
   return { degraded };
 };

@@ -2,6 +2,10 @@
 
 > **Experimental:** This component is experimental — its API may change in any release. Avoid relying on it in production.
 
+> **Experimental Component**
+>
+> The `p-drilldown` component is experimental and might be changed or removed in a future release.
+
 The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown menu that overlays the page content from the start side of the screen. It is a controlled component that gives you flexible control over its behavior.
 
 The basic concept of the component is to have a button that opens the `p-drilldown` with an infinite multilevel structure. The levels are generated out of `p-drilldown-item` which generates a list of cascade buttons to navigate to a deeper level, back buttons and a header section on mobile view. These items can be filled with e.g. `p-drilldown-link`, another `p-drilldown-item` or any HTML element.

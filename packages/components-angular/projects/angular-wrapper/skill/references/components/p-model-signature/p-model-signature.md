@@ -77,6 +77,6 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | Default | Minimal default configuration. | [./examples/Default.ts](./examples/Default.ts) |
 | Safe Zone | The `safe-zone` prop's default is `true`, which ensures a visual balance across all model signatures. | [./examples/SafeZone.ts](./examples/SafeZone.ts) |
 | Mask: Blend Mode | If `p-model-signature` should be blended with its background, the CSS property [mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`{{ blendMode }}` will produce the best results). | [./examples/MaskBlendMode.ts](./examples/MaskBlendMode.ts) |
-| Mask: Image | Mask: Image | [./examples/MaskImage.ts](./examples/MaskImage.ts) |
-| Mask: Video | Mask: Video | [./examples/MaskVideo.ts](./examples/MaskVideo.ts) |
+| Mask: Image | > **Experimental** > > The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide. | [./examples/MaskImage.ts](./examples/MaskImage.ts) |
+| Mask: Video | > **Experimental** > > The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide. | [./examples/MaskVideo.ts](./examples/MaskVideo.ts) |
 | Custom styling | The `p-model-signature` color can be changed by setting the `color` prop to `inherit` and applying some CSS `color`. | [./examples/CustomStyling.ts](./examples/CustomStyling.ts) |

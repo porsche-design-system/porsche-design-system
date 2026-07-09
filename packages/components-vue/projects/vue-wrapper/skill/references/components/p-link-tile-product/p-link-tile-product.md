@@ -2,7 +2,15 @@
 
 > **Experimental:** This component is experimental — its API may change in any release. Avoid relying on it in production.
 
+> **Experimental Component**
+>
+> The `p-link-tile-product` component is experimental and might be changed or removed in a future release.
+
 The `p-link-tile-product` is a navigational component designed to showcase a featured product within a store. it offers the option to "like" the product, allowing you to easily add it to the users wishlist. Additionally, you can place a chip at the top to signal special features about the product, such as its novelty or exclusivity.
+
+> **Image Aspect Ratio**
+>
+> The image within the component has a fixed aspect ratio of 8:9. For optimal presentation, it is recommended that the supplied image adheres to the same aspect ratio of 8:9 and includes a transparent background.
 
 An `img` or `picture` element has to be available as a child of the `p-link-tile-product` component.
 

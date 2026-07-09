@@ -44,6 +44,13 @@ describe('renderMdxToMarkdown', () => {
     expect(introduction).toContain('<p-accordion heading="Section 1">Panel content</p-accordion>');
   });
 
+  it('surfaces a Notification as a blockquote admonition, not dropped', () => {
+    const { markdown } = renderMdxToMarkdown(compiled.introduction);
+
+    // The slotted guidance is preserved as a blockquote instead of being dropped as custom-element noise.
+    expect(markdown).toContain('> This component is stable.');
+  });
+
   it('recovers source from a syntax-highlighted <pre> without leaking highlighter markup', () => {
     // The partials pages pre-highlight code into `hljs` spans; the renderer must collapse those spans
     // (and decode entities) back to the original source rather than emit the span markup verbatim.
@@ -150,6 +157,8 @@ describe('renderMdxToMarkdown', () => {
     const Throwing: ComponentType = () => {
       throw new Error('boom');
     };
-    expect(() => renderMdxToMarkdown(Throwing, 'p-button › usage')).toThrow(/MDX SSR failed for p-button › usage: boom/);
+    expect(() => renderMdxToMarkdown(Throwing, 'js', 'p-button › usage')).toThrow(
+      /MDX SSR failed for p-button › usage: boom/
+    );
   });
 });

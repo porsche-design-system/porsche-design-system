@@ -6,6 +6,10 @@ A `label` tells the user what information a form field is asking for. The `p-inp
 
 A `placeholder` is optional, but recommended when example content or hints should be shown to give the user visual cues for completing the form.
 
+> **Input Event Handling**
+>
+> React's `onChange` behaves like the native `onInput` (fires on every keystroke). However, our web components follow standard browser behavior, where `onChange` only fires when the input loses focus. To get real-time updates on each keystroke, use `onInput` instead.
+
 ## Usage
 
 The following section provides guidance for designers and developers on how to use this component in different situations.

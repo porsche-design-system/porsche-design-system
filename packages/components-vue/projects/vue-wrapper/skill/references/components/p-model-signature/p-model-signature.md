@@ -77,6 +77,6 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | Default | Minimal default configuration. | [./examples/Default.vue](./examples/Default.vue) |
 | Safe Zone | The `safe-zone` prop's default is `true`, which ensures a visual balance across all model signatures. | [./examples/SafeZone.vue](./examples/SafeZone.vue) |
 | Mask: Blend Mode | If `p-model-signature` should be blended with its background, the CSS property [mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`{{ blendMode }}` will produce the best results). | [./examples/MaskBlendMode.vue](./examples/MaskBlendMode.vue) |
-| Mask: Image | Mask: Image | [./examples/MaskImage.vue](./examples/MaskImage.vue) |
-| Mask: Video | Mask: Video | [./examples/MaskVideo.vue](./examples/MaskVideo.vue) |
+| Mask: Image | > **Experimental** > > The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide. | [./examples/MaskImage.vue](./examples/MaskImage.vue) |
+| Mask: Video | > **Experimental** > > The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide. | [./examples/MaskVideo.vue](./examples/MaskVideo.vue) |
 | Custom styling | The `p-model-signature` color can be changed by setting the `color` prop to `inherit` and applying some CSS `color`. | [./examples/CustomStyling.vue](./examples/CustomStyling.vue) |

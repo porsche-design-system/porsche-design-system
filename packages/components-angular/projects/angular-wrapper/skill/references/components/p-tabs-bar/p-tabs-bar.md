@@ -8,6 +8,10 @@ If you intend to only change content on tab-click without location changes and y
 
 It is a controlled component. This means it does not contain any internal state, and you are in full control over its behavior.
 
+> **Important note**
+>
+> For documentation purpose we use `<button>` tags in the examples below to make them clickable without changing the route. For route changes it is mandatory to use `<a>` tags with `href` in your application. And be aware of that it's not allowed to mix and match `<button>` with `<a>` tags as direct children in the component!
+
 Basic implementation is a tab bar with tabs to switch between the content. Just put `<button>` tags if you need to change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate the window location, inside the `<p-tabs-bar>` component and it will handle all styling behaviors.
 
 In order to get notified when the active tabs change, you need to register an event listener for the `update` event which is emitted by `p-tabs-bar`.

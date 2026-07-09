@@ -4,6 +4,16 @@ The `p-flyout` is a overlay from the left or right side of the screen. It is com
 
 It is a controlled component. This grants flexible control over the flyout's behavior especially whether it should stay open after user interaction like submission of a form.
 
+> **Scroll-lock**
+>
+> This component sets `overflow: hidden` on the body when opened in order to prevent background scrolling.
+>
+> This doesn't work completely reliable under iOS but is the most stable solution.
+>
+> Feel free to address this issue in an Open Source PR, if you can provide a better solution.
+>
+> **[Current implementation](https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts)**
+
 ## Usage
 
 The following section provides guidance for designers and developers on how to use this component in different situations.

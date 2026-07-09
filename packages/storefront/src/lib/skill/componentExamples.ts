@@ -54,11 +54,11 @@ const toFileBase = (key: string): string =>
   key.replace(/(^|[-_\s]+)([a-zA-Z0-9])/g, (_, __, char: string) => char.toUpperCase());
 
 /** First sentence of the rendered `description`, used as the row's short "when to use". */
-const whenToUse = (description: ComponentType | undefined, fallback: string): string => {
+const whenToUse = (description: ComponentType | undefined, fallback: string, framework: Framework): string => {
   if (!description) {
     return fallback;
   }
-  const { markdown, degraded } = renderMdxToMarkdown(description);
+  const { markdown, degraded } = renderMdxToMarkdown(description, framework);
   if (degraded) {
     return fallback;
   }
@@ -82,17 +82,17 @@ const planExample = (
     case 'story':
       return {
         ...base,
-        whenToUse: whenToUse(example.description, example.name),
+        whenToUse: whenToUse(example.description, example.name, framework),
         markup: storyMarkup(example.story, framework, theme),
       };
     case 'example':
       return {
         ...base,
-        whenToUse: whenToUse(example.description, example.name),
+        whenToUse: whenToUse(example.description, example.name, framework),
         markup: example.example.frameworkMarkup[FRAMEWORK_MARKUP_KEY[framework]] ?? '',
       };
     case 'description':
-      return { ...base, whenToUse: whenToUse(example.description, example.name), markup: '' };
+      return { ...base, whenToUse: whenToUse(example.description, example.name, framework), markup: '' };
   }
 };
 

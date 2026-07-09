@@ -50,19 +50,35 @@ Project integration differs based on the project setup. The following showcases 
 **Note:** Make sure to preload only fonts which are really needed initially!
 
 ```
+<!-- prerequisite -->
+<!-- docs: https://github.com/vbenjs/vite-plugin-html -->
+npm install --save-dev vite-plugin-html
+
 <!-- index.html -->
 <head>
-  <!--PLACEHOLDER_FONT_LINKS-->
+  <%- fontLinks %>
 </head>
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getFontLinks())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: Force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getFontLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- vite.config.ts -->
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { createHtmlPlugin } from 'vite-plugin-html';
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    createHtmlPlugin({
+      inject: {
+        data: {
+          fontLinks: require('@porsche-design-system/components-vue/partials').getFontLinks(),
+
+          // Alternative: Force using China CDN
+          fontLinks: require('@porsche-design-system/components-vue/partials').getFontLinks({ cdn: 'cn' }),
+        },
+      },
+    }),
+  ],
+})
 ```
 
 ```
@@ -101,19 +117,35 @@ Project integration differs based on the project setup. The following showcases 
 **Note:** Make sure to preload only component chunks which are really needed initially!
 
 ```
+<!-- prerequisite -->
+<!-- docs: https://github.com/vbenjs/vite-plugin-html -->
+npm install --save-dev vite-plugin-html
+
 <!-- index.html -->
 <head>
-  <!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->
+  <%- componentChunkLinks %>
 </head>
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getComponentChunkLinks({ components: [\"button\", \"wordmark\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getComponentChunkLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- vite.config.ts -->
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { createHtmlPlugin } from 'vite-plugin-html';
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    createHtmlPlugin({
+      inject: {
+        data: {
+          componentChunkLinks: require('@porsche-design-system/components-vue/partials').getComponentChunkLinks({ components: ['button', 'wordmark'] }),
+
+          // Alternative: force using China CDN
+          componentChunkLinks: require('@porsche-design-system/components-vue/partials').getComponentChunkLinks({ cdn: 'cn' }),
+        },
+      },
+    }),
+  ],
+})
 ```
 
 ```
@@ -151,19 +183,35 @@ When using `jsx` in the `format` option, it is necessary to have `react/jsx-runt
 Project integration differs based on the project setup. The following showcases the most common ways.
 
 ```
+<!-- prerequisite -->
+<!-- docs: https://github.com/vbenjs/vite-plugin-html -->
+npm install --save-dev vite-plugin-html
+
 <!-- index.html -->
 <head>
-  <!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->
+  <%- metaTagsAndIconLinks %>
 </head>
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: Force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\", cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- vite.config.ts -->
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { createHtmlPlugin } from 'vite-plugin-html';
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    createHtmlPlugin({
+      inject: {
+        data: {
+          metaTagsAndIconLinks: require('@porsche-design-system/components-vue/partials').getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' }),
+
+          // Alternative: Force using China CDN
+          metaTagsAndIconLinks: require('@porsche-design-system/components-vue/partials').getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP', cdn: 'cn' }),
+        },
+      },
+    }),
+  ],
+})
 ```
 
 ```
@@ -230,19 +278,35 @@ Project integration differs based on the project setup. The following showcases 
 **Note:** Make sure to preload only icons which are really needed initially!
 
 ```
+<!-- prerequisite -->
+<!-- docs: https://github.com/vbenjs/vite-plugin-html -->
+npm install --save-dev vite-plugin-html
+
 <!-- index.html -->
 <head>
-  <!--PLACEHOLDER_ICON_LINKS-->
+  <%- iconLinks %>
 </head>
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: Force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"], cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- vite.config.ts -->
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { createHtmlPlugin } from 'vite-plugin-html';
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    createHtmlPlugin({
+      inject: {
+        data: {
+          iconLinks: require('@porsche-design-system/components-vue/partials').getIconLinks({ icons: ['arrow-head-right', 'plus'] }),
+
+          // Alternative: Force using China CDN
+          iconLinks: require('@porsche-design-system/components-vue/partials').getIconLinks({ icons: ['arrow-head-right', 'plus'], cdn: 'cn' }),
+        },
+      },
+    }),
+  ],
+})
 ```
 
 ```
@@ -278,21 +342,38 @@ When using `jsx` in the `format` option, it is necessary to have `react/jsx-runt
 Project integration differs based on the project setup. The following showcases the most common ways.
 
 ```
+<!-- prerequisite -->
+<!-- docs: https://github.com/vbenjs/vite-plugin-html -->
+npm install --save-dev vite-plugin-html
+
 <!-- index.html -->
 <body>
-  <!--PLACEHOLDER_LOADER_SCRIPT-->
+  <%- loaderScript %>
 </body>
 
-<!-- package.json (tested on macOS, the script may need to be adjusted depending on the operating system used) -->
-<!-- make sure to adjust the path to the index.html file -->
-"scripts": {
-  "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getLoaderScript())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: With custom prefix -->
-  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getLoaderScript({ prefix: \"custom-prefix\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-  <!-- Alternative: With multiple custom prefixes -->
-  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-vue/partials\").getLoaderScript({ prefix: [\"\", \"custom-prefix\", \"another-prefix\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
-}
+<!-- vite.config.ts -->
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { createHtmlPlugin } from 'vite-plugin-html';
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    createHtmlPlugin({
+      inject: {
+        data: {
+          loaderScript: require('@porsche-design-system/components-vue/partials').getLoaderScript(),
+
+          // Alternative: With custom prefix
+          loaderScript: require('@porsche-design-system/components-vue/partials').getLoaderScript({ prefix: 'custom-prefix' }),
+
+          // Alternative: With multiple custom prefixes
+          loaderScript: require('@porsche-design-system/components-vue/partials').getLoaderScript({ prefix: ['', 'custom-prefix', 'another-prefix'] }),
+        },
+      },
+    }),
+  ],
+})
 ```
 
 ```

@@ -4,6 +4,10 @@
 
 `p-display` is used to highlight and specify heading styling and hierarchy in documents.
 
+> **Recommendation**
+>
+> Although the component is very sophisticated, it's recommended (if possible) to use the corresponding utility classes of the "@porsche-design-system/components-{js | angular | react | vue}/tailwindcss" sub-package or any of the other styling solutions for best performance since way less DOM nodes are required to render. Further information can be found [here](../../styles/tailwindcss.md).
+
 ## Usage
 
 p-display is used to highlight and specify heading styling and hierarchy.

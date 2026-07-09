@@ -7,8 +7,9 @@ import * as jsxRuntime from 'react/jsx-runtime';
  * files (e.g. accordion `usage`, `accessibility`, component `introduction`). Embedded
  * doc components (`<ComponentStatus>`, `<TableOfContents>`, `<Notification>`) are
  * referenced the way the storefront uses them; their `import` lines are omitted so
- * `evaluate` resolves them through the `components` prop, where the render module
- * stubs them out.
+ * `evaluate` resolves them through the `components` prop. The render module nulls the
+ * chrome components (`<ComponentStatus>`, `<TableOfContents>`) but keeps `<Notification>`,
+ * which it surfaces as a blockquote admonition.
  */
 export const PROSE_FIXTURES: Record<string, string> = {
   usage: `
@@ -57,11 +58,9 @@ Use it to present grouped information progressively. A minimal example:
 \`\`\`
 `,
 
-  // Renders to nothing meaningful — only embedded components, no prose.
+  // Renders to nothing meaningful — only a nulled chrome component, no prose.
   degraded: `
 <TableOfContents headings={[]} />
-
-<Notification heading="Empty"></Notification>
 `,
 };
 

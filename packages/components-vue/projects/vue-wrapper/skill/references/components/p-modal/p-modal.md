@@ -4,6 +4,16 @@ The `p-modal` is a temporary overlay to focus the user's attention on one task w
 
 It is a controlled component. This grants flexible control over the modal's behavior especially whether it should stay open after user interaction like submission of a form.
 
+> **Scroll-lock**
+>
+> This component sets `overflow: hidden` on the body when opened in order to prevent background scrolling.
+>
+> This doesn't work completely reliable under iOS but is the most stable solution.
+>
+> Feel free to address this issue in an Open Source PR, if you can provide a better solution.
+>
+> **[Current implementation](https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts)**
+
 Following **web standards**, the component uses the native `<dialog />` element internally which ensures proper focus handling including a **focus trap**. In addition, it's rendered on the `#top-layer` which ensures the element to be on top of the page independent of where `p-modal` is placed in the DOM hierarchy (`z-index` is not relevant anymore and won't have any effect).
 
 The most important property of `p-modal` is its `open` property. When it's set to `true` the modal will be visible. In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape` key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.

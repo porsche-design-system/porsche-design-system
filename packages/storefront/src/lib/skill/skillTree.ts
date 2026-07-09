@@ -52,7 +52,7 @@ export type ReferenceMapEntry = { path: string; useWhen: string };
  */
 export class SkillTree {
   public readonly root: string;
-  private readonly framework?: Framework;
+  public readonly framework?: Framework;
 
   /**
    * @param root  the tree's filesystem root.
