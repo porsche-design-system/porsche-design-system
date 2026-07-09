@@ -56,7 +56,7 @@ const getCSPMetaTag = (): ReactNode => {
       script-src 'self' 'unsafe-inline' 'unsafe-eval' ${cdnUrl};
       img-src 'self' ${cdnUrl} data:;
       media-src 'self' https://porsche-design-system.github.io;
-      frame-src 'self' https://porsche-design-system.github.io;
+      frame-src 'self' https://porsche-design-system.github.io${isDevEnvironment ? ' http://localhost:5173' : ''};
       connect-src 'self' ${connectUrls}`}
     />
   );

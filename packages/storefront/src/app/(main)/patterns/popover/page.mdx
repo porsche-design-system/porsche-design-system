@@ -1,0 +1,62 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ResizableWebsiteViewer } from '@/components/common/ResizableWebsiteViewer';
+
+export const metadata = {
+  title: 'Patterns: Popover - Porsche Design System',
+  description: 'Learn how to use a popover to guide users to their local market directly from the header.',
+};
+
+# Popover
+
+<TableOfContents
+  headings={['Local market switch', 'Priority navigation', 'Feature tour', 'Responsive disclosure']}
+/>
+
+The popover displays contextual information or actions in a floating layer anchored to a trigger element. It helps
+surface secondary content on demand without navigating away from the current context, keeping the primary interface
+clean while remaining accessible.
+
+## Local market switch
+
+On entering the site, a popover anchored to the globe icon in the header suggests switching to the user's local market
+for correct content and pricing. It is shown on load and can be dismissed via an outside click or the Escape key.
+
+<ResizableWebsiteViewer
+  sourceCodePath="patterns/src/popover/1"
+  viewPath="patterns/popover/1"
+  title="Popover Variant 1"
+/>
+
+## Priority navigation
+
+When horizontal space is limited, navigation items that no longer fit are collapsed into a popover behind a "More"
+trigger, keeping the bar on a single line. Resize the frame to see items move in and out of the popover.
+
+<ResizableWebsiteViewer
+  sourceCodePath="patterns/src/popover/2"
+  viewPath="patterns/popover/2"
+  title="Popover Variant 2"
+/>
+
+## Feature tour
+
+On first visit, a sequence of popovers guides the user through the key areas of the interface one step at a time
+("Step 2 of 4", Back / Next / Skip), each anchored to the element it describes. Only a single step is open at once.
+
+<ResizableWebsiteViewer
+  sourceCodePath="patterns/src/popover/3"
+  viewPath="patterns/popover/3"
+  title="Popover Variant 3"
+/>
+
+## Responsive disclosure
+
+The account menu opens as a popover on desktop, but below the `sm` breakpoint (760px) the same trigger opens a bottom
+sheet instead — easier to reach on touch devices. Drag the frame narrower than 760px and open the account icon to see
+it switch.
+
+<ResizableWebsiteViewer
+  sourceCodePath="patterns/src/popover/4"
+  viewPath="patterns/popover/4"
+  title="Popover Variant 4"
+/>
