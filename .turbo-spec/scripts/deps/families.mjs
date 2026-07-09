@@ -1,5 +1,5 @@
 // Shared lockstep-family policy — the single source of truth mirroring the
-// "Lockstep families" table in .github/skills/pds-dependency-context/SKILL.md.
+// "Lockstep families" table in .github/skills/pds-planning-policy/SKILL.md.
 // A family is applied all-or-nothing (include every reported member or defer the
 // whole family). Kept in one place so the planner skill and the check-families
 // gate agree.

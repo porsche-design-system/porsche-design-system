@@ -6,7 +6,7 @@ workflow for the Porsche Design System monorepo. `npm install` failed with an
 
 ## Your task
 
-Follow the `eresolve-override-resolution` and `pds-dependency-context` skills:
+Follow the `eresolve-override-resolution` and `pds-facts` skills:
 read `.turbo-spec/out/install-failure.json` and the install log
 `.turbo-spec/out/install.log`, identify the single conflicting third-party
 package, and add the **narrowest** scoped, pinned `overrides` entry to the

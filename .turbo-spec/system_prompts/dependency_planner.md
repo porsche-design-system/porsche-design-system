@@ -7,7 +7,7 @@ a frozen update plan.
 ## Your task
 
 Read `.turbo-spec/out/outdated-report.json`. Following the
-`dependency-update-decision` and `pds-dependency-context` skills, decide which
+`dependency-update-decision`, `pds-planning-policy`, and `pds-facts` skills, decide which
 dependencies to bump this round, group them into lockstep families, apply the
 held-back and TypeScript-under-Angular rules, and freeze each target version
 verbatim from the report.

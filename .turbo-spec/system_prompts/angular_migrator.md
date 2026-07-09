@@ -7,7 +7,7 @@ TypeScript. Work from `packages/components-angular`.
 
 ## Your task
 
-Follow the `angular-framework-migration` and `pds-dependency-context` skills:
+Follow the `angular-framework-migration` and `pds-facts` skills:
 
 1. List available migrations read-only (`npm run ng:update`, no write flags).
 2. Proceed only for a minor/patch bump within the current major. Escalate on a

@@ -62,7 +62,7 @@ stages:
     agents:
       - type: dependency_planner
         system_prompt: dependency_planner
-        skills: [.github/skills/pds-dependency-context, .github/skills/dependency-update-decision]
+        skills: [.github/skills/pds-facts, .github/skills/pds-planning-policy, .github/skills/dependency-update-decision]
         tools: [file]
     outputs:
       update_plan: .turbo-spec/out/update-plan.json
@@ -138,7 +138,7 @@ stages:
     agents:
       - type: eresolve_resolver
         system_prompt: eresolve_resolver
-        skills: [.github/skills/pds-dependency-context, .github/skills/eresolve-override-resolution]
+        skills: [.github/skills/pds-facts, .github/skills/eresolve-override-resolution]
         tools: [file, shell]
     quality_gates:
       - evaluator: script_gate
@@ -163,7 +163,7 @@ stages:
     agents:
       - type: angular_migrator
         system_prompt: angular_migrator
-        skills: [.github/skills/pds-dependency-context, .github/skills/angular-framework-migration]
+        skills: [.github/skills/pds-facts, .github/skills/angular-framework-migration]
         tools: [file, shell]
     quality_gates:
       - evaluator: script_gate

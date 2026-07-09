@@ -15,8 +15,8 @@ const skills = join(here, '../../../.github/skills');
 const read = (p) => readFileSync(join(skills, p), 'utf8');
 
 // Path indirection so Task 2 can repoint these to the split skills in one commit.
-const FACTS_SKILL = 'pds-dependency-context/SKILL.md';
-const POLICY_SKILL = 'pds-dependency-context/SKILL.md';
+const FACTS_SKILL = 'pds-facts/SKILL.md';
+const POLICY_SKILL = 'pds-planning-policy/SKILL.md';
 
 test('every held-back pattern appears verbatim in the facts skill', () => {
   const md = read(FACTS_SKILL);
