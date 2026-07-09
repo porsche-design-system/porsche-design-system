@@ -74,6 +74,17 @@ else
   echo "preflight: created $BRANCH"
 fi
 
+# Remove stale built "dist" workspaces. They are gitignored build outputs that
+# npm still resolves as workspaces; a stale one from a prior run carries bumped
+# peer ranges (e.g. @angular/common ^22.0.5, ag-grid 36.0.0) that conflict with
+# reverted source and break `npm install` in assess. A fresh checkout has none,
+# so removing them restores that baseline (a later build regenerates them).
+while IFS= read -r dist_dir; do
+  [ -n "$dist_dir" ] || continue
+  rm -rf "$dist_dir"
+  echo "preflight: removed stale build workspace $dist_dir"
+done < <(node .turbo-spec/scripts/deps/list-build-workspaces.mjs . 2>/dev/null)
+
 # Clean the artifact directory so a fresh run never reads a prior run's
 # update-plan.json / install.log (stale artifacts caused misroutes and false
 # gate failures). Setup mode only — resume does not re-run preflight.
