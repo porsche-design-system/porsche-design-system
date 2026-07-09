@@ -1,13 +1,14 @@
-<!doctype html>
-<html lang="en" class="scheme-light">
-<head>
-  <title></title>
-</head>
-<body class="bg-canvas">
-
+<button type="button">Queue Toast</button>
 <p-toast></p-toast>
-<script>
 
+<script>
+  const toast = document.querySelector('p-toast');
+  let counter = 1;
+
+  customElements.whenDefined('p-toast').then(() => {
+    document.querySelector('button').addEventListener('click', () => {
+      toast.addMessage({ text: `Some message ${counter}`, state: 'success' });
+      counter++;
+    });
+  });
 </script>
-</body>
-</html>

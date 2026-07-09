@@ -1,4 +1,4 @@
-import type { FrameworkMarkup } from '@porsche-design-system/shared';
+import type { CodeSample, FrameworkMarkup } from '@porsche-design-system/shared';
 import type { ComponentType } from 'react';
 import type { StorefrontColorScheme } from '../../models/colorScheme';
 import type { ExampleMeta } from '../../models/meta';
@@ -19,7 +19,9 @@ import type { Framework, SkillTree } from './skillTree';
  *  - `kind: 'story'`   → `createFrameworkMarkup(story.generator(state), state, theme)[framework]`
  *  - `kind: 'example'` → the hand-authored `CodeSample.frameworkMarkup[framework]`
  *  - `kind: 'description'` → no file; the row references prose only
- *  - configurator **base story** → emitted as the default minimal example
+ *  - configurator **base story** → emitted as the default minimal example, unless
+ *    `configurator.example` is set, in which case that `CodeSample` is emitted instead
+ *    (for imperative components whose storefront page renders a sample, not the story)
  *
  * This also covers Angular, which ships no hand-written examples folder: its files are
  * produced entirely from the story → `createFrameworkMarkup` / `CodeSample` path.
@@ -96,7 +98,7 @@ const planExample = (
 
 /** A component's examples source — the structural subset of `ComponentDocsMeta` this module reads. */
 export type ComponentExamplesSource = {
-  configurator: { story: Story<HTMLTagOrComponent> };
+  configurator: { story: Story<HTMLTagOrComponent>; example?: CodeSample };
   examples: Record<string, ExampleMeta>;
 };
 
@@ -142,7 +144,10 @@ export const writeComponentExamples = (
     rows.push([escapeCell(name), escapeCell(note), fileCell]);
   };
 
-  const baseMarkup = storyMarkup(source.configurator.story, framework, theme);
+  const { example: baseExample } = source.configurator;
+  const baseMarkup = baseExample
+    ? (baseExample.frameworkMarkup[FRAMEWORK_MARKUP_KEY[framework]] ?? '')
+    : storyMarkup(source.configurator.story, framework, theme);
   if (baseMarkup.trim()) {
     emit({
       name: 'Default',

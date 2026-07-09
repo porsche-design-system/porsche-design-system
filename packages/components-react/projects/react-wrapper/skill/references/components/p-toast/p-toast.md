@@ -4,7 +4,7 @@ The `p-toast` component manages both, the queue and display of toast messages. T
 
 Review the [notification decision tree](https://designsystem.porsche.com/patterns/notifications/decision-tree/) to determine which notification component is best for a particular scenario.
 
-Queuing messages on `p-toast` component happens via its `addMessage()` method. For Angular users, we offer the injectable `ToastManager` service, for React, there is the `useToastManager()` hook. Both expose the `addMessage()` method, which needs to be called with a parameter that has the following structure:
+Queuing messages on `p-toast` component happens via its `addMessage()` method. For Angular users, we offer the injectable `ToastManager` service; for React and Vue, there is the `useToastManager()` hook (a composable in Vue). All expose the `addMessage()` method, which needs to be called with a parameter that has the following structure:
 
 ```ts
 type ToastMessage = {

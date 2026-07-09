@@ -1,13 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'porsche-design-system-app',
   template: `
-      <p-toast></p-toast>
+    <button type="button" (click)="onButtonClick()">Queue Toast</button>
+    <p-toast></p-toast>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+  imports: [PorscheDesignSystemModule],
 })
-export class ExampleComponent {}
+export class ExampleComponent {
+  private counter = 1;
+
+  constructor(private toastManager: ToastManager) {}
+
+  onButtonClick() {
+    this.toastManager.addMessage({ text: `Some message ${this.counter}`, state: 'success' });
+    this.counter++;
+  }
+}
