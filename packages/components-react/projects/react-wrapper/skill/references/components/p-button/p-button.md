@@ -115,7 +115,7 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 | `name` | `string` | `undefined` | Sets the name submitted with the form data when this button triggers form submission. |
 | `type` | `'button'` `'submit'` `'reset'` | `'submit'` | Sets the button's HTML type — `submit` sends the form, `reset` clears it, `button` performs no default action. |
 | `value` | `string` | `undefined` | Sets the value submitted with the form data when this button triggers form submission, paired with `name`. |
-| `variant` | `'primary'` `'secondary'` | `'primary'` | Sets the visual style variant of the button (e.g. `primary`, `secondary`, `tertiary`). |
+| `variant` | `'primary'` `'secondary'` | `'primary'` | Sets the visual style variant of the button (`primary` or `secondary`). |
 
 ### Slots
 

@@ -98,7 +98,7 @@ Authoritative API data: `../meta` (`component-meta`). When these tables disagree
 | `iconSource` | `string` | `undefined` | Sets a path to a custom SVG icon, used instead of the built-in icon set. |
 | `rel` | `string` | `undefined` | Sets the `rel` attribute on the link (e.g. `noopener`). Only applies when `href` is set. |
 | `target` | `'_self'` `'_blank'` `'_parent'` `'_top'` `'string'` | `'_self'` | Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set. |
-| `variant` | `'primary'` `'secondary'` | `'primary'` | Sets the visual style variant of the link (e.g. `primary`, `secondary`, `tertiary`). |
+| `variant` | `'primary'` `'secondary'` | `'primary'` | Sets the visual style variant of the link (`primary` or `secondary`). |
 
 ### Slots
 

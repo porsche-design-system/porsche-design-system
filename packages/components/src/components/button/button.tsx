@@ -65,7 +65,7 @@ export class Button {
   /** Disables the button and replaces its content with a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Sets the visual style variant of the button (e.g. `primary`, `secondary`, `tertiary`). */
+  /** Sets the visual style variant of the button (`primary` or `secondary`). */
   @Prop() public variant?: ButtonVariant = 'primary';
 
   /** Sets the icon displayed inside the button. Use `none` to show no icon. */
