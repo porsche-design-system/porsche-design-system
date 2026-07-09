@@ -48,7 +48,7 @@ The `heading` and `price` properties are required and a link must be provided, u
 
 ## Accessibility support
 
-Not yet considered due to experimental state  🧪.
+Not yet considered due to experimental state 🧪.
 
 ## API
 

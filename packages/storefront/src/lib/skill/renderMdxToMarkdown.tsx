@@ -78,8 +78,20 @@ const isCustomElement = (tagName: string): boolean => tagName.includes('-');
 
 const collapseWhitespace = (text: string): string => text.replace(/\s+/g, ' ');
 
+/**
+ * Clean up whitespace artifacts left when an inline element is dropped — e.g. an embedded live-demo
+ * custom element between "info button" and "," leaves "info button ," / a double space. Collapse a
+ * space that precedes punctuation and runs of spaces, but never touch inline-code spans (a space before
+ * punctuation there can be significant).
+ */
+const tidyInlineArtifacts = (text: string): string =>
+  text
+    .split(/(`[^`]*`)/)
+    .map((part, index) => (index % 2 === 1 ? part : part.replace(/ +([,.;:!?])/g, '$1').replace(/ {2,}/g, ' ')))
+    .join('');
+
 const renderChildrenInline = (parent: ParsedNode): string =>
-  parent.childNodes.map((child) => renderInline(child)).join('');
+  tidyInlineArtifacts(parent.childNodes.map((child) => renderInline(child)).join(''));
 
 const renderInline = (node: ParsedNode): string => {
   if (node.nodeType === NodeType.TEXT_NODE) {

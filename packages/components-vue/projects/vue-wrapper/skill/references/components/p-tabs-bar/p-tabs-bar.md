@@ -1,6 +1,6 @@
 # p-tabs-bar
 
-The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure your **window location** updates on tab click, use it for **hash routing** and displaying content accordingly to the hash, as **skip navigation** to move on a longer page or to **change the state** of another element and therefore change the appearance of your content .
+The `p-tabs-bar` component is a styled button/link list for multiple purposes. You can use it with your framework router to ensure your **window location** updates on tab click, use it for **hash routing** and displaying content accordingly to the hash, as **skip navigation** to move on a longer page or to **change the state** of another element and therefore change the appearance of your content.
 
 The component does not handle the display of your content. If you use the component you have to manually care for the content to be rendered beneath. To help with this task the component triggers an event called `update` with the index of the active tab.
 

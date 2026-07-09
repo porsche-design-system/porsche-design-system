@@ -44,7 +44,7 @@ The following section provides guidance for designers and developers on how to u
 
 ## Accessibility support
 
-Not yet considered due to experimental state  🧪.
+Not yet considered due to experimental state 🧪.
 
 ## API
 

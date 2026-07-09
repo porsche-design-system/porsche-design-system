@@ -1,6 +1,6 @@
 # p-popover
 
-The `p-popover` component can be used to display some additional content on top of surrounding content, triggered by a button. By default it renders its own info button , or you can provide a custom trigger via the `button` slot.
+The `p-popover` component can be used to display some additional content on top of surrounding content, triggered by a button. By default it renders its own info button, or you can provide a custom trigger via the `button` slot.
 
 By default, the Popover works **uncontrolled**: it manages its own visibility and toggles open or closed when its info button (or a slotted trigger) is clicked. It is dismissed on outside click, on `Escape`, or when keyboard focus leaves the Popover.
 

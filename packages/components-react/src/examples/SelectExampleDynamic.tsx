@@ -47,7 +47,7 @@ export const SelectExampleDynamicPage = () => {
       <PInputText
         name="input-value"
         label="Value:"
-        placeholder="e.g. 1,2"
+        placeholder="e.g. 1"
         value={inputValue}
         onInput={(e) => onChangeInput(e as CustomEvent<InputTextInputEventDetail>)}
       />
