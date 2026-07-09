@@ -26,7 +26,10 @@ dependency. Resolve it with a **minimal, scoped, pinned** root `overrides` entry
 3. Delete **both** `package-lock.json` and `node_modules`, then run `npm install`
    **twice** — a clean install makes npm omit platform-specific
    `optionalDependencies` (e.g. syncpack's binary); a second install re-adds them.
-4. Record what you added to `.turbo-spec/out/overrides-added.json` as an array:
+4. Record what you added by **appending** to
+   `.turbo-spec/out/overrides-added.json` (read the existing array first if the
+   file exists, so a second steward run after Angular keeps the first run's
+   record), as an array:
    ```json
    [{ "package": "eslint", "specifier": "9.0.0", "reason": "peer conflict from some-plugin" }]
    ```

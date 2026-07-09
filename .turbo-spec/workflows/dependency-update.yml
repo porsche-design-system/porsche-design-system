@@ -178,6 +178,44 @@ stages:
             - name: check-ts-ceiling
               command: ["node", ".turbo-spec/scripts/deps/check-ts-ceiling.mjs", "."]
 
+  # 5b. probe-post-angular (deterministic): re-run the clean install AFTER the
+  # Angular migration so a migration-INDUCED third-party ERESOLVE gets its own
+  # routable artifacts + a conditionable install_ok output. run-install.mjs
+  # always exits 0 and rewrites apply-result.json / install-failure.json (safe:
+  # apply_bumps.apply_result was already consumed by resolve_conflicts).
+  - name: probe_post_angular
+    orchestrator: implementation
+    depends_on: [angular_migrations]
+    condition: "assess.outdated_report.updates_exist and decide.update_plan.angular_bumped"
+    pre_command: "node .turbo-spec/scripts/deps/run-install.mjs ."
+    outputs:
+      post_install: .turbo-spec/out/apply-result.json
+
+  # 5c. resolve-conflicts-post-angular (AI, conditional): SAME overrides_steward
+  # persona, instantiated a second time to own an Angular-induced third-party
+  # ERESOLVE. Only runs when the post-Angular probe install actually failed.
+  - name: resolve_conflicts_post_angular
+    orchestrator: implementation
+    depends_on: [probe_post_angular]
+    condition: "assess.outdated_report.updates_exist and decide.update_plan.angular_bumped and probe_post_angular.post_install.install_ok == false"
+    agents:
+      - type: overrides_steward
+        system_prompt: overrides_steward
+        skills: [.github/skills/pds-facts, .github/skills/eresolve-override-resolution]
+        tools: [file, shell]
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        config:
+          gate_name: resolve-conflicts-post-angular
+          failure_verdict: loop_back
+          environment_verdict: escalate
+          success_reason: "Override recorded and post-Angular install is ERESOLVE-free"
+          steps:
+            - name: check-resolve
+              command: ["node", ".turbo-spec/scripts/deps/check-resolve.mjs", ".turbo-spec/out/overrides-added.json", ".turbo-spec/out/install.log"]
+
   # 6. consistency (deterministic): syncpack fix/format + clean lockfile regen.
   # Removes BOTH the lockfile and node_modules so this is the authoritative
   # flagless clean install — a resolve-stage flag "cheat" cannot survive it.
@@ -187,7 +225,7 @@ stages:
   # install regenerates the lockfile AND re-adds those optionals for finalize.
   - name: consistency
     orchestrator: testing
-    depends_on: [apply_bumps, resolve_conflicts, angular_migrations]
+    depends_on: [apply_bumps, resolve_conflicts, angular_migrations, probe_post_angular, resolve_conflicts_post_angular]
     condition: "assess.outdated_report.updates_exist"
     pre_command: >-
       npm install --no-audit --no-fund &&
