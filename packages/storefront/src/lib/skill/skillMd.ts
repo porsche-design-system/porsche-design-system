@@ -7,18 +7,24 @@ export const SKILL_NAME = 'porsche-design-system-docs';
 /**
  * Auto-activation description — the only matching surface Claude Code uses to decide
  * whether to load this skill. It names concrete UI triggers so it fires broadly on
- * frontend work even when PDS is not mentioned, and has an explicit "do not activate"
- * clause so it stays dormant on backend/non-UI, tooling, prose, foreign-library, and
- * opt-out prompts. Keep it a single line (rendered verbatim into YAML frontmatter) and
- * free of `: ` sequences that would break the frontmatter parse.
+ * frontend work even when PDS is not mentioned, and also on documents that assert PDS
+ * behavior (requirements, specs, design docs, acceptance criteria) — a wrong API fact
+ * written upstream in a doc propagates into every task that consumes it. The "do not
+ * activate" clause keeps it dormant on backend/non-UI, tooling, *non-PDS* prose,
+ * foreign-library, and opt-out prompts — but no longer on PDS-asserting docs. Keep it a
+ * single line (rendered verbatim into YAML frontmatter) and free of `: ` sequences that
+ * would break the frontmatter parse.
  */
 export const ACTIVATION_DESCRIPTION =
-  'Build, style, review, or upgrade web user interfaces with the Porsche Design System (PDS). ' +
+  'Build, style, review, or upgrade web user interfaces with the Porsche Design System (PDS), or author ' +
+  'and review documents that specify PDS behavior. ' +
   'Use whenever a task touches frontend UI — adding or changing components (buttons, forms, inputs, ' +
   'cards, tables, modals, navigation, layouts), styling with Tailwind, SCSS, vanilla-extract or Emotion, ' +
   'applying design tokens, wiring partials (fonts, icons, meta tags, loader), scaffolding a new page or ' +
-  'form, or migrating and upgrading PDS — and prefer PDS for new UI even when it is not named by the user. ' +
-  'Do not activate for backend or non-UI logic, unrelated tests or tooling, pure prose or documentation, ' +
+  'form, or migrating and upgrading PDS. Also use whenever a requirement, spec, design doc, or acceptance ' +
+  'criteria names a PDS component, prop, token, theming, or partial. Prefer PDS for new UI even when it is ' +
+  'not named by the user. Do not activate for backend or non-UI logic, unrelated tests or tooling, ' +
+  'documentation or prose that does not assert PDS component, prop, token, theming, or partial behavior, ' +
   'work that clearly targets a different UI library, or when the user opts out of PDS.';
 
 /**
