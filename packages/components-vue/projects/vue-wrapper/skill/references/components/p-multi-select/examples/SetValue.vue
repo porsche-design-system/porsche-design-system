@@ -40,7 +40,7 @@ const onRemoveOption = () => {
 
 <template>
   <div class="flex flex-col gap-fluid-sm">
-    <PInputText label="Value:" name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1,2" />
+    <PInputText label="Value:" name="input-value" v-model:value="inputValue" placeholder="e.g. 1,2" />
     <div class="flex gap-fluid-sm">
       <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
       <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>

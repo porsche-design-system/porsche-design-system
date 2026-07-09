@@ -35,6 +35,7 @@ Writing components (this differs from the custom-element tags the references sho
 - Import each component by name and use its **PascalCase** component: `p-button` → `<PButton>`, `p-input-text` → `<PInputText>`.
 - Bind props with `:` and **camelCase** names (`:open="open"`, `:disableBackdropClick="true"`); use `class` for CSS classes.
 - Listen to events with `@` — the `dismiss` event is `@dismiss`.
+- Two-way binding on form components is **`v-model:value`** (bound to the `value` prop / `update:value` event), e.g. `<PInputText v-model:value="text" />`. Bare `v-model` is a silent no-op — there is no `modelValue` prop.
 - Place a child into a named slot with the `slot="..."` attribute.
 
 ## Components
