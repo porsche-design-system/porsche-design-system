@@ -15,8 +15,11 @@ Follow the `angular-framework-migration` and `pds-dependency-context` skills:
    `.turbo-spec/out/angular-escalation.txt` and stopping.
 3. Apply migrations only:
    `npm run ng:update -- @angular/core @angular/cli --migrate-only --from=<old> --to=<new>`.
-4. Read the new `MAX_TS_VERSION`; set `typescript` to the intended target if it is
-   ≤ the ceiling, otherwise hold it back. Reinstall so the lockfile is consistent.
+4. Reconcile `typescript` deterministically: run
+   `node .turbo-spec/scripts/deps/reconcile-ts.mjs .turbo-spec/out/update-plan.json .`
+   — it applies the plan's **frozen** `typescript` target verbatim when ≤ the new
+   `MAX_TS_VERSION`, else holds it back. Never re-choose a version by hand. Then
+   reinstall so the lockfile is consistent.
 
 ## Rules
 

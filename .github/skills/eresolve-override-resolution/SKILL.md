@@ -23,7 +23,9 @@ dependency. Resolve it with a **minimal, scoped, pinned** root `overrides` entry
    patterns in that file (e.g. scoped `"pkg > dep"` overrides, pinned versions).
    Prefer the **narrowest** override that resolves the conflict; avoid a blanket
    override that would cross a major version for unrelated consumers.
-3. Delete **both** `package-lock.json` and `node_modules`, then run `npm install`.
+3. Delete **both** `package-lock.json` and `node_modules`, then run `npm install`
+   **twice** — a clean install makes npm omit platform-specific
+   `optionalDependencies` (e.g. syncpack's binary); a second install re-adds them.
 4. Record what you added to `.turbo-spec/out/overrides-added.json` as an array:
    ```json
    [{ "package": "eslint", "specifier": "9.0.0", "reason": "peer conflict from some-plugin" }]

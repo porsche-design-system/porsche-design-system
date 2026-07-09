@@ -61,3 +61,44 @@ test('failureArtifact returns a schema-shaped object on failure (F5): kind+packa
   assert.ok(Array.isArray(art.packages));
   assert.equal(typeof art.kind, 'string');
 });
+
+import { performInstall } from './run-install.mjs';
+
+// D-sync: npm omits platform optionalDependencies (e.g. syncpack-darwin-arm64)
+// after a clean `rm package-lock.json && npm install`. A second idempotent
+// install tops them up. performInstall encodes that control flow with an
+// injectable runner so we can assert it without touching the network.
+test('performInstall runs a second top-up install when the first succeeds (D-sync)', () => {
+  const calls = [];
+  const run = (args) => {
+    calls.push(args);
+    return { status: 0, stdout: 'added 1200 packages', stderr: '' };
+  };
+  const { result, attempts } = performInstall(run);
+  assert.equal(attempts, 2, 'clean install must be followed by a top-up install');
+  assert.deepEqual(calls, [installArgs(), installArgs()]);
+  assert.equal(result.install_ok, true);
+});
+
+test('performInstall does NOT top-up when the first install fails (D-sync)', () => {
+  const calls = [];
+  const run = (args) => {
+    calls.push(args);
+    return { status: 1, stdout: '', stderr: 'npm error code ERESOLVE\nnpm error peer x@"^8" from y' };
+  };
+  const { result, attempts } = performInstall(run);
+  assert.equal(attempts, 1, 'a failed install must not be topped up');
+  assert.equal(calls.length, 1);
+  assert.equal(result.install_ok, false);
+  assert.equal(result.failure.kind, 'peer_conflict_thirdparty');
+});
+
+test('performInstall install_ok reflects the final (top-up) attempt (D-sync)', () => {
+  let n = 0;
+  const run = () => (n++ === 0
+    ? { status: 0, stdout: 'ok', stderr: '' }
+    : { status: 1, stdout: '', stderr: 'npm error code ERESOLVE\nnpm error peer x@"^8" from y' });
+  const { result, attempts } = performInstall(run);
+  assert.equal(attempts, 2);
+  assert.equal(result.install_ok, false, 'a failing top-up must surface as a failed install');
+});

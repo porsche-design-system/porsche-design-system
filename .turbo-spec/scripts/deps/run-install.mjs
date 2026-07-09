@@ -38,6 +38,28 @@ export function failureArtifact(result) {
   return result?.install_ok ? null : result.failure;
 }
 
+/**
+ * Run the clean install, then — only when it succeeded — a second idempotent
+ * top-up install. npm omits platform-specific optionalDependencies (e.g.
+ * syncpack's `syncpack-darwin-arm64` binary) from node_modules after a clean
+ * `rm package-lock.json && npm install`; the lockfile still references them, so
+ * a follow-up install re-adds them. The final result reflects the last attempt.
+ *
+ * @param {(args: string[]) => {status: number|null, stdout?: string, stderr?: string}} run
+ * @returns {{ result: {install_ok: boolean, failure: object|null}, log: string, attempts: number }}
+ */
+export function performInstall(run) {
+  const first = run(installArgs());
+  const firstLog = `${first.stdout || ''}\n${first.stderr || ''}`;
+  if ((first.status ?? 1) !== 0) {
+    return { result: decideResult(first.status ?? 1, firstLog), log: firstLog, attempts: 1 };
+  }
+  const second = run(installArgs());
+  const secondLog = `${second.stdout || ''}\n${second.stderr || ''}`;
+  const log = `${firstLog}\n${secondLog}`;
+  return { result: decideResult(second.status ?? 1, log), log, attempts: 2 };
+}
+
 function main(argv) {
   const root = argv[2] || '.';
   const outDir = '.turbo-spec/out';
@@ -47,15 +69,10 @@ function main(argv) {
     rmSync(p, { recursive: true, force: true });
   }
 
-  const proc = spawnSync('npm', installArgs(), {
-    cwd: root,
-    encoding: 'utf8',
-    maxBuffer: 64 * 1024 * 1024,
-  });
-  const log = `${proc.stdout || ''}\n${proc.stderr || ''}`;
+  const run = (args) =>
+    spawnSync('npm', args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+  const { result, log } = performInstall(run);
   writeFileSync(`${root}/${outDir}/install.log`, log);
-
-  const result = decideResult(proc.status ?? 1, log);
   writeFileSync(`${root}/${outDir}/apply-result.json`, `${JSON.stringify(result, null, 2)}\n`);
 
   const failure = failureArtifact(result);

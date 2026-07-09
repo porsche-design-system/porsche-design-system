@@ -28,13 +28,15 @@
     },
     "excluded": {
       "type": "array",
-      "description": "Dependencies intentionally left out of this round (e.g. typescript deferred under an Angular bump).",
+      "description": "Dependencies intentionally left out of this round (e.g. typescript deferred under an Angular bump). Carries the frozen from/to so a later stage can apply the exact target without re-choosing a version.",
       "items": {
         "type": "object",
         "required": ["name", "reason"],
         "additionalProperties": false,
         "properties": {
           "name": { "type": "string", "minLength": 1 },
+          "from": { "type": "string", "minLength": 1 },
+          "to": { "type": "string", "minLength": 1 },
           "reason": { "type": "string", "minLength": 1 }
         }
       }

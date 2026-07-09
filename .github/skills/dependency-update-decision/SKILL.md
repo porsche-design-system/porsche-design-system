@@ -18,14 +18,18 @@ Turn the deterministic outdated report into a **frozen** update plan. You choose
 
 1. **Group** each dependency into its lockstep family (see the shared context
    skill). Include every member of a family the report lists, or defer the whole
-   family — never split a family.
+   family — never split a family. This is **gate-enforced**: the `families` gate
+   (`check-families.mjs`) fails the plan if a family's reported members are only
+   partially included, so you must add the whole family or defer it entirely.
 2. **Exclude held-back deps** — they must never appear (they should already be
    absent from the report).
 3. **Detect Angular** — set `angular_bumped: true` if any `angular` family member
    is in the report.
 4. **TypeScript rule** — if `angular_bumped`, move `typescript` out of `updates`
    into `excluded` with a clear reason (its ceiling is only known after Angular
-   installs). Otherwise treat `typescript` as a normal update.
+   installs). **Copy its frozen `from` and `to` from the report verbatim** into the
+   excluded entry so the `angular-migrations` stage applies the exact target
+   without re-choosing a version. Otherwise treat `typescript` as a normal update.
 5. **Freeze versions** — copy each dependency's `to` value verbatim from the
    report. Do not invent, round, or "latest" a version.
 
@@ -47,7 +51,7 @@ Write valid JSON matching `.turbo-spec/schemas/update-plan.schema.json`:
     { "name": "vite", "from": "^8.1.0", "to": "^8.1.3", "group": "other" }
   ],
   "excluded": [
-    { "name": "typescript", "reason": "deferred to angular-migrations: MAX_TS_VERSION ceiling unknown until Angular installs" }
+    { "name": "typescript", "from": "^5.9.2", "to": "^5.9.3", "reason": "deferred to angular-migrations: MAX_TS_VERSION ceiling unknown until Angular installs" }
   ]
 }
 ```

@@ -3,11 +3,14 @@
 // Pure `buildPrBody(...)` so it is unit-testable.
 
 import { readFileSync, writeFileSync } from 'node:fs';
+import { familyOf } from './families.mjs';
 
 function groupUpdates(updates) {
   const groups = new Map();
   for (const u of updates) {
-    const key = u.group || 'other';
+    // Derive the group from the shared family table so grouping stays consistent
+    // even if the planner omits the (optional) `group` field.
+    const key = u.group || familyOf(u.name);
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(u);
   }
