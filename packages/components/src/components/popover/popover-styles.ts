@@ -82,9 +82,12 @@ const iconInfo = getInlineSVGBackgroundImage(
  * Builds the popover's scoped CSS.
  * @param isOpen - The effective open state; drives the fade-in/fade-out direction and the `@starting-style` append.
  * @param isCompact - Reduces padding/spacing and uses smaller radii (mirrors the `compact` prop).
- * @returns The component CSS string, with a trailing `@starting-style` rule appended while opening.
+ * @param skipEntryTransition - Suppresses the `@starting-style` entry fade. Set on the component's first render so an
+ *   initially-open popover (`open=true` on page load) appears instantly instead of fading in. Later user-triggered opens
+ *   render with this `false`, so they keep the fade-in.
+ * @returns The component CSS string, with a trailing `@starting-style` rule appended while opening (unless skipped).
  */
-export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => {
+export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTransition: boolean): string => {
   // fade-in on open (via `@starting-style` below), fade-out on close. While closing, the panel keeps `display: grid`
   // (Chromium via `overlay` + `display` `allow-discrete`; Safari/Firefox via the deferred `hidePopover()`), so
   // `display: none` only describes the fully-closed terminal state. Tabbability / a11y-tree removal during the fade-out
@@ -219,6 +222,10 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => 
   // engines (< Chromium 117 / Safari 17.5 / Firefox 129) ignore the unknown at-rule and skip the entry fade (graceful
   // degradation). Formatting mirrors JSS output so the unit-test CSS parser can read it.
   //
+  // `skipEntryTransition` omits the append on the component's FIRST render, so an initially-open popover (`open=true` on
+  // page load) computes straight to `opacity: 1` and appears instantly instead of fading in. Every later render passes
+  // `false`, so a user-triggered open still fades in normally.
+  //
   // ALTERNATIVE APPROACH (INTENTIONALLY NOT IMPLEMENTED) — mirror the `dialog-base` (p-modal/p-flyout) pattern and drop `@starting-style`:
   // Decision: KEEP this divergence (see the mirrored note in `common/dialog-base/dialog-base-styles.ts`). `p-popover`/`p-banner`
   // mimic the native `[popover]` box model, so they use the native `display: none`/`:popover-open` toggle + `@starting-style`
@@ -241,5 +248,5 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean): string => 
   //     tabbable during the fade-out).
   //   • Trade-off: removes the `@starting-style` raw-CSS append + the initial-load fade, at the cost of reintroducing the
   //     delayed `visibility` plus delayed `width/height` and tighter coupling to the motion duration.
-  return isOpen ? `${css}\n@starting-style {\n  [popover] {\n    opacity: 0;\n  }\n}` : css;
+  return isOpen && !skipEntryTransition ? `${css}\n@starting-style {\n  [popover] {\n    opacity: 0;\n  }\n}` : css;
 };

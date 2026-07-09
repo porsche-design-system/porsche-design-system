@@ -37,7 +37,8 @@ export const getComponentCss = (
   position: BreakpointCustomizable<BannerPosition>,
   state: BannerState,
   hasDismissButton: boolean,
-  hasHeadingOrHeadingSlot: boolean
+  hasHeadingOrHeadingSlot: boolean,
+  skipEntryTransition: boolean
 ): string => {
   const duration = isOpen ? 'moderate' : 'short';
   const easing = isOpen ? 'in' : 'out';
@@ -102,7 +103,11 @@ export const getComponentCss = (
   // the popover is `display: none`, so on open `.notification` renders fresh with a computed `opacity: 1` and has no
   // prior value to transition from — without the starting value it snaps to full opacity instead of fading in. The
   // opacity is split onto `.notification` (not `[popover]`) so the frosted-glass backdrop-filter renders correctly.
-  return isOpen
+  //
+  // `skipEntryTransition` omits the append on the component's FIRST render, so an initially-open banner (`open=true` on
+  // page load) computes straight to its visible transform/opacity and appears instantly instead of sliding/fading in.
+  // Every later render passes `false`, so a user-triggered open still animates normally.
+  return isOpen && !skipEntryTransition
     ? `${css}\n@starting-style {\n  [popover] {\n    transform: ${ref('--_a')};\n  }\n  .notification {\n    opacity: 0;\n  }\n}`
     : css;
 };

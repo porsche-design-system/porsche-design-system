@@ -42,15 +42,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -180,15 +183,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -303,15 +309,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -416,15 +425,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -535,15 +547,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -673,15 +688,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -786,15 +804,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -899,17 +920,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1011,17 +1035,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1129,17 +1156,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1260,17 +1290,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1397,17 +1430,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1544,17 +1580,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1770,17 +1809,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1917,17 +1959,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2022,17 +2067,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2134,17 +2182,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2265,17 +2316,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2396,17 +2450,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2533,17 +2590,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2680,17 +2740,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2785,15 +2848,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2914,15 +2980,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3024,17 +3093,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3143,17 +3215,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3275,17 +3350,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3413,17 +3491,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3536,17 +3617,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3665,17 +3749,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3807,17 +3894,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3955,17 +4045,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;

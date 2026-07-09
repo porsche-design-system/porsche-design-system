@@ -79,6 +79,10 @@ export class Banner {
   private hasDescriptionSlot: boolean;
   // Tracks whether the document-level Escape listener is currently registered (guards the idempotent sync below).
   private hasKeydownListener = false;
+  // Tracks the component's first render. While `true`, the entry transition (`@starting-style`) is suppressed so an
+  // initially-open banner (`open=true` on page load) appears instantly instead of sliding/fading in; flipped to `false`
+  // in `componentDidLoad`, so every later (user-triggered) open keeps the entry animation.
+  private isInitialRender = true;
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.refPopover,
     isShown: () => !!this.refPopover?.matches(':popover-open'),
@@ -123,6 +127,12 @@ export class Banner {
     this.refDismiss?.focus();
   }
 
+  public componentDidLoad(): void {
+    // After the first render the initial-open entry animation has been (intentionally) suppressed; clear the flag so any
+    // subsequent user-triggered open renders with `@starting-style` and animates in normally.
+    this.isInitialRender = false;
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
@@ -136,7 +146,8 @@ export class Banner {
       this.position,
       this.state,
       this.dismissButton,
-      !!(this.heading || this.hasHeadingSlot)
+      !!(this.heading || this.hasHeadingSlot),
+      this.isInitialRender
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
