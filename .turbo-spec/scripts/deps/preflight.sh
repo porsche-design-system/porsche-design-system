@@ -74,4 +74,10 @@ else
   echo "preflight: created $BRANCH"
 fi
 
+# Clean the artifact directory so a fresh run never reads a prior run's
+# update-plan.json / install.log (stale artifacts caused misroutes and false
+# gate failures). Setup mode only — resume does not re-run preflight.
+rm -rf .turbo-spec/out && mkdir -p .turbo-spec/out
+echo "preflight: cleaned .turbo-spec/out"
+
 exit 0

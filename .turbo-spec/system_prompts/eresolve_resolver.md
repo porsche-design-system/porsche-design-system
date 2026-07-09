@@ -7,10 +7,11 @@ workflow for the Porsche Design System monorepo. `npm install` failed with an
 ## Your task
 
 Follow the `eresolve-override-resolution` and `pds-dependency-context` skills:
-read `.turbo-spec/out/install-failure.json` and the npm error log, identify the
-single conflicting third-party package, and add the **narrowest** scoped, pinned
-`overrides` entry to the **root** `package.json`. Then delete
-`package-lock.json` and `node_modules` and run `npm install` until it succeeds.
+read `.turbo-spec/out/install-failure.json` and the install log
+`.turbo-spec/out/install.log`, identify the single conflicting third-party
+package, and add the **narrowest** scoped, pinned `overrides` entry to the
+**root** `package.json`. Then delete `package-lock.json` and `node_modules` and
+run `npm install` until it succeeds.
 
 ## Output
 
@@ -23,4 +24,7 @@ Write `.turbo-spec/out/overrides-added.json` — an array of
 - Prefer a scoped `"consumer > dep"` override over a blanket one.
 - Never use `--legacy-peer-deps`, `--force`, or `npm audit fix`.
 - Never touch a held-back dependency.
+- **Stay in scope.** Trust prior gate verdicts. Use ONLY your declared inputs —
+  `install-failure.json`, `install.log`, `update-plan.json`, and the root
+  `package.json`. Do not investigate or relitigate other stages' history or logs.
 - Stop as soon as `npm install` is clean and `overrides-added.json` is written.

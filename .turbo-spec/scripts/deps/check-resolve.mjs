@@ -1,17 +1,31 @@
-// Gate for resolve-conflicts: confirms the agent added at least one override and
-// used no forbidden install flags. (Structural "root overrides only" is left to
-// the equality/no-drift gate in consistency, which ignores the `overrides` key.)
+// Gate for resolve-conflicts: confirms the agent recorded at least one override
+// AND the resulting install no longer reports an ERESOLVE peer conflict.
+//
+// We deliberately do NOT scan the log for forbidden flags (`--force`,
+// `--legacy-peer-deps`, `npm audit fix`): those strings also appear in npm's OWN
+// output (its ERESOLVE hint and audit summary), which produced false-positive
+// loop-backs. A flag "cheat" cannot persist anyway — only `overrides` in
+// package.json survives — so the authoritative guard is the flagless clean
+// install in the `consistency` stage, which fails if the override does not
+// genuinely resolve the tree.
 //
 // Exit 0 = clean, 1 = violation (loop_back), 2 = env error.
 
 import { readFileSync } from 'node:fs';
 
-const FORBIDDEN = [/--legacy-peer-deps/i, /--force\b/i, /audit\s+fix/i];
-
-/** Return the forbidden flags/commands found in an install log. */
-export function findForbiddenFlags(log) {
-  const text = String(log || '');
-  return FORBIDDEN.filter((re) => re.test(text)).map((re) => re.source);
+/**
+ * Decide the resolve-conflicts verdict from the recorded overrides and the final
+ * install log.
+ * @returns {{ok: boolean, reason: string}}
+ */
+export function resolveVerdict(overrides, log) {
+  if (!Array.isArray(overrides) || overrides.length === 0) {
+    return { ok: false, reason: 'no overrides were recorded' };
+  }
+  if (/ERESOLVE/i.test(String(log || ''))) {
+    return { ok: false, reason: 'final install still reports ERESOLVE (conflict unresolved)' };
+  }
+  return { ok: true, reason: `${overrides.length} override(s) recorded, install ERESOLVE-free` };
 }
 
 function main(argv) {
@@ -25,10 +39,6 @@ function main(argv) {
     console.error(`cannot read overrides-added.json: ${err.message}`);
     return 1;
   }
-  if (!Array.isArray(overrides) || overrides.length === 0) {
-    console.error('resolve check failed: no overrides were recorded');
-    return 1;
-  }
 
   let log = '';
   try {
@@ -36,13 +46,13 @@ function main(argv) {
   } catch {
     // absent log is not fatal for this check
   }
-  const forbidden = findForbiddenFlags(log);
-  if (forbidden.length > 0) {
-    console.error(`resolve check failed: forbidden flag(s) used: ${forbidden.join(', ')}`);
+
+  const verdict = resolveVerdict(overrides, log);
+  if (!verdict.ok) {
+    console.error(`resolve check failed: ${verdict.reason}`);
     return 1;
   }
-
-  console.log(`resolve check passed: ${overrides.length} override(s), no forbidden flags`);
+  console.log(`resolve check passed: ${verdict.reason}`);
   return 0;
 }
 

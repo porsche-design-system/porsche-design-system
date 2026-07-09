@@ -137,7 +137,7 @@ stages:
           gate_name: resolve-conflicts
           failure_verdict: loop_back
           environment_verdict: escalate
-          success_reason: "Override recorded and no forbidden flags used"
+          success_reason: "Override recorded and install is ERESOLVE-free"
           steps:
             - name: check-resolve
               command: ["node", ".turbo-spec/scripts/deps/check-resolve.mjs", ".turbo-spec/out/overrides-added.json", ".turbo-spec/out/install.log"]
@@ -168,6 +168,8 @@ stages:
               command: ["node", ".turbo-spec/scripts/deps/check-ts-ceiling.mjs", "."]
 
   # 6. consistency (deterministic): syncpack fix/format + clean lockfile regen.
+  # Removes BOTH the lockfile and node_modules so this is the authoritative
+  # flagless clean install — a resolve-stage flag "cheat" cannot survive it.
   - name: consistency
     orchestrator: testing
     depends_on: [apply_bumps, resolve_conflicts, angular_migrations]
@@ -175,8 +177,8 @@ stages:
     pre_command: >-
       npm run npm:lint:fix &&
       npm run npm:format:fix &&
-      rm -f package-lock.json &&
-      npm install
+      rm -rf package-lock.json node_modules &&
+      npm install --no-audit --no-fund
     quality_gates:
       - evaluator: script_gate
         on_fail: loop_back

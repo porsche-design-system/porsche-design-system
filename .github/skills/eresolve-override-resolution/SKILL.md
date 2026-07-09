@@ -13,7 +13,7 @@ dependency. Resolve it with a **minimal, scoped, pinned** root `overrides` entry
 
 - `.turbo-spec/out/install-failure.json` — `{ kind, packages, detail }`. You only
   run when `kind == "peer_conflict_thirdparty"`.
-- The captured npm error log (in the stage log / `.turbo-spec/out/install-error.log`).
+- The captured npm install log (`.turbo-spec/out/install.log`).
 
 ## Procedure
 

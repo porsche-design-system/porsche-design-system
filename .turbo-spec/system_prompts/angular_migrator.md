@@ -24,3 +24,6 @@ Follow the `angular-framework-migration` and `pds-dependency-context` skills:
 - `typescript` must end ≤ `MAX_TS_VERSION`.
 - Never use `--legacy-peer-deps`, `--force`, or `npm audit fix`.
 - Never touch a held-back dependency.
+- **Stay in scope.** Prior stages already passed their gates. Do ONLY the Angular
+  migration + TypeScript reconcile from your declared inputs. Do not investigate
+  or relitigate the resolve-conflicts stage's history, logs, or gate results.
