@@ -98,8 +98,17 @@ export const renderPartialsReference = (source: PartialsSource): { markdown: str
     sections.push(demoteHeadings(markdown).trim());
   }
 
+  // The integration snippets are authored for vanilla JS and hardcode the js `partials` subpath (the
+  // skill renders these examples frozen to vanilla-js). Every wrapper ships its OWN `./partials`, and
+  // under pnpm the js package is not reachable from a react/angular/vue consumer app — so retarget the
+  // import to each tree's own package via the framework placeholder, resolved per tree at write time
+  // (`resolveFrameworkPlaceholder`). In the js tree it resolves back to `components-js/partials`, a no-op.
+  const frameworkAdapted = sections
+    .join('\n\n')
+    .replaceAll('@porsche-design-system/components-js/partials', '@porsche-design-system/components-{js|angular|react|vue}/partials');
+
   // Resolve storefront-absolute links to their in-tree references, relative to `references/partials.md`.
-  const markdown = rewriteDocLinks(sections.join('\n\n'), 'references/partials.md');
+  const markdown = rewriteDocLinks(frameworkAdapted, 'references/partials.md');
   return { markdown, degraded };
 };
 

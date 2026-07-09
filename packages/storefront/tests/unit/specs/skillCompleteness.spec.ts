@@ -36,6 +36,17 @@ const SUB_COMPONENT_TAGS = Object.entries(componentMeta)
   .map(([tag]) => tag)
   .sort();
 
+/**
+ * Component-level status (deprecated/experimental) of a tag, or `undefined`. This lives only on
+ * `componentMeta` — never in the prose MDX — so the generator must surface it explicitly; these sets
+ * gate that it does, in every tree, for both top-level components and sub-components.
+ */
+const statusOf = (meta: { isDeprecated?: boolean; isExperimental?: boolean }): 'deprecated' | 'experimental' | undefined =>
+  meta.isDeprecated ? 'deprecated' : meta.isExperimental ? 'experimental' : undefined;
+
+const FLAGGED_TAGS = DOCUMENTED_TAGS.filter((tag) => statusOf(componentMeta[tag]));
+const FLAGGED_SUB_COMPONENT_TAGS = SUB_COMPONENT_TAGS.filter((tag) => statusOf(componentMeta[tag]));
+
 /** Extract the data rows of every markdown table under an `## Examples` heading. */
 const exampleRows = (markdown: string): string[][] => {
   const lines = markdown.split('\n');
@@ -112,6 +123,25 @@ describe('skill tree completeness', () => {
           return fs.existsSync(file) && fs.readFileSync(file, 'utf-8').includes(heading);
         });
         expect(documented, `sub-component ${tag} is not documented under any parent reference`).toBe(true);
+      });
+
+      it.each(FLAGGED_TAGS)('marks deprecated/experimental component %s in its reference and roster row', (tag) => {
+        const status = statusOf(componentMeta[tag]);
+        const bannerPrefix = status === 'deprecated' ? '> **Deprecated:**' : '> **Experimental:**';
+        const file = path.join(componentsDir, tag, `${tag}.md`);
+        const content = fs.existsSync(file) ? fs.readFileSync(file, 'utf-8') : '';
+        expect(content, `missing ${status} status banner in ${tag}.md`).toContain(bannerPrefix);
+        expect(skillMd, `missing ${status} roster marker for ${tag}`).toContain(`\`${tag}\` _(${status})_`);
+      });
+
+      it.each(FLAGGED_SUB_COMPONENT_TAGS)('marks deprecated/experimental sub-component %s under a parent', (tag) => {
+        const status = statusOf(componentMeta[tag]);
+        const heading = `### \`${tag}\` _(${status})_`;
+        const documented = DOCUMENTED_TAGS.some((parent) => {
+          const file = path.join(componentsDir, parent, `${parent}.md`);
+          return fs.existsSync(file) && fs.readFileSync(file, 'utf-8').includes(heading);
+        });
+        expect(documented, `sub-component ${tag} not marked ${status} under any parent reference`).toBe(true);
       });
 
       it('uses the curated roster summary for overridden components', () => {

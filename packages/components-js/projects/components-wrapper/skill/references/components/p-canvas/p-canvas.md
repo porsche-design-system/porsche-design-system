@@ -1,5 +1,7 @@
 # p-canvas
 
+> **Experimental:** This component is experimental — its API may change in any release. Avoid relying on it in production.
+
 The `p-canvas` is an experimental layout component for productive web applications.
 
 The canvas component provides a CSS utility class which comes with a basic 12 columns [CSS grid](https://css-tricks.com/snippets/css/complete-guide-grid) and [CSS container-type](https://css-tricks.com/css-container-queries). The utility class can be used in default or footer slot to align its content.

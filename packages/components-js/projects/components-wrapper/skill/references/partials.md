@@ -32,11 +32,11 @@ An in-depth optimization guide can be found at [Vanilla Js Optimization](https:/
 
 ### Supported options
 
-`type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold'`
+`type FontWeight = 'regular' | 'semi-bold' | 'bold'`
 
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
-| `subset` | Defines which font subset should be loaded. | `'latin' \| 'greek' \| 'cyril' \| 'arabic' \| 'pashto' \| 'urdu'` | `'latin'` |
+| `subset` | Defines which font subset should be loaded. | `'latin' \| 'greek' \| 'cyril' \| 'thai' \| 'arabic' \| 'pashto' \| 'urdu'` | `'latin'` |
 | `weights` | Defines which font weights should be loaded. | `FontWeight[]` | `['regular', 'semi-bold']` |
 | `cdn` | Decides from which CDN the resources are loaded. | `'auto' \| 'cn'` | `'auto'` |
 | `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' \| 'jsx' \| 'js'` | `'html'` |
@@ -213,9 +213,11 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 ### Supported options
 
+Each entry is an [`IconName`](./components/p-icon/p-icon.md) — one of the Porsche Design System icon names (see the icon component for the complete list).
+
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
-| `icons` | All icons listed in the array are loaded from the CDN. | `({{this.iconNames}})[]` | `['arrowHeadRight']` |
+| `icons` | All icons listed in the array are loaded from the CDN. | `IconName[]` | `['arrow-right']` |
 | `cdn` | Decides from which CDN the resources are loaded. | `'auto' \| 'cn'` | `'auto'` |
 | `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' \| 'jsx' \| 'js'` | `'html'` |
 

@@ -7,11 +7,13 @@ scheme, font face and normalize):
 
 ```css
 /* Replace {js|angular|react|vue} with your framework, e.g. components-react */
-@import '@porsche-design-system/components-{js|angular|react|vue}';
-
-/* Alternative: if your bundler requires an explicit .css extension, use this path instead */
 @import '@porsche-design-system/components-{js|angular|react|vue}/index.css';
 ```
+
+The explicit `/index.css` path resolves in every framework package. The `js`, React and Vue packages
+additionally expose an extensionless shorthand via a `style` export condition, so with those you can
+also write `@import '@porsche-design-system/components-react'` (bare, no `/index.css`). The Angular
+package does **not** expose that condition — always use the explicit `/index.css` path there.
 
 If you only need specific styles, import each stylesheet separately for more granular control. Note
 that `variables.css` and `font-face.css` are **required** — components will not render correctly

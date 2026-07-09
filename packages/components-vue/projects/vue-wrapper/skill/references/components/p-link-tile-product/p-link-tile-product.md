@@ -1,5 +1,7 @@
 # p-link-tile-product
 
+> **Experimental:** This component is experimental — its API may change in any release. Avoid relying on it in production.
+
 The `p-link-tile-product` is a navigational component designed to showcase a featured product within a store. it offers the option to "like" the product, allowing you to easily add it to the users wishlist. Additionally, you can place a chip at the top to signal special features about the product, such as its novelty or exclusivity.
 
 An `img` or `picture` element has to be available as a child of the `p-link-tile-product` component.

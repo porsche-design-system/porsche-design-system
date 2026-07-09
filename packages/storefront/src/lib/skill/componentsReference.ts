@@ -1,9 +1,11 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentType } from 'react';
 import {
+  componentStatus,
   deriveIconNames,
   parseRequiredParents,
   renderComponentApi,
+  renderComponentStatusBanner,
   renderIconsReference,
   renderSubComponents,
 } from './componentApi';
@@ -95,10 +97,13 @@ const renderSection = (
  */
 export const renderComponentProse = (
   tag: string,
-  source: ComponentProseSource
+  source: ComponentProseSource,
+  statusBanner = ''
 ): { markdown: string; summary: string; degradedSections: string[] } => {
   const degradedSections: string[] = [];
-  const sections: string[] = [`# ${tag}`];
+  // The status banner (deprecated/experimental) sits directly under the H1, before any prose, so it is
+  // the first thing read; it is derived from `componentMeta`, which the prose sections never carry.
+  const sections: string[] = statusBanner ? [`# ${tag}`, statusBanner] : [`# ${tag}`];
 
   // The introduction goes through the same renderer as usage/accessibility (no heading strip); its raw
   // markdown is returned so the roster summary is the lead sentence. Degraded intro → empty → NO_SUMMARY.
@@ -211,8 +216,9 @@ export const writeComponentReferences = (
   }
 
   for (const tag of tags) {
-    const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag]);
     const apiMeta = apiOptions?.componentMeta[tag];
+    const statusBanner = apiMeta ? renderComponentStatusBanner(apiMeta) : '';
+    const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag], statusBanner);
     const sections = [markdown];
     if (apiMeta) {
       sections.push(renderComponentApi(apiMeta, apiOptions.framework, iconNames));
@@ -232,7 +238,11 @@ export const writeComponentReferences = (
     // "when to use" descriptions alike — relative to this component's own file location.
     const relativePath = `components/${tag}/${tag}.md`;
     tree.writeReference(relativePath, rewriteDocLinks(sections.join('\n\n'), `references/${relativePath}`));
-    roster.push({ tag, summary: ROSTER_SUMMARY_OVERRIDES[tag] ?? summary });
+    roster.push({
+      tag,
+      summary: ROSTER_SUMMARY_OVERRIDES[tag] ?? summary,
+      ...(apiMeta && componentStatus(apiMeta) ? { status: componentStatus(apiMeta) } : {}),
+    });
     if (degradedSections.length > 0) {
       degraded.push({ tag, sections: degradedSections });
     }

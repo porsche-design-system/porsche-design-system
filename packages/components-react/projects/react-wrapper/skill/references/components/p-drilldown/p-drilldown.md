@@ -1,5 +1,7 @@
 # p-drilldown
 
+> **Experimental:** This component is experimental — its API may change in any release. Avoid relying on it in production.
+
 The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown menu that overlays the page content from the start side of the screen. It is a controlled component that gives you flexible control over its behavior.
 
 The basic concept of the component is to have a button that opens the `p-drilldown` with an infinite multilevel structure. The levels are generated out of `p-drilldown-item` which generates a list of cascade buttons to navigate to a deeper level, back buttons and a header section on mobile view. These items can be filled with e.g. `p-drilldown-link`, another `p-drilldown-item` or any HTML element.
@@ -116,7 +118,9 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 
 These tags are only valid inside this component (see each one’s allowed parents). Their APIs come from the same authoritative `component-meta` as the parent above.
 
-### `p-drilldown-item`
+### `p-drilldown-item` _(experimental)_
+
+> **Experimental:** This component is experimental — its API may change in any release. Avoid relying on it in production.
 
 Allowed parents: `p-drilldown`, `p-drilldown-item`.
 
@@ -138,7 +142,9 @@ Allowed parents: `p-drilldown`, `p-drilldown-item`.
 | `button` | no | — | Shows a custom button to reach a deeper level of the navigation structure. |
 | `header` | no | — | Shows a custom header section on mobile view. |
 
-### `p-drilldown-link`
+### `p-drilldown-link` _(experimental)_
+
+> **Experimental:** This component is experimental — its API may change in any release. Avoid relying on it in production.
 
 Allowed parents: `p-drilldown`, `p-drilldown-item`.
 

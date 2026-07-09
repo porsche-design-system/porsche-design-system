@@ -117,7 +117,7 @@ const GETTING_STARTED: Record<Framework, string> = {
     '```',
     '',
     'Writing components (this differs from the custom-element tags the references show):',
-    '- Import each component by name and use its **PascalCase** React component: `p-button` → `<PButton>`, `p-text-field-wrapper` → `<PTextFieldWrapper>`.',
+    '- Import each component by name and use its **PascalCase** React component: `p-button` → `<PButton>`, `p-input-text` → `<PInputText>`.',
     '- Props are **camelCase** (`disableBackdropClick`, not `disable-backdrop-click`); use `className` for CSS classes and pass ARIA via the `aria={{ ... }}` prop.',
     '- Events are `on<Event>` handler props — the `dismiss` event is `onDismiss`, `update` is `onUpdate`.',
     '- Place a child into a named slot with the `slot="..."` attribute.',
@@ -146,7 +146,7 @@ const GETTING_STARTED: Record<Framework, string> = {
     '```',
     '',
     'Writing components (this differs from the custom-element tags the references show):',
-    '- Import each component by name and use its **PascalCase** component: `p-button` → `<PButton>`, `p-text-field-wrapper` → `<PTextFieldWrapper>`.',
+    '- Import each component by name and use its **PascalCase** component: `p-button` → `<PButton>`, `p-input-text` → `<PInputText>`.',
     '- Bind props with `:` and **camelCase** names (`:open="open"`, `:disableBackdropClick="true"`); use `class` for CSS classes.',
     '- Listen to events with `@` — the `dismiss` event is `@dismiss`.',
     '- Place a child into a named slot with the `slot="..."` attribute.',
@@ -174,7 +174,7 @@ const GETTING_STARTED: Record<Framework, string> = {
     '```',
     '',
     'Writing components:',
-    '- Use the **custom-element tags** directly in templates: `<p-button>`, `<p-text-field-wrapper>`.',
+    '- Use the **custom-element tags** directly in templates: `<p-button>`, `<p-input-text>`.',
     '- Bind props with `[prop]` and camelCase names (`[open]="open"`, `[disableBackdropClick]="true"`).',
     '- Listen to events with `(event)` — the `dismiss` event is `(dismiss)="onDismiss()"`.',
     '- Place a child into a named slot with the `slot="..."` attribute.',
@@ -198,7 +198,7 @@ const GETTING_STARTED: Record<Framework, string> = {
     '```',
     '',
     'Writing components:',
-    '- Use the **custom-element tags** directly in HTML: `<p-button>`, `<p-text-field-wrapper>`.',
+    '- Use the **custom-element tags** directly in HTML: `<p-button>`, `<p-input-text>`.',
     '- Set props as attributes (`variant="secondary"`) or as DOM properties for non-string values.',
     "- Listen to events with `element.addEventListener('dismiss', ...)`.",
     '- Place a child into a named slot with the `slot="..."` attribute.',
@@ -210,7 +210,7 @@ const GETTING_STARTED: Record<Framework, string> = {
  * summary. The reference path is derived from the tag, so it stays correct by
  * construction with the `components/<tag>/<tag>.md` layout.
  */
-export type ComponentRosterEntry = { tag: string; summary: string };
+export type ComponentRosterEntry = { tag: string; summary: string; status?: 'deprecated' | 'experimental' };
 
 const renderReferenceMap = (entries: readonly ReferenceMapEntry[]): string => {
   if (entries.length === 0) {
@@ -228,8 +228,8 @@ const renderReferenceMap = (entries: readonly ReferenceMapEntry[]): string => {
  * (relative to the skill root) for props, slots, events, CSS variables and examples.
  */
 const renderComponentRoster = (roster: readonly ComponentRosterEntry[]): string => {
-  const rows = roster.map(({ tag, summary }) => [
-    `\`${tag}\``,
+  const rows = roster.map(({ tag, summary, status }) => [
+    `\`${tag}\`${status ? ` _(${status})_` : ''}`,
     escapeCell(summary),
     `[${tag}.md](references/components/${tag}/${tag}.md)`,
   ]);

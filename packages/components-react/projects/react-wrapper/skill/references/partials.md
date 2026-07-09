@@ -32,11 +32,11 @@ An in-depth optimization guide can be found at [Vanilla Js Optimization](https:/
 
 ### Supported options
 
-`type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold'`
+`type FontWeight = 'regular' | 'semi-bold' | 'bold'`
 
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
-| `subset` | Defines which font subset should be loaded. | `'latin' \| 'greek' \| 'cyril' \| 'arabic' \| 'pashto' \| 'urdu'` | `'latin'` |
+| `subset` | Defines which font subset should be loaded. | `'latin' \| 'greek' \| 'cyril' \| 'thai' \| 'arabic' \| 'pashto' \| 'urdu'` | `'latin'` |
 | `weights` | Defines which font weights should be loaded. | `FontWeight[]` | `['regular', 'semi-bold']` |
 | `cdn` | Decides from which CDN the resources are loaded. | `'auto' \| 'cn'` | `'auto'` |
 | `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' \| 'jsx' \| 'js'` | `'html'` |
@@ -59,9 +59,9 @@ Project integration differs based on the project setup. The following showcases 
 <!-- make sure to adjust the path to the index.html file -->
 "scripts": {
   "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getFontLinks())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
   <!-- Alternative: Force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getFontLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_FONT_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getFontLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
 }
 ```
 
@@ -110,9 +110,9 @@ Project integration differs based on the project setup. The following showcases 
 <!-- make sure to adjust the path to the index.html file -->
 "scripts": {
   "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getComponentChunkLinks({ components: [\"button\", \"wordmark\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getComponentChunkLinks({ components: [\"button\", \"wordmark\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
   <!-- Alternative: force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getComponentChunkLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_COMPONENT_CHUNK_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getComponentChunkLinks({ cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
 }
 ```
 
@@ -160,9 +160,9 @@ Project integration differs based on the project setup. The following showcases 
 <!-- make sure to adjust the path to the index.html file -->
 "scripts": {
   "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
   <!-- Alternative: Force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\", cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_META_TAGS_AND_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getMetaTagsAndIconLinks({ appTitle: \"TITLE_OF_YOUR_APP\", cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
 }
 ```
 
@@ -213,9 +213,11 @@ Therefore, we provide a ready to use partial in all `@porsche-design-system/comp
 
 ### Supported options
 
+Each entry is an [`IconName`](./components/p-icon/p-icon.md) — one of the Porsche Design System icon names (see the icon component for the complete list).
+
 | Option | Description | Type | Default |
 | --- | --- | --- | --- |
-| `icons` | All icons listed in the array are loaded from the CDN. | `({{this.iconNames}})[]` | `['arrowHeadRight']` |
+| `icons` | All icons listed in the array are loaded from the CDN. | `IconName[]` | `['arrow-right']` |
 | `cdn` | Decides from which CDN the resources are loaded. | `'auto' \| 'cn'` | `'auto'` |
 | `format` | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the `js` option a javascript object is returned. | `'html' \| 'jsx' \| 'js'` | `'html'` |
 
@@ -237,9 +239,9 @@ Project integration differs based on the project setup. The following showcases 
 <!-- make sure to adjust the path to the index.html file -->
 "scripts": {
   "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
   <!-- Alternative: Force using China CDN -->
-  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"], cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_ICON_LINKS-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getIconLinks({ icons: [\"arrow-head-right\", \"plus\"], cdn: \"cn\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
 }
 ```
 
@@ -285,11 +287,11 @@ Project integration differs based on the project setup. The following showcases 
 <!-- make sure to adjust the path to the index.html file -->
 "scripts": {
   "prestart": "npm run replace",
-  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getLoaderScript())') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
   <!-- Alternative: With custom prefix -->
-  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript({ prefix: \"custom-prefix\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getLoaderScript({ prefix: \"custom-prefix\" }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
   <!-- Alternative: With multiple custom prefixes -->
-  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-js/partials\").getLoaderScript({ prefix: [\"\", \"custom-prefix\", \"another-prefix\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
+  "replace": "placeholder='<!--PLACEHOLDER_LOADER_SCRIPT-->' && partial=$placeholder$(node -e 'console.log(require(\"@porsche-design-system/components-react/partials\").getLoaderScript({ prefix: [\"\", \"custom-prefix\", \"another-prefix\"] }))') && regex=$placeholder'.*' && sed -i '' -E -e \"s^$regex^$partial^\" index.html"
 }
 ```
 

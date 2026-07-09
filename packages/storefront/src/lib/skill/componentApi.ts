@@ -66,6 +66,39 @@ const isIconUnion = (values: readonly unknown[], iconNames: ReadonlySet<string>)
   return true;
 };
 
+/**
+ * Component-level status for the roster row and headings: `'deprecated'` takes precedence over
+ * `'experimental'` (a component is never both), `undefined` when neither applies.
+ */
+export type ComponentStatus = 'deprecated' | 'experimental';
+
+/** The component-level status of a tag, or `undefined` when it is neither deprecated nor experimental. */
+export const componentStatus = (meta: { isDeprecated?: boolean; isExperimental?: boolean }): ComponentStatus | undefined =>
+  meta.isDeprecated ? 'deprecated' : meta.isExperimental ? 'experimental' : undefined;
+
+/** Trailing status suffix for a heading or roster cell, e.g. ` _(deprecated)_`; empty when neither applies. */
+export const componentStatusFlag = (meta: { isDeprecated?: boolean; isExperimental?: boolean }): string => {
+  const status = componentStatus(meta);
+  return status ? ` _(${status})_` : '';
+};
+
+/**
+ * A prominent blockquote admonition surfacing a component's deprecated/experimental status, placed
+ * directly under the `# <tag>` heading. Component-level status lives only on `componentMeta` (not the
+ * prose MDX), so without this the agent would never learn a documented component is deprecated or
+ * experimental. Returns `''` for a normal component.
+ */
+export const renderComponentStatusBanner = (meta: ComponentMeta): string => {
+  if (meta.isDeprecated) {
+    const detail = meta.deprecationMessage?.trim();
+    return `> **Deprecated:** ${detail || 'This component is deprecated and will be removed in a future major release.'}`;
+  }
+  if (meta.isExperimental) {
+    return '> **Experimental:** This component is experimental — its API may change in any release. Avoid relying on it in production.';
+  }
+  return '';
+};
+
 /** Trailing status markers appended to an item's name column. */
 const flags = (meta: { isDeprecated?: boolean; isExperimental?: boolean; isRequired?: boolean }): string =>
   [meta.isRequired && '(required)', meta.isDeprecated && '(deprecated)', meta.isExperimental && '(experimental)']
@@ -260,7 +293,11 @@ export const renderSubComponents = (
       'from the same authoritative `component-meta` as the parent above.',
   ];
   for (const { tag, meta } of subComponents) {
-    blocks.push(`### \`${tag}\``);
+    blocks.push(`### \`${tag}\`${componentStatusFlag(meta)}`);
+    const banner = renderComponentStatusBanner(meta);
+    if (banner) {
+      blocks.push(banner);
+    }
     const parents = parseRequiredParents(meta.requiredParent);
     if (parents.length > 0) {
       blocks.push(`Allowed parent${parents.length > 1 ? 's' : ''}: ${parents.map(code).join(', ')}.`);

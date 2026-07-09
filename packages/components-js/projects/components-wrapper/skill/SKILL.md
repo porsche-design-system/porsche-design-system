@@ -27,7 +27,7 @@ For best loading performance, inject the loader-script partial into your HTML `<
 ```
 
 Writing components:
-- Use the **custom-element tags** directly in HTML: `<p-button>`, `<p-text-field-wrapper>`.
+- Use the **custom-element tags** directly in HTML: `<p-button>`, `<p-input-text>`.
 - Set props as attributes (`variant="secondary"`) or as DOM properties for non-string values.
 - Listen to events with `element.addEventListener('dismiss', ...)`.
 - Place a child into a named slot with the `slot="..."` attribute.
@@ -46,13 +46,13 @@ Sub-components (e.g. `p-table-row`, `p-select-option`, `p-tabs-item`) have no se
 | `p-button` | The `p-button` component is essential for performing form or **interaction** events. | [p-button.md](references/components/p-button/p-button.md) |
 | `p-button-pure` | The `p-button-pure` component is essential to perform events for **interactions**. | [p-button-pure.md](references/components/p-button-pure/p-button-pure.md) |
 | `p-button-tile` | The `p-button-tile` is an interactive component that displays a provided image to tease content and performs form or **interaction** events within one container. | [p-button-tile.md](references/components/p-button-tile/p-button-tile.md) |
-| `p-canvas` | The `p-canvas` is an experimental layout component for productive web applications. | [p-canvas.md](references/components/p-canvas/p-canvas.md) |
+| `p-canvas` _(experimental)_ | The `p-canvas` is an experimental layout component for productive web applications. | [p-canvas.md](references/components/p-canvas/p-canvas.md) |
 | `p-carousel` | The `p-carousel` component allows related or similar content to be consumed on a step by step basis with a better overview than just showing them in a grid or as a list. | [p-carousel.md](references/components/p-carousel/p-carousel.md) |
 | `p-checkbox` | The `p-checkbox` component wraps the native HTML input type `checkbox` form element. | [p-checkbox.md](references/components/p-checkbox/p-checkbox.md) |
 | `p-crest` | The `p-crest` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product. | [p-crest.md](references/components/p-crest/p-crest.md) |
-| `p-display` | `p-display` is used to highlight and specify heading styling and hierarchy in documents. | [p-display.md](references/components/p-display/p-display.md) |
+| `p-display` _(deprecated)_ | `p-display` is used to highlight and specify heading styling and hierarchy in documents. | [p-display.md](references/components/p-display/p-display.md) |
 | `p-divider` | The `p-divider` is used as 'horizontal or vertical rule' and displays a dividing line. | [p-divider.md](references/components/p-divider/p-divider.md) |
-| `p-drilldown` | The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown menu that overlays the page content from the start side of the screen. | [p-drilldown.md](references/components/p-drilldown/p-drilldown.md) |
+| `p-drilldown` _(experimental)_ | The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown menu that overlays the page content from the start side of the screen. | [p-drilldown.md](references/components/p-drilldown/p-drilldown.md) |
 | `p-fieldset` | The `p-fieldset` is a grouping component for wrapping contextual associated form elements. | [p-fieldset.md](references/components/p-fieldset/p-fieldset.md) |
 | `p-flag` | Displays a country or region flag, styled to the Porsche design language. | [p-flag.md](references/components/p-flag/p-flag.md) |
 | `p-flyout` | The `p-flyout` is a overlay from the left or right side of the screen. | [p-flyout.md](references/components/p-flyout/p-flyout.md) |
@@ -73,7 +73,7 @@ Sub-components (e.g. `p-table-row`, `p-select-option`, `p-tabs-item`) have no se
 | `p-link` | The `p-link` component is essential to perform changes in **page routes**. | [p-link.md](references/components/p-link/p-link.md) |
 | `p-link-pure` | The `p-link-pure` component is essential for performing changes in **page routes**. | [p-link-pure.md](references/components/p-link-pure/p-link-pure.md) |
 | `p-link-tile` | The `p-link-tile` is a navigational component that displays a provided image to tease content and navigate to further information within one container. | [p-link-tile.md](references/components/p-link-tile/p-link-tile.md) |
-| `p-link-tile-product` | The `p-link-tile-product` is a navigational component designed to showcase a featured product within a store. | [p-link-tile-product.md](references/components/p-link-tile-product/p-link-tile-product.md) |
+| `p-link-tile-product` _(experimental)_ | The `p-link-tile-product` is a navigational component designed to showcase a featured product within a store. | [p-link-tile-product.md](references/components/p-link-tile-product/p-link-tile-product.md) |
 | `p-modal` | The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying page are blocked. | [p-modal.md](references/components/p-modal/p-modal.md) |
 | `p-model-signature` | The `p-model-signature` component is purely visual and renders the different signatures of Porsche car models. | [p-model-signature.md](references/components/p-model-signature/p-model-signature.md) |
 | `p-multi-select` | The `p-multi-select` component is a versatile custom form element that facilitates the selection of multiple options. | [p-multi-select.md](references/components/p-multi-select/p-multi-select.md) |

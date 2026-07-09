@@ -10,12 +10,12 @@ here — read this reference for all of them.
 
 > As of Porsche Design System **v4** the global styles are **required**, and `variables.css` and
 > `font-face.css` in particular are mandatory — components will not render correctly without them.
-> The single package-root CSS import (`@import '@porsche-design-system/components-vue'`,
+> The single package CSS import (`@import '@porsche-design-system/components-vue/index.css'`,
 > see "How to use" below) pulls in all of them at once and is the recommended setup.
 
 ## What the global styles contain
 
-PDS ships four global stylesheets. The single package-root import bundles all four; you can also
+PDS ships four global stylesheets. The single package CSS import bundles all four; you can also
 import them individually (see "How to use").
 
 - **`variables.css`** _(required)_ — exposes the design system's **CSS variables** (custom
@@ -51,11 +51,13 @@ When you import the main package CSS file, all global styles are included (CSS v
 scheme, font face and normalize):
 
 ```css
-@import '@porsche-design-system/components-vue';
-
-/* Alternative: if your bundler requires an explicit .css extension, use this path instead */
 @import '@porsche-design-system/components-vue/index.css';
 ```
+
+The explicit `/index.css` path resolves in every framework package. The `js`, React and Vue packages
+additionally expose an extensionless shorthand via a `style` export condition, so with those you can
+also write `@import '@porsche-design-system/components-react'` (bare, no `/index.css`). The Angular
+package does **not** expose that condition — always use the explicit `/index.css` path there.
 
 If you only need specific styles, import each stylesheet separately for more granular control. Note
 that `variables.css` and `font-face.css` are **required** — components will not render correctly
