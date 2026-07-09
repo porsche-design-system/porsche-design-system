@@ -282,7 +282,7 @@ ae6d9d04e052edc595fbd4bb9aa84ae2af8785f5ec0a234205a4673efa77580b  references/par
 55cb92feaadb6c113dc1b4f64ee38c9f767112f00b8dd39f016387f1d090aebb  references/styles/tailwindcss.md
 645cf0bf0d5fc6b7e9c6d1f54d8fe128da9e1ebd26a234d3ba99a56baa3150fa  references/styles/vanilla-extract.md
 7772c7fd530c9bc2577a4cbccd18f29682c335fa8d4d81e127e7d7fffb041aaf  references/stylesheets.md
-ffa6c9f2eb42eb425dc2e4bed84c4cf31f9c6de73934a2b48970d04a372cc53d  references/tokens.md"
+306e1bc39a892d74da3676e1e75b55022da32cb65ff67c9e79c015316c9dd60b  references/tokens.md"
 `;
 
 exports[`skill tree drift > the committed js skill tree matches its snapshot 1`] = `
@@ -567,7 +567,7 @@ d6265b6d48e9adecb65016dcf740d22d71d8a5e7fee4b435249ad478965e082b  references/sty
 d62912baf5b337eb585f3cd9e9eb8784882fe3b1128d63eda0f9439d6815b69b  references/styles/tailwindcss.md
 23778a5b0132ea36417f4be61df92e001c5cd0a08a5564010b881453803f217f  references/styles/vanilla-extract.md
 9255497837febfc21a400fd2785c64a863cc4bc5c0197d4817de9aa48e815a49  references/stylesheets.md
-ffa6c9f2eb42eb425dc2e4bed84c4cf31f9c6de73934a2b48970d04a372cc53d  references/tokens.md"
+cf26976b9994e19e12325216b6a9c7c7337f54efadc33a9567faefc9ddc28807  references/tokens.md"
 `;
 
 exports[`skill tree drift > the committed react skill tree matches its snapshot 1`] = `
@@ -852,7 +852,7 @@ eb94b515f1ecf468cd095936341d0637044a038823b6c18a9c46490ccc872b5d  references/sty
 ecd30ce8d4a020c1e57d7eab8474ac720944ee06985e2ae3356e76a3ed043197  references/styles/tailwindcss.md
 255599e30b9fddddf208e210de3c9b557b21e885a6ee98fff650ed0ed405baf5  references/styles/vanilla-extract.md
 382954827d0a99c7bd73a4ea8fc2af81a6e533b22522e80a39bb2f8e7bdce862  references/stylesheets.md
-ffa6c9f2eb42eb425dc2e4bed84c4cf31f9c6de73934a2b48970d04a372cc53d  references/tokens.md"
+3f34180ed3fefa2fb982775304599e0d3fed4bbe1a8462b617792f52e824288e  references/tokens.md"
 `;
 
 exports[`skill tree drift > the committed vue skill tree matches its snapshot 1`] = `
@@ -1137,5 +1137,5 @@ c7d9b801ab9b0b75e2f46c007ff3a7ab72ddbe1555bdc89aa2840195eaaa6049  references/sty
 466a22e64dae0c1c9a7710388e45ccafbe29826bb86daa89eabac483f18b5937  references/styles/tailwindcss.md
 14d039ccd979fc924402c7a2870a8cc1f62701f3f6021a3ec1420f5bec517c63  references/styles/vanilla-extract.md
 8c193a44351e3fd73d3d85ddf63d442ac5efafdca6138d01cff77caa27cd95fa  references/stylesheets.md
-ffa6c9f2eb42eb425dc2e4bed84c4cf31f9c6de73934a2b48970d04a372cc53d  references/tokens.md"
+e8eb32ca924817de6accfbf10c1b84af5c8bc211fa1b1a5478c8af865c559aec  references/tokens.md"
 `;

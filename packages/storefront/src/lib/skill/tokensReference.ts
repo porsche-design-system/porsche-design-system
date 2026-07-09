@@ -12,7 +12,8 @@ import type { SkillTree } from './skillTree';
  * Programmatic serializer for the design tokens, driven by {@link tokensMeta} (a nested tree of
  * `{ name, value, description }` leaves). Renders one section per top-level category with a
  * name/value/description reference table, mirroring the styles serializers. No MDX involved — the
- * resolved raw values and their CSS live in the installed `../tokens` package, linked for exact detail.
+ * resolved values are importable from the package's `tokens` subpath (JS constants); the equivalent
+ * CSS custom properties live in `variables.css`, documented in `stylesheets.md`.
  */
 
 const code = (value: string | number): string => `\`${value}\``;
@@ -46,8 +47,15 @@ const renderGroup = (key: string, group: TokensMetaTree, depth: number): string 
 const intro = `# Design tokens
 
 The Porsche Design System design tokens — the source values for breakpoints, color, spacing,
-typography, motion and more. Each table lists the token \`name\`, its \`value\` and a description. For the
-exact resolved values and their generated CSS, read \`../tokens\` in the installed package.`;
+typography, motion and more. Each table lists the token \`name\`, its \`value\` and a description.
+
+Import the resolved values from the package's \`tokens\` subpath, e.g.:
+
+\`\`\`ts
+import { spacingStaticMd } from '@porsche-design-system/components-{js|angular|react|vue}/tokens';
+\`\`\`
+
+For the same values as ready-to-use CSS custom properties, see \`stylesheets.md\` (\`variables.css\`).`;
 
 const contents = `## Contents
 
