@@ -148,10 +148,16 @@ stages:
           gate_name: resolve-conflicts
           failure_verdict: loop_back
           environment_verdict: escalate
-          success_reason: "Override recorded and install is ERESOLVE-free"
+          success_reason: "Override recorded, install is ERESOLVE-free, and no declared range drifted from the frozen plan"
           steps:
             - name: check-resolve
               command: ["node", ".turbo-spec/scripts/deps/check-resolve.mjs", ".turbo-spec/out/overrides-added.json", ".turbo-spec/out/install.log"]
+            # Early no-drift catch: if the resolver changed a DECLARED range away
+            # from the frozen plan (instead of using overrides only), fail here and
+            # loop back to this agent — the one that can fix it — before the
+            # expensive Angular stage rather than at the terminal consistency gate.
+            - name: no-drift
+              command: ["node", ".turbo-spec/scripts/deps/verify-equality.mjs", ".turbo-spec/out/update-plan.json", "."]
 
   # 5. angular-migrations (AI, conditional): ng update migrate-only + TS reconcile.
   - name: angular_migrations
@@ -211,10 +217,15 @@ stages:
           gate_name: resolve-conflicts-post-angular
           failure_verdict: loop_back
           environment_verdict: escalate
-          success_reason: "Override recorded and post-Angular install is ERESOLVE-free"
+          success_reason: "Override recorded, post-Angular install is ERESOLVE-free, and no declared range drifted from the frozen plan"
           steps:
             - name: check-resolve
               command: ["node", ".turbo-spec/scripts/deps/check-resolve.mjs", ".turbo-spec/out/overrides-added.json", ".turbo-spec/out/install.log"]
+            # Early no-drift catch (see resolve_conflicts): reject declared-range
+            # drift here so it loops back to the resolving agent rather than
+            # surfacing two stages later at the agent-less consistency gate.
+            - name: no-drift
+              command: ["node", ".turbo-spec/scripts/deps/verify-equality.mjs", ".turbo-spec/out/update-plan.json", "."]
 
   # 6. consistency (deterministic): syncpack fix/format + clean lockfile regen.
   # Removes BOTH the lockfile and node_modules so this is the authoritative
@@ -236,11 +247,16 @@ stages:
       npm install --no-audit --no-fund
     quality_gates:
       - evaluator: script_gate
-        on_fail: loop_back
-        max_retries: 2
+        # Agent-less deterministic gate: re-running its fixed syncpack +
+        # verify-equality commands cannot change its inputs, so loop_back would
+        # only burn identical retries. With the resolve stages now catching
+        # declared-range drift upstream (where an agent CAN fix it), a failure
+        # here signals genuine unexpected/latent drift and must surface at once.
+        on_fail: escalate
+        max_retries: 1
         config:
           gate_name: consistency
-          failure_verdict: loop_back
+          failure_verdict: escalate
           environment_verdict: escalate
           success_reason: "syncpack consistent, swc complete, TS within ceiling, no unplanned drift"
           steps:
