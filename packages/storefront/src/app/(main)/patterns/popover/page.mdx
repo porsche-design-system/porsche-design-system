@@ -8,9 +8,7 @@ export const metadata = {
 
 # Popover
 
-<TableOfContents
-  headings={['Local market switch', 'Priority navigation', 'Feature tour', 'Responsive disclosure']}
-/>
+<TableOfContents headings={['Local market switch', 'Priority navigation', 'Feature tour', 'Responsive disclosure']} />
 
 The popover displays contextual information or actions in a floating layer anchored to a trigger element. It helps
 surface secondary content on demand without navigating away from the current context, keeping the primary interface
@@ -40,8 +38,8 @@ trigger, keeping the bar on a single line. Resize the frame to see items move in
 
 ## Feature tour
 
-On first visit, a sequence of popovers guides the user through the key areas of the interface one step at a time
-("Step 2 of 4", Back / Next / Skip), each anchored to the element it describes. Only a single step is open at once.
+On first visit, a sequence of popovers guides the user through the key areas of the interface one step at a time ("Step
+2 of 4", Back / Next / Skip), each anchored to the element it describes. Only a single step is open at once.
 
 <ResizableWebsiteViewer
   sourceCodePath="patterns/src/popover/3"
@@ -52,8 +50,8 @@ On first visit, a sequence of popovers guides the user through the key areas of 
 ## Responsive disclosure
 
 The account menu opens as a popover on desktop, but below the `sm` breakpoint (760px) the same trigger opens a bottom
-sheet instead — easier to reach on touch devices. Drag the frame narrower than 760px and open the account icon to see
-it switch.
+sheet instead — easier to reach on touch devices. Drag the frame narrower than 760px and open the account icon to see it
+switch.
 
 <ResizableWebsiteViewer
   sourceCodePath="patterns/src/popover/4"

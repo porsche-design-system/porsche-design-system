@@ -1,6 +1,6 @@
 'use client';
 
-import { PButtonPure, PLinkPure, PText } from '@porsche-design-system/components-react/ssr';
+import { PButtonPure, PLinkPure, PTag, PText } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
 import { type PointerEvent as ReactPointerEvent, useRef, useState } from 'react';
 import { isDevEnvironment } from '@/utils/isDev';
@@ -79,9 +79,9 @@ export const ResizableWebsiteViewer = ({ sourceCodePath, viewPath, title }: Resi
         </PLinkPure>
         {width !== null && (
           <>
-            <PText size="x-small" color="contrast-medium">
+            <PTag variant="secondary" compact={true}>
               {Math.round(width)}px
-            </PText>
+            </PTag>
             <PButtonPure icon="reset" onClick={() => setWidth(null)}>
               Reset width
             </PButtonPure>
