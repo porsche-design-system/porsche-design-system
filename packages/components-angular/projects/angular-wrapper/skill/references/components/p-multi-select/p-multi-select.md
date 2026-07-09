@@ -145,7 +145,7 @@ Authoritative API data: `@porsche-design-system/components-js/meta` (`component-
 
 ## Sub-components
 
-These tags are only valid inside this component (see each one’s allowed parents). Their APIs come from the same authoritative `component-meta` as the parent above.
+These tags are only valid inside the parent(s) listed under each one — often this component, but some are shared and list a different parent (e.g. a tag documented here via a common ancestor). Their APIs come from the same authoritative `component-meta` as the parent above.
 
 ### `p-multi-select-option`
 
