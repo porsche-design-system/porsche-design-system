@@ -45,8 +45,8 @@ by selecting them in `npm run npm:update`.** Handle them as noted:
 - `@angular/**`, `ng-packagr`, `zone.js` — **versions** go through syncpack (`npm run npm:update`) like everything else;
   only Angular's framework **migrations** are applied separately in
   [step 3](#3-apply-angular-framework-migrations-after-the-syncpack-version-bump).
-- `typescript` — may move only **within** Angular's `MAX_TS_VERSION` ceiling (see step 3); otherwise keep it held back
-  this round.
+- `typescript` — may move only **within** the range Angular supports (see step 3); otherwise keep it held back this
+  round. `npm run npm:update:non-interactive` enforces this automatically.
 - `@playwright/test` — held back from the weekly run; update deliberately via
   [Updating Playwright](#updating-playwright-npm-pin-docker-image-vrt) (npm pin + Docker image + VRT).
 - `@stencil/core` — pinned because a `patch-package` patch targets the exact version. **Never touch here.**
@@ -104,10 +104,12 @@ cd ../..
 git diff packages/components-angular                                  # review migration changes
 ```
 
-Reconcile TypeScript: Angular caps the supported version via `MAX_TS_VERSION` in
-`packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`. In step 4, do **not** let
-syncpack bump `typescript` past that ceiling; if the monorepo `typescript` would exceed it, keep `typescript` held back
-this round.
+Reconcile TypeScript: Angular caps the supported version. The stable source is `peerDependencies.typescript` in
+`@angular/compiler-cli`'s `package.json`; the same ceiling is compiled into the `MAX_TS_VERSION` constant, findable via
+`grep -rn "MAX_TS_VERSION =" node_modules/@angular/compiler-cli/`. In step 4, do **not** let syncpack bump
+`typescript` past that ceiling. The automated `npm run npm:update:non-interactive` enforces this for you (it holds
+`typescript` back when the latest release would exceed the range); with the interactive `npm run npm:update`, keep
+`typescript` held back this round yourself if a bump would exceed it.
 
 If the migrations require non-trivial source changes, **stop** and hand off rather than forcing it into the weekly
 dependency PR.
@@ -115,9 +117,17 @@ dependency PR.
 ### 4. Apply updates with syncpack
 
 ```bash
+npm run npm:update:non-interactive        # automated agent run: applies every available update at once
+# or, to curate interactively:
 npm run npm:update
 ```
 
+- `npm run npm:update:non-interactive` is the automated path: it applies all available updates non-interactively,
+  excludes the Angular ecosystem (`@angular/**`, `ng-packagr`, `zone.js`) and the internal `@porsche-design-system/**`
+  packages, and holds `typescript` back automatically when the latest release would exceed Angular's supported range
+  (see step 3). Forward flags after `--`, e.g. `npm run npm:update:non-interactive -- --dry-run`.
+- `npm run npm:update` is the interactive path for hand-picking upgrades. It does **not** auto-hold `typescript`, so
+  apply the step-3 ceiling yourself.
 - `syncpack` writes consistent ranges into every workspace `package.json` in one go.
 - **Group related upgrades** — do not bump everything blindly. If React types are updated, also check React itself; keep
   framework-related packages in lockstep.

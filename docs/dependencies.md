@@ -221,9 +221,11 @@ Angular splits into two concerns that are handled separately:
 
 - **Version ranges** (`@angular/*`, `ng-packagr`, `zone.js`) — owned by `syncpack`. Bump them via `npm run npm:update`
   (pick the `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep
-  `typescript` within Angular's `MAX_TS_VERSION` (see
-  `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back for
-  the round if a bump would exceed that ceiling.
+  `typescript` within the range Angular supports, declared as `peerDependencies.typescript` in `@angular/compiler-cli`'s
+  `package.json` (the same ceiling is compiled into the `MAX_TS_VERSION` constant, findable via
+  `grep -rn "MAX_TS_VERSION =" node_modules/@angular/compiler-cli/`). The automated `npm run npm:update:non-interactive`
+  reads that range and holds `typescript` back automatically when the latest release would exceed it; the interactive
+  `npm run npm:update` does not, so hold `typescript` back yourself for the round if a bump would exceed the ceiling.
 - **Framework migrations** (code transforms) — owned by the
   [`packages/components-angular/scripts/ng-update.sh`](../packages/components-angular/scripts/ng-update.sh) wrapper
   (`npm run ng:update`).
