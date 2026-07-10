@@ -5,8 +5,9 @@
 `…-skill-source-of-truth-plan.md` (deleted; originals in git history). Completed work is not
 tracked here — see `git log issue/4450-skill`.
 
-**Status (2026-07-10): only Phase R is agreed and ready to implement. Every other phase and every
-backlog item is a draft — clarify with Henri before implementing.**
+**Status (2026-07-10): Phase R is DONE (commit `92a18a5e2f`). Phase N (skill rename) is agreed and
+ready to implement next. Every other phase and every backlog item is a draft — clarify with Henri
+before implementing.**
 
 ## What this feature is
 
@@ -85,9 +86,9 @@ consumes; six copies of the markdown `cell`/`table`/`code` helpers; three parall
 
 ---
 
-## Phase R — SKILL.md restructure (AGREED — implement now)
+## Phase R — SKILL.md restructure (DONE — commit `92a18a5e2f`)
 
-- [ ] **R.1 Restructure SKILL.md into topical sections; drop Getting started and partials;
+- [x] **R.1 Restructure SKILL.md into topical sections; drop Getting started and partials;
   dissolve the reference map and core rules.**
   Target structure (all four trees, `buildSkillMd` in `storefront/src/lib/skill/skillMd.ts`):
   1. Frontmatter (unchanged — `name` + activation description; activation behavior must not
@@ -143,6 +144,103 @@ consumes; six copies of the markdown `cell`/`table`/`code` helpers; three parall
   new section; every remaining reference file is linked from exactly one section; no
   `references/partials.md` in any tree and no dangling links to it (link gate green); `skillMd`
   unit tests updated; trees regenerated in a dedicated commit; `build:skill:check` green.
+
+---
+
+## Phase N — rename the skill per package + configurable link location (DONE — pending commit)
+
+Rationale: today all four wrappers name their skill `porsche-design-system-docs` and link it into
+the single path `.claude/skills/porsche-design-system-docs`. A project that depends on two wrappers
+(a monorepo, or an app mid-migration between frameworks) would have both `pds-skill` bins fight over
+that one symlink — a latent collision. Naming each skill after its own package removes it by
+construction. Activation is driven by the frontmatter `description`, not `name`, so renaming does
+not change activation behavior (must be verified, not assumed).
+
+New names (transform each package name `@porsche-design-system/components-<fw>`: drop `@`, `/`→`-`):
+
+| Wrapper package | Skill / link name |
+|---|---|
+| `@porsche-design-system/components-js` | `porsche-design-system-components-js` |
+| `@porsche-design-system/components-angular` | `porsche-design-system-components-angular` |
+| `@porsche-design-system/components-react` | `porsche-design-system-components-react` |
+| `@porsche-design-system/components-vue` | `porsche-design-system-components-vue` |
+
+- [x] **N.1 Make `SKILL_NAME` framework-specific.**
+  `storefront/src/lib/skill/skillMd.ts:5` hardcodes `SKILL_NAME = 'porsche-design-system-docs'`
+  (emitted into every tree's frontmatter `name:` at `skillMd.ts:264`). Change it to derive from the
+  framework: `porsche-design-system-components-${framework}`. Keep `ACTIVATION_DESCRIPTION`
+  unchanged so activation behavior is untouched.
+  Acceptance: each tree's SKILL.md frontmatter `name` matches its package; `skillGenerator.spec.ts`
+  (`:96-97`, currently asserting the fixed `SKILL_NAME` string) updated to assert the per-framework
+  name; `build:skill:check` shows only the four intended frontmatter changes.
+
+- [x] **N.2 Make the `pds-skill` bin link name track its own package — keep the bin byte-identical.**
+  Each wrapper's `bin/pds-skill.js` hardcodes `SKILL_LINK_NAME = 'porsche-design-system-docs'`
+  (`:15`) and the four copies are enforced byte-identical (`pds-skill.spec.ts:138`). Do **not** hardcode
+  a different string per wrapper (that would break the byte-identical invariant). Instead derive the
+  link name at runtime from the wrapper's own `package.json` `name` (the bin already resolves the
+  skill dir relative to `__dirname`, so `../package.json` is reachable): read `name`, strip the
+  `@…/` scope, `/`→`-` → `.claude/skills/porsche-design-system-components-<fw>`. Update the bin's
+  header comment (`:5-6`) accordingly.
+  Acceptance: the byte-identical test still passes (the four bins remain identical); `pds-skill.spec.ts`
+  updated so its expected link path is derived from the fixture package name (per framework), not the
+  fixed string (`:30`, `:58`); the js unit suite links `porsche-design-system-components-js` and a
+  non-js fixture links its own name.
+
+- [x] **N.3 Update the storefront skill docs page.**
+  `developing/claude-code-skill/page.mdx` names `porsche-design-system-docs` in prose (`:15`), in the
+  "creates the symlink …" line (`:44`), and in the win32 `mklink` example (`:75`). Update to the
+  per-package name; the `mklink`/react example must use `porsche-design-system-components-react`.
+  (This page also carries the pre-existing P3 "macOS/Linux only / mklink vs junction" inaccuracy —
+  out of scope here unless trivially co-fixable.)
+  Acceptance: no `porsche-design-system-docs` string remains anywhere outside git history
+  (`grep -rn "porsche-design-system-docs" --exclude-dir=node_modules` clean except this plan file's
+  own name); storefront build/render green.
+
+- [x] **N.4 Make the symlink destination configurable (still byte-identical across the four bins).**
+  Today the bin hardcodes the parent dir `.claude/skills` (`pds-skill.js:25`). Some users keep
+  agent skills under `.agents/` or `.github/`, and in a monorepo the folder lives at the repo root
+  while `npx` runs in a subpackage. Make the *parent directory* configurable; the symlink leaf stays
+  the per-package skill name (N.2).
+  CLI shape (no new deps — parse `process.argv.slice(2)` by hand, the bin only uses `fs`/`path`):
+  - Optional positional `[dir]` — the destination parent directory. Default `.claude/skills`
+    (today's behavior unchanged when no arg is given). Free-form path: the bin does **not** hardcode
+    `.agents`/`.github` conventions — the user passes whatever their tooling expects
+    (`pds-skill .agents`, `pds-skill .github/skills`, …). Absolute paths honored as-is.
+  - `--root` flag — resolve a relative `[dir]` against the detected **project root** instead of cwd:
+    walk up from cwd for a `.git` entry (match both a `.git` dir and a `.git` *file*, so worktrees
+    and submodules work); if none is found, error and exit non-zero (do not silently fall back to
+    cwd). With an absolute `[dir]`, `--root` is a no-op (absolute wins) — document this.
+  - Reject unknown flags with a one-line usage string; add `-h`/`--help` printing usage. Keep the
+    silent-no-op-when-no-`skill/`-ships behavior ahead of any arg handling.
+  Resolution: `base = rootFlag ? projectRoot(cwd) : cwd`;
+  `skillsDir = path.isAbsolute(dir) ? dir : path.resolve(base, dir)`;
+  `linkPath = path.join(skillsDir, SKILL_LINK_NAME)`. All hardcoded `.claude/skills/…` strings in the
+  `mkdir`/refuse/EPERM/success messages become the resolved path (show
+  `path.relative(cwd, linkPath)` when inside cwd, else the absolute path) so the guidance matches
+  where the link actually went. Everything else is unchanged: idempotent repoint, refuse to clobber
+  a non-symlink, win32 junction, package-scoped `__dirname` skill resolution.
+  This is framework-agnostic, so the four bins stay byte-identical (composes with N.2's runtime
+  package-name derivation); the `pds-skill.spec.ts:138` byte-identical test still holds.
+  Docs: extend `developing/claude-code-skill/page.mdx` (edited in N.3) to document `[dir]`, `--root`,
+  and the default; the win32 `mklink` example stays correct for the default and gains a note that
+  the target dir mirrors `[dir]`.
+  Acceptance: `pds-skill` with no arg links `<cwd>/.claude/skills/<name>` (unchanged); `pds-skill .agents`
+  links `<cwd>/.agents/<name>`; `pds-skill --root .claude/skills` from a subdir links into the git
+  root; `--root` with no `.git` ancestor exits non-zero with a clear message; unknown flag prints
+  usage and exits non-zero; `pds-skill.spec.ts` gains cases for a custom dest, `--root` resolution,
+  and the unchanged default; all four bins remain byte-identical.
+
+  Note: the plan file itself is named `porsche-design-system-docs-skill-plan.md`. Renaming it is
+  optional cosmetic housekeeping (it names the *feature branch/PR*, not the skill) — decide with
+  Henri; leaving it avoids a needless `git mv` in the middle of the branch.
+
+  Sequencing: N.1–N.4 are one deliberate change — four frontmatter `name:` lines (N.1), the bin
+  logic for per-package link name (N.2) and configurable destination (N.4), and the docs page (N.3).
+  N.2 and N.4 touch the same bin, so do them together and re-verify the byte-identical spec once.
+  Regenerate the four trees in a dedicated `regenerate skill trees` commit as with Phase R;
+  `build:skill:check` proves no unintended tree changes beyond the four `name:` lines (the bin and
+  docs changes don't touch the generated trees).
 
 ---
 
