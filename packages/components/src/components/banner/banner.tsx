@@ -100,6 +100,11 @@ export class Banner {
       undefined,
       { subtree: false, childList: true, attributes: false }
     );
+
+    // Re-register the Escape listener on (re)connect. Stencil does not re-render an already-loaded component when it is
+    // detached and re-attached, so `componentDidRender` would not run to restore the listener that `disconnectedCallback`
+    // removed. The sync is idempotent, so it never double-registers alongside the `componentDidRender` call.
+    this.syncEscapeListener(this.open && this.dismissButton);
   }
 
   public disconnectedCallback(): void {

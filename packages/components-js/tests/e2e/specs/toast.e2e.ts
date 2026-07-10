@@ -135,11 +135,9 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-toast'], 'componentDidLoad: p-toast').toBe(1);
     expect(status.componentDidLoad['p-toast-item'], 'componentDidLoad: p-icon').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
   });
 
   test('should not update on theme prop change', async ({ page }) => {

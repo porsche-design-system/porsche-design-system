@@ -155,7 +155,7 @@ test.describe('close', () => {
 
     const banner1 = page.locator('#banner1');
     const banner2 = page.locator('#banner2');
-    const closeButtonBanner2 = page.locator('#banner2 p-button');
+    const closeButtonBanner2 = page.locator('#banner2 .dismiss');
 
     const classListBanner1 = await getCssClasses(banner1);
     const classListBanner2 = await getCssClasses(banner2);
@@ -181,10 +181,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-banner').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -219,7 +217,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {

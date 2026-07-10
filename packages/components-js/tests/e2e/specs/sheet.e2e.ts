@@ -568,9 +568,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-sheet'], 'componentDidLoad: p-sheet').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -603,7 +602,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {
