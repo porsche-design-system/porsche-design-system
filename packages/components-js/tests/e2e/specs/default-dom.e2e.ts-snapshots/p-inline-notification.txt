@@ -1,4 +1,6 @@
 <div class="notification" role="status" aria-live="polite">
   <slot> </slot>
-  <p-button class="dismiss hydrated"> Close notification</p-button>
+  <button class="dismiss" type="button">
+    <span> Close notification</span>
+  </button>
 </div>

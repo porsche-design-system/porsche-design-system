@@ -4,10 +4,10 @@ import {
   AllowedTypes,
   attachComponentCss,
   getHasNativePopoverSupport,
-  getPrefixedTagNames,
   throwIfRootNodeIsNotOneOfKind,
   validateProps,
 } from '../../../utils';
+import { FCDismissButton } from '../../common/fc-dismiss-button/fc-dismiss-button';
 import { NotificationBase } from '../../common/notification-base/notification-base';
 import { TOAST_STATES, type ToastState } from '../toast/toast-utils';
 import { getComponentCss } from './toast-item-styles';
@@ -48,26 +48,12 @@ export class ToastItem {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.state);
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <Host popover="manual">
         <NotificationBase
           description={this.text}
           innerHTML={true}
-          dismissButton={
-            <PrefixedTagNames.pButton
-              class="dismiss"
-              type="button"
-              variant="secondary"
-              icon="close"
-              hideLabel={true}
-              compact={true}
-              onClick={this.dismiss.emit}
-            >
-              Close notification message
-            </PrefixedTagNames.pButton>
-          }
+          dismissButton={<FCDismissButton label="Close notification message" onClick={this.dismiss.emit} />}
         />
       </Host>
     );

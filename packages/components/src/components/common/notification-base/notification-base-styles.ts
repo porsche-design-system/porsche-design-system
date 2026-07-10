@@ -1,6 +1,4 @@
 import { getMediaQueryMin } from '@porsche-design-system/emotion';
-import type { Styles } from 'jss';
-import { forcedColorsMediaQuery } from '../../../styles';
 import {
   blurFrosted,
   colorPrimary,
@@ -17,7 +15,10 @@ import {
   spacingStaticXs,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
+import type { Styles } from 'jss';
+import { forcedColorsMediaQuery } from '../../../styles';
 import { notificationBackgroundMap, notificationColorMap, notificationIconMap } from '../../../styles/maps';
+import { getFCDismissButtonStyles } from '../fc-dismiss-button/fc-dismiss-button-styles';
 
 export const getFunctionalComponentNotificationBaseStyles = (
   state: 'info' | 'success' | 'warning' | 'error',
@@ -74,6 +75,8 @@ export const getFunctionalComponentNotificationBaseStyles = (
     },
     ...(hasDismissButton && {
       dismiss: {
+        // native dismiss button visual (secondary variant); grid positioning is applied on top
+        ...getFCDismissButtonStyles('secondary'),
         gridArea: `1/4/-1`,
         alignSelf: 'flex-start',
         marginBlock: `calc(-6 * ${ref(spacingStatic2Xs)})`,

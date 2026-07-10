@@ -24,7 +24,9 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
-  const button = getByRoleShadowed('button');
+  // `hidden: true` is required because the banner renders its content inside a Popover API panel
+  // (`popover="manual"`), which is treated as hidden in the jsdom environment.
+  const button = getByRoleShadowed('button', { name: 'Close banner', hidden: true });
   await userEvent.click(button);
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
 });

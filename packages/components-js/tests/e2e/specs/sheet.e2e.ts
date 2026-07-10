@@ -107,7 +107,7 @@ const addButtonsBeforeAndAfterSheet = (page: Page) =>
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
+  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('BUTTON');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
@@ -157,8 +157,7 @@ test.describe('can be dismissed', () => {
     const dismissBtn = getDismissButton(page);
     expect(dismissBtn).not.toBeNull();
 
-    const dismissBtnReal = page.locator('p-sheet .dismiss button');
-    expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
+    expect(await getAttribute(dismissBtn, 'type')).toBe('button');
 
     await dismissBtn.click();
     await waitForStencilLifecycle(page);
@@ -189,6 +188,19 @@ test.describe('can be dismissed', () => {
     await page.mouse.up();
 
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
+  });
+
+  test('should not be dismissed if mousedown inside sheet and mouseup on backdrop (drag out)', async ({ page }) => {
+    const viewportSize = page.viewportSize();
+    await page.mouse.move(viewportSize.width / 2, viewportSize.height - 1);
+    await page.mouse.down();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
+
+    await page.mouse.move(5, 5);
+    await page.mouse.up();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up on backdrop').toBe(0);
   });
 
   test('should not be dismissed if dismissButton is set to false and ESC is pressed', async ({ page }) => {
@@ -556,9 +568,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-sheet'], 'componentDidLoad: p-sheet').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -591,7 +602,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {
