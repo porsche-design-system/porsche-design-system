@@ -6,8 +6,8 @@ Completed work is not tracked here — see `git log issue/4450-skill`.
 
 **Status (2026-07-10): Phases R (SKILL.md restructure into topical sections, commit `92a18a5e2f`) and N (per-package
 skill name + configurable `pds-skill` destination) are DONE and no longer tracked here — see `git log`. The
-`PackageSkill` fragment contract (decision F, hybrid pointer rule) is agreed with Henri; phase 0.1 is DONE, and phases
-0.2–1 are ready next. Every phase after 1 and every backlog item is a draft — clarify with Henri before implementing.**
+`PackageSkill` fragment contract (decision F, hybrid pointer rule) is agreed with Henri; phase 0 is DONE, and phase 1 is
+ready next. Every phase after 1 and every backlog item is a draft — clarify with Henri before implementing.**
 
 ## What this feature is
 
@@ -149,7 +149,7 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
       0.1-related diff (the known aggregate token/snapshot drift remains deliberately deferred until the end of the
       plan).
 
-- [ ] **0.2 Tame committed-tree churn in PRs (decision D mitigation).** The four committed trees change on every
+- [x] **0.2 Tame committed-tree churn in PRs (decision D mitigation).** The four committed trees change on every
       content/meta edit — by design (they are the published, reviewed artifact and the de-facto snapshot), but they must
       not drown PR diffs. Fix: mark `packages/components-*/projects/*-wrapper/skill/**` as `linguist-generated` in
       `.gitattributes` (GitHub collapses the files and excludes them from diff stats; still expandable for content
