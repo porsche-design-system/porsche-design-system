@@ -1,4 +1,4 @@
-# `porsche-design-system-docs` skill — plan (branch `issue/4450-skill`, PR #4555)
+# Porsche Design System wrapper skills — plan (branch `issue/4450-skill`, PR #4555)
 
 **This is the single planning doc for this feature and branch.** It supersedes the former `…-skill-requirement.md`,
 `…-skill-audit.md`, `…-skill-followups.md` and `…-skill-source-of-truth-plan.md` (deleted; originals in git history).
@@ -6,17 +6,17 @@ Completed work is not tracked here — see `git log issue/4450-skill`.
 
 **Status (2026-07-10): Phases R (SKILL.md restructure into topical sections, commit `92a18a5e2f`) and N (per-package
 skill name + configurable `pds-skill` destination) are DONE and no longer tracked here — see `git log`. The
-`PackageSkill` fragment contract (decision F, hybrid pointer rule) is agreed with Henri; phases 0–1 are ready to
-implement next. Every phase after 1 and every backlog item is a draft — clarify with Henri before implementing.**
+`PackageSkill` fragment contract (decision F, hybrid pointer rule) is agreed with Henri; phase 0.1 is DONE, and phases
+0.2–1 are ready next. Every phase after 1 and every backlog item is a draft — clarify with Henri before implementing.**
 
 ## What this feature is
 
 Each published PDS wrapper package (`@porsche-design-system/components-{js,angular,react,vue}`) ships a Claude Code
-skill named `porsche-design-system-docs`: a `skill/` directory of LLM-optimized, **version-exact** markdown (`SKILL.md`
-entry point + `references/…`) that lives in `node_modules` and is symlinked into `.claude/skills/` by the packaged
-`pds-skill` bin (package-scoped, idempotent, win32 junctions). The skill auto-activates on frontend work via its tuned
-frontmatter description and lets the agent answer, generate, review, and migrate PDS code against the installed version
-— a docs/version mismatch is impossible by construction.
+skill named after that package (`porsche-design-system-components-{js,angular,react,vue}`): a `skill/` directory of
+LLM-optimized, **version-exact** markdown (`SKILL.md` entry point + `references/…`) that lives in `node_modules` and is
+symlinked into `.claude/skills/` by the packaged `pds-skill` bin (package-scoped, idempotent, win32 junctions). The
+skill auto-activates on frontend work via its tuned frontmatter description and lets the agent answer, generate, and
+review PDS code against the installed version — a docs/version mismatch is impossible by construction.
 
 Producer side: the storefront generates all four trees — `packages/storefront` → `npm run build:skill` (entry
 `scripts/build-skill.ts`, generators in `src/lib/skill/*`, MDX render via `scripts/skill-mdx-loader.cjs` runtime). The
@@ -41,16 +41,16 @@ Three sourcing mechanisms coexist, all sound — the open work is prose _ownersh
    `packages/styles/projects/*/skill` and `packages/components/projects/stylesheets/skill`) — the desired end-state
    pattern, but its _prose_ duplicates storefront pages.
 
-| Artifact                                                  | Source                                                                                                  | Verdict                                                                                                                            |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| SKILL.md frontmatter, core rules, reference map `useWhen` | hardcoded `storefront/src/lib/skill/skillMd.ts`                                                         | skill-only ✅ (restructured by task R.1)                                                                                           |
+| Artifact                                                  | Source                                                                                                  | Verdict                                                                                                                                                                                    |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| SKILL.md frontmatter, core rules, reference map `useWhen` | hardcoded `storefront/src/lib/skill/skillMd.ts`                                                         | skill-only ✅ (restructured by task R.1)                                                                                                                                                   |
 | SKILL.md Getting started                                  | hardcoded `GETTING_STARTED`, `skillMd.ts:109-219`                                                       | **duplicates** `developing/{react,angular,vue,vanilla-js}/getting-started/page.mdx` → R.1 removed; possible restore from wrapper fragments is FU.7/FU.8 (undecided), storefront dedup FU.4 |
-| SKILL.md Styling section                                  | hardcoded `skillMd.ts:260-302`                                                                          | **restates** scheme/tokens prose → tasks R.1, 2.1                                                                                  |
-| references/styles/\*.md, stylesheets.md                   | package fragments (meta tables + `intro.md`/`how-to-use.md`), deep-imported by `stylesReference.ts:5-9` | package-owned ✅, **prose duplicates** storefront intro pages → FU.3 (deferred)                                                           |
-| references/tokens.md                                      | tables from `tokensMeta` ✅; intro hardcoded `tokensReference.ts:47-64`                                 | intro **duplicates** `tokens/introduction/page.mdx` Setup → task 3.1 (fragment), FU.5 (storefront dedup)                                                               |
-| references/partials.md                                    | storefront MDX via `renderMdxToMarkdown`                                                                | **removed by R.1** (content not skill-ready; also fails decision G — page MDX, not package/meta) → re-entry FU.9 (undecided)                |
-| references/migration/\*.md                                | storefront MDX, verbatim                                                                                | **removed by R.1** (fails decision G — page MDX, not package/meta) → re-entry FU.10 (undecided)                                              |
-| references/components/\*\*, icons.md                      | storefront `components.meta` MDX + `component-meta` + `shared/examples`                                 | single-sourced ✅                                                                                                                  |
+| SKILL.md Styling section                                  | hardcoded `skillMd.ts:260-302`                                                                          | **restates** scheme/tokens prose → tasks R.1, 2.1                                                                                                                                          |
+| references/styles/\*.md, stylesheets.md                   | package fragments (meta tables + `intro.md`/`how-to-use.md`), deep-imported by `stylesReference.ts:5-9` | package-owned ✅, **prose duplicates** storefront intro pages → FU.3 (deferred)                                                                                                            |
+| references/tokens.md                                      | tables from `tokensMeta` ✅; intro hardcoded `tokensReference.ts:47-64`                                 | intro **duplicates** `tokens/introduction/page.mdx` Setup → task 3.1 (fragment), FU.5 (storefront dedup)                                                                                   |
+| references/partials.md                                    | storefront MDX via `renderMdxToMarkdown`                                                                | **removed by R.1** (content not skill-ready; also fails decision G — page MDX, not package/meta) → re-entry FU.9 (undecided)                                                               |
+| references/migration/\*.md                                | storefront MDX, verbatim                                                                                | **removed by R.1** (fails decision G — page MDX, not package/meta) → re-entry FU.10 (undecided)                                                                                            |
+| references/components/\*\*, icons.md                      | storefront `components.meta` MDX + `component-meta` + `shared/examples`                                 | single-sourced ✅                                                                                                                                                                          |
 
 Housekeeping debt: five orphaned `scripts/build-skill.ts` → gitignored `skill/generated/` nothing consumes; six copies
 of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SOLUTIONS` in `skillMd.ts`,
@@ -61,8 +61,8 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
 - **(A)** Package fragments — not storefront MDX — are the canonical side for styling/stylesheets prose; the storefront
   becomes a consumer (the consumer half is deferred — Follow-ups FU.3–FU.6).
 - **(B)** **(NOT DECIDED — unrefined proposal, parked in Follow-ups FU.7/FU.8.)** Getting-started becomes a structured
-  snippet module + serializer, not markdown: tutorial and agent brief legitimately differ in prose but must never
-  differ in facts/code.
+  snippet module + serializer, not markdown: tutorial and agent brief legitimately differ in prose but must never differ
+  in facts/code.
 - **(C)** **Storefront embedding is deferred (decided 2026-07-10): the phased work touches only the skill.** The
   storefront pages keep their hand-written prose for now and become fragment consumers later — Follow-ups FU.3–FU.6.
   Until then the duplication is confined to one fragment-vs-page boundary instead of scattered hardcoded strings.
@@ -76,15 +76,15 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
   baseline diffed by a CI script — which is exactly what the committed tree + `build:skill:check` already is; the pure
   fragments, by contrast, _are_ vitest-snapshot-tested in their packages (task 0.1). Churn is mitigated by task 0.2.
 - **(E)** SKILL.md is restructured into one section per domain with the global reference map and the Core rules section
-  dissolved into those sections; Getting started and partials leave SKILL.md entirely until FU.7/FU.8 (getting
-  started) and FU.9 (partials) — both undecided — restore them properly (done — R.1, commit `92a18a5e2f`).
+  dissolved into those sections; Getting started and partials leave SKILL.md entirely until FU.7/FU.8 (getting started)
+  and FU.9 (partials) — both undecided — restore them properly (done — R.1, commit `92a18a5e2f`).
 - **(F)** **The `PackageSkill` contract (agreed 2026-07-10).** Every self-contained package skill (the four styling
   solutions, stylesheets, later tokens) exports a single object from its `skill/skill.ts` — type in `packages/shared`:
   ```ts
   type SkillFile = { path: string; content: string }; // path relative to the skill's own root
   type PackageSkill = {
     name: string; // kebab-case id, e.g. 'tailwindcss' — the package never knows its
-    // final location; the aggregator derives the path from name + mount
+    // final location; the aggregator derives it from mount + name + SkillFile.path
     title: string; // display name for tables/headings, e.g. 'Tailwind CSS'
     description: string; // "use this when …" prose (replaces the former useWhen), rendered
     // wherever the main SKILL.md lists this skill
@@ -96,6 +96,11 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
   Ground rules:
   - `intro` is optional: stylesheets and tokens provide it (they own a SKILL.md section); the four styling solutions
     omit it (table row from `title`/`description` only; the `## Styling` framing paragraphs stay aggregator-owned).
+  - `SkillFile.path` is always honored, never discarded. A single-file skill must return exactly
+    `{ path: '<name>.md', content }` and mounts at `references/<mount>/<name>.md`. A multi-file skill mounts every file
+    at `references/<mount>/<name>/<path>`, with `getFiles()[0]` as the linked entry. The aggregator rejects an empty
+    array, duplicate or unsafe paths (absolute paths or `..` traversal), and a first file that is not markdown. These
+    rules preserve today's single-file paths while making future directory-shaped skills deterministic.
   - Content is framework-agnostic — `getFiles` takes no framework parameter; each package snapshot-tests exactly one
     output. Framework variance inside content uses the existing `{js|angular|react|vue}` placeholder, resolved by the
     aggregator at write time (`links.ts`). Framework-structural text the bare placeholder cannot express — today only
@@ -114,9 +119,9 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
   source: R.1 removed not just getting-started and partials but **also the five migration guides** (commit `92a18a5e2f`;
   `skillGenerator.spec.ts:126-128` asserts their absence). Consequences: re-entry of any removed domain requires
   converting its content to package/meta sourcing first (FU.9/FU.10); a getting-started return would be package-owned
-  per decision B (undecided — FU.7/FU.8). Open follow-up: the activation description (`skillMd.ts:30-31`) and the
-  feature summary still promise "migrating and upgrading PDS" although no migration content ships — decide with Henri
-  whether migration re-enters (FU.10) or the promise is trimmed.
+  per decision B (undecided — FU.7/FU.8). The activation description, feature summary, and storefront skill page no
+  longer promise partials or migration guidance while those domains are absent; if migration re-enters, FU.10 restores
+  that scope alongside the package-sourced guides.
 
 ---
 
@@ -124,7 +129,7 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
 
 ### Phase 0 — groundwork (mechanical, output-neutral)
 
-- [ ] **0.1 Delete the orphaned per-package `skill/generated` build steps; close the serializer spec gap.** All five
+- [x] **0.1 Delete the orphaned per-package `skill/generated` build steps; close the serializer spec gap.** All five
       fragment packages ship a `scripts/build-skill.ts` writing gitignored `skill/generated/*` (md + scss partials +
       tailwind index.css) that nothing consumes — the storefront calls the `getXxxSkill()` serializers directly. The
       verification already exists in the right form: 4 of 5 packages snapshot-test the serializer in their own unit
@@ -134,10 +139,15 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
       step's prettier-formatted output does). Fix: remove `scripts/build-skill.ts` and the `build:skill` script entry
       (and its slot in the `build` chain where wired) in
       `packages/styles/projects/{tailwindcss,scss,vanilla-extract,emotion}` and
-      `packages/components/projects/stylesheets`; drop the `skill/generated` gitignore lines; **add the missing
-      `tailwindcss` `skill.spec.ts` snapshot test** (only fragment without one). Acceptance: `grep -r "skill/generated"`
-      finds nothing; all five fragments have a serializer snapshot spec; package builds + unit tests green;
-      `build:skill:check` diff-clean.
+      `packages/components/projects/stylesheets`; remove the ignored local `skill/generated` artifacts (the repository
+      has no skill-specific ignore line — the shared `generated/` rule remains for unrelated generated sources); update
+      the obsolete generated-output guidance in `packages/styles/AGENTS.md` and
+      `packages/components/projects/stylesheets/AGENTS.md`; **add the missing `tailwindcss` `skill.spec.ts` snapshot
+      test** (only fragment without one). Acceptance:
+      `git grep "skill/generated" -- packages/styles packages/components/projects/stylesheets` finds nothing; all five
+      fragments have a serializer snapshot spec; package builds + unit tests green; `build:skill:check` introduces no
+      0.1-related diff (the known aggregate token/snapshot drift remains deliberately deferred until the end of the
+      plan).
 
 - [ ] **0.2 Tame committed-tree churn in PRs (decision D mitigation).** The four committed trees change on every
       content/meta edit — by design (they are the published, reviewed artifact and the de-facto snapshot), but they must
@@ -179,23 +189,24 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
       construction (unit tests pass fixture rows; no `tailwindMeta` in the import graph) — no meta/content module split
       needed in the packages. `rawScssReference`/`rawTailwindcssReference` move out of `skillMd.ts` with the
       pointer-appending glue into the task-1.3 registry (hybrid rule); `rawMetaReference` stays (used by the
-      `## Components` section). Acceptance: adding a styling solution = one new
-      fragment + one registry line; `skillMd.ts` contains no styling/stylesheets prose or paths beyond the
-      aggregator-owned theming note and `## Styling` framing paragraphs; regenerated trees byte-identical (relative to
-      post-N trees).
+      `## Components` section). Acceptance: adding a styling solution = one new fragment + one registry line;
+      `skillMd.ts` contains no styling/stylesheets prose or paths beyond the aggregator-owned theming note and
+      `## Styling` framing paragraphs; regenerated trees byte-identical (relative to post-N trees).
 
 - [ ] **1.3 Reshape `build-skill.ts` around an explicit fragment registry that mounts `PackageSkill`s.** One registry
       enumerating the content sources — package skills (styles ×4, stylesheets, later tokens; partials/migration on
       re-entry), storefront-MDX renderers (components), meta renderers (icons) — each contributing files + SKILL.md rows
       through one interface, instead of the hand-ordered `writeX` calls in `generateTree`
       (`scripts/build-skill.ts:151-202`). Path derivation lives ONLY here: mounting a `PackageSkill` at a mount point
-      writes a single-file skill to `references/<mount>/<name>.md` (styling solutions: mount `styles`; stylesheets:
-      mount root → `references/stylesheets.md`, exactly today's layout) and a multi-file skill to
-      `references/<mount>/<name>/…` with `getFiles()[0]` as the linked entry. The registry resolves placeholders and doc
-      links at write time (the existing `links.ts` machinery), appends the hybrid "Full stylesheet" pointers for
-      scss/tailwindcss, and hands `buildSkillMd` its rows (task 1.2). `stylesReference.ts` dissolves into the registry. Acceptance: `generateTree` iterates the registry; per-source degraded-prose reporting and the roster
-      path unchanged; trees byte-identical; "add a domain" = "register a fragment" documented in the file header; no
-      fragment exports or hardcodes a `references/…` path.
+      validates and honors every `SkillFile.path` per decision F. A single-file skill must expose `<name>.md` and writes
+      it to `references/<mount>/<name>.md` (styling solutions: mount `styles`; stylesheets: mount root →
+      `references/stylesheets.md`, exactly today's layout); a multi-file skill writes to
+      `references/<mount>/<name>/<path>` with `getFiles()[0]` as the linked entry. The registry resolves placeholders
+      and doc links at write time (the existing `links.ts` machinery), appends the hybrid "Full stylesheet" pointers for
+      scss/tailwindcss, and hands `buildSkillMd` its rows (task 1.2). `stylesReference.ts` dissolves into the registry.
+      Acceptance: `generateTree` iterates the registry; invalid file arrays/paths fail with a source-specific error;
+      per-source degraded-prose reporting and the roster path unchanged; trees byte-identical; "add a domain" =
+      "register a fragment" documented in the file header; no fragment exports or hardcodes a `references/…` path.
 
 ### Phase 2 — styling / stylesheets / theming prose (decision A)
 
@@ -239,14 +250,13 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
 
 ## Follow-ups (deliberately deferred — not part of the phased work)
 
-- [ ] **FU.1 Hoist the markdown helpers to `packages/shared`.** Six copies of
-      `cell`/`table`/`code`: `storefront/src/lib/skill/markdown.ts` + the five fragment
-      `skill/skill.ts` files. Unify on the storefront's stricter semantics (`escapeCell` collapses all whitespace +
-      trims; the styles `cell` only collapses newlines). Fix: export from `packages/shared` (already a dependency of all
-      three packages); import everywhere; delete local copies. Must resolve under the storefront `tsx` runtime (deep
-      source imports) — mirror how `stylesReference.ts` imports fragment source today. Acceptance: one implementation;
-      regenerate-and-diff gate proves output-neutral (or shows only intended whitespace normalization in the four styles
-      references).
+- [ ] **FU.1 Hoist the markdown helpers to `packages/shared`.** Six copies of `cell`/`table`/`code`:
+      `storefront/src/lib/skill/markdown.ts` + the five fragment `skill/skill.ts` files. Unify on the storefront's
+      stricter semantics (`escapeCell` collapses all whitespace + trims; the styles `cell` only collapses newlines).
+      Fix: export from `packages/shared` (already a dependency of all three packages); import everywhere; delete local
+      copies. Must resolve under the storefront `tsx` runtime (deep source imports) — mirror how `stylesReference.ts`
+      imports fragment source today. Acceptance: one implementation; regenerate-and-diff gate proves output-neutral (or
+      shows only intended whitespace normalization in the four styles references).
 
 - [ ] **FU.2 Move `resolveFrameworkPlaceholder` to `packages/shared`.** Contract hygiene, not an enabler: the
       `{js|angular|react|vue}` convention is authored in package markdown but interpreted only in
@@ -259,9 +269,9 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
 The phased work above never touches a storefront page. These tasks flip the pages from hand-written prose to fragment
 consumers and close the remaining fragment-vs-page duplication; do them only after the skill-side phases have landed.
 
-- [ ] **FU.3 Storefront intro pages embed the canonical fragment prose.** `styles/projects/*/skill/{intro,how-to-use}.md`
-      and `components/projects/stylesheets/skill/{intro,how-to-use}.md` near-duplicate
-      `(main)/{tailwindcss,scss,vanilla-extract,emotion}/introduction/page.mdx` and
+- [ ] **FU.3 Storefront intro pages embed the canonical fragment prose.**
+      `styles/projects/*/skill/{intro,how-to-use}.md` and `components/projects/stylesheets/skill/{intro,how-to-use}.md`
+      near-duplicate `(main)/{tailwindcss,scss,vanilla-extract,emotion}/introduction/page.mdx` and
       `(main)/stylesheets/introduction/page.mdx` (+ `stylesheets/color-scheme/introduction`). Fix: render the fragment
       markdown inside those storefront pages (markdown-render component or convert fragments to importable MDX —
       fragments must stay free of storefront-only components); resolve `{js|angular|react|vue}` via the storefront
@@ -273,11 +283,10 @@ consumers and close the remaining fragment-vs-page duplication; do them only aft
 
 - [ ] **FU.4 Storefront getting-started pages import the getting-started snippets (depends on FU.7).**
       `developing/{react,angular,vue,vanilla-js}/getting-started/page.mdx` inline the same
-      install/provider/stylesheet/FOUC code as hand-written fenced blocks. Fix: import the FU.7 snippet constants
-      into the MDX and render them (the diff-fence presentation can wrap the shared strings); tutorial prose, step
-      structure, and vite/lightningcss workarounds stay page-owned. Acceptance: changing a snippet in one fragment
-      changes both the storefront page and (after regeneration) the skill; no setup code block exists twice; storefront
-      e2e green.
+      install/provider/stylesheet/FOUC code as hand-written fenced blocks. Fix: import the FU.7 snippet constants into
+      the MDX and render them (the diff-fence presentation can wrap the shared strings); tutorial prose, step structure,
+      and vite/lightningcss workarounds stay page-owned. Acceptance: changing a snippet in one fragment changes both the
+      storefront page and (after regeneration) the skill; no setup code block exists twice; storefront e2e green.
 
 - [ ] **FU.5 Storefront tokens introduction imports the tokens fragment snippet.** The Setup section of
       `tokens/introduction/page.mdx` duplicates the intro the task-3.1 tokens fragment owns; embed the shared snippet
@@ -291,8 +300,8 @@ consumers and close the remaining fragment-vs-page duplication; do them only aft
 ### Getting started single source (decision B — NOT DECIDED, NOT REFINED)
 
 **Neither the approach nor the goal is agreed yet** — decision B (structured snippet fragments per wrapper) is a
-proposal, and whether `## Getting started` returns to SKILL.md at all is open. Parked here as drafted; refine with
-Henri before touching anything below.
+proposal, and whether `## Getting started` returns to SKILL.md at all is open. Parked here as drafted; refine with Henri
+before touching anything below.
 
 - [ ] **FU.7 Add per-wrapper getting-started fragments.** Create a source fragment in each wrapper project (e.g.
       `packages/components-js/projects/components-wrapper/skill-src/gettingStarted.ts` and the angular/react/vue
@@ -318,26 +327,26 @@ Henri before touching anything below.
 
 Both domains left the skill in R.1 because their only source was storefront _page_ MDX. Re-entry requires converting
 each to package/meta sourcing first — restoring the old MDX-render wiring from git history would reintroduce exactly
-what decision G removed. **Whether either re-enters at all is an open decision with Henri** (see the decision-G
-follow-up: the activation description still promises migration guidance).
+what decision G removed. **Whether either re-enters at all is an open decision with Henri.** The activation description
+and public feature summary no longer promise either domain while they are absent.
 
 - [ ] **FU.9 Partials re-entry as a package-owned skill.** Natural fit for decision F: the partials implementation IS a
       package (`components-js/projects/partials`) — author a `skill/` fragment there exporting a `PackageSkill` (name
       `partials`, intro for a restored `## Partials` SKILL.md section), mounted by the task-1.3 registry like the styles
-      fragments; the storefront partials pages stay untouched (consumption later, FU.3 pattern). Still blocked
-      on the parked partials content items (backlog below): loader-script example outputs must embed the CDN URL, not
+      fragments; the storefront partials pages stay untouched (consumption later, FU.3 pattern). Still blocked on the
+      parked partials content items (backlog below): loader-script example outputs must embed the CDN URL, not
       `localhost:3001`, and the integration examples should be framework-flavored per tree (an aggregator concern,
-      consistent with the hybrid rule). Acceptance: partials reference in all four trees, sourced from the
-      partials package, with CDN URLs and per-framework integration snippets; registered in the task-4.1 completeness
-      gate.
+      consistent with the hybrid rule). Acceptance: partials reference in all four trees, sourced from the partials
+      package, with CDN URLs and per-framework integration snippets; registered in the task-4.1 completeness gate.
 
-- [ ] **FU.10 Migration re-entry — decide, then source.** Options: (a) stays out — then trim "migrating and upgrading
-      PDS" from the activation description and the feature summary so the skill does not promise absent content; (b)
-      re-enters — then the five guides need a decision-G-conformant home (e.g. a fragment in the components-js wrapper,
-      since upgrade steps are version-coupled to the package); the storefront migration-guide pages stay untouched
-      (consumption later, FU.3 pattern). The audit found the guides faithful, so (b) is a sourcing move, not a rewrite.
-      Acceptance: either the promise is trimmed everywhere (description, feature summary, storefront skill docs page)
-      or the guides ship package-sourced with a `## Upgrades & migration` section and the task-4.1 filesystem gate.
+- [ ] **FU.10 Migration re-entry — decide, then source.** Options: (a) stays out — keep the already-trimmed activation
+      description and feature summary free of migration claims; (b) re-enters — give the five guides a
+      decision-G-conformant home (e.g. a fragment in the components-js wrapper, since upgrade steps are version-coupled
+      to the package), then restore migration scope in the activation description and public feature summary. The
+      storefront migration-guide pages stay untouched (consumption later, FU.3 pattern). The audit found the guides
+      faithful, so (b) is a sourcing move, not a rewrite. Acceptance: either the promise remains absent everywhere
+      (description, feature summary, storefront skill docs page) or the guides ship package-sourced with a
+      `## Upgrades & migration` section and the task-4.1 filesystem gate.
 
 ## Open backlog (merged from the former audit/followups — unprioritized, clarify first)
 
@@ -433,8 +442,8 @@ fragment structure or per-framework storefront MDX render, not hardcoded generat
 
 ## Sequencing
 
-- **Phases 0–1 next (agreed 2026-07-10 via decision F).** Mechanically safe, byte-identical trees. Phases 2–3 still
-  need clarification: they change tree content intentionally — never a storefront page (decision C) — and should be
+- **Phases 0–1 next (agreed 2026-07-10 via decision F).** Mechanically safe, byte-identical trees. Phases 2–3 still need
+  clarification: they change tree content intentionally — never a storefront page (decision C) — and should be
   coordinated with the missing-topics P1 backlog (new references belong in the target fragment structure, not new
   hardcoded strings).
 - Every tree-touching task uses `build:skill:check` as its no-unintended-change proof: 0.x/1.x must be byte-identical,
