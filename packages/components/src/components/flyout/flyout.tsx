@@ -7,6 +7,7 @@ import {
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
+  isDialogBackdropTarget,
   observeChildren,
   onCancelDialog,
   onClickDialog,
@@ -104,6 +105,9 @@ export class Flyout {
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSubFooter: boolean;
+  // Tracks whether the current pointer gesture started inside the panel (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the panel and released on the backdrop.
+  private isPointerDownInside = false;
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.dialog,
     isShown: () => !!this.dialog?.open,
@@ -188,7 +192,8 @@ export class Flyout {
         scrollerRef={(el) => (this.scroller = el)}
         dismissable={true}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick, this.isPointerDownInside)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         onDismiss={this.dismissDialog}
         containerClass="flyout"

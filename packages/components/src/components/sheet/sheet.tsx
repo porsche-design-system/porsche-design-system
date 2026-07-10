@@ -7,6 +7,7 @@ import {
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
+  isDialogBackdropTarget,
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
@@ -76,6 +77,9 @@ export class Sheet {
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
   private hasHeader: boolean;
+  // Tracks whether the current pointer gesture started inside the panel (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the panel and released on the backdrop.
+  private isPointerDownInside = false;
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.dialog,
     isShown: () => !!this.dialog?.open,
@@ -126,7 +130,8 @@ export class Sheet {
         scrollerRef={(el) => (this.scroller = el)}
         dismissable={this.dismissButton ?? undefined}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick, this.isPointerDownInside)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         onDismiss={this.dismissButton ? this.dismissDialog : undefined}
         containerClass="sheet"

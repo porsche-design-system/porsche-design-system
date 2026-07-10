@@ -276,6 +276,19 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
   });
 
+  test('should not be dismissed if mousedown inside flyout and mouseup on backdrop (drag out)', async ({ page }) => {
+    const viewportSize = page.viewportSize();
+    await page.mouse.move(viewportSize.width - 1, viewportSize.height / 2);
+    await page.mouse.down();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
+
+    await page.mouse.move(5, 5);
+    await page.mouse.up();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up on backdrop').toBe(0);
+  });
+
   skipInBrowsers(['webkit'], () => {
     test('should not be closable via backdrop when disableBackdropClick is set', async ({ page }) => {
       const host = getHost(page);

@@ -9,6 +9,7 @@ type DialogBaseProps = {
   containerClass: 'flyout' | 'modal' | 'sheet';
   onCancel?: (e: Event) => void;
   onClick?: (e: MouseEvent) => void;
+  onMouseDown?: (e: MouseEvent) => void;
   onTransitionEnd?: (e: TransitionEvent) => void;
   onDismiss?: () => void;
   ariaAttributes?: AriaAttributes;
@@ -27,6 +28,7 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
     ariaAttributes,
     onCancel,
     onClick,
+    onMouseDown,
     onTransitionEnd,
     onDismiss,
     dismissable = false,
@@ -42,7 +44,9 @@ export const DialogBase: FunctionalComponent<DialogBaseProps> = (
       tabIndex={-1} // keeps dialog from being a tab stop; interactive content inside (or programmatic focus) handles focus management
       ref={dialogRef}
       onCancel={onCancel}
-      // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
+      // Track where a pointer press begins so a gesture that starts inside the panel (e.g. a text selection) and is
+      // released on the backdrop does not dismiss the dialog. Dismissal itself stays on the native `click`.
+      onMouseDown={onMouseDown}
       onClick={onClick}
       onTransitionEnd={onTransitionEnd}
       {...(ariaAttributes ?? {})}
