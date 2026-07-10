@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { ACTIVATION_DESCRIPTION, SKELETON_REFERENCE_MAP, SKILL_NAME, buildSkillMd } from '@/lib/skill/skillMd';
+import { ACTIVATION_DESCRIPTION, SKILL_NAME, buildSkillMd } from '@/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, SKILL_DIRECTORY_LAYOUT, SkillTree, isFramework } from '@/lib/skill/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
@@ -91,7 +91,7 @@ describe('buildSkillMd', () => {
   };
 
   it('emits frontmatter with the fixed name and the tuned activation description', () => {
-    const frontmatter = parseFrontmatter(buildSkillMd('react', SKELETON_REFERENCE_MAP));
+    const frontmatter = parseFrontmatter(buildSkillMd('react'));
 
     expect(frontmatter.name).toBe(SKILL_NAME);
     expect(frontmatter.name).toBe('porsche-design-system-docs');
@@ -103,25 +103,47 @@ describe('buildSkillMd', () => {
     expect(ACTIVATION_DESCRIPTION).not.toContain(': ');
   });
 
-  it('renders the reference map as a table from the registered rows', () => {
-    const markdown = buildSkillMd('js', SKELETON_REFERENCE_MAP);
+  it('renders the topical sections in order and drops the removed Getting started / Reference map / Core rules / Partials / Migration', () => {
+    const markdown = buildSkillMd('react', [{ tag: 'p-button', summary: 'x' }]);
 
-    expect(markdown).toContain('## Reference map');
-    expect(markdown).toContain('| Reference | Use this when |');
-    for (const entry of SKELETON_REFERENCE_MAP) {
-      expect(markdown).toContain(`\`${entry.path}\``);
+    const order = ['## Components', '## Stylesheets', '## Tokens', '## Styling'];
+    const indices = order.map((heading) => markdown.indexOf(heading));
+    for (const index of indices) {
+      expect(index).toBeGreaterThan(-1);
+    }
+    expect(indices).toEqual([...indices].sort((a, b) => a - b));
+
+    expect(markdown).not.toContain('## Getting started');
+    expect(markdown).not.toContain('## Reference map');
+    expect(markdown).not.toContain('## Core rules');
+    expect(markdown).not.toContain('## Partials');
+    expect(markdown).not.toContain('## Upgrades & migration');
+    expect(markdown).not.toContain('references/partials.md');
+    expect(markdown).not.toContain('references/migration/');
+  });
+
+  it('links every shipped reference from exactly one topical section', () => {
+    const markdown = buildSkillMd('vue', [{ tag: 'p-button', summary: 'x' }]);
+
+    // Split into `## ` sections; a reference may be linked more than once within a section (the Styling
+    // note links tailwindcss.md alongside the table) but must never span two different sections.
+    const sections = markdown.split(/^## /m);
+    const references = [
+      'references/stylesheets.md',
+      'references/tokens.md',
+      'references/styles/tailwindcss.md',
+      'references/styles/scss.md',
+      'references/styles/vanilla-extract.md',
+      'references/styles/emotion.md',
+    ];
+    for (const reference of references) {
+      const sectionsWith = sections.filter((section) => section.includes(reference)).length;
+      expect(sectionsWith, `${reference} should be linked from exactly one section`).toBe(1);
     }
   });
 
-  it('falls back to a placeholder when no references are registered', () => {
-    const markdown = buildSkillMd('vue', []);
-
-    expect(markdown).toContain('## Reference map');
-    expect(markdown).toContain('populated by the content generators');
-  });
-
   it('inlines the component roster with skill-root-relative reference links', () => {
-    const markdown = buildSkillMd('react', SKELETON_REFERENCE_MAP, [
+    const markdown = buildSkillMd('react', [
       { tag: 'p-button', summary: 'The button component.' },
       { tag: 'p-accordion', summary: 'Reveals or hides sections.' },
     ]);
@@ -130,38 +152,57 @@ describe('buildSkillMd', () => {
     expect(markdown).toContain('| Component | Summary | Reference |');
     expect(markdown).toContain('| `p-button` | The button component. | [p-button.md](references/components/p-button/p-button.md) |');
     expect(markdown).toContain('2 components');
-    // The roster precedes the reference map so the available components are seen first.
-    expect(markdown.indexOf('## Components')).toBeLessThan(markdown.indexOf('## Reference map'));
+    // Components is the first section, before styling.
+    expect(markdown.indexOf('## Components')).toBeLessThan(markdown.indexOf('## Styling'));
   });
 
-  it('omits the components section when no roster is supplied', () => {
-    const markdown = buildSkillMd('js', SKELETON_REFERENCE_MAP);
+  it('states where component examples live in the Components section', () => {
+    const markdown = buildSkillMd('react', [{ tag: 'p-button', summary: 'x' }]);
+    expect(markdown).toContain('references/components/<tag>/examples/');
+  });
 
-    expect(markdown).not.toContain('## Components');
+  it('falls back to a placeholder when no roster is supplied', () => {
+    const markdown = buildSkillMd('js');
+
+    expect(markdown).toContain('## Components');
+    expect(markdown).toContain('populated by the content generators');
   });
 
   it('escapes pipe characters in roster summaries', () => {
-    const markdown = buildSkillMd('vue', SKELETON_REFERENCE_MAP, [{ tag: 'p-x', summary: 'a | b' }]);
+    const markdown = buildSkillMd('vue', [{ tag: 'p-x', summary: 'a | b' }]);
 
     expect(markdown).toContain('a \\| b');
   });
 
-  it('includes the core always-apply rules', () => {
-    const markdown = buildSkillMd('angular', SKELETON_REFERENCE_MAP);
+  it('dissolves the former core rules into topical sections', () => {
+    const markdown = buildSkillMd('angular', [{ tag: 'p-button', summary: 'x' }]);
 
-    expect(markdown).toContain('## Core rules');
+    // component-meta authority + accessibility matrix → Components; version-exactness + path convention
+    // + prefer-PDS → intro; theming → Stylesheets.
     expect(markdown).toContain('`component-meta` is authoritative');
-    expect(markdown).toContain('version-exact');
+    expect(markdown).toContain('accessibility test matrix');
+    expect(markdown).toContain('never mix guidance across versions');
     expect(markdown).toContain('relative to this skill root');
+    expect(markdown).toContain('Prefer Porsche Design System components');
+    expect(markdown).toContain('There is **no** `theme` prop');
+  });
+
+  it('points at the real source alongside the skill root in the intro', () => {
+    const js = buildSkillMd('js');
+    expect(js).toContain('ships inside the installed package');
+    expect(js).toContain('`../meta`');
+    expect(js).toContain('`../scss`');
+    expect(js).toContain('`../tokens`');
+    expect(js).toContain('`../tailwindcss/index.css`');
   });
 
   it('links raw component-meta to the local sibling for js', () => {
-    expect(buildSkillMd('js', SKELETON_REFERENCE_MAP)).toContain('`../meta`');
+    expect(buildSkillMd('js')).toContain('`../meta`');
   });
 
   it('links raw component-meta to the js peer subpath for framework wrappers', () => {
     for (const framework of ['angular', 'react', 'vue'] satisfies Framework[]) {
-      const markdown = buildSkillMd(framework, SKELETON_REFERENCE_MAP);
+      const markdown = buildSkillMd(framework);
       expect(markdown).toContain('`@porsche-design-system/components-js/meta`');
       expect(markdown).not.toContain('`../meta`');
     }
@@ -169,45 +210,45 @@ describe('buildSkillMd', () => {
 
   it('explains the js-peer subpath for framework wrappers only', () => {
     for (const framework of ['angular', 'react', 'vue'] satisfies Framework[]) {
-      expect(buildSkillMd(framework, SKELETON_REFERENCE_MAP), framework).toContain('re-export the same-version');
+      expect(buildSkillMd(framework), framework).toContain('re-export shims of the same-version');
     }
-    expect(buildSkillMd('js', SKELETON_REFERENCE_MAP)).not.toContain('re-export the same-version');
+    expect(buildSkillMd('js')).not.toContain('re-export shims of the same-version');
   });
 
-  it('includes a getting-started section for every framework, before the components section', () => {
+  it('carries the framework-syntax note in the Components section', () => {
     for (const framework of FRAMEWORKS) {
-      const markdown = buildSkillMd(framework, SKELETON_REFERENCE_MAP, [{ tag: 'p-button', summary: 'x' }]);
-      expect(markdown, framework).toContain('## Getting started');
-      expect(markdown, framework).toContain(`@porsche-design-system/components-${framework}`);
-      expect(markdown.indexOf('## Getting started'), framework).toBeLessThan(markdown.indexOf('## Components'));
+      const markdown = buildSkillMd(framework, [{ tag: 'p-button', summary: 'x' }]);
+      expect(markdown, framework).toContain('**Framework syntax');
+      expect(markdown.indexOf('**Framework syntax'), framework).toBeGreaterThan(markdown.indexOf('## Components'));
+      expect(markdown.indexOf('**Framework syntax'), framework).toBeLessThan(markdown.indexOf('## Stylesheets'));
     }
   });
+
+  const withRoster = (framework: Framework): string => buildSkillMd(framework, [{ tag: 'p-button', summary: 'x' }]);
 
   it('documents the PascalCase tag→component and event-name mapping for React and Vue', () => {
     for (const framework of ['react', 'vue'] satisfies Framework[]) {
-      const markdown = buildSkillMd(framework, SKELETON_REFERENCE_MAP);
-      expect(markdown, framework).toContain('`p-button` → `<PButton>`');
-      expect(markdown, framework).toContain('PorscheDesignSystemProvider');
+      expect(withRoster(framework), framework).toContain('`p-button` → `<PButton>`');
     }
-    expect(buildSkillMd('react', SKELETON_REFERENCE_MAP)).toContain('onDismiss');
-    expect(buildSkillMd('vue', SKELETON_REFERENCE_MAP)).toContain('@dismiss');
+    expect(withRoster('react')).toContain('onDismiss');
+    expect(withRoster('vue')).toContain('@dismiss');
   });
 
-  it('documents custom-element tag usage and setup for Angular and vanilla JS', () => {
-    const angular = buildSkillMd('angular', SKELETON_REFERENCE_MAP);
-    expect(angular).toContain('PorscheDesignSystemModule');
+  it('documents custom-element tag usage for Angular and vanilla JS', () => {
+    const angular = withRoster('angular');
     expect(angular).toContain('(dismiss)');
     expect(angular).not.toContain('`p-button` → `<PButton>`');
 
-    const js = buildSkillMd('js', SKELETON_REFERENCE_MAP);
-    expect(js).toContain("import { load } from '@porsche-design-system/components-js'");
+    const js = withRoster('js');
     expect(js).toContain("addEventListener('dismiss'");
     expect(js).not.toContain('`p-button` → `<PButton>`');
   });
 
-  it('includes a FOUC guard in every framework getting-started section', () => {
+  it('no longer carries the install/init setup snippets or a FOUC guard', () => {
     for (const framework of FRAMEWORKS) {
-      expect(buildSkillMd(framework, SKELETON_REFERENCE_MAP), framework).toContain(':not(:defined)');
+      const markdown = buildSkillMd(framework, [{ tag: 'p-button', summary: 'x' }]);
+      expect(markdown, framework).not.toContain(':not(:defined)');
+      expect(markdown, framework).not.toContain('createRoot');
     }
   });
 });

@@ -1,5 +1,5 @@
 import { escapeCell, markdownTable } from './markdown';
-import type { Framework, ReferenceMapEntry } from './skillTree';
+import type { Framework } from './skillTree';
 
 /** Fixed skill identifier — never varies by framework or version. */
 export const SKILL_NAME = 'porsche-design-system-docs';
@@ -28,38 +28,6 @@ export const ACTIVATION_DESCRIPTION =
   'work that clearly targets a different UI library, or when the user opts out of PDS.';
 
 /**
- * Migration guides, in documentation order: source-dir/output-filename `slug` plus the reference-map
- * "use this when". Single source of truth for both the SKILL.md migration rows below and the generator's
- * MDX-load list (`build-skill.ts` imports this), so adding a guide is a one-line edit in one place.
- */
-export const MIGRATION_GUIDES: readonly { slug: string; useWhen: string }[] = [
-  { slug: 'porsche-design-system', useWhen: 'Upgrading the Porsche Design System to a new major version.' },
-  { slug: 'scss', useWhen: 'Migrating the SCSS styling solution.' },
-  { slug: 'tailwindcss', useWhen: 'Migrating the Tailwind CSS styling solution.' },
-  { slug: 'vanilla-extract', useWhen: 'Migrating the vanilla-extract styling solution.' },
-  { slug: 'emotion', useWhen: 'Migrating the Emotion styling solution.' },
-];
-
-/**
- * The reference map describing the skill tree layout. Each row points at a reference file the content
- * generators fill in, and is rendered verbatim into SKILL.md's reference-map table by {@link buildSkillMd}.
- * The set of references is fixed (styles/tokens/partials are one file each; the migration guides come from
- * {@link MIGRATION_GUIDES}), so this is the single source rather than a scaffold generators append to. The
- * component roster and the styling solutions are rendered as their own sections in SKILL.md's body, not as
- * map rows.
- */
-export const SKELETON_REFERENCE_MAP: readonly ReferenceMapEntry[] = [
-  {
-    path: 'references/stylesheets.md',
-    useWhen:
-      'The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work.',
-  },
-  { path: 'references/tokens.md', useWhen: 'Using design tokens — color, spacing, typography, etc.' },
-  { path: 'references/partials.md', useWhen: 'Adding PDS partials — fonts, icons, meta tags, loader script.' },
-  ...MIGRATION_GUIDES.map(({ slug, useWhen }) => ({ path: `references/migration/${slug}.md`, useWhen })),
-];
-
-/**
  * Raw `component-meta` link target. The authoritative data lives only in the js
  * package; the framework wrappers' local `../meta` is a re-export shim, so they
  * link the js peer's `/meta` subpath instead (see design "Data & state").
@@ -83,9 +51,6 @@ export const rawTailwindcssReference = (): string => '../tailwindcss/index.css';
 export const rawScssReference = (framework: Framework): string =>
   framework === 'js' ? '../scss' : '@porsche-design-system/components-js/scss';
 
-/** The installed wrapper package for a framework — used in setup snippets and import statements. */
-export const packageName = (framework: Framework): string => `@porsche-design-system/components-${framework}`;
-
 /**
  * The initialization API each framework configures PDS through — the place a reader might wrongly
  * expect a `theme` option. React/Vue take the `PorscheDesignSystemProvider` component; js calls
@@ -99,65 +64,23 @@ const THEME_INIT_TARGET: Record<Framework, string> = {
 };
 
 /**
- * Framework-specific "Getting started" content, inlined into SKILL.md so the agent knows — the moment
- * the skill activates — how to initialize PDS and how the framework's component syntax maps to the
- * custom-element tags the roster and references use. React and Vue expose PascalCase component wrappers
+ * Framework-specific "how the framework's syntax maps to the custom-element tags the references use"
+ * note, rendered inside the `## Components` section. React and Vue expose PascalCase component wrappers
  * with framework-native prop/event syntax, so the tag→component and event-name mapping is essential;
- * Angular and vanilla JS use the custom-element tags directly. Setup mirrors the storefront's
- * per-framework getting-started guides (provider/module/loader + global stylesheet + FOUC guard).
+ * Angular and vanilla JS use the custom-element tags directly. This is skill-only anti-hallucination
+ * content (it carries several audit correctness fixes) — the install/init/stylesheet setup that used to
+ * accompany it has left SKILL.md and returns single-sourced from the storefront getting-started pages.
  */
-const GETTING_STARTED: Record<Framework, string> = {
+const FRAMEWORK_SYNTAX: Record<Framework, string> = {
   react: [
-    `Install \`${packageName('react')}\`, wrap your app once with the provider, and import the global stylesheet:`,
-    '',
-    '```tsx',
-    '// main.tsx',
-    "import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';",
-    '',
-    'createRoot(document.getElementById(\'root\')!).render(',
-    '  <PorscheDesignSystemProvider>',
-    '    <App />',
-    '  </PorscheDesignSystemProvider>',
-    ');',
-    '```',
-    '',
-    '```css',
-    '/* index.css — one import for all global styles, plus a FOUC guard */',
-    "@import '@porsche-design-system/components-react';",
-    '',
-    ':not(:defined) { visibility: hidden; }',
-    '```',
-    '',
-    'Writing components (this differs from the custom-element tags the references show):',
+    '**Framework syntax** (this differs from the custom-element tags the references show):',
     '- Import each component by name and use its **PascalCase** React component: `p-button` → `<PButton>`, `p-input-text` → `<PInputText>`.',
     '- Props are **camelCase** (`disableBackdropClick`, not `disable-backdrop-click`); use `className` for CSS classes and pass ARIA via the `aria={{ ... }}` prop.',
     '- Events are `on<Event>` handler props — the `dismiss` event is `onDismiss`, `update` is `onUpdate`.',
     '- Place a child into a named slot with the `slot="..."` attribute.',
   ].join('\n'),
   vue: [
-    `Install \`${packageName('vue')}\`, wrap your app once with the provider, and import the global stylesheet:`,
-    '',
-    '```vue',
-    '<!-- App.vue -->',
-    '<script setup lang="ts">',
-    "  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';",
-    '</script>',
-    '',
-    '<template>',
-    '  <PorscheDesignSystemProvider>',
-    '    <!-- your app -->',
-    '  </PorscheDesignSystemProvider>',
-    '</template>',
-    '```',
-    '',
-    '```css',
-    '/* main.css — one import for all global styles, plus a FOUC guard */',
-    "@import '@porsche-design-system/components-vue';",
-    '',
-    ':not(:defined) { visibility: hidden; }',
-    '```',
-    '',
-    'Writing components (this differs from the custom-element tags the references show):',
+    '**Framework syntax** (this differs from the custom-element tags the references show):',
     '- Import each component by name and use its **PascalCase** component: `p-button` → `<PButton>`, `p-input-text` → `<PInputText>`.',
     '- Bind props with `:` and **camelCase** names (`:open="open"`, `:disableBackdropClick="true"`); use `class` for CSS classes.',
     '- Listen to events with `@` — the `dismiss` event is `@dismiss`.',
@@ -165,52 +88,14 @@ const GETTING_STARTED: Record<Framework, string> = {
     '- Place a child into a named slot with the `slot="..."` attribute.',
   ].join('\n'),
   angular: [
-    `Install \`${packageName('angular')}\`, add \`PorscheDesignSystemModule\` to your component/module \`imports\`, and import the global stylesheet:`,
-    '',
-    '```ts',
-    '// app.ts',
-    "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
-    '',
-    '@Component({',
-    "  selector: 'app-root',",
-    '  imports: [PorscheDesignSystemModule],',
-    "  templateUrl: './app.html',",
-    '})',
-    'export class App {}',
-    '```',
-    '',
-    '```css',
-    '/* styles.css — one import for all global styles, plus a FOUC guard */',
-    "@import '@porsche-design-system/components-angular/index.css';",
-    '',
-    ':not(:defined) { visibility: hidden; }',
-    '```',
-    '',
-    'Writing components:',
+    '**Framework syntax:**',
     '- Use the **custom-element tags** directly in templates: `<p-button>`, `<p-input-text>`.',
     '- Bind props with `[prop]` and camelCase names (`[open]="open"`, `[disableBackdropClick]="true"`).',
     '- Listen to events with `(event)` — the `dismiss` event is `(dismiss)="onDismiss()"`.',
     '- Place a child into a named slot with the `slot="..."` attribute.',
   ].join('\n'),
   js: [
-    `Install \`${packageName('js')}\`, initialize the loader once, and import the global stylesheet:`,
-    '',
-    '```ts',
-    "import { load } from '@porsche-design-system/components-js';",
-    '',
-    'load();',
-    '```',
-    '',
-    'For best loading performance, inject the loader-script partial into your HTML `<body>` at build time instead — see `references/partials.md` (`getLoaderScript`).',
-    '',
-    '```css',
-    '/* style.css — one import for all global styles, plus a FOUC guard */',
-    "@import '@porsche-design-system/components-js';",
-    '',
-    ':not(:defined) { visibility: hidden; }',
-    '```',
-    '',
-    'Writing components:',
+    '**Framework syntax:**',
     '- Use the **custom-element tags** directly in HTML: `<p-button>`, `<p-input-text>`.',
     '- Set props as attributes (`variant="secondary"`) or as DOM properties for non-string values.',
     "- Listen to events with `element.addEventListener('dismiss', ...)`.",
@@ -225,29 +110,64 @@ const GETTING_STARTED: Record<Framework, string> = {
  */
 export type ComponentRosterEntry = { tag: string; summary: string; status?: 'deprecated' | 'experimental' };
 
-const renderReferenceMap = (entries: readonly ReferenceMapEntry[]): string => {
-  if (entries.length === 0) {
-    return '_The reference map is populated by the content generators._';
-  }
-  const rows = entries.map((entry) => [`\`${entry.path}\``, escapeCell(entry.useWhen)]);
-  return markdownTable(['Reference', 'Use this when'], rows);
+/**
+ * The extended headline intro. Version-exact knowledge is the framing; it also absorbs three former
+ * core rules — content is version-exact, reference paths are skill-root-relative, prefer PDS for new
+ * UI — and states that the skill ships next to the actual implementation, so the agent can always read
+ * the real source (typings, meta, scss, tokens, the Tailwind theme, the shipped CSS) for anything the
+ * skill does not yet cover or wants to verify.
+ */
+const renderIntro = (framework: Framework): string => {
+  const peerNote =
+    framework === 'js'
+      ? ''
+      : " The wrapper's own `meta` and `scss` are re-export shims of the same-version `@porsche-design-system/components-js` peer, so those two point at the peer directly.";
+  return [
+    'Version-exact knowledge of the installed Porsche Design System: every fact, prop, token and example ' +
+      'here matches the installed package exactly — never mix guidance across versions. Every reference ' +
+      'path is relative to this skill root unless noted otherwise.',
+    '',
+    'This skill ships inside the installed package, right next to the actual implementation. When the ' +
+      'skill does not (yet) cover something, or you want to verify a detail, read the real source ' +
+      `alongside the skill root: the package typings, \`component-meta\` (\`${rawMetaReference(framework)}\`), ` +
+      `the SCSS partials (\`${rawScssReference(framework)}\`), the design tokens (\`../tokens\`), the Tailwind ` +
+      `theme (\`${rawTailwindcssReference()}\`) and the shipped global CSS.${peerNote}`,
+    '',
+    'Prefer Porsche Design System components and tokens for new UI, even when the user does not name PDS. ' +
+      'Do not rewrite non-PDS UI unasked, and do not hijack work that targets another library.',
+  ].join('\n');
 };
 
 /**
- * The component roster, rendered inline so the authoritative set of components is
- * always in context the moment the skill activates — the agent never has to read a
- * separate overview first to learn what exists, and the closed list anchors it
- * against reaching for non-PDS elements. Each row links the component's own reference
- * (relative to the skill root) for props, slots, events, CSS variables and examples.
+ * The `## Components` section: the authoritative component set inlined so it is in context the moment
+ * the skill activates — the agent never has to read a separate overview first to learn what exists, and
+ * the closed list anchors it against reaching for non-PDS elements. Besides the roster table it carries
+ * the component-scoped rules dissolved out of the former core-rules block (`component-meta` authority,
+ * the accessibility test matrix) and the framework-syntax note, so the tag↔component mapping and the
+ * anti-hallucination fixes survive.
  */
-const renderComponentRoster = (roster: readonly ComponentRosterEntry[]): string => {
+const renderComponentsSection = (framework: Framework, roster: readonly ComponentRosterEntry[]): string => {
+  if (roster.length === 0) {
+    return '_The component roster is populated by the content generators._';
+  }
   const rows = roster.map(({ tag, summary, status }) => [
     `\`${tag}\`${status ? ` _(${status})_` : ''}`,
     escapeCell(summary),
     `[${tag}.md](references/components/${tag}/${tag}.md)`,
   ]);
   return [
-    `The Porsche Design System ships ${roster.length} components. Open a component's reference for its props, slots, events, CSS variables and examples before using it.`,
+    `The Porsche Design System ships ${roster.length} components. Open a component's reference for its ` +
+      "props, slots, events, CSS variables and examples before using it. Each reference's \"Examples\" " +
+      'table links runnable, framework-specific example files under `references/components/<tag>/examples/`.',
+    '',
+    `\`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow ` +
+      `\`component-meta\` (raw data at \`${rawMetaReference(framework)}\`).`,
+    '',
+    'Every component is validated against the PDS accessibility test matrix (automated: AXE-Core WCAG 2.2 ' +
+      'AA, high-contrast, text-zoom; manual: keyboard, screen reader). A component reference carries a ' +
+      '`## Tests` section only to flag an exception (e.g. partial high-contrast support).',
+    '',
+    FRAMEWORK_SYNTAX[framework],
     '',
     'Sub-components (e.g. `p-table-row`, `p-select-option`, `p-tabs-item`) have no separate row — they are ' +
       'only valid inside a parent, so their API is documented under a "Sub-components" section in that ' +
@@ -256,6 +176,39 @@ const renderComponentRoster = (roster: readonly ComponentRosterEntry[]): string 
     markdownTable(['Component', 'Summary', 'Reference'], rows),
   ].join('\n');
 };
+
+/**
+ * The theming inoculation, dissolved out of the former core-rules block into the `## Stylesheets`
+ * section (theming is a stylesheet concern). Light/dark is CSS `color-scheme` and nothing else; the
+ * removed-in-earlier-majors `theme` prop is the common hallucination this pre-empts.
+ */
+const renderThemingNote = (framework: Framework): string =>
+  '**Theming is one mechanism — CSS `color-scheme`, nothing else.** Light/dark is controlled solely by ' +
+  'the `.scheme-light` / `.scheme-dark` / `.scheme-light-dark` classes on `<html>` (or any ancestor); ' +
+  'the scheme cascades to **both** PDS components and custom markup, which all resolve colors via ' +
+  `\`light-dark()\`. \`.scheme-light-dark\` follows the OS. There is **no** \`theme\` prop — not on ${THEME_INIT_TARGET[framework]} and not on components. A ` +
+  '`theme="light|dark|auto"` prop existed in earlier majors and was removed; if you recall one, it is a ' +
+  'stale prior — do not add it, verify against the installed types.';
+
+/** The `## Stylesheets` section: the "use when" prose (former reference-map row, expanded), a pointer to
+ * the reference, and the theming note. */
+const renderStylesheetsSection = (framework: Framework): string =>
+  [
+    'The required global stylesheets every component depends on (CSS variables, font-face, ' +
+      'normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this ' +
+      'whenever installing or setting up PDS, before rendering any component, when components look ' +
+      'unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — ' +
+      'it applies to most PDS work. See [stylesheets.md](references/stylesheets.md) for the exact files, ' +
+      'their import order and the full `.scheme-*` list.',
+    '',
+    renderThemingNote(framework),
+  ].join('\n');
+
+/** The `## Tokens` section: a one-paragraph "use when" pointing at the tokens reference. */
+const renderTokensSection = (): string =>
+  'Design tokens — the source values for color, spacing, typography, motion, breakpoints and more, ' +
+  'available as JS constants and as CSS custom properties. Open [tokens.md](references/tokens.md) when ' +
+  'using tokens directly in custom UI.';
 
 /** The four styling solutions PDS ships a ready-made integration for, in reference order. */
 const STYLING_SOLUTIONS: readonly { name: string; useWhen: string; path: string }[] = [
@@ -266,11 +219,11 @@ const STYLING_SOLUTIONS: readonly { name: string; useWhen: string; path: string 
 ];
 
 /**
- * The styling-solutions overview, rendered as its own section (like the component roster) so the agent
- * always knows, the moment the skill activates, that PDS offers these integrations and what they are for.
- * They are independent of the components but build on the same tokens and `color-scheme` theming, so
- * custom UI shares the exact palette, spacing and typography as PDS components. Each row links the
- * solution's reference (relative to the skill root) for setup and the full catalog.
+ * The `## Styling` section (last section): the styling-solutions overview so the agent always knows PDS
+ * offers these integrations and what they are for. They are independent of the components but build on
+ * the same tokens and the same `color-scheme` theming, so custom UI shares the exact palette, spacing
+ * and typography as PDS components — the full mechanics live in the Stylesheets section / reference.
+ * Each row links the solution's reference for setup and the full catalog.
  */
 const renderStylingSection = (): string => {
   const rows = STYLING_SOLUTIONS.map(({ name, useWhen, path }) => [
@@ -282,11 +235,10 @@ const renderStylingSection = (): string => {
     'The Porsche Design System offers a ready-made integration for four styling solutions. They are ' +
       'independent of the components — you do not need them to use components, and they do not depend on ' +
       'components — but they build on the same design system: the same design tokens and the same ' +
-      '`color-scheme` (light/dark) theming. Custom UI you build with them therefore shares the exact ' +
-      'palette, spacing and typography as PDS components. Theming is a single switch: one `.scheme-*` class ' +
-      'on `<html>` drives both layers — PDS components and your custom markup — off one `light-dark()` ' +
-      'palette. There is no separate component theming API and no `theme` prop; see the Core rules and ' +
-      '`references/stylesheets.md`.',
+      '`color-scheme` (light/dark) theming, so one `.scheme-*` class drives both PDS components and your ' +
+      'custom UI. Custom UI you build with them therefore shares the exact palette, spacing and ' +
+      'typography as PDS components. There is no separate component theming API and no `theme` prop; the ' +
+      'full theming mechanics live in the **Stylesheets** section above.',
     '',
     'Use them to build layout and custom components or patterns not yet available in the component ' +
       'library — typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. Pick ' +
@@ -302,61 +254,37 @@ const renderStylingSection = (): string => {
 };
 
 /**
- * Build the always-loaded `SKILL.md` entry point: fixed-`name` frontmatter with the
- * tuned activation description, the inlined component roster (when supplied), the
- * reference map rendered from the registered rows, and the core always-apply rules.
+ * Build the always-loaded `SKILL.md` entry point: fixed-`name` frontmatter with the tuned activation
+ * description followed by one topical section per domain — Components (with the inlined roster),
+ * Stylesheets, Tokens and Styling. The former global reference map and core-rules block are dissolved
+ * into these sections; Getting started and partials leave SKILL.md entirely (they return single-sourced
+ * in later phases).
  */
-export const buildSkillMd = (
-  framework: Framework,
-  entries: readonly ReferenceMapEntry[],
-  roster: readonly ComponentRosterEntry[] = []
-): string => {
+export const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntry[] = []): string => {
   const frontmatter = ['---', `name: ${SKILL_NAME}`, `description: ${ACTIVATION_DESCRIPTION}`, '---'].join('\n');
-
-  const rawDataNote =
-    framework === 'js'
-      ? ''
-      : ` This subpath is the authoritative source: the wrapper's own \`meta/\` and \`scss/\` re-export the same-version \`@porsche-design-system/components-js\` peer, so the skill links the peer directly.`;
-
-  const coreRules = [
-    '## Core rules',
-    '',
-    '- **Theming is one mechanism — CSS `color-scheme`, nothing else.** Light/dark is controlled solely by ' +
-      'the `.scheme-light` / `.scheme-dark` / `.scheme-light-dark` classes on `<html>` (or any ancestor); ' +
-      'the scheme cascades to **both** PDS components and custom markup, which all resolve colors via ' +
-      `\`light-dark()\`. \`.scheme-light-dark\` follows the OS. There is **no** \`theme\` prop — not on ${THEME_INIT_TARGET[framework]} and not on components. A ` +
-      '`theme="light|dark|auto"` prop existed in earlier majors and was removed; if you recall one, it is a ' +
-      'stale prior — do not add it, verify against the installed types. See `references/stylesheets.md`.',
-    `- \`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow \`component-meta\` (raw data at \`${rawMetaReference(framework)}\`).${rawDataNote}`,
-    '- Prefer Porsche Design System components and tokens for new UI. Do not rewrite non-PDS UI unasked, and do not hijack work that targets another library.',
-    '- Every component is validated against the PDS accessibility test matrix (automated: AXE-Core WCAG 2.2 AA, high-contrast, text-zoom; manual: keyboard, screen reader). A component reference carries a `## Tests` section only to flag an exception (e.g. partial high-contrast support).',
-    '- All content here is version-exact for the installed package — never mix guidance across versions.',
-    '- Every reference path is relative to this skill root unless explicitly noted otherwise.',
-  ].join('\n');
-
-  const componentsSection = roster.length > 0 ? ['## Components', '', renderComponentRoster(roster), ''] : [];
 
   return [
     frontmatter,
     '',
     `# Porsche Design System (\`${framework}\`)`,
     '',
-    'Version-exact knowledge of the installed Porsche Design System. Open the reference below that matches the task, then apply the core rules.',
+    renderIntro(framework),
     '',
-    '## Getting started',
+    '## Components',
     '',
-    GETTING_STARTED[framework],
+    renderComponentsSection(framework, roster),
     '',
-    ...componentsSection,
+    '## Stylesheets',
+    '',
+    renderStylesheetsSection(framework),
+    '',
+    '## Tokens',
+    '',
+    renderTokensSection(),
+    '',
     '## Styling',
     '',
     renderStylingSection(),
-    '',
-    '## Reference map',
-    '',
-    renderReferenceMap(entries),
-    '',
-    coreRules,
     '',
   ].join('\n');
 };

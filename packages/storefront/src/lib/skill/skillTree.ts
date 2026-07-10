@@ -39,16 +39,13 @@ export const WRAPPER_DIST_DIRS: Record<Framework, string> = {
  * these empty up front so the content generators (TASK-03+) only have to write
  * files into a tree that already has the right shape.
  */
-export const SKILL_DIRECTORY_LAYOUT = ['references/components', 'references/styles', 'references/migration'] as const;
-
-/** One row of the SKILL.md reference map: a tree-relative path and a one-line "use this when". */
-export type ReferenceMapEntry = { path: string; useWhen: string };
+export const SKILL_DIRECTORY_LAYOUT = ['references/components', 'references/styles'] as const;
 
 /**
  * Filesystem writer that owns a single framework's skill tree. It is the stable
  * API the content generators write produced files through, via {@link write} /
- * {@link writeReference}. SKILL.md itself (including its reference map) is rendered
- * from {@link SKELETON_REFERENCE_MAP} by the harness once every generator has run.
+ * {@link writeReference}. SKILL.md itself is rendered into topical sections by
+ * `buildSkillMd` once every generator has run (the component roster is threaded in).
  */
 export class SkillTree {
   public readonly root: string;

@@ -27,7 +27,7 @@ describe('rewriteDocLinks', () => {
     expect(rewriteDocLinks('[Button](/components/button/)', 'references/partials.md')).toBe(
       '[Button](./components/p-button/p-button.md)'
     );
-    expect(rewriteDocLinks('[Button](/components/button/)', 'references/migration/scss.md')).toBe(
+    expect(rewriteDocLinks('[Button](/components/button/)', 'references/styles/scss.md')).toBe(
       '[Button](../components/p-button/p-button.md)'
     );
   });

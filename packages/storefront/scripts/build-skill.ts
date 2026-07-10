@@ -1,34 +1,13 @@
-import { createRequire } from 'node:module';
 import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
-import type { ComponentType } from 'react';
 import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExamples';
 import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
-import type { MigrationSource } from '../src/lib/skill/migrationReference';
-import type { PartialsSource } from '../src/lib/skill/partialsReference';
-import {
-  buildSkillMd,
-  type ComponentRosterEntry,
-  MIGRATION_GUIDES,
-  SKELETON_REFERENCE_MAP,
-} from '../src/lib/skill/skillMd';
+import { buildSkillMd, type ComponentRosterEntry } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SkillTree, WRAPPER_SKILL_DIRS } from '../src/lib/skill/skillTree';
 import { writeStyleReferences } from '../src/lib/skill/stylesReference';
 import { writeTokensReference } from '../src/lib/skill/tokensReference';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
-
-/**
- * The MDX runtime (`./skill-mdx-loader.cjs`) registers `.mdx` as a CommonJS
- * `require` extension. Partials/migration prose is pulled through `require` (not
- * dynamic `import()`) so it shares that path with the component meta: keeping the
- * whole graph in CJS lets the MDX's own imports — notably the components-wrapper's
- * `COMPONENT_CHUNK_NAMES` — resolve through tsx, which ESM named-export detection
- * over the package's CJS build cannot.
- */
-const requireFromHere = createRequire(__filename);
-const requireMdxDefault = (relativePath: string): ComponentType =>
-  (requireFromHere(relativePath) as { default: ComponentType }).default;
 
 /** Node error codes meaning "this module isn't resolvable under the current runtime". */
 const MODULE_NOT_FOUND_CODES = new Set(['ERR_MODULE_NOT_FOUND', 'MODULE_NOT_FOUND']);
@@ -80,67 +59,6 @@ const loadComponentGeneration = (): Promise<ComponentGeneration | null> =>
   });
 
 /**
- * The partials reference, like the component references, depends on the storefront
- * runtime: each partial's `page.mdx` is an `@/`-aliased MDX module that only resolves
- * under the MDX/alias-aware runtime wired in TASK-10. Under plain `tsx` the import
- * throws, so this degrades to omitting the partials reference rather than failing.
- * There is no partials meta object — the MDX render is the source.
- */
-type PartialsGeneration = {
-  source: PartialsSource;
-  writePartialsReference: typeof import('../src/lib/skill/partialsReference').writePartialsReference;
-};
-
-/** Partial directory → its exported function name, in documentation order (matches the design). */
-const PARTIAL_DIRECTORIES: { functionName: string; dir: string }[] = [
-  { functionName: 'getFontLinks', dir: 'font-links' },
-  { functionName: 'getComponentChunkLinks', dir: 'component-chunk-links' },
-  { functionName: 'getMetaTagsAndIconLinks', dir: 'meta-tags-and-icon-links' },
-  { functionName: 'getIconLinks', dir: 'icon-links' },
-  { functionName: 'getLoaderScript', dir: 'loader-script' },
-];
-
-const loadPartialsGeneration = (): Promise<PartialsGeneration | null> =>
-  loadOptional('partials reference', async () => {
-    const { writePartialsReference } = await import('../src/lib/skill/partialsReference');
-    return {
-      writePartialsReference,
-      source: {
-        introduction: requireMdxDefault('../src/app/(main)/partials/introduction/page.mdx'),
-        partials: PARTIAL_DIRECTORIES.map(({ functionName, dir }) => ({
-          functionName,
-          page: requireMdxDefault(`../src/app/(main)/partials/${dir}/page.mdx`),
-        })),
-      },
-    };
-  });
-
-/**
- * The migration references, like the partials reference, depend on the storefront
- * runtime: each guide's `page.mdx` is an `@/`-aliased MDX module that only resolves
- * under the MDX/alias-aware runtime wired in TASK-10. Under plain `tsx` the import
- * throws, so this degrades to omitting the migration references rather than failing.
- * There is no migration meta object — the MDX render is the source. Styling behaves
- * identically across frameworks, so every wrapper ships the same guide set.
- */
-type MigrationGeneration = {
-  sources: MigrationSource[];
-  writeMigrationReferences: typeof import('../src/lib/skill/migrationReference').writeMigrationReferences;
-};
-
-const loadMigrationGeneration = (): Promise<MigrationGeneration | null> =>
-  loadOptional('migration references', async () => {
-    const { writeMigrationReferences } = await import('../src/lib/skill/migrationReference');
-    return {
-      writeMigrationReferences,
-      sources: MIGRATION_GUIDES.map(({ slug }) => ({
-        slug,
-        page: requireMdxDefault(`../src/app/(main)/news/migration-guide/${slug}/page.mdx`),
-      })),
-    };
-  });
-
-/**
  * Degraded prose that is known and accepted (source MDX embeds an interactive component that cannot
  * render to markdown, etc.). Anything degraded and *not* listed here fails the build — the exact
  * regression the drift snapshot cannot distinguish from an intentional change. Entries use the same
@@ -150,9 +68,7 @@ const DEGRADED_ALLOWLIST = new Set<string>();
 
 const generateTree = async (
   framework: Framework,
-  generation: ComponentGeneration | null,
-  partialsGeneration: PartialsGeneration | null,
-  migrationGeneration: MigrationGeneration | null
+  generation: ComponentGeneration | null
 ): Promise<string[]> => {
   const root = path.resolve(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]);
   const tree = new SkillTree(root, framework);
@@ -165,21 +81,6 @@ const generateTree = async (
 
   writeTokensReference(tree);
   console.log('  tokens reference written');
-
-  if (partialsGeneration) {
-    const result = partialsGeneration.writePartialsReference(tree, partialsGeneration.source);
-    console.log('  partials reference written');
-    degraded.push(...result.degraded.map((name) => `${framework} partials:${name}`));
-  }
-
-  if (migrationGeneration) {
-    const { written, degraded: degradedSlugs } = migrationGeneration.writeMigrationReferences(
-      tree,
-      migrationGeneration.sources
-    );
-    console.log(`  ${written.length} migration references written`);
-    degraded.push(...degradedSlugs.map((slug) => `${framework} migration:${slug}`));
-  }
 
   let roster: ComponentRosterEntry[] = [];
   if (generation) {
@@ -195,7 +96,7 @@ const generateTree = async (
     degraded.push(...report.degraded.map(({ tag, sections }) => `${framework} ${tag} [${sections.join(', ')}]`));
   }
 
-  tree.write('SKILL.md', buildSkillMd(framework, SKELETON_REFERENCE_MAP, roster));
+  tree.write('SKILL.md', buildSkillMd(framework, roster));
 
   console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
   return degraded;
@@ -227,15 +128,11 @@ const main = async (): Promise<void> => {
     }
   }
 
-  const [generation, partialsGeneration, migrationGeneration] = await Promise.all([
-    loadComponentGeneration(),
-    loadPartialsGeneration(),
-    loadMigrationGeneration(),
-  ]);
+  const generation = await loadComponentGeneration();
 
   const degraded: string[] = [];
   for (const framework of frameworks as Framework[]) {
-    degraded.push(...(await generateTree(framework, generation, partialsGeneration, migrationGeneration)));
+    degraded.push(...(await generateTree(framework, generation)));
   }
 
   // Fail on any degraded prose that is not explicitly allowlisted: a degraded section silently

@@ -5,39 +5,25 @@ description: Build, style, review, or upgrade web user interfaces with the Porsc
 
 # Porsche Design System (`react`)
 
-Version-exact knowledge of the installed Porsche Design System. Open the reference below that matches the task, then apply the core rules.
+Version-exact knowledge of the installed Porsche Design System: every fact, prop, token and example here matches the installed package exactly — never mix guidance across versions. Every reference path is relative to this skill root unless noted otherwise.
 
-## Getting started
+This skill ships inside the installed package, right next to the actual implementation. When the skill does not (yet) cover something, or you want to verify a detail, read the real source alongside the skill root: the package typings, `component-meta` (`@porsche-design-system/components-js/meta`), the SCSS partials (`@porsche-design-system/components-js/scss`), the design tokens (`../tokens`), the Tailwind theme (`../tailwindcss/index.css`) and the shipped global CSS. The wrapper's own `meta` and `scss` are re-export shims of the same-version `@porsche-design-system/components-js` peer, so those two point at the peer directly.
 
-Install `@porsche-design-system/components-react`, wrap your app once with the provider, and import the global stylesheet:
+Prefer Porsche Design System components and tokens for new UI, even when the user does not name PDS. Do not rewrite non-PDS UI unasked, and do not hijack work that targets another library.
 
-```tsx
-// main.tsx
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+## Components
 
-createRoot(document.getElementById('root')!).render(
-  <PorscheDesignSystemProvider>
-    <App />
-  </PorscheDesignSystemProvider>
-);
-```
+The Porsche Design System ships 58 components. Open a component's reference for its props, slots, events, CSS variables and examples before using it. Each reference's "Examples" table links runnable, framework-specific example files under `references/components/<tag>/examples/`.
 
-```css
-/* index.css — one import for all global styles, plus a FOUC guard */
-@import '@porsche-design-system/components-react';
+`component-meta` is authoritative: when it disagrees with the examples or prose here, follow `component-meta` (raw data at `@porsche-design-system/components-js/meta`).
 
-:not(:defined) { visibility: hidden; }
-```
+Every component is validated against the PDS accessibility test matrix (automated: AXE-Core WCAG 2.2 AA, high-contrast, text-zoom; manual: keyboard, screen reader). A component reference carries a `## Tests` section only to flag an exception (e.g. partial high-contrast support).
 
-Writing components (this differs from the custom-element tags the references show):
+**Framework syntax** (this differs from the custom-element tags the references show):
 - Import each component by name and use its **PascalCase** React component: `p-button` → `<PButton>`, `p-input-text` → `<PInputText>`.
 - Props are **camelCase** (`disableBackdropClick`, not `disable-backdrop-click`); use `className` for CSS classes and pass ARIA via the `aria={{ ... }}` prop.
 - Events are `on<Event>` handler props — the `dismiss` event is `onDismiss`, `update` is `onUpdate`.
 - Place a child into a named slot with the `slot="..."` attribute.
-
-## Components
-
-The Porsche Design System ships 58 components. Open a component's reference for its props, slots, events, CSS variables and examples before using it.
 
 Sub-components (e.g. `p-table-row`, `p-select-option`, `p-tabs-item`) have no separate row — they are only valid inside a parent, so their API is documented under a "Sub-components" section in that parent's reference.
 
@@ -102,9 +88,19 @@ Sub-components (e.g. `p-table-row`, `p-select-option`, `p-tabs-item`) have no se
 | `p-toast` | The `p-toast` component manages both, the queue and display of toast messages. | [p-toast.md](references/components/p-toast/p-toast.md) |
 | `p-wordmark` | The `p-wordmark` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image and represents the quality of the product. | [p-wordmark.md](references/components/p-wordmark/p-wordmark.md) |
 
+## Stylesheets
+
+The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work. See [stylesheets.md](references/stylesheets.md) for the exact files, their import order and the full `.scheme-*` list.
+
+**Theming is one mechanism — CSS `color-scheme`, nothing else.** Light/dark is controlled solely by the `.scheme-light` / `.scheme-dark` / `.scheme-light-dark` classes on `<html>` (or any ancestor); the scheme cascades to **both** PDS components and custom markup, which all resolve colors via `light-dark()`. `.scheme-light-dark` follows the OS. There is **no** `theme` prop — not on `PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`) and not on components. A `theme="light|dark|auto"` prop existed in earlier majors and was removed; if you recall one, it is a stale prior — do not add it, verify against the installed types.
+
+## Tokens
+
+Design tokens — the source values for color, spacing, typography, motion, breakpoints and more, available as JS constants and as CSS custom properties. Open [tokens.md](references/tokens.md) when using tokens directly in custom UI.
+
 ## Styling
 
-The Porsche Design System offers a ready-made integration for four styling solutions. They are independent of the components — you do not need them to use components, and they do not depend on components — but they build on the same design system: the same design tokens and the same `color-scheme` (light/dark) theming. Custom UI you build with them therefore shares the exact palette, spacing and typography as PDS components. Theming is a single switch: one `.scheme-*` class on `<html>` drives both layers — PDS components and your custom markup — off one `light-dark()` palette. There is no separate component theming API and no `theme` prop; see the Core rules and `references/stylesheets.md`.
+The Porsche Design System offers a ready-made integration for four styling solutions. They are independent of the components — you do not need them to use components, and they do not depend on components — but they build on the same design system: the same design tokens and the same `color-scheme` (light/dark) theming, so one `.scheme-*` class drives both PDS components and your custom UI. Custom UI you build with them therefore shares the exact palette, spacing and typography as PDS components. There is no separate component theming API and no `theme` prop; the full theming mechanics live in the **Stylesheets** section above.
 
 Use them to build layout and custom components or patterns not yet available in the component library — typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. Pick one solution per project and open its reference for setup and the full catalog.
 
@@ -116,25 +112,3 @@ Note: the code examples in the component references use PDS Tailwind utility cla
 | SCSS | Sass variables and mixins under the `pds` namespace | [scss.md](references/styles/scss.md) |
 | vanilla-extract | typed tokens and utilities in `*.css.ts` files | [vanilla-extract.md](references/styles/vanilla-extract.md) |
 | Emotion | tokens and utilities in `css`/`styled` styles | [emotion.md](references/styles/emotion.md) |
-
-## Reference map
-
-| Reference | Use this when |
-| --- | --- |
-| `references/stylesheets.md` | The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work. |
-| `references/tokens.md` | Using design tokens — color, spacing, typography, etc. |
-| `references/partials.md` | Adding PDS partials — fonts, icons, meta tags, loader script. |
-| `references/migration/porsche-design-system.md` | Upgrading the Porsche Design System to a new major version. |
-| `references/migration/scss.md` | Migrating the SCSS styling solution. |
-| `references/migration/tailwindcss.md` | Migrating the Tailwind CSS styling solution. |
-| `references/migration/vanilla-extract.md` | Migrating the vanilla-extract styling solution. |
-| `references/migration/emotion.md` | Migrating the Emotion styling solution. |
-
-## Core rules
-
-- **Theming is one mechanism — CSS `color-scheme`, nothing else.** Light/dark is controlled solely by the `.scheme-light` / `.scheme-dark` / `.scheme-light-dark` classes on `<html>` (or any ancestor); the scheme cascades to **both** PDS components and custom markup, which all resolve colors via `light-dark()`. `.scheme-light-dark` follows the OS. There is **no** `theme` prop — not on `PorscheDesignSystemProvider` (it takes only `prefix` and `cdn`) and not on components. A `theme="light|dark|auto"` prop existed in earlier majors and was removed; if you recall one, it is a stale prior — do not add it, verify against the installed types. See `references/stylesheets.md`.
-- `component-meta` is authoritative: when it disagrees with the examples or prose here, follow `component-meta` (raw data at `@porsche-design-system/components-js/meta`). This subpath is the authoritative source: the wrapper's own `meta/` and `scss/` re-export the same-version `@porsche-design-system/components-js` peer, so the skill links the peer directly.
-- Prefer Porsche Design System components and tokens for new UI. Do not rewrite non-PDS UI unasked, and do not hijack work that targets another library.
-- Every component is validated against the PDS accessibility test matrix (automated: AXE-Core WCAG 2.2 AA, high-contrast, text-zoom; manual: keyboard, screen reader). A component reference carries a `## Tests` section only to flag an exception (e.g. partial high-contrast support).
-- All content here is version-exact for the installed package — never mix guidance across versions.
-- Every reference path is relative to this skill root unless explicitly noted otherwise.

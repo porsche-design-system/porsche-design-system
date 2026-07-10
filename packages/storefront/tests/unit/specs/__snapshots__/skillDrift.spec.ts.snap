@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`skill tree drift > the committed angular skill tree matches its snapshot 1`] = `
-"a8d0ab9c55c006cedf288f946dae3b52c2a2f1883799a477242624cedd9eeec1  SKILL.md
+"9b9aa7dd465b7b31c205609f4695f0eefe798a459b281dc7c41d491509226399  SKILL.md
 aa43180aa08b165d84f7472d934177da5b2d81d9abdc5901ceabf8f4e997cc19  references/components/p-accordion/examples/Default.ts
 7b3e312df9510617c2a8a173337a254280f90a3b4381bc14aeb8dcf7f31907f6  references/components/p-accordion/examples/InteractiveElementsInSummary.ts
 8559e070d434df14593a8491ee02be364785ea30804a4f1c49c212694245e97e  references/components/p-accordion/examples/StickySummary.ts
@@ -276,7 +276,6 @@ e3e098a84d30e762889959e19ed6308d4b392afd4eaf5fe710c8350f177ca6df  references/mig
 bf981693150c43b2e0addaabc82073bd4b6b3b79dbc5c80cb2af12d311824a5a  references/migration/scss.md
 af52b2ca401bd0dc1cedfc3af2ef0e8a705e5258e43c2be548dd5f26eebef0ec  references/migration/tailwindcss.md
 55c6403418bde619da8f48595fab9bae57b11117c12e76f3e899a2588701342e  references/migration/vanilla-extract.md
-a2f5b72ecfef32852b0ea9d6a636f97074fb2d85e0d3d9d11da99980a3dc9197  references/partials.md
 86727755165cb2054bd12db02a837f783c0d07fddb926685c2c6809c8acdfd01  references/styles/emotion.md
 7c1ea4a8670b23c2a9e57322cdf423f5c3d8d1cc1104249a82f7938af61daf56  references/styles/scss.md
 55cb92feaadb6c113dc1b4f64ee38c9f767112f00b8dd39f016387f1d090aebb  references/styles/tailwindcss.md
@@ -286,7 +285,7 @@ a2f5b72ecfef32852b0ea9d6a636f97074fb2d85e0d3d9d11da99980a3dc9197  references/par
 `;
 
 exports[`skill tree drift > the committed js skill tree matches its snapshot 1`] = `
-"349be56d63fe85be141c7374bebc8bb009b67af971d1627572d292ff7e76cff0  SKILL.md
+"a541bad2ce8bbcc8f3e17061d559d1c51e10261ff974f0bdcb6798cc6e25c0f3  SKILL.md
 9fc01487396134d1542aab677c47b685d8f4447551f63a5ba0f1203e7bbd836b  references/components/p-accordion/examples/Default.html
 f0abd7d910d4c0d32228a7e8c0ed8d8f87e7135a06ca5e3deeb045be995581db  references/components/p-accordion/examples/InteractiveElementsInSummary.html
 70af60619bf8f9352d7321274f1db8f44e4fc5e8eea6c7b34382cfda08f1edc0  references/components/p-accordion/examples/StickySummary.html
@@ -561,7 +560,6 @@ e2fb7261d2f0935852568dc7e656d960467f0c605749b98db74414ae5b4d4fc3  references/ico
 bf981693150c43b2e0addaabc82073bd4b6b3b79dbc5c80cb2af12d311824a5a  references/migration/scss.md
 af52b2ca401bd0dc1cedfc3af2ef0e8a705e5258e43c2be548dd5f26eebef0ec  references/migration/tailwindcss.md
 a6290f2b19b8ebcf406b040347c12e9c12852477b963a4022af8d4f39b71fb97  references/migration/vanilla-extract.md
-73534a1c2cd5883f801cd829b3da8ba47fccd670949626e312263dc8ba6c585e  references/partials.md
 716b5e500f28ce6b653a2cdafd3c7861ba7cec7ee7fa9b11c4d7694945fc99b9  references/styles/emotion.md
 d6265b6d48e9adecb65016dcf740d22d71d8a5e7fee4b435249ad478965e082b  references/styles/scss.md
 d62912baf5b337eb585f3cd9e9eb8784882fe3b1128d63eda0f9439d6815b69b  references/styles/tailwindcss.md
@@ -571,7 +569,7 @@ cf26976b9994e19e12325216b6a9c7c7337f54efadc33a9567faefc9ddc28807  references/tok
 `;
 
 exports[`skill tree drift > the committed react skill tree matches its snapshot 1`] = `
-"e163ba95b5f3e8ec6f0f88434d049996eb9c4f6121f832339ee56fbf74fdc772  SKILL.md
+"f512ef16d82ac0f466645460923e102aa9f834c61425d6f8451ab4a806326997  SKILL.md
 383070ef16da5b9778f567640e03871f2ad95210285366ddcfd540d62d07dc99  references/components/p-accordion/examples/Default.tsx
 09b858e4546e4374d7cb5273e9ec809b9e5033e2a8ac091d38fc197bf2b934ac  references/components/p-accordion/examples/InteractiveElementsInSummary.tsx
 d5ed88cebed1afb3976c1932a2451d1391f566141caa71bbea48afe2c9151a5d  references/components/p-accordion/examples/StickySummary.tsx
@@ -846,7 +844,6 @@ e2fb7261d2f0935852568dc7e656d960467f0c605749b98db74414ae5b4d4fc3  references/ico
 bf981693150c43b2e0addaabc82073bd4b6b3b79dbc5c80cb2af12d311824a5a  references/migration/scss.md
 af52b2ca401bd0dc1cedfc3af2ef0e8a705e5258e43c2be548dd5f26eebef0ec  references/migration/tailwindcss.md
 b53ae1c15db6134297608b53976e7a9698a30bc6620374197e98e8ce3fe3f74a  references/migration/vanilla-extract.md
-1c57608711ad0632a15a4f5894fdcf4cf838ad481798b5a63de264853a3d16ae  references/partials.md
 48dbc0fdf249726507bc8813b32d91afa226d9c8e9116dedbd7a3f9a9e96b76a  references/styles/emotion.md
 eb94b515f1ecf468cd095936341d0637044a038823b6c18a9c46490ccc872b5d  references/styles/scss.md
 ecd30ce8d4a020c1e57d7eab8474ac720944ee06985e2ae3356e76a3ed043197  references/styles/tailwindcss.md
@@ -856,7 +853,7 @@ ecd30ce8d4a020c1e57d7eab8474ac720944ee06985e2ae3356e76a3ed043197  references/sty
 `;
 
 exports[`skill tree drift > the committed vue skill tree matches its snapshot 1`] = `
-"125011f2a54a0aef0f6e8ae7c6cf597c99973d9baf68a0f9310875fdbe1595ae  SKILL.md
+"d88fe0120a2509f8dbd5336c4871e773719a63a4681408a6eeb7e32f3470db63  SKILL.md
 51322c5b814f316735d08cc0dfd307eddd318cd03bfa3a5a44143becd86582ff  references/components/p-accordion/examples/Default.vue
 c51494131d022f460f0412f4a68491bd9a8426d6f59df03fcd4e036c6f6487ff  references/components/p-accordion/examples/InteractiveElementsInSummary.vue
 3cc79c1537e8f9117bed7c65fe72368bfc20bd306b5aff89037dd43a78aeb263  references/components/p-accordion/examples/StickySummary.vue
@@ -1131,7 +1128,6 @@ e2fb7261d2f0935852568dc7e656d960467f0c605749b98db74414ae5b4d4fc3  references/ico
 bf981693150c43b2e0addaabc82073bd4b6b3b79dbc5c80cb2af12d311824a5a  references/migration/scss.md
 af52b2ca401bd0dc1cedfc3af2ef0e8a705e5258e43c2be548dd5f26eebef0ec  references/migration/tailwindcss.md
 4596fb8b85f2206fe304ceffd004ddb537e295ac2d617700e3cf6175a221c6b0  references/migration/vanilla-extract.md
-b2d35fd7c9cb462aa684ebcd6f726c63ef381f39d3b06b71cddd5f098ce61c5a  references/partials.md
 7da2c231d9035358177399bf37a7763dd9a386110a924f16336144175825e64f  references/styles/emotion.md
 c7d9b801ab9b0b75e2f46c007ff3a7ab72ddbe1555bdc89aa2840195eaaa6049  references/styles/scss.md
 466a22e64dae0c1c9a7710388e45ccafbe29826bb86daa89eabac483f18b5937  references/styles/tailwindcss.md
