@@ -1,6 +1,4 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
-import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
@@ -13,7 +11,10 @@ it('should have initialized shadow dom', async () => {
 });
 
 it('should have working events', async () => {
-  document.body.innerHTML = getMarkup('p-banner') + `<div id="debug">Event Counter: <span>0</span></div>`;
+  document.body.innerHTML =
+    `<p-banner open dismiss-button heading="Some heading">
+    <span slot="description">Some banner description.</span>
+  </p-banner>` + `<div id="debug">Event Counter: <span>0</span></div>`;
   await componentsReady();
 
   const el = document.body.firstElementChild;
@@ -24,7 +25,7 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
-  const button = getByRoleShadowed('button');
-  await userEvent.click(button);
+  const button = el.shadowRoot.querySelector('button.dismiss');
+  button.click();
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
 });
