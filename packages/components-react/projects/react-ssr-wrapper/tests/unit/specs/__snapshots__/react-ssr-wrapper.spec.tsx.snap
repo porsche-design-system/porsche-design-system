@@ -3186,9 +3186,6 @@ exports[`should render dsr component for PBanner 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 [popover] {
   all: unset;
   position: fixed;
@@ -6571,9 +6568,6 @@ exports[`should render dsr component for PFlyout 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -9869,9 +9863,6 @@ exports[`should render dsr component for PModal 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -12674,9 +12665,6 @@ exports[`should render dsr component for PSheet 1`] = `
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
