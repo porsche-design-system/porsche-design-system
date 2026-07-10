@@ -7,9 +7,13 @@ import * as path from 'path';
 import { afterEach, describe, expect, it } from 'vitest';
 
 // Resolves the real `pds-skill` bin shipped by the components-wrapper. The bin resolves its own
-// skill dir relative to `__dirname` (`../skill`), so the fixture mirrors that `bin/`+`skill/` layout.
+// skill dir relative to `__dirname` (`../skill`) and its link name from the sibling `package.json`,
+// so the fixture mirrors that `bin/`+`skill/`+`package.json` layout.
 const realBinPath = path.resolve(__dirname, '../../../projects/components-wrapper/bin/pds-skill.js');
-const SKILL_LINK_NAME = 'porsche-design-system-docs';
+
+// The link name is the package name with the scope stripped and `/` -> `-`.
+const linkNameFor = (pkgName: string): string => pkgName.replace(/^@/, '').replace(/\//g, '-');
+const SKILL_LINK_NAME = linkNameFor('@porsche-design-system/components-js');
 
 // The four wrapper packages ship a byte-identical, hand-maintained copy of the bin. Nothing in the
 // build generates them, so this is the only thing keeping them in sync.
@@ -27,13 +31,21 @@ type Fixture = {
   projectDir: string;
   /** The package's bundled `skill/` dir the symlink should resolve to (null when omitted). */
   skillDir: string | null;
-  /** The expected `.claude/skills/porsche-design-system-docs` path inside the project. */
+  /** The expected `<cwd>/.claude/skills/<link-name>` path inside the project. */
   linkPath: string;
-  /** Runs the fixture's copy of the bin with CWD set to the project dir. */
-  run: () => void;
+  /** The skill link name derived from the fixture package name. */
+  linkName: string;
+  /** Runs the fixture's copy of the bin from `cwd` (default: projectDir), optionally with args. */
+  run: (options?: { args?: string[]; cwd?: string }) => void;
 };
 
-const createFixture = ({ withSkill }: { withSkill: boolean }): Fixture => {
+const createFixture = ({
+  withSkill,
+  pkgName = '@porsche-design-system/components-js',
+}: {
+  withSkill: boolean;
+  pkgName?: string;
+}): Fixture => {
   const root = fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-'));
   fixtures.push(root);
 
@@ -41,6 +53,8 @@ const createFixture = ({ withSkill }: { withSkill: boolean }): Fixture => {
   fs.mkdirSync(binDir, { recursive: true });
   const binPath = path.join(binDir, 'pds-skill.js');
   fs.copyFileSync(realBinPath, binPath);
+  // The bin reads its link name from the sibling package.json.
+  fs.writeFileSync(path.join(root, 'pkg', 'package.json'), JSON.stringify({ name: pkgName }));
 
   let skillDir: string | null = null;
   if (withSkill) {
@@ -52,11 +66,14 @@ const createFixture = ({ withSkill }: { withSkill: boolean }): Fixture => {
   const projectDir = path.join(root, 'project');
   fs.mkdirSync(projectDir, { recursive: true });
 
+  const linkName = linkNameFor(pkgName);
   return {
     projectDir,
     skillDir,
-    linkPath: path.join(projectDir, '.claude', 'skills', SKILL_LINK_NAME),
-    run: () => execFileSync('node', [binPath], { cwd: projectDir, stdio: 'pipe' }),
+    linkName,
+    linkPath: path.join(projectDir, '.claude', 'skills', linkName),
+    run: ({ args = [], cwd = projectDir }: { args?: string[]; cwd?: string } = {}) =>
+      execFileSync('node', [binPath, ...args], { cwd, stdio: 'pipe' }),
   };
 };
 
@@ -131,6 +148,61 @@ describe('pds-skill bin', () => {
 
     expect(() => run()).toThrow();
     expect(fs.existsSync(linkPath)).toBe(false);
+  });
+
+  it('should name the link after the invoking package', () => {
+    const { run, projectDir, skillDir } = createFixture({
+      withSkill: true,
+      pkgName: '@porsche-design-system/components-vue',
+    });
+
+    run();
+
+    const linkPath = path.join(projectDir, '.claude', 'skills', 'porsche-design-system-components-vue');
+    expect(fs.lstatSync(linkPath).isSymbolicLink()).toBe(true);
+    expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+  });
+
+  it('should link into a custom destination directory passed as an argument', () => {
+    const { run, projectDir, linkName, skillDir } = createFixture({ withSkill: true });
+
+    run({ args: ['.agents'] });
+
+    const linkPath = path.join(projectDir, '.agents', linkName);
+    expect(fs.lstatSync(linkPath).isSymbolicLink()).toBe(true);
+    expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+    expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+  });
+
+  it('should resolve a relative destination against the project root with --root', () => {
+    const { run, projectDir, linkName, skillDir } = createFixture({ withSkill: true });
+
+    // Mark projectDir as the repo root, then run from a nested subdir.
+    fs.mkdirSync(path.join(projectDir, '.git'));
+    const nested = path.join(projectDir, 'packages', 'app');
+    fs.mkdirSync(nested, { recursive: true });
+
+    run({ args: ['.claude/skills', '--root'], cwd: nested });
+
+    const linkPath = path.join(projectDir, '.claude', 'skills', linkName);
+    expect(fs.lstatSync(linkPath).isSymbolicLink()).toBe(true);
+    expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
+    expect(fs.existsSync(path.join(nested, '.claude'))).toBe(false);
+  });
+
+  it('should fail when --root finds no project root', () => {
+    // Fixture root has no `.git` anywhere up to the tmp dir.
+    const { run, projectDir } = createFixture({ withSkill: true });
+
+    expect(() => run({ args: ['--root'] })).toThrow();
+    expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+  });
+
+  it('should reject an unknown flag with usage and a non-zero exit', () => {
+    const { run, projectDir } = createFixture({ withSkill: true });
+
+    expect(() => run({ args: ['--nope'] })).toThrow();
+    expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
   });
 });
 

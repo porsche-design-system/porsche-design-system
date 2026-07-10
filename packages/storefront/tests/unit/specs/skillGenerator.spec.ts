@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { ACTIVATION_DESCRIPTION, SKILL_NAME, buildSkillMd } from '@/lib/skill/skillMd';
+import { ACTIVATION_DESCRIPTION, buildSkillMd, skillName } from '@/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, SKILL_DIRECTORY_LAYOUT, SkillTree, isFramework } from '@/lib/skill/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
@@ -90,12 +90,18 @@ describe('buildSkillMd', () => {
     );
   };
 
-  it('emits frontmatter with the fixed name and the tuned activation description', () => {
+  it('emits frontmatter with the per-package name and the tuned activation description', () => {
     const frontmatter = parseFrontmatter(buildSkillMd('react'));
 
-    expect(frontmatter.name).toBe(SKILL_NAME);
-    expect(frontmatter.name).toBe('porsche-design-system-docs');
+    expect(frontmatter.name).toBe(skillName('react'));
+    expect(frontmatter.name).toBe('porsche-design-system-components-react');
     expect(frontmatter.description).toBe(ACTIVATION_DESCRIPTION);
+  });
+
+  it('names each tree after its own wrapper package', () => {
+    for (const framework of ['js', 'angular', 'react', 'vue'] as const) {
+      expect(parseFrontmatter(buildSkillMd(framework)).name).toBe(`porsche-design-system-components-${framework}`);
+    }
   });
 
   it('keeps the activation description a single frontmatter line free of parse-breaking sequences', () => {

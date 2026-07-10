@@ -1,8 +1,14 @@
 import { escapeCell, markdownTable } from './markdown';
 import type { Framework } from './skillTree';
 
-/** Fixed skill identifier — never varies by framework or version. */
-export const SKILL_NAME = 'porsche-design-system-docs';
+/**
+ * Per-package skill identifier — mirrors the wrapper package name
+ * (`@porsche-design-system/components-<framework>` → `porsche-design-system-components-<framework>`),
+ * so a project depending on more than one wrapper gets a distinct skill per package instead of all
+ * four fighting over one `.claude/skills/…` entry. The `pds-skill` bin derives the same name from
+ * its own `package.json` at link time. Never varies by version.
+ */
+export const skillName = (framework: Framework): string => `porsche-design-system-components-${framework}`;
 
 /**
  * Auto-activation description — the only matching surface Claude Code uses to decide
@@ -261,7 +267,7 @@ const renderStylingSection = (): string => {
  * in later phases).
  */
 export const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntry[] = []): string => {
-  const frontmatter = ['---', `name: ${SKILL_NAME}`, `description: ${ACTIVATION_DESCRIPTION}`, '---'].join('\n');
+  const frontmatter = ['---', `name: ${skillName(framework)}`, `description: ${ACTIVATION_DESCRIPTION}`, '---'].join('\n');
 
   return [
     frontmatter,
