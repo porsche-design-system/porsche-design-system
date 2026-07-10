@@ -396,11 +396,10 @@ export const renderMdxToMarkdown = (
   let html: string;
   try {
     html = renderToStaticMarkup(
-      createElement(
-        SkillProviders,
-        { framework: STOREFRONT_FRAMEWORK[framework] },
-        createElement(component, { components: componentStubs })
-      )
+      createElement(SkillProviders, {
+        framework: STOREFRONT_FRAMEWORK[framework],
+        children: createElement(component, { components: componentStubs }),
+      })
     );
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
