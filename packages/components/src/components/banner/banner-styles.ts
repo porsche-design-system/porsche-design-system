@@ -27,6 +27,8 @@ const cssVarPositionTop = '--p-banner-position-top'; // deprecated (aliased)
 const cssVarPositionBottom = '--p-banner-position-bottom'; // deprecated (aliased)
 const topBottomFallback = '56px';
 
+const cssVarTransform = '--_p-banner-a';
+
 export const getComponentCss = (
   isOpen: boolean,
   position: BreakpointCustomizable<BannerPosition>,
@@ -54,17 +56,17 @@ export const getComponentCss = (
             position: 'fixed',
             ...buildResponsiveStyles(position, (v: BannerPosition) => ({
               ...(v === 'top' && {
-                '--_a': `translate3d(-50%,calc(-100% - ${ref(cssVarTop, ref(cssVarPositionTop, topBottomFallback))}),0)`,
+                [cssVarTransform]: `translate3d(-50%,calc(-100% - ${ref(cssVarTop, ref(cssVarPositionTop, topBottomFallback))}),0)`,
                 insetBlock: `${ref(cssVarTop, ref(cssVarPositionTop, topBottomFallback))} auto`,
               }),
               ...(v === 'bottom' && {
-                '--_a': `translate3d(-50%,calc(${ref(cssVarBottom, ref(cssVarPositionBottom, topBottomFallback))} + 100%),0)`,
+                [cssVarTransform]: `translate3d(-50%,calc(${ref(cssVarBottom, ref(cssVarPositionBottom, topBottomFallback))} + 100%),0)`,
                 insetBlock: `auto ${ref(cssVarBottom, ref(cssVarPositionBottom, topBottomFallback))}`,
               }),
             })),
             left: '50vw',
             width: `min(calc(100vw - 2 * ${ref(cssVarInsetX, gridExtendedOffsetBase)}),${ref(cssVarMaxWidth, '100ch')})`,
-            transform: isOpen ? 'translate3d(-50%,0,0)' : ref('--_a'),
+            transform: isOpen ? 'translate3d(-50%,0,0)' : ref(cssVarTransform),
             transition,
             // keep the popover on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
             ...overlayTransitionSupportsQuery({
@@ -102,6 +104,6 @@ export const getComponentCss = (
   // page load) computes straight to its visible transform/opacity and appears instantly instead of sliding/fading in.
   // Every later render passes `false`, so a user-triggered open still animates normally.
   return isOpen && !skipEntryTransition
-    ? `${css}\n@starting-style {\n  [popover] {\n    transform: ${ref('--_a')};\n  }\n  .notification {\n    opacity: 0;\n  }\n}`
+    ? `${css}\n@starting-style {\n  [popover] {\n    transform: ${ref(cssVarTransform)};\n  }\n  .notification {\n    opacity: 0;\n  }\n}`
     : css;
 };
