@@ -10,11 +10,11 @@ exports[`getComponentCss() > should return correct css for open: false, position
 [popover] {
   all: unset;
   position: fixed;
-  --_a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
+  --_p-banner-a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
-  transform: var(--_a);
+  transform: var(--_p-banner-a);
   transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   overlay: none;
   display: none;
@@ -158,11 +158,11 @@ exports[`getComponentCss() > should return correct css for open: false, position
 [popover] {
   all: unset;
   position: fixed;
-  --_a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
+  --_p-banner-a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
-  transform: var(--_a);
+  transform: var(--_p-banner-a);
   transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   overlay: none;
   display: none;
@@ -238,11 +238,11 @@ exports[`getComponentCss() > should return correct css for open: false, position
 [popover] {
   all: unset;
   position: fixed;
-  --_a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
+  --_p-banner-a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
-  transform: var(--_a);
+  transform: var(--_p-banner-a);
   transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   overlay: none;
   display: none;
@@ -380,7 +380,7 @@ exports[`getComponentCss() > should return correct css for open: true, position:
 [popover] {
   all: unset;
   position: fixed;
-  --_a: translate3d(-50%,calc(-100% - var(--p-banner-top,var(--p-banner-position-top,56px))),0);
+  --_p-banner-a: translate3d(-50%,calc(-100% - var(--p-banner-top,var(--p-banner-position-top,56px))),0);
   inset-block: var(--p-banner-top,var(--p-banner-position-top,56px)) auto;
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
@@ -450,7 +450,7 @@ slot:not([name]),slot[name="description"],p {
 
 @starting-style {
   [popover] {
-    transform: var(--_a);
+    transform: var(--_p-banner-a);
   }
   .notification {
     opacity: 0;
@@ -468,7 +468,7 @@ exports[`getComponentCss() > should return correct css for open: true, position:
 [popover] {
   all: unset;
   position: fixed;
-  --_a: translate3d(-50%,calc(-100% - var(--p-banner-top,var(--p-banner-position-top,56px))),0);
+  --_p-banner-a: translate3d(-50%,calc(-100% - var(--p-banner-top,var(--p-banner-position-top,56px))),0);
   inset-block: var(--p-banner-top,var(--p-banner-position-top,56px)) auto;
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
