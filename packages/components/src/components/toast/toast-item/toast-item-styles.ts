@@ -1,5 +1,5 @@
 import { ref, shadowLg } from '@porsche-design-system/stylesheets';
-import { addImportantToEachRule, preventFoucOfNestedElementsStyles } from '../../../styles';
+import { addImportantToEachRule } from '../../../styles';
 import { getCss, mergeDeep } from '../../../utils';
 import { getFunctionalComponentNotificationBaseStyles } from '../../common/notification-base/notification-base-styles';
 import type { ToastState } from '../toast/toast-utils';
@@ -28,7 +28,6 @@ export const getComponentCss = (state: ToastState): string => {
               display: 'none',
             },
           },
-          ...preventFoucOfNestedElementsStyles,
         },
       },
       {

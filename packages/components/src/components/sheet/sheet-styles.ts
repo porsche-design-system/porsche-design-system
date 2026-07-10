@@ -1,10 +1,5 @@
 import { ref, spacingFluidLg } from '@porsche-design-system/stylesheets';
-import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import {
   dialogBorderRadius,
@@ -49,7 +44,6 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
           ...hostHiddenStyles,
         }),
       },
-      ...preventFoucOfNestedElementsStyles,
       slot: {
         ...getSlotJssStyle(),
         '&:not([name])': getSlotMainJssStyle(),

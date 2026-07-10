@@ -7,9 +7,6 @@ exports[`getComponentCss() > should return correct css for open: false, position
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 [popover] {
   all: unset;
   position: fixed;
@@ -158,9 +155,6 @@ exports[`getComponentCss() > should return correct css for open: false, position
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 [popover] {
   all: unset;
   position: fixed;
@@ -240,9 +234,6 @@ exports[`getComponentCss() > should return correct css for open: false, position
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 [popover] {
   all: unset;
@@ -386,9 +377,6 @@ exports[`getComponentCss() > should return correct css for open: true, position:
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 [popover] {
   all: unset;
   position: fixed;
@@ -476,9 +464,6 @@ exports[`getComponentCss() > should return correct css for open: true, position:
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 [popover] {
   all: unset;

@@ -18,9 +18,6 @@ exports[`getComponentCss() > should return correct css for state: error 1`] = `
 :host::backdrop {
   display: none;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
@@ -146,9 +143,6 @@ exports[`getComponentCss() > should return correct css for state: info 1`] = `
 }
 :host::backdrop {
   display: none;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot:not([name]),slot[name="description"],p {
   all: unset;
@@ -276,9 +270,6 @@ exports[`getComponentCss() > should return correct css for state: success 1`] = 
 :host::backdrop {
   display: none;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
@@ -404,9 +395,6 @@ exports[`getComponentCss() > should return correct css for state: warning 1`] = 
 }
 :host::backdrop {
   display: none;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot:not([name]),slot[name="description"],p {
   all: unset;

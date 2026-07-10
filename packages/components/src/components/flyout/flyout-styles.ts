@@ -1,10 +1,5 @@
 import { ref } from '@porsche-design-system/stylesheets';
-import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import type { BreakpointCustomizable } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import {
@@ -74,7 +69,6 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      ...preventFoucOfNestedElementsStyles,
       slot: {
         ...getSlotJssStyle(),
         '&:not([name])': getSlotMainJssStyle(),

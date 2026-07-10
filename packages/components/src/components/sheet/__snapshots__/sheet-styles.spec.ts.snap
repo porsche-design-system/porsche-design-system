@@ -15,9 +15,6 @@ exports[`getComponentCss() > should return correct css for open: false, backgrou
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -117,9 +114,6 @@ exports[`getComponentCss() > should return correct css for open: false, backgrou
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -285,9 +279,6 @@ exports[`getComponentCss() > should return correct css for open: true, backgroun
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -448,9 +439,6 @@ exports[`getComponentCss() > should return correct css for open: true, backgroun
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;

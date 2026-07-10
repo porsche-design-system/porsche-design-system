@@ -1,11 +1,6 @@
 import { gridExtendedOffsetBase } from '@porsche-design-system/emotion';
 import { ref, shadowLg } from '@porsche-design-system/stylesheets';
-import {
-  addImportantToEachRule,
-  getTransition,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
+import { addImportantToEachRule, getTransition, hostHiddenStyles } from '../../styles';
 import { buildResponsiveStyles, getCss, mergeDeep, overlayTransitionSupportsQuery } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getFunctionalComponentNotificationBaseStyles } from '../common/notification-base/notification-base-styles';
@@ -54,7 +49,6 @@ export const getComponentCss = (
               ...hostHiddenStyles,
             }),
           },
-          ...preventFoucOfNestedElementsStyles,
           '[popover]': {
             all: 'unset',
             position: 'fixed',
