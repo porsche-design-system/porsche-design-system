@@ -17,6 +17,53 @@ BRANCH_PREFIX="chore/dependency-updates"
 fail_env() { echo "preflight: $1" >&2; exit 2; }
 fail_gate() { echo "preflight: $1" >&2; exit 1; }
 
+# Non-blocking canary (staged rollout): probe whether the HOST write-capable
+# credential the finalize stage uses can actually push and open a PR, so a
+# doomed credential surfaces here at minute 0 instead of ~95 minutes later when
+# finalize runs `git push` + `gh pr create`. Warning-only by default; set
+# FINALIZE_CANARY_ENFORCE=1 to promote a genuine capability failure to an
+# escalate (exit 2). Transient network/registry errors NEVER escalate, so the
+# canary can't newly block a run that works today.
+finalize_capability_canary() {
+  local script_dir gh_available=false auth_ok=false push_perm="" error_kind="" repo perm
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+  if command -v gh >/dev/null 2>&1; then
+    gh_available=true
+    if gh auth status >/dev/null 2>&1; then
+      auth_ok=true
+      repo="$(gh repo view --json nameWithOwner --jq .nameWithOwner 2>/dev/null || echo '')"
+      if [ -z "$repo" ]; then
+        error_kind="network"
+      else
+        perm="$(gh api "repos/$repo" --jq '.permissions.push' 2>/dev/null || echo 'ERR')"
+        case "$perm" in
+          true) push_perm="true" ;;
+          false) push_perm="false" ;;
+          *) error_kind="network" ;;
+        esac
+      fi
+    else
+      error_kind="auth"
+    fi
+  fi
+
+  local result verdict escalate reason
+  result="$(node "$script_dir/classify-finalize-capability.mjs" --format sh \
+    --gh-available "$gh_available" --auth-ok "$auth_ok" \
+    --push-perm "$push_perm" --error-kind "$error_kind" 2>/dev/null || echo 'skipped false canary-helper-unavailable')"
+  read -r verdict escalate reason <<< "$result"
+
+  echo "preflight: finalize-capability canary: $verdict ($reason)" >&2
+  mkdir -p .turbo-spec/out 2>/dev/null || true
+  printf '{"verdict":"%s","escalate":%s}\n' "$verdict" "$escalate" \
+    > .turbo-spec/out/finalize-capability.json 2>/dev/null || true
+
+  if [ "${FINALIZE_CANARY_ENFORCE:-0}" = "1" ] && [ "$escalate" = "true" ]; then
+    fail_env "finalize-capability canary: $reason (set the finalize write credential correctly, or unset FINALIZE_CANARY_ENFORCE)"
+  fi
+}
+
 # --- must run at the repo root of the PDS monorepo ---
 if [ ! -f package.json ]; then
   fail_env "no package.json in \$PWD ($PWD) — run from the repo root"
@@ -50,6 +97,8 @@ if [ "$MODE" = "--check" ]; then
     "$BRANCH_PREFIX"/*) : ;;
     *) echo "preflight: warning: branch '$CURRENT_BRANCH' is not $BRANCH_PREFIX/* (allowed for local runs)" >&2 ;;
   esac
+  # Surface a doomed finalize credential now (warning-only unless enforced).
+  finalize_capability_canary
   echo "preflight --check: ok (branch=$CURRENT_BRANCH, node=$HAVE_NODE, npm=$HAVE_NPM)"
   exit 0
 fi

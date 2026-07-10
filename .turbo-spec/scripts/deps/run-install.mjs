@@ -9,13 +9,37 @@
 //   .turbo-spec/out/apply-result.json    { install_ok, failure }
 //   .turbo-spec/out/install-failure.json { kind, packages, detail }  (failure only)
 
-import { writeFileSync, rmSync } from 'node:fs';
+import { writeFileSync, rmSync, readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { classify } from './classify-install-failure.mjs';
+import { findPackageJsons } from './apply-plan.mjs';
 
 /** Arguments for a clean, quiet install (no audit/fund noise in the log). */
 export function installArgs() {
   return ['install', '--no-audit', '--no-fund'];
+}
+
+/**
+ * A content hash over every manifest in the tree. Stamped into apply-result.json
+ * so a downstream gate can tell whether the recorded install still reflects the
+ * CURRENT manifests (freshness), and so a before/after comparison reveals an
+ * install that mutated a manifest (drift attribution) rather than the resolver.
+ */
+export function hashManifests(root) {
+  const files = findPackageJsons(root).sort();
+  const h = createHash('sha256');
+  for (const f of files) {
+    h.update(f.replace(root, ''));
+    h.update('\0');
+    try {
+      h.update(readFileSync(f));
+    } catch {
+      h.update('\0MISSING');
+    }
+    h.update('\0');
+  }
+  return h.digest('hex');
 }
 
 /** Paths wiped before install so resolution is computed from scratch. */
@@ -64,6 +88,9 @@ function main(argv) {
   const root = argv[2] || '.';
   const outDir = '.turbo-spec/out';
 
+  // Manifest fingerprint BEFORE the install, to detect install-induced mutation.
+  const manifestBefore = hashManifests(root);
+
   // Clean slate: remove the lockfile and node_modules so npm recomputes the tree.
   for (const p of cleanPaths(root)) {
     rmSync(p, { recursive: true, force: true });
@@ -72,8 +99,20 @@ function main(argv) {
   const run = (args) =>
     spawnSync('npm', args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
   const { result, log } = performInstall(run);
+
+  // Manifest fingerprint AFTER the install. `manifest_hash` lets a downstream
+  // gate reject a stale verdict (manifests changed since this install), and
+  // `manifest_mutated` flags an install that rewrote a manifest so a later
+  // no-drift failure is not mis-attributed to the resolver.
+  const manifestAfter = hashManifests(root);
+  const record = {
+    ...result,
+    manifest_hash: manifestAfter,
+    manifest_mutated: manifestBefore !== manifestAfter,
+  };
+
   writeFileSync(`${root}/${outDir}/install.log`, log);
-  writeFileSync(`${root}/${outDir}/apply-result.json`, `${JSON.stringify(result, null, 2)}\n`);
+  writeFileSync(`${root}/${outDir}/apply-result.json`, `${JSON.stringify(record, null, 2)}\n`);
 
   const failure = failureArtifact(result);
   const failurePath = `${root}/${outDir}/install-failure.json`;
@@ -89,6 +128,9 @@ function main(argv) {
       ? 'run-install: clean npm install succeeded'
       : `run-install: npm install failed (${result.failure.kind})`
   );
+  if (record.manifest_mutated) {
+    console.warn('run-install: warning: npm install mutated a manifest during install');
+  }
   return 0; // never abort the pipeline here
 }
 

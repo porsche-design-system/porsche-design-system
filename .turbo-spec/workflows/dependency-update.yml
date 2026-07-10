@@ -148,10 +148,21 @@ stages:
           gate_name: resolve-conflicts
           failure_verdict: loop_back
           environment_verdict: escalate
-          success_reason: "Override recorded, install is ERESOLVE-free, and no declared range drifted from the frozen plan"
+          success_reason: "Current manifests install cleanly (authoritative gate install), no declared range drifted, and the resolution is recorded"
+          # T3a verified against this run's stage-handoffs + the consistency gate's
+          # ordered steps: gate steps run AFTER the agent, in listed order, and
+          # resolve_conflicts declares no `outputs:` so this reinstall cannot
+          # corrupt a stage snapshot (apply_bumps.apply_result was already
+          # consumed; probe_post_angular re-derives apply-result.json later).
           steps:
+            # Single authoritative install: regenerate install.log + apply-result.json
+            # (with a fresh manifest hash) ONCE per gate evaluation, so the verdict
+            # never reads a stale hand-run log. The steward is told NOT to run its
+            # own install (T5), which keeps this to one clean install per attempt.
+            - name: run-install
+              command: ["node", ".turbo-spec/scripts/deps/run-install.mjs", "."]
             - name: check-resolve
-              command: ["node", ".turbo-spec/scripts/deps/check-resolve.mjs", ".turbo-spec/out/overrides-added.json", ".turbo-spec/out/install.log"]
+              command: ["node", ".turbo-spec/scripts/deps/check-resolve.mjs", ".turbo-spec/out/apply-result.json", ".turbo-spec/out/overrides-added.json", "."]
             # Early no-drift catch: if the resolver changed a DECLARED range away
             # from the frozen plan (instead of using overrides only), fail here and
             # loop back to this agent — the one that can fix it — before the
@@ -217,10 +228,15 @@ stages:
           gate_name: resolve-conflicts-post-angular
           failure_verdict: loop_back
           environment_verdict: escalate
-          success_reason: "Override recorded, post-Angular install is ERESOLVE-free, and no declared range drifted from the frozen plan"
+          success_reason: "Post-Angular manifests install cleanly (authoritative gate install), no declared range drifted, and the resolution is recorded"
           steps:
+            # Single authoritative install (see resolve_conflicts / T3): regenerate
+            # install.log + apply-result.json once per evaluation so the verdict is
+            # never read from a stale hand-run log.
+            - name: run-install
+              command: ["node", ".turbo-spec/scripts/deps/run-install.mjs", "."]
             - name: check-resolve
-              command: ["node", ".turbo-spec/scripts/deps/check-resolve.mjs", ".turbo-spec/out/overrides-added.json", ".turbo-spec/out/install.log"]
+              command: ["node", ".turbo-spec/scripts/deps/check-resolve.mjs", ".turbo-spec/out/apply-result.json", ".turbo-spec/out/overrides-added.json", "."]
             # Early no-drift catch (see resolve_conflicts): reject declared-range
             # drift here so it loops back to the resolving agent rather than
             # surfacing two stages later at the agent-less consistency gate.

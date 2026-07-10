@@ -10,9 +10,11 @@ Follow the `eresolve-override-resolution` and `pds-facts` skills:
 read `.turbo-spec/out/install-failure.json`, the install log
 `.turbo-spec/out/install.log`, and the frozen `.turbo-spec/out/update-plan.json`;
 identify the conflicting third-party package; and add an **equality-safe**,
-scoped, pinned `overrides` entry to the **root** `package.json`. Then delete
-`package-lock.json` and `node_modules` and run `npm install` (twice) until it
-succeeds cleanly.
+scoped, pinned `overrides` entry to the **root** `package.json`. You may run
+`npm install` for quick feedback, but you do **not** need to run the clean
+double-install or `run-install.mjs` to finalize — the resolve **gate** runs the
+single authoritative clean install and verifies it. Get the overrides right,
+record them, and end your turn.
 
 Your resolution must be **both** ERESOLVE-free **and** plan-consistent: never let
 a declared dependency string drift from its frozen plan target. npm surfaces only
@@ -59,5 +61,10 @@ across resolver instances. Never drop an entry another instance recorded.
 - **Stay in scope.** Trust prior gate verdicts. Use ONLY your declared inputs —
   `install-failure.json`, `install.log`, `update-plan.json`, the root
   `package.json`, and (to keep the cumulative record) any existing
-  `overrides-added.json`. Do not investigate or relitigate other stages' history or logs.
-- Stop as soon as `npm install` is clean and `overrides-added.json` is written.
+  `overrides-added.json`. Do not investigate or relitigate other stages' history
+  or logs. **No placement archaeology:** do not hand-trace npm `--debug` /
+  `placeDep` output or crawl other workspaces' `node_modules` to explain a
+  placement — one clean install is authoritative (reading a specific package's
+  `peerDependencies` for the exact range is fine).
+- Stop as soon as your overrides are correct and `overrides-added.json` is
+  written; the gate runs the authoritative install and verifies it.

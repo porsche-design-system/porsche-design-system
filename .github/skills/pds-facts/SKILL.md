@@ -51,6 +51,15 @@ it deterministically via `reconcile-ts.mjs`.
   which is not mounted in the container, so `git status` / `git diff` /
   `git commit` do not work. The turbo-spec engine handles all commits — do not run
   git and do not reason about git state. Work directly with the files.
+- **Verify your changes by the files themselves, not git.** Inside the sandbox
+  confirm what changed via file contents, mtimes, or the `.turbo-spec/out/*`
+  artifacts (e.g. `apply-result.json`, `install.log`) — never `git diff`.
+- **Two execution environments.** Agent stages run in the Linux sandbox
+  (bash 5, no git). The deterministic **script-hook** stages — `preflight` and
+  `finalize` — run on the **host**, which is **macOS bash 3.2.57**. Bash written
+  for those hooks must stay 3.2-compatible: notably, expanding an empty array as
+  `"${arr[@]}"` under `set -u` throws `unbound variable` on bash < 4.4, so guard
+  every array expansion as `"${arr[@]+"${arr[@]}"}"`.
 - **Clean installs omit platform optionals.** After
   `rm -rf package-lock.json node_modules && npm install`, npm may omit
   platform-specific `optionalDependencies` (e.g. syncpack's native binary). Run

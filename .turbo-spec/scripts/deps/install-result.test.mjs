@@ -63,7 +63,6 @@ test('failureArtifact returns a schema-shaped object on failure (F5): kind+packa
 });
 
 import { performInstall } from './run-install.mjs';
-
 // D-sync: npm omits platform optionalDependencies (e.g. syncpack-darwin-arm64)
 // after a clean `rm package-lock.json && npm install`. A second idempotent
 // install tops them up. performInstall encodes that control flow with an
@@ -101,4 +100,22 @@ test('performInstall install_ok reflects the final (top-up) attempt (D-sync)', (
   const { result, attempts } = performInstall(run);
   assert.equal(attempts, 2);
   assert.equal(result.install_ok, false, 'a failing top-up must surface as a failed install');
+});
+
+// --- manifest hashing (freshness stamp for the resolve-conflicts gate) -------
+import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { hashManifests } from './run-install.mjs';
+
+test('hashManifests is stable for identical trees and changes when a manifest changes', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'hashman-'));
+  writeFileSync(join(dir, 'package.json'), '{"name":"root","dependencies":{"vite":"^8.1.0"}}');
+  mkdirSync(join(dir, 'packages', 'a'), { recursive: true });
+  writeFileSync(join(dir, 'packages', 'a', 'package.json'), '{"name":"a"}');
+  const h1 = hashManifests(dir);
+  assert.equal(hashManifests(dir), h1, 'same tree → same hash');
+  // Change a manifest (e.g. the agent adds an override) → hash must change.
+  writeFileSync(join(dir, 'package.json'), '{"name":"root","dependencies":{"vite":"^8.1.0"},"overrides":{"x":"1"}}');
+  assert.notEqual(hashManifests(dir), h1, 'a manifest edit must change the hash');
 });

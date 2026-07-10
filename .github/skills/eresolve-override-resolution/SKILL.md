@@ -61,9 +61,14 @@ workspace. Never edit a declared range directly.
    equality-safe form per the rule above (scoped when the package is declared;
    blanket only for pure transitives). Follow existing patterns in that file.
    Among equality-safe options, prefer the narrowest scope as a tiebreaker.
-3. Delete **both** `package-lock.json` and `node_modules`, then run `npm install`
-   **twice** — a clean install makes npm omit platform-specific
-   `optionalDependencies` (e.g. syncpack's binary); a second install re-adds them.
+3. To test a candidate quickly, you may run `npm install`. You do **not** need to
+   run the clean `rm package-lock.json node_modules` + double install, nor
+   `run-install.mjs`, to "finalize" — the resolve **gate** performs the single
+   authoritative clean install (twice, to re-add platform `optionalDependencies`
+   such as syncpack's binary) and writes `install.log` + `apply-result.json`. Get
+   the overrides right, record them, and end your turn; the gate verifies and, on
+   any remaining conflict, loops back with a fresh `install.log` /
+   `install-failure.json`.
 4. Record what you added by **appending** to
    `.turbo-spec/out/overrides-added.json` (read the existing array first if the
    file exists, so a second steward run after Angular keeps the first run's
@@ -77,6 +82,16 @@ workspace. Never edit a declared range directly.
 - When more than one override may be needed, **binary-search** the candidate set
   (start broad, bisect) rather than re-theorizing. Prefer one empirical
   `npm install` over repeated speculation. Cap total attempts at ~6–8.
+- **No placement archaeology.** Do NOT hand-trace npm `--debug` / `placeDep`
+  output or crawl other workspaces' `node_modules` to explain *why* npm placed a
+  version — that is the thrash this budget exists to prevent. One clean install is
+  the authoritative signal. You MAY read a specific package's `package.json`
+  `peerDependencies` when you need the exact peer range and no better source
+  exists; otherwise cap root-cause hypotheses at 2, then apply the smallest scoped
+  override and re-run.
+- The **gate owns the authoritative install.** Do not run `run-install.mjs`
+  yourself, or do a final clean double-install just to "confirm" — the gate does
+  that once per evaluation. Don't reinstall while you are still theorizing.
 - The captured `install-failure.json` / `install.log` are fresh and authoritative
   for THIS stage. Reproduce at most once if genuinely needed, then trust your own
   runs; do not reinstall repeatedly just to "see the real error."
@@ -95,4 +110,5 @@ workspace. Never edit a declared range directly.
 - Never touch a held-back dependency.
 - One override per real conflict; do not speculatively add overrides.
 
-Stop once `npm install` completes cleanly and `overrides-added.json` is written.
+Stop once your overrides are correct and `overrides-added.json` is written; the
+gate runs the authoritative clean install and verifies the result.
