@@ -134,9 +134,13 @@ test.describe('close', () => {
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
 
     await setProperty(host, 'dismissButton', true);
-    await waitForStencilLifecycle(page);
-    await page.keyboard.press('Escape');
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    await expect(getCloseButton(page)).toHaveCount(1);
+    await expect
+      .poll(async () => {
+        await page.keyboard.press('Escape');
+        return (await getEventSummary(host, 'dismiss')).counter;
+      })
+      .toBe(1);
   });
 
   test('should not influence other banner styles', async ({ page }) => {
