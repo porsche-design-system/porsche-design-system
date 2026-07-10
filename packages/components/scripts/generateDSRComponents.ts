@@ -60,6 +60,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n.+parseJSON[\s\S]+?.*/g, '')
         .replace(/ as HTML[A-Za-z]+/g, '')
         .replace(/\s+ref={.*?}/g, '') // ref props
+        .replace(/\s+refCallback={.*?}/g, '') // refCallback props (interactive-only, not used in static DSR output)
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
         .replace(/\s+onToggle={.*?}/g, '') // onToggle props
@@ -71,9 +72,9 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onWheel={.*?}/g, '') // onWheel props
         .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/\s+onUpdate={.*?}/g, '') // onUpdate props
-        .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
-        .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
-        .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
+        .replace(/ +ref: [^;\n]*?,\n/g, '') // ref object-literal props (single line, must not cross `;`-terminated type members)
+        .replace(/ +onClick: [^;\n]*?,\n/g, '') // onClick object-literal props (single line, must not cross `;`-terminated type members)
+        .replace(/ +onKeyDown: [^;\n]*?,\n/g, '') // onKeyDown object-literal props (single line, must not cross `;`-terminated type members)
         .replace(/(private [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any') // change type of private members to any
         .replace(/( class)([:=])/g, '$1Name$2') // change class prop to className in JSX
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
@@ -92,6 +93,7 @@ const generateDSRComponents = (): void => {
                 group.endsWith('input-base') ||
                 group.endsWith('notification-base') ||
                 group.endsWith('dialog-base') ||
+                group.endsWith('fc-dismiss-button') ||
                 group.endsWith('required') ||
                 group.endsWith('label') ||
                 group.endsWith('no-results-option')
@@ -278,6 +280,17 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 
         if (newFileContent.includes('export const NotificationBase:')) {
           newFileContent = newFileContent.replace(/innerHTML=\{([^}]*)}/, 'dangerouslySetInnerHTML={{__html: $1}}');
+        }
+
+        if (newFileContent.includes('export const FCDismissButton:')) {
+          // `onClick`/`refCallback` are interactive-only props; the DSR output is static HTML so their
+          // JSX bindings were already stripped. Drop them from the type and destructuring too, otherwise
+          // they'd be unused (TS6133) and required-but-unpassed by consumers (TS2741).
+          newFileContent = newFileContent
+            .replace(/\n  (?:\/\*\*[^\n]*\*\/\n  )?onClick: \(\) => void;/, '')
+            .replace(/\n  (?:\/\*\*[^\n]*\*\/\n  )?refCallback\?: \(el: HTMLButtonElement\) => void;/, '')
+            .replace(/\n  onClick,/, '')
+            .replace(/\n  refCallback,/, '');
         }
 
         if (newFileContent.includes('export const DialogBase:')) {
@@ -751,7 +764,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
   fs.mkdirSync(destinationDirectory, { recursive: true });
 
   componentFileContents.forEach((fileContent) => {
-    const name = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent)![1];
+    const nameMatch = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent);
+    if (!nameMatch) {
+      throw new Error(
+        `Failed to extract component name from generated DSR content (no matching \`export class|const\` found). This usually means a transform above removed the export declaration. Content start:\n${fileContent.slice(0, 200)}`
+      );
+    }
+    const name = nameMatch[1];
 
     const fileName = `${kebabCase(name.replace('DSR', ''))}.tsx`;
     const filePath = path.resolve(destinationDirectory, fileName);
