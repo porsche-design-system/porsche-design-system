@@ -8,16 +8,15 @@ export type Framework = (typeof FRAMEWORKS)[number];
 
 export const isFramework = (value: string): value is Framework => (FRAMEWORKS as readonly string[]).includes(value);
 
-/**
- * Each framework's committed `skill/` tree, relative to the monorepo root. Single
- * source of truth shared by the generator (`build:skill`) and the producer CI gates
- * (drift + completeness), so the gates always inspect the same trees the generator writes.
- */
-export const WRAPPER_SKILL_DIRS: Record<Framework, string> = {
-  js: 'packages/components-js/projects/components-wrapper/skill',
-  angular: 'packages/components-angular/projects/angular-wrapper/skill',
-  react: 'packages/components-react/projects/react-wrapper/skill',
-  vue: 'packages/components-vue/projects/vue-wrapper/skill',
+/** Ignored staging root populated once before the four wrappers are packaged. */
+export const SKILL_STAGING_DIR = 'packages/storefront/generated/skill';
+
+/** Each framework's staged `skill/` tree, relative to the monorepo root. */
+export const STAGED_SKILL_DIRS: Record<Framework, string> = {
+  js: `${SKILL_STAGING_DIR}/js`,
+  angular: `${SKILL_STAGING_DIR}/angular`,
+  react: `${SKILL_STAGING_DIR}/react`,
+  vue: `${SKILL_STAGING_DIR}/vue`,
 };
 
 /**
@@ -25,7 +24,7 @@ export const WRAPPER_SKILL_DIRS: Record<Framework, string> = {
  * `build:subPackages:skill` copy step writes `skill/` into, sitting beside the also-copied
  * `meta/` and `tokens/`. The raw-link CI gate resolves the trees' `../meta` / `../tokens`
  * references against this layout, since those siblings exist only in the built dist, not in
- * the committed source dir. Populated in CI by restoring the `build-development` artifact.
+ * staging. Populated in CI by restoring the `build-development` artifact.
  */
 export const WRAPPER_DIST_DIRS: Record<Framework, string> = {
   js: 'packages/components-js/dist/components-wrapper',

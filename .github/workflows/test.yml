@@ -369,10 +369,12 @@ jobs:
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      # Regenerate the four committed skill trees from source (component-meta / MDX / styles / tokens)
-      # and fail if the commit is stale — the honest regenerate-and-diff gate the drift fingerprint alone
-      # cannot provide (a re-blessed snapshot would hide stale committed trees).
       - run: npm run build:skill:check
+      - uses: actions/upload-artifact@v7
+        with:
+          name: generated-skill-trees
+          path: ./packages/storefront/generated/skill/
+          if-no-files-found: error
   storefront-unit:
     name: 'Storefront Unit'
     runs-on: ubuntu-latest

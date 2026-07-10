@@ -13,15 +13,15 @@ const { 'p-accordion': accordion, 'p-heading': heading } = componentApiFixtures;
 
 describe('renderComponentApi', () => {
   it('renders the full API section for a component with props, events, slots and CSS variables', () => {
-    expect(renderComponentApi(accordion, 'js')).toMatchSnapshot();
+    expect(renderComponentApi(accordion)).toMatchSnapshot();
   });
 
   it('renders the API section for a component whose props carry deprecated values', () => {
-    expect(renderComponentApi(heading, 'js')).toMatchSnapshot();
+    expect(renderComponentApi(heading)).toMatchSnapshot();
   });
 
   it('only emits tables that have entries', () => {
-    const markdown = renderComponentApi(heading, 'js');
+    const markdown = renderComponentApi(heading);
     expect(markdown).toContain('### Properties');
     expect(markdown).not.toContain('### Events');
     expect(markdown).toContain('### Slots');
@@ -49,7 +49,7 @@ describe('renderComponentApi', () => {
     } as unknown as ComponentMeta;
 
     it('renders a primitive union type as the type, not as quoted string literals', () => {
-      const markdown = renderComponentApi(selectLike, 'js');
+      const markdown = renderComponentApi(selectLike);
       expect(markdown).toContain('`string | number | null`');
       expect(markdown).not.toContain("`'string'`");
       expect(markdown).not.toContain("`'null'`");
@@ -75,7 +75,7 @@ describe('renderComponentApi', () => {
     } as unknown as ComponentMeta;
 
     it('collapses the icon-name union to a shared-list link, keeping non-icon extras inline', () => {
-      const markdown = renderComponentApi(buttonLike, 'js', new Set(iconNames));
+      const markdown = renderComponentApi(buttonLike, new Set(iconNames));
       expect(markdown).toContain('see [icon names](references/icons.md)');
       expect(markdown).toContain(`one of ${iconNames.length} icon names`);
       expect(markdown).toContain("`'none'`"); // the non-icon extra is preserved
@@ -84,29 +84,15 @@ describe('renderComponentApi', () => {
     });
 
     it('inlines the values when no icon-name set is supplied (default)', () => {
-      const markdown = renderComponentApi(buttonLike, 'js');
+      const markdown = renderComponentApi(buttonLike);
       expect(markdown).toContain("`'arrow-right'`");
       expect(markdown).not.toContain('references/icons.md');
     });
   });
 
-  describe('raw-meta link', () => {
-    it('links the local `../meta` sibling for the js skill', () => {
-      expect(renderComponentApi(accordion, 'js')).toContain('`../meta`');
-    });
-
-    it('links the js peer `/meta` subpath for framework skills', () => {
-      for (const framework of ['angular', 'react', 'vue'] as const) {
-        const markdown = renderComponentApi(accordion, framework);
-        expect(markdown).toContain('`@porsche-design-system/components-js/meta`');
-        expect(markdown).not.toContain('`../meta`');
-      }
-    });
-  });
-
   describe('deprecation handling', () => {
     it('flags fully deprecated props, slots and uses no deprecated recommended values', () => {
-      const markdown = renderComponentApi(accordion, 'js');
+      const markdown = renderComponentApi(accordion);
       // deprecated prop / slot rows are kept but marked
       expect(markdown).toMatch(/`size`.*_\(deprecated\)_/);
       expect(markdown).toMatch(/`heading`.*_\(deprecated\)_/);
@@ -115,7 +101,7 @@ describe('renderComponentApi', () => {
     });
 
     it('never lists a deprecated value as a recommended value', () => {
-      const markdown = renderComponentApi(heading, 'js');
+      const markdown = renderComponentApi(heading);
       // every prop row keeps its recommended values before the `deprecated:` divider
       for (const line of markdown.split('\n').filter((l: string) => l.includes('_deprecated:_'))) {
         const [recommended, deprecated] = line.split('_deprecated:_');

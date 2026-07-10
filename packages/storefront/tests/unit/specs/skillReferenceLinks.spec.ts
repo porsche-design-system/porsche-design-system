@@ -13,14 +13,15 @@ import {
   resolveProduced,
   resolveRaw,
 } from '@/lib/skill/referenceLinks';
-import { FRAMEWORKS, WRAPPER_DIST_DIRS, WRAPPER_SKILL_DIRS } from '@/lib/skill/skillTree';
+import { skillName } from '@/lib/skill/skillMd';
+import { FRAMEWORKS, STAGED_SKILL_DIRS, WRAPPER_DIST_DIRS } from '@/lib/skill/skillTree';
 
 /**
  * Producer reference-link gate (two-mode). Every reference path the trees carry must resolve, but
  * the two path classes live in different layouts (design §"Two path classes"):
  *
  * - Produced paths (md, generated examples, generated style assets) live inside the tree → resolved
- *   against the COMMITTED SNAPSHOT.
+ *   against STAGING.
  * - Raw links (`component-meta`) point at the built-dist siblings → resolved against the BUILT DIST.
  *   The js skill's `../meta` resolves against the js dist; each framework skill's raw-meta link
  *   resolves against the js peer's `/meta` subpath — its local `../meta` is a re-export shim and is
@@ -58,7 +59,7 @@ const danglingRaw = (distSkillRoot: string): string[] => {
   return dangling;
 };
 
-/** Distinct raw-link targets across a committed tree (target strings are identical in the dist copy). */
+/** Distinct raw-link targets across a packaged tree. */
 const rawTargets = (skillRoot: string): Set<string> => {
   const targets = new Set<string>();
   for (const file of listMarkdownFiles(skillRoot)) {
@@ -71,11 +72,11 @@ const rawTargets = (skillRoot: string): Set<string> => {
   return targets;
 };
 
-describe('skill reference links — produced paths resolve against the committed snapshot', () => {
+describe('skill reference links — produced paths resolve against staging', () => {
   for (const framework of FRAMEWORKS) {
     it(`${framework} tree has no dangling produced path`, () => {
-      const root = path.join(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]);
-      expect(fs.existsSync(root), `${WRAPPER_SKILL_DIRS[framework]} missing — run \`npm run build:skill\``).toBe(true);
+      const root = path.join(REPO_ROOT, STAGED_SKILL_DIRS[framework]);
+      expect(fs.existsSync(root), `${STAGED_SKILL_DIRS[framework]} missing — run \`npm run build:skill\``).toBe(true);
       const dangling = danglingProduced(root);
       expect(dangling, `dangling produced paths:\n${dangling.join('\n')}`).toEqual([]);
     });
@@ -91,6 +92,14 @@ describe('skill reference links — raw links resolve against the built dist', (
         expect(fs.existsSync(distSkillRoot), `${WRAPPER_DIST_DIRS[framework]}/skill missing`).toBe(true);
       });
 
+      it('packages SKILL.md with the wrapper-specific frontmatter name', () => {
+        const skillMdPath = path.join(distSkillRoot, 'SKILL.md');
+        expect(fs.existsSync(skillMdPath), `${WRAPPER_DIST_DIRS[framework]}/skill/SKILL.md missing`).toBe(true);
+        expect(fs.readFileSync(skillMdPath, 'utf-8')).toMatch(
+          new RegExp(`^---\\nname: ${skillName(framework)}\\n`, 'u')
+        );
+      });
+
       it('has no dangling raw link', () => {
         const dangling = danglingRaw(distSkillRoot);
         expect(dangling, `dangling raw links:\n${dangling.join('\n')}`).toEqual([]);
@@ -99,14 +108,14 @@ describe('skill reference links — raw links resolve against the built dist', (
   }
 
   it('js skill links its own ../meta (real data), not the js-peer specifier', () => {
-    const targets = rawTargets(path.join(REPO_ROOT, WRAPPER_SKILL_DIRS.js));
+    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skill'));
     expect(targets).toContain('../meta');
     expect(targets).not.toContain(JS_PEER_META_SPECIFIER);
   });
 
   for (const framework of ['angular', 'react', 'vue'] as const) {
     it(`${framework} skill links the js-peer /meta subpath, not its local ../meta shim`, () => {
-      const targets = rawTargets(path.join(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]));
+      const targets = rawTargets(path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skill'));
       expect(targets).toContain(JS_PEER_META_SPECIFIER);
       expect(targets).not.toContain('../meta');
 
@@ -120,19 +129,21 @@ describe('skill reference links — raw links resolve against the built dist', (
 
   it('every skill links the local ../tailwindcss/index.css (real copy in every wrapper)', () => {
     for (const framework of FRAMEWORKS) {
-      expect(rawTargets(path.join(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]))).toContain('../tailwindcss/index.css');
+      expect(rawTargets(path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skill'))).toContain(
+        '../tailwindcss/index.css'
+      );
     }
   });
 
   it('js skill links its own ../scss (real partials), not the js-peer scss specifier', () => {
-    const targets = rawTargets(path.join(REPO_ROOT, WRAPPER_SKILL_DIRS.js));
+    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skill'));
     expect(targets).toContain('../scss');
     expect(targets).not.toContain(JS_PEER_SCSS_SPECIFIER);
   });
 
   for (const framework of ['angular', 'react', 'vue'] as const) {
     it(`${framework} skill links the js-peer /scss subpath, not its local ../scss shim`, () => {
-      const targets = rawTargets(path.join(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]));
+      const targets = rawTargets(path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skill'));
       expect(targets).toContain(JS_PEER_SCSS_SPECIFIER);
       expect(targets).not.toContain('../scss');
 
@@ -164,7 +175,9 @@ describe('skill reference links — fixture (known-good and known-broken)', () =
     // js-peer dist with exports-mapped ./meta and ./scss targets (scss under the `sass` condition).
     write(
       'js-dist/package.json',
-      JSON.stringify({ exports: { './meta': { default: './meta/index.cjs' }, './scss': { sass: './scss/_index.scss' } } })
+      JSON.stringify({
+        exports: { './meta': { default: './meta/index.cjs' }, './scss': { sass: './scss/_index.scss' } },
+      })
     );
     write('js-dist/meta/index.cjs', 'module.exports = {};');
     write('js-dist/scss/_index.scss', '');
@@ -196,12 +209,14 @@ describe('skill reference links — fixture (known-good and known-broken)', () =
   it('extractReferences classifies produced vs raw and ignores non-references', () => {
     const refs = extractReferences(
       'In-tree [ex](./a.html) and `references/b.md`; raw `../meta`, `../tailwindcss/index.css`, ' +
-        '`@porsche-design-system/components-js/meta` and `@porsche-design-system/components-js/scss`; ' +
+        '[sibling](../c.md); `@porsche-design-system/components-js/meta` and ' +
+        '`@porsche-design-system/components-js/scss`; ' +
         'ignore [route](/components/x/), <https://e.com>, `#anchor`, prose `component-meta` and `aria-label`.'
     );
     const kindOf = (target: string) => refs.find((r) => r.target === target)?.kind;
     expect(kindOf('./a.html')).toBe('produced');
     expect(kindOf('references/b.md')).toBe('produced');
+    expect(kindOf('../c.md')).toBe('produced');
     expect(kindOf('../meta')).toBe('raw');
     expect(kindOf('../tailwindcss/index.css')).toBe('raw');
     expect(kindOf(JS_PEER_META_SPECIFIER)).toBe('raw');

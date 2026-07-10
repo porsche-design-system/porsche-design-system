@@ -2,13 +2,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { ROSTER_SUMMARY_OVERRIDES } from '@/lib/skill/componentsReference';
-import { FRAMEWORKS, WRAPPER_SKILL_DIRS } from '@/lib/skill/skillTree';
 import { describe, expect, it } from 'vitest';
+import { ROSTER_SUMMARY_OVERRIDES } from '@/lib/skill/componentsReference';
+import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@/lib/skill/skillTree';
 
 /**
  * Producer completeness gate. Asserts every documented component is fully represented
- * in each committed `skill/` tree (a `references/components/<tag>/<tag>.md` file plus a
+ * in each staged `skill/` tree (a `references/components/<tag>/<tag>.md` file plus a
  * roster row in `SKILL.md`) and that every emitted example carries a "when to use"
  * description. Fails on a missing component md, a missing roster row, or an example
  * without a description — catching coverage gaps the drift snapshot alone would bless.
@@ -41,7 +41,10 @@ const SUB_COMPONENT_TAGS = Object.entries(componentMeta)
  * `componentMeta` — never in the prose MDX — so the generator must surface it explicitly; these sets
  * gate that it does, in every tree, for both top-level components and sub-components.
  */
-const statusOf = (meta: { isDeprecated?: boolean; isExperimental?: boolean }): 'deprecated' | 'experimental' | undefined =>
+const statusOf = (meta: {
+  isDeprecated?: boolean;
+  isExperimental?: boolean;
+}): 'deprecated' | 'experimental' | undefined =>
   meta.isDeprecated ? 'deprecated' : meta.isExperimental ? 'experimental' : undefined;
 
 const FLAGGED_TAGS = DOCUMENTED_TAGS.filter((tag) => statusOf(componentMeta[tag]));
@@ -62,7 +65,10 @@ const exampleRows = (markdown: string): string[][] => {
     if (!line.trim().startsWith('|')) {
       continue;
     }
-    const cells = line.split('|').slice(1, -1).map((cell) => cell.trim());
+    const cells = line
+      .split('|')
+      .slice(1, -1)
+      .map((cell) => cell.trim());
     const isHeader = cells[0] === 'Example';
     const isSeparator = cells.every((cell) => /^-+$/.test(cell));
     if (!isHeader && !isSeparator) {
@@ -85,7 +91,7 @@ describe('skill tree completeness', () => {
 
   for (const framework of FRAMEWORKS) {
     describe(`${framework} skill tree`, () => {
-      const root = path.join(REPO_ROOT, WRAPPER_SKILL_DIRS[framework]);
+      const root = path.join(REPO_ROOT, STAGED_SKILL_DIRS[framework]);
       const componentsDir = path.join(root, 'references/components');
       const skillMdPath = path.join(root, 'SKILL.md');
       const skillMd = fs.existsSync(skillMdPath) ? fs.readFileSync(skillMdPath, 'utf-8') : '';
@@ -102,7 +108,7 @@ describe('skill tree completeness', () => {
       });
 
       it('documents exactly the componentMeta-derived set — no missing and no extra component references', () => {
-        // The committed component dirs are the generator's output, keyed off `componentDocsMeta`. If
+        // The staged component dirs are the generator's output, keyed off `componentDocsMeta`. If
         // that iteration source drifts from the `componentMeta` filter (a new/removed/renamed tag, or a
         // sub-component leaking a top-level page), the two sets diverge — assert them equal so neither
         // direction can rot silently.

@@ -45,6 +45,7 @@ jobs:
       - run: npm run build:stylesheets
       - run: npm run build:component-meta
       - run: npm run build:components
+      - run: npm run build:skill
       - run: npm run build:components-js
       - run: npm run build:components-angular
       - run: npm run build:components-react
@@ -56,6 +57,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
+            ./packages/storefront/generated/skill/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
@@ -129,6 +131,7 @@ jobs:
       - run: npm run build:stylesheets-prod
       - run: npm run build:component-meta
       - run: npm run build:components-prod
+      - run: npm run build:skill
       - run: npm run build:components-js-prod
       - run: npm run build:components-angular
       - run: npm run build:components-react
@@ -140,6 +143,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
+            ./packages/storefront/generated/skill/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/

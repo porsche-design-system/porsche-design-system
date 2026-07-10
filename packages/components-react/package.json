@@ -14,7 +14,7 @@
     "build:react-ssr-wrapper": "npm run build --workspace=@porsche-design-system/react-ssr-wrapper",
     "build:nextjs": "npm run build --workspace=@porsche-design-system/nextjs",
     "build:react-router": "npm run build --workspace=@porsche-design-system/react-router",
-    "build:subPackages:skill": "TARGET=./dist/react-wrapper/skill && rm -rf $TARGET && cp -r ./projects/react-wrapper/skill $TARGET",
+    "build:subPackages:skill": "SOURCE=../storefront/generated/skill/react && TARGET=./dist/react-wrapper/skill && test -f $SOURCE/SKILL.md || { echo 'Missing staged react skill. Run npm run build:skill first.' >&2; exit 1; }; rm -rf $TARGET && cp -r $SOURCE $TARGET",
     "build:subPackages:bin": "mkdir -p ./dist/react-wrapper/bin && cp ./projects/react-wrapper/bin/pds-skill.js ./dist/react-wrapper/bin/pds-skill.js && chmod +x ./dist/react-wrapper/bin/pds-skill.js",
     "build:subPackages:tailwindcss": "TARGET=./dist/react-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:subPackages:stylesheets": "TARGET=./dist/react-wrapper/stylesheets && SOURCE=../components/projects/stylesheets/lib && rm -rf $TARGET && mkdir -p $TARGET/cn && cp $SOURCE/*.css $TARGET/ && cp $SOURCE/cn/*.css $TARGET/cn/",

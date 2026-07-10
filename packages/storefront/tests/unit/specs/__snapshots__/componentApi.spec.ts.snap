@@ -3,8 +3,6 @@
 exports[`renderComponentApi > renders the API section for a component whose props carry deprecated values 1`] = `
 "## API
 
-Authoritative API data: \`../meta\` (\`component-meta\`). When these tables disagree with it, follow \`component-meta\`.
-
 ### Properties
 
 | Property | Type | Default | Description |
@@ -21,8 +19,6 @@ Authoritative API data: \`../meta\` (\`component-meta\`). When these tables disa
 
 exports[`renderComponentApi > renders the full API section for a component with props, events, slots and CSS variables 1`] = `
 "## API
-
-Authoritative API data: \`../meta\` (\`component-meta\`). When these tables disagree with it, follow \`component-meta\`.
 
 ### Properties
 

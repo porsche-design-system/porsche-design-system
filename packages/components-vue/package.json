@@ -11,7 +11,7 @@
     "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly && tsx scripts/addDeprecatedAnnotations.ts",
     "build:subPackages": "npm run build:subPackages:lib && npm run build:subPackages:stylesheets && npm run build:subPackages:tailwindcss && npm run build:subPackages:vanilla-extract && npm run build:subPackages:typings && npm run build:subPackages:skill && npm run build:subPackages:bin",
     "build:subPackages:lib": "npx rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
-    "build:subPackages:skill": "TARGET=./dist/vue-wrapper/skill && rm -rf $TARGET && cp -r ./projects/vue-wrapper/skill $TARGET",
+    "build:subPackages:skill": "SOURCE=../storefront/generated/skill/vue && TARGET=./dist/vue-wrapper/skill && test -f $SOURCE/SKILL.md || { echo 'Missing staged vue skill. Run npm run build:skill first.' >&2; exit 1; }; rm -rf $TARGET && cp -r $SOURCE $TARGET",
     "build:subPackages:bin": "TARGET=./dist/vue-wrapper/bin && rm -rf $TARGET && cp -r ./projects/vue-wrapper/bin $TARGET && chmod +x $TARGET/pds-skill.js",
     "build:subPackages:tailwindcss": "TARGET=./dist/vue-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:subPackages:vanilla-extract": "TARGET=./dist/vue-wrapper/vanilla-extract && rm -rf $TARGET && cp -r ../styles/projects/vanilla-extract/dist $TARGET",

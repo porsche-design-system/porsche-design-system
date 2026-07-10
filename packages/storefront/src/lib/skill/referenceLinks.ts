@@ -21,7 +21,7 @@ export const JS_PEER_SCSS_SPECIFIER = '@porsche-design-system/components-js/scss
 /**
  * A skill tree carries two classes of reference path:
  * - `produced` — files generated into the tree (md, examples, generated assets), referenced by a
- *   path relative to the markdown file they appear in. Resolved against the committed snapshot.
+ *   path relative to the markdown file they appear in. Resolved against the staged tree.
  * - `raw` — raw implementation linked where it physically lives: the skill-root-relative `../meta`
  *   / `../tokens` dist siblings, or the js-peer `/meta` subpath. Resolved against the built dist.
  */
@@ -46,12 +46,12 @@ const stripFragment = (target: string): string => target.replace(/#.*$/, '').tri
  * inline-code throw off (storefront routes `/components/…`, anchors `#tokens`, external URLs,
  * prose code like `aria-label` or the bare package name `component-meta`).
  */
-const classify = (target: string): ReferenceKind | null => {
+const classify = (target: string, source: 'markdown' | 'code'): ReferenceKind | null => {
   if (target === JS_PEER_META_SPECIFIER || target === JS_PEER_SCSS_SPECIFIER) {
     return 'raw';
   }
   if (target.startsWith('../')) {
-    return 'raw'; // escapes the tree → a built-dist sibling (`../meta`, `../tokens`, `../tailwindcss/index.css`, `../scss`)
+    return source === 'markdown' ? 'produced' : 'raw';
   }
   if (target.startsWith('./') || target.startsWith('references/')) {
     return 'produced';
@@ -68,21 +68,21 @@ const classify = (target: string): ReferenceKind | null => {
 export const extractReferences = (markdown: string): ReferenceLink[] => {
   const prose = markdown.replace(FENCED_CODE_RE, '');
   const byTarget = new Map<string, ReferenceKind>();
-  const add = (raw: string): void => {
+  const add = (raw: string, source: 'markdown' | 'code'): void => {
     const target = stripFragment(raw);
     if (!target || target.includes('<')) {
       return;
     }
-    const kind = classify(target);
+    const kind = classify(target, source);
     if (kind) {
       byTarget.set(target, kind);
     }
   };
   for (const match of prose.matchAll(MARKDOWN_LINK_RE)) {
-    add(match[1]);
+    add(match[1], 'markdown');
   }
   for (const match of prose.matchAll(INLINE_CODE_RE)) {
-    add(match[1]);
+    add(match[1], 'code');
   }
   return [...byTarget].map(([target, kind]) => ({ target, kind }));
 };
@@ -101,7 +101,7 @@ export const listMarkdownFiles = (skillRoot: string): string[] => {
 };
 
 /**
- * Resolve a single produced reference against a committed-snapshot skill tree. The two conventions
+ * Resolve a single produced reference against a staged skill tree. The two conventions
  * resolve against different bases:
  * - `references/…` rows (the SKILL.md reference map) are skill-root-relative wherever they appear.
  * - `./…` links are relative to the markdown file they live in.

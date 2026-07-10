@@ -39,8 +39,11 @@ describe('writeTokensReference', () => {
     expect(markdown).toContain('| Token | Value | Description |');
   });
 
-  it('links raw-value detail to ../tokens', () => {
-    expect(getTokensSkill()).toContain('[`../tokens`](../tokens)');
+  it('documents the package tokens subpath and CSS custom-property reference', () => {
+    expect(getTokensSkill()).toContain(
+      "import { spacingStaticMd } from '@porsche-design-system/components-{js|angular|react|vue}/tokens';"
+    );
+    expect(getTokensSkill()).toContain('see `stylesheets.md` (`variables.css`)');
   });
 
   it('matches the snapshot', () => {

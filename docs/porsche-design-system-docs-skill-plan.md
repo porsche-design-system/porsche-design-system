@@ -6,8 +6,8 @@ Completed work is not tracked here — see `git log issue/4450-skill`.
 
 **Status (2026-07-10): Phases R (SKILL.md restructure into topical sections, commit `92a18a5e2f`) and N (per-package
 skill name + configurable `pds-skill` destination) are DONE and no longer tracked here — see `git log`. The
-`PackageSkill` fragment contract (decision F, hybrid pointer rule) is agreed with Henri; phase 0 is DONE, and phase 1 is
-ready next. Every phase after 1 and every backlog item is a draft — clarify with Henri before implementing.**
+`PackageSkill` fragment contract (decision F, hybrid pointer rule) is agreed with Henri; phase 0.2 is DONE, and phase 1
+is ready next. Every phase after 1 and every backlog item is a draft — clarify with Henri before implementing.**
 
 ## What this feature is
 
@@ -20,9 +20,9 @@ review PDS code against the installed version — a docs/version mismatch is imp
 
 Producer side: the storefront generates all four trees — `packages/storefront` → `npm run build:skill` (entry
 `scripts/build-skill.ts`, generators in `src/lib/skill/*`, MDX render via `scripts/skill-mdx-loader.cjs` runtime). The
-trees are **committed** under `packages/components-{js,angular,react,vue}/projects/*-wrapper/skill/` and copied into
-dist by each wrapper's `build:subPackages:skill`. CI gates: `build:skill:check` (regenerate-and-diff),
-`skillCompleteness.spec.ts`, link/raw-pointer gates, and a degraded-prose gate inside the generator.
+trees are ignored staging artifacts under `packages/storefront/generated/skill/<framework>/`, generated before wrapper
+packaging and copied into dist by each wrapper's `build:subPackages:skill`. A compact four-tree hash snapshot preserves
+the review signal; completeness, link, determinism and packaging gates validate the generated files.
 
 Verified solid by the content audit (no action needed): API tables programmatically complete vs `component-meta` for all
 58 components × 4 trees; `icons.md` exact (290/290); `stylesheets.md` matches shipped CSS; `tokens.md` matches
@@ -66,15 +66,13 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
 - **(C)** **Storefront embedding is deferred (decided 2026-07-10): the phased work touches only the skill.** The
   storefront pages keep their hand-written prose for now and become fragment consumers later — Follow-ups FU.3–FU.6.
   Until then the duplication is confined to one fragment-vs-page boundary instead of scattered hardcoded strings.
-- **(D)** The four generated trees stay **committed** (not gitignored + snapshot-tested): generation needs the
-  storefront runtime but the trees ship in the wrapper dists, which build _before_ the storefront — a gitignored tree
-  would force release-time generation against the dependency direction; the committed tree already _is_ the snapshot
-  (`build:skill:check` = regenerate-and-diff), reviewed exactly where it ships; and generation is not hermetic (dev
-  builds embed localhost URLs — see backlog "parked partials items"), so generate → review → commit is the safety
-  mechanism, not overhead. "Gitignore + snapshot test" is not implementable for the MDX-rendered bulk anyway: the render
-  requires the `skill-mdx-loader.cjs` runtime, unavailable under vitest, so a snapshot could only be a committed
-  baseline diffed by a CI script — which is exactly what the committed tree + `build:skill:check` already is; the pure
-  fragments, by contrast, _are_ vitest-snapshot-tested in their packages (task 0.1). Churn is mitigated by task 0.2.
+- **(D)** The four generated trees become **ignored build artifacts**, not committed source (revised 2026-07-10 after
+  validating that `linguist-generated` hides diff bodies but does not reduce the 1,104-file PR footprint). The
+  storefront generator writes an ignored staging tree after core/components build and before wrapper packaging; each
+  wrapper copies its framework tree from staging into dist. Review intent is retained by a compact committed snapshot
+  containing one deterministic hash per framework tree, while completeness, link, and packaging tests validate the
+  actual generated files. The full trees remain inspectable in staging, wrapper dist, and CI artifacts without creating
+  source-control churn. Pure package fragments keep their detailed in-package snapshots from task 0.1.
 - **(E)** SKILL.md is restructured into one section per domain with the global reference map and the Core rules section
   dissolved into those sections; Getting started and partials leave SKILL.md entirely until FU.7/FU.8 (getting started)
   and FU.9 (partials) — both undecided — restore them properly (done — R.1, commit `92a18a5e2f`).
@@ -146,16 +144,33 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
       test** (only fragment without one). Acceptance:
       `git grep "skill/generated" -- packages/styles packages/components/projects/stylesheets` finds nothing; all five
       fragments have a serializer snapshot spec; package builds + unit tests green; `build:skill:check` introduces no
-      0.1-related diff (the known aggregate token/snapshot drift remains deliberately deferred until the end of the
-      plan).
+      0.1-related diff (the aggregate token/snapshot drift is absorbed by the new staged baseline in 0.2).
 
-- [x] **0.2 Tame committed-tree churn in PRs (decision D mitigation).** The four committed trees change on every
-      content/meta edit — by design (they are the published, reviewed artifact and the de-facto snapshot), but they must
-      not drown PR diffs. Fix: mark `packages/components-*/projects/*-wrapper/skill/**` as `linguist-generated` in
-      `.gitattributes` (GitHub collapses the files and excludes them from diff stats; still expandable for content
-      review); keep isolating regeneration output in dedicated `regenerate skill trees` commits so the source change and
-      its rendered effect are separately reviewable. Acceptance: a PR touching skill content shows the trees collapsed
-      by default; regeneration commits contain only `skill/**` changes.
+- [x] **0.2 Replace committed trees with ignored staged artifacts + compact snapshots (decision D).** The
+      `linguist-generated` experiment did not reduce PR churn: all 1,104 files and their additions still count, even
+      when GitHub hides individual diff bodies. Remove that mitigation and make generated output a build artifact:
+  - **Stage once, before wrappers:** change the generator target from the four wrapper source directories to an ignored
+    `packages/storefront/generated/skill/<framework>/` tree (the existing global `generated/` ignore rule covers it).
+    Give `build-skill.ts` an explicit output-root option so determinism tests can target isolated temp directories.
+    Insert `npm run build:skill` in root `build` and `build-prod` after `build:components` and before
+    `build:components-js`; the generator needs built core/component metadata and the storefront source runtime, but not
+    a completed storefront build.
+  - **Package from staging:** change all four `build:subPackages:skill` scripts to copy their framework tree from
+    staging into `dist/*-wrapper/skill`. Fail with a clear "run build:skill first" error when staging is absent instead
+    of publishing a package without a skill. Add a packaging assertion for every wrapper (`dist/.../skill/SKILL.md`
+    exists and its frontmatter name matches that package). Delete the four committed wrapper `skill/` trees.
+  - **Compact review signal:** replace the per-file `skillDrift.spec.ts` snapshot and `assert-skill-in-sync.ts`
+    regenerate-and-diff gate with one deterministic SHA-256 per framework tree. Hash sorted POSIX-relative paths plus
+    exact file bytes, snapshot only the four hashes, and update them explicitly with `vitest -u` when generated content
+    intentionally changes.
+  - **Validate generated reality:** generate staging before skill tests; point completeness and produced-link gates at
+    staging, keep raw-link and packaging gates against wrapper dist, and generate twice in isolated temp directories to
+    assert byte-for-byte determinism. Upload the staged trees as a CI artifact so reviewers can inspect the full output
+    without checking it into Git.
+  - **Acceptance:** no generated wrapper `skill/` tree or `.gitattributes` mitigation is tracked; a clean root
+    development and production build packages all four skills; changing generated content changes only four compact
+    snapshot hashes in Git; unchanged generation is hash-stable; missing staging fails packaging clearly; completeness,
+    produced/raw links, and package contents are green; the full generated trees are available in local dist and CI.
 
 ### Phase 1 — fragment contract + aggregator
 
@@ -242,9 +257,9 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
       section (components are already gated this way by `skillCompleteness.spec.ts`; the package skills and tokens are
       not — today only the link gate would notice a missing styles/stylesheets/tokens reference). Fix: extend
       `skillCompleteness.spec.ts` (or the `assert-skill-in-sync.ts` gate, which has the full runtime) to iterate the
-      task-1.3 registry. If FU.9/FU.10 reinstate partials/migration, their source lists get the same filesystem gate (a
-      new guide must not silently miss the skill). Acceptance: deleting a fragment registration or its output file fails
-      CI.
+      task-1.3 registry against the generated staging trees. If FU.9/FU.10 reinstate partials/migration, their source
+      lists get the same filesystem gate (a new guide must not silently miss the skill). Acceptance: deleting a fragment
+      registration or its staged output file fails CI.
 
 ---
 
@@ -255,8 +270,8 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
       stricter semantics (`escapeCell` collapses all whitespace + trims; the styles `cell` only collapses newlines).
       Fix: export from `packages/shared` (already a dependency of all three packages); import everywhere; delete local
       copies. Must resolve under the storefront `tsx` runtime (deep source imports) — mirror how `stylesReference.ts`
-      imports fragment source today. Acceptance: one implementation; regenerate-and-diff gate proves output-neutral (or
-      shows only intended whitespace normalization in the four styles references).
+      imports fragment source today. Acceptance: one implementation; the compact tree hashes prove output-neutral (or
+      show an intentional generated-content change).
 
 - [ ] **FU.2 Move `resolveFrameworkPlaceholder` to `packages/shared`.** Contract hygiene, not an enabler: the
       `{js|angular|react|vue}` convention is authored in package markdown but interpreted only in
@@ -392,7 +407,7 @@ fragment structure or per-framework storefront MDX render, not hardcoded generat
 
 ### Content polish
 
-- ~~**[P2]** `p-popover.md` mangled intro body~~ — **fixed** (audit 2026-07-10: intro reads clean in the committed
+- ~~**[P2]** `p-popover.md` mangled intro body~~ — **fixed** (audit 2026-07-10: intro reads clean in the generated
   trees; `DEGRADED_ALLOWLIST` is empty).
 - ~~**[P3]** `vanilla-extract.md` "Emotion Blur Examples" link-text typo~~ — **fixed** (audit 2026-07-10: string gone
   from the trees).
@@ -408,9 +423,8 @@ fragment structure or per-framework storefront MDX render, not hardcoded generat
   least one parent" is weaker than "the right parent".
 - **[P2]** `EMBEDDED_COMPONENT_STUBS` in `renderMdxToMarkdown.tsx` is effectively inert (pages import doc components
   directly, so the `components`-prop substitution never applies). Make the stubbing real or delete the list.
-- **[P2]** Generator determinism unpinned: ordering assumptions (`Object.entries` in `componentExamples.ts`,
-  `tokensReference.ts`) enforced only on the committing dev's machine. A double-generation comparison needs the
-  MDX/alias runtime → CI script step, not a unit test.
+- ~~**[P2]** Generator determinism unpinned~~ — **planned in 0.2:** generate twice under the MDX/alias runtime and
+  compare the complete staged trees byte-for-byte.
 - **[P2]** Styles/tokens/migration render coverage is indirect (link gate only); a degraded-but-nonempty render passes
   everything except human review.
 - **[P3]** `renderMdxToMarkdown` residual fragilities: regex-based `<code>`-wrapper strip, inline backtick wrapping
@@ -442,9 +456,9 @@ fragment structure or per-framework storefront MDX render, not hardcoded generat
 
 ## Sequencing
 
-- **Phases 0–1 next (agreed 2026-07-10 via decision F).** Mechanically safe, byte-identical trees. Phases 2–3 still need
-  clarification: they change tree content intentionally — never a storefront page (decision C) — and should be
-  coordinated with the missing-topics P1 backlog (new references belong in the target fragment structure, not new
-  hardcoded strings).
-- Every tree-touching task uses `build:skill:check` as its no-unintended-change proof: 0.x/1.x must be byte-identical,
-  2.x/3.x change trees intentionally and isolate the content diff per commit.
+- **Phase 1 next.** Phase 0.2 changed artifact storage and build order while preserving generated bytes; phase 1 changes
+  ownership/aggregation while remaining output-neutral. Phases 2–3 still need clarification: they change generated
+  content intentionally — never a storefront page (decision C) — and should be coordinated with the missing-topics P1
+  backlog.
+- After 0.2, every generated-content task uses the compact tree hashes plus staging/dist invariants as its
+  no-unintended-change proof: 1.x must keep hashes stable; 2.x/3.x update the four hashes intentionally.
