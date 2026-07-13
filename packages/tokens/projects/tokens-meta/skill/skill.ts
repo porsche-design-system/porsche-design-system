@@ -88,6 +88,8 @@ export const tokensSkill: PackageSkill = {
   description: 'the design-token source values (color, spacing, typography, motion, breakpoints) for custom UI',
   intro:
     'Design tokens — the source values for color, spacing, typography, motion, breakpoints and more, ' +
-    'available as JS constants and as CSS custom properties.',
+    'provided as JS constants. The entire system is built on these tokens: the global stylesheets, the ' +
+    'components and the custom styling themes all depend on them. They can also be used standalone to ' +
+    'support other styling solutions or to build custom UI directly.',
   getContent: getTokensSkill,
 };
