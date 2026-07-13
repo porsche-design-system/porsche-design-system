@@ -28,7 +28,7 @@ mirroring [`.github/actions/install`](../../.github/actions/install/action.yml))
 | ❌ Never                                                         | Why                                                                                                    |
 | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | Run `npm audit fix` / `npm audit fix --force`                    | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`).        |
-| Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                        |
+| Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; diagnose each `ERESOLVE` with the `resolving-npm-eresolve` skill (overrides are one remedy, not the default — see step 6). |
 | Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3).  |
 | Edit `package-lock.json` by hand                                 | Regenerate it via `npm install` only.                                                                  |
 | Upgrade held-back deps by selecting them in `npm run npm:update` | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3. |
@@ -141,13 +141,21 @@ npm install
 
 ### 6. Resolve peer-dependency conflicts the correct way
 
-If `npm install` fails with `ERESOLVE` due to a third-party peer range conflicting with our pinned versions:
+When `npm install` fails with `ERESOLVE`, **diagnose before remedying** — follow the
+[`resolving-npm-eresolve`](../../.github/skills/resolving-npm-eresolve/SKILL.md) skill. A root `overrides` entry is only
+one of several remedies, and the right one depends on **who declares the unsatisfiable peer** and whether compatibility
+is established:
 
-- Add a **pinned `overrides` entry** in the root `package.json` (follow the existing `madge > typescript` pattern and
-  the per-major examples like `minimatch@9`).
-- Then delete `package-lock.json` **and** `node_modules` and re-run `npm install` (a plain reinstall keeps stale
-  transitive entries).
-- Never work around it with `--legacy-peer-deps` / `--force`.
+- **A third party** declares the conflicting peer and the new version is compatible → add a **pinned, scoped `overrides`
+  entry** in the root `package.json` (follow the existing `madge > typescript` pattern and per-major examples like
+  `minimatch@9`), then delete `package-lock.json` **and** `node_modules` and re-run `npm install`.
+- **We** declare it — a hand-maintained wrapper peer range in
+  `packages/components-<fw>/projects/<fw>-wrapper/package.json` went stale after a bump (e.g. `ag-grid-angular`) → **fix
+  the range at source** (if the new version is compatible), then **materialize** the generated
+  `dist/<fw>-wrapper/package.json` (`npm run preinstall:components-<fw>`) and confirm source==generated before
+  reinstalling. An override here is the wrong tool. If the bump is a breaking major we can't yet support, **hold it
+  back** (syncpack) or hand it off.
+- Never work around any `ERESOLVE` with `--legacy-peer-deps` / `--force`.
 
 ### 7. Re-validate the existing `overrides`
 

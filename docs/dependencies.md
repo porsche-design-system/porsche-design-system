@@ -86,6 +86,13 @@ Dependabot on a monthly schedule.
 When a third-party package declares a peer dependency range that conflicts with the versions we pin, resolve it
 explicitly via the `overrides` field in the root `package.json` instead of disabling peer-dependency checks globally.
 
+> **Overrides are not the answer to every `ERESOLVE`.** They apply when a **third party** declares the unsatisfiable
+> peer. When the failing constraint is **ours** — a hand-maintained wrapper peer range in
+> `packages/components-<fw>/projects/<fw>-wrapper/package.json` — the fix is at source plus regenerating the
+> `dist/<fw>-wrapper` manifest, not an override. Use the
+> [`resolving-npm-eresolve`](../.github/skills/resolving-npm-eresolve/SKILL.md) skill to diagnose which case applies
+> before acting.
+
 Current overrides:
 
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
