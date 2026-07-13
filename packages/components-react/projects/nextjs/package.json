@@ -22,21 +22,21 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "next": "^16.2.9",
+    "next": "^16.2.10",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@tailwindcss/postcss": "^4.3.1",
+    "@tailwindcss/postcss": "^4.3.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "ag-grid-enterprise": "35.3.1",
     "ag-grid-react": "35.3.1",
     "concurrently": "^10.0.3",
     "postcss": "^8",
-    "tailwindcss": "^4.3.1",
-    "tsx": "^4.22.4",
+    "tailwindcss": "^4.3.2",
+    "tsx": "^4.23.0",
     "typescript": "^6.0.3"
   },
   "optionalDependencies": {
