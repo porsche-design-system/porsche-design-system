@@ -1,7 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`writeTokensReference > matches the snapshot 1`] = `
-"# Design tokens
+exports[`should expose correct tokens package skill 1`] = `
+{
+  "content": "# Design tokens
 
 The Porsche Design System design tokens — the source values for breakpoints, color, spacing,
 typography, motion and more. Each table lists the token \`name\`, its \`value\` and a description.
@@ -320,5 +321,10 @@ For the same values as ready-to-use CSS custom properties, see \`stylesheets.md\
 | \`colorErrorLow\` | \`light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18))\` | Holds the **error-low** color, typically used for text or border. |
 | \`colorErrorFrosted\` | \`light-dark(hsl(0 100% 90% / 0.55),hsl(0 79% 20% / 0.66))\` | Holds the **error-frosted** color, typically used as background in combination with a blur effect. |
 | \`colorErrorFrostedSoft\` | \`light-dark(hsl(0 80% 95% / 0.55),hsl(0 59% 15% / 0.66))\` | Holds the **error-frosted-soft** color, typically used as background \`:hover\`. |
-"
+",
+  "description": "the design-token source values (color, spacing, typography, motion, breakpoints) for custom UI",
+  "intro": "Design tokens — the source values for color, spacing, typography, motion, breakpoints and more, available as JS constants and as CSS custom properties.",
+  "name": "tokens",
+  "title": "Design tokens",
+}
 `;

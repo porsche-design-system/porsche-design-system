@@ -116,7 +116,7 @@ describe('skill tree completeness', () => {
 
       it.each(
         Object.entries(NON_COMPONENT_REFERENCES)
-      )('ships the %s reference and links it from SKILL.md when required', (name, reference) => {
+      )('ships the %s reference and links it from SKILL.md when required', (_name, reference) => {
         expect(fs.existsSync(path.join(root, reference.path)), `missing ${reference.path}`).toBe(true);
         if (reference.linkedFromSkillMd) {
           expect(skillMd.includes(`](${reference.path})`), `SKILL.md does not link ${reference.path}`).toBe(true);

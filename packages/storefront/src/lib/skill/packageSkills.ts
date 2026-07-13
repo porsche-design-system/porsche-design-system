@@ -5,16 +5,17 @@ import { emotionSkill } from '../../../../styles/projects/emotion/skill/skill';
 import { scssSkill } from '../../../../styles/projects/scss/skill/skill';
 import { tailwindcssSkill } from '../../../../styles/projects/tailwindcss/skill/skill';
 import { vanillaExtractSkill } from '../../../../styles/projects/vanilla-extract/skill/skill';
+import { tokensSkill } from '../../../../tokens/projects/tokens-meta/skill/skill';
 import { rawScssReference, rawTailwindcssReference } from './rawStyleReferences';
 import { type RouteReferences, rewriteDocLinks } from './support/links';
 import { escapeCell, markdownTable } from './support/markdown';
 import type { Framework, SkillTree } from './support/skillTree';
 
 /**
- * Mounts the package-owned `PackageSkill` fragments (the four styling solutions + stylesheets) into
- * every wrapper tree and renders their SKILL.md sections (`## Stylesheets`, `## Styling`). Adding
- * another styling solution requires its PackageSkill export and one registration here; paths, route
- * links and SKILL.md rows are derived from that registration.
+ * Mounts the package-owned `PackageSkill` fragments (the four styling solutions, stylesheets and
+ * tokens) into every wrapper tree and renders their SKILL.md sections (`## Stylesheets`,
+ * `## Tokens`, `## Styling`). Adding another package skill requires its PackageSkill export and one
+ * registration here; paths, route links and SKILL.md rows are derived from that registration.
  */
 
 type PackageSkillRegistration = {
@@ -30,7 +31,8 @@ const STYLING_SKILLS: readonly PackageSkillRegistration[] = [
   { skill: emotionSkill, mount: 'styles' },
 ];
 const STYLESHEETS_SKILL: PackageSkillRegistration = { skill: stylesheetsSkill, mount: '' };
-const PACKAGE_SKILLS = [...STYLING_SKILLS, STYLESHEETS_SKILL];
+const TOKENS_SKILL: PackageSkillRegistration = { skill: tokensSkill, mount: '' };
+const PACKAGE_SKILLS = [...STYLING_SKILLS, STYLESHEETS_SKILL, TOKENS_SKILL];
 
 const referencePath = ({ skill, mount }: PackageSkillRegistration): string =>
   path.posix.join(mount, `${skill.name}.md`);
@@ -127,3 +129,7 @@ export const renderStylingSection = (): string => {
     markdownTable(['Styling solution', 'Use this when', 'Reference'], rows),
   ].join('\n');
 };
+
+/** The `## Tokens` SKILL.md section body: the fragment's intro plus the pointer at the mounted reference. */
+export const renderTokensSection = (): string =>
+  `${tokensSkill.intro} Open [tokens.md](${resolvedPath(TOKENS_SKILL)}) when using tokens directly in custom UI.`;

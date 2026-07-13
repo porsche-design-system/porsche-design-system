@@ -5,8 +5,8 @@ import type { Framework } from './support/skillTree';
 /**
  * Builds the always-loaded `SKILL.md` entry point: fixed-`name` frontmatter with the tuned
  * activation description, the headline intro, and one topical `##` section per domain. The section
- * bodies are rendered by the domain modules (`components/section.ts`, `packageSkills.ts`,
- * `tokensReference.ts`) and assembled here in reading order.
+ * bodies are rendered by the domain modules (`components/section.ts`, `packageSkills.ts`) and
+ * assembled here in reading order.
  */
 
 /**
