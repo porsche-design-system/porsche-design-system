@@ -1,0 +1,50 @@
+# examples/comment-router.yml — thin consumer shim
+# Copy this to .github/workflows/comment-router.yml in your project repo.
+#
+# Routes human PR feedback (/agent <feedback>, /approve, /reject comments and
+# PR review submissions) back into the engine by resuming the PR's saved
+# session. All routing logic — the sentinel loop guard, the write/admin auth
+# gate, session resolution, engine dispatch, and the self-pruning janitor —
+# lives centrally in the reusable workflow
+# porsche-code/turbo-spec/.github/workflows/comment-router.yml; this shim only
+# supplies the event triggers GitHub requires in the consumer repo.
+#
+# What to customize here:
+#   - The `uses:` pin: for production pin a release tag (e.g. @v1.2.3) instead
+#     of @main and bump on each release.
+#   - engine_workflow: only if your engine caller shim is not named ai.yml.
+#
+# Prerequisites: same as examples/ai.yml.
+
+name: TurboSpec | Workflow Comment Router
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted]
+
+# A reusable workflow cannot raise the caller's token permissions — grant the
+# router's full set here.
+permissions:
+  actions: write # dispatch ai.yml AND delete prior router runs
+  contents: read
+  issues: write # add the 🚀 acknowledgement reaction on comments
+  pull-requests: write
+  # This workflow only dispatches ai.yml (which runs Copilot with its own
+  # permissions); granted here for consistency with the other consumer shims.
+  copilot-requests: write
+
+# Serialize router runs per-PR so concurrent comments/reviews dispatch in order
+# and the janitor doesn't race a sibling deletion. Lives in the shim: caller
+# concurrency governs the run, not the called workflow's.
+concurrency:
+  group: wf-comment-router-${{ github.event.issue.number || github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  router:
+    uses: porsche-code/turbo-spec/.github/workflows/comment-router.yml@main
+    secrets: inherit
+    with:
+      engine_workflow: ai.yml

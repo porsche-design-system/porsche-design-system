@@ -1,0 +1,116 @@
+# examples/ai-watch.yml
+# Companion to examples/ai.yml. Copy this to .github/workflows/ai-watch.yml
+# alongside .github/workflows/ai.yml in your project repo.
+#
+# ─── How it works ─────────────────────────────────────────────────────────
+#
+# When a workflow listed in `workflows:` below completes with a failure,
+# this file calls the turbo-spec reusable workflow `agentic-watcher.yml`.
+# That workflow:
+#
+#   1. Downloads the failed run's artifacts (session state, last stage
+#      handoff, error excerpt).
+#   2. Confirms the failed run belongs to a turbo-spec PR (see filters
+#      below). If not, it exits silently — no comment, no dispatch.
+#   3. Triages the failure:
+#        • Regex pre-filter for obvious "needs human" cases (missing
+#          secret / permission denied / missing context). Short-circuits
+#          the LLM call.
+#        • Otherwise → LLM (Strands + Copilot/claude-sonnet) classifies
+#          the failure and writes feedback.
+#        • Regex is also the fallback if the LLM errors, returns empty,
+#          or violates the JSON schema — the watcher always emits a
+#          decision.
+#   4. Acts on the decision:
+#        • `resume` + `dispatch_workflow` set → re-dispatch the engine
+#          driver with the original `session_id` and generated `feedback`.
+#        • `human` → post a PR comment with the missing-info request
+#          and a `/agent <input>` resume hint.
+#        • Either way → append the outcome to the run's step summary.
+#
+# ─── Filters that keep the watcher quiet on unrelated PRs ─────────────────
+#
+# The watcher acts ONLY when the failed run is associated with a turbo-spec
+# PR. It checks two signals (either is enough):
+#
+#   (a) Failed run uploaded a `session-state-*` artifact (i.e. it was an
+#       engine run produced by turbo-spec).
+#   (b) The PR body for the failed run's head SHA contains the marker
+#       `<!-- turbo-spec -->` (planted automatically by pr_creator.py on
+#       every PR turbo-spec opens).
+#
+# If neither matches, the watcher exits with a `::notice::` and does
+# nothing. This is what makes it safe to add more workflows below — the
+# watcher cannot spam PRs that did not originate from turbo-spec.
+#
+# An additional per-session retry cap prevents resume loops: the watcher
+# counts prior "Auto Resume Triggered" comments on the same PR for the
+# same session and refuses to resume if any are present. Human comments
+# do not consume this budget.
+#
+# ─── Extending: adding more workflows to watch ────────────────────────────
+#
+# By default we only watch the engine driver ("AI Workflow"). You can add
+# any other workflow whose failures you want explained on turbo-spec PRs:
+#
+#   on:
+#     workflow_run:
+#       workflows: ["AI Workflow", "CI", "Build", "Deploy"]
+#       types: [completed]
+#
+# Rules of thumb:
+#   • The engine driver workflow (ai.yml) → include it AND set
+#     `dispatch_workflow: ai.yml` below so auto-resume is wired up.
+#   • CI / build / deploy workflows → include them in `workflows:` but
+#     leave `dispatch_workflow` unset (or empty). The watcher will only
+#     explain the failure as a PR comment; auto-resuming a build pipeline
+#     rarely makes sense.
+#   • Workflows that run on every push are safe to add — the PR-origin
+#     scoping above filters out anything not on a turbo-spec PR.
+#
+# ─── Why this lives in a separate file ────────────────────────────────────
+#
+# GitHub rejects a `workflow_run` trigger that listens to the workflow it
+# is defined in ("workflow cannot listen to itself"). So the watcher MUST
+# live in its own workflow file — it cannot be a job inside ai.yml.
+
+name: TurboSpec | AI Watcher
+
+on:
+  workflow_run:
+    # Workflow display names (NOT filenames). Add CI/build workflow names
+    # here to also catch their failures on turbo-spec PRs; auto-resume will
+    # be disabled for those (omit `dispatch_workflow` below) so the watcher
+    # only LLM-explains the failure as a PR comment.
+    workflows: ["TurboSpec | AI Workflow"]
+    types: [completed]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  actions: write
+  # The watcher's triage agent runs Copilot; the built-in GITHUB_TOKEN
+  # authenticates it when no GH_COPILOT_TOKEN is set. A reusable workflow can only
+  # receive the caller's permissions, so grant this here on the caller.
+  copilot-requests: write
+
+jobs:
+  watch:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    # Pin to a released tag (e.g. @v0.8.0) for production use — see
+    # https://github.com/porsche-code/turbo-spec/releases for the latest.
+    # `@main` here gives copy-paste-ready examples on PR merge; production
+    # consumers should swap to an exact tag and bump on each release.
+    uses: porsche-code/turbo-spec/.github/workflows/agentic-watcher.yml@main
+    with:
+      failed_run_id: ${{ github.event.workflow_run.id }}
+      # Set only when the watched workflow IS the engine driver (ai.yml).
+      # Leave unset/empty when watching CI / build / deploy workflows — the
+      # watcher will then only explain the failure, never re-dispatch.
+      dispatch_workflow: ai.yml
+      dispatch_ref: ${{ github.event.repository.default_branch }}
+      # engine_ref is no longer needed — agentic-watcher.yml auto-derives it from
+      # the @ref in the uses: line above via job.workflow_ref.
+    secrets: inherit
+

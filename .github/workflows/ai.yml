@@ -1,0 +1,101 @@
+# examples/ai.yml — thin consumer shim
+# Copy this to .github/workflows/ai.yml in your project repo.
+#
+# All engine logic — checkout auth, gerhard setup, sandbox wiring, and the
+# interim workarounds for known engine issues (container runtime #851, egress
+# allow-list #853) — lives centrally in the reusable workflow
+# porsche-code/turbo-spec/.github/workflows/engine.yml. When an engine fix
+# ships, the interim is removed THERE; this shim never changes for that.
+#
+# What to customize here:
+#   - The `uses:` pin. `@main` keeps this example copy-paste runnable, but for
+#     production pin a release tag (e.g. @v1.2.3 — see
+#     https://github.com/porsche-code/turbo-spec/releases) and pass the same
+#     tag as `engine_ref:` under `with:` (it defaults to main).
+#   - Nothing else for the default setup. Blueprint overlays stay consumer-side
+#     (e.g. .turbo-spec/workflows/bug-fix.yml appending reporter skills) — the
+#     engine discovers them in your repo; they are not wired here.
+#
+# Prerequisites: org secrets TURBO_SPEC_APP_ID / TURBO_SPEC_APP_KEY (+ optional
+# telemetry key) — forwarded via `secrets: inherit`. GH_COPILOT_TOKEN is now
+# OPTIONAL: when unset, the built-in GITHUB_TOKEN authenticates Copilot via the
+# `copilot-requests: write` permission below (set GH_COPILOT_TOKEN to an
+# OAuth-style Copilot-seat token to use a dedicated no-write credential instead;
+# PATs are rejected by GitHub's Copilot endpoint, see #919). Companion files:
+# examples/ai-watch.yml (failure watcher), examples/comment-router.yml (PR feedback resume).
+
+name: TurboSpec | AI Workflow
+
+on:
+  issues:
+    types: [labeled]
+  # The router dispatches this workflow with -f session_id/-f feedback; keep
+  # these inputs or the dispatch fails with "Unexpected inputs provided".
+  workflow_dispatch:
+    inputs:
+      blueprint:
+        description: "Optional explicit blueprint (path like .turbo-spec/feature.yml, or a bare built-in name like 'feature'). Leave empty for label-based detection."
+        required: false
+        type: string
+        default: ""
+      issue_number:
+        description: "Issue number to process"
+        required: false
+        type: string
+      session_id:
+        description: "Optional session id to resume a prior run."
+        required: false
+        type: string
+        default: ""
+      feedback:
+        description: "Optional human feedback text (requires session_id). Auto-set by comment-router.yml."
+        required: false
+        type: string
+        default: ""
+
+# A reusable workflow can only receive — never raise — the caller's token
+# permissions, so the full set must be granted here. packages: read pulls the
+# internal-visibility agent-sandbox image from GHCR.
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  actions: write
+  # Pull the internal ghcr.io/porsche-code/agent-sandbox image. An explicit
+  # permissions block zeroes every unlisted scope, so without this the job
+  # token cannot read the package and the sandbox image pull is denied.
+  packages: read
+  # Lets the built-in GITHUB_TOKEN authenticate Copilot when no GH_COPILOT_TOKEN
+  # secret is set. A reusable workflow can only receive the caller's permissions,
+  # so this must be granted here on the caller.
+  copilot-requests: write
+
+jobs:
+  run:
+    # Fire only when the label JUST added is 'ready-for-agent' — checking
+    # github.event.label.name (not contains() over the whole label set) stops
+    # the engine's own routing-label writes and multi-label selects from
+    # re-triggering duplicate runs. Do NOT switch to contains(...).
+    # workflow_dispatch always bypasses this gate.
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' &&
+       github.event.label.name == 'ready-for-agent')
+    uses: porsche-code/turbo-spec/.github/workflows/engine.yml@main
+    secrets: inherit
+    with:
+      # Empty blueprint → the engine detects it from labels / issue context
+      # (falling back to the built-in feature.yml), or recovers it from the
+      # session on resume.
+      blueprint: ${{ inputs.blueprint }}
+      labels: ${{ github.event_name == 'issues' && join(github.event.issue.labels.*.name, ',') || '' }}
+      issue_number: ${{ github.event.issue.number || inputs.issue_number }}
+      session_id: ${{ inputs.session_id }}
+      feedback: ${{ inputs.feedback }}
+      stream: "true"
+      # When pinning uses: to a release tag, uncomment and match it:
+      # engine_ref: v1.2.3
+      # Debugging a run? Set the repo Actions VARIABLE TURBOSPEC_PR_REPORT_MODE
+      # to "debug" (Settings → Secrets and variables → Actions → Variables) to
+      # get the live per-stage comment stream on top of the final run report.
+      # No workflow edit needed — delete the variable when done.
