@@ -10,7 +10,7 @@ import { hashSkillTree } from '@/lib/skill/support/skillTreeHash';
  * change updates exactly these four hashes via `vitest -u`; completeness and link gates inspect
  * the actual trees.
  */
-const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../../../..');
 
 describe('skill tree hashes', () => {
   it('matches the staged generated content snapshot', () => {

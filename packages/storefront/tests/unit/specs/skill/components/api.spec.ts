@@ -1,8 +1,13 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { describe, expect, it } from 'vitest';
-import { parseRequiredParents, renderComponentApi, renderSubComponents } from '@/lib/skill/components/api';
+import {
+  buildSubComponentMap,
+  parseRequiredParents,
+  renderComponentApi,
+  renderSubComponents,
+} from '@/lib/skill/components/api';
 import { deriveIconNames, renderIconsReference } from '@/lib/skill/components/icons';
-import { componentApiFixtures } from '../data/skill/componentApiFixtures';
+import { componentApiFixtures } from '../../../data/skill/componentApiFixtures';
 
 const { 'p-accordion': accordion, 'p-heading': heading } = componentApiFixtures;
 
@@ -187,5 +192,35 @@ describe('renderIconsReference', () => {
     const markdown = renderIconsReference(['arrow-right', 'car']);
     expect(markdown).toMatch(/^# Icon names/);
     expect(markdown).toContain('`arrow-right` `car`');
+  });
+});
+
+describe('buildSubComponentMap', () => {
+  // A parent, a direct sub-component, a nested sub-component (parent is itself a sub), and a
+  // sub-component shared by two top-level parents.
+  const meta = {
+    'p-table': { isChunked: true } as unknown as ComponentMeta,
+    'p-table-body': { requiredParent: 'p-table' } as unknown as ComponentMeta,
+    'p-table-row': { requiredParent: ['p-table-body', 'p-table-head'] } as unknown as ComponentMeta,
+    'p-table-head': { requiredParent: 'p-table' } as unknown as ComponentMeta,
+    'p-select': { isChunked: true } as unknown as ComponentMeta,
+    'p-multi-select': { isChunked: true } as unknown as ComponentMeta,
+    'p-optgroup': { requiredParent: ['p-select', 'p-multi-select'] } as unknown as ComponentMeta,
+  };
+
+  it('maps each top-level component to its (transitive) sub-components, sorted', () => {
+    const map = buildSubComponentMap(meta);
+    expect(map['p-table'].map((s) => s.tag)).toEqual(['p-table-body', 'p-table-head', 'p-table-row']);
+  });
+
+  it('attaches a shared sub-component to every top-level parent it resolves to', () => {
+    const map = buildSubComponentMap(meta);
+    expect(map['p-select'].map((s) => s.tag)).toContain('p-optgroup');
+    expect(map['p-multi-select'].map((s) => s.tag)).toContain('p-optgroup');
+  });
+
+  it('never lists a top-level component as its own sub-component', () => {
+    const map = buildSubComponentMap(meta);
+    expect(map['p-table']?.map((s) => s.tag)).not.toContain('p-table');
   });
 });

@@ -1,8 +1,8 @@
 import type { ComponentType } from 'react';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { renderMdxToMarkdown } from '@/lib/skill/support/renderMdxToMarkdown';
-import { NoiseComponent } from '../data/skill/NoiseComponent';
-import { compileMdx, PROSE_FIXTURES } from '../data/skill/proseFixtures';
+import { NoiseComponent } from '../../../data/skill/NoiseComponent';
+import { compileMdx, PROSE_FIXTURES } from '../../../data/skill/proseFixtures';
 
 describe('renderMdxToMarkdown', () => {
   const compiled: Record<string, ComponentType> = {};

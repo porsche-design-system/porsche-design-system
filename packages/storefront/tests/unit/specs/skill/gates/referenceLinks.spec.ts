@@ -14,7 +14,7 @@ import {
   resolveJsPeerScss,
   resolveProduced,
   resolveRaw,
-} from '../helpers/referenceLinks';
+} from '../../../helpers/referenceLinks';
 
 /**
  * Producer reference-link gate (two-mode). Every reference path the trees carry must resolve, but
@@ -30,7 +30,7 @@ import {
  * Raw mode needs a real wrapper dist (`build:subPackages:skill`); in CI the `build-development`
  * artifact is restored before storefront unit tests run, so `dist/<fw>-wrapper/skill` is present.
  */
-const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../../../..');
 const JS_DIST_ROOT = path.join(REPO_ROOT, WRAPPER_DIST_DIRS.js);
 
 const danglingProduced = (skillRoot: string): string[] => {

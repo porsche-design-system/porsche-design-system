@@ -10,7 +10,7 @@ import {
 } from '@/lib/skill/components/examples';
 import { FRAMEWORKS, type Framework, SkillTree } from '@/lib/skill/support/skillTree';
 import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
-import { compileComponentExamplesMeta } from '../data/skill/componentExamplesFixtures';
+import { compileComponentExamplesMeta } from '../../../data/skill/componentExamplesFixtures';
 
 /** `FrameworkMarkup` key the skill `Framework` maps onto (js is the vanilla-JS variant). */
 const MARKUP_KEY: Record<Framework, 'vanilla-js' | 'angular' | 'react' | 'vue'> = {

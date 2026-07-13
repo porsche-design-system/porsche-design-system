@@ -10,11 +10,11 @@ import {
 } from '@/lib/skill/packageSkills';
 import { resolveFrameworkPlaceholder } from '@/lib/skill/support/links';
 import { SkillTree } from '@/lib/skill/support/skillTree';
-import { stylesheetsSkill } from '../../../../components/projects/stylesheets/skill/skill';
-import { emotionSkill } from '../../../../styles/projects/emotion/skill/skill';
-import { scssSkill } from '../../../../styles/projects/scss/skill/skill';
-import { tailwindcssSkill } from '../../../../styles/projects/tailwindcss/skill/skill';
-import { vanillaExtractSkill } from '../../../../styles/projects/vanilla-extract/skill/skill';
+import { stylesheetsSkill } from '../../../../../components/projects/stylesheets/skill/skill';
+import { emotionSkill } from '../../../../../styles/projects/emotion/skill/skill';
+import { scssSkill } from '../../../../../styles/projects/scss/skill/skill';
+import { tailwindcssSkill } from '../../../../../styles/projects/tailwindcss/skill/skill';
+import { vanillaExtractSkill } from '../../../../../styles/projects/vanilla-extract/skill/skill';
 
 const routeReferences = {
   tailwindcss: 'references/styles/tailwindcss.md',

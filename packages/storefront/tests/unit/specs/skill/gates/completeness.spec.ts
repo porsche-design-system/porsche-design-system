@@ -4,16 +4,34 @@ import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { describe, expect, it } from 'vitest';
 import { ROSTER_SUMMARY_OVERRIDES } from '@/lib/skill/components/prose';
+import { getPackageSkillRouteReferences } from '@/lib/skill/packageSkills';
 import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@/lib/skill/support/skillTree';
 
 /**
- * Producer completeness gate. Asserts every documented component is fully represented
- * in each staged `skill/` tree (a `references/components/<tag>/<tag>.md` file plus a
- * roster row in `SKILL.md`) and that every emitted example carries a "when to use"
- * description. Fails on a missing component md, a missing roster row, or an example
- * without a description — catching coverage gaps the drift snapshot alone would bless.
+ * Producer completeness gate. Asserts every documented component and every registered
+ * non-component reference (package skills, tokens, icons) is fully represented in each staged
+ * `skill/` tree (the reference file plus its `SKILL.md` presence) and that every emitted example
+ * carries a "when to use" description. Fails on a missing file, a missing roster row or section
+ * link, or an example without a description — catching coverage gaps the drift snapshot alone
+ * would bless.
  */
-const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../../../..');
+
+/**
+ * Every non-component reference each tree must ship: the registered package skills (styling
+ * solutions + stylesheets), the tokens reference, and the shared icon-name list. All but icons.md
+ * must also be linked from SKILL.md (icons.md is linked from the component references instead).
+ */
+const NON_COMPONENT_REFERENCES: Record<string, { path: string; linkedFromSkillMd: boolean }> = {
+  ...Object.fromEntries(
+    Object.entries(getPackageSkillRouteReferences()).map(([name, referencePath]) => [
+      name,
+      { path: referencePath, linkedFromSkillMd: true },
+    ])
+  ),
+  tokens: { path: 'references/tokens.md', linkedFromSkillMd: true },
+  icons: { path: 'references/icons.md', linkedFromSkillMd: false },
+};
 
 /**
  * The components the storefront documents — the same filter `sitemap.tsx` uses for
@@ -95,6 +113,15 @@ describe('skill tree completeness', () => {
       const componentsDir = path.join(root, 'references/components');
       const skillMdPath = path.join(root, 'SKILL.md');
       const skillMd = fs.existsSync(skillMdPath) ? fs.readFileSync(skillMdPath, 'utf-8') : '';
+
+      it.each(
+        Object.entries(NON_COMPONENT_REFERENCES)
+      )('ships the %s reference and links it from SKILL.md when required', (name, reference) => {
+        expect(fs.existsSync(path.join(root, reference.path)), `missing ${reference.path}`).toBe(true);
+        if (reference.linkedFromSkillMd) {
+          expect(skillMd.includes(`](${reference.path})`), `SKILL.md does not link ${reference.path}`).toBe(true);
+        }
+      });
 
       it.each(DOCUMENTED_TAGS)('documents %s with a reference file and a SKILL.md roster row', (tag) => {
         expect(

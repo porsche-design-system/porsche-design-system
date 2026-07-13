@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { resolveFrameworkPlaceholder } from '@/lib/skill/support/links';
 import { SkillTree } from '@/lib/skill/support/skillTree';
 import { getTokensSkill, writeTokensReference } from '@/lib/skill/tokensReference';
-import { tokensMeta } from '../../../../tokens/projects/tokens-meta/src/lib/tokensMeta';
+import { tokensMeta } from '../../../../../tokens/projects/tokens-meta/src/lib/tokensMeta';
 
 describe('writeTokensReference', () => {
   let root: string;
