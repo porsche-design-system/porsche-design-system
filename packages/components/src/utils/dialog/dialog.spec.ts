@@ -1,6 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { vi } from 'vitest';
-import { onCancelDialog, onClickDialog, onTransitionEnd, showDialog } from './dialog';
+import { onCancelDialog, onClickDialog, isDialogBackdropTarget, onTransitionEnd, showDialog } from './dialog';
 
 const createMockDialog = (open: boolean): HTMLDialogElement => {
   const dialog = document.createElement('dialog');
@@ -121,5 +121,40 @@ describe('onClickDialog()', () => {
     onClickDialog(event, cb, true);
 
     expect(cb).not.toHaveBeenCalled();
+  });
+
+  it('should not call callback when the pointer gesture started inside the panel', () => {
+    const cb = vi.fn();
+    const event = { target: { tagName: 'DIALOG', className: '' } } as unknown as MouseEvent;
+
+    onClickDialog(event, cb, false, true);
+
+    expect(cb).not.toHaveBeenCalled();
+  });
+
+  it('should call callback when the pointer gesture started on the backdrop', () => {
+    const cb = vi.fn();
+    const event = { target: { tagName: 'DIALOG', className: '' } } as unknown as MouseEvent;
+
+    onClickDialog(event, cb, false, false);
+
+    expect(cb).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('isDialogBackdropTarget()', () => {
+  it('should return true for the DIALOG element', () => {
+    const event = { target: { tagName: 'DIALOG', className: '' } } as unknown as Event;
+    expect(isDialogBackdropTarget(event)).toBe(true);
+  });
+
+  it('should return true for the scroller', () => {
+    const event = { target: { tagName: 'DIV', className: 'scroller' } } as unknown as Event;
+    expect(isDialogBackdropTarget(event)).toBe(true);
+  });
+
+  it('should return false for panel content', () => {
+    const event = { target: { tagName: 'DIV', className: 'modal' } } as unknown as Event;
+    expect(isDialogBackdropTarget(event)).toBe(false);
   });
 });

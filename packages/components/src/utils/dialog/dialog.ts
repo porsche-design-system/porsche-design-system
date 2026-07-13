@@ -19,12 +19,18 @@ export const onCancelDialog = (e: Event, cb: () => void, disable = false): void 
   }
 };
 
-export const onClickDialog = (e: MouseEvent, cb: () => void, disable: boolean): void => {
-  if (
-    !disable &&
-    ((e as MouseEvent & { target: HTMLElement }).target.className === 'scroller' ||
-      (e as MouseEvent & { target: HTMLElement }).target.tagName === 'DIALOG')
-  ) {
+// A click/press lands on the backdrop when its target is the `<dialog>` element itself or the `.scroller` wrapper
+// (both cover the area around the panel). Any deeper target means the interaction happened inside the panel content.
+export const isDialogBackdropTarget = (e: Event): boolean => {
+  const target = (e as Event & { target: HTMLElement }).target;
+  return target.className === 'scroller' || target.tagName === 'DIALOG';
+};
+
+export const onClickDialog = (e: MouseEvent, cb: () => void, disable: boolean, isPointerDownInside = false): void => {
+  // Skip dismissal when the pointer gesture *started* inside the panel (e.g. a text selection dragged out and released
+  // on the backdrop). A `click` only fires on the nearest common ancestor of `mousedown`/`mouseup`, so such a gesture
+  // retargets the resulting `click` to the backdrop and would otherwise wrongly dismiss. Mirrors `p-popover`.
+  if (!disable && !isPointerDownInside && isDialogBackdropTarget(e)) {
     cb(); // dismiss dialog when clicked on backdrop
   }
 };

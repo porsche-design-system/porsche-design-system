@@ -29,7 +29,7 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Action Event Counter: <span>0</span>; Close Event Counter: <span>0</span>;');
 
-  const actionButton = getByRoleShadowed('button');
+  const actionButton = getByRoleShadowed('button', { name: /retry/i });
   const closeButton = getByRoleShadowed('button', { name: /close/i });
 
   await userEvent.click(actionButton);
