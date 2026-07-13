@@ -1,5 +1,5 @@
-import { escapeCell, markdownTable } from '../markdown';
-import type { Framework } from '../skillTree';
+import { escapeCell, markdownTable } from '../support/markdown';
+import type { Framework } from '../support/skillTree';
 import type { ComponentRosterEntry } from './reference';
 
 /**

@@ -2,14 +2,14 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { resolveFrameworkPlaceholder } from '@/lib/skill/links';
 import {
   getPackageSkillRouteReferences,
   renderStylesheetsSection,
   renderStylingSection,
   writePackageSkillReferences,
 } from '@/lib/skill/packageSkills';
-import { SkillTree } from '@/lib/skill/skillTree';
+import { resolveFrameworkPlaceholder } from '@/lib/skill/support/links';
+import { SkillTree } from '@/lib/skill/support/skillTree';
 import { stylesheetsSkill } from '../../../../components/projects/stylesheets/skill/skill';
 import { emotionSkill } from '../../../../styles/projects/emotion/skill/skill';
 import { scssSkill } from '../../../../styles/projects/scss/skill/skill';

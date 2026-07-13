@@ -6,7 +6,13 @@ import type { ComponentRosterEntry } from '@/lib/skill/components/reference';
 import { renderComponentsSection } from '@/lib/skill/components/section';
 import { renderStylesheetsSection, renderStylingSection } from '@/lib/skill/packageSkills';
 import { ACTIVATION_DESCRIPTION, buildSkillMd as renderSkillMd, skillName } from '@/lib/skill/skillMd';
-import { FRAMEWORKS, type Framework, isFramework, SKILL_DIRECTORY_LAYOUT, SkillTree } from '@/lib/skill/skillTree';
+import {
+  FRAMEWORKS,
+  type Framework,
+  isFramework,
+  SKILL_DIRECTORY_LAYOUT,
+  SkillTree,
+} from '@/lib/skill/support/skillTree';
 import { renderTokensSection } from '@/lib/skill/tokensReference';
 
 /** Compose the full SKILL.md from the real domain section renderers, as the generator does. */

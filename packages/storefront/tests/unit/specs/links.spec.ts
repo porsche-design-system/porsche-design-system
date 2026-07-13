@@ -1,6 +1,6 @@
-import { resolveFrameworkPlaceholder, rewriteDocLinks } from '@/lib/skill/links';
-import { FRAMEWORKS } from '@/lib/skill/skillTree';
 import { describe, expect, it } from 'vitest';
+import { resolveFrameworkPlaceholder, rewriteDocLinks } from '@/lib/skill/support/links';
+import { FRAMEWORKS } from '@/lib/skill/support/skillTree';
 
 describe('rewriteDocLinks', () => {
   const fromComponent = 'references/components/p-button/p-button.md';

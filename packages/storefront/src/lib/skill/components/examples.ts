@@ -5,9 +5,9 @@ import type { ExampleMeta } from '../../../models/meta';
 import type { Story } from '../../../models/story';
 import { createFrameworkMarkup } from '../../../utils/generator/createFrameworkMarkup';
 import type { HTMLTagOrComponent } from '../../../utils/generator/generator';
-import { escapeCell, leadSentence, markdownTable } from '../markdown';
-import { tryRenderMdxToMarkdown } from '../renderMdxToMarkdown';
-import type { Framework, SkillTree } from '../skillTree';
+import { escapeCell, leadSentence, markdownTable } from '../support/markdown';
+import { tryRenderMdxToMarkdown } from '../support/renderMdxToMarkdown';
+import type { Framework, SkillTree } from '../support/skillTree';
 
 /**
  * Emits one example file per component example and owns the examples reference table

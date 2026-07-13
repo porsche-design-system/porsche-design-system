@@ -1,172 +1,103 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { componentMeta } from '@porsche-design-system/component-meta';
+import { parseArgs } from 'node:util';
 import type { ComponentDocsMetaMap } from '../src/lib/skill/components/reference';
-import { renderComponentsSection } from '../src/lib/skill/components/section';
-import type { RouteReferences } from '../src/lib/skill/links';
-import {
-  getPackageSkillRouteReferences,
-  renderStylesheetsSection,
-  renderStylingSection,
-  writePackageSkillReferences,
-} from '../src/lib/skill/packageSkills';
-import { buildSkillMd } from '../src/lib/skill/skillMd';
-import { FRAMEWORKS, type Framework, isFramework, SKILL_STAGING_DIR, SkillTree } from '../src/lib/skill/skillTree';
-import { findSkillTreeDifference } from '../src/lib/skill/skillTreeHash';
-import { renderTokensSection, TOKENS_REFERENCE, writeTokensReference } from '../src/lib/skill/tokensReference';
+import type { generateSkillTree } from '../src/lib/skill/generateSkillTree';
+import { FRAMEWORKS, type Framework, isFramework, SKILL_STAGING_DIR } from '../src/lib/skill/support/skillTree';
+import { findSkillTreeDifference } from '../src/lib/skill/support/skillTreeHash';
+
+/**
+ * CLI wrapper around `generateSkillTree`: argument handling, exit codes and the determinism
+ * harness. The generation itself — MDX-backed component docs plus the package-skill and tokens
+ * serializers — only resolves under the MDX/alias-aware runtime this script is started with
+ * (`node --import tsx --require ./scripts/skill-mdx-loader.cjs`), so the heavy modules are loaded
+ * after argument validation.
+ */
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 const DEFAULT_OUTPUT_ROOT = path.resolve(REPO_ROOT, SKILL_STAGING_DIR);
+const USAGE = `Usage: build:skill [--output-root <path>] [--check-determinism] [${FRAMEWORKS.join('|')}]...`;
 
-/**
- * The component-reference generation, loaded together as a unit because it all depends
- * on the storefront runtime: the docs meta's prose is MDX, and the examples pipeline
- * (`components/reference` → `components/examples` → `createFrameworkMarkup`) pulls in the
- * storefront's `@/`-aliased generators. Both require the MDX/alias-aware runtime wired
- * by `build:skill`; resolution failures are fatal because this output is packaged.
- */
-type ComponentGeneration = {
-  componentDocsMeta: ComponentDocsMetaMap;
-  writeComponentReferences: typeof import('../src/lib/skill/components/reference').writeComponentReferences;
+type Generation = {
+  generate: typeof generateSkillTree;
+  docsMeta: ComponentDocsMetaMap;
 };
 
-const loadComponentGeneration = async (): Promise<ComponentGeneration> => {
-  const [meta, references] = await Promise.all([
-    import('../src/app/(main)/components/components.meta'),
-    import('../src/lib/skill/components/reference'),
-  ]);
-  return {
-    componentDocsMeta: meta.componentDocsMeta as unknown as ComponentDocsMetaMap,
-    writeComponentReferences: references.writeComponentReferences,
-  };
+const generateTrees = (frameworks: readonly Framework[], outputRoot: string, generation: Generation): void => {
+  for (const framework of frameworks) {
+    const root = path.join(outputRoot, framework);
+    generation.generate(root, framework, generation.docsMeta);
+    console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
+  }
 };
 
-const generateTree = async (
-  framework: Framework,
-  generation: ComponentGeneration,
-  outputRoot: string,
-  routeReferences: RouteReferences
-): Promise<void> => {
-  const root = path.join(outputRoot, framework);
-  const tree = new SkillTree(root, framework);
-  tree.reset();
-
-  const packageSkillReferences = writePackageSkillReferences(tree, routeReferences);
-  console.log(`  ${packageSkillReferences.length} package skill reference files written`);
-
-  writeTokensReference(tree);
-  console.log('  tokens reference written');
-
-  const { componentDocsMeta, writeComponentReferences } = generation;
-  const report = writeComponentReferences(tree, { docsMeta: componentDocsMeta, componentMeta, routeReferences });
-  console.log(`  ${report.tags.length} component references written`);
-
-  tree.write(
-    'SKILL.md',
-    buildSkillMd(framework, {
-      components: renderComponentsSection(framework, report.roster),
-      stylesheets: renderStylesheetsSection(framework),
-      tokens: renderTokensSection(),
-      styling: renderStylingSection(),
-    })
-  );
-
-  console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
-};
-
-/** Parse optional framework positionals and an isolated output root for determinism checks. */
-const parseArgs = (
-  argv: string[]
-): { frameworks: string[]; outputRoot: string; checkDeterminism: boolean; errors: string[] } => {
-  const frameworks: string[] = [];
-  const errors: string[] = [];
-  let outputRoot = DEFAULT_OUTPUT_ROOT;
-  let checkDeterminism = false;
-
-  for (let index = 0; index < argv.length; index++) {
-    const arg = argv[index];
-    if (arg === '--output-root') {
-      const value = argv[index + 1];
-      if (!value || value.startsWith('-')) {
-        errors.push('Missing value for --output-root.');
-      } else {
-        outputRoot = path.resolve(process.cwd(), value);
-        index++;
+/** Generate every tree twice into isolated temp roots and fail on any byte difference. */
+const checkDeterminism = (frameworks: readonly Framework[], generation: Generation): void => {
+  const roots = [
+    fs.mkdtempSync(path.join(os.tmpdir(), 'pds-skill-first-')),
+    fs.mkdtempSync(path.join(os.tmpdir(), 'pds-skill-second-')),
+  ];
+  try {
+    for (const root of roots) {
+      generateTrees(frameworks, root, generation);
+    }
+    for (const framework of frameworks) {
+      const difference = findSkillTreeDifference(path.join(roots[0], framework), path.join(roots[1], framework));
+      if (difference) {
+        throw new Error(`${framework} skill generation is not deterministic: ${difference}`);
       }
-    } else if (arg.startsWith('--output-root=')) {
-      const value = arg.slice('--output-root='.length);
-      if (!value) {
-        errors.push('Missing value for --output-root.');
-      } else {
-        outputRoot = path.resolve(process.cwd(), value);
-      }
-    } else if (arg === '--check-determinism') {
-      checkDeterminism = true;
-    } else if (arg.startsWith('-')) {
-      errors.push(`Unknown option: ${arg}.`);
-    } else {
-      frameworks.push(arg);
+    }
+    console.log('Skill generation is byte-for-byte deterministic.');
+  } finally {
+    for (const root of roots) {
+      fs.rmSync(root, { recursive: true, force: true });
     }
   }
+};
 
-  return { frameworks, outputRoot, checkDeterminism, errors };
+const parseCliArgs = (): { frameworks: Framework[]; outputRoot: string; checkDeterminism: boolean } => {
+  try {
+    const { values, positionals } = parseArgs({
+      options: {
+        'output-root': { type: 'string' },
+        'check-determinism': { type: 'boolean' },
+      },
+      allowPositionals: true,
+    });
+    for (const framework of positionals) {
+      if (!isFramework(framework)) {
+        throw new Error(`Unknown framework "${framework}". Expected one of: ${FRAMEWORKS.join(', ')}.`);
+      }
+    }
+    return {
+      frameworks: positionals.length > 0 ? (positionals as Framework[]) : [...FRAMEWORKS],
+      outputRoot: values['output-root'] ? path.resolve(process.cwd(), values['output-root']) : DEFAULT_OUTPUT_ROOT,
+      checkDeterminism: values['check-determinism'] ?? false,
+    };
+  } catch (error) {
+    console.error(`${error instanceof Error ? error.message : String(error)} ${USAGE}`);
+    process.exit(1);
+  }
 };
 
 const main = async (): Promise<void> => {
-  const { frameworks: requested, outputRoot, checkDeterminism, errors } = parseArgs(process.argv.slice(2));
+  const { frameworks, outputRoot, checkDeterminism: runDeterminismCheck } = parseCliArgs();
 
-  if (errors.length > 0) {
-    console.error(
-      `${errors.join('\n')} Usage: build:skill [--output-root <path>] [--check-determinism] ` +
-        `[${FRAMEWORKS.join('|')}]...`
-    );
-    process.exit(1);
-  }
-
-  const frameworks = requested.length > 0 ? requested : [...FRAMEWORKS];
-  for (const framework of frameworks) {
-    if (!isFramework(framework)) {
-      console.error(`Unknown framework "${framework}". Expected one of: ${FRAMEWORKS.join(', ')}.`);
-      process.exit(1);
-    }
-  }
-
-  const generation = await loadComponentGeneration();
-  const routeReferences: RouteReferences = {
-    ...getPackageSkillRouteReferences(),
-    tokens: `references/${TOKENS_REFERENCE}`,
+  // Loaded after argument validation: `components.meta` pulls the whole MDX docs surface.
+  const [{ componentDocsMeta }, { generateSkillTree }] = await Promise.all([
+    import('../src/app/(main)/components/components.meta'),
+    import('../src/lib/skill/generateSkillTree'),
+  ]);
+  const generation: Generation = {
+    generate: generateSkillTree,
+    docsMeta: componentDocsMeta as unknown as ComponentDocsMetaMap,
   };
 
-  for (const framework of frameworks as Framework[]) {
-    await generateTree(framework, generation, outputRoot, routeReferences);
-  }
+  generateTrees(frameworks, outputRoot, generation);
 
-  if (checkDeterminism) {
-    const roots = [
-      fs.mkdtempSync(path.join(os.tmpdir(), 'pds-skill-first-')),
-      fs.mkdtempSync(path.join(os.tmpdir(), 'pds-skill-second-')),
-    ];
-    try {
-      for (const root of roots) {
-        for (const framework of frameworks as Framework[]) {
-          await generateTree(framework, generation, root, routeReferences);
-        }
-      }
-
-      for (const framework of frameworks as Framework[]) {
-        const difference = findSkillTreeDifference(path.join(roots[0], framework), path.join(roots[1], framework));
-        if (difference) {
-          throw new Error(`${framework} skill generation is not deterministic: ${difference}`);
-        }
-      }
-
-      console.log('Skill generation is byte-for-byte deterministic.');
-    } finally {
-      for (const root of roots) {
-        fs.rmSync(root, { recursive: true, force: true });
-      }
-    }
+  if (runDeterminismCheck) {
+    checkDeterminism(frameworks, generation);
   }
 };
 

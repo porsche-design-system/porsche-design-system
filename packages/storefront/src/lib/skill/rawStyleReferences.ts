@@ -1,4 +1,4 @@
-import type { Framework } from './skillTree';
+import type { Framework } from './support/skillTree';
 
 /** Every wrapper ships a real copy of the generated Tailwind stylesheet. */
 export const rawTailwindcssReference = (): string => '../tailwindcss/index.css';

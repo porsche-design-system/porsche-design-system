@@ -1,5 +1,5 @@
-import { escapeCell, headingSlug, leadSentence, markdownTable, stripLeadingH1 } from '@/lib/skill/markdown';
 import { describe, expect, it } from 'vitest';
+import { escapeCell, headingSlug, leadSentence, markdownTable, stripLeadingH1 } from '@/lib/skill/support/markdown';
 
 describe('headingSlug', () => {
   it('lower-cases, drops punctuation, and hyphenates whitespace', () => {

@@ -1,8 +1,8 @@
 import type { ComponentType } from 'react';
 import { beforeAll, describe, expect, it } from 'vitest';
-import { renderMdxToMarkdown } from '@/lib/skill/renderMdxToMarkdown';
+import { renderMdxToMarkdown } from '@/lib/skill/support/renderMdxToMarkdown';
 import { NoiseComponent } from '../data/skill/NoiseComponent';
-import { PROSE_FIXTURES, compileMdx } from '../data/skill/proseFixtures';
+import { compileMdx, PROSE_FIXTURES } from '../data/skill/proseFixtures';
 
 describe('renderMdxToMarkdown', () => {
   const compiled: Record<string, ComponentType> = {};
@@ -57,7 +57,6 @@ describe('renderMdxToMarkdown', () => {
       <pre>
         <code
           className="hljs language-html"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: emulating the highlighter's span output
           dangerouslySetInnerHTML={{
             __html:
               '<span class="hljs-tag">&lt;p-accordion heading=&quot;x&quot;&gt;</span><span>Panel</span><span class="hljs-tag">&lt;/p-accordion&gt;</span>',

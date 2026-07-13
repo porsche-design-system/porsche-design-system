@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@/lib/skill/skillTree';
-import { hashSkillTree } from '@/lib/skill/skillTreeHash';
+import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@/lib/skill/support/skillTree';
+import { hashSkillTree } from '@/lib/skill/support/skillTreeHash';
 
 /**
  * Compact review signal for the ignored staged artifacts. An intentional generated-content

@@ -5,10 +5,10 @@ import { emotionSkill } from '../../../../styles/projects/emotion/skill/skill';
 import { scssSkill } from '../../../../styles/projects/scss/skill/skill';
 import { tailwindcssSkill } from '../../../../styles/projects/tailwindcss/skill/skill';
 import { vanillaExtractSkill } from '../../../../styles/projects/vanilla-extract/skill/skill';
-import { type RouteReferences, rewriteDocLinks } from './links';
-import { escapeCell, markdownTable } from './markdown';
 import { rawScssReference, rawTailwindcssReference } from './rawStyleReferences';
-import type { Framework, SkillTree } from './skillTree';
+import { type RouteReferences, rewriteDocLinks } from './support/links';
+import { escapeCell, markdownTable } from './support/markdown';
+import type { Framework, SkillTree } from './support/skillTree';
 
 /**
  * Mounts the package-owned `PackageSkill` fragments (the four styling solutions + stylesheets) into

@@ -8,7 +8,7 @@ import { buildSubComponentMap } from '@/lib/skill/components/api';
 import type { ComponentExamplesSource } from '@/lib/skill/components/examples';
 import { type ComponentProseSource, renderComponentProse } from '@/lib/skill/components/prose';
 import { type ComponentDocsMetaMap, writeComponentReferences } from '@/lib/skill/components/reference';
-import { SkillTree } from '@/lib/skill/skillTree';
+import { SkillTree } from '@/lib/skill/support/skillTree';
 import { compileComponentExamplesMeta } from '../data/skill/componentExamplesFixtures';
 import { compileComponentDocsMeta } from '../data/skill/componentProseFixtures';
 

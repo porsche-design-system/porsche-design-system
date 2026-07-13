@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react';
-import { leadSentence, stripLeadingBlockquotes, stripLeadingH1 } from '../markdown';
-import { renderMdxToMarkdown } from '../renderMdxToMarkdown';
-import type { Framework } from '../skillTree';
+import { leadSentence, stripLeadingBlockquotes, stripLeadingH1 } from '../support/markdown';
+import { renderMdxToMarkdown } from '../support/renderMdxToMarkdown';
+import type { Framework } from '../support/skillTree';
 
 /**
  * Renders a component's storefront MDX prose (introduction / usage / accessibility / notes) into

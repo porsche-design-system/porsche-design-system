@@ -8,7 +8,7 @@ import {
   EXAMPLE_EXTENSION,
   writeComponentExamples,
 } from '@/lib/skill/components/examples';
-import { FRAMEWORKS, type Framework, SkillTree } from '@/lib/skill/skillTree';
+import { FRAMEWORKS, type Framework, SkillTree } from '@/lib/skill/support/skillTree';
 import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
 import { compileComponentExamplesMeta } from '../data/skill/componentExamplesFixtures';
 

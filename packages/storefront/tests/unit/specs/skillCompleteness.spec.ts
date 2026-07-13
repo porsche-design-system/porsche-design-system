@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { describe, expect, it } from 'vitest';
 import { ROSTER_SUMMARY_OVERRIDES } from '@/lib/skill/components/prose';
-import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@/lib/skill/skillTree';
+import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@/lib/skill/support/skillTree';
 
 /**
  * Producer completeness gate. Asserts every documented component is fully represented

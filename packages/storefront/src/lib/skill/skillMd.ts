@@ -1,6 +1,6 @@
 import { rawMetaReference } from './components/section';
 import { rawScssReference, rawTailwindcssReference } from './rawStyleReferences';
-import type { Framework } from './skillTree';
+import type { Framework } from './support/skillTree';
 
 /**
  * Builds the always-loaded `SKILL.md` entry point: fixed-`name` frontmatter with the tuned

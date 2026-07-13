@@ -5,7 +5,7 @@ import type {
   PropMeta,
   SlotMeta,
 } from '@porsche-design-system/component-meta';
-import { escapeCell, markdownTable } from '../markdown';
+import { escapeCell, markdownTable } from '../support/markdown';
 import { ICONS_REFERENCE, isIconUnion } from './icons';
 
 /**

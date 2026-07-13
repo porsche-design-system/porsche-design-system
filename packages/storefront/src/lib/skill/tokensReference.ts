@@ -5,8 +5,8 @@ import { sentenceCase } from 'change-case';
 // relative-path imports. `packageSkills.ts` reaches into the styles/stylesheets sources for the same reason.
 import { type TokensMetaTree, tokensMeta } from '../../../../tokens/projects/tokens-meta/src/lib/tokensMeta';
 import type { TokenMeta } from '../../../../tokens/projects/tokens-meta/src/types/token-meta';
-import { escapeCell, headingSlug, markdownTable } from './markdown';
-import type { SkillTree } from './skillTree';
+import { escapeCell, headingSlug, markdownTable } from './support/markdown';
+import type { SkillTree } from './support/skillTree';
 
 /**
  * Programmatic serializer for the design tokens, driven by {@link tokensMeta} (a nested tree of

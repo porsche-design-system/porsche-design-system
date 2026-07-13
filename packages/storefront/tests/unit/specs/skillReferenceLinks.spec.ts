@@ -3,6 +3,8 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { skillName } from '@/lib/skill/skillMd';
+import { FRAMEWORKS, STAGED_SKILL_DIRS, WRAPPER_DIST_DIRS } from '@/lib/skill/support/skillTree';
 import {
   extractReferences,
   JS_PEER_META_SPECIFIER,
@@ -12,9 +14,7 @@ import {
   resolveJsPeerScss,
   resolveProduced,
   resolveRaw,
-} from '@/lib/skill/referenceLinks';
-import { skillName } from '@/lib/skill/skillMd';
-import { FRAMEWORKS, STAGED_SKILL_DIRS, WRAPPER_DIST_DIRS } from '@/lib/skill/skillTree';
+} from '../helpers/referenceLinks';
 
 /**
  * Producer reference-link gate (two-mode). Every reference path the trees carry must resolve, but

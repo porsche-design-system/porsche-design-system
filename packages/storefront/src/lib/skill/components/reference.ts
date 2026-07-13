@@ -1,6 +1,6 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import { type RouteReferences, rewriteDocLinks } from '../links';
-import type { SkillTree } from '../skillTree';
+import { type RouteReferences, rewriteDocLinks } from '../support/links';
+import type { SkillTree } from '../support/skillTree';
 import {
   buildSubComponentMap,
   componentStatus,
