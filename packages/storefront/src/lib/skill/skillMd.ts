@@ -1,5 +1,5 @@
 import { rawMetaReference } from './components/section';
-import { rawScssReference, rawTailwindcssReference } from './rawStyleReferences';
+import { rawScssReference, rawTailwindcssReference } from './packageSkills';
 import type { Framework } from './support/skillTree';
 
 /**

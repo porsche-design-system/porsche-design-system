@@ -6,7 +6,6 @@ import { scssSkill } from '../../../../styles/projects/scss/skill/skill';
 import { tailwindcssSkill } from '../../../../styles/projects/tailwindcss/skill/skill';
 import { vanillaExtractSkill } from '../../../../styles/projects/vanilla-extract/skill/skill';
 import { tokensSkill } from '../../../../tokens/projects/tokens-meta/skill/skill';
-import { rawScssReference, rawTailwindcssReference } from './rawStyleReferences';
 import { type RouteReferences, rewriteDocLinks } from './support/links';
 import { escapeCell, markdownTable } from './support/markdown';
 import type { Framework, SkillTree } from './support/skillTree';
@@ -17,6 +16,13 @@ import type { Framework, SkillTree } from './support/skillTree';
  * `## Tokens`, `## Styling`). Adding another package skill requires its PackageSkill export and one
  * registration here; paths, route links and SKILL.md rows are derived from that registration.
  */
+
+/** Every wrapper ships a real copy of the generated Tailwind stylesheet. */
+export const rawTailwindcssReference = (): string => '../tailwindcss/index.css';
+
+/** Only the js wrapper ships the real SCSS partials; framework wrappers expose re-export shims. */
+export const rawScssReference = (framework: Framework): string =>
+  framework === 'js' ? '../scss' : '@porsche-design-system/components-js/scss';
 
 type PackageSkillRegistration = {
   skill: PackageSkill;
