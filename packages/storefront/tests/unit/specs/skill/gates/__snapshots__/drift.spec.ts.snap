@@ -2,9 +2,9 @@
 
 exports[`skill tree hashes > matches the staged generated content snapshot 1`] = `
 {
-  "angular": "618e29ee874ba6a1b2538f2d4ac001b6dad479cc9c7356a2ccabde912bd3d2c0",
-  "js": "b0545306aa6261e283b25be30e1085474f7a73bf317edafc521835d1e68b3cf1",
-  "react": "40d8bbdde9a9c7461d75842df6958300babf08f17076b5ed6833c80ee7d7a9ae",
-  "vue": "11e97d0e8880b537c9cbdf268f4d75fd6fab254bf7dd114cef0ea6fe668fddab",
+  "angular": "6c9652f54ba8c4111db67a1a272ec16cda745925c6464c429773215bb5bd3f05",
+  "js": "bc778cbcafbe234ed1d9b1f757e8008a69c076f85d16957f18705cff1d74373e",
+  "react": "f319ae2d7bbe0105c08ab664c65761753543511ce1218cc6d4483a229f6cbbcc",
+  "vue": "e8edf880192b0806cd052d9b8737d16cd209a37b0dbbb0f293de2ad7257e47f3",
 }
 `;

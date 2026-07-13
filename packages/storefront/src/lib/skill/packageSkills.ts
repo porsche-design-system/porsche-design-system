@@ -68,15 +68,13 @@ const THEME_INIT_TARGET: Record<Framework, string> = {
 
 /**
  * The theming inoculation, rendered into the `## Stylesheets` section (theming is a stylesheet
- * concern). Light/dark is CSS `color-scheme` and nothing else; the removed-in-earlier-majors `theme`
- * prop is the common hallucination this pre-empts. Skill-only anti-hallucination content — it stays
- * aggregator-owned, never in the package fragment.
+ * concern). The removed-in-earlier-majors `theme` prop is the common hallucination this pre-empts.
+ * Skill-only anti-hallucination content — it stays aggregator-owned, never in the package fragment;
+ * the `.scheme-*` mechanics themselves live only in the fragment's `stylesheets.md`.
  */
 const renderThemingNote = (framework: Framework): string =>
-  '**Theming is one mechanism — CSS `color-scheme`, nothing else.** Light/dark is controlled solely by ' +
-  'the `.scheme-light` / `.scheme-dark` / `.scheme-light-dark` classes on `<html>` (or any ancestor); ' +
-  'the scheme cascades to **both** PDS components and custom markup, which all resolve colors via ' +
-  `\`light-dark()\`. \`.scheme-light-dark\` follows the OS. There is **no** \`theme\` prop — not on ${THEME_INIT_TARGET[framework]} and not on components. A ` +
+  '**Theming is one mechanism — CSS `color-scheme`, nothing else** (the `.scheme-*` mechanics live in ' +
+  `[stylesheets.md](${resolvedPath(STYLESHEETS_SKILL)})). There is **no** \`theme\` prop — not on ${THEME_INIT_TARGET[framework]} and not on components. A ` +
   '`theme="light|dark|auto"` prop existed in earlier majors and was removed; if you recall one, it is a ' +
   'stale prior — do not add it, verify against the installed types.';
 
@@ -113,17 +111,13 @@ export const renderStylingSection = (): string => {
     `[${resolvedPath(registration).split('/').pop()}](${resolvedPath(registration)})`,
   ]);
   return [
-    `The Porsche Design System offers a ready-made integration for ${solutionCount} styling solutions. They are ` +
-      'independent of the components — you do not need them to use components, and they do not depend on ' +
-      'components — but they build on the same design system: the same design tokens and the same ' +
-      '`color-scheme` (light/dark) theming, so one `.scheme-*` class drives both PDS components and your ' +
-      'custom UI. Custom UI you build with them therefore shares the exact palette, spacing and ' +
-      'typography as PDS components. There is no separate component theming API and no `theme` prop; the ' +
-      'full theming mechanics live in the **Stylesheets** section above.',
-    '',
-    'Use them to build layout and custom components or patterns not yet available in the component ' +
-      'library — typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. Pick ' +
-      'one solution per project and open its reference for setup and the full catalog.',
+    `The Porsche Design System offers a ready-made integration for ${solutionCount} styling solutions. Use them ` +
+      'to build layout and custom components or patterns not yet available in the component library — ' +
+      'typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. They are ' +
+      'independent of the components, but build on the same design tokens and the same `color-scheme` ' +
+      '(light/dark) theming (see the **Stylesheets** section above), so custom UI shares the exact ' +
+      'palette, spacing and typography as PDS components. Pick one solution per project and open its ' +
+      'reference for setup and the full catalog.',
     '',
     'Note: the code examples in the component references use PDS Tailwind utility classes (e.g. `flex`, ' +
       '`flex-col`, `gap-fluid-sm`) for layout. These only take effect with the Tailwind CSS solution ' +
