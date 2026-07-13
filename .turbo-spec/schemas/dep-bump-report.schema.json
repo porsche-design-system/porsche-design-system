@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dependency-bump terminal report",
+  "description": "Single terminal verdict aggregated by report.ts.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schemaVersion", "verdict", "summary"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "verdict": { "type": "string", "enum": ["SUCCESS", "NO_CHANGES", "BLOCKED"] },
+    "summary": { "type": "string", "minLength": 1 },
+    "bumped": { "type": "array" },
+    "conflicts": { "type": "array" },
+    "overrides": { "type": "array" },
+    "holdbacks": { "type": "array" },
+    "stopReason": { "type": ["string", "null"] }
+  }
+}

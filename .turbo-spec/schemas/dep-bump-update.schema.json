@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dependency-bump update outcome",
+  "description": "Declaration authored by the update agent after the bump/install/resolve stage.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schemaVersion", "outcome", "summary"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "outcome": {
+      "type": "string",
+      "enum": ["RESOLVED", "NO_CHANGES", "BLOCKED"],
+      "description": "RESOLVED = tree installs clean; NO_CHANGES = nothing to bump; BLOCKED = could not safely resolve."
+    },
+    "summary": { "type": "string", "minLength": 1 },
+    "bumped": { "type": "array", "description": "old->new dependency transitions, grouped." },
+    "conflicts": { "type": "array", "description": "Each ERESOLVE conflict and the chosen remedy." },
+    "overridesAdded": { "type": "array", "description": "Scoped root overrides added, if any." },
+    "holdbacks": { "type": "array", "description": "Dependencies held back via targeted rollback." },
+    "filesChanged": { "type": "array", "description": "Tracked files changed; empty when the tree was restored." },
+    "stopReason": {
+      "type": ["string", "null"],
+      "description": "Non-null when BLOCKED: what could not be resolved and what a follow-up needs."
+    }
+  }
+}

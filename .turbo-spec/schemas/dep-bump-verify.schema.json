@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dependency-bump verify outcome",
+  "description": "Deterministic verification result written by finalize-verify.ts.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schemaVersion", "outcome"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "outcome": { "type": "string", "enum": ["PASS"] },
+    "checks": { "type": "object", "description": "Per-check booleans (npmCi, npmLs, npmLint, audit, impactTests)." },
+    "newAdvisories": { "type": "array", "description": "Advisory identities present now but not in the S1 baseline." },
+    "impactCommands": { "type": "array", "description": "Impact-based build/test commands that were run." }
+  }
+}
