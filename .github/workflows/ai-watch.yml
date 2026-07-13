@@ -50,7 +50,7 @@
 #
 # ─── Extending: adding more workflows to watch ────────────────────────────
 #
-# By default we only watch the engine driver ("AI Workflow"). You can add
+# By default we only watch the engine driver ("TurboSpec | Dependency Bump"). You can add
 # any other workflow whose failures you want explained on turbo-spec PRs:
 #
 #   on:
@@ -82,7 +82,7 @@ on:
     # here to also catch their failures on turbo-spec PRs; auto-resume will
     # be disabled for those (omit `dispatch_workflow` below) so the watcher
     # only LLM-explains the failure as a PR comment.
-    workflows: ["TurboSpec | AI Workflow"]
+    workflows: ["TurboSpec | Dependency Bump"]
     types: [completed]
 
 permissions:
