@@ -4,6 +4,19 @@ require('intersection-observer');
 require('matchmedia-polyfill');
 require('matchmedia-polyfill/matchMedia.addListener');
 require('scroll-behavior-polyfill');
+
+// CSS.escape polyfill for jsdom which does not implement the CSS Object Model
+// Required by @oddbird/popover-polyfill >=0.7.0
+if (typeof global.CSS === 'undefined') {
+  global.CSS = {};
+}
+if (typeof global.CSS.escape !== 'function') {
+  global.CSS.escape = (value) => {
+    const str = String(value);
+    return str.replace(/[^\w-]/g, (c) => (c === '\0' ? '\uFFFD' : `\\${c}`));
+  };
+}
+
 require('@oddbird/popover-polyfill');
 const ro = require('resize-observer-polyfill');
 
