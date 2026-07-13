@@ -7,7 +7,7 @@ import { compileMdx } from './proseFixtures';
  * `introduction` is a lead paragraph with no heading; `usage` / `accessibility`
  * `page.mdx` files each open with a redundant `# <Component>` H1 that the generator
  * strips. `p-degraded` has an introduction that renders to nothing meaningful,
- * exercising the degraded-prose flag.
+ * exercising the fail-hard degraded-render error.
  */
 const RAW_FIXTURES: Record<
   string,

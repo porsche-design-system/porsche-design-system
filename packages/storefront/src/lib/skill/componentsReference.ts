@@ -32,16 +32,12 @@ export type ComponentProseSource = {
 /** Map of `componentMeta` tag → its storefront prose source. */
 export type ComponentDocsMetaMap = Record<string, ComponentProseSource>;
 
-/** A component whose prose rendered to nothing meaningful in one or more sections. */
-export type DegradedProse = { tag: string; sections: string[] };
-
-/** Outcome of writing the component reference tree — used to surface degraded prose for review. */
+/** Outcome of writing the component reference tree. */
 export type ComponentReferenceReport = {
   /** Tags written, in emitted (sorted) order. */
   tags: string[];
   /** One entry per component (tag + one-line summary), for the roster inlined into SKILL.md. */
   roster: ComponentRosterEntry[];
-  degraded: DegradedProse[];
 };
 
 const NO_SUMMARY = '_No description available._';
@@ -64,15 +60,13 @@ export const ROSTER_SUMMARY_OVERRIDES: Record<string, string> = {
 
 /**
  * Render one prose section (introduction / usage / accessibility) to markdown and append it to
- * `sections` unless it is empty. Degraded prose is recorded in `degradedSections` and not emitted.
- * Returns the raw rendered markdown (before `transform` and trimming) so the caller can derive the
- * roster summary from the introduction; the empty string when the source is absent or degraded.
+ * `sections` unless it is empty. Returns the raw rendered markdown (before `transform` and
+ * trimming) so the caller can derive the roster summary from the introduction; the empty string
+ * when the source is absent.
  */
 const renderSection = (
   component: ComponentType | undefined,
   sections: string[],
-  degradedSections: string[],
-  name: string,
   label: string,
   framework: Framework,
   transform: (markdown: string) => string = (markdown) => markdown
@@ -80,11 +74,7 @@ const renderSection = (
   if (!component) {
     return '';
   }
-  const { markdown, degraded } = renderMdxToMarkdown(component, framework, label);
-  if (degraded) {
-    degradedSections.push(name);
-    return '';
-  }
+  const markdown = renderMdxToMarkdown(component, framework, label);
   const transformed = transform(markdown).trim();
   if (transformed) {
     sections.push(transformed);
@@ -121,8 +111,7 @@ export const renderComponentProse = (
   source: ComponentProseSource,
   statusBanner = '',
   framework: Framework = 'js'
-): { markdown: string; summary: string; degradedSections: string[] } => {
-  const degradedSections: string[] = [];
+): { markdown: string; summary: string } => {
   // The status banner (deprecated/experimental) sits directly under the H1, before any prose, so it is
   // the first thing read; it is derived from `componentMeta`, which the prose sections never carry.
   const sections: string[] = statusBanner ? [`# ${tag}`, statusBanner] : [`# ${tag}`];
@@ -130,45 +119,23 @@ export const renderComponentProse = (
   // The introduction goes through the same renderer as usage/accessibility (no heading strip); its raw
   // markdown is returned so the roster summary is the lead sentence. Any leading notification admonition
   // (experimental components open with one) is skipped so the summary is the first real prose sentence.
-  // Degraded intro → empty → NO_SUMMARY.
-  const introMarkdown = renderSection(
-    source.introduction,
-    sections,
-    degradedSections,
-    'introduction',
-    `${tag} › introduction`,
-    framework
-  );
+  const introMarkdown = renderSection(source.introduction, sections, `${tag} › introduction`, framework);
   const summary = leadSentence(stripLeadingBlockquotes(introMarkdown)) || NO_SUMMARY;
 
-  renderSection(source.usage, sections, degradedSections, 'usage', `${tag} › usage`, framework, stripLeadingH1);
-  renderSection(
-    source.accessibility,
-    sections,
-    degradedSections,
-    'accessibility',
-    `${tag} › accessibility`,
-    framework,
-    stripLeadingH1
-  );
+  renderSection(source.usage, sections, `${tag} › usage`, framework, stripLeadingH1);
+  renderSection(source.accessibility, sections, `${tag} › accessibility`, framework, stripLeadingH1);
 
   const noteEntries = Object.values(source.notes ?? {});
   if (noteEntries.length > 0) {
     const noteBlocks: string[] = ['## Notes'];
     for (const note of noteEntries) {
-      const { markdown, degraded } = renderMdxToMarkdown(note.description, framework, `${tag} › notes:${note.name}`);
-      if (degraded) {
-        degradedSections.push(`notes:${note.name}`);
-        continue;
-      }
+      const markdown = renderMdxToMarkdown(note.description, framework, `${tag} › notes:${note.name}`);
       noteBlocks.push(`### ${note.name}`, markdown.trim());
     }
-    if (noteBlocks.length > 1) {
-      sections.push(noteBlocks.join('\n\n'));
-    }
+    sections.push(noteBlocks.join('\n\n'));
   }
 
-  return { markdown: stripBoilerplateProse(sections.join('\n\n')), summary, degradedSections };
+  return { markdown: stripBoilerplateProse(sections.join('\n\n')), summary };
 };
 
 /** Authoritative `componentMeta` (props/slots/events/CSS variables) keyed by tag, plus the target framework. */
@@ -233,8 +200,7 @@ export const buildSubComponentMap = (
  * `componentMeta` tag (the iteration source guarantees coverage). When
  * {@link ComponentApiOptions} is supplied, the props/slots/events/CSS-variable API
  * tables are appended to each `<tag>/<tag>.md` after its prose. Returns a report
- * carrying the roster (inlined into SKILL.md by the harness) and any degraded prose
- * to surface for review.
+ * carrying the roster (inlined into SKILL.md by the harness).
  */
 export const writeComponentReferences = (
   tree: SkillTree,
@@ -245,7 +211,6 @@ export const writeComponentReferences = (
 ): ComponentReferenceReport => {
   const tags = Object.keys(metaMap).sort();
   const roster: ComponentRosterEntry[] = [];
-  const degraded: DegradedProse[] = [];
   const subComponentsByParent = apiOptions ? buildSubComponentMap(apiOptions.componentMeta) : {};
 
   // The ~290-name icon union is shared by every icon-typed prop; emit it once as `references/icons.md`
@@ -258,12 +223,7 @@ export const writeComponentReferences = (
   for (const tag of tags) {
     const apiMeta = apiOptions?.componentMeta[tag];
     const statusBanner = apiMeta ? renderComponentStatusBanner(apiMeta) : '';
-    const { markdown, summary, degradedSections } = renderComponentProse(
-      tag,
-      metaMap[tag],
-      statusBanner,
-      tree.framework
-    );
+    const { markdown, summary } = renderComponentProse(tag, metaMap[tag], statusBanner, tree.framework);
     const sections = [markdown];
     if (apiMeta) {
       sections.push(renderComponentApi(apiMeta, iconNames));
@@ -291,10 +251,7 @@ export const writeComponentReferences = (
       summary: ROSTER_SUMMARY_OVERRIDES[tag] ?? summary,
       ...(apiMeta && componentStatus(apiMeta) ? { status: componentStatus(apiMeta) } : {}),
     });
-    if (degradedSections.length > 0) {
-      degraded.push({ tag, sections: degradedSections });
-    }
   }
 
-  return { tags, roster, degraded };
+  return { tags, roster };
 };

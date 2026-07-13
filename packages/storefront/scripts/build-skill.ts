@@ -41,25 +41,15 @@ const loadComponentGeneration = async (): Promise<ComponentGeneration> => {
   };
 };
 
-/**
- * Degraded prose that is known and accepted (source MDX embeds an interactive component that cannot
- * render to markdown, etc.). Anything degraded and *not* listed here fails the build — the exact
- * regression the drift snapshot cannot distinguish from an intentional change. Entries use the same
- * identifiers `generateTree` reports, e.g. `react p-popover [introduction]`.
- */
-const DEGRADED_ALLOWLIST = new Set<string>();
-
 const generateTree = async (
   framework: Framework,
   generation: ComponentGeneration,
   outputRoot: string,
   routeReferences: RouteReferences
-): Promise<string[]> => {
+): Promise<void> => {
   const root = path.join(outputRoot, framework);
   const tree = new SkillTree(root, framework);
   tree.reset();
-
-  const degraded: string[] = [];
 
   const packageSkillReferences = writePackageSkillReferences(tree, framework, routeReferences);
   console.log(`  ${packageSkillReferences.length} package skill reference files written`);
@@ -77,12 +67,10 @@ const generateTree = async (
   );
   const roster: ComponentRosterEntry[] = report.roster;
   console.log(`  ${report.tags.length} component references written`);
-  degraded.push(...report.degraded.map(({ tag, sections }) => `${framework} ${tag} [${sections.join(', ')}]`));
 
   tree.write('SKILL.md', buildSkillMd(framework, roster, getPackageSkillSections()));
 
   console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
-  return degraded;
 };
 
 /** Parse optional framework positionals and an isolated output root for determinism checks. */
@@ -148,9 +136,8 @@ const main = async (): Promise<void> => {
     tokens: `references/${TOKENS_REFERENCE}`,
   };
 
-  const degraded: string[] = [];
   for (const framework of frameworks as Framework[]) {
-    degraded.push(...(await generateTree(framework, generation, outputRoot, routeReferences)));
+    await generateTree(framework, generation, outputRoot, routeReferences);
   }
 
   if (checkDeterminism) {
@@ -178,16 +165,6 @@ const main = async (): Promise<void> => {
         fs.rmSync(root, { recursive: true, force: true });
       }
     }
-  }
-
-  // Fail on any degraded prose that is not explicitly allowlisted: a degraded section could otherwise
-  // be blessed by the compact hash snapshot on the next `-u`, so gate it here at the source.
-  const unexpected = degraded.filter((entry) => !DEGRADED_ALLOWLIST.has(entry));
-  if (unexpected.length > 0) {
-    console.error(
-      `Degraded prose (review the source MDX, or add to DEGRADED_ALLOWLIST if intentional):\n  ${unexpected.join('\n  ')}`
-    );
-    process.exit(1);
   }
 };
 

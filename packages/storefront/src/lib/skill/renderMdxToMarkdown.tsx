@@ -21,17 +21,6 @@ const STOREFRONT_FRAMEWORK: Record<Framework, StorefrontFramework> = {
   vue: 'vue',
 };
 
-export type RenderMdxResult = {
-  /** The rendered prose as plain markdown. */
-  markdown: string;
-  /**
-   * `true` when the source rendered to nothing meaningful (empty / whitespace /
-   * no textual content). Signals that a human should review the source prose,
-   * since the API tables — sourced from `component-meta`, not MDX — are unaffected.
-   */
-  degraded: boolean;
-};
-
 /**
  * Storefront-only doc components embedded in MDX prose that carry no value in a
  * plain-markdown context. They are substituted with nothing via the `components`
@@ -348,33 +337,56 @@ type MdxComponent = ComponentType<{ components?: Record<string, unknown> }>;
  * is done under a `StorefrontFrameworkProvider` fixed to the target framework and the result is cached
  * per (MDX module, framework). The generator makes one full pass per framework (four in all); this
  * memoizes so framework-independent prose still renders once per framework at most (not once per call
- * site) while framework-dependent prose stays correct. Only successful renders are memoized; a throw is
- * always re-raised, never cached.
+ * site) while framework-dependent prose stays correct. Only completed renders are memoized; an SSR
+ * failure is always re-raised, never cached.
  */
-const renderCache = new WeakMap<MdxComponent, Map<Framework, RenderMdxResult>>();
+const renderCache = new WeakMap<MdxComponent, Map<Framework, string>>();
+
+/** Rendered to nothing meaningful: empty, whitespace, or no textual content at all. */
+const isMeaningless = (markdown: string): boolean => markdown.length === 0 || !/[A-Za-z0-9]/.test(markdown);
 
 /**
  * Renders a storefront MDX `ComponentType` (component introduction / usage /
- * accessibility / notes, partials prose, migration prose) to plain markdown.
+ * accessibility / notes) to plain markdown.
  *
  * Pure and synchronous — performs no I/O. The caller resolves the MDX module to
  * a React component; this renders it to static markup and converts the result.
  * Embedded storefront components are substituted away (see {@link EMBEDDED_COMPONENT_STUBS})
  * or dropped, so no JSX/component noise leaks into the output.
  *
+ * Throws when the source renders to nothing meaningful (empty / no textual content): a degraded
+ * render would ship an invisible content regression, so the build fails at the exact source
+ * instead of gating on a report later. The API tables — sourced from `component-meta`, not MDX —
+ * are unaffected by such failures. Callers with a designed fallback use
+ * {@link tryRenderMdxToMarkdown} instead.
+ *
  * @param framework the tree being generated; fixes `FrameworkNotification` to the matching content and
  *   keys the cache. Defaults to `js` (vanilla-js) for framework-agnostic callers and unit tests.
- * @param label optional source identifier (e.g. `p-button › usage`) used to give an SSR failure an
+ * @param label optional source identifier (e.g. `p-button › usage`) used to give a failure an
  *   actionable message — the raw `renderToStaticMarkup` stack names neither the tag nor the section.
  */
-export const renderMdxToMarkdown = (
-  component: MdxComponent,
-  framework: Framework = 'js',
-  label?: string
-): RenderMdxResult => {
-  const byFramework = renderCache.get(component) ?? new Map<Framework, RenderMdxResult>();
+export const renderMdxToMarkdown = (component: MdxComponent, framework: Framework = 'js', label?: string): string => {
+  const markdown = renderMdx(component, framework, label);
+  if (isMeaningless(markdown)) {
+    throw new Error(`MDX rendered to nothing meaningful${label ? ` for ${label}` : ''} — review the source prose.`);
+  }
+  return markdown;
+};
+
+/**
+ * Non-throwing variant of {@link renderMdxToMarkdown} for prose whose absence is legitimate and has a
+ * designed fallback (e.g. an example's "when to use" cell falling back to the example name). Returns
+ * `null` when the source renders to nothing meaningful.
+ */
+export const tryRenderMdxToMarkdown = (component: MdxComponent, framework: Framework = 'js'): string | null => {
+  const markdown = renderMdx(component, framework);
+  return isMeaningless(markdown) ? null : markdown;
+};
+
+const renderMdx = (component: MdxComponent, framework: Framework, label?: string): string => {
+  const byFramework = renderCache.get(component) ?? new Map<Framework, string>();
   const cached = byFramework.get(framework);
-  if (cached) {
+  if (cached !== undefined) {
     return cached;
   }
 
@@ -406,10 +418,7 @@ export const renderMdxToMarkdown = (
     throw new Error(`MDX SSR failed${label ? ` for ${label}` : ''}: ${message}`, { cause: error });
   }
   const markdown = normalize(renderBlocks(parse(html)));
-  const degraded = markdown.length === 0 || !/[A-Za-z0-9]/.test(markdown);
-
-  const result: RenderMdxResult = { markdown, degraded };
-  byFramework.set(framework, result);
+  byFramework.set(framework, markdown);
   renderCache.set(component, byFramework);
-  return result;
+  return markdown;
 };

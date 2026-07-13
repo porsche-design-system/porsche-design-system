@@ -19,6 +19,12 @@ describe('component reference generator', () => {
     metaMap = await compileComponentDocsMeta();
   });
 
+  /** The fixture map without `p-degraded`, whose introduction deliberately fails the render. */
+  const healthyMetaMap = (): ComponentDocsMetaMap => {
+    const { 'p-degraded': _, ...rest } = metaMap;
+    return rest;
+  };
+
   describe('renderComponentProse', () => {
     it('emits a single tag H1 followed by the introduction, usage and accessibility sections', () => {
       const { markdown } = renderComponentProse('p-button', metaMap['p-button']);
@@ -42,19 +48,15 @@ describe('component reference generator', () => {
     });
 
     it('omits the notes section when a component has none', () => {
-      const { markdown, degradedSections } = renderComponentProse('p-accordion', metaMap['p-accordion']);
+      const { markdown } = renderComponentProse('p-accordion', metaMap['p-accordion']);
 
       expect(markdown).not.toContain('## Notes');
-      expect(degradedSections).toEqual([]);
     });
 
-    it('flags degraded prose instead of emitting it', () => {
-      const { markdown, degradedSections, summary } = renderComponentProse('p-degraded', metaMap['p-degraded']);
-
-      expect(degradedSections).toContain('introduction');
-      expect(summary).toBe('_No description available._');
-      // Usage / accessibility still render, so the file is not empty.
-      expect(markdown).toContain('## Usage');
+    it('throws on degraded prose instead of emitting it, naming the source section', () => {
+      expect(() => renderComponentProse('p-degraded', metaMap['p-degraded'])).toThrow(
+        /rendered to nothing meaningful for p-degraded › introduction/
+      );
     });
 
     it('snapshots the full prose body for a representative component', () => {
@@ -73,14 +75,14 @@ describe('component reference generator', () => {
       fs.rmSync(root, { recursive: true, force: true });
     });
 
-    it('writes a <tag>/<tag>.md per component, returns a roster, and reports degraded prose', () => {
+    it('writes a <tag>/<tag>.md per component and returns a roster', () => {
       const tree = new SkillTree(root);
       tree.reset();
 
-      const report = writeComponentReferences(tree, metaMap);
+      const report = writeComponentReferences(tree, healthyMetaMap());
 
       // Every componentMeta tag yields a reference file (sorted, deterministic order).
-      expect(report.tags).toEqual(['p-accordion', 'p-button', 'p-degraded']);
+      expect(report.tags).toEqual(['p-accordion', 'p-button']);
       for (const tag of report.tags) {
         expect(fs.existsSync(tree.resolve(`references/components/${tag}/${tag}.md`)), `${tag}.md`).toBe(true);
       }
@@ -94,20 +96,26 @@ describe('component reference generator', () => {
       // No standalone overview file is written — the roster lives in SKILL.md.
       expect(fs.existsSync(tree.resolve('references/components/overview.md'))).toBe(false);
 
-      // Degraded prose surfaces for review.
-      expect(report.degraded).toEqual([{ tag: 'p-degraded', sections: ['introduction'] }]);
-
       // Storefront-absolute prose links are resolved to in-tree references in the written file.
       const buttonMd = fs.readFileSync(tree.resolve('references/components/p-button/p-button.md'), 'utf-8');
       expect(buttonMd).toContain('[Link](../p-link/p-link.md)');
       expect(buttonMd).not.toContain('](/components/');
     });
 
+    it('propagates a degraded-prose failure instead of writing the tree', () => {
+      const tree = new SkillTree(root);
+      tree.reset();
+
+      expect(() => writeComponentReferences(tree, metaMap)).toThrow(
+        /rendered to nothing meaningful for p-degraded › introduction/
+      );
+    });
+
     it('snapshots the generated roster', () => {
       const tree = new SkillTree(root);
       tree.reset();
 
-      expect(writeComponentReferences(tree, metaMap).roster).toMatchSnapshot();
+      expect(writeComponentReferences(tree, healthyMetaMap()).roster).toMatchSnapshot();
     });
   });
 

@@ -41,9 +41,5 @@ exports[`component reference generator > writeComponentReferences > snapshots th
     "summary": "The \`p-button\` component is essential for performing **interaction** events such as submitting a form.",
     "tag": "p-button",
   },
-  {
-    "summary": "_No description available._",
-    "tag": "p-degraded",
-  },
 ]
 `;

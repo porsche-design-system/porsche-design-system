@@ -15,14 +15,13 @@ describe('renderMdxToMarkdown', () => {
 
   it('renders representative component prose blocks to non-empty markdown', () => {
     for (const name of ['usage', 'accessibility', 'introduction']) {
-      const { markdown, degraded } = renderMdxToMarkdown(compiled[name]);
-      expect(degraded, `${name} should not be degraded`).toBe(false);
+      const markdown = renderMdxToMarkdown(compiled[name]);
       expect(markdown.trim().length, `${name} should be non-empty`).toBeGreaterThan(20);
     }
   });
 
   it('preserves markdown structure (headings, lists, emphasis, inline code, links)', () => {
-    const { markdown } = renderMdxToMarkdown(compiled.usage);
+    const markdown = renderMdxToMarkdown(compiled.usage);
 
     expect(markdown).toContain('## Usage');
     expect(markdown).toContain('### Do:');
@@ -32,20 +31,20 @@ describe('renderMdxToMarkdown', () => {
   });
 
   it('renders links, ordered lists and fenced code blocks', () => {
-    const accessibility = renderMdxToMarkdown(compiled.accessibility).markdown;
+    const accessibility = renderMdxToMarkdown(compiled.accessibility);
     expect(accessibility).toContain(
       '[WAI-ARIA Accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)'
     );
     expect(accessibility).toContain('1. Tab moves focus');
     expect(accessibility).toContain('*unique*');
 
-    const introduction = renderMdxToMarkdown(compiled.introduction).markdown;
+    const introduction = renderMdxToMarkdown(compiled.introduction);
     expect(introduction).toContain('```html');
     expect(introduction).toContain('<p-accordion heading="Section 1">Panel content</p-accordion>');
   });
 
   it('surfaces a Notification as a blockquote admonition, not dropped', () => {
-    const { markdown } = renderMdxToMarkdown(compiled.introduction);
+    const markdown = renderMdxToMarkdown(compiled.introduction);
 
     // The slotted guidance is preserved as a blockquote instead of being dropped as custom-element noise.
     expect(markdown).toContain('> This component is stable.');
@@ -66,7 +65,7 @@ describe('renderMdxToMarkdown', () => {
         />
       </pre>
     );
-    const { markdown } = renderMdxToMarkdown(Highlighted);
+    const markdown = renderMdxToMarkdown(Highlighted);
 
     expect(markdown).toBe('```html\n<p-accordion heading="x">Panel</p-accordion>\n```');
     expect(markdown).not.toContain('hljs');
@@ -74,7 +73,7 @@ describe('renderMdxToMarkdown', () => {
   });
 
   it('substitutes embedded JSX components — no raw JSX or component noise leaks', () => {
-    const { markdown } = renderMdxToMarkdown(compiled.usage);
+    const markdown = renderMdxToMarkdown(compiled.usage);
 
     expect(markdown).not.toContain('<');
     expect(markdown).not.toContain('TableOfContents');
@@ -84,9 +83,8 @@ describe('renderMdxToMarkdown', () => {
   });
 
   it('drops directly-rendered component noise while keeping surrounding prose', () => {
-    const { markdown, degraded } = renderMdxToMarkdown(NoiseComponent);
+    const markdown = renderMdxToMarkdown(NoiseComponent);
 
-    expect(degraded).toBe(false);
     expect(markdown).toContain('## Usage');
     expect(markdown).toContain('Use the `variant` prop');
     expect(markdown).toContain('- Keep prose readable.');
@@ -112,7 +110,7 @@ describe('renderMdxToMarkdown', () => {
         </tbody>
       </table>
     );
-    const { markdown } = renderMdxToMarkdown(TdTable);
+    const markdown = renderMdxToMarkdown(TdTable);
 
     expect(markdown).toBe('| Name | Value |\n| --- | --- |\n| a | 1 |');
   });
@@ -136,21 +134,20 @@ describe('renderMdxToMarkdown', () => {
         </tbody>
       </table>
     );
-    const { markdown } = renderMdxToMarkdown(PipeTable);
+    const markdown = renderMdxToMarkdown(PipeTable);
 
     expect(markdown).toBe("| Option | Type |\n| --- | --- |\n| format | `'html' \\| 'jsx' \\| 'sha256'` |");
   });
 
-  it('flags prose that renders to nothing meaningful as degraded', () => {
-    const { markdown, degraded } = renderMdxToMarkdown(compiled.degraded);
-
-    expect(degraded).toBe(true);
-    expect(markdown).toBe('');
+  it('throws on prose that renders to nothing meaningful, naming the source label', () => {
+    expect(() => renderMdxToMarkdown(compiled.degraded, 'js', 'p-degraded › introduction')).toThrow(
+      /rendered to nothing meaningful for p-degraded › introduction/
+    );
   });
 
-  it('flags a component that renders nothing as degraded', () => {
+  it('throws on a component that renders nothing', () => {
     const Empty: ComponentType = () => null;
-    expect(renderMdxToMarkdown(Empty)).toEqual({ markdown: '', degraded: true });
+    expect(() => renderMdxToMarkdown(Empty)).toThrow(/rendered to nothing meaningful/);
   });
 
   it('rethrows an SSR failure with the source label for context', () => {

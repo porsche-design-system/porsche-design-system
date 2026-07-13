@@ -6,7 +6,7 @@ import type { Story } from '../../models/story';
 import { createFrameworkMarkup } from '../../utils/generator/createFrameworkMarkup';
 import type { HTMLTagOrComponent } from '../../utils/generator/generator';
 import { escapeCell, leadSentence, markdownTable } from './markdown';
-import { renderMdxToMarkdown } from './renderMdxToMarkdown';
+import { tryRenderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { Framework, SkillTree } from './skillTree';
 
 /**
@@ -53,16 +53,15 @@ const DEFAULT_EXAMPLE_KEY = 'default';
 const toFileBase = (key: string): string =>
   key.replace(/(^|[-_\s]+)([a-zA-Z0-9])/g, (_, __, char: string) => char.toUpperCase());
 
-/** First sentence of the rendered `description`, used as the row's short "when to use". */
+/** First sentence of the rendered `description`, used as the row's short "when to use". Falls back
+ * to the example name when there is no description or it renders to nothing (some descriptions are
+ * only an embedded live demo). */
 const whenToUse = (description: ComponentType | undefined, fallback: string, framework: Framework): string => {
   if (!description) {
     return fallback;
   }
-  const { markdown, degraded } = renderMdxToMarkdown(description, framework);
-  if (degraded) {
-    return fallback;
-  }
-  return leadSentence(markdown) || fallback;
+  const markdown = tryRenderMdxToMarkdown(description, framework);
+  return (markdown && leadSentence(markdown)) || fallback;
 };
 
 const storyMarkup = (story: Story<HTMLTagOrComponent>, framework: Framework, theme: StorefrontColorScheme): string =>
