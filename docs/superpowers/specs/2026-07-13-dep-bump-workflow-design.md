@@ -115,9 +115,12 @@ verdict; a retained major without verification evidence yields `BLOCKED`.
   and hands off.
 - Changing the held-back set or the `npm:update:non-interactive` script.
 
-## Open items for the plan
+## Resolved decisions
 
-- Exact resolution path for consumer `outcome_contract` schemas (`.turbo-spec/schemas/` vs a
-  path reference).
-- Egress allowlist entries for release-note evidence, if the always-on lists miss any host.
-- Trigger set: CLI now; a weekly schedule later.
+- Consumer `outcome_contract` schemas are path-referenced from `.turbo-spec/schemas/`
+  (bare names resolve to built-ins; a path with a slash resolves against the repo root).
+- `network.allowed` starts empty; add hosts only when the sandbox log prints
+  `[sandbox] egress denied` for a release-note evidence host the resolver needs.
+- Trigger is the turbo-spec CLI `run` for now; a weekly schedule can wrap it later.
+- The `resolving-npm-eresolve` skill is reached via the `.github/skills` -> `../skills`
+  symlink, so it auto-advertises to the update agent with no relocation needed.

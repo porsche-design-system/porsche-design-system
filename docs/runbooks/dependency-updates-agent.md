@@ -1,5 +1,11 @@
 # Dependency Updates — AI Cloud Agent Runbook
 
+> **Superseded for agent runs:** the recurring npm dependency bump is now driven by
+> the turbo-spec workflow at `.turbo-spec/workflows/dep-bump.yml` (scripts under
+> `scripts/dep-bump/`, ERESOLVE remedies via the `resolving-npm-eresolve` skill).
+> This runbook remains the human reference; agents follow the workflow's `dep_update`
+> system prompt, which explicitly supersedes the manual steps below.
+
 > **Audience**: An autonomous AI cloud agent (e.g. a scheduled Copilot coding agent) running the **recurring weekly npm
 > dependency update** for this monorepo.
 >
