@@ -5,7 +5,8 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { resolveFrameworkPlaceholder } from '@/lib/skill/links';
 import {
   getPackageSkillRouteReferences,
-  getPackageSkillSections,
+  renderStylesheetsSection,
+  renderStylingSection,
   writePackageSkillReferences,
 } from '@/lib/skill/packageSkills';
 import { SkillTree } from '@/lib/skill/skillTree';
@@ -40,7 +41,7 @@ describe('package skill registry', () => {
 
   const read = (relativePath: string): string => fs.readFileSync(tree.resolve(relativePath), 'utf-8');
 
-  it('derives mounted routes and SKILL.md rows from the package exports', () => {
+  it('derives mounted routes from the package exports', () => {
     expect(getPackageSkillRouteReferences()).toEqual({
       tailwindcss: 'references/styles/tailwindcss.md',
       scss: 'references/styles/scss.md',
@@ -48,19 +49,26 @@ describe('package skill registry', () => {
       emotion: 'references/styles/emotion.md',
       stylesheets: 'references/stylesheets.md',
     });
-    expect(getPackageSkillSections()).toEqual({
-      stylesheets: {
-        title: stylesheetsSkill.title,
-        description: stylesheetsSkill.description,
-        intro: stylesheetsSkill.intro,
-        resolvedPath: 'references/stylesheets.md',
-      },
-      styling: [tailwindcssSkill, scssSkill, vanillaExtractSkill, emotionSkill].map(({ name, title, description }) => ({
-        title,
-        description,
-        resolvedPath: `references/styles/${name}.md`,
-      })),
-    });
+  });
+
+  it('renders the Stylesheets section from the fragment intro plus the aggregator-owned theming note', () => {
+    const section = renderStylesheetsSection('react');
+
+    expect(section).toContain(stylesheetsSkill.intro ?? stylesheetsSkill.description);
+    expect(section).toContain('[stylesheets.md](references/stylesheets.md)');
+    expect(section).toContain('There is **no** `theme` prop');
+    expect(section).toContain('`PorscheDesignSystemProvider`');
+  });
+
+  it('renders one Styling table row per registered styling solution', () => {
+    const section = renderStylingSection();
+
+    for (const { title, description, name } of [tailwindcssSkill, scssSkill, vanillaExtractSkill, emotionSkill]) {
+      expect(section).toContain(`| ${title} |`);
+      expect(section).toContain(description);
+      expect(section).toContain(`references/styles/${name}.md`);
+    }
+    expect(section).toContain('four styling solutions');
   });
 
   const resolved = (markdown: string): string => resolveFrameworkPlaceholder(markdown, 'js');

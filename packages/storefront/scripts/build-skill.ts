@@ -3,16 +3,18 @@ import os from 'node:os';
 import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentDocsMetaMap } from '../src/lib/skill/components/reference';
+import { renderComponentsSection } from '../src/lib/skill/components/section';
 import type { RouteReferences } from '../src/lib/skill/links';
 import {
   getPackageSkillRouteReferences,
-  getPackageSkillSections,
+  renderStylesheetsSection,
+  renderStylingSection,
   writePackageSkillReferences,
 } from '../src/lib/skill/packageSkills';
 import { buildSkillMd } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SKILL_STAGING_DIR, SkillTree } from '../src/lib/skill/skillTree';
 import { findSkillTreeDifference } from '../src/lib/skill/skillTreeHash';
-import { TOKENS_REFERENCE, writeTokensReference } from '../src/lib/skill/tokensReference';
+import { renderTokensSection, TOKENS_REFERENCE, writeTokensReference } from '../src/lib/skill/tokensReference';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 const DEFAULT_OUTPUT_ROOT = path.resolve(REPO_ROOT, SKILL_STAGING_DIR);
@@ -60,7 +62,15 @@ const generateTree = async (
   const report = writeComponentReferences(tree, { docsMeta: componentDocsMeta, componentMeta, routeReferences });
   console.log(`  ${report.tags.length} component references written`);
 
-  tree.write('SKILL.md', buildSkillMd(framework, report.roster, getPackageSkillSections()));
+  tree.write(
+    'SKILL.md',
+    buildSkillMd(framework, {
+      components: renderComponentsSection(framework, report.roster),
+      stylesheets: renderStylesheetsSection(framework),
+      tokens: renderTokensSection(),
+      styling: renderStylingSection(),
+    })
+  );
 
   console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
 };

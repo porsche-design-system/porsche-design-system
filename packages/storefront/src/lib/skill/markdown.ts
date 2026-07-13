@@ -9,11 +9,7 @@
  * escaped before pipes so an escaped pipe already in the text (`\|`) is not misread as a live delimiter.
  */
 export const escapeCell = (text: string): string =>
-  text
-    .replace(/\s+/g, ' ')
-    .trim()
-    .replace(/\\/g, '\\\\')
-    .replace(/\|/g, '\\|');
+  text.replace(/\s+/g, ' ').trim().replace(/\\/g, '\\\\').replace(/\|/g, '\\|');
 
 /**
  * Drop a redundant leading top-level heading. MDX sections often open with a
@@ -26,8 +22,7 @@ export const stripLeadingH1 = (markdown: string): string => markdown.replace(/^#
  * Drop leading blockquote block(s) (e.g. a notification admonition an introduction opens with) so the
  * roster summary is derived from the first real prose sentence, not the admonition text.
  */
-export const stripLeadingBlockquotes = (markdown: string): string =>
-  markdown.replace(/^(?:>[^\n]*(?:\n|$))+\s*/, '');
+export const stripLeadingBlockquotes = (markdown: string): string => markdown.replace(/^(?:>[^\n]*(?:\n|$))+\s*/, '');
 
 /**
  * A period that does not end a sentence: a dotted abbreviation (`e.g`, `i.e`, `U.S`)

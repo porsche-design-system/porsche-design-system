@@ -75,3 +75,9 @@ export const TOKENS_REFERENCE = 'tokens.md';
 /** Write the design-tokens reference (`references/tokens.md`) into the skill tree. Returns the path written. */
 export const writeTokensReference = (tree: SkillTree): string =>
   tree.writeReference(TOKENS_REFERENCE, getTokensSkill());
+
+/** The `## Tokens` SKILL.md section body: a one-paragraph "use when" pointing at the tokens reference. */
+export const renderTokensSection = (): string =>
+  'Design tokens — the source values for color, spacing, typography, motion, breakpoints and more, ' +
+  'available as JS constants and as CSS custom properties. Open [tokens.md](references/tokens.md) when ' +
+  'using tokens directly in custom UI.';

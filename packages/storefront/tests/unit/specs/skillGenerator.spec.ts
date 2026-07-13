@@ -3,48 +3,20 @@ import os from 'node:os';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { ComponentRosterEntry } from '@/lib/skill/components/reference';
-import {
-  ACTIVATION_DESCRIPTION,
-  type PackageSkillSections,
-  buildSkillMd as renderSkillMd,
-  skillName,
-} from '@/lib/skill/skillMd';
+import { renderComponentsSection } from '@/lib/skill/components/section';
+import { renderStylesheetsSection, renderStylingSection } from '@/lib/skill/packageSkills';
+import { ACTIVATION_DESCRIPTION, buildSkillMd as renderSkillMd, skillName } from '@/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SKILL_DIRECTORY_LAYOUT, SkillTree } from '@/lib/skill/skillTree';
+import { renderTokensSection } from '@/lib/skill/tokensReference';
 
-const stylesheetsDescription =
-  'The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work.';
-const packageSkills: PackageSkillSections = {
-  stylesheets: {
-    title: 'Stylesheets',
-    description: stylesheetsDescription,
-    intro: stylesheetsDescription,
-    resolvedPath: 'references/stylesheets.md',
-  },
-  styling: [
-    {
-      title: 'Tailwind CSS',
-      description: 'utility-first styling on a PDS Tailwind v4 theme',
-      resolvedPath: 'references/styles/tailwindcss.md',
-    },
-    {
-      title: 'SCSS',
-      description: 'Sass variables and mixins under the `pds` namespace',
-      resolvedPath: 'references/styles/scss.md',
-    },
-    {
-      title: 'vanilla-extract',
-      description: 'typed tokens and utilities in `*.css.ts` files',
-      resolvedPath: 'references/styles/vanilla-extract.md',
-    },
-    {
-      title: 'Emotion',
-      description: 'tokens and utilities in `css`/`styled` styles',
-      resolvedPath: 'references/styles/emotion.md',
-    },
-  ],
-};
+/** Compose the full SKILL.md from the real domain section renderers, as the generator does. */
 const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntry[] = []): string =>
-  renderSkillMd(framework, roster, packageSkills);
+  renderSkillMd(framework, {
+    components: renderComponentsSection(framework, roster),
+    stylesheets: renderStylesheetsSection(framework),
+    tokens: renderTokensSection(),
+    styling: renderStylingSection(),
+  });
 
 describe('SkillTree', () => {
   let root: string;
@@ -207,13 +179,6 @@ describe('buildSkillMd', () => {
   it('states where component examples live in the Components section', () => {
     const markdown = buildSkillMd('react', [{ tag: 'p-button', summary: 'x' }]);
     expect(markdown).toContain('references/components/<tag>/examples/');
-  });
-
-  it('falls back to a placeholder when no roster is supplied', () => {
-    const markdown = buildSkillMd('js');
-
-    expect(markdown).toContain('## Components');
-    expect(markdown).toContain('populated by the content generators');
   });
 
   it('escapes pipe characters in roster summaries', () => {
