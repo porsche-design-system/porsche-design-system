@@ -2,18 +2,17 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
-import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExamples';
-import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
+import type { ComponentDocsMetaMap } from '../src/lib/skill/components/reference';
+import type { RouteReferences } from '../src/lib/skill/links';
 import {
   getPackageSkillRouteReferences,
   getPackageSkillSections,
   writePackageSkillReferences,
 } from '../src/lib/skill/packageSkills';
-import { buildSkillMd, type ComponentRosterEntry } from '../src/lib/skill/skillMd';
+import { buildSkillMd } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SKILL_STAGING_DIR, SkillTree } from '../src/lib/skill/skillTree';
 import { findSkillTreeDifference } from '../src/lib/skill/skillTreeHash';
 import { TOKENS_REFERENCE, writeTokensReference } from '../src/lib/skill/tokensReference';
-import type { RouteReferences } from '../src/lib/skill/links';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 const DEFAULT_OUTPUT_ROOT = path.resolve(REPO_ROOT, SKILL_STAGING_DIR);
@@ -21,22 +20,22 @@ const DEFAULT_OUTPUT_ROOT = path.resolve(REPO_ROOT, SKILL_STAGING_DIR);
 /**
  * The component-reference generation, loaded together as a unit because it all depends
  * on the storefront runtime: the docs meta's prose is MDX, and the examples pipeline
- * (`componentsReference` → `componentExamples` → `createFrameworkMarkup`) pulls in the
+ * (`components/reference` → `components/examples` → `createFrameworkMarkup`) pulls in the
  * storefront's `@/`-aliased generators. Both require the MDX/alias-aware runtime wired
  * by `build:skill`; resolution failures are fatal because this output is packaged.
  */
 type ComponentGeneration = {
-  componentDocsMeta: ComponentDocsMetaMap & ComponentExamplesMetaMap;
-  writeComponentReferences: typeof import('../src/lib/skill/componentsReference').writeComponentReferences;
+  componentDocsMeta: ComponentDocsMetaMap;
+  writeComponentReferences: typeof import('../src/lib/skill/components/reference').writeComponentReferences;
 };
 
 const loadComponentGeneration = async (): Promise<ComponentGeneration> => {
   const [meta, references] = await Promise.all([
     import('../src/app/(main)/components/components.meta'),
-    import('../src/lib/skill/componentsReference'),
+    import('../src/lib/skill/components/reference'),
   ]);
   return {
-    componentDocsMeta: meta.componentDocsMeta as unknown as ComponentDocsMetaMap & ComponentExamplesMetaMap,
+    componentDocsMeta: meta.componentDocsMeta as unknown as ComponentDocsMetaMap,
     writeComponentReferences: references.writeComponentReferences,
   };
 };
@@ -51,24 +50,17 @@ const generateTree = async (
   const tree = new SkillTree(root, framework);
   tree.reset();
 
-  const packageSkillReferences = writePackageSkillReferences(tree, framework, routeReferences);
+  const packageSkillReferences = writePackageSkillReferences(tree, routeReferences);
   console.log(`  ${packageSkillReferences.length} package skill reference files written`);
 
   writeTokensReference(tree);
   console.log('  tokens reference written');
 
   const { componentDocsMeta, writeComponentReferences } = generation;
-  const report = writeComponentReferences(
-    tree,
-    componentDocsMeta,
-    { componentMeta, framework },
-    { metaMap: componentDocsMeta, framework },
-    routeReferences
-  );
-  const roster: ComponentRosterEntry[] = report.roster;
+  const report = writeComponentReferences(tree, { docsMeta: componentDocsMeta, componentMeta, routeReferences });
   console.log(`  ${report.tags.length} component references written`);
 
-  tree.write('SKILL.md', buildSkillMd(framework, roster, getPackageSkillSections()));
+  tree.write('SKILL.md', buildSkillMd(framework, report.roster, getPackageSkillSections()));
 
   console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
 };

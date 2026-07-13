@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import type { ComponentDocsMetaMap, ComponentProseSource } from '@/lib/skill/componentsReference';
+import type { ComponentProseSource } from '@/lib/skill/components/prose';
 import { compileMdx } from './proseFixtures';
 
 /**
@@ -100,9 +100,9 @@ Minimal accessibility prose.
   },
 };
 
-/** Compile every fixture's MDX into a `ComponentDocsMetaMap` ready for the generator. */
-export const compileComponentDocsMeta = async (): Promise<ComponentDocsMetaMap> => {
-  const map: ComponentDocsMetaMap = {};
+/** Compile every fixture's MDX into a prose-source map ready for the generator. */
+export const compileComponentDocsMeta = async (): Promise<Record<string, ComponentProseSource>> => {
+  const map: Record<string, ComponentProseSource> = {};
   for (const [tag, raw] of Object.entries(RAW_FIXTURES)) {
     const source: ComponentProseSource = {
       introduction: await compileMdx(raw.introduction),

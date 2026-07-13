@@ -1,18 +1,19 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { stylesheetsSkill } from '../../../../components/projects/stylesheets/skill/skill';
-import { emotionSkill } from '../../../../styles/projects/emotion/skill/skill';
-import { scssSkill } from '../../../../styles/projects/scss/skill/skill';
-import { tailwindcssSkill } from '../../../../styles/projects/tailwindcss/skill/skill';
-import { vanillaExtractSkill } from '../../../../styles/projects/vanilla-extract/skill/skill';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { resolveFrameworkPlaceholder } from '@/lib/skill/links';
 import {
   getPackageSkillRouteReferences,
   getPackageSkillSections,
   writePackageSkillReferences,
 } from '@/lib/skill/packageSkills';
 import { SkillTree } from '@/lib/skill/skillTree';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { stylesheetsSkill } from '../../../../components/projects/stylesheets/skill/skill';
+import { emotionSkill } from '../../../../styles/projects/emotion/skill/skill';
+import { scssSkill } from '../../../../styles/projects/scss/skill/skill';
+import { tailwindcssSkill } from '../../../../styles/projects/tailwindcss/skill/skill';
+import { vanillaExtractSkill } from '../../../../styles/projects/vanilla-extract/skill/skill';
 
 const routeReferences = {
   tailwindcss: 'references/styles/tailwindcss.md',
@@ -29,7 +30,7 @@ describe('package skill registry', () => {
 
   beforeEach(() => {
     root = fs.mkdtempSync(path.join(os.tmpdir(), 'package-skills-'));
-    tree = new SkillTree(root);
+    tree = new SkillTree(root, 'js');
     tree.reset();
   });
 
@@ -62,8 +63,10 @@ describe('package skill registry', () => {
     });
   });
 
+  const resolved = (markdown: string): string => resolveFrameworkPlaceholder(markdown, 'js');
+
   it('writes package files and preserves the hybrid raw stylesheet pointers', () => {
-    const written = writePackageSkillReferences(tree, 'js', routeReferences);
+    const written = writePackageSkillReferences(tree, routeReferences);
 
     expect(written).toEqual([
       'references/styles/tailwindcss.md',
@@ -72,19 +75,22 @@ describe('package skill registry', () => {
       'references/styles/emotion.md',
       'references/stylesheets.md',
     ]);
-    expect(read('references/styles/tailwindcss.md')).toContain(tailwindcssSkill.getContent());
+    expect(read('references/styles/tailwindcss.md')).toContain(resolved(tailwindcssSkill.getContent()));
     expect(read('references/styles/tailwindcss.md')).toContain('../tailwindcss/index.css');
-    expect(read('references/styles/scss.md')).toContain(scssSkill.getContent());
+    expect(read('references/styles/scss.md')).toContain(resolved(scssSkill.getContent()));
     expect(read('references/styles/scss.md')).toContain('../scss');
-    expect(read('references/styles/vanilla-extract.md')).toBe(vanillaExtractSkill.getContent());
-    expect(read('references/styles/emotion.md')).toBe(emotionSkill.getContent());
+    expect(read('references/styles/vanilla-extract.md')).toBe(resolved(vanillaExtractSkill.getContent()));
+    expect(read('references/styles/emotion.md')).toBe(resolved(emotionSkill.getContent()));
     expect(read('references/stylesheets.md')).toContain('](./styles/scss.md)');
     expect(read('references/stylesheets.md')).not.toContain('](/');
   });
   it('uses the js-peer SCSS pointer for framework wrappers', () => {
-    writePackageSkillReferences(tree, 'react', routeReferences);
+    const reactTree = new SkillTree(root, 'react');
+    reactTree.reset();
+    writePackageSkillReferences(reactTree, routeReferences);
 
-    expect(read('references/styles/tailwindcss.md')).toContain('../tailwindcss/index.css');
-    expect(read('references/styles/scss.md')).toContain('@porsche-design-system/components-js/scss');
+    const readReact = (relativePath: string): string => fs.readFileSync(reactTree.resolve(relativePath), 'utf-8');
+    expect(readReact('references/styles/tailwindcss.md')).toContain('../tailwindcss/index.css');
+    expect(readReact('references/styles/scss.md')).toContain('@porsche-design-system/components-js/scss');
   });
 });

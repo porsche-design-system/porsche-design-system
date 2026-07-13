@@ -5,7 +5,7 @@ import { emotionSkill } from '../../../../styles/projects/emotion/skill/skill';
 import { scssSkill } from '../../../../styles/projects/scss/skill/skill';
 import { tailwindcssSkill } from '../../../../styles/projects/tailwindcss/skill/skill';
 import { vanillaExtractSkill } from '../../../../styles/projects/vanilla-extract/skill/skill';
-import { rewriteDocLinks, type RouteReferences } from './links';
+import { type RouteReferences, rewriteDocLinks } from './links';
 import { rawScssReference, rawTailwindcssReference } from './rawStyleReferences';
 import type { PackageSkillSections, SkillReferenceRow } from './skillMd';
 import type { Framework, SkillTree } from './skillTree';
@@ -59,14 +59,10 @@ export const getPackageSkillSections = (): PackageSkillSections => ({
 const fullStylesheetSection = (rawReference: string): string =>
   `## Full stylesheet\n\nThe tables above are the index, with each token's value. For the complete generated stylesheet — resets, deprecated aliases and everything not tabulated here — read \`${rawReference}\` in the installed package.\n`;
 
-export const writePackageSkillReferences = (
-  tree: SkillTree,
-  framework: Framework,
-  routeReferences: RouteReferences
-): string[] =>
+export const writePackageSkillReferences = (tree: SkillTree, routeReferences: RouteReferences): string[] =>
   PACKAGE_SKILLS.map((registration) => {
     const reference = referencePath(registration);
-    const rawReference = registration.rawReference?.(framework);
+    const rawReference = registration.rawReference?.(tree.framework);
     const packageContent = registration.skill.getContent();
     const content = rawReference ? `${packageContent}\n${fullStylesheetSection(rawReference)}` : packageContent;
     const treePath = path.posix.join('references', reference);

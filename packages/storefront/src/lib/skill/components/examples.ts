@@ -1,13 +1,13 @@
 import type { CodeSample, FrameworkMarkup } from '@porsche-design-system/shared';
 import type { ComponentType } from 'react';
-import type { StorefrontColorScheme } from '../../models/colorScheme';
-import type { ExampleMeta } from '../../models/meta';
-import type { Story } from '../../models/story';
-import { createFrameworkMarkup } from '../../utils/generator/createFrameworkMarkup';
-import type { HTMLTagOrComponent } from '../../utils/generator/generator';
-import { escapeCell, leadSentence, markdownTable } from './markdown';
-import { tryRenderMdxToMarkdown } from './renderMdxToMarkdown';
-import type { Framework, SkillTree } from './skillTree';
+import type { StorefrontColorScheme } from '../../../models/colorScheme';
+import type { ExampleMeta } from '../../../models/meta';
+import type { Story } from '../../../models/story';
+import { createFrameworkMarkup } from '../../../utils/generator/createFrameworkMarkup';
+import type { HTMLTagOrComponent } from '../../../utils/generator/generator';
+import { escapeCell, leadSentence, markdownTable } from '../markdown';
+import { tryRenderMdxToMarkdown } from '../renderMdxToMarkdown';
+import type { Framework, SkillTree } from '../skillTree';
 
 /**
  * Emits one example file per component example and owns the examples reference table
@@ -27,7 +27,7 @@ import type { Framework, SkillTree } from './skillTree';
  * produced entirely from the story → `createFrameworkMarkup` / `CodeSample` path.
  */
 
-/** Theme the example markup is generated for when the caller does not specify one. */
+/** Theme every example's story markup is generated for. */
 export const DEFAULT_EXAMPLE_THEME: StorefrontColorScheme = 'scheme-light';
 
 /** Skill `Framework` → `FrameworkMarkup` key (the js skill is the vanilla-JS variant). */
@@ -64,25 +64,22 @@ const whenToUse = (description: ComponentType | undefined, fallback: string, fra
   return (markdown && leadSentence(markdown)) || fallback;
 };
 
-const storyMarkup = (story: Story<HTMLTagOrComponent>, framework: Framework, theme: StorefrontColorScheme): string =>
-  createFrameworkMarkup(story.generator(story.state), story.state, theme)[FRAMEWORK_MARKUP_KEY[framework]] ?? '';
+const storyMarkup = (story: Story<HTMLTagOrComponent>, framework: Framework): string =>
+  createFrameworkMarkup(story.generator(story.state), story.state, DEFAULT_EXAMPLE_THEME)[
+    FRAMEWORK_MARKUP_KEY[framework]
+  ] ?? '';
 
 /** A single planned example: its display name, short usage note and the markup to emit (if any). */
 type PlannedExample = { name: string; whenToUse: string; fileBase: string; markup: string };
 
-const planExample = (
-  key: string,
-  example: ExampleMeta,
-  framework: Framework,
-  theme: StorefrontColorScheme
-): PlannedExample => {
+const planExample = (key: string, example: ExampleMeta, framework: Framework): PlannedExample => {
   const base = { name: example.name, fileBase: toFileBase(key) };
   switch (example.kind) {
     case 'story':
       return {
         ...base,
         whenToUse: whenToUse(example.description, example.name, framework),
-        markup: storyMarkup(example.story, framework, theme),
+        markup: storyMarkup(example.story, framework),
       };
     case 'example':
       return {
@@ -101,29 +98,14 @@ export type ComponentExamplesSource = {
   examples: Record<string, ExampleMeta>;
 };
 
-/** Map of `componentMeta` tag → its storefront examples source. */
-export type ComponentExamplesMetaMap = Record<string, ComponentExamplesSource>;
-
-export type ComponentExamplesOptions = {
-  metaMap: ComponentExamplesMetaMap;
-  framework: Framework;
-  /** Theme the story markup is generated for. Defaults to {@link DEFAULT_EXAMPLE_THEME}. */
-  theme?: StorefrontColorScheme;
-};
-
 /**
  * Write a component's example files into `references/components/<tag>/examples/` and
  * return the `## Examples` reference-table section to append to its `<tag>.md`. The
  * configurator base story is always emitted first as the default minimal example.
  * Returns an empty string when the component has neither a base story nor examples.
  */
-export const writeComponentExamples = (
-  tree: SkillTree,
-  tag: string,
-  source: ComponentExamplesSource,
-  framework: Framework,
-  theme: StorefrontColorScheme = DEFAULT_EXAMPLE_THEME
-): string => {
+export const writeComponentExamples = (tree: SkillTree, tag: string, source: ComponentExamplesSource): string => {
+  const framework = tree.framework;
   const ext = EXAMPLE_EXTENSION[framework];
   const rows: string[][] = [];
   const usedFileBases = new Set<string>();
@@ -146,7 +128,7 @@ export const writeComponentExamples = (
   const { example: baseExample } = source.configurator;
   const baseMarkup = baseExample
     ? (baseExample.frameworkMarkup[FRAMEWORK_MARKUP_KEY[framework]] ?? '')
-    : storyMarkup(source.configurator.story, framework, theme);
+    : storyMarkup(source.configurator.story, framework);
   if (baseMarkup.trim()) {
     emit({
       name: 'Default',
@@ -157,7 +139,7 @@ export const writeComponentExamples = (
   }
 
   for (const [key, example] of Object.entries(source.examples)) {
-    emit(planExample(key, example, framework, theme));
+    emit(planExample(key, example, framework));
   }
 
   if (rows.length === 0) {

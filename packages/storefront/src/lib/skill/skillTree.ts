@@ -48,15 +48,14 @@ export const SKILL_DIRECTORY_LAYOUT = ['references/components', 'references/styl
  */
 export class SkillTree {
   public readonly root: string;
-  public readonly framework?: Framework;
+  public readonly framework: Framework;
 
   /**
    * @param root  the tree's filesystem root.
-   * @param framework  when set, produced content is resolved to this framework's concrete package
-   *   name (the `{js|angular|react|vue}` placeholder → `components-<framework>`). Omitted in unit
-   *   tests that assert on raw writer output.
+   * @param framework  the framework this tree ships for; produced content is resolved to its concrete
+   *   package name (the `{js|angular|react|vue}` placeholder → `components-<framework>`).
    */
-  constructor(root: string, framework?: Framework) {
+  constructor(root: string, framework: Framework) {
     this.root = root;
     this.framework = framework;
   }
@@ -77,7 +76,7 @@ export class SkillTree {
   /** Write a produced file at a tree-relative path, creating parent dirs. Returns the path written. */
   public write(relativePath: string, content: string): string {
     const target = this.resolve(relativePath);
-    const resolved = this.framework ? resolveFrameworkPlaceholder(content, this.framework) : content;
+    const resolved = resolveFrameworkPlaceholder(content, this.framework);
     fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.writeFileSync(target, resolved.endsWith('\n') ? resolved : `${resolved}\n`, 'utf-8');
     return relativePath;

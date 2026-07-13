@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { resolveFrameworkPlaceholder } from '@/lib/skill/links';
 import { SkillTree } from '@/lib/skill/skillTree';
 import { getTokensSkill, writeTokensReference } from '@/lib/skill/tokensReference';
 import { tokensMeta } from '../../../../tokens/projects/tokens-meta/src/lib/tokensMeta';
@@ -12,7 +13,7 @@ describe('writeTokensReference', () => {
 
   beforeEach(() => {
     root = fs.mkdtempSync(path.join(os.tmpdir(), 'tokens-ref-'));
-    tree = new SkillTree(root);
+    tree = new SkillTree(root, 'js');
     tree.reset();
   });
 
@@ -27,7 +28,7 @@ describe('writeTokensReference', () => {
 
     expect(written).toBe('references/tokens.md');
     expect(fs.existsSync(tree.resolve('references/tokens.md'))).toBe(true);
-    expect(read('references/tokens.md')).toBe(getTokensSkill());
+    expect(read('references/tokens.md')).toBe(resolveFrameworkPlaceholder(getTokensSkill(), 'js'));
   });
 
   it('renders a section per tokensMeta category with a name/value/description table', () => {

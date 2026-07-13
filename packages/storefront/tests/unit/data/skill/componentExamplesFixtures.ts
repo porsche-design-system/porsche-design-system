@@ -1,6 +1,6 @@
 import type { CodeSample } from '@porsche-design-system/shared';
 import type { FC } from 'react';
-import type { ComponentExamplesMetaMap } from '@/lib/skill/componentExamples';
+import type { ComponentExamplesSource } from '@/lib/skill/components/examples';
 import type { Story } from '@/models/story';
 import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 import { compileMdx } from './proseFixtures';
@@ -53,8 +53,8 @@ const accordionMultipleStory = story([
   { tag: 'p-accordion', properties: { heading: 'Second' }, children: ['Two'] } as ElementConfig<HTMLTagOrComponent>,
 ]);
 
-/** Compile every fixture's MDX descriptions into a `ComponentExamplesMetaMap`. */
-export const compileComponentExamplesMeta = async (): Promise<ComponentExamplesMetaMap> => ({
+/** Compile every fixture's MDX descriptions into an examples-source map. */
+export const compileComponentExamplesMeta = async (): Promise<Record<string, ComponentExamplesSource>> => ({
   'p-button': {
     configurator: { story: buttonBaseStory },
     examples: {

@@ -1,3 +1,4 @@
+import type { ComponentRosterEntry } from './components/reference';
 import { escapeCell, markdownTable } from './markdown';
 import { rawScssReference, rawTailwindcssReference } from './rawStyleReferences';
 import type { Framework } from './skillTree';
@@ -92,13 +93,6 @@ const FRAMEWORK_SYNTAX: Record<Framework, string> = {
     '- Place a child into a named slot with the `slot="..."` attribute.',
   ].join('\n'),
 };
-
-/**
- * A single row of the inlined component roster: the component tag and a one-line
- * summary. The reference path is derived from the tag, so it stays correct by
- * construction with the `components/<tag>/<tag>.md` layout.
- */
-export type ComponentRosterEntry = { tag: string; summary: string; status?: 'deprecated' | 'experimental' };
 
 export type SkillReferenceRow = {
   title: string;

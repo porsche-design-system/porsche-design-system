@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { describe, expect, it } from 'vitest';
-import { ROSTER_SUMMARY_OVERRIDES } from '@/lib/skill/componentsReference';
+import { ROSTER_SUMMARY_OVERRIDES } from '@/lib/skill/components/prose';
 import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@/lib/skill/skillTree';
 
 /**

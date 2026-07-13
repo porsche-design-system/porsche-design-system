@@ -5,13 +5,14 @@ import type {
   PropMeta,
   SlotMeta,
 } from '@porsche-design-system/component-meta';
-import { escapeCell, markdownTable } from './markdown';
+import { escapeCell, markdownTable } from '../markdown';
+import { ICONS_REFERENCE, isIconUnion } from './icons';
 
 /**
  * Renders the props / slots / events / CSS-variable API tables for a component's
  * `references/components/<tag>/<tag>.md`, driven entirely from `componentMeta` (the
- * authoritative source). TASK-03 owns creation of the file and its prose; this
- * module produces only the API section that gets appended to it.
+ * authoritative source). `reference.ts` owns creation of the file and its prose; this
+ * module produces only the API and sub-component sections that get appended to it.
  *
  * Deprecation is surfaced, never silently dropped: a fully deprecated prop / slot /
  * event / variable is kept but flagged `(deprecated)`, and deprecated *values* are
@@ -21,49 +22,6 @@ import { escapeCell, markdownTable } from './markdown';
 
 const code = (text: string | number): string => `\`${text}\``;
 
-/** Skill-root-relative pointer to the shared icon-name list (see {@link renderIconsReference}). */
-const ICONS_REFERENCE = 'references/icons.md';
-
-/**
- * The canonical icon-name set — `p-icon`'s own `name` allowed values. Every icon-typed prop
- * (`p-button` `icon`, `p-link` `icon`, `p-inline-notification` `actionIcon`, …) enumerates this same
- * ~290-name list; deriving it once from `component-meta` avoids a second source of truth and any new
- * dependency. Returns `[]` when `p-icon` is absent (skeleton runs), which disables the collapse.
- */
-export const deriveIconNames = (componentMeta: Record<string, ComponentMeta>): string[] => {
-  const values = componentMeta['p-icon']?.propsMeta?.name?.allowedValues;
-  return Array.isArray(values) ? values.filter((value): value is string => typeof value === 'string') : [];
-};
-
-/**
- * The shared icon-name reference (`references/icons.md`). The ~290-name icon union was previously inlined
- * into every icon-typed prop's type cell (~4.2 KB × ~9 components × 4 trees); every such cell now links
- * here instead, so the full list lives once per tree.
- */
-export const renderIconsReference = (iconNames: readonly string[]): string =>
-  [
-    '# Icon names',
-    'Valid values for the icon-typed props across PDS components (e.g. `p-icon` `name`, `p-button` ' +
-      '`icon`, `p-link` `icon`, `p-inline-notification` `actionIcon`). Pass one as a string, e.g. ' +
-      '`icon="arrow-right"`. Each component reference links here instead of repeating the full list. ' +
-      '(`p-flag` `name` uses a separate set of flag names, not listed here.)',
-    iconNames.map((name) => code(name)).join(' '),
-  ].join('\n\n');
-
-/** Whether a prop's allowed values are the icon-name union (a superset of the full icon-name set). */
-const isIconUnion = (values: readonly unknown[], iconNames: ReadonlySet<string>): boolean => {
-  if (iconNames.size === 0 || values.length < iconNames.size) {
-    return false;
-  }
-  const valueSet = new Set(values);
-  for (const name of iconNames) {
-    if (!valueSet.has(name)) {
-      return false;
-    }
-  }
-  return true;
-};
-
 /**
  * Component-level status for the roster row and headings: `'deprecated'` takes precedence over
  * `'experimental'` (a component is never both), `undefined` when neither applies.
@@ -71,7 +29,10 @@ const isIconUnion = (values: readonly unknown[], iconNames: ReadonlySet<string>)
 export type ComponentStatus = 'deprecated' | 'experimental';
 
 /** The component-level status of a tag, or `undefined` when it is neither deprecated nor experimental. */
-export const componentStatus = (meta: { isDeprecated?: boolean; isExperimental?: boolean }): ComponentStatus | undefined =>
+export const componentStatus = (meta: {
+  isDeprecated?: boolean;
+  isExperimental?: boolean;
+}): ComponentStatus | undefined =>
   meta.isDeprecated ? 'deprecated' : meta.isExperimental ? 'experimental' : undefined;
 
 /** Trailing status suffix for a heading or roster cell, e.g. ` _(deprecated)_`; empty when neither applies. */
@@ -135,10 +96,20 @@ const formatDefault = (meta: PropMeta): string => {
  * `string | number | null`), not a set of enumerable string literals — so it must be rendered as the
  * type, not as quoted values (`'string'`).
  */
-const PRIMITIVE_TYPE_KEYWORDS = new Set(['string', 'number', 'boolean', 'null', 'undefined', 'object', 'bigint', 'symbol']);
+const PRIMITIVE_TYPE_KEYWORDS = new Set([
+  'string',
+  'number',
+  'boolean',
+  'null',
+  'undefined',
+  'object',
+  'bigint',
+  'symbol',
+]);
 
 const isTypeUnionDecomposition = (allowedValues: readonly unknown[]): boolean =>
-  allowedValues.length > 0 && allowedValues.every((value) => typeof value === 'string' && PRIMITIVE_TYPE_KEYWORDS.has(value));
+  allowedValues.length > 0 &&
+  allowedValues.every((value) => typeof value === 'string' && PRIMITIVE_TYPE_KEYWORDS.has(value));
 
 /**
  * The prop's type cell: its named type plus the recommended (non-deprecated) allowed
@@ -278,6 +249,57 @@ export const parseRequiredParents = (requiredParent: string | string[] | undefin
   }
   const raw = Array.isArray(requiredParent) ? requiredParent : requiredParent.split(',');
   return raw.map((tag) => tag.trim()).filter(Boolean);
+};
+
+/**
+ * The top-level (standalone, documented) ancestors of a tag: follow `requiredParent`
+ * up until a component with no parent is reached. A sub-component may resolve to more
+ * than one top-level parent (e.g. `p-select-option` belongs to both `p-select` and
+ * `p-multi-select`), so it is documented under each. Guards against cycles.
+ */
+const topLevelAncestors = (
+  tag: string,
+  componentMeta: Record<string, ComponentMeta>,
+  seen: Set<string> = new Set()
+): string[] => {
+  if (seen.has(tag)) {
+    return [];
+  }
+  seen.add(tag);
+  const parents = parseRequiredParents(componentMeta[tag]?.requiredParent);
+  if (parents.length === 0) {
+    return [tag]; // no parent → this is a top-level component
+  }
+  const ancestors = new Set<string>();
+  for (const parent of parents) {
+    for (const ancestor of topLevelAncestors(parent, componentMeta, seen)) {
+      ancestors.add(ancestor);
+    }
+  }
+  return [...ancestors];
+};
+
+/**
+ * Map each top-level component tag to the sub-components (tags with a `requiredParent`)
+ * that resolve to it, sorted for a deterministic tree. Sub-components have no standalone
+ * docs page, so their authoritative API is documented under their parent(s).
+ */
+export const buildSubComponentMap = (
+  componentMeta: Record<string, ComponentMeta>
+): Record<string, { tag: string; meta: ComponentMeta }[]> => {
+  const map: Record<string, { tag: string; meta: ComponentMeta }[]> = {};
+  for (const [tag, meta] of Object.entries(componentMeta)) {
+    if (parseRequiredParents(meta.requiredParent).length === 0) {
+      continue; // top-level component, not a sub-component
+    }
+    for (const ancestor of topLevelAncestors(tag, componentMeta)) {
+      (map[ancestor] ??= []).push({ tag, meta });
+    }
+  }
+  for (const entries of Object.values(map)) {
+    entries.sort((a, b) => a.tag.localeCompare(b.tag));
+  }
+  return map;
 };
 
 /**

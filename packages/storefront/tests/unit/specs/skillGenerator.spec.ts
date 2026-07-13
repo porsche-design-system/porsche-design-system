@@ -1,15 +1,15 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import type { ComponentRosterEntry } from '@/lib/skill/components/reference';
 import {
   ACTIVATION_DESCRIPTION,
-  buildSkillMd as renderSkillMd,
-  type ComponentRosterEntry,
   type PackageSkillSections,
+  buildSkillMd as renderSkillMd,
   skillName,
 } from '@/lib/skill/skillMd';
-import { FRAMEWORKS, type Framework, SKILL_DIRECTORY_LAYOUT, SkillTree, isFramework } from '@/lib/skill/skillTree';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { FRAMEWORKS, type Framework, isFramework, SKILL_DIRECTORY_LAYOUT, SkillTree } from '@/lib/skill/skillTree';
 
 const stylesheetsDescription =
   'The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work.';
@@ -58,7 +58,7 @@ describe('SkillTree', () => {
   });
 
   it('lays out the empty directory layout on reset', () => {
-    const tree = new SkillTree(root);
+    const tree = new SkillTree(root, 'js');
     tree.reset();
 
     for (const dir of SKILL_DIRECTORY_LAYOUT) {
@@ -67,7 +67,7 @@ describe('SkillTree', () => {
   });
 
   it('discards a pre-existing tree on reset', () => {
-    const tree = new SkillTree(root);
+    const tree = new SkillTree(root, 'js');
     tree.reset();
     tree.write('references/components/stale.md', 'stale');
 
@@ -77,7 +77,7 @@ describe('SkillTree', () => {
   });
 
   it('writes files creating parent dirs and a trailing newline', () => {
-    const tree = new SkillTree(root);
+    const tree = new SkillTree(root, 'js');
     tree.reset();
 
     const relativePath = tree.write('references/components/p-button/examples/Default.tsx', 'export const x = 1;');
@@ -87,7 +87,7 @@ describe('SkillTree', () => {
   });
 
   it('does not double up trailing newlines', () => {
-    const tree = new SkillTree(root);
+    const tree = new SkillTree(root, 'js');
     tree.reset();
     tree.write('a.md', 'already\n');
 
@@ -95,7 +95,7 @@ describe('SkillTree', () => {
   });
 
   it('writes references under references/ with POSIX separators', () => {
-    const tree = new SkillTree(root);
+    const tree = new SkillTree(root, 'js');
     tree.reset();
 
     const relativePath = tree.writeReference('tokens.md', '# Tokens');

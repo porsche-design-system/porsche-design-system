@@ -2,32 +2,33 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import {
-  buildSubComponentMap,
-  type ComponentDocsMetaMap,
-  renderComponentProse,
-  writeComponentReferences,
-} from '@/lib/skill/componentsReference';
-import { SkillTree } from '@/lib/skill/skillTree';
+import { componentMeta } from '@porsche-design-system/component-meta';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { buildSubComponentMap } from '@/lib/skill/components/api';
+import type { ComponentExamplesSource } from '@/lib/skill/components/examples';
+import { type ComponentProseSource, renderComponentProse } from '@/lib/skill/components/prose';
+import { type ComponentDocsMetaMap, writeComponentReferences } from '@/lib/skill/components/reference';
+import { SkillTree } from '@/lib/skill/skillTree';
+import { compileComponentExamplesMeta } from '../data/skill/componentExamplesFixtures';
 import { compileComponentDocsMeta } from '../data/skill/componentProseFixtures';
 
 describe('component reference generator', () => {
-  let metaMap: ComponentDocsMetaMap;
+  let proseMap: Record<string, ComponentProseSource>;
+  let examplesMap: Record<string, ComponentExamplesSource>;
 
   beforeAll(async () => {
-    metaMap = await compileComponentDocsMeta();
+    proseMap = await compileComponentDocsMeta();
+    examplesMap = await compileComponentExamplesMeta();
   });
 
-  /** The fixture map without `p-degraded`, whose introduction deliberately fails the render. */
-  const healthyMetaMap = (): ComponentDocsMetaMap => {
-    const { 'p-degraded': _, ...rest } = metaMap;
-    return rest;
-  };
+  /** Full docs sources (prose + examples) for the healthy fixture tags — both are real PDS tags,
+   * so the authoritative `componentMeta` covers them. */
+  const docsMeta = (...tags: string[]): ComponentDocsMetaMap =>
+    Object.fromEntries(tags.map((tag) => [tag, { ...proseMap[tag], ...examplesMap[tag] }]));
 
   describe('renderComponentProse', () => {
     it('emits a single tag H1 followed by the introduction, usage and accessibility sections', () => {
-      const { markdown } = renderComponentProse('p-button', metaMap['p-button']);
+      const { markdown } = renderComponentProse('p-button', proseMap['p-button']);
 
       expect(markdown.match(/^# /gm)).toHaveLength(1);
       expect(markdown).toMatch(/^# p-button\n/);
@@ -40,7 +41,7 @@ describe('component reference generator', () => {
     });
 
     it('renders the notes section when present', () => {
-      const { markdown } = renderComponentProse('p-button', metaMap['p-button']);
+      const { markdown } = renderComponentProse('p-button', proseMap['p-button']);
 
       expect(markdown).toContain('## Notes');
       expect(markdown).toContain('### Form attribute');
@@ -48,19 +49,19 @@ describe('component reference generator', () => {
     });
 
     it('omits the notes section when a component has none', () => {
-      const { markdown } = renderComponentProse('p-accordion', metaMap['p-accordion']);
+      const { markdown } = renderComponentProse('p-accordion', proseMap['p-accordion']);
 
       expect(markdown).not.toContain('## Notes');
     });
 
     it('throws on degraded prose instead of emitting it, naming the source section', () => {
-      expect(() => renderComponentProse('p-degraded', metaMap['p-degraded'])).toThrow(
+      expect(() => renderComponentProse('p-degraded', proseMap['p-degraded'])).toThrow(
         /rendered to nothing meaningful for p-degraded › introduction/
       );
     });
 
     it('snapshots the full prose body for a representative component', () => {
-      expect(renderComponentProse('p-button', metaMap['p-button']).markdown).toMatchSnapshot();
+      expect(renderComponentProse('p-button', proseMap['p-button']).markdown).toMatchSnapshot();
     });
   });
 
@@ -76,12 +77,16 @@ describe('component reference generator', () => {
     });
 
     it('writes a <tag>/<tag>.md per component and returns a roster', () => {
-      const tree = new SkillTree(root);
+      const tree = new SkillTree(root, 'js');
       tree.reset();
 
-      const report = writeComponentReferences(tree, healthyMetaMap());
+      const report = writeComponentReferences(tree, {
+        docsMeta: docsMeta('p-button', 'p-accordion'),
+        componentMeta,
+        routeReferences: {},
+      });
 
-      // Every componentMeta tag yields a reference file (sorted, deterministic order).
+      // Every docsMeta tag yields a reference file (sorted, deterministic order).
       expect(report.tags).toEqual(['p-accordion', 'p-button']);
       for (const tag of report.tags) {
         expect(fs.existsSync(tree.resolve(`references/components/${tag}/${tag}.md`)), `${tag}.md`).toBe(true);
@@ -93,29 +98,57 @@ describe('component reference generator', () => {
         expect(summary, `${tag} summary`).toBeTruthy();
       }
 
+      // The shared icon-name reference is emitted once per tree.
+      expect(fs.existsSync(tree.resolve('references/icons.md'))).toBe(true);
+
       // No standalone overview file is written — the roster lives in SKILL.md.
       expect(fs.existsSync(tree.resolve('references/components/overview.md'))).toBe(false);
 
-      // Storefront-absolute prose links are resolved to in-tree references in the written file.
+      // The authoritative API tables are appended after the prose.
       const buttonMd = fs.readFileSync(tree.resolve('references/components/p-button/p-button.md'), 'utf-8');
+      expect(buttonMd).toContain('## API');
+
+      // Storefront-absolute prose links are resolved to in-tree references in the written file.
       expect(buttonMd).toContain('[Link](../p-link/p-link.md)');
       expect(buttonMd).not.toContain('](/components/');
     });
 
     it('propagates a degraded-prose failure instead of writing the tree', () => {
-      const tree = new SkillTree(root);
+      const tree = new SkillTree(root, 'js');
       tree.reset();
 
-      expect(() => writeComponentReferences(tree, metaMap)).toThrow(
-        /rendered to nothing meaningful for p-degraded › introduction/
-      );
+      expect(() =>
+        writeComponentReferences(tree, {
+          docsMeta: { 'p-degraded': { ...proseMap['p-degraded'], ...examplesMap['p-accordion'] } },
+          componentMeta: { ...componentMeta, 'p-degraded': componentMeta['p-accordion'] },
+          routeReferences: {},
+        })
+      ).toThrow(/rendered to nothing meaningful for p-degraded › introduction/);
+    });
+
+    it('rejects a documented tag that component-meta does not know', () => {
+      const tree = new SkillTree(root, 'js');
+      tree.reset();
+
+      expect(() =>
+        writeComponentReferences(tree, {
+          docsMeta: { 'p-unknown': { ...proseMap['p-accordion'], ...examplesMap['p-accordion'] } },
+          componentMeta,
+          routeReferences: {},
+        })
+      ).toThrow(/No component-meta for documented tag p-unknown/);
     });
 
     it('snapshots the generated roster', () => {
-      const tree = new SkillTree(root);
+      const tree = new SkillTree(root, 'js');
       tree.reset();
 
-      expect(writeComponentReferences(tree, healthyMetaMap()).roster).toMatchSnapshot();
+      const report = writeComponentReferences(tree, {
+        docsMeta: docsMeta('p-button', 'p-accordion'),
+        componentMeta,
+        routeReferences: {},
+      });
+      expect(report.roster).toMatchSnapshot();
     });
   });
 

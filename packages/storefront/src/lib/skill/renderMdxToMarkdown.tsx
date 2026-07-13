@@ -1,6 +1,6 @@
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import type { Framework as StorefrontFramework } from '@porsche-design-system/shared';
-import { type HTMLElement as ParsedElement, type Node as ParsedNode, NodeType, parse } from 'node-html-parser';
+import { NodeType, type HTMLElement as ParsedElement, type Node as ParsedNode, parse } from 'node-html-parser';
 import { type ComponentType, createElement, type ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { FrameworkNotification } from '@/components/common/FrameworkNotification';
@@ -137,39 +137,41 @@ const renderInline = (node: ParsedNode): string => {
 const renderList = (node: ParsedElement, ordered: boolean): string => {
   const items = node.childNodes.filter((child): child is ParsedElement => isElement(child) && child.tagName === 'LI');
 
-  return items
-    .map((item) => {
-      let inline = '';
-      const nestedLists: ParsedElement[] = [];
-      for (const child of item.childNodes) {
-        if (isElement(child) && (child.tagName === 'UL' || child.tagName === 'OL')) {
-          nestedLists.push(child);
-        } else {
-          inline += renderInline(child);
+  return (
+    items
+      .map((item) => {
+        let inline = '';
+        const nestedLists: ParsedElement[] = [];
+        for (const child of item.childNodes) {
+          if (isElement(child) && (child.tagName === 'UL' || child.tagName === 'OL')) {
+            nestedLists.push(child);
+          } else {
+            inline += renderInline(child);
+          }
         }
-      }
-      return { inline: inline.trim(), nestedLists };
-    })
-    // Items whose entire content was dropped noise (e.g. an embedded PDS component
-    // rendered then stripped) leave no prose and no nested list — drop them so the
-    // output carries no empty `-` bullets.
-    .filter(({ inline, nestedLists }) => inline || nestedLists.length > 0)
-    .map(({ inline, nestedLists }, index) => {
-      const marker = ordered ? `${index + 1}.` : '-';
-      const indent = ' '.repeat(marker.length + 1);
+        return { inline: inline.trim(), nestedLists };
+      })
+      // Items whose entire content was dropped noise (e.g. an embedded PDS component
+      // rendered then stripped) leave no prose and no nested list — drop them so the
+      // output carries no empty `-` bullets.
+      .filter(({ inline, nestedLists }) => inline || nestedLists.length > 0)
+      .map(({ inline, nestedLists }, index) => {
+        const marker = ordered ? `${index + 1}.` : '-';
+        const indent = ' '.repeat(marker.length + 1);
 
-      let line = `${marker} ${inline}`;
-      for (const nested of nestedLists) {
-        const nestedMarkdown = renderList(nested, nested.tagName === 'OL');
-        const indented = nestedMarkdown
-          .split('\n')
-          .map((row) => (row ? indent + row : row))
-          .join('\n');
-        line += `\n${indented}`;
-      }
-      return line;
-    })
-    .join('\n');
+        let line = `${marker} ${inline}`;
+        for (const nested of nestedLists) {
+          const nestedMarkdown = renderList(nested, nested.tagName === 'OL');
+          const indented = nestedMarkdown
+            .split('\n')
+            .map((row) => (row ? indent + row : row))
+            .join('\n');
+          line += `\n${indented}`;
+        }
+        return line;
+      })
+      .join('\n')
+  );
 };
 
 const renderPre = (node: ParsedElement): string => {

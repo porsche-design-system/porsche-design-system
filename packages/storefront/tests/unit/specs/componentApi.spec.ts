@@ -1,12 +1,7 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { describe, expect, it } from 'vitest';
-import {
-  deriveIconNames,
-  parseRequiredParents,
-  renderComponentApi,
-  renderIconsReference,
-  renderSubComponents,
-} from '@/lib/skill/componentApi';
+import { parseRequiredParents, renderComponentApi, renderSubComponents } from '@/lib/skill/components/api';
+import { deriveIconNames, renderIconsReference } from '@/lib/skill/components/icons';
 import { componentApiFixtures } from '../data/skill/componentApiFixtures';
 
 const { 'p-accordion': accordion, 'p-heading': heading } = componentApiFixtures;
