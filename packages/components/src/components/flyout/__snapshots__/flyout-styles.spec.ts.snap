@@ -15,9 +15,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, backgr
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -42,15 +39,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -102,6 +102,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -111,10 +122,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -134,9 +188,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, backgr
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -180,15 +231,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -240,6 +294,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -249,10 +314,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -272,9 +380,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, backgr
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -303,15 +408,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -363,6 +471,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -372,10 +491,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -395,9 +557,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, backgr
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -416,15 +575,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -476,6 +638,17 @@ dialog::backdrop {
   clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -485,10 +658,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -508,9 +724,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, backgr
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -535,15 +748,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -595,6 +811,17 @@ dialog::backdrop {
   clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -604,10 +831,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -627,9 +897,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, backgr
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -673,15 +940,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -733,6 +1003,17 @@ dialog::backdrop {
   clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -742,10 +1023,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -765,9 +1089,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, backgr
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -786,15 +1107,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -846,6 +1170,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -855,10 +1190,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -878,9 +1256,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -899,17 +1274,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -958,6 +1336,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -967,10 +1356,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -990,9 +1422,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -1011,17 +1440,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1070,6 +1502,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1079,10 +1522,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -1102,9 +1588,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -1129,17 +1612,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1188,6 +1674,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1197,10 +1694,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -1220,9 +1760,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -1260,17 +1797,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1319,6 +1859,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1328,10 +1879,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -1350,9 +1944,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -1397,17 +1988,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1456,6 +2050,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1465,10 +2070,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -1487,9 +2135,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -1544,17 +2189,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1602,6 +2250,17 @@ dialog::backdrop {
   clip-path: none;
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1610,6 +2269,28 @@ dialog::backdrop {
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:480px) {
   .flyout {
@@ -1696,6 +2377,30 @@ dialog::backdrop {
 }
 
 }
+
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
 "
 `;
 
@@ -1713,9 +2418,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -1770,17 +2472,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1829,6 +2534,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1838,10 +2554,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -1861,9 +2620,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -1917,17 +2673,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -1975,6 +2734,17 @@ dialog::backdrop {
   clip-path: none;
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1983,7 +2753,53 @@ dialog::backdrop {
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
-}"
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: blur, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
@@ -2000,9 +2816,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -2022,17 +2835,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2081,6 +2897,17 @@ dialog::backdrop {
   clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2090,10 +2917,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -2113,9 +2983,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -2134,17 +3001,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2193,6 +3063,17 @@ dialog::backdrop {
   clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2202,10 +3083,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -2225,9 +3149,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -2265,17 +3186,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2324,6 +3248,17 @@ dialog::backdrop {
   clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2333,10 +3268,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -2356,9 +3334,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -2396,17 +3371,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2455,6 +3433,17 @@ dialog::backdrop {
   clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2464,10 +3453,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -2486,9 +3518,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -2533,17 +3562,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2592,6 +3624,17 @@ dialog::backdrop {
   clip-path: inset(0 round var(--p-radius-3xl) 0 0 var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2601,10 +3644,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-end: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -2623,9 +3709,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -2680,17 +3763,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2738,6 +3824,17 @@ dialog::backdrop {
   clip-path: none;
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2746,7 +3843,53 @@ dialog::backdrop {
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
-}"
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for isOpen: true, background: canvas, backdrop: shading, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky and fullscreen: false 1`] = `
@@ -2763,9 +3906,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -2785,15 +3925,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2842,6 +3985,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2851,10 +4005,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -2874,9 +4071,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -2914,15 +4108,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -2971,6 +4168,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2980,10 +4188,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -3003,9 +4254,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -3024,17 +4272,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3084,6 +4335,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -3093,10 +4355,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -3116,9 +4421,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -3143,17 +4445,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3203,6 +4508,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -3212,10 +4528,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -3235,9 +4594,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -3275,17 +4631,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3335,6 +4694,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -3344,10 +4714,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -3367,9 +4780,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -3413,17 +4823,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3473,6 +4886,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -3482,10 +4906,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -3505,9 +4972,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -3536,17 +5000,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3596,6 +5063,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -3605,10 +5083,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -3628,9 +5149,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -3665,17 +5183,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3725,6 +5246,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -3734,10 +5266,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -3757,9 +5332,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -3807,17 +5379,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -3867,6 +5442,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -3876,10 +5462,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -3898,9 +5527,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, backgro
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -3955,17 +5581,20 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 100dvw;
   height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
-  overlay: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
   transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -4015,6 +5644,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -4024,10 +5664,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;

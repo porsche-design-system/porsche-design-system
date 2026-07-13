@@ -7,6 +7,7 @@ import {
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
+  isDialogBackdropTarget,
   observeChildren,
   onCancelDialog,
   onClickDialog,
@@ -92,6 +93,9 @@ export class Modal {
   private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
+  // Tracks whether the current pointer gesture started inside the panel (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the panel and released on the backdrop.
+  private isPointerDownInside = false;
   private topLayer: TopLayerController = createTopLayerController({
     getElement: () => this.dialog,
     isShown: () => !!this.dialog?.open,
@@ -173,14 +177,18 @@ export class Modal {
 
     return (
       <DialogBase
-        host={this.host}
+        // `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
+        // fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
+        // during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
+        // `inert` avoids that and mirrors the pattern used by `p-flyout` / `p-popover` / `p-drilldown`.
         inert={!this.open}
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
         dismissable={this.dismissButton ?? undefined}
         containerClass="modal"
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick, this.isPointerDownInside)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         onDismiss={this.dismissButton ? this.dismissDialog : undefined}
         header={this.hasHeader ? <slot name="header" /> : undefined}
