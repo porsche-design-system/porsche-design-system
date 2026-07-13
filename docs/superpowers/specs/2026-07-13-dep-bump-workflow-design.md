@@ -1,0 +1,123 @@
+# Dependency-bump workflow design
+
+Date: 2026-07-13
+Status: Approved for implementation
+
+## Goal
+
+Automate the recurring npm dependency bump as a turbo-spec workflow. Bump third-party
+dependencies, resolve any resulting ERESOLVE peer conflicts with the correct remedy, and
+leave a reproducible, verified tree. Every run ends in exactly one verdict: `SUCCESS`,
+`NO_CHANGES`, or `BLOCKED`.
+
+This workflow supersedes `docs/runbooks/dependency-updates-agent.md` for the bump task.
+
+## Principle: deterministic by default, agentic only where reasoning is required
+
+Most of the task is computation over well-defined inputs, so scripts do it. One part —
+resolving an ERESOLVE conflict — needs evidence gathering and judgment, so an agent does it.
+
+| Work | Kind | Runner |
+| --- | --- | --- |
+| `npm ci`, snapshot lock/audit/`npm ls`, classify ci-failure, retry once | deterministic | `preflight.sh` |
+| `npm run npm:update:non-interactive` | deterministic | `bump.sh` |
+| Classify the diff: held-back set unchanged, old→new, MAJOR flags, `NO_CHANGES` | deterministic | `classify-bump.ts` |
+| `npm install`: clean or ERESOLVE | deterministic | `install-check.sh` |
+| Read ERESOLVE, gather evidence, judge compatibility, choose and apply the remedy, loop | **agentic** | `dependency_updater` agent |
+| `npm ci`, `npm ls --all`, `npm run npm:lint` | deterministic | `verify-checks.sh` |
+| Audit compare (advisory-identity set-diff: new-in-both = drift, new-in-updated-only = regression) | deterministic | `audit-compare.ts` |
+| Impact-based build/test selection | deterministic (rule-based) | `select-impact-tests.ts` |
+| Aggregate outcomes into one terminal verdict | deterministic | `report.ts` |
+
+Only the resolve step needs an agent. The agent calls the deterministic scripts and reasons
+only when a script reports an ERESOLVE.
+
+## Ownership
+
+The porsche-design-system repo is the turbo-spec instantiation. All project-specific
+artifacts live here; turbo-spec provides only the shared foundation.
+
+```
+scripts/dep-bump/                          # deterministic, reproducible scripts
+  preflight.sh  bump.sh  classify-bump.ts
+  install-check.sh  verify-checks.sh
+  audit-compare.ts  select-impact-tests.ts  report.ts
+.turbo-spec/workflows/dep-bump.yml         # the blueprint
+.turbo-spec/system_prompts/dep_update.md   # the one agent's prompt
+.turbo-spec/schemas/dep-bump-*.schema.json # outcome-contract schemas
+.github/skills/resolving-npm-eresolve/     # already exists — the S4 decision brain
+```
+
+Each script writes a verdict document to the gitignored `.turbo-spec/out/` run-output
+directory, so baselines and ledgers never reach a commit.
+
+## Pipeline: three stages, one agent
+
+```
+preflight (agentless) → update (one agent) → verify (agentless)
+```
+
+### preflight
+
+Read-only. A `script_gate` runs `preflight.sh`. The script asserts a clean tree, runs
+`npm ci`, snapshots the pristine lockfile plus `npm audit --json` and `npm ls --all`, and
+classifies a `npm ci` failure by exit code: repo-resolution → BLOCKED, network → retry once.
+It writes `preflight.verdict {outcome: CONTINUE | BLOCKED}`, loaded into context via
+`outputs:`.
+
+### update
+
+The single agent stage. Runs only when `preflight.verdict.outcome == 'CONTINUE'`.
+
+The agent's prompt keeps it thin: run `bump.sh` and `install-check.sh`; if the tree is clean
+or nothing changed, record the outcome and stop; if a script reports ERESOLVE, resolve it.
+The blueprint does not list `skills:`. An omitted list makes every project-scope skill
+discoverable, and the agent activates `resolving-npm-eresolve` through the skills tool when
+it hits an ERESOLVE, driven by that skill's own trigger description.
+
+The prompt owns run-control that the skill leaves out: a fingerprint per conflict, a global
+six-iteration cap, a resolver ledger in `.turbo-spec/out/resolve-ledger.yml`, and the rule
+never to re-run the unrestricted bump after holding a dependency back.
+
+Bump, install, and resolve share this one stage on purpose. The engine commits per stage, so
+splitting the bump into its own stage would push an unresolved tree before the agent runs.
+On `BLOCKED` or `NO_CHANGES` the agent restores the entry tree, so no half-resolved tree is
+ever committed. The stage writes `update.result {outcome: RESOLVED | NO_CHANGES | BLOCKED,
+deps_bumped, conflicts, overrides, holdbacks}`, guarded by an `outcome_contract` gate.
+
+### verify
+
+Read-only. Runs only when `update.result.outcome == 'RESOLVED'`.
+
+A `script_gate` runs `verify-checks.sh` (`npm ci` → `npm ls --all` → `npm run npm:lint`): a
+step exit of `1` loops back to `update`; an exit of `2` or more escalates. `audit-compare.ts`
+compares the new tree's advisories against the preflight snapshot and escalates a genuine
+regression. `select-impact-tests.ts` chooses the build and tests to run from the changed
+dependencies. `report.ts` then aggregates every `out/*.yml` outcome into one terminal
+verdict; a retained major without verification evidence yields `BLOCKED`.
+
+## How this holds up
+
+- **ERESOLVE termination survives loop-backs.** The fingerprint set and iteration count live
+  in the gitignored ledger, so a loop back into `update` respects the six-iteration cap and
+  the one-remedy-per-fingerprint rule.
+- **No half-resolved commit.** One transactional mutation stage; entry-tree restore on any
+  non-`RESOLVED` outcome.
+- **Sound audit compare.** Preflight snapshots the pristine lock; verify audits both locks
+  and compares advisory identities, so advisory-feed drift never reads as a regression.
+- **Exactly one verdict.** `report.ts` derives the single terminal verdict; no looped agent
+  can emit a second one.
+- **Reproducible.** A human or CI can run the same scripts and get the same tree.
+
+## Out of scope
+
+- Resolving a breaking major that needs a source migration. The workflow reports `BLOCKED`
+  and hands off.
+- Changing the held-back set or the `npm:update:non-interactive` script.
+
+## Open items for the plan
+
+- Exact resolution path for consumer `outcome_contract` schemas (`.turbo-spec/schemas/` vs a
+  path reference).
+- Egress allowlist entries for release-note evidence, if the always-on lists miss any host.
+- Trigger set: CLI now; a weekly schedule later.
