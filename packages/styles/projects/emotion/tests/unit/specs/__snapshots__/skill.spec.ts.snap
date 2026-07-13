@@ -1,7 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should produce correct emotion skill markdown 1`] = `
-"# Porsche Design System — Emotion
+exports[`should expose correct emotion package skill 1`] = `
+{
+  "content": "# Porsche Design System — Emotion
 
 The Porsche Design System ships a ready-made [Emotion](https://emotion.sh) package: a curated catalog of design tokens
 exposed as JavaScript values (colors, typography, spacing, border radii, blur, shadow, motion and breakpoints) plus a
@@ -434,5 +435,9 @@ intentionally **not** listed here — prefer the documented tokens and utilities
 | Export | Description |
 | --- | --- |
 | \`gridFull\` | Object containing all \`full\` grid styles. |
-"
+",
+  "description": "tokens and utilities in \`css\`/\`styled\` styles",
+  "name": "emotion",
+  "title": "Emotion",
+}
 `;

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
 import type { TailwindBranch, TailwindNode, TailwindThemeVariable, TailwindUtility } from '../src';
 import { kindOf, type TailwindKind, tailwindMeta } from '../src';
@@ -165,3 +166,10 @@ const themeUtilities = `## Utilities\n\n${renderOutline(utilityOutline, utilityC
  */
 export const getTailwindcssSkill = (): string =>
   `${[intro, howToUse, contents, themeVariables, themeUtilities].join('\n\n')}\n`;
+
+export const tailwindcssSkill: PackageSkill = {
+  name: 'tailwindcss',
+  title: 'Tailwind CSS',
+  description: 'utility-first styling on a PDS Tailwind v4 theme',
+  getContent: getTailwindcssSkill,
+};

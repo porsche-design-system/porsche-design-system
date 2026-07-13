@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
 import type { EmotionBranch, EmotionNode, EmotionToken, EmotionUtility } from '../emotionMeta';
 import { type EmotionKind, emotionMeta, kindOf } from '../emotionMeta';
@@ -165,3 +166,10 @@ const utilities = `## Utilities\n\n${renderOutline(utilityOutline, utilityColumn
  */
 export const getEmotionSkill = (): string =>
   `${[intro, howToUse, contents, tokens, utilities].filter(Boolean).join('\n\n')}\n`;
+
+export const emotionSkill: PackageSkill = {
+  name: 'emotion',
+  title: 'Emotion',
+  description: 'tokens and utilities in `css`/`styled` styles',
+  getContent: getEmotionSkill,
+};

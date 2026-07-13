@@ -1,9 +1,50 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { ACTIVATION_DESCRIPTION, buildSkillMd, skillName } from '@/lib/skill/skillMd';
+import {
+  ACTIVATION_DESCRIPTION,
+  buildSkillMd as renderSkillMd,
+  type ComponentRosterEntry,
+  type PackageSkillSections,
+  skillName,
+} from '@/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, SKILL_DIRECTORY_LAYOUT, SkillTree, isFramework } from '@/lib/skill/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+
+const stylesheetsDescription =
+  'The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work.';
+const packageSkills: PackageSkillSections = {
+  stylesheets: {
+    title: 'Stylesheets',
+    description: stylesheetsDescription,
+    intro: stylesheetsDescription,
+    resolvedPath: 'references/stylesheets.md',
+  },
+  styling: [
+    {
+      title: 'Tailwind CSS',
+      description: 'utility-first styling on a PDS Tailwind v4 theme',
+      resolvedPath: 'references/styles/tailwindcss.md',
+    },
+    {
+      title: 'SCSS',
+      description: 'Sass variables and mixins under the `pds` namespace',
+      resolvedPath: 'references/styles/scss.md',
+    },
+    {
+      title: 'vanilla-extract',
+      description: 'typed tokens and utilities in `*.css.ts` files',
+      resolvedPath: 'references/styles/vanilla-extract.md',
+    },
+    {
+      title: 'Emotion',
+      description: 'tokens and utilities in `css`/`styled` styles',
+      resolvedPath: 'references/styles/emotion.md',
+    },
+  ],
+};
+const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntry[] = []): string =>
+  renderSkillMd(framework, roster, packageSkills);
 
 describe('SkillTree', () => {
   let root: string;
@@ -62,7 +103,6 @@ describe('SkillTree', () => {
     expect(relativePath).toBe('references/tokens.md');
     expect(fs.existsSync(tree.resolve('references/tokens.md'))).toBe(true);
   });
-
 });
 
 describe('isFramework', () => {
@@ -156,7 +196,9 @@ describe('buildSkillMd', () => {
 
     expect(markdown).toContain('## Components');
     expect(markdown).toContain('| Component | Summary | Reference |');
-    expect(markdown).toContain('| `p-button` | The button component. | [p-button.md](references/components/p-button/p-button.md) |');
+    expect(markdown).toContain(
+      '| `p-button` | The button component. | [p-button.md](references/components/p-button/p-button.md) |'
+    );
     expect(markdown).toContain('2 components');
     // Components is the first section, before styling.
     expect(markdown.indexOf('## Components')).toBeLessThan(markdown.indexOf('## Styling'));

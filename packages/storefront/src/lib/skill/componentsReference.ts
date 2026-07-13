@@ -10,7 +10,7 @@ import {
   renderSubComponents,
 } from './componentApi';
 import { type ComponentExamplesOptions, writeComponentExamples } from './componentExamples';
-import { rewriteDocLinks } from './links';
+import { rewriteDocLinks, type RouteReferences } from './links';
 import { leadSentence, stripLeadingBlockquotes, stripLeadingH1 } from './markdown';
 import { renderMdxToMarkdown } from './renderMdxToMarkdown';
 import type { ComponentRosterEntry } from './skillMd';
@@ -57,7 +57,8 @@ const NO_SUMMARY = '_No description available._';
 export const ROSTER_SUMMARY_OVERRIDES: Record<string, string> = {
   'p-flag': 'Displays a country or region flag, styled to the Porsche design language.',
   'p-pagination': 'Splits a large set of content across pages and lets the user navigate between them.',
-  'p-popover': 'Shows additional contextual content in an overlay on top of other content, typically opened from an info button.',
+  'p-popover':
+    'Shows additional contextual content in an overlay on top of other content, typically opened from an info button.',
   'p-spinner': 'Indicates an ongoing process the user must wait for, such as loading or processing.',
 };
 
@@ -130,11 +131,26 @@ export const renderComponentProse = (
   // markdown is returned so the roster summary is the lead sentence. Any leading notification admonition
   // (experimental components open with one) is skipped so the summary is the first real prose sentence.
   // Degraded intro → empty → NO_SUMMARY.
-  const introMarkdown = renderSection(source.introduction, sections, degradedSections, 'introduction', `${tag} › introduction`, framework);
+  const introMarkdown = renderSection(
+    source.introduction,
+    sections,
+    degradedSections,
+    'introduction',
+    `${tag} › introduction`,
+    framework
+  );
   const summary = leadSentence(stripLeadingBlockquotes(introMarkdown)) || NO_SUMMARY;
 
   renderSection(source.usage, sections, degradedSections, 'usage', `${tag} › usage`, framework, stripLeadingH1);
-  renderSection(source.accessibility, sections, degradedSections, 'accessibility', `${tag} › accessibility`, framework, stripLeadingH1);
+  renderSection(
+    source.accessibility,
+    sections,
+    degradedSections,
+    'accessibility',
+    `${tag} › accessibility`,
+    framework,
+    stripLeadingH1
+  );
 
   const noteEntries = Object.values(source.notes ?? {});
   if (noteEntries.length > 0) {
@@ -224,7 +240,8 @@ export const writeComponentReferences = (
   tree: SkillTree,
   metaMap: ComponentDocsMetaMap,
   apiOptions?: ComponentApiOptions,
-  examplesOptions?: ComponentExamplesOptions
+  examplesOptions?: ComponentExamplesOptions,
+  routeReferences: RouteReferences = {}
 ): ComponentReferenceReport => {
   const tags = Object.keys(metaMap).sort();
   const roster: ComponentRosterEntry[] = [];
@@ -241,7 +258,12 @@ export const writeComponentReferences = (
   for (const tag of tags) {
     const apiMeta = apiOptions?.componentMeta[tag];
     const statusBanner = apiMeta ? renderComponentStatusBanner(apiMeta) : '';
-    const { markdown, summary, degradedSections } = renderComponentProse(tag, metaMap[tag], statusBanner, tree.framework);
+    const { markdown, summary, degradedSections } = renderComponentProse(
+      tag,
+      metaMap[tag],
+      statusBanner,
+      tree.framework
+    );
     const sections = [markdown];
     if (apiMeta) {
       sections.push(renderComponentApi(apiMeta, iconNames));
@@ -260,7 +282,10 @@ export const writeComponentReferences = (
     // Resolve storefront-absolute links across the whole file — prose, notes and the examples-table
     // "when to use" descriptions alike — relative to this component's own file location.
     const relativePath = `components/${tag}/${tag}.md`;
-    tree.writeReference(relativePath, rewriteDocLinks(sections.join('\n\n'), `references/${relativePath}`));
+    tree.writeReference(
+      relativePath,
+      rewriteDocLinks(sections.join('\n\n'), `references/${relativePath}`, routeReferences)
+    );
     roster.push({
       tag,
       summary: ROSTER_SUMMARY_OVERRIDES[tag] ?? summary,

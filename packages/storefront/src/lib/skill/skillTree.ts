@@ -44,7 +44,7 @@ export const SKILL_DIRECTORY_LAYOUT = ['references/components', 'references/styl
  * Filesystem writer that owns a single framework's skill tree. It is the stable
  * API the content generators write produced files through, via {@link write} /
  * {@link writeReference}. SKILL.md itself is rendered into topical sections by
- * `buildSkillMd` once every generator has run (the component roster is threaded in).
+ * `buildSkillMd` once every generator has run (the component roster and package-skill rows are threaded in).
  */
 export class SkillTree {
   public readonly root: string;

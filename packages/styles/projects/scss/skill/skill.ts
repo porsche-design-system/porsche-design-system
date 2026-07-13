@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
 import type { ScssBranch, ScssMixin, ScssNode, ScssVariable } from '../src';
 import { kindOf, type ScssKind, scssMeta } from '../src';
@@ -154,3 +155,10 @@ const utilitiesMixins = `## Mixins\n\n${renderOutline(utilitiesOutline, mixinCol
  */
 export const getScssSkill = (): string =>
   `${[intro, howToUse, contents, themeVariables, utilitiesMixins].filter(Boolean).join('\n\n')}\n`;
+
+export const scssSkill: PackageSkill = {
+  name: 'scss',
+  title: 'SCSS',
+  description: 'Sass variables and mixins under the `pds` namespace',
+  getContent: getScssSkill,
+};

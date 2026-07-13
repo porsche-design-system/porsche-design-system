@@ -1,7 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should produce correct tailwindcss skill markdown 1`] = `
-"# Porsche Design System — Tailwind CSS theme
+exports[`should expose correct tailwindcss package skill 1`] = `
+{
+  "content": "# Porsche Design System — Tailwind CSS theme
 
 The Porsche Design System ships a ready-made Tailwind CSS theme: a curated catalog of design
 tokens exposed as Tailwind \`@theme\` variables (colors, typography, spacing, border radii,
@@ -346,5 +347,9 @@ switch.
 | \`.col-span-one-half\` | Spans content across one half of the current Porsche Grid area. |
 | \`.col-span-one-third\` | Spans content across one third of the current Porsche Grid area. |
 | \`.col-span-two-thirds\` | Spans content across two thirds of the current Porsche Grid area. |
-"
+",
+  "description": "utility-first styling on a PDS Tailwind v4 theme",
+  "name": "tailwindcss",
+  "title": "Tailwind CSS",
+}
 `;

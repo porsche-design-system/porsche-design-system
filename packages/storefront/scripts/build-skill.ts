@@ -4,11 +4,16 @@ import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentExamplesMetaMap } from '../src/lib/skill/componentExamples';
 import type { ComponentDocsMetaMap } from '../src/lib/skill/componentsReference';
+import {
+  getPackageSkillRouteReferences,
+  getPackageSkillSections,
+  writePackageSkillReferences,
+} from '../src/lib/skill/packageSkills';
 import { buildSkillMd, type ComponentRosterEntry } from '../src/lib/skill/skillMd';
 import { FRAMEWORKS, type Framework, isFramework, SKILL_STAGING_DIR, SkillTree } from '../src/lib/skill/skillTree';
 import { findSkillTreeDifference } from '../src/lib/skill/skillTreeHash';
-import { writeStyleReferences } from '../src/lib/skill/stylesReference';
-import { writeTokensReference } from '../src/lib/skill/tokensReference';
+import { TOKENS_REFERENCE, writeTokensReference } from '../src/lib/skill/tokensReference';
+import type { RouteReferences } from '../src/lib/skill/links';
 
 const REPO_ROOT = path.resolve(__dirname, '../../..');
 const DEFAULT_OUTPUT_ROOT = path.resolve(REPO_ROOT, SKILL_STAGING_DIR);
@@ -47,7 +52,8 @@ const DEGRADED_ALLOWLIST = new Set<string>();
 const generateTree = async (
   framework: Framework,
   generation: ComponentGeneration,
-  outputRoot: string
+  outputRoot: string,
+  routeReferences: RouteReferences
 ): Promise<string[]> => {
   const root = path.join(outputRoot, framework);
   const tree = new SkillTree(root, framework);
@@ -55,8 +61,8 @@ const generateTree = async (
 
   const degraded: string[] = [];
 
-  const styleReferences = writeStyleReferences(tree, framework);
-  console.log(`  ${styleReferences.length} style reference files written`);
+  const packageSkillReferences = writePackageSkillReferences(tree, framework, routeReferences);
+  console.log(`  ${packageSkillReferences.length} package skill reference files written`);
 
   writeTokensReference(tree);
   console.log('  tokens reference written');
@@ -66,13 +72,14 @@ const generateTree = async (
     tree,
     componentDocsMeta,
     { componentMeta, framework },
-    { metaMap: componentDocsMeta, framework }
+    { metaMap: componentDocsMeta, framework },
+    routeReferences
   );
   const roster: ComponentRosterEntry[] = report.roster;
   console.log(`  ${report.tags.length} component references written`);
   degraded.push(...report.degraded.map(({ tag, sections }) => `${framework} ${tag} [${sections.join(', ')}]`));
 
-  tree.write('SKILL.md', buildSkillMd(framework, roster));
+  tree.write('SKILL.md', buildSkillMd(framework, roster, getPackageSkillSections()));
 
   console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
   return degraded;
@@ -136,10 +143,14 @@ const main = async (): Promise<void> => {
   }
 
   const generation = await loadComponentGeneration();
+  const routeReferences: RouteReferences = {
+    ...getPackageSkillRouteReferences(),
+    tokens: `references/${TOKENS_REFERENCE}`,
+  };
 
   const degraded: string[] = [];
   for (const framework of frameworks as Framework[]) {
-    degraded.push(...(await generateTree(framework, generation, outputRoot)));
+    degraded.push(...(await generateTree(framework, generation, outputRoot, routeReferences)));
   }
 
   if (checkDeterminism) {
@@ -150,7 +161,7 @@ const main = async (): Promise<void> => {
     try {
       for (const root of roots) {
         for (const framework of frameworks as Framework[]) {
-          await generateTree(framework, generation, root);
+          await generateTree(framework, generation, root, routeReferences);
         }
       }
 

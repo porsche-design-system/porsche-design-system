@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
 import type {
   VanillaExtractBranch,
@@ -170,3 +171,10 @@ const utilities = `## Utilities\n\n${renderOutline(utilityOutline, utilityColumn
  */
 export const getVanillaExtractSkill = (): string =>
   `${[intro, howToUse, contents, tokens, utilities].filter(Boolean).join('\n\n')}\n`;
+
+export const vanillaExtractSkill: PackageSkill = {
+  name: 'vanilla-extract',
+  title: 'vanilla-extract',
+  description: 'typed tokens and utilities in `*.css.ts` files',
+  getContent: getVanillaExtractSkill,
+};

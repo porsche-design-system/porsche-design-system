@@ -1,4 +1,5 @@
 import { escapeCell, markdownTable } from './markdown';
+import { rawScssReference, rawTailwindcssReference } from './rawStyleReferences';
 import type { Framework } from './skillTree';
 
 /**
@@ -39,22 +40,6 @@ export const ACTIVATION_DESCRIPTION =
  */
 export const rawMetaReference = (framework: Framework): string =>
   framework === 'js' ? '../meta' : '@porsche-design-system/components-js/meta';
-
-/**
- * Raw Tailwind stylesheet link target. The generated `index.css` is a byte-identical real copy in
- * every wrapper's dist (CSS cannot re-export), so the skill-root-relative dist sibling resolves in
- * all four frameworks — no js-peer fallback needed.
- */
-export const rawTailwindcssReference = (): string => '../tailwindcss/index.css';
-
-/**
- * Raw SCSS link target. Only the js package ships the real partials; every framework wrapper's
- * `scss/` is a `@forward '@porsche-design-system/components-js/scss'` shim (same re-export pattern
- * as `component-meta`). So the js skill links its local `../scss`, while the framework skills link
- * the js peer's `/scss` subpath — version-exact via the same-version js peer.
- */
-export const rawScssReference = (framework: Framework): string =>
-  framework === 'js' ? '../scss' : '@porsche-design-system/components-js/scss';
 
 /**
  * The initialization API each framework configures PDS through — the place a reader might wrongly
@@ -115,6 +100,18 @@ const FRAMEWORK_SYNTAX: Record<Framework, string> = {
  */
 export type ComponentRosterEntry = { tag: string; summary: string; status?: 'deprecated' | 'experimental' };
 
+export type SkillReferenceRow = {
+  title: string;
+  description: string;
+  intro?: string;
+  resolvedPath: string;
+};
+
+export type PackageSkillSections = {
+  stylesheets: SkillReferenceRow;
+  styling: readonly SkillReferenceRow[];
+};
+
 /**
  * The extended headline intro. Version-exact knowledge is the framing; it also absorbs three former
  * core rules — content is version-exact, reference paths are skill-root-relative, prefer PDS for new
@@ -162,7 +159,7 @@ const renderComponentsSection = (framework: Framework, roster: readonly Componen
   ]);
   return [
     `The Porsche Design System ships ${roster.length} components. Open a component's reference for its ` +
-      "props, slots, events, CSS variables and examples before using it. Each reference's \"Examples\" " +
+      'props, slots, events, CSS variables and examples before using it. Each reference\'s "Examples" ' +
       'table links runnable, framework-specific example files under `references/components/<tag>/examples/`.',
     '',
     `\`component-meta\` is authoritative: when it disagrees with the examples or prose here, follow ` +
@@ -197,31 +194,21 @@ const renderThemingNote = (framework: Framework): string =>
 
 /** The `## Stylesheets` section: the "use when" prose (former reference-map row, expanded), a pointer to
  * the reference, and the theming note. */
-const renderStylesheetsSection = (framework: Framework): string =>
-  [
-    'The required global stylesheets every component depends on (CSS variables, font-face, ' +
-      'normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this ' +
-      'whenever installing or setting up PDS, before rendering any component, when components look ' +
-      'unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — ' +
-      'it applies to most PDS work. See [stylesheets.md](references/stylesheets.md) for the exact files, ' +
+const renderStylesheetsSection = (framework: Framework, stylesheets: SkillReferenceRow): string => {
+  const fileName = stylesheets.resolvedPath.split('/').pop();
+  return [
+    `${stylesheets.intro ?? stylesheets.description} See [${fileName}](${stylesheets.resolvedPath}) for the exact files, ` +
       'their import order and the full `.scheme-*` list.',
     '',
     renderThemingNote(framework),
   ].join('\n');
+};
 
 /** The `## Tokens` section: a one-paragraph "use when" pointing at the tokens reference. */
 const renderTokensSection = (): string =>
   'Design tokens — the source values for color, spacing, typography, motion, breakpoints and more, ' +
   'available as JS constants and as CSS custom properties. Open [tokens.md](references/tokens.md) when ' +
   'using tokens directly in custom UI.';
-
-/** The four styling solutions PDS ships a ready-made integration for, in reference order. */
-const STYLING_SOLUTIONS: readonly { name: string; useWhen: string; path: string }[] = [
-  { name: 'Tailwind CSS', useWhen: 'utility-first styling on a PDS Tailwind v4 theme', path: 'references/styles/tailwindcss.md' },
-  { name: 'SCSS', useWhen: 'Sass variables and mixins under the `pds` namespace', path: 'references/styles/scss.md' },
-  { name: 'vanilla-extract', useWhen: 'typed tokens and utilities in `*.css.ts` files', path: 'references/styles/vanilla-extract.md' },
-  { name: 'Emotion', useWhen: 'tokens and utilities in `css`/`styled` styles', path: 'references/styles/emotion.md' },
-];
 
 /**
  * The `## Styling` section (last section): the styling-solutions overview so the agent always knows PDS
@@ -230,14 +217,20 @@ const STYLING_SOLUTIONS: readonly { name: string; useWhen: string; path: string 
  * and typography as PDS components — the full mechanics live in the Stylesheets section / reference.
  * Each row links the solution's reference for setup and the full catalog.
  */
-const renderStylingSection = (): string => {
-  const rows = STYLING_SOLUTIONS.map(({ name, useWhen, path }) => [
-    name,
-    escapeCell(useWhen),
-    `[${path.split('/').pop()}](${path})`,
+const renderStylingSection = (stylingSolutions: readonly SkillReferenceRow[]): string => {
+  const tailwind = stylingSolutions.find(({ title }) => title === 'Tailwind CSS');
+  if (!tailwind) {
+    throw new Error('Package skill rows must contain the Tailwind CSS styling solution');
+  }
+  const numberWords = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+  const solutionCount = numberWords[stylingSolutions.length] ?? String(stylingSolutions.length);
+  const rows = stylingSolutions.map(({ title, description, resolvedPath }) => [
+    title,
+    escapeCell(description),
+    `[${resolvedPath.split('/').pop()}](${resolvedPath})`,
   ]);
   return [
-    'The Porsche Design System offers a ready-made integration for four styling solutions. They are ' +
+    `The Porsche Design System offers a ready-made integration for ${solutionCount} styling solutions. They are ` +
       'independent of the components — you do not need them to use components, and they do not depend on ' +
       'components — but they build on the same design system: the same design tokens and the same ' +
       '`color-scheme` (light/dark) theming, so one `.scheme-*` class drives both PDS components and your ' +
@@ -251,7 +244,7 @@ const renderStylingSection = (): string => {
     '',
     'Note: the code examples in the component references use PDS Tailwind utility classes (e.g. `flex`, ' +
       '`flex-col`, `gap-fluid-sm`) for layout. These only take effect with the Tailwind CSS solution ' +
-      'installed (`references/styles/tailwindcss.md`) — without it they are inert, so replace them with ' +
+      `installed (\`${tailwind.resolvedPath}\`) — without it they are inert, so replace them with ` +
       'your own layout CSS.',
     '',
     markdownTable(['Styling solution', 'Use this when', 'Reference'], rows),
@@ -265,8 +258,14 @@ const renderStylingSection = (): string => {
  * into these sections; Getting started and partials leave SKILL.md entirely (they return single-sourced
  * in later phases).
  */
-export const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntry[] = []): string => {
-  const frontmatter = ['---', `name: ${skillName(framework)}`, `description: ${ACTIVATION_DESCRIPTION}`, '---'].join('\n');
+export const buildSkillMd = (
+  framework: Framework,
+  roster: readonly ComponentRosterEntry[],
+  packageSkills: PackageSkillSections
+): string => {
+  const frontmatter = ['---', `name: ${skillName(framework)}`, `description: ${ACTIVATION_DESCRIPTION}`, '---'].join(
+    '\n'
+  );
 
   return [
     frontmatter,
@@ -281,7 +280,7 @@ export const buildSkillMd = (framework: Framework, roster: readonly ComponentRos
     '',
     '## Stylesheets',
     '',
-    renderStylesheetsSection(framework),
+    renderStylesheetsSection(framework, packageSkills.stylesheets),
     '',
     '## Tokens',
     '',
@@ -289,7 +288,7 @@ export const buildSkillMd = (framework: Framework, roster: readonly ComponentRos
     '',
     '## Styling',
     '',
-    renderStylingSection(),
+    renderStylingSection(packageSkills.styling),
     '',
   ].join('\n');
 };

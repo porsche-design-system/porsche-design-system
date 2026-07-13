@@ -1,7 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`should produce correct vanilla-extract skill markdown 1`] = `
-"# Porsche Design System — Vanilla Extract
+exports[`should expose correct vanilla-extract package skill 1`] = `
+{
+  "content": "# Porsche Design System — Vanilla Extract
 
 The Porsche Design System ships a ready-made [Vanilla Extract](https://vanilla-extract.style) package: a curated catalog
 of design tokens exposed as JavaScript values (colors, typography, spacing, border radii, blur, shadow, motion and
@@ -439,5 +440,9 @@ intentionally **not** listed here — prefer the documented tokens and utilities
 | Export | Description |
 | --- | --- |
 | \`gridFull\` | Object containing all \`full\` grid styles. |
-"
+",
+  "description": "typed tokens and utilities in \`*.css.ts\` files",
+  "name": "vanilla-extract",
+  "title": "vanilla-extract",
+}
 `;

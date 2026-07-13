@@ -4,10 +4,11 @@
 `…-skill-audit.md`, `…-skill-followups.md` and `…-skill-source-of-truth-plan.md` (deleted; originals in git history).
 Completed work is not tracked here — see `git log issue/4450-skill`.
 
-**Status (2026-07-10): Phases R (SKILL.md restructure into topical sections, commit `92a18a5e2f`) and N (per-package
+**Status (2026-07-13): Phases R (SKILL.md restructure into topical sections, commit `92a18a5e2f`) and N (per-package
 skill name + configurable `pds-skill` destination) are DONE and no longer tracked here — see `git log`. The
-`PackageSkill` fragment contract (decision F, hybrid pointer rule) is agreed with Henri; phase 0.2 is DONE, and phase 1
-is ready next. Every phase after 1 and every backlog item is a draft — clarify with Henri before implementing.**
+`PackageSkill` fragment contract (decision F, hybrid pointer rule) is agreed with Henri; phases 0.2–1.2 are DONE, and
+phase 1.3 is ready next. Every phase after 1 and every backlog item is a draft — clarify with Henri before
+implementing.**
 
 ## What this feature is
 
@@ -76,30 +77,26 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
 - **(E)** SKILL.md is restructured into one section per domain with the global reference map and the Core rules section
   dissolved into those sections; Getting started and partials leave SKILL.md entirely until FU.7/FU.8 (getting started)
   and FU.9 (partials) — both undecided — restore them properly (done — R.1, commit `92a18a5e2f`).
-- **(F)** **The `PackageSkill` contract (agreed 2026-07-10).** Every self-contained package skill (the four styling
-  solutions, stylesheets, later tokens) exports a single object from its `skill/skill.ts` — type in `packages/shared`:
+- **(F)** **The `PackageSkill` contract (agreed 2026-07-10, simplified 2026-07-13).** Every self-contained package skill
+  (the four styling solutions, stylesheets, later tokens) exports a single object from its `skill/skill.ts` — type in
+  `packages/shared`:
   ```ts
-  type SkillFile = { path: string; content: string }; // path relative to the skill's own root
   type PackageSkill = {
-    name: string; // kebab-case id, e.g. 'tailwindcss' — the package never knows its
-    // final location; the aggregator derives it from mount + name + SkillFile.path
+    name: string; // kebab-case id, e.g. 'tailwindcss'
     title: string; // display name for tables/headings, e.g. 'Tailwind CSS'
     description: string; // "use this when …" prose (replaces the former useWhen), rendered
     // wherever the main SKILL.md lists this skill
     intro?: string; // prose the main SKILL.md embeds in this skill's topical section
-    getFiles: () => SkillFile[]; // the content — one file or a directory; FIRST file is the
-    // entry the main skill links; lazy, so importing the object is cheap
+    getContent: () => string; // one framework-agnostic markdown reference
   };
   ```
   Ground rules:
   - `intro` is optional: stylesheets and tokens provide it (they own a SKILL.md section); the four styling solutions
     omit it (table row from `title`/`description` only; the `## Styling` framing paragraphs stay aggregator-owned).
-  - `SkillFile.path` is always honored, never discarded. A single-file skill must return exactly
-    `{ path: '<name>.md', content }` and mounts at `references/<mount>/<name>.md`. A multi-file skill mounts every file
-    at `references/<mount>/<name>/<path>`, with `getFiles()[0]` as the linked entry. The aggregator rejects an empty
-    array, duplicate or unsafe paths (absolute paths or `..` traversal), and a first file that is not markdown. These
-    rules preserve today's single-file paths while making future directory-shaped skills deterministic.
-  - Content is framework-agnostic — `getFiles` takes no framework parameter; each package snapshot-tests exactly one
+  - Every package skill is one markdown reference. The package owns content and metadata but no output path; the
+    aggregator derives `references/<mount>/<name>.md` from its registry. Add directory-shaped support only when a real
+    package needs multiple files rather than complicating the current contract speculatively.
+  - Content is framework-agnostic — `getContent` takes no framework parameter; each package snapshot-tests exactly one
     output. Framework variance inside content uses the existing `{js|angular|react|vue}` placeholder, resolved by the
     aggregator at write time (`links.ts`). Framework-structural text the bare placeholder cannot express — today only
     the scss/tailwind "Full stylesheet" raw pointers — stays aggregator-appended glue (**hybrid rule**, decided
@@ -174,7 +171,7 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
 
 ### Phase 1 — fragment contract + aggregator
 
-- [ ] **1.1 Make each fragment export a `PackageSkill` (decision F).** Each fragment currently exports only
+- [x] **1.1 Make each fragment export a `PackageSkill` (decision F).** Each fragment currently exports only
       `getXxxSkill(): string`; the SKILL.md prose describing it (`useWhen`, section text, styling-table rows) lives in
       storefront constants, and the reference path is dictated by the storefront's `STYLE_REFERENCES` list. Fix: each of
       the five fragments exports one `PackageSkill` object (type from `packages/shared`):
@@ -185,16 +182,16 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
   - `intro`: stylesheets only — the what-it-is/when-to-open prose from `renderStylesheetsSection` minus the theming
     inoculation note, which is skill-only anti-hallucination content and stays aggregator-owned (see "Explicitly
     exclusive content").
-  - `getFiles`: wraps the existing serializer output as the single entry file. The scss/tailwindcss "Full stylesheet"
-    pointer section (`fullStylesheetSection` + `rawScssReference`/`rawTailwindcssReference`, appended by
-    `stylesReference.ts:46-56`) stays aggregator-appended per decision F's hybrid rule — no fragment change there. Keep
-    all strings exactly as shipped so trees stay byte-identical. Existing `getXxxSkill()` exports may remain as internal
-    helpers; the snapshot specs (task 0.1) snapshot the `PackageSkill` (fields + rendered files) instead. Location:
+  - `getContent`: exposes the existing serializer output. The scss/tailwindcss "Full stylesheet" pointer section
+    (`fullStylesheetSection` + `rawScssReference`/`rawTailwindcssReference`, appended by the storefront registry) stays
+    aggregator-appended per decision F's hybrid rule — no fragment change there. Keep all strings exactly as shipped so
+    trees stay byte-identical. Existing `getXxxSkill()` exports may remain as internal helpers; the snapshot specs (task
+    0.1) snapshot the `PackageSkill` (fields + rendered content) instead. Location:
     `packages/styles/projects/*/skill/skill.ts`, `packages/components/projects/stylesheets/skill/skill.ts`; type in
     `packages/shared`. Acceptance: five `PackageSkill` exports, typed, snapshot-tested; no generator changes yet; builds
     green.
 
-- [ ] **1.2 Parameterize `buildSkillMd` with plain rows derived from the `PackageSkill` objects.** Kill the parallel
+- [x] **1.2 Parameterize `buildSkillMd` with plain rows derived from the `PackageSkill` objects.** Kill the parallel
       lists: after R.1 there is no global reference map — the `## Stylesheets` section prose and the `## Styling` table
       (`STYLING_SOLUTIONS`, `skillMd.ts:220-225`) and `STYLE_REFERENCES` (`stylesReference.ts:37-43`) must all derive
       from the task-1.1 `PackageSkill` exports; fold the route↔reference mapping (`ROUTE_REFERENCES`, `links.ts`) into
@@ -212,16 +209,14 @@ of the markdown `cell`/`table`/`code` helpers; three parallel lists (`STYLING_SO
       enumerating the content sources — package skills (styles ×4, stylesheets, later tokens; partials/migration on
       re-entry), storefront-MDX renderers (components), meta renderers (icons) — each contributing files + SKILL.md rows
       through one interface, instead of the hand-ordered `writeX` calls in `generateTree`
-      (`scripts/build-skill.ts:151-202`). Path derivation lives ONLY here: mounting a `PackageSkill` at a mount point
-      validates and honors every `SkillFile.path` per decision F. A single-file skill must expose `<name>.md` and writes
-      it to `references/<mount>/<name>.md` (styling solutions: mount `styles`; stylesheets: mount root →
-      `references/stylesheets.md`, exactly today's layout); a multi-file skill writes to
-      `references/<mount>/<name>/<path>` with `getFiles()[0]` as the linked entry. The registry resolves placeholders
-      and doc links at write time (the existing `links.ts` machinery), appends the hybrid "Full stylesheet" pointers for
-      scss/tailwindcss, and hands `buildSkillMd` its rows (task 1.2). `stylesReference.ts` dissolves into the registry.
-      Acceptance: `generateTree` iterates the registry; invalid file arrays/paths fail with a source-specific error;
-      per-source degraded-prose reporting and the roster path unchanged; trees byte-identical; "add a domain" =
-      "register a fragment" documented in the file header; no fragment exports or hardcodes a `references/…` path.
+      (`scripts/build-skill.ts:151-202`). Path derivation lives ONLY here: mounting a `PackageSkill` writes its content
+      to `references/<mount>/<name>.md` (styling solutions: mount `styles`; stylesheets: mount root →
+      `references/stylesheets.md`, exactly today's layout). The registry resolves placeholders and doc links at write
+      time (the existing `links.ts` machinery), appends the hybrid "Full stylesheet" pointers for scss/tailwindcss, and
+      hands `buildSkillMd` its rows (task 1.2). `stylesReference.ts` dissolves into the registry. Acceptance:
+      `generateTree` iterates the registry; per-source degraded-prose reporting and the roster path remain unchanged;
+      trees byte-identical; "add a domain" = "register a fragment" documented in the file header; no fragment exports or
+      hardcodes a `references/…` path.
 
 ### Phase 2 — styling / stylesheets / theming prose (decision A)
 
@@ -456,9 +451,9 @@ fragment structure or per-framework storefront MDX render, not hardcoded generat
 
 ## Sequencing
 
-- **Phase 1 next.** Phase 0.2 changed artifact storage and build order while preserving generated bytes; phase 1 changes
-  ownership/aggregation while remaining output-neutral. Phases 2–3 still need clarification: they change generated
-  content intentionally — never a storefront page (decision C) — and should be coordinated with the missing-topics P1
-  backlog.
+- **Phase 1.3 next.** Phase 0.2 changed artifact storage and build order while preserving generated bytes; phases
+  1.1–1.2 established the package-owned fragment contract and SKILL.md rows, and phase 1.3 completes the all-source
+  registry while remaining output-neutral. Phases 2–3 still need clarification: they change generated content
+  intentionally — never a storefront page (decision C) — and should be coordinated with the missing-topics P1 backlog.
 - After 0.2, every generated-content task uses the compact tree hashes plus staging/dist invariants as its
   no-unintended-change proof: 1.x must keep hashes stable; 2.x/3.x update the four hashes intentionally.

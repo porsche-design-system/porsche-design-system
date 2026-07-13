@@ -2,7 +2,7 @@ import { sentenceCase } from 'change-case';
 // Deep source imports (not the `tokens-meta` package entry): `tokensMeta` is a build-time source module
 // that the package's published entry (built dist) does not re-export, and this generator runs under `tsx`
 // against source before the sibling packages are built — the same rationale as `generateComponentMeta`'s
-// relative-path imports. `stylesReference.ts` reaches into the styles/stylesheets sources for the same reason.
+// relative-path imports. `packageSkills.ts` reaches into the styles/stylesheets sources for the same reason.
 import { type TokensMetaTree, tokensMeta } from '../../../../tokens/projects/tokens-meta/src/lib/tokensMeta';
 import type { TokenMeta } from '../../../../tokens/projects/tokens-meta/src/types/token-meta';
 import { escapeCell, headingSlug, markdownTable } from './markdown';
@@ -70,5 +70,8 @@ const categories = Object.entries(tokensMeta as TokensMetaTree)
 /** Render the full design-tokens reference as markdown. Pure function over {@link tokensMeta}. */
 export const getTokensSkill = (): string => `${[intro, contents, categories].join('\n\n')}\n`;
 
+export const TOKENS_REFERENCE = 'tokens.md';
+
 /** Write the design-tokens reference (`references/tokens.md`) into the skill tree. Returns the path written. */
-export const writeTokensReference = (tree: SkillTree): string => tree.writeReference('tokens.md', getTokensSkill());
+export const writeTokensReference = (tree: SkillTree): string =>
+  tree.writeReference(TOKENS_REFERENCE, getTokensSkill());

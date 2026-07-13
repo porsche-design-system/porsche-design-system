@@ -14,15 +14,7 @@ import type { Framework } from './skillTree';
 /** Live docs origin, used as the fallback for storefront pages the skill does not ship a reference for. */
 const STOREFRONT_ORIGIN = 'https://designsystem.porsche.com';
 
-/** Storefront route first-segments that map to a single tree reference the skill ships. */
-const ROUTE_REFERENCES: Record<string, string> = {
-  scss: 'references/styles/scss.md',
-  tailwindcss: 'references/styles/tailwindcss.md',
-  'vanilla-extract': 'references/styles/vanilla-extract.md',
-  emotion: 'references/styles/emotion.md',
-  stylesheets: 'references/stylesheets.md',
-  tokens: 'references/tokens.md',
-};
+export type RouteReferences = Readonly<Record<string, string>>;
 
 /** File-relative link from `fromDir` to a tree-relative target, always prefixed (`./` or `../`). */
 const relativeLink = (fromDir: string, target: string): string => {
@@ -31,7 +23,7 @@ const relativeLink = (fromDir: string, target: string): string => {
 };
 
 /** Map a single storefront-absolute href to its in-tree target, or `null` to fall back to the docs URL. */
-const localTarget = (href: string): string | null => {
+const localTarget = (href: string, routeReferences: RouteReferences): string | null => {
   const [first, second] = href
     .replace(/[?#].*$/, '')
     .split('/')
@@ -43,7 +35,7 @@ const localTarget = (href: string): string | null => {
     const tag = `p-${second}`;
     return `references/components/${tag}/${tag}.md`;
   }
-  return first ? (ROUTE_REFERENCES[first] ?? null) : null;
+  return first ? (routeReferences[first] ?? null) : null;
 };
 
 /**
@@ -72,7 +64,11 @@ const LINK_PATTERN = /\]\((\/[^)\s]*)\)/g;
  * `fromRelPath` (the file's own tree-relative path, e.g. `references/components/p-button/p-button.md`).
  * Fence-aware: links inside fenced code blocks are left untouched.
  */
-export const rewriteDocLinks = (markdown: string, fromRelPath: string): string => {
+export const rewriteDocLinks = (
+  markdown: string,
+  fromRelPath: string,
+  routeReferences: RouteReferences = {}
+): string => {
   const fromDir = path.posix.dirname(fromRelPath);
   let inFence = false;
 
@@ -87,7 +83,7 @@ export const rewriteDocLinks = (markdown: string, fromRelPath: string): string =
         return line;
       }
       return line.replace(LINK_PATTERN, (_whole, href: string) => {
-        const target = localTarget(href);
+        const target = localTarget(href, routeReferences);
         return `](${target ? relativeLink(fromDir, target) : `${STOREFRONT_ORIGIN}${href}`})`;
       });
     })
