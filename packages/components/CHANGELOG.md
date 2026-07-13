@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
-- `AG Grid`: Upgrade `ag-grid-community` to v36.0.0
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 36
   ([#4553](https://github.com/porsche-design-system/porsche-design-system/pull/4553))
 
 ## [4.4.0-rc.0] - 2026-07-06
