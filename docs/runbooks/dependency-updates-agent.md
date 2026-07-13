@@ -7,10 +7,11 @@
 > system prompt, which explicitly supersedes the manual steps below.
 >
 > **Run it:** dispatch the driver workflow manually —
-> `gh workflow run ai.yml -f blueprint=dep-bump` (or the Actions UI: **TurboSpec | AI
-> Workflow** -> **Run workflow**, `blueprint = dep-bump`). No issue is needed; the engine
-> opens a PR with the bumped deps automatically. Locally: `uv run --project <turbo-spec>
-> workflow-skeleton run .turbo-spec/workflows/dep-bump.yml --repo porsche-design-system/porsche-design-system`.
+> `gh workflow run ai.yml` (or the Actions UI: **TurboSpec | Dependency Bump** ->
+> **Run workflow**). The shim is hard-wired to the dep-bump blueprint; no inputs are
+> needed. No issue is required — the engine opens a PR with the bumped deps
+> automatically. Locally: `uv run --project <turbo-spec> workflow-skeleton run
+> .turbo-spec/workflows/dep-bump.yml --repo porsche-design-system/porsche-design-system`.
 
 > **Audience**: An autonomous AI cloud agent (e.g. a scheduled Copilot coding agent) running the **recurring weekly npm
 > dependency update** for this monorepo.

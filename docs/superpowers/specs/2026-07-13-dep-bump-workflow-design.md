@@ -121,10 +121,11 @@ verdict; a retained major without verification evidence yields `BLOCKED`.
   (bare names resolve to built-ins; a path with a slash resolves against the repo root).
 - `network.allowed` starts empty; add hosts only when the sandbox log prints
   `[sandbox] egress denied` for a release-note evidence host the resolver needs.
-- Trigger is manual for now: locally via the turbo-spec CLI `run`, or in CI by dispatching
-  the `ai.yml` driver shim with input `blueprint: dep-bump` (`gh workflow run ai.yml -f
-  blueprint=dep-bump`). The bare name resolves consumer-first to
-  `.turbo-spec/workflows/dep-bump.yml`; an empty `pr-number` makes the engine pass
+- Trigger is manual for now: locally via the turbo-spec CLI `run`, or in CI by
+  dispatching the dedicated `ai.yml` driver shim (`gh workflow run ai.yml`). That shim
+  is hard-wired to `blueprint: dep-bump` and runs on `workflow_dispatch` only (no
+  issue-label trigger); the engine resolves the bare name consumer-first to
+  `.turbo-spec/workflows/dep-bump.yml`, and an empty `pr-number` makes it pass
   `--create-pr`, so the run opens its own PR. The `ai-watch.yml` and `comment-router.yml`
   shims provide failure triage/auto-resume and PR-feedback resume for those runs. A weekly
   cron dispatcher can wrap this later.
