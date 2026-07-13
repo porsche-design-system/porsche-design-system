@@ -66,6 +66,9 @@ export class Drilldown {
   private dialog: HTMLDialogElement;
   private drawer: HTMLDivElement;
   private isDesktop = false;
+  // Tracks whether the current pointer gesture started inside the drawer (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the drawer and released on the backdrop.
+  private isPointerDownInside = false;
   private matchMediaQueryS = window.matchMedia(`(min-width: ${breakpointS}px)`);
 
   @Watch('open')
@@ -132,6 +135,7 @@ export class Drilldown {
         ref={(ref) => (this.dialog = ref)}
         {...parseAndGetAriaAttributes(this.aria)}
         onCancel={this.onCancelDialog}
+        onMouseDown={this.onMouseDownDialog}
         onClick={this.onClickDialog}
       >
         <div class="drawer" ref={(ref) => (this.drawer = ref)}>
@@ -181,10 +185,20 @@ export class Drilldown {
   };
 
   private onClickDialog = (e: PointerEvent & { target: HTMLDialogElement }): void => {
-    if (e.target.tagName === 'DIALOG') {
+    // Skip dismissal when the pointer gesture started inside the drawer (e.g. a text selection dragged out and released
+    // on the backdrop). A `click` only fires on the nearest common ancestor of `mousedown`/`mouseup`, so such a gesture
+    // retargets the resulting `click` to the backdrop and would otherwise wrongly dismiss. Mirrors `p-popover`.
+    const startedInside = this.isPointerDownInside;
+    this.isPointerDownInside = false;
+    if (!startedInside && e.target.tagName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
       this.dismissDialog();
     }
+  };
+
+  private onMouseDownDialog = (e: MouseEvent & { target: HTMLElement }): void => {
+    // Record whether the press began inside the drawer (any target other than the `<dialog>` backdrop itself).
+    this.isPointerDownInside = e.target.tagName !== 'DIALOG';
   };
 
   private onCancelDialog = (e: Event): void => {

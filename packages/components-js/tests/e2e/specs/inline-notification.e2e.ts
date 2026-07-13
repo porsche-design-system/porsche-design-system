@@ -49,8 +49,8 @@ const getActionButton = (page: Page) => page.locator('p-inline-notification .act
 
 test('should render close button with type of "button"', async ({ page }) => {
   await initInlineNotification(page);
-  const closeBtnReal = page.locator('p-inline-notification .dismiss button');
-  expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
+  const closeBtn = getDismissButton(page);
+  expect(await getAttribute(closeBtn, 'type')).toBe('button');
 });
 
 test('should render without button when dismissButton prop false', async ({ page }) => {
@@ -106,10 +106,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // one included in button
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -142,7 +140,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {

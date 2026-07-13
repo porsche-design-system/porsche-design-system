@@ -1,6 +1,8 @@
-<div popover="manual" aria-hidden="true" role="status" aria-live="polite">
+<div popover="manual" inert="" role="status" aria-live="polite">
   <div class="notification">
     <slot> </slot>
-    <p-button class="dismiss hydrated"> Close banner</p-button>
+    <button class="dismiss" type="button">
+      <span> Close banner</span>
+    </button>
   </div>
 </div>

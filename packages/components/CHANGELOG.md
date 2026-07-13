@@ -19,6 +19,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `AG Grid`: Bumped peer dependency to support AG Grid new major version 36
   ([#4553](https://github.com/porsche-design-system/porsche-design-system/pull/4553))
 
+## [4.4.0-rc.1] - 2026-07-10
+
+### Fixed
+
+- `Flyout`, `Modal`, `Sheet` ([#4578](https://github.com/porsche-design-system/porsche-design-system/pull/4578)):
+  - enable selecting text within dialog element
+  - prevent dialog from being dismissed when a text selection started inside the dialog is released on the backdrop
+- `Popover`, `Banner`: prevent entry animation from playing when initially rendered in an open state
+  ([#4578](https://github.com/porsche-design-system/porsche-design-system/pull/4578))
+
 ## [4.4.0-rc.0] - 2026-07-06
 
 ### Added
