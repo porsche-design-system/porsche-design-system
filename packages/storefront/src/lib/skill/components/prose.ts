@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react';
+import type { Root } from 'mdast';
 import { leadSentence, stripLeadingBlockquotes, stripLeadingH1 } from '../support/markdown';
 import { renderMdxToMarkdown } from '../support/renderMdxToMarkdown';
 import type { Framework } from '../support/skillTree';
@@ -11,10 +11,10 @@ import type { Framework } from '../support/skillTree';
 
 /** The prose-bearing subset of a component's storefront `ComponentDocsMeta` this module reads. */
 export type ComponentProseSource = {
-  introduction: ComponentType;
-  usage: ComponentType;
-  accessibility: ComponentType;
-  notes?: Record<string, { name: string; description: ComponentType }>;
+  introduction: Root;
+  usage: Root;
+  accessibility: Root;
+  notes?: Record<string, { name: string; description: Root }>;
 };
 
 const NO_SUMMARY = '_No description available._';
@@ -42,16 +42,16 @@ export const ROSTER_SUMMARY_OVERRIDES: Record<string, string> = {
  * when the source is absent.
  */
 const renderSection = (
-  component: ComponentType | undefined,
+  tree: Root | undefined,
   sections: string[],
   label: string,
   framework: Framework,
   transform: (markdown: string) => string = (markdown) => markdown
 ): string => {
-  if (!component) {
+  if (!tree) {
     return '';
   }
-  const markdown = renderMdxToMarkdown(component, framework, label);
+  const markdown = renderMdxToMarkdown(tree, framework, label);
   const transformed = transform(markdown).trim();
   if (transformed) {
     sections.push(transformed);

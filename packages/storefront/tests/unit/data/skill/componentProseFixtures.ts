@@ -1,4 +1,3 @@
-import type { ComponentType } from 'react';
 import type { ComponentProseSource } from '@/lib/skill/components/prose';
 import { compileMdx } from './proseFixtures';
 
@@ -112,7 +111,7 @@ export const compileComponentDocsMeta = async (): Promise<Record<string, Compone
     if (raw.notes) {
       const notes: NonNullable<ComponentProseSource['notes']> = {};
       for (const [key, note] of Object.entries(raw.notes)) {
-        notes[key] = { name: note.name, description: (await compileMdx(note.description)) as ComponentType };
+        notes[key] = { name: note.name, description: await compileMdx(note.description) };
       }
       source.notes = notes;
     }

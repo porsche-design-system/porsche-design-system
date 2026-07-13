@@ -1,6 +1,5 @@
-import { evaluate } from '@mdx-js/mdx';
-import type { ComponentType } from 'react';
-import * as jsxRuntime from 'react/jsx-runtime';
+import type { Root } from 'mdast';
+import { parseMdxToMdast } from '@/lib/skill/support/renderMdxToMarkdown';
 
 /**
  * Representative storefront component prose, modelled on real component `page.mdx`
@@ -64,11 +63,5 @@ Use it to present grouped information progressively. A minimal example:
 `,
 };
 
-/** Compiles an MDX source string into a React component, mirroring the storefront build. */
-export const compileMdx = async (source: string): Promise<ComponentType> => {
-  const { default: MdxComponent } = await evaluate(source, {
-    ...jsxRuntime,
-    baseUrl: import.meta.url,
-  });
-  return MdxComponent as ComponentType;
-};
+/** Parses an MDX source string into its mdast tree, mirroring the skill build (see skill-mdx-loader.cjs). */
+export const compileMdx = (source: string): Root => parseMdxToMdast(source);

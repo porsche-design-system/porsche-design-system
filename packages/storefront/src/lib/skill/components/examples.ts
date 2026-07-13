@@ -1,7 +1,6 @@
 import type { CodeSample, FrameworkMarkup } from '@porsche-design-system/shared';
-import type { ComponentType } from 'react';
+import type { Root } from 'mdast';
 import type { StorefrontColorScheme } from '../../../models/colorScheme';
-import type { ExampleMeta } from '../../../models/meta';
 import type { Story } from '../../../models/story';
 import { createFrameworkMarkup } from '../../../utils/generator/createFrameworkMarkup';
 import type { HTMLTagOrComponent } from '../../../utils/generator/generator';
@@ -56,7 +55,7 @@ const toFileBase = (key: string): string =>
 /** First sentence of the rendered `description`, used as the row's short "when to use". Falls back
  * to the example name when there is no description or it renders to nothing (some descriptions are
  * only an embedded live demo). */
-const whenToUse = (description: ComponentType | undefined, fallback: string, framework: Framework): string => {
+const whenToUse = (description: Root | undefined, fallback: string, framework: Framework): string => {
   if (!description) {
     return fallback;
   }
@@ -72,7 +71,7 @@ const storyMarkup = (story: Story<HTMLTagOrComponent>, framework: Framework): st
 /** A single planned example: its display name, short usage note and the markup to emit (if any). */
 type PlannedExample = { name: string; whenToUse: string; fileBase: string; markup: string };
 
-const planExample = (key: string, example: ExampleMeta, framework: Framework): PlannedExample => {
+const planExample = (key: string, example: SkillExampleMeta, framework: Framework): PlannedExample => {
   const base = { name: example.name, fileBase: toFileBase(key) };
   switch (example.kind) {
     case 'story':
@@ -92,10 +91,20 @@ const planExample = (key: string, example: ExampleMeta, framework: Framework): P
   }
 };
 
+/**
+ * A component example as the skill reads it — the storefront `ExampleMeta` with its MDX `description`
+ * resolved to an mdast tree (the shape the skill build's `.mdx` loader produces; see
+ * `skill-mdx-loader.cjs`). The `story` / `example` payloads are otherwise identical to the model.
+ */
+export type SkillExampleMeta =
+  | { kind: 'story'; name: string; description?: Root; story: Story<HTMLTagOrComponent> }
+  | { kind: 'example'; name: string; description?: Root; example: CodeSample }
+  | { kind: 'description'; name: string; description: Root };
+
 /** A component's examples source — the structural subset of `ComponentDocsMeta` this module reads. */
 export type ComponentExamplesSource = {
   configurator: { story: Story<HTMLTagOrComponent>; example?: CodeSample };
-  examples: Record<string, ExampleMeta>;
+  examples: Record<string, SkillExampleMeta>;
 };
 
 /**
