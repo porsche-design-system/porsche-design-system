@@ -86,6 +86,11 @@ export class Popover {
 
   @State() private isOpen = false;
 
+  // Tracks the component's first render. While `true`, the entry transition (`@starting-style`) is suppressed so an
+  // initially-open popover (`open=true` on page load) appears instantly instead of fading in; flipped to `false` in
+  // `componentDidLoad`, so every later (user-triggered) open keeps the fade-in.
+  private isInitialRender = true;
+
   // The `[popover]` panel element on the #top-layer that holds the content and the arrow.
   private refPopover: HTMLDivElement;
   // The default info button rendered in the Shadow DOM (only present when no `button` slot is used).
@@ -213,7 +218,7 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.effectiveOpen, this.compact);
+    attachComponentCss(this.host, getComponentCss, this.effectiveOpen, this.compact, this.isInitialRender);
 
     const hasSlottedButton = hasNamedSlot(this.host, 'button');
     const id = 'popover';
@@ -262,6 +267,12 @@ export class Popover {
     this.syncAutoUpdate(this.effectiveOpen);
     // Register/unregister the document-level dismiss listeners based on the current open state (idempotent).
     this.syncDismissListeners(this.effectiveOpen);
+  }
+
+  public componentDidLoad(): void {
+    // After the first render the initial-open entry fade has been (intentionally) suppressed; clear the flag so any
+    // subsequent user-triggered open renders with `@starting-style` and fades in normally.
+    this.isInitialRender = false;
   }
 
   private syncAutoUpdate = (active: boolean): void => {

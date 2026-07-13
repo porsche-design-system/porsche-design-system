@@ -249,9 +249,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-button",
-    ],
     "propsMeta": {
       "description": {
         "allowedValues": "string",
@@ -2784,9 +2781,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-button",
-    ],
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -3401,7 +3395,6 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "nestedComponents": [
       "p-button-pure",
-      "p-button",
     ],
     "propsMeta": {
       "actionIcon": {
@@ -7079,9 +7072,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-button",
-    ],
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -8930,9 +8920,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
-    "nestedComponents": [
-      "p-button",
-    ],
     "propsMeta": {
       "aria": {
         "allowedValues": {
@@ -10517,9 +10504,6 @@ exports[`should match snapshot 1`] = `
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": true,
-    "nestedComponents": [
-      "p-button",
-    ],
     "propsMeta": {
       "state": {
         "defaultValue": "info",

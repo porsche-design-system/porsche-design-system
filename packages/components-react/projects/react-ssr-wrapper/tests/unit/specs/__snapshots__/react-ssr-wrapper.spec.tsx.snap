@@ -3186,24 +3186,21 @@ exports[`should render dsr component for PBanner 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 [popover] {
   all: unset;
   position: fixed;
-  z-index: var(--_p-banner-a,99);
+  --_p-banner-a: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   inset-block: auto var(--p-banner-bottom,var(--p-banner-position-bottom,56px));
-  transform: translate3d(-50%,calc(var(--p-banner-bottom,var(--p-banner-position-bottom,56px)) + 100%),0);
   left: 50vw;
   width: min(calc(100vw - 2 * var(--p-banner-inset-x,max(22px, 10.625vw - 12px))),var(--p-banner-max-w,100ch));
+  transform: var(--_p-banner-a);
+  transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   overlay: none;
-  visibility: hidden;
-  pointer-events: none;
-  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
+  display: none;
 }
 [popover]:popover-open {
   overlay: auto;
+  display: grid;
 }
 [popover]::backdrop {
   display: none;
@@ -3217,14 +3214,14 @@ slot:not([name]),slot[name="description"],p {
 }
 @media(min-width:760px) {
   [popover] {
+    --_p-banner-a: translate3d(-50%,calc(-100% - var(--p-banner-top,var(--p-banner-position-top,56px))),0);
     inset-block: var(--p-banner-top,var(--p-banner-position-top,56px)) auto;
-    transform: translate3d(-50%,calc(-100% - var(--p-banner-top,var(--p-banner-position-top,56px))),0);
   }
 }
 
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-sm)),transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete, display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -3241,10 +3238,45 @@ slot:not([name]),slot[name="description"],p {
   backdrop-filter: var(--p-blur-frosted);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-frosted-strong);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/4/-1;
   align-self: flex-start;
   margin-block: calc(-6 * var(--p-spacing-static-2xs));
   margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:760px) {
   .notification::before {
@@ -3271,12 +3303,33 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-frosted);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 
     </style>
     <div
-      aria-hidden="true"
       aria-live="polite"
+      inert=""
       popover="manual"
       role="status"
     >
@@ -3284,177 +3337,14 @@ slot:not([name]),slot[name="description"],p {
         class="notification"
       >
         <slot />
-        <p-button
+        <button
           class="dismiss"
-          data-ssr=""
+          type="button"
         >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  display: inline-block;
-  vertical-align: top;
-  --_p-button-a: 0.64285714;
-  --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--p-radius-full) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
-  gap: 0;
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.icon {
-  font: var(--p-typescale-sm) var(--p-font-porsche-next);
-  width: var(--p-leading-normal);
-  height: var(--p-leading-normal);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media(forced-colors:active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-            </style>
-            <button
-              class="root"
-              type="button"
-            >
-              <p-icon
-                aria-hidden="true"
-                class="icon"
-                data-ssr=""
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  object-position: -9999px -9999px;
-  pointer-events: none;
-  width: var(--p-icon-size,var(--p-leading-normal));
-  height: var(--p-icon-size,var(--p-leading-normal));
-  font-family: var(--p-font-porsche-next);
-  font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  background: var(--p-icon-color,currentcolor);
-}
-@media(forced-colors:active) {
-  img {
-    background: CanvasText;
-  }
-}
-
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/close.eec3c5d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-            <span
-              class="loading"
-              id="loading"
-              role="status"
-            />
-          </template>
-          Close banner
-        </p-button>
+          <span>
+            Close banner
+          </span>
+        </button>
       </div>
     </div>
   </template>
@@ -6678,9 +6568,6 @@ exports[`should render dsr component for PFlyout 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -6699,15 +6586,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -6759,6 +6649,17 @@ dialog::backdrop {
   clip-path: inset(0 round 0 var(--p-radius-3xl) var(--p-radius-3xl) 0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -6768,16 +6669,60 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .flyout {
     border-inline-start: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 
     </style>
     <dialog
       aria-label="Flyout"
       aria-modal="true"
+      inert=""
       tabindex="-1"
     >
       <div
@@ -6786,177 +6731,14 @@ dialog::backdrop {
         <div
           class="flyout"
         >
-          <p-button
+          <button
             class="dismiss"
-            data-ssr=""
+            type="button"
           >
-            <template
-              shadowroot="open"
-              shadowrootdelegatesfocus="true"
-              shadowrootmode="open"
-            >
-              <style>
-                :host {
-  display: inline-block;
-  vertical-align: top;
-  --_p-button-a: 0.64285714;
-  --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--p-radius-full) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
-  gap: 0;
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.icon {
-  font: var(--p-typescale-sm) var(--p-font-porsche-next);
-  width: var(--p-leading-normal);
-  height: var(--p-leading-normal);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media(forced-colors:active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-contrast-high);
-  }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-              </style>
-              <button
-                class="root"
-                type="button"
-              >
-                <p-icon
-                  aria-hidden="true"
-                  class="icon"
-                  data-ssr=""
-                >
-                  <template
-                    shadowroot="open"
-                    shadowrootmode="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  object-position: -9999px -9999px;
-  pointer-events: none;
-  width: var(--p-icon-size,var(--p-leading-normal));
-  height: var(--p-icon-size,var(--p-leading-normal));
-  font-family: var(--p-font-porsche-next);
-  font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  background: var(--p-icon-color,currentcolor);
-}
-@media(forced-colors:active) {
-  img {
-    background: CanvasText;
-  }
-}
-
-                    </style>
-                    <img
-                      alt=""
-                      height="24"
-                      loading="lazy"
-                      src="http://localhost:3001/icons/close.eec3c5d.svg"
-                      width="24"
-                    />
-                  </template>
-                </p-icon>
-                <span
-                  class="label"
-                >
-                  <slot />
-                </span>
-              </button>
-              <span
-                class="loading"
-                id="loading"
-                role="status"
-              />
-            </template>
-            Dismiss flyout
-          </p-button>
+            <span>
+              Dismiss flyout
+            </span>
+          </button>
           <slot />
         </div>
       </div>
@@ -7093,10 +6875,45 @@ slot:not([name]),slot[name="description"],p {
   backdrop-filter: var(--p-blur-frosted);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-frosted-strong);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/4/-1;
   align-self: flex-start;
   margin-block: calc(-6 * var(--p-spacing-static-2xs));
   margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:760px) {
   .notification::before {
@@ -7123,6 +6940,27 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-frosted);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 
     </style>
@@ -7132,177 +6970,14 @@ slot:not([name]),slot[name="description"],p {
       role="status"
     >
       <slot />
-      <p-button
+      <button
         class="dismiss"
-        data-ssr=""
+        type="button"
       >
-        <template
-          shadowroot="open"
-          shadowrootdelegatesfocus="true"
-          shadowrootmode="open"
-        >
-          <style>
-            :host {
-  display: inline-block;
-  vertical-align: top;
-  --_p-button-a: 0.64285714;
-  --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--p-radius-full) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-frosted-strong);
-  color: var(--p-color-primary);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
-  gap: 0;
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.icon {
-  font: var(--p-typescale-sm) var(--p-font-porsche-next);
-  width: var(--p-leading-normal);
-  height: var(--p-leading-normal);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media(forced-colors:active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-frosted);
-  }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-          </style>
-          <button
-            class="root"
-            type="button"
-          >
-            <p-icon
-              aria-hidden="true"
-              class="icon"
-              data-ssr=""
-            >
-              <template
-                shadowroot="open"
-                shadowrootmode="open"
-              >
-                <style>
-                  :host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  object-position: -9999px -9999px;
-  pointer-events: none;
-  width: var(--p-icon-size,var(--p-leading-normal));
-  height: var(--p-icon-size,var(--p-leading-normal));
-  font-family: var(--p-font-porsche-next);
-  font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  background: var(--p-icon-color,currentcolor);
-}
-@media(forced-colors:active) {
-  img {
-    background: CanvasText;
-  }
-}
-
-                </style>
-                <img
-                  alt=""
-                  height="24"
-                  loading="lazy"
-                  src="http://localhost:3001/icons/close.eec3c5d.svg"
-                  width="24"
-                />
-              </template>
-            </p-icon>
-            <span
-              class="label"
-            >
-              <slot />
-            </span>
-          </button>
-          <span
-            class="loading"
-            id="loading"
-            role="status"
-          />
-        </template>
-        Close notification
-      </p-button>
+        <span>
+          Close notification
+        </span>
+      </button>
     </div>
   </template>
   Some child
@@ -10188,9 +9863,6 @@ exports[`should render dsr component for PModal 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -10209,15 +9881,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -10263,6 +9938,17 @@ dialog::backdrop {
   transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -10272,11 +9958,54 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 
     </style>
@@ -10291,177 +10020,14 @@ dialog::backdrop {
         <div
           class="modal"
         >
-          <p-button
+          <button
             class="dismiss"
-            data-ssr=""
+            type="button"
           >
-            <template
-              shadowroot="open"
-              shadowrootdelegatesfocus="true"
-              shadowrootmode="open"
-            >
-              <style>
-                :host {
-  display: inline-block;
-  vertical-align: top;
-  --_p-button-a: 0.64285714;
-  --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--p-radius-full) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
-  gap: 0;
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.icon {
-  font: var(--p-typescale-sm) var(--p-font-porsche-next);
-  width: var(--p-leading-normal);
-  height: var(--p-leading-normal);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media(forced-colors:active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-contrast-high);
-  }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-              </style>
-              <button
-                class="root"
-                type="button"
-              >
-                <p-icon
-                  aria-hidden="true"
-                  class="icon"
-                  data-ssr=""
-                >
-                  <template
-                    shadowroot="open"
-                    shadowrootmode="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  object-position: -9999px -9999px;
-  pointer-events: none;
-  width: var(--p-icon-size,var(--p-leading-normal));
-  height: var(--p-icon-size,var(--p-leading-normal));
-  font-family: var(--p-font-porsche-next);
-  font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  background: var(--p-icon-color,currentcolor);
-}
-@media(forced-colors:active) {
-  img {
-    background: CanvasText;
-  }
-}
-
-                    </style>
-                    <img
-                      alt=""
-                      height="24"
-                      loading="lazy"
-                      src="http://localhost:3001/icons/close.eec3c5d.svg"
-                      width="24"
-                    />
-                  </template>
-                </p-icon>
-                <span
-                  class="label"
-                >
-                  <slot />
-                </span>
-              </button>
-              <span
-                class="loading"
-                id="loading"
-                role="status"
-              />
-            </template>
-            Dismiss modal
-          </p-button>
+            <span>
+              Dismiss modal
+            </span>
+          </button>
           <slot />
         </div>
       </div>
@@ -11986,7 +11552,7 @@ button::after {
 
 @supports (overlay: auto) and (transition-behavior: allow-discrete) {
   [popover] {
-    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete,display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
+    transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out),overlay var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete, display var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -13100,9 +12666,6 @@ exports[`should render dsr component for PSheet 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -13125,15 +12688,18 @@ dialog {
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
   width: 0px;
   height: 0px;
   visibility: hidden;
   pointer-events: none;
-  overlay: none;
   background: transparent;
   transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
@@ -13178,6 +12744,17 @@ dialog::backdrop {
   transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-primary);
+  color: var(--p-color-canvas);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -13187,10 +12764,53 @@ dialog::backdrop {
   place-self: flex-start flex-end;
   filter: invert(1) brightness(1.02);
 }
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/&gt;&lt;/svg&gt;') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(forced-colors:active) {
   .sheet {
     border-top: 2px solid CanvasText;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-contrast-high);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 
     </style>
@@ -13205,177 +12825,14 @@ dialog::backdrop {
         <div
           class="sheet"
         >
-          <p-button
+          <button
             class="dismiss"
-            data-ssr=""
+            type="button"
           >
-            <template
-              shadowroot="open"
-              shadowrootdelegatesfocus="true"
-              shadowrootmode="open"
-            >
-              <style>
-                :host {
-  display: inline-block;
-  vertical-align: top;
-  --_p-button-a: 0.64285714;
-  --_p-link-button-a: var(--p-radius-lg);
-  border-radius: var(--p-radius-full) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
-  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  border-radius: inherit;
-  transform: translate3d(0,0,0);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
-  cursor: pointer;
-  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  padding: calc(28px * (var(--_p-button-a) - 0.64285714) + 6px);
-  gap: 0;
-}
-.root:focus-visible {
-  outline: 2px solid var(--p-color-focus);
-  outline-offset: 2px;
-}
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.icon {
-  font: var(--p-typescale-sm) var(--p-font-porsche-next);
-  width: var(--p-leading-normal);
-  height: var(--p-leading-normal);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@media(forced-colors:active) {
-  .root {
-    forced-color-adjust: none;
-    background: Canvas;
-    color: LinkText;
-    box-shadow: inset 0 0 0 2px LinkText;
-  }
-  .root:is(button) {
-    box-shadow: inset 0 0 0 2px ButtonBorder;
-    color: ButtonText;
-  }
-  .root:focus-visible {
-    outline-color: Highlight;
-  }
-}
-
-@media(hover:hover) {
-  .root:hover {
-    background-color: var(--p-color-contrast-high);
-  }
-@media(forced-colors:active) {
-    .root:hover {
-      background: Canvas;
-    }
-}
-
-}
-
-              </style>
-              <button
-                class="root"
-                type="button"
-              >
-                <p-icon
-                  aria-hidden="true"
-                  class="icon"
-                  data-ssr=""
-                >
-                  <template
-                    shadowroot="open"
-                    shadowrootmode="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-flex;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  overflow: hidden;
-  object-position: -9999px -9999px;
-  pointer-events: none;
-  width: var(--p-icon-size,var(--p-leading-normal));
-  height: var(--p-icon-size,var(--p-leading-normal));
-  font-family: var(--p-font-porsche-next);
-  font-size: var(--p-typescale-sm);
-  -webkit-mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  mask: url("http://localhost:3001/icons/close.eec3c5d.svg") center/contain no-repeat;
-  background: var(--p-icon-color,currentcolor);
-}
-@media(forced-colors:active) {
-  img {
-    background: CanvasText;
-  }
-}
-
-                    </style>
-                    <img
-                      alt=""
-                      height="24"
-                      loading="lazy"
-                      src="http://localhost:3001/icons/close.eec3c5d.svg"
-                      width="24"
-                    />
-                  </template>
-                </p-icon>
-                <span
-                  class="label"
-                >
-                  <slot />
-                </span>
-              </button>
-              <span
-                class="loading"
-                id="loading"
-                role="status"
-              />
-            </template>
-            Dismiss sheet
-          </p-button>
+            <span>
+              Dismiss sheet
+            </span>
+          </button>
           <slot />
         </div>
       </div>
