@@ -1,0 +1,142 @@
+name: dep-bump
+version: "1.0"
+description: >-
+  Bump third-party npm dependencies in the Porsche Design System monorepo and
+  resolve any resulting ERESOLVE peer conflicts with an evidenced remedy.
+  Deterministic by default; only the update stage is agentic.
+
+# The full gh-aw + Porsche ecosystem domain lists are always allowed (registries
+# included). Add EXTRA literal release-note evidence hosts here if the sandbox
+# log prints "[sandbox] egress denied" for a host the resolver needs.
+network:
+  allowed: []
+
+stages:
+  # S1 Preflight — agentless. Clean, reproducible tree + baselines. Any failure
+  # escalates (terminal BLOCKED at preflight); there is no agent to fix it.
+  - name: preflight
+    orchestrator: testing
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 1
+        config:
+          gate_name: preflight
+          failure_verdict: escalate
+          environment_verdict: escalate
+          success_reason: "Clean, reproducible tree; baselines captured"
+          steps:
+            - name: preflight
+              command: ["bash", "scripts/dep-bump/preflight.sh"]
+
+  # S2+S3+S4 — the ONE agentic stage. Runs deterministic bump/install scripts and
+  # reasons only on ERESOLVE. `skills` is omitted so project skills (including
+  # resolving-npm-eresolve) auto-advertise; the agent activates it on demand.
+  - name: update
+    orchestrator: implementation
+    depends_on: [preflight]
+    agents:
+      - type: implementer
+        system_prompt: .turbo-spec/system_prompts/dep_update.md
+        tools: [github, file, shell]
+        model_kwargs:
+          model_id: claude-opus-4.8
+    outputs:
+      result: .turbo-spec/out/update.json
+    quality_gates:
+      - evaluator: outcome_contract
+        on_fail: loop_back
+        max_retries: 2
+        config:
+          outcome_path: .turbo-spec/out/update.json
+          schema: .turbo-spec/schemas/dep-bump-update.schema.json
+
+  # S5 Verify — agentless. Only runs when the update resolved a real change.
+  # Gate 1 (tree) loops back to `update` on a real failure (invalid edge / lock
+  # mismatch -> S4). Gates 2-3 escalate (audit regression / build break -> triage).
+  - name: verify
+    orchestrator: testing
+    depends_on: [update]
+    condition: "update.result.outcome == 'RESOLVED'"
+    outputs:
+      result: .turbo-spec/out/verify.json
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        loop_back:
+          target_stage: update
+        config:
+          gate_name: verify-tree
+          failure_verdict: loop_back
+          environment_verdict: escalate
+          success_reason: "Reproducible tree with no invalid peer edges; syncpack clean"
+          steps:
+            - name: tree-checks
+              command: ["bash", "scripts/dep-bump/verify-checks.sh"]
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 1
+        config:
+          gate_name: verify-audit
+          failure_verdict: escalate
+          environment_verdict: escalate
+          success_reason: "No new advisory identities vs the S1 baseline"
+          steps:
+            - name: snapshot-current-audit
+              command: ["sh", "-c", "npm audit --json > .turbo-spec/out/audit-current.json || true"]
+            - name: audit-compare
+              command: ["node", "--import", "tsx", "scripts/dep-bump/audit-compare.ts"]
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 1
+        config:
+          gate_name: verify-tests
+          failure_verdict: escalate
+          environment_verdict: escalate
+          success_reason: "Impact-based build and unit tests passed"
+          steps:
+            - name: impact-tests
+              command: ["bash", "scripts/dep-bump/run-impact.sh"]
+            - name: finalize-verify
+              command: ["node", "--import", "tsx", "scripts/dep-bump/finalize-verify.ts"]
+      - evaluator: outcome_contract
+        on_fail: loop_back
+        max_retries: 1
+        config:
+          outcome_path: .turbo-spec/out/verify.json
+          schema: .turbo-spec/schemas/dep-bump-verify.schema.json
+
+  # S6 Report — agentless. Runs even when verify is skipped (NO_CHANGES / BLOCKED),
+  # so every terminated run emits exactly one verdict.
+  - name: report
+    orchestrator: testing
+    depends_on: [update, verify]
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 1
+        config:
+          gate_name: report
+          failure_verdict: escalate
+          environment_verdict: escalate
+          success_reason: "Terminal verdict written"
+          steps:
+            - name: build-report
+              command: ["node", "--import", "tsx", "scripts/dep-bump/report.ts"]
+      - evaluator: outcome_contract
+        on_fail: escalate
+        max_retries: 1
+        config:
+          outcome_path: .turbo-spec/out/dep-bump-report.json
+          schema: .turbo-spec/schemas/dep-bump-report.schema.json
+
+model_provider:
+  primary: copilot
+  config:
+    model_id: claude-sonnet-5
+
+settings:
+  max_total_retries: 8
+  timeout_per_stage: "45m"
+  human_escalation: true
