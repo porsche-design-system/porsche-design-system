@@ -114,6 +114,35 @@ test.describe('close', () => {
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
+  test('should not emit dismiss event on outside click', async ({ page }) => {
+    // Unlike p-popover, the banner intentionally does NOT light-dismiss on an outside click; it only closes via the
+    // dismiss button or Escape. This locks in that deliberate divergence.
+    await initBanner(page, { open: true });
+    const host = getHost(page);
+    await addEventListener(host, 'dismiss');
+    await page.mouse.click(1, 1); // click far outside the banner
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+  });
+
+  test('should attach ESC listener when dismissButton is enabled at runtime while open', async ({ page }) => {
+    // Regression guard for the idempotent `componentDidRender` listener sync: toggling `dismissButton` at runtime must
+    // (un)register the Escape listener even though `open` did not change (the previous `@Watch('open')` approach missed this).
+    await initBanner(page, { open: true, dismissButton: false });
+    const host = getHost(page);
+    await addEventListener(host, 'dismiss');
+    await page.keyboard.press('Escape');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    await setProperty(host, 'dismissButton', true);
+    await expect(getCloseButton(page)).toHaveCount(1);
+    await expect
+      .poll(async () => {
+        await page.keyboard.press('Escape');
+        return (await getEventSummary(host, 'dismiss')).counter;
+      })
+      .toBe(1);
+  });
+
   test('should not influence other banner styles', async ({ page }) => {
     await setContentWithDesignSystem(
       page,
@@ -130,7 +159,7 @@ test.describe('close', () => {
 
     const banner1 = page.locator('#banner1');
     const banner2 = page.locator('#banner2');
-    const closeButtonBanner2 = page.locator('#banner2 p-button');
+    const closeButtonBanner2 = page.locator('#banner2 .dismiss');
 
     const classListBanner1 = await getCssClasses(banner1);
     const classListBanner2 = await getCssClasses(banner2);
@@ -156,10 +185,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-banner').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -194,7 +221,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {

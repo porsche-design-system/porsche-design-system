@@ -7,7 +7,6 @@ import {
 } from '@porsche-design-system/emotion';
 import { ref } from '@porsche-design-system/stylesheets';
 import type { JssStyle } from 'jss';
-import { TOAST_Z_INDEX } from '../../../constants';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -59,7 +58,7 @@ export const getComponentCss = (): string => {
         [cssVariablePositionBottomInternal]: ref(cssVariablePositionBottom, '56px'),
         position: 'fixed', // fallback for older browsers without native `popover` support
         inset: `auto ${gridExtendedOffsetBase} ${ref(cssVariablePositionBottomInternal)}`,
-        zIndex: TOAST_Z_INDEX, // fallback for older browsers without native `popover` support
+        zIndex: 999999, // fallback for older browsers without native `popover` support
         [getMediaQueryMin('s')]: {
           [cssVariablePositionBottomInternal]: ref(cssVariablePositionBottom, '64px'),
           inset: `auto auto ${ref(cssVariablePositionBottomInternal)} 64px`,

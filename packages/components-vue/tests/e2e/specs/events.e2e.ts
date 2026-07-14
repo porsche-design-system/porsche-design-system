@@ -130,7 +130,7 @@ test.describe('modal', () => {
     await goto(page, 'events');
 
     const modalOpenBtn = page.locator('p-modal ~ button');
-    const modalCloseBtn = page.locator('p-modal p-button button');
+    const modalCloseBtn = page.locator('p-modal button.dismiss');
     const modalDismissEventCounter = page.locator('p-modal + p');
 
     await modalOpenBtn.click();
