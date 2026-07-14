@@ -8,7 +8,8 @@ Status: Approved for implementation
 Automate the recurring npm dependency bump as a turbo-spec workflow. Bump third-party
 dependencies, resolve any resulting ERESOLVE peer conflicts with the correct remedy, and
 leave a reproducible, verified tree. Every run ends in exactly one verdict: `SUCCESS`,
-`NO_CHANGES`, or `BLOCKED`.
+`NO_CHANGES`, `BLOCKED`, or `BLOCKED_PREEXISTING` (valid bumps retained, but a pre-existing or
+out-of-scope edge blocks the gate — escalate without discarding work).
 
 This workflow supersedes `docs/runbooks/dependency-updates-agent.md` for the bump task.
 
@@ -24,7 +25,7 @@ resolving an ERESOLVE conflict — needs evidence gathering and judgment, so an 
 | Classify the diff: held-back set unchanged, old→new, MAJOR flags, `NO_CHANGES` | deterministic | `classify-bump.ts` |
 | `npm install`: clean or ERESOLVE | deterministic | `install-check.sh` |
 | Read ERESOLVE, gather evidence, judge compatibility, choose and apply the remedy, loop | **agentic** | `dependency_updater` agent |
-| `npm ci`, `npm ls --all`, `npm run npm:lint` | deterministic | `verify-checks.sh` |
+| `npm ci`, tree baseline-diff, `npm run npm:lint` | deterministic | `verify-checks.sh`, `tree-compare.ts` |
 | Audit compare (advisory-identity set-diff: new-in-both = drift, new-in-updated-only = regression) | deterministic | `audit-compare.ts` |
 | Impact-based build/test selection | deterministic (rule-based) | `select-impact-tests.ts` |
 | Aggregate outcomes into one terminal verdict | deterministic | `report.ts` |
@@ -89,15 +90,24 @@ deps_bumped, conflicts, overrides, holdbacks}`, guarded by an `outcome_contract`
 
 Read-only. Runs only when `update.result.outcome == 'RESOLVED'`.
 
-A `script_gate` runs `verify-checks.sh` (`npm ci` → `npm ls --all` → `npm run npm:lint`): a
-step exit of `1` loops back to `update`; an exit of `2` or more escalates. `audit-compare.ts`
-compares the new tree's advisories against the preflight snapshot and escalates a genuine
-regression. `select-impact-tests.ts` chooses the build and tests to run from the changed
-dependencies. `report.ts` then aggregates every `out/*.yml` outcome into one terminal
-verdict; a retained major without verification evidence yields `BLOCKED`.
+A `script_gate` runs `verify-checks.sh` (`npm ci` → tree baseline-diff → `npm run npm:lint`):
+a step exit of `1` loops back to `update`; an exit of `2` or more escalates. The tree check
+runs `tree-compare.ts`, which diffs the current `npm ls --all` problems against the S1
+`ls-baseline.json` and fails ONLY on edges introduced by this run — pre-existing invalid or
+extraneous edges on the untouched base tree are tolerated, so the gate is satisfiable.
+`audit-compare.ts` compares the new tree's advisories against the preflight snapshot and
+escalates a genuine regression. `select-impact-tests.ts` chooses the build and tests to run
+from the changed dependencies. `report.ts` then aggregates every `out/*.yml` outcome into one
+terminal verdict; a retained major without verification evidence yields `BLOCKED`, and a run
+that made valid bumps but hit a pre-existing/out-of-scope blocker yields `BLOCKED_PREEXISTING`
+(the bumps are retained for a human to land, not discarded).
 
 ## How this holds up
 
+- **Satisfiable verify gate.** The tree check tolerates pre-existing invalid/extraneous edges
+  and fails only on edges the run introduces, so a repo whose base tree already has a
+  third-party peer defect can still pass. Update and verify apply the identical baseline-diff,
+  so the agent never stops on a criterion the gate will later reject.
 - **ERESOLVE termination survives loop-backs.** The fingerprint set and iteration count live
   in the gitignored ledger, so a loop back into `update` respects the six-iteration cap and
   the one-remedy-per-fingerprint rule.
