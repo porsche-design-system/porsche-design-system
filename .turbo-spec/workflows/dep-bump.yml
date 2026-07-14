@@ -35,6 +35,11 @@ stages:
   - name: update
     orchestrator: implementation
     depends_on: [preflight]
+    # Idempotently seed the resolve ledger on the HOST worktree before the agent
+    # loop starts. `.turbo-spec/out/` is on the persistent host mount, so the
+    # ledger survives loop-backs even though each attempt gets a fresh container;
+    # `ledger.ts init` never clobbers an existing ledger on re-entry.
+    pre_command: "mkdir -p .turbo-spec/out && node --import tsx scripts/dep-bump/ledger.ts init"
     agents:
       - type: implementer
         system_prompt: .turbo-spec/system_prompts/dep_update.md
@@ -47,6 +52,7 @@ stages:
           model_id: claude-opus-4.8
     outputs:
       result: .turbo-spec/out/update.json
+      ledger: .turbo-spec/out/resolve-ledger.json
     quality_gates:
       - evaluator: outcome_contract
         on_fail: loop_back

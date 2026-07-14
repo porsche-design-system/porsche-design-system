@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dependency-bump resolve ledger",
+  "description": "Durable record of ERESOLVE remedy attempts, keyed by conflict fingerprint, that survives loop-backs so a FAILED remedy is never retried.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "entries"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fingerprint", "remedy", "outcome"],
+        "properties": {
+          "fingerprint": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["declarer", "peer", "demandedRange", "providerVersion"],
+            "properties": {
+              "declarer": { "type": "string" },
+              "peer": { "type": "string" },
+              "demandedRange": { "type": "string" },
+              "providerVersion": { "type": "string" }
+            }
+          },
+          "remedy": { "type": "string" },
+          "outcome": { "enum": ["FAILED", "RESOLVED", "NON_ACTIONABLE"] },
+          "evidence": { "type": "string" }
+        }
+      }
+    }
+  }
+}
