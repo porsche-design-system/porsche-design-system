@@ -30,6 +30,15 @@ npm audit --json > "$OUT/audit-baseline.json" || true
 # invalid/extraneous edges the verify/update tree-check is allowed to tolerate.
 npm ls --all --json > "$OUT/ls-baseline.json" 2>/dev/null || true
 
+# Baseline dep snapshot for in-sandbox classification (F6). Preflight runs on the
+# host where git works and the tree is clean (== HEAD), so this captures the
+# pre-bump deps + tracked package.json list. The update stage reads these files
+# from disk instead of calling git, whose worktree .git may be unmounted.
+if ! node --import tsx scripts/dep-bump/snapshot-baseline.ts; then
+  echo "[preflight] failed to snapshot the dependency baseline" >&2
+  exit 2
+fi
+
 printf '{\n  "schemaVersion": 1,\n  "outcome": "CONTINUE"\n}\n' > "$OUT/preflight.json"
 echo "[preflight] clean, reproducible, baselines captured"
 exit 0

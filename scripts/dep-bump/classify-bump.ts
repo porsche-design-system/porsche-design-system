@@ -1,6 +1,8 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { coerce, diff as semverDiff, valid as semverValid } from 'semver';
-import { collectDeps } from './collect-deps.ts';
-import { writeVerdict } from './lib/verdict.ts';
+import { collectDepsFromFiles } from './collect-deps.ts';
+import { OUT_DIR, writeVerdict } from './lib/verdict.ts';
 
 export type DepMap = Record<string, string>;
 export interface BumpChange {
@@ -51,7 +53,14 @@ export function classifyBump(before: DepMap, after: DepMap, heldBack: string[]):
 const HELD_BACK = ['@porsche-design-system/**', '@angular/**', 'ng-packagr', 'zone.js'];
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const result = classifyBump(collectDeps('HEAD'), collectDeps(null), HELD_BACK);
+  // Read the host-snapshotted baseline (preflight) and the current tree from
+  // disk — no git, so classification works in-sandbox regardless of the .git
+  // mount (F6). Fail loudly if preflight did not run.
+  const readOut = (file: string): unknown => JSON.parse(readFileSync(resolve(OUT_DIR, file), 'utf8'));
+  const files = (readOut('package-json-files.json') as { files: string[] }).files;
+  const before = (readOut('deps-baseline.json') as { deps: DepMap }).deps;
+  const after = collectDepsFromFiles(files, (file) => readFileSync(file, 'utf8'));
+  const result = classifyBump(before, after, HELD_BACK);
   writeVerdict('bump.json', { schemaVersion: 1, ...result });
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
 }

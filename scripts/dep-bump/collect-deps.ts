@@ -8,13 +8,12 @@ function git(args: string[]): string {
   return execFileSync('git', args, { encoding: 'utf8' });
 }
 
-export function collectDeps(ref: string | null): DepMap {
-  const files = git(['ls-files', '*package.json']).trim().split('\n').filter(Boolean);
+export function collectDepsFromFiles(files: string[], read: (file: string) => string): DepMap {
   const map: DepMap = {};
   for (const file of files) {
     let raw: string;
     try {
-      raw = ref ? git(['show', `${ref}:${file}`]) : readFileSync(file, 'utf8');
+      raw = read(file);
     } catch {
       continue;
     }
@@ -24,4 +23,19 @@ export function collectDeps(ref: string | null): DepMap {
     }
   }
   return map;
+}
+
+/** Enumerate tracked package.json files. Requires git — host-only (preflight). */
+export function trackedPackageJsonFiles(): string[] {
+  return git(['ls-files', '*package.json']).trim().split('\n').filter(Boolean);
+}
+
+/**
+ * Collect deps for a git ref, or the working tree when ref is null. Requires
+ * git for both enumeration and ref reads, so it runs host-side only (F6: the
+ * sandbox worktree's .git can point to an unmounted host gitdir).
+ */
+export function collectDeps(ref: string | null): DepMap {
+  const files = trackedPackageJsonFiles();
+  return collectDepsFromFiles(files, (file) => (ref ? git(['show', `${ref}:${file}`]) : readFileSync(file, 'utf8')));
 }

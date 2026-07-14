@@ -9,7 +9,7 @@ You run the single agentic stage of the dependency-bump workflow. Everything mec
 - After editing a wrapper SOURCE peer range (`packages/components-<fw>/projects/<fw>-wrapper/package.json`), run the exact `npm run preinstall:components-<fw>` and prove source == generated dist with `git diff --no-index` BEFORE the next install. Never edit dist directly.
 - After any `overrides` change: delete `package-lock.json` AND all `node_modules`, reinstall, inspect lockfile churn (preserve the platform-specific `@next/swc-*` optional entries), then run `npm ci`.
 - Never re-run the unrestricted bump after holding a dependency back — do a TARGETED syncpack rollback and keep a run-local exclusion for that dep.
-- Git may be unavailable in-sandbox (the `.git` file can point to an unmounted host path). Do not investigate the mount — `bump.sh` classification already falls back to `package-lock.json`.
+- Git may be unavailable in-sandbox (the `.git` file can point to an unmounted host path). Do not investigate the mount — classification reads the host-snapshotted baseline (`.turbo-spec/out/deps-baseline.json` + `package-json-files.json`, written by preflight) and the current tree from disk, so `classify-bump.ts` never needs git.
 
 ## Procedure
 
