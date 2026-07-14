@@ -26,6 +26,8 @@ if ! git diff --quiet; then
 fi
 
 npm audit --json > "$OUT/audit-baseline.json" || true
+# Baseline tree snapshot: consumed by tree-compare.ts as the set of pre-existing
+# invalid/extraneous edges the verify/update tree-check is allowed to tolerate.
 npm ls --all --json > "$OUT/ls-baseline.json" 2>/dev/null || true
 
 printf '{\n  "schemaVersion": 1,\n  "outcome": "CONTINUE"\n}\n' > "$OUT/preflight.json"
