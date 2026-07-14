@@ -44,6 +44,26 @@ concurrency:
 
 jobs:
   router:
+    # Allowed persons only: a real user (not a bot) whose author_association is
+    # OWNER / MEMBER / COLLABORATOR. Mirrors the identity gate on the deploy job
+    # in contribution.yml. The reusable workflow additionally enforces the
+    # authoritative effective-permission (write/admin) check at runtime; this
+    # if: is a cheap pre-filter so disallowed actors never spin up the reusable
+    # workflow. A job that uses `uses:` can only carry a job-level `if:`.
+    # issue_comment carries identity on github.event.comment.* (and must be a PR
+    # comment); pull_request_review carries it on github.event.review.*.
+    if: >-
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request != null &&
+       github.event.comment.user.type != 'Bot' &&
+       (github.event.comment.author_association == 'OWNER' ||
+        github.event.comment.author_association == 'MEMBER' ||
+        github.event.comment.author_association == 'COLLABORATOR')) ||
+      (github.event_name == 'pull_request_review' &&
+       github.event.review.user.type != 'Bot' &&
+       (github.event.review.author_association == 'OWNER' ||
+        github.event.review.author_association == 'MEMBER' ||
+        github.event.review.author_association == 'COLLABORATOR'))
     uses: porsche-code/turbo-spec/.github/workflows/comment-router.yml@main
     secrets: inherit
     with:
