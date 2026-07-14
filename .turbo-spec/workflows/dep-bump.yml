@@ -134,8 +134,12 @@ stages:
           steps:
             - name: major-hint
               # Best-effort: surface majors held back by policy (families capped
-              # to minor/patch, permanent holds, TS ceiling) from native npm
-              # outdated. Never fail the report if the registry is unreachable.
+              # to minor/patch, permanent holds, TS ceiling). The hint is
+              # policy-aware and tri-state: it reads the held set from
+              # .syncpackrc.json and reports COMPLETE / INCOMPLETE / UNAVAILABLE.
+              # It needs an INSTALLED tree for npm outdated's `current`; if the
+              # tree is absent it emits UNAVAILABLE (never a false "nothing
+              # held"). Runs against the shared post-bump worktree from `update`.
               command: ["sh", "-c", "npm run --silent deps:major-hint || true"]
             - name: build-report
               command: ["node", "--import", "tsx", "scripts/dep-bump/report.ts"]

@@ -21,9 +21,15 @@
         "properties": {
           "name": { "type": "string" },
           "current": { "type": "string" },
-          "latest": { "type": "string" }
+          "latest": { "type": "string" },
+          "reason": { "type": "string", "enum": ["family", "held", "typescript-ceiling"] }
         }
       }
+    },
+    "majorHintStatus": {
+      "type": "string",
+      "enum": ["COMPLETE", "INCOMPLETE", "UNAVAILABLE"],
+      "description": "Whether the held-back-major collection completed. UNAVAILABLE means the tree was not installed or the registry was unreachable; the hint must not be read as 'nothing held back'."
     },
     "stopReason": { "type": ["string", "null"] }
   }

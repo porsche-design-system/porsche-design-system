@@ -29,7 +29,9 @@ latest version, including majors. Only Angular's framework **migrations** are ap
 
 After updating, run `npm run deps:major-hint` to list the major upgrades that were held back (families capped to
 minor/patch, permanently held-back deps, and `typescript` under Angular's ceiling) so you can schedule them as
-deliberate manual upgrades.
+deliberate manual upgrades. Run it against an **installed** tree: the hint reads `npm outdated` and reports
+`COMPLETE`, `INCOMPLETE`, or `UNAVAILABLE`. An `UNAVAILABLE` result (tree not installed or registry unreachable)
+means the held set is **unknown** — it is never a claim that nothing was held back.
 
 ### Syncpack helper scripts
 
@@ -246,7 +248,7 @@ same config.
 | --------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Angular         | `@angular/**`, `ng-packagr`, `zone.js`                                                                                |
 | ag-grid         | `ag-grid-*`, `@ag-grid-community/**`                                                                                  |
-| React (core)    | `react`, `react-dom`, `react-router`, `react-router-dom`, `@react-router/**`, `@types/react`, `@types/react-dom`     |
+| React           | `react`, `react-dom`, `react-router`, `react-router-dom`, `@react-router/**`, `@types/react`, `@types/react-dom`, `@testing-library/react`, `@vitejs/plugin-react`, `react-syntax-highlighter`, `@types/react-syntax-highlighter` |
 | Vue             | `vue`, `vue-router`, `vue-tsc`, `@vue/**`, `@vitejs/plugin-vue`                                                       |
 | Tailwind        | `tailwindcss`, `@tailwindcss/**`                                                                                      |
 | SCSS            | `sass`                                                                                                                |
@@ -255,10 +257,11 @@ same config.
 
 Notes:
 
-- React is scoped to the **core** packages only. Third-party libraries that merely use React
-  (`react-instantsearch`, `react-syntax-highlighter`, `@mdx-js/react`) and React tooling (`@testing-library/react`,
-  `@vitejs/plugin-react`) keep taking majors automatically. `@types/react` is an **exact** name, not `@types/react*`, so
-  it does not catch `@types/react-syntax-highlighter`.
+- The React family covers the runtime, router, types, its test/build tooling (`@testing-library/react`,
+  `@vitejs/plugin-react`), and the syntax-highlighter pair (`react-syntax-highlighter`,
+  `@types/react-syntax-highlighter`) — their majors need the same manual migration and the verify gate does not exercise
+  their consumers. Third-party libraries that merely use React (`react-instantsearch`, `@mdx-js/react`) still take majors
+  automatically. `@types/react` is an **exact** name, not `@types/react*`, so the type packages are listed explicitly.
 - Unlike the permanent holds, these families are **not** added to the `.github/dependabot.yml` `ignore` list, so
   security PRs (including a security-driven major) still surface for deliberate review.
 - Available majors held back by this cap are surfaced by `npm run deps:major-hint` and injected into the automated PR

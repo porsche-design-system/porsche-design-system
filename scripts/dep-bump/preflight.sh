@@ -4,6 +4,11 @@
 set -uo pipefail
 
 OUT=".turbo-spec/out"
+# Start each run from a clean output dir so a crashed prior run cannot leak a
+# stale verdict/hint into this one. `.turbo-spec/out` is gitignored, so removing
+# it never dirties the tree (asserted clean below). The update stage recreates
+# the dir and seeds the resolve ledger in its pre_command.
+rm -rf "$OUT"
 mkdir -p "$OUT"
 
 if [ -n "$(git status --porcelain)" ]; then

@@ -368,7 +368,9 @@ Deliver the result as a **single pull request** the maintainers can review and m
 - **Held-back majors hint.** After `npm install`, run `npm run deps:major-hint` and paste its Markdown output into the PR
   description under a `## Held-back major updates (apply by hand)` heading. It lists majors the automated flow skipped
   (minor/patch-only families, permanent holds, and `typescript` under Angular's ceiling) so maintainers can schedule
-  them as deliberate manual upgrades. Do **not** apply any of them in this PR.
+  them as deliberate manual upgrades. Do **not** apply any of them in this PR. Run it only against an **installed** tree:
+  if the output says the information is **unavailable**, the held set is unknown (not empty) — reinstall and re-run
+  rather than pasting a "nothing held back" note.
 
 ## Stop conditions (hand back to a human)
 
