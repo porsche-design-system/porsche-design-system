@@ -15,9 +15,10 @@ skill name + configurable `pds-skill` destination) are DONE and no longer tracke
 Each published PDS wrapper package (`@porsche-design-system/components-{js,angular,react,vue}`) ships a Claude Code
 skill named after that package (`porsche-design-system-components-{js,angular,react,vue}`): a `skill/` directory of
 LLM-optimized, **version-exact** markdown (`SKILL.md` entry point + `references/…`) that lives in `node_modules` and is
-symlinked into `.claude/skills/` by the packaged `pds-skill` bin (package-scoped, idempotent, win32 junctions). The
-skill auto-activates on frontend work via its tuned frontmatter description and lets the agent answer, generate, and
-review PDS code against the installed version — a docs/version mismatch is impossible by construction.
+symlinked into a caller-provided skills directory by the packaged `pds-skill` bin (explicit locally installed wrapper,
+idempotent, win32 junctions). The skill auto-activates on frontend work via its tuned frontmatter description and lets
+the agent answer, generate, and review PDS code against the installed version — a docs/version mismatch is impossible by
+construction.
 
 Producer side: the storefront generates all four trees — `packages/storefront` → `npm run build:skill` (entry
 `scripts/build-skill.ts`, generators in `src/lib/skill/*`, MDX render via `scripts/skill-mdx-loader.cjs` runtime). The
@@ -424,9 +425,9 @@ fragment structure or per-framework storefront MDX render, not hardcoded generat
 - **[P3]** `renderMdxToMarkdown` residual fragilities: regex-based `<code>`-wrapper strip, inline backtick wrapping
   without embedded-backtick handling, `demoteHeadings` treating `~~~`/4+-backtick fences as prose. Harden
   opportunistically.
-- **[P3]** Storefront skill page vs bin behavior: `(main)/developing/claude-code-skill/page.mdx` still claims
-  macOS/Linux only (`:58-59`) and instructs `mklink /D` (`:97-100`), but the bin handles win32 via junctions — confirmed
-  still present after the N.3/N.4 page edits. Reconcile; add `pds-skill` install lines to wrapper READMEs/CHANGELOG.
+- ~~**[P3]** Storefront skill page vs bin behavior~~ — **fixed 2026-07-14:** the page documents automatic win32
+  junctions, the explicit local wrapper and required destination arguments, plus npm/pnpm/Yarn/Bun invocation. Wrapper
+  README/CHANGELOG discoverability remains optional release-note work.
 - **[P3]** Harden the out-of-tree pointers (`../meta`, `../tokens`, `../scss`, `../tailwindcss/index.css`) — R.1's intro
   restates the convention; optionally make them file-relative.
 

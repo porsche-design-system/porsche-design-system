@@ -13,8 +13,8 @@ import type { Framework } from './support/skillTree';
  * Per-package skill identifier — mirrors the wrapper package name
  * (`@porsche-design-system/components-<framework>` → `porsche-design-system-components-<framework>`),
  * so a project depending on more than one wrapper gets a distinct skill per package instead of all
- * four fighting over one `.claude/skills/…` entry. The `pds-skill` bin derives the same name from
- * its own `package.json` at link time. Never varies by version.
+ * four fighting over one `.claude/skills/…` entry. The `pds-skill` bin reads the same name from the
+ * selected package's generated `SKILL.md` at link time. Never varies by version.
  */
 export const skillName = (framework: Framework): string => `porsche-design-system-components-${framework}`;
 
