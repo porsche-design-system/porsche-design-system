@@ -17,6 +17,10 @@
       "types": "./meta/esm/index.d.ts",
       "import": "./meta/esm/index.mjs",
       "require": "./meta/cjs/index.cjs"
+    },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
     }
   },
   "files": [

@@ -13,7 +13,13 @@
   "devDependencies": {
     "@porsche-design-system/component-meta": "0.0.0",
     "@porsche-design-system/components-react": "4.4.0-rc.1",
+    "@porsche-design-system/emotion": "0.0.0",
+    "@porsche-design-system/scss": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/stylesheets": "0.0.0",
+    "@porsche-design-system/tailwindcss": "0.0.0",
+    "@porsche-design-system/tokens-meta": "0.0.0",
+    "@porsche-design-system/vanilla-extract": "0.0.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@types/mdast": "^4.0.4",
     "@types/node": "^26.0.1",

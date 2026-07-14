@@ -1,7 +1,12 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { emotionSkill } from '@porsche-design-system/emotion/skill';
+import { scssSkill } from '@porsche-design-system/scss/skill';
+import { stylesheetsSkill } from '@porsche-design-system/stylesheets/skill';
+import { tailwindcssSkill } from '@porsche-design-system/tailwindcss/skill';
+import { tokensSkill } from '@porsche-design-system/tokens-meta/skill';
+import { vanillaExtractSkill } from '@porsche-design-system/vanilla-extract/skill';
 import {
   getPackageSkillRouteReferences,
   renderStylesheetsSection,
@@ -11,12 +16,7 @@ import {
 } from '@skill/packageSkills';
 import { resolveFrameworkPlaceholder } from '@skill/support/links';
 import { SkillTree } from '@skill/support/skillTree';
-import { stylesheetsSkill } from '../../../../../../components/projects/stylesheets/skill/skill';
-import { emotionSkill } from '../../../../../../styles/projects/emotion/skill/skill';
-import { scssSkill } from '../../../../../../styles/projects/scss/skill/skill';
-import { tailwindcssSkill } from '../../../../../../styles/projects/tailwindcss/skill/skill';
-import { vanillaExtractSkill } from '../../../../../../styles/projects/vanilla-extract/skill/skill';
-import { tokensSkill } from '../../../../../../tokens/projects/tokens-meta/skill/skill';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 const routeReferences = {
   tailwindcss: 'references/styles/tailwindcss.md',
