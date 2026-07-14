@@ -21,3 +21,17 @@ test('BLOCKED update is BLOCKED and carries the stop reason', () => {
 test('RESOLVED update with missing verify is BLOCKED (unverified tree)', () => {
   assert.equal(buildReport({ outcome: 'RESOLVED' }, null).verdict, 'BLOCKED');
 });
+
+test('BLOCKED_PREEXISTING retains the bumps and reports a distinct escalation verdict', () => {
+  const report = buildReport(
+    {
+      outcome: 'BLOCKED_PREEXISTING',
+      bumped: [{ name: 'vite' }],
+      stopReason: 'pre-existing chokidar invalid edge, not attributable to this run',
+    },
+    null
+  );
+  assert.equal(report.verdict, 'BLOCKED_PREEXISTING');
+  assert.deepEqual(report.bumped, [{ name: 'vite' }]);
+  assert.equal(report.stopReason, 'pre-existing chokidar invalid edge, not attributable to this run');
+});

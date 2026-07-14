@@ -5,12 +5,24 @@
   "type": "object",
   "additionalProperties": true,
   "required": ["schemaVersion", "outcome", "summary"],
+  "allOf": [
+    {
+      "if": {
+        "required": ["outcome"],
+        "properties": { "outcome": { "enum": ["BLOCKED", "BLOCKED_PREEXISTING"] } }
+      },
+      "then": {
+        "required": ["stopReason"],
+        "properties": { "stopReason": { "type": "string", "minLength": 1 } }
+      }
+    }
+  ],
   "properties": {
     "schemaVersion": { "const": 1 },
     "outcome": {
       "type": "string",
-      "enum": ["RESOLVED", "NO_CHANGES", "BLOCKED"],
-      "description": "RESOLVED = tree installs clean; NO_CHANGES = nothing to bump; BLOCKED = could not safely resolve."
+      "enum": ["RESOLVED", "NO_CHANGES", "BLOCKED", "BLOCKED_PREEXISTING"],
+      "description": "RESOLVED = tree installs clean and verifies; NO_CHANGES = nothing to bump; BLOCKED = could not safely resolve (tree restored, filesChanged empty); BLOCKED_PREEXISTING = valid bumps applied and RETAINED, but a pre-existing/out-of-scope edge blocks the gate — escalate without discarding work (filesChanged may be non-empty, stopReason required)."
     },
     "summary": { "type": "string", "minLength": 1 },
     "bumped": { "type": "array", "description": "old->new dependency transitions, grouped." },

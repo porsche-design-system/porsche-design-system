@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { OUT_DIR, writeVerdict } from './lib/verdict.ts';
 
 export interface UpdateVerdict {
-  outcome: 'RESOLVED' | 'NO_CHANGES' | 'BLOCKED';
+  outcome: 'RESOLVED' | 'NO_CHANGES' | 'BLOCKED' | 'BLOCKED_PREEXISTING';
   summary?: string;
   bumped?: unknown[];
   conflicts?: unknown[];
@@ -16,7 +16,7 @@ export interface VerifyVerdict {
 }
 export interface Report {
   schemaVersion: 1;
-  verdict: 'SUCCESS' | 'NO_CHANGES' | 'BLOCKED';
+  verdict: 'SUCCESS' | 'NO_CHANGES' | 'BLOCKED' | 'BLOCKED_PREEXISTING';
   summary: string;
   bumped: unknown[];
   conflicts: unknown[];
@@ -39,6 +39,15 @@ export function buildReport(update: UpdateVerdict, verify: VerifyVerdict | null)
   }
   if (update.outcome === 'RESOLVED' && verify?.outcome === 'PASS') {
     return { ...base, verdict: 'SUCCESS', summary: update.summary ?? 'Dependencies bumped and verified.' };
+  }
+  if (update.outcome === 'BLOCKED_PREEXISTING') {
+    return {
+      ...base,
+      verdict: 'BLOCKED_PREEXISTING',
+      summary:
+        update.summary ??
+        'Bumps applied and retained; a pre-existing, out-of-scope defect blocks the gate. Escalate.',
+    };
   }
   const summary =
     update.outcome === 'BLOCKED'
