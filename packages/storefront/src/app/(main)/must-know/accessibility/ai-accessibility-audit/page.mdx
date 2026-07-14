@@ -1,0 +1,179 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PLink } from '@porsche-design-system/components-react/ssr';
+
+export const metadata = {
+  title: 'Accessibility: Web Accessibility Audit - Porsche Design System',
+  description:
+    'Install the Porsche accessibility-agents web audit bundle and run guided WCAG 2.2 AA audits in GitHub Copilot.',
+};
+
+# Web Accessibility Audit
+
+<TableOfContents
+  headings={['Install the audit bundle', 'Run the audit', 'Installed files', 'Update and uninstall', 'Limitations']}
+/>
+
+Run guided **WCAG 2.2 AA** audits on your locally running application with GitHub Copilot and the
+[**accessibility-agents**](https://github.com/porsche-design-system/accessibility-agents) repository. The focused
+`install-web-audit.sh` installer copies a deterministic web-only bundle — agents, skills, prompts, and instructions —
+into your product repository.
+
+PDS components are tested at component level. Your **application integration** (pages, routing, custom content) still
+needs its own audit. Automated scans complement manual keyboard, screen reader, and High Contrast Mode testing.
+
+<Notification heading="Prerequisite" headingTag="h3" state="warning">
+  {/*<!-- prettier-ignore --> */}
+  | Requirement | Details |
+  | ---------------- | ----------------------------------------------------------------------------------------------- |
+  | **Platform** | macOS or Linux |
+  | **Editor** | VS Code with a current [GitHub Copilot](https://docs.github.com/en/copilot) release |
+  | **Runtime** | Node.js 18 or newer and npm (for axe-core scans via `npx @axe-core/cli`) |
+  | **Product** | A local checkout of the web application to audit |
+  | **Coding rules** | [AI Agent Context](/must-know/accessibility/ai-agent-context/) — `AGENTS.md` and platform rules |
+</Notification>
+
+## Install the audit bundle
+
+The installer is
+[`install-web-audit.sh`](https://github.com/porsche-design-system/accessibility-agents/blob/main/install-web-audit.sh).
+It installs only the GitHub Copilot web audit bundle. It does not install document, mobile, desktop, Claude, Codex,
+Gemini, or MCP packages.
+
+### Remote install (recommended)
+
+Run from your product repository root:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh |
+  bash -s -- --with-config
+```
+
+To target a different repository:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh |
+  bash -s -- --target /path/to/web-product --with-config
+```
+
+### Install from a local checkout
+
+If you already cloned [accessibility-agents](https://github.com/porsche-design-system/accessibility-agents):
+
+```bash
+bash /path/to/accessibility-agents/install-web-audit.sh --target /path/to/web-product --with-config
+```
+
+### Installer options
+
+| Option             | Purpose                                                                               |
+| ------------------ | ------------------------------------------------------------------------------------- |
+| `--target PATH`    | Target repository; defaults to the current directory                                  |
+| `--with-config`    | Add the moderate `.a11y-web-config.json` profile when none exists                     |
+| `--dry-run`        | Preview planned changes without writing files                                         |
+| `--check`          | Validate source bundle, Node/npm readiness, and target completeness                   |
+| `--force`          | Replace allowlisted bundle files (never replaces an existing `.a11y-web-config.json`) |
+| `--yes`            | Non-interactive automation                                                            |
+| `--source-ref REF` | Branch, tag, or commit for remote bootstrap                                           |
+
+Existing target files are skipped unless `--force` is supplied. The installer merges a focused accessibility block into
+`.github/copilot-instructions.md` between managed markers while preserving your other content.
+
+Review the changes before committing. Project installation makes the customizations available to your team and to
+Copilot Coding Agent.
+
+## Run the audit
+
+1. Open its repository in VS Code.
+2. Start the web product locally.
+3. Open Copilot Chat and invoke `@web-accessibility-wizard` or choose the agent from the agents dropdown.
+4. **Run prompt** — e.g., `Run a WCAG 2.2 AA accessibility audit on http://localhost:3000/` and provide the requested
+   details
+5. Complete Phase 0 and provide the local URL, framework, pages, audit method, thoroughness, and target standard.
+6. Select a deep-dive audit when you want code review across every web specialist.
+7. Review the generated `ACCESSIBILITY-AUDIT.md`.
+
+The wizard coordinates specialists for semantics, keyboard and focus behavior, forms, visual design, dynamic content,
+tables, links, cognitive accessibility, testing, and cross-page scoring.
+
+Phase 9 can run axe-core through `npx @axe-core/cli`. Phase 10 behavioral scans run only when compatible tools already
+exist in your environment; otherwise the report records the limitation and includes manual testing steps.
+
+### Example prompts
+
+**Full audit:**
+
+```text
+Run a WCAG 2.2 AA accessibility audit on http://localhost:3000/.
+
+Scope: URLs /, /checkout; viewports 320px and 768px; light and dark themes.
+Use @web-accessibility-wizard. Save the report as ACCESSIBILITY-AUDIT.md in the repo root.
+```
+
+**Re-scan after fixes:**
+
+```text
+Re-run axe on http://localhost:3000/checkout at 320px and 768px.
+Compare to the previous ACCESSIBILITY-AUDIT.md. List only remaining violations.
+```
+
+## Installed files
+
+The canonical allowlist is
+[`scripts/web-audit-bundle.json`](https://github.com/porsche-design-system/accessibility-agents/blob/main/scripts/web-audit-bundle.json).
+The installer adds:
+
+| Category          | What gets installed                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| **Agents**        | `web-accessibility-wizard` and web accessibility specialists                        |
+| **Skills**        | Web scanning, scoring, framework, testing, cognitive, design-system, and CI skills  |
+| **Prompts**       | Web audit prompts                                                                   |
+| **Instructions**  | Semantic HTML, ARIA, CSS, testing, and terminology rules in `.github/instructions/` |
+| **Config**        | `.a11y-web-config.json` when `--with-config` is used and no config exists           |
+| **Copilot rules** | Focused managed section in `.github/copilot-instructions.md`                        |
+
+The installer also writes:
+
+- `.a11y-web-audit-manifest` — tracks installed files for updates and uninstall
+- `.a11y-web-audit-install-summary.json` — install summary and notes
+
+These names are separate from the full installer's files, so both installers can coexist in the same repository.
+
+## Update and uninstall
+
+**Preview an update:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh |
+  bash -s -- --target /path/to/web-product --dry-run --force
+```
+
+**Apply an update:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh |
+  bash -s -- --target /path/to/web-product --force
+```
+
+`--force` replaces allowlisted agent resources. Review or preserve local customizations first.
+
+**Uninstall:** remove paths listed in `.a11y-web-audit-manifest` (except the `managed:` entry), remove only the block
+between `<!-- a11y-web-audit: start -->` and `<!-- a11y-web-audit: end -->` from `.github/copilot-instructions.md`, then
+remove `.a11y-web-audit-manifest` and `.a11y-web-audit-install-summary.json`. Remove `.a11y-web-config.json` only if
+your team has not adapted it.
+
+See
+[INSTALL-WEB-AUDIT.md](https://github.com/porsche-design-system/accessibility-agents/blob/main/docs/INSTALL-WEB-AUDIT.md)
+for full details.
+
+## Limitations
+
+**The focused installer does not install Playwright, Chromium, or an MCP server.** Behavioral scans depend on tools
+already present in your environment. When unavailable, the wizard documents the gap and provides manual verification
+steps.
+
+**Agent audits cannot:** certify screen reader compatibility, replace legal accessibility statements, or catch
+everything automated tools miss. Always complete manual keyboard and assistive-technology testing before sign-off.
+
+**Standard:** [WCAG 2.2 Level AA](https://w3.org/WAI/standards-guidelines/wcag). Porsche guidance:
+[Accessibility of digital products at Porsche](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction).

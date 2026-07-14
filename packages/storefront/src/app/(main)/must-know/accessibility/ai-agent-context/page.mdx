@@ -2,28 +2,30 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 import { PLink } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
-  title: 'Accessibility: AI Agent Setup - Porsche Design System',
+  title: 'Accessibility: AI Agent Context - Porsche Design System',
   description:
-    'Learn how to configure AI coding assistants like GitHub Copilot and Cursor to generate accessible code that follows WCAG 2.2 AA standards.',
+    'Learn how to configure AI coding assistants like GitHub Copilot, Cursor, and Claude Code to generate accessible code that follows WCAG 2.2 AA standards.',
 };
 
-# AI Agent Accessibility Setup
+# AI Agent Context
 
 <TableOfContents
   headings={[
     'AGENTS.md overview',
     'GitHub Copilot Instructions',
     'Cursor Rules',
+    'Claude Code',
     'Accessibility specific instructions',
     'Download instruction files',
     'Installation steps',
+    'Next step: run an accessibility audit',
   ]}
 />
 
-AI coding assistants like **GitHub Copilot** and **Cursor** can significantly accelerate development, but without proper
-guidance they often generate code that lacks **semantic HTML**, **keyboard accessibility**, **focus management**, and
-proper **ARIA patterns**. By providing accessibility context to your AI agent, you ensure generated code follows **WCAG
-2.2 AA** standards from the start.
+AI coding assistants like **GitHub Copilot**, **Cursor**, and **Claude Code** can significantly accelerate development,
+but without proper guidance they often generate code that lacks **semantic HTML**, **keyboard accessibility**, **focus
+management**, and proper **ARIA patterns**. By providing accessibility context to your AI agent, you ensure generated
+code follows **WCAG 2.2 AA** standards from the start.
 
 ## AGENTS.md overview
 
@@ -46,11 +48,14 @@ context-specific rules (e.g., accessibility, build steps, test expectations).
 
 ## GitHub Copilot Instructions
 
-GitHub Copilot supports **custom instructions** through Markdown files in your repository. We recommend:
+GitHub Copilot supports **custom instructions** through Markdown files in your repository, and **agent skills** via
+`.agents/skills/` ([about agent skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)). We
+recommend:
 
 1. Use `AGENTS.md` as the canonical source for repository guidance.
 2. Keep `.github/copilot-instructions.md` in sync with `AGENTS.md` for Copilot compatibility.
 3. Use scoped instruction files in `.github/instructions/` for file-type specific rules (like accessibility).
+4. Install workflow skills in **`.agents/skills/`** (also `.github/skills/`).
 
 ### Global Instructions
 
@@ -87,12 +92,12 @@ applyTo: '**/*.{html,css,scss,js,ts,tsx,jsx,vue,mdx}'
 
 ## Cursor Rules
 
-Cursor uses a `.cursor/rules/` directory structure for custom AI instructions:
+Cursor uses `.cursor/rules/` for **coding rules**:
 
 ```diff
 .cursor/
 └── rules/
-    ├── accessibility.mdc    # Accessibility rules
+    ├── accessibility.mdc    # Accessibility coding rules
     └── project.mdc          # Project-specific rules
 ```
 
@@ -106,12 +111,28 @@ globs: ['**/*.{html,css,scss,js,ts,tsx,jsx,vue}']
 ---
 ```
 
+## Claude Code
+
+[Claude Code](https://code.claude.com/docs) reads project context from `CLAUDE.md` at the repository root. We recommend:
+
+1. Use `AGENTS.md` as the canonical source and keep `CLAUDE.md` in sync for **coding rules**.
+
+```diff
+.
+├── AGENTS.md                              # Canonical agent context (tool-agnostic)
+└── CLAUDE.md                              # Claude Code coding rules (sync with AGENTS.md)
+```
+
+For **web accessibility audits**, use the GitHub Copilot web audit bundle described in
+[Web Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/).
+
 ## Accessibility specific instructions
 
 ### Accessibility rules template
 
-Below is a comprehensive accessibility rules template you can use with either GitHub Copilot or Cursor. This template
-includes the Porsche Design System's internal accessibility guidelines and ensures compliance with **WCAG 2.2 AA**.
+Below is a comprehensive accessibility rules template you can use with GitHub Copilot, Cursor, or Claude Code. This
+template includes the Porsche Design System's internal accessibility guidelines and ensures compliance with **WCAG 2.2
+AA**.
 
 As always, providing context to AI agents is not a one-time setup. Custom instruction files are **living documents**.
 Continuously refine and expand your instruction files based on the specific accessibility challenges you encounter in
@@ -175,14 +196,17 @@ Download ready-to-use instruction files for your project:
 
 1. Create `AGENTS.md` in the repository root
 2. Add package-specific `AGENTS.md` files where needed (e.g., `packages/package1/AGENTS.md`)
-3. Keep `AGENTS.md` in sync with Copilot/Cursor instruction files
+3. Keep `AGENTS.md` in sync with Copilot, Cursor, and Claude Code instruction files
 
 **For GitHub Copilot:**
 
 1. Download `accessibility.instructions.md`
 2. Create `.github/instructions/` directory in your repository root
 3. Place the file in `.github/instructions/accessibility.instructions.md`
-4. Commit and push to your repository
+4. For **audits**, run `install-web-audit.sh` from
+   [accessibility-agents](https://github.com/porsche-design-system/accessibility-agents) — see
+   [Web Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/)
+5. Commit and push to your repository
 
 **For Cursor Rules:**
 
@@ -191,5 +215,17 @@ Download ready-to-use instruction files for your project:
 3. Place the file in `.cursor/rules/accessibility.mdc`
 4. Restart Cursor or reload the workspace
 
-Once configured, your AI agent will automatically apply these accessibility rules when generating or modifying frontend
-code.
+**For Claude Code:**
+
+1. Download `accessibility.instructions.md` and merge the rules into `CLAUDE.md`, or reference `AGENTS.md`
+
+Once configured, your AI agent will automatically apply these accessibility **coding rules** when generating or
+modifying frontend code. For **audits**, use the GitHub Copilot web audit bundle described in
+[Web Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/).
+
+## Next step: run an accessibility audit
+
+With agent context in place, the next step should be to and run a guided **WCAG 2.2 AA audit** in GitHub Copilot via
+`@web-accessibility-wizard` agent. See the
+[**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/) guide for installation, example prompts,
+and report output.
