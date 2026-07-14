@@ -11,10 +11,8 @@ import {
   radiusLg,
   radiusXl,
   ref,
-  spacingStatic2Xs,
   spacingStaticMd,
   spacingStaticSm,
-  spacingStaticXs,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
 import {
@@ -114,7 +112,8 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
         maxWidth: 'inherit',
         maxHeight: 'inherit',
         boxSizing: 'border-box',
-        padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
+        paddingBlock: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
+        paddingInline: `${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
         overflow: 'hidden auto',
         overscrollBehaviorY: 'none',
       },
