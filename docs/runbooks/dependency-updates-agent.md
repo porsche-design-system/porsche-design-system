@@ -12,6 +12,10 @@
 > needed. No issue is required — the engine opens a PR with the bumped deps
 > automatically. Locally: `uv run --project <turbo-spec> workflow-skeleton run
 > .turbo-spec/workflows/dep-bump.yml --repo porsche-design-system/porsche-design-system`.
+> For local runs prefer a regular clone over a `git worktree`: a worktree's `.git` is a file
+> pointing to an external gitdir that is not mounted into the sandbox, so in-sandbox git fails.
+> Classification does not need git (it reads the host-snapshotted baseline), but a plain clone
+> keeps git working for the agent's tree-restore step.
 
 > **Audience**: An autonomous AI cloud agent (e.g. a scheduled Copilot coding agent) running the **recurring weekly npm
 > dependency update** for this monorepo.

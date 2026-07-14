@@ -108,9 +108,21 @@ that made valid bumps but hit a pre-existing/out-of-scope blocker yields `BLOCKE
   and fails only on edges the run introduces, so a repo whose base tree already has a
   third-party peer defect can still pass. Update and verify apply the identical baseline-diff,
   so the agent never stops on a criterion the gate will later reject.
+- **Host/sandbox tree parity.** The gate scripts run on the host today, so `npm ls` there
+  surfaces host-only native/optional entries (`@emnapi`, `postcss`, `koa`) that the Linux
+  sandbox agent cannot reproduce. The baseline-diff neutralizes this: both `ls-baseline.json`
+  (preflight) and `ls-current.json` (verify) are captured host-side, so a host-only entry
+  appears in both and cancels; the gate fails only on genuine new dependency edges, which the
+  agent reproduces in-sandbox. Full parity (running the gate inside the same sandbox image) is
+  an engine change tracked upstream, not a prerequisite for a correct verdict here.
+- **Git-independent classification.** The sandbox worktree's `.git` can point to an unmounted
+  host gitdir, so git fails in the update stage. Classification therefore reads a
+  host-snapshotted baseline (`deps-baseline.json` + `package-json-files.json`, written by
+  preflight where git works) and the current tree from disk, never invoking git in-sandbox.
 - **ERESOLVE termination survives loop-backs.** The fingerprint set and iteration count live
-  in the gitignored ledger, so a loop back into `update` respects the six-iteration cap and
-  the one-remedy-per-fingerprint rule.
+  in the gitignored ledger on the persistent host mount, seeded idempotently by the update
+  stage `pre_command`, so a loop back into `update` respects the six-iteration cap and the
+  one-remedy-per-fingerprint rule.
 - **No half-resolved commit.** One transactional mutation stage; entry-tree restore on any
   non-`RESOLVED` outcome.
 - **Sound audit compare.** Preflight snapshots the pristine lock; verify audits both locks
@@ -124,6 +136,20 @@ that made valid bumps but hit a pre-existing/out-of-scope blocker yields `BLOCKE
 - Resolving a breaking major that needs a source migration. The workflow reports `BLOCKED`
   and hands off.
 - Changing the held-back set or the `npm:update:non-interactive` script.
+
+## Upstream engine dependencies (turbo-spec, not fixable in this repo)
+
+These harden the run but require turbo-spec changes; the consumer-side mitigations above keep
+the workflow correct without them:
+
+- **Sandbox gate parity.** `script_gate` runs steps via a host subprocess and ignores the
+  `sandbox_command_runner` that `build_pass`/`tests_pass` already use; running gate steps in
+  the same sandbox image would give byte-identical `npm ls` across stages.
+- **Git-worktree mount.** The engine mounts only the worktree, not a git-worktree's external
+  gitdir; auto-detecting a `.git` file and mounting its gitdir (or an `extra_container_mounts`
+  knob) would make git work in-sandbox.
+- **Model-override DX.** A lone agent `model_kwargs` is silently ignored unless `model` is also
+  set; the engine should warn (we set `model: copilot` to work around it).
 
 ## Resolved decisions
 
