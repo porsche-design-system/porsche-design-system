@@ -369,8 +369,9 @@ jobs:
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - run: npm run build:skill
+      - run: npm run test:unit:skill
       - uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
         with:
           name: generated-skill-trees
           path: ./packages/storefront/generated/skill/

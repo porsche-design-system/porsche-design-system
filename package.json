@@ -131,6 +131,7 @@
     "test:unit:components-vue:vue-wrapper": "npm run test:unit:vue-wrapper --workspace=@porsche-design-system/vue",
     "test:unit:shared": "npm run test:unit --workspace=shared",
     "test:unit:storefront": "npm run test:unit --workspace=@porsche-design-system/storefront",
+    "test:unit:skill": "npm run test:unit:skill --workspace=@porsche-design-system/storefront",
     "test:unit:utilities": "npm run test:unit --workspace=utilities-v2",
     "test:e2e:components-js": "npm run test:e2e --workspace=@porsche-design-system/js",
     "test:e2e:components-js:chrome": "npm run test:e2e:chrome --workspace=@porsche-design-system/js",
