@@ -57,7 +57,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
-            ./packages/storefront/generated/skill/
+            ./packages/storefront/projects/skill/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
@@ -143,7 +143,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
-            ./packages/storefront/generated/skill/
+            ./packages/storefront/projects/skill/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/

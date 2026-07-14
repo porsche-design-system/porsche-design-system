@@ -3,6 +3,6 @@
   "compilerOptions": {
     "types": ["vitest/globals", "@testing-library/jest-dom/vitest"]
   },
-  "exclude": ["node_modules", "generated", "projects/stackblitz"],
+  "exclude": ["node_modules", "generated", "projects"],
   "include": ["**/*.spec.ts"]
 }
