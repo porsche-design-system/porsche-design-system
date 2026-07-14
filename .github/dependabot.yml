@@ -31,7 +31,11 @@ updates:
     # security updates enabled.
     open-pull-requests-limit: 0
     # Held-back dependencies — kept in sync with docs/dependencies.md and the
-    # updateGroups entry in .syncpackrc.json
+    # `isIgnored` updateGroups entry in .syncpackrc.json. Only the PERMANENT
+    # holds belong here. The minor/patch-only families (Angular, React, Vue,
+    # ag-grid, Tailwind, Emotion, Vanilla-Extract, sass — the `target: "minor"`
+    # group) are deliberately NOT ignored, so Dependabot may still raise a
+    # security PR for them (including a security-driven major) for deliberate review.
     ignore:
       # Internal workspace packages, versioned via the release process (see docs/dependencies.md)
       - dependency-name: "@porsche-design-system/*"

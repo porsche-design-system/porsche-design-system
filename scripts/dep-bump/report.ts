@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { OUT_DIR, writeVerdict } from './lib/verdict.ts';
+import type { MajorHint } from './major-hint.ts';
 
 export interface UpdateVerdict {
   outcome: 'RESOLVED' | 'NO_CHANGES' | 'BLOCKED' | 'BLOCKED_PREEXISTING';
@@ -22,16 +23,18 @@ export interface Report {
   conflicts: unknown[];
   overrides: unknown[];
   holdbacks: unknown[];
+  majorHints: MajorHint[];
   stopReason: string | null;
 }
 
-export function buildReport(update: UpdateVerdict, verify: VerifyVerdict | null): Report {
+export function buildReport(update: UpdateVerdict, verify: VerifyVerdict | null, majorHints: MajorHint[] = []): Report {
   const base = {
     schemaVersion: 1 as const,
     bumped: update.bumped ?? [],
     conflicts: update.conflicts ?? [],
     overrides: update.overridesAdded ?? [],
     holdbacks: update.holdbacks ?? [],
+    majorHints,
     stopReason: update.stopReason ?? null,
   };
   if (update.outcome === 'NO_CHANGES') {
@@ -45,13 +48,12 @@ export function buildReport(update: UpdateVerdict, verify: VerifyVerdict | null)
       ...base,
       verdict: 'BLOCKED_PREEXISTING',
       summary:
-        update.summary ??
-        'Bumps applied and retained; a pre-existing, out-of-scope defect blocks the gate. Escalate.',
+        update.summary ?? 'Bumps applied and retained; a pre-existing, out-of-scope defect blocks the gate. Escalate.',
     };
   }
   const summary =
     update.outcome === 'BLOCKED'
-      ? update.summary ?? 'Blocked during update.'
+      ? (update.summary ?? 'Blocked during update.')
       : 'Update resolved but verification did not pass; tree is unverified.';
   return { ...base, verdict: 'BLOCKED', summary };
 }
@@ -71,7 +73,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     process.exit(2);
   }
   const verify = readVerdict<VerifyVerdict>('verify.json');
-  const report = buildReport(update, verify);
+  const majorHint = readVerdict<{ hints: MajorHint[] }>('major-hint.json');
+  const report = buildReport(update, verify, majorHint?.hints ?? []);
   writeVerdict('dep-bump-report.json', report);
   process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
 }

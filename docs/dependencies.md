@@ -21,9 +21,15 @@ across all workspaces.
    transitive dependencies of our dependencies are refreshed too.
 
 Some dependencies (Playwright, Stencil, internal packages) are intentionally excluded from this flow and updated
-manually — see [Held-back dependencies](#held-back-dependencies). Angular **versions** now go through this normal
-syncpack flow; only Angular's framework **migrations** are applied separately — see
+manually — see [Held-back dependencies](#held-back-dependencies). Eight framework/styling families (Angular, React, Vue,
+ag-grid, Tailwind, Emotion, Vanilla-Extract and `sass`) are automatically capped to **minor/patch**; their **major**
+upgrades are done by hand — see [Minor/patch-only families](#minorpatch-only-families). Everything else is bumped to the
+latest version, including majors. Only Angular's framework **migrations** are applied separately — see
 [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations).
+
+After updating, run `npm run deps:major-hint` to list the major upgrades that were held back (families capped to
+minor/patch, permanently held-back deps, and `typescript` under Angular's ceiling) so you can schedule them as
+deliberate manual upgrades.
 
 ### Syncpack helper scripts
 
@@ -41,10 +47,14 @@ convention). The following root scripts help keep dependency versions consistent
 | `npm run npm:format:fix` | Apply `package.json` formatting.                                                |
 | `npm run npm:outdated`   | Check the npm registry for newer versions (excludes held-back deps, see below). |
 | `npm run npm:update`     | Interactively pick updates to apply (excludes held-back deps, see below).       |
+| `npm run deps:major-hint` | List the major upgrades held back by policy (families, held-back deps, TS ceiling). |
 
 The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
 from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
-`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). The `npm:outdated` and `npm:update` scripts additionally pass
+`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). A second, `target: "minor"`
+[`updateGroups`](https://syncpack.dev/update-groups/targeted/) entry caps the framework/styling families to minor/patch
+so their majors are never auto-applied — see [Minor/patch-only families](#minorpatch-only-families). The `npm:outdated`
+and `npm:update` scripts additionally pass
 `--dependencies '!@porsche-design-system/**'` so the unpublished internal workspace packages are not even looked up
 against the npm registry (which would otherwise emit `Failed to fetch` warnings). When you add a new held-back
 dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to the ignore list in
@@ -75,7 +85,9 @@ Routine npm **version** updates are handled by `syncpack` (above) and, for the r
 runbook ([`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md)) — **not** by Dependabot.
 The npm entry in `.github/dependabot.yml` sets `open-pull-requests-limit: 0`, which disables Dependabot version-update
 PRs while still allowing **security** PRs (grouped via `applies-to: security-updates`). The `ignore` list there keeps the
-held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
+held-back deps out of those security PRs too, so they are never auto-bumped. The minor/patch-only families are
+deliberately **not** in that `ignore` list, so Dependabot may still raise **security** PRs for them (including a
+security-driven major) for deliberate review. GitHub Actions are still updated by
 Dependabot on a monthly schedule.
 
 ## Strict peer dependency resolution
@@ -215,10 +227,42 @@ places that must be kept in sync when adding a new entry:
 - `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
 
-> **Angular is no longer held back for versions.** `@angular/*`, `ng-packagr` and `zone.js` are now bumped by `syncpack`
-> like any other dependency (`npm run npm:update`). Only Angular's **framework migration schematics** need special
-> handling — see [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations). `typescript`
-> must still stay within Angular's `MAX_TS_VERSION`.
+> **Angular versions are capped to minor/patch, not fully held back.** `@angular/*`, `ng-packagr` and `zone.js` are
+> bumped by `syncpack` within their current major (`npm run npm:update`); Angular **major** upgrades are done by hand.
+> Only Angular's **framework migration schematics** need extra handling — see
+> [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations). `typescript` must still stay
+> within Angular's `MAX_TS_VERSION`. See [Minor/patch-only families](#minorpatch-only-families) for the full list of
+> capped families.
+
+### Minor/patch-only families
+
+Eight framework/styling families are capped to **minor/patch** by a `target: "minor"`
+[`updateGroups`](https://syncpack.dev/update-groups/targeted/) entry in [`.syncpackrc.json`](../.syncpackrc.json). Their
+majors coordinate with framework/tooling migrations, so they are upgraded **by hand**, never by the automated flow. The
+cap applies to `npm:outdated`, `npm:update` (interactive), and `npm:update:non-interactive` alike, because all read the
+same config.
+
+| Family          | Patterns                                                                                                             |
+| --------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Angular         | `@angular/**`, `ng-packagr`, `zone.js`                                                                                |
+| ag-grid         | `ag-grid-*`, `@ag-grid-community/**`                                                                                  |
+| React (core)    | `react`, `react-dom`, `react-router`, `react-router-dom`, `@react-router/**`, `@types/react`, `@types/react-dom`     |
+| Vue             | `vue`, `vue-router`, `vue-tsc`, `@vue/**`, `@vitejs/plugin-vue`                                                       |
+| Tailwind        | `tailwindcss`, `@tailwindcss/**`                                                                                      |
+| SCSS            | `sass`                                                                                                                |
+| Emotion         | `@emotion/**`                                                                                                         |
+| Vanilla-Extract | `@vanilla-extract/**`                                                                                                 |
+
+Notes:
+
+- React is scoped to the **core** packages only. Third-party libraries that merely use React
+  (`react-instantsearch`, `react-syntax-highlighter`, `@mdx-js/react`) and React tooling (`@testing-library/react`,
+  `@vitejs/plugin-react`) keep taking majors automatically. `@types/react` is an **exact** name, not `@types/react*`, so
+  it does not catch `@types/react-syntax-highlighter`.
+- Unlike the permanent holds, these families are **not** added to the `.github/dependabot.yml` `ignore` list, so
+  security PRs (including a security-driven major) still surface for deliberate review.
+- Available majors held back by this cap are surfaced by `npm run deps:major-hint` and injected into the automated PR
+  body.
 
 ### How to update them
 
@@ -226,8 +270,13 @@ places that must be kept in sync when adding a new entry:
 
 Angular splits into two concerns that are handled separately:
 
-- **Version ranges** (`@angular/*`, `ng-packagr`, `zone.js`) — owned by `syncpack`. Bump them via `npm run npm:update`
-  (pick the `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep
+- **Version ranges** (`@angular/*`, `ng-packagr`, `zone.js`) — owned by `syncpack`, but capped to **minor/patch** by the
+  `target: "minor"` group (see [Minor/patch-only families](#minorpatch-only-families)). Bump them via
+  `npm run npm:update` (pick the `@angular/*` family together so they move in lockstep), then `npm install` from the repo
+  root. A **major** Angular upgrade is deliberate: temporarily remove the Angular patterns from the `target: "minor"`
+  group in `.syncpackrc.json` (a group target always beats a looser CLI `--target`, so the cap cannot be bypassed from
+  the command line), run the update, restore the config, coordinate with the framework migration below, and land it in
+  its own PR. Keep
   `typescript` within the range Angular supports, declared as `peerDependencies.typescript` in `@angular/compiler-cli`'s
   `package.json` (the same ceiling is compiled into the `MAX_TS_VERSION` constant, findable via
   `grep -rn "MAX_TS_VERSION =" node_modules/@angular/compiler-cli/`). The automated `npm run npm:update:non-interactive`

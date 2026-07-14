@@ -13,6 +13,18 @@
     "conflicts": { "type": "array" },
     "overrides": { "type": "array" },
     "holdbacks": { "type": "array" },
+    "majorHints": {
+      "type": "array",
+      "description": "Major updates held back by policy (families capped to minor/patch, permanent holds, TS ceiling), sourced from npm outdated. Surfaced in the PR body for manual follow-up.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "current": { "type": "string" },
+          "latest": { "type": "string" }
+        }
+      }
+    },
     "stopReason": { "type": ["string", "null"] }
   }
 }

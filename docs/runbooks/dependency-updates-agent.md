@@ -48,25 +48,36 @@ mirroring [`.github/actions/install`](../../.github/actions/install/action.yml))
 | Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; diagnose each `ERESOLVE` with the `resolving-npm-eresolve` skill (overrides are one remedy, not the default — see step 6). |
 | Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3).  |
 | Edit `package-lock.json` by hand                                 | Regenerate it via `npm install` only.                                                                  |
-| Upgrade held-back deps by selecting them in `npm run npm:update` | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3. |
+| Upgrade held-back deps by selecting them in `npm run npm:update` | Stencil/Playwright/internal stay pinned; minor/patch-only families (Angular, React, Vue, ag-grid, Tailwind, Emotion, Vanilla-Extract, `sass`) can move within their major but never take a major here. |
+| Apply a **major** for a minor/patch-only family                  | Families are capped to minor/patch by `.syncpackrc.json`; their majors are separate manual upgrades (see `docs/dependencies.md`). |
 | Push directly to `main`                                          | Always open a PR for human review.                                                                     |
 
-## Held-back dependencies (special handling)
+## Held-back and capped dependencies (special handling)
 
-These are excluded from the `syncpack` flow — they are ignored by `syncpack` via
-[`.syncpackrc.json`](../../.syncpackrc.json) and by Dependabot via
+Two policy groups live in [`.syncpackrc.json`](../../.syncpackrc.json) `updateGroups`:
+
+**Permanently held** (`isIgnored`) — ignored by `syncpack` and by Dependabot via
 [`.github/dependabot.yml`](../../.github/dependabot.yml), so `npm run npm:update` already skips them. **Never bump them
-by selecting them in `npm run npm:update`.** Handle them as noted:
+by selecting them in `npm run npm:update`.**
 
 - `@porsche-design-system/**` — internal workspace packages, versioned by the release process. **Never touch here.**
-- `@angular/**`, `ng-packagr`, `zone.js` — **versions** go through syncpack (`npm run npm:update`) like everything else;
-  only Angular's framework **migrations** are applied separately in
-  [step 3](#3-apply-angular-framework-migrations-after-the-syncpack-version-bump).
-- `typescript` — may move only **within** the range Angular supports (see step 3); otherwise keep it held back this
-  round. `npm run npm:update:non-interactive` enforces this automatically.
 - `@playwright/test` — held back from the weekly run; update deliberately via
   [Updating Playwright](#updating-playwright-npm-pin-docker-image-vrt) (npm pin + Docker image + VRT).
 - `@stencil/core` — pinned because a `patch-package` patch targets the exact version. **Never touch here.**
+
+**Minor/patch-only families** (`target: "minor"`) — bumped by `syncpack` **within their current major**; a **major**
+for any of these is a separate manual upgrade and must never land in this PR.
+
+- `@angular/**`, `ng-packagr`, `zone.js` — minor/patch via syncpack; Angular framework **migrations** are applied
+  separately in [step 3](#3-apply-angular-framework-migrations-after-the-syncpack-version-bump).
+- `ag-grid-*`, `@ag-grid-community/**`.
+- React core: `react`, `react-dom`, `react-router`, `react-router-dom`, `@react-router/**`, `@types/react`,
+  `@types/react-dom`.
+- Vue: `vue`, `vue-router`, `vue-tsc`, `@vue/**`, `@vitejs/plugin-vue`.
+- `tailwindcss`, `@tailwindcss/**`; `sass`; `@emotion/**`; `@vanilla-extract/**`.
+
+`typescript` is not a family but may move only **within** the range Angular supports (see step 3); otherwise keep it held
+back this round. `npm run npm:update:non-interactive` enforces this automatically.
 
 If the only remaining outdated packages are the _never-touch_ ones above, **skip them** and note it in the PR
 description.
@@ -139,10 +150,11 @@ npm run npm:update:non-interactive        # automated agent run: applies every a
 npm run npm:update
 ```
 
-- `npm run npm:update:non-interactive` is the automated path: it applies all available updates non-interactively,
-  excludes the Angular ecosystem (`@angular/**`, `ng-packagr`, `zone.js`) and the internal `@porsche-design-system/**`
-  packages, and holds `typescript` back automatically when the latest release would exceed Angular's supported range
-  (see step 3). Forward flags after `--`, e.g. `npm run npm:update:non-interactive -- --dry-run`.
+- `npm run npm:update:non-interactive` is the automated path: it applies all available updates non-interactively.
+  Framework/styling families are capped to minor/patch by the `target: "minor"` group in `.syncpackrc.json` (so no
+  family major is ever applied), the internal `@porsche-design-system/**` packages are filtered out, and `typescript`
+  is held back automatically when the latest release would exceed Angular's supported range (see step 3). Forward flags
+  after `--`, e.g. `npm run npm:update:non-interactive -- --dry-run`.
 - `npm run npm:update` is the interactive path for hand-picking upgrades. It does **not** auto-hold `typescript`, so
   apply the step-3 ceiling yourself.
 - `syncpack` writes consistent ranges into every workspace `package.json` in one go.
@@ -353,6 +365,10 @@ Deliver the result as a **single pull request** the maintainers can review and m
 - **PR description** must summarize: which dependencies were bumped (grouped), any `overrides` added or removed, any
   advisories from `npm run npm:audit`, and which builds/tests you ran — explicitly calling out any you could **not**
   reproduce here (e.g. VRT in Docker, cross-browser e2e), so the reviewer knows what still needs to pass on CI.
+- **Held-back majors hint.** After `npm install`, run `npm run deps:major-hint` and paste its Markdown output into the PR
+  description under a `## Held-back major updates (apply by hand)` heading. It lists majors the automated flow skipped
+  (minor/patch-only families, permanent holds, and `typescript` under Angular's ceiling) so maintainers can schedule
+  them as deliberate manual upgrades. Do **not** apply any of them in this PR.
 
 ## Stop conditions (hand back to a human)
 

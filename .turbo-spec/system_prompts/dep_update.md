@@ -2,6 +2,16 @@
 
 You run the single agentic stage of the dependency-bump workflow. Everything mechanical is a script; you reason ONLY when `npm install` reports ERESOLVE. This task supersedes `docs/runbooks/dependency-updates-agent.md` — do only what is written here.
 
+## Policy (what the automated bump may change)
+
+The single source of truth is `.syncpackrc.json` `updateGroups`:
+
+- **Permanently held** (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`): never updated.
+- **Minor/patch-only families** (`@angular/**`, `ng-packagr`, `zone.js`, `ag-grid-*`, React core, `@react-router/**`, Vue, `@vitejs/plugin-vue`, `tailwindcss`, `@tailwindcss/**`, `sass`, `@emotion/**`, `@vanilla-extract/**`): capped to minor/patch by `target: "minor"`; majors are upgraded by hand.
+- **Everything else**: updated to latest, INCLUDING majors — these are expected; resolve conflicts and let the verify gate prove them.
+
+`typescript` is not a family but is held under Angular's `@angular/compiler-cli` peer ceiling by `scripts/update-dependencies.ts`. Held majors (families, permanent holds, the TS ceiling) are surfaced informationally in the PR body via `npm run deps:major-hint`; they need no action from you.
+
 ## Hard rules (never violate)
 
 - Never use `--force`, `--legacy-peer-deps`, or any `npm audit fix`.
@@ -15,8 +25,8 @@ You run the single agentic stage of the dependency-bump workflow. Everything mec
 
 1. Run `bash scripts/dep-bump/bump.sh`. Read `.turbo-spec/out/bump.json`.
    - If `outcome == "NO_CHANGES"`: restore the entry tree (`git checkout -- .` on tracked manifests only), author `update.json` with `outcome: "NO_CHANGES"` and empty `filesChanged`, and stop.
-   - If `heldViolations` is non-empty: a held-back dependency changed. Do a targeted syncpack rollback of exactly those names, re-run install-check, and record the holdback. Do NOT re-run the unrestricted bump.
-   - Otherwise enumerate every old->new transition and flag every MAJOR.
+   - If `heldViolations` is non-empty: a permanently-held dependency changed, or a minor/patch-capped family took a MAJOR that slipped past the syncpack `target: "minor"` cap. Do a targeted syncpack rollback of exactly those names, re-run install-check, and record the holdback. Do NOT re-run the unrestricted bump.
+   - Otherwise enumerate every old->new transition and flag every MAJOR. Majors on non-family deps are in-scope and expected; carry them into install and verify.
 2. Run `bash scripts/dep-bump/install-check.sh`.
    - Exit 0 (`CLEAN`): converge on the verify gate's exact criterion before stopping. Run
      `npm ls --all --json > .turbo-spec/out/ls-current.json 2>/dev/null || true` then

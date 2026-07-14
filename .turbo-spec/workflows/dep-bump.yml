@@ -132,6 +132,11 @@ stages:
           environment_verdict: escalate
           success_reason: "Terminal verdict written"
           steps:
+            - name: major-hint
+              # Best-effort: surface majors held back by policy (families capped
+              # to minor/patch, permanent holds, TS ceiling) from native npm
+              # outdated. Never fail the report if the registry is unreachable.
+              command: ["sh", "-c", "npm run --silent deps:major-hint || true"]
             - name: build-report
               command: ["node", "--import", "tsx", "scripts/dep-bump/report.ts"]
       - evaluator: outcome_contract

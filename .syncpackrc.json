@@ -46,6 +46,34 @@
       "label": "Held-back dependencies — upgraded deliberately, not via automated checks (see docs/dependencies.md and .github/dependabot.yml)",
       "dependencies": ["@porsche-design-system/**", "@playwright/test", "@stencil/core"],
       "isIgnored": true
+    },
+    {
+      "label": "Framework/styling families — minor/patch only; majors upgraded by hand (see docs/dependencies.md)",
+      "dependencies": [
+        "@angular/**",
+        "ng-packagr",
+        "zone.js",
+        "ag-grid-*",
+        "@ag-grid-community/**",
+        "react",
+        "react-dom",
+        "react-router",
+        "react-router-dom",
+        "@react-router/**",
+        "@types/react",
+        "@types/react-dom",
+        "vue",
+        "vue-router",
+        "vue-tsc",
+        "@vue/**",
+        "@vitejs/plugin-vue",
+        "tailwindcss",
+        "@tailwindcss/**",
+        "sass",
+        "@emotion/**",
+        "@vanilla-extract/**"
+      ],
+      "target": "minor"
     }
   ]
 }

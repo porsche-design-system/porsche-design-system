@@ -11,7 +11,13 @@ type PackageJson = {
 
 const require = createRequire(import.meta.url);
 const passthroughArgs = process.argv.slice(2);
-const exclusions = ['!@porsche-design-system/**', '!@angular/**', '!ng-packagr', '!zone.js'];
+// Framework/styling families (Angular, React, Vue, ag-grid, Tailwind, Emotion,
+// Vanilla-Extract, sass) are capped to minor/patch by the `target: "minor"`
+// updateGroup in .syncpackrc.json — the single source of truth — so they no
+// longer need per-package exclusions here. The `@porsche-design-system/**`
+// filter stays: those packages are unpublished internals and would otherwise
+// print "Failed to fetch" registry noise.
+const exclusions = ['!@porsche-design-system/**'];
 
 if (!hasExplicitTarget(passthroughArgs)) {
   const angularTypeScriptRange = readAngularTypeScriptRange();
