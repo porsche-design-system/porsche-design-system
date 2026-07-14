@@ -39,6 +39,10 @@ stages:
       - type: implementer
         system_prompt: .turbo-spec/system_prompts/dep_update.md
         tools: [github, file, shell]
+        # `model` (the provider key) MUST accompany model_kwargs — the engine
+        # silently ignores a lone model_kwargs, falling back to the provider
+        # default (claude-sonnet-5), so the model_id override never takes effect.
+        model: copilot
         model_kwargs:
           model_id: claude-opus-4.8
     outputs:
