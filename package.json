@@ -93,7 +93,6 @@
     "build:shared": "npm run build --workspace=shared",
     "build:storefront": "npm run build --workspace=@porsche-design-system/storefront",
     "build:skill": "npm run build:skill --workspace=@porsche-design-system/storefront",
-    "build:skill:check": "npm run build:skill:check --workspace=@porsche-design-system/storefront",
     "build:utilities": "npm run build --workspace=utilities-v2",
     "format": "biome format",
     "lint": "biome lint",

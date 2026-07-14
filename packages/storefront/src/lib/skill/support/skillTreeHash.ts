@@ -26,24 +26,3 @@ export const hashSkillTree = (root: string): string => {
   }
   return hash.digest('hex');
 };
-
-/** Return the first structural or byte difference between two trees, or `null` when identical. */
-export const findSkillTreeDifference = (firstRoot: string, secondRoot: string): string | null => {
-  const firstFiles = listSkillTreeFiles(firstRoot);
-  const secondFiles = listSkillTreeFiles(secondRoot);
-  const fileCount = Math.max(firstFiles.length, secondFiles.length);
-
-  for (let index = 0; index < fileCount; index++) {
-    if (firstFiles[index] !== secondFiles[index]) {
-      return `file list differs at ${firstFiles[index] ?? '<end>'} / ${secondFiles[index] ?? '<end>'}`;
-    }
-  }
-
-  for (const relative of firstFiles) {
-    if (!fs.readFileSync(path.join(firstRoot, relative)).equals(fs.readFileSync(path.join(secondRoot, relative)))) {
-      return `file bytes differ at ${relative}`;
-    }
-  }
-
-  return null;
-};
