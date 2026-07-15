@@ -28,6 +28,7 @@
     "bumped": { "type": "array", "description": "old->new dependency transitions, grouped." },
     "conflicts": { "type": "array", "description": "Each ERESOLVE conflict and the chosen remedy." },
     "overridesAdded": { "type": "array", "description": "Scoped root overrides added, if any." },
+    "overridesRemoved": { "type": "array", "description": "Overrides pruned by the normalize stage." },
     "holdbacks": { "type": "array", "description": "Dependencies held back via targeted rollback." },
     "filesChanged": { "type": "array", "description": "Tracked files changed; empty when the tree was restored." },
     "stopReason": {

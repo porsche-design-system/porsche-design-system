@@ -8,6 +8,8 @@ export interface UpdateVerdict {
   bumped?: unknown[];
   conflicts?: unknown[];
   overridesAdded?: unknown[];
+  overridesRemoved?: unknown[];
+  auditAdvisories?: unknown[];
   holdbacks?: unknown[];
   stopReason?: string | null;
 }
@@ -21,6 +23,8 @@ export interface Report {
   bumped: unknown[];
   conflicts: unknown[];
   overrides: unknown[];
+  overridesRemoved: unknown[];
+  auditAdvisories: unknown[];
   holdbacks: unknown[];
   stopReason: string | null;
 }
@@ -31,6 +35,8 @@ export function buildReport(update: UpdateVerdict, verify: VerifyVerdict | null)
     bumped: update.bumped ?? [],
     conflicts: update.conflicts ?? [],
     overrides: update.overridesAdded ?? [],
+    overridesRemoved: update.overridesRemoved ?? [],
+    auditAdvisories: update.auditAdvisories ?? [],
     holdbacks: update.holdbacks ?? [],
     stopReason: update.stopReason ?? null,
   };

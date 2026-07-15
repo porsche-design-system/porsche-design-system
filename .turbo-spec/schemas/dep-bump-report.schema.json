@@ -12,6 +12,8 @@
     "bumped": { "type": "array" },
     "conflicts": { "type": "array" },
     "overrides": { "type": "array" },
+    "overridesRemoved": { "type": "array", "description": "Overrides pruned as no longer needed." },
+    "auditAdvisories": { "type": "array", "description": "Report-only npm audit advisory summary." },
     "holdbacks": { "type": "array" },
     "stopReason": { "type": ["string", "null"] }
   }
