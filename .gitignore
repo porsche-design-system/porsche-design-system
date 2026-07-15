@@ -120,3 +120,7 @@ packages/components/projects/stylesheets/meta/
 # Agent Skills, ignored for now for testing and review of the skills. Remove once we decided on what skills to keep.
 .claude/
 skills-lock.json
+
+# TurboSpec local run artifacts
+.sessions/
+stage-*-artifacts/
