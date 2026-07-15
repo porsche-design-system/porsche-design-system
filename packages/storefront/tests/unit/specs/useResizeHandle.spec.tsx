@@ -74,6 +74,15 @@ describe('useResizeHandle', () => {
       expect(handle).toHaveAttribute('aria-valuetext', '984 pixels');
       expect(handle).toHaveAttribute('aria-valuemax', String(TRACK_WIDTH));
     });
+
+    // `role="slider"` requires a numeric `aria-valuenow`; on the first render the track ref isn't attached yet,
+    // so it must still fall back to a defined value (minWidth) instead of being omitted.
+    it('should always expose a defined aria-valuenow and aria-valuetext on initial render', () => {
+      const { handle } = renderHook();
+
+      expect(handle).toHaveAttribute('aria-valuenow', String(MIN_WIDTH));
+      expect(handle).toHaveAttribute('aria-valuetext', `${MIN_WIDTH} pixels`);
+    });
   });
 
   describe('keyboard resizing', () => {

@@ -38,8 +38,8 @@ type UseResizeHandle = {
     'aria-label': string;
     'aria-valuemin': number;
     'aria-valuemax': number | undefined;
-    'aria-valuenow': number | undefined;
-    'aria-valuetext': string | undefined;
+    'aria-valuenow': number;
+    'aria-valuetext': string;
     onPointerDown: (e: ReactPointerEvent<HTMLElement>) => void;
     onKeyDown: (e: ReactKeyboardEvent<HTMLElement>) => void;
   };
@@ -155,7 +155,9 @@ export const useResizeHandle = ({
   };
 
   const maxWidth = getMaxWidth() ?? undefined;
-  const valueNow = width ?? maxWidth;
+  // `role="slider"` requires a valid `aria-valuenow`. Before the track ref is attached (first render) both
+  // `width` and `maxWidth` are unknown, so fall back to `minWidth` — which is always defined — to guarantee a number.
+  const valueNow = width ?? maxWidth ?? minWidth;
 
   return {
     trackRef,
@@ -170,7 +172,7 @@ export const useResizeHandle = ({
       'aria-valuemin': minWidth,
       'aria-valuemax': maxWidth,
       'aria-valuenow': valueNow,
-      'aria-valuetext': valueNow !== undefined ? `${valueNow} pixels` : undefined,
+      'aria-valuetext': `${valueNow} pixels`,
       onPointerDown: startResize,
       onKeyDown,
     },
