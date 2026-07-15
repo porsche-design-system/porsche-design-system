@@ -48,3 +48,12 @@ test('buildReport carries overridesRemoved and auditAdvisories through', () => {
   assert.deepEqual(report.overridesRemoved, [{ name: 'minimatch@9' }]);
   assert.deepEqual(report.auditAdvisories, [{ name: 'lodash' }]);
 });
+
+test('buildReport passes overridesRemoved and auditAdvisories through NO_CHANGES branch', () => {
+  const report = buildReport(
+    { outcome: 'NO_CHANGES', overridesRemoved: [{ name: 'x@1' }], auditAdvisories: [{ name: 'y' }] } as never,
+    null
+  );
+  assert.deepEqual(report.overridesRemoved, [{ name: 'x@1' }]);
+  assert.deepEqual(report.auditAdvisories, [{ name: 'y' }]);
+});

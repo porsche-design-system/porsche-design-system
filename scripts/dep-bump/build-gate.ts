@@ -29,6 +29,13 @@ export function pickRun(runs: RunView[], headSha: string): RunView | null {
   return matching[0] ?? null;
 }
 
+export function pickFreshRun(runs: RunView[], beforeIds: Set<number | undefined>, headSha: string): RunView | null {
+  return pickRun(
+    runs.filter((r) => !beforeIds.has(r.databaseId)),
+    headSha,
+  );
+}
+
 function sh(cmd: string, args: string[]): string {
   return execFileSync(cmd, args, { cwd: process.cwd(), encoding: 'utf8' });
 }
@@ -79,11 +86,7 @@ async function main(): Promise<never> {
     await new Promise((r) => setTimeout(r, POLL_MS));
     const runs = listRuns(branch);
     // Prefer a run created by THIS dispatch (new databaseId) on our sha.
-    run =
-      pickRun(
-        runs.filter((r) => !before.has(r.databaseId)),
-        sha
-      ) ?? pickRun(runs, sha);
+    run = pickFreshRun(runs, before, sha);
     const verdict = classifyRun(run);
     if (verdict !== 'PENDING') {
       writeVerdict('build-gate.json', {

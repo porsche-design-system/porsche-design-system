@@ -1,6 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import type { AuditReport } from './audit-compare.ts';
+import { summarizeAudit } from './audit-summary.ts';
 import { OUT_DIR, writeVerdict } from './lib/verdict.ts';
+import type { PruneResult } from './prune-overrides.ts';
 
 export interface UpdateVerdict {
   outcome: 'RESOLVED' | 'NO_CHANGES' | 'BLOCKED' | 'BLOCKED_PREEXISTING';
@@ -75,6 +78,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     process.stderr.write('Missing update.json; cannot build report\n');
     process.exit(2);
   }
+  const pruned = readVerdict<PruneResult>('pruned.json');
+  const audit = readVerdict<AuditReport>('audit-current.json');
+  update.overridesRemoved = pruned?.removed ?? [];
+  update.auditAdvisories = audit ? summarizeAudit(audit) : [];
   const verify = readVerdict<VerifyVerdict>('verify.json');
   const report = buildReport(update, verify);
   writeVerdict('dep-bump-report.json', report);
