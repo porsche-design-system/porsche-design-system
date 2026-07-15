@@ -11,6 +11,21 @@ on:
         description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4"). Used as the storefront basePath so the build matches the gh-pages folder produced by the deploy workflow.'
         required: true
         type: string
+  # Manual/programmatic dispatch used by the dep-bump build gate. Inputs default
+  # to the same image contribution.yml passes and a stable dep-bump slug, so
+  # `gh workflow run build.yml --ref <branch>` runs the full build with no caller.
+  workflow_dispatch:
+    inputs:
+      image:
+        description: 'Docker image to be used in workflow.'
+        required: false
+        default: 'mcr.microsoft.com/playwright:v1.61.0-jammy'
+        type: string
+      storefront-slug:
+        description: 'Storefront deploy target slug.'
+        required: false
+        default: 'dep-bump'
+        type: string
 
 permissions:
   contents: read
