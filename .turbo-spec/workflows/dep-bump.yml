@@ -61,12 +61,39 @@ stages:
           outcome_path: .turbo-spec/out/update.json
           schema: .turbo-spec/schemas/dep-bump-update.schema.json
 
+  # S3.5 Normalize — agentless. Prune redundant overrides, auto-fix syncpack
+  # version-range + formatting drift, and gate that nothing is left to update.
+  # Only runs when the update produced a real change.
+  - name: normalize
+    orchestrator: testing
+    depends_on: [update]
+    condition: "update.result.outcome == 'RESOLVED'"
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 1
+        config:
+          gate_name: normalize
+          failure_verdict: escalate
+          environment_verdict: escalate
+          success_reason: "Overrides pruned; syncpack lint/format clean; nothing left to update"
+          steps:
+            - name: normalize
+              command: ["bash", "scripts/dep-bump/normalize.sh"]
+            - name: pr-tables
+              command:
+                [
+                  "sh",
+                  "-c",
+                  "npm run --silent deps:pr-tables && bash scripts/dep-bump/post-pr-tables.sh || true",
+                ]
+
   # S5 Verify — agentless. Only runs when the update resolved a real change.
   # Gate 1 (tree) loops back to `update` on a real failure (invalid edge / lock
   # mismatch -> S4). Gates 2-3 escalate (audit regression / build break -> triage).
   - name: verify
     orchestrator: testing
-    depends_on: [update]
+    depends_on: [update, normalize]
     condition: "update.result.outcome == 'RESOLVED'"
     outputs:
       result: .turbo-spec/out/verify.json
@@ -159,6 +186,28 @@ stages:
         config:
           outcome_path: .turbo-spec/out/dep-bump-report.json
           schema: .turbo-spec/schemas/dep-bump-report.schema.json
+
+  # S7 Build gate — agentless. Looks like any other gate to turbo-spec; internally
+  # it dispatches CI build.yml (workflow_dispatch) on the pushed branch and blocks
+  # on the run conclusion. Runs last: the PR comment already exists by report.
+  - name: build-gate
+    orchestrator: testing
+    depends_on: [update, report]
+    condition: "update.result.outcome == 'RESOLVED'"
+    outputs:
+      result: .turbo-spec/out/build-gate.json
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: escalate
+        max_retries: 1
+        config:
+          gate_name: build-gate
+          failure_verdict: escalate
+          environment_verdict: escalate
+          success_reason: "CI build.yml completed successfully for the bumped tree"
+          steps:
+            - name: dispatch-and-wait
+              command: ["node", "--import", "tsx", "scripts/dep-bump/build-gate.ts"]
 
 model_provider:
   primary: copilot
