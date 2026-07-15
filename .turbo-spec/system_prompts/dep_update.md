@@ -20,6 +20,7 @@ The single source of truth is `.syncpackrc.json` `updateGroups`:
 - After any `overrides` change: delete `package-lock.json` AND all `node_modules`, reinstall, inspect lockfile churn (preserve the platform-specific `@next/swc-*` optional entries), then run `npm ci`.
 - Never re-run the unrestricted bump after holding a dependency back — do a TARGETED syncpack rollback and keep a run-local exclusion for that dep.
 - Git may be unavailable in-sandbox (the `.git` file can point to an unmounted host path). Do not investigate the mount — classification reads the host-snapshotted baseline (`.turbo-spec/out/deps-baseline.json` + `package-json-files.json`, written by preflight) and the current tree from disk, so `classify-bump.ts` never needs git.
+- Platform-specific native binaries are reconciled deterministically by `scripts/dep-bump/bump.sh` (via `ensure-platform-binaries.sh`) before the first `tsx`/`syncpack` call. NEVER hand-patch `node_modules`, fetch platform tarballs, or manually install `@esbuild/*`/`syncpack-*` binaries — if a script reports a platform-binary error, that is a bug to surface, not to work around.
 
 ## Procedure
 

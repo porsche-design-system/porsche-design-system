@@ -115,6 +115,20 @@ that made valid bumps but hit a pre-existing/out-of-scope blocker yields `BLOCKE
   appears in both and cancels; the gate fails only on genuine new dependency edges, which the
   agent reproduces in-sandbox. Full parity (running the gate inside the same sandbox image) is
   an engine change tracked upstream, not a prerequisite for a correct verdict here.
+- **Platform-binary reconcile (native optional deps).** Distinct from the `npm ls` baseline-diff
+  above: preflight's `npm ci` runs on the macOS host, so npm materializes only the host's
+  platform-gated `optionalDependencies` (`@esbuild/darwin-*`, `syncpack-darwin-*`). The update
+  agent runs in a linux sandbox against that mounted `node_modules`, where the linux binaries are
+  absent, so every `tsx` (tsx → esbuild) and `syncpack` call would throw "installed for another
+  platform". `bump.sh` reconciles this deterministically via `ensure-platform-binaries.sh` before
+  its first native call: a functional probe no-ops on a healthy tree, otherwise a `--no-save`
+  `npm install` materializes this platform's already-locked optional packages. It is lock-neutral
+  by construction — `package-lock.json` (v3) already enumerates every platform's optional packages
+  with `os`/`cpu` + integrity — and the helper snapshot-restores the lock as a defensive guarantee.
+  The reconcile is safe against the shared mount because host-side verify and report both run `tsx`
+  after the sandbox update stage and succeed today, so the host's darwin binaries are not pruned by
+  the sandbox's install; the probe-guard additionally ensures a healthy host/native-linux tree is
+  never mutated.
 - **Git-independent classification.** The sandbox worktree's `.git` can point to an unmounted
   host gitdir, so git fails in the update stage. Classification therefore reads a
   host-snapshotted baseline (`deps-baseline.json` + `package-json-files.json`, written by
