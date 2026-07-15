@@ -1,11 +1,11 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: multi-select-option and cssVarScaling: var(--_p-multi-select-a, 1) 1`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: multi-select-option and cssVarScaling: --_p-multi-select-a 1`] = `
 ".no-results {
   display: flex;
-  gap: calc(11.2px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 4px);
-  padding-block: calc(11.2px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 4px);
-  padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 6px);
+  gap: calc(11.2px * (var(--_p-multi-select-a) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--_p-multi-select-a) - 0.64285714) + 4px);
+  padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
@@ -54,12 +54,12 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
 "
 `;
 
-exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: multi-select-option and cssVarScaling: var(--_p-multi-select-a, 1) 2`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: multi-select-option and cssVarScaling: --_p-multi-select-a 2`] = `
 ".no-results {
   display: flex;
-  gap: calc(11.2px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 4px);
-  padding-block: calc(11.2px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 4px);
-  padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--_p-multi-select-a, 1)) - 0.64285714) + 6px);
+  gap: calc(11.2px * (var(--_p-multi-select-a) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--_p-multi-select-a) - 0.64285714) + 4px);
+  padding-inline: var(--_p-multi-select-option-b,calc(16.8px * (var(--_p-multi-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-multi-select-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
@@ -108,12 +108,12 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
 "
 `;
 
-exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option and cssVarScaling: var(--_p-select-a, 1) 1`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option and cssVarScaling: --_p-select-a 1`] = `
 ".no-results {
   display: flex;
-  gap: calc(11.2px * (var(var(--_p-select-a, 1)) - 0.64285714) + 4px);
-  padding-block: calc(11.2px * (var(var(--_p-select-a, 1)) - 0.64285714) + 4px);
-  padding-inline: var(--_p-select-option-b,calc(16.8px * (var(var(--_p-select-a, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--_p-select-a, 1)) - 0.64285714) + 6px);
+  gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+  padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);
@@ -162,12 +162,12 @@ exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct c
 "
 `;
 
-exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option and cssVarScaling: var(--_p-select-a, 1) 2`] = `
+exports[`getFunctionalComponentNoResultsOptionStyles() > should return correct css for componentName: select-option and cssVarScaling: --_p-select-a 2`] = `
 ".no-results {
   display: flex;
-  gap: calc(11.2px * (var(var(--_p-select-a, 1)) - 0.64285714) + 4px);
-  padding-block: calc(11.2px * (var(var(--_p-select-a, 1)) - 0.64285714) + 4px);
-  padding-inline: var(--_p-select-option-b,calc(16.8px * (var(var(--_p-select-a, 1)) - 0.64285714) + 6px)) calc(16.8px * (var(var(--_p-select-a, 1)) - 0.64285714) + 6px);
+  gap: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+  padding-block: calc(11.2px * (var(--_p-select-a) - 0.64285714) + 4px);
+  padding-inline: var(--_p-select-option-b,calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px)) calc(16.8px * (var(--_p-select-a) - 0.64285714) + 6px);
   min-height: var(--p-leading-normal);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
   color: var(--p-color-contrast-medium);

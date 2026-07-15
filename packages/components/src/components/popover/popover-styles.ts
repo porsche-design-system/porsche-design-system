@@ -1,6 +1,7 @@
 import {
   blurFrosted,
   colorCanvas,
+  colorFocus,
   colorFrosted,
   colorFrostedSoft,
   colorPrimary,
@@ -18,14 +19,13 @@ import {
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
 import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  getFocusBaseStyles,
+  forcedColorsMediaQueryCss,
   getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
+  hostHiddenStylesCss,
+  hoverMediaQueryCss,
+  overlayTransitionSupportsQueryCss,
 } from '../../styles';
-import { getCss, overlayTransitionSupportsQuery } from '../../utils';
+import { css } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
@@ -96,131 +96,169 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
   const easing = isOpen ? 'in' : 'out';
   const transition = getTransition('opacity', duration, easing);
 
-  const css = getCss({
-    '@global': {
-      ':host': {
-        // `display: contents` so the host box does not participate in visual DOM rendering — the popover mimics the
-        // native `[popover]` element, so the slotted trigger (or default info button) lays out directly in the parent
-        // flow. Enabled by anchoring Floating UI to the assigned trigger element (see `triggerElement` in popover.tsx)
-        // instead of the `<slot>` box, so the slot no longer needs a layout box of its own.
-        display: 'contents',
-        ...addImportantToEachRule(hostHiddenStyles),
-      },
-      'slot:not([name]), p': {
-        display: 'block',
-        margin: 0, // reset ua-style for paragraphs
-        minWidth: 0, // allow the grid item to shrink below its content size (needed for correct clamping via --p-popover-max-w)
-        minHeight: 0, // allow the grid item to shrink below its content size so overflow scrolls instead of expanding the panel (needed for --p-popover-max-h)
-        maxWidth: 'inherit',
-        maxHeight: 'inherit',
-        boxSizing: 'border-box',
-        padding: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)} ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
-        overflow: 'hidden auto',
-        overscrollBehaviorY: 'none',
-      },
-      button: {
-        all: 'unset',
-        display: 'inline-grid',
-        verticalAlign: 'top',
-        font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
-        width: ref(leadingNormal),
-        height: ref(leadingNormal),
-        borderRadius: ref(radiusFull),
-        cursor: 'pointer',
-        background: ref(colorFrosted),
-        transition: getTransition('background-color'),
-        WebkitBackdropFilter: ref(blurFrosted),
-        backdropFilter: ref(blurFrosted),
-        ...hoverMediaQuery({
-          '&:hover': {
-            background: ref(colorFrostedSoft),
-          },
-        }),
-        '&:focus-visible': getFocusBaseStyles(),
-        '&::after': {
-          content: '""',
-          WebkitMask: `${iconInfo} center/contain no-repeat`, // necessary for Sogou browser support :-)
-          mask: `${iconInfo} center/contain no-repeat`,
-          background: ref(colorPrimary),
-          ...forcedColorsMediaQuery({
-            background: 'CanvasText',
-          }),
-        },
-      },
-      '[popover]': {
-        all: 'unset',
-        position: 'fixed', // matches floating ui's `fixed` strategy; required for correct top-layer positioning in Safari
-        top: 0,
-        left: 0,
-        filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
-        backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
-        borderRadius: ref(cssVarRadius, isCompact ? ref(radiusLg) : ref(radiusXl)),
-        // Fallback for engines without CSS relative color syntax (< Chromium 119 / Safari 16.4 / Firefox 128): the
-        // `hsl(from …)` override below would be an invalid value and get dropped, leaving the panel with no background.
-        // The plain `light-dark()` token renders correct white (light) / near-black (dark) as graceful degradation.
-        background: ref(colorCanvas),
-        // Relative color syntax: lightens ONLY the dark scheme (light `#fff` clamps at l=100 → stays white; dark
-        // `l≈1.2%` → `≈15.2%`). Feature-test string kept in sync with `spinner-styles.ts` (one relative-color feature
-        // covers all color functions).
-        '@supports (color: oklch(from red l c h))': {
-          background: `hsl(from ${ref(colorCanvas)} h 0% calc(l + 14))`,
-        },
-        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
-        color: ref(colorPrimary),
-        width: ref(cssVariableWidth, 'max-content'),
-        height: ref(cssVariableHeight, 'auto'),
-        minWidth: ref(cssVariableMinWidth, '0px'),
-        minHeight: ref(cssVariableMinHeight, 'auto'),
-        maxWidth: ref(cssVariableMaxWidth, `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`),
-        maxHeight: ref(cssVariableMaxHeight, `calc(100dvh - ${POPOVER_SAFE_ZONE * 2}px)`),
-        opacity: isOpen ? 1 : 0,
-        transition,
-        // keep the popover on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
-        ...overlayTransitionSupportsQuery({
-          transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete, ${getTransition('display', duration, easing)} allow-discrete`,
-        }),
-        // Unlike `opacity` (driven by the `isOpen` render flag), `overlay` and `display` are toggled via the
-        // `:popover-open` UA state instead of `isOpen`. Both are owned by the browser: they only flip once
-        // `showPopover()` / `hidePopover()` actually promote/remove the element to/from the #top-layer. Driving them
-        // from `isOpen` would desync from that native state — e.g. Safari/Firefox defer `hidePopover()` until the
-        // fade-out ends (see `createTopLayerController`), so `display` must stay `grid` while `:popover-open` is still
-        // truthy; an `isOpen`-based `display: none` would hide the panel instantly and kill the fade. Binding to
-        // `:popover-open` keeps CSS in lockstep with the browser across all engines, while the Chromium-only
-        // `allow-discrete` transition above animates the discrete `overlay`/`display` switch during the fade-out.
-        overlay: 'none',
-        display: 'none',
-        '&:popover-open': {
-          overlay: 'auto',
-          display: 'grid',
-        },
-        ...forcedColorsMediaQuery({
-          outline: '2px solid CanvasText',
-          outlineOffset: '-2px',
-        }),
-        '&::backdrop': {
-          display: 'none', // reset ua-style
-        },
-      },
-    },
-    arrow: {
-      position: 'absolute',
-      width: '24px',
-      height: '12px',
-      clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
-      background: 'inherit',
-      ...forcedColorsMediaQuery({
-        background: 'CanvasText',
-      }),
-    },
-  });
+  const styles = css`
+    :host {
+      /* display: contents so the host box does not participate in visual DOM rendering — the popover mimics the native
+             [popover] element, so the slotted trigger (or default info button) lays out directly in the parent flow. Enabled
+             by anchoring Floating UI to the assigned trigger element (see triggerElement in popover.tsx) instead of the <slot>
+             box, so the slot no longer needs a layout box of its own. */
+      display: contents;
+    }
+
+    ${hostHiddenStylesCss}
+
+    slot:not([name]), p {
+      display: block;
+      margin: 0; /* reset ua-style for paragraphs */
+      min-width: 0; /* allow the grid item to shrink below its content size (needed for correct clamping via --p-popover-max-w) */
+      min-height: 0; /* allow the grid item to shrink below its content size so overflow scrolls instead of expanding the panel (needed for --p-popover-max-h) */
+      max-width: inherit;
+      max-height: inherit;
+      box-sizing: border-box;
+      padding: ${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)}
+        ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))};
+      overflow: hidden auto;
+      overscroll-behavior-y: none;
+    }
+
+    button {
+      all: unset;
+      display: inline-grid;
+      vertical-align: top;
+      font: ${ref(typescaleSm)} ${ref(fontPorscheNext)}; /* needed for correct width/height definition based on ex-unit */
+      width: ${ref(leadingNormal)};
+      height: ${ref(leadingNormal)};
+      border-radius: ${ref(radiusFull)};
+      cursor: pointer;
+      background: ${ref(colorFrosted)};
+      transition: ${getTransition('background-color')};
+      -webkit-backdrop-filter: ${ref(blurFrosted)};
+      backdrop-filter: ${ref(blurFrosted)};
+    }
+
+    button:focus-visible {
+      outline: 2px solid ${ref(colorFocus)};
+      outline-offset: 2px;
+    }
+
+    button::after {
+      content: '';
+      /* necessary for Sogou browser support :-) */
+      -webkit-mask: ${iconInfo} center/contain no-repeat;
+      mask: ${iconInfo} center/contain no-repeat;
+      background: ${ref(colorPrimary)};
+    }
+
+    ${hoverMediaQueryCss(css`
+      button:hover {
+        background: ${ref(colorFrostedSoft)};
+      }
+    `)}
+
+    ${forcedColorsMediaQueryCss(css`
+      button:focus-visible {
+        outline-color: Highlight;
+      }
+    `)}
+
+    ${forcedColorsMediaQueryCss(css`
+      button::after {
+        background: CanvasText;
+      }
+    `)}
+
+    [popover] {
+      all: unset;
+      position: fixed; /* matches floating ui's fixed strategy; required for correct top-layer positioning in Safari */
+      top: 0;
+      left: 0;
+      filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
+      /* workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter:
+         https://bugzilla.mozilla.org/show_bug.cgi?id=1797051 */
+      backdrop-filter: drop-shadow(0 0 transparent);
+      border-radius: ${ref(cssVarRadius, isCompact ? ref(radiusLg) : ref(radiusXl))};
+      /* Fallback for engines without CSS relative color syntax (< Chromium 119 / Safari 16.4 / Firefox 128): the
+         hsl(from …) override below would be an invalid value and get dropped, leaving the panel with no background. The
+         plain light-dark() token renders correct white (light) / near-black (dark) as graceful degradation. */
+      background: ${ref(colorCanvas)};
+      font: ${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)};
+      color: ${ref(colorPrimary)};
+      width: ${ref(cssVariableWidth, 'max-content')};
+      height: ${ref(cssVariableHeight, 'auto')};
+      min-width: ${ref(cssVariableMinWidth, '0px')};
+      min-height: ${ref(cssVariableMinHeight, 'auto')};
+      max-width: ${ref(cssVariableMaxWidth, `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`)};
+      max-height: ${ref(cssVariableMaxHeight, `calc(100dvh - ${POPOVER_SAFE_ZONE * 2}px)`)};
+      opacity: ${isOpen ? 1 : 0};
+      transition: ${transition};
+      /* Unlike opacity (driven by the isOpen render flag), overlay and display are toggled via the :popover-open UA
+         state instead of isOpen. Both are owned by the browser: they only flip once showPopover() / hidePopover()
+         actually promote/remove the element to/from the #top-layer. Driving them from isOpen would desync from that
+         native state — e.g. Safari/Firefox defer hidePopover() until the fade-out ends (see createTopLayerController), so
+         display must stay grid while :popover-open is still truthy; an isOpen-based display: none would hide the panel
+         instantly and kill the fade. Binding to :popover-open keeps CSS in lockstep with the browser across all engines,
+         while the Chromium-only allow-discrete transition below animates the discrete overlay/display switch during the
+         fade-out. */
+      overlay: none;
+      display: none;
+    }
+
+    /* Relative color syntax: lightens ONLY the dark scheme (light #fff clamps at l=100 → stays white; dark l≈1.2% →
+       ≈15.2%). Feature-test string kept in sync with spinner-styles.ts (one relative-color feature covers all color functions). */
+    @supports (color: oklch(from red l c h)) {
+      [popover] {
+        background: hsl(from ${ref(colorCanvas)} h 0% calc(l + 14));
+      }
+    }
+
+    ${overlayTransitionSupportsQueryCss(css`
+      /* keep the popover on the #top-layer while the fade-out runs (Chromium only) */
+
+      [popover] {
+        transition:
+          ${transition},
+          ${getTransition('overlay', duration, easing)} allow-discrete,
+          ${getTransition('display', duration, easing)} allow-discrete;
+      }
+    `)}
+
+    ${forcedColorsMediaQueryCss(css`
+      [popover] {
+        outline: 2px solid CanvasText;
+        outline-offset: -2px;
+      }
+    `)}
+
+    [popover]:popover-open {
+      overlay: auto;
+      display: grid;
+    }
+
+    [popover]::backdrop {
+      display: none; /* reset ua-style */
+    }
+
+    .arrow {
+      position: absolute;
+      width: 24px;
+      height: 12px;
+      clip-path: polygon(50% 0, 100% 110%, 0 110%);
+      background: inherit;
+    }
+
+    ${forcedColorsMediaQueryCss(css`
+      .arrow {
+        background: CanvasText;
+      }
+    `)}
+  `.trim();
 
   // Fade-IN: `@starting-style` supplies the opacity the browser transitions *from* on the first rendered frame, i.e. the
   // moment the panel leaves `display: none` via `:popover-open` (triggered by `showPopover()`). Without it the panel
   // snaps to full opacity, because its computed `opacity` is already `1` by the time it is promoted out of `display:
-  // none`. The fade-OUT needs no starting style (a rendered prior state already exists). Appended as raw CSS because the
-  // JSS conditional-rule plugin only supports `@media`/`@supports`/`@container`, not `@starting-style`. Unsupported
+  // none`. The fade-OUT needs no starting style (a rendered prior state already exists). Appended as raw CSS. Unsupported
   // engines (< Chromium 117 / Safari 17.5 / Firefox 129) ignore the unknown at-rule and skip the entry fade (graceful
-  // degradation). Formatting mirrors JSS output so the unit-test CSS parser can read it.
+  // degradation).
   //
   // `skipEntryTransition` omits the append on the component's FIRST render, so an initially-open popover (`open=true` on
   // page load) computes straight to `opacity: 1` and appears instantly instead of fading in. Every later render passes
@@ -248,5 +286,7 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
   //     tabbable during the fade-out).
   //   • Trade-off: removes the `@starting-style` raw-CSS append + the initial-load fade, at the cost of reintroducing the
   //     delayed `visibility` plus delayed `width/height` and tighter coupling to the motion duration.
-  return isOpen && !skipEntryTransition ? `${css}\n@starting-style {\n  [popover] {\n    opacity: 0;\n  }\n}` : css;
+  return isOpen && !skipEntryTransition
+    ? `${styles}\n@starting-style {\n  [popover] {\n    opacity: 0;\n  }\n}`
+    : styles;
 };
