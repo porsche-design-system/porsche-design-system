@@ -30,9 +30,9 @@ type UseResizeHandle = {
   setWidth: (width: number | null) => void;
   /** `true` while a pointer drag is in progress. */
   isResizing: boolean;
-  /** Props to spread onto the `role="separator"` handle element. */
+  /** Props to spread onto the `role="slider"` handle element. */
   handleProps: {
-    role: 'separator';
+    role: 'slider';
     tabIndex: 0;
     'aria-orientation': 'vertical';
     'aria-label': string;
@@ -47,8 +47,10 @@ type UseResizeHandle = {
 
 /**
  * Shared resize logic for the preview viewers. Supports both pointer dragging and full keyboard operation
- * following the WAI-ARIA window splitter pattern (https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/):
- * the handle is focusable and can be moved with Arrow keys, Page Up/Down (larger step) and Home/End (min/full width).
+ * following the WAI-ARIA slider pattern (https://www.w3.org/WAI/ARIA/apg/patterns/slider/): the handle
+ * selects a single width value within a range and can be moved with Arrow keys, Page Up/Down (larger step)
+ * and Home/End (min/full width). A `slider` (rather than the window-splitter `separator`) is used because the
+ * handle resizes a single preview against empty space, not two complementary panes.
  */
 export const useResizeHandle = ({
   minWidth,
@@ -161,10 +163,10 @@ export const useResizeHandle = ({
     setWidth,
     isResizing,
     handleProps: {
-      role: 'separator',
+      role: 'slider',
       tabIndex: 0,
       'aria-orientation': 'vertical',
-      'aria-label': 'Resize preview width. Use arrow keys to adjust, Home for minimum, End for full width.',
+      'aria-label': 'Preview width. Use arrow keys to adjust, Home for minimum, End for full width.',
       'aria-valuemin': minWidth,
       'aria-valuemax': maxWidth,
       'aria-valuenow': valueNow,

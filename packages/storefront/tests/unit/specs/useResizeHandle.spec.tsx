@@ -55,10 +55,10 @@ describe('useResizeHandle', () => {
   });
 
   describe('handleProps / ARIA', () => {
-    it('should expose the WAI-ARIA window splitter semantics', () => {
+    it('should expose the WAI-ARIA slider semantics', () => {
       const { handle } = renderHook();
 
-      expect(handle).toHaveAttribute('role', 'separator');
+      expect(handle).toHaveAttribute('role', 'slider');
       expect(handle).toHaveAttribute('tabindex', '0');
       expect(handle).toHaveAttribute('aria-orientation', 'vertical');
       expect(handle).toHaveAttribute('aria-valuemin', String(MIN_WIDTH));
