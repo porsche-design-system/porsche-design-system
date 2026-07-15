@@ -215,7 +215,8 @@
     "npm:outdated": "syncpack update --check --dependencies '!@porsche-design-system/**'",
     "npm:update": "syncpack update --interactive --dependencies '!@porsche-design-system/**'",
     "npm:update:non-interactive": "tsx scripts/update-dependencies.ts",
-    "deps:major-hint": "tsx scripts/dep-bump/major-hint.ts",
+    "deps:held-back": "tsx scripts/dep-bump/held-back.ts",
+    "deps:pr-tables": "tsx scripts/dep-bump/render-pr-tables.ts",
     "npm:audit": "npm audit",
     "npm:remove": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
     "npm:clean": "npm cache clean --force"

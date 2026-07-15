@@ -369,12 +369,12 @@ Deliver the result as a **single pull request** the maintainers can review and m
 - **PR description** must summarize: which dependencies were bumped (grouped), any `overrides` added or removed, any
   advisories from `npm run npm:audit`, and which builds/tests you ran — explicitly calling out any you could **not**
   reproduce here (e.g. VRT in Docker, cross-browser e2e), so the reviewer knows what still needs to pass on CI.
-- **Held-back majors hint.** After `npm install`, run `npm run deps:major-hint` and paste its Markdown output into the PR
-  description under a `## Held-back major updates (apply by hand)` heading. It lists majors the automated flow skipped
-  (minor/patch-only families, permanent holds, and `typescript` under Angular's ceiling) so maintainers can schedule
-  them as deliberate manual upgrades. Do **not** apply any of them in this PR. Run it only against an **installed** tree:
-  if the output says the information is **unavailable**, the held set is unknown (not empty) — reinstall and re-run
-  rather than pasting a "nothing held back" note.
+- **Held-back updates table.** After `npm install`, run `npm run deps:held-back` then `npm run deps:pr-tables` and paste
+  the rendered Markdown (`.turbo-spec/out/pr-tables.md`) into the PR description. It produces two tables: the applied
+  bumps and the available upgrades the automated flow held back (minor/patch-only families, permanent holds, and any
+  other update not applied) so maintainers can schedule them as deliberate manual upgrades. Do **not** apply any held
+  update in this PR. Run it only against an **installed** tree: if the held-back status is **unavailable**, the held set
+  is unknown (not empty) — reinstall and re-run rather than pasting a "nothing held back" note.
 
 ## Stop conditions (hand back to a human)
 

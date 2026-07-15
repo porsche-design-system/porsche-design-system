@@ -29,11 +29,12 @@ upgrades are done by hand — see [Minor/patch-only families](#minorpatch-only-f
 latest version, including majors. Only Angular's framework **migrations** are applied separately — see
 [Updating Angular (versions vs. migrations)](#updating-angular-versions-vs-migrations).
 
-After updating, run `npm run deps:major-hint` to list the major upgrades that were held back (families capped to
-minor/patch, permanently held-back deps, and `typescript` under Angular's ceiling) so you can schedule them as
-deliberate manual upgrades. Run it against an **installed** tree: the hint reads `npm outdated` and reports
+After updating, run `npm run deps:held-back` to list every upgrade that was held back — family majors capped to
+minor/patch, permanently held-back deps, and any other available update the automated flow did not apply — so you can
+schedule them as deliberate manual upgrades. Run it against an **installed** tree: it reads `npm outdated` and reports
 `COMPLETE`, `INCOMPLETE`, or `UNAVAILABLE`. An `UNAVAILABLE` result (tree not installed or registry unreachable)
-means the held set is **unknown** — it is never a claim that nothing was held back.
+means the held set is **unknown** — it is never a claim that nothing was held back. `npm run deps:pr-tables` renders
+that dataset (plus the applied bumps) into the two Markdown tables posted on the dependency-bump PR.
 
 ### Syncpack helper scripts
 
@@ -51,7 +52,8 @@ convention). The following root scripts help keep dependency versions consistent
 | `npm run npm:format:fix` | Apply `package.json` formatting.                                                |
 | `npm run npm:outdated`   | Check the npm registry for newer versions (excludes held-back deps, see below). |
 | `npm run npm:update`     | Interactively pick updates to apply (excludes held-back deps, see below).       |
-| `npm run deps:major-hint` | List the major upgrades held back by policy (families, held-back deps, TS ceiling). |
+| `npm run deps:held-back` | List every available upgrade held back (family majors, held-back deps, other updates not applied). |
+| `npm run deps:pr-tables`  | Render the applied bumps + held-back updates into the two Markdown tables for the PR comment. |
 
 The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
 from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
@@ -266,8 +268,8 @@ Notes:
   automatically. `@types/react` is an **exact** name, not `@types/react*`, so the type packages are listed explicitly.
 - Unlike the permanent holds, these families are **not** added to the `.github/dependabot.yml` `ignore` list, so
   security PRs (including a security-driven major) still surface for deliberate review.
-- Available majors held back by this cap are surfaced by `npm run deps:major-hint` and injected into the automated PR
-  body.
+- Available majors held back by this cap are surfaced by `npm run deps:held-back` and rendered into the held-back
+  table on the automated PR.
 
 ### How to update them
 

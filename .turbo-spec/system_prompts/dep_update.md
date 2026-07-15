@@ -10,7 +10,7 @@ The single source of truth is `.syncpackrc.json` `updateGroups`:
 - **Minor/patch-only families** (`@angular/**`, `ng-packagr`, `zone.js`, `ag-grid-*`, React core, `@react-router/**`, Vue, `@vitejs/plugin-vue`, `tailwindcss`, `@tailwindcss/**`, `sass`, `@emotion/**`, `@vanilla-extract/**`): capped to minor/patch by `target: "minor"`; majors are upgraded by hand.
 - **Everything else**: updated to latest, INCLUDING majors — these are expected; resolve conflicts and let the verify gate prove them.
 
-`typescript` is not a family but is held under Angular's `@angular/compiler-cli` peer ceiling by `scripts/update-dependencies.ts`. Held majors (families, permanent holds, the TS ceiling) are surfaced informationally in the PR body via `npm run deps:major-hint`; they need no action from you.
+`typescript` is not a family but is held under Angular's `@angular/compiler-cli` peer ceiling by `scripts/update-dependencies.ts`. Every available upgrade the flow did not apply (families, permanent holds, other majors) is surfaced informationally via `npm run deps:held-back` and rendered into the PR's held-back table; it needs no action from you.
 
 ## Hard rules (never violate)
 

@@ -132,17 +132,27 @@ stages:
           environment_verdict: escalate
           success_reason: "Terminal verdict written"
           steps:
-            - name: major-hint
-              # Best-effort: surface majors held back by policy (families capped
-              # to minor/patch, permanent holds, TS ceiling). The hint is
-              # policy-aware and tri-state: it reads the held set from
-              # .syncpackrc.json and reports COMPLETE / INCOMPLETE / UNAVAILABLE.
-              # It needs an INSTALLED tree for npm outdated's `current`; if the
-              # tree is absent it emits UNAVAILABLE (never a false "nothing
-              # held"). Runs against the shared post-bump worktree from `update`.
-              command: ["sh", "-c", "npm run --silent deps:major-hint || true"]
+            - name: held-back
+              # Best-effort: surface updates the automated flow did NOT apply
+              # (family majors under the minor cap, permanently held packages,
+              # and any "other" available update). held-back.ts is data-only and
+              # tri-state: it runs `npm outdated` on the shared post-bump worktree
+              # and reports COMPLETE / INCOMPLETE / UNAVAILABLE. It needs an
+              # INSTALLED tree for npm outdated's `current`; if the tree is absent
+              # it emits UNAVAILABLE (never a false "nothing held").
+              command: ["sh", "-c", "npm run --silent deps:held-back || true"]
             - name: build-report
               command: ["node", "--import", "tsx", "scripts/dep-bump/report.ts"]
+            - name: pr-tables
+              # Best-effort: render the updated + held-back datasets into two
+              # Markdown tables and upsert them as a single PR comment. Both are
+              # no-ops outside a PR context, so non-PR runs stay green.
+              command:
+                [
+                  "sh",
+                  "-c",
+                  "npm run --silent deps:pr-tables && bash scripts/dep-bump/post-pr-tables.sh || true",
+                ]
       - evaluator: outcome_contract
         on_fail: escalate
         max_retries: 1
