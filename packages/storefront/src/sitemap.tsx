@@ -537,6 +537,11 @@ export const sitemap: Routes = {
         path: '/patterns/footer',
         type: 'PAGE',
       },
+      popover: {
+        name: 'Popover',
+        path: '/patterns/popover',
+        type: 'PAGE',
+      },
       forms: {
         name: 'Forms',
         path: '/patterns/forms',

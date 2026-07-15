@@ -7753,7 +7753,7 @@ exports[`should match snapshot 1`] = `
         "description": "Horizontal padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration \`--p-popover-px: var(--p-spacing-static-md)\`, the Tailwind CSS arbitrary property \`[--p-popover-px:var(--spacing-static-md)]\` or the equivalent SCSS/JS token.",
       },
       "--p-popover-py": {
-        "defaultValue": "12px",
+        "defaultValue": "16px",
         "description": "Vertical padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration \`--p-popover-py: var(--p-spacing-static-sm)\`, the Tailwind CSS arbitrary property \`[--p-popover-py:var(--spacing-static-sm)]\` or the equivalent SCSS/JS token.",
       },
       "--p-popover-radius": {
