@@ -1,10 +1,18 @@
 name: dep-bump
 version: "1.0"
 description: >-
-  Minimal TurboSpec onboarding blueprint. Runs a single deterministic quality
-  gate (`npm install`) and then a report stage that lists outdated third-party
-  npm dependencies and posts them as a Markdown table in a PR comment. No
-  agentic stages — everything here is agentless and reproducible.
+  Minimal TurboSpec onboarding blueprint. `npm install` runs once as the global
+  setup command (environment preparation, not a quality gate). A first stage then
+  collects the outdated third-party npm dependencies into a schema-validated
+  structured artifact, and a second stage renders that artifact as a Markdown
+  table inside a report comment on the PR. Everything is agentless and
+  deterministic — there are no agentic stages.
+
+# `npm install` prepares the tree once before any stage runs. It is deliberately
+# NOT a stage: there is no acceptance gate here, only environment setup. A
+# non-zero exit aborts the pipeline before the first stage.
+setup_command: "npm install"
+setup_command_timeout: "20m"
 
 # Empty list = the default gh-aw + Porsche ecosystem domain allow-list (npm
 # registries included) applies. Add EXTRA literal hosts here only if the
@@ -13,29 +21,40 @@ network:
   allowed: []
 
 stages:
-  # S1 Install — agentless. The single quality gate: a clean `npm install` must
-  # succeed. Any failure escalates (there is no agent to fix it).
-  - name: install
+  # S1 check_outdated_dependencies — agentless. Collect the outdated packages and
+  # their available versions into .turbo-spec/out/outdated.json. The script gate
+  # is intentionally lenient (it just runs the collector); the outcome_contract
+  # against outdated.schema.json is the meaningful check on the structured output.
+  - name: check_outdated_dependencies
     orchestrator: testing
+    outputs:
+      outdated: .turbo-spec/out/outdated.json
     quality_gates:
       - evaluator: script_gate
         on_fail: escalate
         max_retries: 1
         config:
-          gate_name: install
+          gate_name: collect-outdated
           failure_verdict: escalate
           environment_verdict: escalate
-          success_reason: "npm install completed successfully"
+          success_reason: "Outdated dependencies collected into a structured artifact"
           steps:
-            - name: install
-              command: ["npm", "install"]
+            - name: collect
+              command: ["bash", ".turbo-spec/scripts/collect-outdated.sh"]
+      - evaluator: outcome_contract
+        on_fail: escalate
+        max_retries: 1
+        config:
+          outcome_path: .turbo-spec/out/outdated.json
+          schema: .turbo-spec/schemas/outdated.schema.json
 
-  # S2 Report — agentless. Deterministic: list outdated dependencies and upsert
-  # them as a single Markdown table in a PR comment. The script is best-effort
-  # and always exits 0, so the report never fails the run.
+  # S2 report — agentless. Render the structured artifact as a Markdown table
+  # inside a report comment and upsert it on the PR. Rendering is strict (a
+  # missing/invalid artifact fails); publishing is best-effort inside the script
+  # (no PR context or a transient gh error never fails the run).
   - name: report
     orchestrator: testing
-    depends_on: [install]
+    depends_on: [check_outdated_dependencies]
     quality_gates:
       - evaluator: script_gate
         on_fail: escalate
@@ -44,10 +63,10 @@ stages:
           gate_name: report
           failure_verdict: escalate
           environment_verdict: escalate
-          success_reason: "Outdated-dependency table posted to the PR"
+          success_reason: "Outdated-dependency report rendered and published to the PR"
           steps:
-            - name: outdated-report
-              command: ["bash", ".turbo-spec/scripts/outdated-report.sh"]
+            - name: report-comment
+              command: ["bash", ".turbo-spec/scripts/report-comment.sh"]
 
 model_provider:
   primary: copilot
