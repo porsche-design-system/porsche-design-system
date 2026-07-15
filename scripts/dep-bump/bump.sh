@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # S2 Bump. Run the repository's held-back-aware update, then classify the diff.
-# Writes .turbo-spec/out/bump.json. Exit 0 unless the update command itself failed.
+# Writes .turbo-spec/out/bump.json. Exit 0 only when the classification was
+# produced; a failed update OR a failed classify escalates (the agent depends on
+# bump.json, so a swallowed classify failure must not read as success).
 set -uo pipefail
 
 # Reconcile this platform's native binaries before any tsx/syncpack call. The host
@@ -16,5 +18,8 @@ if ! npm run npm:update:non-interactive; then
   exit 2
 fi
 
-node --import tsx scripts/dep-bump/classify-bump.ts
+if ! node --import tsx scripts/dep-bump/classify-bump.ts; then
+  echo "[bump] classification failed; bump.json was not written" >&2
+  exit 2
+fi
 echo "[bump] classification written to .turbo-spec/out/bump.json"
