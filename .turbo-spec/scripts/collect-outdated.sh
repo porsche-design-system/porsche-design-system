@@ -14,8 +14,9 @@
 #     an empty `outdated: []` list and succeed.
 #   - Outdated packages      → npm outdated exits 1 with a JSON object → we emit
 #     the parsed list and succeed.
-#   - A real npm error       → stdout is not parseable JSON → we FAIL (non-zero)
-#     rather than pretend everything is up to date.
+#   - A real npm error       → a non-zero exit that is not the outdated case
+#     (exit >1, or exit 1 with no stdout), or a payload that is not the expected
+#     JSON map → we FAIL (non-zero) rather than pretend everything is up to date.
 set -uo pipefail
 
 out_dir=".turbo-spec/out"
@@ -24,10 +25,24 @@ json_file="${out_dir}/outdated.json"
 mkdir -p "${out_dir}"
 
 # Capture stdout regardless of npm's exit code (1 is normal when outdated).
-npm outdated --json --long >"${raw_file}" 2>"${out_dir}/outdated.err" || true
+npm outdated --json --long >"${raw_file}" 2>"${out_dir}/outdated.err"
+npm_status=$?
 
-# npm prints nothing when the tree is fully up to date — normalize to an empty
-# JSON object so the transform below has valid input.
+# Interpret npm's exit status so a real failure never masquerades as up-to-date:
+#   0                     → fully up to date; stdout is normally empty.
+#   1 with JSON stdout    → outdated packages exist; the expected success path.
+#   1 with empty stdout   → a real npm error whose message went to stderr; FAIL.
+#   >1                    → a real npm error (registry/network/auth/…); FAIL.
+# On failure we surface the captured stderr rather than authoring a false empty
+# list.
+if [ "${npm_status}" -gt 1 ] || { [ "${npm_status}" -eq 1 ] && [ ! -s "${raw_file}" ]; }; then
+  echo "collect-outdated: npm outdated failed (exit ${npm_status}). stderr:" >&2
+  cat "${out_dir}/outdated.err" >&2 || true
+  exit 1
+fi
+
+# A clean exit 0 with no stdout means the tree is fully up to date — normalize to
+# an empty JSON object so the transform below has valid input.
 if [ ! -s "${raw_file}" ]; then
   echo '{}' >"${raw_file}"
 fi
@@ -49,6 +64,10 @@ node -e '
   }
   if (data === null || typeof data !== "object" || Array.isArray(data)) {
     console.error("collect-outdated: unexpected npm outdated payload (not an object).");
+    process.exit(1);
+  }
+  if (Object.prototype.hasOwnProperty.call(data, "error")) {
+    console.error("collect-outdated: npm outdated returned an error payload:", JSON.stringify(data.error));
     process.exit(1);
   }
 
