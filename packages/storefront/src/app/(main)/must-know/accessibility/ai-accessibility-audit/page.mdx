@@ -1,6 +1,5 @@
 import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { PLink } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
   title: 'Accessibility: Web Accessibility Audit - Porsche Design System',
@@ -45,15 +44,15 @@ Gemini, or MCP packages.
 Run from your product repository root:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh |
-  bash -s -- --with-config
+curl -fsSLO https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh
+bash install-web-audit.sh --with-config
 ```
 
 To target a different repository:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh |
-  bash -s -- --target /path/to/web-product --with-config
+curl -fsSLO https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh
+bash install-web-audit.sh --target /path/to/web-product --with-config
 ```
 
 ### Install from a local checkout
@@ -144,15 +143,15 @@ These names are separate from the full installer's files, so both installers can
 **Preview an update:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh |
-  bash -s -- --target /path/to/web-product --dry-run --force
+curl -fsSLO https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh
+bash install-web-audit.sh --target /path/to/web-product --dry-run --force
 ```
 
 **Apply an update:**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh |
-  bash -s -- --target /path/to/web-product --force
+curl -fsSLO https://raw.githubusercontent.com/porsche-design-system/accessibility-agents/main/install-web-audit.sh
+bash install-web-audit.sh --target /path/to/web-product --force
 ```
 
 `--force` replaces allowlisted agent resources. Review or preserve local customizations first.
