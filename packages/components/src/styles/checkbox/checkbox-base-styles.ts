@@ -1,5 +1,12 @@
 import type { JssStyle } from 'jss';
-import { fontPorscheNext, leadingNormal, radiusLg, radiusMd, ref, typescaleSm } from '@porsche-design-system/stylesheets';
+import {
+  fontPorscheNext,
+  leadingNormal,
+  radiusLg,
+  radiusMd,
+  ref,
+  typescaleSm,
+} from '@porsche-design-system/stylesheets';
 import { isDisabledOrLoading } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getTransition } from '../common-styles';

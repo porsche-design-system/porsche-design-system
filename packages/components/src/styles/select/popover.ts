@@ -1,6 +1,13 @@
 import type { JssStyle, Styles } from 'jss';
 import { OPTION_LIST_SAFE_ZONE } from '../../utils';
-import { colorCanvas, colorContrastLow, durationSm, easeInOut, radiusXl, ref } from '@porsche-design-system/stylesheets';
+import {
+  colorCanvas,
+  colorContrastLow,
+  durationSm,
+  easeInOut,
+  radiusXl,
+  ref,
+} from '@porsche-design-system/stylesheets';
 import { cssVariableAnimationDuration } from '../common-styles';
 
 const keyframesName = 'fade-in';

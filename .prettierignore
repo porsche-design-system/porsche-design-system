@@ -1,0 +1,6 @@
+*
+!*/
+!packages/components/src/**/*-styles.ts
+!packages/components/src/styles/**/*.ts
+!**/*.md
+!**/*.mdx

@@ -15,10 +15,7 @@ it.each(tagNamesWithSlottedPictureImageArray)(
   'should apply constructable stylesheet with slotted picture/image styles in connected callback for component %s',
   (tagName) => {
     const component = componentFactory(tagName);
-    const getSlottedPictureImageStylesSpy = vi.spyOn(
-      getSlottedPictureImageStylesUtils,
-      'getSlottedPictureImageStyles'
-    );
+    const getSlottedPictureImageStylesSpy = vi.spyOn(getSlottedPictureImageStylesUtils, 'getSlottedPictureImageStyles');
     const applyConstructableStylesheetStylesSpy = vi.spyOn(
       applyConstructableStylesheetStylesUtils,
       'applyConstructableStylesheetStyles'

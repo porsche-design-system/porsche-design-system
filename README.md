@@ -65,15 +65,33 @@ npm run build
 
 The following instructions assume that [WebStorm](https://www.jetbrains.com/webstorm) is used as the IDE.
 
+#### Formatting ownership
+
+Two formatters split the repository — the split is enforced by checked-in config, not IDE settings:
+
+| Files                                                                               | Formatter    | Why                                                                                                                                    |
+| ----------------------------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `packages/components/src/**/*-styles.ts` + `packages/components/src/styles/**/*.ts` | **Prettier** | Prettier formats the CSS inside `` css` ` `` tagged template literals (Biome cannot yet for templates containing `${}` interpolations) |
+| Markdown/MDX                                                                        | **Prettier** | long-standing scope                                                                                                                    |
+| everything else                                                                     | **Biome**    | repo standard                                                                                                                          |
+
+Key files: `prettier.config.js` (options, mirrors `biome.json`), `.prettierignore` (allowlist — its `!*/` line is
+required, the negations below it cannot match without it), `biome.json` (disables Biome's _formatter_ for the styles
+files while keeping its _linter_ active there), `.editorconfig` (disables WebStorm's native `Reformat Code` for the
+styles files via `ij_formatter_enabled = false` — template-literal whitespace is part of the generated CSS and native
+reformatting breaks the style snapshots).
+
 #### Prettier (Formatter)
 
 1. Go to WebStorm `Preferences`
 2. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
-3. Activate `Automatic Prettier configuration`
-4. Change `Run for files` to `{**/*,*}.{md,mdx}`
+3. Activate `Manual Prettier configuration`
+4. Change `Run for files` to
+   `{packages/components/src/**/*-styles.ts,packages/components/src/styles/**/*.ts,**/*.md,**/*.mdx}`
 5. Click checkbox `Run on save` and apply
+6. Click checkbox `Run on Reformat Code` and apply
 
-**Note:** If you have to exclude code fom being prettified, see
+**Note:** the `.prettierignore` allowlist makes Prettier a no-op outside these files even with a wider glob, see
 [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
 
 #### Biome (Formatter + Linter)
@@ -87,8 +105,8 @@ The following instructions assume that [WebStorm](https://www.jetbrains.com/webs
    `.astro,.css,.gql,.graphql,.js,.mjs,.cjs,.jsx,.json,.jsonc,.svelte,.html,.ts,.mts,.cts,.tsx,.vue`
 7. Click checkbox `Run format on save`, `Run safe fixes on save`, `Sort import on save` and apply
 
-**Note:** If you have to exclude code fom being formatted or linted, see
-[Biome configuration](https://biomejs.dev/linter/#ignore-code)
+**Note:** Biome does not format the Prettier-owned styles files (`biome.json` override) but still lints them. If you
+have to exclude code from being formatted or linted, see [Biome configuration](https://biomejs.dev/linter/#ignore-code)
 
 ---
 
