@@ -17,6 +17,8 @@ root `override` is a last resort, not a default.
 
 ## The one non-obvious trap (read first)
 
+> In the dep-bump workflow this skill is activated only on a **persistent** ERESOLVE: `scripts/dep-bump/install-check.sh` has already retried a clean `npm run npm:reinstall`. Do not treat "try a clean reinstall" as an untried remedy here.
+
 The wrapper `package.json` that npm actually consumes is **generated**, not the one you edit. For each framework
 wrapper:
 
