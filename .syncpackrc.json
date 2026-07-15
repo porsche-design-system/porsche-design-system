@@ -73,6 +73,7 @@
         "@vitejs/plugin-vue",
         "tailwindcss",
         "@tailwindcss/**",
+        "typescript",
         "sass",
         "@emotion/**",
         "@vanilla-extract/**"
