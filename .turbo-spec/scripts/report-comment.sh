@@ -34,7 +34,11 @@ MARKER="${marker}" node -e '
   const fs = require("fs");
   const marker = process.env.MARKER;
   const data = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
-  const rows = Array.isArray(data.outdated) ? data.outdated : [];
+  if (data.schemaVersion !== 1 || !Array.isArray(data.outdated)) {
+    console.error("report-comment: invalid artifact — expected schemaVersion 1 and an outdated array.");
+    process.exit(1);
+  }
+  const rows = data.outdated;
 
   const lines = [marker, "## 📦 Dependency update report", ""];
   if (rows.length === 0) {
@@ -75,10 +79,10 @@ if [ -z "${repo}" ]; then
   exit 0
 fi
 
-# Find a prior comment carrying our marker so we edit it in place.
+# Find the most recent comment carrying our marker so we edit it in place.
 existing_id="$(
   gh api --paginate "repos/${repo}/issues/${pr}/comments" \
-    --jq ".[] | select(.body | contains(\"${marker}\")) | .id" 2>/dev/null | head -n1
+    --jq ".[] | select(.body | contains(\"${marker}\")) | .id" 2>/dev/null | tail -n1
 )" || existing_id=""
 
 if [ -n "${existing_id}" ]; then
