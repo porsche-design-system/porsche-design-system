@@ -42,10 +42,12 @@ stages:
     quality_gates:
       - evaluator: outcome_contract
         on_fail: escalate
-        # A schema mismatch is a deterministic defect; retrying would only
-        # re-run the pre_command and RE-COLLECT a fresh npm snapshot rather than
-        # re-validate the same one, so there is nothing to gain from a retry.
-        max_retries: 0
+        # Schema minimum is 1 (total attempts = 1 + max_retries). Because collect
+        # is this gate's pre_command, a validation retry re-collects a fresh npm
+        # snapshot before re-validating. That is fine: collect is idempotent, a
+        # transient npm glitch gets a second chance, and a genuine transform
+        # defect fails again and escalates.
+        max_retries: 1
         # Produce the artifact the evaluator is about to inspect.
         pre_command: "bash .turbo-spec/scripts/collect-outdated.sh"
         hook_timeout: "10m"
