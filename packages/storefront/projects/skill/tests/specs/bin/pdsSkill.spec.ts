@@ -31,14 +31,10 @@ const createFixture = ({
   withPackage = true,
   withSkill = true,
   packageName = DEFAULT_PACKAGE_NAME,
-  skillName = DEFAULT_SKILL_NAME,
-  skillContent,
 }: {
   withPackage?: boolean;
   withSkill?: boolean;
   packageName?: string;
-  skillName?: string;
-  skillContent?: string;
 } = {}): Fixture => {
   const root = fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-'));
   fixtures.push(root);
@@ -70,7 +66,7 @@ const createFixture = ({
       fs.mkdirSync(skillDir, { recursive: true });
       fs.writeFileSync(
         path.join(skillDir, 'SKILL.md'),
-        skillContent ?? `---\nname: ${skillName}\ndescription: test skill\n---\n\n# marker\n`
+        `---\nname: ${packageName.slice(1).replace('/', '-')}\ndescription: test skill\n---\n\n# marker\n`
       );
     }
   }
@@ -78,10 +74,10 @@ const createFixture = ({
   return {
     projectDir,
     skillDir,
-    linkName: skillName,
-    linkPath: path.join(projectDir, DEST, skillName),
+    linkName: packageName.slice(1).replace('/', '-'),
+    linkPath: path.join(projectDir, DEST, packageName.slice(1).replace('/', '-')),
     run: ({
-      args = [packageName, DEST],
+      args = ['--package', packageName, '--location', DEST],
       cwd = projectDir,
       pnp = false,
     }: {
@@ -93,6 +89,7 @@ const createFixture = ({
         ? [
             '-e',
             `process.versions.pnp = '1'; process.argv.splice(1, 0, ${JSON.stringify(binPath)}); require(${JSON.stringify(binPath)});`,
+            '--',
             ...args,
           ]
         : [binPath, ...args];
@@ -121,7 +118,7 @@ describe('pds-skill bin', () => {
   it('should select the requested wrapper independently of which package supplied the shared bin', () => {
     const packageName = PACKAGE_NAMES.vue;
     const skillName = 'porsche-design-system-components-vue';
-    const { run, projectDir, skillDir } = createFixture({ packageName, skillName });
+    const { run, projectDir, skillDir } = createFixture({ packageName });
 
     run();
 
@@ -181,27 +178,18 @@ describe('pds-skill bin', () => {
   it('should reject unsupported packages', () => {
     const { run } = createFixture();
 
-    expect(() => run({ args: ['unrelated-package', DEST] })).toThrow(/Unsupported package/);
+    expect(() => run({ args: ['--package', 'unrelated-package', '--location', DEST] })).toThrow(
+      /Unsupported package/
+    );
   });
 
-  it('should reject a skill name that is not lowercase kebab-case', () => {
-    const { run, projectDir } = createFixture({ skillName: '../outside' });
-
-    expect(() => run()).toThrow(/expected lowercase kebab-case/);
-    expect(fs.existsSync(path.join(projectDir, 'outside'))).toBe(false);
-  });
-
-  it('should fail clearly when SKILL.md has no name frontmatter', () => {
-    const { run } = createFixture({ skillContent: '# Missing frontmatter\n' });
-
-    expect(() => run()).toThrow(/no `name` field/);
-  });
-
-  it('should require both package and destination arguments', () => {
+  it('should require both package and location options', () => {
     const { run, projectDir } = createFixture();
 
-    expect(() => run({ args: [] })).toThrow(/Missing required arguments: package and dir/);
-    expect(() => run({ args: [DEFAULT_PACKAGE_NAME] })).toThrow(/Missing required argument: dir/);
+    expect(() => run({ args: [] })).toThrow(/Missing required options: --package and --location/);
+    expect(() => run({ args: ['--package', DEFAULT_PACKAGE_NAME] })).toThrow(
+      /Missing required option: --location/
+    );
     expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
   });
 
@@ -226,7 +214,7 @@ describe('pds-skill bin', () => {
   it('should link into a custom destination directory', () => {
     const { run, projectDir, linkName, skillDir } = createFixture();
 
-    run({ args: [DEFAULT_PACKAGE_NAME, '.agents'] });
+    run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', '.agents'] });
 
     const linkPath = path.join(projectDir, '.agents', linkName);
     expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
@@ -237,28 +225,17 @@ describe('pds-skill bin', () => {
     const { run, projectDir, linkName, skillDir } = createFixture();
     const absoluteDest = path.join(projectDir, 'absolute-skills');
 
-    run({ args: [DEFAULT_PACKAGE_NAME, absoluteDest] });
+    run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', absoluteDest] });
 
     expect(fs.realpathSync(path.join(absoluteDest, linkName))).toBe(fs.realpathSync(skillDir as string));
   });
 
-  it('should resolve a relative destination against the project root with --root', () => {
+  it('should support short package and location options', () => {
     const { run, projectDir, linkName, skillDir } = createFixture();
-    fs.mkdirSync(path.join(projectDir, '.git'));
-    const nested = path.join(projectDir, 'packages', 'app');
-    fs.mkdirSync(nested, { recursive: true });
 
-    run({ args: [DEFAULT_PACKAGE_NAME, DEST, '--root'], cwd: nested });
+    run({ args: ['-p', DEFAULT_PACKAGE_NAME, '-l', '.agents'] });
 
-    expect(fs.realpathSync(path.join(projectDir, DEST, linkName))).toBe(fs.realpathSync(skillDir as string));
-    expect(fs.existsSync(path.join(nested, '.claude'))).toBe(false);
-  });
-
-  it('should fail when --root finds no project root', () => {
-    const { run, projectDir } = createFixture();
-
-    expect(() => run({ args: [DEFAULT_PACKAGE_NAME, DEST, '--root'] })).toThrow(/no project root found/);
-    expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+    expect(fs.realpathSync(path.join(projectDir, '.agents', linkName))).toBe(fs.realpathSync(skillDir as string));
   });
 
   it("should reject Yarn Plug'n'Play with actionable guidance", () => {
@@ -267,16 +244,20 @@ describe('pds-skill bin', () => {
     expect(() => run({ pnp: true })).toThrow(/Yarn Plug'n'Play is not supported.*nodeLinker: node-modules/);
   });
 
-  it('should reject unknown options and too many positional arguments', () => {
+  it('should reject unknown options and positional arguments', () => {
     const { run } = createFixture();
 
-    expect(() => run({ args: [DEFAULT_PACKAGE_NAME, DEST, '--nope'] })).toThrow(/Unknown option/);
-    expect(() => run({ args: [DEFAULT_PACKAGE_NAME, DEST, 'extra'] })).toThrow(/Too many arguments/);
+    expect(() =>
+      run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', DEST, '--nope'] })
+    ).toThrow(/Unknown option/);
+    expect(() =>
+      run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', DEST, 'extra'] })
+    ).toThrow(/Unexpected argument/);
   });
 
   it('should print help without resolving a package', () => {
     const { run } = createFixture({ withPackage: false });
 
-    expect(run({ args: ['--help'] })).toContain('Usage: pds-skill <package> <dir> [--root]');
+    expect(run({ args: ['--help'] })).toContain('Usage: pds-skill --package <package> --location <dir>');
   });
 });

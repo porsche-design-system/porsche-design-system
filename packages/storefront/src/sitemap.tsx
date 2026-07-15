@@ -409,9 +409,9 @@ export const sitemap: Routes = {
         path: '/developing/components-ready',
         type: 'PAGE',
       },
-      'claude-code-skill': {
-        name: 'Claude Code Skill',
-        path: '/developing/claude-code-skill',
+      'agent-skill': {
+        name: 'Agent Skill',
+        path: '/agent-skill',
         type: 'PAGE',
       },
     },

@@ -1,26 +1,20 @@
 #!/usr/bin/env node
 
-// Links a locally installed Porsche Design System wrapper skill into the consumer project. The
-// wrapper package is an explicit argument and is resolved from the cwd, so the correct skill is
-// selected even when multiple wrappers expose this same bin or a package runner executes a cached
-// copy of it.
+// Links a locally installed Porsche Design System wrapper skill into the consumer project. Every
+// wrapper exposes this same bin through the local node_modules/.bin directory; --package selects
+// which installed wrapper supplies the skill, independently of which wrapper supplies the bin.
 //
-// The destination parent dir for the link is a required argument (e.g. `.claude/skills`, `.agents`,
-// `.github/skills`). With `--root`, a relative destination resolves against the project root
-// (nearest `.git` ancestor) instead of the cwd — useful in a monorepo where the command runs in a
-// subpackage.
+// --location is the destination parent directory for the link (e.g. `.claude/skills`, `.agents`,
+// `.github/skills`). Relative locations resolve from the cwd.
 //
-//   pds-skill <package> <dir> [--root]
-//     package    locally installed @porsche-design-system/components-{js|angular|react|vue}
-//     dir        destination parent directory for the skill link
-//     --root     resolve a relative dir against the project root (nearest .git) instead of the cwd
-//     -h,--help  print this usage
+//   pds-skill --package <package> --location <dir>
 //
 // This is the canonical source copied into all four wrapper package distributions by their
 // `build:subPackages:skill:bin` steps.
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { parseArgs } = require('node:util');
 
 const SUPPORTED_PACKAGES = [
   '@porsche-design-system/components-js',
@@ -29,43 +23,41 @@ const SUPPORTED_PACKAGES = [
   '@porsche-design-system/components-vue',
 ];
 const USAGE = [
-  'Usage: pds-skill <package> <dir> [--root]',
+  'Usage: pds-skill --package <package> --location <dir>',
+  '',
+  'Required options:',
+  '  -p, --package <package>  locally installed Porsche Design System wrapper',
+  '  -l, --location <dir>     destination parent directory for the skill link',
+  '',
+  'Options:',
+  '  -h, --help               print this usage',
   '',
   `Supported packages: ${SUPPORTED_PACKAGES.join(', ')}`,
-  'Both package and destination dir are required.',
-  '--root resolves a relative dir against the nearest .git.',
 ].join('\n');
-const SKILL_NAME_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 const fail = (message) => {
   console.error(message);
   process.exit(1);
 };
 
-const linkNameFromSkill = (skillDir) => {
-  const skillMdPath = path.join(skillDir, 'SKILL.md');
-  let content;
+const parseOptions = (args) => {
   try {
-    content = fs.readFileSync(skillMdPath, 'utf8');
+    return parseArgs({
+      args,
+      options: {
+        package: { type: 'string', short: 'p' },
+        location: { type: 'string', short: 'l' },
+        help: { type: 'boolean', short: 'h' },
+      },
+      strict: true,
+      allowPositionals: false,
+    }).values;
   } catch (error) {
-    if (error.code === 'ENOENT') {
-      fail(`The installed package does not ship a skill at ${skillMdPath}. Upgrade the package and re-run.`);
-    }
-    throw error;
+    fail(`${error.message}\n${USAGE}`);
   }
-
-  const frontmatter = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  const name = frontmatter?.[1].match(/^name:[ \t]*(.+?)[ \t]*$/m);
-  if (!name) {
-    fail(`Cannot read the skill name: no \`name\` field in the frontmatter of ${skillMdPath}.`);
-  }
-
-  const linkName = name[1];
-  if (!SKILL_NAME_PATTERN.test(linkName)) {
-    fail(`Cannot use the skill name "${linkName}" from ${skillMdPath}: expected lowercase kebab-case.`);
-  }
-  return linkName;
 };
+
+const linkNameFromPackage = (packageName) => packageName.slice(1).replace('/', '-');
 
 const skillDirFromPackage = (packageName, cwd) => {
   if (!SUPPORTED_PACKAGES.includes(packageName)) {
@@ -81,7 +73,17 @@ const skillDirFromPackage = (packageName, cwd) => {
       if (pkg.name !== packageName) {
         fail(`Expected ${packageName} at ${packageDir}, but found ${pkg.name || 'a package without a name'}.`);
       }
-      return path.join(packageDir, 'skill');
+      const skillDir = path.join(packageDir, 'skill');
+      const skillMdPath = path.join(skillDir, 'SKILL.md');
+      try {
+        fs.accessSync(skillMdPath, fs.constants.R_OK);
+      } catch (error) {
+        if (error.code === 'ENOENT' || error.code === 'ENOTDIR') {
+          fail(`The installed package does not ship a skill at ${skillMdPath}. Upgrade the package and re-run.`);
+        }
+        throw error;
+      }
+      return skillDir;
     } catch (error) {
       if (error.code !== 'ENOENT' && error.code !== 'ENOTDIR') {
         throw error;
@@ -96,41 +98,20 @@ const skillDirFromPackage = (packageName, cwd) => {
   }
 };
 
-// Walk up from `start` to the nearest ancestor containing a `.git` entry (a dir for a normal repo,
-// a file for a worktree/submodule). Returns null when none is found before the filesystem root.
-const findProjectRoot = (start) => {
-  let dir = start;
-  for (;;) {
-    if (fs.existsSync(path.join(dir, '.git'))) {
-      return dir;
-    }
-    const parent = path.dirname(dir);
-    if (parent === dir) {
-      return null;
-    }
-    dir = parent;
-  }
-};
-
 const main = () => {
-  const args = process.argv.slice(2);
-  if (args.includes('-h') || args.includes('--help')) {
+  const options = parseOptions(process.argv.slice(2));
+  if (options.help) {
     console.log(USAGE);
     return;
   }
-  const useRoot = args.includes('--root');
-  const unknownFlags = args.filter((arg) => arg.startsWith('-') && arg !== '--root');
-  const positionals = args.filter((arg) => !arg.startsWith('-'));
-  if (unknownFlags.length > 0 || positionals.length !== 2) {
-    const problem =
-      unknownFlags.length > 0
-        ? `Unknown option: ${unknownFlags[0]}`
-        : positionals.length === 0
-          ? 'Missing required arguments: package and dir'
-          : positionals.length === 1
-            ? 'Missing required argument: dir'
-            : 'Too many arguments';
-    fail(`${problem}\n${USAGE}`);
+  const missingOptions = [
+    !options.package && '--package',
+    !options.location && '--location',
+  ].filter(Boolean);
+  if (missingOptions.length > 0) {
+    fail(
+      `Missing required option${missingOptions.length > 1 ? 's' : ''}: ${missingOptions.join(' and ')}\n${USAGE}`
+    );
   }
 
   if (process.versions.pnp) {
@@ -140,25 +121,15 @@ const main = () => {
   }
 
   const cwd = process.cwd();
-  const packageName = positionals[0];
-  const destArg = positionals[1];
+  const packageName = options.package;
+  const destArg = options.location;
   const skillDir = skillDirFromPackage(packageName, cwd);
-  const linkName = linkNameFromSkill(skillDir);
+  const linkName = linkNameFromPackage(packageName);
 
-  let base = cwd;
-  if (useRoot && !path.isAbsolute(destArg)) {
-    const root = findProjectRoot(cwd);
-    if (!root) {
-      fail('--root: no project root found (no `.git` in this directory or any parent).');
-    }
-    base = root;
-  }
-
-  const skillsDir = path.isAbsolute(destArg) ? destArg : path.resolve(base, destArg);
+  const skillsDir = path.isAbsolute(destArg) ? destArg : path.resolve(cwd, destArg);
   const linkPath = path.join(skillsDir, linkName);
 
-  // Prefer a cwd-relative path in messages; fall back to the absolute path when the link lives
-  // outside the cwd (e.g. resolved against the project root from a subpackage).
+  // Prefer a cwd-relative path in messages; use the absolute path when the link lives outside it.
   const show = (target) => {
     const rel = path.relative(cwd, target);
     return rel && !rel.startsWith('..') && !path.isAbsolute(rel) ? rel : target;
@@ -217,7 +188,6 @@ const main = () => {
   }
 
   console.log(`Linked Porsche Design System skill: ${show(linkPath)} -> ${skillDir}`);
-  console.log('Re-run this command after upgrading the package to refresh the link.');
 };
 
 main();

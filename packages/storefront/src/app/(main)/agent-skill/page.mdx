@@ -1,0 +1,193 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Agent Skill - Porsche Design System',
+  description:
+    'Install the version-matched Porsche Design System Agent Skill for Claude Code, GitHub Copilot, Codex and compatible AI coding tools.',
+};
+
+# Porsche Design System Agent Skill
+
+<TableOfContents
+  headings={['What the Skill Does', 'How We Provide the Skill', 'Installation', 'How to Use the Skill']}
+/>
+
+## What the Skill Does
+
+The Porsche Design System (PDS) Agent Skill gives AI coding tools version-exact knowledge of the PDS package installed
+in your project. It follows the open [Agent Skills standard](https://agentskills.io), so the same skill can be used by
+compatible integrations such as [Claude Code](https://code.claude.com/docs/en/skills),
+[GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills) and
+[Codex](https://learn.chatgpt.com/docs/build-skills).
+
+Each PDS wrapper package provides a framework-specific skill for vanilla JavaScript, Angular, React or Vue. The skill
+contains:
+
+- A `SKILL.md` entry point with activation guidance and the core rules for using PDS.
+- The complete component catalog with props, slots, events, CSS variables, accessibility information and
+  framework-specific examples.
+- Guidance and references for stylesheets, design tokens, Tailwind CSS, SCSS, vanilla-extract and Emotion.
+- Paths to the installed package's typings, component metadata and generated assets so the assistant can verify details
+  against the actual implementation.
+
+The skill helps an assistant answer PDS API questions, generate framework-correct UI, choose suitable components and
+tokens, and review or fix existing PDS usage. Skills use progressive disclosure: the integration initially sees the
+skill's name and description, then loads `SKILL.md` and its detailed references only when the task needs them.
+
+## How We Provide the Skill
+
+The skill ships inside each PDS wrapper package under
+`node_modules/@porsche-design-system/components-<framework>/skill`. It is generated and released together with that
+package, so its content always matches the installed PDS version.
+
+Agent integrations discover skills in their own dedicated directories rather than scanning `node_modules`. We bridge
+those locations with a directory symlink:
+
+```text
+<integration skills directory>/porsche-design-system-components-<framework>
+  -> node_modules/@porsche-design-system/components-<framework>/skill
+```
+
+This **skill-in-package** approach provides two important guarantees:
+
+- Updating the PDS dependency automatically updates the skill; there is no separately versioned skill to maintain.
+- A project-local link keeps the assistant aligned with the PDS version used by that repository.
+
+<Notification heading="Prefer a project-local skill" heading-tag="h3" state="warning">
+  A personal or global link remains tied to the package in the repository that created it. Using that link while working
+  in another repository can cause a version mismatch between the loaded skill and the PDS version installed there.
+</Notification>
+
+You can create the symlink yourself or use the `pds-skill` binary bundled with every PDS wrapper package.
+
+## Installation
+
+The PDS wrapper package must already be installed in your project or workspace.
+
+### Choose the package
+
+Use the package and skill name that match your framework:
+
+| Framework          | Installed package                           | Skill name                                 |
+| ------------------ | ------------------------------------------- | ------------------------------------------ |
+| Vanilla JavaScript | `@porsche-design-system/components-js`      | `porsche-design-system-components-js`      |
+| Angular            | `@porsche-design-system/components-angular` | `porsche-design-system-components-angular` |
+| React              | `@porsche-design-system/components-react`   | `porsche-design-system-components-react`   |
+| Vue                | `@porsche-design-system/components-vue`     | `porsche-design-system-components-vue`     |
+
+The recommended repository locations differ by integration:
+
+| Integration        | Repository location           |
+| ------------------ | ----------------------------- |
+| Claude Code        | `.claude/skills/<skill-name>` |
+| GitHub Copilot CLI | `.github/skills/<skill-name>` |
+| Codex CLI and IDE  | `.agents/skills/<skill-name>` |
+
+GitHub Copilot CLI also discovers project skills under `.claude/skills` and `.agents/skills`. The examples use
+`.github/skills` to make the intended integration explicit.
+
+### Install with the bundled binary
+
+Run the local binary from the project or workspace where the PDS package is installed:
+
+```bash
+npx pds-skill --package <package> --location <skills-directory>
+```
+
+For example, link the React skill for each integration:
+
+```bash
+# Claude Code
+npx pds-skill --package @porsche-design-system/components-react --location .claude/skills
+
+# GitHub Copilot CLI
+npx pds-skill --package @porsche-design-system/components-react --location .github/skills
+
+# Codex
+npx pds-skill --package @porsche-design-system/components-react --location .agents/skills
+```
+
+The `--package` option selects the installed wrapper whose skill should be linked. The `--location` option selects the
+destination parent directory; the binary appends the framework-specific skill name.
+
+Every wrapper ships the same `pds-skill` executable. With a standard `node_modules` install, the package manager exposes
+it through the local `node_modules/.bin` directory, so `npx` does not need a separate package-provider option. The
+command is idempotent: it leaves a correct link unchanged and repairs a stale or dangling link without replacing real
+directories.
+
+Other package managers run the same local binary:
+
+```bash
+# pnpm
+pnpm exec pds-skill --package @porsche-design-system/components-react --location .github/skills
+
+# Yarn with nodeLinker: node-modules
+yarn pds-skill --package @porsche-design-system/components-react --location .github/skills
+
+# Bun
+bunx --no-install pds-skill --package @porsche-design-system/components-react --location .github/skills
+```
+
+### Create the symlink manually
+
+The binary is optional. On macOS or Linux, create the same project-local link yourself from the repository root:
+
+```bash
+mkdir -p .github/skills
+ln -s "$(pwd)/node_modules/@porsche-design-system/components-react/skill" \
+  .github/skills/porsche-design-system-components-react
+```
+
+Replace `.github/skills` with `.claude/skills` or `.agents/skills` for another integration, and replace the package for
+another framework. We recommend naming the destination folder after the skill: `porsche-design-system-components-react`,
+`porsche-design-system-components-angular`, `porsche-design-system-components-js` or
+`porsche-design-system-components-vue`. Prefer a symlink over copying the files so package updates remain visible
+automatically.
+
+### Windows
+
+The bundled binary creates a directory junction automatically without requiring Developer Mode or administrator
+permissions. To create the React skill junction manually for GitHub Copilot, run the following from the repository root:
+
+```bat
+mkdir ".github\skills"
+mklink /J ".github\skills\porsche-design-system-components-react" "node_modules\@porsche-design-system\components-react\skill"
+```
+
+Adjust the destination, package path and skill name for your integration and framework.
+
+### Yarn Plug'n'Play
+
+Yarn Plug'n'Play (`nodeLinker: pnp`) is not supported because an operating-system symlink cannot target Yarn's virtual
+ZIP filesystem. Use the node-modules linker and reinstall dependencies:
+
+```yaml
+nodeLinker: node-modules
+```
+
+### Updates and repairs
+
+Do not edit the skill inside `node_modules`; those changes are lost on the next dependency install. Updating the PDS
+wrapper updates the linked skill automatically. Re-run the binary only if the link was removed or broken, or when
+changing its location.
+
+## How to Use the Skill
+
+Compatible integrations can activate the skill automatically when your prompt matches its description. For example, ask
+the assistant to build a form with PDS, review component usage, apply PDS design tokens or check a PDS API.
+
+You can also explicitly select the skill to make sure it is used. The syntax depends on the integration and framework:
+
+| Integration        | Explicit React skill invocation                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| Claude Code        | `/porsche-design-system-components-react Build a responsive login form.`                         |
+| GitHub Copilot CLI | `Use the /porsche-design-system-components-react skill to review this page.`                     |
+| Codex CLI and IDE  | `$porsche-design-system-components-react Create a settings page with PDS components and tokens.` |
+
+In Claude Code and GitHub Copilot CLI, the skill name is prefixed with `/`. In Codex, run `/skills` to select a skill or
+type `$` to mention `porsche-design-system-components-<framework>` in the prompt. Other Agent Skills integrations may
+use different invocation syntax; consult the integration's skill documentation.
+
+If a newly installed skill does not appear in an existing session, reload the integration's skills or start a new
+session. In GitHub Copilot CLI, use `/skills reload` and verify it with `/skills list`.
