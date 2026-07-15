@@ -3,12 +3,11 @@
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: inline-flex;
 
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
+      display: inline-flex; justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
     }
 
 
@@ -116,12 +115,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":true} 1`] = `
 ":host {
       --_p-switch-a: 0.64285714;
-      display: inline-flex;
 
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
+      display: inline-flex; justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
     }
 
 
@@ -229,12 +227,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":false,"checked":false,"disabled":true,"loading":false,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: inline-flex;
       opacity: 0.4 !important;
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
+      display: inline-flex; justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
     }
 
 
@@ -365,12 +362,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: flex;
 
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: space-between !important; width: 100% !important;
+      display: flex; justify-content: space-between !important; width: 100% !important;
     }
 
 
@@ -478,12 +474,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":false,"loading":true,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: flex;
 
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: space-between !important; width: 100% !important;
+      display: flex; justify-content: space-between !important; width: 100% !important;
     }
 
 
@@ -607,12 +602,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: flex;
       opacity: 0.4 !important;
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: space-between !important; width: 100% !important;
+      display: flex; justify-content: space-between !important; width: 100% !important;
     }
 
 
@@ -745,12 +739,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":false,"disabled":true,"loading":true,"compact":false} 2`] = `
 ":host {
       --_p-switch-a: 1;
-      display: flex;
       opacity: 0.4 !important;
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: space-between !important; width: 100% !important;
+      display: flex; justify-content: space-between !important; width: 100% !important;
     }
 
 
@@ -883,12 +876,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
 exports[`getComponentCss() > should return correct css for {"alignLabel":"end","hideLabel":false,"stretch":true,"checked":true,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: flex;
 
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: space-between !important; width: 100% !important;
+      display: flex; justify-content: space-between !important; width: 100% !important;
     }
 
 
@@ -996,12 +988,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"end","
 exports[`getComponentCss() > should return correct css for {"alignLabel":"left","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: inline-flex;
 
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
+      display: inline-flex; justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
     }
 
 
@@ -1109,12 +1100,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"left",
 exports[`getComponentCss() > should return correct css for {"alignLabel":"right","hideLabel":false,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: inline-flex;
 
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
+      display: inline-flex; justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
     }
 
 
@@ -1222,12 +1212,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"right"
 exports[`getComponentCss() > should return correct css for {"alignLabel":"start","hideLabel":true,"stretch":false,"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: inline-flex;
 
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
+      display: inline-flex; justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
     }
 
 
@@ -1335,12 +1324,11 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":"start"
 exports[`getComponentCss() > should return correct css for {"alignLabel":{"base":"start","xs":"end","s":"start","m":"end","l":"start","xl":"end"},"hideLabel":{"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false},"stretch":{"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true},"checked":false,"disabled":false,"loading":false,"compact":false} 1`] = `
 ":host {
       --_p-switch-a: 1;
-      display: inline-flex;
 
       outline: 0 !important;
       font: var(--p-typescale-sm) var(--p-font-porsche-next) !important;
       gap: calc(11.2px * (var(--_p-switch-a) - 0.64285714) + 4px) !important;
-      justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
+      display: inline-flex; justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
     }
 
 
@@ -1453,27 +1441,27 @@ exports[`getComponentCss() > should return correct css for {"alignLabel":{"base"
 
     @media(min-width:480px) {
   :host {
-    justify-content: space-between !important; width: 100% !important;
+    display: flex; justify-content: space-between !important; width: 100% !important;
   }
 }
 @media(min-width:760px) {
   :host {
-    justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
+    display: inline-flex; justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
   }
 }
 @media(min-width:1000px) {
   :host {
-    justify-content: space-between !important; width: 100% !important;
+    display: flex; justify-content: space-between !important; width: 100% !important;
   }
 }
 @media(min-width:1300px) {
   :host {
-    justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
+    display: inline-flex; justify-content: flex-start !important; width: auto !important;  vertical-align: top !important;
   }
 }
 @media(min-width:1760px) {
   :host {
-    justify-content: space-between !important; width: 100% !important;
+    display: flex; justify-content: space-between !important; width: 100% !important;
   }
 }
 

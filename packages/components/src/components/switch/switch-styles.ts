@@ -77,18 +77,11 @@ export const getComponentCss = (
 
   // Responsive (BreakpointCustomizable) props: each returns base declarations (inlined in the selector below) plus
   // @media blocks (appended at the end of the sheet).
-  // NOTE: hostDisplay's @media blocks are intentionally NOT emitted — the JSS version lost them to an object-spread
-  // key collision with hostStretch, so responsive `display` never applied. Preserved for a behavior-neutral migration.
-  const hostDisplay = buildResponsiveStylesCss(
-    ':host',
-    isStretched,
-    (stretched: boolean) => `display: ${stretched ? 'flex' : 'inline-flex'};`
-  );
   const hostStretch = buildResponsiveStylesCss(
     ':host',
     isStretched,
     (stretched: boolean) =>
-      `justify-content: ${stretched ? 'space-between' : 'flex-start'} !important; width: ${stretched ? '100%' : 'auto'} !important; ${stretched ? '' : ' vertical-align: top !important;'}`
+      `display: ${stretched ? 'flex' : 'inline-flex'}; justify-content: ${stretched ? 'space-between' : 'flex-start'} !important; width: ${stretched ? '100%' : 'auto'} !important; ${stretched ? '' : ' vertical-align: top !important;'}`
   );
   const labelOrder = buildResponsiveStylesCss(
     'label',
@@ -102,7 +95,6 @@ export const getComponentCss = (
   return css`
     :host {
       ${cssVarInternalSwitchScaling}: ${isCompact ? 0.64285714 : 1};
-      ${hostDisplay.base}
       ${isDisabled ? `opacity: ${alphaDisabled} !important;` : ''}
       outline: 0 !important; /* custom element is able to delegate the focus */
       font: ${ref(typescaleSm)} ${ref(fontPorscheNext)} !important; /* needed for correct gap definition based on ex-unit */
