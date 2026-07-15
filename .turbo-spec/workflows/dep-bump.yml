@@ -2,11 +2,11 @@ name: dep-bump
 version: "1.0"
 description: >-
   Minimal TurboSpec onboarding blueprint. `npm install` runs once as the global
-  setup command (environment preparation, not a quality gate). A first stage then
-  collects the outdated third-party npm dependencies into a schema-validated
-  structured artifact, and a second stage renders that artifact as a Markdown
-  table inside a report comment on the PR. Everything is agentless and
-  deterministic — there are no agentic stages.
+  setup command (environment preparation, not a quality gate). A single agentless
+  stage then collects the outdated third-party npm dependencies into a
+  schema-validated structured artifact and renders that artifact as a Markdown
+  table inside a report comment on the PR. Everything is deterministic — there
+  are no agentic stages.
 
 # `npm install` prepares the tree once before any stage runs. It is deliberately
 # NOT a stage: there is no acceptance gate here, only environment setup. A
@@ -21,52 +21,37 @@ network:
   allowed: []
 
 stages:
-  # S1 check_outdated_dependencies — agentless. Collect the outdated packages and
-  # their available versions into .turbo-spec/out/outdated.json. The script gate
-  # is intentionally lenient (it just runs the collector); the outcome_contract
-  # against outdated.schema.json is the meaningful check on the structured output.
+  # check_outdated_dependencies — agentless, deterministic. One acceptance check:
+  # the outdated packages, collected into .turbo-spec/out/outdated.json, must
+  # satisfy outdated.schema.json.
+  #
+  #   1. gate.pre_command  → collect-outdated.sh produces the structured artifact
+  #      (hard-aborts on a genuine npm failure instead of authoring a false list).
+  #   2. outcome_contract  → validates that artifact against the schema. This is
+  #      the ONLY real gate; collection is merely its input preparation.
+  #   3. stage.post_command → report-comment.sh renders the artifact as a Markdown
+  #      table and upserts the PR comment. It is a side effect that runs AFTER the
+  #      result is accepted, not an acceptance check of its own.
   - name: check_outdated_dependencies
     orchestrator: testing
     outputs:
       outdated: .turbo-spec/out/outdated.json
+    # Report is a side effect, not a gate — it runs once the artifact is accepted.
+    post_command: "bash .turbo-spec/scripts/report-comment.sh"
+    hook_timeout: "5m"
     quality_gates:
-      - evaluator: script_gate
-        on_fail: escalate
-        max_retries: 1
-        config:
-          gate_name: collect-outdated
-          failure_verdict: escalate
-          environment_verdict: escalate
-          success_reason: "Outdated dependencies collected into a structured artifact"
-          steps:
-            - name: collect
-              command: ["bash", ".turbo-spec/scripts/collect-outdated.sh"]
       - evaluator: outcome_contract
         on_fail: escalate
-        max_retries: 1
+        # A schema mismatch is a deterministic defect; retrying would only
+        # re-run the pre_command and RE-COLLECT a fresh npm snapshot rather than
+        # re-validate the same one, so there is nothing to gain from a retry.
+        max_retries: 0
+        # Produce the artifact the evaluator is about to inspect.
+        pre_command: "bash .turbo-spec/scripts/collect-outdated.sh"
+        hook_timeout: "10m"
         config:
           outcome_path: .turbo-spec/out/outdated.json
           schema: .turbo-spec/schemas/outdated.schema.json
-
-  # S2 report — agentless. Render the structured artifact as a Markdown table
-  # inside a report comment and upsert it on the PR. Rendering is strict (a
-  # missing/invalid artifact fails); publishing is best-effort inside the script
-  # (no PR context or a transient gh error never fails the run).
-  - name: report
-    orchestrator: testing
-    depends_on: [check_outdated_dependencies]
-    quality_gates:
-      - evaluator: script_gate
-        on_fail: escalate
-        max_retries: 1
-        config:
-          gate_name: report
-          failure_verdict: escalate
-          environment_verdict: escalate
-          success_reason: "Outdated-dependency report rendered and published to the PR"
-          steps:
-            - name: report-comment
-              command: ["bash", ".turbo-spec/scripts/report-comment.sh"]
 
 model_provider:
   primary: copilot
