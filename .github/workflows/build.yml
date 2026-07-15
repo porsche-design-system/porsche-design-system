@@ -111,6 +111,7 @@ jobs:
             ./packages/components-react/projects/react-router/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/tokens/projects/tokens-meta/src/lib/tokensMeta.ts
             ./packages/shared/src/lib/
           if-no-files-found: error
   build-production:
@@ -196,5 +197,6 @@ jobs:
             ./packages/components-react/projects/react-router/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/tokens/projects/tokens-meta/src/lib/tokensMeta.ts
             ./packages/shared/src/lib/
           if-no-files-found: error

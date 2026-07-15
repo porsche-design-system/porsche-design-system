@@ -15,10 +15,19 @@ it('should match snapshot', () => {
   expect(tokensMeta).toMatchSnapshot();
 });
 
-it('should contain all expected top-level categories', () => {
-  expect(Object.keys(tokensMeta)).toEqual(
-    expect.arrayContaining(['blur', 'border', 'breakpoint', 'color', 'font', 'gradient', 'motion', 'shadow', 'spacing'])
-  );
+it('should preserve deterministic category order', () => {
+  expect(Object.keys(tokensMeta)).toEqual([
+    'blur',
+    'border',
+    'breakpoint',
+    'color',
+    'font',
+    'gradient',
+    'motion',
+    'shadow',
+    'spacing',
+  ]);
+  expect(Object.keys(tokensMeta.font as TokensMetaTree)).toEqual(['family', 'lineHeight', 'size', 'weight']);
 });
 
 it('every leaf should have name, value and description', () => {
