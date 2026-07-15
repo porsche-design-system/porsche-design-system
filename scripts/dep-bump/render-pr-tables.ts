@@ -29,9 +29,7 @@ const REASON: Record<HeldReason, string> = {
 function updatedTable(updated: BumpChange[]): string {
   const heading = `### Updated dependencies (${updated.length})`;
   if (updated.length === 0) return `${heading}\n\n_No dependencies were updated._`;
-  const rows = updated
-    .map((c) => `| \`${c.name}\` | ${c.from} | ${c.to} | ${TAG[c.level]} |`)
-    .join('\n');
+  const rows = updated.map((c) => `| \`${c.name}\` | ${c.from} | ${c.to} | ${TAG[c.level]} |`).join('\n');
   return `${heading}\n\n| Package | From | To | Bump |\n| --- | --- | --- | --- |\n${rows}`;
 }
 

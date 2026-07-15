@@ -1,4 +1,4 @@
-import { coerce, diff as semverDiff, gt } from 'semver';
+import { coerce, gt, diff as semverDiff } from 'semver';
 
 // Shared semver classification used by both datasets: the "updated" list
 // (classify-bump.ts) tags each applied change, and the "held-back" list
