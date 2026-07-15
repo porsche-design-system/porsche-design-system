@@ -37,9 +37,13 @@ export const metadata = {
 
 ### Custom slotted button
 
-The `p-popover` component does not support the `aria-expanded` attribute when used with a custom slotted button. This is
-because the component does not expose its `open` state publicly, which is necessary to manage the relationship between
-the button and the internal state of the popover.
+In **uncontrolled** mode the `p-popover` component does not manage `aria-expanded` on a custom slotted button, because
+it does not expose its internal `open` state publicly. In this case the default info button (which the component fully
+controls) already exposes `aria-expanded` for you.
+
+In **controlled** mode the consumer owns the `open` state, so the slotted trigger _can_ (and should) expose
+`aria-expanded` to match the default button's semantics. Bind it to your `open` state via the trigger's `aria` property,
+e.g. `aria={{ 'aria-expanded': open ? 'true' : 'false' }}`, so it stays in sync as the popover opens and closes.
 
 ## Tests
 
