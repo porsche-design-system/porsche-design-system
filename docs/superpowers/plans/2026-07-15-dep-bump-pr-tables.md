@@ -66,7 +66,7 @@
 ### Task 5: Wire scripts + post PR comment
 - `package.json`: replace `deps:major-hint` with `deps:held-back` + `deps:pr-tables`.
 - New `scripts/dep-bump/post-pr-tables.sh` (executable): no-op if `$TURBO_SPEC_PR_NUMBER` unset or body missing; else `gh pr comment "$pr" --edit-last --body-file … || gh pr comment "$pr" --body-file …`.
-- `dep-bump.yml` report stage: replace `major-hint` step with `held-back` step (`npm run --silent deps:held-back || true`); add stage `post_command` running `render-pr-tables.ts && post-pr-tables.sh`.
+- `dep-bump.yml` report stage: replace the `major-hint` step with a `held-back` step (`npm run --silent deps:held-back || true`), then add best-effort `pr-tables` step running `deps:pr-tables && post-pr-tables.sh` (steps, not a `post_command`, to reuse the proven script-gate mechanism).
 - Validate YAML + grep wiring; `npm run test:dep-bump`; manual smoke (`deps:held-back` + `deps:pr-tables`); commit.
 
 ---
