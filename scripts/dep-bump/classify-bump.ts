@@ -1,9 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { coerce, diff as semverDiff, valid as semverValid } from 'semver';
 import { collectDepsFromFiles } from './collect-deps.ts';
 import { OUT_DIR, writeVerdict } from './lib/verdict.ts';
 import { type DependencyPolicy, matchesAny, readDependencyPolicy } from './policy.ts';
+import { classifyLevel, type SemverLevel } from './semver-level.ts';
 
 export type DepMap = Record<string, string>;
 export interface BumpChange {
@@ -11,14 +11,13 @@ export interface BumpChange {
   from: string;
   to: string;
   major: boolean;
+  level: SemverLevel;
 }
 export interface BumpClassification {
   outcome: 'NO_CHANGES' | 'CHANGED';
   changes: BumpChange[];
   heldViolations: string[];
 }
-
-const MAJOR_LEVELS = new Set(['major', 'premajor']);
 
 export function classifyBump(before: DepMap, after: DepMap, policy: DependencyPolicy): BumpClassification {
   const changes: BumpChange[] = [];
@@ -27,14 +26,9 @@ export function classifyBump(before: DepMap, after: DepMap, policy: DependencyPo
     const from = before[name];
     const to = after[name];
     if (from === undefined || from === to) continue;
-    const fromVersion = coerce(from)?.version ?? from;
-    const toVersion = coerce(to)?.version ?? to;
-    let major = false;
-    if (semverValid(fromVersion) && semverValid(toVersion)) {
-      const level = semverDiff(fromVersion, toVersion);
-      major = level !== null && MAJOR_LEVELS.has(level);
-    }
-    changes.push({ name, from, to, major });
+    const level = classifyLevel(from, to);
+    const major = level === 'major';
+    changes.push({ name, from, to, major, level });
     // Permanent holds must never change; minor/patch families must never take a major.
     if (matchesAny(name, policy.ignored) || (major && matchesAny(name, policy.minorOnly))) {
       heldViolations.push(name);

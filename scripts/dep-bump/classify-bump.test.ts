@@ -14,8 +14,8 @@ test('classifyBump flags majors and reports NO_CHANGES', () => {
   const result = classifyBump(before, after, POLICY);
   assert.equal(result.outcome, 'CHANGED');
   assert.deepEqual(result.changes, [
-    { name: 'typescript', from: '5.9.2', to: '5.9.3', major: false },
-    { name: 'vite', from: '5.4.0', to: '6.0.0', major: true },
+    { name: 'typescript', from: '5.9.2', to: '5.9.3', major: false, level: 'patch' },
+    { name: 'vite', from: '5.4.0', to: '6.0.0', major: true, level: 'major' },
   ]);
   // Non-family majors are allowed — no violation.
   assert.deepEqual(result.heldViolations, []);
