@@ -40,8 +40,13 @@ export const metadata = {
 
 ## Development considerations
 
-Prefer the built-in popover trigger when possible. The component manages `aria-expanded` internally for the default info
-button.
+In **uncontrolled** mode the `p-popover` component does not manage `aria-expanded` on a custom slotted button, because
+it does not expose its internal `open` state publicly. In this case the default info button (which the component fully
+controls) already exposes `aria-expanded` for you.
+
+In **controlled** mode the consumer owns the `open` state, so the slotted trigger _can_ (and should) expose
+`aria-expanded` to match the default button's semantics. Bind it to your `open` state via the trigger's `aria` property,
+e.g. `aria={{ 'aria-expanded': open ? 'true' : 'false' }}`, so it stays in sync as the popover opens and closes.
 
 ### Common do's and don'ts
 
