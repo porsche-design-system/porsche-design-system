@@ -71,7 +71,7 @@ const themeBlock: CssRule = {
 const { typography, gradient, grid, skeleton } = tailwindMeta;
 const utilities: CssNode[] = [
   ...gradient,
-  ...grid,
+  ...flatten(grid),
   ...skeleton,
   ...typography.text,
   ...typography.heading,

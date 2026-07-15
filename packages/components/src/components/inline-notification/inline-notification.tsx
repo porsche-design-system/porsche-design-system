@@ -10,6 +10,7 @@ import {
   unobserveChildren,
   validateProps,
 } from '../../utils';
+import { FCDismissButton } from '../common/fc-dismiss-button/fc-dismiss-button';
 import { NotificationBase } from '../common/notification-base/notification-base';
 import { getComponentCss } from './inline-notification-styles';
 import {
@@ -129,18 +130,11 @@ export class InlineNotification {
         })}
         {...(this.dismissButton && {
           dismissButton: (
-            <PrefixedTagNames.pButton
-              class="dismiss"
-              type="button"
-              variant="secondary"
-              icon="close"
-              hideLabel={true}
-              compact={true}
+            <FCDismissButton
+              label="Close notification"
               onClick={this.dismiss.emit}
-              {...(headingText ? { aria: { 'aria-description': headingText } } : {})}
-            >
-              Close notification
-            </PrefixedTagNames.pButton>
+              ariaDescription={headingText || undefined}
+            />
           ),
         })}
       />

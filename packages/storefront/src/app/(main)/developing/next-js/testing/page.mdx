@@ -276,8 +276,12 @@ Example mock:
 
 ```ts
 HTMLDialogElement.prototype.show = jest.fn();
-HTMLDialogElement.prototype.showModal = jest.fn();
-HTMLDialogElement.prototype.close = jest.fn();
+HTMLDialogElement.prototype.showModal = jest.fn(function (this: HTMLDialogElement) {
+  this.setAttribute('open', '');
+});
+HTMLDialogElement.prototype.close = jest.fn(function (this: HTMLDialogElement) {
+  this.removeAttribute('open');
+});
 ```
 
 ### Element Internals API

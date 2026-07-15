@@ -23,6 +23,7 @@ type ConfigurePropsProps<T extends ConfiguratorTagNames> = {
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig<T>['properties'];
   defaultProps: ElementConfig<HTMLTagOrComponent>['properties'];
+  disabledProps?: string[];
   onUpdateProps: (
     propName: keyof ElementConfig<T>['properties'],
     selectedValue: string | boolean | number | undefined
@@ -35,6 +36,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
   componentProps,
   configuredProps,
   defaultProps,
+  disabledProps,
   onUpdateProps,
   onResetAllProps,
 }: ConfigurePropsProps<T>) => {
@@ -72,6 +74,8 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
   };
 
   const renderInput = (propName: keyof ElementConfig<T>['properties'], propMeta: PropMeta) => {
+    // Prop is locked for the active story (e.g. `open` in a popover's uncontrolled setup).
+    const isDisabled = disabledProps?.includes(propName as string) ?? false;
     // Components whose value prop accepts `string | null` (e.g. p-input-url) or
     // `string | number | null` (e.g. p-input-text) are emitted by generateComponentMeta as
     // `allowedValues: ['string', 'null']` or `['string', 'number', 'null']`. For configurator UX
@@ -93,6 +97,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
             <PSwitch
               checked={getCurrentValue(propName, propMeta) === 'true'}
               compact={true}
+              disabled={isDisabled}
               onUpdate={(e) => onUpdateProps(propName, e.detail.checked)}
             >
               {capitalCase(propName)}
@@ -110,6 +115,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           name={propName}
           key={propName}
           compact={true}
+          disabled={isDisabled}
           value={getCurrentValue(propName, propMeta) ?? ''}
           required={propMeta.isRequired}
           // disabled={propMeta.hasAlternativeSlot ? configuredSlots.default propMeta.hasAlternativeSlot.tag : false}
@@ -136,6 +142,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
         <PInputNumber
           key={propName}
           name={propName}
+          disabled={isDisabled}
           value={getCurrentValue(propName, propMeta) ?? ''}
           required={propMeta.isRequired}
           onInput={(e) => {
@@ -161,6 +168,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
         <PSelect
           key={propName}
           name={propName}
+          disabled={isDisabled}
           filter={allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop)).length > 10}
           value={getCurrentValue(propName, propMeta)}
           compact={true}

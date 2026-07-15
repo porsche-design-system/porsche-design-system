@@ -123,7 +123,7 @@ export const generateReactControlledScript = (
     .join('\n');
 
   const eventHandler = eventEntries
-    .map(([eventName, { prop, value, eventValueKey, eventType, negateValue }]) => {
+    .map(([eventName, { prop, value, eventValueKey, eventType, negateValue, toggleValue }]) => {
       if (eventValueKey) {
         eventType && types.push(eventType);
         return `  const ${eventName} = (e: CustomEvent<${eventType}>) => {
@@ -131,7 +131,7 @@ export const generateReactControlledScript = (
   }`;
       }
       return `  const ${eventName} = () => {
-    set${pascalCase(prop)}(${negateValue ? '!' : ''}${value});
+    set${pascalCase(prop)}(${toggleValue ? '(prev) => !prev' : `${negateValue ? '!' : ''}${value}`});
   }`;
     })
     .join('\n');

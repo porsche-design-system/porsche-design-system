@@ -15,9 +15,10 @@ import {
   spacingStatic2Xs,
   spacingStaticMd,
 } from '@porsche-design-system/stylesheets';
-import type { JssStyle, Styles } from 'jss';
+import type { JssStyle } from 'jss';
 import { cssVariableTransitionDuration, getTransition, motionDurationMap } from '../../../styles';
 import { overlayTransitionSupportsQuery } from '../../../utils';
+import { getFCDismissButtonStyles } from '../fc-dismiss-button/fc-dismiss-button-styles';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -34,30 +35,14 @@ export const dialogHostJssStyle = (background: 'canvas' | 'surface'): JssStyle =
   };
 };
 
-export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backdrop: Backdrop = 'blur'): Styles => {
-  return {
-    dialog: {
-      ...dialogBackdropResetJssStyle,
-      ...getDialogBackdropTransitionJssStyle(isVisible, backdrop),
-    },
-  };
-};
-
-const dialogBackdropResetJssStyle: JssStyle = {
-  all: 'unset',
-  position: 'fixed',
-  inset: 0,
-  maxWidth: '100dvw',
-  maxHeight: '100dvh',
-  overflow: 'hidden',
-  display: 'block',
-  outline: 0, // we always expect a focusable element to be within the dialog
-  '&::backdrop': {
-    display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
-  },
-};
-
-const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
+// INTENTIONAL DIVERGENCE from `popover-styles.ts` (kept, not aligned — see the mirrored note there):
+// This dialog stays permanently rendered and collapses its CLOSED state via delayed `visibility: hidden` + `width/height: 0`
+// (driven by `isVisible`), so `opacity`/`background` fade in BOTH directions with NO `@starting-style`, and an initial
+// `open=true` computes straight to the visible state (no entry fade on load). `p-popover`/`p-banner` instead use the native
+// `[popover]` `display: none`/`:popover-open` toggle plus a `@starting-style` entry fade, because those components mimic the
+// native popover box model. Both share `createTopLayerController` + the Chromium-only `overlay allow-discrete` transition
+// (`overlayTransitionSupportsQuery`) and the `inert` toggle for tabbability; only the closed-state expression differs.
+export const getFunctionalComponentDialogBaseStyles = (isVisible: boolean, backdrop: Backdrop = 'blur'): JssStyle => {
   const isBackdropBlur = backdrop === 'blur';
 
   const duration = isVisible ? 'long' : 'moderate';
@@ -71,14 +56,21 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
   )}, ${getTransition('backdrop-filter', duration, easing)}`;
 
   return {
-    zIndex: 9999999, // fallback for fade out stacking until `overlay` + `allow-discrete` is supported in all browsers. It tries to mimic #top-layer positioning hierarchy.
+    all: 'unset',
+    position: 'fixed',
+    inset: 0,
+    maxWidth: '100dvw',
+    maxHeight: '100dvh',
+    overflow: 'hidden',
+    display: 'block',
+    userSelect: 'text', // allows text selection within dialog element (e.g. for copy & paste)
+    outline: 0, // we always expect a focusable element to be within the dialog
     ...(isVisible
       ? {
           width: '100dvw',
           height: '100dvh',
           visibility: 'inherit',
           pointerEvents: 'auto',
-          overlay: 'auto',
           background: ref(colorBackdrop),
           ...(isBackdropBlur && {
             WebkitBackdropFilter: ref(blurFrosted),
@@ -94,7 +86,6 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
           height: '0px',
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
           pointerEvents: 'none', // element can't be interacted with mouse
-          overlay: 'none',
           background: 'transparent',
         }),
     transition,
@@ -102,6 +93,13 @@ const getDialogBackdropTransitionJssStyle = (isVisible: boolean, backdrop: Backd
     ...overlayTransitionSupportsQuery({
       transition: `${transition}, ${getTransition('overlay', duration, easing)} allow-discrete`,
     }),
+    overlay: 'none',
+    '&:modal': {
+      overlay: 'auto',
+    },
+    '&::backdrop': {
+      display: 'none', // reset ua-style (we can't use it atm because it's not animatable in all browsers)
+    },
   };
 };
 
@@ -193,6 +191,9 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
 
 export const getDialogDismissButtonJssStyle = (): JssStyle => {
   return {
+    // native dismiss button visual (primary variant); positioning + the `invert` filter (renders it light on the
+    // dialog) are applied on top below
+    ...getFCDismissButtonStyles('primary'),
     gridArea: '1/3',
     zIndex: 5, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',

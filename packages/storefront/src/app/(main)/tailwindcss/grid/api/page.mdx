@@ -9,8 +9,34 @@ export const metadata = {
 
 # Grid
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={['Base', 'Narrow', 'Basic', 'Extended', 'Wide', 'Full', 'Span']} />
 
 ## Classes
 
-<TailwindUtilitiesTable utilities={tailwindMeta.grid} />
+### Base
+
+<TailwindUtilitiesTable utilities={{ template: tailwindMeta.grid.template }} />
+
+### Narrow
+
+<TailwindUtilitiesTable utilities={tailwindMeta.grid.narrow} />
+
+### Basic
+
+<TailwindUtilitiesTable utilities={tailwindMeta.grid.basic} />
+
+### Extended
+
+<TailwindUtilitiesTable utilities={tailwindMeta.grid.extended} />
+
+### Wide
+
+<TailwindUtilitiesTable utilities={tailwindMeta.grid.wide} />
+
+### Full
+
+<TailwindUtilitiesTable utilities={tailwindMeta.grid.full} />
+
+### Span
+
+<TailwindUtilitiesTable utilities={tailwindMeta.grid.span} />

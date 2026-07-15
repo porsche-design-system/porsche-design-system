@@ -608,6 +608,14 @@ const generatedRoutes = {
     "path": "/popover-bottom",
     "name": "PopoverBottom"
   },
+  "popoverCompact": {
+    "path": "/popover-compact",
+    "name": "PopoverCompact"
+  },
+  "popoverCssVariables": {
+    "path": "/popover-css-variables",
+    "name": "PopoverCssVariables"
+  },
   "popoverEdgeCase": {
     "path": "/popover-edge-case",
     "name": "PopoverEdgeCase"
@@ -627,6 +635,10 @@ const generatedRoutes = {
   "popoverTop": {
     "path": "/popover-top",
     "name": "PopoverTop"
+  },
+  "popoverViewportLimit": {
+    "path": "/popover-viewport-limit",
+    "name": "PopoverViewportLimit"
   },
   "radioGroup": {
     "path": "/radio-group",

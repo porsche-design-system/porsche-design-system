@@ -4,12 +4,11 @@ import {
   colorFrosted,
   colorFrostedSoft,
   colorPrimary,
-  durationSm,
-  easeInOut,
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
   radiusFull,
+  radiusLg,
   radiusXl,
   ref,
   spacingStaticMd,
@@ -18,106 +17,235 @@ import {
 } from '@porsche-design-system/stylesheets';
 import {
   addImportantToEachRule,
-  cssVariableAnimationDuration,
   forcedColorsMediaQuery,
   getFocusBaseStyles,
-  getHiddenTextJssStyle,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { getCss } from '../../utils';
+import { getCss, overlayTransitionSupportsQuery } from '../../utils';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { POPOVER_SAFE_ZONE } from './popover-utils';
 
-export const getComponentCss = (): string => {
-  const shadowColor = 'rgba(0,0,0,0.3)';
+/**
+ * @css-variable {"name": "--p-popover-w", "description": "Width of the popover.", "defaultValue": "max-content"}
+ */
+const cssVariableWidth = '--p-popover-w';
 
-  return getCss({
+/**
+ * @css-variable {"name": "--p-popover-h", "description": "Height of the popover.", "defaultValue": "auto"}
+ */
+const cssVariableHeight = '--p-popover-h';
+
+/**
+ * @css-variable {"name": "--p-popover-min-w", "description": "Min width of the popover.", "defaultValue": "0px"}
+ */
+const cssVariableMinWidth = '--p-popover-min-w';
+
+/**
+ * @css-variable {"name": "--p-popover-min-h", "description": "Min height of the popover.", "defaultValue": "auto"}
+ */
+const cssVariableMinHeight = '--p-popover-min-h';
+
+/**
+ * @css-variable {"name": "--p-popover-max-w", "description": "Max width of the popover.", "defaultValue": "min(calc(100dvw - 16px), 48ch)"}
+ */
+const cssVariableMaxWidth = '--p-popover-max-w';
+
+/**
+ * @css-variable {"name": "--p-popover-max-h", "description": "Max height of the popover.", "defaultValue": "calc(100dvh - 16px)"}
+ */
+const cssVariableMaxHeight = '--p-popover-max-h';
+
+/**
+ * @css-variable {"name": "--p-popover-px", "description": "Horizontal padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration `--p-popover-px: var(--p-spacing-static-md)`, the Tailwind CSS arbitrary property `[--p-popover-px:var(--spacing-static-md)]` or the equivalent SCSS/JS token.", "defaultValue": "16px"}
+ */
+const cssVarPaddingInline = '--p-popover-px';
+
+/**
+ * @css-variable {"name": "--p-popover-py", "description": "Vertical padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration `--p-popover-py: var(--p-spacing-static-sm)`, the Tailwind CSS arbitrary property `[--p-popover-py:var(--spacing-static-sm)]` or the equivalent SCSS/JS token.", "defaultValue": "16px"}
+ */
+const cssVarPaddingBlock = '--p-popover-py';
+
+/**
+ * @css-variable {"name": "--p-popover-radius", "description": "Border radius of the popover. It is recommended to apply an existing Porsche Design System border-radius token, e.g. the CSS declaration `--p-popover-radius: var(--p-radius-lg)`, the Tailwind CSS arbitrary property `[--p-popover-radius:var(--radius-lg)]` or the equivalent SCSS/JS token.", "defaultValue": "12px"}
+ */
+const cssVarRadius = '--p-popover-radius';
+
+const iconInfo = getInlineSVGBackgroundImage(
+  `<path d="M12.5 10v6h-1v-6zm0-2v1h-1V8zM12 4a8 8 0 0 1 0 16 8 8 0 0 1 0-16m0-1c-4.95 0-9 4.05-9 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9"/>`
+);
+
+/**
+ * Builds the popover's scoped CSS.
+ * @param isOpen - The effective open state; drives the fade-in/fade-out direction and the `@starting-style` append.
+ * @param isCompact - Reduces padding/spacing and uses smaller radii (mirrors the `compact` prop).
+ * @param skipEntryTransition - Suppresses the `@starting-style` entry fade. Set on the component's first render so an
+ *   initially-open popover (`open=true` on page load) appears instantly instead of fading in. Later user-triggered opens
+ *   render with this `false`, so they keep the fade-in.
+ * @returns The component CSS string, with a trailing `@starting-style` rule appended while opening (unless skipped).
+ */
+export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTransition: boolean): string => {
+  // fade-in on open (via `@starting-style` below), fade-out on close. While closing, the panel keeps `display: grid`
+  // (Chromium via `overlay` + `display` `allow-discrete`; Safari/Firefox via the deferred `hidePopover()`), so
+  // `display: none` only describes the fully-closed terminal state. Tabbability / a11y-tree removal during the fade-out
+  // is handled immediately via the `inert` attribute on the panel (see popover.tsx), so no `visibility` toggle is needed.
+  const duration = 'short';
+  const easing = isOpen ? 'in' : 'out';
+  const transition = getTransition('opacity', duration, easing);
+
+  const css = getCss({
     '@global': {
-      '@keyframes fade-in': {
-        from: {
-          opacity: 0,
-        },
-        to: {
-          opacity: 1,
-        },
-      },
       ':host': {
-        position: 'relative', // ensures correct reference for floating ui fallback positioning in older browsers
-        display: 'inline-block',
-        verticalAlign: 'top',
-        ...addImportantToEachRule({
-          ...hostHiddenStyles,
-        }),
+        // `display: contents` so the host box does not participate in visual DOM rendering — the popover mimics the
+        // native `[popover]` element, so the slotted trigger (or default info button) lays out directly in the parent
+        // flow. Enabled by anchoring Floating UI to the assigned trigger element (see `triggerElement` in popover.tsx)
+        // instead of the `<slot>` box, so the slot no longer needs a layout box of its own.
+        display: 'contents',
+        ...addImportantToEachRule(hostHiddenStyles),
       },
-      'slot[name="button"]': {
+      'slot:not([name]), p': {
         display: 'block',
-      },
-      ...preventFoucOfNestedElementsStyles,
-      p: {
-        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
-        margin: 0,
+        margin: 0, // reset ua-style for paragraphs
+        minWidth: 0, // allow the grid item to shrink below its content size (needed for correct clamping via --p-popover-max-w)
+        minHeight: 0, // allow the grid item to shrink below its content size so overflow scrolls instead of expanding the panel (needed for --p-popover-max-h)
+        maxWidth: 'inherit',
+        maxHeight: 'inherit',
+        boxSizing: 'border-box',
+        paddingBlock: `${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
+        paddingInline: `${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))}`,
+        overflow: 'hidden auto',
+        overscrollBehaviorY: 'none',
       },
       button: {
         all: 'unset',
-        display: 'block',
+        display: 'inline-grid',
+        verticalAlign: 'top',
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
-        width: ref(leadingNormal), // width needed to improve ssr support
-        height: ref(leadingNormal), // height needed to improve ssr support
+        width: ref(leadingNormal),
+        height: ref(leadingNormal),
         borderRadius: ref(radiusFull),
         cursor: 'pointer',
-        backgroundColor: ref(colorFrosted),
+        background: ref(colorFrosted),
         transition: getTransition('background-color'),
         WebkitBackdropFilter: ref(blurFrosted),
         backdropFilter: ref(blurFrosted),
         ...hoverMediaQuery({
           '&:hover': {
-            backgroundColor: ref(colorFrostedSoft),
+            background: ref(colorFrostedSoft),
           },
         }),
         '&:focus-visible': getFocusBaseStyles(),
+        '&::after': {
+          content: '""',
+          WebkitMask: `${iconInfo} center/contain no-repeat`, // necessary for Sogou browser support :-)
+          mask: `${iconInfo} center/contain no-repeat`,
+          background: ref(colorPrimary),
+          ...forcedColorsMediaQuery({
+            background: 'CanvasText',
+          }),
+        },
       },
       '[popover]': {
         all: 'unset',
-        position: 'absolute',
-        pointerEvents: 'none',
-        filter: `drop-shadow(0 0 16px ${shadowColor})`,
+        position: 'fixed', // matches floating ui's `fixed` strategy; required for correct top-layer positioning in Safari
+        top: 0,
+        left: 0,
+        filter: 'drop-shadow(0 0 16px rgba(0,0,0,.3))',
         backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
-        animation: `${ref(cssVariableAnimationDuration, ref(durationSm))} fade-in ${ref(easeInOut)} forwards`,
-        '&:not(:popover-open)': {
-          display: 'none', // ensures popover is not flickering when closed in some situations
+        borderRadius: ref(cssVarRadius, isCompact ? ref(radiusLg) : ref(radiusXl)),
+        // Fallback for engines without CSS relative color syntax (< Chromium 119 / Safari 16.4 / Firefox 128): the
+        // `hsl(from …)` override below would be an invalid value and get dropped, leaving the panel with no background.
+        // The plain `light-dark()` token renders correct white (light) / near-black (dark) as graceful degradation.
+        background: ref(colorCanvas),
+        // Relative color syntax: lightens ONLY the dark scheme (light `#fff` clamps at l=100 → stays white; dark
+        // `l≈1.2%` → `≈15.2%`). Feature-test string kept in sync with `spinner-styles.ts` (one relative-color feature
+        // covers all color functions).
+        '@supports (color: oklch(from red l c h))': {
+          background: `hsl(from ${ref(colorCanvas)} h 0% calc(l + 14))`,
+        },
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
+        color: ref(colorPrimary),
+        width: ref(cssVariableWidth, 'max-content'),
+        height: ref(cssVariableHeight, 'auto'),
+        minWidth: ref(cssVariableMinWidth, '0px'),
+        minHeight: ref(cssVariableMinHeight, 'auto'),
+        maxWidth: ref(cssVariableMaxWidth, `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`),
+        maxHeight: ref(cssVariableMaxHeight, `calc(100dvh - ${POPOVER_SAFE_ZONE * 2}px)`),
+        opacity: isOpen ? 1 : 0,
+        transition,
+        // keep the popover on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
+        ...overlayTransitionSupportsQuery({
+          transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete, ${getTransition('display', duration, easing)} allow-discrete`,
+        }),
+        // Unlike `opacity` (driven by the `isOpen` render flag), `overlay` and `display` are toggled via the
+        // `:popover-open` UA state instead of `isOpen`. Both are owned by the browser: they only flip once
+        // `showPopover()` / `hidePopover()` actually promote/remove the element to/from the #top-layer. Driving them
+        // from `isOpen` would desync from that native state — e.g. Safari/Firefox defer `hidePopover()` until the
+        // fade-out ends (see `createTopLayerController`), so `display` must stay `grid` while `:popover-open` is still
+        // truthy; an `isOpen`-based `display: none` would hide the panel instantly and kill the fade. Binding to
+        // `:popover-open` keeps CSS in lockstep with the browser across all engines, while the Chromium-only
+        // `allow-discrete` transition above animates the discrete `overlay`/`display` switch during the fade-out.
+        overlay: 'none',
+        display: 'none',
+        '&:popover-open': {
+          overlay: 'auto',
+          display: 'grid',
+        },
+        ...forcedColorsMediaQuery({
+          outline: '2px solid CanvasText',
+          outlineOffset: '-2px',
+        }),
+        '&::backdrop': {
+          display: 'none', // reset ua-style
         },
       },
-    },
-    label: getHiddenTextJssStyle(),
-    icon: {
-      transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     arrow: {
       position: 'absolute',
       width: '24px',
       height: '12px',
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
-      background: ref(colorCanvas),
+      background: 'inherit',
       ...forcedColorsMediaQuery({
         background: 'CanvasText',
       }),
     },
-    content: {
-      maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
-      width: 'max-content', // ensures in older browsers correct width
-      boxSizing: 'border-box',
-      padding: `${ref(spacingStaticSm)} ${ref(spacingStaticMd)}`,
-      pointerEvents: 'auto',
-      borderRadius: ref(radiusXl),
-      background: ref(colorCanvas),
-      font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
-      color: ref(colorPrimary),
-      ...forcedColorsMediaQuery({
-        outline: '2px solid CanvasText',
-        outlineOffset: '-2px',
-      }),
-    },
   });
+
+  // Fade-IN: `@starting-style` supplies the opacity the browser transitions *from* on the first rendered frame, i.e. the
+  // moment the panel leaves `display: none` via `:popover-open` (triggered by `showPopover()`). Without it the panel
+  // snaps to full opacity, because its computed `opacity` is already `1` by the time it is promoted out of `display:
+  // none`. The fade-OUT needs no starting style (a rendered prior state already exists). Appended as raw CSS because the
+  // JSS conditional-rule plugin only supports `@media`/`@supports`/`@container`, not `@starting-style`. Unsupported
+  // engines (< Chromium 117 / Safari 17.5 / Firefox 129) ignore the unknown at-rule and skip the entry fade (graceful
+  // degradation). Formatting mirrors JSS output so the unit-test CSS parser can read it.
+  //
+  // `skipEntryTransition` omits the append on the component's FIRST render, so an initially-open popover (`open=true` on
+  // page load) computes straight to `opacity: 1` and appears instantly instead of fading in. Every later render passes
+  // `false`, so a user-triggered open still fades in normally.
+  //
+  // ALTERNATIVE APPROACH (INTENTIONALLY NOT IMPLEMENTED) — mirror the `dialog-base` (p-modal/p-flyout) pattern and drop `@starting-style`:
+  // Decision: KEEP this divergence (see the mirrored note in `common/dialog-base/dialog-base-styles.ts`). `p-popover`/`p-banner`
+  // mimic the native `[popover]` box model, so they use the native `display: none`/`:popover-open` toggle + `@starting-style`
+  // entry fade rather than the dialog's permanently-rendered `visibility`/`width`/`height` collapse. Both approaches share
+  // `createTopLayerController`, the Chromium-only `overlay allow-discrete` transition (`overlayTransitionSupportsQuery`) and
+  // the `inert` toggle for tabbability; only the closed-state expression differs. The alternative below is documented for
+  // context (and to record its one upside — no entry fade on initial `open=true`), but is deliberately left unimplemented.
+  //   • Keep the panel permanently rendered (never `display: none`); collapse the closed state via `visibility: hidden`
+  //     + `width/height: 0` instead. Because the element stays rendered, `opacity` fades normally in BOTH directions with
+  //     no `@starting-style`, and an initial `open=true` computes straight to `opacity: 1` (appears instantly, no entry
+  //     fade) — which fixes the one downside of the current approach (initial `open=true` fades in on page load).
+  //   • Caveat: drive `visibility` + `width/height` from the `isOpen` flag with a CLOSE-ONLY delayed transition
+  //     (`… 0s linear ${isOpen ? '0s' : motionDurationMap.short}`), NOT from `:popover-open`. `:popover-open` drops
+  //     immediately on Chromium (only Safari/FF defer `hidePopover()`), so `:popover-open`-bound dimensions would collapse
+  //     to 0 at the START of the Chromium fade-out and clip the panel mid-fade. The delay keeps size/visibility through
+  //     the fade and collapses them only afterwards. `:popover-open` then remains solely for `overlay` + the Chromium
+  //     `allow-discrete` top-layer retention.
+  //   • `visibility: hidden` still occupies layout (can cause scrollbars), which is why it must be paired with
+  //     `width/height: 0`. `inert` is still required either way (visibility is delayed, so the panel stays visible/
+  //     tabbable during the fade-out).
+  //   • Trade-off: removes the `@starting-style` raw-CSS append + the initial-load fade, at the cost of reintroducing the
+  //     delayed `visibility` plus delayed `width/height` and tighter coupling to the motion duration.
+  return isOpen && !skipEntryTransition ? `${css}\n@starting-style {\n  [popover] {\n    opacity: 0;\n  }\n}` : css;
 };

@@ -9,8 +9,30 @@ export const metadata = {
 
 # Grid
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={['Base', 'Narrow', 'Basic', 'Extended', 'Wide', 'Full']} />
 
 ## JS
 
-<StylesTable meta={vanillaExtractMeta.grid} columnLabel="JS" />
+### Base
+
+<StylesTable meta={{ template: vanillaExtractMeta.grid.template, gap: vanillaExtractMeta.grid.gap }} columnLabel="JS" />
+
+### Narrow
+
+<StylesTable meta={vanillaExtractMeta.grid.narrow} columnLabel="JS" />
+
+### Basic
+
+<StylesTable meta={vanillaExtractMeta.grid.basic} columnLabel="JS" />
+
+### Extended
+
+<StylesTable meta={vanillaExtractMeta.grid.extended} columnLabel="JS" />
+
+### Wide
+
+<StylesTable meta={vanillaExtractMeta.grid.wide} columnLabel="JS" />
+
+### Full
+
+<StylesTable meta={vanillaExtractMeta.grid.full} columnLabel="JS" />

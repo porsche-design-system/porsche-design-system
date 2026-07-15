@@ -1,19 +1,34 @@
 import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
-import { Component, Element, Host, h, type JSX, Listen, Prop, State } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  Host,
+  h,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+} from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getHasNativePopoverSupport,
-  getPrefixedTagNames,
+  createTopLayerController,
   hasNamedSlot,
   hasPropValueChanged,
   isClickOutside,
+  observeChildren,
   parseAndGetAriaAttributes,
+  type TopLayerController,
+  unobserveChildren,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import {
+  getPopoverBorderRadius,
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
   POPOVER_SAFE_ZONE,
@@ -22,15 +37,25 @@ import {
 } from './popover-utils';
 
 const propTypes: PropTypes<typeof Popover> = {
+  open: AllowedTypes.boolean,
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
   description: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
 };
 
 /**
- * @slot {"name": "", "description": "Default slot for the popover content." }
+ * @slot {"name": "", "description": "Default slot for the popover content. Ignored when the `description` prop is set, which takes precedence." }
  * @slot {"name": "button", "description": "Renders a custom trigger button. When used, the default info button is replaced." }
+ *
+ * @controlled {"props": ["open"], "event": "dismiss"}
  */
+// The panel is a native `[popover="manual"]` element that the component promotes to the `#top-layer` itself, so it
+// always renders above surrounding content regardless of ancestor stacking contexts. The component supports two modes:
+// - uncontrolled: `open` is omitted and the component owns visibility via the internal `isOpen` state (toggled by the
+//   default info button or a slotted trigger); dismissal closes it directly.
+// - controlled: `open` is a boolean and the consumer owns visibility via a slotted `button`; dismissal only emits
+//   `dismiss` and the consumer flips `open`. See `isControlled` / `effectiveOpen` for how the two are reconciled.
 @Component({
   tag: 'p-popover',
   shadow: true,
@@ -38,46 +63,153 @@ const propTypes: PropTypes<typeof Popover> = {
 export class Popover {
   @Element() public host!: HTMLElement;
 
+  /**
+   * Controls whether the popover is visible. When set (controlled mode), visibility follows this prop and the consumer
+   * owns the open state via a slotted `button`. When omitted (uncontrolled mode), the component manages visibility itself.
+   */
+  @Prop() public open?: boolean;
+
   /** Sets the preferred direction for the popover to open relative to its trigger button. Falls back to the direction with the most available viewport space. */
   @Prop() public direction?: PopoverDirection = 'bottom';
 
-  /** Sets the text content displayed inside the popover panel when it is open, providing contextual help or information. */
+  /** Sets the text content displayed inside the popover panel when it is open, providing contextual help or information. Takes precedence over the default slot when both are provided. */
   @Prop() public description?: string;
+
+  /** Reduces padding and spacing for a more compact layout, useful in space-constrained interfaces. */
+  @Prop() public compact?: boolean;
 
   /** Sets ARIA attributes on the popover panel to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
 
+  /** Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+
   @State() private isOpen = false;
 
-  private popover: HTMLDivElement;
-  private button: HTMLButtonElement;
-  private slottedButton: HTMLElement;
-  private arrow: HTMLDivElement;
+  // Tracks the component's first render. While `true`, the entry transition (`@starting-style`) is suppressed so an
+  // initially-open popover (`open=true` on page load) appears instantly instead of fading in; flipped to `false` in
+  // `componentDidLoad`, so every later (user-triggered) open keeps the fade-in.
+  private isInitialRender = true;
+
+  // The `[popover]` panel element on the #top-layer that holds the content and the arrow.
+  private refPopover: HTMLDivElement;
+  // The default info button rendered in the Shadow DOM (only present when no `button` slot is used).
+  private refButton: HTMLButtonElement;
+  // The `<slot name="button">` element (only present when a custom trigger is projected); its assigned element is the
+  // actual trigger, see `triggerElement`.
+  private refSlotButton: HTMLElement;
+  // The visual arrow pointing from the panel to the trigger; positioned by Floating UI's `arrow` middleware.
+  private refArrow: HTMLDivElement;
+  // Teardown for the active Floating UI `autoUpdate` subscription; `undefined` while not positioning.
   private cleanUpAutoUpdate: () => void;
-  private hasNativePopoverSupport = getHasNativePopoverSupport();
-  // TODO: This should be updated when slot is changed
-  private hasSlottedButton: boolean;
+  // The trigger element `autoUpdate` is currently anchored to, so it can be rebound when the trigger identity changes.
+  private boundTriggerElement: HTMLElement;
+  // Tracks whether the document-level dismiss listeners (outside click / Escape / pointer) are currently registered.
+  private hasDismissListeners = false;
+  // Tracks whether a pointer button is currently pressed. Lets `onFocusout` defer pointer-driven focus loss (a click on
+  // an outside element, already handled by `onClickOutside`) to that handler, so a single outside pointer interaction
+  // emits `dismiss` once instead of twice. `onFocusout` then only dismisses on keyboard focus moves (Tab / Shift+Tab).
+  private isPointerInteraction = false;
+  // Tracks whether the current pointer gesture *started* inside the trigger or panel. A `click` only fires on the
+  // nearest common ancestor of `mousedown`/`mouseup`, so pressing inside the panel (e.g. starting a text selection),
+  // dragging out and releasing outside retargets the resulting `click` to an ancestor *outside* the popover. Without
+  // this flag `onClickOutside` would then wrongly dismiss. Captured at `pointerdown` time (where `composedPath()` is
+  // still valid) and consumed on the following `click`, so dismissal only happens when the gesture started outside too.
+  private isPointerDownInside = false;
+  // Keeps the panel on the #top-layer during its fade-out (Chromium via `overlay`; Safari/Firefox via a deferred hide).
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.refPopover,
+    isShown: () => !!this.refPopover?.matches(':popover-open'),
+    show: () => this.refPopover?.showPopover(),
+    hide: () => this.refPopover?.hidePopover(),
+  });
+
+  private get isControlled(): boolean {
+    // Controlled mode is opted into purely by passing a boolean `open`; an omitted (`undefined`) prop means the
+    // component manages its own visibility.
+    return typeof this.open === 'boolean';
+  }
+
+  private get effectiveOpen(): boolean {
+    // Single source of truth for "is the panel currently open", regardless of mode: the consumer-owned `open` prop in
+    // controlled mode, the internal `isOpen` state otherwise. All render/positioning/dismissal logic reads this.
+    return this.isControlled ? this.open : this.isOpen;
+  }
+
+  private get triggerElement(): HTMLElement {
+    // Resolves the element that actually acts as the trigger: the default info button in the Shadow DOM, or — when a
+    // custom trigger is projected through the `button` slot — the assigned light-DOM element itself (not the `<slot>`).
+    // Using the assigned element gives Floating UI an accurate anchor rect and lets `:host` use `display: contents`.
+    // Kept correct across dynamic slot changes by the `observeChildren` re-render in `connectedCallback`.
+    return this.refButton ?? ((this.refSlotButton as HTMLSlotElement)?.assignedElements()[0] as HTMLElement);
+  }
 
   @Listen('click')
   public onClick(e: MouseEvent): void {
-    // Handle opening when custom slotted button is clicked
-    if (this.hasSlottedButton && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
+    // Toggle open state when the custom slotted button is clicked (uncontrolled mode only; in controlled mode the
+    // consumer owns the trigger). The `closest('[slot="button"]')` match already implies a slotted button was clicked —
+    // clicks on the default shadow button retarget to the host at the shadow boundary, so `closest(...)` is `null` there
+    // and this does not double-toggle (that button toggles via its own inline `onClick`).
+    if (!this.isControlled && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
       this.isOpen = !this.isOpen;
     }
   }
 
-  public connectedCallback(): void {
-    if (!this.hasNativePopoverSupport) {
-      document.addEventListener('mousedown', this.onClickOutside, true);
+  @Listen('focusout')
+  public onFocusout(e: FocusEvent): void {
+    // Close when keyboard focus leaves the popover entirely (e.g. Tab / Shift+Tab onto another element such as a second
+    // popover's trigger). `relatedTarget` is the element receiving focus; only dismiss when it is a real element outside
+    // both the host and the panel. A `null` `relatedTarget` means focus was lost without moving to another focusable
+    // element (e.g. a mouse click on non-focusable panel content) and must NOT dismiss the popover — those cases are
+    // covered by `onClickOutside` / `onEscape`. This keeps keyboard-opening another popover working without any
+    // document-level coordination.
+    // Also skip when `relatedTarget` is an *ancestor* of the host: clicking non-focusable panel content inside a
+    // focusable container (e.g. an `[tabindex]` scroll/main wrapper such as the storefront's `#main-content`) shifts
+    // focus up to that container rather than to a sibling/unrelated element. That is not a genuine "focus left the
+    // popover" case — a keyboard tab-out never lands on an ancestor of the popover — so it must be ignored just like a
+    // `null` `relatedTarget`; outside-click / Escape still handle real dismissal.
+    // A pointer-driven focus loss (clicking an outside element) is already handled by `onClickOutside`; without this
+    // guard both fire for the same interaction and `dismiss` is emitted twice. So on pointer interactions defer to
+    // `onClickOutside` and only dismiss here for keyboard focus moves (Tab / Shift+Tab).
+    if (this.isPointerInteraction) {
+      return;
+    }
+    const relatedTarget = e.relatedTarget as HTMLElement | null;
+    if (
+      this.effectiveOpen &&
+      relatedTarget &&
+      !this.host.contains(relatedTarget) &&
+      !this.refPopover?.contains(relatedTarget) &&
+      !relatedTarget.contains(this.host)
+    ) {
+      this.dismissPopover();
     }
   }
 
+  public connectedCallback(): void {
+    // Observe dynamic light-DOM child changes so a slotted `button` being added, removed or replaced re-renders the
+    // component (switching between the default info button and the custom trigger). This watches the host's children
+    // directly rather than the shadow `slot`, so it also fires for the first button added to an empty popover.
+    // Scope is intentionally `childList`-only: `render()` only derives whether a slotted button exists via `hasNamedSlot`,
+    // which depends on a direct child carrying `slot="button"` — i.e. an add/remove (as frameworks do when conditionally
+    // rendering the trigger). Toggling the `slot` attribute on a persistent element isn't covered on purpose to avoid
+    // broadening the observer to `subtree`/`attributes`; matches `p-flyout` / `p-banner` / `p-accordion`.
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
+  }
+
   public disconnectedCallback(): void {
-    if (!this.hasNativePopoverSupport) {
-      document.removeEventListener('mousedown', this.onClickOutside, true);
-    }
-    // ensures floating ui event listeners are removed in case popover is removed from DOM
-    this.handlePopover(false);
+    // ensures the deferred top-layer hide is canceled and floating ui event listeners are removed in case popover is removed from DOM
+    this.topLayer.cancel();
+    this.syncAutoUpdate(false);
+    this.syncDismissListeners(false);
+    unobserveChildren(this.host);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -86,83 +218,93 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss);
+    attachComponentCss(this.host, getComponentCss, this.effectiveOpen, this.compact, this.isInitialRender);
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-    this.hasSlottedButton = hasNamedSlot(this.host, 'button');
+    const hasSlottedButton = hasNamedSlot(this.host, 'button');
+    const id = 'popover';
 
     return (
-      <Host onKeyDown={this.onHostKeydown}>
-        {this.hasSlottedButton ? (
-          <slot name="button" ref={(el: HTMLElement) => (this.slottedButton = el)} />
+      <Host>
+        {hasSlottedButton ? (
+          <slot name="button" ref={(el: HTMLElement) => (this.refSlotButton = el)} />
         ) : (
           <button
             type="button"
-            onClick={() => (this.isOpen = !this.isOpen)}
-            {...parseAndGetAriaAttributes({
-              ...parseAndGetAriaAttributes(this.aria),
-              ...{ 'aria-expanded': this.isOpen },
-            })}
-            ref={(el) => (this.button = el)}
-          >
-            <PrefixedTagNames.pIcon class="icon" name="information" />
-            <span class="label">More information</span>
-          </button>
+            onClick={() => !this.isControlled && (this.isOpen = !this.isOpen)}
+            // Defaults first, then the consumer `aria` prop (parsed once) so it can override e.g. `aria-label`,
+            // then `aria-expanded` last so it always reflects the current open state and can't be overridden.
+            aria-label="More information"
+            aria-details={id}
+            {...parseAndGetAriaAttributes(this.aria)}
+            aria-expanded={this.effectiveOpen ? 'true' : 'false'}
+            ref={(el) => (this.refButton = el)}
+          />
         )}
-        {this.isOpen && (
-          <div popover="auto" onToggle={this.onToggle} ref={(el) => (this.popover = el)}>
-            <div class="arrow" ref={(el) => (this.arrow = el)} />
-            <div class="content">{this.description ? <p>{this.description}</p> : <slot />}</div>
-          </div>
-        )}
+        {/* The panel uses `popover="manual"` so the component fully owns open/close timing (no native light-dismiss).
+            It stays mounted so it can transition (fade-out) when closing; visibility is driven by `effectiveOpen` via
+            CSS and the top-layer controller. Dismissal on outside-click, Escape, and focus leaving the popover is
+            handled via `onClickOutside` / `onEscape` / `onFocusout`, keeping the panel on the #top-layer during
+            the fade-out. */}
+        {/* `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
+            fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
+            during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
+            `inert` avoids that and mirrors the pattern used by `p-modal` / `p-sheet` / `p-drilldown`. */}
+        <div id={id} popover="manual" inert={!this.effectiveOpen} ref={(el) => (this.refPopover = el)}>
+          <div class="arrow" ref={(el) => (this.refArrow = el)} />
+          {this.description ? <p>{this.description}</p> : <slot />}
+        </div>
       </Host>
     );
   }
 
   public componentDidRender(): void {
-    // needs to be called after render cycle to be able to render the popover conditionally
-    this.handlePopover(this.isOpen);
+    // needs to be called after render cycle so the panel reference exists and visibility can be toggled
+    if (this.effectiveOpen) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
+    this.syncAutoUpdate(this.effectiveOpen);
+    // Register/unregister the document-level dismiss listeners based on the current open state (idempotent).
+    this.syncDismissListeners(this.effectiveOpen);
   }
 
-  private handlePopover = (open: boolean): void => {
-    if (open) {
-      this.hasNativePopoverSupport && this.popover.showPopover();
-      if (!this.cleanUpAutoUpdate) {
-        this.cleanUpAutoUpdate = autoUpdate(this.button || this.slottedButton, this.popover, this.updatePosition);
-      }
-    } else {
-      this.cleanUpAutoUpdate?.();
+  public componentDidLoad(): void {
+    // After the first render the initial-open entry fade has been (intentionally) suppressed; clear the flag so any
+    // subsequent user-triggered open renders with `@starting-style` and fades in normally.
+    this.isInitialRender = false;
+  }
+
+  private syncAutoUpdate = (active: boolean): void => {
+    const triggerElement = this.triggerElement;
+    // Rebind if the trigger element identity changed while active. This happens when the children observer swaps
+    // between the default shadow button and the slotted `button` (e.g. a `slot="button"` child added/removed/replaced
+    // while the popover is already open); `autoUpdate` captured the previous reference at setup and would otherwise stay
+    // anchored to the removed element.
+    if (active && this.cleanUpAutoUpdate && this.boundTriggerElement !== triggerElement) {
+      this.cleanUpAutoUpdate();
       this.cleanUpAutoUpdate = undefined;
     }
-  };
-
-  private onClickOutside = (e: MouseEvent): void => {
-    // Only called in case of no native popover support
-    if (this.isOpen && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
-      this.isOpen = false;
+    // `triggerElement` can be momentarily undefined (e.g. a slotted button not yet projected), so only bind once it
+    // resolves to a real element; the next render (forced by `observeChildren`) re-runs this and binds then.
+    if (active && triggerElement && !this.cleanUpAutoUpdate) {
+      this.cleanUpAutoUpdate = autoUpdate(triggerElement, this.refPopover, this.positionPopover);
+      this.boundTriggerElement = triggerElement;
+    } else if (!active && this.cleanUpAutoUpdate) {
+      this.cleanUpAutoUpdate();
+      this.cleanUpAutoUpdate = undefined;
+      this.boundTriggerElement = undefined;
     }
   };
 
-  private onToggle = (e: ToggleEvent): void => {
-    this.isOpen = e.newState === 'open';
-  };
-
-  private onHostKeydown = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' && this.isOpen) {
-      // TODO: How to handle focus when button is slotted?
-      if (!this.hasSlottedButton) {
-        this.button.focus();
-      }
-      // Only necessary in case of no native popover support
-      if (!this.hasNativePopoverSupport) {
-        this.isOpen = false;
-      }
-    }
-  };
-
-  private updatePosition = async (): Promise<void> => {
-    const { x, y, placement, middlewareData } = await computePosition(this.button || this.slottedButton, this.popover, {
+  private positionPopover = async (): Promise<void> => {
+    const { x, y, placement, middlewareData } = await computePosition(this.triggerElement, this.refPopover, {
       placement: this.direction,
+      // Use the `fixed` strategy because the panel is promoted to the `#top-layer` via `showPopover()`. Safari does
+      // not resolve a top-layer element's `offsetParent` synchronously after `showPopover()`, so the default
+      // `absolute` strategy computes offsets against a wrong/zero origin and mis-places the panel at the top-left
+      // until a resize re-triggers `autoUpdate`. `fixed` positions relative to the viewport and avoids this.
+      strategy: 'fixed',
       middleware: [
         offset(16),
         shift({
@@ -176,29 +318,117 @@ export class Popover {
           padding: POPOVER_SAFE_ZONE,
           fallbackAxisSideDirection: 'end',
         }),
-        arrow({ element: this.arrow }),
+        arrow({ element: this.refArrow, padding: getPopoverBorderRadius(this.refPopover) }),
       ],
     });
 
     const placementVertical = placement === 'top' || placement === 'bottom';
     const placementTopLeft = placement === 'top' || placement === 'left';
 
-    Object.assign(this.popover.style, {
+    Object.assign(this.refPopover.style, {
       left: `${x}px`,
       top: `${y}px`,
     });
 
     const { x: xArrow, y: yArrow } = middlewareData.arrow;
 
-    Object.assign(this.arrow.style, {
+    // Position and orient the arrow so it points from the panel edge towards the trigger. Floating UI's `arrow`
+    // middleware only provides the offset along the panel edge (`xArrow` for horizontal edges, `yArrow` for vertical
+    // ones); the perpendicular side is pinned to `-12px` so the arrow sits flush against the panel, and its shape is
+    // rotated to face the trigger.
+    Object.assign(this.refArrow.style, {
+      // Triangle shape: pointing down for top/bottom placements, pointing sideways for left/right placements.
       clipPath: placementVertical ? 'polygon(50% 0, 100% 110%, 0 110%)' : 'polygon(0 50%, 110% 0, 110% 100%)',
+      // Swap width/height so the base always spans the panel edge the arrow attaches to.
       width: placementVertical ? '24px' : '12px',
       height: placementVertical ? '12px' : '24px',
-      transform: `rotate(${placementTopLeft ? '180deg' : '0'}`,
+      // Flip 180° for `top`/`left` so the tip points away from the panel (towards a trigger above/left of it).
+      transform: `rotate(${placementTopLeft ? '180deg' : '0'})`,
+      // Offset along the edge (`xArrow`) for placements whose arrow lives on a horizontal edge; pinned otherwise.
       left: ['right', 'bottom', 'top'].includes(placement) ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
       right: placement === 'left' ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
+      // Offset along the edge (`yArrow`) for placements whose arrow lives on a vertical edge; pinned otherwise.
       top: ['bottom', 'left', 'right'].includes(placement) ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
       bottom: placement === 'top' ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
     });
+  };
+
+  private syncDismissListeners = (active: boolean): void => {
+    if (active && !this.hasDismissListeners) {
+      // Capture phase on `click` (not `mousedown`) so any external control bound to `open` finishes its own click
+      // first: the capture-phase dismiss and the control's bubble-phase toggle land in a single, correctly-ordered
+      // state update. Firing on `mousedown` re-renders such a control mid-gesture, letting its subsequent click flip
+      // the freshly-rendered state back and re-open the popover (controlled-mode re-open race).
+      document.addEventListener('click', this.onClickOutside, true);
+      document.addEventListener('keydown', this.onEscape);
+      // Track the pointer press/release around a click so `onFocusout` can defer pointer-driven focus loss to
+      // `onClickOutside` (avoids emitting `dismiss` twice for one outside click on a focusable element).
+      document.addEventListener('pointerdown', this.onPointerDown, true);
+      document.addEventListener('pointerup', this.onPointerUp, true);
+      this.hasDismissListeners = true;
+    } else if (!active && this.hasDismissListeners) {
+      document.removeEventListener('click', this.onClickOutside, true);
+      document.removeEventListener('keydown', this.onEscape);
+      document.removeEventListener('pointerdown', this.onPointerDown, true);
+      document.removeEventListener('pointerup', this.onPointerUp, true);
+      this.hasDismissListeners = false;
+    }
+  };
+
+  private onPointerDown = (e: PointerEvent): void => {
+    this.isPointerInteraction = true;
+    // Record whether the press began inside the trigger or the panel, so a selection dragged out and released outside
+    // does not dismiss on the resulting (retargeted) `click`.
+    this.isPointerDownInside =
+      !isClickOutside(e, this.refPopover) || (!!this.triggerElement && !isClickOutside(e, this.triggerElement));
+  };
+
+  private onPointerUp = (): void => {
+    this.isPointerInteraction = false;
+  };
+
+  private onClickOutside = (e: MouseEvent): void => {
+    // A gesture that started inside the trigger or panel (e.g. a text selection) but ends outside produces a `click`
+    // retargeted to a common ancestor outside the popover. Consume the `pointerdown`-origin flag and skip dismissal in
+    // that case, so the popover only closes when the interaction both started and ended outside.
+    const startedInside = this.isPointerDownInside;
+    this.isPointerDownInside = false;
+    if (startedInside) {
+      return;
+    }
+    // Light-dismiss on an outside `click` (capture phase). Firing on `click` rather than `mousedown` lets an external
+    // control bound to `open` complete its own click before dismissal, avoiding a controlled-mode re-open race.
+    // Clicks on the trigger button or inside the panel must not close it; the trigger toggles its own state via the
+    // button/`onClick` handlers.
+    if (this.effectiveOpen && isClickOutside(e, this.triggerElement) && isClickOutside(e, this.refPopover)) {
+      this.dismissPopover();
+    }
+  };
+
+  private onEscape = (e: KeyboardEvent): void => {
+    // `popover="manual"` does not light-dismiss, so Escape is handled manually (mirrors `p-banner`).
+    if (e.key === 'Escape' && this.effectiveOpen) {
+      // Return focus to the trigger before closing so keyboard users are not stranded on the (about to be `inert`)
+      // panel content. Focus must move synchronously here: the closing re-render marks the panel `inert`, which would
+      // otherwise drop focus to `<body>`. Mirrors the focus-restore behavior of native `<dialog>` (`p-modal` / `p-flyout`).
+      this.focusTrigger();
+      this.dismissPopover();
+    }
+  };
+
+  private focusTrigger = (): void => {
+    // Move focus to the actually rendered trigger (default info button or the projected custom button).
+    this.triggerElement?.focus();
+  };
+
+  private dismissPopover = (): void => {
+    // Centralizes the dismissal behavior: in controlled mode the consumer owns the open state, so only emit `dismiss`;
+    // in uncontrolled mode the component closes itself. The fade-out and top-layer removal are handled by the
+    // top-layer controller on the next render.
+    if (this.isControlled) {
+      this.dismiss.emit();
+    } else {
+      this.isOpen = false;
+    }
   };
 }
