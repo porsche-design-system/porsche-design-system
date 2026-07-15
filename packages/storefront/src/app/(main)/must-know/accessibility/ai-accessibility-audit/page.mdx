@@ -2,12 +2,12 @@ import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
-  title: 'Accessibility: Web Accessibility Audit - Porsche Design System',
+  title: 'Accessibility: AI Accessibility Audit - Porsche Design System',
   description:
     'Install the Porsche accessibility-agents web audit bundle and run guided WCAG 2.2 AA audits in GitHub Copilot.',
 };
 
-# Web Accessibility Audit
+# AI Accessibility Audit
 
 <TableOfContents
   headings={['Install the audit bundle', 'Run the audit', 'Installed files', 'Update and uninstall', 'Limitations']}
@@ -26,10 +26,9 @@ needs its own audit. Automated scans complement manual keyboard, screen reader, 
   | Requirement | Details |
   | ---------------- | ----------------------------------------------------------------------------------------------- |
   | **Platform** | macOS or Linux |
-  | **Editor** | VS Code with a current [GitHub Copilot](https://docs.github.com/en/copilot) release |
+  | **Supported Editors** | VS Code with a current [GitHub Copilot](https://docs.github.com/en/copilot) release (full support) <br /> Cursor, Claude, other AI agents (partial support) |
   | **Runtime** | Node.js 18 or newer and npm (for axe-core scans via `npx @axe-core/cli`) |
   | **Product** | A local checkout of the web application to audit |
-  | **Coding rules** | [AI Agent Context](/must-know/accessibility/ai-agent-context/) — `AGENTS.md` and platform rules |
 </Notification>
 
 ## Install the audit bundle
@@ -73,10 +72,10 @@ bash /path/to/accessibility-agents/install-web-audit.sh --target /path/to/web-pr
 | `--check`          | Validate source bundle, Node/npm readiness, and target completeness                   |
 | `--force`          | Replace allowlisted bundle files (never replaces an existing `.a11y-web-config.json`) |
 | `--yes`            | Non-interactive automation                                                            |
-| `--source-ref REF` | Branch, tag, or commit for remote bootstrap                                           |
+| `--help`           | Display help information                                                              |
 
 Existing target files are skipped unless `--force` is supplied. The installer merges a focused accessibility block into
-`.github/copilot-instructions.md` between managed markers while preserving your other content.
+`.github/copilot-instructions.md` between managed markers while **preserving** your other content.
 
 Review the changes before committing. Project installation makes the customizations available to your team and to
 Copilot Coding Agent.
