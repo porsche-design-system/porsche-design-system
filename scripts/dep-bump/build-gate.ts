@@ -85,7 +85,8 @@ async function main(): Promise<never> {
   while (Date.now() < deadline) {
     await new Promise((r) => setTimeout(r, POLL_MS));
     const runs = listRuns(branch);
-    // Prefer a run created by THIS dispatch (new databaseId) on our sha.
+    // Only accept a run created by THIS dispatch (new databaseId) on our sha;
+    // never fall back to a stale run from a prior same-sha dispatch.
     run = pickFreshRun(runs, before, sha);
     const verdict = classifyRun(run);
     if (verdict !== 'PENDING') {
