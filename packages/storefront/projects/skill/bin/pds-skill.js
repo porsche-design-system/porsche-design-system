@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-'use strict';
 
 // Links a locally installed Porsche Design System wrapper skill into the consumer project. The
 // wrapper package is an explicit argument and is resolved from the cwd, so the correct skill is
@@ -17,11 +16,11 @@
 //     --root     resolve a relative dir against the project root (nearest .git) instead of the cwd
 //     -h,--help  print this usage
 //
-// This file is kept byte-identical across all four wrapper packages; a producer spec enforces
-// the sync. When editing, copy the change to every copy.
+// This is the canonical source copied into all four wrapper package distributions by their
+// `build:subPackages:skill:bin` steps.
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const SUPPORTED_PACKAGES = [
   '@porsche-design-system/components-js',
@@ -56,7 +55,7 @@ const linkNameFromSkill = (skillDir) => {
   }
 
   const frontmatter = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  const name = frontmatter && frontmatter[1].match(/^name:[ \t]*(.+?)[ \t]*$/m);
+  const name = frontmatter?.[1].match(/^name:[ \t]*(.+?)[ \t]*$/m);
   if (!name) {
     fail(`Cannot read the skill name: no \`name\` field in the frontmatter of ${skillMdPath}.`);
   }

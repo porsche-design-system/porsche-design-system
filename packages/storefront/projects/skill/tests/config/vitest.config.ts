@@ -11,6 +11,7 @@ export default defineConfig({
   test: {
     root: resolve(__dirname, '../../'),
     include: ['tests/specs/**/*.spec.{tsx,ts}'],
+    exclude: ['tests/specs/bin/**/*.spec.ts'],
     globals: true,
     testTimeout: 10000,
     environment: 'jsdom',

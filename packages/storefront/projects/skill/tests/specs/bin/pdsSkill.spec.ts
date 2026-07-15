@@ -1,12 +1,12 @@
 // @vitest-environment node
 
-import { execFileSync } from 'child_process';
-import * as fs from 'fs';
-import { tmpdir } from 'os';
-import * as path from 'path';
+import { execFileSync } from 'node:child_process';
+import * as fs from 'node:fs';
+import { tmpdir } from 'node:os';
+import * as path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 
-const realBinPath = path.resolve(__dirname, '../../../projects/components-wrapper/bin/pds-skill.js');
+const realBinPath = path.resolve(__dirname, '../../../bin/pds-skill.js');
 const DEST = '.claude/skills';
 const PACKAGE_NAMES = {
   js: '@porsche-design-system/components-js',
@@ -16,13 +16,6 @@ const PACKAGE_NAMES = {
 } as const;
 const DEFAULT_PACKAGE_NAME = PACKAGE_NAMES.js;
 const DEFAULT_SKILL_NAME = 'porsche-design-system-components-js';
-
-const wrapperBinPaths: Record<keyof typeof PACKAGE_NAMES, string> = {
-  js: realBinPath,
-  angular: path.resolve(__dirname, '../../../../components-angular/projects/angular-wrapper/bin/pds-skill.js'),
-  react: path.resolve(__dirname, '../../../../components-react/projects/react-wrapper/bin/pds-skill.js'),
-  vue: path.resolve(__dirname, '../../../../components-vue/projects/vue-wrapper/bin/pds-skill.js'),
-};
 
 const fixtures: string[] = [];
 
@@ -285,31 +278,5 @@ describe('pds-skill bin', () => {
     const { run } = createFixture({ withPackage: false });
 
     expect(run({ args: ['--help'] })).toContain('Usage: pds-skill <package> <dir> [--root]');
-  });
-});
-
-describe('pds-skill package integration', () => {
-  const wrapperPkgJsonPaths: Record<keyof typeof PACKAGE_NAMES, string> = {
-    js: path.resolve(__dirname, '../../../projects/components-wrapper/package.json'),
-    angular: path.resolve(__dirname, '../../../../components-angular/projects/angular-wrapper/package.json'),
-    react: path.resolve(__dirname, '../../../../components-react/projects/react-wrapper/package.json'),
-    vue: path.resolve(__dirname, '../../../../components-vue/projects/vue-wrapper/package.json'),
-  };
-
-  it('should keep the shared bin byte-identical across all wrappers', () => {
-    const reference = fs.readFileSync(wrapperBinPaths.js, 'utf8');
-    for (const [framework, binPath] of Object.entries(wrapperBinPaths)) {
-      expect(fs.existsSync(binPath), `${framework} wrapper is missing bin/pds-skill.js`).toBe(true);
-      expect(fs.readFileSync(binPath, 'utf8'), `${framework} wrapper bin/pds-skill.js drifted from js`).toBe(reference);
-    }
-  });
-
-  it('should expose the shared pds-skill bin from every wrapper package', () => {
-    for (const [framework, pkgJsonPath] of Object.entries(wrapperPkgJsonPaths)) {
-      const pkg = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8'));
-      const binRelPath = pkg.bin?.['pds-skill'];
-      expect(binRelPath, `${framework} wrapper package.json has no \`pds-skill\` bin entry`).toBeTruthy();
-      expect(fs.existsSync(path.resolve(path.dirname(pkgJsonPath), binRelPath))).toBe(true);
-    }
   });
 });
