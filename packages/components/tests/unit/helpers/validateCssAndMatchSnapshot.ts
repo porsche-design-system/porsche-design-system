@@ -1,30 +1,51 @@
+import { createHash } from 'node:crypto';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { expect } from 'vitest';
 import { getCssObject } from '../../../src/test-utils';
 
+const cssDumpDir = process.env.PDS_CSS_DUMP;
+if (cssDumpDir) {
+  mkdirSync(cssDumpDir, { recursive: true });
+}
+
 export const validateCssAndMatchSnapshot = (css: string) => {
-  const cssObject: any = getCssObject(css);
   const componentName = expect.getState().testPath.match(/\/([^/]+)\/[^/]+\.spec\.ts/)[1];
+
+  if (cssDumpDir) {
+    writeFileSync(
+      join(cssDumpDir, `${componentName}-${createHash('md5').update(css).digest('hex').slice(0, 8)}.css`),
+      css
+    );
+  }
+
+  const cssObject: any = getCssObject(css);
   const componentTagName = `p-${componentName}` as TagName;
   // Extract componentMeta from testPath, if it's a functional component this will be undefined
   const componentMeta = getComponentMeta(componentTagName);
 
   expect(css).not.toMatch('. {'); // Invalid css which was produced before
 
+  // JSS output spells the FOUC selector without a space after the comma, the
+  // Prettier-formatted css`` helper with only one. In the end it's the same selector, so for now we accept both.
+  // Once the last JSS component is migrated, drop the spaceless lookup (first key) and keep only the spaced spelling.
+  const foucStyle = cssObject[':not(:defined,[data-ssr])'] ?? cssObject[':not(:defined, [data-ssr])'];
+
   validateVisibilityStyle(cssObject);
   validateSlottedStyles(cssObject, componentTagName);
   validateHoverMediaQuery(cssObject);
   validatePreventFoucOfNestedElementsStyle(
-    cssObject,
+    foucStyle,
     (componentMeta && Array.isArray(componentMeta.nestedComponents) && componentMeta.nestedComponents.length > 0) ||
-    /* Functional components (e.g. InputBase) have no TAG_NAMES entry, so getComponentMeta returns
-     * undefined and nestedComponents cannot be derived from metadata. Fall back to the CSS itself:
-     * if the FOUC selector (:not(:defined,[data-ssr])) is present in the output, the component
-     * declares it has nested PDS components and we validate its value; if absent, we expect it to
-     * stay absent. The CSS is the source of truth for functional components.
-     */
-    (!componentMeta && !!cssObject[':not(:defined,[data-ssr])'])
+      /* Functional components (e.g. InputBase) have no TAG_NAMES entry, so getComponentMeta returns
+       * undefined and nestedComponents cannot be derived from metadata. Fall back to the CSS itself:
+       * if the FOUC selector (:not(:defined,[data-ssr])) is present in the output, the component
+       * declares it has nested PDS components and we validate its value; if absent, we expect it to
+       * stay absent. The CSS is the source of truth for functional components.
+       */
+      (!componentMeta && !!foucStyle)
   );
 
   // Validations for components only
@@ -37,12 +58,11 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   expect(css).toMatchSnapshot();
 };
 
-const validatePreventFoucOfNestedElementsStyle = (cssObject: any, isComponentWithNestedComponents: boolean) => {
-  const selector = ':not(:defined,[data-ssr])';
+const validatePreventFoucOfNestedElementsStyle = (foucStyle: any, isComponentWithNestedComponents: boolean) => {
   if (isComponentWithNestedComponents) {
-    expect(cssObject[selector]).toEqual({ visibility: 'hidden' });
+    expect(foucStyle).toEqual({ visibility: 'hidden' });
   } else {
-    expect(cssObject[selector]).toBe(undefined);
+    expect(foucStyle).toBe(undefined);
   }
 };
 
