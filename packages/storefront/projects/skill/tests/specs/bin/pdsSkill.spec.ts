@@ -16,6 +16,7 @@ const PACKAGE_NAMES = {
 } as const;
 const DEFAULT_PACKAGE_NAME = PACKAGE_NAMES.js;
 const DEFAULT_SKILL_NAME = 'porsche-design-system-components-js';
+const canTestPosixPermissions = process.platform !== 'win32' && process.getuid?.() !== 0;
 
 const fixtures: string[] = [];
 
@@ -31,10 +32,14 @@ const createFixture = ({
   withPackage = true,
   withSkill = true,
   packageName = DEFAULT_PACKAGE_NAME,
+  packageJsonContent,
+  skillEntryType = 'file',
 }: {
   withPackage?: boolean;
   withSkill?: boolean;
   packageName?: string;
+  packageJsonContent?: string;
+  skillEntryType?: 'file' | 'directory';
 } = {}): Fixture => {
   const root = fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-'));
   fixtures.push(root);
@@ -53,21 +58,27 @@ const createFixture = ({
     fs.mkdirSync(packageDir, { recursive: true });
     fs.writeFileSync(
       path.join(packageDir, 'package.json'),
-      JSON.stringify({
-        name: packageName,
-        exports: {
-          './package.json': './package.json',
-        },
-      })
+      packageJsonContent ??
+        JSON.stringify({
+          name: packageName,
+          exports: {
+            './package.json': './package.json',
+          },
+        })
     );
 
     if (withSkill) {
       skillDir = path.join(packageDir, 'skill');
       fs.mkdirSync(skillDir, { recursive: true });
-      fs.writeFileSync(
-        path.join(skillDir, 'SKILL.md'),
-        `---\nname: ${packageName.slice(1).replace('/', '-')}\ndescription: test skill\n---\n\n# marker\n`
-      );
+      const skillMdPath = path.join(skillDir, 'SKILL.md');
+      if (skillEntryType === 'directory') {
+        fs.mkdirSync(skillMdPath);
+      } else {
+        fs.writeFileSync(
+          skillMdPath,
+          `---\nname: ${packageName.slice(1).replace('/', '-')}\ndescription: test skill\n---\n\n# marker\n`
+        );
+      }
     }
   }
 
@@ -175,6 +186,60 @@ describe('pds-skill bin', () => {
     expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
   });
 
+  it('should fail clearly when the package manifest contains invalid JSON', () => {
+    const { run, projectDir } = createFixture({ packageJsonContent: '{ invalid json\n' });
+
+    expect(() => run()).toThrow(/Cannot read .*package\.json: invalid JSON/);
+    expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+  });
+
+  it('should fail clearly when the package manifest is not an object', () => {
+    const { run, projectDir } = createFixture({ packageJsonContent: 'null\n' });
+
+    expect(() => run()).toThrow(
+      /Expected @porsche-design-system\/components-js.*found a package without a name/
+    );
+    expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+  });
+
+  it.runIf(canTestPosixPermissions)('should fail clearly when the package manifest is not readable', () => {
+    const { run, projectDir } = createFixture();
+    const packageJsonPath = path.join(
+      projectDir,
+      'node_modules',
+      ...DEFAULT_PACKAGE_NAME.split('/'),
+      'package.json'
+    );
+    fs.chmodSync(packageJsonPath, 0o000);
+
+    try {
+      expect(() => run()).toThrow(/Cannot read .*package\.json: permission denied/);
+      expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+    } finally {
+      fs.chmodSync(packageJsonPath, 0o600);
+    }
+  });
+
+  it('should fail clearly when SKILL.md is not a file', () => {
+    const { run, projectDir } = createFixture({ skillEntryType: 'directory' });
+
+    expect(() => run()).toThrow(/SKILL\.md is not a file/);
+    expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+  });
+
+  it.runIf(canTestPosixPermissions)('should fail clearly when SKILL.md is not readable', () => {
+    const { run, projectDir, skillDir } = createFixture();
+    const skillMdPath = path.join(skillDir as string, 'SKILL.md');
+    fs.chmodSync(skillMdPath, 0o000);
+
+    try {
+      expect(() => run()).toThrow(/Cannot read .*SKILL\.md: permission denied/);
+      expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+    } finally {
+      fs.chmodSync(skillMdPath, 0o600);
+    }
+  });
+
   it('should reject unsupported packages', () => {
     const { run } = createFixture();
 
@@ -209,6 +274,59 @@ describe('pds-skill bin', () => {
     fs.writeFileSync(path.join(projectDir, DEST), 'not a directory\n');
 
     expect(() => run()).toThrow(/Cannot create/);
+  });
+
+  it.runIf(canTestPosixPermissions)('should fail clearly when the destination is not writable', () => {
+    const { run, projectDir, linkName } = createFixture();
+    const lockedDir = path.join(projectDir, 'locked-skills');
+    fs.mkdirSync(lockedDir);
+    fs.chmodSync(lockedDir, 0o500);
+
+    try {
+      expect(() =>
+        run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', lockedDir] })
+      ).toThrow(/Cannot create .*porsche-design-system-components-js: permission denied/);
+      expect(fs.existsSync(path.join(lockedDir, linkName))).toBe(false);
+    } finally {
+      fs.chmodSync(lockedDir, 0o700);
+    }
+  });
+
+  it.runIf(canTestPosixPermissions)('should fail clearly when a destination directory cannot be created', () => {
+    const { run, projectDir } = createFixture();
+    const lockedDir = path.join(projectDir, 'locked-parent');
+    const destination = path.join(lockedDir, 'skills');
+    fs.mkdirSync(lockedDir);
+    fs.chmodSync(lockedDir, 0o500);
+
+    try {
+      expect(() =>
+        run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', destination] })
+      ).toThrow(/Cannot create .*skills: permission denied/);
+      expect(fs.existsSync(destination)).toBe(false);
+    } finally {
+      fs.chmodSync(lockedDir, 0o700);
+    }
+  });
+
+  it.runIf(canTestPosixPermissions)('should fail clearly when a stale link cannot be replaced', () => {
+    const { run, projectDir, linkName } = createFixture();
+    const lockedDir = path.join(projectDir, 'locked-skills');
+    const linkPath = path.join(lockedDir, linkName);
+    const staleTarget = path.join(projectDir, 'stale-skill');
+    fs.mkdirSync(lockedDir);
+    fs.mkdirSync(staleTarget);
+    fs.symlinkSync(staleTarget, linkPath, 'dir');
+    fs.chmodSync(lockedDir, 0o500);
+
+    try {
+      expect(() =>
+        run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', lockedDir] })
+      ).toThrow(/Cannot replace .*porsche-design-system-components-js: permission denied/);
+      expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(staleTarget));
+    } finally {
+      fs.chmodSync(lockedDir, 0o700);
+    }
   });
 
   it('should link into a custom destination directory', () => {

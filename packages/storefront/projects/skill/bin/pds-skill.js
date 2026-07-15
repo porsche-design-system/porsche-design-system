@@ -40,6 +40,9 @@ const fail = (message) => {
   process.exit(1);
 };
 
+const isMissingPathError = (error) => error.code === 'ENOENT' || error.code === 'ENOTDIR';
+const isPermissionError = (error) => error.code === 'EACCES' || error.code === 'EPERM';
+
 const parseOptions = (args) => {
   try {
     return parseArgs({
@@ -59,6 +62,59 @@ const parseOptions = (args) => {
 
 const linkNameFromPackage = (packageName) => packageName.slice(1).replace('/', '-');
 
+const readPackageManifest = (packageJsonPath) => {
+  let content;
+  try {
+    content = fs.readFileSync(packageJsonPath, 'utf8');
+  } catch (error) {
+    if (isMissingPathError(error)) {
+      return undefined;
+    }
+    if (isPermissionError(error)) {
+      fail(`Cannot read ${packageJsonPath}: permission denied. Check the package permissions and re-run.`);
+    }
+    throw error;
+  }
+
+  try {
+    return JSON.parse(content);
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      fail(`Cannot read ${packageJsonPath}: invalid JSON. Reinstall the package and re-run.`);
+    }
+    throw error;
+  }
+};
+
+const validateSkillEntry = (skillMdPath) => {
+  let stats;
+  try {
+    stats = fs.statSync(skillMdPath);
+  } catch (error) {
+    if (isMissingPathError(error)) {
+      fail(`The installed package does not ship a skill at ${skillMdPath}. Upgrade the package and re-run.`);
+    }
+    if (isPermissionError(error)) {
+      fail(`Cannot read ${skillMdPath}: permission denied. Check the package permissions and re-run.`);
+    }
+    throw error;
+  }
+
+  if (!stats.isFile()) {
+    fail(`${skillMdPath} is not a file. Reinstall the package and re-run.`);
+  }
+
+  try {
+    const descriptor = fs.openSync(skillMdPath, 'r');
+    fs.closeSync(descriptor);
+  } catch (error) {
+    if (isPermissionError(error)) {
+      fail(`Cannot read ${skillMdPath}: permission denied. Check the package permissions and re-run.`);
+    }
+    throw error;
+  }
+};
+
 const skillDirFromPackage = (packageName, cwd) => {
   if (!SUPPORTED_PACKAGES.includes(packageName)) {
     fail(`Unsupported package: ${packageName}\n${USAGE}`);
@@ -68,26 +124,15 @@ const skillDirFromPackage = (packageName, cwd) => {
   for (;;) {
     const packageDir = path.join(dir, 'node_modules', ...packageName.split('/'));
     const packageJsonPath = path.join(packageDir, 'package.json');
-    try {
-      const pkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-      if (pkg.name !== packageName) {
-        fail(`Expected ${packageName} at ${packageDir}, but found ${pkg.name || 'a package without a name'}.`);
+    const pkg = readPackageManifest(packageJsonPath);
+    if (pkg !== undefined) {
+      const installedName = pkg && typeof pkg === 'object' ? pkg.name : undefined;
+      if (installedName !== packageName) {
+        fail(`Expected ${packageName} at ${packageDir}, but found ${installedName || 'a package without a name'}.`);
       }
       const skillDir = path.join(packageDir, 'skill');
-      const skillMdPath = path.join(skillDir, 'SKILL.md');
-      try {
-        fs.accessSync(skillMdPath, fs.constants.R_OK);
-      } catch (error) {
-        if (error.code === 'ENOENT' || error.code === 'ENOTDIR') {
-          fail(`The installed package does not ship a skill at ${skillMdPath}. Upgrade the package and re-run.`);
-        }
-        throw error;
-      }
+      validateSkillEntry(path.join(skillDir, 'SKILL.md'));
       return skillDir;
-    } catch (error) {
-      if (error.code !== 'ENOENT' && error.code !== 'ENOTDIR') {
-        throw error;
-      }
     }
 
     const parent = path.dirname(dir);
@@ -141,6 +186,9 @@ const main = () => {
     if (error.code === 'ENOTDIR' || error.code === 'EEXIST') {
       fail(`Cannot create ${show(skillsDir)}: a parent path exists as a file, not a directory. Remove it and re-run.`);
     }
+    if (isPermissionError(error)) {
+      fail(`Cannot create ${show(skillsDir)}: permission denied. Check the destination permissions and re-run.`);
+    }
     throw error;
   }
 
@@ -151,7 +199,11 @@ const main = () => {
   try {
     existing = fs.lstatSync(linkPath);
   } catch (error) {
-    if (error.code !== 'ENOENT') {
+    if (error.code === 'ENOENT') {
+      existing = null;
+    } else if (isPermissionError(error)) {
+      fail(`Cannot inspect ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
+    } else {
       throw error;
     }
   }
@@ -166,11 +218,22 @@ const main = () => {
         return;
       }
     } catch (error) {
-      if (error.code !== 'ENOENT') {
+      if (error.code === 'ENOENT') {
+        // The existing link is dangling and can be replaced.
+      } else if (isPermissionError(error)) {
+        fail(`Cannot inspect ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
+      } else {
         throw error;
       }
     }
-    fs.rmSync(linkPath, { force: true });
+    try {
+      fs.rmSync(linkPath, { force: true });
+    } catch (error) {
+      if (isPermissionError(error)) {
+        fail(`Cannot replace ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
+      }
+      throw error;
+    }
   }
 
   // Windows has no unprivileged directory symlink; a junction needs no elevation and works with
@@ -183,6 +246,9 @@ const main = () => {
       fail(
         `Could not create the skill junction on Windows (EPERM). Check the destination permissions or create it manually:\n  mklink /J "${linkPath}" "${skillDir}"`
       );
+    }
+    if (isPermissionError(error)) {
+      fail(`Cannot create ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
     }
     throw error;
   }
