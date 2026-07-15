@@ -22,16 +22,6 @@ test('RESOLVED update with missing verify is BLOCKED (unverified tree)', () => {
   assert.equal(buildReport({ outcome: 'RESOLVED' }, null).verdict, 'BLOCKED');
 });
 
-test('buildReport threads major hints into the report (defaults to UNAVAILABLE)', () => {
-  const hints = [{ name: 'ag-grid-community', current: '35.3.1', latest: '36.0.0', reason: 'family' as const }];
-  const withHints = buildReport({ outcome: 'NO_CHANGES' }, null, { status: 'COMPLETE', hints });
-  assert.deepEqual(withHints.majorHints, hints);
-  assert.equal(withHints.majorHintStatus, 'COMPLETE');
-  const withoutHints = buildReport({ outcome: 'NO_CHANGES' }, null);
-  assert.deepEqual(withoutHints.majorHints, []);
-  assert.equal(withoutHints.majorHintStatus, 'UNAVAILABLE');
-});
-
 test('BLOCKED_PREEXISTING retains the bumps and reports a distinct escalation verdict', () => {
   const report = buildReport(
     {

@@ -1,7 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { OUT_DIR, writeVerdict } from './lib/verdict.ts';
-import type { HintStatus, MajorHint, MajorHintResult } from './major-hint.ts';
 
 export interface UpdateVerdict {
   outcome: 'RESOLVED' | 'NO_CHANGES' | 'BLOCKED' | 'BLOCKED_PREEXISTING';
@@ -23,26 +22,16 @@ export interface Report {
   conflicts: unknown[];
   overrides: unknown[];
   holdbacks: unknown[];
-  majorHints: MajorHint[];
-  majorHintStatus: HintStatus;
   stopReason: string | null;
 }
 
-const NO_HINT: Pick<MajorHintResult, 'status' | 'hints'> = { status: 'UNAVAILABLE', hints: [] };
-
-export function buildReport(
-  update: UpdateVerdict,
-  verify: VerifyVerdict | null,
-  majorHint: Pick<MajorHintResult, 'status' | 'hints'> = NO_HINT
-): Report {
+export function buildReport(update: UpdateVerdict, verify: VerifyVerdict | null): Report {
   const base = {
     schemaVersion: 1 as const,
     bumped: update.bumped ?? [],
     conflicts: update.conflicts ?? [],
     overrides: update.overridesAdded ?? [],
     holdbacks: update.holdbacks ?? [],
-    majorHints: majorHint.hints,
-    majorHintStatus: majorHint.status,
     stopReason: update.stopReason ?? null,
   };
   if (update.outcome === 'NO_CHANGES') {
@@ -81,8 +70,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     process.exit(2);
   }
   const verify = readVerdict<VerifyVerdict>('verify.json');
-  const majorHint = readVerdict<MajorHintResult>('major-hint.json');
-  const report = buildReport(update, verify, majorHint ?? NO_HINT);
+  const report = buildReport(update, verify);
   writeVerdict('dep-bump-report.json', report);
   process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
 }
