@@ -1,8 +1,11 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import type { AuditReport } from './audit-compare.ts';
+import { type AdvisoryRow, renderAuditSummary, summarizeAudit } from './audit-summary.ts';
 import type { BumpChange } from './classify-bump.ts';
 import type { HeldBackResult, HeldReason } from './held-back.ts';
 import { OUT_DIR } from './lib/verdict.ts';
+import type { PruneResult } from './prune-overrides.ts';
 import type { SemverLevel } from './semver-level.ts';
 
 // The ONLY Markdown producer in the dep-bump flow. Turns the two data-only
@@ -48,8 +51,21 @@ function heldTable(held: HeldBackResult): string {
   return `${heading}\n\n| Package | Current | Latest | Bump | Reason |\n| --- | --- | --- | --- | --- |\n${rows}${note}`;
 }
 
-export function renderTables(updated: BumpChange[], held: HeldBackResult): string {
-  return `${MARKER}\n\n${updatedTable(updated)}\n\n${heldTable(held)}\n`;
+function prunedTable(pruned?: PruneResult): string {
+  const removed = pruned?.removed ?? [];
+  const heading = `### Pruned overrides (${removed.length})`;
+  if (removed.length === 0) return `${heading}\n\n_No overrides were removed this run._`;
+  const rows = removed.map((r) => `| \`${r.name}\` |`).join('\n');
+  return `${heading}\n\n| Removed override |\n| --- |\n${rows}`;
+}
+
+export function renderTables(
+  updated: BumpChange[],
+  held: HeldBackResult,
+  advisories: AdvisoryRow[] = [],
+  pruned?: PruneResult,
+): string {
+  return `${MARKER}\n\n${updatedTable(updated)}\n\n${heldTable(held)}\n\n${renderAuditSummary(advisories)}\n\n${prunedTable(pruned)}\n`;
 }
 
 function readOut<T>(file: string, fallback: T): T {
@@ -67,7 +83,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     packages: [],
     note: 'held-back.json was not produced.',
   });
-  const markdown = renderTables(bump.changes ?? [], held);
+  const audit = readOut<AuditReport>('audit-current.json', {});
+  const pruned = readOut<PruneResult>('pruned.json', { schemaVersion: 1, removed: [], kept: [] });
+  const markdown = renderTables(bump.changes ?? [], held, summarizeAudit(audit), pruned);
   mkdirSync(OUT_DIR, { recursive: true });
   writeFileSync(resolve(OUT_DIR, 'pr-tables.md'), markdown, 'utf8');
   process.stdout.write(markdown);

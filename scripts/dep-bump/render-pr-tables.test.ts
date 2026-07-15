@@ -54,3 +54,15 @@ test('renderTables appends the partial-data note when held-back status is INCOMP
   assert.match(md, /Available updates held back \(2\)/);
   assert.match(md, /list may be partial/);
 });
+
+test('renderTables appends advisory and pruned-override sections', () => {
+  const md = renderTables(
+    [],
+    { status: 'COMPLETE', packages: [] },
+    [{ name: 'lodash', severity: 'high', title: 'Prototype pollution' }],
+    { schemaVersion: 1, removed: [{ name: 'minimatch@9' }], kept: [] },
+  );
+  assert.match(md, /### Security advisories \(1\)/);
+  assert.match(md, /### Pruned overrides \(1\)/);
+  assert.match(md, /`minimatch@9`/);
+});
