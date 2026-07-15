@@ -206,6 +206,7 @@
     "clean:storefront:build": "npm run clean:build --workspace=@porsche-design-system/storefront",
     "clean:utilities:build": "npm run clean:build --workspace=utilities-v2",
     "npm:install": "npm install",
+    "npm:reinstall": "npm run npm:remove && rm -f package-lock.json && npm install",
     "npm:lint": "syncpack lint",
     "npm:lint:fix": "syncpack fix",
     "npm:list": "syncpack list --show all --sort count",

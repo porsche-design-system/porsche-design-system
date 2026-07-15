@@ -233,6 +233,10 @@ npm install
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).
 
+> **After a version bump, clear `node_modules` too.** npm reuses packages already on disk, so a stale nested install
+> survives a lockfile-only delete and re-triggers the same `ERESOLVE`. Run `npm run npm:reinstall` to wipe every
+> `node_modules`, delete `package-lock.json`, and reinstall in one step.
+
 ### 10. Sync the StackBlitz starter templates (npm workspace members)
 
 The four StackBlitz starter templates under

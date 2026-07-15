@@ -18,7 +18,9 @@ across all workspaces.
 4. Run `npm install` to update `package-lock.json`, then execute the automated tests to make sure the application still
    works.
 5. Once everything is updated, delete `package-lock.json` and recreate it by running `npm install` again, so the
-   transitive dependencies of our dependencies are refreshed too.
+   transitive dependencies of our dependencies are refreshed too. If a version bump still fails with `ERESOLVE`, run
+   `npm run npm:reinstall`: npm reuses stale packages left in `node_modules`, so a version change needs a full wipe of
+   `node_modules` and the lockfile, not just the lockfile.
 
 Some dependencies (Playwright, Stencil, internal packages) are intentionally excluded from this flow and updated
 manually — see [Held-back dependencies](#held-back-dependencies). Eight framework/styling families (Angular, React, Vue,
