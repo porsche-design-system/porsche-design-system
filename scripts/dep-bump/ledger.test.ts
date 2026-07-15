@@ -1,12 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import {
-  type Fingerprint,
-  emptyLedger,
-  fingerprintKey,
-  hasFailedRemedy,
-  recordRemedy,
-} from './ledger.ts';
+import { type Fingerprint, emptyLedger, fingerprintKey, hasFailedRemedy, recordRemedy } from './ledger.ts';
 
 const fp = (over: Partial<Fingerprint> = {}): Fingerprint => ({
   declarer: 'karma@6.4.0',

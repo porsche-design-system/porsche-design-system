@@ -18,7 +18,7 @@ const POLL_MS = Number(process.env.TURBO_SPEC_BUILD_POLL_MS ?? 20_000);
 const TIMEOUT_MS = Number(process.env.TURBO_SPEC_BUILD_TIMEOUT_MS ?? 45 * 60_000);
 
 export function classifyRun(run: RunView | null): BuildConclusion {
-  if (!run || run.status !== 'completed') return 'PENDING';
+  if (run?.status !== 'completed') return 'PENDING';
   return run.conclusion === 'success' ? 'PASS' : 'FAIL';
 }
 
@@ -79,15 +79,31 @@ async function main(): Promise<never> {
     await new Promise((r) => setTimeout(r, POLL_MS));
     const runs = listRuns(branch);
     // Prefer a run created by THIS dispatch (new databaseId) on our sha.
-    run = pickRun(runs.filter((r) => !before.has(r.databaseId)), sha) ?? pickRun(runs, sha);
+    run =
+      pickRun(
+        runs.filter((r) => !before.has(r.databaseId)),
+        sha
+      ) ?? pickRun(runs, sha);
     const verdict = classifyRun(run);
     if (verdict !== 'PENDING') {
-      writeVerdict('build-gate.json', { schemaVersion: 1, outcome: verdict, runId: run?.databaseId ?? null, sha, branch });
+      writeVerdict('build-gate.json', {
+        schemaVersion: 1,
+        outcome: verdict,
+        runId: run?.databaseId ?? null,
+        sha,
+        branch,
+      });
       process.stdout.write(`[build-gate] ${verdict} (run ${run?.databaseId})\n`);
       process.exit(verdict === 'PASS' ? 0 : 1);
     }
   }
-  writeVerdict('build-gate.json', { schemaVersion: 1, outcome: 'PENDING', runId: run?.databaseId ?? null, sha, branch });
+  writeVerdict('build-gate.json', {
+    schemaVersion: 1,
+    outcome: 'PENDING',
+    runId: run?.databaseId ?? null,
+    sha,
+    branch,
+  });
   process.stderr.write('[build-gate] timed out waiting for the CI build\n');
   process.exit(2);
 }

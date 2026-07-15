@@ -60,7 +60,7 @@ test('renderTables appends advisory and pruned-override sections', () => {
     [],
     { status: 'COMPLETE', packages: [] },
     [{ name: 'lodash', severity: 'high', title: 'Prototype pollution' }],
-    { schemaVersion: 1, removed: [{ name: 'minimatch@9' }], kept: [] },
+    { schemaVersion: 1, removed: [{ name: 'minimatch@9' }], kept: [] }
   );
   assert.match(md, /### Security advisories \(1\)/);
   assert.match(md, /### Pruned overrides \(1\)/);

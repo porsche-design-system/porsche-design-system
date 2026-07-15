@@ -9,10 +9,7 @@ test('treeProblems strips the trailing filesystem path so keys are host-stable',
       'invalid: postcss@8.5.15 /home/runner/work/repo/node_modules/postcss',
     ],
   };
-  assert.deepEqual(
-    [...treeProblems(ls)].sort(),
-    ['extraneous: @emnapi/core@1.11.1', 'invalid: postcss@8.5.15']
-  );
+  assert.deepEqual([...treeProblems(ls)].sort(), ['extraneous: @emnapi/core@1.11.1', 'invalid: postcss@8.5.15']);
 });
 
 test('treeProblems keeps path-less "missing ... required by" entries intact', () => {

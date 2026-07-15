@@ -23,15 +23,11 @@ test('update implementer sets the model provider so model_kwargs is honored', ()
   assert.equal(
     implementer?.model,
     'copilot',
-    'implementer must set `model: copilot` or its model_kwargs.model_id is ignored',
+    'implementer must set `model: copilot` or its model_kwargs.model_id is ignored'
   );
 });
 
 test('update implementer pins an explicit model_id', () => {
-  assert.equal(
-    typeof implementer?.model_kwargs?.model_id,
-    'string',
-    'implementer must pin model_kwargs.model_id',
-  );
+  assert.equal(typeof implementer?.model_kwargs?.model_id, 'string', 'implementer must pin model_kwargs.model_id');
   assert.ok((implementer?.model_kwargs?.model_id ?? '').length > 0);
 });

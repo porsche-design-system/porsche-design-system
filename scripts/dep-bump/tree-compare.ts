@@ -14,7 +14,10 @@ export function treeProblems(report: LsReport): Set<string> {
   return keys;
 }
 
-export function compareTree(baseline: LsReport, current: LsReport): {
+export function compareTree(
+  baseline: LsReport,
+  current: LsReport
+): {
   introduced: string[];
   resolved: string[];
 } {

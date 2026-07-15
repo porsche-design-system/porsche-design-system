@@ -96,7 +96,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   void OUT_DIR;
   const overrides = readRootOverrides();
   const changed = readJson<{ changes?: BumpChange[] }>(resolve(OUT_DIR, 'bump.json'), {}).changes ?? [];
-  const candidates = planPrune(overrides, changed.map((c) => c.name));
+  const candidates = planPrune(
+    overrides,
+    changed.map((c) => c.name)
+  );
   const baseline = readJson<AuditReport>(resolve(OUT_DIR, 'audit-baseline.json'), {});
 
   const result: PruneResult = { schemaVersion: 1, removed: [], kept: [] };

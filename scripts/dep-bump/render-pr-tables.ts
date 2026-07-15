@@ -63,7 +63,7 @@ export function renderTables(
   updated: BumpChange[],
   held: HeldBackResult,
   advisories: AdvisoryRow[] = [],
-  pruned?: PruneResult,
+  pruned?: PruneResult
 ): string {
   return `${MARKER}\n\n${updatedTable(updated)}\n\n${heldTable(held)}\n\n${renderAuditSummary(advisories)}\n\n${prunedTable(pruned)}\n`;
 }

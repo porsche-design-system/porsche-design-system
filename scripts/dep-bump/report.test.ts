@@ -38,10 +38,13 @@ test('BLOCKED_PREEXISTING retains the bumps and reports a distinct escalation ve
 
 test('buildReport carries overridesRemoved and auditAdvisories through', () => {
   const report = buildReport(
-    { outcome: 'RESOLVED', overridesRemoved: [{ name: 'minimatch@9' }], auditAdvisories: [{ name: 'lodash' }] } as never,
-    { outcome: 'PASS' },
+    {
+      outcome: 'RESOLVED',
+      overridesRemoved: [{ name: 'minimatch@9' }],
+      auditAdvisories: [{ name: 'lodash' }],
+    } as never,
+    { outcome: 'PASS' }
   );
   assert.deepEqual(report.overridesRemoved, [{ name: 'minimatch@9' }]);
   assert.deepEqual(report.auditAdvisories, [{ name: 'lodash' }]);
 });
-

@@ -18,7 +18,10 @@ export function advisoryIdentities(report: AuditReport): Set<string> {
   return ids;
 }
 
-export function compareAudits(baseline: AuditReport, current: AuditReport): {
+export function compareAudits(
+  baseline: AuditReport,
+  current: AuditReport
+): {
   introduced: string[];
   resolved: string[];
 } {
