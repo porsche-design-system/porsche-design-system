@@ -21,6 +21,7 @@ The single source of truth is `.syncpackrc.json` `updateGroups`:
 - Never re-run the unrestricted bump after holding a dependency back — do a TARGETED syncpack rollback and keep a run-local exclusion for that dep.
 - Git may be unavailable in-sandbox (the `.git` file can point to an unmounted host path). Do not investigate the mount — classification reads the host-snapshotted baseline (`.turbo-spec/out/deps-baseline.json` + `package-json-files.json`, written by preflight) and the current tree from disk, so `classify-bump.ts` never needs git.
 - Platform-specific native binaries are reconciled deterministically by `scripts/dep-bump/bump.sh` (via `ensure-platform-binaries.sh`) before the first `tsx`/`syncpack` call. NEVER hand-patch `node_modules`, fetch platform tarballs, or manually install `@esbuild/*`/`syncpack-*` binaries — if a script reports a platform-binary error, that is a bug to surface, not to work around.
+- Override pruning, syncpack lint/format fixes, and the "nothing left to update" gate run deterministically in the normalize stage (`scripts/dep-bump/normalize.sh`) AFTER you finish. Do not run `npm run npm:lint:fix`, `npm run npm:format:fix`, or prune overrides yourself.
 
 ## Procedure
 
@@ -34,7 +35,7 @@ The single source of truth is `.syncpackrc.json` `updateGroups`:
      `node --import tsx scripts/dep-bump/tree-compare.ts` (the SAME baseline-diff `verify` runs).
      - Exit 0 (no NEW edges vs the S1 baseline): author `update.json` with `outcome: "RESOLVED"`, the bumped list, and the changed files. Stop.
      - Exit 1 (NEW invalid/extraneous edges introduced by this run — see `.turbo-spec/out/tree-compare.json`): treat each `introduced` edge as a conflict and go to Resolve. If, after the skill's remedies, the only remaining blocker is a pre-existing or out-of-scope third-party edge you cannot fix, author `outcome: "BLOCKED_PREEXISTING"` with a `stopReason` and KEEP the valid bumps in `filesChanged` — do NOT discard safe minor bumps to signal a block.
-   - Exit 3 (`ERESOLVE`): read `.turbo-spec/out/install.log` and go to Resolve.
+   - Exit 3 (`ERESOLVE`): the deterministic reinstall-first retry in `install-check.sh` has ALREADY run and still hit ERESOLVE — this is a PERSISTENT conflict. Read `.turbo-spec/out/install.log` and go to Resolve. Do not run `npm run npm:reinstall` yourself as a first response; it has been tried.
    - Exit 2 (`INSTALL_FAILED`): retry once for transient reasons; if it persists, author `outcome: "BLOCKED"` with a `stopReason` and restore the tree.
 
 ## Resolve (ERESOLVE only)
@@ -47,6 +48,14 @@ Activate the `resolving-npm-eresolve` skill and follow it per conflict: gather e
 - **Record every remedy immediately, before the next install.** After choosing and applying a remedy, append it with `node --import tsx scripts/dep-bump/ledger.ts record '{"fingerprint":<fp>,"remedy":"…","outcome":"FAILED|RESOLVED|NON_ACTIONABLE","evidence":"…"}'` BEFORE you re-run `npm install`. Recording after the install (or only at the end) is why the ledger was empty on prior loop-backs — write it first so a re-entry sees it.
 - **Optional peers are non-actionable.** npm `overrides` cannot force-install an OPTIONAL peer (`peerDependenciesMeta.<name>.optional === true`) that has no real install edge. Do not attempt an override remedy for such an edge — record it in the ledger as a non-actionable third-party conflict and stop. Do not theorize; this is a fixed rule.
 - STOP if the same fingerprint survives one evidence-backed remedy, or after a hard cap of 6 total resolve iterations. On stop, author `outcome: "BLOCKED"` (tree restored) or `outcome: "BLOCKED_PREEXISTING"` (valid bumps retained) with a `stopReason` describing the conflict and what a follow-up migration needs.
+
+## Fixable advisories (only when Resolve surfaces one)
+
+The `npm audit` summary is report-only and rendered into the PR by a script — you never run `npm audit fix`. Act ONLY on an advisory that is *fixable via a scoped override* and that blocks a bump you are resolving:
+
+- Activate the `resolving-npm-eresolve` skill's "Security advisory" row: choose the narrowest pinned `overrides` entry whose patched version satisfies the consumer's major. Never auto-jump to the globally-first patched version.
+- After adding the override, follow the same regeneration rule as any override change (delete lock + node_modules, reinstall), then re-run `bash scripts/dep-bump/install-check.sh`.
+- Record the override you added under `overridesAdded` in `update.json`. Override *pruning* is the normalize stage's job — do not remove overrides yourself.
 
 ## Authoring `update.json` (required, every path)
 
