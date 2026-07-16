@@ -688,6 +688,46 @@ test.describe('description', () => {
   });
 });
 
+test.describe('styling', () => {
+  test('should forward a margin set on the host to the trigger button', async ({ page }) => {
+    // The host uses `display: contents` and has no box of its own, so it declares `margin: 0` as the baseline the
+    // button inherits via `margin: inherit`. A consumer margin on the host must therefore flow through to the button.
+    await setContentWithDesignSystem(
+      page,
+      `<style>p-popover { margin: 24px; }</style>
+      <p-popover>Some Popover Content</p-popover>`
+    );
+    const button = getButton(page);
+
+    const margin = await button.evaluate((el) => {
+      const { marginTop, marginRight, marginBottom, marginLeft } = getComputedStyle(el);
+      return { marginTop, marginRight, marginBottom, marginLeft };
+    });
+    expect(margin).toEqual({
+      marginTop: '24px',
+      marginRight: '24px',
+      marginBottom: '24px',
+      marginLeft: '24px',
+    });
+  });
+
+  test('should default the trigger button margin to zero when no host margin is set', async ({ page }) => {
+    await initPopover(page);
+    const button = getButton(page);
+
+    const margin = await button.evaluate((el) => {
+      const { marginTop, marginRight, marginBottom, marginLeft } = getComputedStyle(el);
+      return { marginTop, marginRight, marginBottom, marginLeft };
+    });
+    expect(margin).toEqual({
+      marginTop: '0px',
+      marginRight: '0px',
+      marginBottom: '0px',
+      marginLeft: '0px',
+    });
+  });
+});
+
 test.describe('controlled mode', () => {
   const initControlledPopover = async (page: Page, open: boolean): Promise<void> => {
     await setContentWithDesignSystem(
