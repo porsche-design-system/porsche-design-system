@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tabsBarA11yExamples } from '@/app/(main)/components/tabs-bar/accessibility/stories';
 
 export const metadata = {
   title: 'Tabs Bar: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Tabs Bar <ComponentStatus tagName="p-tabs-bar"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -121,6 +123,16 @@ Additionally, an `aria-current="page"` attribute should be provided to the activ
 If the `p-tabs-bar` is used as an in-page jump navigation, you should follow the same rules as for the route-based
 variant except that `aria-current="page"` should not be used.
 
+### Common do's and don'ts
+
+- **Do** pass tablist ARIA through the `aria` prop when using a tabbed interface.
+- **Do** wrap route-based navigation in `<nav>` with a descriptive `aria-label`.
+- **Do** wire `aria-controls`, `role="tabpanel"`, and `aria-labelledby` in the host application for tab interfaces.
+- **Don't** add tab semantics when the component is used as a link list for route-based navigation.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={tabsBarA11yExamples} />
 ## Tests
 
 ### Automated

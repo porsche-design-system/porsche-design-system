@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { bannerA11yExamples } from '@/app/(main)/components/banner/accessibility/stories';
 
 export const metadata = {
   title: 'Banner: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -43,6 +45,16 @@ the `Banner` is closed. This is important to keep focus order consistent.
 The `Banner` component uses `role="status"` and `role="alert"` to announce **content changes** for assistive
 technologies, but only if the component is **pre-rendered** and the content is added dynamically.
 
+### Common do's and don'ts
+
+- **Do** pre-render the banner in the DOM and update its content when showing feedback.
+- **Do** provide meaningful `heading` and `description` text for warnings and errors.
+- **Do** return focus to the trigger or at a logical place after the banner is dismissed.
+- **Don't** mount the entire banner only at the moment it should be announced.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={bannerA11yExamples} />
 ## Tests
 
 ### Automated

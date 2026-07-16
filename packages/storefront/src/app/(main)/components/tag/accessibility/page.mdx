@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tagA11yExamples } from '@/app/(main)/components/tag/accessibility/stories';
 
 export const metadata = {
   title: 'Tag: Accessibility - Porsche Design System',
@@ -8,6 +10,37 @@ export const metadata = {
 
 # Tag <ComponentStatus tagName="p-tag"></ComponentStatus>
 
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
 ## Accessibility support
 
 This component does not include any special accessibility features.
+
+## Development considerations
+
+Tags should communicate status or category in visible text. Do not rely on color or icon alone.
+
+### Common do's and don'ts
+
+- **Do** include descriptive text in the default slot.
+- **Do** use color and icon as supporting cues, not the only indicator.
+- **Don't** use an icon-only tag without visible text.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={tagA11yExamples} />
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |

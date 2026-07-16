@@ -122,7 +122,10 @@ export const generateVanillaJsProperties = (
       // TODO: Move this logic to a separate function
       // Some props need to be treated differently for vanilla-js e.g. boolean props without value (loop: true => loop) only for non pds tags
       if (!tag.startsWith('p-') && specialProps[key]) return specialProps[key](value);
-      if (typeof value === 'string') return ` ${kebabCase(key === 'className' ? 'class' : key)}="${value}"`;
+      if (typeof value === 'string') {
+        const attributeName = key === 'className' ? 'class' : key.startsWith('aria-') ? key : kebabCase(key);
+        return ` ${attributeName}="${value}"`;
+      }
       if (key === 'style')
         return ` style="${Object.entries(value as CSSProperties)
           .map(

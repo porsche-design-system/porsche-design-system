@@ -19,6 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
 
+### Changed
+
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 36
+  ([#4553](https://github.com/porsche-design-system/porsche-design-system/pull/4553))
+
 ### Fixed
 
 - `Multi Select`: Announcement of the active/selected option in screen readers

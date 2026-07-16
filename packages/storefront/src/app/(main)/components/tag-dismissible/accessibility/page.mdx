@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tagDismissibleA11yExamples } from '@/app/(main)/components/tag-dismissible/accessibility/stories';
 
 export const metadata = {
   title: 'Tag Dismissible: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Tag Dismissible <ComponentStatus tagName="p-tag-dismissible"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -40,6 +42,16 @@ export const metadata = {
 Ensure that when a `p-tag-dismissible` is removed, the focus is set to the previous or next `p-tag-dismissible` or to
 another focusable element. This prevents losing the focus order.
 
+### Common do's and don'ts
+
+- **Do** provide a visible `label` that describes the tag content.
+- **Do** pass dismiss-button ARIA through the `aria` prop when the default action text is insufficient.
+- **Do** move focus to a sensible target after removing a tag.
+- **Don't** add native `aria-*` attributes directly on the component host.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={tagDismissibleA11yExamples} />
 ## Tests
 
 ### Automated

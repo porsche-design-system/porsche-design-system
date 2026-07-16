@@ -40,7 +40,7 @@ export const PartialDocs = ({ name, location, partialCalls }: PartialDocsProps) 
       <P>The result of this partial looks like this:</P>
       <SyntaxHighlighter
         className="markup select-none"
-        language="html"
+        language="xml"
         useInlineStyles={false}
         codeTagProps={{ tabIndex: 0 }}
       >

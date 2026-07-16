@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { buttonPureA11yExamples } from '@/app/(main)/components/button-pure/accessibility/stories';
 
 export const metadata = {
   title: 'Button Pure: Accessibility - Porsche Design System',
@@ -8,7 +10,9 @@ export const metadata = {
 
 # Button Pure <ComponentStatus tagName="p-button-pure"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Limitations', 'Development considerations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Limitations', 'Development considerations', 'Integration examples', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -63,6 +67,17 @@ the `aria` property with the `aria-label` value to provide more context for scre
 alternative text that offers more detailed information, such as "Add item XYZ to shopping cart" or "Details of product
 XYZ."
 
+### Common do's and don'ts
+
+- **Do** pass ARIA attributes via the `aria` prop, for example `aria="{ 'aria-haspopup': 'dialog' }"` when opening a
+  dialog.
+- **Do** provide a clear accessible name for icon-only actions via slotted label or `aria` property.
+- **Don't** add native `aria-*` attributes directly on the component host.
+- **Don't** rely on short generic button labels like "Show" or "Add" without context.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={buttonPureA11yExamples} />
 ## Tests
 
 ### Automated
