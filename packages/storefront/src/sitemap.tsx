@@ -409,9 +409,16 @@ export const sitemap: Routes = {
         path: '/developing/components-ready',
         type: 'PAGE',
       },
-      'agent-skill': {
-        name: 'Agent Skill',
-        path: '/agent-skill',
+    },
+  },
+  skills: {
+    name: 'Skills',
+    path: '/skills',
+    type: 'CATEGORY',
+    subPaths: {
+      knowledge: {
+        name: 'Knowledge',
+        path: '/skills/knowledge',
         type: 'PAGE',
       },
     },
