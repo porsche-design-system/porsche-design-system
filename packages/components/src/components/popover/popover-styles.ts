@@ -12,10 +12,8 @@ import {
   radiusLg,
   radiusXl,
   ref,
-  spacingStatic2Xs,
   spacingStaticMd,
   spacingStaticSm,
-  spacingStaticXs,
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
 import {
@@ -65,7 +63,7 @@ const cssVariableMaxHeight = '--p-popover-max-h';
 const cssVarPaddingInline = '--p-popover-px';
 
 /**
- * @css-variable {"name": "--p-popover-py", "description": "Vertical padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration `--p-popover-py: var(--p-spacing-static-sm)`, the Tailwind CSS arbitrary property `[--p-popover-py:var(--spacing-static-sm)]` or the equivalent SCSS/JS token.", "defaultValue": "12px"}
+ * @css-variable {"name": "--p-popover-py", "description": "Vertical padding of the popover. It is recommended to apply an existing Porsche Design System spacing token, e.g. the CSS declaration `--p-popover-py: var(--p-spacing-static-sm)`, the Tailwind CSS arbitrary property `[--p-popover-py:var(--spacing-static-sm)]` or the equivalent SCSS/JS token.", "defaultValue": "16px"}
  */
 const cssVarPaddingBlock = '--p-popover-py';
 
@@ -115,8 +113,8 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
       max-width: inherit;
       max-height: inherit;
       box-sizing: border-box;
-      padding: ${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticXs) : `calc(12 * ${ref(spacingStatic2Xs)})`)}
-        ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))};
+      padding-block: ${ref(cssVarPaddingBlock, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))};
+      padding-inline: ${ref(cssVarPaddingInline, isCompact ? ref(spacingStaticSm) : ref(spacingStaticMd))};
       overflow: hidden auto;
       overscroll-behavior-y: none;
     }

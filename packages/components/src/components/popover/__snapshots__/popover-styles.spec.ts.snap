@@ -19,8 +19,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, compac
       max-width: inherit;
       max-height: inherit;
       box-sizing: border-box;
-      padding: var(--p-popover-py,calc(12 * var(--p-spacing-static-2xs)))
-        var(--p-popover-px,var(--p-spacing-static-md));
+      padding-block: var(--p-popover-py,var(--p-spacing-static-md));
+      padding-inline: var(--p-popover-px,var(--p-spacing-static-md));
       overflow: hidden auto;
       overscroll-behavior-y: none;
     }
@@ -182,8 +182,8 @@ exports[`getComponentCss() > should return correct css for isOpen: false, compac
       max-width: inherit;
       max-height: inherit;
       box-sizing: border-box;
-      padding: var(--p-popover-py,var(--p-spacing-static-xs))
-        var(--p-popover-px,var(--p-spacing-static-sm));
+      padding-block: var(--p-popover-py,var(--p-spacing-static-sm));
+      padding-inline: var(--p-popover-px,var(--p-spacing-static-sm));
       overflow: hidden auto;
       overscroll-behavior-y: none;
     }
@@ -345,8 +345,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, compact
       max-width: inherit;
       max-height: inherit;
       box-sizing: border-box;
-      padding: var(--p-popover-py,calc(12 * var(--p-spacing-static-2xs)))
-        var(--p-popover-px,var(--p-spacing-static-md));
+      padding-block: var(--p-popover-py,var(--p-spacing-static-md));
+      padding-inline: var(--p-popover-px,var(--p-spacing-static-md));
       overflow: hidden auto;
       overscroll-behavior-y: none;
     }
@@ -513,8 +513,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, compact
       max-width: inherit;
       max-height: inherit;
       box-sizing: border-box;
-      padding: var(--p-popover-py,calc(12 * var(--p-spacing-static-2xs)))
-        var(--p-popover-px,var(--p-spacing-static-md));
+      padding-block: var(--p-popover-py,var(--p-spacing-static-md));
+      padding-inline: var(--p-popover-px,var(--p-spacing-static-md));
       overflow: hidden auto;
       overscroll-behavior-y: none;
     }
@@ -676,8 +676,8 @@ exports[`getComponentCss() > should return correct css for isOpen: true, compact
       max-width: inherit;
       max-height: inherit;
       box-sizing: border-box;
-      padding: var(--p-popover-py,var(--p-spacing-static-xs))
-        var(--p-popover-px,var(--p-spacing-static-sm));
+      padding-block: var(--p-popover-py,var(--p-spacing-static-sm));
+      padding-inline: var(--p-popover-px,var(--p-spacing-static-sm));
       overflow: hidden auto;
       overscroll-behavior-y: none;
     }
