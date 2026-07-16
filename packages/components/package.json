@@ -40,9 +40,10 @@
     "build:clean:deletePolyfills": "rm -rf ./dist/esm/polyfills",
     "build:clean:deleteGeneratedLoader": "rm -rf ./dist/loader",
     "build-prod": "PDS_IS_STAGING=0 npm run build",
-    "test": "npm run test:unit",
+    "test": "npm run test:unit && npm run test:css-validity",
     "pretest:unit": "npm run prebuild:generateConstructorMap",
-    "test:unit": "vitest -c tests/unit/config/vitest.config.ts",
+    "test:unit": "rm -rf tmp/css-validity; PDS_CSS_DUMP=tmp/css-validity vitest run -c tests/unit/config/vitest.config.ts styles.spec",
+    "test:css-validity": "biome lint --vcs-use-ignore-file=false tmp/css-validity && rm -rf tmp/css-validity",
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www && rm -rf ./src/styles-entry.ts && rm -rf ./src/utils-entry.ts"
   },
   "dependencies": {

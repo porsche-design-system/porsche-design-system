@@ -113,6 +113,7 @@
     }
   },
   "javascript": {
+    "experimentalEmbeddedSnippetsEnabled": true,
     "formatter": {
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
@@ -191,6 +192,34 @@
             "useConst": "off",
             "useImportType": "off"
           }
+        }
+      }
+    },
+    {
+      "includes": ["packages/components/src/**/*-styles.ts", "packages/components/src/styles/**/*.ts"],
+      "formatter": {
+        "enabled": false
+      },
+      "linter": {
+        "rules": {
+          "complexity": { "noImportantStyles": "off" }
+        }
+      }
+    },
+    {
+      "includes": ["packages/components/tmp/css-validity/*.css"],
+      "linter": {
+        "rules": {
+          "complexity": { "noImportantStyles": "off" },
+          "style": { "noDescendingSpecificity": "off" }
+        }
+      }
+    },
+    {
+      "includes": ["packages/components/tmp/css-validity/segmented-control-*.css"],
+      "linter": {
+        "rules": {
+          "correctness": { "noUnknownFunction": "off" }
         }
       }
     }

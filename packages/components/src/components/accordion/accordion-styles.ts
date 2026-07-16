@@ -234,7 +234,7 @@ export const getComponentCss = (
           WebkitMask: `${iconMarker} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${iconMarker} center/contain no-repeat`,
           background: ref(colorPrimary),
-          transform: 'rotate3d(0)',
+          transform: 'rotate3d(0,0,1,0deg)',
           transition: getTransition('transform', duration, easing),
           ...forcedColorsMediaQuery({
             backgroundColor: 'LinkText',

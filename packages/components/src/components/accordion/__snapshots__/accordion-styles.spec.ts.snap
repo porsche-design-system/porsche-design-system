@@ -123,7 +123,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
@@ -272,7 +272,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: end, bac
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
@@ -421,7 +421,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
@@ -574,7 +574,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
@@ -727,7 +727,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
@@ -878,7 +878,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
@@ -1029,7 +1029,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
@@ -1180,7 +1180,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
@@ -1331,7 +1331,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
@@ -1482,7 +1482,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
@@ -1633,7 +1633,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
@@ -1784,7 +1784,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {
@@ -1933,7 +1933,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
@@ -2088,7 +2088,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
@@ -2237,7 +2237,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   }
   details[open] summary::after {
@@ -2390,7 +2390,7 @@ exports[`getComponentCss() > should return correct css for alignMarker: start, b
     -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 15.125h-.001l-.005-.006-6.494-5.476.642-.768 5.858 4.94 5.858-4.94.642.769-6.497 5.477z"/></svg>') center/contain no-repeat;
     background: var(--p-color-primary);
-    transform: rotate3d(0);
+    transform: rotate3d(0,0,1,0deg);
     transition: transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   }
   details[open] summary::after {

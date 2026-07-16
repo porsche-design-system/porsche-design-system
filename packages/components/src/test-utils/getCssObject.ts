@@ -1,19 +1,22 @@
-export const getCssObject = (cssString: string): object => {
-  // useful for debugging
-  // const mediaQueriesAndSelectors = Array.from(cssString.matchAll(/(.+) {/g)).map(([, selector]) => selector);
-  // console.log(mediaQueriesAndSelectors);
+import postcss, { type Container } from 'postcss';
 
-  const jsonCssString = cssString
-    .replace(/"/g, "'") // replace double quotes with single quotes
-    .replace(/ *(.+) {/g, '"$1": {') // wrap selectors in double quotes, but without leading spaces
-    .replace(/ ([\w-:]+): /g, '"$1": ') // wrap css properties in double quotes, initial space is to skip media query values
-    .replace(/: (.+);/g, ': "$1",') // wrap css values in double quotes and convert semi colon to colon
-    .replace(/,(\s+})/g, '$1') // remove comma of last value
-    .replace(/}(?![^[{]*[\]}])(?!(\s*$))/g, '},') // add comma after closing bracket if not nested
-    .replace(/(?<!\\)\\(?!\\)/g, '\\\\'); // escape single backslashes with another backslash
+export const getCssObject = (cssString: string): object => containerToObject(postcss.parse(cssString));
 
-  const cssObject = JSON.parse(`{${jsonCssString}}`);
-  // console.log(cssObject);
+const normalize = (value: string): string => value.replace(/\s+/g, ' ').trim();
 
-  return cssObject;
+const containerToObject = (container: Container): Record<string, any> => {
+  const result: Record<string, any> = {};
+
+  container.each((node) => {
+    if (node.type === 'decl') {
+      // postcss keeps `!important` in a separate flag; re-append it so values read `none !important`
+      result[node.prop] = `${normalize(node.value)}${node.important ? ' !important' : ''}`;
+    } else if (node.type === 'rule') {
+      result[normalize(node.selector)] = containerToObject(node);
+    } else if (node.type === 'atrule') {
+      result[`@${node.name}${node.params.replace(/\s+/g, '')}`] = containerToObject(node);
+    }
+  });
+
+  return result;
 };

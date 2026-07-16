@@ -1,5 +1,6 @@
 import {
   colorContrastLow,
+  colorFocus,
   colorFrostedSoft,
   colorPrimary,
   colorSuccess,
@@ -13,19 +14,15 @@ import {
   typescaleSm,
 } from '@porsche-design-system/stylesheets';
 import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  getDisabledBaseStyles,
-  getFocusBaseStyles,
-  getHiddenTextJssStyle,
+  alphaDisabled,
+  forcedColorsMediaQueryCss,
   getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  preventFoucOfNestedElementsStyles,
+  hostHiddenStylesCss,
+  hoverMediaQueryCss,
+  preventFoucOfNestedElementsStylesCss,
 } from '../../styles';
 import type { AlignLabel, BreakpointCustomizable } from '../../types';
-import { buildResponsiveStyles, getCss, isDisabledOrLoading, mergeDeep } from '../../utils';
-import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import { buildResponsiveStylesCss, css, isDisabledOrLoading } from '../../utils';
 
 const cssVarInternalSwitchScaling = '--_p-switch-a';
 
@@ -48,6 +45,11 @@ const getColors = (
   };
 };
 
+const getHiddenTextCss = (isHidden: boolean, shownDeclarations = ''): string =>
+  isHidden
+    ? 'position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;'
+    : `position: static; width: auto; height: auto; padding: 0; margin: 0; overflow: visible; clip: auto; white-space: normal;${shownDeclarations ? ` ${shownDeclarations}` : ''}`;
+
 export const getComponentCss = (
   alignLabel: BreakpointCustomizable<AlignLabel>,
   hideLabel: BreakpointCustomizable<boolean>,
@@ -69,108 +71,160 @@ export const getComponentCss = (
   const labelPaddingTop = `max(0px, calc((${buttonHeight} - ${ref(leadingNormal)}) / 2))`; // Vertically centers the switch label relative to the switch size (depending on which is smaller).
   const toggleDimension = `calc(${ref(cssVarInternalSwitchScaling)} * 1.25rem)`;
   const toggleTranslateX = `calc(${ref(cssVarInternalSwitchScaling)} * .1875rem)`;
+  const toggleTransform = isChecked
+    ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})`
+    : toggleTranslateX;
 
-  return getCss({
-    '@global': {
-      ':host': {
-        [`${cssVarInternalSwitchScaling}`]: isCompact ? 0.64285714 : 1,
-        ...buildResponsiveStyles(isStretched, (stretchValue: boolean) => ({
-          display: stretchValue ? 'flex' : 'inline-flex',
-        })),
-        ...addImportantToEachRule({
-          ...(isDisabled && getDisabledBaseStyles()),
-          outline: 0, // custom element is able to delegate the focus
-          font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct gap definition based on ex-unit
-          gap,
-          ...hostHiddenStyles,
-          ...buildResponsiveStyles(isStretched, (stretchValue: boolean) => ({
-            justifyContent: stretchValue ? 'space-between' : 'flex-start',
-            width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
-            ...(!stretchValue && { verticalAlign: 'top' }),
-          })),
-        }),
-      },
-      ...preventFoucOfNestedElementsStyles,
-      button: {
-        all: 'unset',
-        position: 'relative', // ensures relative positioning for ::before pseudo element
-        display: 'flex',
-        alignItems: 'center',
-        flexShrink: 0,
-        boxSizing: 'border-box',
-        width: buttonWidth,
-        height: buttonHeight,
-        marginBlock: buttonMarginBlock,
-        font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width and height definition based on ex-unit
-        border: `${buttonBorderWidth} solid ${buttonBorderColor}`,
-        borderRadius: ref(radiusFull),
-        background: buttonBackgroundColor,
-        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
-        transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        ...(disabledOrLoading &&
-          forcedColorsMediaQuery({
-            borderColor: 'GrayText',
-          })),
-        ...(!disabledOrLoading &&
-          hoverMediaQuery({
-            '&:hover': {
-              borderColor: buttonBorderColorHover,
-            },
-          })),
-        '&:focus-visible': getFocusBaseStyles(),
-        '&::before': {
-          // Ensures the touch target is at least 24px, even if the switch is smaller than the minimum touch target size.
-          // This pseudo-element expands the clickable area without affecting the visual size of the switch itself.
-          content: '""',
-          position: 'absolute',
-          inset: buttonTouchInset,
-        },
-      },
-      label: {
-        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)}`,
-        minWidth: 0, // prevents flex child to overflow max available parent size
-        minHeight: 0, // prevents flex child to overflow max available parent size
-        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
-        color: textColor,
-        ...(disabledOrLoading &&
-          forcedColorsMediaQuery({
-            color: 'GrayText',
-          })),
-        ...mergeDeep(
-          buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-            order: alignLabelValue === 'start' ? -1 : 0,
-          })),
-          buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-            getHiddenTextJssStyle(isHidden, {
-              paddingTop: labelPaddingTop,
-            })
-          )
-        ),
-      },
-    },
-    toggle: {
-      display: 'flex',
-      placeItems: 'center',
-      placeContent: 'center',
-      width: toggleDimension,
-      height: toggleDimension,
-      borderRadius: ref(radiusFull),
-      background: toggleBackgroundColor,
-      transition: getTransition('transform'),
-      transform: `translate3d(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX}, 0, 0)`,
-      ...forcedColorsMediaQuery({
-        background: 'CanvasText',
-      }),
-      '&:dir(rtl)': {
-        transform: `translate3d(calc(${isChecked ? `calc(${buttonWidth} - ${buttonBorderWidth} * 2 - 100% - ${toggleTranslateX})` : toggleTranslateX} * -1), 0, 0)`,
-      },
-    },
-    ...(isLoading && {
-      spinner: {
-        '--p-spinner-size': buttonHeight,
-      },
-    }),
-    // .loading
-    ...getFunctionalComponentLoadingMessageStyles(),
-  });
+  // Responsive (BreakpointCustomizable) props: each returns base declarations (inlined in the selector below) plus
+  // @media blocks (appended at the end of the sheet).
+  const hostStretch = buildResponsiveStylesCss(
+    ':host',
+    isStretched,
+    (stretched: boolean) =>
+      `display: ${stretched ? 'flex' : 'inline-flex'}; justify-content: ${stretched ? 'space-between' : 'flex-start'} !important; width: ${stretched ? '100%' : 'auto'} !important; ${stretched ? '' : ' vertical-align: top !important;'}`
+  );
+  const labelOrder = buildResponsiveStylesCss(
+    'label',
+    alignLabel,
+    (align: AlignLabel) => `order: ${align === 'start' ? -1 : 0};`
+  );
+  const labelHiddenText = buildResponsiveStylesCss('label', hideLabel, (isHidden: boolean) =>
+    getHiddenTextCss(isHidden, `padding-top: ${labelPaddingTop};`)
+  );
+
+  return css`
+    :host {
+      ${cssVarInternalSwitchScaling}: ${isCompact ? 0.64285714 : 1};
+      ${isDisabled ? `opacity: ${alphaDisabled} !important;` : ''}
+      outline: 0 !important; /* custom element is able to delegate the focus */
+      font: ${ref(typescaleSm)} ${ref(fontPorscheNext)} !important; /* needed for correct gap definition based on ex-unit */
+      gap: ${gap} !important;
+      ${hostStretch.base}
+    }
+
+    ${hostHiddenStylesCss}
+
+    ${preventFoucOfNestedElementsStylesCss}
+
+    button {
+      all: unset;
+      position: relative; /* ensures relative positioning for ::before pseudo element */
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      width: ${buttonWidth};
+      height: ${buttonHeight};
+      margin-block: ${buttonMarginBlock};
+      font: ${ref(typescaleSm)} ${ref(fontPorscheNext)}; /* needed for correct width and height definition based on ex-unit */
+      border: ${buttonBorderWidth} solid ${buttonBorderColor};
+      border-radius: ${ref(radiusFull)};
+      background: ${buttonBackgroundColor};
+      cursor: ${disabledOrLoading ? 'not-allowed' : 'pointer'};
+      transition: ${getTransition('background-color')}, ${getTransition('border-color')};
+    }
+
+    button:focus-visible {
+      outline: 2px solid ${ref(colorFocus)};
+      outline-offset: 2px;
+    }
+
+    button::before {
+      /* Ensures the touch target is at least 24px, even if the switch is smaller than the minimum touch target size.
+         This pseudo-element expands the clickable area without affecting the visual size of the switch itself. */
+      content: '';
+      position: absolute;
+      inset: ${buttonTouchInset};
+    }
+
+    label {
+      font: ${ref(fontWeightNormal)} ${ref(typescaleSm)} / ${ref(leadingNormal)} ${ref(fontPorscheNext)};
+      min-width: 0; /* prevents flex child to overflow max available parent size */
+      min-height: 0; /* prevents flex child to overflow max available parent size */
+      cursor: ${disabledOrLoading ? 'not-allowed' : 'pointer'};
+      color: ${textColor};
+      ${labelOrder.base}
+      ${labelHiddenText.base}
+    }
+
+    .toggle {
+      display: flex;
+      place-items: center;
+      place-content: center;
+      width: ${toggleDimension};
+      height: ${toggleDimension};
+      border-radius: ${ref(radiusFull)};
+      background: ${toggleBackgroundColor};
+      transition: ${getTransition('transform')};
+      transform: translate3d(${toggleTransform}, 0, 0);
+    }
+
+    .toggle:dir(rtl) {
+      transform: translate3d(calc(${toggleTransform} * -1), 0, 0);
+    }
+
+    ${isLoading ? `.spinner {\n  --p-spinner-size: ${buttonHeight};\n}` : ''}
+    .loading {
+      ${getHiddenTextCss(true)}
+    }
+
+    ${
+      disabledOrLoading
+        ? ''
+        : hoverMediaQueryCss(css`
+            button:hover {
+              border-color: ${buttonBorderColorHover};
+            }
+          `)
+    }
+
+    ${forcedColorsMediaQueryCss(css`
+      button:focus-visible {
+        outline-color: Highlight;
+      }
+    `)}
+
+    ${forcedColorsMediaQueryCss(css`
+      .toggle {
+        background: CanvasText;
+      }
+    `)}
+
+    ${
+      disabledOrLoading
+        ? forcedColorsMediaQueryCss(css`
+            button {
+              border-color: GrayText;
+            }
+          `)
+        : ''
+    }
+
+    ${
+      isDisabled
+        ? forcedColorsMediaQueryCss(css`
+            :host {
+              opacity: 1 !important;
+              color: GrayText !important;
+            }
+          `)
+        : ''
+    }
+
+    ${
+      disabledOrLoading
+        ? forcedColorsMediaQueryCss(css`
+            label {
+              color: GrayText;
+            }
+          `)
+        : ''
+    }
+
+    ${hostStretch.mediaQueries}
+
+    ${labelOrder.mediaQueries}
+
+    ${labelHiddenText.mediaQueries}
+  `.trim();
 };

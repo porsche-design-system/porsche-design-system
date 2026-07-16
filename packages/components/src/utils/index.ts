@@ -8,6 +8,7 @@ export * from './button-handling';
 export * from './button-link-pure-utils';
 export * from './children-observer';
 export * from './color';
+export * from './css';
 export * from './device-detection';
 export * from './dialog';
 export * from './dom';
