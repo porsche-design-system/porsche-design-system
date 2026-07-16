@@ -73,9 +73,14 @@ if [ -z "${pr}" ]; then
   exit 0
 fi
 
-repo="${GITHUB_REPOSITORY:-}"
+repo="${GITHUB_REPOSITORY:-${REPO:-}}"
 if [ -z "${repo}" ]; then
-  echo "report-comment: no GITHUB_REPOSITORY; skipping PR comment." >&2
+  # Local runs (outside GitHub Actions) have neither var set — derive the slug
+  # from the git remote via gh, so the report still posts.
+  repo="$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null || true)"
+fi
+if [ -z "${repo}" ]; then
+  echo "report-comment: could not resolve repository (GITHUB_REPOSITORY/REPO unset and 'gh repo view' failed); skipping PR comment." >&2
   exit 0
 fi
 
