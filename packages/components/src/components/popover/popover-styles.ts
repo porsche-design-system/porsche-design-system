@@ -102,6 +102,9 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
         // flow. Enabled by anchoring Floating UI to the assigned trigger element (see `triggerElement` in popover.tsx)
         // instead of the `<slot>` box, so the slot no longer needs a layout box of its own.
         display: 'contents',
+        // Explicit baseline (matches the `margin` initial value) that the trigger button inherits via `margin: inherit`.
+        // A consumer margin on the host (`p-popover { margin: … }`) overrides this and thus flows through to the button.
+        margin: '0',
         ...addImportantToEachRule(hostHiddenStyles),
       },
       'slot:not([name]), p': {
@@ -119,6 +122,9 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
       },
       button: {
         all: 'unset',
+        // The :host uses `display: contents` and thus has no box of its own, so a consumer-defined margin on the host
+        // (e.g. `p-popover { margin: … }`) would be dropped. `inherit` forwards that margin onto the actual trigger button.
+        margin: 'inherit',
         display: 'inline-grid',
         verticalAlign: 'top',
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
