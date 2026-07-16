@@ -1,0 +1,28 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "@porsche-design-system/js#build",
+        "@porsche-design-system/assets#build",
+        "shared#build",
+        "@porsche-design-system/components#build",
+        "@porsche-design-system/styles#build"
+      ],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!projects/vue-wrapper/src/lib/**"],
+      "outputs": ["dist/**", "projects/vue-wrapper/src/lib/**"]
+    },
+    "build-prod": {
+      "dependsOn": [
+        "@porsche-design-system/js#build-prod",
+        "@porsche-design-system/assets#build",
+        "shared#build",
+        "@porsche-design-system/components#build-prod",
+        "@porsche-design-system/styles#build-prod"
+      ],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!projects/vue-wrapper/src/lib/**"],
+      "outputs": ["dist/**", "projects/vue-wrapper/src/lib/**"]
+    }
+  }
+}

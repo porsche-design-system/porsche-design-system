@@ -1,0 +1,31 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "@porsche-design-system/react#build",
+        "@porsche-design-system/component-meta#build",
+        "@porsche-design-system/stylesheets#build",
+        "@porsche-design-system/styles#build",
+        "@porsche-design-system/tokens#build",
+        "shared#build"
+      ],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!src/lib/**", "!src/app/*/news/changelog/page.mdx", "!src/app/*/license/license.mdx"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "projects/stackblitz/dist/**", "src/lib/**", "src/app/*/news/changelog/page.mdx", "src/app/*/license/license.mdx"]
+    },
+    "build-prod": {
+      "dependsOn": [
+        "@porsche-design-system/react#build-prod",
+        "@porsche-design-system/component-meta#build",
+        "@porsche-design-system/stylesheets#build-prod",
+        "@porsche-design-system/styles#build-prod",
+        "@porsche-design-system/tokens#build",
+        "shared#build"
+      ],
+      "env": ["NEXT_PUBLIC_BASE_PATH"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!tests/**", "!src/lib/**", "!src/app/*/news/changelog/page.mdx", "!src/app/*/license/license.mdx"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "projects/stackblitz/dist/**", "src/lib/**", "src/app/*/news/changelog/page.mdx", "src/app/*/license/license.mdx"]
+    }
+  }
+}

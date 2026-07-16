@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["@porsche-design-system/tokens#build", "@porsche-design-system/assets#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!src/generated/**", "!lib/**", "!meta/**"],
+      "outputs": ["dist/**", "src/generated/**", "lib/**", "meta/**"]
+    },
+    "build-prod": {
+      "dependsOn": ["@porsche-design-system/tokens#build", "@porsche-design-system/assets#build", "build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!src/generated/**", "!lib/**", "!meta/**"],
+      "outputs": ["dist/**", "src/generated/**", "lib/**", "meta/**"]
+    }
+  }
+}

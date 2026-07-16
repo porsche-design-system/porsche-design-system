@@ -1,0 +1,30 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "shared#build",
+        "@porsche-design-system/tokens#build",
+        "@porsche-design-system/styles#build",
+        "@porsche-design-system/assets#build",
+        "@porsche-design-system/stylesheets#build",
+        "@porsche-design-system/component-meta#build"
+      ],
+      "inputs": ["$TURBO_DEFAULT$", "!src/styles-entry.ts", "!src/utils-entry.ts", "!src/test-utils/tag-names-constructor-map.ts", "!src/components/**/*.props.md", "!src/components/**/readme.md"],
+      "outputs": ["dist/**", "www/**", "src/styles-entry.ts", "src/utils-entry.ts", "src/test-utils/tag-names-constructor-map.ts", "dist/wrappers/**", "src/components/**/*.props.md", "src/components/**/readme.md"]
+    },
+    "build-prod": {
+      "dependsOn": [
+        "shared#build",
+        "@porsche-design-system/tokens#build",
+        "@porsche-design-system/styles#build-prod",
+        "@porsche-design-system/assets#build",
+        "@porsche-design-system/stylesheets#build-prod",
+        "@porsche-design-system/component-meta#build"
+      ],
+      "inputs": ["$TURBO_DEFAULT$", "!src/styles-entry.ts", "!src/utils-entry.ts", "!src/test-utils/tag-names-constructor-map.ts", "!src/components/**/*.props.md", "!src/components/**/readme.md"],
+      "outputs": ["dist/**", "www/**", "src/styles-entry.ts", "src/utils-entry.ts", "src/test-utils/tag-names-constructor-map.ts", "dist/wrappers/**", "src/components/**/*.props.md", "src/components/**/readme.md"]
+    }
+  }
+}

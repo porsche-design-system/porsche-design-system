@@ -79,7 +79,7 @@ const writeDir = (dir: Dir, dirPath: string): void => {
 
 export const buildCssVariableConstants = (): void => {
   // Fully regenerate the gitignored output folder.
-  fs.rmSync(generatedDir, { recursive: true, force: true });
+  fs.rmSync(generatedDir, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 });
 
   const root = createDir();
   collect(cssVariableTokens, root);

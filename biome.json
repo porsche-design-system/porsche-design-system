@@ -130,6 +130,14 @@
   },
   "overrides": [
     {
+      "includes": ["**/turbo.json"],
+      "json": {
+        "parser": {
+          "allowComments": true
+        }
+      }
+    },
+    {
       "includes": [
         "packages/components/src/**/*.{js,ts,tsx}",
         "!packages/components/src/**/*.spec.ts",

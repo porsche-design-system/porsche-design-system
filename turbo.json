@@ -1,0 +1,42 @@
+{
+  // Pattern to remember: every path in root .gitignore that a build script writes to needs to be in outputs.
+  "$schema": "./node_modules/turbo/schema.json",
+  "ui": "stream",
+  // Changing any file matching these globs invalidates ALL package caches (e.g. a patch affects every build).
+  "globalDependencies": ["patches/**"],
+  // Changes to these env vars invalidate ALL package caches.
+  "globalEnv": ["NODE_ENV", "PDS_IS_STAGING", "PORSCHE_DESIGN_SYSTEM_DEV"],
+  "concurrency": "100%",
+  "cacheMaxAge": "14d",
+  "cacheMaxSize": "5GB",
+  "futureFlags": {
+    // Makes turbo scope cache invalidation to each task's declared inputs instead of the whole package.
+    "affectedUsingTaskInputs": true
+  },
+  "tasks": {
+    // Base defaults for every package's "build" task.
+    // Each package extends these via its own turbo.json (packages/*/turbo.json).
+    "build": {
+      // Other tasks that must run before this one. Can be a task in the same package or in a dependency package.
+      // Format: "packageName#taskName" or just "taskName" (runs same task in all deps first).
+      // Empty here — each package declares its own upstream dependencies.
+      "dependsOn": [],
+      // Files turbo saves to cache after a build and restores on a cache hit.
+      // Rule: every generated file that lives inside the source tree (src/, lib/, meta/) must be listed here
+      // AND excluded from inputs — otherwise it will corrupt the input hash (oscillation bug).
+      // Empty here — each package declares its own outputs.
+      "outputs": [],
+      // inputs (not set here, set per-package): files that, if changed, trigger a rebuild.
+      // Default ($TURBO_DEFAULT$) = every non-gitignored file in the package.
+      // Always exclude generated files with "!path/**" so they don't affect the hash.
+      "cache": true,
+      "outputLogs": "new-only"
+    },
+    "build-prod": {
+      "dependsOn": [],
+      "outputs": [],
+      "cache": true,
+      "outputLogs": "new-only"
+    }
+  }
+}

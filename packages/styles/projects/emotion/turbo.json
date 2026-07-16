@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["@porsche-design-system/tokens#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!dist/**", "!meta/**"],
+      "outputs": ["dist/**", "meta/**"]
+    }
+  }
+}

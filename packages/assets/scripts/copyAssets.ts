@@ -25,7 +25,12 @@ const copyAssets = (): void => {
   for (const cdnPath of Object.keys(cdnPathPackageMap) as CdnPath[]) {
     const packageName = cdnPathPackageMap[cdnPath as keyof typeof cdnPathPackageMap];
     try {
-      const packageEntryPath = require.resolve(packageName!);
+      // resolve the components package from its workspace dist directly; require.resolve of the
+      // self-symlinked '@porsche-design-system/components-js' fails on CI install layouts
+      const packageEntryPath =
+        cdnPath === 'components'
+          ? path.resolve(__dirname, '../../components-js/dist/components-wrapper/cjs/index.cjs')
+          : require.resolve(packageName!);
       const packageEntryDir = path.dirname(packageEntryPath);
       // because of inconsistent package structures we maybe right in dist folder or one level deeper
       const relativePathToPackageAssetFiles = packageEntryDir.endsWith('dist') ? cdnPath : `../${cdnPath}`;

@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!src/lib/**", "!src/examples/**"],
+      "outputs": ["dist/**", "src/lib/**", "src/examples/**", "bin/**"]
+    }
+  }
+}

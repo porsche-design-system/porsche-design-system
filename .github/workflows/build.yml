@@ -37,19 +37,13 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install
-      - run: npm run build:shared
-      - run: npm run build:tokens
-      - run: npm run build:assets
-      - run: npm run build:styles
-      - run: npm run build:utilities
-      - run: npm run build:stylesheets
-      - run: npm run build:component-meta
-      - run: npm run build:components
-      - run: npm run build:components-js
-      - run: npm run build:components-angular
-      - run: npm run build:components-react
-      - run: npm run build:components-vue
-      - run: npm run build:storefront
+      - uses: actions/cache@v5
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-dev-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-dev-
+      - run: npm run build
       - uses: actions/upload-artifact@v7
         with:
           name: build-development
@@ -121,19 +115,15 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install
-      - run: npm run build:shared
-      - run: npm run build:tokens
-      - run: npm run build:assets
-      - run: npm run build:styles-prod
-      - run: npm run build:utilities
-      - run: npm run build:stylesheets-prod
-      - run: npm run build:component-meta
-      - run: npm run build:components-prod
-      - run: npm run build:components-js-prod
-      - run: npm run build:components-angular
-      - run: npm run build:components-react
-      - run: npm run build:components-vue
-      - run: NEXT_PUBLIC_BASE_PATH="${{ inputs.storefront-slug }}" npm run build:storefront
+      - uses: actions/cache@v5
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-prod-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-prod-
+      - run: npm run build-prod
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ inputs.storefront-slug }}
       - uses: actions/upload-artifact@v7
         with:
           name: build-production

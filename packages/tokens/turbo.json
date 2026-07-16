@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["shared#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!projects/tokens-meta/src/lib/**"],
+      "outputs": ["dist/**", "projects/tokens-meta/dist/**", "projects/tokens-meta/src/lib/**"]
+    }
+  }
+}

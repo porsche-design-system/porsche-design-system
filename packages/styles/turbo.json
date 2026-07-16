@@ -1,0 +1,16 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["shared#build", "@porsche-design-system/tokens#build", "@porsche-design-system/emotion#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!projects/*/meta/**", "!projects/shared-styles/src/generated/**"],
+      "outputs": ["dist/**", "projects/*/dist/**", "!projects/emotion/dist/**", "projects/*/meta/**", "!projects/emotion/meta/**", "projects/shared-styles/src/generated/**"]
+    },
+    "build-prod": {
+      "dependsOn": ["shared#build", "@porsche-design-system/tokens#build", "@porsche-design-system/emotion#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.spec.ts", "!**/*.spec.tsx", "!**/*.test.ts", "!**/*.test.tsx", "!projects/*/meta/**", "!projects/shared-styles/src/generated/**"],
+      "outputs": ["dist/**", "projects/*/dist/**", "!projects/emotion/dist/**", "projects/*/meta/**", "!projects/emotion/meta/**", "projects/shared-styles/src/generated/**"]
+    }
+  }
+}

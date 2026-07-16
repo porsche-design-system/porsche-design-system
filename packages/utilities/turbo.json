@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/turbo/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["@porsche-design-system/tokens#build"],
+      "inputs": ["$TURBO_DEFAULT$", "!projects/ag-grid/src/styles.ts"],
+      "outputs": ["projects/ag-grid/dist/**", "projects/ag-grid/src/styles.ts"]
+    }
+  }
+}

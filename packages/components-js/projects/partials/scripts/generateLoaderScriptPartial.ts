@@ -9,9 +9,9 @@ export const generateLoaderScriptPartial = (): string => {
   format?: FormatWithCSP;
 };`;
 
-  const componentsJsFilePath = require.resolve('@porsche-design-system/components-js');
-  const packageDir = path.resolve(componentsJsFilePath, '../..');
-  const tmpFilePath = path.resolve(packageDir, '../..', npmDistTmpSubPath, 'index.js');
+  // temporary core loader built into this package's dist; resolve from this package's own folder
+  // (not require.resolve, whose self-symlink resolves differently across install layouts / CI)
+  const tmpFilePath = path.resolve(__dirname, '../../..', npmDistTmpSubPath, 'index.js');
   const fileContent = fs.readFileSync(tmpFilePath, 'utf8');
 
   const func = `export function getLoaderScript(opts: GetLoaderScriptOptions & { format: 'jsx' }): JSX.Element;
