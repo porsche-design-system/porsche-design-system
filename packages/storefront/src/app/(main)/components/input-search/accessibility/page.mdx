@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputSearchA11yExamples } from '@/app/(main)/components/input-search/accessibility/stories';
 
 export const metadata = {
   title: 'Input Search: Accessibility - Porsche Design System',
@@ -8,7 +10,9 @@ export const metadata = {
 
 # Input Search <ComponentStatus tagName="p-input-search"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -74,6 +78,18 @@ expected semantics supported by this component, for example:
 Associate the suggestion list and keyboard interaction in the host application according to the
 [ARIA combobox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) you implement there.
 
+### Common do's and don'ts
+
+- **Do** keep a persistent `label` and pass combobox-related ARIA through the `aria` prop when needed.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** rely on placeholder text as the only label.
+- **Don't** add native `aria-*` attributes directly on the component host.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={inputSearchA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

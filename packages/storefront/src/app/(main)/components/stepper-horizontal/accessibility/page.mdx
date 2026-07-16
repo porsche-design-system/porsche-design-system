@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { stepperHorizontalA11yExamples } from '@/app/(main)/components/stepper-horizontal/accessibility/stories';
 
 export const metadata = {
   title: 'Stepper Horizontal: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Stepper Horizontal <ComponentStatus tagName="p-stepper-horizontal"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -29,6 +31,17 @@ export const metadata = {
 | `role="list"`     | Indicates the stepper as list element.        |
 | `role="listitem"` | Indicates the step-item as list-item element. |
 
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** provide descriptive text in each step item so progress is understandable out of context.
+- **Do** reflect the current step with the item `state` prop (`current`, `complete`, `warning`).
+- **Don't** use generic labels like "Step 1" without describing the step purpose.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={stepperHorizontalA11yExamples} />
 ## Tests
 
 ### Automated

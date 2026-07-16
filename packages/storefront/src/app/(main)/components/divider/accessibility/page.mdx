@@ -1,4 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { dividerA11yExamples } from '@/app/(main)/components/divider/accessibility/stories';
 
 export const metadata = {
   title: 'Divider: Accessibility - Porsche Design System',
@@ -7,6 +10,38 @@ export const metadata = {
 
 # Divider <ComponentStatus tagName="p-divider"></ComponentStatus>
 
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
 ## Accessibility support
 
 This component does not include any special accessibility features.
+
+## Development considerations
+
+### Structure
+
+A divider is visual separation only. Use headings, landmarks, or section structure to communicate content groups.
+
+### Common do's and don'ts
+
+- **Do** pair dividers with headings or landmarks that describe the sections they separate.
+- **Don't** rely on a divider alone to communicate a new major section.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={dividerA11yExamples} />
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |

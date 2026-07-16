@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputNumberA11yExamples } from '@/app/(main)/components/input-number/accessibility/stories';
 
 export const metadata = {
   title: 'Input Number: Accessibility - Porsche Design System',
@@ -8,7 +10,9 @@ export const metadata = {
 
 # Input Number <ComponentStatus tagName="p-input-number"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -44,6 +48,17 @@ prop to `kilometers per hour`. This way, the screen reader will read out the ful
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
 
+### Common do's and don'ts
+
+- **Do** keep a persistent label and spell out unit abbreviations in the `description` prop.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** rely on placeholder text or the `unit` prop alone for accessible context.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={inputNumberA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

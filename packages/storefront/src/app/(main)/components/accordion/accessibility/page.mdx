@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { accordionA11yExamples } from '@/app/(main)/components/accordion/accessibility/stories';
 
 export const metadata = {
   title: 'Accordion: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -25,6 +27,16 @@ export const metadata = {
 
 The accordion summary should be a heading element (e.g.,`p-heading` or `<h1>` to `<h6>`,) to ensure proper semantic
 structure and correct heading hierarchy.
+
+### Common do's and don'ts
+
+- **Do** use the `summary` slot with a heading element such as `p-heading` or native `h1`–`h6`.
+- **Do** keep heading levels sequential across multiple accordions on a page.
+- **Don't** use plain text in the summary without a semantic heading.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={accordionA11yExamples} />
 
 ## Tests
 

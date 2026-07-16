@@ -137,7 +137,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
                     typescript: 'typescript',
                     diff: 'diff',
                     json: 'json',
-                    html: 'html',
+                    html: 'xml',
                     scss: 'scss',
                     css: 'css',
                     shell: 'shell',

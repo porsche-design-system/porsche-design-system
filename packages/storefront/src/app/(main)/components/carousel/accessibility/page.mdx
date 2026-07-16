@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { carouselA11yExamples } from '@/app/(main)/components/carousel/accessibility/stories';
 
 export const metadata = {
   title: 'Carousel: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Carousel <ComponentStatus tagName="p-carousel"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -48,6 +50,17 @@ over all carousel entries. The skip link is only visible when it receives focus 
 - Use the `skipLinkTarget` property if you have >5 carousel items
 - The target of the skip link should point to the next heading or element right after the carousel
 
+### Common do's and don'ts
+
+- **Do** configure `skip-link-target` for larger carousels or repeated content sections.
+- **Do** ensure the skip target points to the next meaningful section.
+- **Do** provide a descriptive carousel label via the `aria` property.
+- **Don't** force keyboard users to tab through every slide control when a skip path is needed.
+- **Don't** use vague labels that do not communicate carousel context.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={carouselA11yExamples} />
 ## Tests
 
 ### Automated

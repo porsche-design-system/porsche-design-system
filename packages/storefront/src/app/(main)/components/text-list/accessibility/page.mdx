@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { textListA11yExamples } from '@/app/(main)/components/text-list/accessibility/stories';
 
 export const metadata = {
   title: 'Text List: Accessibility - Porsche Design System',
@@ -8,6 +10,39 @@ export const metadata = {
 
 # Text List <ComponentStatus tagName="p-text-list"></ComponentStatus>
 
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
 ## Accessibility support
 
 This component does not include any special accessibility features.
+
+## Development considerations
+
+### List semantics
+
+Choose the list `type` based on whether item order matters to understanding the content.
+
+### Common do's and don'ts
+
+- **Do** use `type="unordered"` for related items without required sequence.
+- **Do** use `type="numbered"` or `type="alphabetically"` when step order or ranking matters.
+- **Don't** use a numbered list for items that are not sequential.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={textListA11yExamples} />
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |
