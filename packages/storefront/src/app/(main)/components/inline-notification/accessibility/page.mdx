@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inlineNotificationA11yExamples } from '@/app/(main)/components/inline-notification/accessibility/stories';
 
 export const metadata = {
   title: 'Inline Notification: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Inline Notification <ComponentStatus tagName="p-inline-notification"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -35,6 +37,15 @@ export const metadata = {
 The `Inline Notification` component uses `role="status"` and `role="alert"` to announce **content changes** for
 assistive technologies, but only if the component is **pre-rendered** and the content is added dynamically.
 
+### Common do's and don'ts
+
+- **Do** pre-render the notification and update `heading`/`description` when status changes.
+- **Do** use `state="warning"` or `state="error"` with descriptive content for urgent issues.
+- **Don't** conditionally mount the component only when an alert should be announced.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={inlineNotificationA11yExamples} />
 ## Tests
 
 ### Automated

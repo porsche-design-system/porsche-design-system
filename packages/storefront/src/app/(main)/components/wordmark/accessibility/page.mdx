@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { wordmarkA11yExamples } from '@/app/(main)/components/wordmark/accessibility/stories';
 
 export const metadata = {
   title: 'Wordmark: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Wordmark <ComponentStatus tagName="p-wordmark"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -29,6 +31,17 @@ export const metadata = {
 | `aria-current`  | Exposes the current state of the link.                      |
 | `aria-haspopup` | Defines that the button opens a popup (e.g. `dialog`).      |
 
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** pass ARIA attributes through the `aria` prop when the wordmark is linked.
+- **Do** provide a descriptive `aria-label` for linked wordmarks, for example "Porsche home".
+- **Don't** add native `aria-*` attributes directly on the component host.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={wordmarkA11yExamples} />
 ## Tests
 
 ### Automated

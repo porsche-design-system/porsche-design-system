@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tableA11yExamples } from '@/app/(main)/components/table/accessibility/stories';
 
 export const metadata = {
   title: 'Table: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Table <ComponentStatus tagName="p-table"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -28,6 +30,17 @@ export const metadata = {
 | `aria-label="STRING"`, `aria-labelledby="IDREF"` | Captions are provided by aria labels.                |
 | `aria-sort="VALUE"`                              | Provides the sorting direction of the column header. |
 
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** provide a `caption` or `slot="caption"` that describes the table purpose.
+- **Do** keep visible header text for sortable columns.
+- **Don't** use `hide-label` on a sortable column without an alternative accessible name.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={tableA11yExamples} />
 ## Tests
 
 ### Automated

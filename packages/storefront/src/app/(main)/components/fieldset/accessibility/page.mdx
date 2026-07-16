@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { fieldsetA11yExamples } from '@/app/(main)/components/fieldset/accessibility/stories';
 
 export const metadata = {
   title: 'Fieldset: Accessibility - Porsche Design System',
@@ -8,11 +10,9 @@ export const metadata = {
 
 # Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
-
-### ARIA enhancements
 
 ### ARIA enhancements
 
@@ -31,6 +31,18 @@ export const metadata = {
 | `aria-invalid="true"`      | If `error` state is set.                                                                         |
 | `aria-describedby="IDREF"` | References the accessible description when `state` message is provided.                          |
 
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** provide a clear `label` that describes the grouped fields.
+- **Do** use the component state/message API so group validation is announced.
+- **Do** use `aria="{ 'role': 'radiogroup' }"` only when the fieldset contains custom radio controls.
+- **Don't** set `state="error"` without a descriptive `message`.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={fieldsetA11yExamples} />
 ## Tests
 
 ### Automated

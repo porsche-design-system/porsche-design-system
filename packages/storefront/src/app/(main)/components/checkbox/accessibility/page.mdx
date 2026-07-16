@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { checkboxA11yExamples } from '@/app/(main)/components/checkbox/accessibility/stories';
 
 export const metadata = {
   title: 'Checkbox: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Checkbox <ComponentStatus tagName="p-checkbox"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -36,6 +38,18 @@ export const metadata = {
 
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
+
+### Common do's and don'ts
+
+- **Do** provide a clear `label` that describes what the checkbox controls.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** use `hide-label` without an accessible name.
+- **Don't** use `hide-label` when it is not clear what the checkbox controls.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={checkboxA11yExamples} />
 
 ## Tests
 

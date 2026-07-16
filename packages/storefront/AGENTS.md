@@ -165,15 +165,90 @@ When you add new interactive examples or components:
 
 ## Primary Accessibility Reference
 
-Follow the internal accessibility guidance page:
+Follow the internal accessibility guidance pages:
 
-> [`src/app/must-know/accessibility/introduction/page.mdx`](src/app/must-know/accessibility/introduction/page.mdx)
+- [`src/app/must-know/accessibility/introduction/page.mdx`](src/app/must-know/accessibility/introduction/page.mdx) — PDS
+  accessibility approach and testing stages
+- [`src/app/must-know/accessibility/dos-and-donts/page.mdx`](src/app/must-know/accessibility/dos-and-donts/page.mdx) —
+  practical integration do's and don'ts for consumers
 
 It documents expected testing stages:
 
 - AXE-Core automated checks
 - High Contrast Mode (HCM) visual regression tests
 - 200% text zoom visual regression tests
+
+## Accessibility documentation conventions
+
+When adding or updating accessibility documentation in the storefront:
+
+| Topic | Guidance |
+| ----- | -------- |
+| **Central vs component** | Cross-cutting integration mistakes live on the [Do's and Don'ts](/must-know/accessibility/dos-and-donts) page. Each component Accessibility tab includes its own do/don't list and examples, even when content overlaps. |
+| **Usage vs Accessibility** | The Usage tab is for design/UX guidance. The Accessibility tab is for keyboard, ARIA, and technical integration. |
+| **Code examples** | Use vanilla-js web component markup (`<p-button>`, kebab-case attributes). Pass ARIA via `aria="{ 'aria-label': '...' }"`. |
+| **Page structure** | Keep conceptual guidance under `## Development considerations`, including `### Common do's and don'ts` bullet rules. Use a separate `## Integration examples` section for anti-pattern/recommended code pairs. |
+| **Do/don't examples** | Pair each actionable do/don't with a **❌ Anti-pattern** / **✅ Recommended** `js` code example under `## Integration examples`. Include host-vs-`aria` prop examples for interactive components. |
+| **Story-driven examples** | Prefer `A11yIntegrationExamples` with colocated `accessibility/stories.ts`. Use typed `Story` `generator` for both ❌ anti and ✅ recommended examples. Host-level `aria-*` attributes belong in `properties` (e.g. `'aria-haspopup': 'dialog'`). Use raw strings inside `generator` only for imperative pseudo-code. |
+| **When to add do/don't** | Prioritize high-integration-risk components: interactive controls, forms, overlays, and keyboard-heavy widgets (carousel, tabs). |
+
+Example in MDX:
+
+````mdx
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** pass ARIA via the `aria` prop.
+- **Don't** add native `aria-*` attributes on the component host.
+
+## Integration examples
+
+### Short pattern title
+
+❌ Anti-pattern
+
+```js
+<p-button aria-label="Open">Open</p-button>
+```
+
+✅ Recommended
+
+```js
+<p-button aria="{ 'aria-label': 'Open product details' }">Open</p-button>
+```
+````
+
+Story-driven integration examples (checkbox pilot):
+
+````mdx
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { checkboxA11yExamples } from '@/app/(main)/components/checkbox/accessibility/stories';
+
+## Integration examples
+
+<A11yIntegrationExamples examples={checkboxA11yExamples} />
+````
+
+Define examples in `accessibility/stories.ts`:
+
+```ts
+import type { A11yIntegrationExample } from '@/models/a11yIntegrationExample';
+
+export const checkboxA11yExamples: A11yIntegrationExample[] = [
+  {
+    title: 'Hidden label without accessible name',
+    anti: {
+      generator: () => [{ tag: 'p-checkbox', properties: { name: 'terms', hideLabel: true } }],
+    },
+    recommended: {
+      generator: () => [
+        { tag: 'p-checkbox', properties: { name: 'terms', hideLabel: true, label: 'I accept the terms and conditions' } },
+      ],
+    },
+  },
+];
+```
 
 ## Done Checklist
 

@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { switchA11yExamples } from '@/app/(main)/components/switch/accessibility/stories';
 
 export const metadata = {
   title: 'Switch: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Switch <ComponentStatus tagName="p-switch"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -30,6 +32,22 @@ export const metadata = {
 | `aria-checked="BOOLEAN"` | Indicates the status of the switch element.                                               |
 | `role="status"`          | When `loading` prop is set, the component announces the loading state (start and finish). |
 
+## Development considerations
+
+### Labelling
+
+The switch accessible name comes from the default slot. Provide concise, descriptive text that states what the switch
+controls and its on/off meaning.
+
+### Common do's and don'ts
+
+- **Do** provide a clear slotted label that describes what the switch controls.
+- **Do** use `hide-label` only when the label text remains in the slot for screen readers.
+- **Don't** use an icon or visual state alone without descriptive label text.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={switchA11yExamples} />
 ## Tests
 
 ### Automated
