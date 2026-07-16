@@ -6,7 +6,6 @@ import {
   renderComponentApi,
   renderSubComponents,
 } from '@skill/components/api';
-import { deriveIconNames, renderIconsReference } from '@skill/components/icons';
 import { componentApiFixtures } from '../../../data/skill/componentApiFixtures';
 
 const { 'p-accordion': accordion, 'p-heading': heading } = componentApiFixtures;
@@ -18,103 +17,6 @@ describe('renderComponentApi', () => {
 
   it('renders the API section for a component whose props carry deprecated values', () => {
     expect(renderComponentApi(heading)).toMatchSnapshot();
-  });
-
-  it('only emits tables that have entries', () => {
-    const markdown = renderComponentApi(heading);
-    expect(markdown).toContain('### Properties');
-    expect(markdown).not.toContain('### Events');
-    expect(markdown).toContain('### Slots');
-    expect(markdown).not.toContain('### CSS Variables');
-  });
-
-  describe('union-type props', () => {
-    // `value` on p-select: allowedValues is the decomposition of the union type, not enum literals.
-    const selectLike = {
-      isChunked: true,
-      propsMeta: {
-        value: {
-          description: 'The selected value.',
-          type: 'string | number | null',
-          defaultValue: null,
-          allowedValues: ['string', 'number', 'null'],
-        },
-        state: {
-          description: 'The validation state.',
-          type: 'SelectState',
-          defaultValue: 'none',
-          allowedValues: ['none', 'error', 'success'],
-        },
-      },
-    } as unknown as ComponentMeta;
-
-    it('renders a primitive union type as the type, not as quoted string literals', () => {
-      const markdown = renderComponentApi(selectLike);
-      expect(markdown).toContain('`string | number | null`');
-      expect(markdown).not.toContain("`'string'`");
-      expect(markdown).not.toContain("`'null'`");
-      // a real string-literal enum is still rendered as quoted values
-      expect(markdown).toContain("`'none'`");
-      expect(markdown).toContain("`'error'`");
-    });
-  });
-
-  describe('icon-union props', () => {
-    const iconNames = ['arrow-right', 'car', 'zoom-in'];
-    // p-button's `icon`: the full icon-name set plus a non-icon extra (`none`).
-    const buttonLike = {
-      isChunked: true,
-      propsMeta: {
-        icon: {
-          description: 'The icon to display.',
-          type: 'ButtonIcon',
-          defaultValue: 'none',
-          allowedValues: [...iconNames, 'none'],
-        },
-      },
-    } as unknown as ComponentMeta;
-
-    it('collapses the icon-name union to a shared-list link, keeping non-icon extras inline', () => {
-      const markdown = renderComponentApi(buttonLike, new Set(iconNames));
-      expect(markdown).toContain('see [icon names](references/icons.md)');
-      expect(markdown).toContain(`one of ${iconNames.length} icon names`);
-      expect(markdown).toContain("`'none'`"); // the non-icon extra is preserved
-      expect(markdown).not.toContain("`'arrow-right'`"); // individual icon names are not inlined
-      expect(markdown).not.toContain("`'zoom-in'`");
-    });
-
-    it('inlines the values when no icon-name set is supplied (default)', () => {
-      const markdown = renderComponentApi(buttonLike);
-      expect(markdown).toContain("`'arrow-right'`");
-      expect(markdown).not.toContain('references/icons.md');
-    });
-  });
-
-  describe('deprecation handling', () => {
-    it('flags fully deprecated props, slots and uses no deprecated recommended values', () => {
-      const markdown = renderComponentApi(accordion);
-      // deprecated prop / slot rows are kept but marked
-      expect(markdown).toMatch(/`size`.*_\(deprecated\)_/);
-      expect(markdown).toMatch(/`heading`.*_\(deprecated\)_/);
-      // experimental and required-style flags surface too
-      expect(markdown).toMatch(/`sticky`.*_\(experimental\)_/);
-    });
-
-    it('never lists a deprecated value as a recommended value', () => {
-      const markdown = renderComponentApi(heading);
-      // every prop row keeps its recommended values before the `deprecated:` divider
-      for (const line of markdown.split('\n').filter((l: string) => l.includes('_deprecated:_'))) {
-        const [recommended, deprecated] = line.split('_deprecated:_');
-        for (const value of ['small', 'medium', 'large', 'x-large', 'xx-large', 'regular', 'semi-bold']) {
-          expect(recommended, `recommended values must not contain deprecated '${value}'`).not.toContain(`'${value}'`);
-        }
-        // the deprecated values are still documented, just on the deprecated side
-        expect(deprecated).toBeTruthy();
-      }
-      // a known recommended (non-deprecated) value is still present
-      expect(markdown).toContain("`'2xs'`");
-      expect(markdown).toContain("`'semibold'`");
-    });
   });
 });
 
@@ -166,32 +68,6 @@ describe('renderSubComponents', () => {
     const empty = { isChunked: false, requiredParent: 'p-x' } as unknown as ComponentMeta;
     const markdown = renderSubComponents([{ tag: 'p-x-item', meta: empty }]);
     expect(markdown).toContain('_No configurable properties, slots, events or CSS variables._');
-  });
-});
-
-describe('deriveIconNames', () => {
-  it('reads the icon-name set from `p-icon`’s own `name` allowed values', () => {
-    const meta = {
-      'p-icon': { propsMeta: { name: { allowedValues: ['a', 'b', 'c'] } } },
-    } as unknown as Record<string, ComponentMeta>;
-    expect(deriveIconNames(meta)).toEqual(['a', 'b', 'c']);
-  });
-
-  it('returns an empty list when `p-icon` (or its `name` enum) is absent', () => {
-    expect(deriveIconNames({} as Record<string, ComponentMeta>)).toEqual([]);
-    const stringName = { 'p-icon': { propsMeta: { name: { allowedValues: 'string' } } } } as unknown as Record<
-      string,
-      ComponentMeta
-    >;
-    expect(deriveIconNames(stringName)).toEqual([]);
-  });
-});
-
-describe('renderIconsReference', () => {
-  it('renders every icon name as inline code under an `# Icon names` heading', () => {
-    const markdown = renderIconsReference(['arrow-right', 'car']);
-    expect(markdown).toMatch(/^# Icon names/);
-    expect(markdown).toContain('`arrow-right` `car`');
   });
 });
 

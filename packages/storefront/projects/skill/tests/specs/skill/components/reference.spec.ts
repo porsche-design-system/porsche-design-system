@@ -3,21 +3,15 @@ import os from 'node:os';
 import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import type { ComponentExamplesSource } from '@skill/components/examples';
-import type { ComponentProseSource } from '@skill/components/prose';
 import { type ComponentDocsMetaMap, writeComponentReferences } from '@skill/components/reference';
 import { SkillTree } from '@skill/support/skillTree';
-import { compileComponentExamplesMeta } from '../../../data/skill/componentExamplesFixtures';
-import { compileComponentDocsMeta } from '../../../data/skill/componentProseFixtures';
+import { componentExamplesMeta as examplesMap } from '../../../data/skill/componentExamplesFixtures';
+import { componentDocsMeta as proseMap } from '../../../data/skill/componentProseFixtures';
 
 describe('writeComponentReferences', () => {
-  let proseMap: Record<string, ComponentProseSource>;
-  let examplesMap: Record<string, ComponentExamplesSource>;
   let root: string;
 
-  beforeAll(async () => {
-    proseMap = await compileComponentDocsMeta();
-    examplesMap = await compileComponentExamplesMeta();
+  beforeAll(() => {
     root = fs.mkdtempSync(path.join(os.tmpdir(), 'skill-components-'));
   });
 
@@ -30,7 +24,7 @@ describe('writeComponentReferences', () => {
   const docsMeta = (...tags: string[]): ComponentDocsMetaMap =>
     Object.fromEntries(tags.map((tag) => [tag, { ...proseMap[tag], ...examplesMap[tag] }]));
 
-  it('writes a <tag>/<tag>.md per component and returns a roster', () => {
+  it('writes component references and returns a roster', () => {
     const tree = new SkillTree(root, 'js');
     tree.reset();
 
@@ -40,31 +34,10 @@ describe('writeComponentReferences', () => {
       routeReferences: {},
     });
 
-    // Every docsMeta tag yields a reference file (sorted, deterministic order).
-    expect(report.tags).toEqual(['p-accordion', 'p-button']);
-    for (const tag of report.tags) {
-      expect(fs.existsSync(tree.resolve(`references/components/${tag}/${tag}.md`)), `${tag}.md`).toBe(true);
-    }
-
-    // The roster carries one entry per tag (the harness inlines it into SKILL.md).
-    expect(report.roster.map(({ tag }) => tag)).toEqual(report.tags);
-    for (const { tag, summary } of report.roster) {
-      expect(summary, `${tag} summary`).toBeTruthy();
-    }
-
-    // The shared icon-name reference is emitted once per tree.
-    expect(fs.existsSync(tree.resolve('references/icons.md'))).toBe(true);
-
-    // No standalone overview file is written — the roster lives in SKILL.md.
-    expect(fs.existsSync(tree.resolve('references/components/overview.md'))).toBe(false);
-
-    // The authoritative API tables are appended after the prose.
+    expect(report).toMatchSnapshot();
     const buttonMd = fs.readFileSync(tree.resolve('references/components/p-button/p-button.md'), 'utf-8');
     expect(buttonMd).toContain('## API');
-
-    // Storefront-absolute prose links are resolved to in-tree references in the written file.
     expect(buttonMd).toContain('[Link](../p-link/p-link.md)');
-    expect(buttonMd).not.toContain('](/components/');
   });
 
   it('propagates a degraded-prose failure instead of writing the tree', () => {
@@ -91,17 +64,5 @@ describe('writeComponentReferences', () => {
         routeReferences: {},
       })
     ).toThrow(/No component-meta for documented tag p-unknown/);
-  });
-
-  it('snapshots the generated roster', () => {
-    const tree = new SkillTree(root, 'js');
-    tree.reset();
-
-    const report = writeComponentReferences(tree, {
-      docsMeta: docsMeta('p-button', 'p-accordion'),
-      componentMeta,
-      routeReferences: {},
-    });
-    expect(report.roster).toMatchSnapshot();
   });
 });

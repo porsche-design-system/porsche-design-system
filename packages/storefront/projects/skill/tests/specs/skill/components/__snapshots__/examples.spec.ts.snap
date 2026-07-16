@@ -1,47 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`component examples generator > emits files and a reference table for p-accordion (angular) > ./examples/Default.ts 1`] = `
-"import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-
-@Component({
-  selector: 'porsche-design-system-app',
-  template: \`
-      <p-accordion heading="Section 1">
-        Panel content
-      </p-accordion>
-  \`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
-})
-export class ExampleComponent {}
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-accordion (angular) > ./examples/MultipleOpen.ts 1`] = `
-"import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-
-@Component({
-  selector: 'porsche-design-system-app',
-  template: \`
-      <p-accordion heading="First" [open]="true">
-        One
-      </p-accordion>
-
-      <p-accordion heading="Second">
-        Two
-      </p-accordion>
-  \`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
-})
-export class ExampleComponent {}
-"
-`;
-
 exports[`component examples generator > emits files and a reference table for p-accordion (angular) > table 1`] = `
 "## Examples
 
@@ -49,48 +7,6 @@ exports[`component examples generator > emits files and a reference table for p-
 | --- | --- | --- |
 | Default | Minimal default configuration. | [./examples/Default.ts](./examples/Default.ts) |
 | Multiple open panels | Multiple open panels | [./examples/MultipleOpen.ts](./examples/MultipleOpen.ts) |"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-accordion (js) > ./examples/Default.html 1`] = `
-"<!doctype html>
-<html lang="en" class="scheme-light">
-<head>
-  <title></title>
-</head>
-<body class="bg-canvas">
-
-<p-accordion heading="Section 1">
-  Panel content
-</p-accordion>
-<script>
-
-</script>
-</body>
-</html>
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-accordion (js) > ./examples/MultipleOpen.html 1`] = `
-"<!doctype html>
-<html lang="en" class="scheme-light">
-<head>
-  <title></title>
-</head>
-<body class="bg-canvas">
-
-<p-accordion heading="First" open="true">
-  One
-</p-accordion>
-
-<p-accordion heading="Second">
-  Two
-</p-accordion>
-<script>
-
-</script>
-</body>
-</html>
-"
 `;
 
 exports[`component examples generator > emits files and a reference table for p-accordion (js) > table 1`] = `
@@ -102,42 +18,6 @@ exports[`component examples generator > emits files and a reference table for p-
 | Multiple open panels | Multiple open panels | [./examples/MultipleOpen.html](./examples/MultipleOpen.html) |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (react) > ./examples/Default.tsx 1`] = `
-"import React from 'react';
-import { PAccordion } from '@porsche-design-system/components-react';
-
-export const Example = () => {
-  return (
-    <>
-      <PAccordion heading="Section 1">
-        Panel content
-      </PAccordion>
-    </>
-  )
-}
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-accordion (react) > ./examples/MultipleOpen.tsx 1`] = `
-"import React from 'react';
-import { PAccordion } from '@porsche-design-system/components-react';
-
-export const Example = () => {
-  return (
-    <>
-      <PAccordion heading="First" open={true}>
-        One
-      </PAccordion>
-
-      <PAccordion heading="Second">
-        Two
-      </PAccordion>
-    </>
-  )
-}
-"
-`;
-
 exports[`component examples generator > emits files and a reference table for p-accordion (react) > table 1`] = `
 "## Examples
 
@@ -147,36 +27,6 @@ exports[`component examples generator > emits files and a reference table for p-
 | Multiple open panels | Multiple open panels | [./examples/MultipleOpen.tsx](./examples/MultipleOpen.tsx) |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-accordion (vue) > ./examples/Default.vue 1`] = `
-"<script setup lang="ts">
-  import { PAccordion } from '@porsche-design-system/components-vue';
-</script>
-
-<template>
-  <PAccordion heading="Section 1">
-    Panel content
-  </PAccordion>
-</template>
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-accordion (vue) > ./examples/MultipleOpen.vue 1`] = `
-"<script setup lang="ts">
-  import { PAccordion } from '@porsche-design-system/components-vue';
-</script>
-
-<template>
-  <PAccordion heading="First" :open="true">
-    One
-  </PAccordion>
-
-  <PAccordion heading="Second">
-    Two
-  </PAccordion>
-</template>
-"
-`;
-
 exports[`component examples generator > emits files and a reference table for p-accordion (vue) > table 1`] = `
 "## Examples
 
@@ -184,49 +34,6 @@ exports[`component examples generator > emits files and a reference table for p-
 | --- | --- | --- |
 | Default | Minimal default configuration. | [./examples/Default.vue](./examples/Default.vue) |
 | Multiple open panels | Multiple open panels | [./examples/MultipleOpen.vue](./examples/MultipleOpen.vue) |"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (angular) > ./examples/Default.ts 1`] = `
-"import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-
-@Component({
-  selector: 'porsche-design-system-app',
-  template: \`
-      <p-button variant="primary">
-        Save
-      </p-button>
-  \`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
-})
-export class ExampleComponent {}
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (angular) > ./examples/Loading.ts 1`] = `
-"import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-
-@Component({
-  selector: 'porsche-design-system-app',
-  template: \`
-      <p-button [loading]="true">
-        Loading
-      </p-button>
-  \`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
-})
-export class ExampleComponent {}
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (angular) > ./examples/SubmitForm.ts 1`] = `
-"<p-button type="submit">Submit form</p-button>
-"
 `;
 
 exports[`component examples generator > emits files and a reference table for p-button (angular) > table 1`] = `
@@ -240,49 +47,6 @@ exports[`component examples generator > emits files and a reference table for p-
 | Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (js) > ./examples/Default.html 1`] = `
-"<!doctype html>
-<html lang="en" class="scheme-light">
-<head>
-  <title></title>
-</head>
-<body class="bg-canvas">
-
-<p-button variant="primary">
-  Save
-</p-button>
-<script>
-
-</script>
-</body>
-</html>
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (js) > ./examples/Loading.html 1`] = `
-"<!doctype html>
-<html lang="en" class="scheme-light">
-<head>
-  <title></title>
-</head>
-<body class="bg-canvas">
-
-<p-button loading="true">
-  Loading
-</p-button>
-<script>
-
-</script>
-</body>
-</html>
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (js) > ./examples/SubmitForm.html 1`] = `
-"<p-button type="submit">Submit form</p-button>
-"
-`;
-
 exports[`component examples generator > emits files and a reference table for p-button (js) > table 1`] = `
 "## Examples
 
@@ -294,43 +58,6 @@ exports[`component examples generator > emits files and a reference table for p-
 | Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
 `;
 
-exports[`component examples generator > emits files and a reference table for p-button (react) > ./examples/Default.tsx 1`] = `
-"import React from 'react';
-import { PButton } from '@porsche-design-system/components-react';
-
-export const Example = () => {
-  return (
-    <>
-      <PButton variant="primary">
-        Save
-      </PButton>
-    </>
-  )
-}
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (react) > ./examples/Loading.tsx 1`] = `
-"import React from 'react';
-import { PButton } from '@porsche-design-system/components-react';
-
-export const Example = () => {
-  return (
-    <>
-      <PButton loading={true}>
-        Loading
-      </PButton>
-    </>
-  )
-}
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (react) > ./examples/SubmitForm.tsx 1`] = `
-"<PButton type="submit">Submit form</PButton>
-"
-`;
-
 exports[`component examples generator > emits files and a reference table for p-button (react) > table 1`] = `
 "## Examples
 
@@ -340,37 +67,6 @@ exports[`component examples generator > emits files and a reference table for p-
 | Loading | Use a loading state while an async action is in progress. | [./examples/Loading.tsx](./examples/Loading.tsx) |
 | Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.tsx](./examples/SubmitForm.tsx) |
 | Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (vue) > ./examples/Default.vue 1`] = `
-"<script setup lang="ts">
-  import { PButton } from '@porsche-design-system/components-vue';
-</script>
-
-<template>
-  <PButton variant="primary">
-    Save
-  </PButton>
-</template>
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (vue) > ./examples/Loading.vue 1`] = `
-"<script setup lang="ts">
-  import { PButton } from '@porsche-design-system/components-vue';
-</script>
-
-<template>
-  <PButton :loading="true">
-    Loading
-  </PButton>
-</template>
-"
-`;
-
-exports[`component examples generator > emits files and a reference table for p-button (vue) > ./examples/SubmitForm.vue 1`] = `
-"<PButton type="submit">Submit form</PButton>
-"
 `;
 
 exports[`component examples generator > emits files and a reference table for p-button (vue) > table 1`] = `

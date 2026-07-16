@@ -33,44 +33,32 @@ import {
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../../../../..');
 const JS_DIST_ROOT = path.join(REPO_ROOT, WRAPPER_DIST_DIRS.js);
 
-const danglingProduced = (skillRoot: string): string[] => {
-  const dangling: string[] = [];
-  for (const file of listMarkdownFiles(skillRoot)) {
-    const markdown = fs.readFileSync(path.join(skillRoot, file), 'utf-8');
-    for (const ref of extractReferences(markdown)) {
-      if (ref.kind === 'produced' && !resolveProduced(skillRoot, file, ref.target)) {
-        dangling.push(`${file} -> ${ref.target}`);
-      }
-    }
-  }
-  return dangling;
-};
+const treeReferences = (skillRoot: string) =>
+  listMarkdownFiles(skillRoot).flatMap((sourceFile) =>
+    extractReferences(fs.readFileSync(path.join(skillRoot, sourceFile), 'utf-8')).map((reference) => ({
+      sourceFile,
+      ...reference,
+    }))
+  );
 
-const danglingRaw = (distSkillRoot: string): string[] => {
-  const dangling: string[] = [];
-  for (const file of listMarkdownFiles(distSkillRoot)) {
-    const markdown = fs.readFileSync(path.join(distSkillRoot, file), 'utf-8');
-    for (const ref of extractReferences(markdown)) {
-      if (ref.kind === 'raw' && !resolveRaw(distSkillRoot, JS_DIST_ROOT, ref.target)) {
-        dangling.push(`${file} -> ${ref.target}`);
-      }
-    }
-  }
-  return dangling;
-};
+const danglingProduced = (skillRoot: string): string[] =>
+  treeReferences(skillRoot)
+    .filter(
+      ({ kind, sourceFile, target }) => kind === 'produced' && !resolveProduced(skillRoot, sourceFile, target)
+    )
+    .map(({ sourceFile, target }) => `${sourceFile} -> ${target}`);
 
-/** Distinct raw-link targets across a packaged tree. */
-const rawTargets = (skillRoot: string): Set<string> => {
-  const targets = new Set<string>();
-  for (const file of listMarkdownFiles(skillRoot)) {
-    for (const ref of extractReferences(fs.readFileSync(path.join(skillRoot, file), 'utf-8'))) {
-      if (ref.kind === 'raw') {
-        targets.add(ref.target);
-      }
-    }
-  }
-  return targets;
-};
+const danglingRaw = (distSkillRoot: string, jsDistRoot = JS_DIST_ROOT): string[] =>
+  treeReferences(distSkillRoot)
+    .filter(({ kind, target }) => kind === 'raw' && !resolveRaw(distSkillRoot, jsDistRoot, target))
+    .map(({ sourceFile, target }) => `${sourceFile} -> ${target}`);
+
+const rawTargets = (skillRoot: string): Set<string> =>
+  new Set(
+    treeReferences(skillRoot)
+      .filter(({ kind }) => kind === 'raw')
+      .map(({ target }) => target)
+  );
 
 describe('skill reference links — produced paths resolve against staging', () => {
   for (const framework of FRAMEWORKS) {
@@ -207,38 +195,29 @@ describe('skill reference links — fixture (known-good and known-broken)', () =
   });
 
   it('extractReferences classifies produced vs raw and ignores non-references', () => {
-    const refs = extractReferences(
-      'In-tree [ex](./a.html) and `references/b.md`; raw `../meta`, `../tailwindcss/index.css`, ' +
-        '[sibling](../c.md); `@porsche-design-system/components-js/meta` and ' +
-        '`@porsche-design-system/components-js/scss`; ' +
-        'ignore [route](/components/x/), <https://e.com>, `#anchor`, prose `component-meta` and `aria-label`.'
-    );
-    const kindOf = (target: string) => refs.find((r) => r.target === target)?.kind;
-    expect(kindOf('./a.html')).toBe('produced');
-    expect(kindOf('references/b.md')).toBe('produced');
-    expect(kindOf('../c.md')).toBe('produced');
-    expect(kindOf('../meta')).toBe('raw');
-    expect(kindOf('../tailwindcss/index.css')).toBe('raw');
-    expect(kindOf(JS_PEER_META_SPECIFIER)).toBe('raw');
-    expect(kindOf(JS_PEER_SCSS_SPECIFIER)).toBe('raw');
-    expect(refs.map((r) => r.target)).not.toContain('component-meta');
-    expect(refs.map((r) => r.target)).not.toContain('/components/x/');
+    expect(
+      extractReferences(
+        'In-tree [ex](./a.html) and `references/b.md`; raw `../meta`, `../tailwindcss/index.css`, ' +
+          '[sibling](../c.md); `@porsche-design-system/components-js/meta` and ' +
+          '`@porsche-design-system/components-js/scss`; ' +
+          'ignore [route](/components/x/), <https://e.com>, `#anchor`, prose `component-meta` and `aria-label`.'
+      )
+    ).toEqual([
+      { target: './a.html', kind: 'produced' },
+      { target: '../c.md', kind: 'produced' },
+      { target: 'references/b.md', kind: 'produced' },
+      { target: '../meta', kind: 'raw' },
+      { target: '../tailwindcss/index.css', kind: 'raw' },
+      { target: JS_PEER_META_SPECIFIER, kind: 'raw' },
+      { target: JS_PEER_SCSS_SPECIFIER, kind: 'raw' },
+    ]);
   });
 
   it('passes both modes on the known-good tree', () => {
     const goodSkill = path.join(tmp, 'good/skill');
     const jsDist = path.join(tmp, 'js-dist');
     expect(danglingProduced(goodSkill)).toEqual([]);
-
-    const rawDangling: string[] = [];
-    for (const file of listMarkdownFiles(goodSkill)) {
-      for (const ref of extractReferences(fs.readFileSync(path.join(goodSkill, file), 'utf-8'))) {
-        if (ref.kind === 'raw' && !resolveRaw(goodSkill, jsDist, ref.target)) {
-          rawDangling.push(`${file} -> ${ref.target}`);
-        }
-      }
-    }
-    expect(rawDangling).toEqual([]);
+    expect(danglingRaw(goodSkill, jsDist)).toEqual([]);
   });
 
   it('fails both modes on the known-broken tree', () => {

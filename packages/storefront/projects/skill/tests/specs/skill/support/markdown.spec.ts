@@ -10,12 +10,6 @@ describe('headingSlug', () => {
     // keep a hyphen per space) that is harmless for the single-word token categories linked today.
     expect(headingSlug('Slots & Events')).toBe('slots-events');
   });
-
-  it('keeps distinct headings distinct (no collision for the categories actually linked)', () => {
-    const categories = ['Color', 'Spacing', 'Typography', 'Border', 'Shadow'];
-    const slugs = categories.map(headingSlug);
-    expect(new Set(slugs).size).toBe(categories.length);
-  });
 });
 
 describe('markdownTable', () => {

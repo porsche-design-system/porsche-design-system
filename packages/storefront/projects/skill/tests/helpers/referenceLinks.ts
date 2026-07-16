@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { listSkillTreeFiles } from '@skill/support/skillTreeFiles';
 
 /**
  * The js package's `/meta` subpath. The framework skills (angular/react/vue) link this rather
@@ -88,17 +89,8 @@ export const extractReferences = (markdown: string): ReferenceLink[] => {
 };
 
 /** Tree-relative POSIX paths of every `*.md` file under `skillRoot`, sorted for stable iteration. */
-export const listMarkdownFiles = (skillRoot: string): string[] => {
-  const walk = (current: string): string[] =>
-    fs.readdirSync(current, { withFileTypes: true }).flatMap((entry) => {
-      const absolute = path.join(current, entry.name);
-      return entry.isDirectory() ? walk(absolute) : [absolute];
-    });
-  return walk(skillRoot)
-    .filter((absolute) => absolute.endsWith('.md'))
-    .map((absolute) => path.relative(skillRoot, absolute).split(path.sep).join('/'))
-    .sort();
-};
+export const listMarkdownFiles = (skillRoot: string): string[] =>
+  listSkillTreeFiles(skillRoot).filter((relativePath) => relativePath.endsWith('.md'));
 
 /**
  * Resolve a single produced reference against a staged skill tree. The two conventions

@@ -1,9 +1,9 @@
 import type { CodeSample } from '@porsche-design-system/shared';
 import type { FC } from 'react';
 import type { ComponentExamplesSource } from '@skill/components/examples';
+import { parseMdxToMdast } from '@skill/support/renderMdxToMarkdown';
 import type { Story } from '@/models/story';
 import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
-import { compileMdx } from './proseFixtures';
 
 /**
  * Representative component examples modelled on real storefront `.meta.ts` sources,
@@ -53,27 +53,26 @@ const accordionMultipleStory = story([
   { tag: 'p-accordion', properties: { heading: 'Second' }, children: ['Two'] } as ElementConfig<HTMLTagOrComponent>,
 ]);
 
-/** Compile every fixture's MDX descriptions into an examples-source map. */
-export const compileComponentExamplesMeta = async (): Promise<Record<string, ComponentExamplesSource>> => ({
+export const componentExamplesMeta: Record<string, ComponentExamplesSource> = {
   'p-button': {
     configurator: { story: buttonBaseStory },
     examples: {
       loading: {
         kind: 'story',
         name: 'Loading',
-        description: await compileMdx('Use a loading state while an async action is in progress.'),
+        description: parseMdxToMdast('Use a loading state while an async action is in progress.'),
         story: buttonLoadingStory,
       },
       submitForm: {
         kind: 'example',
         name: 'Submit form',
-        description: await compileMdx('Submit the surrounding form when the button is activated.'),
+        description: parseMdxToMdast('Submit the surrounding form when the button is activated.'),
         example: buttonCodeSample,
       },
       formGuidance: {
         kind: 'description',
         name: 'Form association',
-        description: await compileMdx('Associate the button with a form by its `id` using the `form` attribute.'),
+        description: parseMdxToMdast('Associate the button with a form by its `id` using the `form` attribute.'),
       },
     },
   },
@@ -87,4 +86,4 @@ export const compileComponentExamplesMeta = async (): Promise<Record<string, Com
       },
     },
   },
-});
+};

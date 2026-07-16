@@ -1,5 +1,5 @@
 import type { ComponentProseSource } from '@skill/components/prose';
-import { compileMdx } from './proseFixtures';
+import { parseMdxToMdast } from '@skill/support/renderMdxToMarkdown';
 
 /**
  * Representative component prose modelled on real storefront `.meta.ts` sources:
@@ -99,23 +99,21 @@ Minimal accessibility prose.
   },
 };
 
-/** Compile every fixture's MDX into a prose-source map ready for the generator. */
-export const compileComponentDocsMeta = async (): Promise<Record<string, ComponentProseSource>> => {
-  const map: Record<string, ComponentProseSource> = {};
-  for (const [tag, raw] of Object.entries(RAW_FIXTURES)) {
-    const source: ComponentProseSource = {
-      introduction: await compileMdx(raw.introduction),
-      usage: await compileMdx(raw.usage),
-      accessibility: await compileMdx(raw.accessibility),
-    };
-    if (raw.notes) {
-      const notes: NonNullable<ComponentProseSource['notes']> = {};
-      for (const [key, note] of Object.entries(raw.notes)) {
-        notes[key] = { name: note.name, description: await compileMdx(note.description) };
-      }
-      source.notes = notes;
-    }
-    map[tag] = source;
-  }
-  return map;
-};
+export const componentDocsMeta: Record<string, ComponentProseSource> = Object.fromEntries(
+  Object.entries(RAW_FIXTURES).map(([tag, raw]) => [
+    tag,
+    {
+      introduction: parseMdxToMdast(raw.introduction),
+      usage: parseMdxToMdast(raw.usage),
+      accessibility: parseMdxToMdast(raw.accessibility),
+      ...(raw.notes && {
+        notes: Object.fromEntries(
+          Object.entries(raw.notes).map(([key, note]) => [
+            key,
+            { name: note.name, description: parseMdxToMdast(note.description) },
+          ])
+        ),
+      }),
+    },
+  ])
+);

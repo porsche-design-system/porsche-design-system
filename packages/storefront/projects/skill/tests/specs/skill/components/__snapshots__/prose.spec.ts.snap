@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`renderComponentProse > snapshots the full prose body for a representative component 1`] = `
+exports[`renderComponentProse > renders representative component prose 1`] = `
 "# p-button
 
 The \`p-button\` component is essential for performing **interaction** events such as submitting a form. Whenever you want to provide navigational elements, use the [Link](/components/link/) component instead.

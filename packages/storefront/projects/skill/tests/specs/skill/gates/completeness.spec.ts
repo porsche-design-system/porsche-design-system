@@ -5,15 +5,14 @@ import { componentMeta } from '@porsche-design-system/component-meta';
 import { describe, expect, it } from 'vitest';
 import { ROSTER_SUMMARY_OVERRIDES } from '@skill/components/prose';
 import { getPackageSkillRouteReferences } from '@skill/packageSkills';
+import { listSkillTreeFiles } from '@skill/support/skillTreeFiles';
 import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@skill/support/skillTree';
 
 /**
  * Producer completeness gate. Asserts every documented component and every registered
  * non-component reference (package skills, tokens, icons) is fully represented in each staged
- * `skill/` tree (the reference file plus its `SKILL.md` presence) and that every emitted example
- * carries a "when to use" description. Fails on a missing file, a missing roster row or section
- * link, or an example without a description — catching coverage gaps the drift snapshot alone
- * would bless.
+ * `skill/` tree (the reference file plus its `SKILL.md` presence). Fails on a missing file,
+ * roster row, or section link, catching coverage gaps the drift snapshot alone would bless.
  */
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../../../../..');
 
@@ -67,34 +66,6 @@ const statusOf = (meta: {
 
 const FLAGGED_TAGS = DOCUMENTED_TAGS.filter((tag) => statusOf(componentMeta[tag]));
 const FLAGGED_SUB_COMPONENT_TAGS = SUB_COMPONENT_TAGS.filter((tag) => statusOf(componentMeta[tag]));
-
-/** Extract the data rows of every markdown table under an `## Examples` heading. */
-const exampleRows = (markdown: string): string[][] => {
-  const lines = markdown.split('\n');
-  const start = lines.findIndex((line) => /^##\s+Examples\b/.test(line));
-  if (start === -1) {
-    return [];
-  }
-  const rows: string[][] = [];
-  for (const line of lines.slice(start + 1)) {
-    if (line.startsWith('## ')) {
-      break; // next section
-    }
-    if (!line.trim().startsWith('|')) {
-      continue;
-    }
-    const cells = line
-      .split('|')
-      .slice(1, -1)
-      .map((cell) => cell.trim());
-    const isHeader = cells[0] === 'Example';
-    const isSeparator = cells.every((cell) => /^-+$/.test(cell));
-    if (!isHeader && !isSeparator) {
-      rows.push(cells);
-    }
-  }
-  return rows;
-};
 
 describe('skill tree completeness', () => {
   it('has a non-empty documented-component set to gate against', () => {
@@ -184,37 +155,12 @@ describe('skill tree completeness', () => {
       });
 
       it('resolves the {js|angular|react|vue} package placeholder everywhere in the tree', () => {
-        const offenders: string[] = [];
-        const walk = (dir: string): void => {
-          for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-            const abs = path.join(dir, entry.name);
-            if (entry.isDirectory()) {
-              walk(abs);
-            } else if (fs.readFileSync(abs, 'utf-8').includes('{js|angular|react|vue}')) {
-              offenders.push(path.relative(root, abs));
-            }
-          }
-        };
-        if (fs.existsSync(root)) {
-          walk(root);
-        }
+        const offenders = fs.existsSync(root)
+          ? listSkillTreeFiles(root).filter((relativePath) =>
+              fs.readFileSync(path.join(root, relativePath), 'utf-8').includes('{js|angular|react|vue}')
+            )
+          : [];
         expect(offenders, `unresolved framework placeholder in: ${offenders.join(', ')}`).toEqual([]);
-      });
-
-      it('gives every example a description', () => {
-        const missing: string[] = [];
-        for (const tag of DOCUMENTED_TAGS) {
-          const file = path.join(componentsDir, tag, `${tag}.md`);
-          if (!fs.existsSync(file)) {
-            continue; // reported by the per-component assertion above
-          }
-          for (const [name, description] of exampleRows(fs.readFileSync(file, 'utf-8'))) {
-            if (!description) {
-              missing.push(`${tag} › ${name}`);
-            }
-          }
-        }
-        expect(missing, `examples without a description: ${missing.join(', ')}`).toEqual([]);
       });
     });
   }

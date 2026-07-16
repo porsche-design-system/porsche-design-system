@@ -3,25 +3,24 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@skill/support/skillTree';
-import { hashSkillTree } from '@skill/support/skillTreeHash';
+import { listSkillTreeFiles } from '@skill/support/skillTreeFiles';
 
 /**
- * Compact review signal for the ignored staged artifacts. An intentional generated-content
- * change updates exactly these four hashes via `vitest -u`; completeness and link gates inspect
- * the actual trees.
+ * Reviewable snapshots for the ignored staged artifacts. An intentional generated-content
+ * change updates the affected file snapshots via `vitest -u`, exposing the exact text diff.
  */
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../../../../..');
 
-describe('skill tree hashes', () => {
-  it('matches the staged generated content snapshot', () => {
-    const hashes: Record<string, string> = {};
-    for (const framework of FRAMEWORKS) {
+describe('skill tree content', () => {
+  for (const framework of FRAMEWORKS) {
+    it(`matches the staged ${framework} content snapshots`, () => {
       const root = path.join(REPO_ROOT, STAGED_SKILL_DIRS[framework]);
       expect(fs.existsSync(root), `${STAGED_SKILL_DIRS[framework]} is missing — run \`npm run build:skill\``).toBe(
         true
       );
-      hashes[framework] = hashSkillTree(root);
-    }
-    expect(hashes).toMatchSnapshot();
-  });
+      for (const relativePath of listSkillTreeFiles(root)) {
+        expect.soft(fs.readFileSync(path.join(root, relativePath), 'utf-8').split('\n')).toMatchSnapshot(relativePath);
+      }
+    });
+  }
 });

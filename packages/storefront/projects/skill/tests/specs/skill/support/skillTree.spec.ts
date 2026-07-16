@@ -64,10 +64,8 @@ describe('SkillTree', () => {
 });
 
 describe('isFramework', () => {
-  it('accepts the four supported frameworks', () => {
-    for (const framework of FRAMEWORKS) {
-      expect(isFramework(framework)).toBe(true);
-    }
+  it.each(FRAMEWORKS)('accepts %s', (framework) => {
+    expect(isFramework(framework)).toBe(true);
   });
 
   it('rejects anything else', () => {

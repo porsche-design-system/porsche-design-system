@@ -14,8 +14,7 @@ export default defineConfig({
     exclude: ['tests/specs/bin/**/*.spec.ts'],
     globals: true,
     testTimeout: 10000,
-    environment: 'jsdom',
-    setupFiles: './tests/config/vitest.setup.ts',
+    environment: 'node',
     typecheck: {
       tsconfig: './tsconfig.test.json',
     },
