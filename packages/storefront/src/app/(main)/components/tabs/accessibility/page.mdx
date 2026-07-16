@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { tabsA11yExamples } from '@/app/(main)/components/tabs/accessibility/stories';
 
 export const metadata = {
   title: 'Tabs: Accessibility - Porsche Design System',
@@ -8,7 +10,9 @@ export const metadata = {
 
 # Tabs <ComponentStatus tagName="p-tabs"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -47,6 +51,16 @@ When multiple tab groups appear on the same page, or when the purpose of the tab
 labels alone, provide a descriptive accessible name for the tablist using the `aria` property, e.g.:
 `<p-tabs aria="{ 'aria-label': 'Some label for the tablist', 'aria-description': 'Some description for the tablist' }">`.
 
+### Common do's and don'ts
+
+- **Do** pass tablist ARIA through the `aria` prop when multiple tab groups appear on one page.
+- **Do** use specific `label` text on each `p-tabs-item`.
+- **Don't** add native `aria-*` attributes directly on the component host.
+- **Don't** use vague tab labels like "Details" without context.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={tabsA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

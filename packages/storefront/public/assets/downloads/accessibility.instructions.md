@@ -34,7 +34,11 @@ If a request conflicts with these requirements, prioritize accessibility and pro
   - `aria-labelledby`.
 - Use ARIA only when necessary; never add ARIA that conflicts with native semantics.
 - If a Porsche Design System component needs extra ARIA attributes, add them according to PDS documentation via the `aria` prop.
+- Avoid placing `aria-*` attributes on a PDS component host element as a workaround.
 - Ensure icons have accessible names if they convey meaning and are not followed by adjacent text.
+
+For integration examples and a pre-merge checklist, see the PDS storefront
+[Accessibility Do's and Don'ts](https://designsystem.porsche.com/must-know/accessibility/dos-and-donts) guide.
 
 ### Keyboard interactions
 

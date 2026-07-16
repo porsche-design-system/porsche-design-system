@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { flagA11yExamples } from '@/app/(main)/components/flag/accessibility/stories';
 
 export const metadata = {
   title: 'Flag: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -20,6 +22,17 @@ export const metadata = {
 | ------------ | ----------------------------------------------------------------------------- |
 | `aria-label` | Defines a string value that labels the element (through the `alt` attribute). |
 
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** pass a country or region name through the `aria` prop when the flag conveys meaning.
+- **Do** hide decorative flags from assistive technologies when adjacent text already names the country or region.
+- **Don't** leave informative flags without an accessible name.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={flagA11yExamples} />
 ## Tests
 
 ### Automated

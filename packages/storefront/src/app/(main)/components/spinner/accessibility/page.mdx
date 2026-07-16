@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { spinnerA11yExamples } from '@/app/(main)/components/spinner/accessibility/stories';
 
 export const metadata = {
   title: 'Spinner: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Spinner <ComponentStatus tagName="p-spinner"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -37,6 +39,15 @@ achieved in the following ways:
 - Providing a meaningful loading state message through the `aria` property, e.g.
   `aria="{ 'aria-label': 'Start/End loading content'}"`.
 
+### Common do's and don'ts
+
+- **Do** pre-render the spinner when loading feedback must be announced.
+- **Do** provide a specific loading message through the `aria` prop.
+- **Don't** mount the spinner only at the moment loading starts without a label.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={spinnerA11yExamples} />
 ## Tests
 
 ### Automated

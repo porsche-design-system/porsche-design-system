@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { modalA11yExamples } from '@/app/(main)/components/modal/accessibility/stories';
 
 export const metadata = {
   title: 'Modal: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Modal <ComponentStatus tagName="p-modal"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -41,8 +43,19 @@ behavior. As a result, accessibility features may vary across different browsers
 ## Development considerations
 
 To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria`
-property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
+property.
 
+### Common do's and don'ts
+
+- **Do** use a semantic trigger (usually a button) with a meaningful accessible name.
+- **Do** set `aria-haspopup` through the trigger component `aria` prop when opening the modal.
+- **Do** ensure a meaningful title is available via the `header` slot or `aria` property.
+- **Don't** add raw host-level ARIA attributes as a workaround.
+- **Don't** use unclear trigger copy like "Open" when the destination is not obvious.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={modalA11yExamples} />
 ## Tests
 
 ### Automated

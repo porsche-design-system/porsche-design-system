@@ -1857,6 +1857,11 @@ export const sitemap: Routes = {
             path: '/must-know/accessibility/ai-accessibility-audit',
             type: 'PAGE',
           },
+          'dos-and-donts': {
+            name: 'Do\'s and Don\'ts',
+            path: '/must-know/accessibility/dos-and-donts',
+            type: 'PAGE',
+          },
           statement: {
             name: 'Statement',
             path: '/must-know/accessibility/statement',

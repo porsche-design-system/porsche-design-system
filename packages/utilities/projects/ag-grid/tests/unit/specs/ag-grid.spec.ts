@@ -1,4 +1,5 @@
-import { _asThemeImpl, Part } from 'ag-grid-community';
+import { Part } from 'ag-grid-community';
+import { _asThemeImpl } from 'ag-stack';
 import { describe, expect, it } from 'vitest';
 import { pdsTheme } from '../../../src';
 import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../../../src/parts';
@@ -8,7 +9,7 @@ describe('pdsTheme', () => {
   const parts: Part[] = [checkboxStyle, toggleButtonStyle, pdsSvgIcons];
 
   it('should match the snapshot for CSS Class Names', () => {
-    const classNames = theme._getCssClass();
+    const classNames = theme._getCssClasses();
     expect(classNames).toMatchSnapshot();
   });
 
