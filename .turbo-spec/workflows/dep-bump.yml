@@ -1,17 +1,19 @@
 name: dep-bump
 version: "1.0"
 description: >-
-  Minimal TurboSpec onboarding blueprint. `npm install` runs once as the global
-  setup command (environment preparation, not a quality gate). A single agentless
-  stage then collects the outdated third-party npm dependencies into a
-  schema-validated structured artifact and renders that artifact as a Markdown
-  table inside a report comment on the PR. Everything is deterministic — there
-  are no agentic stages.
+  Minimal TurboSpec onboarding blueprint. `npm ci` runs once as the global
+  setup command (deterministic, lockfile-pinned environment preparation — not a
+  quality gate). A single agentless stage then collects the outdated third-party
+  npm dependencies into a schema-validated structured artifact and renders that
+  artifact as a Markdown table inside a report comment on the PR. Everything is
+  deterministic — there are no agentic stages.
 
-# `npm install` prepares the tree once before any stage runs. It is deliberately
-# NOT a stage: there is no acceptance gate here, only environment setup. A
-# non-zero exit aborts the pipeline before the first stage.
-setup_command: "npm install"
+# `npm ci` prepares the tree once before any stage runs — a clean, deterministic
+# install that matches package-lock.json (repo CI convention) and never mutates
+# the lockfile. It is deliberately NOT a stage: there is no acceptance gate here,
+# only environment setup. A non-zero exit (including lock/manifest drift) aborts
+# the pipeline before the first stage.
+setup_command: "npm ci"
 setup_command_timeout: "20m"
 
 # Empty list = the default gh-aw + Porsche ecosystem domain allow-list (npm
