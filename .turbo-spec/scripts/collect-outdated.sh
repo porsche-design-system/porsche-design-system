@@ -5,8 +5,8 @@
 # .turbo-spec/out/outdated.json, validated downstream against
 # .turbo-spec/schemas/outdated.schema.json.
 #
-# `npm install` has already run in the blueprint's top-level setup_command, so
-# an installed tree is present for npm outdated's `current` column.
+# `npm ci` has already run in the blueprint's top-level setup_command, so an
+# installed tree is present for npm outdated's `current` column.
 #
 # Exit semantics — this is the difference between a trustworthy report and a
 # misleading one:
