@@ -39,10 +39,7 @@ button::before {
   grid-area: 1/1;
   content: "";
   margin: -2px;
-  background: var(--p-color-frosted);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
   border-radius: var(--p-radius-full);
 }
 button::after {
@@ -97,6 +94,8 @@ button::after {
 @media(hover:hover) {
   button:hover::before {
     background: var(--p-color-frosted-strong);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
   }
 }
 
@@ -166,10 +165,7 @@ button::before {
   grid-area: 1/1;
   content: "";
   margin: -2px;
-  background: var(--p-color-frosted);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
-  -webkit-backdrop-filter: var(--p-blur-frosted);
-  backdrop-filter: var(--p-blur-frosted);
   border-radius: var(--p-radius-full);
 }
 button::after {
@@ -224,6 +220,8 @@ button::after {
 @media(hover:hover) {
   button:hover::before {
     background: var(--p-color-frosted-strong);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
   }
 }
 
@@ -293,11 +291,11 @@ button::before {
   grid-area: 1/1;
   content: "";
   margin: -2px;
-  background: var(--p-color-frosted);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  border-radius: var(--p-radius-full);
 }
 button::after {
   grid-area: 1/1;
@@ -351,6 +349,8 @@ button::after {
 @media(hover:hover) {
   button:hover::before {
     background: var(--p-color-frosted-strong);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
   }
 }
 
@@ -425,11 +425,11 @@ button::before {
   grid-area: 1/1;
   content: "";
   margin: -2px;
-  background: var(--p-color-frosted);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  border-radius: var(--p-radius-full);
 }
 button::after {
   grid-area: 1/1;
@@ -483,6 +483,8 @@ button::after {
 @media(hover:hover) {
   button:hover::before {
     background: var(--p-color-frosted-strong);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
   }
 }
 
@@ -552,11 +554,11 @@ button::before {
   grid-area: 1/1;
   content: "";
   margin: -2px;
-  background: var(--p-color-frosted);
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  border-radius: var(--p-radius-full);
+  background: var(--p-color-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  border-radius: var(--p-radius-full);
 }
 button::after {
   grid-area: 1/1;
@@ -610,6 +612,8 @@ button::after {
 @media(hover:hover) {
   button:hover::before {
     background: var(--p-color-frosted-strong);
+    -webkit-backdrop-filter: var(--p-blur-frosted);
+    backdrop-filter: var(--p-blur-frosted);
   }
 }
 

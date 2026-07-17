@@ -134,6 +134,8 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
         ...hoverMediaQuery({
           '&:hover::before': {
             background: ref(colorFrostedStrong),
+            WebkitBackdropFilter: ref(blurFrosted),
+            backdropFilter: ref(blurFrosted),
           },
         }),
         '&:focus-visible::before': getFocusBaseStyles(),
@@ -141,11 +143,13 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
           gridArea: '1/1',
           content: '""',
           margin: '-2px',
-          background: ref(colorFrosted),
           transition: getTransition('background-color'),
-          WebkitBackdropFilter: ref(blurFrosted),
-          backdropFilter: ref(blurFrosted),
           borderRadius: ref(radiusFull),
+          ...(isOpen && {
+            background: ref(colorFrosted),
+            WebkitBackdropFilter: ref(blurFrosted),
+            backdropFilter: ref(blurFrosted),
+          }),
         },
         '&::after': {
           gridArea: '1/1',
