@@ -31,8 +31,6 @@ export const getFunctionalComponentLabelAfterStyles = (): Styles => {
     // last line. `:host(:has([slot="label-after"]))` would be an alternative but lacks reliable Chrome support for now.
     '&::slotted(*)': {
       ...addImportantToEachRule({
-        display: 'inline-block',
-        verticalAlign: 'top',
         marginInlineStart: ref(spacingStaticXs),
       }),
     },
