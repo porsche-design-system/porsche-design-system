@@ -34,6 +34,14 @@ Refactor `renderMdxToMarkdown` around shared semantic documentation components t
 Storefront can render their React implementations while SKILL maps the same components to Markdown, keeping content
 reusable without hard-coded handling of Storefront-specific components.
 
+### Include accessibility integration examples
+
+Include the Storefront accessibility pages' `## Integration examples` in each generated component reference. The current
+SKILL generation strips this section because it cannot yet resolve the custom React `A11yIntegrationExamples` component
+or its imported `A11yIntegrationExample` story data. Add a target-specific renderer that turns both anti-pattern and
+recommended stories into framework-specific code examples, then remove the temporary section filter from
+`src/components/prose.ts`.
+
 ## Refactor
 
 ### Share component API logic between SKILL and Storefront

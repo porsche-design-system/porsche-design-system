@@ -63,17 +63,22 @@ const renderSection = (
 const USAGE_FILLER =
   /\n*The following section provides guidance for designers and developers on how to use this component in different situations\.\n*/;
 
+/** Temporarily omit accessibility examples whose React renderer and story data are not resolved by SKILL. */
+const UNRESOLVED_INTEGRATION_EXAMPLES = /\n## Integration examples\n[\s\S]*?(?=\n## |$)/;
+
 /**
  * Remove per-file boilerplate that repeats verbatim across the component references. The
  * "component-meta is authoritative" API preamble is dropped in the generator; here we drop the
- * information-free usage opener and the all-pass a11y `## Tests` matrix (stated once in SKILL.md). A
- * `## Tests` section is kept when it flags an exception (a non-✅ mark, e.g. `p-icon`'s partial
- * high-contrast support), since that is real per-component content. The per-component `## Limitations`
- * ARIA table is left in place — its rows differ by component, so it is not boilerplate.
+ * information-free usage opener, unresolved `## Integration examples`, and the all-pass a11y
+ * `## Tests` matrix (stated once in SKILL.md). A `## Tests` section is kept when it flags an exception
+ * (a non-✅ mark, e.g. `p-icon`'s partial high-contrast support), since that is real per-component
+ * content. The per-component `## Limitations` ARIA table is left in place — its rows differ by
+ * component, so it is not boilerplate.
  */
 const stripBoilerplateProse = (markdown: string): string =>
   markdown
     .replace(USAGE_FILLER, '\n\n')
+    .replace(UNRESOLVED_INTEGRATION_EXAMPLES, '\n')
     .replace(/\n## Tests\n[\s\S]*?(?=\n## |$)/, (section) => (/🟠|❌|⚠️|🚫|partial/i.test(section) ? section : '\n'))
     .replace(/\n{3,}/g, '\n\n')
     .trim();

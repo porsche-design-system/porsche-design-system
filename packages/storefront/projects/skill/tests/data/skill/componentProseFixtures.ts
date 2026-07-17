@@ -75,6 +75,16 @@ The **Accordion** lets users expand and collapse sections of *related* content t
 ## Accessibility support
 
 Each panel must have a meaningful, unique label.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={accordionA11yExamples} />
+
+## Tests
+
+| Technology | Support |
+| --- | --- |
+| AXE-Core | ✅ |
 `,
   },
 
