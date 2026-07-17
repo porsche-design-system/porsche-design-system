@@ -1,6 +1,7 @@
 import { rawMetaReference } from './components/section';
 import { rawScssReference, rawTailwindcssReference } from './packageSkills';
 import type { Framework } from './support/skillTree';
+import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 /**
  * Builds the always-loaded `SKILL.md` entry point: fixed-`name` frontmatter with the tuned
@@ -68,6 +69,52 @@ const renderIntro = (framework: Framework): string => {
   ].join('\n');
 };
 
+const storefrontUrl = (path = ''): string =>
+  `https://designsystem.porsche.com/v${localPorscheDesignSystemVersion}/${path}`;
+
+const renderCoverageSection = (): string =>
+  [
+    'This skill currently covers components, global stylesheets and theming, tokens, and styling integrations. It does ' +
+      'not yet include complete getting-started, setup, and installation guidance; the v3-to-v4 migration guide; ' +
+      'the changelog; partials; patterns and templates; the AG Grid theme; or the Storefront\u2019s Must Know and Help sections.',
+    '',
+    `Before using documentation outside this skill or the installed package, match it to the installed PDS version. ` +
+      `This skill was generated for \`${localPorscheDesignSystemVersion}\`; prefer the ` +
+      `[exact-version Porsche Design System Storefront](${storefrontUrl()}). Major-version URLs such as ` +
+      '`/v4/` always serve the latest v4 release and may describe APIs or setup introduced after the installed version. ' +
+      'Use them only as a fallback and verify relevant details against the installed package.',
+    '',
+    'For runnable patterns and templates, consult the ' +
+      '[Porsche Design System examples repository](https://github.com/porsche-design-system/examples), selecting a ' +
+      'release tag or commit that matches the installed package instead of assuming its default branch is compatible. ' +
+      'For release-specific changes, read `../CHANGELOG.md`.',
+    '',
+    'For exact API or runtime behavior, inspect the installed typings, metadata, and implementation listed above. Use ' +
+      'source to verify technical facts, but do not infer framework configuration when it is documented in the Storefront.',
+  ].join('\n');
+
+const renderReactSsrSection = (): string =>
+  [
+    'React applications that render on the server — Next.js, Remix, or React Router with SSR enabled — must import ' +
+      '`PorscheDesignSystemProvider` and every PDS component from ' +
+      '`@porsche-design-system/components-react/ssr`. Use the package root only for client-rendered React applications; ' +
+      'do not mix the two entry points.',
+    '',
+    '```tsx',
+    "import { PButton, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';",
+    '```',
+    '',
+    'On the server, the `/ssr` build emits component markup and styles as Declarative Shadow DOM so the browser can ' +
+      'create the Shadow DOM before JavaScript runs. In the browser, it initializes like the standard React wrapper. ' +
+      'The framework build must replace `process.browser` for its server and client targets and eliminate the unused ' +
+      'branch.',
+    '',
+    'Framework setup differs. Follow the ' +
+      `[Next.js integration guide](${storefrontUrl('developing/next-js/getting-started/')}) or the ` +
+      `[React Router integration guide](${storefrontUrl('developing/react-router/getting-started/')}). ` +
+      'Remix users should follow the React Router guidance because Remix v2 was upstreamed into React Router.',
+  ].join('\n');
+
 /** The domain-rendered section bodies, in the order they appear in SKILL.md. */
 export type SkillMdSections = {
   components: string;
@@ -89,10 +136,15 @@ export const buildSkillMd = (framework: Framework, sections: SkillMdSections): s
     '',
     renderIntro(framework),
     '',
+    '## Coverage and fallbacks',
+    '',
+    renderCoverageSection(),
+    '',
     '## Components',
     '',
     sections.components,
     '',
+    ...(framework === 'react' ? ['## Server-side rendering (SSR)', '', renderReactSsrSection(), ''] : []),
     '## Stylesheets',
     '',
     sections.stylesheets,

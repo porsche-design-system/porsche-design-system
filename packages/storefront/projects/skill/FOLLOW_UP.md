@@ -66,6 +66,14 @@ Once the content is normalized, remove `ROSTER_SUMMARY_OVERRIDES` and any other 
 necessary. This keeps the source documentation authoritative and avoids maintaining SKILL-specific exceptions when the
 prose changes.
 
+### Share React SSR guidance
+
+The initial React SKILL contains a short, separately maintained section explaining when to use
+`@porsche-design-system/components-react/ssr`, how its Declarative Shadow DOM rendering works, and which build-time
+requirements apply. This duplication is acceptable for the first release, but the guidance should move to a shared,
+package-owned source that both Storefront's Next.js, Remix, and React Router documentation and SKILL consume. This will
+keep the import decision and SSR behavior aligned instead of repeating the same information in SKILL.
+
 ### Simplify package skill integration
 
 Package skills should provide all required content and metadata themselves. The central SKILL should only plug them in,
@@ -84,10 +92,14 @@ skills and renderers use one implementation.
 
 ### Add all missing documentation from structured metadata
 
-Eventually add all missing documentation to SKILL, including Getting started, partials, migration, testing, SSR,
-`componentsReady()`, deployment and CSP, prefixing and micro-frontends, AG Grid, CJK typography, browser support,
-patterns, and the China CDN stylesheet. Add each domain once it is available as package-owned structured metadata that
-Storefront and SKILL can both consume.
+Eventually add all missing documentation to SKILL, including getting started, setup and installation, partials,
+migration, the changelog, testing, SSR, `componentsReady()`, deployment and CSP, prefixing and micro-frontends, AG Grid,
+CJK typography, browser support, patterns and templates, the Must Know and Help sections, and the China CDN stylesheet.
+Add each domain once it is available as package-owned structured metadata that Storefront and SKILL can both consume.
+
+The `Coverage and fallbacks` section in SKILL.md is a temporary first-release measure. As these domains become available
+as shared documentation, replace its Storefront, examples-repository, and changelog fallbacks with generated local
+references to the actual documentation. Keep the version-safety guidance for any external source that remains.
 
 ## Questions
 
