@@ -2,7 +2,7 @@ import {
   blurFrosted,
   colorCanvas,
   colorFrosted,
-  colorFrostedSoft,
+  colorFrostedStrong,
   colorPrimary,
   fontPorscheNext,
   fontWeightNormal,
@@ -130,25 +130,31 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
         width: ref(leadingNormal),
         height: ref(leadingNormal),
-        borderRadius: ref(radiusFull),
         cursor: 'pointer',
-        background: ref(colorFrosted),
-        transition: getTransition('background-color'),
-        WebkitBackdropFilter: ref(blurFrosted),
-        backdropFilter: ref(blurFrosted),
         ...hoverMediaQuery({
-          '&:hover': {
-            background: ref(colorFrostedSoft),
+          '&:hover::before': {
+            background: ref(colorFrostedStrong),
           },
         }),
-        '&:focus-visible': getFocusBaseStyles(),
+        '&:focus-visible::before': getFocusBaseStyles(),
+        '&::before': {
+          gridArea: '1/1',
+          content: '""',
+          margin: '-2px',
+          background: ref(colorFrosted),
+          transition: getTransition('background-color'),
+          WebkitBackdropFilter: ref(blurFrosted),
+          backdropFilter: ref(blurFrosted),
+          borderRadius: ref(radiusFull),
+        },
         '&::after': {
+          gridArea: '1/1',
           content: '""',
           WebkitMask: `${iconInfo} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${iconInfo} center/contain no-repeat`,
           background: ref(colorPrimary),
           ...forcedColorsMediaQuery({
-            background: 'CanvasText',
+            background: 'ButtonText',
           }),
         },
       },
