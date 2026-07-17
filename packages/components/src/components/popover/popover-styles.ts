@@ -25,7 +25,7 @@ import {
 } from '../../styles';
 import { getCss, overlayTransitionSupportsQuery } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { POPOVER_SAFE_ZONE } from './popover-utils';
+import { POPOVER_ARROW_BASE, POPOVER_ARROW_THICKNESS, POPOVER_SAFE_ZONE } from './popover-utils';
 
 /**
  * @css-variable {"name": "--p-popover-w", "description": "Width of the popover.", "defaultValue": "max-content"}
@@ -215,8 +215,9 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
     },
     arrow: {
       position: 'absolute',
-      width: '24px',
-      height: '12px',
+      // Resting orientation (bottom placement): base spans the panel edge, thickness protrudes towards the trigger.
+      width: `${POPOVER_ARROW_BASE}px`,
+      height: `${POPOVER_ARROW_THICKNESS}px`,
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
       background: 'inherit',
       ...forcedColorsMediaQuery({

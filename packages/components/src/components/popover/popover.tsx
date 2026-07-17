@@ -30,6 +30,10 @@ import { getComponentCss } from './popover-styles';
 import {
   getPopoverBorderRadius,
   POPOVER_ARIA_ATTRIBUTES,
+  POPOVER_ARROW_BASE,
+  POPOVER_ARROW_GAP,
+  POPOVER_ARROW_THICKNESS,
+  POPOVER_DEFAULT_BUTTON_WIDTH_THRESHOLD,
   POPOVER_DIRECTIONS,
   POPOVER_SAFE_ZONE,
   type PopoverAriaAttribute,
@@ -298,8 +302,6 @@ export class Popover {
   };
 
   private positionPopover = async (): Promise<void> => {
-    const arrowWidth = 12;
-    const arrowHeight = 24;
     const { x, y, placement, middlewareData } = await computePosition(this.triggerElement, this.refPopover, {
       placement: this.direction,
       // Use the `fixed` strategy because the panel is promoted to the `#top-layer` via `showPopover()`. Safari does
@@ -308,12 +310,14 @@ export class Popover {
       // until a resize re-triggers `autoUpdate`. `fixed` positions relative to the viewport and avoids this.
       strategy: 'fixed',
       middleware: [
-        offset(arrowWidth + 6),
+        offset(POPOVER_ARROW_THICKNESS + POPOVER_ARROW_GAP),
         shift({
           padding: POPOVER_SAFE_ZONE,
           limiter: limitShift({
-            // ensures that the popover is placed to the right if the button is smaller than 34px. This fixes correct placement of arrow.
-            offset: ({ rects }) => (rects.reference.width > 33 ? 0 : rects.reference.width),
+            // Place the popover to the right when the trigger is the small default info button (≈24px), so the arrow
+            // stays correctly positioned; larger custom triggers get no offset. See POPOVER_DEFAULT_BUTTON_WIDTH_THRESHOLD.
+            offset: ({ rects }) =>
+              rects.reference.width > POPOVER_DEFAULT_BUTTON_WIDTH_THRESHOLD ? 0 : rects.reference.width,
           }),
         }),
         flip({
@@ -336,22 +340,30 @@ export class Popover {
 
     // Position and orient the arrow so it points from the panel edge towards the trigger. Floating UI's `arrow`
     // middleware only provides the offset along the panel edge (`xArrow` for horizontal edges, `yArrow` for vertical
-    // ones); the perpendicular side is pinned to `-12px` so the arrow sits flush against the panel, and its shape is
-    // rotated to face the trigger.
+    // ones); the perpendicular side is pinned to `-POPOVER_ARROW_THICKNESS` so the arrow sits flush against the panel,
+    // and its shape is rotated to face the trigger.
     Object.assign(this.refArrow.style, {
       // Triangle shape: pointing down for top/bottom placements, pointing sideways for left/right placements.
       clipPath: placementVertical ? 'polygon(50% 0, 100% 110%, 0 110%)' : 'polygon(0 50%, 110% 0, 110% 100%)',
       // Swap width/height so the base always spans the panel edge the arrow attaches to.
-      width: placementVertical ? `${arrowHeight}px` : `${arrowWidth}px`,
-      height: placementVertical ? `${arrowWidth}px` : `${arrowHeight}px`,
+      width: placementVertical ? `${POPOVER_ARROW_BASE}px` : `${POPOVER_ARROW_THICKNESS}px`,
+      height: placementVertical ? `${POPOVER_ARROW_THICKNESS}px` : `${POPOVER_ARROW_BASE}px`,
       // Flip 180° for `top`/`left` so the tip points away from the panel (towards a trigger above/left of it).
       transform: `rotate(${placementTopLeft ? '180deg' : '0'})`,
       // Offset along the edge (`xArrow`) for placements whose arrow lives on a horizontal edge; pinned otherwise.
-      left: ['right', 'bottom', 'top'].includes(placement) ? (xArrow != null ? `${xArrow}px` : `-${arrowWidth}px`) : '',
-      right: placement === 'left' ? (xArrow != null ? `${xArrow}px` : `-${arrowWidth}px`) : '',
+      left: ['right', 'bottom', 'top'].includes(placement)
+        ? xArrow != null
+          ? `${xArrow}px`
+          : `-${POPOVER_ARROW_THICKNESS}px`
+        : '',
+      right: placement === 'left' ? (xArrow != null ? `${xArrow}px` : `-${POPOVER_ARROW_THICKNESS}px`) : '',
       // Offset along the edge (`yArrow`) for placements whose arrow lives on a vertical edge; pinned otherwise.
-      top: ['bottom', 'left', 'right'].includes(placement) ? (yArrow != null ? `${yArrow}px` : `-${arrowWidth}px`) : '',
-      bottom: placement === 'top' ? (yArrow != null ? `${yArrow}px` : `-${arrowWidth}px`) : '',
+      top: ['bottom', 'left', 'right'].includes(placement)
+        ? yArrow != null
+          ? `${yArrow}px`
+          : `-${POPOVER_ARROW_THICKNESS}px`
+        : '',
+      bottom: placement === 'top' ? (yArrow != null ? `${yArrow}px` : `-${POPOVER_ARROW_THICKNESS}px`) : '',
     });
   };
 
