@@ -3,8 +3,12 @@ import { viewportWidthXXL } from '@porsche-design-system/shared/testing';
 
 test.describe('overview', async () => {
   test('components', async ({ page }) => {
-    await page.goto('/overview-components');
-    await page.evaluate(() => (window as any).componentsReady());
+    await page.goto('/overview-components', { waitUntil: 'domcontentloaded' });
+    await page.waitForFunction(
+      () =>
+        document.querySelectorAll('#app .playground').length > 0 &&
+        Array.from(document.querySelectorAll('iframe')).every((iframe) => iframe.contentDocument?.readyState === 'complete')
+    );
     await page.setViewportSize({
       width: viewportWidthXXL,
       height: await page.evaluate(() => document.body.clientHeight),
