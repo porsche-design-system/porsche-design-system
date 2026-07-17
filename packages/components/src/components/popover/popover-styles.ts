@@ -145,9 +145,11 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
           margin: '-2px',
           transition: getTransition('background-color'),
           borderRadius: ref(radiusFull),
-          background: isOpen ? ref(colorFrosted) : 'transparent',
-          WebkitBackdropFilter: isOpen ? ref(blurFrosted) : 'none',
-          backdropFilter: isOpen ? ref(blurFrosted) : 'none',
+          ...(isOpen && {
+            background: ref(colorFrosted),
+            WebkitBackdropFilter: ref(blurFrosted),
+            backdropFilter: ref(blurFrosted),
+          }),
         },
         '&::after': {
           gridArea: '1/1',
