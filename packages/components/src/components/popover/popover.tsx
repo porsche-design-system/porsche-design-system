@@ -298,6 +298,8 @@ export class Popover {
   };
 
   private positionPopover = async (): Promise<void> => {
+    const arrowWidth = 12;
+    const arrowHeight = 24;
     const { x, y, placement, middlewareData } = await computePosition(this.triggerElement, this.refPopover, {
       placement: this.direction,
       // Use the `fixed` strategy because the panel is promoted to the `#top-layer` via `showPopover()`. Safari does
@@ -306,7 +308,7 @@ export class Popover {
       // until a resize re-triggers `autoUpdate`. `fixed` positions relative to the viewport and avoids this.
       strategy: 'fixed',
       middleware: [
-        offset(16),
+        offset(arrowWidth + 6),
         shift({
           padding: POPOVER_SAFE_ZONE,
           limiter: limitShift({
@@ -340,16 +342,16 @@ export class Popover {
       // Triangle shape: pointing down for top/bottom placements, pointing sideways for left/right placements.
       clipPath: placementVertical ? 'polygon(50% 0, 100% 110%, 0 110%)' : 'polygon(0 50%, 110% 0, 110% 100%)',
       // Swap width/height so the base always spans the panel edge the arrow attaches to.
-      width: placementVertical ? '24px' : '12px',
-      height: placementVertical ? '12px' : '24px',
+      width: placementVertical ? `${arrowHeight}px` : `${arrowWidth}px`,
+      height: placementVertical ? `${arrowWidth}px` : `${arrowHeight}px`,
       // Flip 180° for `top`/`left` so the tip points away from the panel (towards a trigger above/left of it).
       transform: `rotate(${placementTopLeft ? '180deg' : '0'})`,
       // Offset along the edge (`xArrow`) for placements whose arrow lives on a horizontal edge; pinned otherwise.
-      left: ['right', 'bottom', 'top'].includes(placement) ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
-      right: placement === 'left' ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
+      left: ['right', 'bottom', 'top'].includes(placement) ? (xArrow != null ? `${xArrow}px` : `-${arrowWidth}px`) : '',
+      right: placement === 'left' ? (xArrow != null ? `${xArrow}px` : `-${arrowWidth}px`) : '',
       // Offset along the edge (`yArrow`) for placements whose arrow lives on a vertical edge; pinned otherwise.
-      top: ['bottom', 'left', 'right'].includes(placement) ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
-      bottom: placement === 'top' ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
+      top: ['bottom', 'left', 'right'].includes(placement) ? (yArrow != null ? `${yArrow}px` : `-${arrowWidth}px`) : '',
+      bottom: placement === 'top' ? (yArrow != null ? `${yArrow}px` : `-${arrowWidth}px`) : '',
     });
   };
 
