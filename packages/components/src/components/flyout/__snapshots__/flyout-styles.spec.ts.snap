@@ -160,7 +160,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -351,7 +351,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -527,7 +527,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -693,7 +693,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -865,7 +865,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -1056,7 +1056,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -1222,7 +1222,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -1387,7 +1387,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -1552,7 +1552,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -1723,7 +1723,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -1907,7 +1907,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -2097,7 +2097,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -2379,7 +2379,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -2579,7 +2579,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -2775,7 +2775,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -2940,7 +2940,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -3105,7 +3105,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -3289,7 +3289,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -3473,7 +3473,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -3663,7 +3663,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -3859,7 +3859,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -4022,7 +4022,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -4204,7 +4204,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -4319,7 +4319,7 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-canvas);
+  background-color: var(--p-color-surface);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -4370,7 +4370,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-canvas);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -4491,7 +4491,7 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-canvas);
+  background-color: var(--p-color-surface);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -4542,7 +4542,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-canvas);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -4676,7 +4676,7 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-canvas);
+  background-color: var(--p-color-surface);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -4727,7 +4727,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-canvas);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -4867,7 +4867,7 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-canvas);
+  background-color: var(--p-color-surface);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -4918,7 +4918,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-canvas);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -5043,7 +5043,7 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-canvas);
+  background-color: var(--p-color-surface);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -5094,7 +5094,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-canvas);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -5225,7 +5225,7 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-canvas);
+  background-color: var(--p-color-surface);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -5276,7 +5276,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-canvas);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -5420,7 +5420,7 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-canvas);
+  background-color: var(--p-color-surface);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -5471,7 +5471,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-canvas);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -5621,7 +5621,7 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-canvas);
+  background-color: var(--p-color-surface);
   color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
@@ -5672,7 +5672,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-canvas);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
