@@ -1,7 +1,7 @@
 import {
   blurFrosted,
   colorCanvas,
-  colorContrastHigh,
+  colorContrastLower,
   colorFrosted,
   colorFrostedStrong,
   colorPrimary,
@@ -36,15 +36,12 @@ type Colors = {
   backgroundColorHover: string;
 };
 
-// NOTE: Values copied (and reduced to the fixed `compact` + `hideLabel` case the dismiss button always uses) from
-// `getVariantColors` in `packages/components/src/styles/link-button-styles.ts` to keep the visual identical to the
-// previously nested `p-button`. If the shared button styling changes, mirror it here (or extract a shared helper).
 const getVariantColors = (variant: FCDismissButtonVariant): Colors => {
   const colors: { [v in FCDismissButtonVariant]: Colors } = {
     primary: {
-      textColor: ref(colorCanvas),
-      backgroundColor: ref(colorPrimary),
-      backgroundColorHover: ref(colorContrastHigh),
+      textColor: ref(colorPrimary),
+      backgroundColor: ref(colorCanvas),
+      backgroundColorHover: ref(colorContrastLower),
     },
     secondary: {
       textColor: ref(colorPrimary),

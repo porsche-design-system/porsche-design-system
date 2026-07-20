@@ -201,7 +201,6 @@ export const getDialogDismissButtonJssStyle = (): JssStyle => {
     marginTop: `calc(-1 * ${dialogPaddingTop} + ${ref(spacingFluidSm)})`,
     marginInlineEnd: ref(spacingFluidSm),
     placeSelf: 'flex-start flex-end',
-    filter: 'invert(1) brightness(1.02)',
   };
 };
 
