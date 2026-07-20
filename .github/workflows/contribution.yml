@@ -41,30 +41,10 @@ jobs:
       storefront-slug: ${{ steps.resolve.outputs.storefront-slug }}
       storefront-algolia: ${{ steps.resolve.outputs.storefront-algolia }}
     steps:
+      - uses: actions/checkout@v7
       - name: 'Resolve'
         id: resolve
-        run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            storefront_slug="pr-${{ github.event.pull_request.number }}"
-          elif [[ "${{ github.ref_name }}" == "main" ]]; then
-            storefront_slug="nightly"
-          else
-            storefront_slug="${{ github.ref_name }}"
-          fi
-          echo "storefront-slug=${storefront_slug}" >> "$GITHUB_OUTPUT"
-          echo "Resolved storefront deploy target: ${storefront_slug}"
-
-          # Algolia indexing only for production-ish refs (main + version
-          # branches) on push events, never PRs.
-          if [[ "${{ github.event_name }}" == "push" \
-                && ( "${{ github.ref_name }}" == "main" \
-                     || "${{ github.ref_name }}" == v* ) ]]; then
-            storefront_algolia="true"
-          else
-            storefront_algolia="false"
-          fi
-          echo "storefront-algolia=${storefront_algolia}" >> "$GITHUB_OUTPUT"
-          echo "Resolved storefront algolia indexing: ${storefront_algolia}"
+        uses: ./.github/actions/resolve-storefront-slug
   build:
     name: 'Build'
     uses: ./.github/workflows/build.yml

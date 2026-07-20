@@ -1,0 +1,45 @@
+name: 'Resolve Storefront slug'
+description: 'Resolves the Storefront deploy target slug (used as basePath at build time AND gh-pages folder at deploy time) and whether Algolia indexing should run.'
+
+outputs:
+  storefront-slug:
+    description: 'Storefront deploy target slug (e.g. "pr-1234", "nightly", "v4").'
+    value: ${{ steps.resolve.outputs.storefront-slug }}
+  storefront-algolia:
+    description: '`true` when Algolia indexing should run (push to main/version branches), `false` otherwise.'
+    value: ${{ steps.resolve.outputs.storefront-algolia }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Resolve'
+      id: resolve
+      # Strategy:
+      #   - pull_request → "pr-<number>"  (avoids "<n>/merge" with embedded slash
+      #                                    that github.ref_name would yield)
+      #   - push to main → "nightly"
+      #   - push to other branches (v*) → branch name
+      run: |
+        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          storefront_slug="pr-${{ github.event.pull_request.number }}"
+        elif [[ "${{ github.ref_name }}" == "main" ]]; then
+          storefront_slug="nightly"
+        else
+          storefront_slug="${{ github.ref_name }}"
+        fi
+        echo "storefront-slug=${storefront_slug}" >> "$GITHUB_OUTPUT"
+        echo "Resolved storefront deploy target: ${storefront_slug}"
+
+        # Algolia indexing only for production-ish refs (main + version
+        # branches) on push events, never PRs.
+        if [[ "${{ github.event_name }}" == "push" \
+              && ( "${{ github.ref_name }}" == "main" \
+                   || "${{ github.ref_name }}" == v* ) ]]; then
+          storefront_algolia="true"
+        else
+          storefront_algolia="false"
+        fi
+        echo "storefront-algolia=${storefront_algolia}" >> "$GITHUB_OUTPUT"
+        echo "Resolved storefront algolia indexing: ${storefront_algolia}"
+      shell: bash
+
