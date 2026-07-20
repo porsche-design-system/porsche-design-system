@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/component-meta": "0.0.0",
-    "@porsche-design-system/components-react": "4.4.0",
+    "@porsche-design-system/components-react": "4.5.0-rc.0",
     "@porsche-design-system/emotion": "0.0.0",
     "@porsche-design-system/scss": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
