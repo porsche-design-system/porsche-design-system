@@ -69,6 +69,12 @@ prop on \`PorscheDesignSystemProvider\` or on components; the \`.scheme-*\` clas
 <div className="scheme-dark">{/* rendered in dark mode */}</div>
 \`\`\`
 
+### Grid
+
+For pages whose sections share one alignment system, apply \`gridStyle\` once to the page root. Make each full-width section
+a subgrid, then place its content with the Porsche Grid variables. This avoids repeating \`gridStyle\` and keeps all
+sections aligned. Section-level grid instances remain valid when sections need independent grids.
+
 ### Tokens and utilities
 
 Every documented token is a named value export (e.g. \`colorPrimary\`, \`radiusMd\`); every documented

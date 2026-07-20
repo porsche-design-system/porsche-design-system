@@ -64,6 +64,12 @@ palette drives both layers. There is no separate component theming API and no `t
 </html>
 ```
 
+### Grid
+
+For pages whose sections share one alignment system, include `pds-grid` once on the page root. Make each full-width
+section a subgrid, then place its content with the Porsche Grid variables. This avoids repeating the mixin and keeps all
+sections aligned. Section-level grid instances remain valid when sections need independent grids.
+
 ### Variables and mixins
 
 Every documented variable is a `$`-prefixed Sass variable (e.g. `pds.$radius-md`), and every

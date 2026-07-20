@@ -36,3 +36,10 @@ switch.
   </body>
 </html>
 ```
+
+### Grid
+
+For pages whose sections share one alignment system, apply `.grid-template` once to the page root. Make each full-width
+section a subgrid with `.col-full`, `.grid` and `.grid-cols-subgrid`, then place its content with the named Porsche Grid
+column utilities. This avoids duplicate grid templates and keeps all sections aligned. Section-level templates remain
+valid when sections need independent grids.

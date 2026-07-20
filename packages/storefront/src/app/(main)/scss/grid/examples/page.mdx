@@ -36,6 +36,8 @@ elements.
 ## Division
 
 Predefined areas can inherit the Porsche Grid using CSS subgrid, enabling layout divisions such as `one-half`,
-`one-third` (`basic` area only) and `two-thirds` (`basic` area only).
+`one-third` (`basic` area only) and `two-thirds` (`basic` area only). When page sections share one alignment system,
+include `pds-grid` once on the page root and make the full-width sections subgrids. This avoids repeating the mixin and
+keeps all sections aligned; section-level grid instances remain valid for independent grids.
 
 <ComponentStory story={gridScssStoryDivision} showCodeBlock={false} />

@@ -22,6 +22,12 @@ is reflected in both consumers.
 The shared model should contain only renderer-independent example data. Storefront-specific React rendering and
 SKILL-specific Markdown or file generation should remain in their respective adapters.
 
+### Include styling examples
+
+Include the Storefront examples for Tailwind CSS, SCSS, vanilla-extract, and Emotion in the generated SKILL references.
+Move their source into shared, renderer-independent metadata so Storefront can keep rendering interactive examples while
+SKILL generates framework-specific code examples from the same definitions.
+
 ### Introduce a shared LINKTREE
 
 Replace manual link rewriting with stable semantic `LINKTREE` identities shared by the documentation. Storefront and
