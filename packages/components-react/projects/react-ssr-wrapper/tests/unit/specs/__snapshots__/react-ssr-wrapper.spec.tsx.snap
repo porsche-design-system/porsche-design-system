@@ -6697,7 +6697,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -9964,7 +9964,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -12763,7 +12763,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-lower);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
