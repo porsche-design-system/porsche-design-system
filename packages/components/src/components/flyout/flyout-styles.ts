@@ -154,6 +154,6 @@ export const getComponentCss = (
         gridTemplateRows: hasHeader ? 'auto 1fr auto' : '1fr',
       }),
     },
-    dismiss: getDialogDismissButtonJssStyle(),
+    dismiss: getDialogDismissButtonJssStyle(background),
   });
 };

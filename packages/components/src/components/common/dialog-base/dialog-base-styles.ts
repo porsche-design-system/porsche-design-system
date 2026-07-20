@@ -189,11 +189,11 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
   };
 };
 
-export const getDialogDismissButtonJssStyle = (): JssStyle => {
+export const getDialogDismissButtonJssStyle = (variant: 'canvas' | 'surface'): JssStyle => {
   return {
     // native dismiss button visual (primary variant); positioning + the `invert` filter (renders it light on the
     // dialog) are applied on top below
-    ...getFCDismissButtonStyles('primary'),
+    ...getFCDismissButtonStyles(variant),
     gridArea: '1/3',
     zIndex: 5, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
     position: 'sticky',

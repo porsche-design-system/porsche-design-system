@@ -1,10 +1,10 @@
 import {
   blurFrosted,
   colorCanvas,
-  colorContrastLower,
   colorFrosted,
   colorFrostedStrong,
   colorPrimary,
+  colorSurface,
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
@@ -22,7 +22,7 @@ import {
 } from '../../../styles';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 
-export type FCDismissButtonVariant = 'primary' | 'secondary';
+export type FCDismissButtonVariant = 'canvas' | 'surface' | 'frosted';
 
 // Inlined `close` icon (mirrors packages/assets/projects/icons/src/close.svg) rendered as a CSS mask, so the dismiss
 // button needs neither a nested `p-button` nor a `p-icon` (which would fetch the SVG from the CDN asynchronously).
@@ -38,12 +38,17 @@ type Colors = {
 
 const getVariantColors = (variant: FCDismissButtonVariant): Colors => {
   const colors: { [v in FCDismissButtonVariant]: Colors } = {
-    primary: {
+    canvas: {
       textColor: ref(colorPrimary),
       backgroundColor: ref(colorCanvas),
-      backgroundColorHover: ref(colorContrastLower),
+      backgroundColorHover: ref(colorSurface),
     },
-    secondary: {
+    surface: {
+      textColor: ref(colorPrimary),
+      backgroundColor: ref(colorSurface),
+      backgroundColorHover: ref(colorCanvas),
+    },
+    frosted: {
       textColor: ref(colorPrimary),
       backgroundColor: ref(colorFrostedStrong),
       backgroundColorHover: ref(colorFrosted),
@@ -80,7 +85,7 @@ export const getFCDismissButtonStyles = (variant: FCDismissButtonVariant): JssSt
     // opaque `primary` background it is invisible AND — because the dialog consumer additionally applies
     // `filter: invert(1)` on the same element (see `getDialogDismissButtonJssStyle`) — the blurred backdrop bleeds past
     // the circular edge and the invert amplifies it into a visible glow/halo. So it is applied for `secondary` only.
-    ...(variant === 'secondary' && {
+    ...(variant === 'frosted' && {
       WebkitBackdropFilter: ref(blurFrosted),
       backdropFilter: ref(blurFrosted),
     }),

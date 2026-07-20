@@ -111,7 +111,7 @@ export const getComponentCss = (
       ),
     },
     ...(hasDismissButton && {
-      dismiss: getDialogDismissButtonJssStyle(),
+      dismiss: getDialogDismissButtonJssStyle(background),
     }),
   });
 };
