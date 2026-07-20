@@ -7,6 +7,8 @@
 #
 #   fresh run (schedule / manual):
 #     npm run npm:update -> commit + push branch -> npm run build
+#     (a failed bump/install, e.g. ERESOLVE, is captured and routed to the agent
+#      too -- it is not treated differently from a build failure)
 #
 #   loop run (workflow_run: the agent finished and uploaded a "fix-patch"):
 #     checkout branch -> download + git apply the patch -> commit + push
@@ -136,31 +138,53 @@ jobs:
       - uses: ./.github/actions/install
 
       # Fresh mode: deterministic syncpack bump, then push the branch.
+      #
+      # The bump itself can fail before we ever build -- most commonly an
+      # `ERESOLVE` peer conflict during `npm install` that needs an `overrides`
+      # entry (e.g. rollup-plugin-dts pinning an older `typescript` peer). That is
+      # exactly the agent's job, so we DON'T hard-fail here: we capture the output
+      # to build.log, commit + push whatever manifests changed (even without a
+      # regenerated lockfile), and set `failed=true` to route into the same fixer
+      # loop the build-failure path uses.
       - name: 'Apply syncpack update (fresh run only)'
         id: update
         if: steps.mode.outputs.fresh == 'true'
         run: |
+          branch="${{ steps.mode.outputs.branch }}"
           # npm:outdated (syncpack --check) exits 0 when nothing is outdated.
           if npm run npm:outdated; then
             echo 'Nothing outdated -- skipping.'
             echo "skip=true" >> "$GITHUB_OUTPUT"
-          else
-            npm run npm:update
-            npm run npm:lint:fix
-            npm run npm:format:fix
-            rm -f package-lock.json
+            exit 0
+          fi
+          # Run the bump + lockfile refresh, capturing output. `|| ok=false`
+          # keeps `set -e` from aborting the step so we can still commit/push and
+          # hand the log to the agent.
+          ok=true
+          {
+            npm run npm:update &&
+            npm run npm:lint:fix &&
+            npm run npm:format:fix &&
+            rm -f package-lock.json &&
             npm install
-            git add -A
-            git commit -m 'chore(deps): weekly npm dependency update'
-            git push origin "${{ steps.mode.outputs.branch }}"
+          } 2>&1 | tee build.log || ok=false
+          # Persist whatever changed so the agent has a branch to fix.
+          git add -A
+          git commit -m 'chore(deps): weekly npm dependency update' || echo 'nothing to commit'
+          git push origin "$branch"
+          if [ "$ok" = "false" ]; then
+            echo "::warning::Dependency bump failed (likely ERESOLVE) -- routing to the agent."
+            echo "failed=true" >> "$GITHUB_OUTPUT"
+          else
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
       # The deterministic build. Capture output to build.log; keep going on
-      # failure so we can hand the log to the agent.
+      # failure so we can hand the log to the agent. Skipped when the fresh bump
+      # already failed (its log is routed to the agent below).
       - name: 'Build'
         id: build
-        if: steps.update.outputs.skip != 'true'
+        if: steps.update.outputs.skip != 'true' && steps.update.outputs.failed != 'true'
         continue-on-error: true
         run: |
           set -o pipefail
@@ -202,8 +226,9 @@ jobs:
           fi
 
       # Failure path: escalate at the cap, otherwise hand off to the agent.
+      # Fires for a failed build OR a failed fresh bump (ERESOLVE etc.).
       - name: 'Upload build log (build failed)'
-        if: steps.build.outcome == 'failure'
+        if: steps.build.outcome == 'failure' || steps.update.outputs.failed == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: build-log
@@ -211,7 +236,7 @@ jobs:
           if-no-files-found: warn
 
       - name: 'Dispatch fixer or escalate (build failed)'
-        if: steps.build.outcome == 'failure'
+        if: steps.build.outcome == 'failure' || steps.update.outputs.failed == 'true'
         env:
           # GITHUB_TOKEN with actions:write -- a workflow_dispatch sent with it is
           # allowed to start the agent run.
