@@ -40,18 +40,18 @@
   "dependencies": {
     "@algolia/cache-in-memory": "^4.27.0",
     "@porsche-design-system/components-react": "4.5.0-rc.0",
-    "algoliasearch": "^5.55.1",
-    "next": "^16.2.9",
+    "algoliasearch": "^5.56.0",
+    "next": "^16.2.10",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-instantsearch": "^7.37.0",
+    "react-instantsearch": "^7.39.1",
     "react-syntax-highlighter": "^16.1.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.2.9",
+    "@next/mdx": "^16.2.10",
     "@playwright/test": "1.61.0",
     "@porsche-design-system/scss": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
@@ -59,11 +59,11 @@
     "@porsche-design-system/stylesheets": "0.0.0",
     "@porsche-design-system/tailwindcss": "0.0.0",
     "@porsche-design-system/tokens-meta": "0.0.0",
-    "@tailwindcss/postcss": "^4.3.1",
+    "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/mdx": "^2.0.14",
-    "@types/node": "^26.0.1",
+    "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
@@ -74,9 +74,9 @@
     "local-web-server": "^5.4.0",
     "postcss": "^8",
     "remark-gfm": "^4.0.1",
-    "tailwindcss": "^4.3.1",
+    "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "optionalDependencies": {
     "@next/swc-darwin-arm64": "^16.2.9",

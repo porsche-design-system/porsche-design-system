@@ -19,8 +19,8 @@
   "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "36.0.0",
-    "ag-stack": "36.0.0",
+    "ag-grid-community": "36.0.1",
+    "ag-stack": "36.0.1",
     "typescript": "^6.0.3"
   },
   "volta": {
