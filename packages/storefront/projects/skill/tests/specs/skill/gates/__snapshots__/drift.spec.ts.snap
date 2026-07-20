@@ -12511,7 +12511,7 @@ exports[`skill tree content > matches the staged angular content snapshots > ref
   "| Set Value | The \`p-select\` component behaves like regular form elements. | [./examples/SetValue.ts](./examples/SetValue.ts) |",
   "| With optgroups | With optgroups | [./examples/Optgroups.ts](./examples/Optgroups.ts) |",
   "| Custom asynchronous filtering | The \`p-select\` component automatically filters options based on user input. | [./examples/AsyncFilter.ts](./examples/AsyncFilter.ts) |",
-  "| Custom option rendering | By default, \`p-select-option\` only allows \`#text\` and \`img\` nodes. | [./examples/SelectedSlot.ts](./examples/SelectedSlot.ts) |",
+  "| Custom option rendering | \`p-select-option\` only allows \`#text\` and \`img\` nodes unless the parent \`p-select\` provides a custom selection renderer through the \`selected\` slot, which also enables custom option markup. | [./examples/SelectedSlot.ts](./examples/SelectedSlot.ts) |",
   "",
 ]
 `;
@@ -30069,7 +30069,7 @@ exports[`skill tree content > matches the staged js content snapshots > referenc
   "| Set Value | The \`p-select\` component behaves like regular form elements. | [./examples/SetValue.html](./examples/SetValue.html) |",
   "| With optgroups | With optgroups | [./examples/Optgroups.html](./examples/Optgroups.html) |",
   "| Custom asynchronous filtering | The \`p-select\` component automatically filters options based on user input. | [./examples/AsyncFilter.html](./examples/AsyncFilter.html) |",
-  "| Custom option rendering | By default, \`p-select-option\` only allows \`#text\` and \`img\` nodes. | [./examples/SelectedSlot.html](./examples/SelectedSlot.html) |",
+  "| Custom option rendering | \`p-select-option\` only allows \`#text\` and \`img\` nodes unless the parent \`p-select\` provides a custom selection renderer through the \`selected\` slot, which also enables custom option markup. | [./examples/SelectedSlot.html](./examples/SelectedSlot.html) |",
   "",
 ]
 `;
@@ -48095,7 +48095,7 @@ exports[`skill tree content > matches the staged react content snapshots > refer
   "| Set Value | The \`p-select\` component behaves like regular form elements. | [./examples/SetValue.tsx](./examples/SetValue.tsx) |",
   "| With optgroups | With optgroups | [./examples/Optgroups.tsx](./examples/Optgroups.tsx) |",
   "| Custom asynchronous filtering | The \`p-select\` component automatically filters options based on user input. | [./examples/AsyncFilter.tsx](./examples/AsyncFilter.tsx) |",
-  "| Custom option rendering | By default, \`p-select-option\` only allows \`#text\` and \`img\` nodes. | [./examples/SelectedSlot.tsx](./examples/SelectedSlot.tsx) |",
+  "| Custom option rendering | \`p-select-option\` only allows \`#text\` and \`img\` nodes unless the parent \`p-select\` provides a custom selection renderer through the \`selected\` slot, which also enables custom option markup. | [./examples/SelectedSlot.tsx](./examples/SelectedSlot.tsx) |",
   "",
 ]
 `;
@@ -65254,7 +65254,7 @@ exports[`skill tree content > matches the staged vue content snapshots > referen
   "| Set Value | The \`p-select\` component behaves like regular form elements. | [./examples/SetValue.vue](./examples/SetValue.vue) |",
   "| With optgroups | With optgroups | [./examples/Optgroups.vue](./examples/Optgroups.vue) |",
   "| Custom asynchronous filtering | The \`p-select\` component automatically filters options based on user input. | [./examples/AsyncFilter.vue](./examples/AsyncFilter.vue) |",
-  "| Custom option rendering | By default, \`p-select-option\` only allows \`#text\` and \`img\` nodes. | [./examples/SelectedSlot.vue](./examples/SelectedSlot.vue) |",
+  "| Custom option rendering | \`p-select-option\` only allows \`#text\` and \`img\` nodes unless the parent \`p-select\` provides a custom selection renderer through the \`selected\` slot, which also enables custom option markup. | [./examples/SelectedSlot.vue](./examples/SelectedSlot.vue) |",
   "",
 ]
 `;
