@@ -7,7 +7,7 @@ export const metadata = {
 
 # Theme
 
-<TableOfContents headings={['How it works', 'Scoping Themes']} />
+<TableOfContents headings={['How it works', 'Scoping Themes', 'Fixed Light and Dark Sections']} />
 
 ## How it works
 
@@ -42,7 +42,7 @@ application. This is particularly useful for dark-themed footers or light-themed
 
     <div class="scheme-dark">
       <p-heading>Dark Section</p-heading>
-      <p-button>I am always Dark</p-button>
+      <p-button>I use the Dark theme</p-button>
     </div>
   </body>
 </html>
@@ -65,3 +65,38 @@ supported styling tools:
 
 **Key Takeaway:** By using these utility classes, you ensure that your custom UI and PDS components always share the
 same color palette and contrast ratios, regardless of the styling technology used.
+
+## Fixed Light and Dark Sections
+
+Use `.scheme-only-light` or `.scheme-only-dark` on a page section that must remain light or dark independently of its
+parent scheme. This is useful for fixed campaign sections or other page islands within a page that otherwise follows the
+user's system preference.
+
+❌ Anti-pattern — overriding global PDS color variables:
+
+```css
+.campaign-section {
+  --p-color-canvas: #0e0e12;
+  --p-color-primary: #fff;
+}
+```
+
+✅ Recommended — applying fixed schemes to page islands while continuing to consume PDS variables:
+
+```html
+<html class="scheme-light-dark">
+  <body>
+    <main>
+      <section class="campaign-section scheme-only-dark">Dark campaign content</section>
+      <section class="campaign-section scheme-only-light">Light campaign content</section>
+    </main>
+  </body>
+</html>
+```
+
+```css
+.campaign-section {
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+}
+```

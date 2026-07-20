@@ -50,6 +50,8 @@ enable the dark color scheme or automatic switching, add one of the `.scheme-*` 
 - `.scheme-light` — enforces the light color scheme.
 - `.scheme-dark` — enforces the dark color scheme.
 - `.scheme-light-dark` — automatically switches based on the user's system preference.
+- `.scheme-only-light` — forces a light page island and prevents the browser from overriding it.
+- `.scheme-only-dark` — forces a dark page island and prevents the browser from overriding it.
 
 This one class themes **both** PDS components and your own custom markup — everything resolves colors
 through the same `light-dark()` palette, so there is no separate component-level theming API and no
@@ -63,6 +65,37 @@ through the same `light-dark()` palette, so there is no separate component-level
     <div class="my-component"></div>
   </body>
 </html>
+```
+
+For fixed light or dark sections within a page, apply `.scheme-only-light` or `.scheme-only-dark` to each page island.
+Before creating custom color aliases or hardcoded values, inspect the existing `.scheme-*` utilities. **Never redefine
+PDS-owned variables such as `--p-color-*` to force a local scheme.**
+
+```css
+/* Anti-pattern: don't overwrite the PDS palette. */
+.campaign-section {
+  --p-color-canvas: #0e0e12;
+  --p-color-primary: #fff;
+}
+```
+
+```html
+<!-- Recommended: the page follows the system while these islands stay fixed. -->
+<html class="scheme-light-dark">
+  <body>
+    <main>
+      <section class="campaign-section scheme-only-dark">Dark campaign content</section>
+      <section class="campaign-section scheme-only-light">Light campaign content</section>
+    </main>
+  </body>
+</html>
+```
+
+```css
+.campaign-section {
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+}
 ```
 
 The `color-scheme.css` stylesheet additionally ships a polyfill for browsers without `light-dark()`
