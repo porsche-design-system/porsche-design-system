@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Flyout`, `Modal`, `Sheet` ([#4602](https://github.com/porsche-design-system/porsche-design-system/pull/4602)):
+  - focus ring color of dismiss button
+  - hover color visibility of dismiss button
+
 ## [4.5.0-rc.0] - 2026-07-17
 
 ### Changed
