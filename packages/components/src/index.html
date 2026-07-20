@@ -1701,8 +1701,11 @@
           </p-sheet>
         </div>
         <div data-card="popover">
-          <p-popover description="Some content"></p-popover>
+          <p-popover class="ms-fluid-md" description="Some content"></p-popover>
           <p-popover direction="top">
+            <p-button-pure slot="button" class="self-start" icon="information" hide-label="true">
+              More information
+            </p-button-pure>
             <p-text>Some content</p-text>
           </p-popover>
           <p-popover direction="right">
@@ -2528,7 +2531,9 @@
           ></p-input-search>
         </div>
         <div data-card="input-time">
-          <p-input-time class="w-full" label="Some label" name="some-name" value="09:11"></p-input-time>
+          <p-input-time class="w-full" label="Some label" name="some-name" value="09:11">
+            <p-popover slot="label-after">Some Popover</p-popover>
+          </p-input-time>
           <p-input-time class="w-full" label="Some label" name="some-name" value="09:11" loading="true"></p-input-time>
           <p-input-time
             class="w-full"

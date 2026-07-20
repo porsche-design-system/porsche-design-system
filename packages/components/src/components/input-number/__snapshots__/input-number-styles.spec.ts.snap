@@ -19,8 +19,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -165,8 +163,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -311,8 +307,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -452,8 +446,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -593,8 +585,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -734,8 +724,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -876,8 +864,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -1018,8 +1004,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -1159,8 +1143,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -1304,8 +1286,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -1444,8 +1424,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -1584,8 +1562,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -1724,8 +1700,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -1864,8 +1838,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -2120,8 +2092,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {
@@ -2394,8 +2364,6 @@ slot[name="label-after"] {
   vertical-align: top;
 }
 slot[name="label-after"]::slotted(*) {
-  display: inline-block !important;
-  vertical-align: top !important;
   margin-inline-start: var(--p-spacing-static-xs) !important;
 }
 .label-after {

@@ -23,8 +23,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -270,8 +268,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -518,8 +514,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -765,8 +759,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -1012,8 +1004,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -1258,8 +1248,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -1503,8 +1491,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -1748,8 +1734,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -1993,8 +1977,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -2239,8 +2221,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -2484,8 +2464,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -2728,8 +2706,6 @@ exports[`getComponentCss() > should return correct css for isOpen: false, isDisa
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -2973,8 +2949,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -3221,8 +3195,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -3468,8 +3440,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -3715,8 +3685,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -3962,8 +3930,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -4209,8 +4175,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -4455,8 +4419,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -4702,8 +4664,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -4949,8 +4909,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -5195,8 +5153,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -5440,8 +5396,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -5686,8 +5640,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -5932,8 +5884,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {
@@ -6177,8 +6127,6 @@ exports[`getComponentCss() > should return correct css for isOpen: true, isDisab
     vertical-align: top;
   }
   slot[name="label-after"]::slotted(*) {
-    display: inline-block !important;
-    vertical-align: top !important;
     margin-inline-start: var(--p-spacing-static-xs) !important;
   }
   .label-after {

@@ -9,8 +9,8 @@ export const popoverSlottedButtonStory: Story<'p-popover'> = {
       properties,
       children: [
         {
-          tag: 'p-button-pure',
-          properties: { hideLabel: true, icon: 'car', slot: 'button' },
+          tag: 'p-button',
+          properties: { slot: 'button' },
           children: ['More information'],
         },
         'Some additional content.',
@@ -18,4 +18,3 @@ export const popoverSlottedButtonStory: Story<'p-popover'> = {
     },
   ],
 };
-
