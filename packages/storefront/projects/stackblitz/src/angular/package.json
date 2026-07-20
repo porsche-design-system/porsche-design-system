@@ -11,23 +11,23 @@
   },
   "dependencies": {
     "@angular/animations": "^22.0.2",
-    "@angular/common": "^22.0.4",
-    "@angular/compiler": "^22.0.4",
-    "@angular/core": "^22.0.4",
-    "@angular/forms": "^22.0.4",
-    "@angular/platform-browser": "^22.0.4",
+    "@angular/common": "^22.0.7",
+    "@angular/compiler": "^22.0.7",
+    "@angular/core": "^22.0.7",
+    "@angular/forms": "^22.0.7",
+    "@angular/platform-browser": "^22.0.7",
     "@angular/platform-browser-dynamic": "^22.0.2",
-    "@angular/router": "^22.0.4",
+    "@angular/router": "^22.0.7",
     "@porsche-design-system/components-angular": "4.5.0-rc.1",
     "rxjs": "^7.8.2",
     "tslib": "^2.8.1",
     "zone.js": "~0.16.2"
   },
   "devDependencies": {
-    "@angular/build": "^22.0.4",
-    "@angular/cli": "^22.0.4",
-    "@angular/compiler-cli": "^22.0.4",
-    "@tailwindcss/postcss": "^4.3.1",
+    "@angular/build": "^22.0.7",
+    "@angular/cli": "^22.0.7",
+    "@angular/compiler-cli": "^22.0.7",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/jasmine": "^6.0.0",
     "istanbul-lib-instrument": "^6.0.3",
     "jasmine-core": "~6.3.0",
@@ -37,7 +37,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.2.0",
     "postcss": "^8",
-    "tailwindcss": "^4.3.1",
-    "typescript": "^6.0.3"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
   }
 }

@@ -13,8 +13,8 @@
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
-    "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   },
   "volta": {
     "extends": "../../../../package.json"
