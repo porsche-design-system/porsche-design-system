@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.5.0-rc.1] - 2026-07-20
+
 ### Fixed
 
 - `Flyout`, `Modal`, `Sheet` ([#4602](https://github.com/porsche-design-system/porsche-design-system/pull/4602)):
