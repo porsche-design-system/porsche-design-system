@@ -1785,6 +1785,12 @@
               <p-button type="button" variant="secondary">Cancel</p-button>
             </div>
           </p-popover>
+          <!-- Because :host uses `display: contents`, the default info trigger becomes the flex item here. `flex: none`
+               keeps it round instead of being squished by the long text sibling within the constrained flex parent. -->
+          <div class="flex items-center gap-fluid-xs" style="width: 200px; border: 1px solid deeppink">
+            <p-text>A very long text sibling that pushes the info icon within a constrained flex parent</p-text>
+            <p-popover description="Some content"></p-popover>
+          </div>
         </div>
         <div data-card="drilldown">
           <nav aria-label="Main">

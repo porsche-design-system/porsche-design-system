@@ -70,7 +70,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
       }),
     },
     ...(hasDismissButton && {
-      dismiss: getDialogDismissButtonJssStyle(),
+      dismiss: getDialogDismissButtonJssStyle(background),
     }),
   });
 };

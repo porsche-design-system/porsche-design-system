@@ -620,6 +620,10 @@ const generatedRoutes = {
     "path": "/popover-edge-case",
     "name": "PopoverEdgeCase"
   },
+  "popoverFlexParent": {
+    "path": "/popover-flex-parent",
+    "name": "PopoverFlexParent"
+  },
   "popoverLeft": {
     "path": "/popover-left",
     "name": "PopoverLeft"

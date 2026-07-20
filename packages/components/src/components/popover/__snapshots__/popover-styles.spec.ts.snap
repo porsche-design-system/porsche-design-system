@@ -29,6 +29,7 @@ button {
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
+  flex: none;
   cursor: pointer;
 }
 button:focus-visible::before {
@@ -155,6 +156,7 @@ button {
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
+  flex: none;
   cursor: pointer;
 }
 button:focus-visible::before {
@@ -281,6 +283,7 @@ button {
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
+  flex: none;
   cursor: pointer;
 }
 button:focus-visible::before {
@@ -415,6 +418,7 @@ button {
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
+  flex: none;
   cursor: pointer;
 }
 button:focus-visible::before {
@@ -544,6 +548,7 @@ button {
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
+  flex: none;
   cursor: pointer;
 }
 button:focus-visible::before {
