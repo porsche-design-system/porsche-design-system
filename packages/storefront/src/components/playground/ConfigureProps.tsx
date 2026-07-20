@@ -93,7 +93,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
     if (allowedValues === 'boolean') {
       return (
         <div key={propName} className="flex gap-static-xs">
-          <span className="inline-flex gap-static-xs">
+          <span className="inline-flex gap-static-xs align-top">
             <PSwitch
               checked={getCurrentValue(propName, propMeta) === 'true'}
               compact={true}
@@ -129,7 +129,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <span slot="label">
             <span id={`${propName}-id`}>{capitalCase(propName)}</span>
           </span>
-          <span slot="label-after" className="inline-flex gap-static-xs">
+          <span slot="label-after" className="inline-flex gap-static-xs align-top">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
           </span>
@@ -155,7 +155,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <span slot="label">
             <span>{capitalCase(propName)}</span>
           </span>
-          <span slot="label-after" className="inline-flex gap-static-xs">
+          <span slot="label-after" className="inline-flex gap-static-xs align-top">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
           </span>
@@ -176,7 +176,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           onChange={(e) => onUpdateProps(propName, e.detail.value as string | number | undefined)}
         >
           <span slot="label">{capitalCase(propName)}</span>
-          <span slot="label-after" className="inline-flex gap-static-xs">
+          <span slot="label-after" className="inline-flex gap-static-xs align-top">
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
           </span>
