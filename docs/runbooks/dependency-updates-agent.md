@@ -16,12 +16,46 @@
 
 ### How this task is dispatched
 
-This runbook is executed by the **Copilot coding agent**, scheduled via
-[`.github/workflows/weekly-dependency-agent.yml`](../../.github/workflows/weekly-dependency-agent.yml). That workflow
-runs weekly, checks `npm run npm:outdated`, and — only when updates exist — opens an issue assigned to `@copilot`
-linking back to this file. The agent's environment is bootstrapped by
+The weekly update runs as a **build-in-CI loop**: the deterministic build runs in plain GitHub Actions, and an
+**agentic fixer** engages only when the build fails. They ping-pong until the build is green or a retry cap is hit, and a
+**pull request is opened only after a green build**.
+
+1. **Fresh run (deterministic bump + build)** —
+   [`.github/workflows/weekly-dependency-agent.yml`](../../.github/workflows/weekly-dependency-agent.yml) runs weekly (or
+   on manual dispatch), checks `npm run npm:outdated`, and — only when updates exist — runs `npm run npm:update` (+ range
+   lint/format fix + clean lockfile), commits to a `chore/dependency-updates-<date>-<run-id>` branch, pushes it, then
+   runs the deterministic **`npm run build`** capturing the output to `build.log`.
+
+2. **Green → PR** — if the build succeeds, the workflow opens a single PR labelled `dependencies` (authored via the
+   `GH_COPILOT_AGENT_TOKEN` PAT so the full [`Contribution`](../../.github/workflows/contribution.yml) CI runs on it).
+   No PR is ever opened while the build is red.
+
+3. **Red → agentic fix** — if the build fails, the workflow uploads `build.log` as an artifact and dispatches the
+   **GitHub Agentic Workflow** ([gh-aw](https://github.github.com/gh-aw/))
+   [`.github/workflows/dependency-fix.md`](../../.github/workflows/dependency-fix.md) with the branch and the build run
+   id. That agent is **read-only**: it downloads the log, makes a **scoped** fix per this runbook (overrides / compatible
+   pins / lockfile / minor source adaptations) **without rebuilding**, and its edits are packaged into a `fix-patch`
+   artifact by trusted post-steps.
+
+4. **Loop back to the build** — when the agent completes, the orchestrator re-enters via its `on: workflow_run` trigger,
+   downloads the `fix-patch`, applies it with the PAT (as a `fix(deps-agent):` commit), and **rebuilds** — back to
+   step 2. The loop is **retry-capped at `MAX_ATTEMPTS` (3) agent runs per branch** (counted statelessly via
+   `gh run list`), after which the orchestrator opens an **escalation issue** and stops.
+
+> **gh-aw compile step**: `dependency-fix.md` is the source; GitHub Actions runs the generated
+> `dependency-fix.lock.yml`. After editing the `.md`, regenerate and commit the lock file:
+>
+> ```bash
+> gh extension install githubnext/gh-aw   # once
+> gh aw compile dependency-fix
+> ```
+
+Any manual/agent environment is bootstrapped by
 [`.github/workflows/copilot-setup-steps.yml`](../../.github/workflows/copilot-setup-steps.yml) (Node 24 + `npm ci`,
 mirroring [`.github/actions/install`](../../.github/actions/install/action.yml)).
+
+> **Held-back / Docker-only work is still manual.** Angular framework migrations (step 3) and Playwright bumps (npm pin
+> + Docker image + VRT snapshots) are **not** performed by either automated workflow — follow the manual steps below.
 
 ## Hard rules — never do these
 
@@ -298,26 +332,21 @@ Commit the bumped `package.json`, `package-lock.json`, the Docker image changes,
 
 ## Output contract
 
-Deliver the result as a **single pull request** the maintainers can review and merge:
+The weekly run delivers a **single pull request** — but only once the build is green:
 
-- **One PR** containing all dependency changes from this run (no direct pushes to `main`).
-- **Target the default branch** (`main`) — closing keywords only auto-close issues when the PR merges into the default
-  branch.
-- **Close the dispatching issue automatically.** Put a
-  [closing keyword](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
-  in the **PR description** (not a commit message or a plain `#123` mention):
-
-  ```text
-  Closes #<issue-number>
-  ```
-
-  Use the number of the issue you were assigned — the dispatcher
-  ([`weekly-dependency-agent.yml`](../../.github/workflows/weekly-dependency-agent.yml)) pre-fills it as
-  `Closes #<number>` in the issue body. The keyword must stay in the **PR description**; without it, merging the PR will
-  **not** close the issue, leaving stale dependency tasks open.
-- **PR description** must summarize: which dependencies were bumped (grouped), any `overrides` added or removed, any
-  advisories from `npm run npm:audit`, and which builds/tests you ran — explicitly calling out any you could **not**
-  reproduce here (e.g. VRT in Docker, cross-browser e2e), so the reviewer knows what still needs to pass on CI.
+- **PR only on a green build.** The orchestrator
+  [`weekly-dependency-agent.yml`](../../.github/workflows/weekly-dependency-agent.yml) opens exactly one PR, on the
+  `chore/dependency-updates-<date>-<run-id>` branch, labelled `dependencies`, **after** `npm run build` passes. While the
+  build is red it stays a branch only — no red PR is ever surfaced. No direct pushes to `main`.
+- **Target the default branch** (`main`).
+- **No dispatching issue to close.** Nothing opens a task issue up front, so there is no `Closes #<n>` keyword to add.
+- **Self-healing fix commits.** If the agentic fixer ([`dependency-fix.md`](../../.github/workflows/dependency-fix.md))
+  produced fixes, they are applied to the branch as `fix(deps-agent):` commits by the orchestrator. The cap is
+  **`MAX_ATTEMPTS` (3) agent runs per branch**; beyond that the orchestrator opens an **escalation issue** (labelled
+  `dependencies`) instead of a PR and stops.
+- **PR description** summarizes: which dependencies were bumped (grouped), any `overrides` added or removed, any
+  advisories from `npm run npm:audit`, and — for the **manual** held-back work (Angular migrations, Playwright) — any
+  checks you could not reproduce (e.g. VRT in Docker, cross-browser e2e), so the reviewer knows what still needs CI.
 
 ## Stop conditions (hand back to a human)
 

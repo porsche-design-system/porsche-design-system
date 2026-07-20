@@ -1,141 +1,240 @@
-# Weekly dependency-update task dispatcher for the Copilot coding agent.
+# Weekly npm dependency update -- build-in-CI with an agentic self-healing LOOP.
 #
-# This workflow does NOT update dependencies itself. On a weekly schedule it:
-#   1. Checks whether anything is actually outdated (skips noise when nothing is).
-#   2. Opens a task issue assigned to `@copilot`, pointing the coding agent at
-#      docs/runbooks/dependency-updates-agent.md.
+# This is the ORCHESTRATOR + BUILDER. The deterministic build runs here in GitHub
+# Actions; a GitHub Agentic Workflow (gh-aw), dependency-fix.md, only fixes
+# failures. They ping-pong until the build is green or the retry budget is
+# exhausted, and a pull request is opened ONLY when the build succeeds.
 #
-# The agent then works on its own branch and opens a PR per the runbook's
-# "Output contract". CODEOWNERS routes that PR (package.json / package-lock.json
-# / .github) to @porsche-design-system/maintainers for review.
+#   fresh run (schedule / manual):
+#     npm run npm:update -> commit + push branch -> npm run build
 #
-# Assigning an issue to `@copilot` is what starts the coding agent. Confirm the
-# agent is enabled for this repo under Settings → Copilot → Coding agent.
+#   loop run (workflow_run: the agent finished and uploaded a "fix-patch"):
+#     checkout branch -> download + git apply the patch -> commit + push
+#                     -> npm run build
 #
-# IMPORTANT: assigning the `@copilot` agent requires a *user* token. The default
-# `GITHUB_TOKEN` is a GitHub App installation token and fails with:
-#   "Assigning agents is not supported with GitHub App installation tokens.
-#    Use a user token (personal access token or OAuth token) instead."
-# Provide a fine-grained or classic PAT as the `GH_COPILOT_AGENT_TOKEN` repo secret
-# (Settings → Secrets and variables → Actions). See the runbook for setup steps.
-# The PAT must also be SSO-authorized for the org (PAT page → Configure SSO →
-# Authorize); without that, the agent fails to start the assigned issue.
+#   build SUCCEEDS -> open PR (labelled) -> DONE
+#   build FAILS:
+#     agent-runs-for-branch >= MAX_ATTEMPTS -> open escalation issue -> STOP
+#     else -> upload build.log + dispatch the agent (dependency-fix.lock.yml)
 #
-# Why it is safe to disable "Require approval for workflow runs" for Copilot pushes:
-# the agent's PRs trigger only workflows that run with read-only tokens (e.g.
-# `contribution.yml`, `code-scanning.yml`, and `copilot-setup-steps.yml` depending on paths),
-# and none of the PR-triggered workflows read Actions secrets. Secret-bearing workflows
-# (`ort.yml`, this file) run only on `schedule`/`workflow_dispatch`, never on a PR; the only
-# exposed token is the read-only `GITHUB_TOKEN`.
+# Why this shape:
+#   - The agent job is READ-ONLY (gh-aw strict mode). It cannot push or dispatch;
+#     it uploads its fix as the "fix-patch" artifact. THIS workflow re-enters via
+#     'on: workflow_run' when the agent completes, applies the patch with a PAT,
+#     and rebuilds -- so no PR is needed for the loop and none opens until green.
+#   - The retry cap is stateless: we count how many agent runs already exist for
+#     the branch (gh run list --branch), which also bounds "give-up" (empty
+#     patch) loops.
+#
+# Token choice:
+#   - GH_COPILOT_AGENT_TOKEN (PAT): checkout/push/apply and 'gh pr create', so
+#     the eventual PR is user-authored and triggers the full Contribution CI.
+#   - GITHUB_TOKEN (actions: write): dispatches the agent -- a workflow_dispatch
+#     sent with it is allowed to start the agent run.
 name: 'Weekly Dependency Agent'
 
 on:
   schedule:
-    # Mondays 06:00 UTC — matches the weekly cadence in the runbook. Cron on
-    # GitHub Actions always runs in UTC.
+    # Mondays 06:00 UTC -- matches the weekly cadence in the runbook (UTC).
     - cron: '0 6 * * 1'
-  # Allow on-demand dispatch (e.g. to test the flow) from the Actions tab.
+  # Manual fresh trigger.
   workflow_dispatch: {}
+  # Loop re-entry: fires when the agent (dependency-fix) finishes on a working
+  # branch and has uploaded its fix-patch. Filtered to dependency-update branches.
+  workflow_run:
+    workflows: ['Self-healing dependency build fixer']
+    types: [completed]
+    branches:
+      - 'chore/dependency-updates**'
 
-# Least privilege: only the permissions needed to inspect deps and open an issue.
+# Elevated: pushes a branch, opens a PR, dispatches the agent, may open an issue.
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
+  actions: write
   issues: write
 
-# Never run two dispatchers at once; a newer run supersedes an in-flight one.
+env:
+  # Max agent fix cycles before giving up and escalating to a human.
+  MAX_ATTEMPTS: '3'
+
+# Serialize per working branch. A fresh run uses a unique per-run branch; loop
+# runs key on the triggering agent run's head branch.
 concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event.workflow_run.head_branch || github.run_id }}
+  cancel-in-progress: false
 
 jobs:
-  dispatch:
-    name: 'Dispatch'
+  build:
+    name: 'Build'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v7
-      - uses: ./.github/actions/install
-      - name: 'Check for outdated dependencies'
-        id: outdated
-        # `npm run npm:outdated` exits non-zero when updates are available; that
-        # is the signal we want, so capture it without failing the job.
+      # Resolve fresh-vs-loop mode and the working branch up front.
+      - name: 'Resolve mode'
+        id: mode
         run: |
-          if npm run --silent npm:outdated; then
-            echo "has-updates=false" >> "$GITHUB_OUTPUT"
-            echo "No outdated dependencies — nothing to dispatch."
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            echo "fresh=false" >> "$GITHUB_OUTPUT"
+            echo "branch=${{ github.event.workflow_run.head_branch }}" >> "$GITHUB_OUTPUT"
+            echo "fix_run_id=${{ github.event.workflow_run.id }}" >> "$GITHUB_OUTPUT"
           else
-            echo "has-updates=true" >> "$GITHUB_OUTPUT"
-            echo "Outdated dependencies found — dispatching task to the coding agent."
+            echo "fresh=true" >> "$GITHUB_OUTPUT"
+            echo "branch=chore/dependency-updates-$(date -u +%Y%m%d)-${GITHUB_RUN_ID}" >> "$GITHUB_OUTPUT"
           fi
-      - name: 'Open task issue for the Copilot coding agent'
-        if: steps.outdated.outputs.has-updates == 'true'
-        env:
-          # Must be a *user* token (PAT) — the default GITHUB_TOKEN is a GitHub
-          # App installation token and cannot assign the `@copilot` agent.
-          GH_TOKEN: ${{ secrets.GH_COPILOT_AGENT_TOKEN }}
-          # Absolute URL to the runbook at the dispatched commit (repo-relative
-          # paths are not auto-linked in issue bodies). `${{ }}` is substituted
-          # by the Actions runner before the shell runs.
-          RUNBOOK_URL: ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.sha }}/docs/runbooks/dependency-updates-agent.md
+
+      # Check out with the PAT so branch pushes / PR creation are user-attributed.
+      - uses: actions/checkout@v7
+        with:
+          token: ${{ secrets.GH_COPILOT_AGENT_TOKEN }}
+          fetch-depth: 0
+
+      - name: 'Prepare working branch'
         run: |
-          # Ensure the label exists (gh issue create fails on an unknown label).
-          gh label create "dependencies" \
-            --description "Automated npm dependency updates" \
-            --color "0366d6" 2>/dev/null || true
-
-          # Quoted heredoc → no shell expansion, so the backticks below stay
-          # literal. The runbook URL is injected afterwards via a placeholder.
-          cat > issue-body.md <<'EOF'
-          Run the recurring weekly npm dependency update.
-
-          **Follow the runbook exactly:** [`docs/runbooks/dependency-updates-agent.md`](__RUNBOOK_URL__)
-
-          Key guardrails (see the runbook for the full list):
-          - Skip fully held-back deps (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). Update Angular via `ng update` per the runbook (step 3), not syncpack.
-          - Never run `npm audit fix`, `--legacy-peer-deps` or `--force`.
-          - Don't hand-edit `package.json` versions or `package-lock.json`; use `syncpack` / `npm install`.
-          - Deliver a single PR per the runbook's "Output contract".
-          - **Close this issue on merge:** put `Closes #__ISSUE_NUMBER__` in the **PR description** (a plain `#__ISSUE_NUMBER__` mention or commit message is not enough). Target the default branch so the keyword fires.
-          EOF
-
-          # Inject the URL without touching any other characters.
-          sed -i "s#__RUNBOOK_URL__#${RUNBOOK_URL}#g" issue-body.md
-
-          # Create the issue *unassigned* first: its number is only known after
-          # creation, and assigning `@copilot` is what starts the agent. We patch
-          # the real number into the body before assigning, so the agent reads a
-          # final body that tells it to `Closes #<number>` (auto-closing this
-          # issue when its PR merges).
-          # Declare first, then assign on its own line: with a combined
-          # `ISSUE_URL="$(...)"` the assignment's exit status masks a failing
-          # command substitution, so `set -e` would NOT abort on a failed
-          # `gh issue create`. Splitting it lets errexit catch the failure.
-          ISSUE_URL=
-          ISSUE_URL="$(gh issue create \
-            --title "chore(deps): weekly npm dependency updates ($(date +%F))" \
-            --label "dependencies" \
-            --body-file issue-body.md)"
-
-          # Defense in depth: bail out loudly if creation produced no URL,
-          # otherwise an empty value would yield a bogus issue number below.
-          if [ -z "$ISSUE_URL" ]; then
-            echo "::error::gh issue create returned an empty URL — aborting." >&2
-            exit 1
+          git config user.name 'porsche-design-system-bot'
+          git config user.email 'porsche-design-system-bot@users.noreply.github.com'
+          git fetch origin "${{ github.event.repository.default_branch }}"
+          if [ "${{ steps.mode.outputs.fresh }}" = "true" ]; then
+            git checkout -b "${{ steps.mode.outputs.branch }}"
+          else
+            git fetch origin "${{ steps.mode.outputs.branch }}"
+            git checkout "${{ steps.mode.outputs.branch }}"
           fi
 
-          # `gh issue create` prints the issue URL; the trailing path segment is
-          # the issue number.
-          ISSUE_NUMBER="${ISSUE_URL##*/}"
-
-          # Guard against a malformed URL: the parsed number must be numeric
-          # before we run any `gh issue edit` against it.
-          if ! printf '%s' "$ISSUE_NUMBER" | grep -Eq '^[0-9]+$'; then
-            echo "::error::Could not parse a numeric issue number from '$ISSUE_URL' — aborting." >&2
+      # Loop mode: apply the agent's fix patch onto the branch.
+      - name: 'Apply agent fix patch'
+        id: apply
+        if: steps.mode.outputs.fresh != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GH_COPILOT_AGENT_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p patchdir
+          if ! gh run download "${{ steps.mode.outputs.fix_run_id }}" -n fix-patch -D patchdir; then
+            echo 'No fix-patch artifact -- treating as give-up (no changes).'
+            echo "applied=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ ! -s patchdir/fix.patch ]; then
+            echo 'Empty fix-patch (agent gave up) -- rebuilding unchanged branch.'
+            echo "applied=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Apply the patch; escalate immediately if it does not apply cleanly.
+          if ! git apply --index --3way patchdir/fix.patch; then
+            echo "::error::Agent fix patch did not apply cleanly on ${{ steps.mode.outputs.branch }}."
+            gh issue create \
+              --title "Weekly dependency update: agent patch failed to apply (${{ steps.mode.outputs.branch }})" \
+              --label 'dependencies' \
+              --body "The agent fix patch from run ${{ steps.mode.outputs.fix_run_id }} did not apply cleanly onto ${{ steps.mode.outputs.branch }}. Take over manually per docs/runbooks/dependency-updates-agent.md."
             exit 1
           fi
+          git commit -m 'fix(deps-agent): apply automated dependency build fix'
+          git push origin "${{ steps.mode.outputs.branch }}"
+          echo "applied=true" >> "$GITHUB_OUTPUT"
 
-          # Substitute the now-known number, update the body, then assign the
-          # agent last so it picks up the finalized instructions.
-          sed -i "s#__ISSUE_NUMBER__#${ISSUE_NUMBER}#g" issue-body.md
-          gh issue edit "$ISSUE_NUMBER" --body-file issue-body.md
-          gh issue edit "$ISSUE_NUMBER" --add-assignee "@copilot"
+      - uses: ./.github/actions/install
+
+      # Fresh mode: deterministic syncpack bump, then push the branch.
+      - name: 'Apply syncpack update (fresh run only)'
+        id: update
+        if: steps.mode.outputs.fresh == 'true'
+        run: |
+          # npm:outdated (syncpack --check) exits 0 when nothing is outdated.
+          if npm run npm:outdated; then
+            echo 'Nothing outdated -- skipping.'
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            npm run npm:update
+            npm run npm:lint:fix
+            npm run npm:format:fix
+            rm -f package-lock.json
+            npm install
+            git add -A
+            git commit -m 'chore(deps): weekly npm dependency update'
+            git push origin "${{ steps.mode.outputs.branch }}"
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # The deterministic build. Capture output to build.log; keep going on
+      # failure so we can hand the log to the agent.
+      - name: 'Build'
+        id: build
+        if: steps.update.outputs.skip != 'true'
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee build.log
+
+      # Success path: open the PR (only now that the build is green).
+      - name: 'Write PR body'
+        if: steps.build.outcome == 'success' && steps.update.outputs.skip != 'true'
+        run: |
+          cat > "$RUNNER_TEMP/pr-body.md" <<'BODY_EOF'
+          Automated weekly npm dependency update -- opened only after a green build.
+
+          Generated by .github/workflows/weekly-dependency-agent.yml following
+          docs/runbooks/dependency-updates-agent.md. If the build failed initially, the
+          agentic workflow .github/workflows/dependency-fix.md fixed it in a capped loop
+          (applied fix commits are prefixed `fix(deps-agent):`).
+
+          ## Reviewer checklist
+          - [ ] Grouped upgrades look correct (framework families in lockstep)
+          - [ ] Any added/removed overrides are justified (npm run npm:audit)
+          - [ ] Held-back deps untouched (Stencil / Playwright / Angular migrations / internal)
+          BODY_EOF
+
+      - name: 'Open pull request (build is green)'
+        if: steps.build.outcome == 'success' && steps.update.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GH_COPILOT_AGENT_TOKEN }}
+        run: |
+          branch="${{ steps.mode.outputs.branch }}"
+          if gh pr view "$branch" >/dev/null 2>&1; then
+            echo 'PR already exists -- nothing to do.'
+          else
+            gh pr create \
+              --base "${{ github.event.repository.default_branch }}" \
+              --head "$branch" \
+              --title 'chore(deps): weekly npm dependency update' \
+              --label 'dependencies' \
+              --body-file "$RUNNER_TEMP/pr-body.md"
+          fi
+
+      # Failure path: escalate at the cap, otherwise hand off to the agent.
+      - name: 'Upload build log (build failed)'
+        if: steps.build.outcome == 'failure'
+        uses: actions/upload-artifact@v7
+        with:
+          name: build-log
+          path: build.log
+          if-no-files-found: warn
+
+      - name: 'Dispatch fixer or escalate (build failed)'
+        if: steps.build.outcome == 'failure'
+        env:
+          # GITHUB_TOKEN with actions:write -- a workflow_dispatch sent with it is
+          # allowed to start the agent run.
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="${{ steps.mode.outputs.branch }}"
+          # Stateless retry cap: how many agent runs already exist for this branch?
+          attempt=$(gh run list --workflow=dependency-fix.lock.yml --branch "$branch" -L 100 --json databaseId -q 'length' || echo 0)
+          echo "Agent runs so far for ${branch}: ${attempt} (cap ${MAX_ATTEMPTS})."
+          if [ "$attempt" -ge "$MAX_ATTEMPTS" ]; then
+            echo "::error::Build still failing after ${MAX_ATTEMPTS} agent fix attempts on ${branch}."
+            gh issue create \
+              --title "Weekly dependency update needs manual attention (${branch})" \
+              --label 'dependencies' \
+              --body "The deterministic build is still failing after ${MAX_ATTEMPTS} agentic fix attempts on branch ${branch}. Last failing run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}. Follow docs/runbooks/dependency-updates-agent.md and take over manually."
+            exit 1
+          fi
+          next=$((attempt + 1))
+          echo "Build failed -- dispatching dependency-fix (fix attempt ${next}/${MAX_ATTEMPTS})."
+          gh workflow run dependency-fix.lock.yml \
+            --ref "$branch" \
+            -f branch="$branch" \
+            -f attempt="$next" \
+            -f build_run_id="${GITHUB_RUN_ID}"
+
