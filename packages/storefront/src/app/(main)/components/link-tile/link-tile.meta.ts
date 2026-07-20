@@ -3,6 +3,8 @@ import { linkTileExampleHyphens } from '@porsche-design-system/shared/examples';
 import Accessibility from '@/app/(main)/components/link-tile/accessibility/page.mdx';
 import IntroductionDescription from '@/app/(main)/components/link-tile/configurator/introduction.mdx';
 import { linkTileSlotStory, linkTileStory } from '@/app/(main)/components/link-tile/configurator/story';
+import ColorSchemeDescription from '@/app/(main)/components/link-tile/examples/color-scheme/example.mdx';
+import { linkTileStoryColorScheme } from '@/app/(main)/components/link-tile/examples/color-scheme/story';
 import FooterSlotDescription from '@/app/(main)/components/link-tile/examples/footer-slot/example.mdx';
 import { linkTileStoryFooterSlot } from '@/app/(main)/components/link-tile/examples/footer-slot/story';
 import HyphensDescription from '@/app/(main)/components/link-tile/examples/hyphens/example.mdx';
@@ -44,9 +46,14 @@ export const linkTileMeta = {
       description: FooterSlotDescription,
       story: linkTileStoryFooterSlot,
     },
+    colorScheme: {
+      kind: 'story',
+      name: 'Color scheme',
+      description: ColorSchemeDescription,
+      story: linkTileStoryColorScheme,
+    },
   },
   usage: Usage,
   accessibility: Accessibility,
   api: componentMeta['p-link-tile'],
 } satisfies ComponentDocsMeta<'p-link-tile'>;
-

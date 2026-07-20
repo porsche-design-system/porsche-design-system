@@ -1310,6 +1310,30 @@ exports[`skill tree content > matches the staged angular content snapshots > ref
 ]
 `;
 
+exports[`skill tree content > matches the staged angular content snapshots > references/components/p-button-tile/examples/ColorScheme.ts 1`] = `
+[
+  "import { ChangeDetectionStrategy, Component } from '@angular/core';",
+  "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
+  "",
+  "@Component({",
+  "  selector: 'porsche-design-system-app',",
+  "  template: \`",
+  "      <p-button-tile label="Some label" description="Some Description" [gradient]="true">",
+  "        <p-tag slot="header" color="background-frosted" [compact]="true" [style]="{'colorScheme': 'only light'}">",
+  "          Some tag",
+  "        </p-tag>",
+  "        <img src="assets/lights.jpg" alt="Some image description" />",
+  "      </p-button-tile>",
+  "  \`,",
+  "  changeDetection: ChangeDetectionStrategy.OnPush,",
+  "  standalone: true,",
+  "  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here",
+  "})",
+  "export class ExampleComponent {}",
+  "",
+]
+`;
+
 exports[`skill tree content > matches the staged angular content snapshots > references/components/p-button-tile/examples/Default.ts 1`] = `
 [
   "import { ChangeDetectionStrategy, Component } from '@angular/core';",
@@ -1585,6 +1609,7 @@ exports[`skill tree content > matches the staged angular content snapshots > ref
   "| UI behaviour | The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see first row in example). | [./examples/UiBehaviour.ts](./examples/UiBehaviour.ts) |",
   "| Hyphens | It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. | [./examples/Hyphens.ts](./examples/Hyphens.ts) |",
   "| Footer slot | You can also use a \`footer\` slot to display additional text below the description, providing more flexibility for custom content. | [./examples/FooterSlot.ts](./examples/FooterSlot.ts) |",
+  "| Color scheme | The component defines \`color-scheme: dark\` internally, independently of the scheme defined globally or on an ancestor outside the Button Tile. | [./examples/ColorScheme.ts](./examples/ColorScheme.ts) |",
   "",
 ]
 `;
@@ -8472,6 +8497,30 @@ exports[`skill tree content > matches the staged angular content snapshots > ref
 ]
 `;
 
+exports[`skill tree content > matches the staged angular content snapshots > references/components/p-link-tile/examples/ColorScheme.ts 1`] = `
+[
+  "import { ChangeDetectionStrategy, Component } from '@angular/core';",
+  "import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';",
+  "",
+  "@Component({",
+  "  selector: 'porsche-design-system-app',",
+  "  template: \`",
+  "      <p-link-tile href="https://porsche.com" label="Some label" description="Some Description" [gradient]="true">",
+  "        <p-tag slot="header" color="background-frosted" [compact]="true" [style]="{'colorScheme': 'only light'}">",
+  "          Some tag",
+  "        </p-tag>",
+  "        <img src="assets/lights.jpg" alt="Some image description" />",
+  "      </p-link-tile>",
+  "  \`,",
+  "  changeDetection: ChangeDetectionStrategy.OnPush,",
+  "  standalone: true,",
+  "  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here",
+  "})",
+  "export class ExampleComponent {}",
+  "",
+]
+`;
+
 exports[`skill tree content > matches the staged angular content snapshots > references/components/p-link-tile/examples/Default.ts 1`] = `
 [
   "import { ChangeDetectionStrategy, Component } from '@angular/core';",
@@ -8762,6 +8811,7 @@ exports[`skill tree content > matches the staged angular content snapshots > ref
   "| UI behaviour | The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see first row in example). | [./examples/UiBehaviour.ts](./examples/UiBehaviour.ts) |",
   "| Hyphens | It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. | [./examples/Hyphens.ts](./examples/Hyphens.ts) |",
   "| Footer slot | You can also use a \`footer\` slot to display additional text below the description, providing more flexibility for custom content. | [./examples/FooterSlot.ts](./examples/FooterSlot.ts) |",
+  "| Color scheme | The component defines \`color-scheme: dark\` internally, independently of the scheme defined globally or on an ancestor outside the Link Tile. | [./examples/ColorScheme.ts](./examples/ColorScheme.ts) |",
   "",
 ]
 `;
@@ -19421,6 +19471,30 @@ exports[`skill tree content > matches the staged js content snapshots > referenc
 ]
 `;
 
+exports[`skill tree content > matches the staged js content snapshots > references/components/p-button-tile/examples/ColorScheme.html 1`] = `
+[
+  "<!doctype html>",
+  "<html lang="en" class="scheme-light">",
+  "<head>",
+  "  <title></title>",
+  "</head>",
+  "<body class="bg-canvas">",
+  "",
+  "<p-button-tile label="Some label" description="Some Description" gradient="true">",
+  "  <p-tag slot="header" color="background-frosted" compact="true" style="color-scheme: only light">",
+  "    Some tag",
+  "  </p-tag>",
+  "  <img src="assets/lights.jpg" alt="Some image description" />",
+  "</p-button-tile>",
+  "<script>",
+  "",
+  "</script>",
+  "</body>",
+  "</html>",
+  "",
+]
+`;
+
 exports[`skill tree content > matches the staged js content snapshots > references/components/p-button-tile/examples/Default.html 1`] = `
 [
   "<!doctype html>",
@@ -19682,6 +19756,7 @@ exports[`skill tree content > matches the staged js content snapshots > referenc
   "| UI behaviour | The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see first row in example). | [./examples/UiBehaviour.html](./examples/UiBehaviour.html) |",
   "| Hyphens | It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. | [./examples/Hyphens.html](./examples/Hyphens.html) |",
   "| Footer slot | You can also use a \`footer\` slot to display additional text below the description, providing more flexibility for custom content. | [./examples/FooterSlot.html](./examples/FooterSlot.html) |",
+  "| Color scheme | The component defines \`color-scheme: dark\` internally, independently of the scheme defined globally or on an ancestor outside the Button Tile. | [./examples/ColorScheme.html](./examples/ColorScheme.html) |",
   "",
 ]
 `;
@@ -26310,6 +26385,30 @@ exports[`skill tree content > matches the staged js content snapshots > referenc
 ]
 `;
 
+exports[`skill tree content > matches the staged js content snapshots > references/components/p-link-tile/examples/ColorScheme.html 1`] = `
+[
+  "<!doctype html>",
+  "<html lang="en" class="scheme-light">",
+  "<head>",
+  "  <title></title>",
+  "</head>",
+  "<body class="bg-canvas">",
+  "",
+  "<p-link-tile href="https://porsche.com" label="Some label" description="Some Description" gradient="true">",
+  "  <p-tag slot="header" color="background-frosted" compact="true" style="color-scheme: only light">",
+  "    Some tag",
+  "  </p-tag>",
+  "  <img src="assets/lights.jpg" alt="Some image description" />",
+  "</p-link-tile>",
+  "<script>",
+  "",
+  "</script>",
+  "</body>",
+  "</html>",
+  "",
+]
+`;
+
 exports[`skill tree content > matches the staged js content snapshots > references/components/p-link-tile/examples/Default.html 1`] = `
 [
   "<!doctype html>",
@@ -26586,6 +26685,7 @@ exports[`skill tree content > matches the staged js content snapshots > referenc
   "| UI behaviour | The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see first row in example). | [./examples/UiBehaviour.html](./examples/UiBehaviour.html) |",
   "| Hyphens | It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. | [./examples/Hyphens.html](./examples/Hyphens.html) |",
   "| Footer slot | You can also use a \`footer\` slot to display additional text below the description, providing more flexibility for custom content. | [./examples/FooterSlot.html](./examples/FooterSlot.html) |",
+  "| Color scheme | The component defines \`color-scheme: dark\` internally, independently of the scheme defined globally or on an ancestor outside the Link Tile. | [./examples/ColorScheme.html](./examples/ColorScheme.html) |",
   "",
 ]
 `;
@@ -37028,6 +37128,27 @@ exports[`skill tree content > matches the staged react content snapshots > refer
 ]
 `;
 
+exports[`skill tree content > matches the staged react content snapshots > references/components/p-button-tile/examples/ColorScheme.tsx 1`] = `
+[
+  "import React from 'react';",
+  "import { PButtonTile, PTag } from '@porsche-design-system/components-react';",
+  "",
+  "export const Example = () => {",
+  "  return (",
+  "    <>",
+  "      <PButtonTile label="Some label" description="Some Description" gradient={true}>",
+  "        <PTag slot="header" color="background-frosted" compact={true} style={{'colorScheme': 'only light'}}>",
+  "          Some tag",
+  "        </PTag>",
+  "        <img src="assets/lights.jpg" alt="Some image description" />",
+  "      </PButtonTile>",
+  "    </>",
+  "  )",
+  "}",
+  "",
+]
+`;
+
 exports[`skill tree content > matches the staged react content snapshots > references/components/p-button-tile/examples/Default.tsx 1`] = `
 [
   "import React from 'react';",
@@ -37289,6 +37410,7 @@ exports[`skill tree content > matches the staged react content snapshots > refer
   "| UI behaviour | The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see first row in example). | [./examples/UiBehaviour.tsx](./examples/UiBehaviour.tsx) |",
   "| Hyphens | It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. | [./examples/Hyphens.tsx](./examples/Hyphens.tsx) |",
   "| Footer slot | You can also use a \`footer\` slot to display additional text below the description, providing more flexibility for custom content. | [./examples/FooterSlot.tsx](./examples/FooterSlot.tsx) |",
+  "| Color scheme | The component defines \`color-scheme: dark\` internally, independently of the scheme defined globally or on an ancestor outside the Button Tile. | [./examples/ColorScheme.tsx](./examples/ColorScheme.tsx) |",
   "",
 ]
 `;
@@ -44168,6 +44290,27 @@ exports[`skill tree content > matches the staged react content snapshots > refer
 ]
 `;
 
+exports[`skill tree content > matches the staged react content snapshots > references/components/p-link-tile/examples/ColorScheme.tsx 1`] = `
+[
+  "import React from 'react';",
+  "import { PLinkTile, PTag } from '@porsche-design-system/components-react';",
+  "",
+  "export const Example = () => {",
+  "  return (",
+  "    <>",
+  "      <PLinkTile href="https://porsche.com" label="Some label" description="Some Description" gradient={true}>",
+  "        <PTag slot="header" color="background-frosted" compact={true} style={{'colorScheme': 'only light'}}>",
+  "          Some tag",
+  "        </PTag>",
+  "        <img src="assets/lights.jpg" alt="Some image description" />",
+  "      </PLinkTile>",
+  "    </>",
+  "  )",
+  "}",
+  "",
+]
+`;
+
 exports[`skill tree content > matches the staged react content snapshots > references/components/p-link-tile/examples/Default.tsx 1`] = `
 [
   "import React from 'react';",
@@ -44441,6 +44584,7 @@ exports[`skill tree content > matches the staged react content snapshots > refer
   "| UI behaviour | The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see first row in example). | [./examples/UiBehaviour.tsx](./examples/UiBehaviour.tsx) |",
   "| Hyphens | It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. | [./examples/Hyphens.tsx](./examples/Hyphens.tsx) |",
   "| Footer slot | You can also use a \`footer\` slot to display additional text below the description, providing more flexibility for custom content. | [./examples/FooterSlot.tsx](./examples/FooterSlot.tsx) |",
+  "| Color scheme | The component defines \`color-scheme: dark\` internally, independently of the scheme defined globally or on an ancestor outside the Link Tile. | [./examples/ColorScheme.tsx](./examples/ColorScheme.tsx) |",
   "",
 ]
 `;
@@ -54949,6 +55093,24 @@ exports[`skill tree content > matches the staged vue content snapshots > referen
 ]
 `;
 
+exports[`skill tree content > matches the staged vue content snapshots > references/components/p-button-tile/examples/ColorScheme.vue 1`] = `
+[
+  "<script setup lang="ts">",
+  "  import { PButtonTile, PTag } from '@porsche-design-system/components-vue';",
+  "</script>",
+  "",
+  "<template>",
+  "  <PButtonTile label="Some label" description="Some Description" :gradient="true">",
+  "    <PTag slot="header" color="background-frosted" :compact="true" :style="{'colorScheme': 'only light'}">",
+  "      Some tag",
+  "    </PTag>",
+  "    <img src="assets/lights.jpg" alt="Some image description" />",
+  "  </PButtonTile>",
+  "</template>",
+  "",
+]
+`;
+
 exports[`skill tree content > matches the staged vue content snapshots > references/components/p-button-tile/examples/Default.vue 1`] = `
 [
   "<script setup lang="ts">",
@@ -55202,6 +55364,7 @@ exports[`skill tree content > matches the staged vue content snapshots > referen
   "| UI behaviour | The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see first row in example). | [./examples/UiBehaviour.vue](./examples/UiBehaviour.vue) |",
   "| Hyphens | It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. | [./examples/Hyphens.vue](./examples/Hyphens.vue) |",
   "| Footer slot | You can also use a \`footer\` slot to display additional text below the description, providing more flexibility for custom content. | [./examples/FooterSlot.vue](./examples/FooterSlot.vue) |",
+  "| Color scheme | The component defines \`color-scheme: dark\` internally, independently of the scheme defined globally or on an ancestor outside the Button Tile. | [./examples/ColorScheme.vue](./examples/ColorScheme.vue) |",
   "",
 ]
 `;
@@ -61623,6 +61786,24 @@ exports[`skill tree content > matches the staged vue content snapshots > referen
 ]
 `;
 
+exports[`skill tree content > matches the staged vue content snapshots > references/components/p-link-tile/examples/ColorScheme.vue 1`] = `
+[
+  "<script setup lang="ts">",
+  "  import { PLinkTile, PTag } from '@porsche-design-system/components-vue';",
+  "</script>",
+  "",
+  "<template>",
+  "  <PLinkTile href="https://porsche.com" label="Some label" description="Some Description" :gradient="true">",
+  "    <PTag slot="header" color="background-frosted" :compact="true" :style="{'colorScheme': 'only light'}">",
+  "      Some tag",
+  "    </PTag>",
+  "    <img src="assets/lights.jpg" alt="Some image description" />",
+  "  </PLinkTile>",
+  "</template>",
+  "",
+]
+`;
+
 exports[`skill tree content > matches the staged vue content snapshots > references/components/p-link-tile/examples/Default.vue 1`] = `
 [
   "<script setup lang="ts">",
@@ -61880,6 +62061,7 @@ exports[`skill tree content > matches the staged vue content snapshots > referen
   "| UI behaviour | The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see first row in example). | [./examples/UiBehaviour.vue](./examples/UiBehaviour.vue) |",
   "| Hyphens | It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. | [./examples/Hyphens.vue](./examples/Hyphens.vue) |",
   "| Footer slot | You can also use a \`footer\` slot to display additional text below the description, providing more flexibility for custom content. | [./examples/FooterSlot.vue](./examples/FooterSlot.vue) |",
+  "| Color scheme | The component defines \`color-scheme: dark\` internally, independently of the scheme defined globally or on an ancestor outside the Link Tile. | [./examples/ColorScheme.vue](./examples/ColorScheme.vue) |",
   "",
 ]
 `;
