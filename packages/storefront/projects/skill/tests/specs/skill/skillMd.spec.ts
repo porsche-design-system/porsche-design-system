@@ -1,9 +1,9 @@
-import { describe, expect, it } from 'vitest';
 import type { ComponentRosterEntry } from '@skill/components/reference';
 import { renderComponentsSection } from '@skill/components/section';
 import { renderStylesheetsSection, renderStylingSection, renderTokensSection } from '@skill/packageSkills';
 import { ACTIVATION_DESCRIPTION, buildSkillMd as renderSkillMd, skillName } from '@skill/skillMd';
 import { FRAMEWORKS, type Framework } from '@skill/support/skillTree';
+import { describe, expect, it } from 'vitest';
 import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntry[] = []): string =>
@@ -37,10 +37,16 @@ describe('buildSkillMd', () => {
   it.each(FRAMEWORKS)('renders version-safe coverage fallbacks for %s', (framework) => {
     const markdown = buildSkillMd(framework);
     const storefrontUrl = `https://designsystem.porsche.com/v${localPorscheDesignSystemVersion}/`;
+    const componentSourceUrl =
+      `https://github.com/porsche-design-system/porsche-design-system/tree/v${localPorscheDesignSystemVersion}/` +
+      'packages/components/src/components';
 
     expect(markdown).toContain(`This skill was generated for \`${localPorscheDesignSystemVersion}\``);
     expect(markdown).toContain(`[exact-version Porsche Design System Storefront](${storefrontUrl})`);
     expect(markdown).toContain('https://github.com/porsche-design-system/examples');
+    expect(markdown).toContain(`[exact-version component source](${componentSourceUrl})`);
+    expect(markdown).toContain('The underlying Stencil component implementation is not included in the npm package');
+    expect(markdown).toContain('minified, content-hashed CDN artifacts as a debugging fallback');
     expect(markdown).toContain('read `../CHANGELOG.md`');
   });
 

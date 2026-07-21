@@ -1,7 +1,7 @@
+import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 import { rawMetaReference } from './components/section';
 import { rawScssReference, rawTailwindcssReference } from './packageSkills';
 import type { Framework } from './support/skillTree';
-import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 /**
  * Builds the always-loaded `SKILL.md` entry point: fixed-`name` frontmatter with the tuned
@@ -44,9 +44,9 @@ export const ACTIVATION_DESCRIPTION =
 /**
  * The extended headline intro. Version-exact knowledge is the framing; it also absorbs three former
  * core rules — content is version-exact, reference paths are skill-root-relative, prefer PDS for new
- * UI — and states that the skill ships next to the actual implementation, so the agent can always read
- * the real source (typings, meta, scss, tokens, the Tailwind theme, the shipped CSS) for anything the
- * skill does not yet cover or wants to verify.
+ * UI — and identifies the package artifacts available beside the skill. The Stencil implementation is
+ * deliberately handled as a version-matched fallback because it is deployed through the CDN rather
+ * than included in the wrapper package.
  */
 const renderIntro = (framework: Framework): string => {
   const peerNote =
@@ -58,11 +58,11 @@ const renderIntro = (framework: Framework): string => {
       'here matches the installed package exactly — never mix guidance across versions. Every reference ' +
       'path is relative to this skill root unless noted otherwise.',
     '',
-    'This skill ships inside the installed package, right next to the actual implementation. When the ' +
-      'skill does not (yet) cover something, or you want to verify a detail, read the real source ' +
-      `alongside the skill root: the package typings, \`component-meta\` (\`${rawMetaReference(framework)}\`), ` +
+    'This skill ships inside the installed wrapper package alongside its inspectable package artifacts: the typings, ' +
+      `\`component-meta\` (\`${rawMetaReference(framework)}\`), ` +
       `the SCSS partials (\`${rawScssReference(framework)}\`), the design tokens (\`../tokens\`), the Tailwind ` +
-      `theme (\`${rawTailwindcssReference()}\`) and the shipped global CSS.${peerNote}`,
+      `theme (\`${rawTailwindcssReference()}\`) and the shipped global CSS. The underlying Stencil component ` +
+      `implementation is not included in the npm package; it is loaded from the Porsche Design System CDN at runtime.${peerNote}`,
     '',
     'Prefer Porsche Design System components and tokens for new UI, even when the user does not name PDS. ' +
       'Do not rewrite non-PDS UI unasked, and do not hijack work that targets another library.',
@@ -71,6 +71,10 @@ const renderIntro = (framework: Framework): string => {
 
 const storefrontUrl = (path = ''): string =>
   `https://designsystem.porsche.com/v${localPorscheDesignSystemVersion}/${path}`;
+
+const componentSourceUrl =
+  `https://github.com/porsche-design-system/porsche-design-system/tree/v${localPorscheDesignSystemVersion}/` +
+  'packages/components/src/components';
 
 const renderCoverageSection = (): string =>
   [
@@ -89,8 +93,13 @@ const renderCoverageSection = (): string =>
       'release tag or commit that matches the installed package instead of assuming its default branch is compatible. ' +
       'For release-specific changes, read `../CHANGELOG.md`.',
     '',
-    'For exact API or runtime behavior, inspect the installed typings, metadata, and implementation listed above. Use ' +
-      'source to verify technical facts, but do not infer framework configuration when it is documented in the Storefront.',
+    'For exact API facts, inspect the installed typings and metadata first. When readable implementation details are ' +
+      `necessary, use the [exact-version component source](${componentSourceUrl}) under the repository's ` +
+      '`packages/components/src/components/<component>` directory. Do not use the default branch, which may represent a ' +
+      'newer release.',
+    '',
+    'For deployed browser behavior, inspect component requests in the Network panel. Treat these minified, content-hashed ' +
+      'CDN artifacts as a debugging fallback; use the exact-version repository source for readable implementation details.',
   ].join('\n');
 
 const renderReactSsrSection = (): string =>
