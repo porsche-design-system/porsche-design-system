@@ -5,6 +5,7 @@ import {
   type MultiSelectOption,
   resetSelectedOptions,
   selectOptionsByValue,
+  setSelectedMultiSelectOption,
 } from './multi-select-utils';
 
 type GenerateMultiSelectOptionsParams = {
@@ -238,5 +239,19 @@ describe('resetSelectedOptions()', () => {
     options.forEach((option) => {
       expect(option.selected).toBeFalsy();
     });
+  });
+});
+
+describe('setSelectedMultiSelectOption()', () => {
+  it('should select an unselected option', () => {
+    const option = { selected: false } as MultiSelectOption;
+    setSelectedMultiSelectOption(option);
+    expect(option.selected).toBe(true);
+  });
+
+  it('should unselect an already-selected option', () => {
+    const option = { selected: true } as MultiSelectOption;
+    setSelectedMultiSelectOption(option);
+    expect(option.selected).toBe(false);
   });
 });
