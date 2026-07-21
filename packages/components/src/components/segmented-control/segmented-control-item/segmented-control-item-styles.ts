@@ -10,6 +10,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
+  colorContrastHigh,
   colorContrastMedium,
   colorFrostedStrong,
   colorPrimary,
@@ -112,7 +113,7 @@ export const getComponentCss = (
         display: 'block',
         ...textXSmallStyle,
         overflowWrap: 'normal',
-        color: ref(colorContrastMedium),
+        color: isSelected ? ref(colorContrastHigh) : ref(colorContrastMedium),
         ...(isDisabled &&
           forcedColorsMediaQuery({
             color: 'GrayText',
