@@ -10,7 +10,7 @@ import {
 } from './api';
 import { type ComponentExamplesSource, writeComponentExamples } from './examples';
 import { deriveIconNames, renderIconsReference } from './icons';
-import { type ComponentProseSource, ROSTER_SUMMARY_OVERRIDES, renderComponentProse } from './prose';
+import { type ComponentProseSource, renderComponentProse } from './prose';
 
 /**
  * Assembles `references/components/<tag>/<tag>.md` for every documented component — prose
@@ -100,7 +100,7 @@ export const writeComponentReferences = (
     const status = componentStatus(apiMeta);
     roster.push({
       tag,
-      summary: ROSTER_SUMMARY_OVERRIDES[tag] ?? summary,
+      summary,
       ...(status ? { status } : {}),
     });
   }

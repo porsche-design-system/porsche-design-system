@@ -66,19 +66,17 @@ implement consistently.
 Before extracting this layer, compare the information and formatting required by both outputs and define which behavior
 belongs in the shared transformation versus each renderer.
 
-### Refactor component prose to remove overrides
+### Normalize component prose structure
 
-`ROSTER_SUMMARY_OVERRIDES` exists because some component introductions do not start with a concise, standalone
-description that SKILL can use as the roster summary. Similar inconsistencies across introduction, usage, accessibility,
-and notes MDX also require SKILL-specific cleanup and transformations.
+Inconsistencies across introduction, usage, accessibility, and notes MDX still require SKILL-specific cleanup and
+transformations.
 
 We should refactor all component prose MDX files so they follow a consistent structure and are directly reusable by both
 Storefront and SKILL. Introductions should begin with an accurate summary sentence, headings should be predictable, and
 repeated boilerplate should be removed from the source rather than stripped during generation.
 
-Once the content is normalized, remove `ROSTER_SUMMARY_OVERRIDES` and any other prose transformations that are no longer
-necessary. This keeps the source documentation authoritative and avoids maintaining SKILL-specific exceptions when the
-prose changes.
+Once the content is normalized, remove any prose transformations that are no longer necessary. This keeps the source
+documentation authoritative and avoids maintaining SKILL-specific exceptions when the prose changes.
 
 ### Share React SSR guidance
 

@@ -20,22 +20,6 @@ export type ComponentProseSource = {
 const NO_SUMMARY = '_No description available._';
 
 /**
- * Curated roster one-liners for components whose introduction's lead sentence is unsuitable as a
- * summary — marketing/context framing, a stat about the component rather than what it is, a
- * grammatically broken opener, or a sentence truncated by an interactive component embedded in the
- * MDX prose. The roster is the agent's primary lookup surface, so these get a concise "what it is"
- * line instead of `leadSentence(introduction)`. Every other component keeps the auto-extracted lead
- * sentence. Keys are asserted to be real documented tags by the completeness gate.
- */
-export const ROSTER_SUMMARY_OVERRIDES: Record<string, string> = {
-  'p-flag': 'Displays a country or region flag, styled to the Porsche design language.',
-  'p-pagination': 'Splits a large set of content across pages and lets the user navigate between them.',
-  'p-popover':
-    'Shows additional contextual content in an overlay on top of other content, typically opened from an info button.',
-  'p-spinner': 'Indicates an ongoing process the user must wait for, such as loading or processing.',
-};
-
-/**
  * Render one prose section (introduction / usage / accessibility) to markdown and append it to
  * `sections` unless it is empty. Returns the raw rendered markdown (before `transform` and
  * trimming) so the caller can derive the roster summary from the introduction; the empty string

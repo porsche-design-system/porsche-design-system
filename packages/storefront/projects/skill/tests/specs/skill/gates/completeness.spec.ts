@@ -3,7 +3,6 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { describe, expect, it } from 'vitest';
-import { ROSTER_SUMMARY_OVERRIDES } from '@skill/components/prose';
 import { getPackageSkillRouteReferences } from '@skill/packageSkills';
 import { listSkillTreeFiles } from '@skill/support/skillTreeFiles';
 import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@skill/support/skillTree';
@@ -70,12 +69,6 @@ const FLAGGED_SUB_COMPONENT_TAGS = SUB_COMPONENT_TAGS.filter((tag) => statusOf(c
 describe('skill tree completeness', () => {
   it('has a non-empty documented-component set to gate against', () => {
     expect(DOCUMENTED_TAGS.length).toBeGreaterThan(0);
-  });
-
-  it('only overrides roster summaries for real documented components', () => {
-    for (const tag of Object.keys(ROSTER_SUMMARY_OVERRIDES)) {
-      expect(DOCUMENTED_TAGS, `stale roster-summary override for ${tag}`).toContain(tag);
-    }
   });
 
   for (const framework of FRAMEWORKS) {
@@ -146,12 +139,6 @@ describe('skill tree completeness', () => {
           return fs.existsSync(file) && fs.readFileSync(file, 'utf-8').includes(heading);
         });
         expect(documented, `sub-component ${tag} not marked ${status} under any parent reference`).toBe(true);
-      });
-
-      it('uses the curated roster summary for overridden components', () => {
-        for (const [tag, summary] of Object.entries(ROSTER_SUMMARY_OVERRIDES)) {
-          expect(skillMd, `${tag} roster summary not overridden in SKILL.md`).toContain(`| \`${tag}\` | ${summary} |`);
-        }
       });
 
       it('resolves the {js|angular|react|vue} package placeholder everywhere in the tree', () => {
