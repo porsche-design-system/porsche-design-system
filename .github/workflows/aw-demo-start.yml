@@ -1,0 +1,38 @@
+# AW Demo (1/3): normal workflow → agentic workflow.
+# Takes a message input and dispatches the agentic workflow (aw-demo-agent.lock.yml) with it.
+# Chain: aw-demo-start.yml → aw-demo-agent.md (agentic) → aw-demo-output.yml
+name: 'AW Demo 1 - Start'
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Message to pass into the agentic workflow'
+        required: true
+        type: string
+        default: 'Hello from a normal GitHub workflow'
+  # TEMP: registers this workflow so it can be dispatched from a non-default branch.
+  # The push-triggered run is a no-op (see job `if`). Remove once merged to main.
+  push:
+    branches: [housekeeping/aw-demo]
+
+permissions:
+  actions: write
+
+jobs:
+  dispatch-agentic-workflow:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Dispatch agentic workflow with input'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MESSAGE: ${{ inputs.message }}
+        run: |
+          echo "Dispatching agentic workflow with message: $MESSAGE"
+          gh workflow run aw-demo-agent.lock.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref "$GITHUB_REF_NAME" \
+            -f message="$MESSAGE"
+          echo "### AW Demo 1 - Start" >> "$GITHUB_STEP_SUMMARY"
+          echo "Dispatched \`aw-demo-agent.lock.yml\` with message: \`$MESSAGE\`" >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,48 @@
+# AW Demo (3/3): agentic workflow → normal workflow.
+# Dispatched by the agentic workflow (aw-demo-agent.md) via its dispatch-workflow safe output.
+# Chain: aw-demo-start.yml → aw-demo-agent.md (agentic) → aw-demo-output.yml
+name: 'AW Demo 3 - Output'
+
+on:
+  workflow_dispatch:
+    inputs:
+      original_message:
+        description: 'The original message the chain started with'
+        required: true
+        type: string
+      processed_message:
+        description: 'The message after processing by the agentic workflow'
+        required: true
+        type: string
+      word_count:
+        description: 'Word count determined by the agentic workflow'
+        required: true
+        type: string
+  # TEMP: registers this workflow so it can be dispatched from a non-default branch.
+  # The push-triggered run is a no-op (see job `if`). Remove once merged to main.
+  push:
+    branches: [housekeeping/aw-demo]
+
+permissions: {}
+
+jobs:
+  show-result:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Show result from agentic workflow'
+        env:
+          ORIGINAL: ${{ inputs.original_message }}
+          PROCESSED: ${{ inputs.processed_message }}
+          WORD_COUNT: ${{ inputs.word_count }}
+        run: |
+          {
+            echo "### AW Demo 3 - Output"
+            echo ""
+            echo "| Field | Value |"
+            echo "| --- | --- |"
+            echo "| Original message | $ORIGINAL |"
+            echo "| Processed message | $PROCESSED |"
+            echo "| Word count | $WORD_COUNT |"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "Received output from agentic workflow: $PROCESSED ($WORD_COUNT words)"
