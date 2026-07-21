@@ -9,7 +9,15 @@ import {
   hoverMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { colorContrastMedium, colorPrimary, leadingNormal, radiusLg, radiusXl, ref } from '@porsche-design-system/stylesheets';
+import {
+  colorContrastMedium,
+  colorFrostedStrong,
+  colorPrimary,
+  leadingNormal,
+  radiusLg,
+  radiusXl,
+  ref,
+} from '@porsche-design-system/stylesheets';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingVertical } from '../../../styles/form-styles';
 import { getCss } from '../../../utils';
@@ -76,7 +84,7 @@ export const getComponentCss = (
         padding: padding,
         border: `1px solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
         borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
-        background: formStateBackgroundColor,
+        background: isSelected ? ref(colorFrostedStrong) : formStateBackgroundColor,
         color: ref(colorPrimary),
         ...textSmallStyle,
         ...(isDisabled
@@ -91,9 +99,9 @@ export const getComponentCss = (
               cursor: 'pointer',
               ...(!isSelected &&
                 hoverMediaQuery({
-                  transition: getTransition('border-color'),
+                  transition: getTransition('background-color'),
                   '&:hover': {
-                    borderColor: formStateBorderHoverColor,
+                    backgroundColor: ref(colorFrostedStrong),
                   },
                 })),
             }),
