@@ -15,6 +15,8 @@ on:
   # The push-triggered run is a no-op (see `if` below). Remove once merged to main.
   push:
     branches: [housekeeping/aw-demo]
+  # Allow dispatches from aw-demo-start.yml, whose GITHUB_TOKEN acts as github-actions[bot].
+  bots: ["github-actions[bot]"]
 
 if: github.event_name == 'workflow_dispatch'
 
