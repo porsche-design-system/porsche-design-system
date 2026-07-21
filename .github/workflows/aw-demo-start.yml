@@ -1,8 +1,7 @@
-# AW Demo (1/3): normal workflow → agentic workflow → normal workflow (relay).
-# Dispatches the agentic workflow (aw-demo-agent.lock.yml) with a message, waits for
-# it to finish, downloads its 'aw-demo-result' artifact, and deterministically
-# dispatches aw-demo-output.yml with the result. The relay lives here because
-# gh-aw agent jobs are strictly read-only and cannot dispatch workflows themselves.
+# AW Demo (1/3): normal workflow → agentic workflow.
+# Takes a message input and dispatches the agentic workflow (aw-demo-agent.lock.yml)
+# with it. The rest of the chain is event-driven: aw-demo-output.yml triggers itself
+# via workflow_run when the agent workflow completes.
 # Chain: aw-demo-start.yml → aw-demo-agent.md (agentic) → aw-demo-output.yml
 name: 'AW Demo 1 - Start'
 
@@ -23,68 +22,19 @@ permissions:
   actions: write
 
 jobs:
-  run-agentic-chain:
+  dispatch-agentic-workflow:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      GH_TOKEN: ${{ github.token }}
     steps:
       - name: 'Dispatch agentic workflow with input'
         env:
+          GH_TOKEN: ${{ github.token }}
           MESSAGE: ${{ inputs.message }}
         run: |
-          echo "DISPATCHED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
           echo "Dispatching agentic workflow with message: $MESSAGE"
           gh workflow run aw-demo-agent.lock.yml \
             --repo "$GITHUB_REPOSITORY" \
             --ref "$GITHUB_REF_NAME" \
             -f message="$MESSAGE"
-
-      - name: 'Wait for agentic workflow to complete'
-        run: |
-          RUN_ID=""
-          for _ in $(seq 1 12); do
-            RUN_ID=$(gh run list \
-              --repo "$GITHUB_REPOSITORY" \
-              --workflow aw-demo-agent.lock.yml \
-              --branch "$GITHUB_REF_NAME" \
-              --event workflow_dispatch \
-              --created ">=$DISPATCHED_AT" \
-              --limit 1 \
-              --json databaseId \
-              --jq '.[0].databaseId // empty')
-            [ -n "$RUN_ID" ] && break
-            sleep 5
-          done
-          if [ -z "$RUN_ID" ]; then
-            echo "::error::Agentic workflow run did not appear within 60s"
-            exit 1
-          fi
-          echo "AGENT_RUN_ID=$RUN_ID" >> "$GITHUB_ENV"
-          echo "Waiting for agent run $RUN_ID ..."
-          gh run watch "$RUN_ID" --repo "$GITHUB_REPOSITORY" --interval 10 --exit-status
-
-      - name: 'Fetch agent result and dispatch output workflow'
-        run: |
-          gh run download "$AGENT_RUN_ID" \
-            --repo "$GITHUB_REPOSITORY" \
-            --name aw-demo-result \
-            --dir "$RUNNER_TEMP/aw-demo"
-          RESULT_FILE="$RUNNER_TEMP/aw-demo/aw-demo-result.json"
-          echo "Agent result:"
-          cat "$RESULT_FILE"
-          ORIGINAL=$(jq -r '.original_message' "$RESULT_FILE")
-          PROCESSED=$(jq -r '.processed_message' "$RESULT_FILE")
-          WORD_COUNT=$(jq -r '.word_count' "$RESULT_FILE")
-          gh workflow run aw-demo-output.yml \
-            --repo "$GITHUB_REPOSITORY" \
-            --ref "$GITHUB_REF_NAME" \
-            -f original_message="$ORIGINAL" \
-            -f processed_message="$PROCESSED" \
-            -f word_count="$WORD_COUNT"
-          {
-            echo "### AW Demo 1 - Start"
-            echo "- Agent run: $AGENT_RUN_ID"
-            echo "- Dispatched \`aw-demo-output.yml\` with: \`$PROCESSED\` ($WORD_COUNT words)"
-          } >> "$GITHUB_STEP_SUMMARY"
+          echo "### AW Demo 1 - Start" >> "$GITHUB_STEP_SUMMARY"
+          echo "Dispatched \`aw-demo-agent.lock.yml\` with message: \`$MESSAGE\`" >> "$GITHUB_STEP_SUMMARY"

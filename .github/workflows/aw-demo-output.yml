@@ -1,10 +1,17 @@
-# AW Demo (3/3): receives the agentic workflow's result.
-# Dispatched by aw-demo-start.yml after it downloaded the agent's result artifact
-# (gh-aw agent jobs are read-only and cannot dispatch workflows themselves).
+# AW Demo (3/3): agentic workflow → normal workflow, event-driven.
+# Triggers automatically when the agentic workflow (AW Demo 2 - Agent) completes,
+# downloads its 'aw-demo-result' artifact, and shows the result.
+# NOTE: GitHub only fires workflow_run for listener files on the DEFAULT branch —
+# this hop stays dormant on feature branches until merged to main. Use the
+# workflow_dispatch trigger to test this workflow in isolation on a branch.
 # Chain: aw-demo-start.yml → aw-demo-agent.md (agentic) → aw-demo-output.yml
 name: 'AW Demo 3 - Output'
 
 on:
+  workflow_run:
+    workflows: ['AW Demo 2 - Agent']
+    types: [completed]
+  # Manual fallback to test this workflow in isolation (e.g. from a feature branch).
   workflow_dispatch:
     inputs:
       original_message:
@@ -24,18 +31,49 @@ on:
   push:
     branches: [housekeeping/aw-demo]
 
-permissions: {}
+permissions:
+  actions: read
 
 jobs:
   show-result:
-    if: github.event_name == 'workflow_dispatch'
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     steps:
-      - name: 'Show result from agentic workflow'
+      - name: 'Fetch agent result artifact'
+        if: github.event_name == 'workflow_run'
         env:
-          ORIGINAL: ${{ inputs.original_message }}
-          PROCESSED: ${{ inputs.processed_message }}
-          WORD_COUNT: ${{ inputs.word_count }}
+          GH_TOKEN: ${{ github.token }}
+          AGENT_RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          gh run download "$AGENT_RUN_ID" \
+            --repo "$GITHUB_REPOSITORY" \
+            --name aw-demo-result \
+            --dir "$RUNNER_TEMP/aw-demo"
+          RESULT_FILE="$RUNNER_TEMP/aw-demo/aw-demo-result.json"
+          echo "Agent result from run $AGENT_RUN_ID:"
+          cat "$RESULT_FILE"
+          {
+            echo "ORIGINAL=$(jq -r '.original_message' "$RESULT_FILE")"
+            echo "PROCESSED=$(jq -r '.processed_message' "$RESULT_FILE")"
+            echo "WORD_COUNT=$(jq -r '.word_count' "$RESULT_FILE")"
+          } >> "$GITHUB_ENV"
+
+      - name: 'Use manually provided inputs'
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          ORIGINAL_INPUT: ${{ inputs.original_message }}
+          PROCESSED_INPUT: ${{ inputs.processed_message }}
+          WORD_COUNT_INPUT: ${{ inputs.word_count }}
+        run: |
+          {
+            echo "ORIGINAL=$ORIGINAL_INPUT"
+            echo "PROCESSED=$PROCESSED_INPUT"
+            echo "WORD_COUNT=$WORD_COUNT_INPUT"
+          } >> "$GITHUB_ENV"
+
+      - name: 'Show result from agentic workflow'
         run: |
           {
             echo "### AW Demo 3 - Output"

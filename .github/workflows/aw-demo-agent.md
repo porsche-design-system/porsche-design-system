@@ -2,10 +2,10 @@
 # AW Demo (2/3): the agentic workflow in the middle of the chain.
 # Receives a message from aw-demo-start.yml via workflow_dispatch inputs. The agent
 # writes its result to /tmp/gh-aw/aw-demo-result.json; a deterministic post-step
-# uploads it as the 'aw-demo-result' artifact. aw-demo-start.yml waits for this
-# run, downloads the artifact, and dispatches aw-demo-output.yml with the result.
+# uploads it as the 'aw-demo-result' artifact. aw-demo-output.yml triggers itself
+# on completion of this workflow (workflow_run) and downloads that artifact.
 # (The agent job is strictly read-only in gh-aw — it cannot dispatch workflows
-# itself outside of safe-outputs, hence the relay through aw-demo-start.yml.)
+# itself outside of safe-outputs, hence the event-driven hand-off.)
 # Chain: aw-demo-start.yml → aw-demo-agent.md (agentic) → aw-demo-output.yml
 # Compile with: gh aw compile (generates aw-demo-agent.lock.yml)
 on:
