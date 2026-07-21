@@ -1,7 +1,11 @@
 ---
 # AW Demo (2/3): the agentic workflow in the middle of the chain.
-# Receives a message from aw-demo-start.yml via workflow_dispatch inputs and passes
-# its result to aw-demo-output.yml via the dispatch-workflow safe output.
+# Receives a message from aw-demo-start.yml via workflow_dispatch inputs. The agent
+# writes its result to /tmp/gh-aw/aw-demo-result.json; a deterministic post-step
+# uploads it as the 'aw-demo-result' artifact. aw-demo-start.yml waits for this
+# run, downloads the artifact, and dispatches aw-demo-output.yml with the result.
+# (The agent job is strictly read-only in gh-aw — it cannot dispatch workflows
+# itself outside of safe-outputs, hence the relay through aw-demo-start.yml.)
 # Chain: aw-demo-start.yml → aw-demo-agent.md (agentic) → aw-demo-output.yml
 # Compile with: gh aw compile (generates aw-demo-agent.lock.yml)
 on:
@@ -31,10 +35,21 @@ permissions:
 
 timeout-minutes: 10
 
+# Configuring only upload-artifact opts out of the otherwise auto-enabled
+# create-issue safe output; the result leaves this workflow via the post-step
+# artifact below, so the agent needs no GitHub write capability at all.
 safe-outputs:
-  dispatch-workflow:
-    workflows: [aw-demo-output]
-    max: 1
+  upload-artifact:
+    max-uploads: 1
+
+post-steps:
+  - name: 'Upload agent result as artifact'
+    uses: actions/upload-artifact@v7
+    with:
+      name: aw-demo-result
+      path: /tmp/gh-aw/aw-demo-result.json
+      if-no-files-found: error
+      retention-days: 1
 ---
 
 # AW Demo 2 - Agent
@@ -50,9 +65,11 @@ An upstream normal workflow dispatched you with this message:
 
 1. Convert the message to UPPERCASE. This is the `processed_message`.
 2. Count the number of words in the original message. This is the `word_count`.
-3. Dispatch the `aw-demo-output` workflow exactly once with these inputs:
+3. Write the result to the file `/tmp/gh-aw/aw-demo-result.json` as a single JSON
+   object with exactly these string fields:
    - `original_message`: the message exactly as you received it
    - `processed_message`: the uppercased message
    - `word_count`: the word count as a string
 
+A deterministic step after you finish will upload this file and pass it on.
 Do not do anything else. Do not create issues, comments, or pull requests.

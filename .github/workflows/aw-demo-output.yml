@@ -1,5 +1,6 @@
-# AW Demo (3/3): agentic workflow → normal workflow.
-# Dispatched by the agentic workflow (aw-demo-agent.md) via its dispatch-workflow safe output.
+# AW Demo (3/3): receives the agentic workflow's result.
+# Dispatched by aw-demo-start.yml after it downloaded the agent's result artifact
+# (gh-aw agent jobs are read-only and cannot dispatch workflows themselves).
 # Chain: aw-demo-start.yml → aw-demo-agent.md (agentic) → aw-demo-output.yml
 name: 'AW Demo 3 - Output'
 
