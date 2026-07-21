@@ -1,10 +1,10 @@
 import {
   blurFrosted,
   colorCanvas,
-  colorContrastHigh,
   colorFrosted,
   colorFrostedStrong,
   colorPrimary,
+  colorSurface,
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
@@ -22,7 +22,7 @@ import {
 } from '../../../styles';
 import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
 
-export type FCDismissButtonVariant = 'primary' | 'secondary';
+export type FCDismissButtonVariant = 'canvas' | 'surface' | 'frosted';
 
 // Inlined `close` icon (mirrors packages/assets/projects/icons/src/close.svg) rendered as a CSS mask, so the dismiss
 // button needs neither a nested `p-button` nor a `p-icon` (which would fetch the SVG from the CDN asynchronously).
@@ -36,17 +36,19 @@ type Colors = {
   backgroundColorHover: string;
 };
 
-// NOTE: Values copied (and reduced to the fixed `compact` + `hideLabel` case the dismiss button always uses) from
-// `getVariantColors` in `packages/components/src/styles/link-button-styles.ts` to keep the visual identical to the
-// previously nested `p-button`. If the shared button styling changes, mirror it here (or extract a shared helper).
 const getVariantColors = (variant: FCDismissButtonVariant): Colors => {
   const colors: { [v in FCDismissButtonVariant]: Colors } = {
-    primary: {
-      textColor: ref(colorCanvas),
-      backgroundColor: ref(colorPrimary),
-      backgroundColorHover: ref(colorContrastHigh),
+    canvas: {
+      textColor: ref(colorPrimary),
+      backgroundColor: ref(colorCanvas),
+      backgroundColorHover: ref(colorSurface),
     },
-    secondary: {
+    surface: {
+      textColor: ref(colorPrimary),
+      backgroundColor: ref(colorSurface),
+      backgroundColorHover: ref(colorCanvas),
+    },
+    frosted: {
       textColor: ref(colorPrimary),
       backgroundColor: ref(colorFrostedStrong),
       backgroundColorHover: ref(colorFrosted),
@@ -83,7 +85,7 @@ export const getFCDismissButtonStyles = (variant: FCDismissButtonVariant): JssSt
     // opaque `primary` background it is invisible AND — because the dialog consumer additionally applies
     // `filter: invert(1)` on the same element (see `getDialogDismissButtonJssStyle`) — the blurred backdrop bleeds past
     // the circular edge and the invert amplifies it into a visible glow/halo. So it is applied for `secondary` only.
-    ...(variant === 'secondary' && {
+    ...(variant === 'frosted' && {
       WebkitBackdropFilter: ref(blurFrosted),
       backdropFilter: ref(blurFrosted),
     }),

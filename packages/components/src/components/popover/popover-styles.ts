@@ -130,6 +130,12 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
         width: ref(leadingNormal),
         height: ref(leadingNormal),
+        // The :host uses `display: contents`, so this fixed-size trigger button becomes the flex/grid item in the
+        // consumer's layout (e.g. p-accordion's `summary-after` slot, which is `display: flex`). Its visible box is drawn
+        // purely by the `::before`/`::after` pseudo-elements (icon `mask`), so it has no intrinsic content width and its
+        // automatic minimum size collapses towards 0 — a competing sibling (e.g. long summary text) would otherwise
+        // squeeze the info icon flat. `flex: none` keeps the icon at its intended size instead of shrinking.
+        flex: 'none',
         cursor: 'pointer',
         ...hoverMediaQuery({
           '&:hover::before': {
