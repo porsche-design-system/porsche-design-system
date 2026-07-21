@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { selectA11yExamples } from '@/app/(main)/components/select/accessibility/stories';
 
 export const metadata = {
   title: 'Select: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Select <ComponentStatus tagName="p-select"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -53,6 +55,19 @@ export const metadata = {
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
 
+### Common do's and don'ts
+
+- **Do** provide a clear, persistent label for what the selection controls.
+- **Do** use meaningful option text so choices are understandable out of context.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** use a prompt option or adjacent text as a substitute for a field label.
+- **Don't** use very short or ambiguous option labels when context is important.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={selectA11yExamples} />
 ## Tests
 
 ### Automated

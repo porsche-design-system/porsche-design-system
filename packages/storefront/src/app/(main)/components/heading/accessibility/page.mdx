@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { headingA11yExamples } from '@/app/(main)/components/heading/accessibility/stories';
 
 export const metadata = {
   title: 'Heading: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Heading <ComponentStatus tagName="p-heading"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -28,9 +30,19 @@ property. Keep in mind that the visual appearance must not always be identical w
   out.
 - Use heading levels like the index of a book: hierarchical.
 - Do not choose a heading by its size, but by its level in the context of the content.
-- Heading hierarch should not increase by more than one level at a time.
+- Heading hierarchy should not increase by more than one level at a time.
 - Do not skip a heading level from the top down.
 
+### Common do's and don'ts
+
+- **Do** use the `tag` prop to reflect the semantic hierarchy, not just visual size.
+- **Do** keep one unique `h1` per page.
+- **Don't** choose a heading level based on appearance alone.
+- **Don't** skip heading levels when nesting sections.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={headingA11yExamples} />
 ## Tests
 
 ### Automated

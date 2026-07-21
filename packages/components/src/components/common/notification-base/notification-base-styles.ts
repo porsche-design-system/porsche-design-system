@@ -76,7 +76,7 @@ export const getFunctionalComponentNotificationBaseStyles = (
     ...(hasDismissButton && {
       dismiss: {
         // native dismiss button visual (secondary variant); grid positioning is applied on top
-        ...getFCDismissButtonStyles('secondary'),
+        ...getFCDismissButtonStyles('frosted'),
         gridArea: `1/4/-1`,
         alignSelf: 'flex-start',
         marginBlock: `calc(-6 * ${ref(spacingStatic2Xs)})`,

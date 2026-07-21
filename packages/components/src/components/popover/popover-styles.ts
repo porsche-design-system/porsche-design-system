@@ -2,7 +2,7 @@ import {
   blurFrosted,
   colorCanvas,
   colorFrosted,
-  colorFrostedSoft,
+  colorFrostedStrong,
   colorPrimary,
   fontPorscheNext,
   fontWeightNormal,
@@ -25,7 +25,7 @@ import {
 } from '../../styles';
 import { getCss, overlayTransitionSupportsQuery } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { POPOVER_SAFE_ZONE } from './popover-utils';
+import { POPOVER_ARROW_BASE, POPOVER_ARROW_THICKNESS, POPOVER_SAFE_ZONE } from './popover-utils';
 
 /**
  * @css-variable {"name": "--p-popover-w", "description": "Width of the popover.", "defaultValue": "max-content"}
@@ -102,6 +102,9 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
         // flow. Enabled by anchoring Floating UI to the assigned trigger element (see `triggerElement` in popover.tsx)
         // instead of the `<slot>` box, so the slot no longer needs a layout box of its own.
         display: 'contents',
+        // Explicit baseline (matches the `margin` initial value) that the trigger button inherits via `margin: inherit`.
+        // A consumer margin on the host (`p-popover { margin: … }`) overrides this and thus flows through to the button.
+        margin: '0',
         ...addImportantToEachRule(hostHiddenStyles),
       },
       'slot:not([name]), p': {
@@ -119,30 +122,49 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
       },
       button: {
         all: 'unset',
+        // The :host uses `display: contents` and thus has no box of its own, so a consumer-defined margin on the host
+        // (e.g. `p-popover { margin: … }`) would be dropped. `inherit` forwards that margin onto the actual trigger button.
+        margin: 'inherit',
         display: 'inline-grid',
         verticalAlign: 'top',
         font: `${ref(typescaleSm)} ${ref(fontPorscheNext)}`, // needed for correct width/height definition based on ex-unit
         width: ref(leadingNormal),
         height: ref(leadingNormal),
-        borderRadius: ref(radiusFull),
+        // The :host uses `display: contents`, so this fixed-size trigger button becomes the flex/grid item in the
+        // consumer's layout (e.g. p-accordion's `summary-after` slot, which is `display: flex`). Its visible box is drawn
+        // purely by the `::before`/`::after` pseudo-elements (icon `mask`), so it has no intrinsic content width and its
+        // automatic minimum size collapses towards 0 — a competing sibling (e.g. long summary text) would otherwise
+        // squeeze the info icon flat. `flex: none` keeps the icon at its intended size instead of shrinking.
+        flex: 'none',
         cursor: 'pointer',
-        background: ref(colorFrosted),
-        transition: getTransition('background-color'),
-        WebkitBackdropFilter: ref(blurFrosted),
-        backdropFilter: ref(blurFrosted),
         ...hoverMediaQuery({
-          '&:hover': {
-            background: ref(colorFrostedSoft),
+          '&:hover::before': {
+            background: ref(colorFrostedStrong),
+            WebkitBackdropFilter: ref(blurFrosted),
+            backdropFilter: ref(blurFrosted),
           },
         }),
-        '&:focus-visible': getFocusBaseStyles(),
+        '&:focus-visible::before': getFocusBaseStyles(),
+        '&::before': {
+          gridArea: '1/1',
+          content: '""',
+          margin: '-2px',
+          transition: getTransition('background-color'),
+          borderRadius: ref(radiusFull),
+          ...(isOpen && {
+            background: ref(colorFrosted),
+            WebkitBackdropFilter: ref(blurFrosted),
+            backdropFilter: ref(blurFrosted),
+          }),
+        },
         '&::after': {
+          gridArea: '1/1',
           content: '""',
           WebkitMask: `${iconInfo} center/contain no-repeat`, // necessary for Sogou browser support :-)
           mask: `${iconInfo} center/contain no-repeat`,
           background: ref(colorPrimary),
           ...forcedColorsMediaQuery({
-            background: 'CanvasText',
+            background: 'ButtonText',
           }),
         },
       },
@@ -203,8 +225,9 @@ export const getComponentCss = (isOpen: boolean, isCompact: boolean, skipEntryTr
     },
     arrow: {
       position: 'absolute',
-      width: '24px',
-      height: '12px',
+      // Resting orientation (bottom placement): base spans the panel edge, thickness protrudes towards the trigger.
+      width: `${POPOVER_ARROW_BASE}px`,
+      height: `${POPOVER_ARROW_THICKNESS}px`,
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
       background: 'inherit',
       ...forcedColorsMediaQuery({

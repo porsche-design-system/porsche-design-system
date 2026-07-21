@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputDateA11yExamples } from '@/app/(main)/components/input-date/accessibility/stories';
 
 export const metadata = {
   title: 'Input Date: Accessibility - Porsche Design System',
@@ -8,7 +10,9 @@ export const metadata = {
 
 # Input Date <ComponentStatus tagName="p-input-date"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+/>
 
 ## Accessibility support
 
@@ -38,6 +42,17 @@ export const metadata = {
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
 
+### Common do's and don'ts
+
+- **Do** keep a persistent label and use helper/description text when additional context is required.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** rely on placeholder text as the only label.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={inputDateA11yExamples} />
 ## Limitations
 
 Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to

@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { multiSelectA11yExamples } from '@/app/(main)/components/multi-select/accessibility/stories';
 
 export const metadata = {
   title: 'Multi Select: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Multi Select <ComponentStatus tagName="p-multi-select"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -54,6 +56,17 @@ export const metadata = {
 In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
 reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
 
+### Common do's and don'ts
+
+- **Do** provide a clear, persistent label for what the selection controls.
+- **Do** use meaningful option text so choices are understandable out of context.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Don't** use a prompt option or adjacent text as a substitute for a field label.
+- **Don't** use `hide-label` without an accessible name.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={multiSelectA11yExamples} />
 ## Tests
 
 ### Automated

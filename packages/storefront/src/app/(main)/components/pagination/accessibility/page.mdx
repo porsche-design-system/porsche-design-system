@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { paginationA11yExamples } from '@/app/(main)/components/pagination/accessibility/stories';
 
 export const metadata = {
   title: 'Pagination: Accessibility - Porsche Design System',
@@ -8,7 +10,7 @@ export const metadata = {
 
 # Pagination <ComponentStatus tagName="p-pagination"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
 ## Accessibility support
 
@@ -33,6 +35,17 @@ export const metadata = {
 | ------------ | --------------------------------------------------------------------------- |
 | `aria-label` | Defines a string value that labels the navigation and interactive elements. |
 
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** localize `intl` strings so navigation labels match the page language.
+- **Do** keep prev/next and page button labels specific enough to identify the pagination control.
+- **Don't** rely on default English `intl` strings on localized pages.
+
+## Integration examples
+
+<A11yIntegrationExamples examples={paginationA11yExamples} />
 ## Tests
 
 ### Automated
