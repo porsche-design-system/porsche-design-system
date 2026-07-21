@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@algolia/cache-in-memory": "^4.27.0",
-    "@porsche-design-system/components-react": "4.5.0-rc.0",
+    "@porsche-design-system/components-react": "4.5.0-rc.1",
     "algoliasearch": "^5.55.1",
     "next": "^16.2.9",
     "react": "^19.2.7",

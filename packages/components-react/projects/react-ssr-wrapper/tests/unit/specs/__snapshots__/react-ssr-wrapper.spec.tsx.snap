@@ -6646,8 +6646,8 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
@@ -6657,7 +6657,6 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  filter: invert(1) brightness(1.02);
 }
 .dismiss:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -6698,7 +6697,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-high);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -9913,8 +9912,8 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
@@ -9924,7 +9923,6 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  filter: invert(1) brightness(1.02);
 }
 .dismiss:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -9966,7 +9964,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-high);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
@@ -11444,6 +11442,7 @@ button {
   font: var(--p-typescale-sm) var(--p-font-porsche-next);
   width: var(--p-leading-normal);
   height: var(--p-leading-normal);
+  flex: none;
   cursor: pointer;
 }
 button:focus-visible::before {
@@ -12713,8 +12712,8 @@ dialog::backdrop {
   padding: 6px;
   border-radius: var(--p-radius-full);
   font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
-  background-color: var(--p-color-primary);
-  color: var(--p-color-canvas);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
   cursor: pointer;
   transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
@@ -12724,7 +12723,6 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  filter: invert(1) brightness(1.02);
 }
 .dismiss:focus-visible {
   outline: 2px solid var(--p-color-focus);
@@ -12765,7 +12763,7 @@ dialog::backdrop {
 
 @media(hover:hover) {
   .dismiss:hover {
-    background-color: var(--p-color-contrast-high);
+    background-color: var(--p-color-surface);
   }
 @media(forced-colors:active) {
     .dismiss:hover {
