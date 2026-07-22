@@ -11,13 +11,13 @@ import type { Framework } from './support/skillTree';
  */
 
 /**
- * Per-package skill identifier — mirrors the wrapper package name
- * (`@porsche-design-system/components-<framework>` → `porsche-design-system-components-<framework>`),
- * so a project depending on more than one wrapper gets a distinct skill per package instead of all
- * four fighting over one `.claude/skills/…` entry. The `pds-skill` bin derives the same name from
- * the selected package name at link time. Never varies by version.
+ * Canonical name of the wrapper's knowledge skill — `pds-knowledge-<framework>` — so a project
+ * depending on more than one wrapper gets a distinct skill directory per package instead of all
+ * four fighting over one `.claude/skills/…` entry. Every wrapper ships this under
+ * `skills/pds-knowledge-<framework>/SKILL.md`; the `pds-skill` bin discovers it (and any other
+ * skill) from the installed package's `skills/` directory at link time. Never varies by version.
  */
-export const skillName = (framework: Framework): string => `porsche-design-system-components-${framework}`;
+export const skillName = (framework: Framework): string => `pds-knowledge-${framework}`;
 
 /**
  * Auto-activation description — the only matching surface Claude Code uses to decide
@@ -60,7 +60,7 @@ const renderIntro = (framework: Framework): string => {
     '',
     'This skill ships inside the installed wrapper package alongside its inspectable package artifacts: the typings, ' +
       `\`component-meta\` (\`${rawMetaReference(framework)}\`), ` +
-      `the SCSS partials (\`${rawScssReference(framework)}\`), the design tokens (\`../tokens\`), the Tailwind ` +
+      `the SCSS partials (\`${rawScssReference(framework)}\`), the design tokens (\`../../tokens\`), the Tailwind ` +
       `theme (\`${rawTailwindcssReference()}\`) and the shipped global CSS. The underlying Stencil component ` +
       `implementation is not included in the npm package; it is loaded from the Porsche Design System CDN at runtime.${peerNote}`,
     '',
@@ -91,7 +91,7 @@ const renderCoverageSection = (): string =>
     'For runnable patterns and templates, consult the ' +
       '[Porsche Design System examples repository](https://github.com/porsche-design-system/examples), selecting a ' +
       'release tag or commit that matches the installed package instead of assuming its default branch is compatible. ' +
-      'For release-specific changes, read `../CHANGELOG.md`.',
+      'For release-specific changes, read `../../CHANGELOG.md`.',
     '',
     'For exact API facts, inspect the installed typings and metadata first. When readable implementation details are ' +
       `necessary, use the [exact-version component source](${componentSourceUrl}) under the repository's ` +

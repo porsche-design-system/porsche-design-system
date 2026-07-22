@@ -15,31 +15,40 @@ const PACKAGE_NAMES = {
   vue: '@porsche-design-system/components-vue',
 } as const;
 const DEFAULT_PACKAGE_NAME = PACKAGE_NAMES.js;
-const DEFAULT_SKILL_NAME = 'porsche-design-system-components-js';
+const DEFAULT_SKILL_NAME = 'pds-knowledge-js';
 const canTestPosixPermissions = process.platform !== 'win32' && process.getuid?.() !== 0;
 
 const fixtures: string[] = [];
 
 type Fixture = {
   projectDir: string;
+  skillsDir: string | null;
   skillDir: string | null;
-  linkName: string;
+  skillName: string;
   linkPath: string;
   run: (options?: { args?: string[]; cwd?: string; pnp?: boolean }) => string;
 };
 
+/** Derive the skill directory name from a PDS package name: the framework suffix prefixed with `pds-knowledge-`. */
+const skillNameFromPackage = (packageName: string): string => {
+  const framework = packageName.split('-').pop() as string;
+  return `pds-knowledge-${framework}`;
+};
+
 const createFixture = ({
   withPackage = true,
-  withSkill = true,
+  withSkills = true,
   packageName = DEFAULT_PACKAGE_NAME,
   packageJsonContent,
-  skillEntryType = 'file',
+  skillMdEntryType = 'file',
+  skillMdContent,
 }: {
   withPackage?: boolean;
-  withSkill?: boolean;
+  withSkills?: boolean;
   packageName?: string;
   packageJsonContent?: string;
-  skillEntryType?: 'file' | 'directory';
+  skillMdEntryType?: 'file' | 'directory';
+  skillMdContent?: string;
 } = {}): Fixture => {
   const root = fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-'));
   fixtures.push(root);
@@ -52,7 +61,10 @@ const createFixture = ({
   const projectDir = path.join(root, 'project');
   fs.mkdirSync(projectDir, { recursive: true });
 
+  const skillName = skillNameFromPackage(packageName);
+  let skillsDir: string | null = null;
   let skillDir: string | null = null;
+
   if (withPackage) {
     const packageDir = path.join(projectDir, 'node_modules', ...packageName.split('/'));
     fs.mkdirSync(packageDir, { recursive: true });
@@ -67,16 +79,17 @@ const createFixture = ({
         })
     );
 
-    if (withSkill) {
-      skillDir = path.join(packageDir, 'skill');
+    if (withSkills) {
+      skillsDir = path.join(packageDir, 'skills');
+      skillDir = path.join(skillsDir, skillName);
       fs.mkdirSync(skillDir, { recursive: true });
       const skillMdPath = path.join(skillDir, 'SKILL.md');
-      if (skillEntryType === 'directory') {
+      if (skillMdEntryType === 'directory') {
         fs.mkdirSync(skillMdPath);
       } else {
         fs.writeFileSync(
           skillMdPath,
-          `---\nname: ${packageName.slice(1).replace('/', '-')}\ndescription: test skill\n---\n\n# marker\n`
+          skillMdContent ?? `---\nname: ${skillName}\ndescription: test skill\n---\n\n# marker\n`
         );
       }
     }
@@ -84,9 +97,10 @@ const createFixture = ({
 
   return {
     projectDir,
+    skillsDir,
     skillDir,
-    linkName: packageName.slice(1).replace('/', '-'),
-    linkPath: path.join(projectDir, DEST, packageName.slice(1).replace('/', '-')),
+    skillName,
+    linkPath: path.join(projectDir, DEST, skillName),
     run: ({
       args = ['--package', packageName, '--location', DEST],
       cwd = projectDir,
@@ -109,6 +123,48 @@ const createFixture = ({
   };
 };
 
+/** Create a fixture with two skills under the same package. */
+const createFixtureWithTwoSkills = (): {
+  projectDir: string;
+  packageDir: string;
+  skillsDir: string;
+  skillNames: [string, string];
+  run: (args?: string[]) => string;
+} => {
+  const root = fs.mkdtempSync(path.join(tmpdir(), 'pds-skill-multi-'));
+  fixtures.push(root);
+
+  const binDir = path.join(root, 'executor', 'bin');
+  fs.mkdirSync(binDir, { recursive: true });
+  const binPath = path.join(binDir, 'pds-skill.js');
+  fs.copyFileSync(realBinPath, binPath);
+
+  const projectDir = path.join(root, 'project');
+  fs.mkdirSync(projectDir, { recursive: true });
+
+  const packageName = DEFAULT_PACKAGE_NAME;
+  const packageDir = path.join(projectDir, 'node_modules', ...packageName.split('/'));
+  fs.mkdirSync(packageDir, { recursive: true });
+  fs.writeFileSync(path.join(packageDir, 'package.json'), JSON.stringify({ name: packageName }));
+
+  const skillsDir = path.join(packageDir, 'skills');
+  const skillNames = ['alpha-skill', 'beta-skill'] as [string, string];
+  for (const name of skillNames) {
+    const skillDir = path.join(skillsDir, name);
+    fs.mkdirSync(skillDir, { recursive: true });
+    fs.writeFileSync(path.join(skillDir, 'SKILL.md'), `---\nname: ${name}\ndescription: test\n---\n\n# ${name}\n`);
+  }
+
+  return {
+    projectDir,
+    packageDir,
+    skillsDir,
+    skillNames,
+    run: (args = ['--package', packageName, '--location', DEST]) =>
+      execFileSync('node', [binPath, ...args], { cwd: projectDir, encoding: 'utf8', stdio: 'pipe' }),
+  };
+};
+
 afterEach(() => {
   for (const root of fixtures.splice(0)) {
     fs.rmSync(root, { recursive: true, force: true });
@@ -128,12 +184,12 @@ describe('pds-skill bin', () => {
 
   it('should select the requested wrapper independently of which package supplied the shared bin', () => {
     const packageName = PACKAGE_NAMES.vue;
-    const skillName = 'porsche-design-system-components-vue';
+    const vueSkillName = 'pds-knowledge-vue';
     const { run, projectDir, skillDir } = createFixture({ packageName });
 
     run();
 
-    const linkPath = path.join(projectDir, DEST, skillName);
+    const linkPath = path.join(projectDir, DEST, vueSkillName);
     expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
     expect(fs.existsSync(path.join(projectDir, DEST, DEFAULT_SKILL_NAME))).toBe(false);
   });
@@ -179,10 +235,10 @@ describe('pds-skill bin', () => {
     expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
   });
 
-  it('should fail when the installed package does not ship a skill', () => {
-    const { run, projectDir } = createFixture({ withSkill: false });
+  it('should fail when the installed package does not ship any skills', () => {
+    const { run, projectDir } = createFixture({ withSkills: false });
 
-    expect(() => run()).toThrow(/does not ship a skill/);
+    expect(() => run()).toThrow(/does not ship any skills/);
     expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
   });
 
@@ -196,20 +252,13 @@ describe('pds-skill bin', () => {
   it('should fail clearly when the package manifest is not an object', () => {
     const { run, projectDir } = createFixture({ packageJsonContent: 'null\n' });
 
-    expect(() => run()).toThrow(
-      /Expected @porsche-design-system\/components-js.*found a package without a name/
-    );
+    expect(() => run()).toThrow(/Expected @porsche-design-system\/components-js.*found a package without a name/);
     expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
   });
 
   it.runIf(canTestPosixPermissions)('should fail clearly when the package manifest is not readable', () => {
     const { run, projectDir } = createFixture();
-    const packageJsonPath = path.join(
-      projectDir,
-      'node_modules',
-      ...DEFAULT_PACKAGE_NAME.split('/'),
-      'package.json'
-    );
+    const packageJsonPath = path.join(projectDir, 'node_modules', ...DEFAULT_PACKAGE_NAME.split('/'), 'package.json');
     fs.chmodSync(packageJsonPath, 0o000);
 
     try {
@@ -221,9 +270,25 @@ describe('pds-skill bin', () => {
   });
 
   it('should fail clearly when SKILL.md is not a file', () => {
-    const { run, projectDir } = createFixture({ skillEntryType: 'directory' });
+    const { run, projectDir } = createFixture({ skillMdEntryType: 'directory' });
 
     expect(() => run()).toThrow(/SKILL\.md is not a file/);
+    expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+  });
+
+  it('should fail when the frontmatter name does not match the skill directory', () => {
+    const { run, projectDir } = createFixture({
+      skillMdContent: '---\nname: different-skill\ndescription: test skill\n---\n',
+    });
+
+    expect(() => run()).toThrow(/has frontmatter name "different-skill" but its directory is "pds-knowledge-js"/);
+    expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
+  });
+
+  it('should fail when SKILL.md has no frontmatter name', () => {
+    const { run, projectDir } = createFixture({ skillMdContent: '# Missing frontmatter\n' });
+
+    expect(() => run()).toThrow(/has frontmatter name "\(none\)" but its directory is "pds-knowledge-js"/);
     expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
   });
 
@@ -243,18 +308,14 @@ describe('pds-skill bin', () => {
   it('should reject unsupported packages', () => {
     const { run } = createFixture();
 
-    expect(() => run({ args: ['--package', 'unrelated-package', '--location', DEST] })).toThrow(
-      /Unsupported package/
-    );
+    expect(() => run({ args: ['--package', 'unrelated-package', '--location', DEST] })).toThrow(/Unsupported package/);
   });
 
   it('should require both package and location options', () => {
     const { run, projectDir } = createFixture();
 
     expect(() => run({ args: [] })).toThrow(/Missing required options: --package and --location/);
-    expect(() => run({ args: ['--package', DEFAULT_PACKAGE_NAME] })).toThrow(
-      /Missing required option: --location/
-    );
+    expect(() => run({ args: ['--package', DEFAULT_PACKAGE_NAME] })).toThrow(/Missing required option: --location/);
     expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
   });
 
@@ -277,16 +338,16 @@ describe('pds-skill bin', () => {
   });
 
   it.runIf(canTestPosixPermissions)('should fail clearly when the destination is not writable', () => {
-    const { run, projectDir, linkName } = createFixture();
+    const { run, projectDir, skillName } = createFixture();
     const lockedDir = path.join(projectDir, 'locked-skills');
     fs.mkdirSync(lockedDir);
     fs.chmodSync(lockedDir, 0o500);
 
     try {
-      expect(() =>
-        run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', lockedDir] })
-      ).toThrow(/Cannot create .*porsche-design-system-components-js: permission denied/);
-      expect(fs.existsSync(path.join(lockedDir, linkName))).toBe(false);
+      expect(() => run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', lockedDir] })).toThrow(
+        new RegExp(`Cannot create .*${skillName}: permission denied`)
+      );
+      expect(fs.existsSync(path.join(lockedDir, skillName))).toBe(false);
     } finally {
       fs.chmodSync(lockedDir, 0o700);
     }
@@ -300,9 +361,9 @@ describe('pds-skill bin', () => {
     fs.chmodSync(lockedDir, 0o500);
 
     try {
-      expect(() =>
-        run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', destination] })
-      ).toThrow(/Cannot create .*skills: permission denied/);
+      expect(() => run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', destination] })).toThrow(
+        /Cannot create .*skills: permission denied/
+      );
       expect(fs.existsSync(destination)).toBe(false);
     } finally {
       fs.chmodSync(lockedDir, 0o700);
@@ -310,9 +371,9 @@ describe('pds-skill bin', () => {
   });
 
   it.runIf(canTestPosixPermissions)('should fail clearly when a stale link cannot be replaced', () => {
-    const { run, projectDir, linkName } = createFixture();
+    const { run, projectDir, skillName } = createFixture();
     const lockedDir = path.join(projectDir, 'locked-skills');
-    const linkPath = path.join(lockedDir, linkName);
+    const linkPath = path.join(lockedDir, skillName);
     const staleTarget = path.join(projectDir, 'stale-skill');
     fs.mkdirSync(lockedDir);
     fs.mkdirSync(staleTarget);
@@ -320,9 +381,9 @@ describe('pds-skill bin', () => {
     fs.chmodSync(lockedDir, 0o500);
 
     try {
-      expect(() =>
-        run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', lockedDir] })
-      ).toThrow(/Cannot replace .*porsche-design-system-components-js: permission denied/);
+      expect(() => run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', lockedDir] })).toThrow(
+        new RegExp(`Cannot replace .*${skillName}: permission denied`)
+      );
       expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(staleTarget));
     } finally {
       fs.chmodSync(lockedDir, 0o700);
@@ -330,30 +391,30 @@ describe('pds-skill bin', () => {
   });
 
   it('should link into a custom destination directory', () => {
-    const { run, projectDir, linkName, skillDir } = createFixture();
+    const { run, projectDir, skillName, skillDir } = createFixture();
 
     run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', '.agents'] });
 
-    const linkPath = path.join(projectDir, '.agents', linkName);
+    const linkPath = path.join(projectDir, '.agents', skillName);
     expect(fs.realpathSync(linkPath)).toBe(fs.realpathSync(skillDir as string));
     expect(fs.existsSync(path.join(projectDir, '.claude'))).toBe(false);
   });
 
   it('should honor an absolute destination directory', () => {
-    const { run, projectDir, linkName, skillDir } = createFixture();
+    const { run, projectDir, skillName, skillDir } = createFixture();
     const absoluteDest = path.join(projectDir, 'absolute-skills');
 
     run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', absoluteDest] });
 
-    expect(fs.realpathSync(path.join(absoluteDest, linkName))).toBe(fs.realpathSync(skillDir as string));
+    expect(fs.realpathSync(path.join(absoluteDest, skillName))).toBe(fs.realpathSync(skillDir as string));
   });
 
   it('should support short package and location options', () => {
-    const { run, projectDir, linkName, skillDir } = createFixture();
+    const { run, projectDir, skillName, skillDir } = createFixture();
 
     run({ args: ['-p', DEFAULT_PACKAGE_NAME, '-l', '.agents'] });
 
-    expect(fs.realpathSync(path.join(projectDir, '.agents', linkName))).toBe(fs.realpathSync(skillDir as string));
+    expect(fs.realpathSync(path.join(projectDir, '.agents', skillName))).toBe(fs.realpathSync(skillDir as string));
   });
 
   it("should reject Yarn Plug'n'Play with actionable guidance", () => {
@@ -365,17 +426,74 @@ describe('pds-skill bin', () => {
   it('should reject unknown options and positional arguments', () => {
     const { run } = createFixture();
 
-    expect(() =>
-      run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', DEST, '--nope'] })
-    ).toThrow(/Unknown option/);
-    expect(() =>
-      run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', DEST, 'extra'] })
-    ).toThrow(/Unexpected argument/);
+    expect(() => run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', DEST, '--nope'] })).toThrow(
+      /Unknown option/
+    );
+    expect(() => run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', DEST, 'extra'] })).toThrow(
+      /Unexpected argument/
+    );
   });
 
   it('should print help without resolving a package', () => {
     const { run } = createFixture({ withPackage: false });
 
     expect(run({ args: ['--help'] })).toContain('Usage: pds-skill --package <package> --location <dir>');
+  });
+
+  it('should install only the requested skill when --skill is used', () => {
+    const { projectDir, skillsDir, skillNames, run } = createFixtureWithTwoSkills();
+
+    run(['--package', DEFAULT_PACKAGE_NAME, '--location', DEST, '--skill', skillNames[0]]);
+
+    expect(fs.lstatSync(path.join(projectDir, DEST, skillNames[0])).isSymbolicLink()).toBe(true);
+    expect(fs.existsSync(path.join(projectDir, DEST, skillNames[1]))).toBe(false);
+    expect(fs.realpathSync(path.join(projectDir, DEST, skillNames[0]))).toBe(
+      fs.realpathSync(path.join(skillsDir, skillNames[0]))
+    );
+  });
+
+  it('should install all discovered skills when no --skill filter is given', () => {
+    const { projectDir, skillsDir, skillNames, run } = createFixtureWithTwoSkills();
+
+    run();
+
+    for (const name of skillNames) {
+      expect(fs.lstatSync(path.join(projectDir, DEST, name)).isSymbolicLink()).toBe(true);
+      expect(fs.realpathSync(path.join(projectDir, DEST, name))).toBe(fs.realpathSync(path.join(skillsDir, name)));
+    }
+  });
+
+  it('should fail clearly when an unknown skill is requested', () => {
+    const { run, projectDir } = createFixture();
+
+    expect(() =>
+      run({ args: ['--package', DEFAULT_PACKAGE_NAME, '--location', DEST, '--skill', 'no-such-skill'] })
+    ).toThrow(/Unknown skill.*no-such-skill/);
+    expect(fs.existsSync(path.join(projectDir, DEST))).toBe(false);
+  });
+
+  it('should support the short -s option for --skill', () => {
+    const { projectDir, skillsDir, skillNames, run } = createFixtureWithTwoSkills();
+
+    run(['--package', DEFAULT_PACKAGE_NAME, '--location', DEST, '-s', skillNames[1]]);
+
+    expect(fs.lstatSync(path.join(projectDir, DEST, skillNames[1])).isSymbolicLink()).toBe(true);
+    expect(fs.existsSync(path.join(projectDir, DEST, skillNames[0]))).toBe(false);
+  });
+
+  it('should preflight all destinations before any mutation — a blocked link prevents all links', () => {
+    const { projectDir, skillNames, run } = createFixtureWithTwoSkills();
+
+    // Block the second link destination with a real directory.
+    const blockedPath = path.join(projectDir, DEST, skillNames[1]);
+    fs.mkdirSync(blockedPath, { recursive: true });
+    fs.writeFileSync(path.join(blockedPath, 'keep.txt'), 'protected\n');
+
+    expect(() => run()).toThrow(/Refusing to replace/);
+
+    // The first skill must NOT have been linked (preflight rejected before any mutation).
+    expect(fs.existsSync(path.join(projectDir, DEST, skillNames[0]))).toBe(false);
+    // The blocked directory must be intact.
+    expect(fs.readFileSync(path.join(blockedPath, 'keep.txt'), 'utf8')).toContain('protected');
   });
 });

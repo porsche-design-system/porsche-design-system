@@ -1,6 +1,7 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import type { ComponentDocsMetaMap } from '../src/components/reference';
-import { FRAMEWORKS, SKILL_STAGING_DIR } from '../src/support/skillTree';
+import { FRAMEWORKS, SKILL_STAGING_DIR, STAGED_SKILL_DIRS } from '../src/support/skillTree';
 
 /**
  * Builds the skill tree for every framework into `SKILL_STAGING_DIR`, from where each wrapper's build
@@ -11,7 +12,6 @@ import { FRAMEWORKS, SKILL_STAGING_DIR } from '../src/support/skillTree';
  */
 
 const REPO_ROOT = path.resolve(__dirname, '../../../../..');
-const OUTPUT_ROOT = path.resolve(REPO_ROOT, SKILL_STAGING_DIR);
 
 const main = async (): Promise<void> => {
   const [{ componentDocsMeta }, { generateSkillTree }] = await Promise.all([
@@ -21,7 +21,8 @@ const main = async (): Promise<void> => {
   const docsMeta = componentDocsMeta as unknown as ComponentDocsMetaMap;
 
   for (const framework of FRAMEWORKS) {
-    const root = path.join(OUTPUT_ROOT, framework);
+    fs.rmSync(path.resolve(REPO_ROOT, SKILL_STAGING_DIR, framework), { recursive: true, force: true });
+    const root = path.resolve(REPO_ROOT, STAGED_SKILL_DIRS[framework]);
     generateSkillTree(root, framework, docsMeta);
     console.log(`Wrote ${framework} skill tree → ${path.relative(REPO_ROOT, root)}`);
   }

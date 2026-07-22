@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
-// Links a locally installed Porsche Design System wrapper skill into the consumer project. Every
-// wrapper exposes this same bin through the local node_modules/.bin directory; --package selects
-// which installed wrapper supplies the skill, independently of which wrapper supplies the bin.
+// Links locally installed Porsche Design System wrapper skills into the consumer project.
+// Every wrapper package exposes this same bin through the local node_modules/.bin directory;
+// --package selects which installed wrapper supplies the skills, independently of which
+// wrapper supplies the bin.
 //
-// --location is the destination parent directory for the link (e.g. `.claude/skills`, `.agents`,
-// `.github/skills`). Relative locations resolve from the cwd.
+// --location is the destination parent directory for the skill links (e.g. `.claude/skills`,
+// `.agents`, `.github/skills`). Relative locations resolve from the cwd.
 //
-//   pds-skill --package <package> --location <dir>
+// --skill may be repeated to install only named skills. Omit it to install all discovered skills.
+//
+//   pds-skill --package <package> --location <dir> [--skill <name>...]
 //
 // This is the canonical source copied into all four wrapper package distributions by their
 // `build:subPackages:skill:bin` steps.
@@ -23,13 +26,14 @@ const SUPPORTED_PACKAGES = [
   '@porsche-design-system/components-vue',
 ];
 const USAGE = [
-  'Usage: pds-skill --package <package> --location <dir>',
+  'Usage: pds-skill --package <package> --location <dir> [--skill <name>...]',
   '',
   'Required options:',
   '  -p, --package <package>  locally installed Porsche Design System wrapper',
-  '  -l, --location <dir>     destination parent directory for the skill link',
+  '  -l, --location <dir>     destination parent directory for the skill links',
   '',
   'Options:',
+  '  -s, --skill <name>       install only the named skill (repeatable); omit to install all',
   '  -h, --help               print this usage',
   '',
   `Supported packages: ${SUPPORTED_PACKAGES.join(', ')}`,
@@ -50,6 +54,7 @@ const parseOptions = (args) => {
       options: {
         package: { type: 'string', short: 'p' },
         location: { type: 'string', short: 'l' },
+        skill: { type: 'string', short: 's', multiple: true },
         help: { type: 'boolean', short: 'h' },
       },
       strict: true,
@@ -59,8 +64,6 @@ const parseOptions = (args) => {
     fail(`${error.message}\n${USAGE}`);
   }
 };
-
-const linkNameFromPackage = (packageName) => packageName.slice(1).replace('/', '-');
 
 const readPackageManifest = (packageJsonPath) => {
   let content;
@@ -86,7 +89,21 @@ const readPackageManifest = (packageJsonPath) => {
   }
 };
 
-const validateSkillEntry = (skillMdPath) => {
+/** Parse the frontmatter `name:` value from SKILL.md content. Returns null if not found. */
+const parseFrontmatterName = (content) => {
+  const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!fmMatch) {
+    return null;
+  }
+  const nameMatch = fmMatch[1].match(/^name:\s*(\S+)/m);
+  return nameMatch ? nameMatch[1] : null;
+};
+
+/**
+ * Validate that the SKILL.md at skillMdPath is a readable regular file with a frontmatter name
+ * matching expectedName. Calls fail() on any violation.
+ */
+const validateSkillMd = (skillMdPath, expectedName) => {
   let stats;
   try {
     stats = fs.statSync(skillMdPath);
@@ -104,18 +121,45 @@ const validateSkillEntry = (skillMdPath) => {
     fail(`${skillMdPath} is not a file. Reinstall the package and re-run.`);
   }
 
+  let content;
   try {
-    const descriptor = fs.openSync(skillMdPath, 'r');
-    fs.closeSync(descriptor);
+    content = fs.readFileSync(skillMdPath, 'utf8');
   } catch (error) {
     if (isPermissionError(error)) {
       fail(`Cannot read ${skillMdPath}: permission denied. Check the package permissions and re-run.`);
     }
     throw error;
   }
+
+  const name = parseFrontmatterName(content);
+  if (name !== expectedName) {
+    fail(
+      `${skillMdPath} has frontmatter name "${name ?? '(none)'}" but its directory is "${expectedName}". Reinstall the package and re-run.`
+    );
+  }
 };
 
-const skillDirFromPackage = (packageName, cwd) => {
+/** Preflight the destination link path. Fails if something other than a symlink (or nothing) exists there. */
+const preflightDestLink = (linkPath, show) => {
+  let existing;
+  try {
+    existing = fs.lstatSync(linkPath);
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return;
+    }
+    if (isPermissionError(error)) {
+      fail(`Cannot inspect ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
+    }
+    throw error;
+  }
+  if (!existing.isSymbolicLink()) {
+    fail(`Refusing to replace ${show(linkPath)}: it exists and is not a symlink. Remove it manually and re-run.`);
+  }
+};
+
+/** Resolve the installed package directory by walking up from cwd. Fails if not found. */
+const resolvePackageDir = (packageName, cwd) => {
   if (!SUPPORTED_PACKAGES.includes(packageName)) {
     fail(`Unsupported package: ${packageName}\n${USAGE}`);
   }
@@ -130,9 +174,7 @@ const skillDirFromPackage = (packageName, cwd) => {
       if (installedName !== packageName) {
         fail(`Expected ${packageName} at ${packageDir}, but found ${installedName || 'a package without a name'}.`);
       }
-      const skillDir = path.join(packageDir, 'skill');
-      validateSkillEntry(path.join(skillDir, 'SKILL.md'));
-      return skillDir;
+      return packageDir;
     }
 
     const parent = path.dirname(dir);
@@ -143,20 +185,36 @@ const skillDirFromPackage = (packageName, cwd) => {
   }
 };
 
+/** Discover sorted child directory names under skillsDir. Returns empty array if the dir is absent. */
+const discoverSkillNames = (skillsDir) => {
+  let entries;
+  try {
+    entries = fs.readdirSync(skillsDir, { withFileTypes: true });
+  } catch (error) {
+    if (isMissingPathError(error)) {
+      return [];
+    }
+    if (isPermissionError(error)) {
+      fail(`Cannot read ${skillsDir}: permission denied. Check the package permissions and re-run.`);
+    }
+    throw error;
+  }
+  return entries
+    .filter((e) => e.isDirectory())
+    .map((e) => e.name)
+    .sort();
+};
+
 const main = () => {
   const options = parseOptions(process.argv.slice(2));
   if (options.help) {
     console.log(USAGE);
     return;
   }
-  const missingOptions = [
-    !options.package && '--package',
-    !options.location && '--location',
-  ].filter(Boolean);
+
+  const missingOptions = [!options.package && '--package', !options.location && '--location'].filter(Boolean);
   if (missingOptions.length > 0) {
-    fail(
-      `Missing required option${missingOptions.length > 1 ? 's' : ''}: ${missingOptions.join(' and ')}\n${USAGE}`
-    );
+    fail(`Missing required option${missingOptions.length > 1 ? 's' : ''}: ${missingOptions.join(' and ')}\n${USAGE}`);
   }
 
   if (process.versions.pnp) {
@@ -168,92 +226,121 @@ const main = () => {
   const cwd = process.cwd();
   const packageName = options.package;
   const destArg = options.location;
-  const skillDir = skillDirFromPackage(packageName, cwd);
-  const linkName = linkNameFromPackage(packageName);
+  const requestedSkills = options.skill ?? [];
 
-  const skillsDir = path.isAbsolute(destArg) ? destArg : path.resolve(cwd, destArg);
-  const linkPath = path.join(skillsDir, linkName);
+  const packageDir = resolvePackageDir(packageName, cwd);
+  const skillsDir = path.join(packageDir, 'skills');
+  const discovered = discoverSkillNames(skillsDir);
 
-  // Prefer a cwd-relative path in messages; use the absolute path when the link lives outside it.
+  if (discovered.length === 0) {
+    fail(`The installed package does not ship any skills at ${skillsDir}. Upgrade the package and re-run.`);
+  }
+
+  // Validate --skill filters; unknown names fail clearly.
+  if (requestedSkills.length > 0) {
+    const unknown = requestedSkills.filter((s) => !discovered.includes(s));
+    if (unknown.length > 0) {
+      fail(
+        `Unknown skill${unknown.length > 1 ? 's' : ''}: ${unknown.join(', ')}. ` +
+          `Available: ${[...discovered].sort().join(', ')}.`
+      );
+    }
+  }
+
+  // Deterministic sorted selection.
+  const selected =
+    requestedSkills.length > 0
+      ? [...new Set(requestedSkills)].filter((s) => discovered.includes(s)).sort()
+      : discovered;
+
+  const destDir = path.isAbsolute(destArg) ? destArg : path.resolve(cwd, destArg);
+
+  // Prefer a cwd-relative path in messages; fall back to absolute when outside.
   const show = (target) => {
     const rel = path.relative(cwd, target);
     return rel && !rel.startsWith('..') && !path.isAbsolute(rel) ? rel : target;
   };
 
+  // Preflight every selected skill tree before touching the destination at all.
+  for (const skillName of selected) {
+    validateSkillMd(path.join(skillsDir, skillName, 'SKILL.md'), skillName);
+  }
+
   try {
-    fs.mkdirSync(skillsDir, { recursive: true });
+    fs.mkdirSync(destDir, { recursive: true });
   } catch (error) {
     if (error.code === 'ENOTDIR' || error.code === 'EEXIST') {
-      fail(`Cannot create ${show(skillsDir)}: a parent path exists as a file, not a directory. Remove it and re-run.`);
+      fail(`Cannot create ${show(destDir)}: a parent path exists as a file, not a directory. Remove it and re-run.`);
     }
     if (isPermissionError(error)) {
-      fail(`Cannot create ${show(skillsDir)}: permission denied. Check the destination permissions and re-run.`);
+      fail(`Cannot create ${show(destDir)}: permission denied. Check the destination permissions and re-run.`);
     }
     throw error;
   }
 
-  // Idempotent, but only for the symlink we own: repoint an existing symlink (including a
-  // dangling one), and refuse to touch a real directory a user may have hand-maintained here —
-  // never recursively delete it.
-  let existing = null;
-  try {
-    existing = fs.lstatSync(linkPath);
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      existing = null;
-    } else if (isPermissionError(error)) {
-      fail(`Cannot inspect ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
-    } else {
-      throw error;
-    }
+  // Preflight all destination links before any mutation.
+  for (const skillName of selected) {
+    preflightDestLink(path.join(destDir, skillName), show);
   }
-  if (existing) {
-    if (!existing.isSymbolicLink()) {
-      fail(`Refusing to replace ${show(linkPath)}: it exists and is not a symlink. Remove it manually and re-run.`);
-    }
 
+  // All preflights passed — perform link operations.
+  const linkType = process.platform === 'win32' ? 'junction' : 'dir';
+  for (const skillName of selected) {
+    const skillDir = path.join(skillsDir, skillName);
+    const linkPath = path.join(destDir, skillName);
+
+    // Idempotent: repoint an existing symlink (including a dangling one), but never touch a
+    // real directory a user may have hand-maintained — the preflight above already rejected that.
+    let existingLink = null;
     try {
-      if (fs.realpathSync(linkPath) === fs.realpathSync(skillDir)) {
-        console.log(`Porsche Design System skill already linked: ${show(linkPath)} -> ${skillDir}`);
-        return;
-      }
+      existingLink = fs.lstatSync(linkPath);
     } catch (error) {
-      if (error.code === 'ENOENT') {
-        // The existing link is dangling and can be replaced.
-      } else if (isPermissionError(error)) {
-        fail(`Cannot inspect ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
-      } else {
+      if (error.code !== 'ENOENT') {
         throw error;
       }
     }
+
+    if (existingLink?.isSymbolicLink()) {
+      try {
+        if (fs.realpathSync(linkPath) === fs.realpathSync(skillDir)) {
+          console.log(`Porsche Design System skill already linked: ${show(linkPath)} -> ${skillDir}`);
+          continue;
+        }
+      } catch (error) {
+        if (error.code !== 'ENOENT') {
+          if (isPermissionError(error)) {
+            fail(`Cannot inspect ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
+          }
+          throw error;
+        }
+        // Dangling symlink — fall through to replace it.
+      }
+      try {
+        fs.rmSync(linkPath, { force: true });
+      } catch (error) {
+        if (isPermissionError(error)) {
+          fail(`Cannot replace ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
+        }
+        throw error;
+      }
+    }
+
     try {
-      fs.rmSync(linkPath, { force: true });
+      fs.symlinkSync(skillDir, linkPath, linkType);
     } catch (error) {
+      if (process.platform === 'win32' && error.code === 'EPERM') {
+        fail(
+          `Could not create the skill junction on Windows (EPERM). Check the destination permissions or create it manually:\n  mklink /J "${linkPath}" "${skillDir}"`
+        );
+      }
       if (isPermissionError(error)) {
-        fail(`Cannot replace ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
+        fail(`Cannot create ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
       }
       throw error;
     }
-  }
 
-  // Windows has no unprivileged directory symlink; a junction needs no elevation and works with
-  // the absolute target we already hold. macOS/Linux use a normal directory symlink.
-  const linkType = process.platform === 'win32' ? 'junction' : 'dir';
-  try {
-    fs.symlinkSync(skillDir, linkPath, linkType);
-  } catch (error) {
-    if (process.platform === 'win32' && error.code === 'EPERM') {
-      fail(
-        `Could not create the skill junction on Windows (EPERM). Check the destination permissions or create it manually:\n  mklink /J "${linkPath}" "${skillDir}"`
-      );
-    }
-    if (isPermissionError(error)) {
-      fail(`Cannot create ${show(linkPath)}: permission denied. Check the destination permissions and re-run.`);
-    }
-    throw error;
+    console.log(`Linked Porsche Design System skill: ${show(linkPath)} -> ${skillDir}`);
   }
-
-  console.log(`Linked Porsche Design System skill: ${show(linkPath)} -> ${skillDir}`);
 };
 
 main();

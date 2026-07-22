@@ -47,7 +47,7 @@ describe('buildSkillMd', () => {
     expect(markdown).toContain(`[exact-version component source](${componentSourceUrl})`);
     expect(markdown).toContain('The underlying Stencil component implementation is not included in the npm package');
     expect(markdown).toContain('minified, content-hashed CDN artifacts as a debugging fallback');
-    expect(markdown).toContain('read `../CHANGELOG.md`');
+    expect(markdown).toContain('read `../../CHANGELOG.md`');
   });
 
   it('renders SSR guidance only for React', () => {
