@@ -45,6 +45,7 @@ jobs:
       - run: npm run build:stylesheets
       - run: npm run build:component-meta
       - run: npm run build:components
+      - run: npm run build:skill
       - run: npm run build:components-js
       - run: npm run build:components-angular
       - run: npm run build:components-react
@@ -56,6 +57,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
+            ./packages/storefront/projects/skill/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
@@ -109,6 +111,7 @@ jobs:
             ./packages/components-react/projects/react-router/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/tokens/projects/tokens-meta/src/lib/tokensMeta.ts
             ./packages/shared/src/lib/
           if-no-files-found: error
   build-production:
@@ -129,6 +132,7 @@ jobs:
       - run: npm run build:stylesheets-prod
       - run: npm run build:component-meta
       - run: npm run build:components-prod
+      - run: npm run build:skill
       - run: npm run build:components-js-prod
       - run: npm run build:components-angular
       - run: npm run build:components-react
@@ -140,6 +144,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
+            ./packages/storefront/projects/skill/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
@@ -192,5 +197,6 @@ jobs:
             ./packages/components-react/projects/react-router/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/tokens/projects/tokens-meta/src/lib/tokensMeta.ts
             ./packages/shared/src/lib/
           if-no-files-found: error

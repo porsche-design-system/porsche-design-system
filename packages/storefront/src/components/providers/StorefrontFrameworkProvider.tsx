@@ -12,8 +12,11 @@ const storefrontFrameworkLocalStorageKey = 'storefrontFramework';
 
 export const StorefrontFrameworkContext = createContext<StorefrontFrameworkContextProps | undefined>(undefined);
 
-export const StorefrontFrameworkProvider = ({ children }: PropsWithChildren) => {
-  const [storefrontFramework, setSelectedFramework] = useState<Framework>('vanilla-js');
+export const StorefrontFrameworkProvider = ({
+  children,
+  initialFramework = 'vanilla-js',
+}: PropsWithChildren<{ initialFramework?: Framework }>) => {
+  const [storefrontFramework, setSelectedFramework] = useState<Framework>(initialFramework);
 
   // Load initial state from localStorage once component mounts
   useEffect(() => {

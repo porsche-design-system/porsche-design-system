@@ -51,6 +51,10 @@ to all child elements:
 - `.scheme-dark` — forces dark mode.
 - `.scheme-light-dark` — dynamically follows the system/OS setting.
 
+The same class themes **both** the PDS components and your own SCSS-styled markup — one `light-dark()`
+palette drives both layers. There is no separate component theming API and no `theme` prop on
+`PorscheDesignSystemProvider` or on components; the `.scheme-*` class is the whole switch.
+
 ```html
 <html class="scheme-dark">
   <body>
@@ -59,6 +63,12 @@ to all child elements:
   </body>
 </html>
 ```
+
+### Grid
+
+For pages whose sections share one alignment system, include `pds-grid` once on the page root. Make each full-width
+section a subgrid, then place its content with the Porsche Grid variables. This avoids repeating the mixin and keeps all
+sections aligned. Section-level grid instances remain valid when sections need independent grids.
 
 ### Variables and mixins
 

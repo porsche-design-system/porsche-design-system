@@ -1,0 +1,8 @@
+The component defines `color-scheme: dark` internally, independently of the scheme defined globally or on an ancestor
+outside the Link Tile. This keeps its text and controls legible over media. Components in the `header` and `footer`
+slots inherit the dark scheme, including Tag.
+
+If a slotted component needs a different fixed scheme, set `color-scheme: only light` or `color-scheme: only dark`
+directly on that component. Don't change the Link Tile's scheme when only the slotted component needs different colors,
+because that also changes the tile's description and controls. For example, set `color-scheme: only light` on a Tag that
+should use a fixed light scheme.

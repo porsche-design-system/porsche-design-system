@@ -12,7 +12,6 @@ import {
     <p-input-text
       label="Value:"
       name="input-value"
-      type="text"
       [value]="inputValue"
       (input)="onChangeInput($event)"
       placeholder="e.g. 1,2"

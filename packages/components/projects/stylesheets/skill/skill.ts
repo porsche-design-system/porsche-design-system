@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
 import { globalStylesMeta } from '../src/css';
 import { kindOf, type StylesheetKind, stylesheetsMeta } from '../src/meta';
@@ -20,7 +21,11 @@ type StylesheetBranch = StylesheetNode | StylesheetBranch[] | { [key: string]: S
 const code = (value: string): string => `\`${value}\``;
 
 /** Escape the few markdown-table-breaking characters a description might contain. */
-const cell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ');
+const cell = (text: string): string =>
+  text
+    .replace(/\\/g, '\\\\')
+    .replace(/\|/g, '\\|')
+    .replace(/\s*\n\s*/g, ' ');
 
 /** A markdown table from a header row and pre-rendered cell rows. */
 const table = (headers: string[], rows: string[][]): string =>
@@ -162,3 +167,14 @@ const colorSchemeClasses = `## Color-scheme classes\n\n${renderOutline(colorSche
  */
 export const getStylesheetsSkill = (): string =>
   `${[intro, howToUse, contents, stylesheets, cssVariables, colorSchemeClasses].filter(Boolean).join('\n\n')}\n`;
+
+const description =
+  'The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the `.scheme-*` classes and `color-scheme`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work.';
+
+export const stylesheetsSkill: PackageSkill = {
+  name: 'stylesheets',
+  title: 'Stylesheets',
+  description,
+  intro: description,
+  getContent: getStylesheetsSkill,
+};
