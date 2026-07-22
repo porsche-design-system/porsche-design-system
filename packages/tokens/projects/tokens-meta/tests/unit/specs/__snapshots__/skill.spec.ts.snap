@@ -1,0 +1,334 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should expose correct tokens package skill 1`] = `
+{
+  "content": "# Design tokens
+
+The Porsche Design System design tokens — the source values for breakpoints, color, spacing,
+typography, motion and more. Each table lists the token \`name\`, its \`value\` and a description.
+
+The entire system is built on these tokens: the global stylesheets, the components and the custom
+styling themes all depend on them. They can also be used standalone to support other styling
+solutions or to build custom UI directly.
+
+Import the resolved values from the package's \`tokens\` subpath, e.g.:
+
+\`\`\`ts
+import { spacingStaticMd } from '@porsche-design-system/components-{js|angular|react|vue}/tokens';
+\`\`\`
+
+For the same values as ready-to-use CSS custom properties, see \`stylesheets.md\` (\`variables.css\`).
+
+## Contents
+
+- [Blur](#blur)
+- [Border](#border)
+- [Breakpoint](#breakpoint)
+- [Color](#color)
+- [Font](#font)
+- [Gradient](#gradient)
+- [Motion](#motion)
+- [Shadow](#shadow)
+- [Spacing](#spacing)
+
+## Blur
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`blurFrosted\` | \`blur(32px)\` | Holds a **frosted** blur effect value. |
+
+## Border
+
+### Radius
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`radiusXs\` | \`2px\` | Holds a **xs** \`border-radius\`. |
+| \`radiusSm\` | \`4px\` | Holds a **sm** \`border-radius\`. |
+| \`radiusMd\` | \`6px\` | Holds a **md** \`border-radius\`. Used for \`p-checkbox\` in **compact mode**. |
+| \`radiusLg\` | \`8px\` | Holds a **lg** \`border-radius\`. Used for interactive controls in **compact mode** (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…). |
+| \`radiusXl\` | \`12px\` | Holds a **xl** \`border-radius\`. Used for interactive controls (e.g. \`p-tabs-bar\`, \`p-input-*\`, \`p-textarea\`, \`p-select\`, \`p-button\`, \`p-link\`,…). Defines the primary visual appearance alongside **radius3Xl**. |
+| \`radius2Xl\` | \`16px\` | Holds a **2xl** \`border-radius\`. Used for notification components (e.g. \`p-banner\`, \`p-inline-notification\`, \`p-toast\`,…). |
+| \`radius3Xl\` | \`24px\` | Holds a **3xl** \`border-radius\`. Used for card-like containers or dialogs (e.g. \`p-link-tile\`, \`p-modal\`, \`p-flyout\`, \`p-sheet\`,…). Defines the primary visual appearance alongside **radiusXl**. |
+| \`radius4Xl\` | \`32px\` | Holds a **4xl** \`border-radius\`. |
+| \`radiusFull\` | \`calc(infinity * 1px)\` | Holds a **full** \`border-radius\`. Used for pill shapes (e.g. \`p-tag\`, \`p-switch\`,…). Recommended only for standalone indicators. |
+
+## Breakpoint
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`breakpointXs\` | \`480\` | Holds the \`xs\` breakpoint value, usable with \`px\`. |
+| \`breakpointSm\` | \`760\` | Holds the \`sm\` breakpoint value, usable with \`px\`. |
+| \`breakpointMd\` | \`1000\` | Holds the \`md\` breakpoint value, usable with \`px\`. |
+| \`breakpointLg\` | \`1300\` | Holds the \`lg\` breakpoint value, usable with \`px\`. |
+| \`breakpointXl\` | \`1760\` | Holds the \`xl\` breakpoint value, usable with \`px\`. |
+| \`breakpoint2Xl\` | \`1920\` | Holds the \`2xl\` breakpoint value, usable with \`px\`. |
+
+## Color
+
+### Dark
+
+#### A11y
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorFocusDark\` | \`#1A44EA\` | Holds the **focus** color (dark), typically used as the outline for \`:focus-visible\` states. |
+
+#### Background
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorBackdropDark\` | \`hsl(240 5.3% 14.9% / 0.5)\` | Holds the **backdrop** color, typically used for backdrops. |
+| \`colorCanvasDark\` | \`hsl(225 66.7% 1.2%)\` | Holds the **canvas** color (dark), typically used for surfaces. |
+| \`colorFrostedDark\` | \`hsl(240 2% 43% / 0.228)\` | Holds the **frosted** color (dark), typically used as a background in combination with a blur effect. |
+| \`colorFrostedSoftDark\` | \`hsl(240 3.7% 26.5% / 0.154)\` | Holds the **frosted-soft** color (dark), typically used as a background \`:hover\`. |
+| \`colorFrostedStrongDark\` | \`hsl(240 1.5% 61.8% / 0.302)\` | Holds the **frosted-strong** color (dark), typically used as a stronger frosted background. |
+| \`colorSurfaceDark\` | \`hsl(240 2% 10%)\` | Holds the **surface** color (dark), typically used for surfaces. |
+
+#### Foreground
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorPrimaryDark\` | \`hsl(225 100% 99%)\` | Holds the **primary** color (dark), typically used for text. |
+| \`colorContrastHighDark\` | \`hsl(240 12.5% 96.9% / 0.67)\` | Holds the **contrast-high** color (dark), typically used for text. |
+| \`colorContrastHigherDark\` | \`hsl(240 12.5% 96.9% / 0.78)\` | Holds the **contrast-higher** color (dark), typically used for text. |
+| \`colorContrastLowDark\` | \`hsl(240 12.5% 96.9% / 0.45)\` | Holds the **contrast-low** color (dark), intended only for decorative elements, as it is not accessibility-compliant. |
+| \`colorContrastLowerDark\` | \`hsl(240 1.5% 61.8% / 0.302)\` | Holds the **contrast-lower** color (dark), intended only for decorative elements, as it is not accessibility-compliant. |
+| \`colorContrastMediumDark\` | \`hsl(240 12.5% 96.9% / 0.56)\` | Holds the **contrast-medium** color (dark), typically used for text. |
+
+#### Semantic
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorInfoDark\` | \`hsl(210 100% 54.5%)\` | Holds the **info** color (dark), typically used for text. |
+| \`colorInfoFrostedDark\` | \`hsl(210 79% 20% / 0.66)\` | Holds the **info-frosted** color (dark), typically used as background in combination with a blur effect. |
+| \`colorInfoFrostedSoftDark\` | \`hsl(210 59% 15% / 0.66)\` | Holds the **info-frosted-soft** color (dark), typically used as background \`:hover\`. |
+| \`colorInfoLowDark\` | \`hsl(210 100% 54.5% / 0.18)\` | Holds the **info-low** color (dark), typically used for text or border. |
+| \`colorInfoMediumDark\` | \`hsl(210 100% 54.5% / 0.6)\` | Holds the **info-medium** color (dark), typically used for text or border. |
+| \`colorSuccessDark\` | \`hsl(157 84.9% 41.6%)\` | Holds the **success** color (dark), typically used for text. |
+| \`colorSuccessFrostedDark\` | \`hsl(157 79% 20% / 0.66)\` | Holds the **success-frosted** color (dark), typically used as background in combination with a blur effect. |
+| \`colorSuccessFrostedSoftDark\` | \`hsl(157 59% 15% / 0.66)\` | Holds the **success-frosted-soft** color (dark), typically used as background \`:hover\`. |
+| \`colorSuccessLowDark\` | \`hsl(157 84.9% 41.6% / 0.18)\` | Holds the **success-low** color (dark), typically used for text or border. |
+| \`colorSuccessMediumDark\` | \`hsl(157 84.9% 41.6% / 0.6)\` | Holds the **success-medium** color (dark), typically used for text or border. |
+| \`colorWarningDark\` | \`hsl(28 90.2% 56.1%)\` | Holds the **warning** color (dark), typically used for text. |
+| \`colorWarningFrostedDark\` | \`hsl(52 79% 20% / 0.66)\` | Holds the **warning-frosted** color (dark), typically used as background in combination with a blur effect. |
+| \`colorWarningFrostedSoftDark\` | \`hsl(52 59% 15% / 0.66)\` | Holds the **warning-frosted-soft** color (dark), typically used as background \`:hover\`. |
+| \`colorWarningLowDark\` | \`hsl(28 90.2% 56.1% / 0.18)\` | Holds the **warning-low** color (dark), typically used for text or border. |
+| \`colorWarningMediumDark\` | \`hsl(28 90.2% 56.1% / 0.6)\` | Holds the **warning-medium** color (dark), typically used for text or border. |
+| \`colorErrorDark\` | \`hsl(0 96.9% 62%)\` | Holds the **error** color (dark), typically used for text. |
+| \`colorErrorFrostedDark\` | \`hsl(0 79% 20% / 0.66)\` | Holds the **error-frosted** color (dark), typically used as background in combination with a blur effect. |
+| \`colorErrorFrostedSoftDark\` | \`hsl(0 59% 15% / 0.66)\` | Holds the **error-frosted-soft** color (dark), typically used as background \`:hover\`. |
+| \`colorErrorLowDark\` | \`hsl(0 96.9% 62% / 0.18)\` | Holds the **error-low** color (dark), typically used for text or border. |
+| \`colorErrorMediumDark\` | \`hsl(0 96.9% 62% / 0.6)\` | Holds the **error-medium** color (dark), typically used for text or border. |
+
+### Light dark
+
+#### A11y
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorFocus\` | \`light-dark(#1A44EA,#1A44EA)\` | Holds the **focus** color, typically used as the outline for \`:focus-visible\` states. |
+
+#### Background
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorBackdrop\` | \`light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 5.3% 14.9% / 0.5))\` | Holds the **backdrop** color, typically used for backdrops. |
+| \`colorCanvas\` | \`light-dark(#fff,hsl(225 66.7% 1.2%))\` | Holds the **canvas** color, typically used for surfaces. |
+| \`colorFrosted\` | \`light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))\` | Holds the **frosted** color, typically used as a background in combination with a blur effect. |
+| \`colorFrostedSoft\` | \`light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))\` | Holds the **frosted-soft** color, typically used as a background \`:hover\`. |
+| \`colorFrostedStrong\` | \`light-dark(hsl(236 6.5% 42% / 0.236),hsl(240 1.5% 61.8% / 0.302))\` | Holds the **frosted-strong** color, typically used as a stronger frosted background. |
+| \`colorSurface\` | \`light-dark(hsl(240 10% 95%),hsl(240 2% 10%))\` | Holds the **surface** color, typically used for surfaces. |
+
+#### Foreground
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorPrimary\` | \`light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))\` | Holds the **primary** color, typically used for text. |
+| \`colorContrastHigher\` | \`light-dark(hsl(240 8.7% 9% / 0.8),hsl(240 12.5% 96.9% / 0.78))\` | Holds the **contrast-higher** color, typically used for text. |
+| \`colorContrastHigh\` | \`light-dark(hsl(240 7.1% 11% / 0.7),hsl(240 12.5% 96.9% / 0.67))\` | Holds the **contrast-high** color, typically used for text. |
+| \`colorContrastMedium\` | \`light-dark(hsl(240 6.1% 7% / 0.6),hsl(240 12.5% 96.9% / 0.56))\` | Holds the **contrast-medium** color, typically used for text. |
+| \`colorContrastLow\` | \`light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))\` | Holds the **contrast-low** color, intended only for decorative elements, as it is not accessibility-compliant. |
+| \`colorContrastLower\` | \`light-dark(hsl(234 6% 32.9% / 0.324),hsl(240 1.5% 61.8% / 0.302))\` | Holds the **contrast-lower** color, intended only for decorative elements, as it is not accessibility-compliant. |
+
+#### Semantic
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorInfo\` | \`light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))\` | Holds the **info** color, typically used for text. |
+| \`colorInfoMedium\` | \`light-dark(hsl(228 83.2% 51% / 0.6),hsl(210 100% 54.5% / 0.6))\` | Holds the **info-medium** color, typically used for text or border. |
+| \`colorInfoLow\` | \`light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18))\` | Holds the **info-low** color, typically used for text or border. |
+| \`colorInfoFrosted\` | \`light-dark(hsl(211 100% 90% / 0.55),hsl(210 79% 20% / 0.66))\` | Holds the **info-frosted** color, typically used as background in combination with a blur effect. |
+| \`colorInfoFrostedSoft\` | \`light-dark(hsl(211 80% 95% / 0.55),hsl(210 59% 15% / 0.66))\` | Holds the **info-frosted-soft** color, typically used as background \`:hover\`. |
+| \`colorSuccess\` | \`light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%))\` | Holds the **success** color, typically used for text. |
+| \`colorSuccessMedium\` | \`light-dark(hsl(115 77.5% 27.8% / 0.6),hsl(157 84.9% 41.6% / 0.6))\` | Holds the **success-medium** color, typically used for text or border. |
+| \`colorSuccessLow\` | \`light-dark(hsl(115 77.5% 27.8% / 0.18),hsl(157 84.9% 41.6% / 0.18))\` | Holds the **success-low** color, typically used for text or border. |
+| \`colorSuccessFrosted\` | \`light-dark(hsl(109 100% 90% / 0.55),hsl(157 79% 20% / 0.66))\` | Holds the **success-frosted** color, typically used as background in combination with a blur effect. |
+| \`colorSuccessFrostedSoft\` | \`light-dark(hsl(109 80% 95% / 0.55),hsl(157 59% 15% / 0.66))\` | Holds the **success-frosted-soft** color, typically used as background \`:hover\`. |
+| \`colorWarning\` | \`light-dark(hsl(28 97.7% 34.1%),hsl(28 90.2% 56.1%))\` | Holds the **warning** color, typically used for text. |
+| \`colorWarningMedium\` | \`light-dark(hsl(28 97.7% 34.1% / 0.6),hsl(28 90.2% 56.1% / 0.6))\` | Holds the **warning-medium** color, typically used for text or border. |
+| \`colorWarningLow\` | \`light-dark(hsl(28 97.7% 34.1% / 0.18),hsl(28 90.2% 56.1% / 0.18))\` | Holds the **warning-low** color, typically used for text or border. |
+| \`colorWarningFrosted\` | \`light-dark(hsl(40 100% 90% / 0.55),hsl(52 79% 20% / 0.66))\` | Holds the **warning-frosted** color, typically used as background in combination with a blur effect. |
+| \`colorWarningFrostedSoft\` | \`light-dark(hsl(40 80% 95% / 0.55),hsl(52 59% 15% / 0.66))\` | Holds the **warning-frosted-soft** color, typically used as background \`:hover\`. |
+| \`colorError\` | \`light-dark(hsl(357 78% 41%),hsl(0 96.9% 62%))\` | Holds the **error** color, typically used for text. |
+| \`colorErrorMedium\` | \`light-dark(hsl(357 78% 41% / 0.6),hsl(0 96.9% 62% / 0.6))\` | Holds the **error-medium** color, typically used for text or border. |
+| \`colorErrorLow\` | \`light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18))\` | Holds the **error-low** color, typically used for text or border. |
+| \`colorErrorFrosted\` | \`light-dark(hsl(0 100% 90% / 0.55),hsl(0 79% 20% / 0.66))\` | Holds the **error-frosted** color, typically used as background in combination with a blur effect. |
+| \`colorErrorFrostedSoft\` | \`light-dark(hsl(0 80% 95% / 0.55),hsl(0 59% 15% / 0.66))\` | Holds the **error-frosted-soft** color, typically used as background \`:hover\`. |
+
+### Light
+
+#### A11y
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorFocusLight\` | \`#1A44EA\` | Holds the **focus** color (light), typically used as the outline for \`:focus-visible\` states. |
+
+#### Background
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorBackdropLight\` | \`hsl(240 5.3% 14.9% / 0.5)\` | Holds the **backdrop** color, typically used for backdrops. |
+| \`colorCanvasLight\` | \`#fff\` | Holds the **canvas** color (light), typically used for surfaces. |
+| \`colorFrostedLight\` | \`hsl(240 5% 70% / 0.148)\` | Holds the **frosted** color (light), typically used as a background in combination with a blur effect. |
+| \`colorFrostedSoftLight\` | \`hsl(234 9.8% 60% / 0.06)\` | Holds the **frosted-soft** color (light), typically used as a background \`:hover\`. |
+| \`colorFrostedStrongLight\` | \`hsl(236 6.5% 42% / 0.236)\` | Holds the **frosted-strong** color (light), typically used as a stronger frosted background. |
+| \`colorSurfaceLight\` | \`hsl(240 10% 95%)\` | Holds the **surface** color (light), typically used for surfaces. |
+
+#### Foreground
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorPrimaryLight\` | \`hsl(225 66.7% 1.2%)\` | Holds the **primary** color (light), typically used for text. |
+| \`colorContrastHighLight\` | \`hsl(240 7.1% 11% / 0.7)\` | Holds the **contrast-high** color (light), typically used for text. |
+| \`colorContrastHigherLight\` | \`hsl(240 8.7% 9% / 0.8)\` | Holds the **contrast-higher** color (light), typically used for text. |
+| \`colorContrastLowLight\` | \`hsl(240 5.3% 14.9% / 0.5)\` | Holds the **contrast-low** color (light), intended only for decorative elements, as it is not accessibility-compliant. |
+| \`colorContrastLowerLight\` | \`hsl(234 6% 32.9% / 0.324)\` | Holds the **contrast-lower** color (light), intended only for decorative elements, as it is not accessibility-compliant. |
+| \`colorContrastMediumLight\` | \`hsl(240 6.1% 7% / 0.6)\` | Holds the **contrast-medium** color (light), typically used for text. |
+
+#### Semantic
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`colorInfoFrostedLight\` | \`hsl(211 100% 90% / 0.55)\` | Holds the **info-frosted** color (light), typically used as background in combination with a blur effect. |
+| \`colorInfoFrostedSoftLight\` | \`hsl(211 80% 95% / 0.55)\` | Holds the **info-frosted-soft** color (light), typically used as background \`:hover\`. |
+| \`colorInfoLight\` | \`hsl(228 83.2% 51%)\` | Holds the **info** color (light), typically used for text. |
+| \`colorInfoLowLight\` | \`hsl(228 83.2% 51% / 0.18)\` | Holds the **info-low** color (light), typically used for text or border. |
+| \`colorInfoMediumLight\` | \`hsl(228 83.2% 51% / 0.6)\` | Holds the **info-medium** color (light), typically used for text or border. |
+| \`colorSuccessFrostedLight\` | \`hsl(109 100% 90% / 0.55)\` | Holds the **success-frosted** color (light), typically used as background in combination with a blur effect. |
+| \`colorSuccessFrostedSoftLight\` | \`hsl(109 80% 95% / 0.55)\` | Holds the **success-frosted-soft** color (light), typically used as background \`:hover\`. |
+| \`colorSuccessLight\` | \`hsl(115 77.5% 27.8%)\` | Holds the **success** color (light), typically used for text. |
+| \`colorSuccessLowLight\` | \`hsl(115 77.5% 27.8% / 0.18)\` | Holds the **success-low** color (light), typically used for text or border. |
+| \`colorSuccessMediumLight\` | \`hsl(115 77.5% 27.8% / 0.6)\` | Holds the **success-medium** color (light), typically used for text or border. |
+| \`colorWarningFrostedLight\` | \`hsl(40 100% 90% / 0.55)\` | Holds the **warning-frosted** color (light), typically used as background in combination with a blur effect. |
+| \`colorWarningFrostedSoftLight\` | \`hsl(40 80% 95% / 0.55)\` | Holds the **warning-frosted-soft** color (light), typically used as background \`:hover\`. |
+| \`colorWarningLight\` | \`hsl(28 97.7% 34.1%)\` | Holds the **warning** color (light), typically used for text. |
+| \`colorWarningLowLight\` | \`hsl(28 97.7% 34.1% / 0.18)\` | Holds the **warning-low** color (light), typically used for text or border. |
+| \`colorWarningMediumLight\` | \`hsl(28 97.7% 34.1% / 0.6)\` | Holds the **warning-medium** color (light), typically used for text or border. |
+| \`colorErrorFrostedLight\` | \`hsl(0 100% 90% / 0.55)\` | Holds the **error-frosted** color (light), typically used as background in combination with a blur effect. |
+| \`colorErrorFrostedSoftLight\` | \`hsl(0 80% 95% / 0.55)\` | Holds the **error-frosted-soft** color (light), typically used as background \`:hover\`. |
+| \`colorErrorLight\` | \`hsl(357 78% 41%)\` | Holds the **error** color (light), typically used for text. |
+| \`colorErrorLowLight\` | \`hsl(357 78% 41% / 0.18)\` | Holds the **error-low** color (light), typically used for text or border. |
+| \`colorErrorMediumLight\` | \`hsl(357 78% 41% / 0.6)\` | Holds the **error-medium** color (light), typically used for text or border. |
+
+## Font
+
+### Family
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`fontPorscheNext\` | \`'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif\` | Holds the **Porsche Next** font family along with fallback fonts. |
+
+### Line height
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`leadingNormal\` | \`calc(6px + 2.125ex)\` | Holds a dynamic default line height specifically optimized for the Porsche Next typeface. |
+
+### Size
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`typescale2Xs\` | \`.75rem\` | Holds the **2x-small** font size optimized for the Porsche Next typeface. |
+| \`typescaleXs\` | \`.875rem\` | Holds the **x-small** font size optimized for the Porsche Next typeface. |
+| \`typescaleSm\` | \`1rem\` | Holds the **small** font size optimized for the Porsche Next typeface. |
+| \`typescaleMd\` | \`clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)\` | Holds the **medium** font size optimized for the Porsche Next typeface. |
+| \`typescaleLg\` | \`clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)\` | Holds the **large** font size optimized for the Porsche Next typeface. |
+| \`typescaleXl\` | \`clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)\` | Holds the **x-large** font size optimized for the Porsche Next typeface. |
+| \`typescale2Xl\` | \`clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)\` | Holds the **2x-large** font size optimized for the Porsche Next typeface. |
+| \`typescale3Xl\` | \`clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)\` | Holds the **3x-large** font size optimized for the Porsche Next typeface. |
+| \`typescale4Xl\` | \`clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)\` | Holds the **4x-large** font size optimized for the Porsche Next typeface. |
+| \`typescale5Xl\` | \`clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)\` | Holds the **5x-large** font size optimized for the Porsche Next typeface. |
+
+### Weight
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`fontWeightNormal\` | \`400\` | Holds the **normal** font weight optimized for the Porsche Next typeface. |
+| \`fontWeightSemibold\` | \`600\` | Holds the **semibold** font weight optimized for the Porsche Next typeface. |
+| \`fontWeightBold\` | \`700\` | Holds the **bold** font weight optimized for the Porsche Next typeface. |
+
+## Gradient
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`gradientStopsFadeDark\` | \`hsla(0,0%,0%,.8) 0%,hsla(0,0%,0%,.8) 8.1%,hsla(0,0%,0%,.8) 15.5%,hsla(0,0%,0%,.8) 22.5%,hsla(0,0%,0%,.78) 29%,hsla(0,0%,0%,.73) 35.3%,hsla(0,0%,0%,.67) 41.2%,hsla(0,0%,0%,.6) 47.1%,hsla(0,0%,0%,.52) 52.9%,hsla(0,0%,0%,.44) 58.8%,hsla(0,0%,0%,.33) 64.7%,hsla(0,0%,0%,.22) 71%,hsla(0,0%,0%,.12) 77.5%,hsla(0,0%,0%,.05) 84.5%,hsla(0,0%,0%,.011) 91.9%,hsla(0,0%,0%,0) 100%\` | Holds a gradient fade. |
+
+## Motion
+
+### Duration
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`durationSm\` | \`.25s\` | Holds a **short** motion/transition duration value. |
+| \`durationMd\` | \`.4s\` | Holds a **moderate** motion/transition duration value. |
+| \`durationLg\` | \`.6s\` | Holds a **long** motion/transition duration value. |
+| \`durationXl\` | \`1.2s\` | Holds a **very long** motion/transition duration value. |
+
+### Ease
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`easeIn\` | \`cubic-bezier(0,0,.2,1)\` | Holds an **in** \`transition-timing-function\`. |
+| \`easeInOut\` | \`cubic-bezier(.25,.1,.25,1)\` | Holds an **in-out** \`transition-timing-function\`. |
+| \`easeOut\` | \`cubic-bezier(.4,0,.5,1)\` | Holds an **out** \`transition-timing-function\`. |
+
+## Shadow
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`shadowSm\` | \`0px 3px 8px rgba(0,0,0,.16)\` | Holds a **low** \`box-shadow\`. |
+| \`shadowMd\` | \`0px 4px 16px rgba(0,0,0,.16)\` | Holds a **medium** \`box-shadow\`. |
+| \`shadowLg\` | \`0px 8px 40px rgba(0,0,0,.16)\` | Holds a **high** \`box-shadow\`. |
+
+## Spacing
+
+### Fluid
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`spacingFluidXs\` | \`clamp(4px, 0.25vw + 3px, 8px)\` | Holds the **x-small fluid** spacing. |
+| \`spacingFluidSm\` | \`clamp(8px, 0.5vw + 6px, 16px)\` | Holds the **small fluid** spacing. |
+| \`spacingFluidMd\` | \`clamp(16px, 1.25vw + 12px, 36px)\` | Holds the **medium fluid** spacing. |
+| \`spacingFluidLg\` | \`clamp(32px, 2.75vw + 23px, 76px)\` | Holds the **large fluid** spacing. |
+| \`spacingFluidXl\` | \`clamp(48px, 3vw + 38px, 96px)\` | Holds the **x-large fluid** spacing. |
+| \`spacingFluid2Xl\` | \`clamp(80px, 7.5vw + 56px, 200px)\` | Holds the **2x-large fluid** spacing. |
+
+### Static
+
+| Token | Value | Description |
+| --- | --- | --- |
+| \`spacingStatic2Xs\` | \`1px\` | Holds the **2x-small static** spacing. |
+| \`spacingStaticXs\` | \`4px\` | Holds the **x-small static** spacing. |
+| \`spacingStaticSm\` | \`8px\` | Holds the **small static** spacing. |
+| \`spacingStaticMd\` | \`16px\` | Holds the **medium static** spacing. |
+| \`spacingStaticLg\` | \`32px\` | Holds the **large static** spacing. |
+| \`spacingStaticXl\` | \`48px\` | Holds the **x-large static** spacing. |
+| \`spacingStatic2Xl\` | \`80px\` | Holds the **2x-large static** spacing. |
+",
+  "description": "the design-token source values (color, spacing, typography, motion, breakpoints) for custom UI",
+  "intro": "Design tokens — the source values for color, spacing, typography, motion, breakpoints and more, provided as JS constants. The entire system is built on these tokens: the global stylesheets, the components and the custom styling themes all depend on them. They can also be used standalone to support other styling solutions or to build custom UI directly.",
+  "name": "tokens",
+  "title": "Design tokens",
+}
+`;

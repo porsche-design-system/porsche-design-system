@@ -1,8 +1,7 @@
 import { expect, it } from 'vitest';
-import { getScssSkill } from '../../../skill/skill';
+import { scssSkill } from '../../../skill/skill';
 
-// Skill seam: lock the skill generator's pure-function output (the scss skill markdown derived from
-// `scssMeta`). Unlike the output-parity spec this needs no prior build — `getScssSkill()` is pure.
-it('should produce correct scss skill markdown', () => {
-  expect(getScssSkill()).toMatchSnapshot();
+it('should expose correct scss package skill', () => {
+  const { getContent, ...metadata } = scssSkill;
+  expect({ ...metadata, content: getContent() }).toMatchSnapshot();
 });

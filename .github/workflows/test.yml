@@ -358,6 +358,24 @@ jobs:
       - name: 'Restore'
         uses: ./.github/actions/restore
       - run: npm run test:unit:shared
+  skill:
+    name: 'Skill'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - run: npm run test:unit:skill
+      - uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
+        with:
+          name: generated-skill-trees
+          path: ./packages/storefront/projects/skill/generated/
+          if-no-files-found: error
   storefront-unit:
     name: 'Storefront Unit'
     runs-on: ubuntu-latest

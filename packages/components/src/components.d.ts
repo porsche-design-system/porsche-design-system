@@ -282,7 +282,7 @@ export namespace Components {
          */
         "value"?: string;
         /**
-          * Sets the visual style variant of the button (e.g. `primary`, `secondary`, `tertiary`).
+          * Sets the visual style variant of the button (`primary` or `secondary`).
           * @default 'primary'
          */
         "variant"?: ButtonVariant;
@@ -1940,7 +1940,7 @@ export namespace Components {
          */
         "target"?: LinkTarget;
         /**
-          * Sets the visual style variant of the link (e.g. `primary`, `secondary`, `tertiary`).
+          * Sets the visual style variant of the link (`primary` or `secondary`).
           * @default 'primary'
          */
         "variant"?: LinkVariant;
@@ -4474,7 +4474,7 @@ declare namespace LocalJSX {
          */
         "value"?: string;
         /**
-          * Sets the visual style variant of the button (e.g. `primary`, `secondary`, `tertiary`).
+          * Sets the visual style variant of the button (`primary` or `secondary`).
           * @default 'primary'
          */
         "variant"?: ButtonVariant;
@@ -6312,7 +6312,7 @@ declare namespace LocalJSX {
          */
         "target"?: LinkTarget;
         /**
-          * Sets the visual style variant of the link (e.g. `primary`, `secondary`, `tertiary`).
+          * Sets the visual style variant of the link (`primary` or `secondary`).
           * @default 'primary'
          */
         "variant"?: LinkVariant;
