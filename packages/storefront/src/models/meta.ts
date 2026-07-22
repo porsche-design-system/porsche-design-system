@@ -51,6 +51,11 @@ export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
   // Story (and optional slot stories) powering the interactive configurator playground.
   configurator: {
     story: Story<Tag>;
+    // Optional hand-authored CodeSample that replaces the story as the component's primary
+    // example. Set when the storefront page renders a CodeSample instead of the interactive
+    // configurator (e.g. imperative components like p-toast); the skill emits it as the
+    // "Default" example in place of the bare story markup.
+    example?: CodeSample;
     slotStories?: SlotStories<Tag>;
     // Optional controlled-mode variant for dual-mode components (e.g. p-popover). When present, the
     // configurator renders a "Behavior" segmented control to switch between uncontrolled and controlled.
