@@ -11,7 +11,3 @@ documented `pds.$variable` and `pds.mixin` available to your stylesheets.
 Reach for these foundational styles when you build a custom component or pattern that is not yet
 available in the component library, or for foundational layout work such as typography, surfaces and
 boxes.
-
-This document is an index of the package. For the exact token values and the complete generated
-SCSS, read the per-domain partials shipped alongside it (`_color.scss`, `_font.scss`, `_grid*.scss`,
-… all re-exported from `_index.scss`).

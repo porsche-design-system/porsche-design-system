@@ -17,6 +17,10 @@
       "types": "./meta/esm/index.d.ts",
       "import": "./meta/esm/index.mjs",
       "require": "./meta/cjs/index.cjs"
+    },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
     }
   },
   "files": [
@@ -24,10 +28,9 @@
     "./meta/"
   ],
   "scripts": {
-    "build": "npm run clean:build && npm run build:meta && npm run build:package && npm run build:skill",
+    "build": "npm run clean:build && npm run build:meta && npm run build:package",
     "build:meta": "rollup -c rollup.config.meta.mjs",
     "build:package": "tsx scripts/build.ts",
-    "build:skill": "tsx scripts/build-skill.ts",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta"

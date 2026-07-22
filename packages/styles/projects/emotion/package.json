@@ -12,6 +12,10 @@
       "import": "./dist/esm/index.mjs",
       "default": "./dist/cjs/index.cjs"
     },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
+    },
     "./meta": {
       "types": "./meta/esm/emotionMeta/index.d.ts",
       "import": "./meta/esm/index.mjs",
@@ -19,10 +23,9 @@
     }
   },
   "scripts": {
-    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta && npm run build:skill",
+    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
     "build:bundle:meta": "rollup -c rollup-meta.config.mjs --bundleConfigAsCjs",
-    "build:skill": "tsx scripts/build-skill.ts",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta"

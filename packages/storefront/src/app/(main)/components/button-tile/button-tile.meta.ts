@@ -3,6 +3,8 @@ import { buttonTileExampleHyphens } from '@porsche-design-system/shared/examples
 import Accessibility from '@/app/(main)/components/button-tile/accessibility/page.mdx';
 import IntroductionDescription from '@/app/(main)/components/button-tile/configurator/introduction.mdx';
 import { buttonTileSlotStory, buttonTileStory } from '@/app/(main)/components/button-tile/configurator/story';
+import ColorSchemeDescription from '@/app/(main)/components/button-tile/examples/color-scheme/example.mdx';
+import { buttonTileStoryColorScheme } from '@/app/(main)/components/button-tile/examples/color-scheme/story';
 import FooterSlotDescription from '@/app/(main)/components/button-tile/examples/footer-slot/example.mdx';
 import { buttonTileStoryFooterSlot } from '@/app/(main)/components/button-tile/examples/footer-slot/story';
 import HyphensDescription from '@/app/(main)/components/button-tile/examples/hyphens/example.mdx';
@@ -36,9 +38,14 @@ export const buttonTileMeta = {
       description: FooterSlotDescription,
       story: buttonTileStoryFooterSlot,
     },
+    colorScheme: {
+      kind: 'story',
+      name: 'Color scheme',
+      description: ColorSchemeDescription,
+      story: buttonTileStoryColorScheme,
+    },
   },
   usage: Usage,
   accessibility: Accessibility,
   api: componentMeta['p-button-tile'],
 } satisfies ComponentDocsMeta<'p-button-tile'>;
-
