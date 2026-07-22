@@ -116,6 +116,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         slot="header-end"
         icon="search"
         variant="secondary"
+        type="button"
         compact={true}
         hideLabel={true}
         onClick={onOpenSearch}
@@ -139,6 +140,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         slot="header-end"
         icon="configurate"
         variant="secondary"
+        type="button"
         compact={true}
         hideLabel={true}
         onClick={onSidebarEndToggle}
