@@ -6,9 +6,9 @@
 # outdated-dependency table, and upserts it as a single PR comment.
 #
 # Split responsibilities by failure mode:
-#   - Rendering is STRICT: a missing or invalid artifact fails the step, because
-#     that means the upstream stage/contract did not deliver what this stage
-#     depends on.
+#   - Rendering trusts the artifact: the outcome_contract gate already validated
+#     it against outdated.schema.json before this post_command runs, so this step
+#     only guards that the file is present and renders it.
 #   - Publishing is BEST-EFFORT: no PR context, or a transient gh/network error,
 #     must not fail the run — the rendered report is always written to the log.
 #
@@ -24,7 +24,9 @@ body_file="${out_dir}/outdated-report.md"
 marker="<!-- turbo-spec:outdated-report -->"
 mkdir -p "${out_dir}"
 
-# --- Render (strict) --------------------------------------------------------
+# --- Render -----------------------------------------------------------------
+# The outcome_contract gate already validated this artifact against
+# outdated.schema.json, so rendering trusts its shape and only guards presence.
 if [ ! -s "${json_file}" ]; then
   echo "report-comment: missing ${json_file}; upstream stage did not produce it." >&2
   exit 1
@@ -34,10 +36,6 @@ MARKER="${marker}" node -e '
   const fs = require("fs");
   const marker = process.env.MARKER;
   const data = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
-  if (data.schemaVersion !== 1 || !Array.isArray(data.outdated)) {
-    console.error("report-comment: invalid artifact — expected schemaVersion 1 and an outdated array.");
-    process.exit(1);
-  }
   const rows = data.outdated;
 
   const lines = [marker, "## 📦 Dependency update report", ""];

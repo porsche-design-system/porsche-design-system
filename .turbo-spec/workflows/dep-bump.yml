@@ -1,68 +1,37 @@
 name: dep-bump
 version: "1.0"
 description: >-
-  Minimal TurboSpec onboarding blueprint. `npm ci` runs once as the global
-  setup command (deterministic, lockfile-pinned environment preparation — not a
-  quality gate). A single agentless stage then collects the outdated third-party
-  npm dependencies into a schema-validated structured artifact and renders that
-  artifact as a Markdown table inside a report comment on the PR. Everything is
-  deterministic — there are no agentic stages.
+  Minimal TurboSpec onboarding blueprint: one deterministic, agentless stage.
+  `npm ci` prepares the tree once, then the stage collects the outdated
+  third-party npm dependencies into a structured artifact, validates it against
+  outdated.schema.json via the built-in outcome_contract gate, and renders it as
+  a Markdown table in a PR comment. There are no agentic stages.
 
 # `npm ci` prepares the tree once before any stage runs — a clean, deterministic
-# install that matches package-lock.json (repo CI convention) and never mutates
-# the lockfile. It is deliberately NOT a stage: there is no acceptance gate here,
-# only environment setup. A non-zero exit (including lock/manifest drift) aborts
-# the pipeline before the first stage.
+# install that matches package-lock.json and never mutates the lockfile. It is
+# environment setup, not a stage/gate; a non-zero exit aborts the pipeline before
+# the first stage. The 20m timeout overrides the 5m default for this monorepo.
 setup_command: "npm ci"
 setup_command_timeout: "20m"
 
-# Empty list = the default gh-aw + Porsche ecosystem domain allow-list (npm
-# registries included) applies. Add EXTRA literal hosts here only if the
-# sandbox log prints "[sandbox] egress denied" for a host a step needs.
-network:
-  allowed: []
-
 stages:
-  # check_outdated_dependencies — agentless, deterministic. One acceptance check:
-  # the outdated packages, collected into .turbo-spec/out/outdated.json, must
-  # satisfy outdated.schema.json.
-  #
+  # check_outdated_dependencies — agentless, deterministic:
   #   1. gate.pre_command  → collect-outdated.sh produces the structured artifact
   #      (hard-aborts on a genuine npm failure instead of authoring a false list).
-  #   2. outcome_contract  → validates that artifact against the schema. This is
-  #      the ONLY real gate; collection is merely its input preparation.
+  #   2. outcome_contract  → the built-in gate validates that artifact against the
+  #      schema. This is the only acceptance check.
   #   3. stage.post_command → report-comment.sh renders the artifact as a Markdown
-  #      table and upserts the PR comment. It is a side effect that runs AFTER the
-  #      result is accepted, not an acceptance check of its own.
+  #      table and upserts the PR comment, after the artifact is accepted.
   - name: check_outdated_dependencies
     orchestrator: testing
     outputs:
       outdated: .turbo-spec/out/outdated.json
-    # Report is a side effect, not a gate — it runs once the artifact is accepted.
     post_command: "bash .turbo-spec/scripts/report-comment.sh"
-    hook_timeout: "5m"
     quality_gates:
       - evaluator: outcome_contract
         on_fail: escalate
-        # Schema minimum is 1 (total attempts = 1 + max_retries). Because collect
-        # is this gate's pre_command, a validation retry re-collects a fresh npm
-        # snapshot before re-validating. That is fine: collect is idempotent, a
-        # transient npm glitch gets a second chance, and a genuine transform
-        # defect fails again and escalates.
-        max_retries: 1
-        # Produce the artifact the evaluator is about to inspect.
         pre_command: "bash .turbo-spec/scripts/collect-outdated.sh"
         hook_timeout: "10m"
         config:
           outcome_path: .turbo-spec/out/outdated.json
           schema: .turbo-spec/schemas/outdated.schema.json
-
-model_provider:
-  primary: copilot
-  config:
-    model_id: claude-sonnet-5
-
-settings:
-  max_total_retries: 2
-  timeout_per_stage: "20m"
-  human_escalation: true
