@@ -1701,6 +1701,7 @@ button {
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) + 4px);
   border: 1px solid undefined;
   border-radius: var(--p-radius-xl);
+  background: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   cursor: pointer;
@@ -1713,7 +1714,7 @@ span {
   display: block;
   font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
-  color: var(--p-color-contrast-medium);
+  color: var(--p-color-contrast-high);
 }
 @media(forced-colors:active) {
   button:focus-visible {
@@ -1781,7 +1782,10 @@ span {
 
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  }
+  button:hover {
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -12195,7 +12199,10 @@ span {
 
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  }
+  button:hover {
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
