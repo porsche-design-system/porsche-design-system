@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
 import type {
   VanillaExtractBranch,
@@ -17,9 +18,9 @@ import { type VanillaExtractKind, kindOf, vanillaExtractMeta } from '../vanillaE
  *
  * The documented surface is split into a `token` view (the `## Tokens` section) and a `utility` view
  * (the `## Utilities` section) by partitioning the flat `vanillaExtractMeta` catalog per leaf via
- * {@link kindOf}. Each leaf is keyed by its real export name; exact runtime values resolve to CSS
- * `light-dark()` custom properties at use time, so this file is the index of the JS API, not the
- * detail. Deprecated aliases stay public but undocumented and are intentionally omitted here.
+ * {@link kindOf}. Each leaf is keyed by its real export name; each token's resolved value is
+ * tabulated (colors as their `light-dark()` custom-property expression). Deprecated aliases stay
+ * public but undocumented and are intentionally omitted here.
  *
  * Structurally identical to the scss/tailwind/emotion serializers — only the leaf predicate, the
  * reference columns and the section headings differ (Vanilla Extract leaves carry a `name`; tokens a
@@ -29,7 +30,11 @@ import { type VanillaExtractKind, kindOf, vanillaExtractMeta } from '../vanillaE
 const code = (value: string): string => `\`${value}\``;
 
 /** Escape the few markdown-table-breaking characters a description might contain. */
-const cell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ');
+const cell = (text: string): string =>
+  text
+    .replace(/\\/g, '\\\\')
+    .replace(/\|/g, '\\|')
+    .replace(/\s*\n\s*/g, ' ');
 
 /** A markdown table from a header row and pre-rendered cell rows. */
 const table = (headers: string[], rows: string[][]): string =>
@@ -41,6 +46,7 @@ type Column<T> = { header: string; render: (item: T) => string };
 const tokenColumns: Column<VanillaExtractToken>[] = [
   { header: 'Export', render: (t) => code(t.name) },
   { header: 'Description', render: (t) => cell(t.description) },
+  { header: 'Value', render: (t) => code(String(t.value)) },
 ];
 
 const utilityColumns: Column<VanillaExtractUtility>[] = [
@@ -165,3 +171,10 @@ const utilities = `## Utilities\n\n${renderOutline(utilityOutline, utilityColumn
  */
 export const getVanillaExtractSkill = (): string =>
   `${[intro, howToUse, contents, tokens, utilities].filter(Boolean).join('\n\n')}\n`;
+
+export const vanillaExtractSkill: PackageSkill = {
+  name: 'vanilla-extract',
+  title: 'vanilla-extract',
+  description: 'typed tokens and utilities in `*.css.ts` files',
+  getContent: getVanillaExtractSkill,
+};

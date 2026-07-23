@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-static-sm">
-  <p-text-field-wrapper label="Value:"><input name="input-value" type="text" placeholder="e.g. 1" /></p-text-field-wrapper>
+  <p-input-text name="input-value" label="Value:" placeholder="e.g. 1"></p-input-text>
   <div class="flex gap-fluid-sm">
     <p-button id="btn-input-value" type="button" compact="true">Set Value</p-button>
     <p-button id="btn-reset" type="button" compact="true">Reset value</p-button>
@@ -16,7 +16,7 @@
 </div>
 
 <script>
-  const input = document.querySelector('input');
+  const input = document.querySelector('p-input-text');
   const select = document.querySelector('p-select');
 
   select.addEventListener('change', (e) => {
@@ -38,7 +38,7 @@
 
   document.querySelector('#btn-remove').addEventListener('click', () => {
     if (select.children.length > 0) {
-      select.lastChild.remove();
+      select.lastElementChild.remove();
     }
   });
 

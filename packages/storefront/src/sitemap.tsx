@@ -411,6 +411,18 @@ export const sitemap: Routes = {
       },
     },
   },
+  skills: {
+    name: 'Skills',
+    path: '/skills',
+    type: 'CATEGORY',
+    subPaths: {
+      knowledge: {
+        name: 'Knowledge',
+        path: '/skills/knowledge',
+        type: 'PAGE',
+      },
+    },
+  },
   components: {
     name: 'Components',
     path: '/components',

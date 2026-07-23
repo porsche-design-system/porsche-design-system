@@ -46,7 +46,7 @@ const propTypes: PropTypes<typeof Link> = {
 export class Link {
   @Element() public host!: HTMLElement;
 
-  /** Sets the visual style variant of the link (e.g. `primary`, `secondary`, `tertiary`). */
+  /** Sets the visual style variant of the link (`primary` or `secondary`). */
   @Prop() public variant?: LinkVariant = 'primary';
 
   /** Sets the icon displayed next to the link label. Use `none` to show no icon. */

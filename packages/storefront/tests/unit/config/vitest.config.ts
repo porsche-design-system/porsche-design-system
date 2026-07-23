@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   resolve: {
@@ -10,6 +10,7 @@ export default defineConfig({
   test: {
     root: resolve(__dirname, '../../../'),
     include: ['**/**/*.spec.{tsx,ts}'],
+    exclude: [...configDefaults.exclude, 'projects/**'],
     globals: true,
     testTimeout: 10000,
     environment: 'jsdom',
