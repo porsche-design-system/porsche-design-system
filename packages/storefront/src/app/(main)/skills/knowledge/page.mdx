@@ -25,8 +25,8 @@ Since AI integrations discover skills in dedicated directories rather than `node
 the bundled skill:
 
 ```text
-.agents/skills/porsche-design-system-components-{js|angular|react|vue}
-  -> node_modules/@porsche-design-system/components-{js|angular|react|vue}/skill
+.agents/skills/pds-knowledge-{js|angular|react|vue}
+  -> node_modules/@porsche-design-system/components-{js|angular|react|vue}/skills/pds-knowledge-{js|angular|react|vue}
 ```
 
 This **skill-in-package** approach provides two benefits:
@@ -79,14 +79,14 @@ On macOS or Linux, create the same project-local link from the repository root:
 
 ```bash
 mkdir -p .agents/skills
-ln -s "$(pwd)/node_modules/@porsche-design-system/components-react/skill" \
-  .agents/skills/porsche-design-system-components-react
+ln -s "$(pwd)/node_modules/@porsche-design-system/components-react/skills/pds-knowledge-react" \
+  .agents/skills/pds-knowledge-react
 ```
 
 ### 3. Verify the skill
 
-Reload your AI coding agent or start a new agent session, then confirm that
-`porsche-design-system-components-{js|angular|react|vue}` is available:
+Reload your AI coding agent or start a new agent session, then confirm that `pds-knowledge-{js|angular|react|vue}` is
+available:
 
 - **Claude Code:** Type `/` and look for the skill.
 - **GitHub Copilot CLI:** Run `/skills reload`, then `/skills list`.
@@ -116,5 +116,37 @@ Use the Knowledge Skill whenever a task touches frontend UI/UX in a project wher
 A skill can be invoked in two ways:
 
 - **Automatic invocation:** Your AI coding agent activates the skill when a task matches its description.
-- **Manual invocation:** Invoke `porsche-design-system-components-{js|angular|react|vue}` using your agent's skill
-  selection syntax to make sure it is used.
+- **Manual invocation:** Invoke `pds-knowledge-{js|angular|react|vue}` using your agent's skill selection syntax to make
+  sure it is used, for example `/pds-knowledge-react`.
+
+### Example prompts
+
+These examples use the React skill with slash-command syntax. Replace `react` with the framework used by your project.
+
+Ask for version-specific guidance:
+
+```text
+/pds-knowledge-react Recommend the right PDS components for a responsive sign-in form. Explain the relevant properties,
+slots and accessibility requirements for the version installed in this project.
+```
+
+Implement a feature:
+
+```text
+/pds-knowledge-react Build an accessible country selector that displays each country's flag in its option and groups the
+countries by continent. Use the appropriate PDS components and follow the existing framework and codebase conventions.
+```
+
+Review existing code:
+
+```text
+/pds-knowledge-react Review this page for deprecated or incorrect PDS usage, accessibility issues and opportunities to
+replace custom UI with PDS components. Apply the necessary fixes.
+```
+
+Update an implementation:
+
+```text
+/pds-knowledge-react Migrate this implementation to the APIs supported by the installed PDS version. Preserve its behavior
+and accessibility, and verify the result.
+```
