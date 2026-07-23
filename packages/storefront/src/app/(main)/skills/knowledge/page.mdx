@@ -8,7 +8,9 @@ export const metadata = {
 
 # Knowledge Skill
 
-<TableOfContents headings={['Introduction', 'How It Works', 'Installation', 'How to Use the Skill']} />
+<TableOfContents
+  headings={['Introduction', 'How It Works', 'Installation', 'Install with an AI Agent', 'How to Use the Skill']}
+/>
 
 ## Introduction
 
@@ -89,6 +91,23 @@ Reload your AI coding agent or start a new agent session, then confirm that
 - **Claude Code:** Type `/` and look for the skill.
 - **GitHub Copilot CLI:** Run `/skills reload`, then `/skills list`.
 - **Codex:** Run `/skills` or type `$` and look for the skill.
+
+## Install with an AI Agent
+
+An AI coding agent can inspect the project, select the installed Porsche Design System package and create the symlink
+with the bundled binary. Start the agent from the repository root and use this prompt:
+
+```text
+Set up the bundled Porsche Design System Knowledge Skill for this repository. Inspect the project dependencies to find
+the installed @porsche-design-system/components-{js|angular|react|vue} package. Choose the skills directory for your
+agent integration (.agents/skills for the Agent Skills standard and Codex, .claude/skills for Claude Code, or
+.github/skills for GitHub Copilot). Run npx pds-skill with the installed package and selected location, then verify that
+the generated skill symlink exists and points to the package's skill directory. Do not change project dependencies or
+replace a non-symlink file or directory.
+```
+
+If the project contains multiple supported packages or the target agent integration is unclear, the agent should ask
+which package and skills directory to use before making changes.
 
 ## How to Use the Skill
 
