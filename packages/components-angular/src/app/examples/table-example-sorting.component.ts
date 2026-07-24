@@ -20,19 +20,19 @@ const headSorting: HeadSorting[] = [
 
 type DataSorting = {
   col1: string;
-  col2: string;
+  col2: number;
   col3: string;
 };
 
 const dataSorting: DataSorting[] = [
   {
     col1: 'Name Z',
-    col2: '1',
+    col2: 1,
     col3: '24.06.2021',
   },
   {
     col1: 'Name A',
-    col2: '9',
+    col2: 9,
     col3: '01.06.2021',
   },
 ];
@@ -72,8 +72,9 @@ export class TableExampleSortingComponent {
   onUpdate(e: CustomEvent<TableUpdateEventDetail>): void {
     const { id, direction } = e.detail as TableUpdateEventDetail & { id: keyof DataSorting };
     this.head = this.head.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
-    this.data = [...this.data].sort((a, b) =>
-      direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
-    );
+    this.data = [...this.data].sort((a, b) => {
+      const result = String(a[id]).localeCompare(String(b[id]), undefined, { numeric: true });
+      return direction === 'asc' ? result : -result;
+    });
   }
 }

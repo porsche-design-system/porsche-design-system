@@ -29,19 +29,19 @@ const headSorting: HeadSorting[] = [
 
 type DataSorting = {
   col1: string;
-  col2: string;
+  col2: number;
   col3: string;
 };
 
 const dataSorting: DataSorting[] = [
   {
     col1: 'Name Z',
-    col2: '1',
+    col2: 1,
     col3: '24.06.2021',
   },
   {
     col1: 'Name A',
-    col2: '9',
+    col2: 9,
     col3: '01.06.2021',
   },
 ];
@@ -55,7 +55,8 @@ export const TableExampleSortingPage = () => {
     setHead((prev) => prev.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) })));
     setData((prev) =>
       [...prev].sort((a, b) => {
-        return direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id]);
+        const result = String(a[id]).localeCompare(String(b[id]), undefined, { numeric: true });
+        return direction === 'asc' ? result : -result;
       })
     );
   }, []);
