@@ -41,19 +41,32 @@ context:
 stages:
   # 1. Clean baseline install. A broken baseline is not "data" to branch on — it
   #    means the checkout itself is unusable, so hard-fail the run.
+  #    `timeout:` is a real constraint, not cargo cult: a `kind: script` step with
+  #    no override inherits the engine's 300s default and is SIGKILLed on expiry
+  #    (proven at the build stage below). A cold-cache install of ~400 deps can
+  #    exceed 300s — our 24s baseline pass only happened because the npm cache was
+  #    warm — so give it generous headroom to avoid a spurious abort.
   - name: install_baseline
     kind: script
     on_error: abort
+    timeout: "30m"
     steps:
       - name: install
         command: ["npm", "run", "npm:install"]
 
   # 2. Full build against the current baseline (proves the tree is green BEFORE we
   #    touch any versions). Slow on this monorepo; hard-fail if it breaks.
+  #    `timeout: "60m"` is required, not guessed: a real run of this exact blueprint
+  #    SIGKILLed the build at exactly the engine's 300s `kind: script` default
+  #    (still mid-build, exit -9), aborting the run before any terminal. The full
+  #    PDS build (core-deps -> components -> js -> angular/react/vue -> storefront)
+  #    needs far more than 5min, so 60m gives comfortable headroom. `on_error:
+  #    abort` stays — a broken baseline build SHOULD hard-fail.
   - name: build
     kind: script
     depends_on: [install_baseline]
     on_error: abort
+    timeout: "60m"
     steps:
       - name: build
         command: ["npm", "run", "build"]
@@ -75,10 +88,14 @@ stages:
   #    re-enters, so its 1-based `attempts` counter drives the budget. A failed
   #    install is DATA here (on_error: continue), not an abort — the decision
   #    downstream branches on `try_install.success` / `try_install.attempts`.
+  #    Same 300s-default caveat as install_baseline: without an explicit `timeout:`
+  #    a cold-cache install here would be SIGKILLed at 300s, turning the retry loop
+  #    into a nasty intermittent failure — so it carries a generous override too.
   - name: try_install
     kind: script
     depends_on: [bump_versions]
     on_error: continue
+    timeout: "30m"
     steps:
       - name: install-updated
         command: ["npm", "run", "npm:install"]
