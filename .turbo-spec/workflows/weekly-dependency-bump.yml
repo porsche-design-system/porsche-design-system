@@ -1,0 +1,204 @@
+# Weekly npm dependency-bump — turbo-spec workflow blueprint.
+#
+# A turbo-spec-native evolution of .github/workflows/weekly-dependency-agent.yml.
+# The deterministic dependency work (install, build, syncpack bump, retry-install,
+# routing, PR/issue mechanics) is expressed as `kind: script` and `kind: decision`
+# nodes; only the genuinely judgement-requiring step — resolving the ROOT CAUSE of
+# an `npm install` failure (peer/ERESOLVE conflicts → add or prune root
+# `overrides`, per docs/runbooks/dependency-updates-agent.md steps 6-7) — stays an
+# LLM agent. This is a PROPOSAL alongside the existing Actions dispatcher, not a
+# replacement.
+#
+# ENGINE PREREQUISITE: requires turbo-spec with PR #1398 (deterministic-script-node)
+# merged — it ships `kind: script`, `kind: decision`, backward routing and
+# `outcome:`. It will NOT load on the current turbo-spec release.
+#
+# Schema: <turbo-spec>/src/workflow_skeleton/_builtin/workflows/schema.json
+name: weekly-dependency-bump
+version: "1.0"
+description: >
+  Deterministic-first weekly npm dependency bump. Installs a clean baseline,
+  builds, bumps non-held-back versions with syncpack, then retries the install up
+  to three times — handing each failure to an agent that fixes the root cause —
+  before opening a PR (green) or a draft PR plus a manual-resolution issue
+  (budget exhausted).
+
+# There is no `schedule` trigger type in turbo-spec (TriggerType is
+# issue|cli|slack|webhook). The weekly "every Monday morning" cadence is driven by
+# a thin GitHub Actions cron that invokes the engine — exactly as the existing
+# weekly-dependency-agent.yml cron dispatches today. `cli` is the functional
+# trigger the cron calls.
+triggers:
+  - type: cli
+    command: weekly-dependency-bump
+
+context:
+  required:
+    - repository
+  optional:
+    - branch_name
+
+stages:
+  # 1. Clean baseline install. A broken baseline is not "data" to branch on — it
+  #    means the checkout itself is unusable, so hard-fail the run.
+  - name: install_baseline
+    kind: script
+    on_error: abort
+    steps:
+      - name: install
+        command: ["npm", "run", "npm:install"]
+
+  # 2. Full build against the current baseline (proves the tree is green BEFORE we
+  #    touch any versions). Slow on this monorepo; hard-fail if it breaks.
+  - name: build
+    kind: script
+    depends_on: [install_baseline]
+    on_error: abort
+    steps:
+      - name: build
+        command: ["npm", "run", "build"]
+
+  # 3. Bump non-held-back versions with syncpack, non-interactively. `npm:update`
+  #    is `--interactive` and would hang in automation; `npm:update:ci` is its
+  #    non-interactive sibling (added in this PR). `.syncpackrc.json` already
+  #    excludes the held-back deps (@porsche-design-system/**, @playwright/test,
+  #    @stencil/core), so this only moves what the weekly bump is allowed to move.
+  - name: bump_versions
+    kind: script
+    depends_on: [build]
+    on_error: abort
+    steps:
+      - name: syncpack-update
+        command: ["npm", "run", "npm:update:ci"]
+
+  # 4. Try to install the updated versions. THIS is the node the retry loop
+  #    re-enters, so its 1-based `attempts` counter drives the budget. A failed
+  #    install is DATA here (on_error: continue), not an abort — the decision
+  #    downstream branches on `try_install.success` / `try_install.attempts`.
+  - name: try_install
+    kind: script
+    depends_on: [bump_versions]
+    on_error: continue
+    steps:
+      - name: install-updated
+        command: ["npm", "run", "npm:install"]
+
+  # 5. THE ONE AGENT. Only runs when the install failed AND retry budget remains
+  #    (attempts 1 and 2); skipped on success and on the spent 3rd attempt. It
+  #    sits between try_install and the decision, so a backward route re-runs
+  #    try_install + this agent — i.e. "agent fixes, then install is retried".
+  #    Its job: diagnose the ROOT CAUSE (peer/ERESOLVE conflict) and fix it the
+  #    correct way — a pinned root `overrides` entry, or pruning a now-stale one —
+  #    never --force / --legacy-peer-deps / hand-edited versions.
+  - name: resolve_install_failure
+    orchestrator: implementation
+    depends_on: [try_install]
+    condition: "not try_install.success and try_install.attempts < 3"
+    system_prompt: implementer
+    agents:
+      - type: implementer
+        tools: [file, shell, github]
+
+  # 6. Pure router. First-match-wins:
+  #      success            -> open_pr            (forward)
+  #      attempts < 3        -> try_install        (BACKWARD -> retry loop body)
+  #      otherwise (default) -> draft_and_file_issue (forward)
+  #    Forward targets MUST depend_on this decision (else their edge flips backward
+  #    and exclusivity goes inert). The backward target (try_install) MUST NOT.
+  - name: route_install
+    kind: decision
+    depends_on: [resolve_install_failure]
+    when:
+      - condition: "try_install.success"
+        goto: open_pr
+      - condition: "try_install.attempts < 3"
+        goto: try_install
+    default:
+      goto: draft_and_file_issue
+
+  # 7. Success terminal: commit the bump and open a normal PR. The git commit
+  #    carries identity inline because a `kind: script` node runs under a scrubbed
+  #    EnvScope (GIT_CONFIG_GLOBAL=/dev/null) — without it the commit fails
+  #    "Author identity unknown". `gh` auth survives the scrub. Dependency work is
+  #    `npm run`; the git/gh mechanics are deterministic argument-vector steps.
+  - name: open_pr
+    kind: script
+    depends_on: [route_install]
+    on_error: abort
+    outcome: pr_opened
+    steps:
+      - name: commit
+        command:
+          - git
+          - -c
+          - user.name=porsche-design-system-bot
+          - -c
+          - user.email=porsche-design-system-bot@users.noreply.github.com
+          - commit
+          - -am
+          - "chore(deps): weekly npm dependency bump"
+      - name: open-pr
+        command:
+          - gh
+          - pr
+          - create
+          - --fill
+          - --title
+          - "chore(deps): weekly npm dependency updates"
+          - --body
+          - "Automated weekly npm dependency bump (syncpack). Held-back deps untouched. See docs/runbooks/dependency-updates-agent.md."
+
+  # 8. Exhausted terminal: budget spent and install still red. Commit the partial
+  #    progress, open a DRAFT PR, and file an issue for manual resolution. Same
+  #    inline-identity requirement as open_pr.
+  - name: draft_and_file_issue
+    kind: script
+    depends_on: [route_install]
+    on_error: abort
+    outcome: draft_filed
+    steps:
+      - name: commit
+        command:
+          - git
+          - -c
+          - user.name=porsche-design-system-bot
+          - -c
+          - user.email=porsche-design-system-bot@users.noreply.github.com
+          - commit
+          - -am
+          - "chore(deps): weekly npm dependency bump (unresolved install)"
+      - name: open-draft-pr
+        command:
+          - gh
+          - pr
+          - create
+          - --draft
+          - --fill
+          - --title
+          - "chore(deps): weekly npm dependency updates (needs manual resolution)"
+          - --body
+          - "Automated weekly bump could not resolve `npm install` after 3 attempts. Draft PR for manual resolution — see docs/runbooks/dependency-updates-agent.md steps 6-7."
+      - name: file-issue
+        command:
+          - gh
+          - issue
+          - create
+          - --title
+          - "chore(deps): weekly npm dependency bump needs manual resolution"
+          - --label
+          - dependencies
+          - --body
+          - "The automated weekly dependency bump exhausted its 3 install-retry attempts. A draft PR was opened; manual resolution of the peer/ERESOLVE conflict is required per docs/runbooks/dependency-updates-agent.md."
+
+model_provider:
+  primary: copilot
+  config:
+    model_id: claude-sonnet-5
+
+settings:
+  # Backward loop is bounded by the decision guard (attempts < 3); this is the
+  # unrelated cross-stage gate-retry ceiling.
+  max_total_retries: 6
+  # Generous per-stage bound: the full monorepo build and installs are slow.
+  timeout_per_stage: "60m"
+  human_escalation: true
