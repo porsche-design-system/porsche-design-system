@@ -223,7 +223,8 @@
     "change-case": "^5.4.4",
     "jss": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
-    "jss-preset-default": "^10.10.0"
+    "jss-preset-default": "^10.10.0",
+    "turbospec-demo-nonexistent": "^1.0.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
