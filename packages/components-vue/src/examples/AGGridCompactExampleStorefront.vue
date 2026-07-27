@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { pdsTheme } from '@porsche-design-system/components-vue/ag-grid';
+import { pdsThemeCompact } from '@porsche-design-system/components-vue/ag-grid';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridVue } from 'ag-grid-vue3';
 
@@ -107,7 +107,7 @@ const defaultColDef = {
 
 <template>
   <ag-grid-vue
-    :theme="pdsTheme"
+    :theme="pdsThemeCompact"
     :rowData="rowData"
     :columnDefs="columnDefs"
     :defaultColDef="defaultColDef"
