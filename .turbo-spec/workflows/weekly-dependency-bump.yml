@@ -116,11 +116,16 @@ stages:
     default:
       goto: draft_and_file_issue
 
-  # 7. Success terminal: commit the bump and open a normal PR. The git commit
-  #    carries identity inline because a `kind: script` node runs under a scrubbed
-  #    EnvScope (GIT_CONFIG_GLOBAL=/dev/null) — without it the commit fails
-  #    "Author identity unknown". `gh` auth survives the scrub. Dependency work is
-  #    `npm run`; the git/gh mechanics are deterministic argument-vector steps.
+  # 7. Success terminal: commit the bump, push the branch, and open a normal PR.
+  #    The git commit carries identity inline because a `kind: script` node runs
+  #    under a scrubbed EnvScope (GIT_CONFIG_GLOBAL=/dev/null) — without it the
+  #    commit fails "Author identity unknown". The explicit `git push` is required
+  #    for the same reason `gh pr create` alone is not enough: under the scrubbed
+  #    EnvScope `gh pr create` does NOT auto-push the branch, so without this step
+  #    it fails "No commits between main and <branch>". `gh` auth (and the git
+  #    credential helper) survive the scrub, so both push and create authenticate.
+  #    Ordering is commit -> push -> create. Dependency work is `npm run`; the
+  #    git/gh mechanics are deterministic argument-vector steps.
   - name: open_pr
     kind: script
     depends_on: [route_install]
@@ -137,6 +142,13 @@ stages:
           - commit
           - -am
           - "chore(deps): weekly npm dependency bump"
+      - name: push
+        command:
+          - git
+          - push
+          - --force-with-lease
+          - origin
+          - HEAD
       - name: open-pr
         command:
           - gh
@@ -149,8 +161,9 @@ stages:
           - "Automated weekly npm dependency bump (syncpack). Held-back deps untouched. See docs/runbooks/dependency-updates-agent.md."
 
   # 8. Exhausted terminal: budget spent and install still red. Commit the partial
-  #    progress, open a DRAFT PR, and file an issue for manual resolution. Same
-  #    inline-identity requirement as open_pr.
+  #    progress, push the branch, open a DRAFT PR, and file an issue for manual
+  #    resolution. Same inline-identity requirement on the commit and same explicit
+  #    `git push` (before `gh pr create`) as open_pr — see that note.
   - name: draft_and_file_issue
     kind: script
     depends_on: [route_install]
@@ -167,6 +180,13 @@ stages:
           - commit
           - -am
           - "chore(deps): weekly npm dependency bump (unresolved install)"
+      - name: push
+        command:
+          - git
+          - push
+          - --force-with-lease
+          - origin
+          - HEAD
       - name: open-draft-pr
         command:
           - gh
