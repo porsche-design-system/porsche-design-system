@@ -63,6 +63,7 @@ export default [
               './css/styles': './css/styles.css',
               './tsconfig.json': './tsconfig.json',
               './examples': './examples/index.ts', // Examples is not bundled to avoid problems with next.js "use client" in mdx
+              './examples/*': './examples/*.tsx', // deep imports let a page pull one example without dragging the whole barrel into its chunk
             },
           }),
         }),

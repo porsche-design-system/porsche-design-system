@@ -24,6 +24,7 @@ type SampleName =
 type CodeSample = {
   component: SampleName; // PDS tag or relevant component
   examples: CodeExample[];
+  excludeFromBarrel?: boolean; // still generated, but not re-exported from index.ts; import by deep path instead
 };
 
 type CodeExample = {
@@ -32,21 +33,30 @@ type CodeExample = {
 };
 
 const codeExamples: CodeSample[] = [
-  // TODO: Don't use shared import in AG Grid Example
-  // {
-  //   component: 'ag-grid',
-  //   examples: [
-  //     {
-  //       name: 'AG Grid Example',
-  //       paths: {
-  //         'vanilla-js': '/ag-grid-example-storefront.html',
-  //         angular: '/ag-grid-example-storefront.component.ts',
-  //         react: '/AGGridExampleStorefront.tsx',
-  //         vue: '/AGGridExampleStorefront.vue',
-  //       },
-  //     },
-  //   ],
-  // },
+  {
+    component: 'ag-grid',
+    excludeFromBarrel: true, // keeps AG Grid's ~1.1 MB library off every page that imports any example
+    examples: [
+      {
+        name: 'Default Theme',
+        paths: {
+          'vanilla-js': '/ag-grid-example-storefront.html',
+          angular: '/ag-grid-example-storefront.component.ts',
+          react: '/AGGridExampleStorefront.tsx',
+          vue: '/AGGridExampleStorefront.vue',
+        },
+      },
+      {
+        name: 'Compact Theme',
+        paths: {
+          'vanilla-js': '/ag-grid-example-compact-storefront.html',
+          angular: '/ag-grid-example-compact-storefront.component.ts',
+          react: '/AGGridCompactExampleStorefront.tsx',
+          vue: '/AGGridCompactExampleStorefront.vue',
+        },
+      },
+    ],
+  },
   // {
   //   component: 'p-accordion',
   //   examples: [
@@ -743,7 +753,9 @@ const generateNextJsCodeExamples = (codeExamples: CodeSample[]) => {
 
       fs.writeFileSync(targetFile, fileContent);
       console.log(`Generated Next.js example: ${targetFile}`);
-      generatedFiles.push(componentName);
+      if (!sample.excludeFromBarrel) {
+        generatedFiles.push(componentName);
+      }
     }
   }
 
