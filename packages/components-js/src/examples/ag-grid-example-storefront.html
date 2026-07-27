@@ -55,6 +55,7 @@
   ];
 
   const gridOptions = {
+    theme: pdsTheme,
     // Data to be displayed
     rowData: rowData.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row })),
     // Columns to be displayed (Should match rowData properties)
@@ -103,10 +104,11 @@
     },
     // Grid Options & Callbacks
     pagination: true,
+    domLayout: 'autoHeight',
   };
 
 
   agGrid.createGrid(grid, gridOptions);
 </script>
 
-<div id="my-grid" style="height: 100vh; padding: 1rem"></div>
+<div id="my-grid" style="padding: 1rem"></div>
