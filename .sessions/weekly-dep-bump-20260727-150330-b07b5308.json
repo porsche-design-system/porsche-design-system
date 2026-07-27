@@ -1,0 +1,507 @@
+{
+  "schema_version": "session-state/v2",
+  "session_id": "weekly-dep-bump-20260727-150330-b07b5308",
+  "workflow_name": "weekly-dep-bump",
+  "created_at": "2026-07-27T15:03:30.956892+00:00",
+  "updated_at": "2026-07-27T15:03:47.615073+00:00",
+  "current_stage": "open_pr",
+  "completed_stages": [
+    "install",
+    "build",
+    "bump",
+    "try_install",
+    "gate",
+    "draft_pr"
+  ],
+  "context": {
+    "repository": "porsche-design-system/porsche-design-system",
+    "working_directory": "/Users/FNN57BH/Developer/pds-demo-wt",
+    "session_id": "weekly-dep-bump-20260727-150330-b07b5308",
+    "workflow.run_kind": "initial",
+    "workflow.rerun_count": 0
+  },
+  "stage_handoffs": {
+    "install": {
+      "payload": {
+        "summary": "",
+        "agent_skipped": false,
+        "_truncated": [],
+        "kind": "generic",
+        "metadata": {}
+      },
+      "gate_result": null,
+      "completed_at": "2026-07-27T15:03:40.351161+00:00",
+      "attempt": 1,
+      "success": true,
+      "duration_seconds": 1.848223416993278,
+      "tokens": null,
+      "model": null,
+      "awaiting_approval": false
+    },
+    "build": {
+      "payload": {
+        "summary": "",
+        "agent_skipped": false,
+        "_truncated": [],
+        "kind": "generic",
+        "metadata": {}
+      },
+      "gate_result": null,
+      "completed_at": "2026-07-27T15:03:40.699386+00:00",
+      "attempt": 1,
+      "success": true,
+      "duration_seconds": 0.34588104199792724,
+      "tokens": null,
+      "model": null,
+      "awaiting_approval": false
+    },
+    "bump": {
+      "payload": {
+        "summary": "",
+        "agent_skipped": false,
+        "_truncated": [],
+        "kind": "generic",
+        "metadata": {}
+      },
+      "gate_result": null,
+      "completed_at": "2026-07-27T15:03:41.048663+00:00",
+      "attempt": 1,
+      "success": true,
+      "duration_seconds": 0.3472029169934103,
+      "tokens": null,
+      "model": null,
+      "awaiting_approval": false
+    },
+    "try_install": {
+      "payload": {
+        "summary": "",
+        "agent_skipped": false,
+        "_truncated": [],
+        "kind": "generic",
+        "metadata": {}
+      },
+      "gate_result": null,
+      "completed_at": "2026-07-27T15:03:42.476571+00:00",
+      "attempt": 1,
+      "success": true,
+      "duration_seconds": 1.4257119170069927,
+      "tokens": null,
+      "model": null,
+      "awaiting_approval": false
+    },
+    "gate": {
+      "payload": {
+        "summary": "",
+        "agent_skipped": false,
+        "_truncated": [],
+        "kind": "generic",
+        "metadata": {}
+      },
+      "gate_result": null,
+      "completed_at": "2026-07-27T15:03:42.498964+00:00",
+      "attempt": 1,
+      "success": true,
+      "duration_seconds": 0.0019516250031301752,
+      "tokens": null,
+      "model": null,
+      "awaiting_approval": false
+    },
+    "draft_pr": {
+      "payload": {
+        "summary": "",
+        "agent_skipped": false,
+        "_truncated": [],
+        "kind": "generic",
+        "metadata": {}
+      },
+      "gate_result": null,
+      "completed_at": "2026-07-27T15:03:42.500484+00:00",
+      "attempt": 1,
+      "success": true,
+      "duration_seconds": 0.00028241700783837587,
+      "tokens": null,
+      "model": null,
+      "awaiting_approval": false
+    },
+    "open_pr": {
+      "payload": {
+        "summary": "script node 'open_pr' failed (exit 1) with on_error: abort",
+        "agent_skipped": false,
+        "_truncated": [],
+        "kind": "generic",
+        "metadata": {}
+      },
+      "gate_result": null,
+      "completed_at": "2026-07-27T15:03:47.606011+00:00",
+      "attempt": 1,
+      "success": false,
+      "duration_seconds": 5.101307290999102,
+      "tokens": null,
+      "model": null,
+      "awaiting_approval": false
+    }
+  },
+  "rerun_count": 0,
+  "blueprint_snapshot": {
+    "name": "weekly-dep-bump",
+    "version": "1.0",
+    "description": "Real-capstone SUCCESS variant of weekly-dep-bump (epic #1384, PR #1398). Identical topology to the canonical blueprint; `build` is scoped to a fast real command and `bump` uses a benign (installable) syncpack format so the install succeeds and the run reaches the pr_opened terminal. The terminals are deterministic kind:script nodes that do REAL GitHub work via `gh` (a real PR / a real draft PR + issue) \u2014 the agent-driven terminal was tried first and the LLM refused it (see report), so the mechanical open-PR action is a script node. The `resolve` node remains a REAL LLM agent (only reached on the exhausted run).",
+    "extends": null,
+    "base_version": null,
+    "setup_command": null,
+    "setup_command_timeout": null,
+    "sandbox_setup_command": null,
+    "sandbox_setup_cache": true,
+    "format_command": null,
+    "format_command_timeout": null,
+    "triggers": [
+      {
+        "type": "cli",
+        "label": null,
+        "command": "run",
+        "channel": null
+      }
+    ],
+    "context": {
+      "required": [
+        "repository"
+      ],
+      "optional": [],
+      "defaults": {}
+    },
+    "stages": [
+      {
+        "name": "install",
+        "kind": "script",
+        "orchestrator": null,
+        "steps": [
+          {
+            "name": null,
+            "command": [
+              "npm",
+              "install",
+              "--ignore-scripts",
+              "--no-audit",
+              "--no-fund"
+            ]
+          }
+        ],
+        "on_error": "abort",
+        "workflow_file": null,
+        "depends_on": [],
+        "agents": [],
+        "quality_gates": [],
+        "timeout": null,
+        "config": {},
+        "system_prompt": null,
+        "pre_command": null,
+        "post_command": null,
+        "hook_timeout": null,
+        "condition": null,
+        "outputs": {},
+        "outcome": null,
+        "when": [],
+        "default": null
+      },
+      {
+        "name": "build",
+        "kind": "script",
+        "orchestrator": null,
+        "steps": [
+          {
+            "name": null,
+            "command": [
+              "npx",
+              "syncpack",
+              "lint"
+            ]
+          }
+        ],
+        "on_error": "abort",
+        "workflow_file": null,
+        "depends_on": [
+          "install"
+        ],
+        "agents": [],
+        "quality_gates": [],
+        "timeout": null,
+        "config": {},
+        "system_prompt": null,
+        "pre_command": null,
+        "post_command": null,
+        "hook_timeout": null,
+        "condition": null,
+        "outputs": {},
+        "outcome": null,
+        "when": [],
+        "default": null
+      },
+      {
+        "name": "bump",
+        "kind": "script",
+        "orchestrator": null,
+        "steps": [
+          {
+            "name": null,
+            "command": [
+              "npx",
+              "syncpack",
+              "format"
+            ]
+          }
+        ],
+        "on_error": "continue",
+        "workflow_file": null,
+        "depends_on": [
+          "build"
+        ],
+        "agents": [],
+        "quality_gates": [],
+        "timeout": null,
+        "config": {},
+        "system_prompt": null,
+        "pre_command": null,
+        "post_command": null,
+        "hook_timeout": null,
+        "condition": null,
+        "outputs": {},
+        "outcome": null,
+        "when": [],
+        "default": null
+      },
+      {
+        "name": "try_install",
+        "kind": "script",
+        "orchestrator": null,
+        "steps": [
+          {
+            "name": null,
+            "command": [
+              "npm",
+              "install",
+              "--ignore-scripts",
+              "--no-audit",
+              "--no-fund"
+            ]
+          }
+        ],
+        "on_error": "continue",
+        "workflow_file": null,
+        "depends_on": [
+          "bump"
+        ],
+        "agents": [],
+        "quality_gates": [],
+        "timeout": null,
+        "config": {},
+        "system_prompt": null,
+        "pre_command": null,
+        "post_command": null,
+        "hook_timeout": null,
+        "condition": null,
+        "outputs": {},
+        "outcome": null,
+        "when": [],
+        "default": null
+      },
+      {
+        "name": "gate",
+        "kind": "decision",
+        "orchestrator": null,
+        "steps": [],
+        "on_error": "continue",
+        "workflow_file": null,
+        "depends_on": [
+          "try_install"
+        ],
+        "agents": [],
+        "quality_gates": [],
+        "timeout": null,
+        "config": {},
+        "system_prompt": null,
+        "pre_command": null,
+        "post_command": null,
+        "hook_timeout": null,
+        "condition": null,
+        "outputs": {},
+        "outcome": null,
+        "when": [
+          {
+            "condition": "try_install.success",
+            "goto": "open_pr"
+          },
+          {
+            "condition": "try_install.attempts < 3",
+            "goto": "resolve"
+          }
+        ],
+        "default": {
+          "goto": "draft_pr"
+        }
+      },
+      {
+        "name": "resolve",
+        "kind": "agent",
+        "orchestrator": "implementation",
+        "steps": [],
+        "on_error": "continue",
+        "workflow_file": null,
+        "depends_on": [
+          "gate"
+        ],
+        "agents": [
+          {
+            "id": null,
+            "type": "dependency_fixer",
+            "skills": null,
+            "skip_without_skills": false,
+            "tools": [
+              "github",
+              "file",
+              "shell"
+            ],
+            "mcp": [],
+            "model": null,
+            "model_kwargs": {},
+            "system_prompt": "dependency_fixer",
+            "config": {},
+            "quality_gates": [],
+            "output_schema": null,
+            "artifact_type": null,
+            "pre_command": null,
+            "post_command": null,
+            "hook_timeout": null
+          }
+        ],
+        "quality_gates": [],
+        "timeout": null,
+        "config": {},
+        "system_prompt": null,
+        "pre_command": null,
+        "post_command": null,
+        "hook_timeout": null,
+        "condition": null,
+        "outputs": {},
+        "outcome": null,
+        "when": [],
+        "default": null
+      },
+      {
+        "name": "reloop",
+        "kind": "decision",
+        "orchestrator": null,
+        "steps": [],
+        "on_error": "continue",
+        "workflow_file": null,
+        "depends_on": [
+          "resolve"
+        ],
+        "agents": [],
+        "quality_gates": [],
+        "timeout": null,
+        "config": {},
+        "system_prompt": null,
+        "pre_command": null,
+        "post_command": null,
+        "hook_timeout": null,
+        "condition": null,
+        "outputs": {},
+        "outcome": null,
+        "when": [
+          {
+            "condition": "true",
+            "goto": "try_install"
+          }
+        ],
+        "default": {
+          "goto": "try_install"
+        }
+      },
+      {
+        "name": "open_pr",
+        "kind": "script",
+        "orchestrator": null,
+        "steps": [
+          {
+            "name": null,
+            "command": [
+              "bash",
+              "-lc",
+              "set -euo pipefail; BR=turbo-spec-demo/dep-bump-engine-demo; git push origin --delete \"$BR\" 2>/dev/null || true; git checkout -B \"$BR\"; git add -A; git commit -m 'chore(deps): turbo-spec workflow-engine validation - safe to close' -m 'Co-authored-by: Porsche-AI' || true; git push -u origin \"$BR\" -f; gh pr create --repo porsche-design-system/porsche-design-system --base main --head \"$BR\" --title '[turbo-spec ENGINE DEMO] automated weekly dependency bump - safe to close' --body 'Automated, maintainer-authorized end-to-end validation of the turbo-spec workflow engine (PR #1398, epic #1384). This is NOT a real dependency bump and is not intended to be merged - it demonstrates the engine success terminal (outcome: pr_opened). Safe to close immediately.'"
+            ]
+          }
+        ],
+        "on_error": "abort",
+        "workflow_file": null,
+        "depends_on": [
+          "gate"
+        ],
+        "agents": [],
+        "quality_gates": [],
+        "timeout": null,
+        "config": {},
+        "system_prompt": null,
+        "pre_command": null,
+        "post_command": null,
+        "hook_timeout": null,
+        "condition": null,
+        "outputs": {},
+        "outcome": "pr_opened",
+        "when": [],
+        "default": null
+      },
+      {
+        "name": "draft_pr",
+        "kind": "script",
+        "orchestrator": null,
+        "steps": [
+          {
+            "name": null,
+            "command": [
+              "bash",
+              "-lc",
+              "set -euo pipefail; BR=turbo-spec-demo/dep-bump-engine-demo-draft; git push origin --delete \"$BR\" 2>/dev/null || true; git checkout -B \"$BR\"; git add -A; git commit -m 'chore(deps): turbo-spec engine validation - needs manual fix - safe to close' -m 'Co-authored-by: Porsche-AI' || true; git push -u origin \"$BR\" -f; gh pr create --repo porsche-design-system/porsche-design-system --draft --base main --head \"$BR\" --title '[turbo-spec ENGINE DEMO - DRAFT] dependency bump needs manual resolution - safe to close' --body 'Automated, maintainer-authorized end-to-end validation of the turbo-spec workflow engine (PR #1398). Exhaustion terminal (outcome: draft_filed). NOT a real dependency bump. Safe to close.'; gh issue create --repo porsche-design-system/porsche-design-system --title '[turbo-spec ENGINE DEMO] dependency bump needs manual resolution - safe to close' --body 'Automated, maintainer-authorized turbo-spec engine validation (PR #1398). npm install failed after 3 bounded retries (E404 for an intentionally-nonexistent sentinel package). NOT a real issue. Safe to close.'"
+            ]
+          }
+        ],
+        "on_error": "abort",
+        "workflow_file": null,
+        "depends_on": [
+          "gate"
+        ],
+        "agents": [],
+        "quality_gates": [],
+        "timeout": null,
+        "config": {},
+        "system_prompt": null,
+        "pre_command": null,
+        "post_command": null,
+        "hook_timeout": null,
+        "condition": null,
+        "outputs": {},
+        "outcome": "draft_filed",
+        "when": [],
+        "default": null
+      }
+    ],
+    "model_provider": {
+      "primary": "copilot",
+      "config": {
+        "model_id": "claude-sonnet-5"
+      }
+    },
+    "settings": {
+      "max_total_retries": 8,
+      "timeout_per_stage": "30m",
+      "human_escalation": false
+    },
+    "mcp_config": null,
+    "jira": null,
+    "figma": null,
+    "network": {
+      "allowed": []
+    },
+    "custom_tools": {}
+  },
+  "status": "failed"
+}

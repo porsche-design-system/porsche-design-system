@@ -8,17 +8,17 @@
   "homepage": "https://designsystem.porsche.com",
   "sideEffects": false,
   "type": "commonjs",
+  "exports": {
+    ".": {
+      "types": "./meta/esm/index.d.ts",
+      "import": "./meta/esm/index.mjs",
+      "require": "./meta/cjs/index.cjs",
+      "sass": "./dist/_index.scss"
+    }
+  },
   "main": "./meta/cjs/index.cjs",
   "module": "./meta/esm/index.mjs",
   "types": "./meta/esm/index.d.ts",
-  "exports": {
-    ".": {
-      "sass": "./dist/_index.scss",
-      "types": "./meta/esm/index.d.ts",
-      "import": "./meta/esm/index.mjs",
-      "require": "./meta/cjs/index.cjs"
-    }
-  },
   "files": [
     "./dist/",
     "./meta/"
