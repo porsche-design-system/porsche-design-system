@@ -1,5 +1,6 @@
 import { AccordionExampleComponent } from './accordion-example.component';
 import { AgGridExampleComponent } from './ag-grid-example.component';
+import { AgGridExampleCompactStorefrontComponent } from './ag-grid-example-compact-storefront.component';
 import { AgGridExampleStorefrontComponent } from './ag-grid-example-storefront.component';
 import { BannerExampleComponent } from './banner-example.component';
 import { ButtonExampleFormComponent } from './button-example-form.component';
@@ -119,6 +120,7 @@ export const examples = [
   SheetExampleComponent,
   AgGridExampleComponent,
   AgGridExampleStorefrontComponent,
+  AgGridExampleCompactStorefrontComponent,
   BannerExampleComponent,
   ButtonExampleFormComponent,
   ButtonExampleFormAttributeComponent,
@@ -234,6 +236,7 @@ export const examples = [
 
 export * from './accordion-example.component';
 export * from './ag-grid-example.component';
+export * from './ag-grid-example-compact-storefront.component';
 export * from './ag-grid-example-storefront.component';
 export * from './banner-example.component';
 export * from './button-example-form.component';

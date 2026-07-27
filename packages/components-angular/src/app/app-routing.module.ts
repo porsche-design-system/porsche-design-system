@@ -95,6 +95,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.AgGridExampleStorefrontComponent,
   },
   {
+    name: 'AG Grid Example Compact Storefront',
+    path: 'ag-grid-example-compact-storefront',
+    component: fromExamples.AgGridExampleCompactStorefrontComponent,
+  },
+  {
     name: 'Banner Example',
     path: 'banner-example',
     component: fromExamples.BannerExampleComponent,
