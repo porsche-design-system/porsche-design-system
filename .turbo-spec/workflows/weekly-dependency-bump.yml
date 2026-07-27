@@ -174,9 +174,9 @@ stages:
           - create
           - --fill
           - --title
-          - "chore(deps): weekly npm dependency updates"
+          - "[turbo-spec ENGINE DEMO] weekly-dependency-bump success terminal — safe to close"
           - --body
-          - "Automated weekly npm dependency bump (syncpack). Held-back deps untouched. See docs/runbooks/dependency-updates-agent.md."
+          - "Automated turbo-spec ENGINE DEMO / blueprint-validation run from porsche-code/turbo-spec#1398. NOT a real dependency bump — proves the committed weekly-dependency-bump success terminal (commit -> push -> gh pr create) against the real repo with a real npm install/build/syncpack bump. Safe to close."
 
   # 8. Exhausted terminal: budget spent and install still red. Commit the partial
   #    progress, push the branch, open a DRAFT PR, and file an issue for manual
@@ -213,20 +213,20 @@ stages:
           - --draft
           - --fill
           - --title
-          - "chore(deps): weekly npm dependency updates (needs manual resolution)"
+          - "[turbo-spec ENGINE DEMO] weekly-dependency-bump exhausted terminal — safe to close"
           - --body
-          - "Automated weekly bump could not resolve `npm install` after 3 attempts. Draft PR for manual resolution — see docs/runbooks/dependency-updates-agent.md steps 6-7."
+          - "Automated turbo-spec ENGINE DEMO from porsche-code/turbo-spec#1398. NOT a real dependency bump — proves the exhausted terminal (draft PR + issue) after the 3-attempt retry budget on real inputs. Safe to close."
       - name: file-issue
         command:
           - gh
           - issue
           - create
           - --title
-          - "chore(deps): weekly npm dependency bump needs manual resolution"
+          - "[turbo-spec ENGINE DEMO] weekly-dependency-bump manual-resolution issue — safe to close"
           - --label
           - dependencies
           - --body
-          - "The automated weekly dependency bump exhausted its 3 install-retry attempts. A draft PR was opened; manual resolution of the peer/ERESOLVE conflict is required per docs/runbooks/dependency-updates-agent.md."
+          - "Automated turbo-spec ENGINE DEMO from porsche-code/turbo-spec#1398. NOT a real dependency-bump issue — filed by the blueprint's exhausted terminal to prove `gh issue create --label dependencies`. Safe to close."
 
 model_provider:
   primary: copilot
