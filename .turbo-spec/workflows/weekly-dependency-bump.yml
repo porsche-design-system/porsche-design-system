@@ -128,7 +128,7 @@ stages:
         tools: [file, shell, github]
 
   # 6. Pure router. First-match-wins:
-  #      success            -> open_pr                (forward)
+  #      success            -> verify_bump             (forward)
   #      attempts < 3        -> try_install            (BACKWARD -> retry loop body)
   #      otherwise (default) -> needs_manual_resolution (forward)
   #    Forward targets MUST depend_on this decision (else their edge flips backward
@@ -138,7 +138,7 @@ stages:
     depends_on: [resolve_install_failure]
     when:
       - condition: "try_install.success"
-        goto: open_pr
+        goto: verify_bump
       - condition: "try_install.attempts < 3"
         goto: try_install
     default:
@@ -151,27 +151,30 @@ stages:
   #    A `kind: script` step is DENIED write-capable GitHub credentials by design
   #    (the executor scrubs GITHUB_TOKEN because npm scripts run arbitrary
   #    dependency code) and its command is never templated — so a terminal cannot,
-  #    and must not, hand-roll `gh pr create`. Because the engine does the PR work,
-  #    this node's only remaining job is to TAG the success terminal so the trace
-  #    records `outcome: pr_opened` and `outcomes.final` reads `pr_opened`. A marker
-  #    step that exits zero is exactly that job, honestly named — not a stand-in for
-  #    work that isn't happening. (An earlier revision ran `npm:outdated` here, but
-  #    that is `syncpack update --check`, which exits non-zero whenever ANY drift
-  #    remains — essentially always, given held-back + minor-capped families — so the
-  #    outcome was recorded unsuccessful and `outcomes.final` came out null on the
-  #    success path.) `echo` resolves as a real binary, safe under argv-without-shell.
-  #    `on_error: continue` is retained defensively.
-  - name: open_pr
+  #    and must not, hand-roll `gh pr create`. Because the engine opens the PR, this
+  #    stage instead VERIFIES the bump: `npm run npm:lint` (syncpack lint) asserts
+  #    dependency versions are CONSISTENT across all workspaces after the bump — a
+  #    different, non-redundant question from `try_install` (a monorepo can install
+  #    cleanly yet be internally inconsistent). It honours `.syncpackrc.json`, so the
+  #    excluded / minor-capped families are not reported. It exits 0 on a consistent
+  #    tree, so the success terminal records `outcome: pr_opened` and `outcomes.final`
+  #    reads `pr_opened`. `on_error: continue` is retained defensively.
+  #    CONSERVATIVE-OUTCOME NOTE: if the agent pins a dependency back in the root
+  #    manifest but not in every workspace declaring it, syncpack lint fails, the run
+  #    fails, and the engine keeps the PR DRAFT — an agent-repaired-but-inconsistent
+  #    bump lands as a draft. That is the correct conservative result (documented in
+  #    the PR body and .turbo-spec/README.md).
+  - name: verify_bump
     kind: script
     depends_on: [route_install]
     on_error: continue
     outcome: pr_opened
     steps:
-      - name: mark-success
-        command: ["echo", "weekly dependency bump succeeded — PR marked ready by the engine"]
+      - name: verify-consistency
+        command: ["npm", "run", "npm:lint"]
 
   # 8. Exhausted terminal. Budget spent (3 attempts) and the install is still red.
-  #    Like open_pr, the engine owns the PR: `--create-pr` KEEPS the PR as a DRAFT
+  #    Like verify_bump, the engine owns the PR: `--create-pr` KEEPS the PR as a DRAFT
   #    when the run fails (finalize_pr(success=False)) — exactly the flowchart's
   #    "open draft PR". So this node opens no PR and files no issue (a script step
   #    has no write token; issue creation is dropped by decision — see the header

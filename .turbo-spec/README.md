@@ -25,12 +25,19 @@ npm scripts can run arbitrary dependency code), and its command is never templat
 Instead the run is launched with the engine's `--create-pr`, which opens a draft PR
 up front, auto-commits and pushes the worktree after every stage, and finalizes the
 PR **ready on success / kept draft on failure**. The two terminal nodes therefore
-carry only a minimal, honest signal: the success terminal is a zero-exit **marker**
-step (`echo …`) whose sole job is to tag the terminal so the trace records
-`outcome: pr_opened` / `outcomes.final = pr_opened` — the engine already did the PR
-work, so the terminal only names the outcome; the exhausted terminal re-runs the
-still-failing `npm run npm:install` so the real ERESOLVE output lands in the trace
-and PR summary, and the failing run leaves the PR as a draft.
+do no git/gh work: the success terminal (`verify_bump`) runs `npm run npm:lint`
+(syncpack lint) to assert dependency versions are **consistent across all workspaces**
+after the bump — a different, non-redundant question from `try_install` (a monorepo can
+install cleanly yet be internally inconsistent). It honours `.syncpackrc.json`, exits 0
+on a consistent tree, and its success records `outcome: pr_opened` /
+`outcomes.final = pr_opened`. The exhausted terminal re-runs the still-failing
+`npm run npm:install` so the real ERESOLVE output lands in the trace and PR summary, and
+the failing run leaves the PR as a draft.
+
+**Conservative-outcome caveat:** if the agent pins a dependency back in the root manifest
+but not in every workspace declaring it, `syncpack lint` fails, the run fails, and the
+engine keeps the PR **draft** — so an agent-repaired-but-inconsistent bump lands as a
+draft. That is the correct conservative result for an inconsistent bump.
 
 **Deliberate narrowing of the original request:** the exhausted path opens a draft
 PR only — it does **not** file a separate manual-resolution issue. Issue creation
