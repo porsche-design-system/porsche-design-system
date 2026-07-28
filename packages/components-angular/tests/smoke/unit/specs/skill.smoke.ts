@@ -6,7 +6,7 @@ const distDir = path.resolve(__dirname, '../../../../dist/angular-wrapper');
 const canonicalBinPath = path.resolve(distDir, '../../../storefront/projects/skill/bin/pds-skill.js');
 
 describe('angular-wrapper skill distribution', () => {
-  test.each(['skill/SKILL.md', 'bin/pds-skill.js'])('should contain %s', (file) => {
+  test.each(['skills/pds-knowledge-angular/SKILL.md', 'bin/pds-skill.js'])('should contain %s', (file) => {
     expect(fs.existsSync(path.resolve(distDir, file))).toBe(true);
   });
 
