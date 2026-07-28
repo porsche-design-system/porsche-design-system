@@ -24,7 +24,7 @@
 # `outcome:`. It will NOT load on the current turbo-spec release.
 #
 # Schema: <turbo-spec>/src/workflow_skeleton/_builtin/workflows/schema.json
-name: weekly-dependency-bump
+name: dependency-bump
 version: "1.0"
 description: >
   Deterministic-first weekly npm dependency bump. Installs a clean baseline,
@@ -41,7 +41,7 @@ description: >
 # trigger the cron calls.
 triggers:
   - type: cli
-    command: weekly-dependency-bump
+    command: dependency-bump
 
 context:
   required:
@@ -134,6 +134,33 @@ stages:
     agents:
       - type: implementer
         tools: [file, shell, github]
+    # Gate the agent's own work before the stage is allowed to finish: re-run the
+    # real install and only let the agent out when it actually passes. script_gate
+    # maps exit codes to verdicts — 0 passes, 1 (npm's ERESOLVE/peer failure) is a
+    # genuine failure that loops back and re-runs this agent with up to 4000 chars of
+    # the install output folded into its feedback, and >=2 escalates rather than
+    # hard-failing. Omitting `loop_back:` targets the current stage, so the retry
+    # re-runs this agent, not an earlier one.
+    # `max_retries: 1` (2 turns) is deliberate and load-bearing: this gate nests
+    # INSIDE the outer route_install retry loop, so the budgets multiply. At the
+    # default max_retries of 3 the worst case would be 4 x 3 = 12 agent turns
+    # (~2h, ~$8 at the measured ~10min / $0.70 per turn); at 1 it is 2 x 3 = 6.
+    # ponytail: this deliberately duplicates try_install's command — the gate proves
+    # the fix inside the stage, try_install re-proves it as the loop's condition
+    # source. Collapsing the two would mean deleting the backward-routing loop.
+    # KNOWN CEILING: script_gate calls run_step with timeout=None, so this step is
+    # UNBOUNDED — there is no timeout knob on a gate step (unlike a kind: script
+    # stage). A wedged npm install here would hang indefinitely rather than being
+    # killed. Acceptable because npm install terminates on its own in practice;
+    # revisit if the engine grows a per-gate-step timeout.
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 1
+        config:
+          steps:
+            - name: verify-install
+              command: ["npm", "run", "npm:install"]
 
   # 6. Pure router. First-match-wins:
   #      success            -> verify_bump             (forward)
@@ -232,8 +259,10 @@ settings:
   #   - It reaches ONLY script stages without an explicit `timeout:`; every script
   #     stage above now sets one, so at present it governs nothing.
   #   - It does NOT govern the agent — agent turns use the engine's separate
-  #     WORKER_TIMEOUT_SECONDS (3600s, env TURBO_SPEC_WORKER_TIMEOUT), so a
-  #     stage-level `timeout:` on an agent stage is schema-forbidden anyway.
+  #     WORKER_TIMEOUT_SECONDS (3600s, env TURBO_SPEC_WORKER_TIMEOUT). An agent stage
+  #     MAY declare `timeout:` (it validates), but nothing consumes it: the resolver
+  #     that would apply it, WorkflowRunner._resolve_timeout, has no production caller,
+  #     so both `stage.timeout` and this setting are inert on agent stages.
   # It also cannot be dropped to restore the engine's 300s fail-fast default: the
   # schema defaults this key to 50m, so omitting it just yields 50m. Kept at 60m as
   # an explicit, generous latent backstop for any future un-timeout'd script stage —

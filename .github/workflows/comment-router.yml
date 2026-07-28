@@ -13,9 +13,9 @@
 #   - The `uses:` pin: pinned to @deterministic-script-node (turbo-spec PR #1398)
 #     to match the engine driver; pin a release tag (e.g. @v1.2.3) once #1398 ships.
 #   - engine_workflow: only if your engine caller shim is not named
-#     agentic-dependency-bump.yml.
+#     weekly-dependency-bump-turbospec.yml.
 #
-# Prerequisites: same as agentic-dependency-bump.yml.
+# Prerequisites: same as weekly-dependency-bump-turbospec.yml.
 
 name: TurboSpec | Workflow Comment Router
 
@@ -28,11 +28,11 @@ on:
 # A reusable workflow cannot raise the caller's token permissions — grant the
 # router's full set here.
 permissions:
-  actions: write # dispatch agentic-dependency-bump.yml AND delete prior router runs
+  actions: write # dispatch weekly-dependency-bump-turbospec.yml AND delete prior router runs
   contents: read
   issues: write # add the 🚀 acknowledgement reaction on comments
   pull-requests: write
-  # This workflow only dispatches agentic-dependency-bump.yml (which runs Copilot
+  # This workflow only dispatches weekly-dependency-bump-turbospec.yml (which runs Copilot
   # with its own permissions); granted here for consistency with the other
   # consumer shims.
   copilot-requests: write
@@ -69,4 +69,4 @@ jobs:
     uses: porsche-code/turbo-spec/.github/workflows/comment-router.yml@deterministic-script-node
     secrets: inherit
     with:
-      engine_workflow: agentic-dependency-bump.yml
+      engine_workflow: weekly-dependency-bump-turbospec.yml

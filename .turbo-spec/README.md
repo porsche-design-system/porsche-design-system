@@ -7,7 +7,7 @@ builtins.
 
 ## Workflows
 
-- [`workflows/weekly-dependency-bump.yml`](workflows/weekly-dependency-bump.yml) —
+- [`workflows/dependency-bump.yml`](workflows/dependency-bump.yml) —
   a turbo-spec-native **proposal** for the weekly npm dependency bump. It expresses
   the deterministic dependency work (install, build, syncpack bump, retry-install,
   routing) as `kind: script` / `kind: decision` nodes and keeps a single LLM agent
@@ -62,8 +62,8 @@ only against that branch.
 ## Running
 
 ```bash
-workflow-skeleton validate .turbo-spec/workflows/weekly-dependency-bump.yml
-workflow-skeleton run      .turbo-spec/workflows/weekly-dependency-bump.yml \
+workflow-skeleton validate .turbo-spec/workflows/dependency-bump.yml
+workflow-skeleton run      .turbo-spec/workflows/dependency-bump.yml \
   --repo porsche-design-system/porsche-design-system \
   --create-pr
 ```
@@ -79,9 +79,9 @@ Three thin consumer shims in [`.github/workflows/`](../.github/workflows/) drive
 blueprint in GitHub Actions (adapted from the turbo-spec onboarding example in
 porsche-design-system#4589):
 
-- [`agentic-dependency-bump.yml`](../.github/workflows/agentic-dependency-bump.yml) —
+- [`weekly-dependency-bump-turbospec.yml`](../.github/workflows/weekly-dependency-bump-turbospec.yml) —
   the engine **driver**. `workflow_dispatch`-only; calls the reusable
-  `engine.yml` with `blueprint: weekly-dependency-bump`. (The weekly cadence itself
+  `engine.yml` with `blueprint: dependency-bump`. (The weekly cadence itself
   stays with the existing `weekly-dependency-agent.yml` cron — this shim is the manual
   and resume entry point, not a second scheduler.)
 - [`ai-watch.yml`](../.github/workflows/ai-watch.yml) — watches the driver for
@@ -108,5 +108,33 @@ resolves a script step's ceiling as `stage.timeout or settings.timeout_per_stage
 or 300s`, so a stage without its own `timeout:` silently inherits the 60m global —
 a 25-second `syncpack update` would then hang for an hour before being killed.
 `settings.timeout_per_stage: 60m` is therefore only a backstop; it governs no stage
-today and does **not** bound the agent stage (agent turns use the engine's separate
-worker timeout, and a stage-level `timeout:` on an agent stage is schema-forbidden).
+today and does **not** bound the agent stage. An agent stage *may* declare `timeout:`
+(it validates), but nothing consumes it: the resolver that would apply it,
+`WorkflowRunner._resolve_timeout`, has no production caller, so both `stage.timeout`
+and this setting are inert on agent stages — an agent turn is bounded solely by the
+engine's `WORKER_TIMEOUT_SECONDS` (3600s, env `TURBO_SPEC_WORKER_TIMEOUT`).
+
+## Naming
+
+The two files are deliberately named for their different jobs:
+
+- **`.turbo-spec/workflows/dependency-bump.yml`** is the *blueprint* — the recipe for
+  **how** to bump dependencies. It is cadence-agnostic and reusable, so it carries no
+  "weekly" in its name.
+- **`.github/workflows/weekly-dependency-bump-turbospec.yml`** is the *execution* — the
+  **weekly** run of that recipe via turbo-spec, sitting alongside the existing
+  `weekly-dependency-agent.yml`.
+
+⚠️ `ai-watch.yml` matches the driver by its **display name** (`workflows: ["TurboSpec |
+Weekly Dependency Bump"]`), not its filename. If the driver's `name:` is ever changed
+without updating that list the watcher does not error — it silently never fires. Keep
+the two strings identical.
+
+## Verifying the agent's fix
+
+The agent stage carries a `script_gate` quality gate that re-runs `npm run npm:install`
+after the agent's turn and loops back — re-running the agent with the install output as
+feedback — when it still fails. `max_retries: 1` is deliberate: the gate nests inside the
+outer `route_install` retry loop, so the budgets multiply (2 x 3 = 6 agent turns worst
+case; the default of 3 would allow 12). Note the gate step is **unbounded** — `script_gate`
+runs its steps with `timeout=None` and exposes no per-step timeout knob.
