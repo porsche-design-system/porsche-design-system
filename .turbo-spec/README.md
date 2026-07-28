@@ -30,14 +30,19 @@ do no git/gh work: the success terminal (`verify_bump`) runs `npm run npm:lint`
 after the bump — a different, non-redundant question from `try_install` (a monorepo can
 install cleanly yet be internally inconsistent). It honours `.syncpackrc.json`, exits 0
 on a consistent tree, and its success records `outcome: pr_opened` /
-`outcomes.final = pr_opened`. The exhausted terminal re-runs the still-failing
+`outcomes.final = pr_opened`. It runs under `on_error: abort`, so the gate genuinely
+gates (see the caveat below). The exhausted terminal re-runs the still-failing
 `npm run npm:install` so the real ERESOLVE output lands in the trace and PR summary, and
 the failing run leaves the PR as a draft.
 
 **Conservative-outcome caveat:** if the agent pins a dependency back in the root manifest
-but not in every workspace declaring it, `syncpack lint` fails, the run fails, and the
-engine keeps the PR **draft** — so an agent-repaired-but-inconsistent bump lands as a
-draft. That is the correct conservative result for an inconsistent bump.
+but not in every workspace declaring it, `syncpack lint` fails, the stage aborts, the run
+fails, and the engine keeps the PR **draft** — so an agent-repaired-but-inconsistent bump
+lands as a draft. On that failure path `pr_opened` is recorded in `outcomes.reached` with
+`success: false` and is **not** the final outcome (`outcomes.final` is null) — the
+anti-laundering behaviour the trace is designed for. This makes `verify_bump` symmetric
+with `needs_manual_resolution`: both terminals genuinely gate. That is the correct
+conservative result for an inconsistent bump.
 
 **Deliberate narrowing of the original request:** the exhausted path opens a draft
 PR only — it does **not** file a separate manual-resolution issue. Issue creation

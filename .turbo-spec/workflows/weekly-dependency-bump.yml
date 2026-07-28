@@ -156,18 +156,25 @@ stages:
   #    dependency versions are CONSISTENT across all workspaces after the bump — a
   #    different, non-redundant question from `try_install` (a monorepo can install
   #    cleanly yet be internally inconsistent). It honours `.syncpackrc.json`, so the
-  #    excluded / minor-capped families are not reported. It exits 0 on a consistent
-  #    tree, so the success terminal records `outcome: pr_opened` and `outcomes.final`
-  #    reads `pr_opened`. `on_error: continue` is retained defensively.
-  #    CONSERVATIVE-OUTCOME NOTE: if the agent pins a dependency back in the root
-  #    manifest but not in every workspace declaring it, syncpack lint fails, the run
-  #    fails, and the engine keeps the PR DRAFT — an agent-repaired-but-inconsistent
-  #    bump lands as a draft. That is the correct conservative result (documented in
-  #    the PR body and .turbo-spec/README.md).
+  #    excluded / minor-capped families are not reported. On a consistent tree it
+  #    exits 0, the stage succeeds, the run succeeds, and `outcomes.final` reads
+  #    `pr_opened` — the engine marks the PR READY.
+  #    `on_error: abort` is LOAD-BEARING (not defensive): it gives the gate teeth so
+  #    the conservative guarantee below actually holds. It mirrors
+  #    `needs_manual_resolution` — both terminals genuinely gate.
+  #    CONSERVATIVE-OUTCOME GUARANTEE: if the agent pins a dependency back in the root
+  #    manifest but not in every workspace declaring it, syncpack lint fails, the stage
+  #    aborts, the run fails, and the engine KEEPS the PR DRAFT — an agent-repaired-but-
+  #    inconsistent bump lands as a draft. `pr_opened` is then recorded in
+  #    `outcomes.reached` with success=false and is (correctly) NOT the final outcome.
+  #    That is the correct conservative result (documented in the PR body and
+  #    .turbo-spec/README.md). Under `on_error: continue` a failing lint would be treated
+  #    as data, the run would succeed, and the PR would be marked ready anyway — silently
+  #    breaking that guarantee — which is exactly why this must be `abort`.
   - name: verify_bump
     kind: script
     depends_on: [route_install]
-    on_error: continue
+    on_error: abort
     outcome: pr_opened
     steps:
       - name: verify-consistency
