@@ -6,7 +6,7 @@ import {
   type ColDef,
   ModuleRegistry,
   ValidationModule /* Development Only */,
-} from 'ag-grid-enterprise';
+} from 'ag-grid-community';
 
 ModuleRegistry.registerModules([AllCommunityModule, ValidationModule]);
 

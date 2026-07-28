@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { pdsTheme } from '@porsche-design-system/components-vue/ag-grid';
-import { AllCommunityModule, ModuleRegistry } from 'ag-grid-enterprise';
+import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import { AgGridVue } from 'ag-grid-vue3';
 
 ModuleRegistry.registerModules([AllCommunityModule]);

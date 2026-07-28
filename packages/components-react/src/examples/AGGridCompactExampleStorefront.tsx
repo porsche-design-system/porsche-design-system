@@ -1,5 +1,5 @@
 import { pdsThemeCompact } from '@porsche-design-system/components-react/ag-grid';
-import { AllCommunityModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
+import { AllCommunityModule, type ColDef, ModuleRegistry } from 'ag-grid-community';
 import { AgGridReact } from 'ag-grid-react';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
