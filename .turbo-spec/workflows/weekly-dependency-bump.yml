@@ -2,12 +2,22 @@
 #
 # A turbo-spec-native evolution of .github/workflows/weekly-dependency-agent.yml.
 # The deterministic dependency work (install, build, syncpack bump, retry-install,
-# routing, PR/issue mechanics) is expressed as `kind: script` and `kind: decision`
-# nodes; only the genuinely judgement-requiring step — resolving the ROOT CAUSE of
-# an `npm install` failure (peer/ERESOLVE conflicts → add or prune root
-# `overrides`, per docs/runbooks/dependency-updates-agent.md steps 6-7) — stays an
-# LLM agent. This is a PROPOSAL alongside the existing Actions dispatcher, not a
-# replacement.
+# routing) is expressed as `kind: script` and `kind: decision` nodes; the PR
+# LIFECYCLE itself is owned by the engine's `--create-pr` (draft PR opened up
+# front, per-stage auto-commit + push, marked ready on success / kept draft on
+# failure) — a `kind: script` node cannot and must not hand-roll `gh` because the
+# executor scrubs write-capable GitHub tokens from script steps by design. Only
+# the genuinely judgement-requiring step — resolving the ROOT CAUSE of an
+# `npm install` failure (peer/ERESOLVE conflicts → add or prune root `overrides`,
+# per docs/runbooks/dependency-updates-agent.md steps 6-7) — stays an LLM agent.
+# This is a PROPOSAL alongside the existing Actions dispatcher, not a replacement.
+#
+# NOTE — deliberate narrowing of the original flowchart: the exhausted path opens a
+# DRAFT PR only; it does NOT file a separate manual-resolution issue. Issue
+# creation cannot work here (`--create-issue` is mutually exclusive with
+# `--create-pr`, and a script step has no write token), and the draft PR alone
+# signals "needs manual resolution". Notifying on a non-zero engine exit belongs to
+# the thin GitHub Actions cron that schedules the run, not to the pipeline.
 #
 # ENGINE PREREQUISITE: requires turbo-spec with PR #1398 (deterministic-script-node)
 # merged — it ships `kind: script`, `kind: decision`, backward routing and
@@ -20,8 +30,8 @@ description: >
   Deterministic-first weekly npm dependency bump. Installs a clean baseline,
   builds, bumps non-held-back versions with syncpack, then retries the install up
   to three times — handing each failure to an agent that fixes the root cause —
-  before opening a PR (green) or a draft PR plus a manual-resolution issue
-  (budget exhausted).
+  before the engine's --create-pr lifecycle publishes the result: the PR is marked
+  ready (green) or kept as a draft for manual resolution (budget exhausted).
 
 # There is no `schedule` trigger type in turbo-spec (TriggerType is
 # issue|cli|slack|webhook). The weekly "every Monday morning" cadence is driven by
@@ -118,9 +128,9 @@ stages:
         tools: [file, shell, github]
 
   # 6. Pure router. First-match-wins:
-  #      success            -> open_pr            (forward)
-  #      attempts < 3        -> try_install        (BACKWARD -> retry loop body)
-  #      otherwise (default) -> draft_and_file_issue (forward)
+  #      success            -> open_pr                (forward)
+  #      attempts < 3        -> try_install            (BACKWARD -> retry loop body)
+  #      otherwise (default) -> needs_manual_resolution (forward)
   #    Forward targets MUST depend_on this decision (else their edge flips backward
   #    and exclusivity goes inert). The backward target (try_install) MUST NOT.
   - name: route_install
@@ -132,101 +142,52 @@ stages:
       - condition: "try_install.attempts < 3"
         goto: try_install
     default:
-      goto: draft_and_file_issue
+      goto: needs_manual_resolution
 
-  # 7. Success terminal: commit the bump, push the branch, and open a normal PR.
-  #    The git commit carries identity inline because a `kind: script` node runs
-  #    under a scrubbed EnvScope (GIT_CONFIG_GLOBAL=/dev/null) — without it the
-  #    commit fails "Author identity unknown". The explicit `git push` is required
-  #    for the same reason `gh pr create` alone is not enough: under the scrubbed
-  #    EnvScope `gh pr create` does NOT auto-push the branch, so without this step
-  #    it fails "No commits between main and <branch>". `gh` auth (and the git
-  #    credential helper) survive the scrub, so both push and create authenticate.
-  #    Ordering is commit -> push -> create. Dependency work is `npm run`; the
-  #    git/gh mechanics are deterministic argument-vector steps.
+  # 7. Success terminal. The engine's `--create-pr` lifecycle already owns every
+  #    git/gh mechanic: it opened the draft PR up front, auto-commits + pushes the
+  #    worktree after EVERY stage (so the syncpack bump and any agent fix are
+  #    already on the PR branch), and on run success marks the PR READY for review.
+  #    A `kind: script` step is DENIED write-capable GitHub credentials by design
+  #    (the executor scrubs GITHUB_TOKEN because npm scripts run arbitrary
+  #    dependency code) and its command is never templated — so a terminal cannot,
+  #    and must not, hand-roll `gh pr create`. This node's only job is a meaningful,
+  #    side-effect-free signal into the PR/trace: the residual outdated state after
+  #    the bump. `on_error: continue` because `npm:outdated` (syncpack --check)
+  #    exits non-zero when drift remains — that is DATA, not a run failure; the run
+  #    must still succeed so the engine marks the PR ready and `outcome: pr_opened`
+  #    becomes the final outcome.
   - name: open_pr
     kind: script
     depends_on: [route_install]
-    on_error: abort
+    on_error: continue
     outcome: pr_opened
     steps:
-      - name: commit
-        command:
-          - git
-          - -c
-          - user.name=porsche-design-system-bot
-          - -c
-          - user.email=porsche-design-system-bot@users.noreply.github.com
-          - commit
-          - -am
-          - "chore(deps): weekly npm dependency bump"
-      - name: push
-        command:
-          - git
-          - push
-          - --force-with-lease
-          - origin
-          - HEAD
-      - name: open-pr
-        command:
-          - gh
-          - pr
-          - create
-          - --fill
-          - --title
-          - "chore(deps): weekly npm dependency updates"
-          - --body
-          - "Automated weekly npm dependency bump (syncpack). Held-back deps untouched. See docs/runbooks/dependency-updates-agent.md."
+      - name: report-outdated
+        command: ["npm", "run", "npm:outdated"]
 
-  # 8. Exhausted terminal: budget spent and install still red. Commit the partial
-  #    progress, push the branch, open a DRAFT PR, and file an issue for manual
-  #    resolution. Same inline-identity requirement on the commit and same explicit
-  #    `git push` (before `gh pr create`) as open_pr — see that note.
-  - name: draft_and_file_issue
+  # 8. Exhausted terminal. Budget spent (3 attempts) and the install is still red.
+  #    Like open_pr, the engine owns the PR: `--create-pr` KEEPS the PR as a DRAFT
+  #    when the run fails (finalize_pr(success=False)) — exactly the flowchart's
+  #    "open draft PR". So this node opens no PR and files no issue (a script step
+  #    has no write token; issue creation is dropped by decision — see the header
+  #    note, the PR body and .turbo-spec/README.md). Instead it runs the real,
+  #    still-failing `npm run npm:install` under `on_error: abort`: the deps are
+  #    genuinely broken, so this fails for real, the run fails, the engine keeps the
+  #    PR draft, and the real ERESOLVE/peer output lands in the trace and PR summary
+  #    for the human doing manual resolution. The real failing command (not `false`)
+  #    is deliberate — it demonstrates the failure with real evidence.
+  #    NOTE: `outcome: draft_filed` is tagged on a stage that then aborts, so it
+  #    appears in `outcomes.reached` with success=false and is (correctly) NOT the
+  #    final outcome — `final` only picks the last SUCCESSFUL outcome.
+  - name: needs_manual_resolution
     kind: script
     depends_on: [route_install]
     on_error: abort
     outcome: draft_filed
     steps:
-      - name: commit
-        command:
-          - git
-          - -c
-          - user.name=porsche-design-system-bot
-          - -c
-          - user.email=porsche-design-system-bot@users.noreply.github.com
-          - commit
-          - -am
-          - "chore(deps): weekly npm dependency bump (unresolved install)"
-      - name: push
-        command:
-          - git
-          - push
-          - --force-with-lease
-          - origin
-          - HEAD
-      - name: open-draft-pr
-        command:
-          - gh
-          - pr
-          - create
-          - --draft
-          - --fill
-          - --title
-          - "chore(deps): weekly npm dependency updates (needs manual resolution)"
-          - --body
-          - "Automated weekly bump could not resolve `npm install` after 3 attempts. Draft PR for manual resolution — see docs/runbooks/dependency-updates-agent.md steps 6-7."
-      - name: file-issue
-        command:
-          - gh
-          - issue
-          - create
-          - --title
-          - "chore(deps): weekly npm dependency bump needs manual resolution"
-          - --label
-          - dependencies
-          - --body
-          - "The automated weekly dependency bump exhausted its 3 install-retry attempts. A draft PR was opened; manual resolution of the peer/ERESOLVE conflict is required per docs/runbooks/dependency-updates-agent.md."
+      - name: reinstall-still-broken
+        command: ["npm", "run", "npm:install"]
 
 model_provider:
   primary: copilot

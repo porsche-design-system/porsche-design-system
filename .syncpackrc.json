@@ -46,6 +46,39 @@
       "label": "Held-back dependencies — upgraded deliberately, not via automated checks (see docs/dependencies.md and .github/dependabot.yml)",
       "dependencies": ["@porsche-design-system/**", "@playwright/test", "@stencil/core"],
       "isIgnored": true
+    },
+    {
+      "label": "Major-version-gated families — automated updates capped at minor/patch; major upgrades are done by hand and coordinated (see docs/dependencies.md)",
+      "dependencies": [
+        "@angular/**",
+        "ng-packagr",
+        "zone.js",
+        "ag-grid-*",
+        "@ag-grid-community/**",
+        "react",
+        "react-dom",
+        "react-router",
+        "react-router-dom",
+        "@react-router/**",
+        "@types/react",
+        "@types/react-dom",
+        "@testing-library/react",
+        "react-syntax-highlighter",
+        "@types/react-syntax-highlighter",
+        "vue",
+        "vue-router",
+        "vue-tsc",
+        "@vue/**",
+        "@vitejs/plugin-react",
+        "@vitejs/plugin-vue",
+        "tailwindcss",
+        "@tailwindcss/**",
+        "typescript",
+        "sass",
+        "@emotion/**",
+        "@vanilla-extract/**"
+      ],
+      "target": "minor"
     }
   ]
 }
