@@ -154,3 +154,9 @@ that green path is the expected weekly outcome.
 
 Note the gate step is **unbounded** — `script_gate` runs its steps with `timeout=None`
 and exposes no per-step timeout knob, unlike every `kind: script` stage above.
+
+Measured in run #4633 (the gate-driven topology, end to end against a real checkout):
+the gate added **~15s** to the agent stage (27:05 total vs 26:50 for the agent turn
+itself), so verification is close to free relative to a model turn. That run's gate
+passed on the first turn, so the loop-back path — a `script_gate` *failure* re-running
+the stage — has not yet been observed in a real run.
