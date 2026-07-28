@@ -151,20 +151,24 @@ stages:
   #    A `kind: script` step is DENIED write-capable GitHub credentials by design
   #    (the executor scrubs GITHUB_TOKEN because npm scripts run arbitrary
   #    dependency code) and its command is never templated — so a terminal cannot,
-  #    and must not, hand-roll `gh pr create`. This node's only job is a meaningful,
-  #    side-effect-free signal into the PR/trace: the residual outdated state after
-  #    the bump. `on_error: continue` because `npm:outdated` (syncpack --check)
-  #    exits non-zero when drift remains — that is DATA, not a run failure; the run
-  #    must still succeed so the engine marks the PR ready and `outcome: pr_opened`
-  #    becomes the final outcome.
+  #    and must not, hand-roll `gh pr create`. Because the engine does the PR work,
+  #    this node's only remaining job is to TAG the success terminal so the trace
+  #    records `outcome: pr_opened` and `outcomes.final` reads `pr_opened`. A marker
+  #    step that exits zero is exactly that job, honestly named — not a stand-in for
+  #    work that isn't happening. (An earlier revision ran `npm:outdated` here, but
+  #    that is `syncpack update --check`, which exits non-zero whenever ANY drift
+  #    remains — essentially always, given held-back + minor-capped families — so the
+  #    outcome was recorded unsuccessful and `outcomes.final` came out null on the
+  #    success path.) `echo` resolves as a real binary, safe under argv-without-shell.
+  #    `on_error: continue` is retained defensively.
   - name: open_pr
     kind: script
     depends_on: [route_install]
     on_error: continue
     outcome: pr_opened
     steps:
-      - name: report-outdated
-        command: ["npm", "run", "npm:outdated"]
+      - name: mark-success
+        command: ["echo", "weekly dependency bump succeeded — PR marked ready by the engine"]
 
   # 8. Exhausted terminal. Budget spent (3 attempts) and the install is still red.
   #    Like open_pr, the engine owns the PR: `--create-pr` KEEPS the PR as a DRAFT

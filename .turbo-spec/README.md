@@ -25,8 +25,10 @@ npm scripts can run arbitrary dependency code), and its command is never templat
 Instead the run is launched with the engine's `--create-pr`, which opens a draft PR
 up front, auto-commits and pushes the worktree after every stage, and finalizes the
 PR **ready on success / kept draft on failure**. The two terminal nodes therefore
-carry only a meaningful, side-effect-free signal: the success terminal reports the
-residual outdated state (`npm run npm:outdated`); the exhausted terminal re-runs the
+carry only a minimal, honest signal: the success terminal is a zero-exit **marker**
+step (`echo …`) whose sole job is to tag the terminal so the trace records
+`outcome: pr_opened` / `outcomes.final = pr_opened` — the engine already did the PR
+work, so the terminal only names the outcome; the exhausted terminal re-runs the
 still-failing `npm run npm:install` so the real ERESOLVE output lands in the trace
 and PR summary, and the failing run leaves the PR as a draft.
 
