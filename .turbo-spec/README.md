@@ -73,6 +73,32 @@ pushes each stage's changes, and marks the PR ready (success) or leaves it draft
 (failure). It needs `GITHUB_TOKEN` and is mutually exclusive with `--pr`,
 `--branch` and `--create-issue`.
 
+## CI wiring
+
+Three thin consumer shims in [`.github/workflows/`](../.github/workflows/) drive the
+blueprint in GitHub Actions (adapted from the turbo-spec onboarding example in
+porsche-design-system#4589):
+
+- [`agentic-dependency-bump.yml`](../.github/workflows/agentic-dependency-bump.yml) —
+  the engine **driver**. `workflow_dispatch`-only; calls the reusable
+  `engine.yml` with `blueprint: weekly-dependency-bump`. (The weekly cadence itself
+  stays with the existing `weekly-dependency-agent.yml` cron — this shim is the manual
+  and resume entry point, not a second scheduler.)
+- [`ai-watch.yml`](../.github/workflows/ai-watch.yml) — watches the driver for
+  failures and either LLM-explains them on the PR or auto-resumes the session.
+- [`comment-router.yml`](../.github/workflows/comment-router.yml) — routes human PR
+  feedback (`/agent …`, `/approve`, `/reject`, reviews) back into the saved session.
+
+All three pin the reusable turbo-spec workflows to
+**`@deterministic-script-node`** (PR #1398), and the driver additionally passes
+`engine_ref: deterministic-script-node` so the engine *code* checkout matches the
+pinned workflow ref. This is the CI counterpart of the prerequisite above: on a
+released engine (or `@main`) the `kind: script` / `kind: decision` nodes do not
+exist and the run fails. Swap all three pins — and `engine_ref` — to a release tag
+once PR #1398 ships. (`actionlint` flags the `copilot-requests: write` permission as
+unknown; it is a real, newer GitHub scope the engine needs, just newer than
+actionlint's built-in list.)
+
 ## Timeouts
 
 Every `kind: script` stage sets its own explicit `timeout:`, measured from a real
