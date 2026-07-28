@@ -75,12 +75,19 @@ export const writeComponentReferences = (
     if (!apiMeta) {
       throw new Error(`No component-meta for documented tag ${tag} — docsMeta and componentMeta diverged.`);
     }
-    const { markdown, summary } = renderComponentProse(
+    const { markdown, summary, accessibilityMarkdown } = renderComponentProse(
       tag,
       docsMeta[tag],
       renderComponentStatusBanner(apiMeta),
       tree.framework
     );
+    if (accessibilityMarkdown) {
+      const accessibilityPath = `components/${tag}/accessibility.md`;
+      tree.writeReference(
+        accessibilityPath,
+        rewriteDocLinks(accessibilityMarkdown, `references/${accessibilityPath}`, routeReferences)
+      );
+    }
     const sections = [markdown, renderComponentApi(apiMeta, iconNames)];
     const subComponents = subComponentsByParent[tag];
     if (subComponents && subComponents.length > 0) {

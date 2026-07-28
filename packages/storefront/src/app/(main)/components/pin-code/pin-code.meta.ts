@@ -1,6 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { pinCodeExampleForm } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/pin-code/accessibility/page.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/pin-code/accessibility/examples/hidden-label-without-accessible-name/example';
+import { missingFieldLabelA11yExample } from '@/app/(main)/components/pin-code/accessibility/examples/missing-field-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/pin-code/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import AccessibilityOverview from '@/app/(main)/components/pin-code/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/pin-code/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/pin-code/configurator/introduction.mdx';
 import { pinCodeSlotStories, pinCodeStory } from '@/app/(main)/components/pin-code/configurator/story';
 import CopyPasteDescription from '@/app/(main)/components/pin-code/examples/copy-paste/example.mdx';
@@ -37,7 +41,14 @@ export const pinCodeMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      missingFieldLabel: missingFieldLabelA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-pin-code'],
 } satisfies ComponentDocsMeta<'p-pin-code'>;
-

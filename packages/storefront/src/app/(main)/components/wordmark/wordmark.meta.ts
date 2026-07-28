@@ -1,5 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/wordmark/accessibility/page.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/wordmark/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import { linkedWordmarkWithoutAccessibleNameA11yExample } from '@/app/(main)/components/wordmark/accessibility/examples/linked-wordmark-without-accessible-name/example';
+import AccessibilityOverview from '@/app/(main)/components/wordmark/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/wordmark/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/wordmark/configurator/introduction.mdx';
 import { wordmarkStory } from '@/app/(main)/components/wordmark/configurator/story';
 import CustomClickableAreaDescription from '@/app/(main)/components/wordmark/examples/custom-clickable-area/example.mdx';
@@ -29,7 +32,13 @@ export const wordmarkMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
+      linkedWordmarkWithoutAccessibleName: linkedWordmarkWithoutAccessibleNameA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-wordmark'],
 } satisfies ComponentDocsMeta<'p-wordmark'>;
-

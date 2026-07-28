@@ -24,7 +24,6 @@ import { type Framework, SkillTree } from './support/skillTree';
  */
 export const generateSkillTree = (root: string, framework: Framework, docsMeta: ComponentDocsMetaMap): void => {
   const routeReferences = getPackageSkillRouteReferences();
-
   const tree = new SkillTree(root, framework);
   tree.reset();
 

@@ -1,5 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/link-tile-product/accessibility/page.mdx';
+import AccessibilityOverview from '@/app/(main)/components/link-tile-product/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/link-tile-product/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/link-tile-product/configurator/introduction.mdx';
 import { linkTileProductStory } from '@/app/(main)/components/link-tile-product/configurator/story';
 import FrameworkRoutingDescription from '@/app/(main)/components/link-tile-product/examples/framework-routing/example.mdx';
@@ -21,7 +22,10 @@ export const linkTileProductMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {},
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-link-tile-product'],
 } satisfies ComponentDocsMeta<'p-link-tile-product'>;
-

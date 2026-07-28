@@ -3,7 +3,10 @@ import {
   inlineNotificationExampleActionButton,
   inlineNotificationExampleEvents,
 } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/inline-notification/accessibility/page.mdx';
+import { notificationMountedOnlyWhenNeededA11yExample } from '@/app/(main)/components/inline-notification/accessibility/examples/notification-mounted-only-when-needed/example';
+import { warningWithoutDescriptiveHeadingA11yExample } from '@/app/(main)/components/inline-notification/accessibility/examples/warning-without-descriptive-heading/example';
+import AccessibilityOverview from '@/app/(main)/components/inline-notification/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/inline-notification/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/inline-notification/configurator/introduction.mdx';
 import { inlineNotificationStory } from '@/app/(main)/components/inline-notification/configurator/story';
 import ActionButtonDescription from '@/app/(main)/components/inline-notification/examples/action-button/example.mdx';
@@ -31,7 +34,13 @@ export const inlineNotificationMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      notificationMountedOnlyWhenNeeded: notificationMountedOnlyWhenNeededA11yExample,
+      warningWithoutDescriptiveHeading: warningWithoutDescriptiveHeadingA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-inline-notification'],
 } satisfies ComponentDocsMeta<'p-inline-notification'>;
-

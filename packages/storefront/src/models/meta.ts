@@ -1,6 +1,7 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { CodeSample } from '@porsche-design-system/shared';
 import type { ComponentType } from 'react';
+import type { ComponentAccessibilityMeta } from '@/models/accessibilityMeta';
 import type { SlotStories, Story } from '@/models/story';
 import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
@@ -66,8 +67,9 @@ export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
   examples: Record<string, ExampleMeta<Tag>>;
   // Guidance on when and how to use the component, including Dos and Don'ts.
   usage: ComponentType;
-  // Accessibility considerations specific to this component.
-  accessibility: ComponentType;
+  // Accessibility considerations specific to this component: overview prose, keyed anti-pattern/
+  // recommended integration example pairs, and test-support prose.
+  accessibility: ComponentAccessibilityMeta;
   // Optional supplementary notes (e.g. migration hints, edge cases).
   notes?: Record<string, { name: string; description: ComponentType }>;
   // Full API reference: props, slots, events and CSS variables.

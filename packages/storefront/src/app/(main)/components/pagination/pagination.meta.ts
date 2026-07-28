@@ -1,5 +1,7 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/pagination/accessibility/page.mdx';
+import { defaultEnglishLabelsOnALocalizedPageA11yExample } from '@/app/(main)/components/pagination/accessibility/examples/default-english-labels-on-a-localized-page/example';
+import AccessibilityOverview from '@/app/(main)/components/pagination/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/pagination/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/pagination/configurator/introduction.mdx';
 import { paginationStory } from '@/app/(main)/components/pagination/configurator/story';
 import Usage from '@/app/(main)/components/pagination/usage/page.mdx';
@@ -12,7 +14,12 @@ export const paginationMeta = {
   },
   examples: {},
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      defaultEnglishLabelsOnALocalizedPage: defaultEnglishLabelsOnALocalizedPageA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-pagination'],
 } satisfies ComponentDocsMeta<'p-pagination'>;
-

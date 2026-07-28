@@ -1,5 +1,9 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/modal/accessibility/page.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/modal/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import { dialogLabelOnComponentHostVsHeaderSlotA11yExample } from '@/app/(main)/components/modal/accessibility/examples/dialog-label-on-component-host-vs-header-slot/example';
+import { modalTriggerWithoutPopupSemanticsOrContextA11yExample } from '@/app/(main)/components/modal/accessibility/examples/modal-trigger-without-popup-semantics-or-context/example';
+import AccessibilityOverview from '@/app/(main)/components/modal/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/modal/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/modal/configurator/introduction.mdx';
 import { modalSlotStories, modalStory } from '@/app/(main)/components/modal/configurator/story';
 import AlertDialogDescription from '@/app/(main)/components/modal/examples/alert-dialog/example.mdx';
@@ -38,7 +42,14 @@ export const modalMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
+      dialogLabelOnComponentHostVsHeaderSlot: dialogLabelOnComponentHostVsHeaderSlotA11yExample,
+      modalTriggerWithoutPopupSemanticsOrContext: modalTriggerWithoutPopupSemanticsOrContextA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-modal'],
 } satisfies ComponentDocsMeta<'p-modal'>;
-

@@ -12,6 +12,9 @@ export type FrameworkConfiguratorMarkup = {
 
 export type FrameworkWithNext = Framework | 'next';
 
+/** Every supported framework, in the order code examples offer them. */
+export const frameworks = ['vanilla-js', 'angular', 'react', 'vue'] as const satisfies Framework[];
+
 export const frameworkNameMap: Record<FrameworkWithNext, string> = {
   'vanilla-js': 'Vanilla JS',
   angular: 'Angular',
