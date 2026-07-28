@@ -33,21 +33,21 @@
   },
   "dependencies": {
     "@emotion/styled": "^11.14.1",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@playwright/test": "1.61.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@tailwindcss/vite": "^4.3.1",
-    "@vanilla-extract/css": "^1.21.0",
-    "@vanilla-extract/vite-plugin": "^5.2.3",
-    "@vitejs/plugin-react": "^6.0.3",
-    "react-router": "^8.0.1",
-    "sass": "^1.101.0",
-    "tailwindcss": "^4.3.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vanilla-extract/css": "^1.21.2",
+    "@vanilla-extract/vite-plugin": "^5.2.6",
+    "@vitejs/plugin-react": "^6.0.4",
+    "react-router": "^8.3.0",
+    "sass": "^1.102.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vite": "^8.1.0"
+    "vite": "^8.1.5"
   },
   "volta": {
     "extends": "../../package.json"
