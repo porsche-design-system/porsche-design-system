@@ -1,0 +1,151 @@
+import { ContentAccordion } from '@/components/common/ContentAccordion';
+import { ContentTab, ContentTabs } from '@/components/common/ContentTabs';
+import {
+  FrameworkCode,
+  FrameworkGettingStartedLink,
+  FrameworkSwitch,
+  SkillName,
+} from '@/components/common/FrameworkSkillContent';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { resolveFrameworkSnippet } from '@/models/frameworkSkillNames';
+
+export const metadata = {
+  title: 'Skills: Installation - Porsche Design System',
+  description:
+    'Install the version-matched Porsche Design System Agent Skills for Claude Code, GitHub Copilot, Codex and compatible AI coding tools.',
+};
+
+# Introduction
+
+<TableOfContents
+  headings={['1. Install a Porsche Design System Package', '2. Link the Skill', '3. Verify the Skill', 'Updating']}
+/>
+
+The instructions on this page use the Knowledge Skill. Select your framework to adapt the package name, skill name and
+commands below.
+
+<FrameworkSwitch label="Select the framework the installation instructions apply to" />
+
+## 1. Install a Porsche Design System Package
+
+Install the package for your framework by following the <FrameworkGettingStartedLink />.
+
+## 2. Link the Skill
+
+<ContentAccordion heading="Install with an AI agent and skip the manual steps" icon="ai-spark">
+
+An AI coding agent can do the whole installation for you. It inspects the project, selects the installed Porsche Design
+System package and creates the symlinks with the bundled binary. Start the agent from the repository root and use this
+prompt:
+
+{/* prettier-ignore */}
+<FrameworkCode>{resolveFrameworkSnippet(({ packageName }) => `Set up the bundled Porsche Design System Agent Skills for this repository.
+Inspect the project dependencies to find the installed ${packageName} package.
+Determine the skills directory from what the project already uses: look for
+an existing .agents/skills, .claude/skills or .github/skills directory, and
+otherwise infer it from agent configuration present in the repository. If
+the target directory or the package remains unclear, ask me where the skills
+should be installed instead of guessing. Run npx pds-skill with the
+installed package and the determined location, then verify that the
+generated skill symlinks exist and point to the package's skills directory.
+Do not change project dependencies or replace a non-symlink file or
+directory.`)}</FrameworkCode>
+
+</ContentAccordion>
+
+Since AI integrations discover skills in dedicated directories rather than `node_modules`, the bundled skill has to be
+linked into the skills directory your AI coding tool reads. Pick one of the methods below.
+
+<ContentTabs label="Installation method">
+
+<ContentTab label="Bundled binary">
+
+Each supported Porsche Design System npm package includes the `pds-skill` binary, which creates the project-local
+symlink for you. Run it from the project or workspace where the package is installed:
+
+{/* prettier-ignore */}
+<FrameworkCode language="bash">{resolveFrameworkSnippet(({ packageName }) => `npx pds-skill --package ${packageName} --location {.agents|.claude|.github}/skills`)}</FrameworkCode>
+
+- `--package` selects the Porsche Design System npm package installed in your project.
+- `--location` sets the integration's parent skills directory. The binary creates the skill folders inside it.
+- `--skill` optionally installs only the named skill and can be repeated. Omit it to install all bundled skills.
+
+For `--location`, use the directory your AI coding tool reads: `.agents/skills` is the Agent Skills standard and is also
+picked up by Codex and GitHub Copilot, `.claude/skills` is used by Claude Code, and `.github/skills` by GitHub Copilot.
+If your team uses several agents, link the skill into each of the directories they read.
+
+{/* prettier-ignore */}
+<FrameworkCode language="bash">{resolveFrameworkSnippet(({ packageName }) => `npx pds-skill --package ${packageName} --location .agents/skills  # Agent Skills standard, Codex, GitHub Copilot
+npx pds-skill --package ${packageName} --location .claude/skills  # Claude Code
+npx pds-skill --package ${packageName} --location .github/skills  # GitHub Copilot`)}</FrameworkCode>
+
+To link a single skill only, pass its directory name:
+
+{/* prettier-ignore */}
+<FrameworkCode language="bash">{resolveFrameworkSnippet(({ packageName, skillName }) => `npx pds-skill --package ${packageName} --location .agents/skills --skill ${skillName}`)}</FrameworkCode>
+
+</ContentTab>
+
+<ContentTab label="Manual symlink">
+
+Create the project-local link yourself, inside the directory your AI coding tool reads: `.agents/skills` is the Agent
+Skills standard and is also picked up by Codex and GitHub Copilot, `.claude/skills` is used by Claude Code, and
+`.github/skills` by GitHub Copilot.
+
+On macOS or Linux, run this from the repository root:
+
+{/* prettier-ignore */}
+<FrameworkCode language="bash">{resolveFrameworkSnippet(({ packageName, skillName }) => `mkdir -p .agents/skills
+ln -s "$(pwd)/node_modules/${packageName}/skills/${skillName}" \\
+  .agents/skills/${skillName}`)}</FrameworkCode>
+
+On Windows, create a directory junction from the repository root instead:
+
+{/* prettier-ignore */}
+<FrameworkCode>{resolveFrameworkSnippet(({ packageWindowsPath, skillName }) => `mklink /J .agents\\skills\\${skillName} node_modules\\${packageWindowsPath}\\skills\\${skillName}`)}</FrameworkCode>
+
+Create one link per skill you want to use and per skills directory your team's agents read, and commit the links so the
+whole team gets them.
+
+</ContentTab>
+
+<ContentTab label="AI integration setting">
+
+Some AI integrations and editors let you configure additional locations where skills are looked up. If yours does, you
+can point it directly at the `skills` directory inside the installed Porsche Design System package, which makes a
+symlink unnecessary.
+
+For example, GitHub Copilot in VS Code offers this through `.vscode/settings.json`:
+
+{/* prettier-ignore */}
+<FrameworkCode language="json">{resolveFrameworkSnippet(({ packageName }) => `{
+  "chat.agentSkillsLocations": ["./node_modules/${packageName}/skills"]
+}`)}</FrameworkCode>
+
+Support for such a setting differs per integration and changes quickly, so check the documentation of the AI integration
+or editor you use for an equivalent option. If none exists, use one of the symlink-based methods instead. Also keep in
+mind that these settings are usually specific to a single integration, so a project used with several agents may still
+need a skills directory entry.
+
+</ContentTab>
+
+</ContentTabs>
+
+## 3. Verify the Skill
+
+Reload your AI coding agent or start a new agent session, then confirm that the skill, in this case <SkillName />, is
+available:
+
+- **Claude Code:** Type `/` and look for the skill.
+- **GitHub Copilot CLI:** Run `/skills reload`, then `/skills list`.
+- **GitHub Copilot in VS Code:** Type `/skills` in the chat input to open the Configure Skills menu.
+- **Codex:** Run `/skills` or type `$` and look for the skill.
+
+## Updating
+
+Skills are versioned together with the Porsche Design System package that contains them. Updating the package to a newer
+version also updates the linked skills, so no additional step is needed as long as the symlink or configured location
+keeps pointing at the installed package.
+
+Re-run the installation only if you remove the link, switch to a different Porsche Design System package or want to add
+a skill that was not linked before.

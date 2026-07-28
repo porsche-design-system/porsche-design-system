@@ -1,152 +1,83 @@
+import { FrameworkCode, FrameworkSwitch, SkillName } from '@/components/common/FrameworkSkillContent';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { resolveFrameworkSnippet } from '@/models/frameworkSkillNames';
 
 export const metadata = {
   title: 'Knowledge Skill - Porsche Design System',
   description:
-    'Install the version-matched Porsche Design System Agent Skill for Claude Code, GitHub Copilot, Codex and compatible AI coding tools.',
+    'Version-exact Porsche Design System guidance for Claude Code, GitHub Copilot, Codex and compatible AI coding tools.',
 };
 
 # Knowledge Skill
 
-<TableOfContents
-  headings={['Introduction', 'How It Works', 'Installation', 'Install with an AI Agent', 'How to Use the Skill']}
-/>
+<TableOfContents headings={['Introduction', 'What It Covers', 'Installation', 'How to Use the Skill']} />
 
 ## Introduction
 
-The Porsche Design System Knowledge Skill gives AI coding tools version-exact guidance for the PDS packages installed in
-a project. It covers components, styles, tokens, accessibility and framework-specific usage, helping assistants answer
-questions, generate UI and review or fix PDS code.
+The Porsche Design System Knowledge Skill gives AI coding tools version-exact guidance for the Porsche Design System
+packages installed in a project. It covers components, styles, tokens, accessibility and framework-specific usage,
+helping assistants answer questions, generate UI and review or fix Porsche Design System code.
 
-## How It Works
+The skill is generated from the same source as this documentation and ships inside the Porsche Design System npm
+packages, so it always describes the version your project actually uses. There is one variant per supported framework;
+select yours to adapt the skill name and prompts on this page.
 
-The Knowledge Skill ships inside the corresponding Porsche Design System npm package and is released together with it.
-Since AI integrations discover skills in dedicated directories rather than `node_modules`, a directory symlink exposes
-the bundled skill:
+<FrameworkSwitch label="Select the framework the Knowledge Skill examples apply to" />
 
-```text
-.agents/skills/pds-knowledge-{js|angular|react|vue}
-  -> node_modules/@porsche-design-system/components-{js|angular|react|vue}/skills/pds-knowledge-{js|angular|react|vue}
-```
+## What It Covers
 
-This **skill-in-package** approach provides two benefits:
+- **Components:** available components, their properties, slots, events and the recommended usage per framework.
+- **Examples:** framework-specific code examples for common component use cases.
+- **Styles and tokens:** the design tokens, style utilities and layout primitives that come with the installed version.
+- **Accessibility:** the accessibility requirements and integration rules that apply when using the components.
+- **Conventions:** how to set up and consume the packages, including framework-specific integration guidance.
 
-- Updating the PDS dependency automatically updates the skill; there is no separately versioned skill to maintain.
-- Keeping the skill in the package itself and linking it from the project where the package is installed avoids version
-  mismatches.
+Because the content is version-matched, the skill prevents assistants from suggesting APIs that do not exist in the
+installed version, or from replacing existing Porsche Design System usage with outdated patterns.
 
 ## Installation
 
-### 1. Install a Porsche Design System package
-
-Install the package for your framework by following the Getting Started guide for
-[Vanilla JavaScript](/developing/vanilla-js/getting-started), [Angular](/developing/angular/getting-started),
-[React](/developing/react/getting-started) or [Vue](/developing/vue/getting-started).
-
-### 2. Link the skill
-
-Each supported Porsche Design System npm package includes the `pds-skill` binary to create the project-local symlink.
-You can use the binary or create the symlink yourself.
-
-#### Use the bundled binary
-
-Run the binary from the project or workspace where the Porsche Design System package is installed:
-
-```bash
-npx pds-skill --package @porsche-design-system/components-{js|angular|react|vue} --location {.agents|.claude|.github}/skills
-```
-
-- For `--package`, use the Porsche Design System npm package installed in your project.
-- `--location` sets the integration's parent skills directory. The binary creates the framework-specific skill folder
-  inside it.
-
-For example, link the React skill:
-
-```bash
-# Agent Skills standard and Codex
-npx pds-skill --package @porsche-design-system/components-react --location .agents/skills
-
-# Claude Code
-npx pds-skill --package @porsche-design-system/components-react --location .claude/skills
-
-# GitHub Copilot
-npx pds-skill --package @porsche-design-system/components-react --location .github/skills
-```
-
-#### Create the symlink manually
-
-On macOS or Linux, create the same project-local link from the repository root:
-
-```bash
-mkdir -p .agents/skills
-ln -s "$(pwd)/node_modules/@porsche-design-system/components-react/skills/pds-knowledge-react" \
-  .agents/skills/pds-knowledge-react
-```
-
-### 3. Verify the skill
-
-Reload your AI coding agent or start a new agent session, then confirm that `pds-knowledge-{js|angular|react|vue}` is
-available:
-
-- **Claude Code:** Type `/` and look for the skill.
-- **GitHub Copilot CLI:** Run `/skills reload`, then `/skills list`.
-- **Codex:** Run `/skills` or type `$` and look for the skill.
-
-## Install with an AI Agent
-
-An AI coding agent can inspect the project, select the installed Porsche Design System package and create the symlink
-with the bundled binary. Start the agent from the repository root and use this prompt:
-
-```text
-Set up the bundled Porsche Design System Knowledge Skill for this repository. Inspect the project dependencies to find
-the installed @porsche-design-system/components-{js|angular|react|vue} package. Choose the skills directory for your
-agent integration (.agents/skills for the Agent Skills standard and Codex, .claude/skills for Claude Code, or
-.github/skills for GitHub Copilot). Run npx pds-skill with the installed package and selected location, then verify that
-the generated skill symlink exists and points to the package's skill directory. Do not change project dependencies or
-replace a non-symlink file or directory.
-```
-
-If the project contains multiple supported packages or the target agent integration is unclear, the agent should ask
-which package and skills directory to use before making changes.
+The Knowledge Skill is bundled with the Porsche Design System npm packages and is exposed to your AI coding tool by
+linking it into a skills directory. Follow the [skill installation guide](/skills/introduction/installation) for the
+available installation methods.
 
 ## How to Use the Skill
 
-Use the Knowledge Skill whenever a task touches frontend UI/UX in a project where PDS is used.
+Use the Knowledge Skill whenever a task touches frontend UI/UX in a project where the Porsche Design System is used.
 
 A skill can be invoked in two ways:
 
 - **Automatic invocation:** Your AI coding agent activates the skill when a task matches its description.
-- **Manual invocation:** Invoke `pds-knowledge-{js|angular|react|vue}` using your agent's skill selection syntax to make
-  sure it is used, for example `/pds-knowledge-react`.
+- **Manual invocation:** Invoke <SkillName /> using your agent's skill selection syntax to make sure it is used, for
+  example <SkillName prefix="/" />.
 
 ### Example prompts
 
-These examples use the React skill with slash-command syntax. Replace `react` with the framework used by your project.
+These examples use slash-command syntax. Adjust it to the syntax your AI coding tool uses.
 
 Ask for version-specific guidance:
 
-```text
-/pds-knowledge-react Recommend the right PDS components for a responsive sign-in form. Explain the relevant properties,
-slots and accessibility requirements for the version installed in this project.
-```
+{/* prettier-ignore */}
+<FrameworkCode>{resolveFrameworkSnippet(({ skillName }) => `/${skillName} Recommend the right PDS components for a responsive sign-in form.
+Explain the relevant properties, slots and accessibility requirements for the version
+installed in this project.`)}</FrameworkCode>
 
 Implement a feature:
 
-```text
-/pds-knowledge-react Build an accessible country selector that displays each country's flag in its option and groups the
-countries by continent. Use the appropriate PDS components and follow the existing framework and codebase conventions.
-```
+{/* prettier-ignore */}
+<FrameworkCode>{resolveFrameworkSnippet(({ skillName }) => `/${skillName} Build an accessible country selector that displays each country's
+flag in its option and groups the countries by continent. Use the appropriate PDS
+components and follow the existing framework and codebase conventions.`)}</FrameworkCode>
 
 Review existing code:
 
-```text
-/pds-knowledge-react Review this page for deprecated or incorrect PDS usage, accessibility issues and opportunities to
-replace custom UI with PDS components. Apply the necessary fixes.
-```
+{/* prettier-ignore */}
+<FrameworkCode>{resolveFrameworkSnippet(({ skillName }) => `/${skillName} Review this page for deprecated or incorrect PDS usage,
+accessibility issues and opportunities to replace custom UI with PDS components. Apply
+the necessary fixes.`)}</FrameworkCode>
 
 Update an implementation:
 
-```text
-/pds-knowledge-react Migrate this implementation to the APIs supported by the installed PDS version. Preserve its behavior
-and accessibility, and verify the result.
-```
+{/* prettier-ignore */}
+<FrameworkCode>{resolveFrameworkSnippet(({ skillName }) => `/${skillName} Migrate this implementation to the APIs supported by the
+installed PDS version. Preserve its behavior and accessibility, and verify the result.`)}</FrameworkCode>

@@ -1,0 +1,54 @@
+import { FrameworkCode, FrameworkSwitch, SkillName, SkillPackage } from '@/components/common/FrameworkSkillContent';
+import { resolveFrameworkSnippet } from '@/models/frameworkSkillNames';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Skills: General - Porsche Design System',
+  description:
+    'Learn how the Porsche Design System Agent Skills work and which skills are available for AI coding tools.',
+};
+
+# Introduction
+
+<TableOfContents headings={['What Are Agent Skills?', 'How It Works', 'Available Skills']} />
+
+## What Are Agent Skills?
+
+Agent Skills are a lightweight, [open standard](https://agentskills.io) format used to give AI agents specialized
+capabilities, instructions and workflows on demand. They are structured as a folder containing a `SKILL.md` text file
+alongside optional code, scripts and reference assets.
+
+Because the format is standardized, the same skill works across compatible tools such as Claude Code, GitHub Copilot and
+Codex. The Porsche Design System uses them to support a range of tasks around working with the Porsche Design System,
+always matching the version a project actually has installed.
+
+## How It Works
+
+All Porsche Design System Agent Skills ship inside the Porsche Design System npm packages and are released together with
+them. Since AI integrations discover skills in dedicated directories rather than `node_modules`, a directory symlink
+exposes a bundled skill to your agent:
+
+<FrameworkSwitch label="Select the framework for the skill names and paths on this page" />
+
+{/* prettier-ignore */}
+<FrameworkCode>{resolveFrameworkSnippet(({ packageName, skillName }) => `.agents/skills/${skillName}
+  -> node_modules/${packageName}/skills/${skillName}`)}</FrameworkCode>
+
+This **skill-in-package** approach provides two benefits:
+
+- Updating the Porsche Design System dependency automatically updates the skills; there is no separately versioned skill
+  to maintain.
+- Keeping the skills in the package itself and linking them from the project where the package is installed avoids
+  version mismatches.
+
+To expose a skill to your AI coding tool, follow the [installation guide](/skills/introduction/installation).
+
+## Available Skills
+
+Additional skills are planned and will be added here as they become available.
+
+| Skill     | Skill directory name | Documentation                        |
+| --------- | -------------------- | ------------------------------------ |
+| Knowledge | <SkillName />        | [Knowledge Skill](/skills/knowledge) |
+
+Every skill is bundled in the `skills` directory of the selected framework's package, <SkillPackage />.

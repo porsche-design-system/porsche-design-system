@@ -85,6 +85,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
                     typescript: 'typescript',
                     diff: 'diff',
                     json: 'json',
+                    text: 'plaintext',
                     html: 'xml',
                     scss: 'scss',
                     css: 'css',
