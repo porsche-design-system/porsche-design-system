@@ -29,9 +29,10 @@ version: "1.0"
 description: >
   Deterministic-first weekly npm dependency bump. Installs a clean baseline,
   builds, bumps non-held-back versions with syncpack, then retries the install up
-  to three times — handing each failure to an agent that fixes the root cause —
-  before the engine's --create-pr lifecycle publishes the result: the PR is marked
-  ready (green) or kept as a draft for manual resolution (budget exhausted).
+  to three times — handing the first two failures to an agent that fixes the root
+  cause — before the engine's --create-pr lifecycle publishes the result: the PR is
+  marked ready (green) or kept as a draft on any run failure (budget exhausted, or an
+  inconsistent bump caught by verify_bump).
 
 # There is no `schedule` trigger type in turbo-spec (TriggerType is
 # issue|cli|slack|webhook). The weekly "every Monday morning" cadence is driven by
