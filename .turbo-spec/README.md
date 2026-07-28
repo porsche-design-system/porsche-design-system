@@ -9,9 +9,9 @@ builtins.
 
 - [`workflows/dependency-bump.yml`](workflows/dependency-bump.yml) —
   a turbo-spec-native **proposal** for the weekly npm dependency bump. It expresses
-  the deterministic dependency work (install, build, syncpack bump, retry-install,
-  routing) as `kind: script` / `kind: decision` nodes and keeps a single LLM agent
-  for the one judgement step: resolving the root cause of an `npm install` failure.
+  the deterministic dependency work (install, build, syncpack bump, verify) as
+  `kind: script` nodes and keeps a single LLM agent for the one judgement step:
+  resolving the root cause of an `npm install` failure.
   It is a proposal **alongside**
   [`.github/workflows/weekly-dependency-agent.yml`](../.github/workflows/weekly-dependency-agent.yml),
   not a replacement — see that workflow and
@@ -40,8 +40,7 @@ but not in every workspace declaring it, `syncpack lint` fails, the stage aborts
 fails, and the engine keeps the PR **draft** — so an agent-repaired-but-inconsistent bump
 lands as a draft. On that failure path `pr_opened` is recorded in `outcomes.reached` with
 `success: false` and is **not** the final outcome (`outcomes.final` is null) — the
-anti-laundering behaviour the trace is designed for. This makes `verify_bump` symmetric
-with `needs_manual_resolution`: both terminals genuinely gate. That is the correct
+anti-laundering behaviour the trace is designed for. That is the correct
 conservative result for an inconsistent bump.
 
 **Deliberate narrowing of the original request:** the exhausted path opens a draft
@@ -53,7 +52,7 @@ belongs to the thin GitHub Actions cron that schedules the run, not to the pipel
 
 ## Engine prerequisite
 
-`kind: script`, `kind: decision`, backward routing and `outcome:` are **not** in a
+`kind: script` and `outcome:` are **not** in a
 released turbo-spec. They ship in open PR
 [porsche-code/turbo-spec#1398](https://github.com/porsche-code/turbo-spec/pull/1398)
 (`deterministic-script-node`). Until that lands, the blueprint validates and runs
@@ -93,7 +92,7 @@ All three pin the reusable turbo-spec workflows to
 **`@deterministic-script-node`** (PR #1398), and the driver additionally passes
 `engine_ref: deterministic-script-node` so the engine *code* checkout matches the
 pinned workflow ref. This is the CI counterpart of the prerequisite above: on a
-released engine (or `@main`) the `kind: script` / `kind: decision` nodes do not
+released engine (or `@main`) the `kind: script` nodes do not
 exist and the run fails. Swap all three pins — and `engine_ref` — to a release tag
 once PR #1398 ships. (`actionlint` flags the `copilot-requests: write` permission as
 unknown; it is a real, newer GitHub scope the engine needs, just newer than
@@ -103,7 +102,7 @@ actionlint's built-in list.)
 
 Every `kind: script` stage sets its own explicit `timeout:`, measured from a real
 run (`install_baseline` 20m, `build` 45m, `bump_versions` 5m, `try_install` 20m,
-`verify_bump` 5m, `needs_manual_resolution` 20m). This is deliberate: the engine
+`verify_bump` 5m). This is deliberate: the engine
 resolves a script step's ceiling as `stage.timeout or settings.timeout_per_stage
 or 300s`, so a stage without its own `timeout:` silently inherits the 60m global —
 a 25-second `syncpack update` would then hang for an hour before being killed.
@@ -134,7 +133,24 @@ the two strings identical.
 
 The agent stage carries a `script_gate` quality gate that re-runs `npm run npm:install`
 after the agent's turn and loops back — re-running the agent with the install output as
-feedback — when it still fails. `max_retries: 1` is deliberate: the gate nests inside the
-outer `route_install` retry loop, so the budgets multiply (2 x 3 = 6 agent turns worst
-case; the default of 3 would allow 12). Note the gate step is **unbounded** — `script_gate`
-runs its steps with `timeout=None` and exposes no per-step timeout knob.
+feedback — when it still fails. `max_retries: 2` gives exactly **three agent turns**,
+each followed by a real install. This gate is the *only* retry loop: an earlier revision
+nested it inside a `kind: decision` backward loop, which multiplied the two budgets (up
+to 6 turns) and ran two installs per turn.
+
+**Escalation needs no stage.** When the budget is spent the engine logs "Retry budget
+exhausted", aborts, and — with no terminal report stage — ends the run. A failed run
+means `finalize_pr(success=False)`, so the engine **keeps the PR as a draft**: exactly
+the "open draft PR for manual resolution" terminal, without a stage to express it. The
+gate's failure output is preserved in the trace (≤4000 chars in its `reason`, the full
+output in `GateResult.details`).
+
+`try_install` is kept deliberately, and not only for correctness: the agent's
+`condition` reads its `success`, and a condition-false stage is skipped *before* it
+executes, so its gate never runs either. Without that cheap (~14s) probe the agent would
+run on every weekly bump — roughly 10 minutes and $0.70 of model time, and an LLM
+mutating the repo, on weeks when nothing is broken. With the syncpack minor-cap in place
+that green path is the expected weekly outcome.
+
+Note the gate step is **unbounded** — `script_gate` runs its steps with `timeout=None`
+and exposes no per-step timeout knob, unlike every `kind: script` stage above.

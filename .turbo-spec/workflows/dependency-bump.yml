@@ -1,15 +1,17 @@
 # Weekly npm dependency-bump — turbo-spec workflow blueprint.
 #
 # A turbo-spec-native evolution of .github/workflows/weekly-dependency-agent.yml.
-# The deterministic dependency work (install, build, syncpack bump, retry-install,
-# routing) is expressed as `kind: script` and `kind: decision` nodes; the PR
+# The deterministic dependency work (install, build, syncpack bump, verify) is
+# expressed as `kind: script` nodes; the PR
 # LIFECYCLE itself is owned by the engine's `--create-pr` (draft PR opened up
 # front, per-stage auto-commit + push, marked ready on success / kept draft on
 # failure) — a `kind: script` node cannot and must not hand-roll `gh` because the
 # executor scrubs write-capable GitHub tokens from script steps by design. Only
 # the genuinely judgement-requiring step — resolving the ROOT CAUSE of an
 # `npm install` failure (peer/ERESOLVE conflicts → add or prune root `overrides`,
-# per docs/runbooks/dependency-updates-agent.md steps 6-7) — stays an LLM agent.
+# per docs/runbooks/dependency-updates-agent.md steps 6-7) — stays an LLM agent,
+# and its retries are driven by a `script_gate` quality gate rather than by a
+# hand-built routing loop.
 # This is a PROPOSAL alongside the existing Actions dispatcher, not a replacement.
 #
 # NOTE — deliberate narrowing of the original flowchart: the exhausted path opens a
@@ -20,17 +22,18 @@
 # the thin GitHub Actions cron that schedules the run, not to the pipeline.
 #
 # ENGINE PREREQUISITE: requires turbo-spec with PR #1398 (deterministic-script-node)
-# merged — it ships `kind: script`, `kind: decision`, backward routing and
-# `outcome:`. It will NOT load on the current turbo-spec release.
+# merged — it ships `kind: script` and `outcome:`. It will NOT load on the current
+# turbo-spec release.
 #
 # Schema: <turbo-spec>/src/workflow_skeleton/_builtin/workflows/schema.json
 name: dependency-bump
 version: "1.0"
 description: >
   Deterministic-first weekly npm dependency bump. Installs a clean baseline,
-  builds, bumps non-held-back versions with syncpack, then retries the install up
-  to three times — handing the first two failures to an agent that fixes the root
-  cause — before the engine's --create-pr lifecycle publishes the result: the PR is
+  builds, bumps non-held-back versions with syncpack, then verifies the install —
+  handing a failure to an agent whose quality gate re-runs the real install and
+  retries it up to three times — before the engine's --create-pr lifecycle
+  publishes the result: the PR is
   marked ready (green) or kept as a draft on any run failure (budget exhausted, or an
   inconsistent bump caught by verify_bump).
 
@@ -103,13 +106,17 @@ stages:
       - name: syncpack-update
         command: ["npm", "run", "npm:update:ci"]
 
-  # 4. Try to install the updated versions. THIS is the node the retry loop
-  #    re-enters, so its 1-based `attempts` counter drives the budget. A failed
-  #    install is DATA here (on_error: continue), not an abort — the decision
-  #    downstream branches on `try_install.success` / `try_install.attempts`.
+  # 4. Try to install the updated versions — a cheap (~14s) deterministic PROBE.
+  #    A failed install is DATA here (on_error: continue), not an abort: its
+  #    `success` is what the agent's `condition` reads. This node is load-bearing
+  #    for COST, not just correctness — it is the only thing keeping the agent (and
+  #    its gate) off the green path. A condition-false stage is skipped before it
+  #    executes, so on a clean weekly bump the agent never runs and the run costs
+  #    zero model tokens. With the syncpack minor-cap in place, green is the
+  #    EXPECTED weekly outcome, so that matters every week.
   #    Same 300s-default caveat as install_baseline: without an explicit `timeout:`
-  #    a cold-cache install here would be SIGKILLed at 300s, turning the retry loop
-  #    into a nasty intermittent failure — so it carries a generous override too.
+  #    a cold-cache install here would be SIGKILLed at 300s, so it carries a
+  #    generous override too.
   - name: try_install
     kind: script
     depends_on: [bump_versions]
@@ -119,67 +126,57 @@ stages:
       - name: install-updated
         command: ["npm", "run", "npm:install"]
 
-  # 5. THE ONE AGENT. Only runs when the install failed AND retry budget remains
-  #    (attempts 1 and 2); skipped on success and on the spent 3rd attempt. It
-  #    sits between try_install and the decision, so a backward route re-runs
-  #    try_install + this agent — i.e. "agent fixes, then install is retried".
-  #    Its job: diagnose the ROOT CAUSE (peer/ERESOLVE conflict) and fix it the
-  #    correct way — a pinned root `overrides` entry, or pruning a now-stale one —
-  #    never --force / --legacy-peer-deps / hand-edited versions.
+  # 5. THE ONE AGENT, and the only retry loop. Runs only when the probe above
+  #    failed; skipped entirely on a clean bump. Its job: diagnose the ROOT CAUSE
+  #    (peer/ERESOLVE conflict) and fix it the correct way — a pinned root
+  #    `overrides` entry, or pruning a now-stale one — never --force /
+  #    --legacy-peer-deps / hand-edited versions.
+  #
+  #    The retry budget lives in the quality gate, not in the condition: the gate
+  #    re-runs the real install after the agent's turn and loops back — re-running
+  #    THIS agent, with up to 4000 chars of the install output folded into its
+  #    feedback — while the budget lasts. script_gate maps exit codes to verdicts:
+  #    0 passes, 1 (npm's ERESOLVE/peer failure) is a genuine failure that loops
+  #    back, >=2 escalates rather than hard-failing. Omitting `loop_back:` targets
+  #    the current stage, so the retry re-runs this agent and nothing earlier.
+  #
+  #    `max_retries: 2` = 1 initial + 2 retries = exactly THREE agent turns, each
+  #    followed by a real `npm run npm:install`. This is the flowchart's "attempts
+  #    < 3" expressed once. An earlier revision ran this gate INSIDE a `kind:
+  #    decision` backward loop, which multiplied the two budgets (up to 6 turns)
+  #    and installed twice per turn; a single loop removes both problems.
+  #
+  #    ESCALATION NEEDS NO STAGE. When the budget is spent the engine logs "Retry
+  #    budget exhausted", sets `aborting`, and — with no terminal report stage —
+  #    ends the run. The run FAILS, so the engine's --create-pr lifecycle calls
+  #    finalize_pr(success=False) and KEEPS THE PR AS A DRAFT: exactly the
+  #    flowchart's "open draft PR for manual resolution". The gate's failure output
+  #    is preserved in the trace (reason + full output in GateResult.details).
+  #
+  #    KNOWN CEILING: script_gate calls run_step with timeout=None, so this step is
+  #    UNBOUNDED — there is no timeout knob on a gate step (unlike a kind: script
+  #    stage, which now always carries an explicit measured `timeout:`). A wedged
+  #    npm install here would hang indefinitely rather than being killed. Accepted
+  #    because npm install terminates on its own in practice; revisit if the engine
+  #    grows a per-gate-step timeout.
   - name: resolve_install_failure
     orchestrator: implementation
     depends_on: [try_install]
-    condition: "not try_install.success and try_install.attempts < 3"
+    condition: "not try_install.success"
     system_prompt: implementer
     agents:
       - type: implementer
         tools: [file, shell, github]
-    # Gate the agent's own work before the stage is allowed to finish: re-run the
-    # real install and only let the agent out when it actually passes. script_gate
-    # maps exit codes to verdicts — 0 passes, 1 (npm's ERESOLVE/peer failure) is a
-    # genuine failure that loops back and re-runs this agent with up to 4000 chars of
-    # the install output folded into its feedback, and >=2 escalates rather than
-    # hard-failing. Omitting `loop_back:` targets the current stage, so the retry
-    # re-runs this agent, not an earlier one.
-    # `max_retries: 1` (2 turns) is deliberate and load-bearing: this gate nests
-    # INSIDE the outer route_install retry loop, so the budgets multiply. At the
-    # default max_retries of 3 the worst case would be 4 x 3 = 12 agent turns
-    # (~2h, ~$8 at the measured ~10min / $0.70 per turn); at 1 it is 2 x 3 = 6.
-    # ponytail: this deliberately duplicates try_install's command — the gate proves
-    # the fix inside the stage, try_install re-proves it as the loop's condition
-    # source. Collapsing the two would mean deleting the backward-routing loop.
-    # KNOWN CEILING: script_gate calls run_step with timeout=None, so this step is
-    # UNBOUNDED — there is no timeout knob on a gate step (unlike a kind: script
-    # stage). A wedged npm install here would hang indefinitely rather than being
-    # killed. Acceptable because npm install terminates on its own in practice;
-    # revisit if the engine grows a per-gate-step timeout.
     quality_gates:
       - evaluator: script_gate
         on_fail: loop_back
-        max_retries: 1
+        max_retries: 2
         config:
           steps:
             - name: verify-install
               command: ["npm", "run", "npm:install"]
 
-  # 6. Pure router. First-match-wins:
-  #      success            -> verify_bump             (forward)
-  #      attempts < 3        -> try_install            (BACKWARD -> retry loop body)
-  #      otherwise (default) -> needs_manual_resolution (forward)
-  #    Forward targets MUST depend_on this decision (else their edge flips backward
-  #    and exclusivity goes inert). The backward target (try_install) MUST NOT.
-  - name: route_install
-    kind: decision
-    depends_on: [resolve_install_failure]
-    when:
-      - condition: "try_install.success"
-        goto: verify_bump
-      - condition: "try_install.attempts < 3"
-        goto: try_install
-    default:
-      goto: needs_manual_resolution
-
-  # 7. Success terminal. The engine's `--create-pr` lifecycle already owns every
+  # 6. Success terminal. The engine's `--create-pr` lifecycle already owns every
   #    git/gh mechanic: it opened the draft PR up front, auto-commits + pushes the
   #    worktree after EVERY stage (so the syncpack bump and any agent fix are
   #    already on the PR branch), and on run success marks the PR READY for review.
@@ -195,8 +192,7 @@ stages:
   #    exits 0, the stage succeeds, the run succeeds, and `outcomes.final` reads
   #    `pr_opened` — the engine marks the PR READY.
   #    `on_error: abort` is LOAD-BEARING (not defensive): it gives the gate teeth so
-  #    the conservative guarantee below actually holds. It mirrors
-  #    `needs_manual_resolution` — both terminals genuinely gate.
+  #    the conservative guarantee below actually holds.
   #    CONSERVATIVE-OUTCOME GUARANTEE: if the agent pins a dependency back in the root
   #    manifest but not in every workspace declaring it, syncpack lint fails, the stage
   #    aborts, the run fails, and the engine KEEPS the PR DRAFT — an agent-repaired-but-
@@ -206,9 +202,11 @@ stages:
   #    .turbo-spec/README.md). Under `on_error: continue` a failing lint would be treated
   #    as data, the run would succeed, and the PR would be marked ready anyway — silently
   #    breaking that guarantee — which is exactly why this must be `abort`.
+  #    This is the ONLY terminal: the failure path needs no stage, because an exhausted
+  #    gate budget ends the run and the engine keeps the PR draft on its own.
   - name: verify_bump
     kind: script
-    depends_on: [route_install]
+    depends_on: [resolve_install_failure]
     on_error: abort
     # `npm:lint` (syncpack lint) is a seconds-long check; `timeout: "5m"` keeps it
     # in the same measured-fail-fast class as bump_versions rather than silently
@@ -219,41 +217,14 @@ stages:
       - name: verify-consistency
         command: ["npm", "run", "npm:lint"]
 
-  # 8. Exhausted terminal. Budget spent (3 attempts) and the install is still red.
-  #    Like verify_bump, the engine owns the PR: `--create-pr` KEEPS the PR as a DRAFT
-  #    when the run fails (finalize_pr(success=False)) — exactly the flowchart's
-  #    "open draft PR". So this node opens no PR and files no issue (a script step
-  #    has no write token; issue creation is dropped by decision — see the header
-  #    note, the PR body and .turbo-spec/README.md). Instead it runs the real,
-  #    still-failing `npm run npm:install` under `on_error: abort`: the deps are
-  #    genuinely broken, so this fails for real, the run fails, the engine keeps the
-  #    PR draft, and the real ERESOLVE/peer output lands in the trace and PR summary
-  #    for the human doing manual resolution. The real failing command (not `false`)
-  #    is deliberate — it demonstrates the failure with real evidence.
-  #    NOTE: `outcome: draft_filed` is tagged on a stage that then aborts, so it
-  #    appears in `outcomes.reached` with success=false and is (correctly) NOT the
-  #    final outcome — `final` only picks the last SUCCESSFUL outcome.
-  - name: needs_manual_resolution
-    kind: script
-    depends_on: [route_install]
-    on_error: abort
-    # Same `npm run npm:install` as try_install, so it carries the same explicit
-    # 20m bound rather than the 60m global — a genuine ERESOLVE fails fast, and the
-    # ceiling only guards against a pathological cold-cache hang.
-    timeout: "20m"
-    outcome: draft_filed
-    steps:
-      - name: reinstall-still-broken
-        command: ["npm", "run", "npm:install"]
-
 model_provider:
   primary: copilot
   config:
     model_id: claude-sonnet-5
 
 settings:
-  # Backward loop is bounded by the decision guard (attempts < 3); this is the
-  # unrelated cross-stage gate-retry ceiling.
+  # Cross-stage gate-retry ceiling. The agent's own budget is the gate's
+  # `max_retries: 2` (3 turns); this is the unrelated run-scoped cap above it.
   max_total_retries: 6
   # Pure backstop, NOT a live bound. Two facts fixed its role:
   #   - It reaches ONLY script stages without an explicit `timeout:`; every script
