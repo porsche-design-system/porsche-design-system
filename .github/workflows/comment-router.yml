@@ -1,0 +1,72 @@
+# comment-router.yml — thin consumer shim
+# Keep this at .github/workflows/comment-router.yml in your project repo.
+#
+# Routes human PR feedback (/agent <feedback>, /approve, /reject comments and
+# PR review submissions) back into the engine by resuming the PR's saved
+# session. All routing logic — the sentinel loop guard, the write/admin auth
+# gate, session resolution, engine dispatch, and the self-pruning janitor —
+# lives centrally in the reusable workflow
+# porsche-code/turbo-spec/.github/workflows/comment-router.yml; this shim only
+# supplies the event triggers GitHub requires in the consumer repo.
+#
+# What to customize here:
+#   - The `uses:` pin: pinned to @deterministic-script-node (turbo-spec PR #1398)
+#     to match the engine driver; pin a release tag (e.g. @v1.2.3) once #1398 ships.
+#   - engine_workflow: only if your engine caller shim is not named
+#     agentic-dependency-bump.yml.
+#
+# Prerequisites: same as agentic-dependency-bump.yml.
+
+name: TurboSpec | Workflow Comment Router
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted]
+
+# A reusable workflow cannot raise the caller's token permissions — grant the
+# router's full set here.
+permissions:
+  actions: write # dispatch agentic-dependency-bump.yml AND delete prior router runs
+  contents: read
+  issues: write # add the 🚀 acknowledgement reaction on comments
+  pull-requests: write
+  # This workflow only dispatches agentic-dependency-bump.yml (which runs Copilot
+  # with its own permissions); granted here for consistency with the other
+  # consumer shims.
+  copilot-requests: write
+
+# Serialize router runs per-PR so concurrent comments/reviews dispatch in order
+# and the janitor doesn't race a sibling deletion. Lives in the shim: caller
+# concurrency governs the run, not the called workflow's.
+concurrency:
+  group: wf-comment-router-${{ github.event.issue.number || github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  router:
+    # Allowed persons only: a real user (not a bot) whose author_association is
+    # OWNER / MEMBER / COLLABORATOR. Mirrors the identity gate on the deploy job
+    # in contribution.yml. The reusable workflow additionally enforces the
+    # authoritative effective-permission (write/admin) check at runtime; this
+    # if: is a cheap pre-filter so disallowed actors never spin up the reusable
+    # workflow. A job that uses `uses:` can only carry a job-level `if:`.
+    # issue_comment carries identity on github.event.comment.* (and must be a PR
+    # comment); pull_request_review carries it on github.event.review.*.
+    if: >-
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request != null &&
+       github.event.comment.user.type != 'Bot' &&
+       (github.event.comment.author_association == 'OWNER' ||
+        github.event.comment.author_association == 'MEMBER' ||
+        github.event.comment.author_association == 'COLLABORATOR')) ||
+      (github.event_name == 'pull_request_review' &&
+       github.event.review.user.type != 'Bot' &&
+       (github.event.review.author_association == 'OWNER' ||
+        github.event.review.author_association == 'MEMBER' ||
+        github.event.review.author_association == 'COLLABORATOR'))
+    uses: porsche-code/turbo-spec/.github/workflows/comment-router.yml@deterministic-script-node
+    secrets: inherit
+    with:
+      engine_workflow: agentic-dependency-bump.yml
