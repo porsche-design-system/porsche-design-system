@@ -1,6 +1,7 @@
 import * as partials from '@porsche-design-system/components-react/partials';
 import type React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { H3, P } from '@/components/common/MdxTypography';
 import { CodeBlock } from '@/components/playground/CodeBlock';
 import type { PartialCall, PartialLocation, Partials } from '@/models/partials';
 import { getAngularPartialExample } from '@/utils/partials/getAngularPartialExample';
@@ -8,7 +9,6 @@ import { getNextPartialExample } from '@/utils/partials/getNextPartialExample';
 import { getReactPartialExample } from '@/utils/partials/getReactPartialExample';
 import { getVanillaJsPartialExample } from '@/utils/partials/getVanillaJsPartialExample';
 import { getVuePartialExample } from '@/utils/partials/getVuePartialExample';
-import { H3, P } from '../../../mdx-components';
 
 type PartialDocsProps = {
   name: Partials;

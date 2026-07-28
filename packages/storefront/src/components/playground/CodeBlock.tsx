@@ -1,11 +1,10 @@
 'use client';
 
-import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import React, { type PropsWithChildren } from 'react';
 import SyntaxHighlighter, { type SyntaxHighlighterProps } from 'react-syntax-highlighter';
+import { FrameworkTabs } from '@/components/common/FrameworkTabs';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { frameworkNameMap } from '@/models/framework';
 
 type CodeBlockProps = {
   frameworkMarkup: FrameworkMarkup & { next?: string };
@@ -16,10 +15,6 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
   const frameworks = Object.keys(frameworkMarkup) as Framework[];
   const tabIndex = frameworks.indexOf(storefrontFramework) !== -1 ? frameworks.indexOf(storefrontFramework) : 0;
   const selectedFramework = frameworks[tabIndex];
-
-  const onUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>) => {
-    setStorefrontFramework(frameworks[e.detail.activeTabIndex]);
-  };
 
   const frameworkLanguageMap: Record<Framework | 'next', SyntaxHighlighterProps['language']> = {
     'vanilla-js': 'javascript',
@@ -32,22 +27,12 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
   return (
     <>
       <div className="m-static-md flex gap-fluid-sm justify-between flex-col md:flex-row">
-        <PTabsBar
-          className="framework-select"
-          activeTabIndex={tabIndex}
-          compact={true}
-          background="surface"
-          onUpdate={onUpdate}
-          aria={{
-            'aria-label': 'Select the JavaScript framework for code preview',
-          }}
-        >
-          {frameworks.map((framework) => (
-            <button key={framework} type="button">
-              {frameworkNameMap[framework]}
-            </button>
-          ))}
-        </PTabsBar>
+        <FrameworkTabs
+          frameworks={frameworks}
+          framework={selectedFramework}
+          onFrameworkChange={setStorefrontFramework}
+          label="Select the JavaScript framework for code preview"
+        />
         {children}
       </div>
       {/* @ts-expect-error: Suppress type incompatibility */}

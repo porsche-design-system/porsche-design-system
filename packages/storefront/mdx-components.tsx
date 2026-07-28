@@ -1,6 +1,5 @@
 import {
   PDivider,
-  PHeading,
   PLinkPure,
   PTable,
   PTableBody,
@@ -8,7 +7,6 @@ import {
   PTableHead,
   PTableHeadCell,
   PTableRow,
-  PText,
   PTextList,
   PTextListItem,
 } from '@porsche-design-system/components-react/ssr';
@@ -17,68 +15,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import type React from 'react';
-import type { PropsWithChildren } from 'react';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { getChangelogAnchorId } from '@/utils/extractChangelogVersion';
-
-export const H3 = ({ children }: PropsWithChildren) => (
-  <PHeading tag="h3" size="large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
-    {children}
-  </PHeading>
-);
-
-export const P = ({ children }: PropsWithChildren) => (
-  <PText className="my-fluid-sm max-w-(--max-width-prose)">{children}</PText>
-);
+import { H1, H2, H3, H4, H5, H6, P } from '@/components/common/MdxTypography';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    h1: ({ children }) => (
-      <PHeading tag="h1" size="3xl" id="main-heading" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
-        {children as React.ReactNode}
-      </PHeading>
-    ),
-    h2: ({ children }) => {
-      const text = children as string;
-      const id = getChangelogAnchorId(text);
-
-      return (
-        <PHeading
-          tag="h2"
-          size="xl"
-          className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14 focus-visible:outline outline-focus outline-offset-2 rounded-lg"
-          id={id}
-          tabIndex={-1}
-        >
-          {children as React.ReactNode}
-          <PLinkPure
-            className="ms-static-sm invisible group-hover:visible"
-            title="Link to this heading"
-            icon="none"
-            size="inherit"
-          >
-            <Link href={`#${id}`}>#</Link>
-          </PLinkPure>
-        </PHeading>
-      );
-    },
+    h1: ({ children }) => <H1>{children as React.ReactNode}</H1>,
+    h2: ({ children }) => <H2>{children as React.ReactNode}</H2>,
     h3: ({ children }) => <H3>{children as React.ReactNode}</H3>,
-    h4: ({ children }) => (
-      <PHeading tag="h4" size="md" className="my-fluid-md max-w-(--max-width-prose)">
-        {children as React.ReactNode}
-      </PHeading>
-    ),
-    h5: ({ children }) => (
-      <PHeading tag="h5" size="sm" weight="semibold" className="my-fluid-md max-w-(--max-width-prose)">
-        {children as React.ReactNode}
-      </PHeading>
-    ),
-    h6: ({ children }) => (
-      <PHeading tag="h6" size="sm" weight="semibold" className="my-fluid-md max-w-(--max-width-prose)">
-        {children as React.ReactNode}
-      </PHeading>
-    ),
+    h4: ({ children }) => <H4>{children as React.ReactNode}</H4>,
+    h5: ({ children }) => <H5>{children as React.ReactNode}</H5>,
+    h6: ({ children }) => <H6>{children as React.ReactNode}</H6>,
     p: ({ children }) => <P>{children as React.ReactNode}</P>,
     hr: ({ children }) => <PDivider className="my-fluid-lg">{children as React.ReactNode}</PDivider>,
     ul: ({ children }) => (
