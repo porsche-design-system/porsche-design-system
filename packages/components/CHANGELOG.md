@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Fixed
+
+- `Segmented Control`: Improved `hover/selected` color visibility of items
+  ([#4610](https://github.com/porsche-design-system/porsche-design-system/pull/4610))
+
 ## [4.6.0-rc.0] - 2026-07-21
 
 ### Added
