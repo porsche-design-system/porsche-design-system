@@ -55,8 +55,8 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const onSidebarStartUpdate = (e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
     setIsSidebarStartOpen(e.detail.open);
   };
-  const onSidebarEndOpen = () => {
-    setIsSidebarEndOpen(true);
+  const onSidebarEndToggle = () => {
+    setIsSidebarEndOpen((isOpen) => !isOpen);
   };
   const onSidebarEndDismiss = () => {
     setIsSidebarEndOpen(false);
@@ -116,6 +116,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         slot="header-end"
         icon="search"
         variant="secondary"
+        type="button"
         compact={true}
         hideLabel={true}
         onClick={onOpenSearch}
@@ -139,11 +140,13 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         slot="header-end"
         icon="configurate"
         variant="secondary"
+        type="button"
         compact={true}
         hideLabel={true}
-        onClick={onSidebarEndOpen}
+        onClick={onSidebarEndToggle}
+        aria={{ 'aria-expanded': isSidebarEndOpen }}
       >
-        Open settings sidebar
+        {isSidebarEndOpen ? 'Close' : 'Open'} settings sidebar
       </PButton>
 
       <div className="z-0 relative @container grid grid-cols-(--porsche-canvas-grid) gap-x-fluid-md">

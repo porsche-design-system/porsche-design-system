@@ -80,7 +80,12 @@ test.describe('storefront pages', () => {
         await gotoUrl(page, url);
 
         if (scheme === 'dark') {
-          await page.locator('p-button[slot="header-end"]').filter({ hasText: 'Open settings sidebar' }).click();
+          const settingsButton = page
+            .locator('p-button[slot="header-end"]')
+            .filter({ hasText: 'Open settings sidebar' });
+          if (await settingsButton.isVisible()) {
+            await settingsButton.click();
+          }
           const themeSelect = page.locator('p-select[name="theme"]').first();
           await enableDarkMode(page, themeSelect);
         }
