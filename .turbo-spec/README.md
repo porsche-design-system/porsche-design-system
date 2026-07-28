@@ -72,3 +72,15 @@ workflow-skeleton run      .turbo-spec/workflows/weekly-dependency-bump.yml \
 pushes each stage's changes, and marks the PR ready (success) or leaves it draft
 (failure). It needs `GITHUB_TOKEN` and is mutually exclusive with `--pr`,
 `--branch` and `--create-issue`.
+
+## Timeouts
+
+Every `kind: script` stage sets its own explicit `timeout:`, measured from a real
+run (`install_baseline` 20m, `build` 45m, `bump_versions` 5m, `try_install` 20m,
+`verify_bump` 5m, `needs_manual_resolution` 20m). This is deliberate: the engine
+resolves a script step's ceiling as `stage.timeout or settings.timeout_per_stage
+or 300s`, so a stage without its own `timeout:` silently inherits the 60m global —
+a 25-second `syncpack update` would then hang for an hour before being killed.
+`settings.timeout_per_stage: 60m` is therefore only a backstop; it governs no stage
+today and does **not** bound the agent stage (agent turns use the engine's separate
+worker timeout, and a stage-level `timeout:` on an agent stage is schema-forbidden).
