@@ -14,11 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-### Added
-
-- `AG Grid` Storefront now features examples for the default and compact theme
-([#4616](https://github.com/porsche-design-system/porsche-design-system/pull/4616))
-
 ### Fixed
 
 - `Segmented Control`: Improved `hover/selected` color visibility of items
