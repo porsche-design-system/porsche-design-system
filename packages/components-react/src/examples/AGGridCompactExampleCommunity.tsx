@@ -1,4 +1,4 @@
-import { pdsTheme } from '@porsche-design-system/components-react/ag-grid';
+import { pdsThemeCompact } from '@porsche-design-system/components-react/ag-grid';
 import { AllCommunityModule, type ColDef, ModuleRegistry } from 'ag-grid-community';
 import { AgGridReact } from 'ag-grid-react';
 
@@ -72,7 +72,7 @@ const data: Row[] = [
   },
 ];
 
-export const AGGridExampleStorefrontPage = () => {
+export const AGGridCompactExampleCommunityPage = () => {
   const rowData = data.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
 
   const columnDefs: ColDef<ColumnDefs>[] = [
@@ -126,7 +126,7 @@ export const AGGridExampleStorefrontPage = () => {
         defaultColDef={defaultColDef}
         pagination={true}
         domLayout="autoHeight"
-        theme={pdsTheme}
+        theme={pdsThemeCompact}
       />
     </div>
   );
