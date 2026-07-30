@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
+import { pdsThemeCompact } from '@porsche-design-system/components-angular/ag-grid';
 import { AgGridAngular } from 'ag-grid-angular';
 import {
   AllCommunityModule,
@@ -96,8 +96,8 @@ const data: Row[] = [
   standalone: true,
   imports: [AgGridAngular],
 })
-export class AgGridExampleStorefrontComponent {
-  protected readonly agGridTheme = pdsTheme;
+export class AgGridExampleCompactCommunityComponent {
+  protected readonly agGridTheme = pdsThemeCompact;
 
   rowData = data.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
   // Columns to be displayed (Should match rowData properties)

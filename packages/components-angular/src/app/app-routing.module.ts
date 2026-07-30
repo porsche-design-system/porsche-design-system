@@ -85,19 +85,24 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.SheetExampleComponent,
   },
   {
-    name: 'AG Grid Example',
-    path: 'ag-grid-example',
-    component: fromExamples.AgGridExampleComponent,
+    name: 'AG Grid Example Community',
+    path: 'ag-grid-example-community',
+    component: fromExamples.AgGridExampleCommunityComponent,
   },
   {
-    name: 'AG Grid Example Storefront',
-    path: 'ag-grid-example-storefront',
-    component: fromExamples.AgGridExampleStorefrontComponent,
+    name: 'AG Grid Example Compact Community',
+    path: 'ag-grid-example-compact-community',
+    component: fromExamples.AgGridExampleCompactCommunityComponent,
   },
   {
-    name: 'AG Grid Example Compact Storefront',
-    path: 'ag-grid-example-compact-storefront',
-    component: fromExamples.AgGridExampleCompactStorefrontComponent,
+    name: 'AG Grid Example Enterprise',
+    path: 'ag-grid-example-enterprise',
+    component: fromExamples.AgGridExampleEnterpriseComponent,
+  },
+  {
+    name: 'AG Grid Example Compact Enterprise',
+    path: 'ag-grid-example-compact-enterprise',
+    component: fromExamples.AgGridExampleCompactEnterpriseComponent,
   },
   {
     name: 'Banner Example',
