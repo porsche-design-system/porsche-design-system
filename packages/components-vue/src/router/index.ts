@@ -36,19 +36,24 @@ export const routes: RouteType[] = [
     component: fromExamples.SheetExample,
   },
   {
-    path: '/ag-grid-example',
-    name: 'AG Grid Example',
-    component: fromExamples.AGGridExample,
+    path: '/ag-grid-example-community',
+    name: 'AG Grid Example Community',
+    component: fromExamples.AGGridExampleCommunity,
   },
   {
-    path: '/ag-grid-example-storefront',
-    name: 'AG Grid Example Storefront',
-    component: fromExamples.AGGridExampleStorefront,
+    path: '/ag-grid-example-compact-community',
+    name: 'AG Grid Example Compact Community',
+    component: fromExamples.AGGridCompactExampleCommunity,
   },
   {
-    path: '/ag-grid-example-compact-storefront',
-    name: 'AG Grid Example Compact Storefront',
-    component: fromExamples.AGGridCompactExampleStorefront,
+    path: '/ag-grid-example-enterprise',
+    name: 'AG Grid Example Enterprise',
+    component: fromExamples.AGGridExampleEnterprise,
+  },
+  {
+    path: '/ag-grid-example-compact-enterprise',
+    name: 'AG Grid Example Compact Enterprise',
+    component: fromExamples.AGGridCompactExampleEnterprise,
   },
   {
     path: '/banner-basic',

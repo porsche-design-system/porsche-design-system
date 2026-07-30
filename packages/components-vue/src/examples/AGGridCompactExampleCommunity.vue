@@ -63,7 +63,6 @@ const rowData = data.map((row, index) => ({ active: Boolean(index % 2) /* odd ro
 const columnDefs = [
   {
     field: 'active',
-    showDisabledCheckboxes: true,
     width: 170,
   },
   {

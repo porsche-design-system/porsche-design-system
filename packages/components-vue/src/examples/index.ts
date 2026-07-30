@@ -1,7 +1,8 @@
 export { default as AccordionExample } from './AccordionExample.vue';
-export { default as AGGridExample } from './AGGridExample.vue';
-export { default as AGGridExampleStorefront } from './AGGridExampleStorefront.vue';
-export { default as AGGridCompactExampleStorefront } from './AGGridCompactExampleStorefront.vue';
+export { default as AGGridExampleCommunity } from './AGGridExampleCommunity.vue';
+export { default as AGGridCompactExampleCommunity } from './AGGridCompactExampleCommunity.vue';
+export { default as AGGridExampleEnterprise } from './AGGridExampleEnterprise.vue';
+export { default as AGGridCompactExampleEnterprise } from './AGGridCompactExampleEnterprise.vue';
 export { default as ButtonExampleForm } from './ButtonExampleForm.vue';
 export { default as ButtonExampleFormAttribute } from './ButtonExampleFormAttribute.vue';
 export { default as ButtonPureExampleForm } from './ButtonPureExampleForm.vue';
