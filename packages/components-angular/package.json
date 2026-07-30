@@ -87,5 +87,37 @@
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "optionalDependencies": {
+    "@lmdb/lmdb-darwin-arm64": "^3.5.4",
+    "@lmdb/lmdb-darwin-x64": "^3.5.4",
+    "@lmdb/lmdb-linux-arm": "^3.5.4",
+    "@lmdb/lmdb-linux-arm64": "^3.5.4",
+    "@lmdb/lmdb-linux-x64": "^3.5.4",
+    "@lmdb/lmdb-win32-arm64": "^3.5.4",
+    "@lmdb/lmdb-win32-x64": "^3.5.4",
+    "@msgpackr-extract/msgpackr-extract-darwin-arm64": "^3.0.4",
+    "@msgpackr-extract/msgpackr-extract-darwin-x64": "^3.0.4",
+    "@msgpackr-extract/msgpackr-extract-linux-arm": "^3.0.4",
+    "@msgpackr-extract/msgpackr-extract-linux-arm64": "^3.0.4",
+    "@msgpackr-extract/msgpackr-extract-linux-x64": "^3.0.4",
+    "@msgpackr-extract/msgpackr-extract-win32-x64": "^3.0.4",
+    "@napi-rs/nice-android-arm-eabi": "^1.1.1",
+    "@napi-rs/nice-android-arm64": "^1.1.1",
+    "@napi-rs/nice-darwin-arm64": "^1.1.1",
+    "@napi-rs/nice-darwin-x64": "^1.1.1",
+    "@napi-rs/nice-freebsd-x64": "^1.1.1",
+    "@napi-rs/nice-linux-arm-gnueabihf": "^1.1.1",
+    "@napi-rs/nice-linux-arm64-gnu": "^1.1.1",
+    "@napi-rs/nice-linux-arm64-musl": "^1.1.1",
+    "@napi-rs/nice-linux-ppc64-gnu": "^1.1.1",
+    "@napi-rs/nice-linux-riscv64-gnu": "^1.1.1",
+    "@napi-rs/nice-linux-s390x-gnu": "^1.1.1",
+    "@napi-rs/nice-linux-x64-gnu": "^1.1.1",
+    "@napi-rs/nice-linux-x64-musl": "^1.1.1",
+    "@napi-rs/nice-openharmony-arm64": "^1.1.1",
+    "@napi-rs/nice-win32-arm64-msvc": "^1.1.1",
+    "@napi-rs/nice-win32-ia32-msvc": "^1.1.1",
+    "@napi-rs/nice-win32-x64-msvc": "^1.1.1"
   }
 }
