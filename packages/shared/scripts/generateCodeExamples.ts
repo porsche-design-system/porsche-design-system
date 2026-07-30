@@ -40,19 +40,19 @@ const codeExamples: CodeSample[] = [
       {
         name: 'Default Theme',
         paths: {
-          'vanilla-js': '/ag-grid-example-storefront.html',
-          angular: '/ag-grid-example-storefront.component.ts',
-          react: '/AGGridExampleStorefront.tsx',
-          vue: '/AGGridExampleStorefront.vue',
+          'vanilla-js': '/ag-grid-example-community.html',
+          angular: '/ag-grid-example-community.component.ts',
+          react: '/AGGridExampleCommunity.tsx',
+          vue: '/AGGridExampleCommunity.vue',
         },
       },
       {
         name: 'Compact Theme',
         paths: {
-          'vanilla-js': '/ag-grid-example-compact-storefront.html',
-          angular: '/ag-grid-example-compact-storefront.component.ts',
-          react: '/AGGridCompactExampleStorefront.tsx',
-          vue: '/AGGridCompactExampleStorefront.vue',
+          'vanilla-js': '/ag-grid-example-compact-community.html',
+          angular: '/ag-grid-example-compact-community.component.ts',
+          react: '/AGGridCompactExampleCommunity.tsx',
+          vue: '/AGGridCompactExampleCommunity.vue',
         },
       },
     ],
