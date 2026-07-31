@@ -14,9 +14,9 @@ import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import type React from 'react';
+import React from 'react';
 
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import { CodeBlock } from '@/components/common/CodeBlock';
 import { H1, H2, H3, H4, H5, H6, P } from '@/components/common/MdxTypography';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -60,55 +60,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children as React.ReactNode}
       </blockquote>
     ),
-    pre: ({ children }) => (
-      <pre className="my-fluid-sm" dir="ltr">
-        {children as React.ReactNode}
-      </pre>
-    ),
-    code: ({ children, className }) => {
-      const hasLang = /language-(\w+)/.exec(className || '');
+    // A fenced code block reaches the mapping as `pre > code`, so the language and the code are read
+    // from the `code` element instead of rendering it; `code` itself then only handles inline code.
+    pre: ({ children }) => {
+      const { className, children: code } = React.isValidElement<{ className?: string; children?: React.ReactNode }>(
+        children
+      )
+        ? children.props
+        : { className: undefined, children };
 
       return (
-        <>
-          {hasLang ? (
-            <code
-              className="my-fluid-md p-fluid-md max-h-96 overflow-auto rounded-3xl focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-2"
-              tabIndex={0}
-            >
-              {/* @ts-expect-error */}
-              <SyntaxHighlighter
-                language={
-                  {
-                    js: 'javascript',
-                    javascript: 'javascript',
-                    ts: 'typescript',
-                    typescript: 'typescript',
-                    diff: 'diff',
-                    json: 'json',
-                    text: 'plaintext',
-                    html: 'xml',
-                    scss: 'scss',
-                    css: 'css',
-                    shell: 'shell',
-                    bash: 'bash',
-                    tsx: 'typescript',
-                    jsx: 'javascript',
-                  }[hasLang[1]] || 'javascript'
-                }
-                PreTag="div"
-                CodeTag="div"
-                showLineNumbers={false}
-                useInlineStyles={false}
-              >
-                {children as React.ReactNode}
-              </SyntaxHighlighter>
-            </code>
-          ) : (
-            <code className="my-fluid-md rounded-lg">{children as React.ReactNode}</code>
-          )}
-        </>
+        <CodeBlock language={/language-(\w+)/.exec(className || '')?.[1]}>
+          {typeof code === 'string' ? code : ''}
+        </CodeBlock>
       );
     },
+    code: ({ children }) => <code className="my-fluid-md rounded-lg">{children as React.ReactNode}</code>,
     img: ({ src, alt }) => (
       <Image
         className="w-full h-auto rounded-lg"

@@ -1,5 +1,5 @@
-import { FrameworkCode, FrameworkSwitch, SkillName, SkillPackage } from '@/components/common/FrameworkSkillContent';
-import { resolveFrameworkSnippet } from '@/models/frameworkSkillNames';
+import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
+import { FrameworkPackage, FrameworkSkill, StorefrontFrameworkTabs } from '@/components/common/StorefrontFramework';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
@@ -28,11 +28,18 @@ All Porsche Design System Agent Skills ship inside the Porsche Design System npm
 them. Since AI integrations discover skills in dedicated directories rather than `node_modules`, a directory symlink
 exposes a bundled skill to your agent:
 
-<FrameworkSwitch label="Select the framework for the skill names and paths on this page" />
+<StorefrontFrameworkTabs
+  className="my-fluid-md"
+  label="Select the framework for the skill names and paths on this page"
+/>
 
-{/* prettier-ignore */}
-<FrameworkCode>{resolveFrameworkSnippet(({ packageName, skillName }) => `.agents/skills/${skillName}
-  -> node_modules/${packageName}/skills/${skillName}`)}</FrameworkCode>
+<FrameworkCodeBlock
+  language="text"
+  render={({ componentPackageName, getSkillName }) => `
+    .agents/skills/${getSkillName('knowledge')}
+      -> node_modules/${componentPackageName}/skills/${getSkillName('knowledge')}
+  `}
+/>
 
 This **skill-in-package** approach provides two benefits:
 
@@ -47,8 +54,8 @@ To expose a skill to your AI coding tool, follow the [installation guide](/skill
 
 Additional skills are planned and will be added here as they become available.
 
-| Skill     | Skill directory name | Documentation                        |
-| --------- | -------------------- | ------------------------------------ |
-| Knowledge | <SkillName />        | [Knowledge Skill](/skills/knowledge) |
+| Skill     | Skill directory name            | Documentation                        |
+| --------- | ------------------------------- | ------------------------------------ |
+| Knowledge | <code><FrameworkSkill /></code> | [Knowledge Skill](/skills/knowledge) |
 
-Every skill is bundled in the `skills` directory of the selected framework's package, <SkillPackage />.
+Every skill is bundled in the `skills` directory of the selected framework's package, <code><FrameworkPackage /></code>.

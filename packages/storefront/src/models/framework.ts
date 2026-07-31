@@ -15,10 +15,53 @@ export type FrameworkWithNext = Framework | 'next';
 /** Every supported framework, in the order code examples offer them. */
 export const frameworks = ['vanilla-js', 'angular', 'react', 'vue'] as const satisfies Framework[];
 
-export const frameworkNameMap: Record<FrameworkWithNext, string> = {
+/** Suffix the packages and skills of a framework are named after, e.g. `pds-knowledge-js` for Vanilla JS. */
+export const frameworkSuffixMap = {
+  'vanilla-js': 'js',
+  angular: 'angular',
+  react: 'react',
+  vue: 'vue',
+} as const satisfies Record<Framework, string>;
+
+export const frameworkNameMap = {
   'vanilla-js': 'Vanilla JS',
   angular: 'Angular',
   react: 'React',
   vue: 'Vue',
   next: 'Next',
+} as const satisfies Record<FrameworkWithNext, string>;
+
+export type FrameworkSuffix = (typeof frameworkSuffixMap)[Framework];
+export type FrameworkName = (typeof frameworkNameMap)[Framework];
+
+/** Skills bundled with the Porsche Design System packages. */
+export type SkillId = 'knowledge';
+
+export type FrameworkRenderContext = {
+  framework: Framework;
+  frameworkName: FrameworkName;
+  frameworkSuffix: FrameworkSuffix;
+  componentPackageName: `@porsche-design-system/components-${FrameworkSuffix}`;
+  componentPackageWindowsPath: `@porsche-design-system\\components-${FrameworkSuffix}`;
+  getSkillName: (skill: SkillId) => `pds-${SkillId}-${FrameworkSuffix}`;
 };
+
+export const getFrameworkRenderContext = (framework: Framework): FrameworkRenderContext => {
+  const frameworkSuffix = frameworkSuffixMap[framework];
+
+  return {
+    framework,
+    frameworkName: frameworkNameMap[framework],
+    frameworkSuffix,
+    componentPackageName: `@porsche-design-system/components-${frameworkSuffix}`,
+    componentPackageWindowsPath: `@porsche-design-system\\components-${frameworkSuffix}`,
+    getSkillName: (skill) => `pds-${skill}-${frameworkSuffix}`,
+  };
+};
+
+export const resolveFrameworkValues = <T>(resolve: (context: FrameworkRenderContext) => T): Record<Framework, T> =>
+  Object.fromEntries(
+    frameworks.map((framework) => [framework, resolve(getFrameworkRenderContext(framework))])
+  ) as Record<Framework, T>;
+
+export const frameworkRenderContextMap = resolveFrameworkValues((context) => context);

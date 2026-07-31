@@ -1,6 +1,6 @@
-import { FrameworkCode, FrameworkSwitch, SkillName } from '@/components/common/FrameworkSkillContent';
+import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
+import { FrameworkSkill, StorefrontFrameworkTabs } from '@/components/common/StorefrontFramework';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { resolveFrameworkSnippet } from '@/models/frameworkSkillNames';
 
 export const metadata = {
   title: 'Knowledge Skill - Porsche Design System',
@@ -22,7 +22,7 @@ The skill is generated from the same source as this documentation and ships insi
 packages, so it always describes the version your project actually uses. There is one variant per supported framework;
 select yours to adapt the skill name and prompts on this page.
 
-<FrameworkSwitch label="Select the framework the Knowledge Skill examples apply to" />
+<StorefrontFrameworkTabs className="my-fluid-md" label="Select the framework the Knowledge Skill examples apply to" />
 
 ## What It Covers
 
@@ -48,8 +48,8 @@ Use the Knowledge Skill whenever a task touches frontend UI/UX in a project wher
 A skill can be invoked in two ways:
 
 - **Automatic invocation:** Your AI coding agent activates the skill when a task matches its description.
-- **Manual invocation:** Invoke <SkillName /> using your agent's skill selection syntax to make sure it is used, for
-  example <SkillName prefix="/" />.
+- **Manual invocation:** Invoke <code><FrameworkSkill /></code> using your agent's skill selection syntax to make sure
+  it is used, for example <code>/<FrameworkSkill /></code>.
 
 ### Example prompts
 
@@ -57,27 +57,43 @@ These examples use slash-command syntax. Adjust it to the syntax your AI coding 
 
 Ask for version-specific guidance:
 
-{/* prettier-ignore */}
-<FrameworkCode>{resolveFrameworkSnippet(({ skillName }) => `/${skillName} Recommend the right PDS components for a responsive sign-in form.
-Explain the relevant properties, slots and accessibility requirements for the version
-installed in this project.`)}</FrameworkCode>
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Recommend the right PDS components for a responsive sign-in form.
+    Explain the relevant properties, slots and accessibility requirements for the version
+    installed in this project.
+  `}
+/>
 
 Implement a feature:
 
-{/* prettier-ignore */}
-<FrameworkCode>{resolveFrameworkSnippet(({ skillName }) => `/${skillName} Build an accessible country selector that displays each country's
-flag in its option and groups the countries by continent. Use the appropriate PDS
-components and follow the existing framework and codebase conventions.`)}</FrameworkCode>
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Build an accessible country selector that displays each country's
+    flag in its option and groups the countries by continent. Use the appropriate PDS
+    components and follow the existing framework and codebase conventions.
+  `}
+/>
 
 Review existing code:
 
-{/* prettier-ignore */}
-<FrameworkCode>{resolveFrameworkSnippet(({ skillName }) => `/${skillName} Review this page for deprecated or incorrect PDS usage,
-accessibility issues and opportunities to replace custom UI with PDS components. Apply
-the necessary fixes.`)}</FrameworkCode>
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Review this page for deprecated or incorrect PDS usage,
+    accessibility issues and opportunities to replace custom UI with PDS components. Apply
+    the necessary fixes.
+  `}
+/>
 
 Update an implementation:
 
-{/* prettier-ignore */}
-<FrameworkCode>{resolveFrameworkSnippet(({ skillName }) => `/${skillName} Migrate this implementation to the APIs supported by the
-installed PDS version. Preserve its behavior and accessibility, and verify the result.`)}</FrameworkCode>
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Migrate this implementation to the APIs supported by the
+    installed PDS version. Preserve its behavior and accessibility, and verify the result.
+  `}
+/>

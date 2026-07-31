@@ -3,10 +3,9 @@
 import { PText } from '@porsche-design-system/components-react/ssr';
 import type { Framework } from '@porsche-design-system/shared';
 import { A11yCodeSnippet } from '@/components/accessibility/A11yCodeSnippet';
-import { FrameworkTabs } from '@/components/common/FrameworkTabs';
 import { H3 } from '@/components/common/MdxTypography';
+import { StorefrontFrameworkTabs } from '@/components/common/StorefrontFramework';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { frameworks } from '@/models/framework';
 
 export type CompleteFrameworkMarkup = Record<Framework, string>;
 
@@ -23,17 +22,13 @@ export type ResolvedAccessibilityExample = {
  * framework context, so every code block on the page stays in sync.
  */
 const A11yExamplePair = ({ name, antiPattern, recommended }: Omit<ResolvedAccessibilityExample, 'key'>) => {
-  const { storefrontFramework, setStorefrontFramework } = useStorefrontFramework();
-  const framework = frameworks.includes(storefrontFramework) ? storefrontFramework : frameworks[0];
+  const { storefrontFramework: framework } = useStorefrontFramework();
 
   return (
     <section>
       <H3>{name}</H3>
-      <FrameworkTabs
+      <StorefrontFrameworkTabs
         className="my-fluid-md"
-        frameworks={frameworks}
-        framework={framework}
-        onFrameworkChange={setStorefrontFramework}
         label={`Select the JavaScript framework for the "${name}" code examples`}
       />
       <PText className="my-fluid-sm max-w-(--max-width-prose)">❌ Anti-pattern</PText>
