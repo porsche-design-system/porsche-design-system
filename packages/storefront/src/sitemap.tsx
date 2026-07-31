@@ -566,6 +566,11 @@ export const sitemap: Routes = {
         path: '/patterns/popover',
         type: 'PAGE',
       },
+      feedback: {
+        name: 'Feedback',
+        path: '/patterns/feedback',
+        type: 'PAGE',
+      },
       forms: {
         name: 'Forms',
         path: '/patterns/forms',
@@ -1877,7 +1882,7 @@ export const sitemap: Routes = {
             type: 'PAGE',
           },
           'dos-and-donts': {
-            name: 'Do\'s and Don\'ts',
+            name: "Do's and Don'ts",
             path: '/must-know/accessibility/dos-and-donts',
             type: 'PAGE',
           },
