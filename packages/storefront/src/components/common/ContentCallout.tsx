@@ -11,9 +11,8 @@ type ContentCalloutProps = {
 
 /** Highlighted section for MDX content, e.g. to promote a shortcut above the regular instructions. */
 export const ContentCallout = ({ title, icon, children }: ContentCalloutProps) => (
-  // The radius is the inner code block's radius plus the padding, so both roundings stay concentric.
   <aside
-    className="my-fluid-md p-fluid-md rounded-[calc(var(--radius-3xl)+var(--spacing-fluid-md))] bg-info-frosted-soft forced-colors:outline [&>*:last-child]:mb-0"
+    className="my-fluid-md p-fluid-md rounded-3xl bg-info-frosted-soft forced-colors:outline [&>*:last-child]:mb-0"
     aria-label={title}
   >
     <div className="flex items-center gap-static-xs">
