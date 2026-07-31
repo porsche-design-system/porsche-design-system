@@ -1,10 +1,7 @@
-'use client';
-
 import * as partials from '@porsche-design-system/components-react/partials';
-import { CodeBlock, type CodeLanguage } from '@/components/common/CodeBlock';
-import { FrameworkTabs } from '@/components/common/FrameworkTabs';
+import { CodeBlock } from '@/components/common/CodeBlock';
 import { H3, P } from '@/components/common/MdxTypography';
-import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
+import { PartialExample } from '@/components/partials/PartialExample';
 import type { FrameworkWithNext } from '@/models/framework';
 import type { PartialCall, PartialLocation, Partials } from '@/models/partials';
 import { getAngularPartialExample } from '@/utils/partials/getAngularPartialExample';
@@ -19,25 +16,12 @@ type PartialDocsProps = {
   partialCalls: PartialCall[];
 };
 
-const frameworkLanguageMap = {
-  'vanilla-js': 'javascript',
-  angular: 'typescript',
-  react: 'typescript',
-  vue: 'typescript',
-  next: 'typescript',
-} as const satisfies Record<FrameworkWithNext, CodeLanguage>;
+// Apply some basic formatting to make the output easier readable
+const formatPartial = (partial: unknown): string =>
+  typeof partial === 'string' ? partial.replace(/(>)/g, '>\n').replace(/(<\/)/g, '\n</') : String(partial);
 
+/** Server component on purpose: partials may only be called at build time. */
 export const PartialDocs = ({ name, location, partialCalls }: PartialDocsProps) => {
-  const { storefrontFramework } = useStorefrontFramework();
-
-  // Apply some basic formatting to make the output easier readable
-  const formatPartial = (partial: unknown): string => {
-    if (typeof partial === 'string') {
-      return partial.replace(/(>)/g, '>\n').replace(/(<\/)/g, '\n</');
-    }
-    return String(partial);
-  };
-
   const frameworkMarkup: Record<FrameworkWithNext, string> = {
     'vanilla-js': getVanillaJsPartialExample(name, location, partialCalls),
     angular: getAngularPartialExample(name, location, partialCalls),
@@ -46,24 +30,21 @@ export const PartialDocs = ({ name, location, partialCalls }: PartialDocsProps) 
     next: getNextPartialExample(name),
   };
 
+  const partialOutput = partialCalls
+    .map(({ comment, params }) => {
+      const paramObj = Object.fromEntries(params.map(({ key, value }) => [key, value]));
+      const partialResult = (partials as any)[name](paramObj);
+      return `${comment ? `// ${comment}\n` : ''}${formatPartial(partialResult)}`;
+    })
+    .join('\n');
+
   return (
     <>
-      <div className="m-static-md flex gap-fluid-sm justify-between flex-col md:flex-row">
-        <FrameworkTabs next={true} label="Select the JavaScript framework for code preview" />
-      </div>
-      <CodeBlock className="markup" language={frameworkLanguageMap[storefrontFramework]}>
-        {frameworkMarkup[storefrontFramework]}
-      </CodeBlock>
+      <PartialExample frameworkMarkup={frameworkMarkup} />
       <H3>Output</H3>
       <P>The result of this partial looks like this:</P>
       <CodeBlock className="markup select-none" language="html" label={`${name} partial output`}>
-        {partialCalls
-          .map(({ comment, params }) => {
-            const paramObj = Object.fromEntries(params.map(({ key, value }) => [key, value]));
-            const partialResult = (partials as any)[name](paramObj);
-            return `${comment ? `// ${comment}\n` : ''}${formatPartial(partialResult)}`;
-          })
-          .join('\n')}
+        {partialOutput}
       </CodeBlock>
     </>
   );
