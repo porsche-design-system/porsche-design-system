@@ -70,7 +70,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         : { className: undefined, children };
 
       return (
-        <CodeBlock language={/language-(\w+)/.exec(className || '')?.[1]}>
+        <CodeBlock className="my-fluid-md" language={/language-(\w+)/.exec(className || '')?.[1]}>
           {typeof code === 'string' ? code : ''}
         </CodeBlock>
       );

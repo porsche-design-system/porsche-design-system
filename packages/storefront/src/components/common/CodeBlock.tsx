@@ -11,6 +11,7 @@ const languageMap = {
   json: 'json',
   text: 'plaintext',
   html: 'xml',
+  xml: 'xml',
   scss: 'scss',
   css: 'css',
   shell: 'shell',
@@ -20,31 +21,35 @@ const languageMap = {
 export type CodeLanguage = keyof typeof languageMap;
 
 type CodeBlockProps = {
-  /** Language of the code block; an unknown language falls back to JavaScript highlighting. */
-  language?: string;
+  /** Omitted renders the code unhighlighted, an unsupported language falls back to JavaScript. */
+  language?: CodeLanguage | (string & {});
+  /** Accessible name of the focusable, scrollable code region. */
+  label?: string;
+  className?: string;
   children: string;
 };
 
-/** Block-level code rendering of the MDX `pre` mapping, also used for framework-dependent snippets. */
-export const CodeBlock = ({ language, children }: CodeBlockProps) => (
-  <pre className="my-fluid-sm" dir="ltr">
-    {language ? (
-      <code
-        className="my-fluid-md p-fluid-md max-h-96 overflow-auto rounded-3xl focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-2"
-        tabIndex={0}
-      >
-        <SyntaxHighlighter
-          language={languageMap[language as CodeLanguage] || 'javascript'}
-          PreTag="div"
-          CodeTag="div"
-          showLineNumbers={false}
-          useInlineStyles={false}
-        >
-          {children}
-        </SyntaxHighlighter>
-      </code>
-    ) : (
-      <code className="my-fluid-md rounded-lg">{children}</code>
-    )}
-  </pre>
-);
+/** Renders code as a scrollable, syntax highlighted box. */
+export const CodeBlock = ({ language, label, className, children }: CodeBlockProps) => {
+  const highlightLanguage = language ? languageMap[language as CodeLanguage] || 'javascript' : 'plaintext';
+
+  return (
+    <SyntaxHighlighter
+      dir="ltr"
+      className={className}
+      language={highlightLanguage}
+      showLineNumbers={false}
+      useInlineStyles={false}
+      codeTagProps={{
+        // The code scrolls, so it must be keyboard reachable — which in turn requires a role and an
+        // accessible name for the focus stop to be announced meaningfully.
+        tabIndex: 0,
+        ...(label && { role: 'region', 'aria-label': label }),
+        // Passing `codeTagProps` replaces the language class the highlighter adds by default.
+        className: `language-${highlightLanguage} max-h-96 overflow-auto rounded-3xl focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-2`,
+      }}
+    >
+      {children}
+    </SyntaxHighlighter>
+  );
+};

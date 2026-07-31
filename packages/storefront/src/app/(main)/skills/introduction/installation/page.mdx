@@ -1,9 +1,10 @@
 import { ContentCallout } from '@/components/common/ContentCallout';
 import { ContentTab, ContentTabs } from '@/components/common/ContentTabs';
 import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
+import { FrameworkTabs } from '@/components/common/FrameworkTabs';
 import { FrameworkLink } from '@/components/common/FrameworkLink';
 import { PromptBox } from '@/components/common/PromptBox';
-import { FrameworkSkill, StorefrontFramework, StorefrontFrameworkTabs } from '@/components/common/StorefrontFramework';
+import { FrameworkSkill, StorefrontFramework } from '@/components/common/StorefrontFramework';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
@@ -26,7 +27,7 @@ export const metadata = {
 The instructions on this page use the Knowledge Skill. Select your framework to adapt the package name, skill name and
 commands below.
 
-<StorefrontFrameworkTabs className="my-fluid-md" label="Select the framework the installation instructions apply to" />
+<FrameworkTabs className="my-fluid-md" label="Select the framework the installation instructions apply to" />
 
 ## 1. Install a Porsche Design System Package
 

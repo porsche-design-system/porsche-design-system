@@ -31,8 +31,8 @@ describe('FrameworkCodeBlock', () => {
     const code = document.querySelector('code');
 
     expect(code).toHaveTextContent('npm install @porsche-design-system/components-js');
-    expect(code?.querySelector('.hljs')).toBeInTheDocument();
-    expect(code?.querySelector('.language-bash')).toBeInTheDocument();
+    expect(code).toHaveClass('language-bash');
+    expect(code?.closest('pre')).toHaveClass('hljs');
 
     fireEvent.click(screen.getByRole('button', { name: 'Select React' }));
 

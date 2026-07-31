@@ -15,6 +15,10 @@ export type FrameworkWithNext = Framework | 'next';
 /** Every supported framework, in the order code examples offer them. */
 export const frameworks = ['vanilla-js', 'angular', 'react', 'vue'] as const satisfies Framework[];
 
+/** Next.js builds on the React package, so it shares everything that is framework- rather than tab-specific. */
+export const resolveFramework = (framework: FrameworkWithNext): Framework =>
+  framework === 'next' ? 'react' : framework;
+
 /** Suffix the packages and skills of a framework are named after, e.g. `pds-knowledge-js` for Vanilla JS. */
 export const frameworkSuffixMap = {
   'vanilla-js': 'js',

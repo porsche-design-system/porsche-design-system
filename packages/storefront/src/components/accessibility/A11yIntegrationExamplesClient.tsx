@@ -3,8 +3,8 @@
 import { PText } from '@porsche-design-system/components-react/ssr';
 import type { Framework } from '@porsche-design-system/shared';
 import { A11yCodeSnippet } from '@/components/accessibility/A11yCodeSnippet';
+import { FrameworkTabs } from '@/components/common/FrameworkTabs';
 import { H3 } from '@/components/common/MdxTypography';
-import { StorefrontFrameworkTabs } from '@/components/common/StorefrontFramework';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 
 export type CompleteFrameworkMarkup = Record<Framework, string>;
@@ -22,12 +22,12 @@ export type ResolvedAccessibilityExample = {
  * framework context, so every code block on the page stays in sync.
  */
 const A11yExamplePair = ({ name, antiPattern, recommended }: Omit<ResolvedAccessibilityExample, 'key'>) => {
-  const { storefrontFramework: framework } = useStorefrontFramework();
+  const { framework } = useStorefrontFramework();
 
   return (
     <section>
       <H3>{name}</H3>
-      <StorefrontFrameworkTabs
+      <FrameworkTabs
         className="my-fluid-md"
         label={`Select the JavaScript framework for the "${name}" code examples`}
       />

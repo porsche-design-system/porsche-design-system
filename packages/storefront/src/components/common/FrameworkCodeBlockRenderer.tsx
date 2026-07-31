@@ -2,7 +2,7 @@
 
 import type { Framework } from '@porsche-design-system/shared';
 import { CodeBlock, type CodeLanguage } from '@/components/common/CodeBlock';
-import { useFrameworkValue } from '@/hooks/useFrameworkValue';
+import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 
 type FrameworkCodeBlockRendererProps = {
   language: CodeLanguage;
@@ -11,5 +11,5 @@ type FrameworkCodeBlockRendererProps = {
 
 /** Client part of `FrameworkCodeBlock`, picking the code of the selected framework. */
 export const FrameworkCodeBlockRenderer = ({ language, codeByFramework }: FrameworkCodeBlockRendererProps) => (
-  <CodeBlock language={language}>{useFrameworkValue(codeByFramework)}</CodeBlock>
+  <CodeBlock language={language}>{codeByFramework[useStorefrontFramework().framework]}</CodeBlock>
 );

@@ -1,5 +1,6 @@
 import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
-import { FrameworkPackage, FrameworkSkill, StorefrontFrameworkTabs } from '@/components/common/StorefrontFramework';
+import { FrameworkTabs } from '@/components/common/FrameworkTabs';
+import { FrameworkPackage, FrameworkSkill } from '@/components/common/StorefrontFramework';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
@@ -28,10 +29,7 @@ All Porsche Design System Agent Skills ship inside the Porsche Design System npm
 them. Since AI integrations discover skills in dedicated directories rather than `node_modules`, a directory symlink
 exposes a bundled skill to your agent:
 
-<StorefrontFrameworkTabs
-  className="my-fluid-md"
-  label="Select the framework for the skill names and paths on this page"
-/>
+<FrameworkTabs className="my-fluid-md" label="Select the framework for the skill names and paths on this page" />
 
 <FrameworkCodeBlock
   language="text"
