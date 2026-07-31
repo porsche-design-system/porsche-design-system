@@ -15,7 +15,7 @@
     "build:nextjs": "npm run build --workspace=@porsche-design-system/nextjs",
     "build:react-router": "npm run build --workspace=@porsche-design-system/react-router",
     "build:subPackages:skill": "npm run build:subPackages:skill:content && npm run build:subPackages:skill:bin",
-    "build:subPackages:skill:content": "SOURCE=../storefront/projects/skill/generated/react/skills && TARGET=./dist/react-wrapper/skills && test -f $SOURCE/pds-knowledge-react/SKILL.md || { echo 'Missing staged react skill. Run npm run build:skill first.' >&2; exit 1; }; rm -rf ./dist/react-wrapper/skill && rm -rf $TARGET && cp -r $SOURCE $TARGET",
+    "build:subPackages:skill:content": "SOURCE=../storefront/projects/skill/generated/react/skills && TARGET=./dist/react-wrapper/skills && test -f $SOURCE/pds-knowledge-react/SKILL.md || { echo 'Missing staged react skill. Run npm run build:skill first.' >&2; exit 1; }; rm -rf $TARGET && cp -r $SOURCE $TARGET",
     "build:subPackages:skill:bin": "SOURCE=../storefront/projects/skill/bin/pds-skill.js && TARGET=./dist/react-wrapper/bin && test -f $SOURCE || { echo \"Missing canonical pds-skill binary at $SOURCE.\" >&2; exit 1; }; mkdir -p $TARGET && rm -f $TARGET/pds-skill.js && cp $SOURCE $TARGET/pds-skill.js && chmod +x $TARGET/pds-skill.js",
     "build:subPackages:tailwindcss": "TARGET=./dist/react-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:subPackages:stylesheets": "TARGET=./dist/react-wrapper/stylesheets && SOURCE=../components/projects/stylesheets/lib && rm -rf $TARGET && mkdir -p $TARGET/cn && cp $SOURCE/*.css $TARGET/ && cp $SOURCE/cn/*.css $TARGET/cn/",
