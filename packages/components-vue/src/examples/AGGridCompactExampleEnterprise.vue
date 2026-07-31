@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { PLinkPure } from '@porsche-design-system/components-vue';
-import { pdsTheme } from '@porsche-design-system/components-vue/ag-grid';
+import { pdsThemeCompact } from '@porsche-design-system/components-vue/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
-import { AllEnterpriseModule, ModuleRegistry } from 'ag-grid-enterprise';
+import { AllEnterpriseModule } from 'ag-grid-enterprise';
 import { AgGridVue } from 'ag-grid-vue3';
 import { inject } from 'vue';
 import { type Theme, themeInjectionKey } from '../main';
 
-ModuleRegistry.registerModules([AllEnterpriseModule]);
+// registered per grid, since ModuleRegistry.registerModules() would apply the license check to every grid
+const modules = [AllEnterpriseModule];
 
 const theme = inject<Theme>(themeInjectionKey, 'scheme-light');
 
@@ -50,7 +51,6 @@ const rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /
 const columnDefs = [
   {
     field: 'active',
-    showDisabledCheckboxes: true,
     width: 170,
   },
   {
@@ -111,14 +111,15 @@ const defaultColDef = {
 
 <template>
   <ag-grid-vue
-    :theme="pdsTheme"
+    :modules="modules"
+    :theme="pdsThemeCompact"
     :rowData="rowData"
     :columnDefs="columnDefs"
     :defaultColDef="defaultColDef"
     style="height: 80vh"
     :pagination="true"
     :sideBar="true"
-    :enableRangeSelection="true"
+    :cellSelection="true"
   >
   </ag-grid-vue>
 </template>

@@ -7,11 +7,8 @@ import {
   AllEnterpriseModule,
   type ColDef,
   type ICellRendererParams,
-  ModuleRegistry,
   ValidationModule,
 } from 'ag-grid-enterprise';
-
-ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
@@ -99,9 +96,10 @@ class ButtonRenderer implements ICellRendererAngularComp {
 }
 
 @Component({
-  selector: 'ag-grid-example',
+  selector: 'ag-grid-example-enterprise',
   template: ` <div>
     <ag-grid-angular
+      [modules]="modules"
       style="width: 100%; height: 550px;"
       [rowData]="rowData"
       [columnDefs]="columnDefs"
@@ -116,8 +114,11 @@ class ButtonRenderer implements ICellRendererAngularComp {
   standalone: true,
   imports: [PorscheDesignSystemModule, AgGridAngular],
 })
-export class AgGridExampleComponent {
+export class AgGridExampleEnterpriseComponent {
   protected readonly agGridTheme = pdsTheme;
+
+  // registered per grid, since ModuleRegistry.registerModules() would apply the license check to every grid
+  protected readonly modules = [AllEnterpriseModule, ValidationModule];
 
   rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
   // Columns to be displayed (Should match rowData properties)
