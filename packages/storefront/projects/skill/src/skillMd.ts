@@ -1,6 +1,6 @@
 import { rawMetaReference } from './components/section';
 import { rawScssReference, rawTailwindcssReference } from './packageSkills';
-import { getSkillName, SKILLS } from './registry';
+import { getSkillName } from './registry';
 import type { Framework } from './support/skillTree';
 import { localPorscheDesignSystemVersion } from './support/version';
 
@@ -21,14 +21,24 @@ export const skillName = (framework: Framework): string => getSkillName('knowled
 
 /**
  * Auto-activation description of the knowledge skill — the only matching surface Claude Code uses to
- * decide whether to load it. It names concrete UI triggers so it fires broadly on frontend work even
- * when PDS is not mentioned, and also on documents that assert PDS behavior (requirements, specs,
- * design docs, acceptance criteria) — a wrong API fact written upstream in a doc propagates into
- * every task that consumes it. The "do not activate" clause keeps it dormant on backend/non-UI,
- * tooling, *non-PDS* prose, foreign-library, and opt-out prompts — but no longer on PDS-asserting
- * docs. Owned by the registry alongside the rest of the skill's identity.
+ * decide whether to load it. Rendered verbatim into the SKILL.md YAML frontmatter, so it must stay a
+ * single line and free of `: ` sequences that would break the frontmatter parse. It names concrete UI
+ * triggers so it fires broadly on frontend work even when PDS is not mentioned, and also on documents
+ * that assert PDS behavior (requirements, specs, design docs, acceptance criteria) — a wrong API fact
+ * written upstream in a doc propagates into every task that consumes it. The "do not activate" clause
+ * keeps it dormant on backend/non-UI, tooling, *non-PDS* prose, foreign-library, and opt-out prompts —
+ * but no longer on PDS-asserting docs.
  */
-export const ACTIVATION_DESCRIPTION = SKILLS.knowledge.activationDescription;
+export const ACTIVATION_DESCRIPTION =
+  'Build, style, or review web user interfaces with the Porsche Design System (PDS), or author ' +
+  'and review documents that specify PDS behavior. ' +
+  'Use whenever a task touches frontend UI — adding or changing components (buttons, forms, inputs, ' +
+  'cards, tables, modals, navigation, layouts), styling with Tailwind, SCSS, vanilla-extract or Emotion, ' +
+  'applying design tokens, or scaffolding a new page or form. Also use whenever a requirement, spec, design ' +
+  'doc, or acceptance criteria names a PDS component, prop, token, or theming. Prefer PDS for new UI even when it is ' +
+  'not named by the user. Do not activate for backend or non-UI logic, unrelated tests or tooling, ' +
+  'documentation or prose that does not assert PDS component, prop, token, or theming behavior, ' +
+  'work that clearly targets a different UI library, or when the user opts out of PDS.';
 
 /**
  * The extended headline intro. Version-exact knowledge is the framing; it also absorbs three former
