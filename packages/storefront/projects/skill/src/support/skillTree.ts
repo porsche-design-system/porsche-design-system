@@ -1,23 +1,30 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { getSkillName, SKILL_FRAMEWORKS, type SkillFramework, type SkillId } from '../registry';
 import { resolveFrameworkPlaceholder } from './links';
 
-/** The four wrapper frameworks the skill is generated for. */
-export const FRAMEWORKS = ['js', 'angular', 'react', 'vue'] as const;
-export type Framework = (typeof FRAMEWORKS)[number];
+/** The four wrapper frameworks every skill is generated for. */
+export const FRAMEWORKS = SKILL_FRAMEWORKS;
+export type Framework = SkillFramework;
 
 export const isFramework = (value: string): value is Framework => (FRAMEWORKS as readonly string[]).includes(value);
 
 /** Ignored staging root populated once before the four wrappers are packaged. */
 export const SKILL_STAGING_DIR = 'packages/storefront/projects/skill/generated';
 
-/** Canonical skill directory name for a framework's knowledge skill. */
-const skillDirName = (framework: Framework): string => `pds-knowledge-${framework}`;
+/** A skill's staged tree for one framework, relative to the monorepo root. */
+export const stagedSkillDir = (skillId: SkillId, framework: Framework): string =>
+  `${SKILL_STAGING_DIR}/${framework}/skills/${getSkillName(skillId, framework)}`;
 
-/** Each framework's staged knowledge-skill tree, relative to the monorepo root. */
-export const STAGED_SKILL_DIRS: Record<Framework, string> = Object.fromEntries(
-  FRAMEWORKS.map((fw) => [fw, `${SKILL_STAGING_DIR}/${fw}/skills/${skillDirName(fw)}`])
-) as Record<Framework, string>;
+/** Every framework's staged tree of a skill, relative to the monorepo root. */
+export const stagedSkillDirs = (skillId: SkillId): Record<Framework, string> =>
+  Object.fromEntries(FRAMEWORKS.map((fw) => [fw, stagedSkillDir(skillId, fw)])) as Record<Framework, string>;
+
+/**
+ * Each framework's staged knowledge-skill tree, relative to the monorepo root. Kept as a flat map
+ * while knowledge is the only distributed skill; use {@link stagedSkillDir} for any other.
+ */
+export const STAGED_SKILL_DIRS: Record<Framework, string> = stagedSkillDirs('knowledge');
 
 /**
  * Each framework's built dist root (relative to the monorepo root) — the parent the

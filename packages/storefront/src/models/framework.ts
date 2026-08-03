@@ -1,4 +1,5 @@
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
+import { getSkillName, type SkillFramework, type SkillId } from '@porsche-design-system/skill/registry';
 
 export type FrameworkConfiguratorMarkup = {
   [key in Framework]: {
@@ -25,7 +26,7 @@ export const frameworkSuffixMap = {
   angular: 'angular',
   react: 'react',
   vue: 'vue',
-} as const satisfies Record<Framework, string>;
+} as const satisfies Record<Framework, SkillFramework>;
 
 export const frameworkNameMap = {
   'vanilla-js': 'Vanilla JS',
@@ -38,16 +39,13 @@ export const frameworkNameMap = {
 export type FrameworkSuffix = (typeof frameworkSuffixMap)[Framework];
 export type FrameworkName = (typeof frameworkNameMap)[Framework];
 
-/** Skills bundled with the Porsche Design System packages. */
-export type SkillId = 'knowledge';
-
 export type FrameworkRenderContext = {
   framework: Framework;
   frameworkName: FrameworkName;
   frameworkSuffix: FrameworkSuffix;
   componentPackageName: `@porsche-design-system/components-${FrameworkSuffix}`;
   componentPackageWindowsPath: `@porsche-design-system\\components-${FrameworkSuffix}`;
-  getSkillName: (skill: SkillId) => `pds-${SkillId}-${FrameworkSuffix}`;
+  getSkillName: (skill: SkillId) => ReturnType<typeof getSkillName<SkillId, FrameworkSuffix>>;
 };
 
 export const getFrameworkRenderContext = (framework: Framework): FrameworkRenderContext => {
@@ -59,7 +57,7 @@ export const getFrameworkRenderContext = (framework: Framework): FrameworkRender
     frameworkSuffix,
     componentPackageName: `@porsche-design-system/components-${frameworkSuffix}`,
     componentPackageWindowsPath: `@porsche-design-system\\components-${frameworkSuffix}`,
-    getSkillName: (skill) => `pds-${skill}-${frameworkSuffix}`,
+    getSkillName: (skill) => getSkillName(skill, frameworkSuffix),
   };
 };
 

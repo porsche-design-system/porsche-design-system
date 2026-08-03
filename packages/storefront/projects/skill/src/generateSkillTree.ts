@@ -8,6 +8,7 @@ import {
   renderTokensSection,
   writePackageSkillReferences,
 } from './packageSkills';
+import type { SkillId } from './registry';
 import { buildSkillMd } from './skillMd';
 import { type Framework, SkillTree } from './support/skillTree';
 
@@ -40,3 +41,13 @@ export const generateSkillTree = (root: string, framework: Framework, docsMeta: 
     })
   );
 };
+
+export type SkillGenerator = (root: string, framework: Framework, docsMeta: ComponentDocsMetaMap) => void;
+
+/**
+ * The generator behind every registered skill. Registering a new skill in `registry.ts` requires
+ * adding its generator here; the type makes a missing one a compile error.
+ */
+export const SKILL_GENERATORS = {
+  knowledge: generateSkillTree,
+} as const satisfies Record<SkillId, SkillGenerator>;

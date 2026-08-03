@@ -4,6 +4,12 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "exports": {
+    "./registry": {
+      "types": "./src/registry.ts",
+      "default": "./src/registry.ts"
+    }
+  },
   "scripts": {
     "build:skill": "node --import tsx --require ./scripts/skill-mdx-loader.cjs scripts/build-skill.ts",
     "lint": "biome lint",

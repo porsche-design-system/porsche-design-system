@@ -3,8 +3,8 @@ import { renderComponentsSection } from '@skill/components/section';
 import { renderStylesheetsSection, renderStylingSection, renderTokensSection } from '@skill/packageSkills';
 import { ACTIVATION_DESCRIPTION, buildSkillMd as renderSkillMd, skillName } from '@skill/skillMd';
 import { FRAMEWORKS, type Framework } from '@skill/support/skillTree';
+import { localPorscheDesignSystemVersion } from '@skill/support/version';
 import { describe, expect, it } from 'vitest';
-import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntry[] = []): string =>
   renderSkillMd(framework, {

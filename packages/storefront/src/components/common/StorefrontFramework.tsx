@@ -1,7 +1,8 @@
 'use client';
 
+import type { SkillId } from '@porsche-design-system/skill/registry';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { frameworkRenderContextMap, type SkillId } from '@/models/framework';
+import { frameworkRenderContextMap } from '@/models/framework';
 
 const formatMap = {
   suffix: 'frameworkSuffix',
