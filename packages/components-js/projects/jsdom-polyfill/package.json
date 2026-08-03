@@ -12,7 +12,6 @@
     "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },
   "dependencies": {
-    "@oddbird/popover-polyfill": "^0.6.1",
     "construct-style-sheets-polyfill": "^3.1.0",
     "intersection-observer": "^0.12.2",
     "matchmedia-polyfill": "^0.3.2",
@@ -21,6 +20,7 @@
     "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
+    "@oddbird/popover-polyfill": "^0.7.1",
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-dynamic-import-vars": "^2.1.5",
     "@testing-library/dom": "^10.4.1",

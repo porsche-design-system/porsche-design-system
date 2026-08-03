@@ -16,11 +16,10 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
-  "dependencies": {},
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "36.0.0",
-    "ag-stack": "36.0.0",
+    "ag-grid-community": "36.0.2",
+    "ag-stack": "36.0.2",
     "typescript": "^6.0.3"
   },
   "volta": {

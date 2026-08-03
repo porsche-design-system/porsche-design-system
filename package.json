@@ -278,8 +278,8 @@
       "typescript": "$typescript"
     },
     "@tootallnate/once": "^3.0.1",
-    "brace-expansion@1": "1.1.13",
-    "brace-expansion@2": "2.0.3",
+    "brace-expansion@1": "1.1.18",
+    "brace-expansion@2": "2.1.4",
     "braces": "^3.0.3",
     "ejs": "^3.1.10",
     "follow-redirects": "^1.16.0",

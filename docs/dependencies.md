@@ -94,7 +94,8 @@ Current overrides:
 - **Security overrides** force vulnerable transitive dependencies up to their first patched release (see
   [Remediation policy](#remediation-policy)). For libraries whose newer majors are not API-compatible with older
   consumers (`minimatch`, `brace-expansion`), per-major version-selector keys (e.g. `"minimatch@3": "3.1.4"`,
-  `"minimatch@9": "9.0.7"`) keep each major on its own backported patch. `minimatch@10`/`brace-expansion@5` export
+  `"minimatch@9": "9.0.7"`, `"brace-expansion@1": "1.1.18"`, `"brace-expansion@2": "2.1.4"`) keep each major on its
+  own backported patch. `minimatch@10`/`brace-expansion@5` export
   non-callable objects, so a blanket override would break `^3.x`/`^1.x` consumers (e.g. `glob@7`) that call the default
   export directly. Overrides that would collide with a different major required elsewhere are scoped to a single parent
   (e.g. `"js-beautify": { "glob": "^10.5.0" }`, `"@react-router/serve": { "express": "^4.22.2" }`,
