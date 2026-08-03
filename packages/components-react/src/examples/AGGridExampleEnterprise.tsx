@@ -1,10 +1,8 @@
 import { PLinkPure } from '@porsche-design-system/components-react';
 import { pdsTheme } from '@porsche-design-system/components-react/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
-import { AllEnterpriseModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
+import { AllEnterpriseModule, type ColDef } from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
-
-ModuleRegistry.registerModules([AllEnterpriseModule]);
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
@@ -57,7 +55,6 @@ const rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /
 const columnDefs: ColDef<ColumnDefs>[] = [
   {
     field: 'active',
-    showDisabledCheckboxes: true,
     width: 170,
   },
   {
@@ -115,10 +112,12 @@ const defaultColDef = {
   editable: true,
 };
 
-export const AGGridExamplePage = () => {
+// AG Grid Enterprise is registered per grid, since ModuleRegistry.registerModules() would apply the license check to every grid
+export const AGGridExampleEnterprisePage = () => {
   return (
     <div style={{ height: '80vh' }}>
       <AgGridReact
+        modules={[AllEnterpriseModule]}
         rowData={rowData}
         columnDefs={columnDefs}
         defaultColDef={defaultColDef}

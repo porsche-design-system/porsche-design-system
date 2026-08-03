@@ -22,51 +22,7 @@ hr {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "horizontal" 2`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-hr {
-  all: unset;
-  display: block;
-  background: var(--p-color-contrast-high);
-  height: 1px;
-  width: 100%;
-}
-@media(forced-colors:active) {
-  hr {
-    background: CanvasText;
-  }
-}
-"
-`;
-
 exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "vertical" 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-hr {
-  all: unset;
-  display: block;
-  background: var(--p-color-contrast-high);
-  height: 100%;
-  width: 1px;
-}
-@media(forced-colors:active) {
-  hr {
-    background: CanvasText;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for color: contrast-high and orientation: "vertical" 2`] = `
 ":host {
   display: block;
 }
@@ -110,51 +66,7 @@ hr {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "horizontal" 2`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-hr {
-  all: unset;
-  display: block;
-  background: var(--p-color-contrast-low);
-  height: 1px;
-  width: 100%;
-}
-@media(forced-colors:active) {
-  hr {
-    background: CanvasText;
-  }
-}
-"
-`;
-
 exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "vertical" 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-hr {
-  all: unset;
-  display: block;
-  background: var(--p-color-contrast-low);
-  height: 100%;
-  width: 1px;
-}
-@media(forced-colors:active) {
-  hr {
-    background: CanvasText;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for color: contrast-low and orientation: "vertical" 2`] = `
 ":host {
   display: block;
 }
@@ -233,6 +145,50 @@ hr {
 "
 `;
 
+exports[`getComponentCss() > should return correct css for color: contrast-lower and orientation: "horizontal" 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+hr {
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-lower);
+  height: 1px;
+  width: 100%;
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() > should return correct css for color: contrast-lower and orientation: "vertical" 1`] = `
+":host {
+  display: block;
+}
+:host([hidden]) {
+  display: none !important;
+}
+hr {
+  all: unset;
+  display: block;
+  background: var(--p-color-contrast-lower);
+  height: 100%;
+  width: 1px;
+}
+@media(forced-colors:active) {
+  hr {
+    background: CanvasText;
+  }
+}
+"
+`;
+
 exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "horizontal" 1`] = `
 ":host {
   display: block;
@@ -255,51 +211,7 @@ hr {
 "
 `;
 
-exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "horizontal" 2`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-hr {
-  all: unset;
-  display: block;
-  background: var(--p-color-contrast-medium);
-  height: 1px;
-  width: 100%;
-}
-@media(forced-colors:active) {
-  hr {
-    background: CanvasText;
-  }
-}
-"
-`;
-
 exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "vertical" 1`] = `
-":host {
-  display: block;
-}
-:host([hidden]) {
-  display: none !important;
-}
-hr {
-  all: unset;
-  display: block;
-  background: var(--p-color-contrast-medium);
-  height: 100%;
-  width: 1px;
-}
-@media(forced-colors:active) {
-  hr {
-    background: CanvasText;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() > should return correct css for color: contrast-medium and orientation: "vertical" 2`] = `
 ":host {
   display: block;
 }
