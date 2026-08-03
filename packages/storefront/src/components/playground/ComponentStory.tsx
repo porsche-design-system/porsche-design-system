@@ -20,7 +20,7 @@ type ComponentExampleProps = {
 
 export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }: ComponentExampleProps) => {
   const { storefrontColorScheme } = useStorefrontColorScheme();
-  const { storefrontFramework } = useStorefrontFramework();
+  const { framework } = useStorefrontFramework();
   // State needs to be updated for controlled components
   const [exampleState, setExampleState] = useState(story.state ?? {});
   const [exampleElement, setExampleElement] = useState<ReactNode>(
@@ -40,8 +40,8 @@ export const ComponentStory = ({ story, backgroundColor, showCodeBlock = true }:
   }, [exampleState]);
 
   const onOpenInStackblitz = () => {
-    const markup = createStackblitzMarkupFromStory(story, exampleState, storefrontFramework, storefrontColorScheme);
-    openInStackblitz(storefrontFramework as Framework, markup, storefrontColorScheme);
+    const markup = createStackblitzMarkupFromStory(story, exampleState, framework, storefrontColorScheme);
+    openInStackblitz(framework, markup, storefrontColorScheme);
   };
 
   return (

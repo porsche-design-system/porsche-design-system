@@ -1,5 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/fieldset/accessibility/page.mdx';
+import { errorStateWithoutRecoveryGuidanceA11yExample } from '@/app/(main)/components/fieldset/accessibility/examples/error-state-without-recovery-guidance/example';
+import { unlabeledFieldGroupA11yExample } from '@/app/(main)/components/fieldset/accessibility/examples/unlabeled-field-group/example';
+import AccessibilityOverview from '@/app/(main)/components/fieldset/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/fieldset/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/fieldset/configurator/introduction.mdx';
 import { fieldsetSlotStories, fieldsetStory } from '@/app/(main)/components/fieldset/configurator/story';
 import RequiredDescription from '@/app/(main)/components/fieldset/examples/required/example.mdx';
@@ -38,6 +41,13 @@ export const fieldsetMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      unlabeledFieldGroup: unlabeledFieldGroupA11yExample,
+      errorStateWithoutRecoveryGuidance: errorStateWithoutRecoveryGuidanceA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-fieldset'],
 } satisfies ComponentDocsMeta<'p-fieldset'>;

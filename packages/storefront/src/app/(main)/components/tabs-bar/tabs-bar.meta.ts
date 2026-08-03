@@ -1,5 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/tabs-bar/accessibility/page.mdx';
+import { routeNavigationWithoutLandmarkLabelA11yExample } from '@/app/(main)/components/tabs-bar/accessibility/examples/route-navigation-without-landmark-label/example';
+import { tabbedInterfaceWithoutTablistLabelA11yExample } from '@/app/(main)/components/tabs-bar/accessibility/examples/tabbed-interface-without-tablist-label/example';
+import AccessibilityOverview from '@/app/(main)/components/tabs-bar/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/tabs-bar/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/tabs-bar/configurator/introduction.mdx';
 import { tabsBarStory } from '@/app/(main)/components/tabs-bar/configurator/story';
 import GradientDescription from '@/app/(main)/components/tabs-bar/examples/gradient/example.mdx';
@@ -37,7 +40,13 @@ export const tabsBarMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      tabbedInterfaceWithoutTablistLabel: tabbedInterfaceWithoutTablistLabelA11yExample,
+      routeNavigationWithoutLandmarkLabel: routeNavigationWithoutLandmarkLabelA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-tabs-bar'],
 } satisfies ComponentDocsMeta<'p-tabs-bar'>;
-

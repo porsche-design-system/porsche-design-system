@@ -1,8 +1,7 @@
-import path from 'node:path';
 import fs from 'node:fs';
+import path from 'node:path';
 import * as prettier from 'prettier';
-import type React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import { CodeBlock } from '@/components/common/CodeBlock';
 
 type StylesheetViewerProps = {
   file: 'color-scheme.css' | 'font-face.css' | 'normalize.css' | 'variables.css';
@@ -17,19 +16,8 @@ export const StylesheetViewer = async ({ file }: StylesheetViewerProps) => {
   const content = `/* @porsche-design-system/components-{js|angular|react|vue}/${file} */\n\n${formattedCss}`;
 
   return (
-    <SyntaxHighlighter
-      dir="ltr"
-      className="markup"
-      language="css"
-      showLineNumbers={false}
-      useInlineStyles={false}
-      codeTagProps={{
-        tabIndex: 0,
-        className:
-          'my-fluid-md max-h-96 overflow-auto rounded-3xl focus-visible:outline outline-focus outline-offset-2 select-none',
-      }}
-    >
+    <CodeBlock className="markup select-none my-fluid-md" language="css" label={file}>
       {content}
-    </SyntaxHighlighter>
+    </CodeBlock>
   );
 };

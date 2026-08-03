@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@algolia/cache-in-memory": "^4.27.0",
-    "@porsche-design-system/components-react": "4.6.0-rc.0",
+    "@porsche-design-system/components-react": "4.6.0-rc.1",
     "ag-grid-community": "36.0.0",
     "ag-grid-react": "36.0.0",
     "algoliasearch": "^5.55.1",
@@ -57,6 +57,7 @@
     "@playwright/test": "1.61.0",
     "@porsche-design-system/scss": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/skill": "0.0.0",
     "@porsche-design-system/stackblitz": "0.0.0",
     "@porsche-design-system/stylesheets": "0.0.0",
     "@porsche-design-system/tailwindcss": "0.0.0",

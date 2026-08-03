@@ -1,5 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/link-pure/accessibility/page.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/link-pure/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import { iconOnlyLinkWithoutAccessibleNameA11yExample } from '@/app/(main)/components/link-pure/accessibility/examples/icon-only-link-without-accessible-name/example';
+import { indicatingTheCurrentPageA11yExample } from '@/app/(main)/components/link-pure/accessibility/examples/indicating-the-current-page/example';
+import { vagueLinkLabelWithoutContextA11yExample } from '@/app/(main)/components/link-pure/accessibility/examples/vague-link-label-without-context/example';
+import AccessibilityOverview from '@/app/(main)/components/link-pure/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/link-pure/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/link-pure/configurator/introduction.mdx';
 import { linkPureStory } from '@/app/(main)/components/link-pure/configurator/story';
 import CustomClickableAreaDescription from '@/app/(main)/components/link-pure/examples/custom-clickable-area/example.mdx';
@@ -43,7 +48,15 @@ export const linkPureMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
+      iconOnlyLinkWithoutAccessibleName: iconOnlyLinkWithoutAccessibleNameA11yExample,
+      indicatingTheCurrentPage: indicatingTheCurrentPageA11yExample,
+      vagueLinkLabelWithoutContext: vagueLinkLabelWithoutContextA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-link-pure'],
 } satisfies ComponentDocsMeta<'p-link-pure'>;
-

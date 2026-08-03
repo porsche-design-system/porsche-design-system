@@ -27,7 +27,7 @@ export const ComponentExample = ({
   fixedBackgroundColor,
 }: ComponentSampleProps) => {
   const { storefrontColorScheme } = useStorefrontColorScheme();
-  const { storefrontFramework } = useStorefrontFramework();
+  const { framework } = useStorefrontFramework();
 
   const Component = codeSample.component;
 
@@ -47,12 +47,8 @@ export const ComponentExample = ({
   }, [codeSample, storefrontColorScheme]);
 
   const onOpenInStackblitz = () => {
-    const markup = createStackblitzMarkupFromSample(
-      codeSample.frameworkMarkup,
-      storefrontFramework,
-      storefrontColorScheme
-    );
-    openInStackblitz(storefrontFramework as Framework, markup, storefrontColorScheme);
+    const markup = createStackblitzMarkupFromSample(codeSample.frameworkMarkup, framework, storefrontColorScheme);
+    openInStackblitz(framework, markup, storefrontColorScheme);
   };
 
   return (

@@ -3,8 +3,8 @@ import { renderComponentsSection } from '@skill/components/section';
 import { renderStylesheetsSection, renderStylingSection, renderTokensSection } from '@skill/packageSkills';
 import { ACTIVATION_DESCRIPTION, buildSkillMd as renderSkillMd, skillName } from '@skill/skillMd';
 import { FRAMEWORKS, type Framework } from '@skill/support/skillTree';
+import { localPorscheDesignSystemVersion } from '@skill/support/version';
 import { describe, expect, it } from 'vitest';
-import { localPorscheDesignSystemVersion } from '@/utils/porscheDesignSystemVersion';
 
 const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntry[] = []): string =>
   renderSkillMd(framework, {
@@ -47,7 +47,7 @@ describe('buildSkillMd', () => {
     expect(markdown).toContain(`[exact-version component source](${componentSourceUrl})`);
     expect(markdown).toContain('The underlying Stencil component implementation is not included in the npm package');
     expect(markdown).toContain('minified, content-hashed CDN artifacts as a debugging fallback');
-    expect(markdown).toContain('read `../CHANGELOG.md`');
+    expect(markdown).toContain('read `../../CHANGELOG.md`');
   });
 
   it('renders SSR guidance only for React', () => {

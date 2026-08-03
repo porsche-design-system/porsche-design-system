@@ -1,5 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/switch/accessibility/page.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/switch/accessibility/examples/hidden-label-without-accessible-name/example';
+import { switchWithoutDescriptiveLabelA11yExample } from '@/app/(main)/components/switch/accessibility/examples/switch-without-descriptive-label/example';
+import AccessibilityOverview from '@/app/(main)/components/switch/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/switch/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/switch/configurator/introduction.mdx';
 import { switchStory } from '@/app/(main)/components/switch/configurator/story';
 import Usage from '@/app/(main)/components/switch/usage/page.mdx';
@@ -12,7 +15,13 @@ export const switchMeta = {
   },
   examples: {},
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      switchWithoutDescriptiveLabel: switchWithoutDescriptiveLabelA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-switch'],
 } satisfies ComponentDocsMeta<'p-switch'>;
-

@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
-import { radioGroupA11yExamples } from '@/app/(main)/components/radio-group/accessibility/stories';
+import { radioGroupMeta } from '@/app/(main)/components/radio-group/radio-group.meta';
 
 export const metadata = {
   title: 'Radio Group: Accessibility - Porsche Design System',
@@ -12,59 +12,8 @@ export const metadata = {
 
 <TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
-## Accessibility support
+<radioGroupMeta.accessibility.overview />
 
-### Keyboard
+<A11yIntegrationExamples tag="p-radio-group" examples={radioGroupMeta.accessibility.examples} />
 
-| Key / state                                          | Function                                                            |
-| ---------------------------------------------------- | ------------------------------------------------------------------- |
-| `Tab`, `Shift-Tab`                                   | Moves focus to the next (or previous) focusable element.            |
-| `Arrow left`, `Arrow right`, `Down Arrow` `Up Arrow` | Activates and moves focus to the next/prev radio button in a group. |
-
-### ARIA enhancements
-
-#### Internal **ARIA** that is managed by the component:
-
-| ARIA                            | Usage                                                                                                 |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `aria-labelledby="IDREF"`       | Defines the accessible name.                                                                          |
-| `aria-describedby="IDREF"`      | Defines the accessible description combined with the status message.                                  |
-| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
-| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
-| `aria-invalid="true"`           | If `error` state is set.                                                                              |
-| `aria-required="true"`          | Indicates if the element is required.                                                                 |
-
-## Development considerations
-
-### Disabled state
-
-In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
-reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
-
-### Common do's and don'ts
-
-- **Do** provide a clear group `label` that describes the choice being made.
-- **Do** use meaningful option labels so each choice is understandable out of context.
-- **Do** use the component state/message API so validation and status changes are announced.
-- **Don't** rely on adjacent text instead of the group `label` prop.
-- **Don't** use `hide-label` without an accessible name.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={radioGroupA11yExamples} />
-## Tests
-
-### Automated
-
-| Technology                            | Support |
-| ------------------------------------- | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)       | ✅      |
-| Text-Zoom (200%)                      | ✅      |
-
-### Manual
-
-| Technology                      | Support                                                                                                  |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Keyboard                        | ✅                                                                                                       |
-| Screen reader (VoiceOver, NVDA) | ⚠️(Note: VoiceOver/NVDA do not announce the number of options correctly when used with Safari or Chrome) |
+<radioGroupMeta.accessibility.tests />

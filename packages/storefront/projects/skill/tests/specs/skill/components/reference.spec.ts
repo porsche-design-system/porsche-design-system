@@ -2,9 +2,9 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { type ComponentDocsMetaMap, writeComponentReferences } from '@skill/components/reference';
 import { SkillTree } from '@skill/support/skillTree';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { componentExamplesMeta as examplesMap } from '../../../data/skill/componentExamplesFixtures';
 import { componentDocsMeta as proseMap } from '../../../data/skill/componentProseFixtures';
 
@@ -38,6 +38,15 @@ describe('writeComponentReferences', () => {
     const buttonMd = fs.readFileSync(tree.resolve('references/components/p-button/p-button.md'), 'utf-8');
     expect(buttonMd).toContain('## API');
     expect(buttonMd).toContain('[Link](../p-link/p-link.md)');
+    const accordionMd = fs.readFileSync(tree.resolve('references/components/p-accordion/p-accordion.md'), 'utf-8');
+    expect(accordionMd).toContain('[accessibility integration examples](./accessibility.md)');
+    const accessibilityMd = fs.readFileSync(
+      tree.resolve('references/components/p-accordion/accessibility.md'),
+      'utf-8'
+    );
+    expect(accessibilityMd).toContain('# p-accordion accessibility integration examples');
+    expect(accessibilityMd).toContain('#### ❌ Anti-pattern');
+    expect(accessibilityMd).toContain('#### ✅ Recommended');
   });
 
   it('propagates a degraded-prose failure instead of writing the tree', () => {

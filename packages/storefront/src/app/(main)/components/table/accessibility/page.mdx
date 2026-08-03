@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
-import { tableA11yExamples } from '@/app/(main)/components/table/accessibility/stories';
+import { tableMeta } from '@/app/(main)/components/table/table.meta';
 
 export const metadata = {
   title: 'Table: Accessibility - Porsche Design System',
@@ -12,48 +12,8 @@ export const metadata = {
 
 <TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
-## Accessibility support
+<tableMeta.accessibility.overview />
 
-### Keyboard
+<A11yIntegrationExamples tag="p-table" examples={tableMeta.accessibility.examples} />
 
-| Key / state        | Function                                           |
-| ------------------ | -------------------------------------------------- |
-| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) sort button. |
-| `Enter`, `Space`   | Changes sorting direction.                         |
-
-### ARIA enhancements
-
-#### Internal **ARIA** that is managed by the component:
-
-| ARIA                                             | Usage                                                |
-| ------------------------------------------------ | ---------------------------------------------------- |
-| `aria-label="STRING"`, `aria-labelledby="IDREF"` | Captions are provided by aria labels.                |
-| `aria-sort="VALUE"`                              | Provides the sorting direction of the column header. |
-
-## Development considerations
-
-### Common do's and don'ts
-
-- **Do** provide a `caption` or `slot="caption"` that describes the table purpose.
-- **Do** keep visible header text for sortable columns.
-- **Don't** use `hide-label` on a sortable column without an alternative accessible name.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={tableA11yExamples} />
-## Tests
-
-### Automated
-
-| Technology                            | Support |
-| ------------------------------------- | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)       | ✅      |
-| Text-Zoom (200%)                      | ✅      |
-
-### Manual
-
-| Technology                      | Support                                                                                                                                                                                                                                                                        |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Keyboard                        | ✅                                                                                                                                                                                                                                                                             |
-| Screen reader (VoiceOver, NVDA) | 🟠 (Partially supported, [Safari issues 1](https://adrianroselli.com/2022/07/its-mid-2022-and-browsers-mostly-safari-still-break-accessibility-via-display-properties.html), [Safari issues 2](https://adrianroselli.com/2018/02/tables-css-display-properties-and-aria.html)) |
+<tableMeta.accessibility.tests />

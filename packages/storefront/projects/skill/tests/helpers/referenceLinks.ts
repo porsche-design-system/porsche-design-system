@@ -23,8 +23,8 @@ export const JS_PEER_SCSS_SPECIFIER = '@porsche-design-system/components-js/scss
  * A skill tree carries two classes of reference path:
  * - `produced` — files generated into the tree (md, examples, generated assets), referenced by a
  *   path relative to the markdown file they appear in. Resolved against the staged tree.
- * - `raw` — raw implementation linked where it physically lives: the skill-root-relative `../meta`
- *   / `../tokens` dist siblings, or the js-peer `/meta` subpath. Resolved against the built dist.
+ * - `raw` — raw implementation linked where it physically lives: the skill-root-relative `../../meta`
+ *   / `../../tokens` dist siblings, or the js-peer `/meta` subpath. Resolved against the built dist.
  */
 export type ReferenceKind = 'produced' | 'raw';
 
@@ -139,9 +139,9 @@ export const resolveJsPeerScss = (jsDistRoot: string): string | null =>
 /**
  * Resolve a single raw reference against the built dist.
  * - `@porsche-design-system/components-js/meta` / `…/scss` (framework skills) → the js peer's subpath.
- * - `../meta` / `../tokens` / `../tailwindcss/index.css` / `../scss` (skill-root-relative) → this
- *   framework's own dist sibling. The js skill's `../meta` and `../scss` are its real data; framework
- *   skills carry the js-peer specifiers for those instead. `../tailwindcss/index.css` is real in every
+ * - `../../meta` / `../../tokens` / `../../tailwindcss/index.css` / `../../scss` (skill-root-relative) → this
+ *   framework's own dist sibling. The js skill's `../../meta` and `../../scss` are its real data; framework
+ *   skills carry the js-peer specifiers for those instead. `../../tailwindcss/index.css` is real in every
  *   wrapper, so every skill carries it directly.
  */
 export const resolveRaw = (distSkillRoot: string, jsDistRoot: string, target: string): boolean => {
