@@ -1,6 +1,9 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { tableExampleAdvanced, tableExampleSorting } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/table/accessibility/page.mdx';
+import { columnWithHiddenLabelA11yExample } from '@/app/(main)/components/table/accessibility/examples/column-with-hidden-label/example';
+import { dataTableWithoutCaptionA11yExample } from '@/app/(main)/components/table/accessibility/examples/data-table-without-caption/example';
+import AccessibilityOverview from '@/app/(main)/components/table/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/table/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/table/configurator/introduction.mdx';
 import { tableStory } from '@/app/(main)/components/table/configurator/story';
 import AdvancedDescription from '@/app/(main)/components/table/examples/advanced/example.mdx';
@@ -60,7 +63,13 @@ export const tableMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      dataTableWithoutCaption: dataTableWithoutCaptionA11yExample,
+      columnWithHiddenLabel: columnWithHiddenLabelA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-table'],
 } satisfies ComponentDocsMeta<'p-table'>;
-

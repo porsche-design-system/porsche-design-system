@@ -1,0 +1,32 @@
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                                        |
+| ------------------ | ------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the scroll container or to next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the completed and current step-item.                                  |
+| `disabled`         | Step-item still focusable.                                                      |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                     | Usage                                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| `role="switch"`          | Indicates the element as switch element.                                                  |
+| `aria-checked="BOOLEAN"` | Indicates the status of the switch element.                                               |
+| `role="status"`          | When `loading` prop is set, the component announces the loading state (start and finish). |
+
+## Development considerations
+
+### Labelling
+
+The switch accessible name comes from the default slot. Provide concise, descriptive text that states what the switch
+controls and its on/off meaning.
+
+### Common do's and don'ts
+
+- **Do** provide a clear slotted label that describes what the switch controls.
+- **Do** use `hide-label` only when the label text remains in the slot for screen readers.
+- **Don't** use an icon or visual state alone without descriptive label text.

@@ -1,5 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/accordion/accessibility/page.mdx';
+import { accordionSummaryWithoutSemanticHeadingA11yExample } from '@/app/(main)/components/accordion/accessibility/examples/accordion-summary-without-semantic-heading/example';
+import { skippedHeadingLevelA11yExample } from '@/app/(main)/components/accordion/accessibility/examples/skipped-heading-level/example';
+import AccessibilityOverview from '@/app/(main)/components/accordion/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/accordion/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/accordion/configurator/introduction.mdx';
 import { accordionSlotStories, accordionStory } from '@/app/(main)/components/accordion/configurator/story';
 import InteractiveDescription from '@/app/(main)/components/accordion/examples/interactive-elements-in-summary/example.mdx';
@@ -30,6 +33,13 @@ export const accordionMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      accordionSummaryWithoutSemanticHeading: accordionSummaryWithoutSemanticHeadingA11yExample,
+      skippedHeadingLevel: skippedHeadingLevelA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-accordion'],
 } satisfies ComponentDocsMeta<'p-accordion'>;

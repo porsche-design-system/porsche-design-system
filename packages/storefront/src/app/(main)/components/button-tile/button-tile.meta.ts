@@ -1,6 +1,9 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { buttonTileExampleHyphens } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/button-tile/accessibility/page.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/button-tile/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import { vagueTileLabelWithoutContextA11yExample } from '@/app/(main)/components/button-tile/accessibility/examples/vague-tile-label-without-context/example';
+import AccessibilityOverview from '@/app/(main)/components/button-tile/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/button-tile/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/button-tile/configurator/introduction.mdx';
 import { buttonTileSlotStory, buttonTileStory } from '@/app/(main)/components/button-tile/configurator/story';
 import ColorSchemeDescription from '@/app/(main)/components/button-tile/examples/color-scheme/example.mdx';
@@ -46,6 +49,13 @@ export const buttonTileMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
+      vagueTileLabelWithoutContext: vagueTileLabelWithoutContextA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-button-tile'],
 } satisfies ComponentDocsMeta<'p-button-tile'>;

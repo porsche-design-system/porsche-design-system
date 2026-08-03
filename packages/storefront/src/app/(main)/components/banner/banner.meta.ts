@@ -1,5 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/banner/accessibility/page.mdx';
+import { bannerMountedOnlyWhenShownA11yExample } from '@/app/(main)/components/banner/accessibility/examples/banner-mounted-only-when-shown/example';
+import { errorFeedbackWithoutDescriptiveContentA11yExample } from '@/app/(main)/components/banner/accessibility/examples/error-feedback-without-descriptive-content/example';
+import AccessibilityOverview from '@/app/(main)/components/banner/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/banner/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/banner/configurator/introduction.mdx';
 import { bannerStory } from '@/app/(main)/components/banner/configurator/story';
 import CustomizationDescription from '@/app/(main)/components/banner/examples/customization/example.mdx';
@@ -21,7 +24,13 @@ export const bannerMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      bannerMountedOnlyWhenShown: bannerMountedOnlyWhenShownA11yExample,
+      errorFeedbackWithoutDescriptiveContent: errorFeedbackWithoutDescriptiveContentA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-banner'],
 } satisfies ComponentDocsMeta<'p-banner'>;
-

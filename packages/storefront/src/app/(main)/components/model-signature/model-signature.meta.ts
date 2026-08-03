@@ -1,5 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/model-signature/accessibility/page.mdx';
+import AccessibilityOverview from '@/app/(main)/components/model-signature/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/model-signature/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/model-signature/configurator/introduction.mdx';
 import { modelSignatureStory } from '@/app/(main)/components/model-signature/configurator/story';
 import CustomStylingDescription from '@/app/(main)/components/model-signature/examples/custom-styling/example.mdx';
@@ -53,7 +54,10 @@ export const modelSignatureMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {},
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-model-signature'],
 } satisfies ComponentDocsMeta<'p-model-signature'>;
-

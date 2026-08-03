@@ -9,11 +9,11 @@ import type { ComponentRosterEntry } from './reference';
 
 /**
  * Raw `component-meta` link target. The authoritative data lives only in the js
- * package; the framework wrappers' local `../meta` is a re-export shim, so they
+ * package; the framework wrappers' local `../../meta` is a re-export shim, so they
  * link the js peer's `/meta` subpath instead (see design "Data & state").
  */
 export const rawMetaReference = (framework: Framework): string =>
-  framework === 'js' ? '../meta' : '@porsche-design-system/components-js/meta';
+  framework === 'js' ? '../../meta' : '@porsche-design-system/components-js/meta';
 
 /**
  * Framework-specific "how the framework's syntax maps to the custom-element tags the references use"

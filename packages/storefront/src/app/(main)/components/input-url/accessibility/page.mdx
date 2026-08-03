@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
-import { inputUrlA11yExamples } from '@/app/(main)/components/input-url/accessibility/stories';
+import { inputUrlMeta } from '@/app/(main)/components/input-url/input-url.meta';
 
 export const metadata = {
   title: 'Input URL: Accessibility - Porsche Design System',
@@ -11,70 +11,11 @@ export const metadata = {
 # Input URL <ComponentStatus tagName="p-input-url"></ComponentStatus>
 
 <TableOfContents
-  headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Limitations', 'Tests']}
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
 />
 
-## Accessibility support
+<inputUrlMeta.accessibility.overview />
 
-### Keyboard
+<A11yIntegrationExamples tag="p-input-url" examples={inputUrlMeta.accessibility.examples} />
 
-| Key / state        | Function                                                 |
-| ------------------ | -------------------------------------------------------- |
-| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
-
-### ARIA enhancements
-
-#### Internal **ARIA** that is managed by the component:
-
-| ARIA                            | Usage                                                                                                 |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `aria-describedby="IDREF"`      | Defines the accessible description combined with the status message.                                  |
-| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
-| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
-| `aria-invalid="true"`           | If `error` state is set.                                                                              |
-| `aria-live="polite"`            | If the `maxlength` attribute is present, the counter is announced via ARIA live region.               |
-
-## Development considerations
-
-### Disabled state
-
-In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
-reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
-
-### Common do's and don'ts
-
-- **Do** keep a persistent label and use helper/description text when additional context is required.
-- **Do** use the component state/message API so validation and status changes are announced.
-- **Do** use clear error wording that helps users recover.
-- **Don't** rely on placeholder text as the only label.
-- **Don't** use `hide-label` without an accessible name.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={inputUrlA11yExamples} />
-## Limitations
-
-Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to
-define relationships between elements across different shadow DOMs or shadow DOM/light DOM combinations.
-
-| ARIA               | Support |
-| ------------------ | ------- |
-| `aria-labelledby`  | 🚫      |
-| `aria-describedby` | 🚫      |
-
-## Tests
-
-### Automated
-
-| Technology                            | Support |
-| ------------------------------------- | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)       | ✅      |
-| Text-Zoom (200%)                      | ✅      |
-
-### Manual
-
-| Technology                      | Support |
-| ------------------------------- | ------- |
-| Keyboard                        | ✅      |
-| Screen reader (VoiceOver, NVDA) | ✅      |
+<inputUrlMeta.accessibility.tests />

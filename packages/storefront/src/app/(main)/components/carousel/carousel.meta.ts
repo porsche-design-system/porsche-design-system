@@ -4,7 +4,11 @@ import {
   carouselExampleFocusOnCenterSlide,
   carouselExampleJumpToSlide,
 } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/carousel/accessibility/page.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/carousel/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import { carouselWithoutSkipPathForKeyboardUsersA11yExample } from '@/app/(main)/components/carousel/accessibility/examples/carousel-without-skip-path-for-keyboard-users/example';
+import { vagueCarouselLabelA11yExample } from '@/app/(main)/components/carousel/accessibility/examples/vague-carousel-label/example';
+import AccessibilityOverview from '@/app/(main)/components/carousel/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/carousel/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/carousel/configurator/introduction.mdx';
 import { carouselStory } from '@/app/(main)/components/carousel/configurator/story';
 import DynamicSlidesDescription from '@/app/(main)/components/carousel/examples/dynamic-slides/example.mdx';
@@ -55,7 +59,14 @@ export const carouselMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
+      carouselWithoutSkipPathForKeyboardUsers: carouselWithoutSkipPathForKeyboardUsersA11yExample,
+      vagueCarouselLabel: vagueCarouselLabelA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-carousel'],
 } satisfies ComponentDocsMeta<'p-carousel'>;
-

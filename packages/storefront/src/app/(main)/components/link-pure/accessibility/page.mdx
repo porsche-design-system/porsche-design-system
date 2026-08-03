@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
-import { linkPureA11yExamples } from '@/app/(main)/components/link-pure/accessibility/stories';
+import { linkPureMeta } from '@/app/(main)/components/link-pure/link-pure.meta';
 
 export const metadata = {
   title: 'Link Pure: Accessibility - Porsche Design System',
@@ -12,65 +12,8 @@ export const metadata = {
 
 <TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
-## Accessibility support
+<linkPureMeta.accessibility.overview />
 
-### Keyboard
+<A11yIntegrationExamples tag="p-link-pure" examples={linkPureMeta.accessibility.examples} />
 
-| Key / state        | Function                                                 |
-| ------------------ | -------------------------------------------------------- |
-| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
-| `Enter`            | Activates the link.                                      |
-
-### ARIA enhancements
-
-#### External **ARIA** provided by the `aria` property:
-
-| ARIA               | Usage                                                                                    |
-| ------------------ | ---------------------------------------------------------------------------------------- |
-| `aria-label`       | Defines a string value that labels the interactive element.                              |
-| `aria-description` | Defines a string value that adds a more detailed description of the interactive element. |
-| `aria-current`     | Exposes the current state of the link.                                                   |
-| `aria-haspopup`    | Defines that the link opens a popup (e.g. `dialog`).                                     |
-
-#### Internal **ARIA** that is managed by the component:
-
-| ARIA                 | Usage                                                                   |
-| -------------------- | ----------------------------------------------------------------------- |
-| `aria-hidden="true"` | When the `icon` prop is set, the icon is hidden from the screen reader. |
-
-## Development considerations
-
-### Labelling
-
-If the text of a link does not clearly indicate what the link's target is, add a brief, descriptive label using the
-`aria` property with the `aria-label` value to provide more context for screen reader users. Phrases like "Detail" or
-"Click" can be unclear when read out of context by a screen reader. In such instances, provide an alternative text that
-offers more detailed information, such as "Details of product XYZ."
-
-### Common do's and don'ts
-
-- **Do** pass ARIA attributes via the `aria` prop, for example `aria="{ 'aria-current': 'page' }"` when indicating the
-  current page.
-- **Do** provide a clear accessible name for icon-only actions via slotted label or `aria` property.
-- **Don't** add native `aria-*` attributes directly on the component host.
-- **Don't** rely on short generic link labels like "Show" or "Add" without context.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={linkPureA11yExamples} />
-## Tests
-
-### Automated
-
-| Technology                            | Support |
-| ------------------------------------- | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)       | ✅      |
-| Text-Zoom (200%)                      | ✅      |
-
-### Manual
-
-| Technology                      | Support |
-| ------------------------------- | ------- |
-| Keyboard                        | ✅      |
-| Screen reader (VoiceOver, NVDA) | ✅      |
+<linkPureMeta.accessibility.tests />

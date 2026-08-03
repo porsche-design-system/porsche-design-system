@@ -1,7 +1,8 @@
 import { Notification } from '@/components/common/Notification';
 
-The `p-table`'s column headers can be configured by setting properties on each `p-table-head-cell`. To make a table
-column sortable, you need to provide the `sort` property. It has the following structure:
+Sorting is controlled, so the initial row order must match the active column's `direction` and both must remain
+synchronized when handling the `update` event. Configure sortable columns by providing the `sort` property on each
+`p-table-head-cell`. It has the following structure:
 
 ```ts
 type TableHeadCellSort = {
@@ -19,4 +20,3 @@ to.
   <br />
   Please use the <code>update</code> event instead.
 </Notification>
-

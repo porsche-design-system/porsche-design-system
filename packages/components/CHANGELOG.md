@@ -14,6 +14,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.6.0-rc.1] - 2026-08-03
+
+### Added
+
+- `Knowledge Skill`: Accessibility integration examples for each documented component, pairing anti-pattern and
+  recommended markup in the selected framework
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+- `pds-skill`: `--skill` option to link only the named skills instead of all discovered ones
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+
+### Changed
+
+- `Knowledge Skill`: Renamed from `porsche-design-system-components-{js|angular|react|vue}` to
+  `pds-knowledge-{js|angular|react|vue}`
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+- `Knowledge Skill`: Now shipped in the package's `skills/` directory with one directory per skill, replacing the single
+  `skill/` directory. Update any manually created symlink to the new location
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+
 ### Fixed
 
 - `Segmented Control`: Improved `hover/selected` color visibility of items
