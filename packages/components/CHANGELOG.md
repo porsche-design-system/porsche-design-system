@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `Ai Tag`: Support for locales in POSIX (`de_DE`) and BCP47 (`de-DE`) formats
+- `Ai Tag`: Support for locales in BCP47 (`de-DE`) format
   ([#4643](https://github.com/porsche-design-system/porsche-design-system/pull/4643))
 
 ## [4.6.0-rc.1] - 2026-08-03
