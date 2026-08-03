@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
-import { popoverA11yExamples } from '@/app/(main)/components/popover/accessibility/stories';
+import { popoverMeta } from '@/app/(main)/components/popover/popover.meta';
 
 export const metadata = {
   title: 'Popover: Accessibility - Porsche Design System',
@@ -12,65 +12,8 @@ export const metadata = {
 
 <TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
-## Accessibility support
+<popoverMeta.accessibility.overview />
 
-### Keyboard
+<A11yIntegrationExamples tag="p-popover" examples={popoverMeta.accessibility.examples} />
 
-| Key / state        | Function                                                 |
-| ------------------ | -------------------------------------------------------- |
-| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
-| `Enter`, `Space`   | - Opens/closes the popover.                              |
-
-### ARIA enhancements
-
-#### External **ARIA** provided by the `aria` property:
-
-| ARIA         | Usage                                                       |
-| ------------ | ----------------------------------------------------------- |
-| `aria-label` | Defines a string value that labels the interactive element. |
-
-#### Internal **ARIA** that is managed by the component:
-
-| ARIA                      | Usage                                                                          |
-| ------------------------- | ------------------------------------------------------------------------------ |
-| `aria-expanded="BOOLEAN"` | Indicates that the popover element is displayed/hidden.                        |
-| `aria-details="IDREF"`    | References the element that provides additional information about the popover. |
-
-## Development considerations
-
-In **uncontrolled** mode the `p-popover` component does not manage `aria-expanded` on a custom slotted button, because
-it does not expose its internal `open` state publicly. In this case the default info button (which the component fully
-controls) already exposes `aria-expanded` for you.
-
-In **controlled** mode the consumer owns the `open` state, so the slotted trigger _can_ (and should) expose
-`aria-expanded` to match the default button's semantics. Bind it to your `open` state via the trigger's `aria` property,
-e.g. `aria={{ 'aria-expanded': open ? 'true' : 'false' }}`, so it stays in sync as the popover opens and closes.
-
-### Common do's and don'ts
-
-- **Do** prefer the built-in popover trigger when possible so `aria-expanded` is managed internally.
-- **Do** provide an accessible name on a custom slotted button when you cannot use the default trigger.
-- **Do** pass additional ARIA via the `aria` prop when the default labeling is not sufficient.
-- **Don't** use an unnamed custom slotted trigger button.
-- **Don't** add native `aria-*` attributes directly on the component host.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={popoverA11yExamples} />
-
-## Tests
-
-### Automated
-
-| Technology                            | Support |
-| ------------------------------------- | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)       | ✅      |
-| Text-Zoom (200%)                      | ✅      |
-
-### Manual
-
-| Technology                      | Support |
-| ------------------------------- | ------- |
-| Keyboard                        | ✅      |
-| Screen reader (VoiceOver, NVDA) | ✅      |
+<popoverMeta.accessibility.tests />

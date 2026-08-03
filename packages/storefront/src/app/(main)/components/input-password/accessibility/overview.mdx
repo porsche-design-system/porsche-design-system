@@ -1,0 +1,45 @@
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `aria-label="STRING"`           | Defines the accessible name combined with the description and status message.                         |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+| `aria-live="polite"`            | If the `maxlength` attribute is present, the counter is announced via ARIA live region.               |
+| `aria-pressed="BOOLEAN"`        | Defines the state of the visibility for the toggle button.                                            |
+
+## Development considerations
+
+### Disabled state
+
+In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
+reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
+
+### Common do's and don'ts
+
+- **Do** keep a persistent label and use helper/description text when additional context is required.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Do** use clear error wording that helps users recover.
+- **Don't** rely on placeholder text as the only label.
+- **Don't** use `hide-label` without an accessible name.
+
+## Limitations
+
+Due to the nature of **Web Components** and **shadow DOM**, there are limitations when using some **ARIA** attributes to
+define relationships between elements across different shadow DOMs or shadow DOM/light DOM combinations.
+
+| ARIA               | Support |
+| ------------------ | ------- |
+| `aria-labelledby`  | 🚫      |
+| `aria-describedby` | 🚫      |

@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
-import { flagA11yExamples } from '@/app/(main)/components/flag/accessibility/stories';
+import { flagMeta } from '@/app/(main)/components/flag/flag.meta';
 
 export const metadata = {
   title: 'Flag: Accessibility - Porsche Design System',
@@ -12,39 +12,8 @@ export const metadata = {
 
 <TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
-## Accessibility support
+<flagMeta.accessibility.overview />
 
-### ARIA enhancements
+<A11yIntegrationExamples tag="p-flag" examples={flagMeta.accessibility.examples} />
 
-#### External **ARIA** provided by the `aria` property:
-
-| ARIA         | Usage                                                                         |
-| ------------ | ----------------------------------------------------------------------------- |
-| `aria-label` | Defines a string value that labels the element (through the `alt` attribute). |
-
-## Development considerations
-
-### Common do's and don'ts
-
-- **Do** pass a country or region name through the `aria` prop when the flag conveys meaning.
-- **Do** hide decorative flags from assistive technologies when adjacent text already names the country or region.
-- **Don't** leave informative flags without an accessible name.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={flagA11yExamples} />
-## Tests
-
-### Automated
-
-| Technology                                                         | Support |
-| ------------------------------------------------------------------ | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)                                    | ✅      |
-| Text-Zoom (200%)                                                   | ✅      |
-
-### Manual
-
-| Technology                      | Support |
-| ------------------------------- | ------- |
-| Screen reader (VoiceOver, NVDA) | ✅      |
+<flagMeta.accessibility.tests />

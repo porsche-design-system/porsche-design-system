@@ -2,10 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { describe, expect, it } from 'vitest';
 import { getPackageSkillRouteReferences } from '@skill/packageSkills';
-import { listSkillTreeFiles } from '@skill/support/skillTreeFiles';
 import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@skill/support/skillTree';
+import { listSkillTreeFiles } from '@skill/support/skillTreeFiles';
+import { describe, expect, it } from 'vitest';
 
 /**
  * Producer completeness gate. Asserts every documented component and every registered
@@ -31,26 +31,27 @@ const NON_COMPONENT_REFERENCES: Record<string, { path: string; linkedFromSkillMd
   icons: { path: 'references/icons.md', linkedFromSkillMd: false },
 };
 
+/** Every tag `componentMeta` carries — keeps the `componentMeta[tag]` lookups below typed. */
+type ComponentTag = keyof typeof componentMeta;
+
+const COMPONENT_TAGS = Object.keys(componentMeta) as ComponentTag[];
+
 /**
  * The components the storefront documents — the same filter `sitemap.tsx` uses for
  * `COMPONENT_ROUTES_META` (chunked, top-level components; excludes child components
  * like `p-table-row` that have no standalone docs page). The generator keys component
  * references off this same set, so it is the authoritative coverage source.
  */
-const DOCUMENTED_TAGS = Object.entries(componentMeta)
-  .filter(([, meta]) => meta.isChunked && !meta.requiredParent)
-  .map(([tag]) => tag)
-  .sort();
+const DOCUMENTED_TAGS = COMPONENT_TAGS.filter(
+  (tag) => componentMeta[tag].isChunked && !componentMeta[tag].requiredParent
+).sort();
 
 /**
  * Sub-components (a `requiredParent` is set) have no standalone docs page; their API is
  * documented under their parent(s) in a "Sub-components" section. Each must appear as a
  * `### \`<tag>\`` heading in at least one parent reference file somewhere in the tree.
  */
-const SUB_COMPONENT_TAGS = Object.entries(componentMeta)
-  .filter(([, meta]) => meta.requiredParent)
-  .map(([tag]) => tag)
-  .sort();
+const SUB_COMPONENT_TAGS = COMPONENT_TAGS.filter((tag) => componentMeta[tag].requiredParent).sort();
 
 /**
  * Component-level status (deprecated/experimental) of a tag, or `undefined`. This lives only on
@@ -96,6 +97,21 @@ describe('skill tree completeness', () => {
           skillMd.includes(`[${tag}.md](references/components/${tag}/${tag}.md)`),
           `missing SKILL.md roster row for ${tag}`
         ).toBe(true);
+      });
+
+      it.each(DOCUMENTED_TAGS)('links the accessibility reference for %s exactly when it is generated', (tag) => {
+        const componentPath = path.join(componentsDir, tag, `${tag}.md`);
+        const accessibilityPath = path.join(componentsDir, tag, 'accessibility.md');
+        const componentContent = fs.existsSync(componentPath) ? fs.readFileSync(componentPath, 'utf-8') : '';
+        const hasAccessibilityReference = fs.existsSync(accessibilityPath);
+
+        expect(componentContent.includes('](./accessibility.md)')).toBe(hasAccessibilityReference);
+        if (hasAccessibilityReference) {
+          const accessibilityContent = fs.readFileSync(accessibilityPath, 'utf-8');
+          expect(accessibilityContent).toContain(`# ${tag} accessibility integration examples`);
+          expect(accessibilityContent).toContain('#### ❌ Anti-pattern');
+          expect(accessibilityContent).toContain('#### ✅ Recommended');
+        }
       });
 
       it('documents exactly the componentMeta-derived set — no missing and no extra component references', () => {

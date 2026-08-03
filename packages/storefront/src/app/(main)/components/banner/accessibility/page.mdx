@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
-import { bannerA11yExamples } from '@/app/(main)/components/banner/accessibility/stories';
+import { bannerMeta } from '@/app/(main)/components/banner/banner.meta';
 
 export const metadata = {
   title: 'Banner: Accessibility - Porsche Design System',
@@ -12,62 +12,8 @@ export const metadata = {
 
 <TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
-## Accessibility support
+<bannerMeta.accessibility.overview />
 
-### Keyboard
+<A11yIntegrationExamples tag="p-banner" examples={bannerMeta.accessibility.examples} />
 
-| Key / state        | Function                                       |
-| ------------------ | ---------------------------------------------- |
-| `ESC`              | Closes the Banner.                             |
-| `Tab`, `Shift-Tab` | Moves focus to the next focusable element.     |
-| `focus`            | Moves focus automatically to the close button. |
-
-### ARIA enhancements
-
-#### Internal **ARIA** that is managed by the component:
-
-| ARIA                  | Usage                                                                                                    |
-| --------------------- | -------------------------------------------------------------------------------------------------------- |
-| `role="status"`       | When content is populated or changed in `state="info"`, the component announces it unobtrusively.        |
-| `role="alert"`        | When content is populated or changed in `state="warning/error"`, the component announces it immediately. |
-| `aria-label="STRING"` | References the accessible name.                                                                          |
-
-## Development considerations
-
-### Focus handling
-
-To support **keyboard navigation**, please take care of correct **focus handling** after closing the `Banner` with `ESC`
-or `Enter` key: The trigger element (e.g. a button) which has opened the `Banner` must receive focus state again after
-the `Banner` is closed. This is important to keep focus order consistent.
-
-### ARIA live announcements
-
-The `Banner` component uses `role="status"` and `role="alert"` to announce **content changes** for assistive
-technologies, but only if the component is **pre-rendered** and the content is added dynamically.
-
-### Common do's and don'ts
-
-- **Do** pre-render the banner in the DOM and update its content when showing feedback.
-- **Do** provide meaningful `heading` and `description` text for warnings and errors.
-- **Do** return focus to the trigger or at a logical place after the banner is dismissed.
-- **Don't** mount the entire banner only at the moment it should be announced.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={bannerA11yExamples} />
-## Tests
-
-### Automated
-
-| Technology                            | Support |
-| ------------------------------------- | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)       | ✅      |
-| Text-Zoom (200%)                      | ✅      |
-
-### Manual
-
-| Technology                      | Support |
-| ------------------------------- | ------- |
-| Keyboard                        | ✅      |
-| Screen reader (VoiceOver, NVDA) | ✅      |
+<bannerMeta.accessibility.tests />

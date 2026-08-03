@@ -1,6 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { radioGroupExampleForm } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/radio-group/accessibility/page.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/radio-group/accessibility/examples/hidden-label-without-accessible-name/example';
+import { missingGroupLabelA11yExample } from '@/app/(main)/components/radio-group/accessibility/examples/missing-group-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/radio-group/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import AccessibilityOverview from '@/app/(main)/components/radio-group/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/radio-group/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/radio-group/configurator/introduction.mdx';
 import { radioGroupSlotStories, radioGroupStory } from '@/app/(main)/components/radio-group/configurator/story';
 import FormDescription from '@/app/(main)/components/radio-group/examples/form/example.mdx';
@@ -30,7 +34,14 @@ export const radioGroupMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      missingGroupLabel: missingGroupLabelA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-radio-group'],
 } satisfies ComponentDocsMeta<'p-radio-group'>;
-

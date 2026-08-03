@@ -12,11 +12,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
+    "types": ["node"],
     "paths": {
       "@/*": ["../../src/*"],
       "@skill/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*.ts", "scripts/**/*.ts"],
+  "include": ["src/**/*.ts", "scripts/**/*.ts", "../../src/types/*.d.ts"],
   "exclude": ["node_modules", "generated"]
 }

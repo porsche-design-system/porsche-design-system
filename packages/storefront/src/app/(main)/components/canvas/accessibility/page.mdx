@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { canvasMeta } from '@/app/(main)/components/canvas/canvas.meta';
 
 export const metadata = {
   title: 'Canvas: Accessibility - Porsche Design System',
@@ -8,6 +9,8 @@ export const metadata = {
 
 # Canvas <ComponentStatus tagName="p-canvas"></ComponentStatus>
 
-## Accessibility support
+<TableOfContents headings={['Accessibility support', 'Tests']} />
 
-Not yet considered due to experimental state <ComponentStatus tagName="p-canvas"></ComponentStatus>.
+<canvasMeta.accessibility.overview />
+
+<canvasMeta.accessibility.tests />

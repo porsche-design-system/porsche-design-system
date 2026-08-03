@@ -1,0 +1,63 @@
+import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
+import { FrameworkTabs } from '@/components/common/FrameworkTabs';
+import { FrameworkPackage, FrameworkSkill } from '@/components/common/StorefrontFramework';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Skills: General - Porsche Design System',
+  description:
+    'Learn how the Porsche Design System Agent Skills work and which skills are available for AI coding tools.',
+};
+
+# Introduction
+
+<TableOfContents headings={['What Are Agent Skills?', 'How It Works', 'Available Skills']} />
+
+## What Are Agent Skills?
+
+Agent Skills are a lightweight, [open standard](https://agentskills.io) format used to give AI agents specialized
+capabilities, instructions and workflows on demand. They are structured as a folder containing a `SKILL.md` text file
+alongside optional code, scripts and reference assets.
+
+Because the format is standardized, the same skill works across compatible tools such as Claude Code, GitHub Copilot and
+Codex. The Porsche Design System uses them to support a range of tasks around working with the Porsche Design System,
+always matching the version a project actually has installed.
+
+## How It Works
+
+All Porsche Design System Agent Skills ship inside the Porsche Design System npm packages and are released together with
+them. Since AI integrations discover skills in dedicated directories rather than `node_modules`, a directory symlink
+exposes a bundled skill to your agent:
+
+<FrameworkTabs className="my-fluid-md" label="Select the framework for the skill names and paths on this page" />
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ componentPackageName, getSkillName }) => `
+    .agents/skills/${getSkillName('knowledge')}
+      -> node_modules/${componentPackageName}/skills/${getSkillName('knowledge')}
+  `}
+/>
+
+Some AI integrations and editors additionally let you configure extra skill lookup locations. In that case, the
+package's `skills` directory can be referenced directly and no symlink is needed.
+
+This **skill-in-package** approach provides two benefits:
+
+- Updating the Porsche Design System dependency automatically updates the skills; there is no separately versioned skill
+  to maintain.
+- Keeping the skills in the package itself and linking them from the project where the package is installed avoids
+  version mismatches.
+
+To expose a skill to your AI coding tool, follow the [installation guide](/skills/introduction/installation), which
+covers all available approaches in detail.
+
+## Available Skills
+
+Additional skills are planned and will be added here as they become available.
+
+| Skill     | Skill directory name            | Documentation                        |
+| --------- | ------------------------------- | ------------------------------------ |
+| Knowledge | <code><FrameworkSkill /></code> | [Knowledge Skill](/skills/knowledge) |
+
+Every skill is bundled in the `skills` directory of the selected framework's package, <code><FrameworkPackage /></code>.
