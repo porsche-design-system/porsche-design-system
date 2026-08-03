@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Ai Tag`: Support for locales in POSIX (`de_DE`) and BCP47 (`de-DE`) formats
+  ([#4643](https://github.com/porsche-design-system/porsche-design-system/pull/4643))
+
 ### Fixed
 
 - `Segmented Control`: Improved `hover/selected` color visibility of items
