@@ -4,13 +4,14 @@ import { FLAG_NAMES, ICON_NAMES } from '@porsche-design-system/assets';
 import { componentsReady } from '@porsche-design-system/components-js';
 import { pdsTheme, pdsThemeCompact } from '@porsche-design-system/components-js/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
-import * as agGrid from 'ag-grid-enterprise';
+import * as agGrid from 'ag-grid-community';
 import {
-  AllEnterpriseModule,
+  AllCommunityModule,
   ModuleRegistry,
   provideGlobalGridOptions,
   ValidationModule /* Development Only */,
-} from 'ag-grid-enterprise';
+} from 'ag-grid-community';
+import { AllEnterpriseModule } from 'ag-grid-enterprise';
 
 window.FLAG_NAMES = FLAG_NAMES;
 window.ICON_NAMES = ICON_NAMES;
@@ -124,13 +125,16 @@ const updateSelect = (id, value) => {
     );
   };
 
-  ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
+  ModuleRegistry.registerModules([AllCommunityModule, ValidationModule]);
 
   provideGlobalGridOptions({
     theme: pdsTheme,
   });
 
   window.agGrid = agGrid;
+  // registered per grid via createGrid(), since registerModules() would apply the license check to every grid
+  window.AllEnterpriseModule = AllEnterpriseModule;
+  window.pdsTheme = pdsTheme;
   window.pdsThemeCompact = pdsThemeCompact;
   window.rowData = dataAdvanced;
 

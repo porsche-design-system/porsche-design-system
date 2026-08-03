@@ -1,6 +1,6 @@
 import * as splideModule from '@splidejs/splide';
 import { Splide } from '@splidejs/splide';
-import { vi } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizable';
 import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
 import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
@@ -552,5 +552,34 @@ describe('updateAmountOfPages()', () => {
 
     component['updateAmountOfPages']();
     expect(refreshSpy).toHaveBeenCalledWith();
+  });
+});
+
+describe('active slide control', () => {
+  it('should move the slider to the new active slide index', () => {
+    const component = new Carousel();
+    component['splide'] = { go: vi.fn() } as any;
+
+    component.activeSlideHandler(3);
+
+    expect(component['splide'].go).toHaveBeenCalledWith(3);
+  });
+
+  it('should not re-render when only activeSlideIndex changes', () => {
+    const component = new Carousel();
+
+    expect(component.componentShouldUpdate(2, 0, 'activeSlideIndex')).toBe(false);
+  });
+
+  it('should re-render when another prop changes value', () => {
+    const component = new Carousel();
+
+    expect(component.componentShouldUpdate('medium', 'x-large', 'headingSize')).toBe(true);
+  });
+
+  it('should not re-render when another prop keeps the same value', () => {
+    const component = new Carousel();
+
+    expect(component.componentShouldUpdate('medium', 'medium', 'headingSize')).toBe(false);
   });
 });
