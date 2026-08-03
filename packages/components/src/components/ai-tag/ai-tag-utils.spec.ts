@@ -1,9 +1,13 @@
 import {
   AI_TAG_ICON_PATH,
-  AI_TAG_VARIANTS,
+  AI_TAG_LOCALES,
+  AI_TAG_LOCALES_ACCEPTED,
   AI_TAG_TRANSLATIONS,
+  AI_TAG_VARIANTS,
   type AiTagLocale,
+  type AiTagLocaleCanonical,
   getAiTagTranslation,
+  normalizeAiTagLocale,
 } from './ai-tag-utils';
 
 describe('AI_TAG_VARIANTS', () => {
@@ -35,7 +39,7 @@ describe('AI_TAG_TRANSLATIONS', () => {
     }
   });
 
-  it.each<[AiTagLocale, string]>([
+  it.each<[AiTagLocaleCanonical, string]>([
     ['bg_BG', 'ИИ'],
     ['bs_BA', 'AI'],
     ['cs_CZ', 'AI'],
@@ -75,7 +79,7 @@ describe('AI_TAG_TRANSLATIONS', () => {
     expect(AI_TAG_TRANSLATIONS[locale].short).toBe(expected);
   });
 
-  it.each<[AiTagLocale, string]>([
+  it.each<[AiTagLocaleCanonical, string]>([
     ['bg_BG', 'изкуствен интелект'],
     ['bs_BA', 'vještačka inteligencija'],
     ['cs_CZ', 'umělá inteligence'],
@@ -113,6 +117,28 @@ describe('AI_TAG_TRANSLATIONS', () => {
     ['uk_UA', 'штучний інтелект'],
   ])('should return correct long text for locale: %s → %s', (locale, expected) => {
     expect(AI_TAG_TRANSLATIONS[locale].long).toBe(expected);
+  });
+});
+
+describe('AI_TAG_LOCALES_ACCEPTED', () => {
+  it('should include both POSIX and BCP47 forms for every canonical locale', () => {
+    expect(AI_TAG_LOCALES.length).toBe(35);
+    expect(AI_TAG_LOCALES_ACCEPTED.length).toBe(70);
+    for (const locale of AI_TAG_LOCALES) {
+      expect(AI_TAG_LOCALES_ACCEPTED).toContain(locale);
+      expect(AI_TAG_LOCALES_ACCEPTED).toContain(locale.replace(/_/g, '-'));
+    }
+  });
+});
+
+describe('normalizeAiTagLocale()', () => {
+  it.each([
+    ['en_US', 'en_US'],
+    ['en-US', 'en_US'],
+    ['de-DE', 'de_DE'],
+    ['zh-Hans-CN', 'zh_Hans_CN'],
+  ])('should normalize %s to %s', (input, expected) => {
+    expect(normalizeAiTagLocale(input)).toBe(expected);
   });
 });
 
@@ -197,6 +223,16 @@ describe('getAiTagTranslation()', () => {
     expect(getAiTagTranslation(locale).long).toBe(expected);
   });
 
+  it.each<[AiTagLocale, string]>([
+    ['de-DE', 'KI'],
+    ['en-US', 'AI'],
+    ['fr-FR', 'IA'],
+    ['uk-UA', 'ШІ'],
+  ])('should resolve BCP47 locale %s like POSIX', (locale, expectedShort) => {
+    expect(getAiTagTranslation(locale).short).toBe(expectedShort);
+    expect(getAiTagTranslation(locale)).toStrictEqual(getAiTagTranslation(normalizeAiTagLocale(locale)));
+  });
+
   it('should return generated and modified (full label strings) for each locale', () => {
     for (const locale of Object.keys(AI_TAG_TRANSLATIONS)) {
       const entry = getAiTagTranslation(locale);
@@ -225,6 +261,11 @@ describe('getAiTagTranslation()', () => {
     expect(entry.long).toBe('artificial intelligence');
     expect(entry.generated).toBe('AI-generated');
     expect(entry.modified).toBe('AI-modified');
+  });
+
+  it('should fall back to en_US for unknown BCP47 locale', () => {
+    const entry = getAiTagTranslation('xx-XX');
+    expect(entry).toStrictEqual(AI_TAG_TRANSLATIONS.en_US);
   });
 
   it('should fall back to en_US for empty locale', () => {
