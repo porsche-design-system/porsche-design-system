@@ -1,19 +1,16 @@
 'use client';
 
-import { PText } from '@porsche-design-system/components-react/ssr';
 import type { Framework } from '@porsche-design-system/shared';
 import { A11yCodeSnippet } from '@/components/accessibility/A11yCodeSnippet';
 import { FrameworkTabs } from '@/components/common/FrameworkTabs';
-import { H3 } from '@/components/common/MdxTypography';
+import { H3, P } from '@/components/common/MdxTypography';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-
-export type CompleteFrameworkMarkup = Record<Framework, string>;
 
 export type ResolvedAccessibilityExample = {
   key: string;
   name: string;
-  antiPattern: CompleteFrameworkMarkup;
-  recommended: CompleteFrameworkMarkup;
+  antiPattern: Record<Framework, string>;
+  recommended: Record<Framework, string>;
 };
 
 /**
@@ -31,10 +28,10 @@ const A11yExamplePair = ({ name, antiPattern, recommended }: Omit<ResolvedAccess
         className="my-fluid-md"
         label={`Select the JavaScript framework for the "${name}" code examples`}
       />
-      <PText className="my-fluid-sm max-w-(--max-width-prose)">❌ Anti-pattern</PText>
-      <A11yCodeSnippet code={antiPattern[framework]} framework={framework} label={`${name}, anti-pattern`} />
-      <PText className="my-fluid-sm max-w-(--max-width-prose)">✅ Recommended</PText>
-      <A11yCodeSnippet code={recommended[framework]} framework={framework} label={`${name}, recommended`} />
+      <P>❌ Anti-pattern</P>
+      <A11yCodeSnippet code={antiPattern[framework]} label={`${name}, anti-pattern`} />
+      <P>✅ Recommended</P>
+      <A11yCodeSnippet code={recommended[framework]} label={`${name}, recommended`} />
     </section>
   );
 };

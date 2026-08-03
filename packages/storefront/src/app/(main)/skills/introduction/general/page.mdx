@@ -39,6 +39,9 @@ exposes a bundled skill to your agent:
   `}
 />
 
+Some AI integrations and editors additionally let you configure extra skill lookup locations. In that case, the package's
+`skills` directory can be referenced directly and no symlink is needed.
+
 This **skill-in-package** approach provides two benefits:
 
 - Updating the Porsche Design System dependency automatically updates the skills; there is no separately versioned skill
@@ -46,7 +49,8 @@ This **skill-in-package** approach provides two benefits:
 - Keeping the skills in the package itself and linking them from the project where the package is installed avoids
   version mismatches.
 
-To expose a skill to your AI coding tool, follow the [installation guide](/skills/introduction/installation).
+To expose a skill to your AI coding tool, follow the [installation guide](/skills/introduction/installation), which
+covers all available approaches in detail.
 
 ## Available Skills
 
