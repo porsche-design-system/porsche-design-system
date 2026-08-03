@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.6.0-rc.1] - 2026-08-03
+
 ### Added
 
 - `Knowledge Skill`: Accessibility integration examples for each documented component, pairing anti-pattern and
