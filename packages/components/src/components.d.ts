@@ -180,7 +180,7 @@ export namespace Components {
     }
     interface PAiTag {
         /**
-          * Locale for the AI text (ISO format, e.g. "de_DE").
+          * Locale for the AI text. Accepts POSIX (`de_DE`) and BCP47 (`de-DE`) formats.
           * @default 'en_US'
          */
         "locale"?: AiTagLocale;
@@ -4368,7 +4368,7 @@ declare namespace LocalJSX {
     }
     interface PAiTag {
         /**
-          * Locale for the AI text (ISO format, e.g. "de_DE").
+          * Locale for the AI text. Accepts POSIX (`de_DE`) and BCP47 (`de-DE`) formats.
           * @default 'en_US'
          */
         "locale"?: AiTagLocale;

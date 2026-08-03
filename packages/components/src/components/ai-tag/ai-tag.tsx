@@ -3,7 +3,7 @@ import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, validateProps } from '../../utils';
 import { getComponentCss } from './ai-tag-styles';
 import {
-  AI_TAG_TRANSLATIONS,
+  AI_TAG_LOCALES_ACCEPTED,
   AI_TAG_VARIANTS,
   type AiTagLocale,
   type AiTagVariant,
@@ -11,7 +11,7 @@ import {
 } from './ai-tag-utils';
 
 const propTypes: PropTypes<typeof AiTag> = {
-  locale: AllowedTypes.oneOf<AiTagLocale>(Object.keys(AI_TAG_TRANSLATIONS) as AiTagLocale[]),
+  locale: AllowedTypes.oneOf<AiTagLocale>(AI_TAG_LOCALES_ACCEPTED),
   variant: AllowedTypes.oneOf<AiTagVariant>(AI_TAG_VARIANTS),
 };
 
@@ -22,7 +22,7 @@ const propTypes: PropTypes<typeof AiTag> = {
 export class AiTag {
   @Element() public host!: HTMLElement;
 
-  /** Locale for the AI text (ISO format, e.g. "de_DE"). */
+  /** Locale for the AI text. Accepts POSIX (`de_DE`) and BCP47 (`de-DE`) formats. */
   @Prop() public locale?: AiTagLocale = 'en_US';
 
   /** Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified"). */

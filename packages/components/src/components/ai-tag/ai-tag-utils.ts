@@ -166,8 +166,21 @@ export const AI_TAG_TRANSLATIONS = {
   },
 } satisfies Record<string, AiTagTranslationEntry>;
 
-export type AiTagLocale = keyof typeof AI_TAG_TRANSLATIONS;
+type ToBcp47<T extends string> = T extends `${infer Lang}_${infer Region}` ? `${Lang}-${Region}` : T;
+
+export type AiTagLocaleCanonical = keyof typeof AI_TAG_TRANSLATIONS;
+export type AiTagLocale = AiTagLocaleCanonical | ToBcp47<AiTagLocaleCanonical>;
+
+export const AI_TAG_LOCALES = Object.keys(AI_TAG_TRANSLATIONS) as AiTagLocaleCanonical[];
+
+export const AI_TAG_LOCALES_ACCEPTED: AiTagLocale[] = [
+  ...AI_TAG_LOCALES,
+  ...AI_TAG_LOCALES.map((locale) => locale.replace(/_/g, '-') as ToBcp47<AiTagLocaleCanonical>),
+];
+
+export const normalizeAiTagLocale = (locale: string): string => locale.replace(/-/g, '_');
 
 export const getAiTagTranslation = (locale: string): AiTagTranslationEntry => {
-  return AI_TAG_TRANSLATIONS[locale as AiTagLocale] ?? AI_TAG_TRANSLATIONS.en_US;
+  const normalized = normalizeAiTagLocale(locale);
+  return AI_TAG_TRANSLATIONS[normalized as AiTagLocaleCanonical] ?? AI_TAG_TRANSLATIONS.en_US;
 };
