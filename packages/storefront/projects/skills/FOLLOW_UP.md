@@ -46,7 +46,7 @@ Include the Storefront accessibility pages' `## Integration examples` in each ge
 SKILL generation strips this section because it cannot yet resolve the custom React `A11yIntegrationExamples` component
 or its imported `A11yIntegrationExample` story data. Add a target-specific renderer that turns both anti-pattern and
 recommended stories into framework-specific code examples, then remove the temporary section filter from
-`src/components/prose.ts`.
+`src/knowledge/components/prose.ts`.
 
 ## Refactor
 
@@ -56,7 +56,7 @@ Both SKILL and Storefront generate component API documentation from `componentMe
 separate logic:
 
 - Storefront uses React components to render its API tables.
-- SKILL transforms the same metadata into Markdown in `src/components/api.ts`.
+- SKILL transforms the same metadata into Markdown in `src/knowledge/components/api.ts`.
 
 We should investigate extracting a shared metadata-to-API model or formatting layer. Storefront and SKILL could then use
 the same normalized data while keeping their output-specific renderers (React and Markdown). This would reduce

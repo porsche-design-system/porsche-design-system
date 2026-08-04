@@ -9,7 +9,7 @@
  * not here, and so does a skill's content — including its SKILL.md frontmatter.
  *
  * Adding a skill means adding its id to {@link SKILL_IDS} and its generator to `SKILL_GENERATORS` in
- * `generateSkillTree.ts`; the distributed directory names are derived from the id.
+ * `generators.ts`; the distributed directory names are derived from the id.
  */
 
 /** Every distributed skill. */
