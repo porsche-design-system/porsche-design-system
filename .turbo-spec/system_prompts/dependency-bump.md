@@ -1,0 +1,1 @@
+Using `docs/runbooks/dependency-updates-agent.md` as policy, run `npm install`, resolve any `ERESOLVE` only with scoped pinned root `overrides` (never `--force` or `--legacy-peer-deps`), and stop once the repository is ready for the configured gates.

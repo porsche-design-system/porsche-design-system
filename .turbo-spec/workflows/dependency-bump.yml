@@ -1,0 +1,38 @@
+name: dependency-bump
+version: "1.0"
+description: >-
+  Minimal TurboSpec dependency bump workflow
+# `npm ci` prepares the tree once before any stage runs — a clean, deterministic
+# install that matches package-lock.json and never mutates the lockfile. It is
+# environment setup, not a stage/gate; a non-zero exit aborts the pipeline before
+# the first stage. The 20m timeout overrides the 5m default for this monorepo.
+setup_command: "npm ci"
+setup_command_timeout: "20m"
+stages:
+  - name: implementation
+    orchestrator: implementation
+    pre_command: "npm run npm:update:all"
+    agents:
+      - type: dependency_updater
+        skills: []
+        tools: [file, shell]
+        system_prompt: dependency-bump
+    quality_gates:
+      - evaluator: script_gate
+        config:
+          gate_name: npm-install
+          steps:
+            - name: npm-install
+              command: [npm, install]
+      - evaluator: script_gate
+        config:
+          gate_name: npm-format
+          steps:
+            - name: npm-format
+              command: [npm, run, "npm:format"]
+      - evaluator: script_gate
+        config:
+          gate_name: npm-lint
+          steps:
+            - name: npm-lint
+              command: [npm, run, "npm:lint"]
