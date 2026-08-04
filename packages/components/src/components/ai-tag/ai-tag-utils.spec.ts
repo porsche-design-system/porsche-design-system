@@ -1,6 +1,7 @@
 import {
   AI_TAG_ICON_PATH,
   AI_TAG_LOCALES_ACCEPTED,
+  AI_TAG_LOCALES_ACCEPTED_DEPRECATED,
   AI_TAG_TRANSLATIONS,
   AI_TAG_VARIANTS,
   type AiTagTranslationLanguage,
@@ -91,6 +92,15 @@ describe('MARKET_LOCALES / AI_TAG_LOCALES_ACCEPTED', () => {
       expect(AI_TAG_LOCALES_ACCEPTED).toContain(locale);
       expect(AI_TAG_LOCALES_ACCEPTED).toContain(locale.replace(/-/g, '_'));
     }
+  });
+
+  it('should mark POSIX underscore forms as deprecated', () => {
+    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toHaveLength(176);
+    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED.every((locale) => locale.includes('_'))).toBe(true);
+    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toContain('en_US');
+    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toContain('de_DE');
+    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).not.toContain('en');
+    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).not.toContain('en-US');
   });
 
   it('should include language-only en and retained prior locales', () => {
@@ -200,12 +210,23 @@ describe('getAiTagTranslation()', () => {
     expect(entry.long).toBe(expectedLong);
   });
 
-  it.each(['ja-JP', 'ar-SA', 'ar-AE-DU', 'az-AZ', 'ka-GE', 'zh-CN', 'zh-HK', 'hy-AM', 'ko-KR', 'en-XA', 'xx_XX', 'xx-XX', ''])(
-    'should fall back to English for untranslated locale %s',
-    (locale) => {
-      expect(getAiTagTranslation(locale)).toStrictEqual(AI_TAG_TRANSLATIONS.en);
-    }
-  );
+  it.each([
+    'ja-JP',
+    'ar-SA',
+    'ar-AE-DU',
+    'az-AZ',
+    'ka-GE',
+    'zh-CN',
+    'zh-HK',
+    'hy-AM',
+    'ko-KR',
+    'en-XA',
+    'xx_XX',
+    'xx-XX',
+    '',
+  ])('should fall back to English for untranslated locale %s', (locale) => {
+    expect(getAiTagTranslation(locale)).toStrictEqual(AI_TAG_TRANSLATIONS.en);
+  });
 
   it('should return generated and modified for each language', () => {
     for (const language of Object.keys(AI_TAG_TRANSLATIONS)) {

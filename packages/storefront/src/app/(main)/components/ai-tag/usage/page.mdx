@@ -21,9 +21,8 @@ component in various situations.
 ### Do:
 
 - Use to indicate AI-generated or AI-assisted content.
-- Use the appropriate `locale` to match the user's market (BCP47 e.g. `en-US` or POSIX e.g. `en_US`).
-  Copy is resolved by language; markets without a translation fall back to English. Language-only `en` is supported
-  for international markets.
+- Prefer BCP47 `locale` values (e.g. `de-DE`, `en-US`, or language-only `en`). POSIX forms (e.g. `de_DE`)
+  are deprecated but still accepted. Copy is resolved by language; markets without a translation fall back to English.
 - Use the `abbreviation` variant for compact contexts where space is limited.
 - Use the `generated` or `modified` variant when a full label improves clarity.
 

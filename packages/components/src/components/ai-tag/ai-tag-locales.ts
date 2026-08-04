@@ -187,9 +187,14 @@ export type AiTagLocale = MarketLocale | ToPosixLocale<MarketLocale>;
 
 const MARKET_LOCALES_POSIX = MARKET_LOCALES.map((locale) => locale.replace(/-/g, '_') as ToPosixLocale<MarketLocale>);
 
-/** Deduped allowlist for prop validation (BCP47 + POSIX). */
+/** POSIX underscore forms (e.g. `en_US`). Still accepted; prefer BCP47. */
+export const AI_TAG_LOCALES_ACCEPTED_DEPRECATED = [
+  ...new Set(MARKET_LOCALES_POSIX.filter((locale) => locale.includes('_'))),
+] as AiTagLocale[];
+
+/** Deduped allowlist for prop validation (BCP47 + deprecated POSIX). */
 export const AI_TAG_LOCALES_ACCEPTED: AiTagLocale[] = [
-  ...new Set<AiTagLocale>([...MARKET_LOCALES, ...MARKET_LOCALES_POSIX]),
+  ...new Set<AiTagLocale>([...MARKET_LOCALES, ...AI_TAG_LOCALES_ACCEPTED_DEPRECATED]),
 ];
 
 export const normalizeAiTagLocale = (locale: string): string => locale.replace(/-/g, '_');

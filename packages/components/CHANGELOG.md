@@ -21,6 +21,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
 
+### Changed
+
+- `Ai Tag`: POSIX locales (e.g. `en_US`) are deprecated in favor of BCP47 locales (e.g. `en-US`)
+  ([#4643](https://github.com/porsche-design-system/porsche-design-system/pull/4643))
+
 ### Fixed
 
 - `Multi Select`: Announcement of the active/selected option in screen readers
