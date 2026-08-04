@@ -22,8 +22,11 @@ const propTypes: PropTypes<typeof AiTag> = {
 export class AiTag {
   @Element() public host!: HTMLElement;
 
-  /** Locale for the AI text. Accepts POSIX (`de_DE`) and BCP47 (`de-DE`) formats. */
-  @Prop() public locale?: AiTagLocale = 'en_US';
+  /**
+   * Market locale for the AI text (BCP47 e.g. `en-US` or POSIX e.g. `en_US`).
+   * Copy is resolved by language; unknown languages fall back to English. Language-only `en` is supported.
+   */
+  @Prop() public locale?: AiTagLocale = 'en-US';
 
   /** Variant to display: 'abbreviation' (e.g. "AI"), 'generated' (e.g. "AI-generated"), or 'modified' (e.g. "AI-modified"). */
   @Prop() public variant?: AiTagVariant = 'generated';
