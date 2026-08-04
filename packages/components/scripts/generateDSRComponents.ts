@@ -96,7 +96,8 @@ const generateDSRComponents = (): void => {
                 group.endsWith('fc-dismiss-button') ||
                 group.endsWith('required') ||
                 group.endsWith('label') ||
-                group.endsWith('no-results-option')
+                group.endsWith('no-results-option') ||
+                group.endsWith('filter-status-announcer')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )

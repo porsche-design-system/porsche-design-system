@@ -10591,7 +10591,7 @@ exports[`should match snapshot 1`] = `
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens (\`small\`, \`medium\`, \`large\`, \`inherit\`).",
+        "description": "Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens.",
         "type": "WordmarkSize",
       },
       "target": {
