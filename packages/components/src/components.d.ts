@@ -3128,7 +3128,7 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens (`small`, `medium`, `large`, `inherit`).
+          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens.
           * @default 'small'
          */
         "size"?: WordmarkSize;
@@ -7619,7 +7619,7 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens (`small`, `medium`, `large`, `inherit`).
+          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens.
           * @default 'small'
          */
         "size"?: WordmarkSize;
