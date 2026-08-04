@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { skillName } from '@skills/knowledge/skillMd';
-import { FRAMEWORKS, STAGED_SKILL_DIRS, WRAPPER_DIST_DIRS } from '@skills/shared/skillTree';
+import { getSkillName } from '@skills/registry';
+import { FRAMEWORKS, stagedSkillDir, WRAPPER_DIST_DIRS } from '@skills/shared/skillTree';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import {
   extractReferences,
@@ -33,6 +33,13 @@ import {
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../../../..');
 const JS_DIST_ROOT = path.join(REPO_ROOT, WRAPPER_DIST_DIRS.js);
 
+/**
+ * The skill this gate resolves links for. The produced-path mode is content-agnostic, but the
+ * raw-link expectations below (`../../meta`, `../../scss`, the Tailwind copy) are the knowledge
+ * tree's references, so the gate names its skill instead of assuming there is only one.
+ */
+const SKILL_ID = 'knowledge';
+
 const treeReferences = (skillRoot: string) =>
   listMarkdownFiles(skillRoot).flatMap((sourceFile) =>
     extractReferences(fs.readFileSync(path.join(skillRoot, sourceFile), 'utf-8')).map((reference) => ({
@@ -61,8 +68,10 @@ const rawTargets = (skillRoot: string): Set<string> =>
 describe('skill reference links — produced paths resolve against staging', () => {
   for (const framework of FRAMEWORKS) {
     it(`${framework} tree has no dangling produced path`, () => {
-      const root = path.join(REPO_ROOT, STAGED_SKILL_DIRS[framework]);
-      expect(fs.existsSync(root), `${STAGED_SKILL_DIRS[framework]} missing — run \`npm run build:skills\``).toBe(true);
+      const root = path.join(REPO_ROOT, stagedSkillDir(SKILL_ID, framework));
+      expect(fs.existsSync(root), `${stagedSkillDir(SKILL_ID, framework)} missing — run \`npm run build:skills\``).toBe(
+        true
+      );
       const dangling = danglingProduced(root);
       expect(dangling, `dangling produced paths:\n${dangling.join('\n')}`).toEqual([]);
     });
@@ -71,13 +80,18 @@ describe('skill reference links — produced paths resolve against staging', () 
 
 describe('skill reference links — raw links resolve against the built dist', () => {
   for (const framework of FRAMEWORKS) {
-    const distSkillRoot = path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', skillName(framework));
+    const distSkillRoot = path.join(
+      REPO_ROOT,
+      WRAPPER_DIST_DIRS[framework],
+      'skills',
+      getSkillName(SKILL_ID, framework)
+    );
 
     describe(framework, () => {
       it('the built dist skill tree is present (restore the build-development artifact / build the wrapper)', () => {
         expect(
           fs.existsSync(distSkillRoot),
-          `${WRAPPER_DIST_DIRS[framework]}/skills/${skillName(framework)} missing`
+          `${WRAPPER_DIST_DIRS[framework]}/skills/${getSkillName(SKILL_ID, framework)} missing`
         ).toBe(true);
       });
 
@@ -85,10 +99,10 @@ describe('skill reference links — raw links resolve against the built dist', (
         const skillMdPath = path.join(distSkillRoot, 'SKILL.md');
         expect(
           fs.existsSync(skillMdPath),
-          `${WRAPPER_DIST_DIRS[framework]}/skills/${skillName(framework)}/SKILL.md missing`
+          `${WRAPPER_DIST_DIRS[framework]}/skills/${getSkillName(SKILL_ID, framework)}/SKILL.md missing`
         ).toBe(true);
         expect(fs.readFileSync(skillMdPath, 'utf-8')).toMatch(
-          new RegExp(`^---\\nname: ${skillName(framework)}\\n`, 'u')
+          new RegExp(`^---\\nname: ${getSkillName(SKILL_ID, framework)}\\n`, 'u')
         );
       });
 
@@ -100,14 +114,16 @@ describe('skill reference links — raw links resolve against the built dist', (
   }
 
   it('js skill links its own ../../meta (real data), not the js-peer specifier', () => {
-    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skills', skillName('js')));
+    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skills', getSkillName(SKILL_ID, 'js')));
     expect(targets).toContain('../../meta');
     expect(targets).not.toContain(JS_PEER_META_SPECIFIER);
   });
 
   for (const framework of ['angular', 'react', 'vue'] as const) {
     it(`${framework} skill links the js-peer /meta subpath, not its local ../../meta shim`, () => {
-      const targets = rawTargets(path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', skillName(framework)));
+      const targets = rawTargets(
+        path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', getSkillName(SKILL_ID, framework))
+      );
       expect(targets).toContain(JS_PEER_META_SPECIFIER);
       expect(targets).not.toContain('../../meta');
 
@@ -121,21 +137,23 @@ describe('skill reference links — raw links resolve against the built dist', (
 
   it('every skill links the local ../../tailwindcss/index.css (real copy in every wrapper)', () => {
     for (const framework of FRAMEWORKS) {
-      expect(rawTargets(path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', skillName(framework)))).toContain(
-        '../../tailwindcss/index.css'
-      );
+      expect(
+        rawTargets(path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', getSkillName(SKILL_ID, framework)))
+      ).toContain('../../tailwindcss/index.css');
     }
   });
 
   it('js skill links its own ../../scss (real partials), not the js-peer scss specifier', () => {
-    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skills', skillName('js')));
+    const targets = rawTargets(path.join(JS_DIST_ROOT, 'skills', getSkillName(SKILL_ID, 'js')));
     expect(targets).toContain('../../scss');
     expect(targets).not.toContain(JS_PEER_SCSS_SPECIFIER);
   });
 
   for (const framework of ['angular', 'react', 'vue'] as const) {
     it(`${framework} skill links the js-peer /scss subpath, not its local ../../scss shim`, () => {
-      const targets = rawTargets(path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', skillName(framework)));
+      const targets = rawTargets(
+        path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', getSkillName(SKILL_ID, framework))
+      );
       expect(targets).toContain(JS_PEER_SCSS_SPECIFIER);
       expect(targets).not.toContain('../../scss');
 

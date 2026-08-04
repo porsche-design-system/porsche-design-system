@@ -1,8 +1,11 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { FRAMEWORKS, isFramework, SKILL_DIRECTORY_LAYOUT, SkillTree } from '@skills/shared/skillTree';
+import { FRAMEWORKS, isFramework, SkillTree } from '@skills/shared/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+
+/** Stands in for any skill's layout — the writer takes it as input rather than owning one. */
+const LAYOUT = ['references/components', 'references/styles'] as const;
 
 describe('SkillTree', () => {
   let root: string;
@@ -15,17 +18,25 @@ describe('SkillTree', () => {
     fs.rmSync(root, { recursive: true, force: true });
   });
 
-  it('lays out the empty directory layout on reset', () => {
-    const tree = new SkillTree(root, 'js');
+  it('lays out the given directory layout on reset', () => {
+    const tree = new SkillTree(root, 'js', LAYOUT);
     tree.reset();
 
-    for (const dir of SKILL_DIRECTORY_LAYOUT) {
+    for (const dir of LAYOUT) {
       expect(fs.existsSync(tree.resolve(dir)), `${dir} should exist`).toBe(true);
     }
   });
 
-  it('discards a pre-existing tree on reset', () => {
+  it('creates only the root when no layout is given', () => {
     const tree = new SkillTree(root, 'js');
+    tree.reset();
+
+    expect(fs.existsSync(root)).toBe(true);
+    expect(fs.readdirSync(root)).toEqual([]);
+  });
+
+  it('discards a pre-existing tree on reset', () => {
+    const tree = new SkillTree(root, 'js', LAYOUT);
     tree.reset();
     tree.write('references/components/stale.md', 'stale');
 

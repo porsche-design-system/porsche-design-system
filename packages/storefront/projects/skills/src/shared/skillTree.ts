@@ -21,12 +21,6 @@ export const stagedSkillDirs = (skillId: SkillId): Record<Framework, string> =>
   Object.fromEntries(FRAMEWORKS.map((fw) => [fw, stagedSkillDir(skillId, fw)])) as Record<Framework, string>;
 
 /**
- * Each framework's staged knowledge-skill tree, relative to the monorepo root. Kept as a flat map
- * while knowledge is the only distributed skill; use {@link stagedSkillDir} for any other.
- */
-export const STAGED_SKILL_DIRS: Record<Framework, string> = stagedSkillDirs('knowledge');
-
-/**
  * Each framework's built dist root (relative to the monorepo root) — the parent the
  * `build:subPackages:skill` copy step writes `skills/` into, sitting beside the also-copied
  * `meta/` and `tokens/`. The raw-link CI gate resolves the trees' `../../meta` / `../../tokens`
@@ -41,30 +35,27 @@ export const WRAPPER_DIST_DIRS: Record<Framework, string> = {
 };
 
 /**
- * Reference sub-directories laid out under the skill root. The harness creates
- * these empty up front so the content generators (TASK-03+) only have to write
- * files into a tree that already has the right shape.
- */
-export const SKILL_DIRECTORY_LAYOUT = ['references/components', 'references/styles'] as const;
-
-/**
  * Filesystem writer that owns a single framework's skill tree. It is the stable
  * API the content generators write produced files through, via {@link write} /
- * {@link writeReference}. SKILL.md itself is rendered into topical sections by
- * `buildSkillMd` once every generator has run (the component roster and package-skill rows are threaded in).
+ * {@link writeReference}. Each skill brings its own directory layout, since the
+ * sub-directories a tree needs are a property of its content, not of the writer.
  */
 export class SkillTree {
   public readonly root: string;
   public readonly framework: Framework;
+  private readonly layout: readonly string[];
 
   /**
    * @param root  the tree's filesystem root.
    * @param framework  the framework this tree ships for; produced content is resolved to its concrete
    *   package name (the `{js|angular|react|vue}` placeholder → `components-<framework>`).
+   * @param layout  tree-relative sub-directories {@link reset} creates up front, so the content
+   *   generators only have to write files into a tree that already has the right shape.
    */
-  constructor(root: string, framework: Framework) {
+  constructor(root: string, framework: Framework, layout: readonly string[] = []) {
     this.root = root;
     this.framework = framework;
+    this.layout = layout;
   }
 
   /** Resolve a tree-relative path to an absolute filesystem path. */
@@ -75,7 +66,8 @@ export class SkillTree {
   /** Remove any existing tree and recreate the empty directory layout. */
   public reset(): void {
     fs.rmSync(this.root, { recursive: true, force: true });
-    for (const dir of SKILL_DIRECTORY_LAYOUT) {
+    fs.mkdirSync(this.root, { recursive: true });
+    for (const dir of this.layout) {
       fs.mkdirSync(this.resolve(dir), { recursive: true });
     }
   }

@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { getPackageSkillRouteReferences } from '@skills/knowledge/packageSkills';
-import { FRAMEWORKS, STAGED_SKILL_DIRS } from '@skills/shared/skillTree';
+import { FRAMEWORKS, stagedSkillDir } from '@skills/shared/skillTree';
 import { listSkillTreeFiles } from '@skills/shared/skillTreeFiles';
 import { describe, expect, it } from 'vitest';
 
@@ -74,7 +74,7 @@ describe('skill tree completeness', () => {
 
   for (const framework of FRAMEWORKS) {
     describe(`${framework} skill tree`, () => {
-      const root = path.join(REPO_ROOT, STAGED_SKILL_DIRS[framework]);
+      const root = path.join(REPO_ROOT, stagedSkillDir('knowledge', framework));
       const componentsDir = path.join(root, 'references/components');
       const skillMdPath = path.join(root, 'SKILL.md');
       const skillMd = fs.existsSync(skillMdPath) ? fs.readFileSync(skillMdPath, 'utf-8') : '';

@@ -1,5 +1,6 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { type Framework, SkillTree } from '../shared/skillTree';
+import type { SkillGenerator } from '../shared/generation';
+import { SkillTree } from '../shared/skillTree';
 import { type ComponentDocsMetaMap, writeComponentReferences } from './components/reference';
 import { renderComponentsSection } from './components/section';
 import {
@@ -10,6 +11,12 @@ import {
   writePackageSkillReferences,
 } from './packageSkills';
 import { buildSkillMd } from './skillMd';
+
+/** Reference sub-directories the knowledge tree lays out before any content is written. */
+const KNOWLEDGE_DIRECTORY_LAYOUT = ['references/components', 'references/styles'] as const;
+
+/** The storefront sources the knowledge skill reads. */
+type KnowledgeInputs = { docsMeta: ComponentDocsMetaMap };
 
 /**
  * Orchestrates one framework's knowledge tree, mirroring the generated layout: the package-skill
@@ -22,9 +29,9 @@ import { buildSkillMd } from './skillMd';
  * `components.meta`, which only resolves under the MDX/alias-aware runtime the `build:skills` CLI
  * wires up (see `scripts/build-skills.ts`).
  */
-export const generateKnowledgeSkill = (root: string, framework: Framework, docsMeta: ComponentDocsMetaMap): void => {
+export const generateKnowledgeSkill: SkillGenerator<KnowledgeInputs> = (root, framework, { docsMeta }) => {
   const routeReferences = getPackageSkillRouteReferences();
-  const tree = new SkillTree(root, framework);
+  const tree = new SkillTree(root, framework, KNOWLEDGE_DIRECTORY_LAYOUT);
   tree.reset();
 
   writePackageSkillReferences(tree, routeReferences);

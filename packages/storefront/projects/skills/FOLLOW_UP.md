@@ -86,21 +86,6 @@ requirements apply. This duplication is acceptable for the first release, but th
 package-owned source that both Storefront's Next.js, Remix, and React Router documentation and SKILL consume. This will
 keep the import decision and SSR behavior aligned instead of repeating the same information in SKILL.
 
-### Rename the package to SKILLS and give every distributed skill its own directory
-
-The package is still named and structured as if it produced a single skill, but it already distributes one skill per
-framework (`pds-knowledge-<framework>`) and will grow further with additional skills such as `pds-audit-<framework>`.
-
-Rename `@porsche-design-system/skill` to `@porsche-design-system/skills` (including its directory, npm scripts, and the
-`build:skill` / `test:unit:skill` root aliases) and restructure the source so each distributed skill owns a dedicated
-directory instead of sharing one generation pipeline. Shared generation logic, components, and references should move
-behind a common layer that every skill directory consumes, so adding a new skill means adding a directory rather than
-extending conditionals in the existing pipeline.
-
-The wrapper packages already ship a plural `skills/` output directory and `pds-skill.js` already discovers every child
-directory beneath it, so no consumer-facing change is required. Only the source layout, package name, and generation
-entry points need to follow.
-
 ### Simplify package skill integration
 
 Package skills should provide all required content and metadata themselves. The central SKILL should only plug them in,

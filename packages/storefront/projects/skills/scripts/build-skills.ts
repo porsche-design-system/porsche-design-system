@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { ComponentDocsMetaMap } from '../src/knowledge/components/reference';
+import type { StorefrontInputs } from '../src/generators';
 import { SKILL_IDS } from '../src/registry';
 import { FRAMEWORKS, SKILL_STAGING_DIR, stagedSkillDir } from '../src/shared/skillTree';
 
@@ -19,14 +19,14 @@ const main = async (): Promise<void> => {
     import('../../../src/app/(main)/components/components.meta'),
     import('../src/generators'),
   ]);
-  const docsMeta = componentDocsMeta as unknown as ComponentDocsMetaMap;
+  const inputs: StorefrontInputs = { docsMeta: componentDocsMeta as unknown as StorefrontInputs['docsMeta'] };
 
   for (const framework of FRAMEWORKS) {
     fs.rmSync(path.resolve(REPO_ROOT, SKILL_STAGING_DIR, framework), { recursive: true, force: true });
 
     for (const skillId of SKILL_IDS) {
       const relativeRoot = stagedSkillDir(skillId, framework);
-      SKILL_GENERATORS[skillId](path.resolve(REPO_ROOT, relativeRoot), framework, docsMeta);
+      SKILL_GENERATORS[skillId](path.resolve(REPO_ROOT, relativeRoot), framework, inputs);
       console.log(`Wrote ${skillId} skill tree → ${relativeRoot}`);
     }
   }
