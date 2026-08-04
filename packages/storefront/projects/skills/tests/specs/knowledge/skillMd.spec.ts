@@ -61,7 +61,7 @@ describe('buildSkillMd', () => {
     expect(markdown).toContain(`${storefrontUrl}developing/next-js/getting-started/`);
     expect(markdown).toContain(`${storefrontUrl}developing/react-router/getting-started/`);
 
-    for (const framework of ['js', 'angular', 'vue'] as const) {
+    for (const framework of FRAMEWORKS.filter((fw) => fw !== 'react')) {
       expect(buildSkillMd(framework)).not.toContain('## Server-side rendering (SSR)');
     }
   });

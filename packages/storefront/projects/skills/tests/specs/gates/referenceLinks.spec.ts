@@ -119,7 +119,7 @@ describe('skill reference links — raw links resolve against the built dist', (
     expect(targets).not.toContain(JS_PEER_META_SPECIFIER);
   });
 
-  for (const framework of ['angular', 'react', 'vue'] as const) {
+  for (const framework of FRAMEWORKS.filter((fw) => fw !== 'js')) {
     it(`${framework} skill links the js-peer /meta subpath, not its local ../../meta shim`, () => {
       const targets = rawTargets(
         path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', getSkillName(SKILL_ID, framework))
@@ -149,7 +149,7 @@ describe('skill reference links — raw links resolve against the built dist', (
     expect(targets).not.toContain(JS_PEER_SCSS_SPECIFIER);
   });
 
-  for (const framework of ['angular', 'react', 'vue'] as const) {
+  for (const framework of FRAMEWORKS.filter((fw) => fw !== 'js')) {
     it(`${framework} skill links the js-peer /scss subpath, not its local ../../scss shim`, () => {
       const targets = rawTargets(
         path.join(REPO_ROOT, WRAPPER_DIST_DIRS[framework], 'skills', getSkillName(SKILL_ID, framework))

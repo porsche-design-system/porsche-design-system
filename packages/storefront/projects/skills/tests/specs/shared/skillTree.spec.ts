@@ -4,8 +4,12 @@ import path from 'node:path';
 import { FRAMEWORKS, isFramework, SkillTree } from '@skills/shared/skillTree';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-/** Stands in for any skill's layout — the writer takes it as input rather than owning one. */
-const LAYOUT = ['references/components', 'references/styles'] as const;
+/**
+ * Deliberately not any real skill's layout: `SkillTree` takes the layout as input, so this spec
+ * asserts it creates whatever it is given (nesting included) rather than one skill's directories.
+ * Copying knowledge's layout here would read as production data and couple this spec to a skill.
+ */
+const LAYOUT = ['references/alpha', 'nested/beta/gamma'] as const;
 
 describe('SkillTree', () => {
   let root: string;
