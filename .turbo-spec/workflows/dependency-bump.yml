@@ -9,8 +9,8 @@ description: >-
 setup_command: "npm ci"
 setup_command_timeout: "20m"
 stages:
-  - name: implementation
-    orchestrator: implementation
+  - name: update_dependencies
+    orchestrator: bumpy_mc_bumpface
     pre_command: "npm run npm:update:all"
     agents:
       - type: dependency_updater
