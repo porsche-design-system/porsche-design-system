@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
+- `Link Tile` / `Button Tile`: Interactive content in the header slot (e.g. tags with links/buttons) is clickable again
+  ([#4648](https://github.com/porsche-design-system/porsche-design-system/pull/4648))
 - `Multi Select`: Announcement of the active/selected option in screen readers
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
 
