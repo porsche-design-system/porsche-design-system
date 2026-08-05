@@ -56,3 +56,8 @@ stages:
           steps:
             - name: npm-lint
               command: [npm, run, "npm:lint"]
+
+model_provider:
+  primary: copilot
+  config:
+    model_id: claude-sonnet-5
