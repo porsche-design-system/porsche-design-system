@@ -5,6 +5,8 @@
 # .turbo-spec/workflows/dependency-bump.yml. There
 # is no issue-label trigger. The comment-router/watcher re-dispatch it with
 # session_id/feedback on resume (those inputs must stay).
+# `.github/workflows/weekly-dependency-agent.yml` remains the schedule owner;
+# do not add a schedule here unless that workflow is retired.
 #
 # All engine logic — checkout auth, gerhard setup, sandbox wiring, and the
 # interim workarounds for known engine issues (container runtime #851, egress
@@ -13,10 +15,9 @@
 # ships, the interim is removed THERE; this shim never changes for that.
 #
 # What to customize here:
-#   - The `uses:` pin. Pinned here to @deterministic-script-node (turbo-spec
-#     PR #1398), the branch whose engine supports this blueprint's kind: script /
-#     kind: decision nodes; on @main the run would fail. Once #1398 ships, pin a
-#     release tag (e.g. @v1.2.3 — see
+#   - The `uses:` pin. It uses @main while this manual-only workflow evaluates
+#     the consumer blueprint. Before scheduling it, pin a release tag (e.g.
+#     @v1.2.3 — see
 #     https://github.com/porsche-code/turbo-spec/releases) and pass the same
 #     tag as `engine_ref:` under `with:` (it defaults to main).
 #   - Nothing else for the default setup. Blueprint overlays stay consumer-side
