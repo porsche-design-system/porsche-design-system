@@ -28,7 +28,6 @@ stages:
         config:
           gate_name: npm-install
           failure_verdict: loop_back
-          environment_verdict: loop_back
           steps:
             - name: npm-install
               command: [npm, install]
@@ -40,7 +39,6 @@ stages:
         config:
           gate_name: npm-format
           failure_verdict: loop_back
-          environment_verdict: loop_back
           steps:
             - name: npm-format
               command: [npm, run, "npm:format"]
@@ -52,7 +50,6 @@ stages:
         config:
           gate_name: npm-lint
           failure_verdict: loop_back
-          environment_verdict: loop_back
           steps:
             - name: npm-lint
               command: [npm, run, "npm:lint"]

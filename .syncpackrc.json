@@ -54,6 +54,7 @@
         "ng-packagr",
         "zone.js",
         "ag-grid-*",
+        "ag-stack",
         "@ag-grid-community/**",
         "react",
         "react-dom",
