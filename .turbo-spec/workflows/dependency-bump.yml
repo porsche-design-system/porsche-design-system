@@ -55,19 +55,13 @@ stages:
               command: [npm, run, "npm:lint"]
 
   - name: revalidate_overrides
-    orchestrator: review
+    orchestrator: implementation
     depends_on: [update_dependencies]
-    timeout: "260m"
-    pre_command: "node .turbo-spec/scripts/revalidate-overrides.mjs run"
+    timeout: "220m"
+    pre_command: "node .turbo-spec/scripts/revalidate-overrides.mjs --self-test && node .turbo-spec/scripts/revalidate-overrides.mjs run"
     hook_timeout: "180m"
-    agents:
-      - id: override_cleanup_reviewer
-        type: override_cleanup_reviewer
-        skills: []
-        tools: [file, shell]
-        system_prompt: override-cleanup
-        output_schema: reviewer
-        artifact_type: review
+    outputs:
+      override_reviewer: .turbo-spec/out/override-reviewer.json
     quality_gates:
       - evaluator: script_gate
         on_fail: escalate
@@ -77,7 +71,7 @@ stages:
           environment_verdict: escalate
           steps:
             - name: npm-install
-              command: [npm, install]
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, gate, install]
       - evaluator: script_gate
         on_fail: escalate
         config:
@@ -86,7 +80,7 @@ stages:
           environment_verdict: escalate
           steps:
             - name: npm-audit-baseline
-              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, verify]
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, gate, audit]
       - evaluator: script_gate
         on_fail: escalate
         config:
@@ -95,7 +89,7 @@ stages:
           environment_verdict: escalate
           steps:
             - name: npm-format
-              command: [npm, run, "npm:format"]
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, gate, format]
       - evaluator: script_gate
         on_fail: escalate
         config:
@@ -104,7 +98,23 @@ stages:
           environment_verdict: escalate
           steps:
             - name: npm-lint
-              command: [npm, run, "npm:lint"]
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, gate, lint]
+
+  - name: document_overrides
+    orchestrator: review
+    depends_on: [revalidate_overrides]
+    timeout: "30m"
+    agents:
+      - id: override_cleanup_reviewer
+        type: override_cleanup_reviewer
+        skills: []
+        tools: [file]
+        system_prompt: override-cleanup
+        output_schema: reviewer
+        artifact_type: review
+    quality_gates:
+      - evaluator: review_approved
+        on_fail: escalate
 
 settings:
   timeout_total: "350m"
