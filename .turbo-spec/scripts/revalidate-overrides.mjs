@@ -388,7 +388,8 @@ function runCleanupTransaction(cwd, initialManifest, manifestPath, timing) {
         status: 'retained',
         install: 'eresolve',
         audit: 'not-run',
-        reason: tail(install.evidence, 600),
+        reason: 'npm install returned ERESOLVE',
+        evidence: { output: install.evidence },
       };
     } else {
       const currentAudit = runAudit(cwd, timing);
@@ -804,6 +805,9 @@ function runSelfTest() {
           peer: '1.0.0',
           security: '1.0.0',
         });
+        const peerResult = report.results.find(({ key }) => key === 'peer');
+        assert.equal(peerResult.reason, 'npm install returned ERESOLVE');
+        assert.match(peerResult.evidence.output, /npm error code ERESOLVE/);
         assert.deepEqual(report.results.find(({ key }) => key === 'security').evidence, {
           findings: ['["vulnerable","advisory:99","high"]'],
           affectedNodes: ['["vulnerable","node_modules/vulnerable"]'],
