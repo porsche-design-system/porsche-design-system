@@ -68,8 +68,6 @@ stages:
         system_prompt: override-cleanup
         output_schema: reviewer
         artifact_type: review
-    outputs:
-      override_revalidation: .turbo-spec/out/override-revalidation.json
     quality_gates:
       - evaluator: script_gate
         on_fail: escalate
