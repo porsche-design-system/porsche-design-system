@@ -13,27 +13,46 @@ stages:
     orchestrator: bumpy_mc_bumpface
     pre_command: "npm run npm:update:all"
     agents:
-      - type: dependency_updater
+      - id: dependency_updater
+        type: dependency_updater
         skills: []
         tools: [file, shell]
         system_prompt: dependency-bump
         post_command: "npm run npm:format:fix && npm run npm:lint:fix"
     quality_gates:
       - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        loop_back:
+          target_agent: dependency_updater
         config:
           gate_name: npm-install
+          failure_verdict: loop_back
+          environment_verdict: loop_back
           steps:
             - name: npm-install
               command: [npm, install]
       - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        loop_back:
+          target_agent: dependency_updater
         config:
           gate_name: npm-format
+          failure_verdict: loop_back
+          environment_verdict: loop_back
           steps:
             - name: npm-format
               command: [npm, run, "npm:format"]
       - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        loop_back:
+          target_agent: dependency_updater
         config:
           gate_name: npm-lint
+          failure_verdict: loop_back
+          environment_verdict: loop_back
           steps:
             - name: npm-lint
               command: [npm, run, "npm:lint"]
