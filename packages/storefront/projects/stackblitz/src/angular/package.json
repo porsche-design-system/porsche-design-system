@@ -24,10 +24,10 @@
     "zone.js": "~0.16.2"
   },
   "devDependencies": {
-    "@angular/build": "^22.1.0",
-    "@angular/cli": "^22.1.0",
+    "@angular/build": "^22.1.2",
+    "@angular/cli": "^22.1.2",
     "@angular/compiler-cli": "^22.1.0",
-    "@tailwindcss/postcss": "^4.3.1",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/jasmine": "^6.0.0",
     "istanbul-lib-instrument": "^6.0.3",
     "jasmine-core": "~6.3.0",
@@ -37,7 +37,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.2.0",
     "postcss": "^8",
-    "tailwindcss": "^4.3.1",
+    "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
   }
 }

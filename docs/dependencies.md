@@ -1,7 +1,8 @@
 # Dependencies
 
 > **AI cloud agents**: For the recurring automated update task, follow the deterministic runbook in
-> [`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md). The sections below provide the full rationale.
+> [`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md). The sections below provide the
+> full rationale.
 
 ## Dependency updates
 
@@ -44,11 +45,11 @@ convention). The following root scripts help keep dependency versions consistent
 
 The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
 from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
-`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). The `npm:outdated` and `npm:update` scripts additionally pass
-`--dependencies '!@porsche-design-system/**'` so the unpublished internal workspace packages are not even looked up
-against the npm registry (which would otherwise emit `Failed to fetch` warnings). When you add a new held-back
-dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to the ignore list in
-`.github/dependabot.yml`.
+`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). The `npm:outdated` and
+`npm:update` scripts additionally pass `--dependencies '!@porsche-design-system/**'` so the unpublished internal
+workspace packages are not even looked up against the npm registry (which would otherwise emit `Failed to fetch`
+warnings). When you add a new held-back dependency, also add it to the `updateGroups` entry in `.syncpackrc.json` and to
+the ignore list in `.github/dependabot.yml`.
 
 ### StackBlitz starter templates (npm workspace members)
 
@@ -59,12 +60,11 @@ an explicit `source` array — `syncpack` scans the npm `workspaces` by default,
 (`vite`, `tailwindcss`, `react`, `vue`, …) in lockstep with the rest of the monorepo automatically.
 
 Even though each starter pins the **published** `@porsche-design-system/components-*` version (e.g. `4.2.0-rc.5`),
-`npm install` works as a workspace member because the local wrapper packages
-(`packages/components-*/dist/*-wrapper`) carry that **same** release version, so npm satisfies the pin by symlinking to
-the local workspace. Off the monorepo (on StackBlitz), the identical pin resolves the published package from the
-registry instead. The pin stays in sync with the release version via the release process (see `docs/release.md`), and
-`@porsche-design-system/**` is shielded from automated bumps by the held-back `updateGroups` entry, alongside
-`@playwright/test` and `@stencil/core`.
+`npm install` works as a workspace member because the local wrapper packages (`packages/components-*/dist/*-wrapper`)
+carry that **same** release version, so npm satisfies the pin by symlinking to the local workspace. Off the monorepo (on
+StackBlitz), the identical pin resolves the published package from the registry instead. The pin stays in sync with the
+release version via the release process (see `docs/release.md`), and `@porsche-design-system/**` is shielded from
+automated bumps by the held-back `updateGroups` entry, alongside `@playwright/test` and `@stencil/core`.
 
 When you add or remove a workspace, update only the `workspaces` array in the root `package.json` — there is no separate
 syncpack `source` list to keep in sync anymore.
@@ -74,8 +74,8 @@ syncpack `source` list to keep in sync anymore.
 Routine npm **version** updates are handled by `syncpack` (above) and, for the recurring automated task, by the AI agent
 runbook ([`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md)) — **not** by Dependabot.
 The npm entry in `.github/dependabot.yml` sets `open-pull-requests-limit: 0`, which disables Dependabot version-update
-PRs while still allowing **security** PRs (grouped via `applies-to: security-updates`). The `ignore` list there keeps the
-held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
+PRs while still allowing **security** PRs (grouped via `applies-to: security-updates`). The `ignore` list there keeps
+the held-back deps out of those security PRs too, so they are never auto-bumped. GitHub Actions are still updated by
 Dependabot on a monthly schedule.
 
 ## Strict peer dependency resolution
@@ -91,14 +91,27 @@ Current overrides:
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
-- **Security overrides** force vulnerable transitive dependencies up to their first patched release (see
-  [Remediation policy](#remediation-policy)). For libraries whose newer majors are not API-compatible with older
-  consumers (`minimatch`, `brace-expansion`), per-major version-selector keys (e.g. `"minimatch@3": "3.1.4"`,
-  `"minimatch@9": "9.0.7"`) keep each major on its own backported patch. `minimatch@10`/`brace-expansion@5` export
-  non-callable objects, so a blanket override would break `^3.x`/`^1.x` consumers (e.g. `glob@7`) that call the default
-  export directly. Overrides that would collide with a different major required elsewhere are scoped to a single parent
-  (e.g. `"js-beautify": { "glob": "^10.5.0" }`, `"@react-router/serve": { "express": "^4.22.2" }`,
-  `"next": { "postcss": "^8.5.10" }`).
+- `playwright-core` is pinned to the exact `@playwright/test` version (currently `1.61.0`). `@axe-core/playwright`
+  declares a wide peer (`playwright-core >= 1.0.0`), so on a clean lockfile regeneration npm auto-installs the
+  **latest** `playwright-core` at the root while the held-back `playwright` nests its own matching copy. The resulting
+  two copies of the Playwright type definitions break `next build`'s type check in the storefront
+  (`tests/a11y/helpers/axe-helper.ts`). Bump this pin together with [`@playwright/test`](#held-back-dependencies).
+
+**Security overrides** force vulnerable transitive dependencies up to their first patched release (see
+[Remediation policy](#remediation-policy)). There are currently **none**: every previous entry (`@tootallnate/once`,
+`brace-expansion@1`/`@2`, `braces`, `ejs`, `follow-redirects`, `js-cookie`, `koa`, `lodash`, `mdast-util-to-hast`,
+`micromatch`, `minimatch@3`/`@5`/`@9`/`@10`, `qs`, `tmp`, `js-beautify > glob`, `next > postcss`) became obsolete once
+the upstream tree started resolving to patched versions on its own, and pinning them to an older patch actually
+**froze** transitive dependencies below their fixed release. Re-validate this on every dependency-update round (see
+[`docs/runbooks/dependency-updates-agent.md`](runbooks/dependency-updates-agent.md) → _Re-validate the existing
+overrides_).
+
+When a security override is genuinely needed again, note that for libraries whose newer majors are not API-compatible
+with older consumers (`minimatch`, `brace-expansion`), per-major version-selector keys (e.g. `"minimatch@3": "3.1.4"`)
+keep each major on its own backported patch — `minimatch@10`/`brace-expansion@5` export non-callable objects, so a
+blanket override would break `^3.x`/`^1.x` consumers (e.g. `glob@7`) that call the default export directly. Overrides
+that would collide with a different major required elsewhere must be scoped to a single parent (e.g.
+`"js-beautify": { "glob": "^10.5.0" }`).
 
 ## Auditing dependencies (`npm audit`)
 
@@ -222,14 +235,14 @@ Angular splits into two concerns that are handled separately:
 - **Version ranges** (`@angular/*`, `ng-packagr`, `zone.js`) — owned by `syncpack`. Bump them via `npm run npm:update`
   (pick the `@angular/*` family together so they move in lockstep), then `npm install` from the repo root. Keep
   `typescript` within Angular's `MAX_TS_VERSION` (see
-  `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back for
-  the round if a bump would exceed that ceiling.
+  `packages/components-angular/node_modules/@angular/compiler-cli/src/typescript_support.js`); hold `typescript` back
+  for the round if a bump would exceed that ceiling.
 - **Framework migrations** (code transforms) — owned by the
   [`packages/components-angular/scripts/ng-update.sh`](../packages/components-angular/scripts/ng-update.sh) wrapper
   (`npm run ng:update`).
 
-> **Why a wrapper script?** Running `ng update` directly fails in this monorepo. Because dependencies are **hoisted**
-> to the repo-root `node_modules`, `packages/components-angular` has no local `node_modules`, so `ng update` reports
+> **Why a wrapper script?** Running `ng update` directly fails in this monorepo. Because dependencies are **hoisted** to
+> the repo-root `node_modules`, `packages/components-angular` has no local `node_modules`, so `ng update` reports
 > `Found 0 dependencies`. It also queries the npm registry for every dependency, including the **unpublished** private
 > workspace packages (`@porsche-design-system/shared@0.0.0`, `@porsche-design-system/assets`,
 > `@porsche-design-system/components-angular`), which aborts the run with a `404 Not Found`. The wrapper works around
