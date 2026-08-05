@@ -687,7 +687,7 @@ exports[`should match snapshot 1`] = `
           "zh_HK",
           "zh_TW",
         ],
-        "description": "Market locale for the AI text (BCP47, e.g. \`en-US\` / \`en\`). Language-only \`en\` is supported. POSIX forms (e.g. \`en_US\`) are deprecated but still accepted. Copy is resolved by language; unknown languages fall back to English.",
+        "description": "Market locale for the AI text (BCP47, e.g. \`en-US\`). Language-only \`en\` is supported for international markets. POSIX forms (e.g. \`en_US\`) are deprecated but still accepted. Copy is resolved by language; unknown languages fall back to English.",
         "type": "AiTagLocale",
       },
       "variant": {
