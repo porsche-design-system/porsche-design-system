@@ -13,7 +13,7 @@
  */
 
 /** Every distributed skill. */
-export const SKILL_IDS = ['knowledge'] as const;
+export const SKILL_IDS = ['knowledge', 'audit'] as const;
 export type SkillId = (typeof SKILL_IDS)[number];
 
 /**

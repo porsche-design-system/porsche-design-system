@@ -1,7 +1,12 @@
 import type { ComponentRosterEntry } from '@skills/knowledge/components/reference';
 import { renderComponentsSection } from '@skills/knowledge/components/section';
 import { renderStylesheetsSection, renderStylingSection, renderTokensSection } from '@skills/knowledge/packageSkills';
-import { ACTIVATION_DESCRIPTION, buildSkillMd as renderSkillMd, skillName } from '@skills/knowledge/skillMd';
+import {
+  ACTIVATION_DESCRIPTION,
+  renderDeprecationsSection,
+  buildSkillMd as renderSkillMd,
+  skillName,
+} from '@skills/knowledge/skillMd';
 import { FRAMEWORKS, type Framework } from '@skills/shared/skillTree';
 import { localPorscheDesignSystemVersion } from '@skills/shared/version';
 import { describe, expect, it } from 'vitest';
@@ -12,6 +17,7 @@ const buildSkillMd = (framework: Framework, roster: readonly ComponentRosterEntr
     stylesheets: renderStylesheetsSection(framework),
     tokens: renderTokensSection(),
     styling: renderStylingSection(),
+    deprecations: renderDeprecationsSection(),
   });
 
 describe('buildSkillMd', () => {
@@ -25,11 +31,18 @@ describe('buildSkillMd', () => {
     expect(ACTIVATION_DESCRIPTION).not.toMatch(/\n|: /);
   });
 
+  it.each(FRAMEWORKS)('stays model-invocable for %s', (framework) => {
+    // The opposite of the audit skill, deliberately. This skill exists to fire broadly on frontend
+    // work — including work a user never thought to connect to PDS — so disabling model invocation
+    // here would silently remove most of its value.
+    expect(buildSkillMd(framework)).not.toContain('disable-model-invocation');
+  });
+
   it('renders only the current topical sections in order', () => {
     const markdown = buildSkillMd('react', [{ tag: 'p-button', summary: 'x' }]);
 
     expect(markdown).toMatch(
-      /## Coverage and fallbacks[\s\S]*## Components[\s\S]*## Server-side rendering \(SSR\)[\s\S]*## Stylesheets[\s\S]*## Tokens[\s\S]*## Styling/
+      /## Coverage and fallbacks[\s\S]*## Components[\s\S]*## Server-side rendering \(SSR\)[\s\S]*## Stylesheets[\s\S]*## Tokens[\s\S]*## Styling[\s\S]*## Deprecations/
     );
     expect(markdown).not.toMatch(/## (Getting started|Reference map|Core rules|Partials|Upgrades & migration)/);
   });

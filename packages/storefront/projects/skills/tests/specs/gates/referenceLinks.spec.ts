@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getSkillName } from '@skills/registry';
+import { getSkillName, SKILL_IDS } from '@skills/registry';
 import { FRAMEWORKS, stagedSkillDir, WRAPPER_DIST_DIRS } from '@skills/shared/skillTree';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import {
@@ -34,9 +34,13 @@ const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..
 const JS_DIST_ROOT = path.join(REPO_ROOT, WRAPPER_DIST_DIRS.js);
 
 /**
- * The skill this gate resolves links for. The produced-path mode is content-agnostic, but the
- * raw-link expectations below (`../../meta`, `../../scss`, the Tailwind copy) are the knowledge
- * tree's references, so the gate names its skill instead of assuming there is only one.
+ * The skill whose *raw* links this gate resolves. The raw-link expectations below (`../../meta`,
+ * `../../scss`, the Tailwind copy) are the knowledge tree's references, so the gate names its skill
+ * instead of assuming there is only one.
+ *
+ * Produced-path resolution is content-agnostic, so it runs over **every** registered skill — a skill
+ * whose in-tree links were never checked would ship dangling references, which is how a cross-skill
+ * link into a sibling tree first slipped through.
  */
 const SKILL_ID = 'knowledge';
 
@@ -66,15 +70,18 @@ const rawTargets = (skillRoot: string): Set<string> =>
   );
 
 describe('skill reference links — produced paths resolve against staging', () => {
-  for (const framework of FRAMEWORKS) {
-    it(`${framework} tree has no dangling produced path`, () => {
-      const root = path.join(REPO_ROOT, stagedSkillDir(SKILL_ID, framework));
-      expect(fs.existsSync(root), `${stagedSkillDir(SKILL_ID, framework)} missing — run \`npm run build:skills\``).toBe(
-        true
-      );
-      const dangling = danglingProduced(root);
-      expect(dangling, `dangling produced paths:\n${dangling.join('\n')}`).toEqual([]);
-    });
+  for (const skillId of SKILL_IDS) {
+    for (const framework of FRAMEWORKS) {
+      it(`${skillId} ${framework} tree has no dangling produced path`, () => {
+        const root = path.join(REPO_ROOT, stagedSkillDir(skillId, framework));
+        expect(
+          fs.existsSync(root),
+          `${stagedSkillDir(skillId, framework)} missing — run \`npm run build:skills\``
+        ).toBe(true);
+        const dangling = danglingProduced(root);
+        expect(dangling, `dangling produced paths:\n${dangling.join('\n')}`).toEqual([]);
+      });
+    }
   }
 });
 

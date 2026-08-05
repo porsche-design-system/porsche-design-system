@@ -1,4 +1,5 @@
 import { getSkillName } from '../registry';
+import { renderFrontmatter } from '../shared/frontmatter';
 import type { Framework } from '../shared/skillTree';
 import { localPorscheDesignSystemVersion } from '../shared/version';
 import { rawMetaReference } from './components/section';
@@ -77,7 +78,8 @@ const componentSourceUrl =
 
 const renderCoverageSection = (): string =>
   [
-    'This skill currently covers components, global stylesheets and theming, tokens, and styling integrations. It does ' +
+    'This skill currently covers components, global stylesheets and theming, tokens, styling integrations, and the ' +
+      'deprecated API index. It does ' +
       'not yet include complete getting-started, setup, and installation guidance; the v3-to-v4 migration guide; ' +
       'the changelog; partials; patterns and templates; the AG Grid theme; or the Storefront\u2019s Must Know and Help sections.',
     '',
@@ -123,19 +125,43 @@ const renderReactSsrSection = (): string =>
       'Remix users should follow the React Router guidance because Remix v2 was upstreamed into React Router.',
   ].join('\n');
 
+/** The `references/deprecations.md` file name, relative to the tree's `references/` directory. */
+export const DEPRECATIONS_REFERENCE_FILE = 'deprecations.md';
+
+/** Skill-root-relative path of the deprecation index. */
+export const DEPRECATIONS_REFERENCE = `references/${DEPRECATIONS_REFERENCE_FILE}`;
+
+/**
+ * The `## Deprecations` section body. It points at the index rather than summarising it, because the
+ * whole value of the index is being one read instead of many — restating any of it here would invite
+ * an agent to answer from the summary and stop.
+ */
+export const renderDeprecationsSection = (): string =>
+  [
+    `Every deprecated API in this version is indexed in [${DEPRECATIONS_REFERENCE_FILE}](${DEPRECATIONS_REFERENCE}) — ` +
+      'components, props, prop values, events, slots, CSS variables and the styling packages\u2019 deprecated ' +
+      'aliases, with what to use instead.',
+    '',
+    'Read it when checking existing code, when a prop or value looks unfamiliar, or before assuming an API is ' +
+      'current. It is indexed by what is deprecated, so one read covers the whole surface; the component and ' +
+      'styling references cover the same facts per component. Never introduce a deprecated API in new code.',
+  ].join('\n');
+
 /** The domain-rendered section bodies, in the order they appear in SKILL.md. */
 export type SkillMdSections = {
   components: string;
   stylesheets: string;
   tokens: string;
   styling: string;
+  deprecations: string;
 };
 
 /** Assemble the full SKILL.md from the frontmatter, intro and the domain-rendered sections. */
 export const buildSkillMd = (framework: Framework, sections: SkillMdSections): string => {
-  const frontmatter = ['---', `name: ${skillName(framework)}`, `description: ${ACTIVATION_DESCRIPTION}`, '---'].join(
-    '\n'
-  );
+  const frontmatter = renderFrontmatter({
+    name: skillName(framework),
+    description: ACTIVATION_DESCRIPTION,
+  });
 
   return [
     frontmatter,
@@ -164,6 +190,10 @@ export const buildSkillMd = (framework: Framework, sections: SkillMdSections): s
     '## Styling',
     '',
     sections.styling,
+    '',
+    '## Deprecations',
+    '',
+    sections.deprecations,
     '',
   ].join('\n');
 };

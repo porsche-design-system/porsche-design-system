@@ -28,6 +28,7 @@ const NON_COMPONENT_REFERENCES: Record<string, { path: string; linkedFromSkillMd
     ])
   ),
   tokens: { path: 'references/tokens.md', linkedFromSkillMd: true },
+  deprecations: { path: 'references/deprecations.md', linkedFromSkillMd: true },
   icons: { path: 'references/icons.md', linkedFromSkillMd: false },
 };
 

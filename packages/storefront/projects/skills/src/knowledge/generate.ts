@@ -3,6 +3,8 @@ import type { SkillGenerator } from '../shared/generation';
 import { SkillTree } from '../shared/skillTree';
 import { type ComponentDocsMetaMap, writeComponentReferences } from './components/reference';
 import { renderComponentsSection } from './components/section';
+import { collectDeprecations } from './deprecations/collect';
+import { renderDeprecationsReference } from './deprecations/reference';
 import {
   getPackageSkillRouteReferences,
   renderStylesheetsSection,
@@ -10,7 +12,7 @@ import {
   renderTokensSection,
   writePackageSkillReferences,
 } from './packageSkills';
-import { buildSkillMd } from './skillMd';
+import { buildSkillMd, DEPRECATIONS_REFERENCE_FILE, renderDeprecationsSection } from './skillMd';
 
 /** Reference sub-directories the knowledge tree lays out before any content is written. */
 const KNOWLEDGE_DIRECTORY_LAYOUT = ['references/components', 'references/styles'] as const;
@@ -36,6 +38,7 @@ export const generateKnowledgeSkill: SkillGenerator<KnowledgeInputs> = (root, fr
 
   writePackageSkillReferences(tree, routeReferences);
   const { roster } = writeComponentReferences(tree, { docsMeta, componentMeta, routeReferences });
+  tree.writeReference(DEPRECATIONS_REFERENCE_FILE, renderDeprecationsReference(collectDeprecations(), framework));
 
   tree.write(
     'SKILL.md',
@@ -44,6 +47,7 @@ export const generateKnowledgeSkill: SkillGenerator<KnowledgeInputs> = (root, fr
       stylesheets: renderStylesheetsSection(framework),
       tokens: renderTokensSection(),
       styling: renderStylingSection(),
+      deprecations: renderDeprecationsSection(),
     })
   );
 };
