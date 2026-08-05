@@ -18,13 +18,13 @@ stages:
         skills: []
         tools: [file, shell]
         system_prompt: dependency-bump
-        post_command: "npm run npm:format:fix && npm run npm:lint:fix"
     quality_gates:
       - evaluator: script_gate
         on_fail: loop_back
         max_retries: 2
         loop_back:
           target_agent: dependency_updater
+        post_command: "npm run npm:format:fix && npm run npm:lint:fix"
         config:
           gate_name: npm-install
           failure_verdict: loop_back
