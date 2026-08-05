@@ -227,7 +227,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
-    "@biomejs/biome": "^2.5.6",
+    "@biomejs/biome": "^2.5.7",
     "@playwright/test": "1.61.0",
     "@porsche-design-system/prettier-config": "^1.0.1",
     "@rollup/plugin-commonjs": "^29.0.3",
