@@ -24,7 +24,6 @@ export type AiTagTranslationEntry = {
   modified: string;
 };
 
-/** Language code → AI text mapping (region-agnostic). */
 export const AI_TAG_TRANSLATIONS = {
   bg: {
     short: 'ИИ',
@@ -186,6 +185,3 @@ export const resolveAiTagTranslationLanguage = (locale: string): AiTagTranslatio
 export const getAiTagTranslation = (locale: string = 'en'): AiTagTranslationEntry => {
   return AI_TAG_TRANSLATIONS[resolveAiTagTranslationLanguage(locale)];
 };
-
-// Re-export for consumers that previously used AiTagLocaleCanonical as translation key type
-export type AiTagLocaleCanonical = AiTagTranslationLanguage;
