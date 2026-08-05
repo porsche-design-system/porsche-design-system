@@ -1,6 +1,5 @@
 /** Supported market locales (BCP47). Source of truth for the `locale` prop API; list may evolve. */
 export const MARKET_LOCALES = [
-  'ar-AE-DU',
   'ar-BH',
   'ar-KW',
   'ar-QA',

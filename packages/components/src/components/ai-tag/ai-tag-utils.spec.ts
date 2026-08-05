@@ -86,8 +86,8 @@ describe('AI_TAG_TRANSLATIONS', () => {
 
 describe('MARKET_LOCALES / AI_TAG_LOCALES_ACCEPTED', () => {
   it('should include every MarketLocale and its POSIX twin', () => {
-    expect(MARKET_LOCALES).toHaveLength(177);
-    expect(AI_TAG_LOCALES_ACCEPTED).toHaveLength(353); // 177 BCP47 + 176 POSIX (en stays single)
+    expect(MARKET_LOCALES).toHaveLength(176);
+    expect(AI_TAG_LOCALES_ACCEPTED).toHaveLength(351); // 176 BCP47 + 175 POSIX (en stays single)
     for (const locale of MARKET_LOCALES) {
       expect(AI_TAG_LOCALES_ACCEPTED).toContain(locale);
       expect(AI_TAG_LOCALES_ACCEPTED).toContain(locale.replace(/-/g, '_'));
@@ -95,7 +95,7 @@ describe('MARKET_LOCALES / AI_TAG_LOCALES_ACCEPTED', () => {
   });
 
   it('should mark POSIX underscore forms as deprecated', () => {
-    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toHaveLength(176);
+    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toHaveLength(175);
     expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED.every((locale) => locale.includes('_'))).toBe(true);
     expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toContain('en_US');
     expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toContain('de_DE');
@@ -146,7 +146,6 @@ describe('getAiTagLanguage()', () => {
     ['de_DE', 'de'],
     ['en', 'en'],
     ['en-AE-x-dubai', 'en'],
-    ['ar-AE-DU', 'ar'],
     ['no-NO', 'no'],
     ['nb_NO', 'no'],
     ['nb-NO', 'no'],
@@ -213,7 +212,6 @@ describe('getAiTagTranslation()', () => {
   it.each([
     'ja-JP',
     'ar-SA',
-    'ar-AE-DU',
     'az-AZ',
     'ka-GE',
     'zh-CN',

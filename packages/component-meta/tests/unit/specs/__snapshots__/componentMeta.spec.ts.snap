@@ -154,7 +154,6 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "locale": {
         "allowedValues": [
-          "ar-AE-DU",
           "ar-BH",
           "ar-KW",
           "ar-QA",
@@ -331,7 +330,6 @@ exports[`should match snapshot 1`] = `
           "zh-CN",
           "zh-HK",
           "zh-TW",
-          "ar_AE_DU",
           "ar_BH",
           "ar_KW",
           "ar_QA",
@@ -510,7 +508,6 @@ exports[`should match snapshot 1`] = `
         ],
         "defaultValue": "en-US",
         "deprecatedValues": [
-          "ar_AE_DU",
           "ar_BH",
           "ar_KW",
           "ar_QA",
