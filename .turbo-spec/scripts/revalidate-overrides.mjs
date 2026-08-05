@@ -1,7 +1,17 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  chmodSync,
+  existsSync,
+  lstatSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  readlinkSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 
@@ -25,6 +35,65 @@ const baselineFixture = {
 const DEFAULT_COMMAND_TIMEOUT_MS = 15 * 60 * 1000;
 const DEFAULT_RUN_TIMEOUT_MS = 165 * 60 * 1000;
 const DEFAULT_ROLLBACK_RESERVE_MS = 10 * 60 * 1000;
+const MAX_COMMAND_OUTPUT_BYTES = 50 * 1024 * 1024;
+const CLEANUP_STATE_PATH = '.turbo-spec/override-cleanup-state.json';
+const ALLOWED_DOCUMENTATION_PATH = 'docs/dependencies.md';
+const RUNTIME_PATH_PREFIXES = ['.agent-context/', '.sessions/', '.turbo-spec/out/'];
+const PROCESS_GROUP_RUNNER = `
+const { spawn } = require('node:child_process');
+const options = JSON.parse(process.argv[1]);
+const child = spawn(options.command, options.args, {
+  cwd: process.cwd(),
+  env: process.env,
+  detached: process.platform !== 'win32',
+  stdio: ['ignore', 'pipe', 'pipe'],
+});
+const stdout = [];
+const stderr = [];
+let outputBytes = 0;
+let timedOut = false;
+let outputExceeded = false;
+
+function killGroup() {
+  try {
+    if (process.platform === 'win32') child.kill('SIGKILL');
+    else process.kill(-child.pid, 'SIGKILL');
+  } catch {}
+}
+
+function capture(chunks, chunk) {
+  outputBytes += chunk.length;
+  if (outputBytes > options.maxOutputBytes) {
+    outputExceeded = true;
+    killGroup();
+    return;
+  }
+  chunks.push(chunk);
+}
+
+child.stdout.on('data', (chunk) => capture(stdout, chunk));
+child.stderr.on('data', (chunk) => capture(stderr, chunk));
+child.on('error', (error) => {
+  process.stderr.write(error.message);
+  process.exit(127);
+});
+
+const timer = setTimeout(() => {
+  timedOut = true;
+  killGroup();
+}, options.timeout);
+
+child.on('close', (code, signal) => {
+  clearTimeout(timer);
+  if (timedOut || outputExceeded) killGroup();
+  process.stdout.write(Buffer.concat(stdout));
+  process.stderr.write(Buffer.concat(stderr));
+  if (timedOut) process.exit(124);
+  if (outputExceeded) process.exit(126);
+  if (signal) process.exit(125);
+  process.exit(code ?? 2);
+});
+`;
 
 function advisoryIdentity(via) {
   if (typeof via === 'string') {
@@ -209,6 +278,36 @@ function nextCommandTimeout(timing) {
   return Math.max(1, Math.min(timing.commandTimeoutMs, available));
 }
 
+function runCommand(cwd, command, args, timing) {
+  const timeout = nextCommandTimeout(timing);
+  const result = spawnSync(
+    process.execPath,
+    [
+      '-e',
+      PROCESS_GROUP_RUNNER,
+      JSON.stringify({
+        command,
+        args,
+        timeout,
+        maxOutputBytes: MAX_COMMAND_OUTPUT_BYTES,
+      }),
+    ],
+    {
+      cwd,
+      encoding: 'utf8',
+      maxBuffer: MAX_COMMAND_OUTPUT_BYTES,
+      env: commandEnvironment(cwd),
+    }
+  );
+  if (result.status === 124) {
+    return {
+      ...result,
+      error: Object.assign(new Error(`${command} timed out`), { code: 'ETIMEDOUT' }),
+    };
+  }
+  return result;
+}
+
 function parseAuditResult(result) {
   if (result.error || result.signal || ![0, 1].includes(result.status)) {
     if (result.error?.code === 'ETIMEDOUT') {
@@ -255,40 +354,15 @@ function transactionStatePath(cwd) {
 }
 
 function runAudit(cwd, timing) {
-  return parseAuditResult(
-    spawnSync('npm', ['audit', '--json'], {
-      cwd,
-      encoding: 'utf8',
-      maxBuffer: 50 * 1024 * 1024,
-      env: commandEnvironment(cwd),
-      timeout: nextCommandTimeout(timing),
-      killSignal: 'SIGKILL',
-    })
-  );
+  return parseAuditResult(runCommand(cwd, 'npm', ['audit', '--json'], timing));
 }
 
 function runInstall(cwd, timing) {
-  return parseInstallResult(
-    spawnSync('npm', ['install'], {
-      cwd,
-      encoding: 'utf8',
-      maxBuffer: 50 * 1024 * 1024,
-      env: commandEnvironment(cwd),
-      timeout: nextCommandTimeout(timing),
-      killSignal: 'SIGKILL',
-    })
-  );
+  return parseInstallResult(runCommand(cwd, 'npm', ['install'], timing));
 }
 
 function cleanInstallInputs(cwd, timing) {
-  const cleanup = spawnSync('npm', ['run', 'npm:remove'], {
-    cwd,
-    encoding: 'utf8',
-    maxBuffer: 50 * 1024 * 1024,
-    env: commandEnvironment(cwd),
-    timeout: nextCommandTimeout(timing),
-    killSignal: 'SIGKILL',
-  });
+  const cleanup = runCommand(cwd, 'npm', ['run', 'npm:remove'], timing);
   if (cleanup.error || cleanup.signal || cleanup.status !== 0) {
     if (cleanup.error?.code === 'ETIMEDOUT') {
       throw new EnvironmentError('npm:remove timed out');
@@ -458,14 +532,23 @@ function runCleanup(cwd = process.cwd(), options = {}) {
   const lockPath = join(cwd, 'package-lock.json');
   const originalManifest = readFileSync(manifestPath);
   const originalLock = readFileSync(lockPath);
+  const manifest = JSON.parse(originalManifest.toString('utf8'));
+  const candidates = listOverrideLeaves(manifest.overrides ?? {});
   const timing = createTiming(options);
+  writeReport(join(cwd, '.turbo-spec/out/override-revalidation.json'), {
+    schemaVersion: 1,
+    originalOverrideKeys: candidates.map(({ key }) => key),
+    results: [],
+    reviewer: rejectedReviewer('override cleanup is still running'),
+    complete: false,
+  });
   writeReport(transactionStatePath(cwd), {
     originalManifest: originalManifest.toString('base64'),
     originalLock: originalLock.toString('base64'),
   });
 
   try {
-    return runCleanupTransaction(cwd, JSON.parse(originalManifest.toString('utf8')), manifestPath, timing);
+    return runCleanupTransaction(cwd, manifest, manifestPath, timing);
   } catch (error) {
     writeFileSync(manifestPath, originalManifest);
     writeFileSync(lockPath, originalLock);
@@ -479,14 +562,7 @@ function runCleanup(cwd = process.cwd(), options = {}) {
 }
 
 function runValidationCommand(cwd, script, timing) {
-  const result = spawnSync('npm', ['run', script], {
-    cwd,
-    encoding: 'utf8',
-    maxBuffer: 50 * 1024 * 1024,
-    env: commandEnvironment(cwd),
-    timeout: nextCommandTimeout(timing),
-    killSignal: 'SIGKILL',
-  });
+  const result = runCommand(cwd, 'npm', ['run', script], timing);
   if (result.error || result.signal) {
     if (result.error?.code === 'ETIMEDOUT') {
       throw new EnvironmentError(`${script} timed out`);
@@ -498,6 +574,60 @@ function runValidationCommand(cwd, script, timing) {
   }
   if (result.status !== 0) {
     throw new EnvironmentError(`${script} could not run: ${tail(`${result.stdout}\n${result.stderr}`)}`);
+  }
+}
+
+function workspaceStateHash(cwd, timing) {
+  const listed = runCommand(cwd, 'git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z'], timing);
+  if (listed.error || listed.signal || listed.status !== 0) {
+    throw new EnvironmentError(
+      `git ls-files could not run: ${listed.error?.message ?? listed.signal ?? tail(listed.stderr)}`
+    );
+  }
+
+  const paths = listed.stdout
+    .split('\0')
+    .filter(Boolean)
+    .filter(
+      (path) =>
+        path !== ALLOWED_DOCUMENTATION_PATH &&
+        path !== CLEANUP_STATE_PATH &&
+        !RUNTIME_PATH_PREFIXES.some((prefix) => path.startsWith(prefix))
+    )
+    .sort();
+  const hash = createHash('sha256');
+  for (const path of paths) {
+    hash.update(`${path}\0`);
+    try {
+      const stat = lstatSync(join(cwd, path));
+      if (stat.isSymbolicLink()) {
+        hash.update(`symlink\0${readlinkSync(join(cwd, path))}\0`);
+      } else if (stat.isFile()) {
+        hash.update('file\0');
+        hash.update(readFileSync(join(cwd, path)));
+        hash.update('\0');
+      } else {
+        hash.update(`other:${stat.mode}\0`);
+      }
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        throw error;
+      }
+      hash.update('missing\0');
+    }
+  }
+  return hash.digest('hex');
+}
+
+function readProtectedState(cwd, timing) {
+  const committed = runCommand(cwd, 'git', ['show', `HEAD:${CLEANUP_STATE_PATH}`], timing);
+  if (!committed.error && !committed.signal && committed.status === 0) {
+    return JSON.parse(committed.stdout);
+  }
+  try {
+    return JSON.parse(readFileSync(join(cwd, CLEANUP_STATE_PATH), 'utf8'));
+  } catch (error) {
+    throw new EnvironmentError(`protected cleanup state is unavailable: ${error.message}`);
   }
 }
 
@@ -526,7 +656,24 @@ function runGate(cwd = process.cwd(), gate, options = {}) {
     rmSync(commandHomePath(cwd), { force: true, recursive: true });
   }
   if (gate === 'lint') {
+    const protectedStateHash = workspaceStateHash(cwd, timing);
+    writeReport(join(cwd, CLEANUP_STATE_PATH), { schemaVersion: 1, protectedStateHash });
+    writeReport(transactionStatePath(cwd), { protectedStateHash });
+  }
+}
+
+function verifyDocumentationChanges(cwd = process.cwd(), options = {}) {
+  const timing = createTiming(options);
+  try {
+    const expected = readProtectedState(cwd, timing).protectedStateHash;
+    const actual = workspaceStateHash(cwd, timing);
+    if (!expected || actual !== expected) {
+      throw new ValidationError('documentation agent changed files outside docs/dependencies.md');
+    }
+    rmSync(join(cwd, CLEANUP_STATE_PATH), { force: true });
     rmSync(transactionStatePath(cwd), { force: true });
+  } finally {
+    rmSync(commandHomePath(cwd), { force: true, recursive: true });
   }
 }
 
@@ -550,8 +697,22 @@ function withFakeNpm(manifest, test) {
   const lockText = '{"original":true}\n';
   writeFileSync(join(root, 'package.json'), manifestText);
   writeFileSync(join(root, 'package-lock.json'), lockText);
+  writeFileSync(
+    join(root, '.gitignore'),
+    `${['node_modules/', 'bin/', '.fake*', '.fail-lint', '.turbo-spec/out/', '.sessions/'].join('\n')}\n`
+  );
+  mkdirSync(join(root, 'docs'), { recursive: true });
+  writeFileSync(join(root, 'docs/dependencies.md'), 'Original override documentation.\n');
   mkdirSync(join(root, 'packages/workspace/node_modules'), { recursive: true });
   writeFileSync(join(root, 'packages/workspace/node_modules/stale'), 'stale');
+  for (const args of [
+    ['init', '-q'],
+    ['add', '.'],
+    ['-c', 'user.name=Self Test', '-c', 'user.email=self-test@example.com', 'commit', '-qm', 'baseline'],
+  ]) {
+    const result = spawnSync('git', args, { cwd: root, encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stderr);
+  }
   const npmPath = join(bin, 'npm');
   writeFileSync(
     npmPath,
@@ -582,8 +743,21 @@ if (command === 'run') {
   }
 }
 if (command === 'install') {
+  if (manifest.name === 'baseline-failure') {
+    console.error('network unavailable');
+    process.exit(2);
+  }
   if (manifest.name === 'timeout-fixture' && !manifest.overrides?.timeout) {
-    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1000);
+    const { spawn } = require('node:child_process');
+    spawn(
+      process.execPath,
+      [
+        '-e',
+        "const fs=require('node:fs'); process.on('SIGTERM',()=>{}); fs.writeFileSync('.timeout-grandchild-started','yes'); setTimeout(()=>fs.writeFileSync('.timeout-grandchild','alive'),1500)",
+      ],
+      { stdio: 'ignore' },
+    );
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
   }
   if (manifest.name === 'rollback-fixture' && !manifest.overrides?.fatal) {
     console.error('network unavailable');
@@ -823,7 +997,19 @@ function runSelfTest() {
         for (const gate of ['install', 'audit', 'format', 'lint']) {
           runGate(root, gate);
         }
+        assert.equal(existsSync(transactionStatePath(root)), true);
+        assert.equal(existsSync(join(root, '.turbo-spec/override-cleanup-state.json')), true);
+        for (const args of [
+          ['add', '-A'],
+          ['-c', 'user.name=Self Test', '-c', 'user.email=self-test@example.com', 'commit', '-qm', 'cleanup'],
+        ]) {
+          const result = spawnSync('git', args, { cwd: root, encoding: 'utf8' });
+          assert.equal(result.status, 0, result.stderr);
+        }
+        writeFileSync(join(root, 'docs/dependencies.md'), 'Updated override documentation.\n');
+        verifyDocumentationChanges(root);
         assert.equal(existsSync(transactionStatePath(root)), false);
+        assert.equal(existsSync(join(root, '.turbo-spec/override-cleanup-state.json')), false);
       }
     );
   } finally {
@@ -840,6 +1026,22 @@ function runSelfTest() {
     assert.throws(() => runCleanup(root), /without ERESOLVE/);
     assert.equal(readFileSync(join(root, 'package.json'), 'utf8'), manifestText);
     assert.equal(readFileSync(join(root, 'package-lock.json'), 'utf8'), lockText);
+
+    withFakeNpm({ name: 'write-scope-fixture', overrides: { stale: '1.0.0' } }, ({ root }) => {
+      runCleanup(root);
+      for (const gate of ['install', 'audit', 'format', 'lint']) {
+        runGate(root, gate);
+      }
+      for (const args of [
+        ['add', '-A'],
+        ['-c', 'user.name=Self Test', '-c', 'user.email=self-test@example.com', 'commit', '-qm', 'cleanup'],
+      ]) {
+        const result = spawnSync('git', args, { cwd: root, encoding: 'utf8' });
+        assert.equal(result.status, 0, result.stderr);
+      }
+      writeFileSync(join(root, 'unexpected-source.js'), 'unexpected');
+      assert.throws(() => verifyDocumentationChanges(root), /outside docs\/dependencies\.md/);
+    });
   });
 
   withFakeNpm({ name: 'final-audit-failure', overrides: { stale: '1.0.0' } }, ({ root }) => {
@@ -848,16 +1050,26 @@ function runSelfTest() {
     assert.equal(report.complete, false);
   });
 
+  withFakeNpm({ name: 'baseline-failure', overrides: { stale: '1.0.0' } }, ({ root }) => {
+    assert.throws(() => runCleanup(root), /without ERESOLVE/);
+    const report = JSON.parse(readFileSync(join(root, '.turbo-spec/out/override-revalidation.json'), 'utf8'));
+    assert.equal(report.complete, false);
+    assert.equal(report.rolledBack, true);
+  });
+
   withFakeNpm({ name: 'timeout-fixture', overrides: { timeout: '1.0.0' } }, ({ root, manifestText, lockText }) => {
     assert.throws(
       () =>
         runCleanup(root, {
-          commandTimeoutMs: 20,
-          runTimeoutMs: 1000,
-          rollbackReserveMs: 100,
+          commandTimeoutMs: 1000,
+          runTimeoutMs: 5000,
+          rollbackReserveMs: 500,
         }),
       /timed out/
     );
+    assert.equal(existsSync(join(root, '.timeout-grandchild-started')), true);
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 2000);
+    assert.equal(existsSync(join(root, '.timeout-grandchild')), false);
     assert.equal(readFileSync(join(root, 'package.json'), 'utf8'), manifestText);
     assert.equal(readFileSync(join(root, 'package-lock.json'), 'utf8'), lockText);
   });
@@ -890,9 +1102,12 @@ function main() {
     case 'gate':
       runGate(process.cwd(), process.argv[3]);
       return;
+    case 'verify-docs':
+      verifyDocumentationChanges();
+      return;
     default:
       throw new EnvironmentError(
-        'usage: revalidate-overrides.mjs [run|verify|--self-test|gate <install|audit|format|lint>]'
+        'usage: revalidate-overrides.mjs [run|verify|verify-docs|--self-test|gate <install|audit|format|lint>]'
       );
   }
 }

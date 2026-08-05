@@ -115,6 +115,15 @@ stages:
     quality_gates:
       - evaluator: review_approved
         on_fail: escalate
+      - evaluator: script_gate
+        on_fail: escalate
+        config:
+          gate_name: documentation-write-scope
+          failure_verdict: escalate
+          environment_verdict: escalate
+          steps:
+            - name: documentation-write-scope
+              command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, verify-docs]
 
 settings:
   timeout_total: "350m"
