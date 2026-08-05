@@ -44,7 +44,14 @@
   "updateGroups": [
     {
       "label": "Held-back dependencies — upgraded deliberately, not via automated checks (see docs/dependencies.md and .github/dependabot.yml)",
-      "dependencies": ["@porsche-design-system/**", "@playwright/test", "playwright-core", "@stencil/core"],
+      "dependencies": [
+        "@porsche-design-system/**",
+        "@playwright/test",
+        "playwright-core",
+        "@stencil/core",
+        "jsdom",
+        "@oddbird/popover-polyfill"
+      ],
       "isIgnored": true
     }
   ]

@@ -63,7 +63,7 @@
     "@porsche-design-system/tailwindcss": "0.0.0",
     "@porsche-design-system/tokens-meta": "0.0.0",
     "@tailwindcss/postcss": "^4.3.3",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.3.2",
     "@types/mdx": "^2.0.14",
     "@types/node": "^26.1.2",

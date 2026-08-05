@@ -25,14 +25,14 @@ mirroring [`.github/actions/install`](../../.github/actions/install/action.yml))
 
 ## Hard rules — never do these
 
-| ❌ Never                                                         | Why                                                                                                    |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Run `npm audit fix` / `npm audit fix --force`                    | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`).        |
-| Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                        |
-| Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3).  |
-| Edit `package-lock.json` by hand                                 | Regenerate it via `npm install` only.                                                                  |
-| Upgrade held-back deps by selecting them in `npm run npm:update` | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3. |
-| Push directly to `main`                                          | Always open a PR for human review.                                                                     |
+| ❌ Never                                                         | Why                                                                                                                 |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Run `npm audit fix` / `npm audit fix --force`                    | Breaks the workspace hoisting contract and aborts with `ERESOLVE` (see `docs/dependencies.md`).                     |
+| Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                                     |
+| Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3). |
+| Edit `package-lock.json` by hand                                 | Regenerate it via `npm install` only.                                                                               |
+| Upgrade held-back deps by selecting them in `npm run npm:update` | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3.      |
+| Push directly to `main`                                          | Always open a PR for human review.                                                                                  |
 
 ## Held-back dependencies (special handling)
 
@@ -50,6 +50,10 @@ by selecting them in `npm run npm:update`.** Handle them as noted:
 - `@playwright/test` — held back from the weekly run; update deliberately via
   [Updating Playwright](#updating-playwright-npm-pin-docker-image-vrt) (npm pin + Docker image + VRT).
 - `@stencil/core` — pinned because a `patch-package` patch targets the exact version. **Never touch here.**
+- `jsdom` — held at `^29`; `jsdom@30` breaks the JSS runtime (`CSS.escape` brand check) and its hoisting, which takes
+  down every Vitest `jsdom` environment in the monorepo. See `docs/dependencies.md` → _Held-back dependencies_.
+- `@oddbird/popover-polyfill` — held at `^0.6`, coupled to `jsdom`: `v0.7` needs the `CSS` global that only `jsdom@30`
+  provides. Bump it **only together with** `jsdom`.
 
 If the only remaining outdated packages are the _never-touch_ ones above, **skip them** and note it in the PR
 description.
@@ -162,8 +166,8 @@ the scoped ones like `js-beautify > glob`, `next > postcss`):
   If `npm install` succeeds with no `ERESOLVE` **and** `npm run npm:audit` reports no regression for that package, the
   override is obsolete — **remove it**. If either fails, restore the entry as-is.
 
-- Record every removed (or relaxed) override in the PR description, and keep `docs/dependencies.md` →
-  _Current overrides_ in sync with the result.
+- Record every removed (or relaxed) override in the PR description, and keep `docs/dependencies.md` → _Current
+  overrides_ in sync with the result.
 
 ### 8. Keep version ranges consistent
 
@@ -196,11 +200,11 @@ are now **npm workspace members** (listed in the root [`package.json`](../../pac
 `syncpack` sees them by default — `.syncpackrc.json` no longer needs a `source` array.
 
 Although each starter pins the **published** `@porsche-design-system/components-*` version, `npm install` works because
-the local wrapper packages (`packages/components-*/dist/*-wrapper`) carry that same release version, so npm satisfies the
-pin by symlinking to the local workspace; off the monorepo the same pin resolves from the registry.
+the local wrapper packages (`packages/components-*/dist/*-wrapper`) carry that same release version, so npm satisfies
+the pin by symlinking to the local workspace; off the monorepo the same pin resolves from the registry.
 
-This means `npm run npm:update` / `npm run npm:lint:fix` will already align the **shared tooling** versions in these four
-files with the rest of the monorepo — typically `vite`, `tailwindcss`, `@tailwindcss/postcss`, `postcss`, `react`,
+This means `npm run npm:update` / `npm run npm:lint:fix` will already align the **shared tooling** versions in these
+four files with the rest of the monorepo — typically `vite`, `tailwindcss`, `@tailwindcss/postcss`, `postcss`, `react`,
 `react-dom`, `@types/react`, `@types/react-dom`, `@vitejs/plugin-react`, `vue`, `vue-tsc`, `globals`. After running the
 syncpack steps, just verify these files look correct (don't hand-edit versions syncpack owns).
 
@@ -270,8 +274,8 @@ Summarize advisories in the PR. **Do not** run `npm audit fix`. For a genuinely 
 
 `@playwright/test` is held back and is **not** part of the routine weekly run (`syncpack` skips it). Update it only
 deliberately, because the version is mirrored by the **Docker image** used for tests/VRT and by the **committed VRT
-snapshots**. Regenerating snapshots requires Docker, so **only proceed if you can run `./docker.sh`** — otherwise
-**stop and hand off** ([Stop conditions](#stop-conditions-hand-back-to-a-human)).
+snapshots**. Regenerating snapshots requires Docker, so **only proceed if you can run `./docker.sh`** — otherwise **stop
+and hand off** ([Stop conditions](#stop-conditions-hand-back-to-a-human)).
 
 Keep all of these on the **same** version (npm `X.Y.Z` ↔ image `vX.Y.Z-jammy`):
 
@@ -315,6 +319,7 @@ Deliver the result as a **single pull request** the maintainers can review and m
   ([`weekly-dependency-agent.yml`](../../.github/workflows/weekly-dependency-agent.yml)) pre-fills it as
   `Closes #<number>` in the issue body. The keyword must stay in the **PR description**; without it, merging the PR will
   **not** close the issue, leaving stale dependency tasks open.
+
 - **PR description** must summarize: which dependencies were bumped (grouped), any `overrides` added or removed, any
   advisories from `npm run npm:audit`, and which builds/tests you ran — explicitly calling out any you could **not**
   reproduce here (e.g. VRT in Docker, cross-browser e2e), so the reviewer knows what still needs to pass on CI.
