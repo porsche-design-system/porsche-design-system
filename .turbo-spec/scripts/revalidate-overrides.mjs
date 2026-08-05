@@ -153,14 +153,15 @@ function parseAuditResult(result) {
 }
 
 function parseInstallResult(result) {
-  const evidence = tail(`${result.stdout}\n${result.stderr}`);
+  const output = `${result.stdout}\n${result.stderr}`;
+  const evidence = tail(output);
   if (result.error || result.signal) {
     throw new EnvironmentError(`npm install could not run: ${result.error?.message ?? result.signal}`);
   }
   if (result.status === 0) {
     return { status: 'passed', evidence: '' };
   }
-  if (evidence.includes('ERESOLVE')) {
+  if (/\bERESOLVE\b/i.test(output)) {
     return { status: 'eresolve', evidence };
   }
   throw new EnvironmentError(`npm install failed without ERESOLVE: ${evidence}`);
@@ -486,6 +487,16 @@ function runSelfTest() {
       status: 1,
       stdout: '',
       stderr: 'npm error code ERESOLVE',
+      signal: null,
+      error: undefined,
+    }).status,
+    'eresolve'
+  );
+  assert.equal(
+    parseInstallResult({
+      status: 1,
+      stdout: `npm error code ERESOLVE\n${'x'.repeat(3000)}`,
+      stderr: '',
       signal: null,
       error: undefined,
     }).status,
