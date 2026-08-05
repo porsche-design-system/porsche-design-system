@@ -1,7 +1,7 @@
 name: "🐞 Bug Report"
 description: Create a report to help us improve
 title: "Short description"
-labels: ["community", "to be refined"]
+labels: ["Kickoff"]
 type: bug
 projects: ["porsche-design-system/14"]
 body:
