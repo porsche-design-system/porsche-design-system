@@ -77,6 +77,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-column-drop-cell-border: var(--ag-inherited-column-drop-cell-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
 	--ag-column-drop-cell-drag-handle-color: var(--ag-inherited-column-drop-cell-drag-handle-color, var(--ag-text-color));
 	--ag-column-drop-cell-text-color: var(--ag-inherited-column-drop-cell-text-color, var(--ag-text-color));
+	--ag-column-header-edit-highlight-color: var(--ag-inherited-column-header-edit-highlight-color, color-mix(in srgb, transparent, var(--ag-accent-color) 12%));
 	--ag-column-hover-color: var(--ag-inherited-column-hover-color, light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228)));
 	--ag-column-panel-apply-button-background-color: var(--ag-inherited-column-panel-apply-button-background-color, var(--ag-accent-color));
 	--ag-column-panel-apply-button-color: var(--ag-inherited-column-panel-apply-button-color, var(--ag-background-color));
@@ -445,6 +446,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-column-drop-cell-border: var(--ag-column-drop-cell-border);
 	--ag-inherited-column-drop-cell-drag-handle-color: var(--ag-column-drop-cell-drag-handle-color);
 	--ag-inherited-column-drop-cell-text-color: var(--ag-column-drop-cell-text-color);
+	--ag-inherited-column-header-edit-highlight-color: var(--ag-column-header-edit-highlight-color);
 	--ag-inherited-column-hover-color: var(--ag-column-hover-color);
 	--ag-inherited-column-panel-apply-button-background-color: var(--ag-column-panel-apply-button-background-color);
 	--ag-inherited-column-panel-apply-button-color: var(--ag-column-panel-apply-button-color);
@@ -1005,6 +1007,10 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     },
     "columnDropCellTextColor": {
       "ref": "textColor",
+    },
+    "columnHeaderEditHighlightColor": {
+      "mix": 0.12,
+      "ref": "accentColor",
     },
     "columnHoverColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
     "columnPanelApplyButtonBackgroundColor": {
