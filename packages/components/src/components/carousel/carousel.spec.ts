@@ -437,18 +437,19 @@ describe('registerSplideHandlers()', () => {
     expect(changeEmitSpy).toHaveBeenCalledWith({ activeIndex: 1, previousIndex: 0 });
   });
 
-  it('should update slideStatusMessage on moved event using page count', () => {
+  it('should update slide status live region on moved event using page count', () => {
     vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['amountOfPages'] = 8;
     component['slides'] = Array.from({ length: 10 }, () => document.createElement('div'));
+    component['slideStatusEl'] = document.createElement('div');
     component['splide'] = new Splide(getContainerEl(), { i18n: { slideLabel: 'Slide %s of %s' } });
     component['registerSplideHandlers'](component['splide']);
 
-    expect(component['slideStatusMessage']).toBe('');
+    expect(component['slideStatusEl'].textContent).toBe('');
     component['splide'].emit('moved', 2);
-    expect(component['slideStatusMessage']).toBe('Slide 3 of 8');
+    expect(component['slideStatusEl'].textContent).toBe('Slide 3 of 8');
   });
 
   it('should use DEFAULT_SLIDE_LABEL when i18n.slideLabel is not set on moved event', () => {
@@ -456,24 +457,26 @@ describe('registerSplideHandlers()', () => {
     vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['amountOfPages'] = 3;
+    component['slideStatusEl'] = document.createElement('div');
     component['splide'] = new Splide(getContainerEl());
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('moved', 0);
-    expect(component['slideStatusMessage']).toBe('1 of 3');
+    expect(component['slideStatusEl'].textContent).toBe('1 of 3');
   });
 
-  it('should not update slideStatusMessage on moved when suppressNextStatusAnnounce is set', () => {
+  it('should not update slide status live region on moved when suppressNextStatusAnnounce is set', () => {
     vi.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation(() => {});
     vi.spyOn(carouselUtils, 'renderPagination').mockImplementation(() => {});
     const component = new Carousel();
     component['amountOfPages'] = 5;
+    component['slideStatusEl'] = document.createElement('div');
     component['splide'] = new Splide(getContainerEl());
     component['registerSplideHandlers'](component['splide']);
     component['suppressNextStatusAnnounce'] = true;
 
     component['splide'].emit('moved', 1);
-    expect(component['slideStatusMessage']).toBe('');
+    expect(component['slideStatusEl'].textContent).toBe('');
     expect(component['suppressNextStatusAnnounce']).toBe(false);
   });
 

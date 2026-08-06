@@ -146,13 +146,13 @@ export class Carousel {
   @Event({ bubbles: false }) public update: EventEmitter<CarouselUpdateEventDetail>;
 
   @State() private amountOfPages: number;
-  @State() private slideStatusMessage = '';
 
   private splide: Splide;
   private container: HTMLElement;
   private btnPrev: HTMLPButtonPureElement;
   private btnNext: HTMLPButtonPureElement;
   private paginationEl: HTMLElement;
+  private slideStatusEl: HTMLElement;
   private slides: HTMLElement[] = [];
   /** Skips the next live-region update when navigation was caused by focusing a slide. */
   private suppressNextStatusAnnounce = false;
@@ -356,9 +356,7 @@ export class Carousel {
             <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
           </div>
         )}
-        <div class="slide-status" aria-live="polite" aria-atomic="true">
-          {this.slideStatusMessage}
-        </div>
+        <div class="slide-status" aria-live="polite" aria-atomic="true" ref={(ref) => (this.slideStatusEl = ref)} />
       </Host>
     );
   }
@@ -382,8 +380,9 @@ export class Carousel {
         this.suppressNextStatusAnnounce = false;
         return;
       }
+      // Update imperatively to avoid a Stencil re-render that would steal focus from slides/controls
       const slideLabel = splide.options.i18n?.slideLabel ?? DEFAULT_SLIDE_LABEL;
-      this.slideStatusMessage = getSlideStatusMessage(slideLabel, activeIndex, this.getPageCount());
+      this.slideStatusEl.textContent = getSlideStatusMessage(slideLabel, activeIndex, this.getPageCount());
     });
 
     splide.mount();
