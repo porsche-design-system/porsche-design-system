@@ -52,8 +52,9 @@ where `CSS` is a WebIDL **namespace** and its operations are not brand-checked a
 ### Requirement: CSS normalization for packages upstream of the polyfill
 
 Packages that render JSS in a jsdom environment but are built **before** `@porsche-design-system/components-js` — and
-therefore cannot import its `jsdom-polyfill` sub-package — SHALL normalize the `CSS` namespace themselves via the
-equivalent helper exported from `@porsche-design-system/shared/testing`.
+therefore cannot import its `jsdom-polyfill` sub-package — SHALL normalize the `CSS` namespace themselves via the helper
+exported from `@porsche-design-system/shared/testing/normalize-css-namespace`. That helper SHALL be the single
+implementation in the repository, and the published polyfill SHALL bundle it rather than duplicate it.
 
 #### Scenario: Upstream suites render JSS
 
@@ -66,6 +67,18 @@ equivalent helper exported from `@porsche-design-system/shared/testing`.
 
 - **WHEN** an upstream package normalizes the `CSS` namespace
 - **THEN** it does so without depending on `@porsche-design-system/components-js`
+
+#### Scenario: The helper is imported without test tooling
+
+- **WHEN** a Vitest setup or the published polyfill imports the helper
+- **THEN** it resolves through the dedicated `./testing/normalize-css-namespace` export
+- **AND** neither the Playwright configs nor the W3C validator of the `testing` barrel are pulled in
+
+#### Scenario: The normalization survives bundling
+
+- **WHEN** `dist/components-wrapper/jsdom-polyfill/index.cjs` is built
+- **THEN** it contains both the call to the normalization and its implementation
+- **AND** the call is emitted before the popover polyfill and the Stencil loader
 
 ### Requirement: Popover polyfill support
 
@@ -82,6 +95,19 @@ so popover-based components are testable in jsdom.
 
 - **WHEN** a component relying on the Popover API is rendered in jsdom
 - **THEN** it renders and its unit tests pass
+
+#### Scenario: Older jsdom fails with an actionable error
+
+- **WHEN** the polyfill is imported in an environment that exposes no `CSS.escape` (jsdom older than v30)
+- **THEN** it throws an error naming the required jsdom version
+- **AND** the error is raised before the popover polyfill is applied, so no cryptic
+  `TypeError: Cannot read properties of undefined (reading 'escape')` surfaces
+
+#### Scenario: The jsdom requirement is discoverable
+
+- **WHEN** a consumer inspects the published wrappers or the storefront testing pages
+- **THEN** `jsdom` is declared as an optional peer dependency with the supported range
+- **AND** the requirement is documented in the changelog and the testing pages
 
 ### Requirement: Form control and scrolling API coverage
 

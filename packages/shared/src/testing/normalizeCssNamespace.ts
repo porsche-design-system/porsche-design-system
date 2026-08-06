@@ -17,21 +17,23 @@
  *
  *   var nativeEscape = typeof CSS !== 'undefined' && CSS.escape;
  *
- * Call this from the Vitest setup of every package that renders JSS in a jsdom environment. Packages
- * downstream of `@porsche-design-system/components-js` get the same treatment for free by importing
- * its `jsdom-polyfill` sub-package, but `shared`, `components` and the wrappers are built *before* it
- * and therefore cannot.
+ * This is the single implementation for the whole monorepo. Import it through the dedicated deep
+ * export so that neither a Vitest setup nor the published bundle drags the Playwright configs and the
+ * W3C validator of the `testing` barrel along:
  *
- * NOTE: `packages/components-js/projects/jsdom-polyfill/src/normalizeCssNamespace.js` intentionally
- * keeps its own copy of this logic — it is bundled into the published artifact, which must not pull
- * in this package's test tooling (the `testing` barrel re-exports Playwright helpers).
+ *   import { normalizeCssNamespace } from '@porsche-design-system/shared/testing/normalize-css-namespace';
+ *
+ * Call it from the Vitest setup of every package that renders JSS in a jsdom environment. Packages
+ * downstream of `@porsche-design-system/components-js` get it for free by importing its
+ * `jsdom-polyfill` sub-package, which bundles this module.
  *
  * Re-binding is idempotent (the original operation is always read from the prototype) and a no-op
  * where nothing is wrong: browsers expose the operations as own properties directly on `CSS`, and
  * jsdom < 30 exposes no `CSS` namespace at all.
  *
- * This works around a jsdom deviation and should be removable once jsdom stops brand-checking
- * namespace operations:
+ * This works around a jsdom deviation and should be removable once jsdom exposes `CSS` as a namespace
+ * object instead of an interface (jsdom generates it with brand-checking interface code, see
+ * `jsdom/lib/generated/idl/CSS.js`, tracked upstream in https://github.com/jsdom/jsdom/issues/4228):
  * - CSSOM defines `CSS` as a namespace: https://drafts.csswg.org/cssom/#namespacedef-css
  * - WebIDL namespace operations have no `this` requirement: https://webidl.spec.whatwg.org/#idl-namespaces
  *

@@ -1,4 +1,4 @@
-import { normalizeCssNamespace } from '@porsche-design-system/shared/testing';
+import { normalizeCssNamespace } from '@porsche-design-system/shared/testing/normalize-css-namespace';
 import 'construct-style-sheets-polyfill';
 import '../mocks/match-media.mock';
 

@@ -42,6 +42,15 @@ it('should normalize the CSS namespace before applying dependent polyfills', () 
   expect(normalizeIndex).toBeLessThan(defineCustomElementsIndex);
 });
 
+// Rollup proves the body of `normalizeCssNamespace()` pure (it only uses `Object.*` operations) and drops the
+// call when it is imported directly, which is why `src/normalizeCssNamespace.js` requires it as a local
+// CommonJS module. Assert the implementation really made it into the bundle, not just its call site.
+it('should bundle the implementation of the CSS namespace normalization', () => {
+  const jsdomBuild = readJsdomBuild();
+
+  expect(indexOfMarker(jsdomBuild, 'Object.getOwnPropertyNames(prototype)')).toBeGreaterThan(-1);
+});
+
 // `@oddbird/popover-polyfill` needs a `CSS` namespace, which jsdom only provides since v30. Consumers on an
 // older jsdom must get our actionable error instead of a cryptic `TypeError` from within the polyfill.
 it('should guard the required jsdom version before applying the popover polyfill', () => {

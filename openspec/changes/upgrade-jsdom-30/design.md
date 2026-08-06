@@ -112,22 +112,30 @@ _Outcome:_ all three were purely cascading — with the normalization in place t
 files on jsdom 30 with no additional mocks. The same applies to the 72 "obsolete snapshot" failures in `components`: the
 styles specs crashed before writing any snapshot, so every existing snapshot was reported obsolete.
 
-### Decision 6: A second, upstream copy for packages built before `components-js`
+### Decision 6: One implementation in `shared`, consumed through a dedicated deep export
 
-_Added during implementation._ Decision 1 assumed the polyfill covers every jsdom suite. It does not: `shared`,
-`components` and `components-react/react-ssr-wrapper` also render JSS under jsdom, and the first two are built
-**before** `components-js`, so importing its `jsdom-polyfill` would invert the build order. Measured fallout on jsdom 30
-without a fix: `shared` 9 failed tests, `components` **72 failed files**, `react-ssr-wrapper` 1 failed file.
+_Added during implementation, revised in follow-up._ Decision 1 assumed the polyfill covers every jsdom suite. It does
+not: `shared`, `components` and `components-react/react-ssr-wrapper` also render JSS under jsdom, and the first two are
+built **before** `components-js`, so importing its `jsdom-polyfill` would invert the build order. Measured fallout on
+jsdom 30 without a fix: `shared` 9 failed tests, `components` **72 failed files**, `react-ssr-wrapper` 1 failed file.
 
-The implementation therefore keeps two copies with distinct audiences:
+The first implementation duplicated the helper (once in `shared`, once in the polyfill) because the `shared/testing`
+barrel re-exports Playwright configs and a W3C validator that must not end up in the shipped artifact. The follow-up
+removes that duplication by giving the helper its **own export subpath** instead:
 
-| Copy                                          | Audience                          | Constraint                                                                                          |
-| --------------------------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `jsdom-polyfill/src/normalizeCssNamespace.js` | published package + its consumers | must stay dependency-free — it is bundled into the shipped artifact                                 |
-| `shared/src/testing/normalizeCssNamespace.ts` | internal Vitest setups (upstream) | lives in the first package of the build order, exported via `@porsche-design-system/shared/testing` |
+| Artifact                                                        | Role                                                                                         |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `shared/src/testing/normalizeCssNamespace.ts`                   | single implementation, first package of the build order                                      |
+| `@porsche-design-system/shared/testing/normalize-css-namespace` | 3 KB standalone bundle (own rollup entry + `exports` entry), free of Playwright/`node:https` |
+| `jsdom-polyfill/src/normalizeCssNamespace.js`                   | one-line re-export of the above, bundled into the published artifact                         |
 
-They are cross-referenced in comments. A single copy is not possible: the `shared/testing` barrel re-exports Playwright
-helpers, so bundling it into the published polyfill would drag test tooling into the shipped artifact.
+It is deliberately **not** re-exported from the `testing` barrel, so the cheap path is the only path.
+
+**Why the polyfill keeps a local one-line module**: requiring the helper directly from `index.js` lets Rollup treeshake
+the call away — it proves the function body pure because it only uses `Object.*` operations, which Rollup treats as
+side-effect free. The resulting bundle silently lost the normalization (caught by the bundle test from Decision 2).
+Requiring a _local_ CommonJS module keeps the call on an opaque `require()` result that Rollup must retain. The bundle
+test now asserts both the call order **and** that the implementation is present.
 
 **Alternative considered**: a `patch-package` patch on `jss` binding `nativeEscape` once. It would cover every package
 and both bundles with one line, but it re-introduces a version-pinned dependency — exactly the kind of hold-back this
@@ -160,8 +168,11 @@ change set out to remove — so it was rejected in favour of fixing the environm
 
 ## Open Questions
 
-- Should the jsdom brand-check deviation be reported upstream to jsdom (namespace operations should not brand-check
-  `this`), so the normalization can eventually be dropped?
+- ~~Should the jsdom brand-check deviation be reported upstream to jsdom (namespace operations should not brand-check
+  `this`), so the normalization can eventually be dropped?~~ **Resolved:** reported as
+  [jsdom#4228](https://github.com/jsdom/jsdom/issues/4228) — jsdom generates `CSS` with the WebIDL _interface_ template
+  (`lib/generated/idl/CSS.js`) although CSSOM defines it as a _namespace_. The issue is linked from the helper's doc
+  comment so the workaround can be removed once it is fixed.
 - ~~Do `components-vue/vue-wrapper` (no `setupFiles`) and the `styles` suites render JSS under jsdom?~~ **Resolved:**
   they do not — both pass unchanged. The affected suites are `shared`, `components` and
   `components-react/react-ssr-wrapper`; see Decision 6. `storefront` and `skill` are already covered because they import

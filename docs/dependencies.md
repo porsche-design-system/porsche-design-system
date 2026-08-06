@@ -295,14 +295,21 @@ rebuild. Three properties are easy to break:
    ```
 
 3. **jsdom's `CSS` namespace is not browser-faithful.** Its operations brand-check `this`, so consumers that cache them
-   unbound break — most notably `jss` (`var nativeEscape = typeof CSS !== 'undefined' && CSS.escape`). Two copies of a
-   `normalizeCssNamespace()` helper rebind them:
-   - `packages/components-js/projects/jsdom-polyfill/src/normalizeCssNamespace.js` for the published polyfill, and
-   - `packages/shared/src/testing/normalizeCssNamespace.ts` (exported via `@porsche-design-system/shared/testing`) for
-     the Vitest setups of `shared`, `components` and `components-react/react-ssr-wrapper`, which are built **before**
-     `components-js` and therefore cannot import the polyfill.
+   unbound break — most notably `jss` (`var nativeEscape = typeof CSS !== 'undefined' && CSS.escape`). The single
+   `normalizeCssNamespace()` helper in `packages/shared/src/testing/normalizeCssNamespace.ts` rebinds them. Import it
+   via its dedicated deep export, never via the `testing` barrel (which would drag the Playwright configs and the W3C
+   validator along):
 
-     Keep both in sync.
+   ```ts
+   import { normalizeCssNamespace } from '@porsche-design-system/shared/testing/normalize-css-namespace';
+   ```
+
+   It is called from the Vitest setups of `shared`, `components` and `components-react/react-ssr-wrapper` (all built
+   **before** `components-js`, so they cannot use the polyfill) and is bundled into the published polyfill through
+   `packages/components-js/projects/jsdom-polyfill/src/normalizeCssNamespace.js`. That local module is a one-line
+   re-export and must stay: importing the helper directly lets Rollup treeshake the call away, because it proves the
+   function body pure. `jsdom-build.spec.ts` asserts that the normalization survives in the built bundle. Upstream
+   tracking issue: https://github.com/jsdom/jsdom/issues/4228.
 
 The polyfill is bundled into `dist/components-wrapper/jsdom-polyfill/index.cjs`, so always rebuild before testing a
 bump, then run the jsdom-based suites:

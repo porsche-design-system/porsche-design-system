@@ -1,7 +1,5 @@
 import { describe, expect, it } from 'vitest';
-
-// biome-ignore lint/style/useNodejsImportProtocol: plain CommonJS module of this package, resolved relative to src
-const { normalizeCssNamespace } = require('../../../src/normalizeCssNamespace');
+import { normalizeCssNamespace } from '../../../src/testing/normalizeCssNamespace';
 
 /**
  * Rebuilds the shape jsdom >= 30 uses for the `CSS` namespace: the operations live on a prototype and
@@ -102,15 +100,10 @@ describe('normalizeCssNamespace()', () => {
 });
 
 describe('global CSS namespace', () => {
-  it('should expose a detachable escape after the polyfill has been applied', () => {
-    // The polyfill is imported by the vitest setup file, so the global namespace is already normalized.
-    // On jsdom < 30 there is no `CSS` namespace at all, which is the documented no-op path.
-    if (typeof globalThis.CSS === 'undefined') {
-      expect(globalThis.CSS).toBeUndefined();
-      return;
-    }
-
+  it('should expose a detachable escape after the vitest setup has normalized it', () => {
+    // The setup file of this package calls `normalizeCssNamespace()` for the global namespace.
     const escape = globalThis.CSS.escape;
+
     expect(escape('a.b')).toBe('a\\.b');
   });
 });

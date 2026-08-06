@@ -1,4 +1,4 @@
-import { normalizeCssNamespace } from '@porsche-design-system/shared/testing';
+import { normalizeCssNamespace } from '@porsche-design-system/shared/testing/normalize-css-namespace';
 import { beforeAll, vi } from 'vitest';
 
 // jss caches `CSS.escape` unbound at module init, which jsdom >= 30 rejects.

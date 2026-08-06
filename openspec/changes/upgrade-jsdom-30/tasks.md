@@ -61,5 +61,24 @@
 
 ## 7. Upstream follow-up
 
-- [ ] 7.1 File (or find) a jsdom issue arguing that `CSS` namespace operations must not brand-check `this`, and link it
-      from the code comment so the normalization can be dropped later.
+- [x] 7.1 File (or find) a jsdom issue arguing that `CSS` namespace operations must not brand-check `this`, and link it
+      from the code comment so the normalization can be dropped later. → filed as
+      [jsdom#4228](https://github.com/jsdom/jsdom/issues/4228), linked from
+      `packages/shared/src/testing/normalizeCssNamespace.ts` and `docs/dependencies.md`.
+
+## 8. Follow-up hardening
+
+- [x] 8.1 De-duplicate `normalizeCssNamespace()`: keep the single implementation in `shared` and expose it via a
+      dedicated `./testing/normalize-css-namespace` export (own rollup entry) so neither a Vitest setup nor the
+      published bundle pulls in the Playwright configs and the W3C validator of the `testing` barrel.
+- [x] 8.2 Reduce `jsdom-polyfill/src/normalizeCssNamespace.js` to a one-line re-export of that subpath and document why
+      the local module has to stay (Rollup treeshakes a direct import because it proves the body pure).
+- [x] 8.3 Switch the `components` and `react-ssr-wrapper` Vitest setups from the barrel to the deep import, and drop the
+      re-export from `shared/src/testing/index.ts` so the cheap path is the only path.
+- [x] 8.4 Move the helper's unit tests next to its implementation (`packages/shared/tests/unit/specs/`) and keep only
+      the "global namespace is normalized" integration test in the polyfill package.
+- [x] 8.5 Extend the bundle test to assert that the implementation — not just its call site — survives in
+      `dist/components-wrapper/jsdom-polyfill/index.cjs`.
+- [x] 8.6 Guard the jsdom version requirement of `@oddbird/popover-polyfill` with an actionable error, declare `jsdom`
+      as an optional peer dependency of the four published wrappers, and document the floor in `CHANGELOG.md` and the
+      storefront testing pages.
