@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+- `Carousel`: Live region announcing page status after control-driven navigation (prev/next, pagination, drag)
+  ([#4654](https://github.com/porsche-design-system/porsche-design-system/pull/4654))
 
 ### Fixed
 
