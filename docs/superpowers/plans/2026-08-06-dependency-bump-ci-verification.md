@@ -3,12 +3,12 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or
 > superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add deterministic minimum CI checks to the TurboSpec dependency-bump workflow and invoke the existing agent
-only when a reproducible check fails.
+**Goal:** Add deterministic minimum CI checks to the TurboSpec dependency-bump workflow and use a no-op-first,
+same-stage repair agent for reproducible failures.
 
 **Architecture:** Split deterministic dependency selection from the existing dependency agent so a CI retry cannot bump
-versions again. Add one agentless, fail-fast verification stage after the existing cleanup and documentation stages;
-validation failures loop back to the existing agent and re-run every downstream consistency stage.
+versions again. Add one fail-fast verification stage after cleanup and documentation; its dedicated agent no-ops before
+the first gate run, then receives same-stage gate feedback on a validation failure.
 
 **Tech Stack:** TurboSpec workflow YAML, TurboSpec `script_gate`, Markdown system prompts, npm scripts
 
@@ -17,23 +17,23 @@ validation failures loop back to the existing agent and re-run every downstream 
 - Always run `npm run lint`, `npm run build`, and `npm run test:unit:components` in that order.
 - Keep the PR Gates responsible for the complete test matrix; add no package classifier, browser suite, helper script,
   or dependency.
-- Invoke no additional agent when all three checks pass.
+- Invoke one dedicated final agent on every run, but require it to make no changes or shell calls before gate feedback.
 - Give `ci-minimum` validation failures two repair retries.
 - Escalate environment, timeout, and command-invocation failures without an agent retry.
 - CI repair may change only the smallest source, test, or configuration surface needed for a non-breaking dependency API
   change.
 - CI repair must not change `package.json`, `package-lock.json`, dependency versions, overrides, or dependency
   documentation.
-- Persist CI repair mode in declared stage output so later resolver-gate feedback and workflow resume cannot clear it.
-- Compare all non-ignored package manifests, the lockfile, and dependency documentation with their post-cleanup Git
-  object hashes before accepting a repair.
+- Keep repairs within `verify_ci` so TurboSpec's native same-stage retry feedback needs no persisted consumer state.
+- Reject any package manifest, lockfile, or dependency-documentation change relative to committed `HEAD`.
 - TurboSpec may still open a pull request when the minimum gate remains red.
 
 ## File Map
 
 - Modify `.turbo-spec/workflows/dependency-bump.yml`: split the update and resolution stages, then add the final
   verification gate.
-- Modify `.turbo-spec/system_prompts/dependency-bump.md`: add the conditional, source-only CI repair contract.
+- Modify `.turbo-spec/system_prompts/dependency-bump.md`: keep dependency resolution separate from CI repair.
+- Create `.turbo-spec/system_prompts/dependency-ci-repair.md`: define no-op-first, source-only CI repair behavior.
 - No production source, dependency manifest, lockfile, runbook, or helper script changes.
 
 ---
@@ -43,7 +43,6 @@ validation failures loop back to the existing agent and re-run every downstream 
 **Files:**
 
 - Modify: `.turbo-spec/workflows/dependency-bump.yml:12-61`
-- Modify: `.turbo-spec/system_prompts/dependency-bump.md:1-9`
 
 **Interfaces:**
 
@@ -132,58 +131,32 @@ Change `revalidate_overrides` to:
 depends_on: [resolve_dependencies]
 ```
 
-- [ ] **Step 3: Add the conditional CI repair contract**
-
-Replace `.turbo-spec/system_prompts/dependency-bump.md` with:
-
-```markdown
-Goal: leave the repository with all eligible npm dependency versions updated, a consistent lockfile, and passing
-dependency checks. Before normal dependency resolution, inspect the Previous Attempt / Gate feedback. If that feedback
-names `ci-minimum`, confirm the dependency bump caused the failure and make only the smallest source, test, or
-configuration adaptation needed for a non-breaking dependency API change; do not edit `package.json`,
-`package-lock.json`, dependency versions, overrides, or dependency documentation, and stop if the failure is unrelated,
-flaky, or requires a breaking migration. Otherwise, Syncpack has already updated dependency versions before you start,
-so run `npm install` once. If `npm install` succeeds without `ERESOLVE`, finish immediately without inspecting or
-changing overrides or documentation. If `npm install` fails with `ERESOLVE` because a third-party peer range conflicts
-with pinned versions, add the smallest scoped, pinned `overrides` entry in the root `package.json`, following existing
-patterns such as `madge > typescript` and per-major keys such as `minimatch@9`. After changing an override, delete both
-`package-lock.json` and `node_modules`, then rerun `npm install` so stale transitive entries cannot survive. Outside
-`ci-minimum` repair, you may edit only the root `package.json` override needed for that `ERESOLVE`, the regenerated
-`package-lock.json`, and documentation that describes that override. Do not run `npm audit`, `npm audit fix`, or any
-security-advisory investigation; do not inspect, remove, revalidate, or update existing overrides. Never use `--force`
-or `--legacy-peer-deps`, and never manually edit dependency versions or change held-back dependencies. Stop and report
-the blocker if the conflict requires a major breaking upgrade, touches a held-back dependency, or cannot be resolved
-with a scoped pinned override; otherwise, you are done when `npm install` succeeds and the repository is ready for the
-configured format and lint gates.
-```
-
-- [ ] **Step 4: Re-run the structural check**
+- [ ] **Step 3: Re-run the structural check**
 
 Run the command from Step 1.
 
 Expected: PASS.
 
-- [ ] **Step 5: Validate the intermediate blueprint and prompt**
+- [ ] **Step 4: Validate the intermediate blueprint**
 
 ```bash
 uv run --project /Users/FNN57BH/Developer/turbo-spec \
   --directory "$PWD" \
   workflow-skeleton validate .turbo-spec/workflows/dependency-bump.yml
-npx prettier --check .turbo-spec/system_prompts/dependency-bump.md
 git --no-pager diff --check
 ```
 
 Expected: all commands exit `0`.
 
-- [ ] **Step 6: Commit the retry boundary**
+- [ ] **Step 5: Commit the retry boundary**
 
 ```bash
-git add .turbo-spec/workflows/dependency-bump.yml .turbo-spec/system_prompts/dependency-bump.md
+git add .turbo-spec/workflows/dependency-bump.yml
 git commit -m "refactor(turbospec): isolate dependency resolution" \
   -m "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
 ```
 
-### Task 2: Add the Agentless Minimum CI Gate
+### Task 2: Add the Minimum CI Gate
 
 **Files:**
 
@@ -192,7 +165,7 @@ git commit -m "refactor(turbospec): isolate dependency resolution" \
 **Interfaces:**
 
 - Consumes: stage `document_overrides` and agent `resolve_dependencies/dependency_updater`.
-- Produces: final agentless stage `verify_ci` and gate `ci-minimum`.
+- Produces: initial `verify_ci` gate; Task 3 adds its narrowly scoped repair agent.
 
 - [ ] **Step 1: Run a structural check that fails before the gate exists**
 
@@ -226,7 +199,7 @@ PY
 
 Expected: FAIL with `KeyError: 'verify_ci'`.
 
-- [ ] **Step 2: Add the final verification stage**
+- [ ] **Step 2: Add the initial verification stage**
 
 Insert this stage after `document_overrides` and before `settings`:
 
@@ -259,7 +232,7 @@ Insert this stage after `document_overrides` and before `settings`:
 
 Run the command from Step 1.
 
-Expected: PASS. The empty `agents` assertion proves a green `verify_ci` stage cannot invoke a model.
+Expected: PASS. Task 3 replaces this temporary cross-stage route with the final same-stage repair agent.
 
 - [ ] **Step 4: Validate the complete blueprint**
 
@@ -300,21 +273,22 @@ git commit -m "ci(turbospec): verify dependency bumps" \
   -m "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
 ```
 
-### Task 3: Harden CI Repair Boundaries
+### Task 3: Add a Same-Stage CI Repair Agent
 
 **Files:**
 
 - Modify: `.turbo-spec/workflows/dependency-bump.yml`
 - Modify: `.turbo-spec/system_prompts/dependency-bump.md`
+- Create: `.turbo-spec/system_prompts/dependency-ci-repair.md`
 - Modify: `docs/superpowers/specs/2026-08-06-dependency-bump-ci-verification-design.md`
 - Modify: `docs/superpowers/plans/2026-08-06-dependency-bump-ci-verification.md`
 
 **Interfaces:**
 
-- Consumes: `document_overrides` stage output persistence and Git's native `ls-files` and `hash-object` commands.
-- Produces: persisted `document_overrides.ci_repair.active` context and deterministic metadata write-scope evidence.
+- Consumes: TurboSpec's same-stage `loop_back.target_agent` feedback and per-stage PR commits.
+- Produces: no-op-first agent `ci_repairer` and a native Git metadata write-scope check.
 
-- [ ] **Step 1: Run a structural check that fails before hardening**
+- [ ] **Step 1: Run a structural check that fails before the dedicated agent exists**
 
 ```bash
 uv run --project /Users/FNN57BH/Developer/turbo-spec python - <<'PY'
@@ -323,73 +297,78 @@ import yaml
 
 workflow = yaml.safe_load(Path(".turbo-spec/workflows/dependency-bump.yml").read_text())
 stages = {stage["name"]: stage for stage in workflow["stages"]}
-update = stages["update_dependencies"]
 document = stages["document_overrides"]
 verify = stages["verify_ci"]
 gate = verify["quality_gates"][0]
-prompt = Path(".turbo-spec/system_prompts/dependency-bump.md").read_text()
+assert "ci_repair" not in document.get("outputs", {})
+assert "post_command" not in document
+assert verify["agents"][0]["id"] == "ci_repairer"
+assert verify["agents"][0]["type"] == "implementer"
+assert verify["agents"][0]["system_prompt"] == "dependency-ci-repair"
 assert gate["on_fail"] == "escalate"
-assert document["outputs"]["ci_repair"] == ".turbo-spec/out/ci-repair.json"
-assert "git hash-object --stdin-paths" in document["post_command"]
-assert "cmp .turbo-spec/out/ci-metadata.hashes" in verify["post_command"]
-assert "ci-repair.json" in update["pre_command"]
-assert "document_overrides.ci_repair.active" in prompt
+assert gate["loop_back"] == {"target_agent": "ci_repairer"}
+assert gate["config"]["steps"][1]["command"][:2] == ["sh", "-c"]
+assert "git restore --" in gate["config"]["steps"][1]["command"][2]
+assert "git status --porcelain" in verify["post_command"]
+assert Path(".turbo-spec/system_prompts/dependency-ci-repair.md").exists()
 PY
 ```
 
-Expected: FAIL because no persisted repair state or metadata scope exists.
+Expected: FAIL because `verify_ci` has no agent and still targets `resolve_dependencies`.
 
-- [ ] **Step 2: Persist repair mode and the post-cleanup metadata baseline**
+- [ ] **Step 2: Add the dedicated no-op-first agent**
 
-Change `update_dependencies.pre_command` so every fresh run clears prior CI state before updating:
-
-```yaml
-pre_command: >-
-  rm -f .turbo-spec/out/ci-repair.json .turbo-spec/out/ci-metadata.paths .turbo-spec/out/ci-metadata.hashes
-  .turbo-spec/out/ci-metadata-current.paths .turbo-spec/out/ci-metadata-current.hashes && npm run npm:update:all
-```
-
-Add this stage-level state capture to `document_overrides`:
+Add this agent to `verify_ci`:
 
 ```yaml
-post_command: >-
-  mkdir -p .turbo-spec/out && if test ! -f .turbo-spec/out/ci-metadata.paths || test ! -f
-  .turbo-spec/out/ci-metadata.hashes; then git ls-files --cached --others --exclude-standard ':(glob)**/package.json'
-  package-lock.json docs/dependencies.md | LC_ALL=C sort -u > .turbo-spec/out/ci-metadata.paths && git hash-object
-  --stdin-paths < .turbo-spec/out/ci-metadata.paths > .turbo-spec/out/ci-metadata.hashes; fi && printf '%s\n'
-  '{"active":true}' > .turbo-spec/out/ci-repair.json
-outputs:
-  ci_repair: .turbo-spec/out/ci-repair.json
+agents:
+  - id: ci_repairer
+    type: implementer
+    skills: []
+    tools: [file, shell]
+    system_prompt: dependency-ci-repair
 ```
 
-- [ ] **Step 3: Escalate fallback failures and enforce metadata scope**
-
-Set `verify_ci.quality_gates[0].on_fail` to `escalate`. Keep `failure_verdict: loop_back`, which lets an exit-code-1
-validation result override the fallback.
-
-Add this stage-level post-command to `verify_ci`:
+Replace the gate's cross-stage loop-back with:
 
 ```yaml
-post_command: >-
-  git ls-files --cached --others --exclude-standard ':(glob)**/package.json' package-lock.json docs/dependencies.md |
-  LC_ALL=C sort -u > .turbo-spec/out/ci-metadata-current.paths && git hash-object --stdin-paths <
-  .turbo-spec/out/ci-metadata-current.paths > .turbo-spec/out/ci-metadata-current.hashes && cmp
-  .turbo-spec/out/ci-metadata.paths .turbo-spec/out/ci-metadata-current.paths && cmp .turbo-spec/out/ci-metadata.hashes
-  .turbo-spec/out/ci-metadata-current.hashes
+loop_back:
+  target_agent: ci_repairer
 ```
 
-- [ ] **Step 4: Make CI repair mode persistent in the agent contract**
+Keep `on_fail: escalate`, `failure_verdict: loop_back`, `environment_verdict: escalate`, and `max_retries: 2`.
 
-Change the prompt's mode selection to this exact contract:
+- [ ] **Step 3: Add the CI repair prompt**
+
+Create `.turbo-spec/system_prompts/dependency-ci-repair.md`:
 
 ```markdown
-Before normal dependency resolution, inspect the Previous Attempt / Gate feedback. Treat the task as CI repair when that
-feedback names `ci-minimum` or task context contains `document_overrides.ci_repair.active: true`. During CI repair,
-confirm the dependency bump caused the failure and make only the smallest source, test, or configuration adaptation
-needed for a non-breaking dependency API change; do not edit `package.json`, `package-lock.json`, dependency versions,
-overrides, dependency documentation, or `.turbo-spec/out/ci-*` evidence, and stop if the failure is unrelated, flaky, or
-requires a breaking migration.
+Goal: repair a reproducible `ci-minimum` failure caused by the dependency bump. If the Previous Attempt / Gate feedback
+does not name `ci-minimum`, finish immediately without running commands or changing files. Otherwise, diagnose whether
+the dependency bump caused the failure and make only the smallest source, test, or non-dependency configuration
+adaptation needed for a non-breaking API change. Do not edit any `package.json`, `package-lock.json`, overrides,
+`docs/dependencies.md`, or generated `next-env.d.ts`. Do not update, install, remove, or audit dependencies. Stop and
+report the blocker without speculative changes if the failure is unrelated, flaky, or requires a breaking migration.
+Finish when the smallest adaptation is ready for the configured gate to rerun.
 ```
+
+Restore `.turbo-spec/system_prompts/dependency-bump.md` to dependency resolution only.
+
+- [ ] **Step 4: Replace persisted metadata state with native Git status**
+
+Remove the CI output and post-command from `document_overrides`. Set `verify_ci.post_command` to:
+
+```yaml
+post_command: >-
+  test -z "$(git status --porcelain --untracked-files=all -- ':(glob)**/package.json' package-lock.json
+  docs/dependencies.md)"
+```
+
+The production workflow always opens a PR, so TurboSpec commits each successful prior stage. `HEAD` is therefore the
+post-cleanup metadata baseline.
+
+Wrap `npm run build` in `sh`, preserve its exit code, and always restore
+`packages/components-react/projects/nextjs/next-env.d.ts` before exiting. Return exit `2` if restoration fails.
 
 - [ ] **Step 5: Re-run the structural check**
 
@@ -397,17 +376,17 @@ Run the command from Step 1.
 
 Expected: PASS.
 
-- [ ] **Step 6: Execute the YAML metadata hooks and fault-inject a mismatch**
+- [ ] **Step 6: Test routing and metadata scope**
 
-Run `document_overrides.post_command` from the parsed YAML, confirm it writes one active JSON output plus 47 matching
-path/hash entries, then run `verify_ci.post_command`.
+```bash
+uv run --project /Users/FNN57BH/Developer/turbo-spec pytest -q \
+  /Users/FNN57BH/Developer/turbo-spec/tests/unit/executor/test_gate_failure_routing.py::test_stage_gate_bare_target_agent_stays_in_executor
+```
 
-Append one test line to the ignored baseline hash file and run `verify_ci.post_command` again.
+Run `verify_ci.post_command` in a temporary Git repository. It must pass with clean dependency metadata and fail after
+changing `package.json`.
 
-Expected: unchanged metadata passes; the tampered hash fails at `cmp`. Remove only the five
-`.turbo-spec/out/ci-{repair,metadata}*` test files afterward.
-
-- [ ] **Step 7: Validate and format the hardened workflow**
+- [ ] **Step 7: Validate and format**
 
 ```bash
 uv run --project /Users/FNN57BH/Developer/turbo-spec \
@@ -415,6 +394,7 @@ uv run --project /Users/FNN57BH/Developer/turbo-spec \
   workflow-skeleton validate .turbo-spec/workflows/dependency-bump.yml
 npx prettier --check \
   .turbo-spec/system_prompts/dependency-bump.md \
+  .turbo-spec/system_prompts/dependency-ci-repair.md \
   docs/superpowers/specs/2026-08-06-dependency-bump-ci-verification-design.md \
   docs/superpowers/plans/2026-08-06-dependency-bump-ci-verification.md
 git --no-pager diff --check
@@ -422,15 +402,16 @@ git --no-pager diff --check
 
 Expected: all commands exit `0`.
 
-- [ ] **Step 8: Commit the hardened boundaries**
+- [ ] **Step 8: Commit the final repair design**
 
 ```bash
 git add \
   .turbo-spec/workflows/dependency-bump.yml \
   .turbo-spec/system_prompts/dependency-bump.md \
+  .turbo-spec/system_prompts/dependency-ci-repair.md \
   docs/superpowers/specs/2026-08-06-dependency-bump-ci-verification-design.md \
   docs/superpowers/plans/2026-08-06-dependency-bump-ci-verification.md
-git commit -m "fix(turbospec): harden CI repair boundaries" \
+git commit -m "fix(turbospec): keep CI repair in verification" \
   -m "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
 ```
 
@@ -440,7 +421,11 @@ git commit -m "fix(turbospec): harden CI repair boundaries" \
 uv run --project /Users/FNN57BH/Developer/turbo-spec \
   --directory "$PWD" \
   workflow-skeleton validate .turbo-spec/workflows/dependency-bump.yml
-npx prettier --check .turbo-spec/system_prompts/dependency-bump.md
+npx prettier --check \
+  .turbo-spec/system_prompts/dependency-bump.md \
+  .turbo-spec/system_prompts/dependency-ci-repair.md \
+  docs/superpowers/specs/2026-08-06-dependency-bump-ci-verification-design.md \
+  docs/superpowers/plans/2026-08-06-dependency-bump-ci-verification.md
 git --no-pager diff --check
 git --no-pager status --short
 ```

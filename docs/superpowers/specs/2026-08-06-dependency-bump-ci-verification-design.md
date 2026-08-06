@@ -2,9 +2,8 @@
 
 ## Goal
 
-Add Step 11's minimum CI-equivalent checks to the TurboSpec dependency-bump workflow. Run the checks deterministically,
-repair dependency-caused source failures with the existing agent, and avoid an extra agent invocation when all checks
-pass.
+Add Step 11's minimum CI-equivalent checks to the TurboSpec dependency-bump workflow. Run the checks deterministically
+and let a narrowly scoped final agent repair dependency-caused source failures.
 
 ## Scope
 
@@ -39,6 +38,7 @@ document_overrides
         |
         v
 verify_ci
+  ci_repairer (no-op before the first gate run)
   lint, build, components unit
 ```
 
@@ -50,12 +50,16 @@ cross-stage re-entry; targeting the current combined stage could therefore chang
 
 ## Deterministic Verification
 
-Add an agentless `verify_ci` stage after `document_overrides`. Use one `script_gate` named `ci-minimum` with the three
-commands as ordered steps.
+Add `verify_ci` after `document_overrides`. It contains one narrowly scoped `ci_repairer` followed by one `script_gate`
+named `ci-minimum` with the three commands as ordered steps.
 
 The gate fails fast. Every run therefore executes the same commands in the same order, stopping at the first failure.
 Avoid conditional package detection: transitive dependency impact makes such a classifier brittle, and the PR Gates
 already run the complete matrix.
+
+The Next.js build rewrites tracked `packages/components-react/projects/nextjs/next-env.d.ts`. Wrap `npm run build` in
+`sh` and restore that generated file before returning the build's original exit code. A restore failure exits `2`, so
+TurboSpec escalates instead of committing generated output from either a successful or failed stage.
 
 Set the gate's fallback `on_fail` to `escalate`, then use `failure_verdict: loop_back` and
 `environment_verdict: escalate`. Exit code `1` represents a reproducible validation failure that the agent may repair.
@@ -63,28 +67,23 @@ Invocation, timeout, evaluator, and environment failures must stop without spend
 
 ## Agentic Repair
 
-On a `ci-minimum` failure, loop back to `resolve_dependencies/dependency_updater` with
-`execute_strategy: agent_and_everything_after_it` and `max_retries: 2`.
+The dedicated `ci_repairer` always runs once before the first gate evaluation. Its prompt requires an immediate no-op
+when no Previous Attempt / Gate feedback names `ci-minimum`. This costs one model invocation on a green run but avoids
+consumer-side state that TurboSpec's sandbox and fresh-runner resume cannot preserve reliably.
 
-The existing agent receives the failed command and the bounded `script_gate` diagnostic through TurboSpec's previous
-attempt context. Extend its prompt with a conditional CI-repair contract:
+On a validation failure, the stage-level gate loops back to `ci_repairer` within the same `verify_ci` stage, with
+`max_retries: 2`. TurboSpec's native same-stage retry channel supplies the latest failed command and bounded diagnostic
+to the agent. The repair contract is:
 
-- Enter repair mode when the gate feedback names `ci-minimum` or persisted `document_overrides.ci_repair.active` context
-  is true.
+- Make no changes before gate feedback names `ci-minimum`.
 - Confirm that the dependency bump caused the failure.
 - Make the smallest source, test, or configuration adaptation needed for a non-breaking dependency API change.
-- Do not edit `package.json`, `package-lock.json`, dependency versions, overrides, dependency documentation, or captured
-  CI metadata evidence.
+- Do not edit `package.json`, `package-lock.json`, dependency versions, overrides, or dependency documentation.
+- Do not update, install, remove, or audit dependencies.
 - Stop without speculative changes when the failure is unrelated, flaky, or requires a breaking migration.
 
-`document_overrides` writes the compact repair-mode output only after the normal dependency and documentation stages
-finish. TurboSpec persists declared outputs in session context, so a later resolver-gate retry cannot erase CI repair
-mode by replacing the latest gate feedback. The normal dependency-resolution contract remains unchanged before that
-output exists.
-
-TurboSpec re-runs `resolve_dependencies` and all later stages after a repair. This repeats the expensive override sweep
-only on a failing run, but it guarantees that install state, override evidence, documentation, and final checks describe
-the repaired tree. A green run invokes no additional repair agent.
+Because the retry remains inside `verify_ci`, it neither re-runs dependency selection nor repeats the expensive override
+sweep. It re-runs the complete minimum gate after each repair.
 
 ## Dependency-State Boundary
 
@@ -96,10 +95,11 @@ Dependency metadata is complete before `verify_ci`:
 
 CI repair therefore adapts source only. The workflow must not reopen dependency selection after cleanup.
 
-After documentation succeeds, capture the ordered paths and Git object hashes for every tracked or non-ignored
-`package.json`, `package-lock.json`, and `docs/dependencies.md`. After the minimum checks pass, recompute and compare
-both lists. A mismatch fails the stage instead of accepting dependency metadata changed during repair. The next fresh
-`update_dependencies` run clears stale CI evidence before selecting versions.
+Production TurboSpec runs always open a PR. Its `WorktreeCommitter` commits every successful stage before the next stage
+starts, so `HEAD` at `verify_ci` is the post-cleanup dependency baseline. After the minimum gate passes, a stage
+`post_command` runs `git status --porcelain` for every `package.json`, `package-lock.json`, and `docs/dependencies.md`.
+Any tracked, staged, unstaged, deleted, renamed, or non-ignored untracked change fails the stage. This native Git check
+needs no persisted baseline and remains correct on a fresh-runner resume.
 
 ## Failure Outcome
 
@@ -110,27 +110,25 @@ The workflow does not suppress PR creation; the repository's PR Gates provide th
 
 The design was checked against TurboSpec engine commit `050a00fe`:
 
-- `LoopBackConfig` supports a target stage, target agent, and `agent_and_everything_after_it`.
-- Cross-stage retries attach gate feedback to the target stage's agent.
+- A stage-level `loop_back.target_agent` without `target_stage` retries inside the current stage and re-runs from that
+  agent.
 - `script_gate` runs steps sequentially, stops at the first non-zero exit, and includes up to 4,000 diagnostic
   characters in retry feedback.
-- A cross-stage retry invalidates and re-runs the target stage and every later stage.
-- Stage `pre_command` runs on re-entry, which requires the `update_dependencies`/`resolve_dependencies` split.
 - An evaluator's explicit `loop_back` or `escalate` verdict overrides `on_fail`; a generic evaluator failure falls back
   to `on_fail`.
-- Declared stage outputs survive resume in task context, while only the latest stage-scoped gate feedback reaches an
-  agent.
+- Only the latest same-stage gate feedback reaches the retried agent.
+- PR runs commit each successful stage before executing the next one.
 
 The selected commands match Step 11 of `docs/runbooks/dependency-updates-agent.md`; `contribution.yml` delegates the
 corresponding full CI work to `build.yml` and `test.yml`.
 
 ## Acceptance Criteria
 
-- A green run executes the three minimum checks without another model invocation.
-- A validation failure invokes the existing agent with the failing command's diagnostic.
-- CI repair mode survives later resolver-gate feedback and workflow resume.
-- A repair that changes dependency metadata fails deterministic post-verification hashes.
+- The first `ci_repairer` invocation makes no changes or shell calls before a gate failure exists.
+- A validation failure invokes the same-stage repair agent with the failing command's diagnostic.
+- A repair that changes dependency metadata fails the post-verification Git status check.
+- The build step never leaves the generated `next-env.d.ts` change for TurboSpec to commit.
 - The deterministic update command does not run again during CI repair.
-- A successful repair re-runs all downstream consistency stages and the complete minimum gate.
+- A successful repair re-runs the complete minimum gate.
 - Environment failures escalate without agent retries.
 - The updated blueprint passes `workflow-skeleton validate`.

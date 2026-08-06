@@ -11,13 +11,7 @@ setup_command_timeout: "20m"
 stages:
   - name: update_dependencies
     orchestrator: implementation
-    pre_command: >-
-      rm -f .turbo-spec/out/ci-repair.json
-      .turbo-spec/out/ci-metadata.paths
-      .turbo-spec/out/ci-metadata.hashes
-      .turbo-spec/out/ci-metadata-current.paths
-      .turbo-spec/out/ci-metadata-current.hashes &&
-      npm run npm:update:all
+    pre_command: "npm run npm:update:all"
 
   - name: resolve_dependencies
     orchestrator: bumpy_mc_bumpface
@@ -122,20 +116,6 @@ stages:
         system_prompt: override-cleanup
         output_schema: reviewer
         artifact_type: review
-    post_command: >-
-      mkdir -p .turbo-spec/out &&
-      if test ! -f .turbo-spec/out/ci-metadata.paths ||
-      test ! -f .turbo-spec/out/ci-metadata.hashes; then
-      git ls-files --cached --others --exclude-standard
-      ':(glob)**/package.json' package-lock.json docs/dependencies.md |
-      LC_ALL=C sort -u > .turbo-spec/out/ci-metadata.paths &&
-      git hash-object --stdin-paths <
-      .turbo-spec/out/ci-metadata.paths >
-      .turbo-spec/out/ci-metadata.hashes; fi &&
-      printf '%s\n' '{"active":true}' >
-      .turbo-spec/out/ci-repair.json
-    outputs:
-      ci_repair: .turbo-spec/out/ci-repair.json
     quality_gates:
       - evaluator: review_approved
         on_fail: escalate
@@ -152,26 +132,21 @@ stages:
   - name: verify_ci
     orchestrator: implementation
     depends_on: [document_overrides]
+    agents:
+      - id: ci_repairer
+        type: implementer
+        skills: []
+        tools: [file, shell]
+        system_prompt: dependency-ci-repair
     post_command: >-
-      git ls-files --cached --others --exclude-standard
-      ':(glob)**/package.json' package-lock.json docs/dependencies.md |
-      LC_ALL=C sort -u >
-      .turbo-spec/out/ci-metadata-current.paths &&
-      git hash-object --stdin-paths <
-      .turbo-spec/out/ci-metadata-current.paths >
-      .turbo-spec/out/ci-metadata-current.hashes &&
-      cmp .turbo-spec/out/ci-metadata.paths
-      .turbo-spec/out/ci-metadata-current.paths &&
-      cmp .turbo-spec/out/ci-metadata.hashes
-      .turbo-spec/out/ci-metadata-current.hashes
+      test -z "$(git status --porcelain --untracked-files=all --
+      ':(glob)**/package.json' package-lock.json docs/dependencies.md)"
     quality_gates:
       - evaluator: script_gate
         on_fail: escalate
         max_retries: 2
         loop_back:
-          target_stage: resolve_dependencies
-          target_agent: dependency_updater
-          execute_strategy: agent_and_everything_after_it
+          target_agent: ci_repairer
         config:
           gate_name: ci-minimum
           failure_verdict: loop_back
@@ -180,7 +155,15 @@ stages:
             - name: lint
               command: [npm, run, lint]
             - name: build
-              command: [npm, run, build]
+              command:
+                - sh
+                - -c
+                - >-
+                  npm run build; status=$?;
+                  git restore --
+                  packages/components-react/projects/nextjs/next-env.d.ts ||
+                  exit 2;
+                  exit "$status"
             - name: components-unit
               command: [npm, run, "test:unit:components"]
 
