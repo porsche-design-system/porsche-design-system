@@ -451,19 +451,24 @@ test.describe('click events', () => {
 test.describe('slots', () => {
   test('should update when selected option is added', async ({ page }) => {
     await initRadioGroup(page, undefined);
-    expect(await getRadioGroupValue(page)).toBe('');
+    const host = getHost(page);
+
+    await expect(host).toHaveJSProperty('value', undefined);
 
     await setValue(page, 'c');
     await waitForStencilLifecycle(page);
-    expect(await getRadioGroupValue(page)).toBe('c');
+    await expect(host).toHaveJSProperty('value', 'c');
 
     await addOption(page, 'd', 'd');
     await waitForStencilLifecycle(page);
 
     await setValue(page, 'd');
     await waitForStencilLifecycle(page);
-    expect(await getRadioGroupValue(page), 'after option added').toBe('d');
-    expect(await getSelectedRadioGroupOptionProperty(page, 'value'), 'after option added').toEqual('d');
+    await expect(host).toHaveJSProperty('value', 'd');
+    await expect(
+      page.locator('p-radio-group p-radio-group-option').getByText('d'),
+      'after option added'
+    ).toHaveJSProperty('selected', true);
   });
 
   test('should update when selected option is removed', async ({ page }) => {

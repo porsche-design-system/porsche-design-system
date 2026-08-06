@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -14,8 +14,9 @@ import {
 } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId, labelId } from '../common/label/label-utils';
-import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { messageId, StateMessage } from '../common/state-message/state-message';
+import { getFieldsetAriaAttributes } from '../fieldset/fieldset-utils';
 import { getComponentCss } from './pin-code-styles';
 import {
   getConcatenatedInputValues,
@@ -32,7 +33,6 @@ import {
   type PinCodeType,
   removeWhiteSpaces,
 } from './pin-code-utils';
-import { getFieldsetAriaAttributes } from '../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -47,7 +47,7 @@ const propTypes: PropTypes<typeof PinCode> = {
   form: AllowedTypes.string,
   message: AllowedTypes.string,
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   compact: AllowedTypes.boolean,
 };
 
@@ -102,8 +102,8 @@ export class PinCode {
   /** Controls whether the individual input fields mask their content as password dots (`password`) or show digits (`number`). */
   @Prop() public type?: PinCodeType = 'number';
 
-  /** Sets the current concatenated value of all pin code fields and allows setting the initial value. */
-  @Prop({ mutable: true }) public value?: string = '';
+  /** Sets the current concatenated value. Numbers are accepted for programmatic assignment, but user input updates the value as a string. */
+  @Prop({ mutable: true }) public value?: string | number | null = '';
 
   /** Reduces the pin code field height and spacing for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
@@ -114,14 +114,19 @@ export class PinCode {
   /** Emitted when the pin code component loses focus after the user finishes entering characters. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
-  /** Emitted when the pin code value changes as the user types, carrying the new concatenated value in the event detail. */
+  /** Emitted when the pin code value changes as the user types, carrying `{ value: string; isComplete: boolean }` in the event detail. */
   @Event({ bubbles: true }) public change: EventEmitter<PinCodeChangeEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
   private initialLoading: boolean = false;
-  private defaultValue: string;
+  private defaultValue: string | number | null | undefined;
   private inputElements: HTMLInputElement[] = [];
+
+  // Coerce number/null/undefined to string for internal handling
+  private get parsedValue(): string {
+    return String(this.value ?? '');
+  }
 
   public connectedCallback(): void {
     this.initialLoading = this.loading;
@@ -129,7 +134,9 @@ export class PinCode {
 
   public componentWillLoad(): void {
     this.initialLoading = this.loading;
-    this.value = getSanitisedValue(this.host, this.value, this.length);
+    if (this.value !== null && this.value !== undefined) {
+      this.value = getSanitisedValue(this.host, this.parsedValue, this.length);
+    }
     this.defaultValue = this.value;
   }
 
@@ -140,7 +147,7 @@ export class PinCode {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
+    this.internals?.setFormValue(this.parsedValue);
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
     for (const input of this.inputElements) {
       input.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
@@ -163,7 +170,7 @@ export class PinCode {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
+    this.internals?.setFormValue(String(this.defaultValue ?? '')); // coerce defaultValue to string for form value
     this.value = this.defaultValue;
   }
 
@@ -224,7 +231,7 @@ export class PinCode {
               key={index}
               name={this.name}
               form={this.form}
-              {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}
+              {...(isCurrentInput(index, this.parsedValue, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby={setAriaIDREF(inputLabelId, inputMessageId)}
@@ -233,7 +240,7 @@ export class PinCode {
               autoComplete="one-time-code"
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
-              value={this.value[index] === ' ' ? null : this.value[index]}
+              value={this.parsedValue[index] === ' ' ? null : this.parsedValue[index]}
               disabled={this.disabled}
               required={this.required}
               onBlur={this.onInputBlur}
@@ -300,7 +307,7 @@ export class PinCode {
     const sanitisedPastedValue = removeWhiteSpaces(
       getSanitisedValue(this.host, event.clipboardData.getData('Text'), this.length)
     );
-    if (sanitisedPastedValue !== this.value) {
+    if (sanitisedPastedValue !== this.parsedValue) {
       this.updateValue(sanitisedPastedValue);
       this.focusFirstEmptyOrLastInput(sanitisedPastedValue);
     }

@@ -1,3 +1,4 @@
+import * as stencilCore from '@stencil/core';
 import { vi } from 'vitest';
 import * as loggerUtils from '../../../utils/log/logger';
 import {
@@ -12,62 +13,172 @@ import {
   updateRadioGroupOptions,
 } from './radio-group-utils';
 
-const makeOptions = (specs: Partial<RadioGroupOption>[]): RadioGroupOption[] =>
-  specs.map((s) => ({ selected: false, disabled: false, loading: false, value: '', ...s }) as RadioGroupOption);
+type OptionInit = {
+  value: string | number | undefined;
+  selected?: boolean;
+  disabled?: boolean;
+};
 
-describe('resetSelectedRadioGroupOption()', () => {
-  it('should unselect the currently selected option', () => {
-    const options = makeOptions([{ selected: false }, { selected: true }, { selected: false }]);
-    resetSelectedRadioGroupOption(options);
-    expect(options.map((o) => o.selected)).toEqual([false, false, false]);
+const createOptions = (inits: OptionInit[]): RadioGroupOption[] =>
+  inits.map(
+    ({ value, selected = false, disabled = false }) =>
+      ({
+        value,
+        selected,
+        disabled,
+      }) as unknown as RadioGroupOption
+  );
+
+const makeOptions = (specs: Partial<RadioGroupOption>[]): RadioGroupOption[] =>
+  specs.map((spec) => ({ selected: false, disabled: false, loading: false, value: '', ...spec }) as RadioGroupOption);
+
+describe('updateRadioGroupOptions()', () => {
+  it('should select the option matching a string value', () => {
+    const options = createOptions([{ value: 'a' }, { value: 'b' }, { value: 'c' }]);
+    const forceUpdateSpy = vi.spyOn(stencilCore, 'forceUpdate');
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+
+    updateRadioGroupOptions(options, 'b');
+
+    expect(options[0].selected).toBe(false);
+    expect(options[1].selected).toBe(true);
+    expect(options[2].selected).toBe(false);
+    expect(forceUpdateSpy).toHaveBeenCalledWith(options[1]);
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 
-  it('should do nothing when no option is selected', () => {
-    const options = makeOptions([{ selected: false }, { selected: false }]);
-    resetSelectedRadioGroupOption(options);
-    expect(options.map((o) => o.selected)).toEqual([false, false]);
+  it('should select the option matching a number value', () => {
+    const options = createOptions([{ value: 1 }, { value: 2 }, { value: 3 }]);
+    const forceUpdateSpy = vi.spyOn(stencilCore, 'forceUpdate');
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+
+    updateRadioGroupOptions(options, 2);
+
+    expect(options[0].selected).toBe(false);
+    expect(options[1].selected).toBe(true);
+    expect(options[2].selected).toBe(false);
+    expect(forceUpdateSpy).toHaveBeenCalledWith(options[1]);
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
+  });
+
+  it('should not match a number option when the provided value is a string of the same numeric content', () => {
+    const options = createOptions([{ value: 1 }, { value: 2 }]);
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+
+    updateRadioGroupOptions(options, '2');
+
+    expect(options.every((option) => !option.selected)).toBe(true);
+    expect(consoleWarnSpy).toHaveBeenCalledWith(
+      'The provided value is not included in the options of the radio group:',
+      '2'
+    );
+  });
+
+  it('should not match a string option when the provided value is a number of the same numeric content', () => {
+    const options = createOptions([{ value: '1' }, { value: '2' }]);
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+
+    updateRadioGroupOptions(options, 2);
+
+    expect(options.every((option) => !option.selected)).toBe(true);
+    expect(consoleWarnSpy).toHaveBeenCalledWith(
+      'The provided value is not included in the options of the radio group:',
+      '2'
+    );
+  });
+
+  it('should reset previously selected option without warning when value is null', () => {
+    const options = createOptions([{ value: 'a', selected: true }, { value: 'b' }]);
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+
+    updateRadioGroupOptions(options, null);
+
+    options.forEach((option) => {
+      expect(option.selected).toBe(false);
+    });
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
+  });
+
+  it('should reset previously selected option without warning when value is undefined', () => {
+    const options = createOptions([{ value: 'a' }, { value: 'b', selected: true }]);
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+
+    updateRadioGroupOptions(options, undefined);
+
+    options.forEach((option) => {
+      expect(option.selected).toBe(false);
+    });
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
+  });
+
+  it('should warn when value does not match any option', () => {
+    const options = createOptions([{ value: 'a' }, { value: 'b' }]);
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+
+    updateRadioGroupOptions(options, 'unknown');
+
+    options.forEach((option) => {
+      expect(option.selected).toBe(false);
+    });
+    expect(consoleWarnSpy).toHaveBeenCalledWith(
+      'The provided value is not included in the options of the radio group:',
+      'unknown'
+    );
+  });
+
+  it('should deselect the previously selected option when switching to a new matching value', () => {
+    const options = createOptions([{ value: 'a', selected: true }, { value: 'b' }]);
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+
+    updateRadioGroupOptions(options, 'b');
+
+    expect(options[0].selected).toBe(false);
+    expect(options[1].selected).toBe(true);
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 });
 
-describe('updateRadioGroupOptions()', () => {
-  it('should select the option matching the value and unselect others', () => {
-    const options = makeOptions([{ value: 'a', selected: true }, { value: 'b' }, { value: 'c' }]);
-    updateRadioGroupOptions(options, 'b');
-    expect(options.map((o) => o.selected)).toEqual([false, true, false]);
+describe('resetSelectedRadioGroupOption()', () => {
+  it('should reset the currently selected option and call forceUpdate', () => {
+    const options = createOptions([{ value: 'a' }, { value: 'b', selected: true }]);
+    const forceUpdateSpy = vi.spyOn(stencilCore, 'forceUpdate');
+
+    resetSelectedRadioGroupOption(options);
+
+    expect(options[1].selected).toBe(false);
+    expect(forceUpdateSpy).toHaveBeenCalledWith(options[1]);
   });
 
-  it('should warn when the value matches no option and value is not empty', () => {
-    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn').mockImplementation(() => {});
-    const options = makeOptions([{ value: 'a' }, { value: 'b' }]);
-    updateRadioGroupOptions(options, 'zzz');
-    expect(consoleWarnSpy).toHaveBeenCalledWith(
-      'The provided value is not included in the options of the radio group:',
-      'zzz'
-    );
-    expect(options.map((o) => o.selected)).toEqual([false, false]);
-  });
+  it('should not call forceUpdate when no option is selected', () => {
+    const options = createOptions([{ value: 'a' }, { value: 'b' }]);
+    const forceUpdateSpy = vi.spyOn(stencilCore, 'forceUpdate');
 
-  it('should not warn when the value is an empty string', () => {
-    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn').mockImplementation(() => {});
-    const options = makeOptions([{ value: 'a', selected: true }, { value: 'b' }]);
-    updateRadioGroupOptions(options, '');
-    expect(consoleWarnSpy).not.toHaveBeenCalled();
-    expect(options.map((o) => o.selected)).toEqual([false, false]);
+    resetSelectedRadioGroupOption(options);
+
+    expect(forceUpdateSpy).not.toHaveBeenCalled();
   });
 });
 
 describe('setSelectedRadioGroupOption()', () => {
-  it('should select the given option and unselect the previously selected one', () => {
-    const options = makeOptions([{ selected: true }, { selected: false }, { selected: false }]);
+  it('should select the given option, reset others and call forceUpdate', () => {
+    const options = createOptions([{ value: 'a', selected: true }, { value: 'b' }, { value: 'c' }]);
+    const forceUpdateSpy = vi.spyOn(stencilCore, 'forceUpdate');
+
     setSelectedRadioGroupOption(options, options[2]);
-    expect(options.map((o) => o.selected)).toEqual([false, false, true]);
+
+    expect(options[0].selected).toBe(false);
+    expect(options[1].selected).toBe(false);
+    expect(options[2].selected).toBe(true);
+    expect(forceUpdateSpy).toHaveBeenCalledWith(options[2]);
   });
 });
 
 describe('syncRadioGroupChildrenProps()', () => {
   it('should copy parent state onto every child', () => {
     const children = makeOptions([{}, {}]);
+
     syncRadioGroupChildrenProps(children, true, true, 'error', 'my-group');
+
     for (const child of children) {
       expect(child.disabledParent).toBe(true);
       expect(child.loadingParent).toBe(true);
@@ -84,17 +195,20 @@ describe('getActiveOptionIndex()', () => {
 
   it('should return the index of the focused option', () => {
     const options = Array.from({ length: 3 }, () => {
-      const el = document.createElement('p-radio-group-option');
-      el.tabIndex = 0;
-      document.body.appendChild(el);
-      return el;
+      const element = document.createElement('p-radio-group-option');
+      element.tabIndex = 0;
+      document.body.appendChild(element);
+      return element;
     });
+
     options[1].focus();
+
     expect(getActiveOptionIndex(options)).toBe(1);
   });
 
   it('should return -1 when no option is focused', () => {
     const options = Array.from({ length: 2 }, () => document.createElement('p-radio-group-option'));
+
     expect(getActiveOptionIndex(options)).toBe(-1);
   });
 });
@@ -121,12 +235,12 @@ describe('getFirstEnabledOptionIndex()', () => {
 
 describe('findNextEnabledIndex()', () => {
   it.each<[Partial<RadioGroupOption>[], number, number, number]>([
-    [[{}, {}, {}], 0, 1, 1], // step forward
-    [[{}, {}, {}], 0, -1, 2], // step backward wraps
-    [[{}, { disabled: true }, {}], 0, 1, 2], // skip disabled
-    [[{}, { loading: true }, {}], 0, 1, 2], // skip loading
-    [[{}, { disabled: true }, { disabled: true }], 0, 1, 0], // wraps fully back to enabled startIndex
-    [[{ disabled: true }, { disabled: true }, { disabled: true }], 1, 1, 1], // all options disabled -> returns startIndex
+    [[{}, {}, {}], 0, 1, 1],
+    [[{}, {}, {}], 0, -1, 2],
+    [[{}, { disabled: true }, {}], 0, 1, 2],
+    [[{}, { loading: true }, {}], 0, 1, 2],
+    [[{}, { disabled: true }, { disabled: true }], 0, 1, 0],
+    [[{ disabled: true }, { disabled: true }, { disabled: true }], 1, 1, 1],
   ])('should find the next enabled index for %j start=%s step=%s -> %s', (specs, start, step, expected) => {
     expect(findNextEnabledIndex(makeOptions(specs), start, step)).toBe(expected);
   });

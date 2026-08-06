@@ -1,4 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
+import * as loggerUtils from '../../../utils/log/logger';
+import * as throwIfPropIsUndefinedUtils from '../../../utils/validation/throwIfPropIsUndefined';
 import { RadioGroupOption } from './radio-group-option';
 
 const initComponent = (): RadioGroupOption => {
@@ -7,6 +9,29 @@ const initComponent = (): RadioGroupOption => {
   component.host.attachShadow({ mode: 'open' });
   return component;
 };
+
+describe('render', () => {
+  it('should validate that value is defined', () => {
+    const spy = vi.spyOn(throwIfPropIsUndefinedUtils, 'throwIfPropIsUndefined');
+    const component = initComponent();
+
+    expect(() => component.render()).toThrowError(/required property 'value' is undefined/);
+    expect(spy).toHaveBeenCalledWith(component.host, 'value', component.value);
+  });
+
+  it('should reject null values', () => {
+    const consoleErrorSpy = vi.spyOn(loggerUtils, 'consoleError').mockImplementation(() => {});
+    const component = initComponent();
+    Reflect.set(component, 'value', null);
+
+    component.render();
+
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      "Invalid property 'value' with value 'null' supplied to p-radio-group-option, expected one of: string, number.",
+      component.host
+    );
+  });
+});
 
 describe('parent validation', () => {
   it('should throw when not placed inside p-radio-group', () => {

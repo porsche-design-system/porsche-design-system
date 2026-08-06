@@ -8,7 +8,7 @@ test('should work with v-model:checked manually and programmatic', async ({ page
   const host = getHost(page);
   const options = getOptions(page);
 
-  await expect(host).toHaveJSProperty('value', undefined);
+  await expect(host).toHaveJSProperty('value', null);
   await expect(page.locator('[data-field="value"]')).toHaveText('');
 
   await options.nth(0).click();
@@ -18,6 +18,6 @@ test('should work with v-model:checked manually and programmatic', async ({ page
 
   await page.getByRole('button', { name: 'Reset', exact: true }).click();
 
-  await expect(host).toHaveJSProperty('value', undefined);
+  await expect(host).toHaveJSProperty('value', null);
   await expect(page.locator('[data-field="value"]')).toHaveText('');
 });
