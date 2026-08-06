@@ -138,9 +138,6 @@ stages:
         skills: []
         tools: [file, shell]
         system_prompt: dependency-ci-repair
-    post_command: >-
-      test -z "$(git status --porcelain --untracked-files=all --
-      ':(glob)**/package.json' package-lock.json docs/dependencies.md)"
     quality_gates:
       - evaluator: script_gate
         on_fail: escalate
@@ -152,8 +149,29 @@ stages:
           failure_verdict: loop_back
           environment_verdict: escalate
           steps:
+            - name: dependency-metadata-before
+              command: &dependency-metadata-check
+                - sh
+                - -c
+                - >-
+                  metadata_status="$(git status --porcelain
+                  --untracked-files=all --
+                  ':(glob)**/package.json' package-lock.json
+                  docs/dependencies.md)" || exit 2;
+                  if test -n "$metadata_status"; then
+                  git restore --source=HEAD --staged --worktree --
+                  ':(glob)**/package.json' package-lock.json
+                  docs/dependencies.md || exit 2;
+                  git clean -f --
+                  ':(glob)**/package.json' package-lock.json
+                  docs/dependencies.md || exit 2;
+                  printf '%s\n' "$metadata_status" >&2;
+                  exit 1;
+                  fi
             - name: lint
               command: [npm, run, lint]
+            # ponytail: this is the only tracked build output; move cleanup
+            # engine-side if another generator starts writing.
             - name: build
               command:
                 - sh
@@ -166,6 +184,8 @@ stages:
                   exit "$status"
             - name: components-unit
               command: [npm, run, "test:unit:components"]
+            - name: dependency-metadata-after
+              command: *dependency-metadata-check
 
 settings:
   timeout_total: "350m"

@@ -57,9 +57,10 @@ The gate fails fast. Every run therefore executes the same commands in the same 
 Avoid conditional package detection: transitive dependency impact makes such a classifier brittle, and the PR Gates
 already run the complete matrix.
 
-The Next.js build rewrites tracked `packages/components-react/projects/nextjs/next-env.d.ts`. Wrap `npm run build` in
-`sh` and restore that generated file before returning the build's original exit code. A restore failure exits `2`, so
-TurboSpec escalates instead of committing generated output from either a successful or failed stage.
+The Next.js build expects tracked `packages/components-react/projects/nextjs/next-env.d.ts` to include its generated
+`root-params` type reference, so commit that one-line generated update. Also wrap `npm run build` in `sh` and restore
+the file before returning the build's original exit code. A restore failure exits `2`, so TurboSpec escalates instead of
+committing later generated drift from a normal successful or failed build.
 
 Set the gate's fallback `on_fail` to `escalate`, then use `failure_verdict: loop_back` and
 `environment_verdict: escalate`. Exit code `1` represents a reproducible validation failure that the agent may repair.
@@ -95,11 +96,12 @@ Dependency metadata is complete before `verify_ci`:
 
 CI repair therefore adapts source only. The workflow must not reopen dependency selection after cleanup.
 
-Production TurboSpec runs always open a PR. Its `WorktreeCommitter` commits every successful stage before the next stage
-starts, so `HEAD` at `verify_ci` is the post-cleanup dependency baseline. After the minimum gate passes, a stage
-`post_command` runs `git status --porcelain` for every `package.json`, `package-lock.json`, and `docs/dependencies.md`.
-Any tracked, staged, unstaged, deleted, renamed, or non-ignored untracked change fails the stage. This native Git check
-needs no persisted baseline and remains correct on a fresh-runner resume.
+Production TurboSpec runs always open a PR. Its `WorktreeCommitter` commits every completed stage, including failed
+stages, so `verify_ci` checks dependency metadata both before and after the minimum commands. Each scope step runs
+`git status --porcelain` for every `package.json`, `package-lock.json`, and `docs/dependencies.md`. On a violation it
+restores tracked metadata from `HEAD`, removes matching non-ignored untracked files, reports the paths, and exits `1`.
+The cleanup happens before TurboSpec can commit the failed stage, so a fresh-runner resume cannot turn a forbidden edit
+into a clean baseline.
 
 ## Failure Outcome
 
@@ -126,7 +128,7 @@ corresponding full CI work to `build.yml` and `test.yml`.
 
 - The first `ci_repairer` invocation makes no changes or shell calls before a gate failure exists.
 - A validation failure invokes the same-stage repair agent with the failing command's diagnostic.
-- A repair that changes dependency metadata fails the post-verification Git status check.
+- A repair that changes dependency metadata is restored and fails the metadata scope step before stage commit.
 - The build step never leaves the generated `next-env.d.ts` change for TurboSpec to commit.
 - The deterministic update command does not run again during CI repair.
 - A successful repair re-runs the complete minimum gate.
