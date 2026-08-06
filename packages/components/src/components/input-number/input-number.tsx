@@ -85,7 +85,7 @@ export class InputNumber {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** Sets the current numeric value of the field. */
+  /** Sets the current numeric value. Strings and numbers are accepted for programmatic assignment, but user input updates the value as a string to mirror native input behavior. */
   @Prop({ mutable: true }) public value?: string | number | null = '';
 
   /** Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='postal-code'`). */
@@ -127,13 +127,13 @@ export class InputNumber {
   /** Shows increment/decrement spin buttons inside the field to adjust the numeric value by clicking. */
   @Prop() public controls?: boolean = false;
 
-  /** Emitted when the number input loses focus after its value was changed. */
+  /** Emitted when the number input loses focus after its value was changed. The component value and native event target value are strings after user input. */
   @Event({ bubbles: true }) public change: EventEmitter<InputNumberChangeEventDetail>;
 
   /** Emitted when the number input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputNumberBlurEventDetail>;
 
-  /** Emitted when the value has been changed as a direct result of a user action. */
+  /** Emitted when the value has been changed as a direct result of a user action. The component value and native event target value are strings. */
   @Event({ bubbles: true }) public input: EventEmitter<InputNumberInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;

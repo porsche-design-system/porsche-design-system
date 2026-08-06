@@ -27,7 +27,9 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
+import { descriptionId, labelId } from '../../common/label/label-utils';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
+import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
@@ -38,13 +40,11 @@ import {
   type SegmentedControlState,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
-import { descriptionId, labelId } from '../../common/label/label-utils';
-import { getFieldsetAriaAttributes } from '../../fieldset/fieldset-utils';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
   name: AllowedTypes.string,
   form: AllowedTypes.string,
@@ -80,8 +80,21 @@ export class SegmentedControl {
   /** Sets a supplementary description displayed below the label to give users additional context about the segmented control. */
   @Prop() public description?: string = '';
 
-  /** Sets the currently selected item's value and pre-selects the matching option when the component renders. */
-  @Prop({ mutable: true }) public value?: string | number;
+  /**
+   * Sets the currently selected item's value and pre-selects the matching option when the component renders.
+   * Matches an item strictly by type and value, meaning string
+   * or number only match an item whose value has the same type and equal value. Use undefined or null for no
+   * preselection.
+   *
+   * Please note that FormData always serializes values as
+   * strings, so when participating in a native (uncontrolled) form a
+   * number value is restored as string via formStateRestoreCallback
+   * and will no longer strictly match a number-typed item. This limitation
+   * only applies to native form state restoration; in controlled forms
+   * (where the consumer manages value directly via the change event),
+   * the number type is preserved end-to-end.
+   */
+  @Prop({ mutable: true }) public value?: string | number | null;
 
   /** Sets the name of the control submitted with the form data to identify the selected value on the server. */
   @Prop({ reflect: true }) public name?: string;
@@ -121,7 +134,7 @@ export class SegmentedControl {
 
   @AttachInternals() private internals: ElementInternals;
 
-  private defaultValue: string | number;
+  private defaultValue: string | number | null | undefined;
 
   @Listen('internalSegmentedControlItemUpdate')
   public updateSegmentedControlItemHandler(e: Event & { target: HTMLElement & SegmentedControlItem }): void {
@@ -139,7 +152,12 @@ export class SegmentedControl {
 
   @Watch('value')
   public onValueChange(): void {
-    this.internals?.setFormValue(this.value?.toString());
+    this.setFormValue();
+  }
+
+  public setFormValue(): void {
+    // `null`/`undefined` → `undefined`, removing the segmented-control from form submission
+    this.internals?.setFormValue(this.value === null || this.value === undefined ? undefined : String(this.value));
   }
 
   public connectedCallback(): void {
@@ -155,7 +173,7 @@ export class SegmentedControl {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value?.toString());
+    this.setFormValue();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -167,8 +185,7 @@ export class SegmentedControl {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue?.toString());
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher
   }
 
   public formDisabledCallback(disabled: boolean): void {
