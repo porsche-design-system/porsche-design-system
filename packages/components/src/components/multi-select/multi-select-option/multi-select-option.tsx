@@ -1,5 +1,5 @@
 import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../types';
+import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -11,7 +11,7 @@ import { getComponentCss } from './multi-select-option-styles';
 import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 
 const propTypes: PropTypes<typeof MultiSelectOption> = {
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   disabled: AllowedTypes.boolean,
 };
 

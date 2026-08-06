@@ -102,7 +102,7 @@ export class PinCode {
   /** Controls whether the individual input fields mask their content as password dots (`password`) or show digits (`number`). */
   @Prop() public type?: PinCodeType = 'number';
 
-  /** Sets the current concatenated value of all pin code fields and allows setting the initial value. */
+  /** Sets the current concatenated value. Numbers are accepted for programmatic assignment, but user input updates the value as a string. */
   @Prop({ mutable: true }) public value?: string | number | null = '';
 
   /** Reduces the pin code field height and spacing for use in dense layouts where vertical space is limited. */
@@ -114,7 +114,7 @@ export class PinCode {
   /** Emitted when the pin code component loses focus after the user finishes entering characters. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
-  /** Emitted when the pin code value changes as the user types, carrying the new concatenated value in the event detail. */
+  /** Emitted when the pin code value changes as the user types, carrying `{ value: string; isComplete: boolean }` in the event detail. */
   @Event({ bubbles: true }) public change: EventEmitter<PinCodeChangeEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
@@ -307,7 +307,7 @@ export class PinCode {
     const sanitisedPastedValue = removeWhiteSpaces(
       getSanitisedValue(this.host, event.clipboardData.getData('Text'), this.length)
     );
-    if (sanitisedPastedValue !== this.value) {
+    if (sanitisedPastedValue !== this.parsedValue) {
       this.updateValue(sanitisedPastedValue);
       this.focusFirstEmptyOrLastInput(sanitisedPastedValue);
     }

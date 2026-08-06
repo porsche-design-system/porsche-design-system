@@ -22,7 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Changed
 
 - `Radio Group`: default value of `value` prop to `undefined`. Use `undefined`/`null` to represent an unselected state,
-  since `''` (empty string) is a valid option value and can lead to confusion.
+  since `''` (empty string) is a valid option value and can lead to confusion. An unselected radio group is now omitted
+  from native form submissions instead of submitting an empty string.
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Pin Code`, `Radio Group`, `Segmented Control`: extended types of `value` prop to allow `string | number | null`
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
@@ -65,8 +66,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Added
 
 - `Knowledge Skill`: providing version-exact guidance for PDS components, stylesheets, design tokens, and styling
-  integrations
-  ([#4555](https://github.com/porsche-design-system/porsche-design-system/pull/4555))
+  integrations ([#4555](https://github.com/porsche-design-system/porsche-design-system/pull/4555))
 
 ## [4.5.0] - 2026-07-21
 

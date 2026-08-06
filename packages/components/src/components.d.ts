@@ -1273,7 +1273,7 @@ export namespace Components {
          */
         "step"?: number;
         /**
-          * Sets the current numeric value of the field.
+          * Sets the current numeric value. Strings and numbers are accepted for programmatic assignment, but user input updates the value as a string to mirror native input behavior.
           * @default ''
          */
         "value"?: string | number | null;
@@ -1638,7 +1638,7 @@ export namespace Components {
          */
         "state"?: InputTextState;
         /**
-          * Sets the current text value of the input field.
+          * Sets the current text value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.
           * @default ''
          */
         "value"?: string | number | null;
@@ -2377,10 +2377,10 @@ export namespace Components {
          */
         "type"?: PinCodeType;
         /**
-          * Sets the current concatenated value of all pin code fields and allows setting the initial value.
+          * Sets the current concatenated value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -2468,10 +2468,9 @@ export namespace Components {
          */
         "state"?: RadioGroupState;
         /**
-          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes.
-          * @default ''
+          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PRadioGroupOption {
         /**
@@ -2489,9 +2488,9 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * Sets the value submitted with the form data when this radio option is selected within its parent group.
+          * The option value. Selected when it strictly matches the p-radio-group value (same type and value).
          */
-        "value"?: string;
+        "value": string | number;
     }
     interface PScroller {
         /**
@@ -2585,9 +2584,9 @@ export namespace Components {
          */
         "state"?: SegmentedControlState;
         /**
-          * Sets the currently selected item's value and pre-selects the matching option when the component renders.
+          * Sets the currently selected item's value and pre-selects the matching option when the component renders. Matches an item strictly by type and value, meaning string or number only match an item whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed item. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string | number;
+        "value"?: string | number | null;
     }
     interface PSegmentedControlItem {
         /**
@@ -5528,11 +5527,11 @@ declare namespace LocalJSX {
          */
         "onBlur"?: (event: PInputNumberCustomEvent<InputNumberBlurEventDetail>) => void;
         /**
-          * Emitted when the number input loses focus after its value was changed.
+          * Emitted when the number input loses focus after its value was changed. The component value and native event target value are strings after user input.
          */
         "onChange"?: (event: PInputNumberCustomEvent<InputNumberChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted when the value has been changed as a direct result of a user action. The component value and native event target value are strings.
          */
         "onInput"?: (event: PInputNumberCustomEvent<InputNumberInputEventDetail>) => void;
         /**
@@ -5561,7 +5560,7 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * Sets the current numeric value of the field.
+          * Sets the current numeric value. Strings and numbers are accepted for programmatic assignment, but user input updates the value as a string to mirror native input behavior.
           * @default ''
          */
         "value"?: string | number | null;
@@ -5942,11 +5941,11 @@ declare namespace LocalJSX {
          */
         "onBlur"?: (event: PInputTextCustomEvent<InputTextBlurEventDetail>) => void;
         /**
-          * Emitted when the input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed. The component value and native event target value are strings after user input.
          */
         "onChange"?: (event: PInputTextCustomEvent<InputTextChangeEventDetail>) => void;
         /**
-          * Emitted on every value change as the user types.
+          * Emitted on every value change as the user types. The component value and native event target value are strings.
          */
         "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
         /**
@@ -5974,7 +5973,7 @@ declare namespace LocalJSX {
          */
         "state"?: InputTextState;
         /**
-          * Sets the current text value of the input field.
+          * Sets the current text value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.
           * @default ''
          */
         "value"?: string | number | null;
@@ -6770,7 +6769,7 @@ declare namespace LocalJSX {
          */
         "onBlur"?: (event: PPinCodeCustomEvent<void>) => void;
         /**
-          * Emitted when the pin code value changes as the user types, carrying the new concatenated value in the event detail.
+          * Emitted when the pin code value changes as the user types, carrying `{ value: string; isComplete: boolean }` in the event detail.
          */
         "onChange"?: (event: PPinCodeCustomEvent<PinCodeChangeEventDetail>) => void;
         /**
@@ -6789,10 +6788,10 @@ declare namespace LocalJSX {
          */
         "type"?: PinCodeType;
         /**
-          * Sets the current concatenated value of all pin code fields and allows setting the initial value.
+          * Sets the current concatenated value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -6892,10 +6891,9 @@ declare namespace LocalJSX {
          */
         "state"?: RadioGroupState;
         /**
-          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes.
-          * @default ''
+          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PRadioGroupOption {
         /**
@@ -6913,9 +6911,9 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Sets the value submitted with the form data when this radio option is selected within its parent group.
+          * The option value. Selected when it strictly matches the p-radio-group value (same type and value).
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface PScroller {
         /**
@@ -7017,9 +7015,9 @@ declare namespace LocalJSX {
          */
         "state"?: SegmentedControlState;
         /**
-          * Sets the currently selected item's value and pre-selects the matching option when the component renders.
+          * Sets the currently selected item's value and pre-selects the matching option when the component renders. Matches an item strictly by type and value, meaning string or number only match an item whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed item. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string | number;
+        "value"?: string | number | null;
     }
     interface PSegmentedControlItem {
         /**

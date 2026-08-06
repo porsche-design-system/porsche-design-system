@@ -193,6 +193,27 @@ describe('formStateRestoreCallback', () => {
   });
 });
 
+describe('onPaste()', () => {
+  it('should not emit a change when pasted text matches a numeric value', () => {
+    const component = initComponent();
+    const emitSpy = vi.fn();
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    const preventDefaultSpy = vi.fn();
+    component.value = 1234;
+    component.change = { emit: emitSpy };
+
+    component['onPaste']({
+      clipboardData: { getData: vi.fn().mockReturnValue('1234') },
+      preventDefault: preventDefaultSpy,
+    } as unknown as ClipboardEvent);
+
+    expect(component.value).toBe(1234);
+    expect(emitSpy).not.toHaveBeenCalled();
+    expect(setFormValueSpy).not.toHaveBeenCalled();
+    expect(preventDefaultSpy).toHaveBeenCalled();
+  });
+});
+
 describe('updateValue()', () => {
   it('should call change.emit() with correct parameters and call setFormValue()', () => {
     const component = initComponent();

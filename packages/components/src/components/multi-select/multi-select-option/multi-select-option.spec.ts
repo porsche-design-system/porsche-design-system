@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
+import * as loggerUtils from '../../../utils/log/logger';
 import { MultiSelectOption } from './multi-select-option';
 
 const initComponent = (parentTag?: string): MultiSelectOption => {
@@ -28,6 +29,18 @@ describe('parent validation', () => {
     const component = initComponent('p-optgroup');
 
     expect(() => component.connectedCallback()).not.toThrow();
+  });
+});
+
+describe('prop validation', () => {
+  it('should accept a numeric value', () => {
+    const component = initComponent();
+    const consoleWarnSpy = vi.spyOn(loggerUtils, 'consoleWarn');
+    component.value = 42;
+
+    component.render();
+
+    expect(consoleWarnSpy).not.toHaveBeenCalled();
   });
 });
 
