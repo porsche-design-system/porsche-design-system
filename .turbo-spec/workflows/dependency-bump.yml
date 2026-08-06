@@ -129,6 +129,29 @@ stages:
             - name: documentation-write-scope
               command: [node, .turbo-spec/scripts/revalidate-overrides.mjs, verify-docs]
 
+  - name: verify_ci
+    orchestrator: implementation
+    depends_on: [document_overrides]
+    quality_gates:
+      - evaluator: script_gate
+        on_fail: loop_back
+        max_retries: 2
+        loop_back:
+          target_stage: resolve_dependencies
+          target_agent: dependency_updater
+          execute_strategy: agent_and_everything_after_it
+        config:
+          gate_name: ci-minimum
+          failure_verdict: loop_back
+          environment_verdict: escalate
+          steps:
+            - name: lint
+              command: [npm, run, lint]
+            - name: build
+              command: [npm, run, build]
+            - name: components-unit
+              command: [npm, run, "test:unit:components"]
+
 settings:
   timeout_total: "350m"
 
