@@ -1,10 +1,11 @@
 import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../types';
+import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
+  throwIfPropIsUndefined,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
@@ -14,7 +15,7 @@ import { getComponentCss } from './radio-group-option-styles';
 import type { RadioGroupOptionInternalHTMLProps } from './radio-group-option-utils';
 
 const propTypes: PropTypes<typeof RadioGroupOption> = {
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   label: AllowedTypes.string,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
@@ -33,8 +34,8 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
 export class RadioGroupOption {
   @Element() public host!: HTMLElement & RadioGroupOptionInternalHTMLProps;
 
-  /** Sets the value submitted with the form data when this radio option is selected within its parent group. */
-  @Prop() public value?: string;
+  /** Sets the required option value. Must be a string or number and is selected when it strictly matches the parent `p-radio-group` value by type and value. */
+  @Prop() public value: string | number;
 
   /** Sets the visible label text displayed next to the radio button that the user reads to identify the option. */
   @Prop() public label?: string;
@@ -65,6 +66,7 @@ export class RadioGroupOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    throwIfPropIsUndefined(this.host, 'value', this.value);
     const { selected: isSelected, name, state } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
     const isOptionLoading = this.loading && !isSelected;
