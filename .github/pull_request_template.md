@@ -5,14 +5,8 @@
 
 - [ ] I have read and accept the [Contributor License Agreement](https://opensource.porsche.com/docs/cla)
 
-#### References
+### Related Issue
 
-- Preview: https://designsystem.porsche.com/issue/.../
+<!-- Link the issue this PR resolves so it closes automatically on merge. Replace <issue-number>, or remove this section if there is no related issue. -->
 
-#### Scope
-
-Short description of the pull request scope
-
-#### Resolved Issue
-
-Resolves [IssueNumber]
+Closes #<issue-number>

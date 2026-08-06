@@ -1,15 +1,7 @@
 import { gridExtendedOffsetBase } from '@porsche-design-system/emotion';
-import { BANNER_Z_INDEX } from '../../constants';
-import {
-  addImportantToEachRule,
-  cssVariableTransitionDuration,
-  getTransition,
-  hostHiddenStyles,
-  motionDurationMap,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
-import { shadowLg } from '../../styles/css-variables';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { ref, shadowLg } from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, getTransition, hostHiddenStyles } from '../../styles';
+import { buildResponsiveStyles, getCss, mergeDeep, overlayTransitionSupportsQuery } from '../../utils';
 import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getFunctionalComponentNotificationBaseStyles } from '../common/notification-base/notification-base-styles';
 import type { BannerPosition, BannerState } from './banner-utils';
@@ -34,20 +26,22 @@ const cssVarInsetX = '--p-banner-inset-x';
 const cssVarPositionTop = '--p-banner-position-top'; // deprecated (aliased)
 const cssVarPositionBottom = '--p-banner-position-bottom'; // deprecated (aliased)
 const topBottomFallback = '56px';
-const cssVariableZIndex = '--_p-banner-a';
+
+const cssVarTransform = '--_p-banner-a';
 
 export const getComponentCss = (
   isOpen: boolean,
   position: BreakpointCustomizable<BannerPosition>,
   state: BannerState,
   hasDismissButton: boolean,
-  hasHeadingOrHeadingSlot: boolean
+  hasHeadingOrHeadingSlot: boolean,
+  skipEntryTransition: boolean
 ): string => {
   const duration = isOpen ? 'moderate' : 'short';
   const easing = isOpen ? 'in' : 'out';
-  const transition = `visibility 0s linear var(${cssVariableTransitionDuration},${isOpen ? '0s' : motionDurationMap[duration]}),${getTransition('transform', duration, easing)}`;
+  const transition = getTransition('transform', duration, easing);
 
-  return getCss({
+  const css = getCss({
     ...mergeDeep(
       {
         '@global': {
@@ -57,51 +51,42 @@ export const getComponentCss = (
               ...hostHiddenStyles,
             }),
           },
-          ...preventFoucOfNestedElementsStyles,
           '[popover]': {
             all: 'unset',
             position: 'fixed',
-            zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`, // Fallback for browsers lacking `transition-behavior: allow-discrete` — keeps the banner visible during fade-out after leaving the top layer.
             ...buildResponsiveStyles(position, (v: BannerPosition) => ({
               ...(v === 'top' && {
-                insetBlock: `var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback})) auto`,
-                ...(!isOpen && {
-                  transform: `translate3d(-50%,calc(-100% - var(${cssVarTop},var(${cssVarPositionTop},${topBottomFallback}))),0)`,
-                }),
+                [cssVarTransform]: `translate3d(-50%,calc(-100% - ${ref(cssVarTop, ref(cssVarPositionTop, topBottomFallback))}),0)`,
+                insetBlock: `${ref(cssVarTop, ref(cssVarPositionTop, topBottomFallback))} auto`,
               }),
               ...(v === 'bottom' && {
-                insetBlock: `auto var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback}))`,
-                ...(!isOpen && {
-                  transform: `translate3d(-50%,calc(var(${cssVarBottom},var(${cssVarPositionBottom},${topBottomFallback})) + 100%),0)`,
-                }),
+                [cssVarTransform]: `translate3d(-50%,calc(${ref(cssVarBottom, ref(cssVarPositionBottom, topBottomFallback))} + 100%),0)`,
+                insetBlock: `auto ${ref(cssVarBottom, ref(cssVarPositionBottom, topBottomFallback))}`,
               }),
             })),
             left: '50vw',
-            width: `min(calc(100vw - 2 * var(${cssVarInsetX},${gridExtendedOffsetBase})),var(${cssVarMaxWidth},100ch))`,
+            width: `min(calc(100vw - 2 * ${ref(cssVarInsetX, gridExtendedOffsetBase)}),${ref(cssVarMaxWidth, '100ch')})`,
+            transform: isOpen ? 'translate3d(-50%,0,0)' : ref(cssVarTransform),
+            transition,
+            // keep the popover on the #top-layer while the fade-out runs (Chromium only; see `overlayTransitionSupportsQuery`)
+            ...overlayTransitionSupportsQuery({
+              transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete, ${getTransition('display', duration, easing)} allow-discrete`,
+            }),
+            overlay: 'none',
+            display: 'none',
             '&:popover-open': {
               overlay: 'auto',
+              display: 'grid',
             },
             '&::backdrop': {
-              display: 'none',
-            },
-            visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
-            pointerEvents: 'none', // element can't be interacted with mouse
-            ...(isOpen && {
-              visibility: 'inherit',
-              pointerEvents: 'inherit',
-              transform: 'translate3d(-50%,0,0)',
-            }),
-            transition,
-            // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
-            '@supports (transition-behavior: allow-discrete)': {
-              transition: `${transition},${getTransition('overlay', duration, easing)} allow-discrete`,
+              display: 'none', // reset ua-style
             },
           },
         },
       },
       {
         notification: {
-          boxShadow: shadowLg,
+          boxShadow: ref(shadowLg),
           opacity: isOpen ? 1 : 0, // it's necessary to spit up opacity transition from [popover], otherwise frosted effect won't render
           transition: getTransition('opacity', duration, easing),
         },
@@ -109,4 +94,16 @@ export const getComponentCss = (
       getFunctionalComponentNotificationBaseStyles(state, false, hasDismissButton, hasHeadingOrHeadingSlot)
     ),
   });
+
+  // Both the `[popover]` box (transform) and its nested `.notification` (opacity) need a `@starting-style`: while closed
+  // the popover is `display: none`, so on open `.notification` renders fresh with a computed `opacity: 1` and has no
+  // prior value to transition from — without the starting value it snaps to full opacity instead of fading in. The
+  // opacity is split onto `.notification` (not `[popover]`) so the frosted-glass backdrop-filter renders correctly.
+  //
+  // `skipEntryTransition` omits the append on the component's FIRST render, so an initially-open banner (`open=true` on
+  // page load) computes straight to its visible transform/opacity and appears instantly instead of sliding/fading in.
+  // Every later render passes `false`, so a user-triggered open still animates normally.
+  return isOpen && !skipEntryTransition
+    ? `${css}\n@starting-style {\n  [popover] {\n    transform: ${ref(cssVarTransform)};\n  }\n  .notification {\n    opacity: 0;\n  }\n}`
+    : css;
 };

@@ -1,16 +1,18 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getPrefixedTagNames,
+  createTopLayerController,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
   observeChildren,
+  type TopLayerController,
   unobserveChildren,
   validateProps,
 } from '../../utils';
+import { FCDismissButton } from '../common/fc-dismiss-button/fc-dismiss-button';
 import { NotificationBase } from '../common/notification-base/notification-base';
 import { getComponentCss } from './banner-styles';
 import {
@@ -47,45 +49,46 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
 export class Banner {
   @Element() public host!: HTMLElement;
 
-  /** Controls whether the banner is open or closed. */
+  /** Controls whether the banner is visible. Set to `true` to show it and `false` to hide it. */
   @Prop() public open: boolean = false;
 
-  /** Sets the heading text of the banner. */
+  /** Sets the heading text displayed at the top of the banner. */
   @Prop() public heading?: string = '';
 
-  /** Sets the heading tag for proper semantic structure within the page. */
+  /** Sets the HTML heading tag (e.g. h2, h3) to maintain correct document structure for the heading. */
   @Prop() public headingTag?: BannerHeadingTag = 'h5';
 
-  /** Sets the description text of the banner. */
+  /** Sets the supporting description text shown below the heading. */
   @Prop() public description?: string = '';
 
-  /** Sets the position of the banner. */
+  /** Sets the position of the banner on screen — `top` or `bottom`. Supports responsive breakpoint values. */
   @Prop() public position?: BreakpointCustomizable<BannerPosition> = { base: 'bottom', s: 'top' };
 
-  /** Defines the visual state of the banner. */
+  /** Sets the visual state of the banner — controls the icon and color scheme (`info`, `warning`, `error`, `success`). */
   @Prop() public state?: BannerState = 'info';
 
-  /** Shows a dismiss button allowing the banner to be closed. */
+  /** Shows a dismiss button so the user can manually close the banner. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** Emitted when the banner is requested to be dismissed. */
+  /** Emitted when the user closes the banner via the dismiss button or Escape key. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private refPopover: HTMLElement;
   private refDismiss: HTMLElement;
   private hasHeadingSlot: boolean;
   private hasDescriptionSlot: boolean;
-
-  @Watch('open')
-  public openChangeHandler(isOpen: boolean): void {
-    if (this.dismissButton) {
-      if (isOpen) {
-        document.addEventListener('keydown', this.onKeyboardEvent);
-      } else {
-        document.removeEventListener('keydown', this.onKeyboardEvent);
-      }
-    }
-  }
+  // Tracks whether the document-level Escape listener is currently registered (guards the idempotent sync below).
+  private hasKeydownListener = false;
+  // Tracks the component's first render. While `true`, the entry transition (`@starting-style`) is suppressed so an
+  // initially-open banner (`open=true` on page load) appears instantly instead of sliding/fading in; flipped to `false`
+  // in `componentDidLoad`, so every later (user-triggered) open keeps the entry animation.
+  private isInitialRender = true;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.refPopover,
+    isShown: () => !!this.refPopover?.matches(':popover-open'),
+    show: () => this.refPopover?.showPopover(),
+    hide: () => this.refPopover?.hidePopover(),
+  });
 
   public connectedCallback(): void {
     // Observe dynamic slot changes (only needed until :has-slotted CSS pseudo-class gets better support)
@@ -98,17 +101,17 @@ export class Banner {
       { subtree: false, childList: true, attributes: false }
     );
 
-    if (this.open && this.dismissButton) {
-      document.addEventListener('keydown', this.onKeyboardEvent);
-    }
+    // Re-register the Escape listener on (re)connect. Stencil does not re-render an already-loaded component when it is
+    // detached and re-attached, so `componentDidRender` would not run to restore the listener that `disconnectedCallback`
+    // removed. The sync is idempotent, so it never double-registers alongside the `componentDidRender` call.
+    this.syncEscapeListener(this.open && this.dismissButton);
   }
 
   public disconnectedCallback(): void {
+    // ensures the deferred top-layer hide is canceled and the Escape listener is removed in case banner is removed from DOM
+    this.topLayer.cancel();
+    this.syncEscapeListener(false);
     unobserveChildren(this.host);
-
-    if (this.open && this.dismissButton) {
-      document.removeEventListener('keydown', this.onKeyboardEvent);
-    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -116,9 +119,23 @@ export class Banner {
   }
 
   public componentDidRender(): void {
-    // showPopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly
-    this.refPopover[this.open ? 'showPopover' : 'hidePopover']();
+    // showPopover/hidePopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly.
+    // `componentDidRender` runs on every render (not only when `open` changes); both controller methods are idempotent.
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
+    // Register/unregister the document-level Escape listener based on the current open state (idempotent). Escape only
+    // dismisses when a dismiss button is present, so the listener is gated on `dismissButton` too.
+    this.syncEscapeListener(this.open && this.dismissButton);
     this.refDismiss?.focus();
+  }
+
+  public componentDidLoad(): void {
+    // After the first render the initial-open entry animation has been (intentionally) suppressed; clear the flag so any
+    // subsequent user-triggered open renders with `@starting-style` and animates in normally.
+    this.isInitialRender = false;
   }
 
   public render(): JSX.Element {
@@ -134,16 +151,20 @@ export class Banner {
       this.position,
       this.state,
       this.dismissButton,
-      !!(this.heading || this.hasHeadingSlot)
+      !!(this.heading || this.hasHeadingSlot),
+      this.isInitialRender
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const headingText = this.heading ? this.heading : getSlotTextContent(this.host, 'heading');
 
     return (
       <div
         popover="manual"
-        aria-hidden={this.open ? 'false' : 'true'}
+        // `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
+        // fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
+        // during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
+        // `inert` avoids that and mirrors the pattern used by `p-modal` / `p-popover` / `p-drilldown`.
+        inert={!this.open}
         {...getBannerAriaAttributes(this.state, headingText)}
         ref={(el: HTMLElement) => (this.refPopover = el)}
       >
@@ -155,19 +176,12 @@ export class Banner {
           hasDescriptionSlot={this.hasDescriptionSlot}
           {...(this.dismissButton && {
             dismissButton: (
-              <PrefixedTagNames.pButton
-                class="dismiss"
-                type="button"
-                variant="secondary"
-                icon="close"
-                hideLabel={true}
-                compact={true}
+              <FCDismissButton
+                label="Close banner"
                 onClick={this.dismissBanner}
-                {...(headingText ? { aria: { 'aria-description': headingText } } : {})}
-                ref={(el: HTMLElement) => (this.refDismiss = el)}
-              >
-                Close banner
-              </PrefixedTagNames.pButton>
+                ariaDescription={headingText || undefined}
+                refCallback={(el) => (this.refDismiss = el)}
+              />
             ),
           })}
         />
@@ -175,8 +189,20 @@ export class Banner {
     );
   }
 
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape') {
+  private syncEscapeListener = (active: boolean): void => {
+    if (active && !this.hasKeydownListener) {
+      document.addEventListener('keydown', this.onEscape);
+      this.hasKeydownListener = true;
+    } else if (!active && this.hasKeydownListener) {
+      document.removeEventListener('keydown', this.onEscape);
+      this.hasKeydownListener = false;
+    }
+  };
+
+  private onEscape = (e: KeyboardEvent): void => {
+    // Guarded by `this.open` (mirrors `p-popover`) so it never emits `dismiss` for an already-closed banner, even
+    // though the listener is only registered while open — defense-in-depth against transitional windows.
+    if (e.key === 'Escape' && this.open) {
       this.dismissBanner();
     }
   };

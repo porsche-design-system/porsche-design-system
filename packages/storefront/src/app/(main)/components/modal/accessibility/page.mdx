@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { modalMeta } from '@/app/(main)/components/modal/modal.meta';
+
+export const metadata = {
+  title: 'Modal: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Modal component',
+};
+
+# Modal <ComponentStatus tagName="p-modal"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<modalMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-modal" examples={modalMeta.accessibility.examples} />
+
+<modalMeta.accessibility.tests />

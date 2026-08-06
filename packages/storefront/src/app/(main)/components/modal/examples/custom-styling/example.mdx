@@ -1,0 +1,23 @@
+The modal component has some values that can be overridden via CSS custom properties (aka CSS variables). This might be
+useful, for example, for a "Cookie Consent Dialog" to reserve space when used with `backdrop: 'shading'` so that the
+Porsche [crest](/components/crest/) or [wordmark](/components/wordmark/) remains visible in the background of the page.
+Since the modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will
+act like a safe zone.
+
+In addition, the modal exposes its internally used padding as readonly CSS variables. These can be used on slotted
+elements (e.g. a media container) to stretch them into the padding safe zone, as demonstrated in the example below.
+
+```scss
+// readonly CSS variables exposed by the modal to stretch slotted content into the padding safe zone
+--ref-p-modal-pt; // internally used padding-top
+--ref-p-modal-pb; // internally used padding-bottom
+--ref-p-modal-px; // internally used padding-inline
+```
+
+```scss
+// the modal comes with predefined margin / safe-zone which needs to be considered when a custom width is defined
+--p-modal-width: clamp(276px, 45.25vw + 131px, 1000px);
+--p-modal-spacing-top: 200px;
+--p-modal-spacing-bottom: 50px;
+```
+

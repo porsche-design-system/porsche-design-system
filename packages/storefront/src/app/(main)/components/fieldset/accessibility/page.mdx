@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { fieldsetMeta } from '@/app/(main)/components/fieldset/fieldset.meta';
+
+export const metadata = {
+  title: 'Fieldset: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Fieldset component',
+};
+
+# Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<fieldsetMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-fieldset" examples={fieldsetMeta.accessibility.examples} />
+
+<fieldsetMeta.accessibility.tests />

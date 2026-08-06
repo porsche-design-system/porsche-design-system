@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-angular",
-  "version": "4.2.0-rc.1",
+  "version": "4.6.0-rc.1",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
   "type": "commonjs",
   "keywords": [
@@ -22,14 +22,14 @@
     "url": "https://github.com/porsche-design-system/porsche-design-system"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "4.2.0-rc.1",
+    "@porsche-design-system/components-js": "4.6.0-rc.1",
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
-    "@angular/common": ">=21.0.0 <22.0.0",
-    "@angular/core": ">=21.0.0 <22.0.0",
-    "ag-grid-angular": ">= 35.0.0 <36.0.0",
-    "ag-grid-enterprise": ">= 35.0.0 <36.0.0",
+    "@angular/common": ">=21.0.0 <23.0.0",
+    "@angular/core": ">=21.0.0 <23.0.0",
+    "ag-grid-angular": ">= 36.0.0 <37.0.0",
+    "ag-grid-enterprise": ">= 36.0.0 <37.0.0",
     "rxjs": "^6.5.3 || ^7.4.0",
     "tailwindcss": ">= 4.0.0 <5.0.0"
   },
@@ -103,23 +103,24 @@
     "./tailwindcss": "./tailwindcss/index.css",
     "./tailwindcss/index.css": "./tailwindcss/index.css",
     "./tailwindcss/index": "./tailwindcss/index.css",
-    "./index.css": "./global-styles/index.css",
-    "./index": "./global-styles/index.css",
-    "./color-scheme.css": "./global-styles/color-scheme.css",
-    "./color-scheme": "./global-styles/color-scheme.css",
-    "./font-face.css": "./global-styles/font-face.css",
-    "./font-face": "./global-styles/font-face.css",
-    "./normalize.css": "./global-styles/normalize.css",
-    "./normalize": "./global-styles/normalize.css",
-    "./variables.css": "./global-styles/variables.css",
-    "./variables": "./global-styles/variables.css",
-    "./cn": "./global-styles/cn/index.css",
-    "./cn/index.css": "./global-styles/cn/index.css",
-    "./cn/index": "./global-styles/cn/index.css",
-    "./cn/font-face.css": "./global-styles/cn/font-face.css",
-    "./cn/font-face": "./global-styles/cn/font-face.css",
-    "./legacy-radius.css": "./global-styles/legacy-radius.css",
-    "./legacy-radius": "./global-styles/legacy-radius.css"
+    "./index.css": "./stylesheets/index.css",
+    "./index": "./stylesheets/index.css",
+    "./color-scheme.css": "./stylesheets/color-scheme.css",
+    "./color-scheme": "./stylesheets/color-scheme.css",
+    "./font-face.css": "./stylesheets/font-face.css",
+    "./font-face": "./stylesheets/font-face.css",
+    "./normalize.css": "./stylesheets/normalize.css",
+    "./normalize": "./stylesheets/normalize.css",
+    "./variables.css": "./stylesheets/variables.css",
+    "./variables": "./stylesheets/variables.css",
+    "./cn": "./stylesheets/cn/index.css",
+    "./cn/index.css": "./stylesheets/cn/index.css",
+    "./cn/index": "./stylesheets/cn/index.css",
+    "./cn/font-face.css": "./stylesheets/cn/font-face.css",
+    "./cn/font-face": "./stylesheets/cn/font-face.css"
   },
-  "style": "./global-styles/index.css"
+  "style": "./stylesheets/index.css",
+  "bin": {
+    "pds-skill": "./bin/pds-skill.js"
+  }
 }

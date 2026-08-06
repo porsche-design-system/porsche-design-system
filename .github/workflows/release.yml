@@ -32,6 +32,10 @@ jobs:
   check-publication-status:
     name: 'Check Publication Status'
     runs-on: ubuntu-latest
+    # Only reads: checks out the repo and queries the npm registry. Declared explicitly so it doesn't
+    # inherit the broader (`contents: write` + `id-token: write`) scope the caller grants at the call site.
+    permissions:
+      contents: read
     container:
       image: ${{ inputs.image }}
       options: --user 1001
@@ -43,7 +47,7 @@ jobs:
       is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
       is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: 'Get Package Version'
         id: get_npm_version
         uses: ./.github/actions/get-local-package-version
@@ -86,7 +90,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -110,7 +114,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -134,7 +138,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -158,7 +162,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
         with:
           registry-url: 'https://registry.npmjs.org'
@@ -200,7 +204,7 @@ jobs:
     permissions:
       contents: write # Required to create GitHub releases (and the underlying tag) via the GitHub API
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: 'Create GitHub Release'
         uses: ./.github/actions/create-github-release
         with:
@@ -211,11 +215,15 @@ jobs:
     needs: check-publication-status
     if: ${{ needs.check-publication-status.outputs.is-storefront-published == 'false' }}
     runs-on: ubuntu-latest
+    # Deploys via the `gh-deploy-key-storefront` SSH deploy key — not the workflow `GITHUB_TOKEN` — so
+    # read access suffices. Declared explicitly so it doesn't inherit the caller's broader write scope.
+    permissions:
+      contents: read
     container:
       image: ${{ inputs.image }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}

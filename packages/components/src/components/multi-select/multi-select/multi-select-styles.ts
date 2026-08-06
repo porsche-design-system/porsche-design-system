@@ -1,5 +1,5 @@
+import { ref, spacingStaticXs } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, hostHiddenStyles, preventFoucOfNestedElementsStyles } from '../../../styles';
-import { spacingStaticXs } from '../../../styles/css-variables';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
 import {
   getButtonJssStyle,
@@ -19,6 +19,7 @@ import {
   getFunctionalComponentLabelStyles,
 } from '../../common/label/label-styles';
 import { getFunctionalComponentNoResultsOptionStyles } from '../../common/no-results-option/no-results-option-styles';
+import { getFunctionalComponentFilterStatusAnnouncerStyles } from '../../common/filter-status-announcer/filter-status-announcer-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
 import { cssVarInternalMultiSelectOptionScaling } from '../multi-select-option/multi-select-option-styles';
@@ -57,7 +58,7 @@ export const getComponentCss = (
     },
     root: {
       display: 'grid',
-      gap: spacingStaticXs,
+      gap: ref(spacingStaticXs),
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + 1px * 2 + ${getCalculatedFormElementPaddingHorizontal(2)})`,
     },
@@ -66,6 +67,8 @@ export const getComponentCss = (
     icon: getIconJssStyle(isOpen),
     // .no-results / .sr-only
     ...getFunctionalComponentNoResultsOptionStyles('multi-select-option', cssVarInternalMultiSelectScaling),
+    // .filter-status
+    ...getFunctionalComponentFilterStatusAnnouncerStyles(),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, false, hideLabel),
     // .message

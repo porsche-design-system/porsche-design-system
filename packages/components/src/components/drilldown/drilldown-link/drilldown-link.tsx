@@ -33,22 +33,22 @@ const propTypes: PropTypes<typeof DrilldownLink> = {
 export class DrilldownLink {
   @Element() public host!: HTMLElement;
 
-  /** When `href` is provided, the component renders as an `<a>` element. Otherwise, provide a slotted anchor element. */
+  /** When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element. */
   @Prop() public href?: string;
 
-  /** Displays the link in its active state. */
+  /** Visually marks the link as the currently active navigation item, e.g. the current page. */
   @Prop() public active?: boolean = false;
 
-  /** Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used). */
+  /** Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set. */
   @Prop() public target?: DrilldownLinkTarget = '_self';
 
-  /** Sets the native `download` attribute when the target URL points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used). */
+  /** Sets the native `download` attribute to trigger a file download. Only applies when `href` is set. */
   @Prop() public download?: string;
 
-  /** Sets the `rel` attribute on the link (only has effect when `href` is defined and no slotted anchor is used). */
+  /** Sets the `rel` attribute on the link element (e.g. `noopener`). Only applies when `href` is set. */
   @Prop() public rel?: string;
 
-  /** Add ARIA attributes (only has effect when `href` is defined and no slotted anchor is used). */
+  /** Sets ARIA attributes on the link for improved accessibility. Only applies when `href` is set. */
   @Prop() public aria?: SelectedAriaAttributes<DrilldownLinkAriaAttribute>;
 
   public connectedCallback(): void {

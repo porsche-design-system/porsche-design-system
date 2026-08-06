@@ -1,8 +1,8 @@
-import * as fs from 'fs';
+import * as fs from 'node:fs';
 import { expect, it } from 'vitest';
-import { fileMap } from '../../../scripts/fileMap';
+import { scssFileMeta } from '../../../src/scss';
 
-const scssFiles = Object.keys(fileMap).map((fileName) => `./dist/${fileName}`);
+const scssFiles = scssFileMeta.map(({ file }) => `./dist/${file}`);
 
 it.each(scssFiles)('should contain correct scss content for file %s', (file) => {
   expect(fs.readFileSync(file, 'utf8')).toMatchSnapshot();

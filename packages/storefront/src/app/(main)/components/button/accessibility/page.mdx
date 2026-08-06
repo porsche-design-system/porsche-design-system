@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { buttonMeta } from '@/app/(main)/components/button/button.meta';
+
+export const metadata = {
+  title: 'Button: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Button component',
+};
+
+# Button <ComponentStatus tagName="p-button"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Limitations', 'Development considerations', 'Integration examples', 'Tests']}
+/>
+
+<buttonMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-button" examples={buttonMeta.accessibility.examples} />
+
+<buttonMeta.accessibility.tests />

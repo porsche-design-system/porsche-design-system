@@ -14,8 +14,204 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
+  ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+
 ### Changed
 
+- `Radio Group`: default value of `value` prop to `undefined`. Use `undefined`/`null` to represent an unselected state,
+  since `''` (empty string) is a valid option value and can lead to confusion.
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Pin Code`, `Radio Group`, `Segmented Control`: extended types of `value` prop to allow `string | number | null`
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Radio Group Option`:
+  - extended types of `value` prop to allow `string | number`
+    ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+  - `value` prop is now required ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+
+### Fixed
+
+- `Multi Select`: Announcement of the active/selected option in screen readers
+  ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+
+## [4.6.0-rc.1] - 2026-08-03
+
+### Added
+
+- `Knowledge Skill`: Accessibility integration examples for each documented component, pairing anti-pattern and
+  recommended markup in the selected framework
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+- `pds-skill`: `--skill` option to link only the named skills instead of all discovered ones
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+
+### Changed
+
+- `Knowledge Skill`: Renamed from `porsche-design-system-components-{js|angular|react|vue}` to
+  `pds-knowledge-{js|angular|react|vue}`
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+- `Knowledge Skill`: Now shipped in the package's `skills/` directory with one directory per skill, replacing the single
+  `skill/` directory. Update any manually created symlink to the new location
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+
+### Fixed
+
+- `Segmented Control`: Improved `hover/selected` color visibility of items
+  ([#4610](https://github.com/porsche-design-system/porsche-design-system/pull/4610))
+
+## [4.6.0-rc.0] - 2026-07-21
+
+### Added
+
+- `Knowledge Skill`: providing version-exact guidance for PDS components, stylesheets, design tokens, and styling
+  integrations
+  ([#4555](https://github.com/porsche-design-system/porsche-design-system/pull/4555))
+
+## [4.5.0] - 2026-07-21
+
+## [4.5.0-rc.1] - 2026-07-20
+
+### Fixed
+
+- `Flyout`, `Modal`, `Sheet` ([#4602](https://github.com/porsche-design-system/porsche-design-system/pull/4602)):
+  - focus ring color of dismiss button
+  - hover color visibility of dismiss button
+- `Popover`: Trigger icon no longer gets squished when placed inside a constrained flex/grid parent
+  ([#4602](https://github.com/porsche-design-system/porsche-design-system/pull/4602))
+
+## [4.5.0-rc.0] - 2026-07-17
+
+### Changed
+
+- `AG Grid`: Bumped peer dependency to support AG Grid new major version 36
+  ([#4553](https://github.com/porsche-design-system/porsche-design-system/pull/4553))
+- `Popover`: Aligned shadowed popover trigger button style with button-pure
+  ([#4596](https://github.com/porsche-design-system/porsche-design-system/pull/4596))
+
+### Fixed
+
+- `Popover`: A `margin` set on the host is now applied to the shadowed trigger button
+  ([#4596](https://github.com/porsche-design-system/porsche-design-system/pull/4596))
+
+## [4.4.0] - 2026-07-15
+
+## [4.4.0-rc.1] - 2026-07-10
+
+### Fixed
+
+- `Flyout`, `Modal`, `Sheet` ([#4578](https://github.com/porsche-design-system/porsche-design-system/pull/4578)):
+  - enable selecting text within dialog element
+  - prevent dialog from being dismissed when a text selection started inside the dialog is released on the backdrop
+- `Popover`, `Banner`: prevent entry animation from playing when initially rendered in an open state
+  ([#4578](https://github.com/porsche-design-system/porsche-design-system/pull/4578))
+
+## [4.4.0-rc.0] - 2026-07-06
+
+### Added
+
+- `Popover` ([#4562](https://github.com/porsche-design-system/porsche-design-system/pull/4562)):
+  - Support for controlled and uncontrolled usage: when the `open` prop is omitted the component manages its own
+    visibility (uncontrolled), when it is set the consumer owns the open state via a custom trigger projected through
+    the named `button` slot (controlled)
+  - `open` prop to control the popover's visibility in controlled mode
+  - `compact` prop to reduce padding and spacing for a more compact layout, useful in space-constrained interfaces
+  - `dismiss` event emitted in controlled mode when the user requests to close the popover via the `Escape` key, an
+    outside click, or when keyboard focus leaves the popover (`Tab` / `Shift+Tab`)
+  - CSS variables to customize the popover panel: `--p-popover-w`, `--p-popover-h`, `--p-popover-min-w`,
+    `--p-popover-min-h`, `--p-popover-max-w`, `--p-popover-max-h`, `--p-popover-px`, `--p-popover-py` and
+    `--p-popover-radius`
+
+### Changed
+
+- `Popover`: Improved visual appearance
+  ([#4562](https://github.com/porsche-design-system/porsche-design-system/pull/4562))
+
+## [4.3.0] - 2026-06-24
+
+## [4.3.0-rc.0] - 2026-06-24
+
+### Added
+
+- `Tabs`, `Tabs Bar`: `aria` prop to provide additional context for screen readers
+  ([#4538](https://github.com/porsche-design-system/porsche-design-system/pull/4538))
+
+### Changed
+
+- `Angular`: Widen peer dependency to support Angular version 21 + 22
+  ([#4546](https://github.com/porsche-design-system/porsche-design-system/pull/4546))
+
+## [4.2.0] - 2026-06-22
+
+## [4.2.0-rc.5] - 2026-06-12
+
+### Added
+
+- `Angular`: Bumped peer dependency to support Angular new major version 22
+  ([#4505](https://github.com/porsche-design-system/porsche-design-system/pull/4505))
+- `Flyout`: Prop `fullscreen` to stretch the flyout to the full viewport width with squared corners, useful for smaller
+  viewports ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498))
+
+### Fixed
+
+- `Flyout`, `Modal`, `Sheet` ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498)):
+  - Nested dialog elements no longer cause rendering issues in Chromium
+  - Keep the dialog element on the `#top-layer` during the fade-out animation in Safari and Firefox, so closing
+    (especially nested) dialogs no longer drop behind surrounding content
+- `Banner`: Keep the popover on the `#top-layer` during the fade-out animation in Safari and Firefox, so it no longer
+  drops behind surrounding content while closing
+  ([#4498](https://github.com/porsche-design-system/porsche-design-system/pull/4498))
+
+## [4.2.0-rc.4] - 2026-06-10
+
+### Fixed
+
+- `Radio Group`: Prevent clicks on `label-after` slot from bubbling to the host element
+  ([#4477](https://github.com/porsche-design-system/porsche-design-system/pull/4477))
+- `Flyout`, `Modal`, `Sheet`: Prevent dialog elements from reserving layout space in closed state when placed within a
+  new stacking context ([#4494](https://github.com/porsche-design-system/porsche-design-system/pull/4494))
+
+## [4.2.0-rc.3] - 2026-06-09
+
+### Fixed
+
+- `Flyout`, `Modal`, `Sheet`: content no longer disappears in Chromium when many elements with a frosted
+  `backdrop-filter` (e.g. `p-tag`) are rendered
+  ([#4490](https://github.com/porsche-design-system/porsche-design-system/pull/4490))
+
+## [4.2.0-rc.2] - 2026-06-04
+
+### Added
+
+- `Tailwind CSS`: CJK `font-family` `:lang()` selectors are available in the theme by default to auto-detect Simplified
+  Chinese, Traditional Chinese, Japanese, and Korean content
+  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `SCSS` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
+  - `$font-porsche-next-zh-hans`, `$font-porsche-next-zh-hant`, `$font-porsche-next-ja`, `$font-porsche-next-ko`: CJK
+    `font-family` tokens
+  - `cjk-font-family()`: mixin that emits `:lang()` selectors to auto-detect CJK content
+- `Emotion`, `Vanilla Extract` ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
+  - `fontPorscheNextZhHans`, `fontPorscheNextZhHant`, `fontPorscheNextJa`, `fontPorscheNextKo`: CJK `font-family` tokens
+  - `getCJKFontFamilyStyle()`: returns `:lang()` selectors to auto-detect CJK content
+- `Accordion`: `indent` prop to indent the slotted content to be vertically aligned with the text of the summary section
+  ([#4478](https://github.com/porsche-design-system/porsche-design-system/pull/4478))
+
+### Changed
+
+- Improved CJK `font-family` support with dedicated, OS-specific stacks per language
+  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354)):
+  - **Simplified Chinese:** PingFang SC (macOS), Microsoft YaHei (Windows), Noto Sans SC (Android, Linux, ChromeOS)
+  - **Traditional Chinese:** PingFang TC (macOS), Microsoft JhengHei (Windows), Noto Sans TC (Android, Linux, ChromeOS)
+  - **Japanese:** Hiragino Sans (macOS), Yu Gothic (Windows), Noto Sans JP (Android, Linux, ChromeOS)
+  - **Korean:** Apple SD Gothic Neo (macOS), Malgun Gothic (Windows), Noto Sans KR (Android, Linux, ChromeOS)
+- Text-rendering components now switch to language-specific CJK font stacks via `:lang()` selectors when a matching
+  `lang` attribute is set ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `Tailwind CSS` — `.font-porsche-next`, `.prose-heading-*`, `.prose-text-*` now apply `:lang()` selectors to
+  auto-detect CJK content ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `SCSS` — `prose-heading-*()`, `prose-text-*()` now apply `:lang()` selectors to auto-detect CJK content
+  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `Emotion`, `Vanilla Extract` — `proseHeading*`, `proseText*` now apply `:lang()` selectors to auto-detect CJK content
+  ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 - `Input Text`: the global `inputmode` attribute is now passed through to the underlying native `input` element
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Input Text`, `Input Number`: extended types of `value` prop to allow `string | number | null`
@@ -29,20 +225,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
 - `Multi Select Option`: extended types of `value` prop to allow `string | number`
   ([#4322](https://github.com/porsche-design-system/porsche-design-system/pull/4322))
-- `Radio Group`: default value of `value` prop to `undefined`. Use `undefined`/`null` to represent an unselected state,
-  since `''` (empty string) is a valid option value and can lead to confusion.
-  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
-- `Pin Code`, `Radio Group`, `Segmented Control`: extended types of `value` prop to allow `string | number | null`
-  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
-- `Radio Group Option`:
-  - extended types of `value` prop to allow `string | number`
-    ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
-  - `value` prop is now required ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Tabs`, `Tabs Bar`, `Link Tile`, `Link Tile Product`, `Button Tile`, `Stepper Horizontal`, `Accordion`, `Popover`,
+  `Flyout`, `Modal`, `Sheet`: aligned `border-radius` with the app and car design system for improved visual coherence
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+- `Tabs Bar`: refined active tab background color to improve visual coherence with the app and vehicle design system
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+- `Tabs`, `Tabs Bar`: height now matches `p-button` and `p-link` when `background="none"` is used, so the visual height
+  stays stable when combined with buttons or links
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
 
 ### Fixed
 
+- `Tailwind CSS`: Prefixing support ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
 - `Inline Notification`: The action label expands when the heading or content section becomes multiline
   ([#4418](https://github.com/porsche-design-system/porsche-design-system/pull/4418))
+- `Input Date`, `Input Email`, `Input Number`, `Input Password`, `Input Search`, `Input Tel`, `Input Text`,
+  `Input Time`, `Input Url`, `Textarea`: form value, validity and `disabled`/`readOnly` state now stay in sync with the
+  internal native control, so native form submission, reset and validation behave correctly when these props change
+  dynamically ([4446](https://github.com/porsche-design-system/porsche-design-system/pull/4446))
+- `Accordion`: not causing scrollbar on outer scroll container (e.g. flyout) when closed with position:absolute slotted
+  content ([#4449](https://github.com/porsche-design-system/porsche-design-system/pull/4449))
+- Added `semibold` alias for Arabic Porsche Next, mapped to `bold` as a fallback since the font only provides `regular`
+  and `bold` weights. ([#4354](https://github.com/porsche-design-system/porsche-design-system/pull/4354))
+- `Flyout`, `Modal`, `Sheet`: the dismiss button now has a solid background to ensure sufficient contrast and a11y
+  compliance when placed above content such as media elements
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+- `Flyout`, `Modal`, `Sheet`: the dialog's rounded corners now clip slotted content (e.g. media elements) so it no
+  longer overflows the dialog's `border-radius`
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
+
+### Removed
+
+- Legacy border-radius stylesheet `@porsche-design-system/components-{js|angular|react|vue}/legacy-radius.css`, since
+  visual coherence between web, app and car design system is now achieved
+  ([#4447](https://github.com/porsche-design-system/porsche-design-system/pull/4447))
 
 ## [4.2.0-rc.1] - 2026-05-18
 
@@ -58,6 +274,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `AG Grid`:
   - custom compact theme ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
   - minor style adjustments ([#4301](https://github.com/porsche-design-system/porsche-design-system/pull/4301))
+- `Ai Tag`: New component to mark AI-generated/AI-modified content
+  ([#4400](https://github.com/porsche-design-system/porsche-design-system/pull/4400))
 
 ## [4.1.0] - 2026-05-06
 
@@ -1106,6 +1324,20 @@ and migration steps.
   ([#4121](https://github.com/porsche-design-system/porsche-design-system/pull/4121))
 - `Multi Select`: trim whitespace of selected options text
   ([#4132](https://github.com/porsche-design-system/porsche-design-system/pull/4132))
+
+## [3.35.0] - 2026-05-06
+
+## [3.35.0-rc.0] - 2026-05-05
+
+### Added
+
+- `AI-Tag`: New component to mark AI-generated/AI-modified content
+  ([#4236](https://github.com/porsche-design-system/porsche-design-system/pull/4236))
+
+### Fixed
+
+- `Multi Select`, `Select`: not correctly updating when options within `p-optgroup` change dynamically
+  ([#4278](https://github.com/porsche-design-system/porsche-design-system/pull/4279))
 
 ## [3.34.0] - 2026-04-09
 

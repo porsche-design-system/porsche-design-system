@@ -1,0 +1,80 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { CssVariablesTable } from '@/components/common/CssVariablesTable';
+import { stylesheetsMeta } from '@porsche-design-system/stylesheets/meta';
+
+export const metadata = {
+  title: 'Styles: CSS Variables - Porsche Design System',
+  description: 'Detailed API reference for all CSS variables.',
+};
+
+# CSS Variables
+
+<TableOfContents headings={['Color', 'Typography', 'Spacing', 'Border Radius', 'Blur', 'Shadow', 'Motion']} />
+
+## Color
+
+### Background
+
+<CssVariablesTable variables={stylesheetsMeta.color.background} showColorSwatch={true} />
+
+### Foreground
+
+<CssVariablesTable variables={stylesheetsMeta.color.foreground} showColorSwatch={true} />
+
+### Semantic
+
+<CssVariablesTable variables={stylesheetsMeta.color.semantic} showColorSwatch={true} />
+
+### A11y
+
+<CssVariablesTable variables={stylesheetsMeta.color.a11y} showColorSwatch={true} />
+
+## Typography
+
+### Font Family
+
+<CssVariablesTable variables={stylesheetsMeta.font.family} />
+
+### Font Weight
+
+<CssVariablesTable variables={stylesheetsMeta.font.weight} />
+
+### Line Height
+
+<CssVariablesTable variables={stylesheetsMeta.font.lineHeight} />
+
+### Typescale
+
+<CssVariablesTable variables={stylesheetsMeta.font.size} />
+
+## Spacing
+
+### Fluid
+
+<CssVariablesTable variables={stylesheetsMeta.spacing.fluid} />
+
+### Static
+
+<CssVariablesTable variables={stylesheetsMeta.spacing.static} />
+
+## Border Radius
+
+<CssVariablesTable variables={stylesheetsMeta.border.radius} />
+
+## Blur
+
+<CssVariablesTable variables={stylesheetsMeta.blur} />
+
+## Shadow
+
+<CssVariablesTable variables={stylesheetsMeta.shadow} />
+
+## Motion
+
+### Duration
+
+<CssVariablesTable variables={stylesheetsMeta.motion.duration} />
+
+### Easing
+
+<CssVariablesTable variables={stylesheetsMeta.motion.ease} />

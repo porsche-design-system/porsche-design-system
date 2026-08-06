@@ -1,6 +1,8 @@
 import {
   PAccordion,
   type PAccordionProps,
+  PAiTag,
+  type PAiTagProps,
   PBanner,
   type PBannerProps,
   PButton,
@@ -158,7 +160,7 @@ type SafePropTypeMapping = {
 // PDS component tags without internal/child components (p-accordion, p-banner...)
 export type ConfiguratorTagNames = keyof SafePropTypeMapping;
 // HTML tags (a, img, div...) or PDS component tags (p-accordion, p-banner...)
-export type HTMLTagOrComponent = keyof JSX.IntrinsicElements | ConfiguratorTagNames;
+export type HTMLTagOrComponent = keyof React.JSX.IntrinsicElements | ConfiguratorTagNames;
 
 // TODO: Create type for children and share with story generator return type. Maybe make ElementConfig also string | undefined?
 export type ElementConfig<T extends HTMLTagOrComponent> = {
@@ -191,8 +193,8 @@ export type ElementConfig<T extends HTMLTagOrComponent> = {
 /**
  * Represents the properties of T which can be either a PDS Component or an HTML Element
  */
-export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent> = T extends keyof JSX.IntrinsicElements
-  ? Partial<JSX.IntrinsicElements[T]>
+export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent> = T extends keyof React.JSX.IntrinsicElements
+  ? Partial<React.JSX.IntrinsicElements[T]>
   : T extends ConfiguratorTagNames
     ? SafePropTypeMapping[T]
     : never;
@@ -236,10 +238,17 @@ export type EventConfig = {
    */
   negateValue?: boolean;
   preventDefault?: boolean;
+  /**
+   * Toggles the current boolean value of `prop` instead of applying a fixed `value`.
+   * Useful for a trigger button that should both open and close a controlled component
+   * (e.g. p-popover's slotted button flipping `open`).
+   */
+  toggleValue?: boolean;
 };
 
 export type PropTypeMapping = {
   'p-accordion': PAccordionProps;
+  'p-ai-tag': PAiTagProps;
   'p-banner': PBannerProps;
   'p-button': PButtonProps;
   'p-button-pure': PButtonPureProps;
@@ -316,6 +325,7 @@ export type PropTypeMapping = {
 
 const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-accordion': PAccordion,
+  'p-ai-tag': PAiTag,
   'p-banner': PBanner,
   'p-button': PButton,
   'p-button-pure': PButtonPure,
@@ -425,16 +435,16 @@ export const createElement = (
 
   const eventEntries = Object.entries(events);
 
-  const handleEvent = ({ prop, eventValueKey, negateValue, value, preventDefault }: EventConfig) => {
+  const handleEvent = ({ prop, eventValueKey, negateValue, value, preventDefault, toggleValue }: EventConfig) => {
     return (event: any) => {
       preventDefault && event?.preventDefault?.();
       const eventValue = eventValueKey ? event.detail[eventValueKey] : value;
-      const newValue = negateValue ? !eventValue : eventValue;
       updateState((prev) => ({
         ...prev,
         properties: {
           ...prev.properties,
-          [prop]: newValue,
+          // `toggleValue` flips the current state (needs `prev`); otherwise apply the (optionally negated) event/static value.
+          [prop]: toggleValue ? !(prev.properties as any)?.[prop] : negateValue ? !eventValue : eventValue,
         },
       }));
     };

@@ -46,34 +46,34 @@ const propTypes: PropTypes<typeof Link> = {
 export class Link {
   @Element() public host!: HTMLElement;
 
-  /** The style variant of the link. */
+  /** Sets the visual style variant of the link (`primary` or `secondary`). */
   @Prop() public variant?: LinkVariant = 'primary';
 
-  /** The icon shown. By choosing 'none', no icon is displayed. */
+  /** Sets the icon displayed next to the link label. Use `none` to show no icon. */
   @Prop() public icon?: LinkIcon = 'none';
 
-  /** A URL path to a custom icon. */
+  /** Sets a path to a custom SVG icon, used instead of the built-in icon set. */
   @Prop() public iconSource?: string;
 
-  /** When `href` is provided, the component renders as an `<a>` element. */
+  /** When set, the component renders as an anchor navigating to this URL. Otherwise, provide a slotted anchor element. */
   @Prop() public href?: string;
 
-  /** Specifies where to open the linked document. */
+  /** Specifies where to open the linked URL (e.g. `_self`, `_blank`). Only applies when `href` is set. */
   @Prop() public target?: LinkTarget = '_self';
 
-  /** Sets the native `download` attribute when the target URL points to a downloadable file. */
+  /** Sets the native `download` attribute to trigger a file download. Only applies when `href` is set. */
   @Prop() public download?: string;
 
-  /** Sets the `rel` attribute on the link. */
+  /** Sets the `rel` attribute on the link (e.g. `noopener`). Only applies when `href` is set. */
   @Prop() public rel?: string;
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Displays the link in compact mode. */
+  /** Reduces the link's padding and height for denser layouts. Supports responsive breakpoint values. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the link element to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
 
   public componentWillLoad(): void {

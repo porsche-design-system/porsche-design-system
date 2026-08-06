@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 import * as prettier from 'prettier';
-import { getTailwindcssTheme } from '../src';
+import { getTailwindcssTheme, tailwindCssMeta } from '../src/css';
 
 export const buildTailwindcssTheme = async () => {
   const targetPath = './dist';
-  const targetFile = 'index.css';
+  const targetFile = tailwindCssMeta.file;
   const theme = await prettier.format(getTailwindcssTheme(), { parser: 'css' });
 
   fs.rmSync(targetPath, { force: true, recursive: true });

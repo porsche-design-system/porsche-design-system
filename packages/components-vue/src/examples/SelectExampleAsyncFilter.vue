@@ -20,6 +20,9 @@
       @change.stop
     />
 
+    <!-- Persistent status announcer for assistive technologies (keep always in the DOM) -->
+    <div slot="options-status" class="sr-only" aria-live="polite" aria-atomic="true">{{ filterStatusMessage }}</div>
+
     <!-- Initial skeleton loading -->
     <template v-if="initialLoading && !error">
       <div v-for="i in 9" :key="i" slot="options-status" class="skeleton h-[40px]" />
@@ -30,15 +33,14 @@
       {{ opt.label }}
     </PSelectOption>
 
-    <!-- No filter results -->
+    <!-- No filter results (visual only; announcements come from the live region) -->
     <div
-      v-if="!initialLoading && options.length === 0 && !error"
+      v-if="!initialLoading && !loading && options.length === 0 && !error"
       slot="options-status"
       class="text-contrast-medium cursor-not-allowed py-static-sm px-[12px]"
-      role="alert"
+      aria-hidden="true"
     >
-      <span aria-hidden="true">–</span>
-      <span class="sr-only">No results found</span>
+      –
     </div>
 
     <!-- Error state -->
@@ -65,7 +67,7 @@ import {
   type SelectChangeEventDetail,
   type SelectToggleEventDetail,
 } from '@porsche-design-system/components-vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 function useDebounce<T>(callback: (value: T) => void, delay = 400) {
   let timer: number | undefined;
@@ -84,6 +86,15 @@ const error = ref<string | null>(null);
 
 const hasLoadedOnce = ref(false);
 let currentFetchId = 0;
+
+const filterStatusMessage = computed(() => {
+  if (error.value) return '';
+  if (initialLoading.value || loading.value) return 'Loading options';
+  const term = searchValue.value.trim();
+  if (!term) return '';
+  if (options.value.length === 0) return 'No results found';
+  return options.value.length === 1 ? '1 result available' : `${options.value.length} results available`;
+});
 
 // 💡 Consider using Vue Query or SWRV for data fetching.
 async function fetchOptions(term?: string, isInitial?: boolean) {

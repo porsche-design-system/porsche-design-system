@@ -20,7 +20,6 @@ export const ComponentMetaEvents = ({ eventsMeta }: ComponentMetaEventsProps) =>
   const sortedEventsMeta = Object.entries(eventsMeta ?? {}).sort(([keyA], [keyB]) => keyA.localeCompare(keyB));
   return (
     <>
-      {/** biome-ignore lint/correctness/useUniqueElementIds: <Needed> */}
       <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)" id="events">
         Events
       </PHeading>
@@ -41,16 +40,10 @@ export const ComponentMetaEvents = ({ eventsMeta }: ComponentMetaEventsProps) =>
                 </code>
               </PTableCell>
               <PTableCell className="min-w-40 align-top" multiline={true}>
-                <span
-                  // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
-                  dangerouslySetInnerHTML={{ __html: formatDescription(eventMeta) }}
-                />
+                <span dangerouslySetInnerHTML={{ __html: formatDescription(eventMeta) }} />
               </PTableCell>
               <PTableCell className="min-w-40 align-top" multiline={true}>
-                <span
-                  // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
-                  dangerouslySetInnerHTML={{ __html: formatEventType(eventMeta) }}
-                />
+                <span dangerouslySetInnerHTML={{ __html: formatEventType(eventMeta) }} />
               </PTableCell>
             </PTableRow>
           ))}

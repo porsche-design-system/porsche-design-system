@@ -34,9 +34,6 @@ excludes:
       reason: EXAMPLE_OF
       comment: "Example integration project demonstrating framework usage; not included in any distributed artifacts."
 
-    - pattern: "packages/components-react/projects/remix/**"
-      reason: EXAMPLE_OF
-      comment: "Example integration project demonstrating framework usage; not included in any distributed artifacts."
 
     # -----------------------------
     # components-angular
@@ -84,20 +81,16 @@ excludes:
 # peer-dependency mismatches as ERROR issues. Those cannot be silenced via the
 # analyzer option, so we resolve them here — matching what npm itself ignores at
 # install time thanks to `legacy-peer-deps=true` in `.npmrc`.
+#
+# The `invalid: …` markers are, by design, the byproduct of the intentional
+# security `overrides` in the root `package.json` (e.g. `koa`, `@tootallnate/once`,
+# and `next > postcss`), which force transitive dev-tooling dependencies onto
+# CVE-patched versions. `npm list` still flags the overridden version as "invalid"
+# against the dependent's original declared range, but the override IS the fix.
+# Reverting the overrides to satisfy `npm list` would re-introduce known CVEs, so
+# these dev-only, non-distributed conflicts are resolved here instead.
 resolutions:
   issues:
     - message: "^invalid: .+ /project/node_modules/.+$"
       reason: BUILD_TOOL_ISSUE
-      comment: "Transitive peer-dependency version mismatch reported by `npm list`. Ignored by npm install due to `legacy-peer-deps=true` in .npmrc; not relevant for distributed artifacts."
-
-    - message: "^missing: .+, required by .+$"
-      reason: BUILD_TOOL_ISSUE
-      comment: "Unmet (optional) peer dependency reported by `npm list`. Ignored by npm install due to `legacy-peer-deps=true` in .npmrc; not relevant for distributed artifacts."
-
-    - message: "^/project/packages/.+/node_modules/.+ /project/node_modules/.+$"
-      reason: BUILD_TOOL_ISSUE
-      comment: "Duplicate/hoisted package path reported by `npm list` in npm workspaces; not an actual dependency problem."
-
-    - message: "^karma-jasmine-html-reporter@.+ karma-jasmine@.+$"
-      reason: BUILD_TOOL_ISSUE
-      comment: "Peer-dependency host mismatch reported by `npm list` for the Angular test setup; only affects devDependencies and is tolerated via `legacy-peer-deps=true`."
+      comment: "Transitive dev-dependency version mismatch reported by `npm list`, caused by intentional CVE-patching `overrides` in the root package.json (e.g. koa, @tootallnate/once, next>postcss). The override is the security fix. Not relevant for distributed artifacts."

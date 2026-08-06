@@ -76,25 +76,26 @@ const propTypes: PropTypes<typeof RadioGroup> = {
 export class RadioGroup {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the radio group to identify the group's purpose. */
   @Prop() public label?: string = '';
 
-  /** Supplementary text providing more context or explanation for the radio group. */
+  /** Sets a supplementary description displayed below the label to give users additional guidance about the radio group. */
   @Prop() public description?: string = '';
 
-  /** Displays the radio group in compact mode. */
+  /** Reduces the spacing between radio options for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
-  /** Defines the direction of the main and cross-axis. The default is `column`, which stacks the options vertically. You always need to provide a base value when using breakpoints. */
+  /** Sets the layout direction of the radio options. Use `column` to stack them vertically or `row` to arrange them horizontally. Supports responsive breakpoint values. */
   @Prop() public direction?: BreakpointCustomizable<RadioGroupDirection> = 'column';
 
-  /** The name of the group of radio buttons, used when submitting the form data. */
+  /** Sets the shared name attribute for all radio buttons in the group, grouping them for mutually exclusive selection. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /**
-   * The selected value. Matches an option strictly by type and value, meaning string or number only match
+   * Sets the currently selected value that pre-selects the matching radio option and reflects user changes.
+   * Matches an option strictly by type and value, meaning string or number only match
    * an option whose value has the same type and equal value. Use undefined or null for no preselection.
    *
    * Please note that FormData always serializes values as
@@ -107,31 +108,31 @@ export class RadioGroup {
    */
   @Prop({ mutable: true }) public value?: string | number | null;
 
-  /** Specifies the id of the <form> element that the radio group belongs to (useful if the radio group is not a direct descendant of the form). */
+  /** Associates the radio group with a form element by its ID when the group is not a direct descendant of that form. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Disables the radio group. The value will not be submitted with the form. */
+  /** Disables all radio options in the group, preventing selection and excluding the value from form submissions. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** A boolean value that specifies a selection must be made from the group before the form can be submitted. */
+  /** Marks the radio group as required so the form cannot be submitted until one option is selected. */
   @Prop() public required?: boolean = false;
 
-  /** @experimental Shows a loading indicator. */
+  /** @experimental Disables all radio options and shows a spinner to indicate a background loading operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Indicates the validation or overall status of the radio group component. */
+  /** Sets the validation state of the radio group, controlling its visual appearance and feedback message style (`none`, `success`, `error`). */
   @Prop() public state?: RadioGroupState = 'none';
 
-  /** Dynamic feedback text for validation or status. */
+  /** Sets the validation feedback message displayed below the radio group when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Emitted when the radio-group has lost focus. */
+  /** Emitted when the radio group loses focus after the user interacts with it, useful for triggering validation on blur. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
-  /** Emitted when the selected option is changed. */
+  /** Emitted when the user selects a different option, carrying the new value and the native event in the event detail. */
   @Event({ bubbles: true }) public change: EventEmitter<RadioGroupChangeEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;

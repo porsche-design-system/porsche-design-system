@@ -1,5 +1,5 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State, Watch } from '@stencil/core';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,6 +7,7 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   isShadowRootParentOfKind,
+  parseAndGetAriaAttributes,
   setAttributes,
   validateProps,
 } from '../../utils';
@@ -18,9 +19,11 @@ import {
   getUpcomingActiveElementIndex,
   isTabList,
   scrollTabIntoView,
+  TABS_BAR_ARIA_ATTRIBUTES,
   TABS_BAR_BACKGROUNDS,
   TABS_BAR_SIZES,
   TABS_BAR_WEIGHTS,
+  type TabsBarAriaAttribute,
   type TabsBarBackground,
   type TabsBarSize,
   type TabsBarUpdateEventDetail,
@@ -33,6 +36,7 @@ const propTypes: PropTypes<typeof TabsBar> = {
   compact: AllowedTypes.boolean,
   weight: AllowedTypes.oneOf<TabsBarWeight>(TABS_BAR_WEIGHTS),
   activeTabIndex: AllowedTypes.number,
+  aria: AllowedTypes.aria<TabsBarAriaAttribute>(TABS_BAR_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -47,16 +51,16 @@ const propTypes: PropTypes<typeof TabsBar> = {
 export class TabsBar {
   @Element() public host!: HTMLElement;
 
-  /** Defines which tab is shown as selected (zero-based numbering), or `undefined` if none should be selected. */
+  /** Sets the zero-based index of the currently active tab. Pass `undefined` to render all tabs in an unselected state. */
   @Prop() public activeTabIndex?: number | undefined;
 
-  /** Defines the background color. Use `frosted` only on images, videos or gradients. */
+  /** Sets the background color of the tabs bar. Use `frosted` only when placed on top of images, videos, or gradients. */
   @Prop() public background?: TabsBarBackground = 'none';
 
-  /** The text size. */
+  /** Sets the font size of the tab labels using the PDS typographic scale. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<TabsBarSize> = 'small';
 
-  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
+  /** Reduces the tab height and padding for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean;
 
   /**
@@ -64,7 +68,10 @@ export class TabsBar {
    * Has no effect anymore. */
   @Prop() public weight?: TabsBarWeight = 'regular';
 
-  /** Emitted when active tab is changed. */
+  /** Sets ARIA attributes on the tablist, such as `aria-label` and `aria-description`. */
+  @Prop() public aria?: SelectedAriaAttributes<TabsBarAriaAttribute>;
+
+  /** Emitted when the user clicks a different tab, carrying the new `activeTabIndex` in the event detail. */
   @Event({ bubbles: false }) public update: EventEmitter<TabsBarUpdateEventDetail>;
 
   @State() private tabs: HTMLElement[] = [];
@@ -133,7 +140,12 @@ export class TabsBar {
       <PrefixedTagNames.pScroller
         class="scroller"
         compact={this.compact}
-        {...(this.isTabList && { aria: { role: 'tablist' } })}
+        {...(this.isTabList && {
+          aria: {
+            role: 'tablist',
+            ...parseAndGetAriaAttributes(this.aria),
+          },
+        })}
         ref={(el: HTMLElement) => (this.scroller = el)}
         onClick={this.onClick}
         onKeyDown={this.onKeydown}

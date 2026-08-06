@@ -18,9 +18,6 @@ exports[`getComponentCss() > should return correct css for state: error 1`] = `
 :host::backdrop {
   display: none;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
@@ -33,16 +30,51 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-error-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-frosted-strong);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/4/-1;
   align-self: flex-start;
   margin-block: calc(-6 * var(--p-spacing-static-2xs));
   margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:760px) {
   .notification::before {
@@ -69,6 +101,27 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-frosted);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -91,9 +144,6 @@ exports[`getComponentCss() > should return correct css for state: info 1`] = `
 :host::backdrop {
   display: none;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
@@ -106,16 +156,51 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-info-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-frosted-strong);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/4/-1;
   align-self: flex-start;
   margin-block: calc(-6 * var(--p-spacing-static-2xs));
   margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:760px) {
   .notification::before {
@@ -142,6 +227,27 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-frosted);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -164,9 +270,6 @@ exports[`getComponentCss() > should return correct css for state: success 1`] = 
 :host::backdrop {
   display: none;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
@@ -179,16 +282,51 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-success-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-frosted-strong);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/4/-1;
   align-self: flex-start;
   margin-block: calc(-6 * var(--p-spacing-static-2xs));
   margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:760px) {
   .notification::before {
@@ -215,6 +353,27 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-frosted);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -237,9 +396,6 @@ exports[`getComponentCss() > should return correct css for state: warning 1`] = 
 :host::backdrop {
   display: none;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot:not([name]),slot[name="description"],p {
   all: unset;
   grid-area: 1/2;
@@ -252,16 +408,51 @@ slot:not([name]),slot[name="description"],p {
   display: grid;
   grid-template: repeat(3, auto) / auto minmax(0, 1fr) repeat(2, auto);
   padding: calc(var(--p-spacing-static-sm) + var(--p-spacing-fluid-sm));
-  border-radius: var(--_p-legacy-radius-medium, var(--p-radius-2xl));
+  border-radius: var(--p-radius-2xl);
   background: var(--p-color-warning-frosted);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-frosted-strong);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  -webkit-backdrop-filter: var(--p-blur-frosted);
+  backdrop-filter: var(--p-blur-frosted);
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/4/-1;
   align-self: flex-start;
   margin-block: calc(-6 * var(--p-spacing-static-2xs));
   margin-inline: var(--p-spacing-static-md) calc(-6 * var(--p-spacing-static-2xs));
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:760px) {
   .notification::before {
@@ -288,6 +479,27 @@ slot:not([name]),slot[name="description"],p {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-frosted);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;

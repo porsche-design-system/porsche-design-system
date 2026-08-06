@@ -4,8 +4,6 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/openInStackblitz.js",
-  "module": "./dist/openInStackblitz.mjs",
   "exports": {
     ".": {
       "import": {
@@ -18,19 +16,28 @@
       }
     }
   },
+  "main": "./dist/openInStackblitz.js",
+  "module": "./dist/openInStackblitz.mjs",
   "types": "./dist/openInStackblitz.d.ts",
-  "files": ["./dist/"],
+  "files": [
+    "./dist/"
+  ],
   "scripts": {
     "build": "npm run clean:build && npm run build:generateStackblitzBundle && npm run build:lib",
     "build:generateStackblitzBundle": "tsx --tsconfig tsconfig.node.json scripts/generateStackblitzBundle.ts",
-    "build:lib": "tsup scripts/openInStackblitz.ts --format esm,cjs --dts",
+    "build:lib": "rollup -c",
     "clean:build": "rm -rf ./generated && rm -rf ./dist"
   },
   "dependencies": {
     "@stackblitz/sdk": "1.11.0"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
+    "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "rollup": "^4.62.2",
+    "rollup-plugin-dts": "^6.4.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   },
   "volta": {
     "extends": "../../package.json"

@@ -1,5 +1,5 @@
-import { addImportantToEachRule, preventFoucOfNestedElementsStyles } from '../../../styles';
-import { shadowLg } from '../../../styles/css-variables';
+import { ref, shadowLg } from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule } from '../../../styles';
 import { getCss, mergeDeep } from '../../../utils';
 import { getFunctionalComponentNotificationBaseStyles } from '../../common/notification-base/notification-base-styles';
 import type { ToastState } from '../toast/toast-utils';
@@ -28,12 +28,11 @@ export const getComponentCss = (state: ToastState): string => {
               display: 'none',
             },
           },
-          ...preventFoucOfNestedElementsStyles,
         },
       },
       {
         notification: {
-          boxShadow: shadowLg,
+          boxShadow: ref(shadowLg),
         },
       },
       getFunctionalComponentNotificationBaseStyles(state, false, true, false)

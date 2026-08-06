@@ -22,15 +22,8 @@ const exampleUrls = exampleRoutes.map((item) => item.path.slice(1));
 
 for (const exampleUrl of exampleUrls) {
   test(`should work without error or warning for ${exampleUrl}`, async ({ page }) => {
-    // Skip AG Grid pages since they will show licensing errors
-    test.skip(
-      [
-        'aggrid-example',
-        'aggrid-example-storefront',
-        'aggrid-compact-example',
-        'aggrid-compact-example-storefront',
-      ].includes(exampleUrl)
-    );
+    // AG Grid Enterprise logs a license error for every grid, so these pages can never be console clean
+    test.skip(exampleUrl.endsWith('-enterprise'));
     await goto(page, exampleUrl);
     expect(getConsoleErrorsAmount()).toBe(0);
     expect(getConsoleWarningsAmount()).toBe(0);

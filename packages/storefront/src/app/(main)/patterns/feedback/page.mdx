@@ -1,0 +1,31 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { WebsiteViewer } from '@/components/common/WebsiteViewer';
+
+export const metadata = {
+  title: 'Patterns: Feedback - Porsche Design System',
+  description:
+    'Learn how to implement accessible feedback patterns that let users rate their satisfaction on a five-point scale and add an optional comment, either inline or within a dialog.',
+};
+
+# Feedback
+
+<TableOfContents headings={['Inline', 'Dialog']} />
+
+The feedback pattern lets users rate their satisfaction with a page on a five-point scale and, optionally, add a
+comment. It gathers quick quantitative and qualitative input with minimal effort, revealing the comment field and submit
+action only after a rating is chosen. Use it whenever you want to learn how users perceive a page or a specific task.
+
+## Inline
+
+The rating sits directly in the page flow, typically at the end of the content, and stays visible at all times. Once
+feedback is submitted, it shows a confirmation and offers the option to start over and give new feedback.
+
+<WebsiteViewer sourceCodePath="patterns/src/feedback/1" viewPath="patterns/feedback/1" title="Feedback Variant 1" />
+
+## Dialog
+
+A trigger button opens the same rating-and-comment flow inside a dialog, keeping the page uncluttered. It can be
+launched from any action on the page, which makes it ideal for task-focused or space-constrained contexts where feedback
+should stay available but out of the way.
+
+<WebsiteViewer sourceCodePath="patterns/src/feedback/2" viewPath="patterns/feedback/2" title="Feedback Variant 2" />

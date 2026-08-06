@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { flyoutMeta } from '@/app/(main)/components/flyout/flyout.meta';
+
+export const metadata = {
+  title: 'Flyout: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Flyout component',
+};
+
+# Flyout <ComponentStatus tagName="p-flyout"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<flyoutMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-flyout" examples={flyoutMeta.accessibility.examples} />
+
+<flyoutMeta.accessibility.tests />

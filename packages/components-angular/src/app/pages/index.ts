@@ -25,6 +25,7 @@ export * from './tabs-bar-navigation-bug';
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
 import { AccordionComponent } from './generated/accordion.component';
+import { AiTagComponent } from './generated/ai-tag.component';
 import { BannerComponent } from './generated/banner.component';
 import { BannerBasicComponent } from './generated/banner-basic.component';
 import { BannerCssVariablesComponent } from './generated/banner-css-variables.component';
@@ -98,6 +99,9 @@ import { FlyoutFixedFooterSubfooterScrollableContentScrolledComponent } from './
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
 import { FlyoutFooterScrolledComponent } from './generated/flyout-footer-scrolled.component';
+import { FlyoutFullscreenComponent } from './generated/flyout-fullscreen.component';
+import { FlyoutFullscreenPositionStartComponent } from './generated/flyout-fullscreen-position-start.component';
+import { FlyoutFullscreenResponsiveComponent } from './generated/flyout-fullscreen-responsive.component';
 import { FlyoutGridComponent } from './generated/flyout-grid.component';
 import { FlyoutHeaderComponent } from './generated/flyout-header.component';
 import { FlyoutHeaderFooterComponent } from './generated/flyout-header-footer.component';
@@ -172,11 +176,15 @@ import { PopoverComponent } from './generated/popover.component';
 import { PopoverBasicComponent } from './generated/popover-basic.component';
 import { PopoverBasicSlottedComponent } from './generated/popover-basic-slotted.component';
 import { PopoverBottomComponent } from './generated/popover-bottom.component';
+import { PopoverCompactComponent } from './generated/popover-compact.component';
+import { PopoverCssVariablesComponent } from './generated/popover-css-variables.component';
 import { PopoverEdgeCaseComponent } from './generated/popover-edge-case.component';
+import { PopoverFlexParentComponent } from './generated/popover-flex-parent.component';
 import { PopoverLeftComponent } from './generated/popover-left.component';
 import { PopoverRightComponent } from './generated/popover-right.component';
 import { PopoverScrolledComponent } from './generated/popover-scrolled.component';
 import { PopoverTopComponent } from './generated/popover-top.component';
+import { PopoverViewportLimitComponent } from './generated/popover-viewport-limit.component';
 import { RadioGroupComponent } from './generated/radio-group.component';
 import { ScrollerComponent } from './generated/scroller.component';
 import { SegmentedControlComponent } from './generated/segmented-control.component';
@@ -199,6 +207,7 @@ import { SelectOpenedWithSelectedEmptyOptionComponent } from './generated/select
 import { SelectOpenedWithSlottedImagesComponent } from './generated/select-opened-with-slotted-images.component';
 import { SheetComponent } from './generated/sheet.component';
 import { SheetBasicComponent } from './generated/sheet-basic.component';
+import { SheetCssVariablesComponent } from './generated/sheet-css-variables.component';
 import { SheetGridComponent } from './generated/sheet-grid.component';
 import { SheetPrefixedComponent } from './generated/sheet-prefixed.component';
 import { SheetScrollableComponent } from './generated/sheet-scrollable.component';
@@ -235,6 +244,7 @@ import { WordmarkComponent } from './generated/wordmark.component';
 
 export const generatedPages = [
   AccordionComponent,
+  AiTagComponent,
   BannerComponent,
   BannerBasicComponent,
   BannerCssVariablesComponent,
@@ -308,6 +318,9 @@ export const generatedPages = [
   FlyoutFooterComponent,
   FlyoutFooterScrollableContentComponent,
   FlyoutFooterScrolledComponent,
+  FlyoutFullscreenComponent,
+  FlyoutFullscreenPositionStartComponent,
+  FlyoutFullscreenResponsiveComponent,
   FlyoutGridComponent,
   FlyoutHeaderComponent,
   FlyoutHeaderFooterComponent,
@@ -382,11 +395,15 @@ export const generatedPages = [
   PopoverBasicComponent,
   PopoverBasicSlottedComponent,
   PopoverBottomComponent,
+  PopoverCompactComponent,
+  PopoverCssVariablesComponent,
   PopoverEdgeCaseComponent,
+  PopoverFlexParentComponent,
   PopoverLeftComponent,
   PopoverRightComponent,
   PopoverScrolledComponent,
   PopoverTopComponent,
+  PopoverViewportLimitComponent,
   RadioGroupComponent,
   ScrollerComponent,
   SegmentedControlComponent,
@@ -409,6 +426,7 @@ export const generatedPages = [
   SelectOpenedWithSlottedImagesComponent,
   SheetComponent,
   SheetBasicComponent,
+  SheetCssVariablesComponent,
   SheetGridComponent,
   SheetPrefixedComponent,
   SheetScrollableComponent,
@@ -449,6 +467,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Accordion',
     path: 'accordion',
     component: AccordionComponent,
+  },
+  {
+    name: 'Ai Tag',
+    path: 'ai-tag',
+    component: AiTagComponent,
   },
   {
     name: 'Banner',
@@ -809,6 +832,21 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Footer Scrolled',
     path: 'flyout-footer-scrolled',
     component: FlyoutFooterScrolledComponent,
+  },
+  {
+    name: 'Flyout Fullscreen',
+    path: 'flyout-fullscreen',
+    component: FlyoutFullscreenComponent,
+  },
+  {
+    name: 'Flyout Fullscreen Position Start',
+    path: 'flyout-fullscreen-position-start',
+    component: FlyoutFullscreenPositionStartComponent,
+  },
+  {
+    name: 'Flyout Fullscreen Responsive',
+    path: 'flyout-fullscreen-responsive',
+    component: FlyoutFullscreenResponsiveComponent,
   },
   {
     name: 'Flyout Grid',
@@ -1181,9 +1219,24 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: PopoverBottomComponent,
   },
   {
+    name: 'Popover Compact',
+    path: 'popover-compact',
+    component: PopoverCompactComponent,
+  },
+  {
+    name: 'Popover Css Variables',
+    path: 'popover-css-variables',
+    component: PopoverCssVariablesComponent,
+  },
+  {
     name: 'Popover Edge Case',
     path: 'popover-edge-case',
     component: PopoverEdgeCaseComponent,
+  },
+  {
+    name: 'Popover Flex Parent',
+    path: 'popover-flex-parent',
+    component: PopoverFlexParentComponent,
   },
   {
     name: 'Popover Left',
@@ -1204,6 +1257,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Popover Top',
     path: 'popover-top',
     component: PopoverTopComponent,
+  },
+  {
+    name: 'Popover Viewport Limit',
+    path: 'popover-viewport-limit',
+    component: PopoverViewportLimitComponent,
   },
   {
     name: 'Radio Group',
@@ -1314,6 +1372,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Sheet Basic',
     path: 'sheet-basic',
     component: SheetBasicComponent,
+  },
+  {
+    name: 'Sheet Css Variables',
+    path: 'sheet-css-variables',
+    component: SheetCssVariablesComponent,
   },
   {
     name: 'Sheet Grid',

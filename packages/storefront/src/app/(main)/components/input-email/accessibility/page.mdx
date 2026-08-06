@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputEmailMeta } from '@/app/(main)/components/input-email/input-email.meta';
+
+export const metadata = {
+  title: 'Input Email: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input Email component',
+};
+
+# Input Email <ComponentStatus tagName="p-input-email"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
+/>
+
+<inputEmailMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-input-email" examples={inputEmailMeta.accessibility.examples} />
+
+<inputEmailMeta.accessibility.tests />

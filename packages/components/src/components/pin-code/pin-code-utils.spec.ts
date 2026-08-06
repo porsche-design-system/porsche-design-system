@@ -256,3 +256,35 @@ describe('isCurrentInput()', () => {
     expect(result).toBe(expected);
   });
 });
+
+describe('isFormSubmittable()', () => {
+  const getHost = (): HTMLElement => document.createElement('p-pin-code');
+
+  it('should return true when the form contains only submit/hidden inputs', () => {
+    const host = getHost();
+    const form = document.createElement('form');
+    form.innerHTML = '<input type="submit" /><input type="hidden" />';
+    expect(pinCodeUtils.isFormSubmittable(host, form)).toBe(true);
+  });
+
+  it('should return true when the form has a submit button alongside a text input', () => {
+    const host = getHost();
+    const form = document.createElement('form');
+    form.innerHTML = '<input type="text" /><button type="submit">Go</button>';
+    expect(pinCodeUtils.isFormSubmittable(host, form)).toBe(true);
+  });
+
+  it('should return true when the form has a submit-type input alongside a text input', () => {
+    const host = getHost();
+    const form = document.createElement('form');
+    form.innerHTML = '<input type="text" /><input type="submit" />';
+    expect(pinCodeUtils.isFormSubmittable(host, form)).toBe(true);
+  });
+
+  it('should return false when the form has a text input and no submit control', () => {
+    const host = getHost();
+    const form = document.createElement('form');
+    form.innerHTML = '<input type="text" /><button type="button">Nope</button>';
+    expect(pinCodeUtils.isFormSubmittable(host, form)).toBe(false);
+  });
+});

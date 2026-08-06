@@ -1,7 +1,9 @@
-<p-checkbox label="Required" id="required" name="required" checked="true"></p-checkbox>
-<p-checkbox label="Allow deselection" id="deselection" name="deselection"></p-checkbox>
+<div class="flex flex-col gap-static-sm">
+  <p-checkbox label="Required" id="required" name="required" checked="true"></p-checkbox>
+  <p-checkbox label="Allow deselection" id="deselection" name="deselection"></p-checkbox>
+</div>
 
-<form>
+<form class="flex flex-col gap-fluid-sm mt-fluid-sm">
   <p-select name="options" label="Some Label" required>
     <p-select-option value="1">Option 1</p-select-option>
     <p-select-option value="2">Option 2</p-select-option>

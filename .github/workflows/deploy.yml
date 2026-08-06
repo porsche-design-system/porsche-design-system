@@ -32,12 +32,19 @@ on:
         description: 'Algolia API Key (Storefront).'
         required: true
 
+# Least privilege: this workflow deploys via the `gh-deploy-key-storefront` SSH deploy key and AWS
+# secrets — never the workflow `GITHUB_TOKEN` — so read access is all it needs. Declared explicitly
+# (rather than relying on caller inheritance) to document intent and stay safe if ever called from a
+# more-privileged caller.
+permissions:
+  contents: read
+
 jobs:
   akamai-cdn-assets:
     name: 'Akamai CDN (Assets)'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
         with:
           node_modules: 'false'
@@ -127,7 +134,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
@@ -143,8 +150,8 @@ jobs:
     container:
       image: ${{ inputs.image }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}

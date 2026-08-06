@@ -1,0 +1,117 @@
+## Accessibility support
+
+### Keyboard
+
+#### Tabs Bar as a tabbed interface
+
+| Key / state                 | Function                                                                                                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                       | - Moves focus to the active tab.<br/> - When the tab list contains the focus, moves focus to the next element in the tab sequence, which is the `tabpanel` element. |
+| `Right Arrow`, `Left Arrow` | - Moves focus to the next tab.<br/> - Activates the newly focused tab.<br/> - If focus is on the last tab, moves focus to the first tab.                            |
+| `Home`, `End`               | - Moves focus to the first/last tab and activates it.                                                                                                               |
+
+#### Tabs Bar as link list
+
+| Key / state        | Function                                             |
+| ------------------ | ---------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to next (or previous) focusable element. |
+| `Enter`            | Activates the link.                                  |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA                        | Usage                                                                           |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| `aria-label="STRING"`       | Defines a string value that labels the tablist when used as a tabbed interface. |
+| `aria-description="STRING"` | Defines a string value that adds a more detailed description of the tablist.    |
+
+The `aria` property applies only when the component is used as a **tabbed interface** with `<button>` children. It is
+not applied when the component is used as a **link list** with `<a>` children.
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                      | Usage                                                                                 |
+| ------------------------- | ------------------------------------------------------------------------------------- |
+| `role="tablist"`          | Indicates that the element serves as a container for a set of tabs.                   |
+| `role="tab"`              | Indicates the button serves as a tab control.                                         |
+| `aria-selected="BOOLEAN"` | Indicates whether the tab is selected and whether its associated tabpanel is visible. |
+
+## Development considerations
+
+### Labelling
+
+When multiple tab bars appear on the same page, or when the purpose of the tabs is not clear from the visible tab labels
+alone, provide a descriptive accessible name for the tablist using the `aria` property, e.g.:
+`<p-tabs-bar aria="{ 'aria-label': 'Some label for the tablist', 'aria-description': 'Some description for the tablist' }">`.
+
+### ARIA enhancements if used as a tabbed interface
+
+The `p-tabs-bar` component is detached from the content (`tabpanel`) which belongs to the active tab. To be truly
+accessible you need to provide additional ARIA attributes, because every tab (`button`) needs an `aria-controls`
+attribute which points to the corresponding `id` of the `tabpanel`. The content placeholder needs the `role="tabpanel"`
+and the attribute `aria-labelledby` which points to the unique `id` of the corresponding tab (`button`).
+
+You must also take care of the **focus handling** of the `tabpanel`. Therefore, the active tab panel must have a
+`tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly. Use the provided focus
+style like this:
+
+```html
+<p-tabs-bar
+  aria="{ 'aria-label': 'Some label for the tablist', 'aria-description': 'Some description for the tablist' }"
+  active-tab-index="0"
+>
+  <button type="button" id="tab-item-0" aria-controls="tab-panel-0">Tab One</button>
+  <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab Two</button>
+  <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Three</button>
+</p-tabs-bar>
+<div id="tab-panel-0" role="tabpanel" tabindex="0" aria-labelledby="tab-item-0">
+  <p-text>Your content of Tab 1</p-text>
+</div>
+<div id="tab-panel-1" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-1">
+  <p-text>Your content of Tab 2</p-text>
+</div>
+<div id="tab-panel-2" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-2">
+  <p-text>Your content of Tab 3</p-text>
+</div>
+```
+
+```scss
+p-tabs-bar ~ [tabindex='0'][role='tabpanel'] {
+  @include pds-focus;
+}
+```
+
+### ARIA enhancements if used as a link list
+
+#### Route based navigation
+
+If the `p-tabs-bar` is used as a link list (navigation context), the semantics of that UI component changes completely -
+from a **tabbed interface** where content changes happen **on-site** to a **list of links** where content changes are
+**route-based**. Therefore, additional ARIA attributes **must not** be provided for tab identification. The `p-tabs-bar`
+component manages this also internally.
+
+To enhance accessibility even further, wrap the `p-tabs-bar` in a `<nav>` element with an `aria-label` attribute.
+Additionally, an `aria-current="page"` attribute should be provided to the active link.
+
+```html
+<nav aria-label="Label for the navigation">
+  <p-tabs-bar>
+    <a href="https://porsche.com/page-1" aria-current="page">Page One</a>
+    <a href="https://porsche.com/page-2">Page Two</a>
+    <a href="https://porsche.com/page-3">Page Three</a>
+  </p-tabs-bar>
+</nav>
+```
+
+#### In-page jump navigation
+
+If the `p-tabs-bar` is used as an in-page jump navigation, you should follow the same rules as for the route-based
+variant except that `aria-current="page"` should not be used.
+
+### Common do's and don'ts
+
+- **Do** pass tablist ARIA through the `aria` prop when using a tabbed interface.
+- **Do** wrap route-based navigation in `<nav>` with a descriptive `aria-label`.
+- **Do** wire `aria-controls`, `role="tabpanel"`, and `aria-labelledby` in the host application for tab interfaces.
+- **Don't** add tab semantics when the component is used as a link list for route-based navigation.

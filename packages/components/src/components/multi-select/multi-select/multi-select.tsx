@@ -5,6 +5,7 @@ import {
   Element,
   Event,
   type EventEmitter,
+  Fragment,
   forceUpdate,
   h,
   type JSX,
@@ -17,8 +18,11 @@ import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../..
 import {
   AllowedTypes,
   attachComponentCss,
+  debounce,
+  FILTER_STATUS_ANNOUNCE_TIMEOUT,
   FORM_STATES,
   getComboboxAriaAttributes,
+  getFilterStatusMessage,
   getHasNativePopoverSupport,
   getLastSelectedOption,
   getListboxAriaAttributes,
@@ -43,6 +47,7 @@ import {
   updateHighlightedOption,
   validateProps,
 } from '../../../utils';
+import { FilterStatusAnnouncer } from '../../common/filter-status-announcer/filter-status-announcer';
 import { Label } from '../../common/label/label';
 import { descriptionId, labelId } from '../../common/label/label-utils';
 import { NoResultsOption } from '../../common/no-results-option/no-results-option';
@@ -100,13 +105,13 @@ const propTypes: PropTypes<typeof MultiSelect> = {
 export class MultiSelect {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the multi-select control. */
   @Prop() public label?: string = '';
 
-  /** Supplementary text providing more context or explanation for the multi-select. */
+  /** Sets a supplementary description displayed below the label to provide additional context. */
   @Prop() public description?: string = '';
 
-  /** The name of the control. */
+  /** Sets the name submitted with the form data to identify the selected values on the server. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
@@ -127,41 +132,42 @@ export class MultiSelect {
    */
   @Prop({ mutable: true }) public value?: string[] | number[] | null = [];
 
-  /** The validation state. */
+  /** Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). */
   @Prop() public state?: MultiSelectState = 'none';
 
-  /** The message styled depending on validation state. */
+  /** Sets the validation feedback message displayed below the control when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Disables the multi-select */
+  /** Disables the multi-select, preventing all interaction. Selected values are not submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** Requires an option with a non-empty string value to be selected. */
+  /** Marks the multi-select as required — form submission is blocked unless at least one option is selected. */
   @Prop() public required?: boolean = false;
 
-  /** Changes the direction to which the dropdown list appears. */
+  /** Controls whether the dropdown opens upward (`up`) or downward (`down`), or decides automatically (`auto`). */
   @Prop() public dropdownDirection?: MultiSelectDropdownDirection = 'auto';
 
-  /** Displays the multi-select in compact mode. */
+  /** Reduces the control height and padding for a more compact layout. */
   @Prop() public compact?: boolean = false;
 
-  /** The id of a form element the multi-select should be associated with. */
+  /** Associates the multi-select with a form element by its ID when not directly nested inside it. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Emitted when the multi-select has lost focus. */
+  /** Emitted when the multi-select loses focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
-  /** Emitted when the selection is changed. */
+  /** Emitted when the user selects or deselects an option, with the updated array of values in the event detail. */
   @Event({ bubbles: true }) public change: EventEmitter<MultiSelectChangeEventDetail>;
 
-  /** Emitted when the dropdown is toggled. */
+  /** Emitted when the dropdown opens or closes, with the new open state in the event detail. */
   @Event({ bubbles: false }) public toggle: EventEmitter<MultiSelectToggleEventDetail>;
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
+  @State() private filterStatusMessage = '';
   @State() private selectedOptions: MultiSelectOption[] = [];
 
   @AttachInternals() private internals: ElementInternals;
@@ -180,6 +186,14 @@ export class MultiSelect {
   private cleanUpAutoUpdate: () => void;
 
   private currentlyHighlightedOption: Option | null = null;
+
+  private announceFilterStatus = debounce((filterValue: string, visibleOptionCount: number): void => {
+    this.filterStatusMessage = getFilterStatusMessage(filterValue, visibleOptionCount);
+  }, FILTER_STATUS_ANNOUNCE_TIMEOUT);
+
+  private get hasFilter(): boolean {
+    return !hasNamedSlot(this.host, 'filter') || !!this.filterSlot;
+  }
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: MultiSelectOption }): void {
@@ -379,21 +393,24 @@ export class MultiSelect {
           {hasCustomFilterSlot ? (
             <slot name="filter" ref={(el: HTMLSlotElement) => (this.filterSlot = el)}></slot>
           ) : (
-            <PrefixedTagNames.pInputSearch
-              class="filter"
-              name="filter"
-              label="Filter options"
-              hideLabel={true}
-              autoComplete="off"
-              clear={true}
-              indicator={true}
-              compact={true}
-              onInput={this.onFilterInput}
-              onBlur={(e: any) => e.stopPropagation()}
-              onChange={(e: any) => e.stopPropagation()}
-              onKeyDown={this.onComboKeyDown}
-              ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
-            />
+            <Fragment>
+              <PrefixedTagNames.pInputSearch
+                class="filter"
+                name="filter"
+                label="Filter options"
+                hideLabel={true}
+                autoComplete="off"
+                clear={true}
+                indicator={true}
+                compact={true}
+                onInput={this.onFilterInput}
+                onBlur={(e: any) => e.stopPropagation()}
+                onChange={(e: any) => e.stopPropagation()}
+                onKeyDown={this.onComboKeyDown}
+                ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
+              />
+              <FilterStatusAnnouncer message={this.filterStatusMessage} />
+            </Fragment>
           )}
           {/** biome-ignore lint/a11y/noStaticElementInteractions: role listbox is added through getListboxAriaAttributes */}
           <div
@@ -463,6 +480,7 @@ export class MultiSelect {
   private resetFilter = (): void => {
     this.inputSearchElement.value = '';
     this.hasFilterResults = true;
+    this.filterStatusMessage = '';
     for (const option of this.multiSelectOptions) {
       option.style.display = 'block';
     }
@@ -502,7 +520,7 @@ export class MultiSelect {
           getNextOptionToHighlight(this.multiSelectOptions, this.currentlyHighlightedOption, action)
         );
         const targetElement = (
-          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+          this.hasFilter ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
         ) as
           | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
           | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
@@ -537,7 +555,7 @@ export class MultiSelect {
         this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
 
         const targetElement = (
-          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+          this.hasFilter ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
         ) as
           | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
           | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
@@ -614,13 +632,15 @@ export class MultiSelect {
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
     e.stopPropagation();
-    const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
+    const filterValue = (e.detail.target as HTMLInputElement).value;
+    const { hasFilterResults, visibleOptionCount, resetCurrentlyHighlightedOption } = updateFilterResults(
       this.multiSelectOptions,
       this.multiSelectOptgroups,
-      (e.detail.target as HTMLInputElement).value
+      filterValue
     );
     resetCurrentlyHighlightedOption && (this.currentlyHighlightedOption = null);
     this.hasFilterResults = hasFilterResults;
+    this.announceFilterStatus(filterValue, visibleOptionCount);
   };
 
   private onToggle = (): void => {

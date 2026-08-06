@@ -9,48 +9,45 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "build": "npm run clean:build && npm run build:global-styles && npm run build:tailwindcss && npm run build:scss && npm run build:emotion && npm run build:vanilla-extract && npm run build:app",
+    "build": "npm run clean:build && npm run build:tailwindcss && npm run build:scss && npm run build:emotion && npm run build:vanilla-extract && npm run build:app",
     "build-app": "tsc -b && vite build",
-    "build-prod": "npm run clean:build && npm run build-prod:global-styles && npm run build:tailwindcss && npm run build:scss && npm run build:emotion && npm run build:vanilla-extract && npm run build:app",
+    "build-prod": "npm run clean:build && npm run build:tailwindcss && npm run build:scss && npm run build:emotion && npm run build:vanilla-extract && npm run build:app",
     "build:app": "vite build",
-    "build:global-styles": "npm run build --workspace=@porsche-design-system/global-styles",
     "build:tailwindcss": "npm run build --workspace=@porsche-design-system/tailwindcss",
     "build:scss": "npm run build --workspace=@porsche-design-system/scss",
     "build:emotion": "npm run build --workspace=@porsche-design-system/emotion",
     "build:vanilla-extract": "npm run build --workspace=@porsche-design-system/vanilla-extract",
-    "build-prod:global-styles": "npm run build-prod --workspace=@porsche-design-system/global-styles",
     "test": "npm run test:unit && npm run test:vrt",
-    "test:unit": "npm run test:unit:global-styles && npm run test:unit:tailwindcss && npm run test:unit:scss && npm run test:unit:emotion && npm run test:unit:vanilla-extract",
-    "test:unit:global-styles": "npm run test:unit --workspace=@porsche-design-system/global-styles",
+    "test:unit": "npm run test:unit:tailwindcss && npm run test:unit:scss && npm run test:unit:emotion && npm run test:unit:vanilla-extract",
     "test:unit:tailwindcss": "npm run test:unit --workspace=@porsche-design-system/tailwindcss",
     "test:unit:scss": "npm run test:unit --workspace=@porsche-design-system/scss",
     "test:unit:emotion": "npm run test:unit --workspace=@porsche-design-system/emotion",
     "test:unit:vanilla-extract": "npm run test:unit --workspace=@porsche-design-system/vanilla-extract",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
-    "clean:build": "npm run clean:build:app && npm run clean:build:global-styles && npm run clean:build:tailwindcss && npm run clean:build:scss && npm run clean:build:emotion && npm run clean:build:vanilla-extract",
+    "clean:build": "npm run clean:build:app && npm run clean:build:tailwindcss && npm run clean:build:scss && npm run clean:build:emotion && npm run clean:build:vanilla-extract",
     "clean:build:app": "rm -rf ./dist",
-    "clean:build:global-styles": "npm run clean:build --workspace=@porsche-design-system/global-styles",
     "clean:build:tailwindcss": "npm run clean:build --workspace=@porsche-design-system/tailwindcss",
     "clean:build:scss": "npm run clean:build --workspace=@porsche-design-system/scss",
     "clean:build:emotion": "npm run clean:build --workspace=@porsche-design-system/emotion",
     "clean:build:vanilla-extract": "npm run clean:build --workspace=@porsche-design-system/vanilla-extract"
   },
-  "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
+  "dependencies": {
+    "@emotion/styled": "^11.14.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
-  "peerDependencies": {
-    "@playwright/test": "*",
-    "typescript": "*",
-    "tailwindcss": "*",
-    "@tailwindcss/vite": "*",
-    "vite": "*",
-    "react": "*",
-    "react-dom": "*",
-    "react-router": "*",
-    "sass": "*",
-    "@vanilla-extract/css": "*",
-    "@vanilla-extract/vite-plugin": "*",
-    "@emotion/styled": "*"
+  "devDependencies": {
+    "@playwright/test": "1.61.0",
+    "@porsche-design-system/shared": "0.0.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "@vanilla-extract/css": "^1.21.0",
+    "@vanilla-extract/vite-plugin": "^5.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "react-router": "^8.0.1",
+    "sass": "^1.101.0",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.0"
   },
   "volta": {
     "extends": "../../package.json"

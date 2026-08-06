@@ -1,6 +1,5 @@
 import {
   PDivider,
-  PHeading,
   PLinkPure,
   PTable,
   PTableBody,
@@ -8,7 +7,6 @@ import {
   PTableHead,
   PTableHeadCell,
   PTableRow,
-  PText,
   PTextList,
   PTextListItem,
 } from '@porsche-design-system/components-react/ssr';
@@ -16,74 +14,19 @@ import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import type React from 'react';
-import type { PropsWithChildren } from 'react';
+import React from 'react';
 
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { getChangelogAnchorId } from '@/utils/extractChangelogVersion';
-
-export const H3 = ({ children }: PropsWithChildren) => (
-  <PHeading tag="h3" size="large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
-    {children}
-  </PHeading>
-);
-
-export const P = ({ children }: PropsWithChildren) => (
-  <PText className="my-fluid-sm max-w-(--max-width-prose)">{children}</PText>
-);
+import { CodeBlock } from '@/components/common/CodeBlock';
+import { H1, H2, H3, H4, H5, H6, P } from '@/components/common/MdxTypography';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    wrapper: ({ children }) => (
-      // biome-ignore lint/correctness/useUniqueElementIds: ok
-      <article id="main-content" className="col-[wide]">
-        {children as React.ReactNode}
-      </article>
-    ),
-    h1: ({ children }) => (
-      <PHeading tag="h1" size="3xl" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)">
-        {children as React.ReactNode}
-      </PHeading>
-    ),
-    h2: ({ children }) => {
-      const text = children as string;
-      const id = getChangelogAnchorId(text);
-
-      return (
-        <PHeading
-          tag="h2"
-          size="xl"
-          className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose) group scroll-mt-14"
-          id={id}
-        >
-          {children as React.ReactNode}
-          <PLinkPure
-            className="ms-static-sm invisible group-hover:visible"
-            title="Link to this heading"
-            icon="none"
-            size="inherit"
-          >
-            <Link href={`#${id}`}>#</Link>
-          </PLinkPure>
-        </PHeading>
-      );
-    },
+    h1: ({ children }) => <H1>{children as React.ReactNode}</H1>,
+    h2: ({ children }) => <H2>{children as React.ReactNode}</H2>,
     h3: ({ children }) => <H3>{children as React.ReactNode}</H3>,
-    h4: ({ children }) => (
-      <PHeading tag="h4" size="md" className="my-fluid-md max-w-(--max-width-prose)">
-        {children as React.ReactNode}
-      </PHeading>
-    ),
-    h5: ({ children }) => (
-      <PHeading tag="h5" size="sm" weight="semibold" className="my-fluid-md max-w-(--max-width-prose)">
-        {children as React.ReactNode}
-      </PHeading>
-    ),
-    h6: ({ children }) => (
-      <PHeading tag="h6" size="sm" weight="semibold" className="my-fluid-md max-w-(--max-width-prose)">
-        {children as React.ReactNode}
-      </PHeading>
-    ),
+    h4: ({ children }) => <H4>{children as React.ReactNode}</H4>,
+    h5: ({ children }) => <H5>{children as React.ReactNode}</H5>,
+    h6: ({ children }) => <H6>{children as React.ReactNode}</H6>,
     p: ({ children }) => <P>{children as React.ReactNode}</P>,
     hr: ({ children }) => <PDivider className="my-fluid-lg">{children as React.ReactNode}</PDivider>,
     ul: ({ children }) => (
@@ -117,54 +60,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children as React.ReactNode}
       </blockquote>
     ),
-    pre: ({ children }) => (
-      <pre className="my-fluid-sm" dir="ltr">
-        {children as React.ReactNode}
-      </pre>
-    ),
-    code: ({ children, className }) => {
-      const hasLang = /language-(\w+)/.exec(className || '');
+    // A fenced code block reaches the mapping as `pre > code`, so the language and the code are read
+    // from the `code` element instead of rendering it; `code` itself then only handles inline code.
+    pre: ({ children }) => {
+      const { className, children: code } = React.isValidElement<{ className?: string; children?: React.ReactNode }>(
+        children
+      )
+        ? children.props
+        : { className: undefined, children };
 
       return (
-        <>
-          {hasLang ? (
-            <code
-              className="my-fluid-md p-fluid-md max-h-96 overflow-auto rounded-4xl focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-2"
-              tabIndex={0}
-            >
-              {/* @ts-expect-error */}
-              <SyntaxHighlighter
-                language={
-                  {
-                    js: 'javascript',
-                    javascript: 'javascript',
-                    ts: 'typescript',
-                    typescript: 'typescript',
-                    diff: 'diff',
-                    json: 'json',
-                    html: 'html',
-                    scss: 'scss',
-                    css: 'css',
-                    shell: 'shell',
-                    bash: 'bash',
-                    tsx: 'typescript',
-                    jsx: 'javascript',
-                  }[hasLang[1]] || 'javascript'
-                }
-                PreTag="div"
-                CodeTag="div"
-                showLineNumbers={false}
-                useInlineStyles={false}
-              >
-                {children as React.ReactNode}
-              </SyntaxHighlighter>
-            </code>
-          ) : (
-            <code className="my-fluid-md rounded-lg">{children as React.ReactNode}</code>
-          )}
-        </>
+        <CodeBlock className="my-fluid-md" language={/language-(\w+)/.exec(className || '')?.[1]}>
+          {typeof code === 'string' ? code : ''}
+        </CodeBlock>
       );
     },
+    code: ({ children }) => <code className="my-fluid-md rounded-lg">{children as React.ReactNode}</code>,
     img: ({ src, alt }) => (
       <Image
         className="w-full h-auto rounded-lg"

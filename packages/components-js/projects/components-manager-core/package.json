@@ -12,9 +12,9 @@
     "test:unit": "vitest -c vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
-  "peerDependencies": {
-    "vitest": "*",
-    "typescript": "*"
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   },
   "volta": {
     "extends": "../../../../package.json"

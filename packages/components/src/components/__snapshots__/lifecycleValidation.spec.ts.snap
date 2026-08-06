@@ -7,9 +7,17 @@ exports[`should call validateProps() with correct parameters via render for p-ac
   "compact": "boolean",
   "heading": "string",
   "headingTag": "oneOf",
+  "indent": "breakpoint",
   "open": "boolean",
   "size": "breakpoint",
   "sticky": "boolean",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-ai-tag > propTypes with ValidatorFunctions 1`] = `
+{
+  "locale": "oneOf",
+  "variant": "oneOf",
 }
 `;
 
@@ -209,6 +217,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
   "background": "oneOf",
   "disableBackdropClick": "boolean",
   "footerBehavior": "oneOf",
+  "fullscreen": "breakpoint",
   "open": "boolean",
   "position": "oneOf",
 }
@@ -659,8 +668,10 @@ exports[`should call validateProps() with correct parameters via render for p-pi
 exports[`should call validateProps() with correct parameters via render for p-popover > propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "compact": "boolean",
   "description": "string",
   "direction": "oneOf",
+  "open": "boolean",
 }
 `;
 
@@ -825,6 +836,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "aria": "aria",
   "background": "oneOf",
   "compact": "boolean",
   "size": "breakpoint",
@@ -835,6 +847,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tabs-bar > propTypes with ValidatorFunctions 1`] = `
 {
   "activeTabIndex": "number",
+  "aria": "aria",
   "background": "oneOf",
   "compact": "boolean",
   "size": "breakpoint",

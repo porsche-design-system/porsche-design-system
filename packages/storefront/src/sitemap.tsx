@@ -411,6 +411,35 @@ export const sitemap: Routes = {
       },
     },
   },
+  skills: {
+    name: 'Skills',
+    path: '/skills',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/skills/introduction',
+        type: 'PAGE',
+        subPaths: {
+          general: {
+            name: 'General',
+            path: '/skills/introduction/general',
+            type: 'TAB',
+          },
+          installation: {
+            name: 'Installation',
+            path: '/skills/introduction/installation',
+            type: 'TAB',
+          },
+        },
+      },
+      knowledge: {
+        name: 'Knowledge',
+        path: '/skills/knowledge',
+        type: 'PAGE',
+      },
+    },
+  },
   components: {
     name: 'Components',
     path: '/components',
@@ -532,6 +561,16 @@ export const sitemap: Routes = {
         path: '/patterns/footer',
         type: 'PAGE',
       },
+      popover: {
+        name: 'Popover',
+        path: '/patterns/popover',
+        type: 'PAGE',
+      },
+      feedback: {
+        name: 'Feedback',
+        path: '/patterns/feedback',
+        type: 'PAGE',
+      },
       forms: {
         name: 'Forms',
         path: '/patterns/forms',
@@ -570,11 +609,6 @@ export const sitemap: Routes = {
             type: 'PAGE',
           },
         },
-      },
-      'ai-tag': {
-        name: 'AI Tag',
-        path: '/patterns/ai-tag',
-        type: 'PAGE',
       },
     },
   },
@@ -1815,6 +1849,11 @@ export const sitemap: Routes = {
         path: '/must-know/theme',
         type: 'PAGE',
       },
+      typography: {
+        name: 'Typography',
+        path: '/must-know/typography',
+        type: 'PAGE',
+      },
       performance: {
         name: 'Performance',
         path: '/must-know/performance',
@@ -1840,6 +1879,11 @@ export const sitemap: Routes = {
           introduction: {
             name: 'Introduction',
             path: '/must-know/accessibility/introduction',
+            type: 'PAGE',
+          },
+          'dos-and-donts': {
+            name: "Do's and Don'ts",
+            path: '/must-know/accessibility/dos-and-donts',
             type: 'PAGE',
           },
           'ai-agent-setup': {

@@ -2,13 +2,17 @@
   "name": "shared",
   "version": "0.0.0",
   "private": true,
+  "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "main": "index.js",
   "module": "esm/index.js",
   "types": "index.d.ts",
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "license": "UNLICENSED",
-  "homepage": "https://designsystem.porsche.com",
+  "bin": {
+    "serve-dummyassets": "./bin/serve-dummyassets.js",
+    "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
+  },
   "scripts": {
     "start": "npm run build && node ./bin/serve-dummyassets.js",
     "build": "npm run clean:build && npm run build:generateTagNames && npm run build:generateChunkNames && npm run build:generatePartialNames && npm run build:generateCodeExamples && npm run build:bundle",
@@ -21,39 +25,31 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "^19.2.7"
+  },
   "devDependencies": {
-    "@octokit/core": "^7.0.6",
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/madge": "^5.0.3",
+    "@types/node": "^26.0.1",
     "change-case": "^5.4.4",
-    "@types/tinycolor2": "^1.4.6",
-    "tinycolor2": "^1.6.0"
-  },
-  "peerDependencies": {
-    "@rollup/plugin-commonjs": "*",
-    "@rollup/plugin-json": "*",
-    "@rollup/plugin-node-resolve": "*",
-    "@rollup/plugin-replace": "*",
-    "@rollup/plugin-typescript": "*",
-    "@types/madge": "*",
-    "@types/node": "*",
-    "fast-glob": "*",
-    "madge": "*",
-    "rollup": "*",
-    "rollup-plugin-bin": "*",
-    "rollup-plugin-copy": "*",
-    "rollup-plugin-generate-package-json": "*",
-    "rollup-plugin-modify": "*",
-    "rollup-plugin-preserve-directives": "*",
-    "rollup-plugin-preserve-shebang": "*",
-    "rollup-plugin-terser": "*",
-    "tsx": "*",
-    "typescript": "*",
-    "vitest": "*",
-    "react": "*"
-  },
-  "bin": {
-    "serve-dummyassets": "./bin/serve-dummyassets.js",
-    "prepare-vrt-snapshots": "./bin/prepareVRTSnapshots.js"
+    "fast-glob": "^3.3.3",
+    "madge": "^8.0.0",
+    "rollup": "^4.62.2",
+    "rollup-plugin-bin": "^1.0.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "rollup-plugin-modify": "^3.0.0",
+    "rollup-plugin-preserve-directives": "^0.4.0",
+    "rollup-plugin-preserve-shebang": "^1.0.1",
+    "spdy": "^4.0.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   },
   "volta": {
     "extends": "../../package.json"

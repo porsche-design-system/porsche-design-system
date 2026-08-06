@@ -1,0 +1,69 @@
+{
+  "name": "@porsche-design-system/stylesheets",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "style": "./lib/index.css",
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
+    },
+    "./meta": {
+      "types": "./meta/esm/meta.d.ts",
+      "import": "./meta/esm/meta.mjs",
+      "require": "./meta/cjs/meta.cjs"
+    },
+    "./*": "./lib/*"
+  },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/esm/index.d.ts",
+  "style": "./lib/index.css",
+  "files": [
+    "./dist/",
+    "./lib/",
+    "./meta/"
+  ],
+  "scripts": {
+    "build": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:meta && npm run build:css && npm run build:font-face && npm run build:index",
+    "build-prod": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:meta && npm run build:css && npm run build-prod:font-face && npm run build:index",
+    "build:constants": "tsx scripts/buildCssVariableConstants.ts",
+    "build:package": "rollup -c rollup.config.mjs",
+    "build:meta": "rollup -c rollup.config.meta.mjs",
+    "build:css": "tsx scripts/buildStylesheetsCss.ts",
+    "build:font-face": "NODE_ENV=development tsx scripts/buildFontFaceCss.ts",
+    "build-prod:font-face": "tsx scripts/buildFontFaceCss.ts",
+    "build:index": "npm run build:index:default && npm run build:index:cdn",
+    "build:index:default": "cat lib/normalize.css lib/variables.css lib/color-scheme.css lib/font-face.css > lib/index.css",
+    "build:index:cdn": "mkdir -p lib/cn && cat lib/normalize.css lib/variables.css lib/color-scheme.css lib/cn/font-face.css > lib/cn/index.css",
+    "test": "npm run test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist ./lib ./meta"
+  },
+  "dependencies": {
+    "@porsche-design-system/font-face": "0.0.0",
+    "@porsche-design-system/tokens": "0.0.0"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/node": "^26.0.1",
+    "rollup": "^4.62.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

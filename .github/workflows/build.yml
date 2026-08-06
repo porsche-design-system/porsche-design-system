@@ -12,6 +12,9 @@ on:
         required: true
         type: string
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: 'Lint'
@@ -21,7 +24,7 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - run: npm run lint
   build-development:
@@ -32,15 +35,17 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - run: npm run build:shared
       - run: npm run build:tokens
       - run: npm run build:assets
       - run: npm run build:styles
       - run: npm run build:utilities
+      - run: npm run build:stylesheets
       - run: npm run build:component-meta
       - run: npm run build:components
+      - run: npm run build:skill
       - run: npm run build:components-js
       - run: npm run build:components-angular
       - run: npm run build:components-react
@@ -52,6 +57,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
+            ./packages/storefront/projects/skill/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
@@ -61,12 +67,18 @@ jobs:
             ./packages/styles/dist/
             ./packages/styles/projects/shared-styles/dist/
             ./packages/styles/projects/shared-styles/src/generated/
-            ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/tailwindcss/meta/
             ./packages/styles/projects/scss/dist/
+            ./packages/styles/projects/scss/meta/
             ./packages/styles/projects/emotion/dist/
+            ./packages/styles/projects/emotion/meta/
             ./packages/styles/projects/vanilla-extract/dist/
+            ./packages/styles/projects/vanilla-extract/meta/
             ./packages/components/dist/
+            ./packages/components/projects/stylesheets/dist/
+            ./packages/components/projects/stylesheets/lib/
+            ./packages/components/projects/stylesheets/meta/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/
             ./packages/components-js/projects/components-manager-core/dist/
@@ -81,6 +93,7 @@ jobs:
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
             ./packages/tokens/dist/
+            ./packages/tokens/projects/tokens-meta/dist/
             ./packages/components-angular/dist/
             ./packages/assets/cdn/
             ./packages/shared/bin/
@@ -95,11 +108,10 @@ jobs:
             ./packages/components-react/projects/react-ssr-wrapper/src/
             ./packages/components-react/src/pages/generated/
             ./packages/components-react/projects/nextjs/.next/
-            ./packages/components-react/projects/remix/build/
-            ./packages/components-react/projects/remix/public/build/
             ./packages/components-react/projects/react-router/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/tokens/projects/tokens-meta/src/lib/tokensMeta.ts
             ./packages/shared/src/lib/
           if-no-files-found: error
   build-production:
@@ -110,15 +122,17 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - run: npm run build:shared
       - run: npm run build:tokens
       - run: npm run build:assets
       - run: npm run build:styles-prod
       - run: npm run build:utilities
+      - run: npm run build:stylesheets-prod
       - run: npm run build:component-meta
       - run: npm run build:components-prod
+      - run: npm run build:skill
       - run: npm run build:components-js-prod
       - run: npm run build:components-angular
       - run: npm run build:components-react
@@ -130,6 +144,7 @@ jobs:
           include-hidden-files: true
           path: |
             ./packages/storefront/dist/
+            ./packages/storefront/projects/skill/generated/
             ./packages/storefront/projects/stackblitz/dist/
             ./packages/components-react/dist/
             ./packages/components-vue/dist/
@@ -139,12 +154,18 @@ jobs:
             ./packages/styles/dist/
             ./packages/styles/projects/shared-styles/dist/
             ./packages/styles/projects/shared-styles/src/generated/
-            ./packages/styles/projects/global-styles/dist/
             ./packages/styles/projects/tailwindcss/dist/
+            ./packages/styles/projects/tailwindcss/meta/
             ./packages/styles/projects/scss/dist/
+            ./packages/styles/projects/scss/meta/
             ./packages/styles/projects/emotion/dist/
+            ./packages/styles/projects/emotion/meta/
             ./packages/styles/projects/vanilla-extract/dist/
+            ./packages/styles/projects/vanilla-extract/meta/
             ./packages/components/dist/
+            ./packages/components/projects/stylesheets/dist/
+            ./packages/components/projects/stylesheets/lib/
+            ./packages/components/projects/stylesheets/meta/
             ./packages/components-js/dist/
             ./packages/components-js/projects/components-manager-cli/dist/
             ./packages/components-js/projects/components-manager-core/dist/
@@ -159,6 +180,7 @@ jobs:
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
             ./packages/tokens/dist/
+            ./packages/tokens/projects/tokens-meta/dist/
             ./packages/components-angular/dist/
             ./packages/assets/cdn/
             ./packages/shared/bin/
@@ -172,10 +194,9 @@ jobs:
             ./packages/components-react/projects/react-ssr-wrapper/src/
             ./packages/components-react/src/pages/generated/
             ./packages/components-react/projects/nextjs/.next/
-            ./packages/components-react/projects/remix/build/
-            ./packages/components-react/projects/remix/public/build/
             ./packages/components-react/projects/react-router/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/tokens/projects/tokens-meta/src/lib/tokensMeta.ts
             ./packages/shared/src/lib/
           if-no-files-found: error

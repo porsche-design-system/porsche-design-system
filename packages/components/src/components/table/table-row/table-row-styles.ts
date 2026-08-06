@@ -1,3 +1,4 @@
+import { ref } from '@porsche-design-system/stylesheets';
 import { addImportantToEachRule, getTransition, hostHiddenStyles, hoverMediaQuery } from '../../../styles';
 import { getCss } from '../../../utils';
 import {
@@ -12,13 +13,13 @@ export const getComponentCss = (): string => {
       ':host': {
         display: 'table-row',
         ...addImportantToEachRule({
-          borderBottom: `var(${cssVariableTableBorderWidth}) solid var(${cssVariableTableBorderColor})`,
+          borderBottom: `${ref(cssVariableTableBorderWidth)} solid ${ref(cssVariableTableBorderColor)}`,
           transition: getTransition('background'),
           ...hostHiddenStyles,
           ...hoverMediaQuery({
             '&(:hover)': {
               // ...frostedGlassStyle, // will result in not smooth transition when applied
-              background: `var(${cssVariableTableHoverColor})`,
+              background: ref(cssVariableTableHoverColor),
             },
           }),
         }),

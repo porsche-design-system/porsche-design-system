@@ -1,0 +1,23 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { ComponentApi } from '@/components/components/ComponentApi';
+import { componentMeta } from '@porsche-design-system/component-meta';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { tabsMeta } from '@/app/(main)/components/tabs/tabs.meta';
+
+export const metadata = {
+  title: 'Tabs - Porsche Design System',
+  description:
+    'Detailed API reference for the Tabs component, including properties, slots, events, and customizable CSS properties.',
+};
+
+# Tabs <ComponentStatus tagName="p-tabs"></ComponentStatus>
+
+<TableOfContents headings={['Tabs', 'Tabs Item']} />
+
+## Tabs
+
+<ComponentApi api={tabsMeta.api} showTableOfContents={false} />
+
+## Tabs Item
+
+<ComponentApi api={componentMeta['p-tabs-item']} showTableOfContents={false} />

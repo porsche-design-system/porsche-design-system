@@ -51,7 +51,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
         .replace(/private(.*?)window.matchMedia(.*?);/g, '')
-        .replace(/\n  private (?!get).+(\n.+)*?\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/\n  private (?!get).+(\n.+)*?(?<!\()\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
@@ -60,6 +60,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n.+parseJSON[\s\S]+?.*/g, '')
         .replace(/ as HTML[A-Za-z]+/g, '')
         .replace(/\s+ref={.*?}/g, '') // ref props
+        .replace(/\s+refCallback={.*?}/g, '') // refCallback props (interactive-only, not used in static DSR output)
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
         .replace(/\s+onToggle={.*?}/g, '') // onToggle props
@@ -71,9 +72,9 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onWheel={.*?}/g, '') // onWheel props
         .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/\s+onUpdate={.*?}/g, '') // onUpdate props
-        .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
-        .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
-        .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
+        .replace(/ +ref: [^;\n]*?,\n/g, '') // ref object-literal props (single line, must not cross `;`-terminated type members)
+        .replace(/ +onClick: [^;\n]*?,\n/g, '') // onClick object-literal props (single line, must not cross `;`-terminated type members)
+        .replace(/ +onKeyDown: [^;\n]*?,\n/g, '') // onKeyDown object-literal props (single line, must not cross `;`-terminated type members)
         .replace(/(private [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any') // change type of private members to any
         .replace(/( class)([:=])/g, '$1Name$2') // change class prop to className in JSX
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
@@ -92,9 +93,11 @@ const generateDSRComponents = (): void => {
                 group.endsWith('input-base') ||
                 group.endsWith('notification-base') ||
                 group.endsWith('dialog-base') ||
+                group.endsWith('fc-dismiss-button') ||
                 group.endsWith('required') ||
                 group.endsWith('label') ||
-                group.endsWith('no-results-option')
+                group.endsWith('no-results-option') ||
+                group.endsWith('filter-status-announcer')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
@@ -280,6 +283,17 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           newFileContent = newFileContent.replace(/innerHTML=\{([^}]*)}/, 'dangerouslySetInnerHTML={{__html: $1}}');
         }
 
+        if (newFileContent.includes('export const FCDismissButton:')) {
+          // `onClick`/`refCallback` are interactive-only props; the DSR output is static HTML so their
+          // JSX bindings were already stripped. Drop them from the type and destructuring too, otherwise
+          // they'd be unused (TS6133) and required-but-unpassed by consumers (TS2741).
+          newFileContent = newFileContent
+            .replace(/\n  (?:\/\*\*[^\n]*\*\/\n  )?onClick: \(\) => void;/, '')
+            .replace(/\n  (?:\/\*\*[^\n]*\*\/\n  )?refCallback\?: \(el: HTMLButtonElement\) => void;/, '')
+            .replace(/\n  onClick,/, '')
+            .replace(/\n  refCallback,/, '');
+        }
+
         if (newFileContent.includes('export const DialogBase:')) {
           const removedProps = ['dialogRef', 'scrollerRef', 'onCancel', 'onClick', 'onTransitionEnd', 'onDismiss'];
           newFileContent = newFileContent
@@ -407,7 +421,20 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/.+consoleWarn\([\s\S]+?\);\n/g, '')
           .replace(/this\.props\.(hasHeadingSlot|hasDescriptionSlot)/g, '$1')
           .replace(/(?:hasHeadingSlot|hasDescriptionSlot) =/g, 'const $&')
-          .replace(/this\.props\.(hasDismissButton)/g, 'this.$1');
+          .replace(/this\.props\.(hasDismissButton)/g, 'this.$1')
+          // `isInitialRender` is a private field (not a `@Prop`), so the generic `this.x -> this.props.x` rewrite turned
+          // it into `this.props.isInitialRender`, which is `undefined` in static DSR output. Hardcode `true` so the
+          // `@starting-style` entry transition is skipped and an initially-open banner renders instantly (no animation
+          // flash) — mirroring the live component's first render.
+          .replace(/this\.props\.isInitialRender/, 'true')
+          // The refactored banner uses the native Popover API: the `[popover]` panel stays `display:none` until JS calls
+          // `showPopover()` (via the top-layer controller). Declarative Shadow DOM SSR output is static HTML with no JS,
+          // so the popover never opens and the banner is invisible. Force it visible when `open` — `display:grid!important`
+          // beats both our own `display:none` and the UA `[popover]:not(:popover-open){display:none}` rule.
+          .replace(
+            /__html: style }/,
+            "__html: style + (this.props.open ? '[popover]{display:grid!important}' : '') }"
+          );
       } else if (tagName === 'p-inline-notification') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeadingSlot|hasDescriptionSlot)/g, '$1')
@@ -493,14 +520,20 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme')
           .replace(/(deprecationMap\[this\.props\.gradientColor)/, '$1 as ScrollerGradientColor');
       } else if (tagName === 'p-popover') {
-        // only keep :host , button, .icon & .label styles
-        newFileContent = newFileContent
-          .replace(
-            /getPopoverCss\(.+?\)/,
-            `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
-          )
-          .replace(/this\.props\.(hasSlottedButton)/g, '$1')
-          .replace(/hasSlottedButton =/g, 'const $&');
+        // only keep :host , button, .icon & .label styles — i.e. the trigger only, NOT the open panel.
+        // Unlike `p-banner` (viewport-anchored via pure CSS, so its open state IS forced visible in static DSR), the
+        // popover panel is positioned at runtime by Floating UI (`computePosition` + `autoUpdate` assign inline
+        // `left`/`top`; the CSS only sets a `top:0;left:0` placeholder). With no JS in Declarative Shadow DOM output
+        // there is no correct static position, so forcing the panel visible would pin it to the viewport's top-left,
+        // detached from its trigger, with an unpositioned arrow. Therefore the open panel is intentionally NOT rendered
+        // in SSR — do NOT add a `[popover]{display:grid!important}`-style override here like `p-banner` does.
+        // Note: `hasSlottedButton` is already a local `const` derived from `hasNamedSlot(...)` in the source render()
+        // and the generic named-slot rewiring above converts it to a `namedSlotChildren.filter(...)` expression, so no
+        // private-member reversal is needed here (doing so would produce invalid `const const hasSlottedButton = ...`).
+        newFileContent = newFileContent.replace(
+          /getPopoverCss\(.+?\)/,
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
+        );
       } else if (tagName === 'p-tabs-bar') {
         newFileContent = newFileContent
           // get rid of left over
@@ -752,7 +785,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
   fs.mkdirSync(destinationDirectory, { recursive: true });
 
   componentFileContents.forEach((fileContent) => {
-    const name = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent)![1];
+    const nameMatch = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent);
+    if (!nameMatch) {
+      throw new Error(
+        `Failed to extract component name from generated DSR content (no matching \`export class|const\` found). This usually means a transform above removed the export declaration. Content start:\n${fileContent.slice(0, 200)}`
+      );
+    }
+    const name = nameMatch[1];
 
     const fileName = `${kebabCase(name.replace('DSR', ''))}.tsx`;
     const filePath = path.resolve(destinationDirectory, fileName);

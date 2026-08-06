@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { buttonPureMeta } from '@/app/(main)/components/button-pure/button-pure.meta';
+
+export const metadata = {
+  title: 'Button Pure: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Button Pure component',
+};
+
+# Button Pure <ComponentStatus tagName="p-button-pure"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Limitations', 'Development considerations', 'Integration examples', 'Tests']}
+/>
+
+<buttonPureMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-button-pure" examples={buttonPureMeta.accessibility.examples} />
+
+<buttonPureMeta.accessibility.tests />

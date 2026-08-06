@@ -1,0 +1,62 @@
+import { vanillaExtractMeta } from '@porsche-design-system/vanilla-extract/meta';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { StylesTable } from '@/components/common/StylesTable';
+
+export const metadata = {
+  title: 'Vanilla Extract: Typography - Porsche Design System',
+  description: 'Detailed API reference for the typography style.',
+};
+
+# Typography
+
+<TableOfContents headings={['JS Objects', 'JS Variables', 'CJK auto-detection']} />
+
+## JS Objects
+
+### Heading
+
+<StylesTable meta={vanillaExtractMeta.typography.heading} columnLabel="JS" showValue={false} />
+
+### Text
+
+<StylesTable meta={vanillaExtractMeta.typography.text} columnLabel="JS" showValue={false} />
+
+## JS Variables
+
+<StylesTable
+  meta={{
+    ...vanillaExtractMeta.font.family,
+    ...vanillaExtractMeta.font.weight,
+    ...vanillaExtractMeta.font.lineHeight,
+    ...vanillaExtractMeta.font.size,
+  }}
+  columnLabel="JS"
+/>
+
+## CJK auto-detection
+
+Use the `getCJKFontFamilyStyle()` helper on any style object that sets `fontFamily` to automatically swap to the
+locale-specific **Porsche Next** font stack for **Simplified Chinese**, **Traditional Chinese**, **Japanese** or
+**Korean** based on the nearest `lang` attribute (typically set on `<html>`).
+
+<StylesTable
+  meta={{ getCJKFontFamilyStyle: vanillaExtractMeta.font.getCJKFontFamilyStyle }}
+  columnLabel="JS Function"
+/>
+
+```ts
+import { style } from '@vanilla-extract/css';
+import {
+  fontPorscheNext,
+  getCJKFontFamilyStyle,
+} from '@porsche-design-system/components-{js|angular|react|vue}/vanilla-extract';
+
+export const headline = style({
+  fontFamily: fontPorscheNext,
+  ...getCJKFontFamilyStyle(),
+});
+```
+
+The `proseHeading*` and `proseText*` style objects already include this `:lang()` logic, so when you compose styles with
+them you can skip the spread. Reach for the per-language tokens (`fontPorscheNextZhHans`, …) only when you intentionally
+need to pin a specific CJK family regardless of the document's language.

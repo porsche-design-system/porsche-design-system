@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { pinCodeMeta } from '@/app/(main)/components/pin-code/pin-code.meta';
+
+export const metadata = {
+  title: 'Pin Code: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Pin Code component',
+};
+
+# Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<pinCodeMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-pin-code" examples={pinCodeMeta.accessibility.examples} />
+
+<pinCodeMeta.accessibility.tests />

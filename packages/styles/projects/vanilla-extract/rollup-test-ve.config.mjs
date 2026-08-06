@@ -13,7 +13,7 @@ export default {
   plugins: [
     vanillaExtractPlugin({
       // Use .test as class identifier
-      identifiers: ({ hash }) => 'test',
+      identifiers: () => 'test',
     }),
   ],
   output: {

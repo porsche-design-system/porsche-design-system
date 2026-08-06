@@ -4,6 +4,10 @@ const generatedRoutes = {
     "path": "/accordion",
     "name": "Accordion"
   },
+  "aiTag": {
+    "path": "/ai-tag",
+    "name": "AiTag"
+  },
   "banner": {
     "path": "/banner",
     "name": "Banner"
@@ -295,6 +299,18 @@ const generatedRoutes = {
   "flyoutFooterScrolled": {
     "path": "/flyout-footer-scrolled",
     "name": "FlyoutFooterScrolled"
+  },
+  "flyoutFullscreen": {
+    "path": "/flyout-fullscreen",
+    "name": "FlyoutFullscreen"
+  },
+  "flyoutFullscreenPositionStart": {
+    "path": "/flyout-fullscreen-position-start",
+    "name": "FlyoutFullscreenPositionStart"
+  },
+  "flyoutFullscreenResponsive": {
+    "path": "/flyout-fullscreen-responsive",
+    "name": "FlyoutFullscreenResponsive"
   },
   "flyoutGrid": {
     "path": "/flyout-grid",
@@ -592,9 +608,21 @@ const generatedRoutes = {
     "path": "/popover-bottom",
     "name": "PopoverBottom"
   },
+  "popoverCompact": {
+    "path": "/popover-compact",
+    "name": "PopoverCompact"
+  },
+  "popoverCssVariables": {
+    "path": "/popover-css-variables",
+    "name": "PopoverCssVariables"
+  },
   "popoverEdgeCase": {
     "path": "/popover-edge-case",
     "name": "PopoverEdgeCase"
+  },
+  "popoverFlexParent": {
+    "path": "/popover-flex-parent",
+    "name": "PopoverFlexParent"
   },
   "popoverLeft": {
     "path": "/popover-left",
@@ -611,6 +639,10 @@ const generatedRoutes = {
   "popoverTop": {
     "path": "/popover-top",
     "name": "PopoverTop"
+  },
+  "popoverViewportLimit": {
+    "path": "/popover-viewport-limit",
+    "name": "PopoverViewportLimit"
   },
   "radioGroup": {
     "path": "/radio-group",
@@ -699,6 +731,10 @@ const generatedRoutes = {
   "sheetBasic": {
     "path": "/sheet-basic",
     "name": "SheetBasic"
+  },
+  "sheetCssVariables": {
+    "path": "/sheet-css-variables",
+    "name": "SheetCssVariables"
   },
   "sheetGrid": {
     "path": "/sheet-grid",

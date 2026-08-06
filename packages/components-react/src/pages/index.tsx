@@ -12,6 +12,7 @@ export * from './Utilities';
 /* eslint-disable import/first */
 export * from './generated/CoreInitializer';
 import { AccordionPage } from './generated/Accordion';
+import { AiTagPage } from './generated/AiTag';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
 import { BannerCssVariablesPage } from './generated/BannerCssVariables';
@@ -84,6 +85,9 @@ import { FlyoutFixedFooterSubfooterScrollableContentScrolledPage } from './gener
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
 import { FlyoutFooterScrolledPage } from './generated/FlyoutFooterScrolled';
+import { FlyoutFullscreenPage } from './generated/FlyoutFullscreen';
+import { FlyoutFullscreenPositionStartPage } from './generated/FlyoutFullscreenPositionStart';
+import { FlyoutFullscreenResponsivePage } from './generated/FlyoutFullscreenResponsive';
 import { FlyoutGridPage } from './generated/FlyoutGrid';
 import { FlyoutHeaderPage } from './generated/FlyoutHeader';
 import { FlyoutHeaderFooterPage } from './generated/FlyoutHeaderFooter';
@@ -158,11 +162,15 @@ import { PopoverPage } from './generated/Popover';
 import { PopoverBasicPage } from './generated/PopoverBasic';
 import { PopoverBasicSlottedPage } from './generated/PopoverBasicSlotted';
 import { PopoverBottomPage } from './generated/PopoverBottom';
+import { PopoverCompactPage } from './generated/PopoverCompact';
+import { PopoverCssVariablesPage } from './generated/PopoverCssVariables';
 import { PopoverEdgeCasePage } from './generated/PopoverEdgeCase';
+import { PopoverFlexParentPage } from './generated/PopoverFlexParent';
 import { PopoverLeftPage } from './generated/PopoverLeft';
 import { PopoverRightPage } from './generated/PopoverRight';
 import { PopoverScrolledPage } from './generated/PopoverScrolled';
 import { PopoverTopPage } from './generated/PopoverTop';
+import { PopoverViewportLimitPage } from './generated/PopoverViewportLimit';
 import { RadioGroupPage } from './generated/RadioGroup';
 import { ScrollerPage } from './generated/Scroller';
 import { SegmentedControlPage } from './generated/SegmentedControl';
@@ -185,6 +193,7 @@ import { SelectOpenedWithSelectedEmptyOptionPage } from './generated/SelectOpene
 import { SelectOpenedWithSlottedImagesPage } from './generated/SelectOpenedWithSlottedImages';
 import { SheetPage } from './generated/Sheet';
 import { SheetBasicPage } from './generated/SheetBasic';
+import { SheetCssVariablesPage } from './generated/SheetCssVariables';
 import { SheetGridPage } from './generated/SheetGrid';
 import { SheetPrefixedPage } from './generated/SheetPrefixed';
 import { SheetScrollablePage } from './generated/SheetScrollable';
@@ -224,6 +233,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Accordion',
     path: '/accordion',
     element: <AccordionPage />,
+  },
+  {
+    name: 'Ai Tag',
+    path: '/ai-tag',
+    element: <AiTagPage />,
   },
   {
     name: 'Banner',
@@ -584,6 +598,21 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Footer Scrolled',
     path: '/flyout-footer-scrolled',
     element: <FlyoutFooterScrolledPage />,
+  },
+  {
+    name: 'Flyout Fullscreen',
+    path: '/flyout-fullscreen',
+    element: <FlyoutFullscreenPage />,
+  },
+  {
+    name: 'Flyout Fullscreen Position Start',
+    path: '/flyout-fullscreen-position-start',
+    element: <FlyoutFullscreenPositionStartPage />,
+  },
+  {
+    name: 'Flyout Fullscreen Responsive',
+    path: '/flyout-fullscreen-responsive',
+    element: <FlyoutFullscreenResponsivePage />,
   },
   {
     name: 'Flyout Grid',
@@ -956,9 +985,24 @@ export const generatedRoutes: RouteType[] = [
     element: <PopoverBottomPage />,
   },
   {
+    name: 'Popover Compact',
+    path: '/popover-compact',
+    element: <PopoverCompactPage />,
+  },
+  {
+    name: 'Popover Css Variables',
+    path: '/popover-css-variables',
+    element: <PopoverCssVariablesPage />,
+  },
+  {
     name: 'Popover Edge Case',
     path: '/popover-edge-case',
     element: <PopoverEdgeCasePage />,
+  },
+  {
+    name: 'Popover Flex Parent',
+    path: '/popover-flex-parent',
+    element: <PopoverFlexParentPage />,
   },
   {
     name: 'Popover Left',
@@ -979,6 +1023,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Popover Top',
     path: '/popover-top',
     element: <PopoverTopPage />,
+  },
+  {
+    name: 'Popover Viewport Limit',
+    path: '/popover-viewport-limit',
+    element: <PopoverViewportLimitPage />,
   },
   {
     name: 'Radio Group',
@@ -1089,6 +1138,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Sheet Basic',
     path: '/sheet-basic',
     element: <SheetBasicPage />,
+  },
+  {
+    name: 'Sheet Css Variables',
+    path: '/sheet-css-variables',
+    element: <SheetCssVariablesPage />,
   },
   {
     name: 'Sheet Grid',

@@ -1,5 +1,8 @@
 import { easeInOut } from '@porsche-design-system/tokens';
 
+export const TABS_BAR_ARIA_ATTRIBUTES = ['aria-label', 'aria-description'] as const;
+export type TabsBarAriaAttribute = (typeof TABS_BAR_ARIA_ATTRIBUTES)[number];
+
 export const TABS_BAR_BACKGROUNDS = ['canvas', 'surface', 'frosted', 'none'] as const;
 export type TabsBarBackground = (typeof TABS_BAR_BACKGROUNDS)[number];
 
@@ -133,8 +136,6 @@ export const getEndMetrics = (
 
 const BAR_ANIMATION_DURATION = 400;
 
-export const animatingAttribute = 'data-animating';
-
 export const animateBar = (
   newTabIndex: number | undefined,
   oldTabIndex: number | undefined,
@@ -171,23 +172,13 @@ export const animateBar = (
     tabs
   );
 
-  // enable delayed background-color transition so it syncs with the bar animation (not applied on initial render)
-  tabs[sanitizedNewTabIndex]?.setAttribute(animatingAttribute, '');
-
-  bar
-    .animate(
-      [
-        { transform: `translate3d(${startTranslateX}px,0,0)`, width: `${startWidth}px` },
-        { transform: `translate3d(${endTranslateX}px,0,0)`, width: `${endWidth}px` },
-      ],
-      { duration: BAR_ANIMATION_DURATION, easing: easeInOut }
-    )
-    .finished.then(() => {
-      tabs[sanitizedNewTabIndex]?.removeAttribute(animatingAttribute);
-    })
-    // Swallow rejection from cancel() – when a new animation starts, the previous one is
-    // cancelled which rejects its .finished promise. Without this, we'd get an unhandled rejection.
-    .catch(() => {});
+  bar.animate(
+    [
+      { transform: `translate3d(${startTranslateX}px,0,0)`, width: `${startWidth}px` },
+      { transform: `translate3d(${endTranslateX}px,0,0)`, width: `${endWidth}px` },
+    ],
+    { duration: BAR_ANIMATION_DURATION, easing: easeInOut }
+  );
 };
 
 /**

@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { flagMeta } from '@/app/(main)/components/flag/flag.meta';
+
+export const metadata = {
+  title: 'Flag: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Flag component',
+};
+
+# Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<flagMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-flag" examples={flagMeta.accessibility.examples} />
+
+<flagMeta.accessibility.tests />

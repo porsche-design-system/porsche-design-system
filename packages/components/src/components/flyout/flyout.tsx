@@ -1,17 +1,20 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  createTopLayerController,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
+  isDialogBackdropTarget,
   observeChildren,
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
-  setDialogVisibility,
   setScrollLock,
+  showDialog,
+  type TopLayerController,
   unobserveChildren,
   validateProps,
 } from '../../utils';
@@ -42,6 +45,7 @@ const propTypes: PropTypes<typeof Flyout> = {
   position: AllowedTypes.oneOf<FlyoutPosition>(FLYOUT_POSITIONS),
   disableBackdropClick: AllowedTypes.boolean,
   backdrop: AllowedTypes.oneOf<FlyoutBackdrop>(BACKDROPS),
+  fullscreen: AllowedTypes.breakpoint('boolean'),
   footerBehavior: AllowedTypes.oneOf<FlyoutFooterBehavior>(FLYOUT_FOOTER_BEHAVIOR),
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
@@ -61,34 +65,37 @@ const propTypes: PropTypes<typeof Flyout> = {
 export class Flyout {
   @Element() public host!: HTMLElement;
 
-  /** If true, the flyout is open. */
-  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  /** Controls whether the flyout panel is visible. */
+  @Prop() public open: boolean = false;
 
-  /** The position of the flyout */
+  /** Sets the side the flyout slides in from — `start` for left or `end` for right in LTR layouts. */
   @Prop() public position?: FlyoutPosition = 'end';
 
-  /** If true, the flyout will not be closable via backdrop click. */
+  /** When enabled, clicking the backdrop will not close the flyout. */
   @Prop() public disableBackdropClick?: boolean = false;
 
-  /** Defines the background color */
+  /** Sets the background color of the flyout panel (`canvas` or `surface`). */
   @Prop() public background?: FlyoutBackground = 'canvas';
 
-  /** Defines the backdrop, 'blur' (should be used when the underlying content is not relevant for users) and 'shading' (should be used when the user still needs a visual connection to the underlying content). */
+  /** Sets the backdrop style. Use `blur` when background content is irrelevant; use `shading` when users still need visual context. */
   @Prop() public backdrop?: FlyoutBackdrop = 'blur';
 
-  /** Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows. */
+  /** Controls footer behavior. `fixed` keeps it anchored at the bottom; `sticky` pins it only when content overflows. */
   @Prop() public footerBehavior?: FlyoutFooterBehavior = 'sticky';
 
-  /** Sets ARIA attributes. */
+  /** If true the flyout stretches to the full viewport width with squared corners. Useful for smaller viewports where the flyout would otherwise fill the screen but still show rounded corners. */
+  @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
+
+  /** Sets ARIA attributes on the flyout dialog element for improved screen reader accessibility. */
   @Prop() public aria?: SelectedAriaAttributes<FlyoutAriaAttribute>;
 
-  /** Emitted when the component requests to be dismissed. */
+  /** Emitted when the user closes the flyout via the close button, backdrop click, or Escape key. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when the flyout is opened and the transition is finished. */
+  /** Emitted after the flyout's open transition completes and the panel is fully visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<FlyoutMotionVisibleEndEventDetail>;
 
-  /** Emitted when the flyout is closed and the transition is finished. */
+  /** Emitted after the flyout's close transition completes and the panel is fully hidden. */
   @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<FlyoutMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;
@@ -98,6 +105,15 @@ export class Flyout {
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSubFooter: boolean;
+  // Tracks whether the current pointer gesture started inside the panel (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the panel and released on the backdrop.
+  private isPointerDownInside = false;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.dialog,
+    isShown: () => !!this.dialog?.open,
+    show: () => showDialog(this.dialog, this.scroller),
+    hide: () => this.dialog?.close(),
+  });
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -120,7 +136,11 @@ export class Flyout {
   }
 
   public componentDidRender(): void {
-    setDialogVisibility(this.open, this.dialog, this.scroller);
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
   }
 
   public componentDidLoad(): void {
@@ -136,6 +156,7 @@ export class Flyout {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    this.topLayer.cancel();
     unobserveChildren(this.host);
   }
 
@@ -156,17 +177,23 @@ export class Flyout {
       this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,
-      this.footerBehavior
+      this.footerBehavior,
+      this.fullscreen
     );
 
     return (
       <DialogBase
-        host={this.host}
+        // `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
+        // fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
+        // during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
+        // `inert` avoids that and mirrors the pattern used by `p-modal` / `p-popover` / `p-drilldown`.
+        inert={!this.open}
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
         dismissable={true}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick, this.isPointerDownInside)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         onDismiss={this.dismissDialog}
         containerClass="flyout"

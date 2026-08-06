@@ -1,0 +1,38 @@
+import { emotionMeta } from '@porsche-design-system/emotion/meta';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { StylesTable } from '@/components/common/StylesTable';
+
+export const metadata = {
+  title: 'Emotion: Grid - Porsche Design System',
+  description: 'Detailed API reference for the Grid style.',
+};
+
+# Grid
+
+<TableOfContents headings={['Base', 'Narrow', 'Basic', 'Extended', 'Wide', 'Full']} />
+
+## JS
+
+### Base
+
+<StylesTable meta={{ template: emotionMeta.grid.template, gap: emotionMeta.grid.gap }} columnLabel="JS" />
+
+### Narrow
+
+<StylesTable meta={emotionMeta.grid.narrow} columnLabel="JS" />
+
+### Basic
+
+<StylesTable meta={emotionMeta.grid.basic} columnLabel="JS" />
+
+### Extended
+
+<StylesTable meta={emotionMeta.grid.extended} columnLabel="JS" />
+
+### Wide
+
+<StylesTable meta={emotionMeta.grid.wide} columnLabel="JS" />
+
+### Full
+
+<StylesTable meta={emotionMeta.grid.full} columnLabel="JS" />

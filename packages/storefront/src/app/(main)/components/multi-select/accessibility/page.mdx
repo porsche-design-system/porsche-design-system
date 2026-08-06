@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { multiSelectMeta } from '@/app/(main)/components/multi-select/multi-select.meta';
+
+export const metadata = {
+  title: 'Multi Select: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Multi Select component',
+};
+
+# Multi Select <ComponentStatus tagName="p-multi-select"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<multiSelectMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-multi-select" examples={multiSelectMeta.accessibility.examples} />
+
+<multiSelectMeta.accessibility.tests />

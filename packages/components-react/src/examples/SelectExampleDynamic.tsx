@@ -43,21 +43,22 @@ export const SelectExampleDynamicPage = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-fluid-sm">
       <PInputText
         name="input-value"
         label="Value:"
-        placeholder="e.g. 1,2"
+        placeholder="e.g. 1"
         value={inputValue}
         onInput={(e) => onChangeInput(e as CustomEvent<InputTextInputEventDetail>)}
       />
-      <PButton type="button" onClick={onSetValue} compact={true}>
-        Set Value
-      </PButton>
-      <PButton type="button" onClick={onResetValue} compact={true}>
-        Reset value
-      </PButton>
-
+      <div className="flex gap-fluid-sm">
+        <PButton type="button" onClick={onSetValue} compact={true}>
+          Set Value
+        </PButton>
+        <PButton type="button" onClick={onResetValue} compact={true}>
+          Reset value
+        </PButton>
+      </div>
       <PSelect name="options" label="Some Label" value={selectedValue} onChange={onChange}>
         {[...Array(optionCount).keys()].map((idx) => (
           <PSelectOption key={idx} value={`${idx + 1}`}>
@@ -65,13 +66,14 @@ export const SelectExampleDynamicPage = () => {
           </PSelectOption>
         ))}
       </PSelect>
-
-      <PButton type="button" onClick={onAddOption} compact={true}>
-        Add option
-      </PButton>
-      <PButton type="button" onClick={onRemoveOption} compact={true}>
-        Remove last option
-      </PButton>
-    </>
+      <div className="flex gap-fluid-sm">
+        <PButton type="button" onClick={onAddOption} compact={true}>
+          Add option
+        </PButton>
+        <PButton type="button" onClick={onRemoveOption} compact={true}>
+          Remove last option
+        </PButton>
+      </div>
+    </div>
   );
 };

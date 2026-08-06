@@ -1,0 +1,65 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Code } from '@/components/common/Code';
+import { ScssVariablesTable } from '@/components/common/ScssVariablesTable';
+import { ScssMixinsTable } from '@/components/common/ScssMixinsTable';
+import { scssMeta } from '@porsche-design-system/scss';
+
+export const metadata = {
+  title: 'SCSS: Typography - Porsche Design System',
+  description: 'Detailed API reference for the typography style.',
+};
+
+# Typography
+
+<TableOfContents headings={['SCSS Mixins', 'SCSS Variables', 'CJK auto-detection']} />
+
+## SCSS Mixins
+
+### Heading
+
+<ScssMixinsTable mixins={scssMeta.typography.heading} />
+
+### Text
+
+<ScssMixinsTable mixins={scssMeta.typography.text} />
+
+## SCSS Variables
+
+### Family
+
+<ScssVariablesTable variables={scssMeta.font.family} />
+
+### Weight
+
+<ScssVariablesTable variables={scssMeta.font.weight} />
+
+### Line height
+
+<ScssVariablesTable variables={scssMeta.font.lineHeight} />
+
+### Text
+
+<ScssVariablesTable variables={scssMeta.font.size} />
+
+## CJK auto-detection
+
+Use the `cjk-font-family()` mixin on any rule that sets `font-family` to automatically swap to the locale-specific
+**Porsche Next** font stack for **Simplified Chinese**, **Traditional Chinese**, **Japanese** or **Korean** based on the
+nearest `lang` attribute (typically set on `<html>`).
+
+| SCSS Mixin                                             | Description                                                                                                                                                                     |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <Code variant="nowrap">@mixin cjk-font-family()</Code> | Applies locale-specific **Porsche Next** font stacks for **CJK** languages (Simplified Chinese, Traditional Chinese, Japanese, Korean) based on the element's `lang` attribute. |
+
+```scss
+@use '@porsche-design-system/components-{js|angular|react|vue}/scss' as *;
+
+.headline {
+  font-family: $font-porsche-next;
+  @include cjk-font-family;
+}
+```
+
+The `prose-heading-*()` and `prose-text-*()` mixins already include this `:lang()` logic, so when you compose styles
+with them you can skip the extra `@include`. Reach for the per-language tokens (`$font-porsche-next-zh-hans`, …) only
+when you intentionally need to pin a specific CJK family regardless of the document's language.

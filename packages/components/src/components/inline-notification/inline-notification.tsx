@@ -10,6 +10,7 @@ import {
   unobserveChildren,
   validateProps,
 } from '../../utils';
+import { FCDismissButton } from '../common/fc-dismiss-button/fc-dismiss-button';
 import { NotificationBase } from '../common/notification-base/notification-base';
 import { getComponentCss } from './inline-notification-styles';
 import {
@@ -43,34 +44,34 @@ const propTypes: PropTypes<typeof InlineNotification> = {
 export class InlineNotification {
   @Element() public host!: HTMLElement;
 
-  /** Heading of the inline-notification. */
+  /** Sets the heading text displayed at the top of the inline notification. */
   @Prop() public heading?: string = '';
 
-  /** Sets a heading tag, so it fits correctly within the outline of the page. */
+  /** Sets the HTML heading tag (e.g. h2, h3) to maintain correct document structure. */
   @Prop() public headingTag?: InlineNotificationHeadingTag = 'h5';
 
-  /** Description of the inline-notification. */
+  /** Sets the supporting description text shown below the heading. */
   @Prop() public description?: string = '';
 
-  /** State of the inline-notification. */
+  /** Sets the visual state — controls the icon and color scheme (`info`, `warning`, `error`, `success`). */
   @Prop() public state?: InlineNotificationState = 'info';
 
-  /** If false, the inline-notification will not have a dismiss button. */
+  /** Shows a dismiss button so the user can manually close the notification. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** Action label of the inline-notification. */
+  /** Sets the label text of the optional action button inside the notification. */
   @Prop() public actionLabel?: string;
 
-  /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
+  /** Disables the action button and shows a spinner to indicate an ongoing operation. */
   @Prop() public actionLoading?: boolean = false;
 
-  /** Action icon of the inline-notification. */
+  /** Sets the icon displayed inside the action button using a PDS icon name. */
   @Prop() public actionIcon?: InlineNotificationActionIcon = 'arrow-right';
 
-  /** Emitted when the close button is clicked. */
+  /** Emitted when the user clicks the dismiss button. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when the action button is clicked. */
+  /** Emitted when the user clicks the action button. */
   @Event({ bubbles: false }) public action?: EventEmitter<void>;
 
   private hasHeadingSlot: boolean;
@@ -129,18 +130,11 @@ export class InlineNotification {
         })}
         {...(this.dismissButton && {
           dismissButton: (
-            <PrefixedTagNames.pButton
-              class="dismiss"
-              type="button"
-              variant="secondary"
-              icon="close"
-              hideLabel={true}
-              compact={true}
+            <FCDismissButton
+              label="Close notification"
               onClick={this.dismiss.emit}
-              {...(headingText ? { aria: { 'aria-description': headingText } } : {})}
-            >
-              Close notification
-            </PrefixedTagNames.pButton>
+              ariaDescription={headingText || undefined}
+            />
           ),
         })}
       />

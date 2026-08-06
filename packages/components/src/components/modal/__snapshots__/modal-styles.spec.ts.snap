@@ -4,7 +4,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -14,9 +14,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -29,30 +26,32 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -64,6 +63,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -71,24 +71,36 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl));
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -96,13 +108,55 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-surface);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -111,7 +165,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -121,9 +175,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -136,30 +187,32 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -171,6 +224,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -178,24 +232,36 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -203,15 +269,60 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
-}"
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-surface);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'blur', dismissButton: true, hasHeader: true and hasFooter: false 2`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -221,9 +332,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -236,30 +344,32 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -271,6 +381,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -278,24 +389,36 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -303,15 +426,60 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
-}"
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-surface);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'shading', dismissButton: false, hasHeader: true and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -321,9 +489,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -336,30 +501,32 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -371,6 +538,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -378,24 +546,36 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl));
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -403,13 +583,55 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-surface);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -418,7 +640,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -428,9 +650,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -443,30 +662,32 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -478,6 +699,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -485,24 +707,36 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -510,15 +744,60 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
-}"
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-surface);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for open: false, backdrop: canvas, fullscreen: 'shading', dismissButton: true, hasHeader: true and hasFooter: false 2`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -528,9 +807,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -543,30 +819,32 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -578,6 +856,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -585,24 +864,36 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -610,15 +901,60 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
-}"
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-surface);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for open: false, backdrop: surface, fullscreen: 'blur', dismissButton: false, hasHeader: false and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -628,9 +964,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -647,30 +980,32 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -682,6 +1017,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -689,22 +1025,23 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl));
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }
 @media(forced-colors:active) {
   .modal {
@@ -719,7 +1056,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -729,9 +1066,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -748,30 +1082,32 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -783,6 +1119,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -790,24 +1127,36 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl));
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-surface);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -815,13 +1164,55 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-canvas);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -830,7 +1221,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -840,9 +1231,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -855,30 +1243,32 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -890,6 +1280,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -897,22 +1288,23 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }"
 `;
 
@@ -920,7 +1312,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -930,9 +1322,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -949,30 +1338,32 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -984,6 +1375,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -991,22 +1383,23 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }"
 `;
 
@@ -1014,7 +1407,7 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1024,9 +1417,6 @@ exports[`getComponentCss() > should return correct css for open: false, backdrop
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -1043,30 +1433,32 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 0px;
+  height: 0px;
   visibility: hidden;
   pointer-events: none;
   background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out);
+  transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, var(--p-duration-md)), background-color var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-out) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-duration-md)), width 0s linear var(--p-transition-duration,var(--p-duration-md)), height 0s linear var(--p-transition-duration,var(--p-duration-md)), background-color var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), backdrop-filter var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out), overlay var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-out) allow-discrete;
   }
 }
 
@@ -1078,6 +1470,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -1085,24 +1478,36 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,25vh,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration, var(--p-duration-sm)) var(--p-ease-out);
+  transition: opacity var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out), transform var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-out);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .modal:dir(rtl) {
-  transform: translateY(25vh);
+  transform: translate3d(0,25vh,0);
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-surface);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1110,15 +1515,60 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
-}"
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-canvas);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for open: true, backdrop: canvas, fullscreen: 'blur', dismissButton: false, hasHeader: false and hasFooter: true 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1129,9 +1579,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -1147,32 +1594,34 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1184,6 +1633,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -1191,19 +1641,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl));
 }
 @media(forced-colors:active) {
   .modal {
@@ -1218,7 +1669,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1228,9 +1679,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -1243,32 +1691,34 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1280,6 +1730,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -1287,21 +1738,33 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1309,13 +1772,55 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-surface);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -1324,7 +1829,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1334,9 +1839,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -1349,32 +1851,34 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1386,6 +1890,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -1393,19 +1898,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }"
 `;
 
@@ -1413,7 +1919,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1423,9 +1929,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -1442,32 +1945,34 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1479,6 +1984,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -1486,19 +1992,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }"
 `;
 
@@ -1506,7 +2013,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1517,9 +2024,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -1531,32 +2035,34 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1568,6 +2074,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -1575,21 +2082,33 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-canvas);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1597,15 +2116,60 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
-}"
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-surface);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
+"
 `;
 
 exports[`getComponentCss() > should return correct css for open: true, backdrop: surface, fullscreen: 'blur', dismissButton: { base: true, xs: false, s: true, m: false, l: true, xl: false }, hasHeader: true and hasFooter: false 1`] = `
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1616,9 +2180,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
 slot {
   display: block;
 }
@@ -1630,32 +2191,34 @@ slot:not([name]) {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1667,6 +2230,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -1674,21 +2238,33 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-surface);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -1696,7 +2272,28 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:480px) {
   .modal {
@@ -1705,7 +2302,8 @@ dialog::backdrop {
     max-width: 1535.5px;
     place-self: center;
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-    border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+    border-radius: var(--p-radius-3xl);
+    clip-path: inset(0 round var(--p-radius-3xl));
   }
 @media(forced-colors:active) {
     .modal {
@@ -1724,6 +2322,7 @@ dialog::backdrop {
     place-self: stretch;
     margin: 0;
     border-radius: 0;
+    clip-path: none;
   }
 }
 
@@ -1734,7 +2333,8 @@ dialog::backdrop {
     max-width: 1535.5px;
     place-self: center;
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-    border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+    border-radius: var(--p-radius-3xl);
+    clip-path: inset(0 round var(--p-radius-3xl));
   }
 @media(forced-colors:active) {
     .modal {
@@ -1753,6 +2353,7 @@ dialog::backdrop {
     place-self: stretch;
     margin: 0;
     border-radius: 0;
+    clip-path: none;
   }
 }
 
@@ -1763,12 +2364,37 @@ dialog::backdrop {
     max-width: 1535.5px;
     place-self: center;
     margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-    border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+    border-radius: var(--p-radius-3xl);
+    clip-path: inset(0 round var(--p-radius-3xl));
   }
 @media(forced-colors:active) {
     .modal {
       outline: 2px solid CanvasText;
       outline-offset: -2px;
+    }
+}
+
+}
+
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-canvas);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
     }
 }
 
@@ -1780,7 +2406,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1790,9 +2416,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -1809,47 +2432,49 @@ slot[name=footer] {
   z-index: 2;
   position: sticky;
   bottom: -.1px;
-  margin-block: calc(-1 * calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))));
-  padding: calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) var(--p-spacing-fluid-lg);
+  margin-block: calc(-1 * calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)));
+  padding: calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) var(--p-spacing-fluid-lg);
   background: linear-gradient(0deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 20%,transparent 80%);
 }
 slot[name=footer][data-stuck]::after {
   content: "";
   z-index: -1;
   position: absolute;
-  inset: calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) - calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2)) calc(var(--p-spacing-fluid-lg) - calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2));
+  inset: calc(calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) - 12 * var(--p-spacing-static-2xs)) calc(var(--p-spacing-fluid-lg) - 12 * var(--p-spacing-static-2xs));
   background: var(--p-color-frosted);
-  border-radius: var(--p-radius-3xl);
+  border-radius: var(--p-radius-2xl);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1861,6 +2486,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -1868,19 +2494,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl));
 }
 @media(forced-colors:active) {
   .modal {
@@ -1895,7 +2522,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -1905,9 +2532,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -1928,47 +2552,49 @@ slot[name=footer] {
   z-index: 2;
   position: sticky;
   bottom: -.1px;
-  margin-block: calc(-1 * calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))));
-  padding: calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) var(--p-spacing-fluid-lg);
+  margin-block: calc(-1 * calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)));
+  padding: calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) var(--p-spacing-fluid-lg);
   background: linear-gradient(0deg,var(--_p-dialog-a) 0%,var(--_p-dialog-a) 20%,transparent 80%);
 }
 slot[name=footer][data-stuck]::after {
   content: "";
   z-index: -1;
   position: absolute;
-  inset: calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) - calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2)) calc(var(--p-spacing-fluid-lg) - calc(calc(calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) - var(--_p-legacy-radius-large, var(--p-radius-xl))) / 2));
+  inset: calc(calc(calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) - var(--p-radius-3xl)) - 12 * var(--p-spacing-static-2xs)) calc(var(--p-spacing-fluid-lg) - 12 * var(--p-spacing-static-2xs));
   background: var(--p-color-frosted);
-  border-radius: var(--p-radius-3xl);
+  border-radius: var(--p-radius-2xl);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -1980,6 +2606,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -1987,19 +2614,20 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl));
 }
 @media(forced-colors:active) {
   .modal {
@@ -2014,7 +2642,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -2024,9 +2652,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -2043,32 +2668,34 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -2080,6 +2707,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -2087,21 +2715,33 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
-  border-radius: var(--_p-legacy-radius-large, var(--p-radius-xl));
+  border-radius: var(--p-radius-3xl);
+  clip-path: inset(0 round var(--p-radius-3xl));
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-surface);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2109,13 +2749,55 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(forced-colors:active) {
   .modal {
     outline: 2px solid CanvasText;
     outline-offset: -2px;
   }
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-canvas);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
 }
 "
 `;
@@ -2124,7 +2806,7 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 ":host {
   display: contents;
   --ref-p-modal-pt: var(--p-spacing-fluid-md) !important;
-  --ref-p-modal-pb: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md)) !important;
+  --ref-p-modal-pb: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md)) !important;
   --ref-p-modal-px: var(--p-spacing-fluid-lg) !important;
   --pds-internal-grid-outer-column: calc(var(--p-spacing-fluid-lg) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(var(--p-spacing-fluid-lg) * -1) !important;
@@ -2134,9 +2816,6 @@ exports[`getComponentCss() > should return correct css for open: true, backdrop:
 }
 :host([hidden]) {
   display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
 }
 slot {
   display: block;
@@ -2153,32 +2832,34 @@ slot[name=header] {
   z-index: 0;
 }
 dialog {
+  all: unset;
   position: fixed;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
   max-width: 100dvw;
   max-height: 100dvh;
   overflow: hidden;
   display: block;
+  user-select: text;
   outline: 0;
-  z-index: 9999999;
+  width: 100dvw;
+  height: 100dvh;
   visibility: inherit;
   pointer-events: auto;
   background: var(--p-color-backdrop);
   -webkit-backdrop-filter: var(--p-blur-frosted);
   backdrop-filter: var(--p-blur-frosted);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in);
+  transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in);
+  overlay: none;
+}
+dialog:modal {
+  overlay: auto;
 }
 dialog::backdrop {
   display: none;
 }
-@supports (transition-behavior: allow-discrete) {
+@supports (overlay: auto) and (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration, var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration,0s), width 0s linear var(--p-transition-duration,0s), height 0s linear var(--p-transition-duration,0s), background-color var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), -webkit-backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), backdrop-filter var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in), overlay var(--p-transition-duration,var(--p-duration-lg)) var(--p-ease-in) allow-discrete;
   }
 }
 
@@ -2190,6 +2871,7 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
+  transform: translate3d(0,0,0);
 }
 .modal {
   position: relative;
@@ -2197,21 +2879,33 @@ dialog::backdrop {
   grid-template: auto/var(--p-spacing-fluid-sm) minmax(0,1fr) var(--p-spacing-fluid-sm);
   gap: var(--p-spacing-fluid-md) calc(var(--p-spacing-fluid-lg) - var(--p-spacing-fluid-sm));
   padding-top: var(--p-spacing-fluid-md);
-  padding-bottom: calc(var(--p-spacing-fluid-sm) + var(--p-spacing-fluid-md));
+  padding-bottom: calc(var(--p-radius-3xl) + var(--p-spacing-fluid-md));
   align-content: flex-start;
+  transform: translate3d(0,0,0);
   color: var(--p-color-primary);
   background: var(--_p-dialog-a);
   opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration, var(--p-duration-md)) var(--p-ease-in);
+  transition: opacity var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in), transform var(--p-transition-duration,var(--p-duration-md)) var(--p-ease-in);
   width: auto;
   min-width: auto;
   max-width: none;
   place-self: stretch;
   margin: 0;
   border-radius: 0;
+  clip-path: none;
 }
 .dismiss {
+  all: unset;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: var(--p-radius-full);
+  font: var(--p-font-weight-normal) var(--p-typescale-sm) / var(--p-leading-normal) var(--p-font-porsche-next);
+  background-color: var(--p-color-surface);
+  color: var(--p-color-primary);
+  cursor: pointer;
+  transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out), color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
   grid-area: 1/3;
   z-index: 5;
   position: sticky;
@@ -2219,6 +2913,51 @@ dialog::backdrop {
   margin-top: calc(-1 * var(--p-spacing-fluid-md) + var(--p-spacing-fluid-sm));
   margin-inline-end: var(--p-spacing-fluid-sm);
   place-self: flex-start flex-end;
-  box-shadow: 0px 0px 30px hsla(from var(--_p-dialog-a) h s l / 0.35);
-}"
+}
+.dismiss:focus-visible {
+  outline: 2px solid var(--p-color-focus);
+  outline-offset: 2px;
+}
+.dismiss::before {
+  content: "";
+  width: var(--p-leading-normal);
+  height: var(--p-leading-normal);
+  -webkit-mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  mask: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 6.706-5.294 5.294 5.294 5.294-.706.706-5.294-5.294-5.294 5.294-.706-.706 5.294-5.294-5.294-5.294.706-.706 5.294 5.294 5.294-5.294z"/></svg>') center/contain no-repeat;
+  background: currentColor;
+}
+.dismiss span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(forced-colors:active) {
+  .dismiss {
+    forced-color-adjust: none;
+    background: Canvas;
+    box-shadow: inset 0 0 0 2px ButtonBorder;
+    color: ButtonText;
+  }
+  .dismiss:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
+@media(hover:hover) {
+  .dismiss:hover {
+    background-color: var(--p-color-canvas);
+  }
+@media(forced-colors:active) {
+    .dismiss:hover {
+      background: Canvas;
+    }
+}
+
+}
+"
 `;

@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputPasswordMeta } from '@/app/(main)/components/input-password/input-password.meta';
+
+export const metadata = {
+  title: 'Input Password: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input Password component',
+};
+
+# Input Password <ComponentStatus tagName="p-input-password"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
+/>
+
+<inputPasswordMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-input-password" examples={inputPasswordMeta.accessibility.examples} />
+
+<inputPasswordMeta.accessibility.tests />

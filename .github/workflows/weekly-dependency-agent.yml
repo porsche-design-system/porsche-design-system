@@ -1,0 +1,141 @@
+# Weekly dependency-update task dispatcher for the Copilot coding agent.
+#
+# This workflow does NOT update dependencies itself. On a weekly schedule it:
+#   1. Checks whether anything is actually outdated (skips noise when nothing is).
+#   2. Opens a task issue assigned to `@copilot`, pointing the coding agent at
+#      docs/runbooks/dependency-updates-agent.md.
+#
+# The agent then works on its own branch and opens a PR per the runbook's
+# "Output contract". CODEOWNERS routes that PR (package.json / package-lock.json
+# / .github) to @porsche-design-system/maintainers for review.
+#
+# Assigning an issue to `@copilot` is what starts the coding agent. Confirm the
+# agent is enabled for this repo under Settings → Copilot → Coding agent.
+#
+# IMPORTANT: assigning the `@copilot` agent requires a *user* token. The default
+# `GITHUB_TOKEN` is a GitHub App installation token and fails with:
+#   "Assigning agents is not supported with GitHub App installation tokens.
+#    Use a user token (personal access token or OAuth token) instead."
+# Provide a fine-grained or classic PAT as the `GH_COPILOT_AGENT_TOKEN` repo secret
+# (Settings → Secrets and variables → Actions). See the runbook for setup steps.
+# The PAT must also be SSO-authorized for the org (PAT page → Configure SSO →
+# Authorize); without that, the agent fails to start the assigned issue.
+#
+# Why it is safe to disable "Require approval for workflow runs" for Copilot pushes:
+# the agent's PRs trigger only workflows that run with read-only tokens (e.g.
+# `contribution.yml`, `code-scanning.yml`, and `copilot-setup-steps.yml` depending on paths),
+# and none of the PR-triggered workflows read Actions secrets. Secret-bearing workflows
+# (`ort.yml`, this file) run only on `schedule`/`workflow_dispatch`, never on a PR; the only
+# exposed token is the read-only `GITHUB_TOKEN`.
+name: 'Weekly Dependency Agent'
+
+on:
+  schedule:
+    # Mondays 06:00 UTC — matches the weekly cadence in the runbook. Cron on
+    # GitHub Actions always runs in UTC.
+    - cron: '0 6 * * 1'
+  # Allow on-demand dispatch (e.g. to test the flow) from the Actions tab.
+  workflow_dispatch: {}
+
+# Least privilege: only the permissions needed to inspect deps and open an issue.
+permissions:
+  contents: read
+  issues: write
+
+# Never run two dispatchers at once; a newer run supersedes an in-flight one.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  dispatch:
+    name: 'Dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/install
+      - name: 'Check for outdated dependencies'
+        id: outdated
+        # `npm run npm:outdated` exits non-zero when updates are available; that
+        # is the signal we want, so capture it without failing the job.
+        run: |
+          if npm run --silent npm:outdated; then
+            echo "has-updates=false" >> "$GITHUB_OUTPUT"
+            echo "No outdated dependencies — nothing to dispatch."
+          else
+            echo "has-updates=true" >> "$GITHUB_OUTPUT"
+            echo "Outdated dependencies found — dispatching task to the coding agent."
+          fi
+      - name: 'Open task issue for the Copilot coding agent'
+        if: steps.outdated.outputs.has-updates == 'true'
+        env:
+          # Must be a *user* token (PAT) — the default GITHUB_TOKEN is a GitHub
+          # App installation token and cannot assign the `@copilot` agent.
+          GH_TOKEN: ${{ secrets.GH_COPILOT_AGENT_TOKEN }}
+          # Absolute URL to the runbook at the dispatched commit (repo-relative
+          # paths are not auto-linked in issue bodies). `${{ }}` is substituted
+          # by the Actions runner before the shell runs.
+          RUNBOOK_URL: ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.sha }}/docs/runbooks/dependency-updates-agent.md
+        run: |
+          # Ensure the label exists (gh issue create fails on an unknown label).
+          gh label create "dependencies" \
+            --description "Automated npm dependency updates" \
+            --color "0366d6" 2>/dev/null || true
+
+          # Quoted heredoc → no shell expansion, so the backticks below stay
+          # literal. The runbook URL is injected afterwards via a placeholder.
+          cat > issue-body.md <<'EOF'
+          Run the recurring weekly npm dependency update.
+
+          **Follow the runbook exactly:** [`docs/runbooks/dependency-updates-agent.md`](__RUNBOOK_URL__)
+
+          Key guardrails (see the runbook for the full list):
+          - Skip fully held-back deps (`@porsche-design-system/**`, `@playwright/test`, `@stencil/core`). Update Angular via `ng update` per the runbook (step 3), not syncpack.
+          - Never run `npm audit fix`, `--legacy-peer-deps` or `--force`.
+          - Don't hand-edit `package.json` versions or `package-lock.json`; use `syncpack` / `npm install`.
+          - Deliver a single PR per the runbook's "Output contract".
+          - **Close this issue on merge:** put `Closes #__ISSUE_NUMBER__` in the **PR description** (a plain `#__ISSUE_NUMBER__` mention or commit message is not enough). Target the default branch so the keyword fires.
+          EOF
+
+          # Inject the URL without touching any other characters.
+          sed -i "s#__RUNBOOK_URL__#${RUNBOOK_URL}#g" issue-body.md
+
+          # Create the issue *unassigned* first: its number is only known after
+          # creation, and assigning `@copilot` is what starts the agent. We patch
+          # the real number into the body before assigning, so the agent reads a
+          # final body that tells it to `Closes #<number>` (auto-closing this
+          # issue when its PR merges).
+          # Declare first, then assign on its own line: with a combined
+          # `ISSUE_URL="$(...)"` the assignment's exit status masks a failing
+          # command substitution, so `set -e` would NOT abort on a failed
+          # `gh issue create`. Splitting it lets errexit catch the failure.
+          ISSUE_URL=
+          ISSUE_URL="$(gh issue create \
+            --title "chore(deps): weekly npm dependency updates ($(date +%F))" \
+            --label "dependencies" \
+            --body-file issue-body.md)"
+
+          # Defense in depth: bail out loudly if creation produced no URL,
+          # otherwise an empty value would yield a bogus issue number below.
+          if [ -z "$ISSUE_URL" ]; then
+            echo "::error::gh issue create returned an empty URL — aborting." >&2
+            exit 1
+          fi
+
+          # `gh issue create` prints the issue URL; the trailing path segment is
+          # the issue number.
+          ISSUE_NUMBER="${ISSUE_URL##*/}"
+
+          # Guard against a malformed URL: the parsed number must be numeric
+          # before we run any `gh issue edit` against it.
+          if ! printf '%s' "$ISSUE_NUMBER" | grep -Eq '^[0-9]+$'; then
+            echo "::error::Could not parse a numeric issue number from '$ISSUE_URL' — aborting." >&2
+            exit 1
+          fi
+
+          # Substitute the now-known number, update the body, then assign the
+          # agent last so it picks up the finalized instructions.
+          sed -i "s#__ISSUE_NUMBER__#${ISSUE_NUMBER}#g" issue-body.md
+          gh issue edit "$ISSUE_NUMBER" --body-file issue-body.md
+          gh issue edit "$ISSUE_NUMBER" --add-assignee "@copilot"

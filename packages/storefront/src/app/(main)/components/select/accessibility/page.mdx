@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { selectMeta } from '@/app/(main)/components/select/select.meta';
+
+export const metadata = {
+  title: 'Select: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Select component',
+};
+
+# Select <ComponentStatus tagName="p-select"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<selectMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-select" examples={selectMeta.accessibility.examples} />
+
+<selectMeta.accessibility.tests />

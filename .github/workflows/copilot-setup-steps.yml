@@ -1,0 +1,45 @@
+# Copilot coding agent — environment bootstrap.
+#
+# GitHub runs this workflow to provision the ephemeral environment the Copilot
+# coding agent works in (it is NOT a normal CI workflow and is not triggered by
+# push/PR). The job name MUST be exactly `copilot-setup-steps` for GitHub to
+# pick it up. Keep the steps in sync with `.github/actions/install` so the agent
+# installs dependencies the same way CI does.
+#
+# Docs: https://docs.github.com/copilot/concepts/coding-agent/about-coding-agent
+name: 'Copilot Setup Steps'
+
+on:
+  # Allow manual validation of the setup steps from the Actions tab.
+  workflow_dispatch: {}
+  # Re-validate whenever the bootstrap itself or the dependency manifests change.
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+      - package.json
+      - package-lock.json
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+      - package.json
+      - package-lock.json
+
+# Least privilege: the agent only needs to read the repo to install deps.
+permissions:
+  contents: read
+
+jobs:
+  # The job id is required to be `copilot-setup-steps`.
+  copilot-setup-steps:
+    name: 'Copilot Setup Steps'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v6
+        with:
+          # Mirror `.github/actions/install` and the root package.json `volta` field.
+          node-version: '24'
+      - name: 'Install node_modules'
+        run: npm ci
+

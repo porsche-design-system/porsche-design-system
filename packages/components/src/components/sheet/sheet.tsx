@@ -3,14 +3,17 @@ import type { PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  createTopLayerController,
   getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
+  isDialogBackdropTarget,
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
-  setDialogVisibility,
   setScrollLock,
+  showDialog,
+  type TopLayerController,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
 } from '../../utils';
@@ -47,33 +50,42 @@ const propTypes: PropTypes<typeof Sheet> = {
 export class Sheet {
   @Element() public host!: HTMLElement;
 
-  /** If true, the sheet is open. */
+  /** Controls whether the sheet panel slides in from the bottom and is visible to the user. */
   @Prop() public open: boolean = false;
 
-  /** If false, the sheet will not have a dismiss button. */
+  /** Shows a dismiss button in the sheet header so users can manually close it. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** If true, the sheet will not be closable via backdrop click. */
+  /**When enabled, clicking the backdrop will not close the sheet. */
   @Prop() public disableBackdropClick?: boolean = false;
 
-  /** Defines the background color */
+  /** Sets the background color of the sheet panel (`canvas` or `surface`). */
   @Prop() public background?: SheetBackground = 'canvas';
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the sheet dialog element for improved accessibility when the default `aria-label` is insufficient. */
   @Prop() public aria?: SelectedAriaAttributes<SheetAriaAttribute>;
 
-  /** Emitted when the component requests to be dismissed. */
+  /** Emitted when the user dismisses the sheet via the close button, backdrop click, or Escape key. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when the sheet is opened and the transition is finished. */
+  /** Emitted after the sheet's open transition has fully completed and the panel is visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<SheetMotionVisibleEndEventDetail>;
 
-  /** Emitted when the sheet is closed and the transition is finished. */
+  /** Emitted after the sheet's close transition has fully completed and the panel is hidden. */
   @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<SheetMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
   private hasHeader: boolean;
+  // Tracks whether the current pointer gesture started inside the panel (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the panel and released on the backdrop.
+  private isPointerDownInside = false;
+  private topLayer: TopLayerController = createTopLayerController({
+    getElement: () => this.dialog,
+    isShown: () => !!this.dialog?.open,
+    show: () => showDialog(this.dialog, this.scroller),
+    hide: () => this.dialog?.close(),
+  });
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -84,11 +96,16 @@ export class Sheet {
   }
 
   public componentDidRender(): void {
-    setDialogVisibility(this.open, this.dialog, this.scroller);
+    if (this.open) {
+      this.topLayer.requestShow();
+    } else {
+      this.topLayer.requestHide();
+    }
   }
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    this.topLayer.cancel();
   }
 
   public render(): JSX.Element {
@@ -104,13 +121,17 @@ export class Sheet {
 
     return (
       <DialogBase
-        host={this.host}
+        // `inert` (not `aria-hidden`) removes the panel from the a11y tree AND prevents focus while closed / during the
+        // fade-out. Using `aria-hidden` here triggers a browser warning when a focusable descendant still holds focus
+        // during the closing transition ("Blocked aria-hidden on an element because its descendant retained focus").
+        // `inert` avoids that and mirrors the pattern used by `p-modal` / `p-popover` / `p-drilldown`.
         inert={!this.open}
         dialogRef={(el) => (this.dialog = el)}
         scrollerRef={(el) => (this.scroller = el)}
         dismissable={this.dismissButton ?? undefined}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick, this.isPointerDownInside)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         onDismiss={this.dismissButton ? this.dismissDialog : undefined}
         containerClass="sheet"

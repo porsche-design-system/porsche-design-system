@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { linkPureMeta } from '@/app/(main)/components/link-pure/link-pure.meta';
+
+export const metadata = {
+  title: 'Link Pure: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Link Pure component',
+};
+
+# Link Pure <ComponentStatus tagName="p-link-pure"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<linkPureMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-link-pure" examples={linkPureMeta.accessibility.examples} />
+
+<linkPureMeta.accessibility.tests />

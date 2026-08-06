@@ -25,6 +25,7 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
  */
 const SECTION_GROUP_HEADERS: Partial<Record<string, string>> = {
   news: 'Get Started', // designing, developing
+  skills: 'AI (experimental)',
   components: 'Core', // components, styles, tokens, patterns, templates, partials
   tailwindcss: 'Styling', // tailwindcss, scss, emotion, vanilla-extract
   'ag-grid': 'Integrations', // ag-grid
@@ -79,7 +80,7 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                 open={openSections[path]}
                 onUpdate={handleAccordionUpdate(path)}
               >
-                <PHeading slot="summary" tag="h3" size="small" weight="semibold">
+                <PHeading slot="summary" tag="h4" size="small" weight="semibold">
                   {category.name as string}
                 </PHeading>
                 {category.subPaths &&
@@ -94,7 +95,9 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
                         onClick={() => onNavigate()}
                         className={'w-full ps-static-sm'}
                       >
-                        <Link href={link}>{page.name}</Link>
+                        <Link href={link} aria-current={pathname?.includes(`${page.path}/`) ? 'page' : undefined}>
+                          {page.name}
+                        </Link>
                       </PLinkPure>
                     );
                   })}
@@ -106,7 +109,16 @@ export const Navigation = ({ pdsVersion, onNavigate }: NavigationProps) => {
       <PDivider className="my-fluid-lg" />
       <footer className="flex flex-col gap-fluid-md">
         {pdsVersion.all.length > 1 && <VersionSelect pdsVersion={pdsVersion} />}
-        <PLinkPure className="self-start" href="https://brand.porsche.com" target="_blank" icon="external">
+        <PLinkPure
+          className="self-start"
+          href="https://brand.porsche.com"
+          target="_blank"
+          icon="external"
+          aria={{
+            'aria-label': 'brand.porsche.com - Porsche Brand Guide',
+            'aria-description': 'External link, opens in new tab',
+          }}
+        >
           brand.porsche.com
         </PLinkPure>
         <PText size="xx-small" color="contrast-medium">

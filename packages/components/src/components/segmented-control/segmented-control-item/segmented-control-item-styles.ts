@@ -10,21 +10,22 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
+  colorContrastHigh,
   colorContrastMedium,
+  colorFrostedStrong,
   colorPrimary,
   leadingNormal,
-  legacyRadiusSmall,
   radiusLg,
   radiusXl,
-} from '../../../styles/css-variables';
+  ref,
+} from '@porsche-design-system/stylesheets';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { formElementPaddingVertical } from '../../../styles/form-styles';
 import { getCss } from '../../../utils';
 import type { SegmentedControlState } from '../segmented-control/segmented-control-utils';
 
 export const cssVarInternalSegmentedControlScaling = '--_p-segmented-control-a';
-export const getScalingVar = (compact: boolean) =>
-  `var(${cssVarInternalSegmentedControlScaling}, ${compact ? 0.5 : 1})`;
+export const getScalingVar = (compact: boolean) => ref(cssVarInternalSegmentedControlScaling, compact ? 0.5 : 1);
 
 export const ICON_OFFSET = '4px';
 
@@ -46,7 +47,7 @@ export const getScalableItemStyles = (
     ? `${verticalPadding} ${horizontalPadding} ${verticalPadding} ${verticalPadding}`
     : `${verticalPadding} ${horizontalPadding}`;
 
-  const dimension = `calc(max(${leadingNormal}, ${scalingVar} * (${leadingNormal} + 10px)) + (${verticalPadding} + 1px) * 2)`;
+  const dimension = `calc(max(${ref(leadingNormal)}, ${scalingVar} * (${ref(leadingNormal)} + 10px)) + (${verticalPadding} + 1px) * 2)`;
 
   return { padding, dimension };
 };
@@ -83,9 +84,9 @@ export const getComponentCss = (
         minWidth: dimension,
         padding: padding,
         border: `1px solid ${isSelected ? formStateBorderHoverColor : formStateBorderColor}`,
-        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
-        background: formStateBackgroundColor,
-        color: colorPrimary,
+        borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
+        background: isSelected ? ref(colorFrostedStrong) : formStateBackgroundColor,
+        color: ref(colorPrimary),
         ...textSmallStyle,
         ...(isDisabled
           ? {
@@ -99,9 +100,9 @@ export const getComponentCss = (
               cursor: 'pointer',
               ...(!isSelected &&
                 hoverMediaQuery({
-                  transition: getTransition('border-color'),
+                  transition: getTransition('background-color'),
                   '&:hover': {
-                    borderColor: formStateBorderHoverColor,
+                    backgroundColor: ref(colorFrostedStrong),
                   },
                 })),
             }),
@@ -112,7 +113,7 @@ export const getComponentCss = (
         display: 'block',
         ...textXSmallStyle,
         overflowWrap: 'normal',
-        color: colorContrastMedium,
+        color: isSelected ? ref(colorContrastHigh) : ref(colorContrastMedium),
         ...(isDisabled &&
           forcedColorsMediaQuery({
             color: 'GrayText',

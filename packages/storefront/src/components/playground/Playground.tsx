@@ -1,9 +1,11 @@
 'use client';
 
 import { PButton } from '@porsche-design-system/components-react/ssr';
-import type { FrameworkMarkup } from '@porsche-design-system/shared';
-import React, { type PropsWithChildren } from 'react';
-import { CodeBlock } from '@/components/playground/CodeBlock';
+import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
+import type { PropsWithChildren } from 'react';
+import { CodeBlock, type CodeLanguage } from '@/components/common/CodeBlock';
+import { FrameworkTabs } from '@/components/common/FrameworkTabs';
+import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import type { BackgroundColor } from '@/models/backgroundColor';
 
 type PlaygroundProps = {
@@ -15,6 +17,13 @@ type PlaygroundProps = {
   showCodeBlock?: boolean;
 };
 
+const frameworkLanguageMap = {
+  'vanilla-js': 'javascript',
+  angular: 'typescript',
+  react: 'typescript',
+  vue: 'typescript',
+} as const satisfies Record<Framework, CodeLanguage>;
+
 export const Playground = ({
   frameworkMarkup,
   onOpenInStackblitz,
@@ -24,29 +33,38 @@ export const Playground = ({
   showCodeBlock = true,
   children,
 }: PropsWithChildren<PlaygroundProps>) => {
+  const { framework } = useStorefrontFramework();
+
   return (
-    <div className="playground my-fluid-md border-thin border-contrast-lower rounded-4xl">
+    <div className="playground my-fluid-md border-thin border-contrast-lower rounded-3xl">
       <div
-        className={`demo p-static-lg border-b-thin border-contrast-lower bg-${backgroundColor} rounded-t-4xl`}
+        className={`demo p-static-lg border-b-thin border-contrast-lower bg-${backgroundColor} rounded-t-3xl`}
         style={{ ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }) }}
       >
         {children}
       </div>
       {showCodeBlock && (
-        <CodeBlock frameworkMarkup={frameworkMarkup}>
-          {!disableOpenInStackblitz && (
-            <PButton
-              className="w-fit"
-              type="button"
-              iconSource="assets/icon-stackblitz.svg"
-              variant="secondary"
-              compact={true}
-              onClick={onOpenInStackblitz}
-            >
-              Open in Stackblitz
-            </PButton>
-          )}
-        </CodeBlock>
+        <>
+          <div className="m-static-md flex gap-fluid-sm justify-between flex-col md:flex-row">
+            <FrameworkTabs label="Select the JavaScript framework for code preview" />
+            {!disableOpenInStackblitz && (
+              <PButton
+                className="w-fit"
+                type="button"
+                iconSource="assets/icon-stackblitz.svg"
+                variant="secondary"
+                compact={true}
+                onClick={onOpenInStackblitz}
+                aria={{ 'aria-description': 'Opens in a new tab' }}
+              >
+                Open in Stackblitz
+              </PButton>
+            )}
+          </div>
+          <CodeBlock className="markup" language={frameworkLanguageMap[framework]}>
+            {frameworkMarkup[framework] ?? ''}
+          </CodeBlock>
+        </>
       )}
     </div>
   );

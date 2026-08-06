@@ -2,19 +2,19 @@
   "name": "@porsche-design-system/partials",
   "version": "0.0.0",
   "private": true,
-  "scope": "@porsche-design-system",
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
-  "sideEffects": false,
-  "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "description": "Porsche Design System Partials",
   "keywords": [
     "porsche",
     "partials"
   ],
-  "homepage": "https://designsystem.porsche.com",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run clean:build && npm run build:partials && npm run build:package && npm run build:copyToComponentsJs",
     "build:package": "rollup -c rollup.config.js --bundleConfigAsCjs",
@@ -26,19 +26,16 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/font-face": "0.0.0",
     "@porsche-design-system/emotion": "0.0.0",
+    "@porsche-design-system/font-face": "0.0.0",
+    "@porsche-design-system/shared": "0.0.0",
     "@webcomponents/template-shadowroot": "^0.2.1"
   },
   "devDependencies": {
-    "@types/html-minifier": "^4.0.6",
-    "html-minifier": "^4.0.0",
-    "tslib": "^2.8.1"
-  },
-  "peerDependencies": {
-    "tsx": "*",
-    "typescript": "*"
+    "@types/html-minifier-terser": "^7.0.2",
+    "html-minifier-terser": "^7.2.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
   },
   "volta": {
     "extends": "../../../../package.json"

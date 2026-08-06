@@ -1,0 +1,51 @@
+{
+  "$schema": "./node_modules/syncpack/schema.json",
+  "sortFirst": [
+    "name",
+    "version",
+    "private",
+    "license",
+    "scope",
+    "repository",
+    "bugs",
+    "funding",
+    "author",
+    "homepage",
+    "description",
+    "keywords",
+    "workspaces",
+    "sideEffects",
+    "type",
+    "exports",
+    "main",
+    "module",
+    "collection",
+    "collection:main",
+    "es2015",
+    "es2017",
+    "jsnext:main",
+    "types",
+    "browser",
+    "style",
+    "bin",
+    "files",
+    "engines",
+    "packageManager",
+    "scripts",
+    "dependencies",
+    "devDependencies",
+    "peerDependencies",
+    "peerDependenciesMeta",
+    "optionalDependencies",
+    "overrides",
+    "volta"
+  ],
+  "sortAz": ["dependencies", "devDependencies", "peerDependencies"],
+  "updateGroups": [
+    {
+      "label": "Held-back dependencies — upgraded deliberately, not via automated checks (see docs/dependencies.md and .github/dependabot.yml)",
+      "dependencies": ["@porsche-design-system/**", "@playwright/test", "@stencil/core"],
+      "isIgnored": true
+    }
+  ]
+}

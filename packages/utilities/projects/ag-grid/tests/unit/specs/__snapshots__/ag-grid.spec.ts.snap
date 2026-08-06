@@ -9,6 +9,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #f08e8d);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #f3c08b);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #85c0e4);
+	--ag-auto-height-min-body-height: var(--ag-inherited-auto-height-min-body-height, 150px);
 	--ag-background-color: var(--ag-inherited-background-color, light-dark(#fff,hsl(225 66.7% 1.2%)));
 	--ag-border-color: var(--ag-inherited-border-color, light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45)));
 	--ag-border-radius: var(--ag-inherited-border-radius, 4px);
@@ -30,6 +31,9 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-button-hover-text-color: var(--ag-inherited-button-hover-text-color, var(--ag-button-text-color));
 	--ag-button-text-color: var(--ag-inherited-button-text-color, inherit);
 	--ag-button-vertical-padding: var(--ag-inherited-button-vertical-padding, var(--ag-spacing));
+	--ag-calculated-column-highlight-color: var(--ag-inherited-calculated-column-highlight-color, color-mix(in srgb, transparent, var(--ag-accent-color) 12%));
+	--ag-calculated-column-parent-suggestion-color: var(--ag-inherited-calculated-column-parent-suggestion-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 75%));
+	--ag-calculated-column-suggestion-list-width: var(--ag-inherited-calculated-column-suggestion-list-width, 200px);
 	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #00000018);
 	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
 	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #422f00);
@@ -178,8 +182,16 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-menu-shadow: var(--ag-inherited-menu-shadow, var(--ag-popup-shadow));
 	--ag-menu-text-color: var(--ag-inherited-menu-text-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 95%));
 	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228)));
+	--ag-note-indicator-color: var(--ag-inherited-note-indicator-color, var(--ag-accent-color));
+	--ag-note-indicator-size: var(--ag-inherited-note-indicator-size, 8px);
+	--ag-note-popup-background-color: var(--ag-inherited-note-popup-background-color, var(--ag-menu-background-color));
+	--ag-note-popup-border: var(--ag-inherited-note-popup-border, var(--ag-dialog-border));
+	--ag-note-popup-input-background-color: var(--ag-inherited-note-popup-input-background-color, var(--ag-input-background-color));
+	--ag-note-popup-input-text-color: var(--ag-inherited-note-popup-input-text-color, var(--ag-input-text-color));
+	--ag-note-popup-padding: var(--ag-inherited-note-popup-padding, calc( var(--ag-spacing)   *  0.5));
+	--ag-note-popup-text-color: var(--ag-inherited-note-popup-text-color, color-mix(in srgb, transparent, var(--ag-menu-text-color) 75%));
 	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, light-dark(hsl(240 10% 95%),hsl(240 2% 10%)));
-	--ag-pagination-panel-height: var(--ag-inherited-pagination-panel-height, calc(max( var(--ag-row-height) , 22px)));
+	--ag-pagination-panel-height: var(--ag-inherited-pagination-panel-height, calc( var(--ag-picker-field-height)   +   var(--ag-spacing)   *  1.25));
 	--ag-panel-background-color: var(--ag-inherited-panel-background-color, var(--ag-background-color));
 	--ag-panel-title-bar-background-color: var(--ag-inherited-panel-title-bar-background-color, var(--ag-header-background-color));
 	--ag-panel-title-bar-border: var(--ag-inherited-panel-title-bar-border, solid var(--ag-border-width) var(--ag-border-color));
@@ -191,8 +203,10 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-panel-title-bar-text-color: var(--ag-inherited-panel-title-bar-text-color, var(--ag-header-text-color));
 	--ag-picker-button-background-color: var(--ag-inherited-picker-button-background-color, var(--ag-background-color));
 	--ag-picker-button-border: var(--ag-inherited-picker-button-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-picker-button-border-radius: var(--ag-inherited-picker-button-border-radius, var(--ag-border-radius));
 	--ag-picker-button-focus-background-color: var(--ag-inherited-picker-button-focus-background-color, var(--ag-background-color));
 	--ag-picker-button-focus-border: var(--ag-inherited-picker-button-focus-border, var(--ag-input-focus-border));
+	--ag-picker-field-height: var(--ag-inherited-picker-field-height, calc(max( var(--ag-icon-size) ,  var(--ag-font-size) )  +   var(--ag-spacing)   *  2));
 	--ag-picker-list-background-color: var(--ag-inherited-picker-list-background-color, var(--ag-background-color));
 	--ag-picker-list-border: var(--ag-inherited-picker-list-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-pinned-column-border: var(--ag-inherited-pinned-column-border, solid var(--ag-border-width) var(--ag-border-color));
@@ -286,6 +300,9 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-toggle-button-switch-inset: var(--ag-inherited-toggle-button-switch-inset, 3px);
 	--ag-toggle-button-width: var(--ag-inherited-toggle-button-width, 48px);
 	--ag-tool-panel-separator-border: var(--ag-inherited-tool-panel-separator-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-toolbar-background-color: var(--ag-inherited-toolbar-background-color, var(--ag-header-background-color));
+	--ag-toolbar-separator-border: var(--ag-inherited-toolbar-separator-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-toolbar-text-color: var(--ag-inherited-toolbar-text-color, var(--ag-header-text-color));
 	--ag-tooltip-background-color: var(--ag-inherited-tooltip-background-color, var(--ag-chrome-background-color));
 	--ag-tooltip-border: var(--ag-inherited-tooltip-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-tooltip-error-background-color: var(--ag-inherited-tooltip-error-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 10%));
@@ -299,18 +316,18 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-widget-container-vertical-padding: var(--ag-inherited-widget-container-vertical-padding, calc( var(--ag-spacing)   *  1.5));
 	--ag-widget-horizontal-spacing: var(--ag-inherited-widget-horizontal-spacing, calc( var(--ag-spacing)   *  1.5));
 	--ag-widget-vertical-spacing: var(--ag-inherited-widget-vertical-spacing, var(--ag-spacing));
+	--ag-wrapper-background-color: var(--ag-inherited-wrapper-background-color, var(--ag-background-color));
 	--ag-wrapper-border: var(--ag-inherited-wrapper-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-wrapper-border-radius: var(--ag-inherited-wrapper-border-radius, 6px);
-:where([data-ag-theme-mode="light"]) & {
+:where(html[data-ag-theme-mode="light"],body[data-ag-theme-mode="light"],.ag-theme-mode[data-ag-theme-mode="light"]) & {
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 2%));
 }
-:where([data-ag-theme-mode="dark"]) & {
+:where(html[data-ag-theme-mode="dark"],body[data-ag-theme-mode="dark"],.ag-theme-mode[data-ag-theme-mode="dark"]) & {
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #355f2d);
 	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #7a3a37);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #5a3168);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #374c86);
 	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #000A);
-	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
 	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #f3d0b3);
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 5%));
 	--ag-column-panel-apply-button-color: var(--ag-inherited-column-panel-apply-button-color, var(--ag-foreground-color));
@@ -327,15 +344,13 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
 	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0px 20px #000A);
 	--ag-row-batch-edit-background-color: var(--ag-inherited-row-batch-edit-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
-	--ag-row-batch-edit-text-color: var(--ag-inherited-row-batch-edit-text-color, var(--ag-cell-batch-edit-text-color));
 }
-:where([data-ag-theme-mode="dark-blue"]) & {
+:where(html[data-ag-theme-mode="dark-blue"],body[data-ag-theme-mode="dark-blue"],.ag-theme-mode[data-ag-theme-mode="dark-blue"]) & {
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #355f2d);
 	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #7a3a37);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #5a3168);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #374c86);
 	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #000A);
-	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
 	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #f3d0b3);
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 5%));
 	--ag-column-panel-apply-button-color: var(--ag-inherited-column-panel-apply-button-color, var(--ag-foreground-color));
@@ -352,10 +367,9 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
 	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0px 20px #000A);
 	--ag-row-batch-edit-background-color: var(--ag-inherited-row-batch-edit-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
-	--ag-row-batch-edit-text-color: var(--ag-inherited-row-batch-edit-text-color, var(--ag-cell-batch-edit-text-color));
 }
 }
-:has(> :where(.ag-theme-params-1)):not(:where(.ag-theme-params-1)) {
+:where(.ag-theme-inherit-1) {
 	--ag-inherited-accent-color: var(--ag-accent-color);
 	--ag-inherited-advanced-filter-builder-button-bar-border: var(--ag-advanced-filter-builder-button-bar-border);
 	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
@@ -363,6 +377,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
 	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
+	--ag-inherited-auto-height-min-body-height: var(--ag-auto-height-min-body-height);
 	--ag-inherited-background-color: var(--ag-background-color);
 	--ag-inherited-border-color: var(--ag-border-color);
 	--ag-inherited-border-radius: var(--ag-border-radius);
@@ -384,6 +399,9 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-button-hover-text-color: var(--ag-button-hover-text-color);
 	--ag-inherited-button-text-color: var(--ag-button-text-color);
 	--ag-inherited-button-vertical-padding: var(--ag-button-vertical-padding);
+	--ag-inherited-calculated-column-highlight-color: var(--ag-calculated-column-highlight-color);
+	--ag-inherited-calculated-column-parent-suggestion-color: var(--ag-calculated-column-parent-suggestion-color);
+	--ag-inherited-calculated-column-suggestion-list-width: var(--ag-calculated-column-suggestion-list-width);
 	--ag-inherited-card-shadow: var(--ag-card-shadow);
 	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
 	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
@@ -532,6 +550,14 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-menu-shadow: var(--ag-menu-shadow);
 	--ag-inherited-menu-text-color: var(--ag-menu-text-color);
 	--ag-inherited-modal-overlay-background-color: var(--ag-modal-overlay-background-color);
+	--ag-inherited-note-indicator-color: var(--ag-note-indicator-color);
+	--ag-inherited-note-indicator-size: var(--ag-note-indicator-size);
+	--ag-inherited-note-popup-background-color: var(--ag-note-popup-background-color);
+	--ag-inherited-note-popup-border: var(--ag-note-popup-border);
+	--ag-inherited-note-popup-input-background-color: var(--ag-note-popup-input-background-color);
+	--ag-inherited-note-popup-input-text-color: var(--ag-note-popup-input-text-color);
+	--ag-inherited-note-popup-padding: var(--ag-note-popup-padding);
+	--ag-inherited-note-popup-text-color: var(--ag-note-popup-text-color);
 	--ag-inherited-odd-row-background-color: var(--ag-odd-row-background-color);
 	--ag-inherited-pagination-panel-height: var(--ag-pagination-panel-height);
 	--ag-inherited-panel-background-color: var(--ag-panel-background-color);
@@ -545,8 +571,10 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-panel-title-bar-text-color: var(--ag-panel-title-bar-text-color);
 	--ag-inherited-picker-button-background-color: var(--ag-picker-button-background-color);
 	--ag-inherited-picker-button-border: var(--ag-picker-button-border);
+	--ag-inherited-picker-button-border-radius: var(--ag-picker-button-border-radius);
 	--ag-inherited-picker-button-focus-background-color: var(--ag-picker-button-focus-background-color);
 	--ag-inherited-picker-button-focus-border: var(--ag-picker-button-focus-border);
+	--ag-inherited-picker-field-height: var(--ag-picker-field-height);
 	--ag-inherited-picker-list-background-color: var(--ag-picker-list-background-color);
 	--ag-inherited-picker-list-border: var(--ag-picker-list-border);
 	--ag-inherited-pinned-column-border: var(--ag-pinned-column-border);
@@ -640,6 +668,9 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-toggle-button-switch-inset: var(--ag-toggle-button-switch-inset);
 	--ag-inherited-toggle-button-width: var(--ag-toggle-button-width);
 	--ag-inherited-tool-panel-separator-border: var(--ag-tool-panel-separator-border);
+	--ag-inherited-toolbar-background-color: var(--ag-toolbar-background-color);
+	--ag-inherited-toolbar-separator-border: var(--ag-toolbar-separator-border);
+	--ag-inherited-toolbar-text-color: var(--ag-toolbar-text-color);
 	--ag-inherited-tooltip-background-color: var(--ag-tooltip-background-color);
 	--ag-inherited-tooltip-border: var(--ag-tooltip-border);
 	--ag-inherited-tooltip-error-background-color: var(--ag-tooltip-error-background-color);
@@ -653,18 +684,18 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-widget-container-vertical-padding: var(--ag-widget-container-vertical-padding);
 	--ag-inherited-widget-horizontal-spacing: var(--ag-widget-horizontal-spacing);
 	--ag-inherited-widget-vertical-spacing: var(--ag-widget-vertical-spacing);
+	--ag-inherited-wrapper-background-color: var(--ag-wrapper-background-color);
 	--ag-inherited-wrapper-border: var(--ag-wrapper-border);
 	--ag-inherited-wrapper-border-radius: var(--ag-wrapper-border-radius);
-:where([data-ag-theme-mode="light"]) & {
+:where(html[data-ag-theme-mode="light"],body[data-ag-theme-mode="light"],.ag-theme-mode[data-ag-theme-mode="light"]) & {
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
 }
-:where([data-ag-theme-mode="dark"]) & {
+:where(html[data-ag-theme-mode="dark"],body[data-ag-theme-mode="dark"],.ag-theme-mode[data-ag-theme-mode="dark"]) & {
 	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
 	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
 	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
 	--ag-inherited-card-shadow: var(--ag-card-shadow);
-	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
 	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
 	--ag-inherited-column-panel-apply-button-color: var(--ag-column-panel-apply-button-color);
@@ -681,15 +712,13 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
 	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
 	--ag-inherited-row-batch-edit-background-color: var(--ag-row-batch-edit-background-color);
-	--ag-inherited-row-batch-edit-text-color: var(--ag-row-batch-edit-text-color);
 }
-:where([data-ag-theme-mode="dark-blue"]) & {
+:where(html[data-ag-theme-mode="dark-blue"],body[data-ag-theme-mode="dark-blue"],.ag-theme-mode[data-ag-theme-mode="dark-blue"]) & {
 	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
 	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
 	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
 	--ag-inherited-card-shadow: var(--ag-card-shadow);
-	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
 	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
 	--ag-inherited-column-panel-apply-button-color: var(--ag-column-panel-apply-button-color);
@@ -706,13 +735,17 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
 	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
 	--ag-inherited-row-batch-edit-background-color: var(--ag-row-batch-edit-background-color);
-	--ag-inherited-row-batch-edit-text-color: var(--ag-row-batch-edit-text-color);
 }
 }
 "
 `;
 
-exports[`pdsTheme > should match the snapshot for CSS Class Names 1`] = `"ag-theme-buttonStyle-1 ag-theme-columnDropStyle-2 ag-theme-batchEditStyle-3 ag-theme-iconSet-4 ag-theme-tabStyle-5 ag-theme-inputStyle-6 ag-theme-columnDropStyle-2 ag-theme-part-7 ag-theme-toggleButtonStyle-8 ag-theme-checkboxStyle-9 ag-theme-inputStyles-10 ag-theme-params-1"`;
+exports[`pdsTheme > should match the snapshot for CSS Class Names 1`] = `
+[
+  "ag-theme-inherit-1",
+  "ag-theme-buttonStyle-1 ag-theme-iconSet-2 ag-theme-tabStyle-3 ag-theme-inputStyle-4 ag-theme-columnDropStyle-5 ag-theme-styleQuartz-6 ag-theme-part-7 ag-theme-toggleButtonStyle-8 ag-theme-checkboxStyle-9 ag-theme-inputStyles-10 ag-theme-params-1",
+]
+`;
 
 exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
 "
@@ -824,6 +857,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "advancedFilterBuilderJoinPillColor": "#f08e8d",
     "advancedFilterBuilderOptionPillColor": "#f3c08b",
     "advancedFilterBuilderValuePillColor": "#85c0e4",
+    "autoHeightMinBodyHeight": 150,
     "backgroundColor": "light-dark(#fff,hsl(225 66.7% 1.2%))",
     "borderColor": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))",
     "borderRadius": "4px",
@@ -873,6 +907,15 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "buttonVerticalPadding": {
       "ref": "spacing",
     },
+    "calculatedColumnHighlightColor": {
+      "mix": 0.12,
+      "ref": "accentColor",
+    },
+    "calculatedColumnParentSuggestionColor": {
+      "mix": 0.75,
+      "ref": "foregroundColor",
+    },
+    "calculatedColumnSuggestionListWidth": 200,
     "cardShadow": "0 1px 4px 1px #00000018",
     "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
     "cellBatchEditTextColor": "#422f00",
@@ -1244,10 +1287,32 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "foregroundColor",
     },
     "modalOverlayBackgroundColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
+    "noteIndicatorColor": {
+      "ref": "accentColor",
+    },
+    "noteIndicatorSize": "8px",
+    "notePopupBackgroundColor": {
+      "ref": "menuBackgroundColor",
+    },
+    "notePopupBorder": {
+      "ref": "dialogBorder",
+    },
+    "notePopupInputBackgroundColor": {
+      "ref": "inputBackgroundColor",
+    },
+    "notePopupInputTextColor": {
+      "ref": "inputTextColor",
+    },
+    "notePopupPadding": {
+      "calc": "spacing * 0.5",
+    },
+    "notePopupTextColor": {
+      "mix": 0.75,
+      "ref": "menuTextColor",
+    },
     "oddRowBackgroundColor": "light-dark(hsl(240 10% 95%),hsl(240 2% 10%))",
     "paginationPanelHeight": {
-      "calc": "max(rowHeight, 22px)",
-      "ref": "rowHeight",
+      "calc": "pickerFieldHeight + spacing * 1.25",
     },
     "panelBackgroundColor": {
       "ref": "backgroundColor",
@@ -1278,11 +1343,17 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "backgroundColor",
     },
     "pickerButtonBorder": true,
+    "pickerButtonBorderRadius": {
+      "ref": "borderRadius",
+    },
     "pickerButtonFocusBackgroundColor": {
       "ref": "backgroundColor",
     },
     "pickerButtonFocusBorder": {
       "ref": "inputFocusBorder",
+    },
+    "pickerFieldHeight": {
+      "calc": "max(iconSize, fontSize) + spacing * 2",
     },
     "pickerListBackgroundColor": {
       "ref": "backgroundColor",
@@ -1476,6 +1547,13 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "toggleButtonSwitchInset": 3,
     "toggleButtonWidth": 48,
     "toolPanelSeparatorBorder": true,
+    "toolbarBackgroundColor": {
+      "ref": "headerBackgroundColor",
+    },
+    "toolbarSeparatorBorder": true,
+    "toolbarTextColor": {
+      "ref": "headerTextColor",
+    },
     "tooltipBackgroundColor": {
       "ref": "chromeBackgroundColor",
     },
@@ -1513,6 +1591,9 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "widgetVerticalSpacing": {
       "ref": "spacing",
     },
+    "wrapperBackgroundColor": {
+      "ref": "backgroundColor",
+    },
     "wrapperBorder": true,
     "wrapperBorderRadius": "6px",
   },
@@ -1522,7 +1603,6 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "advancedFilterBuilderOptionPillColor": "#5a3168",
     "advancedFilterBuilderValuePillColor": "#374c86",
     "cardShadow": "0 1px 4px 1px #000A",
-    "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
     "cellBatchEditTextColor": "#f3d0b3",
     "chromeBackgroundColor": {
       "mix": 0.05,
@@ -1558,9 +1638,6 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "mix": 0.1,
       "onto": "backgroundColor",
       "ref": "foregroundColor",
-    },
-    "rowBatchEditTextColor": {
-      "ref": "cellBatchEditTextColor",
     },
   },
   "dark-blue": {
@@ -1569,7 +1646,6 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "advancedFilterBuilderOptionPillColor": "#5a3168",
     "advancedFilterBuilderValuePillColor": "#374c86",
     "cardShadow": "0 1px 4px 1px #000A",
-    "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
     "cellBatchEditTextColor": "#f3d0b3",
     "chromeBackgroundColor": {
       "mix": 0.05,
@@ -1605,9 +1681,6 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "mix": 0.1,
       "onto": "backgroundColor",
       "ref": "foregroundColor",
-    },
-    "rowBatchEditTextColor": {
-      "ref": "cellBatchEditTextColor",
     },
   },
   "light": {

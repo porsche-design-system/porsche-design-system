@@ -41,13 +41,13 @@ const propTypes: PropTypes<typeof Scroller> = {
 export class Scroller {
   @Element() public host!: HTMLElement;
 
-  /** Specifies if scrollbar should be shown. */
+  /** Shows the browser's native scrollbar inside the scroller, in addition to the scroll indicator arrows. */
   @Prop() public scrollbar?: boolean = false;
 
-  /** Displays with reduced spacing and smaller padding for a more condensed layout. */
+  /** Reduces the scroller's padding and the gap between slotted items for use in dense layouts. */
   @Prop() public compact?: boolean;
 
-  /** Add ARIA role. */
+  /** Sets ARIA role and attributes on the scroller's scroll container, useful for tablist navigation patterns and additional accessibility context. */
   @Prop() public aria?: SelectedAriaAttributes<ScrollerAriaAttribute>;
 
   /**
@@ -126,7 +126,7 @@ export class Scroller {
         <div
           class="scroll"
           ref={(el) => (this.scrollArea = el)}
-          role={(parseAndGetAriaAttributes(this.aria) as any)?.role || null}
+          {...parseAndGetAriaAttributes(this.aria)}
           tabIndex={this.isIndicatorPrevVisible || this.isIndicatorNextVisible ? 0 : null}
         >
           <span class="sentinel" ref={(el) => (this.sentinelLeft = el)} />

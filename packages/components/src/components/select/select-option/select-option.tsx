@@ -27,10 +27,10 @@ const propTypes: PropTypes<typeof SelectOption> = {
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
 
-  /** The option value. Selected when it strictly matches the p-select value (same type and value). */
+  /** Sets the value submitted with the form data when this option is selected in the parent select control. */
   @Prop() public value?: string | number | null;
 
-  /** Disables the option. */
+  /** Prevents the option from being selected and visually dims it to indicate it is unavailable. */
   @Prop() public disabled?: boolean = false;
 
   public connectedCallback(): void {

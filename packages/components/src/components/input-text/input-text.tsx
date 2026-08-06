@@ -17,6 +17,7 @@ import {
   FORM_STATES,
   hasPropValueChanged,
   implicitSubmit,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -66,72 +67,72 @@ const propTypes: PropTypes<typeof InputText> = {
 export class InputText {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the input field. */
   @Prop() public label?: string = '';
 
-  /** Indicate whether to enable spell-checking. */
+  /** Controls whether the browser's built-in spell-checking is enabled for this field. */
   @Prop() public spellCheck?: boolean;
 
-  /** Supplementary text providing more context or explanation for the input. */
+  /** Sets a supplementary description displayed below the label to provide additional context. */
   @Prop() public description?: string = '';
 
-  /** Displays the input field in compact mode. */
+  /** Reduces the input height and padding for a more compact layout. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the input field, used when submitting the form data. */
+  /** Sets the name submitted with the form data to identify this field's value on the server. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The text input value. */
+  /** Sets the current text value of the input field. */
   @Prop({ mutable: true }) public value?: string | number | null = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name'). */
+  /** Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='name'`). */
   @Prop() public autoComplete?: string;
 
-  /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
+  /** Makes the field read-only — the value is displayed but cannot be edited by the user. The value is still submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
+  /** Associates the field with a form element by its ID when the field is not nested directly inside it. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** A non-negative integer specifying the maximum number of characters the user can enter into the input. */
+  /** Sets the maximum number of characters the user can enter. */
   @Prop() public maxLength?: number;
 
-  /** A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid. */
+  /** Sets the minimum number of characters required for the field to be considered valid. */
   @Prop() public minLength?: number;
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty. */
+  /** Sets placeholder text shown inside the field when it is empty, to hint at the expected format. */
   @Prop() public placeholder?: string = '';
 
-  /** Disables the input field. The value will not be submitted with the form. */
+  /** Disables the field, preventing all input. The value is not submitted with the form. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
+  /** Marks the field as required — form submission is blocked while this field is empty. */
   @Prop() public required?: boolean = false;
 
-  /** @experimental Shows a loading indicator. */
+  /** @experimental Disables the field and displays a loading spinner to indicate an ongoing operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Indicates the validation or overall status of the input component. */
+  /** Sets the validation state, controlling the visual appearance and style of the feedback message (`none`, `success`, `error`). */
   @Prop() public state?: InputTextState = 'none';
 
-  /** Dynamic feedback text for validation or status. */
+  /** Sets the validation feedback message displayed below the field when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Show or hide the character counter. */
+  /** Shows a live character counter below the field indicating how many characters have been entered relative to `maxLength`. */
   @Prop() public counter?: boolean = false;
 
-  /** Emitted when the text input loses focus after its value was changed. */
+  /** Emitted when the input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTextChangeEventDetail>;
 
-  /** Emitted when the text input has lost focus. */
+  /** Emitted when the input loses focus, regardless of whether the value changed. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputTextBlurEventDetail>;
 
-  /** Emitted when the value has been changed as a direct result of a user action. */
+  /** Emitted on every value change as the user types. */
   @Event({ bubbles: true }) public input: EventEmitter<InputTextInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
@@ -150,7 +151,6 @@ export class InputText {
     if (this.inputElement && this.inputElement.value !== this.parsedValue) {
       this.inputElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(this.parsedValue);
   }
 
   public connectedCallback(): void {
@@ -185,18 +185,12 @@ export class InputText {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    this.internals?.setFormValue(this.parsedValue);
-  }
-
   public componentDidRender(): void {
-    if (!this.disabled && !this.readOnly) {
-      this.internals?.setValidity(
-        this.inputElement.validity,
-        this.inputElement.validationMessage || ' ',
-        this.inputElement
-      );
-    }
+    syncFormState(this.internals, this.inputElement, {
+      disabled: this.disabled,
+      readOnly: this.readOnly,
+      value: this.parsedValue,
+    });
   }
 
   public render(): JSX.Element {
@@ -242,7 +236,7 @@ export class InputText {
         loading={this.loading}
         initialLoading={this.initialLoading}
         // Intentionally not defined as prop in the interface since it's a global HTML attribute/prop and will cause typescript issues when optional
-        {...(this.host.inputMode !== "" && { inputMode: this.host.inputMode })}
+        {...(this.host.inputMode !== '' && { inputMode: this.host.inputMode })}
         {...(this.counter && {
           end: (
             <Fragment>

@@ -1,7 +1,7 @@
 name: "(Core Team Only) New Task"
 description: Create a new task
 title: "Short description"
-labels: ["to be refined"]
+labels: ["Kickoff"]
 type: task
 projects: ["porsche-design-system/14"]
 body:

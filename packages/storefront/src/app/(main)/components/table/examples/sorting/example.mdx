@@ -1,0 +1,22 @@
+import { Notification } from '@/components/common/Notification';
+
+Sorting is controlled, so the initial row order must match the active column's `direction` and both must remain
+synchronized when handling the `update` event. Configure sortable columns by providing the `sort` property on each
+`p-table-head-cell`. It has the following structure:
+
+```ts
+type TableHeadCellSort = {
+  id: string; // identifier for the column to be sorted by
+  active: boolean;
+  direction: 'asc' | 'desc';
+};
+```
+
+Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits an `update` event that you should subscribe
+to.
+
+<Notification heading="Deprecation hint" heading-tag="h4" state="warning">
+  The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.
+  <br />
+  Please use the <code>update</code> event instead.
+</Notification>

@@ -4,8 +4,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "exports": {
     ".": {
       "import": {
@@ -18,30 +18,32 @@
       }
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["./dist/"],
-  "author": "Dr. Ing. h.c. F. Porsche AG",
-  "homepage": "https://designsystem.porsche.com",
+  "files": [
+    "./dist/"
+  ],
   "scripts": {
     "build": "npm run clean:build && npm run build:icons && npm run build:lib",
     "build:icons": "tsx scripts/build.ts",
-    "build:lib": "tsup index.ts --format esm,cjs --dts",
+    "build:lib": "rollup -c",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
-  },
-  "peerDependencies": {
-    "change-case": "*",
-    "fast-glob": "*",
-    "prettier": "*",
-    "svgo": "*",
-    "tsup": "*",
-    "tsx": "*",
-    "typescript": "*",
-    "vitest": "*",
-    "gzip-size": "*"
+    "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "change-case": "^5.4.4",
+    "fast-glob": "^3.3.3",
+    "gzip-size": "^7.0.0",
+    "prettier": "^3.9.1",
+    "rollup": "^4.62.2",
+    "rollup-plugin-dts": "^6.4.1",
+    "svgo": "^4.0.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   },
   "volta": {
     "extends": "../../../../package.json"

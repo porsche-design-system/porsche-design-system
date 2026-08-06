@@ -1,0 +1,33 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { tabsMeta } from '@/app/(main)/components/tabs/tabs.meta';
+
+export const metadata = {
+  title: 'Tabs - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Tabs component.',
+};
+
+# Tabs <ComponentStatus tagName="p-tabs"></ComponentStatus>
+
+<TableOfContents
+  headings={[tabsMeta.examples.gradient.name, tabsMeta.examples.activeTab.name, tabsMeta.examples.labelling.name]}
+/>
+
+## {tabsMeta.examples.gradient.name}
+
+<tabsMeta.examples.gradient.description />
+
+<ComponentStory story={tabsMeta.examples.gradient.story} backgroundColor="surface" />
+
+## {tabsMeta.examples.activeTab.name}
+
+<tabsMeta.examples.activeTab.description />
+
+<ComponentStory story={tabsMeta.examples.activeTab.story} />
+
+## {tabsMeta.examples.labelling.name}
+
+<tabsMeta.examples.labelling.description />
+
+<ComponentStory story={tabsMeta.examples.labelling.story} />

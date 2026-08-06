@@ -30,19 +30,19 @@ const propTypes: PropTypes<typeof Canvas> = {
 export class Canvas {
   @Element() public host!: HTMLElement;
 
-  /** Open the sidebar on the start side */
+  /** Controls whether the navigation sidebar on the start side (left in LTR) is open or collapsed. */
   @Prop() public sidebarStartOpen?: boolean = false;
 
-  /** Open the sidebar on the end side */
+  /** Controls whether the utility sidebar on the end side (right in LTR) is open or collapsed. */
   @Prop() public sidebarEndOpen?: boolean = false;
 
-  /** Defines the background color of the main section and auto adjust it for the sidebar */
+  /** Sets the background color of the main content area and automatically applies a matching color to the sidebar. */
   @Prop() public background?: CanvasBackground = 'canvas';
 
-  /** Emitted when the sidebar start requests to be opened or dismissed. */
+  /** Emitted when the user toggles the start sidebar, with the new open state in the event detail. */
   @Event({ bubbles: false }) public sidebarStartUpdate?: EventEmitter<CanvasSidebarStartUpdateEventDetail>;
 
-  /** Emitted when the sidebar end requests to be dismissed. */
+  /** Emitted when the user dismisses the end sidebar via the close button. */
   @Event({ bubbles: false }) public sidebarEndDismiss?: EventEmitter<void>;
 
   private hasTitle: boolean;

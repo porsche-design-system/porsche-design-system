@@ -11,12 +11,12 @@ import {
   fontPorscheNext,
   fontWeightNormal,
   leadingNormal,
-  legacyRadiusSmall,
   radiusLg,
   radiusXl,
+  ref,
   spacingStaticXs,
   typescaleSm,
-} from '../../styles/css-variables';
+} from '@porsche-design-system/stylesheets';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import type { BreakpointCustomizable } from '../../types';
 import { getCss } from '../../utils';
@@ -41,10 +41,10 @@ export const getComponentCss = (
 ): string => {
   const { formStateBackgroundColor, formStateBorderColor, formStateBorderHoverColor } = getThemedFormStateColors(state);
 
-  const gap = `calc(11.2px * (var(${cssVarInternalPinCodeScaling}) - 0.64285714) + 4px)`;
+  const gap = `calc(11.2px * (${ref(cssVarInternalPinCodeScaling)} - 0.64285714) + 4px)`;
   const inputBorderWidth = '1px';
-  const inputDimension = `calc(var(${cssVarInternalPinCodeScaling}) * 3.5rem)`;
-  const inputPadding = `calc(11.2px * (var(${cssVarInternalPinCodeScaling}) - 0.64285714) + 4px)`;
+  const inputDimension = `calc(${ref(cssVarInternalPinCodeScaling)} * 3.5rem)`;
+  const inputPadding = `calc(11.2px * (${ref(cssVarInternalPinCodeScaling)} - 0.64285714) + 4px)`;
   const inputMinWidth = `calc(1ch + ${inputPadding} * 2 + ${inputBorderWidth} * 2)`;
 
   return getCss({
@@ -68,10 +68,10 @@ export const getComponentCss = (
         padding: inputPadding,
         boxSizing: 'border-box',
         border: `${inputBorderWidth} solid ${formStateBorderColor}`,
-        borderRadius: `var(${legacyRadiusSmall}, ${isCompact ? radiusLg : radiusXl})`,
+        borderRadius: isCompact ? ref(radiusLg) : ref(radiusXl),
         background: formStateBackgroundColor,
-        font: `${fontWeightNormal} ${typescaleSm} / calc(${leadingNormal} + 6px) ${fontPorscheNext}`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
-        color: colorPrimary,
+        font: `${ref(fontWeightNormal)} ${ref(typescaleSm)} / calc(${ref(leadingNormal)} + 6px) ${ref(fontPorscheNext)}`, // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
+        color: ref(colorPrimary),
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         textOverflow: 'ellipsis',
         cursor: isDisabled || isLoading ? 'not-allowed' : 'text',
@@ -92,7 +92,7 @@ export const getComponentCss = (
     root: {
       all: 'unset',
       display: 'grid',
-      gap: spacingStaticXs,
+      gap: ref(spacingStaticXs),
     },
     wrapper: {
       position: 'relative',

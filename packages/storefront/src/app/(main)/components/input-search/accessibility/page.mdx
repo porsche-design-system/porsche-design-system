@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { inputSearchMeta } from '@/app/(main)/components/input-search/input-search.meta';
+
+export const metadata = {
+  title: 'Input Search: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Input Search component',
+};
+
+# Input Search <ComponentStatus tagName="p-input-search"></ComponentStatus>
+
+<TableOfContents
+  headings={['Accessibility support', 'Development considerations', 'Limitations', 'Integration examples', 'Tests']}
+/>
+
+<inputSearchMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-input-search" examples={inputSearchMeta.accessibility.examples} />
+
+<inputSearchMeta.accessibility.tests />

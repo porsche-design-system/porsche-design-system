@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { sheetMeta } from '@/app/(main)/components/sheet/sheet.meta';
+
+export const metadata = {
+  title: 'Sheet: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Sheet component',
+};
+
+# Sheet <ComponentStatus tagName="p-sheet"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<sheetMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-sheet" examples={sheetMeta.accessibility.examples} />
+
+<sheetMeta.accessibility.tests />

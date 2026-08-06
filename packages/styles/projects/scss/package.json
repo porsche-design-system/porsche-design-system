@@ -1,39 +1,54 @@
 {
   "name": "@porsche-design-system/scss",
   "version": "0.0.0",
-  "type": "commonjs",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "sideEffects": false,
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
-  "scripts": {
-    "build": "npm run clean:build && npm run build:package && npm run copy:scss",
-    "build:package": "tsx scripts/build.ts",
-    "copy:scss": "cp -r src/*.scss dist/",
-    "test": "npm run test:unit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist"
-  },
+  "sideEffects": false,
+  "type": "commonjs",
+  "main": "./meta/cjs/index.cjs",
+  "module": "./meta/esm/index.mjs",
+  "types": "./meta/esm/index.d.ts",
   "exports": {
     ".": {
-      "sass": "./dist/_index.scss"
+      "sass": "./dist/_index.scss",
+      "types": "./meta/esm/index.d.ts",
+      "import": "./meta/esm/index.mjs",
+      "require": "./meta/cjs/index.cjs"
+    },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
     }
+  },
+  "files": [
+    "./dist/",
+    "./meta/"
+  ],
+  "scripts": {
+    "build": "npm run clean:build && npm run build:meta && npm run build:package",
+    "build:meta": "rollup -c rollup.config.meta.mjs",
+    "build:package": "tsx scripts/build.ts",
+    "test": "npm run test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist ./meta"
   },
   "dependencies": {
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0"
-  },
-  "peerDependencies": {
-    "@biomejs/biome": "*",
-    "vitest": "*",
-    "tsx": "*",
-    "typescript": "*",
-    "prettier": "*",
-    "sass": "*"
+    "@biomejs/biome": "^2.5.1",
+    "@porsche-design-system/shared": "0.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/node": "^26.0.1",
+    "prettier": "^3.9.1",
+    "rollup": "^4.62.2",
+    "sass": "^1.101.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
   },
   "volta": {
     "extends": "../../../../package.json"

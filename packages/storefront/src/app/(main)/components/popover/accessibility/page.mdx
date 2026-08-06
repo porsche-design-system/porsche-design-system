@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { popoverMeta } from '@/app/(main)/components/popover/popover.meta';
+
+export const metadata = {
+  title: 'Popover: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Popover component',
+};
+
+# Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<popoverMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-popover" examples={popoverMeta.accessibility.examples} />
+
+<popoverMeta.accessibility.tests />

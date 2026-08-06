@@ -47,43 +47,43 @@ const propTypes: PropTypes<typeof LinkTile> = {
 export class LinkTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
-  /** Font size of the description. */
+  /** Sets the font size of the description text in the tile content area. Supports responsive breakpoint values. */
   @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'medium';
 
-  /** Font weight of the description. */
+  /** Sets the font weight of the description text in the tile content area. Supports responsive breakpoint values. */
   @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
 
-  /** Aspect ratio of the link-tile. */
+  /** Sets the width-to-height ratio of the tile media area. Supports responsive breakpoint values. */
   @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4/3';
 
-  /** Label of the <a />. */
+  /** Sets the accessible label text of the link rendered inside the tile. */
   @Prop() public label: string;
 
-  /** Description text. */
+  /** Sets the description text displayed in the tile's content area. */
   @Prop() public description: string;
 
-  /** Alignment of link and description. */
+  /** Controls the vertical placement of the description and link — `top` or `bottom`. */
   @Prop() public align?: LinkTileAlign = 'bottom';
 
-  /** Show gradient. */
+  /** Shows a gradient overlay over the media slot to improve text legibility on bright images or videos. */
   @Prop() public gradient?: boolean = false;
 
-  /** Displays the link-tile as compact version with description and link icon only. */
+  /** Renders only the icon link without the full label. Supports responsive breakpoint values. */
   @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
-  /** href of the `<a>`. */
+  /** Sets the URL the tile's anchor element navigates to when clicked. */
   @Prop() public href: string;
 
-  /** Specifies where to open the linked document. */
+  /** Specifies where to open the linked URL (e.g. `_self`, `_blank`). */
   @Prop() public target?: LinkTileTarget = '_self';
 
-  /** Sets the native `download` attribute when the target URL points to a downloadable file. */
+  /** Sets the native `download` attribute to trigger a file download. */
   @Prop() public download?: string;
 
-  /** Sets the `rel` attribute on the link. */
+  /** Sets the `rel` attribute on the link (e.g. `noopener`). */
   @Prop() public rel?: string;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the tile's anchor element to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
 
   @State() private hasFooterSlot: boolean = false;

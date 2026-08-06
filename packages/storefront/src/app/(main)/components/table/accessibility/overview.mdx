@@ -1,0 +1,25 @@
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                           |
+| ------------------ | -------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) sort button. |
+| `Enter`, `Space`   | Changes sorting direction.                         |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                                             | Usage                                                |
+| ------------------------------------------------ | ---------------------------------------------------- |
+| `aria-label="STRING"`, `aria-labelledby="IDREF"` | Captions are provided by aria labels.                |
+| `aria-sort="VALUE"`                              | Provides the sorting direction of the column header. |
+
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** provide a `caption` or `slot="caption"` that describes the table purpose.
+- **Do** keep visible header text for sortable columns.
+- **Don't** use `hide-label` on a sortable column without an alternative accessible name.

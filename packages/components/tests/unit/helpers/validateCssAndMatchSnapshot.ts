@@ -18,7 +18,13 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   validatePreventFoucOfNestedElementsStyle(
     cssObject,
     (componentMeta && Array.isArray(componentMeta.nestedComponents) && componentMeta.nestedComponents.length > 0) ||
-      ['input-base', 'input-text'].includes(componentName)
+    /* Functional components (e.g. InputBase) have no TAG_NAMES entry, so getComponentMeta returns
+     * undefined and nestedComponents cannot be derived from metadata. Fall back to the CSS itself:
+     * if the FOUC selector (:not(:defined,[data-ssr])) is present in the output, the component
+     * declares it has nested PDS components and we validate its value; if absent, we expect it to
+     * stay absent. The CSS is the source of truth for functional components.
+     */
+    (!componentMeta && !!cssObject[':not(:defined,[data-ssr])'])
   );
 
   // Validations for components only

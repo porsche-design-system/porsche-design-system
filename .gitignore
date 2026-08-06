@@ -69,7 +69,6 @@ packages/components/src/test-utils/tag-names-constructor-map.ts
 packages/components/src/assets/tailwind.css
 
 # Components JS
-packages/components-js/public/assets/imask.min.js
 packages/components-js/public/assets/styles.css
 packages/components-js/public/assets/index.css
 packages/components-js/public/assets/table-data*
@@ -83,22 +82,6 @@ packages/components-react/projects/react-ssr-wrapper/src/provider.tsx
 packages/components-react/projects/react-ssr-wrapper/src/public-api.ts
 packages/components-react/projects/react-ssr-wrapper/src/utils.ts
 
-packages/components-react/projects/remix/app/routes/banner-basic.tsx
-packages/components-react/projects/remix/app/routes/banner-prefixed.tsx
-packages/components-react/projects/remix/app/routes/canvas-basic.tsx
-packages/components-react/projects/remix/app/routes/canvas-prefixed.tsx
-packages/components-react/projects/remix/app/routes/sheet-basic.tsx
-packages/components-react/projects/remix/app/routes/sheet-prefixed.tsx
-packages/components-react/projects/remix/app/routes/flyout-basic.tsx
-packages/components-react/projects/remix/app/routes/flyout-prefixed.tsx
-packages/components-react/projects/remix/app/routes/drilldown-basic.tsx
-packages/components-react/projects/remix/app/routes/drilldown-prefixed.tsx
-packages/components-react/projects/remix/app/routes/modal-basic.tsx
-packages/components-react/projects/remix/app/routes/modal-prefixed.tsx
-packages/components-react/projects/remix/app/routes/overview-components.tsx
-packages/components-react/projects/remix/app/routes/toast-basic.tsx
-packages/components-react/projects/remix/app/routes/toast-prefixed.tsx
-packages/components-react/projects/remix/styles/getSharedStyles.tsx
 
 packages/components-react/projects/nextjs/app/*/
 packages/components-react/projects/nextjs/styles/getSharedStyles.tsx
@@ -107,9 +90,9 @@ packages/components-react/projects/nextjs/styles/getSharedStyles.tsx
 packages/shared/bin/
 
 # Storefront
-packages/storefront-old/scripts/algoliaRecords.json
-packages/storefront-old/src/pages/changelog.md
-packages/storefront-old/public/porsche-design-system
+packages/storefront/scripts/algoliaRecords.json
+packages/storefront/src/app/(main)/news/changelog/page.mdx
+packages/storefront/src/app/(main)/license/license.mdx
 packages/storefront/public/porsche-design-system
 
 # Lib
@@ -124,3 +107,16 @@ packages/storefront-old/src/lib/*
 packages/component-meta/src/lib/*
 packages/components-js/projects/partials/src/lib/*
 packages/utilities/projects/utilities/src/scss/lib/*
+packages/tokens/projects/tokens-meta/src/lib/*
+packages/components/projects/stylesheets/lib/
+
+# Meta
+packages/styles/projects/scss/meta/
+packages/styles/projects/tailwindcss/meta/
+packages/styles/projects/vanilla-extract/meta/
+packages/styles/projects/emotion/meta/
+packages/components/projects/stylesheets/meta/
+
+# Agent Skills, ignored for now for testing and review of the skills. Remove once we decided on what skills to keep.
+.claude/
+skills-lock.json

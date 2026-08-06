@@ -1,8 +1,8 @@
-import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
-import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
+import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 
 vi.stubGlobal('localStorage', {
   getItem: vi.fn(),
@@ -14,13 +14,17 @@ vi.stubGlobal('localStorage', {
 });
 
 const TestComponent = () => {
-  const { storefrontFramework, setStorefrontFramework } = useStorefrontFramework();
+  const { storefrontFramework, framework, setStorefrontFramework } = useStorefrontFramework();
 
   return (
     <>
       <div data-testid="framework">{storefrontFramework}</div>
+      <div data-testid="resolvedFramework">{framework}</div>
       <button type="button" onClick={() => setStorefrontFramework('react')}>
         Set React
+      </button>
+      <button type="button" onClick={() => setStorefrontFramework('next')}>
+        Set Next
       </button>
     </>
   );
@@ -66,5 +70,19 @@ describe('StorefrontFrameworkProvider', () => {
 
     expect(localStorage.setItem).toHaveBeenCalledWith('storefrontFramework', 'react');
     await waitFor(() => expect(screen.getByTestId('framework')).toHaveTextContent('react'));
+  });
+
+  it('should keep next as selection and resolve it to react', async () => {
+    render(
+      <StorefrontFrameworkProvider>
+        <TestComponent />
+      </StorefrontFrameworkProvider>
+    );
+
+    screen.getByText('Set Next').click();
+
+    expect(localStorage.setItem).toHaveBeenCalledWith('storefrontFramework', 'next');
+    await waitFor(() => expect(screen.getByTestId('framework')).toHaveTextContent('next'));
+    expect(screen.getByTestId('resolvedFramework')).toHaveTextContent('react');
   });
 });

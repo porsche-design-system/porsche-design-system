@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { segmentedControlMeta } from '@/app/(main)/components/segmented-control/segmented-control.meta';
+
+export const metadata = {
+  title: 'Segmented Control: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Segmented Control component',
+};
+
+# Segmented Control <ComponentStatus tagName="p-segmented-control"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<segmentedControlMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-segmented-control" examples={segmentedControlMeta.accessibility.examples} />
+
+<segmentedControlMeta.accessibility.tests />

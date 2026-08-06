@@ -19,6 +19,7 @@ import {
   hasMessage,
   hasPropValueChanged,
   setAriaIDREF,
+  syncFormState,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
@@ -74,78 +75,78 @@ const propTypes: PropTypes<typeof Textarea> = {
 export class Textarea {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the textarea to identify its purpose. */
   @Prop() public label?: string = '';
 
-  /** Supplementary text providing more context or explanation for the textarea. */
+  /** Sets a supplementary description displayed below the label to give users additional guidance about the textarea. */
   @Prop() public description?: string = '';
 
-  /** Displays the textarea in compact mode. */
+  /** Reduces the textarea's initial height and padding for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the textarea, used when submitting the form data. */
+  /** Sets the name of the textarea submitted with the form data to identify this field's value on the server. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The textarea value. */
+  /** Sets the current multi-line text value of the textarea and reflects any changes made by the user. */
   @Prop({ mutable: true }) public value?: string | null = '';
 
-  /** Indicates the validation or overall status of the textarea component. */
+  /** Sets the validation state of the textarea, which controls its visual appearance and feedback message style (`none`, `success`, `error`). */
   @Prop() public state?: TextareaState = 'none';
 
-  /** Dynamic feedback text for validation or status. */
+  /** Sets the validation feedback message displayed below the textarea when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Shows or hides the label. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label while keeping it accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Show or hide the character counter. */
+  /** Shows a live character counter below the textarea indicating how many characters the user has typed relative to `maxLength`. */
   @Prop() public counter?: boolean = false;
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty. */
+  /** Sets placeholder text displayed inside the textarea when it is empty to hint at the expected content format. */
   @Prop() public placeholder?: string = '';
 
-  /** A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted. */
+  /** Marks the textarea as required so the form cannot be submitted while this field is empty. */
   @Prop() public required?: boolean = false;
 
-  /** Disables the textarea. The value will not be submitted with the form. */
+  /** Prevents user interaction with the textarea and excludes its value from form submissions. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** A non-negative integer specifying the maximum number of characters the user can enter into the textarea. */
+  /** Sets the maximum number of characters the user is allowed to enter into the textarea. */
   @Prop() public maxLength?: number;
 
-  /** A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid. */
+  /** Sets the minimum number of characters required for the textarea's value to pass constraint validation. */
   @Prop() public minLength?: number;
 
-  /** Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form). */
+  /** Associates the textarea with a form element by its ID when the textarea is not a direct descendant of that form. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** The number of rows. Has no effect when field-sizing CSS Variable '--p-textarea-field-sizing' is set to 'content'. */
+  /** Sets the initial visible height of the textarea in lines of text. Has no effect when the `--p-textarea-field-sizing` CSS variable is set to `content`. */
   @Prop() public rows?: number = 7;
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */
+  /** Provides the browser with a hint to enable text autofill suggestions for the textarea (e.g. `autocomplete='on'`). */
   @Prop() public autoComplete?: string;
 
-  /** Specifies whether the textarea should have its spelling and grammar checked */
+  /** Controls whether the browser's built-in spell-checking and grammar checking is enabled for the textarea content. */
   @Prop() public spellCheck?: boolean;
 
-  /** Handles wrapping behavior of elements. */
+  /** Controls how the submitted text wraps in the form data: `soft` wraps only visually, `hard` inserts line breaks at the textarea width. */
   @Prop() public wrap?: TextareaWrap = 'soft';
 
-  /** Controls whether the textarea is resizable and in which direction. */
+  /** Controls whether and in which direction the user can resize the textarea (`horizontal`, `vertical`, `both`, or `none`). */
   @Prop() public resize?: TextareaResize = 'vertical';
 
-  /** A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form. */
+  /** Makes the textarea read-only so users cannot modify the value, while still including it in form submissions. */
   @Prop() public readOnly?: boolean = false;
 
-  /** Emitted when the textarea loses focus after its value was changed. */
+  /** Emitted when the textarea loses focus after its value was changed, equivalent to the native `change` event. */
   @Event({ bubbles: true }) public change: EventEmitter<TextareaChangeEventDetail>;
 
-  /** Emitted when the textarea has lost focus. */
+  /** Emitted when the textarea element loses focus, regardless of whether the value changed. */
   @Event({ bubbles: false }) public blur: EventEmitter<TextareaBlurEventDetail>;
 
-  /** Emitted when the value has been changed as a direct result of a user action. */
+  /** Emitted on every keystroke or value change as a direct result of user interaction, equivalent to the native `input` event. */
   @Event({ bubbles: true }) public input: EventEmitter<TextareaInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
@@ -163,7 +164,6 @@ export class Textarea {
     if (this.textAreaElement && this.textAreaElement.value !== this.parsedValue) {
       this.textAreaElement.value = this.parsedValue;
     }
-    this.internals?.setFormValue(this.parsedValue);
   }
 
   public componentWillLoad(): void {
@@ -186,18 +186,12 @@ export class Textarea {
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
-  public componentDidLoad(): void {
-    this.internals?.setFormValue(this.parsedValue);
-  }
-
   public componentDidRender(): void {
-    if (!this.disabled && !this.readOnly) {
-      this.internals?.setValidity(
-        this.textAreaElement.validity,
-        this.textAreaElement.validationMessage || ' ',
-        this.textAreaElement
-      );
-    }
+    syncFormState(this.internals, this.textAreaElement, {
+      disabled: this.disabled,
+      readOnly: this.readOnly,
+      value: this.parsedValue,
+    });
   }
 
   public render(): JSX.Element {

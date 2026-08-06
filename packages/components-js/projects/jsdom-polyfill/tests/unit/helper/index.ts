@@ -37,7 +37,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   <p>Some details</p>
 </p-accordion>`,
   'p-sheet': `<p-sheet open="true"><h2 slot="header">Some Heading</h2></p-sheet>`,
-  'p-banner': `<p-banner heading="Some heading">
+  'p-banner': `<p-banner open heading="Some heading">
     <span slot="description">Some banner description.</span>
   </p-banner>`,
   'p-button': '<p-button>Some label</p-button>',
@@ -56,7 +56,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-divider': '<p-divider></p-divider>',
   'p-fieldset': '<p-fieldset></p-fieldset>',
   'p-flyout': `
-    <p-flyout></p-flyout>
+    <p-flyout open></p-flyout>
   `,
   // 'p-drilldown': `<p-drilldown>
   //   <p-drilldown-item identifier="identifier-1" label="Label 1">
@@ -166,6 +166,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-textarea': `<p-textarea name="some-name" label="Some label"></p-textarea>`,
   'p-toast': '<p-toast></p-toast>',
   'p-wordmark': '<p-wordmark></p-wordmark>',
+  'p-ai-tag': '<p-ai-tag></p-ai-tag>',
 };
 
 export const getMarkup = (tagName: TagName): string => tagNameMarkup[tagName];

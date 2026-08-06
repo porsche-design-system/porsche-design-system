@@ -10,6 +10,7 @@ type ConfigureSlotsProps<Tag extends HTMLTagOrComponent> = {
   componentSlots: SlotMeta | undefined;
   configuredSlots: StoryState<Tag>;
   slotStories: SlotStories<Tag>;
+  requiredSlots?: string[];
   onUpdateSlots: (slotName: string, selectedSlotStory: Story<Tag> | undefined) => void;
 };
 
@@ -18,6 +19,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
   componentSlots,
   configuredSlots,
   slotStories,
+  requiredSlots,
   onUpdateSlots,
 }: ConfigureSlotsProps<T>) => {
   return (
@@ -29,28 +31,24 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
         {Object.entries(slotStories ?? {}).map(([slotName, slotExamples]) => {
           return (
             <div key={slotName} className="flex flex-col gap-fluid-sm">
-              <div className="w-full flex justify-between">
-                <div className="w-full flex gap-static-xs">
-                  {capitalCase(slotName)}
-                  <PPopover>
-                    {/* TODO: Fix typing */}
-                    {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
-                  </PPopover>
-                </div>
+              <div className="flex gap-static-xs">
                 <PSwitch
-                  hideLabel={true}
-                  className="flex-1"
                   checked={!!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
-                  alignLabel="start"
-                  stretch={true}
                   compact={true}
                   onUpdate={(e) =>
                     onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)
                   }
-                  disabled={slotName === 'default' || slotName === 'summary'}
+                  disabled={
+                    requiredSlots?.includes(slotName) ||
+                    (componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.isRequired
+                  }
                 >
-                  {`Toggle slot: ${slotName}`}
+                  {capitalCase(slotName)}
                 </PSwitch>
+                <PPopover>
+                  {/* TODO: Fix typing */}
+                  {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
+                </PPopover>
               </div>
               {Object.keys(slotExamples).length > 1 && (
                 <PSelect

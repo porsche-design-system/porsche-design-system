@@ -44,19 +44,19 @@ const propTypes: PropTypes<typeof Drilldown> = {
 export class Drilldown {
   @Element() public host!: HTMLElement;
 
-  /** If `true`, the drilldown is shown as open. */
+  /** Controls whether the drilldown navigation panel is visible. */
   @Prop() public open?: boolean = false;
 
-  /** Defines which `p-drilldown-item` is shown as open. */
+  /** Sets which `p-drilldown-item` (by `identifier`) is currently expanded to show its sub-navigation level. */
   @Prop() public activeIdentifier?: string | undefined;
 
-  /** Sets ARIA attributes. */
+  /** Sets ARIA attributes on the drilldown dialog element for improved screen reader accessibility. */
   @Prop() public aria?: SelectedAriaAttributes<DrilldownAriaAttribute>;
 
-  /** Emitted when the component requests to be dismissed. */
+  /** Emitted when the user closes the drilldown via the close button or Escape key. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when `activeIdentifier` changes. */
+  /** Emitted when the active navigation level changes, with the new `activeIdentifier` in the event detail. */
   @Event({ bubbles: false }) public update?: EventEmitter<DrilldownUpdateEventDetail>;
 
   @State() private drilldownItemElements: Item[] = [];
@@ -66,6 +66,9 @@ export class Drilldown {
   private dialog: HTMLDialogElement;
   private drawer: HTMLDivElement;
   private isDesktop = false;
+  // Tracks whether the current pointer gesture started inside the drawer (not on the backdrop). Lets `onClickDialog`
+  // skip dismissal when a selection is dragged out of the drawer and released on the backdrop.
+  private isPointerDownInside = false;
   private matchMediaQueryS = window.matchMedia(`(min-width: ${breakpointS}px)`);
 
   @Watch('open')
@@ -132,6 +135,7 @@ export class Drilldown {
         ref={(ref) => (this.dialog = ref)}
         {...parseAndGetAriaAttributes(this.aria)}
         onCancel={this.onCancelDialog}
+        onMouseDown={this.onMouseDownDialog}
         onClick={this.onClickDialog}
       >
         <div class="drawer" ref={(ref) => (this.drawer = ref)}>
@@ -181,10 +185,20 @@ export class Drilldown {
   };
 
   private onClickDialog = (e: PointerEvent & { target: HTMLDialogElement }): void => {
-    if (e.target.tagName === 'DIALOG') {
+    // Skip dismissal when the pointer gesture started inside the drawer (e.g. a text selection dragged out and released
+    // on the backdrop). A `click` only fires on the nearest common ancestor of `mousedown`/`mouseup`, so such a gesture
+    // retargets the resulting `click` to the backdrop and would otherwise wrongly dismiss. Mirrors `p-popover`.
+    const startedInside = this.isPointerDownInside;
+    this.isPointerDownInside = false;
+    if (!startedInside && e.target.tagName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
       this.dismissDialog();
     }
+  };
+
+  private onMouseDownDialog = (e: MouseEvent & { target: HTMLElement }): void => {
+    // Record whether the press began inside the drawer (any target other than the `<dialog>` backdrop itself).
+    this.isPointerDownInside = e.target.tagName !== 'DIALOG';
   };
 
   private onCancelDialog = (e: Event): void => {

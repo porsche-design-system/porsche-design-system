@@ -1,11 +1,12 @@
 # AGENTS.md — Storefront Package
 
-> This file provides context for AI coding assistants working in `packages/storefront/`.
-> See the root [`AGENTS.md`](../../AGENTS.md) for project-wide guidance.
+> This file provides context for AI coding assistants working in `packages/storefront/`. See the root
+> [`AGENTS.md`](../../AGENTS.md) for project-wide guidance.
 
 ## Overview
 
-This package contains the **Next.js documentation site** for the Porsche Design System. It demonstrates best-practice accessible usage of PDS components and must comply with **WCAG 2.2 AA**.
+This package contains the **Next.js documentation site** for the Porsche Design System. It demonstrates best-practice
+accessible usage of PDS components and must comply with **WCAG 2.2 AA**.
 
 ## Tech Stack
 
@@ -39,7 +40,9 @@ npm run test:vrt:storefront
 import { PButton, PLink } from '@porsche-design-system/components-react/ssr';
 
 // ❌ Avoid re-inventing primitives like this:
-<div onClick={handleClick} role="button">Click me</div>
+<div onClick={handleClick} role="button">
+  Click me
+</div>;
 ```
 
 - Use `@porsche-design-system/components-react/ssr` for UI primitives
@@ -47,12 +50,12 @@ import { PButton, PLink } from '@porsche-design-system/components-react/ssr';
 
 ## Keyboard Accessibility (Mandatory)
 
-| Requirement     | Implementation                                                              |
-| --------------- | --------------------------------------------------------------------------- |
-| Tab-reachable   | All interactive elements reachable via Tab                                  |
-| No traps        | Users can always Tab out; overlays return focus to trigger on close         |
-| Route changes   | Avoid focus loss on client-side navigation; consider moving focus to main heading |
-| Standard keys   | `Enter`/`Space` for buttons; `Escape` to close dialogs                      |
+| Requirement   | Implementation                                                                    |
+| ------------- | --------------------------------------------------------------------------------- |
+| Tab-reachable | All interactive elements reachable via Tab                                        |
+| No traps      | Users can always Tab out; overlays return focus to trigger on close               |
+| Route changes | Avoid focus loss on client-side navigation; consider moving focus to main heading |
+| Standard keys | `Enter`/`Space` for buttons; `Escape` to close dialogs                            |
 
 ## Focus Styling (Mandatory)
 
@@ -63,7 +66,9 @@ import { PButton, PLink } from '@porsche-design-system/components-react/ssr';
 
 ```css
 /* ❌ Never do this globally */
-*:focus { outline: none; }
+*:focus {
+  outline: none;
+}
 
 /* ✅ Prefer :focus-visible with compliant indicator */
 button:focus-visible {
@@ -79,12 +84,12 @@ button:focus-visible {
 
 ## MDX Content Guidelines
 
-| Requirement    | Guidance                                                                    |
-| -------------- | --------------------------------------------------------------------------- |
-| **Link text**  | Provide meaningful link text (avoid "click here", "here", "read more")      |
-| **Images**     | Images must have appropriate `alt` text; decorative images use `alt=""`     |
+| Requirement       | Guidance                                                                 |
+| ----------------- | ------------------------------------------------------------------------ |
+| **Link text**     | Provide meaningful link text (avoid "click here", "here", "read more")   |
+| **Images**        | Images must have appropriate `alt` text; decorative images use `alt=""`  |
 | **Code examples** | Must be accessible by default (correct labels, focus, keyboard behavior) |
-| **Headings**   | Maintain logical heading order (no skipped levels)                          |
+| **Headings**      | Maintain logical heading order (no skipped levels)                       |
 
 ## File Structure
 
@@ -157,23 +162,116 @@ import { componentExampleCustomLogic } from '@porsche-design-system/shared/examp
 
 When you add new interactive examples or components:
 
-| Test Type      | Action                                                          |
-| -------------- | --------------------------------------------------------------- |
-| **Axe checks** | Add/update automated axe tests if new interactive patterns are introduced |
-| **HCM/text zoom VRT** | Ensure new UI doesn't break under forced-colors or 200% zoom |
-| **Keyboard test** | Manually verify Tab order and keyboard operability           |
+| Test Type             | Action                                                                    |
+| --------------------- | ------------------------------------------------------------------------- |
+| **Axe checks**        | Add/update automated axe tests if new interactive patterns are introduced |
+| **HCM/text zoom VRT** | Ensure new UI doesn't break under forced-colors or 200% zoom              |
+| **Keyboard test**     | Manually verify Tab order and keyboard operability                        |
 
 ## Primary Accessibility Reference
 
-Follow the internal accessibility guidance page:
+Follow the internal accessibility guidance pages:
 
-> [`src/app/must-know/accessibility/introduction/page.mdx`](src/app/must-know/accessibility/introduction/page.mdx)
+- [`src/app/must-know/accessibility/introduction/page.mdx`](src/app/must-know/accessibility/introduction/page.mdx) — PDS
+  accessibility approach and testing stages
+- [`src/app/must-know/accessibility/dos-and-donts/page.mdx`](src/app/must-know/accessibility/dos-and-donts/page.mdx) —
+  practical integration do's and don'ts for consumers
 
 It documents expected testing stages:
 
 - AXE-Core automated checks
 - High Contrast Mode (HCM) visual regression tests
 - 200% text zoom visual regression tests
+
+## Accessibility documentation conventions
+
+When adding or updating accessibility documentation in the storefront:
+
+| Topic                          | Guidance                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Central vs component**       | Cross-cutting integration mistakes live on the [Do's and Don'ts](/must-know/accessibility/dos-and-donts) page. Each component Accessibility tab includes its own do/don't list and examples, even when content overlaps.                                                                                                                                                                                                      |
+| **Usage vs Accessibility**     | The Usage tab is for design/UX guidance. The Accessibility tab is for keyboard, ARIA, and technical integration.                                                                                                                                                                                                                                                                                                              |
+| **Code examples**              | Use vanilla-js web component markup (`<p-button>`, kebab-case attributes). Pass ARIA via `aria="{ 'aria-label': '...' }"`.                                                                                                                                                                                                                                                                                                    |
+| **Page structure**             | Keep conceptual guidance in `overview.mdx` under `## Development considerations`, including `### Common do's and don'ts` bullet rules. Anti-pattern/recommended pairs live in `accessibility/examples/`, not in MDX.                                                                                                                                                                                                          |
+| **Do/don't examples**          | Pair each actionable do/don't with an `antiPattern`/`recommended` example pair. Include host-vs-`aria` prop examples for interactive components.                                                                                                                                                                                                                                                                              |
+| **Story-driven examples**      | Colocate each pair under `accessibility/examples/<kebab-case-name>/example.ts`. Export one `<metadataKey>A11yExample` object that `satisfies AccessibilityExample`. Host-level `aria-*` attributes belong in `properties` (e.g. `'aria-haspopup': 'dialog'`). Imperative examples must use a complete cross-framework `ExampleMarkupSample`. |
+| **Snippet, not runnable file** | Accessibility pairs render as bare markup — no HTML document, component shell or SFC blocks — so the anti-pattern and the recommendation stay diffable at a glance. Keep the two sides structurally identical apart from the accessibility difference being taught. |
+| **Naming**                     | Directory is kebab-case, the metadata key is its lower-camelCase form, and the export is `<key>A11yExample`. Preserve word boundaries: `icon-only-…` → `iconOnlyButtonWithoutAccessibleName`, not `icononly-…`. The skill generator validates the key casing and fails the build on a mismatch.                                                                                                                               |
+| **Page composition**           | `page.mdx` renders `<meta.accessibility.overview />`, then `<A11yIntegrationExamples tag="p-…" examples={meta.accessibility.examples} />` (which owns the `## Integration examples` H2), then `<meta.accessibility.tests />`. Every H2 listed in `<TableOfContents>` must exist in `overview.mdx`/`tests.mdx` in the same order. Each pair renders one framework selector driving both of its snippets. |
+| **Comments in snippets**       | Comments are a first-class node: return `{ comment: 'text' }` from the generator (top level or among `children`). It is emitted per framework — `<!-- text -->` for vanilla-js/Angular/Vue, `{/* text */}` for React — so each snippet is valid in the language its code fence claims. Never write a comment as a raw string; multiline strings are rejected outright, so imperative code needs an `ExampleMarkupSample`. |
+| **When to add do/don't**       | Prioritize high-integration-risk components: interactive controls, forms, overlays, and keyboard-heavy widgets (carousel, tabs).                                                                                                                                                                                                                                                                                              |
+
+Example in MDX:
+
+````mdx
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** pass ARIA via the `aria` prop.
+- **Don't** add native `aria-*` attributes on the component host.
+
+## Integration examples
+
+### Short pattern title
+
+❌ Anti-pattern
+
+```js
+<p-button aria-label="Open">Open</p-button>
+```
+
+✅ Recommended
+
+```js
+<p-button aria="{ 'aria-label': 'Open product details' }">Open</p-button>
+```
+````
+
+Register colocated integration examples in the component metadata:
+
+```ts
+import { hiddenLabelWithoutAccessibleNameA11yExample } from './accessibility/examples/hidden-label-without-accessible-name/example';
+
+export const checkboxMeta = {
+  // ...
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
+  // ...
+} satisfies ComponentDocsMeta<'p-checkbox'>;
+```
+
+Define the complete pair in `accessibility/examples/hidden-label-without-accessible-name/example.ts`:
+
+```ts
+import type { AccessibilityExample } from '@/models/accessibilityMeta';
+
+export const hiddenLabelWithoutAccessibleNameA11yExample = {
+  name: 'Hidden label without accessible name',
+  antiPattern: {
+    kind: 'story',
+    story: {
+      generator: () => [{ tag: 'p-checkbox', properties: { name: 'terms', hideLabel: true } }],
+    },
+  },
+  recommended: {
+    kind: 'story',
+    story: {
+      generator: () => [
+        {
+          tag: 'p-checkbox',
+          properties: { name: 'terms', hideLabel: true, label: 'I accept the terms and conditions' },
+        },
+      ],
+    },
+  },
+} satisfies AccessibilityExample;
+```
 
 ## Done Checklist
 
@@ -184,4 +282,3 @@ Before finishing any UI work:
 - [ ] Works in forced-colors (HCM)
 - [ ] Meets WCAG 2.2 AA for semantics, names, and contrast
 - [ ] MDX content uses meaningful link text and appropriate alt text
-

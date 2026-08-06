@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { spinnerMeta } from '@/app/(main)/components/spinner/spinner.meta';
+
+export const metadata = {
+  title: 'Spinner: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Spinner component',
+};
+
+# Spinner <ComponentStatus tagName="p-spinner"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<spinnerMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-spinner" examples={spinnerMeta.accessibility.examples} />
+
+<spinnerMeta.accessibility.tests />

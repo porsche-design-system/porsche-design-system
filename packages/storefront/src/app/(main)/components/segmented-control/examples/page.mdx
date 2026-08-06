@@ -1,0 +1,38 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { segmentedControlMeta } from '@/app/(main)/components/segmented-control/segmented-control.meta';
+
+export const metadata = {
+  title: 'Segmented Control - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Segmented Control component.',
+};
+
+# Segmented Control <ComponentStatus tagName="p-segmented-control"></ComponentStatus>
+
+<TableOfContents
+  headings={[
+    segmentedControlMeta.examples.form.name,
+    segmentedControlMeta.examples.withLabels.name,
+    segmentedControlMeta.examples.slots.name,
+  ]}
+/>
+
+## {segmentedControlMeta.examples.form.name}
+
+<segmentedControlMeta.examples.form.description />
+
+<ComponentExample codeSample={segmentedControlMeta.examples.form.example} />
+
+## {segmentedControlMeta.examples.withLabels.name}
+
+<segmentedControlMeta.examples.withLabels.description />
+
+<ComponentStory story={segmentedControlMeta.examples.withLabels.story} />
+
+## {segmentedControlMeta.examples.slots.name}
+
+<segmentedControlMeta.examples.slots.description />
+
+<ComponentStory story={segmentedControlMeta.examples.slots.story} />

@@ -43,10 +43,17 @@ test('should have successfully extracted :root styles', () => {
 });
 
 test.describe('storefront pages', () => {
+  const allUrls = getInternalUrls();
   // filter out files from public/assets directory and ag-grid
-  const internalUrls = getInternalUrls().filter(
+  const internalUrls = allUrls.filter(
     (url) =>
       !url.match(/^\/assets\/.*\.\w{3,4}$/) &&
+      // Skip redirect "base" pages: category/page routes that have no own content and client-side redirect
+      // to their first child (e.g. /components/button/ -> /components/button/configurator/, /developing/vue/
+      // -> /developing/vue/getting-started/). The pre-redirect page has no level-one heading, so scanning it
+      // races the redirect and flakily triggers `page-has-heading-one`. The redirect targets are covered as
+      // their own URLs. A base page is any url (except home) that is a strict prefix of another internal url.
+      !(url !== '/' && allUrls.some((other) => other !== url && other.startsWith(url))) &&
       !url.includes('/ag-grid/theme') &&
       // Changelog has wrong heading order
       !url.includes('/news/changelog/') &&
@@ -73,10 +80,21 @@ test.describe('storefront pages', () => {
         await gotoUrl(page, url);
 
         if (scheme === 'dark') {
-          await page.getByText('Open sidebar').click();
+          const settingsButton = page
+            .locator('p-button[slot="header-end"]')
+            .filter({ hasText: 'Open settings sidebar' });
+          if (await settingsButton.isVisible()) {
+            await settingsButton.click();
+          }
           const themeSelect = page.locator('p-select[name="theme"]').first();
           await enableDarkMode(page, themeSelect);
         }
+
+        await page.evaluate(() => (document as any).fonts?.ready); // fonts swapped
+        await page.locator('p-canvas').evaluate((canvas) => {
+          const sb = canvas.shadowRoot?.querySelector('.sidebar--start') as HTMLElement | null;
+          if (sb) sb.scrollTop = 0; // no link tucked under the sticky title
+        });
 
         const accessibilityScanResults = await makeAxeBuilder().analyze();
 

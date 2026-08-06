@@ -67,54 +67,54 @@ const propTypes: PropTypes<typeof PinCode> = {
 export class PinCode {
   @Element() public host!: HTMLElement;
 
-  /** Text content for a user-facing label. */
+  /** Sets the visible label text displayed above the pin code fields to identify their purpose. */
   @Prop() public label?: string = '';
 
-  /** Supplementary text providing more context or explanation for the pin code. */
+  /** Sets a supplementary description displayed below the label to give users additional guidance about the pin code. */
   @Prop() public description?: string = '';
 
-  /** Name of the control. */
+  /** Sets the name of the control submitted with the form data to identify the pin code value on the server. */
   @Prop({ reflect: true }) public name?: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** Number of characters of the Pin Code. */
+  /** Sets the number of individual input fields rendered, determining how many characters the pin code consists of. */
   @Prop() public length?: PinCodeLength = 4;
 
-  /** Shows or hides the label and description. For better accessibility, it is recommended to show the label. */
+  /** Hides the visible label and description while keeping them accessible to screen readers. Supports responsive breakpoint values. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** The validation state. */
+  /** Sets the validation state of the pin code, which controls its visual appearance and feedback message style (`none`, `success`, `error`). */
   @Prop() public state?: PinCodeState = 'none';
 
-  /** Disables the Pin Code. No events will be triggered while disabled state is active. */
+  /** Prevents user interaction with all pin code fields and blocks events while the component is disabled. */
   @Prop({ mutable: true }) public disabled?: boolean = false;
 
-  /** Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active. */
+  /** Disables the pin code fields and shows a loading spinner to indicate an ongoing background operation. */
   @Prop() public loading?: boolean = false;
 
-  /** Marks the Pin Code as required. */
+  /** Marks the pin code as required so the form cannot be submitted until all fields are filled. */
   @Prop() public required?: boolean = false;
 
-  /** The message styled depending on validation state. */
+  /** Sets the validation feedback message displayed below the pin code when `state` is `success` or `error`. */
   @Prop() public message?: string = '';
 
-  /** Pin Code type. */
+  /** Controls whether the individual input fields mask their content as password dots (`password`) or show digits (`number`). */
   @Prop() public type?: PinCodeType = 'number';
 
-  /** Sets the initial value of the Pin Code. */
+  /** Sets the current concatenated value of all pin code fields and allows setting the initial value. */
   @Prop({ mutable: true }) public value?: string | number | null = '';
 
-  /** Displays the pin code in compact mode. */
+  /** Reduces the pin code field height and spacing for use in dense layouts where vertical space is limited. */
   @Prop() public compact?: boolean = false;
 
-  /** The id of a form element the pin-code should be associated with. */
+  /** Associates the pin code with a form element by its ID when it is not a direct descendant of that form. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Emitted when the pin-code has lost focus. */
+  /** Emitted when the pin code component loses focus after the user finishes entering characters. */
   @Event({ bubbles: false }) public blur: EventEmitter<void>;
 
-  /** Emitted when the input is changed. */
+  /** Emitted when the pin code value changes as the user types, carrying the new concatenated value in the event detail. */
   @Event({ bubbles: true }) public change: EventEmitter<PinCodeChangeEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;

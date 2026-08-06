@@ -28,7 +28,6 @@ const getFlyoutScroller = (page: Page) => page.locator('p-flyout dialog .scrolle
 const getHeader = (page: Page) => page.locator('p-flyout slot[name="header"]');
 const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss');
-const getFlyoutDismissButtonReal = (page: Page) => page.locator('p-flyout .dismiss button');
 const getBody = (page: Page) => page.locator('body');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
@@ -137,7 +136,7 @@ const removeHeaderSlot = async (host: Locator) => {
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
+  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('BUTTON');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
@@ -188,7 +187,7 @@ test('should have correct transform when opened and dismissed', async ({ page })
 
   await openFlyout(page);
 
-  await expect(getFlyoutScroller(page)).toHaveCSS('transform', 'none');
+  await expect(getFlyoutScroller(page)).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
 
   await dismissFlyout(page);
 
@@ -242,10 +241,9 @@ test.describe('can be dismissed', () => {
 
   test('should be closable via x button', async ({ page }) => {
     const dismissBtn = getFlyoutDismissButton(page);
-    const dismissBtnReal = getFlyoutDismissButtonReal(page);
     expect(dismissBtn).not.toBeNull();
 
-    expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
+    expect(await getAttribute(dismissBtn, 'type')).toBe('button');
 
     await dismissBtn.click();
     await waitForStencilLifecycle(page);
@@ -276,6 +274,19 @@ test.describe('can be dismissed', () => {
     await page.mouse.up();
 
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
+  });
+
+  test('should not be dismissed if mousedown inside flyout and mouseup on backdrop (drag out)', async ({ page }) => {
+    const viewportSize = page.viewportSize();
+    await page.mouse.move(viewportSize.width - 1, viewportSize.height / 2);
+    await page.mouse.down();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
+
+    await page.mouse.move(5, 5);
+    await page.mouse.up();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up on backdrop').toBe(0);
   });
 
   skipInBrowsers(['webkit'], () => {
@@ -605,9 +616,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -639,7 +649,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {
@@ -668,17 +678,6 @@ test.describe('lifecycle', () => {
         }
       )
       .toBe(1);
-    await expect
-      .poll(
-        async () => {
-          const status = await getLifecycleStatus(page);
-          return status.componentDidLoad['p-button'];
-        },
-        {
-          message: 'componentDidLoad: p-button',
-        }
-      )
-      .toBe(1); // includes p-icon
 
     await expect
       .poll(
@@ -690,7 +689,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {
@@ -748,17 +747,6 @@ test.describe('lifecycle', () => {
         }
       )
       .toBe(1);
-    await expect
-      .poll(
-        async () => {
-          const status = await getLifecycleStatus(page);
-          return status.componentDidLoad['p-button'];
-        },
-        {
-          message: 'componentDidLoad: p-button',
-        }
-      )
-      .toBe(1); // includes p-icon
 
     await expect
       .poll(
@@ -770,7 +758,7 @@ test.describe('lifecycle', () => {
           message: 'componentDidLoad: all',
         }
       )
-      .toBe(3);
+      .toBe(1);
     await expect
       .poll(
         async () => {
@@ -917,7 +905,7 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveCSS('--p-flyout-sticky-top', '107px');
+    await expect(host).toHaveCSS('--p-flyout-sticky-top', '203px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 

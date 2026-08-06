@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { switchMeta } from '@/app/(main)/components/switch/switch.meta';
+
+export const metadata = {
+  title: 'Switch: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Switch component',
+};
+
+# Switch <ComponentStatus tagName="p-switch"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<switchMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-switch" examples={switchMeta.accessibility.examples} />
+
+<switchMeta.accessibility.tests />

@@ -14,7 +14,7 @@ export default [
       entryFileNames: '[name].cjs',
       preserveModules: true,
     },
-    plugins: [typescript()],
+    plugins: [typescript({ exclude: ['projects/**/*', '**/*.spec.ts'] })],
   },
   {
     input,
@@ -26,7 +26,7 @@ export default [
       preserveModulesRoot: 'src',
     },
     plugins: [
-      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src', exclude: ['**/*.spec.ts'] }),
+      typescript({ declaration: true, declarationDir: `${outputDir}/esm`, rootDir: 'src', exclude: ['projects/**/*', '**/*.spec.ts'] }),
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
@@ -34,14 +34,10 @@ export default [
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
           sideEffects: false,
-          exports: {
-            // Default export (JS)
-            '.': {
-              types: './esm/index.d.ts',
-              import: './esm/index.mjs',
-              default: './cjs/index.cjs',
-            },
-          },
+          // Note: no `exports` field here on purpose. This package.json is copied into the
+          // wrapper packages (components-js/react/vue) as a nested folder, where the parent's
+          // root `exports` map governs resolution. A nested `exports` field would be ignored
+          // and triggers publint's NESTED_PACKAGE_JSON_FIELD_IGNORED warning.
         },
       }),
     ],

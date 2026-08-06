@@ -34,6 +34,20 @@ const createManifestAndCopyFonts = (files: string[]): void => {
     console.log(`Font "${name}${ext}" copied.`);
   }
 
+  // Fallback: for any "*Bold" entry without a matching "*SemiBold" entry,
+  // alias the semi-bold key to the bold file so consumers can rely on a
+  // semi-bold weight being available for every script.
+  for (const [key, filename] of Object.entries(manifest)) {
+    // Match keys ending in "Bold" but not "SemiBold" (negative lookbehind).
+    const boldMatch = key.match(/^(.*?)(?<!Semi)Bold$/);
+    if (!boldMatch) continue;
+    const semiBoldKey = `${boldMatch[1]}SemiBold`;
+    if (!(semiBoldKey in manifest)) {
+      manifest[semiBoldKey] = filename;
+      console.log(`Font "${semiBoldKey}" aliased to "${key}" (no dedicated semi-bold variant).`);
+    }
+  }
+
   fs.writeFileSync(
     path.normalize('./index.ts'),
     `export const CDN_BASE_PATH = '/${CDN_BASE_PATH_FONTS}';

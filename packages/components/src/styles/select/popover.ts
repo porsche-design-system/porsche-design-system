@@ -1,7 +1,7 @@
 import type { JssStyle, Styles } from 'jss';
 import { OPTION_LIST_SAFE_ZONE } from '../../utils';
+import { colorCanvas, colorContrastLow, durationSm, easeInOut, radiusXl, ref } from '@porsche-design-system/stylesheets';
 import { cssVariableAnimationDuration } from '../common-styles';
-import { colorCanvas, colorContrastLow, durationSm, easeInOut, legacyRadiusMedium, radiusXl } from '../css-variables';
 
 const keyframesName = 'fade-in';
 
@@ -19,8 +19,8 @@ export const getPopoverKeyframesStyles: Styles = {
 export const getPopoverJssStyle = (isOpen: boolean, cssVarScalingName: string, optionHeight: 40 | 44): JssStyle => {
   const minHeightOptionList = `calc(${4.5 * (optionHeight + 8) + 6 + 2}px)`; // 4.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
 
-  const padding = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
-  const gap = `calc(11.2px * (var(${cssVarScalingName}) - 0.64285714) + 4px)`;
+  const padding = `calc(11.2px * (${ref(cssVarScalingName)} - 0.64285714) + 4px)`;
+  const gap = `calc(11.2px * (${ref(cssVarScalingName)} - 0.64285714) + 4px)`;
 
   return {
     all: 'unset',
@@ -35,11 +35,11 @@ export const getPopoverJssStyle = (isOpen: boolean, cssVarScalingName: string, o
     overflow: 'hidden auto',
     scrollbarWidth: 'thin', // firefox
     scrollbarColor: 'auto', // firefox
-    animation: `var(${cssVariableAnimationDuration}, ${durationSm}) ${keyframesName} ${easeInOut} forwards`,
+    animation: `${ref(cssVariableAnimationDuration, ref(durationSm))} ${keyframesName} ${ref(easeInOut)} forwards`,
     filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.15))',
-    background: colorCanvas,
-    border: `1px solid ${colorContrastLow}`,
-    borderRadius: `var(${legacyRadiusMedium}, ${radiusXl})`,
+    background: ref(colorCanvas),
+    border: `1px solid ${ref(colorContrastLow)}`,
+    borderRadius: ref(radiusXl),
     '&:not(:popover-open)': {
       display: 'none',
     },

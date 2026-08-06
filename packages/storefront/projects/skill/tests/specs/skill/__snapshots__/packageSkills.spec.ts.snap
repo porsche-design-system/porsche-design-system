@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`package skill registry > renders the package sections 1`] = `
+{
+  "stylesheets": "The required global stylesheets every component depends on (CSS variables, font-face, normalize/reset) and light/dark theming via the \`.scheme-*\` classes and \`color-scheme\`. Open this whenever installing or setting up PDS, before rendering any component, when components look unstyled or use the wrong font/colors, or for anything about themes, dark mode, or color scheme — it applies to most PDS work. See [stylesheets.md](references/stylesheets.md) for the exact files, their import order and the full \`.scheme-*\` list.
+
+**Theming is one mechanism — CSS \`color-scheme\`, nothing else** (the \`.scheme-*\` mechanics live in [stylesheets.md](references/stylesheets.md)). There is **no** \`theme\` prop — not on \`PorscheDesignSystemProvider\` (it takes only \`prefix\` and \`cdn\`) and not on components. A \`theme="light|dark|auto"\` prop existed in earlier majors and was removed; if you recall one, it is a stale prior — do not add it, verify against the installed types.",
+  "styling": "The Porsche Design System offers a ready-made integration for four styling solutions. Use them to build layout and custom components or patterns not yet available in the component library — typography, surfaces, boxes, the layout grid, spacing and responsive breakpoints. They are independent of the components, but build on the same design tokens and the same \`color-scheme\` (light/dark) theming (see the **Stylesheets** section above), so custom UI shares the exact palette, spacing and typography as PDS components. Pick one solution per project and open its reference for setup and the full catalog.
+
+Note: the code examples in the component references use PDS Tailwind utility classes (e.g. \`flex\`, \`flex-col\`, \`gap-fluid-sm\`) for layout. These only take effect with the Tailwind CSS solution installed (\`references/styles/tailwindcss.md\`) — without it they are inert, so replace them with your own layout CSS.
+
+| Styling solution | Use this when | Reference |
+| --- | --- | --- |
+| Tailwind CSS | utility-first styling on a PDS Tailwind v4 theme | [tailwindcss.md](references/styles/tailwindcss.md) |
+| SCSS | Sass variables and mixins under the \`pds\` namespace | [scss.md](references/styles/scss.md) |
+| vanilla-extract | typed tokens and utilities in \`*.css.ts\` files | [vanilla-extract.md](references/styles/vanilla-extract.md) |
+| Emotion | tokens and utilities in \`css\`/\`styled\` styles | [emotion.md](references/styles/emotion.md) |",
+  "tokens": "Design tokens — the source values for color, spacing, typography, motion, breakpoints and more, provided as JS constants. The entire system is built on these tokens: the global stylesheets, the components and the custom styling themes all depend on them. They can also be used standalone to support other styling solutions or to build custom UI directly. Open [tokens.md](references/tokens.md) when using tokens directly in custom UI.",
+}
+`;

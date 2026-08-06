@@ -1,7 +1,4 @@
-import type * as fromMotionType from '@porsche-design-system/emotion/dist/esm/motion';
-import type { PropertiesHyphen } from 'csstype';
-import type { JssStyle } from 'jss';
-import { alphaDisabled } from './alpha-disabled';
+import type * as fromMotionType from '@porsche-design-system/emotion';
 import {
   colorFocus,
   durationLg,
@@ -11,7 +8,11 @@ import {
   easeIn,
   easeInOut,
   easeOut,
-} from './css-variables';
+  ref,
+} from '@porsche-design-system/stylesheets';
+import type { PropertiesHyphen } from 'csstype';
+import type { JssStyle } from 'jss';
+import { alphaDisabled } from './alpha-disabled';
 import { forcedColorsMediaQuery } from './media-query/forced-colors-media-query';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
@@ -20,16 +21,16 @@ type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapit
 export type MotionEasingKey = WithoutMotionEasingPrefix<keyof typeof fromMotionType>;
 
 export const motionDurationMap: Record<MotionDurationKey, string> = {
-  short: durationSm,
-  moderate: durationMd,
-  long: durationLg,
-  veryLong: durationXl,
+  short: ref(durationSm),
+  moderate: ref(durationMd),
+  long: ref(durationLg),
+  veryLong: ref(durationXl),
 };
 
 export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
-  base: easeInOut,
-  in: easeIn,
-  out: easeOut,
+  base: ref(easeInOut),
+  in: ref(easeIn),
+  out: ref(easeOut),
   linear: 'linear',
 };
 
@@ -58,7 +59,7 @@ export const getAnimation = (
   duration: MotionDurationKey = 'short',
   easing: keyof typeof motionEasingMap = 'base'
 ): string => {
-  return `${name} var(${cssVariableAnimationDuration}, ${motionDurationMap[duration]}) ${motionEasingMap[easing]}`;
+  return `${name} ${ref(cssVariableAnimationDuration, motionDurationMap[duration])} ${motionEasingMap[easing]}`;
 };
 
 export const getTransition = (
@@ -67,9 +68,9 @@ export const getTransition = (
   easing: keyof typeof motionEasingMap = 'base',
   delay?: MotionDurationKey
 ): string => {
-  return `${cssProperty} var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}) ${
+  return `${cssProperty} ${ref(cssVariableTransitionDuration, motionDurationMap[duration])} ${
     motionEasingMap[easing]
-  }${delay ? ` var(${cssVariableTransitionDuration}, ${motionDurationMap[delay]})` : ''}`;
+  }${delay ? ` ${ref(cssVariableTransitionDuration, motionDurationMap[delay])}` : ''}`;
 };
 
 export const addImportantToRule = (value: any): string => `${value} !important`;
@@ -90,7 +91,7 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
 
 export const getFocusBaseStyles = (offset: number = 2) => {
   return {
-    outline: `2px solid ${colorFocus}`,
+    outline: `2px solid ${ref(colorFocus)}`,
     outlineOffset: `${offset}px`,
     ...forcedColorsMediaQuery({
       outlineColor: 'Highlight',

@@ -1,0 +1,19 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
+import { paginationMeta } from '@/app/(main)/components/pagination/pagination.meta';
+
+export const metadata = {
+  title: 'Pagination: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Pagination component',
+};
+
+# Pagination <ComponentStatus tagName="p-pagination"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
+
+<paginationMeta.accessibility.overview />
+
+<A11yIntegrationExamples tag="p-pagination" examples={paginationMeta.accessibility.examples} />
+
+<paginationMeta.accessibility.tests />

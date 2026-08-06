@@ -1,10 +1,5 @@
-import {
-  addImportantToEachRule,
-  forcedColorsMediaQuery,
-  hostHiddenStyles,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
-import { spacingFluidLg } from '../../styles/css-variables';
+import { ref, spacingFluidLg } from '@porsche-design-system/stylesheets';
+import { addImportantToEachRule, forcedColorsMediaQuery, hostHiddenStyles } from '../../styles';
 import { getCss } from '../../utils';
 import {
   dialogBorderRadius,
@@ -49,7 +44,6 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
           ...hostHiddenStyles,
         }),
       },
-      ...preventFoucOfNestedElementsStyles,
       slot: {
         ...getSlotJssStyle(),
         '&:not([name])': getSlotMainJssStyle(),
@@ -58,7 +52,7 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
           zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
         },
       },
-      ...getFunctionalComponentDialogBaseStyles(isOpen, 'shading'),
+      dialog: getFunctionalComponentDialogBaseStyles(isOpen, 'shading'),
     },
     scroller: getScrollerJssStyle('fullscreen'),
     sheet: {
@@ -67,15 +61,16 @@ export const getComponentCss = (isOpen: boolean, background: SheetBackground, ha
       ...getDialogTransitionJssStyle(isOpen, '^'),
       width: '100%',
       alignSelf: 'flex-end',
-      marginBlockStart: spacingFluidLg, // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
+      marginBlockStart: ref(spacingFluidLg), // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
       borderTopLeftRadius: dialogBorderRadius,
       borderTopRightRadius: dialogBorderRadius,
+      clipPath: `inset(0 round ${dialogBorderRadius} ${dialogBorderRadius} 0 0)`, // round top corners only
       ...forcedColorsMediaQuery({
         borderTop: '2px solid CanvasText',
       }),
     },
     ...(hasDismissButton && {
-      dismiss: getDialogDismissButtonJssStyle(),
+      dismiss: getDialogDismissButtonJssStyle(background),
     }),
   });
 };
