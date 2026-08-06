@@ -202,8 +202,13 @@ package manager when yarn is not installed).
 Declaring the binaries explicitly forces npm to record all eight entries in `package-lock.json` with their `resolved`
 and `integrity` fields, so the lockfile stays complete even after the regenerate step
 ([Dependency updates](#dependency-updates) step 5: delete `package-lock.json` and run `npm install`). On any given
-machine npm still installs only the matching binary; the rest are recorded but skipped. Because the range mirrors
-`next`, `syncpack` (`npm run npm:update`) keeps them in lockstep when `next` is upgraded.
+machine npm still installs only the matching binary; the rest are recorded but skipped.
+
+> **Verify the range manually after every `next` bump.** `syncpack` treats `@next/swc-*` as eight independent packages —
+> it does **not** couple them to `next`, so they silently drift out of sync if they are not selected in the same
+> `npm run npm:update` round (this happened when `next` moved to `^16.3.0` while the binaries stayed on `^16.2.9`). A
+> stale range still resolves, but it may install SWC binaries/types from a different minor than `next`. Always bump the
+> eight entries in **both** workspaces to the same range as `next`.
 
 ## Held-back dependencies
 

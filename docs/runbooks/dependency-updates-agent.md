@@ -191,6 +191,17 @@ npm install
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).
 
+**If `next` was bumped this round**, also confirm the eight `@next/swc-*` ranges still match `next` in **both**
+workspaces that run `next build` (`packages/storefront` and `packages/components-react/projects/nextjs`). `syncpack`
+does not couple them to `next`, so they drift silently if they are not selected in the same update round:
+
+```bash
+grep -h '"next"\|"@next/swc-' packages/storefront/package.json \
+  packages/components-react/projects/nextjs/package.json | sort -u
+```
+
+All ranges printed must be identical. If not, edit the `optionalDependencies` blocks by hand and re-run `npm install`.
+
 ### 10. Sync the StackBlitz starter templates (npm workspace members)
 
 The four StackBlitz starter templates under
