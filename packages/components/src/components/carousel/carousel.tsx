@@ -37,8 +37,10 @@ import {
   type CarouselSlidesPerPage,
   type CarouselUpdateEventDetail,
   type CarouselWidth,
+  DEFAULT_SLIDE_LABEL,
   getAmountOfPages,
   getLangDirection,
+  getSlideStatusMessage,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
   isInfinitePagination,
@@ -144,6 +146,7 @@ export class Carousel {
   @Event({ bubbles: false }) public update: EventEmitter<CarouselUpdateEventDetail>;
 
   @State() private amountOfPages: number;
+  @State() private slideStatusMessage = '';
 
   private splide: Splide;
   private container: HTMLElement;
@@ -151,6 +154,8 @@ export class Carousel {
   private btnNext: HTMLPButtonPureElement;
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
+  /** Skips the next live-region update when navigation was caused by focusing a slide. */
+  private suppressNextStatusAnnounce = false;
 
   private get parsedSlidesPerPage(): BreakpointValues<CarouselSlidesPerPage> | number | 'auto' {
     return parseJSON(this.slidesPerPage) as BreakpointValues<CarouselSlidesPerPage> | number | 'auto';
@@ -214,6 +219,7 @@ export class Carousel {
       mediaQuery: 'min',
       speed: Number.parseFloat(carouselTransitionDuration) * 1000,
       gap: gridGap,
+      live: false,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(
         this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<CarouselSlidesPerPage> | 'auto', string>
@@ -350,6 +356,9 @@ export class Carousel {
             <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
           </div>
         )}
+        <div class="slide-status" aria-live="polite" aria-atomic="true">
+          {this.slideStatusMessage}
+        </div>
       </Host>
     );
   }
@@ -366,6 +375,15 @@ export class Carousel {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
       updatePagination(this.paginationEl, this.getPageCount(), activeIndex);
       this.update.emit({ activeIndex, previousIndex });
+    });
+
+    splide.on('moved', (activeIndex): void => {
+      if (this.suppressNextStatusAnnounce) {
+        this.suppressNextStatusAnnounce = false;
+        return;
+      }
+      const slideLabel = splide.options.i18n?.slideLabel ?? DEFAULT_SLIDE_LABEL;
+      this.slideStatusMessage = getSlideStatusMessage(slideLabel, activeIndex, this.getPageCount());
     });
 
     splide.mount();
@@ -422,8 +440,10 @@ export class Carousel {
 
     if (splideIndex !== slideIndexOfFocusedElement) {
       if (slideIndexOfFocusedElement > splideIndex && (!slideIsVisible || this.focusOnCenterSlide)) {
+        this.suppressNextStatusAnnounce = true;
         slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       } else if (slideIndexOfFocusedElement < splideIndex) {
+        this.suppressNextStatusAnnounce = true;
         slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       }
     }
@@ -431,11 +451,15 @@ export class Carousel {
 
   private observeSlides(): void {
     // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
-    observeChildren(this.container, () => {
-      for (const el of this.splideSlides) {
-        el.removeAttribute('aria-hidden');
-        el.setAttribute('tabindex', '0');
-      }
-    }, ['aria-hidden']);
+    observeChildren(
+      this.container,
+      () => {
+        for (const el of this.splideSlides) {
+          el.removeAttribute('aria-hidden');
+          el.setAttribute('tabindex', '0');
+        }
+      },
+      ['aria-hidden']
+    );
   }
 }
