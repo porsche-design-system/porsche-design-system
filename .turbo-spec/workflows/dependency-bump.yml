@@ -10,8 +10,12 @@ setup_command: "npm ci"
 setup_command_timeout: "20m"
 stages:
   - name: update_dependencies
-    orchestrator: bumpy_mc_bumpface
+    orchestrator: implementation
     pre_command: "npm run npm:update:all"
+
+  - name: resolve_dependencies
+    orchestrator: bumpy_mc_bumpface
+    depends_on: [update_dependencies]
     agents:
       - id: dependency_updater
         type: dependency_updater
@@ -56,7 +60,7 @@ stages:
 
   - name: revalidate_overrides
     orchestrator: implementation
-    depends_on: [update_dependencies]
+    depends_on: [resolve_dependencies]
     timeout: "220m"
     pre_command: "node .turbo-spec/scripts/revalidate-overrides.mjs --self-test && node .turbo-spec/scripts/revalidate-overrides.mjs run"
     hook_timeout: "180m"
