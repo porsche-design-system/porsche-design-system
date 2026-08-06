@@ -177,11 +177,22 @@ stages:
                 - sh
                 - -c
                 - >-
-                  npm run build; status=$?;
+                  log="$(mktemp)" || exit 2;
+                  npm run build >"$log" 2>&1; status=$?;
+                  cat "$log";
+                  if test "$status" -ne 0; then
+                  printf '\n--- build failure summary ---\n' >&2;
+                  if ! sed -n '/error during build:/,$p' "$log" |
+                  head -n 35 | grep . >&2; then
+                  tail -n 35 "$log" >&2;
+                  fi;
+                  fi;
                   git restore --
                   packages/components-react/projects/nextjs/next-env.d.ts ||
                   exit 2;
-                  exit "$status"
+                  rm -f "$log" || exit 2;
+                  if test "$status" -eq 0; then exit 0; fi;
+                  exit 1
             - name: components-unit
               command: [npm, run, "test:unit:components"]
             - name: dependency-metadata-after

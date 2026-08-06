@@ -433,6 +433,73 @@ git commit -m "fix(turbospec): keep CI repair in verification" \
   -m "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
 ```
 
+### Task 4: Fix Full-Workflow Validation Findings
+
+**Files:**
+
+- Modify: `.syncpackrc.json`
+- Modify: `.turbo-spec/scripts/revalidate-overrides.mjs`
+- Modify: `.turbo-spec/workflows/dependency-bump.yml`
+- Modify: `docs/superpowers/specs/2026-08-06-dependency-bump-ci-verification-design.md`
+- Modify: `docs/superpowers/plans/2026-08-06-dependency-bump-ci-verification.md`
+
+**Interfaces:**
+
+- Consumes: Syncpack export formatting, the override helper's process-group runner, and `script_gate` retry diagnostics.
+- Produces: semantic export ordering, complete helper output, and actionable build feedback.
+
+- [ ] **Step 1: Reproduce all three live-run failures**
+
+Run the complete blueprint in a disposable TurboSpec PR-mode harness. Confirm:
+
+1. A 1 MiB `runCommand` stdout probe returns only 65,536 bytes.
+2. `npm:format:fix` moves `sass` and `style` behind JavaScript export conditions.
+3. The build retry reason omits `Can't find stylesheet to import`.
+
+- [ ] **Step 2: Flush process-runner output**
+
+Add a guarded `finish(code)` to `PROCESS_GROUP_RUNNER`. Write stdout, then stderr, and set `process.exitCode` only in
+the final callback. Route child error, timeout, overflow, signal, and normal close through it.
+
+Add a self-test that sends 1 MiB through the real `runCommand` and asserts all 1,048,576 bytes return.
+
+- [ ] **Step 3: Preserve semantic conditional exports**
+
+Add Syncpack's native opt-out:
+
+```json
+"sortExports": []
+```
+
+Restore representative `sass` and `style` conditions, run `npm:format:fix`, then assert both remain first and
+`npm:format` passes.
+
+- [ ] **Step 4: Append actionable build diagnostics**
+
+Capture `npm run build` output in a temporary file. Preserve normal output, normalize every completed build failure to
+exit `1`, and reserve exit `2` for wrapper setup or cleanup failures. On failure, append at most 35 lines beginning at
+`error during build:` to stderr; fall back to the final 35 lines when that marker is absent. Remove the temporary file
+and restore `next-env.d.ts`.
+
+- [ ] **Step 5: Verify targeted fixes**
+
+```bash
+node .turbo-spec/scripts/revalidate-overrides.mjs --self-test
+npx biome check .turbo-spec/scripts/revalidate-overrides.mjs
+uv run --project /Users/FNN57BH/Developer/turbo-spec \
+  --directory "$PWD" \
+  workflow-skeleton validate .turbo-spec/workflows/dependency-bump.yml
+git --no-pager diff --check
+```
+
+In a disposable bumped tree, verify `build:styles` passes with `sortExports: []`. Reintroduce the bad export order and
+assert the real build gate's retry reason contains `Can't find stylesheet to import`.
+
+- [ ] **Step 6: Run the complete blueprint from a fresh clone**
+
+Use TurboSpec's real `--create-pr` path with only GitHub PR creation and pushes stubbed. Require all five stages,
+including `verify_ci`, to pass and preserve the implementation worktree.
+
 ## Final Verification
 
 ```bash
@@ -444,6 +511,8 @@ npx prettier --check \
   .turbo-spec/system_prompts/dependency-ci-repair.md \
   docs/superpowers/specs/2026-08-06-dependency-bump-ci-verification-design.md \
   docs/superpowers/plans/2026-08-06-dependency-bump-ci-verification.md
+node .turbo-spec/scripts/revalidate-overrides.mjs --self-test
+npx biome check .turbo-spec/scripts/revalidate-overrides.mjs
 git --no-pager diff --check
 git --no-pager status --short
 ```
