@@ -3,7 +3,7 @@ import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, validateProps } from '../../utils';
 import { getComponentCss } from './ai-tag-styles';
 import {
-  AI_TAG_LOCALES_ACCEPTED,
+  AI_TAG_LOCALES,
   AI_TAG_VARIANTS,
   type AiTagLocale,
   type AiTagVariant,
@@ -11,7 +11,7 @@ import {
 } from './ai-tag-utils';
 
 const propTypes: PropTypes<typeof AiTag> = {
-  locale: AllowedTypes.oneOf<AiTagLocale>(AI_TAG_LOCALES_ACCEPTED),
+  locale: AllowedTypes.oneOf<AiTagLocale>(AI_TAG_LOCALES),
   variant: AllowedTypes.oneOf<AiTagVariant>(AI_TAG_VARIANTS),
 };
 

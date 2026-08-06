@@ -1,8 +1,8 @@
 import { getAiTagLanguage } from './ai-tag-locales';
 
 export {
-  AI_TAG_LOCALES_ACCEPTED,
-  AI_TAG_LOCALES_ACCEPTED_DEPRECATED,
+  AI_TAG_LOCALES,
+  AI_TAG_LOCALES_DEPRECATED,
   type AiTagLocale,
   getAiTagLanguage,
   MARKET_LOCALES,

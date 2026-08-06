@@ -1,7 +1,7 @@
 import {
   AI_TAG_ICON_PATH,
-  AI_TAG_LOCALES_ACCEPTED,
-  AI_TAG_LOCALES_ACCEPTED_DEPRECATED,
+  AI_TAG_LOCALES,
+  AI_TAG_LOCALES_DEPRECATED,
   AI_TAG_TRANSLATIONS,
   AI_TAG_VARIANTS,
   type AiTagTranslationLanguage,
@@ -84,23 +84,23 @@ describe('AI_TAG_TRANSLATIONS', () => {
   });
 });
 
-describe('MARKET_LOCALES / AI_TAG_LOCALES_ACCEPTED', () => {
+describe('MARKET_LOCALES / AI_TAG_LOCALES', () => {
   it('should include every MarketLocale and its POSIX twin', () => {
     expect(MARKET_LOCALES).toHaveLength(176);
-    expect(AI_TAG_LOCALES_ACCEPTED).toHaveLength(351); // 176 BCP47 + 175 POSIX (en stays single)
+    expect(AI_TAG_LOCALES).toHaveLength(351); // 176 BCP47 + 175 POSIX (en stays single)
     for (const locale of MARKET_LOCALES) {
-      expect(AI_TAG_LOCALES_ACCEPTED).toContain(locale);
-      expect(AI_TAG_LOCALES_ACCEPTED).toContain(locale.replace(/-/g, '_'));
+      expect(AI_TAG_LOCALES).toContain(locale);
+      expect(AI_TAG_LOCALES).toContain(locale.replace(/-/g, '_'));
     }
   });
 
   it('should mark POSIX underscore forms as deprecated', () => {
-    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toHaveLength(175);
-    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED.every((locale) => locale.includes('_'))).toBe(true);
-    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toContain('en_US');
-    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).toContain('de_DE');
-    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).not.toContain('en');
-    expect(AI_TAG_LOCALES_ACCEPTED_DEPRECATED).not.toContain('en-US');
+    expect(AI_TAG_LOCALES_DEPRECATED).toHaveLength(175);
+    expect(AI_TAG_LOCALES_DEPRECATED.every((locale) => locale.includes('_'))).toBe(true);
+    expect(AI_TAG_LOCALES_DEPRECATED).toContain('en_US');
+    expect(AI_TAG_LOCALES_DEPRECATED).toContain('de_DE');
+    expect(AI_TAG_LOCALES_DEPRECATED).not.toContain('en');
+    expect(AI_TAG_LOCALES_DEPRECATED).not.toContain('en-US');
   });
 
   it('should include language-only en and retained prior locales', () => {
@@ -119,12 +119,12 @@ describe('MARKET_LOCALES / AI_TAG_LOCALES_ACCEPTED', () => {
     expect(MARKET_LOCALES).toContain('zh-HK');
     expect(MARKET_LOCALES).toContain('ka-GE');
     expect(MARKET_LOCALES).toContain('az-AZ');
-    expect(AI_TAG_LOCALES_ACCEPTED).toContain('en');
-    expect(AI_TAG_LOCALES_ACCEPTED).toContain('bg_BG');
+    expect(AI_TAG_LOCALES).toContain('en');
+    expect(AI_TAG_LOCALES).toContain('bg_BG');
   });
 
   it('should not allowlist bare de as language-only', () => {
-    expect(AI_TAG_LOCALES_ACCEPTED).not.toContain('de');
+    expect(AI_TAG_LOCALES).not.toContain('de');
   });
 });
 
@@ -248,6 +248,6 @@ describe('getAiTagTranslation()', () => {
 
   it('should resolve bare de at runtime even when not allowlisted', () => {
     expect(getAiTagTranslation('de').short).toBe('KI');
-    expect(AI_TAG_LOCALES_ACCEPTED).not.toContain('de');
+    expect(AI_TAG_LOCALES).not.toContain('de');
   });
 });
