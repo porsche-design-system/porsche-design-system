@@ -215,6 +215,7 @@
     "npm:format:fix": "syncpack format",
     "npm:outdated": "syncpack update --check --dependencies '!@porsche-design-system/**'",
     "npm:update": "syncpack update --interactive --dependencies '!@porsche-design-system/**'",
+    "npm:verify-lock": "tsx scripts/verify-lockfile.ts",
     "npm:audit": "npm audit",
     "npm:remove": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
     "npm:clean": "npm cache clean --force"

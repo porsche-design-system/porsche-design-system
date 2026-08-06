@@ -233,12 +233,6 @@ jobs:
       - uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'Repair missing oxc-parser native binding'
-        run: |
-          node -e "require('oxc-parser')" || {
-            OXC_PARSER_VERSION=$(node -p "require('./node_modules/oxc-parser/package.json').version");
-            npm i --no-save "@oxc-parser/binding-linux-x64-gnu@$OXC_PARSER_VERSION";
-          }
       - run: npm run test:unit:components-angular:vitest
       - run: npm run test:unit:components-angular:karma-ci
       - run: npm run test:e2e:components-angular

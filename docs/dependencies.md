@@ -20,6 +20,9 @@ across all workspaces.
    works.
 5. Once everything is updated, delete `package-lock.json` and recreate it by running `npm install` again, so the
    transitive dependencies of our dependencies are refreshed too.
+6. Run `npm run npm:verify-lock` to make sure the regenerated lockfile still records **all** platform-specific native
+   bindings — see
+   [Platform-specific native bindings in the lockfile](#platform-specific-native-bindings-in-the-lockfile).
 
 Some dependencies (Playwright, Stencil, internal packages) are intentionally excluded from this flow and updated
 manually — see [Held-back dependencies](#held-back-dependencies). Angular **versions** now go through this normal
@@ -33,15 +36,16 @@ as its CLI changed across major versions). Its behavior is configured centrally 
 [`.syncpackrc.json`](../.syncpackrc.json) (JSON with `$schema` for editor validation, matching our `biome.json`
 convention). The following root scripts help keep dependency versions consistent across the workspaces:
 
-| Script                   | Purpose                                                                         |
-| ------------------------ | ------------------------------------------------------------------------------- |
-| `npm run npm:lint`       | Lint `prod` + `dev` dependency versions for mismatches across workspaces.       |
-| `npm run npm:lint:fix`   | Fix mismatched versions so all workspaces use the same version.                 |
-| `npm run npm:list`       | List every dependency and its version usage across workspaces.                  |
-| `npm run npm:format`     | Check that each `package.json` is formatted (field order, sorting).             |
-| `npm run npm:format:fix` | Apply `package.json` formatting.                                                |
-| `npm run npm:outdated`   | Check the npm registry for newer versions (excludes held-back deps, see below). |
-| `npm run npm:update`     | Interactively pick updates to apply (excludes held-back deps, see below).       |
+| Script                    | Purpose                                                                         |
+| ------------------------- | ------------------------------------------------------------------------------- |
+| `npm run npm:lint`        | Lint `prod` + `dev` dependency versions for mismatches across workspaces.       |
+| `npm run npm:lint:fix`    | Fix mismatched versions so all workspaces use the same version.                 |
+| `npm run npm:list`        | List every dependency and its version usage across workspaces.                  |
+| `npm run npm:format`      | Check that each `package.json` is formatted (field order, sorting).             |
+| `npm run npm:format:fix`  | Apply `package.json` formatting.                                                |
+| `npm run npm:outdated`    | Check the npm registry for newer versions (excludes held-back deps, see below). |
+| `npm run npm:update`      | Interactively pick updates to apply (excludes held-back deps, see below).       |
+| `npm run npm:verify-lock` | Verify `package-lock.json` records all platform-specific native bindings.       |
 
 The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
 from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
@@ -184,6 +188,46 @@ bundler used everywhere else in the monorepo, via the shared factory
 `tsup --dts` used internally). Each project's `build:lib` runs `rollup -c` against a tiny `rollup.config.mjs` that calls
 the factory. This replaced the previous `tsup` setup, removing `tsup` (and its vulnerable transitive `esbuild`) from the
 dependency tree.
+
+## Platform-specific native bindings in the lockfile
+
+Many build tools ship their native binary as a set of platform-specific packages declared as `optionalDependencies`
+(e.g. `oxc-parser` → `@oxc-parser/binding-linux-x64-gnu`, `esbuild` → `@esbuild/darwin-arm64`, `sharp`, `lmdb`,
+`@tailwindcss/oxide`, `@rolldown/binding-*`, `@next/swc-*`). A **complete** lockfile records **all** of them; npm then
+installs only the one matching the current platform and skips the rest.
+
+npm has a long-standing bug ([npm/cli#4828](https://github.com/npm/cli/issues/4828)): during an **incremental**
+`npm install` (i.e. one that updates an existing `package-lock.json`) it persists only the binding matching the current
+platform — typically `*-darwin-arm64` on our machines — and prunes the other platforms. The pruned entries are also
+written **without** `resolved`/`integrity`, which is the easiest way to spot the problem.
+
+The failure mode is nasty because it is **silent at install time**: `npm ci` on Linux CI does not error on a missing
+_optional_ dependency, so the build only fails much later, e.g.
+
+```text
+✘ [ERROR] Cannot find native binding. npm has a bug related to optional dependencies … [plugin angular-compiler]
+```
+
+(seen for `oxc-parser`, pulled in by `@angular/build`, in the Angular e2e job).
+
+### Rules
+
+- **Never** patch this in CI by installing the missing binding ad hoc (`npm i --no-save @scope/binding-linux-x64-gnu`).
+  That defeats `npm ci` reproducibility, installs an unpinned package without integrity check, and only fixes the one
+  platform/job that happens to be patched.
+- **Always** regenerate the lockfile from scratch instead — a clean resolve records the full set again:
+
+  ```bash
+  rm -rf package-lock.json node_modules && npm install
+  npm run npm:verify-lock
+  ```
+
+- `npm run npm:verify-lock` ([`scripts/verify-lockfile.ts`](../scripts/verify-lockfile.ts)) fails when a package's
+  platform bindings are only **partially** present, or when a binding is recorded without `resolved`/`integrity`. It
+  runs in CI in the `Lint` job of [`build.yml`](../.github/workflows/build.yml).
+- Only if a clean regeneration still prunes them, declare the bindings explicitly as `optionalDependencies` in the
+  workspace that needs them — the approach already used for `next`, see
+  [Explicit `@next/swc-*` optional dependencies (storefront)](#explicit-nextswc--optional-dependencies-storefront).
 
 ## Explicit `@next/swc-*` optional dependencies (storefront)
 

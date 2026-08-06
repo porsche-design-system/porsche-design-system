@@ -31,6 +31,7 @@ mirroring [`.github/actions/install`](../../.github/actions/install/action.yml))
 | Use `--legacy-peer-deps` or `--force`                            | We rely on **strict** peer resolution; conflicts must be fixed via `overrides`.                                     |
 | Edit dependency versions in any `package.json` by hand           | `syncpack` owns version ranges — including the Angular family (only its framework migrations are separate, step 3). |
 | Edit `package-lock.json` by hand                                 | Regenerate it via `npm install` only.                                                                               |
+| Patch a missing native binding in a CI workflow step             | Masks an incomplete lockfile; regenerate it cleanly instead (step 9).                                               |
 | Upgrade held-back deps by selecting them in `npm run npm:update` | Stencil/Playwright/internal stay pinned; Angular versions go through syncpack but apply migrations via step 3.      |
 | Push directly to `main`                                          | Always open a PR for human review.                                                                                  |
 
@@ -187,6 +188,27 @@ To refresh transitive dependencies, delete `package-lock.json` and recreate it:
 rm package-lock.json
 npm install
 ```
+
+Then verify the lockfile is **complete**:
+
+```bash
+npm run npm:verify-lock
+```
+
+npm prunes platform-specific native bindings (`@oxc-parser/binding-*`, `@esbuild/*`, `@img/sharp-*`, `@next/swc-*`, …)
+from the lockfile during incremental installs ([npm/cli#4828](https://github.com/npm/cli/issues/4828)). `npm ci` on
+Linux CI then skips them silently and a build fails later with `Cannot find native binding`. If the check fails, do a
+**full** clean regeneration (this normally restores the complete set):
+
+```bash
+rm -rf package-lock.json node_modules
+npm install
+npm run npm:verify-lock
+```
+
+**Never** work around this by installing the missing binding in a CI step. If a clean regeneration still prunes
+bindings, declare them explicitly as `optionalDependencies` in the affected workspace (same approach as `@next/swc-*`) —
+see `docs/dependencies.md` → _Platform-specific native bindings in the lockfile_.
 
 Confirm all eight `@next/swc-*` optional dependencies are still recorded in `package-lock.json` (see
 `docs/dependencies.md` → _Explicit `@next/swc-*` optional dependencies_).

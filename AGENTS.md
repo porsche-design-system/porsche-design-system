@@ -156,6 +156,8 @@ See [`.github/instructions/accessibility.instructions.md`](.github/instructions/
 | Remove focus outlines                               | Provide accessible alternatives                    |
 | Run VRT tests locally without Docker                | Use `./docker.sh` for VRT                          |
 | Upgrade packages without checking `dependencies.md` | Check [`docs/dependencies.md`](docs/dependencies.md) first |
+| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly, then `npm run npm:verify-lock` |
+| Patch a missing native binding in a CI step         | Regenerate the lockfile cleanly and run `npm run npm:verify-lock` |
 
 ## Known Constraints
 
