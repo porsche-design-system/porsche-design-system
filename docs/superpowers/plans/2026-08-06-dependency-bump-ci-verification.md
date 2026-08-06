@@ -1,0 +1,317 @@
+# Dependency Bump CI Verification Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or
+> superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Add deterministic minimum CI checks to the TurboSpec dependency-bump workflow and invoke the existing agent
+only when a reproducible check fails.
+
+**Architecture:** Split deterministic dependency selection from the existing dependency agent so a CI retry cannot bump
+versions again. Add one agentless, fail-fast verification stage after the existing cleanup and documentation stages;
+validation failures loop back to the existing agent and re-run every downstream consistency stage.
+
+**Tech Stack:** TurboSpec workflow YAML, TurboSpec `script_gate`, Markdown system prompts, npm scripts
+
+## Global Constraints
+
+- Always run `npm run lint`, `npm run build`, and `npm run test:unit:components` in that order.
+- Keep the PR Gates responsible for the complete test matrix; add no package classifier, browser suite, helper script,
+  or dependency.
+- Invoke no additional agent when all three checks pass.
+- Give `ci-minimum` validation failures two repair retries.
+- Escalate environment, timeout, and command-invocation failures without an agent retry.
+- CI repair may change only the smallest source, test, or configuration surface needed for a non-breaking dependency API
+  change.
+- CI repair must not change `package.json`, `package-lock.json`, dependency versions, overrides, or dependency
+  documentation.
+- TurboSpec may still open a pull request when the minimum gate remains red.
+
+## File Map
+
+- Modify `.turbo-spec/workflows/dependency-bump.yml`: split the update and resolution stages, then add the final
+  verification gate.
+- Modify `.turbo-spec/system_prompts/dependency-bump.md`: add the conditional, source-only CI repair contract.
+- No production source, dependency manifest, lockfile, runbook, or helper script changes.
+
+---
+
+### Task 1: Isolate the Agent Retry Target
+
+**Files:**
+
+- Modify: `.turbo-spec/workflows/dependency-bump.yml:12-61`
+- Modify: `.turbo-spec/system_prompts/dependency-bump.md:1-9`
+
+**Interfaces:**
+
+- Consumes: the existing `npm:update:all` script, `dependency_updater` agent, and install/Syncpack gates.
+- Produces: agentless stage `update_dependencies` and retry-safe stage `resolve_dependencies` containing agent
+  `dependency_updater`.
+
+- [ ] **Step 1: Run a structural check that fails before the split**
+
+```bash
+uv run --project /Users/FNN57BH/Developer/turbo-spec python - <<'PY'
+from pathlib import Path
+import yaml
+
+workflow = yaml.safe_load(Path(".turbo-spec/workflows/dependency-bump.yml").read_text())
+stages = {stage["name"]: stage for stage in workflow["stages"]}
+assert stages["update_dependencies"]["pre_command"] == "npm run npm:update:all"
+assert stages["update_dependencies"].get("agents", []) == []
+assert stages["resolve_dependencies"]["depends_on"] == ["update_dependencies"]
+assert stages["resolve_dependencies"]["agents"][0]["id"] == "dependency_updater"
+assert stages["revalidate_overrides"]["depends_on"] == ["resolve_dependencies"]
+PY
+```
+
+Expected: FAIL because `update_dependencies` still contains the agent and `resolve_dependencies` does not exist.
+
+- [ ] **Step 2: Split deterministic update from dependency resolution**
+
+Replace the current opening stage with this structure. Move the existing three quality gates unchanged under
+`resolve_dependencies`.
+
+```yaml
+- name: update_dependencies
+  orchestrator: implementation
+  pre_command: 'npm run npm:update:all'
+
+- name: resolve_dependencies
+  orchestrator: bumpy_mc_bumpface
+  depends_on: [update_dependencies]
+  agents:
+    - id: dependency_updater
+      type: dependency_updater
+      skills: []
+      tools: [file, shell]
+      system_prompt: dependency-bump
+  quality_gates:
+    - evaluator: script_gate
+      on_fail: loop_back
+      max_retries: 2
+      loop_back:
+        target_agent: dependency_updater
+      post_command: 'npm run npm:format:fix && npm run npm:lint:fix'
+      config:
+        gate_name: npm-install
+        failure_verdict: loop_back
+        steps:
+          - name: npm-install
+            command: [npm, install]
+    - evaluator: script_gate
+      on_fail: loop_back
+      max_retries: 2
+      loop_back:
+        target_agent: dependency_updater
+      config:
+        gate_name: npm-format
+        failure_verdict: loop_back
+        steps:
+          - name: npm-format
+            command: [npm, run, 'npm:format']
+    - evaluator: script_gate
+      on_fail: loop_back
+      max_retries: 2
+      loop_back:
+        target_agent: dependency_updater
+      config:
+        gate_name: npm-lint
+        failure_verdict: loop_back
+        steps:
+          - name: npm-lint
+            command: [npm, run, 'npm:lint']
+```
+
+Change `revalidate_overrides` to:
+
+```yaml
+depends_on: [resolve_dependencies]
+```
+
+- [ ] **Step 3: Add the conditional CI repair contract**
+
+Replace `.turbo-spec/system_prompts/dependency-bump.md` with:
+
+```markdown
+1. Goal: leave the repository with all eligible npm dependency versions updated, a consistent lockfile, and passing
+   dependency checks.
+2. Before normal dependency resolution, inspect the Previous Attempt / Gate feedback.
+3. If that feedback names `ci-minimum`, confirm the dependency bump caused the failure and make only the smallest
+   source, test, or configuration adaptation needed for a non-breaking dependency API change; do not edit
+   `package.json`, `package-lock.json`, dependency versions, overrides, or dependency documentation, and stop if the
+   failure is unrelated, flaky, or requires a breaking migration.
+4. Otherwise, Syncpack has already updated dependency versions before you start, so run `npm install` once.
+5. If `npm install` succeeds without `ERESOLVE`, finish immediately without inspecting or changing overrides or
+   documentation.
+6. If `npm install` fails with `ERESOLVE` because a third-party peer range conflicts with pinned versions, add the
+   smallest scoped, pinned `overrides` entry in the root `package.json`, following existing patterns such as
+   `madge > typescript` and per-major keys such as `minimatch@9`.
+7. After changing an override, delete both `package-lock.json` and `node_modules`, then rerun `npm install` so stale
+   transitive entries cannot survive.
+8. Outside `ci-minimum` repair, you may edit only the root `package.json` override needed for that `ERESOLVE`, the
+   regenerated `package-lock.json`, and documentation that describes that override.
+9. Do not run `npm audit`, `npm audit fix`, or any security-advisory investigation; do not inspect, remove, revalidate,
+   or update existing overrides.
+10. Never use `--force` or `--legacy-peer-deps`, and never manually edit dependency versions or change held-back
+    dependencies.
+11. Stop and report the blocker if the conflict requires a major breaking upgrade, touches a held-back dependency, or
+    cannot be resolved with a scoped pinned override; otherwise, you are done when `npm install` succeeds and the
+    repository is ready for the configured format and lint gates.
+```
+
+- [ ] **Step 4: Re-run the structural check**
+
+Run the command from Step 1.
+
+Expected: PASS.
+
+- [ ] **Step 5: Validate the intermediate blueprint and prompt**
+
+```bash
+uv run --project /Users/FNN57BH/Developer/turbo-spec \
+  --directory "$PWD" \
+  workflow-skeleton validate .turbo-spec/workflows/dependency-bump.yml
+npx prettier --check .turbo-spec/system_prompts/dependency-bump.md
+git --no-pager diff --check
+```
+
+Expected: all commands exit `0`.
+
+- [ ] **Step 6: Commit the retry boundary**
+
+```bash
+git add .turbo-spec/workflows/dependency-bump.yml .turbo-spec/system_prompts/dependency-bump.md
+git commit -m "refactor(turbospec): isolate dependency resolution" \
+  -m "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+```
+
+### Task 2: Add the Agentless Minimum CI Gate
+
+**Files:**
+
+- Modify: `.turbo-spec/workflows/dependency-bump.yml:128-135`
+
+**Interfaces:**
+
+- Consumes: stage `document_overrides` and agent `resolve_dependencies/dependency_updater`.
+- Produces: final agentless stage `verify_ci` and gate `ci-minimum`.
+
+- [ ] **Step 1: Run a structural check that fails before the gate exists**
+
+```bash
+uv run --project /Users/FNN57BH/Developer/turbo-spec python - <<'PY'
+from pathlib import Path
+import yaml
+
+workflow = yaml.safe_load(Path(".turbo-spec/workflows/dependency-bump.yml").read_text())
+stages = {stage["name"]: stage for stage in workflow["stages"]}
+verify = stages["verify_ci"]
+gate = verify["quality_gates"][0]
+assert verify["depends_on"] == ["document_overrides"]
+assert verify.get("agents", []) == []
+assert gate["on_fail"] == "loop_back"
+assert gate["max_retries"] == 2
+assert gate["loop_back"] == {
+    "target_stage": "resolve_dependencies",
+    "target_agent": "dependency_updater",
+    "execute_strategy": "agent_and_everything_after_it",
+}
+assert gate["config"]["failure_verdict"] == "loop_back"
+assert gate["config"]["environment_verdict"] == "escalate"
+assert [step["command"] for step in gate["config"]["steps"]] == [
+    ["npm", "run", "lint"],
+    ["npm", "run", "build"],
+    ["npm", "run", "test:unit:components"],
+]
+PY
+```
+
+Expected: FAIL with `KeyError: 'verify_ci'`.
+
+- [ ] **Step 2: Add the final verification stage**
+
+Insert this stage after `document_overrides` and before `settings`:
+
+```yaml
+- name: verify_ci
+  orchestrator: implementation
+  depends_on: [document_overrides]
+  quality_gates:
+    - evaluator: script_gate
+      on_fail: loop_back
+      max_retries: 2
+      loop_back:
+        target_stage: resolve_dependencies
+        target_agent: dependency_updater
+        execute_strategy: agent_and_everything_after_it
+      config:
+        gate_name: ci-minimum
+        failure_verdict: loop_back
+        environment_verdict: escalate
+        steps:
+          - name: lint
+            command: [npm, run, lint]
+          - name: build
+            command: [npm, run, build]
+          - name: components-unit
+            command: [npm, run, 'test:unit:components']
+```
+
+- [ ] **Step 3: Re-run the structural check**
+
+Run the command from Step 1.
+
+Expected: PASS. The empty `agents` assertion proves a green `verify_ci` stage cannot invoke a model.
+
+- [ ] **Step 4: Validate the complete blueprint**
+
+```bash
+uv run --project /Users/FNN57BH/Developer/turbo-spec \
+  --directory "$PWD" \
+  workflow-skeleton validate .turbo-spec/workflows/dependency-bump.yml
+git --no-pager diff --check
+```
+
+Expected: both commands exit `0`.
+
+- [ ] **Step 5: Run the exact minimum gate locally**
+
+```bash
+npm run lint &&
+  npm run build &&
+  npm run test:unit:components
+```
+
+Expected: all three commands exit `0` in order. If a command exposes a pre-existing failure, do not change unrelated
+source; record the failure and let the PR Gates provide the full repository signal.
+
+- [ ] **Step 6: Confirm the build created no unplanned tracked changes**
+
+```bash
+git --no-pager status --short
+git --no-pager diff -- .turbo-spec/workflows/dependency-bump.yml
+```
+
+Expected: only `.turbo-spec/workflows/dependency-bump.yml` is modified.
+
+- [ ] **Step 7: Commit the minimum gate**
+
+```bash
+git add .turbo-spec/workflows/dependency-bump.yml
+git commit -m "ci(turbospec): verify dependency bumps" \
+  -m "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+```
+
+## Final Verification
+
+```bash
+uv run --project /Users/FNN57BH/Developer/turbo-spec \
+  --directory "$PWD" \
+  workflow-skeleton validate .turbo-spec/workflows/dependency-bump.yml
+npx prettier --check .turbo-spec/system_prompts/dependency-bump.md
+git --no-pager diff --check
+git --no-pager status --short
+```
+
+Expected: blueprint validation and formatting pass, `git diff --check` reports nothing, and the worktree is clean.
