@@ -53,6 +53,7 @@ const stderr = [];
 let outputBytes = 0;
 let timedOut = false;
 let outputExceeded = false;
+let finished = false;
 
 function killGroup() {
   try {
@@ -71,11 +72,21 @@ function capture(chunks, chunk) {
   chunks.push(chunk);
 }
 
+function finish(code) {
+  if (finished) return;
+  finished = true;
+  process.stdout.write(Buffer.concat(stdout), () => {
+    process.stderr.write(Buffer.concat(stderr), () => {
+      process.exitCode = code;
+    });
+  });
+}
+
 child.stdout.on('data', (chunk) => capture(stdout, chunk));
 child.stderr.on('data', (chunk) => capture(stderr, chunk));
 child.on('error', (error) => {
-  process.stderr.write(error.message);
-  process.exit(127);
+  stderr.push(Buffer.from(error.message));
+  finish(127);
 });
 
 const timer = setTimeout(() => {
@@ -86,12 +97,10 @@ const timer = setTimeout(() => {
 child.on('close', (code, signal) => {
   clearTimeout(timer);
   if (timedOut || outputExceeded) killGroup();
-  process.stdout.write(Buffer.concat(stdout));
-  process.stderr.write(Buffer.concat(stderr));
-  if (timedOut) process.exit(124);
-  if (outputExceeded) process.exit(126);
-  if (signal) process.exit(125);
-  process.exit(code ?? 2);
+  if (timedOut) finish(124);
+  else if (outputExceeded) finish(126);
+  else if (signal) finish(125);
+  else finish(code ?? 2);
 });
 `;
 
@@ -819,6 +828,22 @@ process.exit(2);
 }
 
 function runSelfTest() {
+  const outputRoot = mkdtempSync(join(tmpdir(), 'pds-override-output-'));
+  try {
+    const outputSize = 1024 * 1024;
+    const output = runCommand(
+      outputRoot,
+      process.execPath,
+      ['-e', `process.stdout.write('x'.repeat(${outputSize}))`],
+      createTiming({ commandTimeoutMs: 5000, runTimeoutMs: 10000, rollbackReserveMs: 1000 })
+    );
+    assert.equal(output.status, 0);
+    assert.equal(Buffer.byteLength(output.stdout), outputSize);
+  } finally {
+    rmSync(commandHomePath(outputRoot), { force: true, recursive: true });
+    rmSync(outputRoot, { force: true, recursive: true });
+  }
+
   const baseline = normalizeAudit(baselineFixture);
   assert.deepEqual(baseline.findings, ['["glob","package:minimatch","high"]', '["minimatch","advisory:1234","high"]']);
   assert.deepEqual(baseline.affectedNodes, ['["glob","node_modules/glob"]', '["minimatch","node_modules/minimatch"]']);
