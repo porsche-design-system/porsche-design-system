@@ -48,6 +48,9 @@ gates. This preserves the current initial execution order.
 The split prevents a CI retry from re-running `npm run npm:update:all`. TurboSpec runs a target stage's `pre_command` on
 cross-stage re-entry; targeting the current combined stage could therefore change dependency versions after cleanup.
 
+Disable Syncpack's `exports` sorting with `sortExports: []`. Conditional export order is semantic: sorting moved the
+`sass` and `style` conditions behind JavaScript conditions and broke Sass package resolution during the full build.
+
 ## Deterministic Verification
 
 Add `verify_ci` after `document_overrides`. It contains one narrowly scoped `ci_repairer` followed by one `script_gate`
@@ -59,8 +62,12 @@ already run the complete matrix.
 
 The Next.js build expects tracked `packages/components-react/projects/nextjs/next-env.d.ts` to include its generated
 `root-params` type reference, so commit that one-line generated update. Also wrap `npm run build` in `sh` and restore
-the file before returning the build's original exit code. A restore failure exits `2`, so TurboSpec escalates instead of
-committing later generated drift from a normal successful or failed build.
+the file before returning. Normalize every completed build failure to exit `1` so TurboSpec routes compiler diagnostics
+to `ci_repairer`; reserve exit `2` for wrapper setup or cleanup failures that require escalation.
+
+Capture build output in a temporary file. On failure, replay the output and append a bounded summary beginning at
+`error during build:` to stderr. `script_gate` prefers stderr for retry feedback, so the repair agent receives the
+actual error instead of only the final stack-trace tail.
 
 Set the gate's fallback `on_fail` to `escalate`, then use `failure_verdict: loop_back` and
 `environment_verdict: escalate`. Exit code `1` represents a reproducible validation failure that the agent may repair.
@@ -120,6 +127,8 @@ The design was checked against TurboSpec engine commit `050a00fe`:
   to `on_fail`.
 - Only the latest same-stage gate feedback reaches the retried agent.
 - PR runs commit each successful stage before executing the next one.
+- The override helper's process-group runner flushes buffered stdout and stderr before setting its exit code; its
+  self-test sends 1 MiB through the real runner to protect workspace hashing from 64 KiB truncation.
 
 The selected commands match Step 11 of `docs/runbooks/dependency-updates-agent.md`; `contribution.yml` delegates the
 corresponding full CI work to `build.yml` and `test.yml`.
@@ -130,6 +139,8 @@ corresponding full CI work to `build.yml` and `test.yml`.
 - A validation failure invokes the same-stage repair agent with the failing command's diagnostic.
 - A repair that changes dependency metadata is restored and fails the metadata scope step before stage commit.
 - The build step never leaves the generated `next-env.d.ts` change for TurboSpec to commit.
+- Syncpack formatting preserves semantic `sass` and `style` export conditions.
+- Failed builds provide an actionable bounded diagnostic to `ci_repairer`.
 - The deterministic update command does not run again during CI repair.
 - A successful repair re-runs the complete minimum gate.
 - Environment failures escalate without agent retries.
