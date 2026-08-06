@@ -25,17 +25,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   since `''` (empty string) is a valid option value and can lead to confusion. An unselected radio group is now omitted
   from native form submissions instead of submitting an empty string.
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Radio Group`: `value` matches options strictly by type and value. A numeric value only matches an option whose value
+  is also bound as a number, not the equivalent string.
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Pin Code`, `Radio Group`, `Segmented Control`: extended types of `value` prop to allow `string | number | null`
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Radio Group Option`:
   - extended types of `value` prop to allow `string | number`
     ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
-  - `value` prop is now required ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+  - **Breaking change:** `value` prop is now required. Provide a value for every option.
+    ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 
 ### Fixed
 
 - `Multi Select`: Announcement of the active/selected option in screen readers
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+- `Multi Select Option`: accept number values in runtime prop validation, matching the public `string | number` type
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Pin Code`: avoid emitting a `change` event when pasted text matches the existing numeric value
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 
 ## [4.6.0-rc.1] - 2026-08-03
 
