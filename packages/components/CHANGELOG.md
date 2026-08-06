@@ -38,6 +38,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
+- `Angular`: `Checkbox` treats `null` Reactive Forms values as unchecked instead of forwarding `null` to the `checked`
+  prop ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Multi Select`: Announcement of the active/selected option in screen readers
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
 - `Multi Select Option`: accept number values in runtime prop validation, matching the public `string | number` type
