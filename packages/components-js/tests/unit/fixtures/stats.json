@@ -186,8 +186,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 48895,
-    "gzipSize": 17438
+    "size": 49144,
+    "gzipSize": 17512
   },
   {
     "chunkShortName": "optgroup",
@@ -201,8 +201,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 14055,
-    "gzipSize": 5517
+    "size": 14234,
+    "gzipSize": 5584
   },
   {
     "chunkShortName": "popover",
@@ -211,8 +211,8 @@
   },
   {
     "chunkShortName": "radio-group",
-    "size": 17735,
-    "gzipSize": 6611
+    "size": 18068,
+    "gzipSize": 6716
   },
   {
     "chunkShortName": "scroller",
