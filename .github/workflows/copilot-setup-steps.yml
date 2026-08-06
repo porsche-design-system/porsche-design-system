@@ -36,7 +36,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: 'Setup Node.js'
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           # Mirror `.github/actions/install` and the root package.json `volta` field.
           node-version: '24'
