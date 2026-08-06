@@ -21,7 +21,8 @@ for (const tagName of tagNames) {
     tagName.includes('link') || tagName.includes('wordmark') || tagName.includes('marque') || tagName.includes('crest')
       ? ' href="#"'
       : '';
-  const value = tagName.includes('segmented-control-item') ? ' value="some value"' : '';
+  // components with a required value prop don't render without it
+  const value = ['p-segmented-control-item', 'p-radio-group-option'].includes(tagName) ? ' value="some value"' : '';
   const state = tagName.includes('stepper-horizontal-item') ? ' state="complete"' : '';
 
   const wrapInRequiredParentIfNeeded = (child: string): string => {
