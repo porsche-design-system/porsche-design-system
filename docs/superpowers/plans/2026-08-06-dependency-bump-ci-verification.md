@@ -280,6 +280,7 @@ git commit -m "ci(turbospec): verify dependency bumps" \
 - Modify: `.turbo-spec/workflows/dependency-bump.yml`
 - Modify: `.turbo-spec/system_prompts/dependency-bump.md`
 - Create: `.turbo-spec/system_prompts/dependency-ci-repair.md`
+- Modify: `packages/components-react/projects/nextjs/next-env.d.ts`
 - Modify: `docs/superpowers/specs/2026-08-06-dependency-bump-ci-verification-design.md`
 - Modify: `docs/superpowers/plans/2026-08-06-dependency-bump-ci-verification.md`
 
@@ -307,9 +308,11 @@ assert verify["agents"][0]["type"] == "implementer"
 assert verify["agents"][0]["system_prompt"] == "dependency-ci-repair"
 assert gate["on_fail"] == "escalate"
 assert gate["loop_back"] == {"target_agent": "ci_repairer"}
-assert gate["config"]["steps"][1]["command"][:2] == ["sh", "-c"]
-assert "git restore --" in gate["config"]["steps"][1]["command"][2]
-assert "git status --porcelain" in verify["post_command"]
+assert gate["config"]["steps"][2]["command"][:2] == ["sh", "-c"]
+assert "git restore --" in gate["config"]["steps"][2]["command"][2]
+assert gate["config"]["steps"][0]["name"] == "dependency-metadata-before"
+assert gate["config"]["steps"][-1]["name"] == "dependency-metadata-after"
+assert "git clean -f --" in gate["config"]["steps"][0]["command"][2]
 assert Path(".turbo-spec/system_prompts/dependency-ci-repair.md").exists()
 PY
 ```
@@ -354,21 +357,35 @@ Finish when the smallest adaptation is ready for the configured gate to rerun.
 
 Restore `.turbo-spec/system_prompts/dependency-bump.md` to dependency resolution only.
 
-- [ ] **Step 4: Replace persisted metadata state with native Git status**
+- [ ] **Step 4: Replace persisted metadata state with self-cleaning gate steps**
 
-Remove the CI output and post-command from `document_overrides`. Set `verify_ci.post_command` to:
+Remove the CI output and post-command from `document_overrides`. Add the same metadata scope command before lint and
+after components unit:
 
 ```yaml
-post_command: >-
-  test -z "$(git status --porcelain --untracked-files=all -- ':(glob)**/package.json' package-lock.json
-  docs/dependencies.md)"
+- name: dependency-metadata-before
+  command: &dependency-metadata-check
+    - sh
+    - -c
+    - >-
+      metadata_status="$(git status --porcelain --untracked-files=all -- ':(glob)**/package.json' package-lock.json
+      docs/dependencies.md)" || exit 2; if test -n "$metadata_status"; then git restore --source=HEAD --staged
+      --worktree -- ':(glob)**/package.json' package-lock.json docs/dependencies.md || exit 2; git clean -f --
+      ':(glob)**/package.json' package-lock.json docs/dependencies.md || exit 2; printf '%s\n' "$metadata_status" >&2;
+      exit 1; fi
+
+# lint, build, components unit
+
+- name: dependency-metadata-after
+  command: *dependency-metadata-check
 ```
 
-The production workflow always opens a PR, so TurboSpec commits each successful prior stage. `HEAD` is therefore the
-post-cleanup metadata baseline.
+The command restores forbidden changes before returning failure, so WorktreeCommitter cannot commit them and make them
+look clean on resume.
 
 Wrap `npm run build` in `sh`, preserve its exit code, and always restore
-`packages/components-react/projects/nextjs/next-env.d.ts` before exiting. Return exit `2` if restoration fails.
+`packages/components-react/projects/nextjs/next-env.d.ts` before exiting. Return exit `2` if restoration fails. Commit
+the generated `root-params` reference that the current Next.js build expects in that file.
 
 - [ ] **Step 5: Re-run the structural check**
 
@@ -383,8 +400,8 @@ uv run --project /Users/FNN57BH/Developer/turbo-spec pytest -q \
   /Users/FNN57BH/Developer/turbo-spec/tests/unit/executor/test_gate_failure_routing.py::test_stage_gate_bare_target_agent_stays_in_executor
 ```
 
-Run `verify_ci.post_command` in a temporary Git repository. It must pass with clean dependency metadata and fail after
-changing `package.json`.
+Run the metadata command in a temporary Git repository. It must pass when clean; after changing tracked `package.json`
+and creating an untracked nested `package.json`, it must restore/remove both and return exit `1`.
 
 - [ ] **Step 7: Validate and format**
 
@@ -409,6 +426,7 @@ git add \
   .turbo-spec/workflows/dependency-bump.yml \
   .turbo-spec/system_prompts/dependency-bump.md \
   .turbo-spec/system_prompts/dependency-ci-repair.md \
+  packages/components-react/projects/nextjs/next-env.d.ts \
   docs/superpowers/specs/2026-08-06-dependency-bump-ci-verification-design.md \
   docs/superpowers/plans/2026-08-06-dependency-bump-ci-verification.md
 git commit -m "fix(turbospec): keep CI repair in verification" \
