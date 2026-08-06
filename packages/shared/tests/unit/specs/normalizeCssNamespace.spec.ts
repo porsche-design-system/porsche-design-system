@@ -11,7 +11,7 @@ const createBrandCheckedCssNamespace = () => {
       if (!(this instanceof CSSNamespace)) {
         throw new TypeError("'escape' called on an object that is not a valid instance of CSS.");
       }
-      return value.replace(/([[\].#*$><+~=|^:(),"'`\s])/g, '\\$1');
+      return value.replace(/([\\[\].#*$><+~=|^:(),"'`\s])/g, '\\$1');
     }
 
     supports(value: string): boolean {
@@ -71,7 +71,8 @@ describe('normalizeCssNamespace()', () => {
 
   it('should leave a browser-shaped namespace untouched', () => {
     // Browsers expose the operations as own properties, so they already work detached.
-    const escape = (value: string) => value.replace(/\./g, '\\.');
+    // The backslash itself has to be escaped first (or within the same pass) to avoid producing broken escapes.
+    const escape = (value: string) => value.replace(/[\\.]/g, '\\$&');
     const cssNamespace = { escape };
 
     normalizeCssNamespace(cssNamespace);
