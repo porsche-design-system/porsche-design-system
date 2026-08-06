@@ -246,6 +246,7 @@
     "concurrently": "^10.0.4",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
+    "jsdom": "^30.0.1",
     "karma": "~6.4.4",
     "madge": "^8.0.0",
     "patch-package": "^8.0.1",

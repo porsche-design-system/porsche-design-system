@@ -45,7 +45,7 @@ convention). The following root scripts help keep dependency versions consistent
 
 The intentionally held-back dependencies listed under [Held-back dependencies](#held-back-dependencies) are excluded
 from automated update checks via an `isIgnored` [`updateGroups`](https://syncpack.dev/update-groups/ignored/) entry in
-`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `playwright-core`, `@stencil/core`, `jsdom`). The
+`.syncpackrc.json` (`@porsche-design-system/**`, `@playwright/test`, `playwright-core`, `@stencil/core`). The
 `npm:outdated` and `npm:update` scripts additionally pass `--dependencies '!@porsche-design-system/**'` so the
 unpublished internal workspace packages are not even looked up against the npm registry (which would otherwise emit
 `Failed to fetch` warnings). When you add a new held-back dependency, also add it to the `updateGroups` entry in
@@ -64,8 +64,8 @@ Even though each starter pins the **published** `@porsche-design-system/componen
 carry that **same** release version, so npm satisfies the pin by symlinking to the local workspace. Off the monorepo (on
 StackBlitz), the identical pin resolves the published package from the registry instead. The pin stays in sync with the
 release version via the release process (see `docs/release.md`), and `@porsche-design-system/**` is shielded from
-automated bumps by the held-back `updateGroups` entry, alongside `@playwright/test`, `playwright-core`, `@stencil/core`
-and `jsdom`.
+automated bumps by the held-back `updateGroups` entry, alongside `@playwright/test`, `playwright-core` and
+`@stencil/core`.
 
 When you add or remove a workspace, update only the `workspaces` array in the root `package.json` — there is no separate
 syncpack `source` list to keep in sync anymore.
@@ -225,28 +225,10 @@ places that must be kept in sync when adding a new entry:
   definitions. Bump it **only together with** `@playwright/test`.
 - `@stencil/core` – pinned because a `patch-package` patch (`patches/@stencil+core+4.43.3.patch`) targets this exact
   version. Bumping it breaks `patch-package` on `postinstall`.
-- `jsdom` – held at `^29`. It is declared once in `packages/components-js` but, once hoisted to the repo-root
-  `node_modules`, it backs the `environment: 'jsdom'` of **every** Vitest suite in the monorepo. `jsdom@30` breaks this
-  in two ways:
-  1. **JSS incompatibility.** `jss` caches `CSS.escape` as a bare, unbound function reference at module init. `jsdom@30`
-     brand-checks the `this` receiver of its Web IDL methods, so every rule creation throws
-     `TypeError: 'escape' called on an object that is not a valid instance of CSS.` — 79 of 211
-     `test:unit:components-js:jsdom-polyfill` tests fail (plus follow-up errors around `validity`, `scrollTo` and
-     `indeterminate`).
-  2. **Hoisting.** `jsdom@30` turned `canvas` from an optional dependency into an optional **peer** dependency, so npm
-     nests it under `packages/components-js/node_modules` instead of hoisting it. Root-level `vitest` can then no longer
-     resolve the `jsdom` environment at all (`Cannot find package 'jsdom'`).
 
-  Revisit once `jss` is fixed or replaced. Upgrading also requires moving the `jsdom` declaration to the root
-  `package.json` (next to `vitest`) so it stays hoisted for all Vitest suites.
-
-- `@oddbird/popover-polyfill` – held at `^0.6` because it is **coupled to the `jsdom` hold-back above**. Since `v0.7`
-  the polyfill calls `CSS.escape` at apply time, and jsdom only exposes a `CSS` global from `v30` onwards. On `jsdom@29`
-  all 62 `jsdom-polyfill` test files fail to load with
-  `TypeError: Cannot read properties of undefined (reading 'escape')`. Bump it **only together with** `jsdom` (and note
-  that `v0.7` passes `CSS.escape` unbound to `Array#map`, which jsdom v30's brand checks reject as well). The polyfill
-  is bundled into `dist/components-wrapper/jsdom-polyfill/index.cjs`, so always rebuild
-  (`npm run build:jsdom-polyfill --workspace=@porsche-design-system/js`) before testing a bump.
+> **`jsdom` and `@oddbird/popover-polyfill` are no longer held back.** They are bumped by `syncpack` like any other
+> dependency, but they remain **coupled** — see
+> [Updating jsdom and the popover polyfill](#updating-jsdom-and-the-popover-polyfill).
 
 > **Angular is no longer held back for versions.** `@angular/*`, `ng-packagr` and `zone.js` are now bumped by `syncpack`
 > like any other dependency (`npm run npm:update`). Only Angular's **framework migration schematics** need special
@@ -293,3 +275,40 @@ between the installed Playwright and the Docker image makes CI fail.
 dependency; otherwise `patch-package` fails on `postinstall`.
 
 **`@porsche-design-system/*`** — do not bump manually; these are versioned and published by the release process.
+
+### Updating jsdom and the popover polyfill
+
+`jsdom` and `@oddbird/popover-polyfill` are not held back, but they must be bumped **together** and verified with a
+rebuild. Three properties are easy to break:
+
+1. **They are coupled.** Since `v0.7` the popover polyfill calls `CSS.escape` while applying its styles, and jsdom only
+   exposes a `CSS` namespace from `v30` onwards. Bumping the polyfill alone on an older jsdom makes every
+   `jsdom-polyfill` test file fail to load with `TypeError: Cannot read properties of undefined (reading 'escape')`.
+2. **`jsdom` must stay hoisted.** It is declared in the **root** `package.json` (next to `vitest`) on purpose: since
+   `v30` it declares `canvas` as an optional **peer** dependency, and npm nests any workspace-level declaration instead
+   of hoisting it, after which root-level `vitest` cannot resolve the `jsdom` environment at all
+   (`Cannot find package 'jsdom'`). Never move the declaration into a workspace. After bumping, verify:
+
+   ```bash
+   ls node_modules/jsdom                                        # must exist
+   find packages -maxdepth 4 -name jsdom -type d -path '*node_modules*'   # must be empty
+   ```
+
+3. **jsdom's `CSS` namespace is not browser-faithful.** Its operations brand-check `this`, so consumers that cache them
+   unbound break — most notably `jss` (`var nativeEscape = typeof CSS !== 'undefined' && CSS.escape`). Two copies of a
+   `normalizeCssNamespace()` helper rebind them:
+   - `packages/components-js/projects/jsdom-polyfill/src/normalizeCssNamespace.js` for the published polyfill, and
+   - `packages/shared/src/testing/normalizeCssNamespace.ts` (exported via `@porsche-design-system/shared/testing`) for
+     the Vitest setups of `shared`, `components` and `components-react/react-ssr-wrapper`, which are built **before**
+     `components-js` and therefore cannot import the polyfill.
+
+     Keep both in sync.
+
+The polyfill is bundled into `dist/components-wrapper/jsdom-polyfill/index.cjs`, so always rebuild before testing a
+bump, then run the jsdom-based suites:
+
+```bash
+npm run build:jsdom-polyfill --workspace=@porsche-design-system/js
+npm run test:unit:components-js:jsdom-polyfill
+npm run test:unit:shared && npm run test:unit:components && npm run test:unit:components-react
+```
