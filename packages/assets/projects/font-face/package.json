@@ -42,7 +42,7 @@
     "jss": "^10.10.0",
     "rollup": "^4.62.4",
     "rollup-plugin-dts": "^6.5.1",
-    "tsx": "^4.23.5",
+    "tsx": "^4.23.7",
     "typescript": "^6.0.3"
   },
   "volta": {

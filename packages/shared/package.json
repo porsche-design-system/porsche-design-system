@@ -47,7 +47,7 @@
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "spdy": "^4.0.2",
-    "tsx": "^4.23.5",
+    "tsx": "^4.23.7",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   },
