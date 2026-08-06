@@ -2264,7 +2264,7 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * Sets the value submitted with the form data when this option is selected in the parent multi-select.
+          * Sets the required option value submitted with the form data when selected. Must be a string or number.
          */
         "value": string | number;
     }
@@ -6663,7 +6663,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Sets the value submitted with the form data when this option is selected in the parent multi-select.
+          * Sets the required option value submitted with the form data when selected. Must be a string or number.
          */
         "value"?: string | number;
     }
