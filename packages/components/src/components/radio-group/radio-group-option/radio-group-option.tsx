@@ -5,6 +5,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
+  throwIfPropIsUndefined,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
@@ -33,7 +34,7 @@ const propTypes: PropTypes<typeof RadioGroupOption> = {
 export class RadioGroupOption {
   @Element() public host!: HTMLElement & RadioGroupOptionInternalHTMLProps;
 
-  /** The option value. Selected when it strictly matches the p-radio-group value (same type and value). */
+  /** Sets the required option value. Must be a string or number and is selected when it strictly matches the parent `p-radio-group` value by type and value. */
   @Prop() public value: string | number;
 
   /** Sets the visible label text displayed next to the radio button that the user reads to identify the option. */
@@ -65,6 +66,7 @@ export class RadioGroupOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    throwIfPropIsUndefined(this.host, 'value', this.value);
     const { selected: isSelected, name, state } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
     const isOptionLoading = this.loading && !isSelected;

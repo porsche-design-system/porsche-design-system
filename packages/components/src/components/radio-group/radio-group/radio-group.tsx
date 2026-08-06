@@ -96,7 +96,8 @@ export class RadioGroup {
   /**
    * Sets the currently selected value that pre-selects the matching radio option and reflects user changes.
    * Matches an option strictly by type and value, meaning string or number only match
-   * an option whose value has the same type and equal value. Use undefined or null for no preselection.
+   * an option whose value has the same type and equal value. Use undefined or null for no preselection;
+   * these values never match an option because every option requires a string or number value.
    *
    * Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled)
    * form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a

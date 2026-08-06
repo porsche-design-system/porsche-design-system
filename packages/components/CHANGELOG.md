@@ -33,7 +33,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Radio Group Option`:
   - extended types of `value` prop to allow `string | number`
     ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
-  - **Breaking change:** `value` prop is now required. Provide a value for every option.
+  - **Breaking change:** `value` prop is now required and validated at runtime. Provide a string or number value for
+    every option; `null` and `undefined` represent the parent radio group's unselected state.
     ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 
 ### Fixed

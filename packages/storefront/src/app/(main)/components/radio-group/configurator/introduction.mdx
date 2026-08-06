@@ -10,9 +10,9 @@ The `p-radio-group` component is a versatile custom form element that enables th
 
 Options are slotted using the `p-radio-group-option` component. Each option needs an assigned `string` or `number`
 value. The `p-radio-group` value matches an option strictly by type and value, so a number does not match the equivalent
-string. Use `undefined` or `null` for no preselection. Initial selection states can only be achieved using the `value`
-property on the `p-radio-group` component. If an option should be visible but not selectable, it can be disabled using
-the `disabled` attribute.
+string. `undefined` and `null` are reserved for the radio group's unselected state and are not valid option values.
+Initial selection states can only be achieved using the `value` property on the `p-radio-group` component. If an option
+should be visible but not selectable, it can be disabled using the `disabled` attribute.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The
 `p-radio-group` component can be used with or without a label, but it's recommended to keep the label visible for better

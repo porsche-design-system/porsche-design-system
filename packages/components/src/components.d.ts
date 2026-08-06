@@ -2468,7 +2468,7 @@ export namespace Components {
          */
         "state"?: RadioGroupState;
         /**
-          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
+          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection; these values never match an option because every option requires a string or number value.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
         "value"?: string | number | null;
     }
@@ -2488,7 +2488,7 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * The option value. Selected when it strictly matches the p-radio-group value (same type and value).
+          * Sets the required option value. Must be a string or number and is selected when it strictly matches the parent `p-radio-group` value by type and value.
          */
         "value": string | number;
     }
@@ -6891,7 +6891,7 @@ declare namespace LocalJSX {
          */
         "state"?: RadioGroupState;
         /**
-          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
+          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection; these values never match an option because every option requires a string or number value.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
         "value"?: string | number | null;
     }
@@ -6911,7 +6911,7 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * The option value. Selected when it strictly matches the p-radio-group value (same type and value).
+          * Sets the required option value. Must be a string or number and is selected when it strictly matches the parent `p-radio-group` value by type and value.
          */
         "value"?: string | number;
     }
