@@ -69,4 +69,3 @@ function normalizeCssNamespace(cssNamespace = globalThis.CSS) {
 }
 
 module.exports = { normalizeCssNamespace };
-

@@ -312,3 +312,13 @@ npm run build:jsdom-polyfill --workspace=@porsche-design-system/js
 npm run test:unit:components-js:jsdom-polyfill
 npm run test:unit:shared && npm run test:unit:components && npm run test:unit:components-react
 ```
+
+Because the polyfill ships to consumers, a jsdom bump also raises **their** minimum jsdom version. Whenever that floor
+changes, update all four places accordingly:
+
+- the guard in `packages/components-js/projects/jsdom-polyfill/src/index.js` (throws an actionable error on older jsdom
+  versions instead of a cryptic `TypeError` from within the popover polyfill),
+- the optional `jsdom` peer dependency in `components-wrapper`, `angular-wrapper`, `react-wrapper` and `vue-wrapper`
+  `package.json`,
+- the testing pages under `packages/storefront/src/app/(main)/developing/{react,next-js,angular}/testing`, and
+- `packages/components/CHANGELOG.md`.

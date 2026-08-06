@@ -25,6 +25,8 @@ described in this [issue](https://github.com/jsdom/jsdom/issues/2475). Also, it 
 
 As a workaround we provide a polyfill as part of the `@porsche-design-system/components-react` package.
 
+The polyfill requires **jsdom v30** or higher. On older versions it throws an explicit error on import.
+
 To apply the polyfill, simply import it in your `setupTest.{js|ts}` file.
 
 **Note:** If your test includes Porsche Design System components, make sure to wrap the component you want to test with

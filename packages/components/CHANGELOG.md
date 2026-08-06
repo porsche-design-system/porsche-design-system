@@ -19,10 +19,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
 
+### Changed
+
+- **Jsdom Polyfill**: requires **jsdom v30** or higher. The bundled `@oddbird/popover-polyfill` now uses `CSS.escape`,
+  which jsdom only provides since v30. On older versions the polyfill throws an explicit error on import. `jsdom` is
+  declared as an optional peer dependency to make the requirement visible.
+
 ### Fixed
 
 - `Multi Select`: Announcement of the active/selected option in screen readers
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+- **Jsdom Polyfill**: `TypeError: 'escape' called on an object that is not a valid instance of CSS.` when rendering
+  components in jsdom v30, caused by consumers (e.g. `jss`) caching `CSS.escape` detached from the `CSS` namespace
 
 ## [4.6.0-rc.1] - 2026-08-03
 

@@ -67,4 +67,3 @@ export const normalizeCssNamespace = (cssNamespace: object | undefined = globalT
     }
   }
 };
-
