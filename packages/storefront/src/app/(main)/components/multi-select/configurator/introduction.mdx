@@ -6,12 +6,11 @@ The `p-multi-select` offers a search field by default. When the user types in a 
 by matching the options text.
 
 Options are slotted using the `p-multi-select-option` component. Each option needs to have an assigned value, which can
-be passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved
-using the value property on the `p-multi-select` component ([More Info](/components/multi-select/examples/#set-value)).
-Options don't have a selected attribute or property. If an option should be visible but not selectable, it can be
-disabled by using the `disabled` attribute.
+be passed via an attribute or property and needs to be a string or number. `null` and `undefined` are not valid option
+values. Initial selection states can only be achieved using the value property on the `p-multi-select` component
+([More Info](/components/multi-select/examples/#set-value)). Options don't have a selected attribute or property. If an
+option should be visible but not selectable, it can be disabled by using the `disabled` attribute.
 
 **Hint:** The `p-multi-select` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)
 to render its dropdown on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
 container.
-

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, PSegmentedControlProps } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-segmented-control-example-form',
@@ -26,7 +26,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class SegmentedControlExampleFormComponent {
   form = new FormGroup({
-    mySegmentedControl: new FormControl<string | number | undefined>({ value: undefined, disabled: false }),
+    mySegmentedControl: new FormControl<PSegmentedControlProps['value']>(null),
   });
 
   submittedValue: any = undefined;

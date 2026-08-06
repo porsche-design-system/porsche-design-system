@@ -4848,12 +4848,12 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "Event",
       },
       "change": {
-        "description": "Emitted when the number input loses focus after its value was changed.",
+        "description": "Emitted when the number input loses focus after its value was changed. The component value and native event target value are strings after user input.",
         "type": "InputNumberChangeEventDetail",
         "typeDetail": "Event",
       },
       "input": {
-        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "description": "Emitted when the value has been changed as a direct result of a user action. The component value and native event target value are strings.",
         "type": "InputNumberInputEventDetail",
         "typeDetail": "InputEvent",
       },
@@ -5003,7 +5003,7 @@ exports[`should match snapshot 1`] = `
           "null",
         ],
         "defaultValue": "",
-        "description": "Sets the current numeric value of the field.",
+        "description": "Sets the current numeric value. Strings and numbers are accepted for programmatic assignment, but user input updates the value as a string to mirror native input behavior.",
         "propOptions": {
           "mutable": true,
         },
@@ -5654,12 +5654,12 @@ exports[`should match snapshot 1`] = `
         "typeDetail": "Event",
       },
       "change": {
-        "description": "Emitted when the input loses focus after its value was changed.",
+        "description": "Emitted when the input loses focus after its value was changed. The component value and native event target value are strings after user input.",
         "type": "InputTextChangeEventDetail",
         "typeDetail": "Event",
       },
       "input": {
-        "description": "Emitted on every value change as the user types.",
+        "description": "Emitted on every value change as the user types. The component value and native event target value are strings.",
         "type": "InputTextInputEventDetail",
         "typeDetail": "InputEvent",
       },
@@ -5808,7 +5808,7 @@ exports[`should match snapshot 1`] = `
           "null",
         ],
         "defaultValue": "",
-        "description": "Sets the current text value of the input field.",
+        "description": "Sets the current text value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.",
         "propOptions": {
           "mutable": true,
         },
@@ -7917,9 +7917,12 @@ exports[`should match snapshot 1`] = `
         "type": "boolean",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+        ],
         "defaultValue": null,
-        "description": "Sets the value submitted with the form data when this option is selected in the parent multi-select.",
+        "description": "Sets the required option value submitted with the form data when selected. Must be a string or number.",
         "isRequired": true,
         "type": "string | number",
       },
@@ -8064,7 +8067,7 @@ exports[`should match snapshot 1`] = `
         "type": "void",
       },
       "change": {
-        "description": "Emitted when the pin code value changes as the user types, carrying the new concatenated value in the event detail.",
+        "description": "Emitted when the pin code value changes as the user types, carrying \`{ value: string; isComplete: boolean }\` in the event detail.",
         "type": "PinCodeChangeEventDetail",
         "typeDetail": "{ value: string; isComplete: boolean }",
       },
@@ -8186,13 +8189,17 @@ exports[`should match snapshot 1`] = `
         "type": "PinCodeType",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
         "defaultValue": "",
-        "description": "Sets the current concatenated value of all pin code fields and allows setting the initial value.",
+        "description": "Sets the current concatenated value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -8442,13 +8449,17 @@ exports[`should match snapshot 1`] = `
         "type": "RadioGroupState",
       },
       "value": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "Sets the currently selected value that pre-selects the matching radio option and reflects user changes.",
+        "allowedValues": [
+          "string",
+          "number",
+          "null",
+        ],
+        "defaultValue": null,
+        "description": "Sets the currently selected value that pre-selects the matching radio option and reflects user changes. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection; these values never match an option because every option requires a string or number value. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
@@ -8504,10 +8515,14 @@ exports[`should match snapshot 1`] = `
         "type": "boolean",
       },
       "value": {
-        "allowedValues": "string",
+        "allowedValues": [
+          "string",
+          "number",
+        ],
         "defaultValue": null,
-        "description": "Sets the value submitted with the form data when this radio option is selected within its parent group.",
-        "type": "string",
+        "description": "Sets the required option value. Must be a string or number and is selected when it strictly matches the parent \`p-radio-group\` value by type and value.",
+        "isRequired": true,
+        "type": "string | number",
       },
     },
     "requiredParent": [
@@ -8762,13 +8777,14 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "string",
           "number",
+          "null",
         ],
         "defaultValue": null,
-        "description": "Sets the currently selected item's value and pre-selects the matching option when the component renders.",
+        "description": "Sets the currently selected item's value and pre-selects the matching option when the component renders. Matches an item strictly by type and value, meaning string or number only match an item whose value has the same type and equal value. Use undefined or null for no preselection. Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed item. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.",
         "propOptions": {
           "mutable": true,
         },
-        "type": "string | number",
+        "type": "string | number | null",
       },
     },
     "slotsMeta": {
