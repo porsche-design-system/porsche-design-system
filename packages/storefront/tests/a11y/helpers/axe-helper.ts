@@ -1,5 +1,6 @@
 import { AxeBuilder } from '@axe-core/playwright';
 import { test as base } from '@playwright/test';
+import type { Page } from 'playwright-core';
 
 type AxeFixture = {
   makeAxeBuilder: () => AxeBuilder;
@@ -12,7 +13,9 @@ type AxeFixture = {
 export const test = base.extend<AxeFixture>({
   makeAxeBuilder: async ({ page }, use) => {
     const makeAxeBuilder = () =>
-      new AxeBuilder({ page })
+      // `page` type technically differs from `@axe-core/playwright`'s expected `playwright-core` `Page` type
+      // due to a duplicated `playwright-core` install (structurally compatible, differing only in minor version typings)
+      new AxeBuilder({ page: page as unknown as Page })
         .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'])
         .exclude('iframe')
         // rule is disabled due to unwanted refactorings in component presentation
