@@ -81,4 +81,15 @@ export class ContentWrapper {
 
     expect(result).toEqual([false, '']);
   });
+
+  it('should return false and an empty string if no @Component decorator is present', () => {
+    const fileContent = `/**
+     * @deprecated since v3.0.0, will be removed with next major release.
+     */
+    export const someUtil = () => {};`;
+
+    const result = isDeprecatedComponent(fileContent);
+
+    expect(result).toEqual([false, '']);
+  });
 });
