@@ -93,6 +93,19 @@ describe('transformStandardAttributes()', () => {
   });
 });
 
+describe('attribute based transformations', () => {
+  it('should process pathological markup in linear time', () => {
+    // string which caused polynomial backtracking (ReDoS) with the previously used `\s(\S+)="…"` pattern
+    const pathologicalMarkup = ` ${'!="{'.repeat(50000)}`;
+
+    const start = performance.now();
+    transformObjectValues(pathologicalMarkup);
+    transformStandardAttributes(pathologicalMarkup);
+    transformBooleanDigitAndUndefinedValues(pathologicalMarkup);
+    expect(performance.now() - start).toBeLessThan(1000);
+  });
+});
+
 describe('transformClassAttribute()', () => {
   it('should transform class to className', () => {
     expect(transformClassAttribute(markup)).toBe(

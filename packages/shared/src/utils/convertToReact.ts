@@ -1,28 +1,47 @@
 import { camelCase, kebabCase, pascalCase } from 'change-case';
 import { transformEmptyTagsToSelfClosing, transformInputsToSelfClosing } from './transformSelfClosingTags';
 
+// All regular expressions in here are intentionally written without ambiguity between adjacent quantifiers and the
+// delimiters following them to avoid polynomial backtracking (ReDoS) on uncontrolled markup.
+//
+// Attribute name: must not contain the `="` delimiter that follows it (using `\S+` would make the quantifier ambiguous
+// with the delimiter, e.g. for input consisting of many repetitions of ` !="{`).
+// Attribute value: must not contain the closing `"` and stays single line (like the previously used `.` did).
+const attributeRegExp = /\s([^\s"'=<>/]+)="([^"\n]*)"/g;
+
+// Values which have to be transformed into JSX expressions instead of strings. They are validated on the already
+// extracted attribute value to keep the matching itself linear.
+const objectValueRegExp = /^\{.*}$/;
+const booleanDigitOrUndefinedValueRegExp = /^(?:true|false|-?\d*|undefined)$/;
+
 export const transformObjectValues = (markup: string): string =>
   // remove quotes from object values but add double brackets and camelCase
-  markup.replace(/\s(\S+)="({.*?})"/g, (_, $key, $value) => ` ${camelCase($key)}={${$value}}`);
+  markup.replace(attributeRegExp, (match, $key, $value) =>
+    objectValueRegExp.test($value) ? ` ${camelCase($key)}={${$value}}` : match
+  );
 
 export const transformStandardAttributes = (markup: string): string =>
   // transform all standard attributes to camel case
   markup
-    .replace(/\s(\S+)="(.*?)"/g, (_, $key, $value) => ` ${camelCase($key)}="${$value}"`)
-    .replace(/(<(?:input|textarea|select).*?)\sreadonly/g, '$1 readOnly')
-    .replace(/(<(?:input|textarea).*?)\smaxlength=/g, '$1 maxLength=')
+    .replace(attributeRegExp, (_, $key, $value) => ` ${camelCase($key)}="${$value}"`)
+    .replace(/(<(?:input|textarea|select)[^>]*?)\sreadonly/g, '$1 readOnly')
+    .replace(/(<(?:input|textarea)[^>]*?)\smaxlength=/g, '$1 maxLength=')
     .replace(/\s(aria[A-Z][a-z]+)=/g, (m, $attr) => m.replace($attr, kebabCase($attr)))
-    .replace(/(<(?:img|source).*?)srcset=(".*")/g, '$1srcSet={$2}');
+    .replace(/(<(?:img|source)[^>]*?)srcset=("[^"\n]*")/g, '$1srcSet={$2}');
 
 export const transformClassAttribute = (markup: string): string =>
-  markup.replace(/\sclass="(.*?)"/g, ' className="$1"');
+  markup.replace(/\sclass="([^"\n]*)"/g, ' className="$1"');
 
 export const transformEvents = (markup: string): string =>
   // transform to camelCase event binding syntax
-  markup.replace(/\son([a-z]+?)="(.*?)"/g, (_, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
+  markup.replace(/\son([a-z]+?)="([^"\n]*)"/g, (_, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
 
 export const transformBooleanDigitAndUndefinedValues = (markup: string): string =>
-  markup.replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}').replace(/{(911|718|360|1234)}/g, '"$1"'); // TODO replace hardcoded values with more generic approach (Configurable Storefront Examples #3315)
+  markup
+    .replace(attributeRegExp, (match, $key, $value) =>
+      booleanDigitOrUndefinedValueRegExp.test($value) ? ` ${$key}={${$value}}` : match
+    )
+    .replace(/{(911|718|360|1234)}/g, '"$1"'); // TODO replace hardcoded values with more generic approach (Configurable Storefront Examples #3315)
 
 export const transformCustomElementTagName = (markup: string): string =>
   markup.replace(/<(\/?)(p-[\w-]+)/g, (_, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
