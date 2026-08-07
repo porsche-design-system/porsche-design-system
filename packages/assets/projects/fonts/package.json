@@ -37,7 +37,7 @@
     "fast-glob": "^3.3.3",
     "rollup": "^4.62.4",
     "rollup-plugin-dts": "^6.5.1",
-    "tsx": "^4.23.7",
+    "tsx": "^4.23.9",
     "typescript": "^6.0.3"
   },
   "volta": {
