@@ -91,14 +91,10 @@ Current overrides:
 - `madge > typescript` is pinned to our root `typescript` version (`$typescript`). `madge` declares an optional peer on
   `typescript@^5.4.4`, which conflicts with our newer TypeScript. The override is safe because `madge` only uses
   TypeScript optionally for analyzing TS sources.
-- **Security overrides** force vulnerable transitive dependencies up to their first patched release (see
-  [Remediation policy](#remediation-policy)). For libraries whose newer majors are not API-compatible with older
-  consumers (`minimatch`, `brace-expansion`), per-major version-selector keys (e.g. `"minimatch@3": "3.1.4"`,
-  `"minimatch@9": "9.0.7"`) keep each major on its own backported patch. `minimatch@10`/`brace-expansion@5` export
-  non-callable objects, so a blanket override would break `^3.x`/`^1.x` consumers (e.g. `glob@7`) that call the default
-  export directly. Overrides that would collide with a different major required elsewhere are scoped to a single parent
-  (e.g. `"js-beautify": { "glob": "^10.5.0" }`, `"@react-router/serve": { "express": "^4.22.2" }`,
-  `"next": { "postcss": "^8.5.10" }`).
+
+No security overrides are currently required: a periodic revalidation removes any override whose forced version is
+already satisfied by the resolved dependency tree, so only overrides that still change resolution are kept (see
+[Remediation policy](#remediation-policy)).
 
 ## Auditing dependencies (`npm audit`)
 
