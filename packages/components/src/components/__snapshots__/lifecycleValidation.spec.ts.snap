@@ -625,7 +625,7 @@ exports[`should call validateProps() with correct parameters via render for p-mu
 exports[`should call validateProps() with correct parameters via render for p-multi-select-option > propTypes with ValidatorFunctions 1`] = `
 {
   "disabled": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -661,7 +661,7 @@ exports[`should call validateProps() with correct parameters via render for p-pi
   "required": "boolean",
   "state": "oneOf",
   "type": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -689,7 +689,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
   "name": "string",
   "required": "boolean",
   "state": "oneOf",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 
@@ -698,7 +698,7 @@ exports[`should call validateProps() with correct parameters via render for p-ra
   "disabled": "boolean",
   "label": "string",
   "loading": "boolean",
-  "value": "string",
+  "value": "oneOf",
 }
 `;
 

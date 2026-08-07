@@ -5,6 +5,7 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
   selector: 'grid-layout',
   styles: [
     `
+      @use 'sass:map';
       @use '@porsche-design-system/components-angular/scss' as *;
 
       // Visualize Grid
@@ -51,7 +52,7 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
         @if $border-radius == true {
           border-radius: $pds-border-radius-large;
         }
-        background: map-get($color-map, $color);
+        background: map.get($color-map, $color);
       }
 
       // Typography

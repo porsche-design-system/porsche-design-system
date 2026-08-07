@@ -648,6 +648,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/value={/, 'defaultValue={') // fix warning about read-only field
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.parsedValue/g, 'this.parsedValue')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')

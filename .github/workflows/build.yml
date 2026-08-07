@@ -27,6 +27,9 @@ jobs:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/install
       - run: npm run lint
+      # Guards against npm pruning platform-specific native bindings from the lockfile
+      # (https://github.com/npm/cli/issues/4828) — see docs/dependencies.md.
+      - run: npm run npm:verify-lock
   build-development:
     name: 'Development'
     runs-on: ubuntu-latest
