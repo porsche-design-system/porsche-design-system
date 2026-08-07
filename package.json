@@ -277,29 +277,6 @@
   "overrides": {
     "madge": {
       "typescript": "$typescript"
-    },
-    "@tootallnate/once": "^3.0.1",
-    "brace-expansion@1": "1.1.13",
-    "brace-expansion@2": "2.0.3",
-    "braces": "^3.0.3",
-    "ejs": "^3.1.10",
-    "follow-redirects": "^1.16.0",
-    "js-cookie": "^3.0.8",
-    "koa": "^3.2.1",
-    "lodash": "^4.18.1",
-    "mdast-util-to-hast": "^13.2.1",
-    "micromatch": "^4.0.8",
-    "minimatch@3": "3.1.4",
-    "minimatch@5": "5.1.8",
-    "minimatch@9": "9.0.7",
-    "minimatch@10": "10.2.5",
-    "qs": "^6.15.3",
-    "tmp": "^0.2.7",
-    "js-beautify": {
-      "glob": "^10.5.0"
-    },
-    "next": {
-      "postcss": "^8.5.10"
     }
   },
   "volta": {
