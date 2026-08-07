@@ -37,13 +37,13 @@
     "change-case": "^5.4.4",
     "fast-glob": "^3.3.3",
     "gzip-size": "^7.0.0",
-    "prettier": "^3.9.1",
-    "rollup": "^4.62.2",
-    "rollup-plugin-dts": "^6.4.1",
-    "svgo": "^4.0.1",
-    "tsx": "^4.22.4",
+    "prettier": "^3.9.6",
+    "rollup": "^4.62.4",
+    "rollup-plugin-dts": "^6.5.1",
+    "svgo": "^4.0.2",
+    "tsx": "^4.23.8",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "volta": {
     "extends": "../../../../package.json"
