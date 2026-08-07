@@ -183,6 +183,15 @@ describe('transformInputs()', () => {
 </p-some-tag>`
     );
   });
+
+  it('should add closing dash to input without attributes', () => {
+    expect(transformInputs('<input>')).toBe('<input />');
+  });
+
+  it('should not transform already self-closing input', () => {
+    expect(transformInputs('<input type="text" />')).toBe('<input type="text" />');
+    expect(transformInputs('<input type="text"/>')).toBe('<input type="text"/>');
+  });
 });
 
 describe('transformToSelfClosingTags()', () => {
@@ -205,6 +214,17 @@ describe('transformToSelfClosingTags()', () => {
   it('should not transform single line tags to self-closing', () => {
     const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
     expect(transformToSelfClosingTags(input)).toBe('<p-some-tag><a href="#">Some link</a></p-some-tag>');
+  });
+
+  it('should transform tags with digits in their name', () => {
+    expect(transformToSelfClosingTags('<h2 class="some-class"></h2>')).toBe('<h2 class="some-class" />');
+  });
+
+  it('should return invalid markup untouched in linear time', () => {
+    const invalidMarkup = `<${'-'.repeat(10000)}`;
+    const start = performance.now();
+    expect(transformToSelfClosingTags(invalidMarkup)).toBe(invalidMarkup);
+    expect(performance.now() - start).toBeLessThan(1000);
   });
 });
 

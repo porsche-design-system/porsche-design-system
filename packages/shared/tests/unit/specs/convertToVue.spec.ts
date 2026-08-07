@@ -7,6 +7,8 @@ import {
   transformVueAttributesWithDigitValue,
   transformVueAttributesWithNotDigitValue,
   transformVueAttributesWithObjectValues,
+  transformVueInputs,
+  transformVueToSelfClosingTags,
   unbindVueNativeAttributes,
 } from '../../../src/utils/convertToVue';
 
@@ -113,6 +115,50 @@ describe('unbindNativeAttributes()', () => {
     expect(unbindVueNativeAttributes(`<div :style="'background: yellow'"></div>`)).toBe(
       '<div style="background: yellow"></div>'
     );
+  });
+});
+
+describe('transformVueInputs()', () => {
+  it('should add closing dash to input', () => {
+    expect(transformVueInputs('<input type="checkbox">')).toBe('<input type="checkbox" />');
+  });
+
+  it('should add closing dash to input without attributes', () => {
+    expect(transformVueInputs('<input>')).toBe('<input />');
+  });
+
+  it('should not transform already self-closing input', () => {
+    expect(transformVueInputs('<input type="text" />')).toBe('<input type="text" />');
+    expect(transformVueInputs('<input type="text"/>')).toBe('<input type="text"/>');
+  });
+});
+
+describe('transformVueToSelfClosingTags()', () => {
+  it('should transform tags without children to self-closing', () => {
+    expect(transformVueToSelfClosingTags('<button type="button"></button>')).toBe('<button type="button" />');
+  });
+
+  it('should transform multiline tags without children to self-closing', () => {
+    expect(
+      transformVueToSelfClosingTags(`<p-some-tag>
+</p-some-tag>`)
+    ).toBe('<p-some-tag />');
+  });
+
+  it('should not transform single line tags to self-closing', () => {
+    const input = `<p-some-tag><a href="#">Some link</a></p-some-tag>`;
+    expect(transformVueToSelfClosingTags(input)).toBe(input);
+  });
+
+  it('should transform tags with digits in their name', () => {
+    expect(transformVueToSelfClosingTags('<h2 class="some-class"></h2>')).toBe('<h2 class="some-class" />');
+  });
+
+  it('should return invalid markup untouched in linear time', () => {
+    const invalidMarkup = `<${'-'.repeat(10000)}`;
+    const start = performance.now();
+    expect(transformVueToSelfClosingTags(invalidMarkup)).toBe(invalidMarkup);
+    expect(performance.now() - start).toBeLessThan(1000);
   });
 });
 

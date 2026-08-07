@@ -1,4 +1,5 @@
 import { camelCase, pascalCase } from 'change-case';
+import { transformEmptyTagsToSelfClosing, transformInputsToSelfClosing } from './transformSelfClosingTags';
 
 export const transformEventsToVueSyntax = (markup: string): string =>
   markup.replace(/\son([a-z]+?)="(.*?)"/g, ' @$1="$2"');
@@ -33,10 +34,9 @@ export const unbindVueNativeAttributes = (markup: string): string =>
 export const transformVueCustomElementTagName = (markup: string): string =>
   markup.replace(/<(\/?)(p-[\w-]+)/g, (_, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
 
-export const transformVueInputs = (markup: string): string => markup.replace(/(<input(?:.[^/]*?))>/g, '$1 />');
+export const transformVueInputs = (markup: string): string => transformInputsToSelfClosing(markup);
 
-export const transformVueToSelfClosingTags = (markup: string): string =>
-  markup.replace(/(<([A-Za-z-]+)[^>]*?)>\s*<\/\2>/g, '$1 />');
+export const transformVueToSelfClosingTags = (markup: string): string => transformEmptyTagsToSelfClosing(markup);
 
 export const convertToVue = (markup: string): string =>
   [

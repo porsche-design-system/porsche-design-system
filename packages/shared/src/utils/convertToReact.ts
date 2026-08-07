@@ -1,4 +1,5 @@
 import { camelCase, kebabCase, pascalCase } from 'change-case';
+import { transformEmptyTagsToSelfClosing, transformInputsToSelfClosing } from './transformSelfClosingTags';
 
 export const transformObjectValues = (markup: string): string =>
   // remove quotes from object values but add double brackets and camelCase
@@ -26,13 +27,12 @@ export const transformBooleanDigitAndUndefinedValues = (markup: string): string 
 export const transformCustomElementTagName = (markup: string): string =>
   markup.replace(/<(\/?)(p-[\w-]+)/g, (_, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
 
-export const transformInputs = (markup: string): string => markup.replace(/(<input(?:.[^/]*?))>/g, '$1 />');
+export const transformInputs = (markup: string): string => transformInputsToSelfClosing(markup);
 
-export const transformToSelfClosingTags = (markup: string): string =>
-  markup.replace(/(<([A-Za-z-]+)[^>]*?)>\s*<\/\2>/g, '$1 />');
+export const transformToSelfClosingTags = (markup: string): string => transformEmptyTagsToSelfClosing(markup);
 
 export const transformStyleAttribute = (markup: string): string =>
-  markup.replace(/\sstyle="([\s\S]*?)"/g, (_, $style: string) => {
+  markup.replace(/\sstyle="([^"]*)"/g, (_, $style: string) => {
     $style = $style.replace(/;\s*$/g, ''); // remove last semicolon
 
     const pairs = $style.split(';').map((p) => {
