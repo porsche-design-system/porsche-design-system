@@ -170,8 +170,8 @@ stages:
                   fi
             - name: lint
               command: [npm, run, lint]
-            # ponytail: this is the only tracked build output; move cleanup
-            # engine-side if another generator starts writing.
+            # ponytail: restore tracked generated outputs here until the engine
+            # can clean them without discarding repair-agent source edits.
             - name: build
               command:
                 - sh
@@ -179,7 +179,6 @@ stages:
                 - >-
                   log="$(mktemp)" || exit 2;
                   npm run build >"$log" 2>&1; status=$?;
-                  cat "$log";
                   if test "$status" -ne 0; then
                   printf '\n--- build failure summary ---\n' >&2;
                   if ! sed -n '/error during build:/,$p' "$log" |
@@ -187,14 +186,89 @@ stages:
                   tail -n 35 "$log" >&2;
                   fi;
                   fi;
-                  git restore --
+                  git restore -- packages/components/src/components.d.ts
                   packages/components-react/projects/nextjs/next-env.d.ts ||
                   exit 2;
                   rm -f "$log" || exit 2;
                   if test "$status" -eq 0; then exit 0; fi;
                   exit 1
-            - name: components-unit
-              command: [npm, run, "test:unit:components"]
+            - name: unit-tests
+              command:
+                - sh
+                - -c
+                - |-
+                  run_check() {
+                    log="$(mktemp)" || return 2
+                    printf 'Running'
+                    printf ' %s' "$@"
+                    printf '\n'
+                    "$@" >"$log" 2>&1
+                    status=$?
+                    if test "$status" -ne 0; then
+                      printf '\nCommand failed with exit status %s:' "$status" >&2
+                      printf ' %s' "$@" >&2
+                      printf '\n--- unit gate failure summary ---\n' >&2
+                      if ! sed -n '/FAIL/,$p' "$log" |
+                        head -n 10 | cut -b 1-300 | grep . >&2; then
+                        tail -n 10 "$log" | cut -b 1-300 >&2
+                      fi
+                      printf '\n--- end unit gate failure summary ---\n' >&2
+                    fi
+                    rm -f "$log" || return 2
+                    return "$status"
+                  }
+                  run_check npm run test:unit:assets:assets || exit $?
+                  run_check npm run test:unit:assets:flags || exit $?
+                  run_check npm run test:unit:assets:icons || exit $?
+                  run_check npm run test:unit:assets:font-face || exit $?
+                  run_check npm run test:unit:tokens || exit $?
+                  run_check npm run test:unit:styles:tailwindcss || exit $?
+                  run_check npm run test:unit:styles:scss || exit $?
+                  run_check npm run test:unit:styles:emotion || exit $?
+                  run_check npm run test:unit:styles:vanilla-extract || exit $?
+                  run_check npm run build:stylesheets-prod || exit $?
+                  run_check npm run test:unit:stylesheets || exit $?
+                  run_check npm run test:unit:components || exit $?
+                  run_check npm run build:components-prod
+                  status=$?
+                  git restore -- packages/components/src/components.d.ts || exit 2
+                  test "$status" -eq 0 || exit "$status"
+                  run_check npm run build:components-js-prod || exit $?
+                  run_check npm run test:unit:components-js:components-manager-core || exit $?
+                  run_check npm run test:unit:components-js:components-manager-cli || exit $?
+                  run_check npm run test:unit:components-js:components-wrapper || exit $?
+                  run_check npm run test:unit:components-js:jsdom-polyfill || exit $?
+                  run_check npm run test:unit:components-js:partials || exit $?
+                  run_check npm run test:unit:components-angular:vitest || exit $?
+                  # ponytail: use the host browser; install Playwright only if
+                  # GitHub's runner image stops shipping Chrome.
+                  chrome_bin="$(command -v google-chrome ||
+                    command -v google-chrome-stable ||
+                    command -v chromium-browser ||
+                    command -v chromium)"
+                  if test -z "$chrome_bin" &&
+                    test -x "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"; then
+                    chrome_bin="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+                  fi
+                  if test -z "$chrome_bin"; then
+                    printf 'Chrome or Chromium is required for Angular Karma tests.\n' >&2
+                    exit 2
+                  fi
+                  run_check env CI= CHROME_BIN="$chrome_bin" npm run test:unit:components-angular:karma-ci || exit $?
+                  run_check npm run test:unit:components-react:react-wrapper || exit $?
+                  run_check npm run build:components
+                  status=$?
+                  git restore -- packages/components/src/components.d.ts || exit 2
+                  test "$status" -eq 0 || exit "$status"
+                  run_check npm run test:unit:components-react:react-ssr-wrapper || exit $?
+                  run_check npm run test:unit:components-vue || exit $?
+                  run_check npm run test:unit:component-meta || exit $?
+                  run_check npm run build:generateTokensMeta --workspace=@porsche-design-system/tokens-meta || exit $?
+                  run_check npm run test:unit:tokens-meta || exit $?
+                  run_check npm run test:unit:shared || exit $?
+                  run_check npm run test:unit:skill || exit $?
+                  run_check npm run test:unit:storefront || exit $?
+                  run_check npm run test:unit:utilities || exit $?
             - name: dependency-metadata-after
               command: *dependency-metadata-check
 
