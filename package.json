@@ -279,8 +279,7 @@
   "overrides": {
     "madge": {
       "typescript": "$typescript"
-    },
-    "playwright-core": "1.61.0"
+    }
   },
   "volta": {
     "node": "24.15.0",
