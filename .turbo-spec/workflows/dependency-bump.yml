@@ -197,7 +197,7 @@ stages:
                 - sh
                 - -c
                 - |-
-                  run_check() {
+                  run_check() {{
                     log="$(mktemp)" || return 2
                     printf 'Running'
                     printf ' %s' "$@"
@@ -216,7 +216,7 @@ stages:
                     fi
                     rm -f "$log" || return 2
                     return "$status"
-                  }
+                  }}
                   run_check npm run test:unit:assets:assets || exit $?
                   run_check npm run test:unit:assets:flags || exit $?
                   run_check npm run test:unit:assets:icons || exit $?
