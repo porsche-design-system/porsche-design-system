@@ -3,6 +3,7 @@ import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
+import { dts } from 'rollup-plugin-dts';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import modify from 'rollup-plugin-modify';
 import { version } from '../components-wrapper/package.json';
@@ -80,22 +81,34 @@ export default [
   },
   {
     input: 'src/testing.ts',
-    external: ['@testing-library/dom'],
+    // shadow-dom-testing-library patches ShadowRoot.prototype on import, so a bundled copy crashes as soon as the
+    // consumer's own copy loads. It stays external and is shipped as a regular dependency of components-wrapper.
+    external: ['@testing-library/dom', 'shadow-dom-testing-library'],
     output: {
       file: `${outputDir}/testing/index.cjs`,
       format: 'cjs',
     },
-    // emitted declarations are named `testing.d.ts` because of input file
-    // this is renamed to `index.d.ts` via npm script for consistency
     plugins: [
-      typescript({ declaration: true, declarationDir: `${outputDir}/testing`, rootDir: 'src' }),
+      typescript({ rootDir: 'src' }),
       generatePackageJson({
         baseContents: {
           main: 'index.cjs',
           types: 'index.d.ts',
-          sideEffects: false,
         },
       }),
     ],
+  },
+  {
+    // Emits index.d.ts directly, so the input filename no longer has to be renamed afterwards. Everything is external:
+    // shadow-dom-testing-library is a real dependency of components-wrapper and always installed, so re-exporting its
+    // declarations keeps the published types in step with whichever 1.x the consumer actually resolved. Inlining them
+    // instead would freeze the type surface at our build time while the runtime re-export stays dynamic.
+    input: 'src/testing.ts',
+    external: ['@testing-library/dom', 'shadow-dom-testing-library'],
+    output: {
+      file: `${outputDir}/testing/index.d.ts`,
+      format: 'es',
+    },
+    plugins: [dts({ respectExternal: true })],
   },
 ];

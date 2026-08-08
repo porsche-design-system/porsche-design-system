@@ -20,6 +20,9 @@
     "type": "git",
     "url": "https://github.com/porsche-design-system/porsche-design-system"
   },
+  "dependencies": {
+    "shadow-dom-testing-library": "^1.14.1"
+  },
   "peerDependencies": {
     "ag-grid-community": ">= 36.0.0 <37.0.0",
     "ag-grid-enterprise": ">= 36.0.0 <37.0.0",
