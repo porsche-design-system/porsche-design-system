@@ -59,6 +59,18 @@ export default [
                   default: './testing/cjs/index.cjs',
                 },
               },
+              // deep import so that Vitest setups (and the bundled jsdom-polyfill) can normalize the `CSS`
+              // namespace without dragging the Playwright configs and W3C validator of the barrel along
+              './testing/normalize-css-namespace': {
+                import: {
+                  types: './testing/normalizeCssNamespace.d.ts',
+                  default: './testing/normalize-css-namespace/esm/index.mjs',
+                },
+                require: {
+                  types: './testing/normalizeCssNamespace.d.ts',
+                  default: './testing/normalize-css-namespace/cjs/index.cjs',
+                },
+              },
               './css/styles.css': './css/styles.css',
               './css/styles': './css/styles.css',
               './tsconfig.json': './tsconfig.json',
@@ -122,6 +134,23 @@ export default [
       {
         file: 'dist/testing/cjs/index.cjs',
         format: 'cjs',
+      },
+    ],
+    plugins: [typescript({ rootDir: 'src/testing' })],
+  },
+  {
+    // standalone bundle for the `./testing/normalize-css-namespace` deep import, see the exports map above
+    input: 'src/testing/normalizeCssNamespace.ts',
+    external,
+    output: [
+      {
+        file: 'dist/testing/normalize-css-namespace/esm/index.mjs',
+        format: 'esm',
+      },
+      {
+        file: 'dist/testing/normalize-css-namespace/cjs/index.cjs',
+        format: 'cjs',
+        exports: 'named',
       },
     ],
     plugins: [typescript({ rootDir: 'src/testing' })],

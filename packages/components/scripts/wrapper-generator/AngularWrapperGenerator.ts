@@ -135,7 +135,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   _onTouched: () => void = () => {};
 
   writeValue(value: any): void {
-    this._renderer.setProperty(this._elementRef.nativeElement, '${component === 'p-checkbox' ? 'checked' : 'value'}', value);
+    this._renderer.setProperty(this._elementRef.nativeElement, '${component === 'p-checkbox' ? 'checked' : 'value'}', ${component === 'p-checkbox' ? 'value ?? false' : 'value'});
   }
 
   registerOnChange(fn: any): void {

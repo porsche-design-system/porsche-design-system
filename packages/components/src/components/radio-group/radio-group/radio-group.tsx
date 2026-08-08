@@ -11,7 +11,7 @@ import {
   Watch,
 } from '@stencil/core';
 import { GROUP_DIRECTIONS } from '../../../styles/group-direction-styles';
-import type { BreakpointCustomizable, PropTypes } from '../../../types';
+import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -49,7 +49,7 @@ const propTypes: PropTypes<typeof RadioGroup> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   name: AllowedTypes.string,
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number, AllowedTypes.null]),
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   direction: AllowedTypes.breakpoint<RadioGroupDirection>(GROUP_DIRECTIONS),
@@ -93,8 +93,18 @@ export class RadioGroup {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** Sets the currently selected value that pre-selects the matching radio option and reflects user changes. */
-  @Prop({ mutable: true }) public value?: string = '';
+  /**
+   * Sets the currently selected value that pre-selects the matching radio option and reflects user changes.
+   * Matches an option strictly by type and value, meaning string or number only match
+   * an option whose value has the same type and equal value. Use undefined or null for no preselection;
+   * these values never match an option because every option requires a string or number value.
+   *
+   * Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled)
+   * form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a
+   * number-typed option. This limitation only applies to native form state restoration; in controlled forms
+   * (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
+   */
+  @Prop({ mutable: true }) public value?: string | number | null;
 
   /** Associates the radio group with a form element by its ID when the group is not a direct descendant of that form. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
@@ -126,7 +136,7 @@ export class RadioGroup {
   @AttachInternals() private internals: ElementInternals;
 
   private initialLoading: boolean = false;
-  private defaultValue: string;
+  private defaultValue: string | number | null | undefined;
 
   private radioGroupOptions: RadioGroupOption[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -151,8 +161,8 @@ export class RadioGroup {
   }
 
   @Watch('value')
-  public onValueChange(newValue: string): void {
-    this.internals?.setFormValue(newValue);
+  public onValueChange(): void {
+    this.setFormValue();
 
     if (this.radioGroupOptions.length > 0) {
       if (!this.preventOptionUpdate) {
@@ -161,6 +171,11 @@ export class RadioGroup {
       this.preventOptionUpdate = false;
       this.updateTabStops();
     }
+  }
+
+  public setFormValue(): void {
+    // `null`/`undefined` → `undefined`, removing the radio group from form submission
+    this.internals?.setFormValue(this.value === null || this.value === undefined ? undefined : String(this.value));
   }
 
   public connectedCallback(): void {
@@ -198,7 +213,7 @@ export class RadioGroup {
   }
 
   public componentDidLoad(): void {
-    this.internals?.setFormValue(this.value);
+    this.setFormValue();
     this.updateTabStops();
   }
 

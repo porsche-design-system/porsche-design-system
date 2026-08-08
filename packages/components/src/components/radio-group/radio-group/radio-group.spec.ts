@@ -64,6 +64,40 @@ describe('componentDidLoad', () => {
   });
 });
 
+describe('setFormValue', () => {
+  it('should set form value as string when value is a string', () => {
+    const component = initComponent();
+    component.value = 'test';
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.setFormValue();
+    expect(setFormValueSpy).toHaveBeenCalledWith('test');
+  });
+
+  it('should serialize a number value to string for form submission', () => {
+    const component = initComponent();
+    component.value = 42;
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.setFormValue();
+    expect(setFormValueSpy).toHaveBeenCalledWith('42');
+  });
+
+  it('should call setFormValue with undefined when value is null to remove it from form submission', () => {
+    const component = initComponent();
+    component.value = null;
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.setFormValue();
+    expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
+  });
+
+  it('should call setFormValue with undefined when value is undefined to remove it from form submission', () => {
+    const component = initComponent();
+    component.value = undefined;
+    const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
+    component.setFormValue();
+    expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
+  });
+});
+
 describe('render', () => {
   it('should call syncRadioGroupChildrenProps() with correct parameters', () => {
     const spy = vi.spyOn(radioGroupUtils, 'syncRadioGroupChildrenProps');

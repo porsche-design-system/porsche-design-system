@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, type PRadioGroupProps } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-radio-group-example-reactive-form',
@@ -35,7 +35,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>Disabled: <span data-field="disabled">{{ form.controls.myRadioGroup.disabled }}</span></div>
     <div>Value: <span data-field="value">{{ form.controls.myRadioGroup.value }}</span></div>
     <div>Valid: <span data-field="valid">{{ form.controls.myRadioGroup.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
+    <div [@if]="submittedValue !== null">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -43,17 +43,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class RadioGroupExampleReactiveFormComponent {
   form = new FormGroup({
-    myRadioGroup: new FormControl<string>('', { validators: Validators.required, nonNullable: true }),
+    myRadioGroup: new FormControl<PRadioGroupProps['value']>(null, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: string | null = null;
 
   setValue(): void {
     this.form.controls.myRadioGroup.setValue('a');
   }
 
   resetValue(): void {
-    this.form.controls.myRadioGroup.reset('');
+    this.form.controls.myRadioGroup.reset(null);
   }
 
   toggleDisabled(): void {
