@@ -1,5 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
 import { waitFor } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
@@ -69,5 +69,16 @@ it('should emit dismiss event in controlled mode on outside click', async () => 
   expect(dismiss).toHaveBeenCalledTimes(1);
   // panel stays open because the consumer owns `open` and hasn't updated it yet
   expect(el.shadowRoot.querySelector('[popover]').hasAttribute('inert')).toBe(false);
+});
+
+it('should expose its toggle button to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-popover');
+  await componentsReady();
+
+  expect(screen.queryAllByRole('button')).toHaveLength(0);
+  expect(screen.getAllByShadowRole('button')).toHaveLength(1);
+
+  const { shadowRoot } = document.querySelector('p-popover');
+  expect(screen.getByShadowRole('button')).toBe(shadowRoot.querySelector('button[aria-label="More information"]'));
 });
 
