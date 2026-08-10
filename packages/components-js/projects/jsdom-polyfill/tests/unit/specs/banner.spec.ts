@@ -1,5 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -29,4 +29,16 @@ it('should have working events', async () => {
   const button = getByRoleShadowed('button', { name: 'Close banner', hidden: true });
   await userEvent.click(button);
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
+});
+
+it('should expose its heading to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-banner');
+  await componentsReady();
+
+  // text queries do not consult the accessibility tree, so unlike the role query above they need no `hidden: true`
+  expect(screen.queryAllByText('Some heading')).toHaveLength(0);
+  expect(screen.getAllByShadowText('Some heading')).toHaveLength(1);
+
+  const { shadowRoot } = document.querySelector('p-banner');
+  expect(screen.getByShadowText('Some heading')).toBe(shadowRoot.querySelector('h5'));
 });
