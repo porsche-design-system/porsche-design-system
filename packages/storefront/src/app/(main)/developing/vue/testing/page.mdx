@@ -1,0 +1,228 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Vue: Testing - Porsche Design System',
+  description: 'Checkout how to test a Vue application build with Porsche Design System.',
+};
+
+# Vue
+
+<TableOfContents headings={['Test the application', 'Queries', 'Unsupported APIs']} />
+
+## Test the application
+
+**jsdom** supports ShadowDOM since Version 12.2.0. However, it doesn't support JavaScript modules as described in this
+[issue](https://github.com/jsdom/jsdom/issues/2475). Also, it doesn't support `CSSStyleSheet.replace()`,
+`Intersection Observer`, `Element.prototype.scrollTo` and others.
+
+As a workaround we provide a polyfill as part of the `@porsche-design-system/components-vue` package.
+
+The polyfill requires **jsdom v30** or higher. On older versions it throws an explicit error on import.
+
+To apply the polyfill, simply import it in your `setupTest.{js|ts}` file.
+
+**Note:** If your test includes Porsche Design System components, make sure to wrap the component you want to test with
+a `PorscheDesignSystemProvider` in order to avoid exceptions.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  Certain modern browser APIs are not supported in the jsdom environment. See [Unsupported
+  APIs](/developing/vue/testing#unsupported-ap-is) for more information.
+</Notification>
+
+### Setup file
+
+```ts
+// setupTest.{js|ts}
+
+import '@porsche-design-system/components-vue/jsdom-polyfill';
+```
+
+### Example component
+
+```vue
+<!-- SingleComponent.vue -->
+
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-vue';
+
+  const activeTab = ref(0);
+  const onUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>) => {
+    activeTab.value = e.detail.activeTabIndex;
+  };
+</script>
+
+<template>
+  <PTabsBar :activeTabIndex="activeTab" @update="onUpdate">
+    <button data-testid="button1">Some label</button>
+    <button data-testid="button2">Some label</button>
+    <button data-testid="button3">Some label</button>
+  </PTabsBar>
+  <div data-testid="debug">Active Tab: {{ activeTab + 1 }}</div>
+</template>
+```
+
+### Test example component
+
+```ts
+// SingleComponent.test.ts
+
+import { PorscheDesignSystemProvider, componentsReady } from '@porsche-design-system/components-vue';
+import userEvent from '@testing-library/user-event';
+import { render } from '@testing-library/vue';
+import { h } from 'vue';
+import SingleComponent from './SingleComponent.vue';
+
+it('should render Tabs Bar from Porsche Design System and use its events', async () => {
+  const { getByTestId } = render(PorscheDesignSystemProvider, {
+    slots: { default: h(SingleComponent) }, // required for the component to work
+  });
+
+  await componentsReady(); // we need to make sure Porsche Design System components are initialized
+
+  const debug = getByTestId('debug');
+  const button1 = getByTestId('button1');
+  const button2 = getByTestId('button2');
+  const button3 = getByTestId('button3');
+
+  expect(debug.innerHTML).toBe('Active Tab: 1');
+
+  await userEvent.click(button2);
+  expect(debug.innerHTML).toBe('Active Tab: 2');
+
+  await userEvent.click(button3);
+  expect(debug.innerHTML).toBe('Active Tab: 3');
+
+  await userEvent.click(button1);
+  expect(debug.innerHTML).toBe('Active Tab: 1');
+});
+```
+
+More test examples can be found at the [componentsReady() documentation](/developing/components-ready#testing).
+
+## Queries
+
+You are not able to use `getByRole` to query Porsche Design System components when using `@testing-library` because it
+uses default `roles`. For example a `<button>` gets the role `button` without explicitly setting the attribute, so the
+query never reaches an element inside Shadow DOM.
+
+Therefore the `testing` sub-package provides a `Shadow` counterpart for every Testing Library query. These search light
+DOM and Shadow DOM, including nested Shadow DOM.
+
+All 48 available queries:
+
+- **AltText**: `getByShadowAltText`, `getAllByShadowAltText`, `queryByShadowAltText`, `queryAllByShadowAltText`,
+  `findByShadowAltText`, `findAllByShadowAltText`
+- **DisplayValue**: `getByShadowDisplayValue`, `getAllByShadowDisplayValue`, `queryByShadowDisplayValue`,
+  `queryAllByShadowDisplayValue`, `findByShadowDisplayValue`, `findAllByShadowDisplayValue`
+- **LabelText**: `getByShadowLabelText`, `getAllByShadowLabelText`, `queryByShadowLabelText`,
+  `queryAllByShadowLabelText`, `findByShadowLabelText`, `findAllByShadowLabelText`
+- **PlaceholderText**: `getByShadowPlaceholderText`, `getAllByShadowPlaceholderText`, `queryByShadowPlaceholderText`,
+  `queryAllByShadowPlaceholderText`, `findByShadowPlaceholderText`, `findAllByShadowPlaceholderText`
+- **Role**: `getByShadowRole`, `getAllByShadowRole`, `queryByShadowRole`, `queryAllByShadowRole`, `findByShadowRole`,
+  `findAllByShadowRole`
+- **TestId**: `getByShadowTestId`, `getAllByShadowTestId`, `queryByShadowTestId`, `queryAllByShadowTestId`,
+  `findByShadowTestId`, `findAllByShadowTestId`
+- **Text**: `getByShadowText`, `getAllByShadowText`, `queryByShadowText`, `queryAllByShadowText`, `findByShadowText`,
+  `findAllByShadowText`
+- **Title**: `getByShadowTitle`, `getAllByShadowTitle`, `queryByShadowTitle`, `queryAllByShadowTitle`,
+  `findByShadowTitle`, `findAllByShadowTitle`
+
+```ts
+import { PButton, PorscheDesignSystemProvider, componentsReady } from '@porsche-design-system/components-vue';
+import { screen } from '@porsche-design-system/components-vue/testing';
+import { render } from '@testing-library/vue';
+import { h } from 'vue';
+
+it('should work for PButton', async () => {
+  render(PorscheDesignSystemProvider, { slots: { default: h(PButton) } });
+  await componentsReady();
+
+  expect(screen.getByShadowRole('button')).toBe(document.querySelector('p-button').shadowRoot.querySelector('button'));
+});
+```
+
+Also exported: `screen` (every query above, bound to `document`), `within`, `deepQuerySelector`, `deepQuerySelectorAll`,
+`getAllElementsAndShadowRoots`, `debug`, `logShadowDOM`, `prettyShadowDOM`, `logRoles`, `configure` and `getConfig`.
+
+<Notification heading="Requires a DOM" heading-tag="h2" state="warning">
+  These queries need a DOM to search. Importing the `testing` sub-package where no DOM is available throws an error.
+</Notification>
+
+### Porsche Design System queries
+
+Before the queries above were available we shipped three helpers of our own. They are still exported and still
+supported, so existing tests keep working. For new tests prefer the shadow queries above, which cover every query family
+rather than three.
+
+| Ours                     | Equivalent above       |
+| ------------------------ | ---------------------- |
+| `getByRoleShadowed`      | `getByShadowRole`      |
+| `getByLabelTextShadowed` | `getByShadowLabelText` |
+| `getByTextShadowed`      | `getByShadowText`      |
+
+Unlike the shadow queries, these three take an optional container as their first argument and fall back to the whole
+document when it is omitted.
+
+## Unsupported APIs
+
+Certain modern browser APIs are not supported in the jsdom environment.
+
+### Dialog API
+
+Affected Components: `p-modal`, `p-flyout`, `p-flyout-multilevel`
+
+Due to the lack of native support in jsdom, the Dialog API needs to be either manually polyfilled or mocked. You can use
+the available [dialog-polyfill package](https://npmjs.com/package/dialog-polyfill) or create a custom mock
+implementation.
+
+Example mock:
+
+```ts
+HTMLDialogElement.prototype.show = vi.fn();
+HTMLDialogElement.prototype.showModal = vi.fn(function (this: HTMLDialogElement) {
+  this.setAttribute('open', '');
+});
+HTMLDialogElement.prototype.close = vi.fn(function (this: HTMLDialogElement) {
+  this.removeAttribute('open');
+});
+```
+
+### Element Internals API
+
+Affected Components: `p-textarea`
+
+Current polyfills for the Element Internals API are incompatible with Stencil. Therefore, the API must be mocked within
+the test setup.
+
+Example mock:
+
+```ts
+HTMLElement.prototype.attachInternals = vi.fn(
+  () =>
+    ({
+      setFormValue: vi.fn(),
+      setValidity: vi.fn(),
+    }) as ElementInternals
+);
+```
+
+### animate API
+
+Affected Components: `p-tabs-bar`, `p-tabs`
+
+The API must be mocked within the test setup.
+
+Example mock:
+
+```ts
+Element.prototype.animate = vi.fn(
+  () =>
+    ({
+      onfinish: null,
+      cancel: vi.fn(),
+      finish: vi.fn(),
+    }) as unknown as Animation
+);
+```
