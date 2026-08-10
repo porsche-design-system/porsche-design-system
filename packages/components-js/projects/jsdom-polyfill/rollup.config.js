@@ -9,6 +9,11 @@ import modify from 'rollup-plugin-modify';
 import { version } from '../components-wrapper/package.json';
 
 const outputDir = '../../dist/components-wrapper';
+const DOM_ENVIRONMENT_GUARD = `if (typeof ShadowRoot === 'undefined') {
+  throw new Error(
+    '[Porsche Design System] the testing sub package requires a DOM environment, but no \`ShadowRoot\` was found. Use a jsdom or browser test environment instead of plain node, for example Vitest with \`environment: "jsdom"\`.'
+  );
+}`;
 
 export default [
   {
@@ -87,6 +92,7 @@ export default [
     output: {
       file: `${outputDir}/testing/index.cjs`,
       format: 'cjs',
+      intro: DOM_ENVIRONMENT_GUARD,
     },
     plugins: [
       typescript({ rootDir: 'src' }),
