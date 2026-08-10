@@ -37,6 +37,8 @@ updates:
       - dependency-name: "@porsche-design-system/*"
       # Pinned to keep browser binaries in sync with committed VRT snapshots; upgrade deliberately (see docs/dependencies.md)
       - dependency-name: "@playwright/test"
+      # Pinned via root `overrides` to the exact @playwright/test version; drift duplicates the Playwright types (see docs/dependencies.md)
+      - dependency-name: "playwright-core"
       # Pinned: a patch-package patch targets this exact version (see docs/dependencies.md)
       - dependency-name: "@stencil/core"
     groups:

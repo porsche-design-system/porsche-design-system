@@ -137,6 +137,9 @@ packages/components/src/components/{name}/
 
 - **Don't** skip `npm run build` before running tests
 - **Don't** modify `package-lock.json` manually; run `npm install` to regenerate
+- **Don't** patch a missing native binding in a CI step; regenerate the lockfile cleanly and verify it with `npm run npm:verify-lock`
+- **Don't** patch a missing native binding in a CI step; regenerate the lockfile cleanly and verify it with
+  `npm run npm:verify-lock` (see `docs/dependencies.md` → _Platform-specific native bindings in the lockfile_)
 - **Don't** remove focus outlines without providing accessible alternatives
 - **Do** use Docker for VRT to match CI environment
 - **Do** check `docs/dependencies.md` before upgrading packages
