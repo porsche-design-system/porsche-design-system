@@ -8,7 +8,7 @@ export const metadata = {
 
 # Angular
 
-<TableOfContents headings={['Testing with Jest', 'Unsupported APIs']} />
+<TableOfContents headings={['Testing with Jest', 'Queries', 'Unsupported APIs']} />
 
 ## Testing with Jest
 
@@ -97,6 +97,68 @@ it('should render Tabs Bar from Porsche Design System and use its events', async
 ```
 
 More test examples can be found at the [componentsReady() documentation](/developing/components-ready#testing).
+
+## Queries
+
+You are not able to use `getByRole` to query Porsche Design System components when using `@testing-library` because it
+uses default `roles`. For example a `<button>` gets the role `button` without explicitly setting the attribute, so the
+query never reaches an element inside Shadow DOM.
+
+Therefore the `testing` sub-package provides a `Shadow` counterpart for every Testing Library query. These search light
+DOM and Shadow DOM, including nested Shadow DOM.
+
+All 48 available queries:
+
+- **AltText**: `getByShadowAltText`, `getAllByShadowAltText`, `queryByShadowAltText`, `queryAllByShadowAltText`,
+  `findByShadowAltText`, `findAllByShadowAltText`
+- **DisplayValue**: `getByShadowDisplayValue`, `getAllByShadowDisplayValue`, `queryByShadowDisplayValue`,
+  `queryAllByShadowDisplayValue`, `findByShadowDisplayValue`, `findAllByShadowDisplayValue`
+- **LabelText**: `getByShadowLabelText`, `getAllByShadowLabelText`, `queryByShadowLabelText`,
+  `queryAllByShadowLabelText`, `findByShadowLabelText`, `findAllByShadowLabelText`
+- **PlaceholderText**: `getByShadowPlaceholderText`, `getAllByShadowPlaceholderText`, `queryByShadowPlaceholderText`,
+  `queryAllByShadowPlaceholderText`, `findByShadowPlaceholderText`, `findAllByShadowPlaceholderText`
+- **Role**: `getByShadowRole`, `getAllByShadowRole`, `queryByShadowRole`, `queryAllByShadowRole`, `findByShadowRole`,
+  `findAllByShadowRole`
+- **TestId**: `getByShadowTestId`, `getAllByShadowTestId`, `queryByShadowTestId`, `queryAllByShadowTestId`,
+  `findByShadowTestId`, `findAllByShadowTestId`
+- **Text**: `getByShadowText`, `getAllByShadowText`, `queryByShadowText`, `queryAllByShadowText`, `findByShadowText`,
+  `findAllByShadowText`
+- **Title**: `getByShadowTitle`, `getAllByShadowTitle`, `queryByShadowTitle`, `queryAllByShadowTitle`,
+  `findByShadowTitle`, `findAllByShadowTitle`
+
+```ts
+import { screen } from '@porsche-design-system/components-angular/testing';
+
+it('should work for p-button', async () => {
+  const fixture = TestBed.createComponent(SomeComponent);
+  fixture.detectChanges();
+  await componentsReady();
+
+  expect(screen.getByShadowRole('button')).toBe(document.querySelector('p-button').shadowRoot.querySelector('button'));
+});
+```
+
+Also exported: `screen` (every query above, bound to `document`), `within`, `deepQuerySelector`, `deepQuerySelectorAll`,
+`getAllElementsAndShadowRoots`, `debug`, `logShadowDOM`, `prettyShadowDOM`, `logRoles`, `configure` and `getConfig`.
+
+<Notification heading="Requires a DOM" heading-tag="h2" state="warning">
+  These queries need a DOM to search. Importing the `testing` sub-package where no DOM is available throws an error.
+</Notification>
+
+### Porsche Design System queries
+
+Before the queries above were available we shipped three helpers of our own. They are still exported and still
+supported, so existing tests keep working. For new tests prefer the shadow queries above, which cover every query family
+rather than three.
+
+| Ours                     | Equivalent above       |
+| ------------------------ | ---------------------- |
+| `getByRoleShadowed`      | `getByShadowRole`      |
+| `getByLabelTextShadowed` | `getByShadowLabelText` |
+| `getByTextShadowed`      | `getByShadowText`      |
+
+Unlike the shadow queries, these three take an optional container as their first argument and fall back to the whole
+document when it is omitted.
 
 ## Unsupported APIs
 
