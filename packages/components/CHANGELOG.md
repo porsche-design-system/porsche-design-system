@@ -32,6 +32,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Radio Group Option`: extended types of `value` prop to allow `string | number`
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- **Jsdom Polyfill**: requires **jsdom v30** or higher. The bundled `@oddbird/popover-polyfill` now uses `CSS.escape`,
+  which jsdom only provides since v30. On older versions the polyfill throws an explicit error on import. `jsdom` is
+  declared as an optional peer dependency to make the requirement visible.
+  ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
 
 ### Fixed
 
@@ -47,8 +51,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Pin Code`: avoid emitting a `change` event when pasted text matches the existing numeric value
   ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Radio Group Option`: `value` prop is now typed as required and validated at runtime, since an option without a
-  `value` was never functional, it could neither be preselected via the radio group's `value` nor set a meaningful
-  value on it when selected ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+  `value` was never functional, it could neither be preselected via the radio group's `value` nor set a meaningful value
+  on it when selected ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- **Jsdom Polyfill**: `TypeError: 'escape' called on an object that is not a valid instance of CSS.` when rendering
+  components in jsdom v30, caused by consumers (e.g. `jss`) caching `CSS.escape` detached from the `CSS` namespace
+  ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
 
 ## [4.6.0-rc.1] - 2026-08-03
 
