@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "ai-tag",
-    "size": 9423,
-    "gzipSize": 4106
+    "size": 8067,
+    "gzipSize": 3513
   },
   {
     "chunkShortName": "banner",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "icon",
-    "size": 16029,
-    "gzipSize": 6396
+    "size": 16131,
+    "gzipSize": 6428
   },
   {
     "chunkShortName": "inline-notification",
@@ -172,7 +172,7 @@
   {
     "chunkShortName": "main",
     "size": 82277,
-    "gzipSize": 25706
+    "gzipSize": 25710
   },
   {
     "chunkShortName": "modal",
