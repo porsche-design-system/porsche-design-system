@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
-- `Icon`: `connect-services` and `shopping-cart-off` icons ([#3850](https://github.com/porsche-design-system/porsche-design-system/issues/3850))
+- `Icon`: `connect-services` and `shopping-cart-off` icons ([#3850](https://github.com/porsche-design-system/porsche-design-system/issues/3850), [#3791](https://github.com/porsche-design-system/porsche-design-system/issues/3791))
 
 ### Changed
 
