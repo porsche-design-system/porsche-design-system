@@ -97,10 +97,6 @@ export const pdsTheme: Theme = themeQuartz
     headerFontWeight: fontWeightSemibold,
     headerFontSize: typescaleXs,
 
-    // Focus and shadows
-    focusShadow: 'none',
-    inputFocusShadow: 'none',
-
     // Color scheme
     browserColorScheme: 'inherit',
 
