@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import * as dialogUtils from '../../utils/dialog/dialog';
 import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAriaAndHeadingPropsAreUndefined';
 import * as setScrollLockUtils from '../../utils/setScrollLock';
@@ -97,6 +97,76 @@ describe('dismissDialog', () => {
     component['dismissDialog']();
 
     expect(emitMock).toHaveBeenCalledWith();
+  });
+});
+
+describe('body scroll lock', () => {
+  afterEach(() => {
+    document.body.style.overflow = '';
+  });
+
+  it('should lock body scrolling while open', () => {
+    component.open = true;
+    component.componentWillRender();
+    expect(document.body.style.overflow).toBe('hidden');
+  });
+
+  it('should unlock body scrolling when closed', () => {
+    component.open = true;
+    component.componentWillRender();
+    component.open = false;
+    component.componentWillRender();
+    expect(document.body.style.overflow).toBe('');
+  });
+
+  it('should unlock body scrolling when removed from the DOM while open', () => {
+    component.open = true;
+    component.componentWillRender();
+    component.disconnectedCallback();
+    expect(document.body.style.overflow).toBe('');
+  });
+});
+
+describe('native dialog control', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  const stubDialog = (): HTMLDialogElement => {
+    const dialog = component['dialog'];
+    dialog.showModal = vi.fn(() => {
+      dialog.open = true;
+    });
+    dialog.close = vi.fn(() => {
+      dialog.open = false;
+    });
+    dialog.focus = vi.fn();
+    component['scroller'] = document.createElement('div');
+    component['scroller'].scrollTo = vi.fn();
+    return dialog;
+  };
+
+  it('should show the native dialog exactly once while open', () => {
+    const dialog = stubDialog();
+    component.open = true;
+
+    component.componentDidRender();
+    component.componentDidRender();
+
+    expect(dialog.showModal).toHaveBeenCalledTimes(1);
+  });
+
+  it('should close the native dialog when open becomes false', () => {
+    vi.useFakeTimers();
+    const dialog = stubDialog();
+    component.open = true;
+    component.componentDidRender();
+    component.open = false;
+
+    component.componentDidRender();
+    vi.runAllTimers();
+
+    expect(dialog.close).toHaveBeenCalledTimes(1);
   });
 });
 

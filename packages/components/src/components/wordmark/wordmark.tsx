@@ -25,7 +25,7 @@ const propTypes: PropTypes<typeof Wordmark> = {
 export class Wordmark {
   @Element() public host!: HTMLElement;
 
-  /** Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens (`small`, `medium`, `large`, `inherit`). */
+  /** Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens. */
   @Prop() public size?: WordmarkSize = 'small';
 
   /** When set, wraps the wordmark in an anchor element that navigates to the given URL on click. */

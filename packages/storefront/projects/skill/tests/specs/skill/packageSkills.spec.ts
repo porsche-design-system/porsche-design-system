@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import {
   getPackageSkillRouteReferences,
   renderStylesheetsSection,
@@ -10,6 +9,7 @@ import {
   writePackageSkillReferences,
 } from '@skill/packageSkills';
 import { SkillTree } from '@skill/support/skillTree';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 const routeReferences = {
   tailwindcss: 'references/styles/tailwindcss.md',
@@ -50,8 +50,8 @@ describe('package skill registry', () => {
 
   it('writes package files with the raw stylesheet pointers', () => {
     expect(writePackageSkillReferences(tree, routeReferences)).toEqual(Object.values(routeReferences));
-    expect(read('references/styles/tailwindcss.md')).toContain('../tailwindcss/index.css');
-    expect(read('references/styles/scss.md')).toContain('../scss');
+    expect(read('references/styles/tailwindcss.md')).toContain('../../tailwindcss/index.css');
+    expect(read('references/styles/scss.md')).toContain('../../scss');
     expect(read('references/stylesheets.md')).toContain('](./styles/scss.md)');
   });
 
@@ -60,7 +60,7 @@ describe('package skill registry', () => {
     tree.reset();
     writePackageSkillReferences(tree, routeReferences);
 
-    expect(read('references/styles/tailwindcss.md')).toContain('../tailwindcss/index.css');
+    expect(read('references/styles/tailwindcss.md')).toContain('../../tailwindcss/index.css');
     expect(read('references/styles/scss.md')).toContain('@porsche-design-system/components-js/scss');
   });
 });

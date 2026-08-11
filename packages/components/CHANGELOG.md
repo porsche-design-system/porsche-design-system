@@ -14,6 +14,67 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
+  ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+- `Icon`: `connect-services` and `shopping-cart-off` icons ([#3850](https://github.com/porsche-design-system/porsche-design-system/issues/3850), [#3791](https://github.com/porsche-design-system/porsche-design-system/issues/3791))
+
+### Changed
+
+- `Radio Group`: default value of `value` prop to `undefined`. Use `undefined`/`null` to represent an unselected state,
+  since `''` (empty string) is a valid option value and can lead to confusion. An unselected radio group is now omitted
+  from native form submissions instead of submitting an empty string.
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Radio Group`: `value` matches options strictly by type and value. A numeric value only matches an option whose value
+  is also bound as a number, not the equivalent string.
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Pin Code`, `Radio Group`, `Segmented Control`: extended types of `value` prop to allow `string | number | null`
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Radio Group Option`: extended types of `value` prop to allow `string | number`
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- **Jsdom Polyfill**: requires **jsdom v30** or higher. The bundled `@oddbird/popover-polyfill` now uses `CSS.escape`,
+  which jsdom only provides since v30. On older versions the polyfill throws an explicit error on import. `jsdom` is
+  declared as an optional peer dependency to make the requirement visible.
+  ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
+
+### Fixed
+
+- `Angular`: `Checkbox` treats `null` Reactive Forms values as unchecked instead of forwarding `null` to the `checked`
+  prop ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Multi Select`: Announcement of the active/selected option in screen readers
+  ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
+- `Multi Select Option`: accept number values in runtime prop validation, enforce its required value at runtime, and
+  preserve the accessible label for valid falsy values like `0` and `''`
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Pin Code`: avoid emitting a `change` event when pasted text matches the existing numeric value
+  ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- `Radio Group Option`: `value` prop is now typed as required and validated at runtime, since an option without a
+  `value` was never functional, it could neither be preselected via the radio group's `value` nor set a meaningful value
+  on it when selected ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
+- **Jsdom Polyfill**: `TypeError: 'escape' called on an object that is not a valid instance of CSS.` when rendering
+  components in jsdom v30, caused by consumers (e.g. `jss`) caching `CSS.escape` detached from the `CSS` namespace
+  ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
+
+## [4.6.0-rc.1] - 2026-08-03
+
+### Added
+
+- `Knowledge Skill`: Accessibility integration examples for each documented component, pairing anti-pattern and
+  recommended markup in the selected framework
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+- `pds-skill`: `--skill` option to link only the named skills instead of all discovered ones
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+
+### Changed
+
+- `Knowledge Skill`: Renamed from `porsche-design-system-components-{js|angular|react|vue}` to
+  `pds-knowledge-{js|angular|react|vue}`
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+- `Knowledge Skill`: Now shipped in the package's `skills/` directory with one directory per skill, replacing the single
+  `skill/` directory. Update any manually created symlink to the new location
+  ([#4613](https://github.com/porsche-design-system/porsche-design-system/pull/4613))
+
 ### Fixed
 
 - `Segmented Control`: Improved `hover/selected` color visibility of items
@@ -24,8 +85,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 ### Added
 
 - `Knowledge Skill`: providing version-exact guidance for PDS components, stylesheets, design tokens, and styling
-  integrations
-  ([#4555](https://github.com/porsche-design-system/porsche-design-system/pull/4555))
+  integrations ([#4555](https://github.com/porsche-design-system/porsche-design-system/pull/4555))
 
 ## [4.5.0] - 2026-07-21
 

@@ -17,8 +17,11 @@ import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../..
 import {
   AllowedTypes,
   attachComponentCss,
+  debounce,
+  FILTER_STATUS_ANNOUNCE_TIMEOUT,
   FORM_STATES,
   getComboboxAriaAttributes,
+  getFilterStatusMessage,
   getHasNativePopoverSupport,
   getListboxAriaAttributes,
   getMatchingSelectOptionIndex,
@@ -43,6 +46,7 @@ import {
   updateHighlightedOption,
   validateProps,
 } from '../../../utils';
+import { FilterStatusAnnouncer } from '../../common/filter-status-announcer/filter-status-announcer';
 import { Label } from '../../common/label/label';
 import { descriptionId, labelId } from '../../common/label/label-utils';
 import { NoResultsOption } from '../../common/no-results-option/no-results-option';
@@ -161,6 +165,7 @@ export class Select {
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
+  @State() private filterStatusMessage = '';
   @State() private selectedOption: SelectOption;
 
   @AttachInternals() private internals: ElementInternals;
@@ -180,6 +185,10 @@ export class Select {
   private cleanUpAutoUpdate: () => void;
 
   private currentlyHighlightedOption: SelectOption | null = null;
+
+  private announceFilterStatus = debounce((filterValue: string, visibleOptionCount: number): void => {
+    this.filterStatusMessage = getFilterStatusMessage(filterValue, visibleOptionCount);
+  }, FILTER_STATUS_ANNOUNCE_TIMEOUT);
 
   private get hasFilter(): boolean {
     return !!(this.filter || this.filterSlot);
@@ -369,21 +378,24 @@ export class Select {
         </button>
         <div popover="manual" tabIndex={0} onToggle={() => this.onToggle()} ref={(el) => (this.popoverElement = el)}>
           {this.filter && !hasCustomFilterSlot && (
-            <PrefixedTagNames.pInputSearch
-              class="filter"
-              name="filter"
-              label="Filter options"
-              hideLabel={true}
-              autoComplete="off"
-              clear={true}
-              indicator={true}
-              compact={true}
-              onInput={this.onFilterInput}
-              onBlur={(e: any) => e.stopPropagation()}
-              onChange={(e: any) => e.stopPropagation()}
-              onKeyDown={this.onComboKeyDown}
-              ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
-            />
+            <Fragment>
+              <PrefixedTagNames.pInputSearch
+                class="filter"
+                name="filter"
+                label="Filter options"
+                hideLabel={true}
+                autoComplete="off"
+                clear={true}
+                indicator={true}
+                compact={true}
+                onInput={this.onFilterInput}
+                onBlur={(e: any) => e.stopPropagation()}
+                onChange={(e: any) => e.stopPropagation()}
+                onKeyDown={this.onComboKeyDown}
+                ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
+              />
+              <FilterStatusAnnouncer message={this.filterStatusMessage} />
+            </Fragment>
           )}
           {hasCustomFilterSlot && <slot name="filter" ref={(el: HTMLSlotElement) => (this.filterSlot = el)}></slot>}
           {/** biome-ignore lint/a11y/noStaticElementInteractions: role listbox is added through getListboxAriaAttributes */}
@@ -448,6 +460,7 @@ export class Select {
   private resetFilter = (): void => {
     this.inputSearchElement.value = '';
     this.hasFilterResults = true;
+    this.filterStatusMessage = '';
     for (const option of this.selectOptions) {
       option.style.display = 'block';
     }
@@ -616,13 +629,15 @@ export class Select {
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
     e.stopPropagation();
-    const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
+    const filterValue = (e.detail.target as HTMLInputElement).value;
+    const { hasFilterResults, visibleOptionCount, resetCurrentlyHighlightedOption } = updateFilterResults(
       this.selectOptions,
       this.selectOptgroups,
-      (e.detail.target as HTMLInputElement).value
+      filterValue
     );
     resetCurrentlyHighlightedOption && (this.currentlyHighlightedOption = null);
     this.hasFilterResults = hasFilterResults;
+    this.announceFilterStatus(filterValue, visibleOptionCount);
   };
 
   private onToggle = (): void => {

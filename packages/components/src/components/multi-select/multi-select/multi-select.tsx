@@ -5,6 +5,7 @@ import {
   Element,
   Event,
   type EventEmitter,
+  Fragment,
   forceUpdate,
   h,
   type JSX,
@@ -17,8 +18,11 @@ import type { BreakpointCustomizable, PropTypes, ValidatorFunction } from '../..
 import {
   AllowedTypes,
   attachComponentCss,
+  debounce,
+  FILTER_STATUS_ANNOUNCE_TIMEOUT,
   FORM_STATES,
   getComboboxAriaAttributes,
+  getFilterStatusMessage,
   getHasNativePopoverSupport,
   getLastSelectedOption,
   getListboxAriaAttributes,
@@ -43,6 +47,7 @@ import {
   updateHighlightedOption,
   validateProps,
 } from '../../../utils';
+import { FilterStatusAnnouncer } from '../../common/filter-status-announcer/filter-status-announcer';
 import { Label } from '../../common/label/label';
 import { descriptionId, labelId } from '../../common/label/label-utils';
 import { NoResultsOption } from '../../common/no-results-option/no-results-option';
@@ -162,6 +167,7 @@ export class MultiSelect {
 
   @State() private isOpen = false;
   @State() private hasFilterResults = true;
+  @State() private filterStatusMessage = '';
   @State() private selectedOptions: MultiSelectOption[] = [];
 
   @AttachInternals() private internals: ElementInternals;
@@ -180,6 +186,14 @@ export class MultiSelect {
   private cleanUpAutoUpdate: () => void;
 
   private currentlyHighlightedOption: Option | null = null;
+
+  private announceFilterStatus = debounce((filterValue: string, visibleOptionCount: number): void => {
+    this.filterStatusMessage = getFilterStatusMessage(filterValue, visibleOptionCount);
+  }, FILTER_STATUS_ANNOUNCE_TIMEOUT);
+
+  private get hasFilter(): boolean {
+    return !hasNamedSlot(this.host, 'filter') || !!this.filterSlot;
+  }
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: MultiSelectOption }): void {
@@ -379,21 +393,24 @@ export class MultiSelect {
           {hasCustomFilterSlot ? (
             <slot name="filter" ref={(el: HTMLSlotElement) => (this.filterSlot = el)}></slot>
           ) : (
-            <PrefixedTagNames.pInputSearch
-              class="filter"
-              name="filter"
-              label="Filter options"
-              hideLabel={true}
-              autoComplete="off"
-              clear={true}
-              indicator={true}
-              compact={true}
-              onInput={this.onFilterInput}
-              onBlur={(e: any) => e.stopPropagation()}
-              onChange={(e: any) => e.stopPropagation()}
-              onKeyDown={this.onComboKeyDown}
-              ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
-            />
+            <Fragment>
+              <PrefixedTagNames.pInputSearch
+                class="filter"
+                name="filter"
+                label="Filter options"
+                hideLabel={true}
+                autoComplete="off"
+                clear={true}
+                indicator={true}
+                compact={true}
+                onInput={this.onFilterInput}
+                onBlur={(e: any) => e.stopPropagation()}
+                onChange={(e: any) => e.stopPropagation()}
+                onKeyDown={this.onComboKeyDown}
+                ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
+              />
+              <FilterStatusAnnouncer message={this.filterStatusMessage} />
+            </Fragment>
           )}
           {/** biome-ignore lint/a11y/noStaticElementInteractions: role listbox is added through getListboxAriaAttributes */}
           <div
@@ -463,6 +480,7 @@ export class MultiSelect {
   private resetFilter = (): void => {
     this.inputSearchElement.value = '';
     this.hasFilterResults = true;
+    this.filterStatusMessage = '';
     for (const option of this.multiSelectOptions) {
       option.style.display = 'block';
     }
@@ -502,7 +520,7 @@ export class MultiSelect {
           getNextOptionToHighlight(this.multiSelectOptions, this.currentlyHighlightedOption, action)
         );
         const targetElement = (
-          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+          this.hasFilter ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
         ) as
           | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
           | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
@@ -537,7 +555,7 @@ export class MultiSelect {
         this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
 
         const targetElement = (
-          this.filterSlot ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
+          this.hasFilter ? this.inputSearchElement.shadowRoot.querySelector('input') : this.buttonElement
         ) as
           | (HTMLInputElement & { ariaActiveDescendantElement: HTMLElement })
           | (HTMLButtonElement & { ariaActiveDescendantElement: HTMLElement });
@@ -614,13 +632,15 @@ export class MultiSelect {
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
     e.stopPropagation();
-    const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
+    const filterValue = (e.detail.target as HTMLInputElement).value;
+    const { hasFilterResults, visibleOptionCount, resetCurrentlyHighlightedOption } = updateFilterResults(
       this.multiSelectOptions,
       this.multiSelectOptgroups,
-      (e.detail.target as HTMLInputElement).value
+      filterValue
     );
     resetCurrentlyHighlightedOption && (this.currentlyHighlightedOption = null);
     this.hasFilterResults = hasFilterResults;
+    this.announceFilterStatus(filterValue, visibleOptionCount);
   };
 
   private onToggle = (): void => {

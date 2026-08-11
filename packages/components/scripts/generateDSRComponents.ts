@@ -96,7 +96,8 @@ const generateDSRComponents = (): void => {
                 group.endsWith('fc-dismiss-button') ||
                 group.endsWith('required') ||
                 group.endsWith('label') ||
-                group.endsWith('no-results-option')
+                group.endsWith('no-results-option') ||
+                group.endsWith('filter-status-announcer')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
@@ -647,6 +648,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/value={/, 'defaultValue={') // fix warning about read-only field
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.parsedValue/g, 'this.parsedValue')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')

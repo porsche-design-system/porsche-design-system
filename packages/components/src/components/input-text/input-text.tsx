@@ -84,7 +84,7 @@ export class InputText {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** Sets the current text value of the input field. */
+  /** Sets the current text value. Numbers are accepted for programmatic assignment, but user input updates the value as a string. */
   @Prop({ mutable: true }) public value?: string | number | null = '';
 
   /** Provides the browser with a data type hint to enable relevant autofill suggestions (e.g. `autocomplete='name'`). */
@@ -126,13 +126,13 @@ export class InputText {
   /** Shows a live character counter below the field indicating how many characters have been entered relative to `maxLength`. */
   @Prop() public counter?: boolean = false;
 
-  /** Emitted when the input loses focus after its value was changed. */
+  /** Emitted when the input loses focus after its value was changed. The component value and native event target value are strings after user input. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTextChangeEventDetail>;
 
   /** Emitted when the input loses focus, regardless of whether the value changed. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputTextBlurEventDetail>;
 
-  /** Emitted on every value change as the user types. */
+  /** Emitted on every value change as the user types. The component value and native event target value are strings. */
   @Event({ bubbles: true }) public input: EventEmitter<InputTextInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;

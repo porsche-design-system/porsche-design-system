@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
-import { multiSelectA11yExamples } from '@/app/(main)/components/multi-select/accessibility/stories';
+import { multiSelectMeta } from '@/app/(main)/components/multi-select/multi-select.meta';
 
 export const metadata = {
   title: 'Multi Select: Accessibility - Porsche Design System',
@@ -12,74 +12,8 @@ export const metadata = {
 
 <TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
-## Accessibility support
+<multiSelectMeta.accessibility.overview />
 
-### Keyboard
+<A11yIntegrationExamples tag="p-multi-select" examples={multiSelectMeta.accessibility.examples} />
 
-#### Combobox
-
-| Key / state                     | Function                                                                                                                                  |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `Down Arrow` `Up Arrow` `Space` | - Opens the listbox if it is not already displayed without moving focus or changing selection.<br /> - DOM focus remains on the combobox. |
-
-#### Listbox
-
-| Key / state             | Function                                        |
-| ----------------------- | ----------------------------------------------- |
-| `Down Arrow` `Up Arrow` | Moves visual focus to the next/previous option. |
-| `Home` `End`            | Moves visual focus to the first/last option.    |
-| `ESC`                   | Closes listbox                                  |
-| `Enter`                 | Selects an option                               |
-
-### ARIA enhancements
-
-#### Internal **ARIA** that is managed by the component:
-
-| ARIA                            | Usage                                                                                        |
-| ------------------------------- | -------------------------------------------------------------------------------------------- |
-| `aria-labelledby="IDREF"`       | References the accessible name of the combobox.                                              |
-| `aria-describedby="IDREF"`      | References the accessible description and status messages of the combobox.                   |
-| `aria-label="STRING"`           | References the accessible name of the listbox.                                               |
-| `role="status"`, `role="alert"` | When `message` and `state` prop change, the status message is announced.                     |
-| `aria-expanded="BOOLEAN"`       | Indicates that the listbox element is displayed/hidden.                                      |
-| `aria-controls="IDREF"`         | Identifies the element that serves as the listbox.                                           |
-| `aria-hidden="true"`            | If `required` attribute is set, the visible indicator is hidden from assistive technologies. |
-| `aria-multiselectable="true"`   | Indicates that more than one item from the current selectable descendants can be selected.   |
-| `aria-autocomplete="list"`      | Indicates that user input effects results of listbox.                                        |
-| `aria-haspopup="listbox"`       | Indicates that the combobox will open a listbox.                                             |
-| `aria-required="true"`          | Indicates if the element is required.                                                        |
-
-## Development considerations
-
-### Disabled state
-
-In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
-reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
-
-### Common do's and don'ts
-
-- **Do** provide a clear, persistent label for what the selection controls.
-- **Do** use meaningful option text so choices are understandable out of context.
-- **Do** use the component state/message API so validation and status changes are announced.
-- **Don't** use a prompt option or adjacent text as a substitute for a field label.
-- **Don't** use `hide-label` without an accessible name.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={multiSelectA11yExamples} />
-## Tests
-
-### Automated
-
-| Technology                            | Support |
-| ------------------------------------- | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)       | ✅      |
-| Text-Zoom (200%)                      | ✅      |
-
-### Manual
-
-| Technology                      | Support                                                                                                                |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Keyboard                        | ✅                                                                                                                     |
-| Screen reader (VoiceOver, NVDA) | ✅ (Note: Though Safari supports `ariaActiveDescendantElement` the active `option` doesn't get announced in VoiceOver) |
+<multiSelectMeta.accessibility.tests />

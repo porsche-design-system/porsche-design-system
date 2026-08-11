@@ -14,9 +14,9 @@ export const FrameworkNotification = ({
   children,
   ...rest
 }: PropsWithChildren<FrameworkNotificationProps>) => {
-  const { storefrontFramework } = useStorefrontFramework();
+  const { framework } = useStorefrontFramework();
 
-  if (!showForFrameworks.includes(storefrontFramework)) {
+  if (!showForFrameworks.includes(framework)) {
     return null;
   }
 

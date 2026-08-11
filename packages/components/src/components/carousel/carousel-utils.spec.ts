@@ -470,3 +470,65 @@ describe('getLangDirection()', () => {
     expect(carouselUtils.getLangDirection(host)).toBe('rtl');
   });
 });
+
+describe('isInfinitePagination()', () => {
+  it.each<[number, boolean]>([
+    [0, false],
+    [5, false],
+    [6, true],
+    [100, true],
+  ])('should return %s for amountOfPages=%s (threshold is 5)', (amountOfPages, expected) => {
+    expect(carouselUtils.isInfinitePagination(amountOfPages)).toBe(expected);
+  });
+});
+
+describe('updateBulletState()', () => {
+  const buildPagination = (amount: number): HTMLElement => {
+    const el = document.createElement('div');
+    el.innerHTML = Array.from(new Array(amount), () => '<span class="bullet"></span>').join('');
+    return el;
+  };
+
+  // INFINITE_BULLET_OFFSET = 2, INFINITE_BULLET_AMOUNT = 5; columnGap is read via getComputedStyle, which jsdom
+  // leaves empty, so stub it to assert the actual translateX math.
+  const mockColumnGap = (gap: string): void => {
+    vi.spyOn(window, 'getComputedStyle').mockReturnValue({ columnGap: gap } as CSSStyleDeclaration);
+  };
+
+  it('should apply the start-case pagination class and reset transform at the start of the range', () => {
+    const el = buildPagination(8);
+    carouselUtils.updateBulletState(el, 8, 0);
+    expect(el.classList.contains('pagination--infinite')).toBe(true);
+    expect(el.style.transform).toBe('translateX(0)');
+  });
+
+  it('should offset the transform by (index - offset) column-gaps in the middle of the range', () => {
+    mockColumnGap('8px');
+    const el = buildPagination(8);
+    carouselUtils.updateBulletState(el, 8, 4);
+    expect(el.classList.contains('pagination--infinite')).toBe(false);
+    expect(el.style.transform).toBe('translateX(calc(-2 * 8px))');
+  });
+
+  it('should clamp the transform to the last window in the end-case of the range', () => {
+    mockColumnGap('8px');
+    const el = buildPagination(8);
+    carouselUtils.updateBulletState(el, 8, 7);
+    expect(el.classList.contains('pagination--infinite')).toBe(false);
+    expect(el.style.transform).toBe('translateX(calc(-3 * 8px))');
+  });
+
+  it('should mark an infinite bullet around the active index', () => {
+    const el = buildPagination(8);
+    carouselUtils.updateBulletState(el, 8, 0);
+    const infiniteBullets = el.querySelectorAll('.bullet--infinite');
+    expect(infiniteBullets.length).toBeGreaterThan(0);
+  });
+
+  it('should mark the left infinite bullet in the end-case of the range', () => {
+    const el = buildPagination(8);
+    carouselUtils.updateBulletState(el, 8, 7);
+    // end-case marks the bullet at amountOfPages - INFINITE_BULLET_AMOUNT = 3
+    expect(el.children[3].classList.contains('bullet--infinite')).toBe(true);
+  });
+});

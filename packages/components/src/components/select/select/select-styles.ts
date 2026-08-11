@@ -20,6 +20,7 @@ import {
   getFunctionalComponentLabelStyles,
 } from '../../common/label/label-styles';
 import { getFunctionalComponentNoResultsOptionStyles } from '../../common/no-results-option/no-results-option-styles';
+import { getFunctionalComponentFilterStatusAnnouncerStyles } from '../../common/filter-status-announcer/filter-status-announcer-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
 import { cssVarInternalSelectOptionScaling } from '../select-option/select-option-styles';
@@ -68,6 +69,8 @@ export const getComponentCss = (
     icon: getIconJssStyle(isOpen),
     // .no-results / .sr-only
     ...getFunctionalComponentNoResultsOptionStyles('select-option', cssVarInternalSelectScaling),
+    // .filter-status
+    ...getFunctionalComponentFilterStatusAnnouncerStyles(),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, false, hideLabel),
     // .message

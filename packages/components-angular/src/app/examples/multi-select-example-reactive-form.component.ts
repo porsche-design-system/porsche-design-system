@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { type PMultiSelectProps, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-reactive-form',
@@ -43,7 +43,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class MultiSelectExampleReactiveFormComponent {
   form = new FormGroup({
-    myMultiSelect: new FormControl<string[]>([], { validators: Validators.required }),
+    myMultiSelect: new FormControl<PMultiSelectProps['value']>([], { validators: Validators.required }),
   });
 
   submittedValue: any = undefined;

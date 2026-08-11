@@ -1,17 +1,18 @@
 import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes } from '../../../types';
+import type { PropTypes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getOptionAriaAttributes,
   throwIfParentIsNotOfKind,
+  throwIfPropIsUndefined,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './multi-select-option-styles';
 import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 
 const propTypes: PropTypes<typeof MultiSelectOption> = {
-  value: AllowedTypes.string,
+  value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   disabled: AllowedTypes.boolean,
 };
 
@@ -25,7 +26,7 @@ const propTypes: PropTypes<typeof MultiSelectOption> = {
 export class MultiSelectOption {
   @Element() public host!: HTMLElement & MultiSelectOptionInternalHTMLProps;
 
-  /** Sets the value submitted with the form data when this option is selected in the parent multi-select. */
+  /** Sets the required option value submitted with the form data when selected. Must be a string or number. */
   @Prop() public value: string | number;
 
   /** Disables the option, preventing it from being selected. */
@@ -37,6 +38,7 @@ export class MultiSelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    throwIfPropIsUndefined(this.host, 'value', this.value);
     const { selected: isSelected, highlighted, hidden } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
 
@@ -47,7 +49,7 @@ export class MultiSelectOption {
       <Host
         onClick={!isDisabled && this.onClick}
         role="option"
-        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, !!this.value)}
+        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, this.value !== undefined && this.value !== null)}
       >
         <div
           class={{

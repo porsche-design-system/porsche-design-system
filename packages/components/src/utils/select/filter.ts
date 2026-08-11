@@ -9,7 +9,7 @@ export const updateFilterResults = (
   options: (SelectOption | MultiSelectOption)[],
   optgroups: (SelectOptgroup | MultiSelectOptgroup)[],
   filterValue: string
-): { hasFilterResults: boolean; resetCurrentlyHighlightedOption: boolean } => {
+): { hasFilterResults: boolean; visibleOptionCount: number; resetCurrentlyHighlightedOption: boolean } => {
   const value = filterValue.toLowerCase();
   let resetCurrentlyHighlightedOption = false;
 
@@ -32,8 +32,11 @@ export const updateFilterResults = (
     (optgroup as HTMLOptGroupElement).style.display = visibleOptions ? 'block' : 'none';
   }
 
+  const visibleOptionCount = options.filter((option) => option.style.display !== 'none' && !option.hidden).length;
+
   return {
-    hasFilterResults: options.some((option) => option.style.display !== 'none' && !option.hidden),
+    hasFilterResults: visibleOptionCount > 0,
+    visibleOptionCount,
     resetCurrentlyHighlightedOption,
   };
 };

@@ -1,28 +1,35 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { getSkillName, SKILL_FRAMEWORKS, type SkillFramework, type SkillId } from '../registry';
 import { resolveFrameworkPlaceholder } from './links';
 
-/** The four wrapper frameworks the skill is generated for. */
-export const FRAMEWORKS = ['js', 'angular', 'react', 'vue'] as const;
-export type Framework = (typeof FRAMEWORKS)[number];
+/** The four wrapper frameworks every skill is generated for. */
+export const FRAMEWORKS = SKILL_FRAMEWORKS;
+export type Framework = SkillFramework;
 
 export const isFramework = (value: string): value is Framework => (FRAMEWORKS as readonly string[]).includes(value);
 
 /** Ignored staging root populated once before the four wrappers are packaged. */
 export const SKILL_STAGING_DIR = 'packages/storefront/projects/skill/generated';
 
-/** Each framework's staged `skill/` tree, relative to the monorepo root. */
-export const STAGED_SKILL_DIRS: Record<Framework, string> = {
-  js: `${SKILL_STAGING_DIR}/js`,
-  angular: `${SKILL_STAGING_DIR}/angular`,
-  react: `${SKILL_STAGING_DIR}/react`,
-  vue: `${SKILL_STAGING_DIR}/vue`,
-};
+/** A skill's staged tree for one framework, relative to the monorepo root. */
+export const stagedSkillDir = (skillId: SkillId, framework: Framework): string =>
+  `${SKILL_STAGING_DIR}/${framework}/skills/${getSkillName(skillId, framework)}`;
+
+/** Every framework's staged tree of a skill, relative to the monorepo root. */
+export const stagedSkillDirs = (skillId: SkillId): Record<Framework, string> =>
+  Object.fromEntries(FRAMEWORKS.map((fw) => [fw, stagedSkillDir(skillId, fw)])) as Record<Framework, string>;
+
+/**
+ * Each framework's staged knowledge-skill tree, relative to the monorepo root. Kept as a flat map
+ * while knowledge is the only distributed skill; use {@link stagedSkillDir} for any other.
+ */
+export const STAGED_SKILL_DIRS: Record<Framework, string> = stagedSkillDirs('knowledge');
 
 /**
  * Each framework's built dist root (relative to the monorepo root) — the parent the
- * `build:subPackages:skill` copy step writes `skill/` into, sitting beside the also-copied
- * `meta/` and `tokens/`. The raw-link CI gate resolves the trees' `../meta` / `../tokens`
+ * `build:subPackages:skill` copy step writes `skills/` into, sitting beside the also-copied
+ * `meta/` and `tokens/`. The raw-link CI gate resolves the trees' `../../meta` / `../../tokens`
  * references against this layout, since those siblings exist only in the built dist, not in
  * staging. Populated in CI by restoring the `build-development` artifact.
  */

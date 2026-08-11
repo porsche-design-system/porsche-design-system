@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { A11yIntegrationExamples } from '@/components/accessibility/A11yIntegrationExamples';
-import { stepperHorizontalA11yExamples } from '@/app/(main)/components/stepper-horizontal/accessibility/stories';
+import { stepperHorizontalMeta } from '@/app/(main)/components/stepper-horizontal/stepper-horizontal.meta';
 
 export const metadata = {
   title: 'Stepper Horizontal: Accessibility - Porsche Design System',
@@ -12,49 +12,8 @@ export const metadata = {
 
 <TableOfContents headings={['Accessibility support', 'Development considerations', 'Integration examples', 'Tests']} />
 
-## Accessibility support
+<stepperHorizontalMeta.accessibility.overview />
 
-### Keyboard
+<A11yIntegrationExamples tag="p-stepper-horizontal" examples={stepperHorizontalMeta.accessibility.examples} />
 
-| Key / state        | Function                                                                        |
-| ------------------ | ------------------------------------------------------------------------------- |
-| `Tab`, `Shift-Tab` | Moves focus to the scroll container or to next (or previous) focusable element. |
-| `Enter`, `Space`   | Activates the completed and current step-item.                                  |
-| `disabled`         | Step-item still focusable.                                                      |
-
-### ARIA enhancements
-
-#### Internal **ARIA** that is managed by the component:
-
-| ARIA              | Usage                                         |
-| ----------------- | --------------------------------------------- |
-| `role="list"`     | Indicates the stepper as list element.        |
-| `role="listitem"` | Indicates the step-item as list-item element. |
-
-## Development considerations
-
-### Common do's and don'ts
-
-- **Do** provide descriptive text in each step item so progress is understandable out of context.
-- **Do** reflect the current step with the item `state` prop (`current`, `complete`, `warning`).
-- **Don't** use generic labels like "Step 1" without describing the step purpose.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={stepperHorizontalA11yExamples} />
-## Tests
-
-### Automated
-
-| Technology                            | Support |
-| ------------------------------------- | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)       | ✅      |
-| Text-Zoom (200%)                      | ✅      |
-
-### Manual
-
-| Technology                      | Support |
-| ------------------------------- | ------- |
-| Keyboard                        | ✅      |
-| Screen reader (VoiceOver, NVDA) | ✅      |
+<stepperHorizontalMeta.accessibility.tests />

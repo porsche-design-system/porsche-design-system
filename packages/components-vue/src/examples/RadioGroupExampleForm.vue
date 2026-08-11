@@ -17,11 +17,17 @@
 </template>
 
 <script setup lang="ts">
-import { PButton, PRadioGroup, PRadioGroupOption, PText } from '@porsche-design-system/components-vue';
+import {
+  PButton,
+  PRadioGroup,
+  PRadioGroupOption,
+  type PRadioGroupProps,
+  PText,
+} from '@porsche-design-system/components-vue';
 import { reactive, ref } from 'vue';
 
-const form = reactive({
-  myRadioGroup: '',
+const form = reactive<{ myRadioGroup: PRadioGroupProps['value'] }>({
+  myRadioGroup: null,
 });
 
 const submittedValue = ref();
@@ -31,7 +37,7 @@ const onSubmit = () => {
 };
 
 const onReset = () => {
-  form.myRadioGroup = '';
+  form.myRadioGroup = null;
 };
 </script>
 

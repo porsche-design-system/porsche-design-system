@@ -12,7 +12,7 @@
     "build:subPackages": "npm run build:subPackages:lib && npm run build:subPackages:stylesheets && npm run build:subPackages:tailwindcss && npm run build:subPackages:vanilla-extract && npm run build:subPackages:typings && npm run build:subPackages:skill",
     "build:subPackages:lib": "npx rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
     "build:subPackages:skill": "npm run build:subPackages:skill:content && npm run build:subPackages:skill:bin",
-    "build:subPackages:skill:content": "SOURCE=../storefront/projects/skill/generated/vue && TARGET=./dist/vue-wrapper/skill && test -f $SOURCE/SKILL.md || { echo 'Missing staged vue skill. Run npm run build:skill first.' >&2; exit 1; }; rm -rf $TARGET && cp -r $SOURCE $TARGET",
+    "build:subPackages:skill:content": "SOURCE=../storefront/projects/skill/generated/vue/skills && TARGET=./dist/vue-wrapper/skills && test -f $SOURCE/pds-knowledge-vue/SKILL.md || { echo 'Missing staged vue skill. Run npm run build:skill first.' >&2; exit 1; }; rm -rf $TARGET && cp -r $SOURCE $TARGET",
     "build:subPackages:skill:bin": "SOURCE=../storefront/projects/skill/bin/pds-skill.js && TARGET=./dist/vue-wrapper/bin && test -f $SOURCE || { echo \"Missing canonical pds-skill binary at $SOURCE.\" >&2; exit 1; }; rm -rf $TARGET && mkdir -p $TARGET && cp $SOURCE $TARGET/pds-skill.js && chmod +x $TARGET/pds-skill.js",
     "build:subPackages:tailwindcss": "TARGET=./dist/vue-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:subPackages:vanilla-extract": "TARGET=./dist/vue-wrapper/vanilla-extract && rm -rf $TARGET && cp -r ../styles/projects/vanilla-extract/dist $TARGET",
@@ -38,34 +38,34 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "4.6.0-rc.0",
-    "vue": "^3.5.39",
-    "vue-router": "^5.1.0"
+    "@porsche-design-system/components-vue": "4.6.0-rc.1",
+    "vue": "^3.5.41",
+    "vue-router": "^5.2.0"
   },
   "devDependencies": {
     "@playwright/test": "1.61.0",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@tailwindcss/postcss": "^4.3.1",
+    "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node18": "^18.2.6",
-    "@vitejs/plugin-vue": "^6.0.7",
+    "@vitejs/plugin-vue": "^6.0.8",
     "@vitejs/plugin-vue-jsx": "^5.1.6",
     "@vue/tsconfig": "^0.9.1",
-    "ag-grid-community": "36.0.0",
-    "ag-grid-enterprise": "36.0.0",
-    "ag-grid-vue3": "36.0.0",
+    "ag-grid-community": "36.1.0",
+    "ag-grid-enterprise": "36.1.0",
+    "ag-grid-vue3": "36.1.0",
     "change-case": "^5.4.4",
-    "concurrently": "^10.0.3",
+    "concurrently": "^10.0.4",
     "fast-glob": "^3.3.3",
     "local-web-server": "^5.4.0",
     "postcss": "^8",
-    "tailwindcss": "^4.3.1",
-    "tsx": "^4.22.4",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.7",
     "typescript": "^6.0.3",
-    "vite": "^8.1.0",
+    "vite": "^8.2.0",
     "vite-plugin-html": "^3.2.2",
-    "vue-tsc": "^3.3.5"
+    "vue-tsc": "^3.3.9"
   },
   "volta": {
     "extends": "../../package.json"

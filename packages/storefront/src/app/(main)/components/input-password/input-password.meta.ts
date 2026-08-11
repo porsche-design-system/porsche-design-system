@@ -1,8 +1,15 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { inputPasswordExampleForm } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/input-password/accessibility/page.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-password/accessibility/examples/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-password/accessibility/examples/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-password/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import AccessibilityOverview from '@/app/(main)/components/input-password/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/input-password/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-password/configurator/introduction.mdx';
-import { inputPasswordSlotStories, inputPasswordStory } from '@/app/(main)/components/input-password/configurator/story';
+import {
+  inputPasswordSlotStories,
+  inputPasswordStory,
+} from '@/app/(main)/components/input-password/configurator/story';
 import FormDescription from '@/app/(main)/components/input-password/examples/form/example.mdx';
 import SlotsDescription from '@/app/(main)/components/input-password/examples/slots/example.mdx';
 import { inputPasswordStorySlots } from '@/app/(main)/components/input-password/examples/slots/story';
@@ -38,7 +45,14 @@ export const inputPasswordMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-input-password'],
 } satisfies ComponentDocsMeta<'p-input-password'>;
-

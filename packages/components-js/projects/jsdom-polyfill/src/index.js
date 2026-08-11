@@ -1,9 +1,25 @@
+// Must run before every other polyfill: `@oddbird/popover-polyfill` calls `CSS.escape` while applying its
+// styles, and the Stencil loader at the bottom of this file pulls in jss, which caches `CSS.escape` unbound.
+// See packages/shared/src/testing/normalizeCssNamespace.ts for why jsdom needs this and
+// ./normalizeCssNamespace.js for why it is required through a local module.
+require('./normalizeCssNamespace').normalizeCssNamespace();
+
 // polyfills for features used by our components but unsupported within jest (jsdom)
 require('construct-style-sheets-polyfill');
 require('intersection-observer');
 require('matchmedia-polyfill');
 require('matchmedia-polyfill/matchMedia.addListener');
 require('scroll-behavior-polyfill');
+
+// `@oddbird/popover-polyfill` calls `CSS.escape` while applying its styles, and jsdom only exposes a `CSS`
+// namespace since v30. Fail early with an actionable message instead of a cryptic
+// `TypeError: Cannot read properties of undefined (reading 'escape')` from deep inside the polyfill.
+if (typeof globalThis.CSS === 'undefined' || typeof globalThis.CSS.escape !== 'function') {
+  throw new Error(
+    '[Porsche Design System] the jsdom-polyfill sub package requires jsdom v30 or higher, but no `CSS.escape` was found in the current environment'
+  );
+}
+
 require('@oddbird/popover-polyfill');
 const ro = require('resize-observer-polyfill');
 

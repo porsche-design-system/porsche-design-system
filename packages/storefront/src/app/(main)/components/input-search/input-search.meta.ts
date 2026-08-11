@@ -1,6 +1,11 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { inputSearchExampleForm } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/input-search/accessibility/page.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-search/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import AccessibilityOverview from '@/app/(main)/components/input-search/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/input-search/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-search/configurator/introduction.mdx';
 import { inputSearchSlotStories, inputSearchStory } from '@/app/(main)/components/input-search/configurator/story';
 import AriaComboboxDescription from '@/app/(main)/components/input-search/examples/aria-combobox/example.mdx';
@@ -38,7 +43,15 @@ export const inputSearchMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-input-search'],
 } satisfies ComponentDocsMeta<'p-input-search'>;
-

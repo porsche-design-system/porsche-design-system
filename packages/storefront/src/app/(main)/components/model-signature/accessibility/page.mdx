@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { modelSignatureMeta } from '@/app/(main)/components/model-signature/model-signature.meta';
 
 export const metadata = {
   title: 'Model Signature: Accessibility - Porsche Design System',
@@ -10,22 +11,6 @@ export const metadata = {
 
 <TableOfContents headings={['Accessibility support', 'Tests']} />
 
-## Accessibility support
+<modelSignatureMeta.accessibility.overview />
 
-This component does not include any special accessibility features.
-
-## Tests
-
-### Automated
-
-| Technology                            | Support |
-| ------------------------------------- | ------- |
-| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
-| High-Contrast Mode (light/dark)       | ✅      |
-| Text-Zoom (200%)                      | ✅      |
-
-### Manual
-
-| Technology                      | Support |
-| ------------------------------- | ------- |
-| Screen reader (VoiceOver, NVDA) | ✅      |
+<modelSignatureMeta.accessibility.tests />

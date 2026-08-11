@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
   //skipTrailingSlashRedirect: true,
   distDir: 'dist',
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  // The skill registry is exported as raw TypeScript, so it has to be compiled by the storefront build.
+  transpilePackages: ['@porsche-design-system/skill'],
   images: {
     unoptimized: true,
   },
