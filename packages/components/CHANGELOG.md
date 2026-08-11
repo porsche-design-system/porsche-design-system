@@ -20,12 +20,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4643](https://github.com/porsche-design-system/porsche-design-system/pull/4643))
 - `Select`, `Multi Select`: Announcement of filter results in screen readers (currently only in English)
   ([#4563](https://github.com/porsche-design-system/porsche-design-system/pull/4563))
-- `Icon`: `connect-services` and `shopping-cart-off` icons ([#3850](https://github.com/porsche-design-system/porsche-design-system/issues/3850), [#3791](https://github.com/porsche-design-system/porsche-design-system/issues/3791))
+- `Icon`: `connect-services` and `shopping-cart-off` icons
+  ([#3850](https://github.com/porsche-design-system/porsche-design-system/issues/3850),
+  [#3791](https://github.com/porsche-design-system/porsche-design-system/issues/3791))
 
 ### Changed
 
-- `Ai Tag`: POSIX locales (e.g. `en_US`) are deprecated in favor of BCP47 locales (e.g. `en-US`)
-  ([#4643](https://github.com/porsche-design-system/porsche-design-system/pull/4643))
 - `Radio Group`: default value of `value` prop to `undefined`. Use `undefined`/`null` to represent an unselected state,
   since `''` (empty string) is a valid option value and can lead to confusion. An unselected radio group is now omitted
   from native form submissions instead of submitting an empty string.
@@ -59,6 +59,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **Jsdom Polyfill**: `TypeError: 'escape' called on an object that is not a valid instance of CSS.` when rendering
   components in jsdom v30, caused by consumers (e.g. `jss`) caching `CSS.escape` detached from the `CSS` namespace
   ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
+
+### Deprecated
+
+- `Ai Tag`: POSIX locales (e.g. `en_US`) are deprecated in favor of BCP47 locales (e.g. `en-US`)
+  ([#4643](https://github.com/porsche-design-system/porsche-design-system/pull/4643))
 
 ## [4.6.0-rc.1] - 2026-08-03
 
