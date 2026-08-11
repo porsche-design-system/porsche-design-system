@@ -45,6 +45,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
+- `Link Tile` / `Button Tile`: Interactive content in the header slot (e.g. tags with links/buttons) is clickable again
+  ([#4648](https://github.com/porsche-design-system/porsche-design-system/pull/4648))
 - `Angular`: `Checkbox` treats `null` Reactive Forms values as unchecked instead of forwarding `null` to the `checked`
   prop ([#4411](https://github.com/porsche-design-system/porsche-design-system/pull/4411))
 - `Multi Select`: Announcement of the active/selected option in screen readers
