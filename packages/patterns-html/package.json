@@ -8,7 +8,8 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "tsx scripts/build.ts",
+    "build": "tsx scripts/build.ts && npm run build:css",
+    "build:css": "tailwindcss --input ./src/assets/patterns.css --output ./dist/assets/patterns.css",
     "preview": "npm run build && vite preview --outDir ../dist --port 3007",
     "lint": "biome lint",
     "test": "npm run test:unit",
@@ -16,7 +17,10 @@
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.3",
     "fast-glob": "^3.3.3",
+    "tailwindcss": "^4.3.3",
     "tsx": "^4.23.7",
     "typescript": "^6.0.3",
     "vite": "^8.2.0",

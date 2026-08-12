@@ -1,5 +1,6 @@
 // Dummy behaviour: no backend, just an accessible confirmation message.
-document.querySelector('.contact-form').addEventListener('submit', (event) => {
+// Behaviour hooks on ids, so restyling with utility classes cannot break the script.
+document.getElementById('contact-form').addEventListener('submit', (event) => {
   event.preventDefault();
 
   const form = event.currentTarget;

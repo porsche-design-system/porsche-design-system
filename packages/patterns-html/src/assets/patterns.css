@@ -1,209 +1,83 @@
-/* Shared chrome for every pattern page: base layout, header and footer. */
+/*
+ * Tailwind entry for every pattern page.
+ *
+ * Dev: compiled on the fly by `@tailwindcss/vite`.
+ * Build: compiled by the Tailwind CLI into `dist/assets/patterns.css` (see the `build:css` script), so the generated
+ * pages still link a single plain CSS file through a relative path.
+ *
+ * Everything that can be expressed as a utility lives in the markup. Only genuinely global element defaults are
+ * defined here – they apply to every page and would otherwise have to be repeated on every `<body>` and `<main>`.
+ */
 
-:root {
-  --color-text: #010205;
-  --color-text-muted: #535457;
-  --color-background: #fff;
+@import "tailwindcss";
+
+/* The pages are HTML templates, so Tailwind is pointed at them explicitly. */
+@source "../**/*.html";
+
+@theme {
+  --color-fg: #010205;
+  --color-fg-muted: #535457;
+  --color-bg: #fff;
   --color-surface: #f2f2f2;
-  --color-border: #d8d8db;
+  --color-line: #d8d8db;
   --color-focus: #1a44ec;
-  --spacing: 1.5rem;
-  --max-width: 75rem;
-  color-scheme: light dark;
+
+  --container-page: 75rem;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", roboto, sans-serif;
 }
 
+/*
+ * Dark mode swaps the theme values themselves, so every utility built on them follows automatically and the markup
+ * stays free of `dark:` variants.
+ */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-text: #fff;
-    --color-text-muted: #b0b1b3;
-    --color-background: #0e0e12;
+    --color-fg: #fff;
+    --color-fg-muted: #b0b1b3;
+    --color-bg: #0e0e12;
     --color-surface: #1a1a1f;
-    --color-border: #37373b;
+    --color-line: #37373b;
     --color-focus: #6b8bff;
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100svh;
-  margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", roboto, sans-serif;
-  line-height: 1.5;
-  color: var(--color-text);
-  background: var(--color-background);
-}
-
-main {
-  flex: 1 1 auto;
-  width: 100%;
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding: calc(var(--spacing) * 2) var(--spacing);
-}
-
-a {
-  color: inherit;
-}
-
-/* Focus is never removed – only made consistent. */
-:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-}
-
-/* Skip link: off-screen until it receives keyboard focus. */
-.skip-link {
-  position: absolute;
-  inset-block-start: 0.5rem;
-  inset-inline-start: 0.5rem;
-  z-index: 10;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.375rem;
-  background: var(--color-background);
-  text-decoration: none;
-  transform: translateY(-200%);
-}
-
-.skip-link:focus-visible {
-  transform: translateY(0);
-}
-
-.site-header,
-.site-footer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing);
-  padding: var(--spacing);
-}
-
-.site-header {
-  border-block-end: 1px solid var(--color-border);
-}
-
-.site-footer {
-  border-block-start: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
-}
-
-.site-header__brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.site-header__brand-mark {
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 50%;
-  background: currentcolor;
-}
-
-.site-header__nav ul,
-.site-footer__nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.site-header__nav a,
-.site-footer__nav a {
-  display: inline-block;
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.375rem;
-  color: var(--color-text-muted);
-  text-decoration: none;
-}
-
-.site-header__nav a:hover,
-.site-footer__nav a:hover {
-  color: var(--color-text);
-  background: var(--color-surface);
-}
-
-/* The current page is conveyed by aria-current, the styling only mirrors it. */
-.site-header__nav a[aria-current="page"] {
-  color: var(--color-text);
-  background: var(--color-surface);
-  font-weight: 600;
-}
-
-.site-footer__copyright {
-  margin: 0;
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-.site-header__search {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.site-header__search input {
-  padding: 0.375rem 0.75rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.375rem;
-  background: var(--color-background);
-  color: inherit;
-  font: inherit;
-}
-
-.site-header__search button {
-  padding: 0.375rem 0.875rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.375rem;
-  background: var(--color-surface);
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-}
-
-.prose {
-  max-width: 42rem;
-}
-
-@media (forced-colors: active) {
-  .site-header,
-  .site-footer {
-    border-color: canvastext;
+@layer base {
+  :root {
+    color-scheme: light dark;
   }
 
-  .site-header__nav a[aria-current="page"] {
-    background: highlight;
-    color: highlighttext;
-    forced-color-adjust: none;
+  body {
+    display: flex;
+    min-height: 100svh;
+    flex-direction: column;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
   }
 
-  .site-header__search input,
-  .site-header__search button {
-    border-color: canvastext;
+  main {
+    width: 100%;
+    max-width: var(--container-page);
+    flex: 1 1 auto;
+    margin-inline: auto;
+    padding: calc(var(--spacing) * 12) calc(var(--spacing) * 6);
   }
 
+  a {
+    color: inherit;
+  }
+
+  /* Focus is never removed – only made consistent, in forced colors too. */
   :focus-visible {
-    outline-color: canvastext;
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline-color: canvastext;
+    }
   }
 }

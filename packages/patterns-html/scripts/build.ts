@@ -9,6 +9,9 @@ const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.
 const srcDir = path.join(packageDir, 'src');
 const distDir = path.join(packageDir, 'dist');
 
+// Tailwind entry: compiled by the `build:css` script, so it must not be copied verbatim like the other assets.
+const cssEntry = 'assets/patterns.css';
+
 /**
  * Expands `@include` directives in every `.html` file and copies all other files verbatim.
  * No bundling, no hashing – the output is plain, relative-path HTML that can be opened anywhere.
@@ -23,6 +26,10 @@ const build = (): void => {
   let assetCount = 0;
 
   for (const relativePath of files) {
+    if (relativePath === cssEntry) {
+      continue;
+    }
+
     const sourcePath = path.join(srcDir, relativePath);
     const targetPath = path.join(distDir, relativePath);
     fs.mkdirSync(path.dirname(targetPath), { recursive: true });

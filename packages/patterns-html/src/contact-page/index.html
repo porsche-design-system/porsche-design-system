@@ -9,34 +9,59 @@
   } -->
   <head>
     <!-- @include _partials/head.html -->
-    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-- @include _partials/header.html -->
 
     <main id="main">
-      <h1>Contact us</h1>
-      <p class="lead">The exact same header and footer as on the landing page – defined once.</p>
+      <h1 class="mb-6 text-4xl font-bold">Contact us</h1>
+      <p class="max-w-2xl text-fg-muted">The exact same header and footer as on the landing page – defined once.</p>
 
-      <form class="contact-form" novalidate>
-        <div class="form-row">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-hint" />
-          <p id="name-hint" class="form-hint">As it should appear in our reply.</p>
+      <form class="mt-12 grid max-w-lg gap-6" id="contact-form" novalidate>
+        <div class="grid gap-1.5">
+          <label class="font-semibold" for="name">Name</label>
+          <input
+            class="rounded-lg border border-line bg-bg px-3 py-2.5"
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+            aria-describedby="name-hint"
+          />
+          <p class="text-sm text-fg-muted" id="name-hint">As it should appear in our reply.</p>
         </div>
 
-        <div class="form-row">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
+        <div class="grid gap-1.5">
+          <label class="font-semibold" for="email">Email</label>
+          <input
+            class="rounded-lg border border-line bg-bg px-3 py-2.5"
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
         </div>
 
-        <div class="form-row">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+        <div class="grid gap-1.5">
+          <label class="font-semibold" for="message">Message</label>
+          <textarea
+            class="rounded-lg border border-line bg-bg px-3 py-2.5"
+            id="message"
+            name="message"
+            rows="5"
+            required
+          ></textarea>
         </div>
 
-        <button type="submit">Send message</button>
-        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        <button
+          class="justify-self-start rounded-full bg-fg px-6 py-3 font-semibold text-bg hover:opacity-85 forced-colors:border forced-colors:border-[buttontext]"
+          type="submit"
+        >
+          Send message
+        </button>
+        <p class="font-semibold empty:hidden" id="form-status" role="status" aria-live="polite"></p>
       </form>
     </main>
 

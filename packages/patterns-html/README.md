@@ -2,7 +2,7 @@
 
 Standalone HTML/CSS pattern demos. Shared chrome (head, header, footer) lives in `src/_partials/` and is inlined at
 build time, so the generated pages are plain HTML with relative paths — no framework, no bundler runtime, no hashed
-asset names.
+asset names. Styling is done with **Tailwind CSS v4** utilities in the markup, compiled into one plain stylesheet.
 
 ## Commands
 
@@ -13,7 +13,7 @@ npm run test:unit:patterns-html
 
 # or from within this package
 npm start
-npm run build
+npm run build                 # expands templates, then compiles Tailwind (build:css)
 npm run test:unit
 npm run preview               # build + serve ./dist on http://localhost:3007
 ```
@@ -29,13 +29,11 @@ src/
 │   ├── header.html
 │   └── footer.html
 ├── assets/
-│   └── patterns.css    # shared base, header and footer styles
+│   └── patterns.css    # Tailwind entry: theme, global element defaults
 ├── landing-page/       # one folder per pattern
-│   ├── index.html
-│   └── styles.css
+│   └── index.html
 └── contact-page/
     ├── index.html
-    ├── styles.css
     └── main.js
 ```
 
@@ -78,6 +76,26 @@ Limits (deliberate — see _Design notes_):
 - Whitespace and the line break directly around a directive are stripped, which keeps the generated markup tidy but also
   removes a space if you put a directive inline after content.
 
+## Styling
+
+Tailwind CSS v4, configured CSS-first in [`src/assets/patterns.css`](src/assets/patterns.css):
+
+- **Utilities in the markup.** Pages and partials carry the classes; there are no per-page stylesheets.
+- **Theme.** `@theme` defines `--color-fg`, `--color-fg-muted`, `--color-bg`, `--color-surface`, `--color-line`,
+  `--color-focus`, `--container-page` and `--font-sans`, which produce utilities such as `text-fg-muted`, `border-line`
+  and `bg-surface`.
+- **Dark mode** overrides those theme variables inside `prefers-color-scheme: dark`, so every utility follows along and
+  the markup needs no `dark:` variants.
+- **Base layer** holds only the global element defaults that would otherwise be repeated on every page: `body`, `main`,
+  `a` and the `:focus-visible` outline (including its forced-colors override).
+- **Forced colors** are handled per element with the `forced-colors:` variant, e.g. `forced-colors:border-[canvastext]`
+  or `forced-colors:bg-[highlight]`.
+- **Behaviour hooks on ids**, never on utility classes, so restyling cannot break `main.js`.
+
+Two pipelines, one entry file: the dev server compiles it through `@tailwindcss/vite`, the build compiles it with the
+Tailwind CLI (`build:css`) into `dist/assets/patterns.css`. `scripts/build.ts` therefore skips this one file when
+copying assets verbatim.
+
 ## Design notes
 
 The engine is a small in-house one (`plugins/htmlInclude.ts`): a block parser producing a node tree, plus a minimal
@@ -97,10 +115,11 @@ Eleventy's `addPassthroughCopy` preserves the same clean, unhashed output that m
 
 ## Adding a pattern
 
-1. Create `src/<pattern-name>/index.html` (plus `styles.css` / `main.js` as needed).
+1. Create `src/<pattern-name>/index.html` (plus `main.js` if the pattern needs behaviour).
 2. Add `<!-- @props … -->` with `basePath`, `title`, `description` and the nav state.
 3. Include `_partials/head.html`, `_partials/header.html` and `_partials/footer.html`.
-4. Link the pattern from `src/index.html`.
+4. Style it with Tailwind utilities; only add to `src/assets/patterns.css` if something is genuinely global.
+5. Link the pattern from `src/index.html`.
 
 ## Accessibility baseline
 
