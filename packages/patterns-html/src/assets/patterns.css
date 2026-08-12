@@ -9,7 +9,9 @@
  * defined here – they apply to every page and would otherwise have to be repeated on every `<body>` and `<main>`.
  */
 
-@import "tailwindcss";
+/* `source(none)` disables Tailwind's automatic detection, which would also scan the package README and leak
+ * prose words such as "static" or "inline" into the demo stylesheet as false positive utilities. */
+@import "tailwindcss" source(none);
 
 /* The pages are HTML templates, so Tailwind is pointed at them explicitly. */
 @source "../**/*.html";
