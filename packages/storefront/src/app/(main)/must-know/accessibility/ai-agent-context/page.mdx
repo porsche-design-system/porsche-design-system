@@ -203,8 +203,9 @@ Download ready-to-use instruction files for your project:
 1. Download `accessibility.instructions.md`
 2. Create `.github/instructions/` directory in your repository root
 3. Place the file in `.github/instructions/accessibility.instructions.md`
-4. For **audits**, run `install-web-audit.sh` from
-   [accessibility-agents](https://github.com/porsche-design-system/accessibility-agents) — see
+4. For **audits**, install the
+  [web-accessibility-audit package](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-audit)
+  via APM (`apm install porsche-design-system/skills/packages/web-accessibility-audit#v1.0.0`) — see
    [Web Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/)
 5. Commit and push to your repository
 
@@ -220,12 +221,12 @@ Download ready-to-use instruction files for your project:
 1. Download `accessibility.instructions.md` and merge the rules into `CLAUDE.md`, or reference `AGENTS.md`
 
 Once configured, your AI agent will automatically apply these accessibility **coding rules** when generating or
-modifying frontend code. For **audits**, use the GitHub Copilot web audit bundle described in
+modifying frontend code. For **audits**, use the APM-installed web accessibility audit package described in
 [Web Accessibility Audit](/must-know/accessibility/ai-accessibility-audit/).
 
 ## Next step: run an accessibility audit
 
-With agent context in place, the next step should be to and run a guided **WCAG 2.2 AA audit** in GitHub Copilot via
-`@web-accessibility-wizard` agent. See the
+With agent context in place, the next step is to run a guided **WCAG 2.2 AA audit** via the `a11y-audit` prompt. See
+the
 [**AI Accessibility Audit**](/must-know/accessibility/ai-accessibility-audit/) guide for installation, example prompts,
 and report output.
