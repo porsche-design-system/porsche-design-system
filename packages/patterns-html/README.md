@@ -41,38 +41,42 @@ src/
 
 ## Authoring
 
-| Directive                                                    | Description                                                                                                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `<!-- @props { "key": "value" } -->`                         | File level values, inherited by every include in that file. Removed from the output.                                                            |
-| `<!-- @include _partials/header.html -->`                    | Inlines a partial. Accepts optional inline props that override the file level ones.                                                             |
-| `<!-- @if expr -->` … `<!-- @else -->` … `<!-- @endif -->`   | Conditional block. `expr` is `key`, `!key`, `a == b` or `a != b`, where each side is a dotted path or a JSON literal.                            |
-| `<!-- @each item in items -->` … `<!-- @endeach -->`         | Repeats its body for every entry of an array. Exposes `item` and `loop` (`index`, `number`, `first`, `last`, `length`).                          |
-| `{{ key }}` / `{{ item.label }}`                             | Raw substitution. Can produce text content **or** an attribute value.                                                                           |
+| Directive                                                  | Description                                                                                                             |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `<!-- @props { "key": "value" } -->`                       | File level values, inherited by every include in that file. Removed from the output.                                    |
+| `<!-- @include _partials/header.html -->`                  | Inlines a partial. Accepts optional inline props that override the file level ones.                                     |
+| `<!-- @if expr -->` … `<!-- @else -->` … `<!-- @endif -->` | Conditional block. `expr` is `key`, `!key`, `a == b` or `a != b`, where each side is a dotted path or a JSON literal.   |
+| `<!-- @each item in items -->` … `<!-- @endeach -->`       | Repeats its body for every entry of an array. Exposes `item` and `loop` (`index`, `number`, `first`, `last`, `length`). |
+| `{{ key }}` / `{{ item.label }}`                           | Raw substitution. Can produce text content **or** an attribute value.                                                   |
 
 Data:
 
 - `src/_data.json` is loaded as the base scope of every page — put shared lists such as the main navigation there.
+- Scope precedence is `_data.json` → file level `@props` → inline include props. Each step is a **shallow merge**, so
+  redefining a key replaces its value completely (arrays are replaced, never merged or appended).
+- Any JSON value works as a prop, including arrays of objects, so a page can render a different `@each` list than the
+  shared one. [`src/landing-page/index.html`](src/landing-page/index.html) does exactly that for `navItems`.
 - Files and folders starting with `_` are inputs only and are never emitted.
 
 Rules:
 
 - Include paths without a leading `./` resolve from `src/`; `./` and `../` resolve relative to the including file.
 - Props are JSON, so keys and string values need double quotes. They may span multiple lines.
-- **URLs inside a partial are relative to the including page, not to the partial.** Pass a `basePath` prop
-  (`"./"` at the root, `"../"` one level down) instead of hardcoding them.
+- **URLs inside a partial are relative to the including page, not to the partial.** Pass a `basePath` prop (`"./"` at
+  the root, `"../"` one level down) instead of hardcoding them.
 - Every `src/**/*.html` becomes a page; all other files are copied verbatim.
 - Unknown placeholders are replaced with an empty string and logged as a warning. Missing partials, circular includes,
   unclosed blocks and non-array `@each` targets fail the build.
 
-Limits (deliberate — see *Design notes*):
+Limits (deliberate — see _Design notes_):
 
 - Use real JSON booleans (`true`/`false`) in conditions; the string `"false"` is truthy. Empty arrays are falsy.
 - `loop` is reserved inside `@each`.
 - Blocks may nest freely, but a block cannot span an include boundary (no opening `@if` in a page and `@endif` in a
   partial).
 - There is no `@elseif`; nest an `@if` inside `@else`.
-- Whitespace and the line break directly around a directive are stripped, which keeps the generated markup tidy but
-  also removes a space if you put a directive inline after content.
+- Whitespace and the line break directly around a directive are stripped, which keeps the generated markup tidy but also
+  removes a space if you put a directive inline after content.
 
 ## Design notes
 
@@ -101,8 +105,8 @@ Eleventy's `addPassthroughCopy` preserves the same clean, unhashed output that m
 ## Accessibility baseline
 
 Every page ships a skip link, `header`/`main`/`footer` landmarks, labelled `nav` elements, `aria-current` on the active
-nav item, visible `:focus-visible` outlines and a `forced-colors: active` block. Keep that baseline when adding
-patterns — these demos are documentation, so they have to be correct by example.
+nav item, visible `:focus-visible` outlines and a `forced-colors: active` block. Keep that baseline when adding patterns
+— these demos are documentation, so they have to be correct by example.
 
 ## Using Porsche Design System components
 
@@ -117,5 +121,3 @@ just keep `order: 'pre'` on the include plugin so partials are expanded first.
 plugin wrapper. The dev server uses the plugin (with a watcher that full-reloads on partial changes),
 [`scripts/build.ts`](scripts/build.ts) uses the same function and copies everything else untouched. One implementation,
 so dev and build can't drift apart.
-
-

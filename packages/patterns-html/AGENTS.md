@@ -27,8 +27,8 @@ plugins/htmlInclude.ts            # engine: block parser + expression evaluator 
 scripts/build.ts                  # production build: expand templates, copy everything else verbatim
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3006)
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
-tests/unit/htmlInclude.spec.ts    # 24 tests describing the full engine contract
-tests/fixtures/                   # partials used by the include tests
+tests/unit/htmlInclude.spec.ts    # 29 tests describing the full engine contract
+tests/fixtures/                   # `_data.json` and partials used by the include tests
 src/
 ├── index.html                    # overview page, links to all patterns
 ├── _data.json                    # shared data (navigation, …), base scope of every page
@@ -63,6 +63,9 @@ Full reference in [`README.md`](README.md). Short version:
 
 Non-obvious behaviour worth knowing before changing the engine:
 
+- Scope precedence is `_data.json` → file level `@props` → inline include props, each a **shallow merge**. A page can
+  therefore override any shared value, arrays included — `src/landing-page/index.html` overrides `navItems` this way.
+  There is no deep merge and no append: redefining a key replaces it completely.
 - Includes are expanded **per render pass**, so a partial inside an `@each` sees the scope of its iteration.
 - URLs inside a partial are relative to the **including page**, not the partial. Pages pass a `basePath` prop (`"./"` at
   the root, `"../"` one level down).
@@ -108,9 +111,10 @@ Point-in-time notes, last updated 2026-08-12 on branch `issue/4652` (#4652).
 Done:
 
 - Package scaffolded with the include engine, dev server, build script and three demo pages.
-- Conditions (`@if`/`@else`) and loops (`@each`) added, backed by 24 unit tests.
+- Conditions (`@if`/`@else`) and loops (`@each`) added, backed by 29 unit tests.
 - The header demonstrates a loop over `navItems` with a nested condition for `aria-current`, plus an optional search
   form driven by a `showSearch` prop.
+- The landing page demonstrates overriding a shared `_data.json` list (`navItems`) through page level `@props`.
 
 Open:
 

@@ -8,6 +8,10 @@ const fixturesDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const render = (html: string, props: IncludeProps = {}): string =>
   expandIncludes(html, { rootDir: fixturesDir, filePath: path.join(fixturesDir, 'page.html'), props });
 
+/** Omits `props`, so the scope starts from `tests/fixtures/_data.json` – like a real page does. */
+const renderPage = (html: string): string =>
+  expandIncludes(html, { rootDir: fixturesDir, filePath: path.join(fixturesDir, 'page.html') });
+
 describe('@if', () => {
   it('renders the consequent when truthy', () => {
     expect(render('<!-- @if enabled -->\nyes\n<!-- @endif -->\n', { enabled: true })).toBe('yes\n');
@@ -108,6 +112,34 @@ describe('placeholders', () => {
 
   it('throws when a placeholder resolves to an object', () => {
     expect(() => render('{{ user }}', { user: { name: 'Ada' } })).toThrow(/resolves to an object/);
+  });
+});
+
+describe('scope precedence', () => {
+  it('uses _data.json as the base scope of a page', () => {
+    expect(renderPage('{{ brand }}: <!-- @include _partials/nav.html -->')).toBe('Shared brand: Shared A;Shared B;');
+  });
+
+  it('lets @props replace a _data.json value wholesale, arrays included', () => {
+    const html =
+      '<!-- @props { "navItems": [{ "label": "Local" }] } -->{{ brand }}: <!-- @include _partials/nav.html -->';
+    // The shared entries are gone – props are shallow-merged, so there is no deep merge and no append.
+    expect(renderPage(html)).toBe('Shared brand: Local;');
+  });
+
+  it('keeps _data.json keys that @props does not define', () => {
+    expect(renderPage('<!-- @props { "title": "Local" } -->{{ title }}/{{ brand }}')).toBe('Local/Shared brand');
+  });
+
+  it('merges multiple @props directives in document order', () => {
+    const html = '<!-- @props { "title": "First" } --><!-- @props { "title": "Second" } -->{{ title }}';
+    expect(renderPage(html)).toBe('Second');
+  });
+
+  it('lets inline include props override the file level ones', () => {
+    const html =
+      '<!-- @props { "navItems": [{ "label": "File" }] } --><!-- @include _partials/nav.html { "navItems": [{ "label": "Inline" }] } -->';
+    expect(renderPage(html)).toBe('Inline;');
   });
 });
 

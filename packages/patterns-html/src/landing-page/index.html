@@ -5,7 +5,12 @@
     "title": "Landing page",
     "description": "Dummy landing page template using the shared header and footer partials.",
     "currentPage": "landing",
-    "showSearch": true
+    "showSearch": true,
+    "navItems": [
+      { "id": "landing", "href": "landing-page/", "label": "Landing page" },
+      { "id": "contact", "href": "contact-page/", "label": "Contact page" },
+      { "id": "landing-features", "href": "landing-page/#features", "label": "Features" }
+    ]
   } -->
   <head>
     <!-- @include _partials/head.html -->
@@ -24,7 +29,7 @@
         <a class="button" href="../contact-page/">Get in touch</a>
       </section>
 
-      <section class="features">
+      <section id="features" class="features">
         <h2>What you get</h2>
         <ul class="features__list">
           <li>
