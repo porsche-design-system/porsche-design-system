@@ -91,7 +91,14 @@ const updateRoute = async (opts) => {
 
     const scripts = app.getElementsByTagName('script');
     for (let i = 0; i < scripts.length; i++) {
-      (0, eval)(scripts[i].innerText); // execute scripts inserted via innerHTML (indirect eval avoids bundler warnings)
+      // Module examples declare real imports so they also run standalone (storefront snippet, StackBlitz). Here they
+      // are executed as plain scripts, where `import` is a SyntaxError, so the imports are dropped and the bindings
+      // they would create come from the globals set below instead.
+      const code =
+        scripts[i].type === 'module'
+          ? scripts[i].innerText.replace(/^[ \t]*import\b[\s\S]*?;$/gm, '')
+          : scripts[i].innerText;
+      (0, eval)(code); // execute scripts inserted via innerHTML (indirect eval avoids bundler warnings)
     }
   }
 };
