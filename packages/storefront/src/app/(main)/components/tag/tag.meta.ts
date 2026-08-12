@@ -1,5 +1,7 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/tag/accessibility/page.mdx';
+import { statusConveyedByColorAndIconOnlyA11yExample } from '@/app/(main)/components/tag/accessibility/examples/status-conveyed-by-color-and-icon-only/example';
+import AccessibilityOverview from '@/app/(main)/components/tag/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/tag/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/tag/configurator/introduction.mdx';
 import { tagStory } from '@/app/(main)/components/tag/configurator/story';
 import MultilineDescription from '@/app/(main)/components/tag/examples/multiline/example.mdx';
@@ -37,7 +39,12 @@ export const tagMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      statusConveyedByColorAndIconOnly: statusConveyedByColorAndIconOnlyA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-tag'],
 } satisfies ComponentDocsMeta<'p-tag'>;
-

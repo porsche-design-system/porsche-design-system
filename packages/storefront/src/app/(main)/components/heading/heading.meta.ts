@@ -1,5 +1,7 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/heading/accessibility/page.mdx';
+import { skippedHeadingLevelA11yExample } from '@/app/(main)/components/heading/accessibility/examples/skipped-heading-level/example';
+import AccessibilityOverview from '@/app/(main)/components/heading/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/heading/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/heading/configurator/introduction.mdx';
 import { headingStory } from '@/app/(main)/components/heading/configurator/story';
 import ColorDescription from '@/app/(main)/components/heading/examples/color/example.mdx';
@@ -29,7 +31,12 @@ export const headingMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      skippedHeadingLevel: skippedHeadingLevelA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-heading'],
 } satisfies ComponentDocsMeta<'p-heading'>;
-

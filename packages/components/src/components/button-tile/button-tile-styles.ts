@@ -69,7 +69,7 @@ export const getComponentCss = (
         },
         '&[name="header"]': {
           gridArea: `${isTopAligned ? 4 : 2}/2`,
-          zIndex: 3,
+          zIndex: 5, // above stretched link overlay (z-index 4) so slotted interactive content stays clickable
         },
         '&[name="footer"]': {
           gridRow: 2,

@@ -71,6 +71,17 @@ describe('getSlidesAndAddAttributes()', () => {
   });
 });
 
+describe('getSlideStatusMessage()', () => {
+  it('should format default slideLabel with 1-based index and total', () => {
+    expect(carouselUtils.getSlideStatusMessage(carouselUtils.DEFAULT_SLIDE_LABEL, 0, 5)).toBe('1 of 5');
+    expect(carouselUtils.getSlideStatusMessage(carouselUtils.DEFAULT_SLIDE_LABEL, 2, 5)).toBe('3 of 5');
+  });
+
+  it('should format custom intl slideLabel', () => {
+    expect(carouselUtils.getSlideStatusMessage('Slide %s von %s', 1, 6)).toBe('Slide 2 von 6');
+  });
+});
+
 describe('getAmountOfPages()', () => {
   it.each<[number, number, number]>([
     [0, 1, 0],

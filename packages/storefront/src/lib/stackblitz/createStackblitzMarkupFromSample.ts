@@ -12,10 +12,10 @@ export const createStackblitzMarkupFromSample = (
 
   // Since vanilla-js code samples only consist of the markup and a script tag without the wrapping html page, we need to split it up and build everything together
   if (storefrontFramework === 'vanilla-js') {
-    const { markup, script } = splitVanillaJsCode(stackblitzMarkup);
+    const { markup, script, scriptAttributes } = splitVanillaJsCode(stackblitzMarkup);
     stackblitzMarkup = getVanillaJsCode(
       { markup: markup, eventHandlers: script },
-      { isFullConfig: true, theme: storefrontTheme }
+      { isFullConfig: true, theme: storefrontTheme, scriptAttributes }
     );
   }
 

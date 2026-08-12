@@ -416,6 +416,23 @@ export const sitemap: Routes = {
     path: '/skills',
     type: 'CATEGORY',
     subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/skills/introduction',
+        type: 'PAGE',
+        subPaths: {
+          general: {
+            name: 'General',
+            path: '/skills/introduction/general',
+            type: 'TAB',
+          },
+          installation: {
+            name: 'Installation',
+            path: '/skills/introduction/installation',
+            type: 'TAB',
+          },
+        },
+      },
       knowledge: {
         name: 'Knowledge',
         path: '/skills/knowledge',

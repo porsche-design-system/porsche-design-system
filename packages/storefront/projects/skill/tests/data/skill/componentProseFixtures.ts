@@ -1,19 +1,37 @@
 import type { ComponentProseSource } from '@skill/components/prose';
 import { parseMdxToMdast } from '@skill/support/renderMdxToMarkdown';
+import type { A11yElementConfig } from '@/models/accessibilityMeta';
+import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
 /**
- * Representative component prose modelled on real storefront `.meta.ts` sources:
- * `introduction` is a lead paragraph with no heading; `usage` / `accessibility`
- * `page.mdx` files each open with a redundant `# <Component>` H1 that the generator
- * strips. `p-degraded` has an introduction that renders to nothing meaningful,
- * exercising the fail-hard degraded-render error.
+ * Representative component prose modelled on real storefront `.meta.ts` sources: `introduction` is a
+ * lead paragraph with no heading; `usage` still opens with a redundant `# <Component>` H1 that the
+ * generator strips. Accessibility is modelled on the post-migration shape — `overview` (and `tests`)
+ * are plain prose with no leading H1 (the storefront's thin `accessibility/page.mdx` keeps the H1),
+ * and `examples` is the keyed anti-pattern/recommended map rendered inline by
+ * `renderA11yIntegrationExamples`. `p-degraded` has an introduction that renders to nothing
+ * meaningful, exercising the fail-hard degraded-render error.
  */
+
+const story = (config: A11yElementConfig<HTMLTagOrComponent>[]) => ({ generator: () => config });
+
 const RAW_FIXTURES: Record<
   string,
   {
     introduction: string;
     usage: string;
-    accessibility: string;
+    accessibility: {
+      overview: string;
+      examples?: Record<
+        string,
+        {
+          name: string;
+          antiPattern: A11yElementConfig<HTMLTagOrComponent>[];
+          recommended: A11yElementConfig<HTMLTagOrComponent>[];
+        }
+      >;
+      tests: string;
+    };
     notes?: Record<string, { name: string; description: string }>;
   }
 > = {
@@ -38,9 +56,8 @@ Guidance on how to use this component in different situations.
 
 - Don't use a button for navigation.
 `,
-    accessibility: `
-# Button <ComponentStatus tagName="p-button"></ComponentStatus>
-
+    accessibility: {
+      overview: `
 ## Accessibility support
 
 The component follows the [WAI-ARIA Button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/).
@@ -48,6 +65,14 @@ The component follows the [WAI-ARIA Button pattern](https://www.w3.org/WAI/ARIA/
 1. Tab moves focus to the button.
 2. Enter or Space activates it.
 `,
+      tests: `
+## Tests
+
+| Technology | Support |
+| --- | --- |
+| AXE-Core | ✅ |
+`,
+    },
     notes: {
       formAttribute: {
         name: 'Form attribute',
@@ -69,23 +94,47 @@ The **Accordion** lets users expand and collapse sections of *related* content t
 
 - Group related content together within each panel.
 `,
-    accessibility: `
-# Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
-
+    accessibility: {
+      overview: `
 ## Accessibility support
 
 Each panel must have a meaningful, unique label.
-
-## Integration examples
-
-<A11yIntegrationExamples examples={accordionA11yExamples} />
-
+`,
+      examples: {
+        accordionSummaryWithoutSemanticHeading: {
+          name: 'Accordion summary without semantic heading',
+          antiPattern: [
+            {
+              tag: 'p-accordion',
+              children: [
+                { tag: 'span', properties: { slot: 'summary' }, children: ['Delivery options'] },
+                { tag: 'p-text', children: ['Content'] },
+              ],
+            },
+          ],
+          recommended: [
+            {
+              tag: 'p-accordion',
+              children: [
+                {
+                  tag: 'p-heading',
+                  properties: { slot: 'summary', tag: 'h2', size: 'sm' },
+                  children: ['Delivery options'],
+                },
+                { tag: 'p-text', children: ['Content'] },
+              ],
+            },
+          ],
+        },
+      },
+      tests: `
 ## Tests
 
 | Technology | Support |
 | --- | --- |
 | AXE-Core | ✅ |
 `,
+    },
   },
 
   'p-degraded': {
@@ -99,13 +148,20 @@ Each panel must have a meaningful, unique label.
 
 Minimal usage prose.
 `,
-    accessibility: `
-# Degraded
-
+    accessibility: {
+      overview: `
 ## Accessibility support
 
 Minimal accessibility prose.
 `,
+      tests: `
+## Tests
+
+| Technology | Support |
+| --- | --- |
+| AXE-Core | ✅ |
+`,
+    },
   },
 };
 
@@ -115,7 +171,20 @@ export const componentDocsMeta: Record<string, ComponentProseSource> = Object.fr
     {
       introduction: parseMdxToMdast(raw.introduction),
       usage: parseMdxToMdast(raw.usage),
-      accessibility: parseMdxToMdast(raw.accessibility),
+      accessibility: {
+        overview: parseMdxToMdast(raw.accessibility.overview),
+        examples: Object.fromEntries(
+          Object.entries(raw.accessibility.examples ?? {}).map(([key, example]) => [
+            key,
+            {
+              name: example.name,
+              antiPattern: { kind: 'story' as const, story: story(example.antiPattern) },
+              recommended: { kind: 'story' as const, story: story(example.recommended) },
+            },
+          ])
+        ),
+        tests: parseMdxToMdast(raw.accessibility.tests),
+      },
       ...(raw.notes && {
         notes: Object.fromEntries(
           Object.entries(raw.notes).map(([key, note]) => [

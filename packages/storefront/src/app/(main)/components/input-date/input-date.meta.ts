@@ -1,6 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { inputDateExampleForm } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/input-date/accessibility/page.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-date/accessibility/examples/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-date/accessibility/examples/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-date/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import AccessibilityOverview from '@/app/(main)/components/input-date/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/input-date/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-date/configurator/introduction.mdx';
 import { inputDateSlotStories, inputDateStory } from '@/app/(main)/components/input-date/configurator/story';
 import FormDescription from '@/app/(main)/components/input-date/examples/form/example.mdx';
@@ -30,7 +34,14 @@ export const inputDateMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-input-date'],
 } satisfies ComponentDocsMeta<'p-input-date'>;
-

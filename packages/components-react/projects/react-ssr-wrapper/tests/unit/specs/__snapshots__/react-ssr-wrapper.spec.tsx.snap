@@ -180,6 +180,16 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -720,6 +730,11 @@ img {
           </template>
         </p-input-search>
         <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="filter-status"
+        />
+        <div
           aria-multiselectable="true"
           aria-required="false"
           class="options"
@@ -727,7 +742,6 @@ img {
           role="listbox"
         >
           <div
-            aria-live="polite"
             class="no-results"
             role="option"
           >
@@ -3663,7 +3677,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -4776,6 +4790,16 @@ exports[`should render dsr component for PCarousel 1`] = `
   opacity: 0;
   pointer-events: none;
 }
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -4884,6 +4908,11 @@ exports[`should render dsr component for PCarousel 1`] = `
         </div>
       </div>
     </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="slide-status"
+    />
   </template>
   <div>
     Some child
@@ -9290,7 +9319,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -10239,6 +10268,16 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -10779,6 +10818,11 @@ img {
           </template>
         </p-input-search>
         <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="filter-status"
+        />
+        <div
           aria-multiselectable="true"
           aria-required="false"
           class="options"
@@ -10786,7 +10830,6 @@ img {
           role="listbox"
         >
           <div
-            aria-live="polite"
             class="no-results"
             role="option"
           >
@@ -12366,6 +12409,16 @@ exports[`should render dsr component for PSelect 1`] = `
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;

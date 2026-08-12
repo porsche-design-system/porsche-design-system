@@ -43,6 +43,16 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -225,6 +235,16 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -402,6 +422,16 @@ p,::slotted([slot="description"]) {
 .skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
+}
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide {
   overflow: hidden;
@@ -609,6 +639,16 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -740,6 +780,16 @@ p,::slotted([slot="description"]) {
 .skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
+}
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide {
   overflow: hidden;
@@ -874,6 +924,16 @@ p,::slotted([slot="description"]) {
 .skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
+}
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide {
   overflow: hidden;
@@ -1108,6 +1168,16 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -1234,6 +1304,16 @@ p,::slotted([slot="description"]) {
 .skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
+}
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide {
   overflow: hidden;
@@ -1369,6 +1449,16 @@ exports[`getComponentCss() > should return correct css for gradientColor: true, 
 .skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
+}
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide {
   overflow: hidden;
@@ -1559,6 +1649,16 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -1698,6 +1798,16 @@ p,::slotted([slot="description"]) {
 .skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
+}
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide {
   overflow: hidden;
@@ -1909,6 +2019,16 @@ p,::slotted([slot="description"]) {
 .skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
+}
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide {
   overflow: hidden;
@@ -2124,6 +2244,16 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -2311,6 +2441,16 @@ p,::slotted([slot="description"]) {
 .skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
+}
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 .splide {
   overflow: hidden;

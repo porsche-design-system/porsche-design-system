@@ -23,7 +23,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -137,7 +137,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 4/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -251,7 +251,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -365,7 +365,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -470,7 +470,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 4/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -575,7 +575,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 4/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;

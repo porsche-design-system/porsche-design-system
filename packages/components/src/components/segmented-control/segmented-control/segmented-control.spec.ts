@@ -25,6 +25,7 @@ describe('formResetCallback', () => {
     component.value = 'test';
     const setFormValueSpy = vi.spyOn(component['internals'], 'setFormValue' as any);
     component.formResetCallback();
+    component.onValueChange(); // manually trigger @Watch handler (not invoked in unit tests)
     expect(setFormValueSpy).toHaveBeenCalledWith(defaultValue);
     expect(component.value).toBe(defaultValue);
   });

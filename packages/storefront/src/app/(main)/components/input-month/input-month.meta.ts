@@ -1,6 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { inputMonthExampleForm } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/input-month/accessibility/page.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-month/accessibility/examples/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-month/accessibility/examples/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-month/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import AccessibilityOverview from '@/app/(main)/components/input-month/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/input-month/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-month/configurator/introduction.mdx';
 import { inputMonthSlotStories, inputMonthStory } from '@/app/(main)/components/input-month/configurator/story';
 import FormDescription from '@/app/(main)/components/input-month/examples/form/example.mdx';
@@ -30,7 +34,14 @@ export const inputMonthMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-input-month'],
 } satisfies ComponentDocsMeta<'p-input-month'>;
-

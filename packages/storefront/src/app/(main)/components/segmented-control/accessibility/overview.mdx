@@ -1,0 +1,52 @@
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Space`, `Enter`   | Activates the control.                                   |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA                  | Usage                                                       |
+| --------------------- | ----------------------------------------------------------- |
+| `aria-label="STRING"` | Defines a string value that labels the control item itself. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                                 |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `role="group"`                  | Identifies a set of user interface objects.                                                           |
+| `aria-pressed="BOOLEAN"`        | Provides the current state of the control.                                                            |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
+| `aria-invalid="true"`           | If `error` state is set.                                                                              |
+| `aria-required="true"`          | Indicates if the element is required.                                                                 |
+| `aria-description="STRING"`     | Provides additional content for states.                                                               |
+
+## Development considerations
+
+### Labelling
+
+Provide a descriptive `label` on the wrapper component to give context for the group of options. If a more detailed
+label is needed for each **control item**, use the `aria` property on the control item itself, e.g.:
+`<p-segmented-control-item value="xs" aria="{ 'aria-label': 'Size x-small' }">XS</p-segmented-control-item>`.
+
+If an **icon only** is used, it is mandatory to also provide an accessible name through the `aria` property of the
+control item.
+
+### Disabled state
+
+In general, avoid using the `disabled` state. Disabled elements are no longer focusable and may be missed by screen
+reader users. They can also confuse sighted users if the reason they are disabled is not made clear.
+
+### Common do's and don'ts
+
+- **Do** provide a clear group `label` that describes the choice being made.
+- **Do** pass item-level ARIA through the `aria` prop on `p-segmented-control-item`, especially for icon-only items.
+- **Do** use the component state/message API so validation and status changes are announced.
+- **Don't** add native `aria-*` attributes directly on the component host.
+- **Don't** use `hide-label` without an accessible name.

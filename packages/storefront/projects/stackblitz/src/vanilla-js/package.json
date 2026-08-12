@@ -9,12 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "4.6.0-rc.0"
+    "@porsche-design-system/components-js": "4.6.0-rc.1",
+    "ag-grid-community": "36.1.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.3.1",
+    "@tailwindcss/postcss": "^4.3.3",
     "postcss": "^8",
-    "tailwindcss": "^4.3.1",
-    "vite": "^8.1.0"
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.0"
   }
 }

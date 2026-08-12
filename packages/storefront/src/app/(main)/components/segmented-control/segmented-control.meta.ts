@@ -1,8 +1,15 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { segmentedControlExampleForm } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/segmented-control/accessibility/page.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/segmented-control/accessibility/examples/hidden-label-without-accessible-name/example';
+import { missingGroupLabelA11yExample } from '@/app/(main)/components/segmented-control/accessibility/examples/missing-group-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/segmented-control/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import AccessibilityOverview from '@/app/(main)/components/segmented-control/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/segmented-control/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/segmented-control/configurator/introduction.mdx';
-import { segmentedControlSlotStories, segmentedControlStory } from '@/app/(main)/components/segmented-control/configurator/story';
+import {
+  segmentedControlSlotStories,
+  segmentedControlStory,
+} from '@/app/(main)/components/segmented-control/configurator/story';
 import FormDescription from '@/app/(main)/components/segmented-control/examples/form/example.mdx';
 import SlotsDescription from '@/app/(main)/components/segmented-control/examples/slots/example.mdx';
 import { segmentedControlStorySlots } from '@/app/(main)/components/segmented-control/examples/slots/story';
@@ -38,7 +45,14 @@ export const segmentedControlMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      missingGroupLabel: missingGroupLabelA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-segmented-control'],
 } satisfies ComponentDocsMeta<'p-segmented-control'>;
-

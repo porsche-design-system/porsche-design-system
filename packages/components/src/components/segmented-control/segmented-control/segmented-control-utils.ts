@@ -83,7 +83,7 @@ type Item = HTMLElement & SegmentedControlItem & SegmentedControlItemInternalHTM
 
 export const syncSegmentedControlItemsProps = (
   host: HTMLElement,
-  value: string | number,
+  value: string | number | null | undefined,
   disabled: boolean,
   state: SegmentedControlState,
   message: string,

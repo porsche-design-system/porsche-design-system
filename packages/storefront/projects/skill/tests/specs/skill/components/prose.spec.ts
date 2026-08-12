@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
 import { renderComponentProse } from '@skill/components/prose';
+import { describe, expect, it } from 'vitest';
 import { componentDocsMeta as proseMap } from '../../../data/skill/componentProseFixtures';
 
 describe('renderComponentProse', () => {
@@ -9,11 +9,20 @@ describe('renderComponentProse', () => {
     expect(markdown).not.toContain('## Notes');
   });
 
-  it('omits unresolved accessibility integration examples', () => {
+  it('links accessibility integration examples and returns their separate reference content', () => {
+    const { markdown, accessibilityMarkdown } = renderComponentProse('p-accordion', proseMap['p-accordion']);
+
+    expect(markdown).toContain('## Integration examples');
+    expect(markdown).toContain('[accessibility integration examples](./accessibility.md)');
+    expect(markdown).not.toContain('Accordion summary without semantic heading');
+    expect(accessibilityMarkdown).toContain('# p-accordion accessibility integration examples');
+    expect(accessibilityMarkdown).toContain('Accordion summary without semantic heading');
+  });
+
+  it('omits an all-pass accessibility test matrix', () => {
     const { markdown } = renderComponentProse('p-accordion', proseMap['p-accordion']);
 
-    expect(markdown).not.toContain('## Integration examples');
-    expect(markdown).toContain('Each panel must have a meaningful, unique label.');
+    expect(markdown).not.toContain('AXE-Core');
   });
 
   it('throws on degraded prose instead of emitting it, naming the source section', () => {
