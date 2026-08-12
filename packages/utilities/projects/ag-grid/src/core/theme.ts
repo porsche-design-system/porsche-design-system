@@ -15,7 +15,6 @@ import {
   colorErrorLow,
   colorFocus,
   colorFrosted,
-  colorInfo,
   colorInfoLow,
   colorPrimary,
   colorSurface,
@@ -101,7 +100,7 @@ export const pdsTheme: Theme = themeQuartz
     browserColorScheme: 'inherit',
 
     // Core Colors
-    accentColor: colorInfo,
+    accentColor: colorFocus,
     backgroundColor: colorCanvas,
     foregroundColor: colorPrimary,
     borderColor: colorContrastLow,
