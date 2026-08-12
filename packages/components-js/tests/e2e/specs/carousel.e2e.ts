@@ -89,6 +89,7 @@ const getButtonNext = (page: Page) => page.locator('p-carousel p-button-pure:las
 const getPagination = (page: Page) => page.locator('p-carousel .pagination');
 const getPaginationBullets = async (page: Page) => getPagination(page).locator('span').all();
 const getSkipLink = (page: Page) => page.locator('p-carousel .skip-link a');
+const getSlideStatus = (page: Page) => page.locator('p-carousel .slide-status');
 const isElementCompletelyInViewport = (slide: Locator) => expect(slide).toBeInViewport({ ratio: 1 });
 const isElementNotInViewport = (slide: Locator) => expect(slide).not.toBeInViewport({ ratio: 1 });
 const waitForSlideToBeActive = (slide: Locator) => expect(slide).toHaveClass(/is-active/);
@@ -147,6 +148,17 @@ test('should move slides on next button clicks', async ({ page }) => {
   await isElementCompletelyInViewport(slide1);
   await isElementNotInViewport(slide2);
   await isElementNotInViewport(slide3);
+});
+
+test('should update slide status on navigation button clicks', async ({ page }) => {
+  await initCarousel(page);
+  const slideStatus = getSlideStatus(page);
+
+  await expect(slideStatus).toBeEmpty();
+  await getButtonNext(page).click();
+  await expect(slideStatus).toHaveText('2 of 3');
+  await getButtonPrev(page).click();
+  await expect(slideStatus).toHaveText('1 of 3');
 });
 
 test('should update pagination on prev button clicks', async ({ page }) => {
@@ -760,6 +772,18 @@ test.describe('focus behavior', () => {
     await waitForSlideToBeActive(slide2);
 
     expect(await getActiveElementIdInShadowRoot(host)).toBe('splide-slide02');
+  });
+
+  test('should not update slide status when movement is caused by focusing a slide', async ({ page }) => {
+    await initCarousel(page, { slidesPerPage: 1, withFocusableElements: false });
+    const [slide1, slide2] = await getSlideElements(page);
+    const slideStatus = getSlideStatus(page);
+
+    await slide1.focus();
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    await expect(slideStatus).toBeEmpty();
   });
 
   test('should have correct focus cycle if skip link has focus and is clicked', async ({ page }) => {
