@@ -11,7 +11,11 @@ import type {
 
 export const getVanillaJsCode = (
   { markup, states, eventHandlers }: FrameworkConfiguratorMarkup['vanilla-js'],
-  { isFullConfig, theme }: { isFullConfig: boolean; theme: StorefrontColorScheme } = {
+  {
+    isFullConfig,
+    theme,
+    scriptAttributes = '',
+  }: { isFullConfig: boolean; theme: StorefrontColorScheme; scriptAttributes?: string } = {
     isFullConfig: false,
     theme: 'scheme-light',
   }
@@ -30,7 +34,7 @@ ${metaTags}
 <body class="bg-canvas">
 
 ${markup ?? ''}
-<script>
+<script${scriptAttributes && ` ${scriptAttributes}`}>
 ${[states, eventHandlers].filter(Boolean).join('\n')}
 </script>
 </body>

@@ -2,7 +2,7 @@
  * Splits the provided vanilla JS markup into its HTML and script sections.
  *
  * @param {string} markup - The full HTML string containing markup and a script tag.
- * @returns {{ markup: string; script: string }} An object containing the cleaned HTML markup and the extracted script (Without the <script> tag).
+ * @returns {{ markup: string; script: string; scriptAttributes: string }} An object containing the cleaned HTML markup, the extracted script (Without the <script> tag) and the attributes of that tag (e.g. `type="module"`) so they can be restored when the script is wrapped again.
  *
  * @example
  * const code = `
@@ -15,11 +15,12 @@
  * console.log(markup); // "<div>Hello World</div>"
  * console.log(script); // "console.log('Hello from script');"
  */
-export const splitVanillaJsCode = (markup: string): { markup: string; script: string } => {
-  const scriptMatch = markup.match(/<script\b[^>]*>[\s\S]*?<\/script>/);
-  const script = scriptMatch ? scriptMatch[0] : '';
-  const cleanedMarkup = markup.replace(script, '').trim();
-  const cleanedScript = script.replace(/\n?<\/?script>\n?/g, '');
+export const splitVanillaJsCode = (markup: string): { markup: string; script: string; scriptAttributes: string } => {
+  const scriptMatch = markup.match(/<script\b([^>]*)>([\s\S]*?)<\/script>/);
 
-  return { markup: cleanedMarkup, script: cleanedScript };
+  return {
+    markup: markup.replace(scriptMatch?.[0] ?? '', '').trim(),
+    script: (scriptMatch?.[2] ?? '').replace(/^\n/, '').replace(/\n$/, ''),
+    scriptAttributes: (scriptMatch?.[1] ?? '').trim(),
+  };
 };
