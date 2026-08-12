@@ -7,13 +7,14 @@
  * @example
  * const code = `
  *   <div>Hello World</div>
- *   <script>
+ *   <script type="module">
  *     console.log('Hello from script');
  *   </script>
  * `;
- * const { markup, script } = splitVanillaJsCode(code);
+ * const { markup, script, scriptAttributes } = splitVanillaJsCode(code);
  * console.log(markup); // "<div>Hello World</div>"
  * console.log(script); // "console.log('Hello from script');"
+ * console.log(scriptAttributes); // 'type="module"'
  */
 export const splitVanillaJsCode = (markup: string): { markup: string; script: string; scriptAttributes: string } => {
   const scriptMatch = markup.match(/<script\b([^>]*)>([\s\S]*?)<\/script>/i);
