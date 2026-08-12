@@ -70,7 +70,7 @@ test.describe('lifecycle', () => {
     await initAiTag(page);
     const host = getHost(page);
 
-    await setProperty(host, 'locale', 'de_DE');
+    await setProperty(host, 'locale', 'de-DE');
     await waitForStencilLifecycle(page);
 
     await expect
