@@ -183,6 +183,7 @@ Each major package has its own `AGENTS.md` with detailed guidance:
 - [`packages/tokens/AGENTS.md`](packages/tokens/AGENTS.md) — Design tokens
 - [`packages/utilities/AGENTS.md`](packages/utilities/AGENTS.md) — Utility packages such as AG Grid theme
 - [`packages/storefront/AGENTS.md`](packages/storefront/AGENTS.md) — Next.js documentation site
+- [`packages/patterns-html/AGENTS.md`](packages/patterns-html/AGENTS.md) — Standalone HTML/CSS pattern demos
 - [`packages/components-react/AGENTS.md`](packages/components-react/AGENTS.md) — React wrapper
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper

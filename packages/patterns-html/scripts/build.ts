@@ -8,7 +8,6 @@ import { expandIncludes } from '../plugins/htmlInclude.ts';
 const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const srcDir = path.join(packageDir, 'src');
 const distDir = path.join(packageDir, 'dist');
-const partialsDir = '_partials';
 
 /**
  * Expands `@include` directives in every `.html` file and copies all other files verbatim.
@@ -17,7 +16,8 @@ const partialsDir = '_partials';
 const build = (): void => {
   fs.rmSync(distDir, { recursive: true, force: true });
 
-  const files = fastGlob.sync('**/*', { cwd: srcDir, onlyFiles: true, ignore: [`${partialsDir}/**`] }).sort();
+  // Files and folders starting with an underscore (partials, data) are inputs only, never pages.
+  const files = fastGlob.sync('**/*', { cwd: srcDir, onlyFiles: true, ignore: ['**/_*', '**/_*/**'] }).sort();
 
   let pageCount = 0;
   let assetCount = 0;

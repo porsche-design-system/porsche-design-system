@@ -6,12 +6,22 @@
   </a>
   <nav class="site-header__nav" aria-label="Main">
     <ul>
+      <!-- @each item in navItems -->
       <li>
-        <a href="{{ basePath }}landing-page/" aria-current="{{ landingCurrent }}">Landing page</a>
+        <!-- @if item.id == currentPage -->
+        <a href="{{ basePath }}{{ item.href }}" aria-current="page">{{ item.label }}</a>
+        <!-- @else -->
+        <a href="{{ basePath }}{{ item.href }}">{{ item.label }}</a>
+        <!-- @endif -->
       </li>
-      <li>
-        <a href="{{ basePath }}contact-page/" aria-current="{{ contactCurrent }}">Contact page</a>
-      </li>
+      <!-- @endeach -->
     </ul>
   </nav>
+  <!-- @if showSearch -->
+  <form class="site-header__search" role="search" action="{{ basePath }}search/">
+    <label class="visually-hidden" for="site-search">Search patterns</label>
+    <input id="site-search" name="q" type="search" placeholder="Search" />
+    <button type="submit">Go</button>
+  </form>
+  <!-- @endif -->
 </header>

@@ -1,0 +1,6 @@
+{
+  "navItems": [
+    { "id": "landing", "href": "landing-page/", "label": "Landing page" },
+    { "id": "contact", "href": "contact-page/", "label": "Contact page" }
+  ]
+}

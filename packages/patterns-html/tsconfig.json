@@ -11,5 +11,5 @@
     "verbatimModuleSyntax": true,
     "esModuleInterop": true
   },
-  "include": ["plugins/**/*.ts", "scripts/**/*.ts", "vite.config.ts"]
+  "include": ["plugins/**/*.ts", "scripts/**/*.ts", "tests/**/*.ts", "vite.config.ts", "vitest.config.ts"]
 }
