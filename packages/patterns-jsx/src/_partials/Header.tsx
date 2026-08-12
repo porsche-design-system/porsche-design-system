@@ -1,0 +1,71 @@
+import type { NavItem } from '../_data.ts';
+
+type HeaderProps = {
+  basePath: string;
+  /** Id of the active `NavItem`; only that one gets `aria-current="page"`. */
+  currentPage: string;
+  navItems: NavItem[];
+  showSearch?: boolean;
+};
+
+/** Skip link plus the page header, including the main navigation and an optional search form. */
+export const Header = ({ basePath, currentPage, navItems, showSearch = false }: HeaderProps) => (
+  <>
+    <a
+      class="absolute top-2 start-2 z-10 -translate-y-[200%] rounded-md border border-line bg-bg px-3 py-2 no-underline focus-visible:translate-y-0"
+      href="#main"
+    >
+      Skip to content
+    </a>
+    <header class="flex flex-wrap items-center justify-between gap-6 border-b border-line p-6 forced-colors:border-[canvastext]">
+      <a class="inline-flex items-center gap-2 font-semibold no-underline" href={basePath}>
+        <span class="size-5 rounded-full bg-current" aria-hidden="true" />
+        Dummy Patterns
+      </a>
+      <nav aria-label="Main">
+        <ul class="flex flex-wrap gap-1">
+          {navItems.map((item) => (
+            <li key={item.id}>
+              {item.id === currentPage ? (
+                <a
+                  class="inline-block rounded-md bg-surface px-3 py-1.5 font-semibold no-underline forced-colors:bg-[highlight] forced-colors:text-[highlighttext] forced-colors:forced-color-adjust-none"
+                  href={`${basePath}${item.href}`}
+                  aria-current="page"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <a
+                  class="inline-block rounded-md px-3 py-1.5 text-fg-muted no-underline hover:bg-surface hover:text-fg"
+                  href={`${basePath}${item.href}`}
+                >
+                  {item.label}
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+      {showSearch && (
+        <form class="flex gap-2" role="search" action={`${basePath}search/`}>
+          <label class="sr-only" for="site-search">
+            Search patterns
+          </label>
+          <input
+            class="rounded-md border border-line bg-bg px-3 py-1.5 forced-colors:border-[canvastext]"
+            id="site-search"
+            name="q"
+            type="search"
+            placeholder="Search"
+          />
+          <button
+            class="rounded-md border border-line bg-surface px-3.5 py-1.5 forced-colors:border-[canvastext]"
+            type="submit"
+          >
+            Go
+          </button>
+        </form>
+      )}
+    </header>
+  </>
+);

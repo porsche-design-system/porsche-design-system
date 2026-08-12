@@ -1,0 +1,35 @@
+{
+  "name": "@porsche-design-system/patterns-jsx",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "tsx scripts/build.ts && npm run build:css",
+    "build:css": "tailwindcss --input ./src/assets/patterns.css --output ./dist/assets/patterns.css",
+    "preview": "npm run build && vite preview --outDir ../dist --port 3011",
+    "lint": "biome lint",
+    "test": "npm run test:unit",
+    "test:unit": "vitest run",
+    "clean:build": "rm -rf ./dist"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.3",
+    "fast-glob": "^3.3.3",
+    "preact": "^10.29.8",
+    "preact-render-to-string": "^6.7.0",
+    "prettier": "^3.9.6",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.7",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.0",
+    "vitest": "^4.1.10"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

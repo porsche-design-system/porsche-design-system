@@ -19,7 +19,8 @@ npm run test:unit
 npm run preview                   # build + serve ./dist on http://localhost:3009
 ```
 
-Both packages can run at the same time — `patterns-html` uses ports 3006/3007, this one 3008/3009.
+Both packages can run at the same time — `patterns-html` uses ports 3006/3007, this one 3008/3009 and `patterns-jsx`
+3010/3011.
 
 ## Structure
 

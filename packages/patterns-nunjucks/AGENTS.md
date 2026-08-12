@@ -94,9 +94,9 @@ Point-in-time notes, last updated 2026-08-12.
 
 Done:
 
-- Full port of the three demo pages; `dist/` is structurally identical to the twin's (only reworded prose differs).
+- Full port of the three demo pages; `dist/` is structurally identical to the twins' (only reworded prose differs).
 - 41 unit tests covering conditions, loops, macros, includes, scope precedence, layout inheritance and error messages.
-- [`COMPARISON.md`](COMPARISON.md) with the measured cost/benefit and a recommendation.
+- [`COMPARISON.md`](COMPARISON.md) with the measured cost/benefit of all three engines and a recommendation.
 
 Open:
 
