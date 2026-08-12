@@ -1,4 +1,9 @@
 <script type="module">
+  import { pdsThemeCompact } from '@porsche-design-system/components-js/ag-grid';
+  import * as agGrid from 'ag-grid-community';
+
+  agGrid.ModuleRegistry.registerModules([agGrid.AllCommunityModule]);
+
   const grid = document.querySelector('#my-grid');
 
   const rowData = [
