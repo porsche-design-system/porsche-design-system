@@ -1,0 +1,25 @@
+{
+  "name": "@porsche-design-system/patterns-html",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "tsx scripts/build.ts",
+    "preview": "npm run build && vite preview --outDir ../dist --port 3007",
+    "lint": "biome lint",
+    "clean:build": "rm -rf ./dist"
+  },
+  "devDependencies": {
+    "fast-glob": "^3.3.3",
+    "tsx": "^4.23.7",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.0"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

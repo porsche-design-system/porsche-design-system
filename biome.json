@@ -16,6 +16,7 @@
       "!packages/components/src/types/aria-types.d.ts",
       "!packages/components-js/tests/unit/results/stats-raw.json",
       "!packages/components-react/projects/nextjs/routes.ts",
+      "!packages/patterns-html/src/_partials",
       "!packages/storefront/**/*.css"
     ]
   },
@@ -129,6 +130,10 @@
     }
   },
   "overrides": [
+    {
+      "includes": ["packages/patterns-html/src/**/*.html"],
+      "formatter": { "enabled": false }
+    },
     {
       "includes": [
         "packages/components/src/**/*.{js,ts,tsx}",

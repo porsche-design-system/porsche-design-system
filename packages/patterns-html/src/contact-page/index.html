@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <!-- @props {
+    "basePath": "../",
+    "title": "Contact page",
+    "description": "Dummy contact page template using the shared header and footer partials.",
+    "landingCurrent": "false",
+    "contactCurrent": "page"
+  } -->
+  <head>
+    <!-- @include _partials/head.html -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- @include _partials/header.html -->
+
+    <main id="main">
+      <h1>Contact us</h1>
+      <p class="lead">The exact same header and footer as on the landing page – defined once.</p>
+
+      <form class="contact-form" novalidate>
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-hint" />
+          <p id="name-hint" class="form-hint">As it should appear in our reply.</p>
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit">Send message</button>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </main>
+
+    <!-- @include _partials/footer.html -->
+
+    <script src="main.js" defer></script>
+  </body>
+</html>

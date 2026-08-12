@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <!-- @props {
+    "basePath": "../",
+    "title": "Landing page",
+    "description": "Dummy landing page template using the shared header and footer partials.",
+    "landingCurrent": "page",
+    "contactCurrent": "false"
+  } -->
+  <head>
+    <!-- @include _partials/head.html -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- @include _partials/header.html -->
+
+    <main id="main">
+      <section class="hero">
+        <h1>Build once, reuse everywhere</h1>
+        <p>
+          This page is plain HTML. The header and footer are pulled in at build time, so the generated markup contains
+          no template syntax and no framework runtime.
+        </p>
+        <a class="button" href="../contact-page/">Get in touch</a>
+      </section>
+
+      <section class="features">
+        <h2>What you get</h2>
+        <ul class="features__list">
+          <li>
+            <h3>Shared chrome</h3>
+            <p>Header and footer live in one file each and are inlined into every template.</p>
+          </li>
+          <li>
+            <h3>Clean output</h3>
+            <p>The build only expands includes and copies assets – no hashing, no bundling.</p>
+          </li>
+          <li>
+            <h3>Copy &amp; paste</h3>
+            <p>Every page works standalone, which keeps the documentation examples honest.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section id="legal-notice" class="prose">
+        <h2>Legal notice</h2>
+        <p>Dummy content for the footer link target.</p>
+      </section>
+
+      <section id="privacy-policy" class="prose">
+        <h2>Privacy policy</h2>
+        <p>Dummy content for the footer link target.</p>
+      </section>
+    </main>
+
+    <!-- @include _partials/footer.html -->
+  </body>
+</html>
