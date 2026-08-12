@@ -17,6 +17,8 @@
       "!packages/components-js/tests/unit/results/stats-raw.json",
       "!packages/components-react/projects/nextjs/routes.ts",
       "!packages/patterns-html/**/_partials",
+      "!packages/patterns-nunjucks/**/*.njk",
+      "!packages/patterns-nunjucks/src/**/*.html",
       "!packages/storefront/**/*.css"
     ]
   },

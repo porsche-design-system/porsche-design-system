@@ -1,0 +1,20 @@
+{% macro footer(basePath, footerNavItems) %}
+<footer
+  class="flex flex-wrap items-center justify-between gap-6 border-t border-line p-6 text-sm text-fg-muted forced-colors:border-[canvastext]"
+>
+  <p>© 2026 Dr. Ing. h.c. F. Porsche AG</p>
+  <nav aria-label="Footer">
+    <ul class="flex flex-wrap gap-1">
+      {% for item in footerNavItems %}
+      <li>
+        <a
+          class="inline-block rounded-md px-3 py-1.5 no-underline hover:bg-surface hover:text-fg"
+          href="{{ basePath }}{{ item.href }}"
+          >{{ item.label }}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</footer>
+{% endmacro %}

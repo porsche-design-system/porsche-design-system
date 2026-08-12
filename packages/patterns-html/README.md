@@ -105,7 +105,11 @@ It stays in-house because the package is private and adding a template engine de
 dependency governance (syncpack, ORT license scanning). **If a feature request needs more than the above — filters,
 arithmetic, macros, template inheritance — migrate to [Eleventy](https://www.11ty.dev/) instead of extending this.**
 Eleventy's `addPassthroughCopy` preserves the same clean, unhashed output that motivated this setup. The unit tests in
-`tests/unit/` describe the full contract and make such a migration verifiable.
+`tests/` describe the full contract and make such a migration verifiable.
+
+A Nunjucks port of this package exists as a decision aid: [`packages/patterns-nunjucks`](../patterns-nunjucks) renders
+the same pages to structurally identical output. Its [`COMPARISON.md`](../patterns-nunjucks/COMPARISON.md) records the
+measured cost/benefit of swapping the engine.
 
 ## Tooling notes
 

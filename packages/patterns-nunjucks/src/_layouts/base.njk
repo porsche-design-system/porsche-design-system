@@ -1,0 +1,29 @@
+{#
+  Page shell. Pages `{% extends %}` this file and declare their values with `{% set %}` instead of a props comment.
+
+  The three partials are macros, so their inputs are explicit parameters – the closest equivalent to the
+  `@include … { … }` props of the `patterns-html` twin, but checked by the engine.
+  `| trim | indent(4)` re-indents the inlined markup, which the in-house engine did automatically.
+-#}
+{% from "_partials/head.njk" import head %}
+{% from "_partials/header.njk" import header %}
+{% from "_partials/footer.njk" import footer %}
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ head(basePath, title, description) | trim | indent(4) }}
+  </head>
+  <body>
+    {{ header(basePath, currentPage, navItems, showSearch) | trim | indent(4) }}
+
+    <main id="main"{% if mainClass %} class="{{ mainClass }}"{% endif %}>
+{% block content %}{% endblock %}
+    </main>
+
+    {{ footer(basePath, footerNavItems) | trim | indent(4) }}
+{% if pageScript %}
+
+    <script src="{{ pageScript }}" defer></script>
+{% endif %}
+  </body>
+</html>

@@ -101,6 +101,10 @@ The engine intentionally stops here: no `@elseif`, no filters, no arithmetic, no
 engine.** Eleventy's `addPassthroughCopy` preserves the same clean, unhashed output that motivated this setup, and the
 unit tests in `tests/unit/` describe the current contract well enough to make such a migration verifiable.
 
+A cheaper migration target is already implemented and measured: [`packages/patterns-nunjucks`](../patterns-nunjucks) is
+a Nunjucks port of this package that produces structurally identical `dist/` output. Read
+[`COMPARISON.md`](../patterns-nunjucks/COMPARISON.md) before proposing either an engine extension or a migration.
+
 ## Accessibility baseline
 
 Every page ships a skip link, `header`/`main`/`footer` landmarks, labelled `nav` elements, `aria-current="page"` on the

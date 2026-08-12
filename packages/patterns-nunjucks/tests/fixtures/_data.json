@@ -1,0 +1,4 @@
+{
+  "brand": "Shared brand",
+  "navItems": [{ "id": "a", "label": "Shared A" }, { "id": "b", "label": "Shared B" }]
+}

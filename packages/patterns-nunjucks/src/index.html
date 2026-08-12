@@ -1,0 +1,15 @@
+{% extends "_layouts/base.njk" %}
+{% set basePath = "./" %}
+{% set title = "Overview" %}
+{% set description = "Overview of the dummy HTML patterns." %}
+{% set currentPage = "overview" %}
+{% set mainClass = "max-w-2xl" %}
+
+{%- block content %}
+      <h1 class="mb-6 text-4xl font-bold">Dummy patterns</h1>
+      <p>Two templates sharing one layout, one header macro and one footer macro.</p>
+      <ul class="mt-6 grid gap-2">
+        <li><a class="underline underline-offset-4" href="./landing-page/">Landing page</a></li>
+        <li><a class="underline underline-offset-4" href="./contact-page/">Contact page</a></li>
+      </ul>
+{% endblock %}

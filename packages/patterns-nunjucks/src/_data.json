@@ -1,0 +1,11 @@
+{
+  "navItems": [
+    { "id": "landing", "href": "landing-page/", "label": "Landing page" },
+    { "id": "contact", "href": "contact-page/", "label": "Contact page" }
+  ],
+  "footerNavItems": [
+    { "href": "landing-page/#legal-notice", "label": "Legal notice" },
+    { "href": "landing-page/#privacy-policy", "label": "Privacy policy" },
+    { "href": "contact-page/", "label": "Contact us" }
+  ]
+}
