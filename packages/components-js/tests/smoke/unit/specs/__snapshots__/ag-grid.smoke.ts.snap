@@ -909,7 +909,7 @@ exports[`ag-grid package content > should match content 1`] = `
         "feature": undefined,
         "modeParams": {
           "$default": {
-            "accentColor": "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))",
+            "accentColor": "light-dark(#1A44EA,#1A44EA)",
             "backgroundColor": "light-dark(#fff,hsl(225 66.7% 1.2%))",
             "borderColor": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))",
             "borderRadius": "4px",
@@ -2129,7 +2129,7 @@ exports[`ag-grid package content > should match content 1`] = `
         "feature": undefined,
         "modeParams": {
           "$default": {
-            "accentColor": "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))",
+            "accentColor": "light-dark(#1A44EA,#1A44EA)",
             "backgroundColor": "light-dark(#fff,hsl(225 66.7% 1.2%))",
             "borderColor": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))",
             "borderRadius": "4px",

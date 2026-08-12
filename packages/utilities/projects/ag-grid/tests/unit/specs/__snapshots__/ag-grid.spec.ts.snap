@@ -2,7 +2,7 @@
 
 exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 ":where(.ag-theme-params-1) {
-	--ag-accent-color: var(--ag-inherited-accent-color, light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%)));
+	--ag-accent-color: var(--ag-inherited-accent-color, light-dark(#1A44EA,#1A44EA));
 	--ag-advanced-filter-builder-button-bar-border: var(--ag-inherited-advanced-filter-builder-button-bar-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #a6e194);
 	--ag-advanced-filter-builder-indent-size: var(--ag-inherited-advanced-filter-builder-indent-size, calc( var(--ag-spacing)   *  2  +   var(--ag-icon-size) ));
@@ -850,7 +850,7 @@ exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
 exports[`pdsTheme > should match the snapshot for mode params 1`] = `
 {
   "$default": {
-    "accentColor": "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))",
+    "accentColor": "light-dark(#1A44EA,#1A44EA)",
     "advancedFilterBuilderButtonBarBorder": true,
     "advancedFilterBuilderColumnPillColor": "#a6e194",
     "advancedFilterBuilderIndentSize": {
