@@ -16,7 +16,7 @@
  * console.log(script); // "console.log('Hello from script');"
  */
 export const splitVanillaJsCode = (markup: string): { markup: string; script: string; scriptAttributes: string } => {
-  const scriptMatch = markup.match(/<script\b([^>]*)>([\s\S]*?)<\/script>/i);
+  const scriptMatch = markup.match(/<script\b([^>]*)>([\s\S]*?)<\/script\b[^>]*>/i);
 
   return {
     markup: markup.replace(scriptMatch?.[0] ?? '', '').trim(),
