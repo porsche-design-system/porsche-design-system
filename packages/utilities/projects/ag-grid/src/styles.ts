@@ -13,7 +13,6 @@ export const colorErrorLow = "light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62%
 export const colorFocus = "light-dark(#1A44EA,#1A44EA)";
 export const colorFrosted = "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))";
 export const colorFrostedSoft = "light-dark(hsl(234 9.8% 60% / 0.06),hsl(240 3.7% 26.5% / 0.154))";
-export const colorInfo = "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))";
 export const colorInfoLow = "light-dark(hsl(228 83.2% 51% / 0.18),hsl(210 100% 54.5% / 0.18))";
 export const colorPrimary = "light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))";
 export const colorSuccess = "light-dark(hsl(115 77.5% 27.8%),hsl(157 84.9% 41.6%))";

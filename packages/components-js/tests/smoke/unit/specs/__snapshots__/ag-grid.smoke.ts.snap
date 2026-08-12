@@ -909,7 +909,7 @@ exports[`ag-grid package content > should match content 1`] = `
         "feature": undefined,
         "modeParams": {
           "$default": {
-            "accentColor": "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))",
+            "accentColor": "light-dark(#1A44EA,#1A44EA)",
             "backgroundColor": "light-dark(#fff,hsl(225 66.7% 1.2%))",
             "borderColor": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))",
             "borderRadius": "4px",
@@ -917,7 +917,6 @@ exports[`ag-grid package content > should match content 1`] = `
             "checkboxBorderRadius": "4px",
             "checkboxBorderWidth": 1,
             "columnHoverColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
-            "focusShadow": "none",
             "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
             "fontSize": "1rem",
             "fontWeight": "inherit",
@@ -927,7 +926,6 @@ exports[`ag-grid package content > should match content 1`] = `
             "headerFontWeight": 600,
             "headerHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 2.9)",
             "iconSize": 24,
-            "inputFocusShadow": "none",
             "invalidColor": "light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18))",
             "modalOverlayBackgroundColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
             "oddRowBackgroundColor": "light-dark(hsl(240 10% 95%),hsl(240 2% 10%))",
@@ -2131,7 +2129,7 @@ exports[`ag-grid package content > should match content 1`] = `
         "feature": undefined,
         "modeParams": {
           "$default": {
-            "accentColor": "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))",
+            "accentColor": "light-dark(#1A44EA,#1A44EA)",
             "backgroundColor": "light-dark(#fff,hsl(225 66.7% 1.2%))",
             "borderColor": "light-dark(hsl(240 5.3% 14.9% / 0.5),hsl(240 12.5% 96.9% / 0.45))",
             "borderRadius": "4px",
@@ -2139,7 +2137,6 @@ exports[`ag-grid package content > should match content 1`] = `
             "checkboxBorderRadius": "4px",
             "checkboxBorderWidth": 1,
             "columnHoverColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
-            "focusShadow": "none",
             "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
             "fontSize": "1rem",
             "fontWeight": "inherit",
@@ -2149,7 +2146,6 @@ exports[`ag-grid package content > should match content 1`] = `
             "headerFontWeight": 600,
             "headerHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 2.9)",
             "iconSize": 24,
-            "inputFocusShadow": "none",
             "invalidColor": "light-dark(hsl(357 78% 41% / 0.18),hsl(0 96.9% 62% / 0.18))",
             "modalOverlayBackgroundColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
             "oddRowBackgroundColor": "light-dark(hsl(240 10% 95%),hsl(240 2% 10%))",
