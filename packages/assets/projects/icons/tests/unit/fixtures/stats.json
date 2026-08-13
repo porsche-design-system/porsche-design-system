@@ -85,6 +85,7 @@
   { "name": "country-road", "size": 249, "gzipSize": 208 },
   { "name": "coupe", "size": 641, "gzipSize": 376 },
   { "name": "cubic-capacity", "size": 512, "gzipSize": 317 },
+  { "name": "customer-support", "size": 458, "gzipSize": 286 },
   { "name": "cut", "size": 683, "gzipSize": 385 },
   { "name": "delete", "size": 270, "gzipSize": 191 },
   { "name": "disable", "size": 237, "gzipSize": 181 },
