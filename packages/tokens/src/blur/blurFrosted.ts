@@ -1,2 +1,2 @@
 /** Holds a **frosted** blur effect value. */
-export const blurFrosted = 'blur(33px)';
+export const blurFrosted = 'blur(32px)';
