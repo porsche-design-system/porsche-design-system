@@ -43,6 +43,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   which jsdom only provides since v30. On older versions the polyfill throws an explicit error on import. `jsdom` is
   declared as an optional peer dependency to make the requirement visible.
   ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
+- `AG Grid`: Updated `accentColor` from `colorInfo` to `colorFocus`, removed `focusShadow` and `inputFocusShadow` which
+  were previously hiding the focus ring on the grid's native input elements.
+  ([#4667](https://github.com/porsche-design-system/porsche-design-system/pull/4667))
 
 ### Fixed
 
