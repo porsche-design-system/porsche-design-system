@@ -1,13 +1,13 @@
-# AGENTS.md — Patterns (JSX) Package
+# AGENTS.md — Examples Package
 
-> This file provides context for AI coding assistants working in `packages/patterns-jsx/`. See the root
+> This file provides context for AI coding assistants working in `packages/examples/`. See the root
 > [`AGENTS.md`](../../AGENTS.md) for project-wide guidance, [`README.md`](README.md) for the authoring reference and
-> [`COMPARISON.md`](COMPARISON.md) for why this package renders patterns the way it does.
+> [`COMPARISON.md`](COMPARISON.md) for why this package renders pages the way it does.
 
 ## Overview
 
-Standalone demo pages for Porsche Design System patterns, rendered from **typed function components** to plain HTML with
-relative paths at build time.
+Standalone example pages for Porsche Design System patterns, rendered from **typed function components** to plain HTML
+with relative paths at build time.
 
 There is no template syntax. Conditions are ternaries, loops are `map()`, partials are components, and the layout takes
 `children`. Rendering happens once at build time via `preact-render-to-string`; **no framework code reaches the
@@ -42,9 +42,9 @@ non-TypeScript files are copied verbatim.
 ## Commands
 
 ```bash
-npm run start:patterns-jsx      # dev server on http://localhost:3010
-npm run build:patterns-jsx      # writes ./dist (gitignored)
-npm run test:unit:patterns-jsx  # vitest
+npm run start:examples      # dev server on http://localhost:3010
+npm run build:examples      # writes ./dist (gitignored)
+npm run test:unit:examples  # vitest
 ```
 
 ## Conventions that are easy to get wrong
@@ -115,12 +115,15 @@ Done:
 - 49 unit tests covering page URL resolution, escaping, optional props, navigation overrides, the accessibility baseline
   and the "no framework attribute names in the output" rule.
 - **Engine decision made (2026-08-13): TSX wins.** `patterns-html` and `patterns-nunjucks` were deleted and this package
-  is now the single patterns implementation. [`COMPARISON.md`](COMPARISON.md) is kept as the decision record.
+  is now the single implementation. [`COMPARISON.md`](COMPARISON.md) is kept as the decision record.
+- **Renamed (2026-08-13)** from `patterns-jsx` to `examples` (`@porsche-design-system/examples`), now that there is
+  nothing to disambiguate it from.
 
 Open:
 
 1. Consider dropping the Prettier formatting pass in favour of accepting dense output.
 2. Revisit whether `_layouts`/`_partials` should become `components/`, and whether the `_` underscore rule is still the
    clearest way to mark build-time-only inputs now that only the `*.page.tsx` marker distinguishes pages.
-3. Consider renaming the package from `patterns-jsx` to `patterns`, now that there is nothing to disambiguate it from.
+3. The Tailwind entry is still `src/assets/patterns.css`, and the authoring docs still call a page a "pattern". Decide
+   whether the package's vocabulary should follow the rename to "example" as well.
 4. Storefront hookup: copy `dist/` into `packages/storefront/public/` during prebuild so the demos ship with the docs.

@@ -1,6 +1,6 @@
-# Patterns (JSX)
+# Examples
 
-Standalone demo pages for Porsche Design System patterns: **typed components rendered to static HTML at build time**.
+Standalone example pages for Porsche Design System patterns: **typed components rendered to static HTML at build time**.
 The output is plain HTML with relative paths — no hydration, no framework runtime.
 
 This package was chosen over two alternatives (an in-house `@include` engine and Nunjucks) that rendered the same pages;
@@ -12,9 +12,9 @@ partials are function components whose props the compiler checks.
 ## Commands
 
 ```bash
-npm run start:patterns-jsx   # dev server on http://localhost:3010
-npm run build:patterns-jsx   # writes ./dist
-npm run test:unit:patterns-jsx
+npm run start:examples       # dev server on http://localhost:3010
+npm run build:examples       # writes ./dist
+npm run test:unit:examples
 
 # or from within this package
 npm start

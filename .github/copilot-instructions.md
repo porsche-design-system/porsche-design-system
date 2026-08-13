@@ -32,7 +32,7 @@ packages/
 ├── components-react/  # React wrapper + Next.js/React Router integrations
 ├── components-vue/    # Vue wrapper
 ├── storefront/        # Next.js documentation site
-├── patterns-jsx/      # Standalone pattern demos (TSX, rendered to plain HTML at build time)
+├── examples/          # Standalone example pages (TSX, rendered to plain HTML at build time)
 ├── tokens/            # Design tokens (colors, spacing, typography)
 ├── styles/            # Shared styles, Tailwind plugin
 ├── assets/            # Icons, fonts, marque, crest

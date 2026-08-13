@@ -1,31 +1,40 @@
-# patterns-html vs. patterns-nunjucks vs. patterns-jsx
+# Template engine decision record: in-house vs. Nunjucks vs. JSX
 
-Three packages, same three demo pages, same Tailwind setup, same build contract. The only variable is the template
-layer. This document records what each swap actually costs and buys.
+> **Outcome (2026-08-13): JSX won.** This package — then `patterns-jsx`, now `examples` — is the survivor.
+> `packages/patterns-html` and `packages/patterns-nunjucks` were built to make this comparison possible and have been
+> deleted; they are still in the git history if the evidence below ever needs re-checking. This document is kept as the
+> rationale — read it before proposing a different template layer, so the same ground is not re-covered.
+
+Three packages, same three demo pages, same Tailwind setup, same build contract. The only variable was the template
+layer. This document records what each swap actually cost and bought.
 
 Measured on 2026-08-12 with `nunjucks@3.2.4`, `preact@10.29.8` and `preact-render-to-string@6.7.0`.
 
-| Package                             | Template layer                                         | Ports     |
-| ----------------------------------- | ------------------------------------------------------ | --------- |
-| [`patterns-html`](../patterns-html) | In-house `@include` / `@if` / `@each` engine           | 3006/3007 |
-| [`patterns-nunjucks`](.)            | [Nunjucks](https://mozilla.github.io/nunjucks/)        | 3008/3009 |
-| [`patterns-jsx`](../patterns-jsx)   | TSX components rendered with `preact-render-to-string` | 3010/3011 |
+| Package                       | Template layer                                         | Ports     |
+| ----------------------------- | ------------------------------------------------------ | --------- |
+| `patterns-html` (deleted)     | In-house `@include` / `@if` / `@each` engine           | 3006/3007 |
+| `patterns-nunjucks` (deleted) | [Nunjucks](https://mozilla.github.io/nunjucks/)        | 3008/3009 |
+| `patterns-jsx` → `examples`   | TSX components rendered with `preact-render-to-string` | 3010/3011 |
+
+## Why JSX
+
+The deciding factors, in order:
+
+1. **The props contract is type-checked.** A typo in a prop is a compile error flagged in the editor, not a page that
+   silently renders an empty string. Neither alternative can do this.
+2. **No template syntax to document or teach**, and no parser to maintain — pages are TypeScript.
+3. **Full tooling.** Pages lint, format, and support completion, rename and go-to-definition like the rest of the
+   repository. Both alternatives required Biome carve-outs; this one needs none.
+4. **The smallest dependency graph of the two alternatives** — `preact` + `preact-render-to-string`, no transitive
+   packages.
+
+The accepted cost is **scope discipline**: TSX has no expressiveness ceiling, so "keep the demos boring" is a review
+rule rather than a property of the tool. See [`AGENTS.md`](AGENTS.md#scope-discipline-important).
 
 ## Generated output
 
-`dist/` is **structurally identical** in all three. Build them and compare:
-
-```bash
-npm run build:patterns-html && npm run build:patterns-nunjucks && npm run build:patterns-jsx
-diff -r packages/patterns-html/dist packages/patterns-nunjucks/dist
-diff -r packages/patterns-html/dist packages/patterns-jsx/dist
-```
-
-All three produce plain HTML with relative paths, no hashed asset names and no framework runtime. `assets/patterns.css`
-and `contact-page/main.js` are byte-identical across all three.
-
-Remaining HTML differences, beyond deliberately reworded prose ("partials" → "layout and macros" / "partial
-components"):
+`dist/` was **structurally identical** in all three. `assets/patterns.css` and `contact-page/main.js` were
+byte-identical; the HTML differed only in deliberately reworded prose and in whitespace:
 
 - **Nunjucks** — identical indentation, but only because the layout pipes macro output through `| trim | indent(4)`,
   which the in-house engine did implicitly.
@@ -148,7 +157,7 @@ git show <commit>:packages/patterns-nunjucks/plugins/nunjucks.ts
 The surviving package builds and tests as usual:
 
 ```bash
-npm run build:patterns-jsx
-npm run test:unit:patterns-jsx
-npm run start:patterns-jsx  # http://localhost:3010
+npm run build:examples
+npm run test:unit:examples
+npm run start:examples  # http://localhost:3010
 ```
