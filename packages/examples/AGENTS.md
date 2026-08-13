@@ -31,17 +31,17 @@ vite.config.ts                    # dev server only (root: 'src', appType: 'mpa'
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 tests/unit/jsx.spec.tsx           # tests describing the rendering contract
 src/
-├── index.page.tsx                # overview page, lists both categories
-├── _data.ts                      # templateItems, patternItems, navigation – typed exports
+├── index.page.tsx                # overview page: the link list, no chrome
+├── _data.ts                      # templateItems, patternItems (real URLs), chrome nav (placeholders)
 ├── _layouts/
 │   ├── BasePage.tsx              # full page shell, takes `children`
 │   └── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
 ├── _partials/                    # Head, SkipLink, Header, Footer, ExampleList – checked props
 ├── assets/styles.css             # Tailwind entry: @theme, dark mode, global element defaults
-├── templates/                    # index.page.tsx + one folder per template
+├── templates/                    # one folder per template
 │   ├── landing-page/             # index.page.tsx
 │   └── contact-page/             # index.page.tsx + main.js
-└── patterns/                     # index.page.tsx + one folder per pattern
+└── patterns/                     # one folder per pattern
     ├── header-1/                 # Header in its `single-row` variant
     └── header-2/                 # Header in its `stacked` variant
 ```
@@ -49,6 +49,19 @@ src/
 **Underscore rule:** files and folders starting with `_` are inputs only and are never emitted. **Page rule:** only
 `*.page.tsx` is rendered, to `index.html` next to it; every other `.ts`/`.tsx` file is a build-time input, and all
 non-TypeScript files are copied verbatim.
+
+## Links: only the overview navigates
+
+The examples demonstrate chrome, they are not a website:
+
+- Header, footer and example bodies link to `placeholderHref` (`"#"`). In-page anchors (`#features`) are real, because
+  the target is on the page. Use the constant, not a bare `"#"`: Biome's `a11y/useValidAnchor` rejects the literal, and
+  the constant says why the link goes nowhere.
+- `src/index.page.tsx` is the only page whose links go somewhere, and the only page that renders **no** header and
+  footer — repeating the demo chrome there would demonstrate nothing and would need URLs kept in sync for no benefit.
+- Consequently `Header` and `Footer` take no `basePath`; only `Head` does, for the stylesheet.
+
+A test asserts that the overview page contains no `href="#"` and that the chrome data contains nothing else.
 
 ## Commands
 
@@ -72,8 +85,8 @@ npm run test:unit:examples  # vitest
   "`{% block content %}`" or "relative to the page" leaks `.block` and `.relative` into `dist/assets/styles.css`. The
   same applies to string literals: the header variants are named `single-row`/`stacked` precisely because a display
   keyword would end up as an unused utility. Check the compiled CSS after larger comment edits.
-- **URLs are relative to the page, not the component.** Pass `basePath`: `"./"` at the root, `"../"` on a category page
-  (`templates/`, `patterns/`), `"../../"` inside an example folder.
+- **Asset URLs are relative to the page, not the component.** Pass `basePath`: `"./"` at the root, `"../../"` inside an
+  example folder. It only builds the stylesheet URL — navigation links are placeholders, see above.
 - **`_data.ts` is imported, not injected.** There is no ambient template scope, so a page can extend the shared
   navigation (`[...navItems, extra]`) instead of only replacing it wholesale.
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
@@ -109,9 +122,8 @@ approach, and it is paid on every review:
 1. Create `src/templates/<name>/index.page.tsx` (plus `main.js` if it needs behaviour).
 2. Default-export a component that renders `<BasePage>` with `basePath="../../"`, `title`, `description`, `currentPage`,
    and optionally `mainClass`, `showSearch`, `headerVariant`, `pageScript`, `navItems`.
-3. Put the markup in `children`.
-4. Add an entry to `templateItems` in `src/_data.ts` – that links it from both overview pages and, because `navItems` is
-   derived from it, from the main navigation.
+3. Put the markup in `children`. Links go to `#`, unless they point at an id on the same page.
+4. Add an entry to `templateItems` in `src/_data.ts` – that is what links it from the overview page.
 5. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
 6. Run the build and confirm `dist/` contains no stray utilities in the CSS and renders as expected.
 
@@ -127,10 +139,11 @@ approach, and it is paid on every review:
 
 ## Accessibility baseline
 
-Every page ships a skip link, a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item
-only, visible `:focus-visible` outlines and a `forced-colors: active` block. Templates additionally carry the `header`
-and `footer` landmarks; a pattern carries the landmark of the section it demonstrates. These demos are documentation, so
-they have to be correct by example — keep the baseline when adding examples. The unit tests assert it for every page.
+Every example ships a skip link, a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav
+item only, visible `:focus-visible` outlines and a `forced-colors: active` block. Templates additionally carry the
+`header` and `footer` landmarks; a pattern carries the landmark of the section it demonstrates. The overview page has no
+chrome to skip, so it is a `main` landmark with two labelled navigations. These demos are documentation, so they have to
+be correct by example — keep the baseline when adding examples. The unit tests assert it for every page.
 
 ## Status and open items
 
@@ -146,10 +159,13 @@ Done:
 - **Renamed (2026-08-13)** from `patterns-jsx` to `examples` (`@porsche-design-system/examples`), now that there is
   nothing to disambiguate it from. The Tailwind entry was renamed with it, from `assets/patterns.css` to
   `assets/styles.css`.
-- **Split into two categories (2026-08-13):** `templates/` for whole pages, `patterns/` for single sections, each with
-  its own overview page, its own list in `_data.ts` and its own layout (`BasePage` / `PatternPage`). The first two
-  patterns are the `single-row` and `stacked` variants of `Header`. `isTemplateInput()` was renamed to `isBuildInput()`
-  so "template" unambiguously means the category.
+- **Split into two categories (2026-08-13):** `templates/` for whole pages, `patterns/` for single sections, with their
+  own lists in `_data.ts` and their own layouts (`BasePage` / `PatternPage`). The first two patterns are the
+  `single-row` and `stacked` variants of `Header`. `isTemplateInput()` was renamed to `isBuildInput()` so "template"
+  unambiguously means the category.
+- **Links reduced to placeholders (2026-08-13):** the demo chrome links to `#`, the overview page dropped the chrome and
+  became the single link list, and the per-category overview pages were removed as redundant. `Header` and `Footer` lost
+  their `basePath` prop with it.
 
 Open:
 

@@ -8,7 +8,7 @@ const Page = () => (
     basePath="../../"
     title="Header 1"
     description="Brand, navigation and search on a single row – the default header layout."
-    beforeMain={<Header basePath="../../" currentPage="landing" navItems={navItems} />}
+    beforeMain={<Header currentPage="home" navItems={navItems} />}
   >
     <ul class="max-w-2xl list-disc ps-6 text-fg-muted">
       <li>One row, wrapping onto the next line on narrow viewports instead of collapsing into a menu.</li>

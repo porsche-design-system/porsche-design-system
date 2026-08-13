@@ -31,15 +31,24 @@ npm run preview              # build + serve ./dist on http://localhost:3011
 | **Templates** | A whole application page, chrome included.           | `BasePage`    | `src/templates/…` |
 | **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage` | `src/patterns/…`  |
 
-Both categories are listed in [`src/_data.ts`](src/_data.ts) (`templateItems`, `patternItems`), which also feeds the
-main navigation, so a new example is linked from the overview pages by adding one entry.
+Both categories are listed in [`src/_data.ts`](src/_data.ts) (`templateItems`, `patternItems`), so a new example is
+linked from the overview page by adding one entry.
+
+## Links: only the overview navigates
+
+The examples demonstrate chrome, they are not a website. Every link inside a header, a footer or an example body is a
+placeholder `href="#"`, except for in-page anchors, which are real because the target is on the page. The one page with
+working links is `src/index.page.tsx`, which lists the examples — and it renders no header or footer at all, because
+repeating the demo chrome there would demonstrate nothing and would need URLs kept in sync for no benefit.
+
+This is why `Header` and `Footer` take no `basePath`: they have no URL to build.
 
 ## Structure
 
 ```text
 src/
-├── index.page.tsx            # overview page, lists both categories
-├── _data.ts                  # templateItems, patternItems, navigation – typed exports
+├── index.page.tsx            # overview page: the link list, no chrome
+├── _data.ts                  # templateItems, patternItems (real URLs), chrome nav (placeholders)
 ├── _layouts/
 │   ├── BasePage.tsx          # full page shell: head, header, main, footer
 │   └── PatternPage.tsx       # minimal shell for a single section
@@ -52,14 +61,12 @@ src/
 ├── assets/
 │   └── styles.css            # Tailwind entry: theme, global element defaults
 ├── templates/
-│   ├── index.page.tsx        # category overview
 │   ├── landing-page/
 │   │   └── index.page.tsx
 │   └── contact-page/
 │       ├── index.page.tsx
 │       └── main.js
 └── patterns/
-    ├── index.page.tsx        # category overview
     ├── header-1/
     │   └── index.page.tsx
     └── header-2/
@@ -82,7 +89,7 @@ const Page = () => (
     basePath="../../"
     title="Landing page"
     description="…"
-    currentPage="landing"
+    currentPage="home"
     showSearch
     mainClass="flex flex-col gap-12"
   >
@@ -93,18 +100,18 @@ const Page = () => (
 export default Page;
 ```
 
-| Prop             | Purpose                                                                            |
-| ---------------- | ---------------------------------------------------------------------------------- |
-| `basePath`       | `"./"` at the root, `"../"` in a category folder, `"../../"` in an example folder. |
-| `title`          | Feeds `<title>`, suffixed with the site name.                                      |
-| `description`    | Meta description.                                                                  |
-| `currentPage`    | Matched against `item.id` to set `aria-current="page"`.                            |
-| `showSearch`     | Optional; renders the header search form.                                          |
-| `headerVariant`  | Optional; `"single-row"` (default) or `"stacked"` – see the header patterns.       |
-| `mainClass`      | Optional; classes on the page's `<main>`.                                          |
-| `pageScript`     | Optional; renders `<script src="…" defer>` before `</body>`.                       |
-| `navItems`       | Defaults to `_data.ts`; a page may replace or extend it.                           |
-| `footerNavItems` | Same, for the footer navigation.                                                   |
+| Prop             | Purpose                                                                      |
+| ---------------- | ---------------------------------------------------------------------------- |
+| `basePath`       | `"./"` at the root, `"../../"` in an example folder. Only builds asset URLs. |
+| `title`          | Feeds `<title>`, suffixed with the site name.                                |
+| `description`    | Meta description.                                                            |
+| `currentPage`    | Matched against `item.id` to set `aria-current="page"`.                      |
+| `showSearch`     | Optional; renders the header search form.                                    |
+| `headerVariant`  | Optional; `"single-row"` (default) or `"stacked"` – see the header patterns. |
+| `mainClass`      | Optional; classes on the page's `<main>`.                                    |
+| `pageScript`     | Optional; renders `<script src="…" defer>` before `</body>`.                 |
+| `navItems`       | Defaults to `_data.ts`; a page may replace or extend it.                     |
+| `footerNavItems` | Same, for the footer navigation.                                             |
 
 ## Authoring a pattern
 
@@ -121,7 +128,7 @@ const Page = () => (
     basePath="../../"
     title="Header 1"
     description="…"
-    beforeMain={<Header basePath="../../" currentPage="landing" navItems={navItems} />}
+    beforeMain={<Header currentPage="home" navItems={navItems} />}
   >
     <ul>…</ul>
   </PatternPage>
@@ -147,6 +154,8 @@ Rules:
 - A typo in a prop is a **compile error**, not a render-time surprise. Run `npx tsc --noEmit` or rely on the editor.
 - `_data.ts` is imported explicitly rather than injected into an ambient scope, so a page can extend the shared
   navigation (`[...navItems, extra]`) instead of only replacing it.
+- Links inside an example are `#`. Do not wire them up — the overview page is the only place where a broken URL would
+  actually be noticed, and it is covered by tests.
 - Files and folders starting with `_` are inputs only. Keep pages declarative — see
   [`AGENTS.md`](AGENTS.md#scope-discipline-important).
 - Variant names must not read like Tailwind utilities (`single-row`, not the display keyword it replaces): the scanner
@@ -174,7 +183,8 @@ plain HTML with relative paths, no hydration, no framework runtime.
 
 ## Accessibility baseline
 
-Every page ships a skip link, a `main` landmark, labelled `nav` elements, `aria-current` on the active nav item, visible
-`:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header` and `footer`
-landmarks, and a pattern carries the landmark of the section it demonstrates. Keep that baseline when adding examples —
+Every example ships a skip link, `main` and section landmarks, labelled `nav` elements, `aria-current` on the active nav
+item, visible `:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header`
+and `footer` landmarks, and a pattern carries the landmark of the section it demonstrates. The overview page has no
+chrome to skip, so it is a `main` landmark with two labelled navigations. Keep that baseline when adding examples —
 these demos are documentation, so they have to be correct by example.

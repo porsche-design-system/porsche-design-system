@@ -1,4 +1,4 @@
-import type { NavItem } from '../_data.ts';
+import { type NavItem, placeholderHref } from '../_data.ts';
 
 /**
  * Layout variations of the same header content, each showcased by a pattern page.
@@ -12,27 +12,27 @@ import type { NavItem } from '../_data.ts';
 export type HeaderVariant = 'single-row' | 'stacked';
 
 type HeaderProps = {
-  basePath: string;
   /** Id of the active `NavItem`; only that one gets `aria-current="page"`. */
   currentPage: string;
+  /** Placeholder links – the header demonstrates a navigation, it does not provide one. */
   navItems: NavItem[];
   showSearch?: boolean;
   variant?: HeaderVariant;
 };
 
-const Brand = ({ basePath }: { basePath: string }) => (
-  <a class="inline-flex items-center gap-2 font-semibold no-underline" href={basePath}>
+const Brand = () => (
+  <a class="inline-flex items-center gap-2 font-semibold no-underline" href={placeholderHref}>
     <span class="size-5 rounded-full bg-current" aria-hidden="true" />
     Dummy Patterns
   </a>
 );
 
-type MainNavProps = Pick<HeaderProps, 'basePath' | 'currentPage' | 'navItems'> & {
+type MainNavProps = Pick<HeaderProps, 'currentPage' | 'navItems'> & {
   /** Utility classes for the list, so the stacked variant can turn the navigation into its own row. */
   listClass?: string;
 };
 
-const MainNav = ({ basePath, currentPage, navItems, listClass = 'flex flex-wrap gap-1' }: MainNavProps) => (
+const MainNav = ({ currentPage, navItems, listClass = 'flex flex-wrap gap-1' }: MainNavProps) => (
   <nav aria-label="Main">
     <ul class={listClass}>
       {navItems.map((item) => (
@@ -40,7 +40,7 @@ const MainNav = ({ basePath, currentPage, navItems, listClass = 'flex flex-wrap 
           {item.id === currentPage ? (
             <a
               class="inline-block rounded-md bg-surface px-3 py-1.5 font-semibold no-underline forced-colors:bg-[highlight] forced-colors:text-[highlighttext] forced-colors:forced-color-adjust-none"
-              href={`${basePath}${item.href}`}
+              href={item.href}
               aria-current="page"
             >
               {item.label}
@@ -48,7 +48,7 @@ const MainNav = ({ basePath, currentPage, navItems, listClass = 'flex flex-wrap 
           ) : (
             <a
               class="inline-block rounded-md px-3 py-1.5 text-fg-muted no-underline hover:bg-surface hover:text-fg"
-              href={`${basePath}${item.href}`}
+              href={item.href}
             >
               {item.label}
             </a>
@@ -59,8 +59,8 @@ const MainNav = ({ basePath, currentPage, navItems, listClass = 'flex flex-wrap 
   </nav>
 );
 
-const SearchForm = ({ basePath }: { basePath: string }) => (
-  <form class="flex gap-2" role="search" action={`${basePath}search/`}>
+const SearchForm = () => (
+  <form class="flex gap-2" role="search" action={placeholderHref}>
     <label class="sr-only" for="site-search">
       Search patterns
     </label>
@@ -81,15 +81,14 @@ const SearchForm = ({ basePath }: { basePath: string }) => (
 );
 
 /** Page header with the main navigation and an optional search form. */
-export const Header = ({ basePath, currentPage, navItems, showSearch = false, variant = 'single-row' }: HeaderProps) =>
+export const Header = ({ currentPage, navItems, showSearch = false, variant = 'single-row' }: HeaderProps) =>
   variant === 'stacked' ? (
     <header class="border-b border-line forced-colors:border-[canvastext]">
       <div class="flex flex-wrap items-center justify-between gap-6 p-6">
-        <Brand basePath={basePath} />
-        {showSearch && <SearchForm basePath={basePath} />}
+        <Brand />
+        {showSearch && <SearchForm />}
       </div>
       <MainNav
-        basePath={basePath}
         currentPage={currentPage}
         navItems={navItems}
         listClass="flex flex-wrap gap-1 border-t border-line px-6 py-3 forced-colors:border-[canvastext]"
@@ -97,8 +96,8 @@ export const Header = ({ basePath, currentPage, navItems, showSearch = false, va
     </header>
   ) : (
     <header class="flex flex-wrap items-center justify-between gap-6 border-b border-line p-6 forced-colors:border-[canvastext]">
-      <Brand basePath={basePath} />
-      <MainNav basePath={basePath} currentPage={currentPage} navItems={navItems} />
-      {showSearch && <SearchForm basePath={basePath} />}
+      <Brand />
+      <MainNav currentPage={currentPage} navItems={navItems} />
+      {showSearch && <SearchForm />}
     </header>
   );

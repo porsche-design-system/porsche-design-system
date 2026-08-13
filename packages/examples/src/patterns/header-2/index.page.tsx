@@ -1,4 +1,4 @@
-import { navItems } from '../../_data.ts';
+import { navItems, placeholderHref } from '../../_data.ts';
 import { PatternPage } from '../../_layouts/PatternPage.tsx';
 import { Header } from '../../_partials/Header.tsx';
 
@@ -10,9 +10,8 @@ const Page = () => (
     description="Brand and search on top, navigation on its own row below – the stacked header layout."
     beforeMain={
       <Header
-        basePath="../../"
-        currentPage="patterns"
-        navItems={[...navItems, { id: 'patterns', href: 'patterns/', label: 'Patterns' }]}
+        currentPage="features"
+        navItems={[...navItems, { id: 'stories', href: placeholderHref, label: 'Stories' }]}
         showSearch
         variant="stacked"
       />

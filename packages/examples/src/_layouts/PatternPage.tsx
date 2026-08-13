@@ -38,8 +38,8 @@ export const PatternPage = ({ basePath, title, description, beforeMain, afterMai
         <p class="max-w-2xl text-fg-muted">{description}</p>
         {children}
         <p>
-          <a class="underline underline-offset-4" href={`${basePath}patterns/`}>
-            Back to all patterns
+          <a class="underline underline-offset-4" href={basePath}>
+            Back to the overview
           </a>
         </p>
       </main>

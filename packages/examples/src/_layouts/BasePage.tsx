@@ -6,7 +6,7 @@ import { Header, type HeaderVariant } from '../_partials/Header.tsx';
 import { SkipLink } from '../_partials/SkipLink.tsx';
 
 export type BasePageProps = {
-  /** `"./"` at the root, `"../"` one level down. All URLs in the chrome are built from it. */
+  /** `"../../"` for `templates/<name>/index.page.tsx` – only the stylesheet URL is built from it. */
   basePath: string;
   title: string;
   description: string;
@@ -47,17 +47,11 @@ export const BasePage = ({
     </head>
     <body>
       <SkipLink />
-      <Header
-        basePath={basePath}
-        currentPage={currentPage}
-        navItems={pageNavItems}
-        showSearch={showSearch}
-        variant={headerVariant}
-      />
+      <Header currentPage={currentPage} navItems={pageNavItems} showSearch={showSearch} variant={headerVariant} />
       <main id="main" class={mainClass}>
         {children}
       </main>
-      <Footer basePath={basePath} footerNavItems={pageFooterNavItems} />
+      <Footer footerNavItems={pageFooterNavItems} />
       {pageScript && <script src={pageScript} defer />}
     </body>
   </html>

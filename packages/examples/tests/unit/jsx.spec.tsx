@@ -12,35 +12,28 @@ import { SkipLink } from '../../src/_partials/SkipLink.tsx';
 import IndexPage from '../../src/index.page.tsx';
 import Header1Page from '../../src/patterns/header-1/index.page.tsx';
 import Header2Page from '../../src/patterns/header-2/index.page.tsx';
-import PatternsPage from '../../src/patterns/index.page.tsx';
 import ContactPage from '../../src/templates/contact-page/index.page.tsx';
-import TemplatesPage from '../../src/templates/index.page.tsx';
 import LandingPage from '../../src/templates/landing-page/index.page.tsx';
 
 const countOccurrences = (haystack: string, needle: string): number => haystack.split(needle).length - 1;
 
-/** Pages built on `BasePage`: they own the full chrome, header and footer included. */
-const fullPages = [
-  ['index', IndexPage],
-  ['templates', TemplatesPage],
-  ['patterns', PatternsPage],
+/** Templates are built on `BasePage`: they own the full chrome, header and footer included. */
+const templatePages = [
   ['templates/landing-page', LandingPage],
   ['templates/contact-page', ContactPage],
 ] as const;
 
-/** Pages built on `PatternPage`: they show a single section in the place it occupies on a real page. */
+/** Patterns are built on `PatternPage`: they show a single section in the place it occupies on a real page. */
 const patternPages = [
   ['patterns/header-1', Header1Page],
   ['patterns/header-2', Header2Page],
 ] as const;
 
+const examplePages = [...templatePages, ...patternPages];
+
 describe('resolvePagePath()', () => {
   it('should map the root URL to the index page', () => {
     expect(resolvePagePath('/')).toBe('index.page.tsx');
-  });
-
-  it('should map a category URL to its index page', () => {
-    expect(resolvePagePath('/patterns/')).toBe('patterns/index.page.tsx');
   });
 
   it('should map a nested directory URL to its index page', () => {
@@ -86,10 +79,6 @@ describe('isBuildInput()', () => {
 });
 
 describe('data', () => {
-  it('should derive the main navigation from the templates', () => {
-    expect(navItems).toEqual(templateItems.map(({ id, href, label }) => ({ id, href, label })));
-  });
-
   it.each([
     ['template', templateItems, 'templates/'],
     ['pattern', patternItems, 'patterns/'],
@@ -97,6 +86,12 @@ describe('data', () => {
     for (const item of items) {
       expect(item.href.startsWith(prefix)).toBe(true);
       expect(item.href.endsWith('/')).toBe(true);
+    }
+  });
+
+  it('should keep the chrome navigation on placeholder links', () => {
+    for (const item of [...navItems, ...footerNavItems]) {
+      expect(item.href).toBe('#');
     }
   });
 });
@@ -120,7 +115,7 @@ describe('renderPage()', () => {
         basePath="./"
         title={'<script>alert("x")</script> & more'}
         description="Escaping check"
-        currentPage="overview"
+        currentPage="home"
       >
         <h1>Escaping</h1>
       </BasePage>
@@ -168,35 +163,38 @@ describe('SkipLink', () => {
 
 describe('Header', () => {
   it('should mark only the current page with aria-current', () => {
-    const html = render(<Header basePath="../../" currentPage="contact" navItems={navItems} />);
+    const html = render(<Header currentPage="contact" navItems={navItems} />);
 
     expect(countOccurrences(html, 'aria-current="page"')).toBe(1);
-    expect(html).toContain('href="../../templates/contact-page/" aria-current="page"');
+    expect(html).toContain('aria-current="page"');
   });
 
   it('should mark no item when the current page is not part of the navigation', () => {
-    const html = render(<Header basePath="./" currentPage="overview" navItems={navItems} />);
-
-    expect(html).not.toContain('aria-current');
+    expect(render(<Header currentPage="nothing" navItems={navItems} />)).not.toContain('aria-current');
   });
 
   it('should render one link per navigation item', () => {
-    const html = render(<Header basePath="./" currentPage="overview" navItems={navItems} />);
+    const html = render(<Header currentPage="home" navItems={navItems} />);
 
+    expect(countOccurrences(html, '<li>')).toBe(navItems.length);
     for (const item of navItems) {
-      expect(html).toContain(`href="./${item.href}"`);
       expect(html).toContain(item.label);
     }
   });
 
-  it('should hide the search form by default', () => {
-    const html = render(<Header basePath="./" currentPage="overview" navItems={navItems} />);
+  it('should link nowhere, because the chrome is a demonstration', () => {
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch />);
 
-    expect(html).not.toContain('role="search"');
+    expect(countOccurrences(html, 'href="#"')).toBe(navItems.length + 1); // navigation plus the brand
+    expect(html).toContain('action="#"');
+  });
+
+  it('should hide the search form by default', () => {
+    expect(render(<Header currentPage="home" navItems={navItems} />)).not.toContain('role="search"');
   });
 
   it('should render the labelled search form when requested', () => {
-    const html = render(<Header basePath="./" currentPage="overview" navItems={navItems} showSearch />);
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch />);
 
     expect(html).toContain('role="search"');
     expect(html).toContain('<label class="sr-only" for="site-search">');
@@ -204,21 +202,15 @@ describe('Header', () => {
   });
 
   it('should render a labelled navigation landmark', () => {
-    expect(render(<Header basePath="./" currentPage="overview" navItems={navItems} />)).toContain(
-      '<nav aria-label="Main">'
-    );
+    expect(render(<Header currentPage="home" navItems={navItems} />)).toContain('<nav aria-label="Main">');
   });
 
   it('should leave the skip link to the page shell', () => {
-    expect(render(<Header basePath="./" currentPage="overview" navItems={navItems} />)).not.toContain(
-      'Skip to content'
-    );
+    expect(render(<Header currentPage="home" navItems={navItems} />)).not.toContain('Skip to content');
   });
 
   it.each(['single-row', 'stacked'] as const)('should render the same content in the %s variant', (variant) => {
-    const html = render(
-      <Header basePath="./" currentPage="landing" navItems={navItems} showSearch variant={variant} />
-    );
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch variant={variant} />);
 
     expect(countOccurrences(html, '<header')).toBe(1);
     expect(countOccurrences(html, '<nav aria-label="Main">')).toBe(1);
@@ -228,32 +220,37 @@ describe('Header', () => {
   });
 
   it('should put the navigation on its own row in the stacked variant', () => {
-    const html = render(<Header basePath="./" currentPage="landing" navItems={navItems} variant="stacked" />);
-
-    expect(html).toContain('border-t border-line px-6 py-3');
+    expect(render(<Header currentPage="home" navItems={navItems} variant="stacked" />)).toContain(
+      'border-t border-line px-6 py-3'
+    );
   });
 });
 
 describe('Footer', () => {
-  const html = render(<Footer basePath="../" footerNavItems={footerNavItems} />);
+  const html = render(<Footer footerNavItems={footerNavItems} />);
 
   it('should render a labelled navigation landmark', () => {
     expect(html).toContain('<nav aria-label="Footer">');
   });
 
-  it('should resolve every link against the base path', () => {
+  it('should render one placeholder link per item', () => {
+    expect(countOccurrences(html, 'href="#"')).toBe(footerNavItems.length);
     for (const item of footerNavItems) {
-      expect(html).toContain(`href="../${item.href}"`);
+      expect(html).toContain(item.label);
     }
   });
 });
 
 describe('ExampleList', () => {
-  const html = render(<ExampleList basePath="../" items={patternItems} />);
+  const html = render(<ExampleList basePath="./" items={patternItems} label="Patterns" />);
+
+  it('should render a labelled navigation landmark', () => {
+    expect(html).toContain('<nav aria-label="Patterns">');
+  });
 
   it('should link every item against the base path', () => {
     for (const item of patternItems) {
-      expect(html).toContain(`href="../${item.href}"`);
+      expect(html).toContain(`href="./${item.href}"`);
       expect(html).toContain(item.label);
     }
   });
@@ -267,7 +264,7 @@ describe('ExampleList', () => {
 describe('BasePage', () => {
   const renderBasePage = (props: Partial<Parameters<typeof BasePage>[0]> = {}) =>
     render(
-      <BasePage basePath="./" title="Title" description="Description" currentPage="overview" {...props}>
+      <BasePage basePath="../../" title="Title" description="Description" currentPage="home" {...props}>
         <h1>Content</h1>
       </BasePage>
     );
@@ -281,6 +278,10 @@ describe('BasePage', () => {
 
   it('should render the skip link as the first element of the body', () => {
     expect(renderBasePage()).toContain('<body><a class="absolute top-2 start-2');
+  });
+
+  it('should resolve the stylesheet against the base path', () => {
+    expect(renderBasePage()).toContain('href="../../assets/styles.css"');
   });
 
   it('should render the children inside the main landmark', () => {
@@ -304,17 +305,14 @@ describe('BasePage', () => {
   });
 
   it('should fall back to the shared navigation', () => {
-    const html = renderBasePage();
-
-    expect(countOccurrences(html, '<li>')).toBe(navItems.length + footerNavItems.length);
+    expect(countOccurrences(renderBasePage(), '<li>')).toBe(navItems.length + footerNavItems.length);
   });
 
   it('should let a page override the shared navigation', () => {
-    const pageNavItems = [{ id: 'only', href: 'only/', label: 'Only item' }];
-    const html = renderBasePage({ navItems: pageNavItems });
+    const html = renderBasePage({ navItems: [{ id: 'only', href: '#', label: 'Only item' }] });
 
     expect(html).toContain('Only item');
-    expect(html).not.toContain('Landing page');
+    expect(html).not.toContain('Features');
   });
 
   it('should forward the header variant', () => {
@@ -349,12 +347,12 @@ describe('PatternPage', () => {
     expect(html).toContain('id="main"');
   });
 
-  it('should describe the pattern and link back to the category', () => {
+  it('should describe the pattern and link back to the overview', () => {
     const html = renderPatternPage();
 
     expect(html).toContain('Pattern</h1>');
     expect(html).toContain('<p>Notes</p>');
-    expect(html).toContain('href="../../patterns/"');
+    expect(html).toContain('href="../../">Back to the overview');
   });
 
   it('should not ship the shared chrome, which is what a pattern demonstrates', () => {
@@ -365,7 +363,38 @@ describe('PatternPage', () => {
   });
 });
 
-describe.each([...fullPages, ...patternPages])('%s page', (_name, Page) => {
+describe('overview page', () => {
+  it('should render one main landmark and one first level heading', async () => {
+    const html = await renderPage(IndexPage);
+
+    expect(countOccurrences(html, '<main')).toBe(1);
+    expect(countOccurrences(html, '<h1')).toBe(1);
+  });
+
+  it('should not ship the demo chrome', async () => {
+    const html = await renderPage(IndexPage);
+
+    expect(html).not.toContain('<header');
+    expect(html).not.toContain('<footer');
+    expect(html).not.toContain('<nav aria-label="Main">');
+  });
+
+  it('should list every template and every pattern in a labelled navigation', async () => {
+    const html = await renderPage(IndexPage);
+
+    expect(html).toContain('<nav aria-label="Templates">');
+    expect(html).toContain('<nav aria-label="Patterns">');
+    for (const item of [...templateItems, ...patternItems]) {
+      expect(html).toContain(`href="./${item.href}"`);
+    }
+  });
+
+  it('should be the only page with links that go somewhere', async () => {
+    expect(await renderPage(IndexPage)).not.toContain('href="#"');
+  });
+});
+
+describe.each(examplePages)('%s page', (_name, Page) => {
   it('should render exactly one main landmark and one first level heading', async () => {
     const html = await renderPage(Page);
 
@@ -381,6 +410,13 @@ describe.each([...fullPages, ...patternPages])('%s page', (_name, Page) => {
     expect(html).toContain('<nav aria-label="Main">');
   });
 
+  it('should render the header exactly once, above the content', async () => {
+    const html = await renderPage(Page);
+
+    expect(countOccurrences(html, '<header')).toBe(1);
+    expect(html.indexOf('<header')).toBeLessThan(html.indexOf('<main'));
+  });
+
   it('should not leave any template syntax in the output', async () => {
     const html = await renderPage(Page);
 
@@ -388,26 +424,12 @@ describe.each([...fullPages, ...patternPages])('%s page', (_name, Page) => {
   });
 });
 
-describe.each(fullPages)('%s page', (_name, Page) => {
+describe.each(templatePages)('%s page', (_name, Page) => {
   it('should render the full chrome exactly once', async () => {
     const html = await renderPage(Page);
 
-    expect(countOccurrences(html, '<header')).toBe(1);
     expect(countOccurrences(html, '<footer')).toBe(1);
     expect(html).toContain('<nav aria-label="Footer">');
-  });
-});
-
-describe.each(patternPages)('%s page', (_name, Page) => {
-  it('should render the pattern above the content', async () => {
-    const html = await renderPage(Page);
-
-    expect(countOccurrences(html, '<header')).toBe(1);
-    expect(html.indexOf('<header')).toBeLessThan(html.indexOf('<main'));
-  });
-
-  it('should link back to the pattern overview', async () => {
-    expect(await renderPage(Page)).toContain('href="../../patterns/"');
   });
 
   it('should resolve its assets two levels up', async () => {
@@ -415,28 +437,22 @@ describe.each(patternPages)('%s page', (_name, Page) => {
   });
 });
 
-describe('overview page', () => {
-  it('should link every template and every pattern', async () => {
-    const html = await renderPage(IndexPage);
-
-    for (const item of [...templateItems, ...patternItems]) {
-      expect(html).toContain(`href="./${item.href}"`);
-    }
+describe.each(patternPages)('%s page', (_name, Page) => {
+  it('should link back to the overview', async () => {
+    expect(await renderPage(Page)).toContain('href="../../">Back to the overview');
   });
 
-  it('should link both category pages', async () => {
-    const html = await renderPage(IndexPage);
-
-    expect(html).toContain('href="./templates/"');
-    expect(html).toContain('href="./patterns/"');
+  it('should resolve its assets two levels up', async () => {
+    expect(await renderPage(Page)).toContain('href="../../assets/styles.css"');
   });
 });
 
 describe('landing page', () => {
-  it('should extend the shared navigation with its own item', async () => {
+  it('should extend the shared navigation with an in-page anchor', async () => {
     const html = await renderPage(LandingPage);
 
-    expect(html).toContain('href="../../templates/landing-page/#features"');
+    expect(html).toContain('href="#features"');
+    expect(html).toContain('id="features"');
     expect(countOccurrences(html, 'aria-current="page"')).toBe(1);
   });
 });
@@ -458,7 +474,7 @@ describe('contact page', () => {
 });
 
 describe('header patterns', () => {
-  it('should render the inline variant without search on header-1', async () => {
+  it('should render the single-row variant without search on header-1', async () => {
     const html = await renderPage(Header1Page);
 
     expect(html).not.toContain('role="search"');

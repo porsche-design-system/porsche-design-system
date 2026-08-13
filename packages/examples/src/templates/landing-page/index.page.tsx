@@ -1,4 +1,4 @@
-import { navItems } from '../../_data.ts';
+import { navItems, placeholderHref } from '../../_data.ts';
 import { BasePage } from '../../_layouts/BasePage.tsx';
 
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
@@ -7,10 +7,10 @@ const Page = () => (
     basePath="../../"
     title="Landing page"
     description="Dummy landing page template using the shared layout and partial components."
-    currentPage="landing"
+    currentPage="home"
     mainClass="flex flex-col gap-12"
     showSearch
-    navItems={[...navItems, { id: 'landing-features', href: 'templates/landing-page/#features', label: 'Features' }]}
+    navItems={[...navItems, { id: 'landing-features', href: '#features', label: 'Jump to features' }]}
   >
     <section class="max-w-2xl">
       <h1 class="mb-6 text-[clamp(2rem,5vw,3.5rem)]/[1.1] font-bold">Build once, reuse everywhere</h1>
@@ -20,7 +20,7 @@ const Page = () => (
       </p>
       <a
         class="mt-6 inline-block rounded-full bg-fg px-6 py-3 font-semibold text-bg no-underline hover:opacity-85 forced-colors:border forced-colors:border-[buttontext]"
-        href="../contact-page/"
+        href={placeholderHref}
       >
         Get in touch
       </a>
@@ -42,16 +42,6 @@ const Page = () => (
           <p class="text-fg-muted">Every page works standalone, which keeps the documentation examples honest.</p>
         </li>
       </ul>
-    </section>
-
-    <section id="legal-notice" class="max-w-2xl">
-      <h2 class="mb-2 text-3xl font-semibold">Legal notice</h2>
-      <p>Dummy content for the footer link target.</p>
-    </section>
-
-    <section id="privacy-policy" class="max-w-2xl">
-      <h2 class="mb-2 text-3xl font-semibold">Privacy policy</h2>
-      <p>Dummy content for the footer link target.</p>
     </section>
   </BasePage>
 );

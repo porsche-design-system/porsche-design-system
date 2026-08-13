@@ -3,21 +3,36 @@
  *
  * The twins keep this in `_data.json` and merge it into the template scope. Here it is a module: pages import what
  * they need and pass it on explicitly, which is why a typo in a key is a compile error rather than a render-time one.
+ *
+ * Two kinds of links live here, and only one of them is real:
+ * - `templateItems` / `patternItems` are the examples themselves, linked from the overview page, so their `href` is a
+ *   real relative URL.
+ * - `navItems` / `footerNavItems` are the chrome of a demo. They exist to show a navigation, not to navigate, so they
+ *   point at `#` and are never kept in sync with the file tree.
  */
 
 export type NavItem = {
   /** Matches the `currentPage` of a page, which is how the active item gets `aria-current="page"`. */
   id: string;
-  /** Relative to the site root – pages prepend their own `basePath`. */
+  /** `placeholderHref` for the demo chrome; only the example lists below carry real URLs. */
   href: string;
   label: string;
 };
 
+/**
+ * The href of every link that exists to be seen rather than followed.
+ *
+ * It is a constant, not a literal in the markup, for two reasons: it names the intent at each call site, and Biome's
+ * `a11y/useValidAnchor` rule rejects a literal `"#"` – rightly so in an application, where such a link is usually a
+ * button in disguise. Here the links are the demonstration.
+ */
+export const placeholderHref = '#';
+
 export type FooterNavItem = Omit<NavItem, 'id'>;
 
-/** An entry of one of the two categories, listed on the overview pages. */
+/** An entry of one of the two categories, listed on the overview page. */
 export type ExampleItem = NavItem & {
-  /** One sentence, shown next to the link on the overview pages. */
+  /** One sentence, shown next to the link on the overview page. */
   description: string;
 };
 
@@ -27,7 +42,7 @@ export const templateItems: ExampleItem[] = [
     id: 'landing',
     href: 'templates/landing-page/',
     label: 'Landing page',
-    description: 'Hero, feature grid and legal sections, with a page level navigation override.',
+    description: 'Hero, feature grid and call to action, with a page level navigation override.',
   },
   {
     id: 'contact',
@@ -53,11 +68,15 @@ export const patternItems: ExampleItem[] = [
   },
 ];
 
-/** The main navigation lists the templates only, so the header stays short as patterns are added. */
-export const navItems: NavItem[] = templateItems.map(({ id, href, label }) => ({ id, href, label }));
+/** Placeholder navigation of the demo chrome – enough to show the pattern, deliberately going nowhere. */
+export const navItems: NavItem[] = [
+  { id: 'home', href: placeholderHref, label: 'Home' },
+  { id: 'features', href: placeholderHref, label: 'Features' },
+  { id: 'contact', href: placeholderHref, label: 'Contact' },
+];
 
 export const footerNavItems: FooterNavItem[] = [
-  { href: 'templates/landing-page/#legal-notice', label: 'Legal notice' },
-  { href: 'templates/landing-page/#privacy-policy', label: 'Privacy policy' },
-  { href: 'templates/contact-page/', label: 'Contact us' },
+  { href: placeholderHref, label: 'Legal notice' },
+  { href: placeholderHref, label: 'Privacy policy' },
+  { href: placeholderHref, label: 'Contact us' },
 ];
