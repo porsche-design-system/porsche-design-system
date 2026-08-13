@@ -1,18 +1,15 @@
 /**
- * Builds the payload for the Slack Workflow Builder webhook trigger that announces a failed CI run.
+ * Builds the payload for the Slack Workflow Builder trigger that announces a failed CI run.
+ * Used by .github/workflows/notify-pipeline-failure.yml.
  *
- * Pure transform: three JSON files in, one JSON document on stdout.
- * Usage: node scripts/build-slack-payload.ts <run.json> <jobs.json> <pulls.json>
+ * node scripts/build-slack-payload.ts <run.json> <jobs.json> <pulls.json>
  *
- * Three constraints that are not obvious from the code. Full reasoning in
- * docs/runbooks/pipeline-failure-notifications.md.
- *   1. Workflow Builder accepts only a FLAT object of STRINGIFIED values — no nesting, no arrays,
- *      no numbers. That is why the job list is pre-joined into one string.
- *   2. Values render as PLAIN TEXT, not mrkdwn. So links are bare URLs on their own line (Slack
- *      auto-links those), and nothing is HTML-escaped. Rebuilding the Slack side from an app
- *      manifest reverses both — see the runbook before doing that.
- *   3. Runs on bare `node`, not `tsx`, so the workflow can skip `npm ci`. Keep it dependency-free
- *      and free of non-erasable TypeScript (no enums, no namespaces).
+ * Workflow Builder only accepts a flat object of strings — no nesting, arrays or numbers — hence
+ * the pre-joined job list. It also renders values as plain text rather than mrkdwn, so links are
+ * bare URLs on their own line and nothing is escaped.
+ *
+ * Runs on bare `node` (Node 24 strips types) so the workflow can skip `npm ci`. Keep it free of
+ * dependencies and of TypeScript that needs a transform.
  */
 import { readFileSync } from 'node:fs';
 
@@ -30,7 +27,7 @@ type Job = { name: string; conclusion: string | null; html_url?: string; steps?:
 
 type Pull = { number: number; html_url: string; user: { login: string }; merged_at: string | null };
 
-/** The seven variables the Slack workflow declares. Renaming one means editing Slack too. */
+/** Must match the variables declared on the Slack workflow. */
 type SlackPayload = {
   workflow: string;
   branch: string;
@@ -41,14 +38,10 @@ type SlackPayload = {
   failed_jobs: string;
 };
 
-/** Mirrors the conclusion guard in notify-pipeline-failure.yml. */
+/** Same conclusions the workflow's `if:` guards on. */
 const FAILED = new Set(['failure', 'timed_out']);
 
-/**
- * Slack recommends keeping a message under 4000 characters. A job entry measures ~181 chars
- * (name, step, and a full GitHub URL), so 15 entries plus the surrounding template lands near
- * 3000. All 56 jobs failing would be ~12,600, hence a cap at all.
- */
+/** An entry is ~180 chars with its URL, and Slack wants messages under 4000. */
 const MAX_JOBS_LISTED = 15;
 
 const [runPath, jobsPath, pullsPath] = process.argv.slice(2);
@@ -58,19 +51,16 @@ const pulls: Pull[] = JSON.parse(readFileSync(pullsPath, 'utf8'));
 
 const failedJobs = jobs.filter((job) => FAILED.has(job.conclusion ?? ''));
 
-/** Fallback for every URL, so no key can end up undefined and vanish from the payload. */
+/** URL fallback — JSON.stringify drops undefined keys, and Slack rejects a missing one. */
 const runUrl = run.html_url ?? '';
 
-/** The list is newline-delimited, so a newline in a name would forge an extra entry. */
+/** The job list is newline-delimited, so a newline in a name would fake an entry. */
 const oneLine = (value: string): string => String(value).replace(/[\r\n]+/g, ' ');
 
-/** GitHub labels an un-named step `Run <command>`. The prefix is redundant in the message. */
+/** GitHub names an un-named step `Run <command>`. */
 const stepLabel = (name: string): string => oneLine(name).replace(/^Run /, '');
 
-/**
- * Two lines per job: description, then the bare URL. `#step:<n>:1` is GitHub's anchor for
- * "step n, log line 1". An infra failure reports `Set up job` at number 1, which is correct.
- */
+/** Description line plus the step URL. `#step:<n>:1` is GitHub's anchor for step n, line 1. */
 const jobEntry = (job: Job): string => {
   const step = job.steps?.find((candidate) => FAILED.has(candidate.conclusion ?? ''));
   const name = oneLine(job.name);
@@ -80,8 +70,7 @@ const jobEntry = (job: Job): string => {
 };
 
 const buildJobList = (): string => {
-  // A run-level `timed_out` cancels its jobs rather than failing them, and a manual dispatch
-  // applies no conclusion filter — so an empty list is reachable and must still say something.
+  // A run-level `timed_out` cancels its jobs instead of failing them, so this is reachable.
   if (failedJobs.length === 0) {
     return `• No individual job reported a failure — inspect the run itself\n${runUrl}`;
   }
@@ -92,8 +81,8 @@ const buildJobList = (): string => {
 };
 
 const attribution = (): string => {
-  // Merged only: `/commits/{sha}/pulls` returns OPEN PRs when the commit is not on the default
-  // branch (every v* push), so an attacker could otherwise put their name on our notifications.
+  // Merged only. Off the default branch — every v* push — `/commits/{sha}/pulls` returns open PRs,
+  // so anyone could attach their name by opening one against that sha.
   const pull = pulls.find((candidate) => candidate.merged_at);
   if (pull) return `PR #${pull.number} by ${pull.user.login}`;
   if (run.event === 'schedule') return 'scheduled run, no author';
