@@ -1,13 +1,22 @@
 import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
 import { doctype, isBuildInput, renderPage, resolvePagePath } from '../../plugins/jsx.ts';
-import { footerNavItems, navItems, patternItems, templateItems } from '../../src/_data.ts';
+import {
+  categoryItems,
+  footerNavItems,
+  type NavItem,
+  navItems,
+  noticeText,
+  patternItems,
+  placeholderHref,
+  templateItems,
+} from '../../src/_data.ts';
 import { BasePage } from '../../src/_layouts/BasePage.tsx';
 import { PatternPage } from '../../src/_layouts/PatternPage.tsx';
 import { ExampleList } from '../../src/_partials/ExampleList.tsx';
 import { Footer } from '../../src/_partials/Footer.tsx';
 import { Head } from '../../src/_partials/Head.tsx';
-import { Header } from '../../src/_partials/Header.tsx';
+import { Header } from '../../src/_partials/header/Header.tsx';
 import { SkipLink } from '../../src/_partials/SkipLink.tsx';
 import IndexPage from '../../src/index.page.tsx';
 import Header1Page from '../../src/patterns/header-1/index.page.tsx';
@@ -16,6 +25,17 @@ import ContactPage from '../../src/templates/contact-page/index.page.tsx';
 import LandingPage from '../../src/templates/landing-page/index.page.tsx';
 
 const countOccurrences = (haystack: string, needle: string): number => haystack.split(needle).length - 1;
+
+/** Every entry of the navigation tree, at any depth. */
+const flattenNavItems = (items: NavItem[]): NavItem[] =>
+  items.flatMap((item) => [item, ...flattenNavItems(item.children ?? [])]);
+
+/**
+ * A first level heading is either a plain `<h1>` or a `<p-heading tag="h1">`, which renders the `h1` in its shadow
+ * root and therefore never appears in the static markup.
+ */
+const countFirstLevelHeadings = (html: string): number =>
+  (html.match(/<h1[\s>]/g) ?? []).length + countOccurrences(html, 'tag="h1"');
 
 /** Templates are built on `BasePage`: they own the full chrome, header and footer included. */
 const templatePages = [
@@ -90,9 +110,15 @@ describe('data', () => {
   });
 
   it('should keep the chrome navigation on placeholder links', () => {
-    for (const item of [...navItems, ...footerNavItems]) {
+    for (const item of [...flattenNavItems(navItems), ...footerNavItems, ...categoryItems]) {
       expect(item.href).toBe('#');
     }
+  });
+
+  it('should keep every navigation id unique, because the drilldown identifies its levels by them', () => {
+    const ids = flattenNavItems(navItems).map((item) => item.id);
+
+    expect(new Set(ids).size).toBe(ids.length);
   });
 });
 
@@ -162,67 +188,137 @@ describe('SkipLink', () => {
 });
 
 describe('Header', () => {
-  it('should mark only the current page with aria-current', () => {
-    const html = render(<Header currentPage="contact" navItems={navItems} />);
+  const variants = ['overlay', 'stacked'] as const;
 
-    expect(countOccurrences(html, 'aria-current="page"')).toBe(1);
-    expect(html).toContain('aria-current="page"');
-  });
-
-  it('should mark no item when the current page is not part of the navigation', () => {
-    expect(render(<Header currentPage="nothing" navItems={navItems} />)).not.toContain('aria-current');
-  });
-
-  it('should render one link per navigation item', () => {
-    const html = render(<Header currentPage="home" navItems={navItems} />);
-
-    expect(countOccurrences(html, '<li>')).toBe(navItems.length);
-    for (const item of navItems) {
-      expect(html).toContain(item.label);
-    }
-  });
-
-  it('should link nowhere, because the chrome is a demonstration', () => {
-    const html = render(<Header currentPage="home" navItems={navItems} showSearch />);
-
-    expect(countOccurrences(html, 'href="#"')).toBe(navItems.length + 1); // navigation plus the brand
-    expect(html).toContain('action="#"');
-  });
-
-  it('should hide the search form by default', () => {
-    expect(render(<Header currentPage="home" navItems={navItems} />)).not.toContain('role="search"');
-  });
-
-  it('should render the labelled search form when requested', () => {
-    const html = render(<Header currentPage="home" navItems={navItems} showSearch />);
-
-    expect(html).toContain('role="search"');
-    expect(html).toContain('<label class="sr-only" for="site-search">');
-    expect(html).toContain('id="site-search"');
-  });
-
-  it('should render a labelled navigation landmark', () => {
-    expect(render(<Header currentPage="home" navItems={navItems} />)).toContain('<nav aria-label="Main">');
-  });
-
-  it('should leave the skip link to the page shell', () => {
-    expect(render(<Header currentPage="home" navItems={navItems} />)).not.toContain('Skip to content');
-  });
-
-  it.each(['single-row', 'stacked'] as const)('should render the same content in the %s variant', (variant) => {
+  it.each(variants)('should render the same navigation in the %s variant', (variant) => {
     const html = render(<Header currentPage="home" navItems={navItems} showSearch variant={variant} />);
 
     expect(countOccurrences(html, '<header')).toBe(1);
     expect(countOccurrences(html, '<nav aria-label="Main">')).toBe(1);
-    expect(countOccurrences(html, '<li>')).toBe(navItems.length);
     expect(countOccurrences(html, 'aria-current="page"')).toBe(1);
-    expect(html).toContain('role="search"');
+    for (const item of flattenNavItems(navItems)) {
+      expect(html).toContain(item.label);
+    }
   });
 
-  it('should put the navigation on its own row in the stacked variant', () => {
-    expect(render(<Header currentPage="home" navItems={navItems} variant="stacked" />)).toContain(
-      'border-t border-line px-6 py-3'
-    );
+  it.each(variants)(
+    'should mark no item in the %s variant when the current page is not part of the navigation',
+    (variant) => {
+      expect(render(<Header currentPage="nothing" navItems={navItems} variant={variant} />)).not.toContain(
+        'aria-current'
+      );
+    }
+  );
+
+  it.each(variants)('should link nowhere in the %s variant, because the chrome is a demonstration', (variant) => {
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch variant={variant} />);
+
+    // Every URL in the header – the navigation, the meta actions, the crest and the wordmark – is the placeholder.
+    for (const [, url] of html.matchAll(/href="([^"]*)"/g)) {
+      expect(url).toBe(placeholderHref);
+    }
+  });
+
+  it.each(variants)('should render one drilldown level per nested item in the %s variant', (variant) => {
+    const html = render(<Header currentPage="home" navItems={navItems} variant={variant} />);
+    const items = flattenNavItems(navItems);
+
+    expect(countOccurrences(html, '<p-drilldown-item')).toBe(items.filter((item) => item.children).length);
+    for (const item of items.filter((item) => item.children)) {
+      expect(html).toContain(`identifier="${item.id}"`);
+    }
+  });
+
+  it('should render one link per entry, a level being reachable through its own overview entry', () => {
+    const html = render(<Header currentPage="home" navItems={navItems} />);
+
+    expect(countOccurrences(html, '<p-drilldown-link')).toBe(flattenNavItems(navItems).length);
+    expect(html).toContain('Home overview');
+  });
+
+  it('should keep a top level entry without children a link rather than a level', () => {
+    const html = render(<Header currentPage="contact" navItems={navItems} />);
+
+    expect(html).not.toContain('identifier="contact"');
+    expect(html).toContain('aria-current="page">Contact</a>');
+  });
+
+  it('should hide the search affordance by default', () => {
+    for (const variant of variants) {
+      expect(render(<Header currentPage="home" navItems={navItems} variant={variant} />)).not.toContain(
+        'icon="search"'
+      );
+    }
+  });
+
+  it.each(variants)('should render the named search affordance when requested in the %s variant', (variant) => {
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch variant={variant} />);
+
+    expect(html).toContain('icon="search"');
+    expect(html).toContain('>Search</p-button-pure>');
+  });
+
+  it('should give the menu button an accessible name and announce what it opens', () => {
+    const html = render(<Header currentPage="home" navItems={navItems} />);
+
+    expect(html).toContain('>Menu</p-button-pure>');
+    expect(html).toContain('aria-haspopup');
+  });
+
+  it('should reduce the overlay variant to the bar it lies on top of the content with', () => {
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch />);
+
+    expect(html).toContain('<header class="z-1');
+    expect(html).not.toContain('<nav aria-label="Categories">');
+    expect(html).not.toContain(noticeText);
+    // A shop navigation belongs to the stacked variant; the overlay one stays on the essentials.
+    expect(html).not.toContain('icon="shopping-cart"');
+  });
+
+  it('should put the dark scheme of the overlay variant on the elements lying on the hero', () => {
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch />);
+
+    // The menu button, the crest, the wordmark and the two meta actions – and nothing else.
+    expect(countOccurrences(html, 'scheme-dark')).toBe(5);
+    expect(html).toContain('<p-crest class="sm:hidden scheme-dark"');
+  });
+
+  it('should keep the drilldown of the overlay variant out of that scheme, since it is a dialog on the page', () => {
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch />);
+    const closingTag = '</p-drilldown>';
+    const drilldown = html.slice(html.indexOf('<p-drilldown '), html.indexOf(closingTag) + closingTag.length);
+
+    // Neither on the drilldown itself nor on anything it contains, and no ancestor carries it either: the scheme
+    // never reaches the `header` or the `nav`.
+    expect(drilldown).toContain(closingTag);
+    expect(drilldown).not.toContain('scheme-');
+    expect(html).not.toContain('<header class="scheme-dark');
+    expect(html).not.toContain('<nav aria-label="Main" class=');
+  });
+
+  it('should leave the scheme of the stacked variant to its rows', () => {
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch variant="stacked" />);
+
+    // Only the note is an island of its own; the bar sits on the page background.
+    expect(countOccurrences(html, 'scheme-dark')).toBe(1);
+    expect(html).toContain('<p-crest class="sm:hidden"');
+  });
+
+  it('should add the note and the category navigation in the stacked variant', () => {
+    const html = render(<Header currentPage="home" navItems={navItems} showSearch variant="stacked" />);
+
+    expect(html).toContain(noticeText);
+    expect(html).toContain('<nav class="col-full');
+    expect(html).toContain('aria-label="Categories"');
+    for (const item of categoryItems) {
+      // The labels are interpolated, so an ampersand arrives escaped – "Bags & Luggage" is the check for that.
+      expect(html).toContain(item.label.replaceAll('&', '&amp;'));
+    }
+    expect(html).toContain('icon="shopping-cart"');
+  });
+
+  it('should leave the skip link to the page shell', () => {
+    expect(render(<Header currentPage="home" navItems={navItems} />)).not.toContain('Skip to content');
   });
 });
 
@@ -296,16 +392,30 @@ describe('BasePage', () => {
     expect(renderBasePage({ mainClass: 'max-w-2xl' })).toContain('<main id="main" class="max-w-2xl">');
   });
 
-  it('should omit the page script by default', () => {
-    expect(renderBasePage()).not.toContain('<script');
+  it('should load the script of the drilldown navigation without the page having to ask for it', () => {
+    expect(renderBasePage()).toContain('<script src="../../assets/header.js" defer></script>');
+  });
+
+  it('should load that script for every header variant, since all of them are a drilldown', () => {
+    expect(renderBasePage({ headerVariant: 'stacked' })).toContain('<script src="../../assets/header.js" defer>');
   });
 
   it('should render the deferred page script when given', () => {
     expect(renderBasePage({ pageScript: 'main.js' })).toContain('<script src="main.js" defer></script>');
   });
 
+  it('should render every page script when given a list', () => {
+    const html = renderBasePage({ pageScript: ['../../assets/analytics.js', 'main.js'] });
+
+    expect(html).toContain('<script src="../../assets/analytics.js" defer></script>');
+    expect(html).toContain('<script src="main.js" defer></script>');
+  });
+
   it('should fall back to the shared navigation', () => {
-    expect(countOccurrences(renderBasePage(), '<li>')).toBe(navItems.length + footerNavItems.length);
+    const html = renderBasePage();
+
+    expect(countOccurrences(html, '<p-drilldown-link')).toBe(flattenNavItems(navItems).length);
+    expect(countOccurrences(html, '<li>')).toBe(footerNavItems.length);
   });
 
   it('should let a page override the shared navigation', () => {
@@ -316,7 +426,7 @@ describe('BasePage', () => {
   });
 
   it('should forward the header variant', () => {
-    expect(renderBasePage({ headerVariant: 'stacked' })).toContain('border-t border-line px-6 py-3');
+    expect(renderBasePage({ headerVariant: 'stacked' })).toContain('aria-label="Categories"');
   });
 });
 
@@ -324,7 +434,10 @@ describe('PatternPage', () => {
   const renderPatternPage = (props: Partial<Parameters<typeof PatternPage>[0]> = {}) =>
     render(
       <PatternPage basePath="../../" title="Pattern" description="Description" {...props}>
-        <p>Notes</p>
+        <main id="main">
+          <h1>Pattern</h1>
+          <p>Notes</p>
+        </main>
       </PatternPage>
     );
 
@@ -340,19 +453,34 @@ describe('PatternPage', () => {
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
   });
 
-  it('should render the skip link and the main landmark', () => {
+  it('should render the skip link, leaving the main landmark to the page', () => {
     const html = renderPatternPage();
 
     expect(html).toContain('Skip to content');
-    expect(html).toContain('id="main"');
+    expect(html).toContain('href="#main"');
+    expect(html).toContain('<main id="main">');
   });
 
-  it('should describe the pattern and link back to the overview', () => {
+  it('should render the page content and link back to the overview', () => {
     const html = renderPatternPage();
 
-    expect(html).toContain('Pattern</h1>');
     expect(html).toContain('<p>Notes</p>');
     expect(html).toContain('href="../../">Back to the overview');
+  });
+
+  it('should omit the page script by default', () => {
+    expect(renderPatternPage()).not.toContain('<script');
+  });
+
+  it('should render the deferred page script when given', () => {
+    expect(renderPatternPage({ pageScript: 'main.js' })).toContain('<script src="main.js" defer></script>');
+  });
+
+  it('should render every page script when given a list', () => {
+    const html = renderPatternPage({ pageScript: ['../../assets/header.js', 'main.js'] });
+
+    expect(html).toContain('<script src="../../assets/header.js" defer></script>');
+    expect(html).toContain('<script src="main.js" defer></script>');
   });
 
   it('should not ship the shared chrome, which is what a pattern demonstrates', () => {
@@ -399,7 +527,7 @@ describe.each(examplePages)('%s page', (_name, Page) => {
     const html = await renderPage(Page);
 
     expect(countOccurrences(html, '<main')).toBe(1);
-    expect(countOccurrences(html, '<h1')).toBe(1);
+    expect(countFirstLevelHeadings(html)).toBe(1);
   });
 
   it('should ship the accessibility baseline', async () => {
@@ -474,17 +602,44 @@ describe('contact page', () => {
 });
 
 describe('header patterns', () => {
-  it('should render the single-row variant without search on header-1', async () => {
+  it('should render the overlay variant on header-1', async () => {
     const html = await renderPage(Header1Page);
 
-    expect(html).not.toContain('role="search"');
-    expect(html).not.toContain('border-t border-line px-6 py-3');
+    expect(html).toContain('<p-drilldown id="nav-drilldown">');
+    expect(html).toContain('icon="search"');
+    expect(html).not.toContain('aria-label="Categories"');
+    expect(html).not.toContain(noticeText);
   });
 
-  it('should render the stacked variant with search on header-2', async () => {
+  it('should load the shared header script and its own behaviour, both deferred', async () => {
+    const html = await renderPage(Header1Page);
+
+    expect(html).toContain('<script src="../../assets/header.js" defer></script>');
+    expect(html).toContain('<script src="main.js" defer></script>');
+  });
+
+  it('should give the video of header-1 a labelled pause control', async () => {
+    const html = await renderPage(Header1Page);
+
+    expect(html).toContain('id="pause-button"');
+    expect(html).toContain('Pause Video');
+  });
+
+  it('should render the stacked variant with its extra rows on header-2', async () => {
     const html = await renderPage(Header2Page);
 
-    expect(html).toContain('role="search"');
-    expect(html).toContain('border-t border-line px-6 py-3');
+    expect(html).toContain(noticeText);
+    expect(html).toContain('aria-label="Categories"');
+  });
+
+  it('should share the very same navigation between both patterns', async () => {
+    const [html1, html2] = await Promise.all([renderPage(Header1Page), renderPage(Header2Page)]);
+
+    for (const html of [html1, html2]) {
+      expect(countOccurrences(html, '<p-drilldown-item')).toBe(
+        flattenNavItems(navItems).filter((item) => item.children).length
+      );
+      expect(html).toContain('<nav aria-label="Main">');
+    }
   });
 });

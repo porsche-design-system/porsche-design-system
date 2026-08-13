@@ -26,23 +26,29 @@ is not published.
 
 ```text
 plugins/jsx.ts                    # renderPage() + page URL resolution + Vite plugin (dev server)
-scripts/build.ts                  # production build: render pages, copy everything else verbatim
+plugins/partials.ts               # PDS partials (loader, fonts, icons, chunks), shared by dev server and build
+scripts/build.ts                  # production build: render pages, inject partials, copy everything else verbatim
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
 tests/unit/jsx.spec.tsx           # tests describing the rendering contract
 src/
 ├── index.page.tsx                # overview page: the link list, no chrome
 ├── _data.ts                      # templateItems, patternItems (real URLs), chrome nav (placeholders)
+├── _classes.ts                   # classes(): joins class names, dropping the unset optional ones
 ├── _layouts/
 │   ├── BasePage.tsx              # full page shell, takes `children`
 │   └── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
-├── _partials/                    # Head, SkipLink, Header, Footer, ExampleList – checked props
+├── _partials/                    # Head, SkipLink, Footer, ExampleList – checked props
+│   └── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
+│                                 # MainNav, MetaActions, NoticeBar, CategoryTabs
+├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
 ├── assets/styles.css             # Tailwind entry: @theme, dark mode, global element defaults
+├── assets/header.js              # behaviour of the header drilldown, shared by every page using it
 ├── templates/                    # one folder per template
 │   ├── landing-page/             # index.page.tsx
 │   └── contact-page/             # index.page.tsx + main.js
 └── patterns/                     # one folder per pattern
-    ├── header-1/                 # Header in its `single-row` variant
+    ├── header-1/                 # Header in its `overlay` variant (+ main.js for the video)
     └── header-2/                 # Header in its `stacked` variant
 ```
 
@@ -83,8 +89,8 @@ npm run test:unit:examples  # vitest
   than hand-authored markup would be. Structure and attributes are unaffected.
 - **Tailwind scans comments too.** `@source "../**/*.tsx"` feeds whole files to the scanner, so prose such as
   "`{% block content %}`" or "relative to the page" leaks `.block` and `.relative` into `dist/assets/styles.css`. The
-  same applies to string literals: the header variants are named `single-row`/`stacked` precisely because a display
-  keyword would end up as an unused utility. Check the compiled CSS after larger comment edits.
+  same applies to string literals: the header variants are named `overlay`/`stacked` precisely because a display keyword
+  would end up as an unused utility. Check the compiled CSS after larger comment edits.
 - **Asset URLs are relative to the page, not the component.** Pass `basePath`: `"./"` at the root, `"../../"` inside an
   example folder. It only builds the stylesheet URL — navigation links are placeholders, see above.
 - **`_data.ts` is imported, not injected.** There is no ambient template scope, so a page can extend the shared
@@ -94,6 +100,34 @@ npm run test:unit:examples  # vitest
   landmark sits where it does on a real page.
 - **Pages are rendered server-side only.** They are not in the client module graph, so the dev server does a full reload
   on any `.ts`/`.tsx` change rather than an HMR patch.
+- **PDS components are typed as attributes, not props.** `<p-button>` and friends are typed by
+  [`src/_types/pds-jsx.d.ts`](src/_types/pds-jsx.d.ts), which derives the tag names and their props from the Stencil
+  types of `@porsche-design-system/components` (a **type-only** import, erased at compile time). Because the output is
+  static HTML with nothing setting JS properties afterwards, the attribute names are kebab-cased — write `hide-label`,
+  not `hideLabel` — and values are restricted to what survives serialization. String and number unions keep their
+  autocompletion (`variant="primary"`); structural values such as `BreakpointCustomizable` objects or the `aria` record
+  have to be written as JSON strings (`compact="{ base: false, m: true }"`).
+- **No event handler props on PDS components.** The typing deliberately omits them: there is no client-side JS, so
+  behaviour goes into a plain `main.js` hooked on ids.
+- **A script next to a page is not loaded by being there.** Nothing scans the folder: a page has to list it via
+  `pageScript` (a string or a list of them), which is the only thing rendering the `<script defer>` tag. Behaviour that
+  belongs to a shared partial belongs in `src/assets/*.js`, not in one example folder — `BasePage` loads
+  `assets/header.js` itself for every header variant, and a pattern that brings its own header lists it in `pageScript`.
+- **A variant is a prop, not a copy.** `Header` renders both header patterns from one set of blocks
+  (`_partials/header/`), driven by `navItems` and `metaActionItems` from `_data.ts`. If two variants need the same
+  block, extract the block; do not paste the markup a second time, or one variant silently drifts from the other.
+- **The navigation is rendered recursively.** A `NavItem` with `children` becomes a `p-drilldown-item` (plus a leading
+  entry pointing at its own page, since a level is not a link), one without becomes a `p-drilldown-link`. Both are valid
+  children of `p-drilldown` and of `p-drilldown-item`, which is what makes one component cover every depth.
+- **`p-tabs-bar` accepts only `a` and `button` children.** Anything else – a divider, a wrapper – makes it throw at
+  runtime, which static markup does not reveal at build time.
+- **A color scheme class is never put on the `<header>`.** `scheme-*` cascades, and the drilldown lives inside the
+  header while being a dialog on top of the _page_ – a scheme on the `<header>` opens a dark overlay on a light page.
+  `Header` hands the scheme to its blocks instead, and each applies it to the elements that really sit on the dark hero;
+  `MainNav` puts it on the menu button and not on `p-drilldown`. The same holds for any overlay a partial owns.
+- **The PDS partials are injected by both the dev server and the build**, from
+  [`plugins/partials.ts`](plugins/partials.ts). Without the loader script the `p-*` elements never upgrade and
+  `:not(:defined)` keeps them invisible, so the partials cannot live in the Vite config alone.
 
 ## Scope discipline (important)
 
@@ -116,6 +150,12 @@ approach, and it is paid on every review:
   `jsxImportSource: "preact"`). Vite and Vitest pick it up from there; do not duplicate it in the configs.
 - Vitest needs its own config because `vite.config.ts` sets `root: 'src'`, which would make Vitest look for tests there.
 - Prettier is used as a **library** in the build to format rendered markup, not as a repo formatter for this package.
+- **The dev server rewrites the CDN URL.** The partials always emit absolute production URLs
+  (`https://cdn.ui.porsche.com/porsche-design-system/…`), regardless of how the monorepo was built. `npm run dev` starts
+  `serve-cdn` alongside Vite, so [`vite.config.ts`](vite.config.ts) rewrites those URLs to `http://localhost:3001` —
+  without it the browser loads the components from the production CDN and blocks the loader script with a CORS error.
+  The same rewrite exists in the react/angular/vue/storefront dev servers. It is **dev only**; `scripts/build.ts` writes
+  the production URLs unchanged.
 
 ## Adding a template (a whole page)
 
@@ -131,11 +171,16 @@ approach, and it is paid on every review:
 
 1. Create `src/patterns/<name>/index.page.tsx`.
 2. Default-export a component that renders `<PatternPage>` with `basePath="../../"`, `title`, `description`, and the
-   section itself as `beforeMain` (headers) or `afterMain` (footers). Notes about the pattern go in `children`.
+   section itself as `beforeMain` (headers) or `afterMain` (footers). The page brings its own `<main id="main">` as
+   `children`; the layout adds only the skip link and the link back to the overview.
 3. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
-   `variant="single-row" | "stacked"`, which is exactly what `header-1` and `header-2` differ in.
+   `variant="overlay" | "stacked"`, which is exactly what `header-1` and `header-2` differ in.
 4. Add an entry to `patternItems` in `src/_data.ts`.
-5. Run the build; the unit tests assert the accessibility baseline for every page, patterns included.
+5. If the pattern needs behaviour, put it in a plain `main.js` next to the page and reference it with
+   `pageScript="main.js"` — the same prop `BasePage` has, and it also takes a list. A script that is only dropped into
+   the folder is copied to `dist/` but never loaded. A pattern showing a header also has to list
+   `"../../assets/header.js"`, which `BasePage` adds on its own.
+6. Run the build; the unit tests assert the accessibility baseline for every page, patterns included.
 
 ## Accessibility baseline
 
@@ -160,12 +205,26 @@ Done:
   nothing to disambiguate it from. The Tailwind entry was renamed with it, from `assets/patterns.css` to
   `assets/styles.css`.
 - **Split into two categories (2026-08-13):** `templates/` for whole pages, `patterns/` for single sections, with their
-  own lists in `_data.ts` and their own layouts (`BasePage` / `PatternPage`). The first two patterns are the
-  `single-row` and `stacked` variants of `Header`. `isTemplateInput()` was renamed to `isBuildInput()` so "template"
-  unambiguously means the category.
+  own lists in `_data.ts` and their own layouts (`BasePage` / `PatternPage`). The first two patterns are the `overlay`
+  and `stacked` variants of `Header`. `isTemplateInput()` was renamed to `isBuildInput()` so "template" unambiguously
+  means the category.
 - **Links reduced to placeholders (2026-08-13):** the demo chrome links to `#`, the overview page dropped the chrome and
   became the single link list, and the per-category overview pages were removed as redundant. `Header` and `Footer` lost
   their `basePath` prop with it.
+- **The header became a real PDS header (2026-08-13):** crest/wordmark, icon affordances and a `p-drilldown` behind a
+  menu button, still driven by the shared `navItems`. With it came `assets/header.js` for its behaviour, `pageScript` on
+  `PatternPage`, `pageScript` accepting a list, and the partial injection in `scripts/build.ts` — until then only the
+  dev server injected the loader, so `dist/` never upgraded a single component.
+- **Header deduplicated into blocks (2026-08-13):** both patterns had grown their own copy of the markup. `Header` is
+  now a composition of `HeaderBar`, `Brand`, `MainNav`, `MetaActions`, `NoticeBar` and `CategoryTabs` in
+  `_partials/header/`, the variants were renamed to `overlay`/`stacked`, and the navigation and the icon affordances
+  come from `navItems` (now nestable) and `metaActionItems` in `_data.ts`. That removed the hardcoded drilldown of the
+  stacked variant, the dead `Brand`/`MainNav`/`SearchForm` leftovers, the `p-divider` inside `p-tabs-bar` (which throws
+  at runtime) and the raw `href="#"` literals. `BasePage` now loads `assets/header.js` for every variant, since all of
+  them are a drilldown.
+- **Scheme handling of the overlay header corrected (2026-08-13):** the deduplication had moved `scheme-dark` onto the
+  `<header>`, which cascaded into the drilldown and opened it dark on a light page. The scheme is now passed to the
+  blocks (`scheme` prop) so it reaches only the elements on the hero, with `_classes.ts` joining the optional class.
 
 Open:
 

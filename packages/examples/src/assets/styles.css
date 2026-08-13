@@ -11,75 +11,13 @@
 
 /* `source(none)` disables Tailwind's automatic detection, which would also scan the package README and leak
  * prose words such as "static" or "inline" into the demo stylesheet as false positive utilities. */
+@import "@porsche-design-system/components-js";
 @import "tailwindcss" source(none);
+@import "@porsche-design-system/components-js/tailwindcss";
 
 /* The pages are TSX components, so Tailwind is pointed at them explicitly. */
 @source "../**/*.tsx";
 
-@theme {
-  --color-fg: #010205;
-  --color-fg-muted: #535457;
-  --color-bg: #fff;
-  --color-surface: #f2f2f2;
-  --color-line: #d8d8db;
-  --color-focus: #1a44ec;
-
-  --container-page: 75rem;
-
-  --font-sans: system-ui, -apple-system, "Segoe UI", roboto, sans-serif;
-}
-
-/*
- * Dark mode swaps the theme values themselves, so every utility built on them follows automatically and the markup
- * stays free of `dark:` variants.
- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-fg: #fff;
-    --color-fg-muted: #b0b1b3;
-    --color-bg: #0e0e12;
-    --color-surface: #1a1a1f;
-    --color-line: #37373b;
-    --color-focus: #6b8bff;
-  }
-}
-
-@layer base {
-  :root {
-    color-scheme: light dark;
-  }
-
-  body {
-    display: flex;
-    min-height: 100svh;
-    flex-direction: column;
-    background: var(--color-bg);
-    color: var(--color-fg);
-    font-family: var(--font-sans);
-    line-height: 1.5;
-  }
-
-  main {
-    width: 100%;
-    max-width: var(--container-page);
-    flex: 1 1 auto;
-    margin-inline: auto;
-    padding: calc(var(--spacing) * 12) calc(var(--spacing) * 6);
-  }
-
-  a {
-    color: inherit;
-  }
-
-  /* Focus is never removed – only made consistent, in forced colors too. */
-  :focus-visible {
-    outline: 2px solid var(--color-focus);
-    outline-offset: 2px;
-  }
-
-  @media (forced-colors: active) {
-    :focus-visible {
-      outline-color: canvastext;
-    }
-  }
+:not(:defined) {
+  visibility: hidden;
 }

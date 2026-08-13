@@ -49,17 +49,26 @@ This is why `Header` and `Footer` take no `basePath`: they have no URL to build.
 src/
 ├── index.page.tsx            # overview page: the link list, no chrome
 ├── _data.ts                  # templateItems, patternItems (real URLs), chrome nav (placeholders)
+├── _classes.ts               # classes(): joins class names, dropping the optional ones that are unset
 ├── _layouts/
 │   ├── BasePage.tsx          # full page shell: head, header, main, footer
 │   └── PatternPage.tsx       # minimal shell for a single section
 ├── _partials/                # components, never emitted as pages
 │   ├── Head.tsx
 │   ├── SkipLink.tsx
-│   ├── Header.tsx            # single-row and stacked variants
+│   ├── header/               # the header, split into the blocks its variants share
+│   │   ├── Header.tsx        # composes the blocks: overlay and stacked variants
+│   │   ├── HeaderBar.tsx     # the three-column row both variants are built from
+│   │   ├── Brand.tsx         # crest and wordmark, one per viewport size
+│   │   ├── MainNav.tsx       # menu button + recursive drilldown, from `navItems`
+│   │   ├── MetaActions.tsx   # icon affordances, from `metaActionItems`
+│   │   ├── NoticeBar.tsx     # note above the bar (stacked only)
+│   │   └── CategoryTabs.tsx  # category navigation below the bar (stacked only)
 │   ├── Footer.tsx
 │   └── ExampleList.tsx
 ├── assets/
-│   └── styles.css            # Tailwind entry: theme, global element defaults
+│   ├── styles.css            # Tailwind entry: theme, global element defaults
+│   └── header.js             # behaviour of the header drilldown, shared by every page showing it
 ├── templates/
 │   ├── landing-page/
 │   │   └── index.page.tsx
@@ -68,7 +77,8 @@ src/
 │       └── main.js
 └── patterns/
     ├── header-1/
-    │   └── index.page.tsx
+    │   ├── index.page.tsx
+    │   └── main.js
     └── header-2/
         └── index.page.tsx
 ```
@@ -106,45 +116,75 @@ export default Page;
 | `title`          | Feeds `<title>`, suffixed with the site name.                                |
 | `description`    | Meta description.                                                            |
 | `currentPage`    | Matched against `item.id` to set `aria-current="page"`.                      |
-| `showSearch`     | Optional; renders the header search form.                                    |
-| `headerVariant`  | Optional; `"single-row"` (default) or `"stacked"` – see the header patterns. |
+| `showSearch`     | Optional; renders the header search affordance.                              |
+| `headerVariant`  | Optional; `"overlay"` (default) or `"stacked"` – see the header patterns.    |
 | `mainClass`      | Optional; classes on the page's `<main>`.                                    |
-| `pageScript`     | Optional; renders `<script src="…" defer>` before `</body>`.                 |
+| `pageScript`     | Optional; one URL or a list, each rendered as `<script src="…" defer>`.      |
 | `navItems`       | Defaults to `_data.ts`; a page may replace or extend it.                     |
 | `footerNavItems` | Same, for the footer navigation.                                             |
+
+`BasePage` also loads `assets/header.js` on its own — every header variant is a drilldown behind a menu button, so the
+layout brings the behaviour that header needs and a page cannot forget it.
+
+### The header and its variants
+
+`Header` is the one place the demo chrome is defined; the variants are arrangements of the same blocks, not two copies
+of the markup:
+
+| Variant             | Where it sits                      | Extra rows                               |
+| ------------------- | ---------------------------------- | ---------------------------------------- |
+| `overlay` (default) | on top of the content, over a hero | –                                        |
+| `stacked`           | above the content                  | `NoticeBar` on top, `CategoryTabs` below |
+
+Both render `HeaderBar` with the same `MainNav`, `Brand` and `MetaActions`, so a change reaches both variants. The
+navigation comes from `navItems` and is rendered recursively: an item with `children` becomes a drilldown level (plus a
+leading entry pointing at its own page), one without stays a link. The icon affordances come from `metaActionItems`;
+each variant picks the subset it shows. Both lists live in `_data.ts`.
+
+> **Watch out — the color scheme is not set on the `<header>`.** The `overlay` variant lies on a dark hero, so its
+> contents need `scheme-dark`, but the drilldown lives inside the header and is a dialog on top of the _page_. A scheme
+> class on the `<header>` cascades into it and opens a dark overlay on a light page. `Header` therefore hands the scheme
+> to the blocks, and each block applies it to the elements that really sit on the hero — `MainNav` puts it on the menu
+> button and deliberately not on `p-drilldown`.
 
 ## Authoring a pattern
 
 A pattern renders one section in the place it occupies on a real page, so `PatternPage` deliberately ships no chrome —
-the chrome is what is being demonstrated:
+the chrome is what is being demonstrated. It also does not wrap the content: the page brings its own `<main id="main">`,
+so a header pattern can put a full-bleed hero below the header instead of a padded shell:
 
 ```tsx
 import { navItems } from '../../_data.ts';
 import { PatternPage } from '../../_layouts/PatternPage.tsx';
-import { Header } from '../../_partials/Header.tsx';
+import { Header } from '../../_partials/header/Header.tsx';
 
 const Page = () => (
   <PatternPage
     basePath="../../"
     title="Header 1"
     description="…"
-    beforeMain={<Header currentPage="home" navItems={navItems} />}
+    beforeMain={<Header currentPage="home" navItems={navItems} showSearch />}
+    pageScript={['../../assets/header.js', 'main.js']}
   >
-    <ul>…</ul>
+    <main id="main">…</main>
   </PatternPage>
 );
 
 export default Page;
 ```
 
-| Prop          | Purpose                                                    |
-| ------------- | ---------------------------------------------------------- |
-| `basePath`    | `"../../"` for `patterns/<name>/index.page.tsx`.           |
-| `title`       | Feeds `<title>` and the page heading.                      |
-| `description` | Meta description and the intro paragraph.                  |
-| `beforeMain`  | The pattern, when it belongs above the content (a header). |
-| `afterMain`   | The pattern, when it belongs below the content (a footer). |
-| `children`    | Notes about the pattern, rendered inside `<main>`.         |
+| Prop          | Purpose                                                                       |
+| ------------- | ----------------------------------------------------------------------------- |
+| `basePath`    | `"../../"` for `patterns/<name>/index.page.tsx`. Also the back link's target. |
+| `title`       | Feeds `<title>`.                                                              |
+| `description` | Meta description.                                                             |
+| `beforeMain`  | The pattern, when it belongs above the content (a header).                    |
+| `afterMain`   | The pattern, when it belongs below the content (a footer).                    |
+| `pageScript`  | Optional; one URL or a list, each rendered as `<script src="…" defer>`.       |
+| `children`    | The page content, including its own `<main id="main">`.                       |
+
+The layout itself only adds the skip link and the link back to the overview — everything a pattern page needs beyond the
+pattern. A pattern owns its header, so unlike `BasePage` it also lists the header's script itself.
 
 Rules:
 
@@ -158,7 +198,9 @@ Rules:
   actually be noticed, and it is covered by tests.
 - Files and folders starting with `_` are inputs only. Keep pages declarative — see
   [`AGENTS.md`](AGENTS.md#scope-discipline-important).
-- Variant names must not read like Tailwind utilities (`single-row`, not the display keyword it replaces): the scanner
+- A variation of a partial is a **prop**, not a second copy of the markup. If two variants share a block, that block is
+  its own component — see `_partials/header/`.
+- Variant names must not read like Tailwind utilities (`overlay`, not the display keyword it replaces): the scanner
   reads whole files, so such a name leaks an unused utility into the stylesheet.
 
 ## Styling
@@ -177,6 +219,11 @@ detection is off (`source(none)`); `@source "../**/*.tsx"` points the scanner at
 `<!doctype html>` prefix, then Prettier to format the result — plus a thin Vite plugin. The dev server renders pages on
 request through Vite's SSR module runner; [`scripts/build.ts`](scripts/build.ts) imports the same page modules and
 writes the same HTML. One implementation, so dev and build can't drift apart.
+
+The Porsche Design System partials (loader script, font, icon and component chunk links) are injected by
+[`plugins/partials.ts`](plugins/partials.ts), shared by both paths — without the loader the `p-*` elements never
+upgrade, and `:not(:defined)` in the stylesheet keeps them invisible. Only the CDN origin differs: the dev server
+rewrites it to the local `serve-cdn`, the build keeps the production URLs.
 
 Preact never reaches the browser: it is a build-time renderer and a source of JSX types, nothing else. The output is
 plain HTML with relative paths, no hydration, no framework runtime.

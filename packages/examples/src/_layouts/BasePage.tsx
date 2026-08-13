@@ -2,7 +2,7 @@ import type { ComponentChildren } from 'preact';
 import { type FooterNavItem, footerNavItems, type NavItem, navItems } from '../_data.ts';
 import { Footer } from '../_partials/Footer.tsx';
 import { Head } from '../_partials/Head.tsx';
-import { Header, type HeaderVariant } from '../_partials/Header.tsx';
+import { Header, type HeaderVariant } from '../_partials/header/Header.tsx';
 import { SkipLink } from '../_partials/SkipLink.tsx';
 
 export type BasePageProps = {
@@ -19,8 +19,8 @@ export type BasePageProps = {
   /** Page level override of the shared navigation – the equivalent of the twins' `@props` / `{% set %}`. */
   navItems?: NavItem[];
   footerNavItems?: FooterNavItem[];
-  /** Relative URL of an optional page script, loaded with `defer`. */
-  pageScript?: string;
+  /** Relative URL(s) of optional page scripts, loaded with `defer`. */
+  pageScript?: string | string[];
   children: ComponentChildren;
 };
 
@@ -52,7 +52,11 @@ export const BasePage = ({
         {children}
       </main>
       <Footer footerNavItems={pageFooterNavItems} />
-      {pageScript && <script src={pageScript} defer />}
+      {/* Every header variant is a drilldown behind a menu button, so the layout always brings its script along. */}
+      <script src={`${basePath}assets/header.js`} defer />
+      {(typeof pageScript === 'string' ? [pageScript] : (pageScript ?? [])).map((src) => (
+        <script key={src} src={src} defer />
+      ))}
     </body>
   </html>
 );

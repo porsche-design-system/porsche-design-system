@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
 import { type PageModule, pageSuffix, renderPage } from '../plugins/jsx.ts';
+import { injectPartials } from '../plugins/partials.ts';
 
 const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const srcDir = path.join(packageDir, 'src');
@@ -38,7 +39,8 @@ const build = async (): Promise<void> => {
       fs.mkdirSync(path.dirname(targetPath), { recursive: true });
 
       const pageModule = (await import(sourcePath)) as PageModule;
-      const html = await renderPage(pageModule.default);
+      // The partials carry the production CDN URLs; the dev server rewrites them to its local CDN, the build does not.
+      const html = injectPartials(await renderPage(pageModule.default));
       fs.writeFileSync(targetPath, html.endsWith('\n') ? html : `${html}\n`);
       pageCount++;
       console.log(`✓ ${relativePath}`);

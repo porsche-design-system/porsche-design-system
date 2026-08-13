@@ -1,13 +1,13 @@
 import { navItems, placeholderHref } from '../../_data.ts';
 import { PatternPage } from '../../_layouts/PatternPage.tsx';
-import { Header } from '../../_partials/Header.tsx';
+import { Header } from '../../_partials/header/Header.tsx';
 
-/** Header pattern – the `stacked` layout with search, demonstrating the same content in a second arrangement. */
+/** Header pattern – the `stacked` layout, sitting above the content with a note and a category row. */
 const Page = () => (
   <PatternPage
     basePath="../../"
     title="Header 2"
-    description="Brand and search on top, navigation on its own row below – the stacked header layout."
+    description="Note, header bar and category navigation stacked above the content."
     beforeMain={
       <Header
         currentPage="features"
@@ -16,12 +16,23 @@ const Page = () => (
         variant="stacked"
       />
     }
+    pageScript={['../../assets/header.js']}
   >
-    <ul class="max-w-2xl list-disc ps-6 text-fg-muted">
-      <li>Same markup semantics as Header&nbsp;1 – only the arrangement differs.</li>
-      <li>The search form keeps its visually hidden label, so it is announced without a caption on screen.</li>
-      <li>The navigation row separates itself with a border that survives forced colors.</li>
-    </ul>
+    <main id="main" class="grid-template">
+      <section class="scheme-dark col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)]">
+        <img
+          class="col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
+          src="https://porsche-design-system.github.io/examples/v4/patterns/assets/trolley.webp"
+          alt=""
+        />
+        <div class="col-extended row-span-full mb-fluid-lg">
+          <p-heading tag="h1" size="3xl">
+            <span class="text-md block">Pattern</span>
+            Header
+          </p-heading>
+        </div>
+      </section>
+    </main>
   </PatternPage>
 );
 

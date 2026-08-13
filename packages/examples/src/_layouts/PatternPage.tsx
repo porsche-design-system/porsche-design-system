@@ -14,7 +14,15 @@ export type PatternPageProps = {
   beforeMain?: ComponentChildren;
   /** The pattern itself, when it belongs below the content – a footer, for example. */
   afterMain?: ComponentChildren;
-  /** Notes about the pattern, rendered inside `<main>` below the heading. */
+  /**
+   * Relative URL(s) of optional page scripts, loaded with `defer` – the only way behaviour reaches a pattern, since
+   * nothing is hydrated. A pattern owns its header, so it also lists the header's script itself
+   * (`"../../assets/header.js"`), which `BasePage` adds on its own.
+   */
+  pageScript?: string | string[];
+  /** The page content, including its own `<main id="main">`. The layout does not wrap it: a pattern is shown in the
+   * place it occupies on a real page, and a header pattern needs a full-bleed hero below it, not a padded shell.
+   */
   children?: ComponentChildren;
 };
 
@@ -23,9 +31,18 @@ export type PatternPageProps = {
  *
  * `BasePage` cannot be reused here, because it ships the very chrome a pattern demonstrates – a header pattern
  * inside its `<main>` would be a section nested in a page that already has one. So this layout deliberately keeps
- * the surroundings to a minimum: a skip link, the pattern, and a `<main>` describing it.
+ * the surroundings to a minimum: the skip link every page needs, the pattern, the page's own `<main>`, and the way
+ * back to the overview.
  */
-export const PatternPage = ({ basePath, title, description, beforeMain, afterMain, children }: PatternPageProps) => (
+export const PatternPage = ({
+  basePath,
+  title,
+  description,
+  beforeMain,
+  afterMain,
+  pageScript,
+  children,
+}: PatternPageProps) => (
   <html lang="en">
     <head>
       <Head basePath={basePath} title={title} description={description} />
@@ -33,17 +50,14 @@ export const PatternPage = ({ basePath, title, description, beforeMain, afterMai
     <body>
       <SkipLink />
       {beforeMain}
-      <main id="main" class="flex flex-col gap-6">
-        <h1 class="text-4xl font-bold">{title}</h1>
-        <p class="max-w-2xl text-fg-muted">{description}</p>
-        {children}
-        <p>
-          <a class="underline underline-offset-4" href={basePath}>
-            Back to the overview
-          </a>
-        </p>
-      </main>
+      {children}
       {afterMain}
+      <p class="p-fluid-md">
+        <a href={basePath}>Back to the overview</a>
+      </p>
+      {(typeof pageScript === 'string' ? [pageScript] : (pageScript ?? [])).map((src) => (
+        <script key={src} src={src} defer />
+      ))}
     </body>
   </html>
 );
