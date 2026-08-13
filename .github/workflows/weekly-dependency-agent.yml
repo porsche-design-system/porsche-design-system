@@ -25,8 +25,10 @@
 # the agent's PRs trigger only workflows that run with read-only tokens (e.g.
 # `contribution.yml`, `code-scanning.yml`, and `copilot-setup-steps.yml` depending on paths),
 # and none of the PR-triggered workflows read Actions secrets. Secret-bearing workflows
-# (`ort.yml`, this file) run only on `schedule`/`workflow_dispatch`, never on a PR; the only
-# exposed token is the read-only `GITHUB_TOKEN`.
+# (`ort.yml`, this file, `notify-pipeline-failure.yml`) never run on a PR: the first two run on
+# `schedule`/`workflow_dispatch`, and the third runs on `workflow_run`, which GitHub executes from
+# the default branch and which additionally rejects any run whose head repository is not this
+# repository. The only token exposed to a PR is the read-only `GITHUB_TOKEN`.
 name: 'Weekly Dependency Agent'
 
 on:
