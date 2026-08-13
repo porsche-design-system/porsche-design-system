@@ -1,9 +1,10 @@
 # Patterns (JSX)
 
-TSX twin of [`patterns-html`](../patterns-html) and [`patterns-nunjucks`](../patterns-nunjucks). Same pages, same
-Tailwind setup, same build contract — the only difference is the template layer: **typed components rendered to static
-HTML at build time** instead of a template engine. It exists so the three approaches can be compared side by side; see
-[`COMPARISON.md`](../patterns-nunjucks/COMPARISON.md) for the result.
+Standalone demo pages for Porsche Design System patterns: **typed components rendered to static HTML at build time**.
+The output is plain HTML with relative paths — no hydration, no framework runtime.
+
+This package was chosen over two alternatives (an in-house `@include` engine and Nunjucks) that rendered the same pages;
+[`COMPARISON.md`](COMPARISON.md) records how they compared and why this one won.
 
 There is no template syntax here at all. Pages are TypeScript, so conditions are `if`/ternaries, loops are `map()`, and
 partials are function components whose props the compiler checks.
@@ -21,9 +22,6 @@ npm run build                # renders pages, then compiles Tailwind (build:css)
 npm run test:unit
 npm run preview              # build + serve ./dist on http://localhost:3011
 ```
-
-All three packages can run at the same time — `patterns-html` uses ports 3006/3007, `patterns-nunjucks` 3008/3009, this
-one 3010/3011.
 
 ## Structure
 
@@ -97,9 +95,9 @@ Rules:
 
 ## Styling
 
-Identical to the twins: Tailwind CSS v4, configured CSS-first in [`src/assets/patterns.css`](src/assets/patterns.css),
-compiled by `@tailwindcss/vite` in dev and by the Tailwind CLI into `dist/assets/patterns.css` in the build. The only
-difference is `@source "../**/*.tsx"` so Tailwind scans components instead of HTML templates.
+Tailwind CSS v4, configured CSS-first in [`src/assets/patterns.css`](src/assets/patterns.css), compiled by
+`@tailwindcss/vite` in dev and by the Tailwind CLI into `dist/assets/patterns.css` in the build. Automatic source
+detection is off (`source(none)`); `@source "../**/*.tsx"` points the scanner at the components.
 
 > **Watch out:** Tailwind's scanner reads the whole file, comments included. A doc comment mentioning
 > `{% block content %}` makes Tailwind emit an unused `.block` utility. Prefer prose that does not read like a class

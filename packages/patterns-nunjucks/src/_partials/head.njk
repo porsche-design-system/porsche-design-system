@@ -1,8 +1,0 @@
-{# Partials are macros, so every value they need is an explicit parameter instead of an implicit context read. #}
-{% macro head(basePath, title, description) %}
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{{ title }} | Dummy Patterns</title>
-<meta name="description" content="{{ description }}" />
-<link rel="stylesheet" href="{{ basePath }}assets/patterns.css" />
-{% endmacro %}

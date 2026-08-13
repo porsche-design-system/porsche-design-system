@@ -16,9 +16,6 @@
       "!packages/components/src/types/aria-types.d.ts",
       "!packages/components-js/tests/unit/results/stats-raw.json",
       "!packages/components-react/projects/nextjs/routes.ts",
-      "!packages/patterns-html/**/_partials",
-      "!packages/patterns-nunjucks/**/*.njk",
-      "!packages/patterns-nunjucks/src/**/*.html",
       "!packages/storefront/**/*.css"
     ]
   },
@@ -132,10 +129,6 @@
     }
   },
   "overrides": [
-    {
-      "includes": ["packages/patterns-html/src/**/*.html"],
-      "formatter": { "enabled": false }
-    },
     {
       "includes": [
         "packages/components/src/**/*.{js,ts,tsx}",

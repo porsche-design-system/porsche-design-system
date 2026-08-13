@@ -28,8 +28,7 @@ Remaining HTML differences, beyond deliberately reworded prose ("partials" → "
 components"):
 
 - **Nunjucks** — identical indentation, but only because the layout pipes macro output through `| trim | indent(4)`,
-  which the in-house engine did implicitly. Tailwind additionally emits a `.block` rule, because `{% block content %}`
-  looks like the `block` utility to its class scanner.
+  which the in-house engine did implicitly.
 - **JSX** — no blank lines between sections (a renderer cannot preserve source blank lines), and inline elements are
   broken across lines by the formatter rather than glued with `>text</a`. JSX drops the whitespace between elements that
   sit on separate lines, so the build formats with `htmlWhitespaceSensitivity: 'ignore'`; inline whitespace in the
@@ -39,7 +38,9 @@ Template keywords and prose leaking into the Tailwind scan is a permanent tax on
 in Nunjucks, and any code comment in JSX (a doc comment mentioning "`{% block content %}`" or "relative to the page"
 emits `.block` / `.relative` until it is reworded). All three packages use `@import "tailwindcss" source(none)` with
 explicit `@source` entries, which removed the larger class of false positives that came from scanning the package
-README.
+README. What survives that has to be excluded candidate by candidate — `patterns-nunjucks` carries an
+`@source not inline("block")` for its own `{% block %}` tags — so the tax is payable, but only once per keyword and only
+after someone notices the stray rule.
 
 ## Cost
 
@@ -86,8 +87,9 @@ test suite, because there is more surface worth pinning down: pages are code, no
 5. **More engine than the demos need.** Filters, expressions, `import`, `call`, async support and a template cache are
    all reachable from a pattern file, so "keep the demos boring" becomes a review rule rather than a property of the
    tool.
-6. **Template keywords leak into the Tailwind scan.** `{% block %}` makes Tailwind emit a `.block` utility that no page
-   uses.
+6. **Template keywords leak into the Tailwind scan.** `{% block %}` made Tailwind emit a `.block` utility that no page
+   uses; keeping the compiled CSS identical to the twin's takes an explicit `@source not inline("block")` in this
+   package's `patterns.css`.
 
 ## What the in-house engine costs
 
@@ -118,36 +120,35 @@ framework-free, plain HTML that works with JavaScript disabled, and the full Nun
 rendering only becomes relevant if a pattern ever needs client-side templating — and then the precompiled + slim
 combination is the option to reach for.
 
-## Recommendation
+## Recommendation, as it stood before the decision
 
 - **Keep `patterns-html`** while the demos stay at "chrome + a few pages" and the priority is a package with zero
   dependencies whose output whitespace is authored by hand. The engine is written, tested and free of governance
   overhead, and the missing features have not been missed.
 - **Switch to `patterns-jsx`** if the priority is authoring safety and tooling: it is the only option where the props
   contract is checked, the pages lint and format like the rest of the repository, and there is no template syntax to
-  document. Pair it with the scope rules in
-  [`patterns-jsx/AGENTS.md`](../patterns-jsx/AGENTS.md#scope-discipline-important).
+  document. Pair it with the scope rules in [`AGENTS.md`](AGENTS.md#scope-discipline-important).
 - **Switch to `patterns-nunjucks`** if the demos should stay markup-first — authored by people who write HTML, not
   TypeScript — and template inheritance plus escaping of author-supplied content are the only missing pieces. The
-  migration is mechanical (this package is the proof), and the dependency footprint is small enough to justify at that
-  point.
+  migration is mechanical, and the dependency footprint is small enough to justify at that point.
 - **Skip Eleventy** unless the package also needs collections, pagination or Markdown — it replaces the build script and
   the dev server too, which is a much larger surface than swapping the engine.
 
-## Reproducing the comparison
+Authoring safety was chosen over both zero dependencies and markup-first authoring. The Eleventy note still stands.
+
+## Re-checking the evidence
+
+The two deleted packages are reachable in git history:
 
 ```bash
-npm run build:patterns-html
-npm run build:patterns-nunjucks
+git log --oneline -- packages/patterns-html packages/patterns-nunjucks
+git show <commit>:packages/patterns-nunjucks/plugins/nunjucks.ts
+```
+
+The surviving package builds and tests as usual:
+
+```bash
 npm run build:patterns-jsx
-diff -r packages/patterns-html/dist packages/patterns-nunjucks/dist
-diff -r packages/patterns-html/dist packages/patterns-jsx/dist
-
-npm run test:unit:patterns-html
-npm run test:unit:patterns-nunjucks
 npm run test:unit:patterns-jsx
-
-npm run start:patterns-html      # http://localhost:3006
-npm run start:patterns-nunjucks  # http://localhost:3008
-npm run start:patterns-jsx       # http://localhost:3010
+npm run start:patterns-jsx  # http://localhost:3010
 ```

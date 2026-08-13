@@ -32,8 +32,7 @@ packages/
 ├── components-react/   # React wrapper + Next.js/React Router integrations
 ├── components-vue/     # Vue wrapper
 ├── storefront/         # Next.js documentation site
-├── patterns-html/      # Standalone HTML/CSS pattern demos (build-time partial includes)
-├── patterns-nunjucks/  # Nunjucks port of the pattern demos (template engine comparison)
+├── patterns-jsx/       # Standalone pattern demos (TSX, rendered to plain HTML at build time)
 ├── tokens/             # Design tokens (colors, spacing, typography)
 ├── styles/             # Shared styles, Tailwind plugin
 ├── assets/             # Icons, fonts, marque, crest
@@ -187,9 +186,7 @@ Each major package has its own `AGENTS.md` with detailed guidance:
 - [`packages/tokens/AGENTS.md`](packages/tokens/AGENTS.md) — Design tokens
 - [`packages/utilities/AGENTS.md`](packages/utilities/AGENTS.md) — Utility packages such as AG Grid theme
 - [`packages/storefront/AGENTS.md`](packages/storefront/AGENTS.md) — Next.js documentation site
-- [`packages/patterns-html/AGENTS.md`](packages/patterns-html/AGENTS.md) — Standalone HTML/CSS pattern demos
-- [`packages/patterns-nunjucks/AGENTS.md`](packages/patterns-nunjucks/AGENTS.md) — Nunjucks port of the pattern demos
-  (engine comparison)
+- [`packages/patterns-jsx/AGENTS.md`](packages/patterns-jsx/AGENTS.md) — Standalone pattern demos (TSX)
 - [`packages/components-react/AGENTS.md`](packages/components-react/AGENTS.md) — React wrapper
 - [`packages/components-angular/AGENTS.md`](packages/components-angular/AGENTS.md) — Angular wrapper
 - [`packages/components-vue/AGENTS.md`](packages/components-vue/AGENTS.md) — Vue wrapper

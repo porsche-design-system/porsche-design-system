@@ -21,8 +21,7 @@ export const doctype = '<!doctype html>';
  * Renders a page component to a static HTML document.
  *
  * The renderer emits everything on a single line, but the generated pages are documentation, so they are formatted
- * afterwards. Prettier is used with the repository's `printWidth`, which is what keeps `dist/` diffable against the
- * `patterns-html` and `patterns-nunjucks` twins.
+ * afterwards. Prettier is used with the repository's `printWidth`, which keeps `dist/` readable and diffable.
  *
  * `htmlWhitespaceSensitivity: 'ignore'` is required: JSX drops the whitespace between elements that sit on separate
  * lines, so without it the formatter would have to keep inline elements glued together (`</label\n><input`).

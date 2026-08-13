@@ -2,20 +2,20 @@
 
 > This file provides context for AI coding assistants working in `packages/patterns-jsx/`. See the root
 > [`AGENTS.md`](../../AGENTS.md) for project-wide guidance, [`README.md`](README.md) for the authoring reference and
-> [`COMPARISON.md`](../patterns-nunjucks/COMPARISON.md) for why this package exists.
+> [`COMPARISON.md`](COMPARISON.md) for why this package renders patterns the way it does.
 
 ## Overview
 
-TSX port of [`packages/patterns-html`](../patterns-html), built as a decision aid alongside
-[`packages/patterns-nunjucks`](../patterns-nunjucks): same three demo pages, same Tailwind v4 setup, same "plain HTML
-with relative paths" build contract, but rendered from **typed function components** instead of a template engine.
+Standalone demo pages for Porsche Design System patterns, rendered from **typed function components** to plain HTML with
+relative paths at build time.
 
 There is no template syntax. Conditions are ternaries, loops are `map()`, partials are components, and the layout takes
 `children`. Rendering happens once at build time via `preact-render-to-string`; **no framework code reaches the
 browser**.
 
-**The three packages are meant to stay in sync.** If a pattern is added to one, add it to the others, otherwise the
-comparison stops being meaningful. The package is `private: true` and is not published.
+This approach was picked over an in-house `@include` engine and Nunjucks, which rendered the same pages in two sibling
+packages until 2026-08-13; [`COMPARISON.md`](COMPARISON.md) is the decision record. The package is `private: true` and
+is not published.
 
 ## Structure
 
@@ -47,9 +47,6 @@ npm run build:patterns-jsx      # writes ./dist (gitignored)
 npm run test:unit:patterns-jsx  # vitest
 ```
 
-Ports 3010/3011 are used on purpose: `patterns-html` holds 3006/3007 and `patterns-nunjucks` 3008/3009, so all three can
-run at once.
-
 ## Conventions that are easy to get wrong
 
 - **Use plain HTML attribute names** — `class`, `for`, `charset`, `novalidate`. Preact accepts and types them, and the
@@ -58,21 +55,22 @@ run at once.
   `renderPage()` formats with `htmlWhitespaceSensitivity: 'ignore'` to keep the output readable. Consequence: inline
   whitespace in `dist/` is decided by the formatter, not by the source. If a pattern ever needs a _meaningful_ space,
   use `&nbsp;` (`{'\u00a0'}`), not a line break.
-- **Blank lines are not preserved.** The twins separate sections with blank lines in the source; a renderer cannot, so
-  `dist/` is slightly denser. That is the only structural difference from the twins' output.
+- **Blank lines are not preserved.** A renderer cannot carry source blank lines into the output, so `dist/` is denser
+  than hand-authored markup would be. Structure and attributes are unaffected.
 - **Tailwind scans comments too.** `@source "../**/*.tsx"` feeds whole files to the scanner, so prose such as
   "`{% block content %}`" or "relative to the page" leaks `.block` and `.relative` into `dist/assets/patterns.css`.
   Check the compiled CSS after larger comment edits.
 - **URLs are relative to the page, not the component.** Pass `basePath` (`"./"` at the root, `"../"` one level down).
-- **`_data.ts` is imported, not injected.** Unlike the twins' ambient scope, a page can extend the shared navigation
-  (`[...navItems, extra]`) instead of only replacing it wholesale.
+- **`_data.ts` is imported, not injected.** There is no ambient template scope, so a page can extend the shared
+  navigation (`[...navItems, extra]`) instead of only replacing it wholesale.
 - **Pages are rendered server-side only.** They are not in the client module graph, so the dev server does a full reload
   on any `.ts`/`.tsx` change rather than an HMR patch.
 
 ## Scope discipline (important)
 
-TSX has no expressiveness ceiling — a page _could_ fetch data, keep state or pull in a component library. That is
-exactly what the twins prevent by construction and what has to be a review rule here:
+TSX has no expressiveness ceiling — a page _could_ fetch data, keep state or pull in a component library. A template
+engine refuses that by construction; TSX does not, so it has to be a review rule here. This is the main cost of the
+approach, and it is paid on every review:
 
 - Pages and partials are **pure, synchronous, presentational** functions. No hooks, no state, no effects, no async.
 - No client-side hydration. If a pattern needs behaviour, ship a plain `main.js` and hook it on ids, as
@@ -82,9 +80,8 @@ exactly what the twins prevent by construction and what has to be a review rule 
 
 ## Tooling notes
 
-- Nothing is excluded from Biome. Pages, layout and partials are ordinary TSX, so they lint **and** format — unlike
-  `patterns-html` (formatter disabled for `src/**/*.html`, `_partials` excluded) and `patterns-nunjucks` (all pages and
-  `.njk` files excluded). See [`biome.json`](../../biome.json).
+- Nothing is excluded from Biome. Pages, layout and partials are ordinary TSX, so they lint **and** format — no
+  per-package carve-outs are needed in [`biome.json`](../../biome.json).
 - `npx tsc --noEmit` type-checks pages, partials, the build script and the plugin in one pass.
 - The JSX transform is configured **once**, in [`tsconfig.json`](tsconfig.json) (`jsx: "react-jsx"`,
   `jsxImportSource: "preact"`). Vite and Vitest pick it up from there; do not duplicate it in the configs.
@@ -100,8 +97,6 @@ exactly what the twins prevent by construction and what has to be a review rule 
 4. Style with Tailwind utilities; touch `src/assets/patterns.css` only for genuinely global defaults or theme values.
 5. Link the pattern from `src/index.page.tsx`, and add it to `src/_data.ts` if it belongs in the main navigation.
 6. Run the build and confirm `dist/` contains no stray utilities in the CSS and renders as expected.
-7. **Mirror the pattern in [`packages/patterns-html`](../patterns-html) and
-   [`packages/patterns-nunjucks`](../patterns-nunjucks)** so the three stay comparable.
 
 ## Accessibility baseline
 
@@ -112,19 +107,20 @@ for every page.
 
 ## Status and open items
 
-Point-in-time notes, last updated 2026-08-12.
+Point-in-time notes, last updated 2026-08-13.
 
 Done:
 
-- Full port of the three demo pages; `dist/` is structurally identical to the twins' — `assets/patterns.css` and
-  `contact-page/main.js` are byte-identical, and the HTML differs only in reworded prose, blank lines and the inline
-  line-breaking described above.
+- Full port of the three demo pages (`index`, `landing-page`, `contact-page`).
 - 49 unit tests covering page URL resolution, escaping, optional props, navigation overrides, the accessibility baseline
   and the "no framework attribute names in the output" rule.
+- **Engine decision made (2026-08-13): TSX wins.** `patterns-html` and `patterns-nunjucks` were deleted and this package
+  is now the single patterns implementation. [`COMPARISON.md`](COMPARISON.md) is kept as the decision record.
 
 Open:
 
-1. **Decide.** This package is a decision aid, not a third product. Once the call is made, delete the losing packages
-   and fold their documentation into the survivor.
-2. If JSX wins, consider dropping the Prettier formatting pass in favour of accepting dense output, and revisit whether
-   `_layouts`/`_partials` should become `components/` now that the underscore rule only exists for the twins' benefit.
+1. Consider dropping the Prettier formatting pass in favour of accepting dense output.
+2. Revisit whether `_layouts`/`_partials` should become `components/`, and whether the `_` underscore rule is still the
+   clearest way to mark build-time-only inputs now that only the `*.page.tsx` marker distinguishes pages.
+3. Consider renaming the package from `patterns-jsx` to `patterns`, now that there is nothing to disambiguate it from.
+4. Storefront hookup: copy `dist/` into `packages/storefront/public/` during prebuild so the demos ship with the docs.
