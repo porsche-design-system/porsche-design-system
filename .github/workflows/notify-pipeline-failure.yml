@@ -1,0 +1,120 @@
+# Posts a Slack message when an important pipeline fails. See
+# docs/runbooks/pipeline-failure-notifications.md.
+#
+# `workflow_run` runs the DEFAULT-BRANCH copy of this file, so a contributor cannot alter the
+# notifier from inside their PR. That, plus the fork check in the job's `if:`, is what keeps the
+# webhook out of a stranger's reach in this public repo.
+#
+name: 'Notify Pipeline Failure'
+
+on:
+  workflow_run:
+    workflows:
+      - 'Contribution' # .github/workflows/contribution.yml
+      - 'OSS Review Toolkit' # .github/workflows/ort.yml
+    types:
+      - completed
+    # Noise filter only, never a trust boundary — it reads the triggering run's head_branch,
+    # which a fork controls. The fork check in the job's `if:` is the real control.
+    branches:
+      - main
+      - 'v[0-9]'
+      - 'v[0-9][0-9]'
+  workflow_dispatch:
+    inputs:
+      run-id:
+        description: 'Workflow run ID to build a notification for.'
+        required: true
+        type: string
+
+permissions:
+  actions: read # list the jobs of the observed run
+  contents: read # read commit metadata
+  pull-requests: read # resolve commit -> PR author
+
+jobs:
+  notify:
+    name: 'Notify'
+    runs-on: ubuntu-latest
+    # Event list is an ALLOWLIST so an unknown future trigger type is blocked by default.
+    # `workflow_dispatch` appears twice: as `event_name` it is a maintainer testing THIS workflow,
+    # as `workflow_run.event` it is a maintainer having manually run ORT.
+    #
+    # The `head_repository.full_name` check is not negotiable — a workflow_run workflow gets the
+    # secret whatever triggered the upstream run, so it is what keeps a fork out of the channel.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      ((github.event.workflow_run.conclusion == 'failure' ||
+        github.event.workflow_run.conclusion == 'timed_out') &&
+       github.event.workflow_run.head_repository.full_name == github.repository &&
+       (github.event.workflow_run.event == 'push' ||
+        github.event.workflow_run.event == 'schedule' ||
+        github.event.workflow_run.event == 'workflow_dispatch'))
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      # `node_modules: 'false'` gives us Node without `npm ci` across ~35 workspaces.
+      # The payload builder has zero dependencies precisely so this is possible.
+      - uses: ./.github/actions/install
+        with:
+          node_modules: 'false'
+
+      - name: 'Resolve run'
+        id: resolve
+        # Always read run metadata from the API rather than the event payload, so that the
+        # dispatch test path and the real path execute identical code.
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID" > "$RUNNER_TEMP/run.json"
+
+          head_branch=$(node -p "require('$RUNNER_TEMP/run.json').head_branch")
+          # Mirrors contribution.yml:10-12. It lives in bash, not the `if:`, because GitHub
+          # expressions have no glob and cannot express `v[0-9][0-9]`.
+          case "$head_branch" in
+            main|v[0-9]|v[0-9][0-9]) ;;
+            *) echo "::notice::$head_branch is not a monitored branch, skipping"; echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0 ;;
+          esac
+
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID/jobs?per_page=100" > "$RUNNER_TEMP/jobs.json"
+
+          head_sha=$(node -p "require('$RUNNER_TEMP/run.json').head_sha")
+          gh api "repos/$GITHUB_REPOSITORY/commits/$head_sha/pulls" > "$RUNNER_TEMP/pulls.json"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ inputs.run-id || github.event.workflow_run.id }}
+
+      - name: 'Build payload'
+        if: steps.resolve.outputs.skip != 'true'
+        # Bare `node`, not `tsx`: Node 24 strips types natively, so no `npm ci` is needed.
+        # `--disable-warning` silences a stderr-only notice about the missing root `"type"` field.
+        run: |
+          node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-slack-payload.ts \
+            "$RUNNER_TEMP/run.json" \
+            "$RUNNER_TEMP/jobs.json" \
+            "$RUNNER_TEMP/pulls.json" \
+            > "$RUNNER_TEMP/slack-payload.json"
+          cat "$RUNNER_TEMP/slack-payload.json"
+
+      - name: 'Send'
+        if: steps.resolve.outputs.skip != 'true'
+        # Starts a Slack workflow built in Workflow Builder. The message LAYOUT lives in Slack, not
+        # here — this step only delivers the variables. The matching Slack app manifest and webhook
+        # trigger definition are in docs/runbooks/pipeline-failure-notifications.md, and the key
+        # names below must stay in sync with the workflow's `input_parameters` or Slack rejects
+        # the request.
+        #
+        # `payload-file-path` rather than an inline `payload:` because `failed_jobs` is multiline
+        # and would otherwise have to survive YAML quoting.
+        #
+        # No `payload-delimiter` is set: build-slack-payload.ts already emits a flat object of
+        # stringified values, which is the shape a webhook trigger requires. The delimiter option
+        # only matters when the payload still has nested fields to flatten.
+        #
+        # `errors: true` because the action's default is FALSE — without it a rejected webhook
+        # (revoked trigger, unknown input, paused workflow) passes the step green and the failure
+        # is invisible.
+        uses: slackapi/slack-github-action@v4.0.0
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
+          payload-file-path: ${{ runner.temp }}/slack-payload.json
+          errors: true
