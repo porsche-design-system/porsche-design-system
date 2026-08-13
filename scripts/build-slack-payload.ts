@@ -45,6 +45,11 @@ const FAILED = new Set(['failure', 'timed_out']);
 const MAX_JOBS_LISTED = 15;
 
 const [runPath, jobsPath, pullsPath] = process.argv.slice(2);
+if (!runPath || !jobsPath || !pullsPath) {
+  console.error('usage: node scripts/build-slack-payload.ts <run.json> <jobs.json> <pulls.json>');
+  process.exit(1);
+}
+
 const run: WorkflowRun = JSON.parse(readFileSync(runPath, 'utf8'));
 const { jobs }: { jobs: Job[] } = JSON.parse(readFileSync(jobsPath, 'utf8'));
 const pulls: Pull[] = JSON.parse(readFileSync(pullsPath, 'utf8'));
