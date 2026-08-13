@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4665](https://github.com/porsche-design-system/porsche-design-system/pull/4665))
 - `Carousel`: Live region announcing page status after control-driven navigation (prev/next, pagination, drag)
   ([#4654](https://github.com/porsche-design-system/porsche-design-system/pull/4654))
+- `Icon`: `customer-support` ([#4672](https://github.com/porsche-design-system/porsche-design-system/pull/4672))
 
 ### Changed
 
