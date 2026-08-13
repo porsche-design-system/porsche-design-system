@@ -2,7 +2,8 @@ import type { ComponentChildren } from 'preact';
 import { type FooterNavItem, footerNavItems, type NavItem, navItems } from '../_data.ts';
 import { Footer } from '../_partials/Footer.tsx';
 import { Head } from '../_partials/Head.tsx';
-import { Header } from '../_partials/Header.tsx';
+import { Header, type HeaderVariant } from '../_partials/Header.tsx';
+import { SkipLink } from '../_partials/SkipLink.tsx';
 
 export type BasePageProps = {
   /** `"./"` at the root, `"../"` one level down. All URLs in the chrome are built from it. */
@@ -13,6 +14,8 @@ export type BasePageProps = {
   /** Utility classes for `<main>`; the element itself is styled globally in `assets/styles.css`. */
   mainClass?: string;
   showSearch?: boolean;
+  /** Layout variation of the header – see the header patterns. */
+  headerVariant?: HeaderVariant;
   /** Page level override of the shared navigation – the equivalent of the twins' `@props` / `{% set %}`. */
   navItems?: NavItem[];
   footerNavItems?: FooterNavItem[];
@@ -32,6 +35,7 @@ export const BasePage = ({
   currentPage,
   mainClass,
   showSearch,
+  headerVariant,
   navItems: pageNavItems = navItems,
   footerNavItems: pageFooterNavItems = footerNavItems,
   pageScript,
@@ -42,7 +46,14 @@ export const BasePage = ({
       <Head basePath={basePath} title={title} description={description} />
     </head>
     <body>
-      <Header basePath={basePath} currentPage={currentPage} navItems={pageNavItems} showSearch={showSearch} />
+      <SkipLink />
+      <Header
+        basePath={basePath}
+        currentPage={currentPage}
+        navItems={pageNavItems}
+        showSearch={showSearch}
+        variant={headerVariant}
+      />
       <main id="main" class={mainClass}>
         {children}
       </main>

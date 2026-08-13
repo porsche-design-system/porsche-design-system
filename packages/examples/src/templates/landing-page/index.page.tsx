@@ -1,16 +1,16 @@
-import { navItems } from '../_data.ts';
-import { BasePage } from '../_layouts/BasePage.tsx';
+import { navItems } from '../../_data.ts';
+import { BasePage } from '../../_layouts/BasePage.tsx';
 
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
 const Page = () => (
   <BasePage
-    basePath="../"
+    basePath="../../"
     title="Landing page"
     description="Dummy landing page template using the shared layout and partial components."
     currentPage="landing"
     mainClass="flex flex-col gap-12"
     showSearch
-    navItems={[...navItems, { id: 'landing-features', href: 'landing-page/#features', label: 'Features' }]}
+    navItems={[...navItems, { id: 'landing-features', href: 'templates/landing-page/#features', label: 'Features' }]}
   >
     <section class="max-w-2xl">
       <h1 class="mb-6 text-[clamp(2rem,5vw,3.5rem)]/[1.1] font-bold">Build once, reuse everywhere</h1>

@@ -1,7 +1,8 @@
 # Examples
 
-Standalone example pages for Porsche Design System patterns: **typed components rendered to static HTML at build time**.
-The output is plain HTML with relative paths — no hydration, no framework runtime.
+Standalone examples for Porsche Design System usage — whole page **templates** and single section **patterns**, both
+**typed components rendered to static HTML at build time**. The output is plain HTML with relative paths — no hydration,
+no framework runtime.
 
 This package was chosen over two alternatives (an in-house `@include` engine and Nunjucks) that rendered the same pages;
 [`COMPARISON.md`](COMPARISON.md) records how they compared and why this one won.
@@ -23,40 +24,62 @@ npm run test:unit
 npm run preview              # build + serve ./dist on http://localhost:3011
 ```
 
+## Two categories
+
+| Category      | What it shows                                        | Layout        | Lives in          |
+| ------------- | ---------------------------------------------------- | ------------- | ----------------- |
+| **Templates** | A whole application page, chrome included.           | `BasePage`    | `src/templates/…` |
+| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage` | `src/patterns/…`  |
+
+Both categories are listed in [`src/_data.ts`](src/_data.ts) (`templateItems`, `patternItems`), which also feeds the
+main navigation, so a new example is linked from the overview pages by adding one entry.
+
 ## Structure
 
 ```text
 src/
-├── index.page.tsx        # overview page
-├── _data.ts              # shared data (navigation, …) as typed exports
+├── index.page.tsx            # overview page, lists both categories
+├── _data.ts                  # templateItems, patternItems, navigation – typed exports
 ├── _layouts/
-│   └── BasePage.tsx      # page shell: head, header, main, footer
-├── _partials/            # components, never emitted as pages
+│   ├── BasePage.tsx          # full page shell: head, header, main, footer
+│   └── PatternPage.tsx       # minimal shell for a single section
+├── _partials/                # components, never emitted as pages
 │   ├── Head.tsx
-│   ├── Header.tsx
-│   └── Footer.tsx
+│   ├── SkipLink.tsx
+│   ├── Header.tsx            # single-row and stacked variants
+│   ├── Footer.tsx
+│   └── ExampleList.tsx
 ├── assets/
-│   └── styles.css        # Tailwind entry: theme, global element defaults
-├── landing-page/
-│   └── index.page.tsx
-└── contact-page/
-    ├── index.page.tsx
-    └── main.js
+│   └── styles.css            # Tailwind entry: theme, global element defaults
+├── templates/
+│   ├── index.page.tsx        # category overview
+│   ├── landing-page/
+│   │   └── index.page.tsx
+│   └── contact-page/
+│       ├── index.page.tsx
+│       └── main.js
+└── patterns/
+    ├── index.page.tsx        # category overview
+    ├── header-1/
+    │   └── index.page.tsx
+    └── header-2/
+        └── index.page.tsx
 ```
 
-`*.page.tsx` is the page marker: `landing-page/index.page.tsx` becomes `dist/landing-page/index.html`. Every other
-`.ts`/`.tsx` file is a build-time input and is never emitted; all non-TypeScript files are copied verbatim.
+`*.page.tsx` is the page marker: `templates/landing-page/index.page.tsx` becomes
+`dist/templates/landing-page/index.html`. Every other `.ts`/`.tsx` file is a build-time input and is never emitted; all
+non-TypeScript files are copied verbatim.
 
-## Authoring
+## Authoring a template
 
 A page default-exports a component that renders the layout:
 
 ```tsx
-import { BasePage } from '../_layouts/BasePage.tsx';
+import { BasePage } from '../../_layouts/BasePage.tsx';
 
 const Page = () => (
   <BasePage
-    basePath="../"
+    basePath="../../"
     title="Landing page"
     description="…"
     currentPage="landing"
@@ -70,17 +93,51 @@ const Page = () => (
 export default Page;
 ```
 
-| Prop             | Purpose                                                                       |
-| ---------------- | ----------------------------------------------------------------------------- |
-| `basePath`       | `"./"` at the root, `"../"` one level down. Never hardcode URLs in a partial. |
-| `title`          | Feeds `<title>`, suffixed with the site name.                                 |
-| `description`    | Meta description.                                                             |
-| `currentPage`    | Matched against `item.id` to set `aria-current="page"`.                       |
-| `showSearch`     | Optional; renders the header search form.                                     |
-| `mainClass`      | Optional; classes on the page's `<main>`.                                     |
-| `pageScript`     | Optional; renders `<script src="…" defer>` before `</body>`.                  |
-| `navItems`       | Defaults to `_data.ts`; a page may replace or extend it.                      |
-| `footerNavItems` | Same, for the footer navigation.                                              |
+| Prop             | Purpose                                                                            |
+| ---------------- | ---------------------------------------------------------------------------------- |
+| `basePath`       | `"./"` at the root, `"../"` in a category folder, `"../../"` in an example folder. |
+| `title`          | Feeds `<title>`, suffixed with the site name.                                      |
+| `description`    | Meta description.                                                                  |
+| `currentPage`    | Matched against `item.id` to set `aria-current="page"`.                            |
+| `showSearch`     | Optional; renders the header search form.                                          |
+| `headerVariant`  | Optional; `"single-row"` (default) or `"stacked"` – see the header patterns.       |
+| `mainClass`      | Optional; classes on the page's `<main>`.                                          |
+| `pageScript`     | Optional; renders `<script src="…" defer>` before `</body>`.                       |
+| `navItems`       | Defaults to `_data.ts`; a page may replace or extend it.                           |
+| `footerNavItems` | Same, for the footer navigation.                                                   |
+
+## Authoring a pattern
+
+A pattern renders one section in the place it occupies on a real page, so `PatternPage` deliberately ships no chrome —
+the chrome is what is being demonstrated:
+
+```tsx
+import { navItems } from '../../_data.ts';
+import { PatternPage } from '../../_layouts/PatternPage.tsx';
+import { Header } from '../../_partials/Header.tsx';
+
+const Page = () => (
+  <PatternPage
+    basePath="../../"
+    title="Header 1"
+    description="…"
+    beforeMain={<Header basePath="../../" currentPage="landing" navItems={navItems} />}
+  >
+    <ul>…</ul>
+  </PatternPage>
+);
+
+export default Page;
+```
+
+| Prop          | Purpose                                                    |
+| ------------- | ---------------------------------------------------------- |
+| `basePath`    | `"../../"` for `patterns/<name>/index.page.tsx`.           |
+| `title`       | Feeds `<title>` and the page heading.                      |
+| `description` | Meta description and the intro paragraph.                  |
+| `beforeMain`  | The pattern, when it belongs above the content (a header). |
+| `afterMain`   | The pattern, when it belongs below the content (a footer). |
+| `children`    | Notes about the pattern, rendered inside `<main>`.         |
 
 Rules:
 
@@ -92,6 +149,8 @@ Rules:
   navigation (`[...navItems, extra]`) instead of only replacing it.
 - Files and folders starting with `_` are inputs only. Keep pages declarative — see
   [`AGENTS.md`](AGENTS.md#scope-discipline-important).
+- Variant names must not read like Tailwind utilities (`single-row`, not the display keyword it replaces): the scanner
+  reads whole files, so such a name leaks an unused utility into the stylesheet.
 
 ## Styling
 
@@ -115,6 +174,7 @@ plain HTML with relative paths, no hydration, no framework runtime.
 
 ## Accessibility baseline
 
-Every page ships a skip link, `header`/`main`/`footer` landmarks, labelled `nav` elements, `aria-current` on the active
-nav item, visible `:focus-visible` outlines and a `forced-colors: active` block. Keep that baseline when adding patterns
-— these demos are documentation, so they have to be correct by example.
+Every page ships a skip link, a `main` landmark, labelled `nav` elements, `aria-current` on the active nav item, visible
+`:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header` and `footer`
+landmarks, and a pattern carries the landmark of the section it demonstrates. Keep that baseline when adding examples —
+these demos are documentation, so they have to be correct by example.

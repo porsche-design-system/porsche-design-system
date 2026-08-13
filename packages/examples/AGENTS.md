@@ -6,8 +6,13 @@
 
 ## Overview
 
-Standalone example pages for Porsche Design System patterns, rendered from **typed function components** to plain HTML
-with relative paths at build time.
+Standalone examples for Porsche Design System usage, rendered from **typed function components** to plain HTML with
+relative paths at build time. They come in two categories:
+
+| Category      | What it shows                                        | Layout        | Lives in          |
+| ------------- | ---------------------------------------------------- | ------------- | ----------------- |
+| **Templates** | A whole application page, chrome included.           | `BasePage`    | `src/templates/…` |
+| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage` | `src/patterns/…`  |
 
 There is no template syntax. Conditions are ternaries, loops are `map()`, partials are components, and the layout takes
 `children`. Rendering happens once at build time via `preact-render-to-string`; **no framework code reaches the
@@ -24,15 +29,21 @@ plugins/jsx.ts                    # renderPage() + page URL resolution + Vite pl
 scripts/build.ts                  # production build: render pages, copy everything else verbatim
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
-tests/unit/jsx.spec.tsx           # 49 tests describing the rendering contract
+tests/unit/jsx.spec.tsx           # tests describing the rendering contract
 src/
-├── index.page.tsx                # overview page
-├── _data.ts                      # shared data (navigation, …) as typed exports
-├── _layouts/BasePage.tsx         # page shell, takes `children`
-├── _partials/                    # Head.tsx, Header.tsx, Footer.tsx — components with checked props
+├── index.page.tsx                # overview page, lists both categories
+├── _data.ts                      # templateItems, patternItems, navigation – typed exports
+├── _layouts/
+│   ├── BasePage.tsx              # full page shell, takes `children`
+│   └── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
+├── _partials/                    # Head, SkipLink, Header, Footer, ExampleList – checked props
 ├── assets/styles.css             # Tailwind entry: @theme, dark mode, global element defaults
-├── landing-page/                 # one folder per pattern: index.page.tsx
-└── contact-page/                 # index.page.tsx + main.js
+├── templates/                    # index.page.tsx + one folder per template
+│   ├── landing-page/             # index.page.tsx
+│   └── contact-page/             # index.page.tsx + main.js
+└── patterns/                     # index.page.tsx + one folder per pattern
+    ├── header-1/                 # Header in its `single-row` variant
+    └── header-2/                 # Header in its `stacked` variant
 ```
 
 **Underscore rule:** files and folders starting with `_` are inputs only and are never emitted. **Page rule:** only
@@ -58,11 +69,16 @@ npm run test:unit:examples  # vitest
 - **Blank lines are not preserved.** A renderer cannot carry source blank lines into the output, so `dist/` is denser
   than hand-authored markup would be. Structure and attributes are unaffected.
 - **Tailwind scans comments too.** `@source "../**/*.tsx"` feeds whole files to the scanner, so prose such as
-  "`{% block content %}`" or "relative to the page" leaks `.block` and `.relative` into `dist/assets/styles.css`. Check
-  the compiled CSS after larger comment edits.
-- **URLs are relative to the page, not the component.** Pass `basePath` (`"./"` at the root, `"../"` one level down).
+  "`{% block content %}`" or "relative to the page" leaks `.block` and `.relative` into `dist/assets/styles.css`. The
+  same applies to string literals: the header variants are named `single-row`/`stacked` precisely because a display
+  keyword would end up as an unused utility. Check the compiled CSS after larger comment edits.
+- **URLs are relative to the page, not the component.** Pass `basePath`: `"./"` at the root, `"../"` on a category page
+  (`templates/`, `patterns/`), `"../../"` inside an example folder.
 - **`_data.ts` is imported, not injected.** There is no ambient template scope, so a page can extend the shared
   navigation (`[...navItems, extra]`) instead of only replacing it wholesale.
+- **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
+  chrome is what the pattern demonstrates. Pass the section as `beforeMain` (headers) or `afterMain` (footers) so its
+  landmark sits where it does on a real page.
 - **Pages are rendered server-side only.** They are not in the client module graph, so the dev server does a full reload
   on any `.ts`/`.tsx` change rather than an HMR patch.
 
@@ -73,8 +89,8 @@ engine refuses that by construction; TSX does not, so it has to be a review rule
 approach, and it is paid on every review:
 
 - Pages and partials are **pure, synchronous, presentational** functions. No hooks, no state, no effects, no async.
-- No client-side hydration. If a pattern needs behaviour, ship a plain `main.js` and hook it on ids, as
-  [`contact-page/main.js`](src/contact-page/main.js) does.
+- No client-side hydration. If an example needs behaviour, ship a plain `main.js` and hook it on ids, as
+  [`templates/contact-page/main.js`](src/templates/contact-page/main.js) does.
 - No dependency on the PDS React wrapper. If the demos should use real PDS components, use the **web components** via
   the CDN partials, so the output stays framework-free.
 
@@ -88,22 +104,33 @@ approach, and it is paid on every review:
 - Vitest needs its own config because `vite.config.ts` sets `root: 'src'`, which would make Vitest look for tests there.
 - Prettier is used as a **library** in the build to format rendered markup, not as a repo formatter for this package.
 
-## Adding a pattern
+## Adding a template (a whole page)
 
-1. Create `src/<pattern-name>/index.page.tsx` (plus `main.js` if the pattern needs behaviour).
-2. Default-export a component that renders `<BasePage>` with `basePath`, `title`, `description`, `currentPage`, and
-   optionally `mainClass`, `showSearch`, `pageScript`, `navItems`.
+1. Create `src/templates/<name>/index.page.tsx` (plus `main.js` if it needs behaviour).
+2. Default-export a component that renders `<BasePage>` with `basePath="../../"`, `title`, `description`, `currentPage`,
+   and optionally `mainClass`, `showSearch`, `headerVariant`, `pageScript`, `navItems`.
 3. Put the markup in `children`.
-4. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
-5. Link the pattern from `src/index.page.tsx`, and add it to `src/_data.ts` if it belongs in the main navigation.
+4. Add an entry to `templateItems` in `src/_data.ts` – that links it from both overview pages and, because `navItems` is
+   derived from it, from the main navigation.
+5. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
 6. Run the build and confirm `dist/` contains no stray utilities in the CSS and renders as expected.
+
+## Adding a pattern (a single section)
+
+1. Create `src/patterns/<name>/index.page.tsx`.
+2. Default-export a component that renders `<PatternPage>` with `basePath="../../"`, `title`, `description`, and the
+   section itself as `beforeMain` (headers) or `afterMain` (footers). Notes about the pattern go in `children`.
+3. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
+   `variant="single-row" | "stacked"`, which is exactly what `header-1` and `header-2` differ in.
+4. Add an entry to `patternItems` in `src/_data.ts`.
+5. Run the build; the unit tests assert the accessibility baseline for every page, patterns included.
 
 ## Accessibility baseline
 
-Every page ships a skip link, `header`/`main`/`footer` landmarks, labelled `nav` elements, `aria-current="page"` on the
-active nav item only, visible `:focus-visible` outlines and a `forced-colors: active` block. These demos are
-documentation, so they have to be correct by example — keep the baseline when adding patterns. The unit tests assert it
-for every page.
+Every page ships a skip link, a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item
+only, visible `:focus-visible` outlines and a `forced-colors: active` block. Templates additionally carry the `header`
+and `footer` landmarks; a pattern carries the landmark of the section it demonstrates. These demos are documentation, so
+they have to be correct by example — keep the baseline when adding examples. The unit tests assert it for every page.
 
 ## Status and open items
 
@@ -112,19 +139,23 @@ Point-in-time notes, last updated 2026-08-13.
 Done:
 
 - Full port of the three demo pages (`index`, `landing-page`, `contact-page`).
-- 49 unit tests covering page URL resolution, escaping, optional props, navigation overrides, the accessibility baseline
+- Unit tests covering page URL resolution, escaping, optional props, navigation overrides, the accessibility baseline
   and the "no framework attribute names in the output" rule.
 - **Engine decision made (2026-08-13): TSX wins.** `patterns-html` and `patterns-nunjucks` were deleted and this package
   is now the single implementation. [`COMPARISON.md`](COMPARISON.md) is kept as the decision record.
 - **Renamed (2026-08-13)** from `patterns-jsx` to `examples` (`@porsche-design-system/examples`), now that there is
   nothing to disambiguate it from. The Tailwind entry was renamed with it, from `assets/patterns.css` to
   `assets/styles.css`.
+- **Split into two categories (2026-08-13):** `templates/` for whole pages, `patterns/` for single sections, each with
+  its own overview page, its own list in `_data.ts` and its own layout (`BasePage` / `PatternPage`). The first two
+  patterns are the `single-row` and `stacked` variants of `Header`. `isTemplateInput()` was renamed to `isBuildInput()`
+  so "template" unambiguously means the category.
 
 Open:
 
 1. Consider dropping the Prettier formatting pass in favour of accepting dense output.
 2. Revisit whether `_layouts`/`_partials` should become `components/`, and whether the `_` underscore rule is still the
    clearest way to mark build-time-only inputs now that only the `*.page.tsx` marker distinguishes pages.
-3. The authoring docs still call a page a "pattern" (`## Adding a pattern`). Decide whether the package's vocabulary
-   should follow the rename to "example" as well, or whether "pattern" correctly names the thing being demonstrated.
+3. Decide whether `PatternPage` should also offer a side-by-side comparison mode, so two variants can be seen at once
+   without leaving the page.
 4. Storefront hookup: copy `dist/` into `packages/storefront/public/` during prebuild so the demos ship with the docs.

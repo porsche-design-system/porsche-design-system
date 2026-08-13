@@ -15,13 +15,49 @@ export type NavItem = {
 
 export type FooterNavItem = Omit<NavItem, 'id'>;
 
-export const navItems: NavItem[] = [
-  { id: 'landing', href: 'landing-page/', label: 'Landing page' },
-  { id: 'contact', href: 'contact-page/', label: 'Contact page' },
+/** An entry of one of the two categories, listed on the overview pages. */
+export type ExampleItem = NavItem & {
+  /** One sentence, shown next to the link on the overview pages. */
+  description: string;
+};
+
+/** Templates are complete application pages: they own the chrome and demonstrate a full document. */
+export const templateItems: ExampleItem[] = [
+  {
+    id: 'landing',
+    href: 'templates/landing-page/',
+    label: 'Landing page',
+    description: 'Hero, feature grid and legal sections, with a page level navigation override.',
+  },
+  {
+    id: 'contact',
+    href: 'templates/contact-page/',
+    label: 'Contact page',
+    description: 'Form controls wired to labels and hints, plus a live region for the submit status.',
+  },
 ];
 
+/** Patterns showcase a single section of a page, so variations of the same partial can be compared. */
+export const patternItems: ExampleItem[] = [
+  {
+    id: 'header-1',
+    href: 'patterns/header-1/',
+    label: 'Header 1',
+    description: 'Brand, navigation and search on a single row – the default header layout.',
+  },
+  {
+    id: 'header-2',
+    href: 'patterns/header-2/',
+    label: 'Header 2',
+    description: 'Brand and search on top, navigation on its own row below – the stacked header layout.',
+  },
+];
+
+/** The main navigation lists the templates only, so the header stays short as patterns are added. */
+export const navItems: NavItem[] = templateItems.map(({ id, href, label }) => ({ id, href, label }));
+
 export const footerNavItems: FooterNavItem[] = [
-  { href: 'landing-page/#legal-notice', label: 'Legal notice' },
-  { href: 'landing-page/#privacy-policy', label: 'Privacy policy' },
-  { href: 'contact-page/', label: 'Contact us' },
+  { href: 'templates/landing-page/#legal-notice', label: 'Legal notice' },
+  { href: 'templates/landing-page/#privacy-policy', label: 'Privacy policy' },
+  { href: 'templates/contact-page/', label: 'Contact us' },
 ];

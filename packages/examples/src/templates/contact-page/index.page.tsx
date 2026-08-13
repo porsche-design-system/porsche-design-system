@@ -1,9 +1,9 @@
-import { BasePage } from '../_layouts/BasePage.tsx';
+import { BasePage } from '../../_layouts/BasePage.tsx';
 
 /** Contact page – demonstrates a form pattern with an accessible status message. */
 const Page = () => (
   <BasePage
-    basePath="../"
+    basePath="../../"
     title="Contact page"
     description="Dummy contact page template using the shared layout and partial components."
     currentPage="contact"
