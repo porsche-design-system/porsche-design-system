@@ -10,7 +10,7 @@ export type BasePageProps = {
   title: string;
   description: string;
   currentPage: string;
-  /** Utility classes for `<main>`; the element itself is styled globally in `assets/patterns.css`. */
+  /** Utility classes for `<main>`; the element itself is styled globally in `assets/styles.css`. */
   mainClass?: string;
   showSearch?: boolean;
   /** Page level override of the shared navigation – the equivalent of the twins' `@props` / `{% set %}`. */

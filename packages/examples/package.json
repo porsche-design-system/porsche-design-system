@@ -9,7 +9,7 @@
     "start": "vite",
     "dev": "vite",
     "build": "tsx scripts/build.ts && npm run build:css",
-    "build:css": "tailwindcss --input ./src/assets/patterns.css --output ./dist/assets/patterns.css",
+    "build:css": "tailwindcss --input ./src/assets/styles.css --output ./dist/assets/styles.css",
     "preview": "npm run build && vite preview --outDir ../dist --port 3011",
     "lint": "biome lint",
     "test": "npm run test:unit",

@@ -30,7 +30,7 @@ src/
 ├── _data.ts                      # shared data (navigation, …) as typed exports
 ├── _layouts/BasePage.tsx         # page shell, takes `children`
 ├── _partials/                    # Head.tsx, Header.tsx, Footer.tsx — components with checked props
-├── assets/patterns.css           # Tailwind entry: @theme, dark mode, global element defaults
+├── assets/styles.css             # Tailwind entry: @theme, dark mode, global element defaults
 ├── landing-page/                 # one folder per pattern: index.page.tsx
 └── contact-page/                 # index.page.tsx + main.js
 ```
@@ -58,8 +58,8 @@ npm run test:unit:examples  # vitest
 - **Blank lines are not preserved.** A renderer cannot carry source blank lines into the output, so `dist/` is denser
   than hand-authored markup would be. Structure and attributes are unaffected.
 - **Tailwind scans comments too.** `@source "../**/*.tsx"` feeds whole files to the scanner, so prose such as
-  "`{% block content %}`" or "relative to the page" leaks `.block` and `.relative` into `dist/assets/patterns.css`.
-  Check the compiled CSS after larger comment edits.
+  "`{% block content %}`" or "relative to the page" leaks `.block` and `.relative` into `dist/assets/styles.css`. Check
+  the compiled CSS after larger comment edits.
 - **URLs are relative to the page, not the component.** Pass `basePath` (`"./"` at the root, `"../"` one level down).
 - **`_data.ts` is imported, not injected.** There is no ambient template scope, so a page can extend the shared
   navigation (`[...navItems, extra]`) instead of only replacing it wholesale.
@@ -94,7 +94,7 @@ approach, and it is paid on every review:
 2. Default-export a component that renders `<BasePage>` with `basePath`, `title`, `description`, `currentPage`, and
    optionally `mainClass`, `showSearch`, `pageScript`, `navItems`.
 3. Put the markup in `children`.
-4. Style with Tailwind utilities; touch `src/assets/patterns.css` only for genuinely global defaults or theme values.
+4. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
 5. Link the pattern from `src/index.page.tsx`, and add it to `src/_data.ts` if it belongs in the main navigation.
 6. Run the build and confirm `dist/` contains no stray utilities in the CSS and renders as expected.
 
@@ -117,13 +117,14 @@ Done:
 - **Engine decision made (2026-08-13): TSX wins.** `patterns-html` and `patterns-nunjucks` were deleted and this package
   is now the single implementation. [`COMPARISON.md`](COMPARISON.md) is kept as the decision record.
 - **Renamed (2026-08-13)** from `patterns-jsx` to `examples` (`@porsche-design-system/examples`), now that there is
-  nothing to disambiguate it from.
+  nothing to disambiguate it from. The Tailwind entry was renamed with it, from `assets/patterns.css` to
+  `assets/styles.css`.
 
 Open:
 
 1. Consider dropping the Prettier formatting pass in favour of accepting dense output.
 2. Revisit whether `_layouts`/`_partials` should become `components/`, and whether the `_` underscore rule is still the
    clearest way to mark build-time-only inputs now that only the `*.page.tsx` marker distinguishes pages.
-3. The Tailwind entry is still `src/assets/patterns.css`, and the authoring docs still call a page a "pattern". Decide
-   whether the package's vocabulary should follow the rename to "example" as well.
+3. The authoring docs still call a page a "pattern" (`## Adding a pattern`). Decide whether the package's vocabulary
+   should follow the rename to "example" as well, or whether "pattern" correctly names the thing being demonstrated.
 4. Storefront hookup: copy `dist/` into `packages/storefront/public/` during prebuild so the demos ship with the docs.

@@ -33,7 +33,7 @@ describe('resolvePagePath()', () => {
     expect(resolvePagePath('/landing%20page/')).toBe('landing page/index.page.tsx');
   });
 
-  it.each(['/assets/patterns.css', '/contact-page/main.js', '/@vite/client'])(
+  it.each(['/assets/styles.css', '/contact-page/main.js', '/@vite/client'])(
     'should return undefined for the asset request "%s"',
     (url) => {
       expect(resolvePagePath(url)).toBeUndefined();
@@ -49,7 +49,7 @@ describe('isTemplateInput()', () => {
     }
   );
 
-  it.each(['src/index.page.tsx', 'src/landing-page/index.page.tsx', 'src/assets/patterns.css'])(
+  it.each(['src/index.page.tsx', 'src/landing-page/index.page.tsx', 'src/assets/styles.css'])(
     'should not detect "%s" as an input',
     (filePath) => {
       expect(isTemplateInput('src', filePath)).toBe(false);
@@ -109,7 +109,7 @@ describe('Head', () => {
   });
 
   it('should resolve the stylesheet against the base path', () => {
-    expect(html).toContain('href="../assets/patterns.css"');
+    expect(html).toContain('href="../assets/styles.css"');
   });
 });
 

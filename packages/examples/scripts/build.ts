@@ -10,7 +10,7 @@ const srcDir = path.join(packageDir, 'src');
 const distDir = path.join(packageDir, 'dist');
 
 // Tailwind entry: compiled by the `build:css` script, so it must not be copied verbatim like the other assets.
-const cssEntry = 'assets/patterns.css';
+const cssEntry = 'assets/styles.css';
 
 /**
  * Renders every `*.page.tsx` file to `index.html` and copies all other files verbatim.

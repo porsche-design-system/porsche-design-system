@@ -2,7 +2,7 @@
  * Tailwind entry for every pattern page.
  *
  * Dev: compiled on the fly by `@tailwindcss/vite`.
- * Build: compiled by the Tailwind CLI into `dist/assets/patterns.css` (see the `build:css` script), so the generated
+ * Build: compiled by the Tailwind CLI into `dist/assets/styles.css` (see the `build:css` script), so the generated
  * pages still link a single plain CSS file through a relative path.
  *
  * Everything that can be expressed as a utility lives in the markup. Only genuinely global element defaults are

@@ -12,6 +12,6 @@ export const Head = ({ basePath, title, description }: HeadProps) => (
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} | Dummy Patterns</title>
     <meta name="description" content={description} />
-    <link rel="stylesheet" href={`${basePath}assets/patterns.css`} />
+    <link rel="stylesheet" href={`${basePath}assets/styles.css`} />
   </>
 );

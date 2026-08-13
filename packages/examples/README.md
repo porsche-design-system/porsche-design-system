@@ -36,7 +36,7 @@ src/
 │   ├── Header.tsx
 │   └── Footer.tsx
 ├── assets/
-│   └── patterns.css      # Tailwind entry: theme, global element defaults
+│   └── styles.css        # Tailwind entry: theme, global element defaults
 ├── landing-page/
 │   └── index.page.tsx
 └── contact-page/
@@ -95,13 +95,13 @@ Rules:
 
 ## Styling
 
-Tailwind CSS v4, configured CSS-first in [`src/assets/patterns.css`](src/assets/patterns.css), compiled by
-`@tailwindcss/vite` in dev and by the Tailwind CLI into `dist/assets/patterns.css` in the build. Automatic source
+Tailwind CSS v4, configured CSS-first in [`src/assets/styles.css`](src/assets/styles.css), compiled by
+`@tailwindcss/vite` in dev and by the Tailwind CLI into `dist/assets/styles.css` in the build. Automatic source
 detection is off (`source(none)`); `@source "../**/*.tsx"` points the scanner at the components.
 
 > **Watch out:** Tailwind's scanner reads the whole file, comments included. A doc comment mentioning
 > `{% block content %}` makes Tailwind emit an unused `.block` utility. Prefer prose that does not read like a class
-> name, and check `dist/assets/patterns.css` after larger comment edits.
+> name, and check `dist/assets/styles.css` after larger comment edits.
 
 ## How it works
 
