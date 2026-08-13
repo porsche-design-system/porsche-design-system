@@ -44,8 +44,12 @@ type SlackPayload = {
 /** Mirrors the conclusion guard in notify-pipeline-failure.yml. */
 const FAILED = new Set(['failure', 'timed_out']);
 
-/** Slack caps a message at 4000 chars; each entry costs ~180 with its URL. */
-const MAX_JOB_LIST_CHARS = 2600;
+/**
+ * Slack recommends keeping a message under 4000 characters. A job entry measures ~181 chars
+ * (name, step, and a full GitHub URL), so 15 entries plus the surrounding template lands near
+ * 3000. All 56 jobs failing would be ~12,600, hence a cap at all.
+ */
+const MAX_JOBS_LISTED = 15;
 
 const [runPath, jobsPath, pullsPath] = process.argv.slice(2);
 const run: WorkflowRun = JSON.parse(readFileSync(runPath, 'utf8'));
@@ -60,6 +64,9 @@ const runUrl = run.html_url ?? '';
 /** The list is newline-delimited, so a newline in a name would forge an extra entry. */
 const oneLine = (value: string): string => String(value).replace(/[\r\n]+/g, ' ');
 
+/** GitHub labels an un-named step `Run <command>`. The prefix is redundant in the message. */
+const stepLabel = (name: string): string => oneLine(name).replace(/^Run /, '');
+
 /**
  * Two lines per job: description, then the bare URL. `#step:<n>:1` is GitHub's anchor for
  * "step n, log line 1". An infra failure reports `Set up job` at number 1, which is correct.
@@ -68,7 +75,7 @@ const jobEntry = (job: Job): string => {
   const step = job.steps?.find((candidate) => FAILED.has(candidate.conclusion ?? ''));
   const name = oneLine(job.name);
   const jobUrl = job.html_url ?? runUrl;
-  const label = step ? `${name} — step ${step.number} "${oneLine(step.name)}"` : `${name} — no failing step recorded`;
+  const label = step ? `${name} — step ${step.number} "${stepLabel(step.name)}"` : `${name} — no failing step recorded`;
   return `• ${label}\n${step ? `${jobUrl}#step:${step.number}:1` : jobUrl}`;
 };
 
@@ -78,14 +85,7 @@ const buildJobList = (): string => {
   if (failedJobs.length === 0) {
     return `• No individual job reported a failure — inspect the run itself\n${runUrl}`;
   }
-  const entries: string[] = [];
-  let used = 0;
-  for (const job of failedJobs) {
-    const entry = jobEntry(job);
-    if (used + entry.length + 1 > MAX_JOB_LIST_CHARS) break;
-    entries.push(entry);
-    used += entry.length + 1;
-  }
+  const entries = failedJobs.slice(0, MAX_JOBS_LISTED).map(jobEntry);
   const omitted = failedJobs.length - entries.length;
   if (omitted > 0) entries.push(`• and ${omitted} more failed ${omitted === 1 ? 'job' : 'jobs'}`);
   return entries.join('\n');
