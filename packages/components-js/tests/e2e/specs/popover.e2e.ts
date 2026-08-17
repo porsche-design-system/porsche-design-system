@@ -779,7 +779,9 @@ test.describe('controlled mode', () => {
 
       await page.mouse.click(300, 300);
 
-      expect((await getEventSummary(host, 'dismiss')).counter, 'dismiss after outside click').toBe(1);
+      const { counter, details } = await getEventSummary(host, 'dismiss');
+      expect(counter, 'dismiss after outside click').toBe(1);
+      expect(details).toEqual([{ reason: 'outside-click' }]);
       // popover stays visible because the consumer owns `open` and hasn't updated it yet
       await expect(getPopover(page)).toBeVisible();
     });
@@ -803,10 +805,37 @@ test.describe('controlled mode', () => {
 
       await page.locator('#outside').click();
 
-      expect(
-        (await getEventSummary(host, 'dismiss')).counter,
-        'dismiss after clicking an outside focusable element'
-      ).toBe(1);
+      const { counter, details } = await getEventSummary(host, 'dismiss');
+      expect(counter, 'dismiss after clicking an outside focusable element').toBe(1);
+      // the surviving path is the outside click, which proves `onFocusout` deferred rather than emitting its own reason
+      expect(details).toEqual([{ reason: 'outside-click' }]);
+      // popover stays visible because the consumer owns `open` and hasn't updated it yet
+      await expect(getPopover(page)).toBeVisible();
+    });
+
+    test('should emit dismiss event with reason focus-out when focus tabs out of the popover', async ({ page }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-popover>
+          <button slot="button">Some Button</button>
+          Some Popover Content
+        </p-popover>
+        <button id="outside">Outside Button</button>`
+      );
+      const host = getHost(page);
+      await setProperty(host, 'open', true);
+      await expect(getPopover(page)).toBeVisible();
+      await getButton(page).focus();
+      await addEventListener(host, 'dismiss');
+
+      // Keyboard-only path: Tab moves focus past the panel content (which holds nothing focusable) to the outside
+      // button, so `onFocusout` dismisses without any pointer interaction having taken place.
+      await page.keyboard.press('Tab');
+      await expect(page.locator('#outside')).toBeFocused();
+
+      const { counter, details } = await getEventSummary(host, 'dismiss');
+      expect(counter, 'dismiss after tabbing out').toBe(1);
+      expect(details).toEqual([{ reason: 'focus-out' }]);
       // popover stays visible because the consumer owns `open` and hasn't updated it yet
       await expect(getPopover(page)).toBeVisible();
     });
@@ -818,7 +847,9 @@ test.describe('controlled mode', () => {
 
       await page.keyboard.press('Escape');
 
-      expect((await getEventSummary(host, 'dismiss')).counter, 'dismiss after Escape').toBe(1);
+      const { counter, details } = await getEventSummary(host, 'dismiss');
+      expect(counter, 'dismiss after Escape').toBe(1);
+      expect(details).toEqual([{ reason: 'escape' }]);
     });
 
     test('should return focus to the slotted trigger on Escape when open', async ({ page }) => {
@@ -857,7 +888,10 @@ test.describe('controlled mode', () => {
       await page.locator('p-popover.second button').click();
       await waitForStencilLifecycle(page);
 
-      expect((await getEventSummary(firstHost, 'dismiss')).counter, 'dismiss after second popover opens').toBe(1);
+      const { counter, details } = await getEventSummary(firstHost, 'dismiss');
+      expect(counter, 'dismiss after second popover opens').toBe(1);
+      // the second popover's trigger click lands outside the first, so it travels the outside-click path
+      expect(details).toEqual([{ reason: 'outside-click' }]);
       await expect(page.locator('p-popover.second [popover]'), 'second popover visible').toBeVisible();
       // first popover stays visible because the consumer owns `open` and hasn't updated it yet
       await expect(page.locator('p-popover.first [popover]'), 'first popover still visible').toBeVisible();

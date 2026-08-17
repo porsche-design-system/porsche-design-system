@@ -214,7 +214,9 @@ test.describe('dismiss event', () => {
     await dismissBtn.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'dismiss-button' }]);
   });
 
   test('should be emitted when pressing ESC', async ({ page }) => {
@@ -223,7 +225,9 @@ test.describe('dismiss event', () => {
     await page.keyboard.press('Escape');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter).toBe(1);
+    expect(details).toEqual([{ reason: 'escape' }]);
   });
 
   test('should be emitted when clicking backdrop', async ({ page }) => {
@@ -236,7 +240,9 @@ test.describe('dismiss event', () => {
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
 
     await page.mouse.up();
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
+    const { counter, details } = await getEventSummary(host, 'dismiss');
+    expect(counter, 'after mouse up').toBe(1);
+    expect(details).toEqual([{ reason: 'backdrop' }]);
   });
 
   test('should not be emitted when clicking within dialog', async ({ page }) => {
