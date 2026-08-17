@@ -1,12 +1,20 @@
-import { PButton, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';
+import {
+  type FlyoutDismissEventDetail,
+  PButton,
+  PFlyout,
+  PHeading,
+  PText,
+} from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
 export const FlyoutExamplePage = () => {
   const [isFlyoutOpen, setIsFlyoutOpen] = useState<boolean>(false);
+  const [dismissReason, setDismissReason] = useState<FlyoutDismissEventDetail['reason'] | undefined>(undefined);
   const onOpen = useCallback(() => {
     setIsFlyoutOpen(true);
   }, []);
-  const onDismiss = useCallback(() => {
+  const onDismiss = useCallback((e: CustomEvent<FlyoutDismissEventDetail>) => {
+    setDismissReason(e.detail.reason);
     setIsFlyoutOpen(false);
   }, []);
 
@@ -15,6 +23,7 @@ export const FlyoutExamplePage = () => {
       <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
         Open Modal
       </PButton>
+      <PText>Last dismissed via: {dismissReason ?? 'not dismissed yet'}</PText>
       <PFlyout open={isFlyoutOpen} onDismiss={onDismiss} aria={{ 'aria-label': 'Some Heading' }}>
         <PHeading slot="header" size="large" tag="h2">
           Some Heading
