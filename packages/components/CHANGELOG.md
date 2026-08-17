@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.6.0-rc.2] - 2026-08-13
+
 ### Added
 
 - `Ai Tag`: Support for enhanced locales in BCP47 (`en-US`) and POSIX (`en_US`) format
