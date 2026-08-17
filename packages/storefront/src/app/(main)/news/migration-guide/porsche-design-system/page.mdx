@@ -1116,6 +1116,8 @@ components.
 
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
++ import type { ModalDismissEventDetail } from '@porsche-design-system/components-react';
+
 - <PModal onClose={(e: CustomEvent<void>) => {}} />
 + <PModal onDismiss={(e: CustomEvent<ModalDismissEventDetail>) => {}} />
 ```
