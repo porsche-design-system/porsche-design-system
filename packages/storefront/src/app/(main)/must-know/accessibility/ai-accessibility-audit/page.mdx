@@ -17,8 +17,8 @@ Run guided **WCAG 2.2 AA** audits on your locally running application with the
 [**web-accessibility-audit** package](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-audit)
 from the [**porsche-design-system/skills**](https://github.com/porsche-design-system/skills) repository.
 
-Installation uses [**APM (Agent Package Manager)**](https://microsoft.github.io/apm/). APM installs and updates the audit agents, prompts, skills, and instructions directly in your target
-repository.
+Installation uses [**APM (Agent Package Manager)**](https://microsoft.github.io/apm/). APM installs and updates the
+audit agents, prompts, skills, and instructions directly in your target repository.
 
 PDS components are tested at component level. Your **application integration** (pages, routing, custom content) still
 needs its own audit. Automated scans complement manual keyboard, screen reader, and High Contrast Mode testing.
@@ -42,11 +42,13 @@ Install the package from `porsche-design-system/skills` with APM.
 ### 1) Install APM
 
 #### macOS / Linux
+
 ```bash
 curl -sSL https://aka.ms/apm-unix | sh
 ```
 
 #### Windows
+
 ```powershell
 irm https://aka.ms/apm-windows | iex
 ```
@@ -80,13 +82,13 @@ dependencies:
 
 ### Common APM commands
 
-| Command | Purpose |
-| ------------------ | ------------------------------------------------------------------------------------- |
-| `apm install` | Install from `apm.yml` / refresh deployed primitives |
-| `apm install porsche-design-system/skills/packages/web-accessibility-audit#v1.0.0` | Add the package with an explicit version |
-| `apm update` | Update dependencies according to declared refs/constraints |
-| `apm uninstall porsche-design-system/skills/packages/web-accessibility-audit` | Remove the package dependency |
-| `apm prune` | Remove no-longer-required cached packages |
+| Command                                                                            | Purpose                                                    |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `apm install`                                                                      | Install from `apm.yml` / refresh deployed primitives       |
+| `apm install porsche-design-system/skills/packages/web-accessibility-audit#v1.0.0` | Add the package with an explicit version                   |
+| `apm update`                                                                       | Update dependencies according to declared refs/constraints |
+| `apm uninstall porsche-design-system/skills/packages/web-accessibility-audit`      | Remove the package dependency                              |
+| `apm prune`                                                                        | Remove no-longer-required cached packages                  |
 
 For first-time APM setup and authentication troubleshooting, see the official
 [APM Quickstart](https://microsoft.github.io/apm/quickstart/).
@@ -146,12 +148,12 @@ See package docs in
 
 After install, APM typically updates:
 
-| Category             | What gets installed or updated |
-| -------------------- | ----------------------------------------------------------------------------------- |
-| **Manifest/lock**    | `apm.yml`, `apm.lock.yaml` |
-| **APM cache**        | `apm_modules/` |
-| **Copilot/Claude/Cursor targets** | Agent-compatible prompts, skills, instructions, and agent wiring for available targets |
-| **Audit runtime output** | `.a11y/runs/<timestamp>/ACCESSIBILITY-AUDIT.md`, `findings.json`, and raw scanner artifacts |
+| Category                          | What gets installed or updated                                                              |
+| --------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Manifest/lock**                 | `apm.yml`, `apm.lock.yaml`                                                                  |
+| **APM cache**                     | `apm_modules/`                                                                              |
+| **Copilot/Claude/Cursor targets** | Agent-compatible prompts, skills, instructions, and agent wiring for available targets      |
+| **Audit runtime output**          | `.a11y/runs/<timestamp>/ACCESSIBILITY-AUDIT.md`, `findings.json`, and raw scanner artifacts |
 
 Package inventory currently includes:
 
