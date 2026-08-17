@@ -1117,7 +1117,7 @@ components.
 ```diff
 // Accordingly for other JS frameworks, e.g. React example:
 - <PModal onClose={(e: CustomEvent<void>) => {}} />
-+ <PModal onDismiss={(e: CustomEvent<void>) => {}} />
++ <PModal onDismiss={(e: CustomEvent<ModalDismissEventDetail>) => {}} />
 ```
 
 ### Multi Select:
