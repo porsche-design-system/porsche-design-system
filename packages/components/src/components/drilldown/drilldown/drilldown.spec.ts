@@ -94,7 +94,17 @@ describe('internal update re-emit', () => {
 });
 
 describe('dismiss', () => {
-  it('should emit dismiss on ESC (dialog cancel) and prevent native close', () => {
+  it('should emit dismiss with reason dismiss-button when the dismiss button is activated', () => {
+    const component = initComponent();
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+
+    component['onDismissButtonClick']();
+
+    expect(emitSpy).toHaveBeenCalledWith({ reason: 'dismiss-button' });
+  });
+
+  it('should emit dismiss with reason escape on ESC (dialog cancel) and prevent native close', () => {
     const component = initComponent();
     const emitSpy = vi.fn();
     component.dismiss = { emit: emitSpy } as any;
@@ -103,10 +113,10 @@ describe('dismiss', () => {
     component['onCancelDialog'](event);
 
     expect(event.defaultPrevented).toBe(true);
-    expect(emitSpy).toHaveBeenCalledWith();
+    expect(emitSpy).toHaveBeenCalledWith({ reason: 'escape' });
   });
 
-  it('should emit dismiss on backdrop click', () => {
+  it('should emit dismiss with reason backdrop on backdrop click', () => {
     const component = initComponent();
     const emitSpy = vi.fn();
     component.dismiss = { emit: emitSpy } as any;
@@ -114,7 +124,7 @@ describe('dismiss', () => {
     component['onMouseDownDialog']({ target: { tagName: 'DIALOG' } } as any);
     component['onClickDialog']({ target: { tagName: 'DIALOG' } } as any);
 
-    expect(emitSpy).toHaveBeenCalledWith();
+    expect(emitSpy).toHaveBeenCalledWith({ reason: 'backdrop' });
   });
 
   it('should not emit dismiss when the pointer went down inside the drawer', () => {

@@ -186,13 +186,55 @@ describe('body scroll lock', () => {
 });
 
 describe('dismiss request', () => {
-  it('should emit dismiss without payload', () => {
+  it('should emit dismiss with reason dismiss-button when the dismiss button is activated', () => {
     const emitSpy = vi.fn();
     component.dismiss = { emit: emitSpy } as any;
 
-    component['dismissDialog']();
+    component['onDismissButtonClick']();
 
-    expect(emitSpy).toHaveBeenCalledWith();
+    expect(emitSpy).toHaveBeenCalledWith({ reason: 'dismiss-button' });
+  });
+
+  it('should emit dismiss with reason escape and prevent the native close', () => {
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+    const event = new Event('cancel', { cancelable: true });
+
+    component['onDialogCancel'](event);
+
+    expect(event.defaultPrevented).toBe(true);
+    expect(emitSpy).toHaveBeenCalledWith({ reason: 'escape' });
+  });
+
+  it('should not emit dismiss on escape when dismissButton is false', () => {
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+    component.dismissButton = false;
+    const event = new Event('cancel', { cancelable: true });
+
+    component['onDialogCancel'](event);
+
+    expect(event.defaultPrevented).toBe(true);
+    expect(emitSpy).not.toHaveBeenCalled();
+  });
+
+  it('should emit dismiss with reason backdrop when the backdrop is clicked', () => {
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+
+    component['onDialogBackdropClick']({ target: { tagName: 'DIALOG' } } as any);
+
+    expect(emitSpy).toHaveBeenCalledWith({ reason: 'backdrop' });
+  });
+
+  it('should not emit dismiss when the pointer went down inside the panel', () => {
+    const emitSpy = vi.fn();
+    component.dismiss = { emit: emitSpy } as any;
+    component['isPointerDownInside'] = true;
+
+    component['onDialogBackdropClick']({ target: { tagName: 'DIALOG' } } as any);
+
+    expect(emitSpy).not.toHaveBeenCalled();
   });
 });
 
