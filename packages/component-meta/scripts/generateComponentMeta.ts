@@ -41,6 +41,37 @@ const getImportFilePath = (source: string, constName: string, tagName: TagName):
     : importPath; // absolute path to other package
 };
 
+// Looks a type up in the given file and follows a relative import if it isn't declared there. Returns undefined when
+// the name can't be resolved, so callers leave it untouched rather than emitting something wrong.
+const findTypeDefinition = (typeName: string, filePath: string): string | undefined => {
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+
+  const [, localDefinition] = fileContent.match(new RegExp(`\\btype ${typeName} = ([^;\\n]+);`)) || [];
+  if (localDefinition) {
+    return localDefinition.trim();
+  }
+
+  const [, relativeImportPath] =
+    fileContent.match(new RegExp(`import [\\s\\S]+?${typeName}[\\s\\S]+?from '([\\s\\S]+?)';`)) || [];
+  if (!relativeImportPath) {
+    return undefined;
+  }
+
+  const importedFileContent = fs.readFileSync(path.resolve(filePath, `../${relativeImportPath}.ts`), 'utf8');
+  const [, importedDefinition] = importedFileContent.match(new RegExp(`\\btype ${typeName} = ([^;\\n]+);`)) || [];
+
+  return importedDefinition?.trim();
+};
+
+// Resolves type names appearing inside an already-extracted event-detail object literal, e.g. turns
+// `{ reason: DialogDismissReason }` into `{ reason: 'dismiss-button' | 'backdrop' | 'escape' }`.
+const resolveNestedTypeNames = (typeDetail: string, containingFilePath: string): string =>
+  typeDetail.replace(/\b[A-Z][A-Za-z]*\b/g, (typeName) => {
+    const definition = findTypeDefinition(typeName, containingFilePath);
+
+    return definition && !definition.includes('{') ? definition : typeName;
+  });
+
 const getEvaluablePropTypeString = (propTypes: string): string => {
   return propTypes
     ?.replace(/([a-zA-Z]+): (.+),/g, '$1: "$2",') // wrap values in quotes to make the object evaluable
@@ -571,6 +602,9 @@ const generateComponentMeta = (): void => {
             .replace(/ \/\/.+/g, '') // remove comments
             .replace(/\s+/g, ' ') // multi line to single line
             .replace(/; }/, ' }'); // remove last semi colon
+
+          // runs after the comments are stripped, so a capitalized word in a source comment is never taken for a type
+          typeDetail = resolveNestedTypeNames(typeDetail, eventTypePath);
         }
 
         eventsMeta[eventName] = {
