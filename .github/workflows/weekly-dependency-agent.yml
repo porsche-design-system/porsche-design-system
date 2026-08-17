@@ -32,10 +32,10 @@
 name: 'Weekly Dependency Agent'
 
 on:
-  schedule:
+  # schedule:
     # Mondays 06:00 UTC — matches the weekly cadence in the runbook. Cron on
     # GitHub Actions always runs in UTC.
-    - cron: '0 6 * * 1'
+  #  - cron: '0 6 * * 1'
   # Allow on-demand dispatch (e.g. to test the flow) from the Actions tab.
   workflow_dispatch: {}
 
