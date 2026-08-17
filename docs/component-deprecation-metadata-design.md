@@ -11,6 +11,15 @@ the full supported API.
 knowledge skill imports it directly and no longer cleans `@deprecated` prose, parses replacements, calculates current
 value alternatives, or sorts entries.
 
+This design follows the conventions established by the implemented
+[SCSS deprecation metadata design](./scss-deprecation-metadata-design.md#conventions-for-other-sources), with one
+documented exception. Components cannot use the type-level split those conventions prescribe: a deprecated prop moved
+out of `componentMeta` would make the supported component API incomplete for documentation and tooling. Components
+therefore keep one complete catalog and **derive** a deprecated-only view from it, and the "no `deprecation` on the
+current type" rule does not apply. Every other convention does — required `deprecation` on derived entries, optional and
+omitted `description`, the shared default wording and helpers, one-to-one adapter mapping, and a completeness gate
+derived from the package catalog.
+
 ## Architecture & approach
 
 ```text
@@ -31,7 +40,9 @@ Add a common component-owned detail:
 
 ```ts
 export type ComponentDeprecation = {
+  /** Optional note replacing the package default lifecycle sentence. */
   message?: string;
+  /** Canonical consumer-facing identifier of the replacement. */
   replacement?: string;
 };
 ```
@@ -49,9 +60,26 @@ export type DeprecatedValueMeta = Record<string, ComponentDeprecation>;
 Retain `deprecatedValues?: string[]` as a derived compatibility field while exposing structured replacement/message data
 for each value. The skill must not infer remediation from remaining `allowedValues`.
 
+Because the complete catalog must keep documenting deprecated entities, `deprecation` is optional here — unlike the
+styling catalogs, where the field's absence on the current type is what keeps the two apart. The required-`deprecation`
+guarantee moves to the derived catalog's entry type instead.
+
+### Message helper
+
+Ship the shared wording helpers so components state the same lifecycle sentences as every other source:
+
+- with replacement: `This API will be removed with the next major release.`;
+- without replacement: `This API will be removed with the next major release and has no replacement.`.
+
+`componentDeprecationMessage(entity)` returns the lifecycle sentence the knowledge skill records as `message`, and the
+skill renders `replacement` in its own column. Where a component's existing hand-written message must be preserved
+verbatim to avoid changing rendered documentation, it is carried as an authored `message`. The knowledge skill
+implements no fallback wording and performs no message cleanup.
+
 ### Generated deprecation catalog
 
-`packages/component-meta/scripts/generateComponentMeta.ts` shall emit a package-owned catalog with entries for:
+`packages/component-meta/scripts/generateComponentMeta.ts` shall emit a package-owned catalog whose entry type requires
+`deprecation`, with entries for:
 
 - components;
 - props;
@@ -61,7 +89,8 @@ for each value. The skill must not infer remediation from remaining `allowedValu
 - CSS variables.
 
 Each entry contains entity kind, identifier, owner and prop context where applicable, final message, and optional
-replacement. Skill rule IDs and reference paths remain outside the package.
+replacement. `description` is optional on entries and omitted, since the entry is not a documentation row. Skill rule
+IDs and reference paths remain outside the package.
 
 Icon-name deprecations are excluded from the component category and supplied by the icon-owned metadata described in
 `docs/icon-deprecation-metadata-design.md`, while compatibility fields on `p-icon` remain available.
@@ -83,7 +112,9 @@ Replace `collectors/componentMeta.ts` with a direct adapter over `componentDepre
 - component reference paths;
 - the `components` source category.
 
-It preserves metadata order and contains no message cleanup, replacement regex, allowed-value comparison, or sorting.
+It sets `message` from `componentDeprecationMessage(entity)`, carries `replacement` through — omitted rather than set to
+`undefined` when absent so the Markdown remediation column composes cleanly — preserves metadata order, and contains no
+message cleanup, replacement regex, allowed-value comparison, or sorting.
 
 ## Data & state
 
@@ -107,6 +138,11 @@ shape. A future stable facade can normalize entries while preserving entity iden
 Components differ from current-only styling catalogs. Moving deprecated props out of `componentMeta` would make the
 supported component API incomplete. Deriving the deprecation catalog avoids both data loss and duplicate maintenance.
 
+This is the one documented departure from the SCSS conventions, which keep the two catalogs disjoint at the type level
+by omitting `deprecation` from the current leaf types. That is unavailable here, so the equivalent guarantee is provided
+one level down: the derived catalog's entry type requires `deprecation`, and a test asserts the derivation is total in
+both directions.
+
 ### Compatibility fields
 
 Keeping `isDeprecated`, `deprecationMessage`, and `deprecatedValues` temporarily adds redundancy to generated output,
@@ -127,19 +163,22 @@ but preserves existing consumers while structured fields become authoritative.
 Component-meta tests shall prove:
 
 1. Every legacy deprecation flag corresponds to structured details.
-2. Every structured deprecation produces exactly one `componentDeprecationsMeta` entry.
+2. Every structured deprecation produces exactly one `componentDeprecationsMeta` entry, and every entry traces back to
+   exactly one structured deprecation.
 3. Every deprecated value has per-value metadata and remains in the compatibility array.
 4. Entry identities are unique and deterministic.
 5. Components and their supported deprecated entities remain present in `componentMeta`.
 6. Icon-name values are assigned only to the icon category.
-7. The generated package exports both metadata objects.
+7. A fixture entity receives the shared default wording for both the replacement and no-replacement cases.
+8. The generated package exports both metadata objects.
 
-Skills tests retain the existing component rule-ID set and links while asserting that the collector imports metadata and
-contains no prose or replacement parser.
+Skills tests derive their expectations from `componentDeprecationsMeta` using the package's own helper — never a
+hand-authored rule-ID list — and prove that collected identities, order, rule IDs, messages, replacements and reference
+links match it entry for entry, with no prose or replacement parser remaining in the collector.
 
 ## Rollout
 
-1. Add structured deprecation and per-value metadata types.
+1. Add structured deprecation and per-value metadata types, plus the shared message helper.
 2. Extend component source annotations and generator extraction.
 3. Generate compatibility fields from structured details.
 4. Generate and export `componentDeprecationsMeta`.

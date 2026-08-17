@@ -9,6 +9,9 @@ source marker scan.
 The metadata subpath must be built before skills without requiring the full partials package, which currently builds
 later as part of components-js.
 
+This design follows the conventions established by the implemented
+[SCSS deprecation metadata design](./scss-deprecation-metadata-design.md#conventions-for-other-sources).
+
 ## Architecture & approach
 
 ```text
@@ -31,17 +34,35 @@ metadata must share one package-owned descriptor so implementation JSDoc and met
 Add a minimal type independent of React and generated partial code:
 
 ```ts
-export type PartialDeprecationMeta = {
+export type PartialDeprecation = {
+  /** Optional note replacing the package default lifecycle sentence. */
+  message?: string;
+  /** Canonical consumer-facing export name. */
+  replacement?: string;
+};
+
+export type DeprecatedPartialMeta = {
   name: string;
-  deprecation: {
-    message?: string;
-    replacement?: string;
-  };
+  description?: string;
+  deprecation: PartialDeprecation;
 };
 ```
 
+`deprecation` is required, so an entry cannot reach the manifest without its lifecycle detail. `description` is optional
+and omitted in practice — the generated `@deprecated` JSDoc is the documentation. Should a full `partialsMeta` be added
+later, its entries must not carry a `deprecation` field, keeping the two catalogs disjoint at the type level.
+
 Export `partialDeprecationsMeta` as an empty ordered array initially. A complete `partialsMeta` is not required solely
 to remove the scan, although it may be introduced later for documentation.
+
+Ship the shared wording helpers alongside it. Default messages are fixed and identical across sources:
+
+- with replacement: `This API will be removed with the next major release.`;
+- without replacement: `This API will be removed with the next major release and has no replacement.`.
+
+`partialDeprecationMessage(node)` returns the lifecycle sentence the knowledge skill records as `message`;
+`partialDeprecationText(node)` prefixes `Use <replacement> instead.` for the generated `@deprecated` JSDoc. Entries are
+authored as literal repeated objects.
 
 ### Metadata-only build
 
@@ -67,7 +88,9 @@ first descriptor-generation path is introduced.
 ### Knowledge-skill adapter
 
 Replace `collectPartialDeprecations()` in `collectors/scanned.ts` with a direct import from the new metadata subpath.
-The adapter preserves manifest order and adds category, rule ID, and partial reference information.
+The adapter preserves manifest order, adds category, rule ID, and partial reference information, sets `message` from
+`partialDeprecationMessage(node)` and carries `replacement` through. `partialsRoot()` is dropped once nothing else uses
+it.
 
 ## Data & state
 
@@ -101,14 +124,15 @@ Partials tests shall prove:
 1. `@porsche-design-system/partials/meta` resolves after the metadata-only build.
 2. The current manifest is explicitly empty.
 3. The metadata target has no runtime partial or React dependency.
-4. A fixture descriptor renders the package default message and optional replacement.
+4. A fixture descriptor renders the shared default wording for both the replacement and no-replacement cases.
 5. A clean root build makes metadata available before skills and still builds full partials later.
 
-Skills tests verify the Partials category is empty by imported contract and no source scan remains.
+Skills tests derive the category from the imported contract using the package's own helper — never a hand-authored list
+and never a source scan — and prove no source scan remains.
 
 ## Rollout
 
-1. Add metadata types, entry point, Rollup target, and package subpath.
+1. Add metadata types, the message helpers, the entry point, the Rollup target, and the package subpath.
 2. Export the explicit empty manifest.
 3. Wire the metadata-only build before `build:skills`.
 4. Replace the skill marker scan with the direct adapter.

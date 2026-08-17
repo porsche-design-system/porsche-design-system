@@ -9,6 +9,10 @@ deprecation-free API.
 The knowledge skill shall import this metadata directly instead of traversing deprecated barrels, resolving TypeScript
 declarations, parsing JSDoc, or deriving replacements from prose.
 
+This design follows the conventions established by the implemented
+[SCSS deprecation metadata design](./scss-deprecation-metadata-design.md#conventions-for-other-sources), and mirrors
+[Emotion](./emotion-deprecation-metadata-design.md) wherever the two packages already share patterns.
+
 ## Architecture & approach
 
 ```text
@@ -25,8 +29,19 @@ preserved by the skill.
 
 ### Deprecation details and export descriptors
 
-Add a package-owned `VanillaExtractDeprecation` with optional `message` and `replacement`. Existing
-`VanillaExtractToken` and `VanillaExtractUtility` leaves may carry it where appropriate.
+Add a package-owned `VanillaExtractDeprecation` with optional `message` and `replacement`, plus one deprecated subtype
+per leaf kind:
+
+```ts
+export type DeprecatedVanillaExtractToken = Omit<VanillaExtractToken, 'description'> & {
+  description?: string;
+  deprecation: VanillaExtractDeprecation;
+};
+```
+
+`VanillaExtractToken` and `VanillaExtractUtility` gain no `deprecation` field, and the deprecated subtypes require one,
+so neither catalog can absorb the other's entries without a compile error. `description` is optional and omitted in
+practice — the generated `@deprecated` JSDoc is the documentation.
 
 The deprecated surface also contains public type exports and functions, so add a minimal descriptor for entries that do
 not fit existing leaves:
@@ -35,12 +50,29 @@ not fit existing leaves:
 export type DeprecatedVanillaExtractExportMeta = {
   name: string;
   exportKind: 'value' | 'function' | 'type';
+  description?: string;
   deprecation: VanillaExtractDeprecation;
 };
 ```
 
-An empty deprecation object uses package default wording. Replacement identifiers are vanilla-extract export names, not
-parsed JSDoc fragments.
+### Identity and message helpers
+
+Mirror SCSS and Emotion. Default wording is fixed and shared:
+
+- with replacement: `This API will be removed with the next major release.`;
+- without replacement: `This API will be removed with the next major release and has no replacement.`.
+
+Expose `vanillaExtractDeprecationMessage(node)` for the lifecycle sentence the knowledge skill records as `message`, and
+`vanillaExtractDeprecationText(node)` for the generated JSDoc, which prefixes `Use <replacement> instead.`. An empty
+`deprecation: {}` uses the no-replacement default.
+
+Replacement identifiers are vanilla-extract export names authored through `vanillaExtractIdentifier(<current node>)`
+read from the exported current catalog — never a retyped string, never an intermediate local const, and never a parsed
+JSDoc fragment.
+
+### Authoring conventions
+
+Deprecated entries are authored as literal repeated objects — no factory functions and no `.map()` over a tuple table.
 
 ### Deprecated source generation
 
@@ -64,7 +96,9 @@ and expose it through the existing `./meta` subpath.
 ### Knowledge-skill adapter
 
 Replace `collectVanillaExtractDeprecations()` in `collectors/styleExports.ts` with a direct metadata import. The adapter
-adds stable rule IDs, source category, and `references/styles/vanilla-extract.md`; it does not sort or parse.
+adds stable rule IDs, source category, and `references/styles/vanilla-extract.md`, sets `message` from the package
+message helper and carries `replacement` through, omitting it rather than setting `undefined` when absent. It does not
+sort, parse, or touch the filesystem, and `vanillaExtractRoot()` is dropped once nothing else uses it.
 
 ## Data & state
 
@@ -96,19 +130,22 @@ the refactor is intended to remove. A temporary package-local parity test is acc
 
 Package tests shall prove:
 
-1. `vanillaExtractMeta` contains no deprecated entries.
+1. `vanillaExtractMeta` contains no deprecated entries, and every documented leaf has a non-empty `description`.
 2. Every deprecated metadata name is unique and publicly exported.
-3. Every public deprecated barrel export appears exactly once in metadata.
+3. Every public deprecated barrel export appears exactly once in metadata, and every metadata entry has exactly one
+   generated export.
 4. Runtime exports, generated styles, and declarations remain compatible.
-5. Messages and replacements come from descriptors.
+5. Messages and replacements come from descriptors, and the default wording matches the shared lifecycle sentences.
 6. The metadata export is available through `@porsche-design-system/vanilla-extract/meta`.
 
-Skills tests retain the existing rule-ID set, verify metadata order and links, and assert no filesystem/JSDoc collector
-is used.
+Skills tests derive their expectations from `vanillaExtractDeprecationsMeta` using the package's own helpers — never a
+hand-authored name list and never a re-parse of package sources — and prove that collected names, order, rule IDs,
+messages, replacements and reference links match it entry for entry, with no filesystem or JSDoc collector remaining.
 
 ## Rollout
 
-1. Define package-owned deprecation and export descriptor shapes.
+1. Define the deprecation detail, the `Deprecated*` leaf subtypes, the export descriptor, the identity helper and the
+   two message helpers.
 2. Inventory all public deprecated barrel exports, including types.
 3. Convert each domain to descriptors and preserve runtime/style output.
 4. Assemble and export `vanillaExtractDeprecationsMeta`.
