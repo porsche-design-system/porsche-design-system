@@ -46,6 +46,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `AG Grid`: Updated `accentColor` from `colorInfo` to `colorFocus`, removed `focusShadow` and `inputFocusShadow` which
   were previously hiding the focus ring on the grid's native input elements.
   ([#4667](https://github.com/porsche-design-system/porsche-design-system/pull/4667))
+- `Flyout`, `Modal`, `Sheet`, `Drilldown`: the `dismiss` event now carries a payload identifying how the component was
+  closed. The event detail changed from `void` to `{ reason: 'dismiss-button' | 'backdrop' | 'escape' }`, exported as
+  `FlyoutDismissEventDetail`, `ModalDismissEventDetail`, `SheetDismissEventDetail` and `DrilldownDismissEventDetail`.
+  ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
+- `Popover`: the `dismiss` event now carries a payload identifying how the component was closed. The event detail
+  changed from `void` to `{ reason: 'outside-click' | 'focus-out' | 'escape' }`, exported as
+  `PopoverDismissEventDetail`. ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
 
 ### Fixed
 
@@ -66,6 +73,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **Jsdom Polyfill**: `TypeError: 'escape' called on an object that is not a valid instance of CSS.` when rendering
   components in jsdom v30, caused by consumers (e.g. `jss`) caching `CSS.escape` detached from the `CSS` namespace
   ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
+- `Drilldown`: documentation of the `dismiss` event now mentions backdrop click
+  ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
 
 ### Deprecated
 
