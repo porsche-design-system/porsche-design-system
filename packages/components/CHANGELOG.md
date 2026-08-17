@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [4.6.0-rc.2] - 2026-08-13
+
 ### Added
 
 - `Ai Tag`: Support for enhanced locales in BCP47 (`en-US`) and POSIX (`en_US`) format
@@ -24,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#4665](https://github.com/porsche-design-system/porsche-design-system/pull/4665))
 - `Carousel`: Live region announcing page status after control-driven navigation (prev/next, pagination, drag)
   ([#4654](https://github.com/porsche-design-system/porsche-design-system/pull/4654))
+- `Icon`: `customer-support` ([#4672](https://github.com/porsche-design-system/porsche-design-system/pull/4672))
 
 ### Changed
 
@@ -42,6 +45,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   which jsdom only provides since v30. On older versions the polyfill throws an explicit error on import. `jsdom` is
   declared as an optional peer dependency to make the requirement visible.
   ([#4647](https://github.com/porsche-design-system/porsche-design-system/pull/4647))
+- `AG Grid`: Updated `accentColor` from `colorInfo` to `colorFocus`, removed `focusShadow` and `inputFocusShadow` which
+  were previously hiding the focus ring on the grid's native input elements.
+  ([#4667](https://github.com/porsche-design-system/porsche-design-system/pull/4667))
 
 ### Fixed
 
