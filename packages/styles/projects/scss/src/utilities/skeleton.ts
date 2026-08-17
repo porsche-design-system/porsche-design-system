@@ -1,8 +1,9 @@
+import { scssIdentifier } from '../deprecation';
 import { borderRef, colorRef, motionRef } from '../namespaces';
 import { border } from '../theme/border';
 import { color } from '../theme/color';
 import { motion } from '../theme/motion';
-import type { ScssMixin, ScssRaw } from '../types';
+import type { DeprecatedScssMixin, ScssMixin } from '../types';
 
 /** The documented `skeleton()` mixin. The `raw` body references its `border` / `color` / `motion` cross-references via `ref()`. */
 export const skeleton = [
@@ -26,19 +27,19 @@ export const skeleton = [
   },
 ] satisfies ScssMixin[];
 
-/**
- * Deprecated theme-parameterized `pds-skeleton` variant (plumbing).
- * @deprecated Use the documented `skeleton()` mixin.
- */
-export const skeletonDeprecatedMixin: ScssRaw = {
-  raw: `@mixin pds-skeleton($theme: 'light') {
-  @include skeleton();
+/** The deprecated theme-parameterized `pds-skeleton` variant, replaced by the documented `skeleton()` mixin. */
+export const skeletonDeprecations = {
+  skeleton: {
+    name: 'pds-skeleton',
+    signature: "($theme: 'light')",
+    raw: `  @include ${skeleton[0].name}();
   @if ($theme == 'dark') {
     color-scheme: dark;
   } @else if ($theme == 'auto') {
     color-scheme: light dark;
   } @else {
     color-scheme: light;
-  }
-}`,
-};
+  }`,
+    deprecation: { replacement: scssIdentifier(skeleton[0]) },
+  },
+} satisfies Record<string, DeprecatedScssMixin>;

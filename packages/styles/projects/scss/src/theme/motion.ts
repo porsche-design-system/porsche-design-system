@@ -7,7 +7,8 @@ import {
   easeInOut as easeInOutToken,
   easeOut,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { DeprecatedScssVariable, ScssMeta } from '../types';
 
 /** Motion token variables, keyed by size (`duration`) / variant (`ease`). Entries are addressable, e.g. `motion.duration.xl`. */
 export const motion = {
@@ -52,16 +53,41 @@ export const motion = {
   },
 } satisfies ScssMeta['motion'];
 
-/**
- * Deprecated `$pds-motion-*` aliases (plumbing).
- * @deprecated Use the documented `$duration-*` / `$ease-*` variables.
- */
-export const motionDeprecatedAliases: ScssRaw = {
-  raw: `$pds-motion-duration-long: ${durationLg}; /* alias (deprecated) */
-$pds-motion-duration-moderate: ${durationMd}; /* alias (deprecated) */
-$pds-motion-duration-short: ${durationSm}; /* alias (deprecated) */
-$pds-motion-duration-very-long: ${durationXlToken}; /* alias (deprecated) */
-$pds-motion-easing-base: ${easeInOutToken}; /* alias (deprecated) */
-$pds-motion-easing-in: ${easeIn}; /* alias (deprecated) */
-$pds-motion-easing-out: ${easeOut}; /* alias (deprecated) */`,
-};
+/** Deprecated `$pds-motion-*` aliases of the documented duration and easing scales. */
+export const motionDeprecations = {
+  durationLong: {
+    name: '$pds-motion-duration-long',
+    value: durationLg,
+    deprecation: { replacement: scssIdentifier(motion.duration.lg) },
+  },
+  durationModerate: {
+    name: '$pds-motion-duration-moderate',
+    value: durationMd,
+    deprecation: { replacement: scssIdentifier(motion.duration.md) },
+  },
+  durationShort: {
+    name: '$pds-motion-duration-short',
+    value: durationSm,
+    deprecation: { replacement: scssIdentifier(motion.duration.sm) },
+  },
+  durationVeryLong: {
+    name: '$pds-motion-duration-very-long',
+    value: durationXlToken,
+    deprecation: { replacement: scssIdentifier(motion.duration.xl) },
+  },
+  easingBase: {
+    name: '$pds-motion-easing-base',
+    value: easeInOutToken,
+    deprecation: { replacement: scssIdentifier(motion.ease.inOut) },
+  },
+  easingIn: {
+    name: '$pds-motion-easing-in',
+    value: easeIn,
+    deprecation: { replacement: scssIdentifier(motion.ease.in) },
+  },
+  easingOut: {
+    name: '$pds-motion-easing-out',
+    value: easeOut,
+    deprecation: { replacement: scssIdentifier(motion.ease.out) },
+  },
+} satisfies Record<string, DeprecatedScssVariable>;

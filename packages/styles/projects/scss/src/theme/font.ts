@@ -19,7 +19,8 @@ import {
   typescaleXl,
   typescaleXs,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssMixin, ScssRaw, ScssVariable } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { DeprecatedScssVariable, ScssMeta, ScssMixin, ScssVariable } from '../types';
 
 /** The Porsche Next font families (base plus the locale-specific CJK stacks). */
 const family = {
@@ -170,33 +171,126 @@ export const cjkFontFamily: ScssMixin = {
   }`,
 };
 
-/**
- * Deprecated `$pds-font-*` aliases (plumbing).
- * @deprecated Use `$font-porsche-next`, `$typescale-*`, `$font-weight-*`, `$leading-normal`.
- */
-export const fontDeprecatedAliases: ScssRaw = {
-  raw: `$pds-font-family: ${fontPorscheNext}; /* alias (deprecated) */
-$pds-font-hyphenation-style-overflow-wrap: break-word; /* alias (deprecated) */
-$pds-font-hyphenation-style-hyphens: var(--p-hyphens, auto); /* alias (deprecated) */
-$pds-font-line-height: ${leadingNormal}; /* alias (deprecated) */
-$pds-font-size-text-xx-small: ${typescale2Xs}; /* alias (deprecated) */
-$pds-font-size-text-x-small: ${typescaleXs}; /* alias (deprecated) */
-$pds-font-size-text-small: ${typescaleSm}; /* alias (deprecated) */
-$pds-font-size-text-medium: ${typescaleMd}; /* alias (deprecated) */
-$pds-font-size-text-large: ${typescaleLg}; /* alias (deprecated) */
-$pds-font-size-text-x-large: ${typescaleXl}; /* alias (deprecated) */
-$pds-font-size-heading-small: ${typescaleSm}; /* alias (deprecated) */
-$pds-font-size-heading-medium: ${typescaleMd}; /* alias (deprecated) */
-$pds-font-size-heading-large: ${typescaleLg}; /* alias (deprecated) */
-$pds-font-size-heading-x-large: ${typescaleXl}; /* alias (deprecated) */
-$pds-font-size-heading-xx-large: ${typescale2Xl}; /* alias (deprecated) */
-$pds-font-size-display-small: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem); /* alias (deprecated) */
-$pds-font-size-display-medium: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem); /* alias (deprecated) */
-$pds-font-size-display-large: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem); /* alias (deprecated) */
-$pds-font-style-normal: normal; /* alias (deprecated) */
-$pds-font-style-italic: italic; /* alias (deprecated) */
-$pds-font-variant: normal; /* alias (deprecated) */
-$pds-font-weight-regular: ${fontWeightNormal}; /* alias (deprecated) */
-$pds-font-weight-semi-bold: ${fontWeightSemibold}; /* alias (deprecated) */
-$pds-font-weight-bold: ${fontWeightBold}; /* alias (deprecated) */`,
-};
+/** Deprecated `$pds-font-*` aliases. The style/variant/hyphenation aliases have no modern equivalent. */
+export const fontDeprecations = {
+  family: {
+    name: '$pds-font-family',
+    value: fontPorscheNext,
+    deprecation: { replacement: scssIdentifier(family.porscheNext) },
+  },
+  hyphenationStyleOverflowWrap: {
+    name: '$pds-font-hyphenation-style-overflow-wrap',
+    value: 'break-word',
+    deprecation: {},
+  },
+  hyphenationStyleHyphens: {
+    name: '$pds-font-hyphenation-style-hyphens',
+    value: 'var(--p-hyphens, auto)',
+    deprecation: {},
+  },
+  lineHeight: {
+    name: '$pds-font-line-height',
+    value: leadingNormal,
+    deprecation: { replacement: scssIdentifier(lineHeight.normal) },
+  },
+  sizeTextXxSmall: {
+    name: '$pds-font-size-text-xx-small',
+    value: typescale2Xs,
+    deprecation: { replacement: scssIdentifier(size['2xs']) },
+  },
+  sizeTextXSmall: {
+    name: '$pds-font-size-text-x-small',
+    value: typescaleXs,
+    deprecation: { replacement: scssIdentifier(size.xs) },
+  },
+  sizeTextSmall: {
+    name: '$pds-font-size-text-small',
+    value: typescaleSm,
+    deprecation: { replacement: scssIdentifier(size.sm) },
+  },
+  sizeTextMedium: {
+    name: '$pds-font-size-text-medium',
+    value: typescaleMd,
+    deprecation: { replacement: scssIdentifier(size.md) },
+  },
+  sizeTextLarge: {
+    name: '$pds-font-size-text-large',
+    value: typescaleLg,
+    deprecation: { replacement: scssIdentifier(size.lg) },
+  },
+  sizeTextXLarge: {
+    name: '$pds-font-size-text-x-large',
+    value: typescaleXl,
+    deprecation: { replacement: scssIdentifier(size.xl) },
+  },
+  sizeHeadingSmall: {
+    name: '$pds-font-size-heading-small',
+    value: typescaleSm,
+    deprecation: { replacement: scssIdentifier(size.sm) },
+  },
+  sizeHeadingMedium: {
+    name: '$pds-font-size-heading-medium',
+    value: typescaleMd,
+    deprecation: { replacement: scssIdentifier(size.md) },
+  },
+  sizeHeadingLarge: {
+    name: '$pds-font-size-heading-large',
+    value: typescaleLg,
+    deprecation: { replacement: scssIdentifier(size.lg) },
+  },
+  sizeHeadingXLarge: {
+    name: '$pds-font-size-heading-x-large',
+    value: typescaleXl,
+    deprecation: { replacement: scssIdentifier(size.xl) },
+  },
+  sizeHeadingXxLarge: {
+    name: '$pds-font-size-heading-xx-large',
+    value: typescale2Xl,
+    deprecation: { replacement: scssIdentifier(size['2xl']) },
+  },
+  sizeDisplaySmall: {
+    name: '$pds-font-size-display-small',
+    value: 'clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem)',
+    deprecation: { replacement: scssIdentifier(size['3xl']) },
+  },
+  sizeDisplayMedium: {
+    name: '$pds-font-size-display-medium',
+    value: 'clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem)',
+    deprecation: { replacement: scssIdentifier(size['4xl']) },
+  },
+  sizeDisplayLarge: {
+    name: '$pds-font-size-display-large',
+    value: 'clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem)',
+    deprecation: { replacement: scssIdentifier(size['5xl']) },
+  },
+  styleNormal: {
+    name: '$pds-font-style-normal',
+    value: 'normal',
+    deprecation: {},
+  },
+  styleItalic: {
+    name: '$pds-font-style-italic',
+    value: 'italic',
+    deprecation: {},
+  },
+  variant: {
+    name: '$pds-font-variant',
+    value: 'normal',
+    deprecation: {},
+  },
+  weightRegular: {
+    name: '$pds-font-weight-regular',
+    value: fontWeightNormal,
+    deprecation: { replacement: scssIdentifier(weight.normal) },
+  },
+  weightSemiBold: {
+    name: '$pds-font-weight-semi-bold',
+    value: fontWeightSemibold,
+    deprecation: { replacement: scssIdentifier(weight.semibold) },
+  },
+  weightBold: {
+    name: '$pds-font-weight-bold',
+    value: fontWeightBold,
+    deprecation: { replacement: scssIdentifier(weight.bold) },
+  },
+} satisfies Record<string, DeprecatedScssVariable>;

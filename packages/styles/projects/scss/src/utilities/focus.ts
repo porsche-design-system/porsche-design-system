@@ -1,6 +1,7 @@
+import { scssIdentifier } from '../deprecation';
 import { colorRef } from '../namespaces';
 import { color } from '../theme/color';
-import type { ScssMixin, ScssRaw } from '../types';
+import type { DeprecatedScssMixin, ScssMixin, ScssRaw } from '../types';
 
 /** The documented `focus-visible()` mixin. The `raw` body references `color` via `ref()` (`@use` declared in the descriptor). */
 export const focus = [
@@ -15,11 +16,8 @@ export const focus = [
   },
 ] satisfies ScssMixin[];
 
-/**
- * The lookup maps and deprecated `pds-focus` mixin (plumbing).
- * @deprecated Use the documented `focus-visible()` mixin.
- */
-export const focusDeprecatedAliases: ScssRaw = {
+/** The lookup maps `pds-focus()` consults — non-public plumbing, emitted before the mixin. */
+export const focusMaps: ScssRaw = {
   raw: `$pds-focus-offset-map: (
   'small': 2px,
   'none': 0,
@@ -28,11 +26,15 @@ export const focusDeprecatedAliases: ScssRaw = {
 $pds-focus-border-radius-map: (
   'small': border.$radius-sm,
   'medium': border.$radius-md,
-);
+);`,
+};
 
-/* alias (deprecated) */
-@mixin pds-focus($offset: 'small', $border-radius: 'small') {
-  // it can easily be overwritten on purpose (when placed here) and visually reflected
+/** The deprecated `pds-focus` mixin, replaced by the documented `focus-visible()` mixin. */
+export const focusDeprecations = {
+  focus: {
+    name: 'pds-focus',
+    signature: "($offset: 'small', $border-radius: 'small')",
+    raw: `  // it can easily be overwritten on purpose (when placed here) and visually reflected
   @if map.has-key($pds-focus-border-radius-map, $border-radius) {
     border-radius: map.get($pds-focus-border-radius-map, $border-radius);
   } @else {
@@ -57,6 +59,7 @@ $pds-focus-border-radius-map: (
   // why? have a look at this article https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
   &:focus:not(:focus-visible) {
     outline-color: transparent;
-  }
-}`,
-};
+  }`,
+    deprecation: { replacement: scssIdentifier(focus[0]) },
+  },
+} satisfies Record<string, DeprecatedScssMixin>;

@@ -9,7 +9,8 @@ import {
   radiusXl,
   radiusXs,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw, ScssVariable } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { DeprecatedScssVariable, ScssMeta, ScssVariable } from '../types';
 
 /** The border radius scale. The same entries render both the docs rows and the `$radius-*: …;` declarations. */
 export const radius = {
@@ -71,14 +72,31 @@ export const border = {
   width: [],
 } satisfies ScssMeta['border'];
 
-/**
- * Deprecated `$pds-border-*` aliases (plumbing).
- * @deprecated Use the documented `$radius-*` variables.
- */
-export const borderDeprecatedAliases: ScssRaw = {
-  raw: `$pds-border-radius-small: ${radiusSm}; /* alias (deprecated) */
-$pds-border-radius-medium: ${radiusMd}; /* alias (deprecated) */
-$pds-border-radius-large: ${radiusLg}; /* alias (deprecated) */
-$pds-border-width-base: 2px; /* alias (deprecated) */
-$pds-border-width-thin: 1px; /* alias (deprecated) */`,
-};
+/** Deprecated `$pds-border-*` aliases. The width aliases have no modern equivalent. */
+export const borderDeprecations = {
+  radiusSmall: {
+    name: '$pds-border-radius-small',
+    value: radiusSm,
+    deprecation: { replacement: scssIdentifier(radius.sm) },
+  },
+  radiusMedium: {
+    name: '$pds-border-radius-medium',
+    value: radiusMd,
+    deprecation: { replacement: scssIdentifier(radius.md) },
+  },
+  radiusLarge: {
+    name: '$pds-border-radius-large',
+    value: radiusLg,
+    deprecation: { replacement: scssIdentifier(radius.lg) },
+  },
+  widthBase: {
+    name: '$pds-border-width-base',
+    value: '2px',
+    deprecation: {},
+  },
+  widthThin: {
+    name: '$pds-border-width-thin',
+    value: '1px',
+    deprecation: {},
+  },
+} satisfies Record<string, DeprecatedScssVariable>;

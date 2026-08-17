@@ -1,19 +1,19 @@
-import { blur } from './theme/blur';
-import { border } from './theme/border';
-import { breakpoint } from './theme/breakpoint';
-import { color } from './theme/color';
-import { font } from './theme/font';
-import { gradient } from './theme/gradient';
+import { blur, blurDeprecations } from './theme/blur';
+import { border, borderDeprecations } from './theme/border';
+import { breakpoint, breakpointDeprecations } from './theme/breakpoint';
+import { color, colorDeprecations } from './theme/color';
+import { font, fontDeprecations } from './theme/font';
+import { gradient, gradientDeprecations } from './theme/gradient';
 import { grid as gridVariables } from './theme/grid';
-import { motion } from './theme/motion';
-import { shadow } from './theme/shadow';
-import { spacing } from './theme/spacing';
-import type { ScssMeta } from './types';
-import { focus } from './utilities/focus';
+import { motion, motionDeprecations } from './theme/motion';
+import { shadow, shadowDeprecations } from './theme/shadow';
+import { spacing, spacingDeprecations } from './theme/spacing';
+import type { ScssBranch, ScssMeta } from './types';
+import { focus, focusDeprecations } from './utilities/focus';
 import { grid as gridMixin } from './utilities/grid';
-import { mediaQuery } from './utilities/media-query';
-import { skeleton } from './utilities/skeleton';
-import { typography } from './utilities/typography';
+import { mediaQuery, mediaQueryDeprecations } from './utilities/media-query';
+import { skeleton, skeletonDeprecations } from './utilities/skeleton';
+import { typography, typographyDeprecations } from './utilities/typography';
 
 // `grid` combines the `template` layout mixin (`utilities/grid`) with the area-grouped token tree
 // (`theme/grid`), shared with emotion / tailwind.
@@ -43,3 +43,30 @@ export const scssMeta = {
     ...gridVariables,
   },
 } satisfies ScssMeta;
+
+/**
+ * The deprecated public SCSS surface: every legacy variable and mixin that still ships, keyed by the
+ * same root domains as {@link scssMeta}. A declaration lives in exactly one of the two catalogs — a
+ * deprecation *moves* its node here rather than copying it — so the recommended API stays free of
+ * legacy noise while the audit index keeps a complete, structured list to render from.
+ *
+ * Every root domain is spelled out, empty branches included, so "checked, nothing deprecated" stays
+ * distinguishable from "forgotten". Key order is the rendered contract: the knowledge skill emits
+ * entries in exactly this order.
+ */
+export const scssDeprecationsMeta = {
+  border: borderDeprecations,
+  blur: blurDeprecations,
+  breakpoint: breakpointDeprecations,
+  color: colorDeprecations,
+  font: fontDeprecations,
+  shadow: shadowDeprecations,
+  spacing: spacingDeprecations,
+  motion: motionDeprecations,
+  gradient: gradientDeprecations,
+  typography: typographyDeprecations,
+  skeleton: skeletonDeprecations,
+  focus: focusDeprecations,
+  mediaQuery: mediaQueryDeprecations,
+  grid: [],
+} satisfies Record<keyof ScssMeta, ScssBranch>;

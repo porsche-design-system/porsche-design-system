@@ -1,5 +1,18 @@
 // The scss meta model — the documented single source of truth these types validate. Leaves
 // (`ScssVariable`, `ScssMixin`, `ScssRaw`) render to scss and docs; records and arrays only group.
+// A leaf carrying `deprecation` belongs to `scssDeprecationsMeta`, never to `scssMeta`.
+
+/**
+ * The lifecycle marker of a deprecated declaration. Its mere presence — `deprecation: {}` included —
+ * means the node is deprecated; both fields are refinements of the package default wording. Variable
+ * versus mixin is already inferable from the node shape, so no `kind` is repeated here.
+ */
+export type ScssDeprecation = {
+  /** Optional note replacing the package default lifecycle sentence. */
+  message?: string;
+  /** Canonical consumer-facing identifier, such as `$radius-sm` or `focus-visible()`. */
+  replacement?: string;
+};
 
 /** A documented scss variable. Renders a docs row and a `$name: value;` declaration. */
 export type ScssVariable = {
@@ -7,7 +20,7 @@ export type ScssVariable = {
   value: string | number;
   /** The `$`-prefixed Sass variable name, e.g. `$radius-xs`. */
   name: string;
-  /** Trailing comment rendered after the declaration, e.g. `alias (deprecated)`. */
+  /** Trailing comment rendered after the declaration. Never carries deprecation semantics. */
   comment?: string;
 };
 
@@ -19,16 +32,42 @@ export type ScssMixin = {
   signature?: string;
   /** Verbatim mixin body — the escape hatch for `@if`, `@each`, `@content`, keyframes, … */
   raw: string;
-  /** Comment rendered on its own line above the `@mixin` declaration. */
+  /** Comment rendered on its own line above the `@mixin` declaration. Never carries deprecation semantics. */
   comment?: string;
 };
 
-/** A raw scss snippet (deprecated alias block, `@use`/`@forward` lines, …) rendered verbatim. */
+/**
+ * A deprecated variable: the same complete render input as its documented counterpart, plus the
+ * required lifecycle marker. `description` is optional because a legacy alias is documented by its
+ * generated `@deprecated` comment, not by a docs row — set one only when the default guidance needs
+ * more than a replacement.
+ *
+ * The split is what keeps `scssMeta` and `scssDeprecationsMeta` apart at the type level: a documented
+ * node cannot silently gain a `deprecation`, and a deprecated node cannot silently lose one.
+ */
+export type DeprecatedScssVariable = Omit<ScssVariable, 'description'> & {
+  description?: string;
+  deprecation: ScssDeprecation;
+};
+
+/** A deprecated mixin. See {@link DeprecatedScssVariable} for why `description` is optional here. */
+export type DeprecatedScssMixin = Omit<ScssMixin, 'description'> & {
+  description?: string;
+  deprecation: ScssDeprecation;
+};
+
+/** Any deprecated leaf — every `scssDeprecationsMeta` node is one of these. */
+export type DeprecatedScssNode = DeprecatedScssVariable | DeprecatedScssMixin;
+
+/** Any named leaf: a variable or a mixin, documented or deprecated. */
+export type ScssDeclaration = ScssVariable | ScssMixin | DeprecatedScssNode;
+
+/** A raw scss snippet (`@use`/`@forward` lines, lookup maps, …) rendered verbatim. Non-public plumbing only. */
 export type ScssRaw = {
   raw: string;
 };
 
-export type ScssNode = ScssVariable | ScssMixin | ScssRaw;
+export type ScssNode = ScssDeclaration | ScssRaw;
 
 /** Any branch of the meta tree: a leaf {@link ScssNode}, an array, or a nested record. Only leaves render; records and arrays group. */
 export type ScssBranch = ScssNode | ScssBranch[] | { [key: string]: ScssBranch };
@@ -46,7 +85,8 @@ export type ScssFileMeta = {
  * The documented single source of truth, shared with the storefront docs and LLM context. A flat,
  * domain-keyed catalog mirroring `tokensMeta`; each leaf's kind (`token` | `utility`) is recoverable
  * via `kindOf`. Catalog groups are the same object references the SCSS is built from, so docs and
- * generated SCSS can't diverge. SCSS-only plumbing lives in the composition layer (`scss/index.ts`).
+ * generated SCSS can't diverge. SCSS-only plumbing lives in the composition layer (`scss/index.ts`),
+ * and the legacy surface that still ships lives in `scssDeprecationsMeta`.
  */
 export type ScssMeta = {
   border: {

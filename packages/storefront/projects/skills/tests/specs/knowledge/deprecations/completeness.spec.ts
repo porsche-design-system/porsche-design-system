@@ -1,8 +1,18 @@
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
+import {
+  flatten,
+  isDeprecated,
+  type ScssBranch,
+  scssDeprecationMessage,
+  scssDeprecationsMeta,
+  scssIdentifier,
+} from '@porsche-design-system/scss';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
+import type { DeprecationEntry } from '@skills/knowledge/deprecations/types';
 import { BASELINE_EFFORT, ENTRY_KINDS, SOURCE_CATEGORIES } from '@skills/knowledge/deprecations/types';
 import { describe, expect, it } from 'vitest';
 
@@ -10,15 +20,20 @@ import { describe, expect, it } from 'vitest';
  * The gate the whole audit rests on.
  *
  * The audit skill's central claim is that a deprecated API cannot be missing from the index. That is
- * only true if something checks — so every expectation below is derived **independently** of the
- * collectors, straight from the same artifacts a consumer installs. A gate that re-used the
- * collectors would agree with them by construction and prove nothing.
+ * only true if something checks — so every expectation below is derived from the source of truth
+ * itself, never from the collector that reads it: a gate re-using a collector's own output would
+ * agree with it by construction and prove nothing. For most sources that means re-reading the shipped
+ * artifact; for SCSS it means the package's `scssDeprecationsMeta` catalog, which is what both the
+ * partials and the index are generated from.
  *
  * A failure here means either a deprecation escaped the index (the audit would under-report against
  * every project) or a source grew a shape the collector does not understand.
  */
 const require = createRequire(import.meta.url);
 const packageRoot = (specifier: string): string => path.dirname(path.dirname(require.resolve(`${specifier}/skill`)));
+
+/** Every deprecated SCSS declaration the package publishes, in catalog order. */
+const SCSS_DEPRECATIONS = flatten(scssDeprecationsMeta as ScssBranch).filter(isDeprecated);
 
 const SOURCES = collectDeprecations();
 const ENTRIES = SOURCES.flatMap((source) => source.entries);
@@ -27,6 +42,9 @@ const IDS = ENTRIES.map((entry) => entry.id);
 
 const entriesOf = (category: (typeof SOURCE_CATEGORIES)[number]): Set<string> =>
   new Set(SOURCES.find((source) => source.category === category)?.entries.map((entry) => entry.identifier) ?? []);
+
+/** The collected SCSS entries in collected order — order is part of the contract here, so no `Set`. */
+const scssEntries = (): DeprecationEntry[] => SOURCES.find((source) => source.category === 'scss')?.entries ?? [];
 
 /** Every deprecated entity `component-meta` declares, as `<kind> <tag> <name>` labels. */
 const componentMetaExpectations = (): string[] => {
@@ -110,48 +128,6 @@ const deprecatedExportNames = (root: string): string[] => {
   return [...new Set(names)].sort();
 };
 
-/** Top-level SCSS declarations in the shipped partials whose terminator carries a deprecation marker. */
-const scssDeprecatedNames = (): string[] => {
-  const dist = path.join(packageRoot('@porsche-design-system/scss'), 'dist');
-  const names: string[] = [];
-  for (const file of fs.readdirSync(dist)) {
-    if (!file.endsWith('.scss') || file === '_index.scss') {
-      continue;
-    }
-    const lines = fs.readFileSync(path.join(dist, file), 'utf-8').split('\n');
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i] as string;
-      const mixin = line.match(/^@mixin\s+([\w-]+)/);
-      if (mixin) {
-        if (/^\s*\/\*[^*]*\(deprecated\)[^*]*\*\/\s*$/.test(lines[i - 1] ?? '')) {
-          names.push(`${mixin[1]}()`);
-        }
-        continue;
-      }
-      const variable = line.match(/^\$([\w-]+)\s*:/);
-      if (!variable) {
-        continue;
-      }
-      let depth = 0;
-      let end = -1;
-      for (let j = i; j < lines.length; j++) {
-        for (const char of lines[j] as string) {
-          if (char === '(') depth++;
-          else if (char === ')') depth--;
-        }
-        if ((lines[j] as string).includes(';') && depth <= 0) {
-          end = j;
-          break;
-        }
-      }
-      if (end !== -1 && /\/\*[^*]*\(deprecated\)[^*]*\*\//.test(lines[end] as string)) {
-        names.push(`$${variable[1]}`);
-      }
-    }
-  }
-  return names.sort();
-};
-
 /** Custom properties in the generated Tailwind theme preceded by a deprecated-alias marker. */
 const tailwindDeprecatedNames = (): string[] => {
   const lines = fs
@@ -197,10 +173,38 @@ describe('deprecation index completeness', () => {
     expect([...entriesOf(category)].sort()).toStrictEqual(expected);
   });
 
-  it('collects every deprecated SCSS variable and mixin from the shipped partials', () => {
-    const expected = scssDeprecatedNames();
+  it('collects every deprecated SCSS declaration exactly once, in catalog order', () => {
+    const expected = SCSS_DEPRECATIONS.map(scssIdentifier);
     expect(expected.length).toBeGreaterThan(0);
-    expect([...entriesOf('scss')].sort()).toStrictEqual(expected);
+    expect(scssEntries().map((entry) => entry.identifier)).toStrictEqual(expected);
+  });
+
+  it('builds every SCSS rule id from the package identifier, so reports stay comparable', () => {
+    expect(scssEntries().map((entry) => entry.id)).toStrictEqual(
+      SCSS_DEPRECATIONS.map((node) => `styleAlias/scss/${scssIdentifier(node)}`)
+    );
+  });
+
+  it('carries the package wording and replacement onto every SCSS entry verbatim', () => {
+    expect(scssEntries().map((entry) => [entry.message, entry.replacement])).toStrictEqual(
+      SCSS_DEPRECATIONS.map((node) => [scssDeprecationMessage(node), node.deprecation.replacement])
+    );
+  });
+
+  it('derives the SCSS entries from package metadata rather than the filesystem', () => {
+    const source = fs.readFileSync(
+      path.resolve(
+        path.dirname(fileURLToPath(import.meta.url)),
+        '../../../../src/knowledge/deprecations/collectors/scss.ts'
+      ),
+      'utf-8'
+    );
+    expect(source).toContain("from '@porsche-design-system/scss'");
+    expect(source).not.toMatch(/from 'node:(fs|path)'/);
+  });
+
+  it('links every SCSS entry to the SCSS reference', () => {
+    expect([...new Set(scssEntries().map((entry) => entry.reference))]).toStrictEqual(['references/styles/scss.md']);
   });
 
   it('collects every deprecated Tailwind custom-property alias', () => {

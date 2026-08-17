@@ -6,7 +6,8 @@ import {
   breakpointXl,
   breakpointXs,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { DeprecatedScssVariable, ScssMeta } from '../types';
 
 /** The responsive breakpoint scale, keyed by size (e.g. `breakpoint.md`). */
 export const breakpoint = {
@@ -43,15 +44,43 @@ export const breakpoint = {
 } satisfies ScssMeta['breakpoint'];
 
 /**
- * Deprecated `$pds-breakpoint-*` aliases (plumbing).
- * @deprecated Use the documented `$breakpoint-*` variables.
+ * Deprecated `$pds-breakpoint-*` aliases. `$pds-breakpoint-base` has no modern equivalent — the
+ * current scale starts at `xs`.
  */
-export const breakpointDeprecatedAliases: ScssRaw = {
-  raw: `$pds-breakpoint-base: 0; /* alias (deprecated) */
-$pds-breakpoint-xs: ${breakpointXs}; /* alias (deprecated) */
-$pds-breakpoint-s: ${breakpointSm}; /* alias (deprecated) */
-$pds-breakpoint-m: ${breakpointMd}; /* alias (deprecated) */
-$pds-breakpoint-l: ${breakpointLg}; /* alias (deprecated) */
-$pds-breakpoint-xl: ${breakpointXl}; /* alias (deprecated) */
-$pds-breakpoint-xxl: ${breakpoint2Xl}; /* alias (deprecated) */`,
-};
+export const breakpointDeprecations = {
+  base: {
+    name: '$pds-breakpoint-base',
+    value: 0,
+    deprecation: {},
+  },
+  xs: {
+    name: '$pds-breakpoint-xs',
+    value: breakpointXs,
+    deprecation: { replacement: scssIdentifier(breakpoint.xs) },
+  },
+  s: {
+    name: '$pds-breakpoint-s',
+    value: breakpointSm,
+    deprecation: { replacement: scssIdentifier(breakpoint.sm) },
+  },
+  m: {
+    name: '$pds-breakpoint-m',
+    value: breakpointMd,
+    deprecation: { replacement: scssIdentifier(breakpoint.md) },
+  },
+  l: {
+    name: '$pds-breakpoint-l',
+    value: breakpointLg,
+    deprecation: { replacement: scssIdentifier(breakpoint.lg) },
+  },
+  xl: {
+    name: '$pds-breakpoint-xl',
+    value: breakpointXl,
+    deprecation: { replacement: scssIdentifier(breakpoint.xl) },
+  },
+  xxl: {
+    name: '$pds-breakpoint-xxl',
+    value: breakpoint2Xl,
+    deprecation: { replacement: scssIdentifier(breakpoint['2xl']) },
+  },
+} satisfies Record<string, DeprecatedScssVariable>;

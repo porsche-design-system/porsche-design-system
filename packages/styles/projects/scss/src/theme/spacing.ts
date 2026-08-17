@@ -13,7 +13,8 @@ import {
   spacingStaticXl,
   spacingStaticXs,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { DeprecatedScssVariable, ScssMeta } from '../types';
 
 /** Spacing theme variables (`fluid` / `static`). */
 export const spacing = {
@@ -88,22 +89,70 @@ export const spacing = {
   },
 } satisfies ScssMeta['spacing'];
 
-/**
- * Deprecated `$pds-spacing-*` aliases (plumbing).
- * @deprecated Use the documented `$spacing-fluid-*` / `$spacing-static-*` variables.
- */
-export const spacingDeprecatedAliases: ScssRaw = {
-  raw: `$pds-spacing-static-x-small: ${spacingStaticXs}; /* alias (deprecated) */
-$pds-spacing-static-small: ${spacingStaticSm}; /* alias (deprecated) */
-$pds-spacing-static-medium: ${spacingStaticMd}; /* alias (deprecated) */
-$pds-spacing-static-large: ${spacingStaticLg}; /* alias (deprecated) */
-$pds-spacing-static-x-large: ${spacingStaticXl}; /* alias (deprecated) */
-$pds-spacing-static-xx-large: ${spacingStatic2Xl}; /* alias (deprecated) */
-
-$pds-spacing-fluid-x-small: ${spacingFluidXs}; /* alias (deprecated) */
-$pds-spacing-fluid-small: ${spacingFluidSm}; /* alias (deprecated) */
-$pds-spacing-fluid-medium: ${spacingFluidMd}; /* alias (deprecated) */
-$pds-spacing-fluid-large: ${spacingFluidLg}; /* alias (deprecated) */
-$pds-spacing-fluid-x-large: ${spacingFluidXl}; /* alias (deprecated) */
-$pds-spacing-fluid-xx-large: ${spacingFluid2Xl}; /* alias (deprecated) */`,
-};
+/** Deprecated `$pds-spacing-*` aliases of the documented static and fluid spacing scales. */
+export const spacingDeprecations = {
+  static: {
+    xSmall: {
+      name: '$pds-spacing-static-x-small',
+      value: spacingStaticXs,
+      deprecation: { replacement: scssIdentifier(spacing.static.xs) },
+    },
+    small: {
+      name: '$pds-spacing-static-small',
+      value: spacingStaticSm,
+      deprecation: { replacement: scssIdentifier(spacing.static.sm) },
+    },
+    medium: {
+      name: '$pds-spacing-static-medium',
+      value: spacingStaticMd,
+      deprecation: { replacement: scssIdentifier(spacing.static.md) },
+    },
+    large: {
+      name: '$pds-spacing-static-large',
+      value: spacingStaticLg,
+      deprecation: { replacement: scssIdentifier(spacing.static.lg) },
+    },
+    xLarge: {
+      name: '$pds-spacing-static-x-large',
+      value: spacingStaticXl,
+      deprecation: { replacement: scssIdentifier(spacing.static.xl) },
+    },
+    xxLarge: {
+      name: '$pds-spacing-static-xx-large',
+      value: spacingStatic2Xl,
+      deprecation: { replacement: scssIdentifier(spacing.static['2xl']) },
+    },
+  },
+  fluid: {
+    xSmall: {
+      name: '$pds-spacing-fluid-x-small',
+      value: spacingFluidXs,
+      deprecation: { replacement: scssIdentifier(spacing.fluid.xs) },
+    },
+    small: {
+      name: '$pds-spacing-fluid-small',
+      value: spacingFluidSm,
+      deprecation: { replacement: scssIdentifier(spacing.fluid.sm) },
+    },
+    medium: {
+      name: '$pds-spacing-fluid-medium',
+      value: spacingFluidMd,
+      deprecation: { replacement: scssIdentifier(spacing.fluid.md) },
+    },
+    large: {
+      name: '$pds-spacing-fluid-large',
+      value: spacingFluidLg,
+      deprecation: { replacement: scssIdentifier(spacing.fluid.lg) },
+    },
+    xLarge: {
+      name: '$pds-spacing-fluid-x-large',
+      value: spacingFluidXl,
+      deprecation: { replacement: scssIdentifier(spacing.fluid.xl) },
+    },
+    xxLarge: {
+      name: '$pds-spacing-fluid-xx-large',
+      value: spacingFluid2Xl,
+      deprecation: { replacement: scssIdentifier(spacing.fluid['2xl']) },
+    },
+  },
+} satisfies Record<string, Record<string, DeprecatedScssVariable>>;

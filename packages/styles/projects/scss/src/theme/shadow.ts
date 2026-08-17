@@ -1,5 +1,6 @@
 import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { DeprecatedScssMixin, ScssMeta } from '../types';
 
 /** Shadow theme variables, keyed by size (e.g. `shadow.md`). */
 export const shadow = {
@@ -20,23 +21,21 @@ export const shadow = {
   },
 } satisfies ScssMeta['shadow'];
 
-/**
- * Deprecated `pds-drop-shadow-*` mixins (plumbing).
- * @deprecated Use the documented `$shadow-*` variables.
- */
-export const shadowDeprecatedMixins: ScssRaw = {
-  raw: `/* alias (deprecated) */
-@mixin pds-drop-shadow-high {
-  box-shadow: ${shadowLg};
-}
-
-/* alias (deprecated) */
-@mixin pds-drop-shadow-low {
-  box-shadow: ${shadowSm};
-}
-
-/* alias (deprecated) */
-@mixin pds-drop-shadow-medium {
-  box-shadow: ${shadowMd};
-}`,
-};
+/** The deprecated `pds-drop-shadow-*` mixins, replaced by the documented `$shadow-*` variables. */
+export const shadowDeprecations = {
+  high: {
+    name: 'pds-drop-shadow-high',
+    raw: `  box-shadow: ${shadowLg};`,
+    deprecation: { replacement: scssIdentifier(shadow.lg) },
+  },
+  low: {
+    name: 'pds-drop-shadow-low',
+    raw: `  box-shadow: ${shadowSm};`,
+    deprecation: { replacement: scssIdentifier(shadow.sm) },
+  },
+  medium: {
+    name: 'pds-drop-shadow-medium',
+    raw: `  box-shadow: ${shadowMd};`,
+    deprecation: { replacement: scssIdentifier(shadow.md) },
+  },
+} satisfies Record<string, DeprecatedScssMixin>;

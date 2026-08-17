@@ -1,7 +1,8 @@
-import { colorRef, fontRef } from '../namespaces';
+import { scssIdentifier } from '../deprecation';
+import { colorRef, fontRef, namespace } from '../namespaces';
 import { color } from '../theme/color';
 import { cjkFontFamily, font } from '../theme/font';
-import type { ScssMixin, ScssRaw } from '../types';
+import type { DeprecatedScssMixin, ScssMixin } from '../types';
 
 // The documented `prose-heading-*` / `prose-text-*` mixins delegate to the private `-prose-*` helpers
 // and reference the `font` / `color` partials via `ref()`.
@@ -160,79 +161,98 @@ export const display = [] satisfies ScssMixin[];
 /** Typography mixins grouped like the storefront API tables and the tailwind taxonomy. */
 export const typography = { heading, text, display };
 
-/**
- * Deprecated `pds-heading-*` aliases (plumbing).
- * @deprecated Use the documented `prose-heading-*` mixins.
- */
-export const headingDeprecatedAliases: ScssRaw = {
-  raw: `/* alias (deprecated) */
-@mixin pds-heading-xx-large {
-  @include prose-heading-2xl();
-}
-/* alias (deprecated) */
-@mixin pds-heading-x-large {
-  @include prose-heading-xl();
-}
-/* alias (deprecated) */
-@mixin pds-heading-large {
-  @include prose-heading-lg();
-}
-/* alias (deprecated) */
-@mixin pds-heading-medium {
-  @include prose-heading-md();
-}
-/* alias (deprecated) */
-@mixin pds-heading-small {
-  @include prose-heading-sm();
-}`,
-};
+/** The documented mixins keyed by name, so a deprecated alias references the node instead of retyping its name. */
+const proseHeading = Object.fromEntries(heading.map((mixin) => [mixin.name, mixin])) as Record<string, ScssMixin>;
+const proseText = Object.fromEntries(text.map((mixin) => [mixin.name, mixin])) as Record<string, ScssMixin>;
+
+/** The deprecated `pds-heading-*` mixins, replaced by the documented `prose-heading-*` mixins. */
+export const headingDeprecations = [
+  {
+    name: 'pds-heading-xx-large',
+    raw: `  @include ${scssIdentifier(proseHeading['prose-heading-2xl'])};`,
+    deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-2xl']) },
+  },
+  {
+    name: 'pds-heading-x-large',
+    raw: `  @include ${scssIdentifier(proseHeading['prose-heading-xl'])};`,
+    deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-xl']) },
+  },
+  {
+    name: 'pds-heading-large',
+    raw: `  @include ${scssIdentifier(proseHeading['prose-heading-lg'])};`,
+    deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-lg']) },
+  },
+  {
+    name: 'pds-heading-medium',
+    raw: `  @include ${scssIdentifier(proseHeading['prose-heading-md'])};`,
+    deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-md']) },
+  },
+  {
+    name: 'pds-heading-small',
+    raw: `  @include ${scssIdentifier(proseHeading['prose-heading-sm'])};`,
+    deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-sm']) },
+  },
+] satisfies DeprecatedScssMixin[];
+
+/** The deprecated `pds-text-*` mixins, replaced by the documented `prose-text-*` mixins. */
+export const textDeprecations = [
+  {
+    name: 'pds-text-x-large',
+    raw: `  @include ${scssIdentifier(proseText['prose-text-xl'])};`,
+    deprecation: { replacement: scssIdentifier(proseText['prose-text-xl']) },
+  },
+  {
+    name: 'pds-text-large',
+    raw: `  @include ${scssIdentifier(proseText['prose-text-lg'])};`,
+    deprecation: { replacement: scssIdentifier(proseText['prose-text-lg']) },
+  },
+  {
+    name: 'pds-text-medium',
+    raw: `  @include ${scssIdentifier(proseText['prose-text-md'])};`,
+    deprecation: { replacement: scssIdentifier(proseText['prose-text-md']) },
+  },
+  {
+    name: 'pds-text-small',
+    raw: `  @include ${scssIdentifier(proseText['prose-text-sm'])};`,
+    deprecation: { replacement: scssIdentifier(proseText['prose-text-sm']) },
+  },
+  {
+    name: 'pds-text-x-small',
+    raw: `  @include ${scssIdentifier(proseText['prose-text-xs'])};`,
+    deprecation: { replacement: scssIdentifier(proseText['prose-text-xs']) },
+  },
+  {
+    name: 'pds-text-xx-small',
+    raw: `  @include ${scssIdentifier(proseText['prose-text-2xs'])};`,
+    deprecation: { replacement: scssIdentifier(proseText['prose-text-2xs']) },
+  },
+] satisfies DeprecatedScssMixin[];
 
 /**
- * Deprecated `pds-text-*` aliases (plumbing).
- * @deprecated Use the documented `prose-text-*` mixins.
+ * The deprecated `pds-display-*` mixins, routed through the `prose-heading-*` mixins of the separately
+ * `@use`d `heading` partial — hence the namespaced `@include`.
  */
-export const textDeprecatedAliases: ScssRaw = {
-  raw: `/* alias (deprecated) */
-@mixin pds-text-x-large {
-  @include prose-text-xl();
-}
-/* alias (deprecated) */
-@mixin pds-text-large {
-  @include prose-text-lg();
-}
-/* alias (deprecated) */
-@mixin pds-text-medium {
-  @include prose-text-md();
-}
-/* alias (deprecated) */
-@mixin pds-text-small {
-  @include prose-text-sm();
-}
-/* alias (deprecated) */
-@mixin pds-text-x-small {
-  @include prose-text-xs();
-}
-/* alias (deprecated) */
-@mixin pds-text-xx-small {
-  @include prose-text-2xs();
-}`,
-};
+export const displayDeprecations = [
+  {
+    name: 'pds-display-large',
+    raw: `  @include ${namespace.heading}.${proseHeading['prose-heading-5xl'].name};`,
+    deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-5xl']) },
+  },
+  {
+    name: 'pds-display-medium',
+    raw: `  @include ${namespace.heading}.${proseHeading['prose-heading-4xl'].name};`,
+    deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-4xl']) },
+  },
+  {
+    name: 'pds-display-small',
+    raw: `  @include ${namespace.heading}.${proseHeading['prose-heading-3xl'].name};`,
+    deprecation: { replacement: scssIdentifier(proseHeading['prose-heading-3xl']) },
+  },
+] satisfies DeprecatedScssMixin[];
 
-/**
- * Deprecated `pds-display-*` aliases routed through the heading prose mixins (plumbing).
- * @deprecated Use `prose-heading-3xl` / `-4xl` / `-5xl`.
- */
-export const displayDeprecatedAliases: ScssRaw = {
-  raw: `/* alias (deprecated) */
-@mixin pds-display-large {
-  @include heading.prose-heading-5xl;
-}
-/* alias (deprecated) */
-@mixin pds-display-medium {
-  @include heading.prose-heading-4xl;
-}
-/* alias (deprecated) */
-@mixin pds-display-small {
-  @include heading.prose-heading-3xl;
-}`,
+/** Deprecated typography mixins, grouped like the documented `typography` catalog. */
+export const typographyDeprecations = {
+  heading: headingDeprecations,
+  text: textDeprecations,
+  display: displayDeprecations,
 };

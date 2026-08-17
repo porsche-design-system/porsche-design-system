@@ -99,7 +99,8 @@ import {
   colorWarningMediumDark,
   colorWarningMediumLight,
 } from '@porsche-design-system/tokens';
-import type { ScssMeta, ScssRaw } from '../types';
+import { scssIdentifier } from '../deprecation';
+import type { DeprecatedScssVariable, ScssMeta, ScssRaw } from '../types';
 
 /** The `light-dark()` MDN link prefixing every color description. */
 const ld =
@@ -396,48 +397,212 @@ ${darkCustomProps}
 };
 
 /**
- * Deprecated `$pds-theme-*` aliases (plumbing).
- * @deprecated Use the documented `$color-*` variables.
+ * Deprecated `$pds-theme-*` aliases. Each maps to the `light-dark()` aware `$color-*` variable that
+ * replaces both its light and dark spelling; the state colors have no modern equivalent.
  */
-export const colorDeprecatedAliases: ScssRaw = {
-  raw: `$pds-theme-light-primary: ${colorPrimaryLight}; /* alias (deprecated) */
-$pds-theme-light-background-base: ${colorCanvasLight}; /* alias (deprecated) */
-$pds-theme-light-background-surface: ${colorSurfaceLight}; /* alias (deprecated) */
-$pds-theme-light-background-shading: ${colorBackdropLight}; /* alias (deprecated) */
-$pds-theme-light-background-frosted: ${colorFrostedLight}; /* alias (deprecated) */
-$pds-theme-light-contrast-low: ${colorContrastLowLight}; /* alias (deprecated) */
-$pds-theme-light-contrast-medium: ${colorContrastMediumLight}; /* alias (deprecated) */
-$pds-theme-light-contrast-high: ${colorContrastHighLight}; /* alias (deprecated) */
-$pds-theme-light-notification-success: ${colorSuccessLight}; /* alias (deprecated) */
-$pds-theme-light-notification-success-soft: ${colorSuccessFrostedLight}; /* alias (deprecated) */
-$pds-theme-light-notification-warning: ${colorWarningLight}; /* alias (deprecated) */
-$pds-theme-light-notification-warning-soft: ${colorWarningFrostedLight}; /* alias (deprecated) */
-$pds-theme-light-notification-error: ${colorErrorLight}; /* alias (deprecated) */
-$pds-theme-light-notification-error-soft: ${colorErrorFrostedLight}; /* alias (deprecated) */
-$pds-theme-light-notification-info: ${colorInfoLight}; /* alias (deprecated) */
-$pds-theme-light-notification-info-soft: ${colorInfoFrostedLight}; /* alias (deprecated) */
-$pds-theme-light-state-hover: hsla(236, 6.4%, 51%, 0.148); /* alias (deprecated) */
-$pds-theme-light-state-active: hsla(236, 6.4%, 51%, 0.148); /* alias (deprecated) */
-$pds-theme-light-state-focus: #1a44ea; /* alias (deprecated) */
-$pds-theme-light-state-disabled: hsla(233,6.6%,23.9%,0.412); /* (deprecated) */
-$pds-theme-dark-primary: ${colorPrimaryDark}; /* alias (deprecated) */
-$pds-theme-dark-background-base: ${colorCanvasDark}; /* alias (deprecated) */
-$pds-theme-dark-background-surface: ${colorSurfaceDark}; /* alias (deprecated) */
-$pds-theme-dark-background-shading: ${colorBackdropDark}; /* alias (deprecated) */
-$pds-theme-dark-background-frosted: ${colorFrostedDark}; /* alias (deprecated) */
-$pds-theme-dark-contrast-low: ${colorContrastLowDark}; /* alias (deprecated) */
-$pds-theme-dark-contrast-medium: ${colorContrastMediumDark}; /* alias (deprecated) */
-$pds-theme-dark-contrast-high: ${colorContrastHighDark}; /* alias (deprecated) */
-$pds-theme-dark-notification-success: ${colorSuccessDark}; /* alias (deprecated) */
-$pds-theme-dark-notification-success-soft: ${colorSuccessFrostedDark}; /* alias (deprecated) */
-$pds-theme-dark-notification-warning: ${colorWarningDark}; /* alias (deprecated) */
-$pds-theme-dark-notification-warning-soft: ${colorWarningFrostedDark}; /* alias (deprecated) */
-$pds-theme-dark-notification-error: ${colorErrorDark}; /* alias (deprecated) */
-$pds-theme-dark-notification-error-soft: ${colorErrorFrostedDark}; /* alias (deprecated) */
-$pds-theme-dark-notification-info: ${colorInfoDark}; /* alias (deprecated) */
-$pds-theme-dark-notification-info-soft: ${colorInfoFrostedDark}; /* alias (deprecated) */
-$pds-theme-dark-state-hover: hsla(240, 2.2%, 44.1%, 0.228); /* alias (deprecated) */
-$pds-theme-dark-state-active: hsla(240, 2.2%, 44.1%, 0.228); /* alias (deprecated) */
-$pds-theme-dark-state-focus: #1a44ea; /* alias (deprecated) */
-$pds-theme-dark-state-disabled: hsla(240,1.5%,61.8%,0.302); /* (deprecated) */`,
-};
+export const colorDeprecations = {
+  light: {
+    primary: {
+      name: '$pds-theme-light-primary',
+      value: colorPrimaryLight,
+      deprecation: { replacement: scssIdentifier(color.foreground.primary) },
+    },
+    backgroundBase: {
+      name: '$pds-theme-light-background-base',
+      value: colorCanvasLight,
+      deprecation: { replacement: scssIdentifier(color.background.canvas) },
+    },
+    backgroundSurface: {
+      name: '$pds-theme-light-background-surface',
+      value: colorSurfaceLight,
+      deprecation: { replacement: scssIdentifier(color.background.surface) },
+    },
+    backgroundShading: {
+      name: '$pds-theme-light-background-shading',
+      value: colorBackdropLight,
+      deprecation: { replacement: scssIdentifier(color.background.backdrop) },
+    },
+    backgroundFrosted: {
+      name: '$pds-theme-light-background-frosted',
+      value: colorFrostedLight,
+      deprecation: { replacement: scssIdentifier(color.background.frosted) },
+    },
+    contrastLow: {
+      name: '$pds-theme-light-contrast-low',
+      value: colorContrastLowLight,
+      deprecation: { replacement: scssIdentifier(color.foreground.contrastLow) },
+    },
+    contrastMedium: {
+      name: '$pds-theme-light-contrast-medium',
+      value: colorContrastMediumLight,
+      deprecation: { replacement: scssIdentifier(color.foreground.contrastMedium) },
+    },
+    contrastHigh: {
+      name: '$pds-theme-light-contrast-high',
+      value: colorContrastHighLight,
+      deprecation: { replacement: scssIdentifier(color.foreground.contrastHigh) },
+    },
+    notificationSuccess: {
+      name: '$pds-theme-light-notification-success',
+      value: colorSuccessLight,
+      deprecation: { replacement: scssIdentifier(color.semantic.success) },
+    },
+    notificationSuccessSoft: {
+      name: '$pds-theme-light-notification-success-soft',
+      value: colorSuccessFrostedLight,
+      deprecation: { replacement: scssIdentifier(color.semantic.successFrosted) },
+    },
+    notificationWarning: {
+      name: '$pds-theme-light-notification-warning',
+      value: colorWarningLight,
+      deprecation: { replacement: scssIdentifier(color.semantic.warning) },
+    },
+    notificationWarningSoft: {
+      name: '$pds-theme-light-notification-warning-soft',
+      value: colorWarningFrostedLight,
+      deprecation: { replacement: scssIdentifier(color.semantic.warningFrosted) },
+    },
+    notificationError: {
+      name: '$pds-theme-light-notification-error',
+      value: colorErrorLight,
+      deprecation: { replacement: scssIdentifier(color.semantic.error) },
+    },
+    notificationErrorSoft: {
+      name: '$pds-theme-light-notification-error-soft',
+      value: colorErrorFrostedLight,
+      deprecation: { replacement: scssIdentifier(color.semantic.errorFrosted) },
+    },
+    notificationInfo: {
+      name: '$pds-theme-light-notification-info',
+      value: colorInfoLight,
+      deprecation: { replacement: scssIdentifier(color.semantic.info) },
+    },
+    notificationInfoSoft: {
+      name: '$pds-theme-light-notification-info-soft',
+      value: colorInfoFrostedLight,
+      deprecation: { replacement: scssIdentifier(color.semantic.infoFrosted) },
+    },
+    stateHover: {
+      name: '$pds-theme-light-state-hover',
+      value: 'hsla(236, 6.4%, 51%, 0.148)',
+      deprecation: {},
+    },
+    stateActive: {
+      name: '$pds-theme-light-state-active',
+      value: 'hsla(236, 6.4%, 51%, 0.148)',
+      deprecation: {},
+    },
+    stateFocus: {
+      name: '$pds-theme-light-state-focus',
+      value: '#1a44ea',
+      deprecation: { replacement: scssIdentifier(color.a11y.focus) },
+    },
+    stateDisabled: {
+      name: '$pds-theme-light-state-disabled',
+      value: 'hsla(233,6.6%,23.9%,0.412)',
+      deprecation: {},
+    },
+  },
+  dark: {
+    primary: {
+      name: '$pds-theme-dark-primary',
+      value: colorPrimaryDark,
+      deprecation: { replacement: scssIdentifier(color.foreground.primary) },
+    },
+    backgroundBase: {
+      name: '$pds-theme-dark-background-base',
+      value: colorCanvasDark,
+      deprecation: { replacement: scssIdentifier(color.background.canvas) },
+    },
+    backgroundSurface: {
+      name: '$pds-theme-dark-background-surface',
+      value: colorSurfaceDark,
+      deprecation: { replacement: scssIdentifier(color.background.surface) },
+    },
+    backgroundShading: {
+      name: '$pds-theme-dark-background-shading',
+      value: colorBackdropDark,
+      deprecation: { replacement: scssIdentifier(color.background.backdrop) },
+    },
+    backgroundFrosted: {
+      name: '$pds-theme-dark-background-frosted',
+      value: colorFrostedDark,
+      deprecation: { replacement: scssIdentifier(color.background.frosted) },
+    },
+    contrastLow: {
+      name: '$pds-theme-dark-contrast-low',
+      value: colorContrastLowDark,
+      deprecation: { replacement: scssIdentifier(color.foreground.contrastLow) },
+    },
+    contrastMedium: {
+      name: '$pds-theme-dark-contrast-medium',
+      value: colorContrastMediumDark,
+      deprecation: { replacement: scssIdentifier(color.foreground.contrastMedium) },
+    },
+    contrastHigh: {
+      name: '$pds-theme-dark-contrast-high',
+      value: colorContrastHighDark,
+      deprecation: { replacement: scssIdentifier(color.foreground.contrastHigh) },
+    },
+    notificationSuccess: {
+      name: '$pds-theme-dark-notification-success',
+      value: colorSuccessDark,
+      deprecation: { replacement: scssIdentifier(color.semantic.success) },
+    },
+    notificationSuccessSoft: {
+      name: '$pds-theme-dark-notification-success-soft',
+      value: colorSuccessFrostedDark,
+      deprecation: { replacement: scssIdentifier(color.semantic.successFrosted) },
+    },
+    notificationWarning: {
+      name: '$pds-theme-dark-notification-warning',
+      value: colorWarningDark,
+      deprecation: { replacement: scssIdentifier(color.semantic.warning) },
+    },
+    notificationWarningSoft: {
+      name: '$pds-theme-dark-notification-warning-soft',
+      value: colorWarningFrostedDark,
+      deprecation: { replacement: scssIdentifier(color.semantic.warningFrosted) },
+    },
+    notificationError: {
+      name: '$pds-theme-dark-notification-error',
+      value: colorErrorDark,
+      deprecation: { replacement: scssIdentifier(color.semantic.error) },
+    },
+    notificationErrorSoft: {
+      name: '$pds-theme-dark-notification-error-soft',
+      value: colorErrorFrostedDark,
+      deprecation: { replacement: scssIdentifier(color.semantic.errorFrosted) },
+    },
+    notificationInfo: {
+      name: '$pds-theme-dark-notification-info',
+      value: colorInfoDark,
+      deprecation: { replacement: scssIdentifier(color.semantic.info) },
+    },
+    notificationInfoSoft: {
+      name: '$pds-theme-dark-notification-info-soft',
+      value: colorInfoFrostedDark,
+      deprecation: { replacement: scssIdentifier(color.semantic.infoFrosted) },
+    },
+    stateHover: {
+      name: '$pds-theme-dark-state-hover',
+      value: 'hsla(240, 2.2%, 44.1%, 0.228)',
+      deprecation: {},
+    },
+    stateActive: {
+      name: '$pds-theme-dark-state-active',
+      value: 'hsla(240, 2.2%, 44.1%, 0.228)',
+      deprecation: {},
+    },
+    stateFocus: {
+      name: '$pds-theme-dark-state-focus',
+      value: '#1a44ea',
+      deprecation: { replacement: scssIdentifier(color.a11y.focus) },
+    },
+    stateDisabled: {
+      name: '$pds-theme-dark-state-disabled',
+      value: 'hsla(240,1.5%,61.8%,0.302)',
+      deprecation: {},
+    },
+  },
+} satisfies Record<string, Record<string, DeprecatedScssVariable>>;
