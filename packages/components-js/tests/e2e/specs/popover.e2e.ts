@@ -813,6 +813,23 @@ test.describe('controlled mode', () => {
       await expect(getPopover(page)).toBeVisible();
     });
 
+    test('should emit dismiss event with reason trigger-button when the trigger is clicked while open', async ({
+      page,
+    }) => {
+      await initControlledPopover(page, true);
+      const host = getHost(page);
+      await addEventListener(host, 'dismiss');
+
+      await getButton(page).click();
+
+      const { counter, details } = await getEventSummary(host, 'dismiss');
+      // exactly once: the trigger is not "outside", and `onFocusout` defers to the pointer interaction
+      expect(counter, 'dismiss after trigger click').toBe(1);
+      expect(details).toEqual([{ reason: 'trigger-button' }]);
+      // popover stays visible because the consumer owns `open` and hasn't updated it yet
+      await expect(getPopover(page)).toBeVisible();
+    });
+
     test('should emit dismiss event with reason focus-out when focus tabs out of the popover', async ({ page }) => {
       await setContentWithDesignSystem(
         page,
