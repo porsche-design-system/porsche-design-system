@@ -1,8 +1,9 @@
 import type { EventEmitter } from '@stencil/core';
 
 // Shared by `p-modal`, `p-flyout`, `p-sheet` and `p-drilldown` so their `dismiss` payloads cannot diverge. All four
-// render the same `DialogBase` and therefore have the same three dismissal paths. `p-popover` deliberately does not
-// use this as it has no backdrop and no dismiss button, and it adds a keyboard-only path, so it declares its own union.
+// render the same `DialogBase` and therefore have the same three dismissal paths. `p-popover` declares its own union
+// instead: it has no backdrop, it closes via its own trigger rather than a dedicated dismiss button, and it adds a
+// keyboard-only path when focus tabs out of the panel.
 export type DialogDismissReason = 'dismiss-button' | 'backdrop' | 'escape';
 export type DialogDismissEventDetail = { reason: DialogDismissReason };
 
