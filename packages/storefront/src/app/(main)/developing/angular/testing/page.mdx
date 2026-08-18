@@ -1,3 +1,4 @@
+import { ElementInternalsComponents } from '@/components/common/ElementInternalsComponents';
 import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
@@ -100,9 +101,8 @@ More test examples can be found at the [componentsReady() documentation](/develo
 
 ## Queries
 
-You are not able to use `getByRole` to query Porsche Design System components when using `@testing-library` because it
-uses default `roles`. For example a `<button>` gets the role `button` without explicitly setting the attribute, so the
-query never reaches an element inside Shadow DOM.
+Porsche Design System components render their markup inside Shadow DOM. Standard Testing Library queries such as
+`getByRole` only search light DOM, so they never reach those elements and find nothing.
 
 Therefore the `testing` sub-package provides a `Shadow` counterpart for every Testing Library query. These search light
 DOM and Shadow DOM, including nested Shadow DOM.
@@ -166,7 +166,7 @@ Certain modern browser APIs are not supported in the jsdom environment.
 
 ### Dialog API
 
-Affected Components: `p-modal`, `p-flyout`, `p-flyout-multilevel`
+Affected Components: `p-modal`, `p-flyout`, `p-sheet`, `p-drilldown`
 
 Due to the lack of native support in jsdom, the Dialog API needs to be either manually polyfilled or mocked. You can use
 the available [dialog-polyfill package](https://npmjs.com/package/dialog-polyfill) or create a custom mock
@@ -186,7 +186,7 @@ HTMLDialogElement.prototype.close = jest.fn(function (this: HTMLDialogElement) {
 
 ### Element Internals API
 
-Affected Components: `p-textarea`
+Affected Components: <ElementInternalsComponents />
 
 Current polyfills for the Element Internals API are incompatible with Stencil. Therefore, the API must be mocked within
 the test setup.
@@ -205,7 +205,7 @@ HTMLElement.prototype.attachInternals = jest.fn(
 
 ### animate API
 
-Affected Components: `p-tabs-bar`, `p-tabs`
+Affected Components: `p-tabs-bar`, `p-tabs`, `p-drilldown`
 
 The API must be mocked within the test setup.
 
