@@ -4,6 +4,7 @@ import type { EventEmitter } from '@stencil/core';
 // render the same `DialogBase` and therefore have the same three dismissal paths. `p-popover` deliberately does not
 // use this as it has no backdrop and no dismiss button, and it adds a keyboard-only path, so it declares its own union.
 export type DialogDismissReason = 'dismiss-button' | 'backdrop' | 'escape';
+export type DialogDismissEventDetail = { reason: DialogDismissReason };
 
 export const showDialog = (dialog: HTMLDialogElement, scrollArea: HTMLElement): void => {
   // Must only be called when the dialog isn't already open and after the render cycle has finished (e.g. in

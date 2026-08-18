@@ -1,4 +1,4 @@
-import type { DialogDismissReason } from '../../utils/dialog/dialog';
+import type { DialogDismissEventDetail } from '../../utils/dialog/dialog';
 
 export const SHEET_ARIA_ATTRIBUTES = ['aria-label', 'role'] as const;
 export type SheetAriaAttribute = (typeof SHEET_ARIA_ATTRIBUTES)[number];
@@ -8,4 +8,4 @@ export type SheetBackground = (typeof SHEET_BACKGROUNDS)[number];
 
 export type SheetMotionVisibleEndEventDetail = TransitionEvent;
 export type SheetMotionHiddenEndEventDetail = TransitionEvent;
-export type SheetDismissEventDetail = { reason: DialogDismissReason };
+export type SheetDismissEventDetail = DialogDismissEventDetail;
