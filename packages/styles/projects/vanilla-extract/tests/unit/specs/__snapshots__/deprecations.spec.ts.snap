@@ -1,0 +1,750 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`vanillaExtractDeprecationsMeta > matches snapshot 1`] = `
+{
+  "blur": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use backdropFilter: blurFrosted instead",
+      },
+      "name": "frostedGlassStyle",
+    },
+  ],
+  "border": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use variables directly instead.",
+      },
+      "name": "border",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use variables directly instead.",
+      },
+      "name": "borderRadius",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use radiusLg instead.",
+      },
+      "name": "borderRadiusLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use radiusMd instead.",
+      },
+      "name": "borderRadiusMedium",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use radiusSm instead.",
+      },
+      "name": "borderRadiusSmall",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use variables directly instead.",
+      },
+      "name": "borderWidth",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use 2px instead.",
+      },
+      "name": "borderWidthBase",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use 1px instead.",
+      },
+      "name": "borderWidthThin",
+    },
+  ],
+  "breakpoint": [],
+  "color": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use individual variables instead.",
+      },
+      "name": "theme",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use individual variables instead.",
+      },
+      "name": "themeDark",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorCanvasDark instead.",
+      },
+      "name": "themeDarkBackgroundBase",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.",
+      },
+      "name": "themeDarkBackgroundFrosted",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorBackdropDark instead.",
+      },
+      "name": "themeDarkBackgroundShading",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorSurfaceDark instead.",
+      },
+      "name": "themeDarkBackgroundSurface",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorContrastHighDark instead.",
+      },
+      "name": "themeDarkContrastHigh",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorContrastLowDark instead.",
+      },
+      "name": "themeDarkContrastLow",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorContrastMediumDark instead.",
+      },
+      "name": "themeDarkContrastMedium",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorErrorDark instead.",
+      },
+      "name": "themeDarkNotificationError",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorErrorFrostedDark instead.",
+      },
+      "name": "themeDarkNotificationErrorSoft",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorInfoDark instead.",
+      },
+      "name": "themeDarkNotificationInfo",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorInfoFrostedDark instead.",
+      },
+      "name": "themeDarkNotificationInfoSoft",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorSuccessDark instead.",
+      },
+      "name": "themeDarkNotificationSuccess",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorSuccessFrostedDark instead.",
+      },
+      "name": "themeDarkNotificationSuccessSoft",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorWarningDark instead.",
+      },
+      "name": "themeDarkNotificationWarning",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorWarningFrostedDark instead.",
+      },
+      "name": "themeDarkNotificationWarningSoft",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorPrimaryDark instead.",
+      },
+      "name": "themeDarkPrimary",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.",
+      },
+      "name": "themeDarkStateActive",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release.",
+      },
+      "name": "themeDarkStateDisabled",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorFocusDark instead.",
+      },
+      "name": "themeDarkStateFocus",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorFrostedDark instead.",
+      },
+      "name": "themeDarkStateHover",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use individual variables instead.",
+      },
+      "name": "themeLight",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorCanvasLight instead.",
+      },
+      "name": "themeLightBackgroundBase",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.",
+      },
+      "name": "themeLightBackgroundFrosted",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorBackdropLight instead.",
+      },
+      "name": "themeLightBackgroundShading",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorSurfaceLight instead.",
+      },
+      "name": "themeLightBackgroundSurface",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorContrastHighLight instead.",
+      },
+      "name": "themeLightContrastHigh",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorContrastLowLight instead.",
+      },
+      "name": "themeLightContrastLow",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorContrastMediumLight instead.",
+      },
+      "name": "themeLightContrastMedium",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorErrorLight instead.",
+      },
+      "name": "themeLightNotificationError",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorErrorFrostedLight instead.",
+      },
+      "name": "themeLightNotificationErrorSoft",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorInfoLight instead.",
+      },
+      "name": "themeLightNotificationInfo",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorInfoFrostedLight instead.",
+      },
+      "name": "themeLightNotificationInfoSoft",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorSuccessLight instead.",
+      },
+      "name": "themeLightNotificationSuccess",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorSuccessFrostedLight instead.",
+      },
+      "name": "themeLightNotificationSuccessSoft",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorWarningLight instead.",
+      },
+      "name": "themeLightNotificationWarning",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorWarningFrostedLight instead.",
+      },
+      "name": "themeLightNotificationWarningSoft",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorPrimaryLight instead.",
+      },
+      "name": "themeLightPrimary",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.",
+      },
+      "name": "themeLightStateActive",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release.",
+      },
+      "name": "themeLightStateDisabled",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorFocusLight instead.",
+      },
+      "name": "themeLightStateFocus",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use colorFrostedLight instead.",
+      },
+      "name": "themeLightStateHover",
+    },
+  ],
+  "focus": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use getFocusVisibleStyle instead.",
+      },
+      "name": "getFocusStyle",
+    },
+  ],
+  "font": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use fontPorscheNext instead.",
+      },
+      "name": "fontFamily",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use leadingNormal instead",
+      },
+      "name": "fontLineHeight",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescale variables instead.",
+      },
+      "name": "fontSize",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use variables directly instead.",
+      },
+      "name": "fontSizeDisplay",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescale variables instead.",
+      },
+      "name": "fontSizeHeading",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescaleLg instead.",
+      },
+      "name": "fontSizeHeadingLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescaleMd instead.",
+      },
+      "name": "fontSizeHeadingMedium",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescaleSm instead.",
+      },
+      "name": "fontSizeHeadingSmall",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescaleXl instead.",
+      },
+      "name": "fontSizeHeadingXLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescale2Xl instead.",
+      },
+      "name": "fontSizeHeadingXXLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescale variables instead.",
+      },
+      "name": "fontSizeText",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescaleLg instead.",
+      },
+      "name": "fontSizeTextLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescaleMd instead.",
+      },
+      "name": "fontSizeTextMedium",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescaleSm instead.",
+      },
+      "name": "fontSizeTextSmall",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescaleXl instead.",
+      },
+      "name": "fontSizeTextXLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescaleXs instead.",
+      },
+      "name": "fontSizeTextXSmall",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use typescale2Xs instead.",
+      },
+      "name": "fontSizeTextXXSmall",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use 'normal' | 'italic' instead.",
+      },
+      "name": "fontStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use 'italic' instead.",
+      },
+      "name": "fontStyleItalic",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
+      },
+      "name": "fontStyleNormal",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use 'normal' instead.",
+      },
+      "name": "fontVariant",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use variables directly instead.",
+      },
+      "name": "fontWeight",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use fontWeightNormal instead.",
+      },
+      "name": "fontWeightRegular",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use fontWeightSemibold instead.",
+      },
+      "name": "fontWeightSemiBold",
+    },
+  ],
+  "gradient": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use background: \`linear-gradient(to bottom, \${gradientStopsFadeDark});\` instead",
+      },
+      "name": "gradientToBottomStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use background: \`linear-gradient(to left, \${gradientStopsFadeDark});\` instead",
+      },
+      "name": "gradientToLeftStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. background: \`linear-gradient(to right, \${gradientStopsFadeDark});\` instead",
+      },
+      "name": "gradientToRightStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. background: \`linear-gradient(to top, \${gradientStopsFadeDark});\` instead",
+      },
+      "name": "gradientToTopStyle",
+    },
+  ],
+  "grid": [],
+  "mediaQuery": [],
+  "motion": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use durationLg instead.",
+      },
+      "name": "motionDurationLong",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use durationMd instead.",
+      },
+      "name": "motionDurationModerate",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use durationSm instead.",
+      },
+      "name": "motionDurationShort",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use durationXl instead.",
+      },
+      "name": "motionDurationVeryLong",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use easeInOut instead.",
+      },
+      "name": "motionEasingBase",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use easeIn instead.",
+      },
+      "name": "motionEasingIn",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use easeOut instead.",
+      },
+      "name": "motionEasingOut",
+    },
+  ],
+  "shadow": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use boxShadow: shadowLg instead.",
+      },
+      "name": "dropShadowHighStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use boxShadow: shadowSm instead.",
+      },
+      "name": "dropShadowLowStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use boxShadow: shadowMd instead.",
+      },
+      "name": "dropShadowMediumStyle",
+    },
+  ],
+  "skeleton": [],
+  "spacing": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacing variables directly instead.",
+      },
+      "name": "spacing",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacing variables directly instead.",
+      },
+      "name": "spacingFluid",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingFluidLg instead.",
+      },
+      "name": "spacingFluidLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingFluidMd instead.",
+      },
+      "name": "spacingFluidMedium",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingFluidSm instead.",
+      },
+      "name": "spacingFluidSmall",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingFluidXl instead.",
+      },
+      "name": "spacingFluidXLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingFluidXs instead.",
+      },
+      "name": "spacingFluidXSmall",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingFluid2Xl instead.",
+      },
+      "name": "spacingFluidXXLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacing variables directly instead.",
+      },
+      "name": "spacingStatic",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingStaticLg instead.",
+      },
+      "name": "spacingStaticLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingStaticMd instead.",
+      },
+      "name": "spacingStaticMedium",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingStaticSm instead.",
+      },
+      "name": "spacingStaticSmall",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingStaticXl instead.",
+      },
+      "name": "spacingStaticXLarge",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingStaticXs instead.",
+      },
+      "name": "spacingStaticXSmall",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use spacingStatic2Xl instead.",
+      },
+      "name": "spacingStaticXXLarge",
+    },
+  ],
+  "typography": [
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseHeading3XlStyle instead.",
+      },
+      "name": "displaySmallStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseHeading4XlStyle instead.",
+      },
+      "name": "displayMediumStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseHeading5XlStyle instead.",
+      },
+      "name": "displayLargeStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseHeadingSm instead.",
+      },
+      "name": "headingSmallStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseHeadingMd instead.",
+      },
+      "name": "headingMediumStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseHeadingLg instead.",
+      },
+      "name": "headingLargeStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseHeadingXl instead.",
+      },
+      "name": "headingXLargeStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseHeading2Xl instead.",
+      },
+      "name": "headingXXLargeStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseText2Xs instead.",
+      },
+      "name": "textXXSmallStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseTextXs instead.",
+      },
+      "name": "textXSmallStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseTextSm instead.",
+      },
+      "name": "textSmallStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseTextMd instead.",
+      },
+      "name": "textMediumStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseTextLg instead.",
+      },
+      "name": "textLargeStyle",
+    },
+    {
+      "deprecation": {
+        "message": "since v4.0.0, will be removed with next major release. Use proseTextXl instead.",
+      },
+      "name": "textXLargeStyle",
+    },
+  ],
+}
+`;

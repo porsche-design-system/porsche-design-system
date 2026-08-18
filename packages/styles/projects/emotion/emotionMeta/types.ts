@@ -1,6 +1,7 @@
 // The emotion meta model — the documented single source of truth these types validate. Leaves
 // (`EmotionToken`, `EmotionUtility`) carry payloads; records and arrays only group. Mirrors the
 // scss meta skeleton (`scss/src/types.ts`); a leaf's kind is recovered via `kindOf` (`./kind`).
+// A node carrying `deprecation` belongs to `emotionDeprecationsMeta`, never to `emotionMeta`.
 
 /** A documented referenceable value (color, radius, breakpoint, font-size, …). */
 export type EmotionToken = {
@@ -264,3 +265,21 @@ export type EmotionMeta = {
     };
   };
 };
+
+/**
+ * A deprecated public export: its name plus the `@deprecated` annotation the declaration carries,
+ * verbatim. There is no structured `replacement` — the annotations state their guidance in prose —
+ * and no `description`, `value` or `styles`, since nothing renders a deprecated node. The required
+ * `deprecation` is what keeps an {@link EmotionNode} out of the deprecated catalog and vice versa.
+ */
+export type DeprecatedEmotionNode = {
+  name: string;
+  deprecation: { message: string };
+};
+
+/**
+ * The deprecated public surface, keyed by the same root domains as {@link EmotionMeta}: every domain
+ * is spelled out, empty ones included, so "checked, nothing deprecated" stays distinguishable from
+ * "forgotten". Domain order is the rendered contract — the knowledge skill emits entries in it.
+ */
+export type EmotionDeprecationsMeta = Record<keyof EmotionMeta, DeprecatedEmotionNode[]>;

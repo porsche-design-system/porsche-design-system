@@ -48,6 +48,12 @@ npm run test:vrt:styles
 - Do not edit generated `dist/` output.
 - When possible, make changes in the relevant style target package rather than patching the demo only.
 - Keep naming and token usage aligned across style targets unless a package intentionally exposes a target-specific API.
+- A deprecated public API needs an `@deprecated` annotation on its declaration. Every package publishes a domain-keyed
+  deprecations catalog beside its meta (`emotionDeprecationsMeta`, `vanillaExtractDeprecationsMeta`,
+  `scssDeprecationsMeta`), which the knowledge skill's deprecation index is built from; in `emotion` and
+  `vanilla-extract` it is generated from those annotations (`scripts/deprecations.ts`), in `scss` it is authored and the
+  annotations are generated from it. See
+  [`docs/emotion-deprecation-metadata-design.md`](../../docs/emotion-deprecation-metadata-design.md).
 - The global styles (single source of truth for `variables.css`, `color-scheme.css`, `normalize.css` and
   `font-face.css`) now live in
   [`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). Add or change CSS

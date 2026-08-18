@@ -3,6 +3,7 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
+import { emotionDeprecationsMeta } from '@porsche-design-system/emotion/meta';
 import {
   flatten,
   isDeprecated,
@@ -11,6 +12,7 @@ import {
   scssDeprecationsMeta,
   scssIdentifier,
 } from '@porsche-design-system/scss';
+import { vanillaExtractDeprecationsMeta } from '@porsche-design-system/vanilla-extract/meta';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
 import type { DeprecationEntry } from '@skills/knowledge/deprecations/types';
 import { BASELINE_EFFORT, ENTRY_KINDS, SOURCE_CATEGORIES } from '@skills/knowledge/deprecations/types';
@@ -24,7 +26,8 @@ import { describe, expect, it } from 'vitest';
  * itself, never from the collector that reads it: a gate re-using a collector's own output would
  * agree with it by construction and prove nothing. For most sources that means re-reading the shipped
  * artifact; for SCSS it means the package's `scssDeprecationsMeta` catalog, which is what both the
- * partials and the index are generated from.
+ * partials and the index are generated from, and for Emotion and vanilla-extract their
+ * `*DeprecationsMeta` catalogs, which the packages generate from the annotations on the exports.
  *
  * A failure here means either a deprecation escaped the index (the audit would under-report against
  * every project) or a source grew a shape the collector does not understand.
@@ -35,6 +38,12 @@ const packageRoot = (specifier: string): string => path.dirname(path.dirname(req
 /** Every deprecated SCSS declaration the package publishes, in catalog order. */
 const SCSS_DEPRECATIONS = flatten(scssDeprecationsMeta as ScssBranch).filter(isDeprecated);
 
+/** Every deprecated Emotion export the package publishes, in catalog order. */
+const EMOTION_DEPRECATIONS = Object.values(emotionDeprecationsMeta).flat();
+
+/** Every deprecated vanilla-extract export the package publishes, in catalog order. */
+const VANILLA_EXTRACT_DEPRECATIONS = Object.values(vanillaExtractDeprecationsMeta).flat();
+
 const SOURCES = collectDeprecations();
 const ENTRIES = SOURCES.flatMap((source) => source.entries);
 const IDENTIFIERS = new Set(ENTRIES.map((entry) => entry.identifier));
@@ -43,8 +52,25 @@ const IDS = ENTRIES.map((entry) => entry.id);
 const entriesOf = (category: (typeof SOURCE_CATEGORIES)[number]): Set<string> =>
   new Set(SOURCES.find((source) => source.category === category)?.entries.map((entry) => entry.identifier) ?? []);
 
-/** The collected SCSS entries in collected order — order is part of the contract here, so no `Set`. */
-const scssEntries = (): DeprecationEntry[] => SOURCES.find((source) => source.category === 'scss')?.entries ?? [];
+/** The collected entries of a metadata-driven source, in collected order — order is part of the contract, so no `Set`. */
+const entriesInOrder = (category: (typeof SOURCE_CATEGORIES)[number]): DeprecationEntry[] =>
+  SOURCES.find((source) => source.category === category)?.entries ?? [];
+
+const scssEntries = (): DeprecationEntry[] => entriesInOrder('scss');
+
+const emotionEntries = (): DeprecationEntry[] => entriesInOrder('emotion');
+
+const vanillaExtractEntries = (): DeprecationEntry[] => entriesInOrder('vanillaExtract');
+
+/** The source of a collector, read from disk to prove what it may and may not touch. */
+const collectorSource = (file: string): string =>
+  fs.readFileSync(
+    path.resolve(
+      path.dirname(fileURLToPath(import.meta.url)),
+      `../../../../src/knowledge/deprecations/collectors/${file}`
+    ),
+    'utf-8'
+  );
 
 /** Every deprecated entity `component-meta` declares, as `<kind> <tag> <name>` labels. */
 const componentMetaExpectations = (): string[] => {
@@ -92,42 +118,6 @@ const componentIndexLabels = (): string[] =>
     .map((label) => (label.startsWith('component ') ? label : label))
     .sort();
 
-/** Public names a package's `src/<domain>/deprecated/` trees export, via the re-export graph. */
-const deprecatedExportNames = (root: string): string[] => {
-  const names: string[] = [];
-  const visit = (indexFile: string, seen: Set<string>): void => {
-    if (seen.has(indexFile) || !fs.existsSync(indexFile)) {
-      return;
-    }
-    seen.add(indexFile);
-    const dir = path.dirname(indexFile);
-    const source = fs.readFileSync(indexFile, 'utf-8');
-    const target = (specifier: string): string => {
-      const base = path.resolve(dir, specifier);
-      return fs.existsSync(`${base}.ts`) ? `${base}.ts` : path.join(base, 'index.ts');
-    };
-    for (const match of source.matchAll(/export\s+\*\s+from\s+'([^']+)'/g)) {
-      visit(target(match[1] as string), seen);
-    }
-    for (const match of source.matchAll(/export\s*\{([^}]*)\}\s*from\s*'([^']+)'/g)) {
-      for (const clause of (match[1] as string).split(',')) {
-        const name = clause
-          .split(/\s+as\s+/)
-          .pop()
-          ?.trim();
-        if (name) {
-          names.push(name);
-        }
-      }
-    }
-  };
-  const src = path.join(root, 'src');
-  for (const domain of fs.readdirSync(src)) {
-    visit(path.join(src, domain, 'deprecated', 'index.ts'), new Set());
-  }
-  return [...new Set(names)].sort();
-};
-
 /** Custom properties in the generated Tailwind theme preceded by a deprecated-alias marker. */
 const tailwindDeprecatedNames = (): string[] => {
   const lines = fs
@@ -164,13 +154,64 @@ describe('deprecation index completeness', () => {
     expect(componentMetaExpectations().length).toBeGreaterThan(0);
   });
 
-  it.each([
-    ['emotion', '@porsche-design-system/emotion'],
-    ['vanillaExtract', '@porsche-design-system/vanilla-extract'],
-  ] as const)('collects every deprecated %s export', (category, specifier) => {
-    const expected = deprecatedExportNames(packageRoot(specifier));
+  it('collects every deprecated vanillaExtract export exactly once, in catalog order', () => {
+    const expected = VANILLA_EXTRACT_DEPRECATIONS.map(({ name }) => name);
     expect(expected.length).toBeGreaterThan(0);
-    expect([...entriesOf(category)].sort()).toStrictEqual(expected);
+    expect(vanillaExtractEntries().map((entry) => entry.identifier)).toStrictEqual(expected);
+  });
+
+  it('builds every vanillaExtract rule id from the package identifier, so reports stay comparable', () => {
+    expect(vanillaExtractEntries().map((entry) => entry.id)).toStrictEqual(
+      VANILLA_EXTRACT_DEPRECATIONS.map(({ name }) => `styleAlias/vanillaExtract/${name}`)
+    );
+  });
+
+  it('carries every vanillaExtract annotation onto its entry verbatim', () => {
+    expect(vanillaExtractEntries().map((entry) => entry.message)).toStrictEqual(
+      VANILLA_EXTRACT_DEPRECATIONS.map(({ deprecation }) => deprecation.message)
+    );
+  });
+
+  it('derives the vanillaExtract entries from package metadata rather than the filesystem', () => {
+    const source = collectorSource('vanillaExtract.ts');
+    expect(source).toContain("from '@porsche-design-system/vanilla-extract/meta'");
+    expect(source).not.toMatch(/from 'node:(fs|path)'/);
+  });
+
+  it('links every vanillaExtract entry to the vanilla-extract reference', () => {
+    expect([...new Set(vanillaExtractEntries().map((entry) => entry.reference))]).toStrictEqual([
+      'references/styles/vanilla-extract.md',
+    ]);
+  });
+
+  it('collects every deprecated Emotion export exactly once, in catalog order', () => {
+    const expected = EMOTION_DEPRECATIONS.map(({ name }) => name);
+    expect(expected.length).toBeGreaterThan(0);
+    expect(emotionEntries().map((entry) => entry.identifier)).toStrictEqual(expected);
+  });
+
+  it('builds every Emotion rule id from the package identifier, so reports stay comparable', () => {
+    expect(emotionEntries().map((entry) => entry.id)).toStrictEqual(
+      EMOTION_DEPRECATIONS.map(({ name }) => `styleAlias/emotion/${name}`)
+    );
+  });
+
+  it('carries every Emotion annotation onto its entry verbatim', () => {
+    expect(emotionEntries().map((entry) => entry.message)).toStrictEqual(
+      EMOTION_DEPRECATIONS.map(({ deprecation }) => deprecation.message)
+    );
+  });
+
+  it('derives the Emotion entries from package metadata rather than the filesystem', () => {
+    const source = collectorSource('emotion.ts');
+    expect(source).toContain("from '@porsche-design-system/emotion/meta'");
+    expect(source).not.toMatch(/from 'node:(fs|path)'/);
+  });
+
+  it('links every Emotion entry to the Emotion reference', () => {
+    expect([...new Set(emotionEntries().map((entry) => entry.reference))]).toStrictEqual([
+      'references/styles/emotion.md',
+    ]);
   });
 
   it('collects every deprecated SCSS declaration exactly once, in catalog order', () => {
@@ -192,13 +233,7 @@ describe('deprecation index completeness', () => {
   });
 
   it('derives the SCSS entries from package metadata rather than the filesystem', () => {
-    const source = fs.readFileSync(
-      path.resolve(
-        path.dirname(fileURLToPath(import.meta.url)),
-        '../../../../src/knowledge/deprecations/collectors/scss.ts'
-      ),
-      'utf-8'
-    );
+    const source = collectorSource('scss.ts');
     expect(source).toContain("from '@porsche-design-system/scss'");
     expect(source).not.toMatch(/from 'node:(fs|path)'/);
   });

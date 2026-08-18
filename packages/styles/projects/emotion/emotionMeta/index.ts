@@ -1,4 +1,6 @@
-// Public JS API: the documented `emotionMeta` model, its types, and the `kindOf` leaf discriminant.
-export { kindOf, type EmotionKind } from './kind';
+// Public JS API: the documented `emotionMeta` model, the generated `emotionDeprecationsMeta` catalog
+// of the legacy surface still shipping beside it, their types, and the `kindOf` leaf discriminant.
+export { emotionDeprecationsMeta } from './deprecations';
+export { type EmotionKind, kindOf } from './kind';
 export { emotionMeta } from './meta';
 export type * from './types';

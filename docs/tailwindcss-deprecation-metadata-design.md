@@ -13,6 +13,13 @@ This design follows the conventions established by the implemented
 [SCSS deprecation metadata design](./scss-deprecation-metadata-design.md#conventions-for-other-sources); the sections
 below record only how they apply to Tailwind CSS, where the generated artifact is plain CSS rather than SCSS.
 
+Tailwind CSS is the **meta-first** case of
+[the rule that decides the mechanism](./scss-deprecation-metadata-design.md#the-rule-that-decides-the-mechanism): the
+metadata generates `index.css`, so the metadata is where a deprecation is authored, and the catalog below is that
+authoring surface. The knowledge skill's current scan of the generated `index.css` for `alias (deprecated)` markers is
+exactly what this replaces — a generated artifact is never the source it is read back from. Emotion and vanilla-extract
+sit in the annotation-first row instead, and author no catalog at all.
+
 ## Architecture & approach
 
 ```text

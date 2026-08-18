@@ -452,6 +452,33 @@ and the skills package already declares `@porsche-design-system/scss` as a direc
 The remaining per-source designs — components, Emotion, vanilla-extract, Tailwind CSS, stylesheets, tokens, icons and
 partials — follow the conventions this implementation settled on. Each doc records only how they apply to its package.
 
+### The rule that decides the mechanism
+
+One invariant governs every source: **the knowledge skill never parses another package's artifacts — it imports what
+that package publishes about itself.** How a package produces that depends on where its declarations are authored, since
+that is the only place a deprecation can be recorded without being stated twice:
+
+| The declaration is authored in…                | The deprecation is…                                         | Sources                                                |
+| ---------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------ |
+| metadata, which generates the shipped artifact | authored in a deprecated catalog beside the current one     | scss, Tailwind CSS, stylesheets                        |
+| code that can carry a `@deprecated` annotation | read from that annotation, by the package itself            | Emotion, vanilla-extract, tokens, partials, components |
+| an artifact with no annotation site            | authored in a catalog, because there is nowhere else for it | icons                                                  |
+
+Components reach the middle row indirectly: `componentMeta` is generated from Stencil source and its docblocks, so
+`componentDeprecationsMeta` is derived from that metadata rather than separately authored.
+
+Every row ends in the same published shape: a domain-keyed `<pkg>DeprecationsMeta` catalog beside the current one, on
+the package's metadata entry. The rows differ only in how it is produced — authored, or generated from the annotations.
+
+One consequence is worth stating rather than discovering. A source in the first or third row can express a structured
+`replacement`, because someone authors one; a source in the middle row carries the annotation's sentence instead, unless
+its annotations are made structured (`{@link …}`) — so the rendered remediation column is populated for some sources and
+not others. A package in the middle row also needs no wording or identity helpers: its message is the annotation and its
+identifier is the export name.
+
+Conventions 1 and 2 shape every deprecated catalog; 3–6 and 8 describe an authored one and apply to the first and third
+rows. Conventions 7 and 9 apply to every source. Conventions 10–13 describe the annotation-first row.
+
 1. **Dedicated deprecated types, not an optional field.** Add `Deprecated<Leaf>` types with a **required** `deprecation`
    and leave the current leaf types without the field, so neither catalog can absorb the other's entries. Where a
    package's documented catalog must stay complete (components), the deprecated catalog is _derived_ instead — see
@@ -473,13 +500,29 @@ partials — follow the conventions this implementation settled on. Each doc rec
    the byte delta before expanding them.
 6. **Catalogs are authored as literal repeated objects.** No factory functions, no `.map()` over a tuple table, and no
    intermediate consts extracted purely to be referenced — read the exported catalog directly. Generated catalogs
-   (tokens, components, icons) are exempt, since their authoring surface is the generator input.
+   (tokens, components, icons, Emotion's and vanilla-extract's annotation-derived catalogs) are exempt, since their
+   authoring surface is the generator input.
 7. **The adapter maps one-to-one.** It adds only the rule ID, source category and reference path, preserves catalog
    order, sorts nothing, and touches no filesystem.
 8. **Package tests assert both directions.** Every generated public declaration originates from exactly one catalog,
    _and_ every catalog node is rendered exactly once.
 9. **The skills completeness gate derives from the package catalog** using the package's own helpers — never a
    hand-authored identifier list, never a re-parse of the generated artifact.
+10. **The annotation is the source; nothing restates it.** A hand-authored catalog beside an already-annotated
+    declaration is a second place to keep in sync, and it is not small: authoring one for Emotion measured 741 lines of
+    descriptors plus types, helpers and tests, to produce a 120-row table. Improving guidance means improving the
+    annotation, which fixes the IDE hint at the same time.
+11. **The package resolves its own public surface, and publishes the result as a catalog.** Use the type checker —
+    `getExportsOfModule` over the public barrels, `getAliasedSymbol` to reach the declaration, `getJsDocTags` for the
+    annotation — never a directory walk, so the shared internals those directories also hold cannot be reported to a
+    project. The extractor lives in the package and runs at **build time**, emitting a generated `<pkg>DeprecationsMeta`
+    on the metadata entry: that entry is a bundled artifact other consumers import, and neither the TypeScript compiler
+    nor reads of `src` belong in their build graph. The skill imports the catalog, never the extractor.
+12. **The message is the annotation text, carried verbatim.** No prose parsing anywhere. An entry gets no structured
+    `replacement` until the annotations themselves are structured, which is a per-package wording decision rather than a
+    codemod.
+13. **The package test compares the catalog with the package's own runtime exports** — never a hand-written list — so an
+    unannotated legacy export fails the build, and with a fresh extraction, so the generated catalog cannot go stale.
 
 ## Open questions
 

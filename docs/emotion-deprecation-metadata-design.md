@@ -2,207 +2,158 @@
 
 ## Summary
 
-Emotion deprecations shall be exposed through a package-owned `emotionDeprecationsMeta` object from
-`@porsche-design-system/emotion/meta`. The existing `emotionMeta` remains the current, documented API and stays
-deprecation-free.
+Emotion's deprecated surface shall be published as `emotionDeprecationsMeta` beside `emotionMeta` from
+`@porsche-design-system/emotion/meta`, in the same shape SCSS uses: a domain-keyed catalog of nodes carrying a
+`deprecation` marker.
 
-The metadata replaces the knowledge skill's traversal of `src/*/deprecated/index.ts`, declaration lookup, JSDoc parsing,
-replacement parsing, and package-root resolution. Deprecated TypeScript exports and their metadata must share one
-package-owned descriptor so names, messages, replacements, and exported declarations cannot drift.
+Only the way it is _gathered_ differs. SCSS authors its catalog because its metadata generates the shipped declarations;
+Emotion's declarations are hand-written TypeScript that already carry a `@deprecated` annotation, so the catalog is
+generated from those annotations at build time. No second, hand-authored catalog is introduced.
 
-This design follows the conventions established by the implemented
-[SCSS deprecation metadata design](./scss-deprecation-metadata-design.md#conventions-for-other-sources); the sections
-below record only how they apply to Emotion.
+This replaces the knowledge skill's traversal of `src/*/deprecated/index.ts`, its declaration lookup, its JSDoc parsing
+and its package-root resolution. `emotionMeta` is unaffected: it remains the documented, deprecation-free catalog of the
+current API.
+
+This is the annotation-first case of
+[the rule that decides the mechanism](./scss-deprecation-metadata-design.md#the-rule-that-decides-the-mechanism)
+(conventions 7 and 9–13).
+
+This design is implemented.
 
 ## Architecture & approach
 
 ```text
-Emotion deprecated export descriptors
-  -> deprecated TypeScript exports and @deprecated declarations
-  -> emotionDeprecationsMeta
+@deprecated annotations on the legacy exports
+  -> scripts/deprecations.ts            (build time, TypeScript type checker)
+  -> emotionMeta/deprecations.ts        (generated static catalog)
+  -> emotionDeprecationsMeta            (@porsche-design-system/emotion/meta)
   -> knowledge-skill deprecations.md
 ```
 
-`emotionMeta` and `emotionDeprecationsMeta` are separate authoritative catalogs. A current Emotion export is moved from
-the current metadata into the deprecated metadata when deprecated, while its runtime export remains available until its
-scheduled removal.
+The annotation is the single source. It has to exist regardless — it is what strikes an export through in a consumer's
+IDE — so anything that restates it is a second thing to keep in sync.
 
-The package's metadata order is the rendered `deprecations.md` order. The knowledge skill performs no sorting.
+The package owns both the reading of its own sources and the published catalog. The knowledge skill owns only the audit
+vocabulary.
+
+The two public catalogs have the same responsibilities as their SCSS counterparts:
+
+- `emotionMeta` contains only the recommended, documented API.
+- `emotionDeprecationsMeta` contains only deprecated public exports.
+- An export appears in exactly one of them.
 
 ## Components
 
-### Deprecation details
+### Build-time extractor
 
-Add an Emotion-owned metadata detail and one deprecated subtype per leaf kind:
+`scripts/deprecations.ts` resolves the public legacy surface through the TypeScript type checker:
 
-```ts
-export type EmotionDeprecation = {
-  /** Optional note replacing the package default lifecycle sentence. */
-  message?: string;
-  /** Canonical consumer-facing export name, such as `radiusLg`. */
-  replacement?: string;
-};
+- `checker.getExportsOfModule()` on each `src/<domain>/deprecated/index.ts` yields the public names, so the shared
+  internals those directories also hold (`_displayFontPartA`, `displayShared`, `ThemeColorSet`) cannot be reported to a
+  project;
+- `checker.getAliasedSymbol()` follows a barrel's re-export to the declaration the annotation sits on;
+- `symbol.getJsDocTags()` returns the `@deprecated` tag, whose text is carried verbatim.
 
-export type DeprecatedEmotionToken = Omit<EmotionToken, 'description'> & {
-  description?: string;
-  deprecation: EmotionDeprecation;
-};
-```
+The domains are read from `src`, not from `emotionMeta`, so a `deprecated` barrel under a directory the meta catalog
+does not know fails the build instead of going unindexed.
 
-`EmotionToken` and `EmotionUtility` gain **no** `deprecation` field, and the deprecated subtypes require one. The
-separation between the two catalogs is therefore a compile error in both directions rather than something a test has to
-notice. `description` is optional on the deprecated subtypes and is omitted in practice, because a legacy export is
-documented by its generated `@deprecated` JSDoc and nothing reads a deprecated entry's description.
+`scripts/build.ts` renders the result and writes `emotionMeta/deprecations.ts`, run by `npm run build:meta:deprecations`
+before the meta bundle is built. The generated file is git-ignored like the repository's other generated sources.
 
-Deprecated public type exports and aliases that do not fit those runtime leaf shapes use a minimal export descriptor:
+### Deprecation types
 
-```ts
-export type DeprecatedEmotionExportMeta = {
-  name: string;
-  exportKind: 'value' | 'function' | 'type';
-  description?: string;
-  deprecation: EmotionDeprecation;
-};
-```
+`emotionMeta/types.ts` gains `DeprecatedEmotionNode` (`{ name, deprecation: { message } }`) and
+`EmotionDeprecationsMeta` (`Record<keyof EmotionMeta, DeprecatedEmotionNode[]>`). The required `deprecation` keeps the
+two catalogs apart at the type level, as `DeprecatedScssVariable` does for SCSS. The marker has one field, so it stays
+inline rather than becoming a type of its own.
 
-### Identity and message helpers
-
-Mirror the SCSS helpers. `emotionIdentifier(node)` returns the public export name; because Emotion identifiers need no
-decoration it is a thin accessor, but authoring `replacement` through it — reading the current node straight from the
-exported `emotionMeta`, never a retyped string and never an intermediate local const — is what keeps a replacement from
-outliving a rename.
-
-Default wording is fixed and shared with SCSS:
-
-- with replacement: `This API will be removed with the next major release.`;
-- without replacement: `This API will be removed with the next major release and has no replacement.`.
-
-Expose `emotionDeprecationMessage(node)` for the lifecycle sentence — which the knowledge skill uses as the entry's
-`message`, rendering `replacement` in its own column — and `emotionDeprecationText(node)` for the generated JSDoc, which
-prefixes `Use <replacement> instead.`. The knowledge skill implements no fallback wording.
-
-TypeScript is unconstrained here in a way SCSS was not: `@deprecated` JSDoc is stripped from emitted JavaScript by the
-bundler and retained in `.d.ts`, where it drives IDE strikethrough. Full sentences cost consumers nothing.
-
-### Authoring conventions
-
-Deprecated entries are authored as literal repeated objects — no factory functions and no `.map()` over a tuple table —
-so what is declared is readable at the point of declaration and a one-off exception stays cheap.
-
-### Authoritative descriptors
-
-The current deprecated surface lives under `packages/styles/projects/emotion/src/*/deprecated/`. Introduce package-local
-descriptors beside those domains and use them to produce:
-
-- the public deprecated export name;
-- its `@deprecated` declaration documentation;
-- its runtime value, function body, or type declaration;
-- its `emotionDeprecationsMeta` entry.
-
-During migration, generated deprecated modules must remain byte-equivalent in runtime behavior and type shape. A
-package-local generation step is preferred over separately authored JSDoc and metadata. If a declaration cannot
-initially be generated, a temporary package-local parity test may compare its export and JSDoc with the descriptor; the
-knowledge skill must never perform that comparison.
-
-### Root metadata
-
-Assemble a domain-keyed object beside `emotionMeta` in `packages/styles/projects/emotion/emotionMeta/meta.ts`:
-
-```ts
-export const emotionDeprecationsMeta = {
-  border: borderDeprecations,
-  blur: blurDeprecations,
-  // Remaining domains in authored order.
-};
-```
-
-Export it through the existing `@porsche-design-system/emotion/meta` subpath. No new package subpath is required.
+A deprecated node carries no `description` — it is documented by its annotation — and no `value` or `styles`, since
+nothing renders it. There is no default-wording or identity helper: the message is always the annotation, and an Emotion
+identifier is its export name.
 
 ### Knowledge-skill adapter
 
-Replace `collectEmotionDeprecations()` in
-`packages/storefront/projects/skills/src/knowledge/deprecations/collectors/styleExports.ts` with a direct import and
-mapping step. The adapter adds only:
-
-- `styleAlias/emotion/<name>` rule IDs;
-- category and reference fields;
-- `message` from `emotionDeprecationMessage(node)` and `replacement` from the metadata, the latter omitted rather than
-  set to `undefined` when absent so the Markdown remediation column composes cleanly.
-
-The adapter preserves metadata order and contains no filesystem, export-graph, declaration, JSDoc, or prose parsing.
-`emotionRoot()` is dropped from the skill's package-root helpers once nothing else uses it.
+`collectors/emotion.ts` flattens the catalog in domain order and maps it one-to-one onto `DeprecationEntry`, adding only
+the `styleAlias/emotion/<name>` rule ID, the source category and the reference path. It preserves the package's order,
+sorts nothing, and touches no filesystem.
 
 ## Data & state
 
-The stable identity is the public Emotion export name. Package metadata owns export kind, message, replacement, and
-authored order. The knowledge skill owns audit rule IDs and `references/styles/emotion.md`.
+The stable identity is the public export name; the rule ID is `styleAlias/emotion/<name>`. The message is the annotation
+text exactly as authored, including the `since v4.0.0` prefix each carries. Entries have no structured `replacement`:
+the annotation sentence carries that guidance in prose.
 
-The metadata trees remain internal, undocumented package interfaces. If a stable public metadata API is needed later, it
-should be a normalized catalog generated from current and deprecated metadata rather than stabilizing their exact tree
-shape.
+Catalog order is the rendered contract: domains in `emotionMeta` key order, exports in barrel order within a domain.
 
 ## Trade-offs
 
-### Separate deprecated metadata
+### Generating the catalog versus resolving it at import time
 
-Keeping `emotionMeta` current-only preserves its alignment with SCSS and vanilla-extract and prevents deprecated exports
-from appearing in normal API documentation. As in SCSS, the split is expressed as dedicated deprecated types with a
-required `deprecation` rather than an optional field on the shared leaf, so a node in the wrong catalog fails to compile
-instead of relying on a test to notice.
+**Chosen:** generate static data at build time.
 
-### Generated declarations
+The extraction needs the TypeScript compiler and the `src` sources. `@porsche-design-system/emotion/meta` is a bundled
+artifact imported by storefront MDX pages as well as by the skill, so an extractor reachable from that entry would put
+the compiler and filesystem reads into every consumer's build graph. Generating the catalog keeps the published entry
+plain data.
 
-Generating deprecated modules requires more package code than retaining handwritten declarations, but it eliminates the
-current duplicate truth between source JSDoc and metadata. A permanent source parser in the skill is rejected.
+The cost is a generated file and a build-order edge: `build:meta:deprecations` runs before the meta bundle. Staleness is
+not a real risk — the build regenerates the file, and a package test compares it with a fresh extraction.
 
-### Package-specific export descriptors
+### Reading the annotations versus authoring a catalog
 
-Emotion has deprecated values, functions, and types, so its descriptor cannot be identical to SCSS variables and mixins.
-The common consumer fields remain `name`, `message`, and `replacement`.
+**Chosen:** read the annotations.
+
+SCSS generates its declarations from `scssDeprecationsMeta`, so there the catalog is the only place a deprecation is
+authored. Emotion's declarations already carry the annotation, so authoring a catalog restates them. It was implemented
+and measured at 741 lines of descriptors plus types, helpers and their tests, to produce a 120-row table — with the
+wording living in two places and free to drift.
+
+The cost is that the rendered table inherits the annotations' inconsistent prose. That is the same text a consumer reads
+in their IDE, so improving it improves both surfaces at once, which is the right place to fix it.
+
+### No structured replacement column
+
+**Chosen:** carry the sentence, not a parsed replacement.
+
+The previous skill-side parser guessed a replacement out of the prose and published `variables directly` and
+`typescale variables` as things to migrate to. Dropping the column removes the guess.
+
+Making it structured without guessing means `{@link radiusLg}` in every annotation, which the checker returns as a
+resolved symbol reference. This was prototyped and deferred: 41 of the 120 annotations name an export `emotionMeta`
+documents and could be converted mechanically, but 14 name an export that does not exist (`proseHeadingLg` for
+`proseHeadingLgStyle`) and 40 name theme-specific colors from the **private** `@porsche-design-system/tokens` package,
+so it is a wording decision rather than a codemod.
 
 ## Risks & mitigations
 
-| Risk                                                                  | Mitigation                                                                                                     |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Generated deprecated exports change runtime behavior or declarations. | Retain package declaration/runtime snapshots and compare public exports before replacing handwritten modules.  |
-| Internal helper exports are accidentally indexed.                     | Build metadata from explicit public descriptor lists, not directory traversal.                                 |
-| JSDoc and metadata diverge during migration.                          | Generate both from one descriptor or retain a temporary package-local parity test.                             |
-| Emotion and vanilla-extract catalogs drift.                           | Share generator conventions and cross-solution identity tests where their deprecated APIs intentionally match. |
-| Metadata ordering creates noisy reference changes.                    | Treat descriptor order as rendered order and snapshot it.                                                      |
+| Risk                                                          | Mitigation                                                                                                               |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| A private helper is reported to a project.                    | The public surface comes from `getExportsOfModule`, not from directory traversal; a package test asserts it.             |
+| A legacy export ships without an annotation, so is unindexed. | A package test compares the catalog with the `deprecated` barrels' own runtime exports.                                  |
+| A deprecated domain is missing from the catalog.              | The extractor reads the domains from `src` and fails when one has no `emotionMeta` key; a package test asserts the keys. |
+| The generated catalog goes stale.                             | The build regenerates it; a package test compares it with a fresh extraction.                                            |
+| The index inherits inconsistent wording.                      | Accepted; it is the wording consumers already see. Standardizing it is a separate change.                                |
 
 ## Testing strategy
 
-Package tests shall prove:
+The package proves the catalog equals the `deprecated` barrels' runtime exports — never a hand-written list — that every
+entry carries a non-empty annotation, that it is keyed by every `emotionMeta` domain in catalog order, and that it
+matches a fresh extraction.
 
-1. `emotionMeta` remains deprecation-free, and every documented leaf has a non-empty `description`.
-2. Every `emotionDeprecationsMeta` entry has a unique public name and deprecation details.
-3. Every deprecated public export is represented exactly once and no private helper is represented.
-4. Every catalog entry corresponds to exactly one generated export, and every generated deprecated export to exactly one
-   catalog entry.
-5. Generated deprecated runtime exports and declarations match the existing API.
-6. Replacement names reference current exports or are explicitly documented free-form guidance.
-7. An empty `deprecation: {}` receives the no-replacement default, a replacement prefixes the sentence, and an authored
-   `message` overrides the default.
-8. `emotionDeprecationsMeta` is exported from `@porsche-design-system/emotion/meta`.
-
-Skills tests shall derive their expectations from `emotionDeprecationsMeta` using the package's own helpers — never a
-hand-authored name list and never a re-parse of package sources — and prove that collected names, order, rule IDs,
-messages and replacements match it entry for entry, that every entry links to the Emotion reference, and that the
+The skills completeness gate derives its expectations from `emotionDeprecationsMeta` and proves that collected names,
+order, rule IDs and messages match it entry for entry, that every entry links to the Emotion reference, and that the
 collector performs no filesystem access.
 
 ## Rollout
 
-1. Define the deprecation detail, the `Deprecated*` leaf subtypes, the export descriptor, the identity helper and the
-   two message helpers.
-2. Inventory the public exports currently reachable through every Emotion `deprecated/index.ts`.
-3. Convert each domain to package-owned descriptors while preserving declarations and behavior.
-4. Assemble and export `emotionDeprecationsMeta`.
-5. Replace the skill collector with the direct metadata adapter.
-6. Update package and skills snapshots.
-7. Remove Emotion export-graph, declaration, JSDoc, replacement, and package-root parsing from the skill.
-8. Remove temporary package-local parity checks after all deprecated declarations are descriptor-generated.
+1. Add the deprecation types, the build-time extractor and the generated catalog; export it from the meta entry.
+2. Replace the skill collector; drop the Emotion half of the shared source parser and `emotionRoot()`.
+3. Update the skills completeness gate and snapshots.
+
+vanilla-extract has the identical shape and followed with the same mechanism — see
+[its design](./vanilla-extract-deprecation-metadata-design.md).
 
 ## Open questions
 
-The implementation must choose whether deprecated source modules are generated in place or emitted only into build
-output. Either is acceptable if source review remains practical and the descriptor is authoritative.
+Whether to standardize the annotation wording — and, with it, adopt `{@link}` so the replacement becomes a checked
+symbol reference rather than prose — is deferred to its own change.
