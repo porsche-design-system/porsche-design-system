@@ -8291,9 +8291,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the three was used.",
+        "description": "Emitted in controlled mode when the user requests to close the popover via its trigger button, the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the four was used.",
         "type": "PopoverDismissEventDetail",
-        "typeDetail": "{ reason: 'outside-click' | 'focus-out' | 'escape' }",
+        "typeDetail": "{ reason: 'trigger-button' | 'outside-click' | 'focus-out' | 'escape' }",
       },
     },
     "hasAriaProp": true,
