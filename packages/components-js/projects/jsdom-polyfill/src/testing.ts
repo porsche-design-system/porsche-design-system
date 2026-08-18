@@ -11,7 +11,7 @@ import {
   screen,
 } from 'shadow-dom-testing-library';
 
-// The deprecated aliases have always accepted the container as an optional first argument, falling back to the
+// The three following aliases have always accepted the container as an optional first argument, falling back to the
 // whole document when it is omitted. shadow-dom-testing-library splits that into two functions instead, a standalone
 // one taking a container and a document-bound one on `screen`, so dispatch on whether a container was passed.
 const hasContainer = (args: unknown[]): boolean => typeof (args[0] as HTMLElement)?.querySelectorAll === 'function';
