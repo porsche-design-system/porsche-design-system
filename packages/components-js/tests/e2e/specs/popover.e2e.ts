@@ -738,6 +738,9 @@ test.describe('controlled mode', () => {
       </p-popover>`
     );
     await setProperty(getHost(page), 'open', open);
+    // Wait for the render that `open` triggers before returning. The document-level dismiss listeners are attached
+    // during that render, so clicking earlier races them and the interaction is silently missed.
+    await expect(getPopover(page)).toBeVisible({ visible: open });
   };
 
   test('should be hidden when open prop is false', async ({ page }) => {
