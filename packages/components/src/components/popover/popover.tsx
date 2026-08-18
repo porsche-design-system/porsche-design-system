@@ -155,8 +155,8 @@ export class Popover {
     // consumer owns the trigger). The `closest('[slot="button"]')` match already implies a slotted button was clicked —
     // clicks on the default shadow button retarget to the host at the shadow boundary, so `closest(...)` is `null` there
     // and this does not double-toggle (that button toggles via its own inline `onClick`).
-    if (!this.isControlled && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
-      this.isOpen = !this.isOpen;
+    if ((e.target as HTMLElement).closest('[slot="button"]') !== null) {
+      this.onTriggerClick();
     }
   }
 
