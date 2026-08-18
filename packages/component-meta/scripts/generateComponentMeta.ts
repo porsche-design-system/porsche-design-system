@@ -556,6 +556,10 @@ const generateComponentMeta = (): void => {
           let [, eventTypeDetail] =
             eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
 
+          // The literal may come from the component's own utils file or via an alias from another file.
+          // `resolveNestedTypeNames` has to look up nested names in whichever file actually declared it.
+          let typeDetailFilePath = eventTypePath;
+
           // Standard lib types don't need to be resolved
           if (['TransitionEvent', 'InputEvent', 'Event'].includes(eventTypeAlias)) {
             typeDetail = eventTypeAlias;
@@ -579,10 +583,11 @@ const generateComponentMeta = (): void => {
               // check if type or imported from somewhere else
               const [, relativeAliasTypePath] =
                 eventTypeFileContent.match(
-                  new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
+                  new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias || eventTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
                 ) || [];
               const eventAliasTypePath = path.resolve(eventTypePath, `../${relativeAliasTypePath}.ts`);
               const eventAliasTypeFileContent = fs.readFileSync(eventAliasTypePath, 'utf8');
+              typeDetailFilePath = eventAliasTypePath;
 
               eventAliasTypeDetail = eventAliasTypeFileContent.match(
                 new RegExp(`type ${eventAliasTypeAlias || eventTypeAlias} = ({[\\s\\S]+?});\\n`)
@@ -604,7 +609,7 @@ const generateComponentMeta = (): void => {
             .replace(/; }/, ' }'); // remove last semi colon
 
           // runs after the comments are stripped, so a capitalized word in a source comment is never taken for a type
-          typeDetail = resolveNestedTypeNames(typeDetail, eventTypePath);
+          typeDetail = resolveNestedTypeNames(typeDetail, typeDetailFilePath);
         }
 
         eventsMeta[eventName] = {
