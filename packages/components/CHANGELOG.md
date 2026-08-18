@@ -14,6 +14,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- **Testing**: the `testing` sub-package now provides a `Shadow` counterpart for every Testing Library query, so
+  elements rendered inside Shadow DOM can be queried directly. Eight query families (`AltText`, `DisplayValue`,
+  `LabelText`, `PlaceholderText`, `Role`, `TestId`, `Text`, `Title`) in six variants each, plus `screen`, `within`,
+  `deepQuerySelector` and `deepQuerySelectorAll`. The existing `getByRoleShadowed`, `getByLabelTextShadowed` and
+  `getByTextShadowed` helpers remain available.
+  ([#4492](https://github.com/porsche-design-system/porsche-design-system/pull/4492))
+
+### Changed
+
+- **Testing**: the `testing` sub-package requires a DOM. Importing it where no DOM is available now throws an explicit
+  error on import. ([#4492](https://github.com/porsche-design-system/porsche-design-system/pull/4492))
+
 ## [4.6.0-rc.2] - 2026-08-13
 
 ### Added
