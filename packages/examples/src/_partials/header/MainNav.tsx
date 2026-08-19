@@ -64,8 +64,8 @@ const DrilldownEntries = ({ currentPage, navItems }: NavEntriesProps) => (
 /**
  * Main navigation of every header variant: a menu button opening a `p-drilldown`.
  *
- * The behaviour lives in the shared `assets/header.js`, hooked on the two ids – nothing here is hydrated. Since both
- * variants render this component, both need that script.
+ * The behaviour is written once in `assets/header.js`, hooked on the two ids – nothing here is hydrated. The build
+ * inlines it into the `main.js` of every page rendering this component, which is both variants.
  *
  * `scheme` reaches the button only. The drilldown is a dialog on top of the page, not part of the bar, so it keeps
  * the color scheme of the page – a header lying on a dark hero must not drag that scheme into an overlay.

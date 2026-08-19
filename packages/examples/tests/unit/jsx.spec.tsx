@@ -1,6 +1,7 @@
 import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
 import {
+  exampleBanner,
   getScriptEntry,
   getSharedScripts,
   getStyleEntry,
@@ -164,20 +165,50 @@ describe('entries', () => {
   });
 
   it('should import the stylesheet from the generated script, so a page references one file only', () => {
-    expect(getScriptEntry('footer', { sharedScripts: [] })).toBe("import './style.css';\n");
+    expect(getScriptEntry({ sharedBehaviour: [] })).toBe("import './style.css';\n");
   });
 
-  it('should import the shared behaviour a page needs, resolved against its depth', () => {
-    const entry = getScriptEntry('header/overlay', { sharedScripts: ['header.js', 'video.js'] });
+  it('should inline the shared behaviour a page needs instead of importing it', () => {
+    const entry = getScriptEntry({
+      sharedBehaviour: [
+        { fileName: 'header.js', content: `${exampleBanner}\n\nconst navButton = null;\n` },
+        { fileName: 'video.js', content: `${exampleBanner}\n\nconst video = null;\n` },
+      ],
+    });
 
-    expect(entry).toContain("import '../../assets/header.js';");
-    expect(entry).toContain("import '../../assets/video.js';");
+    expect(entry).not.toContain('import ../');
+    expect(entry).toContain('const navButton = null;');
+    expect(entry).toContain('const video = null;');
+    // Named sections keep the single source findable, the banner is not repeated per snippet.
+    expect(entry).toContain('// --- assets/header.js ---');
+    expect(entry).toContain('// --- assets/video.js ---');
+    expect(countOccurrences(entry, exampleBanner)).toBe(1);
   });
 
-  it('should inline the behaviour authored next to a page, imports first', () => {
-    const entry = getScriptEntry('landing-page', { behaviour: 'console.warn("hi");\n', sharedScripts: ['header.js'] });
+  it('should inline the behaviour authored next to a page, after the shared one', () => {
+    const entry = getScriptEntry({
+      behaviour: 'console.warn("hi");\n',
+      sharedBehaviour: [{ fileName: 'header.js', content: 'const navButton = null;\n' }],
+    });
 
-    expect(entry).toBe("import './style.css';\nimport '../assets/header.js';\n\nconsole.warn(\"hi\");\n");
+    expect(entry).toBe(
+      `import './style.css';\n\n${exampleBanner}\n\n// --- assets/header.js ---\n\nconst navButton = null;\n\n// --- behaviour of this example ---\n\nconsole.warn("hi");\n`
+    );
+  });
+
+  it('should keep a single snippet unlabelled, so a one-behaviour example reads as one script', () => {
+    const entry = getScriptEntry({ behaviour: 'console.warn("hi");\n', sharedBehaviour: [] });
+
+    expect(entry).toBe(`import './style.css';\n\n${exampleBanner}\n\nconsole.warn("hi");\n`);
+  });
+
+  it('should fail when two inlined snippets declare the same name, which one module scope cannot hold', () => {
+    expect(() =>
+      getScriptEntry({
+        behaviour: 'const video = null;\n',
+        sharedBehaviour: [{ fileName: 'video.js', content: 'const video = null;\n' }],
+      })
+    ).toThrow(/both declare "video"/);
   });
 
   it.each([

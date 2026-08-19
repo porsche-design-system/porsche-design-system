@@ -2,8 +2,8 @@
 // EXAMPLE CODE FOR DEMONSTRATION PURPOSE ONLY.
 
 // Behaviour of the header navigation: the menu button opens the drilldown, and the drilldown reports the level the
-// user drilled into. Every header variant is built on that drilldown, so this is shared instead of copied per
-// example – `BasePage` loads it automatically, `PatternPage` pages list it in their `pageScript`.
+// user drilled into. Every header variant is built on that drilldown, so it is written once here and inlined into the
+// `main.js` of every page rendering the menu button.
 
 const navDrilldown = document.getElementById('nav-drilldown');
 const navButton = document.getElementById('nav-button');

@@ -49,8 +49,8 @@ linked from the overview page of its project by adding one entry.
 `vite.config.ts`, `public/` and a `src/` holding the pages — which replaces the hand written workspace of the
 [examples repository](https://github.com/porsche-design-system/examples). The pages therefore ship **without** the
 Porsche Design System partials, without a stylesheet link and without the loader script: the generated `vite.config.ts`
-adds all three when the project is built, and every page loads one generated `main.js` that imports its `style.css`. Use
-`npm run build:verify` to build both projects and see the result.
+adds all three when the project is built, and every page loads one generated `main.js` that imports its `style.css` and
+carries the behaviour of the example. Use `npm run build:verify` to build both projects and see the result.
 
 ## Links: only the overview navigates
 
@@ -86,10 +86,10 @@ src/
 │   │   └── CategoryTabs.tsx  # category navigation below the bar (stacked only)
 │   ├── footer/Footer.tsx
 │   └── ExampleList.tsx
-├── assets/                   # copied into both generated projects
-│   ├── styles.css            # Tailwind entry: theme, global element defaults
-│   ├── header.js             # behaviour of the header drilldown
-│   └── video.js              # behaviour of the hero video and its pause control
+├── assets/                   # shared inputs of every page
+│   ├── styles.css            # Tailwind entry: theme, global element defaults – copied into both projects
+│   ├── header.js             # behaviour of the header drilldown – inlined into the entries, never emitted
+│   └── video.js              # behaviour of the hero video and its pause control – inlined, never emitted
 ├── templates/
 │   ├── index.page.tsx        # overview of the templates project
 │   └── landing-page/
@@ -135,9 +135,13 @@ export default Page;
 | `navItems`      | Defaults to `_data.ts`; a page may replace or extend it.                  |
 | `children`      | The page content, including its own `<main id="main">`.                   |
 
-The layout renders one script tag, `main.js`. That file is generated next to the page and imports the page's
-`style.css`, the shared behaviour the markup asks for — `assets/header.js` for the drilldown, `assets/video.js` for a
-pause control — and the `main.js` authored next to the page, if there is one.
+The layout renders one script tag, `main.js`. That file is generated next to the page: it imports the page's `style.css`
+and then **contains** the behaviour of the example — the shared snippets the markup asks for (`assets/header.js` for the
+drilldown, `assets/video.js` for a pause control) and the `main.js` authored next to the page, if there is one. Nothing
+is imported from `assets/`: an example is meant to be read, so its markup, its Tailwind classes and its dummy JavaScript
+sit in two files instead of being spread across the tree. The snippets stay single-sourced in `src/assets/*.js` and
+carry a `// --- <source> ---` section comment into the output; since they end up in one module scope, two of them must
+not declare the same top level name — the build says so if they do.
 
 ### The header and its variants
 

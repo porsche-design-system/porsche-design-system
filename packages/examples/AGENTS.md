@@ -36,7 +36,7 @@ dist/patterns/                 # workspace @porsche-design-system/patterns
 └── src/                       # `root` of that Vite project
     ├── index.html             # overview of the category
     ├── main.js / style.css    # generated entry pair, one per page
-    ├── assets/                # styles.css, header.js, video.js – copied into both projects
+    ├── assets/                # styles.css – copied into both projects
     └── header/overlay/        # index.html + main.js + style.css
 ```
 
@@ -44,7 +44,9 @@ Consequences, and they are the point of the design:
 
 - **A page's HTML contains no PDS partials, no stylesheet link and no loader script.** All three are added by the
   generated `vite.config.ts` when the project is built, exactly like in the hand written examples.
-- **A page references exactly one script, `main.js`**, which imports its `style.css` and the shared behaviour it needs.
+- **A page references exactly one script, `main.js`**, which imports its `style.css` and **contains** the behaviour of
+  the example: the shared snippets are inlined, not imported, so the markup, the utilities and the JavaScript of a
+  pattern are read in one place. `assets/` therefore only ships the stylesheet.
 - **Opening `dist/**/index.html` in a browser shows unstyled markup.** Run `npm run build:verify`, which builds both
   generated projects into `dist-tmp/` and asserts the partials, the bundle and the stylesheet made it into the output.
 - **Both projects are self contained** – the shared `assets/` and `public/` are copied into each, because the examples
@@ -81,8 +83,8 @@ src/
 │                                 # MainNav, MetaActions, NoticeBar, CategoryTabs
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
 ├── assets/styles.css             # Tailwind entry: @theme, dark mode, global element defaults
-├── assets/header.js              # behaviour of the header drilldown
-├── assets/video.js               # behaviour of the hero video and its pause control
+├── assets/header.js              # behaviour of the header drilldown – inlined into the entries, never emitted
+├── assets/video.js               # behaviour of the hero video and its pause control – inlined, never emitted
 ├── templates/                    # → dist/templates
 │   ├── index.page.tsx            # overview of that project
 │   └── landing-page/             # index.page.tsx
@@ -161,11 +163,16 @@ npm run build:verify        # build + `vite build` of both generated projects in
   have to be written as JSON strings (`compact="{ base: false, m: true }"`).
 - **No event handler props on PDS components.** The typing deliberately omits them: there is no client-side JS, so
   behaviour goes into a plain `main.js` hooked on ids.
-- **Scripts are not declared, they are derived.** A page always references one entry, `main.js`, generated next to it by
-  [`plugins/entries.ts`](plugins/entries.ts). It imports the page's `style.css`, the shared behaviour the rendered
-  markup asks for (`assets/header.js` when the page contains `id="nav-drilldown"`, `assets/video.js` when it contains
-  `id="pause-button"`) and, inlined, the `main.js` authored next to the page. Behaviour used by more than one example
-  belongs in `src/assets/*.js` with a detection rule, not in one example folder.
+- **Scripts are not declared, they are derived — and inlined.** A page always references one entry, `main.js`, generated
+  next to it by [`plugins/entries.ts`](plugins/entries.ts). It imports the page's `style.css` and then **contains** the
+  behaviour of the example: the shared snippets the rendered markup asks for (`assets/header.js` when the page contains
+  `id="nav-drilldown"`, `assets/video.js` when it contains `id="pause-button"`) followed by the `main.js` authored next
+  to the page, each under a `// --- <source> ---` section comment. Nothing is imported from `assets/`, so a consumer
+  sees the markup, the Tailwind classes and the dummy JavaScript of a pattern without following imports. Behaviour used
+  by more than one example still belongs in `src/assets/*.js` with a detection rule, not in one example folder — the
+  file stays the single source, it is just not emitted.
+- **Inlined snippets share one module scope.** `getScriptEntry()` fails the build when two of them (or a page's own
+  `main.js`) declare the same top level name. Rename, or wrap the snippet in a block.
 - **A variant is a prop, not a copy.** `Header` renders both header patterns from one set of blocks
   (`_partials/header/`), driven by `navItems` and `metaActionItems` from `_data.ts`. If two variants need the same
   block, extract the block; do not paste the markup a second time, or one variant silently drifts from the other.
@@ -212,7 +219,8 @@ approach, and it is paid on every review:
   keep the production URLs.
 - **The dev server also rewrites the page entry.** `main.js` and `style.css` only exist in the generated projects, so
   `rewriteEntriesForDev()` replaces that one tag with a link to `/assets/styles.css` and the shared scripts the page
-  needs. Together with the CDN rewrite, these are the only two differences between dev and the emitted HTML.
+  needs — as the separate modules they are authored as, where the build inlines them. Together with the CDN rewrite,
+  these are the only two differences between dev and the emitted HTML.
 - **Previewing a project builds it, it does not serve `dist/`.** `npm run preview:examples/patterns` (and `…/templates`)
   run the same `vite build` as `build:verify` via
   [`scripts/buildGeneratedProject.ts`](scripts/buildGeneratedProject.ts), rewrite the CDN origin in the emitted HTML in
@@ -246,7 +254,7 @@ approach, and it is paid on every review:
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
 4. Add an entry to `patternItems` in `src/_data.ts`, with an `href` relative to the root of the `patterns` project.
 5. If the pattern needs behaviour of its own, put it in a plain `main.js` next to the page; the build inlines it into
-   the generated entry. Shared behaviour goes to `src/assets/*.js` and is picked up by its detection rule.
+   the generated entry. Shared behaviour goes to `src/assets/*.js` and is inlined by its detection rule.
 6. Run `npm run build:verify`; the unit tests assert the accessibility baseline for every page, patterns included.
 
 ## Accessibility baseline
@@ -260,7 +268,7 @@ baseline when adding examples. The unit tests assert it for every page.
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
 heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is
 empty and carries no spacing, so the footer is seen on its own instead of below a placeholder heading. The shared test
-therefore asserts *at most* one first level heading per example, and the per-pattern suites pin down which of the two a
+therefore asserts _at most_ one first level heading per example, and the per-pattern suites pin down which of the two a
 page is — do not "fix" a missing heading by adding one back to a pattern that deliberately shows nothing above its
 section.
 
@@ -298,6 +306,11 @@ Done:
   - `npm run build:verify` builds both generated projects into `dist-tmp/`;
   - the Tailwind CLI step disappeared, `@source` now covers `*.{tsx,html}`, and the `Footer` lost the `navItems` prop it
     never used.
+- **The behaviour became part of the entry (2026-08-19).** `main.js` no longer imports `assets/header.js` and
+  `assets/video.js`, it contains them, under a section comment naming their source. An example is documentation to be
+  read, so the markup, the Tailwind classes and the dummy JavaScript of a pattern are now in two files instead of spread
+  over four; `assets/` in a generated project holds the stylesheet only, and `getScriptEntry()` rejects two snippets
+  declaring the same top level name, which one module scope cannot hold.
 
 Open:
 

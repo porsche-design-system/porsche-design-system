@@ -4,7 +4,13 @@ import { fileURLToPath } from 'node:url';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
 import prettier from 'prettier';
-import { getScriptEntry, getSharedScripts, getStyleEntry, scriptEntryTag } from '../plugins/entries.ts';
+import {
+  getScriptEntry,
+  getSharedScripts,
+  getStyleEntry,
+  type SharedBehaviour,
+  scriptEntryTag,
+} from '../plugins/entries.ts';
 import { type PageModule, pageSuffix, renderPage } from '../plugins/jsx.ts';
 import { assetsDirName, type Project, projects, scriptEntryName, styleEntryName } from '../plugins/projects.ts';
 import { getPackageJson, getViteConfig, type Versions } from './generateProject.ts';
@@ -23,14 +29,26 @@ const readVersions = (): Versions => {
   return { ...dependencies, ...devDependencies };
 };
 
+/**
+ * The shared behaviour a page needs, read from `src/assets/`.
+ *
+ * It is inlined into the page's entry instead of being imported from there, so an example is one file to read; the
+ * source of a snippet stays single, it is just not emitted.
+ */
+const readSharedBehaviour = (html: string): SharedBehaviour[] =>
+  getSharedScripts(html).map((fileName) => ({
+    fileName,
+    content: fs.readFileSync(path.join(srcDir, assetsDirName, fileName), 'utf8'),
+  }));
+
 const writeFile = (filePath: string, content: string): void => {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, content.endsWith('\n') ? content : `${content}\n`);
 };
 
-const copyDir = (from: string, to: string): void => {
+const copyDir = (from: string, to: string, filter?: (sourcePath: string) => boolean): void => {
   if (fs.existsSync(from)) {
-    fs.cpSync(from, to, { recursive: true });
+    fs.cpSync(from, to, { recursive: true, filter });
   }
 };
 
@@ -63,7 +81,8 @@ const buildProject = async (project: Project, versions: Versions): Promise<numbe
         throw new Error(`[examples] "${relativePath}" does not reference its entry – is it using one of the layouts?`);
       }
 
-      // Behaviour authored next to the page is inlined into the generated entry, so a page keeps exactly one script.
+      // Behaviour authored next to the page is inlined into the generated entry, like the shared one, so a page keeps
+      // exactly one script – markup, utilities and behaviour of an example are read in one place.
       const behaviourPath = path.join(categoryDir, pageDir, scriptEntryName);
       const behaviour = fs.existsSync(behaviourPath) ? fs.readFileSync(behaviourPath, 'utf8') : undefined;
 
@@ -71,7 +90,7 @@ const buildProject = async (project: Project, versions: Versions): Promise<numbe
       writeFile(path.join(projectSrcDir, pageDir, styleEntryName), getStyleEntry(pageDir));
       writeFile(
         path.join(projectSrcDir, pageDir, scriptEntryName),
-        getScriptEntry(pageDir, { behaviour, sharedScripts: getSharedScripts(html) })
+        getScriptEntry({ behaviour, sharedBehaviour: readSharedBehaviour(html) })
       );
 
       pageDirs.push(pageDir);
@@ -88,8 +107,9 @@ const buildProject = async (project: Project, versions: Versions): Promise<numbe
     fs.copyFileSync(sourcePath, path.join(projectSrcDir, relativePath));
   }
 
-  // Both projects are self-contained: the examples repository does not allow imports across its workspaces.
-  copyDir(path.join(srcDir, assetsDirName), path.join(projectSrcDir, assetsDirName));
+  // Both projects are self-contained: the examples repository does not allow imports across its workspaces. Only the
+  // shared stylesheet is emitted – the shared `*.js` are build inputs, inlined into the entry of every page using them.
+  copyDir(path.join(srcDir, assetsDirName), path.join(projectSrcDir, assetsDirName), (from) => !from.endsWith('.js'));
   copyDir(publicDir, path.join(projectDir, 'public'));
 
   writeFile(

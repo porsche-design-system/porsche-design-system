@@ -2,8 +2,8 @@
 // EXAMPLE CODE FOR DEMONSTRATION PURPOSE ONLY.
 
 // Behaviour of the hero video: a pause control that follows the actual state of the video. Every example showing an
-// autoplaying video needs it, so it is shared instead of copied – the generated `main.js` of a page imports it when
-// the page renders the pause button.
+// autoplaying video needs it, so it is written once here and inlined into the `main.js` of every page rendering the
+// pause button.
 
 const video = document.querySelector('video');
 const pauseButton = document.getElementById('pause-button');
