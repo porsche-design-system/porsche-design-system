@@ -4,10 +4,10 @@ import {
   collectIconDeprecations,
   collectPartialDeprecations,
   collectStylesheetDeprecations,
-  collectTokenDeprecations,
 } from './collectors/scanned';
 import { collectScssDeprecations } from './collectors/scss';
 import { collectTailwindcssDeprecations } from './collectors/tailwindcss';
+import { collectTokenDeprecations } from './collectors/tokens';
 import { collectVanillaExtractDeprecations } from './collectors/vanillaExtract';
 import type { DeprecationSource, SourceCategory } from './types';
 import { SOURCE_CATEGORIES } from './types';

@@ -2,9 +2,9 @@
 
 ## Summary
 
-Token deprecations shall be exported as `tokenDeprecationsMeta` beside `tokensMeta` from
-`@porsche-design-system/tokens-meta`. It is explicitly empty today and replaces the knowledge skill's source-marker
-scan.
+Token deprecations shall be generated into `tokenDeprecationsMeta` beside `tokensMeta` and published as
+`tokenDeprecations` from `@porsche-design-system/tokens-meta`. It is explicitly empty today and replaces the knowledge
+skill's source-marker scan.
 
 The generated `tokensMeta` remains the recommended token catalog. Future deprecated token exports remain available in
 `@porsche-design-system/tokens` until removal but move from `tokensMeta` into `tokenDeprecationsMeta`.
@@ -12,7 +12,7 @@ The generated `tokensMeta` remains the recommended token catalog. Future depreca
 This design follows the conventions established by the implemented
 [SCSS deprecation metadata design](./scss-deprecation-metadata-design.md#conventions-for-other-sources). The
 literal-object authoring convention does not apply, because both catalogs are generator output rather than hand-authored
-— the equivalent constraint is that the _generator input_ carries structured deprecation data.
+— the equivalent constraint is that the _generator input_ carries structured deprecation data. It is implemented.
 
 ## Architecture & approach
 
@@ -30,42 +30,43 @@ token into exactly one metadata catalog. The skill imports the result and perfor
 
 ### Token metadata
 
-Add a package-owned deprecation detail with optional `message` and `replacement`, and a `DeprecatedTokenMeta` subtype
-that requires it:
+The marker and the leaf wrapper come from
+[`@porsche-design-system/shared/deprecation`](./scss-deprecation-metadata-design.md#deprecation-types); the package
+declares neither:
 
 ```ts
-export type DeprecatedTokenMeta = Omit<TokenMeta, 'description'> & {
-  description?: string;
-  deprecation: TokenDeprecation;
-};
+export type DeprecatedTokenMeta = Deprecated<TokenMeta>;
+export type TokenDeprecationsMeta = DeprecationsMeta<TokensMeta, DeprecatedTokenMeta>;
 ```
 
 `TokenMeta` itself gains **no** `deprecation` field, so the generator cannot emit a deprecated token into `tokensMeta`
-or a current token into `tokenDeprecationsMeta` without a compile error. `deprecation: {}` means the default
-no-replacement message. `description` is optional on the deprecated subtype because the generated `@deprecated` JSDoc
-carries the guidance.
+or a current token into `tokenDeprecationsMeta` without a compile error. `deprecation: {}` is a valid, complete marker:
+the default no-replacement message. `Deprecated<T>` strips `description`, since the generated `@deprecated` JSDoc
+carries the guidance and nothing renders a docs row for a legacy token.
 
 The generator emits:
 
 - `tokensMeta`: current tokens only;
 - `tokenDeprecationsMeta`: deprecated tokens only, preserving generator order.
 
-Both reuse the existing `TokensMetaTree` shape; no detailed second tree type is required.
+Both reuse the existing `TokensMetaTree` shape; no detailed second tree type is required. The deprecation block lives at
+the end of the types file, in the order every other package uses — leaf alias, then catalog.
 
-### Identity and message helpers
+### Identity helper
 
-Mirror the SCSS helpers so wording is package-owned and identical across sources. `tokenIdentifier(node)` returns the
-public export name, and `replacement` is authored through it against the current catalog rather than as a retyped
-string.
+The wording is shared, so the package adds only canonical identity. `tokenIdentifier(node)` returns the public export
+name, and `replacement` is authored through it against the current catalog rather than as a retyped string. It stays
+internal: what the package publishes is `tokenDeprecations`, built by the shared
+`publishDeprecations(tokenDeprecationsMeta, tokenIdentifier)` — one deprecation export, an ordered flat list of
+`{ identifier, deprecation }`, with identifiers already spelled.
 
-Default wording is fixed and shared:
+Default wording and the helpers that build it (`deprecationMessage` for the skill's lifecycle sentence,
+`deprecationText` for the generated `@deprecated` JSDoc) come from the shared module:
 
 - with replacement: `This API will be removed with the next major release.`;
 - without replacement: `This API will be removed with the next major release and has no replacement.`.
 
-`tokenDeprecationMessage(node)` returns the lifecycle sentence the knowledge skill records as `message`;
-`tokenDeprecationText(node)` prefixes `Use <replacement> instead.` for the generated `@deprecated` JSDoc. TypeScript
-JSDoc is stripped from emitted JavaScript and retained in `.d.ts`, so full sentences cost consumers nothing.
+TypeScript JSDoc is stripped from emitted JavaScript and retained in `.d.ts`, so full sentences cost consumers nothing.
 
 ### Authoritative token annotations
 
@@ -74,17 +75,39 @@ Token source declarations need structured deprecation input that the tokens-meta
 parsed from prose. The token package's source annotation and generated declaration documentation must share one
 package-owned descriptor or generation input.
 
+The implemented annotation is the declaration's own `@deprecated` tag, with the replacement authored as a `{@link}`
+symbol reference:
+
+```ts
+/**
+ * Holds a **frosted** blur effect value.
+ *
+ * @deprecated {@link blurSoft}
+ */
+export const blurFrosted = 'blur(32px)';
+```
+
+The generator reads the link through the TypeScript type checker, never the sentence around it, and fails both when
+the link resolves to nothing and when it names a token the documented catalog does not contain. Text beside the link
+becomes `message`; a bare `@deprecated` is the complete marker. One input therefore serves both surfaces: the
+annotation a consumer's IDE shows and the metadata the audit reads. See
+[`packages/tokens/AGENTS.md`](../packages/tokens/AGENTS.md#deprecating-a-token).
+
 ### Package export
 
-Update `packages/tokens/projects/tokens-meta/src/index.ts` to export `tokenDeprecationsMeta`. The existing root export
-is sufficient.
+Update `packages/tokens/projects/tokens-meta/src/index.ts` to export `tokenDeprecations`. The existing root export is
+sufficient. `tokenDeprecationsMeta` stays internal — its grouping is generator bookkeeping, not something a consumer of
+the deprecated surface needs.
 
 ### Knowledge-skill adapter
 
-Replace `collectTokenDeprecations()` in `collectors/scanned.ts` with a direct metadata adapter that adds only the rule
-ID, category and token reference path, sets `message` from `tokenDeprecationMessage(node)` and carries `replacement`
-through. An empty manifest produces the verified-empty Tokens section. Metadata order is preserved, and
-`tokensMetaRoot()` is dropped once nothing else uses it.
+Replace `collectTokenDeprecations()` in `collectors/scanned.ts` with a call to the shared `styleAliasSource`
+(`collectors/styleAlias.ts`) that the styling solutions already use — these entries are the same `styleAlias` kind. The
+collector becomes pure configuration: the published list, an origin sentence and the token reference. An empty manifest
+produces the verified-empty Tokens section, order is preserved, and `tokensMetaRoot()` is dropped once nothing else uses
+it.
+
+The completeness gate gains a row in its table rather than a new block of assertions.
 
 ## Data & state
 
@@ -113,31 +136,31 @@ future deprecation workflow.
 
 Package tests shall prove:
 
-1. `tokenDeprecationsMeta` is exported and explicitly empty in the current release.
+1. `tokenDeprecations` is exported and explicitly empty in the current release.
 2. Every generated token appears exactly once across the two catalogs.
 3. Current metadata contains no deprecation field, and every documented token has a non-empty `description`.
 4. Deprecated metadata entries always carry deprecation details.
 5. Token names are unique across both catalogs.
-6. A fixture entry receives the shared default wording for both the replacement and no-replacement cases.
-7. Generated token package exports remain compatible.
+6. Generated token package exports remain compatible.
+
+The default wording needs no test here — it is the shared module's, and tested there.
 
 Items 3 and 4 are additionally enforced by the compiler through `DeprecatedTokenMeta`; the runtime assertions remain as
 the backstop for generator output typed loosely.
 
-Skills tests derive the category from the imported catalog using the package's own helpers — never a hand-authored list
-and never a source scan — and, with a fixture, verify direct rendering of message and replacement data.
+Skills tests derive the category from the published list — never a hand-authored list and never a source scan — and,
+with a fixture, verify direct rendering of message and replacement data.
 
 ## Rollout
 
-1. Add the deprecation detail, `DeprecatedTokenMeta`, the identity helper, the two message helpers, and the structured
-   source annotation.
+1. Add `DeprecatedTokenMeta` and the identity helper over the shared contract, plus the structured source annotation.
 2. Extend `generateTokensMeta.ts` to emit current and deprecated catalogs.
-3. Export the explicit empty `tokenDeprecationsMeta`.
+3. Publish the explicit empty `tokenDeprecations`.
 4. Replace the skill marker scan with the metadata adapter.
 5. Update generator, export, completeness, and skills tests.
 6. Remove token source-root resolution from the skill.
 
 ## Open questions
 
-The exact source annotation belongs to the token generator design. It must be structured and package-owned; parsing
-replacement text from JSDoc is not acceptable.
+None. The source annotation is the `@deprecated` tag with a `{@link}` replacement, described above: structured,
+package-owned, and never recovered from prose.

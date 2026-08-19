@@ -6,8 +6,10 @@ import { emotionDeprecations } from '@porsche-design-system/emotion/meta';
 import { scssDeprecations } from '@porsche-design-system/scss';
 import { deprecationMessage, type PublishedDeprecation } from '@porsche-design-system/shared/deprecation';
 import { tailwindDeprecations } from '@porsche-design-system/tailwindcss';
+import { tokenDeprecations } from '@porsche-design-system/tokens-meta';
 import { vanillaExtractDeprecations } from '@porsche-design-system/vanilla-extract/meta';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
+import { styleAliasSource } from '@skills/knowledge/deprecations/collectors/styleAlias';
 import type { DeprecationEntry, SourceCategory } from '@skills/knowledge/deprecations/types';
 import { BASELINE_EFFORT, ENTRY_KINDS, SOURCE_CATEGORIES } from '@skills/knowledge/deprecations/types';
 import { describe, expect, it } from 'vitest';
@@ -19,19 +21,32 @@ import { describe, expect, it } from 'vitest';
  * only true if something checks — so every expectation below is derived from the source of truth
  * itself, never from the collector that reads it: a gate re-using a collector's own output would
  * agree with it by construction and prove nothing. For most sources that means re-reading the shipped
- * artifact; for the styling packages it means their own `*DeprecationsMeta` catalogs — authored for
- * SCSS and Tailwind, which generate their shipped artifacts from them, and generated from the
- * `@deprecated` annotations for Emotion and vanilla-extract.
+ * artifact; for the packages that publish their own catalog it means their `*DeprecationsMeta` —
+ * authored for SCSS and Tailwind, which generate their shipped artifacts from them, and generated
+ * from the `@deprecated` annotations for Emotion, vanilla-extract and tokens.
  *
  * A failure here means either a deprecation escaped the index (the audit would under-report against
  * every project) or a source grew a shape the collector does not understand.
  */
 /**
- * The four styling solutions, each with what it publishes and where the collector reading it must
- * get it from. They all expose the same shape, so one table drives the same expectations for every
- * one of them and a fifth solution is a row rather than another thirty lines of assertions.
+ * Every source that publishes its own deprecated surface, with what it publishes and where the
+ * collector reading it must get it from. They all expose the same shape, so one table drives the same
+ * expectations for every one of them and a sixth source is a row rather than another thirty lines of
+ * assertions.
+ *
+ * `expectedEmpty` records the release state the row is gated against: tokens publish an empty list
+ * today, and saying so here is what keeps the other rows' emptiness a failure rather than a shrug.
  */
-const STYLING_SOURCES = [
+const METADATA_SOURCES: {
+  category: SourceCategory;
+  /** The package's published deprecated surface — the expectation, never the collector's output. */
+  deprecations: PublishedDeprecation[];
+  reference: string;
+  collector: string;
+  specifier: string;
+  /** The release state the row is gated against: a package that legitimately publishes nothing. */
+  expectedEmpty?: true;
+}[] = [
   {
     category: 'scss',
     deprecations: scssDeprecations,
@@ -60,7 +75,15 @@ const STYLING_SOURCES = [
     collector: 'tailwindcss.ts',
     specifier: '@porsche-design-system/tailwindcss',
   },
-] as const satisfies { category: SourceCategory; deprecations: PublishedDeprecation[] }[];
+  {
+    category: 'tokens',
+    deprecations: tokenDeprecations,
+    reference: 'references/tokens.md',
+    collector: 'tokens.ts',
+    specifier: '@porsche-design-system/tokens-meta',
+    expectedEmpty: true,
+  },
+];
 
 const SOURCES = collectDeprecations();
 const ENTRIES = SOURCES.flatMap((source) => source.entries);
@@ -151,41 +174,87 @@ describe('deprecation index completeness', () => {
     expect(componentMetaExpectations().length).toBeGreaterThan(0);
   });
 
-  it('keeps the shared styleAlias adapter off the filesystem, for every styling source', () => {
-    // The four styling collectors delegate their entry construction here, so the "no parsing another
+  it('keeps the shared styleAlias adapter off the filesystem, for every metadata source', () => {
+    // The metadata collectors delegate their entry construction here, so the "no parsing another
     // package's artifacts" guarantee now has to hold for this file as well as for each collector.
     expect(collectorSource('styleAlias.ts')).not.toMatch(/from 'node:(fs|path)'/);
   });
 
-  describe.each(STYLING_SOURCES)('$category', ({ category, deprecations, reference, collector, specifier }) => {
-    const entries = (): DeprecationEntry[] => entriesInOrder(category);
+  describe.each(METADATA_SOURCES)(
+    '$category',
+    ({ category, deprecations, reference, collector, specifier, expectedEmpty }) => {
+      const entries = (): DeprecationEntry[] => entriesInOrder(category);
 
-    it('collects every published deprecation exactly once, in catalog order', () => {
-      expect(deprecations.length).toBeGreaterThan(0);
-      expect(entries().map((entry) => entry.identifier)).toStrictEqual(deprecations.map((d) => d.identifier));
+      it('publishes the surface this release is gated against', () => {
+        expect(deprecations.length === 0).toBe(Boolean(expectedEmpty));
+      });
+
+      it('collects every published deprecation exactly once, in catalog order', () => {
+        expect(entries().map((entry) => entry.identifier)).toStrictEqual(deprecations.map((d) => d.identifier));
+      });
+
+      it('builds every rule id from the package identifier, so reports stay comparable', () => {
+        expect(entries().map((entry) => entry.id)).toStrictEqual(
+          deprecations.map((d) => `styleAlias/${category}/${d.identifier}`)
+        );
+      });
+
+      it('carries the package wording and replacement onto every entry verbatim', () => {
+        expect(entries().map((entry) => [entry.message, entry.replacement])).toStrictEqual(
+          deprecations.map((d) => [deprecationMessage(d), d.deprecation.replacement])
+        );
+      });
+
+      it('derives the entries from package metadata rather than the filesystem', () => {
+        const source = collectorSource(collector);
+        expect(source).toContain(`from '${specifier}'`);
+        expect(source).toContain(reference);
+        expect(source).not.toMatch(/from 'node:(fs|path)'/);
+      });
+
+      it('links every entry to the package reference', () => {
+        expect([...new Set(entries().map((entry) => entry.reference))]).toStrictEqual(
+          entries().length > 0 ? [reference] : []
+        );
+      });
+    }
+  );
+
+  /**
+   * What an empty category cannot prove about itself: that the day its package publishes something,
+   * the adapter renders it. Gated on a fixture rather than on a token nobody has deprecated yet.
+   */
+  it('maps a published deprecation onto an entry, wording, replacement and reference alike', () => {
+    const source = styleAliasSource({
+      category: 'tokens',
+      origin: 'a fixture',
+      reference: 'references/tokens.md',
+      deprecations: [
+        { identifier: 'spacingLegacy', deprecation: { replacement: 'spacingStaticMd' } },
+        { identifier: 'colorLegacy', deprecation: { message: 'Merged into the light-dark tokens.' } },
+      ],
     });
 
-    it('builds every rule id from the package identifier, so reports stay comparable', () => {
-      expect(entries().map((entry) => entry.id)).toStrictEqual(
-        deprecations.map((d) => `styleAlias/${category}/${d.identifier}`)
-      );
-    });
-
-    it('carries the package wording and replacement onto every entry verbatim', () => {
-      expect(entries().map((entry) => [entry.message, entry.replacement])).toStrictEqual(
-        deprecations.map((d) => [deprecationMessage(d), d.deprecation.replacement])
-      );
-    });
-
-    it('derives the entries from package metadata rather than the filesystem', () => {
-      const source = collectorSource(collector);
-      expect(source).toContain(`from '${specifier}'`);
-      expect(source).not.toMatch(/from 'node:(fs|path)'/);
-    });
-
-    it('links every entry to the package reference', () => {
-      expect([...new Set(entries().map((entry) => entry.reference))]).toStrictEqual([reference]);
-    });
+    expect(source.expectedEmpty).toBeUndefined();
+    expect(source.entries).toStrictEqual([
+      {
+        id: 'styleAlias/tokens/spacingLegacy',
+        kind: 'styleAlias',
+        source: 'tokens',
+        identifier: 'spacingLegacy',
+        message: 'This API will be removed with the next major release.',
+        replacement: 'spacingStaticMd',
+        reference: 'references/tokens.md',
+      },
+      {
+        id: 'styleAlias/tokens/colorLegacy',
+        kind: 'styleAlias',
+        source: 'tokens',
+        identifier: 'colorLegacy',
+        message: 'Merged into the light-dark tokens.',
+        reference: 'references/tokens.md',
+      },
+    ]);
   });
 
   /**

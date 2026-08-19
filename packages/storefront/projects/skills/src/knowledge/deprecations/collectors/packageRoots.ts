@@ -3,8 +3,8 @@ import path from 'node:path';
 
 /**
  * Resolves the styling packages' installed roots so the collectors can read the artifacts a consumer
- * actually gets — the tokens meta, the stylesheets and the partials — rather than reaching across
- * the monorepo by relative path.
+ * actually gets — the stylesheets and the partials — rather than reaching across the monorepo by
+ * relative path.
  *
  * Each package exposes a `./skill` subpath (the `PackageSkill` fragment the knowledge references are
  * built from), which is used purely as a resolution anchor: it is the one entry point every styling
@@ -15,7 +15,6 @@ const require = createRequire(import.meta.url);
 
 const packageRoot = (specifier: string): string => path.dirname(path.dirname(require.resolve(`${specifier}/skill`)));
 
-export const tokensMetaRoot = (): string => packageRoot('@porsche-design-system/tokens-meta');
 export const stylesheetsRoot = (): string => packageRoot('@porsche-design-system/stylesheets');
 
 /**
