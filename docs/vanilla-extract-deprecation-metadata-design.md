@@ -54,7 +54,9 @@ skill's package-root helpers, which now hold only the roots the remaining marker
 
 The stable identity is the public export name; the rule ID is `styleAlias/vanillaExtract/<name>`. The message is the
 annotation text exactly as authored. Entries have no structured `replacement`: the annotation sentence carries that
-guidance in prose.
+guidance in prose, so the node is `Deprecated<{ name: string }>` narrowing the shared marker to `{ message: string }`.
+`vanillaExtractDeprecations` — the catalog as an ordered flat list — is what the meta entry publishes, the domain-keyed
+catalog staying internal, matching the other three.
 
 ## Trade-offs
 

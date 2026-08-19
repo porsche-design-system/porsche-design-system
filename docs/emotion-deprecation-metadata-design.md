@@ -62,10 +62,15 @@ before the meta bundle is built. The generated file is git-ignored like the repo
 
 ### Deprecation types
 
-`emotionMeta/types.ts` gains `DeprecatedEmotionNode` (`{ name, deprecation: { message } }`) and
-`EmotionDeprecationsMeta` (`Record<keyof EmotionMeta, DeprecatedEmotionNode[]>`). The required `deprecation` keeps the
-two catalogs apart at the type level, as `DeprecatedScssVariable` does for SCSS. The marker has one field, so it stays
-inline rather than becoming a type of its own.
+`emotionMeta/types.ts` gains `DeprecatedEmotionNode` and `EmotionDeprecationsMeta`
+(`Record<keyof EmotionMeta, DeprecatedEmotionNode[]>`). The node is `Deprecated<{ name: string }>` from
+`@porsche-design-system/shared/deprecation`, narrowing the marker to `{ message: string }`: an annotation-derived
+catalog always has the annotation text, and never a structured `replacement`. The required `deprecation` keeps the two
+catalogs apart at the type level, exactly as it does for SCSS and Tailwind.
+
+`emotionDeprecations` — the catalog as an ordered flat list — is what the meta entry publishes; the domain-keyed catalog
+itself stays internal, since its grouping only records which domains were checked. Every styling package offers the
+audit the same single read surface.
 
 A deprecated node carries no `description` — it is documented by its annotation — and no `value` or `styles`, since
 nothing renders it. There is no default-wording or identity helper: the message is always the annotation, and an Emotion

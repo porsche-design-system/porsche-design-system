@@ -9,7 +9,8 @@ import {
   radiusXl,
   radiusXs,
 } from '@porsche-design-system/tokens';
-import type { TailwindThemeVariable } from '../types';
+import { tailwindIdentifier } from '../deprecation';
+import type { DeprecatedTailwindThemeVariable, TailwindThemeVariable } from '../types';
 
 /**
  * Nested single source of truth for border radii, grouped like `cssVariablesMeta`
@@ -74,23 +75,29 @@ export const radius = {
 } satisfies Record<string, TailwindThemeVariable>;
 
 // Border — width.
-export const borderWidthThemeVariables: TailwindThemeVariable[] = [
-  {
-    property: '--default-border-width',
-    value: '1px',
-    description: 'Default border width applied globally via the Tailwind `@theme` block.',
-  },
+const defaultBorderWidth = {
+  property: '--default-border-width',
+  value: '1px',
+  description: 'Default border width applied globally via the Tailwind `@theme` block.',
+} satisfies TailwindThemeVariable;
+
+export const borderWidthThemeVariables: TailwindThemeVariable[] = [defaultBorderWidth];
+
+// Border — deprecated width aliases. Both point at the default border width; the regular one also
+// says the value changed, since the default is 1px and the alias is 2px.
+export const borderDeprecations: DeprecatedTailwindThemeVariable[] = [
   {
     property: '--border-width-regular',
     value: '2px',
-    comment: 'alias (deprecated)',
-    description: 'Alias for the regular (2 px) border width. **Deprecated** — prefer `--default-border-width`.',
+    deprecation: {
+      replacement: tailwindIdentifier(defaultBorderWidth),
+      message: 'The default border width is now 1px. This API will be removed with the next major release.',
+    },
   },
   {
     property: '--border-width-thin',
     value: '1px',
-    comment: 'alias (deprecated)',
-    description: 'Alias for the thin (1 px) border width. **Deprecated** — prefer `--default-border-width`.',
+    deprecation: { replacement: tailwindIdentifier(defaultBorderWidth) },
   },
 ];
 

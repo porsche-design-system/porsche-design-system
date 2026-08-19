@@ -1,18 +1,20 @@
+import { type PublishedDeprecation, publishDeprecations } from '@porsche-design-system/shared/deprecation';
+import { tailwindIdentifier } from './deprecation';
 import { blur } from './theme/blur';
-import { border } from './theme/border';
+import { border, borderDeprecations } from './theme/border';
 import { breakpoint } from './theme/breakpoint';
 import { color } from './theme/color';
-import { displayUtilities } from './utilities/display';
 import { font } from './theme/font';
+import { motion, motionDeprecations } from './theme/motion';
+import { shadow, shadowDeprecations } from './theme/shadow';
+import { spacing } from './theme/spacing';
+import type { DeprecatedTailwindNode, TailwindDeprecationsMeta, TailwindMeta } from './types';
+import { displayUtilities } from './utilities/display';
 import { gradientUtilities } from './utilities/gradient';
 import { grid } from './utilities/grid';
 import { headingUtilities } from './utilities/heading';
-import { motion } from './theme/motion';
-import { shadow } from './theme/shadow';
 import { skeletonUtilities } from './utilities/skeleton';
-import { spacing } from './theme/spacing';
 import { textUtilities } from './utilities/text';
-import type { TailwindMeta } from './types';
 
 /**
  * The documented single source of truth — a flat, domain-keyed catalog mirroring `tokensMeta` (and
@@ -42,3 +44,38 @@ export const tailwindMeta = {
   skeleton: skeletonUtilities,
   grid,
 } satisfies TailwindMeta;
+
+/**
+ * The deprecated public surface: every legacy custom property and utility that still ships, keyed by
+ * the same root domains as {@link tailwindMeta}. A declaration lives in exactly one of the two
+ * catalogs — a deprecation *moves* its node here rather than copying it — so the recommended API
+ * stays free of legacy noise while the audit index keeps a complete, structured list to render from.
+ *
+ * Every root domain is spelled out, empty branches included, so "checked, nothing deprecated" stays
+ * distinguishable from "forgotten". Key order is the rendered contract: the knowledge skill emits
+ * entries in exactly this order.
+ */
+export const tailwindDeprecationsMeta = {
+  border: borderDeprecations,
+  blur: [],
+  breakpoint: [],
+  color: [],
+  font: [],
+  shadow: shadowDeprecations,
+  spacing: [],
+  motion: motionDeprecations,
+  gradient: [],
+  typography: [],
+  skeleton: [],
+  grid: [],
+} satisfies TailwindDeprecationsMeta;
+
+/**
+ * The published deprecated surface: the catalog above as an ordered flat list of canonical
+ * identifiers and markers. This is what consumers read — the nested catalog is routing information
+ * for the `@theme` composition, and the render inputs are of no use outside it.
+ */
+export const tailwindDeprecations: PublishedDeprecation[] = publishDeprecations<DeprecatedTailwindNode>(
+  tailwindDeprecationsMeta,
+  tailwindIdentifier
+);

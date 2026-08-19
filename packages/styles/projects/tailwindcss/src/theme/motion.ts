@@ -1,6 +1,15 @@
-import { durationLg, durationMd, durationSm, durationXl, easeIn, easeInOut, easeOut } from '@porsche-design-system/tokens';
+import {
+  durationLg,
+  durationMd,
+  durationSm,
+  durationXl,
+  easeIn,
+  easeInOut,
+  easeOut,
+} from '@porsche-design-system/tokens';
+import { tailwindIdentifier } from '../deprecation';
 import { prefix } from '../prefix';
-import type { CssNode, TailwindMeta } from '../types';
+import type { CssNode, DeprecatedTailwindThemeVariable, TailwindMeta } from '../types';
 
 /**
  * Motion token variables grouped like `tokensMeta` / the storefront API tables: the `duration`s
@@ -74,29 +83,27 @@ export const defaultTransitionDuration: CssNode = {
   value: durationSm,
 };
 
-// Motion — deprecated aliases. Non-documented CSS-only plumbing. Each points at the corresponding
-// canonical duration variable via the prefix helper so they stay in sync; the deprecation note
-// lives in the rendered CSS `comment`.
-/** @deprecated Use `motion.duration` (`--transition-duration-sm/md/lg/xl`) instead. */
-export const motionDeprecatedThemeVariables: CssNode[] = [
+// Motion — deprecated aliases. Each points at the corresponding canonical duration variable via the
+// prefix helper so the values stay in sync, and records it as the structured replacement.
+export const motionDeprecations: DeprecatedTailwindThemeVariable[] = [
   {
     property: '--transition-duration-short',
     value: prefix(motion.duration.sm.property),
-    comment: 'alias (deprecated)',
+    deprecation: { replacement: tailwindIdentifier(motion.duration.sm) },
   },
   {
     property: '--transition-duration-moderate',
     value: prefix(motion.duration.md.property),
-    comment: 'alias (deprecated)',
+    deprecation: { replacement: tailwindIdentifier(motion.duration.md) },
   },
   {
     property: '--transition-duration-long',
     value: prefix(motion.duration.lg.property),
-    comment: 'alias (deprecated)',
+    deprecation: { replacement: tailwindIdentifier(motion.duration.lg) },
   },
   {
     property: '--transition-duration-very-long',
     value: prefix(motion.duration.xl.property),
-    comment: 'alias (deprecated)',
+    deprecation: { replacement: tailwindIdentifier(motion.duration.xl) },
   },
 ];

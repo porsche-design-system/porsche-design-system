@@ -32,10 +32,10 @@
     "clean:build": "rm -rf ./dist ./meta ./emotionMeta/deprecations.ts"
   },
   "dependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/madge": "^5.0.3",

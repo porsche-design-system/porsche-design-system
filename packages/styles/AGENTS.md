@@ -48,12 +48,23 @@ npm run test:vrt:styles
 - Do not edit generated `dist/` output.
 - When possible, make changes in the relevant style target package rather than patching the demo only.
 - Keep naming and token usage aligned across style targets unless a package intentionally exposes a target-specific API.
-- A deprecated public API needs an `@deprecated` annotation on its declaration. Every package publishes a domain-keyed
-  deprecations catalog beside its meta (`emotionDeprecationsMeta`, `vanillaExtractDeprecationsMeta`,
-  `scssDeprecationsMeta`), which the knowledge skill's deprecation index is built from; in `emotion` and
-  `vanilla-extract` it is generated from those annotations (`scripts/deprecations.ts`), in `scss` it is authored and the
-  annotations are generated from it. See
-  [`docs/emotion-deprecation-metadata-design.md`](../../docs/emotion-deprecation-metadata-design.md).
+- Deprecation metadata uses one contract, from `@porsche-design-system/shared/deprecation`: the `Deprecation` marker,
+  the `Deprecated<T>` wrapper, the lifecycle wording and the `deprecationMessage` / `deprecationText` / `isDeprecated`
+  helpers. Do not add a package-local marker type, default sentence or message helper — intersect or import the shared
+  one. Only the canonical identity helper (`scssIdentifier`, `tailwindIdentifier`) is package-owned. Import the deep
+  path, never the package barrel, which is 53 modules against the contract's one.
+- Deprecated nodes carry **no** `description` — `Deprecated<T>` strips it; extra guidance goes in `deprecation.message`.
+- Keep the deprecation types in one block at the **end** of each package's types file, in the same order everywhere:
+  leaf aliases (where the package has leaf kinds), their union, then
+  `DeprecationsMeta<PackageMeta, DeprecatedPackageNode>`. Four types at most, two for the annotation-first packages.
+- Each package keeps a domain-keyed deprecations catalog beside its meta (`scssDeprecationsMeta`,
+  `tailwindDeprecationsMeta`, `emotionDeprecationsMeta`, `vanillaExtractDeprecationsMeta`) but **publishes only the flat
+  `<pkg>Deprecations`** built from it with the shared `publishDeprecations(catalog, identifierOf)`, which the knowledge
+  skill's deprecation index is built from. The grouping is authoring and composition routing, and the identity helper is
+  internal; do not export either. In `scss` and `tailwindcss` the catalog is authored and the shipped artifact's
+  deprecation markers are generated from it; in `emotion` and `vanilla-extract` the `@deprecated` annotation on the
+  declaration is the source and the catalog is generated from it (`scripts/deprecations.ts`). See
+  [`docs/scss-deprecation-metadata-design.md`](../../docs/scss-deprecation-metadata-design.md).
 - The global styles (single source of truth for `variables.css`, `color-scheme.css`, `normalize.css` and
   `font-face.css`) now live in
   [`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). Add or change CSS

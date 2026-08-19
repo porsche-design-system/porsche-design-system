@@ -1,4 +1,4 @@
-import { isDeprecated, scssDeprecationText } from '../deprecation';
+import { deprecationText, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import type { ScssBranch, ScssNode } from '../types';
 
 /** A leaf carries a variable/mixin `name` or a verbatim `raw` body. */
@@ -19,7 +19,7 @@ export const flatten = (node: ScssBranch): ScssNode[] =>
  * `//` keeps the guidance in the source a developer reads and emits nothing.
  */
 const deprecationComment = (node: ScssNode): string =>
-  isDeprecated(node) ? `// @deprecated ${scssDeprecationText(node)}\n` : '';
+  isDeprecated(node) ? `// @deprecated ${deprecationText(node)}\n` : '';
 
 /** Serialize a node: a mixin to `@mixin name(sig) { raw }`, a variable to `$name: value;`, a raw snippet verbatim. */
 export const renderNode = (node: ScssNode): string => {

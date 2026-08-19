@@ -1,11 +1,10 @@
+import { tailwindDeprecationsMeta, tailwindMeta } from '../meta';
 import { fontBaseLayer, textSizeCompanions } from '../theme/font';
-import { tailwindMeta } from '../meta';
-import { defaultTransitionDuration, defaultTransitionTimingFunction, motionDeprecatedThemeVariables } from '../theme/motion';
+import { defaultTransitionDuration, defaultTransitionTimingFunction } from '../theme/motion';
+import type { CssNode, CssRule, TailwindCssMeta } from '../types';
+import { animateSkeletonThemeVariable, skeletonKeyframes } from '../utilities/skeleton';
 import { flatten, renderNode } from './render';
 import { schemeRootFallback, schemeUtilities } from './scheme';
-import { animateSkeletonThemeVariable, skeletonKeyframes } from '../utilities/skeleton';
-import { shadowDeprecatedThemeVariables } from '../theme/shadow';
-import type { CssNode, CssRule, TailwindCssMeta } from '../types';
 
 /**
  * The CSS-generation layer for the Tailwind styling solution: the assembly that composes the
@@ -52,14 +51,15 @@ const themeBlock: CssRule = {
     tailwindMeta.breakpoint,
     tailwindMeta.spacing,
     tailwindMeta.border,
+    tailwindDeprecationsMeta.border,
     tailwindMeta.blur,
     tailwindMeta.shadow,
     outlineWidth,
     tailwindMeta.motion,
     defaultTransitionTimingFunction,
     defaultTransitionDuration,
-    shadowDeprecatedThemeVariables,
-    motionDeprecatedThemeVariables,
+    tailwindDeprecationsMeta.shadow,
+    tailwindDeprecationsMeta.motion,
     animateSkeletonThemeVariable,
     skeletonKeyframes,
   ]),

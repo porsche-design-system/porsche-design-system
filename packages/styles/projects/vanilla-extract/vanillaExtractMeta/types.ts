@@ -1,7 +1,10 @@
+import type { Deprecated, DeprecationsMeta } from '@porsche-design-system/shared/deprecation';
+
 // The vanilla-extract meta model — the documented single source of truth these types validate. Leaves
 // (`VanillaExtractToken`, `VanillaExtractUtility`) carry payloads; records and arrays only group.
 // Mirrors the scss meta skeleton (`scss/src/types.ts`); a leaf's kind is recovered via `kindOf` (`./kind`).
-// A node carrying `deprecation` belongs to `vanillaExtractDeprecationsMeta`, never to `vanillaExtractMeta`.
+// A node carrying `deprecation` belongs to `vanillaExtractDeprecationsMeta`, never to `vanillaExtractMeta`; those types
+// live in the `Deprecated surface` block at the end of this file.
 
 /** A documented referenceable value (color, radius, breakpoint, font-size, …). */
 export type VanillaExtractToken = {
@@ -272,20 +275,17 @@ export type VanillaExtractMeta = {
   };
 };
 
-/**
- * A deprecated public export: its name plus the `@deprecated` annotation the declaration carries,
- * verbatim. There is no structured `replacement` — the annotations state their guidance in prose —
- * and no `description`, `value` or `styles`, since nothing renders a deprecated node. The required
- * `deprecation` keeps a {@link VanillaExtractNode} out of the deprecated catalog and vice versa.
- */
-export type DeprecatedVanillaExtractNode = {
-  name: string;
-  deprecation: { message: string };
-};
+// --- Deprecated surface ------------------------------------------------------------------------
+// The legacy exports that still ship, beside the documented catalog above. Shape and placement are
+// identical in every styling package: the leaf, then the catalog. There are no per-kind aliases
+// here, because a deprecated export is only ever a name — nothing renders it.
 
 /**
- * The deprecated public surface, keyed by the same root domains as {@link VanillaExtractMeta}: every
- * domain is spelled out, empty ones included, so "checked, nothing deprecated" stays distinguishable
- * from "forgotten". Domain order is the rendered contract — the knowledge skill emits entries in it.
+ * A deprecated public export: its name plus the `@deprecated` annotation it carries, verbatim. The
+ * marker is narrowed to a required `message`, since an annotation-derived catalog always has one and
+ * never a structured `replacement`.
  */
-export type VanillaExtractDeprecationsMeta = Record<keyof VanillaExtractMeta, DeprecatedVanillaExtractNode[]>;
+export type DeprecatedVanillaExtractNode = Deprecated<{ name: string }> & { deprecation: { message: string } };
+
+/** The deprecated surface, keyed by the same root domains as {@link VanillaExtractMeta}. */
+export type VanillaExtractDeprecationsMeta = DeprecationsMeta<VanillaExtractMeta, DeprecatedVanillaExtractNode>;

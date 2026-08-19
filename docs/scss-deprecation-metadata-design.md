@@ -60,26 +60,30 @@ depend on merging two sources.
 
 ### SCSS node types
 
-Add the lifecycle detail and one deprecated subtype per leaf kind in `packages/styles/projects/scss/src/types.ts`:
+Derive one deprecated subtype per leaf kind in `packages/styles/projects/scss/src/types.ts` from the shared contract:
 
 ```ts
-export type ScssDeprecation = {
-  /** Optional note replacing the package default lifecycle sentence. */
-  message?: string;
-  /** Canonical consumer-facing identifier, such as `$radius-sm` or `focus-visible()`. */
-  replacement?: string;
-};
+// @porsche-design-system/shared/deprecation
+export type Deprecation = { message?: string; replacement?: string };
+export type Deprecated<T> = (T extends unknown ? Omit<T, 'description'> : never) & { deprecation: Deprecation };
+export type DeprecationsBranch<T> = T | DeprecationsBranch<T>[] | { [key: string]: DeprecationsBranch<T> };
+export type DeprecationsMeta<TMeta, TNode> = Record<keyof TMeta, DeprecationsBranch<TNode>>;
+export type PublishedDeprecation = { identifier: string; deprecation: Deprecation };
 
-export type DeprecatedScssVariable = Omit<ScssVariable, 'description'> & {
-  description?: string;
-  deprecation: ScssDeprecation;
-};
-
-export type DeprecatedScssMixin = Omit<ScssMixin, 'description'> & {
-  description?: string;
-  deprecation: ScssDeprecation;
-};
+// scss/src/types.ts — the whole deprecated surface, in a block at the end of the file
+export type DeprecatedScssVariable = Deprecated<ScssVariable>;
+export type DeprecatedScssMixin = Deprecated<ScssMixin>;
+export type DeprecatedScssNode = Deprecated<ScssVariable | ScssMixin>;
+export type ScssDeprecationsMeta = DeprecationsMeta<ScssMeta, DeprecatedScssNode>;
 ```
+
+`Deprecated<T>` is distributive, so a union of leaf kinds maps in one go, and it strips `description` itself — the rule
+is repo-wide, so no package restates it. `DeprecationsBranch` / `DeprecationsMeta` mean no package writes its own
+recursive branch type, and `flattenDeprecations` is shared too rather than reimplemented per package.
+
+Every styling package carries this block **at the end of its types file, in this order**: leaf aliases where the package
+has leaf kinds, their union, then the catalog. The annotation-first packages have no leaf kinds — a deprecated export is
+only ever a name — so their block is two types. Only identity stays package-local.
 
 `ScssVariable` and `ScssMixin` gain no `deprecation` field. The separation is therefore enforced by the compiler in both
 directions: `satisfies ScssMeta` rejects a documented node that grew a `deprecation`, and the deprecated catalog's
@@ -100,10 +104,10 @@ Deprecated nodes remain complete render inputs: variables carry `name` and `valu
 The existing generic `comment` field is not the source of deprecation semantics. The renderer creates deprecation
 comments from `deprecation`.
 
-### Identity and message helpers
+### Identity helper
 
-Add package-local helpers that own canonical identity and default wording. The renderer and the knowledge-skill adapter
-both use them, so no downstream code re-spells an identifier or re-invents a fallback message.
+The wording helpers are shared (`deprecationMessage`, `deprecationText`); the package adds only canonical identity. The
+renderer and the knowledge-skill adapter both use it, so no downstream code re-spells an identifier.
 
 `scssIdentifier(node)` returns the consumer-facing spelling:
 
@@ -114,17 +118,17 @@ When a replacement is another metadata node, author its value as `scssIdentifier
 exported current catalog — `scssIdentifier(shadow.lg)`, not a retyped string and not an intermediate local const. The
 exported `deprecation.replacement` remains a simple string.
 
-Default messages are:
+Default messages are shared, not package-local:
 
 - with replacement: `This API will be removed with the next major release.`;
 - without replacement: `This API will be removed with the next major release and has no replacement.`.
 
-Two helpers, because the two consumers need different halves:
+Two shared helpers, because the two consumers need different halves:
 
-- `scssDeprecationMessage(node)` returns the authored `message` or the applicable default. The knowledge skill uses this
-  as the entry's `message` and renders `replacement` in its own column, so the remediation cell reads
+- `deprecationMessage(node)` returns the authored `message` or the applicable default. The knowledge skill uses this as
+  the entry's `message` and renders `replacement` in its own column, so the remediation cell reads
   ``Use `$radius-sm`. This API will be removed…`` without duplicating the replacement.
-- `scssDeprecationText(node)` prefixes the replacement sentence for the generated comment:
+- `deprecationText(node)` prefixes the replacement sentence for the generated comment:
 
 ```text
 Use <replacement> instead. <message>
@@ -184,8 +188,14 @@ generated SCSS and is added to `deprecations.md`.
 
 ### Root deprecation catalog
 
-Assemble `scssDeprecationsMeta` beside the existing `scssMeta` in `src/meta.ts` and export both from `src/index.ts`. The
-package root already provides the stable JavaScript metadata export, so no new package subpath is needed.
+Assemble `scssDeprecationsMeta` beside the existing `scssMeta` in `src/meta.ts`. The package root already provides the
+stable JavaScript metadata export, so no new package subpath is needed.
+
+The nested catalog itself stays **internal**. Its grouping is routing information — `src/scss/index.ts` reads
+`scssDeprecationsMeta.border`, `.typography.heading`, … at fifteen sites to place each legacy node in the right partial
+— and no consumer of the deprecated surface needs it. What `src/index.ts` publishes is `scssDeprecations`: the same
+catalog flattened once, in catalog order. One deprecation export per package, so nothing downstream re-walks a tree,
+re-filters it or casts the result.
 
 ```ts
 export const scssMeta = {
@@ -237,11 +247,11 @@ generated SCSS difference is the standardized deprecation comments.
 ### Knowledge-skill adapter
 
 Replace the filesystem implementation in
-`packages/storefront/projects/skills/src/knowledge/deprecations/collectors/scss.ts` with a metadata adapter that imports
-`flatten`, `isDeprecated`, `scssIdentifier`, `scssDeprecationMessage` and `scssDeprecationsMeta` from
-`@porsche-design-system/scss`.
+`packages/storefront/projects/skills/src/knowledge/deprecations/collectors/scss.ts` with a metadata adapter over
+`scssDeprecations` — the package's flat read surface — supplying `scssIdentifier` for identity.
 
-For each deprecated node, the adapter derives only knowledge-skill concerns:
+Because every catalog carries the same marker, the mapping itself is the shared `styleAliasSource` used by all four
+styling collectors:
 
 ```ts
 {
@@ -249,7 +259,7 @@ For each deprecated node, the adapter derives only knowledge-skill concerns:
   kind: 'styleAlias',
   source: 'scss',
   identifier: scssIdentifier(node),
-  message: scssDeprecationMessage(node),
+  message: deprecationMessage(node),
   ...(node.deprecation.replacement ? { replacement: node.deprecation.replacement } : {}),
   reference: 'references/styles/scss.md',
 }
@@ -408,11 +418,11 @@ boundaries.
 Update tests to prove:
 
 1. the SCSS source imports package metadata and performs no filesystem access;
-2. collected identifiers equal `flatten(scssDeprecationsMeta).filter(isDeprecated).map(scssIdentifier)` exactly, in
-   catalog order — one entry each, none dropped, none added, none re-sorted;
+2. collected identifiers equal `scssDeprecations.map(scssIdentifier)` exactly, in catalog order — one entry each, none
+   dropped, none added, none re-sorted;
 3. every rule ID is `styleAlias/scss/<identifier>` built from that same identifier;
-4. every entry's `message` and `replacement` equal the package's `scssDeprecationMessage(node)` and
-   `node.deprecation.replacement` verbatim;
+4. every entry's `message` and `replacement` equal `deprecationMessage(node)` and `node.deprecation.replacement`
+   verbatim;
 5. metadata replacements appear in the Markdown remediation column;
 6. every SCSS entry links to `references/styles/scss.md`;
 7. generated `deprecations.md` snapshots contain the enriched SCSS guidance;
@@ -435,7 +445,8 @@ Implement this as one SCSS-focused change:
    to renderable nodes carrying `deprecation`.
 3. Separate internal support maps or snippets from their public deprecated mixins where they currently share one raw
    block.
-4. Assemble and export the domain-keyed `scssDeprecationsMeta` beside the existing `scssMeta`.
+4. Assemble the domain-keyed `scssDeprecationsMeta` beside the existing `scssMeta`, and export the flat
+   `scssDeprecations` derived from it.
 5. Extend the SCSS renderer to generate standardized standalone silent `@deprecated` comments.
 6. Update `scssFileMeta` to render deprecated metadata branches in their current files and positions.
 7. Update SCSS metadata, generation, snapshot, and compilation tests.
@@ -467,8 +478,19 @@ that is the only place a deprecation can be recorded without being stated twice:
 Components reach the middle row indirectly: `componentMeta` is generated from Stencil source and its docblocks, so
 `componentDeprecationsMeta` is derived from that metadata rather than separately authored.
 
-Every row ends in the same published shape: a domain-keyed `<pkg>DeprecationsMeta` catalog beside the current one, on
-the package's metadata entry. The rows differ only in how it is produced — authored, or generated from the annotations.
+Every row ends in the same published shape: exactly one deprecation export, `<pkg>Deprecations` — the package's
+deprecated surface as an ordered flat list of `{ identifier, deprecation }`, built by the shared `publishDeprecations`,
+on its metadata entry. Identifiers are spelled by the package _before_ publication, so no consumer re-spells a name and
+the collectors need no per-source callback. The domain-keyed `<pkg>DeprecationsMeta` it is derived from stays internal:
+that grouping is authoring and routing information, not something a consumer needs, and publishing both invites
+downstream code to re-walk a tree it should not know about. Nodes carry the **shared contract** from
+`@porsche-design-system/shared/deprecation` — the `Deprecation` marker (`{ message?, replacement? }`), the
+`Deprecated<T>` wrapper, the lifecycle wording and the `deprecationMessage` / `deprecationText` / `isDeprecated`
+helpers. The rows differ only in how the catalog is produced — authored, or generated from the annotations — and in
+which of the marker's fields they populate.
+
+It is a _deep_ entry point on purpose: the metadata bundles import it at runtime, and the package barrel costs 53
+modules where the contract costs one.
 
 One consequence is worth stating rather than discovering. A source in the first or third row can express a structured
 `replacement`, because someone authors one; a source in the middle row carries the annotation's sentence instead, unless
@@ -479,18 +501,27 @@ identifier is the export name.
 Conventions 1 and 2 shape every deprecated catalog; 3–6 and 8 describe an authored one and apply to the first and third
 rows. Conventions 7 and 9 apply to every source. Conventions 10–13 describe the annotation-first row.
 
-1. **Dedicated deprecated types, not an optional field.** Add `Deprecated<Leaf>` types with a **required** `deprecation`
-   and leave the current leaf types without the field, so neither catalog can absorb the other's entries. Where a
+1. **Dedicated deprecated types, not an optional field.** Derive them from the shared generics —
+   `Deprecated<ScssVariable>`, `DeprecationsMeta<ScssMeta, DeprecatedScssNode>` — so the **required** `deprecation` is
+   guaranteed while the current leaf types keep no such field and neither catalog can absorb the other's entries. Keep
+   the whole block at the end of the types file, in one order everywhere: leaf aliases, their union, the catalog. Do not
+   redeclare a package-local marker, branch or catalog type; a package needing more intersects the shared one
+   (`Deprecation & { message: string }`, as the annotation-first packages do to keep their message required). Where a
    package's documented catalog must stay complete (components), the deprecated catalog is _derived_ instead — see
    `docs/component-deprecation-metadata-design.md`.
-2. **Deprecated entries carry no `description`.** Make it optional on the deprecated type and omit it; the generated
-   `@deprecated` comment or JSDoc is the documentation. Author one only where the default guidance is insufficient. The
-   current type keeps `description` required.
-3. **Fixed default wording, owned by the package.** With a replacement:
+2. **Deprecated entries carry no `description`.** `Deprecated<T>` strips it, rather than making it optional: nothing
+   renders a deprecated node's description (the skill serializers read only the documented catalog, the audit adapter
+   reads identity and marker), so an optional field is dead weight and a required one would be 131 sentences of dead
+   prose free to drift from the deprecation beside them. Extra guidance belongs in `deprecation.message`. The current
+   type keeps `description` required.
+3. **Fixed default wording, shared not repeated.** With a replacement:
    `This API will be removed with the next major release.` Without:
-   `This API will be removed with the next major release and has no replacement.` Expose two helpers — one returning the
-   lifecycle sentence for the skill, one prefixing `Use <replacement> instead.` for the generated comment — so the
-   remediation column never prints the replacement twice.
+   `This API will be removed with the next major release and has no replacement.` These sentences and the two helpers
+   that build them — `deprecationMessage` for the skill's lifecycle sentence, `deprecationText` prefixing
+   `Use <replacement> instead.` for a generated comment, so the remediation column never prints the replacement twice —
+   live in the shared module. A package that restated them would be free to drift from an index that renders every
+   source in one table. Only _identity_ stays package-owned, because `$name` versus `name()` versus `--custom-property`
+   is genuinely package-specific.
 4. **Canonical identity helper.** Author `replacement` as `<pkg>Identifier(<current node>)` read from the exported
    current catalog, never as a retyped string and never via an intermediate local const.
 5. **Generated comments must not reach a consumer's shipped bytes.** SCSS uses silent `//`. TypeScript sources use
@@ -503,11 +534,15 @@ rows. Conventions 7 and 9 apply to every source. Conventions 10–13 describe th
    (tokens, components, icons, Emotion's and vanilla-extract's annotation-derived catalogs) are exempt, since their
    authoring surface is the generator input.
 7. **The adapter maps one-to-one.** It adds only the rule ID, source category and reference path, preserves catalog
-   order, sorts nothing, and touches no filesystem.
+   order, sorts nothing, and touches no filesystem. Because every package publishes the same shape, that mapping is a
+   single shared function (`collectors/styleAlias.ts`) and a styling collector is pure configuration: its published
+   list, its origin sentence and its reference. Nothing else.
 8. **Package tests assert both directions.** Every generated public declaration originates from exactly one catalog,
    _and_ every catalog node is rendered exactly once.
-9. **The skills completeness gate derives from the package catalog** using the package's own helpers — never a
-   hand-authored identifier list, never a re-parse of the generated artifact.
+9. **The skills completeness gate derives from the published list** — never a hand-authored identifier list, never a
+   re-parse of the generated artifact. Since every styling source has the same shape, the gate is one table of
+   `{ category, deprecations, reference, collector, specifier }` rows driving one set of expectations; a new styling
+   solution is a row.
 10. **The annotation is the source; nothing restates it.** A hand-authored catalog beside an already-annotated
     declaration is a second place to keep in sync, and it is not small: authoring one for Emotion measured 741 lines of
     descriptors plus types, helpers and tests, to produce a 120-row table. Improving guidance means improving the

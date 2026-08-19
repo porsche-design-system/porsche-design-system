@@ -1,6 +1,7 @@
 import { shadowLg, shadowMd, shadowSm } from '@porsche-design-system/tokens';
+import { tailwindIdentifier } from '../deprecation';
 import { prefix } from '../prefix';
-import type { CssNode, TailwindMeta } from '../types';
+import type { DeprecatedTailwindThemeVariable, TailwindMeta } from '../types';
 
 // Shadow.
 export const shadow = {
@@ -24,12 +25,22 @@ export const shadow = {
   },
 } satisfies TailwindMeta['shadow'];
 
-// Shadow — deprecated aliases. Non-documented CSS-only plumbing (not part of `tailwindMeta`). Each
-// points at the corresponding canonical `shadow` variable via the prefix helper so they stay in
-// sync; the deprecation note lives in the rendered CSS `comment`.
-/** @deprecated Use `shadow` (`--shadow-sm/md/lg`) instead. */
-export const shadowDeprecatedThemeVariables: CssNode[] = [
-  { property: '--shadow-low', value: prefix(shadow.sm.property), comment: 'alias (deprecated)' },
-  { property: '--shadow-medium', value: prefix(shadow.md.property), comment: 'alias (deprecated)' },
-  { property: '--shadow-high', value: prefix(shadow.lg.property), comment: 'alias (deprecated)' },
+// Shadow — deprecated aliases. Each points at the corresponding canonical `shadow` variable via the
+// prefix helper so the values stay in sync, and records it as the structured replacement.
+export const shadowDeprecations: DeprecatedTailwindThemeVariable[] = [
+  {
+    property: '--shadow-low',
+    value: prefix(shadow.sm.property),
+    deprecation: { replacement: tailwindIdentifier(shadow.sm) },
+  },
+  {
+    property: '--shadow-medium',
+    value: prefix(shadow.md.property),
+    deprecation: { replacement: tailwindIdentifier(shadow.md) },
+  },
+  {
+    property: '--shadow-high',
+    value: prefix(shadow.lg.property),
+    deprecation: { replacement: tailwindIdentifier(shadow.lg) },
+  },
 ];

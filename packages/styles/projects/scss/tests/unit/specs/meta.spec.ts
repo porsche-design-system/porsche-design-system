@@ -1,15 +1,18 @@
+import { deprecationText, flattenDeprecations, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import { describe, expect, it } from 'vitest';
-import {
-  isDeprecated,
-  scssDeprecationMessage,
-  scssDeprecationsMeta,
-  scssDeprecationText,
-  scssIdentifier,
-  scssMeta,
-} from '../../../src';
+import { scssDeprecations, scssMeta } from '../../../src';
+import { scssIdentifier } from '../../../src/deprecation';
+import { scssDeprecationsMeta } from '../../../src/meta';
 import { renderScssFile, scssFileMeta } from '../../../src/scss';
 import { flatten, renderNode } from '../../../src/scss/render';
-import type { ScssBranch, ScssDeclaration, ScssNode } from '../../../src/types';
+import type {
+  DeprecatedScssNode,
+  ScssBranch,
+  ScssDeclaration,
+  ScssMixin,
+  ScssNode,
+  ScssVariable,
+} from '../../../src/types';
 
 /**
  * The invariants that make the two catalogs trustworthy as *the* source of the SCSS surface — both
@@ -22,7 +25,7 @@ import type { ScssBranch, ScssDeclaration, ScssNode } from '../../../src/types';
  */
 
 const currentNodes = flatten(scssMeta as ScssBranch);
-const deprecatedNodes = flatten(scssDeprecationsMeta as ScssBranch);
+const deprecatedNodes = flattenDeprecations<DeprecatedScssNode>(scssDeprecationsMeta);
 
 const named = (nodes: ScssNode[]): ScssDeclaration[] => nodes.filter((node): node is ScssDeclaration => 'name' in node);
 
@@ -58,46 +61,36 @@ describe('scssDeprecationsMeta', () => {
   });
 
   it('holds only variables and mixins carrying a deprecation', () => {
-    const invalid = deprecatedNodes.filter((node) => !('name' in node) || !isDeprecated(node));
+    const invalid = flatten(scssDeprecationsMeta as unknown as ScssBranch).filter(
+      (node) => !('name' in node) || !isDeprecated(node)
+    );
     expect(invalid).toStrictEqual([]);
     expect(deprecatedNodes.length).toBeGreaterThan(0);
   });
 
   it('spells every identifier uniquely within and across both catalogs', () => {
-    const identifiers = named([...currentNodes, ...deprecatedNodes]).map(scssIdentifier);
+    const identifiers = [...named(currentNodes).map(scssIdentifier), ...scssDeprecations.map((d) => d.identifier)];
     expect(identifiers.length).toBe(new Set(identifiers).size);
   });
 
   it('points every replacement at a canonical identifier other than its own', () => {
     const canonical = new Set(named(currentNodes).map(scssIdentifier));
-    const invalid = deprecatedNodes
-      .filter(isDeprecated)
-      .filter(
-        (node) =>
-          node.deprecation.replacement !== undefined &&
-          (node.deprecation.replacement === scssIdentifier(node) || !canonical.has(node.deprecation.replacement))
-      );
-    expect(invalid.map((node) => [scssIdentifier(node), node.deprecation.replacement])).toStrictEqual([]);
-  });
-
-  it('defaults an authored empty deprecation to the no-replacement lifecycle message', () => {
-    const node = { name: '$legacy', value: 0, deprecation: {} } as const;
-    expect(scssDeprecationMessage(node)).toBe(
-      'This API will be removed with the next major release and has no replacement.'
+    const invalid = scssDeprecations.filter(
+      ({ identifier, deprecation }) =>
+        deprecation.replacement !== undefined &&
+        (deprecation.replacement === identifier || !canonical.has(deprecation.replacement))
     );
-    expect(scssDeprecationText(node)).toBe(scssDeprecationMessage(node));
+    expect(invalid).toStrictEqual([]);
+  });
+});
+
+describe('scssDeprecations', () => {
+  it('publishes every catalog node once, in catalog order, spelled canonically', () => {
+    expect(scssDeprecations.map((d) => d.identifier)).toStrictEqual(deprecatedNodes.map(scssIdentifier));
   });
 
-  it('prefixes the lifecycle message with a replacement sentence when there is one', () => {
-    const node = { name: '$legacy', value: 0, deprecation: { replacement: '$radius-sm' } } as const;
-    expect(scssDeprecationText(node)).toBe(
-      'Use $radius-sm instead. This API will be removed with the next major release.'
-    );
-  });
-
-  it('lets an authored message replace the package default', () => {
-    const node = { name: '$legacy', value: 0, deprecation: { message: 'Gone already.' } } as const;
-    expect(scssDeprecationText(node)).toBe('Gone already.');
+  it('carries each node’s marker through untouched', () => {
+    expect(scssDeprecations.map((d) => d.deprecation)).toStrictEqual(deprecatedNodes.map((n) => n.deprecation));
   });
 });
 
@@ -109,7 +102,10 @@ describe('scssMeta', () => {
   });
 
   it('describes every documented leaf', () => {
-    const undescribed = named(currentNodes).filter((node) => !node.description?.trim());
+    // Typed against the documented leaves alone: `description` no longer exists on a deprecated node,
+    // which is the point — a legacy alias is documented by its deprecation, not by a docs row.
+    const documented = currentNodes.filter((node): node is ScssVariable | ScssMixin => 'name' in node);
+    const undescribed = documented.filter((node) => !node.description?.trim());
     expect(undescribed.map((node) => node.name)).toStrictEqual([]);
   });
 });
@@ -142,8 +138,8 @@ describe('scss file composition', () => {
   });
 
   it('precedes every deprecated declaration with its generated @deprecated comment', () => {
-    for (const node of deprecatedNodes.filter(isDeprecated)) {
-      expect(renderNode(node)).toContain(`// @deprecated ${scssDeprecationText(node)}\n`);
+    for (const node of deprecatedNodes) {
+      expect(renderNode(node)).toContain(`// @deprecated ${deprecationText(node)}\n`);
     }
   });
 

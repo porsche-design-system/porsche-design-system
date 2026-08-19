@@ -1,20 +1,14 @@
 import fs from 'node:fs';
-import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { emotionDeprecationsMeta } from '@porsche-design-system/emotion/meta';
-import {
-  flatten,
-  isDeprecated,
-  type ScssBranch,
-  scssDeprecationMessage,
-  scssDeprecationsMeta,
-  scssIdentifier,
-} from '@porsche-design-system/scss';
-import { vanillaExtractDeprecationsMeta } from '@porsche-design-system/vanilla-extract/meta';
+import { emotionDeprecations } from '@porsche-design-system/emotion/meta';
+import { scssDeprecations } from '@porsche-design-system/scss';
+import { deprecationMessage, type PublishedDeprecation } from '@porsche-design-system/shared/deprecation';
+import { tailwindDeprecations } from '@porsche-design-system/tailwindcss';
+import { vanillaExtractDeprecations } from '@porsche-design-system/vanilla-extract/meta';
 import { collectDeprecations } from '@skills/knowledge/deprecations/collect';
-import type { DeprecationEntry } from '@skills/knowledge/deprecations/types';
+import type { DeprecationEntry, SourceCategory } from '@skills/knowledge/deprecations/types';
 import { BASELINE_EFFORT, ENTRY_KINDS, SOURCE_CATEGORIES } from '@skills/knowledge/deprecations/types';
 import { describe, expect, it } from 'vitest';
 
@@ -25,24 +19,48 @@ import { describe, expect, it } from 'vitest';
  * only true if something checks — so every expectation below is derived from the source of truth
  * itself, never from the collector that reads it: a gate re-using a collector's own output would
  * agree with it by construction and prove nothing. For most sources that means re-reading the shipped
- * artifact; for SCSS it means the package's `scssDeprecationsMeta` catalog, which is what both the
- * partials and the index are generated from, and for Emotion and vanilla-extract their
- * `*DeprecationsMeta` catalogs, which the packages generate from the annotations on the exports.
+ * artifact; for the styling packages it means their own `*DeprecationsMeta` catalogs — authored for
+ * SCSS and Tailwind, which generate their shipped artifacts from them, and generated from the
+ * `@deprecated` annotations for Emotion and vanilla-extract.
  *
  * A failure here means either a deprecation escaped the index (the audit would under-report against
  * every project) or a source grew a shape the collector does not understand.
  */
-const require = createRequire(import.meta.url);
-const packageRoot = (specifier: string): string => path.dirname(path.dirname(require.resolve(`${specifier}/skill`)));
-
-/** Every deprecated SCSS declaration the package publishes, in catalog order. */
-const SCSS_DEPRECATIONS = flatten(scssDeprecationsMeta as ScssBranch).filter(isDeprecated);
-
-/** Every deprecated Emotion export the package publishes, in catalog order. */
-const EMOTION_DEPRECATIONS = Object.values(emotionDeprecationsMeta).flat();
-
-/** Every deprecated vanilla-extract export the package publishes, in catalog order. */
-const VANILLA_EXTRACT_DEPRECATIONS = Object.values(vanillaExtractDeprecationsMeta).flat();
+/**
+ * The four styling solutions, each with what it publishes and where the collector reading it must
+ * get it from. They all expose the same shape, so one table drives the same expectations for every
+ * one of them and a fifth solution is a row rather than another thirty lines of assertions.
+ */
+const STYLING_SOURCES = [
+  {
+    category: 'scss',
+    deprecations: scssDeprecations,
+    reference: 'references/styles/scss.md',
+    collector: 'scss.ts',
+    specifier: '@porsche-design-system/scss',
+  },
+  {
+    category: 'emotion',
+    deprecations: emotionDeprecations,
+    reference: 'references/styles/emotion.md',
+    collector: 'emotion.ts',
+    specifier: '@porsche-design-system/emotion/meta',
+  },
+  {
+    category: 'vanillaExtract',
+    deprecations: vanillaExtractDeprecations,
+    reference: 'references/styles/vanilla-extract.md',
+    collector: 'vanillaExtract.ts',
+    specifier: '@porsche-design-system/vanilla-extract/meta',
+  },
+  {
+    category: 'tailwindcss',
+    deprecations: tailwindDeprecations,
+    reference: 'references/styles/tailwindcss.md',
+    collector: 'tailwindcss.ts',
+    specifier: '@porsche-design-system/tailwindcss',
+  },
+] as const satisfies { category: SourceCategory; deprecations: PublishedDeprecation[] }[];
 
 const SOURCES = collectDeprecations();
 const ENTRIES = SOURCES.flatMap((source) => source.entries);
@@ -55,12 +73,6 @@ const entriesOf = (category: (typeof SOURCE_CATEGORIES)[number]): Set<string> =>
 /** The collected entries of a metadata-driven source, in collected order — order is part of the contract, so no `Set`. */
 const entriesInOrder = (category: (typeof SOURCE_CATEGORIES)[number]): DeprecationEntry[] =>
   SOURCES.find((source) => source.category === category)?.entries ?? [];
-
-const scssEntries = (): DeprecationEntry[] => entriesInOrder('scss');
-
-const emotionEntries = (): DeprecationEntry[] => entriesInOrder('emotion');
-
-const vanillaExtractEntries = (): DeprecationEntry[] => entriesInOrder('vanillaExtract');
 
 /** The source of a collector, read from disk to prove what it may and may not touch. */
 const collectorSource = (file: string): string =>
@@ -118,21 +130,6 @@ const componentIndexLabels = (): string[] =>
     .map((label) => (label.startsWith('component ') ? label : label))
     .sort();
 
-/** Custom properties in the generated Tailwind theme preceded by a deprecated-alias marker. */
-const tailwindDeprecatedNames = (): string[] => {
-  const lines = fs
-    .readFileSync(path.join(packageRoot('@porsche-design-system/tailwindcss'), 'dist', 'index.css'), 'utf-8')
-    .split('\n');
-  const names: string[] = [];
-  for (let i = 1; i < lines.length; i++) {
-    const property = (lines[i] as string).match(/^\s*(--[\w-]+)\s*:/);
-    if (property && /^\s*\/\*\s*alias \(deprecated\)\s*\*\/\s*$/.test(lines[i - 1] as string)) {
-      names.push(property[1] as string);
-    }
-  }
-  return names.sort();
-};
-
 describe('deprecation index completeness', () => {
   it('covers every source category exactly once, in declaration order', () => {
     expect(SOURCES.map((source) => source.category)).toStrictEqual([...SOURCE_CATEGORIES]);
@@ -154,98 +151,41 @@ describe('deprecation index completeness', () => {
     expect(componentMetaExpectations().length).toBeGreaterThan(0);
   });
 
-  it('collects every deprecated vanillaExtract export exactly once, in catalog order', () => {
-    const expected = VANILLA_EXTRACT_DEPRECATIONS.map(({ name }) => name);
-    expect(expected.length).toBeGreaterThan(0);
-    expect(vanillaExtractEntries().map((entry) => entry.identifier)).toStrictEqual(expected);
+  it('keeps the shared styleAlias adapter off the filesystem, for every styling source', () => {
+    // The four styling collectors delegate their entry construction here, so the "no parsing another
+    // package's artifacts" guarantee now has to hold for this file as well as for each collector.
+    expect(collectorSource('styleAlias.ts')).not.toMatch(/from 'node:(fs|path)'/);
   });
 
-  it('builds every vanillaExtract rule id from the package identifier, so reports stay comparable', () => {
-    expect(vanillaExtractEntries().map((entry) => entry.id)).toStrictEqual(
-      VANILLA_EXTRACT_DEPRECATIONS.map(({ name }) => `styleAlias/vanillaExtract/${name}`)
-    );
-  });
+  describe.each(STYLING_SOURCES)('$category', ({ category, deprecations, reference, collector, specifier }) => {
+    const entries = (): DeprecationEntry[] => entriesInOrder(category);
 
-  it('carries every vanillaExtract annotation onto its entry verbatim', () => {
-    expect(vanillaExtractEntries().map((entry) => entry.message)).toStrictEqual(
-      VANILLA_EXTRACT_DEPRECATIONS.map(({ deprecation }) => deprecation.message)
-    );
-  });
+    it('collects every published deprecation exactly once, in catalog order', () => {
+      expect(deprecations.length).toBeGreaterThan(0);
+      expect(entries().map((entry) => entry.identifier)).toStrictEqual(deprecations.map((d) => d.identifier));
+    });
 
-  it('derives the vanillaExtract entries from package metadata rather than the filesystem', () => {
-    const source = collectorSource('vanillaExtract.ts');
-    expect(source).toContain("from '@porsche-design-system/vanilla-extract/meta'");
-    expect(source).not.toMatch(/from 'node:(fs|path)'/);
-  });
+    it('builds every rule id from the package identifier, so reports stay comparable', () => {
+      expect(entries().map((entry) => entry.id)).toStrictEqual(
+        deprecations.map((d) => `styleAlias/${category}/${d.identifier}`)
+      );
+    });
 
-  it('links every vanillaExtract entry to the vanilla-extract reference', () => {
-    expect([...new Set(vanillaExtractEntries().map((entry) => entry.reference))]).toStrictEqual([
-      'references/styles/vanilla-extract.md',
-    ]);
-  });
+    it('carries the package wording and replacement onto every entry verbatim', () => {
+      expect(entries().map((entry) => [entry.message, entry.replacement])).toStrictEqual(
+        deprecations.map((d) => [deprecationMessage(d), d.deprecation.replacement])
+      );
+    });
 
-  it('collects every deprecated Emotion export exactly once, in catalog order', () => {
-    const expected = EMOTION_DEPRECATIONS.map(({ name }) => name);
-    expect(expected.length).toBeGreaterThan(0);
-    expect(emotionEntries().map((entry) => entry.identifier)).toStrictEqual(expected);
-  });
+    it('derives the entries from package metadata rather than the filesystem', () => {
+      const source = collectorSource(collector);
+      expect(source).toContain(`from '${specifier}'`);
+      expect(source).not.toMatch(/from 'node:(fs|path)'/);
+    });
 
-  it('builds every Emotion rule id from the package identifier, so reports stay comparable', () => {
-    expect(emotionEntries().map((entry) => entry.id)).toStrictEqual(
-      EMOTION_DEPRECATIONS.map(({ name }) => `styleAlias/emotion/${name}`)
-    );
-  });
-
-  it('carries every Emotion annotation onto its entry verbatim', () => {
-    expect(emotionEntries().map((entry) => entry.message)).toStrictEqual(
-      EMOTION_DEPRECATIONS.map(({ deprecation }) => deprecation.message)
-    );
-  });
-
-  it('derives the Emotion entries from package metadata rather than the filesystem', () => {
-    const source = collectorSource('emotion.ts');
-    expect(source).toContain("from '@porsche-design-system/emotion/meta'");
-    expect(source).not.toMatch(/from 'node:(fs|path)'/);
-  });
-
-  it('links every Emotion entry to the Emotion reference', () => {
-    expect([...new Set(emotionEntries().map((entry) => entry.reference))]).toStrictEqual([
-      'references/styles/emotion.md',
-    ]);
-  });
-
-  it('collects every deprecated SCSS declaration exactly once, in catalog order', () => {
-    const expected = SCSS_DEPRECATIONS.map(scssIdentifier);
-    expect(expected.length).toBeGreaterThan(0);
-    expect(scssEntries().map((entry) => entry.identifier)).toStrictEqual(expected);
-  });
-
-  it('builds every SCSS rule id from the package identifier, so reports stay comparable', () => {
-    expect(scssEntries().map((entry) => entry.id)).toStrictEqual(
-      SCSS_DEPRECATIONS.map((node) => `styleAlias/scss/${scssIdentifier(node)}`)
-    );
-  });
-
-  it('carries the package wording and replacement onto every SCSS entry verbatim', () => {
-    expect(scssEntries().map((entry) => [entry.message, entry.replacement])).toStrictEqual(
-      SCSS_DEPRECATIONS.map((node) => [scssDeprecationMessage(node), node.deprecation.replacement])
-    );
-  });
-
-  it('derives the SCSS entries from package metadata rather than the filesystem', () => {
-    const source = collectorSource('scss.ts');
-    expect(source).toContain("from '@porsche-design-system/scss'");
-    expect(source).not.toMatch(/from 'node:(fs|path)'/);
-  });
-
-  it('links every SCSS entry to the SCSS reference', () => {
-    expect([...new Set(scssEntries().map((entry) => entry.reference))]).toStrictEqual(['references/styles/scss.md']);
-  });
-
-  it('collects every deprecated Tailwind custom-property alias', () => {
-    const expected = tailwindDeprecatedNames();
-    expect(expected.length).toBeGreaterThan(0);
-    expect([...entriesOf('tailwindcss')].sort()).toStrictEqual(expected);
+    it('links every entry to the package reference', () => {
+      expect([...new Set(entries().map((entry) => entry.reference))]).toStrictEqual([reference]);
+    });
   });
 
   /**

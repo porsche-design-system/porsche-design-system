@@ -1,18 +1,9 @@
+import type { Deprecated, DeprecationsMeta } from '@porsche-design-system/shared/deprecation';
+
 // The scss meta model — the documented single source of truth these types validate. Leaves
 // (`ScssVariable`, `ScssMixin`, `ScssRaw`) render to scss and docs; records and arrays only group.
-// A leaf carrying `deprecation` belongs to `scssDeprecationsMeta`, never to `scssMeta`.
-
-/**
- * The lifecycle marker of a deprecated declaration. Its mere presence — `deprecation: {}` included —
- * means the node is deprecated; both fields are refinements of the package default wording. Variable
- * versus mixin is already inferable from the node shape, so no `kind` is repeated here.
- */
-export type ScssDeprecation = {
-  /** Optional note replacing the package default lifecycle sentence. */
-  message?: string;
-  /** Canonical consumer-facing identifier, such as `$radius-sm` or `focus-visible()`. */
-  replacement?: string;
-};
+// A leaf carrying `deprecation` belongs to `scssDeprecationsMeta`, never to `scssMeta`; those types
+// live in the `Deprecated surface` block at the end of this file.
 
 /** A documented scss variable. Renders a docs row and a `$name: value;` declaration. */
 export type ScssVariable = {
@@ -35,29 +26,6 @@ export type ScssMixin = {
   /** Comment rendered on its own line above the `@mixin` declaration. Never carries deprecation semantics. */
   comment?: string;
 };
-
-/**
- * A deprecated variable: the same complete render input as its documented counterpart, plus the
- * required lifecycle marker. `description` is optional because a legacy alias is documented by its
- * generated `@deprecated` comment, not by a docs row — set one only when the default guidance needs
- * more than a replacement.
- *
- * The split is what keeps `scssMeta` and `scssDeprecationsMeta` apart at the type level: a documented
- * node cannot silently gain a `deprecation`, and a deprecated node cannot silently lose one.
- */
-export type DeprecatedScssVariable = Omit<ScssVariable, 'description'> & {
-  description?: string;
-  deprecation: ScssDeprecation;
-};
-
-/** A deprecated mixin. See {@link DeprecatedScssVariable} for why `description` is optional here. */
-export type DeprecatedScssMixin = Omit<ScssMixin, 'description'> & {
-  description?: string;
-  deprecation: ScssDeprecation;
-};
-
-/** Any deprecated leaf — every `scssDeprecationsMeta` node is one of these. */
-export type DeprecatedScssNode = DeprecatedScssVariable | DeprecatedScssMixin;
 
 /** Any named leaf: a variable or a mixin, documented or deprecated. */
 export type ScssDeclaration = ScssVariable | ScssMixin | DeprecatedScssNode;
@@ -279,3 +247,19 @@ export type ScssMeta = {
   focus: ScssMixin[];
   mediaQuery: ScssMixin[];
 };
+
+// --- Deprecated surface ------------------------------------------------------------------------
+// The legacy declarations that still ship, beside the documented catalog above. Shape and placement
+// are identical in every styling package: leaf aliases, their union, then the catalog.
+
+/** A deprecated variable — its documented counterpart minus `description`, plus the lifecycle marker. */
+export type DeprecatedScssVariable = Deprecated<ScssVariable>;
+
+/** A deprecated mixin. */
+export type DeprecatedScssMixin = Deprecated<ScssMixin>;
+
+/** Any deprecated leaf — every `scssDeprecationsMeta` node is one of these. */
+export type DeprecatedScssNode = Deprecated<ScssVariable | ScssMixin>;
+
+/** The deprecated surface, keyed by the same root domains as {@link ScssMeta}. */
+export type ScssDeprecationsMeta = DeprecationsMeta<ScssMeta, DeprecatedScssNode>;

@@ -1,4 +1,13 @@
+import { isDeprecated } from '@porsche-design-system/shared/deprecation';
 import type { CssNode, ThemeBranch } from '../types';
+
+/**
+ * The marker a deprecated declaration is preceded by, derived from its `deprecation` rather than
+ * hand-written. It stays terse on purpose: CSS has no silent comment, so every byte reaches every
+ * consumer of `index.css`. The full guidance — replacement and lifecycle message — lives in
+ * `tailwindDeprecationsMeta` and the knowledge skill's deprecation index.
+ */
+const DEPRECATION_MARKER = 'alias (deprecated)';
 
 /** Whether a meta branch is a concrete {@link CssNode} leaf (vs. a grouping record/array). */
 const isLeaf = (node: ThemeBranch): node is CssNode => 'property' in node || 'selector' in node || 'raw' in node;
@@ -14,7 +23,8 @@ export const flatten = (node: ThemeBranch): CssNode[] =>
  */
 export const renderNode = (node: CssNode): string => {
   if ('property' in node) {
-    const comment = 'comment' in node && node.comment ? `/* ${node.comment} */\n` : '';
+    const marker = isDeprecated(node) ? DEPRECATION_MARKER : 'comment' in node ? node.comment : undefined;
+    const comment = marker ? `/* ${marker} */\n` : '';
     return `${comment}${node.property}: ${node.value};`;
   }
   if ('selector' in node) {

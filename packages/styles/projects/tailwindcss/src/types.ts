@@ -1,3 +1,9 @@
+import type { Deprecated, DeprecationsMeta } from '@porsche-design-system/shared/deprecation';
+
+// The tailwind meta model — the documented single source of truth these types validate. A leaf
+// carrying `deprecation` belongs to `tailwindDeprecationsMeta`, never to `tailwindMeta`; those types
+// live in the `Deprecated surface` block at the end of this file.
+
 /** A single CSS declaration, e.g. `color-scheme: dark` or `--p-color-canvas: #fff`. */
 export type CssDeclaration = {
   /** Optional leading comment rendered above the declaration. */
@@ -84,6 +90,11 @@ export type TailwindUtility = {
 /** A documented meta leaf — a token ({@link TailwindThemeVariable}) or a utility ({@link TailwindUtility}). */
 export type TailwindNode = TailwindThemeVariable | TailwindUtility;
 
+/**
+ * The lifecycle marker of a deprecated declaration. Its mere presence — `deprecation: {}` included —
+ * means the node is deprecated; both fields refine the package default wording. Theme variable
+ * versus utility is already inferable from the node shape, so no `kind` is repeated here.
+ */
 /** Any branch of the meta tree: a leaf {@link TailwindNode}, an array, or a nested record. Only leaves render; records and arrays group. */
 export type TailwindBranch = TailwindNode | TailwindBranch[] | { [key: string]: TailwindBranch };
 
@@ -249,3 +260,19 @@ export type TailwindMeta = {
     span: { oneHalf: TailwindUtility; oneThird: TailwindUtility; twoThirds: TailwindUtility };
   };
 };
+
+// --- Deprecated surface ------------------------------------------------------------------------
+// The legacy declarations that still ship, beside the documented catalog above. Shape and placement
+// are identical in every styling package: leaf aliases, their union, then the catalog.
+
+/** A deprecated theme variable — its documented counterpart minus `description`, plus the lifecycle marker. */
+export type DeprecatedTailwindThemeVariable = Deprecated<TailwindThemeVariable>;
+
+/** A deprecated utility. */
+export type DeprecatedTailwindUtility = Deprecated<TailwindUtility>;
+
+/** Any deprecated leaf — every `tailwindDeprecationsMeta` node is one of these. */
+export type DeprecatedTailwindNode = Deprecated<TailwindThemeVariable | TailwindUtility>;
+
+/** The deprecated surface, keyed by the same root domains as {@link TailwindMeta}. */
+export type TailwindDeprecationsMeta = DeprecationsMeta<TailwindMeta, DeprecatedTailwindNode>;

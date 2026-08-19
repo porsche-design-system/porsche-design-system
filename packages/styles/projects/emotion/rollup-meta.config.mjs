@@ -1,7 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 
 const outputDir = 'meta';
-const external = [/^@porsche-design-system\/tokens$/];
+const external = [/^@porsche-design-system\/(tokens|shared)/];
 
 export default [
   {

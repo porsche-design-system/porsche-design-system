@@ -1,3 +1,5 @@
+import { type PublishedDeprecation, publishDeprecations } from '@porsche-design-system/shared/deprecation';
+import { scssIdentifier } from './deprecation';
 import { blur, blurDeprecations } from './theme/blur';
 import { border, borderDeprecations } from './theme/border';
 import { breakpoint, breakpointDeprecations } from './theme/breakpoint';
@@ -8,7 +10,7 @@ import { grid as gridVariables } from './theme/grid';
 import { motion, motionDeprecations } from './theme/motion';
 import { shadow, shadowDeprecations } from './theme/shadow';
 import { spacing, spacingDeprecations } from './theme/spacing';
-import type { ScssBranch, ScssMeta } from './types';
+import type { DeprecatedScssNode, ScssDeprecationsMeta, ScssMeta } from './types';
 import { focus, focusDeprecations } from './utilities/focus';
 import { grid as gridMixin } from './utilities/grid';
 import { mediaQuery, mediaQueryDeprecations } from './utilities/media-query';
@@ -69,4 +71,14 @@ export const scssDeprecationsMeta = {
   focus: focusDeprecations,
   mediaQuery: mediaQueryDeprecations,
   grid: [],
-} satisfies Record<keyof ScssMeta, ScssBranch>;
+} satisfies ScssDeprecationsMeta;
+
+/**
+ * The published deprecated surface: the catalog above as an ordered flat list of canonical
+ * identifiers and markers. This is what consumers read — the nested catalog is routing information
+ * for the partial composition, and the render inputs are of no use outside it.
+ */
+export const scssDeprecations: PublishedDeprecation[] = publishDeprecations<DeprecatedScssNode>(
+  scssDeprecationsMeta,
+  scssIdentifier
+);
