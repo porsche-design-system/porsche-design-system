@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "ai-tag",
-    "size": 10123,
-    "gzipSize": 4435
+    "size": 9423,
+    "gzipSize": 4106
   },
   {
     "chunkShortName": "banner",
@@ -61,8 +61,8 @@
   },
   {
     "chunkShortName": "drilldown",
-    "size": 20688,
-    "gzipSize": 6531
+    "size": 20796,
+    "gzipSize": 6565
   },
   {
     "chunkShortName": "fieldset",
@@ -76,8 +76,8 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 15001,
-    "gzipSize": 5809
+    "size": 15208,
+    "gzipSize": 5862
   },
   {
     "chunkShortName": "heading",
@@ -172,12 +172,12 @@
   {
     "chunkShortName": "main",
     "size": 82277,
-    "gzipSize": 25716
+    "gzipSize": 25712
   },
   {
     "chunkShortName": "modal",
-    "size": 14387,
-    "gzipSize": 5630
+    "size": 14594,
+    "gzipSize": 5684
   },
   {
     "chunkShortName": "model-signature",
@@ -206,8 +206,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 29968,
-    "gzipSize": 11446
+    "size": 30011,
+    "gzipSize": 11470
   },
   {
     "chunkShortName": "radio-group",
@@ -231,8 +231,8 @@
   },
   {
     "chunkShortName": "sheet",
-    "size": 12983,
-    "gzipSize": 5145
+    "size": 13190,
+    "gzipSize": 5198
   },
   {
     "chunkShortName": "spinner",

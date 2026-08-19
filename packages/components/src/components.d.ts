@@ -18,11 +18,11 @@ import { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } fro
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection } from "./components/divider/divider-utils";
-import { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
+import { DrilldownAriaAttribute, DrilldownDismissEventDetail, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
-import { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutDismissEventDetail, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { HeadingAlign, HeadingColor, HeadingHyphens, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
@@ -41,18 +41,18 @@ import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
-import { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
+import { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalDismissEventDetail, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
-import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
+import { PopoverAriaAttribute, PopoverDirection, PopoverDismissEventDetail } from "./components/popover/popover-utils";
 import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
-import { SheetAriaAttribute, SheetBackground, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
+import { SheetAriaAttribute, SheetBackground, SheetDismissEventDetail, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerColor, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
@@ -81,11 +81,11 @@ export { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } fro
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 export { DividerColor, DividerDirection } from "./components/divider/divider-utils";
-export { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
+export { DrilldownAriaAttribute, DrilldownDismissEventDetail, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
-export { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutDismissEventDetail, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { HeadingAlign, HeadingColor, HeadingHyphens, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
@@ -104,18 +104,18 @@ export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
-export { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
+export { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalDismissEventDetail, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
-export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
+export { PopoverAriaAttribute, PopoverDirection, PopoverDismissEventDetail } from "./components/popover/popover-utils";
 export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
-export { SheetAriaAttribute, SheetBackground, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
+export { SheetAriaAttribute, SheetBackground, SheetDismissEventDetail, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerColor, SpinnerSize } from "./components/spinner/spinner-utils";
 export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
@@ -3428,7 +3428,7 @@ declare global {
         new (): HTMLPDividerElement;
     };
     interface HTMLPDrilldownElementEventMap {
-        "dismiss": void;
+        "dismiss": DrilldownDismissEventDetail;
         "update": DrilldownUpdateEventDetail;
     }
     /**
@@ -3481,7 +3481,7 @@ declare global {
         new (): HTMLPFlagElement;
     };
     interface HTMLPFlyoutElementEventMap {
-        "dismiss": void;
+        "dismiss": FlyoutDismissEventDetail;
         "motionVisibleEnd": FlyoutMotionVisibleEndEventDetail;
         "motionHiddenEnd": FlyoutMotionHiddenEndEventDetail;
     }
@@ -3781,7 +3781,7 @@ declare global {
         new (): HTMLPLinkTileProductElement;
     };
     interface HTMLPModalElementEventMap {
-        "dismiss": void;
+        "dismiss": ModalDismissEventDetail;
         "motionVisibleEnd": ModalMotionVisibleEndEventDetail;
         "motionHiddenEnd": ModalMotionHiddenEndEventDetail;
     }
@@ -3884,7 +3884,7 @@ declare global {
         new (): HTMLPPinCodeElement;
     };
     interface HTMLPPopoverElementEventMap {
-        "dismiss": void;
+        "dismiss": PopoverDismissEventDetail;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -3989,7 +3989,7 @@ declare global {
         new (): HTMLPSelectOptionElement;
     };
     interface HTMLPSheetElementEventMap {
-        "dismiss": void;
+        "dismiss": SheetDismissEventDetail;
         "motionVisibleEnd": SheetMotionVisibleEndEventDetail;
         "motionHiddenEnd": SheetMotionHiddenEndEventDetail;
     }
@@ -4880,9 +4880,9 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
         /**
-          * Emitted when the user closes the drilldown via the close button or Escape key.
+          * Emitted when the user closes the drilldown via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PDrilldownCustomEvent<void>) => void;
+        "onDismiss"?: (event: PDrilldownCustomEvent<DrilldownDismissEventDetail>) => void;
         /**
           * Emitted when the active navigation level changes, with the new `activeIdentifier` in the event detail.
          */
@@ -5033,9 +5033,9 @@ declare namespace LocalJSX {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * Emitted when the user closes the flyout via the close button, backdrop click, or Escape key.
+          * Emitted when the user closes the flyout via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
+        "onDismiss"?: (event: PFlyoutCustomEvent<FlyoutDismissEventDetail>) => void;
         /**
           * Emitted after the flyout's close transition completes and the panel is fully hidden.
          */
@@ -6532,9 +6532,9 @@ declare namespace LocalJSX {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key.
+          * Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PModalCustomEvent<void>) => void;
+        "onDismiss"?: (event: PModalCustomEvent<ModalDismissEventDetail>) => void;
         /**
           * Emitted after the modal's close transition completes and the dialog is fully hidden.
          */
@@ -6815,9 +6815,9 @@ declare namespace LocalJSX {
          */
         "direction"?: PopoverDirection;
         /**
-          * Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab).
+          * Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PPopoverCustomEvent<void>) => void;
+        "onDismiss"?: (event: PPopoverCustomEvent<PopoverDismissEventDetail>) => void;
         /**
           * Controls whether the popover is visible. When set (controlled mode), visibility follows this prop and the consumer owns the open state via a slotted `button`. When omitted (uncontrolled mode), the component manages visibility itself.
          */
@@ -7160,9 +7160,9 @@ declare namespace LocalJSX {
          */
         "dismissButton"?: boolean;
         /**
-          * Emitted when the user dismisses the sheet via the close button, backdrop click, or Escape key.
+          * Emitted when the user closes the sheet via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PSheetCustomEvent<void>) => void;
+        "onDismiss"?: (event: PSheetCustomEvent<SheetDismissEventDetail>) => void;
         /**
           * Emitted after the sheet's close transition has fully completed and the panel is hidden.
          */

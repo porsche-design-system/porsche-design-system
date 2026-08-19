@@ -2765,8 +2765,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the user closes the drilldown via the close button or Escape key.",
-        "type": "void",
+        "description": "Emitted when the user closes the drilldown via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.",
+        "type": "DrilldownDismissEventDetail",
+        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' }",
       },
       "update": {
         "description": "Emitted when the active navigation level changes, with the new \`activeIdentifier\` in the event detail.",
@@ -3260,8 +3261,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the user closes the flyout via the close button, backdrop click, or Escape key.",
-        "type": "void",
+        "description": "Emitted when the user closes the flyout via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.",
+        "type": "FlyoutDismissEventDetail",
+        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' }",
       },
       "motionHiddenEnd": {
         "description": "Emitted after the flyout's close transition completes and the panel is fully hidden.",
@@ -7563,8 +7565,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key.",
-        "type": "void",
+        "description": "Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.",
+        "type": "ModalDismissEventDetail",
+        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' }",
       },
       "motionHiddenEnd": {
         "description": "Emitted after the modal's close transition completes and the dialog is fully hidden.",
@@ -8288,8 +8291,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab).",
-        "type": "void",
+        "description": "Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the three was used.",
+        "type": "PopoverDismissEventDetail",
+        "typeDetail": "{ reason: 'outside-click' | 'focus-out' | 'escape' }",
       },
     },
     "hasAriaProp": true,
@@ -9430,8 +9434,9 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "dismiss": {
-        "description": "Emitted when the user dismisses the sheet via the close button, backdrop click, or Escape key.",
-        "type": "void",
+        "description": "Emitted when the user closes the sheet via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.",
+        "type": "SheetDismissEventDetail",
+        "typeDetail": "{ reason: 'dismiss-button' | 'backdrop' | 'escape' }",
       },
       "motionHiddenEnd": {
         "description": "Emitted after the sheet's close transition has fully completed and the panel is hidden.",
@@ -9758,7 +9763,7 @@ exports[`should match snapshot 1`] = `
       "update": {
         "description": "Emitted when the user clicks a sortable column header, carrying the new sort configuration in the event detail.",
         "type": "TableUpdateEventDetail",
-        "typeDetail": "{ id: string; active?: boolean; direction?: Direction }",
+        "typeDetail": "{ id: string; active?: boolean; direction?: 'asc' | 'desc' }",
       },
     },
     "hasAriaProp": false,

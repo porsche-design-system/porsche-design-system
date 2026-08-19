@@ -1,5 +1,7 @@
 <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
 
+<p-text id="dismiss-reason">Last dismissed via: not dismissed yet</p-text>
+
 <p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }">
   <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
   <p-text>Some Content</p-text>
@@ -12,6 +14,10 @@
 
 <script>
   const flyout = document.querySelector('p-flyout');
-  flyout.addEventListener('dismiss', () => (flyout.open = false));
+  const dismissReason = document.querySelector('#dismiss-reason');
+  flyout.addEventListener('dismiss', (e) => {
+    dismissReason.innerText = `Last dismissed via: ${e.detail.reason}`;
+    flyout.open = false;
+  });
   document.querySelector('p-button').addEventListener('click', () => (flyout.open = true));
 </script>
