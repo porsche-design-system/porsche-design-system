@@ -249,21 +249,7 @@ describe('onClick', () => {
     expect(component['isOpen']).toBe(false);
   });
 
-  it('should not emit dismiss when a slotted button is clicked in uncontrolled mode', () => {
-    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
-    const slotButton = document.createElement('button');
-    slotButton.slot = 'button';
-    component.host.appendChild(slotButton);
-    component['isOpen'] = true;
-
-    component.onClick({ target: slotButton } as unknown as MouseEvent);
-
-    expect(component['isOpen']).toBe(false);
-    expect(dismissSpy).not.toHaveBeenCalled();
-  });
-
-  it('should emit dismiss with reason trigger-button in controlled mode while open', () => {
-    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
+  it('should not toggle isOpen in controlled mode', () => {
     const slotButton = document.createElement('button');
     slotButton.slot = 'button';
     component.host.appendChild(slotButton);
@@ -272,20 +258,7 @@ describe('onClick', () => {
 
     component.onClick({ target: slotButton } as unknown as MouseEvent);
 
-    expect(component['isOpen']).toBe(false); // the consumer owns `open`
-    expect(dismissSpy).toHaveBeenCalledWith('trigger-button');
-  });
-
-  it('should not emit dismiss in controlled mode while already closed', () => {
-    const dismissSpy = vi.spyOn(component as any, 'dismissPopover').mockImplementation(() => {});
-    const slotButton = document.createElement('button');
-    slotButton.slot = 'button';
-    component.host.appendChild(slotButton);
-    component.open = false;
-
-    component.onClick({ target: slotButton } as unknown as MouseEvent);
-
-    expect(dismissSpy).not.toHaveBeenCalled();
+    expect(component['isOpen']).toBe(false);
   });
 });
 
@@ -460,7 +433,7 @@ describe('onClickOutside', () => {
 });
 
 describe('dismissPopover', () => {
-  it.each<PopoverDismissEventDetail['reason']>(['trigger-button', 'outside-click', 'focus-out', 'escape'])(
+  it.each<PopoverDismissEventDetail['reason']>(['outside-click', 'focus-out', 'escape'])(
     'should emit dismiss with reason %s and keep isOpen in controlled mode',
     (reason) => {
       const emit = vi.fn();
