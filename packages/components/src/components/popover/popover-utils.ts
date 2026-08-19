@@ -5,10 +5,9 @@ export const POPOVER_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type PopoverAriaAttribute = (typeof POPOVER_ARIA_ATTRIBUTES)[number];
 
 // The reasons differ from the dialog-like components (`p-modal` / `p-flyout` / `p-sheet` / `p-drilldown`): the popover
-// has no backdrop, it closes itself via its own trigger rather than a dedicated dismiss button, and it adds a
-// keyboard-only path when focus tabs out of the panel. Declared here rather than shared, since no other component
-// can emit this set.
-export type PopoverDismissEventDetail = { reason: 'trigger-button' | 'outside-click' | 'focus-out' | 'escape' };
+// has neither a backdrop nor a dismiss button, and it adds a keyboard-only path when focus tabs out of the panel.
+// Kept inline rather than referencing a shared alias so the generated API docs table renders the three values.
+export type PopoverDismissEventDetail = { reason: 'outside-click' | 'focus-out' | 'escape' };
 
 // Minimum gap (in px) kept between the panel and the viewport edges. Used both as Floating UI `shift`/`flip` padding
 // and to inset the panel's default max-width/height (`100dvw/dvh - 2 * POPOVER_SAFE_ZONE`) so it never touches the edge.

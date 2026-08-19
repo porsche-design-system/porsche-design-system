@@ -86,7 +86,7 @@ export class Popover {
   /** Sets ARIA attributes on the popover panel to improve accessibility for screen readers. */
   @Prop() public aria?: SelectedAriaAttributes<PopoverAriaAttribute>;
 
-  /** Emitted in controlled mode when the user requests to close the popover via its trigger button, the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the four was used. */
+  /** Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the three was used. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<PopoverDismissEventDetail>;
 
   @State() private isOpen = false;
@@ -155,8 +155,8 @@ export class Popover {
     // consumer owns the trigger). The `closest('[slot="button"]')` match already implies a slotted button was clicked —
     // clicks on the default shadow button retarget to the host at the shadow boundary, so `closest(...)` is `null` there
     // and this does not double-toggle (that button toggles via its own inline `onClick`).
-    if ((e.target as HTMLElement).closest('[slot="button"]') !== null) {
-      this.onTriggerClick();
+    if (!this.isControlled && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
+      this.isOpen = !this.isOpen;
     }
   }
 
@@ -235,7 +235,7 @@ export class Popover {
         ) : (
           <button
             type="button"
-            onClick={this.onTriggerClick}
+            onClick={() => !this.isControlled && (this.isOpen = !this.isOpen)}
             // Defaults first, then the consumer `aria` prop (parsed once) so it can override e.g. `aria-label`,
             // then `aria-expanded` last so it always reflects the current open state and can't be overridden.
             aria-label="More information"
@@ -434,14 +434,6 @@ export class Popover {
   private focusTrigger = (): void => {
     // Move focus to the actually rendered trigger (default info button or the projected custom button).
     this.triggerElement?.focus();
-  };
-
-  private onTriggerClick = (): void => {
-    if (!this.isControlled) {
-      this.isOpen = !this.isOpen;
-    } else if (this.effectiveOpen) {
-      this.dismissPopover('trigger-button');
-    }
   };
 
   private dismissPopover = (reason: PopoverDismissEventDetail['reason']): void => {
