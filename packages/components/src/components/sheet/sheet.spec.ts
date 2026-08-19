@@ -90,13 +90,56 @@ describe('render', () => {
   });
 });
 
-describe('dismissDialog', () => {
-  it('should emit dismiss event', () => {
+describe('dismiss request', () => {
+  it('should emit dismiss with reason dismiss-button when the dismiss button is activated', () => {
     const emitMock = vi.fn();
     component.dismiss = { emit: emitMock } as any;
-    component['dismissDialog']();
 
-    expect(emitMock).toHaveBeenCalledWith();
+    component['onDismissButtonClick']();
+
+    expect(emitMock).toHaveBeenCalledWith({ reason: 'dismiss-button' });
+  });
+
+  it('should emit dismiss with reason escape and prevent the native close', () => {
+    const emitMock = vi.fn();
+    component.dismiss = { emit: emitMock } as any;
+    const event = new Event('cancel', { cancelable: true });
+
+    component['onDialogCancel'](event);
+
+    expect(event.defaultPrevented).toBe(true);
+    expect(emitMock).toHaveBeenCalledWith({ reason: 'escape' });
+  });
+
+  it('should not emit dismiss on escape when dismissButton is false', () => {
+    const emitMock = vi.fn();
+    component.dismiss = { emit: emitMock } as any;
+    component.dismissButton = false;
+    const event = new Event('cancel', { cancelable: true });
+
+    component['onDialogCancel'](event);
+
+    expect(event.defaultPrevented).toBe(true);
+    expect(emitMock).not.toHaveBeenCalled();
+  });
+
+  it('should emit dismiss with reason backdrop when the backdrop is clicked', () => {
+    const emitMock = vi.fn();
+    component.dismiss = { emit: emitMock } as any;
+
+    component['onDialogBackdropClick']({ target: { tagName: 'DIALOG' } } as any);
+
+    expect(emitMock).toHaveBeenCalledWith({ reason: 'backdrop' });
+  });
+
+  it('should not emit dismiss when the pointer went down inside the panel', () => {
+    const emitMock = vi.fn();
+    component.dismiss = { emit: emitMock } as any;
+    component['isPointerDownInside'] = true;
+
+    component['onDialogBackdropClick']({ target: { tagName: 'DIALOG' } } as any);
+
+    expect(emitMock).not.toHaveBeenCalled();
   });
 });
 
@@ -169,4 +212,3 @@ describe('native dialog control', () => {
     expect(dialog.close).toHaveBeenCalledTimes(1);
   });
 });
-
