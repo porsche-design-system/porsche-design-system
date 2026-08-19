@@ -27,6 +27,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - **Testing**: the `testing` sub-package requires a DOM. Importing it where no DOM is available now throws an explicit
   error on import. ([#4492](https://github.com/porsche-design-system/porsche-design-system/pull/4492))
+- `Flyout`, `Modal`, `Sheet`, `Drilldown`: the `dismiss` event now carries a payload identifying how the component was
+  closed. The event detail changed from `void` to `{ reason: 'dismiss-button' | 'backdrop' | 'escape' }`, exported as
+  `FlyoutDismissEventDetail`, `ModalDismissEventDetail`, `SheetDismissEventDetail` and `DrilldownDismissEventDetail`.
+  ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
+- `Popover`: the `dismiss` event now carries a payload identifying how the component was closed. The event detail
+  changed from `void` to `{ reason: 'outside-click' | 'focus-out' | 'escape' }`, exported as
+  `PopoverDismissEventDetail`. ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
 
 ## [4.6.0-rc.2] - 2026-08-13
 

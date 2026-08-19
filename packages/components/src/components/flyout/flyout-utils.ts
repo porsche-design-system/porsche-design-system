@@ -1,4 +1,5 @@
 import { getHasConstructableStylesheetSupport } from '../../utils';
+import type { DialogDismissEventDetail } from '../../utils/dialog/dialog';
 import type { Backdrop } from '../common/dialog-base/dialog-base-styles';
 
 export const FLYOUT_BACKGROUNDS = ['canvas', 'surface'] as const;
@@ -15,6 +16,7 @@ export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 
 export type FlyoutMotionVisibleEndEventDetail = TransitionEvent;
 export type FlyoutMotionHiddenEndEventDetail = TransitionEvent;
+export type FlyoutDismissEventDetail = DialogDismissEventDetail;
 
 export type FlyoutBackdrop = Backdrop;
 

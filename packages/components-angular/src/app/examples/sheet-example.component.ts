@@ -1,11 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, type SheetDismissEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-sheet-example',
   template: `
     <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Sheet</p-button>
-    <p-sheet [open]="isSheetOpen" (dismiss)="onDismiss()" [aria]="{ 'aria-label': 'A slightly more detailed label' }">
+    <p-text>Last dismissed via: {{ dismissReason ?? 'not dismissed yet' }}</p-text>
+    <p-sheet
+      [open]="isSheetOpen"
+      (dismiss)="onDismiss($event)"
+      [aria]="{ 'aria-label': 'A slightly more detailed label' }"
+    >
       <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
       <p-text>Some Content</p-text>
     </p-sheet>
@@ -16,11 +21,13 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class SheetExampleComponent {
   isSheetOpen = false;
+  dismissReason?: SheetDismissEventDetail['reason'];
 
   onOpen() {
     this.isSheetOpen = true;
   }
-  onDismiss() {
+  onDismiss(e: CustomEvent<SheetDismissEventDetail>) {
+    this.dismissReason = e.detail.reason;
     this.isSheetOpen = false;
   }
 }

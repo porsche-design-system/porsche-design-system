@@ -30,6 +30,7 @@ import {
   type ModalAriaAttribute,
   type ModalBackdrop,
   type ModalBackground,
+  type ModalDismissEventDetail,
   type ModalMotionHiddenEndEventDetail,
   type ModalMotionVisibleEndEventDetail,
 } from './modal-utils';
@@ -79,8 +80,8 @@ export class Modal {
   /** Sets ARIA attributes on the dialog element for improved accessibility when no visible heading is present. */
   @Prop() public aria?: SelectedAriaAttributes<ModalAriaAttribute>;
 
-  /** Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key. */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+  /** Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used. */
+  @Event({ bubbles: false }) public dismiss?: EventEmitter<ModalDismissEventDetail>;
 
   /** Emitted after the modal's open transition completes and the dialog is fully visible. */
   @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<ModalMotionVisibleEndEventDetail>;
@@ -186,11 +187,11 @@ export class Modal {
         scrollerRef={(el) => (this.scroller = el)}
         dismissable={this.dismissButton ?? undefined}
         containerClass="modal"
-        onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
+        onCancel={this.onDialogCancel}
         onMouseDown={(e) => (this.isPointerDownInside = !isDialogBackdropTarget(e))}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick, this.isPointerDownInside)}
+        onClick={this.onDialogBackdropClick}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
-        onDismiss={this.dismissButton ? this.dismissDialog : undefined}
+        onDismiss={this.dismissButton ? this.onDismissButtonClick : undefined}
         header={this.hasHeader ? <slot name="header" /> : undefined}
         footer={this.hasFooter ? <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} /> : undefined}
         ariaAttributes={parseAndGetAriaAttributes({
@@ -204,8 +205,16 @@ export class Modal {
     );
   }
 
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
+  private onDialogCancel = (e: Event): void =>
+    onCancelDialog(e, () => this.dismissDialog('escape'), !this.dismissButton);
+
+  private onDialogBackdropClick = (e: MouseEvent): void =>
+    onClickDialog(e, () => this.dismissDialog('backdrop'), this.disableBackdropClick, this.isPointerDownInside);
+
+  private onDismissButtonClick = (): void => this.dismissDialog('dismiss-button');
+
+  private dismissDialog = (reason: ModalDismissEventDetail['reason']): void => {
+    this.dismiss.emit({ reason });
   };
 
   private ariaLabel = (): string => {
