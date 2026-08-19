@@ -76,7 +76,7 @@ src/
 │   ├── BasePage.tsx              # full page shell, takes `children`
 │   ├── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
 │   └── OverviewPage.tsx          # shell of the overview pages: a main landmark with link lists
-├── _partials/                    # Head, SkipLink, Footer, ExampleList – checked props
+├── _partials/                    # Head, Header, Footer, ExampleList – checked props
 │   └── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │                                 # MainNav, MetaActions, NoticeBar, CategoryTabs
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
@@ -107,8 +107,9 @@ The examples demonstrate chrome, they are not a website:
 - The overview pages are the only ones whose links go somewhere, and the only ones rendering **no** header and footer.
   Each project has one at its root; `src/index.page.tsx` adds the one of the source tree, which is the only page linking
   across categories and is therefore not emitted.
-- Consequently `Header` and `Footer` take no `basePath`; `PatternPage` does, for the link back to the overview of its
-  project.
+- Consequently `Header`, `Footer` and the layouts take no `basePath`: an example never links out of itself, not even
+  back to the overview of its project. `ExampleList` is the only component with a `basePath`, because the overview pages
+  are the only ones that navigate.
 
 A test asserts that the overview pages contain no `href="#"` and that the chrome data contains nothing else.
 
@@ -141,9 +142,9 @@ npm run build:verify        # build + `vite build` of both generated projects in
   "`{% block content %}`" or "relative to the page" leaks `.block` and `.relative` into the compiled stylesheet. The
   same applies to string literals: the header variants are named `overlay`/`stacked` precisely because a display keyword
   would end up as an unused utility. Check the compiled CSS after larger comment edits.
-- **`basePath` means "root of the generated project", not "root of `src`".** `PatternPage` is the only component taking
-  it, for the link back to the overview: `"../../"` for `patterns/header/overlay`, `"../"` for `patterns/footer`. Asset
-  URLs are not built from it — the generated `style.css` and `main.js` carry the relative paths instead.
+- **`basePath` belongs to the overview pages only.** `ExampleList` takes it to link the examples of a project relative
+  to that project's root; no layout does. Asset URLs are not built from it either — the generated `style.css` and
+  `main.js` carry the relative paths instead.
 - **`_data.ts` is imported, not injected.** There is no ambient template scope, so a page can extend the shared
   navigation (`[...navItems, extra]`) instead of only replacing it wholesale.
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
@@ -238,10 +239,9 @@ approach, and it is paid on every review:
 ## Adding a pattern (a single section)
 
 1. Create `src/patterns/<name>/index.page.tsx`.
-2. Default-export a component that renders `<PatternPage>` with `basePath` (the path back to the root of the `patterns`
-   project), `title`, `description`, and the section itself as `beforeMain` (headers) or `afterMain` (footers). The page
-   brings its own `<main id="main">` as `children`; the layout adds only the skip link and the link back to the
-   overview.
+2. Default-export a component that renders `<PatternPage>` with `title`, `description`, and the section itself as
+   `beforeMain` (headers) or `afterMain` (footers). The page brings its own `<main id="main">` as `children`; the layout
+   adds nothing around it but the page's script.
 3. Reuse the existing partial and add a prop for the variation instead of copying markup — `Header` takes
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
 4. Add an entry to `patternItems` in `src/_data.ts`, with an `href` relative to the root of the `patterns` project.
@@ -251,11 +251,11 @@ approach, and it is paid on every review:
 
 ## Accessibility baseline
 
-Every example ships a skip link, a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav
-item only, visible `:focus-visible` outlines and a `forced-colors: active` block. Templates additionally carry the
-`header` and `footer` landmarks; a pattern carries the landmark of the section it demonstrates. The overview pages have
-no chrome to skip, so each is a `main` landmark with labelled navigations. These demos are documentation, so they have
-to be correct by example — keep the baseline when adding examples. The unit tests assert it for every page.
+Every example ships a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item only,
+visible `:focus-visible` outlines and a `forced-colors: active` block. Templates additionally carry the `header` and
+`footer` landmarks; a pattern carries the landmark of the section it demonstrates. The overview pages are each a `main`
+landmark with labelled navigations. These demos are documentation, so they have to be correct by example — keep the
+baseline when adding examples. The unit tests assert it for every page.
 
 ## Status and open items
 

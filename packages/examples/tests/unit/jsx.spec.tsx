@@ -25,7 +25,6 @@ import { ExampleList } from '../../src/_partials/ExampleList.tsx';
 import { Footer } from '../../src/_partials/footer/Footer.tsx';
 import { Head } from '../../src/_partials/Head.tsx';
 import { Header } from '../../src/_partials/header/Header.tsx';
-import { SkipLink } from '../../src/_partials/SkipLink.tsx';
 import IndexPage from '../../src/index.page.tsx';
 import FooterPatternPage from '../../src/patterns/footer/index.page.tsx';
 import HeaderOverlayPage from '../../src/patterns/header/overlay/index.page.tsx';
@@ -289,15 +288,6 @@ describe('Head', () => {
   });
 });
 
-describe('SkipLink', () => {
-  it('should target the main landmark', () => {
-    const html = render(<SkipLink />);
-
-    expect(html).toContain('href="#main"');
-    expect(html).toContain('Skip to content');
-  });
-});
-
 describe('Header', () => {
   const variants = ['overlay', 'stacked'] as const;
 
@@ -427,10 +417,6 @@ describe('Header', () => {
     }
     expect(html).toContain('icon="shopping-cart"');
   });
-
-  it('should leave the skip link to the page shell', () => {
-    expect(render(<Header currentPage="home" navItems={navItems} />)).not.toContain('Skip to content');
-  });
 });
 
 describe('Footer', () => {
@@ -484,8 +470,8 @@ describe('BasePage', () => {
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
   });
 
-  it('should render the skip link as the first element of the body', () => {
-    expect(renderBasePage()).toContain('<body><a class="absolute top-2 start-2');
+  it('should render the header as the first element of the body', () => {
+    expect(renderBasePage()).toContain('<body><header');
   });
 
   it('should reference exactly one script, the entry generated next to the page', () => {
@@ -518,7 +504,7 @@ describe('BasePage', () => {
 describe('PatternPage', () => {
   const renderPatternPage = (props: Partial<Parameters<typeof PatternPage>[0]> = {}) =>
     render(
-      <PatternPage basePath="../../" title="Pattern" description="Description" {...props}>
+      <PatternPage title="Pattern" description="Description" {...props}>
         <main id="main">
           <h1>Pattern</h1>
           <p>Notes</p>
@@ -538,19 +524,17 @@ describe('PatternPage', () => {
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
   });
 
-  it('should render the skip link, leaving the main landmark to the page', () => {
+  it('should leave the main landmark to the page', () => {
     const html = renderPatternPage();
 
-    expect(html).toContain('Skip to content');
-    expect(html).toContain('href="#main"');
     expect(html).toContain('<main id="main">');
   });
 
-  it('should render the page content and link back to the overview of its project', () => {
+  it('should render the page content, and nothing the layout adds around it', () => {
     const html = renderPatternPage();
 
     expect(html).toContain('<p>Notes</p>');
-    expect(html).toContain('href="../../">Back to the overview');
+    expect(html).not.toContain('<a ');
   });
 
   it('should reference exactly one script, the entry generated next to the page', () => {
@@ -643,7 +627,6 @@ describe.each(examplePages)('%s page', (_name, Page) => {
   it('should ship the accessibility baseline', async () => {
     const html = await renderPage(Page);
 
-    expect(html).toContain('Skip to content');
     expect(html).toContain('id="main"');
   });
 
@@ -669,8 +652,11 @@ describe.each(templatePages)('%s page', (_name, Page) => {
 });
 
 describe.each(patternPages)('%s page', (_name, Page) => {
-  it('should link back to the overview of its project', async () => {
-    expect(await renderPage(Page)).toContain('>Back to the overview');
+  it('should show the pattern on its own, without chrome the layout adds around it', async () => {
+    const html = await renderPage(Page);
+
+    expect(html).not.toContain('Back to the overview');
+    expect(html).not.toContain('Skip to content');
   });
 });
 

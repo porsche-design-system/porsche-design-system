@@ -4,7 +4,6 @@ import { Footer } from '../../_partials/footer/Footer.tsx';
 /** Footer pattern – the page level footer, shown at the bottom of the content it belongs to. */
 const Page = () => (
   <PatternPage
-    basePath="../"
     title="Footer 1"
     description="Footer with a logo, navigation and legal links, shown at the bottom of a page."
     afterMain={<Footer />}

@@ -5,7 +5,6 @@ import { Header } from '../../../_partials/header/Header.tsx';
 /** Header pattern – the `stacked` layout, sitting above the content with a note and a category row. */
 const Page = () => (
   <PatternPage
-    basePath="../../"
     title="Header 2"
     description="Note, header bar and category navigation stacked above the content."
     beforeMain={

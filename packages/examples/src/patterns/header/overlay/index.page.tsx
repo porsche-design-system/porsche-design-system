@@ -5,7 +5,6 @@ import { Header } from '../../../_partials/header/Header.tsx';
 /** Header pattern – the `overlay` layout, lying on top of the hero it is shown with. */
 const Page = () => (
   <PatternPage
-    basePath="../../"
     title="Header 1"
     description="Brand, navigation and meta actions on a single row, lying on top of the content."
     beforeMain={<Header currentPage="home" navItems={navItems} showSearch />}

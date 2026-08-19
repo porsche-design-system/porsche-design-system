@@ -8,7 +8,7 @@ const Page = () => (
     title="Templates"
     description="Overview of the templates by the Porsche Design System."
     heading="Templates"
-    intro="A template is a complete application page, from the skip link to the footer. Links inside a template are placeholders."
+    intro="A template is a complete application page, from the header to the footer. Links inside a template are placeholders."
   >
     <section>
       <ExampleList basePath="./" items={templateItems} label="Templates" />

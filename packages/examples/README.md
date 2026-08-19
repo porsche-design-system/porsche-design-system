@@ -60,7 +60,8 @@ working links are the overview pages: one per generated project, plus `src/index
 the only page linking across categories and is never emitted. None of them renders a header or footer, because repeating
 the demo chrome there would demonstrate nothing and would need URLs kept in sync for no benefit.
 
-This is why `Header` and `Footer` take no `basePath`: they have no URL to build.
+This is why `Header`, `Footer` and the layouts take no `basePath`: they have no URL to build. `ExampleList`, which the
+overview pages are made of, is the only component that does.
 
 ## Structure
 
@@ -75,7 +76,6 @@ src/
 │   └── OverviewPage.tsx      # shell of the overview pages
 ├── _partials/                # components, never emitted as pages
 │   ├── Head.tsx
-│   ├── SkipLink.tsx
 │   ├── header/               # the header, split into the blocks its variants share
 │   │   ├── Header.tsx        # composes the blocks: overlay and stacked variants
 │   │   ├── HeaderBar.tsx     # the three-column row both variants are built from
@@ -173,7 +173,6 @@ import { Header } from '../../_partials/header/Header.tsx';
 
 const Page = () => (
   <PatternPage
-    basePath="../../"
     title="Header 1"
     description="…"
     beforeMain={<Header currentPage="home" navItems={navItems} showSearch />}
@@ -185,18 +184,15 @@ const Page = () => (
 export default Page;
 ```
 
-| Prop          | Purpose                                                                                            |
-| ------------- | -------------------------------------------------------------------------------------------------- |
-| `basePath`    | Path back to the root of the generated project – `"../../"` for `patterns/header/overlay`, and the |
-|               | target of the back link.                                                                           |
-| `title`       | Feeds `<title>`.                                                                                   |
-| `description` | Meta description.                                                                                  |
-| `beforeMain`  | The pattern, when it belongs above the content (a header).                                         |
-| `afterMain`   | The pattern, when it belongs below the content (a footer).                                         |
-| `children`    | The page content, including its own `<main id="main">`.                                            |
+| Prop          | Purpose                                                    |
+| ------------- | ---------------------------------------------------------- |
+| `title`       | Feeds `<title>`.                                           |
+| `description` | Meta description.                                          |
+| `beforeMain`  | The pattern, when it belongs above the content (a header). |
+| `afterMain`   | The pattern, when it belongs below the content (a footer). |
+| `children`    | The page content, including its own `<main id="main">`.    |
 
-The layout itself only adds the skip link, the link back to the overview and the page's `main.js` — everything a pattern
-page needs beyond the pattern.
+The layout itself only adds the page's `main.js` — everything a pattern page needs beyond the pattern.
 
 Rules:
 
@@ -247,8 +243,8 @@ plain HTML with relative paths, no hydration, no framework runtime.
 
 ## Accessibility baseline
 
-Every example ships a skip link, `main` and section landmarks, labelled `nav` elements, `aria-current` on the active nav
-item, visible `:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header`
-and `footer` landmarks, and a pattern carries the landmark of the section it demonstrates. The overview pages have no
-chrome to skip, so each is a `main` landmark with labelled navigations. Keep that baseline when adding examples — these
-demos are documentation, so they have to be correct by example.
+Every example ships `main` and section landmarks, labelled `nav` elements, `aria-current` on the active nav item,
+visible `:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header` and
+`footer` landmarks, and a pattern carries the landmark of the section it demonstrates. The overview pages are each a
+`main` landmark with labelled navigations. Keep that baseline when adding examples — these demos are documentation, so
+they have to be correct by example.

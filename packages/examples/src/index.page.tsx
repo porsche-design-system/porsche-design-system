@@ -18,7 +18,7 @@ const Page = () => (
   >
     <section>
       <h2 class="mb-2 text-3xl font-semibold">Templates</h2>
-      <p class="mb-6 text-fg-muted">Whole pages, from the skip link to the footer.</p>
+      <p class="mb-6 text-fg-muted">Whole pages, from the header to the footer.</p>
       <ExampleList basePath="./templates/" items={templateItems} label="Templates" />
     </section>
 

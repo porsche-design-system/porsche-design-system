@@ -3,7 +3,6 @@ import { type NavItem, navItems } from '../_data.ts';
 import { Footer } from '../_partials/footer/Footer.tsx';
 import { Head } from '../_partials/Head.tsx';
 import { Header, type HeaderVariant } from '../_partials/header/Header.tsx';
-import { SkipLink } from '../_partials/SkipLink.tsx';
 
 export type BasePageProps = {
   title: string;
@@ -38,7 +37,6 @@ export const BasePage = ({
       <Head title={title} description={description} />
     </head>
     <body>
-      <SkipLink />
       <Header currentPage={currentPage} navItems={pageNavItems} showSearch={showSearch} variant={headerVariant} />
       {children}
       <Footer />
