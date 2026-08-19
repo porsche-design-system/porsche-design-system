@@ -1,4 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
+import { screen } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -35,4 +36,15 @@ it('should have working events', async () => {
   const step2 = document.querySelector('p-stepper-horizontal-item:nth-child(2)');
   await userEvent.click(step2);
   expect(debugEl.innerHTML).toBe('Current Value: <span>1</span>; Event Counter: <span>2</span>;');
+});
+
+it('should expose its step buttons to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-stepper-horizontal');
+  await componentsReady();
+
+  expect(screen.queryAllByRole('button')).toHaveLength(0);
+  // each button sits in the shadow root of its own light DOM item, so compare the whole list
+  expect(screen.getAllByShadowRole('button')).toEqual(
+    [...document.querySelectorAll('p-stepper-horizontal-item')].map((item) => item.shadowRoot.querySelector('button'))
+  );
 });

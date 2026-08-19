@@ -433,7 +433,7 @@ export namespace Components {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
-     * @experimental
+     * @experimental 
      */
     interface PCanvas {
         /**
@@ -657,7 +657,7 @@ export namespace Components {
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
      * @controlled {"props": ["activeIdentifier"], "event": "update"}
-     * @experimental
+     * @experimental 
      */
     interface PDrilldown {
         /**
@@ -675,7 +675,7 @@ export namespace Components {
         "open"?: boolean;
     }
     /**
-     * @experimental
+     * @experimental 
      */
     interface PDrilldownItem {
         /**
@@ -703,7 +703,7 @@ export namespace Components {
         "secondary"?: boolean;
     }
     /**
-     * @experimental
+     * @experimental 
      */
     interface PDrilldownLink {
         /**
@@ -2075,7 +2075,7 @@ export namespace Components {
     }
     /**
      * @controlled {"props": ["liked"], "event": "like"}
-     * @experimental
+     * @experimental 
      */
     interface PLinkTileProduct {
         /**
@@ -3352,7 +3352,7 @@ declare global {
         "sidebarEndDismiss": void;
     }
     /**
-     * @experimental
+     * @experimental 
      */
     interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3434,7 +3434,7 @@ declare global {
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
      * @controlled {"props": ["activeIdentifier"], "event": "update"}
-     * @experimental
+     * @experimental 
      */
     interface HTMLPDrilldownElement extends Components.PDrilldown, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPDrilldownElementEventMap>(type: K, listener: (this: HTMLPDrilldownElement, ev: PDrilldownCustomEvent<HTMLPDrilldownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3451,7 +3451,7 @@ declare global {
         new (): HTMLPDrilldownElement;
     };
     /**
-     * @experimental
+     * @experimental 
      */
     interface HTMLPDrilldownItemElement extends Components.PDrilldownItem, HTMLStencilElement {
     }
@@ -3460,7 +3460,7 @@ declare global {
         new (): HTMLPDrilldownItemElement;
     };
     /**
-     * @experimental
+     * @experimental 
      */
     interface HTMLPDrilldownLinkElement extends Components.PDrilldownLink, HTMLStencilElement {
     }
@@ -3764,7 +3764,7 @@ declare global {
     }
     /**
      * @controlled {"props": ["liked"], "event": "like"}
-     * @experimental
+     * @experimental 
      */
     interface HTMLPLinkTileProductElement extends Components.PLinkTileProduct, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPLinkTileProductElementEventMap>(type: K, listener: (this: HTMLPLinkTileProductElement, ev: PLinkTileProductCustomEvent<HTMLPLinkTileProductElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4624,7 +4624,7 @@ declare namespace LocalJSX {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
-     * @experimental
+     * @experimental 
      */
     interface PCanvas {
         /**
@@ -4868,7 +4868,7 @@ declare namespace LocalJSX {
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
      * @controlled {"props": ["activeIdentifier"], "event": "update"}
-     * @experimental
+     * @experimental 
      */
     interface PDrilldown {
         /**
@@ -4894,7 +4894,7 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     /**
-     * @experimental
+     * @experimental 
      */
     interface PDrilldownItem {
         /**
@@ -4922,7 +4922,7 @@ declare namespace LocalJSX {
         "secondary"?: boolean;
     }
     /**
-     * @experimental
+     * @experimental 
      */
     interface PDrilldownLink {
         /**
@@ -6446,7 +6446,7 @@ declare namespace LocalJSX {
     }
     /**
      * @controlled {"props": ["liked"], "event": "like"}
-     * @experimental
+     * @experimental 
      */
     interface PLinkTileProduct {
         /**
@@ -8452,7 +8452,7 @@ declare module "@stencil/core" {
             "p-button-pure": LocalJSX.IntrinsicElements["p-button-pure"] & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-button-tile": LocalJSX.IntrinsicElements["p-button-tile"] & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             /**
-             * @experimental
+             * @experimental 
              */
             "p-canvas": LocalJSX.IntrinsicElements["p-canvas"] & JSXBase.HTMLAttributes<HTMLPCanvasElement>;
             /**
@@ -8469,15 +8469,15 @@ declare module "@stencil/core" {
             /**
              * @controlled {"props": ["open"], "event": "dismiss"}
              * @controlled {"props": ["activeIdentifier"], "event": "update"}
-             * @experimental
+             * @experimental 
              */
             "p-drilldown": LocalJSX.IntrinsicElements["p-drilldown"] & JSXBase.HTMLAttributes<HTMLPDrilldownElement>;
             /**
-             * @experimental
+             * @experimental 
              */
             "p-drilldown-item": LocalJSX.IntrinsicElements["p-drilldown-item"] & JSXBase.HTMLAttributes<HTMLPDrilldownItemElement>;
             /**
-             * @experimental
+             * @experimental 
              */
             "p-drilldown-link": LocalJSX.IntrinsicElements["p-drilldown-link"] & JSXBase.HTMLAttributes<HTMLPDrilldownLinkElement>;
             "p-fieldset": LocalJSX.IntrinsicElements["p-fieldset"] & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
@@ -8505,7 +8505,7 @@ declare module "@stencil/core" {
             "p-link-tile": LocalJSX.IntrinsicElements["p-link-tile"] & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             /**
              * @controlled {"props": ["liked"], "event": "like"}
-             * @experimental
+             * @experimental 
              */
             "p-link-tile-product": LocalJSX.IntrinsicElements["p-link-tile-product"] & JSXBase.HTMLAttributes<HTMLPLinkTileProductElement>;
             /**
