@@ -5,9 +5,9 @@
  * they need and pass it on explicitly, which is why a typo in a key is a compile error rather than a render-time one.
  *
  * Two kinds of links live here, and only one of them is real:
- * - `templateItems` / `patternItems` are the examples themselves, linked from the overview page, so their `href` is a
- *   real relative URL.
- * - `navItems` / `footerNavItems` / `metaActionItems` / `categoryItems` are the chrome of a demo. They exist to show a
+ * - `templateItems` / `patternItems` are the examples themselves, linked from the overview pages, so their `href` is a
+ *   real relative URL – relative to the root of their category.
+ * - `navItems` / `metaActionItems` / `categoryItems` are the chrome of a demo. They exist to show a
  *   navigation, not to navigate, so they point at `#` and are never kept in sync with the file tree.
  */
 
@@ -56,43 +56,46 @@ export type MetaActionItem = {
  */
 export const placeholderHref = '#';
 
-export type FooterNavItem = LinkItem;
-
-/** An entry of one of the two categories, listed on the overview page. */
+/** An entry of one of the two categories, listed on the overview pages. */
 export type ExampleItem = NavItem & {
   /** One sentence, shown next to the link on the overview page. */
   description: string;
 };
 
-/** Templates are complete application pages: they own the chrome and demonstrate a full document. */
+/**
+ * Templates are complete application pages: they own the chrome and demonstrate a full document.
+ *
+ * The `href` is relative to the root of the generated `templates` project, so the overview of that project links it
+ * directly and the overview of the source tree prefixes it with the category.
+ */
 export const templateItems: ExampleItem[] = [
   {
     id: 'landing',
-    href: 'templates/landing-page/',
+    href: 'landing-page/',
     label: 'Landing page',
     description: 'Hero, feature grid and call to action, with a page level navigation override.',
-  },
-  {
-    id: 'contact',
-    href: 'templates/contact-page/',
-    label: 'Contact page',
-    description: 'Form controls wired to labels and hints, plus a live region for the submit status.',
   },
 ];
 
 /** Patterns showcase a single section of a page, so variations of the same partial can be compared. */
 export const patternItems: ExampleItem[] = [
   {
-    id: 'header-1',
-    href: 'patterns/header-1/',
-    label: 'Header 1',
+    id: 'header-overlay',
+    href: 'header/overlay/',
+    label: 'Header - Overlay',
     description: 'Brand, navigation and meta actions on a single row, lying on top of the content.',
   },
   {
-    id: 'header-2',
-    href: 'patterns/header-2/',
-    label: 'Header 2',
+    id: 'header-stacked',
+    href: 'header/stacked/',
+    label: 'Header - Stacked',
     description: 'Note, header bar and category navigation stacked above the content.',
+  },
+  {
+    id: 'footer',
+    href: 'footer/',
+    label: 'Footer',
+    description: 'Footer with a logo, navigation and legal links, shown at the bottom of a page.',
   },
 ];
 
@@ -154,10 +157,4 @@ export const categoryItems: LinkItem[] = [
   { href: placeholderHref, label: 'Heritage' },
   { href: placeholderHref, label: 'Vehicle Accessories' },
   { href: placeholderHref, label: 'Eyewear' },
-];
-
-export const footerNavItems: FooterNavItem[] = [
-  { href: placeholderHref, label: 'Legal notice' },
-  { href: placeholderHref, label: 'Privacy policy' },
-  { href: placeholderHref, label: 'Contact us' },
 ];

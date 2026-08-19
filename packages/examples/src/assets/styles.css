@@ -1,9 +1,9 @@
 /*
- * Tailwind entry for every pattern page.
+ * Tailwind entry shared by every page.
  *
- * Dev: compiled on the fly by `@tailwindcss/vite`.
- * Build: compiled by the Tailwind CLI into `dist/assets/styles.css` (see the `build:css` script), so the generated
- * pages still link a single plain CSS file through a relative path.
+ * It is imported by the `style.css` of a page, which is generated next to it and pulled in by that page's `main.js`.
+ * The dev server links this file directly; the build copies it into both generated projects, where their own Vite
+ * build compiles, hashes and links it.
  *
  * Everything that can be expressed as a utility lives in the markup. Only genuinely global element defaults are
  * defined here – they apply to every page and would otherwise have to be repeated on every `<body>` and `<main>`.
@@ -15,8 +15,9 @@
 @import "tailwindcss" source(none);
 @import "@porsche-design-system/components-js/tailwindcss";
 
-/* The pages are TSX components, so Tailwind is pointed at them explicitly. */
-@source "../**/*.tsx";
+/* The pages are TSX components in the source tree and plain HTML in the generated projects, so both are scanned –
+ * whichever of the two this file sits next to. */
+@source "../**/*.{tsx,html}";
 
 :not(:defined) {
   visibility: hidden;

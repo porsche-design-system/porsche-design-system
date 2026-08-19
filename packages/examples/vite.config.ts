@@ -1,35 +1,42 @@
-import { getLoaderScript } from '@porsche-design-system/components-js/partials';
+import fs from 'node:fs';
+import path from 'node:path';
 import tailwindcss from '@tailwindcss/vite';
 import { Features } from 'lightningcss';
 import { defineConfig } from 'vite';
-import { jsxPages } from './plugins/jsx.ts';
+import { getSharedScripts, rewriteEntriesForDev } from './plugins/entries.ts';
+import { jsxPages, resolvePagePath } from './plugins/jsx.ts';
 import { injectPartials, rewriteCdnUrlsForDev } from './plugins/partials.ts';
+import { scriptEntryName } from './plugins/projects.ts';
 
+const rootDir = path.join(import.meta.dirname, 'src');
+
+/**
+ * The dev server counterpart of `scripts/build.ts`.
+ *
+ * The build writes two Vite projects whose pages load a generated `main.js`; here nothing is generated, so that tag is
+ * rewritten to the shared files of the source tree – see `plugins/entries.ts`. The partials are injected the same way
+ * in both, only the CDN origin differs – see `plugins/partials.ts`.
+ */
 const transformIndexHtmlPlugin = () => {
   return {
     name: 'html-transform',
-    transformIndexHtml(html: string): string {
-      // biome-ignore lint/correctness/noUnusedVariables: can be re-enabled when config is extended to support home & nav
-      const cspContent = [
-        `default-src 'self' https://cdn.ui.porsche.com`,
-        `style-src 'self' https://cdn.ui.porsche.com 'unsafe-inline'`,
-        `script-src 'self' https://cdn.ui.porsche.com ${getLoaderScript({ format: 'sha256' })}`,
-        `img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io data:`, // data: is needed for inline background images, e.g. used in checkbox-wrapper and radio-button-wrapper
-        `media-src 'self' https://porsche-design-system.github.io`, // the mood videos of the examples are hosted there
-      ].join('; ');
+    transformIndexHtml(html: string, ctx: { path: string }): string {
+      const pagePath = resolvePagePath(ctx.path);
+      const hasBehaviour = !!pagePath && fs.existsSync(path.join(rootDir, path.dirname(pagePath), scriptEntryName));
 
-      // The very same partials the build injects – only the CDN origin differs, see `plugins/partials.ts`.
-      return rewriteCdnUrlsForDev(injectPartials(html));
+      return rewriteCdnUrlsForDev(
+        injectPartials(rewriteEntriesForDev(html, { hasBehaviour, sharedScripts: getSharedScripts(html) }))
+      );
     },
   };
 };
 
-// Dev server only – the production output is written by `scripts/build.ts` so it stays plain HTML.
-// Tailwind runs through the Vite plugin here and through the CLI in the build (see the `build:css` script).
+// Dev server only – the production output is written by `scripts/build.ts`, which emits the source of two standalone
+// Vite projects instead of a built site.
 export default defineConfig({
   root: 'src',
   appType: 'mpa',
-  publicDir: false,
+  publicDir: '../public',
   server: {
     port: 3010,
     open: '/',

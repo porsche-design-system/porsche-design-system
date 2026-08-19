@@ -5,37 +5,29 @@ import {
   getLoaderScript,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
+import { patternComponents, templateComponents } from './projects.ts';
 
 const REGEX_HEAD = /<\/head>/;
 const REGEX_BODY = /<\/body>/;
 
+/** Title shown by the meta tags partial, used by the dev server and by every generated project. */
+export const appTitle = 'Examples by Porsche Design System';
+
 /**
- * The Porsche Design System partials, shared by the dev server and the build.
+ * The Porsche Design System partials, injected by the dev server only.
  *
  * The pages use web components, so without the loader script nothing upgrades – and `:not(:defined)` in
- * `assets/styles.css` would keep the whole page invisible. It therefore cannot live in the Vite config alone: the
- * production output is written by `scripts/build.ts`, which does not run Vite at all.
+ * `assets/styles.css` would keep the whole page invisible. The **build** does not inject anything: its output is the
+ * source of two Vite projects, whose generated `vite.config.ts` injects the very same partials when they are built.
+ *
+ * The dev server serves both categories at once, so it preloads the union of their component chunks.
  */
 export const injectPartials = (html: string): string => {
   const headPartials = [
-    // `drilldown` covers its item and link chunks; the icons of the header come with `button-pure`.
-    getComponentChunkLinks({
-      components: [
-        'button',
-        'button-pure',
-        'crest',
-        'drilldown',
-        'heading',
-        'link',
-        'link-pure',
-        'tabs-bar',
-        'text',
-        'wordmark',
-      ],
-    }),
+    getComponentChunkLinks({ components: [...new Set([...patternComponents, ...templateComponents])] }),
     getFontLinks(),
     getIconLinks(),
-    getMetaTagsAndIconLinks({ appTitle: 'Examples by Porsche Design System' }),
+    getMetaTagsAndIconLinks({ appTitle }),
   ].join('');
 
   // Injected after the formatting pass of `renderPage()`, so the inline loader script stays byte for byte what the

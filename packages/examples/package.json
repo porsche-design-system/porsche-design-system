@@ -7,19 +7,19 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'vite'",
-    "build": "tsx scripts/build.ts && npm run build:css",
-    "build:css": "tailwindcss --input ./src/assets/styles.css --output ./dist/assets/styles.css",
-    "preview": "npm run build && vite preview --outDir ../dist --port 3011",
+    "start": "npm run dev",
+    "build": "tsx scripts/build.ts",
+    "build:verify": "npm run build && tsx scripts/verify.ts",
     "lint": "biome lint",
     "test": "npm run test:unit",
     "test:unit": "vitest run",
-    "clean:build": "rm -rf ./dist"
+    "clean:build": "rm -rf ./dist ./dist-tmp"
   },
   "devDependencies": {
     "@porsche-design-system/components": "4.6.0-rc.1",
     "@porsche-design-system/components-js": "4.6.0-rc.1",
-    "@tailwindcss/cli": "^4.3.3",
     "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.1.2",
     "fast-glob": "^3.3.3",
     "lightningcss": "^1.33.0",
     "preact": "^10.29.8",

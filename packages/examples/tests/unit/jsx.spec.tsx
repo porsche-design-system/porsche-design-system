@@ -1,9 +1,16 @@
 import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
+import {
+  getScriptEntry,
+  getSharedScripts,
+  getStyleEntry,
+  rewriteEntriesForDev,
+  scriptEntryTag,
+} from '../../plugins/entries.ts';
 import { doctype, isBuildInput, renderPage, resolvePagePath } from '../../plugins/jsx.ts';
+import { getInputName, getRootRelativePath, projects, resolvePageLocation } from '../../plugins/projects.ts';
 import {
   categoryItems,
-  footerNavItems,
   type NavItem,
   navItems,
   noticeText,
@@ -12,16 +19,19 @@ import {
   templateItems,
 } from '../../src/_data.ts';
 import { BasePage } from '../../src/_layouts/BasePage.tsx';
+import { OverviewPage } from '../../src/_layouts/OverviewPage.tsx';
 import { PatternPage } from '../../src/_layouts/PatternPage.tsx';
 import { ExampleList } from '../../src/_partials/ExampleList.tsx';
-import { Footer } from '../../src/_partials/Footer.tsx';
+import { Footer } from '../../src/_partials/footer/Footer.tsx';
 import { Head } from '../../src/_partials/Head.tsx';
 import { Header } from '../../src/_partials/header/Header.tsx';
 import { SkipLink } from '../../src/_partials/SkipLink.tsx';
 import IndexPage from '../../src/index.page.tsx';
-import Header1Page from '../../src/patterns/header-1/index.page.tsx';
-import Header2Page from '../../src/patterns/header-2/index.page.tsx';
-import ContactPage from '../../src/templates/contact-page/index.page.tsx';
+import FooterPatternPage from '../../src/patterns/footer/index.page.tsx';
+import HeaderOverlayPage from '../../src/patterns/header/overlay/index.page.tsx';
+import HeaderStackedPage from '../../src/patterns/header/stacked/index.page.tsx';
+import PatternsOverviewPage from '../../src/patterns/index.page.tsx';
+import TemplatesOverviewPage from '../../src/templates/index.page.tsx';
 import LandingPage from '../../src/templates/landing-page/index.page.tsx';
 
 const countOccurrences = (haystack: string, needle: string): number => haystack.split(needle).length - 1;
@@ -38,18 +48,23 @@ const countFirstLevelHeadings = (html: string): number =>
   (html.match(/<h1[\s>]/g) ?? []).length + countOccurrences(html, 'tag="h1"');
 
 /** Templates are built on `BasePage`: they own the full chrome, header and footer included. */
-const templatePages = [
-  ['templates/landing-page', LandingPage],
-  ['templates/contact-page', ContactPage],
-] as const;
+const templatePages = [['templates/landing-page', LandingPage]] as const;
 
 /** Patterns are built on `PatternPage`: they show a single section in the place it occupies on a real page. */
 const patternPages = [
-  ['patterns/header-1', Header1Page],
-  ['patterns/header-2', Header2Page],
+  ['patterns/header/overlay', HeaderOverlayPage],
+  ['patterns/header/stacked', HeaderStackedPage],
+  ['patterns/footer', FooterPatternPage],
 ] as const;
 
 const examplePages = [...templatePages, ...patternPages];
+
+/** The overview pages: the one of the source tree and the one each generated project starts with. */
+const overviewPages = [
+  ['index', IndexPage],
+  ['patterns', PatternsOverviewPage],
+  ['templates', TemplatesOverviewPage],
+] as const;
 
 describe('resolvePagePath()', () => {
   it('should map the root URL to the index page', () => {
@@ -61,7 +76,7 @@ describe('resolvePagePath()', () => {
   });
 
   it('should map an explicit .html URL to its page', () => {
-    expect(resolvePagePath('/templates/contact-page/index.html')).toBe('templates/contact-page/index.page.tsx');
+    expect(resolvePagePath('/patterns/header/overlay/index.html')).toBe('patterns/header/overlay/index.page.tsx');
   });
 
   it('should ignore query strings and hashes', () => {
@@ -72,7 +87,7 @@ describe('resolvePagePath()', () => {
     expect(resolvePagePath('/landing%20page/')).toBe('landing page/index.page.tsx');
   });
 
-  it.each(['/assets/styles.css', '/templates/contact-page/main.js', '/@vite/client'])(
+  it.each(['/assets/styles.css', '/patterns/header/overlay/main.js', '/@vite/client'])(
     'should return undefined for the asset request "%s"',
     (url) => {
       expect(resolvePagePath(url)).toBeUndefined();
@@ -91,26 +106,119 @@ describe('isBuildInput()', () => {
   it.each([
     'src/index.page.tsx',
     'src/templates/landing-page/index.page.tsx',
-    'src/patterns/header-1/index.page.tsx',
+    'src/patterns/header/overlay/index.page.tsx',
     'src/assets/styles.css',
   ])('should not detect "%s" as an input', (filePath) => {
     expect(isBuildInput('src', filePath)).toBe(false);
   });
 });
 
+describe('projects', () => {
+  it('should emit one project per category, each replacing a workspace of the examples repository', () => {
+    expect(projects.map(({ category }) => category)).toEqual(['patterns', 'templates']);
+    for (const { packageName, category } of projects) {
+      expect(packageName).toBe(`@porsche-design-system/${category}`);
+    }
+  });
+
+  it.each([
+    ['patterns/index.page.tsx', { category: 'patterns', pageDir: '' }],
+    ['patterns/footer/index.page.tsx', { category: 'patterns', pageDir: 'footer' }],
+    ['patterns/header/overlay/index.page.tsx', { category: 'patterns', pageDir: 'header/overlay' }],
+    ['templates/landing-page/index.page.tsx', { category: 'templates', pageDir: 'landing-page' }],
+  ])('should locate "%s" inside its project', (relativePath, expected) => {
+    expect(resolvePageLocation(relativePath)).toEqual(expected);
+  });
+
+  it.each(['index.page.tsx', 'assets/styles.css'])('should not locate "%s" in any project', (relativePath) => {
+    expect(resolvePageLocation(relativePath)).toBeUndefined();
+  });
+
+  it.each([
+    ['', './'],
+    ['footer', '../'],
+    ['header/overlay', '../../'],
+  ])('should resolve the project root of "%s" as "%s"', (pageDir, expected) => {
+    expect(getRootRelativePath(pageDir)).toBe(expected);
+  });
+
+  it.each([
+    ['', 'index'],
+    ['footer', 'footer'],
+    ['header/overlay', 'header-overlay'],
+  ])('should name the rollup input of "%s" "%s"', (pageDir, expected) => {
+    expect(getInputName(pageDir)).toBe(expected);
+  });
+});
+
+describe('entries', () => {
+  it('should import the shared Tailwind entry from the generated stylesheet', () => {
+    expect(getStyleEntry('header/overlay')).toContain('@import "../../assets/styles.css";');
+    expect(getStyleEntry('')).toContain('@import "./assets/styles.css";');
+  });
+
+  it('should import the stylesheet from the generated script, so a page references one file only', () => {
+    expect(getScriptEntry('footer', { sharedScripts: [] })).toBe("import './style.css';\n");
+  });
+
+  it('should import the shared behaviour a page needs, resolved against its depth', () => {
+    const entry = getScriptEntry('header/overlay', { sharedScripts: ['header.js', 'video.js'] });
+
+    expect(entry).toContain("import '../../assets/header.js';");
+    expect(entry).toContain("import '../../assets/video.js';");
+  });
+
+  it('should inline the behaviour authored next to a page, imports first', () => {
+    const entry = getScriptEntry('landing-page', { behaviour: 'console.warn("hi");\n', sharedScripts: ['header.js'] });
+
+    expect(entry).toBe("import './style.css';\nimport '../assets/header.js';\n\nconsole.warn(\"hi\");\n");
+  });
+
+  it.each([
+    ['<p-drilldown id="nav-drilldown">', ['header.js']],
+    ['<p-button id="pause-button">', ['video.js']],
+    ['<p-drilldown id="nav-drilldown"><p-button id="pause-button">', ['header.js', 'video.js']],
+    ['<p>nothing to wire up</p>', []],
+  ])('should derive the shared behaviour of "%s" from the markup', (html, expected) => {
+    expect(getSharedScripts(html)).toEqual(expected);
+  });
+
+  it('should link the shared stylesheet and drop the generated entry in dev, where neither exists', () => {
+    const html = rewriteEntriesForDev(`<head></head><body>${scriptEntryTag}</body>`, {
+      hasBehaviour: false,
+      sharedScripts: ['header.js'],
+    });
+
+    expect(html).toContain('<link rel="stylesheet" href="/assets/styles.css" />');
+    expect(html).toContain('<script type="module" src="/assets/header.js"></script>');
+    expect(html).not.toContain(scriptEntryTag);
+  });
+
+  it('should keep the page entry in dev when the page has behaviour of its own', () => {
+    const html = rewriteEntriesForDev(`<head></head><body>${scriptEntryTag}</body>`, {
+      hasBehaviour: true,
+      sharedScripts: [],
+    });
+
+    expect(html).toContain(scriptEntryTag);
+  });
+});
+
 describe('data', () => {
   it.each([
-    ['template', templateItems, 'templates/'],
-    ['pattern', patternItems, 'patterns/'],
-  ])('should keep every %s href inside its category folder', (_name, items, prefix) => {
+    ['template', templateItems],
+    ['pattern', patternItems],
+  ])('should keep every %s href relative to its own project', (_name, items) => {
     for (const item of items) {
-      expect(item.href.startsWith(prefix)).toBe(true);
+      expect(item.href.startsWith('/')).toBe(false);
+      expect(item.href.startsWith('patterns/')).toBe(false);
+      expect(item.href.startsWith('templates/')).toBe(false);
       expect(item.href.endsWith('/')).toBe(true);
     }
   });
 
   it('should keep the chrome navigation on placeholder links', () => {
-    for (const item of [...flattenNavItems(navItems), ...footerNavItems, ...categoryItems]) {
+    for (const item of [...flattenNavItems(navItems), ...categoryItems]) {
       expect(item.href).toBe('#');
     }
   });
@@ -137,13 +245,10 @@ describe('renderPage()', () => {
 
   it('should escape interpolated values', async () => {
     const html = await renderPage(() => (
-      <BasePage
-        basePath="./"
-        title={'<script>alert("x")</script> & more'}
-        description="Escaping check"
-        currentPage="home"
-      >
-        <h1>Escaping</h1>
+      <BasePage title={'<script>alert("x")</script> & more'} description="Escaping check" currentPage="home">
+        <main id="main">
+          <h1>Escaping</h1>
+        </main>
       </BasePage>
     ));
 
@@ -153,17 +258,16 @@ describe('renderPage()', () => {
   });
 
   it('should not leak framework specific attribute names into the markup', async () => {
-    const html = await renderPage(ContactPage);
+    const html = await renderPage(LandingPage);
 
     expect(html).not.toContain('className');
     expect(html).not.toContain('htmlFor');
     expect(html).toContain('class="');
-    expect(html).toContain('for="name"');
   });
 });
 
 describe('Head', () => {
-  const html = render(<Head basePath="../../" title="Contact page" description="A description." />);
+  const html = render(<Head title="Contact page" description="A description." />);
 
   it('should suffix the document title', () => {
     expect(html).toContain('<title>Contact page | Dummy Patterns</title>');
@@ -173,8 +277,8 @@ describe('Head', () => {
     expect(html).toContain('<meta name="description" content="A description."');
   });
 
-  it('should resolve the stylesheet against the base path', () => {
-    expect(html).toContain('href="../../assets/styles.css"');
+  it('should not link a stylesheet, which the generated entry of the page brings instead', () => {
+    expect(html).not.toContain('<link rel="stylesheet"');
   });
 });
 
@@ -323,16 +427,15 @@ describe('Header', () => {
 });
 
 describe('Footer', () => {
-  const html = render(<Footer footerNavItems={footerNavItems} />);
+  const html = render(<Footer />);
 
   it('should render a labelled navigation landmark', () => {
-    expect(html).toContain('<nav aria-label="Footer">');
+    expect(html).toContain('aria-label="Footer"');
   });
 
-  it('should render one placeholder link per item', () => {
-    expect(countOccurrences(html, 'href="#"')).toBe(footerNavItems.length);
-    for (const item of footerNavItems) {
-      expect(html).toContain(item.label);
+  it('should link nowhere, because the footer demonstrates a navigation', () => {
+    for (const [, url] of html.matchAll(/href="([^"]*)"/g)) {
+      expect(url).toBe(placeholderHref);
     }
   });
 });
@@ -360,8 +463,10 @@ describe('ExampleList', () => {
 describe('BasePage', () => {
   const renderBasePage = (props: Partial<Parameters<typeof BasePage>[0]> = {}) =>
     render(
-      <BasePage basePath="../../" title="Title" description="Description" currentPage="home" {...props}>
-        <h1>Content</h1>
+      <BasePage title="Title" description="Description" currentPage="home" {...props}>
+        <main id="main">
+          <h1>Content</h1>
+        </main>
       </BasePage>
     );
 
@@ -376,46 +481,19 @@ describe('BasePage', () => {
     expect(renderBasePage()).toContain('<body><a class="absolute top-2 start-2');
   });
 
-  it('should resolve the stylesheet against the base path', () => {
-    expect(renderBasePage()).toContain('href="../../assets/styles.css"');
+  it('should reference exactly one script, the entry generated next to the page', () => {
+    const html = renderBasePage();
+
+    expect(countOccurrences(html, '<script')).toBe(1);
+    expect(html).toContain(scriptEntryTag);
   });
 
-  it('should render the children inside the main landmark', () => {
+  it('should render the children inside the body', () => {
     expect(renderBasePage()).toContain('<main id="main"><h1>Content</h1></main>');
   });
 
-  it('should omit the class attribute when no main class is given', () => {
-    expect(renderBasePage()).toContain('<main id="main">');
-  });
-
-  it('should apply the main class when given', () => {
-    expect(renderBasePage({ mainClass: 'max-w-2xl' })).toContain('<main id="main" class="max-w-2xl">');
-  });
-
-  it('should load the script of the drilldown navigation without the page having to ask for it', () => {
-    expect(renderBasePage()).toContain('<script src="../../assets/header.js" defer></script>');
-  });
-
-  it('should load that script for every header variant, since all of them are a drilldown', () => {
-    expect(renderBasePage({ headerVariant: 'stacked' })).toContain('<script src="../../assets/header.js" defer>');
-  });
-
-  it('should render the deferred page script when given', () => {
-    expect(renderBasePage({ pageScript: 'main.js' })).toContain('<script src="main.js" defer></script>');
-  });
-
-  it('should render every page script when given a list', () => {
-    const html = renderBasePage({ pageScript: ['../../assets/analytics.js', 'main.js'] });
-
-    expect(html).toContain('<script src="../../assets/analytics.js" defer></script>');
-    expect(html).toContain('<script src="main.js" defer></script>');
-  });
-
   it('should fall back to the shared navigation', () => {
-    const html = renderBasePage();
-
-    expect(countOccurrences(html, '<p-drilldown-link')).toBe(flattenNavItems(navItems).length);
-    expect(countOccurrences(html, '<li>')).toBe(footerNavItems.length);
+    expect(countOccurrences(renderBasePage(), '<p-drilldown-link')).toBe(flattenNavItems(navItems).length);
   });
 
   it('should let a page override the shared navigation', () => {
@@ -461,64 +539,89 @@ describe('PatternPage', () => {
     expect(html).toContain('<main id="main">');
   });
 
-  it('should render the page content and link back to the overview', () => {
+  it('should render the page content and link back to the overview of its project', () => {
     const html = renderPatternPage();
 
     expect(html).toContain('<p>Notes</p>');
     expect(html).toContain('href="../../">Back to the overview');
   });
 
-  it('should omit the page script by default', () => {
-    expect(renderPatternPage()).not.toContain('<script');
-  });
+  it('should reference exactly one script, the entry generated next to the page', () => {
+    const html = renderPatternPage();
 
-  it('should render the deferred page script when given', () => {
-    expect(renderPatternPage({ pageScript: 'main.js' })).toContain('<script src="main.js" defer></script>');
-  });
-
-  it('should render every page script when given a list', () => {
-    const html = renderPatternPage({ pageScript: ['../../assets/header.js', 'main.js'] });
-
-    expect(html).toContain('<script src="../../assets/header.js" defer></script>');
-    expect(html).toContain('<script src="main.js" defer></script>');
+    expect(countOccurrences(html, '<script')).toBe(1);
+    expect(html).toContain(scriptEntryTag);
   });
 
   it('should not ship the shared chrome, which is what a pattern demonstrates', () => {
     const html = renderPatternPage();
 
     expect(html).not.toContain('<nav aria-label="Main">');
-    expect(html).not.toContain('<nav aria-label="Footer">');
+    expect(html).not.toContain('aria-label="Footer"');
   });
 });
 
-describe('overview page', () => {
+describe('OverviewPage', () => {
+  const html = render(
+    <OverviewPage title="Title" description="Description" heading="Heading" intro="Intro">
+      <section>content</section>
+    </OverviewPage>
+  );
+
+  it('should be a main landmark with the only heading of the page', () => {
+    expect(html).toContain('<main id="main"');
+    expect(countOccurrences(html, '<h1')).toBe(1);
+  });
+
+  it('should reference the entry generated next to it, like every other page', () => {
+    expect(html).toContain(scriptEntryTag);
+  });
+});
+
+describe.each(overviewPages)('%s overview page', (_name, Page) => {
   it('should render one main landmark and one first level heading', async () => {
-    const html = await renderPage(IndexPage);
+    const html = await renderPage(Page);
 
     expect(countOccurrences(html, '<main')).toBe(1);
     expect(countOccurrences(html, '<h1')).toBe(1);
   });
 
   it('should not ship the demo chrome', async () => {
-    const html = await renderPage(IndexPage);
+    const html = await renderPage(Page);
 
     expect(html).not.toContain('<header');
     expect(html).not.toContain('<footer');
     expect(html).not.toContain('<nav aria-label="Main">');
   });
 
-  it('should list every template and every pattern in a labelled navigation', async () => {
+  it('should only contain links that go somewhere', async () => {
+    expect(await renderPage(Page)).not.toContain('href="#"');
+  });
+});
+
+describe('overview pages', () => {
+  it('should link both categories from the source tree overview, prefixed with the category', async () => {
     const html = await renderPage(IndexPage);
 
     expect(html).toContain('<nav aria-label="Templates">');
     expect(html).toContain('<nav aria-label="Patterns">');
-    for (const item of [...templateItems, ...patternItems]) {
-      expect(html).toContain(`href="./${item.href}"`);
+    for (const item of templateItems) {
+      expect(html).toContain(`href="./templates/${item.href}"`);
+    }
+    for (const item of patternItems) {
+      expect(html).toContain(`href="./patterns/${item.href}"`);
     }
   });
 
-  it('should be the only page with links that go somewhere', async () => {
-    expect(await renderPage(IndexPage)).not.toContain('href="#"');
+  it.each([
+    ['patterns', PatternsOverviewPage, patternItems],
+    ['templates', TemplatesOverviewPage, templateItems],
+  ])('should link the examples of the %s project relative to its own root', async (_name, Page, items) => {
+    const html = await renderPage(Page);
+
+    for (const item of items) {
+      expect(html).toContain(`href="./${item.href}"`);
+    }
   });
 });
 
@@ -535,14 +638,10 @@ describe.each(examplePages)('%s page', (_name, Page) => {
 
     expect(html).toContain('Skip to content');
     expect(html).toContain('id="main"');
-    expect(html).toContain('<nav aria-label="Main">');
   });
 
-  it('should render the header exactly once, above the content', async () => {
-    const html = await renderPage(Page);
-
-    expect(countOccurrences(html, '<header')).toBe(1);
-    expect(html.indexOf('<header')).toBeLessThan(html.indexOf('<main'));
+  it('should reference the entry the build generates next to it', async () => {
+    expect(await renderPage(Page)).toContain(scriptEntryTag);
   });
 
   it('should not leave any template syntax in the output', async () => {
@@ -556,54 +655,38 @@ describe.each(templatePages)('%s page', (_name, Page) => {
   it('should render the full chrome exactly once', async () => {
     const html = await renderPage(Page);
 
+    expect(countOccurrences(html, '<header')).toBe(1);
     expect(countOccurrences(html, '<footer')).toBe(1);
-    expect(html).toContain('<nav aria-label="Footer">');
-  });
-
-  it('should resolve its assets two levels up', async () => {
-    expect(await renderPage(Page)).toContain('href="../../assets/styles.css"');
+    expect(html).toContain('<nav aria-label="Main">');
   });
 });
 
 describe.each(patternPages)('%s page', (_name, Page) => {
-  it('should link back to the overview', async () => {
-    expect(await renderPage(Page)).toContain('href="../../">Back to the overview');
-  });
-
-  it('should resolve its assets two levels up', async () => {
-    expect(await renderPage(Page)).toContain('href="../../assets/styles.css"');
+  it('should link back to the overview of its project', async () => {
+    expect(await renderPage(Page)).toContain('>Back to the overview');
   });
 });
 
 describe('landing page', () => {
-  it('should extend the shared navigation with an in-page anchor', async () => {
+  it('should extend the shared navigation with an in-page anchor that exists', async () => {
     const html = await renderPage(LandingPage);
 
     expect(html).toContain('href="#features"');
     expect(html).toContain('id="features"');
     expect(countOccurrences(html, 'aria-current="page"')).toBe(1);
   });
-});
 
-describe('contact page', () => {
-  it('should wire the form controls to their labels and hints', async () => {
-    const html = await renderPage(ContactPage);
+  it('should give its video a labelled pause control, which the shared behaviour wires up', async () => {
+    const html = await renderPage(LandingPage);
 
-    expect(html).toContain('for="name"');
-    expect(html).toContain('aria-describedby="name-hint"');
-    expect(html).toContain('id="name-hint"');
-    expect(html).toContain('role="status"');
-    expect(html).toContain('aria-live="polite"');
-  });
-
-  it('should load its behaviour from a deferred script', async () => {
-    expect(await renderPage(ContactPage)).toContain('<script src="main.js" defer></script>');
+    expect(html).toContain('id="pause-button"');
+    expect(getSharedScripts(html)).toContain('video.js');
   });
 });
 
 describe('header patterns', () => {
-  it('should render the overlay variant on header-1', async () => {
-    const html = await renderPage(Header1Page);
+  it('should render the overlay variant on overlay', async () => {
+    const html = await renderPage(HeaderOverlayPage);
 
     expect(html).toContain('<p-drilldown id="nav-drilldown">');
     expect(html).toContain('icon="search"');
@@ -611,29 +694,19 @@ describe('header patterns', () => {
     expect(html).not.toContain(noticeText);
   });
 
-  it('should load the shared header script and its own behaviour, both deferred', async () => {
-    const html = await renderPage(Header1Page);
-
-    expect(html).toContain('<script src="../../assets/header.js" defer></script>');
-    expect(html).toContain('<script src="main.js" defer></script>');
+  it('should need the shared header and video behaviour, both derived from the markup', async () => {
+    expect(getSharedScripts(await renderPage(HeaderOverlayPage))).toEqual(['header.js', 'video.js']);
   });
 
-  it('should give the video of header-1 a labelled pause control', async () => {
-    const html = await renderPage(Header1Page);
-
-    expect(html).toContain('id="pause-button"');
-    expect(html).toContain('Pause Video');
-  });
-
-  it('should render the stacked variant with its extra rows on header-2', async () => {
-    const html = await renderPage(Header2Page);
+  it('should render the stacked variant with its extra rows on stacked', async () => {
+    const html = await renderPage(HeaderStackedPage);
 
     expect(html).toContain(noticeText);
     expect(html).toContain('aria-label="Categories"');
   });
 
   it('should share the very same navigation between both patterns', async () => {
-    const [html1, html2] = await Promise.all([renderPage(Header1Page), renderPage(Header2Page)]);
+    const [html1, html2] = await Promise.all([renderPage(HeaderOverlayPage), renderPage(HeaderStackedPage)]);
 
     for (const html of [html1, html2]) {
       expect(countOccurrences(html, '<p-drilldown-item')).toBe(
@@ -641,5 +714,15 @@ describe('header patterns', () => {
       );
       expect(html).toContain('<nav aria-label="Main">');
     }
+  });
+});
+
+describe('footer pattern', () => {
+  it('should show the footer below the content, without a header', async () => {
+    const html = await renderPage(FooterPatternPage);
+
+    expect(countOccurrences(html, '<footer')).toBe(1);
+    expect(html).not.toContain('<header');
+    expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
   });
 });

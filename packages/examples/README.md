@@ -19,27 +19,35 @@ npm run test:unit:examples
 
 # or from within this package
 npm start
-npm run build                # renders pages, then compiles Tailwind (build:css)
+npm run build                # renders the pages and writes both generated projects
+npm run build:verify         # build + `vite build` of both projects into ./dist-tmp
 npm run test:unit
-npm run preview              # build + serve ./dist on http://localhost:3011
 ```
 
-## Two categories
+## Two categories, two generated projects
 
-| Category      | What it shows                                        | Layout        | Lives in          |
-| ------------- | ---------------------------------------------------- | ------------- | ----------------- |
-| **Templates** | A whole application page, chrome included.           | `BasePage`    | `src/templates/…` |
-| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage` | `src/patterns/…`  |
+| Category      | What it shows                                        | Layout        | Lives in          | Becomes          |
+| ------------- | ---------------------------------------------------- | ------------- | ----------------- | ---------------- |
+| **Templates** | A whole application page, chrome included.           | `BasePage`    | `src/templates/…` | `dist/templates` |
+| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage` | `src/patterns/…`  | `dist/patterns`  |
 
 Both categories are listed in [`src/_data.ts`](src/_data.ts) (`templateItems`, `patternItems`), so a new example is
-linked from the overview page by adding one entry.
+linked from the overview page of its project by adding one entry.
+
+`dist/` is **not** a built site: each category becomes the source of a standalone Vite project — `package.json`,
+`vite.config.ts`, `public/` and a `src/` holding the pages — which replaces the hand written workspace of the
+[examples repository](https://github.com/porsche-design-system/examples). The pages therefore ship **without** the
+Porsche Design System partials, without a stylesheet link and without the loader script: the generated `vite.config.ts`
+adds all three when the project is built, and every page loads one generated `main.js` that imports its `style.css`. Use
+`npm run build:verify` to build both projects and see the result.
 
 ## Links: only the overview navigates
 
 The examples demonstrate chrome, they are not a website. Every link inside a header, a footer or an example body is a
-placeholder `href="#"`, except for in-page anchors, which are real because the target is on the page. The one page with
-working links is `src/index.page.tsx`, which lists the examples — and it renders no header or footer at all, because
-repeating the demo chrome there would demonstrate nothing and would need URLs kept in sync for no benefit.
+placeholder `href="#"`, except for in-page anchors, which are real because the target is on the page. The pages with
+working links are the overview pages: one per generated project, plus `src/index.page.tsx` for the source tree, which is
+the only page linking across categories and is never emitted. None of them renders a header or footer, because repeating
+the demo chrome there would demonstrate nothing and would need URLs kept in sync for no benefit.
 
 This is why `Header` and `Footer` take no `basePath`: they have no URL to build.
 
@@ -47,12 +55,13 @@ This is why `Header` and `Footer` take no `basePath`: they have no URL to build.
 
 ```text
 src/
-├── index.page.tsx            # overview page: the link list, no chrome
-├── _data.ts                  # templateItems, patternItems (real URLs), chrome nav (placeholders)
+├── index.page.tsx            # overview of the source tree – dev only, never emitted
+├── _data.ts                  # templateItems, patternItems (URLs inside their project), chrome nav
 ├── _classes.ts               # classes(): joins class names, dropping the optional ones that are unset
 ├── _layouts/
-│   ├── BasePage.tsx          # full page shell: head, header, main, footer
-│   └── PatternPage.tsx       # minimal shell for a single section
+│   ├── BasePage.tsx          # full page shell: head, header, content, footer
+│   ├── PatternPage.tsx       # minimal shell for a single section
+│   └── OverviewPage.tsx      # shell of the overview pages
 ├── _partials/                # components, never emitted as pages
 │   ├── Head.tsx
 │   ├── SkipLink.tsx
@@ -64,28 +73,28 @@ src/
 │   │   ├── MetaActions.tsx   # icon affordances, from `metaActionItems`
 │   │   ├── NoticeBar.tsx     # note above the bar (stacked only)
 │   │   └── CategoryTabs.tsx  # category navigation below the bar (stacked only)
-│   ├── Footer.tsx
+│   ├── footer/Footer.tsx
 │   └── ExampleList.tsx
-├── assets/
+├── assets/                   # copied into both generated projects
 │   ├── styles.css            # Tailwind entry: theme, global element defaults
-│   └── header.js             # behaviour of the header drilldown, shared by every page showing it
+│   ├── header.js             # behaviour of the header drilldown
+│   └── video.js              # behaviour of the hero video and its pause control
 ├── templates/
-│   ├── landing-page/
-│   │   └── index.page.tsx
-│   └── contact-page/
-│       ├── index.page.tsx
-│       └── main.js
+│   ├── index.page.tsx        # overview of the templates project
+│   └── landing-page/
+│       └── index.page.tsx
 └── patterns/
-    ├── header-1/
-    │   ├── index.page.tsx
-    │   └── main.js
-    └── header-2/
-        └── index.page.tsx
+    ├── index.page.tsx        # overview of the patterns project
+    ├── footer/index.page.tsx
+    └── header/
+        ├── overlay/index.page.tsx
+        └── stacked/index.page.tsx
 ```
 
 `*.page.tsx` is the page marker: `templates/landing-page/index.page.tsx` becomes
-`dist/templates/landing-page/index.html`. Every other `.ts`/`.tsx` file is a build-time input and is never emitted; all
-non-TypeScript files are copied verbatim.
+`dist/templates/src/landing-page/index.html`, together with the `style.css` and `main.js` generated next to it. Every
+other `.ts`/`.tsx` file is a build-time input, a `main.js` next to a page is inlined into that page's entry, and all
+other files are copied verbatim.
 
 ## Authoring a template
 
@@ -95,36 +104,29 @@ A page default-exports a component that renders the layout:
 import { BasePage } from '../../_layouts/BasePage.tsx';
 
 const Page = () => (
-  <BasePage
-    basePath="../../"
-    title="Landing page"
-    description="…"
-    currentPage="home"
-    showSearch
-    mainClass="flex flex-col gap-12"
-  >
-    <h1>…</h1>
+  <BasePage title="Landing page" description="…" currentPage="home" showSearch>
+    <main id="main" class="flex flex-col gap-12">
+      <h1>…</h1>
+    </main>
   </BasePage>
 );
 
 export default Page;
 ```
 
-| Prop             | Purpose                                                                      |
-| ---------------- | ---------------------------------------------------------------------------- |
-| `basePath`       | `"./"` at the root, `"../../"` in an example folder. Only builds asset URLs. |
-| `title`          | Feeds `<title>`, suffixed with the site name.                                |
-| `description`    | Meta description.                                                            |
-| `currentPage`    | Matched against `item.id` to set `aria-current="page"`.                      |
-| `showSearch`     | Optional; renders the header search affordance.                              |
-| `headerVariant`  | Optional; `"overlay"` (default) or `"stacked"` – see the header patterns.    |
-| `mainClass`      | Optional; classes on the page's `<main>`.                                    |
-| `pageScript`     | Optional; one URL or a list, each rendered as `<script src="…" defer>`.      |
-| `navItems`       | Defaults to `_data.ts`; a page may replace or extend it.                     |
-| `footerNavItems` | Same, for the footer navigation.                                             |
+| Prop            | Purpose                                                                   |
+| --------------- | ------------------------------------------------------------------------- |
+| `title`         | Feeds `<title>`, suffixed with the site name.                             |
+| `description`   | Meta description.                                                         |
+| `currentPage`   | Matched against `item.id` to set `aria-current="page"`.                   |
+| `showSearch`    | Optional; renders the header search affordance.                           |
+| `headerVariant` | Optional; `"overlay"` (default) or `"stacked"` – see the header patterns. |
+| `navItems`      | Defaults to `_data.ts`; a page may replace or extend it.                  |
+| `children`      | The page content, including its own `<main id="main">`.                   |
 
-`BasePage` also loads `assets/header.js` on its own — every header variant is a drilldown behind a menu button, so the
-layout brings the behaviour that header needs and a page cannot forget it.
+The layout renders one script tag, `main.js`. That file is generated next to the page and imports the page's
+`style.css`, the shared behaviour the markup asks for — `assets/header.js` for the drilldown, `assets/video.js` for a
+pause control — and the `main.js` authored next to the page, if there is one.
 
 ### The header and its variants
 
@@ -164,7 +166,6 @@ const Page = () => (
     title="Header 1"
     description="…"
     beforeMain={<Header currentPage="home" navItems={navItems} showSearch />}
-    pageScript={['../../assets/header.js', 'main.js']}
   >
     <main id="main">…</main>
   </PatternPage>
@@ -173,18 +174,18 @@ const Page = () => (
 export default Page;
 ```
 
-| Prop          | Purpose                                                                       |
-| ------------- | ----------------------------------------------------------------------------- |
-| `basePath`    | `"../../"` for `patterns/<name>/index.page.tsx`. Also the back link's target. |
-| `title`       | Feeds `<title>`.                                                              |
-| `description` | Meta description.                                                             |
-| `beforeMain`  | The pattern, when it belongs above the content (a header).                    |
-| `afterMain`   | The pattern, when it belongs below the content (a footer).                    |
-| `pageScript`  | Optional; one URL or a list, each rendered as `<script src="…" defer>`.       |
-| `children`    | The page content, including its own `<main id="main">`.                       |
+| Prop          | Purpose                                                                                            |
+| ------------- | -------------------------------------------------------------------------------------------------- |
+| `basePath`    | Path back to the root of the generated project – `"../../"` for `patterns/header/overlay`, and the |
+|               | target of the back link.                                                                           |
+| `title`       | Feeds `<title>`.                                                                                   |
+| `description` | Meta description.                                                                                  |
+| `beforeMain`  | The pattern, when it belongs above the content (a header).                                         |
+| `afterMain`   | The pattern, when it belongs below the content (a footer).                                         |
+| `children`    | The page content, including its own `<main id="main">`.                                            |
 
-The layout itself only adds the skip link and the link back to the overview — everything a pattern page needs beyond the
-pattern. A pattern owns its header, so unlike `BasePage` it also lists the header's script itself.
+The layout itself only adds the skip link, the link back to the overview and the page's `main.js` — everything a pattern
+page needs beyond the pattern.
 
 Rules:
 
@@ -194,8 +195,8 @@ Rules:
 - A typo in a prop is a **compile error**, not a render-time surprise. Run `npx tsc --noEmit` or rely on the editor.
 - `_data.ts` is imported explicitly rather than injected into an ambient scope, so a page can extend the shared
   navigation (`[...navItems, extra]`) instead of only replacing it.
-- Links inside an example are `#`. Do not wire them up — the overview page is the only place where a broken URL would
-  actually be noticed, and it is covered by tests.
+- Links inside an example are `#`. Do not wire them up — the overview pages are the only place where a broken URL would
+  actually be noticed, and they are covered by tests.
 - Files and folders starting with `_` are inputs only. Keep pages declarative — see
   [`AGENTS.md`](AGENTS.md#scope-discipline-important).
 - A variation of a partial is a **prop**, not a second copy of the markup. If two variants share a block, that block is
@@ -205,13 +206,15 @@ Rules:
 
 ## Styling
 
-Tailwind CSS v4, configured CSS-first in [`src/assets/styles.css`](src/assets/styles.css), compiled by
-`@tailwindcss/vite` in dev and by the Tailwind CLI into `dist/assets/styles.css` in the build. Automatic source
-detection is off (`source(none)`); `@source "../**/*.tsx"` points the scanner at the components.
+Tailwind CSS v4, configured CSS-first in [`src/assets/styles.css`](src/assets/styles.css). That entry is copied into
+both generated projects and imported by the `style.css` of every page, so the project's own Vite build compiles, hashes
+and links it — in dev, `@tailwindcss/vite` compiles the same file directly. Automatic source detection is off
+(`source(none)`); `@source "../**/*.{tsx,html}"` points the scanner at the components in the source tree and at the
+rendered pages in a generated project.
 
 > **Watch out:** Tailwind's scanner reads the whole file, comments included. A doc comment mentioning
 > `{% block content %}` makes Tailwind emit an unused `.block` utility. Prefer prose that does not read like a class
-> name, and check `dist/assets/styles.css` after larger comment edits.
+> name, and check the compiled CSS after larger comment edits.
 
 ## How it works
 
@@ -220,10 +223,13 @@ detection is off (`source(none)`); `@source "../**/*.tsx"` points the scanner at
 request through Vite's SSR module runner; [`scripts/build.ts`](scripts/build.ts) imports the same page modules and
 writes the same HTML. One implementation, so dev and build can't drift apart.
 
-The Porsche Design System partials (loader script, font, icon and component chunk links) are injected by
-[`plugins/partials.ts`](plugins/partials.ts), shared by both paths — without the loader the `p-*` elements never
-upgrade, and `:not(:defined)` in the stylesheet keeps them invisible. Only the CDN origin differs: the dev server
-rewrites it to the local `serve-cdn`, the build keeps the production URLs.
+That HTML is deliberately bare: no partials, no stylesheet link, no loader script. The build adds the two entries of a
+page ([`plugins/entries.ts`](plugins/entries.ts)) and writes the project around it
+([`scripts/generateProject.ts`](scripts/generateProject.ts)), whose `vite.config.ts` injects the Porsche Design System
+partials — without the loader the `p-*` elements never upgrade, and `:not(:defined)` in the stylesheet keeps them
+invisible. The dev server has neither the entries nor a project, so it injects the partials from
+[`plugins/partials.ts`](plugins/partials.ts) and rewrites the entry tag to the shared files of the source tree. Those
+two rewrites, plus the CDN origin, are the only differences between dev and the emitted pages.
 
 Preact never reaches the browser: it is a build-time renderer and a source of JSX types, nothing else. The output is
 plain HTML with relative paths, no hydration, no framework runtime.
@@ -232,6 +238,6 @@ plain HTML with relative paths, no hydration, no framework runtime.
 
 Every example ships a skip link, `main` and section landmarks, labelled `nav` elements, `aria-current` on the active nav
 item, visible `:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header`
-and `footer` landmarks, and a pattern carries the landmark of the section it demonstrates. The overview page has no
-chrome to skip, so it is a `main` landmark with two labelled navigations. Keep that baseline when adding examples —
-these demos are documentation, so they have to be correct by example.
+and `footer` landmarks, and a pattern carries the landmark of the section it demonstrates. The overview pages have no
+chrome to skip, so each is a `main` landmark with labelled navigations. Keep that baseline when adding examples — these
+demos are documentation, so they have to be correct by example.

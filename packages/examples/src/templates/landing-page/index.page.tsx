@@ -4,45 +4,180 @@ import { BasePage } from '../../_layouts/BasePage.tsx';
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
 const Page = () => (
   <BasePage
-    basePath="../../"
     title="Landing page"
     description="Dummy landing page template using the shared layout and partial components."
     currentPage="home"
-    mainClass="flex flex-col gap-12"
     showSearch
     navItems={[...navItems, { id: 'landing-features', href: '#features', label: 'Jump to features' }]}
   >
-    <section class="max-w-2xl">
-      <h1 class="mb-6 text-[clamp(2rem,5vw,3.5rem)]/[1.1] font-bold">Build once, reuse everywhere</h1>
-      <p>
-        This page is written as a component and rendered to plain HTML at build time, so the generated markup contains
-        no template syntax and no framework runtime.
-      </p>
-      <a
-        class="mt-6 inline-block rounded-full bg-fg px-6 py-3 font-semibold text-bg no-underline hover:opacity-85 forced-colors:border forced-colors:border-[buttontext]"
-        href={placeholderHref}
+    <main id="main" class="grid-template gap-y-fluid-xl pb-fluid-2xl">
+      <section
+        class="scheme-dark z-0 col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)] relative before:absolute before:inset-[50%_0_0_0] before:z-2 before:pointer-events-none before:bg-linear-to-t before:from-canvas before:to-transparent"
+        aria-labelledby="heading-section-1"
       >
-        Get in touch
-      </a>
-    </section>
+        <video
+          class="z-1 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
+          poster="/mood-porsche-gts.webp"
+          loop
+          muted
+          autoplay={true}
+          playsinline={true}
+        >
+          <source src="/mood-porsche-gts.mp4" type="video/mp4" />
+          <source src="/mood-porsche-gts.webm" type="video/webm" />
+        </video>
+        <div class="z-2 col-extended row-span-full mb-fluid-lg">
+          <p-heading id="heading-section-1" class="pb-fluid-md" tag="h1" size="3xl">
+            <span class="text-md block">Template</span>
+            Landing Page
+          </p-heading>
+          <p-button variant="secondary">Some label</p-button>
+        </div>
+        <p-button
+          class="z-3 col-wide place-self-end row-span-full mb-fluid-lg"
+          variant="secondary"
+          compact="true"
+          hide-label="true"
+          icon="pause"
+          id="pause-button"
+        >
+          Pause Video
+        </p-button>
+      </section>
 
-    <section id="features">
-      <h2 class="mb-6 text-3xl font-semibold">What you get</h2>
-      <ul class="grid grid-cols-[repeat(auto-fit,minmax(15rem,1fr))] gap-6">
-        <li class="rounded-2xl border border-line p-6">
-          <h3 class="mb-2 text-lg font-semibold">Shared chrome</h3>
-          <p class="text-fg-muted">Header and footer are components, rendered into every page by one layout.</p>
-        </li>
-        <li class="rounded-2xl border border-line p-6">
-          <h3 class="mb-2 text-lg font-semibold">Clean output</h3>
-          <p class="text-fg-muted">The build only renders components and copies assets – no hashing, no bundling.</p>
-        </li>
-        <li class="rounded-2xl border border-line p-6">
-          <h3 class="mb-2 text-lg font-semibold">Copy &amp; paste</h3>
-          <p class="text-fg-muted">Every page works standalone, which keeps the documentation examples honest.</p>
-        </li>
-      </ul>
-    </section>
+      <section
+        id="features"
+        class="scheme-dark col-full grid grid-cols-subgrid gap-y-fluid-md bg-canvas p-fluid-xl -mt-fluid-xl -mb-fluid-xl"
+        aria-label="Some section 2 label"
+      >
+        <div class="col-basic grid grid-cols-subgrid gap-y-fluid-md">
+          <p-link-tile
+            class="col-span-full sm:col-span-one-half"
+            href="#"
+            label="Tickets 2026"
+            description="Teaser Headline"
+            compact="true"
+            weight="regular"
+            aspect-ratio="{base: '4/3', xs: '16/9', s: '3/4', m: '1/1'}"
+          >
+            <img src="/chrono-car.webp" alt="Some alternative text for screen readers describing the media element" />
+          </p-link-tile>
+          <p-link-tile
+            class="col-span-full sm:col-span-one-half"
+            href="#"
+            label="Results"
+            description="Teaser Headline"
+            compact="true"
+            weight="regular"
+            aspect-ratio="{base: '4/3', xs: '16/9', s: '3/4', m: '1/1'}"
+          >
+            <img src="/addon.webp" alt="Some alternative text for screen readers describing the media element" />
+          </p-link-tile>
+        </div>
+      </section>
+
+      <section class="col-full grid grid-cols-subgrid py-fluid-xl" aria-label="Some section 3 label">
+        <p-carousel
+          class="col-span-full"
+          slides-per-page="{ base: 1, xs: 1, m: 1 }"
+          align-header="center"
+          width="extended"
+          heading="Carousel"
+        >
+          <p-link-tile
+            gradient={true}
+            href="#"
+            label="Timeless Enthusiast"
+            description="Teaser Heading"
+            compact="true"
+            aspect-ratio="{base: '1/1', xs: '16/9'}"
+            weight="regular"
+          >
+            <img src="/interieur-1.webp" alt="Some alternative text for screen readers describing the media element" />
+          </p-link-tile>
+          <p-link-tile
+            gradient={true}
+            href="#"
+            label="The Loyalist"
+            description="Teaser Heading"
+            compact="true"
+            aspect-ratio="{base: '1/1', xs: '16/9'}"
+            weight="regular"
+          >
+            <img src="/interieur-2.webp" alt="Some alternative text for screen readers describing the media element" />
+          </p-link-tile>
+          <p-link-tile
+            gradient={true}
+            href="#"
+            label="Urbanist"
+            description="Teaser Heading"
+            compact="true"
+            aspect-ratio="{base: '1/1', xs: '16/9'}"
+            weight="regular"
+          >
+            <img src="/interieur-3.webp" alt="Some alternative text for screen readers describing the media element" />
+          </p-link-tile>
+          <p-link-tile
+            gradient={true}
+            href="#"
+            label="Urbanist"
+            description="Teaser Heading"
+            compact="true"
+            aspect-ratio="{base: '1/1', xs: '16/9'}"
+            weight="regular"
+          >
+            <img src="/interieur-4.webp" alt="Some alternative text for screen readers describing the media element" />
+          </p-link-tile>
+        </p-carousel>
+      </section>
+
+      <section class="col-basic grid grid-cols-subgrid gap-y-fluid-xl" aria-label="Some section 4 label">
+        <div class="col-span-full grid grid-cols-subgrid gap-y-fluid-lg">
+          <img
+            class="col-span-full md:col-start-1 md:col-end-7 md:row-start-1 w-full aspect-4/3 md:aspect-3/4 object-cover rounded-3xl"
+            src="/cockpit.webp"
+            alt="Some alternative text for screen readers describing the media element"
+          />
+          <div class="col-span-full md:col-start-8 md:col-end-13 md:row-start-1 flex flex-col justify-center items-start">
+            <p-heading tag="h3" size="md">
+              Some Title
+            </p-heading>
+            <p-text class="mt-fluid-sm">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum
+            </p-text>
+            <p-text class="mt-fluid-sm" size="xs" color="contrast-medium">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+            </p-text>
+            <p-link class="mt-fluid-lg">
+              <a href={placeholderHref}>Some label</a>
+            </p-link>
+          </div>
+        </div>
+        <div class="col-span-full grid grid-cols-subgrid gap-y-fluid-lg">
+          <img
+            class="col-span-full md:col-start-7 md:col-end-13 md:row-start-1 w-full aspect-4/3 md:aspect-3/4 object-cover rounded-3xl"
+            src="/chrono.webp"
+            alt="Some alternative text for screen readers describing the media element"
+          />
+          <div class="col-span-full md:col-start-1 md:col-end-6 md:row-start-1 flex flex-col justify-center items-start">
+            <p-heading tag="h3" size="md">
+              Some Title
+            </p-heading>
+            <p-text class="mt-fluid-sm">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+              et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum
+            </p-text>
+            <p-text class="mt-fluid-sm" size="xs" color="contrast-medium">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr
+            </p-text>
+            <p-link class="mt-fluid-lg">
+              <a href={placeholderHref}>Some label</a>
+            </p-link>
+          </div>
+        </div>
+      </section>
+    </main>
   </BasePage>
 );
 
