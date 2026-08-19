@@ -1,73 +1,47 @@
-import { getByRole, getByLabelText, getByText } from '@testing-library/dom';
-import type { GetByRole, GetByText } from '@testing-library/dom';
+export * from 'shadow-dom-testing-library';
 
-const getHTMLElementsWithShadowRoot = (container: HTMLElement): HTMLElement[] => {
-  return Array.from(container.querySelectorAll<HTMLElement>('*')).filter((el) => !!el.shadowRoot);
-};
+import {
+  getByShadowLabelText,
+  getByShadowRole,
+  getByShadowText,
+  type ScreenShadowRoleMatcherParams,
+  type ScreenShadowSelectorMatcherParams,
+  type ShadowRoleMatcherParams,
+  type ShadowSelectorMatcherParams,
+  screen,
+} from 'shadow-dom-testing-library';
 
-const isParamContainer = (param: HTMLElement): boolean =>
-  typeof param.querySelector === 'function' && typeof param.querySelectorAll === 'function';
+// The three following aliases have always accepted the container as an optional first argument, falling back to the
+// whole document when it is omitted. shadow-dom-testing-library splits that into two functions instead, a standalone
+// one taking a container and a document-bound one on `screen`, so dispatch on whether a container was passed.
+const hasContainer = (args: unknown[]): boolean => typeof (args[0] as HTMLElement)?.querySelectorAll === 'function';
 
-type Func = (container: HTMLElement, idOrRole: any, options?: any) => HTMLElement;
-
-const shadowFactory =
-  (getByFunc: Func, selfFunc: Func) =>
-  (container: HTMLElement, idOrRole: Parameters<Func>[1], options?: Parameters<Func>[2]): HTMLElement => {
-    let resultElement: HTMLElement;
-
-    if (!isParamContainer(container)) {
-      // rewire parameters
-      options = idOrRole;
-      idOrRole = container;
-      container = document.body; // body as fallback
-    }
-
-    try {
-      resultElement = getByFunc(container, idOrRole, options);
-    } catch (e) {
-      const elements = getHTMLElementsWithShadowRoot(container);
-
-      for (const el of elements) {
-        resultElement = selfFunc(el.shadowRoot as unknown as HTMLElement, idOrRole, options);
-
-        if (resultElement) {
-          break;
-        }
-      }
-    }
-
-    return resultElement!;
-  };
-
-type RemoveFirst<T extends any[]> = T['length'] extends 0
-  ? undefined
-  : ((...b: T) => void) extends (a: any, ...b: infer I) => void
-    ? I
-    : [];
-
-export function getByRoleShadowed<T extends HTMLElement>(...args: Parameters<GetByRole<T>>): T;
-export function getByRoleShadowed<T extends HTMLElement>(...args: RemoveFirst<Parameters<GetByRole<T>>>): T;
+export function getByRoleShadowed<T extends HTMLElement>(...args: ShadowRoleMatcherParams): T;
+export function getByRoleShadowed<T extends HTMLElement>(...args: ScreenShadowRoleMatcherParams): T;
 export function getByRoleShadowed<T extends HTMLElement>(
-  ...args: Parameters<GetByRole<T>> | RemoveFirst<Parameters<GetByRole<T>>>
+  ...args: ShadowRoleMatcherParams | ScreenShadowRoleMatcherParams
 ): T {
-  // @ts-ignore
-  return shadowFactory(getByRole, getByRoleShadowed)(...args);
+  return hasContainer(args)
+    ? getByShadowRole<T>(...(args as ShadowRoleMatcherParams))
+    : screen.getByShadowRole<T>(...(args as ScreenShadowRoleMatcherParams));
 }
 
-export function getByLabelTextShadowed<T extends HTMLElement>(...args: Parameters<GetByText<T>>): T;
-export function getByLabelTextShadowed<T extends HTMLElement>(...args: RemoveFirst<Parameters<GetByText<T>>>): T;
+export function getByLabelTextShadowed<T extends HTMLElement>(...args: ShadowSelectorMatcherParams): T;
+export function getByLabelTextShadowed<T extends HTMLElement>(...args: ScreenShadowSelectorMatcherParams): T;
 export function getByLabelTextShadowed<T extends HTMLElement>(
-  ...args: Parameters<GetByText<T>> | RemoveFirst<Parameters<GetByText<T>>>
+  ...args: ShadowSelectorMatcherParams | ScreenShadowSelectorMatcherParams
 ): T {
-  // @ts-ignore
-  return shadowFactory(getByLabelText, getByLabelTextShadowed)(...args);
+  return hasContainer(args)
+    ? getByShadowLabelText<T>(...(args as ShadowSelectorMatcherParams))
+    : screen.getByShadowLabelText<T>(...(args as ScreenShadowSelectorMatcherParams));
 }
 
-export function getByTextShadowed<T extends HTMLElement>(...args: Parameters<GetByText<T>>): T;
-export function getByTextShadowed<T extends HTMLElement>(...args: RemoveFirst<Parameters<GetByText<T>>>): T;
+export function getByTextShadowed<T extends HTMLElement>(...args: ShadowSelectorMatcherParams): T;
+export function getByTextShadowed<T extends HTMLElement>(...args: ScreenShadowSelectorMatcherParams): T;
 export function getByTextShadowed<T extends HTMLElement>(
-  ...args: Parameters<GetByText<T>> | RemoveFirst<Parameters<GetByText<T>>>
+  ...args: ShadowSelectorMatcherParams | ScreenShadowSelectorMatcherParams
 ): T {
-  // @ts-ignore
-  return shadowFactory(getByText, getByTextShadowed)(...args);
+  return hasContainer(args)
+    ? getByShadowText<T>(...(args as ShadowSelectorMatcherParams))
+    : screen.getByShadowText<T>(...(args as ScreenShadowSelectorMatcherParams));
 }
