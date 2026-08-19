@@ -121,6 +121,13 @@ describe('projects', () => {
     }
   });
 
+  it('should preview every project on its own port, none of them the one of the source tree', () => {
+    const ports = projects.map(({ previewPort }) => previewPort);
+
+    expect(new Set(ports).size).toBe(projects.length);
+    expect(ports).not.toContain(3010);
+  });
+
   it.each([
     ['patterns/index.page.tsx', { category: 'patterns', pageDir: '' }],
     ['patterns/footer/index.page.tsx', { category: 'patterns', pageDir: 'footer' }],

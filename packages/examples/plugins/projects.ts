@@ -55,6 +55,11 @@ export type Project = {
   description: string;
   /** Environment variable the deployment sets to serve the project from a sub path. */
   baseEnvVariable: string;
+  /**
+   * Port `scripts/previewProject.ts` serves the built project on, next to the dev server of the source tree (3010).
+   * Internal to this package: it is not written into the generated project, which keeps Vite's own default.
+   */
+  previewPort: number;
   /** Preloaded component chunks, written into the generated Vite config. */
   components: readonly string[];
 };
@@ -66,6 +71,7 @@ export const projects: Project[] = [
     label: 'Patterns',
     description: 'Single sections, shown in the place they occupy on a real page.',
     baseEnvVariable: 'PATTERNS_PUBLIC_BASE_PATH',
+    previewPort: 3011,
     components: patternComponents,
   },
   {
@@ -74,9 +80,14 @@ export const projects: Project[] = [
     label: 'Templates',
     description: 'Whole pages, from the skip link to the footer.',
     baseEnvVariable: 'TEMPLATES_PUBLIC_BASE_PATH',
+    previewPort: 3012,
     components: templateComponents,
   },
 ];
+
+/** The project of a category, for the scripts addressing one of them by name. */
+export const getProject = (category: string): Project | undefined =>
+  projects.find((project) => project.category === category);
 
 /** Name of the generated script entry of a page, the only script its HTML references. */
 export const scriptEntryName = 'main.js';

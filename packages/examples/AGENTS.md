@@ -62,6 +62,8 @@ plugins/projects.ts               # the two projects, their component chunks and
 plugins/entries.ts                # content of the generated main.js / style.css + the dev rewrite
 scripts/build.ts                  # production build: render pages, generate entries, write both projects
 scripts/generateProject.ts        # the generated vite.config.ts and package.json
+scripts/buildGeneratedProject.ts  # runs `vite build` of one generated project into dist-tmp/
+scripts/previewProject.ts         # that build, rewritten to the local CDN and served
 scripts/verify.ts                 # builds both generated projects into dist-tmp/
 vite.config.ts                    # dev server only (root: 'src', appType: 'mpa', port 3010) + Tailwind plugin
 vitest.config.ts                  # separate config, because vite.config.ts sets `root: 'src'`
@@ -116,6 +118,10 @@ A test asserts that the overview pages contain no `href="#"` and that the chrome
 npm run start:examples      # dev server on http://localhost:3010
 npm run build:examples      # writes ./dist (gitignored)
 npm run test:unit:examples  # vitest
+
+# build one generated project and serve the result against the local CDN
+npm run preview:examples/patterns    # http://localhost:3011
+npm run preview:examples/templates   # http://localhost:3012
 
 # from within this package
 npm run build:verify        # build + `vite build` of both generated projects into ./dist-tmp
@@ -206,6 +212,16 @@ approach, and it is paid on every review:
 - **The dev server also rewrites the page entry.** `main.js` and `style.css` only exist in the generated projects, so
   `rewriteEntriesForDev()` replaces that one tag with a link to `/assets/styles.css` and the shared scripts the page
   needs. Together with the CDN rewrite, these are the only two differences between dev and the emitted HTML.
+- **Previewing a project builds it, it does not serve `dist/`.** `npm run preview:examples/patterns` (and `…/templates`)
+  run the same `vite build` as `build:verify` via
+  [`scripts/buildGeneratedProject.ts`](scripts/buildGeneratedProject.ts), rewrite the CDN origin in the emitted HTML in
+  `dist-tmp/` and serve that with `vite preview`. So the name is literal: it is the built site, with bundled scripts and
+  hashed assets, not the source tree and not `dist/`. `dist/` itself is never touched and keeps the production URLs. The
+  ports (3011, 3012) live on the projects in [`plugins/projects.ts`](plugins/projects.ts) and are **not** part of the
+  generated `vite.config.ts`.
+- **`start` and `preview` mean what they mean elsewhere in the monorepo.** `npm start` is the dev server on the source,
+  `preview:*` serves build output – the same split as `start` vs. `start-app` in the wrapper packages and as `preview`
+  in `packages/styles`. A change that makes `preview:*` serve sources again should rename it.
 
 ## Adding a template (a whole page)
 

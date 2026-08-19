@@ -17,12 +17,23 @@ npm run start:examples       # dev server on http://localhost:3010
 npm run build:examples       # writes ./dist
 npm run test:unit:examples
 
+# build one generated project and serve the result against the local CDN (`serve-cdn`)
+npm run preview:examples/patterns    # http://localhost:3011
+npm run preview:examples/templates   # http://localhost:3012
+
 # or from within this package
 npm start
 npm run build                # renders the pages and writes both generated projects
 npm run build:verify         # build + `vite build` of both projects into ./dist-tmp
 npm run test:unit
 ```
+
+`start:examples` serves the **source** tree; `preview:examples/patterns` and `preview:examples/templates` serve the
+**built site** — they run the same `vite build` as `build:verify`, so what the browser gets is bundled JavaScript,
+hashed assets and the injected partials, exactly as the examples repository ships them. The only difference is the CDN
+origin: the emitted HTML in `dist-tmp/` is rewritten to `http://localhost:3001`, so the locally built components are
+loaded instead of the production CDN. `dist/` is never touched and keeps the production URLs. This needs the Porsche
+Design System built (`npm run build:core-dependencies && npm run build:components && npm run build:components-js`).
 
 ## Two categories, two generated projects
 
