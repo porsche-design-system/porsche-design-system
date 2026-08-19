@@ -1,4 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
+import { screen } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -41,4 +42,18 @@ it('should have working events', async () => {
   button3.addEventListener('click', () => ((el as any).activeTabIndex = 2));
   await userEvent.click(button3);
   expect(debugEl.innerHTML).toBe('Active Tab: <span>2</span>; Event Counter: <span>3</span>;');
+});
+
+it('should expose its tablist to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-tabs-bar');
+  await componentsReady();
+
+  expect(screen.queryAllByRole('tablist')).toHaveLength(0);
+  expect(screen.getAllByShadowRole('tablist')).toHaveLength(1);
+
+  // the tablist lives in the shadow root of the nested p-scroller, one level deeper than p-tabs-bar's own
+  const { shadowRoot } = document.querySelector('p-tabs-bar');
+  expect(screen.getByShadowRole('tablist')).toBe(
+    shadowRoot.querySelector('p-scroller').shadowRoot.querySelector('div.scroll')
+  );
 });
