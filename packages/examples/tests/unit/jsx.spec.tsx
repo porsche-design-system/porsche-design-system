@@ -617,11 +617,13 @@ describe('overview pages', () => {
 });
 
 describe.each(examplePages)('%s page', (_name, Page) => {
-  it('should render exactly one main landmark and one first level heading', async () => {
+  it('should render exactly one main landmark and at most one first level heading', async () => {
     const html = await renderPage(Page);
 
     expect(countOccurrences(html, '<main')).toBe(1);
-    expect(countFirstLevelHeadings(html)).toBe(1);
+    // A pattern showing nothing but its own section – the footer – has no heading of its own; every other page has
+    // exactly one. The suites below pin down which of the two a page is.
+    expect(countFirstLevelHeadings(html)).toBeLessThanOrEqual(1);
   });
 
   it('should ship the accessibility baseline', async () => {
@@ -648,6 +650,10 @@ describe.each(templatePages)('%s page', (_name, Page) => {
     expect(countOccurrences(html, '<header')).toBe(1);
     expect(countOccurrences(html, '<footer')).toBe(1);
     expect(html).toContain('<nav aria-label="Main">');
+  });
+
+  it('should title its content with a first level heading, being a whole page', async () => {
+    expect(countFirstLevelHeadings(await renderPage(Page))).toBe(1);
   });
 });
 
@@ -708,6 +714,14 @@ describe('header patterns', () => {
       expect(html).toContain('<nav aria-label="Main">');
     }
   });
+
+  it('should keep the hero below the header, whose heading the pattern needs to be shown against', async () => {
+    const [html1, html2] = await Promise.all([renderPage(HeaderOverlayPage), renderPage(HeaderStackedPage)]);
+
+    for (const html of [html1, html2]) {
+      expect(countFirstLevelHeadings(html)).toBe(1);
+    }
+  });
 });
 
 describe('footer pattern', () => {
@@ -717,5 +731,13 @@ describe('footer pattern', () => {
     expect(countOccurrences(html, '<footer')).toBe(1);
     expect(html).not.toContain('<header');
     expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<footer'));
+  });
+
+  it('should keep the main landmark empty, so the footer is shown without a heading above it', async () => {
+    const html = await renderPage(FooterPatternPage);
+
+    expect(html).toContain('<main id="main"></main>');
+    expect(countFirstLevelHeadings(html)).toBe(0);
+    expect(html).not.toContain('<p-heading tag="h1"');
   });
 });

@@ -257,6 +257,13 @@ visible `:focus-visible` outlines and a `forced-colors: active` block. Templates
 landmark with labelled navigations. These demos are documentation, so they have to be correct by example — keep the
 baseline when adding examples. The unit tests assert it for every page.
 
+**A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
+heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is
+empty and carries no spacing, so the footer is seen on its own instead of below a placeholder heading. The shared test
+therefore asserts *at most* one first level heading per example, and the per-pattern suites pin down which of the two a
+page is — do not "fix" a missing heading by adding one back to a pattern that deliberately shows nothing above its
+section.
+
 ## Status and open items
 
 Point-in-time notes, last updated 2026-08-19.
