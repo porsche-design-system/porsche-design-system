@@ -52,8 +52,14 @@ jobs:
         id: urls
         working-directory: packages/storefront
         run: |
+          # Generate URLs as a newline-delimited string for the 'urls' input
           URLS=$(npx tsx scripts/generateScanUrls.ts http://localhost:8080)
-          echo "urls=$URLS" >> $GITHUB_OUTPUT
+          
+          # Multiline strings in GITHUB_OUTPUT need a delimiter
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "urls<<$EOF" >> $GITHUB_OUTPUT
+          echo "$URLS" >> $GITHUB_OUTPUT
+          echo "$EOF" >> $GITHUB_OUTPUT
 
       - name: 'Run GitHub Accessibility Scanner'
         uses: github/accessibility-scanner@main

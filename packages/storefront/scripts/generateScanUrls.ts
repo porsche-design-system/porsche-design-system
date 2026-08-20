@@ -33,8 +33,8 @@ try {
   const paths = extractUrls(sitemap);
   const urls = paths.map((path) => `${baseUrl}${path}`);
 
-  // Output as JSON array (suitable for GitHub Actions)
-  console.log(JSON.stringify(urls));
+  // Output as a newline-delimited string, not a JSON array
+  console.log(urls.join('\n'));
 } catch (error) {
   console.error('Error generating scan URLs:', (error as Error).message);
   process.exit(1);
