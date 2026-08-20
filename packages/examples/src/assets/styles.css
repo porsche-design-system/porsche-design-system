@@ -1,24 +1,12 @@
-/*
- * Tailwind entry shared by every page.
- *
- * It is imported by the `style.css` of a page, which is generated next to it and pulled in by that page's `main.js`.
- * The dev server links this file directly; the build copies it into both generated projects, where their own Vite
- * build compiles, hashes and links it.
- *
- * Everything that can be expressed as a utility lives in the markup. Only genuinely global element defaults are
- * defined here – they apply to every page and would otherwise have to be repeated on every `<body>` and `<main>`.
- */
-
-/* `source(none)` disables Tailwind's automatic detection, which would also scan the package README and leak
- * prose words such as "static" or "inline" into the demo stylesheet as false positive utilities. */
 @import "@porsche-design-system/components-js";
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @import "@porsche-design-system/components-js/tailwindcss";
 
-/* The pages are TSX components in the source tree and plain HTML in the generated projects, so both are scanned –
- * whichever of the two this file sits next to. */
-@source "../**/*.{tsx,html}";
-
+/* Hide custom elements (e.g. `p-button`) until they are defined to prevent a flash of unstyled content. The bare
+ * selector works here because these pages are vanilla JS; other setups need a variant. The React SSR wrappers of
+ * Next.js and React Router mark their server rendered elements with a `data-ssr` attribute, which has to be excluded
+ * (`:not(:defined,[data-ssr])`), and Angular has to list the PDS tags explicitly (`:is(p-button, …):not(:defined)`)
+ * because its own elements like `app-root` never get defined and would stay invisible. */
 :not(:defined) {
   visibility: hidden;
 }

@@ -17,7 +17,7 @@ export const ExampleList = ({ basePath, items, label }: ExampleListProps) => (
           <a class="font-semibold underline underline-offset-4" href={`${basePath}${item.href}`}>
             {item.label}
           </a>
-          <p class="text-fg-muted">{item.description}</p>
+          <p class="text-contrast-medium">{item.description}</p>
         </li>
       ))}
     </ul>

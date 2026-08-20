@@ -18,13 +18,13 @@ const Page = () => (
   >
     <section>
       <h2 class="mb-2 text-3xl font-semibold">Templates</h2>
-      <p class="mb-6 text-fg-muted">Whole pages, from the header to the footer.</p>
+      <p class="mb-6 text-contrast-medium">Whole pages, from the header to the footer.</p>
       <ExampleList basePath="./templates/" items={templateItems} label="Templates" />
     </section>
 
     <section>
       <h2 class="mb-2 text-3xl font-semibold">Patterns</h2>
-      <p class="mb-6 text-fg-muted">Single sections, shown in the place they occupy on a real page.</p>
+      <p class="mb-6 text-contrast-medium">Single sections, shown in the place they occupy on a real page.</p>
       <ExampleList basePath="./patterns/" items={patternItems} label="Patterns" />
     </section>
   </OverviewPage>

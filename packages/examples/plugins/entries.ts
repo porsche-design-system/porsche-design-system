@@ -1,16 +1,20 @@
-import { assetsDirName, getRootRelativePath, scriptEntryName, sharedStyleName, styleEntryName } from './projects.ts';
+import { assetsDirName, scriptEntryName, sharedStyleName, styleEntryName } from './projects.ts';
 
 /**
  * The entry files of a page: `style.css` and `main.js`.
  *
  * Every page references exactly one script, `main.js`, which pulls in its stylesheet and carries its behaviour – the
  * shape a Vite project expects and the shape the hand written examples have. The files are generated rather than
- * authored, because their content is mechanical: the stylesheet imports the shared Tailwind entry, and the script
- * contains the behaviour the rendered markup asks for.
+ * authored, because their content is mechanical: both of them carry what the page needs of the shared sources.
  *
- * The behaviour is **inlined, not imported**: an example is read, not executed, so everything it takes to make the
- * pattern work – its markup, its utilities and its dummy JavaScript – has to be visible without following imports
- * across the tree. The shared snippets stay single-sourced in `src/assets/*.js`; they are simply no longer emitted.
+ * Everything shared is **copied, not imported** – the stylesheet as much as the behaviour: an example is read, not
+ * executed, so everything it takes to make the pattern work – its markup, its utilities, its styles and its dummy
+ * JavaScript – has to be visible without following imports across the tree. The shared sources stay single-sourced in
+ * `src/assets/`; they are simply no longer emitted, which is why a generated project has no `assets/` folder at all.
+ *
+ * The stylesheet is the only one that needs no assembling: `src/assets/styles.css` is copied next to every page as it
+ * is, which is why there is no `getStyleEntry()` – see `scripts/build.ts`. It carries no relative path, so the copy
+ * works at any depth, and Tailwind's automatic source detection covers the pages from the root of the Vite project.
  *
  * The dev server has none of these files on disk: it renders pages on the fly, so it rewrites the very tag the build
  * resolves through them – see `rewriteEntriesForDev()`.
@@ -37,12 +41,6 @@ const sharedScripts = [
 /** The shared scripts a rendered page needs, in a stable order. */
 export const getSharedScripts = (html: string): string[] =>
   sharedScripts.filter(({ isUsedBy }) => isUsedBy(html)).map(({ fileName }) => fileName);
-
-/** Content of the generated `style.css` of a page. */
-export const getStyleEntry = (pageDir: string): string =>
-  `/* Styles of this example. The shared entry brings Tailwind, the Porsche Design System and the global defaults. */
-@import "${getRootRelativePath(pageDir)}${assetsDirName}/${sharedStyleName}";
-`;
 
 /** A shared snippet with its content, ready to be inlined into the entry of a page. */
 export type SharedBehaviour = {

@@ -1,15 +1,16 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { render } from 'preact-render-to-string';
 import { describe, expect, it } from 'vitest';
 import {
   exampleBanner,
   getScriptEntry,
   getSharedScripts,
-  getStyleEntry,
   rewriteEntriesForDev,
   scriptEntryTag,
 } from '../../plugins/entries.ts';
 import { doctype, isBuildInput, renderPage, resolvePagePath } from '../../plugins/jsx.ts';
-import { getInputName, getRootRelativePath, projects, resolvePageLocation } from '../../plugins/projects.ts';
+import { getInputName, projects, resolvePageLocation } from '../../plugins/projects.ts';
 import {
   categoryItems,
   type NavItem,
@@ -142,14 +143,6 @@ describe('projects', () => {
   });
 
   it.each([
-    ['', './'],
-    ['footer', '../'],
-    ['header/overlay', '../../'],
-  ])('should resolve the project root of "%s" as "%s"', (pageDir, expected) => {
-    expect(getRootRelativePath(pageDir)).toBe(expected);
-  });
-
-  it.each([
     ['', 'index'],
     ['footer', 'footer'],
     ['header/overlay', 'header-overlay'],
@@ -159,9 +152,15 @@ describe('projects', () => {
 });
 
 describe('entries', () => {
-  it('should import the shared Tailwind entry from the generated stylesheet', () => {
-    expect(getStyleEntry('header/overlay')).toContain('@import "../../assets/styles.css";');
-    expect(getStyleEntry('')).toContain('@import "./assets/styles.css";');
+  const sharedStyles = fs.readFileSync(path.join(import.meta.dirname, '../../src/assets/styles.css'), 'utf8') as string;
+
+  it('should keep the shared stylesheet free of relative paths, because it is copied next to every page', () => {
+    // It is written to `src/`, `src/footer/` and `src/header/overlay/` alike, so a path out of the folder would
+    // resolve differently in each. Tailwind scans the pages from the root of the project instead of being pointed
+    // at them, which is why neither `@source` nor `source(none)` is needed.
+    expect(sharedStyles).not.toMatch(/["(]\.{1,2}\//);
+    expect(sharedStyles).not.toContain('@source');
+    expect(sharedStyles).not.toContain('source(none)');
   });
 
   it('should import the stylesheet from the generated script, so a page references one file only', () => {

@@ -3,8 +3,8 @@
  *
  * `dist/` is not a website: it is the **source** of two standalone Vite projects that replace the hand written
  * `patterns` and `templates` workspaces of the examples repository. Each one is self contained – own `package.json`,
- * own `vite.config.ts`, own copy of the shared assets – because the examples repository does not allow cross workspace
- * imports.
+ * own `vite.config.ts`, own copy of everything its pages share – because the examples repository does not allow cross
+ * workspace imports.
  *
  * ```text
  * dist/patterns/            # workspace root, `npm run build` builds it
@@ -13,9 +13,11 @@
  * ├── public/               # copied verbatim
  * └── src/                  # `root` of the Vite project
  *     ├── index.html        # the overview of this category
- *     ├── assets/           # the shared Tailwind entry and the header behaviour
  *     └── header/overlay/   # index.html + style.css + main.js
  * ```
+ *
+ * There is no `assets/` folder: the shared Tailwind entry and the shared behaviour are inlined into the entries of the
+ * pages that need them, so an example is read in one place.
  */
 
 /**
@@ -95,10 +97,10 @@ export const scriptEntryName = 'main.js';
 /** Name of the generated style entry of a page, imported by the script entry. */
 export const styleEntryName = 'style.css';
 
-/** The folder holding what every page of a project shares – copied into each project. */
+/** The folder of the source tree holding what every page shares – build inputs only, never emitted. */
 export const assetsDirName = 'assets';
 
-/** The shared Tailwind entry inside that folder, imported by every page's `style.css`. */
+/** The shared Tailwind entry inside that folder, inlined into every page's `style.css` and linked by the dev server. */
 export const sharedStyleName = 'styles.css';
 
 /** A page inside one of the projects. */
@@ -130,14 +132,9 @@ export const resolvePageLocation = (relativePath: string): PageLocation | undefi
 };
 
 /**
- * Path from a page back to the root of its project: `''` → `'./'`, `'header/overlay'` → `'../../'`.
+ * Rollup input name of a page: `''` → `'index'`, `'header/overlay'` → `'header-overlay'`.
  *
- * The depth is the same in the source tree and in the generated project (`src/patterns/header/overlay` and
- * `dist/patterns/src/header/overlay` are both two levels below their category root), which is why pages can use one
- * relative path for both.
+ * A page sits as deep below its category root in both trees (`src/patterns/header/overlay` and
+ * `dist/patterns/src/header/overlay`), so nothing else has to translate paths between them.
  */
-export const getRootRelativePath = (pageDir: string): string =>
-  pageDir === '' ? './' : '../'.repeat(pageDir.split('/').length);
-
-/** Rollup input name of a page: `''` → `'index'`, `'header/overlay'` → `'header-overlay'`. */
 export const getInputName = (pageDir: string): string => (pageDir === '' ? 'index' : pageDir.replaceAll('/', '-'));

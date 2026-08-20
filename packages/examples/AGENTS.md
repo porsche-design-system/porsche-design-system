@@ -36,7 +36,6 @@ dist/patterns/                 # workspace @porsche-design-system/patterns
 └── src/                       # `root` of that Vite project
     ├── index.html             # overview of the category
     ├── main.js / style.css    # generated entry pair, one per page
-    ├── assets/                # styles.css – copied into both projects
     └── header/overlay/        # index.html + main.js + style.css
 ```
 
@@ -44,13 +43,14 @@ Consequences, and they are the point of the design:
 
 - **A page's HTML contains no PDS partials, no stylesheet link and no loader script.** All three are added by the
   generated `vite.config.ts` when the project is built, exactly like in the hand written examples.
-- **A page references exactly one script, `main.js`**, which imports its `style.css` and **contains** the behaviour of
-  the example: the shared snippets are inlined, not imported, so the markup, the utilities and the JavaScript of a
-  pattern are read in one place. `assets/` therefore only ships the stylesheet.
+- **A page consists of three files: `index.html`, `main.js` and `style.css`.** The script **contains** the behaviour of
+  the example and the stylesheet **is** the shared Tailwind entry, copied, so the markup, the utilities, the styles and
+  the JavaScript of a pattern are read in one place. **A generated project has no `assets/` folder** – nothing is shared
+  across its pages.
 - **Opening `dist/**/index.html` in a browser shows unstyled markup.** Run `npm run build:verify`, which builds both
   generated projects into `dist-tmp/` and asserts the partials, the bundle and the stylesheet made it into the output.
-- **Both projects are self contained** – the shared `assets/` and `public/` are copied into each, because the examples
-  repository does not allow imports across its workspaces.
+- **Both projects are self contained** – `public/` is copied into each and everything shared is inlined, because the
+  examples repository does not allow imports across its workspaces.
 
 The depth of a page below its category root is identical in both trees (`src/patterns/header/overlay` and
 `dist/patterns/src/header/overlay`), which is why every relative path a page uses carries over unchanged.
@@ -82,7 +82,7 @@ src/
 │   └── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
 │                                 # MainNav, MetaActions, NoticeBar, CategoryTabs
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
-├── assets/styles.css             # Tailwind entry: @theme, dark mode, global element defaults
+├── assets/styles.css             # Tailwind entry: @theme, global element defaults – copied next to every page
 ├── assets/header.js              # behaviour of the header drilldown – inlined into the entries, never emitted
 ├── assets/video.js               # behaviour of the hero video and its pause control – inlined, never emitted
 ├── templates/                    # → dist/templates
@@ -140,13 +140,16 @@ npm run build:verify        # build + `vite build` of both generated projects in
   use `&nbsp;` (`{'\u00a0'}`), not a line break.
 - **Blank lines are not preserved.** A renderer cannot carry source blank lines into the output, so `dist/` is denser
   than hand-authored markup would be. Structure and attributes are unaffected.
-- **Tailwind scans comments too.** `@source "../**/*.{tsx,html}"` feeds whole files to the scanner, so prose such as
-  "`{% block content %}`" or "relative to the page" leaks `.block` and `.relative` into the compiled stylesheet. The
-  same applies to string literals: the header variants are named `overlay`/`stacked` precisely because a display keyword
-  would end up as an unused utility. Check the compiled CSS after larger comment edits.
+- **Tailwind scans comments too.** The scanner reads whole files, so prose such as "`{% block content %}`" or "relative
+  to the page" leaks `.block` and `.relative` into the compiled stylesheet. The same applies to string literals: the
+  header variants are named `overlay`/`stacked` precisely because a display keyword would end up as an unused utility.
+  Automatic source detection is on, rooted at the Vite project (`src/` here, `src/` of a generated project there), so
+  everything below it is scanned and nothing above it is. Check the compiled CSS after larger comment edits.
 - **`basePath` belongs to the overview pages only.** `ExampleList` takes it to link the examples of a project relative
-  to that project's root; no layout does. Asset URLs are not built from it either — the generated `style.css` and
-  `main.js` carry the relative paths instead.
+  to that project's root; no layout does. Asset URLs are not built from it either — a page's `style.css` and `main.js`
+  sit next to it and carry no path out of the page folder at all.
+- **The shared stylesheet must stay free of relative paths.** It is copied next to every page, at every depth, so a
+  `@source "../…"` or an `@import "./…"` would resolve differently in each copy. A unit test asserts it.
 - **`_data.ts` is imported, not injected.** There is no ambient template scope, so a page can extend the shared
   navigation (`[...navItems, extra]`) instead of only replacing it wholesale.
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
@@ -163,14 +166,16 @@ npm run build:verify        # build + `vite build` of both generated projects in
   have to be written as JSON strings (`compact="{ base: false, m: true }"`).
 - **No event handler props on PDS components.** The typing deliberately omits them: there is no client-side JS, so
   behaviour goes into a plain `main.js` hooked on ids.
-- **Scripts are not declared, they are derived — and inlined.** A page always references one entry, `main.js`, generated
-  next to it by [`plugins/entries.ts`](plugins/entries.ts). It imports the page's `style.css` and then **contains** the
-  behaviour of the example: the shared snippets the rendered markup asks for (`assets/header.js` when the page contains
-  `id="nav-drilldown"`, `assets/video.js` when it contains `id="pause-button"`) followed by the `main.js` authored next
-  to the page, each under a `// --- <source> ---` section comment. Nothing is imported from `assets/`, so a consumer
-  sees the markup, the Tailwind classes and the dummy JavaScript of a pattern without following imports. Behaviour used
-  by more than one example still belongs in `src/assets/*.js` with a detection rule, not in one example folder — the
-  file stays the single source, it is just not emitted.
+- **Scripts and styles are not declared, they are derived — and copied.** A page always references one entry, `main.js`,
+  generated next to it by [`plugins/entries.ts`](plugins/entries.ts). It imports the page's `style.css` and then
+  **contains** the behaviour of the example: the shared snippets the rendered markup asks for (`assets/header.js` when
+  the page contains `id="nav-drilldown"`, `assets/video.js` when it contains `id="pause-button"`) followed by the
+  `main.js` authored next to the page, each under a `// --- <source> ---` section comment. The `style.css` is
+  `assets/styles.css` copied verbatim — it needs no assembling, which is why there is no `getStyleEntry()`. Nothing is
+  imported from `assets/` — it is not emitted at all — so a consumer sees the markup, the Tailwind classes, the styles
+  and the dummy JavaScript of a pattern without following imports. Anything used by more than one example still belongs
+  in `src/assets/` (with a detection rule, for the scripts), not in one example folder — the file stays the single
+  source, it is just not emitted.
 - **Inlined snippets share one module scope.** `getScriptEntry()` fails the build when two of them (or a page's own
   `main.js`) declare the same top level name. Rename, or wrap the snippet in a block.
 - **A variant is a prop, not a copy.** `Header` renders both header patterns from one set of blocks
@@ -274,7 +279,7 @@ section.
 
 ## Status and open items
 
-Point-in-time notes, last updated 2026-08-19.
+Point-in-time notes, last updated 2026-08-20.
 
 Done:
 
@@ -311,6 +316,14 @@ Done:
   read, so the markup, the Tailwind classes and the dummy JavaScript of a pattern are now in two files instead of spread
   over four; `assets/` in a generated project holds the stylesheet only, and `getScriptEntry()` rejects two snippets
   declaring the same top level name, which one module scope cannot hold.
+- **The styles became part of the page too (2026-08-20).** `style.css` no longer `@import`s `assets/styles.css`, it
+  **is** that file, copied next to every page. `assets/` is therefore no longer emitted at all: a page in a generated
+  project is `index.html`, `main.js` and `style.css`, nothing above it. The entry was simplified with it —
+  `source(none)` and the explicit `@source` glob are gone, because Tailwind's automatic detection is rooted at the Vite
+  project and covers exactly the pages (measured: two stray utilities from a doc comment in `src/_types/`, none from the
+  package README). Consequences: the file carries no relative path (a unit test asserts it, since the copy lands at
+  every depth), `getStyleEntry()` and `getRootRelativePath()` were dropped, and a page's CSS again contains the
+  utilities of its whole project rather than only its own — about 1 kB uncompressed.
 
 Open:
 

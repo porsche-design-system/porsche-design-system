@@ -4,21 +4,30 @@ import { fileURLToPath } from 'node:url';
 // fast-glob is CommonJS, so it has to be imported as a default export from this ESM package.
 import fastGlob from 'fast-glob';
 import prettier from 'prettier';
-import {
-  getScriptEntry,
-  getSharedScripts,
-  getStyleEntry,
-  type SharedBehaviour,
-  scriptEntryTag,
-} from '../plugins/entries.ts';
+import { getScriptEntry, getSharedScripts, type SharedBehaviour, scriptEntryTag } from '../plugins/entries.ts';
 import { type PageModule, pageSuffix, renderPage } from '../plugins/jsx.ts';
-import { assetsDirName, type Project, projects, scriptEntryName, styleEntryName } from '../plugins/projects.ts';
+import {
+  assetsDirName,
+  type Project,
+  projects,
+  scriptEntryName,
+  sharedStyleName,
+  styleEntryName,
+} from '../plugins/projects.ts';
 import { getPackageJson, getViteConfig, type Versions } from './generateProject.ts';
 
 const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const srcDir = path.join(packageDir, 'src');
 const publicDir = path.join(packageDir, 'public');
 const distDir = path.join(packageDir, 'dist');
+
+/**
+ * The shared Tailwind entry, copied next to every page as its `style.css`.
+ *
+ * Read once and written unchanged: it carries no relative path, so the same bytes work at any depth, and Tailwind's
+ * automatic source detection scans the pages from the root of the generated Vite project.
+ */
+const sharedStyles = fs.readFileSync(path.join(srcDir, assetsDirName, sharedStyleName), 'utf8');
 
 /** Dependency versions of the generated projects – taken from this package, so they cannot drift apart. */
 const readVersions = (): Versions => {
@@ -46,9 +55,9 @@ const writeFile = (filePath: string, content: string): void => {
   fs.writeFileSync(filePath, content.endsWith('\n') ? content : `${content}\n`);
 };
 
-const copyDir = (from: string, to: string, filter?: (sourcePath: string) => boolean): void => {
+const copyDir = (from: string, to: string): void => {
   if (fs.existsSync(from)) {
-    fs.cpSync(from, to, { recursive: true, filter });
+    fs.cpSync(from, to, { recursive: true });
   }
 };
 
@@ -87,7 +96,7 @@ const buildProject = async (project: Project, versions: Versions): Promise<numbe
       const behaviour = fs.existsSync(behaviourPath) ? fs.readFileSync(behaviourPath, 'utf8') : undefined;
 
       writeFile(path.join(projectSrcDir, pageDir, 'index.html'), html);
-      writeFile(path.join(projectSrcDir, pageDir, styleEntryName), getStyleEntry(pageDir));
+      writeFile(path.join(projectSrcDir, pageDir, styleEntryName), sharedStyles);
       writeFile(
         path.join(projectSrcDir, pageDir, scriptEntryName),
         getScriptEntry({ behaviour, sharedBehaviour: readSharedBehaviour(html) })
@@ -107,9 +116,9 @@ const buildProject = async (project: Project, versions: Versions): Promise<numbe
     fs.copyFileSync(sourcePath, path.join(projectSrcDir, relativePath));
   }
 
-  // Both projects are self-contained: the examples repository does not allow imports across its workspaces. Only the
-  // shared stylesheet is emitted – the shared `*.js` are build inputs, inlined into the entry of every page using them.
-  copyDir(path.join(srcDir, assetsDirName), path.join(projectSrcDir, assetsDirName), (from) => !from.endsWith('.js'));
+  // Both projects are self-contained: the examples repository does not allow imports across its workspaces. Nothing
+  // from `assets/` is emitted – the shared styles and scripts are build inputs, inlined into the entries of the pages
+  // using them, so an example is one page of markup, one stylesheet and one script.
   copyDir(publicDir, path.join(projectDir, 'public'));
 
   writeFile(

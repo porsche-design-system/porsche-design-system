@@ -86,8 +86,8 @@ src/
 │   │   └── CategoryTabs.tsx  # category navigation below the bar (stacked only)
 │   ├── footer/Footer.tsx
 │   └── ExampleList.tsx
-├── assets/                   # shared inputs of every page
-│   ├── styles.css            # Tailwind entry: theme, global element defaults – copied into both projects
+├── assets/                   # shared inputs of every page – build inputs, never emitted
+│   ├── styles.css            # Tailwind entry: theme, global element defaults – copied next to every page
 │   ├── header.js             # behaviour of the header drilldown – inlined into the entries, never emitted
 │   └── video.js              # behaviour of the hero video and its pause control – inlined, never emitted
 ├── templates/
@@ -137,11 +137,12 @@ export default Page;
 
 The layout renders one script tag, `main.js`. That file is generated next to the page: it imports the page's `style.css`
 and then **contains** the behaviour of the example — the shared snippets the markup asks for (`assets/header.js` for the
-drilldown, `assets/video.js` for a pause control) and the `main.js` authored next to the page, if there is one. Nothing
-is imported from `assets/`: an example is meant to be read, so its markup, its Tailwind classes and its dummy JavaScript
-sit in two files instead of being spread across the tree. The snippets stay single-sourced in `src/assets/*.js` and
-carry a `// --- <source> ---` section comment into the output; since they end up in one module scope, two of them must
-not declare the same top level name — the build says so if they do.
+drilldown, `assets/video.js` for a pause control) and the `main.js` authored next to the page, if there is one. The
+`style.css` is `assets/styles.css`, copied rather than imported. Nothing is imported from `assets/`, which is why a
+generated project has none: an example is meant to be read, so its markup, its Tailwind classes, its styles and its
+dummy JavaScript sit in three files instead of being spread across the tree. The sources stay single in `src/assets/`
+and the scripts carry a `// --- <source> ---` section comment into the output; since they end up in one module scope,
+two of them must not declare the same top level name — the build says so if they do.
 
 ### The header and its variants
 
@@ -217,11 +218,12 @@ Rules:
 
 ## Styling
 
-Tailwind CSS v4, configured CSS-first in [`src/assets/styles.css`](src/assets/styles.css). That entry is copied into
-both generated projects and imported by the `style.css` of every page, so the project's own Vite build compiles, hashes
-and links it — in dev, `@tailwindcss/vite` compiles the same file directly. Automatic source detection is off
-(`source(none)`); `@source "../**/*.{tsx,html}"` points the scanner at the components in the source tree and at the
-rendered pages in a generated project.
+Tailwind CSS v4, configured CSS-first in [`src/assets/styles.css`](src/assets/styles.css). That entry is **copied** next
+to every page as its `style.css`, which the page's `main.js` pulls in, so the project's own Vite build compiles, hashes
+and links it — in dev, `@tailwindcss/vite` compiles the source file directly, which is the only place it exists as a
+file. It deliberately contains nothing but the three imports and the `:not(:defined)` rule: no `@source`, no
+`source(none)` and no relative path of any kind, because the same bytes have to work at every depth. Tailwind's
+automatic source detection is rooted at the Vite project, so it scans the pages and nothing above them.
 
 > **Watch out:** Tailwind's scanner reads the whole file, comments included. A doc comment mentioning
 > `{% block content %}` makes Tailwind emit an unused `.block` utility. Prefer prose that does not read like a class
