@@ -36,6 +36,8 @@ import { Footer } from '../../src/_partials/footer/Footer.tsx';
 import { Head } from '../../src/_partials/Head.tsx';
 import { Header } from '../../src/_partials/header/Header.tsx';
 import IndexPage from '../../src/index.page.tsx';
+import FeedbackDialogPage from '../../src/patterns/feedback/dialog/index.page.tsx';
+import FeedbackInlinePage from '../../src/patterns/feedback/inline/index.page.tsx';
 import FooterPatternPage from '../../src/patterns/footer/index.page.tsx';
 import HeaderOverlayPage from '../../src/patterns/header/overlay/index.page.tsx';
 import HeaderStackedPage from '../../src/patterns/header/stacked/index.page.tsx';
@@ -47,6 +49,13 @@ import TemplatesOverviewPage from '../../src/templates/index.page.tsx';
 import LandingPage from '../../src/templates/landing-page/index.page.tsx';
 
 const countOccurrences = (haystack: string, needle: string): number => haystack.split(needle).length - 1;
+
+/** The opening tag an id belongs to, so an attribute can be asserted on the element rather than on the document. */
+const getOpeningTag = (html: string, id: string): string => {
+  const start = html.lastIndexOf('<', html.indexOf(`id="${id}"`));
+
+  return html.slice(start, html.indexOf('>', start) + 1);
+};
 
 /** Every entry of the navigation tree, at any depth. */
 const flattenNavItems = (items: NavItem[]): NavItem[] =>
@@ -70,6 +79,8 @@ const patternPages = [
   ['patterns/popover/local-market-switch', PopoverLocalMarketSwitchPage],
   ['patterns/popover/priority-navigation', PopoverPriorityNavigationPage],
   ['patterns/popover/feature-tour', PopoverFeatureTourPage],
+  ['patterns/feedback/inline', FeedbackInlinePage],
+  ['patterns/feedback/dialog', FeedbackDialogPage],
 ] as const;
 
 const examplePages = [...templatePages, ...patternPages];
@@ -987,5 +998,58 @@ describe('popover patterns', () => {
     ['feature tour', PopoverFeatureTourPage],
   ])('should keep the %s on its own behaviour, with no shared snippet to inline', async (_name, Page) => {
     expect(getSharedScripts(await renderPage(Page))).toEqual([]);
+  });
+});
+
+describe('feedback patterns', () => {
+  const feedbackPages = [
+    ['inline', FeedbackInlinePage],
+    ['dialog', FeedbackDialogPage],
+  ] as const;
+
+  it.each(feedbackPages)('should ask the very same flow in the %s variant, rendered once', async (_name, Page) => {
+    const html = await renderPage(Page);
+
+    // One source for both variants (`_FeedbackForm.tsx`): the question, the five step scale, the optional comment
+    // and the confirmation – so the two cannot drift apart.
+    expect(html).toContain('How satisfied are you with the information shown on this page?');
+    expect(countOccurrences(html, '<p-segmented-control-item')).toBe(5);
+    expect(countOccurrences(html, 'id="feedback-rating"')).toBe(1);
+    expect(countOccurrences(html, 'id="feedback-comment"')).toBe(1);
+    expect(countOccurrences(html, 'id="feedback-thanks"')).toBe(1);
+  });
+
+  it.each(feedbackPages)('should hide everything the rating reveals in the %s variant', async (_name, Page) => {
+    const html = await renderPage(Page);
+
+    // Comment, submit and confirmation are revealed by `main.js`; the page ships the state the flow starts in.
+    for (const id of ['feedback-comment', 'feedback-submit', 'feedback-thanks']) {
+      expect(getOpeningTag(html, id)).toContain('hidden');
+    }
+    // The confirmation is announced even where focus cannot be moved.
+    expect(countOccurrences(html, 'aria-live="polite"')).toBe(1);
+  });
+
+  it.each(feedbackPages)('should keep the %s variant on its own behaviour', async (_name, Page) => {
+    expect(getSharedScripts(await renderPage(Page))).toEqual([]);
+  });
+
+  it('should show the inline variant in the page, offering to start over', async () => {
+    const html = await renderPage(FeedbackInlinePage);
+
+    expect(html).not.toContain('<p-modal');
+    expect(html).toContain('id="feedback-restart"');
+    expect(html).toContain('aria-label="Feedback"');
+  });
+
+  it('should ask the dialog variant for permission and keep the flow in a modal below the content', async () => {
+    const html = await renderPage(FeedbackDialogPage);
+
+    expect(html).toContain(`aria="{ 'aria-haspopup': 'dialog' }"`);
+    expect(html).toContain('id="feedback-trigger"');
+    expect(html).toContain(`<p-modal id="feedback-modal" aria="{ 'aria-label': 'Feedback' }">`);
+    expect(html).toContain('id="feedback-close"');
+    // Like every dialog, it is the last element of the body rather than part of the content it belongs to.
+    expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<p-modal'));
   });
 });

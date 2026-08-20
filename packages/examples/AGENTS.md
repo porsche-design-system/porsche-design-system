@@ -81,8 +81,9 @@ src/
 │   ├── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
 │   └── OverviewPage.tsx          # shell of the overview pages: a main landmark with link lists
 ├── _partials/                    # Head, Header, Footer, ExampleList – checked props
-│   └── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
-│                                 # MainNav, MetaActions, NoticeBar, CategoryTabs
+│   ├── header/                   # Header (variants) + the blocks it composes: HeaderBar, Brand,
+│   │                             # MainNav, MetaActions, NoticeBar, CategoryTabs
+│   └── feedback/                 # FeedbackForm: the flow both feedback patterns ask
 ├── _types/pds-jsx.d.ts           # JSX typings for the PDS web components (derived, type-only)
 ├── assets/styles.css             # Tailwind entry: @theme, global element defaults – copied next to every page
 ├── assets/header.js              # behaviour of the header drilldown – inlined into the entries, never emitted
@@ -95,10 +96,13 @@ src/
     ├── header/overlay/           # Header in its `overlay` variant
     ├── header/stacked/           # Header in its `stacked` variant
     ├── footer/                   # Footer below the content
-    └── popover/                  # index.page.tsx + main.js each – the behaviour is per example
-        ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
-        ├── priority-navigation/  # entries that no longer fit collapse into a popover
-        └── feature-tour/         # a sequence of coachmarks, one open at a time
+    ├── popover/                  # index.page.tsx + main.js each – the behaviour is per example
+    │   ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
+    │   ├── priority-navigation/  # entries that no longer fit collapse into a popover
+    │   └── feature-tour/         # a sequence of coachmarks, one open at a time
+    └── feedback/                 # index.page.tsx + main.js each – the flow itself is a partial
+        ├── inline/               # the flow in the page, confirming in place
+        └── dialog/               # the same flow in a p-modal, reset once it has closed
 ```
 
 **Underscore rule:** files and folders starting with `_` are inputs only and are never emitted. **Page rule:** only
@@ -380,6 +384,20 @@ Done:
   - `popover`, `sheet` and `tag` joined the preloaded chunks in [`plugins/projects.ts`](plugins/projects.ts);
   - they are the first pages with a `main.js` of their own, so the rules for it are now asserted: no stylesheet import,
     no repeated banner, and the build's entry generation is run over every page in `test:unit`.
+- **Two feedback patterns added (2026-08-20)**, in `patterns/feedback/`: `inline` asks in the page and confirms in
+  place, `dialog` asks the same thing in a `p-modal` opened from a button. Notable:
+  - the flow is one partial, `_partials/feedback/FeedbackForm.tsx`, and the pages pass only what differs – the action
+    next to the confirmation ("Give new feedback" / "Close"). It lives next to `header/` and `footer/` rather than in
+    the pattern folder, because "a variant is a prop, not a copy" holds for a family of pages as much as for a header;
+  - the rating scale is data, so the five items cannot drift apart, and each one names itself for assistive tech
+    (`1 (very dissatisfied)`) while the label is hidden visually from `s` upwards, where the ends of the scale are
+    labelled instead. The space in between is a `{'\u00a0'}`, because JSX drops whitespace between lines;
+  - the flow moves focus to the confirmation heading (and back to the question when it starts over), with `aria-live`
+    covering the case where focus cannot be moved – both headings are `tabindex={-1}` and carry the shared focus ring;
+  - `p-modal` is used in **controlled** mode, which is what lets the dialog variant reset on `motionHiddenEnd` instead
+    of snapping back while the dialog is still visible;
+  - `modal`, `segmented-control` and `textarea` joined the preloaded chunks in
+    [`plugins/projects.ts`](plugins/projects.ts).
 
 Open:
 

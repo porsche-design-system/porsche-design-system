@@ -115,6 +115,18 @@ export const patternItems: ExampleItem[] = [
     label: 'Popover - Feature tour',
     description: 'A sequence of coachmarks walking through the affordances of the header, one step at a time.',
   },
+  {
+    id: 'feedback-inline',
+    href: 'feedback/inline/',
+    label: 'Feedback - Inline',
+    description: 'Rating scale and optional comment shown in the page, confirming in place once submitted.',
+  },
+  {
+    id: 'feedback-dialog',
+    href: 'feedback/dialog/',
+    label: 'Feedback - Dialog',
+    description: 'The same feedback flow in a modal, opened from a button and reset once it has closed.',
+  },
 ];
 
 /**
