@@ -52,8 +52,8 @@ jobs:
         id: urls
         working-directory: packages/storefront
         run: |
-          # Generate URLs as a newline-delimited string for the 'urls' input
-          URLS=$(npx tsx scripts/generateScanUrls.ts http://localhost:8080)
+          # Generate URLs from the exact same sitemap.json used by Playwright E2E tests
+          URLS=$(jq -r '.[] | "http://localhost:8080\(.)"' tests/e2e/fixtures/sitemap.json)
           
           # Multiline strings in GITHUB_OUTPUT need a delimiter
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
