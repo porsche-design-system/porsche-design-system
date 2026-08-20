@@ -244,6 +244,12 @@ invisible. The dev server has neither the entries nor a project, so it injects t
 [`plugins/partials.ts`](plugins/partials.ts) and rewrites the entry tag to the shared files of the source tree. Those
 two rewrites, plus the CDN origin, are the only differences between dev and the emitted pages.
 
+The order of those two matters: the entry tag is rewritten in the middleware, **before** the markup is handed to
+`server.transformIndexHtml()`, because Vite resolves and warms up every `<script src>` of a page in its own HTML hook,
+which runs ahead of the plugin hooks. A page still pointing at its generated `main.js` would make the dev server log
+`Failed to load url /main.js`. The partials go the other way round and are injected in a `transformIndexHtml()` hook,
+after Vite's, so the inline loader script keeps the bytes the partial emitted and its CSP hash stays valid.
+
 Preact never reaches the browser: it is a build-time renderer and a source of JSX types, nothing else. The output is
 plain HTML with relative paths, no hydration, no framework runtime.
 

@@ -126,6 +126,11 @@ type DevEntryOptions = {
  * authored as, and the page's own behaviour is loaded only if it exists – where the build inlines all of them into one
  * `main.js`. Everything else about the markup is identical, so this is the one place where the two differ – like the
  * CDN rewrite in `partials.ts`.
+ *
+ * It has to run **before** `server.transformIndexHtml()`, not in a `transformIndexHtml()` hook: Vite's own HTML hook
+ * runs ahead of the normal plugin hooks and warms up every `<script src>` it finds, so a page still carrying its
+ * `main.js` makes it log "Failed to load url /main.js" – that file exists in the built projects only.
+ * `plugins/jsx.ts` therefore applies this to the rendered markup directly.
  */
 export const rewriteEntriesForDev = (html: string, { hasBehaviour, sharedScripts: scripts }: DevEntryOptions): string =>
   html

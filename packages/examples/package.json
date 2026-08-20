@@ -8,10 +8,10 @@
   "scripts": {
     "dev": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'vite'",
     "start": "npm run dev",
-    "preview:patterns": "npm run build && concurrently -k -s 'first' -n 'cdn,patterns' 'serve-cdn' 'tsx scripts/previewProject.ts patterns'",
-    "preview:templates": "npm run build && concurrently -k -s 'first' -n 'cdn,templates' 'serve-cdn' 'tsx scripts/previewProject.ts templates'",
+    "preview:patterns": "concurrently -k -s 'first' -n 'cdn,patterns' 'serve-cdn' 'tsx scripts/previewProject.ts patterns'",
+    "preview:templates": "concurrently -k -s 'first' -n 'cdn,templates' 'serve-cdn' 'tsx scripts/previewProject.ts templates'",
     "build": "tsx scripts/build.ts",
-    "build:verify": "npm run build && tsx scripts/verify.ts",
+    "build:verify": "tsx scripts/verify.ts",
     "lint": "biome lint",
     "test": "npm run test:unit",
     "test:unit": "vitest run",

@@ -222,10 +222,15 @@ approach, and it is paid on every review:
   without it the browser loads the components from the production CDN and blocks the loader script with a CORS error.
   The same rewrite exists in the react/angular/vue/storefront dev servers. It is **dev only**; the generated projects
   keep the production URLs.
-- **The dev server also rewrites the page entry.** `main.js` and `style.css` only exist in the generated projects, so
-  `rewriteEntriesForDev()` replaces that one tag with a link to `/assets/styles.css` and the shared scripts the page
-  needs — as the separate modules they are authored as, where the build inlines them. Together with the CDN rewrite,
-  these are the only two differences between dev and the emitted HTML.
+- **The dev server also rewrites the page entry — before Vite sees the HTML.** `main.js` and `style.css` only exist in
+  the generated projects, so `rewriteEntriesForDev()` replaces that one tag with a link to `/assets/styles.css` and the
+  shared scripts the page needs — as the separate modules they are authored as, where the build inlines them. Together
+  with the CDN rewrite, these are the only two differences between dev and the emitted HTML. It happens in the
+  middleware of [`plugins/jsx.ts`](plugins/jsx.ts), **not** in a `transformIndexHtml()` hook: Vite's own HTML hook
+  resolves and warms up every `<script src>` of a page and runs ahead of the normal plugin hooks
+  (`createDevHtmlTransformFn()` orders them `pre` → `devHtmlHook` → `normal` → `post`), so a page still carrying its
+  entry tag makes the dev server log `Failed to load url /main.js` for a file that is never generated here. The partials
+  need the opposite order and therefore stay in the hook — see [`vite.config.ts`](vite.config.ts).
 - **Previewing a project builds it, it does not serve `dist/`.** `npm run preview:examples/patterns` (and `…/templates`)
   run the same `vite build` as `build:verify` via
   [`scripts/buildGeneratedProject.ts`](scripts/buildGeneratedProject.ts), rewrite the CDN origin in the emitted HTML in
@@ -324,6 +329,13 @@ Done:
   package README). Consequences: the file carries no relative path (a unit test asserts it, since the copy lands at
   every depth), `getStyleEntry()` and `getRootRelativePath()` were dropped, and a page's CSS again contains the
   utilities of its whole project rather than only its own — about 1 kB uncompressed.
+- **The dev entry rewrite moved ahead of Vite (2026-08-20).** It ran in a `transformIndexHtml()` hook, which Vite calls
+  _after_ its own HTML hook has already resolved and warmed up every `<script src>` of the page — so the dev server
+  logged `Failed to load url /main.js` for every page, for a file that only the generated projects have.
+  `rewriteEntriesForDev()` is now applied in the middleware of [`plugins/jsx.ts`](plugins/jsx.ts), before the markup is
+  handed to `server.transformIndexHtml()`; the partials stay in the hook, because they need exactly the opposite order.
+  Side effect: the shared scripts and the stylesheet are now part of the module graph, so they hot-update instead of
+  being fetched behind Vite's back.
 
 Open:
 

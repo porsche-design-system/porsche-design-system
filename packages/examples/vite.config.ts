@@ -1,32 +1,26 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import tailwindcss from '@tailwindcss/vite';
 import { Features } from 'lightningcss';
 import { defineConfig } from 'vite';
-import { getSharedScripts, rewriteEntriesForDev } from './plugins/entries.ts';
-import { jsxPages, resolvePagePath } from './plugins/jsx.ts';
+import { jsxPages } from './plugins/jsx.ts';
 import { injectPartials, rewriteCdnUrlsForDev } from './plugins/partials.ts';
-import { scriptEntryName } from './plugins/projects.ts';
-
-const rootDir = path.join(import.meta.dirname, 'src');
 
 /**
  * The dev server counterpart of `scripts/build.ts`.
  *
  * The build writes two Vite projects whose pages load a generated `main.js`; here nothing is generated, so that tag is
- * rewritten to the shared files of the source tree – see `plugins/entries.ts`. The partials are injected the same way
- * in both, only the CDN origin differs – see `plugins/partials.ts`.
+ * rewritten to the shared files of the source tree. That rewrite happens in `plugins/jsx.ts`, before the markup reaches
+ * `server.transformIndexHtml()`, because Vite's own HTML hook would otherwise try to load the file that does not exist
+ * yet. What is left for a plugin hook are the partials, which are injected the same way in both, only the CDN origin
+ * differs – see `plugins/partials.ts`.
+ *
+ * They are injected here rather than in the middleware on purpose: a `transformIndexHtml()` hook runs after Vite's own,
+ * so the inline loader script stays byte for byte what the partial emitted and its CSP hash keeps matching.
  */
 const transformIndexHtmlPlugin = () => {
   return {
     name: 'html-transform',
-    transformIndexHtml(html: string, ctx: { path: string }): string {
-      const pagePath = resolvePagePath(ctx.path);
-      const hasBehaviour = !!pagePath && fs.existsSync(path.join(rootDir, path.dirname(pagePath), scriptEntryName));
-
-      return rewriteCdnUrlsForDev(
-        injectPartials(rewriteEntriesForDev(html, { hasBehaviour, sharedScripts: getSharedScripts(html) }))
-      );
+    transformIndexHtml(html: string): string {
+      return rewriteCdnUrlsForDev(injectPartials(html));
     },
   };
 };

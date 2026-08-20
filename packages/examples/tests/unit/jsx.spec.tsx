@@ -10,7 +10,7 @@ import {
   scriptEntryTag,
 } from '../../plugins/entries.ts';
 import { doctype, isBuildInput, renderPage, resolvePagePath } from '../../plugins/jsx.ts';
-import { getInputName, projects, resolvePageLocation } from '../../plugins/projects.ts';
+import { getInputName, projects, resolvePageLocation, scriptEntryName } from '../../plugins/projects.ts';
 import {
   categoryItems,
   type NavItem,
@@ -238,6 +238,20 @@ describe('entries', () => {
 
     expect(html).toContain(scriptEntryTag);
   });
+
+  // Regression: Vite's own HTML hook runs before the plugin hooks and warms up every `<script src>` it finds, so a
+  // page still referencing its generated entry makes the dev server log "Failed to load url /main.js". The rewrite
+  // therefore happens in the middleware of `jsxPages()`, before `server.transformIndexHtml()` sees the markup.
+  it.each([...examplePages, ...overviewPages])(
+    'should leave no reference to the generated entry in the dev markup of "%s"',
+    async (_name, Page) => {
+      const html = await renderPage(Page);
+
+      expect(rewriteEntriesForDev(html, { hasBehaviour: false, sharedScripts: getSharedScripts(html) })).not.toContain(
+        scriptEntryName
+      );
+    }
+  );
 });
 
 describe('data', () => {
