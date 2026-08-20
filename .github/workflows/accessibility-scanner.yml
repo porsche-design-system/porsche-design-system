@@ -25,17 +25,8 @@ jobs:
       - name: 'Install dependencies'
         run: npm ci
 
-      - name: 'Build core dependencies'
-        run: npm run build:core-dependencies
-
-      - name: 'Build components'
-        run: npm run build:components
-
-      - name: 'Build components-js'
-        run: npm run build:components-js
-
-      - name: 'Build storefront'
-        run: npm run build -w @porsche-design-system/storefront
+      - name: 'Build all packages'
+        run: npm run build
 
       - name: 'Start storefront server'
         working-directory: packages/storefront
