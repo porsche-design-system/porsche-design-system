@@ -25,6 +25,12 @@ export type AiTagTranslationEntry = {
 };
 
 export const AI_TAG_TRANSLATIONS = {
+  ar: {
+    short: 'AI',
+    long: 'الذكاء الاصطناعي',
+    generated: 'مُنشأ بواسطة الذكاء الاصطناعي',
+    modified: 'مُعدَّل بواسطة الذكاء الاصطناعي',
+  },
   bg: {
     short: 'ИИ',
     long: 'изкуствен интелект',
@@ -96,6 +102,18 @@ export const AI_TAG_TRANSLATIONS = {
     generated: "Generato dall'IA",
     modified: "Modificato dall'IA",
   },
+  ja: {
+    short: 'AI',
+    long: '人工知能',
+    generated: 'AIによる生成',
+    modified: 'AIによる修正',
+  },
+  ko: {
+    short: 'AI',
+    long: '인공지능',
+    generated: '인공지능 생성',
+    modified: '인공지능 수정',
+  },
   lt: {
     short: 'DI',
     long: 'dirbtinis intelektas',
@@ -152,7 +170,7 @@ export const AI_TAG_TRANSLATIONS = {
     generated: 'Сгенерировано ИИ',
     modified: 'Изменено ИИ',
   },
-  sk: { short: 'AI', long: 'umelá inteligencia', generated: 'Vytvořeno AI', modified: 'Upravené AI' },
+  sk: { short: 'AI', long: 'umelá inteligencia', generated: 'Vytvorené AI', modified: 'Upravené AI' },
   sl: { short: 'UI', long: 'umetna inteligenca', generated: 'Ustvarjeno z UI', modified: 'Spremenjeno z UI' },
   sr: { short: 'AI', long: 'veštačka inteligencija', generated: 'AI-generisano', modified: 'AI-modifikovano' },
   sv: {
@@ -172,6 +190,24 @@ export const AI_TAG_TRANSLATIONS = {
     long: 'штучний інтелект',
     generated: 'Згенеровано ШІ',
     modified: 'Змінено ШІ',
+  },
+  zhCN: {
+    short: 'AI',
+    long: '人工智能',
+    generated: 'AI生成',
+    modified: 'AI润色',
+  },
+  zhHK: {
+    short: 'AI',
+    long: '人工智能',
+    generated: '由 AI 生成的',
+    modified: '經 AI 修改的',
+  },
+  zhTW: {
+    short: 'AI',
+    long: '人工智慧',
+    generated: 'AI生成',
+    modified: 'AI修改',
   },
 } as const satisfies Record<string, AiTagTranslationEntry>;
 

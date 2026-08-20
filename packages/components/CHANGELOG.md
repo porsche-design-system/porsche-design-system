@@ -37,6 +37,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   changed from `void` to `{ reason: 'outside-click' | 'focus-out' | 'escape' }`, exported as
   `PopoverDismissEventDetail`. ([#4675](https://github.com/porsche-design-system/porsche-design-system/pull/4675))
 
+### Fixed
+
+- `Ai Tag`: Sanitize translations
+  ([#4678](https://github.com/porsche-design-system/porsche-design-system/pull/4678))
+
 ## [4.6.0-rc.2] - 2026-08-13
 
 ### Added
