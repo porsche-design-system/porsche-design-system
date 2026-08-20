@@ -24,7 +24,8 @@
  * The component chunks preloaded by the pattern pages.
  *
  * `drilldown` covers its item and link chunks, `select` covers its options; the icons of the header come with
- * `button-pure`. Preloading is an optimisation, so a missing entry costs a round trip, not correctness – but keep the
+ * `button-pure`. A `popover` and the `sheet` it turns into below `s` are separate chunks, as is the `tag` used as a
+ * counter. Preloading is an optimisation, so a missing entry costs a round trip, not correctness – but keep the
  * list in sync with the `p-*` elements the pages actually render.
  */
 export const patternComponents = [
@@ -37,8 +38,11 @@ export const patternComponents = [
   'link',
   'link-pure',
   'optgroup',
+  'popover',
   'select',
+  'sheet',
   'tabs-bar',
+  'tag',
   'text',
   'wordmark',
 ] as const;

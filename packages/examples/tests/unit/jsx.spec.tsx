@@ -11,7 +11,13 @@ import {
   sharedScripts,
 } from '../../plugins/entries.ts';
 import { doctype, isBuildInput, renderPage, resolvePagePath } from '../../plugins/jsx.ts';
-import { getInputName, projects, resolvePageLocation, scriptEntryName } from '../../plugins/projects.ts';
+import {
+  getInputName,
+  projects,
+  resolvePageLocation,
+  scriptEntryName,
+  styleEntryName,
+} from '../../plugins/projects.ts';
 import {
   categoryItems,
   type NavItem,
@@ -34,6 +40,9 @@ import FooterPatternPage from '../../src/patterns/footer/index.page.tsx';
 import HeaderOverlayPage from '../../src/patterns/header/overlay/index.page.tsx';
 import HeaderStackedPage from '../../src/patterns/header/stacked/index.page.tsx';
 import PatternsOverviewPage from '../../src/patterns/index.page.tsx';
+import PopoverFeatureTourPage from '../../src/patterns/popover/feature-tour/index.page.tsx';
+import PopoverLocalMarketSwitchPage from '../../src/patterns/popover/local-market-switch/index.page.tsx';
+import PopoverPriorityNavigationPage from '../../src/patterns/popover/priority-navigation/index.page.tsx';
 import TemplatesOverviewPage from '../../src/templates/index.page.tsx';
 import LandingPage from '../../src/templates/landing-page/index.page.tsx';
 
@@ -58,6 +67,9 @@ const patternPages = [
   ['patterns/header/overlay', HeaderOverlayPage],
   ['patterns/header/stacked', HeaderStackedPage],
   ['patterns/footer', FooterPatternPage],
+  ['patterns/popover/local-market-switch', PopoverLocalMarketSwitchPage],
+  ['patterns/popover/priority-navigation', PopoverPriorityNavigationPage],
+  ['patterns/popover/feature-tour', PopoverFeatureTourPage],
 ] as const;
 
 const examplePages = [...templatePages, ...patternPages];
@@ -336,6 +348,45 @@ describe('behaviour ids', () => {
     expect(html).toContain(idAttribute(ids.navButton));
     expect(html).toContain(idAttribute(ids.navDrilldown));
     expect(getSharedScripts(html)).toEqual(['header.js']);
+  });
+});
+
+describe('behaviour authored next to a page', () => {
+  const srcDir = path.join(import.meta.dirname, '../../src');
+
+  const readSharedBehaviour = (html: string) =>
+    getSharedScripts(html).map((fileName) => ({
+      fileName,
+      content: fs.readFileSync(path.join(srcDir, 'assets', fileName), 'utf8') as string,
+    }));
+
+  /** The pages carrying a `main.js` of their own – behaviour exactly one example needs. */
+  const pagesWithBehaviour = examplePages
+    .map(([name]) => [name, path.join(srcDir, name, scriptEntryName)] as const)
+    .filter(([, filePath]) => fs.existsSync(filePath))
+    .map(([name, filePath]) => [name, fs.readFileSync(filePath, 'utf8') as string] as const);
+
+  it('should exist, since single-use behaviour does not belong in the shared folder', () => {
+    // `assets/` holds what more than one page needs, selected by a detection rule on the ids of `_ids.ts`. A snippet
+    // there has to address elements by id only and register every id it looks up – neither of which is possible nor
+    // meaningful for behaviour belonging to exactly one example.
+    expect(pagesWithBehaviour.length).toBeGreaterThan(0);
+  });
+
+  it.each(pagesWithBehaviour)('should keep the behaviour of "%s" a fragment, not an entry', (_name, code) => {
+    // The generated entry brings the stylesheet and the banner. In dev the file is served straight from the source
+    // tree, where the `style.css` it would import does not exist at all.
+    expect(code).not.toContain(styleEntryName);
+    expect(code).not.toContain(exampleBanner);
+  });
+
+  it.each(examplePages)('should generate the entry of "%s" from what the page renders', async (name, Page) => {
+    const html = await renderPage(Page);
+    const behaviour = pagesWithBehaviour.find(([pageName]) => pageName === name)?.[1];
+
+    // The very call `scripts/build.ts` makes: it throws when a page's own behaviour declares a top level name one of
+    // the inlined snippets already declares, since the two end up in a single module scope.
+    expect(() => getScriptEntry({ behaviour, sharedBehaviour: readSharedBehaviour(html) })).not.toThrow();
   });
 });
 
@@ -868,5 +919,73 @@ describe('footer pattern', () => {
     expect(html).toContain('<main id="main"></main>');
     expect(countFirstLevelHeadings(html)).toBe(0);
     expect(html).not.toContain('<p-heading tag="h1"');
+  });
+});
+
+describe('popover patterns', () => {
+  it('should build the local market switch on the shared header blocks, not on a copy of the bar', async () => {
+    const html = await renderPage(PopoverLocalMarketSwitchPage);
+
+    expect(html).toContain('<nav aria-label="Main">');
+    expect(html).toContain(idAttribute(ids.navDrilldown));
+    // The bar, the navigation and the brand come from `_partials/header/`; only the meta actions are the pattern.
+    expect(html).toContain('<p-crest class="sm:hidden scheme-dark"');
+    expect(html).not.toContain('icon="shopping-cart"');
+  });
+
+  it('should keep the dark scheme of the local market switch off the popovers it opens', async () => {
+    const html = await renderPage(PopoverLocalMarketSwitchPage);
+    const closingTag = '</p-popover>';
+    const marketPopover = html.slice(html.indexOf('<p-popover id="market-popover"'), html.indexOf(closingTag));
+
+    // A popover is a dialog on top of the page, not part of the bar, so the scheme reaches its trigger and nothing
+    // else – on the wrapper it would cascade into the panel and open a dark flyout on a light page.
+    expect(marketPopover).toContain('class="scheme-dark p-static-xs -m-static-xs"');
+    expect(countOccurrences(marketPopover, 'scheme-dark')).toBe(1);
+    expect(html).not.toContain('<header class="scheme-dark');
+  });
+
+  it('should render the profile menu in both containers it can appear in', async () => {
+    const html = await renderPage(PopoverLocalMarketSwitchPage);
+
+    // The popover above `s`, the sheet below it – one body, rendered twice, so the two cannot drift apart.
+    expect(countOccurrences(html, 'Find Connect Services')).toBe(2);
+    expect(html.indexOf('<main')).toBeLessThan(html.indexOf('<p-sheet'));
+  });
+
+  it('should need the shared header and video behaviour of the local market switch, derived from the markup', async () => {
+    expect(getSharedScripts(await renderPage(PopoverLocalMarketSwitchPage))).toEqual(['header.js', 'video.js']);
+  });
+
+  it('should collapse the priority navigation into a trigger that is not shown while nothing overflows', async () => {
+    const html = await renderPage(PopoverPriorityNavigationPage);
+
+    expect(html).toContain('<li id="more-trigger" class="ms-auto" hidden>');
+    expect(html).toContain(`aria="{ 'aria-expanded': false }"`);
+    // The entries live in the bar; the popover starts empty because `main.js` moves the very same elements into it.
+    expect(html).toContain('<ul id="overflow-list"');
+    expect(countOccurrences(html, 'Some Item')).toBe(9);
+  });
+
+  it('should walk the feature tour through one coachmark per affordance, the first one open', async () => {
+    const html = await renderPage(PopoverFeatureTourPage);
+    const steps = countOccurrences(html, 'data-tour-step');
+
+    expect(steps).toBe(4);
+    expect(html).toContain('<p-popover class="[--p-popover-w:20rem]" open data-tour-step');
+    expect(countOccurrences(html, 'open data-tour-step')).toBe(1);
+    // Every step can be skipped and continued; only the first one has nothing to go back to.
+    expect(countOccurrences(html, 'data-tour="skip"')).toBe(steps);
+    expect(countOccurrences(html, 'data-tour="next"')).toBe(steps);
+    expect(countOccurrences(html, 'data-tour="back"')).toBe(steps - 1);
+    expect(html).toContain('Step 4 of 4');
+    expect(html).toContain('>Done</p-button>');
+  });
+
+  it.each([
+    ['priority navigation', PopoverPriorityNavigationPage],
+    ['feature tour', PopoverFeatureTourPage],
+  ])('should keep the %s on its own behaviour, with no shared snippet to inline', async (_name, Page) => {
+    expect(getSharedScripts(await renderPage(Page))).toEqual([]);
   });
 });

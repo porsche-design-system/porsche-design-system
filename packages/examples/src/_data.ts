@@ -97,6 +97,24 @@ export const patternItems: ExampleItem[] = [
     label: 'Footer',
     description: 'Footer with a logo, navigation and legal links, shown at the bottom of a page.',
   },
+  {
+    id: 'popover-local-market-switch',
+    href: 'popover/local-market-switch/',
+    label: 'Popover - Local market switch',
+    description: 'Popover on load next to the header affordance it belongs to, becoming a sheet on narrow viewports.',
+  },
+  {
+    id: 'popover-priority-navigation',
+    href: 'popover/priority-navigation/',
+    label: 'Popover - Priority navigation',
+    description: 'Navigation entries that no longer fit collapse into a popover, keeping the bar on a single line.',
+  },
+  {
+    id: 'popover-feature-tour',
+    href: 'popover/feature-tour/',
+    label: 'Popover - Feature tour',
+    description: 'A sequence of coachmarks walking through the affordances of the header, one step at a time.',
+  },
 ];
 
 /**

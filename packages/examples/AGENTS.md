@@ -90,11 +90,15 @@ src/
 ├── templates/                    # → dist/templates
 │   ├── index.page.tsx            # overview of that project
 │   └── landing-page/             # index.page.tsx
-└── patterns/                     # → dist/patterns
+└── patterns/                    # → dist/patterns
     ├── index.page.tsx            # overview of that project
     ├── header/overlay/           # Header in its `overlay` variant
     ├── header/stacked/           # Header in its `stacked` variant
-    └── footer/                   # Footer below the content
+    ├── footer/                   # Footer below the content
+    └── popover/                  # index.page.tsx + main.js each – the behaviour is per example
+        ├── local-market-switch/  # popover open on load, becoming a p-sheet below `s`
+        ├── priority-navigation/  # entries that no longer fit collapse into a popover
+        └── feature-tour/         # a sequence of coachmarks, one open at a time
 ```
 
 **Underscore rule:** files and folders starting with `_` are inputs only and are never emitted. **Page rule:** only
@@ -174,7 +178,9 @@ npm run build:verify        # build + `vite build` of both generated projects in
   the snippets address elements **by id only** — never by tag name or class, since they are inlined into pages they know
   nothing about. A snippet wires its ids **together**: rendering `id="pause-button"` without `id="hero-video"` fails the
   build instead of producing an example that silently does nothing. Unit tests assert all of it, including that no
-  `.tsx` file writes one of those ids as a literal.
+  `.tsx` file writes one of those ids as a literal. **Only shared ids belong there** — the hooks of a page's own
+  `main.js` (`market-popover`, `more-trigger`, …) stay literals in that page, because the registry test requires every
+  registered id to be owned by exactly one snippet in `assets/`.
 - **Scripts and styles are not declared, they are derived — and copied.** A page always references one entry, `main.js`,
   generated next to it by [`plugins/entries.ts`](plugins/entries.ts). It imports the page's `style.css` and then
   **contains** the behaviour of the example: the shared snippets the rendered markup asks for (`assets/header.js` when
@@ -186,7 +192,15 @@ npm run build:verify        # build + `vite build` of both generated projects in
   in `src/assets/` (with a detection rule, for the scripts), not in one example folder — the file stays the single
   source, it is just not emitted.
 - **Inlined snippets share one module scope.** `getScriptEntry()` fails the build when two of them (or a page's own
-  `main.js`) declare the same top level name. Rename, or wrap the snippet in a block.
+  `main.js`) declare the same top level name. Rename, or wrap the snippet in a block. In practice this is what stops a
+  page from re-implementing shared behaviour: a `main.js` next to a header page cannot declare `navButton` again,
+  because `assets/header.js` already did.
+- **A page's `main.js` is a fragment, not an entry.** It must not `import './style.css'` and must not repeat the
+  `DO NOT USE IN PRODUCTION` banner: the generated entry brings both, and in dev the file is served from the source tree
+  where no `style.css` exists. A bare `import` of a real dependency is fine — `priority-navigation` imports
+  `componentsReady`, because `p-link-pure` widths are only final once the components have upgraded. Unit tests assert
+  the first two rules and run the build's own entry generation over every page, so a clash with an inlined snippet fails
+  `test:unit` rather than only `build`.
 - **A variant is a prop, not a copy.** `Header` renders both header patterns from one set of blocks
   (`_partials/header/`), driven by `navItems` and `metaActionItems` from `_data.ts`. If two variants need the same
   block, extract the block; do not paste the markup a second time, or one variant silently drifts from the other.
@@ -273,8 +287,9 @@ approach, and it is paid on every review:
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
 4. Add an entry to `patternItems` in `src/_data.ts`, with an `href` relative to the root of the `patterns` project.
 5. If the pattern needs behaviour of its own, put it in a plain `main.js` next to the page; the build inlines it into
-   the generated entry. Shared behaviour goes to `src/assets/*.js` and is inlined by its detection rule — hook it on ids
-   from [`src/_ids.ts`](src/_ids.ts), add new ones there, and query them with `getElementById()`.
+   the generated entry, so it imports no stylesheet and carries no banner. Shared behaviour goes to `src/assets/*.js`
+   and is inlined by its detection rule — hook it on ids from [`src/_ids.ts`](src/_ids.ts), add new ones there, and
+   query them with `getElementById()`.
 6. Run `npm run build:verify`; the unit tests assert the accessibility baseline for every page, patterns included.
 
 ## Accessibility baseline
@@ -353,6 +368,18 @@ Done:
   snippet's ids — that used to be a script quietly doing nothing. Unit tests pin the rules down: id-only selectors, a
   snippet querying exactly the ids it is registered for, every registered id owned by one snippet, and no literal id
   left in a `.tsx` file.
+- **Three popover patterns added (2026-08-20)**, in `patterns/popover/`, and with them the first examples carrying a
+  `main.js` of their own: `local-market-switch` (open on load, becoming a `p-sheet` below `s`), `priority-navigation`
+  (entries collapsing into a popover as the bar narrows) and `feature-tour` (a sequence of coachmarks). All three use
+  the popover in **controlled** mode, so the page owns which disclosure is open and can mirror it onto the
+  `aria-expanded` of the trigger. Notable along the way:
+  - the local market switch is composed from `HeaderBar`, `MainNav` and `Brand` instead of a second copy of the bar, and
+    its scheme sits on the popover **triggers** – on the wrapper it cascades into the flyouts;
+  - it takes the shared `assets/header.js` and `assets/video.js` through `ids.navButton` … `ids.pauseButton` rather than
+    repeating them, which the "one module scope" check enforces anyway;
+  - `popover`, `sheet` and `tag` joined the preloaded chunks in [`plugins/projects.ts`](plugins/projects.ts);
+  - they are the first pages with a `main.js` of their own, so the rules for it are now asserted: no stylesheet import,
+    no repeated banner, and the build's entry generation is run over every page in `test:unit`.
 
 Open:
 
