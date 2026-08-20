@@ -1,5 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { screen } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -24,7 +24,19 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Event Counter: <span>0</span>');
 
-  const button = getByRoleShadowed('button');
+  // p-carousel renders two navigation buttons and both compute an empty accessible
+  // name in jsdom, so they cannot be told apart by name. Take the first one.
+  const [button] = screen.getAllByShadowRole('button');
   await userEvent.click(button);
   expect(debugEl.innerHTML).toBe('Event Counter: <span>1</span>');
+});
+
+it('should expose its heading to shadow queries before hydration completes', async () => {
+  document.body.innerHTML = getMarkup('p-carousel');
+  // deliberately no `await componentsReady()`, the point is that findByShadow* retries until Stencil hydrates
+
+  expect(screen.queryAllByText('Some heading')).toHaveLength(0);
+
+  const heading = await screen.findByShadowText('Some heading');
+  expect(heading).toBe(document.querySelector('p-carousel').shadowRoot.querySelector('h2'));
 });

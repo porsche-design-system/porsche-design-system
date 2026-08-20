@@ -1,5 +1,5 @@
 import { componentsReady } from '@porsche-design-system/components-js';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
@@ -37,4 +37,15 @@ it('should have working events', async () => {
 
   await userEvent.click(closeButton);
   expect(debugEl.innerHTML).toBe('Action Event Counter: <span>1</span>; Close Event Counter: <span>1</span>;');
+});
+
+it('should expose its heading to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-inline-notification');
+  await componentsReady();
+
+  expect(screen.queryAllByText('Some banner title')).toHaveLength(0);
+  expect(screen.getAllByShadowText('Some banner title')).toHaveLength(1);
+
+  const { shadowRoot } = document.querySelector('p-inline-notification');
+  expect(screen.getByShadowText('Some banner title')).toBe(shadowRoot.querySelector('h5'));
 });

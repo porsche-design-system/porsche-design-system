@@ -15,7 +15,6 @@ import {
   colorErrorLow,
   colorFocus,
   colorFrosted,
-  colorInfo,
   colorInfoLow,
   colorPrimary,
   colorSurface,
@@ -97,15 +96,11 @@ export const pdsTheme: Theme = themeQuartz
     headerFontWeight: fontWeightSemibold,
     headerFontSize: typescaleXs,
 
-    // Focus and shadows
-    focusShadow: 'none',
-    inputFocusShadow: 'none',
-
     // Color scheme
     browserColorScheme: 'inherit',
 
     // Core Colors
-    accentColor: colorInfo,
+    accentColor: colorFocus,
     backgroundColor: colorCanvas,
     foregroundColor: colorPrimary,
     borderColor: colorContrastLow,
