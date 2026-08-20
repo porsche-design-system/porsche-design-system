@@ -28,6 +28,12 @@ jobs:
       - name: 'Build core dependencies'
         run: npm run build:core-dependencies
 
+      - name: 'Build components'
+        run: npm run build:components
+
+      - name: 'Build components-js'
+        run: npm run build:components-js
+
       - name: 'Build storefront'
         run: npm run build -w @porsche-design-system/storefront
 
