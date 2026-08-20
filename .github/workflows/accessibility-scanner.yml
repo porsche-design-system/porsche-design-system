@@ -5,8 +5,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   issues: write
+  pull-requests: write
 
 jobs:
   accessibility-scan:
@@ -58,3 +59,7 @@ jobs:
         uses: github/accessibility-scanner@main
         with:
           urls: ${{ steps.urls.outputs.urls }}
+          repository: ${{ github.repository }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          cache_key: a11y-scanner-results-${{ github.sha }}
+          dry_run: 'true'
