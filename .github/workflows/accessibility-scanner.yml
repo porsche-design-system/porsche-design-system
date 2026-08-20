@@ -47,7 +47,14 @@ jobs:
           echo "Server failed to start"
           exit 1
 
+      - name: 'Generate scan URLs'
+        id: urls
+        working-directory: packages/storefront
+        run: |
+          URLS=$(node scripts/generateScanUrls.js http://localhost:8080)
+          echo "urls=$URLS" >> $GITHUB_OUTPUT
+
       - name: 'Run GitHub Accessibility Scanner'
         uses: github/accessibility-scanner@main
         with:
-          url: 'http://localhost:8080'
+          urls: ${{ steps.urls.outputs.urls }}
