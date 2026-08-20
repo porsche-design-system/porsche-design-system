@@ -1,6 +1,7 @@
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { CodeSample } from '@porsche-design-system/shared';
 import type { ComponentType } from 'react';
+import type { ComponentAccessibilityMeta } from '@/models/accessibilityMeta';
 import type { SlotStories, Story } from '@/models/story';
 import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
@@ -51,6 +52,11 @@ export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
   // Story (and optional slot stories) powering the interactive configurator playground.
   configurator: {
     story: Story<Tag>;
+    // Optional hand-authored CodeSample that replaces the story as the component's primary
+    // example. Set when the storefront page renders a CodeSample instead of the interactive
+    // configurator (e.g. imperative components like p-toast); the skill emits it as the
+    // "Default" example in place of the bare story markup.
+    example?: CodeSample;
     slotStories?: SlotStories<Tag>;
     // Optional controlled-mode variant for dual-mode components (e.g. p-popover). When present, the
     // configurator renders a "Behavior" segmented control to switch between uncontrolled and controlled.
@@ -61,8 +67,9 @@ export type ComponentDocsMeta<Tag extends HTMLTagOrComponent> = {
   examples: Record<string, ExampleMeta<Tag>>;
   // Guidance on when and how to use the component, including Dos and Don'ts.
   usage: ComponentType;
-  // Accessibility considerations specific to this component.
-  accessibility: ComponentType;
+  // Accessibility considerations specific to this component: overview prose, keyed anti-pattern/
+  // recommended integration example pairs, and test-support prose.
+  accessibility: ComponentAccessibilityMeta;
   // Optional supplementary notes (e.g. migration hints, edge cases).
   notes?: Record<string, { name: string; description: ComponentType }>;
   // Full API reference: props, slots, events and CSS variables.

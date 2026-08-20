@@ -1,0 +1,100 @@
+import { FrameworkCodeBlock } from '@/components/common/FrameworkCodeBlock';
+import { FrameworkTabs } from '@/components/common/FrameworkTabs';
+import { FrameworkSkill } from '@/components/common/StorefrontFramework';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Knowledge Skill - Porsche Design System',
+  description:
+    'Version-exact Porsche Design System guidance for Claude Code, GitHub Copilot, Codex and compatible AI coding tools.',
+};
+
+# Knowledge Skill
+
+<TableOfContents headings={['Introduction', 'What It Covers', 'Installation', 'How to Use the Skill']} />
+
+## Introduction
+
+The Porsche Design System Knowledge Skill gives AI coding tools version-exact guidance for the Porsche Design System
+packages installed in a project. It covers components, styles, tokens, accessibility and framework-specific usage,
+helping assistants answer questions, generate UI and review or fix Porsche Design System code.
+
+The skill is generated from the same source as this documentation and ships inside the Porsche Design System npm
+packages, so it always describes the version your project actually uses. There is one variant per supported framework;
+select yours to adapt the skill name and prompts on this page.
+
+<FrameworkTabs className="my-fluid-md" label="Select the framework the Knowledge Skill examples apply to" />
+
+## What It Covers
+
+- **Components:** available components, their properties, slots, events and the recommended usage per framework.
+- **Examples:** framework-specific code examples for common component use cases.
+- **Styles and tokens:** the design tokens, style utilities and layout primitives that come with the installed version.
+- **Accessibility:** the accessibility requirements and integration rules that apply when using the components.
+- **Conventions:** how to set up and consume the packages, including framework-specific integration guidance.
+
+Because the content is version-matched, the skill prevents assistants from suggesting APIs that do not exist in the
+installed version, or from replacing existing Porsche Design System usage with outdated patterns.
+
+## Installation
+
+The Knowledge Skill is bundled with the Porsche Design System npm packages and is exposed to your AI coding tool by
+linking it into a skills directory. Follow the [skill installation guide](/skills/introduction/installation) for the
+available installation methods.
+
+## How to Use the Skill
+
+Use the Knowledge Skill whenever a task touches frontend UI/UX in a project where the Porsche Design System is used.
+
+A skill can be invoked in two ways:
+
+- **Automatic invocation:** Your AI coding agent activates the skill when a task matches its description.
+- **Manual invocation:** Invoke <code><FrameworkSkill /></code> using your agent's skill selection syntax to make sure
+  it is used, for example <code>/<FrameworkSkill /></code>.
+
+### Example prompts
+
+These examples use slash-command syntax. Adjust it to the syntax your AI coding tool uses.
+
+Ask for version-specific guidance:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Recommend the right PDS components for a responsive sign-in form.
+    Explain the relevant properties, slots and accessibility requirements for the version
+    installed in this project.
+  `}
+/>
+
+Implement a feature:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Build an accessible country selector that displays each country's
+    flag in its option and groups the countries by continent. Use the appropriate PDS
+    components and follow the existing framework and codebase conventions.
+  `}
+/>
+
+Review existing code:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Review this page for deprecated or incorrect PDS usage,
+    accessibility issues and opportunities to replace custom UI with PDS components. Apply
+    the necessary fixes.
+  `}
+/>
+
+Update an implementation:
+
+<FrameworkCodeBlock
+  language="text"
+  render={({ getSkillName }) => `
+    /${getSkillName('knowledge')} Migrate this implementation to the APIs supported by the
+    installed PDS version. Preserve its behavior and accessibility, and verify the result.
+  `}
+/>

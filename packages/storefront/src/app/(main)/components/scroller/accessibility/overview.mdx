@@ -1,0 +1,26 @@
+## Accessibility support
+
+### Keyboard
+
+| Key / state                 | Function                                                                        |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`          | Moves focus to the scroll container or to next (or previous) focusable element. |
+| `Arrow left`, `Arrow right` | Scrolls the container.                                                          |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA                        | Usage                                                                       |
+| --------------------------- | --------------------------------------------------------------------------- |
+| `role="VALUE"`              | Defines the semantic role of the scroll container (e.g. `list`, `tablist`). |
+| `aria-label="STRING"`       | Defines an accessible name when the scroll region purpose is not obvious.   |
+| `aria-description="STRING"` | Adds supplementary context for the scroll region.                           |
+
+## Development considerations
+
+### Common do's and don'ts
+
+- **Do** provide an accessible name through the `aria` prop when the scroll region purpose is not obvious from context.
+- **Do** pass `aria-label` and `aria-description` via the `aria` prop, not as host attributes.
+- **Don't** add native `aria-*` attributes directly on the component host.

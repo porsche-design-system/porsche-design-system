@@ -1,3 +1,4 @@
+import { ElementInternalsComponents } from '@/components/common/ElementInternalsComponents';
 import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
@@ -24,6 +25,8 @@ described in this [issue](https://github.com/jsdom/jsdom/issues/2475). Also, it 
 `CSSStyleSheet.replace()`, `Intersection Observer`, `Element.prototype.scrollTo` and others.
 
 As a workaround we provide a polyfill as part of the `@porsche-design-system/components-react` package.
+
+The polyfill requires **jsdom v30** or higher. On older versions it throws an explicit error on import.
 
 To apply the polyfill, simply import it in your `setupTest.{js|ts}` file.
 
@@ -219,28 +222,63 @@ Simulate.submit('button');
 
 ### Queries
 
-You are not able to use `getByRole` to query Porsche Design System components when using `@testing-library` because it
-uses default `roles`. For example a `<button>` gets the role `button` without explicitly setting the attribute. To
-achieve this it uses [aria-query](https://github.com/A11yance/aria-query) internally which replicates the
-[Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree), see
-[documentation](https://testing-library.com/docs/guide-which-query).
+Porsche Design System components render their markup inside Shadow DOM. Standard Testing Library queries such as
+`getByRole` only search light DOM, so they never reach those elements and find nothing.
 
-Therefore, we provide the `getByRoleShadowed` utility function that can be used as a drop-in replacement for
-`getByRole`.
+Therefore the `testing` sub-package provides a `Shadow` counterpart for every Testing Library query. These search light
+DOM and Shadow DOM, including nested Shadow DOM.
+
+All 48 available queries:
+
+- **AltText**: `getByShadowAltText`, `getAllByShadowAltText`, `queryByShadowAltText`, `queryAllByShadowAltText`,
+  `findByShadowAltText`, `findAllByShadowAltText`
+- **DisplayValue**: `getByShadowDisplayValue`, `getAllByShadowDisplayValue`, `queryByShadowDisplayValue`,
+  `queryAllByShadowDisplayValue`, `findByShadowDisplayValue`, `findAllByShadowDisplayValue`
+- **LabelText**: `getByShadowLabelText`, `getAllByShadowLabelText`, `queryByShadowLabelText`,
+  `queryAllByShadowLabelText`, `findByShadowLabelText`, `findAllByShadowLabelText`
+- **PlaceholderText**: `getByShadowPlaceholderText`, `getAllByShadowPlaceholderText`, `queryByShadowPlaceholderText`,
+  `queryAllByShadowPlaceholderText`, `findByShadowPlaceholderText`, `findAllByShadowPlaceholderText`
+- **Role**: `getByShadowRole`, `getAllByShadowRole`, `queryByShadowRole`, `queryAllByShadowRole`, `findByShadowRole`,
+  `findAllByShadowRole`
+- **TestId**: `getByShadowTestId`, `getAllByShadowTestId`, `queryByShadowTestId`, `queryAllByShadowTestId`,
+  `findByShadowTestId`, `findAllByShadowTestId`
+- **Text**: `getByShadowText`, `getAllByShadowText`, `queryByShadowText`, `queryAllByShadowText`, `findByShadowText`,
+  `findAllByShadowText`
+- **Title**: `getByShadowTitle`, `getAllByShadowTitle`, `queryByShadowTitle`, `queryAllByShadowTitle`,
+  `findByShadowTitle`, `findAllByShadowTitle`
 
 ```tsx
-import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
+import { screen } from '@porsche-design-system/components-react/testing';
 
 it('should work for PButton', async () => {
   render(<PButton>Button</PButton>);
   await componentsReady();
 
-  expect(getByRoleShadowed('button')).toBeInTheDocument();
+  expect(screen.getByShadowRole('button')).toBe(document.querySelector('p-button').shadowRoot.querySelector('button'));
 });
 ```
 
-Other query selectors don't work if you are trying to select an element which is located inside of Shadow DOM. As a
-solution there are `getByLabelTextShadowed` and `getByTextShadowed`.
+Also exported: `screen` (every query above, bound to `document`), `within`, `deepQuerySelector`, `deepQuerySelectorAll`,
+`getAllElementsAndShadowRoots`, `debug`, `logShadowDOM`, `prettyShadowDOM`, `logRoles`, `configure` and `getConfig`.
+
+<Notification heading="Requires a DOM" heading-tag="h3" state="warning">
+  These queries need a DOM to search. Importing the `testing` sub-package where no DOM is available throws an error.
+</Notification>
+
+### Porsche Design System queries
+
+Before the queries above were available we shipped three helpers of our own. They are still exported and still
+supported, so existing tests keep working. For new tests prefer the shadow queries above, which cover every query family
+rather than three.
+
+| Ours                     | Equivalent above       |
+| ------------------------ | ---------------------- |
+| `getByRoleShadowed`      | `getByShadowRole`      |
+| `getByLabelTextShadowed` | `getByShadowLabelText` |
+| `getByTextShadowed`      | `getByShadowText`      |
+
+Unlike the shadow queries, these three take an optional container as their first argument and fall back to the whole
+document when it is omitted.
 
 ```tsx
 import { getByTextShadowed } from '@porsche-design-system/components-react/testing';
@@ -264,7 +302,7 @@ Certain modern browser APIs are not supported in the jsdom environment.
 
 ### Dialog API
 
-Affected Components: `p-modal`, `p-flyout`, `p-flyout-multilevel`
+Affected Components: `p-modal`, `p-flyout`, `p-sheet`, `p-drilldown`
 
 Due to the lack of native support in jsdom, the Dialog API needs to be either manually polyfilled or mocked. You can use
 the available [dialog-polyfill package](https://npmjs.com/package/dialog-polyfill) or create a custom mock
@@ -284,7 +322,7 @@ HTMLDialogElement.prototype.close = jest.fn(function (this: HTMLDialogElement) {
 
 ### Element Internals API
 
-Affected Components: `p-textarea`
+Affected Components: <ElementInternalsComponents />
 
 Current polyfills for the Element Internals API are incompatible with Stencil. Therefore, the API must be mocked within
 the test setup.
@@ -303,7 +341,7 @@ HTMLElement.prototype.attachInternals = jest.fn(
 
 ### animate API
 
-Affected Components: `p-tabs-bar`, `p-tabs`
+Affected Components: `p-tabs-bar`, `p-tabs`, `p-drilldown`
 
 The API must be mocked within the test setup.
 

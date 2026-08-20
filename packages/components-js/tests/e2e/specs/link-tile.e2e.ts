@@ -104,6 +104,32 @@ test.describe('lifecycle', () => {
   });
 });
 
+test.describe('slotted header', () => {
+  test('should allow clicking interactive content in the header slot', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<p-link-tile href="#tile" label="Some label" description="Some description">
+  <a id="header-link" slot="header" href="#header">Header link</a>
+  ${imageTag}
+</p-link-tile>`
+    );
+
+    const headerLink = page.locator('#header-link');
+    await headerLink.evaluate((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        (window as Window & { headerLinkClicked?: boolean }).headerLinkClicked = true;
+      });
+    });
+
+    // Playwright fails if another element (e.g. the stretched overlay link) intercepts the click
+    await headerLink.click();
+    expect(await page.evaluate(() => (window as Window & { headerLinkClicked?: boolean }).headerLinkClicked)).toBe(
+      true
+    );
+  });
+});
+
 test.describe('slotted video', () => {
   // test against branded Chromium, Google Chrome would work (https://playwright.dev/docs/browsers#google-chrome--microsoft-edge)
   // but it's not shipped with the default Microsoft Playwright docker image

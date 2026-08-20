@@ -1,5 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
-import Accessibility from '@/app/(main)/components/tabs/accessibility/page.mdx';
+import { ariaOnComponentHostVsAriaPropA11yExample } from '@/app/(main)/components/tabs/accessibility/examples/aria-on-component-host-vs-aria-prop/example';
+import { vagueTabLabelsWithoutContextA11yExample } from '@/app/(main)/components/tabs/accessibility/examples/vague-tab-labels-without-context/example';
+import AccessibilityOverview from '@/app/(main)/components/tabs/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/tabs/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/tabs/configurator/introduction.mdx';
 import { tabsStory } from '@/app/(main)/components/tabs/configurator/story';
 import ActiveTabDescription from '@/app/(main)/components/tabs/examples/active-tab/example.mdx';
@@ -37,7 +40,13 @@ export const tabsMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      ariaOnComponentHostVsAriaProp: ariaOnComponentHostVsAriaPropA11yExample,
+      vagueTabLabelsWithoutContext: vagueTabLabelsWithoutContextA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-tabs'],
 } satisfies ComponentDocsMeta<'p-tabs'>;
-

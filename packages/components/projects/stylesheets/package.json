@@ -14,6 +14,10 @@
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.cjs"
     },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
+    },
     "./meta": {
       "types": "./meta/esm/meta.d.ts",
       "import": "./meta/esm/meta.mjs",
@@ -31,13 +35,12 @@
     "./meta/"
   ],
   "scripts": {
-    "build": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:meta && npm run build:css && npm run build:font-face && npm run build:index && npm run build:skill",
-    "build-prod": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:meta && npm run build:css && npm run build-prod:font-face && npm run build:index && npm run build:skill",
+    "build": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:meta && npm run build:css && npm run build:font-face && npm run build:index",
+    "build-prod": "npm run clean:build && npm run build:constants && npm run build:package && npm run build:meta && npm run build:css && npm run build-prod:font-face && npm run build:index",
     "build:constants": "tsx scripts/buildCssVariableConstants.ts",
     "build:package": "rollup -c rollup.config.mjs",
     "build:meta": "rollup -c rollup.config.meta.mjs",
     "build:css": "tsx scripts/buildStylesheetsCss.ts",
-    "build:skill": "tsx scripts/build-skill.ts",
     "build:font-face": "NODE_ENV=development tsx scripts/buildFontFaceCss.ts",
     "build-prod:font-face": "tsx scripts/buildFontFaceCss.ts",
     "build:index": "npm run build:index:default && npm run build:index:cdn",
@@ -54,11 +57,11 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
-    "@types/node": "^26.0.1",
-    "rollup": "^4.62.2",
-    "tsx": "^4.22.4",
+    "@types/node": "^26.1.2",
+    "rollup": "^4.62.4",
+    "tsx": "^4.23.7",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "volta": {
     "extends": "../../../../package.json"

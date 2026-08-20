@@ -392,6 +392,11 @@ export const sitemap: Routes = {
             path: '/developing/vue/form',
             type: 'TAB',
           },
+          testing: {
+            name: 'Testing',
+            path: '/developing/vue/testing',
+            type: 'TAB',
+          },
           advanced: {
             name: 'Advanced',
             path: '/developing/vue/advanced',
@@ -407,6 +412,35 @@ export const sitemap: Routes = {
       'components-ready': {
         name: 'Components Ready',
         path: '/developing/components-ready',
+        type: 'PAGE',
+      },
+    },
+  },
+  skills: {
+    name: 'Skills',
+    path: '/skills',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/skills/introduction',
+        type: 'PAGE',
+        subPaths: {
+          general: {
+            name: 'General',
+            path: '/skills/introduction/general',
+            type: 'TAB',
+          },
+          installation: {
+            name: 'Installation',
+            path: '/skills/introduction/installation',
+            type: 'TAB',
+          },
+        },
+      },
+      knowledge: {
+        name: 'Knowledge',
+        path: '/skills/knowledge',
         type: 'PAGE',
       },
     },
@@ -535,6 +569,11 @@ export const sitemap: Routes = {
       popover: {
         name: 'Popover',
         path: '/patterns/popover',
+        type: 'PAGE',
+      },
+      feedback: {
+        name: 'Feedback',
+        path: '/patterns/feedback',
         type: 'PAGE',
       },
       forms: {
@@ -1848,7 +1887,7 @@ export const sitemap: Routes = {
             type: 'PAGE',
           },
           'dos-and-donts': {
-            name: 'Do\'s and Don\'ts',
+            name: "Do's and Don'ts",
             path: '/must-know/accessibility/dos-and-donts',
             type: 'PAGE',
           },

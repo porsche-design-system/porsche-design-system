@@ -1,0 +1,81 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`component examples generator > emits files and a reference table for p-accordion (angular) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.ts](./examples/Default.ts) |
+| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.ts](./examples/MultipleOpen.ts) |"
+`;
+
+exports[`component examples generator > emits files and a reference table for p-accordion (js) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.html](./examples/Default.html) |
+| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.html](./examples/MultipleOpen.html) |"
+`;
+
+exports[`component examples generator > emits files and a reference table for p-accordion (react) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.tsx](./examples/Default.tsx) |
+| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.tsx](./examples/MultipleOpen.tsx) |"
+`;
+
+exports[`component examples generator > emits files and a reference table for p-accordion (vue) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.vue](./examples/Default.vue) |
+| Multiple open panels | Multiple open panels | [./examples/MultipleOpen.vue](./examples/MultipleOpen.vue) |"
+`;
+
+exports[`component examples generator > emits files and a reference table for p-button (angular) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.ts](./examples/Default.ts) |
+| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.ts](./examples/Loading.ts) |
+| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.ts](./examples/SubmitForm.ts) |
+| Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
+`;
+
+exports[`component examples generator > emits files and a reference table for p-button (js) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.html](./examples/Default.html) |
+| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.html](./examples/Loading.html) |
+| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.html](./examples/SubmitForm.html) |
+| Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
+`;
+
+exports[`component examples generator > emits files and a reference table for p-button (react) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.tsx](./examples/Default.tsx) |
+| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.tsx](./examples/Loading.tsx) |
+| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.tsx](./examples/SubmitForm.tsx) |
+| Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
+`;
+
+exports[`component examples generator > emits files and a reference table for p-button (vue) > table 1`] = `
+"## Examples
+
+| Example | When to use | File |
+| --- | --- | --- |
+| Default | Minimal default configuration. | [./examples/Default.vue](./examples/Default.vue) |
+| Loading | Use a loading state while an async action is in progress. | [./examples/Loading.vue](./examples/Loading.vue) |
+| Submit form | Submit the surrounding form when the button is activated. | [./examples/SubmitForm.vue](./examples/SubmitForm.vue) |
+| Form association | Associate the button with a form by its \`id\` using the \`form\` attribute. | — |"
+`;

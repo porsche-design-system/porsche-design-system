@@ -2,7 +2,7 @@
 
 exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 ":where(.ag-theme-params-1) {
-	--ag-accent-color: var(--ag-inherited-accent-color, light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%)));
+	--ag-accent-color: var(--ag-inherited-accent-color, light-dark(#1A44EA,#1A44EA));
 	--ag-advanced-filter-builder-button-bar-border: var(--ag-inherited-advanced-filter-builder-button-bar-border, solid var(--ag-border-width) var(--ag-border-color));
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #a6e194);
 	--ag-advanced-filter-builder-indent-size: var(--ag-inherited-advanced-filter-builder-indent-size, calc( var(--ag-spacing)   *  2  +   var(--ag-icon-size) ));
@@ -77,6 +77,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-column-drop-cell-border: var(--ag-inherited-column-drop-cell-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
 	--ag-column-drop-cell-drag-handle-color: var(--ag-inherited-column-drop-cell-drag-handle-color, var(--ag-text-color));
 	--ag-column-drop-cell-text-color: var(--ag-inherited-column-drop-cell-text-color, var(--ag-text-color));
+	--ag-column-header-edit-highlight-color: var(--ag-inherited-column-header-edit-highlight-color, color-mix(in srgb, transparent, var(--ag-accent-color) 12%));
 	--ag-column-hover-color: var(--ag-inherited-column-hover-color, light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228)));
 	--ag-column-panel-apply-button-background-color: var(--ag-inherited-column-panel-apply-button-background-color, var(--ag-accent-color));
 	--ag-column-panel-apply-button-color: var(--ag-inherited-column-panel-apply-button-color, var(--ag-background-color));
@@ -101,7 +102,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-find-match-background-color: var(--ag-inherited-find-match-background-color, #ffff00);
 	--ag-find-match-color: var(--ag-inherited-find-match-color, var(--ag-foreground-color));
 	--ag-focus-error-shadow: var(--ag-inherited-focus-error-shadow, 0px 0px 0px 3px color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 50%));
-	--ag-focus-shadow: var(--ag-inherited-focus-shadow, none);
+	--ag-focus-shadow: var(--ag-inherited-focus-shadow, 0px 0px 0px 3px color-mix(in srgb, transparent, var(--ag-accent-color) 50%));
 	--ag-font-family: var(--ag-inherited-font-family, 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif);
 	--ag-font-size: var(--ag-inherited-font-size, 1rem);
 	--ag-font-weight: var(--ag-inherited-font-weight, inherit);
@@ -164,7 +165,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-input-disabled-text-color: var(--ag-inherited-input-disabled-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 50%));
 	--ag-input-focus-background-color: var(--ag-inherited-input-focus-background-color, var(--ag-input-background-color));
 	--ag-input-focus-border: var(--ag-inherited-input-focus-border, solid 1px light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%)));
-	--ag-input-focus-shadow: var(--ag-inherited-input-focus-shadow, none);
+	--ag-input-focus-shadow: var(--ag-inherited-input-focus-shadow, var(--ag-focus-shadow));
 	--ag-input-focus-text-color: var(--ag-inherited-input-focus-text-color, var(--ag-input-text-color));
 	--ag-input-height: var(--ag-inherited-input-height, calc(max( var(--ag-icon-size) ,  var(--ag-font-size) )  +   var(--ag-spacing)   *  2));
 	--ag-input-icon-color: var(--ag-inherited-input-icon-color, var(--ag-input-text-color));
@@ -445,6 +446,7 @@ exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 	--ag-inherited-column-drop-cell-border: var(--ag-column-drop-cell-border);
 	--ag-inherited-column-drop-cell-drag-handle-color: var(--ag-column-drop-cell-drag-handle-color);
 	--ag-inherited-column-drop-cell-text-color: var(--ag-column-drop-cell-text-color);
+	--ag-inherited-column-header-edit-highlight-color: var(--ag-column-header-edit-highlight-color);
 	--ag-inherited-column-hover-color: var(--ag-column-hover-color);
 	--ag-inherited-column-panel-apply-button-background-color: var(--ag-column-panel-apply-button-background-color);
 	--ag-inherited-column-panel-apply-button-color: var(--ag-column-panel-apply-button-color);
@@ -848,7 +850,7 @@ exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
 exports[`pdsTheme > should match the snapshot for mode params 1`] = `
 {
   "$default": {
-    "accentColor": "light-dark(hsl(228 83.2% 51%),hsl(210 100% 54.5%))",
+    "accentColor": "light-dark(#1A44EA,#1A44EA)",
     "advancedFilterBuilderButtonBarBorder": true,
     "advancedFilterBuilderColumnPillColor": "#a6e194",
     "advancedFilterBuilderIndentSize": {
@@ -1006,6 +1008,10 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "columnDropCellTextColor": {
       "ref": "textColor",
     },
+    "columnHeaderEditHighlightColor": {
+      "mix": 0.12,
+      "ref": "accentColor",
+    },
     "columnHoverColor": "light-dark(hsl(240 5% 70% / 0.148),hsl(240 2% 43% / 0.228))",
     "columnPanelApplyButtonBackgroundColor": {
       "ref": "accentColor",
@@ -1084,7 +1090,13 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       },
       "spread": 3,
     },
-    "focusShadow": "none",
+    "focusShadow": {
+      "color": {
+        "mix": 0.5,
+        "ref": "accentColor",
+      },
+      "spread": 3,
+    },
     "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "fontSize": "1rem",
     "fontWeight": "inherit",
@@ -1233,7 +1245,9 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "inputBackgroundColor",
     },
     "inputFocusBorder": "solid 1px light-dark(hsl(225 66.7% 1.2%),hsl(225 100% 99%))",
-    "inputFocusShadow": "none",
+    "inputFocusShadow": {
+      "ref": "focusShadow",
+    },
     "inputFocusTextColor": {
       "ref": "inputTextColor",
     },

@@ -180,6 +180,16 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -720,6 +730,11 @@ img {
           </template>
         </p-input-search>
         <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="filter-status"
+        />
+        <div
           aria-multiselectable="true"
           aria-required="false"
           class="options"
@@ -727,7 +742,6 @@ img {
           role="listbox"
         >
           <div
-            aria-live="polite"
             class="no-results"
             role="option"
           >
@@ -1687,6 +1701,7 @@ button {
   padding: max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) calc(max(2px, var(--p-spacing-static-sm) * var(--_p-segmented-control-a,1)) + 4px);
   border: 1px solid undefined;
   border-radius: var(--p-radius-xl);
+  background: var(--p-color-frosted-strong);
   color: var(--p-color-primary);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   cursor: pointer;
@@ -1699,7 +1714,7 @@ span {
   display: block;
   font: normal normal 400 .875rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
-  color: var(--p-color-contrast-medium);
+  color: var(--p-color-contrast-high);
 }
 @media(forced-colors:active) {
   button:focus-visible {
@@ -1767,7 +1782,10 @@ span {
 
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  }
+  button:hover {
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -3659,7 +3677,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -4772,6 +4790,16 @@ exports[`should render dsr component for PCarousel 1`] = `
   opacity: 0;
   pointer-events: none;
 }
+.slide-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -4880,6 +4908,11 @@ exports[`should render dsr component for PCarousel 1`] = `
         </div>
       </div>
     </div>
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="slide-status"
+    />
   </template>
   <div>
     Some child
@@ -9286,7 +9319,7 @@ slot:not([name]) {
 }
 slot[name="header"] {
   grid-area: 2/2;
-  z-index: 3;
+  z-index: 5;
 }
 slot[name="footer"] {
   grid-row: 2;
@@ -10235,6 +10268,16 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .filter-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
   .label-wrapper {
     min-width: fit-content;
     position: static;
@@ -10775,6 +10818,11 @@ img {
           </template>
         </p-input-search>
         <div
+          aria-atomic="true"
+          aria-live="polite"
+          class="filter-status"
+        />
+        <div
           aria-multiselectable="true"
           aria-required="false"
           class="options"
@@ -10782,7 +10830,6 @@ img {
           role="listbox"
         >
           <div
-            aria-live="polite"
             class="no-results"
             role="option"
           >
@@ -12167,7 +12214,10 @@ span {
 
 @media(hover:hover) {
   button {
-    transition: border-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+    transition: background-color var(--p-transition-duration,var(--p-duration-sm)) var(--p-ease-in-out);
+  }
+  button:hover {
+    background-color: var(--p-color-frosted-strong);
   }
 }
 
@@ -12359,6 +12409,16 @@ exports[`should render dsr component for PSelect 1`] = `
     cursor: not-allowed;
   }
   .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .filter-status {
     position: absolute;
     width: 1px;
     height: 1px;

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
 import type { ScssBranch, ScssMixin, ScssNode, ScssVariable } from '../src';
 import { kindOf, type ScssKind, scssMeta } from '../src';
@@ -7,13 +8,18 @@ import { kindOf, type ScssKind, scssMeta } from '../src';
 /**
  * Markdown serializer for the scss package, driven by {@link scssMeta}. Renders an intro, a
  * hand-authored "how to use" guide and a grouped reference of every documented variable and mixin.
- * Only the documented surface is rendered; plumbing and exact token values stay in the partials.
+ * Each variable's value is tabulated (colors as their `light-dark()` expression); only the plumbing
+ * and the full generated output stay in the partials.
  */
 
 const code = (value: string): string => `\`${value}\``;
 
 /** Escape the few markdown-table-breaking characters a description might contain. */
-const cell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ');
+const cell = (text: string): string =>
+  text
+    .replace(/\\/g, '\\\\')
+    .replace(/\|/g, '\\|')
+    .replace(/\s*\n\s*/g, ' ');
 
 /** A markdown table from a header row and pre-rendered cell rows. */
 const table = (headers: string[], rows: string[][]): string =>
@@ -25,6 +31,7 @@ type Column<T> = { header: string; render: (item: T) => string };
 const variableColumns: Column<ScssVariable>[] = [
   { header: 'SCSS variable', render: (v) => code(v.name) },
   { header: 'Description', render: (v) => cell(v.description) },
+  { header: 'Value', render: (v) => code(String(v.value)) },
 ];
 
 const mixinColumns: Column<ScssMixin>[] = [
@@ -148,3 +155,10 @@ const utilitiesMixins = `## Mixins\n\n${renderOutline(utilitiesOutline, mixinCol
  */
 export const getScssSkill = (): string =>
   `${[intro, howToUse, contents, themeVariables, utilitiesMixins].filter(Boolean).join('\n\n')}\n`;
+
+export const scssSkill: PackageSkill = {
+  name: 'scss',
+  title: 'SCSS',
+  description: 'Sass variables and mixins under the `pds` namespace',
+  getContent: getScssSkill,
+};

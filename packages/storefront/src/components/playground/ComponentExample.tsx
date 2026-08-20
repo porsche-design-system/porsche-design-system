@@ -27,19 +27,19 @@ export const ComponentExample = ({
   fixedBackgroundColor,
 }: ComponentSampleProps) => {
   const { storefrontColorScheme } = useStorefrontColorScheme();
-  const { storefrontFramework } = useStorefrontFramework();
+  const { framework } = useStorefrontFramework();
 
   const Component = codeSample.component;
 
   // Vanilla Js Markup needs to be wrapped in containing html code
   const frameworkMarkup = useMemo(() => {
     if (codeSample.frameworkMarkup['vanilla-js']) {
-      const { markup, script } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js']);
+      const { markup, script, scriptAttributes } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js']);
       return {
         ...codeSample.frameworkMarkup,
         'vanilla-js': getVanillaJsCode(
           { markup, eventHandlers: script },
-          { isFullConfig: false, theme: storefrontColorScheme }
+          { isFullConfig: false, theme: storefrontColorScheme, scriptAttributes }
         ),
       };
     }
@@ -47,12 +47,8 @@ export const ComponentExample = ({
   }, [codeSample, storefrontColorScheme]);
 
   const onOpenInStackblitz = () => {
-    const markup = createStackblitzMarkupFromSample(
-      codeSample.frameworkMarkup,
-      storefrontFramework,
-      storefrontColorScheme
-    );
-    openInStackblitz(storefrontFramework as Framework, markup, storefrontColorScheme);
+    const markup = createStackblitzMarkupFromSample(codeSample.frameworkMarkup, framework, storefrontColorScheme);
+    openInStackblitz(framework, markup, storefrontColorScheme);
   };
 
   return (

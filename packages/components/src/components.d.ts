@@ -18,11 +18,11 @@ import { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } fro
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection } from "./components/divider/divider-utils";
-import { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
+import { DrilldownAriaAttribute, DrilldownDismissEventDetail, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
-import { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutDismissEventDetail, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { HeadingAlign, HeadingColor, HeadingHyphens, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
@@ -41,18 +41,18 @@ import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 import { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
-import { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
+import { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalDismissEventDetail, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
-import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
+import { PopoverAriaAttribute, PopoverDirection, PopoverDismissEventDetail } from "./components/popover/popover-utils";
 import { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
-import { SheetAriaAttribute, SheetBackground, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
+import { SheetAriaAttribute, SheetBackground, SheetDismissEventDetail, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerColor, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
@@ -81,11 +81,11 @@ export { CheckboxBlurEventDetail, CheckboxChangeEventDetail, CheckboxState } fro
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 export { DividerColor, DividerDirection } from "./components/divider/divider-utils";
-export { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
+export { DrilldownAriaAttribute, DrilldownDismissEventDetail, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
-export { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutAriaAttribute, FlyoutBackdrop, FlyoutBackground, FlyoutDismissEventDetail, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { HeadingAlign, HeadingColor, HeadingHyphens, HeadingSize, HeadingTag, HeadingWeight } from "./components/heading/heading-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
@@ -104,18 +104,18 @@ export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureColor, LinkPureIcon, LinkPureSize, LinkPureTarget } from "./components/link-pure/link-pure-utils";
 export { LinkTileAlign, LinkTileAriaAttribute, LinkTileAspectRatio, LinkTileSize, LinkTileTarget, LinkTileWeight } from "./components/link-tile/link-tile-utils";
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
-export { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
+export { ModalAriaAttribute, ModalBackdrop, ModalBackground, ModalDismissEventDetail, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectChangeEventDetail, MultiSelectDropdownDirection, MultiSelectState, MultiSelectToggleEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeChangeEventDetail, PinCodeLength, PinCodeState, PinCodeType } from "./components/pin-code/pin-code-utils";
-export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/popover-utils";
+export { PopoverAriaAttribute, PopoverDirection, PopoverDismissEventDetail } from "./components/popover/popover-utils";
 export { RadioGroupChangeEventDetail, RadioGroupDirection, RadioGroupState } from "./components/radio-group/radio-group/radio-group-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlChangeEventDetail, SegmentedControlColumns, SegmentedControlState } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectChangeEventDetail, SelectDropdownDirection, SelectState, SelectToggleEventDetail } from "./components/select/select/select-utils";
-export { SheetAriaAttribute, SheetBackground, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
+export { SheetAriaAttribute, SheetBackground, SheetDismissEventDetail, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerColor, SpinnerSize } from "./components/spinner/spinner-utils";
 export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
@@ -180,8 +180,8 @@ export namespace Components {
     }
     interface PAiTag {
         /**
-          * Locale for the AI text (ISO format, e.g. "de_DE").
-          * @default 'en_US'
+          * Market locale for the AI text (BCP47, e.g. `en-US`). Language-only `en` is supported for international markets. POSIX forms (e.g. `en_US`) are deprecated but still accepted. Copy is resolved by language; unknown languages fall back to English.
+          * @default 'en-US'
          */
         "locale"?: AiTagLocale;
         /**
@@ -282,7 +282,7 @@ export namespace Components {
          */
         "value"?: string;
         /**
-          * Sets the visual style variant of the button (e.g. `primary`, `secondary`, `tertiary`).
+          * Sets the visual style variant of the button (`primary` or `secondary`).
           * @default 'primary'
          */
         "variant"?: ButtonVariant;
@@ -1273,7 +1273,7 @@ export namespace Components {
          */
         "step"?: number;
         /**
-          * Sets the current numeric value of the field.
+          * Sets the current numeric value. Strings and numbers are accepted for programmatic assignment, but user input updates the value as a string to mirror native input behavior.
           * @default ''
          */
         "value"?: string | number | null;
@@ -1638,7 +1638,7 @@ export namespace Components {
          */
         "state"?: InputTextState;
         /**
-          * Sets the current text value of the input field.
+          * Sets the current text value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.
           * @default ''
          */
         "value"?: string | number | null;
@@ -1940,7 +1940,7 @@ export namespace Components {
          */
         "target"?: LinkTarget;
         /**
-          * Sets the visual style variant of the link (e.g. `primary`, `secondary`, `tertiary`).
+          * Sets the visual style variant of the link (`primary` or `secondary`).
           * @default 'primary'
          */
         "variant"?: LinkVariant;
@@ -2264,7 +2264,7 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * Sets the value submitted with the form data when this option is selected in the parent multi-select.
+          * Sets the required option value submitted with the form data when selected. Must be a string or number.
          */
         "value": string | number;
     }
@@ -2377,10 +2377,10 @@ export namespace Components {
          */
         "type"?: PinCodeType;
         /**
-          * Sets the current concatenated value of all pin code fields and allows setting the initial value.
+          * Sets the current concatenated value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -2468,10 +2468,9 @@ export namespace Components {
          */
         "state"?: RadioGroupState;
         /**
-          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes.
-          * @default ''
+          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection; these values never match an option because every option requires a string or number value.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PRadioGroupOption {
         /**
@@ -2489,9 +2488,9 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * Sets the value submitted with the form data when this radio option is selected within its parent group.
+          * Sets the required option value. Must be a string or number and is selected when it strictly matches the parent `p-radio-group` value by type and value.
          */
-        "value"?: string;
+        "value": string | number;
     }
     interface PScroller {
         /**
@@ -2585,9 +2584,9 @@ export namespace Components {
          */
         "state"?: SegmentedControlState;
         /**
-          * Sets the currently selected item's value and pre-selects the matching option when the component renders.
+          * Sets the currently selected item's value and pre-selects the matching option when the component renders. Matches an item strictly by type and value, meaning string or number only match an item whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed item. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string | number;
+        "value"?: string | number | null;
     }
     interface PSegmentedControlItem {
         /**
@@ -3128,7 +3127,7 @@ export namespace Components {
          */
         "href"?: string;
         /**
-          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens (`small`, `medium`, `large`, `inherit`).
+          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens.
           * @default 'small'
          */
         "size"?: WordmarkSize;
@@ -3429,7 +3428,7 @@ declare global {
         new (): HTMLPDividerElement;
     };
     interface HTMLPDrilldownElementEventMap {
-        "dismiss": void;
+        "dismiss": DrilldownDismissEventDetail;
         "update": DrilldownUpdateEventDetail;
     }
     /**
@@ -3482,7 +3481,7 @@ declare global {
         new (): HTMLPFlagElement;
     };
     interface HTMLPFlyoutElementEventMap {
-        "dismiss": void;
+        "dismiss": FlyoutDismissEventDetail;
         "motionVisibleEnd": FlyoutMotionVisibleEndEventDetail;
         "motionHiddenEnd": FlyoutMotionHiddenEndEventDetail;
     }
@@ -3782,7 +3781,7 @@ declare global {
         new (): HTMLPLinkTileProductElement;
     };
     interface HTMLPModalElementEventMap {
-        "dismiss": void;
+        "dismiss": ModalDismissEventDetail;
         "motionVisibleEnd": ModalMotionVisibleEndEventDetail;
         "motionHiddenEnd": ModalMotionHiddenEndEventDetail;
     }
@@ -3885,7 +3884,7 @@ declare global {
         new (): HTMLPPinCodeElement;
     };
     interface HTMLPPopoverElementEventMap {
-        "dismiss": void;
+        "dismiss": PopoverDismissEventDetail;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -3990,7 +3989,7 @@ declare global {
         new (): HTMLPSelectOptionElement;
     };
     interface HTMLPSheetElementEventMap {
-        "dismiss": void;
+        "dismiss": SheetDismissEventDetail;
         "motionVisibleEnd": SheetMotionVisibleEndEventDetail;
         "motionHiddenEnd": SheetMotionHiddenEndEventDetail;
     }
@@ -4368,8 +4367,8 @@ declare namespace LocalJSX {
     }
     interface PAiTag {
         /**
-          * Locale for the AI text (ISO format, e.g. "de_DE").
-          * @default 'en_US'
+          * Market locale for the AI text (BCP47, e.g. `en-US`). Language-only `en` is supported for international markets. POSIX forms (e.g. `en_US`) are deprecated but still accepted. Copy is resolved by language; unknown languages fall back to English.
+          * @default 'en-US'
          */
         "locale"?: AiTagLocale;
         /**
@@ -4474,7 +4473,7 @@ declare namespace LocalJSX {
          */
         "value"?: string;
         /**
-          * Sets the visual style variant of the button (e.g. `primary`, `secondary`, `tertiary`).
+          * Sets the visual style variant of the button (`primary` or `secondary`).
           * @default 'primary'
          */
         "variant"?: ButtonVariant;
@@ -4881,9 +4880,9 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
         /**
-          * Emitted when the user closes the drilldown via the close button or Escape key.
+          * Emitted when the user closes the drilldown via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PDrilldownCustomEvent<void>) => void;
+        "onDismiss"?: (event: PDrilldownCustomEvent<DrilldownDismissEventDetail>) => void;
         /**
           * Emitted when the active navigation level changes, with the new `activeIdentifier` in the event detail.
          */
@@ -5034,9 +5033,9 @@ declare namespace LocalJSX {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * Emitted when the user closes the flyout via the close button, backdrop click, or Escape key.
+          * Emitted when the user closes the flyout via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
+        "onDismiss"?: (event: PFlyoutCustomEvent<FlyoutDismissEventDetail>) => void;
         /**
           * Emitted after the flyout's close transition completes and the panel is fully hidden.
          */
@@ -5528,11 +5527,11 @@ declare namespace LocalJSX {
          */
         "onBlur"?: (event: PInputNumberCustomEvent<InputNumberBlurEventDetail>) => void;
         /**
-          * Emitted when the number input loses focus after its value was changed.
+          * Emitted when the number input loses focus after its value was changed. The component value and native event target value are strings after user input.
          */
         "onChange"?: (event: PInputNumberCustomEvent<InputNumberChangeEventDetail>) => void;
         /**
-          * Emitted when the value has been changed as a direct result of a user action.
+          * Emitted when the value has been changed as a direct result of a user action. The component value and native event target value are strings.
          */
         "onInput"?: (event: PInputNumberCustomEvent<InputNumberInputEventDetail>) => void;
         /**
@@ -5561,7 +5560,7 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * Sets the current numeric value of the field.
+          * Sets the current numeric value. Strings and numbers are accepted for programmatic assignment, but user input updates the value as a string to mirror native input behavior.
           * @default ''
          */
         "value"?: string | number | null;
@@ -5942,11 +5941,11 @@ declare namespace LocalJSX {
          */
         "onBlur"?: (event: PInputTextCustomEvent<InputTextBlurEventDetail>) => void;
         /**
-          * Emitted when the input loses focus after its value was changed.
+          * Emitted when the input loses focus after its value was changed. The component value and native event target value are strings after user input.
          */
         "onChange"?: (event: PInputTextCustomEvent<InputTextChangeEventDetail>) => void;
         /**
-          * Emitted on every value change as the user types.
+          * Emitted on every value change as the user types. The component value and native event target value are strings.
          */
         "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
         /**
@@ -5974,7 +5973,7 @@ declare namespace LocalJSX {
          */
         "state"?: InputTextState;
         /**
-          * Sets the current text value of the input field.
+          * Sets the current text value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.
           * @default ''
          */
         "value"?: string | number | null;
@@ -6312,7 +6311,7 @@ declare namespace LocalJSX {
          */
         "target"?: LinkTarget;
         /**
-          * Sets the visual style variant of the link (e.g. `primary`, `secondary`, `tertiary`).
+          * Sets the visual style variant of the link (`primary` or `secondary`).
           * @default 'primary'
          */
         "variant"?: LinkVariant;
@@ -6533,9 +6532,9 @@ declare namespace LocalJSX {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key.
+          * Emitted when the user closes the modal via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PModalCustomEvent<void>) => void;
+        "onDismiss"?: (event: PModalCustomEvent<ModalDismissEventDetail>) => void;
         /**
           * Emitted after the modal's close transition completes and the dialog is fully hidden.
          */
@@ -6664,7 +6663,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Sets the value submitted with the form data when this option is selected in the parent multi-select.
+          * Sets the required option value submitted with the form data when selected. Must be a string or number.
          */
         "value"?: string | number;
     }
@@ -6770,7 +6769,7 @@ declare namespace LocalJSX {
          */
         "onBlur"?: (event: PPinCodeCustomEvent<void>) => void;
         /**
-          * Emitted when the pin code value changes as the user types, carrying the new concatenated value in the event detail.
+          * Emitted when the pin code value changes as the user types, carrying `{ value: string; isComplete: boolean }` in the event detail.
          */
         "onChange"?: (event: PPinCodeCustomEvent<PinCodeChangeEventDetail>) => void;
         /**
@@ -6789,10 +6788,10 @@ declare namespace LocalJSX {
          */
         "type"?: PinCodeType;
         /**
-          * Sets the current concatenated value of all pin code fields and allows setting the initial value.
+          * Sets the current concatenated value. Numbers are accepted for programmatic assignment, but user input updates the value as a string.
           * @default ''
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -6816,9 +6815,9 @@ declare namespace LocalJSX {
          */
         "direction"?: PopoverDirection;
         /**
-          * Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab).
+          * Emitted in controlled mode when the user requests to close the popover via the Escape key, an outside click, or when keyboard focus leaves the popover (Tab / Shift+Tab). The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PPopoverCustomEvent<void>) => void;
+        "onDismiss"?: (event: PPopoverCustomEvent<PopoverDismissEventDetail>) => void;
         /**
           * Controls whether the popover is visible. When set (controlled mode), visibility follows this prop and the consumer owns the open state via a slotted `button`. When omitted (uncontrolled mode), the component manages visibility itself.
          */
@@ -6892,10 +6891,9 @@ declare namespace LocalJSX {
          */
         "state"?: RadioGroupState;
         /**
-          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes.
-          * @default ''
+          * Sets the currently selected value that pre-selects the matching radio option and reflects user changes. Matches an option strictly by type and value, meaning string or number only match an option whose value has the same type and equal value. Use undefined or null for no preselection; these values never match an option because every option requires a string or number value.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed option. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string;
+        "value"?: string | number | null;
     }
     interface PRadioGroupOption {
         /**
@@ -6913,9 +6911,9 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Sets the value submitted with the form data when this radio option is selected within its parent group.
+          * Sets the required option value. Must be a string or number and is selected when it strictly matches the parent `p-radio-group` value by type and value.
          */
-        "value"?: string;
+        "value"?: string | number;
     }
     interface PScroller {
         /**
@@ -7017,9 +7015,9 @@ declare namespace LocalJSX {
          */
         "state"?: SegmentedControlState;
         /**
-          * Sets the currently selected item's value and pre-selects the matching option when the component renders.
+          * Sets the currently selected item's value and pre-selects the matching option when the component renders. Matches an item strictly by type and value, meaning string or number only match an item whose value has the same type and equal value. Use undefined or null for no preselection.  Please note that FormData always serializes values as strings, so when participating in a native (uncontrolled) form a number value is restored as string via formStateRestoreCallback and will no longer strictly match a number-typed item. This limitation only applies to native form state restoration; in controlled forms (where the consumer manages value directly via the change event), the number type is preserved end-to-end.
          */
-        "value"?: string | number;
+        "value"?: string | number | null;
     }
     interface PSegmentedControlItem {
         /**
@@ -7162,9 +7160,9 @@ declare namespace LocalJSX {
          */
         "dismissButton"?: boolean;
         /**
-          * Emitted when the user dismisses the sheet via the close button, backdrop click, or Escape key.
+          * Emitted when the user closes the sheet via the dismiss button, backdrop click, or Escape key. The event detail identifies which of the three was used.
          */
-        "onDismiss"?: (event: PSheetCustomEvent<void>) => void;
+        "onDismiss"?: (event: PSheetCustomEvent<SheetDismissEventDetail>) => void;
         /**
           * Emitted after the sheet's close transition has fully completed and the panel is hidden.
          */
@@ -7619,7 +7617,7 @@ declare namespace LocalJSX {
          */
         "href"?: string;
         /**
-          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens (`small`, `medium`, `large`, `inherit`).
+          * Sets the display size of the Porsche wordmark SVG using predefined PDS size tokens.
           * @default 'small'
          */
         "size"?: WordmarkSize;

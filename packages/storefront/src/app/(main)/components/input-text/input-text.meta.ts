@@ -1,6 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { inputTextExampleControlled, inputTextExampleForm } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/input-text/accessibility/page.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-text/accessibility/examples/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-text/accessibility/examples/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-text/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import AccessibilityOverview from '@/app/(main)/components/input-text/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/input-text/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-text/configurator/introduction.mdx';
 import { inputTextSlotStories, inputTextStory } from '@/app/(main)/components/input-text/configurator/story';
 import ControlledDescription from '@/app/(main)/components/input-text/examples/controlled/example.mdx';
@@ -37,7 +41,14 @@ export const inputTextMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-input-text'],
 } satisfies ComponentDocsMeta<'p-input-text'>;
-

@@ -6,13 +6,13 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "build": "rollup -c rollup.config.js --bundleConfigAsCjs && mv ../../dist/components-wrapper/testing/testing.d.ts ../../dist/components-wrapper/testing/index.d.ts",
+    "build": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },
   "dependencies": {
-    "@oddbird/popover-polyfill": "^0.6.1",
+    "@oddbird/popover-polyfill": "^0.7.1",
     "construct-style-sheets-polyfill": "^3.1.0",
     "intersection-observer": "^0.12.2",
     "matchmedia-polyfill": "^0.3.2",
@@ -24,8 +24,11 @@
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-dynamic-import-vars": "^2.1.5",
     "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/user-event": "^14.6.1"
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/user-event": "^14.6.3",
+    "rollup-plugin-dts": "^6.4.1",
+    "shadow-dom-testing-library": "^1.14.1"
+
   },
   "volta": {
     "extends": "../../../../package.json"

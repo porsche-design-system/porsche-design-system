@@ -94,10 +94,12 @@ const sortTree = (obj: TokenTree): TokenTree => {
   return Object.fromEntries([...sorted.map((l) => [l.name, l] as [string, TokenLeaf]), ...subtrees]);
 };
 
-// Sort files within each directory so color tokens arrive in family+variant order.
-// JS object insertion order is preserved, so the tree inherits this ordering without any post-sort.
+// Sort directories deterministically, then sort files within each directory so color tokens arrive
+// in family+variant order. fast-glob does not guarantee filesystem traversal order.
 const sortedTokenFiles = [...tokenFiles].sort((a, b) => {
-  if (path.dirname(a) !== path.dirname(b)) return 0; // cross-directory: stable sort preserves relative order
+  const directoryA = path.relative(sourceDirectory, path.dirname(a)).replace(/\\/g, '/');
+  const directoryB = path.relative(sourceDirectory, path.dirname(b)).replace(/\\/g, '/');
+  if (directoryA !== directoryB) return directoryA < directoryB ? -1 : 1;
   const nameA = path.basename(a, '.ts');
   const nameB = path.basename(b, '.ts');
   const famA = extractColorFamily(nameA);

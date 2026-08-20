@@ -4,13 +4,14 @@ import { FLAG_NAMES, ICON_NAMES } from '@porsche-design-system/assets';
 import { componentsReady } from '@porsche-design-system/components-js';
 import { pdsTheme, pdsThemeCompact } from '@porsche-design-system/components-js/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
-import * as agGrid from 'ag-grid-enterprise';
+import * as agGrid from 'ag-grid-community';
 import {
-  AllEnterpriseModule,
+  AllCommunityModule,
   ModuleRegistry,
   provideGlobalGridOptions,
   ValidationModule /* Development Only */,
-} from 'ag-grid-enterprise';
+} from 'ag-grid-community';
+import { AllEnterpriseModule } from 'ag-grid-enterprise';
 
 window.FLAG_NAMES = FLAG_NAMES;
 window.ICON_NAMES = ICON_NAMES;
@@ -90,7 +91,14 @@ const updateRoute = async (opts) => {
 
     const scripts = app.getElementsByTagName('script');
     for (let i = 0; i < scripts.length; i++) {
-      (0, eval)(scripts[i].innerText); // execute scripts inserted via innerHTML (indirect eval avoids bundler warnings)
+      // Module examples declare real imports so they also run standalone (storefront snippet, StackBlitz). Here they
+      // are executed as plain scripts, where `import` is a SyntaxError, so the imports are dropped and the bindings
+      // they would create come from the globals set below instead.
+      const code =
+        scripts[i].type === 'module'
+          ? scripts[i].innerText.replace(/^[ \t]*import\b[\s\S]*?;$/gm, '')
+          : scripts[i].innerText;
+      (0, eval)(code); // execute scripts inserted via innerHTML (indirect eval avoids bundler warnings)
     }
   }
 };
@@ -124,13 +132,16 @@ const updateSelect = (id, value) => {
     );
   };
 
-  ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
+  ModuleRegistry.registerModules([AllCommunityModule, ValidationModule]);
 
   provideGlobalGridOptions({
     theme: pdsTheme,
   });
 
   window.agGrid = agGrid;
+  // registered per grid via createGrid(), since registerModules() would apply the license check to every grid
+  window.AllEnterpriseModule = AllEnterpriseModule;
+  window.pdsTheme = pdsTheme;
   window.pdsThemeCompact = pdsThemeCompact;
   window.rowData = dataAdvanced;
 

@@ -1,7 +1,7 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
-import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
+import { getByRoleShadowed, screen } from '@porsche-design-system/components-js/testing';
 
 it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-segmented-control');
@@ -33,4 +33,15 @@ it('should have working events', async () => {
   const button = getByRoleShadowed('button', { name: /Item 2/i });
   await userEvent.click(button);
   expect(debugEl.innerHTML).toBe('Current Value: <span>2</span>; Event Counter: <span>1</span>;');
+});
+
+it('should expose its item buttons to shadow queries', async () => {
+  document.body.innerHTML = getMarkup('p-segmented-control');
+  await componentsReady();
+
+  expect(screen.queryAllByRole('button')).toHaveLength(0);
+  // each button sits in the shadow root of its own light DOM item, so compare the whole list
+  expect(screen.getAllByShadowRole('button')).toEqual(
+    [...document.querySelectorAll('p-segmented-control-item')].map((item) => item.shadowRoot.querySelector('button'))
+  );
 });

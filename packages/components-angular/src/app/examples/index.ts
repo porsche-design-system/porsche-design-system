@@ -1,6 +1,8 @@
 import { AccordionExampleComponent } from './accordion-example.component';
-import { AgGridExampleComponent } from './ag-grid-example.component';
-import { AgGridExampleStorefrontComponent } from './ag-grid-example-storefront.component';
+import { AgGridExampleEnterpriseComponent } from './ag-grid-example-enterprise.component';
+import { AgGridExampleCompactEnterpriseComponent } from './ag-grid-example-compact-enterprise.component';
+import { AgGridExampleCompactCommunityComponent } from './ag-grid-example-compact-community.component';
+import { AgGridExampleCommunityComponent } from './ag-grid-example-community.component';
 import { BannerExampleComponent } from './banner-example.component';
 import { ButtonExampleFormComponent } from './button-example-form.component';
 import { ButtonExampleFormAttributeComponent } from './button-example-form-attribute.component';
@@ -117,8 +119,10 @@ import { ToastExampleComponent } from './toast-example.component';
 export const examples = [
   AccordionExampleComponent,
   SheetExampleComponent,
-  AgGridExampleComponent,
-  AgGridExampleStorefrontComponent,
+  AgGridExampleEnterpriseComponent,
+  AgGridExampleCompactEnterpriseComponent,
+  AgGridExampleCommunityComponent,
+  AgGridExampleCompactCommunityComponent,
   BannerExampleComponent,
   ButtonExampleFormComponent,
   ButtonExampleFormAttributeComponent,
@@ -233,8 +237,10 @@ export const examples = [
 ];
 
 export * from './accordion-example.component';
-export * from './ag-grid-example.component';
-export * from './ag-grid-example-storefront.component';
+export * from './ag-grid-example-enterprise.component';
+export * from './ag-grid-example-compact-enterprise.component';
+export * from './ag-grid-example-compact-community.component';
+export * from './ag-grid-example-community.component';
 export * from './banner-example.component';
 export * from './button-example-form.component';
 export * from './button-example-form-attribute.component';

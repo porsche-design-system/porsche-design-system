@@ -25,6 +25,7 @@ const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, b
  */
 const SECTION_GROUP_HEADERS: Partial<Record<string, string>> = {
   news: 'Get Started', // designing, developing
+  skills: 'AI (experimental)',
   components: 'Core', // components, styles, tokens, patterns, templates, partials
   tailwindcss: 'Styling', // tailwindcss, scss, emotion, vanilla-extract
   'ag-grid': 'Integrations', // ag-grid

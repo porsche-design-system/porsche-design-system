@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { PackageSkill } from '@porsche-design-system/shared';
 import { sentenceCase } from 'change-case';
 import type { TailwindBranch, TailwindNode, TailwindThemeVariable, TailwindUtility } from '../src';
 import { kindOf, type TailwindKind, tailwindMeta } from '../src';
@@ -13,16 +14,20 @@ import { kindOf, type TailwindKind, tailwindMeta } from '../src';
  *
  * The documented surface is split into a `token` view (the `## Theme variables` section) and a
  * `utility` view (the `## Utilities` section) by partitioning the flat `tailwindMeta` catalog per
- * leaf via {@link kindOf}. The solution-specific internals (resets, base colors, deprecated aliases,
- * keyframes and the outside-`@theme` layers) are intentionally omitted here; they remain available
- * in `index.css` for exact values. Token values are likewise left to `index.css` — this file is the
- * index, the stylesheet is the detail.
+ * leaf via {@link kindOf}. Each theme variable's value is tabulated (colors as their `light-dark()`
+ * expression). The solution-specific internals (resets, base colors, deprecated aliases, keyframes
+ * and the outside-`@theme` layers) are intentionally omitted here; they remain available in
+ * `index.css` for the full generated output.
  */
 
 const code = (value: string): string => `\`${value}\``;
 
 /** Escape the few markdown-table-breaking characters a description might contain. */
-const cell = (text: string): string => text.replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ');
+const cell = (text: string): string =>
+  text
+    .replace(/\\/g, '\\\\')
+    .replace(/\|/g, '\\|')
+    .replace(/\s*\n\s*/g, ' ');
 
 /** A markdown table from a header row and pre-rendered cell rows. */
 const table = (headers: string[], rows: string[][]): string =>
@@ -35,6 +40,7 @@ const variableColumns: Column<TailwindThemeVariable>[] = [
   { header: 'Theme variable', render: (v) => code(v.property) },
   { header: 'Tailwind class(es)', render: (v) => (v.classes?.length ? v.classes.map(code).join(', ') : '–') },
   { header: 'Description', render: (v) => cell(v.description) },
+  { header: 'Value', render: (v) => code(String(v.value)) },
 ];
 
 const utilityColumns: Column<TailwindUtility>[] = [
@@ -160,3 +166,10 @@ const themeUtilities = `## Utilities\n\n${renderOutline(utilityOutline, utilityC
  */
 export const getTailwindcssSkill = (): string =>
   `${[intro, howToUse, contents, themeVariables, themeUtilities].join('\n\n')}\n`;
+
+export const tailwindcssSkill: PackageSkill = {
+  name: 'tailwindcss',
+  title: 'Tailwind CSS',
+  description: 'utility-first styling on a PDS Tailwind v4 theme',
+  getContent: getTailwindcssSkill,
+};

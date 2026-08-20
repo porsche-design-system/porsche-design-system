@@ -1,6 +1,10 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { inputNumberExampleForm } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/input-number/accessibility/page.mdx';
+import { hiddenLabelWithoutAccessibleNameA11yExample } from '@/app/(main)/components/input-number/accessibility/examples/hidden-label-without-accessible-name/example';
+import { placeholderUsedAsTheOnlyLabelA11yExample } from '@/app/(main)/components/input-number/accessibility/examples/placeholder-used-as-the-only-label/example';
+import { validationFeedbackViaStateAndMessageApiA11yExample } from '@/app/(main)/components/input-number/accessibility/examples/validation-feedback-via-state-and-message-api/example';
+import AccessibilityOverview from '@/app/(main)/components/input-number/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/input-number/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/input-number/configurator/introduction.mdx';
 import { inputNumberSlotStories, inputNumberStory } from '@/app/(main)/components/input-number/configurator/story';
 import FormDescription from '@/app/(main)/components/input-number/examples/form/example.mdx';
@@ -30,7 +34,14 @@ export const inputNumberMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      placeholderUsedAsTheOnlyLabel: placeholderUsedAsTheOnlyLabelA11yExample,
+      hiddenLabelWithoutAccessibleName: hiddenLabelWithoutAccessibleNameA11yExample,
+      validationFeedbackViaStateAndMessageApi: validationFeedbackViaStateAndMessageApiA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-input-number'],
 } satisfies ComponentDocsMeta<'p-input-number'>;
-

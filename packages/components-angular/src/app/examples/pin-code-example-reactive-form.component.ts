@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, type PPinCodeProps } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-pin-code-example-reactive-form',
@@ -28,7 +28,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     <div>Disabled: <span data-field="disabled">{{ form.controls.myPinCode.disabled }}</span></div>
     <div>Value: <span data-field="value">{{ form.controls.myPinCode.value }}</span></div>
     <div>Valid: <span data-field="valid">{{ form.controls.myPinCode.valid }}</span></div>
-    <div [@if]="submittedValue !== undefined">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
+    <div [@if]="submittedValue !== null">Submitted: <span data-field="submitted">{{ submittedValue }}</span></div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -36,20 +36,17 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 })
 export class PinCodeExampleReactiveFormComponent {
   form = new FormGroup({
-    myPinCode: new FormControl<string>(
-      { value: '', disabled: false },
-      { validators: Validators.required, nonNullable: true }
-    ),
+    myPinCode: new FormControl<PPinCodeProps['value']>(null, { validators: Validators.required }),
   });
 
-  submittedValue: any = undefined;
+  submittedValue: string | null = null;
 
   setValue(): void {
     this.form.controls.myPinCode.setValue('1234');
   }
 
   resetValue(): void {
-    this.form.controls.myPinCode.reset({ value: '', disabled: false });
+    this.form.controls.myPinCode.reset(null);
   }
 
   toggleDisabled(): void {

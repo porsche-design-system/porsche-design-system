@@ -12,6 +12,10 @@
       "import": "./dist/esm/index.mjs",
       "default": "./dist/cjs/index.cjs"
     },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
+    },
     "./meta": {
       "types": "./meta/esm/emotionMeta/index.d.ts",
       "import": "./meta/esm/index.mjs",
@@ -19,10 +23,9 @@
     }
   },
   "scripts": {
-    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta && npm run build:skill",
+    "build": "npm run clean:build && npm run build:bundle && npm run build:bundle:meta",
     "build:bundle": "rollup -c rollup.config.mjs --bundleConfigAsCjs",
     "build:bundle:meta": "rollup -c rollup-meta.config.mjs --bundleConfigAsCjs",
-    "build:skill": "tsx scripts/build-skill.ts",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta"
@@ -35,16 +38,16 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/madge": "^5.0.3",
-    "@types/node": "^26.0.1",
+    "@types/node": "^26.1.2",
     "jss": "^10.10.0",
     "jss-plugin-camel-case": "^10.10.0",
     "jss-plugin-global": "^10.10.0",
     "jss-plugin-nested": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "madge": "^8.0.0",
-    "prettier": "^3.9.1",
+    "prettier": "^3.9.6",
     "rollup-plugin-generate-package-json": "^3.2.0",
-    "tsx": "^4.22.4",
+    "tsx": "^4.23.7",
     "typescript": "^6.0.3"
   },
   "volta": {

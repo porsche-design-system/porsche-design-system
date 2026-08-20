@@ -1,9 +1,11 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { Notification } from '@/components/common/Notification';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { agGridCompactExampleCommunity } from '@porsche-design-system/shared/examples/AGGridCompactExampleCommunity';
+import { agGridExampleCommunity } from '@porsche-design-system/shared/examples/AGGridExampleCommunity';
 
 # Theme
 
-<TableOfContents headings={['Usage', 'Example']} />
+<TableOfContents headings={['Usage', 'Default Theme', 'Compact Theme']} />
 
 We provide a custom theme for the [AG Grid library](https://ag-grid.com) for cases where a more sophisticated table is
 required beyond the capabilities of our [p-table](/components/table/examples/) component. This theme is aligned with the
@@ -79,8 +81,14 @@ grid, such as the `<html>` or `<body>` tag.
 <body style="color-scheme: light;"></body>
 ```
 
-## Example
+## Default Theme
 
-<Notification heading="Example Coming Soon">
-  This example is currently in development and will be added soon.
-</Notification>
+The default `pdsTheme` with regular spacing and icon sizes.
+
+<ComponentExample codeSample={agGridExampleCommunity} />
+
+## Compact Theme
+
+The `pdsThemeCompact` variant, with reduced spacing and smaller icons for information-rich grids.
+
+<ComponentExample codeSample={agGridCompactExampleCommunity} />

@@ -3,8 +3,8 @@
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import React, { type ReactNode, useEffect, useState } from 'react';
-import type { ConfiguratorMode } from '@/components/playground/ConfigureBehavior';
 import { ConfiguratorControls } from '@/components/playground/ConfiguratorControls';
+import type { ConfiguratorMode } from '@/components/playground/ConfigureBehavior';
 import { Playground } from '@/components/playground/Playground';
 import { useStorefrontColorScheme } from '@/hooks/useStorefrontColorScheme';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
@@ -34,7 +34,7 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   controlledSlotStories,
 }: ConfiguratorTestProps<T>) => {
   const { storefrontColorScheme } = useStorefrontColorScheme();
-  const { storefrontFramework } = useStorefrontFramework();
+  const { framework } = useStorefrontFramework();
 
   const [mode, setMode] = useState<ConfiguratorMode>('uncontrolled');
   const activeStory = mode === 'controlled' && controlledStory ? controlledStory : story;
@@ -60,8 +60,8 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   }, [exampleState, storefrontColorScheme, activeStory]);
 
   const onOpenInStackblitz = () => {
-    const markup = createStackblitzMarkupFromStory(activeStory, exampleState, storefrontFramework, storefrontColorScheme);
-    openInStackblitz(storefrontFramework as Framework, markup, storefrontColorScheme);
+    const markup = createStackblitzMarkupFromStory(activeStory, exampleState, framework, storefrontColorScheme);
+    openInStackblitz(framework, markup, storefrontColorScheme);
   };
 
   return (

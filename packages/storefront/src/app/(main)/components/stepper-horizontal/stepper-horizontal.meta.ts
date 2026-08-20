@@ -1,6 +1,8 @@
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { stepperHorizontalExample } from '@porsche-design-system/shared/examples';
-import Accessibility from '@/app/(main)/components/stepper-horizontal/accessibility/page.mdx';
+import { genericStepLabelsWithoutContextA11yExample } from '@/app/(main)/components/stepper-horizontal/accessibility/examples/generic-step-labels-without-context/example';
+import AccessibilityOverview from '@/app/(main)/components/stepper-horizontal/accessibility/overview.mdx';
+import AccessibilityTests from '@/app/(main)/components/stepper-horizontal/accessibility/tests.mdx';
 import IntroductionDescription from '@/app/(main)/components/stepper-horizontal/configurator/introduction.mdx';
 import { stepperHorizontalStory } from '@/app/(main)/components/stepper-horizontal/configurator/story';
 import FrameworkImplementationDescription from '@/app/(main)/components/stepper-horizontal/examples/framework-implementation/example.mdx';
@@ -21,7 +23,12 @@ export const stepperHorizontalMeta = {
     },
   },
   usage: Usage,
-  accessibility: Accessibility,
+  accessibility: {
+    overview: AccessibilityOverview,
+    examples: {
+      genericStepLabelsWithoutContext: genericStepLabelsWithoutContextA11yExample,
+    },
+    tests: AccessibilityTests,
+  },
   api: componentMeta['p-stepper-horizontal'],
 } satisfies ComponentDocsMeta<'p-stepper-horizontal'>;
-

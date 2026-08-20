@@ -15,6 +15,10 @@
       "require": "./meta/cjs/index.cjs",
       "style": "./dist/index.css"
     },
+    "./skill": {
+      "types": "./skill/skill.ts",
+      "default": "./skill/skill.ts"
+    },
     "./index.css": "./dist/index.css"
   },
   "main": "./meta/cjs/index.cjs",
@@ -29,7 +33,6 @@
     "build": "npm run clean:build && npm run build:meta && npm run build:package",
     "build:meta": "rollup -c rollup.config.meta.mjs",
     "build:package": "tsx scripts/build.ts",
-    "build:skill": "tsx scripts/build-skill.ts",
     "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist ./meta"
@@ -38,16 +41,16 @@
     "@porsche-design-system/tokens": "0.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.1",
+    "@biomejs/biome": "^2.5.7",
     "@porsche-design-system/shared": "0.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
-    "@types/node": "^26.0.1",
-    "rollup": "^4.62.2",
+    "@types/node": "^26.1.2",
+    "rollup": "^4.62.4",
     "rollup-plugin-generate-package-json": "^3.2.0",
-    "tailwindcss": "^4.3.1",
-    "tsx": "^4.22.4",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.7",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "volta": {
     "extends": "../../../../package.json"
