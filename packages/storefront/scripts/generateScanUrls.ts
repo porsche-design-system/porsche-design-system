@@ -19,7 +19,8 @@ function extractUrls(routes: any, baseUrl: string = ''): string[] {
     // Add sub-paths (tabs)
     if ((route as any).subPaths) {
       for (const [, subRoute] of Object.entries((route as any).subPaths)) {
-        urls.push(fullPath + (subRoute as any).path);
+        // The subRoute path is already a full path (e.g. '/components/button/configurator')
+        urls.push((subRoute as any).path);
       }
     }
   }
