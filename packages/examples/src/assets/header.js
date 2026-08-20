@@ -4,6 +4,8 @@
 // Behaviour of the header navigation: the menu button opens the drilldown, and the drilldown reports the level the
 // user drilled into. Every header variant is built on that drilldown, so it is written once here and inlined into the
 // `main.js` of every page rendering the menu button.
+//
+// Both elements are addressed by id – see `src/_ids.ts`, which is where the markup takes them from as well.
 
 const navDrilldown = document.getElementById('nav-drilldown');
 const navButton = document.getElementById('nav-button');

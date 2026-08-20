@@ -1,4 +1,5 @@
 import { navItems } from '../../../_data.ts';
+import { ids } from '../../../_ids.ts';
 import { PatternPage } from '../../../_layouts/PatternPage.tsx';
 import { Header } from '../../../_partials/header/Header.tsx';
 
@@ -12,6 +13,7 @@ const Page = () => (
     <main id="main" class="grid-template">
       <section class="scheme-dark z-0 col-full grid grid-cols-subgrid items-end h-[clamp(480px,80vh,1000px)]">
         <video
+          id={ids.heroVideo}
           class="z-0 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
           poster="/mood-porsche-gts.webp"
           loop
@@ -34,7 +36,7 @@ const Page = () => (
           compact="true"
           hide-label="true"
           icon="pause"
-          id="pause-button"
+          id={ids.pauseButton}
         >
           Pause Video
         </p-button>

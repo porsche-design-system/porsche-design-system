@@ -8,6 +8,7 @@ import {
   getSharedScripts,
   rewriteEntriesForDev,
   scriptEntryTag,
+  sharedScripts,
 } from '../../plugins/entries.ts';
 import { doctype, isBuildInput, renderPage, resolvePagePath } from '../../plugins/jsx.ts';
 import { getInputName, projects, resolvePageLocation, scriptEntryName } from '../../plugins/projects.ts';
@@ -20,6 +21,7 @@ import {
   placeholderHref,
   templateItems,
 } from '../../src/_data.ts';
+import { type BehaviourId, behaviourIds, idAttribute, ids } from '../../src/_ids.ts';
 import { BasePage } from '../../src/_layouts/BasePage.tsx';
 import { OverviewPage } from '../../src/_layouts/OverviewPage.tsx';
 import { PatternPage } from '../../src/_layouts/PatternPage.tsx';
@@ -211,12 +213,24 @@ describe('entries', () => {
   });
 
   it.each([
-    ['<p-drilldown id="nav-drilldown">', ['header.js']],
-    ['<p-button id="pause-button">', ['video.js']],
-    ['<p-drilldown id="nav-drilldown"><p-button id="pause-button">', ['header.js', 'video.js']],
+    ['<p-button-pure id="nav-button"><p-drilldown id="nav-drilldown">', ['header.js']],
+    ['<video id="hero-video"><p-button id="pause-button">', ['video.js']],
+    [
+      '<p-button-pure id="nav-button"><p-drilldown id="nav-drilldown"><video id="hero-video"><p-button id="pause-button">',
+      ['header.js', 'video.js'],
+    ],
     ['<p>nothing to wire up</p>', []],
   ])('should derive the shared behaviour of "%s" from the markup', (html, expected) => {
     expect(getSharedScripts(html)).toEqual(expected);
+  });
+
+  it.each([
+    ['<p-drilldown id="nav-drilldown">', 'id="nav-button"'],
+    ['<p-button id="pause-button">', 'id="hero-video"'],
+  ])('should fail on "%s", which wires up only half of what a snippet needs', (html, missing) => {
+    // A menu button without its drilldown, or a pause control without its video, is an example that silently does
+    // nothing – the contract of `_ids.ts` is that a page renders the ids of a snippet together.
+    expect(() => getSharedScripts(html)).toThrow(missing);
   });
 
   it('should link the shared stylesheet and drop the generated entry in dev, where neither exists', () => {
@@ -252,6 +266,77 @@ describe('entries', () => {
       );
     }
   );
+});
+
+describe('behaviour ids', () => {
+  const srcDir = path.join(import.meta.dirname, '../../src');
+  const snippets = sharedScripts.map(({ fileName, ids: scriptIds }) => ({
+    fileName,
+    ids: [...scriptIds] as BehaviourId[],
+    code: fs.readFileSync(path.join(srcDir, 'assets', fileName), 'utf8') as string,
+  }));
+
+  /** Every id a snippet looks up, whether by `getElementById()` or by an `#id` selector. */
+  const getQueriedIds = (code: string): string[] => [
+    ...Array.from(code.matchAll(/getElementById\(\s*'([^']*)'\s*\)/g), ([, id]) => id),
+    ...Array.from(code.matchAll(/querySelector(?:All)?\(\s*'#([^']*)'/g), ([, id]) => id),
+  ];
+
+  it('should register every id once, since a second one would silently win in the markup', () => {
+    expect(new Set(behaviourIds).size).toBe(behaviourIds.length);
+  });
+
+  it('should wire every registered id up by exactly one snippet', () => {
+    const declared = snippets.flatMap(({ ids: scriptIds }) => scriptIds);
+
+    expect(new Set(declared).size).toBe(declared.length);
+    expect([...declared].sort()).toEqual([...behaviourIds].sort());
+  });
+
+  it.each(snippets)('should address elements in $fileName by id only', ({ code }) => {
+    // A snippet is inlined into the `main.js` of a page it knows nothing about, so a tag or class selector would
+    // reach into whatever that page happens to render around the element.
+    for (const [, selector] of code.matchAll(/querySelector(?:All)?\(\s*'([^']*)'/g)) {
+      expect(selector.startsWith('#')).toBe(true);
+    }
+    expect(code).not.toMatch(/getElementsBy(?:ClassName|TagName)\(/);
+  });
+
+  it.each(snippets)('should look up exactly the ids $fileName is registered for', ({ code, ids: scriptIds }) => {
+    expect(getQueriedIds(code).sort()).toEqual([...scriptIds].sort());
+  });
+
+  it('should keep the markup free of literal behaviour ids, which `_ids.ts` single-sources', () => {
+    const files = (fs.readdirSync(srcDir, { recursive: true }) as string[]).filter((file) => file.endsWith('.tsx'));
+    const offenders = files.filter((file) =>
+      behaviourIds.some((id) => (fs.readFileSync(path.join(srcDir, file), 'utf8') as string).includes(idAttribute(id)))
+    );
+
+    expect(offenders).toEqual([]);
+  });
+
+  it.each(examplePages)(
+    'should render the ids of a snippet in "%s" together, each of them once',
+    async (_name, Page) => {
+      const html = await renderPage(Page);
+
+      for (const { ids: scriptIds } of snippets) {
+        const counts = scriptIds.map((id) => countOccurrences(html, idAttribute(id)));
+
+        // All of them or none of them – and never twice, because `getElementById()` would wire up the first one only.
+        expect(new Set(counts).size).toBe(1);
+        expect(counts[0]).toBeLessThanOrEqual(1);
+      }
+    }
+  );
+
+  it('should wire the menu button and its drilldown up on every page rendering the header', async () => {
+    const html = await renderPage(HeaderStackedPage);
+
+    expect(html).toContain(idAttribute(ids.navButton));
+    expect(html).toContain(idAttribute(ids.navDrilldown));
+    expect(getSharedScripts(html)).toEqual(['header.js']);
+  });
 });
 
 describe('data', () => {

@@ -4,8 +4,10 @@
 // Behaviour of the hero video: a pause control that follows the actual state of the video. Every example showing an
 // autoplaying video needs it, so it is written once here and inlined into the `main.js` of every page rendering the
 // pause button.
+//
+// Both elements are addressed by id – see `src/_ids.ts`, which is where the markup takes them from as well.
 
-const video = document.querySelector('video');
+const video = document.getElementById('hero-video');
 const pauseButton = document.getElementById('pause-button');
 
 if (pauseButton && video instanceof HTMLVideoElement) {

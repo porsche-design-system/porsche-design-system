@@ -1,5 +1,6 @@
 import { classes } from '../../_classes.ts';
 import type { NavItem } from '../../_data.ts';
+import { ids } from '../../_ids.ts';
 
 type NavEntriesProps = {
   /** Id of the active `NavItem`; only that one gets `aria-current="page"`. */
@@ -64,8 +65,8 @@ const DrilldownEntries = ({ currentPage, navItems }: NavEntriesProps) => (
 /**
  * Main navigation of every header variant: a menu button opening a `p-drilldown`.
  *
- * The behaviour is written once in `assets/header.js`, hooked on the two ids – nothing here is hydrated. The build
- * inlines it into the `main.js` of every page rendering this component, which is both variants.
+ * The behaviour is written once in `assets/header.js`, hooked on the two ids of `_ids.ts` – nothing here is hydrated.
+ * The build inlines it into the `main.js` of every page rendering this component, which is both variants.
  *
  * `scheme` reaches the button only. The drilldown is a dialog on top of the page, not part of the bar, so it keeps
  * the color scheme of the page – a header lying on a dark hero must not drag that scheme into an overlay.
@@ -73,7 +74,7 @@ const DrilldownEntries = ({ currentPage, navItems }: NavEntriesProps) => (
 export const MainNav = ({ currentPage, navItems, scheme }: MainNavProps) => (
   <nav aria-label="Main">
     <p-button-pure
-      id="nav-button"
+      id={ids.navButton}
       class={classes('p-static-xs -m-static-xs', scheme)}
       type="button"
       icon="menu-lines"
@@ -82,7 +83,7 @@ export const MainNav = ({ currentPage, navItems, scheme }: MainNavProps) => (
     >
       Menu
     </p-button-pure>
-    <p-drilldown id="nav-drilldown">
+    <p-drilldown id={ids.navDrilldown}>
       <DrilldownEntries currentPage={currentPage} navItems={navItems} />
     </p-drilldown>
   </nav>

@@ -1,3 +1,4 @@
+import { type BehaviourId, idAttribute, ids } from '../src/_ids.ts';
 import { assetsDirName, scriptEntryName, sharedStyleName, styleEntryName } from './projects.ts';
 
 /**
@@ -30,17 +31,39 @@ const REGEX_HEAD = /<\/head>/;
  * Behaviour shared by every page showing a given element, single-sourced in `assets/` instead of being copied per
  * example. It is inlined into the entries that need it, so `assets/*.js` is a build input and never emitted.
  *
- * Which of them a page needs is derived from its markup rather than declared as a prop: the element a script wires up
- * is the condition, so a page cannot forget its script or keep one it no longer needs.
+ * Which of them a page needs is derived from its markup rather than declared as a prop: the elements a script wires up
+ * are the condition, so a page cannot forget its script or keep one it no longer needs. The ids come from
+ * `src/_ids.ts`, which the markup uses as well – the rule below and the snippet it selects therefore cannot drift
+ * apart when an element is renamed.
  */
-const sharedScripts = [
-  { fileName: 'header.js', isUsedBy: (html: string) => html.includes('id="nav-drilldown"') },
-  { fileName: 'video.js', isUsedBy: (html: string) => html.includes('id="pause-button"') },
-] as const;
+export const sharedScripts = [
+  { fileName: 'header.js', ids: [ids.navButton, ids.navDrilldown] },
+  { fileName: 'video.js', ids: [ids.pauseButton, ids.heroVideo] },
+] as const satisfies readonly { fileName: string; ids: readonly BehaviourId[] }[];
 
-/** The shared scripts a rendered page needs, in a stable order. */
+/**
+ * The shared scripts a rendered page needs, in a stable order.
+ *
+ * A snippet wires its ids **together**, so a page carrying one of them has to carry all of them: a pause control
+ * without its video, or a menu button without the drilldown it opens, is an example that silently does nothing. That
+ * is a build error rather than a missing script, because the page is what is wrong.
+ */
 export const getSharedScripts = (html: string): string[] =>
-  sharedScripts.filter(({ isUsedBy }) => isUsedBy(html)).map(({ fileName }) => fileName);
+  sharedScripts
+    .filter(({ fileName, ids: scriptIds }) => {
+      const missing = scriptIds.filter((id) => !html.includes(idAttribute(id)));
+
+      if (missing.length > 0 && missing.length < scriptIds.length) {
+        throw new Error(
+          `[examples] a page renders part of the elements "${assetsDirName}/${fileName}" wires up – it is missing ${missing
+            .map((id) => `"${idAttribute(id)}"`)
+            .join(', ')}. The ids of a snippet belong together; they are single-sourced in src/_ids.ts`
+        );
+      }
+
+      return missing.length === 0;
+    })
+    .map(({ fileName }) => fileName);
 
 /** A shared snippet with its content, ready to be inlined into the entry of a page. */
 export type SharedBehaviour = {

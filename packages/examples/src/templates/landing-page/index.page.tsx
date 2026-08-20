@@ -1,4 +1,5 @@
 import { navItems, placeholderHref } from '../../_data.ts';
+import { ids } from '../../_ids.ts';
 import { BasePage } from '../../_layouts/BasePage.tsx';
 
 /** Landing page – demonstrates overriding the shared navigation with a page level list. */
@@ -16,6 +17,7 @@ const Page = () => (
         aria-labelledby="heading-section-1"
       >
         <video
+          id={ids.heroVideo}
           class="z-1 col-span-full row-span-full min-w-full w-full min-h-full h-full object-cover object-center"
           poster="/mood-porsche-gts.webp"
           loop
@@ -39,7 +41,7 @@ const Page = () => (
           compact="true"
           hide-label="true"
           icon="pause"
-          id="pause-button"
+          id={ids.pauseButton}
         >
           Pause Video
         </p-button>

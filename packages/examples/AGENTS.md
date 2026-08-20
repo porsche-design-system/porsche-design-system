@@ -74,6 +74,8 @@ src/
 ├── index.page.tsx                # overview of the source tree – dev only, never emitted
 ├── _data.ts                      # templateItems, patternItems (URLs inside their project), chrome nav
 ├── _classes.ts                   # classes(): joins class names, dropping the unset optional ones
+├── _ids.ts                       # the ids the dummy behaviour is wired on – markup, detection rules
+│                                 # and `assets/*.js` all address the same elements through them
 ├── _layouts/
 │   ├── BasePage.tsx              # full page shell, takes `children`
 │   ├── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
@@ -166,6 +168,13 @@ npm run build:verify        # build + `vite build` of both generated projects in
   have to be written as JSON strings (`compact="{ base: false, m: true }"`).
 - **No event handler props on PDS components.** The typing deliberately omits them: there is no client-side JS, so
   behaviour goes into a plain `main.js` hooked on ids.
+- **The ids the behaviour hooks on are a contract, kept in [`src/_ids.ts`](src/_ids.ts).** The look-up is the only
+  coupling between a page and `assets/*.js`, so it is written once: the markup uses `ids.pauseButton` instead of a
+  literal, [`plugins/entries.ts`](plugins/entries.ts) derives from the same constants which snippet a page needs, and
+  the snippets address elements **by id only** — never by tag name or class, since they are inlined into pages they know
+  nothing about. A snippet wires its ids **together**: rendering `id="pause-button"` without `id="hero-video"` fails the
+  build instead of producing an example that silently does nothing. Unit tests assert all of it, including that no
+  `.tsx` file writes one of those ids as a literal.
 - **Scripts and styles are not declared, they are derived — and copied.** A page always references one entry, `main.js`,
   generated next to it by [`plugins/entries.ts`](plugins/entries.ts). It imports the page's `style.css` and then
   **contains** the behaviour of the example: the shared snippets the rendered markup asks for (`assets/header.js` when
@@ -264,7 +273,8 @@ approach, and it is paid on every review:
    `variant="overlay" | "stacked"`, which is exactly what the two header patterns differ in.
 4. Add an entry to `patternItems` in `src/_data.ts`, with an `href` relative to the root of the `patterns` project.
 5. If the pattern needs behaviour of its own, put it in a plain `main.js` next to the page; the build inlines it into
-   the generated entry. Shared behaviour goes to `src/assets/*.js` and is inlined by its detection rule.
+   the generated entry. Shared behaviour goes to `src/assets/*.js` and is inlined by its detection rule — hook it on ids
+   from [`src/_ids.ts`](src/_ids.ts), add new ones there, and query them with `getElementById()`.
 6. Run `npm run build:verify`; the unit tests assert the accessibility baseline for every page, patterns included.
 
 ## Accessibility baseline
@@ -336,6 +346,13 @@ Done:
   handed to `server.transformIndexHtml()`; the partials stay in the hook, because they need exactly the opposite order.
   Side effect: the shared scripts and the stylesheet are now part of the module graph, so they hot-update instead of
   being fetched behind Vite's back.
+- **The wiring ids became a contract (2026-08-20).** `src/_ids.ts` is the single source of the ids the dummy behaviour
+  hooks on; the markup, the detection rules in `plugins/entries.ts` and `assets/*.js` now agree on them by construction.
+  `assets/video.js` stopped selecting its video by tag name (`querySelector('video')` → `getElementById('hero-video')`),
+  so every snippet addresses elements by id only, and `getSharedScripts()` throws when a page renders part of a
+  snippet's ids — that used to be a script quietly doing nothing. Unit tests pin the rules down: id-only selectors, a
+  snippet querying exactly the ids it is registered for, every registered id owned by one snippet, and no literal id
+  left in a `.tsx` file.
 
 Open:
 
