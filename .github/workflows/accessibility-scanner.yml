@@ -50,5 +50,4 @@ jobs:
       - name: 'Run GitHub Accessibility Scanner'
         uses: github/accessibility-scanner@main
         with:
-          workspace: '.'
-          scan-url: 'http://localhost:8080'
+          url: 'http://localhost:8080'
