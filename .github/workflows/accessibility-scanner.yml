@@ -1,0 +1,57 @@
+name: 'Accessibility Scanner'
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  accessibility-scan:
+    name: 'Scan Storefront with GitHub Accessibility Scanner'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: 'Install dependencies'
+        run: npm ci
+
+      - name: 'Build core dependencies'
+        run: npm run build:core-dependencies
+
+      - name: 'Build storefront'
+        run: npm run build -w @porsche-design-system/storefront
+
+      - name: 'Start storefront server'
+        working-directory: packages/storefront
+        run: npm run start-app &
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: 'Wait for server to start'
+        run: |
+          for i in {1..60}; do
+            if curl -f http://localhost:8080 > /dev/null 2>&1; then
+              echo "Server is up"
+              exit 0
+            fi
+            echo "Attempt $i: Waiting for server..."
+            sleep 2
+          done
+          echo "Server failed to start"
+          exit 1
+
+      - name: 'Run GitHub Accessibility Scanner'
+        uses: github/accessibility-scanner@main
+        with:
+          workspace: '.'
+          scan-url: 'http://localhost:8080'
