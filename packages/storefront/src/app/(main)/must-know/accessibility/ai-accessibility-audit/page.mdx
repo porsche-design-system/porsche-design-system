@@ -1,0 +1,198 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Accessibility: AI Accessibility Audit - Porsche Design System',
+  description:
+    'Install the Porsche web-accessibility-audit APM package and run guided WCAG 2.2 AA audits in GitHub Copilot, Claude Code, or Cursor.',
+};
+
+# AI Accessibility Audit
+
+<TableOfContents
+  headings={['Install the audit bundle', 'Run the audit', 'Installed files', 'Update and uninstall', 'Limitations']}
+/>
+
+Run guided **WCAG 2.2 AA** audits on your locally running application with the
+[**web-accessibility-audit** package](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-audit)
+from the [**porsche-design-system/skills**](https://github.com/porsche-design-system/skills) repository.
+
+Installation uses [**APM (Agent Package Manager)**](https://microsoft.github.io/apm/). APM installs and updates the
+audit agents, prompts, skills, and instructions directly in your target repository.
+
+PDS components are tested at component level. Your **application integration** (pages, routing, custom content) still
+needs its own audit. Automated scans complement manual keyboard, screen reader, and High Contrast Mode testing.
+
+<Notification heading="Prerequisite" headingTag="h3" state="warning">
+  {/*<!-- prettier-ignore --> */}
+  | Requirement | Details |
+  | ---------------- | ----------------------------------------------------------------------------------------------- |
+  | **Platform** | macOS, Linux, or Windows (APM-supported environments) |
+  | **Supported Editors** | VS Code with a current [GitHub Copilot](https://docs.github.com/en/copilot) release <br /> [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI or VS Code integration with project `.claude/` discovery <br /> Cursor |
+  | **Runtime** | [APM CLI](https://microsoft.github.io/apm/) and Node.js/npm for scanner execution (for example `npx @axe-core/cli`) |
+  | **GitHub access** | Read access to [github.com/porsche-design-system](https://github.com/porsche-design-system/) and the private package source repository |
+  | **Authentication** | For private/org package installs, configure credentials as described in APM [Private and org packages](https://microsoft.github.io/apm/consumer/private-and-org-packages/) |
+  | **Product** | A local checkout of the web application to audit |
+</Notification>
+
+## Install the audit bundle
+
+Install the package from `porsche-design-system/skills` with APM.
+
+### 1) Install APM
+
+#### macOS / Linux
+
+```bash
+curl -sSL https://aka.ms/apm-unix | sh
+```
+
+#### Windows
+
+```powershell
+irm https://aka.ms/apm-windows | iex
+```
+
+### 2) Install the web audit package in your product repository
+
+Run from your product repository root:
+
+```bash
+apm install porsche-design-system/skills/packages/web-accessibility-audit#v1.0.0
+```
+
+This installs the package and deploys supported primitives for your detected targets (for example Copilot, Claude,
+Cursor).
+
+### 3) Optional: manage via `apm.yml`
+
+For team workflows, declare the dependency in your repository's `apm.yml` and run `apm install`:
+
+```bash
+apm install
+```
+
+```yaml
+dependencies:
+  apm:
+    - git: https://github.com/porsche-design-system/skills.git
+      path: packages/web-accessibility-audit
+      ref: v1.0.0
+```
+
+### Common APM commands
+
+| Command                                                                            | Purpose                                                    |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `apm install`                                                                      | Install from `apm.yml` / refresh deployed primitives       |
+| `apm install porsche-design-system/skills/packages/web-accessibility-audit#v1.0.0` | Add the package with an explicit version                   |
+| `apm update`                                                                       | Update dependencies according to declared refs/constraints |
+| `apm uninstall porsche-design-system/skills/packages/web-accessibility-audit`      | Remove the package dependency                              |
+| `apm prune`                                                                        | Remove no-longer-required cached packages                  |
+
+For first-time APM setup and authentication troubleshooting, see the official
+[APM Quickstart](https://microsoft.github.io/apm/quickstart/).
+
+## Run the audit
+
+After installation, start your application locally and invoke one of the package prompts:
+
+- `a11y-audit` for a full single-page audit
+- `a11y-quick-check` for fast axe-focused triage
+- `a11y-audit-multi-page` for multi-page comparison
+- `a11y-fix` to apply fixes from a previous report
+
+### GitHub Copilot
+
+1. Open your repository in VS Code.
+2. Start the web product locally.
+3. Open Copilot Chat and invoke `/a11y-audit`.
+4. Provide discovery details (URL, framework, pages, thoroughness, target standard).
+5. Review generated files in `.a11y/runs/<timestamp>/`.
+
+### Claude Code
+
+1. Open your repository in your editor or terminal.
+2. Start the web product locally.
+3. Invoke `a11y-audit` (or another `a11y-*` prompt).
+4. Provide the same discovery details as in the Copilot flow.
+5. Review generated files in `.a11y/runs/<timestamp>/`.
+
+The package uses one orchestrator agent (`a11y-audit`) that loads domain and operations skills on demand.
+
+Phase-based auditing still applies, including automated baseline checks and a behavioral scan phase when compatible
+browser tooling is available.
+
+### Example prompts
+
+**Full audit:**
+
+```text
+Run a WCAG 2.2 AA accessibility audit on http://localhost:3000/.
+
+Scope: URLs /, /checkout; viewports 320px and 768px; light and dark themes.
+Use a11y-audit and save results in the default .a11y/runs directory.
+```
+
+**Re-scan after fixes:**
+
+```text
+Re-run axe on http://localhost:3000/checkout at 320px and 768px.
+Compare against the previous run and list only remaining violations.
+```
+
+## Installed files
+
+See package docs in
+[web-accessibility-audit README](https://github.com/porsche-design-system/skills/tree/main/packages/web-accessibility-audit).
+
+After install, APM typically updates:
+
+| Category                          | What gets installed or updated                                                              |
+| --------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Manifest/lock**                 | `apm.yml`, `apm.lock.yaml`                                                                  |
+| **APM cache**                     | `apm_modules/`                                                                              |
+| **Copilot/Claude/Cursor targets** | Agent-compatible prompts, skills, instructions, and agent wiring for available targets      |
+| **Audit runtime output**          | `.a11y/runs/<timestamp>/ACCESSIBILITY-AUDIT.md`, `findings.json`, and raw scanner artifacts |
+
+Package inventory currently includes:
+
+- `a11y-audit` (single orchestrator agent)
+- Domain skills (semantics, keyboard/focus, forms, contrast, tables, links, cognitive, testing)
+- Operations skills (web scanning, severity scoring, framework logic, Playwright, export, fixing)
+- Audit/fix prompts (`a11y-audit`, `a11y-quick-check`, `a11y-audit-multi-page`, `a11y-component-library-audit`,
+  `a11y-lead`, `a11y-fix`)
+
+## Update and uninstall
+
+**Update installed dependencies:**
+
+```bash
+apm update
+```
+
+Or bump the package ref in `apm.yml` and run:
+
+```bash
+apm install
+```
+
+**Uninstall the package:**
+
+```bash
+apm uninstall porsche-design-system/skills/packages/web-accessibility-audit
+apm prune
+```
+
+If your repo manages dependencies in `apm.yml`, remove the dependency entry there and run `apm install`.
+
+## Limitations
+
+Behavioral scans depend on compatible tools in your environment. When unavailable, the audit should document gaps and
+include manual verification steps.
+
+**Agent audits cannot:** certify screen reader compatibility, replace legal accessibility statements, or catch
+everything automated tools miss. Always complete manual keyboard and assistive-technology testing before sign-off.
+
+**Standard:** [WCAG 2.2 Level AA](https://w3.org/WAI/standards-guidelines/wcag). Porsche guidance:
+[Accessibility of digital products at Porsche](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction).
