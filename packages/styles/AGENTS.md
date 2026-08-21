@@ -59,11 +59,16 @@ npm run test:vrt:styles
   Deprecating is adding one field — never moving a declaration. See
   [`docs/scss-deprecation-metadata-design.md`](../../docs/scss-deprecation-metadata-design.md) and
   [`docs/tailwindcss-deprecation-metadata-design.md`](../../docs/tailwindcss-deprecation-metadata-design.md).
-- `emotion` and `vanilla-extract` still use the two-catalog model: a domain-keyed `<pkg>DeprecationsMeta` beside the
-  meta, with `Deprecated<T>`-wrapped nodes that carry **no** `description`, publishing only the flat `<pkg>Deprecations`
-  built with the shared `publishDeprecations(catalog, identifierOf)`. There the `@deprecated` annotation is the source
-  and the catalog is generated (`scripts/deprecations.ts`). They adopt the catalog model when the solutions are aligned
-  — the blocker is shape (positional arrays versus keyed records, and three `grid` shapes), not taxonomy.
+- `emotion` and `vanilla-extract` deliberately keep the **two-source** model and do not adopt the catalog: their `src/`
+  is hand-written TypeScript and is itself the shipped library, so the meta describes it rather than generating it, and
+  the `@deprecated` annotation on the declaration — which also drives the IDE hint — is the source the domain-keyed
+  `<pkg>DeprecationsMeta` is generated from (`scripts/deprecations.ts`). They publish only the flat `<pkg>Deprecations`
+  built with the shared `publishDeprecations(catalog, identifierOf)`. Package tests already assert the meta documents
+  every public export, so meta and library cannot drift.
+- All four packages state their documented shape as a package-local `StylesMeta<TToken, TUtility>`, parameterized so it
+  can later become one shared cross-solution contract. The blocker for merging them is shape, not taxonomy: utility
+  groups are positional arrays in `scss` / `tailwindcss` but keyed records in `emotion` / `vanilla-extract`, and `grid`
+  has three different shapes.
 - The global styles (single source of truth for `variables.css`, `color-scheme.css`, `normalize.css` and
   `font-face.css`) now live in
   [`packages/components/projects/stylesheets`](../components/projects/stylesheets/AGENTS.md). Add or change CSS

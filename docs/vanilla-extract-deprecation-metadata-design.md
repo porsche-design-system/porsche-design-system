@@ -82,6 +82,35 @@ so for Emotion measured 741 lines to produce a 120-row table.
 The cost is that the rendered table inherits the annotations' prose, and that the remediation column carries no
 structured replacement. Both are wording problems in the annotations, fixable in the place that also fixes the IDE hint.
 
+### Not adopting the scss / tailwind catalog model
+
+**Chosen:** keep the two-source model — hand-authored `vanillaExtractMeta` describing the library, deprecations
+generated from the annotations.
+
+The scss and tailwind packages now author **one catalog** per domain holding documented and deprecated declarations
+alike, and derive their meta and their published deprecations from it. That model exists because in those packages the
+metadata _generates_ the shipped artifact, so the catalog is the only place a declaration can be recorded. Here the
+direction is reversed: `src/` is hand-written TypeScript and is itself the shipped library, so the metadata describes it
+rather than producing it.
+
+Two consequences make the catalog model the wrong fit:
+
+- **The annotation is a better home than any catalog.** `@deprecated` on the declaration is what drives IDE
+  strikethrough and the `.d.ts` hint. Moving the marker into a catalog would restate wording that already exists, which
+  is convention 10, settled after a hand-authored catalog for this package measured 741 lines.
+- **A deprecated entry is not the same kind of thing here.** In scss and tailwind it is a complete render input,
+  identical to a documented one. Here it is a name plus an annotation — no value, no styles, no description — so merging
+  both into one catalog would produce a leaf union of two genuinely different shapes.
+
+The drift the catalog model prevents is already prevented: the package tests assert that `vanillaExtractMeta` documents
+every public export and references the real export for every entry, so meta and library cannot diverge in either
+direction.
+
+What _is_ adopted is the part that was about cross-solution convergence: the documented shape is now the parameterized
+`StylesMeta<TToken, TUtility>`, instantiated as
+`VanillaExtractMeta = StylesMeta<VanillaExtractToken, VanillaExtractUtility>`, matching scss and tailwind so the four
+contracts can later be merged into one.
+
 ## Risks & mitigations
 
 | Risk                                                          | Mitigation                                                                                                                      |
