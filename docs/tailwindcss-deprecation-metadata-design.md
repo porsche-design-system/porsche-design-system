@@ -2,11 +2,6 @@
 
 ## Summary
 
-> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
-> `isDeprecated` and `getDeprecationComment` — see
-> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
-> below names a removed helper.
-
 The Tailwind package authors **one catalog**. Every public declaration lives in it exactly once — documented and
 deprecated alike — and deprecation is an optional `deprecation` marker on the declaration itself, so deprecating an API
 adds one field instead of moving a node between catalogs.
@@ -99,17 +94,18 @@ unprefixed. `flatten` is shared with the CSS composition layer and therefore wid
 `meta.ts` restates the catalog's narrower leaf type once, at the single place it derives the deprecations from.
 
 `stripDeprecated` sits beside `flatten` in `src/css/render.ts` and reuses its `property` / `selector` / `raw` leaf
-predicate. The generated marker stays the terse `/* alias (deprecated) */`: CSS has no silent comment, so every byte
-reaches every consumer of `index.css`, and the replacement and lifecycle wording live in `tailwindDeprecations` and the
-knowledge skill's index instead.
+predicate. The comment itself comes from the shared `getDeprecationComment(deprecation, 'block')`, so the wording is
+identical to every other source's. CSS has no silent comment, so it does reach every consumer of `index.css` — measured
+at 831 bytes across the nine declarations, on a 37 KB file. The terse `/* alias (deprecated) */` it replaced was sized
+against a source two orders of magnitude larger.
 
 ## Data & state
 
 Build-time data only. Each public declaration has one identity — the custom property for a token, the class for a
 utility — spelled by `tailwindIdentifier` before publication.
 
-`tailwindDeprecations` keeps the shared `PublishedDeprecation[]` shape every styling package publishes, so the knowledge
-skill's `styleAliasSource` adapter is unchanged.
+`tailwindDeprecations` keeps the shared `Deprecations` shape every styling package publishes, so the knowledge skill's
+`styleAliasSource` adapter is unchanged.
 
 ## Trade-offs
 
@@ -147,7 +143,7 @@ Metadata invariants and the output snapshot are the two verification boundaries;
 4. Every `replacement` points at a documented identifier other than its own.
 5. Every generated declaration is spelled uniquely, and the catalog renders exactly once into the stylesheet; the
    remaining generated properties are CSS-only plumbing from an explicit allowlist.
-6. Every deprecated declaration renders the terse marker, and the marker never expands into the lifecycle message.
+6. Every deprecated declaration renders the comment the shared contract generates for its marker.
 
 ## Rollout
 

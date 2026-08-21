@@ -2,11 +2,6 @@
 
 ## Summary
 
-> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
-> `isDeprecated` and `getDeprecationComment` — see
-> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
-> below names a removed helper.
-
 Global stylesheet deprecations shall be exported as `stylesheetDeprecationsMeta` beside `stylesheetsMeta` from
 `@porsche-design-system/stylesheets/meta`. The deprecated catalog is explicitly empty today and replaces the knowledge
 skill's marker scan.
@@ -34,8 +29,8 @@ composition nodes remain outside both.
 
 ### Deprecation details
 
-Add a package-owned deprecation detail with optional `message` and `replacement`, plus a deprecated subtype for each of
-`CssVariableMeta` and `ColorSchemeClassMeta`:
+Use the shared `Deprecation` marker (`{ note?, replacement? }`) rather than a package-owned one, plus a deprecated
+subtype for each of `CssVariableMeta` and `ColorSchemeClassMeta`:
 
 ```ts
 export type DeprecatedCssVariableMeta = Omit<CssVariableMeta, 'description'> & {
@@ -57,13 +52,11 @@ Mirror the SCSS helpers so wording is package-owned and identical across sources
 the custom property for a variable and the selector for a utility; author `replacement` through it, reading the current
 node from the exported `stylesheetsMeta`.
 
-Default wording is fixed and shared:
-
-- with replacement: `This API will be removed with the next major release.`;
-- without replacement: `This API will be removed with the next major release and has no replacement.`.
-
-`stylesheetDeprecationMessage(node)` returns the lifecycle sentence the knowledge skill records as `message`;
-`stylesheetDeprecationText(node)` prefixes `Use <replacement> instead.` for any generated comment.
+Default wording is fixed and shared with the other sources: one sentence,
+`This API will be removed with the next major release.`, prefixed by `Use <replacement> instead.` when a replacement is
+named and followed by the optional `note`. It is built by the shared `getDeprecationComment`, which also wraps it in the
+comment syntax the artifact needs — this package declares no wording helper of its own, and the knowledge skill records
+only the `note` and the `replacement`, since its reference states the lifecycle once for the whole table.
 
 ### Deprecated catalog
 
@@ -87,8 +80,8 @@ the byte delta.
 
 Replace `collectStylesheetDeprecations()` in `collectors/scanned.ts` with a direct import from
 `@porsche-design-system/stylesheets/meta`. The adapter adds rule IDs and the stylesheet reference path, sets `message`
-from the package message helper, carries `replacement` through, preserves order, and performs no source scan or
-package-root resolution.
+from the marker's `note`, carries `replacement` through, preserves order, and performs no source scan or package-root
+resolution.
 
 ## Data & state
 

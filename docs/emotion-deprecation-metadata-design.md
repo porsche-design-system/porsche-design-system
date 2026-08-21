@@ -2,11 +2,6 @@
 
 ## Summary
 
-> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
-> `isDeprecated` and `getDeprecationComment` — see
-> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
-> below names a removed helper.
-
 Emotion's deprecated surface shall be published as `emotionDeprecationsMeta` beside `emotionMeta` from
 `@porsche-design-system/emotion/meta`, in the same shape SCSS uses: a domain-keyed catalog of nodes carrying a
 `deprecation` marker.
@@ -36,7 +31,8 @@ This design is implemented.
 ```
 
 The annotation is the single source. It has to exist regardless — it is what strikes an export through in a consumer's
-IDE — so anything that restates it is a second thing to keep in sync.
+IDE — so anything that restates it is a second thing to keep in sync. It is written in the shape the shared contract
+generates, so the marker recovered from it is structured rather than prose.
 
 The package owns both the reading of its own sources and the published catalog. The knowledge skill owns only the audit
 vocabulary.
@@ -57,7 +53,7 @@ The two public catalogs have the same responsibilities as their SCSS counterpart
   internals those directories also hold (`_displayFontPartA`, `displayShared`, `ThemeColorSet`) cannot be reported to a
   project;
 - `checker.getAliasedSymbol()` follows a barrel's re-export to the declaration the annotation sits on;
-- `symbol.getJsDocTags()` returns the `@deprecated` tag, whose text is carried verbatim.
+- `symbol.getJsDocTags()` returns the `@deprecated` tag, from which the marker is recovered and validated.
 
 The domains are read from `src`, not from `emotionMeta`, so a `deprecated` barrel under a directory the meta catalog
 does not know fails the build instead of going unindexed.
@@ -65,21 +61,49 @@ does not know fails the build instead of going unindexed.
 `scripts/build.ts` renders the result and writes `emotionMeta/deprecations.ts`, run by `npm run build:meta:deprecations`
 before the meta bundle is built. The generated file is git-ignored like the repository's other generated sources.
 
+### Annotation convention
+
+An annotation names its replacement as a `{@link …}` reference and otherwise reads exactly as `getDeprecationComment`
+renders it for that marker:
+
+```ts
+/** @deprecated Use {@link colorFrostedLight} instead. This API will be removed with the next major release. */
+```
+
+The extractor therefore validates rather than guesses. It takes the replacement from the link — never as a phrase
+recovered from the sentence around it — reconstructs the sentence the shared contract would generate, and compares:
+
+- text equals the generated sentence → `{ replacement }`, no note;
+- text starts with it → the remainder becomes the `note`;
+- anything else → **the build fails**, naming the export and printing the expected form.
+
+A `{@link …}` target must additionally be something the package itself exports, so a replacement the audit renders is
+always importable. Guidance that names anything else — a private token, a literal value, a concept — belongs in the
+sentence after the lifecycle message, where it is carried as the `note`.
+
+These annotations are hand-maintained because `src/` is the shipped library rather than generated output. Writing them
+as the generated text is what keeps them identical to every other source's, and the comparison is what keeps them that
+way; when the package's declarations are generated from metadata, the annotation will be emitted by
+`getDeprecationComment` and the validation becomes unnecessary.
+
+Roughly a fifth of them name no exported symbol — _"Use individual variables instead."_, a literal value, a
+`linear-gradient(…)` snippet. Those carry no `replacement` and keep their guidance as the `note`.
+
 ### Deprecation types
 
 `emotionMeta/types.ts` gains `DeprecatedEmotionNode` and `EmotionDeprecationsMeta`
 (`Record<keyof EmotionMeta, DeprecatedEmotionNode[]>`). The node is `Deprecated<{ name: string }>` from
-`@porsche-design-system/shared/deprecation`, narrowing the marker to `{ message: string }`: an annotation-derived
-catalog always has the annotation text, and never a structured `replacement`. The required `deprecation` keeps the two
-catalogs apart at the type level, exactly as it does for SCSS and Tailwind.
+`@porsche-design-system/shared/deprecation`, carrying the shared marker unnarrowed: an annotation names its replacement
+as a `{@link …}` reference, so this catalog expresses a structured `replacement` exactly like the authored ones. The
+required `deprecation` keeps the two catalogs apart at the type level, exactly as it does for SCSS and Tailwind.
 
 `emotionDeprecations` — the catalog as an ordered flat list — is what the meta entry publishes; the domain-keyed catalog
 itself stays internal, since its grouping only records which domains were checked. Every styling package offers the
 audit the same single read surface.
 
 A deprecated node carries no `description` — it is documented by its annotation — and no `value` or `styles`, since
-nothing renders it. There is no default-wording or identity helper: the message is always the annotation, and an Emotion
-identifier is its export name.
+nothing renders it. There is no wording or identity helper: the sentence is generated by the shared
+`getDeprecationComment` like every other source's, and a Emotion identifier is its export name.
 
 ### Knowledge-skill adapter
 
@@ -89,9 +113,9 @@ sorts nothing, and touches no filesystem.
 
 ## Data & state
 
-The stable identity is the public export name; the rule ID is `styleAlias/emotion/<name>`. The message is the annotation
-text exactly as authored, including the `since v4.0.0` prefix each carries. Entries have no structured `replacement`:
-the annotation sentence carries that guidance in prose.
+The stable identity is the public export name; the rule ID is `styleAlias/emotion/<name>`. An entry carries the
+structured `replacement` recovered from the annotation's `{@link …}` reference, plus a `note` when the annotation adds
+guidance beyond the generated sentence.
 
 Catalog order is the rendered contract: domains in `emotionMeta` key order, exports in barrel order within a domain.
 
@@ -121,18 +145,30 @@ wording living in two places and free to drift.
 The cost is that the rendered table inherits the annotations' inconsistent prose. That is the same text a consumer reads
 in their IDE, so improving it improves both surfaces at once, which is the right place to fix it.
 
-### No structured replacement column
+### Structured replacements, and the ones that stayed prose
 
-**Chosen:** carry the sentence, not a parsed replacement.
+**Chosen:** recover the replacement from a `{@link …}` reference, and validate that it resolves.
 
-The previous skill-side parser guessed a replacement out of the prose and published `variables directly` and
-`typescale variables` as things to migrate to. Dropping the column removes the guess.
+The original skill-side parser guessed a replacement out of the prose and published `variables directly` and
+`typescale variables` as things to migrate to. Taking it from a link instead removes the guess: the checker returns a
+symbol reference, and the extractor rejects one the package does not export.
 
-Making it structured without guessing means `{@link radiusLg}` in every annotation, which the checker returns as a
-resolved symbol reference. This was prototyped and deferred: 41 of the 120 annotations name an export `emotionMeta`
-documents and could be converted mechanically, but 14 name an export that does not exist (`proseHeadingLg` for
-`proseHeadingLgStyle`) and 40 name theme-specific colors from the **private** `@porsche-design-system/tokens` package,
-so it is a wording decision rather than a codemod.
+Converting the annotations exposed why an earlier attempt deferred this. Of the names the prose used:
+
+- most are genuine public exports and convert directly;
+- eleven named an export that does not exist — `proseHeadingSm` where the package exports `proseHeadingSmStyle`. The
+  prose had been wrong since it was written; the validation is what surfaced it, and the annotations are corrected.
+- thirty-eight named theme-specific colors (`colorCanvasDark`, `colorFrostedLight`) that live in the **private**
+  `@porsche-design-system/tokens` package. A consumer of this package cannot import them, so publishing them as a
+  structured `replacement` would render
+  `Use \`colorCanvasDark\`.`in the audit for something unreachable. They stay guidance in the`note`, exactly as they
+  read before.
+
+The remainder — conceptual advice (_"Use individual variables instead."_), literal values, a `linear-gradient(…)`
+snippet — carry no replacement either, for the same reason: there is no symbol to name.
+
+A structured replacement therefore means the audit can point at something importable, and nothing else is dressed up as
+one.
 
 ### Not adopting the scss / tailwind catalog model
 

@@ -1,4 +1,4 @@
 import { colorContrastMediumDark } from '@porsche-design-system/tokens';
 
-/** @deprecated Use {@link colorContrastMediumDark} instead. This API will be removed with the next major release. */
+/** @deprecated This API will be removed with the next major release. Use colorContrastMediumDark instead. */
 export const themeDarkContrastMedium = colorContrastMediumDark;

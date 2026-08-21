@@ -2,11 +2,6 @@
 
 ## Summary
 
-> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
-> `isDeprecated` and `getDeprecationComment` — see
-> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
-> below names a removed helper.
-
 Component deprecations shall be exported as structured `componentDeprecationsMeta` from
 `@porsche-design-system/component-meta`. Unlike the styling catalogs, deprecated components, props, events, slots, CSS
 variables, and values remain in the complete `componentMeta` object because component documentation and tooling require
@@ -41,16 +36,14 @@ normalized deprecated-only view in deterministic component/entity order.
 
 ### Structured entity deprecations
 
-Add a common component-owned detail:
+Use the shared marker rather than a component-owned one:
 
 ```ts
-export type ComponentDeprecation = {
-  /** Optional note replacing the package default lifecycle sentence. */
-  message?: string;
-  /** Canonical consumer-facing identifier of the replacement. */
-  replacement?: string;
-};
+import type { Deprecation } from '@porsche-design-system/shared/deprecation';
+// { note?: string; replacement?: string }
 ```
+
+`note` adds guidance to the generated sentence; it never replaces it.
 
 Components, props, events, slots, and CSS variables gain structured deprecation details. Existing fields such as
 `isDeprecated` and component `deprecationMessage` remain during compatibility migration and are generated from the same
@@ -71,15 +64,15 @@ guarantee moves to the derived catalog's entry type instead.
 
 ### Message helper
 
-Ship the shared wording helpers so components state the same lifecycle sentences as every other source:
+Default wording is fixed and shared with the other sources: one sentence,
+`This API will be removed with the next major release.`, prefixed by `Use <replacement> instead.` when a replacement is
+named and followed by the optional `note`. It is built by the shared `getDeprecationComment`, which also wraps it in the
+comment syntax the artifact needs — this package declares no wording helper of its own, and the knowledge skill records
+only the `note` and the `replacement`, since its reference states the lifecycle once for the whole table.
 
-- with replacement: `This API will be removed with the next major release.`;
-- without replacement: `This API will be removed with the next major release and has no replacement.`.
-
-`componentDeprecationMessage(entity)` returns the lifecycle sentence the knowledge skill records as `message`, and the
-skill renders `replacement` in its own column. Where a component's existing hand-written message must be preserved
-verbatim to avoid changing rendered documentation, it is carried as an authored `message`. The knowledge skill
-implements no fallback wording and performs no message cleanup.
+Where a component's existing hand-written message must be preserved verbatim to avoid changing rendered documentation,
+it is carried as an authored `message`. The knowledge skill implements no fallback wording and performs no message
+cleanup.
 
 ### Generated deprecation catalog
 
@@ -117,9 +110,9 @@ Replace `collectors/componentMeta.ts` with a direct adapter over `componentDepre
 - component reference paths;
 - the `components` source category.
 
-It sets `message` from `componentDeprecationMessage(entity)`, carries `replacement` through — omitted rather than set to
-`undefined` when absent so the Markdown remediation column composes cleanly — preserves metadata order, and contains no
-message cleanup, replacement regex, allowed-value comparison, or sorting.
+It sets `message` from the marker's `note`, carries `replacement` through — omitted rather than set to `undefined` when
+absent so the Markdown remediation column composes cleanly — preserves metadata order, and contains no message cleanup,
+replacement regex, allowed-value comparison, or sorting.
 
 ## Data & state
 

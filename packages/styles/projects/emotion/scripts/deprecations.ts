@@ -45,7 +45,7 @@ const deprecatedDomains = (): (keyof EmotionDeprecationsMeta)[] => {
  * hand-maintained today because `src/` is the shipped library rather than generated output; the
  * comparison is what keeps them identical to every generated source until they are generated too.
  */
-const deprecationOf = (tag: ts.JSDocTagInfo, name: string): Deprecation => {
+const deprecationOf = (tag: ts.JSDocTagInfo, name: string, exported: Set<string>): Deprecation => {
   const parts = tag.text ?? [];
   const replacement = parts.find(({ kind }) => kind === 'linkName' || kind === 'linkText')?.text.trim();
   // The checker splits a link into `{@link `, its target and `}`; dropping the delimiters
@@ -56,6 +56,14 @@ const deprecationOf = (tag: ts.JSDocTagInfo, name: string): Deprecation => {
     .join('')
     .replace(/\s+/g, ' ')
     .trim();
+
+  if (replacement && !exported.has(replacement)) {
+    throw new Error(
+      `The @deprecated annotation on \`${name}\` names \`${replacement}\` as its replacement, which this package ` +
+        'does not export. A {@link} target must be something a consumer can import; guidance that names anything ' +
+        'else belongs in the sentence after the lifecycle message.'
+    );
+  }
 
   const generated = comment(getDeprecationComment({ replacement }, 'jsdoc'));
   if (!text.startsWith(generated)) {
@@ -74,7 +82,11 @@ const deprecationOf = (tag: ts.JSDocTagInfo, name: string): Deprecation => {
 const comment = (rendered: string): string => rendered.replace(/^\/\*\* @deprecated | \*\/$/g, '');
 
 /** A barrel's deprecated exports, in barrel order, with their validated markers. */
-const nodesOf = (source: ts.SourceFile | undefined, checker: ts.TypeChecker): DeprecatedEmotionNode[] => {
+const nodesOf = (
+  source: ts.SourceFile | undefined,
+  checker: ts.TypeChecker,
+  exported: Set<string>
+): DeprecatedEmotionNode[] => {
   const moduleSymbol = source && checker.getSymbolAtLocation(source);
 
   return (moduleSymbol ? checker.getExportsOfModule(moduleSymbol) : []).flatMap((symbol) => {
@@ -83,15 +95,25 @@ const nodesOf = (source: ts.SourceFile | undefined, checker: ts.TypeChecker): De
     const tag = declaration.getJsDocTags(checker).find(({ name }) => name === 'deprecated');
     const name = symbol.getName();
 
-    return tag ? [{ name, deprecation: deprecationOf(tag, name) }] : [];
+    return tag ? [{ name, deprecation: deprecationOf(tag, name, exported) }] : [];
   });
+};
+
+/** Every name the package's public barrel exports — the set a `{@link}` replacement must be found in. */
+const publicExports = (program: ts.Program, checker: ts.TypeChecker): Set<string> => {
+  const source = program.getSourceFile(path.join(SRC, 'index.ts'));
+  const moduleSymbol = source && checker.getSymbolAtLocation(source);
+  return new Set((moduleSymbol ? checker.getExportsOfModule(moduleSymbol) : []).map((symbol) => symbol.getName()));
 };
 
 export const buildEmotionDeprecationsMeta = (): EmotionDeprecationsMeta => {
   const domains = deprecatedDomains();
-  const program = ts.createProgram(domains.map(barrelOf), {});
+  const program = ts.createProgram([...domains.map(barrelOf), path.join(SRC, 'index.ts')], {});
   const checker = program.getTypeChecker();
-  const nodes = new Map(domains.map((domain) => [domain, nodesOf(program.getSourceFile(barrelOf(domain)), checker)]));
+  const exported = publicExports(program, checker);
+  const nodes = new Map(
+    domains.map((domain) => [domain, nodesOf(program.getSourceFile(barrelOf(domain)), checker, exported)])
+  );
 
   return Object.fromEntries(DOMAINS.map((domain) => [domain, nodes.get(domain) ?? []])) as EmotionDeprecationsMeta;
 };

@@ -2,11 +2,6 @@
 
 ## Summary
 
-> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
-> `isDeprecated` and `getDeprecationComment` — see
-> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
-> below names a removed helper.
-
 vanilla-extract's deprecated surface shall be published as `vanillaExtractDeprecationsMeta` beside `vanillaExtractMeta`,
 generated at build time from the `@deprecated` annotations its exports already carry. No hand-authored catalog is
 introduced.
@@ -39,7 +34,7 @@ IDE — so a catalog beside it would be a second thing to keep in sync.
 
 `scripts/deprecations.ts` resolves the public legacy surface through the TypeScript type checker: `getExportsOfModule()`
 on each `src/<domain>/deprecated/index.ts` for the public names, `getAliasedSymbol()` to reach the declaration a barrel
-re-exports, and `getJsDocTags()` for the `@deprecated` tag, whose text is carried verbatim.
+re-exports, and `getJsDocTags()` for the `@deprecated` tag, from which the marker is recovered and validated.
 
 It builds a domain-keyed catalog in meta key order, which a build step emits as static data on the package's metadata
 entry — the compiler and the `src` reads stay out of every consumer's build graph.
@@ -57,11 +52,12 @@ skill's package-root helpers, which now hold only the roots the remaining marker
 
 ## Data & state
 
-The stable identity is the public export name; the rule ID is `styleAlias/vanillaExtract/<name>`. The message is the
-annotation text exactly as authored. Entries have no structured `replacement`: the annotation sentence carries that
-guidance in prose, so the node is `Deprecated<{ name: string }>` narrowing the shared marker to `{ message: string }`.
-`vanillaExtractDeprecations` — the catalog as an ordered flat list — is what the meta entry publishes, the domain-keyed
-catalog staying internal, matching the other three.
+The stable identity is the public export name; the rule ID is `styleAlias/vanillaExtract/<name>`. The node is
+`Deprecated<{ name: string }>` carrying the shared marker unnarrowed: an annotation names its replacement as a
+`{@link …}` reference, so an entry carries a structured `replacement` when there is an exported symbol to name, plus a
+`note` when the annotation adds guidance beyond the generated sentence. `vanillaExtractDeprecations` — the catalog as an
+ordered flat list — is what the meta entry publishes, the domain-keyed catalog staying internal, matching the other
+three.
 
 ## Trade-offs
 
@@ -84,8 +80,12 @@ it. That is the right mechanism for a package whose metadata _generates_ its dec
 declarations are hand-written TypeScript that already carry the annotation, so authoring a catalog restates them. Doing
 so for Emotion measured 741 lines to produce a 120-row table.
 
-The cost is that the rendered table inherits the annotations' prose, and that the remediation column carries no
-structured replacement. Both are wording problems in the annotations, fixable in the place that also fixes the IDE hint.
+The annotations were subsequently standardized so the replacement is a `{@link …}` reference and the sentence is the one
+`getDeprecationComment` generates, which the extractor validates — see the Emotion design's
+[Annotation convention](./emotion-deprecation-metadata-design.md#annotation-convention) and
+[Structured replacements](./emotion-deprecation-metadata-design.md#structured-replacements-and-the-ones-that-stayed-prose),
+which this package follows entry for entry. A replacement is published only when the package exports the symbol named;
+guidance naming a private token, a literal value or a concept stays in the `note`.
 
 ### Not adopting the scss / tailwind catalog model
 
@@ -145,6 +145,8 @@ With this, no knowledge-skill collector parses another package's sources.
 
 ## Open questions
 
-Whether to standardize the annotation wording across both TypeScript styling packages — and, with it, adopt `{@link}` so
-the replacement becomes a checked symbol reference — is deferred to its own change, and should be decided for Emotion
-and vanilla-extract together.
+None. The annotation wording was standardized across both TypeScript styling packages together, adopting `{@link}` so
+the replacement is a checked symbol reference.
+
+Open for later: generating this package's declarations from metadata, at which point the annotation is emitted by
+`getDeprecationComment` and the extractor's validation becomes unnecessary.

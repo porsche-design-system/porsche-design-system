@@ -1,4 +1,4 @@
 import { colorFrostedLight } from '@porsche-design-system/tokens';
 
-/** @deprecated Use {@link colorFrostedLight} instead. This API will be removed with the next major release. */
+/** @deprecated This API will be removed with the next major release. Use colorFrostedLight instead. */
 export const themeLightBackgroundFrosted = colorFrostedLight;

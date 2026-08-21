@@ -76,103 +76,103 @@ exports[`vanillaExtractDeprecationsMeta > matches snapshot 1`] = `
     },
     {
       "deprecation": {
-        "replacement": "colorCanvasDark",
+        "note": "Use colorCanvasDark instead.",
       },
       "name": "themeDarkBackgroundBase",
     },
     {
       "deprecation": {
-        "replacement": "colorFrostedDark",
+        "note": "Use colorFrostedDark instead.",
       },
       "name": "themeDarkBackgroundFrosted",
     },
     {
       "deprecation": {
-        "replacement": "colorBackdropDark",
+        "note": "Use colorBackdropDark instead.",
       },
       "name": "themeDarkBackgroundShading",
     },
     {
       "deprecation": {
-        "replacement": "colorSurfaceDark",
+        "note": "Use colorSurfaceDark instead.",
       },
       "name": "themeDarkBackgroundSurface",
     },
     {
       "deprecation": {
-        "replacement": "colorContrastHighDark",
+        "note": "Use colorContrastHighDark instead.",
       },
       "name": "themeDarkContrastHigh",
     },
     {
       "deprecation": {
-        "replacement": "colorContrastLowDark",
+        "note": "Use colorContrastLowDark instead.",
       },
       "name": "themeDarkContrastLow",
     },
     {
       "deprecation": {
-        "replacement": "colorContrastMediumDark",
+        "note": "Use colorContrastMediumDark instead.",
       },
       "name": "themeDarkContrastMedium",
     },
     {
       "deprecation": {
-        "replacement": "colorErrorDark",
+        "note": "Use colorErrorDark instead.",
       },
       "name": "themeDarkNotificationError",
     },
     {
       "deprecation": {
-        "replacement": "colorErrorFrostedDark",
+        "note": "Use colorErrorFrostedDark instead.",
       },
       "name": "themeDarkNotificationErrorSoft",
     },
     {
       "deprecation": {
-        "replacement": "colorInfoDark",
+        "note": "Use colorInfoDark instead.",
       },
       "name": "themeDarkNotificationInfo",
     },
     {
       "deprecation": {
-        "replacement": "colorInfoFrostedDark",
+        "note": "Use colorInfoFrostedDark instead.",
       },
       "name": "themeDarkNotificationInfoSoft",
     },
     {
       "deprecation": {
-        "replacement": "colorSuccessDark",
+        "note": "Use colorSuccessDark instead.",
       },
       "name": "themeDarkNotificationSuccess",
     },
     {
       "deprecation": {
-        "replacement": "colorSuccessFrostedDark",
+        "note": "Use colorSuccessFrostedDark instead.",
       },
       "name": "themeDarkNotificationSuccessSoft",
     },
     {
       "deprecation": {
-        "replacement": "colorWarningDark",
+        "note": "Use colorWarningDark instead.",
       },
       "name": "themeDarkNotificationWarning",
     },
     {
       "deprecation": {
-        "replacement": "colorWarningFrostedDark",
+        "note": "Use colorWarningFrostedDark instead.",
       },
       "name": "themeDarkNotificationWarningSoft",
     },
     {
       "deprecation": {
-        "replacement": "colorPrimaryDark",
+        "note": "Use colorPrimaryDark instead.",
       },
       "name": "themeDarkPrimary",
     },
     {
       "deprecation": {
-        "replacement": "colorFrostedDark",
+        "note": "Use colorFrostedDark instead.",
       },
       "name": "themeDarkStateActive",
     },
@@ -182,13 +182,13 @@ exports[`vanillaExtractDeprecationsMeta > matches snapshot 1`] = `
     },
     {
       "deprecation": {
-        "replacement": "colorFocusDark",
+        "note": "Use colorFocusDark instead.",
       },
       "name": "themeDarkStateFocus",
     },
     {
       "deprecation": {
-        "replacement": "colorFrostedDark",
+        "note": "Use colorFrostedDark instead.",
       },
       "name": "themeDarkStateHover",
     },
@@ -200,103 +200,103 @@ exports[`vanillaExtractDeprecationsMeta > matches snapshot 1`] = `
     },
     {
       "deprecation": {
-        "replacement": "colorCanvasLight",
+        "note": "Use colorCanvasLight instead.",
       },
       "name": "themeLightBackgroundBase",
     },
     {
       "deprecation": {
-        "replacement": "colorFrostedLight",
+        "note": "Use colorFrostedLight instead.",
       },
       "name": "themeLightBackgroundFrosted",
     },
     {
       "deprecation": {
-        "replacement": "colorBackdropLight",
+        "note": "Use colorBackdropLight instead.",
       },
       "name": "themeLightBackgroundShading",
     },
     {
       "deprecation": {
-        "replacement": "colorSurfaceLight",
+        "note": "Use colorSurfaceLight instead.",
       },
       "name": "themeLightBackgroundSurface",
     },
     {
       "deprecation": {
-        "replacement": "colorContrastHighLight",
+        "note": "Use colorContrastHighLight instead.",
       },
       "name": "themeLightContrastHigh",
     },
     {
       "deprecation": {
-        "replacement": "colorContrastLowLight",
+        "note": "Use colorContrastLowLight instead.",
       },
       "name": "themeLightContrastLow",
     },
     {
       "deprecation": {
-        "replacement": "colorContrastMediumLight",
+        "note": "Use colorContrastMediumLight instead.",
       },
       "name": "themeLightContrastMedium",
     },
     {
       "deprecation": {
-        "replacement": "colorErrorLight",
+        "note": "Use colorErrorLight instead.",
       },
       "name": "themeLightNotificationError",
     },
     {
       "deprecation": {
-        "replacement": "colorErrorFrostedLight",
+        "note": "Use colorErrorFrostedLight instead.",
       },
       "name": "themeLightNotificationErrorSoft",
     },
     {
       "deprecation": {
-        "replacement": "colorInfoLight",
+        "note": "Use colorInfoLight instead.",
       },
       "name": "themeLightNotificationInfo",
     },
     {
       "deprecation": {
-        "replacement": "colorInfoFrostedLight",
+        "note": "Use colorInfoFrostedLight instead.",
       },
       "name": "themeLightNotificationInfoSoft",
     },
     {
       "deprecation": {
-        "replacement": "colorSuccessLight",
+        "note": "Use colorSuccessLight instead.",
       },
       "name": "themeLightNotificationSuccess",
     },
     {
       "deprecation": {
-        "replacement": "colorSuccessFrostedLight",
+        "note": "Use colorSuccessFrostedLight instead.",
       },
       "name": "themeLightNotificationSuccessSoft",
     },
     {
       "deprecation": {
-        "replacement": "colorWarningLight",
+        "note": "Use colorWarningLight instead.",
       },
       "name": "themeLightNotificationWarning",
     },
     {
       "deprecation": {
-        "replacement": "colorWarningFrostedLight",
+        "note": "Use colorWarningFrostedLight instead.",
       },
       "name": "themeLightNotificationWarningSoft",
     },
     {
       "deprecation": {
-        "replacement": "colorPrimaryLight",
+        "note": "Use colorPrimaryLight instead.",
       },
       "name": "themeLightPrimary",
     },
     {
       "deprecation": {
-        "replacement": "colorFrostedLight",
+        "note": "Use colorFrostedLight instead.",
       },
       "name": "themeLightStateActive",
     },
@@ -306,13 +306,13 @@ exports[`vanillaExtractDeprecationsMeta > matches snapshot 1`] = `
     },
     {
       "deprecation": {
-        "replacement": "colorFocusLight",
+        "note": "Use colorFocusLight instead.",
       },
       "name": "themeLightStateFocus",
     },
     {
       "deprecation": {
-        "replacement": "colorFrostedLight",
+        "note": "Use colorFrostedLight instead.",
       },
       "name": "themeLightStateHover",
     },
@@ -677,67 +677,67 @@ exports[`vanillaExtractDeprecationsMeta > matches snapshot 1`] = `
     },
     {
       "deprecation": {
-        "replacement": "proseHeadingSm",
+        "replacement": "proseHeadingSmStyle",
       },
       "name": "headingSmallStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseHeadingMd",
+        "replacement": "proseHeadingMdStyle",
       },
       "name": "headingMediumStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseHeadingLg",
+        "replacement": "proseHeadingLgStyle",
       },
       "name": "headingLargeStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseHeadingXl",
+        "replacement": "proseHeadingXlStyle",
       },
       "name": "headingXLargeStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseHeading2Xl",
+        "replacement": "proseHeading2XlStyle",
       },
       "name": "headingXXLargeStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseText2Xs",
+        "replacement": "proseText2XsStyle",
       },
       "name": "textXXSmallStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseTextXs",
+        "replacement": "proseTextXsStyle",
       },
       "name": "textXSmallStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseTextSm",
+        "replacement": "proseTextSmStyle",
       },
       "name": "textSmallStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseTextMd",
+        "replacement": "proseTextMdStyle",
       },
       "name": "textMediumStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseTextLg",
+        "replacement": "proseTextLgStyle",
       },
       "name": "textLargeStyle",
     },
     {
       "deprecation": {
-        "replacement": "proseTextXl",
+        "replacement": "proseTextXlStyle",
       },
       "name": "textXLargeStyle",
     },

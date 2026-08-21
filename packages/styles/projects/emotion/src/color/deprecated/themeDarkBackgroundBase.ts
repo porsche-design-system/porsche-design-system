@@ -1,4 +1,4 @@
 import { colorCanvasDark } from '@porsche-design-system/tokens';
 
-/** @deprecated Use {@link colorCanvasDark} instead. This API will be removed with the next major release. */
+/** @deprecated This API will be removed with the next major release. Use colorCanvasDark instead. */
 export const themeDarkBackgroundBase = colorCanvasDark;

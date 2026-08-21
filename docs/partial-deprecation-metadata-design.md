@@ -2,11 +2,6 @@
 
 ## Summary
 
-> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
-> `isDeprecated` and `getDeprecationComment` — see
-> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
-> below names a removed helper.
-
 Partials currently expose functions but no metadata and have no deprecations. Introduce an explicit
 `partialDeprecationsMeta` export from `@porsche-design-system/partials/meta` so the knowledge skill can remove its
 source marker scan.
@@ -36,15 +31,12 @@ metadata must share one package-owned descriptor so implementation JSDoc and met
 
 ### Partial metadata contract
 
-Add a minimal type independent of React and generated partial code:
+Use the shared marker rather than a package-owned one, and keep the node minimal — independent of React and generated
+partial code:
 
 ```ts
-export type PartialDeprecation = {
-  /** Optional note replacing the package default lifecycle sentence. */
-  message?: string;
-  /** Canonical consumer-facing export name. */
-  replacement?: string;
-};
+import type { Deprecation } from '@porsche-design-system/shared/deprecation';
+// { note?: string; replacement?: string }
 
 export type DeprecatedPartialMeta = {
   name: string;
@@ -60,14 +52,13 @@ later, its entries must not carry a `deprecation` field, keeping the two catalog
 Export `partialDeprecationsMeta` as an empty ordered array initially. A complete `partialsMeta` is not required solely
 to remove the scan, although it may be introduced later for documentation.
 
-Ship the shared wording helpers alongside it. Default messages are fixed and identical across sources:
+Default wording is fixed and shared with the other sources: one sentence,
+`This API will be removed with the next major release.`, prefixed by `Use <replacement> instead.` when a replacement is
+named and followed by the optional `note`. It is built by the shared `getDeprecationComment`, which also wraps it in the
+comment syntax the artifact needs — this package declares no wording helper of its own, and the knowledge skill records
+only the `note` and the `replacement`, since its reference states the lifecycle once for the whole table.
 
-- with replacement: `This API will be removed with the next major release.`;
-- without replacement: `This API will be removed with the next major release and has no replacement.`.
-
-`partialDeprecationMessage(node)` returns the lifecycle sentence the knowledge skill records as `message`;
-`partialDeprecationText(node)` prefixes `Use <replacement> instead.` for the generated `@deprecated` JSDoc. Entries are
-authored as literal repeated objects.
+Entries are authored as literal repeated objects.
 
 ### Metadata-only build
 
@@ -93,9 +84,8 @@ first descriptor-generation path is introduced.
 ### Knowledge-skill adapter
 
 Replace `collectPartialDeprecations()` in `collectors/scanned.ts` with a direct import from the new metadata subpath.
-The adapter preserves manifest order, adds category, rule ID, and partial reference information, sets `message` from
-`partialDeprecationMessage(node)` and carries `replacement` through. `partialsRoot()` is dropped once nothing else uses
-it.
+The adapter preserves manifest order, adds category, rule ID, and partial reference information, sets `message` from the
+marker's `note` and carries `replacement` through. `partialsRoot()` is dropped once nothing else uses it.
 
 ## Data & state
 

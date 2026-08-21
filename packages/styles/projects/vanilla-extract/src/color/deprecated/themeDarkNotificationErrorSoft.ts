@@ -1,4 +1,4 @@
 import { colorErrorFrostedDark } from '@porsche-design-system/tokens';
 
-/** @deprecated Use {@link colorErrorFrostedDark} instead. This API will be removed with the next major release. */
+/** @deprecated This API will be removed with the next major release. Use colorErrorFrostedDark instead. */
 export const themeDarkNotificationErrorSoft = colorErrorFrostedDark;

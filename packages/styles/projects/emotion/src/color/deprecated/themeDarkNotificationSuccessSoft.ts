@@ -1,4 +1,4 @@
 import { colorSuccessFrostedDark } from '@porsche-design-system/tokens';
 
-/** @deprecated Use {@link colorSuccessFrostedDark} instead. This API will be removed with the next major release. */
+/** @deprecated This API will be removed with the next major release. Use colorSuccessFrostedDark instead. */
 export const themeDarkNotificationSuccessSoft = colorSuccessFrostedDark;

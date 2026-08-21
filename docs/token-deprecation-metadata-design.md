@@ -2,11 +2,6 @@
 
 ## Summary
 
-> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
-> `isDeprecated` and `getDeprecationComment` — see
-> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
-> below names a removed helper.
-
 Token deprecations shall be generated into `tokenDeprecationsMeta` beside `tokensMeta` and published as
 `tokenDeprecations` from `@porsche-design-system/tokens-meta`. It is explicitly empty today and replaces the knowledge
 skill's source-marker scan.
@@ -36,18 +31,19 @@ token into exactly one metadata catalog. The skill imports the result and perfor
 ### Token metadata
 
 The marker and the leaf wrapper come from
-[`@porsche-design-system/shared/deprecation`](./scss-deprecation-metadata-design.md#deprecation-types); the package
+[`@porsche-design-system/shared/deprecation`](./deprecation-contract-design.md); the package
 declares neither:
 
 ```ts
-export type DeprecatedTokenMeta = Deprecated<TokenMeta>;
-export type TokenDeprecationsMeta = DeprecationsMeta<TokensMeta, DeprecatedTokenMeta>;
+export type DeprecatedTokenMeta = Deprecated<Omit<TokenMeta, 'description'>>;
+export type TokenDeprecationsMeta = Record<keyof TokensMetaTree, TokenDeprecationsTree>;
 ```
 
 `TokenMeta` itself gains **no** `deprecation` field, so the generator cannot emit a deprecated token into `tokensMeta`
 or a current token into `tokenDeprecationsMeta` without a compile error. `deprecation: {}` is a valid, complete marker:
-the default no-replacement message. `Deprecated<T>` strips `description`, since the generated `@deprecated` JSDoc
-carries the guidance and nothing renders a docs row for a legacy token.
+the lifecycle sentence with no replacement named. The `description` is omitted here rather than by the shared
+`Deprecated<T>`, which strips nothing: the generated `@deprecated` JSDoc carries the guidance and nothing renders a docs
+row for a legacy token, and stating the omission locally keeps it visible where it is made.
 
 The generator emits:
 
@@ -61,17 +57,14 @@ the end of the types file, in the order every other package uses — leaf alias,
 
 The wording is shared, so the package adds only canonical identity. `tokenIdentifier(node)` returns the public export
 name, and `replacement` is authored through it against the current catalog rather than as a retyped string. It stays
-internal: what the package publishes is `tokenDeprecations`, built by the shared
-`publishDeprecations(tokenDeprecationsMeta, tokenIdentifier)` — one deprecation export, an ordered flat list of
-`{ identifier, deprecation }`, with identifiers already spelled.
+internal: what the package publishes is `tokenDeprecations`, typed by the shared `Deprecations` — one deprecation
+export, an ordered flat list of `{ identifier, deprecation }`, with identifiers already spelled. A three-line
+`flattenTokenDeprecations` walks the generated tree, since the shape is this package's own.
 
-Default wording and the helpers that build it (`deprecationMessage` for the skill's lifecycle sentence,
-`deprecationText` for the generated `@deprecated` JSDoc) come from the shared module:
-
-- with replacement: `This API will be removed with the next major release.`;
-- without replacement: `This API will be removed with the next major release and has no replacement.`.
-
-TypeScript JSDoc is stripped from emitted JavaScript and retained in `.d.ts`, so full sentences cost consumers nothing.
+The wording comes from the shared `getDeprecationComment`, which is also what renders the `@deprecated` JSDoc:
+`This API will be removed with the next major release.`, prefixed by `Use <replacement> instead.` when one is named and
+followed by the optional `note`. TypeScript JSDoc is stripped from emitted JavaScript and retained in `.d.ts`, so full
+sentences cost consumers nothing.
 
 ### Authoritative token annotations
 
@@ -94,7 +87,7 @@ export const blurFrosted = 'blur(32px)';
 
 The generator reads the link through the TypeScript type checker, never the sentence around it, and fails both when the
 link resolves to nothing and when it names a token the documented catalog does not contain. Text beside the link becomes
-`message`; a bare `@deprecated` is the complete marker. One input therefore serves both surfaces: the annotation a
+the `note`; a bare `@deprecated` is the complete marker. One input therefore serves both surfaces: the annotation a
 consumer's IDE shows and the metadata the audit reads. See
 [`packages/tokens/AGENTS.md`](../packages/tokens/AGENTS.md#deprecating-a-token).
 
