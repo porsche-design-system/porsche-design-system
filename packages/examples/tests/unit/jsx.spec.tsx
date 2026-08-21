@@ -45,6 +45,7 @@ import PatternsOverviewPage from '../../src/patterns/index.page.tsx';
 import PopoverFeatureTourPage from '../../src/patterns/popover/feature-tour/index.page.tsx';
 import PopoverLocalMarketSwitchPage from '../../src/patterns/popover/local-market-switch/index.page.tsx';
 import PopoverPriorityNavigationPage from '../../src/patterns/popover/priority-navigation/index.page.tsx';
+import AdminPanelPage from '../../src/templates/admin-panel/index.page.tsx';
 import TemplatesOverviewPage from '../../src/templates/index.page.tsx';
 import LandingPage from '../../src/templates/landing-page/index.page.tsx';
 
@@ -68,8 +69,23 @@ const flattenNavItems = (items: NavItem[]): NavItem[] =>
 const countFirstLevelHeadings = (html: string): number =>
   (html.match(/<h1[\s>]/g) ?? []).length + countOccurrences(html, 'tag="h1"');
 
-/** Templates are built on `BasePage`: they own the full chrome, header and footer included. */
-const templatePages = [['templates/landing-page', LandingPage]] as const;
+/**
+ * The `main` landmark of a page: its own `<main id="main">`, or the one `p-canvas` renders in its shadow root.
+ *
+ * A page built on the canvas has none in the markup on purpose – putting one into the default slot would nest a
+ * landmark inside the one the component already provides.
+ */
+const countMainLandmarks = (html: string): number =>
+  countOccurrences(html, '<main id="main"') + countOccurrences(html, '<p-canvas');
+
+/** Templates built on `BasePage`: they own the full chrome, header and footer included. */
+const chromeTemplatePages = [['templates/landing-page', LandingPage]] as const;
+
+/** Templates built on `CanvasPage`: the chrome is `p-canvas`, which brings the landmarks of an application page. */
+const canvasTemplatePages = [['templates/admin-panel', AdminPanelPage]] as const;
+
+/** Templates are whole pages, whichever shell they use. */
+const templatePages = [...chromeTemplatePages, ...canvasTemplatePages];
 
 /** Patterns are built on `PatternPage`: they show a single section in the place it occupies on a real page. */
 const patternPages = [
@@ -808,10 +824,9 @@ describe('overview pages', () => {
 });
 
 describe.each(examplePages)('%s page', (_name, Page) => {
-  it('should render exactly one main landmark and at most one first level heading', async () => {
+  it('should render at most one first level heading', async () => {
     const html = await renderPage(Page);
 
-    expect(countOccurrences(html, '<main')).toBe(1);
     // A pattern showing nothing but its own section – the footer – has no heading of its own; every other page has
     // exactly one. The suites below pin down which of the two a page is.
     expect(countFirstLevelHeadings(html)).toBeLessThanOrEqual(1);
@@ -820,7 +835,14 @@ describe.each(examplePages)('%s page', (_name, Page) => {
   it('should ship the accessibility baseline', async () => {
     const html = await renderPage(Page);
 
-    expect(html).toContain('id="main"');
+    // Exactly one `main` landmark – the page's own, or the one `p-canvas` renders – and no unlabelled navigation.
+    expect(countMainLandmarks(html)).toBe(1);
+    expect(html).not.toContain('<nav>');
+  });
+
+  it('should keep the behaviour out of the markup, where `main.js` hooks it on ids', async () => {
+    // An example ships no framework and no inline handler either: a page renders ids and its script wires them up.
+    expect(await renderPage(Page)).not.toMatch(/\son[a-z]+="/);
   });
 
   it('should reference the entry the build generates next to it', async () => {
@@ -835,6 +857,12 @@ describe.each(examplePages)('%s page', (_name, Page) => {
 });
 
 describe.each(templatePages)('%s page', (_name, Page) => {
+  it('should title its content with a first level heading, being a whole page', async () => {
+    expect(countFirstLevelHeadings(await renderPage(Page))).toBe(1);
+  });
+});
+
+describe.each(chromeTemplatePages)('%s page', (_name, Page) => {
   it('should render the full chrome exactly once', async () => {
     const html = await renderPage(Page);
 
@@ -842,9 +870,17 @@ describe.each(templatePages)('%s page', (_name, Page) => {
     expect(countOccurrences(html, '<footer')).toBe(1);
     expect(html).toContain('<nav aria-label="Main">');
   });
+});
 
-  it('should title its content with a first level heading, being a whole page', async () => {
-    expect(countFirstLevelHeadings(await renderPage(Page))).toBe(1);
+describe.each(canvasTemplatePages)('%s page', (_name, Page) => {
+  it('should leave the chrome to the canvas, whose landmarks the page must not repeat', async () => {
+    const html = await renderPage(Page);
+
+    expect(countOccurrences(html, '<p-canvas')).toBe(1);
+    // Banner, `main` and the two sidebars come from the shadow root of the component; the page adds none of them.
+    expect(html).not.toContain('<header');
+    expect(html).not.toContain('<main');
+    expect(html).toContain('aria-label="Main"');
   });
 });
 
@@ -871,6 +907,46 @@ describe('landing page', () => {
 
     expect(html).toContain('id="pause-button"');
     expect(getSharedScripts(html)).toContain('video.js');
+  });
+});
+
+describe('admin panel', () => {
+  /** The ids its `main.js` looks up – single use, so they are literals of the page rather than part of `_ids.ts`. */
+  const behaviourHooks = [
+    'admin-canvas',
+    'search-button',
+    'search-dialog',
+    'settings-button',
+    'sidebar-nav',
+    'model-tabs',
+    'scheme-select',
+  ];
+
+  it('should render each id its own behaviour hooks on exactly once', async () => {
+    const html = await renderPage(AdminPanelPage);
+
+    for (const id of behaviourHooks) {
+      expect(countOccurrences(html, `id="${id}"`)).toBe(1);
+    }
+    // Neither the drilldown nor a hero video is part of an application shell, so no shared snippet is inlined.
+    expect(getSharedScripts(html)).toEqual([]);
+  });
+
+  it('should announce what its two affordances open, and keep the dialog outside the shell', async () => {
+    const html = await renderPage(AdminPanelPage);
+
+    expect(getOpeningTag(html, 'search-button')).toContain(`aria="{ 'aria-haspopup': 'dialog' }"`);
+    // The sidebar is a disclosure, so its trigger ships the state `main.js` keeps in sync.
+    expect(getOpeningTag(html, 'settings-button')).toContain(`aria="{ 'aria-expanded': false }"`);
+    expect(html.indexOf('<p-canvas')).toBeLessThan(html.indexOf('<p-modal'));
+  });
+
+  it('should name every repeated control, so the rows are told apart out of context', async () => {
+    const html = await renderPage(AdminPanelPage);
+
+    expect(html).toContain('Edit 718 Cayman');
+    expect(html).toContain('Delete 911 Carrera');
+    expect(countOccurrences(html, 'name="some-name"')).toBe(0);
   });
 });
 

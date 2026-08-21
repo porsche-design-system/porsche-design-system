@@ -75,6 +75,12 @@ export const templateItems: ExampleItem[] = [
     label: 'Landing page',
     description: 'Hero, feature grid and call to action, with a page level navigation override.',
   },
+  {
+    id: 'admin-panel',
+    href: 'admin-panel/',
+    label: 'Admin panel',
+    description: 'Application shell with two sidebars, a list of models with filters and a color scheme switch.',
+  },
 ];
 
 /** Patterns showcase a single section of a page, so variations of the same partial can be compared. */

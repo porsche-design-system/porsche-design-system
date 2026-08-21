@@ -51,8 +51,23 @@ export const patternComponents = [
   'wordmark',
 ] as const;
 
-/** The component chunks preloaded by the template pages – the full chrome plus the content components. */
-export const templateComponents = [...patternComponents, 'carousel', 'link-tile'] as const;
+/**
+ * The component chunks preloaded by the template pages – the full chrome plus the content components.
+ *
+ * The second half belongs to the admin panel, whose shell is a `canvas`: everything its sidebars, its list of models
+ * and its search dialog are built from. `table` covers its head, row and cell chunks, `select` its options.
+ */
+export const templateComponents = [
+  ...patternComponents,
+  'accordion',
+  'canvas',
+  'carousel',
+  'checkbox',
+  'divider',
+  'input-search',
+  'link-tile',
+  'table',
+] as const;
 
 export type ProjectCategory = 'patterns' | 'templates';
 

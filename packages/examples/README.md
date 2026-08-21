@@ -37,10 +37,10 @@ Design System built (`npm run build:core-dependencies && npm run build:component
 
 ## Two categories, two generated projects
 
-| Category      | What it shows                                        | Layout        | Lives in          | Becomes          |
-| ------------- | ---------------------------------------------------- | ------------- | ----------------- | ---------------- |
-| **Templates** | A whole application page, chrome included.           | `BasePage`    | `src/templates/…` | `dist/templates` |
-| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage` | `src/patterns/…`  | `dist/patterns`  |
+| Category      | What it shows                                        | Layout                    | Lives in          | Becomes          |
+| ------------- | ---------------------------------------------------- | ------------------------- | ----------------- | ---------------- |
+| **Templates** | A whole application page, chrome included.           | `BasePage` / `CanvasPage` | `src/templates/…` | `dist/templates` |
+| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`             | `src/patterns/…`  | `dist/patterns`  |
 
 Both categories are listed in [`src/_data.ts`](src/_data.ts) (`templateItems`, `patternItems`), so a new example is
 linked from the overview page of its project by adding one entry.
@@ -72,6 +72,7 @@ src/
 ├── _classes.ts               # classes(): joins class names, dropping the optional ones that are unset
 ├── _layouts/
 │   ├── BasePage.tsx          # full page shell: head, header, content, footer
+│   ├── CanvasPage.tsx        # shell of a page whose chrome is `p-canvas`
 │   ├── PatternPage.tsx       # minimal shell for a single section
 │   └── OverviewPage.tsx      # shell of the overview pages
 ├── _partials/                # components, never emitted as pages
@@ -92,6 +93,9 @@ src/
 │   └── video.js              # behaviour of the hero video and its pause control – inlined, never emitted
 ├── templates/
 │   ├── index.page.tsx        # overview of the templates project
+│   ├── admin-panel/
+│   │   ├── index.page.tsx
+│   │   └── main.js
 │   └── landing-page/
 │       └── index.page.tsx
 └── patterns/
@@ -143,6 +147,29 @@ generated project has none: an example is meant to be read, so its markup, its T
 dummy JavaScript sit in three files instead of being spread across the tree. The sources stay single in `src/assets/`
 and the scripts carry a `// --- <source> ---` section comment into the output; since they end up in one module scope,
 two of them must not declare the same top level name — the build says so if they do.
+
+### Application pages: `CanvasPage`
+
+A template whose chrome is `p-canvas` renders [`CanvasPage`](src/_layouts/CanvasPage.tsx) instead, which takes `title`,
+`description` and `children` — everything else is a slot of the component:
+
+```tsx
+import { CanvasPage } from '../../_layouts/CanvasPage.tsx';
+
+const Page = () => (
+  <CanvasPage title="Admin panel" description="…">
+    <p-canvas id="admin-canvas">…</p-canvas>
+  </CanvasPage>
+);
+
+export default Page;
+```
+
+> **Watch out — such a page renders no landmark of its own.** `p-canvas` provides the banner, the `main` landmark and
+> the two `aside` landmarks in its shadow root, so a `<main id="main">` in the default slot would nest one landmark
+> inside another. For the same reason the color scheme classes sit on `<html>`: the sidebars are rendered on top of the
+> page, and a scheme set further down would not reach them. The Porsche Grid does not apply inside a canvas either — its
+> content area narrows with the sidebars, so the admin panel asks the container (`@container`) instead.
 
 ### The header and its variants
 
@@ -257,6 +284,7 @@ plain HTML with relative paths, no hydration, no framework runtime.
 
 Every example ships `main` and section landmarks, labelled `nav` elements, `aria-current` on the active nav item,
 visible `:focus-visible` outlines and a `forced-colors: active` block; templates additionally carry the `header` and
-`footer` landmarks, and a pattern carries the landmark of the section it demonstrates. The overview pages are each a
-`main` landmark with labelled navigations. Keep that baseline when adding examples — these demos are documentation, so
-they have to be correct by example.
+`footer` landmarks, and a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets
+those landmarks from the component and adds none itself. The overview pages are each a `main` landmark with labelled
+navigations. Keep that baseline when adding examples — these demos are documentation, so they have to be correct by
+example.

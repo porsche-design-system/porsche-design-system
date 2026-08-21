@@ -9,10 +9,10 @@
 Standalone examples for Porsche Design System usage, rendered from **typed function components** to plain HTML with
 relative paths at build time. They come in two categories:
 
-| Category      | What it shows                                        | Layout        | Lives in          |
-| ------------- | ---------------------------------------------------- | ------------- | ----------------- |
-| **Templates** | A whole application page, chrome included.           | `BasePage`    | `src/templates/…` |
-| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage` | `src/patterns/…`  |
+| Category      | What it shows                                        | Layout                    | Lives in          |
+| ------------- | ---------------------------------------------------- | ------------------------- | ----------------- |
+| **Templates** | A whole application page, chrome included.           | `BasePage` / `CanvasPage` | `src/templates/…` |
+| **Patterns**  | A single section of a page, e.g. a header variation. | `PatternPage`             | `src/patterns/…`  |
 
 There is no template syntax. Conditions are ternaries, loops are `map()`, partials are components, and the layout takes
 `children`. Rendering happens once at build time via `preact-render-to-string`; **no framework code reaches the
@@ -78,6 +78,7 @@ src/
 │                                 # and `assets/*.js` all address the same elements through them
 ├── _layouts/
 │   ├── BasePage.tsx              # full page shell, takes `children`
+│   ├── CanvasPage.tsx            # shell of a page whose chrome is `p-canvas` – no landmark of its own
 │   ├── PatternPage.tsx           # minimal shell for a single section (beforeMain / afterMain)
 │   └── OverviewPage.tsx          # shell of the overview pages: a main landmark with link lists
 ├── _partials/                    # Head, Header, Footer, ExampleList – checked props
@@ -90,7 +91,8 @@ src/
 ├── assets/video.js               # behaviour of the hero video and its pause control – inlined, never emitted
 ├── templates/                    # → dist/templates
 │   ├── index.page.tsx            # overview of that project
-│   └── landing-page/             # index.page.tsx
+│   ├── landing-page/             # index.page.tsx
+│   └── admin-panel/              # index.page.tsx + main.js – application shell on `p-canvas`
 └── patterns/                    # → dist/patterns
     ├── index.page.tsx            # overview of that project
     ├── header/overlay/           # Header in its `overlay` variant
@@ -165,6 +167,15 @@ npm run build:verify        # build + `vite build` of both generated projects in
 - **A pattern is not a page inside a page.** Patterns use `PatternPage`, which ships no header or footer, because that
   chrome is what the pattern demonstrates. Pass the section as `beforeMain` (headers) or `afterMain` (footers) so its
   landmark sits where it does on a real page.
+- **A page built on `p-canvas` adds no landmark of its own.** The component renders the banner, the `main` landmark and
+  the two `aside` landmarks in its shadow root, so a `<main id="main">` in the default slot would nest one landmark
+  inside another. [`CanvasPage`](src/_layouts/CanvasPage.tsx) therefore writes nothing but the document around the
+  component, the color scheme classes sit on `<html>` (the sidebars are rendered on top of the page and a scheme set
+  further down would not reach them), and the shared accessibility test counts the canvas as that page's `main`.
+- **The Porsche Grid spans the viewport, the content area of a canvas does not.** Its width changes with the sidebars,
+  so `grid-template` and the `col-*` classes of the other examples do not apply there – the admin panel asks the
+  container instead (`@container` plus its own columns), which is what the storefront recommends for the default and
+  footer slots.
 - **Pages are rendered server-side only.** They are not in the client module graph, so the dev server does a full reload
   on any `.ts`/`.tsx` change rather than an HMR patch.
 - **PDS components are typed as attributes, not props.** `<p-button>` and friends are typed by
@@ -273,9 +284,10 @@ approach, and it is paid on every review:
 
 1. Create `src/templates/<name>/index.page.tsx` (plus `main.js` if it needs behaviour of its own).
 2. Default-export a component that renders `<BasePage>` with `title`, `description`, `currentPage`, and optionally
-   `showSearch`, `headerVariant`, `navItems`.
-3. Put the markup in `children`, including the page's own `<main id="main">`. Links go to `#`, unless they point at an
-   id on the same page.
+   `showSearch`, `headerVariant`, `navItems`. An application page whose chrome is `p-canvas` renders `<CanvasPage>`
+   instead, which takes `title` and `description` only – everything else is a slot of the component.
+3. Put the markup in `children`, including the page's own `<main id="main">` – except on `CanvasPage`, where the
+   component provides that landmark. Links go to `#`, unless they point at an id on the same page.
 4. Add an entry to `templateItems` in `src/_data.ts`, with an `href` relative to the root of the `templates` project –
    that is what links it from the overview page.
 5. Style with Tailwind utilities; touch `src/assets/styles.css` only for genuinely global defaults or theme values.
@@ -300,9 +312,10 @@ approach, and it is paid on every review:
 
 Every example ships a `main` landmark, labelled `nav` elements, `aria-current="page"` on the active nav item only,
 visible `:focus-visible` outlines and a `forced-colors: active` block. Templates additionally carry the `header` and
-`footer` landmarks; a pattern carries the landmark of the section it demonstrates. The overview pages are each a `main`
-landmark with labelled navigations. These demos are documentation, so they have to be correct by example — keep the
-baseline when adding examples. The unit tests assert it for every page.
+`footer` landmarks; a pattern carries the landmark of the section it demonstrates. A page built on `p-canvas` gets all
+of them from the component and therefore renders none itself. The overview pages are each a `main` landmark with
+labelled navigations. These demos are documentation, so they have to be correct by example — keep the baseline when
+adding examples. The unit tests assert it for every page.
 
 **A heading belongs to the content, not to the pattern.** Templates and the header patterns have exactly one first level
 heading, because the content below the header is part of what they show. The footer pattern has none: its `main` is
@@ -313,7 +326,7 @@ section.
 
 ## Status and open items
 
-Point-in-time notes, last updated 2026-08-20.
+Point-in-time notes, last updated 2026-08-21.
 
 Done:
 
@@ -397,6 +410,20 @@ Done:
   - `p-modal` is used in **controlled** mode, which is what lets the dialog variant reset on `motionHiddenEnd` instead
     of snapping back while the dialog is still visible;
   - `modal`, `segmented-control` and `textarea` joined the preloaded chunks in
+    [`plugins/projects.ts`](plugins/projects.ts).
+- **An admin panel template added (2026-08-21)**, in `templates/admin-panel/`, and with it the second template shell:
+  [`CanvasPage`](src/_layouts/CanvasPage.tsx), for a page whose chrome is `p-canvas`. Notable:
+  - the page renders no landmark of its own – banner, `main` and the two sidebars come from the component, so the shared
+    accessibility test now counts a `p-canvas` as the page's `main` and the template suites are split into a
+    chrome-based and a canvas-based one;
+  - everything interactive is used in **controlled** mode (both sidebars, the accordions of the navigation, the tabs bar
+    and the search modal), which is what lets the sidebar affordance mirror its state onto `aria-expanded`;
+  - the inline `onclick`/`onchange` attributes of the first draft are gone: behaviour lives in the page's `main.js`,
+    hooked on ids, which is also the only place the three `scheme-*` classes appear – Tailwind scans the entry, so it
+    emits them for the scheme switch;
+  - the repeated markup became data (sidebar groups, rows, link lists, filters), and every repeated control names what
+    it acts on (`Edit 718 Cayman`) instead of sharing one label and one `name`;
+  - `accordion`, `canvas`, `checkbox`, `divider`, `input-search` and `table` joined the preloaded chunks in
     [`plugins/projects.ts`](plugins/projects.ts).
 
 Open:
