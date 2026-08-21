@@ -21,9 +21,10 @@ import { describe, expect, it } from 'vitest';
  * only true if something checks — so every expectation below is derived from the source of truth
  * itself, never from the collector that reads it: a gate re-using a collector's own output would
  * agree with it by construction and prove nothing. For most sources that means re-reading the shipped
- * artifact; for the packages that publish their own catalog it means their `*DeprecationsMeta` —
- * authored for SCSS and Tailwind, which generate their shipped artifacts from them, and generated
- * from the `@deprecated` annotations for Emotion, vanilla-extract and tokens.
+ * artifact; for the packages that publish their own deprecated surface it means their
+ * `<pkg>Deprecations` — projected out of an authored catalog for SCSS and Tailwind, which generate
+ * their shipped artifacts from it, and generated from the `@deprecated` annotations for Emotion,
+ * vanilla-extract and tokens.
  *
  * A failure here means either a deprecation escaped the index (the audit would under-report against
  * every project) or a source grew a shape the collector does not understand.

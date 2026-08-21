@@ -3,9 +3,9 @@ import type { DeprecationSource } from '../types';
 import { styleAliasSource } from './styleAlias';
 
 /**
- * Adapts the vanilla-extract package's own deprecation catalog into index entries.
+ * Adapts the vanilla-extract package's own published deprecations into index entries.
  *
- * `vanillaExtractDeprecationsMeta` is generated from the `@deprecated` annotations the legacy exports
+ * `vanillaExtractDeprecations` is generated from the `@deprecated` annotations the legacy exports
  * carry, so a deprecated export cannot reach a consumer without appearing here, with the wording that
  * consumer's IDE shows.
  *
@@ -17,7 +17,7 @@ export const collectVanillaExtractDeprecations = (): DeprecationSource =>
   styleAliasSource({
     category: 'vanillaExtract',
     origin:
-      'the `vanillaExtractDeprecationsMeta` catalog of `@porsche-design-system/vanilla-extract`, ' +
+      'the `vanillaExtractDeprecations` list of `@porsche-design-system/vanilla-extract`, ' +
       'generated from the `@deprecated` annotations on its legacy exports',
     reference: 'references/styles/vanilla-extract.md',
     deprecations: vanillaExtractDeprecations,
