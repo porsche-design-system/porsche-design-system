@@ -82,8 +82,12 @@ export type DeprecationEntry = {
   identifier: string;
   /** For `value`: the prop the deprecated value belongs to. */
   prop?: string;
-  /** The deprecation message exactly as the source states it; empty when the source carries none. */
-  message: string;
+  /**
+   * The deprecation message exactly as the source states it, omitted when it carries none. Styling
+   * sources carry one only when the package authored extra guidance: their lifecycle sentence is
+   * stated once in the reference's intro rather than repeated on every row.
+   */
+  message?: string;
   /** What to use instead, when the source states it. */
   replacement?: string;
   /** Skill-root-relative link to the reference documenting the replacement. */

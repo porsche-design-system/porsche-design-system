@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { emotionDeprecations } from '@porsche-design-system/emotion/meta';
 import { scssDeprecations } from '@porsche-design-system/scss';
-import { deprecationMessage, type PublishedDeprecation } from '@porsche-design-system/shared/deprecation';
+import type { Deprecations } from '@porsche-design-system/shared/deprecation';
 import { tailwindDeprecations } from '@porsche-design-system/tailwindcss';
 import { tokenDeprecations } from '@porsche-design-system/tokens-meta';
 import { vanillaExtractDeprecations } from '@porsche-design-system/vanilla-extract/meta';
@@ -40,7 +40,7 @@ import { describe, expect, it } from 'vitest';
 const METADATA_SOURCES: {
   category: SourceCategory;
   /** The package's published deprecated surface — the expectation, never the collector's output. */
-  deprecations: PublishedDeprecation[];
+  deprecations: Deprecations;
   reference: string;
   collector: string;
   specifier: string;
@@ -199,9 +199,9 @@ describe('deprecation index completeness', () => {
         );
       });
 
-      it('carries the package wording and replacement onto every entry verbatim', () => {
+      it('carries the package note and replacement onto every entry verbatim', () => {
         expect(entries().map((entry) => [entry.message, entry.replacement])).toStrictEqual(
-          deprecations.map((d) => [deprecationMessage(d), d.deprecation.replacement])
+          deprecations.map((d) => [d.deprecation.note, d.deprecation.replacement])
         );
       });
 
@@ -231,7 +231,7 @@ describe('deprecation index completeness', () => {
       reference: 'references/tokens.md',
       deprecations: [
         { identifier: 'spacingLegacy', deprecation: { replacement: 'spacingStaticMd' } },
-        { identifier: 'colorLegacy', deprecation: { message: 'Merged into the light-dark tokens.' } },
+        { identifier: 'colorLegacy', deprecation: { note: 'Merged into the light-dark tokens.' } },
       ],
     });
 
@@ -242,7 +242,6 @@ describe('deprecation index completeness', () => {
         kind: 'styleAlias',
         source: 'tokens',
         identifier: 'spacingLegacy',
-        message: 'This API will be removed with the next major release.',
         replacement: 'spacingStaticMd',
         reference: 'references/tokens.md',
       },
@@ -272,9 +271,11 @@ describe('deprecation index completeness', () => {
     expect(ENTRIES.filter((entry) => !entry.identifier)).toStrictEqual([]);
   });
 
-  it('gives every entry either a replacement or a verbatim message to act on', () => {
-    const actionable = ENTRIES.filter((entry) => Boolean(entry.replacement) || Boolean(entry.message));
-    expect(actionable.length).toBe(ENTRIES.length);
+  it('leaves an entry without guidance only where the source genuinely has none', () => {
+    // A styling alias may have no replacement and no note: the API is going away with nothing to
+    // migrate to, which the empty remediation cell states. Every other kind carries its own wording.
+    const bare = ENTRIES.filter((entry) => !entry.replacement && !entry.message);
+    expect(bare.filter((entry) => entry.kind !== 'styleAlias')).toStrictEqual([]);
   });
 
   it('has collected a meaningful number of deprecations', () => {

@@ -26,9 +26,9 @@ $pds-border-radius-small: 4px;
 $pds-border-radius-medium: 6px;
 // @deprecated Use $radius-lg instead. This API will be removed with the next major release.
 $pds-border-radius-large: 8px;
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-border-width-base: 2px;
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-border-width-thin: 1px;
 "
 `;
@@ -40,7 +40,7 @@ $breakpoint-md: 1000;
 $breakpoint-lg: 1300;
 $breakpoint-xl: 1760;
 $breakpoint-2xl: 1920;
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-breakpoint-base: 0;
 // @deprecated Use $breakpoint-xs instead. This API will be removed with the next major release.
 $pds-breakpoint-xs: 480;
@@ -216,13 +216,13 @@ $pds-theme-light-notification-error-soft: hsl(0 100% 90% / 0.55);
 $pds-theme-light-notification-info: hsl(228 83.2% 51%);
 // @deprecated Use $color-info-frosted instead. This API will be removed with the next major release.
 $pds-theme-light-notification-info-soft: hsl(211 100% 90% / 0.55);
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-theme-light-state-hover: hsla(236, 6.4%, 51%, 0.148);
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-theme-light-state-active: hsla(236, 6.4%, 51%, 0.148);
 // @deprecated Use $color-focus instead. This API will be removed with the next major release.
 $pds-theme-light-state-focus: #1a44ea;
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-theme-light-state-disabled: hsla(233, 6.6%, 23.9%, 0.412);
 // @deprecated Use $color-primary instead. This API will be removed with the next major release.
 $pds-theme-dark-primary: hsl(225 100% 99%);
@@ -256,13 +256,13 @@ $pds-theme-dark-notification-error-soft: hsl(0 79% 20% / 0.66);
 $pds-theme-dark-notification-info: hsl(210 100% 54.5%);
 // @deprecated Use $color-info-frosted instead. This API will be removed with the next major release.
 $pds-theme-dark-notification-info-soft: hsl(210 79% 20% / 0.66);
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-theme-dark-state-hover: hsla(240, 2.2%, 44.1%, 0.228);
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-theme-dark-state-active: hsla(240, 2.2%, 44.1%, 0.228);
 // @deprecated Use $color-focus instead. This API will be removed with the next major release.
 $pds-theme-dark-state-focus: #1a44ea;
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-theme-dark-state-disabled: hsla(240, 1.5%, 61.8%, 0.302);
 
 @mixin color-scheme() {
@@ -575,15 +575,15 @@ $pds-font-weight-semi-bold: 600;
 // @deprecated Use $font-weight-bold instead. This API will be removed with the next major release.
 $pds-font-weight-bold: 700;
 
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-font-hyphenation-style-overflow-wrap: break-word;
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-font-hyphenation-style-hyphens: var(--p-hyphens, auto);
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-font-style-normal: normal;
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-font-style-italic: italic;
-// @deprecated This API will be removed with the next major release and has no replacement.
+// @deprecated This API will be removed with the next major release.
 $pds-font-variant: normal;
 "
 `;

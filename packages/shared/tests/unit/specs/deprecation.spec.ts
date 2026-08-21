@@ -1,82 +1,53 @@
 import { describe, expect, it } from 'vitest';
-import {
-  type Deprecation,
-  deprecationMessage,
-  deprecationText,
-  isDeprecated,
-  publishDeprecations,
-} from '../../../src/deprecation';
+import { getDeprecationComment, isDeprecated } from '../../../src/deprecation';
 
 /**
- * The deprecation contract every metadata-producing package builds on: one marker, one set of
- * lifecycle sentences, one projection. These used to be asserted twice over — once in the SCSS
- * package and once in Tailwind — which tested two copies of wording that only ever had one source.
+ * The deprecation contract every metadata-producing package builds on: one marker, one sentence, one
+ * comment generator. The wording is asserted here and nowhere else, so no package can restate it.
  */
 
-const node = (deprecation: Deprecation) => ({ deprecation });
-
-describe('deprecationMessage', () => {
-  it('defaults an empty marker to the no-replacement lifecycle sentence', () => {
-    expect(deprecationMessage(node({}))).toBe(
-      'This API will be removed with the next major release and has no replacement.'
+describe('getDeprecationComment', () => {
+  it('states the lifecycle for an empty marker', () => {
+    expect(getDeprecationComment({}, 'line')).toBe(
+      '// @deprecated This API will be removed with the next major release.'
     );
   });
 
-  it('defaults to the plain lifecycle sentence when a replacement is authored', () => {
-    expect(deprecationMessage(node({ replacement: '$radius-sm' }))).toBe(
-      'This API will be removed with the next major release.'
+  it('prefixes the replacement sentence when there is one', () => {
+    expect(getDeprecationComment({ replacement: '$radius-sm' }, 'line')).toBe(
+      '// @deprecated Use $radius-sm instead. This API will be removed with the next major release.'
     );
   });
 
-  it('lets an authored message replace the default', () => {
-    expect(deprecationMessage(node({ message: 'Gone already.' }))).toBe('Gone already.');
-  });
-});
-
-describe('deprecationText', () => {
-  it('prefixes the lifecycle message with a replacement sentence when there is one', () => {
-    expect(deprecationText(node({ replacement: '$radius-sm' }))).toBe(
-      'Use $radius-sm instead. This API will be removed with the next major release.'
+  it('appends the note instead of replacing the lifecycle sentence', () => {
+    expect(
+      getDeprecationComment({ replacement: '--default-border-width', note: 'The default is now 1px.' }, 'line')
+    ).toBe(
+      '// @deprecated Use --default-border-width instead. This API will be removed with the next major release. The default is now 1px.'
     );
   });
 
-  it('is the lifecycle message alone when there is no replacement', () => {
-    expect(deprecationText(node({}))).toBe(deprecationMessage(node({})));
+  it('appends a note that has no replacement beside it', () => {
+    expect(getDeprecationComment({ note: 'Use individual variables instead.' }, 'line')).toBe(
+      '// @deprecated This API will be removed with the next major release. Use individual variables instead.'
+    );
   });
 
-  it('prefixes an authored message just the same, so guidance is never duplicated', () => {
-    expect(deprecationText(node({ replacement: '$radius-sm', message: 'Gone already.' }))).toBe(
-      'Use $radius-sm instead. Gone already.'
-    );
+  it.each([
+    ['line', '// @deprecated This API will be removed with the next major release.'],
+    ['block', '/* @deprecated This API will be removed with the next major release. */'],
+    ['jsdoc', '/** @deprecated This API will be removed with the next major release. */'],
+  ] as const)('wraps the text in %s syntax', (style, expected) => {
+    expect(getDeprecationComment({}, style)).toBe(expected);
   });
 });
 
 describe('isDeprecated', () => {
   it('recognises a node by the mere presence of the marker', () => {
-    expect(isDeprecated(node({}))).toBe(true);
-    expect(isDeprecated({ name: '$radius-sm' })).toBe(false);
-  });
-});
-
-describe('publishDeprecations', () => {
-  const catalog = {
-    border: [{ name: 'a', deprecation: { replacement: 'b' } }],
-    // Nested groups and empty domains are both part of the shape a package may author.
-    typography: { heading: [{ name: 'c', deprecation: {} }] },
-    blur: [],
-  };
-
-  it('flattens every domain in catalog order, spelling identifiers through the package helper', () => {
-    expect(publishDeprecations(catalog, ({ name }) => `${name}()`)).toStrictEqual([
-      { identifier: 'a()', deprecation: { replacement: 'b' } },
-      { identifier: 'c()', deprecation: {} },
-    ]);
+    expect(isDeprecated({ deprecation: {} })).toBe(true);
   });
 
-  it('carries the marker through untouched, so wording is resolved once downstream', () => {
-    expect(publishDeprecations(catalog, ({ name }) => name).map(deprecationMessage)).toStrictEqual([
-      'This API will be removed with the next major release.',
-      'This API will be removed with the next major release and has no replacement.',
-    ]);
+  it.each([{}, null, undefined, 'string'])('rejects %s', (node) => {
+    expect(isDeprecated(node)).toBe(false);
   });
 });

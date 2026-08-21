@@ -2,6 +2,11 @@
 
 ## Summary
 
+> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
+> `isDeprecated` and `getDeprecationComment` — see
+> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
+> below names a removed helper.
+
 Global stylesheet deprecations shall be exported as `stylesheetDeprecationsMeta` beside `stylesheetsMeta` from
 `@porsche-design-system/stylesheets/meta`. The deprecated catalog is explicitly empty today and replaces the knowledge
 skill's marker scan.

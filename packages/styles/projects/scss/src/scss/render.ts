@@ -1,4 +1,4 @@
-import { deprecationText, isDeprecated } from '@porsche-design-system/shared/deprecation';
+import { getDeprecationComment, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import type { ScssCatalog, ScssMeta, ScssMixin, ScssNode, ScssVariable } from '../types';
 
 /** A leaf carries a variable/mixin `name`; lists and groups don't. */
@@ -21,17 +21,15 @@ export const stripDeprecated = <T>(branch: T): ScssMeta<T> =>
         )) as ScssMeta<T>;
 
 /**
- * The standalone `@deprecated` comment a deprecated declaration is preceded by, generated from the
- * declaration's structured `deprecation` — never hand-written, so replacement guidance reaches
- * consumers reading the shipped partials as well as the audit index.
+ * The `@deprecated` comment a deprecated declaration is preceded by, generated from its structured
+ * marker so the guidance reaches consumers reading the shipped partials as well as the audit index.
  *
- * It is a Sass *silent* comment on purpose. A loud `/* … *\/` at top level is copied into the
- * compiled CSS of every project that `@use`s the package, whether or not it touches a single legacy
- * API — 12 KB of prose shipped to browsers to document 127 APIs the project most likely never calls.
- * `//` keeps the guidance in the source a developer reads and emits nothing.
+ * `line` on purpose: a loud Sass comment at top level is copied into the compiled CSS of every
+ * project that `@use`s the package, whether or not it touches a single legacy API. A silent `//`
+ * keeps the guidance in the source a developer reads and emits nothing.
  */
 const deprecationComment = (node: ScssNode): string =>
-  isDeprecated(node) ? `// @deprecated ${deprecationText(node)}\n` : '';
+  isDeprecated(node) ? `${getDeprecationComment(node.deprecation, 'line')}\n` : '';
 
 /** Serialize a node: a mixin to `@mixin name(sig) { raw }`, a variable to `$name: value;`, a raw snippet verbatim. */
 export const renderNode = (node: ScssNode): string => {

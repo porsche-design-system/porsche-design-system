@@ -1,13 +1,5 @@
-import { isDeprecated } from '@porsche-design-system/shared/deprecation';
+import { getDeprecationComment, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import type { CssNode, TailwindMeta, ThemeBranch } from '../types';
-
-/**
- * The marker a deprecated declaration is preceded by, derived from its `deprecation` rather than
- * hand-written. It stays terse on purpose: CSS has no silent comment, so every byte reaches every
- * consumer of `index.css`. The full guidance — replacement and lifecycle message — lives in
- * `tailwindDeprecationsMeta` and the knowledge skill's deprecation index.
- */
-const DEPRECATION_MARKER = 'alias (deprecated)';
 
 /** Whether a meta branch is a concrete {@link CssNode} leaf (vs. a grouping record/array). */
 const isLeaf = (node: ThemeBranch): node is CssNode => 'property' in node || 'selector' in node || 'raw' in node;
@@ -35,8 +27,13 @@ export const stripDeprecated = <T>(branch: T): TailwindMeta<T> =>
  */
 export const renderNode = (node: CssNode): string => {
   if ('property' in node) {
-    const marker = isDeprecated(node) ? DEPRECATION_MARKER : 'comment' in node ? node.comment : undefined;
-    const comment = marker ? `/* ${marker} */\n` : '';
+    // CSS has no silent comment, so this ships to every consumer of `index.css`. At nine
+    // declarations that is ~830 bytes, which buys the same guidance every other source generates.
+    const comment = isDeprecated(node)
+      ? `${getDeprecationComment(node.deprecation, 'block')}\n`
+      : 'comment' in node && node.comment
+        ? `/* ${node.comment} */\n`
+        : '';
     return `${comment}${node.property}: ${node.value};`;
   }
   if ('selector' in node) {

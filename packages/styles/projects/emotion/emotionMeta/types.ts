@@ -1,4 +1,4 @@
-import type { Deprecated, DeprecationsMeta } from '@porsche-design-system/shared/deprecation';
+import type { Deprecated } from '@porsche-design-system/shared/deprecation';
 
 // The emotion meta model — the documented single source of truth these types validate. Leaves
 // (`EmotionToken`, `EmotionUtility`) carry payloads; records and arrays only group. Mirrors the
@@ -281,12 +281,8 @@ export type EmotionMeta = StylesMeta<EmotionToken, EmotionUtility>;
 // identical in every styling package: the leaf, then the catalog. There are no per-kind aliases
 // here, because a deprecated export is only ever a name — nothing renders it.
 
-/**
- * A deprecated public export: its name plus the `@deprecated` annotation it carries, verbatim. The
- * marker is narrowed to a required `message`, since an annotation-derived catalog always has one and
- * never a structured `replacement`.
- */
-export type DeprecatedEmotionNode = Deprecated<{ name: string }> & { deprecation: { message: string } };
+/** A deprecated public export: its name plus the marker recovered from its `@deprecated` annotation. */
+export type DeprecatedEmotionNode = Deprecated<{ name: string }>;
 
 /** The deprecated surface, keyed by the same root domains as {@link EmotionMeta}. */
-export type EmotionDeprecationsMeta = DeprecationsMeta<EmotionMeta, DeprecatedEmotionNode>;
+export type EmotionDeprecationsMeta = Record<keyof EmotionMeta, DeprecatedEmotionNode[]>;

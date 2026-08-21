@@ -1,4 +1,4 @@
-import { deprecationText, isDeprecated } from '@porsche-design-system/shared/deprecation';
+import { getDeprecationComment, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import { describe, expect, it } from 'vitest';
 import { scssDeprecations, scssMeta } from '../../../src';
 import { scssIdentifier } from '../../../src/deprecation';
@@ -92,7 +92,7 @@ describe('scss file composition', () => {
 
   it('precedes every deprecated declaration with its generated @deprecated comment', () => {
     for (const node of deprecated) {
-      expect(renderNode(node)).toContain(`// @deprecated ${deprecationText(node)}\n`);
+      expect(renderNode(node)).toContain(`${getDeprecationComment(node.deprecation, 'line')}\n`);
     }
   });
 

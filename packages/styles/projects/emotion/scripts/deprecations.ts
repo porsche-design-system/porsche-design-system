@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { type Deprecation, getDeprecationComment } from '@porsche-design-system/shared/deprecation';
 import ts from 'typescript';
 // Imported from the module, not the barrel: the barrel re-exports the catalog generated from here.
 import { emotionMeta } from '../emotionMeta/meta';
@@ -32,7 +33,47 @@ const deprecatedDomains = (): (keyof EmotionDeprecationsMeta)[] => {
   return domains as (keyof EmotionDeprecationsMeta)[];
 };
 
-/** A barrel's deprecated exports, in barrel order, with the annotation text verbatim. */
+/**
+ * The marker an annotation carries, validated against the wording the shared contract generates.
+ *
+ * The replacement is the `{@link otherExport}` reference, taken as its own part of the annotation and
+ * never as a phrase recovered from the sentence around it. Both part kinds count: the checker reports
+ * a link it resolved in scope as `linkName` and any other as `linkText`.
+ *
+ * The rest of the annotation must be exactly what `getDeprecationComment` would render for that
+ * marker, optionally followed by extra guidance which becomes the `note`. These annotations are
+ * hand-maintained today because `src/` is the shipped library rather than generated output; the
+ * comparison is what keeps them identical to every generated source until they are generated too.
+ */
+const deprecationOf = (tag: ts.JSDocTagInfo, name: string): Deprecation => {
+  const parts = tag.text ?? [];
+  const replacement = parts.find(({ kind }) => kind === 'linkName' || kind === 'linkText')?.text.trim();
+  // The checker splits a link into `{@link `, its target and `}`; dropping the delimiters
+  // reconstructs the sentence exactly as `getDeprecationComment` renders it.
+  const text = parts
+    .filter(({ kind }) => kind !== 'link')
+    .map(({ text }) => text)
+    .join('')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const generated = comment(getDeprecationComment({ replacement }, 'jsdoc'));
+  if (!text.startsWith(generated)) {
+    throw new Error(
+      `The @deprecated annotation on \`${name}\` is not structured.\n` +
+        `  expected: ${generated}[ <extra guidance>]\n` +
+        `  found:    ${text}`
+    );
+  }
+
+  const note = text.slice(generated.length).trim();
+  return { ...(replacement ? { replacement } : {}), ...(note ? { note } : {}) };
+};
+
+/** The comment text without its `/** … *\/` wrapper and `@deprecated` tag, as the checker reports it. */
+const comment = (rendered: string): string => rendered.replace(/^\/\*\* @deprecated | \*\/$/g, '');
+
+/** A barrel's deprecated exports, in barrel order, with their validated markers. */
 const nodesOf = (source: ts.SourceFile | undefined, checker: ts.TypeChecker): DeprecatedEmotionNode[] => {
   const moduleSymbol = source && checker.getSymbolAtLocation(source);
 
@@ -40,8 +81,9 @@ const nodesOf = (source: ts.SourceFile | undefined, checker: ts.TypeChecker): De
     // A barrel exports aliases; the annotation sits on the declaration they point at.
     const declaration = symbol.flags & ts.SymbolFlags.Alias ? checker.getAliasedSymbol(symbol) : symbol;
     const tag = declaration.getJsDocTags(checker).find(({ name }) => name === 'deprecated');
+    const name = symbol.getName();
 
-    return tag ? [{ name: symbol.getName(), deprecation: { message: ts.displayPartsToString(tag.text).trim() } }] : [];
+    return tag ? [{ name, deprecation: deprecationOf(tag, name) }] : [];
   });
 };
 

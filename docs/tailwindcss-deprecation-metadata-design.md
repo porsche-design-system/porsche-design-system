@@ -2,6 +2,11 @@
 
 ## Summary
 
+> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
+> `isDeprecated` and `getDeprecationComment` — see
+> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
+> below names a removed helper.
+
 The Tailwind package authors **one catalog**. Every public declaration lives in it exactly once — documented and
 deprecated alike — and deprecation is an optional `deprecation` marker on the declaration itself, so deprecating an API
 adds one field instead of moving a node between catalogs.

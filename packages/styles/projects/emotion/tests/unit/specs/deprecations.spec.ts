@@ -40,8 +40,15 @@ describe('emotionDeprecationsMeta', () => {
     expect(nodes.map(({ name }) => name).sort()).toStrictEqual([...published].sort());
   });
 
-  it('annotates every one of them', () => {
-    expect(nodes.filter(({ deprecation }) => !deprecation.message.trim())).toStrictEqual([]);
+  it('structures every marker, carrying no field the contract does not define', () => {
+    // The extractor throws on an annotation it cannot structure, so reaching here already proves
+    // every one conformed; this pins the shape it produced.
+    const malformed = nodes.filter(
+      ({ deprecation }) =>
+        Object.keys(deprecation).some((key) => !['replacement', 'note'].includes(key)) ||
+        Object.values(deprecation).some((value) => !value.trim())
+    );
+    expect(malformed).toStrictEqual([]);
   });
 
   it('is keyed by every emotionMeta domain, in catalog order', () => {

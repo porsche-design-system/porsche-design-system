@@ -43,7 +43,7 @@ const isLeaf = (node: TokenTree | TokenLeaf): node is TokenLeaf => typeof (node 
  * never as a phrase recovered from the sentence around it. Both part kinds count: the checker reports
  * a link it resolved in the file's scope as `linkName` and any other as `linkText`, and a token names
  * its replacement across files, where nothing is in scope. That the name is a real token is what
- * {@link buildCatalogs} checks. Everything else in the tag is carried verbatim as `message`; an
+ * {@link buildCatalogs} checks. Everything else in the tag is carried verbatim as `note`; an
  * annotation that is only a link (or only the tag) carries none, so the shared wording applies.
  */
 const deprecationOf = (tags: ts.JSDocTagInfo[]): Deprecation | undefined => {
@@ -52,14 +52,14 @@ const deprecationOf = (tags: ts.JSDocTagInfo[]): Deprecation | undefined => {
 
   const parts = tag.text ?? [];
   const replacement = parts.find(({ kind }) => kind === 'linkName' || kind === 'linkText')?.text.trim();
-  const message = parts
+  const note = parts
     .filter(({ kind }) => kind === 'text')
     .map(({ text }) => text)
     .join('')
     .replace(/\s+/g, ' ')
     .trim();
 
-  return { ...(replacement ? { replacement } : {}), ...(message ? { message } : {}) };
+  return { ...(replacement ? { replacement } : {}), ...(note ? { note } : {}) };
 };
 
 /**

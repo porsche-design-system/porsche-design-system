@@ -1,4 +1,4 @@
-import type { Deprecated, DeprecationsMeta } from '@porsche-design-system/shared/deprecation';
+import type { Deprecated } from '@porsche-design-system/shared/deprecation';
 
 /**
  * A documented design token as the metadata renders it: the export name, its resolved value and the
@@ -27,14 +27,18 @@ export type TokensMetaTree = { [key: string]: TokensMetaTree | TokenMeta };
 // package declares neither.
 
 /**
- * A deprecated token: the same render input minus its `description` — a legacy token is documented
- * by its `@deprecated` annotation, not by a docs row — plus the required marker.
+ * A deprecated token: its render input plus the marker. `description` is deliberately left out — a
+ * legacy token is documented by its `@deprecated` annotation, not by a docs row — and the omission
+ * is spelled here rather than hidden in the shared wrapper, which no longer strips anything.
  */
-export type DeprecatedTokenMeta = Deprecated<TokenMeta>;
+export type DeprecatedTokenMeta = Deprecated<Omit<TokenMeta, 'description'>>;
 
 /**
  * The deprecated surface, grouped like {@link TokensMetaTree} and keyed by the same root domains:
  * every domain is spelled out, empty ones included, so "checked, nothing deprecated" stays
  * distinguishable from "forgotten".
  */
-export type TokenDeprecationsMeta = DeprecationsMeta<TokensMetaTree, DeprecatedTokenMeta>;
+export type TokenDeprecationsMeta = Record<keyof TokensMetaTree, TokenDeprecationsTree>;
+
+/** Any level of the deprecated catalog: a keyed group or a deprecated leaf. */
+export type TokenDeprecationsTree = { [key: string]: TokenDeprecationsTree | DeprecatedTokenMeta };

@@ -1,4 +1,4 @@
-import type { Deprecated, DeprecationsMeta } from '@porsche-design-system/shared/deprecation';
+import type { Deprecated } from '@porsche-design-system/shared/deprecation';
 
 // The vanilla-extract meta model — the documented single source of truth these types validate. Leaves
 // (`VanillaExtractToken`, `VanillaExtractUtility`) carry payloads; records and arrays only group.
@@ -287,12 +287,8 @@ export type VanillaExtractMeta = StylesMeta<VanillaExtractToken, VanillaExtractU
 // identical in every styling package: the leaf, then the catalog. There are no per-kind aliases
 // here, because a deprecated export is only ever a name — nothing renders it.
 
-/**
- * A deprecated public export: its name plus the `@deprecated` annotation it carries, verbatim. The
- * marker is narrowed to a required `message`, since an annotation-derived catalog always has one and
- * never a structured `replacement`.
- */
-export type DeprecatedVanillaExtractNode = Deprecated<{ name: string }> & { deprecation: { message: string } };
+/** A deprecated public export: its name plus the marker recovered from its `@deprecated` annotation. */
+export type DeprecatedVanillaExtractNode = Deprecated<{ name: string }>;
 
 /** The deprecated surface, keyed by the same root domains as {@link VanillaExtractMeta}. */
-export type VanillaExtractDeprecationsMeta = DeprecationsMeta<VanillaExtractMeta, DeprecatedVanillaExtractNode>;
+export type VanillaExtractDeprecationsMeta = Record<keyof VanillaExtractMeta, DeprecatedVanillaExtractNode[]>;

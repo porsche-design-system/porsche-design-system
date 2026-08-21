@@ -1,4 +1,4 @@
-import { deprecationMessage, type PublishedDeprecation } from '@porsche-design-system/shared/deprecation';
+import type { Deprecations } from '@porsche-design-system/shared/deprecation';
 import type { DeprecationSource, SourceCategory } from '../types';
 
 /**
@@ -10,9 +10,8 @@ import type { DeprecationSource, SourceCategory } from '../types';
  * have no business knowing — the rule-ID scheme, the source category, the `replacement` passthrough,
  * the order guarantee and the verified-empty declaration — lives here rather than five times over.
  *
- * Identity and wording both stay package-resolved: the identifier is spelled by the package before
- * it is published, and `deprecationMessage` is the shared helper, so nothing here re-spells a name
- * or invents a fallback sentence.
+ * Identity stays package-resolved: the identifier is spelled by the package before it is published,
+ * so nothing here re-spells a name or invents wording.
  */
 export const styleAliasSource = ({
   category,
@@ -26,7 +25,7 @@ export const styleAliasSource = ({
   /** Skill-relative reference documenting the package's current API. */
   reference: string;
   /** The package's published deprecations, in catalog order — the rendered order. */
-  deprecations: PublishedDeprecation[];
+  deprecations: Deprecations;
 }): DeprecationSource => ({
   category,
   origin,
@@ -36,8 +35,10 @@ export const styleAliasSource = ({
     id: `styleAlias/${category}/${identifier}`,
     kind: 'styleAlias',
     source: category,
+    // The lifecycle sentence is stated once in the reference's intro, so a row carries only what is
+    // specific to it: the replacement and any extra guidance the package authored.
     identifier,
-    message: deprecationMessage({ deprecation }),
+    ...(deprecation.note ? { message: deprecation.note } : {}),
     ...(deprecation.replacement ? { replacement: deprecation.replacement } : {}),
     reference,
   })),

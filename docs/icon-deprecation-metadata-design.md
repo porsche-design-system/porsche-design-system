@@ -2,6 +2,11 @@
 
 ## Summary
 
+> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
+> `isDeprecated` and `getDeprecationComment` — see
+> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
+> below names a removed helper.
+
 Icon deprecations shall be owned by `@porsche-design-system/icons`, which already generates `ICONS_MANIFEST`,
 `ICON_NAMES`, and `IconName` from SVG assets. The package shall additionally export current icon metadata and an
 explicit `iconDeprecationsMeta`, initially empty.

@@ -2,6 +2,11 @@
 
 ## Summary
 
+> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
+> `isDeprecated` and `getDeprecationComment` — see
+> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
+> below names a removed helper.
+
 Token deprecations shall be generated into `tokenDeprecationsMeta` beside `tokensMeta` and published as
 `tokenDeprecations` from `@porsche-design-system/tokens-meta`. It is explicitly empty today and replaces the knowledge
 skill's source-marker scan.
@@ -87,10 +92,10 @@ symbol reference:
 export const blurFrosted = 'blur(32px)';
 ```
 
-The generator reads the link through the TypeScript type checker, never the sentence around it, and fails both when
-the link resolves to nothing and when it names a token the documented catalog does not contain. Text beside the link
-becomes `message`; a bare `@deprecated` is the complete marker. One input therefore serves both surfaces: the
-annotation a consumer's IDE shows and the metadata the audit reads. See
+The generator reads the link through the TypeScript type checker, never the sentence around it, and fails both when the
+link resolves to nothing and when it names a token the documented catalog does not contain. Text beside the link becomes
+`message`; a bare `@deprecated` is the complete marker. One input therefore serves both surfaces: the annotation a
+consumer's IDE shows and the metadata the audit reads. See
 [`packages/tokens/AGENTS.md`](../packages/tokens/AGENTS.md#deprecating-a-token).
 
 ### Package export

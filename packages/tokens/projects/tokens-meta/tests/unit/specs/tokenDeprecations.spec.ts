@@ -1,13 +1,13 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { flattenDeprecations } from '@porsche-design-system/shared/deprecation';
 import * as tokens from '@porsche-design-system/tokens';
 import { describe, expect, it } from 'vitest';
 import { buildCatalogs, readTokenSources } from '../../../scripts/tokensMeta';
 import { tokenDeprecations } from '../../../src';
+import { flattenTokenDeprecations } from '../../../src/deprecationList';
 import { tokenDeprecationsMeta, tokensMeta } from '../../../src/lib/tokensMeta';
-import type { DeprecatedTokenMeta, TokenMeta, TokensMetaTree } from '../../../src/types/token-meta';
+import type { TokenMeta, TokensMetaTree } from '../../../src/types/token-meta';
 
 /**
  * The knowledge skill's deprecation index reads `tokenDeprecations`, so a legacy token missing from
@@ -20,7 +20,7 @@ const leaves = (tree: TokensMetaTree): TokenMeta[] =>
   Object.values(tree).flatMap((node) => ('name' in node ? [node as TokenMeta] : leaves(node as TokensMetaTree)));
 
 const CURRENT = leaves(tokensMeta);
-const DEPRECATED = flattenDeprecations<DeprecatedTokenMeta>(tokenDeprecationsMeta);
+const DEPRECATED = flattenTokenDeprecations(tokenDeprecationsMeta);
 /** The exports the catalogs are generated from, re-read here so they are gated on their own input. */
 const SOURCES = readTokenSources();
 
@@ -99,7 +99,7 @@ export const tokenA = '1px';
         name: 'tokenA',
         description: 'The legacy token.',
         directory: '',
-        deprecation: { replacement: 'tokenB', message: 'Values changed slightly.' },
+        deprecation: { replacement: 'tokenB', note: 'Values changed slightly.' },
       },
     ]);
   });

@@ -2,6 +2,11 @@
 
 ## Summary
 
+> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
+> `isDeprecated` and `getDeprecationComment` — see
+> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
+> below names a removed helper.
+
 Partials currently expose functions but no metadata and have no deprecations. Introduce an explicit
 `partialDeprecationsMeta` export from `@porsche-design-system/partials/meta` so the knowledge skill can remove its
 source marker scan.

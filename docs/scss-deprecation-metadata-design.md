@@ -328,6 +328,9 @@ nothing downstream changes.
 
 ## Conventions for other sources
 
+> The shared contract itself now lives in [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md).
+> Where a convention below names a helper or type that design removed, the contract doc is authoritative.
+
 The remaining per-source designs — components, Emotion, vanilla-extract, Tailwind CSS, stylesheets, tokens, icons and
 partials — follow the conventions this implementation settled on. Each doc records only how they apply to its package.
 
@@ -374,27 +377,31 @@ identifier is the export name.
 Conventions 1 and 2 shape every deprecated catalog; 3–6 and 8 describe an authored one and apply to the first and third
 rows. Conventions 7 and 9 apply to every source. Conventions 10–13 describe the annotation-first row.
 
-1. **Dedicated deprecated types, not an optional field.** Derive them from the shared generics —
-   `Deprecated<ScssVariable>`, `DeprecationsMeta<ScssMeta, DeprecatedScssNode>` — so the **required** `deprecation` is
-   guaranteed while the current leaf types keep no such field and neither catalog can absorb the other's entries. Keep
-   the whole block at the end of the types file, in one order everywhere: leaf aliases, their union, the catalog. Do not
-   redeclare a package-local marker, branch or catalog type; a package needing more intersects the shared one
+1. **~~Dedicated deprecated types, not an optional field.~~** Superseded by
+   [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md): the marker is an optional `deprecation`
+   field on the declaration, and the shared module keeps only `Deprecation`, `Deprecated<T>` and `Deprecations`. The
+   original wording follows for context. Derive them from the shared generics — `Deprecated<ScssVariable>`,
+   `DeprecationsMeta<ScssMeta, DeprecatedScssNode>` — so the **required** `deprecation` is guaranteed while the current
+   leaf types keep no such field and neither catalog can absorb the other's entries. Keep the whole block at the end of
+   the types file, in one order everywhere: leaf aliases, their union, the catalog. Do not redeclare a package-local
+   marker, branch or catalog type; a package needing more intersects the shared one
    (`Deprecation & { message: string }`, as the annotation-first packages do to keep their message required). Where a
    package's documented catalog must stay complete (components), the deprecated catalog is _derived_ instead — see
    `docs/component-deprecation-metadata-design.md`.
-2. **Deprecated entries carry no `description`.** `Deprecated<T>` strips it, rather than making it optional: nothing
-   renders a deprecated node's description (the skill serializers read only the documented catalog, the audit adapter
-   reads identity and marker), so an optional field is dead weight and a required one would be 131 sentences of dead
-   prose free to drift from the deprecation beside them. Extra guidance belongs in `deprecation.message`. The current
-   type keeps `description` required.
-3. **Fixed default wording, shared not repeated.** With a replacement:
-   `This API will be removed with the next major release.` Without:
-   `This API will be removed with the next major release and has no replacement.` These sentences and the two helpers
-   that build them — `deprecationMessage` for the skill's lifecycle sentence, `deprecationText` prefixing
-   `Use <replacement> instead.` for a generated comment, so the remediation column never prints the replacement twice —
-   live in the shared module. A package that restated them would be free to drift from an index that renders every
-   source in one table. Only _identity_ stays package-owned, because `$name` versus `name()` versus `--custom-property`
-   is genuinely package-specific.
+2. **~~Deprecated entries carry no `description`.~~** Superseded: `Deprecated<T>` no longer strips anything, so a
+   description is required wherever the leaf type has one and absent where the node never had one. The original wording
+   follows for context. `Deprecated<T>` strips it, rather than making it optional: nothing renders a deprecated node's
+   description (the skill serializers read only the documented catalog, the audit adapter reads identity and marker), so
+   an optional field is dead weight and a required one would be 131 sentences of dead prose free to drift from the
+   deprecation beside them. Extra guidance belongs in `deprecation.message`. The current type keeps `description`
+   required.
+3. **Fixed default wording, shared not repeated.** One sentence:
+   `This API will be removed with the next major release.`, prefixed by `Use <replacement> instead.` when there is a
+   replacement and followed by the optional `note`. It is built by the single shared `getDeprecationComment`, which also
+   wraps it in the target comment syntax. The audit does not repeat the lifecycle sentence per row — its reference
+   states it once — so it renders the `replacement` and the `note` only. A package that restated them would be free to
+   drift from an index that renders every source in one table. Only _identity_ stays package-owned, because `$name`
+   versus `name()` versus `--custom-property` is genuinely package-specific.
 4. **Canonical identity helper.** Author `replacement` as `<pkg>Identifier(<current node>)` read from the exported
    current catalog, never as a retyped string and never via an intermediate local const.
 5. **Generated comments must not reach a consumer's shipped bytes.** SCSS uses silent `//`. TypeScript sources use

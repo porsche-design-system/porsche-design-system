@@ -97,7 +97,7 @@ export const border = {
       description: 'Applies a **regular** `border-width`.',
       deprecation: {
         replacement: tailwindIdentifier(defaultBorderWidth),
-        message: 'The default border width is now 1px. This API will be removed with the next major release.',
+        note: 'The default border width is now 1px.',
       },
     },
     {

@@ -1,4 +1,4 @@
-import { deprecationMessage, isDeprecated } from '@porsche-design-system/shared/deprecation';
+import { getDeprecationComment, isDeprecated } from '@porsche-design-system/shared/deprecation';
 import { describe, expect, it } from 'vitest';
 import { tailwindDeprecations, tailwindMeta } from '../../../src';
 import { tailwindCssMeta } from '../../../src/css';
@@ -111,19 +111,9 @@ describe('tailwind css composition', () => {
     expect(unsourced).toStrictEqual([]);
   });
 
-  it('marks every deprecated declaration in the generated CSS', () => {
+  it('precedes every deprecated declaration with its generated @deprecated comment', () => {
     for (const node of deprecated) {
-      expect(renderNode(node)).toContain('/* alias (deprecated) */\n');
-    }
-  });
-
-  it('keeps the generated marker terse, since CSS has no silent comment', () => {
-    // Every byte of a comment in `index.css` reaches every consumer, so the replacement and
-    // lifecycle guidance stays in the catalog rather than being expanded into the stylesheet.
-    for (const node of deprecated) {
-      const rendered = renderNode(node);
-      expect(rendered).not.toContain(deprecationMessage(node));
-      expect(rendered).not.toContain('@deprecated');
+      expect(renderNode(node)).toContain(`${getDeprecationComment(node.deprecation, 'block')}\n`);
     }
   });
 });

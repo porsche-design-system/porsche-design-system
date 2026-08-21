@@ -2,6 +2,11 @@
 
 ## Summary
 
+> The shared deprecation contract this design builds on was reduced to `Deprecation`, `Deprecated<T>`, `Deprecations`,
+> `isDeprecated` and `getDeprecationComment` — see
+> [`docs/deprecation-contract-design.md`](./deprecation-contract-design.md), which is authoritative wherever the prose
+> below names a removed helper.
+
 Component deprecations shall be exported as structured `componentDeprecationsMeta` from
 `@porsche-design-system/component-meta`. Unlike the styling catalogs, deprecated components, props, events, slots, CSS
 variables, and values remain in the complete `componentMeta` object because component documentation and tooling require
