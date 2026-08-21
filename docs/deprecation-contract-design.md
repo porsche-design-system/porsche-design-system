@@ -33,7 +33,8 @@ export const getDeprecationComment: (deprecation: Deprecation, style: CommentSty
 `getDeprecationComment` — instead of being spread across a message helper, a text helper and two per-package comment
 generators.
 
-The goal is that all four styling solutions **publish and render deprecations identically**. Today they do not: scss and
+The goal is that all four styling solutions **publish and render deprecations identically**, and that tokens — the fifth
+metadata-producing source, and hand-written TypeScript like two of them — does the same. Today they do not: scss and
 Tailwind carry a structured `replacement`, while emotion and vanilla-extract carry free prose and no replacement at all,
 so the audit's remediation column is populated for two sources and empty for two.
 
@@ -86,15 +87,14 @@ overridden by a package and can never drift. Only one authored message exists ac
 ### `Deprecated<T>` no longer strips `description`
 
 `Deprecated<T> = T & { deprecation: Deprecation }`. The distributive `Omit<T, 'description'>` is gone, so `description`
-is required wherever the leaf type has one (scss, Tailwind) and simply absent where the node never had one (emotion,
-vanilla-extract). `tokens-meta` was the only package relying on the strip — its `DeprecatedTokenMeta` becomes
-`Deprecated<{ name: string; value: string | number }>`, so the omission lives in the one package that wants it and is
-visible where it is made.
+is required wherever the leaf type has one (scss, Tailwind) and simply absent where the node never had one.
+`tokens-meta` was the only package relying on the strip, and it no longer needs it either: emotion, vanilla-extract and
+tokens publish `{ identifier, deprecation }` entries, which carry no description to strip.
 
-### Annotation convention for emotion and vanilla-extract
+### Annotation convention for emotion, vanilla-extract and tokens
 
-Their 214 `@deprecated` annotations are rewritten to name the replacement as a `{@link …}` reference — the convention
-`tokens-meta` already implements — so the extractor recovers a structured `replacement` instead of prose:
+Their `@deprecated` annotations name the replacement as a `{@link …}` reference, so the extractor recovers a structured
+`replacement` instead of prose:
 
 ```ts
 /** @deprecated Use {@link colorFrostedLight} instead. This API will be removed with the next major release. */
@@ -115,6 +115,10 @@ sentence the shared API would generate, and compares:
 Roughly 21 of emotion's 107 annotations name no symbol (_"Use individual variables instead."_, `'normal'`, a
 `linear-gradient(…)` snippet, two with no remediation). Those carry no `replacement` and keep their guidance as a
 `note`.
+
+Each of the three packages runs its own copy of this extractor over its own `src`. The wording is what must not drift,
+and that lives in `getDeprecationComment`, which every copy validates against; the plumbing around it is a package's own
+business, so nothing is shared beyond the contract.
 
 ### Knowledge-skill adapter
 
@@ -167,7 +171,7 @@ Covered above: it asserted something that a deprecation with a `note` can contra
 | Risk                                                                 | Mitigation                                                                                                                      |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | The 214-annotation codemod mangles or drops guidance.                | The extractor fails the build on any annotation it cannot structure, so a bad rewrite cannot land silently; snapshots reviewed. |
-| A `{@link X}` names something that is not a real export.             | The extractor resolves links through the type checker, as `tokens-meta` already does for tokens.                                |
+| A `{@link X}` names something that is not a real export.             | The extractor checks the name against what the package publishes — its public barrel, or the documented tokens.                 |
 | The audit's rendered rows change for every styling source.           | Intentional and reviewed through the drift snapshot; component rows are untouched.                                              |
 | A package hand-writes a different sentence into an annotation later. | The round-trip comparison is the validator — a divergent sentence is a build error, not a silent note.                          |
 | `index.css` grows for every Tailwind consumer.                       | Measured at 831 bytes (+2.2%) before minification, on 9 declarations.                                                           |
@@ -178,8 +182,8 @@ Covered above: it asserted something that a deprecation with a `note` can contra
    the note is appended, never substituted; an empty `{}` still yields the lifecycle sentence.
 2. Each styling package — its published `Deprecations` is spelled canonically, ordered, and carries markers by
    reference; generated artifacts contain the comment for every deprecated declaration.
-3. emotion / vanilla-extract — every annotation round-trips: extracting and re-rendering reproduces it exactly. This is
-   the test that keeps the hand-maintained annotations honest until they are generated.
+3. emotion / vanilla-extract / tokens — every annotation round-trips: extracting and re-rendering reproduces it exactly.
+   This is the test that keeps the hand-maintained annotations honest until they are generated.
 4. skills — the rendered remediation column shows the replacement and any note, and no longer repeats the lifecycle
    sentence.
 
@@ -188,11 +192,14 @@ Covered above: it asserted something that a deprecation with a `note` can contra
 1. Rewrite `shared/src/deprecation` and its spec.
 2. scss and Tailwind: call `getDeprecationComment`, retype the published export, rename Tailwind's authored message to a
    `note`.
-3. tokens-meta: `note` instead of `message`, and the local `Deprecated<{ name; value }>`.
+3. tokens-meta: `note` instead of `message`.
 4. emotion and vanilla-extract: codemod the annotations, teach both extractors the `{@link}` recovery and the strict
    validation, replace `publishDeprecations` with a local flatten.
-5. skills: read `replacement` / `note` directly; update the drift snapshot.
-6. Update the per-source design docs and `packages/styles/AGENTS.md` to point at this contract.
+5. tokens: adopt the same annotation convention and the same extraction, so the fifth source collects its deprecations
+   like the two it structurally is.
+6. skills: read `replacement` / `note` directly; update the drift snapshot.
+7. Update the per-source design docs, `packages/styles/AGENTS.md` and `packages/tokens/AGENTS.md` to point at this
+   contract.
 
 ## Open questions
 
